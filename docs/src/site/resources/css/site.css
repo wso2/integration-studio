@@ -1,0 +1,233 @@
+body {
+    color: #000;
+    font-size: 11px;
+    font-family:'Segoe UI',Verdana,Arial;
+  
+    background-repeat: repeat-x;
+    background-attachment: scroll;
+    background-position: left top;
+    text-decoration: none;
+    text-align: left;
+    padding: 0px;
+    list-style-type: square;
+    list-style-position: outside;
+    margin:0px;
+}
+
+div#banner {
+	background-color:#F3F3F4;
+	background-position:left top;
+	background-repeat:repeat-x;
+	border-bottom:4px solid #000000;
+	color:#FFFFFF;
+	font-size:3.5em;
+	height:96px;
+}
+div.main-header{
+display:none;
+}
+div#banner img {
+	float:left;
+}
+
+div#banner div.main-header {
+	color:#FFFFFF;
+	float:left;
+	padding-top:30px;
+	font-size:32px;
+}
+
+div#breadcrumbs {
+	background-color: transparent;
+	height: 23px;
+	padding-top: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color:#c9d0d9;
+}
+
+div#main-content {
+	width:100%;
+}
+div#main-content td#leftColumn {
+	border-top:1px solid #BBBBBB;
+	margin-right:-1px;
+	overflow:hidden;
+	padding-bottom:96px;
+	text-align:left;
+	vertical-align:top;
+	width:220px;
+	padding-left:10px;
+}
+
+div#main-content td#leftColumn div#top {
+	height:15px;
+	width:220px;
+}
+
+div#main-content td#leftColumn div#mid {
+}
+
+
+div#main-content td#leftColumn div#mid h5{
+    	background-image:url(../images/border.png);
+	background-position:0 25px;
+	background-repeat:no-repeat;
+	color:#000;
+	display:block;
+	font-size:15px;
+	font-weight:bold;
+	line-height:30px;
+	margin-top:0;
+}
+
+div#main-content td#contentBox {
+	border:1px solid #BBBBBB;
+	padding-left:10px;
+}
+
+
+div#contentBox {
+	margin-top: 10px;
+	margin-bottom: 15px;
+	font-size: 12px;
+	padding-left:10px;
+}
+
+div#navcolumn h5 {
+	margin-bottom: 2px;
+	padding-bottom: 2px;
+	font-size: 110%;
+}
+
+#navcolumn li {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+p {
+}
+
+td {
+    background-color: #f8f8f8;
+    padding: 3px 5px;
+    outline-color: gray;
+    outline-width: 0;
+}
+
+a:link {
+    color:#195fb2;
+}
+
+a:visited {
+    color:#195fb2;
+}
+
+a:hover {
+    color: #7f7f7f;
+}
+
+a:active {
+}
+
+body, td, select, input, li  {
+	line-height: 18px;
+}
+
+div#mid ul  {
+	padding-left:20px;
+	margin-top:-20px;
+	list-style:none;
+}
+div#mid ul li a {
+	text-decoration:none;
+}
+div#mid ul li strong {
+color:#E66A38;
+font-weight:bold;
+}
+
+h1 {
+    color:#3F529C;
+    font-family:'Segoe UI',Verdana,Arial;
+    font-size:1.9173em;
+    font-weight:bold;
+}
+
+h2 {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 24px;
+    border-bottom: 0px;
+    border-left: solid 1px #ccc;
+    border-right: solid 1px #ccc;
+    border-top: 0px;
+    background-color: #B5B5B5;
+    padding-left: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: #fff;
+}
+
+h3 {
+    color: #3a3a3a;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-bottom: 1px solid #ccc;
+    background-image: url(../images/table-header.gif);
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    background-color: transparent;
+}
+
+table {
+    background-color: #cbcbcb;
+    margin: 0;
+    padding: 1px;
+    border-style: solid;
+    border-width: 0;
+}
+
+th {
+    padding-left: 5px;
+}
+
+img {
+
+    padding: 1px;
+}
+div#footer {
+    	background-image: url(../images/footer.png);
+    	background-position: left bottom;
+    	background-repeat: repeat-x;
+	clear:both;
+	padding-left: 20px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+div#footer hr{
+	display:none;
+}
+div.product_feature_list {
+	display: none;
+}
+.main-content-table{
+	width:100%;
+}
+.main-content-table td{
+vertical-align:top;
+}
+
+.up{
+	background-image:url(../images/up.png) !important;
+	}
+	.down{
+	background-image:url(../images/down.png) !important;
+	}

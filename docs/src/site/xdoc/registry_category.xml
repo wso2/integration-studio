@@ -1,0 +1,463 @@
+<!--
+~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under
+the Apache License, Version 2.0 (the "License"); ~ you may not use
+this file except in compliance with the License. ~ You may obtain a
+copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0
+~ ~ Unless required by applicable law or agreed to in writing,
+software ~ distributed under the License is distributed on an "AS IS"
+BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied. ~ See the License for the specific language governing
+permissions and ~ limitations under the License.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+
+		<h1>Registry Tools</h1>
+		<h2>Content</h2>
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#regResourceArtifact">Registry Resource</a>
+				</li>
+				<li>
+					<a href="greg_user_guide.html">Manage your registry - WSO2 Registry Perspective</a>
+				</li>
+				<li>
+					<a href="#RegistryFilter">Registry Filters</a>
+				</li>
+				<li>
+					<a href="#RegistryHandler">Registry Handlers</a>
+				</li>
+				<li>
+					<a href="#RegistryAspect">Registry Aspects</a>
+				</li>
+				
+			</ul>
+		</div>
+		<h2 id="regResourceArtifact">Registry Resource</h2>
+		<p>
+		You can save resources such as images, WSDLs, XSLTs in a central repository. We define 
+		them as <strong>Registry Resources</strong>. We save all these <strong>Registry 
+		Resources</strong> in a seperate project called <strong>Registry Resources Project</strong>. 
+        </p>
+        <p>
+        To create a <strong>Registry Resources Project</strong>, go to 
+        <strong>File -> New -> Projects -> WSO2 -> Repository</strong> and select 
+        <strong>Registry Resources Project</strong>.
+        </p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres1.png"></img>
+			<br></br>
+		</p>
+		<p>
+		Give a name to the project and click <strong>Finish</strong>.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres2.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		Initially your project will only contains only a pom file. You can create any number of 
+		<strong>Resgistry Resources</strong> inside that project. To create a 
+		<strong>Registry Resource</strong> right click on the <strong>Registry Resources</strong> 
+		project and select <strong>Registry Resource</strong> from <strong>New</strong> menu. 
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres3.png"></img>
+			<br></br>
+		</p>
+
+		<p>
+		There are several ways to create a <strong>Registry Resource</strong>.
+		</p>
+		<div class="toc2">
+			<ul>
+				<li>
+					<a href="#ExistingTemplate">From Existing Template</a>
+				</li>
+				<li>
+					<a href="#ImportFromFS">Import from File System</a>
+				</li>
+				<li>
+					<a href="#ImportRegDump">Import Registry Dump File from File System</a>
+				</li>
+			</ul>
+		</div>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres4.png"></img>
+			<br></br>
+		</p>
+		
+		<h3 id="ExistingTemplate">From Existing Template</h3>
+		<p>
+		Here we going to create <strong>WSDL</strong> file as a <strong>Registry Resource.</strong> Give a name to <strong>Resource Name</strong> field, without file extension.Give a <strong>Artifact Name</strong> or use <strong>Resource Name</strong> for it. 
+		</p>		 
+		 <p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres5.png"></img>
+			<br></br>
+		</p>
+		 
+		<p> <strong> From Existing Template</strong> option, you can select a template from which you can create a registry resource. Here, we will select <strong>WSDL File</strong> template. <strong> Registry</strong> field is to select registry, either config or governance. Here we create <strong>WSDL</strong> file as a <strong>Registry Resource</strong>, then we select <strong>gov</strong> as <strong>Registry.</strong></p>		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres6.png"></img>
+			<br></br>
+		</p>
+		
+		<p> There's a 
+		field called <strong>Registry Path to Deploy</strong> which is to define where you want to save the 
+		resource in the <strong>registry</strong>. For example is it  Areaservice, <strong>Registry Path to Deploy</strong> should <strong>wsdl/services/Area</strong>. But final registry path is <strong>gov:wsdl/services/Area/AreaService.wsdl</strong>.<strong>Save Resource In</strong> field is to select the 
+		<strong> Registry Resources Projects</strong> in the workspace in where you can save your resource 
+		file.  
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres12.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		Now you will see <strong>WSDL</strong> file has been generated with the name that 
+		we specified and it will open in the embedded WSDL editor as shown.
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres7.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		In the similar way, you can create files from other templates as well.
+		</p>
+		
+		<h3 id="ImportFromFS">Import from File System</h3>
+		<p>
+		With the <strong>Import from File System</strong> option, you can import a file or a folder.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres8.png"></img>
+			<br></br>
+		</p>
+		<p>
+		With this also, you have the same fields such as <strong>Registry Path to Deploy</strong> and 
+		<strong>Save Resource In</strong> fields. If you select a <strong>Folder</strong> as a 
+		<strong>Registry Resource</strong>, you will see a <strong>Copy Content Only</strong> 
+		check box being enabled. By default, this field is <strong>un-tick</strong> in the sense that 
+		you will have a copy of the folder inside the location you specified in the field 
+		<strong>Registry Path to Deploy</strong>. If you tick that option, it will only copy the 
+		content of the folder you have given in to the registry location you specified 
+		at <strong>Registry Path to Deploy</strong>.
+		</p>
+
+		<h3 id="ImportRegDump">Import Registry Dump File from File System</h3>
+		
+		<p>With this option, you can browse a Registry Dump file which you use to sync a registry. 
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres9.png"></img>
+			<br></br>
+		</p>
+		
+		<p><strong>Registry Path To Deploy</strong> is common for all the three options. With this, you are specifying, to where 
+		that registry resource should be checked-in at the time of deployment.
+		</p>
+		
+		<p>You may need to change the details you enter for <strong>Registry Path to Deploy</strong> at the 
+		later stage. You can edit such information with <strong>Registry Resource Editor</strong>. To open 
+		the <strong>Registry Resource Editor</strong>, right click on the <strong>Registry Resources 
+		Project</strong> and there is a menu item called <strong>Registry Resource Editor</strong>.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres10.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		This editor list all the registry resources that you have defined in that project and it will list 
+		<strong>Registry Path to Deploy</strong> per resource and you can edit that according to your 
+		need.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regres11.png"></img>
+			<br></br>
+		</p>
+
+		
+		<h2 id="RegistryFilter">Registry Filter</h2>
+		<p>
+        To create a <strong>Registry Filter</strong> open <strong>WSO2 Developer Studio Dashboard</strong> and 
+        select <strong>Registry Filter Project</strong> from <strong>Governance Registry</strong> 
+        category. 
+        </p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regfilter1.png"></img>
+			<br></br>
+		</p>
+		<p>
+		Give details for <strong>Project Name, Package Name</strong> and <strong>Class Name</strong> and clicl 
+		<strong>Finish</strong>. 
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regfilter2.png"></img>
+			<br></br>
+		</p>
+
+		<p>Now you will see a Filter class being created according to the class name you have 
+		provided and it is extending <strong>org.wso2.carbon.registry.core.jdbc.handlers.filters.Filter</strong> class. 
+		Necessary libraries are added to your classpath in order to make your life easy. 
+		</p>
+			
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regfilter3.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		If you already have a <strong>Carbon Application Project</strong> that is being created in the 
+		workspace, newly created <strong>Filter Project</strong> will also be added to the 
+		<strong>Carbon Application Project</strong> pom. If needed, you can create a new 
+		<strong>Carbon Application Project</strong> project and include the <strong></strong>
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/regfilter4.png"></img>
+			<br></br>
+		</p>	
+			
+		<h2 id="RegistryHandler">Registry Handler</h2>
+		<p>
+        To create a <strong>Registry Handler</strong> open <strong>WSO2 Developer Studio Dashboard</strong> and 
+        select <strong>Registry Handler Project</strong> from <strong>Governance Registry</strong> 
+        category. 
+        </p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/reghandler1.png"></img>
+			<br></br>
+		</p>
+		<p>
+		To create a <strong>Registry Handler Project</strong>, you need to have two types of classes. 
+		Handler class which is exteneded by <strong>org.wso2.carbon.registry.core.jdbc.handlers.Handler</strong> 
+		and a Filter class which is extended by <strong>org.wso2.carbon.registry.core.jdbc.handlers.filters.Filter</strong>.
+		</p>
+		
+		<p>First wizard page is regarding information of <strong>Handler</strong> class. Give a name 
+		to the <strong>Handler Project</strong> and select the <strong>Hadler Class</strong> 
+		creation method. 
+		</p>
+			
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/reghandler2.png"></img>
+			<br></br>
+		</p>
+		<p>
+		You can create a <strong>Handler</strong> class in two ways. 
+		</p>
+		<ul>
+			<li>New Registry Handler Class</li>
+			<li>Import Handler Class from the workspace</li>
+		</ul>
+		
+		<p>
+		With the first option, you can create a <strong>Handler</strong> class from the 
+		scratch and if you select the second option, it will list all the classes that are 
+		bieng exteneded by <strong>org.wso2.carbon.registry.core.jdbc.handlers.Handler</strong>.
+		Suppose I select the first option and click <strong>Next</strong>. Fill the necessary 
+		information for <strong>Package Name</strong> and <strong>Class Name</strong>.  
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/reghandler3.png"></img>
+			<br></br>
+		</p>
+		
+		<p>In the next page, you can select <strong>Handler Properties Info</strong> and 
+		<strong>Handler Methods</strong> and click <strong>Next</strong>. 
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/reghandler4.png"></img>
+			<br></br>
+		</p>			
+			
+		<p>
+		Then it will ask how you want to create the <strong>Filter</strong> class. As for the 
+		<strong>Handler</strong>, you can create the <strong>Filter</strong> class in two different 
+		ways. 
+		</p>
+		<ul>
+			<li>Already Existing Filter Class</li>
+			<li>New Filter Class</li>
+		</ul>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/reghandler5.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		If you select the first option, there are two classes that you can use as 
+		<strong>Existing Filter</strong> classes. These classes are available in 
+		<strong>WSO2 Governance Registry</strong> product.
+		</p>	
+		<ul>
+			<li>org.wso2.carbon.registry.core.jdbc.handlers.filters.MediaTypeMatcher</li>
+			<li>org.wso2.carbon.registry.core.jdbc.handlers.filters.URLMatcher</li>
+		</ul>
+		
+		<p>
+		This drop-down box will display any other <strong>Filter</strong> classes that 
+		you have defined in the workspace. 
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/reghandler6.png"></img>
+			<br></br>
+		</p>
+		
+			
+		<p>
+		Define filter criteria and click <strong>Finish</strong>. 
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/reghandler7.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		Now you will see the <strong>Handler Project</strong> has been created in the workspace. 
+		By default, it will open <strong>Regisrty Info Editor</strong> which shows you all 
+		the information that you have given when creating the <strong>Handler Project</strong>.
+		You can add new <strong>Handler Properties</strong>, add new <strong>Handler 
+		Methods</strong>, <strong>Filter Criteria</strong> etc.  
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/reghandler8.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		As the same manner you did for <strong>Filter Projects</strong>, you can include the 
+		created <strong>Handler Project</strong> in to a <strong>Carbon Application Project</strong>
+ 		 and generate <strong>Carbon Application Archive [CAR]</strong> file to deploy 
+ 		 your <strong>Handler</strong> in to <strong>WSO2 Governance Registry</strong>.
+ 		</p>
+ 		
+		<h2 id="RegistryAspect">Registry Aspect</h2>	
+		<p>
+        You can create a <strong>Registry Aspect</strong> class from <strong>WSO2 Developer Studio</strong>. 
+        To create a Registry Aspect class, select any java project / or any artifact type project 
+        that you have created in your workspace and press <strong>Ctrl + n</strong> to 
+        open the <strong>New</strong> wizard. You can open the same wizard by <strong>File -> New -> Other</strong> 
+        as well. In the wizard, go to <strong>WSO2 -> Extensions -> Service Extension Features</strong>.
+        </p>
+        <p>
+		Select <strong>WSO2 Registry Aspect Class</strong> and click <strong>Next</strong>.
+		</p>
+		<p>
+			<br></br>
+				<img src="images/regAspect1.png" alt="New Server Runtime"/>
+			<br></br>
+		</p>
+		
+		
+		<p>Then you will get normal Eclipse class generating wizard page. 
+		Give necessary information and click <strong>Finish</strong>.
+		</p>
+			
+			<p>
+				<br></br>
+				<img src="images/regAspect2.png" alt="New Server Runtime"/>
+				<br></br>
+			</p>
+
+			<p>Now you will see Aspect class is created which is extended from <strong>org.wso2.carbon.registry.core.Aspect</strong> 
+			super class. 
+			</p>
+			<p>
+				<br></br>
+				<img src="images/regAspect3.png" alt="New Server Runtime"/>
+				<br></br>
+			</p>			
+			
+			<p>You can implement the functionality you want in this class and deploy this 
+			aspect class in to <strong>WSO2 Governance Registry</strong> by making it as a library artifact. 
+			</p>
+			<p>
+			Please refer <a href="carbon_category.html#JavaLibArtifact">Third Party Java Library Artifact</a> 
+			section for more details on how to create library artifact using <strong>WSO2 Carbon 
+			Studio</strong>.
+			</p>
+			
+			<p>
+			There, you have an option to select a project in your workspace when creating the 
+			library artifact. With that option, it will compile the selected project and make 
+			it a deployable bundle. To deploy the <strong>Registry Aspect</strong>, that we have 
+			just created for <strong>WSO2 G-Reg</strong> server, first we will make it a 
+			<strong>library</strong> artifact. Select the project which has the created 
+			<strong>aspect</strong> class when creating the library artifact. 
+			</p>
+			
+			<p>
+			When creating a library artifact, there is a checkbox called <strong>Make this a 
+			fragment bundle</strong>. To deploy a bundle which includes the <strong>aspect</strong> 
+			class, we need to make it a fragment host of <strong>org.wso2.carbon.regisrty.core</strong>.
+			 Otherwise it will not be visible at the runtime. So we will check that check box and 
+			 make <strong>org.wso2.carbon.regisrty.core</strong> as the fragment host.  (Figure 35)
+			</p>
+			
+			<p>
+				<br></br>
+				<img src="images/regAspect4.png"  alt="New Server Runtime"/>
+				<br></br>
+			</p>
+			
+			<p>Now you can deploy this library artifact in to <strong>WSO2 G-Reg</strong> as a CAR file by 
+			including it to a <strong>Carbon Application Project</strong>. Before 
+			creating the <strong>CAR</strong> file, make sure to change the server role of created 
+			library bundle as <strong>GovernanceRegistry</strong>. For library artifacts default 
+			server role is set as <strong>ApplicationServer</strong>.
+			</p>
+			
+			<p>To deploy it to <strong>
+			WSO2 Governance Registry</strong>, you need to change it to correct server role. 
+			</p>
+			<p>
+			After deploying the library artifact, you will have to restart the server to make 
+			<strong>Aspect</strong> class available in the runtime. 
+			</p>
+			
+			<p>
+			You can access this class by configure it via <strong>registry.xml</strong> or through the
+			<strong>WSO2 Governance Registry</strong> management console. 
+			</p>
+			
+	</body>
+</html>

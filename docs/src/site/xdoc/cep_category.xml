@@ -1,0 +1,160 @@
+<!--
+~ Copyright 2005-2013 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under
+the Apache License, Version 2.0 (the "License"); ~ you may not use
+this file except in compliance with the License. ~ You may obtain a
+copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0
+~ ~ Unless required by applicable law or agreed to in writing,
+software ~ distributed under the License is distributed on an "AS IS"
+BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied. ~ See the License for the specific language governing
+permissions and ~ limitations under the License.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+
+		<h1>Complex Event Processor Tools</h1>
+		<h2>Content</h2>
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#CEPArtifact">CEP Project</a>
+				</li>
+			</ul>
+		</div>
+
+		<h2 id="CEPArtifact">CEP Project</h2>
+        <p>
+       	To create a <strong>CEP Project</strong>, open <strong>WSO2 Developer Studio Dashboard</strong> 
+        and select <strong>CEP Project</strong> from <strong>Complex Event Processing Server</strong> category. 
+        </p>
+		<p>
+		  <br></br>
+			<img alt="New Server Runtime" src="images/cep/cep1.png"></img>
+			<br></br>
+		</p>
+		<p>
+		There are two ways to create a CEP Project   
+		</p>
+		<ol>
+			<li>New  CEP Project</li>
+			<li>Import CEP Project</li>
+		</ol>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/cep/cep2.png"></img>
+			<br></br>
+		</p>
+
+		<p>With the <strong>New CEP Project</strong> option, you will get an empty CEP Project according to 
+		the information that you have provided. At the same time, you can upload a 
+		<strong>CEP Configuration File</strong>  with the extension of <strong>.xml</strong> from the 
+		file system.
+		</p>
+		<p>
+		If you select <strong>New CEP Project</strong> option, and click <strong>Next</strong>, wizard page 
+		will ask you general information like <strong>Project Name</strong>
+		 Give necessary information and click <strong>Next</strong>.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/cep/cep3.png"></img>
+			<br></br>
+		</p>
+		<p>
+		In the next page, you will see maven project options and click <strong>Finish</strong>
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/cep/cep4.png"></img>
+			<br></br>
+		</p>
+		<p>
+		Now you will be directed to <strong>CEP Editor</strong> which consists of
+		<strong>Design view </strong> and <strong>Source view</strong>
+		</p>
+		<p>
+		    <br></br>
+			<img alt="New Server Runtime" src="images/cep/cep5.png"></img>
+			<br></br>
+			
+		</p>
+		<p>
+		In the <strong> Design View</strong> you can give CEP bucket details and from a drop down box
+		you can select the <strong> CEP Engine</strong>
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/cep/cep6.png"></img>
+			<br></br>
+		</p>
+		<p>
+		In the Engine Configuration Properties you can add <strong> Siddhi Engine Parameters </strong>as
+		name value pairs from the Dialog and finally click <strong> OK </strong> button to add
+		properties to bucket.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/cep/cep7.png"></img>
+			<br></br>
+		</p>
+		<p>You can add Input Configuration by clicking <strong>Add...</strong> button under the <strong>Inputs</strong> section 
+		   and it will display the <strong>Input Configuration Dialog </strong>. Provide the relevent 
+		   details and finally click <strong>OK</strong> button to add the <strong>Input</strong> to the <strong>Bucket</strong>
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/cep/cep8.png"></img>
+			<br></br>
+		</p>	
+		<p>
+		Input Configuration Dialog 
+		</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/cep/cep9.png"></img>
+				<br></br>
+			</p>	
+			
+		<p>
+		You can add queries by clicking <strong>Add...</strong> Button in the <strong>Queries</strong>
+		section and it will display <strong> Query Configuration </strong> dialog and there you can
+		give relevent details for the query and output and click <strong> OK </strong> button to 
+		add the query configuration to the bucket. 
+		</p>
+		<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/cep/cep13.png"></img>
+				<br></br>
+			</p>	
+			<p>
+		Query Configuration Dialog 
+		</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/cep/cep10.png"></img>
+				<br></br>
+			</p>			
+			<p>
+		    After that you can view the <strong>source</strong> by clicking <strong>Source</strong>
+		    tab in the <strong> CEP Editor </strong> 
+		</p>
+		<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/cep/cep11.png"></img>
+				<br></br>
+			</p>	
+			<p>
+			You can export the generated <strong>bucket.xml</strong> as a <strong> CAR File </strong>
+			using <strong> Carbon Application Project</strong>
+			</p>
+		    <p>
+			<strong>Note: </strong> If the generated xml file shows <strong>Query Event Type</strong> as <strong>
+			Map </strong> make it as what ever type you want by editing the xml file in the CEP Editor.Siddhi only uses
+			<strong>Tuple </strong> and for Siddhi make it Tuple.
+			</p>
+		
+								
+	</body>
+</html>

@@ -1,0 +1,43 @@
+package com.acme.shoppingcart.rule;
+
+import com.acme.shoppingcart.rule.Product;
+import com.acme.shoppingcart.rule.ProductApplication;
+import com.acme.shoppingcart.rule.ProductMargin;
+
+rule "Populate default values" dialect "mvel" no-loop true salience 2
+
+when
+    $product : Product($id : id);
+then
+    ProductMargin productMargin1 = new ProductMargin();
+    productMargin1.setProductID($id);
+    productMargin1.setApplicationName("App1");
+    productMargin1.setMargine(Math.random());
+    insertLogical(productMargin1);
+
+    ProductMargin productMargin2 = new ProductMargin();
+    productMargin2.setProductID($id);
+    productMargin2.setApplicationName("App2");
+    productMargin2.setMargine(Math.random());
+    insertLogical(productMargin2);
+
+    ProductMargin productMargin3 = new ProductMargin();
+    productMargin3.setProductID($id);
+    productMargin3.setApplicationName("App3");
+    productMargin3.setMargine(Math.random());
+    insertLogical(productMargin3);
+end
+
+rule "Product Application select rule" dialect "mvel" no-loop true salience 1
+
+when
+    $product : Product($id : id);
+    $minMargine : Double() from accumulate(ProductMargin(productID == $id, $margine: margine ), min($margine));
+    $productMargin : ProductMargin(productID == $id, margine == $minMargine, $applicationName : applicationName);
+
+then
+    ProductApplication productApplication = new ProductApplication();
+    productApplication.setProductID($id);
+    productApplication.setApplicationName($applicationName);
+    insertLogical(productApplication);
+end

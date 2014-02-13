@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="CardService"
+    statistics="disable" trace="disable" transports="https http">
+    <target>
+        <inSequence>
+            <log category="INFO" level="full" separator=",">
+                <property name="before" value="beforeTransform"/>
+            </log>
+            <xslt key="conf:/transform/transform.xslt"/>
+            <log category="INFO" level="full" separator=",">
+                <property name="after" value="afterTransform"/>
+            </log>
+            <send>
+                <endpoint key="cardServiceEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <publishWSDL uri="file:///media/dev/CS-Resources/PracticalSOA/practical-soa-2011/banking-sample/appserver/CardService.wsdl"/>
+</proxy>

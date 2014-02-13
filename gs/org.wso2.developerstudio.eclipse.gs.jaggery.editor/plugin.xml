@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<plugin>
+   <extension
+         id="javaeditor"
+         point="org.eclipse.ui.editors">
+      <editor
+            name="JSSEditor"
+            default="true"
+            icon="$nl$/icons/full/obj16/jcu_obj.gif"
+            contributorClass="org.eclipse.wst.jsdt.internal.ui.javaeditor.CompilationUnitEditorActionContributor"
+            class="org.eclipse.wst.jsdt.internal.ui.javaeditor.CompilationUnitEditor"
+            symbolicFontName="org.eclipse.wst.jsdt.ui.editors.textfont"
+            id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor"
+            extensions="jss">
+            <contentTypeBinding contentTypeId="org.eclipse.wst.jsdt.core.jsSource" /> 
+      </editor>
+   </extension>
+</plugin>
+

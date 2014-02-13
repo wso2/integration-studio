@@ -1,0 +1,121 @@
+<!--
+~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under
+the Apache License, Version 2.0 (the "License"); ~ you may not use
+this file except in compliance with the License. ~ You may obtain a
+copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0
+~ ~ Unless required by applicable law or agreed to in writing,
+software ~ distributed under the License is distributed on an "AS IS"
+BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied. ~ See the License for the specific language governing
+permissions and ~ limitations under the License.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<h1>Gadget Editor Tools</h1>
+		<h2>Content</h2>
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#GadgetArtifact">Gadget</a>
+				</li>
+			</ul>
+		</div>
+		<h2 id="GadgetArtifact">Gadget</h2>		
+        <p>
+       	To create a <strong>Gadget</strong>, open <strong>WSO2 Developer Studio Dashboard</strong> 
+        and select <strong>Gadget</strong> from <strong>Gadget Server</strong> category.
+        </p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/gadget1.png"></img>
+			<br></br>
+		</p>
+		<p>
+		There are three ways to create a gadget.    
+		</p>
+		<ol>
+			<li>New Gadget</li>
+			<li>Import Gadget from File System</li>
+			<li>Import Dashboard Archive</li>
+		</ol>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/gadget2.png"></img>
+			<br></br>
+		</p>
+
+		<p>With the <strong>New Gadget</strong> option, you will get a simple gadget.xml with the specified name. 
+		Give necessary information as <strong>Project Name, Gadget XML</strong> and click 
+		<strong>Finish</strong>.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/gadget3.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		Once you click <strong>Finish</strong>, you will see a new project has been created in the 
+		workspace and it will contain the <strong>Gadget XML</strong> with the specified name and a
+		file called <strong>gadget-conf.xml</strong> which includes metadata for Gadget 
+		deployment. 
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/gadget4.png"></img>
+			<br></br>
+		</p>
+		
+		
+		<p>With the <strong>Import Gadget Resources from File System</strong> option, you can browse a location 
+		where you have <strong>Gadget configuration files, images</strong> and other related resources.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/gadget5.png"></img>
+			<br></br>
+		</p>	
+		
+		<p>
+		Once you click <strong>Finish</strong>, you will see that the new project has been created with the given 
+		name with imported resources in the workspace.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/gadget6.png"></img>
+			<br></br>
+		</p>	
+		
+		<p>With the third option, you can browse a <strong>Dashboard Archive [DAR]</strong> file, and create a 
+		new <strong>Gadget Project</strong>.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/gadget7.png"></img>
+			<br></br>
+		</p>
+		<p>
+		Once you click <strong>Finish</strong>, you will see that the <strong>DAR</strong> file, you have 
+		specified has been extracted and new project has been created in the workspace. 
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/gadget8.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		As you did for all the other projects, you can export the created <strong>Gadget</strong> in to a 
+		deployable artifact by right click on the project and select
+		 <strong>Export Project as Deployable Archive</strong>. With this it will create you a 
+		 <strong>Dashboard Archive [DAR]</strong> file, which is a bundle that you can deploy in to any 
+		 <strong>WSO2 Gadget Server</strong>. At the same time, 
+		 you can group it with a <strong>Carbon Application Project</strong> and create the 
+		 <strong>Carbon Application Archive [CAR]</strong> and deploy in to the <strong>WSO2 Gadget 
+		 Server</strong>. 
+		</p>			
+									
+	</body>
+</html>

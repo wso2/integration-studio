@@ -1,0 +1,8 @@
+{ 
+      "name": "engineer", 
+      "type": "record", 
+      "fields": [ 
+                    { "name" : "fullname", "type" : "string"},
+                    { "name" : "address", "type" : "string"}
+                ] 
+} 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<capp>
+    <ServerRoles>
+        <ServerRole name="GovernanceRegistry"/>
+        <ServerRole name="BusinessProcessServer"/>
+        <ServerRole name="GadgetServer"/>
+        <ServerRole name="EnterpriseServiceBus"/>
+        <ServerRole name="MashupServer"/>
+        <ServerRole name="ApplicationServer"/>
+        <ServerRole name="DataServicesServer"/>
+        <ServerRole name="BusinessRulesServer"/>
+        <ServerRole name="IdentityServer"/>
+        <ServerRole name="BusinessActivityMonitor"/>
+    </ServerRoles>
+</capp>

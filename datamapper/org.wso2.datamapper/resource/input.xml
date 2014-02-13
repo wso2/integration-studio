@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employee>
+	<firstname>Susankha</firstname>
+	<lastname>Nirmala</lastname>
+	<address>Street,123,State</address>
+	<dob>1985.10.31</dob>
+</employee>

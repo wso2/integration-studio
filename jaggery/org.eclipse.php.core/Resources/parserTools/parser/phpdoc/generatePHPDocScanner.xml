@@ -1,0 +1,43 @@
+<!--
+    Copyright (c) 2009 IBM Corporation and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+    
+    Contributors:
+        IBM Corporation - initial API and implementation
+        Zend Technologies
+ -->
+<project default="generateScanner" basedir=".">
+	
+	<import file="../../jflex/build.xml" />
+
+	<target name="checkUpToDate">
+		<uptodate
+			property="upToDate"
+			targetfile="../../../../src/org/eclipse/php/internal/core/compiler/ast/parser/DocumentorLexer.java">
+			
+			<srcfiles dir=".">
+				<or>
+					<filename name="documentor_compiler_ast_scanner.flex"/>
+					<filename name="documentor_compiler_ast_scanner.skeleton"/>
+				</or>
+			</srcfiles>
+		</uptodate>
+	</target>
+
+	<target name="generateScanner" depends="checkUpToDate, getJFlexJar" unless="upToDate">
+		<java jar="${jflexJar}" fork="true">
+			<arg value="-d" />
+			<arg value="../../../../src/org/eclipse/php/internal/core/compiler/ast/parser" />
+			<arg value="-nobak" />
+			
+			<!--using the skeleton file in order to change the default zzRefill function-->
+			
+			<arg value="-skel" />
+			<arg value="documentor_compiler_ast_scanner.skeleton" />
+			<arg value="documentor_compiler_ast_scanner.flex" />
+		</java>
+	</target>
+</project>

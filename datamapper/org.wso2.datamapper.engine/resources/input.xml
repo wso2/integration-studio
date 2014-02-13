@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pizza>
+    <name>Meater Sizzler</name>
+    <price>500.0</price>
+    <toppingsList>
+        <toppings>
+            <id>9999</id>
+            <name>Steak</name>
+            <extraPrice>4.00</extraPrice>
+            <category>NONVEG</category>
+        </toppings>
+        <toppings>
+            <id>9998</id>
+            <name>Sun Dried Tomato</name>
+            <extraPrice>4.00</extraPrice>
+            <category>VEGETARIAN</category>
+        </toppings>
+        <toppings>
+            <id>9997</id>
+            <name>Mixed Peppers</name>
+            <extraPrice>3.00</extraPrice>
+            <category>VEGETARIAN</category>
+        </toppings>
+        <toppings>
+            <id>9996</id>
+            <name>Cajun Chicken</name>
+            <extraPrice>3.00</extraPrice>
+            <category>NONVEG</category>
+        </toppings>
+        <toppings>
+            <id>9995</id>
+            <name>Chorizo Sausage</name>
+            <extraPrice>4.00</extraPrice>
+            <category>NONVEG</category>
+        </toppings>
+    </toppingsList>
+</pizza>

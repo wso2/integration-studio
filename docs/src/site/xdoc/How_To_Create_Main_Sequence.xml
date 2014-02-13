@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ Copyright 2005-2013 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under 
+	the Apache License, Version 2.0 (the "License"); ~ you may not use this file 
+	except in compliance with the License. ~ You may obtain a copy of the License 
+	at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by 
+	applicable law or agreed to in writing, software ~ distributed under the 
+	License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. ~ See the License for the specific 
+	language governing permissions and ~ limitations under the License. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<h1> How to Create a Main Sequence</h1>
+		<h2>Create Main Sequence using Developer Studio ESB Graphical Editor.</h2> 
+		<p>
+			Main sequence is a special mediation
+			configuration.The default main
+			sequence will simply send
+			a message without mediation. To create a
+			main sequence
+			using developer studio. Create a sequence named main.
+			You can follow
+			<a href="esb_category.html#SequenceArtifact">this</a> guide to create sequence.During the creation
+			process the only alter you have to
+			do is give the sequence name as
+			main. Wizard will
+			create a main sequence with in sequence and out
+			sequence as shown in
+			below in the image.
+	</p>
+
+		<p>
+			<img alt="Main_Sequence" src="images/esb_graphical/main_sequence_graphical.png"></img>
+		</p>
+
+	</body>
+
+</html>

@@ -1,0 +1,32 @@
+<%
+class URIMatcher {
+
+	/**
+	 * URIMatcher provides the functionality of comparing a given uri with a template
+	 * @link http://jaggeryjs.org/apidocs/urimatcher.jag
+	 * @param uri 
+	 * @return Object A URIMatcher Object
+	 */
+	function __construct (uri) {}
+
+	/**
+	 * 
+	 * @link http://jaggeryjs.org/apidocs/urimatcher.jag
+	 * @param pattern String 
+	 * @return Boolean Returns the bolean for matched 
+	 */
+	function match(pattern) {}
+
+	/**
+	 * 
+	 * @link http://jaggeryjs.org/apidocs/urimatcher.jag
+	 * @return Object Returns the set of elements, which were matched with the provided uri, and provided template 
+	 */
+	function elements() {}
+
+	
+}
+
+
+
+%>

@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.php.ui">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.php.ui" id="phpEditorTextHovers" name="PHP Editor Text Hover"/>
+      </appInfo>
+      <documentation>
+         This extension point allows to add new PHP Text Hovers to the editor. For more information of what is Text Hover, refer to &lt;code&gt;org.eclipse.jface.text.ITextHover&lt;/code&gt; interface. The most suitable for current context hover will be chosen by &lt;code&gt;org.eclipse.php.ui.editor.hover.BestMatchHover&lt;/code&gt; at runtime.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="hover" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="hover">
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  ID of the PHP Editor Text Hover.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string">
+            <annotation>
+               <documentation>
+                  Label of the PHP Editor Text Hover.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  Description of the PHP Editor Text Hover.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Class of the PHP Editor Text Hover.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.php.ui.editor.hover.IPHPTextHover"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="activate" type="boolean" use="default" value="false">
+            <annotation>
+               <documentation>
+                  if the attribute is set to &quot;true&quot; it will force this plug-in to be loaded on hover activation.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="priority" type="string">
+            <annotation>
+               <documentation>
+                  Priority allows fixing the order of how text hovers are processed by PHP editor. The more is this number, the more important is the text hover. Known priorities are:
+&lt;ul&gt;
+&lt;li&gt;1000 – Best Match Hover&lt;/li&gt;
+&lt;li&gt;500 – Problem Hover&lt;/li&gt;
+&lt;li&gt;400 – PHP Documentation Hover&lt;/li&gt;
+&lt;li&gt;300 – PHP Source Hover&lt;/li&gt;
+&lt;li&gt;200 – PHP Annotation Text Hover&lt;/li&gt;
+&lt;/ul&gt;
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         0.7
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;p&gt;
+&lt;pre&gt;
+   &lt;extension point=&quot;org.eclipse.php.ui.phpEditorTextHovers&quot;&gt;
+      &lt;hover class=&quot;org.eclipse.php.ui.editor.hover.PHPDebugTextHover&quot; id=&quot;org.eclipse.php.ui.editor.hover.PHPDebugTextHover&quot; name=&quot;PHP Debug Text Hover&quot; priority=&quot;1&quot;/&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         &lt;p&gt;
+Plugins that want to extend this extension point must implement this interface: &lt;samp&gt;org.eclipse.php.ui.editor.hover.IPHPTextHover&lt;/samp&gt;.
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;org.eclipse.php.ui.editor.hover.ProblemHover&lt;/code&gt; - used for displaying syntax error information.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;org.eclipse.php.ui.editor.hover.PHPAnnotationTextHover&lt;/code&gt; - used for displaying information on PHP element.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;org.eclipse.php.ui.editor.hover.PHPSourceTextHover&lt;/code&gt; - used for displaying source code of PHP element declaration (active, when CTRL button is pressed).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;org.eclipse.php.ui.editor.hover.BestMatchHover&lt;/code&gt;, which is a composite of all PHP Text Hovers. It invokes the most suitable for current context text hover each time.&lt;/li&gt;
+&lt;/ul&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2001, 2004 IBM Corporation and others.&lt;br&gt;
+All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at &lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

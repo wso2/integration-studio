@@ -1,0 +1,307 @@
+<!--
+ ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ WSO2 Inc. licenses this file to you under the Apache License,
+ ~ Version 2.0 (the "License"); you may not use this file except
+ ~ in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing,
+ ~ software distributed under the License is distributed on an
+ ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~ KIND, either express or implied.  See the License for the
+ ~ specific language governing permissions and limitations
+ ~ under the License.
+ -->
+
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://mgt.application.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax25="http://mgt.application.carbon.wso2.org/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://mgt.application.carbon.wso2.org">
+    <wsdl:documentation>ApplicationAdmin</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:ax26="http://mgt.application.carbon.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mgt.application.carbon.wso2.org">
+            <xs:import namespace="http://mgt.application.carbon.wso2.org/xsd" />
+            <xs:element name="ApplicationAdminException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ApplicationAdminException" nillable="true" type="ns:Exception" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="listAllApplications">
+                <xs:complexType>
+                    <xs:sequence />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="listAllApplicationsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAppData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="appName" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAppDataResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax25:ApplicationMetadata" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="downloadCappArchive">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="downloadCappArchiveResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteApplication">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="appName" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://mgt.application.carbon.wso2.org/xsd">
+            <xs:complexType name="ApplicationMetadata">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="appName" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="appVersion" nillable="true" type="xs:string" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="registryArtifacts" nillable="true" type="ax25:RegistryMetadata" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="registryFilters" nillable="true" type="xs:string" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="registryHandlers" nillable="true" type="xs:string" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="serviceGroups" nillable="true" type="ax25:ServiceGroupMetadata" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="RegistryMetadata">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="artifactName" nillable="true" type="xs:string" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="associations" nillable="true" type="ax25:Association" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="collections" nillable="true" type="xs:string" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="resources" nillable="true" type="xs:string" />
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="dumps" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Association">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="sourcePath" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="targetPath" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceGroupMetadata">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="sgName" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="sgType" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="downloadCappArchiveRequest">
+        <wsdl:part name="parameters" element="ns:downloadCappArchive" />
+    </wsdl:message>
+    <wsdl:message name="downloadCappArchiveResponse">
+        <wsdl:part name="parameters" element="ns:downloadCappArchiveResponse" />
+    </wsdl:message>
+    <wsdl:message name="ApplicationAdminException">
+        <wsdl:part name="parameters" element="ns:ApplicationAdminException" />
+    </wsdl:message>
+    <wsdl:message name="deleteApplicationRequest">
+        <wsdl:part name="parameters" element="ns:deleteApplication" />
+    </wsdl:message>
+    <wsdl:message name="getAppDataRequest">
+        <wsdl:part name="parameters" element="ns:getAppData" />
+    </wsdl:message>
+    <wsdl:message name="getAppDataResponse">
+        <wsdl:part name="parameters" element="ns:getAppDataResponse" />
+    </wsdl:message>
+    <wsdl:message name="listAllApplicationsRequest">
+        <wsdl:part name="parameters" element="ns:listAllApplications" />
+    </wsdl:message>
+    <wsdl:message name="listAllApplicationsResponse">
+        <wsdl:part name="parameters" element="ns:listAllApplicationsResponse" />
+    </wsdl:message>
+    <wsdl:portType name="ApplicationAdminPortType">
+        <wsdl:operation name="downloadCappArchive">
+            <wsdl:input message="ns:downloadCappArchiveRequest" wsaw:Action="urn:downloadCappArchive" />
+            <wsdl:output message="ns:downloadCappArchiveResponse" wsaw:Action="urn:downloadCappArchiveResponse" />
+            <wsdl:fault message="ns:ApplicationAdminException" name="ApplicationAdminException" wsaw:Action="urn:downloadCappArchiveApplicationAdminException" />
+        </wsdl:operation>
+        <wsdl:operation name="deleteApplication">
+            <wsdl:input message="ns:deleteApplicationRequest" wsaw:Action="urn:deleteApplication" />
+            <wsdl:fault message="ns:ApplicationAdminException" name="ApplicationAdminException" wsaw:Action="urn:deleteApplicationApplicationAdminException" />
+        </wsdl:operation>
+        <wsdl:operation name="getAppData">
+            <wsdl:input message="ns:getAppDataRequest" wsaw:Action="urn:getAppData" />
+            <wsdl:output message="ns:getAppDataResponse" wsaw:Action="urn:getAppDataResponse" />
+            <wsdl:fault message="ns:ApplicationAdminException" name="ApplicationAdminException" wsaw:Action="urn:getAppDataApplicationAdminException" />
+        </wsdl:operation>
+        <wsdl:operation name="listAllApplications">
+            <wsdl:input message="ns:listAllApplicationsRequest" wsaw:Action="urn:listAllApplications" />
+            <wsdl:output message="ns:listAllApplicationsResponse" wsaw:Action="urn:listAllApplicationsResponse" />
+            <wsdl:fault message="ns:ApplicationAdminException" name="ApplicationAdminException" wsaw:Action="urn:listAllApplicationsApplicationAdminException" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ApplicationAdminSoap11Binding" type="ns:ApplicationAdminPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="downloadCappArchive">
+            <soap:operation soapAction="urn:downloadCappArchive" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ApplicationAdminException">
+                <soap:fault use="literal" name="ApplicationAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteApplication">
+            <soap:operation soapAction="urn:deleteApplication" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="ApplicationAdminException">
+                <soap:fault use="literal" name="ApplicationAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAppData">
+            <soap:operation soapAction="urn:getAppData" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ApplicationAdminException">
+                <soap:fault use="literal" name="ApplicationAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="listAllApplications">
+            <soap:operation soapAction="urn:listAllApplications" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ApplicationAdminException">
+                <soap:fault use="literal" name="ApplicationAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ApplicationAdminSoap12Binding" type="ns:ApplicationAdminPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="downloadCappArchive">
+            <soap12:operation soapAction="urn:downloadCappArchive" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ApplicationAdminException">
+                <soap12:fault use="literal" name="ApplicationAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteApplication">
+            <soap12:operation soapAction="urn:deleteApplication" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="ApplicationAdminException">
+                <soap12:fault use="literal" name="ApplicationAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAppData">
+            <soap12:operation soapAction="urn:getAppData" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ApplicationAdminException">
+                <soap12:fault use="literal" name="ApplicationAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="listAllApplications">
+            <soap12:operation soapAction="urn:listAllApplications" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ApplicationAdminException">
+                <soap12:fault use="literal" name="ApplicationAdminException" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ApplicationAdminHttpBinding" type="ns:ApplicationAdminPortType">
+        <http:binding verb="POST" />
+        <wsdl:operation name="downloadCappArchive">
+            <http:operation location="downloadCappArchive" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteApplication">
+            <http:operation location="deleteApplication" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAppData">
+            <http:operation location="getAppData" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listAllApplications">
+            <http:operation location="listAllApplications" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ApplicationAdmin">
+        <wsdl:port name="ApplicationAdminHttpsSoap11Endpoint" binding="ns:ApplicationAdminSoap11Binding">
+            <soap:address location="https://10.100.3.157:9443/services/ApplicationAdmin.ApplicationAdminHttpsSoap11Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="ApplicationAdminHttpsSoap12Endpoint" binding="ns:ApplicationAdminSoap12Binding">
+            <soap12:address location="https://10.100.3.157:9443/services/ApplicationAdmin.ApplicationAdminHttpsSoap12Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="ApplicationAdminHttpsEndpoint" binding="ns:ApplicationAdminHttpBinding">
+            <http:address location="https://10.100.3.157:9443/services/ApplicationAdmin.ApplicationAdminHttpsEndpoint/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

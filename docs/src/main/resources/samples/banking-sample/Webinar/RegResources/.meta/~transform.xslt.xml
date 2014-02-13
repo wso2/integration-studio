@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource name="transform.xslt" isCollection="false" path="/_system/config/RegResources/transform.xslt" registryUrl="https://localhost:9443/registry" md5="8f2d9654eefff62b79f5df5cdc542e4a">
+    <mediaType>application/xslt+xml</mediaType>
+    <version>1844</version>
+    <creator>admin</creator>
+    <createdTime>1277482288897</createdTime>
+    <lastUpdater>admin</lastUpdater>
+    <lastModified>1277482288897</lastModified>
+    <description/>
+</resource>

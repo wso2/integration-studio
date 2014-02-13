@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS Customer(
+	NID VARCHAR(200),
+	Name VARCHAR(200),
+	customerID VARCHAR(200),
+	PRIMARY KEY (customerID)
+);

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:banking="http://wso2.org/sample/banking" xmlns:banking_1="http://wso2.org/banking" xmlns:dataservice="http://ws.wso2.org/dataservice" xmlns:hcc.wso2="http://hcc.wso2" xmlns:sample.wso2.org="http://sample.wso2.org">
+  <process name="banking:AccountOpeningProcess">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events>
+      <enable-event>activityLifecycle</enable-event>
+    </process-events>
+    <provide partnerLink="AOPPL">
+      <service name="banking_1:AccountOpeningProcessService" port="AccountOpeningProcessServiceSOAP"/>
+    </provide>
+    <invoke partnerLink="CDSPL">
+      <service name="dataservice:CustomerDS" port="SOAP11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="ADSPL">
+      <service name="hcc.wso2:AccountDetailService" port="AccountDetailServiceHttpSoap11Endpoint"/>
+    </invoke>
+    <invoke partnerLink="CSPL">
+      <service name="sample.wso2.org:CardService" port="CardServiceHttpSoap11Endpoint"/>
+    </invoke>
+  </process>
+</deploy>

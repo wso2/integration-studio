@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mediators"
+    nsURI="http:///org/wso2/developerstudio/eclipse/esb/mediators" nsPrefix="mediators">
+  <eClassifiers xsi:type="ecore:EClass" name="InMediator" eSuperTypes="esb.ecore#//ParentMediator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutMediator" eSuperTypes="esb.ecore#//ParentMediator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DropMediator" eSuperTypes="esb.ecore#//Mediator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SendMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="anonymousEndPoint" eType="ecore:EClass esb.ecore#//EndPoint"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endPointReference" eType="ecore:EClass esb.ecore#//EndPointReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="receivingSequenceType"
+        eType="#//ReceivingSequenceType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="StaticReceivingSequence"
+        eType="ecore:EClass esb.ecore#//RegistryKeyProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="DynamicReceivingSequence"
+        eType="ecore:EClass esb.ecore#//NamespacedProperty" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logCategory" eType="#//LogCategory"
+        defaultValueLiteral="INFO"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logLevel" eType="#//LogLevel"
+        defaultValueLiteral="FULL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logSeparator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=","/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//LogProperty" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LogCategory">
+    <eLiterals name="TRACE"/>
+    <eLiterals name="DEBUG" value="1"/>
+    <eLiterals name="INFO" value="2"/>
+    <eLiterals name="WARN" value="3"/>
+    <eLiterals name="ERROR" value="4"/>
+    <eLiterals name="FATAL" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LogLevel">
+    <eLiterals name="FULL" literal="full"/>
+    <eLiterals name="SIMPLE" value="1" literal="simple"/>
+    <eLiterals name="HEADERS" value="2" literal="headers"/>
+    <eLiterals name="CUSTOM" value="3" literal="custom"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogProperty" eSuperTypes="esb.ecore#//AbstractNameValueExpressionProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FilterMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conditionType" eType="#//FilterConditionType"
+        defaultValueLiteral="XPATH"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filterXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filterSource" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterRegex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="http://localhost:9000.*"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thenBranch" eType="#//FilterThenBranch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseBranch" eType="#//FilterElseBranch"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FilterConditionType">
+    <eLiterals name="XPATH" literal="XPATH"/>
+    <eLiterals name="SOURCE_AND_REGULAR_EXPRESSION" value="1" literal="SOURCE_AND_REGULAR_EXPRESSION"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FilterThenBranch" eSuperTypes="esb.ecore#//MediatorBranch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FilterElseBranch" eSuperTypes="esb.ecore#//MediatorBranch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SwitchMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="caseBranches" upperBound="-1"
+        eType="#//SwitchCaseBranch" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultBranch" eType="#//SwitchDefaultBranch"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwitchCaseBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="caseRegex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=".*+"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SwitchDefaultBranch" eSuperTypes="esb.ecore#//MediatorBranch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitlementMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="server_url"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="username"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="password"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onAccept" eType="#//EntitlementMediatorOnAcceptBranch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onReject" eType="#//EntitlementMediatorOnRejectBranch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Obligations" eType="#//EntitlementObligationsBranch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Advice" eType="#//EntitlementAdviceBranch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="callbackClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="callbackClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EntitlementSequence">
+    <eLiterals name="ANONYMOUS" literal="ANONYMOUS"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="1" literal="REGISTRY_REFERENCE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitlementAdviceBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//EntitlementSequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitlementObligationsBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//EntitlementSequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitlementMediatorOnRejectBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//EntitlementSequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitlementMediatorOnAcceptBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//EntitlementSequence"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnqueueMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="executor_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="class_name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//ClassProperty" changeable="false" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassProperty" eSuperTypes="esb.ecore#//AbstractNameValueProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SpringMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beanName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="bean_name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configurationKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidateMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onFailBranch" eType="#//ValidateOnFailBranch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//ValidateFeature" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schemas" upperBound="-1"
+        eType="#//ValidateSchema" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+        eType="#//ValidateResource" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidateOnFailBranch" eSuperTypes="esb.ecore#//MediatorBranch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidateFeature" eSuperTypes="esb.ecore#//AbstractBooleanFeature"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidateSchema" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validateStaticSchemaKey"
+        eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validateDynamicSchemaKey"
+        eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validateSchemaKeyType"
+        eType="#//KeyType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schemaKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidateResource" eSuperTypes="esb.ecore#//AbstractLocationKeyResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ScriptMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptType" eType="#//ScriptType"
+        defaultValueLiteral="REGISTRY_REFERENCE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptLanguage" eType="#//ScriptLanguage"
+        defaultValueLiteral="JAVASCRIPT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mediateFunction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="mediate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scriptKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptBody" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="script_code"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ScriptType">
+    <eLiterals name="INLINE" literal="INLINE"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ScriptLanguage">
+    <eLiterals name="JAVASCRIPT" literal="js"/>
+    <eLiterals name="RUBY" value="1" literal="rb"/>
+    <eLiterals name="GROOVY" value="2" literal="groovy"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnrichMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloneSource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//EnrichSourceType"
+        defaultValueLiteral="CUSTOM"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="source_property"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceXML" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="&lt;inline/>"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetAction" eType="#//EnrichTargetAction"
+        defaultValueLiteral="REPLACE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="#//EnrichTargetType"
+        defaultValueLiteral="CUSTOM"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="target_property"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inlineType" eType="#//EnrichSourceInlineType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inlineRegistryKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnrichSourceType">
+    <eLiterals name="CUSTOM" literal="custom"/>
+    <eLiterals name="ENVELOPE" value="1" literal="envelope"/>
+    <eLiterals name="BODY" value="2" literal="body"/>
+    <eLiterals name="PROPERTY" value="3" literal="property"/>
+    <eLiterals name="INLINE" value="4" literal="inline"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnrichTargetAction">
+    <eLiterals name="REPLACE" literal="replace"/>
+    <eLiterals name="CHILD" value="1" literal="child"/>
+    <eLiterals name="SIBLING" value="2" literal="sibling"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnrichTargetType">
+    <eLiterals name="CUSTOM" literal="custom"/>
+    <eLiterals name="ENVELOPE" value="1" literal="envelope"/>
+    <eLiterals name="BODY" value="2" literal="body"/>
+    <eLiterals name="PROPERTY" value="3" literal="property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FaultMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="soapVersion" eType="#//FaultSoapVersion"
+        defaultValueLiteral="SOAP_1_1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultCodeSoap11" eType="#//FaultCodeSoap11"
+        defaultValueLiteral="VERSION_MISSMATCH"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultStringType" eType="#//FaultStringType"
+        defaultValueLiteral="VALUE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultStringValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="fault_string"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultStringExpression"
+        eType="ecore:EClass esb.ecore#//NamespacedProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultActor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultCodeSoap12" eType="#//FaultCodeSoap12"
+        defaultValueLiteral="VERSION_MISSMATCH"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultReasonType" eType="#//FaultReasonType"
+        defaultValueLiteral="VALUE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultReasonValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="fault_reason"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultReasonExpression"
+        eType="ecore:EClass esb.ecore#//NamespacedProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="roleName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultDetailType" eType="#//FaultDetailType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultDetailValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="fault_detail"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultDetailExpression"
+        eType="ecore:EClass esb.ecore#//NamespacedProperty" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FaultSoapVersion">
+    <eLiterals name="SOAP_1_1" literal="soap11"/>
+    <eLiterals name="SOAP_1_2" value="1" literal="soap12"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FaultCodeSoap11">
+    <eLiterals name="VERSION_MISSMATCH" literal="VersionMismatch"/>
+    <eLiterals name="MUST_UNDERSTAND" value="1" literal="MustUnderstand"/>
+    <eLiterals name="CLIENT" value="2" literal="Client"/>
+    <eLiterals name="SERVER" value="3" literal="Server"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FaultCodeSoap12">
+    <eLiterals name="VERSION_MISSMATCH" literal="VersionMismatch"/>
+    <eLiterals name="MUST_UNDERSTAND" value="1" literal="MustUnderstand"/>
+    <eLiterals name="DATA_ENCODING_UNKNOWN" value="2" literal="DataEncodingUnknown"/>
+    <eLiterals name="SENDER" value="3" literal="Sender"/>
+    <eLiterals name="RECEIVER" value="4" literal="Receiver"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FaultStringType">
+    <eLiterals name="VALUE"/>
+    <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FaultReasonType">
+    <eLiterals name="VALUE"/>
+    <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FaultDetailType">
+    <eLiterals name="VALUE"/>
+    <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregateMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aggregateID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlationExpression"
+        eType="ecore:EClass esb.ecore#//NamespacedProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completionTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completionMinMessages"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="completionMaxMessages"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onCompleteBranch" eType="#//AggregateOnCompleteBranch"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregateOnCompleteBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregationExpression"
+        eType="ecore:EClass esb.ecore#//NamespacedProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//AggregateSequenceType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AggregateSequenceType">
+    <eLiterals name="ANONYMOUS"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RouterMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="continueAfterRouting" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routes" upperBound="-1"
+        eType="#//RouterRoute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RouterRoute" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="breakAfterRoute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routeExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="routePattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//RouteTarget"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RouteTarget" eSuperTypes="esb.ecore#//AbstractCommonTarget"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CloneMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloneID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequentialMediation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="continueParent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
+        eType="#//CloneTarget" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CloneTarget" eSuperTypes="esb.ecore#//AbstractCommonTarget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="soapAction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="toAddress" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IterateMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="iterateID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequentialMediation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="continueParent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preservePayload" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="iterateExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachPath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//IterateTarget"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IterateTarget" eSuperTypes="esb.ecore#//AbstractCommonTarget">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="soapAction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="toAddress" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CacheMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheScope" eType="#//CacheScope"
+        defaultValueLiteral="PER_MEDIATOR"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheAction" eType="#//CacheAction"
+        defaultValueLiteral="FINDER"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashGenerator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="org.wso2.caching.digest.DOMHashGenerator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="120"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxMessageSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="2000"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationType" eType="#//CacheImplementationType"
+        defaultValueLiteral="IN_MEMORY"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxEntryCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1000"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onHitBranch" eType="#//CacheOnHitBranch"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CacheOnHitBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//CacheSequenceType"
+        defaultValueLiteral="REGISTRY_REFERENCE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CacheSequenceType">
+    <eLiterals name="ANONYMOUS"/>
+    <eLiterals name="REGISTRY_REFERENCE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CacheImplementationType">
+    <eLiterals name="IN_MEMORY" literal="memory"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CacheAction">
+    <eLiterals name="FINDER"/>
+    <eLiterals name="COLLECTOR" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CacheScope">
+    <eLiterals name="PER_MEDIATOR" literal="per-mediator"/>
+    <eLiterals name="PER_HOST" value="1" literal="per-host"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XSLTMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//XSLTProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//XSLTFeature" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+        eType="#//XSLTResource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="xsltSchemaKeyType" eType="#//KeyType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xsltStaticSchemaKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xsltDynamicSchemaKey" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceXPath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xsltKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XSLTProperty" eSuperTypes="esb.ecore#//AbstractNameValueExpressionProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XSLTFeature" eSuperTypes="esb.ecore#//AbstractBooleanFeature"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XSLTResource" eSuperTypes="esb.ecore#//AbstractLocationKeyResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XQueryMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//XQueryVariable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetXPath" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scriptKeyType" eType="#//KeyType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staticScriptKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicScriptKey" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="queryKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XQueryVariable" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="variable_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableType" eType="#//XQueryVariableType"
+        defaultValueLiteral="STRING"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//XQueryVariableValueType"
+        defaultValueLiteral="LITERAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="literal_value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="XQueryVariableType">
+    <eLiterals name="DOCUMENT"/>
+    <eLiterals name="DOCUMENT_ELEMENT" value="1"/>
+    <eLiterals name="ELEMENT" value="2"/>
+    <eLiterals name="INT" value="3"/>
+    <eLiterals name="INTEGER" value="4"/>
+    <eLiterals name="BOOLEAN" value="5"/>
+    <eLiterals name="BYTE" value="6"/>
+    <eLiterals name="DOUBLE" value="7"/>
+    <eLiterals name="SHORT" value="8"/>
+    <eLiterals name="LONG" value="9"/>
+    <eLiterals name="FLOAT" value="10"/>
+    <eLiterals name="STRING" value="11"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="XQueryVariableValueType">
+    <eLiterals name="LITERAL"/>
+    <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CalloutMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="service_url"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="soapAction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="soap_action"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pathToAxis2xml" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pathToAxis2Repository"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="payloadType" eType="#//CalloutPayloadType"
+        defaultValueLiteral="MESSAGE_ELEMENT"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="payloadMessageXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="payloadRegistryKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultType" eType="#//CalloutResultType"
+        defaultValueLiteral="MESSAGE_ELEMENT"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultMessageXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultContextProperty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="context_property_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passHeaders" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useServerConfig" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="EndpointType" eType="#//CallOutMediatorEndpointType"
+        defaultValueLiteral="ANONYMOUS"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endpointKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CalloutPayloadType">
+    <eLiterals name="MESSAGE_ELEMENT"/>
+    <eLiterals name="REGISTRY_ENTRY" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CalloutResultType">
+    <eLiterals name="MESSAGE_ELEMENT"/>
+    <eLiterals name="CONTEXT_PROPERTY" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RMSequenceMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rmSpecVersion" eType="#//RMSpecVersion"
+        defaultValueLiteral="VERSION_1_0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//RMSequenceType"
+        defaultValueLiteral="SINGLE_MESSAGE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlationXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lastMessageXpath" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RMSpecVersion">
+    <eLiterals name="VERSION_1_0" literal="1.0"/>
+    <eLiterals name="VERSION_1_1" value="1" literal="1.1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RMSequenceType">
+    <eLiterals name="SINGLE_MESSAGE"/>
+    <eLiterals name="CORRELATED_SEQUENCE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransactionMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="#//TransactionAction"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TransactionAction">
+    <eLiterals name="COMMIT" literal="commit"/>
+    <eLiterals name="FAULT_IF_NO_TRANSACTION" value="1" literal="fault-if-no-tx"/>
+    <eLiterals name="INITIATE_NEW" value="2" literal="new"/>
+    <eLiterals name="RESUME" value="3" literal="resume"/>
+    <eLiterals name="SUSPEND" value="4" literal="suspend"/>
+    <eLiterals name="ROLLBACK" value="5" literal="rollback"/>
+    <eLiterals name="USE_EXISTING_OR_NEW" value="6" literal="use-existing-or-new"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="property_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyDataType" eType="#//PropertyDataType"
+        defaultValueLiteral="STRING"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyAction" eType="#//PropertyAction"
+        defaultValueLiteral="SET"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyScope" eType="#//PropertyScope"
+        defaultValueLiteral="SYNAPSE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//PropertyValueType"
+        defaultValueLiteral="LITERAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueOM" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="&lt;value/>"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueStringPattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueStringCapturingGroup"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyDataType">
+    <eLiterals name="STRING"/>
+    <eLiterals name="INTEGER" value="1" literal="INTEGER"/>
+    <eLiterals name="BOOLEAN" value="2"/>
+    <eLiterals name="DOUBLE" value="3"/>
+    <eLiterals name="FLOAT" value="4"/>
+    <eLiterals name="LONG" value="5"/>
+    <eLiterals name="SHORT" value="6"/>
+    <eLiterals name="OM" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyAction">
+    <eLiterals name="SET" literal="set"/>
+    <eLiterals name="REMOVE" value="1" literal="remove"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyScope">
+    <eLiterals name="SYNAPSE" literal="default"/>
+    <eLiterals name="TRANSPORT" value="1" literal="transport"/>
+    <eLiterals name="AXIS2" value="2" literal="axis2"/>
+    <eLiterals name="AXIS2_CLIENT" value="3" literal="axis2-client"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyValueType">
+    <eLiterals name="LITERAL"/>
+    <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OAuthMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remoteServiceUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="service_url"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AutoscaleInMediator" eSuperTypes="esb.ecore#//Mediator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AutoscaleOutMediator" eSuperTypes="esb.ecore#//Mediator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HeaderMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="headerName" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="headerAction" eType="#//HeaderAction"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//HeaderValueType"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="header_value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HeaderAction">
+    <eLiterals name="SET" literal="set"/>
+    <eLiterals name="REMOVE" value="1" literal="remove"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HeaderValueType">
+    <eLiterals name="LITERAL"/>
+    <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThrottleMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="group_id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="policyConfiguration" eType="#//ThrottlePolicyConfiguration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onAcceptBranch" eType="#//ThrottleOnAcceptBranch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onRejectBranch" eType="#//ThrottleOnRejectBranch"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThrottlePolicyConfiguration" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="policyType" eType="#//ThrottlePolicyType"
+        defaultValueLiteral="INLINE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="policyKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxConcurrentAccessCount"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="policyEntries" upperBound="-1"
+        eType="#//ThrottlePolicyEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ThrottlePolicyType">
+    <eLiterals name="INLINE" literal="INLINE"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThrottlePolicyEntry" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="throttleType" eType="#//ThrottleConditionType"
+        defaultValueLiteral="IP"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="throttleRange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="other"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessType" eType="#//ThrottleAccessType"
+        defaultValueLiteral="ALLOW"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxRequestCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unitTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prohibitPeriod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ThrottleConditionType">
+    <eLiterals name="IP"/>
+    <eLiterals name="DOMAIN" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ThrottleAccessType">
+    <eLiterals name="ALLOW" literal="Allow"/>
+    <eLiterals name="DENY" value="1" literal="Deny"/>
+    <eLiterals name="CONTROL" value="2" literal="Control"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThrottleOnAcceptBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//ThrottleSequenceType"
+        defaultValueLiteral="ANONYMOUS"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThrottleOnRejectBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequenceType" eType="#//ThrottleSequenceType"
+        defaultValueLiteral="ANONYMOUS"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ThrottleSequenceType">
+    <eLiterals name="ANONYMOUS"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommandMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="class_name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//CommandProperty" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommandProperty" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="property_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//CommandPropertyValueType"
+        defaultValueLiteral="LITERAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="literal_value"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueContextPropertyName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="context_property_name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueMessageElementXpath"
+        eType="ecore:EClass esb.ecore#//NamespacedProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contextAction" eType="#//CommandPropertyContextAction"
+        defaultValueLiteral="READ_AND_UPDATE_CONTEXT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageAction" eType="#//CommandPropertyMessageAction"
+        defaultValueLiteral="READ_AND_UPDATE_MESSAGE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CommandPropertyValueType">
+    <eLiterals name="LITERAL" literal="LITERAL"/>
+    <eLiterals name="MESSAGE_ELEMENT" value="1"/>
+    <eLiterals name="CONTEXT_PROPERTY" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CommandPropertyMessageAction">
+    <eLiterals name="READ_MESSAGE" literal="ReadMessage"/>
+    <eLiterals name="UPDATE_MESSAGE" value="1" literal="UpdateMessage"/>
+    <eLiterals name="READ_AND_UPDATE_MESSAGE" value="2" literal="ReadAndUpdateMessage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CommandPropertyContextAction">
+    <eLiterals name="READ_CONTEXT" literal="ReadContext"/>
+    <eLiterals name="UPDATE_CONTEXT" value="1" literal="UpdateContext"/>
+    <eLiterals name="READ_AND_UPDATE_CONTEXT" value="2" literal="ReadAndUpdateContext"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topicType" eType="#//KeyType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="staticTopic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicTopic" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventSource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractSqlExecutorMediator" abstract="true"
+      eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionType" eType="#//SqlExecutorConnectionType"
+        defaultValueLiteral="DB_CONNECTION"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDsType" eType="#//SqlExecutorDatasourceType"
+        defaultValueLiteral="EXTERNAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDbDriver" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="driver_class"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDsInitialContext"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="initial_context"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionDsName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="datasource_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="connection_url"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionUsername" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="username"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="password"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyAutocommit" eType="#//SqlExecutorBooleanValue"
+        defaultValueLiteral="DEFAULT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyIsolation" eType="#//SqlExecutorIsolationLevel"
+        defaultValueLiteral="DEFAULT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyMaxactive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyMaxidle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyMaxopenstatements"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyMaxwait" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyMinidle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyPoolstatements"
+        eType="#//SqlExecutorBooleanValue" defaultValueLiteral="DEFAULT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyTestonborrow" eType="#//SqlExecutorBooleanValue"
+        defaultValueLiteral="DEFAULT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyTestwhileidle"
+        eType="#//SqlExecutorBooleanValue" defaultValueLiteral="DEFAULT"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyValidationquery"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyInitialsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sqlStatements" upperBound="-1"
+        eType="#//SqlStatement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SqlExecutorConnectionType">
+    <eLiterals name="DB_CONNECTION"/>
+    <eLiterals name="DATA_SOURCE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SqlExecutorDatasourceType">
+    <eLiterals name="EXTERNAL"/>
+    <eLiterals name="CARBON" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SqlExecutorBooleanValue">
+    <eLiterals name="FALSE" literal="false"/>
+    <eLiterals name="TRUE" value="1" literal="true"/>
+    <eLiterals name="DEFAULT" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SqlExecutorIsolationLevel">
+    <eLiterals name="TRANSACTION_NONE" literal="Connection.TRANSACTION_NONE"/>
+    <eLiterals name="TRANSACTION_READ_COMMITTED" value="1" literal="Connection.TRANSACTION_READ_COMMITTED"/>
+    <eLiterals name="TRANSACTION_READ_UNCOMMITTED" value="2" literal="Connection.TRANSACTION_READ_UNCOMMITTED"/>
+    <eLiterals name="TRANSACTION_REPEATABLE_READ" value="3" literal="Connection.TRANSACTION_REPEATABLE_READ"/>
+    <eLiterals name="TRANSACTION_SERIALIZABLE" value="4" literal="Connection.TRANSACTION_SERIALIZABLE"/>
+    <eLiterals name="DEFAULT" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SqlStatement" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="queryString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="sql_query"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//SqlParameterDefinition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultsEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
+        eType="#//SqlResultMapping" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SqlParameterDefinition" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" eType="#//SqlParameterDataType"
+        defaultValueLiteral="CHAR"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//SqlParameterValueType"
+        defaultValueLiteral="LITERAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SqlParameterValueType">
+    <eLiterals name="LITERAL"/>
+    <eLiterals name="EXPRESSION" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SqlParameterDataType">
+    <eLiterals name="CHAR"/>
+    <eLiterals name="VARCHAR" value="1"/>
+    <eLiterals name="LONGVARCHAR" value="2"/>
+    <eLiterals name="NUMERIC" value="3"/>
+    <eLiterals name="DECIMAL" value="4"/>
+    <eLiterals name="BIT" value="5"/>
+    <eLiterals name="TINYINT" value="6"/>
+    <eLiterals name="SMALLINT" value="7"/>
+    <eLiterals name="INTEGER" value="8"/>
+    <eLiterals name="BIGINT" value="9"/>
+    <eLiterals name="REAL" value="10"/>
+    <eLiterals name="FLOAT" value="11"/>
+    <eLiterals name="DOUBLE" value="12"/>
+    <eLiterals name="DATE" value="13"/>
+    <eLiterals name="TIME" value="14"/>
+    <eLiterals name="TIMESTAMP" value="15"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SqlResultMapping" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propertyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="message_context_property_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="column_name_or_index"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DBLookupMediator" eSuperTypes="#//AbstractSqlExecutorMediator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DBReportMediator" eSuperTypes="#//AbstractSqlExecutorMediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionUseTransaction"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ruleSetConfiguration" eType="#//RuleSetConfiguration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ruleSessionConfiguration"
+        eType="#//RuleSessionConfiguration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="factsConfiguration" eType="#//RuleFactsConfiguration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultsConfiguration" eType="#//RuleResultsConfiguration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childMediatorsConfiguration"
+        eType="#//RuleChildMediatorsConfiguration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleSetConfiguration" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceType" eType="#//RuleSourceType"
+        defaultValueLiteral="INLINE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="&lt;code/>"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//RuleSetCreationProperty" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RuleSourceType">
+    <eLiterals name="INLINE"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleSetCreationProperty" eSuperTypes="esb.ecore#//AbstractNameValueProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleSessionConfiguration" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statefulSession" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//RuleSessionProperty" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleSessionProperty" eSuperTypes="esb.ecore#//AbstractNameValueProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleFactsConfiguration" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="facts" upperBound="-1"
+        eType="#//RuleFact" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleFact" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factType" eType="#//RuleFactType"
+        defaultValueLiteral="CUSTOM"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factCustomType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="custom_type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="fact_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//RuleFactValueType"
+        defaultValueLiteral="LITERAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RuleFactType">
+    <eLiterals name="CUSTOM"/>
+    <eLiterals name="DOM" value="1" literal="dom"/>
+    <eLiterals name="MESSAGE" value="2" literal="message"/>
+    <eLiterals name="CONTEXT" value="3" literal="context"/>
+    <eLiterals name="OMELEMENT" value="4" literal="omelement"/>
+    <eLiterals name="MEDIATOR" value="5" literal="mediator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RuleFactValueType">
+    <eLiterals name="NONE"/>
+    <eLiterals name="LITERAL" value="1"/>
+    <eLiterals name="EXPRESSION" value="2"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleResultsConfiguration" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
+        eType="#//RuleResult" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleResult" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultType" eType="#//RuleResultType"
+        defaultValueLiteral="CUSTOM"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultCustomType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="custom_type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="result_name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//RuleResultValueType"
+        defaultValueLiteral="LITERAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="value"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RuleResultType">
+    <eLiterals name="CUSTOM"/>
+    <eLiterals name="DOM" value="1" literal="dom"/>
+    <eLiterals name="MESSAGE" value="2" literal="message"/>
+    <eLiterals name="CONTEXT" value="3" literal="context"/>
+    <eLiterals name="OMELEMENT" value="4" literal="omelement"/>
+    <eLiterals name="MEDIATOR" value="5" literal="mediator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RuleResultValueType">
+    <eLiterals name="LITERAL"/>
+    <eLiterals name="EXPRESSION" value="1"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuleChildMediatorsConfiguration" eSuperTypes="esb.ecore#//MediatorBranch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referringSequenceType"
+        eType="#//KeyType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dynamicReferenceKey" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staticReferenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BuilderMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageBuilders" upperBound="-1"
+        eType="#//MessageBuilder" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageBuilder" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="application/xml"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="builderClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="org.apache.axis2.builder.ApplicationXMLBuilder"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="formatterClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="org.apache.axis2.transport.http.ApplicationXMLFormatter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SmooksIODataType">
+    <eLiterals name="XML" literal="xml"/>
+    <eLiterals name="TEXT" literal="text"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmooksMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configurationKey" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="#//SmooksInConfiguration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//SmooksOutConfiguration"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmooksInConfiguration" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SmooksIODataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SmooksOutConfiguration" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SmooksIODataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="#//ExpressionAction"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputMethod" eType="#//OutputMethod"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExpressionAction">
+    <eLiterals name="ADD" literal="Add"/>
+    <eLiterals name="REPLACE" value="1" literal="Replace"/>
+    <eLiterals name="SIBLING" value="2" literal="Sibling"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OutputMethod">
+    <eLiterals name="DEFAULT" literal="Default"/>
+    <eLiterals name="PROPERTY" value="1" literal="Property"/>
+    <eLiterals name="EXPRESSION" value="2" literal="Expression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ReceivingSequenceType">
+    <eLiterals name="DEFAULT" literal="Default"/>
+    <eLiterals name="STATIC" value="1" literal="Static"/>
+    <eLiterals name="DYNAMIC" value="2" literal="Dynamic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="KeyType">
+    <eLiterals name="STATIC" literal="Static"/>
+    <eLiterals name="DYNAMIC" value="1" literal="Dynamic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StoreMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageStore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="&lt;test/>"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onStoreSequence" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalRouteBranch" eSuperTypes="esb.ecore#//MediatorBranch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="breakAfterRoute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evaluatorExpression" eType="ecore:EClass esb.ecore#//EvaluatorExpressionProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetSequence" eType="ecore:EClass esb.ecore#//RegistryKeyProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalRouterMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="continueAfterRoute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalRouteBraches"
+        upperBound="-1" eType="#//ConditionalRouteBranch" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="URLRewriteRuleAction" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ruleAction" eType="#//RuleActionType"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ruleFragment" eType="#//RuleFragmentType"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ruleOption" eType="#//RuleOptionType"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actionValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actionRegex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RuleActionType">
+    <eLiterals name="REPLACE" literal="Replace"/>
+    <eLiterals name="REMOVE" value="1" literal="Remove"/>
+    <eLiterals name="APPEND" value="2" literal="Append"/>
+    <eLiterals name="PREPEND" value="3" literal="Prepend"/>
+    <eLiterals name="SET" value="4" literal="Set"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RuleFragmentType">
+    <eLiterals name="PROTOCOL" literal="protocol"/>
+    <eLiterals name="HOST" value="1" literal="host"/>
+    <eLiterals name="PORT" value="2" literal="port"/>
+    <eLiterals name="PATH" value="3" literal="path"/>
+    <eLiterals name="QUERY" value="4" literal="query"/>
+    <eLiterals name="REF" value="5" literal="ref"/>
+    <eLiterals name="USER" value="6" literal="user"/>
+    <eLiterals name="FULL" value="7" literal="full"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RuleOptionType">
+    <eLiterals name="VALUE" literal="Value"/>
+    <eLiterals name="EXPRESSION" value="1" literal="Expression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="URLRewriteRule" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="urlRewriteRuleCondition"
+        eType="ecore:EClass esb.ecore#//EvaluatorExpressionProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rewriteRuleAction" upperBound="-1"
+        eType="#//URLRewriteRuleAction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="URLRewriteMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="urlRewriteRules" upperBound="-1"
+        eType="#//URLRewriteRule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="InProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outProperty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CallTemplateMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetTemplate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="templateParameters" upperBound="-1"
+        eType="#//CallTemplateParameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CallTemplateParameter" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="templateParameterType"
+        eType="#//RuleOptionType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnrichSourceInlineType">
+    <eLiterals name="CONTENT" literal="SourceXML"/>
+    <eLiterals name="KEY" value="1" literal="RegistryKey"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PayloadFactoryMediator" eSuperTypes="esb.ecore#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//PayloadFactoryArgument"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PayloadFactoryArgument" eSuperTypes="esb.ecore#//ModelObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="argumentType" eType="#//PayloadFactoryArgumentType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="argumentValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argumentExpression" eType="ecore:EClass esb.ecore#//NamespacedProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PayloadFactoryArgumentType">
+    <eLiterals name="VALUE" literal="Value"/>
+    <eLiterals name="EXPRESSION" value="1" literal="Expression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CallOutMediatorEndpointType">
+    <eLiterals name="ANONYMOUS"/>
+    <eLiterals name="REGISTRY_REFERENCE" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

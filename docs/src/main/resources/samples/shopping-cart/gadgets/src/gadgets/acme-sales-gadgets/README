@@ -1,0 +1,12 @@
+########SETUP###########
+[1] wso2vis Gadgets to work, wso2vis.js file need to be in "_system/config/repository/gadget-server/gadgets/js/wso2vis.js"
+[2] Upload the gadget xml file using gadget-server UI.
+[3] Upload any other helper folder to "_system/config/repository/gadget-server/gadgets/" in the registry.
+[4] Add the gadgets to dashboard using the gadget browser.
+
+############Alternative Test Setup###########
+[1] open up a saved gadget i.e "_system/config/repository/gadget-server/gadgets/jira-gadget.xml"
+[2] Copay paste the gadget content.
+[3] Add the jira gadget from the gadget browser for testing purposes.
+
+***In all cases, the reference data services URL need to be changed in each gadget accordingly.***

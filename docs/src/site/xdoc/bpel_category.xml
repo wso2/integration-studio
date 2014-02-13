@@ -1,0 +1,126 @@
+<!--
+~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under
+the Apache License, Version 2.0 (the "License"); ~ you may not use
+this file except in compliance with the License. ~ You may obtain a
+copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0
+~ ~ Unless required by applicable law or agreed to in writing,
+software ~ distributed under the License is distributed on an "AS IS"
+BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied. ~ See the License for the specific language governing
+permissions and ~ limitations under the License.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+
+		<h1>BPEL Tools</h1>
+		<h2>Content</h2>
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#BPELArtifact">BPEL Workflow</a>
+				</li>
+			</ul>
+		</div>
+		<h2 id="BPELArtifact">BPEL Workflow</h2>
+        <p>
+        To create a <strong>BPEL Workflow</strong> open <strong>WSO2 Developer Studio Dashboard</strong> and 
+        select <strong>BPEL Workflow</strong> from <strong>Business Process Server</strong> 
+        category. 
+        </p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/bpelwf1.png"></img>
+			<br></br>
+		</p>
+		<p>
+		There are two ways to create a BPEL artifact.    
+		</p>
+		<ol>
+			<li>New BPEL Workflow</li>
+			<li>Import BPEL Workflow</li>
+		</ol>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/bpelwf2.png"></img>
+			<br></br>
+		</p>
+
+		<p>
+		If you choose <strong>New BPEL Workflow</strong> option, and click <strong>Next</strong>, 
+		you will have to fill information like <strong>Project Name</strong>, <strong>Process 
+		Name</strong>, <strong>Process Namespace</strong> etc. By default, <strong>Process 
+		Name</strong> will be automatically filled as the name you entered for the 
+		<strong>Project Name</strong>. You can change the <strong>Process Name</strong> later if 
+		you need.  
+		</p>
+			
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/bpelwf3.png"></img>
+			<br></br>
+		</p>
+			
+		<p>
+		Give the necessary information and click <strong>Finish</strong>.Now you will see the 
+		<strong>BPEL Workflow</strong> has been created in the workspace and you can define the 
+		<strong>BPEL Process</strong> by simple drag and drop.
+ 		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/bpelwf4.png"></img>
+			<br></br>
+		</p>
+
+		<p>With <strong>Import BPEL Workflow</strong> option, you can import a BPEL workflow which is saved 
+			in the <strong>Zip</strong> format, from the file system. Browse for the BPEL Zip file and click <strong>Finish</strong>.	
+			</p>
+
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/bpelwf7.png"></img>
+				<br></br>
+			</p>	
+						
+			<p>
+			Now you will see content of the archive file has been extracted and a <strong>BPEL 
+			Workflow</strong> has been created in the workspace. 
+			</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/bpelwf8.png"></img>
+				<br></br>
+			</p>	
+			<p>
+			Once you are done with editing the <strong>BPEL Process</strong>, you can create a 
+			<strong>Deployable Archive</strong> and deploy it to <strong>WSO2 Business 
+			Process Server</strong>. You can create <strong>BPEL Archive</strong> file by right 
+			click on the <strong>BPEL Workflow</strong> that you have created and select 
+			<strong>Export Project as Deployable Archive</strong>. 
+			</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/bpelwf5.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			Give the location where you want to save the archive file and click <strong>Finish</strong>.
+			</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/bpelwf6.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			As another option, you can group the <strong>BPEL Workflow</strong> that you have 
+			created in to a <strong>Carbon Application Project</strong> and create a 
+			<strong>Carbon Application Archive [CAR]</strong> and deploy in to 
+			<strong>WSO2 Business Process Server</strong>.
+			</p>
+			
+	</body>
+</html>

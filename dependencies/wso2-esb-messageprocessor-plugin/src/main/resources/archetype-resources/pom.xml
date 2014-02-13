@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${groupId}</groupId>
+	<artifactId>${artifactId}</artifactId>
+	<version>${version}</version>
+	<packaging>synapse/message-processors</packaging>
+	<name>${artifactId}</name>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.wso2.maven</groupId>
+				<artifactId>wso2-esb-messageprocessor-plugin</artifactId>
+          			<version>1.0.0</version>
+	        		<extensions>true</extensions>  
+        			<configuration>
+					<artifact>src/main/resources/sample/message-processors/messageprocessor.xml</artifact>
+        			</configuration>            
+        		</plugin>
+		</plugins>
+	</build>
+
+</project>

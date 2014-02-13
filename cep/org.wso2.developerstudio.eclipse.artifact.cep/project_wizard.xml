@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="CEP Artifact Creation Options" 
+					description="Select how you would like to create your new project" 
+					error="Please select a method to create the project">
+		<option id="new.cepproject" default="true">Create New CEP Project</option>
+		<option id="import.cepproject">Import CEP Project</option>
+	</projectOptions>
+	
+	<projectOptionSettings>
+		<settings optionId="new.cepproject" 
+				  title="Create New CEP Bucket" 
+				  description="Give a Bucket name for the new CEP Bucket" 
+				  error="Please give a name to the Bucket">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">Bucket Name*</data>	  
+			
+			
+			
+			
+			
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="import.cepproject" 
+				  title="Import CEP Project" 
+				  description="Browse the location of a CEP descriptor file" 
+				  error="Browse and select a CEP descriptor file">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">CEP Descriptor File*</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

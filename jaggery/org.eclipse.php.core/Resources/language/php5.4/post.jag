@@ -1,0 +1,27 @@
+<%
+
+ 
+/**
+ * A wrapper for XMLHTTPRequest's POST method
+ * @link http://jaggeryjs.org/apidocs/post.jag
+ * @param url String <p>
+ * The URL which HTTP POST is performed
+ * </p>
+ * @param data Object <p>
+ * Request parameters
+ * </p>
+ * @param headers String <p>
+ * Optional HTTP headers
+ * </p>
+ * @param type String <p>
+ * The type, which the response is expected
+ * </p>
+ * @param success(data:Object,xhr:Object) function <p>
+ * On success callback
+ * </p>
+ * @return <p>Object data - Contains the return data of the HTTP POST request </p>
+ * 			<p>Object xhr - Contains an instance of XMLHTTPRequest </p>
+ */
+function post(url, data=null, headers=null, type=null, success=null) {}
+
+%>

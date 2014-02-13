@@ -1,0 +1,1 @@
+backendServerURL=http://127.0.0.1:9763/services/Manager.ManagerHttpSoap12Endpoint/

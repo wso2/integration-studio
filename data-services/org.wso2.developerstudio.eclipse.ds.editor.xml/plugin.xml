@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type 
+			base-type="org.eclipse.core.runtime.xml"
+			describer=" org.eclipse.core.runtime.content.XMLRootElementContentDescriber:data"
+			file-extensions="dbs" id="org.wso2.developerstudio.eclipse.ds.dataserviceDefinitionContent" name="WSO2 Dataservice Definition Content"
+			priority="low">
+		</content-type>
+	</extension>
+	<extension point="org.eclipse.wst.sse.ui.editorConfiguration">
+    	<sourceViewerConfiguration
+        	class="org.wso2.developerstudio.eclipse.ds.editor.configuration.DataServiceStructuredTextViewerConfigurationXML"
+        	target="org.wso2.developerstudio.eclipse.ds.dataserviceDefinitionContent"/>
+		<provisionalConfiguration
+        	type="org.eclipse.jface.text.quickassist.IQuickAssistProcessor"
+        	class="org.wso2.developerstudio.eclipse.ds.editor.contentassistant.DataserviceQuickAssistantProcessor"
+        	target="org.wso2.developerstudio.eclipse.ds.dataserviceDefinitionContent"/>        	
+	</extension>
+	<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution>
+			<uri name="http://www.wso2.com/DataService/2010/XMLSchema"
+				uri="schema/DataService.xsd">
+			</uri>
+		</catalogContribution>
+	</extension>
+</plugin>

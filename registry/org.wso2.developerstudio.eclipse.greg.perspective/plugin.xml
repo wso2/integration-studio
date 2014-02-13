@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.ui.perspectives">
+		<perspective id="org.wso2.developerstudio.registry.remote.registry.pespective"
+			name="WSO2 Registry" icon="icons/registry.png"
+			class="org.wso2.developerstudio.eclipse.greg.perspective.RegistryPerspectiveFactory" />
+	</extension>
+</plugin>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="WSO2 Eclipse Web Service Authoring Tools">
+    <body>
+
+        <menu name="WSO2 Eclipse IDE Tools">
+            <item name="Release Notes" href="release_notes.html"/>        
+            <item name="Install" href="install_guide.html"/>            
+        </menu>
+        
+        <menu name="Downloads">
+            <item name="Releases" href="http://wso2.org/download/tools/wsas/wsas-authoring"/>
+        </menu>
+        
+        <menu name="Documentation" href="index_docs.html">
+            <item name="Create Web Service" href="create_webservice.html"/>
+            <item name="Web Service Client" href="top_down_client.html"/>
+            <item name="Top Down Web Service" href="top_down_ws.html"/>
+            <item name="WSO2 Tools" href="wso2_tools.html"/>
+        </menu>
+
+        <menu name="Get Involved" href="overview.html">
+            <item name="Checkout the Source" href="source-repository.html"/>
+            <item name="Mailing Lists" href="mail-lists.html"/>
+        </menu>
+        
+        <menu name="Project Information">
+            <item name="License"
+                  href="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+        </menu>
+        
+    </body>
+</project>

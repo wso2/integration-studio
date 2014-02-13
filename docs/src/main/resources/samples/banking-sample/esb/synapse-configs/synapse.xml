@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://ws.apache.org/ns/synapse">
+    <registry provider="org.wso2.carbon.mediation.registry.WSO2Registry">
+        <parameter name="cachableDuration">15000</parameter>
+    </registry>
+    <proxy name="CardServiceProxy" transports="http https" startOnLoad="true" trace="disable">
+        <target>
+            <inSequence>
+                <log/>
+            </inSequence>
+        </target>
+    </proxy>
+    <proxy name="AccountServiceProxy" transports="https http" startOnLoad="true" trace="disable">
+        <target>
+            <inSequence>
+                <property name="transport.jms.ContentTypeProperty" value="Content-Type" scope="axis2" type="STRING"/>
+                <log level="custom" separator=",">
+                    <property name="debug" value="accountProxy"/>
+                </log>
+                <send>
+                    <endpoint key="MainFrameEP"/>
+                </send>
+            </inSequence>
+            <outSequence>
+                <property name="TRANSPORT_HEADERS" scope="axis2" action="remove"/>
+                <property name="messageType" value="text/xml" scope="axis2" type="STRING"/>
+                <property name="ContentType" value="text/xml" scope="axis2" type="STRING"/>
+                <send/>
+            </outSequence>
+        </target>
+    </proxy>
+    <proxy name="CardService" transports="https http" startOnLoad="true" trace="disable">
+        <target>
+            <inSequence>
+                <log level="full" separator=",">
+                    <property name="before" value="beforeTransform"/>
+                </log>
+                <xslt key="conf:/transform/transform.xslt"/>
+                <log level="full" separator=",">
+                    <property name="after" value="afterTransform"/>
+                </log>
+                <send>
+                    <endpoint key="cardServiceEP"/>
+                </send>
+            </inSequence>
+            <outSequence>
+                <send/>
+            </outSequence>
+        </target>
+        <publishWSDL uri="file:///media/dev/CS-Resources/PracticalSOA/practical-soa-2011/banking-sample/appserver/CardService.wsdl"/>
+    </proxy>
+    <proxy name="MainFrameJMS" transports="jms" startOnLoad="true" trace="disable">
+        <target>
+            <inSequence>
+                <property xmlns:hcc="http://hcc.wso2" name="customerId" expression="//hcc:createAccount/hcc:customerId/text()" scope="default" type="STRING"/>
+                <property xmlns:hcc="http://hcc.wso2" name="isNewCustomer" expression="//hcc:createAccount/hcc:isNewCustomer/text()" scope="default" type="STRING"/>
+                <property xmlns:hcc="http://hcc.wso2" name="accountType" expression="//hcc:createAccount/hcc:accountType/text()" scope="default" type="STRING"/>
+                <property name="ACC_POST_BODY" expression="fn:concat('customerId=',get-property('customerId'), '&amp;isNewCustomer=', get-property('isNewCustomer'),'&amp;accountType=', get-property('accountType'))" scope="default" type="STRING"/>
+                <log level="custom" separator=",">
+                    <property name="debug" expression="get-property('ACC_POST_BODY')"/>
+                </log>
+                <enrich>
+                    <source type="inline" clone="true">
+                        <text xmlns="http://ws.apache.org/commons/ns/payload">foo</text>
+                    </source>
+                    <target type="body"/>
+                </enrich>
+                <enrich>
+                    <source type="property" clone="true" property="ACC_POST_BODY"/>
+                    <target xmlns:t="http://ws.apache.org/commons/ns/payload" xpath="//t:text/text()"/>
+                </enrich>
+                <log level="full" separator=","/>
+                <property name="messageType" value="text/plain" scope="axis2" type="STRING"/>
+                <property name="ContentType" value="application/x-www-form-urlencoded" scope="axis2" type="STRING"/>
+                <send>
+                    <endpoint key="AccountServiceEP"/>
+                </send>
+            </inSequence>
+            <outSequence>
+                <log level="full" separator=","/>
+                <property name="messageType" value="text/xml" scope="axis2" type="STRING"/>
+                <property name="Content-Type" value="text/xml" scope="transport" type="STRING"/>
+                <send/>
+            </outSequence>
+        </target>
+    </proxy>
+    <endpoint name="MainFrameEP">
+        <address uri="jms:/MainFrameJMS?transport.jms.DestinationType=queue&amp;transport.jms.ContentTypeProperty=Content-Type&amp;java.naming.provider.url=tcp://localhost:61616&amp;java.naming.factory.initial=org.apache.activemq.jndi.ActiveMQInitialContextFactory&amp;transport.jms.ConnectionFactoryType=queue&amp;transport.jms.ConnectionFactoryJNDIName=QueueConnectionFactory" trace="disable">
+            <suspendOnFailure>
+                <initialDuration>0</initialDuration>
+                <progressionFactor>1.0</progressionFactor>
+                <maximumDuration>0</maximumDuration>
+            </suspendOnFailure>
+        </address>
+    </endpoint>
+    <endpoint name="AccountServiceEP">
+        <address uri="http://localhost:8080/AccountService/rest/acc" trace="disable">
+            <suspendOnFailure>
+                <initialDuration>0</initialDuration>
+                <progressionFactor>1.0</progressionFactor>
+                <maximumDuration>0</maximumDuration>
+            </suspendOnFailure>
+        </address>
+    </endpoint>
+    <endpoint name="cardServiceEP">
+        <address uri="http://localhost:9763/services/CardAxis2Service/" trace="disable">
+            <suspendOnFailure>
+                <initialDuration>0</initialDuration>
+                <progressionFactor>1.0</progressionFactor>
+                <maximumDuration>0</maximumDuration>
+            </suspendOnFailure>
+        </address>
+    </endpoint>
+    <sequence name="fault">
+        <log level="full">
+            <property name="MESSAGE" value="Executing default 'fault' sequence"/>
+            <property name="ERROR_CODE" expression="get-property('ERROR_CODE')"/>
+            <property name="ERROR_MESSAGE" expression="get-property('ERROR_MESSAGE')"/>
+        </log>
+        <drop/>
+    </sequence>
+    <sequence name="main">
+        <in>
+            <log level="full"/>
+            <filter source="get-property('To')" regex="http://localhost:9000.*">
+                <send/>
+            </filter>
+        </in>
+        <out>
+            <send/>
+        </out>
+        <description>The main sequence for the message mediation</description>
+    </sequence>
+</definitions>

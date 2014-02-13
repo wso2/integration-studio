@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Library Artifact Wizard
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.library;singleton:=true
+Bundle-Version: 3.3.0.qualifier
+Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.library.Activator
+Bundle-Vendor: WSO2 Inc
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.wso2.developerstudio.eclipse.libraries
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Import-Package: org.apache.maven.model;version="[2.2.1,3.0.0)",
+ org.apache.maven.project;version="[2.2.1,3.0.0)",
+ org.codehaus.plexus.util.xml;version="2.0.1",
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.ui.model,
+ org.wso2.developerstudio.eclipse.libraries.utils,
+ org.wso2.developerstudio.eclipse.logging.core,
+ org.wso2.developerstudio.eclipse.maven.util,
+ org.wso2.developerstudio.eclipse.platform.core.bundle,
+ org.wso2.developerstudio.eclipse.platform.core.exception,
+ org.wso2.developerstudio.eclipse.platform.core.manifest,
+ org.wso2.developerstudio.eclipse.platform.core.model,
+ org.wso2.developerstudio.eclipse.platform.core.nature,
+ org.wso2.developerstudio.eclipse.platform.core.project.export,
+ org.wso2.developerstudio.eclipse.platform.core.project.model,
+ org.wso2.developerstudio.eclipse.platform.ui.validator,
+ org.wso2.developerstudio.eclipse.platform.ui.wizard,
+ org.wso2.developerstudio.eclipse.platform.ui.wizard.pages,
+ org.wso2.developerstudio.eclipse.utils.archive,
+ org.wso2.developerstudio.eclipse.utils.file,
+ org.wso2.developerstudio.eclipse.utils.jdt,
+ org.wso2.developerstudio.eclipse.utils.project,
+ org.wso2.developerstudio.eclipse.utils.ui

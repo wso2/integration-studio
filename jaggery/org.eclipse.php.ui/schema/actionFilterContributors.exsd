@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.php.ui">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.php.ui" id="actionFilterContributors" name="PHP Action Filter Contributor"/>
+      </appInfo>
+      <documentation>
+         This extension point allows to provide contributors to IActionFilter in order to perform more complicated tests on whether the action should be visible/enabled or not. You must add parameter under the visibility/enablement element of relevant action, which is called &quot;actionFilterContributorId&quot;, and has a value that equals to id of this extension.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="contributor" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="contributor">
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  ID of this PHP action filter contributor
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  Human readable name of this PHP action filter contributor
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Class of this PHP action filter contributor
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.php.ui.actions.filters.IActionFilterContributor"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         0.7
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         Suppose declaration of the action is:
+&lt;p&gt;
+&lt;pre&gt;
+&lt;extension point=&quot;org.eclipse.ui.popupMenus&quot;&gt;
+    &lt;objectContribution id=&quot;test.MyObjectContribution&quot; objectClass=&quot;org.eclipse.core.resources.IFile&quot;&gt;
+        &lt;visibility&gt;
+            &lt;objectState
+                name=&quot;actionFilterContributorId&quot;
+                value=&quot;test.MyActionFilterContributor&quot;/&gt;
+        &lt;/visibility&gt;
+        &lt;action
+            class=&quot;test.MyAction&quot;
+            id=&quot;test.MyAction&quot;
+            label=&quot;My Action&quot;&gt;
+        &lt;/action&gt;
+    &lt;/objectContribution&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+ 
+Then the action filter contributor must be defined as follows:
+&lt;p&gt;
+&lt;pre&gt;
+&lt;extension point=&quot;org.eclipse.php.ui.actionFilterContributors&quot;&gt;
+    &lt;contributor
+        id=&quot;test.MyActionFilterContributor&quot;
+        class=&quot;test.MyActionFilterContributor&quot;
+        name=&quot;My Action Filter Contributor&quot;/&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+
+This guarantees, that when testing the visibility of My Action, testAttribute method of &lt;code&gt;test.MyActionFilterContributor&lt;/code&gt; will be called for performing custom testing.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         Extensions must implement &lt;code&gt;org.eclipse.php.ui.generic.actionFilter.IActionFilterContributor&lt;/code&gt; interface.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         Look at: &lt;code&gt;AddPHPDocActionFilterContributor&lt;/code&gt; and &lt;code&gt;CodeDataActionFilterContributor&lt;/code&gt;.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2001, 2004 IBM Corporation and others.&lt;br&gt;
+All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at &lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

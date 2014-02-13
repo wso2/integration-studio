@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <version>1.1.1</version>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>wsatt</artifactId>
+    <groupId>org.wso2.tools.eclipse</groupId>
+    <packaging>jar</packaging>
+    <name>WSO2 Eclipse Web Service Authoring and Testing Tools</name>
+    <url>http://wso2.org/projects/tools/wsas/wsas-authoring</url>
+    <description>WSO2 Web Services Authoring and Testing Tools, is a set of tools targetted for web services authoring. Using these tools you can develop your SOA platfoam quickly and efficiently.</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <configuration>
+                  <templateDirectory>src/site</templateDirectory>
+                  <template>maven-site.vm</template>
+                </configuration>
+                <version>2.0-beta-5</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+      
+
+        </plugins>
+    </build>
+        <organization>
+        <name>WSO2 Inc</name>
+        <url>http://wso2.com</url>
+    </organization>
+
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://wso2.org/jira/browse/TOOLS</url>
+    </issueManagement>
+
+    <properties>
+        <eclipse.version>3.4.0</eclipse.version>
+    </properties>
+    <scm>
+        <connection>scm:svn:http://wso2.org/repos/wso2/trunk/tools/ide/eclipse/wsas/</connection>
+        <developerConnection>scm:svn:https://wso2.org/repos/wso2/trunk/tools/ide/eclipse/wsas/</developerConnection>
+    </scm>
+    <mailingLists>
+        <mailingList>
+            <name>WSO2 Tools Users' list</name>
+            <post>mailto:tools-user@wso2.org</post>
+            <archive>http://wso2.org/mailarchive/tools-user/</archive>
+            <subscribe>mailto:tools-user@wso2.org?subject=subscribe</subscribe>
+            <unsubscribe>mailto:tools-user@wso2.org?subject=unsubscribe</unsubscribe>
+        </mailingList>
+        <!--mailingList>
+            <name>WSO2 Tools Developers' List</name>
+            <post>mailto:tools-dev@wso2.org</post>
+            <archive>http://wso2.org/mailarchive/tools-dev/</archive>
+            <subscribe>mailto:tools-dev@wso2.org?subject=subscribe</subscribe>
+            <unsubscribe>mailto:tools-dev@wso2.org@wso2.org?subject=unsubscribe</unsubscribe>
+        </mailingList-->
+        <mailingList>
+            <name>WSO2 Carbon Developers' List</name>
+            <post>mailto:carbon-dev@wso2.org</post>
+            <archive>http://www.wso2.org/mailarchive/carbon-dev/</archive>
+            <subscribe>mailto:carbon-dev-request@wso2.org?subject=subscribe</subscribe>
+            <unsubscribe>mailto:carbon-dev-request@wso2.org?subject=unsubscribe</unsubscribe>
+        </mailingList>
+    </mailingLists>
+
+</project>
+
+

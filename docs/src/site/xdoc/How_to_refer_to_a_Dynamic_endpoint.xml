@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under 
+	the Apache License, Version 2.0 (the &#39;License&#39;); ~ you may not use this file 
+	except in compliance with the License. ~ You may obtain a copy of the License 
+	at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by 
+	applicable law or agreed to in writing, software ~ distributed under the 
+	License is distributed on an &#39;AS IS&#39; BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. ~ See the License for the specific 
+	language governing permissions and ~ limitations under the License. -->
+<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+
+		<h1>How to Refer to a Dynamic endpoint in ESB Graphical Editor</h1>
+		<p>
+		<p>
+			The dynamic endpoints refers an actual endpoint by a key. dynamic endpoints fetches the actual endpoint at runtime. Then it delegates the message sending to the actual endpoint.The key can be a static value for stored in the registry or a dynamic key, a XPath expression,  evaluated against the current message and key is calculated at run time.
+</p>
+			<strong>To refer to a dynamic endpoint in your mediation flow.</strong>
+</p>
+
+<p>
+<p>
+<p>
+<p>
+Decide where you want to place the endpoint reference within your mediation flow, drag and drop &#39;Named Endpoint&#39; icon from the tool palette under &#39;EndPoints&#39; category.
+</p>
+<p>
+<br/><img src="images/dynamic_endpoint_06.png" /><br/>
+</p>
+</p>
+</p>
+
+<p>
+<p>
+<p>
+<strong>Configure the endpoint by selection properties for the fields on the Properties view, which you open by double-clicking the endpoint figure.</strong>
+</p>
+<p>
+<p>
+<p>
+<p>
+Before you can refer an dynamic endpoint as static key, The endpoint must already exist in the registry or must already as a registry resource.
+</p>
+<p>
+<br/><img src="images/dynamic_endpoint_01.png" /><br/>
+</p>
+</p>
+</p>
+
+<p>
+
+To configure dynamic endpoint reference as static key
+Select &#39;Referring Endpoint type&#39; as &#39;Static&#39;
+
+Click browse button (&#39;...&#39;) in &#39;Static Reference Key&#39; row, a &#39;Resource Key Editor&#39; window will pop up
+
+<p>
+<br/><img src="images/dynamic_endpoint_04.png" /><br/>
+</p>
+
+
+</p>
+
+<p>
+Select &#39;from registry&#39; option if you are planning to refer a dynamic endpoint  which is already stored in the WSO2 ESB registry. When you click on that option, a &#39;Registry  browser&#39;  window will pop up, Please create a registry connection to your ESB server if it's not already exists and select a dynamic endpoint from config registry or governance registry. Please refer &#39;Governance Registry Tools&#39; for more information about WSO2 registry browser.
+
+<p>
+<br/><img src="images/dynamic_endpoint_02.png" /><br/>
+</p>
+</p>
+
+<p>
+
+Select &#39;from workspace&#39; option if you are planning to refer a dynamic endpoint  which is to be deployed to server as a registry resource artifacts. When you click on that option, a 'Workspace Element Providers&#39;  window will pop up, you can select any dynamic endpoint available in workspace.
+<p>
+<br/><img src="images/dynamic_endpoint_00.png" /><br/>
+</p>
+
+</p>
+
+
+<p>
+To configure dynamic endpoint reference using a dynamic key
+Select &#39;Referring Endpoint type&#39; as &#39;Dynamic&#39;
+
+Click browse button (&#39;...&#39;) in &#39;Dynamic Reference Key&#39; row, a 'Namespaced Property Editor' window will pop up,
+
+<p>
+<br/><img src="images/dynamic_endpoint_05.png" /><br/>
+</p>
+</p>
+
+
+<p>
+In  'Namespaced Property Editor' window, you can configure  XPath expression and relevant namespaces. furthermore you can generate XPath expression using existing XML file using &#39;Select XPath&#39; option.
+
+<p>
+<br/><img src="images/dynamic_endpoint_03.png" /><br/>
+</p>
+
+</p>
+
+</p>
+</p>
+
+</p>
+</p>
+	</body>
+</html>

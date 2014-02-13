@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+    name="AccountServiceProxy" statistics="disable" trace="disable" transports="https http">
+    <target>
+        <inSequence>
+            <property action="set"
+                name="transport.jms.ContentTypeProperty" scope="axis2"
+                type="STRING" value="Content-Type"/>
+            <log category="INFO" level="full" separator=",">
+                <property name="debug" value="accountProxy"/>
+            </log>
+            <send>
+                <endpoint key="MainFrameEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <log category="INFO" level="full" separator=",">
+                <property name="debug" value="accountProxyOUT"/>
+            </log>
+            <property action="remove" name="TRANSPORT_HEADERS" scope="axis2"/>
+            <property action="set" name="messageType" scope="axis2"
+                type="STRING" value="text/xml"/>
+            <property action="set" name="ContentType" scope="axis2"
+                type="STRING" value="text/xml"/>
+            <send/>
+        </outSequence>
+    </target>
+</proxy>

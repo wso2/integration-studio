@@ -1,0 +1,37 @@
+<%
+namespace gadget;
+
+
+class Gadget{
+
+	 	const url = String;
+        const id = String;
+        const applyDefaultStyles = boolean;
+        const title = String;
+        const prefs = Object;
+        const container = String;
+        const owner = String;
+        const viewer = String;
+        const appId = int;
+        const view = String;
+        const country = String;
+        const language = String;
+        const specVersion = float;
+        const shindigBaseUrl = String;
+        
+	function getHTML(){}
+	
+	function toHTML(){}
+
+}
+
+
+
+
+
+
+
+
+
+
+%>

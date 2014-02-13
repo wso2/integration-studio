@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions title="Registry Filter Artifact Createtion Wizard"
+ 				 description="Select how you would like to create your new project"
+ 				 error="Please select a method to create the project">
+ 	<option id="new.filter" default="true">Create New Registry Filter</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="new.filter"
+ 			  		title="New Registry Filter Creation Wizard"
+ 			  		description="Give a name for your registry Filter"
+ 			  		error="Please give a name to create the registry Filter">
+ 		<data modelProperty="project.name"
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.registry.filter.validator.RegistryFilterFieldsController">Project Name    </data>
+ 		<data modelProperty="filterClass.package.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.registry.filter.validator.RegistryFilterFieldsController" group="RegistryFilterClass">Package Name</data>
+ 		<data modelProperty="filterClass.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.registry.filter.validator.RegistryFilterFieldsController" group="RegistryFilterClass">Class Name</data>	 
+ 		<group id="RegistryFilterClass"></group>
+ 		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ </projectOptionSettings>
+</wizard>

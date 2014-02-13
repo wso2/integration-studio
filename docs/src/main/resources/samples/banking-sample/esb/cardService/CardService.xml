@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="CardService" transports="https http" startOnLoad="true" trace="disable">
+    <target>
+        <inSequence>
+            <log level="full">
+                <property name="before" value="beforeTransform"/>
+            </log>
+            <xslt key="conf:/transform/transform.xslt"/>
+            <log level="full">
+                <property name="after" value="afterTransform"/>
+            </log>
+            <send>
+                <endpoint>
+                    <address uri="http://192.168.2.4:9763/services/CardAxis2Service/"/>
+                </endpoint>
+            </send>
+        </inSequence>
+    </target>
+    <publishWSDL uri="file:///media/dev/CS-Resources/PracticalSOA/practical-soa-2011/banking-sample/appserver/CardService.wsdl"/>
+</proxy>

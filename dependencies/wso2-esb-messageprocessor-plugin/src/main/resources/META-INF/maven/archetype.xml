@@ -1,0 +1,6 @@
+<archetype>
+  <id>wso2-esb-messageprocessor-plugin</id>
+ <resources>
+    <resource>src/main/resources/message-processors/messageprocessor.xml</resource>
+  </resources>
+</archetype>

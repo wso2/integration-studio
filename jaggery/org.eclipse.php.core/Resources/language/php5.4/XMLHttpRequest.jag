@@ -1,0 +1,72 @@
+<%
+class XMLHttpRequest {
+
+	const status = String;
+	const readyState = String;
+	const statusText = String;
+	const responseText = String;
+	const responseXML = String;
+	const onreadystatechange=Function;
+	
+	/**
+	 * XMLHttpRequest provides the functionality of server side XML HTTP communication
+	 * @link http://jaggeryjs.org/apidocs/xhr.jag
+	 * 
+	 * @return Returns a reference to the constructor of an object
+	 */
+	function __construct () {}
+
+	/**
+	 * Specifies the type of request, the URL, whether the request should be handled asynchronously or not, and other optional attributes of a request
+	 * @link http://jaggeryjs.org/apidocs/xhr.jag
+	 * @param method The type of request: GET or POST 
+	 * @param url the location of the file on the server
+	 * @param async True (asynchronous) or false (synchronous) 
+	 * @return String
+	 */
+	function open(method,url,async) {
+		
+	
+	}
+
+	/**
+	 * Sends the request off to the server. String is only used for POSTing a requests
+	 * @link http://jaggeryjs.org/apidocs/xhr.jag
+	 * @param String
+	 * @return String
+	 */
+	function send(String) {}
+
+	/**
+	 * Returns header information.
+	 * @link http://jaggeryjs.org/apidocs/xhr.jag
+	 * @return String 
+	 */
+	function getAllResponseHeaders() {}
+
+	/**
+	 * Adds an HTTP header to the request
+	 * @link http://jaggeryjs.org/apidocs/xhr.jag
+	 * @param name 
+	 * @param value 
+	 */
+	function setRequestHeader (name, value) {}
+
+	/**
+	 * Gets the specified HTTP header from the response.
+	 * @link http://jaggeryjs.org/apidocs/xhr.jag
+	 * @param name 
+	 * @return String 
+	 */
+	function getResponseHeader (name) {}
+
+	/**
+	 * Abort the request if async mode is used.
+	 * @link http://jaggeryjs.org/apidocs/xhr.jag
+	 * 
+	 */
+	function abort () {}
+
+
+}
+%>

@@ -1,0 +1,34 @@
+<%
+
+namespace email;
+
+
+class Sender{
+
+	const from = String;
+	const to = String;
+	const cc = Object;
+	const bcc = Object;
+	const subject = String;
+	const text = String;
+	const html = Object;
+	
+	
+	/**
+     * Send the mail out
+     * 
+     * 
+     */
+	function send(){}
+
+	 /**
+     * Add attachments to the mail been sent. This function  has a variable number of arguments, each argument can be a File hostObject or a string representing a file.
+     * 
+     *
+     */
+	function addAttachment(){}
+	
+	
+}
+
+%>

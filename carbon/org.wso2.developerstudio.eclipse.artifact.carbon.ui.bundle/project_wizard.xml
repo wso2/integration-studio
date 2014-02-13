@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions title="Carbon UI Component Artifact Wizard "
+ 				 description="Select how you would like to create your new project"
+ 				 error="Please select a method to create the project">
+ 	<option id="new.uibundle" default="true">Create New Carbon UI Bundle</option>
+ 	<option id="import.uibundle">Import Carbon UI Bundle from Workspace</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="new.uibundle"
+ 			  		title="New Carbon UI Bundle Wizard"
+ 			  		description="Create a new Carbon UI Component"
+ 			  		error="Project name must be specified to create the Carbon UI bundle">
+ 		<data modelProperty="project.name"
+ 					type="string"
+ 					controlData="listner=true"
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.validators.UIbundleFieldsController">Project Name*  </data>
+ 		<data modelProperty="uibundle.id" 
+ 					type="string" 
+ 					controlData="listner=true"
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.validators.UIbundleFieldsController" group="testid">Id*</data>
+ 		<data modelProperty="uibundle.version" 
+ 					type="string"
+ 					controlData="listner=true" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.validators.UIbundleFieldsController" group="testid">Version*</data>	
+ 		<data modelProperty="uibundle.name" 
+ 					type="string"
+ 					controlData="listner=true" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.validators.UIbundleFieldsController" group="testid">Name</data>
+ 		<data modelProperty="deploy.path" 
+ 					type="string"
+ 					controlData="listner=true" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.validators.UIbundleFieldsController" group="testid">Deploy Path*</data>														  
+ 		<group id="testid"></group>
+ 		
+ 		<data modelProperty="create.class" type="choice" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.validators.UIbundleFieldsController" group="zoptional">Create Activator Class</data>	
+ 		<data modelProperty="activator.class" 
+ 					type="string"
+ 					controlData="listner=true" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.validators.UIbundleFieldsController" group="zoptional">Activator </data>
+ 		<group id="zoptional"></group>		
+ 		<projectNatures>
+ 			<nature>org.eclipse.pde.PluginNature</nature>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ 	 	<settings optionId="import.uibundle"
+ 			 				title="Import Exsisting Projects"
+ 			  			description="Select a Carbon UI Bundle Project"
+ 			  			error="Project name must be specified">	  
+ 	 		<data modelProperty="import.project.list" type="list" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.validators.UIbundleFieldsController"
+ 					controlData="select=single;class=org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.utils.ProjectData">Carbon UI Bundle Project*</data>
+					
+ 		<projectNatures>
+ 		  <nature>org.eclipse.pde.PluginNature</nature>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>	
+ 	</settings>
+ </projectOptionSettings>
+</wizard>

@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright 2009-2010 WSO2, Inc. (http://wso2.com)&#xA;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;&#xA;http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xA;See the License for the specific language governing permissions and&#xA;limitations under the License."
+    modelDirectory="/org.wso2.developerstudio.eclipse.esb/src" creationSubmenus="true"
+    editDirectory="/org.wso2.developerstudio.eclipse.esb.edit/src" editorDirectory="/org.wso2.developerstudio.eclipse.esb.editor/src"
+    modelPluginID="org.wso2.developerstudio.eclipse.esb" modelName="Esb" editPluginClass="org.wso2.developerstudio.eclipse.esb.provider.EsbEditPlugin"
+    editorPluginClass="org.wso2.developerstudio.eclipse.esb.presentation.EsbEditorPlugin"
+    testSuiteClass="org.wso2.developerstudio.eclipse.esb.tests.EsbAllTests" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="org.wso2.developerstudio.eclipse.esb.edit"
+    editorPluginID="org.wso2.developerstudio.eclipse.esb.editor" language="">
+  <foreignModel>esb.ecore</foreignModel>
+  <foreignModel>mediator.ecore</foreignModel>
+  <genPackages prefix="Esb" basePackage="org.wso2.developerstudio.eclipse" disposableProviderFactory="true"
+      contentTypeIdentifier="" fileExtensions="xml" ecorePackage="esb.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ModelObjectState">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ModelObjectState/NORMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ModelObjectState/WORKING"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ModelObjectState/INCOMPLETE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ModelObjectState/INVALID"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//TaskPropertyType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TaskPropertyType/Literal"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TaskPropertyType/XML"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//PropertyValueType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyValueType/VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//PropertyValueType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//TargetSequenceType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TargetSequenceType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TargetSequenceType/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TargetSequenceType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//TargetEndpointType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TargetEndpointType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TargetEndpointType/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TargetEndpointType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EndPointAddressingVersion">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointAddressingVersion/FINAL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointAddressingVersion/SUBMISSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EndPointTimeOutAction">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointTimeOutAction/DISCARD"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointTimeOutAction/FAULT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EndPointMessageFormat">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointMessageFormat/LEAVE_AS_IS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointMessageFormat/SOAP_1_1"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointMessageFormat/SOAP_1_2"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointMessageFormat/POX"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointMessageFormat/GET"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EndPointAttachmentOptimization">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointAttachmentOptimization/LEAVE_AS_IS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointAttachmentOptimization/MTOM"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointAttachmentOptimization/SWA"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EndPointWsdlType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointWsdlType/URI"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointWsdlType/INLINE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//LoadBalanceAlgorithm">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LoadBalanceAlgorithm/ROUND_ROBIN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//LoadBalanceSessionType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LoadBalanceSessionType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LoadBalanceSessionType/TRANSPORT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LoadBalanceSessionType/SOAP"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LoadBalanceSessionType/CLIENT_ID"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ProxyWsdlType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyWsdlType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyWsdlType/INLINE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyWsdlType/SOURCE_URL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyWsdlType/REGISTRY_KEY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ProxySequenceType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxySequenceType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxySequenceType/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxySequenceType/REGISTRY_REFERENCE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxySequenceType/NAMED_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ProxyEndpointType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyEndpointType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyEndpointType/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyEndpointType/REGISTRY_REFERENCE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ProxyEndpointType/NAMED_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//LocalEntryValueType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LocalEntryValueType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LocalEntryValueType/XML"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LocalEntryValueType/URL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EsbVersion">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EsbVersion/ESB301"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EsbVersion/ESB400"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EndPointMessageFormatRestType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointMessageFormatRestType/GET"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EndPointMessageFormatRestType/POST"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//TaskTriggerType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TaskTriggerType/Simple"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//TaskTriggerType/Cron"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ApiResourceUrlStyle">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ApiResourceUrlStyle/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ApiResourceUrlStyle/URI_TEMPLATE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ApiResourceUrlStyle/URL_MAPPING"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="esb.ecore#//Map">
+      <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
+      <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/V"/>
+    </genDataTypes>
+    <genClasses image="false" ecoreClass="esb.ecore#//ModelObject">
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ModelObject/objectState"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ModelObject/sourceText"/>
+      <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference esb.ecore#//ModelObject/defaultNamespace"/>
+      <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference esb.ecore#//ModelObject/additionalNamespaces"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ModelObject/currentEsbVersion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ModelObject/comment"/>
+    </genClasses>
+    <genClasses provider="None" image="false" ecoreClass="esb.ecore#//Namespace">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Namespace/prefix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Namespace/uri"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//SynapseConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//SynapseConfiguration/configurationElements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseConfiguration/schemaLocation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//ConfigurationElement"/>
+    <genClasses image="false" ecoreClass="esb.ecore#//Mediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Mediator/description"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//Description">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Description/value"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Comment/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Comment/position"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//EndPointReference"/>
+    <genClasses image="false" ecoreClass="esb.ecore#//EndPoint">
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EndPoint/anonymous"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//EndPoint/endpointName"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//UnknownObject"/>
+    <genClasses ecoreClass="esb.ecore#//MediatorSequence">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MediatorSequence/anonymous"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MediatorSequence/sequenceName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//MediatorSequence/mediators"/>
+      <genFeatures createChild="false" propertyDescription="" ecoreFeature="ecore:EReference esb.ecore#//MediatorSequence/onError"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//MediatorSequence/description"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//MediatorBranch">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//MediatorBranch/children"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//ParentMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ParentMediator/children"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//NamespacedProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/prettyName"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/propertyName"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/propertyValue"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NamespacedProperty/namespaces"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//RegistryKeyProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//RegistryKeyProperty/prettyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//RegistryKeyProperty/keyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//RegistryKeyProperty/keyValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//RegistryKeyProperty/filters"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractNameValueProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueProperty/propertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueProperty/propertyValue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractNameValueExpressionProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionProperty/propertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionProperty/propertyValueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionProperty/propertyValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//AbstractNameValueExpressionProperty/propertyExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//NameValueTypeProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NameValueTypeProperty/PropertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NameValueTypeProperty/PropertyType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//NameValueTypeProperty/PropertyValue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractBooleanFeature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureEnabled"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractLocationKeyResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractLocationKeyResource/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//AbstractLocationKeyResource/key"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractCommonTarget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractCommonTarget/sequenceType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractCommonTarget/sequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//AbstractCommonTarget/sequenceKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractCommonTarget/endpointType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractCommonTarget/endpoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//AbstractCommonTarget/endpointKey"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractEndPoint">
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/reliableMessagingEnabled"/>
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/securityEnabled"/>
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/addressingEnabled"/>
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/addressingVersion"/>
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/addressingSeparateListener"/>
+      <genFeatures createChild="false" propertyCategory="Timeout" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/timeOutDuration"/>
+      <genFeatures createChild="false" propertyCategory="Timeout" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/timeOutAction"/>
+      <genFeatures createChild="false" propertyCategory="Retry" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/retryErrorCodes"/>
+      <genFeatures createChild="false" propertyCategory="Retry" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/retryCount"/>
+      <genFeatures createChild="false" propertyCategory="Retry" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/retryDelay"/>
+      <genFeatures createChild="false" propertyCategory="Suspend" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/suspendErrorCodes"/>
+      <genFeatures createChild="false" propertyCategory="Suspend" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/suspendInitialDuration"/>
+      <genFeatures createChild="false" propertyCategory="Suspend" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/suspendMaximumDuration"/>
+      <genFeatures createChild="false" propertyCategory="Suspend" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/suspendProgressionFactor"/>
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EReference esb.ecore#//AbstractEndPoint/reliableMessagingPolicy"/>
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EReference esb.ecore#//AbstractEndPoint/securityPolicy"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractDefaultEndPoint">
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractDefaultEndPoint/messageFormat"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractDefaultEndPoint/attachmentOptimization"/>
+      <genFeatures createChild="false" propertyCategory="Basic" propertyDescription=""
+          ecoreFeature="ecore:EAttribute esb.ecore#//AbstractDefaultEndPoint/encoding"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractDefaultEndPoint/statisticsEnabled"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractDefaultEndPoint/traceEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractDefaultEndPoint/restType"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//DefaultEndPoint"/>
+    <genClasses ecoreClass="esb.ecore#//AddressEndPoint">
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//AddressEndPoint/uri"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//WsdlEndPoint">
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//WsdlEndPoint/wsdlType"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//WsdlEndPoint/wsdlURI"/>
+      <genFeatures createChild="false" propertyCategory="Basic" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute esb.ecore#//WsdlEndPoint/wsdlXML"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//WsdlEndPoint/service"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//WsdlEndPoint/port"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//ParentEndPoint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ParentEndPoint/children"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//FailoverEndPoint"/>
+    <genClasses ecoreClass="esb.ecore#//LoadBalanceEndPoint">
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/algorithm"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/sessionType"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/sessionTimeout"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//DynamicLoadBalanceEndPoint">
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//DynamicLoadBalanceEndPoint/algorithm"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//DynamicLoadBalanceEndPoint/failoverEnabled"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//DynamicLoadBalanceEndPoint/membershipHandlerClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DynamicLoadBalanceEndPoint/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//DynamicLoadBalanceProperty"/>
+    <genClasses ecoreClass="esb.ecore#//XPathEndPointReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//XPathEndPointReference/endpointXpath"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//RegistryKeyEndPointReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//RegistryKeyEndPointReference/endpointKey"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ProxyService">
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/name"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/pinnedServers"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/serviceGroup"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/traceEnabled"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/statisticsEnabled"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/transports"/>
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/reliableMessagingEnabled"/>
+      <genFeatures createChild="false" propertyCategory="QoS" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyService/securityEnabled"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/wsdlConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/inSequenceConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/endpointConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/outSequenceConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/faultSequenceConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/serviceParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyService/servicePolicies"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ProxyWsdlConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyWsdlConfiguration/wsdlType"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyWsdlConfiguration/wsdlXML"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyWsdlConfiguration/wsdlURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//ProxyWsdlConfiguration/wsdlKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyWsdlConfiguration/wsdlResources"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ProxyWsdlResource"/>
+    <genClasses ecoreClass="esb.ecore#//ProxyServiceParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyServiceParameter/name"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyServiceParameter/value"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ProxyServicePolicy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//ProxyServicePolicy/policyKey"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractProxySequenceConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractProxySequenceConfiguration/sequenceType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractProxySequenceConfiguration/inlineSequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//AbstractProxySequenceConfiguration/sequenceKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractProxySequenceConfiguration/sequenceName"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ProxyInSequenceConfiguration"/>
+    <genClasses ecoreClass="esb.ecore#//ProxyEndpointConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyEndpointConfiguration/endpointType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ProxyEndpointConfiguration/inlineEndpoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//ProxyEndpointConfiguration/endpointKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ProxyEndpointConfiguration/endpointName"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ProxyOutSequenceConfiguration"/>
+    <genClasses ecoreClass="esb.ecore#//ProxyFaultSequenceConfiguration"/>
+    <genClasses ecoreClass="esb.ecore#//LocalEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/entryName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/valueType"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/valueLiteral"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/valueXML"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/valueURL"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//EvaluatorExpressionProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EvaluatorExpressionProperty/prettyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EvaluatorExpressionProperty/evaluatorName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EvaluatorExpressionProperty/evaluatorValue"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//TaskImplementation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//TaskImplementation/TaskImplementation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//TaskImplementation/TaskProperties"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//TaskProperty"/>
+    <genClasses ecoreClass="esb.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Task/TaskName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Task/TaskGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Task/TaskImplementationClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Task/TriggerType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Task/Count"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Task/Interval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Task/Cron"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Task/PinnedServers"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ApiInSequenceConfiguration"/>
+    <genClasses ecoreClass="esb.ecore#//ApiOutSequenceConfiguration"/>
+    <genClasses ecoreClass="esb.ecore#//ApiFaultSequenceConfiguration"/>
+    <genClasses ecoreClass="esb.ecore#//ApiResource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ApiResource/inSequenceConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ApiResource/outSequenceConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ApiResource/faultSequenceConfiguration"/>
+      <genFeatures createChild="false" propertyDescription="URL Style" ecoreFeature="ecore:EAttribute esb.ecore#//ApiResource/urlStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ApiResource/uriTemplate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ApiResource/urlMapping"/>
+      <genFeatures createChild="false" propertyCategory="Methods" propertyDescription="Get"
+          ecoreFeature="ecore:EAttribute esb.ecore#//ApiResource/allowGet"/>
+      <genFeatures createChild="false" propertyCategory="Methods" propertyDescription="Post"
+          ecoreFeature="ecore:EAttribute esb.ecore#//ApiResource/allowPost"/>
+      <genFeatures createChild="false" propertyCategory="Methods" propertyDescription="Put"
+          ecoreFeature="ecore:EAttribute esb.ecore#//ApiResource/allowPut"/>
+      <genFeatures createChild="false" propertyCategory="Methods" propertyDescription="Delete"
+          ecoreFeature="ecore:EAttribute esb.ecore#//ApiResource/allowDelete"/>
+      <genFeatures createChild="false" propertyCategory="Methods" propertyDescription="Options"
+          ecoreFeature="ecore:EAttribute esb.ecore#//ApiResource/allowOptions"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//SynapseAPI">
+      <genFeatures createChild="false" propertyDescription="Name" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/apiName"/>
+      <genFeatures createChild="false" propertyDescription="Context" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/context"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/hostname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//SynapseAPI/port"/>
+      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+          propertyDescription="Resource" ecoreFeature="ecore:EReference esb.ecore#//SynapseAPI/resources"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Mediators" basePackage="org.wso2.developerstudio.eclipse.esb"
+      disposableProviderFactory="true" fileExtensions="mediators" ecorePackage="mediator.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//LogCategory">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogCategory/TRACE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogCategory/DEBUG"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogCategory/INFO"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogCategory/WARN"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogCategory/ERROR"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogCategory/FATAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//LogLevel">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogLevel/FULL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogLevel/SIMPLE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogLevel/HEADERS"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//LogLevel/CUSTOM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//FilterConditionType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FilterConditionType/XPATH"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FilterConditionType/SOURCE_AND_REGULAR_EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//EntitlementSequence">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EntitlementSequence/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EntitlementSequence/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//ScriptType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ScriptType/INLINE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ScriptType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//ScriptLanguage">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ScriptLanguage/JAVASCRIPT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ScriptLanguage/RUBY"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ScriptLanguage/GROOVY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//EnrichSourceType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichSourceType/CUSTOM"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichSourceType/ENVELOPE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichSourceType/BODY"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichSourceType/PROPERTY"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichSourceType/INLINE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//EnrichTargetAction">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichTargetAction/REPLACE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichTargetAction/CHILD"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichTargetAction/SIBLING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//EnrichTargetType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichTargetType/CUSTOM"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichTargetType/ENVELOPE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichTargetType/BODY"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichTargetType/PROPERTY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//FaultSoapVersion">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultSoapVersion/SOAP_1_1"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultSoapVersion/SOAP_1_2"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//FaultCodeSoap11">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap11/VERSION_MISSMATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap11/MUST_UNDERSTAND"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap11/CLIENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap11/SERVER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//FaultCodeSoap12">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap12/VERSION_MISSMATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap12/MUST_UNDERSTAND"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap12/DATA_ENCODING_UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap12/SENDER"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultCodeSoap12/RECEIVER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//FaultStringType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultStringType/VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultStringType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//FaultReasonType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultReasonType/VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultReasonType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//FaultDetailType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultDetailType/VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//FaultDetailType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//AggregateSequenceType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//AggregateSequenceType/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//AggregateSequenceType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CacheSequenceType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CacheSequenceType/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CacheSequenceType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CacheImplementationType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CacheImplementationType/IN_MEMORY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CacheAction">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CacheAction/FINDER"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CacheAction/COLLECTOR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CacheScope">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CacheScope/PER_MEDIATOR"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CacheScope/PER_HOST"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//XQueryVariableType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/DOCUMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/DOCUMENT_ELEMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/ELEMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/INT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/BYTE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/SHORT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/LONG"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/FLOAT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableType/STRING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//XQueryVariableValueType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableValueType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//XQueryVariableValueType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CalloutPayloadType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CalloutPayloadType/MESSAGE_ELEMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CalloutPayloadType/REGISTRY_ENTRY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CalloutResultType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CalloutResultType/MESSAGE_ELEMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CalloutResultType/CONTEXT_PROPERTY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RMSpecVersion">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RMSpecVersion/VERSION_1_0"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RMSpecVersion/VERSION_1_1"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RMSequenceType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RMSequenceType/SINGLE_MESSAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RMSequenceType/CORRELATED_SEQUENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//TransactionAction">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//TransactionAction/COMMIT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//TransactionAction/FAULT_IF_NO_TRANSACTION"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//TransactionAction/INITIATE_NEW"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//TransactionAction/RESUME"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//TransactionAction/SUSPEND"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//TransactionAction/ROLLBACK"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//TransactionAction/USE_EXISTING_OR_NEW"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//PropertyDataType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyDataType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyDataType/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyDataType/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyDataType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyDataType/FLOAT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyDataType/LONG"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyDataType/SHORT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyDataType/OM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//PropertyAction">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyAction/SET"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyAction/REMOVE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//PropertyScope">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyScope/SYNAPSE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyScope/TRANSPORT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyScope/AXIS2"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyScope/AXIS2_CLIENT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//PropertyValueType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyValueType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PropertyValueType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//HeaderAction">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//HeaderAction/SET"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//HeaderAction/REMOVE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//HeaderValueType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//HeaderValueType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//HeaderValueType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//ThrottlePolicyType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottlePolicyType/INLINE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottlePolicyType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//ThrottleConditionType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottleConditionType/IP"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottleConditionType/DOMAIN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//ThrottleAccessType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottleAccessType/ALLOW"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottleAccessType/DENY"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottleAccessType/CONTROL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//ThrottleSequenceType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottleSequenceType/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ThrottleSequenceType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CommandPropertyValueType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyValueType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyValueType/MESSAGE_ELEMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyValueType/CONTEXT_PROPERTY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CommandPropertyMessageAction">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyMessageAction/READ_MESSAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyMessageAction/UPDATE_MESSAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyMessageAction/READ_AND_UPDATE_MESSAGE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CommandPropertyContextAction">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyContextAction/READ_CONTEXT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyContextAction/UPDATE_CONTEXT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CommandPropertyContextAction/READ_AND_UPDATE_CONTEXT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//SqlExecutorConnectionType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorConnectionType/DB_CONNECTION"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorConnectionType/DATA_SOURCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//SqlExecutorDatasourceType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorDatasourceType/EXTERNAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorDatasourceType/CARBON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//SqlExecutorBooleanValue">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorBooleanValue/FALSE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorBooleanValue/TRUE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorBooleanValue/DEFAULT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//SqlExecutorIsolationLevel">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorIsolationLevel/TRANSACTION_NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorIsolationLevel/TRANSACTION_READ_COMMITTED"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorIsolationLevel/TRANSACTION_READ_UNCOMMITTED"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorIsolationLevel/TRANSACTION_REPEATABLE_READ"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorIsolationLevel/TRANSACTION_SERIALIZABLE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlExecutorIsolationLevel/DEFAULT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//SqlParameterValueType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterValueType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterValueType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//SqlParameterDataType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/CHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/VARCHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/LONGVARCHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/NUMERIC"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/BIT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/TINYINT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/SMALLINT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/BIGINT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/REAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/FLOAT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SqlParameterDataType/TIMESTAMP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RuleSourceType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleSourceType/INLINE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleSourceType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RuleFactType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactType/CUSTOM"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactType/DOM"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactType/MESSAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactType/CONTEXT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactType/OMELEMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactType/MEDIATOR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RuleFactValueType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactValueType/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactValueType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactValueType/EXPRESSION"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFactValueType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RuleResultType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultType/CUSTOM"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultType/DOM"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultType/MESSAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultType/CONTEXT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultType/OMELEMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultType/MEDIATOR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RuleResultValueType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultValueType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultValueType/EXPRESSION"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleResultValueType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//SmooksIODataType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SmooksIODataType/XML"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//SmooksIODataType/TEXT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//ExpressionAction">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ExpressionAction/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ExpressionAction/REPLACE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ExpressionAction/SIBLING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//OutputMethod">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//OutputMethod/DEFAULT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//OutputMethod/PROPERTY"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//OutputMethod/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//ReceivingSequenceType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ReceivingSequenceType/DEFAULT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ReceivingSequenceType/STATIC"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//ReceivingSequenceType/DYNAMIC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//KeyType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//KeyType/STATIC"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//KeyType/DYNAMIC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RuleActionType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleActionType/REPLACE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleActionType/REMOVE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleActionType/APPEND"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleActionType/PREPEND"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleActionType/SET"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RuleFragmentType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFragmentType/PROTOCOL"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFragmentType/HOST"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFragmentType/PORT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFragmentType/PATH"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFragmentType/QUERY"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFragmentType/REF"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFragmentType/USER"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleFragmentType/FULL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//RuleOptionType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleOptionType/VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//RuleOptionType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//EnrichSourceInlineType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichSourceInlineType/CONTENT"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//EnrichSourceInlineType/KEY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//PayloadFactoryArgumentType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PayloadFactoryArgumentType/VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//PayloadFactoryArgumentType/EXPRESSION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mediator.ecore#//CallOutMediatorEndpointType">
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CallOutMediatorEndpointType/ANONYMOUS"/>
+      <genEnumLiterals ecoreEnumLiteral="mediator.ecore#//CallOutMediatorEndpointType/REGISTRY_REFERENCE"/>
+    </genEnums>
+    <genClasses ecoreClass="mediator.ecore#//InMediator"/>
+    <genClasses ecoreClass="mediator.ecore#//OutMediator"/>
+    <genClasses ecoreClass="mediator.ecore#//DropMediator"/>
+    <genClasses ecoreClass="mediator.ecore#//SendMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//SendMediator/anonymousEndPoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//SendMediator/endPointReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SendMediator/receivingSequenceType"/>
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//SendMediator/StaticReceivingSequence"/>
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//SendMediator/DynamicReceivingSequence"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//LogMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//LogMediator/logCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//LogMediator/logLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//LogMediator/logSeparator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//LogMediator/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//LogProperty"/>
+    <genClasses ecoreClass="mediator.ecore#//FilterMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FilterMediator/conditionType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//FilterMediator/filterXpath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//FilterMediator/filterSource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FilterMediator/filterRegex"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//FilterMediator/thenBranch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//FilterMediator/elseBranch"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//FilterThenBranch"/>
+    <genClasses ecoreClass="mediator.ecore#//FilterElseBranch"/>
+    <genClasses ecoreClass="mediator.ecore#//SwitchMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//SwitchMediator/sourceXpath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//SwitchMediator/caseBranches"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//SwitchMediator/defaultBranch"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//SwitchCaseBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SwitchCaseBranch/caseRegex"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//SwitchDefaultBranch"/>
+    <genClasses ecoreClass="mediator.ecore#//EntitlementMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EntitlementMediator/serverURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EntitlementMediator/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EntitlementMediator/password"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//EntitlementMediator/onAccept"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//EntitlementMediator/onReject"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//EntitlementMediator/Obligations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//EntitlementMediator/Advice"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EntitlementMediator/callbackClass"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//EntitlementAdviceBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EntitlementAdviceBranch/sequenceType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//EntitlementAdviceBranch/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//EntitlementObligationsBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EntitlementObligationsBranch/sequenceType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//EntitlementObligationsBranch/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//EntitlementMediatorOnRejectBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EntitlementMediatorOnRejectBranch/sequenceType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//EntitlementMediatorOnRejectBranch/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//EntitlementMediatorOnAcceptBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EntitlementMediatorOnAcceptBranch/sequenceType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//EntitlementMediatorOnAcceptBranch/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//EnqueueMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EnqueueMediator/executor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EnqueueMediator/priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//EnqueueMediator/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ClassMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ClassMediator/className"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ClassMediator/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ClassProperty"/>
+    <genClasses ecoreClass="mediator.ecore#//SpringMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SpringMediator/beanName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//SpringMediator/configurationKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ValidateMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//ValidateMediator/sourceXpath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ValidateMediator/onFailBranch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ValidateMediator/features"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ValidateMediator/schemas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ValidateMediator/resources"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ValidateOnFailBranch"/>
+    <genClasses ecoreClass="mediator.ecore#//ValidateFeature"/>
+    <genClasses ecoreClass="mediator.ecore#//ValidateSchema">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//ValidateSchema/validateStaticSchemaKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//ValidateSchema/validateDynamicSchemaKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ValidateSchema/validateSchemaKeyType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//ValidateSchema/schemaKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ValidateResource"/>
+    <genClasses ecoreClass="mediator.ecore#//ScriptMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ScriptMediator/scriptType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ScriptMediator/scriptLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ScriptMediator/mediateFunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//ScriptMediator/scriptKey"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute mediator.ecore#//ScriptMediator/scriptBody"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//EnrichMediator">
+      <genFeatures createChild="false" propertyCategory="Source" ecoreFeature="ecore:EAttribute mediator.ecore#//EnrichMediator/cloneSource"/>
+      <genFeatures createChild="false" propertyCategory="Source" ecoreFeature="ecore:EAttribute mediator.ecore#//EnrichMediator/sourceType"/>
+      <genFeatures createChild="false" propertyCategory="Source" ecoreFeature="ecore:EReference mediator.ecore#//EnrichMediator/sourceXpath"/>
+      <genFeatures createChild="false" propertyCategory="Source" ecoreFeature="ecore:EAttribute mediator.ecore#//EnrichMediator/sourceProperty"/>
+      <genFeatures createChild="false" propertyCategory="Source" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute mediator.ecore#//EnrichMediator/sourceXML"/>
+      <genFeatures createChild="false" propertyCategory="Target" ecoreFeature="ecore:EAttribute mediator.ecore#//EnrichMediator/targetAction"/>
+      <genFeatures createChild="false" propertyCategory="Target" ecoreFeature="ecore:EAttribute mediator.ecore#//EnrichMediator/targetType"/>
+      <genFeatures createChild="false" propertyCategory="Target" ecoreFeature="ecore:EReference mediator.ecore#//EnrichMediator/targetXpath"/>
+      <genFeatures createChild="false" propertyCategory="Target" ecoreFeature="ecore:EAttribute mediator.ecore#//EnrichMediator/targetProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EnrichMediator/inlineType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//EnrichMediator/inlineRegistryKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//FaultMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/soapVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultCodeSoap11"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultStringType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultStringValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//FaultMediator/faultStringExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultActor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultCodeSoap12"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultReasonType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultReasonValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//FaultMediator/faultReasonExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/roleName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/nodeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultDetailType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//FaultMediator/faultDetailValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//FaultMediator/faultDetailExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//AggregateMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//AggregateMediator/aggregateID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//AggregateMediator/correlationExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//AggregateMediator/completionTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//AggregateMediator/completionMinMessages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//AggregateMediator/completionMaxMessages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//AggregateMediator/onCompleteBranch"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//AggregateOnCompleteBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//AggregateOnCompleteBranch/aggregationExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//AggregateOnCompleteBranch/sequenceType"/>
+      <genFeatures createChild="false" propertyCategory="" ecoreFeature="ecore:EReference mediator.ecore#//AggregateOnCompleteBranch/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RouterMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RouterMediator/continueAfterRouting"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RouterMediator/routes"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RouterRoute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RouterRoute/breakAfterRoute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//RouterRoute/routeExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RouterRoute/routePattern"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RouterRoute/target"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RouteTarget"/>
+    <genClasses ecoreClass="mediator.ecore#//CloneMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CloneMediator/cloneID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CloneMediator/sequentialMediation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CloneMediator/continueParent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//CloneMediator/targets"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//CloneTarget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CloneTarget/soapAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CloneTarget/toAddress"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//IterateMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//IterateMediator/iterateID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//IterateMediator/sequentialMediation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//IterateMediator/continueParent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//IterateMediator/preservePayload"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//IterateMediator/iterateExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//IterateMediator/attachPath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//IterateMediator/target"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//IterateTarget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//IterateTarget/soapAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//IterateTarget/toAddress"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//CacheMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheMediator/cacheId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheMediator/cacheScope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheMediator/cacheAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheMediator/hashGenerator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheMediator/cacheTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheMediator/maxMessageSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheMediator/implementationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheMediator/maxEntryCount"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//CacheMediator/onHitBranch"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//CacheOnHitBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CacheOnHitBranch/sequenceType"/>
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//CacheOnHitBranch/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//XSLTMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//XSLTMediator/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//XSLTMediator/features"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//XSLTMediator/resources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//XSLTMediator/xsltSchemaKeyType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//XSLTMediator/xsltStaticSchemaKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//XSLTMediator/xsltDynamicSchemaKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//XSLTMediator/sourceXPath"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//XSLTMediator/xsltKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//XSLTProperty"/>
+    <genClasses ecoreClass="mediator.ecore#//XSLTFeature"/>
+    <genClasses ecoreClass="mediator.ecore#//XSLTResource"/>
+    <genClasses ecoreClass="mediator.ecore#//XQueryMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//XQueryMediator/variables"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//XQueryMediator/targetXPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//XQueryMediator/scriptKeyType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//XQueryMediator/staticScriptKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//XQueryMediator/dynamicScriptKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//XQueryMediator/queryKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//XQueryVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//XQueryVariable/variableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//XQueryVariable/variableType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//XQueryVariable/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//XQueryVariable/valueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//XQueryVariable/valueExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//XQueryVariable/valueKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//CalloutMediator">
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/serviceURL"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/soapAction"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/pathToAxis2xml"/>
+      <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/pathToAxis2Repository"/>
+      <genFeatures createChild="false" propertyCategory="Payload" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/payloadType"/>
+      <genFeatures createChild="false" propertyCategory="Payload" ecoreFeature="ecore:EReference mediator.ecore#//CalloutMediator/payloadMessageXpath"/>
+      <genFeatures createChild="false" propertyCategory="Payload" ecoreFeature="ecore:EReference mediator.ecore#//CalloutMediator/payloadRegistryKey"/>
+      <genFeatures createChild="false" propertyCategory="Result" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/resultType"/>
+      <genFeatures createChild="false" propertyCategory="Result" ecoreFeature="ecore:EReference mediator.ecore#//CalloutMediator/resultMessageXpath"/>
+      <genFeatures createChild="false" propertyCategory="Result" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/resultContextProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/passHeaders"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/useServerConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CalloutMediator/EndpointType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//CalloutMediator/endpointKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RMSequenceMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RMSequenceMediator/rmSpecVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RMSequenceMediator/sequenceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//RMSequenceMediator/correlationXpath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//RMSequenceMediator/lastMessageXpath"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//TransactionMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//TransactionMediator/action"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//PropertyMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/propertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/propertyDataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/propertyAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/propertyScope"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/valueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//PropertyMediator/valueExpression"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/valueOM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/valueStringPattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PropertyMediator/valueStringCapturingGroup"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//OAuthMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//OAuthMediator/remoteServiceUrl"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//AutoscaleInMediator"/>
+    <genClasses ecoreClass="mediator.ecore#//AutoscaleOutMediator"/>
+    <genClasses ecoreClass="mediator.ecore#//HeaderMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//HeaderMediator/headerName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//HeaderMediator/headerAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//HeaderMediator/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//HeaderMediator/valueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//HeaderMediator/valueExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ThrottleMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottleMediator/groupId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ThrottleMediator/policyConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ThrottleMediator/onAcceptBranch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ThrottleMediator/onRejectBranch"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ThrottlePolicyConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottlePolicyConfiguration/policyType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//ThrottlePolicyConfiguration/policyKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottlePolicyConfiguration/maxConcurrentAccessCount"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ThrottlePolicyConfiguration/policyEntries"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ThrottlePolicyEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottlePolicyEntry/throttleType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottlePolicyEntry/throttleRange"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottlePolicyEntry/accessType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottlePolicyEntry/maxRequestCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottlePolicyEntry/unitTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottlePolicyEntry/prohibitPeriod"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ThrottleOnAcceptBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottleOnAcceptBranch/sequenceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//ThrottleOnAcceptBranch/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ThrottleOnRejectBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ThrottleOnRejectBranch/sequenceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//ThrottleOnRejectBranch/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//CommandMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CommandMediator/className"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//CommandMediator/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//CommandProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CommandProperty/propertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CommandProperty/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CommandProperty/valueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CommandProperty/valueContextPropertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//CommandProperty/valueMessageElementXpath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CommandProperty/contextAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CommandProperty/messageAction"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//EventMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EventMediator/topicType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EventMediator/staticTopic"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//EventMediator/dynamicTopic"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//EventMediator/eventExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//EventMediator/eventSource"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mediator.ecore#//AbstractSqlExecutorMediator">
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/connectionType"/>
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/connectionDsType"/>
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/connectionDbDriver"/>
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/connectionDsInitialContext"/>
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/connectionDsName"/>
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/connectionURL"/>
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/connectionUsername"/>
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/connectionPassword"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyAutocommit"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyIsolation"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyMaxactive"/>
+      <genFeatures createChild="false" propertyCategory="Properties" propertyDescription=""
+          ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyMaxidle"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyMaxopenstatements"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyMaxwait"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyMinidle"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyPoolstatements"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyTestonborrow"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyTestwhileidle"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyValidationquery"/>
+      <genFeatures createChild="false" propertyCategory="Properties" ecoreFeature="ecore:EAttribute mediator.ecore#//AbstractSqlExecutorMediator/propertyInitialsize"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//AbstractSqlExecutorMediator/sqlStatements"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//SqlStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SqlStatement/queryString"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//SqlStatement/parameters"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SqlStatement/resultsEnabled"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//SqlStatement/results"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//SqlParameterDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SqlParameterDefinition/dataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SqlParameterDefinition/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SqlParameterDefinition/valueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//SqlParameterDefinition/valueExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//SqlResultMapping">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SqlResultMapping/propertyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SqlResultMapping/columnId"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//DBLookupMediator"/>
+    <genClasses ecoreClass="mediator.ecore#//DBReportMediator">
+      <genFeatures createChild="false" propertyCategory="Connection" ecoreFeature="ecore:EAttribute mediator.ecore#//DBReportMediator/connectionUseTransaction"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RuleMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleMediator/ruleSetConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleMediator/ruleSessionConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleMediator/factsConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleMediator/resultsConfiguration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleMediator/childMediatorsConfiguration"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RuleSetConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleSetConfiguration/sourceType"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleSetConfiguration/sourceCode"/>
+      <genFeatures createChild="false" propertyCategory="" ecoreFeature="ecore:EReference mediator.ecore#//RuleSetConfiguration/sourceKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleSetConfiguration/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RuleSetCreationProperty"/>
+    <genClasses ecoreClass="mediator.ecore#//RuleSessionConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleSessionConfiguration/statefulSession"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleSessionConfiguration/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RuleSessionProperty"/>
+    <genClasses ecoreClass="mediator.ecore#//RuleFactsConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleFactsConfiguration/facts"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RuleFact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleFact/factType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleFact/factCustomType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleFact/factName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleFact/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleFact/valueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//RuleFact/valueExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//RuleFact/valueKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RuleResultsConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//RuleResultsConfiguration/results"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RuleResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleResult/resultType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleResult/resultCustomType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleResult/resultName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleResult/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//RuleResult/valueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//RuleResult/valueExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//RuleResult/valueKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//RuleChildMediatorsConfiguration"/>
+    <genClasses ecoreClass="mediator.ecore#//SequenceMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SequenceMediator/referringSequenceType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//SequenceMediator/dynamicReferenceKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//SequenceMediator/staticReferenceKey"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//SequenceMediator/sequenceKey"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//BuilderMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//BuilderMediator/messageBuilders"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//MessageBuilder">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//MessageBuilder/contentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//MessageBuilder/builderClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//MessageBuilder/formatterClass"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//SmooksMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//SmooksMediator/configurationKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//SmooksMediator/input"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//SmooksMediator/output"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//SmooksInConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SmooksInConfiguration/type"/>
+      <genFeatures createChild="false" propertyCategory="" propertyDescription=""
+          propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//SmooksInConfiguration/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//SmooksOutConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//SmooksOutConfiguration/type"/>
+      <genFeatures createChild="false" propertyCategory="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference mediator.ecore#//SmooksOutConfiguration/expression"/>
+      <genFeatures createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute mediator.ecore#//SmooksOutConfiguration/property"/>
+      <genFeatures createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute mediator.ecore#//SmooksOutConfiguration/action"/>
+      <genFeatures createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute mediator.ecore#//SmooksOutConfiguration/outputMethod"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//StoreMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//StoreMediator/messageStore"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//StoreMediator/onStoreSequence"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ConditionalRouteBranch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ConditionalRouteBranch/breakAfterRoute"/>
+      <genFeatures createChild="false" propertyDescription="" propertyMultiLine="true"
+          ecoreFeature="ecore:EReference mediator.ecore#//ConditionalRouteBranch/evaluatorExpression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//ConditionalRouteBranch/targetSequence"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//ConditionalRouterMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//ConditionalRouterMediator/continueAfterRoute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//ConditionalRouterMediator/conditionalRouteBraches"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//URLRewriteRuleAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//URLRewriteRuleAction/ruleAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//URLRewriteRuleAction/ruleFragment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//URLRewriteRuleAction/ruleOption"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//URLRewriteRuleAction/actionExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//URLRewriteRuleAction/actionValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//URLRewriteRuleAction/actionRegex"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//URLRewriteRule">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//URLRewriteRule/urlRewriteRuleCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//URLRewriteRule/rewriteRuleAction"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//URLRewriteMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//URLRewriteMediator/urlRewriteRules"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//URLRewriteMediator/InProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//URLRewriteMediator/outProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//CallTemplateMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CallTemplateMediator/targetTemplate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//CallTemplateMediator/templateParameters"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//CallTemplateParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CallTemplateParameter/parameterName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CallTemplateParameter/templateParameterType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//CallTemplateParameter/parameterValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mediator.ecore#//CallTemplateParameter/parameterExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//PayloadFactoryMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PayloadFactoryMediator/format"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mediator.ecore#//PayloadFactoryMediator/args"/>
+    </genClasses>
+    <genClasses ecoreClass="mediator.ecore#//PayloadFactoryArgument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PayloadFactoryArgument/argumentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mediator.ecore#//PayloadFactoryArgument/argumentValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference mediator.ecore#//PayloadFactoryArgument/argumentExpression"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

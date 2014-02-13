@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process
+	xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+	xmlns:ns="http://eclipse.org/bpel/sampleArtifacts"
+	xmlns:tns="http://eclipse.org/bpel/sample" 
+	xmlns:tnstoo="http://eclipse.org/bpel/sample"
+	xmlns:xsdmapped = "http://www.w3.org/2001/XMLSchema"
+	exitOnStandardFault="yes"
+	name="T3"
+	suppressJoinFailure="yes"
+	targetNamespace="http://eclipse.org/bpel/sample">
+
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t3.wsdl" namespace="http://eclipse.org/bpel/sample" />
+
+	<bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+		location="t3Artifacts.wsdl"
+		namespace="http://eclipse.org/bpel/sampleArtifacts" />
+	<!--  Comment  -->
+	<bpws:partnerLinks>
+		<bpws:partnerLink myRole="SimpleProvider" name="client"
+			partnerLinkType="tns:Simple" partnerRole="SimpleRequester"/>							
+		<bpws:partnerLink name="partner1"
+			partnerLinkType="tns:Simple" partnerRole="SimpleRequester"/>								
+		<bpws:partnerLink name="partner2"
+			partnerLinkType="tns:Simple" myRole="SimpleRequester"/>					
+		<bpws:partnerLink name="twoWayPL"
+			partnerLinkType="tns:twoWayPLT" partnerRole="twoWayRole"/>
+		<bpws:partnerLink name="simple3"
+			partnerLinkType="tns:Simple3PLT" partnerRole="SimpleProvider3"/>									
+		
+	</bpws:partnerLinks>
+
+	<bpws:variables>
+		<bpws:variable messageType="tns:SimpleRequestMessage"
+			name="input" />
+		<bpws:variable element="tns:SimpleRequest"
+			name="inputElement" />
+			
+		<bpws:variable messageType="tns:SimpleResponseMessage"
+			name="output"/>		
+		<bpws:variable element="tns:SimpleResponse"
+			name="outputElement" />
+			
+		<bpws:variable type="xsdmapped:integer" name="varx"/>		
+		<bpws:variable type="xsdmapped:integer" name="vary"/>
+		
+	</bpws:variables>
+	<bpws:correlationSets>  
+       <bpws:correlationSet name="foobar"/>	     
+       <bpws:correlationSet name="foobar"/>
+       <bpws:correlationSet name="foobar2" properties="tns:p1 tns:p2"/>
+	</bpws:correlationSets>
+		<bpws:sequence name="main">
+	        <bpws:if>
+            <!-- This should fail -->
+            <bpws:condition>
+                1 + $varx/foo/bar &lt;  3
+            </bpws:condition>
+            <bpws:empty/>
+        </bpws:if>       
+        
+	    <bpws:empty/>
+	    
+	    <bpws:flow>
+	      		<bpws:receive name="receiveInput"
+					operation="initiate" 
+					partnerLink="client" 
+					portType="tns:Simple"
+					variable="input"
+					createInstance="yes">
+					<bpws:correlations>
+						<bpws:correlation set="foobar"/>
+					</bpws:correlations>
+					<bpws:fromParts>
+					   <bpws:fromPart part="payload" toVariable="input"/>
+					   <bpws:fromPart part="payload5" toVariable="bad_input"/>
+					</bpws:fromParts>
+				</bpws:receive>
+
+			    <bpws:receive name="receiveInput"
+					operation="initiate" 
+					partnerLink="client" 
+					portType="tns:Simple"
+					variable="output" 
+					createInstance="yes">
+					<bpws:correlations> 
+						<bpws:correlation set="foobar"/>
+						<bpws:correlation set="foobarx"/>
+						<bpws:correlation set="foobary"/>
+					</bpws:correlations>
+					
+				</bpws:receive>
+							
+				<bpws:pick createInstance="yes">
+				
+					<bpws:onMessage partnerLink="client" 
+					                portType="tns:Simple"
+					                variable="output">					                
+					<bpws:correlations>
+						<bpws:correlation set="foobar"/>
+					</bpws:correlations>
+					
+					</bpws:onMessage>
+					
+					<bpws:onMessage partnerLink="client" 
+					                portType="tns:Simple"
+					                variable="output">					                
+						<bpws:correlations>
+							<bpws:correlation set="foobar"/>
+						</bpws:correlations>
+												
+					</bpws:onMessage>					
+
+					<bpws:onAlarm>
+						<bpws:for>string('foobar')</bpws:for>
+						<bpws:empty/>
+					</bpws:onAlarm>
+
+				</bpws:pick>
+				
+	    </bpws:flow>
+
+		
+						
+		<bpws:reply name="replyOutput"
+			operation="initiate" 
+			partnerLink="client" 
+			portType="tns:SimpleCallback"
+			variable="output">
+			<bpws:toParts>
+			   <bpws:toPart part="payload" fromVariable="output"/>
+			   <bpws:toPart part="payload5" fromVariable="bad_input"/>
+			</bpws:toParts>
+		</bpws:reply>
+		
+		<bpws:reply name="replyOutput"
+			operation="initiate" 
+			partnerLink="client" 
+			portType="tns:SimpleCallback"
+			variable="input">
+		</bpws:reply>
+		
+    
+       
+		<bpws:assign name="Empty Assign">
+		</bpws:assign>
+	
+		<bpws:assign name="Empty_Copy">
+		  <bpws:copy/>
+		</bpws:assign>
+
+		
+		<bpws:assign name="incompatible_copies">
+
+		  <bpws:copy>
+		  	<bpws:from>"Hello World"</bpws:from>
+		  	<bpws:to>$output.payload/tns:result</bpws:to>
+		  </bpws:copy>
+		  
+          <!-- incompatible: port type to type -->
+          <bpws:copy>
+             <bpws:from variable="varx" part="payloa"/>
+             <bpws:to variable="output" part="payloa"/>
+          </bpws:copy>
+          
+		  <!-- Wrong message types -->
+		  <bpws:copy>
+             <bpws:from variable="input"/>
+             <bpws:to variable="output"/>
+          </bpws:copy>
+          
+          <!-- incompatible: element to integer -->
+          <bpws:copy>
+             <bpws:from variable="input" part="payload"/>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+
+          <!-- compatible: string to integer -->
+          <bpws:copy>
+             <bpws:from variable="input" part="payload">
+                 <bpws:query>/tns:input</bpws:query>
+             </bpws:from>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+
+		  <!-- compatible: not a location path  -->
+          <bpws:copy>
+             <bpws:from variable="input" part="payload">
+                 <bpws:query>/tns:input + 1</bpws:query>
+            </bpws:from>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+          
+		  <!-- compatible: string to integer -->
+          <bpws:copy>
+             <bpws:from>$input.payload/tns:input</bpws:from>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+
+            <!-- compatible: string to integer -->
+          <bpws:copy>
+             <bpws:from>$input.payload/tns:input + 1</bpws:from>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+
+          <bpws:copy>
+             <bpws:from>$input.payload/tns:input/tns:foo</bpws:from>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+
+          <bpws:copy keepSrcElementName="yes">
+             <bpws:from>$input.payload/tns:input + 1</bpws:from>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+
+          <bpws:copy keepSrcElementName="yesxx">
+             <bpws:from>$input.payload/tns:input + 1</bpws:from>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+
+          
+          <!-- icompatible: port type to portType -->
+          <bpws:copy>
+             <bpws:from partnerLink="client" endpointReference="myRole"/>
+             <bpws:to partnerLink="partner1"/>
+          </bpws:copy>
+
+          <!-- incompatible: port type to element -->
+          <bpws:copy>
+             <bpws:from partnerLink="client" endpointReference="myRole"/>
+			 <bpws:to variable="outputElement"/>
+          </bpws:copy>
+
+          <!-- incompatible: port type to type -->
+          <bpws:copy>
+             <bpws:from partnerLink="client" endpointReference="myRole"/>
+			 <bpws:to variable="varx"/>
+          </bpws:copy>
+
+		</bpws:assign>
+		
+		
+		<bpws:assign name="broken assign">
+		
+		  <bpws:copy>
+		    <bpws:from/>
+		    <bpws:to/>
+		  </bpws:copy>
+
+		  <bpws:copy>
+		    <bpws:from partnerLink="clientx" 
+		          endpointReference="myRolex" 
+		          variable="inputx">1</bpws:from>
+		    <bpws:to>    1 + 3          </bpws:to>
+		    
+		  </bpws:copy>
+		  <bpws:copy>
+		    <bpws:from variable="var1" part="partone"/>
+		    <bpws:to variable="var2" part="parttwo"/>
+		  </bpws:copy>
+  		  <bpws:copy>
+		    <bpws:from variable="varx" part="partone"/>
+		    <bpws:to variable="vary" part="parttwo"/>
+		  </bpws:copy>
+
+          <bpws:copy>
+             <bpws:from partnerLink="badPL-from"/>
+             <bpws:to partnerLink="badPL-to"/>
+          </bpws:copy>
+
+          <bpws:copy>
+             <bpws:from partnerLink="client" endpointReference="partnerRole"/>
+             <bpws:to partnerLink="partner2"/>
+          </bpws:copy>
+
+          <bpws:copy>
+             <bpws:from partnerLink="client" endpointReference="partner-Role"/>
+             <bpws:to>   
+          
+                $xyz
+                
+             </bpws:to>
+          </bpws:copy>
+
+          <bpws:copy>
+             <bpws:from partnerLink="partner1" endpointReference="partnerRole"/>
+             <bpws:to> $varx </bpws:to>
+          </bpws:copy>
+
+          <bpws:copy>
+             <bpws:from partnerLink="partner1" endpointReference="myRole"/>
+             <bpws:to>$xyz</bpws:to>
+          </bpws:copy>
+          
+ 		 <bpws:copy>
+             <bpws:from partnerLink="partner2" endpointReference="partnerRole"/>
+             <bpws:to/>
+          </bpws:copy>
+
+          <bpws:copy>
+             <bpws:from partnerLink="partner2" endpointReference="myRole"/>
+             <bpws:to/>
+          </bpws:copy>
+                 
+           <bpws:copy>
+             <bpws:from partnerLink="partner2" endpointReference="myRole"/>
+             <bpws:to>$input.payload</bpws:to>
+          </bpws:copy> 
+          
+           <bpws:copy>
+             <bpws:from>
+              <bpws:literal>
+                 <just-one-element/>
+                 <just-second-element/>
+              </bpws:literal>
+             </bpws:from>
+             <bpws:to>  $xy + $z  </bpws:to>
+          </bpws:copy> 
+
+           <bpws:copy>
+             <bpws:from>
+              <bpws:literal>Just some text to copy ...</bpws:literal>
+             </bpws:from>
+             <bpws:to> 
+             
+                $xyz + 1
+                
+             </bpws:to>
+          </bpws:copy> 
+
+           <bpws:copy>
+             <bpws:from>/bpws:foo/bpws:bar</bpws:from>
+             <bpws:to>$input</bpws:to>
+          </bpws:copy>
+
+           <bpws:copy>
+             <bpws:from>$varx</bpws:from>
+             <bpws:to>$vary</bpws:to>
+          </bpws:copy>
+            
+          <bpws:copy>
+             <bpws:from>$varx.part1</bpws:from>
+             <bpws:to>$vary.part2</bpws:to>
+          </bpws:copy>
+          
+		  <bpws:copy>
+		    <bpws:from>bpws:getVariableProperty($foo,$bar) + 
+		               bpws:getVariableProperty($foo,"bar") + 
+		               bpws:getVariableProperty("foo","badns:bar") + 
+		               bpws:getVariableProperty("foo1") +
+		               bpws:getVariableProperty("foo5","badns1:bar","far") + 
+		               bpws:getVariableProperty("foo3","bpws:bar")
+		    </bpws:from>
+		    <bpws:to>$input</bpws:to>
+		  </bpws:copy>
+
+		  <bpws:copy>
+		    <bpws:from>
+		               bpws:doXslTransform($foo2,  $bar2  ) + 
+		               bpws:doXslTransform($foo2,"bar") + 
+		bpws:doXslTransform( " :foo/bar.txt", "bar") + 
+        bpws:doXslTransform( 
+                        "12:12"
+                            ) +
+		bpws:doXslTransform  ("13:13") +
+		     bpws:doXslTransform("foo5/..",$input,"arg3") + 
+		     bpws:doXslTransform("foo2",$input,"badns1:arg3",$output) +
+   		         bpws:doXslTransform("foo2",$input,1 > 3,$output, 1 div 3) +
+   		         bpws:doXslTransform("foo2",$input,"badns3:arg3",$output, "badns4:arg3") +
+   		         bpws:doXslTransform("foo2",$input,"bpws:arg3",$output, "bpws:arg3",$output)
+		    </bpws:from>
+		    <bpws:to>$input.payload</bpws:to>
+		  </bpws:copy>
+		  
+		</bpws:assign>
+
+		<bpws:empty>
+		  <bpws:targets>
+		     <bpws:joinCondition>
+		       bpws:helloWorld() > 
+		       string(12) 
+		     </bpws:joinCondition>		   
+		  </bpws:targets>
+		</bpws:empty>
+		
+		<!-- This invoke should be OK -->
+		<bpws:invoke name="invokeTest"
+            partnerLink="twoWayPL"
+            operation="twoWayOperation"
+            inputVariable="input"
+        />
+
+        <!-- inputVariable -->
+		<bpws:invoke name="invokeTest"
+            partnerLink="twoWayPL"
+            operation="twoWayOperation"
+        />
+
+        <!-- inputVariable is *not* compatible, outputVariable is req -->
+		<bpws:invoke name="invokeTest"
+            partnerLink="twoWayPL"
+            operation="twoWayOperation"
+            inputVariable="output"
+        />
+
+        <!-- inputVariable is an element that is compatible -->
+		<bpws:invoke name="invokeTest"
+            partnerLink="twoWayPL"
+            operation="twoWayOperation"
+            inputVariable="inputElement"
+        />
+
+        <!-- inputVariable is an element that is *not* compatible -->
+		<bpws:invoke name="invokeTest"
+            partnerLink="twoWayPL"
+            operation="twoWayOperation"
+            inputVariable="outputElement"
+        />
+
+        <!-- inputVariable is an element that is *not* compatible -->
+		<bpws:invoke name="invokeTest"
+            partnerLink="twoWayPL"
+            operation="twoWayOperation"
+            inputVariable="outputElement"
+        >
+            <bpws:correlations>
+               <bpws:correlation set="foobar2" pattern="request"/>
+            </bpws:correlations>
+        </bpws:invoke>
+            
+
+         <!-- inputVariable is an element that is *not* compatible -->
+		<bpws:invoke name="invokeTest"
+            partnerLink="client"
+            operation="onResult"
+            inputVariable="outputElement"
+        >
+            <bpws:correlations>
+               <bpws:correlation set="foobar2" pattern="request"/>
+            </bpws:correlations>
+        </bpws:invoke>
+        
+        <bpws:scope>
+           <bpws:variables>
+              <bpws:variable name="v1" messageType=""/>
+              <bpws:variable name="v2int" type="xsdmapped:integer"/>
+              <bpws:variable name="v2int" type="xsdmapped:integer"/>        
+              <bpws:variable name="part1" element="tns:SimpleRequest"/>      
+              <bpws:variable name="part2" type="xsdmapped:integer"/>      
+              <bpws:variable name="req3"  messageType="tns:RequestMessage3"/>
+              <bpws:variable name="resp3"  messageType="tns:ResponseMessage3"/>
+           </bpws:variables>
+           <bpws:sequence>
+              <!-- This one is good -->
+              <bpws:invoke partnerLink="simple3" 
+                   operation="call"
+                   inputVariable="req3" 
+                   outputVariable="resp3"/>
+                   
+              <!-- invalid toPart (part does not exist) -->
+              <bpws:invoke partnerLink="simple3"
+                   operation="call"
+                   inputVariable="req3"
+                   outputVariable="resp3">
+                   <bpws:toParts>
+                       <bpws:toPart part="no_such _part" fromVariable="vxx x "/>                   
+                       <bpws:toPart part="no_such_part" fromVariable="vxxx"/>
+                       <bpws:toPart part="no_such_part_two" fromVariable="v1"/>
+                       <bpws:toPart part="payload1" fromVariable="part1"/>
+                       <bpws:toPart part="payload1" fromVariable="part2"/>                       
+                       <bpws:toPart part="payload2" fromVariable="part2"/>
+                   </bpws:toParts>
+                   <bpws:fromParts>
+                       <bpws:fromPart part="no_such_part" fromVariable="v2"/>
+                       <bpws:fromPart part="no_such_part" fromVariable="v2"/>                       
+                       <bpws:fromPart part="no_such_part_two" toVariable="v1"/>                       
+                   </bpws:fromParts>
+              </bpws:invoke>
+                   
+           </bpws:sequence>
+        </bpws:scope>
+	</bpws:sequence>
+</bpws:process>

@@ -1,0 +1,6 @@
+#Contains the information about the axis2 service generation information from the eclipse workspace
+#Tue Nov 08 14:43:49 IST 2011
+Class-name=org.wso2.sample.CardService
+Type=FROM_CLASS
+Service-name=CardService
+Projects=CardApplication

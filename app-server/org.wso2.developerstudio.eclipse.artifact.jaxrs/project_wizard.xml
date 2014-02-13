@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="JAX-RS Service Artifact Creation Options" 
+					description="Select how you would like to create your new project" 
+					error="Please select a method to create the project">
+		<option id="new.jaxrs" default="true">Create New JAX-RS Service</option>
+		<option id="import.jaxrswadl">Create New JAX-RS Service Using WADL File</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.jaxrs" 
+				  title="Create New JAX-RS Service" 
+				  description="Give a project name for the new JAX-RS Web Service" 
+				  error="Please give a name to the project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController">Project Name</data>
+			<data modelProperty="service.class.package.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController" group="createSampleClass">Package Name</data>
+ 			<data modelProperty="service.class.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController" group="createSampleClass">Class Name</data>	 	
+			<group id="createSampleClass"></group>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="import.jaxrswadl" 
+				  title="Create New JAXRS Service Using WADL File" 
+				  description="Give a project name for the new JAX-RS service" 
+				  error="Please give a name to the project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController">Project Name</data>
+			<data modelProperty="import.file" type="file" filter="*.wadl" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController">WADL File</data>
+			<data group="ext" modelProperty="runtime" type="dir" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController">CXF runtime</data>
+			<data group="ext" modelProperty="source.package" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController">Custom Package Name</data>
+			<group id="ext"></group>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

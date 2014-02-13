@@ -1,0 +1,41 @@
+<%
+class Entry {
+	
+	const id = String;
+	const authors = String;
+	const categories = String;
+	const content = String;
+	const contributors = String;
+	const links = String;
+	const published = Date;
+	const rights = String;
+	const summary = String;
+	const title = String;
+	const updated = Date;
+	
+	/**
+	 * Returns an Entry object
+	 * @link http://jaggeryjs.org/apidocs/entry.jag
+	 * 
+	 * 
+	 */
+	function __construct (url) {}
+
+	/**
+	 * Returns the E4X XML contents of this Entry object.
+	 * @link http://jaggeryjs.org/apidocs/entry.jag
+	 * @return XML
+	 * 
+	 */
+	function toXML() {}
+
+	/**
+	 * Returns the String representation of the Entry
+	 * @link http://jaggeryjs.org/apidocs/entry.jag
+	 * @return String 
+	 */
+	function toString() {}
+
+	
+}
+%>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor name="axis2-service">
+	<fileSets>
+		<fileSet filtered="true">
+			<directory />
+			<includes>
+				<include>**/*.xml</include>
+				<include>**/*.java</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</archetype-descriptor>

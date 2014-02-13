@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+       <wizard
+            category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.features"
+            class="org.wso2.developerstudio.eclipse.greg.registry.filter.ui.wizard.NewRegistryFilterWizard"
+            icon="icons/new-registry-filter-16x16.png"
+            id="org.wso2.developerstudio.eclipse.greg.registry.filter.NewRegistryFilterWizard"
+            name="WSO2 Registry Filter Class">
+            <description>Create new registry filter class</description>
+      </wizard>
+   </extension>
+
+</plugin>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource name="artifact.xml" isCollection="false" path="/_system/config/RegResources/artifact.xml" registryUrl="https://localhost:9443/registry" md5="8083f6af8c563970e8943f09eca0e8e7">
+    <mediaType>application/xml</mediaType>
+    <version>1844</version>
+    <creator>admin</creator>
+    <createdTime>1277482288897</createdTime>
+    <lastUpdater>admin</lastUpdater>
+    <lastModified>1277482288897</lastModified>
+    <description/>
+</resource>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:tns="http://SampleProject/SampleProcessInterface" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" name="SampleProcess" targetNamespace="http://SampleProject/SampleProcessInterface">
+  <types>
+    <xsd:schema targetNamespace="http://SampleProject/SampleProcessInterface" xmlns:tns="http://SampleProject/SampleProcessInterface" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="operation1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input1" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operation1Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output1" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="operation1Request">
+    <part element="tns:operation1" name="operation1Parameters"/>
+  </message>
+  <message name="operation1Response">
+    <part element="tns:operation1Response" name="operation1Result"/>
+  </message>
+  <portType name="SampleProcess">
+    <operation name="operation1">
+      <input message="tns:operation1Request" name="operation1Request"/>
+      <output message="tns:operation1Response" name="operation1Response"/>
+    </operation>
+  </portType>
+</definitions>

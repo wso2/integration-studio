@@ -1,0 +1,3 @@
+<ruleService name="{service.name}" targetNamespace="{service.ns}"  xmlns="http://wso2.org/carbon/rules">
+  <ruleSet></ruleSet>
+</ruleService>

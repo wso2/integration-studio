@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:lns="http://manufacturing.org/wsdl/purchase" exitOnStandardFault="yes" name="purchaseOrderProcess" targetNamespace="http://acme.com/ws-bp/purchase">
+  <bpws:documentation>A simple example of a WS-BPEL process for handling a purchase order.</bpws:documentation>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="OASISSampleProcess.wsdl" namespace="http://manufacturing.org/wsdl/purchase"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="purchaseService" name="purchasing" partnerLinkType="lns:purchasingLT"/>
+    <bpws:partnerLink myRole="invoiceRequester" name="invoicing" partnerLinkType="lns:invoicingLT" partnerRole="invoiceService"/>
+    <bpws:partnerLink myRole="shippingRequester" name="shipping" partnerLinkType="lns:shippingLT" partnerRole="shippingService"/>
+    <bpws:partnerLink name="scheduling" partnerLinkType="lns:schedulingLT" partnerRole="schedulingService"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable messageType="lns:POMessage" name="PO"/>
+    <bpws:variable messageType="lns:InvMessage" name="Invoice"/>
+    <bpws:variable messageType="lns:orderFaultType" name="POFault"/>
+    <bpws:variable messageType="lns:shippingRequestMessage" name="shippingRequest"/>
+    <bpws:variable messageType="lns:shippingInfoMessage" name="shippingInfo"/>
+    <bpws:variable messageType="lns:scheduleMessage" name="shippingSchedule"/>
+  </bpws:variables>
+  <bpws:faultHandlers>
+    <bpws:catch faultMessageType="lns:orderFaultType" faultName="lns:cannotCompleteOrder" faultVariable="POFault">
+      <bpws:reply faultName="bpws:cannotCompleteOrder" operation="sendPurchaseOrder" partnerLink="purchasing" portType="lns:purchaseOrderPT" variable="POFault"/>
+    </bpws:catch>
+  </bpws:faultHandlers>
+  <bpws:sequence>
+    <bpws:receive operation="sendPurchaseOrder" partnerLink="purchasing" portType="lns:purchaseOrderPT" variable="PO"/>
+    <bpws:flow>
+      <bpws:documentation>
+
+          A parallel flow to handle shipping, invoicing and scheduling
+
+        </bpws:documentation>
+      <bpws:links>
+        <bpws:link name="ship-to-invoice"/>
+        <bpws:link name="ship-to-scheduling"/>
+      </bpws:links>
+      <bpws:sequence>
+        <bpws:assign validateXML="no">
+          <bpws:copy>
+            <bpws:from part="customerInfo" variable="PO"/>
+            <bpws:to part="customerInfo" variable="shippingRequest"/>
+          </bpws:copy>
+        </bpws:assign>
+        <bpws:invoke inputVariable="shippingRequest" operation="requestShipping" outputVariable="shippingInfo" partnerLink="shipping" portType="lns:shippingPT">
+          <bpws:sources>
+            <bpws:source linkName="ship-to-invoice"/>
+          </bpws:sources>
+        </bpws:invoke>
+        <bpws:receive operation="sendSchedule" partnerLink="shipping" portType="lns:shippingCallbackPT" variable="shippingSchedule">
+          <bpws:sources>
+            <bpws:source linkName="ship-to-scheduling"/>
+          </bpws:sources>
+        </bpws:receive>
+      </bpws:sequence>
+      <bpws:sequence>
+        <bpws:invoke inputVariable="PO" operation="initiatePriceCalculation" partnerLink="invoicing" portType="lns:computePricePT"/>
+        <bpws:invoke inputVariable="shippingInfo" operation="sendShippingPrice" partnerLink="invoicing" portType="lns:computePricePT">
+          <bpws:targets>
+            <bpws:target linkName="ship-to-invoice"/>
+          </bpws:targets>
+        </bpws:invoke>
+        <bpws:receive operation="sendInvoice" partnerLink="invoicing" portType="lns:invoiceCallbackPT" variable="Invoice"/>
+      </bpws:sequence>
+      <bpws:sequence>
+        <bpws:invoke inputVariable="PO" operation="requestProductionScheduling" partnerLink="scheduling" portType="lns:schedulingPT"/>
+        <bpws:invoke inputVariable="shippingSchedule" operation="sendShippingSchedule" partnerLink="scheduling" portType="lns:schedulingPT">
+          <bpws:targets>
+            <bpws:target linkName="ship-to-scheduling"/>
+          </bpws:targets>
+        </bpws:invoke>
+      </bpws:sequence>
+    </bpws:flow>
+    <bpws:reply operation="sendPurchaseOrder" partnerLink="purchasing" portType="lns:purchaseOrderPT" variable="Invoice"/>
+  </bpws:sequence>
+</bpws:process>

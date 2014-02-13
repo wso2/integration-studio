@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under 
+	the Apache License, Version 2.0 (the "License"); ~ you may not use this file 
+	except in compliance with the License. ~ You may obtain a copy of the License 
+	at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by 
+	applicable law or agreed to in writing, software ~ distributed under the 
+	License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. ~ See the License for the specific 
+	language governing permissions and ~ limitations under the License. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+
+		<h1>How To Refer a Dynamic Sequence in ESB Graphical Editor</h1>
+		<p>
+			Dynamic Sequence in WSO2 ESB Configuration language means a Sequence which
+			is stored in WSO2 ESB Registry. Thus referring to a Dynamic Sequence
+			in your mediation flow means WSO2 ESB looks up the Registry of WSO2
+			ESB during the runtime and locate the appropriate Registry Resource
+			in the Registry using the user defined Registry Key in the
+			Configuration.
+</p>
+		<p>
+			In this section of the document we explain how you can refer to a
+			Dynamic Sequence from a mediation flow.
+</p>
+
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#method1">Refer to a Dynamic Sequence stored in a Registry Resource
+						Project</a>
+				</li>
+				<li>
+					<a href="#method2">Refer to a Dynamic Sequence Stored in Registry during the
+						Development Time</a>
+				</li>
+			</ul>
+		</div>
+		<h2 id="method1">Refer to a Dynamic Sequence stored in a Registry Resource
+			Project</h2>
+		<p>WSO2 Developer Studio supports a project type called “Registry
+			Resources Project” which can be used to store Resources and
+			Collections you want to deploy to Registry of a Carbon Server using
+			Carbon Application Project (C-App). Therefore it is possible for you
+			to maintain your Dynamic Sequence in a Registry Resource Project and
+			refer to that Sequence from the mediation flow. In the runtime when
+			you deploy the CAR file with both Registry Resource and Mediation
+			flow, WSO2 ESB will resolve the Reference key and use the Registry
+			Resource from the Registry.</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence1.PNG"></img>
+			<br></br>
+		</p>
+		<p>
+			Once you complete the Sequence design, you can save it and open the
+			mediation flow you need to refer to it.
+</p>
+		<p>
+			Then you need to click on the Sequence mediator in the Tool Palette and
+			click on the Canvas area of the editor.
+</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence2.PNG"></img>
+			<br></br>
+		</p>
+		<p>Then select the Sequence mediator you placed on the Canvas area and
+			click on the small button in the Static Reference Key property in
+			Eclipse properties view as shown in the image below.</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence3.PNG"></img>
+			<br></br>
+		</p>
+		<p>Then editor will populate the Resource Key Editor dialog where you
+			can use to look in to resources in your Developer Studio workspace.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence4.PNG"></img>
+			<br></br>
+		</p>
+		<p>Click on the “workspace” link button as indicated and Editor will
+			populate the Workspace Element Provider dialog where all the
+			resources in your Developer Studio workspace are listed and sorted
+			according to their Resource Type and then according to their Project
+			location as shown below.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence5.PNG"></img>
+			<br></br>
+		</p>
+		<p>Once you select a Resource from this dialog, Mediation flow will be
+			updated accordingly with the corresponding Registry Reference Key as
+			shown in the image.
+			</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence6.PNG"></img>
+			<br></br>
+		</p>
+		<h2 id="method2">Refer to a Dynamic Sequence Stored in Registry during the
+			Development Time</h2>
+		<p>
+			Since Dynamic Sequences are stored in the Registry, Developer Studio ESB
+			Editor supports referring to Resources stored in remote and local
+			Registry instances as well.
+</p>
+		<p>
+			First you need add the Sequence mediator to your mediation flow. Therefore
+			click on the Sequence mediator on the Tool Palette and then click on
+			the Canvas area.
+</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence2.PNG"></img>
+			<br></br>
+		</p>
+		<p>Then click on the button at the end of the Static Reference Key
+			property in Eclipse properties view as shown below.</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence3.PNG"></img>
+			<br></br>
+		</p>
+		<p>When you click on that, Editor will open the Resource Key Editor
+			dialog as shown below.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence4_1.PNG"></img>
+			<br></br>
+		</p>
+		<p>
+			Then click on the Registry link on this dialog and it will populate the
+			Registry Browser dialog for you.
+</p>
+		<p>
+			Using this Registry Browser dialog you can connect to running remote and
+			local Registry instances. 
+</p>
+		<p>
+			To connect with such a Registry instance, first you need to click on
+			the “Add Registry” button on the Registry Browser Dialog. This will
+			populate the simple dialog requesting you to provide the URL and the
+			Path you want to connect with in the Registry instance.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence7.PNG"></img>
+			<br></br>
+		</p>
+		<p>
+			Once you provide the URL and Path to the Registry instance, it will add a
+			registry element to the Registry Browser. Once you click on that,
+			Registry Browser will populate a dialog requesting you to enter
+			Credentials to access this Registry instance.
+</p>
+		<p>
+			When you provide the correct credentials, you will be able to browse the
+			Registry instance in the same manner you browse it using Management
+			Console.
+</p>
+		<p>
+			Then traverse through the Registry and select the Dynamic Sequence
+			Registry Resource you want to refer in your mediation login as shown
+			below.
+</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence8.PNG"></img>
+			<br></br>
+		</p>
+		<p>Once you click on Ok button on the Registry Browser dialog, Editor
+			will update the Static Reference Key property in the Properties view
+			with correct Registry Key value as shown below.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/DynamicSequence10.PNG"></img>
+			<br></br>
+		</p>
+	</body>
+</html>
+		

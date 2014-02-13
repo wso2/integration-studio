@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+  <name>wso2-esb-template-plugin</name>
+  <comment>Maven plugin which creates, builds and installs an ESB Template module. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects>
+    <project>org.wso2.maven.capp</project>
+    <project>org.wso2.maven.utils</project>
+    <project>org.wso2.maven.core</project>
+    <project>org.wso2.maven.esb</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

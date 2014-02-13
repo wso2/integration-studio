@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Junit Fragment
+Bundle-SymbolicName: org.eclipse.bpel.xpath10.junit
+Bundle-Version: 0.5.0.wso2v2
+Fragment-Host: org.eclipse.bpel.xpath10;bundle-version="0.5.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.junit4;bundle-version="4.3.1"
+Export-Package: org.eclipse.bpel.xpath10.parser

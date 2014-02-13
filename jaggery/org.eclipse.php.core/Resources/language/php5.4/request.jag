@@ -1,0 +1,205 @@
+<%
+namespace request;
+
+	/**
+	 * Returns the HTTP method of the request
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getMethod(){}
+	
+	
+	/**
+	 * Returns the protocol of the request
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getProtocol(){}
+	
+	/**
+	 * Returns the query String of the request
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getQueryString(){}
+	
+	/**
+	 * Returns the content of the request.If the request content type is either application/json or application/json/badgerfish, then content is returned as an object. Otherwise, it is returned as a String.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String|Object
+	 */
+	function getContent(){}
+	
+	
+	/**
+	 * Returns the content Type of the request
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getContentType(){}
+	
+	/**
+	 * Returns the content length of the request
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Number
+	 */
+	function getContentLength(){}
+	
+	
+	
+	/**
+	 * Returns the part of this request's URL from the protocol name up to the query String in the first line of the HTTP request
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getRequestURI(){}
+	
+	/**
+	 * Reconstructs the URL the client used to make the request
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getRequestURL(){}
+	
+	/**
+	 * Returns any extra path information before the query String, and translates it to a real path. If the URL does not have any extra path information, this method returns null.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Object
+	 */
+	function getPathTranslated(){}
+	
+	/**
+	 * Returns a Boolean indicating whether this request was made using a secure channel, such as HTTPS.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Boolean
+	 */
+	function isSecure(){}
+	
+	/**
+	 * Returns the Internet Protocol (IP) address of the client that sent the request.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getRemoteAddr(){}
+	
+	/**
+	 * Returns the portion of the request URI that indicates the context of the request
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getContextPath(){}
+	
+	/**
+	 * Returns the request local port number
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Number
+	 */
+	function getLocalPort(){}
+	
+	/**
+	 * Returns the Header properties
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getHeader(headerName){}
+	
+	/**
+	 * Returns all request headers as an object.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Object
+	 */
+	function getAllHeaders(){}
+	
+	
+	/**
+	 * Returns the request parameter. For multipart/form-data requests, an optional charset parameter can be passed to get the encoded value
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getParameter(paramName,charset=null){}
+	
+	/**
+	 * Returns all request parameters as an object. For multipart/form-data requests, an optional charset parameter can be passed to get the encoded values.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Object
+	 */
+	function getAllParameters(charset=null){}
+	
+	/**
+	 * Returns the preferred Locale that the client will accept content in, based on the Accept-Language header. 
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getLocale(){}
+	
+	/**
+	 * Returns an Enumeration of Locale objects indicating, in decreasing order starting with the preferred locale,If the client request doesn't provide an Accept-Language header, this method returns an Enumeration containing one Locale, the default locale for the server. 
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Object
+	 */
+	function getAllLocales(){}
+	
+	
+	/**
+	 * If file is mapped and request came through mapping.getMappedPathURL() will return file. If file is not mapped It will return null.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Object
+	 */
+	function getMappedPath(){}
+	
+	/**
+	 * Returns a file object when the content type is multipart/form-data
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return File
+	 */
+	function getFile(formFeildName){}
+	
+	/**
+	 * Returns an object of files when the content type is multipart/form-data 
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Object
+	 */
+	function getAllFiles(){}
+	
+	
+	/**
+	 * Returns a cookie object.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return String
+	 */
+	function getCookie(name){}
+	
+	/**
+	 * Returns an object with cookies.
+	 * @link http://jaggeryjs.org/apidocs/request.jag
+	 * 
+	 * @return Object
+	 */
+	function getAllCookies(){}
+
+
+
+%>

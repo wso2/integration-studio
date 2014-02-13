@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.wso2.tools.humantask.editor.editors.HTMultiPageEditor"
+            contributorClass="org.wso2.tools.humantask.editor.editors.HTMultiPageEditorContributor"
+            extensions="hi"
+            id="org.wso2.tools.humantask.editor.editors.HTMultiPageEditor"
+            name="Human Interactions Editor">
+         <contentTypeBinding
+               contentTypeId="org.wso2.tools.humantask.HumanInteractionsXML">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.wso2.tools.humantask.editor"
+            name="Human Tasks">
+      </category>
+      <wizard
+            category="org.wso2.tools.humantask.editor"
+            class="org.wso2.tools.humantask.editor.wizards.NewHumanInteractionWizard"
+            icon="icons/sample.gif"
+            id="org.wso2.tools.humantask.editor.wizards.NewHumanInteractionWizard"
+            name="Human Interactions File">
+         <description>
+            Creates new Human Interaction File.
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            file-extensions="hi"
+            id="org.wso2.tools.humantask.HumanInteractionsXML"
+            name="Human Interactions XML File"
+            priority="high">
+         <describer
+               class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+            <parameter
+          name="element"
+          value="{http://www.example.org/WS-HT}humanInteractions" plugin="org.eclipse.emf.ecore.xmi"/>
+          <parameter name="namespace" value="http://www.example.org/WS-HT"/>
+         </describer>
+      </content-type>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.content_parser">
+  <parser
+    class="org.wso2.tools.humantask.model.ht.util.HTResourceFactoryImpl"
+    contentTypeIdentifier="org.wso2.tools.humantask.HumanInteractionsXML">
+  </parser>
+</extension>
+<extension
+    point="org.eclipse.ui.decorators">
+  <decorator
+      adaptable="true"
+      icon="icons/sample.gif"
+      id="org.wso2.tools.humantask.icondecorator"
+      label="Human Interactions Resource Decorator"
+      lightweight="true"
+      location="TOP_LEFT"
+      state="true">
+    <enablement>
+      <and>
+         <objectClass
+            name="org.eclipse.core.resources.IFile">
+         </objectClass>
+         <objectState
+           name="contentTypeId"
+           value="org.wso2.tools.humantask.HumanInteractionsXML">
+         </objectState>
+       </and>
+     </enablement>
+   </decorator>
+</extension>
+
+</plugin>

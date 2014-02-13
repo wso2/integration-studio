@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+    	<groupId>org.wso2.eclipse</groupId>
+    	<artifactId>wso2-eclipse-parent</artifactId>
+    	<version>3.3.0-SNAPSHOT</version>
+    </parent>
+	<groupId>org.wso2.developerstudio</groupId>
+	<artifactId>wso2-connector-tools-parent</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <name>WSO2 Eclipse Connector Tools Plugins</name>
+    <modules>
+        <module>org.wso2.developerstudio.eclipse.bpel.connector</module>
+        <module>org.wso2.developerstudio.eclipse.registry.connector</module>
+    </modules>
+    <!--repositories>
+    	<repository>
+    		<id>wso2-maven2-repo</id>
+    		<name>WSO2 Maven2 Repo</name>
+    		<url>http://dist.wso2.org/maven2/</url>
+    	</repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>wso2-maven2-repository</id>
+            <name>WSO2 Maven2 Repository</name>
+            <url>scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <dependencyManagement>
+    	<dependencies>
+            <dependency>
+                <groupId>org.wso2.eclipse</groupId>
+                <artifactId>org.wso2.developerstudio.eclipse.logging</artifactId>
+	            <version>${logging.tools.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.eclipse</groupId>
+                <artifactId>org.wso2.developerstudio.eclipse.utils</artifactId>
+	            <version>${common.utils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.eclipse</groupId>
+                <artifactId>org.wso2.developerstudio.eclipse.libraries</artifactId>
+	            <version>${common.libraries.version}</version>
+            </dependency>                      
+    	</dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <common.libraries.version>3.3.0-SNAPSHOT</common.libraries.version>   
+        <logging.tools.version>3.3.0-SNAPSHOT</logging.tools.version>        
+        <common.utils.version>3.3.0-SNAPSHOT</common.utils.version>
+        <bps.export.tool.version>1.2.1</bps.export.tool.version>
+        <bps.tools.version>0.5.0.wso2v1</bps.tools.version>
+        <greg.tools.version>3.3.0-SNAPSHOT</greg.tools.version>
+        <capp.tools.version>3.3.0-SNAPSHOT</capp.tools.version>                            
+        <core.plugins.version>3.3.0-SNAPSHOT</core.plugins.version>                
+    </properties-->
+</project>
+

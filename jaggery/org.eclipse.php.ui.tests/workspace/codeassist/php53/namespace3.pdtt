@@ -1,0 +1,24 @@
+--TEST--
+Test CA in the same namespace
+--PREFERENCES--
+org.eclipse.php.core/contentAssistInsertCompletion=true
+--FILE--
+<?php
+namespace CMS\Application;
+class Paths {
+}
+
+namespace other\Application;
+
+\CMS\Application\Pa|
+?>
+--EXPECT--
+<?php
+namespace CMS\Application;
+class Paths {
+}
+
+namespace other\Application;
+
+\CMS\Application\Paths
+?>

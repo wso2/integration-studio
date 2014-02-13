@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="CardService"
+    statistics="disable" trace="disable" transports="http,https">
+    <target>
+        <inSequence>
+            <log category="INFO" level="simple" separator=","/>
+            <xslt key="conf:transform.xslt"/>
+            <log category="INFO" level="simple" separator=","/>
+            <send>
+                <endpoint key="cardServiceEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+    </target>
+    <publishWSDL key="conf:CardService.wsdl"/>
+</proxy>

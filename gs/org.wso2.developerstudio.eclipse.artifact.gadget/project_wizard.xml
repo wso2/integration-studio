@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Gadget Creation Options" 
+					description="Select how you would like to create your new project" 
+					error="Please select a method to create the project">
+		<option id="new.gadget" default="true">Create New Gadget</option>
+		<option id="import.gadget.fs">Import Gadget Resources from File System</option>
+	  <option id="import.dar">Import Dashboard Archive</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.gadget"
+				  title="Create New Gadget" 
+				  description="Give a name for the new gadget project" 
+				  error="Please give a name to the project">
+			 <data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController">Project Name*</data>
+			 <group id="id1"></group>
+			 <data modelProperty="gadgetxml.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController" group="id1">Gadget XML*</data>
+			 <data modelProperty="author" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController">Author*</data>
+			 <data modelProperty="description" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController" controlData="multiline=true">Description</data>
+			<projectNatures>
+				<nature>org.eclipse.pde.PluginNature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="import.gadget.fs" 
+				  title="Import Gadget Resources from File System" 
+				  description="Browse the location of a gadget resources" 
+				  error="Browse and select a gadget resources folder from file system">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController">      Project Name*</data>	  
+			<group id="id1"></group>
+			<data modelProperty="import.dir" type="dir" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController" group="id1">Gadget Resource*</data>
+			
+			<projectNatures>
+			    <nature>org.eclipse.pde.PluginNature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="import.dar" 
+				  title="Import Dashboard Archieve (DAR)" 
+				  description="Browse the location of a DAR file" 
+				  error="Browse and select a DAR file">
+			<!-- data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController">Project Name</data>	  
+			<group id="id1"></-->	  
+			<data modelProperty="import.file" type="file" filter="*.dar" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController">DAR File*</data>
+		</settings>
+	</projectOptionSettings>
+</wizard>

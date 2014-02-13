@@ -1,0 +1,17 @@
+<%
+namespace oauth;
+
+class OAuthProvider{
+	function getAuthorizationUrl(){}
+	
+	function sendOAuthRequest(){}
+	
+	function getAccessToken(){}
+
+}
+
+
+
+
+
+%>

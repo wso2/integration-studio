@@ -1,0 +1,223 @@
+<!--
+~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~ http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<html>
+<head>
+    <meta http-equiv="content-type" content=""/>
+    <title>WSO2 Developer Studio Release Notes</title>
+    <link href="./tools/cmd/css/wsas-dist-doc.css" rel="stylesheet"
+          type="text/css" media="all"/>
+</head>
+
+<body>
+<h1>WSO2 Developer Studio 3.0.0 Release Notes</h1>
+
+<h3>7th March 2013</h3>
+
+<p>
+WSO2 Developer Studio is a fully functioned tooling environment which facilitate you to develop, 
+test and deploy WSO2 Carbon Artifacts. The tool is created as a plug-in for the popular 
+IDE Eclipse.
+
+</p>
+
+
+<p>These tools are available under the
+    <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0.html">
+        Apache Software License (v2.0)
+    </a>
+   . This includes all of the extra integration and management
+   functionality as well.
+</p>
+<p>
+You can download this distribution from <a href="http://wso2.com/products/developer-studio">here</a> 
+and give it a try.
+</p>
+
+<h2>Key Features</h2>
+	<ul>
+		<li>Ability to create projects at any custom location</li>
+		<li>Application Server Tools<ul>
+			<li>Create and Edit Apache Axis2 Web Service</li>
+			<li>Generate WSDL</li>
+		    <li>Generate Apache Axis2 Client</li>
+		    <li>Generate Apache Axis2 Archive (AAR)</li>
+		    <li>Generate Apache Axis2 Java Skeleton</li>
+			<li>Web Applications</li>
+			<li>JAX-WS services</li>
+			<li>Create Axis2 RPC Message Receivers classes</li>
+		</ul>
+	</li>
+	<li>Enterprise Service Bus Tools<ul>
+		<li>WSO2 ESB Graphical Composition Tool</li>
+		<li>Sequences</li>
+		<li>Endpoints</li>
+		<li>Proxy Services</li>
+		<li>Local Entries</li>
+		<li>Create Mediators</li>
+		<li>Registry Referencing</li>
+		<li>Create sequences and endpoints as registry resources</li>
+		<li>JBoss Smooks tools integration</li>
+	</ul>
+	</li>
+	<li>Governance Registry Tools<ul>
+		<li>Create and deploy registry resources</li>
+		<li>Create, edit, debug and deploy registry handlers, filters and registry aspects</li>
+		<li>Manage your remote registry instance</li>
+		<li>Creating registry resources through templates</li>
+		<li>Enable/disable actions and update icons based on permissions for registry resources for the specified user</li>
+	    <li>Upload WSDL resources to the registry as governance archives (GAR support)</li>
+	</ul>
+	</li>
+	<li>Business Process Server Tools<ul>
+		<li>View, create and edit BPEL projects</li>
+	</ul>
+	</li>
+	<li>Gadget Server Tools<ul>
+		<li>Create and edit gadgets</li>
+	</ul>
+	</li>
+	<li>Data Services Server Tools<ul>
+		<li>Create and edit data services (XML configurations)</li>
+		<li>Create and edit data services validators</li>
+	</ul>
+	</li>
+	<li>Carbon Tools<ul>
+		<li>Create, edit, debug and deploy Carbon UI bundles</li>
+		<li>Deploy third party libraries as bundles</li>
+		<li>Allow creating the library artifact as a fragment bundle</li>
+		<li>Adding WSO2 related libraries when developing applications</li>
+	</ul>
+	</li>
+	<li>Developer Studio contribution features
+	    <ul>
+	        <li>Extensions to add custom proxy service templates</li>
+	        <li>Extensions to add registry resource templates</li>
+    	    <li>Extensions to allow adding mediatype resolvers</li>
+    	    <li>Extensions to specify new 3rd party libraries</li>
+    	    <li>Extensions to specify resource providers for</li>
+    	    <ul>
+    	        <li>Registry Resources</li>
+    	        <li>ESB Sequences</li>
+    	        <li>ESB Endpoints</li>
+    	        <li>ESB Local Entries</li>
+    	    </ul>
+	    </ul>
+	 </li>
+	<li>Complex Event Processor Tools
+	   	<ul>
+	   		<li>Create and Edit Complex Event Processing configurations (XML configurations)</li>
+	   		<li>Build and Package CEP Configurations to C-App Archives</li>
+	   	</ul>
+	 </li>
+	<li>Business Rule Server Tools
+	   	<ul>
+	   		<li>Create and Edit Business Rule Server configurations (XML configurations)</li>
+	   		<li>Build and Package BRS Configurations to C-App Archives</li>
+	   	</ul>
+	 </li>
+	<li>Apache Maven Support
+		<ul>
+	        <li>Carbon Archive</li>
+	        <li>Sequence</li>
+	    	<li>Proxy Services</li>
+	    	<li>Endpoints</li>
+	    	<li>Local Entries</li>
+	    	<li>Registry Resources </li>
+	    	<li>Registry Handlers</li>
+	        <li>Registry Filters</li>
+	        <li>ESB Mediators</li>
+	        <li>3rd Party Libraries</li>
+	        <li>Apache Axis2 Service</li>
+	        <li>JAX-WS Services</li>
+	        <li>Web Applications</li>
+	        <li>Data Services</li>
+	        <li>Data Service Validators</li>
+	        <li>BPEL Artifact</li>
+	        <li>Synapse Configurations</li>
+	        <li>Gadget</li>
+	        <li>Carbon UI Bundle</li>
+	        <li>Complex Event Processor Configurations</li>
+	        <li>Business Rules</li>
+	        <li>Maven Multi Module Support</li>
+	    </ul>
+	</li>
+	<li>Testing, Deploying and Redeploying</li>
+</ul>
+
+<p>
+You can find a more detailed version of all the features available in Developer Studio from <a href="devstudio-features.html">
+WSO2 Developer Studio Features</a> page. 
+</p>
+
+<h2>Project Resources</h2>
+<ol>
+    <li><strong>Home page :</strong> <a href="http://wso2.com/products/developer-studio">WSO2 Developer Studio</a></li>
+    <li><strong>JIRA-Issue Tracker :</strong> <a href="https://wso2.org/jira/browse/tools">
+    			WSO2 Developer Studio - JIRA Issues</a></li>
+</ol>
+<h2>Reporting Problems</h2>
+Issues can be reported using the public JIRA available at
+<a href="https://wso2.org/jira/browse/TOOLS" target="_blank">
+    https://wso2.org/jira/browse/TOOLS</a>
+
+<h2>Contact us</h2>
+WSO2 Tools developers can be contacted via the mailing lists:
+<br/>
+<strong>For Developers:</strong>
+<a href="mailto:dev@wso2.org">dev@wso2.org</a>
+<br/>
+<br/>
+For details on subscriptions see
+<a href="http://wso2.org/mail">
+    http://wso2.org/mail</a>
+<br/>
+
+<h2>Support</h2>
+
+<p>
+    We are committed to ensuring that your enterprise middleware deployment is completely supported from evaluation to production. 
+    Our unique approach ensures that all support leverages our open development methodology and is provided by the very same 
+    engineers who build the technology.
+    <br/>
+    <br/>
+</p>
+<p>
+	For more details and to take advantage of this unique opportunity please visit 
+    <a target="_blank"
+       href="http://wso2.com/support/">http://wso2.com/support/</a>
+</p>
+<br></br>
+<br></br>
+<p>
+For more information about WSO2 Developer Studio please see, 
+    <a href="http://wso2.com/products/developer-studio" target="_blank">http://wso2.com/products/developer-studio</a>. 
+    visit the <a href="http://wso2.org/library">WSO2 Oxygen Tank developer portal</a>  for additional resources.
+</p>
+
+<br></br>
+<br></br>
+<p>
+Thank you for your interest in WSO2 Developer Studio.</p>
+<br></br>
+<br></br>
+<strong>
+    <em>-The WSO2 Tooling Team</em>
+</strong>
+
+<hr/>
+
+</body>
+</html>

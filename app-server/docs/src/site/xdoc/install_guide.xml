@@ -1,0 +1,151 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        
+        <h1>Installation Guide</h1>
+
+        <p>This installation guide provides information on,</p>
+        <ol>
+            <li>the prerequisites for WSO2 IDE Tools</li>
+            <li>installation instructions</li>
+        </ol>
+
+        <p>
+            This document explains how WSO2 WSAS IDE tools should be installed in to eclipse; 
+        </p>
+
+        <h2>Content</h2>
+
+        <div class="toc">
+            <ul>
+                <li>
+                    <a href="#Introducti">Introduction</a>
+                </li>
+                <li>
+                    <a href="#System">The Prerequisites</a>
+                </li>
+                <li>
+                    <a href="#install2">Installation</a>
+                </li>
+            </ul>
+
+            
+        </div>
+
+        <h2 id="Introducti">Introduction</h2>
+
+        <p>WSO2 Web Services Application Server (WSAS) is supplied with pluggable components in the form of Eclipse WTP plugins which enable it to be integrated with the popular IDE Eclipse. This guide is meant to demonstrate the use of WSAS Web Services tools in combinations with the Eclipse Web Tools Platform Project using WTP 3.0 or higher drivers. The guide shows how to create a simple Web service and client based Web service operations using the linked Dynamic Web Projects of WTP and how to make use of wsas tools.
+        </p>
+
+        <h2 id="System">The Prerequisites</h2>
+
+        <table border="2">
+            <tbody>
+                <tr>
+                    <td>Java Runtime Environment</td>
+                    <td>1.5 or higher (For instructions on setting up the JRE in different
+                        operating systems, visit<a
+                                href="http://java.sun.com">http://java.sun.com</a>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>IDE</td>
+                    <td>Eclipse WTP 3.0 or higher</td>
+                </tr>
+                <tr>
+                    <td>Disk Space</td>
+                    <td>
+                        <p>Approximately 20MB</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1 id="install2">Installation</h1>
+
+       
+        <p>
+            <p>
+Start Eclipse and Go to 
+<strong>Help -> Software Updates</strong>
+. Select <strong>Available Software</strong>
+</p>
+<p>
+<br></br>
+<br></br>
+<img alt="New Server Runtime" src="images/74.png"></img>
+<br></br>
+<br></br>
+</p>
+
+
+            <p>
+Click 
+<strong>Add Site...</strong>
+</p>
+<p>
+<br></br>
+<br></br>
+<img alt="New Server Runtime" src="images/75.png"></img>
+<br></br>
+<br></br>
+</p>
+
+
+            <p>If you downloaded the plugin select the downloaded plugin from the file list by clicking <strong>Archive</strong>
+ button.
+</p>
+<p>
+<br></br>
+<br></br>
+<img alt="New Server Runtime" src="images/77.png"></img>
+<br></br>
+<br></br>
+</p>
+            <p>If you wish to online install the tools type the update site url <strong>http://wso2.org/tools/eclipse</strong>
+</p>
+<p>
+<br></br>
+<br></br>
+<img alt="New Server Runtime" src="images/y5.png"></img>
+<br></br>
+<br></br>
+</p>
+
+ <p>
+Click <strong>OK</strong>
+ to add the site. Uncheck the "Group itesm by category" check box (if you are using galileo) and select the features shown below in the image. Click <strong>Install...</strong>
+</p>
+<p>
+<br></br>
+<br></br>
+<img alt="New Server Runtime" src="images/79.png"></img>
+<br></br>
+<br></br>
+</p>
+
+        </p>   
+        
+        <p>
+        In order for this feature to be fully used it needs the WSAS server running inside eclipse. The WSAS Server integration plugins (eg: <a href="http://wso2.org/projects/tools/wsas/wsas-server">WSO2 Eclipse WSAS v3.1</a>) can also be downloaded from <a href="http://wso2.org/projects/tools">http://wso2.org/projects/tools</a>.
+        </p>
+        <p>Using this WSAS integration plugin you can bring up a WSAS server instance inside eclipse to deploy/debug web services through this server and provide the necessary libraries and tools for stub/skelton generation. We recommend downloading the latest WSAS server related integration feature.
+        </p>    
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<%
+
+namespace response;
+
+
+
+	/**
+	 * Adding a header to the response
+	 * @link http://jaggeryjs.org/apidocs/response.jag
+	 * @param key String
+	 * @param value String
+	 * @return String
+	 */
+	function addHeader(key, value){}
+	
+	/**
+	 * Redirect via response
+	 * @link http://jaggeryjs.org/apidocs/response.jag
+	 * @param url 
+	 * 
+	 */
+	function sendRedirect(url){}
+	
+	/**
+	 * Send an error code
+	 * @link http://jaggeryjs.org/apidocs/response.jag
+	 * @param errCode 
+	 * 
+	 */
+	function sendError(errCode){}
+	
+	/**
+	 * Adds the specified cookie to the response.
+	 * @link http://jaggeryjs.org/apidocs/response.jag
+	 * @param cookie 
+	 * 
+	 */
+	function addCookie(cookie){}
+
+%>

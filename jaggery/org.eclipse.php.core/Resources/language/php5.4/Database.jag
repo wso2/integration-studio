@@ -1,0 +1,49 @@
+<%
+class Database {
+
+
+
+	/**
+	 *The Database Object is used to connect to a relational database through jaggery and provides most of the default functionality and manipulation through the below members / functions. Jaggery out of the box support H2 database engine, and with little configuration supports MySql and Oracle
+	 * @link http://jaggeryjs.org/apidocs/rdb.jag
+	 * @param connectionUrl
+	 * @param username
+	 * @param password
+	 * @param config [Optional]
+	 * @return Returns Database object for database communication 
+	 */
+	function __construct (connectionUrl,username, password, config=null) {}
+
+	/**
+	 * Query result will be returned to the callback
+	 * @link http://jaggeryjs.org/apidocs/rdb.jag
+	 * @return String  
+	 * 
+	 */
+	function query(query, callback) {}
+
+	/**
+	 * SQL transaction commit
+	 * @link http://jaggeryjs.org/apidocs/rdb.jag
+	 * 
+	 */
+	function commit() {}
+
+	/**
+	 * SQL transaction rollback
+	 * @link http://jaggeryjs.org/apidocs/rdb.jag
+	 * 
+	 */
+	function rollback() {}
+
+	/**
+	 * SQL connection close
+	 * @link http://jaggeryjs.org/apidocs/rdb.jag
+	 * 
+	 */
+	function close () {}
+
+	
+
+}
+%>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" 
+		xmlns:reorder="http://acme.com/shoppingcart/reorder" 
+		xmlns:supplier="http://acme.com/shoppingcart/supplier"
+		xmlns:ds="http://ws.wso2.org/dataservice">
+  <process name="reorder:ReOrderProcess">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="reorder:ReOrderProcessService" port="ReOrderPort"/>
+    </provide>
+    <invoke partnerLink="SupplierPL">
+      <service name="supplier:SupplierOrderService" port="OrderDetailsEndpoint">
+      	<endpoint xmlns="http://wso2.org/bps/bpel/endpoint/config"> 
+            <enableAddressing value="true"/> 
+        </endpoint>
+      </service>
+    </invoke>
+    <invoke partnerLink="DSPL">
+      <service name="ds:ShoppingCartDS" port="SOAP11Endpoint">
+      	<endpoint xmlns="http://wso2.org/bps/bpel/endpoint/config"> 
+            <enableAddressing value="true"/> 
+        </endpoint>
+      </service>
+    </invoke>
+  </process>
+</deploy>

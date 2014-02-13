@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="cardServiceEP">
+    <address statistics="disable" trace="disable" uri="http://localhost:9763/services/CardAxis2Service">
+        <timeout>
+            <duration>0</duration>
+            <action>discard</action>
+        </timeout>
+        <markForSuspension>
+            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+            <retryDelay>0</retryDelay>
+        </markForSuspension>
+        <suspendOnFailure>
+            <initialDuration>0</initialDuration>
+            <maximumDuration>0</maximumDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+    </address>
+</endpoint>

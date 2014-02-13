@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head></head>
+  <body>
+<h1>Creating a Top Down Web Service Using WSAS WTP Tools</h1>
+<li>If we have a Web service definition in the form of WSDL, we can create a service from that WSDL</li>
+<li>Import the <a href="source/AreaService.wsdl">AreaService.wsdl</a> to the created MyDynamicProject</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/35.png"/>
+<br/>
+<br/>
+<li>We will now invoke the Web service creation wizard with respect to the newly imported WSDL. Select the AreaService.wsdl source, then select File -> New -> Other... -> Web Services -> Web Service</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/36.png"/>
+<br/>
+<br/>
+<li>
+Because the wizard was invoked related to a correct WSDL, the correct Web services scenario will be picked automatically with the correct service definition. Make sure that you have moved the scale to Start service. Select the Web service runtime hyperlink and then select the WSAS Web service runtime. Click
+<strong>OK</strong>
+.
+<br/>
+<br/>
+<img alt="Project wizards" src="images/38.png"/>
+<br/>
+<br/>
+</li>
+<li>
+Click
+<strong>Next</strong>.
+This page is the skeleton configuration page. You can customize the skeleton generation using the controls on this page. For this example, just leave the default values. Click
+<strong>Finsh</strong>
+to generate the service.
+</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/39.png"/>
+<br/>
+<br/>
+<li>
+After clicking
+<strong>Finish</strong>
+, the generated skeletons will be available on the src directory of the project. The skeleton service will be deployed on WSAS as well.
+</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/42.png"/>
+<br/>
+<br/>
+<li>We can generate the client and invoke the Web service features that WSAS provides, like 'Try It' etc.</li>
+  </body>
+</html>

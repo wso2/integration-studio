@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://wso2.org/banking" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AccountOpeningProcessService" targetNamespace="http://wso2.org/banking" xmlns:cs="http://sample.wso2.org">
+    <wsdl:import namespace="http://sample.wso2.org" location="CardService.wsdl"></wsdl:import>
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://wso2.org/banking">
+    	<xsd:element name="CreateAccount">
+    		<xsd:complexType>
+    			<xsd:sequence>
+    				<xsd:element name="nid" type="xsd:string" />
+    				<xsd:element name="name" type="xsd:string"></xsd:element>
+    				<xsd:element name="accountType" type="xsd:string"></xsd:element>
+    			</xsd:sequence>
+    		</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="CreateAccountResponse">
+    		<xsd:complexType>
+    			<xsd:sequence>
+    				<xsd:element name="out" type="xsd:string" />
+    			</xsd:sequence>
+    		</xsd:complexType>
+    	</xsd:element>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="CreateAccountRequest">
+    <wsdl:part element="tns:CreateAccount" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CreateAccountResponse">
+    <wsdl:part element="cs:issueCardResponse" name="parameters" />
+  </wsdl:message>
+  <wsdl:portType name="AccountOpeningProcessService">
+    <wsdl:operation name="CreateAccount">
+      <wsdl:input message="tns:CreateAccountRequest"/>
+      <wsdl:output message="tns:CreateAccountResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccountOpeningProcessServiceSOAP" type="tns:AccountOpeningProcessService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CreateAccount">
+      <soap:operation soapAction="http://wso2.org/banking/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccountOpeningProcessService">
+    <wsdl:port binding="tns:AccountOpeningProcessServiceSOAP" name="AccountOpeningProcessServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

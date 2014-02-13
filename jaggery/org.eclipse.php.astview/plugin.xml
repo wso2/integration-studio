@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?><!--
+    Copyright (c) 2009 IBM Corporation and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+    
+    Contributors:
+        IBM Corporation - initial API and implementation
+        Zend Technologies
+ -->
+
+<plugin>
+
+     <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="ASTView"
+            icon="$nl$/icons/view.gif"
+            category="org.eclipse.php.ui.views"
+            class="org.eclipse.php.astview.views.ASTView"
+            id="org.eclipse.php.astview.views.ASTView">
+      </view>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            name="ASTView"
+            description="AST View"
+            categoryId="org.eclipse.ui.category.views"
+            id="org.eclipse.php.astview.views.ASTView">
+      </command>
+   </extension> 
+
+
+  <extension
+     point="org.eclipse.ui.bindings">
+  <key
+        sequence="M2+M3+Q A"
+        commandId="org.eclipse.php.astview.views.ASTView"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+  </key>
+  <key
+        platform="carbon"
+        sequence="M2+M3+Q A"
+        commandId=""
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+  </key>
+  <key
+        platform="carbon"
+        sequence="M1+M3+Q A"
+        commandId="org.eclipse.php.astview.views.ASTView"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+  </key>
+  </extension>
+  
+  
+  <extension
+        point="org.eclipse.ui.perspectiveExtensions">
+     <perspectiveExtension targetID="org.eclipse.php.perspective">
+        <viewShortcut id="org.eclipse.php.astview.views.ASTView"/>
+     </perspectiveExtension>
+  </extension>
+
+</plugin>

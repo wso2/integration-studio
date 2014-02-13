@@ -1,0 +1,350 @@
+
+	<!--
+		~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under
+		the Apache License, Version 2.0 (the "License"); ~ you may not use
+		this file except in compliance with the License. ~ You may obtain a
+		copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0
+		~ ~ Unless required by applicable law or agreed to in writing,
+		software ~ distributed under the License is distributed on an "AS IS"
+		BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+		or implied. ~ See the License for the specific language governing
+		permissions and ~ limitations under the License.
+	-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+
+		<h1>WSO2 Developer Studio - Overview</h1>
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#overview">High Level Overview of WSO2 Developer Studio</a>
+				</li>
+				<li>
+					<a href="#csVsPlatform">WSO2 Developer Studio Vs WSO2 Carbon Platform</a>
+				</li>
+				<li>
+					<a href="#platform">Platform Capabilities</a>
+				</li>
+				<li>
+					<a href="#platformCapabilitiesSupport">How Platform Capabilities fulfilled by WSO2 Developer Studio</a>
+				</li>
+				<li>
+					<a href="#artifactProject">Artifact Project</a>
+				</li>
+				<li>
+					<a href="#phases">How different phases of Application Development being 
+					supported with WSO2 Developer Studio</a>
+				</li>
+				<li>
+					<a href="#packaging">Packaging to a Carbon Application Project</a>
+				</li>
+			</ul>
+		</div>
+		<h2 id="overview">High Level Overview of WSO2 Developer Studio</h2>
+		<p>
+			WSO2 Developer Studio is a complete tooling platform where you can develop, deploy, test and 
+			debug your SOA applications in a very user-friendly manner. 
+        </p>
+        <p>
+        Following is the high level diagram of the overview of WSO2 Developer Studio. 
+        </p>
+		<p>
+			<br></br>
+			<br></br>
+			<img alt="New Server Runtime" src="images/diagram.png"></img>
+			<br></br>
+			<br></br>
+		</p>
+		
+		<h2 id="csVsPlatform">WSO2 Developer Studio Vs WSO2 Carbon Platform</h2>
+		<p>
+		Let's see the role of WSO2 Developer Studio with respect to Carbon platform. 
+		What WSO2 Developer Studio does is, it provides a way to bridge SOA developers with Carbon 
+		platform. With Developer Studio, you can easily create applications for the WSO2 Carbon platform.
+		Those artifacts are mostly java-based or xml configurations designed differently for 
+		 each of the products in the Carbon platform. Development of these artifacts is 
+		 surprisingly easy with the graphical editors, simplifying the experience of editing 
+		 xml-based configurations. The availability of easy development and debugging capabilities 
+		 of Java-based artifacts such as Axis2-based services, registry handlers, data validators 
+		 and synapse mediators, makes it so much better than doing everything manually. You can even 
+		 run your products/servers within Developer Studio and test your applications. Developer Studio is 
+		 all about making your life easier with respect to creating your SOA applications for 
+		 the WSO2 Carbon platform.
+		</p>
+		<p>
+			<br></br>
+			<br></br>
+			<img alt="New Server Runtime" src="images/cs-vs-platform.png"></img>
+			<br></br>
+			<br></br>
+		</p>
+		<h2 id="platform">Platform Capabilities</h2>
+		<p>
+		WSO2 Carbon is a complete platform with all the capabilities that should be available in a 
+		SOA stack. Some of the capabilities are 
+		</p>
+		<ul>
+			<li>Service Hosting</li>
+			<li>Message Mediation </li>
+			<li>Managing Data Sources and Data Access</li>
+			<li>Authentication, Single Sign-On and Access Control</li>
+			<li>Repository for managing WSDL, schemas, policies, life cycles and versioning</li>
+			<li>Composing, Orchestrating and Monitoring Business Processes and Activities </li>
+			<li>Portal Services</li>
+		</ul>
+		<p>
+		WSO2 Carbon is a component based Enterprise SOA platform. It is designed in a way of 
+		separating key functionalities of the SOA platform in to separate pluggable carbon components. 
+		Those components can be mixed and matched like customizable building blocks. This lose 
+		coupling allows you to add only the functionalities you need in the beginning. 
+		You can add more components as your requirements grow on. This helps you to start a business 
+		quickly and adopt to changes with minimum effort.
+		</p>
+		<p>
+			<br></br>
+			<br></br>
+			<img alt="New Server Runtime" src="images/platform-carbon-diagram.png"></img>
+			<br></br>
+			<br></br>
+		</p>
+		<h2 id="platformCapabilitiesSupport">How Platform Capabilities fulfilled by WSO2 Developer Studio</h2>
+		<p>
+		Let's see how WSO2 Developer Studio help to fulfill above platform capabilities. Those 
+		capabilities are fulfilled with the use of rich set of tools provided by carbon studio. 
+		</p>
+		<ul>
+			<li>Service Hosting
+				<ul>
+					<li>Apache Axis2 Services</li>
+					<li>Web Applications</li>
+					<li>JAX-WS Services</li>
+				</ul>
+			</li>
+			<li>Message Mediation 
+				<ul>
+					<li>Sequences</li>
+					<li>Proxy Services</li>
+					<li>Data Transformations</li>
+					<li>Endpoints</li>
+					<li>Local Entries</li>
+					<li>Complete Synapse Configurations</li>
+					<li>Mediators</li>
+				</ul>
+			</li>
+			<li>Managing Data Sources and Data Access
+				<ul>
+					<li>Data Services</li>
+					<li>Data Services Validators</li>
+				</ul>
+			</li>
+			<li>Authentication, Single Sign-On and Access Control</li>
+				<ul>
+					<li>Manage users</li>
+					<li>Manage roles</li>
+				</ul>
+			<li>Repository for managing WSDL, schemas, policies, life cycles and versioning
+				<ul>
+					<li>Registry Resources</li>
+					<li>Managing Repository</li>
+					<li>Registry Handlers, Filters, Aspects</li>
+				</ul>
+			</li>
+			<li>Composing, Orchestrating and Monitoring Business Processes and Activities 
+				<ul>
+					<li>Creating Complex Business Processes</li>
+				</ul>
+			</li>
+			<li>Portal Services
+			<ul>
+					<li>Creating Gadgets</li>
+					<li>UI Bundles</li>
+				</ul>
+			</li>
+		</ul>
+		<h2 id="artifactProject">Artifact Project</h2>
+		<p>
+		As you already know, you can create different kind of artifacts with the use of WSO2 Developer Studio. 
+		Each and every artifact, that you create, we create a separate maven project in your 
+		workspace. You can create these artifact projects in any structure that you need. We have 
+		introduced new project types called <strong>ESB Project</strong> and <strong>General 
+		Project</strong>. <strong>ESB Project</strong> is responsible for hosting all the 
+		<strong>WSO2 ESB</strong> related artifacts such as <strong>sequences, proxy services, 
+		endpoints, local-entries, synapse configurations</strong>. <strong>General Project</strong> 
+		is responsible for hosting <strong>Registry Resources</strong>. Following table shows 
+		different types of projects that you can create from <strong>WSO2 Developer Studio</strong>.
+		</p>
+		
+		<table border="2">
+			<tbody>
+				<tr>
+					<td><strong>Artifact Type</strong></td>
+					<td><strong>Project Type</strong></td>
+				</tr>
+				<tr>
+					<td>Apache Axis2 Artifact</td>
+					<td>Apache Axis2 Service Project</td>
+				</tr>
+				<tr>
+					<td>Web Application</td>
+					<td>Web Application Project</td>
+				</tr>
+				<tr>
+					<td>JAX-WS Artifact</td>
+					<td>JAX-WS Project</td>
+				</tr>
+				<tr>
+					<td>Endpoint Artifact</td>
+					<td>ESB Config Project</td>
+				</tr>
+				<tr>
+					<td>Sequence Artifact</td>
+					<td>ESB Config Project</td>
+				</tr>
+				<tr>
+					<td>Proxy Service Artifact</td>
+					<td>ESB Config Project</td>
+				</tr>
+				<tr>
+					<td>Local Entry Artifact</td>
+					<td>ESB Config Project</td>
+				</tr>
+				<tr>
+					<td>Synapse Configuration</td>
+					<td>ESB Config Project</td>
+				</tr>
+				<tr>
+					<td>ESB Mediator</td>
+					<td>ESB Mediator Project</td>
+				</tr>
+				<tr>
+					<td>Registry Resource</td>
+					<td>Registry Resources Project</td>
+				</tr>
+				<tr>
+					<td>Registry Handler Artifact</td>
+					<td>Registry Handler Project</td>
+				</tr>
+				<tr>
+					<td>Registry Filter Artifact</td>
+					<td>Registry Filter Project</td>
+				</tr>
+				<tr>
+					<td>Data Service Artifact</td>
+					<td>Data Service Project</td>
+				</tr>
+				<tr>
+					<td>Data Services Validator Artifact</td>
+					<td>Data Services Validator Project</td>
+				</tr>
+				<tr>
+					<td>BPEL Workflow</td>
+					<td>BPEL Project</td>
+				</tr>
+				<tr>
+					<td>Gadget</td>
+					<td>Gadget Project</td>
+				</tr>
+				<tr>
+					<td>Carbon UI Bundle</td>
+					<td>Carbon UI Project</td>
+				</tr>
+				<tr>
+					<td>Third Party Library Artifact</td>
+					<td>Library Project</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p>
+		After creating different types of projects, you can combine these projects in to a 
+		<strong>Carbon Application Project</strong> in which where you will create a <strong>Carbon 
+		Application Archive</strong>. We will discuss more about this in the 
+		<strong><a href="overview.html/#packaging">Packaging</a></strong> section. 
+		</p>
+		<h2 id="phases">How different phases of Application development being 
+					supported with WSO2 Developer Studio</h2>
+		<p>
+		<strong>WSO2 Developer Studio</strong> has the support for all the four phases of <strong>Application 
+		Life Cycle</strong>.
+		</p>
+		<ul>
+			<li>Develop</li>
+			<li>Deploy</li>
+			<li>Test</li>
+			<li>Debug</li>	
+		</ul>
+		<p>
+		During the <strong>Development</strong> phase, you will create different kinds of artifact 
+		projects according to your requirement. Since <strong>WSO2 Developer Studio</strong> is an 
+		<strong>Eclipse Plugin</strong>, you have all the capabilities that you have as an JAVA 
+		IDE such as <strong>content assist, rich editors and views</strong> etc. 
+		</p>
+		<p>
+		After develop the SOA application, the next step anyone would follow is, deploy the 
+		application in to the specific server and check whether expected outcome is there. As a 
+		development tool, WSO2 Developer Studio provides support to adding multiple servers in to 
+		your eclipse environment and deploy artifacts with just one or two clicks.
+
+		WSO2 Developer Studio supports all kind of WSO2 Servers. You can add local servers, 
+		remote servers as well as connect to StratosLive.
+		You can add any of the above servers in an unified manner and deploying Carbon Application
+		 is also unified.  
+		</p>
+		<p>
+		It is quite common that your application may not be successful at the first time. You may see lot of 
+		issues when you deploy the application for the first time. So you will have to remove the application 
+		from the server, modify the application and re-deploy to the server. This procedure sometimes become 
+		really cumbersome. But with WSO2 Developer Studio, you can achieve this as simple as you 
+		deploy the application in the first time.
+		You have the capability to enable hot update option of a server, so you may not need to 
+		re-deploy manually. Application will be automatically deployed whenever a change has been 
+		done in the artifact level. This will allow you to play around with your application without 
+		much hassle.
+		In the similar manner, you can start servers in debug mode and debug your applications. 
+		Suppose you have a ESB Mediator or registry handler or axis2 service in your 
+		application which involves java sources. If you can debug the source while you are deploying, 
+		it will be really beneficial for a developer.  This facility is available in Developer Studio
+		 by extending debug capability of Eclipse IDE.
+		 At the same time, we allow servers to be started with OSGi console enabled. As you may 
+		 already known, WSO2 Carbon platform is on top of OSGi framework. Knowing state of the 
+		 bundles during runtime is really important when you encounter some issue. 
+		</p>
+		<h2 id="packaging">Packaging to a Carbon Application Project</h2>
+		<p>
+		Before deploy the developed application, we need to package it to a simple format. 
+		Packaging type introduced by WSO2 Developer Studio is called as Carbon Application Archive, 
+		CAR file for short. CAR file is a combination of one or more of the artifact projects that we created 
+		during the development phase. What we do when deploying, is drop this CAR file to various 
+		product servers such as <strong>Application Server, ESB, DS Server</strong>. 
+		</p>
+		<p>
+			<br></br>
+			<br></br>
+			<img alt="New Server Runtime" src="images/car.png"></img>
+			<br></br>
+			<br></br>
+		</p>
+		
+		<p>
+		<strong>Concept of Server Roles</strong>
+		</p>
+		<br></br>
+		<p>
+		Each and every server that is provided by WSO2 has a server role. That information is saved in the 
+		configuration file called <strong>carbon.xml</strong>, which is in 
+		<strong>[carbon-home]/repository/conf</strong>. In the similar manner, each and every artifact 
+		that has been created by Developer Studio also has a server role. At the time of deployment, 
+		deployers will deploy only the artifacts that has the matching server roles with the deploying 
+		server. 
+		</p>
+		<p>
+			<br></br>
+			<br></br>
+			<img alt="New Server Runtime" src="images/server-roles.png"></img>
+			<br></br>
+			<br></br>
+		</p>
+	</body>
+</html>

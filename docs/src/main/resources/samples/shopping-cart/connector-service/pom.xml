@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.acme.shoppingcart</groupId>
+        <artifactId>shopping-cart-parent</artifactId>
+        <version>1.1.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>com.acme.shoppingcart.connector</artifactId>
+    <packaging>aar</packaging>
+    <name>Shopping cart - Legacy Connector Services</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.rampart.wso2</groupId>
+            <artifactId>rampart-core</artifactId>
+            <version>${rampart.core.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2-aar-maven-plugin</artifactId>
+                <version>${axis2.aar.maven.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <servicesXmlFile>${basedir}/src/main/resources/META-INF/services.xml
+                    </servicesXmlFile>
+                    <includeDependencies>false</includeDependencies>
+                    <fileSets>
+                        <fileSet>
+                            <directory>${basedir}/src/main/resources/META-INF</directory>
+                            <outputDirectory>META-INF/</outputDirectory>
+                            <includes>
+                                <include>**/*.xsd</include>
+                            </includes>
+                            <excludes>
+                                <!--<exclude>**/*.wsdl</exclude>-->
+                                <exclude>**/*.xml</exclude>
+                            </excludes>
+                        </fileSet>
+                        <fileSet>
+                            <directory>${basedir}/src/main/resources/keystores/</directory>
+                            <outputDirectory>./</outputDirectory>
+                            <includes>
+                                <include>**/*.jks</include>
+                            </includes>
+                        </fileSet>
+                    </fileSets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

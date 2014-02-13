@@ -1,0 +1,48 @@
+--TEST--
+Test Field Semantic highlighting
+--FILE--
+<?php
+class Foo {
+
+  public static $foo;
+  public $test = 3;
+  public $bar, $toto = null;
+  
+  public function test(){
+  	return $this->test;
+  }
+}
+
+Test::foo;
+Test::$foo;
+$foo->test();
+$foo->$foo->foo->bar()->test;
+$foo->$foo->foo->bar()->test['toto'];
+$foo->$foo->foo->bar()->test['toto']['toto'];
+$foo->bar['test'];
+$foo->bar['test']['test'];
+$foo->bar['test']['test']['test'];
+$foo->$bar['test'];
+$foo->test;
+$foo->bar($foo->bar[$oo->bar[test]])->bar;
+?>
+--EXPECT--
+org.eclipse.php.internal.ui.editor.highlighters.FieldHighlighting:
+highlight($foo)
+highlight($test)
+highlight($bar)
+highlight($toto)
+highlight(test)
+highlight(foo)
+highlight(test)
+highlight(foo)
+highlight(test)
+highlight(foo)
+highlight(test)
+highlight(bar)
+highlight(bar)
+highlight(bar)
+highlight(test)
+highlight(bar)
+highlight(bar)
+highlight(bar)

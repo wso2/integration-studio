@@ -1,0 +1,13 @@
+<%
+/**
+ * Takes a JSON object and converts it to a String
+ * @link http://jaggeryjs.org/apidocs/stringify.jag
+ * @param jsonObj Object <p>
+ * Stringified JSON object
+ * </p>
+ * @return <p>String jsonString - JSON String </p>
+ * 			
+ */
+function stringify(jsonObj) {}
+%>
+

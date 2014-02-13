@@ -1,0 +1,41 @@
+--TEST--
+Test Abs Class
+--FILE--
+<?php 
+echo (new Human("Gonzalo"))->hello();
+?>
+--EXPECT--
+<Program start='0' length='47'>
+	<Statements>
+		<EchoStatement start='7' length='37'>
+			<MethodInvocation start='12' length='31'>
+				<Dispatcher>
+					<ClassInstanceCreation start='12' length='21'>
+						<ClassName start='17' length='5'>
+							<NamespaceName start='17' length='5' global='false' current='false'>
+								<Identifier start='17' length='5' name='Human'/>
+							</NamespaceName>
+						</ClassName>
+						<ConstructorParameters>
+							<Scalar start='23' length='9' type='string' value='"Gonzalo"'/>
+						</ConstructorParameters>
+					</ClassInstanceCreation>
+				</Dispatcher>
+				<Property>
+					<FunctionInvocation start='36' length='7'>
+						<FunctionName start='36' length='5'>
+							<Variable start='36' length='5' isDollared='false'>
+								<Identifier start='36' length='5' name='hello'/>
+							</Variable>
+						</FunctionName>
+						<Parameters>
+						</Parameters>
+					</FunctionInvocation>
+				</Property>
+			</MethodInvocation>
+		</EchoStatement>
+		<EmptyStatement start='45' length='2'/>
+	</Statements>
+	<Comments>
+	</Comments>
+</Program>

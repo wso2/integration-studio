@@ -1,0 +1,9 @@
+
+a#getting-started-link img { background-image : url(graphics/cApp-wizard.png); }
+a#carbonStudio-introLink img { background-image : url(graphics/cs.gif); }
+a#carbonStudio-dashboardlink img { background-image : url(graphics/cApp-wizard.png); }
+
+#page-content#left {
+  border: none; float: left; margin: 10px; padding: 0px; width: 49%;
+  clear: left;
+}

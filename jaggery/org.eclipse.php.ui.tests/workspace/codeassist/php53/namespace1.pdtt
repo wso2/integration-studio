@@ -1,0 +1,20 @@
+--TEST--
+Test CA in the same namespace
+--PREFERENCES--
+org.eclipse.php.core/contentAssistInsertCompletion=true
+--FILE--
+<?php
+namespace ns1\ns11\ns111 {
+
+      class NS1c1 {  }
+      $a = new NS1c1|
+}
+?>
+--EXPECT--
+<?php
+namespace ns1\ns11\ns111 {
+
+      class NS1c1 {  }
+      $a = new NS1c1()
+}
+?>

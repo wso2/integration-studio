@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.php.debug.core">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.php.debug.core" id="phpDebugMessages" name="PHP Debug Message"/>
+      </appInfo>
+      <documentation>
+         This extension point is used for contributing PHP Debugger message types. Each message has two basic methods for serialization/de-serialization, allowing to transfer structured information between IDE and PHP Debug Server. There is a predefined set of Debug Messages, which are supported by current PHP Debugger protocol; providing new message will require changes in the protocol.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="message" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="message">
+      <complexType>
+         <sequence>
+         </sequence>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  ID of this message.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Name of this message.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Class of this message that implements &lt;samp&gt;IDebugMesssage&lt;/samp&gt;.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.php.debug.core.debugger.messages.IDebugRequestMessage"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="handler" type="string">
+            <annotation>
+               <documentation>
+                  Handler class for this message, that implements &lt;samp&gt;IDebugMessageHandler&lt;/samp&gt;.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.php.debug.core.debugger.handlers.IDebugMessageHandler"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="overridesId" type="string">
+            <annotation>
+               <documentation>
+                  ID of debug message to override
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         0.7
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;p&gt;
+&lt;pre&gt;
+&lt;extension point=&quot;org.eclipse.php.internal.debug.core.phpDebugMessages&quot;&gt;
+    &lt;message
+        class=&quot;org.eclipse.php.internal.debug.core.zend.debugger.messages.AddBreakpointRequest&quot;
+        id=&quot;org.eclipse.php.internal.debug.core.zend.debugger.messages.AddBreakpointRequest&quot;
+        name=&quot;Add Breakpoint Request&quot;/&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         &lt;p&gt;
+Plugins that want to extend this extension point must implement this interface: &lt;samp&gt;org.eclipse.php.debug.core.debugger.messages.IDebugMessage&lt;/samp&gt;.
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         See &lt;code&gt;org.eclipse.php.internal.debug.core&lt;/code&gt; plug-in&apos;s plugin.xml.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2001, 2004 IBM Corporation and others.&lt;br&gt;
+All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at &lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

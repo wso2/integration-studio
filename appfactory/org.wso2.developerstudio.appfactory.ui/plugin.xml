@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="WSO2 AppFactory"
+            id="org.wso2.developerstudio.appfactory.ui">
+      </category>
+      <view
+            name="Applications List"
+            icon="icons/appfac.png"
+            category="org.wso2.developerstudio.appfactory.ui"
+            class="org.wso2.developerstudio.appfactory.ui.views.AppfactoryApplicationListView"
+            id="org.wso2.developerstudio.appfactory.ui.views.AppfactoryApplicationListView">
+      </view>
+   </extension>
+ 
+   <extension
+		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+    <category id="dashboard.category.AF" showTitle="true"
+			title="AppFactory"
+			priority="9">
+	</category>
+	<wizardLink category="dashboard.category.AF"
+			id="dashboard.wizardLink.AF.pespective"
+			wizard="org.wso2.developerstudio.AF.perspective.action"
+			priority="1">
+	</wizardLink>
+	<customAction
+			class="org.wso2.developerstudio.appfactory.ui.perspective.ShowAppFactoryPerspective"
+			id="org.wso2.developerstudio.AF.perspective.action">
+	</customAction>
+ </extension>
+   <!--extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.wso2.developerstudio.appfactory.ui.perspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="org.wso2.developerstudio.appfactory.ui.views.AppfactoryApplicationListView">
+         </view>
+      </perspectiveExtension>
+   </extension-->
+      <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="WSO2 AppFactory"
+            id="org.wso2.developerstudio.appfactory.ui">
+      </category>
+      <view
+            name="Application Details"
+            icon="icons/appfac.png"
+            category="org.wso2.developerstudio.appfactory.ui"
+            class="org.wso2.developerstudio.appfactory.ui.views.AppfactoryApplicationDetailsView"
+            id="org.wso2.developerstudio.appfactory.ui.views.AppfactoryApplicationDetailsView">
+      </view>
+   </extension>
+   <!--extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.wso2.developerstudio.appfactory.ui.perspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="org.wso2.developerstudio.appfactory.ui.views.AppfactoryApplicationDetailsView">
+         </view>
+      </perspectiveExtension>
+   </extension-->
+      <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="WSO2 AppFactory"
+            id="org.wso2.developerstudio.appfactory.ui">
+      </category>
+      <view
+            name="WSO2 AppFactory - Build Info"
+            icon="icons/appfac.png"
+            category="org.wso2.developerstudio.appfactory.ui"
+            class="org.wso2.developerstudio.appfactory.ui.views.AppfactoryBuildInfoView"
+            id="org.wso2.developerstudio.appfactory.ui.views.AppfactoryBuildInfoView">
+      </view>
+   </extension>
+   <!--extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.wso2.developerstudio.appfactory.ui.perspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="org.wso2.developerstudio.appfactory.ui.views.AppfactoryBuildInfoView">
+         </view>
+      </perspectiveExtension>
+   </extension-->
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+    <!--extension point="org.eclipse.ui.popupMenus">
+        <objectContribution
+              objectClass="org.eclipse.core.resources.IProject"
+               id="org.wso2.developerstudio.eclipse.appfactory.project.popup.deploy">
+               <action
+                    label="Deploy"
+                    icon="icons/deploy11.png"
+                    class="org.wso2.developerstudio.appfactory.ui.actions.DeployAction"
+                    id="org.wso2.developerstudio.eclipse.appfactory.project.ui.action.deploy">
+               </action>
+               <enablement>
+					<adapt type="org.eclipse.core.resources.IProject">
+						<or>
+							<test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.appfactory.webapp.project.nature" />
+		 				</or>
+					</adapt>
+				</enablement>
+              </objectContribution>
+        </extension-->
+      <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="WSO2 AppFactory"
+            id="org.wso2.developerstudio.appfactory.ui">
+      </category>
+      <view
+            name="WSO2 AppFactory -Ghost view"
+            icon="icons/appfac.png"
+            category="org.wso2.developerstudio.appfactory.ui"
+            class="org.wso2.developerstudio.appfactory.ui.views.AppFactoryGhostView"
+            id="org.wso2.developerstudio.appfactory.ui.views.AppfactoryGhostViewId">
+      </view>
+   </extension>
+        
+        
+        
+        <extension
+              point="org.eclipse.ui.perspectives">
+           <perspective
+                 class="org.wso2.developerstudio.appfactory.ui.perspective.AppFactoryPerspectiveFactory"
+                 icon="icons/appfac.png"
+                 id="org.wso2.developerstudio.appfactory.ui.perspective"
+                 name="WSO2 AppFactory">
+           </perspective>
+        </extension>
+        <extension
+              point="org.eclipse.ui.perspectiveExtensions">
+           <perspectiveExtension
+                 targetID="org.wso2.developerstudio.appfactory.ui.perspectiveExtension">
+              <view
+                    closeable="true"
+                    id="org.eclipse.jdt.ui.ProjectsView"
+                    minimized="false"
+                    relationship="left"
+                    relative="org.eclipse.jdt.ui.PackageExplorer"
+                    visible="true">
+              </view>
+           </perspectiveExtension>
+        </extension>
+        <extension point="org.eclipse.ui.preferencePages">
+		<page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.appfactory" name="App Factory" 
+		class="org.wso2.developerstudio.appfactory.ui.preference.AppFactoryPreferencePage" category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"></page>
+	</extension>
+	 <!--extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.wso2.developerstudio.appfactory.ui.perspective.AppFactoryPerspectiveManager"></startup>
+   </extension-->
+</plugin>

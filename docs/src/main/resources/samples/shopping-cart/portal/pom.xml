@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.acme.shoppingcart</groupId>
+        <artifactId>shopping-cart-parent</artifactId>
+        <version>1.1.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>com.acme.shoppingcart.portal</artifactId>
+    <packaging>war</packaging>
+    <name>Shopping Cart - Visitor Portal</name>
+
+     <dependencies>
+        <dependency>
+            <groupId>org.apache.axis2.wso2</groupId>
+            <artifactId>axis2-client</artifactId>
+            <version>${axis2.client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.authenticator.proxy</artifactId>
+            <version>${wso2carbon.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.core.common</artifactId>
+            <version>${wso2carbon.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+            <version>${axis2.wsdl2code.maven.plugin.version}</version>
+        </dependency>
+    </dependencies>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>wso2-maven2-repository</id>
+            <url>http://dist.wso2.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <finalName>org.wso2.shoppingCart.ui</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>source-code-generation</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>######################################</echo>
+                                <echo>creating stubs for backend services</echo>
+                                <echo>######################################</echo>
+
+                                <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
+                                    <arg line="-uri ../esb-config/ProductService.wsdl -u -uw
+                                    -o target/generated-code/stub/product
+                                     -p com.acme.shoppingcart.portal.product
+                        	         -ns2p http://shoppingcart.acme.com/product=com.acme.shoppingcart.portal.product.types,http://ws.wso2.org/dataservice=com.acme.shoppingcart.portal.product.types"/>
+                                    <classpath refid="maven.dependency.classpath"/>
+                                    <classpath refid="maven.compile.classpath"/>
+                                    <classpath refid="maven.runtime.classpath"/>
+                                </java>
+                                <java classname="org.apache.axis2.wsdl.WSDL2Java" fork="true">
+                                    <arg line="-uri ../esb-config/PurchasingService.wsdl -u -uw
+                                    -o target/generated-code/stub/purchasing
+                                     -p com.acme.shoppingcart.portal.purchasing
+                        	         -ns2p http://shoppingcart.acme.com/purchase=com.acme.shoppingcart.portal.purchasing.types,http://ws.wso2.org/dataservice=com.acme.shoppingcart.portal.purchasing.types,http://shoppingcart.acme.com/purchase/xsd=com.acme.shoppingcart.portal.purchasing.types"/>
+                                    <classpath refid="maven.dependency.classpath"/>
+                                    <classpath refid="maven.compile.classpath"/>
+                                    <classpath refid="maven.runtime.classpath"/>
+                                </java>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-code/stub/product/src</source>
+                                <source>target/generated-code/stub/purchasing/src</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1-beta-1</version>
+                <configuration>
+                    <warName>portal</warName>
+                    <packagingIncludes>
+                        WEB-INF/classes/**,
+                        WEB-INF/*,
+                        WEB-INF/lib/jstl.jar,
+                        WEB-INF/lib/standard.jar,
+                        **/axis2-client*.jar,
+                        **/*.class,
+                        **/*.html,
+                        **/*.jsp,
+                        **/css/**,
+                        **/js/**,
+                        **/images/**,
+                    </packagingIncludes>
+                    <!--<packagingExcludes>WEB-INF/classes/WEB-INF/*</packagingExcludes>-->
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>src/main/webapp</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head></head>
+  <body>
+<h1>Creating a Web Services Enabled Dynamic Web Project with WSAS Runtime Support</h1>
+<p>Now we create a project with the support of WSAS features. Open File -> New -> Other... -> Web -> Dynamic Web Project</p>
+<p>
+<br/>
+<br/>
+<img alt="Select Wizard" src="images/2.png"/>
+<br/>
+<br/>
+</p>
+<p>Select the name of the Project as the Dynamic Web project name (you can specify any name you prefer).</p>
+<p>
+<br/>
+<br/>
+<img alt="Dynamic Web Project" src="images/3.png"/>
+<br/>
+<br/>
+</p>
+<p>
+Click on the
+<strong>New</strong>
+Target Runtime button and select the WSO2 WSAS 3.0 target runtime. (Check create a new local server check box to create a server instance if you want at this time)
+</p>
+<p>
+<br/>
+<br/>
+<img alt="New Server Runtime" src="images/5.png"/>
+<br/>
+<br/>
+</p>
+<p>
+Click 
+<strong>Next</strong>
+and specify the WSAS home location
+</p>
+<p>
+<br/>
+<br/>
+<img alt="New Server Runtime" src="images/7.png"/>
+<br/>
+<br/>
+</p>
+
+<p>
+Then click
+<strong>Finish</strong>
+. This will add the target runtime and the configurations of the default WSAS settings.
+</p>
+<p>
+<br/>
+<br/>
+<img alt="Dynamic Web Project Updated" src="images/9.png"/>
+<br/>
+<br/>
+</p>
+<p>
+Click
+<strong>Modify.</strong>
+</p>
+<p>Then on the facet dialog, select the WSAS Web Services Facets , Core and Extentions.</p>
+<p>
+<br/>
+<br/>
+<img alt="Project facets" src="images/11.png"/>
+<br/>
+<br/>
+</p>
+<p>
+Click
+<strong>OK</strong>
+ and click 
+<strong>Next</strong>
+in the wizard.
+</p>
+<p>
+<br/>
+<br/>
+<img alt="Web Module" src="images/15.png"/>
+<br/>
+<br/>
+</p>
+<p>
+Click
+<strong>Finish</strong>
+and it will create the Dynamic Web Project with the support of WSAS Web Services functionalities.
+</p>
+<p>
+<br/>
+<br/>
+<img alt="Management Console" src="images/16.png"/>
+<br/>
+<br/>
+</p>
+<p>
+<br/>
+<br/>
+<img alt="Management Console" src="images/17.png"/>
+<br/>
+<br/>
+</p>
+
+<h1>Creating a Bottom Up JAVA bean Web Service Using WSAS WTP Tools</h1>
+<li>Create the JAVA Bean that has to be exposed as the Web service. For example, we will write a LocalTimeBot, which will bring the local time from the system.</li>
+<section><p>
+<source>
+package test; 
+
+import java.util.Calendar; 
+import java.util.GregorianCalendar; 
+
+public class LocalTimeBot { 
+    public String getLocalTime() { 
+        Calendar cal = new GregorianCalendar(); 
+        return cal.getTime().toString(); 
+    } 
+}
+</source></p>
+</section>
+
+Create a LocalTimeBot class inside the src under the given package test. Then compile and build the project.
+<p>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/20.png"/>
+<br/>
+<br/>
+</p>
+<li>Select LocalTimeBot.java, open File -> New -> Other... -> Web Services -> Web Service</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/21.png"/>
+<br/>
+<br/>
+<li>Click on the Web Service runtime link to select the WSO2 WSAS runtime.</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/22.png"/>
+<br/>
+<br/>
+<p>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/23.png"/>
+<br/>
+<br/>
+</p>
+<li>This page is the service.xml selection page. If you have a custom services.xml, you can include that by clicking the Browse button. For the moment, just leave it as the default.</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/25.png"/>
+<br/>
+<br/>
+<p>
+<li>If the wsas server has not already started, click <strong>Start server</strong> to start the server and publish the web service</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/26.png"/>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/27.png"/>
+<br/>
+<br/>
+</p>
+<li>After the server is started and the service is published on the server click <strong>Next</strong>. This page is the Web services publication page, accept the default values.</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/29.png"/>
+<br/>
+<br/>
+<p>
+Click
+<strong>Finish</strong>
+.
+</p>
+<li>By now the service will be available on WSAS and you will be able to carry out the WSAS provided functionalities, the "Try It" functionality, for example .</li>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/30.png"/>
+<br/>
+<br/>
+<br/>
+<br/>
+<img alt="Project wizards" src="images/31.png"/>
+  </body>
+</html>

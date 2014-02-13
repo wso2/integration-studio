@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/AreaService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AreaService" targetNamespace="http://tempuri.org/AreaService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/AreaService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:element name="area" type="xsd:float"/>
+      <xsd:element name="parameters" type="tns:dimensions"/>
+      <xsd:complexType name="dimensions">
+      	<xsd:sequence>
+      		<xsd:element name="width" type="xsd:float"></xsd:element>
+      		<xsd:element name="height" type="xsd:float"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CalculateRectAreaResponse">
+    <wsdl:part element="tns:area" name="area"/>
+  </wsdl:message>
+  <wsdl:message name="CalculateRectAreaRequest">
+    <wsdl:part element="tns:parameters" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="AreaService">
+    <wsdl:operation name="CalculateRectArea">
+      <wsdl:input message="tns:CalculateRectAreaRequest"/>
+      <wsdl:output message="tns:CalculateRectAreaResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AreaServiceSOAP" type="tns:AreaService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CalculateRectArea">
+      <soap:operation soapAction="http://tempuri.org/AreaService/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AreaService">
+    <wsdl:port binding="tns:AreaServiceSOAP" name="AreaServiceSOAP">
+      <soap:address location="http://tempuri.org"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

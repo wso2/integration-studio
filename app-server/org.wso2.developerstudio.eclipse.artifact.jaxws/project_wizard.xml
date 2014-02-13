@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="JAX-WS Service Artifact Creation Options" 
+					description="Select how you would like to create your new project" 
+					error="Please select a method to create the project">
+		<option id="new.jaxws" default="true">Create New JAX-WS Service</option>
+		<option id="import.jaxwswsdl">Create New JAX-WS Service Using WSDL File</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.jaxws" 
+				  title="Create New JAX-WS Service" 
+				  description="Give a project name for the new JAX-WS service" 
+				  error="Please give a name to the project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">Project Name    </data>	
+			
+			<!--data group="createSampleClass" modelProperty="create.class" type="choice" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">Create JAX-WS Class</data>	
+			<data group="createSampleClass" modelProperty="service.class" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">Class Name</data-->			
+			
+			<data modelProperty="service.class.package.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController" group="createSampleClass">Package Name</data>
+ 			<data modelProperty="service.class.name" 
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController" group="createSampleClass">Class Name</data>	 
+			<group id="createSampleClass"></group>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		
+		<settings optionId="import.jaxwswsdl" 
+				  title="Create New JAXWS Service Using WSDL File" 
+				  description="Give a project name for the new JAXWS service" 
+				  error="Please give a name to the project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">Project Name</data>
+			<data modelProperty="import.file" type="file" filter="*.wsdl" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">WSDL File</data>
+			<data group="ext" modelProperty="cxf.mode" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController" controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.jaxws.validators.CXFRuntimeSelectionModeList">CXF runtime mode</data>	  
+			<data group="ext" modelProperty="runtime" type="dir" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">CXF runtime</data>
+			<data group="ext" modelProperty="source.package" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">Custom Package Name</data>
+			<group id="ext"></group>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

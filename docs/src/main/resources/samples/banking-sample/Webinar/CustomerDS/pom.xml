@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.wso2.carbon.CustomerDS</groupId>
+  <artifactId>CustomerDS</artifactId>
+  <version>1.0.0</version>
+  <packaging>service/dataservice</packaging>
+  <name>CustomerDS</name>
+  <description>CustomerDS</description>
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+        <checksumPolicy>ignore</checksumPolicy>
+      </releases>
+      <id>wso2-nexus</id>
+      <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+        <checksumPolicy>ignore</checksumPolicy>
+      </releases>
+      <id>wso2-nexus</id>
+      <url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.wso2.maven</groupId>
+        <artifactId>maven-dataservice-plugin</artifactId>
+        <version>1.0.4</version>
+        <extensions>true</extensions>
+        <configuration>
+          <artifact>src\main\dataservice\CustomerDS.dbs</artifact>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artifact name="CardApplication" version="1.0.0" type="carbon/application">
+    <dependency artifact="CardService" version="1.0.0" serverRole="ApplicationServer"/>
+</artifact>

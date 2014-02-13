@@ -1,0 +1,760 @@
+/*
+ * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.synapse.Mediator;
+import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.mediators.builtin.SendMediator;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gef.RootEditPart;
+import org.eclipse.gef.ui.palette.PaletteViewer;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
+import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
+import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseParentContainer;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceFaultInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutSequenceOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorContainerEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ComplexEndpointsEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ComplexEndpointsOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementContainerEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EntitlementMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterContainerEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment10EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment4EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment7EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment8EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment9EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutSequenceOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.Sequences2EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchCaseParentContainerEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchDefaultParentContainerEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorContainerEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleContainerEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.CustomPaletteViewerKeyHandler;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
+
+public class EditorUtils {
+	
+	public static final String DIAGRAM_FILE_EXTENSION = ".esb_diagram";
+	public static final String DOMAIN_FILE_EXTENSION = ".esb";
+	public static final String SYNAPSE_CONFIG_DIR = "src/main/synapse-config";
+	public static final String SYNAPSE_RESOURCE_DIR = "src/main/graphical-synapse-config";
+	public static final String SEQUENCE_RESOURCE_DIR = "src/main/graphical-synapse-config/sequences";
+	public static final String PROXY_RESOURCE_DIR = "src/main/graphical-synapse-config/proxy-services";
+	public static final String ENDPOINT_RESOURCE_DIR = "src/main/graphical-synapse-config/endpoints";
+	public static final String LOCAL_ENTRY_RESOURCE_DIR = "src/main/graphical-synapse-config/local-entries";
+	public static final String TEMPLATE_RESOURCE_DIR = "src/main/graphical-synapse-config/templates";
+	public static final String TASK_RESOURCE_DIR = "src/main/graphical-synapse-config/tasks";
+	public static final String API_RESOURCE_DIR = "src/main/graphical-synapse-config/api";
+	public static final String COMPLEX_ENDPOINT_RESOURCE_DIR = "src/main/graphical-synapse-config/complex_endpoints";
+	
+	public static AbstractInputConnectorEditPart getInputConnector(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof AbstractInputConnectorEditPart){
+				return (AbstractInputConnectorEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static AbstractOutputConnectorEditPart getOutputConnector(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof AbstractOutputConnectorEditPart){
+				return (AbstractOutputConnectorEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Look up OutputConnector by EditPart and type
+	 * @param <T>
+	 * @param parent
+	 * @param type
+	 * @return
+	 */
+	public static <T extends AbstractOutputConnectorEditPart> T getOutputConnector(
+			ShapeNodeEditPart parent, Class<T> type) {
+		for (int i = 0; i < parent.getChildren().size(); ++i) {
+			if (type.isInstance(parent.getChildren().get(i))) {
+				return type.cast(parent.getChildren().get(i));
+			}
+		}
+		return null;
+	}
+	
+	public static AbstractMediatorInputConnectorEditPart getMediatorInputConnector(ShapeNodeEditPart parent){
+		if(parent!=null){
+			for(int i=0;i<parent.getChildren().size();++i){					
+				if(parent.getChildren().get(i) instanceof AbstractMediatorInputConnectorEditPart){
+					return (AbstractMediatorInputConnectorEditPart) parent.getChildren().get(i);
+				}
+			}
+		}
+		return null;
+	}
+	
+	public static AbstractMediatorOutputConnectorEditPart getMediatorOutputConnector(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof AbstractMediatorOutputConnectorEditPart){
+				return (AbstractMediatorOutputConnectorEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static ArrayList<AdditionalOutputConnector> getMediatorAdditionalOutputConnectors(ShapeNodeEditPart parent){
+		ArrayList<AdditionalOutputConnector> connectors=new ArrayList<AdditionalOutputConnector>();
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof AdditionalOutputConnector){
+				connectors.add((AdditionalOutputConnector) parent.getChildren().get(i));
+			}
+		}
+		return connectors;
+	}
+	
+	
+	public static AbstractEndpointInputConnectorEditPart getEndpointInputConnector(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof AbstractEndpointInputConnectorEditPart){
+				return (AbstractEndpointInputConnectorEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static AbstractEndpointOutputConnectorEditPart getEndpointOutputConnector(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof AbstractEndpointOutputConnectorEditPart){
+				return (AbstractEndpointOutputConnectorEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static AbstractProxyServiceContainerEditPart getProxyContainer(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof AbstractProxyServiceContainerEditPart){
+				return (AbstractProxyServiceContainerEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	
+	public static AbstractInputConnectorEditPart getProxyFaultInputConnector(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof ProxyFaultInputConnectorEditPart){
+				return (ProxyFaultInputConnectorEditPart) parent.getChildren().get(i);
+			}else if(parent.getChildren().get(i) instanceof APIResourceFaultInputConnectorEditPart){
+				return (APIResourceFaultInputConnectorEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static AbstractOutputConnectorEditPart getProxyOutSequenceOutputConnector(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof ProxyOutSequenceOutputConnectorEditPart){
+				return (ProxyOutSequenceOutputConnectorEditPart) parent.getChildren().get(i);
+			}else if(parent.getChildren().get(i) instanceof APIResourceOutSequenceOutputConnectorEditPart){
+				return (APIResourceOutSequenceOutputConnectorEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static AbstractInputConnectorEditPart getBaseFigureInputConnector(ShapeNodeEditPart parent){
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof ProxyInputConnectorEditPart){
+				return (ProxyInputConnectorEditPart) parent.getChildren().get(i);
+			}else if(parent.getChildren().get(i) instanceof APIResourceInputConnectorEditPart){
+				return (APIResourceInputConnectorEditPart) parent.getChildren().get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static ArrayList<ComplexEndpointsOutputConnectorEditPart> getComplexEndpointsOutputConnectors(ComplexEndpointsEditPart parent){
+		ArrayList<ComplexEndpointsOutputConnectorEditPart> outputConnectors=new ArrayList<ComplexEndpointsOutputConnectorEditPart>();
+		
+		for(int i=0;i<parent.getChildren().size();++i){					
+			if(parent.getChildren().get(i) instanceof ComplexEndpointsOutputConnectorEditPart){
+				outputConnectors.add((ComplexEndpointsOutputConnectorEditPart) parent.getChildren().get(i));
+			}
+		}
+		return outputConnectors;
+	}
+	
+	public static AbstractMediator getMediator(EditPart compartment){
+		EditPart child=compartment;
+		while ((child.getParent()!=null)&&!(child.getParent() instanceof AbstractMediator)){
+			child=child.getParent();
+		}		
+		if(child.getParent()!=null){
+			return (AbstractMediator) child.getParent();
+		}else{
+			return null;
+		}
+	}
+	
+	public static EditPart getComplexMediator(EditPart compartment){
+		EditPart editPart=compartment;
+		if(editPart instanceof MediatorFlowMediatorFlowCompartment7EditPart 		// filter pass
+				|| editPart instanceof MediatorFlowMediatorFlowCompartment8EditPart		// filter fail
+				|| editPart instanceof MediatorFlowMediatorFlowCompartment9EditPart		// throttle onaccept
+				|| editPart instanceof MediatorFlowMediatorFlowCompartment10EditPart	// throttle onreject
+				|| editPart instanceof MediatorFlowMediatorFlowCompartment11EditPart) { // clone target
+			return editPart.getParent().getParent().getParent().getParent();
+		} else if (editPart instanceof MediatorFlowMediatorFlowCompartment2EditPart		// switch case
+				|| editPart instanceof MediatorFlowMediatorFlowCompartment4EditPart	) { // switch default
+			return editPart.getParent().getParent().getParent().getParent().getParent();
+		}
+		else {
+				return null;
+		}
+	}
+	
+	/*
+	 * You can get the MediatorEditPart of the entered ConnectorEditPart using this method.
+	 */
+	public static AbstractMediator getMediator(AbstractConnectorEditPart connector){
+		EditPart temp=connector;
+		while((temp !=null)&&(!(temp instanceof AbstractMediator))){
+			temp=temp.getParent();			
+		}
+		if(temp instanceof AbstractMediator){
+			return (AbstractMediator) temp;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	public static AbstractEndpoint getEndpoint(AbstractConnectorEditPart connector){
+		EditPart temp=connector;
+		while((temp !=null)&&(!(temp instanceof AbstractEndpoint))){
+			temp=temp.getParent();			
+		}
+		if(temp instanceof AbstractEndpoint){
+			return (AbstractEndpoint) temp;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	public static ProxyServiceEditPart getProxy(AbstractConnectorEditPart connector){
+		EditPart temp=connector;
+		while((temp !=null)&&(!(temp instanceof ProxyServiceEditPart))){
+			temp=temp.getParent();			
+		}
+		if(temp instanceof ProxyServiceEditPart){
+			return (ProxyServiceEditPart) temp;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	public static ProxyServiceEditPart getProxy(EditPart child){
+		while ((child.getParent()!=null)&&!(child.getParent() instanceof ProxyServiceEditPart)){
+			child=child.getParent();
+		}		
+		if(child.getParent()!=null){
+			return (ProxyServiceEditPart) child.getParent();
+		}else{
+			return null;
+		}
+	}
+	
+	public static AbstractBaseFigureEditPart getAbstractBaseFigureEditPart(EditPart child){
+		while ((child.getParent()!=null)&&!(child.getParent() instanceof AbstractBaseFigureEditPart)){
+			child=child.getParent();
+		}		
+		if(child.getParent()!=null){
+			return (AbstractBaseFigureEditPart) child.getParent();
+		}else{
+			return null;
+		}
+	}
+	
+	public static IGraphicalEditPart getRootContainer(EditPart child) {
+		while ((child.getParent() != null)
+				&& !(child.getParent() instanceof AbstractBaseFigureEditPart)) {
+			child = child.getParent();
+		}
+		if (child.getParent() != null) {
+			return (IGraphicalEditPart) child.getParent();
+		} else {
+			return null;
+		}
+	}
+	
+	public static EObject getRootContainerModel(EObject child) {
+		while ((child.eContainer() != null)
+				&& !(child.eContainer() instanceof ProxyService || child.eContainer() instanceof APIResource)) {
+			child = child.eContainer();
+		}
+		if (child.eContainer() != null) {
+			return (EObject) child.eContainer();
+		} else {
+			return null;
+		}
+	}
+	
+	public static MediatorFlowMediatorFlowCompartmentEditPart getSequenceAndEndpointCompartmentEditPart(EditPart child){
+		while ((child.getParent()!=null)&&!(child.getParent() instanceof MediatorFlowMediatorFlowCompartmentEditPart)){
+			child=child.getParent();
+		}		
+		if(child.getParent()!=null){
+			return (MediatorFlowMediatorFlowCompartmentEditPart) child.getParent();
+		}else{
+			return null;
+		}
+	}	
+	
+	public static AbstractSequencesEditPart getSequence(AbstractConnectorEditPart connector){
+		EditPart temp=connector;
+		while((temp !=null)&&(!(temp instanceof AbstractSequencesEditPart))){
+			temp=temp.getParent();			
+		}
+		if(temp instanceof AbstractSequencesEditPart){
+			return (AbstractSequencesEditPart) temp;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	public static ComplexEndpointsEditPart getComplexEndpoint(AbstractConnectorEditPart connector){
+		EditPart temp=connector;
+		while((temp !=null)&&(!(temp instanceof ComplexEndpointsEditPart))){
+			temp=temp.getParent();			
+		}
+		if(temp instanceof ComplexEndpointsEditPart){
+			return (ComplexEndpointsEditPart) temp;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	public static APIResourceEditPart getAPIResource(AbstractConnectorEditPart connector){
+		EditPart temp=connector;
+		while((temp !=null)&&(!(temp instanceof APIResourceEditPart))){
+			temp=temp.getParent();			
+		}
+		if(temp instanceof APIResourceEditPart){
+			return (APIResourceEditPart) temp;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	/**
+	 * Sets the status of the lock attribute.
+	 * @param editor
+	 * @param lockmode
+	 */
+	public static void setLockmode(EsbDiagramEditor editor, boolean lockmode) {
+		EsbServer esbServer = getEsbServer(editor);
+		if (esbServer != null) {
+			esbServer.setLockmode(lockmode);
+		}
+
+	}
+
+	/**
+	 * Returns the status of the lock attribute.
+	 * @param editor
+	 * @return
+	 */
+	public static boolean isLockmode(EsbDiagramEditor editor) {
+		EsbServer esbServer = getEsbServer(editor);
+		if (esbServer != null) {
+			return esbServer.isLockmode();
+		}
+		return false;
+	}
+	
+	/**
+	 * Sets the status of the lock attribute.
+	 * @param editPart
+	 * @param lockmode
+	 */
+	public static void setLockmode(GraphicalEditPart editPart, boolean lockmode) {
+		EsbServer esbServer = getEsbServer(editPart);
+		if (esbServer != null) {
+			esbServer.setLockmode(lockmode);
+		}
+
+	}
+
+	/**
+	 * Returns the status of the lock attribute.
+	 * @param editPart
+	 * @return
+	 */
+	public static boolean isLockmode(GraphicalEditPart editPart) {
+		EsbServer esbServer = getEsbServer(editPart);
+		if (esbServer != null) {
+			return esbServer.isLockmode();
+		}
+		return false;
+	}
+
+	/**
+	 * Returns the EsbServer model
+	 * @param editor
+	 * @return
+	 */
+	public static EsbServer getEsbServer(EsbDiagramEditor editor) {
+		Diagram diagram = editor.getDiagram();
+		EsbDiagram esbDiagram = (EsbDiagram) diagram.getElement();
+		EsbServer esbServer = esbDiagram.getServer();
+		return esbServer;
+	}
+	
+	/**
+	 * Returns the EsbServer model
+	 * @param editPart
+	 * @return
+	 */
+	public static EsbServer getEsbServer(GraphicalEditPart editPart) {
+		RootEditPart root = editPart.getRoot();
+		if (root.getChildren().size() == 1
+				&& root.getChildren().get(0) instanceof EsbDiagramEditPart) {
+			EsbDiagramEditPart EsbDiagramEditPart = (EsbDiagramEditPart) root.getChildren().get(0);
+			EsbDiagram esbDiagram = (EsbDiagram) ((View) EsbDiagramEditPart.getModel())
+					.getElement();
+			EsbServer esbServer = esbDiagram.getServer();
+			return esbServer;
+		}
+		return null;
+	}
+
+	public static void updateToolpalette() {
+		Display.getCurrent().asyncExec(new Runnable() {			
+			public void run() {
+				IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+						.getActivePage().getEditorReferences();
+				IEditorPart activeEditor=PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().getActiveEditor();
+				for (int i = 0; i < editorReferences.length; i++) {
+					IEditorPart editor = editorReferences[i].getEditor(false);
+					if ((editor instanceof EsbMultiPageEditor)) {
+				        /*
+				         * This must be altered. 'addDefinedSequences' and 'addDefinedEndpoints' methods should not exist inside EsbPaletteFactory class. 
+				         * Creating new instance of 'EsbPaletteFactory' must be avoided.
+				         */
+						EsbPaletteFactory esbPaletteFactory=new EsbPaletteFactory();
+						if(!editor.equals(activeEditor)){					        
+					        esbPaletteFactory.addDefinedSequences(((EsbMultiPageEditor) editor).getGraphicalEditor());
+					        esbPaletteFactory.addDefinedEndpoints(((EsbMultiPageEditor) editor).getGraphicalEditor());					        
+						}else{
+							//esbPaletteFactory.addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor());
+						}
+						addCloudConnectorOperations(((EsbMultiPageEditor) editor).getGraphicalEditor(), esbPaletteFactory);
+						
+						// Initialize palette viewer key handler. 
+						PaletteViewer paletteViewer = ((DiagramEditDomain) ((EsbMultiPageEditor) editor).getGraphicalEditor().getDiagramEditDomain())
+								.getPaletteViewer();
+						if(paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
+							((CustomPaletteViewerKeyHandler)paletteViewer.getKeyHandler()).initializeKeyHandler();	
+						}
+					}
+				}
+			}
+		});
+	}
+	
+	
+	private static void addCloudConnectorOperations(EsbDiagramEditor editorPart,EsbPaletteFactory esbPaletteFactory){
+		IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
+		IFile file = input.getFile();
+		IProject activeProject = file.getProject();
+		
+		//String connectorDirectory=activeProject.getWorkspace().getRoot().getLocation().toOSString()+File.separator+"cloudConnectors";
+		String connectorDirectory = activeProject.getWorkspace().getRoot().getLocation()
+				.toOSString()
+				+ File.separator + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
+		File directory=new File(connectorDirectory);
+		if(directory.isDirectory()){
+			String[] children=directory.list();
+	        for(int i=0;i<children.length;++i){
+	        	esbPaletteFactory.addCloudConnectorOperations(editorPart, children[i]);
+	        }
+		}
+
+	}
+	
+	/**
+	 * A utility method to remove currently unsupported mediators/flows from a
+	 * sequence
+	 * 
+	 * @param sequence
+	 * @return
+	 */
+	public static SequenceMediator stripUnsupportedMediators(SequenceMediator sequence) {
+		SequenceMediator newSequence = new SequenceMediator();
+		for (Iterator<Mediator> i = sequence.getList().iterator(); i.hasNext();) {
+			Mediator next = i.next();
+			newSequence.addChild(next);
+			if (next instanceof SendMediator) {
+				/*
+				 * current impemetaion does not support any mediator after send
+				 * mediator in given sequence, this might be changed in next
+				 * releases
+				 */
+				break;
+			}
+
+		}
+		return newSequence;
+	}
+	
+	/**
+	 * Returns true if the flow has a cycle. but returning false does not
+	 * guarantee that it hasn't cycles
+	 * @param source
+	 * @param target
+	 * @return
+	 */
+	public static boolean hasCycle(EditPart source, EditPart target) {
+		for (EditPart next = target; next != null; next = getNextNode(next)) {
+			if (next instanceof AbstractEndpoint || next instanceof SequencesEditPart
+					|| next instanceof Sequences2EditPart) {
+				break;
+			}
+			if (next == source) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Returns the next element in the node flow.
+	 */
+	private static EditPart getNextNode(EditPart node) {
+		EditPart next = null;
+		if (node instanceof ShapeNodeEditPart) {
+			AbstractOutputConnectorEditPart nextOutputConnector = EditorUtils
+					.getOutputConnector((ShapeNodeEditPart) node);
+			if (nextOutputConnector != null) {
+				/*
+				 * List<EsbLinkEditPart> connections = nextOutputConnector
+				 * .getTargetConnections(); for (EsbLinkEditPart object :
+				 * connections) { if(object.getTarget() instanceof EditPart){
+				 * return object.getTarget().getParent(); } }
+				 */
+				@SuppressWarnings("unchecked")
+				List<EsbLinkEditPart> connections = nextOutputConnector.getSourceConnections();
+				for (EsbLinkEditPart object : connections) {
+					/* At the moment, we are not going to handle multipe links */
+					if (object.getTarget() instanceof EditPart) {
+						return object.getTarget().getParent();
+					}
+				}
+			}
+		}
+		return next;
+	}
+	
+	/**
+	 * Returns true if source and target are connectable
+	 * @param source
+	 * @param target
+	 * @return
+	 * FIXME: please improve
+	 */
+	public static boolean isConnectableTarget(EditPart source, EditPart target) {
+		if (source.getParent() instanceof ShapeCompartmentEditPart
+				&& target.getParent() instanceof ShapeCompartmentEditPart) {
+			ShapeCompartmentEditPart sourceCompartment = (ShapeCompartmentEditPart) source
+					.getParent();
+			ShapeCompartmentEditPart targetCompartment = (ShapeCompartmentEditPart) target
+					.getParent();
+			if (sourceCompartment == targetCompartment) {
+				return true;
+			} else if (isChildOfTarget(sourceCompartment, targetCompartment)
+					|| isChildOfTarget(targetCompartment, sourceCompartment)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Returns true if the source is a child of target. 
+	 * FIXME: please improve
+	 */
+	private static boolean isChildOfTarget(EditPart source, EditPart target) {
+		EditPart parent = target;
+		while ((parent = parent.getParent()) != null) {
+			if (parent == source) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Return the active editor
+	 */
+	public static IProject getActiveProject() {
+		IEditorPart editorPart = null;
+		IProject activeProject = null;
+		IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().getEditorReferences();
+		for (int i = 0; i < editorReferences.length; i++) {
+			IEditorPart editor = editorReferences[i].getEditor(false);
+
+			if (editor != null) {
+				editorPart = editor.getSite().getWorkbenchWindow().getActivePage()
+						.getActiveEditor();
+			}
+
+			if (editorPart != null) {
+				IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
+				IFile file = input.getFile();
+				activeProject = file.getProject();
+
+			}
+		}
+		return activeProject;
+	}
+	
+	public static ShapeNodeEditPart getChildContainer(MultipleCompartmentComplexFiguredAbstractMediator mediator) {
+		
+		if (mediator instanceof SwitchMediatorEditPart) {
+			
+			for(int i=0;i<mediator.getChildren().size();++i){					
+				if(mediator.getChildren().get(i) instanceof SwitchMediatorContainerEditPart){
+					return (SwitchMediatorContainerEditPart) mediator.getChildren().get(i);
+				}
+			} 
+		}else if (mediator instanceof FilterMediatorEditPart) {
+			
+			for(int i=0;i<mediator.getChildren().size();++i){					
+				if(mediator.getChildren().get(i) instanceof FilterContainerEditPart){
+					return (FilterContainerEditPart) mediator.getChildren().get(i);
+				}
+			}
+		}else if (mediator instanceof ThrottleMediatorEditPart) {
+			
+			for(int i=0;i<mediator.getChildren().size();++i){					
+				if(mediator.getChildren().get(i) instanceof ThrottleContainerEditPart){
+					return (ThrottleContainerEditPart) mediator.getChildren().get(i);
+				}
+			}
+		}else if (mediator instanceof CloneMediatorEditPart) {
+			
+			for(int i=0;i<mediator.getChildren().size();++i){					
+				if(mediator.getChildren().get(i) instanceof CloneMediatorContainerEditPart){
+					return (CloneMediatorContainerEditPart) mediator.getChildren().get(i);
+				}
+			}
+		}else if (mediator instanceof EntitlementMediatorEditPart) {
+			
+			for(int i=0;i<mediator.getChildren().size();++i){					
+				if(mediator.getChildren().get(i) instanceof EntitlementContainerEditPart){
+					return (EntitlementContainerEditPart) mediator.getChildren().get(i);
+				}
+			}
+		}
+	
+		return null;
+	}
+	
+    public static boolean isAChildOf(AbstractMediator parentMediator, AbstractMediator thisMediator) {
+		if(parentMediator instanceof MultipleCompartmentComplexFiguredAbstractMediator){
+			List<EditPart> childEditParts = new ArrayList<EditPart>();
+			ShapeNodeEditPart childContainer = getChildContainer((MultipleCompartmentComplexFiguredAbstractMediator)parentMediator);
+			if (childContainer instanceof SwitchMediatorContainerEditPart) {
+				List<EditPart> caseEditParts = ((SwitchCaseParentContainerEditPart)childContainer.getChildren().get(0)).getChildren();
+				List<EditPart> defaultEditParts = ((SwitchDefaultParentContainerEditPart)childContainer.getChildren().get(1)).getChildren();
+				for (EditPart caseEditPart : caseEditParts) {
+					childEditParts.add(caseEditPart);
+				}
+				for (EditPart defaultEditPart : defaultEditParts) {
+					childEditParts.add(defaultEditPart);
+				}
+			} else {
+				childEditParts =  childContainer.getChildren();
+			}
+
+			for (EditPart editPart : childEditParts) {
+				IGraphicalEditPart mediatorFlow = (IGraphicalEditPart)editPart.getChildren().get(0);
+				IGraphicalEditPart mediatorFlowCompartment = (IGraphicalEditPart)mediatorFlow.getChildren().get(0);
+				if (mediatorFlowCompartment.getChildren().size() >= 1) {
+					for (int i = 0; i < mediatorFlowCompartment.getChildren().size(); ++i) {
+						AbstractMediator gep = (AbstractMediator) mediatorFlowCompartment.getChildren().get(i);
+						if (gep.equals(thisMediator)) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+}

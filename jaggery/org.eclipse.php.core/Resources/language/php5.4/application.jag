@@ -1,0 +1,31 @@
+<%
+
+namespace application;
+
+
+	/**
+	 * Returns the value (object) associated with the property
+	 * @link http://jaggeryjs.org/apidocs/application.jag
+	 * @param propName String
+	 * @return Object
+	 */
+	function get(propName){}
+	
+	/**
+	 * Adding a value to the application context
+	 * @link http://jaggeryjs.org/apidocs/application.jag
+	 * @param propName String
+	 * @param value Object
+	 *
+	 */
+	function put(propName, value){}
+	
+	/**
+	 * Removes a property from application context
+	 * @link http://jaggeryjs.org/apidocs/application.jag
+	 * @param propName String
+	 * 
+	 *
+	 */
+	function remove(propName){}
+%>

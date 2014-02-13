@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Human Task Editor
+Bundle-SymbolicName: org.wso2.tools.humantask.editor;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.wso2.tools.humantask.editor.Activator
+Bundle-Vendor: WSO2 Inc.
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.edit.ui;bundle-version="2.5.0",
+ org.eclipse.jface.text;bundle-version="3.5.0",
+ org.eclipse.core.resources;bundle-version="3.5.0",
+ org.wso2.tools.humantask.model;bundle-version="1.0.0",
+ org.eclipse.emf;bundle-version="2.5.0",
+ org.eclipse.emf.codegen;bundle-version="2.5.0",
+ org.eclipse.emf.codegen.ecore;bundle-version="2.5.0",
+ org.eclipse.emf.codegen.ecore.ui;bundle-version="2.5.0",
+ org.eclipse.emf.codegen.ui;bundle-version="2.5.0",
+ org.eclipse.emf.compare;bundle-version="1.0.1",
+ org.eclipse.ui.forms;bundle-version="3.4.0",
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide,
+ org.eclipse.wst.xml.core;bundle-version="1.1.402",
+ org.eclipse.wst.xml.ui;bundle-version="1.1.2",
+ org.eclipse.wst.sse.core;bundle-version="1.1.402",
+ org.eclipse.wst.sse.ui;bundle-version="1.1.102",
+ org.eclipse.wst.common.ui;bundle-version="1.1.402"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

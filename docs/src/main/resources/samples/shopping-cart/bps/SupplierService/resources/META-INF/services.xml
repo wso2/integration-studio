@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.6-wso2v3  Built on : Apr 27, 2010 (12:11:11 UTC) -->
+<serviceGroup>
+    <service name="SupplierOrderService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.acme.shoppingcart.supplierservice.SupplierOrderServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.acme.shoppingcart.supplierservice.SupplierOrderServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="createOrder" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://acme.com/shoppingcart/supplier">
+            <actionMapping>urn:createOrder</actionMapping>
+            <outputActionMapping>urn:createOrderResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

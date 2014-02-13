@@ -1,0 +1,13 @@
+<%
+namespace websocket;
+
+
+	/**
+	 * Sends data to the socket (inbound connection).
+	 * @link http://jaggeryjs.org/apidocs/application.jag
+	 * @param param stream or text
+	 * 
+	 */
+	function send(param){}
+
+%>

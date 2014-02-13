@@ -1,0 +1,76 @@
+<%
+class MetaDatstore {
+
+
+
+	/**
+	 * This enables data manipulation through registry (metadata store) resources.
+	 * @link http://jaggeryjs.org/apidocs/metadatastore.jag
+	 * @param username String
+	 * @param password String
+	 * @return MetadataStore  Returns a new metadata store
+	 */
+	function __construct (username, password) {}
+
+	/**
+	 * This method returns true or false depending on the existence of either a Resource or a Collection in the specified path.
+	 * @link http://jaggeryjs.org/apidocs/metadatastore.jag
+	 * @param path String
+	 * @return Boolean  
+	 * 
+	 */
+	function resourceExists(path) {}
+
+	/**
+	 * This method returns the resource in the specified path. If the resource in the path is a collection, then a Collection object is returned. Else, it returns a Resource object. If it is a collection, then you can specfify optional start and pageSize parameters to filter your results
+	 * @link http://jaggeryjs.org/apidocs/metadatastore.jag
+	 * @param path String
+	 * @param Object startPageSize
+	 * @return Object
+	 */
+	function get(path, startPageSize) {}
+
+	/**
+	 * This method removes the resource in the specified path from the Metadata store.
+	 * @link http://jaggeryjs.org/apidocs/metadatastore.jag
+	 * @param path String
+	 */
+	function remove(path) {}
+
+	/**
+	 * This method adds either a Resource or a Collection into the specified path in the Metadata store.
+	 * @link http://jaggeryjs.org/apidocs/metadatastore.jag
+	 * @param suggestedPath String
+	 * @param resource Resource|Collection
+	 * @return String
+	 */
+	function put (suggestedPath, resource) {}
+	
+	
+	/**
+	 * Creates a link to a existing resource.
+	 * @link http://jaggeryjs.org/apidocs/metadatastore.jag
+	 * @param path String
+	 * @param target String
+	 * @return String
+	 */
+	function createLink (path, target) {}
+	
+	/**
+	 * Where you insert a new Resource into the Metadata store, then you should use this method to create the initial Resource object.
+	 * @link http://jaggeryjs.org/apidocs/metadatastore.jag
+	 * @return Resource
+	 */
+	function newResource () {}
+	
+	/**
+	 * Where you insert a new Resource into the Metadata store, then you should use this method to create the initial Resource object.
+	 * @link http://jaggeryjs.org/apidocs/metadatastore.jag
+	 * @return Collection
+	 */
+	function newCollection () {}
+
+	
+
+}
+%>

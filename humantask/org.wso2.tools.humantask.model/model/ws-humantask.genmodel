@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.wso2.tools.humantask.model/src"
+    modelPluginID="org.wso2.tools.humantask.model" modelName="Ws-humantask" modelPluginClass=""
+    editPluginClass="org.wso2.tools.humantask.model.ht.provider.WSHumanTaskEditPlugin"
+    editorPluginClass="org.wso2.tools.humantask.model.ht.presentation.WSHumanTaskEditorPlugin"
+    importerID="org.eclipse.xsd.ecore.importer" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace">
+  <foreignModel>file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd</foreignModel>
+  <genPackages prefix="HT" basePackage="org.wso2.tools.humantask.model" resource="XML"
+      disposableProviderFactory="true" ecorePackage="ht.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ht.ecore#//TBoolean">
+      <genEnumLiterals ecoreEnumLiteral="ht.ecore#//TBoolean/yes"/>
+      <genEnumLiterals ecoreEnumLiteral="ht.ecore#//TBoolean/no"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ht.ecore#//TPotentialDelegatees">
+      <genEnumLiterals ecoreEnumLiteral="ht.ecore#//TPotentialDelegatees/anybody"/>
+      <genEnumLiterals ecoreEnumLiteral="ht.ecore#//TPotentialDelegatees/nobody"/>
+      <genEnumLiterals ecoreEnumLiteral="ht.ecore#//TPotentialDelegatees/potentialOwners"/>
+      <genEnumLiterals ecoreEnumLiteral="ht.ecore#//TPotentialDelegatees/other"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="ht.ecore#//TBooleanObject"/>
+    <genDataTypes ecoreDataType="ht.ecore#//TGroup"/>
+    <genDataTypes ecoreDataType="ht.ecore#//TPotentialDelegateesObject"/>
+    <genDataTypes ecoreDataType="ht.ecore#//TUser"/>
+    <genClasses ecoreClass="ht.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/businessAdministrators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/excludedOwners"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//DocumentRoot/group"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/groups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/humanInteractions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/import"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/logicalPeopleGroups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/notification"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/notifications"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/organizationalEntity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/peopleAssignments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/potentialOwners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/priority"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/recipients"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/task"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/taskInitiator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/tasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/taskStakeholders"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//DocumentRoot/user"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//DocumentRoot/users"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TArgument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TArgument/expressionLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TArgument/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TBooleanExpr"/>
+    <genClasses ecoreClass="ht.ecore#//TDeadline">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TDeadline/for"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TDeadline/until"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TDeadline/escalation"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TDeadlineExpr"/>
+    <genClasses ecoreClass="ht.ecore#//TDeadlines">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TDeadlines/startDeadline"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TDeadlines/completionDeadline"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TDelegation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TDelegation/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TDelegation/potentialDelegatees"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TDescription/contentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TDescription/lang"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TDocumentation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TDocumentation/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TDocumentation/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TDocumentation/lang"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TDurationExpr"/>
+    <genClasses ecoreClass="ht.ecore#//TEscalation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TEscalation/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TEscalation/toParts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TEscalation/notification"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TEscalation/localNotification"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TEscalation/reassignment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TEscalation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TExpression/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TExpression/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TExpression/expressionLanguage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TExpression/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TExtensibleElements">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TExtensibleElements/documentation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TExtensibleElements/any"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TExtensibleElements/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TExtensibleMixedContentElements">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TExtensibleMixedContentElements/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TExtensibleMixedContentElements/documentation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TExtensibleMixedContentElements/any"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TExtensibleMixedContentElements/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TExtension/mustUnderstand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TExtension/namespace"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TExtensions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TExtensions/extension"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TFrom">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TFrom/argument"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TFrom/literal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TFrom/expressionLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TFrom/logicalPeopleGroup"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TGenericHumanRole">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TGenericHumanRole/from"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TGrouplist">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TGrouplist/group"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//THumanInteractions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//THumanInteractions/extensions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//THumanInteractions/import"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//THumanInteractions/logicalPeopleGroups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//THumanInteractions/tasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//THumanInteractions/notifications"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//THumanInteractions/expressionLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//THumanInteractions/queryLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//THumanInteractions/targetNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TImport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TImport/importType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TImport/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TImport/namespace"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TLiteral/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TLiteral/any"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TLiteral/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TLocalNotification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TLocalNotification/priority"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TLocalNotification/peopleAssignments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TLocalNotification/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TLogicalPeopleGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TLogicalPeopleGroup/parameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TLogicalPeopleGroup/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TLogicalPeopleGroup/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TLogicalPeopleGroups">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TLogicalPeopleGroups/logicalPeopleGroup"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TNotification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TNotification/interface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TNotification/priority"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TNotification/peopleAssignments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TNotification/presentationElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TNotification/renderings"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TNotification/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TNotificationInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TNotificationInterface/operation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TNotificationInterface/portType"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TNotifications">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TNotifications/notification"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TOrganizationalEntity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TOrganizationalEntity/users"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TOrganizationalEntity/groups"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TParameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TPeopleAssignments">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TPeopleAssignments/genericHumanRole"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TPeopleAssignments/potentialOwners"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TPeopleAssignments/excludedOwners"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TPeopleAssignments/taskInitiator"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TPeopleAssignments/taskStakeholders"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TPeopleAssignments/businessAdministrators"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ht.ecore#//TPeopleAssignments/recipients"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TPresentationElements">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TPresentationElements/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TPresentationElements/presentationParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TPresentationElements/subject"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TPresentationElements/description"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TPresentationParameter"/>
+    <genClasses ecoreClass="ht.ecore#//TPresentationParameters">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TPresentationParameters/presentationParameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TPresentationParameters/expressionLanguage"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TPriority"/>
+    <genClasses ecoreClass="ht.ecore#//TQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TQuery/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TQuery/any"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TQuery/part"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TQuery/queryLanguage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ht.ecore#//TQuery/anyAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TReassignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TReassignment/potentialOwners"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TRendering">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TRendering/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TRenderings">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TRenderings/rendering"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TTask">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/interface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/priority"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/peopleAssignments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/delegation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/presentationElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/outcome"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/searchBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/renderings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTask/deadlines"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TTask/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TTaskInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TTaskInterface/operation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TTaskInterface/portType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TTaskInterface/responseOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TTaskInterface/responsePortType"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TTasks">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TTasks/task"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TText">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TText/lang"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TToPart">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TToPart/expressionLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TToPart/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TToParts">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ht.ecore#//TToParts/toPart"/>
+    </genClasses>
+    <genClasses ecoreClass="ht.ecore#//TUserlist">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ht.ecore#//TUserlist/user"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

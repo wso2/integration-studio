@@ -1,0 +1,14 @@
+<%
+namespace process;
+
+function getEnv(){}
+
+function getEnvs(){}
+
+function getProperty(){}
+
+function getProperties(){}
+
+function setProperty(){}
+
+%>

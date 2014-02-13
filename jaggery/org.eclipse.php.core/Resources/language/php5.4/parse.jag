@@ -1,0 +1,13 @@
+<%
+ 
+/**
+ * Takes a well-formed JSON String and returns the resulting JavaScript object
+ * @link http://jaggeryjs.org/apidocs/parse.jag
+ * @param jsonString String <p>
+ * Stringified JSON object
+ * </p>
+ * @return <p>Object obj - JSON object </p>
+ * 			
+ */
+function parse(jsonString) {}
+%>

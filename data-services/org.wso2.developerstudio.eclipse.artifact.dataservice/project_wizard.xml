@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Data Service Artifact Creation Options" 
+					description="Select how you would like to create your new project" 
+					error="Please select a method to create the project">
+		<option id="new.dsproject" default="true">Create New Data Service</option>
+		<option id="import.dsproject">Import Data Service</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.dsproject" 
+				  title="Create New Data Service" 
+				  description="Give a project name for the new Data Service" 
+				  error="Please give a name to the project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceProjectFieldController">Project Name*</data>
+			<data modelProperty="service.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceProjectFieldController">Data Service Name*</data>
+			<data modelProperty="service.group" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceProjectFieldController">Data Service Group</data>
+			<data modelProperty="service.ns" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceProjectFieldController">Data Service Namespace</data>
+			<data modelProperty="service.description" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceProjectFieldController" controlData="multiline=true">Description</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+		<settings optionId="import.dsproject" 
+				  title="Import Data Service Project" 
+				  description="Browse the location of a Data Service descriptor file" 
+				  error="Browse and select a Data Service descriptor file">
+			<data modelProperty="import.file" type="file" filter="*.dbs" fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceProjectFieldController">Data Service Descriptor File*</data>
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Carbon 3.0.1 supporting namespace-->
+<!--definitions xmlns="http://ws.apache.org/ns/synapse"-->
+
+<!--Carbon 3.1 supporting namespace-->
+<definitions xmlns="http://ws.apache.org/ns/synapse">
+
+    <registry provider="org.wso2.carbon.mediation.registry.WSO2Registry">
+        <parameter name="cachableDuration">15000</parameter>
+    </registry>
+    <proxy name="PurchasingService" transports="https" startOnLoad="true" trace="disable">
+        <target>
+            <inSequence>
+
+                <filter xmlns:pur="http://shoppingcart.acme.com/purchase"
+                        xpath="count(//pur:checkout) &gt; 0">
+                    <log level="custom">
+                        <property name="DEBUG" value="Request Received - checkout"/>
+                    </log>
+
+                    <!--Store checkout REQ Body-->
+                    <enrich>
+                        <source type="body"/>
+                        <target type="property" property="ORIGINAL_CHECKOUT_REQ"/>
+                    </enrich>
+
+
+                    <enrich>
+                        <source xmlns:pur="http://shoppingcart.acme.com/purchase"
+                                xmlns:xsd="http://shoppingcart.acme.com/purchase/xsd"
+                                xpath="//pur:checkout/pur:customerDetails/xsd:email/text()"/>
+                        <target type="property" property="CUSTOMER_EMAIL"/>
+                    </enrich>
+
+
+                    <xslt key="conf:/customer_details_by_email.xslt">
+                        <property name="CUSTOMER_EMAIL"
+                                  expression="get-property('CUSTOMER_EMAIL')"/>
+                    </xslt>
+
+                    <log level="custom">
+                        <property name="DEBUG"
+                                  value="XSLT Transformation completed- getCustomerByEmail"/>
+                    </log>
+
+                    <property name="STATE_NUMBER" value="0"/>
+                    <send>
+                        <endpoint key="PurchasingServiceEP"/>
+                    </send>
+
+                    <log level="custom">
+                        <property name="DEBUG" value="Request Sent - getCustomerByEmail"/>
+                    </log>
+
+                </filter>
+
+            </inSequence>
+
+
+            <outSequence>
+
+                <log level="custom">
+                    <property name="DEBUG" value="Purchasing Service : OUT_SEQ"/>
+                </log>
+
+
+                <!--Filter Customer Check Responses-->
+                <filter xmlns:cus="http://shoppingcart.acme.com/customer"
+                        xpath="count(//cus:Customers) > 0">
+                    <then>
+                        <log level="custom">
+                            <property name="DEBUG" value="Filtered 'Customers' Response"/>
+                        </log>
+
+                        <filter xmlns:cus="http://shoppingcart.acme.com/customer"
+                                xpath="count(//cus:Customers/cus:Customer/cus:customerEmail) > 0">
+                            <then>
+                                <log level="custom">
+                                    <property name="DEBUG" value="Serving Existing Customer"/>
+                                </log>
+                            </then>
+                            <else>
+                                <log level="custom">
+                                    <property name="DEBUG" value="Adding New Customer"/>
+                                </log>
+
+                                <enrich>
+                                    <source type="property" property="ORIGINAL_CHECKOUT_REQ"/>
+                                    <target type="body"/>
+                                </enrich>
+
+                                <xslt key="conf:/new_customer.xslt">
+                                    <property name="CUSTOMER_EMAIL"
+                                              expression="get-property('CUSTOMER_EMAIL')"/>
+                                </xslt>
+
+                                <log level="custom">
+                                    <property name="DEBUG"
+                                              value="XSLT Transformation completed- addNewCustomer"/>
+                                </log>
+
+                                <send>
+                                    <endpoint key="PurchasingServiceEP"/>
+                                </send>
+
+                                <log level="custom">
+                                    <property name="DEBUG"
+                                              value="Request Sent - addNewCustomer"/>
+                                </log>
+                            </else>
+                        </filter>
+
+
+                        <enrich>
+                            <source type="property" property="ORIGINAL_CHECKOUT_REQ"/>
+                            <target type="body"/>
+                        </enrich>
+
+                        <!--addNewOrder-->
+                        <xslt key="conf:/new_order.xslt">
+                            <property name="CUSTOMER_EMAIL"
+                                      expression="get-property('CUSTOMER_EMAIL')"/>
+                        </xslt>
+
+                        <log level="custom">
+                            <property name="DEBUG"
+                                      value="XSLT Transformation completed- addNewOrder"/>
+                        </log>
+
+                        <property name="STATE_NUMBER" value="1"/>
+                        <!--SEND to DS-->
+                        <send>
+                            <endpoint key="PurchasingServiceEP"/>
+                        </send>
+                        <log level="custom">
+                            <property name="DEBUG" value="Request Sent - addNewOrder"/>
+                            <property name="STATE_NUMBER"
+                                      expression="get-property('STATE_NUMBER')"/>
+                        </log>
+
+
+                    </then>
+                </filter>
+
+                <!--Filter Order Responses-->
+                <filter xmlns:ord="http://shoppingcart.acme.com/order"
+                        xpath="count(//ord:Orders) > 0">
+
+                    <log level="custom">
+                        <property name="DEBUG" value="Filtered 'Orders' Response"/>
+                    </log>
+
+                    <switch source="get-property('STATE_NUMBER')">
+                        <case regex="1">
+                            <log level="custom">
+                                <property name="DEBUG"
+                                          value="Response Received - addNewOrder - OUT_SEQ"/>
+                                <property name="STATE_NUMBER"
+                                          expression="get-property('STATE_NUMBER')"/>
+                            </log>
+
+                            <enrich>
+                                <source xmlns:ord="http://shoppingcart.acme.com/order"
+                                        xpath="//ord:Orders/ord:Order/ord:OrderNumber/text()"/>
+                                <target type="property" property="ORDER_NUMBER"/>
+                            </enrich>
+
+                            <log level="custom">
+                                <property name="ORDER_NUMBER"
+                                          expression="get-property('ORDER_NUMBER')"/>
+                            </log>
+
+                            <!--Restore checkout REQ Body-->
+                            <enrich>
+                                <source type="property" property="ORIGINAL_CHECKOUT_REQ"/>
+                                <target type="body"/>
+                            </enrich>
+
+                            <log level="custom">
+                                <property name="DEBUG"
+                                          value="Splitting and Iteration  - Starting- OUT_SEQ"/>
+                            </log>
+
+                            <!--Iterating through the product list -->
+                            <iterate continueParent="true"
+                                     expression="//pur:checkout/pur:purchaseOrder/xsd:order"
+                                     preservePayload="true"
+                                     attachPath="//pur:checkout/pur:purchaseOrder"
+                                     xmlns:pur="http://shoppingcart.acme.com/purchase"
+                                     xmlns:xsd="http://shoppingcart.acme.com/purchase/xsd">
+                                <target>
+                                    <sequence>
+                                        <enrich>
+                                            <source xmlns:pur="http://shoppingcart.acme.com/purchase"
+                                                    xmlns:xsd="http://shoppingcart.acme.com/purchase/xsd"
+                                                    xpath="//pur:checkout/pur:purchaseOrder/xsd:order/xsd:code/text()"/>
+                                            <target type="property" property="PROD_CODE_TMP"/>
+                                        </enrich>
+                                        <enrich>
+                                            <source xmlns:pur="http://shoppingcart.acme.com/purchase"
+                                                    xmlns:xsd="http://shoppingcart.acme.com/purchase/xsd"
+                                                    xpath="//pur:checkout/pur:purchaseOrder/xsd:order/xsd:quantity/text()"/>
+                                            <target type="property" property="PROD_QTY_TMP"/>
+                                        </enrich>
+
+
+                                        <xslt key="conf:/new_order_item.xslt">
+                                            <property name="ORDER_NUMBER"
+                                                      expression="get-property('ORDER_NUMBER')"/>
+                                            <property name="PROD_CODE_TMP"
+                                                      expression="get-property('PROD_CODE_TMP')"/>
+                                            <property name="PROD_QTY_TMP"
+                                                      expression="get-property('PROD_QTY_TMP')"/>
+                                        </xslt>
+                                        <log level="custom">
+                                            <property name="DEBUG"
+                                                      value="XSLT Transformation completed- addNewOrderItem"/>
+                                        </log>
+
+                                        <send>
+                                            <endpoint key="PurchasingServiceEP"/>
+                                        </send>
+
+                                        <log level="custom">
+                                            <property name="DEBUG"
+                                                      value="Request SENT - addNewOrderItem"/>
+                                            <property name="ORDER_NUMBER"
+                                                      expression="get-property('ORDER_NUMBER')"/>
+                                            <property name="PROD_CODE_TMP"
+                                                      expression="get-property('PROD_CODE_TMP')"/>
+                                            <property name="PROD_QTY_TMP"
+                                                      expression="get-property('PROD_QTY_TMP')"/>
+                                        </log>
+                                    </sequence>
+                                </target>
+                            </iterate>
+
+                        </case>
+
+                        <case regex="2">
+                            <log level="custom">
+                                <property name="DEBUG"
+                                          value="Response Received : totalOrderAmount"/>
+                                <property name="STATE_NUMBER"
+                                          expression="get-property('STATE_NUMBER')"/>
+                            </log>
+
+                            <!--Extracting the total amount for the placed order-->
+                            <enrich>
+                                <source xmlns:ord="http://shoppingcart.acme.com/order"
+                                        xpath="//ord:Orders/ord:Order/ord:total/text()"/>
+                                <target type="property" property="TOTAL_AMOUNT"/>
+                            </enrich>
+
+                            <log level="custom">
+                                <property name="TOTAL_AMOUNT"
+                                          expression="get-property('TOTAL_AMOUNT')"/>
+                            </log>
+
+                            <!--Restore checkout REQ Body-->
+                            <enrich>
+                                <source type="property" property="ORIGINAL_CHECKOUT_REQ"/>
+                                <target type="body"/>
+                            </enrich>
+
+                            <xslt key="conf:/finance_connector.xslt">
+                                <property name="TOTAL_AMOUNT"
+                                          expression="get-property('TOTAL_AMOUNT')"/>
+                            </xslt>
+
+                            <log level="custom">
+                                <property name="DEBUG"
+                                          value="XSLT Transformation completed - FinanceConnectorService"/>
+                            </log>
+
+                            <send>
+                                <endpoint
+                                        name="endpoint_urn_uuid_F9F704536F54AC2287726933072361086713640">
+                                    <address
+                                            uri="http://localhost:9764/services/FinanceConnectorService/ ">
+					<enableSec policy="conf:/SignAndEncrypt.xml"/>
+				    </address>
+                                </endpoint>
+                            </send>
+
+                            <log level="custom">
+                                <property name="DEBUG"
+                                          value="Notification SENT"/>
+                            </log>
+                            <send/>
+                        </case>
+
+
+                    </switch>
+                </filter>
+
+                <aggregate>
+                    <onComplete expression="//OrderItems"
+                                xmlns:ord="http://shoppingcart.acme.com/order/new">
+
+                        <property name="DEBUG"
+                                  value="Aggregation competed...."/>
+
+                        <log level="custom">
+                            <property name="DEBUG"
+                                      value="Iterating invoked and continue parent.."/>
+                        </log>
+
+                        <!--Restore checkout REQ Body-->
+                        <enrich>
+                            <source type="property" property="ORIGINAL_CHECKOUT_REQ"/>
+                            <target type="body"/>
+                        </enrich>
+
+
+                        <xslt key="conf:/total_order_amount.xslt">
+                            <property name="ORDER_NUMBER"
+                                      expression="get-property('ORDER_NUMBER')"/>
+                        </xslt>
+
+                        <log level="custom">
+                            <property name="DEBUG"
+                                      value="XSLT Transformation completed : totalOrderAmount"/>
+                        </log>
+
+                        <property name="STATE_NUMBER" value="2"/>
+                        <!--SEND to DS-->
+                        <send>
+                            <endpoint key="PurchasingServiceEP"/>
+                        </send>
+                        <log level="custom">
+                            <property name="DEBUG"
+                                      value="Request Sent : totalOrderAmount"/>
+                            <property name="STATE_NUMBER"
+                                      expression="get-property('STATE_NUMBER')"/>
+                        </log>
+
+                    </onComplete>
+                </aggregate>
+            </outSequence>
+            <faultSequence>
+                <makefault version="soap12">
+                    <code value="tns:Receiver" xmlns:tns="http://www.w3.org/2003/05/soap-envelope"/>
+                    <reason expression="get-property('ERROR_MESSAGE')"/>
+                </makefault>
+                <header name="To" action="remove"/>
+                <send/>
+            </faultSequence>
+        </target>
+    </proxy>
+
+    <proxy name="ProductService" transports="https" startOnLoad="true" trace="disable">
+        <target>
+            <inSequence>
+                <log level="custom">
+                    <property name="MESSAGE" value="Sending Request to Product Service...."/>
+                </log>
+                <send>
+                    <endpoint key="ProductServiceEP"/>
+                </send>
+            </inSequence>
+            <outSequence>
+                <log level="custom">
+                    <property name="MESSAGE"
+                              value="Sending the Response back to the client from Product Service....."/>
+                </log>
+                <send/>
+            </outSequence>
+            <faultSequence>
+                <makefault version="soap12">
+                    <code value="tns:Receiver" xmlns:tns="http://www.w3.org/2003/05/soap-envelope"/>
+                    <reason expression="get-property('ERROR_MESSAGE')"/>
+                </makefault>
+                <header name="To" action="remove"/>
+                <send/>
+            </faultSequence>
+        </target>
+    </proxy>
+
+    <proxy name="AdminService" transports="https" startOnLoad="true" trace="disable">
+        <target>
+            <inSequence>
+                <log level="custom">
+                    <property name="MESSAGE" value="Sending Request to Admin Service...."/>
+                </log>
+                <send>
+                    <endpoint key="AdminServiceEP"/>
+                </send>
+            </inSequence>
+            <outSequence>
+                <log level="custom">
+                    <property name="MESSAGE"
+                              value="Sending the Response back to the client from Admin Service....."/>
+                </log>
+                <send/>
+            </outSequence>
+            <faultSequence>
+                <makefault version="soap12">
+                    <code value="tns:Receiver" xmlns:tns="http://www.w3.org/2003/05/soap-envelope"/>
+                    <reason expression="get-property('ERROR_MESSAGE')"/>
+                </makefault>
+                <header name="To" action="remove"/>
+                <send/>
+            </faultSequence>
+        </target>
+    </proxy>
+
+    <endpoint name="FinanceConnectorServiceEP">
+        <address uri="http://localhost:9764/services/FinanceConnectorService">
+		<enableSec policy="conf:/SignAndEncrypt.xml"/>
+	</address>
+    </endpoint>
+    <endpoint name="PurchasingServiceEP">
+        <address uri="http://localhost:9763/services/ShoppingCartDS/ ">
+		<enableSec policy="conf:/SignAndEncrypt.xml"/>
+	</address>
+    </endpoint>
+    <endpoint name="ProductServiceEP">
+        <address uri="http://localhost:9763/services/ShoppingCartDS">
+		<enableSec policy="conf:/SignAndEncrypt.xml"/>
+	</address>
+    </endpoint>
+
+    <endpoint name="AdminServiceEP">
+        <address uri="http://localhost:9763/services/ShoppingCartDS/">
+		<enableSec policy="conf:/SignAndEncrypt.xml"/>
+	</address>
+    </endpoint>
+
+    <sequence name="fault">
+        <log level="full">
+            <property name="MESSAGE" value="Executing default 'fault' sequence"/>
+            <property name="ERROR_CODE" expression="get-property('ERROR_CODE')"/>
+            <property name="ERROR_MESSAGE" expression="get-property('ERROR_MESSAGE')"/>
+        </log>
+        <drop/>
+    </sequence>
+    <sequence name="main">
+        <in>
+            <send/>
+        </in>
+        <out>
+            <send/>
+        </out>
+    </sequence>
+
+    <task name="BPSReorderTask" class="org.apache.synapse.startup.tasks.MessageInjector"
+          group="synapse.simple.quartz">
+        <trigger interval="20000"/>
+        <property xmlns:task="http://www.wso2.org/products/wso2commons/tasks" name="soapAction"
+                  value="http://acme.com/shoppingcart/reorder/initiate"/>
+        <property xmlns:task="http://www.wso2.org/products/wso2commons/tasks" name="format"
+                  value="soap11"/>
+        <property xmlns:task="http://www.wso2.org/products/wso2commons/tasks" name="message">
+            <reor:ReOrderProcessRequest xmlns:reor="http://acme.com/shoppingcart/reorder">
+                <reor:input>REORDER</reor:input>
+            </reor:ReOrderProcessRequest>
+        </property>
+        <property xmlns:task="http://www.wso2.org/products/wso2commons/tasks" name="to"
+                  value="https://localhost:9446/services/ReOrderProcessService"/>
+    </task>
+</definitions>

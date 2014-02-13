@@ -1,0 +1,392 @@
+/*
+ * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.wso2.developerstudio.appfactory.ui.views;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.equinox.security.storage.ISecurePreferences;
+import org.eclipse.equinox.security.storage.SecurePreferencesFactory;
+import org.eclipse.equinox.security.storage.StorageException;
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Cursor;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
+import org.wso2.developerstudio.appfactory.core.authentication.UserPasswordCredentials;
+import org.wso2.developerstudio.appfactory.core.jag.api.JagApiProperties;
+import org.wso2.developerstudio.appfactory.core.model.ErrorType;
+import org.wso2.developerstudio.appfactory.ui.Activator;
+import org.wso2.developerstudio.appfactory.ui.utils.Messages;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.ResourceManager;
+import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
+
+public class PasswordDialog extends Dialog {
+  private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+  static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.dashboard";
+  private Text userText;
+  private Text passwordText;
+  private Text hostText;
+  private String user;
+  private String password;
+  private String host;
+  private boolean isSave;
+  private boolean isOT;
+  private Label error;
+  private UserPasswordCredentials credentials;
+  private boolean fromDashboad;
+  private ISecurePreferences gitTempNode;
+  private Button btnCheckButton;
+  private ISecurePreferences preferences;
+  
+/** * Create the dialog. * * @param parentShell */
+
+  public PasswordDialog(Shell parentShell) {
+    super(parentShell);
+    setDefaultImage(ResourceManager.getPluginImage(
+			"org.wso2.developerstudio.appfactory.ui", //$NON-NLS-1$
+			"icons/users.gif")); //$NON-NLS-1$
+     
+  }
+  
+  protected void configureShell(Shell newShell) {
+		super.configureShell(newShell);
+		newShell.setText(Messages.PasswordDialog_LoginDialog_title);
+		newShell.setImage(ResourceManager.getPluginImage(
+			"org.wso2.developerstudio.appfactory.ui", //$NON-NLS-1$
+			"icons/users.gif"));
+	}
+  
+/** * Create contents of the dialog. * * @param parent */
+
+  @Override
+  protected Control createDialogArea(Composite parent) {
+    Composite container = (Composite) super.createDialogArea(parent);
+    container.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+    GridLayout gl_container = new GridLayout(2, false);
+    gl_container.marginRight = 5;
+    gl_container.marginLeft = 10;
+    container.setLayout(gl_container);
+    
+    Label lblNewLabel = new Label(container, SWT.NONE);
+	lblNewLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+	lblNewLabel.setImage(ResourceManager.getPluginImage(
+			"org.wso2.developerstudio.appfactory.ui", //$NON-NLS-1$
+			"icons/appfactory_logo.png")); //$NON-NLS-1$
+	GridData gd_lblNewLabel = new GridData(SWT.LEFT, SWT.TOP, false,
+			true, 2, 1);
+	gd_lblNewLabel.widthHint = 509;
+	gd_lblNewLabel.heightHint = 32;
+	lblNewLabel.setLayoutData(gd_lblNewLabel);
+	
+    Label lblHost = new Label(container, SWT.NONE);
+    lblHost.setText(Messages.PasswordDialog_URL);
+    lblHost.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+    hostText = new Text(container, SWT.BORDER);
+    hostText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+        1, 1));
+    hostText.setText(host);
+    
+    Label lblUser = new Label(container, SWT.NONE);
+    lblUser.setText(Messages.PasswordDialog_USER);
+    lblUser.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+    userText = new Text(container, SWT.BORDER);
+    userText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+        1, 1));
+    userText.setText(user);
+
+    Label lblNewLabel1 = new Label(container, SWT.NONE);
+    GridData gd_lblNewLabel1= new GridData(SWT.LEFT, SWT.CENTER, false,
+        false, 1, 1);
+    gd_lblNewLabel1.horizontalIndent = 1;
+    lblNewLabel1.setLayoutData(gd_lblNewLabel1);
+    lblNewLabel1.setText(Messages.PasswordDialog_Password);
+    lblNewLabel1.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+    passwordText = new Text(container, SWT.PASSWORD|SWT.BORDER);
+     
+    passwordText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
+        false, 1, 1));
+    passwordText.setText(password);
+    
+    new Label(container, SWT.NONE);
+    
+    btnCheckButton = new Button(container, SWT.CHECK);
+    btnCheckButton.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+    btnCheckButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+            1, 1));
+    btnCheckButton.addSelectionListener(new SelectionAdapter() {
+    	@Override
+    	public void widgetSelected(SelectionEvent e) {
+    		 Button button = (Button) e.widget;
+    		 if("".equals(userText.getText())||"".equals( passwordText.getText())){
+    				error.setText("Username or Password cannot be empty !");
+    				btnCheckButton.setSelection(false);
+    			}else{
+    	        if (button.getSelection()){
+    	        	setSave(true);
+    	        	 try {
+    	        		  preferences = SecurePreferencesFactory.getDefault();
+    	        	      gitTempNode = preferences.node("Test");
+						  gitTempNode.put("user","testUser", true);/*get secure store password*/
+					} catch (StorageException e1) {
+						btnCheckButton.setSelection(false);
+						log.error(e1);
+					}
+    	        }else{
+    	        	setSave(false);
+    	           }
+    			} 
+    	}
+    });
+    btnCheckButton.setText(Messages.PasswordDialog_Save_check);
+    
+    new Label(container, SWT.NONE);
+
+    error = new Label(container, SWT.NONE);
+    error.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+    error.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false,
+            1, 1));
+    error.setForeground(container.getDisplay().getSystemColor(SWT.COLOR_RED));
+    FocusAdapter adapter = new FocusAdapter() {
+    	@Override
+    	public void focusGained(FocusEvent e) {
+    		 error.setText("");
+    		super.focusGained(e);
+    	}
+	};
+    hostText.addFocusListener(adapter);
+    userText.addFocusListener(adapter);
+    passwordText.addFocusListener(adapter);
+ 
+    return container;
+  }
+
+  
+/** * Create contents of the button bar. * * @param parent */
+
+  @Override
+  protected void createButtonsForButtonBar(Composite parent) {
+    createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
+        true);
+    createButton(parent, IDialogConstants.CANCEL_ID,
+        IDialogConstants.CANCEL_LABEL, false);
+  }
+
+  
+
+/** * Return the initial size of the dialog. */
+
+  @Override
+  protected Point getInitialSize() {
+    return new Point(539, 300);
+  }
+
+  @Override
+  protected void okPressed() {
+	  user = userText.getText(); 
+	/* if((isOT)&&(user!=null)&&(!user.isEmpty())){
+	   String[] temp = user.split("@");
+	   user = temp[0]+".."+temp[1]+"@wso2.org";
+	 }*/
+    password = passwordText.getText();
+    host =hostText.getText().trim();
+    if(!host.startsWith("http")||!host.startsWith("https")){ //$NON-NLS-1$ //$NON-NLS-2$
+    	host = "https://"+host; //$NON-NLS-1$
+    }
+    if("".equals(getUser())||"".equals(getPassword())){
+		error.setText("Username or Password cannot be empty !");
+		return;
+	}
+    if(login()){
+    	try {
+    		if (isSave) {
+				 gitTempNode.removeNode();
+				 ISecurePreferences preferences = SecurePreferencesFactory.getDefault();
+				 ISecurePreferences node = preferences.node("GIT");
+				 node.put("user",Authenticator.getInstance().getCredentials().getUser(), true);
+				 node.put("password",Authenticator.getInstance().getCredentials().getPassword(), true);
+			}
+		} catch (StorageException e) {
+			 error.setText("Failed to save Credentials in secure storage");
+			 log.error(e);
+		}
+    	super.okPressed();
+    }else {
+    	ErrorType errorcode = Authenticator.getInstance().getErrorcode();
+    	switch (errorcode) {
+        case INVALID:
+        	    error.setText("Invalid username or password");
+                break;
+        case FAILD:
+        	    error.setText(Authenticator.getInstance().getErrormsg());
+                break;
+        case ERROR:
+        	   error.setText("Connection failed");
+                break;
+          }
+    }
+  }
+   
+  private boolean login() {
+		boolean val = true;
+		UserPasswordCredentials oldCredentials = null;
+		String oldServerURL = null;
+		setCursorBusy();
+		try { 
+			if(Authenticator.getInstance().isLoaded()){
+				oldCredentials = Authenticator.getInstance().getCredentials();
+				oldServerURL = Authenticator.getInstance().getServerURL();
+			}
+			credentials = new UserPasswordCredentials(getUser(),getPassword());
+		    val = Authenticator.getInstance().Authenticate(JagApiProperties.getLoginUrl(), credentials); 
+		    if(val && isfromDashboad()){
+		    	Authenticator.getInstance().setFromDashboad(isfromDashboad());
+		    	hideDashboards();
+		    	IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+	        	PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.appfactory.ui.perspective", window);
+		    } 
+		    resetCredintials(val, oldCredentials, oldServerURL);
+		} catch (Exception e) {
+	        log.error("Login fail", e);
+	        error.setText("Login failed due to system error");
+	        setCursorNormal();
+	        resetCredintials(val, oldCredentials, oldServerURL);
+	        return false;
+		} 
+		setCursorNormal();
+		return val;
+	}
+
+private void resetCredintials(boolean val,
+		UserPasswordCredentials oldCredentials, String oldServerURL) {
+	if(!val){
+		if(Authenticator.getInstance().isLoaded()){
+			Authenticator.getInstance().setCredentials(oldCredentials);
+			Authenticator.getInstance().setServerURL(oldServerURL);
+	}else{
+		Authenticator.getInstance().setCredentials(null);
+	  }
+	}
+}
+  
+  private void hideDashboards(){
+  	try {
+  		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+			IWorkbenchPage page = window.getActivePage();
+			List<IEditorReference> openEditors = new ArrayList<IEditorReference>();
+			IEditorReference[] editorReferences = PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage().getEditorReferences();
+			for (IEditorReference iEditorReference : editorReferences) {
+				if (DASHBOARD_VIEW_ID.equals(iEditorReference.getId())) {
+					openEditors.add(iEditorReference);
+				}
+			}
+			if (openEditors.size() > 0) {
+				page.closeEditors(openEditors.toArray(new IEditorReference[] {}), false);
+			}
+		} catch (Exception e) {
+			/* safe to ignore */
+		}
+  }
+  
+  private void setCursorNormal() {
+		try {
+			Display.getCurrent().getActiveShell().setCursor((new Cursor(Display.getCurrent(),
+					SWT.CURSOR_ARROW)));
+		} catch (Throwable e) {
+			 /*safe to ignore*/
+		}
+  }
+  private void setCursorBusy() {
+		try {
+			Display.getCurrent().getActiveShell().setCursor((new Cursor(Display.getCurrent(),
+					SWT.CURSOR_WAIT)));
+		} catch (Throwable e) {
+			 /*safe to ignore*/
+		}
+	}
+  
+  public String getUser() {
+    return user;
+  }
+
+  public void setUser(String user) {
+    this.user = user;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+
+public String getHost() {
+	return host;
+}
+
+
+public void setHost(String host) {
+	this.host = host;
+}
+
+public boolean isSave() {
+	return isSave;
+}
+
+public void setSave(boolean isSave) {
+	this.isSave = isSave;
+}
+
+public boolean isOT() {
+	return isOT;
+}
+
+public void setOT(boolean isOT) {
+	this.isOT = isOT;
+}
+
+public boolean isfromDashboad() {
+	return fromDashboad;
+}
+
+public void setIsfromDashboad(boolean isfromDashboad) {
+	this.fromDashboad = isfromDashboad;
+}
+}

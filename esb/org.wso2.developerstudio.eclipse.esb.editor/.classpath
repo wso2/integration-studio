@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt_1.0.0.r36x201106161135.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.widgets.baseline_1.0.0.r36x201106161140.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.wb.swt.layout.grouplayout_1.0.0.r36x201106161145.jar"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artifacts>
+    <artifact name="MainFrameEP" groupId="org.wso2.carbon.SynapseConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src\main\synapse-config\endpoints\MainFrameEP.xml</file>
+    </artifact>
+    <artifact name="AccountServiceProxy" groupId="org.wso2.carbon.SynapseConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src\main\synapse-config\proxy-services\AccountServiceProxy.xml</file>
+    </artifact>
+    <artifact name="cardServiceEP" groupId="org.wso2.carbon.SynapseConfigs.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src\main\synapse-config\endpoints\cardServiceEP.xml</file>
+    </artifact>
+    <artifact name="CardService" groupId="org.wso2.carbon.SynapseConfigs.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src\main\synapse-config\proxy-services\CardService.xml</file>
+    </artifact>
+</artifacts>

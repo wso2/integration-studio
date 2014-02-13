@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://wso2.org/sample/bankingArtifacts" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://wso2.org/banking" xmlns:wsdl1="http://ws.wso2.org/dataservice" xmlns:wsdl2="http://hcc.wso2" xmlns:wsdl3="http://sample.wso2.org" name="AccountOpeningProcessArtifacts" targetNamespace="http://wso2.org/sample/bankingArtifacts">
+  <plnk:partnerLinkType name="AOPPLT">
+    <plnk:role name="openAccountRole" portType="wsdl:AccountOpeningProcessService"/>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="CDSPLT">
+    <plnk:role name="customerDSRole" portType="wsdl1:CustomerDSPortType"/>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="ADSPLT">
+    <plnk:role name="accountRole" portType="wsdl2:AccountDetailServicePortType"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="CSPLT">
+    <plnk:role name="cardRole" portType="wsdl3:CardServicePortType"/>
+  </plnk:partnerLinkType>
+    <import location="AccountOpeningProcessService.wsdl" namespace="http://wso2.org/banking"/>
+    <import location="CustomerDS.wsdl" namespace="http://ws.wso2.org/dataservice"/>
+    <import location="AccountDetailService.wsdl" namespace="http://hcc.wso2"/>
+    <import location="CardService.wsdl" namespace="http://sample.wso2.org"/>
+</definitions>

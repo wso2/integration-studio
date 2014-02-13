@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head></head>
+  <body>
+       
+    <h1>Additional WSO2 IDE Tools</h1>
+
+    <p>
+    	This document provides an introduction to the additional WSO2 ide tools.
+    </p>
+    
+       <h2> WSO2 JAVA2WSDL</h2>
+<p>
+This tool enables the feature of java2wsdl. This is the WSAS feature that comes with axis2 that enables generation of the WSDL by taking input a Java class, which describes a Web service for invoking the classes methods. This will happen according to the Axis2 constrains.
+</p>
+    <h2> Dump WSO2 Archive</h2>
+<p>
+This is the tool that dump a WSAS deployable service archive and a offline script that enables the rebuilding of the arvhive with the resources. Currently this tool support to output and Apache Ant build script per IDE generated web service. With the help of this web service user can update the service offline and build it again with out the help of the IDE. All the dump services will be available on the [ECLIPSE_HOME]/dumpaar and the script will be available inside each service and when it was invoked through Ant the the new service archive will be created inside the target directory in each service using the current offline resources.
+</p>
+
+<h2>Module Archive Validation</h2>
+<p>
+This tool will validate the given module.xml and output the results of the validation. Currently any module archive or a module.xml it self can be point to the tool and when the input is correctly given the tool will talk to WSAS and get the validation results in the next page of the wizard from the WSAS Application server. The valid input files are .mar and .xml and when ever the user requires now he can get the module archive validation productively with this tool.
+</p>
+
+<h2>Service Archive Validation</h2>
+<p>
+This tool will validate the given services.xml and output the results of the validation. Currently any service archive or a service.xml it self can be point to the tool and when the input is correctly given the tool will talk to WSAS and get the validation results in the next page of the wizard from the WSAS Application server. The valid input files are .aar .zip and .xml and when ever the user requires now he can get the service archive validation productively with this tool.
+</p>
+
+<h2>WSDL Converter</h2>
+<p>
+This tool will convert a given WSDL 1.1 version document to WSDL 2.0 document and vice versa. The result will be based according to the Axis2 constrains. 
+</p>
+<h2>Test With WSAS</h2>
+<p>
+This tool will create a client interface to invoke a service given a WSDL. The user can input a WSDL url or browse a WSDL from the local file system or in the workspace to create the client interface. 
+</p>
+
+   
+  </body>
+</html>

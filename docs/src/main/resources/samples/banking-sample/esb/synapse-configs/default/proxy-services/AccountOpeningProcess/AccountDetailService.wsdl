@@ -1,0 +1,102 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://hcc.wso2" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ax2362="http://hcc.wso2/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://hcc.wso2">
+    <wsdl:documentation>AccountDetailService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://hcc.wso2/xsd">
+            <xs:complexType name="AccountDetail">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="accountNo" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="accountType" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="debitCardNo" nillable="true" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax2363="http://hcc.wso2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://hcc.wso2">
+            <xs:import namespace="http://hcc.wso2/xsd" />
+            <xs:element name="createAccount">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="customerId" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="isNewCustomer" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="accountType" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createAccountResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2363:AccountDetail" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="createAccountRequest">
+        <wsdl:part name="parameters" element="ns:createAccount" />
+    </wsdl:message>
+    <wsdl:message name="createAccountResponse">
+        <wsdl:part name="parameters" element="ns:createAccountResponse" />
+    </wsdl:message>
+    <wsdl:portType name="AccountDetailServicePortType">
+        <wsdl:operation name="createAccount">
+            <wsdl:input message="ns:createAccountRequest" wsaw:Action="urn:createAccount" />
+            <wsdl:output message="ns:createAccountResponse" wsaw:Action="urn:createAccountResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AccountDetailServiceSoap11Binding" type="ns:AccountDetailServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="createAccount">
+            <soap:operation soapAction="urn:createAccount" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="AccountDetailServiceSoap12Binding" type="ns:AccountDetailServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="createAccount">
+            <soap12:operation soapAction="urn:createAccount" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="AccountDetailServiceHttpBinding" type="ns:AccountDetailServicePortType">
+        <http:binding verb="POST" />
+        <wsdl:operation name="createAccount">
+            <http:operation location="createAccount" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AccountDetailService">
+        <wsdl:port name="AccountDetailServiceHttpSoap11Endpoint" binding="ns:AccountDetailServiceSoap11Binding">
+            <soap:address location="http://localhost:8280/services/AccountServiceProxy" />
+            <!-- soap:address location="http://chathuri-laptop:8088/mockAccountDetailServiceSoap11Binding" /-->
+        </wsdl:port>
+        <!--wsdl:port name="AccountDetailServiceHttpsSoap11Endpoint" binding="ns:AccountDetailServiceSoap11Binding">
+            <soap:address location="https://10.100.3.92:9444/services/AccountDetailService.AccountDetailServiceHttpsSoap11Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="AccountDetailServiceHttpSoap12Endpoint" binding="ns:AccountDetailServiceSoap12Binding">
+            <soap12:address location="http://10.100.3.92:9764/services/AccountDetailService.AccountDetailServiceHttpSoap12Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="AccountDetailServiceHttpsSoap12Endpoint" binding="ns:AccountDetailServiceSoap12Binding">
+            <soap12:address location="https://10.100.3.92:9444/services/AccountDetailService.AccountDetailServiceHttpsSoap12Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="AccountDetailServiceHttpsEndpoint" binding="ns:AccountDetailServiceHttpBinding">
+            <http:address location="https://10.100.3.92:9444/services/AccountDetailService.AccountDetailServiceHttpsEndpoint/" />
+        </wsdl:port>
+        <wsdl:port name="AccountDetailServiceHttpEndpoint" binding="ns:AccountDetailServiceHttpBinding">
+            <http:address location="http://10.100.3.92:9764/services/AccountDetailService.AccountDetailServiceHttpEndpoint/" />
+        </wsdl:port-->
+    </wsdl:service>
+</wsdl:definitions>

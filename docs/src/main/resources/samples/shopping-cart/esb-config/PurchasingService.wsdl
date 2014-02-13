@@ -1,0 +1,103 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:ns1="http://org.apache.axis2/xsd"
+                  xmlns:ns="http://shoppingcart.acme.com/purchase"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:ax2235="http://shoppingcart.acme.com/purchase/xsd"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  targetNamespace="http://shoppingcart.acme.com/purchase">
+    <wsdl:documentation>PurchasingService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" xmlns:ax2235="http://shoppingcart.acme.com/purchase/xsd" targetNamespace="http://shoppingcart.acme.com/purchase/xsd">
+            <xs:complexType name="PurchaseOrder">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="order" nillable="true" type="ax2235:Order"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Order">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="code" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="quantity" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CustomerDetails">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="cardType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cardNumber" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="shippingAddress" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax2236="http://shoppingcart.acme.com/purchase/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://shoppingcart.acme.com/purchase">
+            <xs:import namespace="http://shoppingcart.acme.com/purchase/xsd"/>
+            <xs:element name="checkout">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="purchaseOrder" nillable="true" type="ax2236:PurchaseOrder"/>
+                        <xs:element minOccurs="0" name="customerDetails" nillable="true" type="ax2236:CustomerDetails"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="checkoutRequest">
+        <wsdl:part name="parameters" element="ns:checkout"/>
+    </wsdl:message>
+    <wsdl:portType name="PurchasingServicePortType">
+        <wsdl:operation name="checkout">
+            <wsdl:input message="ns:checkoutRequest" wsaw:Action="urn:checkout"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PurchasingServiceSoap11Binding" type="ns:PurchasingServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="checkout">
+            <soap:operation soapAction="urn:checkout" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PurchasingServiceSoap12Binding" type="ns:PurchasingServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="checkout">
+            <soap12:operation soapAction="urn:checkout" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PurchasingServiceHttpBinding" type="ns:PurchasingServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="checkout">
+            <http:operation location="checkout"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PurchasingService">
+        <wsdl:port name="PurchasingServiceHttpsSoap11Endpoint" binding="ns:PurchasingServiceSoap11Binding">
+            <soap:address location="https://10.100.1.168:9444/services/PurchasingService.PurchasingServiceHttpsSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="PurchasingServiceHttpSoap11Endpoint" binding="ns:PurchasingServiceSoap11Binding">
+            <soap:address location="http://10.100.1.168:9764/services/PurchasingService.PurchasingServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="PurchasingServiceHttpsSoap12Endpoint" binding="ns:PurchasingServiceSoap12Binding">
+            <soap12:address location="https://10.100.1.168:9444/services/PurchasingService.PurchasingServiceHttpsSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="PurchasingServiceHttpSoap12Endpoint" binding="ns:PurchasingServiceSoap12Binding">
+            <soap12:address location="http://10.100.1.168:9764/services/PurchasingService.PurchasingServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="PurchasingServiceHttpsEndpoint" binding="ns:PurchasingServiceHttpBinding">
+            <http:address location="https://10.100.1.168:9444/services/PurchasingService.PurchasingServiceHttpsEndpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="PurchasingServiceHttpEndpoint" binding="ns:PurchasingServiceHttpBinding">
+            <http:address location="http://10.100.1.168:9764/services/PurchasingService.PurchasingServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

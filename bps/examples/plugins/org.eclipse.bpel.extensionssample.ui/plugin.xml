@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.eclipse.bpel.common.ui.paletteAdditions">
+		<additions targetEditor="org.eclipse.bpel.ui.bpeleditor"
+			provider="org.eclipse.bpel.extensionssample.ui.palette.ExtensionSamplePaletteProvider">
+		</additions>
+	</extension>
+	
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+		<propertySections contributorId="org.eclipse.bpel.ui.bpeleditor">
+			<propertySection
+				class="org.eclipse.bpel.extensionssample.ui.properties.SampleSimpleActivityPropertySection"
+				tab="org.eclipse.bpel.ui.tabs.details"
+				id="org.eclipse.bpel.extensionsample.ui.properties.SampleSimpleActivityPropertySection">
+				<input type="org.eclipse.bpel.extensionsample.model.SampleSimpleActivity" />
+			</propertySection>
+		</propertySections>
+	</extension>
+	
+	<extension id="ExtensionSampleUIObjectFactory" name="test"
+		point="org.eclipse.bpel.ui.uiObjectFactories">
+		<factory
+			class="org.eclipse.bpel.extensionssample.ui.factories.ExtensionSampleUIObjectFactory"
+			specCompliant="false" categoryId="not.used"
+			id="org.eclipse.bpel.extensionssample.ui.factories.ExtensionSampleUIObjectFactory" />
+	</extension>
+	
+	
+	<extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.bpel.extensionssample.ui.contribution1"
+            nameFilter="*.bpel">
+         <menu
+               label="BPELTestMenu"
+               path="additions"
+               id="org.eclipse.bpel.extensionssample.ui.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="BPEL Test Action"
+               class="org.eclipse.bpel.extensionssample.ui.popup.actions.PopupAction"
+               menubarPath="org.eclipse.bpel.extensionssample.ui.menu1/group1"
+               enablesFor="1"
+               id="org.eclipse.bpel.extensionssample.ui.popupAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+</plugin>

@@ -1,0 +1,143 @@
+<%
+class File {
+
+
+
+	/**
+	 * Takes a filename and provides a File object
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @param filename String
+	 * @return a File object
+	 */
+	function __construct (filename) {}
+	
+	
+	/**
+	 * File can be opened for read(r), write(w), append(a), read+write(r+), write+read(w+), append+read(a+)
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @param permission "r" | "r+" | w | w+ | a | a+
+	 * 
+	 */
+	function open(permission) {}
+	
+	
+	/**
+	 * Writes the String representation of the object to the file
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @param Object
+	  
+	 */
+	function write(input) {}
+
+	/**
+	 * Reads the given number of characters from the file and returns a String representation of those characters
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @param  numberOfCharacters int
+	 * @return String
+	 */
+	function read(numberOfCharacters) {}
+
+	/**
+	 * Can retrieve the input stream of a file
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return Stream
+	 */
+	function getStream () {}
+
+	/**
+	 * Reads all the content in the file and returns a String representation of the content.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return String
+	 */
+	function readAll () {}
+
+	/**
+	 * Users are expected to close the file after reading, writing and appending to the file.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * 
+	 */
+	function close () {}
+
+	/**
+	 * Move the file to the given target file. Returns True if the file was successfully moved.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @param targetFileName String
+	 * @return Boolean
+	 */
+	function move (targetFileName) {}
+	
+	/**
+	 * Save the file to the given target file. Returns True if the file was successfully moved.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @param targetLocation String
+	 * @return Boolean
+	 */
+	function saveAs (targetLocation) {}
+	
+   /**
+	 * Deletes this file from the file system. Returns true or false depending on the success.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return Boolean
+	 */
+	function del () {}
+	
+   /**
+	 * Length of the file in bytes
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return Long
+	 */
+	function getLength () {}
+	
+   /**
+	 * Last modified time of this file.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return String
+	 */
+	function getLastModified () {}
+	
+   /**
+	 * Name of the file without the path.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return String
+	 */
+	function getName () {}
+	
+  /**
+	 * Checks whether this file actually exists. Returns True if the file exists.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return Boolean
+	 */
+	function isExists () {}
+	
+	/**
+	 * Checks whether the given file path is a directory
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return Boolean
+	 */
+	function isDirectory () {}
+	
+	/**
+	 * Returns the list of files in a directory
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return File[]
+	 */
+	function listFiles () {}
+	
+	/**
+	 * Creates the directory named by this abstract pathname.
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @param name String
+	 * @return Boolean
+	 */
+	function mkdir(name) {}
+	
+	/**
+	 * Converts this abstract pathname into a pathname String
+	 * @link http://jaggeryjs.org/apidocs/file.jag
+	 * @return String
+	 */
+	function getPath() {}
+
+
+}
+%>

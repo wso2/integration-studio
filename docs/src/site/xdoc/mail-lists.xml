@@ -1,0 +1,61 @@
+<!-- ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under 
+	the Apache License, Version 2.0 (the "License"); ~ you may not use this file 
+	except in compliance with the License. ~ You may obtain a copy of the License 
+	at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by 
+	applicable law or agreed to in writing, software ~ distributed under the 
+	License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. ~ See the License for the specific 
+	language governing permissions and ~ limitations under the License. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<h1>Project Mailing Lists</h1>
+
+		<p>These are the mailing lists that have been established for this
+			project. For each list, there is a subscribe, unsubscribe, and an
+			archive link.</p>
+	<div>
+		<table class="bodyTable">
+			<tr class="a">
+				<th>Name</th>
+				<th>Subscribe</th>
+				<th>Unsubscribe</th>
+				<th>Post</th>
+				<th>Archive</th>
+			</tr>
+			<tr class="b">
+				<td>WSO2 Users' list</td>
+				<td>
+					<a href="mailto:user-request@wso2.org?subject=subscrib">Subscribe</a>
+				</td>
+				<td>
+					<a href="mailto:user-request@wso2.org?subject=unsubscribe">Unsubscribe</a>
+				</td>
+				<td>
+					<a href="mailto:user@wso2.org">Post</a>
+				</td>
+				<td>
+					<a href="http://wso2.markmail.org/search/list:org.wso2.tools-user">www.wso2.org</a>
+				</td>
+			</tr>
+			<tr class="a">
+				<td>WSO2 Developers' List</td>
+				<td>
+					<a href="mailto:dev-request@wso2.org?subject=subscribe">Subscribe</a>
+				</td>
+				<td>
+					<a href="mailto:dev-request@wso2.org?subject=unsubscribe">Unsubscribe</a>
+				</td>
+				<td>
+					<a href="mailto:dev@wso2.org">Post</a>
+				</td>
+				<td>
+					<a href="http://wso2.markmail.org/search/list:org.wso2.carbon-dev">www.wso2.org</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	</body>
+</html>

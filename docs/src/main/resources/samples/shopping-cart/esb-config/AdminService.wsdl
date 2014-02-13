@@ -1,0 +1,1837 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax29="http://shoppingcart.acme.com/order" xmlns:ax27="http://shoppingcart.acme.com/product" xmlns:ns="http://ws.wso2.org/dataservice" xmlns:ax28="http://shoppingcart.acme.com/customer/order" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="com.acme.shoppingcart" xmlns:ax212="http://shoppingcart.acme.com/reorder" xmlns:ax213="http://shoppingcart.acme.com/payment" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax210="http://shoppingcart.acme.com/customer" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.wso2.org/dataservice">
+    <wsdl:documentation />
+    <wsdl:types>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://shoppingcart.acme.com/payment">
+            <xs:element name="getPaymentsOfOrder">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="orderNumber" nillable="true" type="xs:int" />
+                    </xs:sequence>
+
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Payments">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Payment" nillable="true" type="ax213:Payment" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Payments" type="ax213:Payments" />
+            <xs:complexType name="Payment">
+
+                <xs:sequence>
+                    <xs:element name="orderNumber" nillable="true" type="xs:integer" />
+                    <xs:element name="checkNumber" nillable="true" type="xs:string" />
+                    <xs:element name="paymentDate" nillable="true" type="xs:date" />
+                    <xs:element name="amount" nillable="true" type="xs:double" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://shoppingcart.acme.com/order">
+
+            <xs:element name="getTotalOrderAmount">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="orderNumber" nillable="true" type="xs:int" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Orders">
+                <xs:sequence>
+
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Order" nillable="true" type="ax29:Order" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Orders" type="ax29:Orders" />
+            <xs:complexType name="Order">
+                <xs:sequence>
+                    <xs:element name="OrderNumber" nillable="true" type="xs:integer" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:element name="getOrderItems">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="orderNumber" nillable="true" type="xs:int" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="OrderItems">
+                <xs:sequence>
+
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="OrderItem" nillable="true" type="ax29:OrderItem" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="OrderItems" type="ax29:OrderItems" />
+            <xs:complexType name="OrderItem">
+                <xs:sequence>
+                    <xs:element name="orderNumber" nillable="true" type="xs:integer" />
+                    <xs:element name="productCode" nillable="true" type="xs:string" />
+                    <xs:element name="quantityOrdered" nillable="true" type="xs:integer" />
+
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="addNewOrder">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="orderDate" nillable="true" type="xs:date" />
+                        <xs:element minOccurs="0" name="requiredDate" nillable="true" type="xs:date" />
+                        <xs:element minOccurs="0" name="shippedDate" nillable="true" type="xs:date" />
+                        <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+
+                        <xs:element minOccurs="0" name="comments" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="customerNumber" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://shoppingcart.acme.com/reorder">
+            <xs:complexType name="Products">
+                <xs:sequence>
+
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Product" nillable="true" type="ax212:Product" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Products" type="ax212:Products" />
+            <xs:complexType name="Product">
+                <xs:sequence>
+                    <xs:element name="productCode" nillable="true" type="xs:string" />
+                    <xs:element name="quantityInStock" nillable="true" type="xs:integer" />
+                    <xs:element name="reorderLevel" nillable="true" type="xs:integer" />
+
+                    <xs:element name="reorderQuantity" nillable="true" type="xs:integer" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://shoppingcart.acme.com/customer/order">
+            <xs:element name="getOrdersByStatus">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Orders">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Order" nillable="true" type="ax28:Order" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Orders" type="ax28:Orders" />
+
+            <xs:complexType name="Order">
+                <xs:sequence>
+                    <xs:element name="orderNumber" nillable="true" type="xs:integer" />
+                    <xs:element name="orderDate" nillable="true" type="xs:date" />
+                    <xs:element name="requiredDate" nillable="true" type="xs:date" />
+                    <xs:element name="shippedDate" nillable="true" type="xs:date" />
+                    <xs:element name="status" nillable="true" type="xs:string" />
+                    <xs:element name="comments" nillable="true" type="xs:string" />
+                    <xs:element name="customerNumber" nillable="true" type="xs:integer" />
+
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getOrdersByCustomerNumber">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="customerNumber" nillable="true" type="xs:int" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://shoppingcart.acme.com/customer">
+            <xs:element name="getCustomerByNumber">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="customerNumber" nillable="true" type="xs:int" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:complexType name="Customers">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Customer" nillable="true" type="ax210:Customer" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Customers" type="ax210:Customers" />
+            <xs:complexType name="Customer">
+                <xs:sequence>
+                    <xs:element name="customerNumber" nillable="true" type="xs:integer" />
+
+                    <xs:element name="customerName" nillable="true" type="xs:string" />
+                    <xs:element name="phone" nillable="true" type="xs:string" />
+                    <xs:element name="addressLine1" nillable="true" type="xs:string" />
+                    <xs:element name="addressLine2" nillable="true" type="xs:string" />
+                    <xs:element name="city" nillable="true" type="xs:string" />
+                    <xs:element name="state" nillable="true" type="xs:string" />
+                    <xs:element name="postalCode" nillable="true" type="xs:string" />
+                    <xs:element name="country" nillable="true" type="xs:string" />
+                </xs:sequence>
+
+            </xs:complexType>
+            <xs:element name="addNewCustomer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="customerName" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="addressLine1" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="addressLine2" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+
+                        <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="postalCode" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
+            <xs:element name="DataServiceFault" type="xs:string" />
+
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://shoppingcart.acme.com/product">
+            <xs:complexType name="Products">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Product" nillable="true" type="ax27:Product" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Products" type="ax27:Products" />
+            <xs:complexType name="Product">
+
+                <xs:sequence>
+                    <xs:element name="productCode" nillable="true" type="xs:string" />
+                    <xs:element name="productName" nillable="true" type="xs:string" />
+                    <xs:element name="categoryName" nillable="true" type="xs:string" />
+                    <xs:element name="productVendor" nillable="true" type="xs:string" />
+                    <xs:element name="productDescription" nillable="true" type="xs:string" />
+                    <xs:element name="quantityInStock" nillable="true" type="xs:integer" />
+                    <xs:element name="price" nillable="true" type="xs:double" />
+                    <xs:element name="reorderLevel" nillable="true" type="xs:integer" />
+
+                    <xs:element name="reorderQuantity" nillable="true" type="xs:integer" />
+                    <xs:element name="image" nillable="true" type="xs:base64Binary" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Categories">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Category" nillable="true" type="ax27:Category" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:element name="Categories" type="ax27:Categories" />
+            <xs:complexType name="Category">
+                <xs:sequence>
+                    <xs:element name="categoryName" nillable="true" type="xs:string" />
+                    <xs:element name="description" nillable="true" type="xs:string" />
+                    <xs:element name="image" nillable="true" type="xs:base64Binary" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getProductsOfCategory">
+
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCategoryByName">
+                <xs:complexType>
+                    <xs:sequence>
+
+                        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getProductByCode">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+                    </xs:sequence>
+
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:ax211="com.acme.shoppingcart" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="com.acme.shoppingcart">
+            <xs:element name="deleteCategory">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+                    </xs:sequence>
+
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateProduct">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="productName" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="productVendor" nillable="true" type="xs:string" />
+
+                        <xs:element minOccurs="0" name="productDescription" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="quantityInStock" nillable="true" type="xs:int" />
+                        <xs:element minOccurs="0" name="price" nillable="true" type="xs:double" />
+                        <xs:element minOccurs="0" name="reorderLevel" nillable="true" type="xs:int" />
+                        <xs:element minOccurs="0" name="reorderQuantity" nillable="true" type="xs:int" />
+                        <xs:element minOccurs="0" name="image" nillable="true" type="xs:base64Binary" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="addNewOrderItem">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="orderNumber" nillable="true" type="xs:int" />
+                        <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="quantityOrdered" nillable="true" type="xs:int" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="addPayment">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="orderNumber" nillable="true" type="xs:int" />
+                        <xs:element minOccurs="0" name="checkNumber" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="paymentDate" nillable="true" type="xs:date" />
+                        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:double" />
+                    </xs:sequence>
+                </xs:complexType>
+
+            </xs:element>
+            <xs:element name="deleteProduct">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addNewCategory">
+
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="image" nillable="true" type="xs:base64Binary" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addNewProduct">
+
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="productName" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="productVendor" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="productDescription" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="quantityInStock" nillable="true" type="xs:int" />
+                        <xs:element minOccurs="0" name="price" nillable="true" type="xs:double" />
+
+                        <xs:element minOccurs="0" name="reorderLevel" nillable="true" type="xs:int" />
+                        <xs:element minOccurs="0" name="reorderQuantity" nillable="true" type="xs:int" />
+                        <xs:element minOccurs="0" name="image" nillable="true" type="xs:base64Binary" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateProductStock">
+                <xs:complexType>
+                    <xs:sequence>
+
+                        <xs:element minOccurs="0" name="productCode" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="increment" nillable="true" type="xs:int" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCustomer">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="customerNumber" nillable="true" type="xs:int" />
+
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getProductByCodeRequest">
+        <wsdl:part name="parameters" element="ax27:getProductByCode" />
+    </wsdl:message>
+    <wsdl:message name="getProductByCodeResponse">
+
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+    <wsdl:message name="DataServiceFault">
+        <wsdl:part name="parameters" element="ns:DataServiceFault" />
+    </wsdl:message>
+    <wsdl:message name="deleteCustomerRequest">
+        <wsdl:part name="parameters" element="ns1:deleteCustomer" />
+    </wsdl:message>
+    <wsdl:message name="getOrdersByCustomerNumberRequest">
+
+        <wsdl:part name="parameters" element="ax28:getOrdersByCustomerNumber" />
+    </wsdl:message>
+    <wsdl:message name="getOrdersByCustomerNumberResponse">
+        <wsdl:part name="parameters" element="ax28:Orders" />
+    </wsdl:message>
+    <wsdl:message name="getAllProductsSortByPriceAscRequest" />
+    <wsdl:message name="getAllProductsSortByPriceAscResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+
+    <wsdl:message name="getAllProductsSortByNameAscRequest" />
+    <wsdl:message name="getAllProductsSortByNameAscResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+    <wsdl:message name="addNewCustomerRequest">
+        <wsdl:part name="parameters" element="ax210:addNewCustomer" />
+    </wsdl:message>
+    <wsdl:message name="addNewCustomerResponse">
+        <wsdl:part name="parameters" element="ax210:Customers" />
+
+    </wsdl:message>
+    <wsdl:message name="getOrderItemsRequest">
+        <wsdl:part name="parameters" element="ax29:getOrderItems" />
+    </wsdl:message>
+    <wsdl:message name="getOrderItemsResponse">
+        <wsdl:part name="parameters" element="ax29:OrderItems" />
+    </wsdl:message>
+    <wsdl:message name="updateProductStockRequest">
+        <wsdl:part name="parameters" element="ns1:updateProductStock" />
+
+    </wsdl:message>
+    <wsdl:message name="getPaymentsOfOrderRequest">
+        <wsdl:part name="parameters" element="ax213:getPaymentsOfOrder" />
+    </wsdl:message>
+    <wsdl:message name="getPaymentsOfOrderResponse">
+        <wsdl:part name="parameters" element="ax213:Payments" />
+    </wsdl:message>
+    <wsdl:message name="addNewOrderItemRequest">
+        <wsdl:part name="parameters" element="ns1:addNewOrderItem" />
+
+    </wsdl:message>
+    <wsdl:message name="getTotalOrderAmountRequest">
+        <wsdl:part name="parameters" element="ax29:getTotalOrderAmount" />
+    </wsdl:message>
+    <wsdl:message name="getTotalOrderAmountResponse">
+        <wsdl:part name="parameters" element="ax29:Orders" />
+    </wsdl:message>
+    <wsdl:message name="getAllCustomersRequest" />
+    <wsdl:message name="getAllCustomersResponse">
+
+        <wsdl:part name="parameters" element="ax210:Customers" />
+    </wsdl:message>
+    <wsdl:message name="addNewCategoryRequest">
+        <wsdl:part name="parameters" element="ns1:addNewCategory" />
+    </wsdl:message>
+    <wsdl:message name="getAllProductsSortByQuantityAscRequest" />
+    <wsdl:message name="getAllProductsSortByQuantityAscResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+
+    <wsdl:message name="getAllProductsSortByNameDescRequest" />
+    <wsdl:message name="getAllProductsSortByNameDescResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+    <wsdl:message name="getCustomerByNumberRequest">
+        <wsdl:part name="parameters" element="ax210:getCustomerByNumber" />
+    </wsdl:message>
+    <wsdl:message name="getCustomerByNumberResponse">
+        <wsdl:part name="parameters" element="ax210:Customers" />
+
+    </wsdl:message>
+    <wsdl:message name="deleteCategoryRequest">
+        <wsdl:part name="parameters" element="ns1:deleteCategory" />
+    </wsdl:message>
+    <wsdl:message name="getAllProductsSortByProductVendorAscRequest" />
+    <wsdl:message name="getAllProductsSortByProductVendorAscResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+    <wsdl:message name="getAllProductsSortByProductVendorDescRequest" />
+
+    <wsdl:message name="getAllProductsSortByProductVendorDescResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+    <wsdl:message name="getProductsOfCategoryRequest">
+        <wsdl:part name="parameters" element="ax27:getProductsOfCategory" />
+    </wsdl:message>
+    <wsdl:message name="getProductsOfCategoryResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+
+    <wsdl:message name="getProductsAtReorderLevelRequest" />
+    <wsdl:message name="getProductsAtReorderLevelResponse">
+        <wsdl:part name="parameters" element="ax212:Products" />
+    </wsdl:message>
+    <wsdl:message name="addNewOrderRequest">
+        <wsdl:part name="parameters" element="ax29:addNewOrder" />
+    </wsdl:message>
+    <wsdl:message name="addNewOrderResponse">
+        <wsdl:part name="parameters" element="ax29:Orders" />
+
+    </wsdl:message>
+    <wsdl:message name="addNewProductRequest">
+        <wsdl:part name="parameters" element="ns1:addNewProduct" />
+    </wsdl:message>
+    <wsdl:message name="getAllProductsSortByPriceDescRequest" />
+    <wsdl:message name="getAllProductsSortByPriceDescResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+    <wsdl:message name="deleteProductRequest">
+
+        <wsdl:part name="parameters" element="ns1:deleteProduct" />
+    </wsdl:message>
+    <wsdl:message name="getOrdersByStatusRequest">
+        <wsdl:part name="parameters" element="ax28:getOrdersByStatus" />
+    </wsdl:message>
+    <wsdl:message name="getOrdersByStatusResponse">
+        <wsdl:part name="parameters" element="ax28:Orders" />
+    </wsdl:message>
+    <wsdl:message name="addPaymentRequest">
+
+        <wsdl:part name="parameters" element="ns1:addPayment" />
+    </wsdl:message>
+    <wsdl:message name="updateProductRequest">
+        <wsdl:part name="parameters" element="ns1:updateProduct" />
+    </wsdl:message>
+    <wsdl:message name="getAllProductsSortByQuantityDescRequest" />
+    <wsdl:message name="getAllProductsSortByQuantityDescResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+
+    <wsdl:message name="getAllProductsRequest" />
+    <wsdl:message name="getAllProductsResponse">
+        <wsdl:part name="parameters" element="ax27:Products" />
+    </wsdl:message>
+    <wsdl:message name="getCategoryByNameRequest">
+        <wsdl:part name="parameters" element="ax27:getCategoryByName" />
+    </wsdl:message>
+    <wsdl:message name="getCategoryByNameResponse">
+        <wsdl:part name="parameters" element="ax27:Categories" />
+
+    </wsdl:message>
+    <wsdl:message name="getAllCategoriesRequest" />
+    <wsdl:message name="getAllCategoriesResponse">
+        <wsdl:part name="parameters" element="ax27:Categories" />
+    </wsdl:message>
+    <wsdl:portType name="ShoppingCartDSPortType">
+        <wsdl:operation name="getProductByCode">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getProductByCodeRequest" wsaw:Action="urn:getProductByCode" />
+
+            <wsdl:output message="ns:getProductByCodeResponse" wsaw:Action="urn:getProductByCodeResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getProductByCodeDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="deleteCustomer">
+            <wsdl:documentation />
+            <wsdl:input message="ns:deleteCustomerRequest" wsaw:Action="urn:deleteCustomer" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:deleteCustomerDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getOrdersByCustomerNumber">
+
+            <wsdl:documentation />
+            <wsdl:input message="ns:getOrdersByCustomerNumberRequest" wsaw:Action="urn:getOrdersByCustomerNumber" />
+            <wsdl:output message="ns:getOrdersByCustomerNumberResponse" wsaw:Action="urn:getOrdersByCustomerNumberResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getOrdersByCustomerNumberDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByPriceAsc">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsSortByPriceAscRequest" wsaw:Action="urn:getAllProductsSortByPriceAsc" />
+            <wsdl:output message="ns:getAllProductsSortByPriceAscResponse" wsaw:Action="urn:getAllProductsSortByPriceAscResponse" />
+
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsSortByPriceAscDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByNameAsc">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsSortByNameAscRequest" wsaw:Action="urn:getAllProductsSortByNameAsc" />
+            <wsdl:output message="ns:getAllProductsSortByNameAscResponse" wsaw:Action="urn:getAllProductsSortByNameAscResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsSortByNameAscDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="addNewCustomer">
+
+            <wsdl:documentation />
+            <wsdl:input message="ns:addNewCustomerRequest" wsaw:Action="urn:addNewCustomer" />
+            <wsdl:output message="ns:addNewCustomerResponse" wsaw:Action="urn:addNewCustomerResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:addNewCustomerDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getOrderItems">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getOrderItemsRequest" wsaw:Action="urn:getOrderItems" />
+            <wsdl:output message="ns:getOrderItemsResponse" wsaw:Action="urn:getOrderItemsResponse" />
+
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getOrderItemsDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="updateProductStock">
+            <wsdl:documentation />
+            <wsdl:input message="ns:updateProductStockRequest" wsaw:Action="urn:updateProductStock" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:updateProductStockDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getPaymentsOfOrder">
+            <wsdl:documentation />
+
+            <wsdl:input message="ns:getPaymentsOfOrderRequest" wsaw:Action="urn:getPaymentsOfOrder" />
+            <wsdl:output message="ns:getPaymentsOfOrderResponse" wsaw:Action="urn:getPaymentsOfOrderResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getPaymentsOfOrderDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="addNewOrderItem">
+            <wsdl:documentation />
+            <wsdl:input message="ns:addNewOrderItemRequest" wsaw:Action="urn:addNewOrderItem" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:addNewOrderItemDataServiceFault" />
+        </wsdl:operation>
+
+        <wsdl:operation name="getTotalOrderAmount">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getTotalOrderAmountRequest" wsaw:Action="urn:getTotalOrderAmount" />
+            <wsdl:output message="ns:getTotalOrderAmountResponse" wsaw:Action="urn:getTotalOrderAmountResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getTotalOrderAmountDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllCustomers">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllCustomersRequest" wsaw:Action="urn:getAllCustomers" />
+
+            <wsdl:output message="ns:getAllCustomersResponse" wsaw:Action="urn:getAllCustomersResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllCustomersDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="addNewCategory">
+            <wsdl:documentation />
+            <wsdl:input message="ns:addNewCategoryRequest" wsaw:Action="urn:addNewCategory" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:addNewCategoryDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByQuantityAsc">
+
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsSortByQuantityAscRequest" wsaw:Action="urn:getAllProductsSortByQuantityAsc" />
+            <wsdl:output message="ns:getAllProductsSortByQuantityAscResponse" wsaw:Action="urn:getAllProductsSortByQuantityAscResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsSortByQuantityAscDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByNameDesc">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsSortByNameDescRequest" wsaw:Action="urn:getAllProductsSortByNameDesc" />
+            <wsdl:output message="ns:getAllProductsSortByNameDescResponse" wsaw:Action="urn:getAllProductsSortByNameDescResponse" />
+
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsSortByNameDescDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getCustomerByNumber">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getCustomerByNumberRequest" wsaw:Action="urn:getCustomerByNumber" />
+            <wsdl:output message="ns:getCustomerByNumberResponse" wsaw:Action="urn:getCustomerByNumberResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getCustomerByNumberDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="deleteCategory">
+
+            <wsdl:documentation />
+            <wsdl:input message="ns:deleteCategoryRequest" wsaw:Action="urn:deleteCategory" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:deleteCategoryDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByProductVendorAsc">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsSortByProductVendorAscRequest" wsaw:Action="urn:getAllProductsSortByProductVendorAsc" />
+            <wsdl:output message="ns:getAllProductsSortByProductVendorAscResponse" wsaw:Action="urn:getAllProductsSortByProductVendorAscResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsSortByProductVendorAscDataServiceFault" />
+
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByProductVendorDesc">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsSortByProductVendorDescRequest" wsaw:Action="urn:getAllProductsSortByProductVendorDesc" />
+            <wsdl:output message="ns:getAllProductsSortByProductVendorDescResponse" wsaw:Action="urn:getAllProductsSortByProductVendorDescResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsSortByProductVendorDescDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getProductsOfCategory">
+            <wsdl:documentation />
+
+            <wsdl:input message="ns:getProductsOfCategoryRequest" wsaw:Action="urn:getProductsOfCategory" />
+            <wsdl:output message="ns:getProductsOfCategoryResponse" wsaw:Action="urn:getProductsOfCategoryResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getProductsOfCategoryDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getProductsAtReorderLevel">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getProductsAtReorderLevelRequest" wsaw:Action="urn:getProductsAtReorderLevel" />
+            <wsdl:output message="ns:getProductsAtReorderLevelResponse" wsaw:Action="urn:getProductsAtReorderLevelResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getProductsAtReorderLevelDataServiceFault" />
+
+        </wsdl:operation>
+        <wsdl:operation name="addNewOrder">
+            <wsdl:documentation />
+            <wsdl:input message="ns:addNewOrderRequest" wsaw:Action="urn:addNewOrder" />
+            <wsdl:output message="ns:addNewOrderResponse" wsaw:Action="urn:addNewOrderResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:addNewOrderDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="addNewProduct">
+            <wsdl:documentation />
+
+            <wsdl:input message="ns:addNewProductRequest" wsaw:Action="urn:addNewProduct" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:addNewProductDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByPriceDesc">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsSortByPriceDescRequest" wsaw:Action="urn:getAllProductsSortByPriceDesc" />
+            <wsdl:output message="ns:getAllProductsSortByPriceDescResponse" wsaw:Action="urn:getAllProductsSortByPriceDescResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsSortByPriceDescDataServiceFault" />
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteProduct">
+            <wsdl:documentation />
+            <wsdl:input message="ns:deleteProductRequest" wsaw:Action="urn:deleteProduct" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:deleteProductDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getOrdersByStatus">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getOrdersByStatusRequest" wsaw:Action="urn:getOrdersByStatus" />
+            <wsdl:output message="ns:getOrdersByStatusResponse" wsaw:Action="urn:getOrdersByStatusResponse" />
+
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getOrdersByStatusDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="addPayment">
+            <wsdl:documentation />
+            <wsdl:input message="ns:addPaymentRequest" wsaw:Action="urn:addPayment" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:addPaymentDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="updateProduct">
+            <wsdl:documentation />
+
+            <wsdl:input message="ns:updateProductRequest" wsaw:Action="urn:updateProduct" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:updateProductDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByQuantityDesc">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsSortByQuantityDescRequest" wsaw:Action="urn:getAllProductsSortByQuantityDesc" />
+            <wsdl:output message="ns:getAllProductsSortByQuantityDescResponse" wsaw:Action="urn:getAllProductsSortByQuantityDescResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsSortByQuantityDescDataServiceFault" />
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProducts">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllProductsRequest" wsaw:Action="urn:getAllProducts" />
+            <wsdl:output message="ns:getAllProductsResponse" wsaw:Action="urn:getAllProductsResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllProductsDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getCategoryByName">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getCategoryByNameRequest" wsaw:Action="urn:getCategoryByName" />
+
+            <wsdl:output message="ns:getCategoryByNameResponse" wsaw:Action="urn:getCategoryByNameResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getCategoryByNameDataServiceFault" />
+        </wsdl:operation>
+        <wsdl:operation name="getAllCategories">
+            <wsdl:documentation />
+            <wsdl:input message="ns:getAllCategoriesRequest" wsaw:Action="urn:getAllCategories" />
+            <wsdl:output message="ns:getAllCategoriesResponse" wsaw:Action="urn:getAllCategoriesResponse" />
+            <wsdl:fault message="ns:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAllCategoriesDataServiceFault" />
+        </wsdl:operation>
+
+    </wsdl:portType>
+    <wsdl:binding name="ShoppingCartDSSOAP11Binding" type="ns:ShoppingCartDSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="getProductByCode">
+            <soap:operation soapAction="urn:getProductByCode" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCustomer">
+            <soap:operation soapAction="urn:deleteCustomer" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOrdersByCustomerNumber">
+            <soap:operation soapAction="urn:getOrdersByCustomerNumber" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProductsSortByPriceAsc">
+            <soap:operation soapAction="urn:getAllProductsSortByPriceAsc" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByNameAsc">
+            <soap:operation soapAction="urn:getAllProductsSortByNameAsc" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNewCustomer">
+            <soap:operation soapAction="urn:addNewCustomer" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getOrderItems">
+            <soap:operation soapAction="urn:getOrderItems" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateProductStock">
+            <soap:operation soapAction="urn:updateProductStock" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPaymentsOfOrder">
+            <soap:operation soapAction="urn:getPaymentsOfOrder" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNewOrderItem">
+            <soap:operation soapAction="urn:addNewOrderItem" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTotalOrderAmount">
+            <soap:operation soapAction="urn:getTotalOrderAmount" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllCustomers">
+            <soap:operation soapAction="urn:getAllCustomers" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNewCategory">
+            <soap:operation soapAction="urn:addNewCategory" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByQuantityAsc">
+            <soap:operation soapAction="urn:getAllProductsSortByQuantityAsc" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByNameDesc">
+            <soap:operation soapAction="urn:getAllProductsSortByNameDesc" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getCustomerByNumber">
+            <soap:operation soapAction="urn:getCustomerByNumber" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCategory">
+            <soap:operation soapAction="urn:deleteCategory" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByProductVendorAsc">
+            <soap:operation soapAction="urn:getAllProductsSortByProductVendorAsc" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByProductVendorDesc">
+            <soap:operation soapAction="urn:getAllProductsSortByProductVendorDesc" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getProductsOfCategory">
+            <soap:operation soapAction="urn:getProductsOfCategory" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getProductsAtReorderLevel">
+            <soap:operation soapAction="urn:getProductsAtReorderLevel" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNewOrder">
+            <soap:operation soapAction="urn:addNewOrder" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="addNewProduct">
+            <soap:operation soapAction="urn:addNewProduct" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProductsSortByPriceDesc">
+            <soap:operation soapAction="urn:getAllProductsSortByPriceDesc" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteProduct">
+            <soap:operation soapAction="urn:deleteProduct" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOrdersByStatus">
+            <soap:operation soapAction="urn:getOrdersByStatus" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addPayment">
+            <soap:operation soapAction="urn:addPayment" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateProduct">
+            <soap:operation soapAction="urn:updateProduct" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByQuantityDesc">
+            <soap:operation soapAction="urn:getAllProductsSortByQuantityDesc" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProducts">
+            <soap:operation soapAction="urn:getAllProducts" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCategoryByName">
+            <soap:operation soapAction="urn:getCategoryByName" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllCategories">
+            <soap:operation soapAction="urn:getAllCategories" style="document" />
+            <wsdl:input>
+
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+    <wsdl:binding name="ShoppingCartDSSOAP12Binding" type="ns:ShoppingCartDSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="getProductByCode">
+            <soap12:operation soapAction="urn:getProductByCode" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCustomer">
+            <soap12:operation soapAction="urn:deleteCustomer" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOrdersByCustomerNumber">
+            <soap12:operation soapAction="urn:getOrdersByCustomerNumber" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProductsSortByPriceAsc">
+            <soap12:operation soapAction="urn:getAllProductsSortByPriceAsc" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByNameAsc">
+            <soap12:operation soapAction="urn:getAllProductsSortByNameAsc" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNewCustomer">
+            <soap12:operation soapAction="urn:addNewCustomer" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getOrderItems">
+            <soap12:operation soapAction="urn:getOrderItems" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateProductStock">
+            <soap12:operation soapAction="urn:updateProductStock" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPaymentsOfOrder">
+            <soap12:operation soapAction="urn:getPaymentsOfOrder" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNewOrderItem">
+            <soap12:operation soapAction="urn:addNewOrderItem" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTotalOrderAmount">
+            <soap12:operation soapAction="urn:getTotalOrderAmount" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllCustomers">
+            <soap12:operation soapAction="urn:getAllCustomers" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNewCategory">
+            <soap12:operation soapAction="urn:addNewCategory" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByQuantityAsc">
+            <soap12:operation soapAction="urn:getAllProductsSortByQuantityAsc" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByNameDesc">
+            <soap12:operation soapAction="urn:getAllProductsSortByNameDesc" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getCustomerByNumber">
+            <soap12:operation soapAction="urn:getCustomerByNumber" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCategory">
+            <soap12:operation soapAction="urn:deleteCategory" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByProductVendorAsc">
+            <soap12:operation soapAction="urn:getAllProductsSortByProductVendorAsc" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByProductVendorDesc">
+            <soap12:operation soapAction="urn:getAllProductsSortByProductVendorDesc" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getProductsOfCategory">
+            <soap12:operation soapAction="urn:getProductsOfCategory" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getProductsAtReorderLevel">
+            <soap12:operation soapAction="urn:getProductsAtReorderLevel" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addNewOrder">
+            <soap12:operation soapAction="urn:addNewOrder" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="addNewProduct">
+            <soap12:operation soapAction="urn:addNewProduct" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProductsSortByPriceDesc">
+            <soap12:operation soapAction="urn:getAllProductsSortByPriceDesc" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteProduct">
+            <soap12:operation soapAction="urn:deleteProduct" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOrdersByStatus">
+            <soap12:operation soapAction="urn:getOrdersByStatus" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="addPayment">
+            <soap12:operation soapAction="urn:addPayment" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateProduct">
+            <soap12:operation soapAction="urn:updateProduct" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByQuantityDesc">
+            <soap12:operation soapAction="urn:getAllProductsSortByQuantityDesc" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProducts">
+            <soap12:operation soapAction="urn:getAllProducts" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCategoryByName">
+            <soap12:operation soapAction="urn:getCategoryByName" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllCategories">
+            <soap12:operation soapAction="urn:getAllCategories" style="document" />
+            <wsdl:input>
+
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+    <wsdl:binding name="ShoppingCartDSHttpBinding" type="ns:ShoppingCartDSPortType">
+        <http:binding verb="POST" />
+        <wsdl:operation name="getProductByCode">
+            <http:operation location="getProductByCode" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCustomer">
+            <http:operation location="deleteCustomer" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+
+        <wsdl:operation name="getOrdersByCustomerNumber">
+            <http:operation location="getOrdersByCustomerNumber" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProductsSortByPriceAsc">
+            <http:operation location="getAllProductsSortByPriceAsc" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProductsSortByNameAsc">
+            <http:operation location="getAllProductsSortByNameAsc" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="addNewCustomer">
+            <http:operation location="addNewCustomer" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getOrderItems">
+            <http:operation location="getOrderItems" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="updateProductStock">
+            <http:operation location="updateProductStock" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getPaymentsOfOrder">
+            <http:operation location="getPaymentsOfOrder" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addNewOrderItem">
+            <http:operation location="addNewOrderItem" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getTotalOrderAmount">
+            <http:operation location="getTotalOrderAmount" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllCustomers">
+            <http:operation location="getAllCustomers" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addNewCategory">
+            <http:operation location="addNewCategory" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProductsSortByQuantityAsc">
+            <http:operation location="getAllProductsSortByQuantityAsc" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getAllProductsSortByNameDesc">
+            <http:operation location="getAllProductsSortByNameDesc" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getCustomerByNumber">
+            <http:operation location="getCustomerByNumber" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteCategory">
+            <http:operation location="deleteCategory" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByProductVendorAsc">
+            <http:operation location="getAllProductsSortByProductVendorAsc" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByProductVendorDesc">
+            <http:operation location="getAllProductsSortByProductVendorDesc" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getProductsOfCategory">
+            <http:operation location="getProductsOfCategory" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getProductsAtReorderLevel">
+            <http:operation location="getProductsAtReorderLevel" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addNewOrder">
+            <http:operation location="addNewOrder" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addNewProduct">
+            <http:operation location="addNewProduct" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByPriceDesc">
+            <http:operation location="getAllProductsSortByPriceDesc" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteProduct">
+            <http:operation location="deleteProduct" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+
+        <wsdl:operation name="getOrdersByStatus">
+            <http:operation location="getOrdersByStatus" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="addPayment">
+            <http:operation location="addPayment" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="updateProduct">
+            <http:operation location="updateProduct" />
+            <wsdl:input>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProductsSortByQuantityDesc">
+            <http:operation location="getAllProductsSortByQuantityDesc" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllProducts">
+            <http:operation location="getAllProducts" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCategoryByName">
+            <http:operation location="getCategoryByName" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAllCategories">
+            <http:operation location="getAllCategories" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AdminService">
+        <wsdl:port name="SOAP11Endpoint" binding="ns:ShoppingCartDSSOAP11Binding">
+            <soap:address location="http://10.100.0.154:9763/services/ShoppingCartDS.SOAP11Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="SecureSOAP11Endpoint" binding="ns:ShoppingCartDSSOAP11Binding">
+
+            <soap:address location="https://10.100.0.154:9443/services/ShoppingCartDS.SecureSOAP11Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="SecureSOAP12Endpoint" binding="ns:ShoppingCartDSSOAP12Binding">
+            <soap12:address location="https://10.100.0.154:9443/services/ShoppingCartDS.SecureSOAP12Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="SOAP12Endpoint" binding="ns:ShoppingCartDSSOAP12Binding">
+            <soap12:address location="http://10.100.0.154:9763/services/ShoppingCartDS.SOAP12Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="HTTPEndpoint" binding="ns:ShoppingCartDSHttpBinding">
+
+            <http:address location="http://10.100.0.154:9763/services/ShoppingCartDS.HTTPEndpoint/" />
+        </wsdl:port>
+        <wsdl:port name="SecureHTTPEndpoint" binding="ns:ShoppingCartDSHttpBinding">
+            <http:address location="https://10.100.0.154:9443/services/ShoppingCartDS.SecureHTTPEndpoint/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

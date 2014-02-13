@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xsd2ecore:XSD2EcoreMappingRoot xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd2ecore="http://www.eclipse.org/emf/2002/XSD2Ecore" inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#/ file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#/"
+    outputs="ht.ecore#/ ../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#/"
+    topToBottom="true">
+  <nested inputs="bundleentry://669.fwk10969598/cache/www.w3.org/2001/XMLSchema.xsd#//language;XSDSimpleTypeDefinition=30"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//Language"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//lang;XSDAttributeDeclaration/XSDSimpleTypeDefinition/XSDSimpleTypeDefinition"
+      outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//LangTypeMember1">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//lang;XSDAttributeDeclaration/XSDSimpleTypeDefinition/XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//LangTypeMember1/_"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//lang;XSDAttributeDeclaration/XSDSimpleTypeDefinition"
+      outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//LangType"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDocumentation;XSDComplexTypeDefinition=1"
+      outputs="ht.ecore#//TDocumentation">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDocumentation;XSDComplexTypeDefinition=1/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TDocumentation/any"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDocumentation;XSDComplexTypeDefinition=1/XSDAttributeUse"
+        outputs="ht.ecore#//TDocumentation/lang"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensibleElements;XSDComplexTypeDefinition"
+      outputs="ht.ecore#//TExtensibleElements">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensibleElements;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TExtensibleElements/documentation"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensibleElements;XSDComplexTypeDefinition/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TExtensibleElements/any"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensibleElements;XSDComplexTypeDefinition/XSDWildcard"
+        outputs="ht.ecore#//TExtensibleElements/anyAttribute"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensibleMixedContentElements;XSDComplexTypeDefinition=2"
+      outputs="ht.ecore#//TExtensibleMixedContentElements">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensibleMixedContentElements;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TExtensibleMixedContentElements/documentation"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensibleMixedContentElements;XSDComplexTypeDefinition=2/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TExtensibleMixedContentElements/any"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensibleMixedContentElements;XSDComplexTypeDefinition=2/XSDWildcard"
+        outputs="ht.ecore#//TExtensibleMixedContentElements/anyAttribute"/>
+  </nested>
+  <nested inputs="bundleentry://669.fwk10969598/cache/www.w3.org/2001/XMLSchema.xsd#//anyURI;XSDSimpleTypeDefinition=25"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+  <nested inputs="bundleentry://669.fwk10969598/cache/www.w3.org/2001/XMLSchema.xsd#//NCName;XSDSimpleTypeDefinition=36"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//NCName"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tArgument;XSDComplexTypeDefinition=36"
+      outputs="ht.ecore#//TArgument">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tArgument;XSDComplexTypeDefinition=36/XSDAttributeUse=1"
+        outputs="ht.ecore#//TArgument/expressionLanguage"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tArgument;XSDComplexTypeDefinition=36/XSDAttributeUse"
+        outputs="ht.ecore#//TArgument/name"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLiteral;XSDComplexTypeDefinition=38"
+      outputs="ht.ecore#//TLiteral">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLiteral;XSDComplexTypeDefinition=38/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TLiteral/any"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLiteral;XSDComplexTypeDefinition=38/XSDWildcard"
+        outputs="ht.ecore#//TLiteral/anyAttribute"/>
+  </nested>
+  <nested inputs="bundleentry://669.fwk10969598/cache/www.w3.org/2001/XMLSchema.xsd#//QName;XSDSimpleTypeDefinition=26"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//QName"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tFrom;XSDComplexTypeDefinition=35"
+      outputs="ht.ecore#//TFrom">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tFrom;XSDComplexTypeDefinition=35/XSDParticle/XSDModelGroup/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TFrom/argument"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tFrom;XSDComplexTypeDefinition=35/XSDParticle/XSDModelGroup/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TFrom/literal"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tFrom;XSDComplexTypeDefinition=35/XSDAttributeUse"
+        outputs="ht.ecore#//TFrom/expressionLanguage"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tFrom;XSDComplexTypeDefinition=35/XSDAttributeUse=1"
+        outputs="ht.ecore#//TFrom/logicalPeopleGroup"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tGenericHumanRole;XSDComplexTypeDefinition=9"
+      outputs="ht.ecore#//TGenericHumanRole">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tGenericHumanRole;XSDComplexTypeDefinition=9/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TGenericHumanRole/from"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//businessAdministrators;XSDElementDeclaration=7"
+      outputs="ht.ecore#//DocumentRoot/businessAdministrators"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//excludedOwners;XSDElementDeclaration=4"
+      outputs="ht.ecore#//DocumentRoot/excludedOwners"/>
+  <nested inputs="bundleentry://669.fwk10969598/cache/www.w3.org/2001/XMLSchema.xsd#//string;XSDSimpleTypeDefinition=9"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//String"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tGroup;XSDSimpleTypeDefinition=1"
+      outputs="ht.ecore#//TGroup"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//group;XSDElementDeclaration=12"
+      outputs="ht.ecore#//DocumentRoot/group"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tGrouplist;XSDComplexTypeDefinition=12"
+      outputs="ht.ecore#//TGrouplist">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tGrouplist;XSDComplexTypeDefinition=12/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TGrouplist/group"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//groups;XSDElementDeclaration=13"
+      outputs="ht.ecore#//DocumentRoot/groups"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tBoolean;XSDSimpleTypeDefinition=3"
+      outputs="ht.ecore#//TBoolean">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tBoolean;XSDSimpleTypeDefinition=3/XSDEnumerationFacet"
+        outputs="ht.ecore#//TBoolean/yes"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tBoolean;XSDSimpleTypeDefinition=3/XSDEnumerationFacet=1"
+        outputs="ht.ecore#//TBoolean/no"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtension;XSDComplexTypeDefinition=5"
+      outputs="ht.ecore#//TExtension">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtension;XSDComplexTypeDefinition=5/XSDAttributeUse=1"
+        outputs="ht.ecore#//TExtension/mustUnderstand"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtension;XSDComplexTypeDefinition=5/XSDAttributeUse"
+        outputs="ht.ecore#//TExtension/namespace"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensions;XSDComplexTypeDefinition=4"
+      outputs="ht.ecore#//TExtensions">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExtensions;XSDComplexTypeDefinition=4/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TExtensions/extension"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tImport;XSDComplexTypeDefinition=6"
+      outputs="ht.ecore#//TImport">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tImport;XSDComplexTypeDefinition=6/XSDAttributeUse=2"
+        outputs="ht.ecore#//TImport/importType"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tImport;XSDComplexTypeDefinition=6/XSDAttributeUse=1"
+        outputs="ht.ecore#//TImport/location"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tImport;XSDComplexTypeDefinition=6/XSDAttributeUse"
+        outputs="ht.ecore#//TImport/namespace"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tParameter;XSDComplexTypeDefinition=37"
+      outputs="ht.ecore#//TParameter">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tParameter;XSDComplexTypeDefinition=37/XSDAttributeUse"
+        outputs="ht.ecore#//TParameter/name"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tParameter;XSDComplexTypeDefinition=37/XSDAttributeUse=1"
+        outputs="ht.ecore#//TParameter/type"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLogicalPeopleGroup;XSDComplexTypeDefinition=8"
+      outputs="ht.ecore#//TLogicalPeopleGroup">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLogicalPeopleGroup;XSDComplexTypeDefinition=8/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TLogicalPeopleGroup/parameter"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLogicalPeopleGroup;XSDComplexTypeDefinition=8/XSDAttributeUse"
+        outputs="ht.ecore#//TLogicalPeopleGroup/name"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLogicalPeopleGroup;XSDComplexTypeDefinition=8/XSDAttributeUse=1"
+        outputs="ht.ecore#//TLogicalPeopleGroup/reference"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLogicalPeopleGroups;XSDComplexTypeDefinition=7"
+      outputs="ht.ecore#//TLogicalPeopleGroups">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLogicalPeopleGroups;XSDComplexTypeDefinition=7/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TLogicalPeopleGroups/logicalPeopleGroup"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTaskInterface;XSDComplexTypeDefinition=15"
+      outputs="ht.ecore#//TTaskInterface">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTaskInterface;XSDComplexTypeDefinition=15/XSDAttributeUse=1"
+        outputs="ht.ecore#//TTaskInterface/operation"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTaskInterface;XSDComplexTypeDefinition=15/XSDAttributeUse"
+        outputs="ht.ecore#//TTaskInterface/portType"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTaskInterface;XSDComplexTypeDefinition=15/XSDAttributeUse=3"
+        outputs="ht.ecore#//TTaskInterface/responseOperation"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTaskInterface;XSDComplexTypeDefinition=15/XSDAttributeUse=2"
+        outputs="ht.ecore#//TTaskInterface/responsePortType"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExpression;XSDComplexTypeDefinition=40"
+      outputs="ht.ecore#//TExpression">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExpression;XSDComplexTypeDefinition=40/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TExpression/any"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExpression;XSDComplexTypeDefinition=40/XSDAttributeUse"
+        outputs="ht.ecore#//TExpression/expressionLanguage"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tExpression;XSDComplexTypeDefinition=40/XSDWildcard"
+        outputs="ht.ecore#//TExpression/anyAttribute"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPriority;XSDComplexTypeDefinition=41"
+      outputs="ht.ecore#//TPriority"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//genericHumanRole;XSDModelGroupDefinition/XSDModelGroup/XSDParticle"
+      outputs="ht.ecore#//TPeopleAssignments/potentialOwners"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//genericHumanRole;XSDModelGroupDefinition/XSDModelGroup/XSDParticle=1"
+      outputs="ht.ecore#//TPeopleAssignments/excludedOwners"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//genericHumanRole;XSDModelGroupDefinition/XSDModelGroup/XSDParticle=2"
+      outputs="ht.ecore#//TPeopleAssignments/taskInitiator"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//genericHumanRole;XSDModelGroupDefinition/XSDModelGroup/XSDParticle=3"
+      outputs="ht.ecore#//TPeopleAssignments/taskStakeholders"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//genericHumanRole;XSDModelGroupDefinition/XSDModelGroup/XSDParticle=4"
+      outputs="ht.ecore#//TPeopleAssignments/businessAdministrators"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//genericHumanRole;XSDModelGroupDefinition/XSDModelGroup/XSDParticle=5"
+      outputs="ht.ecore#//TPeopleAssignments/recipients"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPeopleAssignments;XSDComplexTypeDefinition=21"
+      outputs="ht.ecore#//TPeopleAssignments">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPeopleAssignments;XSDComplexTypeDefinition=21/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TPeopleAssignments/genericHumanRole"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPotentialDelegatees;XSDSimpleTypeDefinition=2"
+      outputs="ht.ecore#//TPotentialDelegatees">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPotentialDelegatees;XSDSimpleTypeDefinition=2/XSDEnumerationFacet"
+        outputs="ht.ecore#//TPotentialDelegatees/anybody"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPotentialDelegatees;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=1"
+        outputs="ht.ecore#//TPotentialDelegatees/nobody"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPotentialDelegatees;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=2"
+        outputs="ht.ecore#//TPotentialDelegatees/potentialOwners"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPotentialDelegatees;XSDSimpleTypeDefinition=2/XSDEnumerationFacet=3"
+        outputs="ht.ecore#//TPotentialDelegatees/other"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDelegation;XSDComplexTypeDefinition=29"
+      outputs="ht.ecore#//TDelegation">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDelegation;XSDComplexTypeDefinition=29/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TDelegation/from"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDelegation;XSDComplexTypeDefinition=29/XSDAttributeUse"
+        outputs="ht.ecore#//TDelegation/potentialDelegatees"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tText;XSDComplexTypeDefinition=33"
+      outputs="ht.ecore#//TText">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tText;XSDComplexTypeDefinition=33/XSDAttributeUse"
+        outputs="ht.ecore#//TText/lang"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationParameter;XSDComplexTypeDefinition=18"
+      outputs="ht.ecore#//TPresentationParameter"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationParameters;XSDComplexTypeDefinition=17"
+      outputs="ht.ecore#//TPresentationParameters">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationParameters;XSDComplexTypeDefinition=17/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TPresentationParameters/presentationParameter"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationParameters;XSDComplexTypeDefinition=17/XSDAttributeUse"
+        outputs="ht.ecore#//TPresentationParameters/expressionLanguage"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDescription;XSDComplexTypeDefinition=34"
+      outputs="ht.ecore#//TDescription">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDescription;XSDComplexTypeDefinition=34/XSDAttributeUse=1"
+        outputs="ht.ecore#//TDescription/contentType"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDescription;XSDComplexTypeDefinition=34/XSDAttributeUse"
+        outputs="ht.ecore#//TDescription/lang"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationElements;XSDComplexTypeDefinition=16"
+      outputs="ht.ecore#//TPresentationElements">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationElements;XSDComplexTypeDefinition=16/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TPresentationElements/name"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationElements;XSDComplexTypeDefinition=16/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TPresentationElements/presentationParameters"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationElements;XSDComplexTypeDefinition=16/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="ht.ecore#//TPresentationElements/subject"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tPresentationElements;XSDComplexTypeDefinition=16/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="ht.ecore#//TPresentationElements/description"/>
+  </nested>
+  <nested inputs="bundleentry://669.fwk10969598/cache/www.w3.org/2001/MagicXMLSchema.xsd#//anySimpleType;XSDSimpleTypeDefinition=1"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tQuery;XSDComplexTypeDefinition=39"
+      outputs="ht.ecore#//TQuery">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tQuery;XSDComplexTypeDefinition=39/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TQuery/any"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tQuery;XSDComplexTypeDefinition=39/XSDAttributeUse"
+        outputs="ht.ecore#//TQuery/part"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tQuery;XSDComplexTypeDefinition=39/XSDAttributeUse=1"
+        outputs="ht.ecore#//TQuery/queryLanguage"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tQuery;XSDComplexTypeDefinition=39/XSDWildcard"
+        outputs="ht.ecore#//TQuery/anyAttribute"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tRendering;XSDComplexTypeDefinition=20"
+      outputs="ht.ecore#//TRendering">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tRendering;XSDComplexTypeDefinition=20/XSDAttributeUse"
+        outputs="ht.ecore#//TRendering/type"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tRenderings;XSDComplexTypeDefinition=19"
+      outputs="ht.ecore#//TRenderings">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tRenderings;XSDComplexTypeDefinition=19/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TRenderings/rendering"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDuration-expr;XSDComplexTypeDefinition=43"
+      outputs="ht.ecore#//TDurationExpr"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDeadline-expr;XSDComplexTypeDefinition=44"
+      outputs="ht.ecore#//TDeadlineExpr"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tBoolean-expr;XSDComplexTypeDefinition=42"
+      outputs="ht.ecore#//TBooleanExpr"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tToPart;XSDComplexTypeDefinition=28"
+      outputs="ht.ecore#//TToPart">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tToPart;XSDComplexTypeDefinition=28/XSDAttributeUse=1"
+        outputs="ht.ecore#//TToPart/expressionLanguage"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tToPart;XSDComplexTypeDefinition=28/XSDAttributeUse"
+        outputs="ht.ecore#//TToPart/name"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tToParts;XSDComplexTypeDefinition=27"
+      outputs="ht.ecore#//TToParts">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tToParts;XSDComplexTypeDefinition=27/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TToParts/toPart"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotificationInterface;XSDComplexTypeDefinition=32"
+      outputs="ht.ecore#//TNotificationInterface">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotificationInterface;XSDComplexTypeDefinition=32/XSDAttributeUse=1"
+        outputs="ht.ecore#//TNotificationInterface/operation"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotificationInterface;XSDComplexTypeDefinition=32/XSDAttributeUse"
+        outputs="ht.ecore#//TNotificationInterface/portType"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotification;XSDComplexTypeDefinition=31"
+      outputs="ht.ecore#//TNotification">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotification;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TNotification/interface"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotification;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TNotification/priority"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotification;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="ht.ecore#//TNotification/peopleAssignments"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotification;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="ht.ecore#//TNotification/presentationElements"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotification;XSDComplexTypeDefinition=31/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="ht.ecore#//TNotification/renderings"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotification;XSDComplexTypeDefinition=31/XSDAttributeUse"
+        outputs="ht.ecore#//TNotification/name"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLocalNotification;XSDComplexTypeDefinition=25"
+      outputs="ht.ecore#//TLocalNotification">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLocalNotification;XSDComplexTypeDefinition=25/XSDParticle/XSDModelGroup/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TLocalNotification/priority"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLocalNotification;XSDComplexTypeDefinition=25/XSDParticle/XSDModelGroup/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TLocalNotification/peopleAssignments"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tLocalNotification;XSDComplexTypeDefinition=25/XSDAttributeUse"
+        outputs="ht.ecore#//TLocalNotification/reference"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tReassignment;XSDComplexTypeDefinition=26"
+      outputs="ht.ecore#//TReassignment">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tReassignment;XSDComplexTypeDefinition=26/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TReassignment/potentialOwners"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tEscalation;XSDComplexTypeDefinition=24"
+      outputs="ht.ecore#//TEscalation">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tEscalation;XSDComplexTypeDefinition=24/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TEscalation/condition"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tEscalation;XSDComplexTypeDefinition=24/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TEscalation/toParts"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tEscalation;XSDComplexTypeDefinition=24/XSDParticle/XSDModelGroup/XSDParticle=2/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TEscalation/notification"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tEscalation;XSDComplexTypeDefinition=24/XSDParticle/XSDModelGroup/XSDParticle=2/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TEscalation/localNotification"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tEscalation;XSDComplexTypeDefinition=24/XSDParticle/XSDModelGroup/XSDParticle=2/XSDModelGroup/XSDParticle=2"
+        outputs="ht.ecore#//TEscalation/reassignment"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tEscalation;XSDComplexTypeDefinition=24/XSDAttributeUse"
+        outputs="ht.ecore#//TEscalation/name"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDeadline;XSDComplexTypeDefinition=23"
+      outputs="ht.ecore#//TDeadline">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDeadline;XSDComplexTypeDefinition=23/XSDParticle/XSDModelGroup/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TDeadline/for"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDeadline;XSDComplexTypeDefinition=23/XSDParticle/XSDModelGroup/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TDeadline/until"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDeadline;XSDComplexTypeDefinition=23/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TDeadline/escalation"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDeadlines;XSDComplexTypeDefinition=22"
+      outputs="ht.ecore#//TDeadlines">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDeadlines;XSDComplexTypeDefinition=22/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TDeadlines/startDeadline"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tDeadlines;XSDComplexTypeDefinition=22/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TDeadlines/completionDeadline"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14"
+      outputs="ht.ecore#//TTask">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TTask/interface"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TTask/priority"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="ht.ecore#//TTask/peopleAssignments"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="ht.ecore#//TTask/delegation"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="ht.ecore#//TTask/presentationElements"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle=5"
+        outputs="ht.ecore#//TTask/outcome"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle=6"
+        outputs="ht.ecore#//TTask/searchBy"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle=7"
+        outputs="ht.ecore#//TTask/renderings"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDParticle/XSDModelGroup/XSDParticle=8"
+        outputs="ht.ecore#//TTask/deadlines"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTask;XSDComplexTypeDefinition=14/XSDAttributeUse"
+        outputs="ht.ecore#//TTask/name"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTasks;XSDComplexTypeDefinition=13"
+      outputs="ht.ecore#//TTasks">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tTasks;XSDComplexTypeDefinition=13/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TTasks/task"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotifications;XSDComplexTypeDefinition=30"
+      outputs="ht.ecore#//TNotifications">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tNotifications;XSDComplexTypeDefinition=30/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TNotifications/notification"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3"
+      outputs="ht.ecore#//THumanInteractions">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//THumanInteractions/extensions"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//THumanInteractions/import"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=2"
+        outputs="ht.ecore#//THumanInteractions/logicalPeopleGroups"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=3"
+        outputs="ht.ecore#//THumanInteractions/tasks"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3/XSDParticle/XSDModelGroup/XSDParticle=4"
+        outputs="ht.ecore#//THumanInteractions/notifications"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3/XSDAttributeUse=2"
+        outputs="ht.ecore#//THumanInteractions/expressionLanguage"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3/XSDAttributeUse=1"
+        outputs="ht.ecore#//THumanInteractions/queryLanguage"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tHumanInteractions;XSDComplexTypeDefinition=3/XSDAttributeUse"
+        outputs="ht.ecore#//THumanInteractions/targetNamespace"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//humanInteractions;XSDElementDeclaration"
+      outputs="ht.ecore#//DocumentRoot/humanInteractions"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//import;XSDElementDeclaration=1"
+      outputs="ht.ecore#//DocumentRoot/import"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//logicalPeopleGroups;XSDElementDeclaration=2"
+      outputs="ht.ecore#//DocumentRoot/logicalPeopleGroups"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//notification;XSDElementDeclaration=19"
+      outputs="ht.ecore#//DocumentRoot/notification"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//notifications;XSDElementDeclaration=18"
+      outputs="ht.ecore#//DocumentRoot/notifications"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tUser;XSDSimpleTypeDefinition"
+      outputs="ht.ecore#//TUser"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tUserlist;XSDComplexTypeDefinition=11"
+      outputs="ht.ecore#//TUserlist">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tUserlist;XSDComplexTypeDefinition=11/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TUserlist/user"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tOrganizationalEntity;XSDComplexTypeDefinition=10"
+      outputs="ht.ecore#//TOrganizationalEntity">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tOrganizationalEntity;XSDComplexTypeDefinition=10/XSDParticle/XSDModelGroup/XSDParticle"
+        outputs="ht.ecore#//TOrganizationalEntity/users"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tOrganizationalEntity;XSDComplexTypeDefinition=10/XSDParticle/XSDModelGroup/XSDParticle=1"
+        outputs="ht.ecore#//TOrganizationalEntity/groups"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//organizationalEntity;XSDElementDeclaration=9"
+      outputs="ht.ecore#//DocumentRoot/organizationalEntity"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//peopleAssignments;XSDElementDeclaration=17"
+      outputs="ht.ecore#//DocumentRoot/peopleAssignments"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//potentialOwners;XSDElementDeclaration=3"
+      outputs="ht.ecore#//DocumentRoot/potentialOwners"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//priority;XSDElementDeclaration=16"
+      outputs="ht.ecore#//DocumentRoot/priority"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//recipients;XSDElementDeclaration=8"
+      outputs="ht.ecore#//DocumentRoot/recipients"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//task;XSDElementDeclaration=15"
+      outputs="ht.ecore#//DocumentRoot/task"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//taskInitiator;XSDElementDeclaration=5"
+      outputs="ht.ecore#//DocumentRoot/taskInitiator"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//tasks;XSDElementDeclaration=14"
+      outputs="ht.ecore#//DocumentRoot/tasks"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//taskStakeholders;XSDElementDeclaration=6"
+      outputs="ht.ecore#//DocumentRoot/taskStakeholders"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//user;XSDElementDeclaration=10"
+      outputs="ht.ecore#//DocumentRoot/user"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/ws-humantask.xsd#//users;XSDElementDeclaration=11"
+      outputs="ht.ecore#//DocumentRoot/users"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//base;XSDAttributeDeclaration=2"
+      outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//DocumentRoot/base"/>
+  <nested inputs="bundleentry://669.fwk10969598/cache/www.w3.org/2001/XMLSchema.xsd#//ID;XSDSimpleTypeDefinition=37"
+      outputs="http://www.eclipse.org/emf/2003/XMLType#//ID"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//id;XSDAttributeDeclaration=3"
+      outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//DocumentRoot/id"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//lang;XSDAttributeDeclaration"
+      outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//DocumentRoot/lang"/>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//space;XSDAttributeDeclaration=1/XSDSimpleTypeDefinition"
+      outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//SpaceType">
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//space;XSDAttributeDeclaration=1/XSDSimpleTypeDefinition/XSDEnumerationFacet"
+        outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//SpaceType/default"/>
+    <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//space;XSDAttributeDeclaration=1/XSDSimpleTypeDefinition/XSDEnumerationFacet=1"
+        outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//SpaceType/preserve"/>
+  </nested>
+  <nested inputs="file:/home/milinda/Projects/carbon/3.0.0/components/human-task/org.wso2.carbon.human-task/3.0.0/src/main/resources/wsdls/xml.xsd#//space;XSDAttributeDeclaration=1"
+      outputs="../../../plugin/org.eclipse.emf.ecore/model/XMLNamespace.ecore#//DocumentRoot/space"/>
+</xsd2ecore:XSD2EcoreMappingRoot>

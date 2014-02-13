@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.php.ui">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.php.ui" id="phpManualSites" name="PHP Manual URL"/>
+      </appInfo>
+      <documentation>
+         This extension point allows to introduce ew site that can be used for accessing PHP manual. A list of PHP manual sites can be seen in the PHP Manual preference page; only one of them is active at a time. Selected PHP manual site will be used when user presses F3 when PHP element is selected, or when he right-clicks it, and selects &quot;Open PHP Manual page&quot;.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="site" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="site">
+      <complexType>
+         <attribute name="url" type="string" use="required">
+            <annotation>
+               <documentation>
+                  URL of the PHP Manual site, i.e: http://www.php.net/manual/en/
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="extension" type="string" use="default" value="php">
+            <annotation>
+               <documentation>
+                  File extensions on the site (for example: .php, .html)
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Human readable label of this PHP manual site.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  ID of this PHP manual site.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         0.7
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;p&gt;
+&lt;pre&gt;
+   &lt;extension point=&quot;org.eclipse.php.ui.phpManualSites&quot;&gt;
+      &lt;site url=&quot;http://www.php.net/manual/en/&quot; director=&quot;org.eclipse.php.ui.phpManualDirector&quot;/&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         No API information, this extension point provides only configuration entries.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         &lt;code&gt;org.eclipse.php.ui.phpDotNet&lt;/code&gt; extension is contributed in PHP UI Plug-in, which defines a default PHP site (http://www.php.net).
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2001, 2004 IBM Corporation and others.&lt;br&gt;
+All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at &lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

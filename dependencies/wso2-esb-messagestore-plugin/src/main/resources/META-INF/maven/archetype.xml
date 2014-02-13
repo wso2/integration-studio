@@ -1,0 +1,6 @@
+<archetype>
+  <id>wso2-esb-messagestore-plugin</id>
+ <resources>
+    <resource>src/main/resources/message-stores/messagestore.xml</resource>
+  </resources>
+</archetype>

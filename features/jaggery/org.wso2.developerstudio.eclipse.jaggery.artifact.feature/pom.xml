@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~      http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+    <parent>
+        <groupId>org.wso2.developerstudio</groupId>
+        <artifactId>wso2-eclipse-developerstudio-jaggery-feature</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>org.wso2.developerstudio.eclipse.jaggery.artifact.feature</artifactId>
+    <version>${jaggery.feature.version}</version>
+    <packaging>pom</packaging>
+    <name>Jaggery Artifact</name>
+    <url>http://wso2.org</url>
+    <description>This feature contains WSO2 Developer Studio Jaggery artifact Feature</description>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.wso2.maven</groupId>
+                <artifactId>carbon-p2-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <id>p2-feature-generation</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>p2-feature-gen</goal>
+                        </goals>
+                        <configuration>
+                            <id>${project.artifactId}</id>
+                            <propertiesFile>../../feature.properties</propertiesFile>
+                            <bundles>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.ui:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.ui:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.core:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.mylyn:org.eclipse.dltk.mylyn:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.externalchecker:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core.index.sql:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.ui:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.ssh.core:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.console:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.console.ui:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.testing:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.launching:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.core:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug.ui:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core.index.sql.h2:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core.manipulation:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole.ui:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.formatter:4.0.0.201206120848</bundleDef>
+				<bundleDef>dummy.groupid:org.h2_1.1.117:201105142352</bundleDef>
+ 				
+				    <!--bundleDef>org.eclipse.php:org.eclipse.php.ui.tests:1.0.0-SNAPSHOT</bundleDef-->
+				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.core:1.0.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.daemon:1.0.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.ui:1.0.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.server.core:1.0.0-SNAPSHOT</bundleDef>
+				    <!--bundleDef>org.eclipse.php:org.eclipse.php.core.performance.tests:1.0.0-SNAPSHOT</bundleDef-->
+				    <bundleDef>org.eclipse.php:org.eclipse.php.server.ui:1.0.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.core.parser:1.0.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.core:1.0.0-SNAPSHOT</bundleDef>
+				    <!--bundleDef>org.eclipse.php:org.eclipse.php.core.tests:1.0.0-SNAPSHOT</bundleDef-->
+				    <bundleDef>org.eclipse.php:org.eclipse.php.ui:1.0.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.help:1.0.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.mylyn.ui:1.0.0-SNAPSHOT</bundleDef>
+                            </bundles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

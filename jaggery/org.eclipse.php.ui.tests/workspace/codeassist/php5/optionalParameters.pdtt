@@ -1,0 +1,22 @@
+--TEST--
+Test CA for optional parameters
+--PREFERENCES--
+org.eclipse.php.core/contentAssistInsertCompletion=true
+--FILE--
+<?php
+class Test {
+    public function test($mandatory, $optional = null) {}
+}
+
+$test = new Test();
+$test->te|
+?>
+--EXPECT--
+<?php
+class Test {
+    public function test($mandatory, $optional = null) {}
+}
+
+$test = new Test();
+$test->test($mandatory)
+?>

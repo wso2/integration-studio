@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyright (c) 2009-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~      http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.acme.shoppingcart</groupId>
+    <artifactId>shopping-cart-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.1.0</version>
+    <name>Shopping Cart - parent</name>
+    <description>Shopping Cart - parent</description>
+
+    <licenses>
+        <license>
+            <name>Apache License Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>WSO2 Inc</name>
+        <url>http://wso2.com</url>
+    </organization>
+
+    <modules>
+        <module>portal</module>
+        <module>admin</module>
+        <module>connector-service</module>
+        <module>data-service</module>
+        <module>gadgets</module>
+        <module>bps</module>
+        <module>security</module>
+		<module>mashups</module>
+        <module>capp</module>
+        <module>distribution</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>dist-wso2</id>
+            <name>WSO2 Standard Repository</name>
+            <url>http://dist.wso2.org/maven2</url>
+        </repository>
+        <repository>
+            <id>wso2-maven2-repository-snapshot</id>
+            <name>WSO2 Standard Snapshot Repository</name>
+            <url>http://dist.wso2.org/snapshots/maven2</url>
+            <layout>legacy</layout>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>wso2-maven2-repository</id>
+            <url>http://dist.wso2.org/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <distributionManagement>
+        <repository>
+            <id>wso2-maven2-repository</id>
+            <name>WSO2 Maven2 Repository</name>
+            <url>scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>wso2-maven2-snapshot-repository</id>
+            <name>WSO2 Maven2 Snapshot Repository</name>
+            <url>scp://dist.wso2.org/home/httpd/dist.wso2.org/snapshots/maven2/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+	    <abdera.wso2.version>1.0.wso2v1</abdera.wso2.version>
+	    <axiom.wso2.version>1.2.10.wso2v1</axiom.wso2.version> 
+	    <axis2.aar.maven.plugin.version>1.6-wso2v4</axis2.aar.maven.plugin.version>
+	    <axis2.client.version>1.6.0.wso2v4</axis2.client.version> 
+	    <axis2.wsdl2code.maven.plugin.version>1.6-wso2v4</axis2.wsdl2code.maven.plugin.version>
+	    <!--Use the following h2.orbit.version for DSS 2.5.1-->
+	    <h2.orbit.version>1.1.112.wso2v1</h2.orbit.version>
+	    <!--Use the following h2.orbit.version for later of 2.5.1-->	
+	    <!--h2.orbit.version>1.2.140.wso2v1</h2.orbit.version-->
+	    <rampart.core.version>1.6.0.wso2v1</rampart.core.version>
+	    <wso2carbon.version>3.1.0</wso2carbon.version>  
+	    <wss4j.version>1.5.10-wso2v1</wss4j.version>
+	</properties>
+</project>

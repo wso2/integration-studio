@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dataMapper" nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper"
+    nsPrefix="dataMapper">
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperDiagram" eSuperTypes="#//DataMapperNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="#//Input"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Output"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concat" upperBound="-1"
+        eType="#//Concat" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperRoot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataMapperDiagram" eType="#//DataMapperDiagram"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//DataMapperNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="treeNode" upperBound="-1"
+        eType="#//TreeNode" containment="true" eOpposite="#//TreeNode/inputParent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//DataMapperNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="treeNode" upperBound="-1"
+        eType="#//TreeNode" containment="true" eOpposite="#//TreeNode/outputParent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operators" eSuperTypes="#//DataMapperNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        containment="true" eOpposite="#//InNode/elementParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
+        eOpposite="#//TreeNode/element"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        containment="true" eOpposite="#//InNode/attributeParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
+        eOpposite="#//TreeNode/attribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TreeNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" upperBound="-1" eType="#//TreeNode"
+        containment="true" eOpposite="#//TreeNode/fieldParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
+        eType="#//Attribute" containment="true" eOpposite="#//Attribute/fieldParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
+        eType="#//Element" containment="true" eOpposite="#//Element/fieldParent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
+        eOpposite="#//TreeNode/node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputParent" eType="#//Output"
+        eOpposite="#//Output/treeNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputParent" eType="#//Input"
+        eOpposite="#//Input/treeNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLink" upperBound="-1"
+        eType="#//DataMapperLink" eOpposite="#//DataMapperLink/inNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementParent" eType="#//Element"
+        eOpposite="#//Element/inNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeParent" eType="#//Attribute"
+        eOpposite="#//Attribute/inNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLink" upperBound="-1"
+        eType="#//DataMapperLink" containment="true" eOpposite="#//DataMapperLink/outNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperLink">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        eOpposite="#//InNode/incomingLink"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        eOpposite="#//OutNode/outgoingLink"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Concat">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" upperBound="-1"
+        eType="#//InNode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" upperBound="-1"
+        eType="#//OutNode" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

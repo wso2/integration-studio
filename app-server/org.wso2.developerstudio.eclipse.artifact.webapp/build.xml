@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project name="build.ant4eclipse"
+         basedir="."
+         default="build"
+         xmlns:ant4eclipse="antlib:org.ant4eclipse">
+	<!-- define ant4eclipse tasks -->
+	<taskdef uri="antlib:org.ant4eclipse"
+	         resource="org/ant4eclipse/antlib.xml" />
+ 
+	<condition property="target.dir" value="${basedir}/target">
+	   <not>  
+	      <isset property="target.dir"/>
+	   </not>
+	</condition>
+	<condition property="eclipse.home" value="/home/saminda/tmp/eclipse">
+	   <not>  
+	      <isset property="eclipse.home"/>
+	   </not>
+	</condition>
+	<condition property="dependency.bundles" value="${target.dir}/dependencies">
+	   <not>  
+	      <isset property="dependency.bundles"/>
+	   </not>
+	</condition>
+	<mkdir dir="${dependency.bundles}" />
+	<!-- import the ant4eclipse pde macros -->
+	<import file="${target.dir}/ant4eclipse/macros/a4e-pde-macros.xml" />
+ 
+	<!-- define the workspace location here -->
+	<property name="workspaceDirectory" value="${basedir}/.." />
+ 	<property name="java.home" value="${JAVA_HOME}" />
+ 	
+	<!-- define your jdk location here -->
+	<ant4eclipse:installedJREs>
+		<jre id="jdk16" location="${java.home}" />
+	</ant4eclipse:installedJREs>
+ 
+	<!-- define the target platform location -->
+	<ant4eclipse:targetPlatform id="my.target.platform">
+		<location dir="${dependency.bundles}" />
+		<location dir="${eclipse.home}" />
+	</ant4eclipse:targetPlatform>
+
+	<target name="build">
+		<buildPlugin workspaceDirectory="${workspaceDirectory}"
+		             projectname="${eclipse.plugin.name}"
+		             targetplatformid="my.target.platform"
+		             destination="${target.dir}" />
+	</target>
+</project>

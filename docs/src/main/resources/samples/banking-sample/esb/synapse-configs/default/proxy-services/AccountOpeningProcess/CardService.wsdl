@@ -1,0 +1,115 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://sample.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ax2354="http://sample.wso2.org/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://sample.wso2.org">
+    <wsdl:documentation>CardService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.wso2.org/xsd">
+            <xs:complexType name="Card">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="accountNo" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="cardNo" type="xs:int" />
+                    <xs:element minOccurs="0" name="customerID" nillable="true" type="xs:string" />
+
+                    <xs:element minOccurs="0" name="customerName" nillable="true" type="xs:string" />
+                    <xs:element minOccurs="0" name="pin" type="xs:int" />
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax2355="http://sample.wso2.org/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sample.wso2.org">
+            <xs:import namespace="http://sample.wso2.org/xsd" />
+            <xs:element name="issueCard">
+                <xs:complexType>
+
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="customerID" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="isExistingCustomer" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="customerName" nillable="true" type="xs:string" />
+                        <xs:element minOccurs="0" name="accountNo" nillable="true" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="issueCardResponse">
+
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax2355:Card" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="issueCardRequest">
+
+        <wsdl:part name="parameters" element="ns:issueCard" />
+    </wsdl:message>
+    <wsdl:message name="issueCardResponse">
+        <wsdl:part name="parameters" element="ns:issueCardResponse" />
+    </wsdl:message>
+    <wsdl:portType name="CardServicePortType">
+        <wsdl:operation name="issueCard">
+            <wsdl:input message="ns:issueCardRequest" wsaw:Action="urn:issueCard" />
+            <wsdl:output message="ns:issueCardResponse" wsaw:Action="urn:issueCardResponse" />
+
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CardServiceSoap11Binding" type="ns:CardServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="issueCard">
+            <soap:operation soapAction="urn:issueCard" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CardServiceSoap12Binding" type="ns:CardServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="issueCard">
+            <soap12:operation soapAction="urn:issueCard" style="document" />
+
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CardServiceHttpBinding" type="ns:CardServicePortType">
+
+        <http:binding verb="POST" />
+        <wsdl:operation name="issueCard">
+            <http:operation location="issueCard" />
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters" />
+            </wsdl:output>
+
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CardService">
+        <!--wsdl:port name="CardServiceHttpsSoap11Endpoint" binding="ns:CardServiceSoap11Binding">
+            <soap:address location="http://localhost:8088/mockCardServiceSoap11Binding" />
+        </wsdl:port-->
+        <wsdl:port name="CardServiceHttpSoap11Endpoint" binding="ns:CardServiceSoap11Binding">
+            <soap:address location="http://localhost:8280/services/CardService" />
+        </wsdl:port>
+
+        <!--wsdl:port name="CardServiceHttpsSoap12Endpoint" binding="ns:CardServiceSoap12Binding">
+            <soap12:address location="https://10.100.3.45:9444/services/CardService.CardServiceHttpsSoap12Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="CardServiceHttpSoap12Endpoint" binding="ns:CardServiceSoap12Binding">
+            <soap12:address location="http://10.100.3.45:9764/services/CardService.CardServiceHttpSoap12Endpoint/" />
+        </wsdl:port>
+        <wsdl:port name="CardServiceHttpsEndpoint" binding="ns:CardServiceHttpBinding">
+            <http:address location="https://10.100.3.45:9444/services/CardService.CardServiceHttpsEndpoint/" />
+        </wsdl:port>
+
+        <wsdl:port name="CardServiceHttpEndpoint" binding="ns:CardServiceHttpBinding">
+            <http:address location="http://10.100.3.45:9764/services/CardService.CardServiceHttpEndpoint/" />
+        </wsdl:port-->
+    </wsdl:service>
+</wsdl:definitions>

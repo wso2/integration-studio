@@ -1,0 +1,6 @@
+<archetype>
+  <id>axis2-service</id>
+  <!--resources>
+    <resource>modules/distribution/pom.xml</resource>
+  </resources-->
+</archetype>

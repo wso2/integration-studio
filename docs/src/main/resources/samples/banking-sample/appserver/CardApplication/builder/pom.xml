@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>CardApplication.builder.parent</artifactId>
+    <groupId>org.wso2.capp</groupId>
+    <version>1.0.0</version>
+  </parent>
+  <groupId>org.wso2.capp</groupId>
+  <artifactId>CardApplication.jarbuilder</artifactId>
+  <version>1.0.0</version>
+  <name>CardApplication.jarbuilder</name>
+  <description>CardApplication.jarbuilder</description>
+  <repositories>
+    <repository>
+      <id>wso2-maven2-repository-1</id>
+      <url>http://dist.wso2.org/maven2</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>wso2-maven2-repository-1</id>
+      <url>http://dist.wso2.org/maven2</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <build>
+    <sourceDirectory>../src/main/java</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <configuration>
+              <sources />
+            </configuration>
+          </execution>
+        </executions>
+        <configuration />
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <id>jar-create-execution</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration />
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

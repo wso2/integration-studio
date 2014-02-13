@@ -1,0 +1,41 @@
+<%
+class Feed {
+	
+	const entries = Entry;
+	const author = String;
+	const authors = String;
+	const category = String;
+	const contributors = String;
+	const logo = String;
+	const icon = String;
+	const links = String;
+	const title = String;
+	const rights = String;
+	const updated = Date;
+	
+	/**
+	 * The Feed API handles reading and writing Atom feeds
+	 * @link http://jaggeryjs.org/apidocs/feed.jag
+	 * @param url
+	 * @return a Feed object
+	 */
+	function __construct (url) {}
+
+	/**
+	 * Returns the E4X XML contents of this Feed object.
+	 * @link http://jaggeryjs.org/apidocs/feed.jag
+	 * @return XML
+	 * 
+	 */
+	function toXML() {}
+
+	/**
+	 * Returns the String representation of the feed
+	 * @link http://jaggeryjs.org/apidocs/feed.jag
+	 * @return String 
+	 */
+	function toString() {}
+
+	
+}
+%>

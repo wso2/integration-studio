@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~ Copyright (c) 2005-2010, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~ WSO2 Inc. licenses this file to you under the Apache License,
+ ~ Version 2.0 (the "License"); you may not use this file except
+ ~ in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing,
+ ~ software distributed under the License is distributed on an
+ ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~ KIND, either express or implied.  See the License for the
+ ~ specific language governing permissions and limitations
+ ~ under the License.
+ -->
+<Module>
+    <ModulePrefs title="Quantity In Stock"
+                 description="Quantity In Stock"
+                 author="Nuwan Bandara"
+                 author_email="contact@wso2.org"
+                 author_link="http://wso2.org/"
+                 title_url="http://wso2.org/"
+                 height="300"
+                 scrolling="true">
+        <Require feature="dynamic-height"/>
+        <Require feature="settitle"/>
+        <Require feature="pubsub"/>
+    </ModulePrefs>
+    <Content type="html">
+    <![CDATA[
+    <style>
+     div#qTip {
+                padding: 3px;
+                border: 1px solid #666;
+                border-right-width: 6px;
+                border-bottom-width: 6px;
+                display: none;
+                background: #999;
+                color: #FFF;
+                font: bold 10px Verdana, Arial, sans-serif;
+                text-align: left;
+                position: absolute;
+                z-index: 1000;
+            }
+    </style>
+     <script type="text/javascript" src="js/wso2vis.js"></script>
+
+    <script type="text/javascript">
+	wso2vis.a.SampleAdapter = function() {
+		wso2vis.a.Adapter.call(this);
+	};
+
+	wso2vis.extend(wso2vis.a.SampleAdapter, wso2vis.a.Adapter);
+
+	wso2vis.a.SampleAdapter.prototype.convertData = function(data) {
+		 
+		var entries = [];
+		var wrapper = {};
+	
+		for(i = 0; i < data.Products.Product.length; i++){
+			
+			entries[i] = {};
+			
+			entries[i].type = data.Products.Product[i].productVendor + " : " + data.Products.Product[i].productCode;
+			entries[i].value = data.Products.Product[i].quantityInStock;
+		}       
+
+		wrapper["Products"] = {};
+		wrapper["Products"]["Product"] = entries; 
+		return wrapper;	
+	};
+
+         var sURL = unescape(window.location.pathname);
+
+         var params = {};
+       	 params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM;
+         var url_location=String(window.location);
+         var ip_arr=url_location.split("//");
+         var str = ip_arr[1];
+         var str_arr = str.split(":");
+        
+	 //subscribe for pubsub
+	 gadgets.pubsub.subscribe("refresh", callback);
+         
+	 var myadaptor = new wso2vis.a.SampleAdapter();
+         
+
+         //var timer = new wso2vis.u.Timer(6000);
+
+            function globalTick() {
+                dataProvider.pullData();
+            }
+
+            function barTooltip(data) {
+               var percent = ""; //data.first > 0 ? " (" + (data.value * 100/data.first).toFixed() + "%)" :"";
+               return data.type +"<br/"+"> Quantities: "+ data.value + percent;
+            }
+
+            function barClick(data) {
+              //  alert("Products: " + data["@name"]);
+            }
+
+            function initChart() {
+
+               	 var url = "http://localhost:9763/services/ShoppingCartDS/getAllProducts";
+        	 var ts = new Date().getTime();
+		 url = url + "?nocache=" + ts;
+		 var dataProvider = new wso2vis.p.ProviderGETMakeRequest(url);
+                
+                var pieChart = new wso2vis.s.chart.protovis.PieChart("chart","Quantity In Stock","");
+                pieChart.dataField(["Products", "Product"])
+       			.dataValue(["value"])
+       			.dataLabel(["type"])
+                    	.width(400)
+                    	.height(400)
+			.paddingLeft(50)
+			.tooltip(true)      //default: true
+                        .showPercent(true)  //default: true
+                        .showValue(true);
+		pieChart.onTooltip = barTooltip;		
+		pieChart.load();
+               
+                dataProvider.addDataReceiver(myadaptor);
+
+		 myadaptor.addDataReceiver(pieChart);
+
+                dataProvider.initialize();
+		 
+                //timer.tick = globalTick;
+                //timer.startTimer();
+            }
+
+          function callback(sender, message) {
+              initChart();
+       	   }
+          
+          gadgets.window.setTitle('Quantity In Stock');   
+	  setTimeout("gadgets.window.adjustHeight()",100);
+	gadgets.util.registerOnLoadHandler(initChart);
+  </script>
+  <div id="chart"></div>
+  
+    ]]>
+    </Content>
+</Module>
+
+

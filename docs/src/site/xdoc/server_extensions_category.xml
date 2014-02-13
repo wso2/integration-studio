@@ -1,0 +1,215 @@
+<!--
+~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under
+the Apache License, Version 2.0 (the "License"); ~ you may not use
+this file except in compliance with the License. ~ You may obtain a
+copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0
+~ ~ Unless required by applicable law or agreed to in writing,
+software ~ distributed under the License is distributed on an "AS IS"
+BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied. ~ See the License for the specific language governing
+permissions and ~ limitations under the License.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+
+		<h1>Advanced Server Extensions</h1>
+		<h2>Content</h2>
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#CustomMediator">Mediator Project</a>
+				</li>
+				<li>
+					<a href="registry_category.html#RegistryFilter">Registry Filter</a>
+				</li>
+				<li>
+					<a href="registry_category.html#RegistryHandler">Registry Handler</a>
+				</li>
+				<li>
+					<a href="registry_category.html#RegistryAspect">Registry Aspect</a>
+				</li>
+				<li>
+					<a href="#DSValidator">Data Services Validator Project</a>
+				</li>
+			</ul>
+		</div>
+		<h2 id="CustomMediator">Mediator Project</h2>
+		<p>
+        To create a <strong>Mediator Project</strong>, open <strong>WSO2 Developer Studio Dashboard</strong> 
+        and select <strong>Mediator Project</strong> from <strong>Enterprise Service Bus</strong> category.
+        </p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/mediator1.png"></img>
+			<br></br>
+		</p>
+		<p>
+		There are two ways to create an ESB Mediator Project.    
+		</p>
+		<ol>
+			<li>Create New Mediator</li>
+			<li>Import From Workspace</li>
+		</ol>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/mediator2.png"></img>
+			<br></br>
+		</p>
+
+		<p>If you select <strong>Create New Mediator</strong> option, you can create a new <strong>Mediator 
+		Project</strong> from the scratch. Give necessary information as <strong>Project Name, Package Name 
+		</strong> and <strong>Class Name</strong>. Then click <strong>Finish</strong>.
+		</p>
+			
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/mediator3.png"></img>
+			<br></br>
+		</p>
+			
+		<p>
+		Once you click <strong>Finish</strong>, you will see a new project has been created in the workspace and 
+		it has a mediator class which is  extending <strong>org.apache.synapse.mediators.AbstractMediator</strong> 
+		class.
+		</p>
+
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/mediator4.png"></img>
+			<br></br>
+		</p>	
+		<p>
+		In that class, you can implement your custom mediator according to your requirement. 
+		</p>
+
+		<p>
+		If you select <strong>Import From Workspace</strong> option, it will list all the projects 
+		which include source files that are being extended by 
+		<strong>org.apache.synapse.mediators.AbstractMediator</strong>.
+		</p>	
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/mediator5.png"></img>
+			<br></br>
+		</p>	
+			
+		<p>
+		Specify other information if necessary and click <strong>Finish</strong>. Now you will see that the project 
+		you select the mediator class has become a <strong>Mediator Project</strong>.
+		</p>	
+		<p>
+		Once you click <strong>Finish</strong>, you will see that the selected project also added with the 
+		project nature of <strong>org.wso2.developerstudio.eclipse.artifact.mediator.project.nature</strong> and 
+		you will see a new icon has been added to the project.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/mediator6.png"></img>
+			<br></br>
+		</p>
+			
+		<p>
+		As you did for all the other projects, you can export the created <strong>Mediator 
+		Project</strong> in to a deployable artifact by right click on the project and select
+		 <strong>Export Project as Deployable Archive</strong>. With this it will create you a 
+		 <strong>jar</strong> file, which is a bundle that you can deploy in to any 
+		 <strong>WSO2 Enterprise Service Bus</strong>. At the same time, 
+		 you can group it with a <strong>Carbon Application Project</strong> and create the 
+		 <strong>Carbon Application Archive [CAR]</strong> and deploy in to the <strong>WSO2 Enterprise 
+		 Service Bus</strong>. 
+		</p>
+			
+		<h2 id="DSValidator">Data Services Validator Project</h2>
+		<p>
+        To create a <strong>Data Services Validator Project</strong>, open <strong>WSO2 Developer Studio Dashboard</strong> 
+        and select <strong>Data Services Validator Project</strong> from 
+        <strong>Data Services</strong> category.  
+        </p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/dsv1.PNG"></img>
+			<br></br>
+		</p>
+		<p>
+		There are two ways to create an Data Services Validator Project.    
+		</p>
+		<ol>
+			<li>Create New Data Service Validator Project</li>
+			<li>Import Project From Workspace</li>
+		</ol>
+
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/dsv2.PNG"></img>
+			<br></br>
+		</p>
+
+		<p>If you select <strong>Create New Data Service Validator Project</strong> option, you can create a 
+		new <strong>Data Service Validator Project</strong> from the scratch. Give necessary information as <strong>Project Name, Package Name 
+		</strong> and <strong>Class Name</strong>. Then click <strong>Finish</strong>.
+		</p>
+			
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/dsv3.PNG"></img>
+			<br></br>
+		</p>
+			
+		<p>
+		Once you click <strong>Finish</strong>, you will see a new project has been created in the workspace and 
+		it has a data services class which is implementing <strong>org.wso2.carbon.dataservices.core.validation.Validator</strong> 
+		class.
+		</p>
+
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/dsv4.PNG"></img>
+			<br></br>
+		</p>	
+		<p>
+		In that class, you can implement your data services validator logic according to your requirement. 
+		</p>
+
+		<p>
+		If you select <strong>Import Project From Workspace</strong> option, it will list all the projects 
+		which include source files that are being implemented by 
+		<strong>org.wso2.carbon.dataservices.core.validation.Validator</strong>.
+		</p>	
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/dsv5.PNG"></img>
+			<br></br>
+		</p>	
+			
+		<p>
+		Specify other information if necessary and click <strong>Finish</strong>. Now you will see that the project 
+		you select the data services validator class has become a <strong>Data Services Validator Project</strong>.
+		</p>	
+		<p>
+		Once you click <strong>Finish</strong>, you will see that the selected project also added with the 
+		project nature of <strong>org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature</strong> and 
+		you will see a new icon has been added to the project.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/dsv6.PNG"></img>
+			<br></br>
+		</p>
+			
+		<p>
+		As you did for all the other projects, you can export the created <strong>Data Services Validator 
+		Project</strong> in to a deployable artifact by right click on the project and select
+		 <strong>Export Project as Deployable Archive</strong>. With this it will create you a 
+		 <strong>jar</strong> file, which is a bundle that you can deploy in to any 
+		 <strong>WSO2 Data Services Server</strong>. At the same time, 
+		 you can group it with a <strong>Carbon Application Project</strong> and create the 
+		 <strong>Carbon Application Archive [CAR]</strong> and deploy in to the <strong>WSO2 Data Services 
+		 Server</strong>. 
+		</p>
+									
+	</body>
+</html>

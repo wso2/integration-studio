@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ Copyright 2005-2013 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under 
+	the Apache License, Version 2.0 (the "License"); ~ you may not use this file 
+	except in compliance with the License. ~ You may obtain a copy of the License 
+	at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by 
+	applicable law or agreed to in writing, software ~ distributed under the 
+	License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. ~ See the License for the specific 
+	language governing permissions and ~ limitations under the License. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<h1> How to refer to a Named Endpoint </h1>
+			<p>
+			In this section of the document we explain how you can refer to a
+			Named Endpoint from a mediation flow.
+			</p>
+
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#method1">Drag and Drop from the Defined Endpoint list in tool palette.</a>
+				</li>
+				<li>
+					<a href="#method2">Refer a defined endpoint another project in the workspace.</a>
+				</li>
+				<li>
+					<a href="#method3">Refer endpoint in the registry resource project.</a>
+				</li>
+			</ul>
+		</div>
+		
+		<h2 id="method1">Drag and Drop from the Defined Endpoint list in tool palette</h2>
+		<p>
+			An endpoint which has a defined name referred as
+			named endpoint. You
+			can follow
+			<a href="esb_category.html#EndpointArtifact">this</a>
+			guide to learn how to create a
+			endpoint. In Developer Studio ESB
+			graphical editor all the named
+			endpoints you have created within the
+			same project are listed under
+			the defined endpoint palette category as
+			shown in the below image.
+
+
+		</p>
+
+		<p>
+			<img alt="Named_ep" src="images/esb_graphical/main_seq_2.png"></img>
+		</p>
+		<p>
+			To use them you just need to drag and drop them any
+			supported
+			configuration you want to use them for an example sequence
+			,proxy
+			config ext..
+		</p>
+		<p>
+			<img src="images/esb_graphical/ep2.png" alt="Named_ep" />
+		</p>
+
+		<h2 id="method2">Refer a defined endpoint another project in the workspace.</h2>
+
+		<p>In most of the cases we want to reuse a named endpoint which
+			resides in another ESB configuration project other than using the
+			endpoints defined in the same project.In that case you can use below
+			mechanism to reuse those in any supported configuration.
+			Here we are creating another ESB configuration project named as
+			EsbConfig.
+			And add endpoint named as "external_ ep" as shown in the below image. </p>
+
+		<p>
+			<img src="images/esb_graphical/ep3.png" alt="Named_ep" />
+		</p>
+
+		<p> Drag drop a new named endpoint from the Tool Palette. Open up the
+			properties editor for the newly added endpoint by right clicking on
+			it and selecting "show properties view" option.
+			Select "Refering Endpoint Type" as Static and click on the button in the
+			"Static Reference Key" field.</p>
+
+		<p>
+			<img src="images/esb_graphical/ep4.png" alt="Named_ep" />
+		</p>
+
+		<p>
+			It will pop up the "Resource Key Editor" as show in the below image.
+			Select "workspace" option from there.
+         </p>
+
+		<p>
+			<img src="images/esb_graphical/ep5.png" alt="Named_ep" />
+		</p>
+
+		<p>
+			The resulting dialog will list and show the existing endpoints in the
+			workspace. You can select one of them and refer it as the named
+			endpoint in your configuration.
+         </p>
+
+		<p>
+			<img src="images/esb_graphical/ep6.png" alt="Named_ep" />
+		</p>
+
+		<h2 id="method3">Refer endpoint in the registry resource project</h2>
+
+		<p>
+			In another scenario you may want to deploy your endpoint as a registry
+			resource to registry and refer that endpoint within the
+			configuration. WSO2 Developer Studio has a project type referred as
+			"Registry Resource Project" these projects can contain various kind
+			of registry resources and can be used as a artifact Carbon
+			Application Archive.
+
+			You can follow this guide to create Registry resource Project.
+
+			Then open the Developer Studio Dashboard Click on the Endpoint link in
+			the Enterprise Service Bus category. It will pop up "Create New
+			Endpoint" wizard select "Create A New Endpoint" option.
+
+			The next wizard page will look like below to save the endpoint in a
+			registry resource project check the "Make this as Dynamic Endpoint"
+			and click on the "Browse.." button relevant to "Save endpoint in"
+			field. The project browser dialog will list the Registry Resource
+			Projects in the workspace.
+         </p>
+
+		<p>
+			<img src="images/esb_graphical/ep7.png" alt="Named_ep" />
+		</p>
+	</body>
+
+</html>

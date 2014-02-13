@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+    	<groupId>org.wso2.eclipse</groupId>
+    	<artifactId>wso2-eclipse-parent</artifactId>
+    	<version>3.3.0-SNAPSHOT</version>
+    </parent>
+	<artifactId>wso2-eclipse-common</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <name>WSO2 Eclipse Common</name>
+    <!--distributionManagement>
+        <repository>
+            <id>wso2-maven2-repository</id>
+            <name>WSO2 Maven2 Repository</name>
+            <url>scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <repositories>
+    	<repository>
+    		<id>wso2-maven2-repo</id>
+    		<name>WSO2 Maven2 Repo</name>
+    		<url>http://dist.wso2.org/maven2/</url>
+    	</repository>
+<repository>
+     <id>helios</id>
+     <layout>p2</layout>
+     <url>http://download.eclipse.org/releases/helios</url>
+   </repository>
+    </repositories-->
+    <modules>
+        <module>org.wso2.developerstudio.eclipse.libraries</module>
+        <module>org.wso2.developerstudio.eclipse.logging</module>
+        <!--module>org.wso2.developerstudio.eclipse.p2manager</module-->
+        <!--module>org.wso2.developerstudio.eclipse.p2manager.36</module-->
+        <module>org.wso2.developerstudio.eclipse.ui</module>
+        <module>org.wso2.developerstudio.eclipse.utils</module>
+	<module>org.wso2.developerstudio.eclipse.maven</module>
+	<module>org.wso2.developerstudio.eclipse.general.project</module>
+	<!--module>org.wso2.developerstudio.eclipse.distribution.project</module-->
+	<module>org.wso2.developerstudio.eclipse.security.ui</module>
+	<!--module>org.wso2.developerstudio.eclipse.artifact.qos</module-->
+    </modules>
+
+  <!--properties>
+    <tycho-version>0.12.0</tycho-version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build-->
+</project>
+

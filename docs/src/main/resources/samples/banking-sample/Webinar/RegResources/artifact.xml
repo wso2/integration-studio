@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artifacts>
+    <artifact name="CardService" groupId="org.wso2.carbon.RegResources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>CardService.wsdl</file>
+            <path>/_system/config</path>
+        </item>
+    </artifact>
+    <artifact name="transform" groupId="org.wso2.carbon.RegResources.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>transform.xslt</file>
+            <path>/_system/config</path>
+        </item>
+    </artifact>
+</artifacts>

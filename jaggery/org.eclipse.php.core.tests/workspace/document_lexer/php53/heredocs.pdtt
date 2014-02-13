@@ -1,0 +1,72 @@
+--TEST--
+Test lexer states
+--FILE--
+<<<MY_MARKER
+Hello world
+Bye Bye world
+Bla Bla Bla
+MY_MARKER;
+b<<<MY_MARKER_2
+Hello world
+Bye Bye world
+Bla Bla Bla
+MY_MARKER_2;
+<<<"MY_MARKER_3"
+Hello world
+Bye Bye world
+Bla Bla Bla
+MY_MARKER_3;
+<<<'MY_MARKER_4'
+Hello world
+Bye Bye world
+Bla Bla Bla
+MY_MARKER_4;
+fputs(<<<EOF
+set term
+plot
+EOF
+);
+--EXPECT--
+PHP_HEREDOC_TAG|<<<MY_MARKER
+|5
+PHP_CONSTANT_ENCAPSED_STRING|Hello world
+Bye Bye world
+Bla Bla Bla|7
+PHP_HEREDOC_TAG|
+MY_MARKER;
+|1
+PHP_HEREDOC_TAG|b<<<MY_MARKER_2
+|5
+PHP_CONSTANT_ENCAPSED_STRING|Hello world
+Bye Bye world
+Bla Bla Bla|7
+PHP_HEREDOC_TAG|
+MY_MARKER_2;
+|1
+PHP_HEREDOC_TAG|<<<"MY_MARKER_3"
+|5
+PHP_CONSTANT_ENCAPSED_STRING|Hello world
+Bye Bye world
+Bla Bla Bla|7
+PHP_HEREDOC_TAG|
+MY_MARKER_3;
+|1
+PHP_HEREDOC_TAG|<<<'MY_MARKER_4'
+|6
+PHP_CONSTANT_ENCAPSED_STRING|Hello world
+Bye Bye world
+Bla Bla Bla|14
+PHP_HEREDOC_TAG|
+MY_MARKER_4;
+|1
+PHP_STRING|fputs|1
+PHP_TOKEN|(|1
+PHP_HEREDOC_TAG|<<<EOF
+|5
+PHP_CONSTANT_ENCAPSED_STRING|set term
+plot
+|5
+PHP_HEREDOC_TAG|EOF
+|1
+PHP_TOKEN|)|1
+PHP_SEMICOLON|;|1

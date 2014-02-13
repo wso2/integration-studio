@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://acme.com/shoppingcart/supplier" xmlns:schema="http://acme.com/shoppingcart/supplier/schema" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://acme.com/shoppingcart/supplier" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:documentation/>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://acme.com/shoppingcart/supplier/schema">
+            <xs:element name="createOrderFault" type="xs:string"/>
+            <xs:element name="orderRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ItemId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="OrderQty" nillable="true" type="xs:int"/>
+                        <!--xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" /-->
+                        <xs:element minOccurs="0" name="OrderDate" nillable="true" type="xs:date"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="orderResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="1" minOccurs="1" name="orderOk" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createOrdersRequest">
+    <wsdl:part name="order" element="schema:orderRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createOrdersResponse">
+    <wsdl:part name="order" element="schema:orderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OrderDetailsPortType">
+    <wsdl:operation name="createOrder">
+      <wsdl:input message="tns:createOrdersRequest" wsaw:Action="urn:createOrder">
+    </wsdl:input>
+      <wsdl:output message="tns:createOrdersResponse" wsaw:Action="urn:createOrderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrderDetailsSOAP11Binding" type="tns:OrderDetailsPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createOrder">
+      <soap:operation soapAction="urn:createOrder" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SupplierOrderService">
+    <wsdl:port name="OrderDetailsEndpoint" binding="tns:OrderDetailsSOAP11Binding">
+      <soap:address location="http://localhost:9764/services/SupplierOrderService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

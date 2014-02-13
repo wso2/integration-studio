@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<pattern>
+		<and>
+			<tag name="data" display="Main Tag" icon="maintag.png">
+				<attribute name="id" display="Dataservice Name" icon="dservice_name.png" required="true">
+					<proposals>
+						<condition id="condition1" path="$xpath11">value11</condition> 				<!-- xpath11 value should be equal to value11 -->
+						<condition id="condition2" path="$xpath22" rule="ne">value22</condition> 	<!-- xpath22 value should not be equal to value22 -->
+						<condition id="condition3" path="$xpath33" rule="gt">value33</condition> 	<!-- xpath33 value should be greater than value33 other conditions include "le","lt","ge", "p"-xpath_present,"np"-xpath_not_present-->
+						<proposal display="My Value" icon="my_value.png" conditions="condition1">myvalue</proposal>
+						<proposal default="true">myvalue55</proposal>
+						<proposal conditions="condition1 OR condition2">$xpath1</proposal>
+						<proposal>$xpath2</proposal>
+						<proposal conditions="(condition1 AND condition2) OR condition3">$xpath3</proposal>
+					</proposals>
+				</attribute>
+				<pattern>
+					<and>
+						<tag name="config" display="Data Source" icon="ds.png">
+							<attribute name="id" display="Datasource Name" icon="ds_name.png">
+								<proposals>
+								</proposals>
+							</attribute>
+							<and>
+								<tag name="property" display="data source property" icon="prop.png">
+									<attribute name="name" display="property name">
+										<proposals>
+										</proposals>
+									</attribute>
+									<value>
+										<proposals>
+										</proposals>
+									</value>
+								</tag>
+							</and>				
+						</tag>
+					</and>
+					<or>
+						<tag name="query">
+							<attribute name="whatever">
+								<proposals>
+								</proposals>
+							</attribute>
+							<either>
+								<tag name="excel">
+								</tag>
+								<tag name="gspread">
+								</tag>
+							</either>
+							<or>
+								<tag name="result">
+								</tag>
+							</or>
+						</tag>
+					</or>
+				</pattern>
+			</tag>
+		</and>
+	</pattern>
+</document>

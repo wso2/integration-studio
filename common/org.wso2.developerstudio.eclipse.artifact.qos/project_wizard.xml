@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="New QoS Project" 
+					description="Create new QoS Project" 
+					error="Please select a method to create the QoS artifact">
+		<option id="new.qos" default="true">New QoS Project</option>
+	</projectOptions> 
+	<projectOptionSettings>
+		<settings optionId="new.qos" 
+				  title="New QoS Project" 
+				  description="Create new QoS Project" 
+				  error="Please give a name for the QoS Project">
+			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.qos.project.controller.QOSProjectFieldController">Project Name</data>
+<!-- data modelProperty="import.file" type="file" filter="*.wsdl" fieldController="org.wso2.developerstudio.eclipse.qos.project.controller.QOSProjectFieldController">WSDL File</data>-->
+			<projectNatures>
+				<nature>org.eclipse.jdt.core.javanature</nature>
+			</projectNatures>
+		</settings>
+	</projectOptionSettings>
+</wizard>

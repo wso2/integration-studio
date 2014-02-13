@@ -1,0 +1,26 @@
+--TEST--
+Show own class members
+--PREFERENCES--
+org.eclipse.php.core/contentAssistShowStrictOptions=true
+--FILE--
+<?
+class layer {
+public $server = "";
+private $privateField = "";
+public function connect(){}
+private function privateMethod(){}
+}
+class db_layer extends layer{}
+class site {
+public $db;
+public function __construct(){
+$this->db = new db_layer;
+}
+}
+class mysite extends site{}
+$site = new mysite();
+$site->db->|
+?>
+--EXPECT--
+field($server)
+method(connect)

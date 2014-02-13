@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://acme.com/shoppingcart/reorder" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://acme.com/shoppingcart/supplier" xmlns:wsdl1="http://ws.wso2.org/dataservice" name="ReOrderProcess" targetNamespace="http://acme.com/shoppingcart/reorder">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of services participating in this BPEL process 
+     The default output of the BPEL designer uses strings as input and 
+     output to the BPEL Process. But you can define or import any XML 
+     Schema type and us them as part of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="SupplierPLT">
+    <plnk:role name="supplier" portType="wsdl:OrderDetailsPortType"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="DSPLT">
+    <plnk:role name="ds" portType="wsdl1:ShoppingCartDSPortType"/>
+  </plnk:partnerLinkType>
+    <import location="ShoppingCartDS.wsdl" namespace="http://ws.wso2.org/dataservice"/>
+    <types>  
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://acme.com/shoppingcart/reorder">
+                
+            <element name="ReOrderProcessRequest">
+                <complexType>
+                    <sequence>
+                        <element name="input" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+                  
+            <element name="ReOrderProcessResponse">
+                <complexType>
+                    <sequence>
+                        <element name="result" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            
+            <!-- Untill DS service available -->
+            <element name="IteratorPRocessRequest">
+                <complexType>
+                    <sequence maxOccurs="unbounded" minOccurs="0">
+                        <element maxOccurs="unbounded" minOccurs="0" name="IteratorInfo" nillable="false" type="tns:IteratorInfoType"/>
+                    </sequence>
+                </complexType>
+            </element>    
+            <complexType name="IteratorInfoType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1" name="input" nillable="false" type="string"/>
+                    <element maxOccurs="1" minOccurs="1" name="count" nillable="false" type="int"/>
+                </sequence>
+            </complexType>
+            
+        </schema>
+    </types>
+  
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="ReOrderProcessRequestMessage">
+        <part element="tns:ReOrderProcessRequest" name="payload"/>
+    </message>
+    
+    <message name="ReOrderProcessResponseMessage">
+        <part element="tns:ReOrderProcessResponse" name="payload"/>
+    </message>
+	
+	<!-- Untill DS service available -->
+	<message name="IteratorPRocessRequestMessage">
+        <part element="tns:IteratorPRocessRequest" name="payload"/>
+    </message>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- portType implemented by the ReOrderProcess BPEL process -->
+    <portType name="ReOrderProcess">
+        <operation name="initiate">
+            <input message="tns:ReOrderProcessRequestMessage"/>
+        </operation>
+    </portType>
+
+    <!-- portType implemented by the requester of ReOrderProcess BPEL process 
+         for asynchronous callback purposes
+         -->
+    <portType name="ReOrderProcessCallback">
+        <operation name="onResult">
+            <input message="tns:ReOrderProcessResponseMessage"/>
+        </operation>
+    </portType>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+         the ReOrderProcess partnerLinkType binds the provider and
+         requester portType into an asynchronous conversation.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="ReOrderProcess">
+        <plnk:role name="ReOrderProcessProvider" portType="tns:ReOrderProcess"/>
+        <plnk:role name="ReOrderProcessRequester" portType="tns:ReOrderProcessCallback"/>
+    </plnk:partnerLinkType>   
+    <binding name="ReOrderBinding" type="tns:ReOrderProcess">
+    	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    	<operation name="initiate">
+    		<soap:operation soapAction="http://acme.com/shoppingcart/reorder/initiate"/>
+    		<input>
+    			<soap:body use="literal"/>
+    		</input>
+    	</operation>
+    </binding>
+    <service name="ReOrderProcessService">
+    	<port binding="tns:ReOrderBinding" name="ReOrderPort">
+    		<soap:address location="http://www.localhost:9763/services/ReOrderProcessService"/>
+    	</port>
+    </service>
+</definitions>

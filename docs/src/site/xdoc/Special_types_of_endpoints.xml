@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ Copyright 2005-2013 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under 
+	the Apache License, Version 2.0 (the "License"); ~ you may not use this file 
+	except in compliance with the License. ~ You may obtain a copy of the License 
+	at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by 
+	applicable law or agreed to in writing, software ~ distributed under the 
+	License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. ~ See the License for the specific 
+	language governing permissions and ~ limitations under the License. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<h1>Special types of Endpoints.</h1>
+
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#1">Default Endpoint</a>
+				</li>
+				<li>
+					<a href="#2">Addressing Endpoint</a>
+				</li>
+
+			</ul>
+		</div>
+		<h2 id="1">Default EndPoint</h2>
+		<p>
+			According to synapse definition of the Default Endpoint is an
+			endpoint defined
+			for adding QoS and other configurations to the
+			endpoint which is
+			resolved from the 'To' address of the message
+			context. Graphical
+			representation of the usage of Default Endpoint
+			shown as below.
+	</p>
+
+		<p>
+			<img alt="Default EndPoint" src="images/esb_graphical/special_ep_1.png"></img>
+		</p>
+
+		<p>
+			And the configuration in xml shown below.
+		</p>
+
+		<p>
+			<img alt="Default EndPoint" src="images/esb_graphical/special_ep_2.png"></img>
+		</p>
+
+		<p>
+			Default endpoint will appear in the configuration as shown above.
+		</p>
+
+		<h2 id="2">Addressing Endpoint</h2>
+
+		<p>
+			Addressing Endpoint is a WSO2 Developer Studio specific graphical
+			representation to address special behavior of the ESB. Consider the
+			below shown configuration segment.
+		</p>
+
+		<p>
+			<img alt=" Addressing Endpoint" src="images/esb_graphical/special_ep_3.png"></img>
+
+		</p>
+
+		<p>
+			As shown in above image position 1 the send mediator suppose send
+			message to some end point but where is the endpoint?. But ESB know
+			how to handle this configuration is treats this configuration at the
+			point 1 as if there was a Default Endpoint. And on the 2 point it
+			just return back the message to client.
+
+			But since we do not have
+			proper endpoint configuration at point 1 we can
+			not have a graphical
+			representation for the endpoint in the editor.
+			As an answer for above
+			question WSO2 Developer Studio introduced the
+			“Addressing Endpoint”
+			which is only a graphical representation which
+			handles a specific
+			scenario. The Graphical representation of above
+			configuration shown
+			below.
+		</p>
+
+		<p>
+			<img alt="Addressing Endpoint" src="images/esb_graphical/special_ep_4.png"></img>
+
+		</p>
+
+	</body>
+
+</html>

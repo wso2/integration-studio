@@ -1,0 +1,111 @@
+<!--
+~ Copyright 2012 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under
+the Apache License, Version 2.0 (the "License"); ~ you may not use
+this file except in compliance with the License. ~ You may obtain a
+copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0
+~ ~ Unless required by applicable law or agreed to in writing,
+software ~ distributed under the License is distributed on an "AS IS"
+BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied. ~ See the License for the specific language governing
+permissions and ~ limitations under the License.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+	<h1>Rule Service Tools</h1>
+	<h2>Content</h2>
+	<div class="toc">
+		<ul>
+			<li>
+				<a href="#BRSproject">Business Rule Service Project</a>
+			</li>
+		</ul>
+	</div>
+	<h2 id="BRSproject">Business Rule Service Project</h2>
+	<p>
+	To create a <strong>Business Rule Service Project</strong>, open <strong>WSO2 Developer Studio Dashboard</strong> 
+	and select <strong>Business Rule Service Project</strong> from <strong>Business Rule Server</strong> category.
+	</p>
+	    <p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/brs1.png"></img>
+			<br></br>
+		</p>
+		<p>
+		There are two ways to create a rule service.    
+		</p>
+		<ol>
+			<li>New Business Rule Service</li>
+			<li>Import Business Rule Service</li>
+		</ol>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/brs2.png"></img>
+			<br></br>
+		</p>
+		<p>With the <strong>New Business Rule Service</strong> option, you will get an empty rule service according to 
+		the information that you have provided. At the same time, you can upload a 
+		<strong>Rule Service Conffiguration</strong> file with the extension of <strong>.rsl</strong> from the 
+		file system.
+		</p>
+		<p>
+		If you select <strong>New Business Rule Service</strong> option, and click <strong>Next</strong>, wizard page 
+		will ask you general information like <strong>Project Name</strong>, <strong>Rule Service Name</strong> 
+		etc. Give necessary information and click <strong>Next</strong>.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/brs3.png"></img>
+			<br></br>
+		</p>
+		<p>
+		After giving necessary information, click <strong>Finish</strong>. Now you will see that the 
+		created <strong>Rule Service</strong> has opened with <strong>Graphical Rule Services Editor</strong>.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/brs4.png"></img>
+			<br></br>
+		</p>
+		<p>
+		With this <strong>Graphical Editor</strong>, you can add different <strong>Rules, 
+		Operations</strong> etc in a very convenient manner. 
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/brs5.png"></img>
+			<br></br>
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/brs6.png"></img>
+			<br></br>
+		</p>
+		<p>With the <strong>Import Business Rule Service</strong> option, you can browse for rule service configuration (rsl) file in your file system.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/brs7.png"></img>
+			<br></br>
+		</p>
+		<p>
+		Now you will see a new <strong>Rule Service Project</strong> has been created in the workspace and the 
+		<strong>rule service configuration (rsl) file</strong> open with graphical editor.
+		</p>
+		<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/brs8.png"></img>
+				<br></br>
+			</p>
+			<p>
+		
+		 You can export your rule service  project as a <strong>Carbon Application Project</strong> and create the 
+		 <strong>Carbon Application Archive [CAR]</strong> and deploy in to the <strong>Carbon 
+		 Server</strong>. When grouping your project as a <strong>Carbon Application Archive [CAR]</strong>, it will create you a 
+		 <strong>aar</strong> file, which you can deploy in to any 
+		 <strong>WSO2 Business Rules Services Server</strong>.
+		</p>
+		
+</body>
+</html>

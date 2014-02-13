@@ -1,0 +1,6 @@
+<archetype>
+  <id>maven-sequence-plugin</id>
+ <resources>
+    <resource>src/main/resources/sample/sample-sequence.xml</resource>
+  </resources>
+</archetype>

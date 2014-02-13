@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <fixed facet="bpel.facet.core"/>
+  <installed facet="bpel.facet.core" version="2.0"/>
+</faceted-project>

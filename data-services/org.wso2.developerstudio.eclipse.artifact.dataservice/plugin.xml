@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+         <wizard name="Data Service Project" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
+			class="org.wso2.developerstudio.eclipse.artifact.dataservice.ui.wizard.DataServiceProjectCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.newdsartifact"
+			project="true"
+			icon="icons/ds-16x16.png">
+			<description>Data Service Project</description>
+		</wizard>
+   </extension>
+   <extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.ds.project.nature" name="Data Service Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.artifact.dataservice.project.nature.DataServiceProjectNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.ds.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.ds.project.nature" icon="icons/ds-12x12.png">
+		</image>
+	</extension>
+	<extension point="org.eclipse.ui.navigator.navigatorContent">	
+	   <navigatorContent activeByDefault="true"
+			priority="high"
+			id="org.eclipse.ui.navigator.resourceContent"
+			name="test">
+				<commonWizard 
+					menuGroupId="3org.wso2.developerstudio.eclipse.artifact.newdsartifact"
+			  	 	type="new"
+					wizardId="org.wso2.developerstudio.eclipse.artifact.newdsartifact">
+					<enablement>
+						<or>
+							<adapt type="org.eclipse.core.resources.IProject"/>
+							<adapt type="org.eclipse.core.resources.IFolder"/>
+						</or>
+					</enablement>
+				</commonWizard>
+				<triggerPoints>
+				           <or>         
+				              <instanceof 
+				                    value="org.eclipse.core.resources.IWorkspaceRoot" /> 
+				              <instanceof
+				                    value="org.eclipse.core.resources.IProject" />  
+				              <instanceof  
+				                     value="org.eclipse.core.resources.IFolder" /> 
+				           </or>
+				  </triggerPoints>
+		</navigatorContent>
+	</extension>
+ <extension
+       point="org.wso2.developerstudio.eclipse.project.export.handler">
+    <handler
+          class="org.wso2.developerstudio.eclipse.artifact.dataservice.project.export.DataServiceArtfactExportHandler"
+          id="org.wso2.developerstudio.eclipse.artifact.dataservice.project.export.handler"
+          type="service/dataservice">
+    </handler>
+ </extension>
+    <extension point="org.wso2.developerstudio.eclipse.samples">
+      <sample
+            class="org.wso2.developerstudio.eclipse.artifact.dataservice.sample.DataserviceSampleContributor"
+            id="org.wso2.developerstudio.eclipse.capp.artifact.dataservice.sample"
+            isCustomCreateSample="false"
+            sampleProjectName="EmployeeDataService">
+      </sample>
+   </extension>
+</plugin>

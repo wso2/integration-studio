@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data name="CustomerDS">
+  <config id="default">
+    <property name="org.wso2.ws.dataservice.driver">com.mysql.jdbc.Driver</property>
+    <property name="org.wso2.ws.dataservice.protocol">jdbc:mysql://localhost:3306/CustomersDatabase</property>
+    <property name="org.wso2.ws.dataservice.user">root</property>
+    <property name="org.wso2.ws.dataservice.password">root</property>
+  </config>
+  <query id="q1" useConfig="default">
+    <sql>call getCustomer(?,?,?,?)</sql>
+    <result element="Entries" rowName="Entry">
+      <element column="Flag" name="Flag" xsdType="xs:integer"/>
+      <element column="Customer" name="Customer" xsdType="xs:string"/>
+    </result>
+    <param name="NID" ordinal="1" sqlType="STRING"/>
+    <param name="Name" ordinal="2" sqlType="STRING"/>
+    <param name="Flag" ordinal="3" sqlType="INTEGER" type="OUT"/>
+    <param name="Customer" ordinal="4" sqlType="STRING" type="OUT"/>
+  </query>
+  <operation name="op1">
+    <call-query href="q1">
+      <with-param name="NID" query-param="NID"/>
+      <with-param name="Name" query-param="Name"/>
+    </call-query>
+  </operation>
+</data>

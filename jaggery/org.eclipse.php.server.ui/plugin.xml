@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?><!--
+    Copyright (c) 2009 IBM Corporation and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+    
+    Contributors:
+        IBM Corporation - initial API and implementation
+        Zend Technologies
+ -->
+
+<plugin>
+
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage
+			id="org.eclipse.php.server.ui.launchConfigurationTypeImage"
+			configTypeID="org.eclipse.php.debug.core.launching.webPageLaunch"
+			icon="icons/full/obj16/server.gif">
+		</launchConfigurationTypeImage>
+	</extension>
+
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup
+			id="org.eclipse.php.server.ui.launchConfigurationTabGroup" type="org.eclipse.php.debug.core.launching.webPageLaunch"
+			class="org.eclipse.php.internal.server.ui.ServerLaunchConfigurationTabGroup">
+		</launchConfigurationTabGroup>
+	</extension>
+
+	<extension point="org.eclipse.php.debug.ui.launchConfigurationTabs">
+		<launchConfigurationTab
+			class="org.eclipse.php.internal.server.ui.launching.PHPWebPageLaunchConfigurationTab"
+			id="org.eclipse.php.debug.ui.launching.PHPWebPageLaunchConfigurationTab"
+			launchConfigurationTabGroupId="org.eclipse.php.server.ui.launchConfigurationTabGroup" />
+		<launchConfigurationTab
+			class="org.eclipse.php.internal.server.ui.launching.PHPServerAdvancedTab"
+			id="org.eclipse.php.debug.ui.launching.PHPServerAdvancedTab"
+			launchConfigurationTabGroupId="org.eclipse.php.server.ui.launchConfigurationTabGroup"
+			placeAfter="org.eclipse.php.debug.ui.launching.PHPWebPageLaunchConfigurationTab" />
+	</extension>
+
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut
+			class="org.eclipse.php.internal.server.ui.launching.PHPWebPageLaunchShortcut"
+			description="%WebLaunch.description" icon="icons/full/obj16/server_run.gif"
+			id="org.eclipse.php.server.ui.phpServerShortcut" label="%phpServerShortcut.label"
+			modes="run, debug">
+			<contextualLaunch>
+				<contextLabel mode="run" label="%phpServerShortcut.label" />
+				<contextLabel mode="debug" label="%phpServerShortcut.label" />
+				<enablement>
+					<count value="1" />
+	 				<!-- Pass a 'webPage' argument for the enablement test -->
+					<test args="webPage" property="org.eclipse.php.debug.ui.launchablePHP" value="true" />
+				</enablement>
+			</contextualLaunch>
+			<configurationType
+				id="org.eclipse.php.debug.core.launching.webPageLaunch">
+			</configurationType>
+		</shortcut>
+	</extension>
+	
+	<extension point="org.eclipse.ui.commands">
+		<command categoryId="org.eclipse.debug.ui.category.run"
+			description="%WebLaunch.debug.description" id="org.eclipse.php.server.ui.phpServerShortcut.debug"
+			name="%WebLaunch.debug.name" />
+		<command categoryId="org.eclipse.debug.ui.category.run"
+			description="%WebLaunch.run.description" id="org.eclipse.php.server.ui.phpServerShortcut.run"
+			name="%WebLaunch.run.name" />
+	</extension>
+	
+	<extension point="org.eclipse.ui.bindings">
+		<key commandId="org.eclipse.php.server.ui.phpServerShortcut.run"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M3+M2+X W" />
+		<key commandId="org.eclipse.php.server.ui.phpServerShortcut.debug"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M3+M2+D W" />
+	</extension>
+	
+	<extension point="org.eclipse.php.ui.wizardAndCompositeFragments">
+		<wizardAndCompositeFragment
+			class="org.eclipse.php.internal.server.ui.wizard.BasicCompositeFragmentFactory"
+			fragmentsGroupID="org.eclipse.php.server.ui.serverWizardAndComposite"
+			id="org.eclipse.php.server.ui.wizard.BasicCompositeFragmentFactory"
+			name="Basic Factory" />
+		<wizardAndCompositeFragment
+			class="org.eclipse.php.internal.server.ui.PathMapperFragmentFactory"
+			fragmentsGroupID="org.eclipse.php.server.ui.serverWizardAndComposite"
+			id="org.eclipse.php.internal.server.ui.PathMapperFragmentFactory"
+			name="Path Mapper Fragment" placeAfter="org.eclipse.php.server.ui.wizard.BasicCompositeFragmentFactory">
+		</wizardAndCompositeFragment>
+	</extension>
+	
+	<!--extension point="org.eclipse.ui.preferencePages">
+		<page category="org.eclipse.php.ui.preferences.PHPBasePreferencePage"
+			class="org.eclipse.php.internal.server.ui.PHPServersPreferencePage"
+			id="org.eclipse.php.server.internal.ui.PHPServersPreferencePage"
+			name="%serversPreferencesPageName" />
+	</extension-->
+	
+	<extension point="org.eclipse.php.debug.ui.debugServerConnectionTest">
+		<debugServerTest
+			class="org.eclipse.php.internal.server.ui.launching.zend.DefaultDebugServerConnectionTest"
+			debuggerTypeName="Zend Debugger" id="org.eclipse.php.server.ui.defaultZendDebugServerTest">
+		</debugServerTest>
+	</extension>
+	
+</plugin>

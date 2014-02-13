@@ -1,0 +1,524 @@
+<!--
+~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under
+the Apache License, Version 2.0 (the "License"); ~ you may not use
+this file except in compliance with the License. ~ You may obtain a
+copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0
+~ ~ Unless required by applicable law or agreed to in writing,
+software ~ distributed under the License is distributed on an "AS IS"
+BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied. ~ See the License for the specific language governing
+permissions and ~ limitations under the License.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+		<h1>Apache Axis2 and JAX-WS/JAX-RS Tools</h1>
+		<h2>Content</h2>
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#Axis2Artifact">Apache Axis2 Project</a>
+				</li>
+				<li>
+					<a href="#Axis2Utils1">Generate WSDL</a>
+				</li>
+				<li>
+					<a href="#Axis2Utils2">Generate Apache Axis2 Client</a>
+				</li>
+				<li>
+					<a href="#Axis2Utils3">Generate Apache Axis2 Archive (AAR)</a>
+				</li>
+				<li>
+					<a href="#Axis2Utils4">Generate Apache Axis2 Java Skeleton</a>
+				</li>
+				<li>
+					<a href="#Axis2ContractFirst">Apache Axis2 Service with Contract First Approach</a>
+				</li>
+				<li>
+					<a href="#Car-WSArtifact">Export Axis2 Service Project as Carbon Application Project(CApp)</a>
+				</li>
+				<li>
+					<a href="#JAX-WSArtifact">JAX-WS Artifact</a>
+				</li>
+				<li>
+					<a href="#JAX-RSArtifact">JAX RESTful Artifact</a>
+				</li>
+			</ul>
+		</div>
+		<h2 id="Axis2Artifact">Apache Axis2 Project</h2>
+		<p>
+       	To create a <strong>Apache Axis2 Service Project</strong>, open <strong>WSO2 Developer Studio Dashboard</strong> 
+        and select <strong>Axis2 Service Project</strong> from <strong>Service hosting</strong> category. 
+        </p>
+     	<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis2-dashBoad.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		There are <strong>two</strong> options to create a axis2 service.    
+		</p>
+		<ol>
+			<li>Create New Axis2 Service</li>
+			<li>Create New Axis2 Service using WSDL File</li>
+		</ol>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis1.png"></img>
+			<br></br>
+		</p>
+		
+		<p>With the <strong>New Axis2 Service</strong> option, you will get an empty Axis2 service according to 
+		the information that you have provided. At the same time, you can upload a 
+		<strong>WSDL file</strong> from the file system.
+		</p>
+		<p>
+		If you select <strong>New Axis2 Service</strong> option, and click <strong>Next</strong>, wizard page 
+		will ask you general information like <strong>Project Name</strong>, <strong>package  Name</strong> 
+		etc. Give necessary information and click <strong>Next</strong>.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis4.png"></img>
+			<br></br>
+		</p>
+		<p>
+		In the next page, you can specify<strong>maven information</strong> regarding the project or can allow the
+		default information. and click <strong>Finish</strong> 
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis5.png"></img>
+			<br></br>
+		</p>		
+		<p>
+		After giving necessary information, click <strong>Finish</strong>. Now you will see that the 
+		created <strong>Axis2 Service Project</strong> and the service class has opened.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis6.png"></img>
+			<br></br>
+		</p>			
+		<p>
+		Now we will add a method to HelloService java class. 
+		</p>	
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis7.png"></img>
+			<br></br>
+		</p>
+		
+		<h3 id="Axis2Utils1">Generate WSDL</h3>
+		<p>
+		To generate <strong>WSDL</strong>for a service, right click on the project and the select <strong>Generate WSDL
+		</strong>from the right click menu 
+		</p>		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-generateWsdl.png"></img>
+			<br></br>
+		</p>
+		<p>
+		select a location to save the WSDL file
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-generateWsdl1.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		WSDL file will be created in the given location in the workspace. 
+		</p>
+		
+	
+		<h3 id="Axis2Utils2">Generate Apache Axis2 Client</h3>
+		<p>
+       	To create a <strong>Apache Axis2 Client Project</strong>, goto <strong>File --> New --> Other</strong> will pop up
+       	a dialog box , go to WSO2 category  then select service hosting category, under project types you can find the
+       	 <strong>Axis2 Web Service Client Project</strong>. 
+        </p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis2-client-wizard.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		There are three options to provide the WSDl file, can brows the wsdl file in<strong> the file system </strong>
+		or<strong> workspace </strong> also can provide the <strong>uri</strong> of the wsdl file
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-client.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		After selecting the option, in the next wizard page, it will ask the source folder of the project,  
+		you can set the path for the <strong>source</strong> folder, you can do it using <strong>Browse</strong> button. After
+		when you have a project in your workspace if you don't have project in the workspace you can create a new 
+		project using <strong>create new project</strong> link button, selecting the <strong>Source</strong> folder, click <strong>Next</strong>. 
+		</p>		
+		
+		<p>
+			<br></br>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-client2.png"></img>
+			<br></br>
+			<br></br>
+		</p>
+		
+		<p>
+		Select the necessary <strong>Client configuration Options</strong> available in the next page and click 
+		<strong>Finish</strong>.
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-client3.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		Now you will see, client classes has been created in the selected <strong>Source</strong> folder that you have 
+		given previously.
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-client4.png"></img>
+			<br></br>
+		</p>
+				
+		<h3 id="Axis2Utils3">Generate Apache Axis2 Archive (AAR)</h3>
+		<p>
+		You can generate an Axis2 Service Archive(.aar) by exporting the project. Right click on your <strong>
+		Axis2 Service Project</strong> Select <strong>Export project as Deployable Archive</strong> from the menu.
+		</p>
+		
+			<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-export.png"></img>
+			<br></br>
+			</p>
+		
+		<p>
+		This will pop up a dialog box. Then browse to the place where you want generate your 
+		Axis2 Archive file and click <strong>finish</strong>. 
+		</p>
+		    <p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-export-desti.png"></img>
+			<br></br>
+			</p>
+		
+		
+		<h3 id="Axis2Utils4">Generate Axis2 Web Service Skeleton</h3>
+		<p>
+       	To create a <strong>Generate Axis2 Web Service Skeleton Project</strong>, open <strong>WSO2 Developer Studio Dashboard</strong> 
+        and select <strong>Generate Axis2 Web Service Skeleton Project</strong> from <strong>Service hosting</strong> category. 
+        </p>
+		
+		<p>
+       	To create a <strong>Axis2 Web Service Skeleton Project</strong>, goto <strong>File --> New --> Other</strong> will pop up
+       	a dialog box , go to WSO2 category  then select service hosting category, under project types you can find the
+       	 <strong>Axis2 Web Service Skeleton Project</strong>. 
+        </p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-skelton-wizard.png"></img>
+			<br></br>
+		</p>
+		
+	    <p>
+		There are <strong>three</strong>options to provide the WSDl file, can brows the WSDL file in<strong> the file system </strong>or
+		<strong> workspace </strong> also can provide the <strong>URI</strong> of the WSDL file
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-service-skelton1.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		After selecting the option, in the next wizard page, it will ask the source folder of the project,  
+		you can set the path for the <strong>source</strong> folder, you can do it using <strong>Browse</strong> button. After
+		when you have a project in your workspace if you don't have project in the workspace you can create a new 
+		project using <strong>create new project</strong> link button, selecting the <strong>Source</strong> folder, click <strong>Next</strong>. 
+		</p>		
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-service-skelton5.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		Select the necessary <strong>configuration Options</strong> available in the next page and click 
+		<strong>Finish</strong>.
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-fromwsdl3.png"></img>
+			<br></br>
+		</p>
+		
+		<p>
+		Now you will see, client classes has been created in the selected <strong>Source</strong> folder that you have 
+		given previously.
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-client4.png"></img>
+			<br></br>
+		</p>
+		
+			
+		<h2 id="Axis2ContractFirst">Apache Axis2 Service with Contract First Approach</h2>
+		<p>
+		You can create an <strong>Apache Axis2 Service Project</strong> by pointing a <strong>WSDL</strong> file. 
+		This the second option avilable in Axis2 Service Project wizard
+		</p>
+		
+		 <p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-fromWSDL.png"></img>
+			<br></br>
+ 		</p>
+		
+		<p>
+		Select the necessary <strong>Client configaration Options</strong> available in the next page and click 
+		<strong>Finish</strong>.
+		</p>
+		
+	     <p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-service-wsdl-config.png"></img>
+			<br></br>
+ 		 </p>
+
+		<p>
+		Now you will see, new <strong>Web Services Project</strong> has been created which contains the 
+		<strong>generated stubs</strong> for the <strong>WSDL</strong> you have pointed. 
+		</p>
+		
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/axis-fromwsdl3.png"></img>
+			<br></br>
+		</p>
+		
+		<h3 id="Car-WSArtifact">Export Axis2 Service Project as Carbon Application Project</h3>
+		 <p>
+		 you can group it with a <strong>Carbon Application Project</strong> and create the 
+		 <strong>Carbon Application Archive [CAR]</strong> and deploy in to the <strong>Carbon 
+		 Server</strong>. 
+		</p>
+		
+	     <p>
+	     <br></br>
+			<img alt="New Server Runtime" src="images/axis-capp.png"></img>
+		<br></br>
+	     </p>
+		
+		
+		<h2 id="JAX-WSArtifact">JAX-WS Project</h2>
+        <p>
+        To create a JAX-WS Service Project, Go to the J2EE  perspective, and select <strong>File->New->Project</strong> and select <strong>WSO2</strong> category, then under WSO2 category <strong>Service Hosting->Project Types->JAX-WS Service Project</strong> from the wizard dialog
+        </p>
+		<p>
+			<img alt="New Server Runtime" src="images/jaxws1.png"></img>
+		</p>
+		<p>
+		There are two ways to create a JAX-WS Project.    
+		</p>
+		<ol>
+			<li>Create a JAX-WS Project</li>
+			<li>Create a JAX-WS Project using WSDL</li>
+		</ol>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/jaxws2.png"></img>
+			<br></br>
+		</p>
+
+		<p>With the first option, you can create a basic JAX-WS Project. You can develop a 
+		JAX-WS-enabled Web service as a Java class inside this project. 
+		</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxws3.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			Once you create the <strong>JAX-WS</strong> project, to create a 
+			<strong>JAX-WS Service</strong> class, right click on the created JAX-WS project and 
+			go to <strong>New -> JAX-WS Service Class</strong>.
+			</p>
+			
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxws4.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			In the service creation class dialog, you will have to specify the 
+			<strong>bean</strong> class as well as the <strong>interface</strong> class. Give 
+			necessary information and click <strong>Finish</strong>.
+			</p>
+			
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxws5.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			Now you will see that the interface class and the bean class has been created inside the 
+			JAX-WS project that you have created. 
+			</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxws6.png"></img>
+				<br></br>
+			</p>
+			
+			<p>With the <strong>Create New JAX-WS Service using WSDL File</strong>,you 
+			can generate a Web service from a WSDL file. The resulting Web service class will 
+			contain the public endpoint interface described by the WSDL without the implementation. 
+			After the Web service has been generated, you have to write Web service implementation class.
+			</p>
+			<p>
+			Browse for the correct <strong>WSDL</strong> file and you have to specify the 
+			<strong>CXF Home</strong>. You can download the 
+			<a href="http://cxf.apache.org/download.html">CXF Binary Distribution</a> and 
+			extract it. This will be your <strong>CXF Home</strong>.
+			</p>
+			
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxws7.png"></img>
+				<br></br>
+			</p>	
+			
+			<p>
+			Now you will see that the needed <strong>JAX-WS Service Classes</strong> have 
+			been generated. 
+			</p>
+			
+			<p>You can export JAX-WS project as a web application (war) file or you can add it as dependency of 
+			Carbon Application project which can deploy on WSO2 Application Server.
+			<br/>
+			To create a deployable  archive (WAR) , Right-click on project, select  
+			<strong>Export Project as Deployable Archive</strong>, then choose destination location.
+			</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxws8.png"></img>
+				<br></br>
+				<br></br>
+			</p>	
+
+	<h2 id="JAX-RSArtifact">JAX RESTful Web Service Project</h2>
+        <p>
+        To create a JAX RESTful Web Service Project, Go to the J2EE  perspective, and select <strong>File->New->Project</strong> and select <strong>WSO2</strong> category, then under WSO2 category <strong>Service Hosting->Project Types->JAX RESTful Web Service Project</strong> from the wizard dialog
+        </p>
+		<p>
+			<img alt="New Server Runtime" src="images/jaxrs1.png"></img>
+		</p>
+
+		<p>There are two options to create  <strong>JAX RESTful service</strong> Project. 
+		</p>
+		    <ol>
+				<li>Create a JAX-RS Project</li>
+				<li>Create a JAX-RS Project using WADL</li>
+			</ol>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxrs7.png"></img>
+				<br></br>
+			</p>
+			<p>
+			With the first option, you can create a <strong>JAX RESTful service</strong> Project.
+			</p>
+			
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxrs2.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			Once you create the <strong>JAX RESTful service</strong> project, to create a 
+			<strong>JAX RESTful service</strong> class, right click on the created JAX RESTful service project and 
+			go to <strong>New -> JAX RESTful Service Class</strong>.
+			</p>
+			
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxrs3.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			In the service creation class dialog, you will have to specify the 
+			<strong>bean</strong> class as well as the <strong>interface</strong> class. Give 
+			necessary information and click <strong>Finish</strong>.
+			</p>
+			
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxrs4.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			Now you will see that the interface class and the bean class has been created inside the 
+			JAX RESTful service project project that you have created. 
+			</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxrs5.png"></img>
+				<br></br>
+			</p>
+			
+			<p>
+			You can also create a <strong>JAX RESTful service</strong> project by pointing a <strong>WADL</strong> file. 
+			This is the second option avilable in <strong>JAX RESTful service</strong> Project wizard.Browse for the correct <strong>WADL</strong> file and you have to specify the <strong>CXF</strong> Home. 
+			You can download the <a href="http://cxf.apache.org/download.html">CXF Binary Distribution</a> and extract it. This will be your CXF Home.
+			</p>
+			
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxrs8.png"></img>
+				<br></br>
+			</p>
+			
+			
+			<p>You can export JAX RESTful service project as a web application (war) file or you can add it as dependency of 
+			Carbon Application project which can deploy on WSO2 Application Server.
+			<br/>
+			To create a deployable  archive (WAR) , Right-click on project, select  
+			<strong>Export Project as Deployable Archive</strong>, then choose destination location.
+			</p>
+			<p>
+				<br></br>
+				<img alt="New Server Runtime" src="images/jaxrs6.png"></img>
+				<br></br>
+				<br></br>
+			</p>										
+	</body>
+</html>

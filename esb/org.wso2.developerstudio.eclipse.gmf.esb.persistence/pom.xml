@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright 2009-2010 WSO2, Inc. (http://wso2.com)
+	
+	Licensed under the Apache License, Version 2.0 (the "License"); 
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at 
+	
+	http://www.apache.org/licenses/LICENSE-2.0 
+	
+	Unless required	by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for	the specific language governing permissions and
+	limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+    	<groupId>org.wso2.developerstudio</groupId>
+    	<artifactId>esb-tool-parent</artifactId>
+    	<version>3.3.0-SNAPSHOT</version>
+    </parent>     
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>org.wso2.developerstudio.eclipse.gmf.esb.persistence</artifactId>
+  	<packaging>eclipse-plugin</packaging>
+  	<version>1.3.0-SNAPSHOT</version>
+    <name>Developer Studio ESB Graphical Editor Diagram</name>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>lib</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<excludeTransitive>true</excludeTransitive>
+							<includeScope>runtime</includeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>			
+		</plugins>
+	</build>	
+	<repositories>
+		<repository>
+			<id>wso2-nexus</id>
+			<name>WSO2 internal Repository</name>
+			<url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</repository>
+  	</repositories>
+  	
+  	
+  	<dependencies>
+
+
+	<!--dependency>
+		<groupId>javax.activation</groupId>
+		<artifactId>activation</artifactId>
+		<version>1.1</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.apache.bcel</groupId>
+		<artifactId>bcel</artifactId>
+		<version>5.2</version>
+	</dependency>
+	
+	<dependency>
+  <groupId>commons-cli</groupId>
+  <artifactId>commons-cli</artifactId>
+  <version>1.0</version>
+</dependency>
+
+
+<dependency>
+  <groupId>commons-codec</groupId>
+  <artifactId>commons-codec</artifactId>
+  <version>1.2</version>
+</dependency>
+
+
+<dependency>
+  <groupId>commons-collections</groupId>
+  <artifactId>commons-collections</artifactId>
+  <version>3.1</version>
+</dependency>
+  	
+  	<dependency>
+  <groupId>commons-dbcp</groupId>
+  <artifactId>commons-dbcp</artifactId>
+  <version>1.2.2</version>
+</dependency>
+
+<dependency>
+  <groupId>commons-httpclient</groupId>
+  <artifactId>commons-httpclient</artifactId>
+  <version>3.1</version>
+</dependency>
+
+<dependency>
+  <groupId>commons-net</groupId>
+  <artifactId>commons-net</artifactId>
+  <version>1.4.1</version>
+</dependency>
+
+<dependency>
+  <groupId>commons-pool</groupId>
+  <artifactId>commons-pool</artifactId>
+  <version>1.3</version>
+</dependency>
+
+
+<dependency>
+  <groupId>jakarta-regexp</groupId>
+  <artifactId>jakarta-regexp</artifactId>
+  <version>1.4</version>
+</dependency>
+
+<dependency>
+  <groupId>java-cup</groupId>
+  <artifactId>java-cup</artifactId>
+  <version>0.0</version>
+</dependency>
+
+<dependency>
+  <groupId>jaxen</groupId>
+  <artifactId>jaxen</artifactId>
+  <version>1.1.1</version>
+</dependency>
+
+<dependency>
+  <groupId>JLex</groupId>
+  <artifactId>JLex</artifactId>
+  <version>0.0</version>
+</dependency>
+
+<dependency>
+  <groupId>javax.mail</groupId>
+  <artifactId>mail</artifactId>
+  <version>1.4.1</version>
+</dependency-->
+
+
+<dependency>
+  <groupId>xmlunit</groupId>
+  <artifactId>xmlunit</artifactId>
+  <version>1.1</version>
+</dependency>
+
+<!--dependency>
+  <groupId>xml-apis</groupId>
+  <artifactId>xml-apis</artifactId>
+  <version>1.3.04</version>
+</dependency>
+
+<dependency>
+  <groupId>xerces</groupId>
+  <artifactId>xercesImpl</artifactId>
+  <version>2.8.1</version>
+</dependency-->
+
+<dependency>
+  <groupId>org.apache.xalan</groupId>
+  <artifactId>xalan</artifactId>
+  <version>2.7.1</version>
+</dependency>
+
+<dependency>
+  <groupId>wsdl4j</groupId>
+  <artifactId>wsdl4j</artifactId>
+  <version>1.6.2</version>
+</dependency>
+
+<dependency>
+  <groupId>org.apache.tomcat</groupId>
+  <artifactId>tribes</artifactId>
+  <version>6.0.16</version>
+</dependency>
+
+ 
+<dependency>
+  <groupId>org.codehaus.woodstox</groupId>
+  <artifactId>wstx-asl</artifactId>
+  <version>3.2.4</version>
+</dependency>
+
+<dependency>
+  <groupId>javax.xml.stream</groupId>
+  <artifactId>stax-api</artifactId>
+  <version>1.0-2</version>
+</dependency>
+
+<!--dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>servlet-api</artifactId>
+  <version>2.3</version>
+</dependency>
+
+
+
+<dependency>
+  <groupId>net.sf.saxon</groupId>
+  <artifactId>saxon-dom</artifactId>
+  <version>8.9</version>
+</dependency>
+
+
+<dependency>
+  <groupId>net.sf.saxon</groupId>
+  <artifactId>saxon</artifactId>
+  <version>8.9</version>
+</dependency-->
+
+<!--  
+<dependency>
+  <groupId>net.sf.saxon</groupId>
+  <artifactId>saxon-xqj</artifactId>
+  <version>9.1.0.8</version>
+</dependency>
+-->
+
+
+
+
+
+
+
+
+
+  	
+  	
+	<!-- commons-logging-1.1.1.jar >
+	<dependency>
+		<groupId>commons-logging</groupId>
+		<artifactId>commons-logging</artifactId>
+		<version>1.1.1</version>
+	</dependency-->
+
+	<!-- org.wso2.carbon.identity.entitlement.mediator-3.2.2.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.identity.entitlement.mediator</artifactId>
+		<version>3.2.2</version>
+	</dependency-->
+
+	<!-- axiom-impl-1.2.11-SNAPSHOT.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
+		<artifactId>axiom-impl</artifactId> <version>1.2.11-SNAPSHOT</version> </dependency> -->
+
+	<!-- org.wso2.carbon.mediator.smooks-3.2.0.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.mediator.smooks</artifactId>
+		<version>3.2.0</version>
+	</dependency-->
+
+	<!-- slf4j-api-1.5.6.jar>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>1.5.6</version>
+	</dependency-->
+
+	<!-- commons-lang-2.4.jar>
+	<dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+		<version>2.4</version>
+	</dependency-->
+
+	<!-- mina-core-1.1.0.jar>
+	<dependency>
+		<groupId>org.apache.mina</groupId>
+		<artifactId>mina-core</artifactId>
+		<version>1.1.0</version>
+	</dependency-->
+
+	<!-- synapse-tasks-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 
+		<artifactId>synapse-tasks</artifactId> <version>2.1.0-wso2v5</version> </dependency> -->
+
+	<!-- org.wso2.carbon.rulecep.adapters-3.2.0.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.rulecep.adapters</artifactId>
+		<version>3.2.0</version>
+	</dependency-->
+
+	<!-- org.wso2.carbon.rule.mediator-3.2.0.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.rule.mediator</artifactId>
+		<version>3.2.0</version>
+	</dependency-->
+
+
+	<!-- woden-impl-commons-1.0-SNAPSHOT.jar <dependency> <groupId>org.apache.woden</groupId> 
+		<artifactId>woden-impl-commons</artifactId> <version>1.0-SNAPSHOT</version> 
+		</dependency> -->
+
+	<!-- spring.framework-2.5.1.wso2v1.jar>
+	<dependency>
+		<groupId>org.springframework.ws.wso2</groupId>
+		<artifactId>spring.framework</artifactId>
+		<version>2.5.1.wso2v1</version>
+	</dependency-->
+
+	<!-- geronimo-jta_1.0.1B_spec-1.0.jar>
+	<dependency>
+		<groupId>org.apache.geronimo.specs</groupId>
+		<artifactId>geronimo-jta_1.0.1B_spec</artifactId>
+		<version>1.0</version>
+	</dependency-->
+
+	<!-- synapse-nhttp-transport-2.1.0-wso2v4.jar>
+	<dependency>
+		<groupId>org.apache.synapse</groupId>
+		<artifactId>synapse-nhttp-transport</artifactId>
+		<version>2.1.0-wso2v4</version>
+	</dependency-->
+
+	<!-- synapse-securevault-2.1.0-wso2v2.jar>
+	<dependency>
+		<groupId>org.apache.synapse</groupId>
+		<artifactId>synapse-securevault</artifactId>
+		<version>2.1.0-wso2v2</version>
+	</dependency-->
+
+
+	<!-- geronimo-jms_1.1_spec-1.1.jar>
+	<dependency>
+		<groupId>org.apache.geronimo.specs</groupId>
+		<artifactId>geronimo-jms_1.1_spec</artifactId>
+		<version>1.1</version>
+	</dependency-->
+
+	<!-- org.wso2.carbon.rule.core-3.2.0.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.rule.core</artifactId>
+		<version>3.2.0</version>
+	</dependency-->
+
+	<!-- httpcore-4.1.jar>
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpcore</artifactId>
+		<version>4.1</version>
+	</dependency-->
+
+	<!-- wso2eventing-api-2.1.jar>
+	<dependency>
+		<groupId>org.wso2.eventing</groupId>
+		<artifactId>wso2eventing-api</artifactId>
+		<version>2.1</version>
+	</dependency-->
+
+	<!-- axiom-dom-1.2.11-SNAPSHOT.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
+		<artifactId>axiom-dom</artifactId> <version>1.2.11-SNAPSHOT</version> </dependency> -->
+
+	<!-- jsr311-api-1.0.jar>
+	<dependency>
+		<groupId>javax.ws.rs</groupId>
+		<artifactId>jsr311-api</artifactId>
+		<version>1.0</version>
+	</dependency-->
+
+	<!-- XmlSchema-1.4.3.jar>
+	<dependency>
+		<groupId>org.apache.ws.commons.schema</groupId>
+		<artifactId>XmlSchema</artifactId>
+		<version>1.4.3</version>
+	</dependency-->
+
+	<!-- org.wso2.carbon.event.ws-3.2.1.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.event.ws</artifactId>
+		<version>3.2.1</version>
+	</dependency-->
+
+	<!-- bsf-all-3.0.0.wso2v1.jar>
+	<dependency>
+		<groupId>org.apache.bsf.wso2</groupId>
+		<artifactId>bsf-all</artifactId>
+		<version>3.0.0.wso2v1</version>
+	</dependency-->
+
+	<!-- org.wso2.carbon.throttle-3.2.1.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.throttle</artifactId>
+		<version>3.2.1</version>
+	</dependency-->
+
+	<!-- org.wso2.carbon.rule.server-3.2.0.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.rule.server</artifactId>
+		<version>3.2.0</version>
+	</dependency-->
+
+	<!-- geronimo-saaj_1.3_spec-1.0.1.jar>
+	<dependency>
+		<groupId>org.apache.geronimo.specs</groupId>
+		<artifactId>geronimo-saaj_1.3_spec</artifactId>
+		<version>1.0.1</version>
+	</dependency-->
+
+	<!-- axis2-transport-mail-1.1.0-wso2v5.jar>
+	<dependency>
+		<groupId>org.apache.axis2</groupId>
+		<artifactId>axis2-transport-mail</artifactId>
+		<version>1.1.0-wso2v5</version>
+	</dependency-->
+
+	<!-- axis2-mtompolicy-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+		<artifactId>axis2-mtompolicy</artifactId> <version>SNAPSHOT</version> </dependency> -->
+
+	<!-- geronimo-stax-api_1.0_spec-1.0.1.jar>
+	<dependency>
+		<groupId>org.apache.geronimo.specs</groupId>
+		<artifactId>geronimo-stax-api_1.0_spec</artifactId>
+		<version>1.0.1</version>
+	</dependency-->
+	
+	<!-- org.wso2.carbon.mediator.router.impl-3.2.3.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+    	<artifactId>org.wso2.carbon.mediator.router.impl</artifactId>
+    	<version>3.2.3</version>
+    </dependency-->
+
+	<!-- jline-0.9.94.jar>
+	<dependency>
+		<groupId>jline</groupId>
+		<artifactId>jline</artifactId>
+		<version>0.9.94</version>
+	</dependency-->
+
+	<!-- geronimo-javamail_1.4_spec-1.6.jar>
+	<dependency>
+		<groupId>org.apache.geronimo.specs</groupId>
+		<artifactId>geronimo-javamail_1.4_spec</artifactId>
+		<version>1.6</version>
+	</dependency-->
+
+	<!-- axiom-api-1.2.11-SNAPSHOT.jar <dependency> <groupId>org.apache.ws.commons.axiom</groupId> 
+		<artifactId>axiom-api</artifactId> <version>1.2.11-SNAPSHOT</version> </dependency> -->
+
+	<!-- synapse-extensions-2.1.0.wso2v4.jar>
+	<dependency> <groupId>org.apache.synapse</groupId> 
+		<artifactId>synapse-extensions</artifactId> <version>2.1.0-wso2v4</version> 
+		</dependency--> 
+
+	<!-- synapse-nhttp-transport-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 
+		<artifactId>synapse-nhttp-transport</artifactId> <version>2.1.0-wso2v5</version> 
+		</dependency> -->
+
+	<!-- neethi-2.0.4.jar>
+	<dependency>
+		<groupId>org.apache.neethi</groupId>
+		<artifactId>neethi</artifactId>
+		<version>2.0.4</version>
+	</dependency-->
+
+	<!-- org.wso2.carbon.event.core-3.2.1.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.event.core</artifactId>
+		<version>3.2.1</version>
+	</dependency-->
+
+	<!-- geronimo-activation_1.1_spec-1.0.2.jar>
+	<dependency>
+		<groupId>org.apache.geronimo.specs</groupId>
+		<artifactId>geronimo-activation_1.1_spec</artifactId>
+		<version>1.0.2</version>
+	</dependency-->
+
+	<!-- geronimo-jta_1.1_spec-1.1.jar>
+	<dependency>
+		<groupId>org.apache.geronimo.specs</groupId>
+		<artifactId>geronimo-jta_1.1_spec</artifactId>
+		<version>1.1</version>
+	</dependency-->
+
+
+	<!-- synapse-commons-2.1.0-wso2v4.jar>
+	<dependency>
+		<groupId>org.apache.synapse</groupId>
+		<artifactId>synapse-commons</artifactId>
+		<version>2.1.0-wso2v4</version>
+	</dependency-->
+
+	<!-- synapse-core-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 
+		<artifactId>synapse-core</artifactId> <version>2.1.0-wso2v5</version> </dependency> -->
+
+	<!-- woden-api-1.0-SNAPSHOT.jar <dependency> <groupId>org.apache.woden</groupId> 
+		<artifactId>woden-api</artifactId> <version>1.0-SNAPSHOT</version> </dependency> -->
+
+	<!-- synapse-core-2.1.0-wso2v4.jar>
+	<dependency>
+		<groupId>org.apache.synapse</groupId>
+		<artifactId>synapse-core</artifactId>
+		<version>2.1.0-wso2v4</version>
+	</dependency-->
+
+	<!-- sandesha2-core-SNAPSHOT.jar <dependency> <groupId>org.apache.sandesha2</groupId> 
+		<artifactId>sandesha2-core</artifactId> <version>SNAPSHOT</version> </dependency> -->
+
+
+
+	<!-- axis2-transport-jms-1.1.0-wso2v5.jar>
+	<dependency>
+		<groupId>org.apache.axis2</groupId>
+		<artifactId>axis2-transport-jms</artifactId>
+		<version>1.1.0-wso2v5</version>
+	</dependency-->
+
+	<!-- synapse-vfs-transport-2.1.0-wso2v4.jar>
+	<dependency>
+		<groupId>org.apache.synapse</groupId>
+		<artifactId>synapse-vfs-transport</artifactId>
+		<version>2.1.0-wso2v4</version>
+	</dependency-->
+
+	<!-- axis2-saaj-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+		<artifactId>axis2-saaj</artifactId> <version>SNAPSHOT</version> </dependency> -->
+
+	<!-- synapse-fix-transport-2.1.0.wso2v4.jar>
+	 <dependency> <groupId>org.apache.synapse</groupId> 
+		<artifactId>synapse-fix-transport</artifactId> <version>2.1.0-wso2v4</version> 
+		</dependency--> 
+
+	<!-- org.wso2.carbon.mediator.service-3.2.2.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.mediator.service</artifactId>
+		<version>3.2.2</version>
+	</dependency-->
+
+
+	<!-- axis2-clustering-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+		<artifactId>axis2-clustering</artifactId> <version>SNAPSHOT</version> </dependency> -->
+
+	<!-- httpcore-nio-4.1.jar>
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpcore-nio</artifactId>
+		<version>4.1</version>
+	</dependency-->
+
+	<!-- org.wso2.carbon.caching-3.2.0.jar>
+	<dependency>
+		<groupId>org.apache.axis2</groupId>
+		<artifactId>axis2-saaj</artifactId>
+		<version>1.6.1-wso2v1</version>
+	</dependency-->
+
+	<!-- commons-fileupload-1.2.jar>
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.2</version>
+	</dependency-->
+
+	<!-- synapse-samples-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 
+		<artifactId>synapse-samples</artifactId> <version>2.1.0-wso2v5</version> 
+		</dependency> -->
+
+
+	<!-- axis2-transport-local-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+		<artifactId>axis2-transport-local</artifactId> <version>SNAPSHOT</version> 
+		</dependency> -->
+
+	<!-- geronimo-ws-metadata_2.0_spec-1.1.2.jar>
+	<dependency>
+		<groupId>org.apache.geronimo.specs</groupId>
+		<artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+		<version>1.1.2</version>
+	</dependency-->
+
+	<!-- commons-vfs-2.0-21092010.jar>
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-vfs</artifactId>
+		<version>2.0-21092010</version>
+	</dependency-->
+
+	<!-- axis2-transport-base-1.1.0-wso2v5.jar>
+	<dependency>
+		<groupId>org.apache.axis2</groupId>
+		<artifactId>axis2-transport-base</artifactId>
+		<version>1.1.0-wso2v5</version>
+	</dependency-->
+
+	<!-- axis2-codegen-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+		<artifactId>axis2-codegen</artifactId> <version>SNAPSHOT</version> </dependency> -->
+
+	<!-- org.wso2.carbon.rulecep.commons-3.2.0.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.rulecep.commons</artifactId>
+		<version>3.2.0</version>
+	</dependency-->
+
+	<!-- commons-io-2.0.jar>
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.0</version>
+	</dependency-->
+
+	<!-- woden-impl-dom-1.0-SNAPSHOT.jar <dependency> <groupId>org.apache.woden</groupId> 
+		<artifactId>woden-impl-dom</artifactId> <version>1.0-SNAPSHOT</version> </dependency> -->
+
+	<!-- synapse-commons-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 
+		<artifactId>synapse-commons</artifactId> <version>2.1.0-wso2v5</version> 
+		</dependency> -->
+
+	<!-- org.wso2.carbon.identity.oauth.mediator-3.2.1.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.identity.oauth.mediator</artifactId>
+		<version>3.2.1</version>
+	</dependency-->
+
+
+	<!-- axis2-transport-http-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+		<artifactId>axis2-transport-http</artifactId> <version>SNAPSHOT</version> 
+		</dependency> -->
+
+	<!-- org.wso2.carbon.mediator.event-3.2.0.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.mediator.event</artifactId>
+		<version>3.2.0</version>
+	</dependency-->
+
+	<!-- axis2-kernel-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+		<artifactId>axis2-kernel</artifactId> <version>SNAPSHOT</version> </dependency> -->
+
+	<!-- synapse-tasks-2.1.0-wso2v4.jar>
+	<dependency>
+		<groupId>org.apache.synapse</groupId>
+		<artifactId>synapse-tasks</artifactId>
+		<version>2.1.0-wso2v4</version>
+	</dependency-->
+
+	<!-- axis2-adb-SNAPSHOT.jar <dependency> <groupId>org.apache.axis2</groupId> 
+		<artifactId>axis2-adb</artifactId> <version>SNAPSHOT</version> </dependency> -->
+
+	<!-- synapse-vfs-transport-2.1.0.wso2v5.jar <dependency> <groupId>org.apache.synapse</groupId> 
+		<artifactId>synapse-vfs-transport</artifactId> <version>2.1.0-wso2v5</version> 
+		</dependency> -->
+
+	<!-- org.wso2.carbon.rulecep.adapters.service-3.2.0.jar>
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.rulecep.adapters.service</artifactId>
+		<version>3.2.0</version>
+	</dependency-->
+
+	<!-- wso2caching-core-3.4.0.jar>
+	<dependency>
+		<groupId>org.wso2.caching</groupId>
+		<artifactId>wso2caching-core</artifactId>
+		<version>3.4.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.wso2.carbon</groupId>
+		<artifactId>org.wso2.carbon.relay.mediators.builder</artifactId>
+		<version>4.0.0</version>
+	</dependency>
+	
+	<dependency>
+  		<groupId>org.wso2.carbon</groupId>
+  		<artifactId>org.wso2.carbon.relay</artifactId>
+  		<version>4.0.0</version>
+	</dependency>
+	
+	<dependency>
+  		<groupId>org.apache.axis2</groupId>
+  		<artifactId>axis2-json</artifactId>
+  		<version>1.6.1-wso2v5</version>
+	</dependency-->
+
+	<dependency>
+ 		<groupId>org.codehaus.jettison</groupId>
+  		<artifactId>jettison</artifactId>
+  		<version>1.3.1</version>
+	</dependency>
+	
+</dependencies>
+	
+    <!--dependencies>
+    	<dependency>
+            <groupId>org.wso2.developerstudio</groupId>
+            <artifactId>org.wso2.developerstudio.eclipse.esb</artifactId>
+            <version>${esb.tools.version}</version>
+        </dependency>
+             <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>org.eclipse.emf.ecore</artifactId>
+            <version>2.5.0.v200906151043</version>
+     </dependency>
+     <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>org.eclipse.emf.common</artifactId>
+            <version>2.5.0.v200906151043</version>
+     </dependency>
+     <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>org.eclipse.emf.edit</artifactId>
+            <version>2.5.0.v200906151043</version>
+     </dependency>
+     <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>org.eclipse.emf.ecore.change</artifactId>
+            <version>2.5.0.v200906151043</version>
+     </dependency>
+     
+         
+        
+    </dependencies>
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.0-alpha-4</version>
+				<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>1-unpack-p2-agent-distribution</id>
+						<phase>test</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.ant4eclipse</groupId>
+									<artifactId>ant4eclipse</artifactId>
+									<version>1.0.0.M4</version>
+									<type>zip</type>
+									<overWrite>true</overWrite>
+									<outputDirectory>target/ant4eclipse</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                  <execution>
+                    <id>copy-dependencies</id>
+                    <phase>package</phase>
+                    <goals>
+                      <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                      <outputDirectory>${dependency.bundles.location}</outputDirectory>
+                      <overWriteReleases>false</overWriteReleases>
+                      <overWriteSnapshots>false</overWriteSnapshots>
+                      <overWriteIfNewer>true</overWriteIfNewer>
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>axis2-jar</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <tasks>
+                            	<property name="eclipse.plugin.name" value="${artifactId}" />
+                            	<property name="target.dir" value="${project.build.directory}" />
+                            	<property name="eclipse.home" value="${ECLIPSE_HOME}" />
+                            	<property name="dependency.bundles" value="${dependency.bundles.location}"/>
+                                <ant antfile="${basedir}/build.xml" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ant4eclipse</groupId>
+                        <artifactId>org.ant4eclipse</artifactId>
+                        <version>1.0.0.M4</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.ant</groupId>
+                        <artifactId>ant-contrib</artifactId>
+                        <version>1.0b3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.jdt</groupId>
+                        <artifactId>ecj</artifactId>
+                        <version>3.5.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.osgi</groupId>
+                        <artifactId>org.eclipse.osgi</artifactId>
+                        <version>3.5.2.R35x_v20100126</version>
+                    </dependency>                                        
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>axis2-jar-package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>target/plugins/${artifactId}_${version}.jar</file>
+                                    <type>jar</type>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <dependency.bundles.location>${project.build.directory}/dependencies</dependency.bundles.location>
+    </properties-->
+</project>

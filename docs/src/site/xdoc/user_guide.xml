@@ -1,0 +1,1205 @@
+<!--
+  ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+        
+        <h1>User Guide</h1>
+
+        <!--  p>This user guide provides information on,</p>
+        <ol>
+            <li>Installing the WSO2 Governance Registry Eclipse Plugin</li>
+            <li>Add different remote registry instances</li>
+            <li>Add, edit, delete collections, resources</li>
+            <li>Add, edit, delete properties, associations, dependencies, comments, tags for a resource or collection</li>
+            <li>Link with editor</li>
+            <li>Add multiple files and folder from file system</li>
+            <li>Import/Export resources and collections</li>
+            <li>Drag/Drop resources and collections</li>
+            <li>Modify permission for a resource, collection</li>
+            <li>Refresh registry</li>
+            <li>View information per resource and collection (properties, dependencies, associations, tags, comments etc)</li>
+            <li>Check-out a collection to local project (both ways)</li>
+            <li>Do changes and commit back to registry, update with registry</li>
+            <li>Show in Registry Browser</li>
+            <li>View versions, restore versions</li>
+            <li>Double click on a resource to open the resource in the relevant editor of Eclipse</li>
+            <li>Add, modify, delete users</li>
+            <li>Change role permissions of resource</li>
+        </ol-->
+
+        <p>
+            This document explains how WSO2 Governance Registry Eclipse Plugin should be installed in to Eclipse and how you can get 
+            the functionality provided by the plugin.
+        </p>
+
+        <h2>Content</h2>
+
+        <div class="toc">
+            <ul>
+                <li>
+                    <a href="#Introduction">Introduction</a>
+                </li>
+                <li>
+                    <a href="#System">Prerequisites</a>
+                </li>
+                <li>
+                    <a href="#install">Installation</a>
+                </li>
+                <li>
+                    <a href="#addregistry">Add different remote registry instances</a>
+                </li>
+                <li>
+                    <a href="#addresource">Add, edit, delete collections, resources</a>
+                </li>
+                <li>
+                    <a href="#addmetadata">Add, edit, delete properties, associations, dependencies, comments, tags for a resource or collection</a>
+                </li>
+                <li>
+                    <a href="#linkwith">Link with editor</a>
+                </li>
+                <li>
+                    <a href="#addlocalfiles">Add multiple files and folder from file system</a>
+                </li>
+                <li>
+                    <a href="#import">Import/Export resources and collections</a>
+                </li>
+                <li>
+                    <a href="#dnd">Drag/Drop resources and collections</a>
+                </li>
+                <li>
+                    <a href="#modifypermission">Modify permission for a resource, collection</a>
+                </li>
+                <li>
+                    <a href="#refresh">Refresh registry</a>
+                </li>
+                <li>
+                    <a href="#viewInfo">View information per resource and collection</a>
+                </li>
+                <li>
+                    <a href="#checkout">Check-out a collection to local project</a>
+                </li>
+                <li>
+                    <a href="#checkin">Do changes and commit back to registry, update with registry</a>
+                </li>
+                <li>
+                    <a href="#showinreg">Show in Registry Browser</a>
+                </li>
+                <li>
+                    <a href="#versions">View versions, restore versions</a>
+                </li>
+                <li>
+                    <a href="#doubleclick">Double click on a resource to open the resource in the relevant editor of Eclipse</a>
+                </li>
+                <li>
+                    <a href="#addusers">Add, modify, delete users</a>
+                </li>
+                <li>
+                    <a href="#permissions">Change role permissions of resource</a>
+                </li>
+                
+            </ul>
+
+            
+        </div>
+
+        <h2 id="Introduction">Introduction</h2>
+
+        <p>WSO2 Governance Registry Eclipse Plugin provides you a light weight user friendly registry functionalities such as creating resources, 
+        collections, managing versions and other properties related to resources etc.   
+        </p>
+
+        <h2 id="System">Prerequisites</h2>
+
+		<p>
+		You need to have basic prerequisites that are associated with installing WSO2 Governanace Registry Eclipse Plugin in Eclipse. 
+		Please refer to <strong>Prerequisites</strong> section of the
+		  <a href="install_guide.html#System">Installation Guide</a> for more information. 
+		</p>
+		<p>
+		Apart from them, you need to have latest <a href="http://wso2.org/downloads/governance-registry">WSO2 Governance Registry</a> running in your local machine 
+		or any other remote location.
+		</p>
+       
+
+    	<h2 id="install">Installation</h2>
+        <p>
+      	Please refer the <a href="install_guide.html">Installation Guide</a>
+     	for details on how to install WSO2 Governance Registry Eclipse Plugin.
+    	</p>
+        
+        <h2 id="addregistry">Add different remote registry instances</h2>
+       <h3>1. Select WSO2 Registry Perspective</h3>
+        <p>
+		After successfully install the plugin, you have to select WSO2 Registry perspective first. Go to <strong>Window -> 
+		Open Perspective -> Other -> WSO2 Registry</strong>. In this perspective you will get a <strong>WSO2 Registry Browser</strong> 
+		view.  
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img12.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img13.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		<p>
+		Now your Eclipse workspace will be as below. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img14.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		<h3>2. Add a remote registry instance</h3>
+		<p>
+		Right click on the WSO2 Registry Browser view and fill necessary information for the dialog. Default information for WSO2 Governance 
+		Registry has been filled for you. In the path text box, you can give the path you want registry from. You can either specify root (/)
+		 or any other valid registry path for a collection (eg : /_system/local, /_system etc). Elements down the given path will be loaded 
+		 in the Registry Browser view. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img16.png"></img>
+		<br></br>
+		<br></br>
+		</p>  	
+ 
+ 		<p>
+		If you select <strong>root (/)</strong> as path, below is the registry tree that you will get.   
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img17.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		If you select <strong>/_system/local</strong> as path, below is the registry tree that you will get.   
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img19.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>When you expand the added regisrty instance, you will see two main sections called <strong>USER</strong> and <strong>HEAD</strong>.
+		 When you expand the <strong>USER</strong> node, you will get functionalities regarding to User Management. Similarly you will get the 
+		 registry related functionalities when you expand the <strong>HEAD</strong> node. 
+		</p>   	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img98.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+    	
+    	<br></br>
+    	<br></br>
+    	<h2 id="addresource">Add, edit, delete collections, resources</h2>
+    	<h3>1. Add a new collection </h3>
+		<p>
+		Expand <strong>HEAD</strong> node and select root collection. Then right click on the collection and you will functionalities available. 
+		Select <strong>Add a new Collection</strong> and you will get an editor where you can enter a name, media type and description for the collection. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img99.png"></img>
+		<br></br>
+		<br></br>
+		</p>     	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img20.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+
+ 		<p>
+		This editor will act as a normal editor and to add the collction, you have to save the changes done in the editor. To save press 
+		<strong>cntrl+s</strong> and a new collection with the given name will be added to the node that you select to <strong>Add 
+		a new Collection</strong> option.
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img22.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>In the media type combo box, you have the ability to creata your own media type by selecting ,<strong>Other</strong> option. </p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img23.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		 
+		<br></br>
+		<br></br>
+		<h3>2. Add a new resource</h3> 
+    	<p>
+		Select a collection and right click on it and choose <strong>Add a new resource</strong> option from the menu. You will get a same editor 
+		as you get for collection. You have three ways to add a resource. 
+    	</p>
+		 <ol>
+            <li>Upload Content From file</li>
+            <li>Create custom content</li>
+            <li>Import Content from URL</li>
+        </ol>
+      
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img100.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<h3>2.1 Upload Content From file</h3> 
+ 		<p>
+		This is the default method to add a resource. Browse the file you want to add from the file system. Resource name and media type will be 
+		filled accordingly. You can change those default value as your preferance as well. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img24.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<h3>2.2 Create custom content</h3> 
+ 		<p>
+		This is the method to create your own resource files from the editor. Give a name, mediatype, description and content for the file. User can 
+		edit content according to the specified media type.  
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img25.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<h3>2.3 Import Content from URL</h3> 
+ 		<p>
+		By this method, you can import content from a URL. When you give the URL, make sure it does not contain characters like <strong>~</strong> 
+		since it is considered as an invalid character for abdera.  Name field and media type field will be filled according to the given URL. You 
+		have to ability to modify them as your preference as well. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img26.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+
+		<p>You can edit the information you provided later as well. To edit media type, resource description select the resource, right click on 
+		it and select <strong>Information</strong> from the menu. </p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img27.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		 
+		<p>
+		<br></br>
+		<br></br>
+		You can delete the collection or resource you added by <strong>Delete</strong> option of the right click menu of the selected resource or 
+		collection. 
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img28.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		When you select delete option, it will pop up a confirmation dialog to delete the resource. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img29.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<h2 id="addmetadata">Add, edit, delete properties, associations, dependencies, comments, tags for a resource or collection</h2>
+		<p>For a collection or resource there are two main field of properties you can add.</p>
+		 <ol>
+            <li>Metadata</li>
+            <li>Community Featueres</li>
+        </ol>
+		<p>
+		In the <strong>Metadata</strong> category, you can add <strong>Properties, Associations</strong> and <strong>Dependencies</strong>. 
+		In the <strong>Community Features</strong> catagory, you can add <strong>Comments</strong> and <strong>Tags</strong>.
+		</p>
+		<br></br>
+		
+		<h3>1. Add Metadata</h3> 
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img30.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+
+		<br></br>
+		<br></br>
+       	<h3>1.1 Add a Property</h3>
+       	<p>
+		Right click on the collection or resource you want to add a property and select <strong>Add a Property</strong> from the <strong>Metadata</strong> 
+		section of the context menu. Now you can see an editor to add properties, edit properties and delete properties. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img32.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<p>
+		There are two fields called <strong>Property Name</strong> and <strong>Property Value</strong>. You can enter values for these fields and 
+		save them. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img33.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<br></br> 
+		<br></br> 
+		<p>
+		You can edit the fields you entered afterward as well. To delete a property, select the property and click <strong>Delete Property</strong>
+		 button. When you click the delte button, you will see the the property you have selected has been <strong>greyed</strong>. 
+    	</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img35.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>You have the ability to undo the action you did by <strong>Undelete Property</strong> option. Property will be removed when you save 
+		the editor. 
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img36.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		
+		<h3>1.2 Add a Dependency</h3>
+		<p>
+		Right click on the collection or resource you want to add a property and select <strong>Add a Dependency</strong> from the <strong>Metadata</strong> 
+		section of the context menu.
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img37.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<br></br> 
+		<br></br> 
+		<p>
+		Then you will get a same editor as you get for properties where you can add dependencies to the selected resource.
+    	</p>
+    	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img38.png"></img>
+		<br></br>
+		<br></br>
+		</p>	
+		
+		<p>Note that the path you are giving should be valid registry paths. Otherwise it will pop up a error message when you click <strong>Save</strong>.
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img39.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<p>You can edit the values you gave, delete dependencies, and undo delete as you did for property editor. 
+		</p>				
+		
+			
+		<br></br>
+		<br></br>
+       	<h3>1.3 Add an Association </h3>
+       	<p>
+		Right click on the collection or resource you want to add an association and select <strong>Add an Association</strong> from the <strong>Metadata</strong> 
+		section of the context menu. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img40.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<br></br> 
+		<br></br> 
+		<p>
+		Now you can see an editor to add associations, edit associations and delete associations.
+    	</p>
+    	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img41.png"></img>
+		<br></br>
+		<br></br>
+		</p>	
+		
+		<p>Note that the path you are giving should be valide registry paths. Otherwise it will pop up a error message when you click <strong>Save</strong>.
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img42.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<p>You can edit the values you gave, delete associations, and undo delete as you did for property editor. 
+		</p>
+		
+		<h3>2. Add Community Features</h3> 
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img44.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<br></br>
+		<br></br>
+       	<h3>2.1 Add Comment</h3>
+       	<p>
+		Right click on the collection or resource you want to add a comment and select <strong>Add Comment</strong> from the <strong>Community</strong> 
+		section of the context menu. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img45.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<p>
+		Now you can see an editor to add comments, edit comments and delete comments.  
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img46.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<br></br> 
+		<br></br> 
+		<p>
+		You can edit the fields you entered afterward as well. To delete a comment, select the comment and click <strong>Delete Comment</strong>
+		 button. When you click the delte button, you will see the the comment you have selected has been <strong>greyed</strong>. 
+    	</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img47.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>You have the ability to undo the action you did by <strong>Undelete Property</strong> option. Comment will be removed when you save 
+		the editor. 
+		</p>
+		
+		<!--  p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img48.png"></img>
+		<br></br>
+		<br></br>
+		</p-->
+		
+		
+		<h3>1.2 Add a Tag</h3>
+		<p>
+		Right click on the collection or resource you want to add a tag and select <strong>Add a Tag</strong> from the <strong>Community</strong> 
+		section of the context menu. Now you can see an editor to add tags, edit tags and delete tags.
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img49.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<br></br> 
+		<br></br> 
+		<p>
+		Then you will get a same editor as you get for <strong>Add comments</strong> where you can add tags to the selected resource.
+    	</p>
+    	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img50.png"></img>
+		<br></br>
+		<br></br>
+		</p>	
+		
+		<p>You can give any string value as a tag.
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img51.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<p>But you can not have two tags with the same name. 
+		</p>		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img52.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<p>You can edit the values you gave, delete tags, and undo delete as you did for comments editor. 
+		</p>			
+       
+       	<h2 id="linkwith">Link with editor</h2>
+       	
+       	<p>
+       	This is a similar feature that is available in Eclipse IDE. If you click on the <strong>Link with Editor</strong> option. mouse pointer 
+       	will be focus to the path of the active editor of the <strong>WSO2 Registry Browser</strong>. 
+    	</p>
+    	<p><strong>Link With Editor</strong> option is available only in the <strong>HEAD</strong> level, since it is a global function. To activate
+    	 the <strong>Link With Editor</strong> option, select the <strong>HEAD</strong> and select <strong>Link With Editor</strong> option from 
+    	 right click menu. Same functionality is available in the toolbar of the <strong>WSO2 Registry Browser</strong> view as well. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img53.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<p>
+		Now open several resources in seperate editors by double click on the resource.    
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img54.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<br></br> 
+		<br></br> 
+		<p>
+		Now swap among different editors. You will see correct path related to the selected resource will be focused in the <strong>WSO2 
+		Registry Browser</strong> view. 
+    	</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img55.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		
+		<br></br>
+		<br></br>
+		<h2 id="addlocalfiles">Add multiple files and folder from file system</h2>
+		<p>
+		You can add multiple folders and files from the local file system. This option is availabe for a collection. Go to the collection you want 
+		to add multiple files and folders and select <strong>Add local resources</strong> and choose the option you want.
+		</p>
+		 <ol>
+            <li>Multiple files</li>
+            <li>Folders</li>
+        </ol>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img56.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+    	
+    	<p>
+    	Select multiple files or folders that you want to add and click ok. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img57.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<p>
+		Then you will get a confirmation box to confirm your decision. 
+    	</p>
+    	
+ 		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img58.png"></img>
+		<br></br>
+		<br></br>
+		</p>    	
+    	<p>
+    	Selected multiple resources will be added under the collection. 
+    	</p>
+    	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img59.png"></img>
+		<br></br>
+		<br></br>
+		</p> 
+		
+		<h2 id="import">Import/Export resources and collections</h2>
+		<p>
+    	With this functionality, you can import resource and collection from the same registry instance or a different registry instance that you 
+    	have added. Similarly you can export  resource or collection to the same registry instance or a different registry instance. 
+    	<strong>Import From</strong> is only for a <strong>Collection</strong> since you cannot import collection or resource under a 
+    	<strong>Resource</strong>.
+    	</p>
+
+		<h3>1. Import From</h3>
+		<p>
+    	Go to collection you want to import resources and select <strong>Import From</strong> in the right click menu. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img60.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+    	Then you will get a dialog box where you can select resources that you want to import from available registry instances. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img61.png"></img>
+		<br></br>
+		<br></br>
+		</p>	
+		
+		<p>
+    	You can browse through the registy instance and select the resource or collection you need and click <strong>OK</strong>. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img62.png"></img>
+		<br></br>
+		<br></br>
+		</p>	
+		<p>
+		<br></br>
+		Then it will pop up a confirmation dialog as below. 
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img63.png"></img>
+		<br></br>
+		<br></br>
+		</p>		
+		<p>
+		<br></br>
+		After the confirmation, imported resource will be added under the selected collection. 
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img64.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<h3>2. Export To</h3>
+		<p>
+    	Go to the collection or resource you want to export to another location. Select <strong>Export To</strong> from right click menu. 
+    	</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img65.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+    	Then you will get the same Registry Tree Browser dialog to choose the location you want to import the resource to. Browse the registry, 
+    	select the path and click <strong>OK</strong>. 
+    	</p>
+		<p>
+		Press <strong>OK</strong> to the confirmation dialog box as well. Now you will see selected resource has been imported to the given
+		 location. 
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img66.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<h2 id="dnd">Drag/Drop resources and collections</h2>
+		<p>With this functionality, you can drag any resource or collection and drop it to a location of same registry instance or 
+		different registry instance that is available. 
+		</p>
+		<p>
+		Before dropping the resource, you will get a confirmation dialog as you get for <strong>Import / Export</strong> functionality. After 
+		confirming, resource will be added to the dropped location. 
+		</p>
+		
+		<h2 id="modifypermission">Modify permission for a resource, collection</h2>
+		<p>
+		With this functionality you can modify the permission of the resource or the collection. Go to the collection or resource and select 
+		<strong>Modify Permission</strong> from the right click menu. 
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img67.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		Now you will get a dialog for changing permissions. In the dialog, you will see availble roles and their permissions. You can define the 
+		permissions and press <strong>OK</strong>. 
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img68.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		You can check whether the permission has been changed from the management console as well as from the tool.  
+		</p>
+		
+		<p>
+		From management console
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img70.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		<p>
+		From the tool
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img71.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+				
+		<h2 id="refresh">Refresh registry</h2>
+		<p>
+		You can refresh the registry instance which will enable to sync with the latest updates. This option is available in all stages. You can 
+		select it from the right click menu as well as from the toolbar of <strong>WSO2 Registry Browser</strong> view.
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img72.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		
+		<h2 id="viewInfo">View information per resource and collection</h2>
+		<p>
+		You can view information related to a resource or collection by selecting <strong>Information</strong> from the right click menu. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img73.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		It is multi-tab editor which includes general information, properties, associations, dependencies, tags and comments. You have the ability 
+		to edit them at the same time. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img74.png"></img>
+		<br></br>
+		<br></br>
+		</p>		
+
+		<h2 id="checkout">Check-out a collection to local project</h2>
+		<p>
+		You can check-out a resource or a collection to a local project in the workspace. Select <strong>Checkout</strong> from the right click 
+		menu. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img75.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		Then it will ask for the location to check out. If you have any projects in the workspace, it will show them. But if there are no projects 
+		in the workspace, it will show a blank dialog box. As a result, you have to create a project in the workspace before check-out.  
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img76.png"></img>
+		<br></br>
+		<br></br>
+		</p>		
+		
+		<p>
+		There are several states for a checked-out resource.
+		</p>
+		 <ol>
+            <li>Synched</li>
+            <li>Updated</li>
+            <li>Conflicted</li>
+            <li>Added</li>
+            <li>Resolved</li>
+        </ol>
+        
+        <p>When you checked-out, it is at the <strong>sync</strong> state so the folder will be decorated as <strong>green</strong>. 
+        </p>
+        	
+ 		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img78.png"></img>
+		<br></br>
+		<br></br>
+		</p>    
+		
+		<p>
+		If you double clck on a resource, do some change and save, state will become as <strong>Updated</strong> which will turn the 
+		decorator in to <strong>yellow</strong>.
+		</p>
+ 		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img79.png"></img>
+		<br></br>
+		<br></br>
+		</p> 		
+		 
+		<p>
+		If you add a new file, it will go to the <strong>Added</strong> state and it will have a seperate decorator. 
+		</p>
+ 		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img80.png"></img>
+		<br></br>
+		<br></br>
+		</p> 		
+		
+		
+		<h2 id="checkin">Do changes and commit back to registry, update with registry</h2>
+		<p>
+		Changes you did for the checked-out folder can be checkin to registry. When you check-in, you can not check-in in resource wise. You have 
+		to check-in whole folder.  
+		</p>
+		<p>
+		To check-in, right click the folder that has been updated, which will be decorated with <strong>yellow</strong> and select 
+		<strong>Commit changes as user</strong> from the <strong>WSO2 Registry</strong> category. 
+		</p>
+ 		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img81.png"></img>
+		<br></br>
+		<br></br>
+		</p>	
+		
+		<p>
+		Then it will pop up a dialog to choose as what user you want to commit changes. If you have several registry instances with different users 
+		you can choose what user you want to commit the folder. 
+		</p>
+ 		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img82.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		<p>Give the correct credentials and you will get a message saying if the commit is successful. </p>	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img83.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		<p>
+		After commiting changes, folder will be changed to <strong>Sync</strong> stage again which will turn the folder in to <strong>green</strong>
+		 again. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img85.png"></img>
+		<br></br>
+		<br></br>
+		</p>		
+		
+		<h2 id="showinreg">Show in Registry Browser</h2>
+		<p>
+		In the checked-out folder, you can view resources and collections in the registry browser. Select <strong>Show in Registry</strong> from the 
+		<strong>WSO2 Registry</strong> of the right click menu of the resource or collection. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img86.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		<p>
+		Now the selected resource will be open in the <strong>WSO2 Registry Browser</strong> view. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img87.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+									
+		<h2 id="versions">View versions, restore versions</h2>
+		<p>
+		Go back to the <strong>WSO2 Registry</strong> perspective. Resources have different versions. If there are versions available for the resource, it will be displayed in the right click menu of the 
+		resource. We display the latest five versions.  
+		</p>
+
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img88.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+
+		<p>
+		You can either <strong>view</strong> or <strong>Restore</strong> version. When you click <strong>View</strong>, it will display the content 
+		of the version. By <strong>Restore</strong> option, we will reset the selected version to the previous version.  
+		</p>
+						
+		<h2 id="doubleclick">Double click on a resource to open the resource in the relevant editor of Eclipse</h2>
+		<p>
+		By double clcking on a resource, you can view it in the supported editor. 
+		</p>
+		
+		<h2 id="addusers">Add, modify, delete users</h2>
+		<p>
+		You can add, modify and delete users. Expand <strong>USER</strong> node and right click on the <strong>Users</strong> and select 
+		<strong>Add users</strong>. 
+		</p>
+		
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img89.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		Now you will get a form where you have to enter name, password and roles related to the user. Password should be more than six characters 
+		long. 
+		</p>	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img90.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+
+		<p>Fill necessary information for the fields and press <strong>OK</strong>.
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img91.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+
+		<p>
+		Now you will see the added user under <strong>Users</strong>.
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img92.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		You can modify user information you have given  before by clicking on the <strong>Modify User Info</strong> option of the right click
+		 menu of the selected user.
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img93.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+													
+		<h2 id="permissions">Change role permissions of resources</h2>
+		<p>
+		With this feature, you can change resoources and set permissions to those resource of the given role. This feature is availble for 
+		<strong>non-admin</strong> roles. Go to <strong>non-admin</strong> role such as <strong>everyone</strong> or 
+		<strong>wso2.annonymous.role</strong> and select <strong>Change Permission</strong> from the right click menu.  
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img94.png"></img>
+		<br></br>
+		<br></br>
+		</p>				 		
+        
+        <p>
+        Then it will pop up a wizard where you can select resources or collections from available registry instances. 
+        </p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img95.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		You can do multiple selections from this registry browser.  
+		</p>	
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img96.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		In the next page of the wizard, you can assign permissions to the selected resources. Permission will be <strong>grayed</strong> if you 
+		select multiple resources and not all of them are already assigned to that permission. Select the permissions you want to add and click 
+		<strong>Finish</strong>. 
+		</p>
+		<p>
+		<br></br>
+		<br></br>
+		<img alt="New Server Runtime" src="images/img97.png"></img>
+		<br></br>
+		<br></br>
+		</p>
+		
+		<p>
+		Selected permissions will be added to the resources you choose. 
+		</p>
+    </body>
+</html>

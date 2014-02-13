@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.newWizards">
+		<wizard 
+			name="Web Application" 
+			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.web.apps"
+			class="org.wso2.developerstudio.eclipse.artifact.webapp.ui.wizard.DynamicWebAppCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.newwarartifact"
+			icon="icons/war-16x16.png"
+			project="true">
+			<description>Web Application (WAR)</description>
+		</wizard>
+		
+	</extension>
+	<extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.webapp.project.nature" name="Web App Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.artifact.webapp.project.nature.WebAppProjectNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.webapp.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.webapp.project.nature" icon="icons/war-12x12.png">
+		</image>
+	</extension>
+	<extension point="org.eclipse.ui.navigator.navigatorContent">	
+	   <navigatorContent activeByDefault="true"
+			priority="high"
+			id="org.eclipse.ui.navigator.resourceContent"
+			name="test">
+				<commonWizard 
+					menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
+			  	 	type="new"
+					wizardId="org.wso2.developerstudio.eclipse.artifact.newwarartifact">
+					<enablement>
+						<or>
+					   		<adapt type="org.eclipse.core.resources.IWorkbench"/>
+							<adapt type="org.eclipse.core.resources.IProject"/>
+							<adapt type="org.eclipse.core.resources.IFolder"/>
+						</or>
+					</enablement>
+				</commonWizard>
+				<triggerPoints>
+				           <or>         
+				              <instanceof 
+				                    value="org.eclipse.core.resources.IWorkspaceRoot" /> 
+				              <instanceof
+				                    value="org.eclipse.core.resources.IProject" />  
+				              <instanceof  
+				                     value="org.eclipse.core.resources.IFolder" /> 
+				           </or>
+				  </triggerPoints>
+		</navigatorContent>
+	</extension>
+ <extension
+       point="org.wso2.developerstudio.eclipse.project.export.handler">
+    <handler
+          class="org.wso2.developerstudio.eclipse.artifact.webapp.project.export.WebAppArtfactExportHandler"
+          id="org.wso2.developerstudio.eclipse.artifact.webapp.project.export.handler"
+          type="web/application">
+    </handler>
+ </extension>
+      <extension point="org.eclipse.ui.navigator.navigatorContent">
+		<commonFilter
+			class="org.wso2.developerstudio.eclipse.artifact.webapp.utils.ProjectFilter"
+			description="Hide WSO2 WEB resource files."
+			id="org.wso2.developerstudio.eclipse.web.project.filter.graphical"
+			name="Hide WSO2 WEB resource files" activeByDefault="true"/>
+	</extension>
+	<extension
+			point="org.eclipse.ui.navigator.viewer">
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<contentExtension pattern="org.wso2.developerstudio.eclipse.web.project.filter.graphical*" />	
+			</includes>
+		</viewerContentBinding>
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
+			<includes>
+				<contentExtension pattern="org.wso2.developerstudio.eclipse.web.project.filter.graphical*" />	
+			</includes>
+		</viewerContentBinding>
+	</extension>
+</plugin>

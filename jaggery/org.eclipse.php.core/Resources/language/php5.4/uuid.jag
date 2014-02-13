@@ -1,0 +1,9 @@
+<%
+namespace uuid;
+
+function generate(){}
+
+
+
+
+%>

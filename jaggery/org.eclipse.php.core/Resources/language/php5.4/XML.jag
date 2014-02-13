@@ -1,0 +1,13 @@
+<%
+
+
+
+class XML  {
+	/**
+	 * XML is an API class in jaggery, and it provides the fucntionality of E4X for XML manipulation
+	 * @link http://jaggeryjs.org/apidocs/xml.jag
+	 * @param xml String
+	 * 
+	 */
+	function __construct (xml) {}
+%>

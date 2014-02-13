@@ -1,0 +1,9 @@
+{ 
+      "name": "employee", 
+      "type": "record", 
+      "fields": [ 
+                    { "name" : "firstname", "type" : "string"}, 
+                    { "name" : "lastname", "type" : "string"}, 
+                    { "name" : "address", "type" : "string"}
+                ] 
+} 

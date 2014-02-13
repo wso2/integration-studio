@@ -1,0 +1,56 @@
+--TEST--
+Test Static Field Semantic highlighting
+--FILE--
+<?php
+class Test{
+	public static $foo = array(array(array()), 2);
+	const FOO = 3;
+}
+Test::$foo;
+Test::$foo[0];
+Test::$foo[0][$foo];
+
+class Foo
+{
+    public static $my_static = 'foo';
+
+    public function staticValue() {
+        return self::$my_static;
+    }
+}
+
+class Bar extends Foo
+{
+    public function fooStatic() {
+        return parent::$my_static;
+    }
+}
+
+
+print Foo::$my_static . "\n";
+
+$foo = new Foo();
+print $foo->staticValue() . "\n";
+print $foo->my_static . "\n";      // Undefined "Property" my_static 
+
+print $foo::$my_static . "\n";
+$classname = 'Foo';
+print $classname::$my_static . "\n"; // As of PHP 5.3.0
+
+print Bar::$my_static . "\n";
+$bar = new Bar();
+print $bar->fooStatic() . "\n";
+?>
+--EXPECT--
+org.eclipse.php.internal.ui.editor.highlighters.StaticFieldHighlighting:
+highlight($foo)
+highlight($foo)
+highlight($foo)
+highlight($foo)
+highlight($my_static)
+highlight($my_static)
+highlight($my_static)
+highlight($my_static)
+highlight($my_static)
+highlight($my_static)
+highlight($my_static)

@@ -1,0 +1,49 @@
+<%
+namespace ws;
+
+class WSRequest{
+
+	const responseText = String;
+	const status = int;
+	const responseE4X = Scriptable;
+	const responseXML = Scriptable;
+	const onreadystatechange = Scriptable;
+	const readyState = int;
+	const error = Scriptable;
+	
+	
+	/**
+	 * This method prepares the WSRequest object to invoke a Web service. This method corresponds to the following function of the WSRequest java script object.
+	 * @link http://jaggeryjs.org/apidocs/ws.jag
+	 * 
+	 *
+	 */
+	function open(){}
+	
+	/**
+     * This function enables you to give a WSDL and get WSRequest configured. You dont have to
+     * configure it your self using an options object.
+     */
+	function openWSDL(){}
+	
+	/**
+	*This method invokes the Web service with the requested payload.
+	*
+	*/
+	function send(){}
+	
+	function getResponseHeader(){}
+	
+	
+}
+
+class WSStub{
+	const services = Scriptable;
+	const webService = Scriptable;
+
+}
+
+
+
+
+%>

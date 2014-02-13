@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="WSO2 Developer Studio">
+    <body>
+
+        <menu name="Developer Studio">
+        	<item name="Project Home" href="http://wso2.com/products/developer-studio"/>  
+            <item name="Release Notes" href="release_notes.html"/>        
+        </menu>
+        
+        <menu name="Downloads">
+            <item name="Releases" href="http://wso2.org/downloads/developer-studio"/>
+       </menu>
+        
+       <menu name="Documentation">
+        <item name="Index" href="index.html"/>
+        <item name="Overview to WSO2 Developer Studio" href="overview.html"/>
+        <item name="WSO2 Developer Studio Features" href="devstudio-features.html"/>
+        <item name="Installation Guide" href="install_guide.html"/>
+	    <item name="Getting Started with Developer Studio" href="getting_started_category.html"/>
+	    <item name="Application Server Tools" href="axis2_jaxws_category.html"/>
+	    <item name="Enterprise Service Bus Tools" href="esb_category.html"/>
+	    <item name="Governance Registry Tools" href="registry_category.html"/>
+	    <item name="Data Services Server Tools" href="ds_category.html"/>
+	    <item name="Business Process Server Tools" href="bpel_category.html"/>
+	    <item name="Web Application Tools" href="web_app_category.html"/>
+	    <item name="Gadget Server Tools" href="gadget_category.html"/>
+	    <item name="Complex Event Processor Tools" href="cep_category.html" />
+	    <item name="Business Rules Server Tools" href="brs_category.html"/>
+	    <item name="Carbon Tools" href="carbon_category.html"/>
+	    <item name="Packaging" href="packaging.html"/>
+	    <item name="Advance Server Extensions" href="server_extensions_category.html"/>
+	    <item name="Apache Maven Support" href="devs_maven_support.html"/>
+	    <item name="Testing and Deploying" href="testing_deploying_category.html"/>
+       </menu>
+
+		<menu name="Samples">
+            <item name="Retail Banking Sample" href="banking_sample.html"/>
+       </menu>
+       
+       <menu name="Developer Studio - Webinars">
+            <item name="Product Release Webinar: Introducing the WSO2 Developer Studio Graphical Composition Tool for the WSO2 ESB" href="http://wso2.org/library/webinars/2013/02/wso2-product-release-webinar-introducing-wso2-developer-studio-graphical-composition-tool"/>
+            <item name="Product Release Webinar: Composite Enterprise Application Development with the WSO2 Developer Studio" href="http://wso2.org/library/webinars/2013/02/composite-enterprise-application-development-with-the-wso2-developer-studio"/>
+            <item name="Product Release Webinar: Introducing WSO2 Developer Studio - Tools for SOA Developers" href="http://wso2.org/library/webinars/2013/01/wso2-product-release-webinar-introducing-wso2-developer-studio-tools-soa-developers"/>
+            <item name="Enterprise Use Case: Application Development Using the WSO2 Developer Studio" href="http://wso2.org/library/webinars/2012/05/enterprise-use-case-application-development-using-wso2-developer-studio"/>
+       </menu>
+       
+       <menu name="Developer Studio - Articles">
+            <item name="Apache Axis2 integration with Eclipse" href="http://wso2.org/library/articles/2012/06/apache-axis2-integration-eclipse"/>
+            <item name="How to develop and deploy web applications using WSO2 Developer Studio" href="http://wso2.org/library/articles/2012/09/develop-deploy-web-applications-using-wso2-developer-studio"/>
+            <item name="How to develop WS-BPEL for Apache ODE with WSO2 Developer studio 2.0" href="http://wso2.org/library/articles/2012/09/develop-wsbpel-apache-ode-wso2-developer-studio"/>
+            <item name="How to develop CXF based JAX-WS with WSO2 Developer Studio" href="http://melannj.blogspot.com/2012/06/how-to-develop-cxf-based-jax-ws-web.html"/>
+       </menu>
+       
+       <menu name="Get Involved" href="overview.html">
+            <item name="Checkout the Source" href="source-repository.html"/>
+            <item name="Mailing Lists" href="mail-lists.html"/>
+       </menu>
+        
+       <menu name="Project Information">
+            <item name="License"
+                  href="http://www.apache.org/licenses/LICENSE-2.0.html"/>
+        </menu>
+        
+   </body>
+</project>

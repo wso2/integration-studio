@@ -1,0 +1,66 @@
+<%
+class Log {
+
+
+
+	/**
+	 * The Log class will log errors, warning and information to the Jaggery console
+	 * @link http://jaggeryjs.org/apidocs/log.jag
+	 * @param logger[optional]
+	 * @return a Log object
+	 */
+	function __construct () {}
+
+	/**
+	 * Prints a debug message to the console
+	 * @link http://jaggeryjs.org/apidocs/log.jag
+	 * @param message String | Object 
+	 * 
+	 */
+	function debug(message) {}
+
+	/**
+	 * Prints a info message to the console
+	 * @link http://jaggeryjs.org/apidocs/log.jag
+	 * @param message String|Object[optional]
+	 */
+	function info(message) {}
+
+	/**
+	 * prints a warn message to the console
+	 * @link http://jaggeryjs.org/apidocs/log.jag
+	 * @param message String|Object
+	 */
+	function warn(message) {}
+
+	/**
+	 * prints a error message to the console
+	 * @link http://jaggeryjs.org/apidocs/log.jag
+	 * @param message String|Object
+	 */
+	function error (message) {}
+
+	/**
+	 * prints a fatal message to the console
+	 * @link http://jaggeryjs.org/apidocs/log.jag
+	 * @param message String|Object
+	 */
+	function fatal (message) {}
+
+	/**
+	 * Returns true if Debug level is enabled. Default is true
+	 * @link http://jaggeryjs.org/apidocs/log.jag
+	 * @return Boolean
+	 */
+	function isDebugEnabled () {}
+
+	/**
+	 * Returns true if Trace level is enabled. Default is false
+	 * @link http://jaggeryjs.org/apidocs/log.jag
+	 * @return Boolean
+	 */
+	function isTraceEnabled () {}
+
+
+}
+%>

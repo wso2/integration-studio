@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="data">
+
+    <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+           <xs:element name="description" minOccurs="0" maxOccurs="1"/>
+           <xs:element name="config" maxOccurs="unbounded" minOccurs="1">
+               <xs:complexType>
+                  <xs:sequence>
+                      <xs:element name="property" maxOccurs="unbounded" minOccurs="1"/>
+                  </xs:sequence>
+                  <xs:attribute name="id" use="optional"/>
+               </xs:complexType>               
+           </xs:element>
+           <xs:element name="query" maxOccurs="unbounded" minOccurs="0">
+               <xs:complexType>
+                   <xs:choice maxOccurs="unbounded">
+                       <xs:element name="sql"/>
+                       <xs:element name="properties" maxOccurs="1" minOccurs="0">
+                          <xs:complexType>
+                              <xs:sequence>
+                                  <xs:element name="property" minOccurs="0" maxOccurs="5">
+                                      <xs:complexType>
+                                          <xs:sequence/>
+                                          <xs:attribute name="name" use="required"/>
+                                      </xs:complexType>
+                                  </xs:element>
+                              </xs:sequence>
+                          </xs:complexType>
+                       </xs:element>
+                       <xs:element name="result" maxOccurs="1" minOccurs="0">
+                           <xs:complexType>
+                               <xs:choice maxOccurs="unbounded">
+                                  <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                      <xs:complexType>
+                                          <xs:sequence>
+                                          </xs:sequence>
+                                          <xs:attribute name="name" use="required"/>
+                                          <xs:attribute name="column" use="required"/>
+                                          <xs:attribute name="xsdType" use="optional"/>
+                                          <xs:attribute name="requiredRoles" use="optional"/>
+                                      </xs:complexType>
+                                   </xs:element>
+                                   <xs:element name="attribute" maxOccurs="unbounded" minOccurs="0">
+                                      <xs:complexType>
+                                          <xs:sequence>
+                                          </xs:sequence>
+                                          <xs:attribute name="name" use="required"/>
+                                          <xs:attribute name="column" use="required"/>
+                                          <xs:attribute name="xsdType" use="optional"/>
+                                          <xs:attribute name="requiredRoles" use="optional"/>
+                                      </xs:complexType>
+                                   </xs:element>
+                                   <xs:element name="call-query" maxOccurs="unbounded" minOccurs="0">
+                                      <xs:complexType>
+                                          <xs:sequence>
+                                             <xs:element name="with-param" maxOccurs="unbounded" minOccurs="0">
+                                               <xs:complexType>
+                                                 <xs:sequence/>
+                                                   <xs:attribute name="name" use="required"/>
+                                                   <xs:attribute name="query-param" use="optional"/>
+                                                   <xs:attribute name="column" use="optional"/>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                          <xs:attribute name="href" use="required"/>
+                                      </xs:complexType>
+                                   </xs:element>
+                               </xs:choice>
+                               <xs:attribute name="element" use="required"/>
+                               <xs:attribute name="rowName" use="required"/>
+                               <xs:attribute name="defaultNamespace" use="optional"/>
+                               <xs:attribute name="xsltPath" use="optional"/>
+                           </xs:complexType>
+                       </xs:element>
+                       <xs:element name="excel" maxOccurs="unbounded" minOccurs="0">
+                           <xs:complexType>
+                               <xs:sequence>
+                                   <xs:element name="workbookname"/>
+                                   <xs:element name="hasheader"/>
+                                   <xs:element name="startingrow"/>
+                                   <xs:element name="maxrowcount"/>
+                               </xs:sequence>
+                           </xs:complexType>
+                       </xs:element>
+                       <xs:element name="gspread" maxOccurs="unbounded" minOccurs="0">
+                           <xs:complexType>
+                               <xs:sequence>
+                                   <xs:element name="worksheetnumber"/>
+                                   <xs:element name="startingrow"/>
+                                   <xs:element name="maxrowcount"/>
+                                   <xs:element name="hasheader"/>
+                               </xs:sequence>
+                           </xs:complexType>
+                       </xs:element>
+                       <xs:element name="param" maxOccurs="unbounded" minOccurs="0">
+                           <xs:complexType>
+                               <xs:sequence>
+                                   <xs:element name="validateLongRange" maxOccurs="1" minOccurs="0">
+                                       <xs:complexType>
+                                           <xs:sequence/>
+                                           <xs:attribute name="minimum" use="optional"/>
+                                           <xs:attribute name="maximum" use="optional"/>
+                                       </xs:complexType>
+                                   </xs:element>
+                                   <xs:element name="validateDoubleRange" maxOccurs="1" minOccurs="0">
+                                       <xs:complexType>
+                                           <xs:sequence/>
+                                           <xs:attribute name="minimum" use="optional"/>
+                                           <xs:attribute name="maximum" use="optional"/>
+                                       </xs:complexType>
+                                   </xs:element>
+                                   <xs:element name="validateLength" maxOccurs="1" minOccurs="0">
+                                       <xs:complexType>
+                                           <xs:sequence/>
+                                           <xs:attribute name="minimum" use="optional"/>
+                                           <xs:attribute name="maximum" use="optional"/>
+                                       </xs:complexType>
+                                   </xs:element>
+                                   <xs:element name="validatePattern" maxOccurs="unbounded" minOccurs="0">
+                                       <xs:complexType>
+                                           <xs:sequence/>
+                                           <xs:attribute name="pattern" use="required"/>
+                                       </xs:complexType>
+                                   </xs:element>
+                                   <xs:element name="validateCustom" maxOccurs="unbounded" minOccurs="0">
+                                       <xs:complexType>
+                                           <xs:sequence/>
+                                           <xs:attribute name="class" use="required"/>
+                                       </xs:complexType>
+                                   </xs:element>
+                               </xs:sequence>
+                               <xs:attribute name="name" use="required"/>
+                               <xs:attribute name="paramType" use="optional"/>
+                               <xs:attribute name="sqlType" use="required"/>
+                               <xs:attribute name="type" use="optional"/>
+                               <xs:attribute name="ordinal" use="optional"/>
+                               <xs:attribute name="defaultValue" use="optional"/>
+                           </xs:complexType>                           
+                       </xs:element>
+                   </xs:choice>
+                   <xs:attribute name="id" use="required"/>
+                   <xs:attribute name="useConfig" use="optional"/>
+                   <xs:attribute name="input-event-trigger" use="optional"/>
+                   <xs:attribute name="output-event-trigger" use="optional"/>
+               </xs:complexType>
+           </xs:element>
+           <xs:element name="event-trigger" maxOccurs="unbounded" minOccurs="0">
+               <xs:complexType>
+                   <xs:sequence>
+                      <xs:element name="expression" maxOccurs="1" minOccurs="1"/>
+                      <xs:element name="target-topic" maxOccurs="1" minOccurs="1"/>
+                      <xs:element name="subscriptions" maxOccurs="1" minOccurs="1">
+                          <xs:complexType>
+                              <xs:sequence>
+                                  <xs:element name="subscription" maxOccurs="unbounded" minOccurs="1"/>
+                              </xs:sequence>
+                          </xs:complexType>
+                      </xs:element>
+                   </xs:sequence>
+                   <xs:attribute name="id" use="required"/>
+               </xs:complexType>
+           </xs:element>
+           <xs:element name="operation" maxOccurs="unbounded" minOccurs="0">
+               <xs:complexType>
+                   <xs:choice>
+                       <xs:element name="call-query" maxOccurs="1" minOccurs="1">
+                           <xs:complexType>
+                               <xs:sequence>
+                                   <xs:element name="with-param" maxOccurs="unbounded" minOccurs="0">
+                                       <xs:complexType>
+                                           <xs:sequence/>
+                                           <xs:attribute name="name" use="required"/>
+                                           <xs:attribute name="query-param" use="optional"/>
+                                           <xs:attribute name="column" use="optional"/>
+                                       </xs:complexType>
+                                   </xs:element>
+                               </xs:sequence>
+                               <xs:attribute name="href" use="required"/>
+                           </xs:complexType>
+                       </xs:element>
+                       <xs:element name="call-query-group" maxOccurs="1" minOccurs="0">
+                           <xs:complexType>
+                               <xs:sequence>
+                                     <xs:element name="call-query" maxOccurs="unbounded" minOccurs="1">
+                                       <xs:complexType>
+                                           <xs:sequence>
+                                               <xs:element name="with-param" maxOccurs="unbounded" minOccurs="0">
+                                                   <xs:complexType>
+                                                       <xs:sequence/>
+                                                       <xs:attribute name="name" use="required"/>
+                                                       <xs:attribute name="query-param" use="optional"/>
+                                                       <xs:attribute name="column" use="optional"/>
+                                                   </xs:complexType>
+                                               </xs:element>
+                                           </xs:sequence>
+                                           <xs:attribute name="href" use="required"/>
+                                       </xs:complexType>
+                                   </xs:element>
+                               </xs:sequence>
+                           </xs:complexType>
+                       </xs:element>
+                   </xs:choice>
+                   <xs:attribute name="name" use="required"/>
+               </xs:complexType>
+           </xs:element>
+           <xs:element name="resource" maxOccurs="unbounded" minOccurs="0">
+               <xs:complexType>
+                   <xs:sequence>
+                       <xs:element name="call-query" maxOccurs="1" minOccurs="1">
+                           <xs:complexType>
+                               <xs:sequence>
+                                   <xs:element name="with-param" maxOccurs="unbounded" minOccurs="0">
+                                       <xs:complexType>
+                                           <xs:sequence/>
+                                           <xs:attribute name="name" use="required"/>
+                                           <xs:attribute name="query-param" use="optional"/>
+                                           <xs:attribute name="column" use="optional"/>
+                                       </xs:complexType>
+                                   </xs:element>
+                               </xs:sequence>
+                               <xs:attribute name="href" use="required"/>
+                           </xs:complexType>
+                       </xs:element>
+                   </xs:sequence>
+                   <xs:attribute name="path" use="required"/>
+                   <xs:attribute name="method" use="required"/>
+               </xs:complexType>
+           </xs:element>
+         </xs:choice>
+         <xs:attribute name="name" use="required"/>
+         <xs:attribute name="enableBatchRequests" use="optional"/>
+         <xs:attribute name="enableBoxcarring" use="optional"/>
+         <xs:attribute name="serviceStatus" use="optional"/>
+         <xs:attribute name="baseURI" use="optional"/>
+    </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,1788 @@
+<problems count="85">
+ <sa-cases>0,15,24,2001,2002,0</sa-cases>
+ <problem>
+  <address.model>/</address.model>
+  <address.xpath>/bpws:process</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ProcessValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>13</charEnd>
+  <charStart>1</charStart>
+  <columnNumber>1</columnNumber>
+  <fixMessage>A &lt;receive&gt; or &lt;pick&gt; with createInstance set to "true" must be present.</fixMessage>
+  <lineNumber>1</lineNumber>
+  <location>process</location>
+  <message>There is no start activity in process "Simple"</message>
+  <message.args>["bpws:process","Simple"]</message.args>
+  <message.id>BPELC_PROCESS__NO_START</message.id>
+  <node>&lt;bpws:process "Simple"&gt;</node>
+  <ruleDescription>Verifies that a start activity has been found in the process</ruleDescription>
+  <ruleName>ProcessValidator.CheckIfProcessHasStartActivity.1000</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>15</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@imports.0</address.model>
+  <address.xpath>/bpws:process/bpws:import[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ImportValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>366</charEnd>
+  <charStart>355</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:import&gt; cannot exist as a child of &lt;"process"&gt;</fixMessage>
+  <lineNumber>11</lineNumber>
+  <location>import</location>
+  <message>&lt;bpws:import&gt; cannot be a child of &lt;bpws:process&gt;; it can only be a child of "process"</message>
+  <message.args>["bpws:import","bpws:process","\"process\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:import&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@imports.1</address.model>
+  <address.xpath>/bpws:process/bpws:import[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ImportValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>495</charEnd>
+  <charStart>484</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:import&gt; cannot exist as a child of &lt;"process"&gt;</fixMessage>
+  <lineNumber>13</lineNumber>
+  <location>import</location>
+  <message>&lt;bpws:import&gt; cannot be a child of &lt;bpws:process&gt;; it can only be a child of "process"</message>
+  <message.args>["bpws:import","bpws:process","\"process\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:import&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@imports.2</address.model>
+  <address.xpath>/bpws:process/bpws:import[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ImportValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>614</charEnd>
+  <charStart>603</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:import&gt; cannot exist as a child of &lt;"process"&gt;</fixMessage>
+  <lineNumber>15</lineNumber>
+  <location>import</location>
+  <message>&lt;bpws:import&gt; cannot be a child of &lt;bpws:process&gt;; it can only be a child of "process"</message>
+  <message.args>["bpws:import","bpws:process","\"process\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:import&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinksValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>774</charEnd>
+  <charStart>757</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Add &lt;"partnerLink"&gt; to node &lt;bpws:partnerLinks&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>19</lineNumber>
+  <location>partnerLinks</location>
+  <message>Node &lt;bpws:partnerLinks&gt; must contain at least one node from "partnerLink"</message>
+  <message.args>["bpws:partnerLinks",0,0,"\"partnerLink\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:partnerLinks&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinksValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>774</charEnd>
+  <charStart>757</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:partnerLinks&gt; cannot exist as a child of &lt;"process", "scope"&gt;</fixMessage>
+  <lineNumber>19</lineNumber>
+  <location>partnerLinks</location>
+  <message>&lt;bpws:partnerLinks&gt; cannot be a child of &lt;bpws:process&gt;; it can only be a child of "process", "scope"</message>
+  <message.args>["bpws:partnerLinks","bpws:process","\"process\", \"scope\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:partnerLinks&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>796</charEnd>
+  <charStart>780</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:partnerLink&gt; cannot exist as a child of &lt;"partnerLinks"&gt;</fixMessage>
+  <lineNumber>20</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;bpws:partnerLink&gt; cannot be a child of &lt;bpws:partnerLinks&gt;; it can only be a child of "partnerLinks"</message>
+  <message.args>["bpws:partnerLink","bpws:partnerLinks","\"partnerLinks\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:partnerLink "client"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>928</charEnd>
+  <charStart>912</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:partnerLink&gt; cannot exist as a child of &lt;"partnerLinks"&gt;</fixMessage>
+  <lineNumber>23</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;bpws:partnerLink&gt; cannot be a child of &lt;bpws:partnerLinks&gt;; it can only be a child of "partnerLinks"</message>
+  <message.args>["bpws:partnerLink","bpws:partnerLinks","\"partnerLinks\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:partnerLink "pl1"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1030</charEnd>
+  <charStart>1014</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>Make sure that the attribute "name" is specified.</fixMessage>
+  <lineNumber>25</lineNumber>
+  <location>partnerLink</location>
+  <message>Attribute "name" is not set on this &lt;bpws:partnerLink&gt; node.</message>
+  <message.args>["bpws:partnerLink",null,0]</message.args>
+  <message.id>BPELC__UNSET_ATTRIBUTE</message.id>
+  <node>&lt;bpws:partnerLink ""&gt;</node>
+  <ruleName>PartnerLinkValidator.CheckName.1</ruleName>
+  <severity>2</severity>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1030</charEnd>
+  <charStart>1014</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:partnerLink&gt; cannot exist as a child of &lt;"partnerLinks"&gt;</fixMessage>
+  <lineNumber>25</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;bpws:partnerLink&gt; cannot be a child of &lt;bpws:partnerLinks&gt;; it can only be a child of "partnerLinks"</message>
+  <message.args>["bpws:partnerLink","bpws:partnerLinks","\"partnerLinks\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:partnerLink ""&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.3</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1129</charEnd>
+  <charStart>1113</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:partnerLink&gt; cannot exist as a child of &lt;"partnerLinks"&gt;</fixMessage>
+  <lineNumber>27</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;bpws:partnerLink&gt; cannot be a child of &lt;bpws:partnerLinks&gt;; it can only be a child of "partnerLinks"</message>
+  <message.args>["bpws:partnerLink","bpws:partnerLinks","\"partnerLinks\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:partnerLink "badMyRole"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1237</charEnd>
+  <charStart>1221</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:partnerLink&gt; cannot exist as a child of &lt;"partnerLinks"&gt;</fixMessage>
+  <lineNumber>30</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;bpws:partnerLink&gt; cannot be a child of &lt;bpws:partnerLinks&gt;; it can only be a child of "partnerLinks"</message>
+  <message.args>["bpws:partnerLink","bpws:partnerLinks","\"partnerLinks\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:partnerLink "noRole"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.5</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1306</charEnd>
+  <charStart>1290</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:partnerLink&gt; cannot exist as a child of &lt;"partnerLinks"&gt;</fixMessage>
+  <lineNumber>31</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;bpws:partnerLink&gt; cannot be a child of &lt;bpws:partnerLinks&gt;; it can only be a child of "partnerLinks"</message>
+  <message.args>["bpws:partnerLink","bpws:partnerLinks","\"partnerLinks\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:partnerLink "badPLT"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@partnerLinks/@children.6</address.model>
+  <address.xpath>/bpws:process/bpws:partnerLinks/bpws:partnerLink[7]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PartnerLinkValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1379</charEnd>
+  <charStart>1363</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:partnerLink&gt; cannot exist as a child of &lt;"partnerLinks"&gt;</fixMessage>
+  <lineNumber>32</lineNumber>
+  <location>partnerLink</location>
+  <message>&lt;bpws:partnerLink&gt; cannot be a child of &lt;bpws:partnerLinks&gt;; it can only be a child of "partnerLinks"</message>
+  <message.args>["bpws:partnerLink","bpws:partnerLinks","\"partnerLinks\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:partnerLink "nothing"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables</address.model>
+  <address.xpath>/bpws:process/bpws:variables</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariablesValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1443</charEnd>
+  <charStart>1429</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Add &lt;"variable"&gt; to node &lt;bpws:variables&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>36</lineNumber>
+  <location>variables</location>
+  <message>Node &lt;bpws:variables&gt; must contain at least one node from "variable"</message>
+  <message.args>["bpws:variables",0,0,"\"variable\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:variables&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables</address.model>
+  <address.xpath>/bpws:process/bpws:variables</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariablesValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1443</charEnd>
+  <charStart>1429</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variables&gt; cannot exist as a child of &lt;"process", "scope"&gt;</fixMessage>
+  <lineNumber>36</lineNumber>
+  <location>variables</location>
+  <message>&lt;bpws:variables&gt; cannot be a child of &lt;bpws:process&gt;; it can only be a child of "process", "scope"</message>
+  <message.args>["bpws:variables","bpws:process","\"process\", \"scope\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variables&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1462</charEnd>
+  <charStart>1449</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>37</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "input"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1539</charEnd>
+  <charStart>1526</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>39</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "output"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1617</charEnd>
+  <charStart>1604</charStart>
+  <columnNumber>3</columnNumber>
+  <context.name>name</context.name>
+  <fixMessage>Remove the period (.) character from variable name.</fixMessage>
+  <lineNumber>41</lineNumber>
+  <location>variable</location>
+  <message>The variable name "xxx." contains an illegal period (.) character.</message>
+  <message.args>["xxx."]</message.args>
+  <message.id>BPELC_VARIABLE__NO_DOT</message.id>
+  <node>&lt;bpws:variable "xxx."&gt;</node>
+  <ruleDescription>Checks that variable NCName further does not contain a period (.) in the name.</ruleDescription>
+  <ruleName>VariableValidator.CheckName.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>24</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1617</charEnd>
+  <charStart>1604</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>41</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "xxx."&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.3</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[4]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1649</charEnd>
+  <charStart>1636</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>42</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "z01"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.4</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[5]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1680</charEnd>
+  <charStart>1667</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>43</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "x01"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.5</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[6]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1737</charEnd>
+  <charStart>1724</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>44</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "x02"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.6</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[7]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1800</charEnd>
+  <charStart>1787</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>45</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "y01"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@variables/@children.7</address.model>
+  <address.xpath>/bpws:process/bpws:variables/bpws:variable[8]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1850</charEnd>
+  <charStart>1837</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>46</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "y02"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity</address.model>
+  <address.xpath>/bpws:process/bpws:sequence</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>1925</charEnd>
+  <charStart>1912</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:sequence&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>48</lineNumber>
+  <location>sequence</location>
+  <message>Node &lt;bpws:sequence&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:sequence",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:sequence "main"&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity</address.model>
+  <address.xpath>/bpws:process/bpws:sequence</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SequenceValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1925</charEnd>
+  <charStart>1912</charStart>
+  <columnNumber>2</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:sequence&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>48</lineNumber>
+  <location>sequence</location>
+  <message>&lt;bpws:sequence&gt; cannot be a child of &lt;bpws:process&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:sequence","bpws:process","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:sequence "main"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:empty[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.EmptyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1956</charEnd>
+  <charStart>1946</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:empty&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>49</lineNumber>
+  <location>empty</location>
+  <message>&lt;bpws:empty&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:empty","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:empty "x"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:empty[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.EmptyValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>1988</charEnd>
+  <charStart>1978</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:empty&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>50</lineNumber>
+  <location>empty</location>
+  <message>&lt;bpws:empty&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:empty","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:empty "y"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:pick[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PickValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2019</charEnd>
+  <charStart>2010</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Add &lt;"onMessage"&gt; to node &lt;bpws:pick&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>51</lineNumber>
+  <location>pick</location>
+  <message>Node &lt;bpws:pick&gt; must contain at least one node from "onMessage"</message>
+  <message.args>["bpws:pick",0,0,"\"onMessage\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:pick[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PickValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2019</charEnd>
+  <charStart>2010</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>You need to add node "onAlarm", "onMessage" to activity &lt;bpws:pick&gt;.</fixMessage>
+  <lineNumber>51</lineNumber>
+  <location>pick</location>
+  <message>Activity &lt;bpws:pick&gt; must have "onAlarm", "onMessage" node present.</message>
+  <message.args>["bpws:pick",1,null,0]</message.args>
+  <message.id>BPELC__AT_LEAST_ONE</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>Check if at least 1 onAlarm/onMessage is present in a &lt;pick&gt;</ruleDescription>
+  <ruleName>PickValidator.CheckOnMessagesOnAlarms.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:pick[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PickValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2019</charEnd>
+  <charStart>2010</charStart>
+  <columnNumber>9</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:pick&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>51</lineNumber>
+  <location>pick</location>
+  <message>&lt;bpws:pick&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:pick","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@alarm.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:pick[1]/bpws:onAlarm</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>2067</charEnd>
+  <charStart>2055</charStart>
+  <columnNumber>12</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:onAlarm&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>52</lineNumber>
+  <location>onAlarm</location>
+  <message>Node &lt;bpws:onAlarm&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:onAlarm",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:onAlarm "onAlarmBad"&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.2/@alarm.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:pick[1]/bpws:onAlarm</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.OnAlarmValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2067</charEnd>
+  <charStart>2055</charStart>
+  <columnNumber>12</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:onAlarm&gt; cannot exist as a child of &lt;"eventHandlers", "pick"&gt;</fixMessage>
+  <lineNumber>52</lineNumber>
+  <location>onAlarm</location>
+  <message>&lt;bpws:onAlarm&gt; cannot be a child of &lt;bpws:pick&gt;; it can only be a child of "eventHandlers", "pick"</message>
+  <message.args>["bpws:onAlarm","bpws:pick","\"eventHandlers\", \"pick\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:onAlarm "onAlarmBad"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.3</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2136</charEnd>
+  <charStart>2124</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:receive&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>55</lineNumber>
+  <location>receive</location>
+  <message>&lt;bpws:receive&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:receive","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.4</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2292</charEnd>
+  <charStart>2280</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:receive&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>59</lineNumber>
+  <location>receive</location>
+  <message>&lt;bpws:receive&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:receive","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.5</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:receive[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ReceiveValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2423</charEnd>
+  <charStart>2411</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:receive&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>62</lineNumber>
+  <location>receive</location>
+  <message>&lt;bpws:receive&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:receive","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:receive "receiveInput"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:while</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.WhileValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2533</charEnd>
+  <charStart>2523</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"condition"&gt; to node &lt;bpws:while&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>65</lineNumber>
+  <location>while</location>
+  <message>Node &lt;bpws:while&gt; must contain at least one node from "condition"</message>
+  <message.args>["bpws:while",0,0,"\"condition\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:while "While"&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:while</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>2533</charEnd>
+  <charStart>2523</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:while&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>65</lineNumber>
+  <location>while</location>
+  <message>Node &lt;bpws:while&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:while",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:while "While"&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:while</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.WhileValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2533</charEnd>
+  <charStart>2523</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:while&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>65</lineNumber>
+  <location>while</location>
+  <message>&lt;bpws:while&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:while","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:while "While"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.6/@condition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:while/bpws:condition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ConditionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2567</charEnd>
+  <charStart>2553</charStart>
+  <columnNumber>4</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:condition&gt; cannot exist as a child of &lt;"elseif", "if", "repeatUntil", "while", "while"&gt;</fixMessage>
+  <lineNumber>66</lineNumber>
+  <location>condition</location>
+  <message>&lt;bpws:condition&gt; cannot be a child of &lt;bpws:while&gt;; it can only be a child of "elseif", "if", "repeatUntil", "while", "while"</message>
+  <message.args>["bpws:condition","bpws:while","\"elseif\", \"if\", \"repeatUntil\", \"while\", \"while\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:condition&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:repeatUntil</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.RepeatUntilValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2749</charEnd>
+  <charStart>2733</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"condition"&gt; to node &lt;bpws:repeatUntil&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>72</lineNumber>
+  <location>repeatUntil</location>
+  <message>Node &lt;bpws:repeatUntil&gt; must contain at least one node from "condition"</message>
+  <message.args>["bpws:repeatUntil",0,0,"\"condition\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:repeatUntil&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:repeatUntil</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>2749</charEnd>
+  <charStart>2733</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:repeatUntil&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>72</lineNumber>
+  <location>repeatUntil</location>
+  <message>Node &lt;bpws:repeatUntil&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:repeatUntil",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:repeatUntil&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:repeatUntil</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.RepeatUntilValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2749</charEnd>
+  <charStart>2733</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:repeatUntil&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>72</lineNumber>
+  <location>repeatUntil</location>
+  <message>&lt;bpws:repeatUntil&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:repeatUntil","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:repeatUntil&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.7/@condition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:repeatUntil/bpws:condition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ConditionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2770</charEnd>
+  <charStart>2756</charStart>
+  <columnNumber>4</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:condition&gt; cannot exist as a child of &lt;"elseif", "if", "repeatUntil", "while", "while"&gt;</fixMessage>
+  <lineNumber>73</lineNumber>
+  <location>condition</location>
+  <message>&lt;bpws:condition&gt; cannot be a child of &lt;bpws:repeatUntil&gt;; it can only be a child of "elseif", "if", "repeatUntil", "while", "while"</message>
+  <message.args>["bpws:condition","bpws:repeatUntil","\"elseif\", \"if\", \"repeatUntil\", \"while\", \"while\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:condition&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.8</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:invoke</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.InvokeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>2902</charEnd>
+  <charStart>2891</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:invoke&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>79</lineNumber>
+  <location>invoke</location>
+  <message>&lt;bpws:invoke&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:invoke","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:invoke "callbackClient"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3050</charEnd>
+  <charStart>3040</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:scope&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>83</lineNumber>
+  <location>scope</location>
+  <message>Node &lt;bpws:scope&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:scope",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:scope&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3050</charEnd>
+  <charStart>3040</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:scope&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>83</lineNumber>
+  <location>scope</location>
+  <message>&lt;bpws:scope&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:scope","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:scope&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@variables</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:variables</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariablesValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3071</charEnd>
+  <charStart>3057</charStart>
+  <columnNumber>4</columnNumber>
+  <fixMessage>Add &lt;"variable"&gt; to node &lt;bpws:variables&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>84</lineNumber>
+  <location>variables</location>
+  <message>Node &lt;bpws:variables&gt; must contain at least one node from "variable"</message>
+  <message.args>["bpws:variables",0,0,"\"variable\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:variables&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@variables</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:variables</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariablesValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3071</charEnd>
+  <charStart>3057</charStart>
+  <columnNumber>4</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variables&gt; cannot exist as a child of &lt;"process", "scope"&gt;</fixMessage>
+  <lineNumber>84</lineNumber>
+  <location>variables</location>
+  <message>&lt;bpws:variables&gt; cannot be a child of &lt;bpws:scope&gt;; it can only be a child of "process", "scope"</message>
+  <message.args>["bpws:variables","bpws:scope","\"process\", \"scope\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variables&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@variables/@children.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:variables/bpws:variable[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3092</charEnd>
+  <charStart>3079</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>85</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "input"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@variables/@children.1</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:variables/bpws:variable[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3175</charEnd>
+  <charStart>3162</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>87</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "s_xxx"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.9/@variables/@children.2</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:scope/bpws:variables/bpws:variable[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.VariableValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3215</charEnd>
+  <charStart>3202</charStart>
+  <columnNumber>5</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:variable&gt; cannot exist as a child of &lt;"variables"&gt;</fixMessage>
+  <lineNumber>88</lineNumber>
+  <location>variable</location>
+  <message>&lt;bpws:variable&gt; cannot be a child of &lt;bpws:variables&gt;; it can only be a child of "variables"</message>
+  <message.args>["bpws:variable","bpws:variables","\"variables\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:variable "s_xxx"&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.10</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:compensateScope</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.CompensateScopeValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3321</charEnd>
+  <charStart>3301</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:compensateScope&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>92</lineNumber>
+  <location>compensateScope</location>
+  <message>&lt;bpws:compensateScope&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:compensateScope","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:compensateScope&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.11</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:sequence</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3341</charEnd>
+  <charStart>3328</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:sequence&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>93</lineNumber>
+  <location>sequence</location>
+  <message>Node &lt;bpws:sequence&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:sequence",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:sequence&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.11</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:sequence</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.SequenceValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3341</charEnd>
+  <charStart>3328</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:sequence&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>93</lineNumber>
+  <location>sequence</location>
+  <message>&lt;bpws:sequence&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:sequence","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:sequence&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.12</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:pick[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PickValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3357</charEnd>
+  <charStart>3348</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"onMessage"&gt; to node &lt;bpws:pick&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>94</lineNumber>
+  <location>pick</location>
+  <message>Node &lt;bpws:pick&gt; must contain at least one node from "onMessage"</message>
+  <message.args>["bpws:pick",0,0,"\"onMessage\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.12</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:pick[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PickValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3357</charEnd>
+  <charStart>3348</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>You need to add node "onAlarm", "onMessage" to activity &lt;bpws:pick&gt;.</fixMessage>
+  <lineNumber>94</lineNumber>
+  <location>pick</location>
+  <message>Activity &lt;bpws:pick&gt; must have "onAlarm", "onMessage" node present.</message>
+  <message.args>["bpws:pick",1,null,0]</message.args>
+  <message.id>BPELC__AT_LEAST_ONE</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>Check if at least 1 onAlarm/onMessage is present in a &lt;pick&gt;</ruleDescription>
+  <ruleName>PickValidator.CheckOnMessagesOnAlarms.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>0</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.12</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:pick[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.PickValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3357</charEnd>
+  <charStart>3348</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:pick&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>94</lineNumber>
+  <location>pick</location>
+  <message>&lt;bpws:pick&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:pick","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:pick&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.13</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:rethrow</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.RethrowValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3376</charEnd>
+  <charStart>3364</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:rethrow&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>95</lineNumber>
+  <location>rethrow</location>
+  <message>&lt;bpws:rethrow&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:rethrow","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:rethrow&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.14</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:wait</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.WaitValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3392</charEnd>
+  <charStart>3383</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:wait&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>96</lineNumber>
+  <location>wait</location>
+  <message>&lt;bpws:wait&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:wait","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:wait&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.15</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:exit</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ExitValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3408</charEnd>
+  <charStart>3399</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:exit&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>97</lineNumber>
+  <location>exit</location>
+  <message>&lt;bpws:exit&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:exit","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:exit&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.16</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:throw</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ThrowValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3425</charEnd>
+  <charStart>3415</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:throw&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>98</lineNumber>
+  <location>throw</location>
+  <message>&lt;bpws:throw&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:throw","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:throw&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.AssignValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3443</charEnd>
+  <charStart>3432</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"copy"&gt; to node &lt;bpws:assign&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>99</lineNumber>
+  <location>assign</location>
+  <message>Node &lt;bpws:assign&gt; must contain at least one node from "copy"</message>
+  <message.args>["bpws:assign",0,0,"\"copy\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:assign&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.17</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:assign</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.AssignValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3443</charEnd>
+  <charStart>3432</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:assign&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>99</lineNumber>
+  <location>assign</location>
+  <message>&lt;bpws:assign&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:assign","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:assign&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.18</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3461</charEnd>
+  <charStart>3452</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:flow&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>100</lineNumber>
+  <location>flow</location>
+  <message>Node &lt;bpws:flow&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:flow",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:flow&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.18</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:flow</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.FlowValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3461</charEnd>
+  <charStart>3452</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:flow&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>100</lineNumber>
+  <location>flow</location>
+  <message>&lt;bpws:flow&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:flow","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:flow&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.19</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.IfValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3479</charEnd>
+  <charStart>3472</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"condition"&gt; to node &lt;bpws:if&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>102</lineNumber>
+  <location>if</location>
+  <message>Node &lt;bpws:if&gt; must contain at least one node from "condition"</message>
+  <message.args>["bpws:if",0,0,"\"condition\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.19</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3479</charEnd>
+  <charStart>3472</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:if&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>102</lineNumber>
+  <location>if</location>
+  <message>Node &lt;bpws:if&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:if",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.19</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[1]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.IfValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3479</charEnd>
+  <charStart>3472</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:if&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>102</lineNumber>
+  <location>if</location>
+  <message>&lt;bpws:if&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:if","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.19/@condition</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[1]/bpws:condition</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ConditionValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3502</charEnd>
+  <charStart>3488</charStart>
+  <columnNumber>6</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:condition&gt; cannot exist as a child of &lt;"elseif", "if", "repeatUntil", "while", "while"&gt;</fixMessage>
+  <lineNumber>103</lineNumber>
+  <location>condition</location>
+  <message>&lt;bpws:condition&gt; cannot be a child of &lt;bpws:if&gt;; it can only be a child of "elseif", "if", "repeatUntil", "while", "while"</message>
+  <message.args>["bpws:condition","bpws:if","\"elseif\", \"if\", \"repeatUntil\", \"while\", \"while\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:condition&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.20</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.IfValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3555</charEnd>
+  <charStart>3548</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"condition"&gt; to node &lt;bpws:if&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>106</lineNumber>
+  <location>if</location>
+  <message>Node &lt;bpws:if&gt; must contain at least one node from "condition"</message>
+  <message.args>["bpws:if",0,0,"\"condition\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.20</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3555</charEnd>
+  <charStart>3548</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:if&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>106</lineNumber>
+  <location>if</location>
+  <message>Node &lt;bpws:if&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:if",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.20</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[2]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.IfValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3555</charEnd>
+  <charStart>3548</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:if&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>106</lineNumber>
+  <location>if</location>
+  <message>&lt;bpws:if&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:if","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.20/@elseIf.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[2]/bpws:elseif</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ElseifValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3572</charEnd>
+  <charStart>3561</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"condition"&gt; to node &lt;bpws:elseif&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>107</lineNumber>
+  <location>elseif</location>
+  <message>Node &lt;bpws:elseif&gt; must contain at least one node from "condition"</message>
+  <message.args>["bpws:elseif",0,0,"\"condition\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:elseif&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.20/@elseIf.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[2]/bpws:elseif</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3572</charEnd>
+  <charStart>3561</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:elseif&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>107</lineNumber>
+  <location>elseif</location>
+  <message>Node &lt;bpws:elseif&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:elseif",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:elseif&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.20/@elseIf.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[2]/bpws:elseif</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ElseifValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3572</charEnd>
+  <charStart>3561</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:elseif&gt; cannot exist as a child of &lt;"if"&gt;</fixMessage>
+  <lineNumber>107</lineNumber>
+  <location>elseif</location>
+  <message>&lt;bpws:elseif&gt; cannot be a child of &lt;bpws:if&gt;; it can only be a child of "if"</message>
+  <message.args>["bpws:elseif","bpws:if","\"if\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:elseif&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.21</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.IfValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3604</charEnd>
+  <charStart>3597</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"condition"&gt; to node &lt;bpws:if&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>110</lineNumber>
+  <location>if</location>
+  <message>Node &lt;bpws:if&gt; must contain at least one node from "condition"</message>
+  <message.args>["bpws:if",0,0,"\"condition\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.21</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3604</charEnd>
+  <charStart>3597</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:if&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>110</lineNumber>
+  <location>if</location>
+  <message>Node &lt;bpws:if&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:if",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.21</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[3]</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.IfValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3604</charEnd>
+  <charStart>3597</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:if&gt; cannot exist as a child of &lt;text.bpel.activities.container.filter&gt;</fixMessage>
+  <lineNumber>110</lineNumber>
+  <location>if</location>
+  <message>&lt;bpws:if&gt; cannot be a child of &lt;bpws:sequence&gt;; it can only be a child of text.bpel.activities.container.filter</message>
+  <message.args>["bpws:if","bpws:sequence","text.bpel.activities.container.filter"]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:if&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.21/@elseIf.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[3]/bpws:elseif</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ElseifValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3621</charEnd>
+  <charStart>3610</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"condition"&gt; to node &lt;bpws:elseif&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>111</lineNumber>
+  <location>elseif</location>
+  <message>Node &lt;bpws:elseif&gt; must contain at least one node from "condition"</message>
+  <message.args>["bpws:elseif",0,0,"\"condition\"",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:elseif&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.21/@elseIf.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[3]/bpws:elseif</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3621</charEnd>
+  <charStart>3610</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:elseif&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>111</lineNumber>
+  <location>elseif</location>
+  <message>Node &lt;bpws:elseif&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:elseif",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:elseif&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.21/@elseIf.0</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[3]/bpws:elseif</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ElseifValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3621</charEnd>
+  <charStart>3610</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:elseif&gt; cannot exist as a child of &lt;"if"&gt;</fixMessage>
+  <lineNumber>111</lineNumber>
+  <location>elseif</location>
+  <message>&lt;bpws:elseif&gt; cannot be a child of &lt;bpws:if&gt;; it can only be a child of "if"</message>
+  <message.args>["bpws:elseif","bpws:if","\"if\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:elseif&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.21/@else</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[3]/bpws:else</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.model.Validator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.model.messages</bundleName>
+  <charEnd>3637</charEnd>
+  <charStart>3628</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Add &lt;"BPEL activities" (assign,while,if,flow,...)&gt; to node &lt;bpws:else&gt; to satisfy the constraint.</fixMessage>
+  <lineNumber>112</lineNumber>
+  <location>else</location>
+  <message>Node &lt;bpws:else&gt; must contain at least one node from "BPEL activities" (assign,while,if,flow,...)</message>
+  <message.args>["bpws:else",0,0,"\"BPEL activities\" (assign,while,if,flow,...)",0,1]</message.args>
+  <message.id>BPELC__MIN_IN_PARENT</message.id>
+  <node>&lt;bpws:else&gt;</node>
+  <ruleDescription>Check my children nodes (types and occurances)</ruleDescription>
+  <ruleName>CValidator.CheckChildrenNodes.0</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2002</staticAnalysisCode>
+ </problem>
+
+ <problem>
+  <address.model>//@activity/@activities.21/@else</address.model>
+  <address.xpath>/bpws:process/bpws:sequence/bpws:if[3]/bpws:else</address.xpath>
+  <bundle.clazz>class org.eclipse.bpel.validator.rules.ElseValidator</bundle.clazz>
+  <bundleName>org.eclipse.bpel.validator.rules.messages</bundleName>
+  <charEnd>3637</charEnd>
+  <charStart>3628</charStart>
+  <columnNumber>3</columnNumber>
+  <fixMessage>Seems like a syntax issue. &lt;bpws:else&gt; cannot exist as a child of &lt;"if"&gt;</fixMessage>
+  <lineNumber>112</lineNumber>
+  <location>else</location>
+  <message>&lt;bpws:else&gt; cannot be a child of &lt;bpws:if&gt;; it can only be a child of "if"</message>
+  <message.args>["bpws:else","bpws:if","\"if\""]</message.args>
+  <message.id>BPELC__WRONG_PARENT</message.id>
+  <node>&lt;bpws:else&gt;</node>
+  <ruleDescription>Check to make sure that my parent node is within a set of allowed nodes</ruleDescription>
+  <ruleName>CValidator.CheckParentNode.1</ruleName>
+  <severity>2</severity>
+  <staticAnalysisCode>2001</staticAnalysisCode>
+ </problem>
+
+</problems>

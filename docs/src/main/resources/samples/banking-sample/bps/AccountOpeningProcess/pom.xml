@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.wso2.capp</groupId>
+  <artifactId>AccountOpeningProcess</artifactId>
+  <version>1.0.0</version>
+  <packaging>bpel/workflow</packaging>
+  <name>AccountOpeningProcess</name>
+  <description>AccountOpeningProcess</description>
+  <properties>
+    <CApp.type>bpel/workflow</CApp.type>
+  </properties>
+  <repositories>
+    <repository>
+      <id>wso2-maven2-repository-1</id>
+      <url>http://dist.wso2.org/maven2</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>wso2-maven2-repository-1</id>
+      <url>http://dist.wso2.org/maven2</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.wso2.maven</groupId>
+        <artifactId>maven-bpel-plugin</artifactId>
+        <version>1.0.3</version>
+        <extensions>true</extensions>
+        <configuration />
+      </plugin>
+    </plugins>
+  </build>
+</project>

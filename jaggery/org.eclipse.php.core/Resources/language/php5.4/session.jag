@@ -1,0 +1,71 @@
+<%
+namespace session;
+
+
+
+
+
+	/**
+	 * Returns the session created time
+	 * @link http://jaggeryjs.org/apidocs/session.jag
+	 * @return String
+	 */
+	function getCreationTime(){}
+	
+	/**
+	 * Returns the last accessed time of the session
+	 * @link http://jaggeryjs.org/apidocs/session.jag
+	 * @return String
+	 */
+	function getLastAccessedTime(){}
+	
+	/**
+	 * Functions to put values to the session
+	 * @link http://jaggeryjs.org/apidocs/session.jag
+	 * @param key
+	 * @param value
+	 * 
+	 */
+	function put(key, value){}
+	
+	/**
+	 * Returns values in the session
+	 * @link http://jaggeryjs.org/apidocs/session.jag
+	 * @param key
+	 * @return String
+	 */
+	function get(key){}
+	
+	/**
+	 * Returns Id of the session
+	 * @link http://jaggeryjs.org/apidocs/session.jag
+	 * @return String
+	 */
+	function getId(){}
+	
+	/**
+	 * Removes an attribute from the session. 
+	 * @link http://jaggeryjs.org/apidocs/session.jag
+	 * @param key
+	 */
+	function remove(key){}
+	
+	/**
+	 * invalidates the session 
+	 * @link http://jaggeryjs.org/apidocs/session.jag
+	 * 
+	 */
+	function invalidate(){}
+	
+		
+	/**
+	 * Returns the true|false
+	 * @link http://jaggeryjs.org/apidocs/session.jag
+	 * @return boolean
+	 */
+	function isNew(){}
+
+
+
+
+%>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  introContent>
+  	<extensionContent id="comdeveloperwelcome-introExtension" style="css/sample.css" name="Sample Extension" path="overview/@">
+		<group style-id="content-group" id="comdeveloperwelcome-introLink-group">
+       		<link label="WSO2 Developer Studio" url="http://www.eclipse.org" id="comdeveloperwelcome-introLink" style-id="content-link">
+          		<text>Hello everyone. welcome to WSO2 Developer Studio</text>
+       		</link>
+       	</group>
+  	</extensionContent>
+</introContent-->
+
+<introContent>
+  <extensionContent 
+  	  id="comdeveloperwelcome-introExtension"
+      style="css/sample.css"
+      name="Sample Extension"
+      path="overview/@">
+          <group
+        style-id="content-group"
+        id="comdeveloperwelcome-introLink-group"
+        icon="icons/carbon-normal.png">
+      <link 
+          label="Open Dashboard"
+          url="http://org.eclipse.ui.intro/runAction?pluginId=org.wso2.developerstudio.eclipse.platform.core&#38;class=org.wso2.developerstudio.eclipse.platform.core.intro.action.OpenDashboardAction"
+          id="carbonStudio-dashboardlink"
+          style-id="content-link">
+        <text>Start using WSO2 Developer Studio</text>
+      </link>
+    </group>
+    <group
+        style-id="content-group"
+        id="comdeveloperwelcome-introLink-group">
+      <link 
+          label="WSO2 Developer Studio - Quick Overview"
+          url="http://dist.wso2.org/products/developer-studio/2.1.0/docs/overview.html"
+          id="carbonStudio-introLink"
+          style-id="content-link">
+        <text>Welcome to WSO2 Developer Studio !! Here we give you a quick overview of WSO2 Developer 
+        Studio. Browse through our detailed documentation to try out  
+        all the capabilities provided with WSO2 Developer Studio.</text>
+      </link>
+    </group>
+    <group
+        style-id="content-group"
+        id="comdeveloperwelcome-introLink-group"
+        icon="icons/carbon-normal.png">
+      <link 
+          label="Getting Started with WSO2 Developer Studio"
+          url="http://dist.wso2.org/products/developer-studio/2.1.0/docs/getting_started_category.html"
+          id="getting-started-link"
+          style-id="content-link">
+        <text>This tutorial explains how to create a Carbon Application (C-App) project using WSO2 Developer Studio. 
+        Creating a C-App project is the first step to try out all the other capabilities of WSO2 Developer 
+        Studio. 
+        </text>
+      </link>
+    </group>
+  </extensionContent>
+</introContent>

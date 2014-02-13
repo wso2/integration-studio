@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ Copyright 2005-2007 WSO2, Inc. (http://wso2.com) ~ ~ Licensed under 
+	the Apache License, Version 2.0 (the "License"); ~ you may not use this file 
+	except in compliance with the License. ~ You may obtain a copy of the License 
+	at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 ~ ~ Unless required by 
+	applicable law or agreed to in writing, software ~ distributed under the 
+	License is distributed on an "AS IS" BASIS, ~ WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. ~ See the License for the specific 
+	language governing permissions and ~ limitations under the License. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body>
+
+		<h1>How To Refer a Named Sequence in ESB Graphical Editor</h1>
+		<p>
+			As you may already aware, Sequence in WSO2 ESB language is a
+			collection
+			of mediators and Named Sequence in WSO2 ESB language means
+			a
+			predefined Sequence element in WSO2 ESB configuration with a name so
+			that other configuration elements can refer to this predefined
+			Sequence and reuse the existing Sequences.
+		</p>
+		<p>
+			WSO2 Developer Studio ESB Graphical Editor also supports referring
+			Named Sequences.
+		</p>
+		<p>
+			There are 3 methods you can refer to a Named Sequence in ESB
+			Graphical
+			Editor and those methods are explained in the next couple of
+			sections.
+		</p>
+		<div class="toc">
+			<ul>
+				<li>
+					<a href="#method1">Drag and Drop from the Defined Sequences list in Tool Palette</a>
+				</li>
+				<li>
+					<a href="#method2">Using Sequence mediator to Refer to a Named Sequence</a>
+				</li>
+				<li>
+					<a href="#method3">Implementing and Referring Named Sequence using Sequence Mediator</a>
+				</li>
+			</ul>
+		</div>
+
+
+		<h2 id="method1">Drag and Drop from the Defined Sequences list in
+			Tool Palette</h2>
+		<p>
+			If you pay a closer attention at the ESB Graphical Editors Tool
+			Palette, you will notice there is a category called “Defined
+			Sequences”. And if you expand this section in the Tool Palette you
+			will notice that all the Pre-Defined Sequences in your ESB
+			Configuration Project are listed there in this section.
+	</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence0.PNG"></img>
+			<br></br>
+		</p>
+		<p>
+			When you want to refer to a Named Sequence in your ESB configuration
+			project, you can simply click on the Predefined named sequence in the
+			Tool Palette and then click on the Canvas area guided by mouse
+			pointer.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence2.PNG"></img>
+			<br></br>
+		</p>
+		<p>Then the Editor will automatically draw the Sequence in your
+			mediation flow and indicate endpoints you have used in your Named
+			Sequence as a part of the current mediation flow.
+		</p>
+		<h2 id="method2">Using Sequence mediator to Refer to a Named
+			Sequence
+		</h2>
+		<p>When you have multiple ESB Configuration Projects in your Developer
+			Studio workspace, you may want to refer a Sequence you have defined
+			elsewhere than the current project. In that case, you will not be
+			able to use the mechanism we explained above since we list Sequence
+			only in the current ESB Configuration Project.
+</p>
+		<p>
+			In that case you need to use some mechanism which allows you to crawl
+			through your Developer Studio workspace and allow you to refer
+			Sequences in another project.
+</p>
+		<p>
+			Using Sequence Mediator allow you to fulfil your requirement as shown
+			below.
+</p>
+		<p>
+			You can click on Sequence mediator in the Tool Palette and and then
+			click on the Editor Canvas ares.
+</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence3.PNG"></img>
+			<br></br>
+		</p>
+		<p>It will add the Sequence mediator to the mediation flow as shown
+			below.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence4.PNG"></img>
+			<br></br>
+		</p>
+		<p>When you select this Sequence mediator, you will see the Reference
+			Key location setter in the Eclipse Properties view as indicated
+			above. When you click on the Button at the end of this property, it
+			will populate the Reference Property Key Dialog as shown below.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence5.PNG"></img>
+			<br></br>
+		</p>
+
+		<p>From this Dialog, you need to select “Workspace” option in order to
+			select a Sequence in workspace. When you click on it, it will
+			populate the Workspace Element Provider window as shown below.
+</p>
+		<p>
+			This Workspace Element Provider Dialog will list out all the available
+			Sequences in workspace categorized by Respective Project.
+</p>
+		<p>
+			In this example project called “CardService”, there are 2 Sequences
+			available as shown in the Image below.
+		</p>
+
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence6.PNG"></img>
+			<br></br>
+		</p>
+		<p>Once you select a Sequence from the list, its Name is set as the
+			Reference Key.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence8.PNG"></img>
+			<br></br>
+		</p>
+		<h2 id="method3">Implementing and Referring Named Sequence using Sequence Mediator
+		</h2>
+
+		<p>
+			In the previous section you identified how you can refer to an existing
+			Sequence in Developer Studio workspace using Sequence mediator.
+</p>
+		<p>
+			In this section we are explaining you how to use Sequence mediator to
+			create a new Sequence in your ESB Configuration Project and set the
+			Name of the newly create Sequence as the Reference Key.
+</p>
+		<p>
+			First again click on the Sequence Mediator in your Tool Palette and click
+			on the Canvas area of the editor.
+</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence3.PNG"></img>
+			<br></br>
+		</p>
+		<p>
+			Then it will add the Sequence mediator to your mediation flow as shown
+			below.
+</p>
+		<p>
+			There you will see that you can edit the Label of the newly dragged and
+			dropped Sequence Mediator. Change the name of the Label of this
+			Sequence mediator and press enter.
+</p>
+		<p>
+			It will change the Name property in the properties view as well.
+</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence9.PNG"></img>
+			<br></br>
+		</p>
+		<p>Then Double click on the Sequence Mediator icon on the Editor and
+			it will open up a new Sequence Editor with the same name you provided
+			as the Label name.
+		</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence10.PNG"></img>
+			<br></br>
+		</p>
+		<p>Once you save the newly developed Sequence, you will see the the
+			endpoints you defined in the new Sequence is shown in the mediation
+			flow as shown below.</p>
+		<p>
+			<br></br>
+			<img alt="New Server Runtime" src="images/NamedSequence11.PNG"></img>
+			<br></br>
+		</p>
+	</body>
+</html>
+	

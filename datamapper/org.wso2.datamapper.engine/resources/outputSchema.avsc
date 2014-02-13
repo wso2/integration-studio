@@ -1,0 +1,25 @@
+{ 
+ "namespace": "org.wso2",
+ "type": "record", 
+ "name": "pizza", 
+ "fields": [ 
+
+      			{"name" : "name", "type" : "string"}, 
+                {"name" : "price", "type" : "string"},
+    			{ "name": "toppingsList", 
+          		  "type": { 
+            					"type": "array", 
+            					"items": { 
+              								"name": "toppings", 
+              								"type": "record", 
+              								"fields": [ 
+                    										{"name" : "id", "type" : "string"}, 
+                   											{"name" : "name", "type" : "string"}, 
+                    										{"name" : "extraPrice", "type" : "string"},
+                    										{"name" : "category", "type" : "string"}
+                    								  ] 
+          								  } 
+        				  } 
+      			} 
+    		] 
+}

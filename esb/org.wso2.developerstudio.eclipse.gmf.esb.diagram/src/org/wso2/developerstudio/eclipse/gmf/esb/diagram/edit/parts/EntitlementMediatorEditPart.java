@@ -364,7 +364,7 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(false);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(200)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(220)));
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();

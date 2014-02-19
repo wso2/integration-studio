@@ -1,11 +1,16 @@
 package dataMapper.diagram.edit.parts;
 
+import javax.swing.border.LineBorder;
+
+import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -21,7 +26,10 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+
+import dataMapper.diagram.edit.parts.custom.DataMapperDiagramBox;
 
 /**
  * @generated
@@ -74,7 +82,7 @@ public class DataMapperDiagramEditPart extends ShapeNodeEditPart {
 
 		// installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new
 		// CustomNonResizableEditPolicyEx()); //remove selection rectangle
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); 
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/**
@@ -104,10 +112,10 @@ public class DataMapperDiagramEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new DataMapperFigure();
+		return primaryShape = new DataMapperDiagramFigure();
 	}
 
 	/**
@@ -121,7 +129,7 @@ public class DataMapperDiagramEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(1000, 1000);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(2000, 1000);
 		return result;
 	}
 
@@ -142,12 +150,18 @@ public class DataMapperDiagramEditPart extends ShapeNodeEditPart {
 		layout.setStretchMinorAxis(false); // don't resize children figures with
 
 		StackLayout sLayout = new StackLayout();
-		layout.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
+		//		layout.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
 
 		figure.setLayoutManager(sLayout);
 		IFigure shape = createNodeShape();
 
-		shape.setLayoutManager(layout);
+		/*
+		 * trst layout
+		 */
+		//		GridLayout gridL = new GridLayout();
+		//		gridL.numColumns = 3;
+
+		//		shape.setLayoutManager(layout);
 
 		figure.add(shape);
 
@@ -215,25 +229,80 @@ public class DataMapperDiagramEditPart extends ShapeNodeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	//	@Override
+	//	protected void addChild(EditPart child, int index) {
+	//		// TODO Auto-generated method stub
+	//		super.addChild(child, index);
+	//	}
 
-	public class DataMapperFigure extends RectangleFigure {
+	/**
+	 * @author lali
+	 *
+	 */
+	public class DataMapperDiagramFigure extends DataMapperDiagramBox {
+		public DataMapperDiagramFigure() {
+			////			RectangleFigure figure = new RectangleFigure();
+			//			GridLayout layout = new GridLayout(3, true);
+			////			figure.setLayoutManager(layout);
+			////			figure.setOutline(false);
+			////			this.add(figure);
+			//			this.setLayoutManager(layout);
+			//			
+			//			this.setCornerDimensions(new Dimension(1, 1));
+			//			this.setFill(false);
+			//			this.setOutline(false);
+			//
+			//			this.setBorder(new org.eclipse.draw2d.LineBorder(new Color(null, 244, 244, 244), 2, SWT.BORDER_DASH));
 
-		public DataMapperFigure() {
+			//			DataMapperDiagramFigure datamapperDiagramBox = new DataMapperDiagramFigure();
+			//			this.add(datamapperDiagramBox);
 
 			ToolbarLayout layoutThis = new ToolbarLayout();
+
+			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
+			layoutThis.setSpacing(50);
+			layoutThis.setHorizontal(true);
+
 			this.setLayoutManager(layoutThis);
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(300),
+					getMapMode().DPtoLP(400)));
+			this.setOutline(false);
+			this.setBackgroundColor(new Color(null, 255, 255, 255));
+			this.setForegroundColor(new Color(null, 0, 0, 0));
+			layoutThis.setStretchMinorAxis(false);
 
 		}
-	}// end DataMapperDiagram
 
-	public class DataMapperDiagramFigure extends RectangleFigure {
-		public DataMapperDiagramFigure() {
-			RectangleFigure figure = new RectangleFigure();
-			GridLayout layout = new GridLayout(3, true);
-			figure.setLayoutManager(layout);
-			figure.setOutline(false);
-			this.add(figure);
+		public void add(IFigure figure, Object constraint, int index) {
 
+			if (figure.getChildren().get(0).toString().substring(30, 40)
+					.equalsIgnoreCase("Operations")) {
+				ToolbarLayout layout = new ToolbarLayout();
+				layout.setHorizontal(false);
+				//				layout.setSpacing(5);
+
+				//				figure.setBorder(new org.eclipse.draw2d.LineBorder(new Color(
+				//						null, 244, 100, 144), 2, SWT.BORDER_DASH));
+				super.add(figure, layout, 1);
+			} else if (figure instanceof DefaultSizeNodeFigure) {
+				GridData layoutData = new GridData();
+				//				layoutData.grabExcessHorizontalSpace = true;
+				//				layoutData.grabExcessVerticalSpace = true;
+				layoutData.horizontalAlignment = SWT.CENTER;
+				layoutData.verticalAlignment = SWT.CENTER;
+				//				figure.setBorder(new org.eclipse.draw2d.LineBorder(new Color(
+				//						null, 144, 144, 144), 2, SWT.BORDER_DASH));
+				super.add(figure, layoutData, index);
+			}
+
+			else {
+				ToolbarLayout layout = new ToolbarLayout();
+				layout.setHorizontal(false);
+
+				figure.setBorder(new org.eclipse.draw2d.LineBorder(new Color(
+						null, 244, 100, 144), 2, SWT.BORDER_DASH));
+				super.add(figure, layout, 1);
+			}
 		}
 	}
 }

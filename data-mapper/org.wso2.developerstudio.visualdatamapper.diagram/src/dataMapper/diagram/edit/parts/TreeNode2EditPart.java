@@ -41,7 +41,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import dataMapper.TreeNode;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 
-
 /**
  * @generated
  */
@@ -54,7 +53,7 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3005;
+	public static final int VISUAL_ID = 3003;
 
 	/**
 	 * @generated
@@ -135,8 +134,8 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); 
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); 
+				new CustomNonResizableEditPolicyEx());
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/**
@@ -414,7 +413,8 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 				isExpanded = false;
 
 				for (int i = 0; i < childrenIFigure.size(); i++) {
-					getPrimaryShape().getChildren().remove(childrenIFigure.get(i));
+					getPrimaryShape().getChildren().remove(
+							childrenIFigure.get(i));
 				}
 			}
 		}

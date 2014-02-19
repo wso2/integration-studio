@@ -79,6 +79,19 @@
           xsi:type="gmfgraph:Rectangle"
           name="ConcatFigure"/>
     </descriptors>
+    <descriptors
+        name="OperationsFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperationsFigure"/>
+    </descriptors>
+    <descriptors
+        name="CompartmentFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="CompartmentFigure"
+          outline="false"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -99,7 +112,8 @@
       figure="OperatorsFigure"/>
   <nodes
       name="Element"
-      figure="ElementFigure"/>
+      figure="ElementFigure"
+      resizeConstraint="NONE"/>
   <nodes
       name="Attribute"
       figure="AttributeFigure"/>
@@ -117,7 +131,13 @@
   <nodes
       name="Concat"
       figure="ConcatFigure"/>
+  <nodes
+      name="Operations"
+      figure="OperationsFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>
+  <compartments
+      name="OperationsCompartment"
+      figure="CompartmentFigure"/>
 </gmfgraph:Canvas>

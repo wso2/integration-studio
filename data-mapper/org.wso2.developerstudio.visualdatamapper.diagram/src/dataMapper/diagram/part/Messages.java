@@ -288,7 +288,22 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_OutNode_3010_outgoinglinks;
+	public static String NavigatorGroupName_DataMapperLink_4001_target;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_DataMapperLink_4001_source;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_InNode_3008_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_OutNode_3009_outgoinglinks;
 
 	/**
 	 * @generated
@@ -303,32 +318,12 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_DataMapperLink_4002_target;
+	public static String NavigatorGroupName_InNode_3005_incominglinks;
 
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_DataMapperLink_4002_source;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_InNode_3011_incominglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_InNode_3009_incominglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_OutNode_3012_outgoinglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_InNode_3016_incominglinks;
+	public static String NavigatorGroupName_OutNode_3006_outgoinglinks;
 
 	/**
 	 * @generated

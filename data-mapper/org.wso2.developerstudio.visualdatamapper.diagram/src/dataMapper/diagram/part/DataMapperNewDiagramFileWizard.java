@@ -169,8 +169,9 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 	/**
 	 * @generated
 	 */
-	private static class DiagramRootElementSelectionPage extends
-			dataMapper.diagram.part.ModelElementSelectionPage {
+	private static class DiagramRootElementSelectionPage
+			extends
+				dataMapper.diagram.part.ModelElementSelectionPage {
 
 		/**
 		 * @generated
@@ -201,7 +202,8 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 									new EObjectAdapter(selectedModelElement),
 									dataMapper.diagram.edit.parts.DataMapperRootEditPart.MODEL_ID,
 									dataMapper.diagram.part.DataMapperDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
-			setErrorMessage(result ? null
+			setErrorMessage(result
+					? null
 					: dataMapper.diagram.part.Messages.DataMapperNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
 			return result;
 		}

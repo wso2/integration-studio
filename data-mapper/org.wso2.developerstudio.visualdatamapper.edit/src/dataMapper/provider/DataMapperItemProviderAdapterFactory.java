@@ -371,6 +371,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.Operations} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperationsItemProvider operationsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.Operations}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperationsAdapter() {
+		if (operationsItemProvider == null) {
+			operationsItemProvider = new OperationsItemProvider(this);
+		}
+
+		return operationsItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -482,6 +505,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (outNodeItemProvider != null) outNodeItemProvider.dispose();
 		if (dataMapperLinkItemProvider != null) dataMapperLinkItemProvider.dispose();
 		if (concatItemProvider != null) concatItemProvider.dispose();
+		if (operationsItemProvider != null) operationsItemProvider.dispose();
 	}
 
 }

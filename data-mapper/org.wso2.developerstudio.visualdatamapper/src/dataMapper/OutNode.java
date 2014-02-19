@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link dataMapper.OutNode#getOutgoingLink <em>Outgoing Link</em>}</li>
+ *   <li>{@link dataMapper.OutNode#getElementParent <em>Element Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,5 +41,33 @@ public interface OutNode extends EObject {
 	 * @generated
 	 */
 	EList<DataMapperLink> getOutgoingLink();
+
+	/**
+	 * Returns the value of the '<em><b>Element Parent</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link dataMapper.Element#getOutNode <em>Out Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Element Parent</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Element Parent</em>' container reference.
+	 * @see #setElementParent(Element)
+	 * @see dataMapper.DataMapperPackage#getOutNode_ElementParent()
+	 * @see dataMapper.Element#getOutNode
+	 * @model opposite="outNode" transient="false"
+	 * @generated
+	 */
+	Element getElementParent();
+
+	/**
+	 * Sets the value of the '{@link dataMapper.OutNode#getElementParent <em>Element Parent</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Element Parent</em>' container reference.
+	 * @see #getElementParent()
+	 * @generated
+	 */
+	void setElementParent(Element value);
 
 } // OutNode

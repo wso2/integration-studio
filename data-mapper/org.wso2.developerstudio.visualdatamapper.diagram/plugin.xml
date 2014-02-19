@@ -52,7 +52,7 @@
    </extension>
 
    <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
-      <?gmfgen generated="true"?>
+      <?gmfgen generated="false"?>
       <objectContribution
             id="org.wso2.developerstudio.visualdatamapper.diagram.InitDiagram"
             nameFilter="*.datamapper"
@@ -63,6 +63,16 @@
                menubarPath="additions"
                enablesFor="1"
                id="org.wso2.developerstudio.visualdatamapper.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.wso2.developerstudio.visualdatamapper.diagram.ExportConfiguration"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="dataMapper.diagram.custom.menu.ExportConfigurationAction"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.ExportConfigurationAction"
+               label="Export Configuration">
          </action>
       </objectContribution>
    </extension>
@@ -217,8 +227,8 @@
       <viewProvider class="dataMapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3004,3005,3006,3009,3010,3007,3011,3012,3002,3008,3013,3014,3015,3016"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4002"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
 
@@ -230,10 +240,10 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,3001,3004,3005,3006,3009,3010,3007,3011,3012,3002,3008,3013,3014,3015,3016"/>
+            <method name="getType()" value="2001,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
-            <method name="getType()" value="4002"/>
+            <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
             <method name="getType()" value=""/>
@@ -252,21 +262,21 @@
          <object class="dataMapper.diagram.edit.parts.DataMapperRootEditPart" id="DataMapperRoot_1000"/>
          <object class="dataMapper.diagram.edit.parts.DataMapperDiagramEditPart" id="DataMapperDiagram_2001"/>
          <object class="dataMapper.diagram.edit.parts.InputEditPart" id="Input_3001"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNodeEditPart" id="TreeNode_3004"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNode2EditPart" id="TreeNode_3005"/>
-         <object class="dataMapper.diagram.edit.parts.AttributeEditPart" id="Attribute_3006"/>
-         <object class="dataMapper.diagram.edit.parts.InNodeEditPart" id="InNode_3009"/>
-         <object class="dataMapper.diagram.edit.parts.OutNodeEditPart" id="OutNode_3010"/>
+         <object class="dataMapper.diagram.edit.parts.TreeNodeEditPart" id="TreeNode_3002"/>
+         <object class="dataMapper.diagram.edit.parts.TreeNode2EditPart" id="TreeNode_3003"/>
+         <object class="dataMapper.diagram.edit.parts.AttributeEditPart" id="Attribute_3004"/>
+         <object class="dataMapper.diagram.edit.parts.InNodeEditPart" id="InNode_3005"/>
+         <object class="dataMapper.diagram.edit.parts.OutNodeEditPart" id="OutNode_3006"/>
          <object class="dataMapper.diagram.edit.parts.ElementEditPart" id="Element_3007"/>
-         <object class="dataMapper.diagram.edit.parts.InNode2EditPart" id="InNode_3011"/>
-         <object class="dataMapper.diagram.edit.parts.OutNode2EditPart" id="OutNode_3012"/>
-         <object class="dataMapper.diagram.edit.parts.OutputEditPart" id="Output_3002"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNode3EditPart" id="TreeNode_3008"/>
+         <object class="dataMapper.diagram.edit.parts.InNode2EditPart" id="InNode_3008"/>
+         <object class="dataMapper.diagram.edit.parts.OutNode2EditPart" id="OutNode_3009"/>
+         <object class="dataMapper.diagram.edit.parts.OutputEditPart" id="Output_3010"/>
+         <object class="dataMapper.diagram.edit.parts.TreeNode3EditPart" id="TreeNode_3011"/>
+         <object class="dataMapper.diagram.edit.parts.OperationsEditPart" id="Operations_3012"/>
          <object class="dataMapper.diagram.edit.parts.ConcatEditPart" id="Concat_3013"/>
          <object class="dataMapper.diagram.edit.parts.InNode3EditPart" id="InNode_3014"/>
          <object class="dataMapper.diagram.edit.parts.OutNode3EditPart" id="OutNode_3015"/>
-         <object class="dataMapper.diagram.edit.parts.InNode4EditPart" id="InNode_3016"/>
-         <context elements="DataMapperRoot_1000,DataMapperDiagram_2001,Input_3001,TreeNode_3004,TreeNode_3005,Attribute_3006,InNode_3009,OutNode_3010,Element_3007,InNode_3011,OutNode_3012,Output_3002,TreeNode_3008,Concat_3013,InNode_3014,OutNode_3015,InNode_3016"/>
+         <context elements="DataMapperRoot_1000,DataMapperDiagram_2001,Input_3001,TreeNode_3002,TreeNode_3003,Attribute_3004,InNode_3005,OutNode_3006,Element_3007,InNode_3008,OutNode_3009,Output_3010,TreeNode_3011,Operations_3012,Concat_3013,InNode_3014,OutNode_3015"/>
       </modelingAssistantProvider>
    </extension>
 
@@ -311,51 +321,51 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3004"
-               name="%metatype.name.TreeNode_3004"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"
+               name="%metatype.name.TreeNode_3002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="TreeNode"
                edithelper="dataMapper.diagram.edit.helpers.TreeNodeEditHelper">
-            <param name="semanticHint" value="3004"/>
+            <param name="semanticHint" value="3002"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <specializationType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3005"
-               name="%metatype.name.TreeNode_3005"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"
+               name="%metatype.name.TreeNode_3003"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3004"/>
-            <param name="semanticHint" value="3005"/>
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
+            <param name="semanticHint" value="3003"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3006"
-               name="%metatype.name.Attribute_3006"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3004"
+               name="%metatype.name.Attribute_3004"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Attribute"
                edithelper="dataMapper.diagram.edit.helpers.AttributeEditHelper">
-            <param name="semanticHint" value="3006"/>
+            <param name="semanticHint" value="3004"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3009"
-               name="%metatype.name.InNode_3009"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3005"
+               name="%metatype.name.InNode_3005"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="InNode"
                edithelper="dataMapper.diagram.edit.helpers.InNodeEditHelper">
-            <param name="semanticHint" value="3009"/>
+            <param name="semanticHint" value="3005"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3010"
-               name="%metatype.name.OutNode_3010"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3006"
+               name="%metatype.name.OutNode_3006"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="OutNode"
                edithelper="dataMapper.diagram.edit.helpers.OutNodeEditHelper">
-            <param name="semanticHint" value="3010"/>
+            <param name="semanticHint" value="3006"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
@@ -370,40 +380,50 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <specializationType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3011"
-               name="%metatype.name.InNode_3011"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"
+               name="%metatype.name.InNode_3008"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3009"/>
-            <param name="semanticHint" value="3011"/>
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3005"/>
+            <param name="semanticHint" value="3008"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <specializationType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3012"
-               name="%metatype.name.OutNode_3012"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3009"
+               name="%metatype.name.OutNode_3009"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3010"/>
-            <param name="semanticHint" value="3012"/>
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3006"/>
+            <param name="semanticHint" value="3009"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.Output_3002"
-               name="%metatype.name.Output_3002"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Output_3010"
+               name="%metatype.name.Output_3010"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Output"
                edithelper="dataMapper.diagram.edit.helpers.OutputEditHelper">
-            <param name="semanticHint" value="3002"/>
+            <param name="semanticHint" value="3010"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <specializationType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3008"
-               name="%metatype.name.TreeNode_3008"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"
+               name="%metatype.name.TreeNode_3011"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3004"/>
-            <param name="semanticHint" value="3008"/>
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
+            <param name="semanticHint" value="3011"/>
          </specializationType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Operations_3012"
+               name="%metatype.name.Operations_3012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Operations"
+               edithelper="dataMapper.diagram.edit.helpers.OperationsEditHelper">
+            <param name="semanticHint" value="3012"/>
+         </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
@@ -420,7 +440,7 @@
                id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3014"
                name="%metatype.name.InNode_3014"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3009"/>
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3005"/>
             <param name="semanticHint" value="3014"/>
          </specializationType>
       </metamodel>
@@ -429,27 +449,18 @@
                id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3015"
                name="%metatype.name.OutNode_3015"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3010"/>
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3006"/>
             <param name="semanticHint" value="3015"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
-         <specializationType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3016"
-               name="%metatype.name.InNode_3016"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
-            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3009"/>
-            <param name="semanticHint" value="3016"/>
-         </specializationType>
-      </metamodel>
-      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4002"
-               name="%metatype.name.DataMapperLink_4002"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4001"
+               name="%metatype.name.DataMapperLink_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="DataMapperLink"
                edithelper="dataMapper.diagram.edit.helpers.DataMapperLinkEditHelper">
-            <param name="semanticHint" value="4002"/>
+            <param name="semanticHint" value="4001"/>
          </metamodelType>
       </metamodel>
    </extension>
@@ -467,21 +478,21 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperRoot_1000"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperDiagram_2001"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Input_3001"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3004"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3005"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3006"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3009"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3010"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3004"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3005"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3006"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3011"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3012"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Output_3002"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3008"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3009"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Output_3010"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Operations_3012"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Concat_3013"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3014"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3015"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3016"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4002"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4001"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
    </extension>

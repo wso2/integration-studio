@@ -100,16 +100,16 @@ public class TestTreeModel {
 		return pass;
 	}
 
-	public Tree generateOutputTree() {
+	public static Tree generateOutputTree() {
 		// TODO generate tree structure from an input XSD file
 		Tree tree = new Tree();
 		tree.setName("Students");
 
 		Tree innerTree = new Tree(tree);
 		innerTree.setName("student");
-		Attribute attr = new Attribute(innerTree);
-		attr.setName("name");
-		innerTree.getAttributes().add(attr);
+		Element attrEL = new Element(innerTree);
+		attrEL.setName("name");
+		innerTree.getElements().add(attrEL);
 
 		Attribute attr2 = new Attribute(innerTree);
 		attr2.setName("ID");

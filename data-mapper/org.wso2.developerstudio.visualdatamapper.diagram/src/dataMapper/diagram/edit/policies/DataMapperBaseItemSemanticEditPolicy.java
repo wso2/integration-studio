@@ -120,8 +120,9 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	private Command getEditHelperCommand(IEditCommandRequest request,
 			Command editPolicyCommand) {
 		if (editPolicyCommand != null) {
-			ICommand command = editPolicyCommand instanceof ICommandProxy ? ((ICommandProxy) editPolicyCommand)
-					.getICommand() : new CommandProxy(editPolicyCommand);
+			ICommand command = editPolicyCommand instanceof ICommandProxy
+					? ((ICommandProxy) editPolicyCommand).getICommand()
+					: new CommandProxy(editPolicyCommand);
 			request.setParameter(GeneratedEditHelperBase.EDIT_POLICY_COMMAND,
 					command);
 		}
@@ -147,7 +148,8 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	private IElementType getContextElementType(IEditCommandRequest request) {
 		IElementType requestContextElementType = dataMapper.diagram.providers.DataMapperElementTypes
 				.getElementType(getVisualID(request));
-		return requestContextElementType != null ? requestContextElementType
+		return requestContextElementType != null
+				? requestContextElementType
 				: myElementType;
 	}
 
@@ -319,16 +321,16 @@ public class DataMapperBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public boolean canCreateDataMapperLink_4002(
+		public boolean canCreateDataMapperLink_4001(
 				dataMapper.OutNode container, dataMapper.OutNode source,
 				dataMapper.InNode target) {
-			return canExistDataMapperLink_4002(container, null, source, target);
+			return canExistDataMapperLink_4001(container, null, source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public boolean canExistDataMapperLink_4002(
+		public boolean canExistDataMapperLink_4001(
 				dataMapper.OutNode container,
 				dataMapper.DataMapperLink linkInstance,
 				dataMapper.OutNode source, dataMapper.InNode target) {

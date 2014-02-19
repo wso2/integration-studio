@@ -55,7 +55,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3004;
+	public static final int VISUAL_ID = 3002;
 
 	/**
 	 * @generated
@@ -90,7 +90,8 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			childrenIFigure = new ArrayList<IFigure>();
 			int count = getPrimaryShape().getChildren().size();
 			for (int i = 0; i < count; ++i) {
-				IFigure figure = (IFigure) getPrimaryShape().getChildren().get(0);
+				IFigure figure = (IFigure) getPrimaryShape().getChildren().get(
+						0);
 				figures.add(figure);
 				childrenIFigure.add(figure);
 				getPrimaryShape().getChildren().remove(figure);
@@ -98,7 +99,8 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			for (int i = count - 1; i >= 0; i--) {
 				getPrimaryShape().getChildren().add(figures.get(i));
 			}
-			((Figure) (getPrimaryShape().getChildren().get(0))).setPreferredSize(1000, 40);
+			((Figure) (getPrimaryShape().getChildren().get(0)))
+					.setPreferredSize(1000, 40);
 			childrenIFigure.remove(childrenIFigure.size() - 1);
 			isActivated = true;
 
@@ -126,22 +128,27 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-		                  new CreationEditPolicyWithCustomReparent(
-		                                                           dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(
+				EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(
+						dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-		                  new dataMapper.diagram.edit.policies.TreeNodeItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-		                  new dataMapper.diagram.edit.policies.TreeNodeCanonicalEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.SEMANTIC_ROLE,
+				new dataMapper.diagram.edit.policies.TreeNodeItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.CANONICAL_ROLE,
+				new dataMapper.diagram.edit.policies.TreeNodeCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that
 		// would let childrenIFigure add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); 
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); 
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+				new CustomNonResizableEditPolicyEx());
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/**
@@ -401,7 +408,8 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 				clickNode.setContents(image);
 				isExpanded = false;
 				for (int i = 0; i < childrenIFigure.size(); i++) {
-					getPrimaryShape().getChildren().remove(childrenIFigure.get(i));
+					getPrimaryShape().getChildren().remove(
+							childrenIFigure.get(i));
 				}
 			}
 		}

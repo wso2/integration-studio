@@ -10,8 +10,9 @@ import org.eclipse.swt.graphics.Image;
 /**
  * @generated
  */
-public class DataMapperIconProvider extends AbstractProvider implements
-		IIconProvider {
+public class DataMapperIconProvider extends AbstractProvider
+		implements
+			IIconProvider {
 
 	/**
 	 * @generated

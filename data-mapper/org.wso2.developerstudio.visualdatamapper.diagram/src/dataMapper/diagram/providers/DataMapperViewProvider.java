@@ -32,6 +32,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.Shape;
+import org.eclipse.gmf.runtime.notation.TitleStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -42,8 +43,9 @@ import org.eclipse.swt.graphics.FontData;
 /**
  * @generated
  */
-public class DataMapperViewProvider extends AbstractProvider implements
-		IViewProvider {
+public class DataMapperViewProvider extends AbstractProvider
+		implements
+			IViewProvider {
 
 	/**
 	 * @generated
@@ -134,31 +136,31 @@ public class DataMapperViewProvider extends AbstractProvider implements
 					return false; // foreign diagram
 				}
 				switch (visualID) {
-				case dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
-				case dataMapper.diagram.edit.parts.InNode4EditPart.VISUAL_ID:
-					if (domainElement == null
-							|| visualID != dataMapper.diagram.part.DataMapperVisualIDRegistry
-									.getNodeVisualID(op.getContainerView(),
-											domainElement)) {
-						return false; // visual id in semantic hint should match visual id for domain element
-					}
-					break;
-				default:
-					return false;
+					case dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID :
+					case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID :
+						if (domainElement == null
+								|| visualID != dataMapper.diagram.part.DataMapperVisualIDRegistry
+										.getNodeVisualID(op.getContainerView(),
+												domainElement)) {
+							return false; // visual id in semantic hint should match visual id for domain element
+						}
+						break;
+					default :
+						return false;
 				}
 			}
 		}
@@ -174,10 +176,10 @@ public class DataMapperViewProvider extends AbstractProvider implements
 				|| dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID == visualID
 				|| dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID == visualID
 				|| dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID == visualID
+				|| dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID == visualID
 				|| dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID == visualID
 				|| dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID == visualID
-				|| dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID == visualID
-				|| dataMapper.diagram.edit.parts.InNode4EditPart.VISUAL_ID == visualID;
+				|| dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -237,54 +239,54 @@ public class DataMapperViewProvider extends AbstractProvider implements
 					.getVisualID(semanticHint);
 		}
 		switch (visualID) {
-		case dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID:
-			return createDataMapperDiagram_2001(domainElement, containerView,
-					index, persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID:
-			return createInput_3001(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
-			return createTreeNode_3004(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
-			return createTreeNode_3005(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID:
-			return createAttribute_3006(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID:
-			return createInNode_3009(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID:
-			return createOutNode_3010(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID:
-			return createElement_3007(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID:
-			return createInNode_3011(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID:
-			return createOutNode_3012(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
-			return createOutput_3002(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
-			return createTreeNode_3008(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-			return createConcat_3013(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
-			return createInNode_3014(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
-			return createOutNode_3015(domainElement, containerView, index,
-					persisted, preferencesHint);
-		case dataMapper.diagram.edit.parts.InNode4EditPart.VISUAL_ID:
-			return createInNode_3016(domainElement, containerView, index,
-					persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID :
+				return createDataMapperDiagram_2001(domainElement,
+						containerView, index, persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID :
+				return createInput_3001(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID :
+				return createTreeNode_3002(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID :
+				return createTreeNode_3003(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID :
+				return createAttribute_3004(domainElement, containerView,
+						index, persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID :
+				return createInNode_3005(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID :
+				return createOutNode_3006(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID :
+				return createElement_3007(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID :
+				return createInNode_3008(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID :
+				return createOutNode_3009(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID :
+				return createOutput_3010(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID :
+				return createTreeNode_3011(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID :
+				return createOperations_3012(domainElement, containerView,
+						index, persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID :
+				return createConcat_3013(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID :
+				return createInNode_3014(domainElement, containerView, index,
+						persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID :
+				return createOutNode_3015(domainElement, containerView, index,
+						persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
 		return null;
@@ -300,10 +302,10 @@ public class DataMapperViewProvider extends AbstractProvider implements
 		String elementTypeHint = ((IHintedType) elementType).getSemanticHint();
 		switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
 				.getVisualID(elementTypeHint)) {
-		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
-			return createDataMapperLink_4002(
-					getSemanticElement(semanticAdapter), containerView, index,
-					persisted, preferencesHint);
+			case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID :
+				return createDataMapperLink_4001(
+						getSemanticElement(semanticAdapter), containerView,
+						index, persisted, preferencesHint);
 		}
 		// can never happen, provided #provides(CreateEdgeViewOperation) is correct
 		return null;
@@ -398,7 +400,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createTreeNode_3004(EObject domainElement, View containerView,
+	public Node createTreeNode_3002(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -440,7 +442,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createTreeNode_3005(EObject domainElement, View containerView,
+	public Node createTreeNode_3003(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -482,7 +484,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createAttribute_3006(EObject domainElement, View containerView,
+	public Node createAttribute_3004(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -524,7 +526,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createInNode_3009(EObject domainElement, View containerView,
+	public Node createInNode_3005(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -566,7 +568,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createOutNode_3010(EObject domainElement, View containerView,
+	public Node createOutNode_3006(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -650,7 +652,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createInNode_3011(EObject domainElement, View containerView,
+	public Node createInNode_3008(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -692,7 +694,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createOutNode_3012(EObject domainElement, View containerView,
+	public Node createOutNode_3009(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -734,7 +736,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createOutput_3002(EObject domainElement, View containerView,
+	public Node createOutput_3010(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
@@ -776,12 +778,55 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createTreeNode_3008(EObject domainElement, View containerView,
+	public Node createTreeNode_3011(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(dataMapper.diagram.part.DataMapperVisualIDRegistry
 				.getType(dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createOperations_3012(EObject domainElement,
+			View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(dataMapper.diagram.part.DataMapperVisualIDRegistry
+				.getType(dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -944,49 +989,7 @@ public class DataMapperViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createInNode_3016(EObject domainElement, View containerView,
-			int index, boolean persisted, PreferencesHint preferencesHint) {
-		Shape node = NotationFactory.eINSTANCE.createShape();
-		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(dataMapper.diagram.part.DataMapperVisualIDRegistry
-				.getType(dataMapper.diagram.edit.parts.InNode4EditPart.VISUAL_ID));
-		ViewUtil.insertChildView(containerView, node, index, persisted);
-		node.setElement(domainElement);
-		// initializeFromPreferences 
-		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
-				.getPreferenceStore();
-
-		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
-				FigureUtilities.RGBToInteger(lineRGB));
-		FontStyle nodeFontStyle = (FontStyle) node
-				.getStyle(NotationPackage.Literals.FONT_STYLE);
-		if (nodeFontStyle != null) {
-			FontData fontData = PreferenceConverter.getFontData(prefStore,
-					IPreferenceConstants.PREF_DEFAULT_FONT);
-			nodeFontStyle.setFontName(fontData.getName());
-			nodeFontStyle.setFontHeight(fontData.getHeight());
-			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
-			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
-			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
-					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
-			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
-					.intValue());
-		}
-		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
-				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node,
-				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
-				FigureUtilities.RGBToInteger(fillRGB));
-		return node;
-	}
-
-	/**
-	 * @generated
-	 */
-	public Edge createDataMapperLink_4002(EObject domainElement,
+	public Edge createDataMapperLink_4001(EObject domainElement,
 			View containerView, int index, boolean persisted,
 			PreferencesHint preferencesHint) {
 		Connector edge = NotationFactory.eINSTANCE.createConnector();

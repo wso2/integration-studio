@@ -5,16 +5,20 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.avro.Schema;
+import org.apache.avro.Schema.Field;
+import org.apache.avro.file.DataFileReader;
+import org.apache.avro.generic.*;
+
+
+
 
 
 import dataMapper.diagram.part.DataMapperCreationWizardPage;
 import dataMapper.diagram.tree.model.Element;
 import dataMapper.diagram.tree.model.Tree;
 
-import org.apache.avro.Schema;
-import org.apache.avro.Schema.Field;
-import org.apache.avro.file.DataFileReader;
-import org.apache.avro.generic.*;
+
 
 
 
@@ -38,25 +42,25 @@ public class TreeFromAvro {
 		try {
 
 			///home/lali/old/svn/trunck/eclipse/data-mapper/org.wso2.developerstudio.visualdatamapper.diagram/resource/inputs.avro
-			String path = DataMapperCreationWizardPage.avroFilePath; // path for avro file selected in Create Datamapper Diagram swizard
+			String path = DataMapperCreationWizardPage.avroFilePathIn; // path for avro file selected in Create Datamapper Diagram swizard
 			dataFileReader = new DataFileReader<GenericData>(new File(path), genericReader); 
 
 			Schema schm = dataFileReader.getSchema();
 			multipleData =false;
 			root.setName(schm.getName());
 
-			List<Field> list = dataFileReader.getSchema().getFields();
-			Iterator<Field> it = list.iterator();
+			List<Field> fieldsList = dataFileReader.getSchema().getFields();
+//			Iterator<Field> it = list.iterator();
 
-			while (it.hasNext()) {
-				Field field = it.next();
+			for (Field field : fieldsList)
 				fetchToTree(field, root);
-			}
+
+//			while (it.hasNext()) {
+//				Field field = it.next();
+//			}
 
 		} catch (IOException e) {
-
 			e.printStackTrace();
-
 		}
 		
 		return root;
@@ -140,7 +144,8 @@ public class TreeFromAvro {
 	 */
 	public Tree generateOutputTree(){
 		
-		return generateInputTree();
+//		return generateInputTree();
+		return TestTreeModel.generateOutputTree();
 	}
 	
 

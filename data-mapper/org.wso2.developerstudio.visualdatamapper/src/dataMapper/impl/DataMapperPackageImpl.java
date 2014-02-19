@@ -13,6 +13,7 @@ import dataMapper.DataMapperRoot;
 import dataMapper.Element;
 import dataMapper.InNode;
 import dataMapper.Input;
+import dataMapper.Operations;
 import dataMapper.Operators;
 import dataMapper.OutNode;
 import dataMapper.Output;
@@ -125,6 +126,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	private EClass concatEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operationsEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -226,7 +234,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataMapperDiagram_Concat() {
+	public EReference getDataMapperDiagram_Operations() {
 		return (EReference)dataMapperDiagramEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -514,6 +522,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getInNode_ConcatParent() {
+		return (EReference)inNodeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOutNode() {
 		return outNodeEClass;
 	}
@@ -525,6 +542,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EReference getOutNode_OutgoingLink() {
 		return (EReference)outNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOutNode_ElementParent() {
+		return (EReference)outNodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -586,6 +612,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOperations() {
+		return operationsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperations_Concat() {
+		return (EReference)operationsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataMapperFactory getDataMapperFactory() {
 		return (DataMapperFactory)getEFactoryInstance();
 	}
@@ -614,7 +658,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		dataMapperDiagramEClass = createEClass(DATA_MAPPER_DIAGRAM);
 		createEReference(dataMapperDiagramEClass, DATA_MAPPER_DIAGRAM__INPUT);
 		createEReference(dataMapperDiagramEClass, DATA_MAPPER_DIAGRAM__OUTPUT);
-		createEReference(dataMapperDiagramEClass, DATA_MAPPER_DIAGRAM__CONCAT);
+		createEReference(dataMapperDiagramEClass, DATA_MAPPER_DIAGRAM__OPERATIONS);
 
 		dataMapperRootEClass = createEClass(DATA_MAPPER_ROOT);
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__DATA_MAPPER_DIAGRAM);
@@ -654,9 +698,11 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(inNodeEClass, IN_NODE__INCOMING_LINK);
 		createEReference(inNodeEClass, IN_NODE__ELEMENT_PARENT);
 		createEReference(inNodeEClass, IN_NODE__ATTRIBUTE_PARENT);
+		createEReference(inNodeEClass, IN_NODE__CONCAT_PARENT);
 
 		outNodeEClass = createEClass(OUT_NODE);
 		createEReference(outNodeEClass, OUT_NODE__OUTGOING_LINK);
+		createEReference(outNodeEClass, OUT_NODE__ELEMENT_PARENT);
 
 		dataMapperLinkEClass = createEClass(DATA_MAPPER_LINK);
 		createEReference(dataMapperLinkEClass, DATA_MAPPER_LINK__IN_NODE);
@@ -665,6 +711,9 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		concatEClass = createEClass(CONCAT);
 		createEReference(concatEClass, CONCAT__IN_NODE);
 		createEReference(concatEClass, CONCAT__OUT_NODE);
+
+		operationsEClass = createEClass(OPERATIONS);
+		createEReference(operationsEClass, OPERATIONS__CONCAT);
 	}
 
 	/**
@@ -699,6 +748,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		inputEClass.getESuperTypes().add(this.getDataMapperNode());
 		outputEClass.getESuperTypes().add(this.getDataMapperNode());
 		operatorsEClass.getESuperTypes().add(this.getDataMapperNode());
+		operationsEClass.getESuperTypes().add(this.getDataMapperNode());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -706,7 +756,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(dataMapperDiagramEClass, DataMapperDiagram.class, "DataMapperDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataMapperDiagram_Input(), this.getInput(), null, "input", null, 0, 1, DataMapperDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataMapperDiagram_Output(), this.getOutput(), null, "output", null, 0, 1, DataMapperDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataMapperDiagram_Concat(), this.getConcat(), null, "concat", null, 0, -1, DataMapperDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperDiagram_Operations(), this.getOperations(), null, "operations", null, 0, 1, DataMapperDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataMapperRootEClass, DataMapperRoot.class, "DataMapperRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataMapperRoot_DataMapperDiagram(), this.getDataMapperDiagram(), null, "dataMapperDiagram", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -722,7 +772,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_Value(), ecorePackage.getEString(), "value", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getElement_OutNode(), this.getOutNode(), null, "outNode", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getElement_OutNode(), this.getOutNode(), this.getOutNode_ElementParent(), "outNode", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElement_InNode(), this.getInNode(), this.getInNode_ElementParent(), "inNode", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElement_FieldParent(), this.getTreeNode(), this.getTreeNode_Element(), "fieldParent", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -746,17 +796,22 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getInNode_IncomingLink(), this.getDataMapperLink(), this.getDataMapperLink_InNode(), "incomingLink", null, 0, -1, InNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInNode_ElementParent(), this.getElement(), this.getElement_InNode(), "elementParent", null, 0, 1, InNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInNode_AttributeParent(), this.getAttribute(), this.getAttribute_InNode(), "attributeParent", null, 0, 1, InNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInNode_ConcatParent(), this.getConcat(), this.getConcat_InNode(), "concatParent", null, 0, 1, InNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(outNodeEClass, OutNode.class, "OutNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutNode_OutgoingLink(), this.getDataMapperLink(), this.getDataMapperLink_OutNode(), "outgoingLink", null, 0, -1, OutNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOutNode_ElementParent(), this.getElement(), this.getElement_OutNode(), "elementParent", null, 0, 1, OutNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataMapperLinkEClass, DataMapperLink.class, "DataMapperLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataMapperLink_InNode(), this.getInNode(), this.getInNode_IncomingLink(), "inNode", null, 0, 1, DataMapperLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataMapperLink_OutNode(), this.getOutNode(), this.getOutNode_OutgoingLink(), "outNode", null, 0, 1, DataMapperLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConcat_InNode(), this.getInNode(), null, "inNode", null, 0, -1, Concat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConcat_InNode(), this.getInNode(), this.getInNode_ConcatParent(), "inNode", null, 0, -1, Concat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConcat_OutNode(), this.getOutNode(), null, "outNode", null, 0, -1, Concat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationsEClass, Operations.class, "Operations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperations_Concat(), this.getConcat(), null, "concat", null, 0, -1, Operations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -2,15 +2,25 @@
  */
 package dataMapper.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import dataMapper.*;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,6 +79,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OUT_NODE: return createOutNode();
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
 			case DataMapperPackage.CONCAT: return createConcat();
+			case DataMapperPackage.OPERATIONS: return createOperations();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +103,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public DataMapperDiagram createDataMapperDiagram() {
 		DataMapperDiagramImpl dataMapperDiagram = new DataMapperDiagramImpl();
 		dataMapperDiagram.setInput(createInput());
+		dataMapperDiagram.setOperations(createOperations());
 		dataMapperDiagram.setOutput(createOutput());
 		return dataMapperDiagram;
 	}
@@ -206,11 +218,24 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
+		concat.getInNode().add(createInNode());
+		concat.getInNode().add(createInNode());
+		concat.getOutNode().add(createOutNode());
 		return concat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operations createOperations() {
+		OperationsImpl operations = new OperationsImpl();
+		return operations;
 	}
 
 	/**

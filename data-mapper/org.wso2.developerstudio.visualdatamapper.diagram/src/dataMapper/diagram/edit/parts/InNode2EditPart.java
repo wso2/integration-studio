@@ -42,7 +42,7 @@ public class InNode2EditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3011;
+	public static final int VISUAL_ID = 3008;
 
 	/**
 	 * @generated
@@ -80,12 +80,12 @@ public class InNode2EditPart extends AbstractBorderItemEditPart {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that
 		// would let children add reasonable editpolicies
-
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx());
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
+		//
+		//		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		//
+		//		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+		//				new CustomNonResizableEditPolicyEx());
+		//		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class InNode2EditPart extends AbstractBorderItemEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(1, 2);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(20, 20);
 
 		// FIXME: workaround for #154536
 		result.getBounds().setSize(result.getPreferredSize());
@@ -230,7 +230,7 @@ public class InNode2EditPart extends AbstractBorderItemEditPart {
 	 */
 	public List<IElementType> getMARelTypesOnTarget() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
+		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 		return types;
 	}
 
@@ -239,9 +239,9 @@ public class InNode2EditPart extends AbstractBorderItemEditPart {
 	 */
 	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3010);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3012);
+		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3009);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3015);
 		}
 		return types;

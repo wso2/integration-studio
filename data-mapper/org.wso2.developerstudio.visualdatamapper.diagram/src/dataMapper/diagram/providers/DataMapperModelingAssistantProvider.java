@@ -24,8 +24,9 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 /**
  * @generated
  */
-public class DataMapperModelingAssistantProvider extends
-		ModelingAssistantProvider {
+public class DataMapperModelingAssistantProvider
+		extends
+			ModelingAssistantProvider {
 
 	/**
 	 * @generated
@@ -41,58 +42,62 @@ public class DataMapperModelingAssistantProvider extends
 		if (editPart instanceof dataMapper.diagram.edit.parts.DataMapperDiagramEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Input_3001);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Output_3002);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Concat_3013);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Output_3010);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Operations_3012);
 			return types;
 		}
 		if (editPart instanceof dataMapper.diagram.edit.parts.InputEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3004);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3002);
 			return types;
 		}
 		if (editPart instanceof dataMapper.diagram.edit.parts.TreeNodeEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3005);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3006);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3003);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3004);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Element_3007);
 			return types;
 		}
 		if (editPart instanceof dataMapper.diagram.edit.parts.TreeNode2EditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3005);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3006);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3003);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3004);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Element_3007);
 			return types;
 		}
 		if (editPart instanceof dataMapper.diagram.edit.parts.AttributeEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3009);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3010);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3005);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006);
 			return types;
 		}
 		if (editPart instanceof dataMapper.diagram.edit.parts.ElementEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3011);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3012);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3008);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3009);
 			return types;
 		}
 		if (editPart instanceof dataMapper.diagram.edit.parts.OutputEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3008);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3011);
 			return types;
 		}
 		if (editPart instanceof dataMapper.diagram.edit.parts.TreeNode3EditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3005);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3006);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3003);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3004);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Element_3007);
 			return types;
 		}
+		if (editPart instanceof dataMapper.diagram.edit.parts.OperationsEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Concat_3013);
+			return types;
+		}
 		if (editPart instanceof dataMapper.diagram.edit.parts.ConcatEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
+			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3014);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3015);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3016);
 			return types;
 		}
 		return Collections.EMPTY_LIST;
@@ -135,10 +140,6 @@ public class DataMapperModelingAssistantProvider extends
 		}
 		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode3EditPart) {
 			return ((dataMapper.diagram.edit.parts.InNode3EditPart) targetEditPart)
-					.getMARelTypesOnTarget();
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode4EditPart) {
-			return ((dataMapper.diagram.edit.parts.InNode4EditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		return Collections.EMPTY_LIST;
@@ -185,10 +186,6 @@ public class DataMapperModelingAssistantProvider extends
 		}
 		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode3EditPart) {
 			return ((dataMapper.diagram.edit.parts.InNode3EditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode4EditPart) {
-			return ((dataMapper.diagram.edit.parts.InNode4EditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
 		return Collections.EMPTY_LIST;

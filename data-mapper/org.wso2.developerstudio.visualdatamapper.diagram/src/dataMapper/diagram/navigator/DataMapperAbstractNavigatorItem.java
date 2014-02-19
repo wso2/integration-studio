@@ -14,7 +14,7 @@ public abstract class DataMapperAbstractNavigatorItem extends PlatformObject {
 	 * @generated
 	 */
 	static {
-		final Class[] supportedTypes = new Class[] { ITabbedPropertySheetPageContributor.class };
+		final Class[] supportedTypes = new Class[]{ITabbedPropertySheetPageContributor.class};
 		final ITabbedPropertySheetPageContributor propertySheetPageContributor = new ITabbedPropertySheetPageContributor() {
 			public String getContributorId() {
 				return "org.wso2.developerstudio.visualdatamapper.diagram"; //$NON-NLS-1$

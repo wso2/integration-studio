@@ -190,9 +190,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 		if (newOutNode != outNode) {
 			NotificationChain msgs = null;
 			if (outNode != null)
-				msgs = ((InternalEObject)outNode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.ELEMENT__OUT_NODE, null, msgs);
+				msgs = ((InternalEObject)outNode).eInverseRemove(this, DataMapperPackage.OUT_NODE__ELEMENT_PARENT, OutNode.class, msgs);
 			if (newOutNode != null)
-				msgs = ((InternalEObject)newOutNode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.ELEMENT__OUT_NODE, null, msgs);
+				msgs = ((InternalEObject)newOutNode).eInverseAdd(this, DataMapperPackage.OUT_NODE__ELEMENT_PARENT, OutNode.class, msgs);
 			msgs = basicSetOutNode(newOutNode, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -292,6 +292,10 @@ public class ElementImpl extends EObjectImpl implements Element {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case DataMapperPackage.ELEMENT__OUT_NODE:
+				if (outNode != null)
+					msgs = ((InternalEObject)outNode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.ELEMENT__OUT_NODE, null, msgs);
+				return basicSetOutNode((OutNode)otherEnd, msgs);
 			case DataMapperPackage.ELEMENT__IN_NODE:
 				if (inNode != null)
 					msgs = ((InternalEObject)inNode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.ELEMENT__IN_NODE, null, msgs);

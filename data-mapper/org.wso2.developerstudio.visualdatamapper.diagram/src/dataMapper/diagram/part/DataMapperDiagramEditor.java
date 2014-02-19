@@ -44,8 +44,9 @@ import org.eclipse.ui.part.ShowInContext;
 /**
  * @generated
  */
-public class DataMapperDiagramEditor extends DiagramDocumentEditor implements
-		IGotoMarker {
+public class DataMapperDiagramEditor extends DiagramDocumentEditor
+		implements
+			IGotoMarker {
 
 	private DataMapperMultiPageEditor dataMapperEditor;
 
@@ -113,7 +114,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements
 		if (type == IShowInTargetList.class) {
 			return new IShowInTargetList() {
 				public String[] getShowInTargetIds() {
-					return new String[] { ProjectExplorer.VIEW_ID };
+					return new String[]{ProjectExplorer.VIEW_ID};
 				}
 			};
 		}
@@ -185,8 +186,9 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements
 		Shell shell = getSite().getShell();
 		IEditorInput input = getEditorInput();
 		SaveAsDialog dialog = new SaveAsDialog(shell);
-		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input)
-				.getFile() : null;
+		IFile original = input instanceof IFileEditorInput
+				? ((IFileEditorInput) input).getFile()
+				: null;
 		if (original != null) {
 			dialog.setOriginalFile(original);
 		}

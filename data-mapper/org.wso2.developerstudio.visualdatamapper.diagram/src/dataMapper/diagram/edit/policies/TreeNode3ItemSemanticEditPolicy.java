@@ -16,26 +16,27 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class TreeNode3ItemSemanticEditPolicy extends
-		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class TreeNode3ItemSemanticEditPolicy
+		extends
+			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public TreeNode3ItemSemanticEditPolicy() {
-		super(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3008);
+		super(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3011);
 	}
 
 	/**
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3005 == req
+		if (dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3003 == req
 				.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.TreeNode2CreateCommand(
 					req));
 		}
-		if (dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3006 == req
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3004 == req
 				.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.AttributeCreateCommand(
 					req));
@@ -78,24 +79,27 @@ public class TreeNode3ItemSemanticEditPolicy extends
 			Node node = (Node) nit.next();
 			switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
 					.getVisualID(node)) {
-			case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
-			case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
-			case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
+				case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID :
+					cmd.add(new DestroyElementCommand(
+							new DestroyElementRequest(getEditingDomain(), node
+									.getElement(), false))); // directlyOwned: true
+					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+					break;
+				case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID :
+					cmd.add(new DestroyElementCommand(
+							new DestroyElementRequest(getEditingDomain(), node
+									.getElement(), false))); // directlyOwned: true
+					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+					break;
+				case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID :
+					cmd.add(new DestroyElementCommand(
+							new DestroyElementRequest(getEditingDomain(), node
+									.getElement(), false))); // directlyOwned: true
+					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+					break;
 			}
 		}
 	}

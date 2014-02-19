@@ -2,6 +2,10 @@ package dataMapper.diagram.part;
 
 import java.awt.Component;
 import java.awt.List;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import org.eclipse.core.internal.resources.ModelObject;
 import org.eclipse.core.resources.IFile;
@@ -12,8 +16,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.IDocument;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.wst.sse.core.StructuredModelManager;
 import org.eclipse.wst.sse.core.internal.provisional.IModelStateListener;
@@ -126,7 +134,7 @@ public class DataMapperObjectSourceEditor {
 //		getDocument().setDocumentPartitioner(new StructuredTextPartitioner());
 		getDocument().set(configuration);
 		
-		
+		export(configuration);
 //		 EList<TreeNode> tree= configuration.getTreeNode();
 		
 //		printHierarchy(configuration);
@@ -137,6 +145,28 @@ public class DataMapperObjectSourceEditor {
 	}
 	
 	
+	private void export(String input) {
+		MessageBox exportMsg = new MessageBox(PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getShell(), SWT.ICON_INFORMATION);
+		exportMsg.setText("WSO2 Platform Distribution DataMapper");
+		DirectoryDialog dirDlg = new DirectoryDialog(PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getShell());
+		String dirName = dirDlg.open();
+		
+		File config = new File(dirName, "config.js");
+		
+		try {
+			BufferedWriter output = new BufferedWriter(new FileWriter(config));
+			output.write(input);
+			output.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+}
+
 	@SuppressWarnings("unchecked")
 	private void printHierarchy(EList<TreeNode> treeNode){
 		getDocument().set("map org.wso2.employee -> org.example.wso2.datamapper.engineer \n fullname = concat(firstname,lastname)");

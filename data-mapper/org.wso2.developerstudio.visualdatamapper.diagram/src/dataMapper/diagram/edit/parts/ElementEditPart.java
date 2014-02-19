@@ -36,6 +36,7 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
@@ -263,7 +264,6 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			}
 		}
 
-
 		else if (childEditPart instanceof OutNode2EditPart
 				|| childEditPart instanceof OutNodeEditPart) {
 
@@ -334,6 +334,18 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	protected NodeFigure createNodePlate() {
 		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public EditPolicy getPrimaryDragEditPolicy() {
+		EditPolicy result = super.getPrimaryDragEditPolicy();
+		if (result instanceof ResizableEditPolicy) {
+			ResizableEditPolicy ep = (ResizableEditPolicy) result;
+			ep.setResizeDirections(PositionConstants.NONE);
+		}
 		return result;
 	}
 
@@ -421,8 +433,6 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-
-
 
 	/**
 	 * @generated NOT
@@ -520,7 +530,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
 			mainImg.setSize(new Dimension(20, 8));
-	
+
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
 			mainImageRectangle

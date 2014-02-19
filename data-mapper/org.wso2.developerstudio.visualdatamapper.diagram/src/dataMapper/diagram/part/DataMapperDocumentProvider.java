@@ -58,7 +58,8 @@ import org.eclipse.ui.part.FileEditorInput;
  * @generated
  */
 public class DataMapperDocumentProvider extends AbstractDocumentProvider
-		implements IDiagramDocumentProvider {
+		implements
+			IDiagramDocumentProvider {
 
 	/**
 	 * @generated
@@ -74,9 +75,9 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider
 							0,
 							NLS.bind(
 									dataMapper.diagram.part.Messages.DataMapperDocumentProvider_IncorrectInputError,
-									new Object[] {
+									new Object[]{
 											element,
-											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput"}), //$NON-NLS-1$ //$NON-NLS-2$ 
 							null));
 		}
 		IEditorInput editorInput = (IEditorInput) element;
@@ -101,9 +102,9 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider
 							0,
 							NLS.bind(
 									dataMapper.diagram.part.Messages.DataMapperDocumentProvider_IncorrectInputError,
-									new Object[] {
+									new Object[]{
 											element,
-											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput"}), //$NON-NLS-1$ //$NON-NLS-2$ 
 							null));
 		}
 		IDocument document = createEmptyDocument();
@@ -260,7 +261,8 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider
 									IStatus.ERROR,
 									dataMapper.diagram.part.DataMapperDiagramEditorPlugin.ID,
 									0,
-									msg != null ? msg
+									msg != null
+											? msg
 											: dataMapper.diagram.part.Messages.DataMapperDocumentProvider_DiagramLoadingError,
 									e));
 				}
@@ -274,9 +276,9 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider
 							0,
 							NLS.bind(
 									dataMapper.diagram.part.Messages.DataMapperDocumentProvider_IncorrectInputError,
-									new Object[] {
+									new Object[]{
 											element,
-											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+											"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput"}), //$NON-NLS-1$ //$NON-NLS-2$ 
 							null));
 		}
 	}
@@ -653,9 +655,9 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider
 								0,
 								NLS.bind(
 										dataMapper.diagram.part.Messages.DataMapperDocumentProvider_IncorrectInputError,
-										new Object[] {
+										new Object[]{
 												element,
-												"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput" }), //$NON-NLS-1$ //$NON-NLS-2$ 
+												"org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput"}), //$NON-NLS-1$ //$NON-NLS-2$ 
 								null));
 			}
 			if (false == document instanceof IDiagramDocument) {
@@ -753,7 +755,8 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider
 					.getFile(
 							new Path(URI.decode(uri.path()))
 									.removeFirstSegments(1));
-			fireElementMoved(input, newFile == null ? null
+			fireElementMoved(input, newFile == null
+					? null
 					: new FileEditorInput(newFile));
 			return;
 		}
@@ -989,8 +992,9 @@ public class DataMapperDocumentProvider extends AbstractDocumentProvider
 		/**
 		 * @generated
 		 */
-		private class SynchronizerDelegate implements
-				WorkspaceSynchronizer.Delegate {
+		private class SynchronizerDelegate
+				implements
+					WorkspaceSynchronizer.Delegate {
 
 			/**
 			 * @generated

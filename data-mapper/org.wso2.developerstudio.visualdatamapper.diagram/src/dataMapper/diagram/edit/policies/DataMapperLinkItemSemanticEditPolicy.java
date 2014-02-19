@@ -7,15 +7,16 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 /**
  * @generated
  */
-public class DataMapperLinkItemSemanticEditPolicy extends
-		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class DataMapperLinkItemSemanticEditPolicy
+		extends
+			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public DataMapperLinkItemSemanticEditPolicy() {
 		super(
-				dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
+				dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 	}
 
 	/**

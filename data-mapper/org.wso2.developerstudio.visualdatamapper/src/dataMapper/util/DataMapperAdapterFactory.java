@@ -120,6 +120,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createConcatAdapter();
 			}
 			@Override
+			public Adapter caseOperations(Operations object) {
+				return createOperationsAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -318,6 +322,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConcatAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.Operations <em>Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.Operations
+	 * @generated
+	 */
+	public Adapter createOperationsAdapter() {
 		return null;
 	}
 

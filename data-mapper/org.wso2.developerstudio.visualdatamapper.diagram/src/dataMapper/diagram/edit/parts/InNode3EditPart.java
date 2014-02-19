@@ -5,9 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -21,7 +24,15 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+
+/*
+ * concat input connector 
+ */
 
 /**
  * @generated
@@ -50,8 +61,14 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		super(view);
 	}
 
+	public NodeFigure figure_;
+
+	public NodeFigure getNodeFigureOutput() {
+		return figure_;
+	}
+
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
@@ -61,8 +78,14 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 				EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.InNode3ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		// XXX need an SCR to runtime to have another abstract superclass that
+		// would let children add reasonable editpolicies
+		//
+		//		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		//
+		//		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+		//				new CustomNonResizableEditPolicyEx());
+		//		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/**
@@ -91,11 +114,21 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		return lep;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#isSelectable()
+	 * 
+	 */
+	@Override
+	public boolean isSelectable() {
+		return false;
+	}
+
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		return primaryShape = new InNode3Figure();
 	}
 
 	/**
@@ -106,10 +139,10 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(20, 20);
 
 		//FIXME: workaround for #154536
 		result.getBounds().setSize(result.getPreferredSize());
@@ -122,7 +155,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodeFigure() {
 		NodeFigure figure = createNodePlate();
@@ -130,6 +163,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 		IFigure shape = createNodeShape();
 		figure.add(shape);
 		contentPane = setupContentPane(shape);
+		figure_ = figure;
 		return figure;
 	}
 
@@ -194,7 +228,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	 */
 	public List<IElementType> getMARelTypesOnTarget() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
+		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 		return types;
 	}
 
@@ -203,12 +237,67 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	 */
 	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3010);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3012);
+		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3009);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3015);
 		}
 		return types;
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	class InNode3Figure extends RectangleFigure {
+		/**
+		 * @generated NOT
+		 */
+		public InNode3Figure() {
+
+			ToolbarLayout layoutThis = new ToolbarLayout();
+			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
+			layoutThis.setSpacing(0);
+			layoutThis.setVertical(false);
+			this.setLayoutManager(layoutThis);
+			this.setOpaque(false);
+			this.setFill(false);
+			this.setOutline(false);
+			createContents();
+
+		}
+
+		/**
+		 * @generated NOT
+		 */
+		private void createContents() {
+
+			ImageDescriptor mainImgDesc = AbstractUIPlugin
+					.imageDescriptorFromPlugin(
+							"org.wso2.developerstudio.visualdatamapper.diagram",
+							"icons/gmf/black.jpg");
+
+			int nodeDimension = 10; // width for connection nodes
+
+			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
+			RectangleFigure mainImageRectangle = new RectangleFigure();
+
+			mainImageRectangle
+					.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension,
+					nodeDimension));
+			mainImageRectangle.add(mainImg);
+
+			mainImageRectangle.setFill(false);
+			mainImageRectangle.setOutline(false);
+			//
+			this.add(mainImageRectangle);
+			this.setOpaque(false);
+			this.setOutline(false);
+			this.setFill(false);
+
+		}
 	}
 
 }

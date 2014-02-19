@@ -11,8 +11,9 @@ import org.eclipse.swt.graphics.Image;
 /**
  * @generated
  */
-public class DataMapperSheetLabelProvider extends BaseLabelProvider implements
-		ILabelProvider {
+public class DataMapperSheetLabelProvider extends BaseLabelProvider
+		implements
+			ILabelProvider {
 
 	/**
 	 * @generated
@@ -32,7 +33,8 @@ public class DataMapperSheetLabelProvider extends BaseLabelProvider implements
 	 */
 	public Image getImage(Object element) {
 		IElementType etype = getElementType(getView(unwrap(element)));
-		return etype == null ? null
+		return etype == null
+				? null
 				: dataMapper.diagram.providers.DataMapperElementTypes
 						.getImage(etype);
 	}
@@ -73,7 +75,8 @@ public class DataMapperSheetLabelProvider extends BaseLabelProvider implements
 			if (etype != null) {
 				return etype;
 			}
-			view = view.eContainer() instanceof View ? (View) view.eContainer()
+			view = view.eContainer() instanceof View
+					? (View) view.eContainer()
 					: null;
 		}
 		return null;

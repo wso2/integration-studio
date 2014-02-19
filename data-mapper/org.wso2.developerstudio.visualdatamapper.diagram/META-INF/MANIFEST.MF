@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.wso2.developerstudio.visualdatamapper.diagram;singleton:=true
+Bundle-SymbolicName: org.wso2.developerstudio.visualdatamapper.diagram; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: dataMapper.diagram.part.DataMapperDiagramEditorPlugin
@@ -39,8 +39,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.runtime.draw2d.ui;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: 
- org.apache.avro,
+Import-Package: org.apache.avro,
  org.apache.avro.data,
  org.apache.avro.file,
  org.apache.avro.generic,
@@ -78,4 +77,3 @@ Import-Package:
  org.eclipse.wst.sse.core.internal.provisional.text,
  org.eclipse.wst.sse.core.internal.text.rules,
  org.eclipse.wst.sse.ui
-

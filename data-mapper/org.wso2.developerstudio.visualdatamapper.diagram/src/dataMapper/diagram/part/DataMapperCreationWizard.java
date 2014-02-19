@@ -19,7 +19,6 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
  */
 public class DataMapperCreationWizard extends Wizard implements INewWizard {
 
-
 	/**
 	 * @generated
 	 */
@@ -108,7 +107,6 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 		diagramModelFilePage = new dataMapper.diagram.part.DataMapperCreationWizardPage(
 				"DiagramModelFile", getSelection(), "datamapper_diagram"); //$NON-NLS-1$ //$NON-NLS-2$
 
-		
 		diagramModelFilePage
 				.setTitle(dataMapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageTitle);
 		diagramModelFilePage
@@ -130,7 +128,7 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 				super.setVisible(visible);
 			}
 		};
-		
+
 		domainModelFilePage
 				.setTitle(dataMapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageTitle);
 		domainModelFilePage

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -82,7 +83,7 @@ public class ConcatImpl extends EObjectImpl implements Concat {
 	 */
 	public EList<InNode> getInNode() {
 		if (inNode == null) {
-			inNode = new EObjectContainmentEList<InNode>(InNode.class, this, DataMapperPackage.CONCAT__IN_NODE);
+			inNode = new EObjectContainmentWithInverseEList<InNode>(InNode.class, this, DataMapperPackage.CONCAT__IN_NODE, DataMapperPackage.IN_NODE__CONCAT_PARENT);
 		}
 		return inNode;
 	}
@@ -97,6 +98,21 @@ public class ConcatImpl extends EObjectImpl implements Concat {
 			outNode = new EObjectContainmentEList<OutNode>(OutNode.class, this, DataMapperPackage.CONCAT__OUT_NODE);
 		}
 		return outNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case DataMapperPackage.CONCAT__IN_NODE:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInNode()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

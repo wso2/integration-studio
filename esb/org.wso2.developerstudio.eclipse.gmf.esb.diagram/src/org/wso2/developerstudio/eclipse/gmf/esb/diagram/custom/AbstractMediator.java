@@ -857,7 +857,6 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 				((AbstractMediatorFlowCompartmentEditPart)this.getParent()).removeInSequenceInputConnector((SendMediatorEditPart)this);
 			}
 		}
-		
 		RemoveCommand removeCmd = new RemoveCommand(this.getEditingDomain(), 
 													((Node)this.getModel()).getElement().eContainer(),
 													EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN, 
@@ -868,7 +867,7 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		}
 		
 		if (!reason.isEmpty()) {
-			showSendMediatorRestrictionMessage(reason);
+			showMediatorRestrictionMessage(reason);
 		}
 	}
 	
@@ -940,9 +939,9 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		return hasNext;
 	}
 	
- 	private void showSendMediatorRestrictionMessage(String reason) {
+ 	private void showMediatorRestrictionMessage(String reason) {
 		String errorMsgHeader = "Warning !";
-		IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, reason);
+		IStatus editorStatus = new Status(IStatus.WARNING, Activator.PLUGIN_ID, reason);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Warning ", errorMsgHeader, editorStatus);
  	}
 	

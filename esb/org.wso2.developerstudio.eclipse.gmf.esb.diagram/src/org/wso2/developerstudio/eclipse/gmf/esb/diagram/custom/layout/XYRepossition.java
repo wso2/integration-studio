@@ -103,14 +103,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleOnRej
 
 public class XYRepossition {
 
-	private static int arraowLength = 50;
-	private static int connectorLength = 5;
-	private static int complexMediatorCompartmentGap = 5;
+	private static final int ARRWO_LENGTH = 40;
+	private static final int CONNECTOR_LENGTH = 5;
+	private static final int COMPLEX_MEDIATOR_COMPARTMENT_GAP = 5;
 
-	private static int defaultProxyContainerWidth = 204;
-	private static int defaultProxyAndEPContainerHeight = 312;
-	private static int defaultFaultContainerHeight = 84;
-	private static int complexMediatorLeftRectWidth = 100;
+	private static final int DEFAULT_PROXY_CONTAINER_WIDTH = 204;
+	private static final int DEFAULT_PROXY_AND_EP_CONTAINER_HEIGHT = 312;
+	private static final int DEFAULT_FAULT_CONTAINER_HEIGHT = 84;
+	private static int COMPLEX_MEDIATOR_LEFT_RECTANGLE_WIDTH = 100;
 	
 	private static EditPart mediatorFlowMediatorFlowCompartmentEditPart = null;
 
@@ -213,7 +213,7 @@ public class XYRepossition {
 	 */
 	private static void resizeProxyServiceEditPart(IGraphicalEditPart parent) {
 		int constantY = 50;
-		int x = 2 * connectorLength + arraowLength;
+		int x = 2 * CONNECTOR_LENGTH + ARRWO_LENGTH;
 
 		int inSequenceHeight = 0;
 		int outSequenceHeight = 0;
@@ -287,13 +287,13 @@ public class XYRepossition {
 					if (childBounds.height > inSequenceHeight) {
 						inSequenceHeight = childBounds.height;
 					}
-					inSequenceWidth += arraowLength + childBounds.width + 2 * connectorLength;
+					inSequenceWidth += ARRWO_LENGTH + childBounds.width + 2 * CONNECTOR_LENGTH;
 				} else {
 					// Out sequence.
 					if (childBounds.height > outSequenceHeight) {
 						outSequenceHeight = childBounds.height;
 					}
-					outSequenceWidth += arraowLength + childBounds.width + 2 * connectorLength;
+					outSequenceWidth += ARRWO_LENGTH + childBounds.width + 2 * CONNECTOR_LENGTH;
 				}
 			}
 		}
@@ -306,7 +306,7 @@ public class XYRepossition {
 				if (childBounds.height > faultSequenceHeight) {
 					faultSequenceHeight = childBounds.height;
 				}
-				faultSequenceWidth += arraowLength + childBounds.width + 2 * connectorLength;
+				faultSequenceWidth += ARRWO_LENGTH + childBounds.width + 2 * CONNECTOR_LENGTH;
 			}
 
 			faultSequenceHeight = faultSequenceHeight + constantY;
@@ -351,19 +351,19 @@ public class XYRepossition {
 
 		if (inOutSeqChildren == 0 && faultSeqChildren == 0) {
 			// In & Out sequences and Fault Sequence are empty.
-			newWidth = defaultProxyContainerWidth;
-			inOutSeqHeight = defaultProxyAndEPContainerHeight;
-			faultSequenceHeight = defaultFaultContainerHeight;
+			newWidth = DEFAULT_PROXY_CONTAINER_WIDTH;
+			inOutSeqHeight = DEFAULT_PROXY_AND_EP_CONTAINER_HEIGHT;
+			faultSequenceHeight = DEFAULT_FAULT_CONTAINER_HEIGHT;
 			newHeight = inOutSeqHeight + faultSequenceHeight;
 
 		} else if (inOutSeqChildren == 0 && faultSeqChildren > 0 && !mainSequence) {
 			// In & Out sequences are empty Fault sequence is not empty.
-			inOutSeqHeight = defaultProxyAndEPContainerHeight;
+			inOutSeqHeight = DEFAULT_PROXY_AND_EP_CONTAINER_HEIGHT;
 			newHeight = inOutSeqHeight + faultSequenceHeight;
 
 		} else if (inOutSeqChildren > 0 && faultSeqChildren == 0 && !mainSequence) {
 			// In & Out sequences are not empty Fault sequence is empty.
-			faultSequenceHeight = defaultFaultContainerHeight;
+			faultSequenceHeight = DEFAULT_FAULT_CONTAINER_HEIGHT;
 			newHeight = inOutSeqHeight + faultSequenceHeight;
 		}
 
@@ -380,7 +380,7 @@ public class XYRepossition {
 		Rectangle proxyServiceContainerConstraints = new Rectangle(0, positionY, newWidth,
 				newHeight);
 		Rectangle proxyConstraints = new Rectangle(0, positionY,
-				proxyServiceContainerConstraints.width() + complexMediatorLeftRectWidth,
+				proxyServiceContainerConstraints.width() + COMPLEX_MEDIATOR_LEFT_RECTANGLE_WIDTH,
 				proxyServiceContainerConstraints.height() + 4);
 
 		// Resize MediatorFlowEditPart.
@@ -440,7 +440,7 @@ public class XYRepossition {
 	 */
 	private static void resizeComplexMediator(IGraphicalEditPart parent) {
 		int constantY = 60;
-		int x = 2 * connectorLength + arraowLength;
+		int x = 2 * CONNECTOR_LENGTH + ARRWO_LENGTH;
 		int y = 0;
 		int noOfChildren = parent.getChildren().size();
 		int maxCompartmentWidth = 0;
@@ -448,7 +448,7 @@ public class XYRepossition {
 		for (int i = 0; i < noOfChildren; ++i) {
 			Rectangle bound = ((GraphicalEditPart) parent.getChildren().get(i)).getFigure()
 					.getBounds();
-			x = arraowLength + bound.width + 2 * connectorLength + x;
+			x = ARRWO_LENGTH + bound.width + 2 * CONNECTOR_LENGTH + x;
 			if (bound.height > y) {
 				y = bound.height;
 			}
@@ -492,8 +492,8 @@ public class XYRepossition {
 		 */
 		((GraphicalEditPart) parent.getParent().getParent()).getFigure().setBounds(constraints);
 
-		int boundsWidth = x + complexMediatorLeftRectWidth;
-		int boundsHeight = y + 2 * complexMediatorCompartmentGap;
+		int boundsWidth = x + COMPLEX_MEDIATOR_LEFT_RECTANGLE_WIDTH;
+		int boundsHeight = y + 2 * COMPLEX_MEDIATOR_COMPARTMENT_GAP;
 		AbstractMediator mediator = EditorUtils.getMediator(parent);
 
 		if (mediator instanceof complexFiguredAbstractMediator) {
@@ -504,7 +504,7 @@ public class XYRepossition {
 
 				boundsHeight = getMultipleCompartmentComplexMediatorHeight((GraphicalEditPart) parent
 						.getParent().getParent().getParent())
-						+ (2 * complexMediatorCompartmentGap);
+						+ (2 * COMPLEX_MEDIATOR_COMPARTMENT_GAP);
 				((GraphicalEditPart) parent.getParent().getParent()).getFigure().setMinimumSize(
 						new Dimension(x, y));
 				resizeCompartments((GraphicalEditPart) parent.getParent().getParent().getParent(),
@@ -512,7 +512,7 @@ public class XYRepossition {
 			} else if (mediator instanceof SwitchMediatorEditPart) {
 				boundsHeight = getMultipleCompartmentComplexMediatorHeight((GraphicalEditPart) parent
 						.getParent().getParent().getParent().getParent())
-						+ (2 * complexMediatorCompartmentGap);
+						+ (2 * COMPLEX_MEDIATOR_COMPARTMENT_GAP);
 				((GraphicalEditPart) parent.getParent().getParent()).getFigure().setMinimumSize(
 						new Dimension(x, y));
 				resizeCompartments((GraphicalEditPart) parent.getParent().getParent().getParent()
@@ -541,14 +541,14 @@ public class XYRepossition {
 	 */
 	private static void resizeSequences(IGraphicalEditPart parent) {
 		int constantY = 60;
-		int x = 2 * connectorLength + arraowLength;
+		int x = 2 * CONNECTOR_LENGTH + ARRWO_LENGTH;
 		int y = 0;
 		int noOfChildren = parent.getChildren().size();
 
 		for (int i = 0; i < noOfChildren; ++i) {
 			Rectangle bound = ((GraphicalEditPart) parent.getChildren().get(i)).getFigure()
 					.getBounds();
-			x = arraowLength + bound.width + 2 * connectorLength + x;
+			x = ARRWO_LENGTH + bound.width + 2 * CONNECTOR_LENGTH + x;
 			if (bound.height > y) {
 				y = bound.height;
 			}
@@ -614,10 +614,8 @@ public class XYRepossition {
 
 		if (editPart instanceof AbstractMediatorFlowCompartmentEditPart) {
 			int verticalSpacing = 0;
-			int arraowLength = 50;
-			int connectorLength = 5;
-			int arrowAndtwoConnectorsLength = arraowLength + 2 * connectorLength;
-			int x = arrowAndtwoConnectorsLength - connectorLength;
+			int arrowAndtwoConnectorsLength = ARRWO_LENGTH + (2 * CONNECTOR_LENGTH);
+			int x = arrowAndtwoConnectorsLength - CONNECTOR_LENGTH;
 			int i = 0;
 
 			boolean reversed = false;
@@ -635,7 +633,7 @@ public class XYRepossition {
 				x = ((IGraphicalEditPart) editPart.getParent().getParent()).getFigure().getBounds().width
 						- arrowAndtwoConnectorsLength * 2;*/
 				node = getLeftMostNodeOfOutSequence(editPart);
-				x = arrowAndtwoConnectorsLength - connectorLength;
+				x = arrowAndtwoConnectorsLength - CONNECTOR_LENGTH;
 				reversed = true;
 			}
 
@@ -711,7 +709,7 @@ public class XYRepossition {
 										|| editPart instanceof MediatorFlowMediatorFlowCompartment24EditPart) {
 									x = ((IGraphicalEditPart) editPart.getParent().getParent()
 											.getParent().getParent()).getFigure().getBounds().width
-											- complexMediatorLeftRectWidth
+											- COMPLEX_MEDIATOR_LEFT_RECTANGLE_WIDTH
 											- arrowAndtwoConnectorsLength - nodeFigureWdith;
 
 								} else if (editPart instanceof MediatorFlowMediatorFlowCompartment2EditPart
@@ -719,12 +717,12 @@ public class XYRepossition {
 									x = ((IGraphicalEditPart) editPart.getParent().getParent()
 											.getParent().getParent().getParent()).getFigure()
 											.getBounds().width
-											- complexMediatorLeftRectWidth
+											- COMPLEX_MEDIATOR_LEFT_RECTANGLE_WIDTH
 											- arrowAndtwoConnectorsLength - nodeFigureWdith;
 								} else {
 									x = ((IGraphicalEditPart) editPart.getParent().getParent())
 											.getFigure().getBounds().width
-											- complexMediatorLeftRectWidth
+											- COMPLEX_MEDIATOR_LEFT_RECTANGLE_WIDTH
 											- arrowAndtwoConnectorsLength - nodeFigureWdith;
 								}
 
@@ -801,7 +799,7 @@ public class XYRepossition {
 											.getFigure().getBounds().width
 											- arrowAndtwoConnectorsLength * 2;*/
 									node = getLeftMostNodeOfOutSequence(editPart);
-									x = arrowAndtwoConnectorsLength - connectorLength;
+									x = arrowAndtwoConnectorsLength - CONNECTOR_LENGTH;
 									reversed = true;
 								} else {
 									break;
@@ -818,7 +816,7 @@ public class XYRepossition {
 									.getFigure().getBounds().width
 									- arrowAndtwoConnectorsLength * 2;*/
 							node = getLeftMostNodeOfOutSequence(editPart);
-							x = arrowAndtwoConnectorsLength - connectorLength;
+							x = arrowAndtwoConnectorsLength - CONNECTOR_LENGTH;
 							reversed = true;
 						} else {
 							break;
@@ -1055,7 +1053,7 @@ public class XYRepossition {
 	 */
 	private static int getMaxCompartmentWidth(GraphicalEditPart mainContainer) {
 		int maxWidth = 0;
-		int compartmentWidth = 2 * connectorLength + arraowLength;
+		int compartmentWidth = 2 * CONNECTOR_LENGTH + ARRWO_LENGTH;
 		List<EditPart> children = new ArrayList<EditPart>();
 		if (mainContainer instanceof SwitchMediatorContainerEditPart) {
 			List<EditPart> caseEditParts = ((SwitchCaseParentContainerEditPart) mainContainer
@@ -1075,10 +1073,10 @@ public class XYRepossition {
 		for (EditPart child : children) {
 			List<EditPart> childMediatorEditparts = ((GraphicalEditPart) ((GraphicalEditPart) child
 					.getChildren().get(0)).getChildren().get(0)).getChildren();
-			compartmentWidth = 2 * connectorLength + arraowLength;
+			compartmentWidth = 2 * CONNECTOR_LENGTH + ARRWO_LENGTH;
 			for (EditPart mediatorEditpart : childMediatorEditparts) {
 				compartmentWidth += ((IGraphicalEditPart) mediatorEditpart).getFigure().getBounds().width
-						+ arraowLength + 2 * connectorLength;
+						+ ARRWO_LENGTH + 2 * CONNECTOR_LENGTH;
 			}
 			if (compartmentWidth > maxWidth) {
 				maxWidth = compartmentWidth;

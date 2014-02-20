@@ -10,8 +10,9 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 /**
  * @generated
  */
-public class DataMapperRootItemSemanticEditPolicy extends
-		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class DataMapperRootItemSemanticEditPolicy
+		extends
+			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -45,8 +46,9 @@ public class DataMapperRootItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
-	private static class DuplicateAnythingCommand extends
-			DuplicateEObjectsCommand {
+	private static class DuplicateAnythingCommand
+			extends
+				DuplicateEObjectsCommand {
 
 		/**
 		 * @generated

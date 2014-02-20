@@ -12,8 +12,9 @@ import org.eclipse.ui.IWorkbenchPart;
 /**
  * @generated
  */
-public class DiagramEditorContextMenuProvider extends
-		DiagramContextMenuProvider {
+public class DiagramEditorContextMenuProvider
+		extends
+			DiagramContextMenuProvider {
 
 	/**
 	 * @generated

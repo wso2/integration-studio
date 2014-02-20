@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link dataMapper.DataMapperDiagram#getInput <em>Input</em>}</li>
  *   <li>{@link dataMapper.DataMapperDiagram#getOutput <em>Output</em>}</li>
- *   <li>{@link dataMapper.DataMapperDiagram#getConcat <em>Concat</em>}</li>
+ *   <li>{@link dataMapper.DataMapperDiagram#getOperations <em>Operations</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,19 +77,29 @@ public interface DataMapperDiagram extends DataMapperNode {
 	void setOutput(Output value);
 
 	/**
-	 * Returns the value of the '<em><b>Concat</b></em>' containment reference list.
-	 * The list contents are of type {@link dataMapper.Concat}.
+	 * Returns the value of the '<em><b>Operations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Concat</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Operations</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Concat</em>' containment reference list.
-	 * @see dataMapper.DataMapperPackage#getDataMapperDiagram_Concat()
+	 * @return the value of the '<em>Operations</em>' containment reference.
+	 * @see #setOperations(Operations)
+	 * @see dataMapper.DataMapperPackage#getDataMapperDiagram_Operations()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Concat> getConcat();
+	Operations getOperations();
+
+	/**
+	 * Sets the value of the '{@link dataMapper.DataMapperDiagram#getOperations <em>Operations</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Operations</em>' containment reference.
+	 * @see #getOperations()
+	 * @generated
+	 */
+	void setOperations(Operations value);
 
 } // DataMapperDiagram

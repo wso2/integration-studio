@@ -6,6 +6,7 @@ import dataMapper.Concat;
 import dataMapper.DataMapperDiagram;
 import dataMapper.DataMapperPackage;
 import dataMapper.Input;
+import dataMapper.Operations;
 import dataMapper.Output;
 
 import java.util.Collection;
@@ -29,7 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link dataMapper.impl.DataMapperDiagramImpl#getInput <em>Input</em>}</li>
  *   <li>{@link dataMapper.impl.DataMapperDiagramImpl#getOutput <em>Output</em>}</li>
- *   <li>{@link dataMapper.impl.DataMapperDiagramImpl#getConcat <em>Concat</em>}</li>
+ *   <li>{@link dataMapper.impl.DataMapperDiagramImpl#getOperations <em>Operations</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,14 +58,14 @@ public class DataMapperDiagramImpl extends DataMapperNodeImpl implements DataMap
 	protected Output output;
 
 	/**
-	 * The cached value of the '{@link #getConcat() <em>Concat</em>}' containment reference list.
+	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConcat()
+	 * @see #getOperations()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Concat> concat;
+	protected Operations operations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,11 +177,42 @@ public class DataMapperDiagramImpl extends DataMapperNodeImpl implements DataMap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Concat> getConcat() {
-		if (concat == null) {
-			concat = new EObjectContainmentEList<Concat>(Concat.class, this, DataMapperPackage.DATA_MAPPER_DIAGRAM__CONCAT);
+	public Operations getOperations() {
+		return operations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOperations(Operations newOperations, NotificationChain msgs) {
+		Operations oldOperations = operations;
+		operations = newOperations;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS, oldOperations, newOperations);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return concat;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOperations(Operations newOperations) {
+		if (newOperations != operations) {
+			NotificationChain msgs = null;
+			if (operations != null)
+				msgs = ((InternalEObject)operations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS, null, msgs);
+			if (newOperations != null)
+				msgs = ((InternalEObject)newOperations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS, null, msgs);
+			msgs = basicSetOperations(newOperations, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS, newOperations, newOperations));
 	}
 
 	/**
@@ -195,8 +227,8 @@ public class DataMapperDiagramImpl extends DataMapperNodeImpl implements DataMap
 				return basicSetInput(null, msgs);
 			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OUTPUT:
 				return basicSetOutput(null, msgs);
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__CONCAT:
-				return ((InternalEList<?>)getConcat()).basicRemove(otherEnd, msgs);
+			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS:
+				return basicSetOperations(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -213,8 +245,8 @@ public class DataMapperDiagramImpl extends DataMapperNodeImpl implements DataMap
 				return getInput();
 			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OUTPUT:
 				return getOutput();
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__CONCAT:
-				return getConcat();
+			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS:
+				return getOperations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -234,9 +266,8 @@ public class DataMapperDiagramImpl extends DataMapperNodeImpl implements DataMap
 			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OUTPUT:
 				setOutput((Output)newValue);
 				return;
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__CONCAT:
-				getConcat().clear();
-				getConcat().addAll((Collection<? extends Concat>)newValue);
+			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS:
+				setOperations((Operations)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -256,8 +287,8 @@ public class DataMapperDiagramImpl extends DataMapperNodeImpl implements DataMap
 			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OUTPUT:
 				setOutput((Output)null);
 				return;
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__CONCAT:
-				getConcat().clear();
+			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS:
+				setOperations((Operations)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -275,8 +306,8 @@ public class DataMapperDiagramImpl extends DataMapperNodeImpl implements DataMap
 				return input != null;
 			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OUTPUT:
 				return output != null;
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__CONCAT:
-				return concat != null && !concat.isEmpty();
+			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS:
+				return operations != null;
 		}
 		return super.eIsSet(featureID);
 	}

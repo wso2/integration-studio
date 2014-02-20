@@ -1,7 +1,5 @@
 package dataMapper.diagram.edit.parts;
 
-
-
 import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.FrameBorder;
@@ -38,9 +36,9 @@ import org.eclipse.swt.graphics.Color;
 import dataMapper.*;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 import dataMapper.diagram.tree.generator.TestTreeModel;
+import dataMapper.diagram.tree.generator.TreeFromAVSC;
 import dataMapper.diagram.tree.generator.TreeFromAvro;
 import dataMapper.diagram.tree.model.Tree;
-
 
 /**
  * @generated
@@ -50,7 +48,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3002;
+	public static final int VISUAL_ID = 3010;
 
 	/**
 	 * @generated
@@ -83,7 +81,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 
 			Tree tree = new Tree();
-			tree = (new TreeFromAvro()).generateOutputTree();
+			tree = (new TreeFromAVSC()).generateOutputTree();
 			convertTree(tree, treeNode);
 
 			AddCommand addTreeNodeCmd = new AddCommand(getEditingDomain(),
@@ -104,12 +102,14 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		treeNode.setName(tree.getCount() + "," + tree.getName());
 
 		if (!(tree.getElements().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Element element : tree.getElements()) {
+			for (dataMapper.diagram.tree.model.Element element : tree
+					.getElements()) {
 				createElement(element, treeNode);
 			}
 		}
 		if (!(tree.getAttributes().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : tree.getAttributes()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : tree
+					.getAttributes()) {
 				createAttribute(attribute, treeNode);
 			}
 		}
@@ -121,19 +121,21 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 	}
 
-	private void createElement(dataMapper.diagram.tree.model.Element element, TreeNode treeNode) {
+	private void createElement(dataMapper.diagram.tree.model.Element element,
+			TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		ele.setName(element.getCount() + "," + element.getName());
 		treeNode.getElement().add(ele);
 		if (!(element.getAttribute().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : element.getAttribute()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : element
+					.getAttribute()) {
 				createAttribute(attribute, treeNode);
 			}
 		}
 	}
 
-	private void createAttribute(dataMapper.diagram.tree.model.Attribute attribute,
-			TreeNode treeNode) {
+	private void createAttribute(
+			dataMapper.diagram.tree.model.Attribute attribute, TreeNode treeNode) {
 		Attribute attr = DataMapperFactory.eINSTANCE.createAttribute();
 		attr.setName(attribute.getCount() + "," + attribute.getName());
 		treeNode.getAttribute().add(attr);
@@ -145,12 +147,14 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		treeNodeNew.setName(treeN.getCount() + "," + treeN.getName());
 
 		if (!(treeN.getElements().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Element element : treeN.getElements()) {
+			for (dataMapper.diagram.tree.model.Element element : treeN
+					.getElements()) {
 				createElement(element, treeNodeNew);
 			}
 		}
 		if (!(treeN.getAttributes().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : treeN.getAttributes()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : treeN
+					.getAttributes()) {
 				createAttribute(attribute, treeNodeNew);
 			}
 		}
@@ -183,8 +187,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); 
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); 
+				new CustomNonResizableEditPolicyEx());
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/**

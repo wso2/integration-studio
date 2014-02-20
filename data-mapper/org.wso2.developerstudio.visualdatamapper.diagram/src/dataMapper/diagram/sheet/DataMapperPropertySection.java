@@ -23,7 +23,8 @@ import org.eclipse.ui.views.properties.IPropertySourceProvider;
  * @generated
  */
 public class DataMapperPropertySection extends AdvancedPropertySection
-		implements IPropertySourceProvider {
+		implements
+			IPropertySourceProvider {
 
 	/**
 	 * @generated

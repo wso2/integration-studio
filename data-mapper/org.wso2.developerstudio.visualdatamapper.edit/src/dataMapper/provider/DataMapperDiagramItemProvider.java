@@ -76,7 +76,7 @@ public class DataMapperDiagramItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__INPUT);
 			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__OUTPUT);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__CONCAT);
+			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__OPERATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -130,7 +130,7 @@ public class DataMapperDiagramItemProvider
 		switch (notification.getFeatureID(DataMapperDiagram.class)) {
 			case DataMapperPackage.DATA_MAPPER_DIAGRAM__INPUT:
 			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OUTPUT:
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__CONCAT:
+			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -160,8 +160,8 @@ public class DataMapperDiagramItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__CONCAT,
-				 DataMapperFactory.eINSTANCE.createConcat()));
+				(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__OPERATIONS,
+				 DataMapperFactory.eINSTANCE.createOperations()));
 	}
 
 }

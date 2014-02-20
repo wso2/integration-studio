@@ -69,7 +69,7 @@ public class TreeNode3CanonicalEditPolicy extends CanonicalEditPolicy {
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getTreeNode_3008SemanticChildren(viewObject);
+				.getTreeNode_3011SemanticChildren(viewObject);
 		for (dataMapper.diagram.part.DataMapperNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -105,7 +105,7 @@ public class TreeNode3CanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getTreeNode_3008SemanticChildren((View) getHost().getModel());
+				.getTreeNode_3011SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();

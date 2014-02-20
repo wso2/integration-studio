@@ -100,8 +100,7 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 		int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry
 				.getVisualID(view);
 		return visualID == dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID
-				|| visualID == dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID
-				|| visualID == dataMapper.diagram.edit.parts.InNode4EditPart.VISUAL_ID;
+				|| visualID == dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID;
 	}
 
 	/**
@@ -123,7 +122,6 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 			}
 		}
 		// alternative to #cleanCanonicalSemanticChildren(getViewChildren(), semanticChildren)
-		HashMap<dataMapper.diagram.part.DataMapperNodeDescriptor, LinkedList<View>> potentialViews = new HashMap<dataMapper.diagram.part.DataMapperNodeDescriptor, LinkedList<View>>();
 		//
 		// iteration happens over list of desired semantic elements, trying to find best matching View, while original CEP
 		// iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference same EObject, only last one 
@@ -135,7 +133,6 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry
 					.getType(next.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
-			LinkedList<View> potentialMatch = new LinkedList<View>(); // semanticElement matches, hint does not
 			for (View childView : getViewChildren()) {
 				EObject semanticElement = childView.getElement();
 				if (next.getModelElement().equals(semanticElement)) {
@@ -144,8 +141,6 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 						// actually, can stop iteration over view children here, but
 						// may want to use not the first view but last one as a 'real' match (the way original CEP does
 						// with its trick with viewToSemanticMap inside #cleanCanonicalSemanticChildren
-					} else {
-						potentialMatch.add(childView);
 					}
 				}
 			}
@@ -153,17 +148,12 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 				descriptorsIterator.remove(); // precise match found no need to create anything for the NodeDescriptor
 				// use only one view (first or last?), keep rest as orphaned for further consideration
 				knownViewChildren.remove(perfectMatch.getFirst());
-			} else if (potentialMatch.size() > 0) {
-				potentialViews.put(next, potentialMatch);
 			}
 		}
 		// those left in knownViewChildren are subject to removal - they are our diagram elements we didn't find match to,
 		// or those we have potential matches to, and thus need to be recreated, preserving size/location information.
 		orphaned.addAll(knownViewChildren);
 		//
-		CompositeTransactionalCommand boundsCommand = new CompositeTransactionalCommand(
-				host().getEditingDomain(),
-				DiagramUIMessages.SetLocationCommand_Label_Resize);
 		ArrayList<CreateViewRequest.ViewDescriptor> viewDescriptors = new ArrayList<CreateViewRequest.ViewDescriptor>(
 				childDescriptors.size());
 		for (dataMapper.diagram.part.DataMapperNodeDescriptor next : childDescriptors) {
@@ -175,40 +165,6 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
 					host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
-
-			LinkedList<View> possibleMatches = potentialViews.get(next);
-			if (possibleMatches != null) {
-				// from potential matches, leave those that were not eventually used for some other NodeDescriptor (i.e. those left as orphaned)
-				possibleMatches.retainAll(knownViewChildren);
-			}
-			if (possibleMatches != null && !possibleMatches.isEmpty()) {
-				View originalView = possibleMatches.getFirst();
-				knownViewChildren.remove(originalView); // remove not to copy properties of the same view again and again
-				// add command to copy properties
-				if (originalView instanceof Node) {
-					if (((Node) originalView).getLayoutConstraint() instanceof Bounds) {
-						Bounds b = (Bounds) ((Node) originalView)
-								.getLayoutConstraint();
-						boundsCommand.add(new SetBoundsCommand(boundsCommand
-								.getEditingDomain(), boundsCommand.getLabel(),
-								descriptor, new Rectangle(b.getX(), b.getY(), b
-										.getWidth(), b.getHeight())));
-					} else if (((Node) originalView).getLayoutConstraint() instanceof Location) {
-						Location l = (Location) ((Node) originalView)
-								.getLayoutConstraint();
-						boundsCommand.add(new SetBoundsCommand(boundsCommand
-								.getEditingDomain(), boundsCommand.getLabel(),
-								descriptor, new Point(l.getX(), l.getY())));
-					} else if (((Node) originalView).getLayoutConstraint() instanceof Size) {
-						Size s = (Size) ((Node) originalView)
-								.getLayoutConstraint();
-						boundsCommand.add(new SetBoundsCommand(boundsCommand
-								.getEditingDomain(), boundsCommand.getLabel(),
-								descriptor, new Dimension(s.getWidth(), s
-										.getHeight())));
-					}
-				}
-			}
 		}
 
 		boolean changed = deleteViews(orphaned.iterator());
@@ -219,9 +175,6 @@ public class ConcatCanonicalEditPolicy extends CanonicalEditPolicy {
 			SetViewMutabilityCommand.makeMutable(
 					new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
-			if (boundsCommand.canExecute()) {
-				executeCommand(new ICommandProxy(boundsCommand.reduce()));
-			}
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
 			createdViews.addAll(nl);

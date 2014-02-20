@@ -27,6 +27,7 @@ public interface Concat extends EObject {
 	/**
 	 * Returns the value of the '<em><b>In Node</b></em>' containment reference list.
 	 * The list contents are of type {@link dataMapper.InNode}.
+	 * It is bidirectional and its opposite is '{@link dataMapper.InNode#getConcatParent <em>Concat Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Node</em>' containment reference list isn't clear,
@@ -35,7 +36,8 @@ public interface Concat extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Node</em>' containment reference list.
 	 * @see dataMapper.DataMapperPackage#getConcat_InNode()
-	 * @model containment="true"
+	 * @see dataMapper.InNode#getConcatParent
+	 * @model opposite="concatParent" containment="true"
 	 * @generated
 	 */
 	EList<InNode> getInNode();

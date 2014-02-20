@@ -56,7 +56,7 @@ public class DataMapperDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
 			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
 					.getDataMapperDiagram_Output());
 			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
-					.getDataMapperDiagram_Concat());
+					.getDataMapperDiagram_Operations());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -93,7 +93,7 @@ public class DataMapperDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
 				.getVisualID(view);
 		return visualID == dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID
 				|| visualID == dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID
-				|| visualID == dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID;
+				|| visualID == dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID;
 	}
 
 	/**

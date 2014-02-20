@@ -53,7 +53,7 @@ public class ConcatCreateCommand extends EditElementCommand {
 		dataMapper.Concat newElement = dataMapper.DataMapperFactory.eINSTANCE
 				.createConcat();
 
-		dataMapper.DataMapperDiagram owner = (dataMapper.DataMapperDiagram) getElementToEdit();
+		dataMapper.Operations owner = (dataMapper.Operations) getElementToEdit();
 		owner.getConcat().add(newElement);
 
 		doConfigure(newElement, monitor, info);

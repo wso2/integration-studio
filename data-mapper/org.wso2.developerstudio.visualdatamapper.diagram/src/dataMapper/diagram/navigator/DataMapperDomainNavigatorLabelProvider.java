@@ -10,8 +10,9 @@ import org.eclipse.ui.navigator.ICommonLabelProvider;
 /**
  * @generated
  */
-public class DataMapperDomainNavigatorLabelProvider implements
-		ICommonLabelProvider {
+public class DataMapperDomainNavigatorLabelProvider
+		implements
+			ICommonLabelProvider {
 
 	/**
 	 * @generated

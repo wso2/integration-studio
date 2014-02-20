@@ -21,8 +21,9 @@ import org.eclipse.gmf.tooling.runtime.edit.policies.labels.IRefreshableFeedback
 /**
  * @generated
  */
-public class DataMapperTextNonResizableEditPolicy extends
-		NonResizableEditPolicyEx implements IRefreshableFeedbackEditPolicy {
+public class DataMapperTextNonResizableEditPolicy
+		extends
+			NonResizableEditPolicyEx implements IRefreshableFeedbackEditPolicy {
 
 	/**
 	 * @generated

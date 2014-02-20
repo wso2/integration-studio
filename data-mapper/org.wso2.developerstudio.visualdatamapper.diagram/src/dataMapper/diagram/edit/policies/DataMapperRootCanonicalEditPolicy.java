@@ -237,150 +237,150 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor>();
 		switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
 				.getVisualID(view)) {
-		case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getDataMapperRoot_1000ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getDataMapperRoot_1000ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getDataMapperDiagram_2001ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getDataMapperDiagram_2001ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getInput_3001ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getInput_3001ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getTreeNode_3004ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getTreeNode_3002ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getTreeNode_3005ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getTreeNode_3003ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getAttribute_3006ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getAttribute_3004ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getInNode_3009ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getInNode_3005ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getOutNode_3010ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getOutNode_3006ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getElement_3007ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getElement_3007ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getInNode_3011ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getInNode_3008ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getOutNode_3012ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getOutNode_3009ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getOutput_3002ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getOutput_3010ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getTreeNode_3008ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getTreeNode_3011ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getConcat_3013ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getOperations_3012ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getInNode_3014ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getConcat_3013ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getOutNode_3015ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getInNode_3014ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.InNode4EditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getInNode_3016ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getOutNode_3015ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-						.getDataMapperLink_4002ContainedLinks(view));
+			case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID : {
+				if (!domain2NotationMap.containsKey(view.getElement())) {
+					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+							.getDataMapperLink_4001ContainedLinks(view));
+				}
+				domain2NotationMap.putView(view.getElement(), view);
+				break;
 			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
 		}
 		for (Iterator children = view.getChildren().iterator(); children
 				.hasNext();) {

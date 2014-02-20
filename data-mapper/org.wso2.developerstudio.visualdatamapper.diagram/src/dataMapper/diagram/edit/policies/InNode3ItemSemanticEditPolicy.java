@@ -16,8 +16,9 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class InNode3ItemSemanticEditPolicy extends
-		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class InNode3ItemSemanticEditPolicy
+		extends
+			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -61,7 +62,8 @@ public class InNode3ItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
-		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
+		Command command = req.getTarget() == null
+				? getStartCreateRelationshipCommand(req)
 				: getCompleteCreateRelationshipCommand(req);
 		return command != null ? command : super
 				.getCreateRelationshipCommand(req);
@@ -72,7 +74,7 @@ public class InNode3ItemSemanticEditPolicy extends
 	 */
 	protected Command getStartCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
-		if (dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002 == req
+		if (dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001 == req
 				.getElementType()) {
 			return null;
 		}
@@ -84,7 +86,7 @@ public class InNode3ItemSemanticEditPolicy extends
 	 */
 	protected Command getCompleteCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
-		if (dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002 == req
+		if (dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001 == req
 				.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.DataMapperLinkCreateCommand(
 					req, req.getSource(), req.getTarget()));
@@ -101,9 +103,9 @@ public class InNode3ItemSemanticEditPolicy extends
 	protected Command getReorientRelationshipCommand(
 			ReorientRelationshipRequest req) {
 		switch (getVisualID(req)) {
-		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
-			return getGEFWrapper(new dataMapper.diagram.edit.commands.DataMapperLinkReorientCommand(
-					req));
+			case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID :
+				return getGEFWrapper(new dataMapper.diagram.edit.commands.DataMapperLinkReorientCommand(
+						req));
 		}
 		return super.getReorientRelationshipCommand(req);
 	}

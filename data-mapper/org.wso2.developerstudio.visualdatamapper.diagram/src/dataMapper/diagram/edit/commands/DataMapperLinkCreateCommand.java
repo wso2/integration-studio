@@ -64,7 +64,7 @@ public class DataMapperLinkCreateCommand extends EditElementCommand {
 			return false;
 		}
 		return dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy
-				.getLinkConstraints().canCreateDataMapperLink_4002(
+				.getLinkConstraints().canCreateDataMapperLink_4001(
 						getContainer(), getSource(), getTarget());
 	}
 

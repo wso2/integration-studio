@@ -68,7 +68,7 @@ public class DataMapperLinkReorientCommand extends EditElementCommand {
 		dataMapper.OutNode container = (dataMapper.OutNode) getLink()
 				.eContainer();
 		return dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy
-				.getLinkConstraints().canExistDataMapperLink_4002(container,
+				.getLinkConstraints().canExistDataMapperLink_4001(container,
 						getLink(), getNewSource(), target);
 	}
 
@@ -86,7 +86,7 @@ public class DataMapperLinkReorientCommand extends EditElementCommand {
 		dataMapper.OutNode container = (dataMapper.OutNode) getLink()
 				.eContainer();
 		return dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy
-				.getLinkConstraints().canExistDataMapperLink_4002(container,
+				.getLinkConstraints().canExistDataMapperLink_4001(container,
 						getLink(), source, getNewTarget());
 	}
 

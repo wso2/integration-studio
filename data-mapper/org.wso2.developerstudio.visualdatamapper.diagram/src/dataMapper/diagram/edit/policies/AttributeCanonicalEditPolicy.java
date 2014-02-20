@@ -67,7 +67,7 @@ public class AttributeCanonicalEditPolicy extends CanonicalEditPolicy {
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getAttribute_3006SemanticChildren(viewObject);
+				.getAttribute_3004SemanticChildren(viewObject);
 		for (dataMapper.diagram.part.DataMapperNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -102,7 +102,7 @@ public class AttributeCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getAttribute_3006SemanticChildren((View) getHost().getModel());
+				.getAttribute_3004SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();

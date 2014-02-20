@@ -43,7 +43,7 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3009;
+	public static final int VISUAL_ID = 3005;
 
 	/**
 	 * @generated
@@ -137,7 +137,7 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(1, 2);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(20, 20);
 		result.getBounds().setSize(result.getPreferredSize());
 		return result;
 	}
@@ -221,7 +221,7 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 	 */
 	public List<IElementType> getMARelTypesOnTarget() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
+		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 		return types;
 	}
 
@@ -230,9 +230,9 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 	 */
 	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3010);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3012);
+		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3009);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3015);
 		}
 		return types;

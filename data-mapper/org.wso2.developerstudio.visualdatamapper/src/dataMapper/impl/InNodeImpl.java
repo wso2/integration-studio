@@ -3,6 +3,7 @@
 package dataMapper.impl;
 
 import dataMapper.Attribute;
+import dataMapper.Concat;
 import dataMapper.DataMapperLink;
 import dataMapper.DataMapperPackage;
 import dataMapper.Element;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link dataMapper.impl.InNodeImpl#getIncomingLink <em>Incoming Link</em>}</li>
  *   <li>{@link dataMapper.impl.InNodeImpl#getElementParent <em>Element Parent</em>}</li>
  *   <li>{@link dataMapper.impl.InNodeImpl#getAttributeParent <em>Attribute Parent</em>}</li>
+ *   <li>{@link dataMapper.impl.InNodeImpl#getConcatParent <em>Concat Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -165,6 +167,47 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Concat getConcatParent() {
+		if (eContainerFeatureID() != DataMapperPackage.IN_NODE__CONCAT_PARENT) return null;
+		return (Concat)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConcatParent(Concat newConcatParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newConcatParent, DataMapperPackage.IN_NODE__CONCAT_PARENT, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConcatParent(Concat newConcatParent) {
+		if (newConcatParent != eInternalContainer() || (eContainerFeatureID() != DataMapperPackage.IN_NODE__CONCAT_PARENT && newConcatParent != null)) {
+			if (EcoreUtil.isAncestor(this, newConcatParent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newConcatParent != null)
+				msgs = ((InternalEObject)newConcatParent).eInverseAdd(this, DataMapperPackage.CONCAT__IN_NODE, Concat.class, msgs);
+			msgs = basicSetConcatParent(newConcatParent, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.IN_NODE__CONCAT_PARENT, newConcatParent, newConcatParent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -179,6 +222,10 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetAttributeParent((Attribute)otherEnd, msgs);
+			case DataMapperPackage.IN_NODE__CONCAT_PARENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetConcatParent((Concat)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -197,6 +244,8 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 				return basicSetElementParent(null, msgs);
 			case DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT:
 				return basicSetAttributeParent(null, msgs);
+			case DataMapperPackage.IN_NODE__CONCAT_PARENT:
+				return basicSetConcatParent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -213,6 +262,8 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 				return eInternalContainer().eInverseRemove(this, DataMapperPackage.ELEMENT__IN_NODE, Element.class, msgs);
 			case DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT:
 				return eInternalContainer().eInverseRemove(this, DataMapperPackage.ATTRIBUTE__IN_NODE, Attribute.class, msgs);
+			case DataMapperPackage.IN_NODE__CONCAT_PARENT:
+				return eInternalContainer().eInverseRemove(this, DataMapperPackage.CONCAT__IN_NODE, Concat.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -231,6 +282,8 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 				return getElementParent();
 			case DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT:
 				return getAttributeParent();
+			case DataMapperPackage.IN_NODE__CONCAT_PARENT:
+				return getConcatParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -254,6 +307,9 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 			case DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT:
 				setAttributeParent((Attribute)newValue);
 				return;
+			case DataMapperPackage.IN_NODE__CONCAT_PARENT:
+				setConcatParent((Concat)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -275,6 +331,9 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 			case DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT:
 				setAttributeParent((Attribute)null);
 				return;
+			case DataMapperPackage.IN_NODE__CONCAT_PARENT:
+				setConcatParent((Concat)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -293,6 +352,8 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 				return getElementParent() != null;
 			case DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT:
 				return getAttributeParent() != null;
+			case DataMapperPackage.IN_NODE__CONCAT_PARENT:
+				return getConcatParent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

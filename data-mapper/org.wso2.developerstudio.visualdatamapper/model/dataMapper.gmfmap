@@ -109,15 +109,36 @@
       </children>
       <children>
         <containmentFeature
-            href="dataMapper.ecore#//DataMapperDiagram/concat"/>
+            href="dataMapper.ecore#//DataMapperDiagram/operations"/>
         <ownedChild>
           <domainMetaElement
-              href="dataMapper.ecore#//Concat"/>
-          <tool
-              xsi:type="gmftool:CreationTool"
-              href="dataMapper.gmftool#//@palette/@tools.0/@tools.2"/>
+              href="dataMapper.ecore#//Operations"/>
           <diagramNode
-              href="dataMapper.gmfgraph#Concat"/>
+              href="dataMapper.gmfgraph#Operations"/>
+          <children
+              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
+            <containmentFeature
+                href="dataMapper.ecore#//Operations/concat"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="dataMapper.ecore#//Concat"/>
+              <tool
+                  xsi:type="gmftool:CreationTool"
+                  href="dataMapper.gmftool#//@palette/@tools.0/@tools.2"/>
+              <diagramNode
+                  href="dataMapper.gmfgraph#Concat"/>
+              <children
+                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.0/@ownedChild">
+                <containmentFeature
+                    href="dataMapper.ecore#//Concat/inNode"/>
+              </children>
+              <children
+                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
+                <containmentFeature
+                    href="dataMapper.ecore#//Concat/outNode"/>
+              </children>
+            </ownedChild>
+          </children>
         </ownedChild>
       </children>
     </ownedChild>

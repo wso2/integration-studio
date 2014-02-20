@@ -139,6 +139,15 @@ public interface DataMapperFactory extends EFactory {
 	Concat createConcat();
 
 	/**
+	 * Returns a new object of class '<em>Operations</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operations</em>'.
+	 * @generated
+	 */
+	Operations createOperations();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

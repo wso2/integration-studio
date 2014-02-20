@@ -9,7 +9,7 @@
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperDiagram">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperDiagram/input"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperDiagram/output"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperDiagram/concat"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperDiagram/operations"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperRoot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/dataMapperDiagram"/>
@@ -48,9 +48,11 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/incomingLink"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/elementParent"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/attributeParent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//InNode/concatParent"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//OutNode">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OutNode/outgoingLink"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//OutNode/elementParent"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperLink">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/inNode"/>
@@ -59,6 +61,9 @@
     <genClasses ecoreClass="dataMapper.ecore#//Concat">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Concat/inNode"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Concat/outNode"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Operations">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operations/concat"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

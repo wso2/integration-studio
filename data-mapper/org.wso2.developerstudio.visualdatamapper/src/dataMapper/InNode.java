@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link dataMapper.InNode#getIncomingLink <em>Incoming Link</em>}</li>
  *   <li>{@link dataMapper.InNode#getElementParent <em>Element Parent</em>}</li>
  *   <li>{@link dataMapper.InNode#getAttributeParent <em>Attribute Parent</em>}</li>
+ *   <li>{@link dataMapper.InNode#getConcatParent <em>Concat Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,4 +99,32 @@ public interface InNode extends EObject {
 	 * @generated
 	 */
 	void setAttributeParent(Attribute value);
+
+	/**
+	 * Returns the value of the '<em><b>Concat Parent</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link dataMapper.Concat#getInNode <em>In Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Concat Parent</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Concat Parent</em>' container reference.
+	 * @see #setConcatParent(Concat)
+	 * @see dataMapper.DataMapperPackage#getInNode_ConcatParent()
+	 * @see dataMapper.Concat#getInNode
+	 * @model opposite="inNode" transient="false"
+	 * @generated
+	 */
+	Concat getConcatParent();
+
+	/**
+	 * Sets the value of the '{@link dataMapper.InNode#getConcatParent <em>Concat Parent</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Concat Parent</em>' container reference.
+	 * @see #getConcatParent()
+	 * @generated
+	 */
+	void setConcatParent(Concat value);
 } // InNode

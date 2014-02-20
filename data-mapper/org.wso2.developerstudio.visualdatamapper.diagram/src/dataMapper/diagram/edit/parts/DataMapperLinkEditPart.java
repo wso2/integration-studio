@@ -13,13 +13,14 @@ import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 /**
  * @generated
  */
-public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements
-		ITreeBranchEditPart {
+public class DataMapperLinkEditPart extends ConnectionNodeEditPart
+		implements
+			ITreeBranchEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 4002;
+	public static final int VISUAL_ID = 4001;
 
 	/**
 	 * @generated

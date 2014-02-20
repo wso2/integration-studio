@@ -9,14 +9,15 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class DataMapperNavigatorItem extends
-		dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem {
+public class DataMapperNavigatorItem
+		extends
+			dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem {
 
 	/**
 	 * @generated
 	 */
 	static {
-		final Class[] supportedTypes = new Class[] { View.class, EObject.class };
+		final Class[] supportedTypes = new Class[]{View.class, EObject.class};
 		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
 			public Object getAdapter(Object adaptableObject, Class adapterType) {

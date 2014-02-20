@@ -87,10 +87,10 @@ public class DataMapperPaletteFactory {
 				dataMapper.diagram.part.Messages.DataMapperLink2CreationTool_title,
 				dataMapper.diagram.part.Messages.DataMapperLink2CreationTool_desc,
 				Collections
-						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002));
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001));
 		entry.setId("createDataMapperLink2CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
-				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002));
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

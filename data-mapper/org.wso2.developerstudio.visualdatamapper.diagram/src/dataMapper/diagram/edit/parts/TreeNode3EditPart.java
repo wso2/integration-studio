@@ -64,7 +64,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3008;
+	public static final int VISUAL_ID = 3011;
 
 	/**
 	 * @generated
@@ -135,8 +135,8 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); 
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); 
+				new CustomNonResizableEditPolicyEx());
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/*
@@ -409,7 +409,8 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 				isExpanded = false;
 
 				for (int i = 0; i < childrenIFigure.size(); i++) {
-					getPrimaryShape().getChildren().remove(childrenIFigure.get(i));
+					getPrimaryShape().getChildren().remove(
+							childrenIFigure.get(i));
 				}
 			}
 		}

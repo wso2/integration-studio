@@ -18,27 +18,28 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class AttributeItemSemanticEditPolicy extends
-		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class AttributeItemSemanticEditPolicy
+		extends
+			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public AttributeItemSemanticEditPolicy() {
 		super(
-				dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3006);
+				dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3004);
 	}
 
 	/**
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (dataMapper.diagram.providers.DataMapperElementTypes.InNode_3009 == req
+		if (dataMapper.diagram.providers.DataMapperElementTypes.InNode_3005 == req
 				.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.InNodeCreateCommand(
 					req));
 		}
-		if (dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3010 == req
+		if (dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006 == req
 				.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.OutNodeCreateCommand(
 					req));
@@ -76,44 +77,46 @@ public class AttributeItemSemanticEditPolicy extends
 			Node node = (Node) nit.next();
 			switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
 					.getVisualID(node)) {
-			case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getTargetEdges().iterator(); it
-						.hasNext();) {
-					Edge incomingLink = (Edge) it.next();
-					if (dataMapper.diagram.part.DataMapperVisualIDRegistry
-							.getVisualID(incomingLink) == dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID) {
-						DestroyElementRequest r = new DestroyElementRequest(
-								incomingLink.getElement(), false);
-						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(),
-								incomingLink));
-						continue;
+				case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID :
+					for (Iterator<?> it = node.getTargetEdges().iterator(); it
+							.hasNext();) {
+						Edge incomingLink = (Edge) it.next();
+						if (dataMapper.diagram.part.DataMapperVisualIDRegistry
+								.getVisualID(incomingLink) == dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID) {
+							DestroyElementRequest r = new DestroyElementRequest(
+									incomingLink.getElement(), false);
+							cmd.add(new DestroyElementCommand(r));
+							cmd.add(new DeleteCommand(getEditingDomain(),
+									incomingLink));
+							continue;
+						}
 					}
-				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
-			case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getSourceEdges().iterator(); it
-						.hasNext();) {
-					Edge outgoingLink = (Edge) it.next();
-					if (dataMapper.diagram.part.DataMapperVisualIDRegistry
-							.getVisualID(outgoingLink) == dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID) {
-						DestroyElementRequest r = new DestroyElementRequest(
-								outgoingLink.getElement(), false);
-						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(),
-								outgoingLink));
-						continue;
+					cmd.add(new DestroyElementCommand(
+							new DestroyElementRequest(getEditingDomain(), node
+									.getElement(), false))); // directlyOwned: true
+					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+					break;
+				case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID :
+					for (Iterator<?> it = node.getSourceEdges().iterator(); it
+							.hasNext();) {
+						Edge outgoingLink = (Edge) it.next();
+						if (dataMapper.diagram.part.DataMapperVisualIDRegistry
+								.getVisualID(outgoingLink) == dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID) {
+							DestroyElementRequest r = new DestroyElementRequest(
+									outgoingLink.getElement(), false);
+							cmd.add(new DestroyElementCommand(r));
+							cmd.add(new DeleteCommand(getEditingDomain(),
+									outgoingLink));
+							continue;
+						}
 					}
-				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
+					cmd.add(new DestroyElementCommand(
+							new DestroyElementRequest(getEditingDomain(), node
+									.getElement(), false))); // directlyOwned: true
+					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+					break;
 			}
 		}
 	}

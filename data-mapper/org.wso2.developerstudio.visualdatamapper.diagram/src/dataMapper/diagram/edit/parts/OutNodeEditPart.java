@@ -47,7 +47,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3010;
+	public static final int VISUAL_ID = 3006;
 
 	/**
 	 * @generated
@@ -87,7 +87,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); 
+				new CustomNonResizableEditPolicyEx());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
@@ -135,7 +135,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(1, 2);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(20, 20);
 		result.getBounds().setSize(result.getPreferredSize());
 		return result;
 	}
@@ -233,7 +233,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	 */
 	public List<IElementType> getMARelTypesOnSource() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
+		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 		return types;
 	}
 
@@ -244,16 +244,13 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 			IGraphicalEditPart targetEditPart) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNodeEditPart) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 		}
 		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode2EditPart) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 		}
 		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode3EditPart) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode4EditPart) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 		}
 		return types;
 	}
@@ -263,11 +260,10 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	 */
 	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4002) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3009);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3011);
+		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3005);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3008);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3014);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3016);
 		}
 		return types;
 	}

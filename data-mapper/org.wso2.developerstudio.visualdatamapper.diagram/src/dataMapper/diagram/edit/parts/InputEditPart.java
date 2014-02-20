@@ -35,9 +35,9 @@ import dataMapper.DataMapperPackage;
 import dataMapper.Element;
 import dataMapper.TreeNode;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import dataMapper.diagram.tree.generator.TreeFromAVSC;
 import dataMapper.diagram.tree.generator.TreeFromAvro;
 import dataMapper.diagram.tree.model.Tree;
-
 
 /**
  * @generated
@@ -89,7 +89,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			 */
 
 			Tree tree = new Tree();
-			tree = (new TreeFromAvro()).generateInputTree();
+			tree = (new TreeFromAVSC()).generateInputTree();
 			convertTree(tree, treeNode);
 
 			AddCommand addTreeNodeCmd = new AddCommand(getEditingDomain(),
@@ -118,13 +118,15 @@ public class InputEditPart extends ShapeNodeEditPart {
 		}
 
 		if (!(tree.getAttributes().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : tree.getAttributes()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : tree
+					.getAttributes()) {
 				createAttribute(attribute, treeNode);
 			}
 		}
 
 		if (!(tree.getElements().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Element element : tree.getElements()) {
+			for (dataMapper.diagram.tree.model.Element element : tree
+					.getElements()) {
 				createElement(element, treeNode);
 			}
 		}
@@ -134,12 +136,14 @@ public class InputEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated NOT
 	 */
-	private void createElement(dataMapper.diagram.tree.model.Element element, TreeNode treeNode) {
+	private void createElement(dataMapper.diagram.tree.model.Element element,
+			TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		ele.setName(element.getCount() + "," + element.getName());
 		treeNode.getElement().add(ele);
 		if (!(element.getAttribute().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : element.getAttribute()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : element
+					.getAttribute()) {
 				createAttribute(attribute, treeNode);
 			}
 		}
@@ -148,8 +152,8 @@ public class InputEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated NOT
 	 */
-	private void createAttribute(dataMapper.diagram.tree.model.Attribute attribute,
-			TreeNode treeNode) {
+	private void createAttribute(
+			dataMapper.diagram.tree.model.Attribute attribute, TreeNode treeNode) {
 		Attribute attr = DataMapperFactory.eINSTANCE.createAttribute();
 		attr.setName(attribute.getCount() + "," + attribute.getName());
 		treeNode.getAttribute().add(attr);
@@ -171,12 +175,14 @@ public class InputEditPart extends ShapeNodeEditPart {
 		}
 
 		if (!(treeN.getElements().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Element element : treeN.getElements()) {
+			for (dataMapper.diagram.tree.model.Element element : treeN
+					.getElements()) {
 				createElement(element, treeNodeNew);
 			}
 		}
 		if (!(treeN.getAttributes().isEmpty())) {
-			for (dataMapper.diagram.tree.model.Attribute attribute : treeN.getAttributes()) {
+			for (dataMapper.diagram.tree.model.Attribute attribute : treeN
+					.getAttributes()) {
 				createAttribute(attribute, treeNodeNew);
 			}
 		}
@@ -204,7 +210,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
 				new CustomNonResizableEditPolicyEx()); // remove selection
 														// rectangle
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); 
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 
 		// XXX need an SCR to runtime to have another abstract superclass that
 		// would let children add reasonable editpolicies

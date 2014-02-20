@@ -79,6 +79,7 @@ public interface Element extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Out Node</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link dataMapper.OutNode#getElementParent <em>Element Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Out Node</em>' reference isn't clear,
@@ -88,7 +89,8 @@ public interface Element extends EObject {
 	 * @return the value of the '<em>Out Node</em>' containment reference.
 	 * @see #setOutNode(OutNode)
 	 * @see dataMapper.DataMapperPackage#getElement_OutNode()
-	 * @model containment="true"
+	 * @see dataMapper.OutNode#getElementParent
+	 * @model opposite="elementParent" containment="true"
 	 * @generated
 	 */
 	OutNode getOutNode();

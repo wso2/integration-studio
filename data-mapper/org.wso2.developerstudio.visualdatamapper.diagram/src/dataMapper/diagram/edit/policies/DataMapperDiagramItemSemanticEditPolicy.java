@@ -15,8 +15,9 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class DataMapperDiagramItemSemanticEditPolicy extends
-		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class DataMapperDiagramItemSemanticEditPolicy
+		extends
+			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -35,14 +36,14 @@ public class DataMapperDiagramItemSemanticEditPolicy extends
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.InputCreateCommand(
 					req));
 		}
-		if (dataMapper.diagram.providers.DataMapperElementTypes.Output_3002 == req
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Output_3010 == req
 				.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.OutputCreateCommand(
 					req));
 		}
-		if (dataMapper.diagram.providers.DataMapperElementTypes.Concat_3013 == req
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Operations_3012 == req
 				.getElementType()) {
-			return getGEFWrapper(new dataMapper.diagram.edit.commands.ConcatCreateCommand(
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.OperationsCreateCommand(
 					req));
 		}
 		return super.getCreateCommand(req);
@@ -78,24 +79,27 @@ public class DataMapperDiagramItemSemanticEditPolicy extends
 			Node node = (Node) nit.next();
 			switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
 					.getVisualID(node)) {
-			case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
-			case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
-			case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-				break;
+				case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID :
+					cmd.add(new DestroyElementCommand(
+							new DestroyElementRequest(getEditingDomain(), node
+									.getElement(), false))); // directlyOwned: true
+					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+					break;
+				case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID :
+					cmd.add(new DestroyElementCommand(
+							new DestroyElementRequest(getEditingDomain(), node
+									.getElement(), false))); // directlyOwned: true
+					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+					break;
+				case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID :
+					cmd.add(new DestroyElementCommand(
+							new DestroyElementRequest(getEditingDomain(), node
+									.getElement(), false))); // directlyOwned: true
+					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+					break;
 			}
 		}
 	}

@@ -21,8 +21,9 @@ import org.eclipse.ui.navigator.ICommonContentProvider;
 /**
  * @generated
  */
-public class DataMapperDomainNavigatorContentProvider implements
-		ICommonContentProvider {
+public class DataMapperDomainNavigatorContentProvider
+		implements
+			ICommonContentProvider {
 
 	/**
 	 * @generated

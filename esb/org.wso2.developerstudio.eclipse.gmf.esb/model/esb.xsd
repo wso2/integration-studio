@@ -515,6 +515,7 @@
     <xsd:attribute name="name" type="ecore:EString" use="required"/>
     <xsd:attribute name="value" type="ecore:EString" use="required"/>
     <xsd:attribute ecore:default="" ecore:unsettable="false" name="scope" type="esb:EndPointPropertyScope" use="required"/>
+    <!-- There are errors because these default values. So you may ignore these error. -->
     <xsd:attribute default="VALUE" ecore:unsettable="false" name="valueType" type="esb:PropertyValueType"/>
   </xsd:complexType>
   <xsd:complexType name="ProxyService">

@@ -17,33 +17,23 @@
 package org.wso2.developerstudio.eclipse.qos.project.ui.wizard;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.math.BigInteger;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.wsdl.Definition;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.woden.wsdl20.Description;
 import org.apache.woden.wsdl20.InterfaceOperation;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -63,25 +53,35 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.wso2.developerstudio.eclipse.libraries.utils.WSDLUtils;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.MavenInfo;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.developerstudio.eclipse.platform.ui.wizard.pages.ProjectOptionsDataPage;
+import org.wso2.developerstudio.eclipse.qos.project.controller.QoSProjectTypeList;
 import org.wso2.developerstudio.eclipse.qos.project.model.Binding;
 import org.wso2.developerstudio.eclipse.qos.project.model.Bindings;
+import org.wso2.developerstudio.eclipse.qos.project.model.Module;
 import org.wso2.developerstudio.eclipse.qos.project.model.Operation;
 import org.wso2.developerstudio.eclipse.qos.project.model.Parameter;
 import org.wso2.developerstudio.eclipse.qos.project.model.QOSProjectModel;
 import org.wso2.developerstudio.eclipse.qos.project.model.Service;
 import org.wso2.developerstudio.eclipse.qos.project.model.ServiceGroup;
 import org.wso2.developerstudio.eclipse.qos.project.ui.dashboard.QoSDashboardPage;
+import org.wso2.developerstudio.eclipse.qos.project.utils.QOSImageUtils;
 import org.wso2.developerstudio.eclipse.qos.project.utils.WSDL2Utils;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
-import org.wso2.developerstudio.eclipse.libraries.utils.WSDLUtils;
-import org.xml.sax.InputSource;
 
 public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 
+	private static final String ESB_PROJECT = "ESB";
+	private static final String DS_PROJECT = "DS";
+	private static final String AXIS_PROJECT = "Axis";
+	
 	static final String QOS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.qos.project.nature";
 	static final String INTRO_VIEW_ID = "org.eclipse.ui.internal.introview";
 	static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.qos.QoSDashboard";
@@ -106,19 +106,45 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
     	try{
     	Object element = ((IStructuredSelection)selection).getFirstElement();
    	    if (element instanceof IResource) {
-           IProject temProject = ((IResource)element).getProject();
-           IProjectDescription description = temProject.getDescription();
+           selectedProject = ((IResource)element).getProject();
+           IProjectDescription description = selectedProject.getDescription();
            String[] natureIds = description.getNatureIds();
           
            for (String natueId : natureIds) {
 			  if(AXIS2_PROJECT_NATURE.equals(natueId)){
-				  projectType = "Axis";
+				  setProjectType(AXIS_PROJECT);
+				  List<String> services = new ArrayList<String>();
+				  services.add(selectedProject.getName());
+				 QoSProjectTypeList.setServiceNames(services);
 				  break;
 			  }else if(DS_PROJECT_NATURE.equals(natueId)){
-				  projectType = "DS";
+				  setProjectType(DS_PROJECT);
+				  List<String> services = new ArrayList<String>();
+				  services.add(selectedProject.getName());
+				  QoSProjectTypeList.setServiceNames(services);
 				  break;
 			  }else if(ESB_PROJECT_NATURE.equals(natueId)){
-				  projectType = "ESB";
+				  setProjectType(ESB_PROJECT);
+				  File fXmlFile = selectedProject.getFile("artifact.xml").getLocation().toFile();
+				  List<String> services = new ArrayList<String>();
+				  DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+					DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+					Document doc = dBuilder.parse(fXmlFile);
+					doc.getDocumentElement().normalize();
+					Node artifacts = doc.getFirstChild();
+					NodeList childNodes = artifacts.getChildNodes();
+					for (int i = 0; i < childNodes.getLength(); i++) {
+						Node tempNode = childNodes.item(i);
+						if(tempNode instanceof Element){
+						Element eElement = (Element) tempNode;
+						String type = eElement.getAttribute("type");
+						if("synapse/proxy-service".equals(type)){
+							String name = eElement.getAttribute("name");
+							services.add(name);
+						}
+						}
+					}
+				QoSProjectTypeList.setServiceNames(services);
 				  break;
 			  }
            }
@@ -134,9 +160,17 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	public QOSProjectWizard() {
 		setQosProjectModel(new QOSProjectModel());
 		setModel(qosProjectModel);
-//		setDefaultPageImageDescriptor(QOSImageUtils.getInstance().getImageDescriptor("esb-project-wizard.png"));
+		setDefaultPageImageDescriptor(QOSImageUtils.getInstance().getImageDescriptor("secured.gif"));
 	}
  
+	@Override
+	public boolean canFinish() {
+		if (getContainer().getCurrentPage() instanceof ProjectOptionsDataPage)
+			return false;
+		else
+			return super.canFinish();
+	}
+
 	@Override
 	protected boolean isRequiredWorkspaceLocation() {
 		 return true;
@@ -205,6 +239,14 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		return metaFileName;
 	}
 
+	public String getProjectType() {
+		return projectType;
+	}
+
+	public void setProjectType(String projectType) {
+		this.projectType = projectType;
+	}
+
 	public void setMetaFileName(String metaFileName) {
 		QOSProjectWizard.metaFileName = metaFileName;
 	}
@@ -218,6 +260,7 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 	}
 
 	private boolean jobfinish;
+	private IProject selectedProject;
 
 	
 	private Service createService(QName fname,List<String> operations){
@@ -245,31 +288,61 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		sSoap11Binding.setName(serviceSoap11Binding);
 		
 		Parameter parameter = new Parameter();
-		parameter.setName("ServiceClass");
-		parameter.setLocked(false);
+		createParam(parameter);
 		
-		String namespaceURI = fname.getNamespaceURI();
-		String modifyNS = namespaceURI.replaceAll("(http://|https://)","");
-		String[] split = modifyNS.split("\\.");
-		int length = split.length;
-		String fq="";
-		for(int i=length ; i>0 ; i--){
-			if(i==length){
-				fq = split[i-1];
-			}else{
-			fq = fq +"."+split[i-1];
-			}
-		} 
-		String paramVal =fq+"."+fname.getLocalPart();	
-		parameter.setValue(paramVal);
-		service.getModuleOrParameterOrPolicyUUID().add(parameter);
+		Module pPOXSecurityModule = new Module();
+		pPOXSecurityModule.setName("POXSecurityModule");
+		pPOXSecurityModule.setVersion("4.2.0");
+		pPOXSecurityModule.setVersion("engagedModules");
+		
+		Module addressing = new Module();
+		addressing.setName("addressing");
+		addressing.setVersion("4.2.0");
+		addressing.setVersion("engagedModules");
+		
+		Module ServerAdminModule = new Module();
+		ServerAdminModule.setName("ServerAdminModule");
+		ServerAdminModule.setVersion("4.2.0");
+		ServerAdminModule.setVersion("engagedModules");
+		
+		Module pagination = new Module();
+		pagination.setName("pagination");
+		pagination.setVersion("4.2.0");
+		pagination.setVersion("engagedModules");
+		
+		Module wso2statistics = new Module();
+		wso2statistics.setName("wso2statistics");
+		wso2statistics.setVersion("4.2.0");
+		wso2statistics.setVersion("engagedModules");
+		
+		Module activation = new Module();
+		activation.setName("activation");
+		activation.setVersion("2.2.0");
+		activation.setVersion("engagedModules");
+		
+    	service.getModuleOrParameterOrPolicyUUID().add(pPOXSecurityModule);
+    	service.getModuleOrParameterOrPolicyUUID().add(addressing);
+    	service.getModuleOrParameterOrPolicyUUID().add(ServerAdminModule);
+    	service.getModuleOrParameterOrPolicyUUID().add(pagination);
+    	service.getModuleOrParameterOrPolicyUUID().add(wso2statistics);
+    	service.getModuleOrParameterOrPolicyUUID().add(activation);
+    	service.getModuleOrParameterOrPolicyUUID().add(parameter);	
 		for (String opName : operations) {
 			Operation operation = new Operation();
 			operation.setName(opName);
+			operation.getModule().add(pPOXSecurityModule);
+			operation.getModule().add(addressing);
+			operation.getModule().add(ServerAdminModule);
+			operation.getModule().add(pagination);
+			operation.getModule().add(wso2statistics);
+			operation.getModule().add(activation);
 			service.getOperation().add(operation);
-			hHttpBinding.getOperation().add(operation);
-			sSoap12Binding.getOperation().add(operation);
-			sSoap11Binding.getOperation().add(operation);
+			Operation operation2 = new Operation();
+			operation2.setName(opName);
+			hHttpBinding.getOperation().add(operation2);
+			sSoap12Binding.getOperation().add(operation2);
+			sSoap11Binding.getOperation().add(operation2);
+ 
 		}
 		bindings.getBinding().add(hHttpBinding);
 		bindings.getBinding().add(sSoap11Binding);
@@ -278,7 +351,55 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 		
 		return service;
 	}
-	
+
+	private void createParam(Parameter parameter) {
+		try {
+			if (getProjectType().equals(AXIS_PROJECT)) {
+
+				parameter.setName("ServiceClass");
+				parameter.setLocked(false);
+				File fXmlFile = selectedProject
+						.getFile("/src/main/resources/META-INF/services.xml")
+						.getLocation().toFile();
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory
+						.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document doc = dBuilder.parse(fXmlFile);
+				doc.getDocumentElement().normalize();
+				String nodeName = doc.getDocumentElement().getNodeName();
+				Node firstChild = doc.getFirstChild();
+				if ("service".equals(nodeName)) {
+					Element eElement = (Element) firstChild;
+					parameter.setValue(eElement
+							.getElementsByTagName("parameter").item(0)
+							.getTextContent());
+
+				} else if ("serviceGroup".equals(nodeName)) {
+					NodeList childNodes = firstChild.getChildNodes();
+					for (int i = 0; i < childNodes.getLength(); i++) {
+						Node tempNode = childNodes.item(i);
+						if(tempNode instanceof Element){
+						Element eElement = (Element) tempNode;
+						parameter.setValue(eElement.getElementsByTagName("parameter").item(0)
+								.getTextContent());
+						}
+					}
+				}
+
+			} else if (getProjectType().equals(DS_PROJECT)) {
+				parameter.setName("serviceType");
+				parameter.setValue("data_service");
+			} else if (getProjectType().equals(ESB_PROJECT)) {
+				parameter.setName("serviceType");
+				parameter.setType(new BigInteger("1"));
+				parameter.setValue("proxy");
+			}
+
+		} catch (Exception e) {
+			/* ignored */
+		}
+	}
+
 	 private void hideIntroView(){
 	    	try {
 	    		 IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
@@ -334,14 +455,11 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				pomfile = project.getFile("pom.xml").getLocation().toFile();
 
 				MavenInfo mavenInfo = getModel().getMavenInfo();
-				mavenInfo.setPackageName("service/meta");
+				mavenInfo.setPackageName("service/meta");				
 				if(!pomfile.exists()){
 					createPOM(pomfile);
 				}
-				ProjectUtils.addNatureToProject(project,false,QOS_PROJECT_NATURE);
 				
-				MavenUtils.updateWithMavenEclipsePlugin(pomfile,new String[] { },
-						new String[] { QOS_PROJECT_NATURE });	
 				getModel().addToWorkingSet(project);
 				
 				serviceGroup = new ServiceGroup();
@@ -371,8 +489,11 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				
 				Service sService = createService(fname, operations);
 				serviceGroup.getService().add(sService);
-				metaFileName  = sService.getName()+"_"+mavenInfo.getVersion()+".xml";
+				metaFileName  = sService.getName()+"_"+qosProjectModel.getMavenInfo().getVersion()+".xml";
 				meta = project.getFile("src/main/resources/"+metaFileName).getLocation().toFile();
+				 ProjectUtils.addNatureToProject(project,false,QOS_PROJECT_NATURE);		
+					MavenUtils.updateWithMavenEclipsePlugin(pomfile,new String[] { },
+							new String[] { QOS_PROJECT_NATURE });	
 				meta.createNewFile();
 				QoSDashboardPage.metaProject = project;
 				QoSDashboardPage.metaFileName = metaFileName;
@@ -386,8 +507,8 @@ public class QOSProjectWizard extends AbstractWSO2ProjectCreationWizard {
 				monitor.worked(80);
  
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+			 /*ignored*/
 			}
 			setJobfinish(true);
 			monitor.worked(100);

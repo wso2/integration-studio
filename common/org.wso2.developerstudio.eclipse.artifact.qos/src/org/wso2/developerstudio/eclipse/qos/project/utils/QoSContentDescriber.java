@@ -23,9 +23,9 @@ public class QoSContentDescriber extends XMLContentDescriber {
 			Unmarshaller uUnmarshaller = jaxbContext.createUnmarshaller();
 		    ServiceGroup group	=(ServiceGroup) uUnmarshaller.unmarshal(input);
 		
-				return VALID;
+		    return VALID;
 		} catch (Exception e) {
-			log.warn(e);
+			//log.warn("invalid target file");
 			return INVALID;
 		}
 		

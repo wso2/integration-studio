@@ -22,12 +22,21 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidator;
 
 public class QOSProjectFieldController extends AbstractFieldController {
-
 	
 	public void validate(String modelProperty, Object value, ProjectDataModel model)
 	        throws FieldValidationException {
 		if (modelProperty.equals("project.name")) {
 			CommonFieldValidator.validateProjectField(value);
+		} else if (modelProperty.equals("ps.type")) {
+			if (value == null) {
+				throw new FieldValidationException(
+						"Service Name cannot be empty");
+			}
+			String serviceName = value.toString();
+			if (serviceName.trim().equals("")) {
+				throw new FieldValidationException(
+						"Service Name cannot be empty");
+			}
 		}
 	}
 }

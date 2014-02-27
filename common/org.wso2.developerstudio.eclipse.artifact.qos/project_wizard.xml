@@ -10,7 +10,13 @@
 				  title="New QoS Project" 
 				  description="Create new QoS Project" 
 				  error="Please give a name for the QoS Project">
-			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.qos.project.controller.QOSProjectFieldController">Project Name</data>
+			
+		<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.qos.project.controller.QOSProjectFieldController">Project Name</data>
+		<data modelProperty="ps.type" type="list" 
+		fieldController="org.wso2.developerstudio.eclipse.qos.project.controller.QOSProjectFieldController"  
+		controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.qos.project.controller.QoSProjectTypeList">Service Name</data>
+		
+		
 <!-- data modelProperty="import.file" type="file" filter="*.wsdl" fieldController="org.wso2.developerstudio.eclipse.qos.project.controller.QOSProjectFieldController">WSDL File</data>-->
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>

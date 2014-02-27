@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2013, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,6 +87,7 @@ public class SelectWSDLPage extends WizardPage {
 		super(pageName);
 		setTitle(pageName);
 		this.model = model;
+		setPageComplete(false);
 	}
 	
 	public void createControl(Composite parent) {

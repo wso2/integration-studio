@@ -290,6 +290,13 @@
 				class="org.wso2.developerstudio.eclipse.platform.ui.action.SyncDependenciesAction"
 				enablesFor="1">
 			</action>
+			<action
+				id="org.wso2.developerstudio.eclipse.maven.contribution.updatepom"
+				label="Upgrade Plugin Versions in pom.xml"
+				menubarPath="org.wso2.developerstudio.eclipse.maven.contribution/group1"
+				class="org.wso2.developerstudio.eclipse.platform.ui.action.UpgradePluginVersionsAction"
+				enablesFor="1">
+			</action>
 		</objectContribution>
 	</extension>
 </plugin>

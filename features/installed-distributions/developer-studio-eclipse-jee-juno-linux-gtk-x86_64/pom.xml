@@ -257,7 +257,11 @@
                             	<feature>
                             		<id>org.wso2.tcpmon.feature.feature.group</id>
                             		<version>${tcpmon.feature.version}</version>
-                            	</feature>  								
+                            	</feature>
+                                <feature>
+                                        <id>org.wso2.developerstudio.eclipse.qos.artifact.feature.group</id>
+                                        <version>${qos.feature.version}</version>
+                                </feature>  								
                             </features>
                         </configuration>
                     </execution>
@@ -266,6 +270,40 @@
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
+                                        <execution>
+                                        <id>install-egit</id>
+                                        <phase>package</phase>
+                                        <goals>
+                                                <goal>run</goal>
+                                        </goals>
+                                        <configuration>
+                                        <tasks>
+                                                <java classname="org.eclipse.equinox.launcher.Main" fork="true"
+                                                        spawn="false" failonerror="true" maxmemory="1024m">
+                                                <classpath>
+                                                        <fileset dir="${project.basedir}/target/eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />
+                                                </classpath>
+                                                <arg value="-nosplash" />
+                                                <arg value="-application" />
+                                                <arg value="org.eclipse.equinox.p2.director" />
+                                                <arg value="-repository" />
+                                                <arg value="file:${project.basedir}/target/egit-repo" />
+                                                <arg value="-destination" />
+                                                <arg value="${project.basedir}/target/eclipse" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.jgit.feature.group" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.jgit.pgm.feature.group" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.jgit.java7.feature.group" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.egit.mylyn.feature.group" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.egit.feature.group" />
+                                        </java>
+                                        </tasks>
+                                </configuration>
+                                </execution>
 					<execution>
 					<id>install-eclipse</id>
 					<phase>package</phase>
@@ -291,9 +329,11 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group" />
 						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.bps.feature.feature.group" />
+						<arg value="org.eclipse.bpel.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group" />
+						<arg value="-installIU" />
+                  <arg value="org.wso2.developerstudio.eclipse.bps.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.registry.feature.feature.group" />
 						<arg value="-installIU" />
@@ -333,7 +373,7 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group" />
 						<arg value="-installIU" />
-                                                <arg value="org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group" />
+<arg value="org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group" />
 						<arg value="-installIU" />
@@ -360,45 +400,8 @@
 						<arg value="org.wso2.soapui.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.tcpmon.feature.feature.group" />
-					</java>
-					</tasks>
-				</configuration>
-				</execution>
-			</executions>
-		</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-					<id>install-egit</id>
-					<phase>package</phase>
-					<goals>
-						<goal>run</goal>
-					</goals>
-					<configuration>
-					<tasks>
-						<java classname="org.eclipse.equinox.launcher.Main" fork="true"
-							spawn="false" failonerror="true" maxmemory="1024m">
-						<classpath>
-							<fileset dir="${project.basedir}/target/eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />
-						</classpath>
-						<arg value="-nosplash" />
-						<arg value="-application" />
-						<arg value="org.eclipse.equinox.p2.director" />
-						<arg value="-repository" />
-						<arg value="file:${project.basedir}/target/egit-repo" />
-						<arg value="-destination" />
-						<arg value="${project.basedir}/target/eclipse" />
 						<arg value="-installIU" />
-						<arg value="org.eclipse.jgit.feature.group" />
-                                                <arg value="-installIU" />
-						<arg value="org.eclipse.jgit.pgm.feature.group" />
-                                                <arg value="-installIU" />
-						<arg value="org.eclipse.egit.import.feature.group" />
-                                                <arg value="-installIU" />
-						<arg value="org.eclipse.egit.mylyn.feature.group" />
-                                                <arg value="-installIU" />
-						<arg value="org.eclipse.egit.feature.group" />
+						<arg value="org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group" />
 					</java>
 					</tasks>
 				</configuration>

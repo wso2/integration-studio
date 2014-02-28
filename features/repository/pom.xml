@@ -77,10 +77,9 @@
 	
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.feature:${appserver.tools.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.artifact.feature:${appserver.tools.feature.version}</featureArtifactDef>
-					
-                                                <!--featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.artifact.feature:${bps.tools.feature.version}</featureArtifactDef>
-                                                <featureArtifactDef>org.wso2.developerstudio:org.eclipse.bpel.feature:${eclipse.bpel.feature.version}</featureArtifactDef-->
-
+						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bps.feature:${bps.tools.feature.version}</featureArtifactDef>
+						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.artifact.feature:${bps.tools.feature.version}</featureArtifactDef>
+						 <featureArtifactDef>org.wso2.developerstudio:org.eclipse.bpel.feature:${eclipse.bpel.feature.version}</featureArtifactDef>
 
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.feature:${registry.tools.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.artifact.feature:${registry.tools.feature.version}</featureArtifactDef>
@@ -120,6 +119,7 @@
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature:${brs.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.soapui.feature:${soapui.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.tcpmon.feature:${tcpmon.feature.version}</featureArtifactDef>
+						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature:${qos.feature.version}</featureArtifactDef>
             			</featureArtifacts>
 				        <bundleArtifacts>
 						<bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.logging:${common.logging.version}</bundleArtifactDef>
@@ -204,10 +204,9 @@
 						<features>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.feature:${appserver.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appserver.artifact.feature:${appserver.tools.feature.version}</featureArtifactDef>
-							
-                                                	<!--featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.artifact.feature:${bps.tools.feature.version}</featureArtifactDef>
-                                                	<featureArtifactDef>org.wso2.developerstudio:org.eclipse.bpel.feature:${eclipse.bpel.feature.version}</featureArtifactDef-->
-
+							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bps.feature:${bps.tools.feature.version}</featureArtifactDef>
+							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.bpel.artifact.feature:${bps.tools.feature.version}</featureArtifactDef>
+							<featureArtifactDef>org.wso2.developerstudio:org.eclipse.bpel.feature:${eclipse.bpel.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.feature:${registry.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.artifact.feature:${registry.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.feature:${esb.tools.feature.version}</featureArtifactDef>
@@ -239,10 +238,13 @@
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.server.framework.feature:${server.framework.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.usermgt.core.feature:${usermgt.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.cep.artifact.feature:${cep.feature.version}</featureArtifactDef>
-							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.jaggery.artifact.feature:${jaggery.feature.version}</featureArtifactDef>	
+							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.jaggery.artifact.feature:${jaggery.feature.version}</featureArtifactDef>				
+							
+
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature:${brs.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.soapui.feature:${soapui.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.tcpmon.feature:${tcpmon.feature.version}</featureArtifactDef>
+							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature:${qos.feature.version}</featureArtifactDef>
 		                            			</features>
 							</category>							    
 								    <!--category>

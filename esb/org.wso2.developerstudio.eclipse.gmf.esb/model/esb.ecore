@@ -2598,4 +2598,12 @@
     <eLiterals name="Inline"/>
     <eLiterals name="NamespacedPropertyEditor" value="1"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediator" eSuperTypes="#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//DataMapperMediatorInputConnector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//DataMapperMediatorOutputConnector"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorInputConnector" eSuperTypes="#//InputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
 </ecore:EPackage>

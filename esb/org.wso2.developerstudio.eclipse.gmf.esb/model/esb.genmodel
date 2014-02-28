@@ -1978,5 +1978,11 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CloudConnectorOperationInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CloudConnectorOperationOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//DataMapperMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/inputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/outputConnector"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//DataMapperMediatorInputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//DataMapperMediatorOutputConnector"/>
   </genPackages>
 </genmodel:GenModel>

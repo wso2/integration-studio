@@ -31,8 +31,10 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.EsbPropertySource;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.sheet.CustomAdvancedPropertySection;
 
-// Added '@generated NOT' because we extend this using CustomAdvancedPropertySection
-// Earlier it was extended from AdvancedPropertySection, since we need our custom sort we use this
+// Added '@generated NOT' because we extend this using
+// CustomAdvancedPropertySection
+// Earlier it was extended from AdvancedPropertySection, since we need our
+// custom sort we use this
 /**
  * @generated NOT
  */

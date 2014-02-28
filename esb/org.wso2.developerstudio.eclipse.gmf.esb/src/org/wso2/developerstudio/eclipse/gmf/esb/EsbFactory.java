@@ -1590,6 +1590,33 @@ public interface EsbFactory extends EFactory {
 	CloudConnectorOperationOutputConnector createCloudConnectorOperationOutputConnector();
 
 	/**
+	 * Returns a new object of class '<em>Data Mapper Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Mapper Mediator</em>'.
+	 * @generated
+	 */
+	DataMapperMediator createDataMapperMediator();
+
+	/**
+	 * Returns a new object of class '<em>Data Mapper Mediator Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Mapper Mediator Input Connector</em>'.
+	 * @generated
+	 */
+	DataMapperMediatorInputConnector createDataMapperMediatorInputConnector();
+
+	/**
+	 * Returns a new object of class '<em>Data Mapper Mediator Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Mapper Mediator Output Connector</em>'.
+	 * @generated
+	 */
+	DataMapperMediatorOutputConnector createDataMapperMediatorOutputConnector();
+
+	/**
 	 * Returns a new object of class '<em>Script Mediator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

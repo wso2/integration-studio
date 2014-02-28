@@ -599,6 +599,11 @@ public class SequenceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(EsbPackage.Literals.SEQUENCE__INCLUDED_MEDIATORS,
+				 EsbFactory.eINSTANCE.createDataMapperMediator()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(EsbPackage.Literals.SEQUENCE__DYNAMIC_REFERENCE_KEY,
 				 EsbFactory.eINSTANCE.createNamespacedProperty()));
 

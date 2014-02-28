@@ -14,8 +14,8 @@
     <name>WSO2 Eclipse BPS Features</name>
     <modules>
 	<module>org.wso2.developerstudio.eclipse.bpel.artifact.feature</module>
-    	<!--module>org.wso2.developerstudio.eclipse.bps.feature</module-->
-	<module>org.eclipse.bpel.feature</module>
+    	<module>org.wso2.developerstudio.eclipse.bps.feature</module>
+	<!--module>org.eclipse.bpel.feature</module>-->
     </modules>
 </project>
 

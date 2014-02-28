@@ -41,6 +41,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -63,7 +64,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolTip;
 import org.eclipse.ui.ISelectionListener;
@@ -96,13 +99,19 @@ import org.wso2.developerstudio.eclipse.qos.project.model.Association;
 import org.wso2.developerstudio.eclipse.qos.project.model.Binding;
 import org.wso2.developerstudio.eclipse.qos.project.model.Bindings;
 import org.wso2.developerstudio.eclipse.qos.project.model.Module;
+import org.wso2.developerstudio.eclipse.qos.project.model.Parameter;
 import org.wso2.developerstudio.eclipse.qos.project.model.Policies;
 import org.wso2.developerstudio.eclipse.qos.project.model.Policy;
 import org.wso2.developerstudio.eclipse.qos.project.model.Policy2;
 import org.wso2.developerstudio.eclipse.qos.project.model.Service;
 import org.wso2.developerstudio.eclipse.qos.project.model.ServiceGroup;
+import org.wso2.developerstudio.eclipse.qos.project.ui.dialog.NamedEntityDescriptor;
+import org.wso2.developerstudio.eclipse.qos.project.ui.dialog.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.qos.project.ui.dialog.RegistryKeyPropertyEditorDialog;
+import org.wso2.developerstudio.eclipse.qos.project.ui.dialog.UserRolesDialog;
 import org.wso2.developerstudio.eclipse.qos.project.ui.wizard.QOSProjectWizard;
 import org.wso2.developerstudio.eclipse.qos.project.utils.QoSTemplateUtil;
+import org.wso2.developerstudio.eclipse.qos.project.utils.RegistryUtils;
 import org.xml.sax.SAXException;
 
 
@@ -143,13 +152,13 @@ public class QoSDashboardPage extends FormPage {
 	public static String serviceName;
 	public static IProject metaProject;
 	public static String metaFileName;
-	private static IPreferencesService preferenceStore;
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 
 	private File metaFile;
 	private String policyFileName;
+	private String selectedPolicy;
 	private Document doc;
 	private Element rampart;
 	private Map<String,String> configMap;
@@ -158,12 +167,22 @@ public class QoSDashboardPage extends FormPage {
 	private Map<String,Object> basicRampartControlMap;
 	private Map<String,String> keyStoreMap;
 	private Map<String,Button> policyeMap;
+	private boolean policySelected;
 	private ISelectionListener selectionListener = null;
 	private ISelection selection = null;
 	private boolean kerberossignandencrypt = true;
 	
+	private List<String> utRoles;
 	
+	private static IPreferencesService preferenceStore;
+
 	private Button saveButton;
+	
+	private Button registryBrowser;
+	
+	private Button userRolesButton;
+	
+	private Text policyPathText;
 
 	private Combo keysCombo;
 
@@ -178,6 +197,8 @@ public class QoSDashboardPage extends FormPage {
 	private ServiceGroup serviceGroup;
 
 	private File serviceMetaFile;
+	
+	private RegistryKeyProperty registryKey;
 	/**
 	 * Create the form page.
 	 * @param id
@@ -185,6 +206,7 @@ public class QoSDashboardPage extends FormPage {
 	 */
 	public QoSDashboardPage(String id, String title) {
 		super(id, title);
+		policySelected = false;
 	}
 
 	static{
@@ -209,6 +231,7 @@ public class QoSDashboardPage extends FormPage {
 		basicRampartControlMap =  new HashMap<String,Object>();
 		policyeMap = new HashMap<String,Button>();
 		//serviceList = getServiceList();
+		policySelected = false;
 	}
 
 	/**
@@ -259,7 +282,7 @@ public class QoSDashboardPage extends FormPage {
 		Composite compositeAdvaceInfo = new Composite(serviceInfoMainComposite, SWT.NULL);
 		
 		
-		managedForm.getToolkit().createLabel(compositeBasicInfo, "Services List");
+		managedForm.getToolkit().createLabel(compositeBasicInfo, "Services List :");
 		serviceNameText = new Combo(compositeBasicInfo, SWT.FLAT | SWT.READ_ONLY);
 		managedForm.getToolkit().adapt(serviceNameText,true,true);
 		
@@ -349,21 +372,21 @@ public class QoSDashboardPage extends FormPage {
 			 @Override
 			public void widgetSelected(SelectionEvent e) {
 				 int selectionIndex = enableSecCombo.getSelectionIndex();
-				 if(selectionIndex==0){
-					 if(saveButton != null){
-						 saveButton.setEnabled(false);
-						 if(secSecurity != null){
-							 secSecurity.setEnabled(false);
-						 }
-					 }
-				 }else{
-					 if(saveButton != null){ 
-						 saveButton.setEnabled(true);
-					 if(secSecurity != null){
-						 secSecurity.setEnabled(true);
-					 }
-					 }
-				 }
+				if (selectionIndex == 0) {
+					if (saveButton != null) {
+						saveButton.setEnabled(false);
+						if (secSecurity != null) {
+							secSecurity.setEnabled(false);
+						}
+					}
+				} else {
+					if (saveButton != null && policySelected) {
+						saveButton.setEnabled(true);
+					}
+					if (secSecurity != null) {
+						secSecurity.setEnabled(true);
+					}
+				}
 			}
 		});
 
@@ -389,7 +412,7 @@ public class QoSDashboardPage extends FormPage {
 	    secSecurity = (Section) result[0];
 	    secSecurity.setEnabled(false);
 		final Composite seccomposite = (Composite) result[1];
-		GridLayout gridSecLayout = new GridLayout(2, false);
+		GridLayout gridSecLayout = new GridLayout(4, false);
 		seccomposite.setLayout(gridSecLayout);
 
 		String[] names = new String[] { "UsernameToken", "Non-repudiation",
@@ -568,10 +591,12 @@ public class QoSDashboardPage extends FormPage {
 			setRampartConfig();
 		    saveRampartConfigToFile(serviceMetaFile);
 		    RefreshProject();
-		} catch (JAXBException | IOException| CoreException | ParserConfigurationException | SAXException
-				| TransformerException e) {
+		} catch (Exception e) {
 			log.error("Saving Error");
-		}
+		} /*finally {
+			// Delete temp files checked out from registry.
+		    deleteTempFiles();
+		}*/
 	}
 	
 	private void updateRampartUI(){
@@ -623,15 +648,17 @@ public class QoSDashboardPage extends FormPage {
 			 serviceNameText.setItems(new String[]{service.getName()});
 			 serviceNameText.select(0);
 			 Policies policies = service.getPolicies();
-			 List<Policy> policy = policies.getPolicy();
-			 for (Policy policy2 : policy) {
-				 Button button = policyeMap.get(policy2.getPolicyUUID());
-				 if(button!=null){
-					 button.setSelection(true);
-					 setPolicyFileName((String) button.getData());
-					 break;
-				 }
-			}
+			 if (policies != null) {
+				 List<Policy> policy = policies.getPolicy();
+				 for (Policy policy2 : policy) {
+					 Button button = policyeMap.get(policy2.getPolicyUUID());
+					 if(button!=null){
+						 button.setSelection(true);
+						 setPolicyFileName((String) button.getData());
+						 break;
+					 }
+				}
+			 }
 			 enableSecCombo.select(1); 
 			 secSecurity.setEnabled(true);
 			 saveButton.setEnabled(true);
@@ -715,8 +742,21 @@ public class QoSDashboardPage extends FormPage {
        }
 		if (service != null) {
 			QoSTemplateUtil qoSTemplateUtil = new QoSTemplateUtil();
-			String filename = "policies/" + getPolicyFileName();
-			File resourceFile = qoSTemplateUtil.getResourceFile(filename);
+			String filename = "";
+			File resourceFile = null;
+			
+			/*if (StringUtils.isNotBlank(selectedPolicy)
+						&& selectedPolicy.equals("registry")) {
+				filename = getPolicyFileName();
+				resourceFile = new File(filename);
+			} else {
+				filename = "policies/" + getPolicyFileName();
+				resourceFile = qoSTemplateUtil.getResourceFile(filename);
+			}*/
+			
+			filename = "policies/" + getPolicyFileName();
+			resourceFile = qoSTemplateUtil.getResourceFile(filename);
+						
 			if (resourceFile != null) {
 				JAXBContext pjaxbContext = JAXBContext
 						.newInstance(Policy2.class);
@@ -731,6 +771,36 @@ public class QoSDashboardPage extends FormPage {
 				Policies policies = new Policies();
 				policies.getPolicy().add(policy);
 				service.setPolicies(policies);
+				
+				//Define roles in UsernameToken security policy.
+				if (StringUtils.isNotBlank(selectedPolicy)
+						&& selectedPolicy.equals("UsernameToken") && utRoles != null
+						&& utRoles.size() > 0) {
+					String roleList = "";
+					Parameter parameter = new Parameter(); 
+					parameter.setName("allowRoles");
+					for (int i = 0; i < utRoles.size(); i++) {
+						if (i == utRoles.size() - 1) {
+							roleList += utRoles.get(i);
+						} else {
+							roleList += utRoles.get(i) + ",";
+						}
+					}
+					parameter.setValue(roleList);
+					
+					// add 'allowRoles' parameter for UT policy.
+					service.getModuleOrParameterOrPolicyUUID().add(parameter);
+				} else if (StringUtils.isNotBlank(selectedPolicy)
+						&& selectedPolicy.equals("registry")) {
+					Parameter parameter = new Parameter();
+					parameter.setName("secPolicyRegistryPath");
+					parameter.setType(new BigInteger("1"));
+					parameter.setValue(policyPathText.getText().trim());
+					
+					// add 'secPolicyRegistryPath' parameter for Registry policy.
+					service.getModuleOrParameterOrPolicyUUID().add(parameter);
+				}
+				
 				Bindings bindings = service.getBindings();
 				if (bindings != null) {
 					List<Binding> bindingList = bindings.getBinding();
@@ -740,24 +810,51 @@ public class QoSDashboardPage extends FormPage {
 						}
 					}
 				}
+				
 				service.setBindings(bindings);
-				Module module = new Module();
-				module.setName("rampart");
-				module.setVersion("1.61-wso2v10");
-				module.setType("engagedModules");
-				service.getModuleOrParameterOrPolicyUUID().add(module);
-				Association associationKeyStore = new Association();
-				associationKeyStore
-						.setDestinationPath("/_system/governance/repository/security/key-stores/carbon-primary-ks");
-				associationKeyStore.setType("service-keystore");
-				Association associationTrustStore = new Association();
-				associationTrustStore
-						.setDestinationPath("/_system/governance/repository/security/key-stores/carbon-primary-ks");
-				associationTrustStore.setType("trusted-keystore");
-				service.getModuleOrParameterOrPolicyUUID().add(
-						associationKeyStore);
-				service.getModuleOrParameterOrPolicyUUID().add(
-						associationTrustStore);
+				
+				List<Object> moduleParamOrasociationList =  service.getModuleOrParameterOrPolicyUUID();
+				boolean rampartModulefound = false;
+				boolean serviceKeystoreFound = false;
+				boolean trustedKeystoreFound  = false;
+				
+				for (Object object : moduleParamOrasociationList) {
+					if (object instanceof Module) {
+						Module module = (Module)object;
+						if (module.getName().equals("rampart")) {
+							rampartModulefound = true;
+						}
+					} else if (object instanceof Association) {
+						Association association = (Association)object;
+						if (association.getType().equals("service-keystore")){
+							serviceKeystoreFound = true;
+						} else if (association.getType().equals("trusted-keystore")) {
+							trustedKeystoreFound = true;
+						}
+					}
+				}
+				
+				if (!rampartModulefound) {
+					Module module = new Module();
+					module.setName("rampart");
+					module.setVersion("1.61-wso2v10");
+					module.setType("engagedModules");
+					service.getModuleOrParameterOrPolicyUUID().add(module);
+				}
+				
+				if (!serviceKeystoreFound) {
+					Association associationKeyStore = new Association();
+					associationKeyStore.setDestinationPath("/_system/governance/repository/security/key-stores/carbon-primary-ks");
+					associationKeyStore.setType("service-keystore");
+					service.getModuleOrParameterOrPolicyUUID().add(associationKeyStore);
+				}
+				
+				if (!trustedKeystoreFound) {
+					Association associationTrustStore = new Association();
+					associationTrustStore.setDestinationPath("/_system/governance/repository/security/key-stores/carbon-primary-ks");
+					associationTrustStore.setType("trusted-keystore");
+					service.getModuleOrParameterOrPolicyUUID().add(associationTrustStore);
+				}
 			}
 		}
 	}
@@ -985,33 +1082,48 @@ public class QoSDashboardPage extends FormPage {
 			i++;
 			final Button secBtn = new Button(seccomposite, SWT.RADIO);
 			 secBtn.setText("");
+			 secBtn.setToolTipText(name);
 			 String fileName ="scenario"+i+"-policy.xml";
 			 secBtn.setData(fileName);
 			 secBtn.addSelectionListener(new SelectionAdapter() {
 				 @Override
 				public void widgetSelected(SelectionEvent e) {
 					 String pfile = (String) secBtn.getData();
-					 setPolicyFileName(pfile);		
+					 setPolicyFileName(pfile);
+					 selectedPolicy = secBtn.getToolTipText();
+					 policySelected = true;
+					 saveButton.setEnabled(true);
+					 
+					 // Enable/Disable buttons. 
+					 if (secBtn.getToolTipText().equals("registry")) {
+						 registryBrowser.setEnabled(true);
+						 userRolesButton.setEnabled(false);
+					 } else if (secBtn.getToolTipText().equals("UsernameToken")) {
+						 userRolesButton.setEnabled(true);
+						 registryBrowser.setEnabled(false);
+					 } else {
+						 registryBrowser.setEnabled(false);
+						 userRolesButton.setEnabled(false);
 					 }
+				}
 			});
 			 
-				try {
-					    String filename = "policies/" + fileName;
-					    QoSTemplateUtil qoSTemplateUtil = new QoSTemplateUtil();
-						File resourceFile = qoSTemplateUtil.getResourceFile(filename);
-						if (resourceFile != null) {
-							JAXBContext pjaxbContext = JAXBContext.newInstance(Policy2.class);
-							Unmarshaller pUnmarshaller = pjaxbContext.createUnmarshaller();
-							Policy2 policy2 = (Policy2) pUnmarshaller.unmarshal(resourceFile);
-							policyeMap.put(policy2.getId(),secBtn );
-						}
-				} catch (IOException | JAXBException e1) {
-				  log.error("policy file reading", e1);
-				}catch(Exception e){
-					/*Ignore*/
+			try {
+				String filename = "policies/" + fileName;
+				QoSTemplateUtil qoSTemplateUtil = new QoSTemplateUtil();
+				File resourceFile = qoSTemplateUtil.getResourceFile(filename);
+				if (resourceFile != null) {
+					JAXBContext pjaxbContext = JAXBContext.newInstance(Policy2.class);
+					Unmarshaller pUnmarshaller = pjaxbContext.createUnmarshaller();
+					Policy2 policy2 = (Policy2) pUnmarshaller.unmarshal(resourceFile);
+					policyeMap.put(policy2.getId(), secBtn);
 				}
+
+			} catch (Exception e) {
+				/* Ignore */
+				log.error("policy file reading", e);
+			}
 			
-			 
      		 final ToolTip tip = new ToolTip(seccomposite.getShell(), SWT.BALLOON | SWT.ICON_INFORMATION);
 			 tip.setMessage("Description not available");
 
@@ -1019,10 +1131,64 @@ public class QoSDashboardPage extends FormPage {
 			  createHyperlink.addHyperlinkListener(new HyperlinkAdapter(){
 				  @Override
 				public void linkActivated(HyperlinkEvent e) {
-					 tip.setVisible(true);
+					 //Fixing TOOLS-2293.
+					  //tip.setVisible(true);
 				}
 				  
 			  });
+			  
+			if (name.equals("registry")) {
+				GridData policyLinkGrdiData = new GridData();
+				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
+				policyLinkGrdiData.grabExcessHorizontalSpace = false;
+				createHyperlink.setLayoutData(policyLinkGrdiData);
+				
+				policyPathText = new Text(seccomposite, SWT.NONE);
+				policyPathText.setEnabled(false);
+				GridData policyPathTextGridData = new GridData();
+				policyPathTextGridData.horizontalAlignment = GridData.FILL;
+				policyPathTextGridData.minimumWidth = 200;
+				policyPathText.setLayoutData(policyPathTextGridData);
+				
+				registryBrowser = new Button(seccomposite, SWT.NONE);
+				registryBrowser.setText("Browse From Registry");
+				registryBrowser.setEnabled(false);
+				registryBrowser.addListener(SWT.Selection, new Listener() {
+					public void handleEvent(Event event) {
+						openRegistryDialog();
+					}
+				});
+				GridData browseButtonGridData = new GridData();
+				browseButtonGridData.horizontalAlignment = GridData.BEGINNING;
+				browseButtonGridData.grabExcessHorizontalSpace = false;
+				registryBrowser.setLayoutData(browseButtonGridData);
+				
+			} else if (name.equals("UsernameToken")) {
+				GridData policyLinkGrdiData = new GridData();
+				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
+				policyLinkGrdiData.grabExcessHorizontalSpace = true;
+				policyLinkGrdiData.horizontalSpan = 2;
+				createHyperlink.setLayoutData(policyLinkGrdiData);
+				
+				userRolesButton = new Button(seccomposite, SWT.NONE);
+				userRolesButton.setText("User Roles");
+				userRolesButton.setEnabled(false);
+				userRolesButton.addListener(SWT.Selection, new Listener() {
+					public void handleEvent(Event event) {
+						openUserRolesDialog();
+					}
+				});
+				
+				GridData userRolesButtonGridData = new GridData();
+				userRolesButtonGridData.horizontalAlignment = GridData.BEGINNING;
+				userRolesButtonGridData.grabExcessHorizontalSpace = false;
+				userRolesButton.setLayoutData(userRolesButtonGridData);
+			} else {
+				GridData policyLinkGrdiData = new GridData();
+				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
+				policyLinkGrdiData.horizontalSpan = 3;
+				createHyperlink.setLayoutData(policyLinkGrdiData);
+			}
 			  
 		   } 
 	}
@@ -1087,7 +1253,7 @@ public class QoSDashboardPage extends FormPage {
 	private void createCategory(IManagedForm managedForm,Composite composite, String category){
 		Label lblcategory = managedForm.getToolkit().createLabel(composite, category, SWT.NONE);
 		lblcategory.setFont(SWTResourceManager.getFont("Sans", 10, SWT.BOLD));
-		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false,2, 1);
+		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false,4, 1);
 		gd_category.verticalIndent=10;
 		lblcategory.setLayoutData(gd_category);
 		 
@@ -1176,6 +1342,51 @@ public class QoSDashboardPage extends FormPage {
 	            return methods;
 	    }
 	   
+	}
+	
+	/**
+	 * Open Registry browse dialog for Registry policy.
+	 */
+	private void openRegistryDialog() {
+		if (registryKey == null) {
+			registryKey = new RegistryKeyProperty();
+		}
+
+		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(PlatformUI
+				.getWorkbench().getActiveWorkbenchWindow().getShell(), PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getShell().getStyle(),
+				new ArrayList<NamedEntityDescriptor>(), registryKey);
+		dialog.open();
+
+		if (StringUtils.isNotBlank(registryKey.getKeyValue())) {
+			policyPathText.setText(registryKey.getKeyValue());
+
+			//String tmpPolicyFile = registryKey.getTempPolicyFilePath() + File.separator
+			//		+ registryKey.getPolicyFileName();
+			//setPolicyFileName(tmpPolicyFile);
+		}
+
+	}
+	
+	/**
+	 * Open User Roles dialog for UT policy.
+	 */
+	private void openUserRolesDialog() {
+		if(utRoles == null) {
+			utRoles = new ArrayList<String>();
+		} else {
+			utRoles.clear();
+		}
+		
+		UserRolesDialog dialog = new UserRolesDialog(PlatformUI
+				.getWorkbench().getActiveWorkbenchWindow().getShell(), utRoles);
+		dialog.open();
+	}
+	
+	private void deleteTempFiles() {
+		if (registryKey != null) {
+			RegistryUtils.getInstance().deleteTempFiles(registryKey);
+		}		
 	}
 	
 }

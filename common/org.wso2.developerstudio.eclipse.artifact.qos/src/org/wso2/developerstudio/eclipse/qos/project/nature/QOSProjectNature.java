@@ -18,7 +18,6 @@ package org.wso2.developerstudio.eclipse.qos.project.nature;
 
 import java.io.File;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
@@ -32,7 +31,6 @@ import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.nature.AbstractWSO2ProjectNature;
 import org.wso2.developerstudio.eclipse.qos.project.ui.wizard.QOSProjectWizard;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.ide.FileExtensionResourcevisitor;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
     <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" schemaLocation="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
-    <xs:import namespace="http://schemas.xmlsoap.org/ws/2004/09/policy" schemaLocation="http://schemas.xmlsoap.org/ws/2004/09/policy/ws-policy.xsd"/>
+    <xs:import namespace="http://schemas.xmlsoap.org/ws/2004/09/policy" schemaLocation="ws-policy.xsd"/>
+   
+  
+  
     <xs:element name="serviceGroup">
         <xs:complexType>
             <xs:sequence>

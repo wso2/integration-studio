@@ -8,7 +8,7 @@
             id="org.wso2.developerstudio.eclipse.qos.QoSDashboard"
             extensions="xml"
             name="Quality of Service(QoS)"
-            icon="icons/qos-16x16.png">
+            icon="icons/secured.gif">
             <contentTypeBinding
 				contentTypeId="org.wso2.developerstudio.eclipse.qos.project.contenttype.xml">
 			</contentTypeBinding>
@@ -44,7 +44,7 @@
      <command
            commandId="org.wso2.developerstudio.eclipse.qos.QoSDashboard"
            style="push"
-           icon="icons/qos-16x16.png">
+           icon="icons/secured.gif">
         <visibleWhen checkEnabled="false">
             <with variable="activeMenuSelection">
                <iterate ifEmpty="false" operator="and">
@@ -61,6 +61,10 @@
                  		 <test
                    			 property="org.eclipse.core.resources.projectNature"
                     		 value="org.wso2.developerstudio.eclipse.ds.project.nature">
+                 		</test>
+                 		 <test
+                   			 property="org.eclipse.core.resources.projectNature"
+                    		 value="org.wso2.developerstudio.eclipse.esb.project.nature">
                  		</test>
                  		</or>                 
                 	 </and>
@@ -82,7 +86,7 @@
 	</extension>
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.developerstudio.eclipse.qos.project.natureImage"
-			natureId="org.wso2.developerstudio.eclipse.qos.project.nature" icon="icons/qos-12x12.png">
+			natureId="org.wso2.developerstudio.eclipse.qos.project.nature" icon="icons/secured.gif">
 		</image>
 	</extension>
 	
@@ -93,7 +97,7 @@
 			class="org.wso2.developerstudio.eclipse.qos.project.ui.wizard.QOSProjectWizard"
 			id="org.wso2.developerstudio.eclipse.artifact.newqosproject"
 			wizardManifest="project_wizard.xml"
-			icon="icons/esb-project-12.png"
+			icon="icons/secured.gif"
 			project="true">
 			<description>QoS Project</description>
 		</wizard>

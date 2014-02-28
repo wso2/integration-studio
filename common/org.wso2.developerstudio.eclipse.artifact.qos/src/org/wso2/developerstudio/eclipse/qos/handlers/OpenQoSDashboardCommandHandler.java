@@ -25,10 +25,8 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IViewReference;
@@ -41,9 +39,6 @@ import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.qos.Activator;
-import org.wso2.developerstudio.eclipse.qos.project.model.Service;
-import org.wso2.developerstudio.eclipse.qos.project.ui.dashboard.QoSDashboard;
-import org.wso2.developerstudio.eclipse.qos.project.ui.wizard.QOSProjectWizard;
 
 
 

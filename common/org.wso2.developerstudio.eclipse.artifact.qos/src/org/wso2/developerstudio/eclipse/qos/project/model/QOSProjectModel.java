@@ -25,6 +25,7 @@ public class QOSProjectModel extends ProjectDataModel {
 	private File serviceMetaLocation;
 	private String serviceClass;
 	private String wsdlURI;
+	private String serviceName;
 	
 	
 	public void setLocation(File location) {
@@ -37,23 +38,27 @@ public class QOSProjectModel extends ProjectDataModel {
 		return super.getLocation();
 	}
 	
- 	public Object getModelPropertyValue(String key) {
+ 	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
+
+	public Object getModelPropertyValue(String key) {
  		  Object modelPropertyValue = super.getModelPropertyValue(key);
- 		  if(key.equals("synapseConfig.location")){
- 				modelPropertyValue = getServiceMetaLocation();
- 			} else if (key.equals("mediatorClass.name")) {
- 				modelPropertyValue = getServiceClass();
- 			}
+ 		  if(key.equals("ps.type")){
+ 				modelPropertyValue = getServiceName();
+ 			}  
  		  return modelPropertyValue;
  		}
 	
 	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
 		boolean isUiControlUpdated = super.setModelPropertyValue(key, data);
-		if("synapseConfig.location".equals(key)){
-			setServiceMataLocation(new File(data.toString()));
-		} else if (key.equals("mediatorClass.name")) {
-			setServiceClass(data.toString());
-		}
+		if("ps.type".equals(key)){
+			setServiceName(data.toString());
+		}  
 		return isUiControlUpdated;
 	}
 	

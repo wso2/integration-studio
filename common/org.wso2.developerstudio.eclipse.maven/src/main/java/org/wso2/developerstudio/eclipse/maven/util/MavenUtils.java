@@ -614,4 +614,23 @@ public class MavenUtils {
 	public static void setSourceFolder(MavenProject mavenProject, String sourceDir){
 		mavenProject.getBuild().setSourceDirectory(sourceDir);
 	}
+	
+	/**
+	 * Upgrade the plugin versions of the given maven project. 
+	 * This will change the maven plugin versions of Developer Studio projects 
+	 * according to the working version of Developer Studio. 
+	 * @param project
+	 * @param mavenProject
+	 */
+	public static void upgradePluginVersions(IProject project, MavenProject mavenProject) {
+		List<Plugin> plugins = mavenProject.getBuildPlugins();
+		
+		for(Plugin plugin : plugins) {
+			String newVersion = WSO2MavenPluginVersions.getPluginVersion(plugin.getArtifactId());
+			if (newVersion != null && !plugin.getVersion().equals(newVersion)) {
+				//Update the plugin version.
+				plugin.setVersion(newVersion);
+			}
+		}
+	}
 }

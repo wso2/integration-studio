@@ -154,8 +154,7 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		/*iconPath = project.getLocation().toOSString() + File.separator + "cloudConnectors"
 				+ File.separator + connectorName + "-connector" + File.separator + "icon"
 				+ File.separator + "icon-large.gif";*/
-		iconPath = connectorPath + File.separator + "icon"
-				+ File.separator + "icon-large.gif";
+		iconPath = connectorPath + File.separator + "icon" + File.separator + "icon-large.gif";
 
 	}
 

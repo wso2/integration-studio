@@ -63,8 +63,8 @@
 				<bundleDef>org.eclipse.bpel.plugins:org.eclipse.bpel.validator:${eclipse.bps.tools.version}</bundleDef>
 				<bundleDef>org.eclipse.bpelins:org.eclipse.bpel.wsil.model:${eclipse.bps.tools.version}</bundleDef>
 				<bundleDef>org.eclipse.bpelins:org.eclipse.bpel.xpath10:${eclipse.bps.tools.version}</bundleDef>
-  				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.model:${bps.humantask.tools.feature.version}</bundleDef>
-                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.ui:${bps.humantask.tools.feature.version}</bundleDef>
+  				<!--bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.model:${bps.humantask.tools.feature.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.ui:${bps.humantask.tools.feature.version}</bundleDef-->
                                 <bundleDef>org.wso2.developerstudio:org.wso2.wsf.ide.bpel.export:${bps.export.tool.version}</bundleDef>
 			 </bundles>
                         </configuration>

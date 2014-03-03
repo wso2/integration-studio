@@ -350,6 +350,9 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
 				case CallMediatorInputConnectorEditPart.VISUAL_ID:
 				case CallMediatorOutputConnectorEditPart.VISUAL_ID:
 				case CallMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
+				case DataMapperMediatorEditPart.VISUAL_ID:
+				case DataMapperMediatorInputConnectorEditPart.VISUAL_ID:
+				case DataMapperMediatorOutputConnectorEditPart.VISUAL_ID:
 				case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
 				case EntitlementAdviceContainerEditPart.VISUAL_ID:
 				case EntitlementObligationsContainerEditPart.VISUAL_ID:
@@ -683,6 +686,9 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
 				|| CallMediatorOutputConnectorEditPart.VISUAL_ID == visualID
 				|| CallMediatorEndpointOutputConnectorEditPart.VISUAL_ID == visualID
 				|| MediatorFlow20EditPart.VISUAL_ID == visualID
+				|| DataMapperMediatorEditPart.VISUAL_ID == visualID
+				|| DataMapperMediatorInputConnectorEditPart.VISUAL_ID == visualID
+				|| DataMapperMediatorOutputConnectorEditPart.VISUAL_ID == visualID
 				|| EntitlementOnAcceptContainerEditPart.VISUAL_ID == visualID
 				|| MediatorFlow22EditPart.VISUAL_ID == visualID
 				|| EntitlementAdviceContainerEditPart.VISUAL_ID == visualID
@@ -1511,6 +1517,15 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
 		case MediatorFlow20EditPart.VISUAL_ID:
 			return createMediatorFlow_3746(domainElement, containerView, index, persisted,
 					preferencesHint);
+		case DataMapperMediatorEditPart.VISUAL_ID:
+			return createDataMapperMediator_3761(domainElement, containerView, index, persisted,
+					preferencesHint);
+		case DataMapperMediatorInputConnectorEditPart.VISUAL_ID:
+			return createDataMapperMediatorInputConnector_3762(domainElement, containerView, index,
+					persisted, preferencesHint);
+		case DataMapperMediatorOutputConnectorEditPart.VISUAL_ID:
+			return createDataMapperMediatorOutputConnector_3763(domainElement, containerView,
+					index, persisted, preferencesHint);
 		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
 			return createEntitlementOnAcceptContainer_3755(domainElement, containerView, index,
 					persisted, preferencesHint);
@@ -8824,6 +8839,118 @@ public class EsbViewProvider extends AbstractProvider implements IViewProvider {
 				EsbVisualIDRegistry
 						.getType(MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID), false,
 				true, false, false);
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createDataMapperMediator_3761(EObject domainElement, View containerView, int index,
+			boolean persisted, PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(EsbVisualIDRegistry.getType(DataMapperMediatorEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		Node label5211 = createLabel(node,
+				EsbVisualIDRegistry.getType(DataMapperMediatorDescriptionEditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createDataMapperMediatorInputConnector_3762(EObject domainElement,
+			View containerView, int index, boolean persisted, PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(EsbVisualIDRegistry
+				.getType(DataMapperMediatorInputConnectorEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createDataMapperMediatorOutputConnector_3763(EObject domainElement,
+			View containerView, int index, boolean persisted, PreferencesHint preferencesHint) {
+		Node node = NotationFactory.eINSTANCE.createNode();
+		node.getStyles().add(NotationFactory.eINSTANCE.createDescriptionStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
+		node.getStyles().add(NotationFactory.eINSTANCE.createLineStyle());
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(EsbVisualIDRegistry
+				.getType(DataMapperMediatorOutputConnectorEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(prefStore,
+				IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter.getColor(prefStore,
+					IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB).intValue());
+		}
 		return node;
 	}
 

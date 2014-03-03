@@ -1011,6 +1011,21 @@ public class EsbElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType DataMapperMediator_3761 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.DataMapperMediator_3761"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType DataMapperMediatorInputConnector_3762 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.DataMapperMediatorInputConnector_3762"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType DataMapperMediatorOutputConnector_3763 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.DataMapperMediatorOutputConnector_3763"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType EntitlementOnAcceptContainer_3755 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.EntitlementOnAcceptContainer_3755"); //$NON-NLS-1$
 
 	/**
@@ -2327,6 +2342,14 @@ public class EsbElementTypes {
 
 			elements.put(MediatorFlow_3746, EsbPackage.eINSTANCE.getMediatorFlow());
 
+			elements.put(DataMapperMediator_3761, EsbPackage.eINSTANCE.getDataMapperMediator());
+
+			elements.put(DataMapperMediatorInputConnector_3762,
+					EsbPackage.eINSTANCE.getDataMapperMediatorInputConnector());
+
+			elements.put(DataMapperMediatorOutputConnector_3763,
+					EsbPackage.eINSTANCE.getDataMapperMediatorOutputConnector());
+
 			elements.put(EntitlementOnAcceptContainer_3755,
 					EsbPackage.eINSTANCE.getEntitlementOnAcceptContainer());
 
@@ -2769,6 +2792,9 @@ public class EsbElementTypes {
 			KNOWN_ELEMENT_TYPES.add(CallMediatorOutputConnector_3744);
 			KNOWN_ELEMENT_TYPES.add(CallMediatorEndpointOutputConnector_3745);
 			KNOWN_ELEMENT_TYPES.add(MediatorFlow_3746);
+			KNOWN_ELEMENT_TYPES.add(DataMapperMediator_3761);
+			KNOWN_ELEMENT_TYPES.add(DataMapperMediatorInputConnector_3762);
+			KNOWN_ELEMENT_TYPES.add(DataMapperMediatorOutputConnector_3763);
 			KNOWN_ELEMENT_TYPES.add(EntitlementOnAcceptContainer_3755);
 			KNOWN_ELEMENT_TYPES.add(MediatorFlow_3756);
 			KNOWN_ELEMENT_TYPES.add(EntitlementAdviceContainer_3757);
@@ -3324,6 +3350,12 @@ public class EsbElementTypes {
 			return CallMediatorEndpointOutputConnector_3745;
 		case MediatorFlow20EditPart.VISUAL_ID:
 			return MediatorFlow_3746;
+		case DataMapperMediatorEditPart.VISUAL_ID:
+			return DataMapperMediator_3761;
+		case DataMapperMediatorInputConnectorEditPart.VISUAL_ID:
+			return DataMapperMediatorInputConnector_3762;
+		case DataMapperMediatorOutputConnectorEditPart.VISUAL_ID:
+			return DataMapperMediatorOutputConnector_3763;
 		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
 			return EntitlementOnAcceptContainer_3755;
 		case MediatorFlow22EditPart.VISUAL_ID:

@@ -162,7 +162,7 @@ public class CloudConnectorOperationDescriptionEditPart extends CompartmentEditP
 	 */
 	public void setLabel(WrappingLabel figure) {
 		figure.addMouseListener(new MediatorFigureSelectionListener(this.getParent()));
-		
+
 		unregisterVisuals();
 		setFigure(figure);
 		defaultText = getLabelTextHelper(figure);

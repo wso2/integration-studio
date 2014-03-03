@@ -449,6 +449,11 @@ public class EsbSequenceItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.ESB_SEQUENCE__CHILD_MEDIATORS,
 				 EsbFactory.eINSTANCE.createCloudConnectorOperation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.ESB_SEQUENCE__CHILD_MEDIATORS,
+				 EsbFactory.eINSTANCE.createDataMapperMediator()));
 	}
 
 }

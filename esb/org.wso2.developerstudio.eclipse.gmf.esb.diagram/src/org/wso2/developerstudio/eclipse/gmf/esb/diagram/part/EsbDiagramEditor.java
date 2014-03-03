@@ -350,26 +350,26 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMark
 	protected int getInitialPaletteSize() {
 		return 240;
 	}
-	
-	public void focusToolBar()	{
-		
+
+	public void focusToolBar() {
+
 		PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
 		DrawerEditPart mediatorsGroupEditpart = null;
 		//ToolEntryEditPart callMediatorToolEntryEditpart = null;
 		Boolean mediatorsGroupFound = false;
 		//Boolean callMediatorFound = false;
-		
-		for (Iterator ite = paletteViewer.getEditPartRegistry().values().iterator(); ite.hasNext();) { 
-			
-			Object ep = ite.next(); 
+
+		for (Iterator ite = paletteViewer.getEditPartRegistry().values().iterator(); ite.hasNext();) {
+
+			Object ep = ite.next();
 			if (ep instanceof DrawerEditPart && !mediatorsGroupFound) {
-				
-				mediatorsGroupEditpart = (DrawerEditPart)ep;
-				if  (mediatorsGroupEditpart.getModel() instanceof PaletteDrawer){
+
+				mediatorsGroupEditpart = (DrawerEditPart) ep;
+				if (mediatorsGroupEditpart.getModel() instanceof PaletteDrawer) {
 					PaletteDrawer paletteDrawer = (PaletteDrawer) mediatorsGroupEditpart.getModel();
 					if (paletteDrawer.getId().equals("createMediators2Group")) {
 						mediatorsGroupFound = true;
-					} 
+					}
 				}
 			} /*else if (ep instanceof ToolEntryEditPart && !callMediatorFound) {
 				
@@ -379,23 +379,22 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMark
 				if (paletteDrawer.getId().equals("createCallMediator45CreationTool")) {
 					callMediatorFound = true;
 				}
-			}*/
-		} 
+				}*/
+		}
 
-		
-		
-		if (mediatorsGroupFound) { 	// we only need to enable this shortcut for mediators group
-			
+		if (mediatorsGroupFound) { // we only need to enable this shortcut for mediators group
+
 			if (!mediatorsGroupEditpart.isExpanded()) {
 				mediatorsGroupEditpart.setExpanded(true);
 			}
-			
+
 			paletteViewer.select(mediatorsGroupEditpart);
 			paletteViewer.setFocus(mediatorsGroupEditpart);
 			//paletteViewer.setActiveTool((ToolEntry)callMediatorToolEntryEditpart.getModel());
 			paletteViewer.getControl().forceFocus();
 			if (paletteViewer.getKeyHandler() instanceof CustomPaletteViewerKeyHandler) {
-				CustomPaletteViewerKeyHandler customKeyHandler = (CustomPaletteViewerKeyHandler)paletteViewer.getKeyHandler();
+				CustomPaletteViewerKeyHandler customKeyHandler = (CustomPaletteViewerKeyHandler) paletteViewer
+						.getKeyHandler();
 				customKeyHandler.resetSerchString();
 			}
 		}

@@ -387,6 +387,9 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.CLOUD_CONNECTOR_OPERATION: return createCloudConnectorOperation();
 			case EsbPackage.CLOUD_CONNECTOR_OPERATION_INPUT_CONNECTOR: return createCloudConnectorOperationInputConnector();
 			case EsbPackage.CLOUD_CONNECTOR_OPERATION_OUTPUT_CONNECTOR: return createCloudConnectorOperationOutputConnector();
+			case EsbPackage.DATA_MAPPER_MEDIATOR: return createDataMapperMediator();
+			case EsbPackage.DATA_MAPPER_MEDIATOR_INPUT_CONNECTOR: return createDataMapperMediatorInputConnector();
+			case EsbPackage.DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR: return createDataMapperMediatorOutputConnector();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -2672,6 +2675,38 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	public CloudConnectorOperationOutputConnector createCloudConnectorOperationOutputConnector() {
 		CloudConnectorOperationOutputConnectorImpl cloudConnectorOperationOutputConnector = new CloudConnectorOperationOutputConnectorImpl();
 		return cloudConnectorOperationOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public DataMapperMediator createDataMapperMediator() {
+		DataMapperMediatorImpl dataMapperMediator = new DataMapperMediatorImpl();
+		dataMapperMediator.setInputConnector(createDataMapperMediatorInputConnector());
+		dataMapperMediator.setOutputConnector(createDataMapperMediatorOutputConnector());
+		return dataMapperMediator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataMapperMediatorInputConnector createDataMapperMediatorInputConnector() {
+		DataMapperMediatorInputConnectorImpl dataMapperMediatorInputConnector = new DataMapperMediatorInputConnectorImpl();
+		return dataMapperMediatorInputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataMapperMediatorOutputConnector createDataMapperMediatorOutputConnector() {
+		DataMapperMediatorOutputConnectorImpl dataMapperMediatorOutputConnector = new DataMapperMediatorOutputConnectorImpl();
+		return dataMapperMediatorOutputConnector;
 	}
 
 	/**

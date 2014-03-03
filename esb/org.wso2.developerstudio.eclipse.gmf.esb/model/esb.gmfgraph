@@ -2282,6 +2282,32 @@
             blue="255"/>
       </actualFigure>
     </descriptors>
+    <descriptors
+        name="DataMapperMediatorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:CustomFigure"
+          name="DataMapperMediatorGraphicalFigure"
+          qualifiedClassName="org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <backgroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="230"
+            green="230"
+            blue="230"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="DataMapperMediatorPropertyValueLabel"
+            text="&lt;...>"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="DataMapperMediatorDescriptionFigure"
+            text="&lt;...>"/>
+      </actualFigure>
+      <accessors
+          accessor="getFigureDataMapperMediatorDescriptionFigure"
+          figure="//@figures.0/@descriptors.111/@actualFigure/@children.1"/>
+    </descriptors>
   </figures>
   <nodes
       name="EsbServer"
@@ -3252,6 +3278,15 @@
       name="APIResourceInSequenceInputConnector"
       figure="EastPointerFigure"
       affixedParentSide="EAST"/>
+  <nodes
+      name="DataMapperMediator"
+      figure="DataMapperMediatorFigure"/>
+  <nodes
+      name="DataMapperMediatorInputConnector"
+      figure="EastPointerFigure"/>
+  <nodes
+      name="DataMapperMediatorOutputConnector"
+      figure="EastPointerFigure"/>
   <connections
       name="EsbLink"
       figure="PlainConnectionFigure"/>
@@ -3707,4 +3742,9 @@
       figure="ConditionalRouterMediatorFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.82/@accessors.1"/>
+  <labels
+      name="DataMapperMediatorDescription"
+      figure="DataMapperMediatorFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.111/@accessors.0"/>
 </gmfgraph:Canvas>

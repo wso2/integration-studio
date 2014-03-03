@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DropMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
@@ -122,936 +123,945 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 	 */
 	public Image getImage(View view) {
 		switch (EsbVisualIDRegistry.getVisualID(view)) {
-		case RouterMediatorTargetOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediatorTargetOutputConnector", EsbElementTypes.RouterMediatorTargetOutputConnector_3631); //$NON-NLS-1$
-		case EJBMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EJBMediatorOutputConnector", EsbElementTypes.EJBMediatorOutputConnector_3688); //$NON-NLS-1$
-		case EndpointDiagramEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EndpointDiagram", EsbElementTypes.EndpointDiagram_3642); //$NON-NLS-1$
-		case EntitlementMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorOnAcceptOutputConnector", EsbElementTypes.EntitlementMediatorOnAcceptOutputConnector_3749); //$NON-NLS-1$
-		case MediatorFlow14EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3627); //$NON-NLS-1$
-		case CallTemplateMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallTemplateMediator", EsbElementTypes.CallTemplateMediator_3594); //$NON-NLS-1$
 		case MediatorFlow6EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3530); //$NON-NLS-1$
-		case RuleMediatorInputConnectorEditPart.VISUAL_ID:
+		case CallMediatorEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RuleMediatorInputConnector", EsbElementTypes.RuleMediatorInputConnector_3127); //$NON-NLS-1$
-		case FilterMediatorEditPart.VISUAL_ID:
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallMediator", EsbElementTypes.CallMediator_3742); //$NON-NLS-1$
+		case CacheMediatorInputConnectorEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediator", EsbElementTypes.FilterMediator_3494); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CacheMediatorInputConnector", EsbElementTypes.CacheMediatorInputConnector_3106); //$NON-NLS-1$
+		case SwitchCaseContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchCaseContainer", EsbElementTypes.SwitchCaseContainer_3733); //$NON-NLS-1$
+		case TemplateEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpointOutputConnector", EsbElementTypes.TemplateEndpointOutputConnector_3718); //$NON-NLS-1$
+		case RecipientListEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointOutputConnector", EsbElementTypes.RecipientListEndPointOutputConnector_3698); //$NON-NLS-1$
+		case ThrottleOnRejectContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleOnRejectContainer", EsbElementTypes.ThrottleOnRejectContainer_3586); //$NON-NLS-1$
+		case CloudConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnector", EsbElementTypes.CloudConnector_3719); //$NON-NLS-1$
+		case MessageProcessorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageProcessor", EsbElementTypes.MessageProcessor_3701); //$NON-NLS-1$
+		case DefaultEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPointOutputConnector", EsbElementTypes.DefaultEndPointOutputConnector_3645); //$NON-NLS-1$
+		case EventMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EventMediatorOutputConnector", EsbElementTypes.EventMediatorOutputConnector_3053); //$NON-NLS-1$
+		case FaultMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FaultMediator", EsbElementTypes.FaultMediator_3509); //$NON-NLS-1$
+		case MediatorFlow23EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3758); //$NON-NLS-1$
+		case ClassMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ClassMediatorOutputConnector", EsbElementTypes.ClassMediatorOutputConnector_3059); //$NON-NLS-1$
+		case URLRewriteMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?URLRewriteMediator", EsbElementTypes.URLRewriteMediator_3620); //$NON-NLS-1$
+		case ThrottleMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediatorOnRejectOutputConnector", EsbElementTypes.ThrottleMediatorOnRejectOutputConnector_3582); //$NON-NLS-1$
+		case ThrottleOnAcceptContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleOnAcceptContainer", EsbElementTypes.ThrottleOnAcceptContainer_3584); //$NON-NLS-1$
+		case StoreMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?StoreMediatorOutputConnector", EsbElementTypes.StoreMediatorOutputConnector_3590); //$NON-NLS-1$
+		case CacheMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CacheMediatorOutputConnector", EsbElementTypes.CacheMediatorOutputConnector_3107); //$NON-NLS-1$
+		case CommandMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CommandMediator", EsbElementTypes.CommandMediator_3511); //$NON-NLS-1$
+		case CloudConnectorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorOutputConnector", EsbElementTypes.CloudConnectorOutputConnector_3721); //$NON-NLS-1$
+		case ConditionalRouterMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ConditionalRouterMediatorInputConnector", EsbElementTypes.ConditionalRouterMediatorInputConnector_3636); //$NON-NLS-1$
+		case RuleMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RuleMediatorOutputConnector", EsbElementTypes.RuleMediatorOutputConnector_3128); //$NON-NLS-1$
+		case PayloadFactoryMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PayloadFactoryMediatorInputConnector", EsbElementTypes.PayloadFactoryMediatorInputConnector_3598); //$NON-NLS-1$
+		case HeaderMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HeaderMediatorOutputConnector", EsbElementTypes.HeaderMediatorOutputConnector_3101); //$NON-NLS-1$
+		case MediatorFlow13EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3619); //$NON-NLS-1$
+		case DataMapperMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DataMapperMediatorOutputConnector", EsbElementTypes.DataMapperMediatorOutputConnector_3763); //$NON-NLS-1$
+		case RouterMediatorContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediatorContainer", EsbElementTypes.RouterMediatorContainer_3632); //$NON-NLS-1$
+		case CalloutMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CalloutMediatorInputConnector", EsbElementTypes.CalloutMediatorInputConnector_3115); //$NON-NLS-1$
+		case EnqueueMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnqueueMediatorInputConnector", EsbElementTypes.EnqueueMediatorInputConnector_3601); //$NON-NLS-1$
+		case RouterMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediatorOutputConnector", EsbElementTypes.RouterMediatorOutputConnector_3630); //$NON-NLS-1$
+		case SpringMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SpringMediator", EsbElementTypes.SpringMediator_3507); //$NON-NLS-1$
+		case ScriptMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ScriptMediator", EsbElementTypes.ScriptMediator_3508); //$NON-NLS-1$
+		case SwitchDefaultParentContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchDefaultParentContainer", EsbElementTypes.SwitchDefaultParentContainer_3734); //$NON-NLS-1$
+		case DataMapperMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DataMapperMediator", EsbElementTypes.DataMapperMediator_3761); //$NON-NLS-1$
+		case XSLTMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XSLTMediatorInputConnector", EsbElementTypes.XSLTMediatorInputConnector_3039); //$NON-NLS-1$
+		case MessageInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageInputConnector", EsbElementTypes.MessageInputConnector_3046); //$NON-NLS-1$
+		case ValidateMediatorOnFailOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ValidateMediatorOnFailOutputConnector", EsbElementTypes.ValidateMediatorOnFailOutputConnector_3626); //$NON-NLS-1$
+		case EJBMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EJBMediator", EsbElementTypes.EJBMediator_3686); //$NON-NLS-1$
+		case EntitlementMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediator", EsbElementTypes.EntitlementMediator_3505); //$NON-NLS-1$
+		case MergeNodeOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MergeNodeOutputConnector", EsbElementTypes.MergeNodeOutputConnector_3016); //$NON-NLS-1$
+		case SequencesInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SequencesInputConnector", EsbElementTypes.SequencesInputConnector_3616); //$NON-NLS-1$
+		case TemplateEndpointInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpointInputConnector", EsbElementTypes.TemplateEndpointInputConnector_3717); //$NON-NLS-1$
+		case SwitchMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchMediatorOutputConnector", EsbElementTypes.SwitchMediatorOutputConnector_3499); //$NON-NLS-1$
+		case ComplexEndpointsEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ComplexEndpoints", EsbElementTypes.ComplexEndpoints_3677); //$NON-NLS-1$
+		case RecipientListEndPoint2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPoint", EsbElementTypes.RecipientListEndPoint_3696); //$NON-NLS-1$
+		case ScriptMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ScriptMediatorOutputConnector", EsbElementTypes.ScriptMediatorOutputConnector_3065); //$NON-NLS-1$
+		case EntitlementMediatorObligationsOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorObligationsOutputConnector", EsbElementTypes.EntitlementMediatorObligationsOutputConnector_3751); //$NON-NLS-1$
+		case BAMMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BAMMediator", EsbElementTypes.BAMMediator_3680); //$NON-NLS-1$
+		case SpringMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SpringMediatorOutputConnector", EsbElementTypes.SpringMediatorOutputConnector_3062); //$NON-NLS-1$
+		case LoadBalanceEndPointWestOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointWestOutputConnector", EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3098); //$NON-NLS-1$
+		case AggregateMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AggregateMediatorOutputConnector", EsbElementTypes.AggregateMediatorOutputConnector_3113); //$NON-NLS-1$
+		case EJBMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EJBMediatorOutputConnector", EsbElementTypes.EJBMediatorOutputConnector_3688); //$NON-NLS-1$
+		case ScriptMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ScriptMediatorInputConnector", EsbElementTypes.ScriptMediatorInputConnector_3064); //$NON-NLS-1$
+		case EntitlementContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementContainer", EsbElementTypes.EntitlementContainer_3752); //$NON-NLS-1$
+		case RecipientListEndPointInputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointInputConnector", EsbElementTypes.RecipientListEndPointInputConnector_3697); //$NON-NLS-1$
+		case DefaultEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPointOutputConnector", EsbElementTypes.DefaultEndPointOutputConnector_3022); //$NON-NLS-1$
+		case CallTemplateMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallTemplateMediatorInputConnector", EsbElementTypes.CallTemplateMediatorInputConnector_3595); //$NON-NLS-1$
+		case WSDLEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPointOutputConnector", EsbElementTypes.WSDLEndPointOutputConnector_3093); //$NON-NLS-1$
+		case TransactionMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TransactionMediatorOutputConnector", EsbElementTypes.TransactionMediatorOutputConnector_3119); //$NON-NLS-1$
+		case ProxyFaultInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyFaultInputConnector", EsbElementTypes.ProxyFaultInputConnector_3489); //$NON-NLS-1$
+		case NamedEndpointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?NamedEndpoint", EsbElementTypes.NamedEndpoint_3660); //$NON-NLS-1$
+		case EntitlementOnRejectContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementOnRejectContainer", EsbElementTypes.EntitlementOnRejectContainer_3753); //$NON-NLS-1$
+		case APIResourceEndpointInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceEndpointInputConnector", EsbElementTypes.APIResourceEndpointInputConnector_3675); //$NON-NLS-1$
+		case LocalEntryEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LocalEntry", EsbElementTypes.LocalEntry_3663); //$NON-NLS-1$
+		case TemplateEndpointOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpointOutputConnector", EsbElementTypes.TemplateEndpointOutputConnector_3727); //$NON-NLS-1$
+		case ThrottleMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediatorOnAcceptOutputConnector", EsbElementTypes.ThrottleMediatorOnAcceptOutputConnector_3581); //$NON-NLS-1$
+		case ThrottleMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediator", EsbElementTypes.ThrottleMediator_3493); //$NON-NLS-1$
+		case SwitchMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchMediatorInputConnector", EsbElementTypes.SwitchMediatorInputConnector_3042); //$NON-NLS-1$
+		case FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointWestOutputConnector", EsbElementTypes.FailoverEndPointWestOutputConnector_3652); //$NON-NLS-1$
+		case LoadBalanceEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointOutputConnector", EsbElementTypes.LoadBalanceEndPointOutputConnector_3658); //$NON-NLS-1$
+		case CloneMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediator", EsbElementTypes.CloneMediator_3517); //$NON-NLS-1$
+		case LoopBackMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoopBackMediatorOutputConnector", EsbElementTypes.LoopBackMediatorOutputConnector_3738); //$NON-NLS-1$
+		case HeaderMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HeaderMediatorInputConnector", EsbElementTypes.HeaderMediatorInputConnector_3100); //$NON-NLS-1$
+		case CommandMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CommandMediatorOutputConnector", EsbElementTypes.CommandMediatorOutputConnector_3074); //$NON-NLS-1$
+		case FaultMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FaultMediatorInputConnector", EsbElementTypes.FaultMediatorInputConnector_3067); //$NON-NLS-1$
+		case MergeNodeEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MergeNode", EsbElementTypes.MergeNode_3013); //$NON-NLS-1$
+		case HTTPEndpoint2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndpoint", EsbElementTypes.HTTPEndpoint_3712); //$NON-NLS-1$
+		case SendMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SendMediatorOutputConnector", EsbElementTypes.SendMediatorOutputConnector_3086); //$NON-NLS-1$
+		case RMSequenceMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RMSequenceMediatorInputConnector", EsbElementTypes.RMSequenceMediatorInputConnector_3124); //$NON-NLS-1$
+		case ClassMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ClassMediator", EsbElementTypes.ClassMediator_3506); //$NON-NLS-1$
+		case APIResourceEndpointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceEndpoint", EsbElementTypes.APIResourceEndpoint_3674); //$NON-NLS-1$
+		case CloneTargetContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneTargetContainer", EsbElementTypes.CloneTargetContainer_3604); //$NON-NLS-1$
+		case HTTPEndPointInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndPointInputConnector", EsbElementTypes.HTTPEndPointInputConnector_3710); //$NON-NLS-1$
+		case RouterMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediatorTargetOutputConnector", EsbElementTypes.RouterMediatorTargetOutputConnector_3631); //$NON-NLS-1$
+		case ProxyServiceSequenceAndEndpointContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyServiceSequenceAndEndpointContainer", EsbElementTypes.ProxyServiceSequenceAndEndpointContainer_3487); //$NON-NLS-1$
+		case ConditionalRouterMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ConditionalRouterMediator", EsbElementTypes.ConditionalRouterMediator_3635); //$NON-NLS-1$
+		case MediatorFlow2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3502); //$NON-NLS-1$
+		case OAuthMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?OAuthMediator", EsbElementTypes.OAuthMediator_3524); //$NON-NLS-1$
+		case LogMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LogMediator", EsbElementTypes.LogMediator_3495); //$NON-NLS-1$
+		case DropMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DropMediator", EsbElementTypes.DropMediator_3491); //$NON-NLS-1$
+		case FailoverEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointOutputConnector", EsbElementTypes.FailoverEndPointOutputConnector_3090); //$NON-NLS-1$
+		case SequencesOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SequencesOutputConnector", EsbElementTypes.SequencesOutputConnector_3617); //$NON-NLS-1$
+		case ValidateMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ValidateMediator", EsbElementTypes.ValidateMediator_3623); //$NON-NLS-1$
+		case DBLookupMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBLookupMediatorOutputConnector", EsbElementTypes.DBLookupMediatorOutputConnector_3077); //$NON-NLS-1$
+		case MediatorFlow12EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3607); //$NON-NLS-1$
+		case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PropertyMediatorOutputConnector", EsbElementTypes.PropertyMediatorOutputConnector_3034); //$NON-NLS-1$
+		case BuilderMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BuilderMediatorInputConnector", EsbElementTypes.BuilderMediatorInputConnector_3592); //$NON-NLS-1$
+		case MediatorFlow10EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3587); //$NON-NLS-1$
+		case MediatorFlow17EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3641); //$NON-NLS-1$
+		case MessageMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageMediator", EsbElementTypes.MessageMediator_3045); //$NON-NLS-1$
+		case LoadBalanceEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointOutputConnector", EsbElementTypes.LoadBalanceEndPointOutputConnector_3096); //$NON-NLS-1$
+		case EventMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EventMediatorInputConnector", EsbElementTypes.EventMediatorInputConnector_3052); //$NON-NLS-1$
+		case APIResourceEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceEndpointOutputConnector", EsbElementTypes.APIResourceEndpointOutputConnector_3676); //$NON-NLS-1$
+		case RuleMediatorChildMediatorsOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RuleMediatorChildMediatorsOutputConnector", EsbElementTypes.RuleMediatorChildMediatorsOutputConnector_3640); //$NON-NLS-1$
+		case CommandMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CommandMediatorInputConnector", EsbElementTypes.CommandMediatorInputConnector_3073); //$NON-NLS-1$
+		case EnrichMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnrichMediator", EsbElementTypes.EnrichMediator_3496); //$NON-NLS-1$
+		case LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointWestOutputConnector", EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659); //$NON-NLS-1$
+		case CloudConnectorOperationInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorOperationInputConnector", EsbElementTypes.CloudConnectorOperationInputConnector_3723); //$NON-NLS-1$
+		case TransactionMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TransactionMediatorInputConnector", EsbElementTypes.TransactionMediatorInputConnector_3118); //$NON-NLS-1$
+		case MergeNodeSecondInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MergeNodeSecondInputConnector", EsbElementTypes.MergeNodeSecondInputConnector_3015); //$NON-NLS-1$
+		case LoopBackMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoopBackMediatorInputConnector", EsbElementTypes.LoopBackMediatorInputConnector_3737); //$NON-NLS-1$
+		case SequenceOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SequenceOutputConnector", EsbElementTypes.SequenceOutputConnector_3050); //$NON-NLS-1$
+		case MergeNodeFirstInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MergeNodeFirstInputConnector", EsbElementTypes.MergeNodeFirstInputConnector_3014); //$NON-NLS-1$
+		case TemplateEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Template", EsbElementTypes.Template_3664); //$NON-NLS-1$
+		case EntitlementObligationsContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementObligationsContainer", EsbElementTypes.EntitlementObligationsContainer_3759); //$NON-NLS-1$
+		case RecipientListEndPointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPoint", EsbElementTypes.RecipientListEndPoint_3692); //$NON-NLS-1$
+		case CalloutMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CalloutMediator", EsbElementTypes.CalloutMediator_3520); //$NON-NLS-1$
+		case SequenceEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Sequence", EsbElementTypes.Sequence_3503); //$NON-NLS-1$
+		case NamedEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?NamedEndpointOutputConnector", EsbElementTypes.NamedEndpointOutputConnector_3662); //$NON-NLS-1$
+		case FilterMediatorFailOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediatorFailOutputConnector", EsbElementTypes.FilterMediatorFailOutputConnector_3012); //$NON-NLS-1$
+		case SwitchMediatorContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchMediatorContainer", EsbElementTypes.SwitchMediatorContainer_3500); //$NON-NLS-1$
+		case MediatorFlow7EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3536); //$NON-NLS-1$
+		case WSDLEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPointOutputConnector", EsbElementTypes.WSDLEndPointOutputConnector_3655); //$NON-NLS-1$
+		case ConditionalRouterMediatorAdditionalOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ConditionalRouterMediatorAdditionalOutputConnector", EsbElementTypes.ConditionalRouterMediatorAdditionalOutputConnector_3638); //$NON-NLS-1$
+		case LogMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LogMediatorOutputConnector", EsbElementTypes.LogMediatorOutputConnector_3019); //$NON-NLS-1$
+		case ProxyServiceFaultContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyServiceFaultContainer", EsbElementTypes.ProxyServiceFaultContainer_3488); //$NON-NLS-1$
+		case AddressingEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressingEndpointOutputConnector", EsbElementTypes.AddressingEndpointOutputConnector_3691); //$NON-NLS-1$
+		case IterateMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?IterateMediatorOutputConnector", EsbElementTypes.IterateMediatorOutputConnector_3110); //$NON-NLS-1$
+		case SwitchCaseParentContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchCaseParentContainer", EsbElementTypes.SwitchCaseParentContainer_3732); //$NON-NLS-1$
+		case FilterMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediatorOutputConnector", EsbElementTypes.FilterMediatorOutputConnector_3534); //$NON-NLS-1$
+		case RespondMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RespondMediatorOutputConnector", EsbElementTypes.RespondMediatorOutputConnector_3741); //$NON-NLS-1$
+		case ConditionalRouterMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ConditionalRouterMediatorOutputConnector", EsbElementTypes.ConditionalRouterMediatorOutputConnector_3637); //$NON-NLS-1$
+		case TemplateEndpoint2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpoint", EsbElementTypes.TemplateEndpoint_3725); //$NON-NLS-1$
+		case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointWestOutputConnector", EsbElementTypes.RecipientListEndPointWestOutputConnector_3699); //$NON-NLS-1$
+		case CloneMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediatorInputConnector", EsbElementTypes.CloneMediatorInputConnector_3103); //$NON-NLS-1$
 		case AddressEndPoint2EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPoint", EsbElementTypes.AddressEndPoint_3646); //$NON-NLS-1$
-		case MessageStoreEditPart.VISUAL_ID:
+		case PayloadFactoryMediatorOutputConnectorEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageStore", EsbElementTypes.MessageStore_3715); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PayloadFactoryMediatorOutputConnector", EsbElementTypes.PayloadFactoryMediatorOutputConnector_3599); //$NON-NLS-1$
+		case DropMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DropMediatorInputConnector", EsbElementTypes.DropMediatorInputConnector_3008); //$NON-NLS-1$
+		case ThrottleContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleContainer", EsbElementTypes.ThrottleContainer_3583); //$NON-NLS-1$
+		case ProxyOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyOutputConnector", EsbElementTypes.ProxyOutputConnector_3002); //$NON-NLS-1$
+		case CloudConnectorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorInputConnector", EsbElementTypes.CloudConnectorInputConnector_3720); //$NON-NLS-1$
+		case CloneMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediatorOutputConnector", EsbElementTypes.CloneMediatorOutputConnector_3104); //$NON-NLS-1$
+		case CallTemplateMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallTemplateMediator", EsbElementTypes.CallTemplateMediator_3594); //$NON-NLS-1$
+		case CloneMediatorContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediatorContainer", EsbElementTypes.CloneMediatorContainer_3603); //$NON-NLS-1$
+		case ProxyInSequenceInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyInSequenceInputConnector", EsbElementTypes.ProxyInSequenceInputConnector_3731); //$NON-NLS-1$
+		case HTTPEndpointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndpoint", EsbElementTypes.HTTPEndpoint_3709); //$NON-NLS-1$
+		case AddressingEndpointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressingEndpoint", EsbElementTypes.AddressingEndpoint_3689); //$NON-NLS-1$
+		case TaskEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Task", EsbElementTypes.Task_3667); //$NON-NLS-1$
+		case StoreMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?StoreMediator", EsbElementTypes.StoreMediator_3588); //$NON-NLS-1$
+		case APIResourceInSequenceInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceInSequenceInputConnector", EsbElementTypes.APIResourceInSequenceInputConnector_3747); //$NON-NLS-1$
+		case FilterMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediator", EsbElementTypes.FilterMediator_3494); //$NON-NLS-1$
+		case MediatorFlow22EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3756); //$NON-NLS-1$
+		case DefaultEndPoint2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPoint", EsbElementTypes.DefaultEndPoint_3643); //$NON-NLS-1$
+		case DBLookupMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBLookupMediatorInputConnector", EsbElementTypes.DBLookupMediatorInputConnector_3076); //$NON-NLS-1$
+		case RecipientListEndPointWestOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointWestOutputConnector", EsbElementTypes.RecipientListEndPointWestOutputConnector_3695); //$NON-NLS-1$
+		case LogMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LogMediatorInputConnector", EsbElementTypes.LogMediatorInputConnector_3018); //$NON-NLS-1$
+		case ProxyOutSequenceOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyOutSequenceOutputConnector", EsbElementTypes.ProxyOutSequenceOutputConnector_3729); //$NON-NLS-1$
+		case AggregateMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AggregateMediatorInputConnector", EsbElementTypes.AggregateMediatorInputConnector_3112); //$NON-NLS-1$
+		case FailoverEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointOutputConnector", EsbElementTypes.FailoverEndPointOutputConnector_3651); //$NON-NLS-1$
+		case CloudConnectorOperationEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorOperation", EsbElementTypes.CloudConnectorOperation_3722); //$NON-NLS-1$
+		case RuleMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RuleMediator", EsbElementTypes.RuleMediator_3523); //$NON-NLS-1$
+		case MediatorFlow14EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3627); //$NON-NLS-1$
+		case OAuthMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?OAuthMediatorInputConnector", EsbElementTypes.OAuthMediatorInputConnector_3130); //$NON-NLS-1$
+		case EndpointDiagramEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EndpointDiagram", EsbElementTypes.EndpointDiagram_3642); //$NON-NLS-1$
+		case RMSequenceMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RMSequenceMediator", EsbElementTypes.RMSequenceMediator_3522); //$NON-NLS-1$
+		case FailoverEndPointInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointInputConnector", EsbElementTypes.FailoverEndPointInputConnector_3088); //$NON-NLS-1$
+		case IterateMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?IterateMediatorInputConnector", EsbElementTypes.IterateMediatorInputConnector_3109); //$NON-NLS-1$
+		case AddressEndPointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPoint", EsbElementTypes.AddressEndPoint_3610); //$NON-NLS-1$
+		case CacheMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CacheMediator", EsbElementTypes.CacheMediator_3518); //$NON-NLS-1$
+		case SwitchCaseBranchOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchCaseBranchOutputConnector", EsbElementTypes.SwitchCaseBranchOutputConnector_3043); //$NON-NLS-1$
+		case TemplateEndpointInputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpointInputConnector", EsbElementTypes.TemplateEndpointInputConnector_3726); //$NON-NLS-1$
+		case CallMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallMediatorInputConnector", EsbElementTypes.CallMediatorInputConnector_3743); //$NON-NLS-1$
+		case DBReportMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBReportMediator", EsbElementTypes.DBReportMediator_3513); //$NON-NLS-1$
+		case CallTemplateMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallTemplateMediatorOutputConnector", EsbElementTypes.CallTemplateMediatorOutputConnector_3596); //$NON-NLS-1$
+		case BeanMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BeanMediatorInputConnector", EsbElementTypes.BeanMediatorInputConnector_3684); //$NON-NLS-1$
+		case SmooksMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SmooksMediatorOutputConnector", EsbElementTypes.SmooksMediatorOutputConnector_3083); //$NON-NLS-1$
+		case WSDLEndPointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPoint", EsbElementTypes.WSDLEndPoint_3612); //$NON-NLS-1$
+		case AddressingEndpointInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressingEndpointInputConnector", EsbElementTypes.AddressingEndpointInputConnector_3690); //$NON-NLS-1$
+		case SmooksMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SmooksMediatorInputConnector", EsbElementTypes.SmooksMediatorInputConnector_3082); //$NON-NLS-1$
+		case BuilderMediatorOutputConectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BuilderMediatorOutputConector", EsbElementTypes.BuilderMediatorOutputConector_3593); //$NON-NLS-1$
+		case BeanMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BeanMediator", EsbElementTypes.BeanMediator_3683); //$NON-NLS-1$
+		case APIResourceOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceOutputConnector", EsbElementTypes.APIResourceOutputConnector_3671); //$NON-NLS-1$
+		case ProxyServiceEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyService", EsbElementTypes.ProxyService_3001); //$NON-NLS-1$
+		case RouterTargetContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterTargetContainer", EsbElementTypes.RouterTargetContainer_3633); //$NON-NLS-1$
+		case RuleMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RuleMediatorInputConnector", EsbElementTypes.RuleMediatorInputConnector_3127); //$NON-NLS-1$
+		case AggregateMediatorOnCompleteOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AggregateMediatorOnCompleteOutputConnector", EsbElementTypes.AggregateMediatorOnCompleteOutputConnector_3132); //$NON-NLS-1$
+		case LoadBalanceEndPoint2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPoint", EsbElementTypes.LoadBalanceEndPoint_3656); //$NON-NLS-1$
+		case EsbLinkEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbLink", EsbElementTypes.EsbLink_4001); //$NON-NLS-1$
+		case SwitchMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchMediator", EsbElementTypes.SwitchMediator_3498); //$NON-NLS-1$
+		case EnrichMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnrichMediatorOutputConnector", EsbElementTypes.EnrichMediatorOutputConnector_3037); //$NON-NLS-1$
+		case APIResourceFaultInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceFaultInputConnector", EsbElementTypes.APIResourceFaultInputConnector_3672); //$NON-NLS-1$
+		case AddressEndPointInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPointInputConnector", EsbElementTypes.AddressEndPointInputConnector_3030); //$NON-NLS-1$
+		case StoreMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?StoreMediatorInputConnector", EsbElementTypes.StoreMediatorInputConnector_3589); //$NON-NLS-1$
+		case XQueryMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XQueryMediatorInputConnector", EsbElementTypes.XQueryMediatorInputConnector_3070); //$NON-NLS-1$
+		case Sequences2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Sequences", EsbElementTypes.Sequences_3665); //$NON-NLS-1$
+		case DBReportMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBReportMediatorOutputConnector", EsbElementTypes.DBReportMediatorOutputConnector_3080); //$NON-NLS-1$
+		case XQueryMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XQueryMediatorOutputConnector", EsbElementTypes.XQueryMediatorOutputConnector_3071); //$NON-NLS-1$
+		case MediatorFlow19EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3728); //$NON-NLS-1$
+		case EsbDiagramEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Diagram?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbDiagram", EsbElementTypes.EsbDiagram_1000); //$NON-NLS-1$
+		case WSDLEndPointInputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPointInputConnector", EsbElementTypes.WSDLEndPointInputConnector_3654); //$NON-NLS-1$
+		case SpringMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SpringMediatorInputConnector", EsbElementTypes.SpringMediatorInputConnector_3061); //$NON-NLS-1$
+		case SequencesEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Sequences", EsbElementTypes.Sequences_3614); //$NON-NLS-1$
+		case EventMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EventMediator", EsbElementTypes.EventMediator_3504); //$NON-NLS-1$
+		case FailoverEndPointWestOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointWestOutputConnector", EsbElementTypes.FailoverEndPointWestOutputConnector_3097); //$NON-NLS-1$
+		case DefaultEndPointInputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPointInputConnector", EsbElementTypes.DefaultEndPointInputConnector_3644); //$NON-NLS-1$
+		case ThrottleMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediatorOutputConnector", EsbElementTypes.ThrottleMediatorOutputConnector_3122); //$NON-NLS-1$
+		case DBReportMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBReportMediatorInputConnector", EsbElementTypes.DBReportMediatorInputConnector_3079); //$NON-NLS-1$
+		case EntitlementMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorOutputConnector", EsbElementTypes.EntitlementMediatorOutputConnector_3056); //$NON-NLS-1$
+		case DefaultEndPointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPoint", EsbElementTypes.DefaultEndPoint_3609); //$NON-NLS-1$
+		case DataMapperMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DataMapperMediatorInputConnector", EsbElementTypes.DataMapperMediatorInputConnector_3762); //$NON-NLS-1$
+		case SwitchDefaultContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchDefaultContainer", EsbElementTypes.SwitchDefaultContainer_3735); //$NON-NLS-1$
+		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementOnAcceptContainer", EsbElementTypes.EntitlementOnAcceptContainer_3755); //$NON-NLS-1$
 		case WSDLEndPointInputConnectorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPointInputConnector", EsbElementTypes.WSDLEndPointInputConnector_3092); //$NON-NLS-1$
+		case RMSequenceMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RMSequenceMediatorOutputConnector", EsbElementTypes.RMSequenceMediatorOutputConnector_3125); //$NON-NLS-1$
+		case SynapseAPIEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SynapseAPI", EsbElementTypes.SynapseAPI_3668); //$NON-NLS-1$
+		case AddressEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPointOutputConnector", EsbElementTypes.AddressEndPointOutputConnector_3648); //$NON-NLS-1$
+		case CallMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallMediatorOutputConnector", EsbElementTypes.CallMediatorOutputConnector_3744); //$NON-NLS-1$
+		case MediatorFlow15EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3634); //$NON-NLS-1$
+		case CalloutMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CalloutMediatorOutputConnector", EsbElementTypes.CalloutMediatorOutputConnector_3116); //$NON-NLS-1$
+		case DBLookupMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBLookupMediator", EsbElementTypes.DBLookupMediator_3512); //$NON-NLS-1$
+		case MediatorFlow18EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3678); //$NON-NLS-1$
+		case CallMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallMediatorEndpointOutputConnector", EsbElementTypes.CallMediatorEndpointOutputConnector_3745); //$NON-NLS-1$
+		case SmooksMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SmooksMediator", EsbElementTypes.SmooksMediator_3514); //$NON-NLS-1$
+		case OAuthMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?OAuthMediatorOutputConnector", EsbElementTypes.OAuthMediatorOutputConnector_3131); //$NON-NLS-1$
+		case XSLTMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XSLTMediatorOutputConnector", EsbElementTypes.XSLTMediatorOutputConnector_3040); //$NON-NLS-1$
+		case BeanMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BeanMediatorOutputConnector", EsbElementTypes.BeanMediatorOutputConnector_3685); //$NON-NLS-1$
+		case PayloadFactoryMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PayloadFactoryMediator", EsbElementTypes.PayloadFactoryMediator_3597); //$NON-NLS-1$
+		case SendMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SendMediatorInputConnector", EsbElementTypes.SendMediatorInputConnector_3085); //$NON-NLS-1$
+		case EnqueueMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnqueueMediator", EsbElementTypes.EnqueueMediator_3600); //$NON-NLS-1$
+		case PropertyMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PropertyMediatorInputConnector", EsbElementTypes.PropertyMediatorInputConnector_3033); //$NON-NLS-1$
+		case ValidateMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ValidateMediatorInputConnector", EsbElementTypes.ValidateMediatorInputConnector_3624); //$NON-NLS-1$
+		case SendMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SendMediatorEndpointOutputConnector", EsbElementTypes.SendMediatorEndpointOutputConnector_3539); //$NON-NLS-1$
+		case FilterContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterContainer", EsbElementTypes.FilterContainer_3531); //$NON-NLS-1$
+		case ComplexEndpointsOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ComplexEndpointsOutputConnector", EsbElementTypes.ComplexEndpointsOutputConnector_3679); //$NON-NLS-1$
+		case MediatorFlow5EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3615); //$NON-NLS-1$
+		case BuilderMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BuilderMediator", EsbElementTypes.BuilderMediator_3591); //$NON-NLS-1$
+		case RouterMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediator", EsbElementTypes.RouterMediator_3628); //$NON-NLS-1$
+		case HTTPEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndPointOutputConnector", EsbElementTypes.HTTPEndPointOutputConnector_3714); //$NON-NLS-1$
+		case EntitlementMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorInputConnector", EsbElementTypes.EntitlementMediatorInputConnector_3055); //$NON-NLS-1$
 		case APIResourceOutSequenceOutputConnectorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceOutSequenceOutputConnector", EsbElementTypes.APIResourceOutSequenceOutputConnector_3730); //$NON-NLS-1$
 		case DefaultEndPointInputConnectorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPointInputConnector", EsbElementTypes.DefaultEndPointInputConnector_3021); //$NON-NLS-1$
-		case DefaultEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPointOutputConnector", EsbElementTypes.DefaultEndPointOutputConnector_3645); //$NON-NLS-1$
-		case EnrichMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnrichMediatorInputConnector", EsbElementTypes.EnrichMediatorInputConnector_3036); //$NON-NLS-1$
-		case FaultMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FaultMediator", EsbElementTypes.FaultMediator_3509); //$NON-NLS-1$
-		case EntitlementMediatorAdviceOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorAdviceOutputConnector", EsbElementTypes.EntitlementMediatorAdviceOutputConnector_3750); //$NON-NLS-1$
-		case WSDLEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPointOutputConnector", EsbElementTypes.WSDLEndPointOutputConnector_3093); //$NON-NLS-1$
-		case PayloadFactoryMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PayloadFactoryMediatorOutputConnector", EsbElementTypes.PayloadFactoryMediatorOutputConnector_3599); //$NON-NLS-1$
-		case SpringMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SpringMediatorInputConnector", EsbElementTypes.SpringMediatorInputConnector_3061); //$NON-NLS-1$
-		case DBReportMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBReportMediator", EsbElementTypes.DBReportMediator_3513); //$NON-NLS-1$
-		case EnqueueMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnqueueMediatorOutputConnector", EsbElementTypes.EnqueueMediatorOutputConnector_3602); //$NON-NLS-1$
-		case NamedEndpointInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?NamedEndpointInputConnector", EsbElementTypes.NamedEndpointInputConnector_3661); //$NON-NLS-1$
-		case ComplexEndpointsEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ComplexEndpoints", EsbElementTypes.ComplexEndpoints_3677); //$NON-NLS-1$
-		case CloudConnectorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorInputConnector", EsbElementTypes.CloudConnectorInputConnector_3720); //$NON-NLS-1$
-		case TemplateEndpointInputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpointInputConnector", EsbElementTypes.TemplateEndpointInputConnector_3726); //$NON-NLS-1$
-		case MessageMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageMediator", EsbElementTypes.MessageMediator_3045); //$NON-NLS-1$
-		case EntitlementOnRejectContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementOnRejectContainer", EsbElementTypes.EntitlementOnRejectContainer_3753); //$NON-NLS-1$
-		case FilterPassContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterPassContainer", EsbElementTypes.FilterPassContainer_3535); //$NON-NLS-1$
-		case MediatorFlow18EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3678); //$NON-NLS-1$
-		case RMSequenceMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RMSequenceMediator", EsbElementTypes.RMSequenceMediator_3522); //$NON-NLS-1$
-		case WSDLEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPointOutputConnector", EsbElementTypes.WSDLEndPointOutputConnector_3655); //$NON-NLS-1$
-		case LoadBalanceEndPoint2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPoint", EsbElementTypes.LoadBalanceEndPoint_3656); //$NON-NLS-1$
-		case CloneMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediator", EsbElementTypes.CloneMediator_3517); //$NON-NLS-1$
-		case CallMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallMediatorOutputConnector", EsbElementTypes.CallMediatorOutputConnector_3744); //$NON-NLS-1$
-		case FilterFailContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterFailContainer", EsbElementTypes.FilterFailContainer_3537); //$NON-NLS-1$
-		case SendMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SendMediatorEndpointOutputConnector", EsbElementTypes.SendMediatorEndpointOutputConnector_3539); //$NON-NLS-1$
-		case ConditionalRouterMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ConditionalRouterMediator", EsbElementTypes.ConditionalRouterMediator_3635); //$NON-NLS-1$
-		case RespondMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RespondMediatorOutputConnector", EsbElementTypes.RespondMediatorOutputConnector_3741); //$NON-NLS-1$
-		case TemplateEndpoint2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpoint", EsbElementTypes.TemplateEndpoint_3725); //$NON-NLS-1$
-		case PayloadFactoryMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PayloadFactoryMediatorInputConnector", EsbElementTypes.PayloadFactoryMediatorInputConnector_3598); //$NON-NLS-1$
-		case RecipientListEndPointWestOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointWestOutputConnector", EsbElementTypes.RecipientListEndPointWestOutputConnector_3695); //$NON-NLS-1$
-		case FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointWestOutputConnector", EsbElementTypes.FailoverEndPointWestOutputConnector_3652); //$NON-NLS-1$
-		case BuilderMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BuilderMediator", EsbElementTypes.BuilderMediator_3591); //$NON-NLS-1$
-		case LoopBackMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoopBackMediatorOutputConnector", EsbElementTypes.LoopBackMediatorOutputConnector_3738); //$NON-NLS-1$
-		case CacheMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CacheMediatorOutputConnector", EsbElementTypes.CacheMediatorOutputConnector_3107); //$NON-NLS-1$
-		case APIResourceEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResource", EsbElementTypes.APIResource_3669); //$NON-NLS-1$
-		case FailoverEndPointWestOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointWestOutputConnector", EsbElementTypes.FailoverEndPointWestOutputConnector_3097); //$NON-NLS-1$
-		case RouterTargetContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterTargetContainer", EsbElementTypes.RouterTargetContainer_3633); //$NON-NLS-1$
-		case CallTemplateMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallTemplateMediatorOutputConnector", EsbElementTypes.CallTemplateMediatorOutputConnector_3596); //$NON-NLS-1$
-		case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PropertyMediatorOutputConnector", EsbElementTypes.PropertyMediatorOutputConnector_3034); //$NON-NLS-1$
-		case DropMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DropMediator", EsbElementTypes.DropMediator_3491); //$NON-NLS-1$
-		case ProxyFaultInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyFaultInputConnector", EsbElementTypes.ProxyFaultInputConnector_3489); //$NON-NLS-1$
-		case SpringMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SpringMediatorOutputConnector", EsbElementTypes.SpringMediatorOutputConnector_3062); //$NON-NLS-1$
-		case MessageProcessorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageProcessor", EsbElementTypes.MessageProcessor_3701); //$NON-NLS-1$
-		case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointWestOutputConnector", EsbElementTypes.RecipientListEndPointWestOutputConnector_3699); //$NON-NLS-1$
-		case CacheMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CacheMediator", EsbElementTypes.CacheMediator_3518); //$NON-NLS-1$
-		case SmooksMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SmooksMediatorInputConnector", EsbElementTypes.SmooksMediatorInputConnector_3082); //$NON-NLS-1$
-		case MediatorFlow21EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3754); //$NON-NLS-1$
-		case LoopBackMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoopBackMediatorInputConnector", EsbElementTypes.LoopBackMediatorInputConnector_3737); //$NON-NLS-1$
-		case ProxyServiceContainer2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyServiceContainer", EsbElementTypes.ProxyServiceContainer_3673); //$NON-NLS-1$
-		case CallMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallMediatorEndpointOutputConnector", EsbElementTypes.CallMediatorEndpointOutputConnector_3745); //$NON-NLS-1$
-		case HTTPEndpoint2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndpoint", EsbElementTypes.HTTPEndpoint_3712); //$NON-NLS-1$
-		case AggregateMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AggregateMediator", EsbElementTypes.AggregateMediator_3525); //$NON-NLS-1$
-		case SmooksMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SmooksMediator", EsbElementTypes.SmooksMediator_3514); //$NON-NLS-1$
-		case MergeNodeSecondInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MergeNodeSecondInputConnector", EsbElementTypes.MergeNodeSecondInputConnector_3015); //$NON-NLS-1$
-		case PropertyMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PropertyMediator", EsbElementTypes.PropertyMediator_3492); //$NON-NLS-1$
-		case OAuthMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?OAuthMediatorInputConnector", EsbElementTypes.OAuthMediatorInputConnector_3130); //$NON-NLS-1$
-		case HeaderMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HeaderMediator", EsbElementTypes.HeaderMediator_3516); //$NON-NLS-1$
-		case SequencesOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SequencesOutputConnector", EsbElementTypes.SequencesOutputConnector_3617); //$NON-NLS-1$
-		case ValidateMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ValidateMediatorOutputConnector", EsbElementTypes.ValidateMediatorOutputConnector_3625); //$NON-NLS-1$
-		case TransactionMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TransactionMediatorOutputConnector", EsbElementTypes.TransactionMediatorOutputConnector_3119); //$NON-NLS-1$
-		case SequencesInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SequencesInputConnector", EsbElementTypes.SequencesInputConnector_3616); //$NON-NLS-1$
-		case SwitchMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchMediatorOutputConnector", EsbElementTypes.SwitchMediatorOutputConnector_3499); //$NON-NLS-1$
-		case MediatorFlow24EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3760); //$NON-NLS-1$
-		case RouterMediatorContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediatorContainer", EsbElementTypes.RouterMediatorContainer_3632); //$NON-NLS-1$
-		case AggregateMediatorOnCompleteOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AggregateMediatorOnCompleteOutputConnector", EsbElementTypes.AggregateMediatorOnCompleteOutputConnector_3132); //$NON-NLS-1$
-		case AddressEndPointInputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPointInputConnector", EsbElementTypes.AddressEndPointInputConnector_3647); //$NON-NLS-1$
-		case CommandMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CommandMediatorInputConnector", EsbElementTypes.CommandMediatorInputConnector_3073); //$NON-NLS-1$
 		case XSLTMediatorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XSLTMediator", EsbElementTypes.XSLTMediator_3497); //$NON-NLS-1$
-		case BAMMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BAMMediatorInputConnector", EsbElementTypes.BAMMediatorInputConnector_3681); //$NON-NLS-1$
-		case CloneMediatorContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediatorContainer", EsbElementTypes.CloneMediatorContainer_3603); //$NON-NLS-1$
-		case EventMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EventMediatorOutputConnector", EsbElementTypes.EventMediatorOutputConnector_3053); //$NON-NLS-1$
-		case APIResourceInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceInputConnector", EsbElementTypes.APIResourceInputConnector_3670); //$NON-NLS-1$
-		case AddressEndPointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPoint", EsbElementTypes.AddressEndPoint_3610); //$NON-NLS-1$
-		case RouterMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediatorInputConnector", EsbElementTypes.RouterMediatorInputConnector_3629); //$NON-NLS-1$
-		case DropMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DropMediatorInputConnector", EsbElementTypes.DropMediatorInputConnector_3008); //$NON-NLS-1$
-		case XSLTMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XSLTMediatorInputConnector", EsbElementTypes.XSLTMediatorInputConnector_3039); //$NON-NLS-1$
-		case HTTPEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndPointOutputConnector", EsbElementTypes.HTTPEndPointOutputConnector_3714); //$NON-NLS-1$
-		case CalloutMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CalloutMediatorInputConnector", EsbElementTypes.CalloutMediatorInputConnector_3115); //$NON-NLS-1$
-		case IterateMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?IterateMediatorInputConnector", EsbElementTypes.IterateMediatorInputConnector_3109); //$NON-NLS-1$
-		case CacheMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CacheMediatorInputConnector", EsbElementTypes.CacheMediatorInputConnector_3106); //$NON-NLS-1$
-		case EsbServerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbServer", EsbElementTypes.EsbServer_2001); //$NON-NLS-1$
-		case MediatorFlow9EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3585); //$NON-NLS-1$
-		case ThrottleContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleContainer", EsbElementTypes.ThrottleContainer_3583); //$NON-NLS-1$
-		case MediatorFlow19EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3728); //$NON-NLS-1$
-		case SequenceOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SequenceOutputConnector", EsbElementTypes.SequenceOutputConnector_3050); //$NON-NLS-1$
-		case ThrottleMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediatorOutputConnector", EsbElementTypes.ThrottleMediatorOutputConnector_3122); //$NON-NLS-1$
-		case OAuthMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?OAuthMediatorOutputConnector", EsbElementTypes.OAuthMediatorOutputConnector_3131); //$NON-NLS-1$
-		case MediatorFlow17EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3641); //$NON-NLS-1$
-		case CallMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallMediatorInputConnector", EsbElementTypes.CallMediatorInputConnector_3743); //$NON-NLS-1$
-		case LoadBalanceEndPointWestOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointWestOutputConnector", EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3098); //$NON-NLS-1$
-		case URLRewriteMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?URLRewriteMediator", EsbElementTypes.URLRewriteMediator_3620); //$NON-NLS-1$
-		case CalloutMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CalloutMediator", EsbElementTypes.CalloutMediator_3520); //$NON-NLS-1$
-		case NamedEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?NamedEndpointOutputConnector", EsbElementTypes.NamedEndpointOutputConnector_3662); //$NON-NLS-1$
-		case MediatorFlow5EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3615); //$NON-NLS-1$
-		case LoadBalanceEndPointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPoint", EsbElementTypes.LoadBalanceEndPoint_3613); //$NON-NLS-1$
-		case MediatorFlow13EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3619); //$NON-NLS-1$
-		case RMSequenceMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RMSequenceMediatorInputConnector", EsbElementTypes.RMSequenceMediatorInputConnector_3124); //$NON-NLS-1$
-		case WSDLEndPoint2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPoint", EsbElementTypes.WSDLEndPoint_3653); //$NON-NLS-1$
-		case LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointWestOutputConnector", EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659); //$NON-NLS-1$
-		case DBLookupMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBLookupMediatorInputConnector", EsbElementTypes.DBLookupMediatorInputConnector_3076); //$NON-NLS-1$
-		case FilterMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediatorInputConnector", EsbElementTypes.FilterMediatorInputConnector_3010); //$NON-NLS-1$
-		case ConditionalRouterMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ConditionalRouterMediatorInputConnector", EsbElementTypes.ConditionalRouterMediatorInputConnector_3636); //$NON-NLS-1$
-		case ComplexEndpointsOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ComplexEndpointsOutputConnector", EsbElementTypes.ComplexEndpointsOutputConnector_3679); //$NON-NLS-1$
-		case LogMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LogMediatorOutputConnector", EsbElementTypes.LogMediatorOutputConnector_3019); //$NON-NLS-1$
-		case SpringMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SpringMediator", EsbElementTypes.SpringMediator_3507); //$NON-NLS-1$
-		case RouterMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediator", EsbElementTypes.RouterMediator_3628); //$NON-NLS-1$
-		case StoreMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?StoreMediatorOutputConnector", EsbElementTypes.StoreMediatorOutputConnector_3590); //$NON-NLS-1$
-		case XSLTMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XSLTMediatorOutputConnector", EsbElementTypes.XSLTMediatorOutputConnector_3040); //$NON-NLS-1$
-		case ProxyInSequenceInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyInSequenceInputConnector", EsbElementTypes.ProxyInSequenceInputConnector_3731); //$NON-NLS-1$
-		case WSDLEndPointInputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPointInputConnector", EsbElementTypes.WSDLEndPointInputConnector_3654); //$NON-NLS-1$
-		case HTTPEndPointInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndPointInputConnector", EsbElementTypes.HTTPEndPointInputConnector_3710); //$NON-NLS-1$
-		case ClassMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ClassMediator", EsbElementTypes.ClassMediator_3506); //$NON-NLS-1$
-		case MergeNodeFirstInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MergeNodeFirstInputConnector", EsbElementTypes.MergeNodeFirstInputConnector_3014); //$NON-NLS-1$
-		case SwitchMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchMediator", EsbElementTypes.SwitchMediator_3498); //$NON-NLS-1$
-		case RMSequenceMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RMSequenceMediatorOutputConnector", EsbElementTypes.RMSequenceMediatorOutputConnector_3125); //$NON-NLS-1$
-		case SwitchCaseParentContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchCaseParentContainer", EsbElementTypes.SwitchCaseParentContainer_3732); //$NON-NLS-1$
-		case AddressingEndpointInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressingEndpointInputConnector", EsbElementTypes.AddressingEndpointInputConnector_3690); //$NON-NLS-1$
-		case XQueryMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XQueryMediator", EsbElementTypes.XQueryMediator_3510); //$NON-NLS-1$
-		case SwitchMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchMediatorInputConnector", EsbElementTypes.SwitchMediatorInputConnector_3042); //$NON-NLS-1$
-		case RespondMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RespondMediator", EsbElementTypes.RespondMediator_3739); //$NON-NLS-1$
-		case HTTPEndpointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndpoint", EsbElementTypes.HTTPEndpoint_3709); //$NON-NLS-1$
-		case ClassMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ClassMediatorOutputConnector", EsbElementTypes.ClassMediatorOutputConnector_3059); //$NON-NLS-1$
-		case IterateMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?IterateMediator", EsbElementTypes.IterateMediator_3519); //$NON-NLS-1$
-		case TemplateEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Template", EsbElementTypes.Template_3664); //$NON-NLS-1$
-		case CallTemplateMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallTemplateMediatorInputConnector", EsbElementTypes.CallTemplateMediatorInputConnector_3595); //$NON-NLS-1$
-		case ThrottleMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediator", EsbElementTypes.ThrottleMediator_3493); //$NON-NLS-1$
-		case CloudConnectorOperationInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorOperationInputConnector", EsbElementTypes.CloudConnectorOperationInputConnector_3723); //$NON-NLS-1$
-		case RecipientListEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointOutputConnector", EsbElementTypes.RecipientListEndPointOutputConnector_3694); //$NON-NLS-1$
-		case MediatorFlow10EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3587); //$NON-NLS-1$
-		case IterateMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?IterateMediatorOutputConnector", EsbElementTypes.IterateMediatorOutputConnector_3110); //$NON-NLS-1$
-		case BeanMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BeanMediatorInputConnector", EsbElementTypes.BeanMediatorInputConnector_3684); //$NON-NLS-1$
-		case EsbDiagramEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Diagram?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbDiagram", EsbElementTypes.EsbDiagram_1000); //$NON-NLS-1$
 		case FaultMediatorOutputConnectorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FaultMediatorOutputConnector", EsbElementTypes.FaultMediatorOutputConnector_3068); //$NON-NLS-1$
-		case ProxyInputConnectorEditPart.VISUAL_ID:
+		case EnqueueMediatorOutputConnectorEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyInputConnector", EsbElementTypes.ProxyInputConnector_3003); //$NON-NLS-1$
-		case RecipientListEndPointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPoint", EsbElementTypes.RecipientListEndPoint_3692); //$NON-NLS-1$
-		case MediatorFlow16EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3639); //$NON-NLS-1$
-		case AddressingEndpointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressingEndpoint", EsbElementTypes.AddressingEndpoint_3689); //$NON-NLS-1$
-		case AddressEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPointOutputConnector", EsbElementTypes.AddressEndPointOutputConnector_3031); //$NON-NLS-1$
-		case DBReportMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBReportMediatorInputConnector", EsbElementTypes.DBReportMediatorInputConnector_3079); //$NON-NLS-1$
-		case CloneTargetContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneTargetContainer", EsbElementTypes.CloneTargetContainer_3604); //$NON-NLS-1$
-		case CloudConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnector", EsbElementTypes.CloudConnector_3719); //$NON-NLS-1$
-		case FailoverEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointOutputConnector", EsbElementTypes.FailoverEndPointOutputConnector_3651); //$NON-NLS-1$
-		case EnqueueMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnqueueMediator", EsbElementTypes.EnqueueMediator_3600); //$NON-NLS-1$
-		case CloudConnectorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorOutputConnector", EsbElementTypes.CloudConnectorOutputConnector_3721); //$NON-NLS-1$
-		case BeanMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BeanMediatorOutputConnector", EsbElementTypes.BeanMediatorOutputConnector_3685); //$NON-NLS-1$
-		case XQueryMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XQueryMediatorOutputConnector", EsbElementTypes.XQueryMediatorOutputConnector_3071); //$NON-NLS-1$
-		case EndpointDiagram2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EndpointDiagram", EsbElementTypes.EndpointDiagram_3666); //$NON-NLS-1$
-		case AggregateMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AggregateMediatorOutputConnector", EsbElementTypes.AggregateMediatorOutputConnector_3113); //$NON-NLS-1$
-		case SwitchDefaultBranchOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchDefaultBranchOutputConnector", EsbElementTypes.SwitchDefaultBranchOutputConnector_3044); //$NON-NLS-1$
-		case ThrottleMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediatorOnRejectOutputConnector", EsbElementTypes.ThrottleMediatorOnRejectOutputConnector_3582); //$NON-NLS-1$
-		case CalloutMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CalloutMediatorOutputConnector", EsbElementTypes.CalloutMediatorOutputConnector_3116); //$NON-NLS-1$
-		case SwitchDefaultContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchDefaultContainer", EsbElementTypes.SwitchDefaultContainer_3735); //$NON-NLS-1$
-		case RespondMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RespondMediatorInputConnector", EsbElementTypes.RespondMediatorInputConnector_3740); //$NON-NLS-1$
-		case CallMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CallMediator", EsbElementTypes.CallMediator_3742); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnqueueMediatorOutputConnector", EsbElementTypes.EnqueueMediatorOutputConnector_3602); //$NON-NLS-1$
 		case SendMediatorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SendMediator", EsbElementTypes.SendMediator_3515); //$NON-NLS-1$
-		case EventMediatorEditPart.VISUAL_ID:
+		case MessageStoreEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EventMediator", EsbElementTypes.EventMediator_3504); //$NON-NLS-1$
-		case HTTPEndPointInputConnector2EditPart.VISUAL_ID:
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageStore", EsbElementTypes.MessageStore_3715); //$NON-NLS-1$
+		case IterateMediatorEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndPointInputConnector", EsbElementTypes.HTTPEndPointInputConnector_3713); //$NON-NLS-1$
-		case APIResourceEndpointInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceEndpointInputConnector", EsbElementTypes.APIResourceEndpointInputConnector_3675); //$NON-NLS-1$
-		case BAMMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BAMMediator", EsbElementTypes.BAMMediator_3680); //$NON-NLS-1$
-		case LoadBalanceEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointOutputConnector", EsbElementTypes.LoadBalanceEndPointOutputConnector_3096); //$NON-NLS-1$
-		case TemplateEndpointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpoint", EsbElementTypes.TemplateEndpoint_3716); //$NON-NLS-1$
-		case EnqueueMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnqueueMediatorInputConnector", EsbElementTypes.EnqueueMediatorInputConnector_3601); //$NON-NLS-1$
-		case MediatorFlowEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3608); //$NON-NLS-1$
-		case EnrichMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnrichMediatorOutputConnector", EsbElementTypes.EnrichMediatorOutputConnector_3037); //$NON-NLS-1$
-		case RouterMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediatorOutputConnector", EsbElementTypes.RouterMediatorOutputConnector_3630); //$NON-NLS-1$
-		case LogMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LogMediatorInputConnector", EsbElementTypes.LogMediatorInputConnector_3018); //$NON-NLS-1$
-		case SendMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SendMediatorOutputConnector", EsbElementTypes.SendMediatorOutputConnector_3086); //$NON-NLS-1$
-		case MediatorFlow15EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3634); //$NON-NLS-1$
-		case NamedEndpointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?NamedEndpoint", EsbElementTypes.NamedEndpoint_3660); //$NON-NLS-1$
-		case TemplateEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpointOutputConnector", EsbElementTypes.TemplateEndpointOutputConnector_3718); //$NON-NLS-1$
-		case CloudConnectorOperationOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorOperationOutputConnector", EsbElementTypes.CloudConnectorOperationOutputConnector_3724); //$NON-NLS-1$
-		case EJBMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EJBMediatorInputConnector", EsbElementTypes.EJBMediatorInputConnector_3687); //$NON-NLS-1$
-		case SwitchDefaultParentContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchDefaultParentContainer", EsbElementTypes.SwitchDefaultParentContainer_3734); //$NON-NLS-1$
-		case SmooksMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SmooksMediatorOutputConnector", EsbElementTypes.SmooksMediatorOutputConnector_3083); //$NON-NLS-1$
-		case SwitchMediatorContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchMediatorContainer", EsbElementTypes.SwitchMediatorContainer_3500); //$NON-NLS-1$
-		case EntitlementObligationsContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementObligationsContainer", EsbElementTypes.EntitlementObligationsContainer_3759); //$NON-NLS-1$
-		case EntitlementAdviceContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementAdviceContainer", EsbElementTypes.EntitlementAdviceContainer_3757); //$NON-NLS-1$
-		case EnrichMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnrichMediator", EsbElementTypes.EnrichMediator_3496); //$NON-NLS-1$
-		case MediatorFlow3EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3526); //$NON-NLS-1$
-		case EntitlementMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorOutputConnector", EsbElementTypes.EntitlementMediatorOutputConnector_3056); //$NON-NLS-1$
-		case LogMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LogMediator", EsbElementTypes.LogMediator_3495); //$NON-NLS-1$
-		case MediatorFlow4EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3528); //$NON-NLS-1$
-		case EntitlementMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorInputConnector", EsbElementTypes.EntitlementMediatorInputConnector_3055); //$NON-NLS-1$
-		case ValidateMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ValidateMediator", EsbElementTypes.ValidateMediator_3623); //$NON-NLS-1$
-		case MessageOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageOutputConnector", EsbElementTypes.MessageOutputConnector_3047); //$NON-NLS-1$
-		case BAMMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BAMMediatorOutputConnector", EsbElementTypes.BAMMediatorOutputConnector_3682); //$NON-NLS-1$
-		case TransactionMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TransactionMediator", EsbElementTypes.TransactionMediator_3521); //$NON-NLS-1$
-		case AddressingEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressingEndpointOutputConnector", EsbElementTypes.AddressingEndpointOutputConnector_3691); //$NON-NLS-1$
-		case PayloadFactoryMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PayloadFactoryMediator", EsbElementTypes.PayloadFactoryMediator_3597); //$NON-NLS-1$
-		case MediatorFlow2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3502); //$NON-NLS-1$
-		case StoreMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?StoreMediator", EsbElementTypes.StoreMediator_3588); //$NON-NLS-1$
-		case TemplateEndpointOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpointOutputConnector", EsbElementTypes.TemplateEndpointOutputConnector_3727); //$NON-NLS-1$
-		case LocalEntryEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LocalEntry", EsbElementTypes.LocalEntry_3663); //$NON-NLS-1$
-		case DBReportMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBReportMediatorOutputConnector", EsbElementTypes.DBReportMediatorOutputConnector_3080); //$NON-NLS-1$
-		case LoadBalanceEndPointInputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointInputConnector", EsbElementTypes.LoadBalanceEndPointInputConnector_3657); //$NON-NLS-1$
-		case SequenceInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SequenceInputConnector", EsbElementTypes.SequenceInputConnector_3049); //$NON-NLS-1$
-		case ValidateMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ValidateMediatorInputConnector", EsbElementTypes.ValidateMediatorInputConnector_3624); //$NON-NLS-1$
-		case CloneMediatorTargetOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediatorTargetOutputConnector", EsbElementTypes.CloneMediatorTargetOutputConnector_3133); //$NON-NLS-1$
-		case RecipientListEndPoint2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPoint", EsbElementTypes.RecipientListEndPoint_3696); //$NON-NLS-1$
-		case OAuthMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?OAuthMediator", EsbElementTypes.OAuthMediator_3524); //$NON-NLS-1$
-		case DefaultEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPointOutputConnector", EsbElementTypes.DefaultEndPointOutputConnector_3022); //$NON-NLS-1$
-		case ThrottleOnRejectContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleOnRejectContainer", EsbElementTypes.ThrottleOnRejectContainer_3586); //$NON-NLS-1$
-		case PropertyMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PropertyMediatorInputConnector", EsbElementTypes.PropertyMediatorInputConnector_3033); //$NON-NLS-1$
-		case DefaultEndPointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPoint", EsbElementTypes.DefaultEndPoint_3609); //$NON-NLS-1$
-		case DBLookupMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBLookupMediator", EsbElementTypes.DBLookupMediator_3512); //$NON-NLS-1$
-		case FailoverEndPointInputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointInputConnector", EsbElementTypes.FailoverEndPointInputConnector_3650); //$NON-NLS-1$
-		case APIResourceEndpointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceEndpoint", EsbElementTypes.APIResourceEndpoint_3674); //$NON-NLS-1$
-		case ProxyServiceSequenceAndEndpointContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyServiceSequenceAndEndpointContainer", EsbElementTypes.ProxyServiceSequenceAndEndpointContainer_3487); //$NON-NLS-1$
-		case HTTPEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndPointOutputConnector", EsbElementTypes.HTTPEndPointOutputConnector_3711); //$NON-NLS-1$
-		case HeaderMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HeaderMediatorOutputConnector", EsbElementTypes.HeaderMediatorOutputConnector_3101); //$NON-NLS-1$
-		case FailoverEndPointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPoint", EsbElementTypes.FailoverEndPoint_3611); //$NON-NLS-1$
-		case APIResourceOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceOutputConnector", EsbElementTypes.APIResourceOutputConnector_3671); //$NON-NLS-1$
-		case MediatorFlow22EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3756); //$NON-NLS-1$
-		case RuleMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RuleMediator", EsbElementTypes.RuleMediator_3523); //$NON-NLS-1$
-		case IterateMediatorTargetOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?IterateMediatorTargetOutputConnector", EsbElementTypes.IterateMediatorTargetOutputConnector_3606); //$NON-NLS-1$
-		case BeanMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BeanMediator", EsbElementTypes.BeanMediator_3683); //$NON-NLS-1$
-		case CacheMediatorOnHitOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CacheMediatorOnHitOutputConnector", EsbElementTypes.CacheMediatorOnHitOutputConnector_3618); //$NON-NLS-1$
-		case MediatorFlow11EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3605); //$NON-NLS-1$
-		case HeaderMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HeaderMediatorInputConnector", EsbElementTypes.HeaderMediatorInputConnector_3100); //$NON-NLS-1$
-		case ScriptMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ScriptMediatorOutputConnector", EsbElementTypes.ScriptMediatorOutputConnector_3065); //$NON-NLS-1$
-		case SynapseAPIEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SynapseAPI", EsbElementTypes.SynapseAPI_3668); //$NON-NLS-1$
-		case LoadBalanceEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointOutputConnector", EsbElementTypes.LoadBalanceEndPointOutputConnector_3658); //$NON-NLS-1$
-		case ConditionalRouterMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ConditionalRouterMediatorOutputConnector", EsbElementTypes.ConditionalRouterMediatorOutputConnector_3637); //$NON-NLS-1$
-		case MediatorFlow7EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3536); //$NON-NLS-1$
-		case ThrottleOnAcceptContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleOnAcceptContainer", EsbElementTypes.ThrottleOnAcceptContainer_3584); //$NON-NLS-1$
-		case AggregateMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AggregateMediatorInputConnector", EsbElementTypes.AggregateMediatorInputConnector_3112); //$NON-NLS-1$
-		case URLRewriteMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?URLRewriteMediatorInputConnector", EsbElementTypes.URLRewriteMediatorInputConnector_3621); //$NON-NLS-1$
-		case CommandMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CommandMediator", EsbElementTypes.CommandMediator_3511); //$NON-NLS-1$
-		case FailoverEndPointInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointInputConnector", EsbElementTypes.FailoverEndPointInputConnector_3088); //$NON-NLS-1$
-		case MediatorFlow8EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3538); //$NON-NLS-1$
-		case DefaultEndPoint2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPoint", EsbElementTypes.DefaultEndPoint_3643); //$NON-NLS-1$
-		case ProxyServiceEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyService", EsbElementTypes.ProxyService_3001); //$NON-NLS-1$
-		case TransactionMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TransactionMediatorInputConnector", EsbElementTypes.TransactionMediatorInputConnector_3118); //$NON-NLS-1$
-		case SequenceEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Sequence", EsbElementTypes.Sequence_3503); //$NON-NLS-1$
-		case ProxyOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyOutputConnector", EsbElementTypes.ProxyOutputConnector_3002); //$NON-NLS-1$
-		case SendMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SendMediatorInputConnector", EsbElementTypes.SendMediatorInputConnector_3085); //$NON-NLS-1$
-		case RecipientListEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointOutputConnector", EsbElementTypes.RecipientListEndPointOutputConnector_3698); //$NON-NLS-1$
-		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementOnAcceptContainer", EsbElementTypes.EntitlementOnAcceptContainer_3755); //$NON-NLS-1$
-		case CloneMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediatorInputConnector", EsbElementTypes.CloneMediatorInputConnector_3103); //$NON-NLS-1$
-		case EntitlementMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorOnRejectOutputConnector", EsbElementTypes.EntitlementMediatorOnRejectOutputConnector_3748); //$NON-NLS-1$
-		case LoadBalanceEndPointInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointInputConnector", EsbElementTypes.LoadBalanceEndPointInputConnector_3095); //$NON-NLS-1$
-		case SequencesEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Sequences", EsbElementTypes.Sequences_3614); //$NON-NLS-1$
-		case FilterMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediatorOutputConnector", EsbElementTypes.FilterMediatorOutputConnector_3534); //$NON-NLS-1$
-		case CloneMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediatorOutputConnector", EsbElementTypes.CloneMediatorOutputConnector_3104); //$NON-NLS-1$
-		case EventMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EventMediatorInputConnector", EsbElementTypes.EventMediatorInputConnector_3052); //$NON-NLS-1$
-		case BuilderMediatorOutputConectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BuilderMediatorOutputConector", EsbElementTypes.BuilderMediatorOutputConector_3593); //$NON-NLS-1$
-		case DBLookupMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DBLookupMediatorOutputConnector", EsbElementTypes.DBLookupMediatorOutputConnector_3077); //$NON-NLS-1$
-		case XQueryMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XQueryMediatorInputConnector", EsbElementTypes.XQueryMediatorInputConnector_3070); //$NON-NLS-1$
-		case StoreMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?StoreMediatorInputConnector", EsbElementTypes.StoreMediatorInputConnector_3589); //$NON-NLS-1$
-		case URLRewriteMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?URLRewriteMediatorOutputConnector", EsbElementTypes.URLRewriteMediatorOutputConnector_3622); //$NON-NLS-1$
-		case AddressEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPointOutputConnector", EsbElementTypes.AddressEndPointOutputConnector_3648); //$NON-NLS-1$
-		case RuleMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RuleMediatorOutputConnector", EsbElementTypes.RuleMediatorOutputConnector_3128); //$NON-NLS-1$
-		case ProxyServiceContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyServiceContainer", EsbElementTypes.ProxyServiceContainer_3486); //$NON-NLS-1$
-		case FailoverEndPoint2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPoint", EsbElementTypes.FailoverEndPoint_3649); //$NON-NLS-1$
-		case EntitlementMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediator", EsbElementTypes.EntitlementMediator_3505); //$NON-NLS-1$
-		case APIResourceFaultInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceFaultInputConnector", EsbElementTypes.APIResourceFaultInputConnector_3672); //$NON-NLS-1$
-		case ProxyServiceFaultContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyServiceFaultContainer", EsbElementTypes.ProxyServiceFaultContainer_3488); //$NON-NLS-1$
-		case SwitchCaseBranchOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchCaseBranchOutputConnector", EsbElementTypes.SwitchCaseBranchOutputConnector_3043); //$NON-NLS-1$
-		case ThrottleMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediatorOnAcceptOutputConnector", EsbElementTypes.ThrottleMediatorOnAcceptOutputConnector_3581); //$NON-NLS-1$
-		case EntitlementMediatorObligationsOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorObligationsOutputConnector", EsbElementTypes.EntitlementMediatorObligationsOutputConnector_3751); //$NON-NLS-1$
-		case MediatorFlow23EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3758); //$NON-NLS-1$
-		case ValidateMediatorOnFailOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ValidateMediatorOnFailOutputConnector", EsbElementTypes.ValidateMediatorOnFailOutputConnector_3626); //$NON-NLS-1$
-		case SwitchCaseContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchCaseContainer", EsbElementTypes.SwitchCaseContainer_3733); //$NON-NLS-1$
-		case CloudConnectorOperationEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorOperation", EsbElementTypes.CloudConnectorOperation_3722); //$NON-NLS-1$
-		case FailoverEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointOutputConnector", EsbElementTypes.FailoverEndPointOutputConnector_3090); //$NON-NLS-1$
-		case BuilderMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BuilderMediatorInputConnector", EsbElementTypes.BuilderMediatorInputConnector_3592); //$NON-NLS-1$
-		case ConditionalRouterMediatorAdditionalOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ConditionalRouterMediatorAdditionalOutputConnector", EsbElementTypes.ConditionalRouterMediatorAdditionalOutputConnector_3638); //$NON-NLS-1$
-		case ClassMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ClassMediatorInputConnector", EsbElementTypes.ClassMediatorInputConnector_3058); //$NON-NLS-1$
-		case Sequences2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Sequences", EsbElementTypes.Sequences_3665); //$NON-NLS-1$
-		case ProxyOutSequenceOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyOutSequenceOutputConnector", EsbElementTypes.ProxyOutSequenceOutputConnector_3729); //$NON-NLS-1$
-		case APIResourceEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceEndpointOutputConnector", EsbElementTypes.APIResourceEndpointOutputConnector_3676); //$NON-NLS-1$
-		case EJBMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EJBMediator", EsbElementTypes.EJBMediator_3686); //$NON-NLS-1$
-		case DefaultEndPointInputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?DefaultEndPointInputConnector", EsbElementTypes.DefaultEndPointInputConnector_3644); //$NON-NLS-1$
-		case ScriptMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ScriptMediator", EsbElementTypes.ScriptMediator_3508); //$NON-NLS-1$
-		case EsbLinkEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbLink", EsbElementTypes.EsbLink_4001); //$NON-NLS-1$
-		case FilterMediatorPassOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediatorPassOutputConnector", EsbElementTypes.FilterMediatorPassOutputConnector_3011); //$NON-NLS-1$
-		case WSDLEndPointEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPoint", EsbElementTypes.WSDLEndPoint_3612); //$NON-NLS-1$
-		case LoopBackMediatorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoopBackMediator", EsbElementTypes.LoopBackMediator_3736); //$NON-NLS-1$
-		case ScriptMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ScriptMediatorInputConnector", EsbElementTypes.ScriptMediatorInputConnector_3064); //$NON-NLS-1$
-		case AddressEndPointInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPointInputConnector", EsbElementTypes.AddressEndPointInputConnector_3030); //$NON-NLS-1$
-		case FaultMediatorInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FaultMediatorInputConnector", EsbElementTypes.FaultMediatorInputConnector_3067); //$NON-NLS-1$
-		case TaskEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?Task", EsbElementTypes.Task_3667); //$NON-NLS-1$
-		case MergeNodeEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MergeNode", EsbElementTypes.MergeNode_3013); //$NON-NLS-1$
-		case MessageInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageInputConnector", EsbElementTypes.MessageInputConnector_3046); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?IterateMediator", EsbElementTypes.IterateMediator_3519); //$NON-NLS-1$
 		case MediatorFlow20EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3746); //$NON-NLS-1$
-		case CommandMediatorOutputConnectorEditPart.VISUAL_ID:
+		case URLRewriteMediatorOutputConnectorEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CommandMediatorOutputConnector", EsbElementTypes.CommandMediatorOutputConnector_3074); //$NON-NLS-1$
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?URLRewriteMediatorOutputConnector", EsbElementTypes.URLRewriteMediatorOutputConnector_3622); //$NON-NLS-1$
+		case URLRewriteMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?URLRewriteMediatorInputConnector", EsbElementTypes.URLRewriteMediatorInputConnector_3621); //$NON-NLS-1$
+		case FilterFailContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterFailContainer", EsbElementTypes.FilterFailContainer_3537); //$NON-NLS-1$
+		case FailoverEndPointInputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPointInputConnector", EsbElementTypes.FailoverEndPointInputConnector_3650); //$NON-NLS-1$
+		case SequenceInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SequenceInputConnector", EsbElementTypes.SequenceInputConnector_3049); //$NON-NLS-1$
+		case APIResourceInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceInputConnector", EsbElementTypes.APIResourceInputConnector_3670); //$NON-NLS-1$
+		case APIResourceEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResource", EsbElementTypes.APIResource_3669); //$NON-NLS-1$
+		case FailoverEndPointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPoint", EsbElementTypes.FailoverEndPoint_3611); //$NON-NLS-1$
+		case RespondMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RespondMediatorInputConnector", EsbElementTypes.RespondMediatorInputConnector_3740); //$NON-NLS-1$
+		case HTTPEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndPointOutputConnector", EsbElementTypes.HTTPEndPointOutputConnector_3711); //$NON-NLS-1$
+		case RouterMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RouterMediatorInputConnector", EsbElementTypes.RouterMediatorInputConnector_3629); //$NON-NLS-1$
+		case LoadBalanceEndPointInputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointInputConnector", EsbElementTypes.LoadBalanceEndPointInputConnector_3657); //$NON-NLS-1$
+		case ProxyInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyInputConnector", EsbElementTypes.ProxyInputConnector_3003); //$NON-NLS-1$
+		case LoadBalanceEndPointInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPointInputConnector", EsbElementTypes.LoadBalanceEndPointInputConnector_3095); //$NON-NLS-1$
+		case EnrichMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EnrichMediatorInputConnector", EsbElementTypes.EnrichMediatorInputConnector_3036); //$NON-NLS-1$
+		case AddressEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPointOutputConnector", EsbElementTypes.AddressEndPointOutputConnector_3031); //$NON-NLS-1$
+		case XQueryMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?XQueryMediator", EsbElementTypes.XQueryMediator_3510); //$NON-NLS-1$
+		case FilterMediatorPassOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediatorPassOutputConnector", EsbElementTypes.FilterMediatorPassOutputConnector_3011); //$NON-NLS-1$
+		case SwitchDefaultBranchOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?SwitchDefaultBranchOutputConnector", EsbElementTypes.SwitchDefaultBranchOutputConnector_3044); //$NON-NLS-1$
+		case RecipientListEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointOutputConnector", EsbElementTypes.RecipientListEndPointOutputConnector_3694); //$NON-NLS-1$
+		case ValidateMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ValidateMediatorOutputConnector", EsbElementTypes.ValidateMediatorOutputConnector_3625); //$NON-NLS-1$
+		case EntitlementMediatorAdviceOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorAdviceOutputConnector", EsbElementTypes.EntitlementMediatorAdviceOutputConnector_3750); //$NON-NLS-1$
+		case MediatorFlow24EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3760); //$NON-NLS-1$
+		case EntitlementAdviceContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementAdviceContainer", EsbElementTypes.EntitlementAdviceContainer_3757); //$NON-NLS-1$
+		case LoopBackMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoopBackMediator", EsbElementTypes.LoopBackMediator_3736); //$NON-NLS-1$
+		case MediatorFlow11EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3605); //$NON-NLS-1$
+		case AggregateMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AggregateMediator", EsbElementTypes.AggregateMediator_3525); //$NON-NLS-1$
+		case FilterPassContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterPassContainer", EsbElementTypes.FilterPassContainer_3535); //$NON-NLS-1$
 		case ThrottleMediatorInputConnectorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ThrottleMediatorInputConnector", EsbElementTypes.ThrottleMediatorInputConnector_3121); //$NON-NLS-1$
-		case RecipientListEndPointInputConnector2EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointInputConnector", EsbElementTypes.RecipientListEndPointInputConnector_3697); //$NON-NLS-1$
-		case EntitlementContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementContainer", EsbElementTypes.EntitlementContainer_3752); //$NON-NLS-1$
-		case APIResourceInSequenceInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?APIResourceInSequenceInputConnector", EsbElementTypes.APIResourceInSequenceInputConnector_3747); //$NON-NLS-1$
-		case MediatorFlow12EditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3607); //$NON-NLS-1$
-		case TemplateEndpointInputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpointInputConnector", EsbElementTypes.TemplateEndpointInputConnector_3717); //$NON-NLS-1$
-		case MergeNodeOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MergeNodeOutputConnector", EsbElementTypes.MergeNodeOutputConnector_3016); //$NON-NLS-1$
-		case RuleMediatorChildMediatorsOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RuleMediatorChildMediatorsOutputConnector", EsbElementTypes.RuleMediatorChildMediatorsOutputConnector_3640); //$NON-NLS-1$
-		case FilterMediatorFailOutputConnectorEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediatorFailOutputConnector", EsbElementTypes.FilterMediatorFailOutputConnector_3012); //$NON-NLS-1$
-		case FilterContainerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterContainer", EsbElementTypes.FilterContainer_3531); //$NON-NLS-1$
 		case RecipientListEndPointInputConnectorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RecipientListEndPointInputConnector", EsbElementTypes.RecipientListEndPointInputConnector_3693); //$NON-NLS-1$
+		case ProxyServiceContainer2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyServiceContainer", EsbElementTypes.ProxyServiceContainer_3673); //$NON-NLS-1$
+		case RespondMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?RespondMediator", EsbElementTypes.RespondMediator_3739); //$NON-NLS-1$
+		case NamedEndpointInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?NamedEndpointInputConnector", EsbElementTypes.NamedEndpointInputConnector_3661); //$NON-NLS-1$
+		case BAMMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BAMMediatorOutputConnector", EsbElementTypes.BAMMediatorOutputConnector_3682); //$NON-NLS-1$
+		case MediatorFlow3EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3526); //$NON-NLS-1$
+		case MediatorFlow4EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3528); //$NON-NLS-1$
+		case FailoverEndPoint2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FailoverEndPoint", EsbElementTypes.FailoverEndPoint_3649); //$NON-NLS-1$
+		case LoadBalanceEndPointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?LoadBalanceEndPoint", EsbElementTypes.LoadBalanceEndPoint_3613); //$NON-NLS-1$
+		case HeaderMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HeaderMediator", EsbElementTypes.HeaderMediator_3516); //$NON-NLS-1$
+		case FilterMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FilterMediatorInputConnector", EsbElementTypes.FilterMediatorInputConnector_3010); //$NON-NLS-1$
+		case ClassMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ClassMediatorInputConnector", EsbElementTypes.ClassMediatorInputConnector_3058); //$NON-NLS-1$
+		case WSDLEndPoint2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?WSDLEndPoint", EsbElementTypes.WSDLEndPoint_3653); //$NON-NLS-1$
+		case MediatorFlowEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3608); //$NON-NLS-1$
+		case MessageOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MessageOutputConnector", EsbElementTypes.MessageOutputConnector_3047); //$NON-NLS-1$
+		case MediatorFlow9EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3585); //$NON-NLS-1$
+		case EntitlementMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorOnAcceptOutputConnector", EsbElementTypes.EntitlementMediatorOnAcceptOutputConnector_3749); //$NON-NLS-1$
+		case IterateMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?IterateMediatorTargetOutputConnector", EsbElementTypes.IterateMediatorTargetOutputConnector_3606); //$NON-NLS-1$
+		case PropertyMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PropertyMediator", EsbElementTypes.PropertyMediator_3492); //$NON-NLS-1$
+		case CloudConnectorOperationOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloudConnectorOperationOutputConnector", EsbElementTypes.CloudConnectorOperationOutputConnector_3724); //$NON-NLS-1$
+		case TemplateEndpointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TemplateEndpoint", EsbElementTypes.TemplateEndpoint_3716); //$NON-NLS-1$
+		case BAMMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?BAMMediatorInputConnector", EsbElementTypes.BAMMediatorInputConnector_3681); //$NON-NLS-1$
+		case TransactionMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?TransactionMediator", EsbElementTypes.TransactionMediator_3521); //$NON-NLS-1$
+		case MediatorFlow8EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3538); //$NON-NLS-1$
+		case MediatorFlow21EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3754); //$NON-NLS-1$
+		case EntitlementMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EntitlementMediatorOnRejectOutputConnector", EsbElementTypes.EntitlementMediatorOnRejectOutputConnector_3748); //$NON-NLS-1$
+		case EsbServerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbServer", EsbElementTypes.EsbServer_2001); //$NON-NLS-1$
+		case CacheMediatorOnHitOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CacheMediatorOnHitOutputConnector", EsbElementTypes.CacheMediatorOnHitOutputConnector_3618); //$NON-NLS-1$
+		case AddressEndPointInputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?AddressEndPointInputConnector", EsbElementTypes.AddressEndPointInputConnector_3647); //$NON-NLS-1$
+		case CloneMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?CloneMediatorTargetOutputConnector", EsbElementTypes.CloneMediatorTargetOutputConnector_3133); //$NON-NLS-1$
+		case ProxyServiceContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?ProxyServiceContainer", EsbElementTypes.ProxyServiceContainer_3486); //$NON-NLS-1$
+		case EndpointDiagram2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EndpointDiagram", EsbElementTypes.EndpointDiagram_3666); //$NON-NLS-1$
+		case HTTPEndPointInputConnector2EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?HTTPEndPointInputConnector", EsbElementTypes.HTTPEndPointInputConnector_3713); //$NON-NLS-1$
+		case EJBMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?EJBMediatorInputConnector", EsbElementTypes.EJBMediatorInputConnector_3687); //$NON-NLS-1$
+		case MediatorFlow16EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3639); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -1102,626 +1112,632 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 			return getUnresolvedDomainElementProxyText(view);
 		}
 		switch (EsbVisualIDRegistry.getVisualID(view)) {
-		case RouterMediatorTargetOutputConnectorEditPart.VISUAL_ID:
-			return getRouterMediatorTargetOutputConnector_3631Text(view);
-		case EJBMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getEJBMediatorOutputConnector_3688Text(view);
-		case EndpointDiagramEditPart.VISUAL_ID:
-			return getEndpointDiagram_3642Text(view);
-		case EntitlementMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
-			return getEntitlementMediatorOnAcceptOutputConnector_3749Text(view);
-		case MediatorFlow14EditPart.VISUAL_ID:
-			return getMediatorFlow_3627Text(view);
-		case CallTemplateMediatorEditPart.VISUAL_ID:
-			return getCallTemplateMediator_3594Text(view);
 		case MediatorFlow6EditPart.VISUAL_ID:
 			return getMediatorFlow_3530Text(view);
-		case RuleMediatorInputConnectorEditPart.VISUAL_ID:
-			return getRuleMediatorInputConnector_3127Text(view);
-		case FilterMediatorEditPart.VISUAL_ID:
-			return getFilterMediator_3494Text(view);
+		case CallMediatorEditPart.VISUAL_ID:
+			return getCallMediator_3742Text(view);
+		case CacheMediatorInputConnectorEditPart.VISUAL_ID:
+			return getCacheMediatorInputConnector_3106Text(view);
+		case SwitchCaseContainerEditPart.VISUAL_ID:
+			return getSwitchCaseContainer_3733Text(view);
+		case TemplateEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getTemplateEndpointOutputConnector_3718Text(view);
+		case RecipientListEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getRecipientListEndPointOutputConnector_3698Text(view);
+		case ThrottleOnRejectContainerEditPart.VISUAL_ID:
+			return getThrottleOnRejectContainer_3586Text(view);
+		case CloudConnectorEditPart.VISUAL_ID:
+			return getCloudConnector_3719Text(view);
+		case MessageProcessorEditPart.VISUAL_ID:
+			return getMessageProcessor_3701Text(view);
+		case DefaultEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getDefaultEndPointOutputConnector_3645Text(view);
+		case EventMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getEventMediatorOutputConnector_3053Text(view);
+		case FaultMediatorEditPart.VISUAL_ID:
+			return getFaultMediator_3509Text(view);
+		case MediatorFlow23EditPart.VISUAL_ID:
+			return getMediatorFlow_3758Text(view);
+		case ClassMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getClassMediatorOutputConnector_3059Text(view);
+		case URLRewriteMediatorEditPart.VISUAL_ID:
+			return getURLRewriteMediator_3620Text(view);
+		case ThrottleMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
+			return getThrottleMediatorOnRejectOutputConnector_3582Text(view);
+		case ThrottleOnAcceptContainerEditPart.VISUAL_ID:
+			return getThrottleOnAcceptContainer_3584Text(view);
+		case StoreMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getStoreMediatorOutputConnector_3590Text(view);
+		case CacheMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getCacheMediatorOutputConnector_3107Text(view);
+		case CommandMediatorEditPart.VISUAL_ID:
+			return getCommandMediator_3511Text(view);
+		case CloudConnectorOutputConnectorEditPart.VISUAL_ID:
+			return getCloudConnectorOutputConnector_3721Text(view);
+		case ConditionalRouterMediatorInputConnectorEditPart.VISUAL_ID:
+			return getConditionalRouterMediatorInputConnector_3636Text(view);
+		case RuleMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getRuleMediatorOutputConnector_3128Text(view);
+		case PayloadFactoryMediatorInputConnectorEditPart.VISUAL_ID:
+			return getPayloadFactoryMediatorInputConnector_3598Text(view);
+		case HeaderMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getHeaderMediatorOutputConnector_3101Text(view);
+		case MediatorFlow13EditPart.VISUAL_ID:
+			return getMediatorFlow_3619Text(view);
+		case DataMapperMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getDataMapperMediatorOutputConnector_3763Text(view);
+		case RouterMediatorContainerEditPart.VISUAL_ID:
+			return getRouterMediatorContainer_3632Text(view);
+		case CalloutMediatorInputConnectorEditPart.VISUAL_ID:
+			return getCalloutMediatorInputConnector_3115Text(view);
+		case EnqueueMediatorInputConnectorEditPart.VISUAL_ID:
+			return getEnqueueMediatorInputConnector_3601Text(view);
+		case RouterMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getRouterMediatorOutputConnector_3630Text(view);
+		case SpringMediatorEditPart.VISUAL_ID:
+			return getSpringMediator_3507Text(view);
+		case ScriptMediatorEditPart.VISUAL_ID:
+			return getScriptMediator_3508Text(view);
+		case SwitchDefaultParentContainerEditPart.VISUAL_ID:
+			return getSwitchDefaultParentContainer_3734Text(view);
+		case DataMapperMediatorEditPart.VISUAL_ID:
+			return getDataMapperMediator_3761Text(view);
+		case XSLTMediatorInputConnectorEditPart.VISUAL_ID:
+			return getXSLTMediatorInputConnector_3039Text(view);
+		case MessageInputConnectorEditPart.VISUAL_ID:
+			return getMessageInputConnector_3046Text(view);
+		case ValidateMediatorOnFailOutputConnectorEditPart.VISUAL_ID:
+			return getValidateMediatorOnFailOutputConnector_3626Text(view);
+		case EJBMediatorEditPart.VISUAL_ID:
+			return getEJBMediator_3686Text(view);
+		case EntitlementMediatorEditPart.VISUAL_ID:
+			return getEntitlementMediator_3505Text(view);
+		case MergeNodeOutputConnectorEditPart.VISUAL_ID:
+			return getMergeNodeOutputConnector_3016Text(view);
+		case SequencesInputConnectorEditPart.VISUAL_ID:
+			return getSequencesInputConnector_3616Text(view);
+		case TemplateEndpointInputConnectorEditPart.VISUAL_ID:
+			return getTemplateEndpointInputConnector_3717Text(view);
+		case SwitchMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getSwitchMediatorOutputConnector_3499Text(view);
+		case ComplexEndpointsEditPart.VISUAL_ID:
+			return getComplexEndpoints_3677Text(view);
+		case RecipientListEndPoint2EditPart.VISUAL_ID:
+			return getRecipientListEndPoint_3696Text(view);
+		case ScriptMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getScriptMediatorOutputConnector_3065Text(view);
+		case EntitlementMediatorObligationsOutputConnectorEditPart.VISUAL_ID:
+			return getEntitlementMediatorObligationsOutputConnector_3751Text(view);
+		case BAMMediatorEditPart.VISUAL_ID:
+			return getBAMMediator_3680Text(view);
+		case SpringMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getSpringMediatorOutputConnector_3062Text(view);
+		case LoadBalanceEndPointWestOutputConnectorEditPart.VISUAL_ID:
+			return getLoadBalanceEndPointWestOutputConnector_3098Text(view);
+		case AggregateMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getAggregateMediatorOutputConnector_3113Text(view);
+		case EJBMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getEJBMediatorOutputConnector_3688Text(view);
+		case ScriptMediatorInputConnectorEditPart.VISUAL_ID:
+			return getScriptMediatorInputConnector_3064Text(view);
+		case EntitlementContainerEditPart.VISUAL_ID:
+			return getEntitlementContainer_3752Text(view);
+		case RecipientListEndPointInputConnector2EditPart.VISUAL_ID:
+			return getRecipientListEndPointInputConnector_3697Text(view);
+		case DefaultEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getDefaultEndPointOutputConnector_3022Text(view);
+		case CallTemplateMediatorInputConnectorEditPart.VISUAL_ID:
+			return getCallTemplateMediatorInputConnector_3595Text(view);
+		case WSDLEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getWSDLEndPointOutputConnector_3093Text(view);
+		case TransactionMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getTransactionMediatorOutputConnector_3119Text(view);
+		case ProxyFaultInputConnectorEditPart.VISUAL_ID:
+			return getProxyFaultInputConnector_3489Text(view);
+		case NamedEndpointEditPart.VISUAL_ID:
+			return getNamedEndpoint_3660Text(view);
+		case EntitlementOnRejectContainerEditPart.VISUAL_ID:
+			return getEntitlementOnRejectContainer_3753Text(view);
+		case APIResourceEndpointInputConnectorEditPart.VISUAL_ID:
+			return getAPIResourceEndpointInputConnector_3675Text(view);
+		case LocalEntryEditPart.VISUAL_ID:
+			return getLocalEntry_3663Text(view);
+		case TemplateEndpointOutputConnector2EditPart.VISUAL_ID:
+			return getTemplateEndpointOutputConnector_3727Text(view);
+		case ThrottleMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
+			return getThrottleMediatorOnAcceptOutputConnector_3581Text(view);
+		case ThrottleMediatorEditPart.VISUAL_ID:
+			return getThrottleMediator_3493Text(view);
+		case SwitchMediatorInputConnectorEditPart.VISUAL_ID:
+			return getSwitchMediatorInputConnector_3042Text(view);
+		case FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID:
+			return getFailoverEndPointWestOutputConnector_3652Text(view);
+		case LoadBalanceEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getLoadBalanceEndPointOutputConnector_3658Text(view);
+		case CloneMediatorEditPart.VISUAL_ID:
+			return getCloneMediator_3517Text(view);
+		case LoopBackMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getLoopBackMediatorOutputConnector_3738Text(view);
+		case HeaderMediatorInputConnectorEditPart.VISUAL_ID:
+			return getHeaderMediatorInputConnector_3100Text(view);
+		case CommandMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getCommandMediatorOutputConnector_3074Text(view);
+		case FaultMediatorInputConnectorEditPart.VISUAL_ID:
+			return getFaultMediatorInputConnector_3067Text(view);
+		case MergeNodeEditPart.VISUAL_ID:
+			return getMergeNode_3013Text(view);
+		case HTTPEndpoint2EditPart.VISUAL_ID:
+			return getHTTPEndpoint_3712Text(view);
+		case SendMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getSendMediatorOutputConnector_3086Text(view);
+		case RMSequenceMediatorInputConnectorEditPart.VISUAL_ID:
+			return getRMSequenceMediatorInputConnector_3124Text(view);
+		case ClassMediatorEditPart.VISUAL_ID:
+			return getClassMediator_3506Text(view);
+		case APIResourceEndpointEditPart.VISUAL_ID:
+			return getAPIResourceEndpoint_3674Text(view);
+		case CloneTargetContainerEditPart.VISUAL_ID:
+			return getCloneTargetContainer_3604Text(view);
+		case HTTPEndPointInputConnectorEditPart.VISUAL_ID:
+			return getHTTPEndPointInputConnector_3710Text(view);
+		case RouterMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+			return getRouterMediatorTargetOutputConnector_3631Text(view);
+		case ProxyServiceSequenceAndEndpointContainerEditPart.VISUAL_ID:
+			return getProxyServiceSequenceAndEndpointContainer_3487Text(view);
+		case ConditionalRouterMediatorEditPart.VISUAL_ID:
+			return getConditionalRouterMediator_3635Text(view);
+		case MediatorFlow2EditPart.VISUAL_ID:
+			return getMediatorFlow_3502Text(view);
+		case OAuthMediatorEditPart.VISUAL_ID:
+			return getOAuthMediator_3524Text(view);
+		case LogMediatorEditPart.VISUAL_ID:
+			return getLogMediator_3495Text(view);
+		case DropMediatorEditPart.VISUAL_ID:
+			return getDropMediator_3491Text(view);
+		case FailoverEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getFailoverEndPointOutputConnector_3090Text(view);
+		case SequencesOutputConnectorEditPart.VISUAL_ID:
+			return getSequencesOutputConnector_3617Text(view);
+		case ValidateMediatorEditPart.VISUAL_ID:
+			return getValidateMediator_3623Text(view);
+		case DBLookupMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getDBLookupMediatorOutputConnector_3077Text(view);
+		case MediatorFlow12EditPart.VISUAL_ID:
+			return getMediatorFlow_3607Text(view);
+		case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getPropertyMediatorOutputConnector_3034Text(view);
+		case BuilderMediatorInputConnectorEditPart.VISUAL_ID:
+			return getBuilderMediatorInputConnector_3592Text(view);
+		case MediatorFlow10EditPart.VISUAL_ID:
+			return getMediatorFlow_3587Text(view);
+		case MediatorFlow17EditPart.VISUAL_ID:
+			return getMediatorFlow_3641Text(view);
+		case MessageMediatorEditPart.VISUAL_ID:
+			return getMessageMediator_3045Text(view);
+		case LoadBalanceEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getLoadBalanceEndPointOutputConnector_3096Text(view);
+		case EventMediatorInputConnectorEditPart.VISUAL_ID:
+			return getEventMediatorInputConnector_3052Text(view);
+		case APIResourceEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getAPIResourceEndpointOutputConnector_3676Text(view);
+		case RuleMediatorChildMediatorsOutputConnectorEditPart.VISUAL_ID:
+			return getRuleMediatorChildMediatorsOutputConnector_3640Text(view);
+		case CommandMediatorInputConnectorEditPart.VISUAL_ID:
+			return getCommandMediatorInputConnector_3073Text(view);
+		case EnrichMediatorEditPart.VISUAL_ID:
+			return getEnrichMediator_3496Text(view);
+		case LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID:
+			return getLoadBalanceEndPointWestOutputConnector_3659Text(view);
+		case CloudConnectorOperationInputConnectorEditPart.VISUAL_ID:
+			return getCloudConnectorOperationInputConnector_3723Text(view);
+		case TransactionMediatorInputConnectorEditPart.VISUAL_ID:
+			return getTransactionMediatorInputConnector_3118Text(view);
+		case MergeNodeSecondInputConnectorEditPart.VISUAL_ID:
+			return getMergeNodeSecondInputConnector_3015Text(view);
+		case LoopBackMediatorInputConnectorEditPart.VISUAL_ID:
+			return getLoopBackMediatorInputConnector_3737Text(view);
+		case SequenceOutputConnectorEditPart.VISUAL_ID:
+			return getSequenceOutputConnector_3050Text(view);
+		case MergeNodeFirstInputConnectorEditPart.VISUAL_ID:
+			return getMergeNodeFirstInputConnector_3014Text(view);
+		case TemplateEditPart.VISUAL_ID:
+			return getTemplate_3664Text(view);
+		case EntitlementObligationsContainerEditPart.VISUAL_ID:
+			return getEntitlementObligationsContainer_3759Text(view);
+		case RecipientListEndPointEditPart.VISUAL_ID:
+			return getRecipientListEndPoint_3692Text(view);
+		case CalloutMediatorEditPart.VISUAL_ID:
+			return getCalloutMediator_3520Text(view);
+		case SequenceEditPart.VISUAL_ID:
+			return getSequence_3503Text(view);
+		case NamedEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getNamedEndpointOutputConnector_3662Text(view);
+		case FilterMediatorFailOutputConnectorEditPart.VISUAL_ID:
+			return getFilterMediatorFailOutputConnector_3012Text(view);
+		case SwitchMediatorContainerEditPart.VISUAL_ID:
+			return getSwitchMediatorContainer_3500Text(view);
+		case MediatorFlow7EditPart.VISUAL_ID:
+			return getMediatorFlow_3536Text(view);
+		case WSDLEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getWSDLEndPointOutputConnector_3655Text(view);
+		case ConditionalRouterMediatorAdditionalOutputConnectorEditPart.VISUAL_ID:
+			return getConditionalRouterMediatorAdditionalOutputConnector_3638Text(view);
+		case LogMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getLogMediatorOutputConnector_3019Text(view);
+		case ProxyServiceFaultContainerEditPart.VISUAL_ID:
+			return getProxyServiceFaultContainer_3488Text(view);
+		case AddressingEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getAddressingEndpointOutputConnector_3691Text(view);
+		case IterateMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getIterateMediatorOutputConnector_3110Text(view);
+		case SwitchCaseParentContainerEditPart.VISUAL_ID:
+			return getSwitchCaseParentContainer_3732Text(view);
+		case FilterMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getFilterMediatorOutputConnector_3534Text(view);
+		case RespondMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getRespondMediatorOutputConnector_3741Text(view);
+		case ConditionalRouterMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getConditionalRouterMediatorOutputConnector_3637Text(view);
+		case TemplateEndpoint2EditPart.VISUAL_ID:
+			return getTemplateEndpoint_3725Text(view);
+		case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID:
+			return getRecipientListEndPointWestOutputConnector_3699Text(view);
+		case CloneMediatorInputConnectorEditPart.VISUAL_ID:
+			return getCloneMediatorInputConnector_3103Text(view);
 		case AddressEndPoint2EditPart.VISUAL_ID:
 			return getAddressEndPoint_3646Text(view);
-		case MessageStoreEditPart.VISUAL_ID:
-			return getMessageStore_3715Text(view);
+		case PayloadFactoryMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getPayloadFactoryMediatorOutputConnector_3599Text(view);
+		case DropMediatorInputConnectorEditPart.VISUAL_ID:
+			return getDropMediatorInputConnector_3008Text(view);
+		case ThrottleContainerEditPart.VISUAL_ID:
+			return getThrottleContainer_3583Text(view);
+		case ProxyOutputConnectorEditPart.VISUAL_ID:
+			return getProxyOutputConnector_3002Text(view);
+		case CloudConnectorInputConnectorEditPart.VISUAL_ID:
+			return getCloudConnectorInputConnector_3720Text(view);
+		case CloneMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getCloneMediatorOutputConnector_3104Text(view);
+		case CallTemplateMediatorEditPart.VISUAL_ID:
+			return getCallTemplateMediator_3594Text(view);
+		case CloneMediatorContainerEditPart.VISUAL_ID:
+			return getCloneMediatorContainer_3603Text(view);
+		case ProxyInSequenceInputConnectorEditPart.VISUAL_ID:
+			return getProxyInSequenceInputConnector_3731Text(view);
+		case HTTPEndpointEditPart.VISUAL_ID:
+			return getHTTPEndpoint_3709Text(view);
+		case AddressingEndpointEditPart.VISUAL_ID:
+			return getAddressingEndpoint_3689Text(view);
+		case TaskEditPart.VISUAL_ID:
+			return getTask_3667Text(view);
+		case StoreMediatorEditPart.VISUAL_ID:
+			return getStoreMediator_3588Text(view);
+		case APIResourceInSequenceInputConnectorEditPart.VISUAL_ID:
+			return getAPIResourceInSequenceInputConnector_3747Text(view);
+		case FilterMediatorEditPart.VISUAL_ID:
+			return getFilterMediator_3494Text(view);
+		case MediatorFlow22EditPart.VISUAL_ID:
+			return getMediatorFlow_3756Text(view);
+		case DefaultEndPoint2EditPart.VISUAL_ID:
+			return getDefaultEndPoint_3643Text(view);
+		case DBLookupMediatorInputConnectorEditPart.VISUAL_ID:
+			return getDBLookupMediatorInputConnector_3076Text(view);
+		case RecipientListEndPointWestOutputConnectorEditPart.VISUAL_ID:
+			return getRecipientListEndPointWestOutputConnector_3695Text(view);
+		case LogMediatorInputConnectorEditPart.VISUAL_ID:
+			return getLogMediatorInputConnector_3018Text(view);
+		case ProxyOutSequenceOutputConnectorEditPart.VISUAL_ID:
+			return getProxyOutSequenceOutputConnector_3729Text(view);
+		case AggregateMediatorInputConnectorEditPart.VISUAL_ID:
+			return getAggregateMediatorInputConnector_3112Text(view);
+		case FailoverEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getFailoverEndPointOutputConnector_3651Text(view);
+		case CloudConnectorOperationEditPart.VISUAL_ID:
+			return getCloudConnectorOperation_3722Text(view);
+		case RuleMediatorEditPart.VISUAL_ID:
+			return getRuleMediator_3523Text(view);
+		case MediatorFlow14EditPart.VISUAL_ID:
+			return getMediatorFlow_3627Text(view);
+		case OAuthMediatorInputConnectorEditPart.VISUAL_ID:
+			return getOAuthMediatorInputConnector_3130Text(view);
+		case EndpointDiagramEditPart.VISUAL_ID:
+			return getEndpointDiagram_3642Text(view);
+		case RMSequenceMediatorEditPart.VISUAL_ID:
+			return getRMSequenceMediator_3522Text(view);
+		case FailoverEndPointInputConnectorEditPart.VISUAL_ID:
+			return getFailoverEndPointInputConnector_3088Text(view);
+		case IterateMediatorInputConnectorEditPart.VISUAL_ID:
+			return getIterateMediatorInputConnector_3109Text(view);
+		case AddressEndPointEditPart.VISUAL_ID:
+			return getAddressEndPoint_3610Text(view);
+		case CacheMediatorEditPart.VISUAL_ID:
+			return getCacheMediator_3518Text(view);
+		case SwitchCaseBranchOutputConnectorEditPart.VISUAL_ID:
+			return getSwitchCaseBranchOutputConnector_3043Text(view);
+		case TemplateEndpointInputConnector2EditPart.VISUAL_ID:
+			return getTemplateEndpointInputConnector_3726Text(view);
+		case CallMediatorInputConnectorEditPart.VISUAL_ID:
+			return getCallMediatorInputConnector_3743Text(view);
+		case DBReportMediatorEditPart.VISUAL_ID:
+			return getDBReportMediator_3513Text(view);
+		case CallTemplateMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getCallTemplateMediatorOutputConnector_3596Text(view);
+		case BeanMediatorInputConnectorEditPart.VISUAL_ID:
+			return getBeanMediatorInputConnector_3684Text(view);
+		case SmooksMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getSmooksMediatorOutputConnector_3083Text(view);
+		case WSDLEndPointEditPart.VISUAL_ID:
+			return getWSDLEndPoint_3612Text(view);
+		case AddressingEndpointInputConnectorEditPart.VISUAL_ID:
+			return getAddressingEndpointInputConnector_3690Text(view);
+		case SmooksMediatorInputConnectorEditPart.VISUAL_ID:
+			return getSmooksMediatorInputConnector_3082Text(view);
+		case BuilderMediatorOutputConectorEditPart.VISUAL_ID:
+			return getBuilderMediatorOutputConector_3593Text(view);
+		case BeanMediatorEditPart.VISUAL_ID:
+			return getBeanMediator_3683Text(view);
+		case APIResourceOutputConnectorEditPart.VISUAL_ID:
+			return getAPIResourceOutputConnector_3671Text(view);
+		case ProxyServiceEditPart.VISUAL_ID:
+			return getProxyService_3001Text(view);
+		case RouterTargetContainerEditPart.VISUAL_ID:
+			return getRouterTargetContainer_3633Text(view);
+		case RuleMediatorInputConnectorEditPart.VISUAL_ID:
+			return getRuleMediatorInputConnector_3127Text(view);
+		case AggregateMediatorOnCompleteOutputConnectorEditPart.VISUAL_ID:
+			return getAggregateMediatorOnCompleteOutputConnector_3132Text(view);
+		case LoadBalanceEndPoint2EditPart.VISUAL_ID:
+			return getLoadBalanceEndPoint_3656Text(view);
+		case EsbLinkEditPart.VISUAL_ID:
+			return getEsbLink_4001Text(view);
+		case SwitchMediatorEditPart.VISUAL_ID:
+			return getSwitchMediator_3498Text(view);
+		case EnrichMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getEnrichMediatorOutputConnector_3037Text(view);
+		case APIResourceFaultInputConnectorEditPart.VISUAL_ID:
+			return getAPIResourceFaultInputConnector_3672Text(view);
+		case AddressEndPointInputConnectorEditPart.VISUAL_ID:
+			return getAddressEndPointInputConnector_3030Text(view);
+		case StoreMediatorInputConnectorEditPart.VISUAL_ID:
+			return getStoreMediatorInputConnector_3589Text(view);
+		case XQueryMediatorInputConnectorEditPart.VISUAL_ID:
+			return getXQueryMediatorInputConnector_3070Text(view);
+		case Sequences2EditPart.VISUAL_ID:
+			return getSequences_3665Text(view);
+		case DBReportMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getDBReportMediatorOutputConnector_3080Text(view);
+		case XQueryMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getXQueryMediatorOutputConnector_3071Text(view);
+		case MediatorFlow19EditPart.VISUAL_ID:
+			return getMediatorFlow_3728Text(view);
+		case EsbDiagramEditPart.VISUAL_ID:
+			return getEsbDiagram_1000Text(view);
+		case WSDLEndPointInputConnector2EditPart.VISUAL_ID:
+			return getWSDLEndPointInputConnector_3654Text(view);
+		case SpringMediatorInputConnectorEditPart.VISUAL_ID:
+			return getSpringMediatorInputConnector_3061Text(view);
+		case SequencesEditPart.VISUAL_ID:
+			return getSequences_3614Text(view);
+		case EventMediatorEditPart.VISUAL_ID:
+			return getEventMediator_3504Text(view);
+		case FailoverEndPointWestOutputConnectorEditPart.VISUAL_ID:
+			return getFailoverEndPointWestOutputConnector_3097Text(view);
+		case DefaultEndPointInputConnector2EditPart.VISUAL_ID:
+			return getDefaultEndPointInputConnector_3644Text(view);
+		case ThrottleMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getThrottleMediatorOutputConnector_3122Text(view);
+		case DBReportMediatorInputConnectorEditPart.VISUAL_ID:
+			return getDBReportMediatorInputConnector_3079Text(view);
+		case EntitlementMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getEntitlementMediatorOutputConnector_3056Text(view);
+		case DefaultEndPointEditPart.VISUAL_ID:
+			return getDefaultEndPoint_3609Text(view);
+		case DataMapperMediatorInputConnectorEditPart.VISUAL_ID:
+			return getDataMapperMediatorInputConnector_3762Text(view);
+		case SwitchDefaultContainerEditPart.VISUAL_ID:
+			return getSwitchDefaultContainer_3735Text(view);
+		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
+			return getEntitlementOnAcceptContainer_3755Text(view);
 		case WSDLEndPointInputConnectorEditPart.VISUAL_ID:
 			return getWSDLEndPointInputConnector_3092Text(view);
+		case RMSequenceMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getRMSequenceMediatorOutputConnector_3125Text(view);
+		case SynapseAPIEditPart.VISUAL_ID:
+			return getSynapseAPI_3668Text(view);
+		case AddressEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getAddressEndPointOutputConnector_3648Text(view);
+		case CallMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getCallMediatorOutputConnector_3744Text(view);
+		case MediatorFlow15EditPart.VISUAL_ID:
+			return getMediatorFlow_3634Text(view);
+		case CalloutMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getCalloutMediatorOutputConnector_3116Text(view);
+		case DBLookupMediatorEditPart.VISUAL_ID:
+			return getDBLookupMediator_3512Text(view);
+		case MediatorFlow18EditPart.VISUAL_ID:
+			return getMediatorFlow_3678Text(view);
+		case CallMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getCallMediatorEndpointOutputConnector_3745Text(view);
+		case SmooksMediatorEditPart.VISUAL_ID:
+			return getSmooksMediator_3514Text(view);
+		case OAuthMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getOAuthMediatorOutputConnector_3131Text(view);
+		case XSLTMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getXSLTMediatorOutputConnector_3040Text(view);
+		case BeanMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getBeanMediatorOutputConnector_3685Text(view);
+		case PayloadFactoryMediatorEditPart.VISUAL_ID:
+			return getPayloadFactoryMediator_3597Text(view);
+		case SendMediatorInputConnectorEditPart.VISUAL_ID:
+			return getSendMediatorInputConnector_3085Text(view);
+		case EnqueueMediatorEditPart.VISUAL_ID:
+			return getEnqueueMediator_3600Text(view);
+		case PropertyMediatorInputConnectorEditPart.VISUAL_ID:
+			return getPropertyMediatorInputConnector_3033Text(view);
+		case ValidateMediatorInputConnectorEditPart.VISUAL_ID:
+			return getValidateMediatorInputConnector_3624Text(view);
+		case SendMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
+			return getSendMediatorEndpointOutputConnector_3539Text(view);
+		case FilterContainerEditPart.VISUAL_ID:
+			return getFilterContainer_3531Text(view);
+		case ComplexEndpointsOutputConnectorEditPart.VISUAL_ID:
+			return getComplexEndpointsOutputConnector_3679Text(view);
+		case MediatorFlow5EditPart.VISUAL_ID:
+			return getMediatorFlow_3615Text(view);
+		case BuilderMediatorEditPart.VISUAL_ID:
+			return getBuilderMediator_3591Text(view);
+		case RouterMediatorEditPart.VISUAL_ID:
+			return getRouterMediator_3628Text(view);
+		case HTTPEndPointOutputConnector2EditPart.VISUAL_ID:
+			return getHTTPEndPointOutputConnector_3714Text(view);
+		case EntitlementMediatorInputConnectorEditPart.VISUAL_ID:
+			return getEntitlementMediatorInputConnector_3055Text(view);
 		case APIResourceOutSequenceOutputConnectorEditPart.VISUAL_ID:
 			return getAPIResourceOutSequenceOutputConnector_3730Text(view);
 		case DefaultEndPointInputConnectorEditPart.VISUAL_ID:
 			return getDefaultEndPointInputConnector_3021Text(view);
-		case DefaultEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getDefaultEndPointOutputConnector_3645Text(view);
-		case EnrichMediatorInputConnectorEditPart.VISUAL_ID:
-			return getEnrichMediatorInputConnector_3036Text(view);
-		case FaultMediatorEditPart.VISUAL_ID:
-			return getFaultMediator_3509Text(view);
-		case EntitlementMediatorAdviceOutputConnectorEditPart.VISUAL_ID:
-			return getEntitlementMediatorAdviceOutputConnector_3750Text(view);
-		case WSDLEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getWSDLEndPointOutputConnector_3093Text(view);
-		case PayloadFactoryMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getPayloadFactoryMediatorOutputConnector_3599Text(view);
-		case SpringMediatorInputConnectorEditPart.VISUAL_ID:
-			return getSpringMediatorInputConnector_3061Text(view);
-		case DBReportMediatorEditPart.VISUAL_ID:
-			return getDBReportMediator_3513Text(view);
-		case EnqueueMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getEnqueueMediatorOutputConnector_3602Text(view);
-		case NamedEndpointInputConnectorEditPart.VISUAL_ID:
-			return getNamedEndpointInputConnector_3661Text(view);
-		case ComplexEndpointsEditPart.VISUAL_ID:
-			return getComplexEndpoints_3677Text(view);
-		case CloudConnectorInputConnectorEditPart.VISUAL_ID:
-			return getCloudConnectorInputConnector_3720Text(view);
-		case TemplateEndpointInputConnector2EditPart.VISUAL_ID:
-			return getTemplateEndpointInputConnector_3726Text(view);
-		case MessageMediatorEditPart.VISUAL_ID:
-			return getMessageMediator_3045Text(view);
-		case EntitlementOnRejectContainerEditPart.VISUAL_ID:
-			return getEntitlementOnRejectContainer_3753Text(view);
-		case FilterPassContainerEditPart.VISUAL_ID:
-			return getFilterPassContainer_3535Text(view);
-		case MediatorFlow18EditPart.VISUAL_ID:
-			return getMediatorFlow_3678Text(view);
-		case RMSequenceMediatorEditPart.VISUAL_ID:
-			return getRMSequenceMediator_3522Text(view);
-		case WSDLEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getWSDLEndPointOutputConnector_3655Text(view);
-		case LoadBalanceEndPoint2EditPart.VISUAL_ID:
-			return getLoadBalanceEndPoint_3656Text(view);
-		case CloneMediatorEditPart.VISUAL_ID:
-			return getCloneMediator_3517Text(view);
-		case CallMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getCallMediatorOutputConnector_3744Text(view);
-		case FilterFailContainerEditPart.VISUAL_ID:
-			return getFilterFailContainer_3537Text(view);
-		case SendMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getSendMediatorEndpointOutputConnector_3539Text(view);
-		case ConditionalRouterMediatorEditPart.VISUAL_ID:
-			return getConditionalRouterMediator_3635Text(view);
-		case RespondMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getRespondMediatorOutputConnector_3741Text(view);
-		case TemplateEndpoint2EditPart.VISUAL_ID:
-			return getTemplateEndpoint_3725Text(view);
-		case PayloadFactoryMediatorInputConnectorEditPart.VISUAL_ID:
-			return getPayloadFactoryMediatorInputConnector_3598Text(view);
-		case RecipientListEndPointWestOutputConnectorEditPart.VISUAL_ID:
-			return getRecipientListEndPointWestOutputConnector_3695Text(view);
-		case FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID:
-			return getFailoverEndPointWestOutputConnector_3652Text(view);
-		case BuilderMediatorEditPart.VISUAL_ID:
-			return getBuilderMediator_3591Text(view);
-		case LoopBackMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getLoopBackMediatorOutputConnector_3738Text(view);
-		case CacheMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getCacheMediatorOutputConnector_3107Text(view);
-		case APIResourceEditPart.VISUAL_ID:
-			return getAPIResource_3669Text(view);
-		case FailoverEndPointWestOutputConnectorEditPart.VISUAL_ID:
-			return getFailoverEndPointWestOutputConnector_3097Text(view);
-		case RouterTargetContainerEditPart.VISUAL_ID:
-			return getRouterTargetContainer_3633Text(view);
-		case CallTemplateMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getCallTemplateMediatorOutputConnector_3596Text(view);
-		case PropertyMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getPropertyMediatorOutputConnector_3034Text(view);
-		case DropMediatorEditPart.VISUAL_ID:
-			return getDropMediator_3491Text(view);
-		case ProxyFaultInputConnectorEditPart.VISUAL_ID:
-			return getProxyFaultInputConnector_3489Text(view);
-		case SpringMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getSpringMediatorOutputConnector_3062Text(view);
-		case MessageProcessorEditPart.VISUAL_ID:
-			return getMessageProcessor_3701Text(view);
-		case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID:
-			return getRecipientListEndPointWestOutputConnector_3699Text(view);
-		case CacheMediatorEditPart.VISUAL_ID:
-			return getCacheMediator_3518Text(view);
-		case SmooksMediatorInputConnectorEditPart.VISUAL_ID:
-			return getSmooksMediatorInputConnector_3082Text(view);
-		case MediatorFlow21EditPart.VISUAL_ID:
-			return getMediatorFlow_3754Text(view);
-		case LoopBackMediatorInputConnectorEditPart.VISUAL_ID:
-			return getLoopBackMediatorInputConnector_3737Text(view);
-		case ProxyServiceContainer2EditPart.VISUAL_ID:
-			return getProxyServiceContainer_3673Text(view);
-		case CallMediatorEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getCallMediatorEndpointOutputConnector_3745Text(view);
-		case HTTPEndpoint2EditPart.VISUAL_ID:
-			return getHTTPEndpoint_3712Text(view);
-		case AggregateMediatorEditPart.VISUAL_ID:
-			return getAggregateMediator_3525Text(view);
-		case SmooksMediatorEditPart.VISUAL_ID:
-			return getSmooksMediator_3514Text(view);
-		case MergeNodeSecondInputConnectorEditPart.VISUAL_ID:
-			return getMergeNodeSecondInputConnector_3015Text(view);
-		case PropertyMediatorEditPart.VISUAL_ID:
-			return getPropertyMediator_3492Text(view);
-		case OAuthMediatorInputConnectorEditPart.VISUAL_ID:
-			return getOAuthMediatorInputConnector_3130Text(view);
-		case HeaderMediatorEditPart.VISUAL_ID:
-			return getHeaderMediator_3516Text(view);
-		case SequencesOutputConnectorEditPart.VISUAL_ID:
-			return getSequencesOutputConnector_3617Text(view);
-		case ValidateMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getValidateMediatorOutputConnector_3625Text(view);
-		case TransactionMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getTransactionMediatorOutputConnector_3119Text(view);
-		case SequencesInputConnectorEditPart.VISUAL_ID:
-			return getSequencesInputConnector_3616Text(view);
-		case SwitchMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getSwitchMediatorOutputConnector_3499Text(view);
-		case MediatorFlow24EditPart.VISUAL_ID:
-			return getMediatorFlow_3760Text(view);
-		case RouterMediatorContainerEditPart.VISUAL_ID:
-			return getRouterMediatorContainer_3632Text(view);
-		case AggregateMediatorOnCompleteOutputConnectorEditPart.VISUAL_ID:
-			return getAggregateMediatorOnCompleteOutputConnector_3132Text(view);
-		case AddressEndPointInputConnector2EditPart.VISUAL_ID:
-			return getAddressEndPointInputConnector_3647Text(view);
-		case CommandMediatorInputConnectorEditPart.VISUAL_ID:
-			return getCommandMediatorInputConnector_3073Text(view);
 		case XSLTMediatorEditPart.VISUAL_ID:
 			return getXSLTMediator_3497Text(view);
-		case BAMMediatorInputConnectorEditPart.VISUAL_ID:
-			return getBAMMediatorInputConnector_3681Text(view);
-		case CloneMediatorContainerEditPart.VISUAL_ID:
-			return getCloneMediatorContainer_3603Text(view);
-		case EventMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getEventMediatorOutputConnector_3053Text(view);
-		case APIResourceInputConnectorEditPart.VISUAL_ID:
-			return getAPIResourceInputConnector_3670Text(view);
-		case AddressEndPointEditPart.VISUAL_ID:
-			return getAddressEndPoint_3610Text(view);
-		case RouterMediatorInputConnectorEditPart.VISUAL_ID:
-			return getRouterMediatorInputConnector_3629Text(view);
-		case DropMediatorInputConnectorEditPart.VISUAL_ID:
-			return getDropMediatorInputConnector_3008Text(view);
-		case XSLTMediatorInputConnectorEditPart.VISUAL_ID:
-			return getXSLTMediatorInputConnector_3039Text(view);
-		case HTTPEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getHTTPEndPointOutputConnector_3714Text(view);
-		case CalloutMediatorInputConnectorEditPart.VISUAL_ID:
-			return getCalloutMediatorInputConnector_3115Text(view);
-		case IterateMediatorInputConnectorEditPart.VISUAL_ID:
-			return getIterateMediatorInputConnector_3109Text(view);
-		case CacheMediatorInputConnectorEditPart.VISUAL_ID:
-			return getCacheMediatorInputConnector_3106Text(view);
-		case EsbServerEditPart.VISUAL_ID:
-			return getEsbServer_2001Text(view);
-		case MediatorFlow9EditPart.VISUAL_ID:
-			return getMediatorFlow_3585Text(view);
-		case ThrottleContainerEditPart.VISUAL_ID:
-			return getThrottleContainer_3583Text(view);
-		case MediatorFlow19EditPart.VISUAL_ID:
-			return getMediatorFlow_3728Text(view);
-		case SequenceOutputConnectorEditPart.VISUAL_ID:
-			return getSequenceOutputConnector_3050Text(view);
-		case ThrottleMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getThrottleMediatorOutputConnector_3122Text(view);
-		case OAuthMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getOAuthMediatorOutputConnector_3131Text(view);
-		case MediatorFlow17EditPart.VISUAL_ID:
-			return getMediatorFlow_3641Text(view);
-		case CallMediatorInputConnectorEditPart.VISUAL_ID:
-			return getCallMediatorInputConnector_3743Text(view);
-		case LoadBalanceEndPointWestOutputConnectorEditPart.VISUAL_ID:
-			return getLoadBalanceEndPointWestOutputConnector_3098Text(view);
-		case URLRewriteMediatorEditPart.VISUAL_ID:
-			return getURLRewriteMediator_3620Text(view);
-		case CalloutMediatorEditPart.VISUAL_ID:
-			return getCalloutMediator_3520Text(view);
-		case NamedEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getNamedEndpointOutputConnector_3662Text(view);
-		case MediatorFlow5EditPart.VISUAL_ID:
-			return getMediatorFlow_3615Text(view);
-		case LoadBalanceEndPointEditPart.VISUAL_ID:
-			return getLoadBalanceEndPoint_3613Text(view);
-		case MediatorFlow13EditPart.VISUAL_ID:
-			return getMediatorFlow_3619Text(view);
-		case RMSequenceMediatorInputConnectorEditPart.VISUAL_ID:
-			return getRMSequenceMediatorInputConnector_3124Text(view);
-		case WSDLEndPoint2EditPart.VISUAL_ID:
-			return getWSDLEndPoint_3653Text(view);
-		case LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID:
-			return getLoadBalanceEndPointWestOutputConnector_3659Text(view);
-		case DBLookupMediatorInputConnectorEditPart.VISUAL_ID:
-			return getDBLookupMediatorInputConnector_3076Text(view);
-		case FilterMediatorInputConnectorEditPart.VISUAL_ID:
-			return getFilterMediatorInputConnector_3010Text(view);
-		case ConditionalRouterMediatorInputConnectorEditPart.VISUAL_ID:
-			return getConditionalRouterMediatorInputConnector_3636Text(view);
-		case ComplexEndpointsOutputConnectorEditPart.VISUAL_ID:
-			return getComplexEndpointsOutputConnector_3679Text(view);
-		case LogMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getLogMediatorOutputConnector_3019Text(view);
-		case SpringMediatorEditPart.VISUAL_ID:
-			return getSpringMediator_3507Text(view);
-		case RouterMediatorEditPart.VISUAL_ID:
-			return getRouterMediator_3628Text(view);
-		case StoreMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getStoreMediatorOutputConnector_3590Text(view);
-		case XSLTMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getXSLTMediatorOutputConnector_3040Text(view);
-		case ProxyInSequenceInputConnectorEditPart.VISUAL_ID:
-			return getProxyInSequenceInputConnector_3731Text(view);
-		case WSDLEndPointInputConnector2EditPart.VISUAL_ID:
-			return getWSDLEndPointInputConnector_3654Text(view);
-		case HTTPEndPointInputConnectorEditPart.VISUAL_ID:
-			return getHTTPEndPointInputConnector_3710Text(view);
-		case ClassMediatorEditPart.VISUAL_ID:
-			return getClassMediator_3506Text(view);
-		case MergeNodeFirstInputConnectorEditPart.VISUAL_ID:
-			return getMergeNodeFirstInputConnector_3014Text(view);
-		case SwitchMediatorEditPart.VISUAL_ID:
-			return getSwitchMediator_3498Text(view);
-		case RMSequenceMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getRMSequenceMediatorOutputConnector_3125Text(view);
-		case SwitchCaseParentContainerEditPart.VISUAL_ID:
-			return getSwitchCaseParentContainer_3732Text(view);
-		case AddressingEndpointInputConnectorEditPart.VISUAL_ID:
-			return getAddressingEndpointInputConnector_3690Text(view);
-		case XQueryMediatorEditPart.VISUAL_ID:
-			return getXQueryMediator_3510Text(view);
-		case SwitchMediatorInputConnectorEditPart.VISUAL_ID:
-			return getSwitchMediatorInputConnector_3042Text(view);
-		case RespondMediatorEditPart.VISUAL_ID:
-			return getRespondMediator_3739Text(view);
-		case HTTPEndpointEditPart.VISUAL_ID:
-			return getHTTPEndpoint_3709Text(view);
-		case ClassMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getClassMediatorOutputConnector_3059Text(view);
-		case IterateMediatorEditPart.VISUAL_ID:
-			return getIterateMediator_3519Text(view);
-		case TemplateEditPart.VISUAL_ID:
-			return getTemplate_3664Text(view);
-		case CallTemplateMediatorInputConnectorEditPart.VISUAL_ID:
-			return getCallTemplateMediatorInputConnector_3595Text(view);
-		case ThrottleMediatorEditPart.VISUAL_ID:
-			return getThrottleMediator_3493Text(view);
-		case CloudConnectorOperationInputConnectorEditPart.VISUAL_ID:
-			return getCloudConnectorOperationInputConnector_3723Text(view);
-		case RecipientListEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getRecipientListEndPointOutputConnector_3694Text(view);
-		case MediatorFlow10EditPart.VISUAL_ID:
-			return getMediatorFlow_3587Text(view);
-		case IterateMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getIterateMediatorOutputConnector_3110Text(view);
-		case BeanMediatorInputConnectorEditPart.VISUAL_ID:
-			return getBeanMediatorInputConnector_3684Text(view);
-		case EsbDiagramEditPart.VISUAL_ID:
-			return getEsbDiagram_1000Text(view);
 		case FaultMediatorOutputConnectorEditPart.VISUAL_ID:
 			return getFaultMediatorOutputConnector_3068Text(view);
-		case ProxyInputConnectorEditPart.VISUAL_ID:
-			return getProxyInputConnector_3003Text(view);
-		case RecipientListEndPointEditPart.VISUAL_ID:
-			return getRecipientListEndPoint_3692Text(view);
-		case MediatorFlow16EditPart.VISUAL_ID:
-			return getMediatorFlow_3639Text(view);
-		case AddressingEndpointEditPart.VISUAL_ID:
-			return getAddressingEndpoint_3689Text(view);
-		case AddressEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getAddressEndPointOutputConnector_3031Text(view);
-		case DBReportMediatorInputConnectorEditPart.VISUAL_ID:
-			return getDBReportMediatorInputConnector_3079Text(view);
-		case CloneTargetContainerEditPart.VISUAL_ID:
-			return getCloneTargetContainer_3604Text(view);
-		case CloudConnectorEditPart.VISUAL_ID:
-			return getCloudConnector_3719Text(view);
-		case FailoverEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getFailoverEndPointOutputConnector_3651Text(view);
-		case EnqueueMediatorEditPart.VISUAL_ID:
-			return getEnqueueMediator_3600Text(view);
-		case CloudConnectorOutputConnectorEditPart.VISUAL_ID:
-			return getCloudConnectorOutputConnector_3721Text(view);
-		case BeanMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getBeanMediatorOutputConnector_3685Text(view);
-		case XQueryMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getXQueryMediatorOutputConnector_3071Text(view);
-		case EndpointDiagram2EditPart.VISUAL_ID:
-			return getEndpointDiagram_3666Text(view);
-		case AggregateMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getAggregateMediatorOutputConnector_3113Text(view);
-		case SwitchDefaultBranchOutputConnectorEditPart.VISUAL_ID:
-			return getSwitchDefaultBranchOutputConnector_3044Text(view);
-		case ThrottleMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
-			return getThrottleMediatorOnRejectOutputConnector_3582Text(view);
-		case CalloutMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getCalloutMediatorOutputConnector_3116Text(view);
-		case SwitchDefaultContainerEditPart.VISUAL_ID:
-			return getSwitchDefaultContainer_3735Text(view);
-		case RespondMediatorInputConnectorEditPart.VISUAL_ID:
-			return getRespondMediatorInputConnector_3740Text(view);
-		case CallMediatorEditPart.VISUAL_ID:
-			return getCallMediator_3742Text(view);
+		case EnqueueMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getEnqueueMediatorOutputConnector_3602Text(view);
 		case SendMediatorEditPart.VISUAL_ID:
 			return getSendMediator_3515Text(view);
-		case EventMediatorEditPart.VISUAL_ID:
-			return getEventMediator_3504Text(view);
-		case HTTPEndPointInputConnector2EditPart.VISUAL_ID:
-			return getHTTPEndPointInputConnector_3713Text(view);
-		case APIResourceEndpointInputConnectorEditPart.VISUAL_ID:
-			return getAPIResourceEndpointInputConnector_3675Text(view);
-		case BAMMediatorEditPart.VISUAL_ID:
-			return getBAMMediator_3680Text(view);
-		case LoadBalanceEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getLoadBalanceEndPointOutputConnector_3096Text(view);
-		case TemplateEndpointEditPart.VISUAL_ID:
-			return getTemplateEndpoint_3716Text(view);
-		case EnqueueMediatorInputConnectorEditPart.VISUAL_ID:
-			return getEnqueueMediatorInputConnector_3601Text(view);
-		case MediatorFlowEditPart.VISUAL_ID:
-			return getMediatorFlow_3608Text(view);
-		case EnrichMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getEnrichMediatorOutputConnector_3037Text(view);
-		case RouterMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getRouterMediatorOutputConnector_3630Text(view);
-		case LogMediatorInputConnectorEditPart.VISUAL_ID:
-			return getLogMediatorInputConnector_3018Text(view);
-		case SendMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getSendMediatorOutputConnector_3086Text(view);
-		case MediatorFlow15EditPart.VISUAL_ID:
-			return getMediatorFlow_3634Text(view);
-		case NamedEndpointEditPart.VISUAL_ID:
-			return getNamedEndpoint_3660Text(view);
-		case TemplateEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getTemplateEndpointOutputConnector_3718Text(view);
-		case CloudConnectorOperationOutputConnectorEditPart.VISUAL_ID:
-			return getCloudConnectorOperationOutputConnector_3724Text(view);
-		case EJBMediatorInputConnectorEditPart.VISUAL_ID:
-			return getEJBMediatorInputConnector_3687Text(view);
-		case SwitchDefaultParentContainerEditPart.VISUAL_ID:
-			return getSwitchDefaultParentContainer_3734Text(view);
-		case SmooksMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getSmooksMediatorOutputConnector_3083Text(view);
-		case SwitchMediatorContainerEditPart.VISUAL_ID:
-			return getSwitchMediatorContainer_3500Text(view);
-		case EntitlementObligationsContainerEditPart.VISUAL_ID:
-			return getEntitlementObligationsContainer_3759Text(view);
-		case EntitlementAdviceContainerEditPart.VISUAL_ID:
-			return getEntitlementAdviceContainer_3757Text(view);
-		case EnrichMediatorEditPart.VISUAL_ID:
-			return getEnrichMediator_3496Text(view);
-		case MediatorFlow3EditPart.VISUAL_ID:
-			return getMediatorFlow_3526Text(view);
-		case EntitlementMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getEntitlementMediatorOutputConnector_3056Text(view);
-		case LogMediatorEditPart.VISUAL_ID:
-			return getLogMediator_3495Text(view);
-		case MediatorFlow4EditPart.VISUAL_ID:
-			return getMediatorFlow_3528Text(view);
-		case EntitlementMediatorInputConnectorEditPart.VISUAL_ID:
-			return getEntitlementMediatorInputConnector_3055Text(view);
-		case ValidateMediatorEditPart.VISUAL_ID:
-			return getValidateMediator_3623Text(view);
-		case MessageOutputConnectorEditPart.VISUAL_ID:
-			return getMessageOutputConnector_3047Text(view);
-		case BAMMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getBAMMediatorOutputConnector_3682Text(view);
-		case TransactionMediatorEditPart.VISUAL_ID:
-			return getTransactionMediator_3521Text(view);
-		case AddressingEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getAddressingEndpointOutputConnector_3691Text(view);
-		case PayloadFactoryMediatorEditPart.VISUAL_ID:
-			return getPayloadFactoryMediator_3597Text(view);
-		case MediatorFlow2EditPart.VISUAL_ID:
-			return getMediatorFlow_3502Text(view);
-		case StoreMediatorEditPart.VISUAL_ID:
-			return getStoreMediator_3588Text(view);
-		case TemplateEndpointOutputConnector2EditPart.VISUAL_ID:
-			return getTemplateEndpointOutputConnector_3727Text(view);
-		case LocalEntryEditPart.VISUAL_ID:
-			return getLocalEntry_3663Text(view);
-		case DBReportMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getDBReportMediatorOutputConnector_3080Text(view);
-		case LoadBalanceEndPointInputConnector2EditPart.VISUAL_ID:
-			return getLoadBalanceEndPointInputConnector_3657Text(view);
-		case SequenceInputConnectorEditPart.VISUAL_ID:
-			return getSequenceInputConnector_3049Text(view);
-		case ValidateMediatorInputConnectorEditPart.VISUAL_ID:
-			return getValidateMediatorInputConnector_3624Text(view);
-		case CloneMediatorTargetOutputConnectorEditPart.VISUAL_ID:
-			return getCloneMediatorTargetOutputConnector_3133Text(view);
-		case RecipientListEndPoint2EditPart.VISUAL_ID:
-			return getRecipientListEndPoint_3696Text(view);
-		case OAuthMediatorEditPart.VISUAL_ID:
-			return getOAuthMediator_3524Text(view);
-		case DefaultEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getDefaultEndPointOutputConnector_3022Text(view);
-		case ThrottleOnRejectContainerEditPart.VISUAL_ID:
-			return getThrottleOnRejectContainer_3586Text(view);
-		case PropertyMediatorInputConnectorEditPart.VISUAL_ID:
-			return getPropertyMediatorInputConnector_3033Text(view);
-		case DefaultEndPointEditPart.VISUAL_ID:
-			return getDefaultEndPoint_3609Text(view);
-		case DBLookupMediatorEditPart.VISUAL_ID:
-			return getDBLookupMediator_3512Text(view);
-		case FailoverEndPointInputConnector2EditPart.VISUAL_ID:
-			return getFailoverEndPointInputConnector_3650Text(view);
-		case APIResourceEndpointEditPart.VISUAL_ID:
-			return getAPIResourceEndpoint_3674Text(view);
-		case ProxyServiceSequenceAndEndpointContainerEditPart.VISUAL_ID:
-			return getProxyServiceSequenceAndEndpointContainer_3487Text(view);
-		case HTTPEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getHTTPEndPointOutputConnector_3711Text(view);
-		case HeaderMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getHeaderMediatorOutputConnector_3101Text(view);
-		case FailoverEndPointEditPart.VISUAL_ID:
-			return getFailoverEndPoint_3611Text(view);
-		case APIResourceOutputConnectorEditPart.VISUAL_ID:
-			return getAPIResourceOutputConnector_3671Text(view);
-		case MediatorFlow22EditPart.VISUAL_ID:
-			return getMediatorFlow_3756Text(view);
-		case RuleMediatorEditPart.VISUAL_ID:
-			return getRuleMediator_3523Text(view);
-		case IterateMediatorTargetOutputConnectorEditPart.VISUAL_ID:
-			return getIterateMediatorTargetOutputConnector_3606Text(view);
-		case BeanMediatorEditPart.VISUAL_ID:
-			return getBeanMediator_3683Text(view);
-		case CacheMediatorOnHitOutputConnectorEditPart.VISUAL_ID:
-			return getCacheMediatorOnHitOutputConnector_3618Text(view);
-		case MediatorFlow11EditPart.VISUAL_ID:
-			return getMediatorFlow_3605Text(view);
-		case HeaderMediatorInputConnectorEditPart.VISUAL_ID:
-			return getHeaderMediatorInputConnector_3100Text(view);
-		case ScriptMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getScriptMediatorOutputConnector_3065Text(view);
-		case SynapseAPIEditPart.VISUAL_ID:
-			return getSynapseAPI_3668Text(view);
-		case LoadBalanceEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getLoadBalanceEndPointOutputConnector_3658Text(view);
-		case ConditionalRouterMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getConditionalRouterMediatorOutputConnector_3637Text(view);
-		case MediatorFlow7EditPart.VISUAL_ID:
-			return getMediatorFlow_3536Text(view);
-		case ThrottleOnAcceptContainerEditPart.VISUAL_ID:
-			return getThrottleOnAcceptContainer_3584Text(view);
-		case AggregateMediatorInputConnectorEditPart.VISUAL_ID:
-			return getAggregateMediatorInputConnector_3112Text(view);
-		case URLRewriteMediatorInputConnectorEditPart.VISUAL_ID:
-			return getURLRewriteMediatorInputConnector_3621Text(view);
-		case CommandMediatorEditPart.VISUAL_ID:
-			return getCommandMediator_3511Text(view);
-		case FailoverEndPointInputConnectorEditPart.VISUAL_ID:
-			return getFailoverEndPointInputConnector_3088Text(view);
-		case MediatorFlow8EditPart.VISUAL_ID:
-			return getMediatorFlow_3538Text(view);
-		case DefaultEndPoint2EditPart.VISUAL_ID:
-			return getDefaultEndPoint_3643Text(view);
-		case ProxyServiceEditPart.VISUAL_ID:
-			return getProxyService_3001Text(view);
-		case TransactionMediatorInputConnectorEditPart.VISUAL_ID:
-			return getTransactionMediatorInputConnector_3118Text(view);
-		case SequenceEditPart.VISUAL_ID:
-			return getSequence_3503Text(view);
-		case ProxyOutputConnectorEditPart.VISUAL_ID:
-			return getProxyOutputConnector_3002Text(view);
-		case SendMediatorInputConnectorEditPart.VISUAL_ID:
-			return getSendMediatorInputConnector_3085Text(view);
-		case RecipientListEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getRecipientListEndPointOutputConnector_3698Text(view);
-		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
-			return getEntitlementOnAcceptContainer_3755Text(view);
-		case CloneMediatorInputConnectorEditPart.VISUAL_ID:
-			return getCloneMediatorInputConnector_3103Text(view);
-		case EntitlementMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
-			return getEntitlementMediatorOnRejectOutputConnector_3748Text(view);
-		case LoadBalanceEndPointInputConnectorEditPart.VISUAL_ID:
-			return getLoadBalanceEndPointInputConnector_3095Text(view);
-		case SequencesEditPart.VISUAL_ID:
-			return getSequences_3614Text(view);
-		case FilterMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getFilterMediatorOutputConnector_3534Text(view);
-		case CloneMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getCloneMediatorOutputConnector_3104Text(view);
-		case EventMediatorInputConnectorEditPart.VISUAL_ID:
-			return getEventMediatorInputConnector_3052Text(view);
-		case BuilderMediatorOutputConectorEditPart.VISUAL_ID:
-			return getBuilderMediatorOutputConector_3593Text(view);
-		case DBLookupMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getDBLookupMediatorOutputConnector_3077Text(view);
-		case XQueryMediatorInputConnectorEditPart.VISUAL_ID:
-			return getXQueryMediatorInputConnector_3070Text(view);
-		case StoreMediatorInputConnectorEditPart.VISUAL_ID:
-			return getStoreMediatorInputConnector_3589Text(view);
-		case URLRewriteMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getURLRewriteMediatorOutputConnector_3622Text(view);
-		case AddressEndPointOutputConnector2EditPart.VISUAL_ID:
-			return getAddressEndPointOutputConnector_3648Text(view);
-		case RuleMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getRuleMediatorOutputConnector_3128Text(view);
-		case ProxyServiceContainerEditPart.VISUAL_ID:
-			return getProxyServiceContainer_3486Text(view);
-		case FailoverEndPoint2EditPart.VISUAL_ID:
-			return getFailoverEndPoint_3649Text(view);
-		case EntitlementMediatorEditPart.VISUAL_ID:
-			return getEntitlementMediator_3505Text(view);
-		case APIResourceFaultInputConnectorEditPart.VISUAL_ID:
-			return getAPIResourceFaultInputConnector_3672Text(view);
-		case ProxyServiceFaultContainerEditPart.VISUAL_ID:
-			return getProxyServiceFaultContainer_3488Text(view);
-		case SwitchCaseBranchOutputConnectorEditPart.VISUAL_ID:
-			return getSwitchCaseBranchOutputConnector_3043Text(view);
-		case ThrottleMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
-			return getThrottleMediatorOnAcceptOutputConnector_3581Text(view);
-		case EntitlementMediatorObligationsOutputConnectorEditPart.VISUAL_ID:
-			return getEntitlementMediatorObligationsOutputConnector_3751Text(view);
-		case MediatorFlow23EditPart.VISUAL_ID:
-			return getMediatorFlow_3758Text(view);
-		case ValidateMediatorOnFailOutputConnectorEditPart.VISUAL_ID:
-			return getValidateMediatorOnFailOutputConnector_3626Text(view);
-		case SwitchCaseContainerEditPart.VISUAL_ID:
-			return getSwitchCaseContainer_3733Text(view);
-		case CloudConnectorOperationEditPart.VISUAL_ID:
-			return getCloudConnectorOperation_3722Text(view);
-		case FailoverEndPointOutputConnectorEditPart.VISUAL_ID:
-			return getFailoverEndPointOutputConnector_3090Text(view);
-		case BuilderMediatorInputConnectorEditPart.VISUAL_ID:
-			return getBuilderMediatorInputConnector_3592Text(view);
-		case ConditionalRouterMediatorAdditionalOutputConnectorEditPart.VISUAL_ID:
-			return getConditionalRouterMediatorAdditionalOutputConnector_3638Text(view);
-		case ClassMediatorInputConnectorEditPart.VISUAL_ID:
-			return getClassMediatorInputConnector_3058Text(view);
-		case Sequences2EditPart.VISUAL_ID:
-			return getSequences_3665Text(view);
-		case ProxyOutSequenceOutputConnectorEditPart.VISUAL_ID:
-			return getProxyOutSequenceOutputConnector_3729Text(view);
-		case APIResourceEndpointOutputConnectorEditPart.VISUAL_ID:
-			return getAPIResourceEndpointOutputConnector_3676Text(view);
-		case EJBMediatorEditPart.VISUAL_ID:
-			return getEJBMediator_3686Text(view);
-		case DefaultEndPointInputConnector2EditPart.VISUAL_ID:
-			return getDefaultEndPointInputConnector_3644Text(view);
-		case ScriptMediatorEditPart.VISUAL_ID:
-			return getScriptMediator_3508Text(view);
-		case EsbLinkEditPart.VISUAL_ID:
-			return getEsbLink_4001Text(view);
-		case FilterMediatorPassOutputConnectorEditPart.VISUAL_ID:
-			return getFilterMediatorPassOutputConnector_3011Text(view);
-		case WSDLEndPointEditPart.VISUAL_ID:
-			return getWSDLEndPoint_3612Text(view);
-		case LoopBackMediatorEditPart.VISUAL_ID:
-			return getLoopBackMediator_3736Text(view);
-		case ScriptMediatorInputConnectorEditPart.VISUAL_ID:
-			return getScriptMediatorInputConnector_3064Text(view);
-		case AddressEndPointInputConnectorEditPart.VISUAL_ID:
-			return getAddressEndPointInputConnector_3030Text(view);
-		case FaultMediatorInputConnectorEditPart.VISUAL_ID:
-			return getFaultMediatorInputConnector_3067Text(view);
-		case TaskEditPart.VISUAL_ID:
-			return getTask_3667Text(view);
-		case MergeNodeEditPart.VISUAL_ID:
-			return getMergeNode_3013Text(view);
-		case MessageInputConnectorEditPart.VISUAL_ID:
-			return getMessageInputConnector_3046Text(view);
+		case MessageStoreEditPart.VISUAL_ID:
+			return getMessageStore_3715Text(view);
+		case IterateMediatorEditPart.VISUAL_ID:
+			return getIterateMediator_3519Text(view);
 		case MediatorFlow20EditPart.VISUAL_ID:
 			return getMediatorFlow_3746Text(view);
-		case CommandMediatorOutputConnectorEditPart.VISUAL_ID:
-			return getCommandMediatorOutputConnector_3074Text(view);
+		case URLRewriteMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getURLRewriteMediatorOutputConnector_3622Text(view);
+		case URLRewriteMediatorInputConnectorEditPart.VISUAL_ID:
+			return getURLRewriteMediatorInputConnector_3621Text(view);
+		case FilterFailContainerEditPart.VISUAL_ID:
+			return getFilterFailContainer_3537Text(view);
+		case FailoverEndPointInputConnector2EditPart.VISUAL_ID:
+			return getFailoverEndPointInputConnector_3650Text(view);
+		case SequenceInputConnectorEditPart.VISUAL_ID:
+			return getSequenceInputConnector_3049Text(view);
+		case APIResourceInputConnectorEditPart.VISUAL_ID:
+			return getAPIResourceInputConnector_3670Text(view);
+		case APIResourceEditPart.VISUAL_ID:
+			return getAPIResource_3669Text(view);
+		case FailoverEndPointEditPart.VISUAL_ID:
+			return getFailoverEndPoint_3611Text(view);
+		case RespondMediatorInputConnectorEditPart.VISUAL_ID:
+			return getRespondMediatorInputConnector_3740Text(view);
+		case HTTPEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getHTTPEndPointOutputConnector_3711Text(view);
+		case RouterMediatorInputConnectorEditPart.VISUAL_ID:
+			return getRouterMediatorInputConnector_3629Text(view);
+		case LoadBalanceEndPointInputConnector2EditPart.VISUAL_ID:
+			return getLoadBalanceEndPointInputConnector_3657Text(view);
+		case ProxyInputConnectorEditPart.VISUAL_ID:
+			return getProxyInputConnector_3003Text(view);
+		case LoadBalanceEndPointInputConnectorEditPart.VISUAL_ID:
+			return getLoadBalanceEndPointInputConnector_3095Text(view);
+		case EnrichMediatorInputConnectorEditPart.VISUAL_ID:
+			return getEnrichMediatorInputConnector_3036Text(view);
+		case AddressEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getAddressEndPointOutputConnector_3031Text(view);
+		case XQueryMediatorEditPart.VISUAL_ID:
+			return getXQueryMediator_3510Text(view);
+		case FilterMediatorPassOutputConnectorEditPart.VISUAL_ID:
+			return getFilterMediatorPassOutputConnector_3011Text(view);
+		case SwitchDefaultBranchOutputConnectorEditPart.VISUAL_ID:
+			return getSwitchDefaultBranchOutputConnector_3044Text(view);
+		case RecipientListEndPointOutputConnectorEditPart.VISUAL_ID:
+			return getRecipientListEndPointOutputConnector_3694Text(view);
+		case ValidateMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getValidateMediatorOutputConnector_3625Text(view);
+		case EntitlementMediatorAdviceOutputConnectorEditPart.VISUAL_ID:
+			return getEntitlementMediatorAdviceOutputConnector_3750Text(view);
+		case MediatorFlow24EditPart.VISUAL_ID:
+			return getMediatorFlow_3760Text(view);
+		case EntitlementAdviceContainerEditPart.VISUAL_ID:
+			return getEntitlementAdviceContainer_3757Text(view);
+		case LoopBackMediatorEditPart.VISUAL_ID:
+			return getLoopBackMediator_3736Text(view);
+		case MediatorFlow11EditPart.VISUAL_ID:
+			return getMediatorFlow_3605Text(view);
+		case AggregateMediatorEditPart.VISUAL_ID:
+			return getAggregateMediator_3525Text(view);
+		case FilterPassContainerEditPart.VISUAL_ID:
+			return getFilterPassContainer_3535Text(view);
 		case ThrottleMediatorInputConnectorEditPart.VISUAL_ID:
 			return getThrottleMediatorInputConnector_3121Text(view);
-		case RecipientListEndPointInputConnector2EditPart.VISUAL_ID:
-			return getRecipientListEndPointInputConnector_3697Text(view);
-		case EntitlementContainerEditPart.VISUAL_ID:
-			return getEntitlementContainer_3752Text(view);
-		case APIResourceInSequenceInputConnectorEditPart.VISUAL_ID:
-			return getAPIResourceInSequenceInputConnector_3747Text(view);
-		case MediatorFlow12EditPart.VISUAL_ID:
-			return getMediatorFlow_3607Text(view);
-		case TemplateEndpointInputConnectorEditPart.VISUAL_ID:
-			return getTemplateEndpointInputConnector_3717Text(view);
-		case MergeNodeOutputConnectorEditPart.VISUAL_ID:
-			return getMergeNodeOutputConnector_3016Text(view);
-		case RuleMediatorChildMediatorsOutputConnectorEditPart.VISUAL_ID:
-			return getRuleMediatorChildMediatorsOutputConnector_3640Text(view);
-		case FilterMediatorFailOutputConnectorEditPart.VISUAL_ID:
-			return getFilterMediatorFailOutputConnector_3012Text(view);
-		case FilterContainerEditPart.VISUAL_ID:
-			return getFilterContainer_3531Text(view);
 		case RecipientListEndPointInputConnectorEditPart.VISUAL_ID:
 			return getRecipientListEndPointInputConnector_3693Text(view);
+		case ProxyServiceContainer2EditPart.VISUAL_ID:
+			return getProxyServiceContainer_3673Text(view);
+		case RespondMediatorEditPart.VISUAL_ID:
+			return getRespondMediator_3739Text(view);
+		case NamedEndpointInputConnectorEditPart.VISUAL_ID:
+			return getNamedEndpointInputConnector_3661Text(view);
+		case BAMMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getBAMMediatorOutputConnector_3682Text(view);
+		case MediatorFlow3EditPart.VISUAL_ID:
+			return getMediatorFlow_3526Text(view);
+		case MediatorFlow4EditPart.VISUAL_ID:
+			return getMediatorFlow_3528Text(view);
+		case FailoverEndPoint2EditPart.VISUAL_ID:
+			return getFailoverEndPoint_3649Text(view);
+		case LoadBalanceEndPointEditPart.VISUAL_ID:
+			return getLoadBalanceEndPoint_3613Text(view);
+		case HeaderMediatorEditPart.VISUAL_ID:
+			return getHeaderMediator_3516Text(view);
+		case FilterMediatorInputConnectorEditPart.VISUAL_ID:
+			return getFilterMediatorInputConnector_3010Text(view);
+		case ClassMediatorInputConnectorEditPart.VISUAL_ID:
+			return getClassMediatorInputConnector_3058Text(view);
+		case WSDLEndPoint2EditPart.VISUAL_ID:
+			return getWSDLEndPoint_3653Text(view);
+		case MediatorFlowEditPart.VISUAL_ID:
+			return getMediatorFlow_3608Text(view);
+		case MessageOutputConnectorEditPart.VISUAL_ID:
+			return getMessageOutputConnector_3047Text(view);
+		case MediatorFlow9EditPart.VISUAL_ID:
+			return getMediatorFlow_3585Text(view);
+		case EntitlementMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
+			return getEntitlementMediatorOnAcceptOutputConnector_3749Text(view);
+		case IterateMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+			return getIterateMediatorTargetOutputConnector_3606Text(view);
+		case PropertyMediatorEditPart.VISUAL_ID:
+			return getPropertyMediator_3492Text(view);
+		case CloudConnectorOperationOutputConnectorEditPart.VISUAL_ID:
+			return getCloudConnectorOperationOutputConnector_3724Text(view);
+		case TemplateEndpointEditPart.VISUAL_ID:
+			return getTemplateEndpoint_3716Text(view);
+		case BAMMediatorInputConnectorEditPart.VISUAL_ID:
+			return getBAMMediatorInputConnector_3681Text(view);
+		case TransactionMediatorEditPart.VISUAL_ID:
+			return getTransactionMediator_3521Text(view);
+		case MediatorFlow8EditPart.VISUAL_ID:
+			return getMediatorFlow_3538Text(view);
+		case MediatorFlow21EditPart.VISUAL_ID:
+			return getMediatorFlow_3754Text(view);
+		case EntitlementMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
+			return getEntitlementMediatorOnRejectOutputConnector_3748Text(view);
+		case EsbServerEditPart.VISUAL_ID:
+			return getEsbServer_2001Text(view);
+		case CacheMediatorOnHitOutputConnectorEditPart.VISUAL_ID:
+			return getCacheMediatorOnHitOutputConnector_3618Text(view);
+		case AddressEndPointInputConnector2EditPart.VISUAL_ID:
+			return getAddressEndPointInputConnector_3647Text(view);
+		case CloneMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+			return getCloneMediatorTargetOutputConnector_3133Text(view);
+		case ProxyServiceContainerEditPart.VISUAL_ID:
+			return getProxyServiceContainer_3486Text(view);
+		case EndpointDiagram2EditPart.VISUAL_ID:
+			return getEndpointDiagram_3666Text(view);
+		case HTTPEndPointInputConnector2EditPart.VISUAL_ID:
+			return getHTTPEndPointInputConnector_3713Text(view);
+		case EJBMediatorInputConnectorEditPart.VISUAL_ID:
+			return getEJBMediatorInputConnector_3687Text(view);
+		case MediatorFlow16EditPart.VISUAL_ID:
+			return getMediatorFlow_3639Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -1986,6 +2002,13 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 	 * @generated
 	 */
 	private String getHTTPEndPointOutputConnector_3711Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getDataMapperMediatorInputConnector_3762Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -2965,6 +2988,13 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 	/**
 	 * @generated
 	 */
+	private String getDataMapperMediatorOutputConnector_3763Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
 	private String getProxyFaultInputConnector_3489Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
@@ -3448,6 +3478,23 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 	 */
 	private String getAddressEndPointOutputConnector_3031Text(View view) {
 		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getDataMapperMediator_3761Text(View view) {
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.DataMapperMediator_3761,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(DataMapperMediatorDescriptionEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(
+					new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5211); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**

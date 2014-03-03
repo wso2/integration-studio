@@ -50,28 +50,25 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.ui:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.ui:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.core:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.mylyn:org.eclipse.dltk.mylyn:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.externalchecker:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core.index.sql:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.ui:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.ssh.core:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.console:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.console.ui:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.testing:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.launching:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.core:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug.ui:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core.index.sql.h2:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core.manipulation:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole.ui:4.0.0.201206120848</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.formatter:4.0.0.201206120848</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.ui:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.ui:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.core:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.externalchecker:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.ui:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.ssh.core:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.console:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.console.ui:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.testing:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.launching:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.core:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug.ui:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core.manipulation:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole.ui:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.formatter:5.0.0.201306060709</bundleDef>
 				<bundleDef>dummy.groupid:org.h2_1.1.117:201105142352</bundleDef>
  				
 				    <!--bundleDef>org.eclipse.php:org.eclipse.php.ui.tests:1.0.0-SNAPSHOT</bundleDef-->

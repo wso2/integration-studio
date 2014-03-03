@@ -127,11 +127,17 @@
 					        <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.ui:${common.ui.version}</bundleArtifactDef>
 					        <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.maven:${common.maven.version}</bundleArtifactDef>
 					        <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.general.project:${common.tools.version}</bundleArtifactDef>
+    						<bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.libraries:${common.libraries.version}</bundleArtifactDef>
+						<bundleArtifactDef>org.milyn:org.milyn.smooks.osgi:1.5.0.SNAPSHOT</bundleArtifactDef>
+
+						<!--EMF -updated to Kepler SR2 -->
 					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation:1.7.0.201306111341</bundleArtifactDef>
 					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ui:1.7.0.201306111341</bundleArtifactDef>
 					        <bundleArtifactDef>org.eclipse.emf:org.eclipse.emf.query:1.7.0.201306111332</bundleArtifactDef>
-					        <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.libraries:${common.libraries.version}</bundleArtifactDef>
-						<bundleArtifactDef>org.milyn:org.milyn.smooks.osgi:1.5.0.SNAPSHOT</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction:1.4.0.201306111400</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.validation:1.7.0.201306111341</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace:1.5.1.201306111400</bundleArtifactDef>
+					   
 					        
 					   	<!--GMF -updated to Kepler SR2 -->
 						<bundleArtifactDef>lpg.runtime:lpg.runtime.java:2.0.17.v201004271640</bundleArtifactDef>
@@ -147,9 +153,6 @@
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.util.gui:1.6.0.v201011041432</bundleArtifactDef>
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.util:1.6.0.v201011041432</bundleArtifactDef>
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.xml:1.6.0.v201011041432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction:1.4.0.201306111400</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse:org.eclipse.emf.validation:1.7.0.201306111341</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace:1.5.1.201306111400</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common.core:org.eclipse.gmf.runtime.common.core:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.tooling.runtime:org.eclipse.gmf.tooling.runtime:3.1.0.201402192033</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common:org.eclipse.gmf.runtime.common.ui:1.7.0.201306111432</bundleArtifactDef>

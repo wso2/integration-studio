@@ -5,7 +5,7 @@
     <parent>
     	<groupId>org.wso2.eclipse</groupId>
     	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>3.3.0-SNAPSHOT</version>
+    	<version>3.6.0-SNAPSHOT</version>
     </parent>
 	<artifactId>wso2-eclipse-common</artifactId>
     <modelVersion>4.0.0</modelVersion>

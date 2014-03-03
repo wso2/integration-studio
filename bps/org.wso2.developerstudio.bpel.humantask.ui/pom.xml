@@ -22,10 +22,10 @@
     <parent>
     	<groupId>org.wso2.developerstudio</groupId>
     	<artifactId>carbon-bps-parent</artifactId>
-    	<version>3.3.0-SNAPSHOT</version>
+    	<version>3.6.0-SNAPSHOT</version>
     </parent>     
     
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.4.0-SNAPSHOT</version>
     <artifactId>org.wso2.developerstudio.bpel.humantask.ui</artifactId>
   <packaging>eclipse-plugin</packaging>
     <name>Humantask UI</name>

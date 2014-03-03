@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
         <artifactId>wso2-eclipse-developerstudio-jaggery-feature</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.1.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -74,19 +74,19 @@
 				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.formatter:4.0.0.201206120848</bundleDef>
 				<bundleDef>dummy.groupid:org.h2_1.1.117:201105142352</bundleDef>
  				
-				    <!--bundleDef>org.eclipse.php:org.eclipse.php.ui.tests:1.0.0-SNAPSHOT</bundleDef-->
-				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.core:1.0.0-SNAPSHOT</bundleDef>
-				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.daemon:1.0.0-SNAPSHOT</bundleDef>
-				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.ui:1.0.0-SNAPSHOT</bundleDef>
-				    <bundleDef>org.eclipse.php:org.eclipse.php.server.core:1.0.0-SNAPSHOT</bundleDef>
-				    <!--bundleDef>org.eclipse.php:org.eclipse.php.core.performance.tests:1.0.0-SNAPSHOT</bundleDef-->
-				    <bundleDef>org.eclipse.php:org.eclipse.php.server.ui:1.0.0-SNAPSHOT</bundleDef>
-				    <bundleDef>org.eclipse.php:org.eclipse.php.core.parser:1.0.0-SNAPSHOT</bundleDef>
-				    <bundleDef>org.eclipse.php:org.eclipse.php.core:1.0.0-SNAPSHOT</bundleDef>
-				    <!--bundleDef>org.eclipse.php:org.eclipse.php.core.tests:1.0.0-SNAPSHOT</bundleDef-->
-				    <bundleDef>org.eclipse.php:org.eclipse.php.ui:1.0.0-SNAPSHOT</bundleDef>
-				    <bundleDef>org.eclipse.php:org.eclipse.php.help:1.0.0-SNAPSHOT</bundleDef>
-				    <bundleDef>org.eclipse.php:org.eclipse.php.mylyn.ui:1.0.0-SNAPSHOT</bundleDef>
+				    <!--bundleDef>org.eclipse.php:org.eclipse.php.ui.tests:1.1.0-SNAPSHOT</bundleDef-->
+				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.core:1.1.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.daemon:1.1.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.debug.ui:1.1.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.server.core:1.1.0-SNAPSHOT</bundleDef>
+				    <!--bundleDef>org.eclipse.php:org.eclipse.php.core.performance.tests:1.1.0-SNAPSHOT</bundleDef-->
+				    <bundleDef>org.eclipse.php:org.eclipse.php.server.ui:1.1.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.core.parser:1.1.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.core:1.1.0-SNAPSHOT</bundleDef>
+				    <!--bundleDef>org.eclipse.php:org.eclipse.php.core.tests:1.1.0-SNAPSHOT</bundleDef-->
+				    <bundleDef>org.eclipse.php:org.eclipse.php.ui:1.1.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.help:1.1.0-SNAPSHOT</bundleDef>
+				    <bundleDef>org.eclipse.php:org.eclipse.php.mylyn.ui:1.1.0-SNAPSHOT</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

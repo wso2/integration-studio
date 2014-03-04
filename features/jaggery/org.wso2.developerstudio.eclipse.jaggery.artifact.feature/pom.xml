@@ -53,6 +53,7 @@
 				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug:5.0.0.201306060709</bundleDef>
 				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.ui:5.0.0.201306060709</bundleDef>
 				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.ui:5.0.0.201306060709</bundleDef>
+            <bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.annotations:5.0.0.201306060709</bundleDef>
 				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.core:5.0.0.201306060709</bundleDef>
 				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole:5.0.0.201306060709</bundleDef>
 				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.externalchecker:5.0.0.201306060709</bundleDef>

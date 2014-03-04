@@ -199,13 +199,18 @@
 						<bundleArtifactDef>org.w3c.css:org.w3c.css.sac:1.3.1.v200903091627</bundleArtifactDef>
 						<bundleArtifactDef>org.w3c.dom:org.w3c.dom.events:3.0.0.draft20060413_v201105210656</bundleArtifactDef>
 						<bundleArtifactDef>org.w3c.dom:org.w3c.dom.smil:1.0.1.v200903091627</bundleArtifactDef>
-						<bundleArtifactDef>org.w3c.dom:org.w3c.dom.svg:1.1.0.v201011041433</bundleArtifactDef>					        
+						<bundleArtifactDef>org.w3c.dom:org.w3c.dom.svg:1.1.0.v201011041433</bundleArtifactDef>		                  
+			        
 					        <!-- END OF GMF JARS -->
 		
 	                			<!--bundleArtifactDef>com.google:com.google.collect:0.8.0.v201008251220</bundleArtifactDef>
 					        <bundleArtifactDef>com.google:com.google.inject:2.0.0.v201003051000</bundleArtifactDef-->
 				    		<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.core:1.5.0.201308190730</bundleArtifactDef>
 				    		<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.layouts:1.1.0.201308190730</bundleArtifactDef>
+
+                  <!-- Smooks dependency for Kepler.-->
+                  <bundleArtifactDef>org:junit4:4.8.1.v20120523-1257</bundleArtifactDef>
+
 				        </bundleArtifacts>
 					       	<categories>
 							<category>

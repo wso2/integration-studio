@@ -135,12 +135,12 @@
 					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ui:1.7.0.201306111341</bundleArtifactDef>
 					        <bundleArtifactDef>org.eclipse.emf:org.eclipse.emf.query:1.7.0.201306111332</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction:1.4.0.201306111400</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse:org.eclipse.emf.validation:1.7.0.201306111341</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace:1.5.1.201306111400</bundleArtifactDef>
 					   
 					        
 					   	<!--GMF -updated to Kepler SR2 -->
 						<bundleArtifactDef>lpg.runtime:lpg.runtime.java:2.0.17.v201004271640</bundleArtifactDef>
+						
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.bridge:1.6.0.v201011041432</bundleArtifactDef>
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.css:1.6.0.v201011041432</bundleArtifactDef>
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.dom.svg:1.6.0.v201011041432</bundleArtifactDef>
@@ -153,29 +153,37 @@
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.util.gui:1.6.0.v201011041432</bundleArtifactDef>
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.util:1.6.0.v201011041432</bundleArtifactDef>
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.xml:1.6.0.v201011041432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common.core:org.eclipse.gmf.runtime.common.core:1.7.0.201306111432</bundleArtifactDef>
+
 						<bundleArtifactDef>org.eclipse.gmf.tooling.runtime:org.eclipse.gmf.tooling.runtime:3.1.0.201402192033</bundleArtifactDef>
+
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.core:org.eclipse.gmf.runtime.common.core:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common:org.eclipse.gmf.runtime.common.ui:1.7.0.201306111432</bundleArtifactDef>
+					
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.action.ide:org.eclipse.gmf.runtime.common.ui.action.ide:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.action:org.eclipse.gmf.runtime.common.ui.action:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.printing:org.eclipse.gmf.runtime.common.ui.printing:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.action:org.eclipse.gmf.runtime.common.ui.services.action:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.properties:org.eclipse.gmf.runtime.common.ui.services.properties:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services:org.eclipse.gmf.runtime.common.ui.services:1.7.0.201306111432</bundleArtifactDef>
+
+
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.core:org.eclipse.gmf.runtime.diagram.core:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.actions:org.eclipse.gmf.runtime.diagram.ui.actions:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.printing.render:org.eclipse.gmf.runtime.diagram.ui.printing.render:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.printing:org.eclipse.gmf.runtime.diagram.ui.printing:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.properties:org.eclipse.gmf.runtime.diagram.ui.properties:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.providers.ide:org.eclipse.gmf.runtime.diagram.ui.providers.ide:1.7.0.201306111432</bundleArtifactDef>
+							
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.providers:org.eclipse.gmf.runtime.diagram.ui.providers:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.render:org.eclipse.gmf.runtime.diagram.ui.render:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide:org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.resources.editor:org.eclipse.gmf.runtime.diagram.ui.resources.editor:1.7.0.201306111432</bundleArtifactDef>
+						
 						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui:org.eclipse.gmf.runtime.diagram.ui:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui.render.awt:org.eclipse.gmf.runtime.draw2d.ui.render.awt:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui.render:org.eclipse.gmf.runtime.draw2d.ui.render:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui:org.eclipse.gmf.runtime.draw2d.ui:1.7.0.201306111432</bundleArtifactDef>
+
 						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.clipboard.core:org.eclipse.gmf.runtime.emf.clipboard.core:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.commands.core:org.eclipse.gmf.runtime.emf.commands.core:1.7.0.201306111432</bundleArtifactDef>
 						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.core:org.eclipse.gmf.runtime.emf.core:1.7.0.201306111432</bundleArtifactDef>

@@ -4,12 +4,12 @@
     <parent>
     	<groupId>org.wso2.eclipse</groupId>
     	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>3.3.0-SNAPSHOT</version>
+    	<version>3.6.0-SNAPSHOT</version>
     </parent>
 	<groupId>org.wso2.developerstudio</groupId>
 	<artifactId>datamapper-tool-parent</artifactId>
     <modelVersion>4.0.0</modelVersion>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 Datamapper Tool Parent</name>
     <modules>

@@ -270,7 +270,7 @@
         <appserver.tools.feature.version>3.6.0-SNAPSHOT</appserver.tools.feature.version>
         <bps.tools.feature.version>3.6.0-SNAPSHOT</bps.tools.feature.version>   
         <bps.humantask.tools.feature.version>1.4.0-SNAPSHOT</bps.humantask.tools.feature.version>
-        <eclipse.bpel.feature.version>3.5.0</eclipse.bpel.feature.version>       
+        <eclipse.bpel.feature.version>3.6.0-SNAPSHOT</eclipse.bpel.feature.version>       
         <usermgt.tools.feature.version>3.6.0-SNAPSHOT</usermgt.tools.feature.version>        
         <registry.tools.feature.version>3.6.0-SNAPSHOT</registry.tools.feature.version>
         <carbon.tools.feature.version>3.6.0-SNAPSHOT</carbon.tools.feature.version>

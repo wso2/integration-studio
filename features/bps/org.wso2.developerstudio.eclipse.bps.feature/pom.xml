@@ -29,7 +29,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.bps.feature</artifactId>
     <packaging>pom</packaging>
-    <name>Business Process Server Tools</name>
+    <name>Business Process Server Human Task Tools</name>
     <url>http://wso2.org</url>
     <description>This feature contains WSO2 Developer Studio BPS Feature</description>
     <build>

@@ -209,7 +209,7 @@
 				    		<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.layouts:1.1.0.201308190730</bundleArtifactDef>
 
                   <!-- Smooks dependency for Kepler.-->
-                  <bundleArtifactDef>org:junit4:4.8.1.v20120523-1257</bundleArtifactDef>
+                  <bundleArtifactDef>org:org.junit4:4.8.1.v20120523-1257-wso2v1</bundleArtifactDef>
 
 				        </bundleArtifacts>
 					       	<categories>

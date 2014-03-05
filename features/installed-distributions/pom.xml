@@ -51,12 +51,12 @@
         </dependencies>
     </dependencyManagement>    
     <modules>
-        <module>developer-studio-eclipse-jee-juno-linux-gtk</module>
-        <module>developer-studio-eclipse-jee-juno-linux-gtk-x86_64</module>
-        <module>developer-studio-eclipse-jee-juno-macosx-cocoa</module>
-        <module>developer-studio-eclipse-jee-juno-macosx-cocoa-x86_64</module>
-        <module>developer-studio-eclipse-jee-juno-win32</module>
-        <module>developer-studio-eclipse-jee-juno-win64-x86_64</module>
+        <module>developer-studio-eclipse-jee-kepler-linux-gtk</module>
+        <module>developer-studio-eclipse-jee-kepler-linux-gtk-x86_64</module>
+        <module>developer-studio-eclipse-jee-kepler-macosx-cocoa</module>
+        <module>developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64</module>
+        <module>developer-studio-eclipse-jee-kepler-win32</module>
+        <module>developer-studio-eclipse-jee-kepler-win64-x86_64</module>
     </modules>        
 </project>
 

@@ -24,7 +24,7 @@
         <version>3.6.0-SNAPSHOT</version>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
-    <artifactId>developer-studio-eclipse-jee-juno-macosx-cocoa-x86_64</artifactId>
+    <artifactId>developer-studio-eclipse-jee-kepler-linux-gtk-x86_64</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio Eclipse distribution - ${artifactId}</name>
@@ -72,8 +72,8 @@
                                 </artifactItem-->
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-juno-macosx-cocoa-x86_64</artifactId>
-                                    <version>4.2.2</version>
+                                    <artifactId>eclipse-jee-kepler-linux-gtk-x86_64</artifactId>
+                                    <version>4.3.2</version>
                                     <type>tar.gz</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target</outputDirectory>
@@ -85,14 +85,14 @@
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/p2-repo</outputDirectory>
                                 </artifactItem>
- 				<artifactItem>
+                               <!-- <artifactItem>
                                     <groupId>org.eclipse.egit</groupId>
                                     <artifactId>egit.repository</artifactId>
-                                    <version>2.3.1.201302201838-r</version>
+				    <version>2.3.1.201302201838-r</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/egit-repo</outputDirectory>
-                                </artifactItem>
+                                </artifactItem>-->
                             </artifactItems>
                         </configuration>
                     </execution>
@@ -102,7 +102,7 @@
             <!--plugin>
                 <groupId>org.wso2.maven</groupId>
                 <artifactId>carbon-p2-plugin</artifactId>
-                <version>1.2</version>
+                <version>1.3.1</version>
                 <executions>
                       <execution>
                         <id>3-p2-profile-generation</id>
@@ -118,7 +118,7 @@
                             <destination>${basedir}/target/eclipse</destination>
                             <deleteOldProfileFiles>false</deleteOldProfileFiles>
                             <features>
-                                <feature>
+                              <feature>
                             		<id>org.wso2.developerstudio.eclipse.appserver.feature.feature.group</id>
                             		<version>${appserver.tools.feature.version}</version>
                             	</feature>
@@ -237,7 +237,7 @@
                             	<feature>
                             		<id>org.smooks.edi.editor-feature.feature.group</id>
                             		<version>${smooks.edi.editor.version}</version>
-                            	</feature>
+                            	</feature> 
                             	<feature>
                             		<id>org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group</id>
                             		<version>${cep.feature.version}</version>
@@ -250,23 +250,26 @@
                             		<id>org.wso2.developerstudio.eclipse.appfactory.feature.feature.group</id>
                             		<version>${appfactory.tools.feature.version}</version>
                             	</feature>
-				<feature>
+                            	<feature>
                             		<id>org.wso2.soapui.feature.feature.group</id>
                             		<version>${soapui.feature.version}</version>
                             	</feature>
                             	<feature>
                             		<id>org.wso2.tcpmon.feature.feature.group</id>
                             		<version>${tcpmon.feature.version}</version>
-                            	</feature>  
+                            	</feature>
+                                <feature>
+                                        <id>org.wso2.developerstudio.eclipse.qos.artifact.feature.group</id>
+                                        <version>${qos.feature.version}</version>
+                                </feature>  								
                             </features>
                         </configuration>
                     </execution>
                 </executions>
             </plugin-->
-       
-            <plugin>
+			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
+				<!--<executions>
                                         <execution>
                                         <id>install-egit</id>
                                         <phase>package</phase>
@@ -300,7 +303,7 @@
                                         </java>
                                         </tasks>
                                 </configuration>
-                                </execution>
+                                </execution>-->
 					<execution>
 					<id>install-eclipse</id>
 					<phase>package</phase>
@@ -370,7 +373,7 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group" />
 						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group" />
+<arg value="org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group" />
 						<arg value="-installIU" />
@@ -391,7 +394,7 @@
 						<arg value="org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.appfactory.feature.feature.group" />
-					 	<arg value="-installIU" />
+                                                <arg value="-installIU" />
                                                 <arg value="org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.soapui.feature.feature.group" />

@@ -31,13 +31,11 @@
         style-id="content-group"
         id="comdeveloperwelcome-introLink-group">
       <link 
-          label="WSO2 Developer Studio - Quick Overview"
-          url="http://dist.wso2.org/products/developer-studio/2.1.0/docs/overview.html"
+          label="WSO2 Developer Studio - Quick Start Guide"
+          url="https://docs.wso2.org/display/DVS360/Quick+Start+Guide"
           id="carbonStudio-introLink"
           style-id="content-link">
-        <text>Welcome to WSO2 Developer Studio !! Here we give you a quick overview of WSO2 Developer 
-        Studio. Browse through our detailed documentation to try out  
-        all the capabilities provided with WSO2 Developer Studio.</text>
+        <text>Describes the fundamentals Developer Studio to develop WSO2 projects in Eclipse. </text>
       </link>
     </group>
     <group
@@ -45,13 +43,11 @@
         id="comdeveloperwelcome-introLink-group"
         icon="icons/carbon-normal.png">
       <link 
-          label="Getting Started with WSO2 Developer Studio"
-          url="http://dist.wso2.org/products/developer-studio/2.1.0/docs/getting_started_category.html"
+          label="WSO2 Developer Studio - User Guide"
+          url="https://docs.wso2.org/display/DVS360/User+Guide"
           id="getting-started-link"
           style-id="content-link">
-        <text>This tutorial explains how to create a Carbon Application (C-App) project using WSO2 Developer Studio. 
-        Creating a C-App project is the first step to try out all the other capabilities of WSO2 Developer 
-        Studio. 
+        <text>Describes how to create, package, test, and deploy artifacts for the various WSO2 products, and how to create and manage these using Composite Application Archive (CAR). 
         </text>
       </link>
     </group>

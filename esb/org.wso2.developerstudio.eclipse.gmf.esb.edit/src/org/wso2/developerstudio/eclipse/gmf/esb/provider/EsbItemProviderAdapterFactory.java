@@ -4080,6 +4080,75 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataMapperMediatorItemProvider dataMapperMediatorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataMapperMediatorAdapter() {
+		if (dataMapperMediatorItemProvider == null) {
+			dataMapperMediatorItemProvider = new DataMapperMediatorItemProvider(this);
+		}
+
+		return dataMapperMediatorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataMapperMediatorInputConnectorItemProvider dataMapperMediatorInputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataMapperMediatorInputConnectorAdapter() {
+		if (dataMapperMediatorInputConnectorItemProvider == null) {
+			dataMapperMediatorInputConnectorItemProvider = new DataMapperMediatorInputConnectorItemProvider(this);
+		}
+
+		return dataMapperMediatorInputConnectorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataMapperMediatorOutputConnectorItemProvider dataMapperMediatorOutputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataMapperMediatorOutputConnectorAdapter() {
+		if (dataMapperMediatorOutputConnectorItemProvider == null) {
+			dataMapperMediatorOutputConnectorItemProvider = new DataMapperMediatorOutputConnectorItemProvider(this);
+		}
+
+		return dataMapperMediatorOutputConnectorItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8108,6 +8177,9 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 		if (cloudConnectorOperationItemProvider != null) cloudConnectorOperationItemProvider.dispose();
 		if (cloudConnectorOperationInputConnectorItemProvider != null) cloudConnectorOperationInputConnectorItemProvider.dispose();
 		if (cloudConnectorOperationOutputConnectorItemProvider != null) cloudConnectorOperationOutputConnectorItemProvider.dispose();
+		if (dataMapperMediatorItemProvider != null) dataMapperMediatorItemProvider.dispose();
+		if (dataMapperMediatorInputConnectorItemProvider != null) dataMapperMediatorInputConnectorItemProvider.dispose();
+		if (dataMapperMediatorOutputConnectorItemProvider != null) dataMapperMediatorOutputConnectorItemProvider.dispose();
 	}
 
 }

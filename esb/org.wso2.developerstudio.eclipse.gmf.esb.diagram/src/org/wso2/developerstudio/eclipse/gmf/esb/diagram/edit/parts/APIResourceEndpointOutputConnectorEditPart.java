@@ -387,6 +387,9 @@ public class APIResourceEndpointOutputConnectorEditPart extends AbstractBorderIt
 		if (targetEditPart instanceof CallMediatorInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
+		if (targetEditPart instanceof DataMapperMediatorInputConnectorEditPart) {
+			types.add(EsbElementTypes.EsbLink_4001);
+		}
 		if (targetEditPart instanceof ProxyInSequenceInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
@@ -505,6 +508,7 @@ public class APIResourceEndpointOutputConnectorEditPart extends AbstractBorderIt
 			types.add(EsbElementTypes.LoopBackMediatorInputConnector_3737);
 			types.add(EsbElementTypes.RespondMediatorInputConnector_3740);
 			types.add(EsbElementTypes.CallMediatorInputConnector_3743);
+			types.add(EsbElementTypes.DataMapperMediatorInputConnector_3762);
 			types.add(EsbElementTypes.ProxyInSequenceInputConnector_3731);
 			types.add(EsbElementTypes.MessageInputConnector_3046);
 			types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);

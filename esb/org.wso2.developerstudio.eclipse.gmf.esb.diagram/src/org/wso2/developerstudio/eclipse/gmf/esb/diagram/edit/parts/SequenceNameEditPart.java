@@ -161,7 +161,7 @@ public class SequenceNameEditPart extends CompartmentEditPart implements ITextAw
 	 */
 	public void setLabel(WrappingLabel figure) {
 		figure.addMouseListener(new MediatorFigureSelectionListener(this.getParent()));
-		
+
 		unregisterVisuals();
 		setFigure(figure);
 		defaultText = getLabelTextHelper(figure);

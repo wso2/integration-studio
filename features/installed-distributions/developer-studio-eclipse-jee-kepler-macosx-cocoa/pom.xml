@@ -21,10 +21,10 @@
     <parent>
         <groupId>org.wso2.eclipse</groupId>
         <artifactId>wso2-developer-studio-eclipse-distributions-parent</artifactId>
-        <version>3.3.0-SNAPSHOT</version>
+        <version>3.6.0-SNAPSHOT</version>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
-    <artifactId>developer-studio-eclipse-jee-juno-linux-gtk-x86_64</artifactId>
+    <artifactId>developer-studio-eclipse-jee-kepler-macosx-cocoa</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <name>WSO2 Developer Studio Eclipse distribution - ${artifactId}</name>
@@ -72,8 +72,8 @@
                                 </artifactItem-->
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-juno-linux-gtk-x86_64</artifactId>
-                                    <version>4.2.2</version>
+                                    <artifactId>eclipse-jee-kepler-macosx-cocoa</artifactId>
+                                    <version>4.3.2</version>
                                     <type>tar.gz</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target</outputDirectory>
@@ -85,14 +85,14 @@
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/p2-repo</outputDirectory>
                                 </artifactItem>
-                                <artifactItem>
+ 				<!--<artifactItem>
                                     <groupId>org.eclipse.egit</groupId>
                                     <artifactId>egit.repository</artifactId>
-				    <version>2.3.1.201302201838-r</version>
+                                    <version>2.3.1.201302201838-r</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/egit-repo</outputDirectory>
-                                </artifactItem>
+                                </artifactItem>-->
                             </artifactItems>
                         </configuration>
                     </execution>
@@ -102,7 +102,7 @@
             <!--plugin>
                 <groupId>org.wso2.maven</groupId>
                 <artifactId>carbon-p2-plugin</artifactId>
-                <version>1.3.1</version>
+                <version>1.2</version>
                 <executions>
                       <execution>
                         <id>3-p2-profile-generation</id>
@@ -118,7 +118,11 @@
                             <destination>${basedir}/target/eclipse</destination>
                             <deleteOldProfileFiles>false</deleteOldProfileFiles>
                             <features>
-                              <feature>
+								<feature>
+                            		<id>org.wso2.developerstudio.eclipse.carbonstudio.feature.feature.group</id>
+                            		<version>${carbonstudio.tools.feature.version}</version>
+                            	</feature>
+				                <feature>
                             		<id>org.wso2.developerstudio.eclipse.appserver.feature.feature.group</id>
                             		<version>${appserver.tools.feature.version}</version>
                             	</feature>
@@ -237,7 +241,7 @@
                             	<feature>
                             		<id>org.smooks.edi.editor-feature.feature.group</id>
                             		<version>${smooks.edi.editor.version}</version>
-                            	</feature> 
+                            	</feature>
                             	<feature>
                             		<id>org.wso2.developerstudio.eclipse.cep.artifact.feature.feature.group</id>
                             		<version>${cep.feature.version}</version>
@@ -263,9 +267,43 @@
                     </execution>
                 </executions>
             </plugin-->
-			<plugin>
+            	<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
+                                        <!--<execution>
+                                        <id>install-egit</id>
+                                        <phase>package</phase>
+                                        <goals>
+                                                <goal>run</goal>
+                                        </goals>
+                                        <configuration>
+                                        <tasks>
+                                                <java classname="org.eclipse.equinox.launcher.Main" fork="true"
+                                                        spawn="false" failonerror="true" maxmemory="1024m">
+                                                <classpath>
+                                                        <fileset dir="${project.basedir}/target/eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />
+                                                </classpath>
+                                                <arg value="-nosplash" />
+                                                <arg value="-application" />
+                                                <arg value="org.eclipse.equinox.p2.director" />
+                                                <arg value="-repository" />
+                                                <arg value="file:${project.basedir}/target/egit-repo" />
+                                                <arg value="-destination" />
+                                                <arg value="${project.basedir}/target/eclipse" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.jgit.feature.group" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.jgit.pgm.feature.group" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.jgit.java7.feature.group" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.egit.mylyn.feature.group" />
+                                                <arg value="-installIU" />
+                                                <arg value="org.eclipse.egit.feature.group" />
+                                        </java>
+                                        </tasks>
+                                </configuration>
+                                </execution>-->
 					<execution>
 					<id>install-eclipse</id>
 					<phase>package</phase>
@@ -291,9 +329,11 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group" />
 						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.bps.feature.feature.group" />
+						<arg value="org.eclipse.bpel.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group" />
+						<arg value="-installIU" />
+                  <arg value="org.wso2.developerstudio.eclipse.bps.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.registry.feature.feature.group" />
 						<arg value="-installIU" />
@@ -332,8 +372,8 @@
 						<arg value="org.wso2.developerstudio.eclipse.carbonserver.32.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.carbonserver.40.feature.feature.group" />
-						<arg value="-installIU" />
-                                                <arg value="org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group" />
+                        <arg value="-installIU" />
+                        <arg value="org.wso2.developerstudio.eclipse.carbonserver.42.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.carbonserver.remote.feature.feature.group" />
 						<arg value="-installIU" />
@@ -354,51 +394,14 @@
 						<arg value="org.wso2.developerstudio.eclipse.brs.artifact.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.appfactory.feature.feature.group" />
-                                                <arg value="-installIU" />
-                                                <arg value="org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group" />
+					 	<arg value="-installIU" />
+                        <arg value="org.wso2.developerstudio.eclipse.jaggery.artifact.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.soapui.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.tcpmon.feature.feature.group" />
-					</java>
-					</tasks>
-				</configuration>
-				</execution>
-			</executions>
-		</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-					<id>install-egit</id>
-					<phase>package</phase>
-					<goals>
-						<goal>run</goal>
-					</goals>
-					<configuration>
-					<tasks>
-						<java classname="org.eclipse.equinox.launcher.Main" fork="true"
-							spawn="false" failonerror="true" maxmemory="1024m">
-						<classpath>
-							<fileset dir="${project.basedir}/target/eclipse/plugins" includes="org.eclipse.equinox.launcher*.jar" />
-						</classpath>
-						<arg value="-nosplash" />
-						<arg value="-application" />
-						<arg value="org.eclipse.equinox.p2.director" />
-						<arg value="-repository" />
-						<arg value="file:${project.basedir}/target/egit-repo" />
-						<arg value="-destination" />
-						<arg value="${project.basedir}/target/eclipse" />
 						<arg value="-installIU" />
-						<arg value="org.eclipse.jgit.feature.group" />
-                                                <arg value="-installIU" />
-						<arg value="org.eclipse.jgit.pgm.feature.group" />
-                                                <arg value="-installIU" />
-						<arg value="org.eclipse.egit.import.feature.group" />
-                                                <arg value="-installIU" />
-						<arg value="org.eclipse.egit.mylyn.feature.group" />
-                                                <arg value="-installIU" />
-						<arg value="org.eclipse.egit.feature.group" />
+						<arg value="org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group" />
 					</java>
 					</tasks>
 				</configuration>
@@ -414,12 +417,12 @@
         			<phase>package</phase>
         			<configuration>
             				<tasks>
-	<!-- Task 1: Introduced in order to set the the autostart to false instead of true to make sure installed distributions prompt for the workspace launcher to select their workspace. To with this ant task, we set everything to false which in turns cause a failure to start the pack. So we need Task2 to run and set org.eclipse.core.runtime to auto start-->
-                				<!--replace token="true" value="false"
+        <!-- Task 1: Introduced in order to set the the autostart to false instead of true to make sure installed distributions prompt for the workspace launcher to select their workspace. To with this ant task, we set everything to false which in turns cause a failure to start the pack. So we need Task2 to run and set org.eclipse.core.runtime to auto start-->
+                                                <!--replace token="true" value="false"
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
-                    					<include name="**/bundles.info"/>
-                				</replace-->
-	<!-- Task 2: We need to hardcode the org.eclipse.core.runtime bundles simple configurator entry in order to set it's autostart to "true". This change was made in order to fix the issue of packs not starting after running Task 1.Minimal requirement is to set autorun for org.eclipse.core.runtime. So we set it here. CAUSION: When ever you change the eclipse version, need to update this.-->
+                                                        <include name="**/bundles.info"/>
+                                                </replace-->
+        <!-- Task 2: We need to hardcode the org.eclipse.core.runtime bundles simple configurator entry in order to set it's autostart to "true". This change was made in order to fix the issue of packs not starting after running Task 1.Minimal requirement is to set autorun for org.eclipse.core.runtime. So we set it here. CAUSION: When ever you change the eclipse version, need to update this.-->
 						<!--replace token="org.eclipse.core.runtime,3.6.0.v20100505,plugins/org.eclipse.core.runtime_3.6.0.v20100505.jar,4,false" value="org.eclipse.core.runtime,3.6.0.v20100505,plugins/org.eclipse.core.runtime_3.6.0.v20100505.jar,4,true"
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
                                                         <include name="**/bundles.info"/>
@@ -428,7 +431,7 @@
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
                                                         <include name="**/bundles.info"/>
                                                 </replace>
-						<replace token="org.eclipse.equinox.ds,1.2.1.R36x_v20100803,plugins/org.eclipse.equinox.ds_1.2.1.R36x_v20100803.jar,2,false" value="org.eclipse.equinox.ds,1.2.1.R36x_v20100803,plugins/org.eclipse.equinox.ds_1.2.1.R36x_v20100803.jar,2,true"
+						<replace token="org.eclipse.equinox.ds,1.2.0.v20100507,plugins/org.eclipse.equinox.ds_1.2.0.v20100507.jar,2,false" value="org.eclipse.equinox.ds,1.2.0.v20100507,plugins/org.eclipse.equinox.ds_1.2.0.v20100507.jar,2,true"
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
                                                         <include name="**/bundles.info"/>
                                                 </replace>
@@ -436,11 +439,11 @@
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
                                                         <include name="**/bundles.info"/>
                                                 </replace>
-						<replace token="org.eclipse.equinox.p2.reconciler.dropins,1.1.2.R36x_v20110114,plugins/org.eclipse.equinox.p2.reconciler.dropins_1.1.2.R36x_v20110114.jar,4,false" value="org.eclipse.equinox.p2.reconciler.dropins,1.1.2.R36x_v20110114,plugins/org.eclipse.equinox.p2.reconciler.dropins_1.1.2.R36x_v20110114.jar,4,true"
+						<replace token="org.eclipse.equinox.p2.reconciler.dropins,1.1.0.v20100525,plugins/org.eclipse.equinox.p2.reconciler.dropins_1.1.0.v20100525.jar,4,false" value="org.eclipse.equinox.p2.reconciler.dropins,1.1.0.v20100525,plugins/org.eclipse.equinox.p2.reconciler.dropins_1.1.0.v20100525.jar,4,true"
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
                                                         <include name="**/bundles.info"/>
                                                 </replace>
-						<replace token="org.eclipse.osgi,3.6.2.R36x_v20110210,plugins/org.eclipse.osgi_3.6.2.R36x_v20110210.jar,-1,false" value="org.eclipse.osgi,3.6.2.R36x_v20110210,plugins/org.eclipse.osgi_3.6.2.R36x_v20110210.jar,-1,true"
+						<replace token="org.eclipse.osgi,3.6.0.v20100517,plugins/org.eclipse.osgi_3.7.0.v20110613.jar,-1,false" value="org.eclipse.osgi,3.6.0.v20100517,plugins/org.eclipse.osgi_3.7.0.v20110613.jar,-1,true"
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
                                                         <include name="**/bundles.info"/>
                                                 </replace-->
@@ -457,7 +460,7 @@
                          dir="target/eclipse">
                                                         <include name="**/eclipse.ini"/>
                                                 </replace>
-            				</tasks>
+                                        </tasks>
         			</configuration>
         			<goals>
             				<goal>run</goal>

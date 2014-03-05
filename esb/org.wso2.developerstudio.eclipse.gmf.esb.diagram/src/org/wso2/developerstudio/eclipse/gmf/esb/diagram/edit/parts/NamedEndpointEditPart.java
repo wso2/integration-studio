@@ -677,7 +677,7 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
-	
+
 	private void addEndpointToArtifactXML(String endpointName) {
 		IProject activeProject = getActiveProject();
 		ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();

@@ -783,6 +783,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String DataMapperMediator46CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String DataMapperMediator46CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
 	public static String DefaultEndPoint1CreationTool_title;
 
 	/**
@@ -1198,6 +1208,11 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_DataMapperMediatorInputConnector_3762_incominglinks;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_LoadBalanceEndPointWestOutputConnector_3098_outgoinglinks;
 
 	/**
@@ -1309,6 +1324,11 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_FailoverEndPointOutputConnector_3090_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_DataMapperMediatorOutputConnector_3763_outgoinglinks;
 
 	/**
 	 * @generated

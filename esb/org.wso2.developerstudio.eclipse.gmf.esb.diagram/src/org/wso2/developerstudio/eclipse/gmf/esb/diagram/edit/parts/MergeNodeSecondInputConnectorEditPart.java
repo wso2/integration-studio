@@ -287,6 +287,7 @@ public class MergeNodeSecondInputConnectorEditPart extends AbstractBorderItemEdi
 			types.add(EsbElementTypes.RespondMediatorOutputConnector_3741);
 			types.add(EsbElementTypes.CallMediatorOutputConnector_3744);
 			types.add(EsbElementTypes.CallMediatorEndpointOutputConnector_3745);
+			types.add(EsbElementTypes.DataMapperMediatorOutputConnector_3763);
 			types.add(EsbElementTypes.MessageOutputConnector_3047);
 			types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
 			types.add(EsbElementTypes.SequencesOutputConnector_3617);

@@ -604,6 +604,11 @@ public class TemplateItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(EsbPackage.Literals.TEMPLATE__CHILD,
+				 EsbFactory.eINSTANCE.createDataMapperMediator()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(EsbPackage.Literals.TEMPLATE__PARAMETERS,
 				 EsbFactory.eINSTANCE.createTemplateParameter()));
 	}

@@ -266,8 +266,8 @@
        
             <plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<!--<executions>
-                                        <execution>
+				<executions>
+                                        <!--<execution>
                                         <id>install-egit</id>
                                         <phase>package</phase>
                                         <goals>

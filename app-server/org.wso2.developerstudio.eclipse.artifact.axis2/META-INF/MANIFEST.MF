@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Axis2
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.axis2;singleton:=true
-Bundle-Version: 3.3.0.qualifier
+Bundle-Version: 4.0.0[.]qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.axis2.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.eclipse.ui,

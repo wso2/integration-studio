@@ -164,7 +164,7 @@ public class EsbPaletteFactory {
 		paletteContainer.add(createSendMediator19CreationTool());
 		paletteContainer.add(createSequence4CreationTool());
 		paletteContainer.add(createStoreMediator31CreationTool());
-		
+
 		// Core Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Core"));
 
@@ -172,7 +172,7 @@ public class EsbPaletteFactory {
 		paletteContainer.add(createFilterMediator2CreationTool());
 		paletteContainer.add(createSwitchMediator7CreationTool());
 		paletteContainer.add(createValidateMediator37CreationTool());
-		
+
 		// Filter Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Filter"));
 
@@ -194,7 +194,8 @@ public class EsbPaletteFactory {
 		paletteContainer.add(createURLRewriteMediator36CreationTool());
 		paletteContainer.add(createXQueryMediator14CreationTool());
 		paletteContainer.add(createXSLTMediator6CreationTool());
-		
+		//paletteContainer.add(createDataMapperMediator46CreationTool());
+
 		// Transform Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Transform"));
 
@@ -206,7 +207,7 @@ public class EsbPaletteFactory {
 		paletteContainer.add(createRMSequenceMediator28CreationTool());
 		paletteContainer.add(createThrottleMediator27CreationTool());
 		paletteContainer.add(createTransactionMediator26CreationTool());
-		
+
 		// Advanced Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Advanced"));
 
@@ -214,24 +215,23 @@ public class EsbPaletteFactory {
 		paletteContainer.add(createCalloutMediator25CreationTool());
 		paletteContainer.add(createCloneMediator21CreationTool());
 		paletteContainer.add(createIterateMediator22CreationTool());
-		
+
 		// Advanced Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Advanced1"));
 
 		paletteContainer.add(createEntitlementMediator9CreationTool());
 		paletteContainer.add(createOAuthMediator29CreationTool());
-		
+
 		// Advanced Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Advanced2"));
 
 		//paletteContainer.add(createRouterMediator38CreationTool()); removed as requested in TOOLS-1800
 		paletteContainer.add(createBuilderMediator32CreationTool());
 		paletteContainer.add(createRuleMediator30CreationTool());
-		
-		
+
 		// Agent Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Agent"));
-				
+
 		paletteContainer.add(createBAMMediator40CreationTool());
 
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
@@ -978,6 +978,20 @@ public class EsbPaletteFactory {
 	/**
 	 * @generated
 	 */
+	private ToolEntry createDataMapperMediator46CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(Messages.DataMapperMediator46CreationTool_title,
+				Messages.DataMapperMediator46CreationTool_desc,
+				Collections.singletonList(EsbElementTypes.DataMapperMediator_3761));
+		entry.setId("createDataMapperMediator46CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(EsbElementTypes
+				.getImageDescriptor(EsbElementTypes.DataMapperMediator_3761));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
 	private ToolEntry createDefaultEndPoint1CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(EsbElementTypes.DefaultEndPoint_3609);
@@ -1310,8 +1324,9 @@ public class EsbPaletteFactory {
 			IProject activeProject = file.getProject();
 			//connectorPath = activeProject.getLocation().toOSString() + File.separator
 			//		+ "cloudConnectors" + File.separator + connectorDirectoryName;
-			connectorPath = activeProject.getWorkspace().getRoot().getLocation().toOSString() + File.separator
-					+ CloudConnectorDirectoryTraverser.connectorPathFromWorkspace + File.separator + connectorDirectoryName;
+			connectorPath = activeProject.getWorkspace().getRoot().getLocation().toOSString()
+					+ File.separator + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace
+					+ File.separator + connectorDirectoryName;
 			cloudConnectorOperations = CloudConnectorDirectoryTraverser.getInstance(connectorPath)
 					.getOperationsMap().keySet();
 		} catch (Exception e) {
@@ -1354,11 +1369,10 @@ public class EsbPaletteFactory {
 			Arrays.sort(keys);
 			for (int k = 0; k < keys.length; ++k) {
 				container.add(createCloudConnectorOperationCreationTool((String) keys[k],
-						"cloudConnectorOperation-" + cloudConnectorName, connectorPath + File.separator
-								+ "icon" + File.separator + "icon-small.gif"));
+						"cloudConnectorOperation-" + cloudConnectorName, connectorPath
+								+ File.separator + "icon" + File.separator + "icon-small.gif"));
 			}
 		}
-		
 
 	}
 
@@ -1639,7 +1653,7 @@ public class EsbPaletteFactory {
 			}
 		}
 	}
-	
+
 	/**
 	 * Change the visibility of Connector palette group(s) based on the opened
 	 * artifact

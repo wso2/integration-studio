@@ -327,7 +327,7 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 			}
 		}
 	}*/
-	
+
 	protected void handleNotificationEvent(Notification notification) {
 		super.handleNotificationEvent(notification);
 		if (notification.getNotifier() instanceof HTTPEndpoint) {
@@ -335,7 +335,7 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 			updateToolTip();
 		}
 	}
-	
+
 	private void updateToolTip() {
 		HTTPEndpoint HTTPEp = (HTTPEndpoint) resolveSemanticElement();
 

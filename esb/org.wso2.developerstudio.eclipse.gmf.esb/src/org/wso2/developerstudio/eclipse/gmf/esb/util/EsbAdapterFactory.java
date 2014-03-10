@@ -1429,6 +1429,18 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 				return createCloudConnectorOperationOutputConnectorAdapter();
 			}
 			@Override
+			public Adapter caseDataMapperMediator(DataMapperMediator object) {
+				return createDataMapperMediatorAdapter();
+			}
+			@Override
+			public Adapter caseDataMapperMediatorInputConnector(DataMapperMediatorInputConnector object) {
+				return createDataMapperMediatorInputConnectorAdapter();
+			}
+			@Override
+			public Adapter caseDataMapperMediatorOutputConnector(DataMapperMediatorOutputConnector object) {
+				return createDataMapperMediatorOutputConnectorAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -4022,6 +4034,48 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCloudConnectorOperationOutputConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator <em>Data Mapper Mediator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator
+	 * @generated
+	 */
+	public Adapter createDataMapperMediatorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector <em>Data Mapper Mediator Input Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector
+	 * @generated
+	 */
+	public Adapter createDataMapperMediatorInputConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector <em>Data Mapper Mediator Output Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector
+	 * @generated
+	 */
+	public Adapter createDataMapperMediatorOutputConnectorAdapter() {
 		return null;
 	}
 

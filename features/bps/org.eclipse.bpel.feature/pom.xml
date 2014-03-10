@@ -23,13 +23,13 @@
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
         <artifactId>wso2-eclipse-carbonstudio-bps-feature</artifactId>
-        <version>3.3.0-SNAPSHOT</version>
+        <version>4.0.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.eclipse.bpel.feature</artifactId>
     <packaging>pom</packaging>
-    <name>Business Process Server Tools</name>
+    <name>WSO2 Eclipse BPEL Designer Tools</name>
     <url>http://wso2.org</url>
     <description>This feature contains WSO2 Developer Studio BPS Feature</description>
     <build>
@@ -63,8 +63,8 @@
 				<bundleDef>org.eclipse.bpel.plugins:org.eclipse.bpel.validator:${eclipse.bps.tools.version}</bundleDef>
 				<bundleDef>org.eclipse.bpelins:org.eclipse.bpel.wsil.model:${eclipse.bps.tools.version}</bundleDef>
 				<bundleDef>org.eclipse.bpelins:org.eclipse.bpel.xpath10:${eclipse.bps.tools.version}</bundleDef>
-  				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.model:${bps.humantask.tools.feature.version}</bundleDef>
-                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.ui:${bps.humantask.tools.feature.version}</bundleDef>
+  				<!--bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.model:${bps.humantask.tools.feature.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.ui:${bps.humantask.tools.feature.version}</bundleDef-->
                                 <bundleDef>org.wso2.developerstudio:org.wso2.wsf.ide.bpel.export:${bps.export.tool.version}</bundleDef>
 			 </bundles>
                         </configuration>

@@ -360,7 +360,7 @@ public class WSDLEndPointEditPart extends AbstractEndpoint {
 			updateToolTip();
 		}
 	}
-	
+
 	private void updateToolTip() {
 		WSDLEndPoint wsdlEp = (WSDLEndPoint) resolveSemanticElement();
 

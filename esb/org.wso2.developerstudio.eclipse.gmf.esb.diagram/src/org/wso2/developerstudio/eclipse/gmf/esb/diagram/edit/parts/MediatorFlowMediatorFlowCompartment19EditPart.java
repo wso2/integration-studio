@@ -109,23 +109,24 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 
 		}
 	}
-	
+
 	private void deleteExistingEndpointAndLink() {
-		
+
 		AbstractEditPart existingEndpoint = (AbstractEditPart) this.getChildren().get(0);
 		EditingDomain editingDomain = ((GraphicalEditPart) existingEndpoint).getEditingDomain();
-		
-		AbstractEndpointInputConnectorEditPart inputConector = EditorUtils.getEndpointInputConnector((ShapeNodeEditPart) existingEndpoint);
-		EsbLinkEditPart	linkEditPart = null;
+
+		AbstractEndpointInputConnectorEditPart inputConector = EditorUtils
+				.getEndpointInputConnector((ShapeNodeEditPart) existingEndpoint);
+		EsbLinkEditPart linkEditPart = null;
 		if (inputConector.getTargetConnections().size() > 0) {
 			linkEditPart = (EsbLinkEditPart) inputConector.getTargetConnections().get(0);
 		}
-		
+
 		//Here we are deleteing the linkpart as well
 		if (linkEditPart != null) {
 			deleteESbLinkEditpart(editingDomain, inputConector);
 		}
-		
+
 		deleteEndpoint(existingEndpoint);
 	}
 
@@ -135,32 +136,34 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 		Collection linkCollection = new ArrayList();
 		linkEditPart = (EsbLinkEditPart) inputConector.getTargetConnections().get(0);
 		linkCollection.add(((ConnectorImpl) linkEditPart.getModel()).getElement());
-		
+
 		org.eclipse.emf.edit.command.DeleteCommand modelDeleteCommand = new org.eclipse.emf.edit.command.DeleteCommand(
 				editingDomain, linkCollection);
 		if (modelDeleteCommand.canExecute()) {
 			editingDomain.getCommandStack().execute(modelDeleteCommand);
 		}
-		
+
 		org.eclipse.gef.commands.CompoundCommand ccView = new org.eclipse.gef.commands.CompoundCommand();
 		DeleteCommand viewDeleteCommand = new DeleteCommand(linkEditPart.getNotationView());
 		if (viewDeleteCommand.canExecute()) {
-		    ccView.add(new ICommandProxy(viewDeleteCommand));
+			ccView.add(new ICommandProxy(viewDeleteCommand));
 		}
 		if (ccView.canExecute()) {
-		       this.getDiagramEditDomain().getDiagramCommandStack().execute(ccView);
+			this.getDiagramEditDomain().getDiagramCommandStack().execute(ccView);
 		}
 	}
 
 	private void deleteEndpoint(AbstractEditPart existingEndpoint) {
-		RemoveCommand removeCmd = new RemoveCommand(((GraphicalEditPart) existingEndpoint).getEditingDomain(), 
-				((Node)existingEndpoint.getModel()).getElement().eContainer(),
-				EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN, 
-				((Node)existingEndpoint.getModel()).getElement());
+		RemoveCommand removeCmd = new RemoveCommand(
+				((GraphicalEditPart) existingEndpoint).getEditingDomain(),
+				((Node) existingEndpoint.getModel()).getElement().eContainer(),
+				EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+				((Node) existingEndpoint.getModel()).getElement());
 
 		if (removeCmd.canExecute()) {
-			((GraphicalEditPart) existingEndpoint).getEditingDomain().getCommandStack().execute(removeCmd);
+			((GraphicalEditPart) existingEndpoint).getEditingDomain().getCommandStack()
+					.execute(removeCmd);
 		}
 	}
-	
+
 }

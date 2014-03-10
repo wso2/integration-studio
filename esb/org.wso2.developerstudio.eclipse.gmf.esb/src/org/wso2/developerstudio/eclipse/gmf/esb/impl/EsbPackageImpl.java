@@ -128,6 +128,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPointInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPointOutputConnector;
@@ -1771,6 +1774,27 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EClass cloudConnectorOperationOutputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataMapperMediatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataMapperMediatorInputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataMapperMediatorOutputConnectorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9275,6 +9299,51 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EClass getCloudConnectorOperationOutputConnector() {
 		return cloudConnectorOperationOutputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataMapperMediator() {
+		return dataMapperMediatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataMapperMediator_InputConnector() {
+		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataMapperMediator_OutputConnector() {
+		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataMapperMediatorInputConnector() {
+		return dataMapperMediatorInputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataMapperMediatorOutputConnector() {
+		return dataMapperMediatorOutputConnectorEClass;
 	}
 
 	/**
@@ -16911,6 +16980,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		cloudConnectorOperationOutputConnectorEClass = createEClass(CLOUD_CONNECTOR_OPERATION_OUTPUT_CONNECTOR);
 
+		dataMapperMediatorEClass = createEClass(DATA_MAPPER_MEDIATOR);
+		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR);
+		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR);
+
+		dataMapperMediatorInputConnectorEClass = createEClass(DATA_MAPPER_MEDIATOR_INPUT_CONNECTOR);
+
+		dataMapperMediatorOutputConnectorEClass = createEClass(DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR);
+
 		// Create enums
 		artifactTypeEEnum = createEEnum(ARTIFACT_TYPE);
 		callMediatorEndpointTypeEEnum = createEEnum(CALL_MEDIATOR_ENDPOINT_TYPE);
@@ -17356,6 +17433,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		cloudConnectorOperationEClass.getESuperTypes().add(this.getMediator());
 		cloudConnectorOperationInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 		cloudConnectorOperationOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+		dataMapperMediatorEClass.getESuperTypes().add(this.getMediator());
+		dataMapperMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
+		dataMapperMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(esbDiagramEClass, EsbDiagram.class, "EsbDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -18916,6 +18996,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(cloudConnectorOperationInputConnectorEClass, CloudConnectorOperationInputConnector.class, "CloudConnectorOperationInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(cloudConnectorOperationOutputConnectorEClass, CloudConnectorOperationOutputConnector.class, "CloudConnectorOperationOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(dataMapperMediatorEClass, DataMapperMediator.class, "DataMapperMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataMapperMediator_InputConnector(), this.getDataMapperMediatorInputConnector(), null, "inputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperMediator_OutputConnector(), this.getDataMapperMediatorOutputConnector(), null, "outputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataMapperMediatorInputConnectorEClass, DataMapperMediatorInputConnector.class, "DataMapperMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(dataMapperMediatorOutputConnectorEClass, DataMapperMediatorOutputConnector.class, "DataMapperMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(artifactTypeEEnum, ArtifactType.class, "ArtifactType");

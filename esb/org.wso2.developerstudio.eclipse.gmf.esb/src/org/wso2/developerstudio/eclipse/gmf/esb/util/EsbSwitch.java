@@ -2742,6 +2742,31 @@ public class EsbSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsbPackage.DATA_MAPPER_MEDIATOR: {
+				DataMapperMediator dataMapperMediator = (DataMapperMediator)theEObject;
+				T result = caseDataMapperMediator(dataMapperMediator);
+				if (result == null) result = caseMediator(dataMapperMediator);
+				if (result == null) result = caseEsbElement(dataMapperMediator);
+				if (result == null) result = caseEsbNode(dataMapperMediator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.DATA_MAPPER_MEDIATOR_INPUT_CONNECTOR: {
+				DataMapperMediatorInputConnector dataMapperMediatorInputConnector = (DataMapperMediatorInputConnector)theEObject;
+				T result = caseDataMapperMediatorInputConnector(dataMapperMediatorInputConnector);
+				if (result == null) result = caseInputConnector(dataMapperMediatorInputConnector);
+				if (result == null) result = caseEsbConnector(dataMapperMediatorInputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR: {
+				DataMapperMediatorOutputConnector dataMapperMediatorOutputConnector = (DataMapperMediatorOutputConnector)theEObject;
+				T result = caseDataMapperMediatorOutputConnector(dataMapperMediatorOutputConnector);
+				if (result == null) result = caseOutputConnector(dataMapperMediatorOutputConnector);
+				if (result == null) result = caseEsbConnector(dataMapperMediatorOutputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -5503,6 +5528,51 @@ public class EsbSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCloudConnectorOperationOutputConnector(CloudConnectorOperationOutputConnector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Mapper Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Mapper Mediator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataMapperMediator(DataMapperMediator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Mapper Mediator Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Mapper Mediator Input Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataMapperMediatorInputConnector(DataMapperMediatorInputConnector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Mapper Mediator Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Mapper Mediator Output Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataMapperMediatorOutputConnector(DataMapperMediatorOutputConnector object) {
 		return null;
 	}
 

@@ -23,13 +23,13 @@
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
         <artifactId>wso2-eclipse-carbonstudio-bps-feature</artifactId>
-        <version>3.3.0-SNAPSHOT</version>
+        <version>4.0.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.bps.feature</artifactId>
     <packaging>pom</packaging>
-    <name>Business Process Server Tools</name>
+    <name>Business Process Server Human Task Tools</name>
     <url>http://wso2.org</url>
     <description>This feature contains WSO2 Developer Studio BPS Feature</description>
     <build>
@@ -49,7 +49,7 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
-                                <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.apache.ode.deploy.model:${bps.tools.version}</bundleDef>
+                                <!--bundleDef>org.wso2.developerstudio:org.eclipse.bpel.apache.ode.deploy.model:${bps.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.apache.ode.deploy.ui:${bps.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.apache.ode.runtime:${bps.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.common.model:${bps.tools.version}</bundleDef>
@@ -59,10 +59,10 @@
                                 <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.ui:${bps.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.wsil.model:${bps.tools.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.validator:${bps.tools.version}</bundleDef>
-                                <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.xpath10:${bps.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.eclipse.bpel.xpath10:${bps.tools.version}</bundleDef-->
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.model:${bps.humantask.tools.feature.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.bpel.humantask.ui:${bps.humantask.tools.feature.version}</bundleDef>
-                                <bundleDef>org.wso2.developerstudio:org.wso2.wsf.ide.bpel.export:${bps.export.tool.version}</bundleDef>
+                                <!--bundleDef>org.wso2.developerstudio:org.wso2.wsf.ide.bpel.export:${bps.export.tool.version}</bundleDef-->
                             </bundles>
                         </configuration>
                     </execution>

@@ -346,6 +346,8 @@ public class EsbPropertySource extends PropertySource {
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if (pkg.getCloneMediator_Targets().equals(feature)) {
 			return new CloneTargetConfigurationPropertyDescriptor(object, itemPropertyDescriptor);
+		}  else if(pkg.getDataMapperMediator_ConfigKey().equals(feature)){
+			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		}
  		
 			

@@ -65,7 +65,6 @@ public interface CacheMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Cache Scope</b></em>' attribute.
-	 * The default value is <code>"PER_MEDIATOR"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheScope}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -77,7 +76,7 @@ public interface CacheMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheScope
 	 * @see #setCacheScope(CacheScope)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_CacheScope()
-	 * @model default="PER_MEDIATOR"
+	 * @model
 	 * @generated
 	 */
 	CacheScope getCacheScope();
@@ -206,7 +205,6 @@ public interface CacheMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Implementation Type</b></em>' attribute.
-	 * The default value is <code>"IN_MEMORY"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -218,7 +216,7 @@ public interface CacheMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CacheImplementationType
 	 * @see #setImplementationType(CacheImplementationType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCacheMediator_ImplementationType()
-	 * @model default="IN_MEMORY"
+	 * @model
 	 * @generated
 	 */
 	CacheImplementationType getImplementationType();

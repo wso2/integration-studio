@@ -60,7 +60,6 @@ public interface HeaderMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Header Action</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderAction}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -72,7 +71,7 @@ public interface HeaderMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.HeaderAction
 	 * @see #setHeaderAction(HeaderAction)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_HeaderAction()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	HeaderAction getHeaderAction();
@@ -90,7 +89,6 @@ public interface HeaderMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Value Type</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.HeaderValueType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -102,7 +100,7 @@ public interface HeaderMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.HeaderValueType
 	 * @see #setValueType(HeaderValueType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_ValueType()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	HeaderValueType getValueType();
@@ -120,7 +118,6 @@ public interface HeaderMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Scope</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.ScopeType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -132,7 +129,7 @@ public interface HeaderMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ScopeType
 	 * @see #setScope(ScopeType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_Scope()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	ScopeType getScope();
@@ -255,7 +252,6 @@ public interface HeaderMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Value Inline</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value Inline</em>' attribute isn't clear,
@@ -265,7 +261,7 @@ public interface HeaderMediator extends Mediator {
 	 * @return the value of the '<em>Value Inline</em>' attribute.
 	 * @see #setValueInline(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getHeaderMediator_ValueInline()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getValueInline();

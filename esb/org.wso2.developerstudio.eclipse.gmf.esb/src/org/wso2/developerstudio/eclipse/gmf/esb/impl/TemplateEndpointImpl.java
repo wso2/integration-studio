@@ -130,7 +130,7 @@ public class TemplateEndpointImpl extends AbstractEndPointImpl implements Templa
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String AVAILABLE_TEMPLATES_EDEFAULT = "";
+	protected static final String AVAILABLE_TEMPLATES_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getAvailableTemplates() <em>Available Templates</em>}' attribute.

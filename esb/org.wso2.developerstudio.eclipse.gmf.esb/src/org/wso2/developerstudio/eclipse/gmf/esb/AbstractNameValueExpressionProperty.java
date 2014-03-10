@@ -56,7 +56,6 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
 
 	/**
 	 * Returns the value of the '<em><b>Property Value Type</b></em>' attribute.
-	 * The default value is <code>"VALUE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -68,7 +67,7 @@ public interface AbstractNameValueExpressionProperty extends EsbNode {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
 	 * @see #setPropertyValueType(PropertyValueType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionProperty_PropertyValueType()
-	 * @model default="VALUE"
+	 * @model
 	 * @generated
 	 */
 	PropertyValueType getPropertyValueType();

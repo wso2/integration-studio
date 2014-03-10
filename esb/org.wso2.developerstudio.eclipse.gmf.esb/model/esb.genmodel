@@ -1981,6 +1981,7 @@
     <genClasses ecoreClass="esb.ecore#//DataMapperMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/outputConnector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/configKey"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//DataMapperMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//DataMapperMediatorOutputConnector"/>

@@ -57,7 +57,6 @@ public interface OAuthMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Username</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Username</em>' attribute isn't clear,
@@ -67,7 +66,7 @@ public interface OAuthMediator extends Mediator {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator_Username()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getUsername();
@@ -84,7 +83,6 @@ public interface OAuthMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Password</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Password</em>' attribute isn't clear,
@@ -94,7 +92,7 @@ public interface OAuthMediator extends Mediator {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getOAuthMediator_Password()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getPassword();

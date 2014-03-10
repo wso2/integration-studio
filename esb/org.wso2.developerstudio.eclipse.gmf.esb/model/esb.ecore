@@ -2554,6 +2554,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//DataMapperMediatorOutputConnector"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configKey" eType="#//RegistryKeyProperty"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>

@@ -31,7 +31,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface EventMediator extends Mediator {
 	/**
 	 * Returns the value of the '<em><b>Topic Type</b></em>' attribute.
-	 * The default value is <code>"CUSTOM"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EventTopicType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -43,7 +42,7 @@ public interface EventMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EventTopicType
 	 * @see #setTopicType(EventTopicType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEventMediator_TopicType()
-	 * @model default="CUSTOM"
+	 * @model
 	 * @generated
 	 */
 	EventTopicType getTopicType();

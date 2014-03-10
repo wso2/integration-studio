@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Local Entry
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.localentry;singleton:=true
-Bundle-Version: 3.6.0.qualifier
+Bundle-Version: 4.0.0[.]qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.localentry.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

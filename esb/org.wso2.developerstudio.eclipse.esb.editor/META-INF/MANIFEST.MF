@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.editor;singleton:=true
-Bundle-Version: 3.6.0.qualifier
+Bundle-Version: 4.0.0[.]qualifier
 Bundle-ClassPath: lib/org.eclipse.wb.swt.layout.grouplayout_1.0.0.r36x201106161145.jar,
  lib/org.eclipse.wb.swt_1.0.0.r36x201106161135.jar,
  lib/org.eclipse.wb.swt.widgets.baseline_1.0.0.r36x201106161140.jar,

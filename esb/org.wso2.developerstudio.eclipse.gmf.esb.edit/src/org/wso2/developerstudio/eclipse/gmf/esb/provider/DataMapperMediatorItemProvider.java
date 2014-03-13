@@ -24,6 +24,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -68,11 +69,36 @@ public class DataMapperMediatorItemProvider
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
-
+		
+		if (itemPropertyDescriptors != null) {
+			itemPropertyDescriptors.clear();
 		}
+		super.getPropertyDescriptors(object);
+		addConfigKeyPropertyDescriptor(object);
+		
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Config Key feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConfigKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_configKey_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_configKey_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIG_KEY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

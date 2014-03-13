@@ -40,6 +40,9 @@ public class ScriptableObjectFactory implements Scriptable{
 
 	public Object get(String name, Scriptable start) {
 		Object resource = this.record.get(name);
+		if(resource instanceof GenericRecord){
+		return	new ScriptableObjectFactory((GenericRecord)resource);
+		}
 		if(resource != null){
 			return resource;
 		}		

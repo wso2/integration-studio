@@ -91,7 +91,6 @@ public interface LogMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Log Separator</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Log Separator</em>' attribute isn't clear,
@@ -101,7 +100,7 @@ public interface LogMediator extends Mediator {
 	 * @return the value of the '<em>Log Separator</em>' attribute.
 	 * @see #setLogSeparator(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLogMediator_LogSeparator()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getLogSeparator();

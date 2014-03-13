@@ -1,0 +1,31 @@
+{
+  "name" : "employees",
+  "type": "record", 
+  "fields": [
+              { "name": "employeeArray", 
+          		"type": { 
+            				"type": "array", 
+            				"items": { 
+              							"name": "employee", 
+              							"type": "record", 
+              							"fields": [ 
+                   									{"name" : "firstname", "type" : "string"}, 
+                    								{"name" : "lastname", "type" : "string"},
+                    								{
+            											"name": "address",
+            											"type": {
+                       												 "type" : "record",
+                        											 "name" : "address",
+                        											 "fields" : [
+                            														{"name": "no", "type": "string"},
+                            														{"name": "road", "type":"string"},
+                            														{"name": "city", "type":"string"}
+                        														]
+                    											}
+        										     }
+                    							 ] 
+          							 } 
+        				  } 
+      			}	
+            ]
+}

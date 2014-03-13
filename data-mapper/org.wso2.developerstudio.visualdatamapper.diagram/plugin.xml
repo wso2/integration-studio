@@ -508,22 +508,34 @@
    </extension>
 
 	   <extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
-      <?gmfgen generated="true"?>
+      <?gmfgen generated="false"?>
       <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
          <includes>
             <contentExtension pattern="org.wso2.developerstudio.visualdatamapper.diagram.resourceContent"/>
 			<contentExtension pattern="org.wso2.developerstudio.visualdatamapper.diagram.domainResourceContent"/>
             <contentExtension pattern="org.wso2.developerstudio.visualdatamapper.diagram.navigatorLinkHelper"/>
+            <actionExtension pattern="dataMapper.diagram.navigator.DataMapperNavigatorActionProvider"/>
          </includes>
       </viewerContentBinding>
       <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
          <includes>
             <actionExtension pattern="org.wso2.developerstudio.visualdatamapper.diagram.navigatorActionProvider"/>
+            <actionExtension pattern="dataMapper.diagram.navigator.DataMapperNavigatorActionProvider"/>
          </includes>
       </viewerActionBinding>
    </extension>
 
-   <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+	<extension point="org.eclipse.ui.navigator.navigatorContent">  
+        <actionProvider
+             class="dataMapper.diagram.navigator.DataMapperNavigatorActionProvider"
+             id="dataMapper.diagram.navigator.DataMapperNavigatorActionProvider"> 
+			<enablement>
+     			<adapt type="org.eclipse.core.resources.IFile" /> 
+          	</enablement>
+  		</actionProvider>
+	</extension>
+
+   <!--<extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
       <?gmfgen generated="true"?>
       <navigatorContent
             id="org.wso2.developerstudio.visualdatamapper.diagram.resourceContent" 
@@ -591,7 +603,7 @@
             </or>
          </enablement>
       </actionProvider>
-   </extension>
+   </extension> -->
    
 	   <extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
       <?gmfgen generated="true"?>
@@ -660,6 +672,21 @@
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
       <?gmfgen generated="true"?>
    </extension>
+   
+   <extension point="org.eclipse.ui.startup">
+ 		<startup class="dataMapper.diagram.custom.startup.DataMapperEditorStartup"/>
+   </extension>
+   
+   	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type base-type="org.eclipse.wst.jsdt.core.jsSource"
+			file-extensions="js"
+			id="org.wso2.developerstudio.eclipse.datamapper.contenttype.datamapperconfig"
+			name="Data Mapper Configuration File" priority="high">
+	        <describer
+				class="dataMapper.diagram.custom.util.DataMapperContentDescriber">	
+			</describer>
+		</content-type>
+	</extension>
 
    <!-- optionally, specify keybindings -->
 </plugin>

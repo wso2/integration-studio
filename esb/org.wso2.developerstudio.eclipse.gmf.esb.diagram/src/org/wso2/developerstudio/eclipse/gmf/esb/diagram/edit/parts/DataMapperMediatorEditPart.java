@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
@@ -74,8 +75,9 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new DataMapperMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+		
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenSeparatelyEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}

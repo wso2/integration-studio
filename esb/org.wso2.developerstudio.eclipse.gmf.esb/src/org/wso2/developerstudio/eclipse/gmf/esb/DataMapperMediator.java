@@ -26,6 +26,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputConnector <em>Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigKey <em>Config Key</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,5 +86,31 @@ public interface DataMapperMediator extends Mediator {
 	 * @generated
 	 */
 	void setOutputConnector(DataMapperMediatorOutputConnector value);
+
+	/**
+	 * Returns the value of the '<em><b>Config Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Config Key</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Config Key</em>' containment reference.
+	 * @see #setConfigKey(RegistryKeyProperty)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getDataMapperMediator_ConfigKey()
+	 * @model containment="true"
+	 * @generated
+	 */
+	RegistryKeyProperty getConfigKey();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigKey <em>Config Key</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Config Key</em>' containment reference.
+	 * @see #getConfigKey()
+	 * @generated
+	 */
+	void setConfigKey(RegistryKeyProperty value);
 
 } // DataMapperMediator

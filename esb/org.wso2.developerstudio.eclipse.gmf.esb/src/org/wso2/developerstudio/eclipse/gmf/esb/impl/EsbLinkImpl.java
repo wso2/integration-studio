@@ -74,7 +74,7 @@ public class EsbLinkImpl extends EObjectImpl implements EsbLink {
 	 */
 	public OutputConnector getSource() {
 		if (eContainerFeatureID() != EsbPackage.ESB_LINK__SOURCE) return null;
-		return (OutputConnector)eContainer();
+		return (OutputConnector)eInternalContainer();
 	}
 
 	/**

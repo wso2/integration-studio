@@ -290,7 +290,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_STRING_PATTERN_EDEFAULT = "";
+	protected static final String VALUE_STRING_PATTERN_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getValueStringPattern() <em>Value String Pattern</em>}' attribute.

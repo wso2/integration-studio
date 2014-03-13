@@ -51,7 +51,6 @@ import org.eclipse.emf.common.util.EList;
 public interface RuleMediator extends Mediator {
 	/**
 	 * Returns the value of the '<em><b>Rule Set URL</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Rule Set URL</em>' attribute isn't clear,
@@ -61,7 +60,7 @@ public interface RuleMediator extends Mediator {
 	 * @return the value of the '<em>Rule Set URL</em>' attribute.
 	 * @see #setRuleSetURL(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_RuleSetURL()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getRuleSetURL();
@@ -386,7 +385,6 @@ public interface RuleMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Source Value</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source Value</em>' attribute isn't clear,
@@ -396,7 +394,7 @@ public interface RuleMediator extends Mediator {
 	 * @return the value of the '<em>Source Value</em>' attribute.
 	 * @see #setSourceValue(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRuleMediator_SourceValue()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getSourceValue();

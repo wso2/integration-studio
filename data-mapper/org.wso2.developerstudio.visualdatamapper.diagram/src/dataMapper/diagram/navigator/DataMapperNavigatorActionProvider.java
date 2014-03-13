@@ -1,6 +1,18 @@
 package dataMapper.diagram.navigator;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.content.IContentDescription;
+import org.eclipse.core.runtime.content.IContentType;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -12,15 +24,26 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionConstants;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.eclipse.ui.part.FileEditorInput;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
 
 /**
  * @generated
@@ -36,7 +59,9 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 	 * @generated
 	 */
 	private OpenDiagramAction myOpenDiagramAction;
-
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
 	/**
 	 * @generated
 	 */
@@ -58,10 +83,10 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public void fillActionBars(IActionBars actionBars) {
-		if (!myContribute) {
+/*		if (!myContribute) {
 			return;
 		}
 		IStructuredSelection selection = (IStructuredSelection) getContext()
@@ -70,6 +95,32 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 		if (myOpenDiagramAction.isEnabled()) {
 			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
 					myOpenDiagramAction);
+		}*/
+		
+		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
+		if (selection instanceof TreeSelection) {
+			TreeSelection treeSelection = (TreeSelection) selection;
+			Object firstElement = treeSelection.getFirstElement();
+			if (firstElement instanceof IFile) {
+				IFile file = (IFile) firstElement;
+				try {
+					IContentDescription contentDescription = file.getContentDescription();
+					if (contentDescription != null) {
+						IContentType contentType = contentDescription.getContentType();
+						if (contentType.getId() != null) {
+							if ("org.wso2.developerstudio.eclipse.datamapper.contenttype.datamapperconfig"
+									.equals(contentType.getId())) {
+								myOpenDiagramAction.setSelection(file);
+								actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
+										myOpenDiagramAction);
+							}
+						}
+					}
+					
+				} catch (CoreException e) {
+					/* ignore */
+				}
+			}
 		}
 	}
 
@@ -88,6 +139,8 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 		 * @generated
 		 */
 		private Diagram myDiagram;
+		
+		private IFile selection;
 
 		/**
 		 * @generated
@@ -130,10 +183,10 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public void run() {
-			if (myDiagram == null || myDiagram.eResource() == null) {
+/*			if (myDiagram == null || myDiagram.eResource() == null) {
 				return;
 			}
 
@@ -146,7 +199,37 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 				dataMapper.diagram.part.DataMapperDiagramEditorPlugin
 						.getInstance().logError(
 								"Exception while openning diagram", e); //$NON-NLS-1$
+			}*/
+			
+			IFile fileTobeOpen = null;
+			String synFilePath = selection.getFullPath().toOSString();
+			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+			IWorkbenchPage page = window.getActivePage();
+			Path path = new Path(getGraphicalResource(selection));
+			try{
+				if (selection.getWorkspace().getRoot().getFile(path).exists()) {
+					fileTobeOpen = selection.getWorkspace().getRoot()
+					.getFile(path);
+						IDE.openEditor(page, fileTobeOpen);
+				} else {							
+					String location=selection.getLocation().toOSString();				
+					String source = FileUtils.getContentAsString(new File(location));
+					String name =selection.getName().split("\\.")[0];													
+					String fullPath=selection.getFullPath().removeLastSegments(1).toOSString()+"/";
+					Openable openable = DataMapperEditor.getOpenable();
+					openable.editorOpen(name, null, fullPath, source);
+				}
+			}catch (Exception e) {
+				log.error("Can't open " + fileTobeOpen, e);
 			}
+		}
+		
+		
+		private String getGraphicalResource(IFile selection){
+			String synFilePath = selection.getFullPath().toOSString();
+			synFilePath=synFilePath.replaceAll(Pattern.quote("\\"), "/");
+			String graphicalResource = synFilePath.replaceAll(".js$",".datamapper_diagram");
+			return graphicalResource;
 		}
 
 		/**
@@ -168,6 +251,10 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 					+ diagram.eResource().getContents().indexOf(diagram);
 			IEditorInput editorInput = new URIEditorInput(uri, editorName);
 			return editorInput;
+		}
+		
+		public void setSelection(IFile selection) {
+			this.selection = selection;
 		}
 
 	}

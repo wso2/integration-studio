@@ -134,7 +134,6 @@ public interface StoreMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Available Message Stores</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Available Message Stores</em>' attribute isn't clear,
@@ -144,7 +143,7 @@ public interface StoreMediator extends Mediator {
 	 * @return the value of the '<em>Available Message Stores</em>' attribute.
 	 * @see #setAvailableMessageStores(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getStoreMediator_AvailableMessageStores()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getAvailableMessageStores();

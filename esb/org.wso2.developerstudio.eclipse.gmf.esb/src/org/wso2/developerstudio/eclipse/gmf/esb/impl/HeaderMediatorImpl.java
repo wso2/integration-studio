@@ -173,7 +173,7 @@ public class HeaderMediatorImpl extends MediatorImpl implements HeaderMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_INLINE_EDEFAULT = "";
+	protected static final String VALUE_INLINE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getValueInline() <em>Value Inline</em>}' attribute.

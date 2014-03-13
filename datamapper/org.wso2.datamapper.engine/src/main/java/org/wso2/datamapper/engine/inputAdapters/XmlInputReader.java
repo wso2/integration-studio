@@ -91,11 +91,10 @@ public class XmlInputReader implements InputDataReaderAdapter{
 		if ((childRecord == null) && (arrayChildList == null)) {	
 			rootRecord.put(childName, childElement.getText());
 		}
-	
 		return childRecord;
 	}
 
-	public GenericRecord getChild(OMElement element, Iterator<OMElement> childIter) {
+	private GenericRecord getChild(OMElement element, Iterator<OMElement> childIter) {
 		
 		GenericRecord childRec = null;
 		OMElement parentElement = element;	

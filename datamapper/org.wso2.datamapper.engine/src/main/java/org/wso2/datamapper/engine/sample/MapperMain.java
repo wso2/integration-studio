@@ -17,8 +17,9 @@ public class MapperMain {
 		InputStream inStream = new FileInputStream(new File("./resources/input3.xml"));
 		
 		try {
-			mapper.doMap(new File("./resources/MappingConfig3.js"),inStream,new File("./resources/inputSchema3.avsc"),new File("./resources/outputSchema3.avsc"));
-			
+			String doMap = mapper.doMap(new File("./resources/MappingConfig3.js"),
+					inStream,new File("./resources/inputSchema3.avsc"),new File("./resources/outputSchema3.avsc"));			
+			System.out.println(doMap);
 			inStream.close();
 
 		} catch (IOException e) {

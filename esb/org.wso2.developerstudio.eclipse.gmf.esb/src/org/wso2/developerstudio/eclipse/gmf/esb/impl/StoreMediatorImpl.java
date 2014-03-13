@@ -102,7 +102,7 @@ public class StoreMediatorImpl extends MediatorImpl implements StoreMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String AVAILABLE_MESSAGE_STORES_EDEFAULT = "";
+	protected static final String AVAILABLE_MESSAGE_STORES_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getAvailableMessageStores() <em>Available Message Stores</em>}' attribute.

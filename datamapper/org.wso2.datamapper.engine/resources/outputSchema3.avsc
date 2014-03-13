@@ -1,0 +1,19 @@
+{
+  "name" : "engineers",
+  "type" : "record", 
+  "fields": [
+              { "name": "engineer", 
+          		"type": { 
+            				"type": "array", 
+            				"items": { 
+              							"name": "engineerRecord", 
+              							"type": "record", 
+              							"fields": [ 
+                   									{ "name" : "fullname", "type" : "string"}, 
+                    								{ "name" : "address", "type" : "string"}
+                    							  ] 
+          							 } 
+        				  } 
+      			}	
+            ]
+}

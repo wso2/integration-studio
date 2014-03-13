@@ -162,7 +162,6 @@ public interface TemplateEndpoint extends AbstractEndPoint {
 
 	/**
 	 * Returns the value of the '<em><b>Available Templates</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Available Templates</em>' attribute isn't clear,
@@ -172,7 +171,7 @@ public interface TemplateEndpoint extends AbstractEndPoint {
 	 * @return the value of the '<em>Available Templates</em>' attribute.
 	 * @see #setAvailableTemplates(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getTemplateEndpoint_AvailableTemplates()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getAvailableTemplates();

@@ -65,7 +65,7 @@ public class OAuthMediatorImpl extends MediatorImpl implements OAuthMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String USERNAME_EDEFAULT = "";
+	protected static final String USERNAME_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getUsername() <em>Username</em>}' attribute.
@@ -85,7 +85,7 @@ public class OAuthMediatorImpl extends MediatorImpl implements OAuthMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PASSWORD_EDEFAULT = "";
+	protected static final String PASSWORD_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.

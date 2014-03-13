@@ -19851,13 +19851,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Config Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__CONFIG_KEY = MEDIATOR_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Data Mapper Mediator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 2;
+	int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.
@@ -27682,6 +27691,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getDataMapperMediator_OutputConnector();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigKey <em>Config Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Config Key</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigKey()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EReference getDataMapperMediator_ConfigKey();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector <em>Data Mapper Mediator Input Connector</em>}'.
@@ -40301,6 +40321,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = eINSTANCE.getDataMapperMediator_OutputConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>Config Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_MEDIATOR__CONFIG_KEY = eINSTANCE.getDataMapperMediator_ConfigKey();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.

@@ -4491,6 +4491,8 @@
   	  	 <description>%newWizardDesc</description>  
       </wizard>
    </extension>
+   
+   
 
 	
    <!-- optionally, specify keybindings -->

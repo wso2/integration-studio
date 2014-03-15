@@ -75,28 +75,12 @@ public class FunctionExecuter {
 			//this.scope.put("input", scope, inputRecordWrapper);
 			//this.scope.put("output", scope, outputRecordWrapper);
 			
-			/*Temporally adding this code till introduce a proper code*/
-			String funtionSourceAsString="";
-			try {
-				funtionSourceAsString = new Scanner(new File("./resources/MappingConfig3.js")).useDelimiter("\\Z").next();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			//Function fn = context.compileFunction(this.scope, funtionSourceAsString, "xyz-func", 0, null);
 			
-			/*StringBuilder configScript = new StringBuilder(
-					"function "+"map_"+funcType+"_"+inputDataType+"_"+funcType+"_"+outputDataType+"(input,output)"
-							+ "{"
-							+ "output.fullname = input.firstname.concat(input.lastname);"
-							+ "output.address = input.address.no.concat(input.address.city);"
-							+ "return output;"
-							+ "}");*/
-			
-			
-			
-			Function fn = context.compileFunction(this.scope, funtionSourceAsString, "xyz-func", 0, null);
-			Object resultOb = fn.call(context, this.scope, this.scope, new Object[] {inputRecordWrapper,outputRecordWrapper});
-			
-			
+			 String fnName = "map_"+funcType+"_"+inputDataType+"_"+funcType+"_"+outputDataType;
+			 Function fn = (Function)scope.get(fnName, scope);
+			 Object resultOb = fn.call(context, this.scope, this.scope, new Object[] {inputRecordWrapper,outputRecordWrapper});
+		
 			//Object resultOb = context.evaluateString(scope, configScript.toString(), "", 1, null);
 
 			if(resultOb != ScriptableObject.NOT_FOUND){

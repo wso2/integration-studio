@@ -73,7 +73,7 @@ public class TreeFromAVSC{
 	}
 	
 	public static Tree generateInputTreeFromFile(String path) {
-		List<String>  multipleChunk = new ArrayList<String>();
+		multipleChunk = new ArrayList<String>();
 		GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
 
 		DataFileReader <GenericData> dataFileReader;

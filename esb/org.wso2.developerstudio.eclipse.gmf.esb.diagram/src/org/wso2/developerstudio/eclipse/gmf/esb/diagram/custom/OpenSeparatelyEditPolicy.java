@@ -10,8 +10,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CallTemplateMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.DataMapperMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.NamedEndpointEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
+
+
 
 public class OpenSeparatelyEditPolicy extends OpenEditPolicy {
 
@@ -62,6 +65,12 @@ public class OpenSeparatelyEditPolicy extends OpenEditPolicy {
 							"Cannot open the file with name \""+targetTemplate+"\". Try removing file separator from the name if exists.");
 				}
 			
+		}else if (getTargetEditPart(request) instanceof DataMapperMediatorEditPart) {
+
+			//((DataMapperMediatorEditPart)getTargetEditPart(request)).createDialogBox();
+			//openWizard("dataMapper.diagram.part.DataMapperCreationWizardID");
+		 	//DataMapperConfigDialog dmcd = new DataMapperConfigDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell());
+		 	//dmcd.open();
 		}
 		return  null;
 	}

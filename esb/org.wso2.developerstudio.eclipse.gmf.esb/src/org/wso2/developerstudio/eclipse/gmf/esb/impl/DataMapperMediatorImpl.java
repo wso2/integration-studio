@@ -43,7 +43,12 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getConfigKey <em>Config Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getConfiguration <em>Configuration</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputSchema <em>Input Schema</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputSchema <em>Output Schema</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getConfigurationLocalPath <em>Configuration Local Path</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputSchemaLocalPath <em>Input Schema Local Path</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputSchemaLocalPath <em>Output Schema Local Path</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,28 +76,120 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 	protected DataMapperMediatorOutputConnector outputConnector;
 
 	/**
-	 * The cached value of the '{@link #getConfigKey() <em>Config Key</em>}' containment reference.
+	 * The cached value of the '{@link #getConfiguration() <em>Configuration</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConfigKey()
+	 * @see #getConfiguration()
 	 * @generated
 	 * @ordered
 	 */
-	protected RegistryKeyProperty configKey;
+	protected RegistryKeyProperty configuration;
+
+	/**
+	 * The cached value of the '{@link #getInputSchema() <em>Input Schema</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputSchema()
+	 * @generated
+	 * @ordered
+	 */
+	protected RegistryKeyProperty inputSchema;
+
+	/**
+	 * The cached value of the '{@link #getOutputSchema() <em>Output Schema</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputSchema()
+	 * @generated
+	 * @ordered
+	 */
+	protected RegistryKeyProperty outputSchema;
+
+	/**
+	 * The default value of the '{@link #getConfigurationLocalPath() <em>Configuration Local Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfigurationLocalPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CONFIGURATION_LOCAL_PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getConfigurationLocalPath() <em>Configuration Local Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConfigurationLocalPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String configurationLocalPath = CONFIGURATION_LOCAL_PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInputSchemaLocalPath() <em>Input Schema Local Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputSchemaLocalPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INPUT_SCHEMA_LOCAL_PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInputSchemaLocalPath() <em>Input Schema Local Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputSchemaLocalPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inputSchemaLocalPath = INPUT_SCHEMA_LOCAL_PATH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOutputSchemaLocalPath() <em>Output Schema Local Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputSchemaLocalPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOutputSchemaLocalPath() <em>Output Schema Local Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputSchemaLocalPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected String outputSchemaLocalPath = OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected DataMapperMediatorImpl() {
 		super();
-		
-		RegistryKeyProperty sequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
-		sequenceKey.setKeyName("Config Key");
-		sequenceKey.setPrettyName("configKey");
-		sequenceKey.setKeyValue("/default/key");
-		setConfigKey(sequenceKey);
+
+  		RegistryKeyProperty configuration = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+  		configuration.setKeyName("Configuration");
+  		configuration.setPrettyName("configuration");
+  		configuration.setKeyValue("/default/key");
+  		setConfiguration(configuration);
+  		
+  		RegistryKeyProperty inputSchema = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+  		inputSchema.setKeyName("InputSchema");
+  		inputSchema.setPrettyName("inputschema");
+  		inputSchema.setKeyValue("/default/key");
+  		setInputSchema(inputSchema);
+  		
+  		RegistryKeyProperty outputSchema = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+  		outputSchema.setKeyName("OutputSchema");
+  		outputSchema.setPrettyName("outputschema");
+  		outputSchema.setKeyValue("/default/key");
+  		setOutputSchema(outputSchema);
 	}
 
 	/**
@@ -196,8 +293,8 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RegistryKeyProperty getConfigKey() {
-		return configKey;
+	public RegistryKeyProperty getConfiguration() {
+		return configuration;
 	}
 
 	/**
@@ -205,11 +302,11 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetConfigKey(RegistryKeyProperty newConfigKey, NotificationChain msgs) {
-		RegistryKeyProperty oldConfigKey = configKey;
-		configKey = newConfigKey;
+	public NotificationChain basicSetConfiguration(RegistryKeyProperty newConfiguration, NotificationChain msgs) {
+		RegistryKeyProperty oldConfiguration = configuration;
+		configuration = newConfiguration;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY, oldConfigKey, newConfigKey);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION, oldConfiguration, newConfiguration);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -220,18 +317,167 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConfigKey(RegistryKeyProperty newConfigKey) {
-		if (newConfigKey != configKey) {
+	public void setConfiguration(RegistryKeyProperty newConfiguration) {
+		if (newConfiguration != configuration) {
 			NotificationChain msgs = null;
-			if (configKey != null)
-				msgs = ((InternalEObject)configKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY, null, msgs);
-			if (newConfigKey != null)
-				msgs = ((InternalEObject)newConfigKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY, null, msgs);
-			msgs = basicSetConfigKey(newConfigKey, msgs);
+			if (configuration != null)
+				msgs = ((InternalEObject)configuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION, null, msgs);
+			if (newConfiguration != null)
+				msgs = ((InternalEObject)newConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION, null, msgs);
+			msgs = basicSetConfiguration(newConfiguration, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY, newConfigKey, newConfigKey));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION, newConfiguration, newConfiguration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RegistryKeyProperty getInputSchema() {
+		return inputSchema;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInputSchema(RegistryKeyProperty newInputSchema, NotificationChain msgs) {
+		RegistryKeyProperty oldInputSchema = inputSchema;
+		inputSchema = newInputSchema;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA, oldInputSchema, newInputSchema);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInputSchema(RegistryKeyProperty newInputSchema) {
+		if (newInputSchema != inputSchema) {
+			NotificationChain msgs = null;
+			if (inputSchema != null)
+				msgs = ((InternalEObject)inputSchema).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA, null, msgs);
+			if (newInputSchema != null)
+				msgs = ((InternalEObject)newInputSchema).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA, null, msgs);
+			msgs = basicSetInputSchema(newInputSchema, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA, newInputSchema, newInputSchema));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RegistryKeyProperty getOutputSchema() {
+		return outputSchema;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOutputSchema(RegistryKeyProperty newOutputSchema, NotificationChain msgs) {
+		RegistryKeyProperty oldOutputSchema = outputSchema;
+		outputSchema = newOutputSchema;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA, oldOutputSchema, newOutputSchema);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutputSchema(RegistryKeyProperty newOutputSchema) {
+		if (newOutputSchema != outputSchema) {
+			NotificationChain msgs = null;
+			if (outputSchema != null)
+				msgs = ((InternalEObject)outputSchema).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA, null, msgs);
+			if (newOutputSchema != null)
+				msgs = ((InternalEObject)newOutputSchema).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA, null, msgs);
+			msgs = basicSetOutputSchema(newOutputSchema, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA, newOutputSchema, newOutputSchema));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getConfigurationLocalPath() {
+		return configurationLocalPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfigurationLocalPath(String newConfigurationLocalPath) {
+		String oldConfigurationLocalPath = configurationLocalPath;
+		configurationLocalPath = newConfigurationLocalPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, oldConfigurationLocalPath, configurationLocalPath));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInputSchemaLocalPath() {
+		return inputSchemaLocalPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInputSchemaLocalPath(String newInputSchemaLocalPath) {
+		String oldInputSchemaLocalPath = inputSchemaLocalPath;
+		inputSchemaLocalPath = newInputSchemaLocalPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH, oldInputSchemaLocalPath, inputSchemaLocalPath));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOutputSchemaLocalPath() {
+		return outputSchemaLocalPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutputSchemaLocalPath(String newOutputSchemaLocalPath) {
+		String oldOutputSchemaLocalPath = outputSchemaLocalPath;
+		outputSchemaLocalPath = newOutputSchemaLocalPath;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH, oldOutputSchemaLocalPath, outputSchemaLocalPath));
 	}
 
 	/**
@@ -246,8 +492,12 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 				return basicSetInputConnector(null, msgs);
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				return basicSetOutputConnector(null, msgs);
-			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY:
-				return basicSetConfigKey(null, msgs);
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION:
+				return basicSetConfiguration(null, msgs);
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA:
+				return basicSetInputSchema(null, msgs);
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA:
+				return basicSetOutputSchema(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -264,8 +514,18 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 				return getInputConnector();
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				return getOutputConnector();
-			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY:
-				return getConfigKey();
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION:
+				return getConfiguration();
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA:
+				return getInputSchema();
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA:
+				return getOutputSchema();
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH:
+				return getConfigurationLocalPath();
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH:
+				return getInputSchemaLocalPath();
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
+				return getOutputSchemaLocalPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -284,8 +544,23 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				setOutputConnector((DataMapperMediatorOutputConnector)newValue);
 				return;
-			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY:
-				setConfigKey((RegistryKeyProperty)newValue);
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION:
+				setConfiguration((RegistryKeyProperty)newValue);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA:
+				setInputSchema((RegistryKeyProperty)newValue);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA:
+				setOutputSchema((RegistryKeyProperty)newValue);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH:
+				setConfigurationLocalPath((String)newValue);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH:
+				setInputSchemaLocalPath((String)newValue);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
+				setOutputSchemaLocalPath((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -305,8 +580,23 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				setOutputConnector((DataMapperMediatorOutputConnector)null);
 				return;
-			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY:
-				setConfigKey((RegistryKeyProperty)null);
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION:
+				setConfiguration((RegistryKeyProperty)null);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA:
+				setInputSchema((RegistryKeyProperty)null);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA:
+				setOutputSchema((RegistryKeyProperty)null);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH:
+				setConfigurationLocalPath(CONFIGURATION_LOCAL_PATH_EDEFAULT);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH:
+				setInputSchemaLocalPath(INPUT_SCHEMA_LOCAL_PATH_EDEFAULT);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
+				setOutputSchemaLocalPath(OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -324,10 +614,40 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 				return inputConnector != null;
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				return outputConnector != null;
-			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIG_KEY:
-				return configKey != null;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION:
+				return configuration != null;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA:
+				return inputSchema != null;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA:
+				return outputSchema != null;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH:
+				return CONFIGURATION_LOCAL_PATH_EDEFAULT == null ? configurationLocalPath != null : !CONFIGURATION_LOCAL_PATH_EDEFAULT.equals(configurationLocalPath);
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH:
+				return INPUT_SCHEMA_LOCAL_PATH_EDEFAULT == null ? inputSchemaLocalPath != null : !INPUT_SCHEMA_LOCAL_PATH_EDEFAULT.equals(inputSchemaLocalPath);
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
+				return OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT == null ? outputSchemaLocalPath != null : !OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT.equals(outputSchemaLocalPath);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (configurationLocalPath: ");
+		result.append(configurationLocalPath);
+		result.append(", inputSchemaLocalPath: ");
+		result.append(inputSchemaLocalPath);
+		result.append(", outputSchemaLocalPath: ");
+		result.append(outputSchemaLocalPath);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DataMapperMediatorImpl

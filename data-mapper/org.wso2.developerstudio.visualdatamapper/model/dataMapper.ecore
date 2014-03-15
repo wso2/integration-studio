@@ -3,16 +3,13 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dataMapper" nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper"
     nsPrefix="dataMapper">
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperNode"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DataMapperDiagram" eSuperTypes="#//DataMapperNode">
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperDiagram" eSuperTypes="#//DataMapperNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataMapperRoot">
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="#//Input"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Output"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" eType="#//Operations"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataMapperRoot">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataMapperDiagram" eType="#//DataMapperDiagram"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//DataMapperNode">

@@ -63,38 +63,6 @@ public class DataMapperDiagramItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__INPUT);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__OUTPUT);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__OPERATIONS);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
 	 * This returns DataMapperDiagram.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -126,14 +94,6 @@ public class DataMapperDiagramItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(DataMapperDiagram.class)) {
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__INPUT:
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OUTPUT:
-			case DataMapperPackage.DATA_MAPPER_DIAGRAM__OPERATIONS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -147,21 +107,6 @@ public class DataMapperDiagramItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__INPUT,
-				 DataMapperFactory.eINSTANCE.createInput()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__OUTPUT,
-				 DataMapperFactory.eINSTANCE.createOutput()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_DIAGRAM__OPERATIONS,
-				 DataMapperFactory.eINSTANCE.createOperations()));
 	}
 
 }

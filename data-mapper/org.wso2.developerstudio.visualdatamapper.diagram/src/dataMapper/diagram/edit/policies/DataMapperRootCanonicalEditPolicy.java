@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import java.util.Set;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -37,6 +39,11 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
+	private Set<EStructuralFeature> myFeaturesToSynchronize;
+
+	/**
+	 * @generated
+	 */
 	protected void refreshOnActivate() {
 		// Need to activate editpart children before invoking the canonical refresh for EditParts to add event listeners
 		List<?> c = getHost().getChildren();
@@ -49,9 +56,17 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected EStructuralFeature getFeatureToSynchronize() {
-		return dataMapper.DataMapperPackage.eINSTANCE
-				.getDataMapperRoot_DataMapperDiagram();
+	protected Set getFeaturesToSynchronize() {
+		if (myFeaturesToSynchronize == null) {
+			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
+			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
+					.getDataMapperRoot_Input());
+			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
+					.getDataMapperRoot_Output());
+			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
+					.getDataMapperRoot_Operations());
+		}
+		return myFeaturesToSynchronize;
 	}
 
 	/**
@@ -72,18 +87,18 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren,
-			final View view) {
-		return isMyDiagramElement(view)
-				&& !semanticChildren.contains(view.getElement());
+	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
+		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
 	}
 
 	/**
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
-		return dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID == dataMapper.diagram.part.DataMapperVisualIDRegistry
-				.getVisualID(view);
+		int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view);
+		return visualID == dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID
+				|| visualID == dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID
+				|| visualID == dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID;
 	}
 
 	/**
@@ -95,8 +110,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getDataMapperRoot_1000SemanticChildren((View) getHost()
-						.getModel());
+				.getDataMapperRoot_1000SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
@@ -112,10 +126,9 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		// to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
 		for (Iterator<dataMapper.diagram.part.DataMapperNodeDescriptor> descriptorsIterator = childDescriptors
 				.iterator(); descriptorsIterator.hasNext();) {
-			dataMapper.diagram.part.DataMapperNodeDescriptor next = descriptorsIterator
-					.next();
-			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getType(next.getVisualID());
+			dataMapper.diagram.part.DataMapperNodeDescriptor next = descriptorsIterator.next();
+			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry.getType(next
+					.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
 			for (View childView : getViewChildren()) {
 				EObject semanticElement = childView.getElement();
@@ -141,13 +154,12 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		ArrayList<CreateViewRequest.ViewDescriptor> viewDescriptors = new ArrayList<CreateViewRequest.ViewDescriptor>(
 				childDescriptors.size());
 		for (dataMapper.diagram.part.DataMapperNodeDescriptor next : childDescriptors) {
-			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getType(next.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(
-					next.getModelElement(), hint);
+			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry.getType(next
+					.getVisualID());
+			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
 			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
-					host().getDiagramPreferencesHint());
+					elementAdapter, Node.class, hint, ViewUtil.APPEND, false, host()
+							.getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -156,8 +168,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(
-					new EObjectAdapter(host().getNotationView())).execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView()))
+					.execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
@@ -171,8 +183,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
-					.getEditingDomain(), createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(),
+					createdViews, host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 
@@ -189,14 +201,12 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		Collection<dataMapper.diagram.part.DataMapperLinkDescriptor> linkDescriptors = collectAllLinks(
 				getDiagram(), domain2NotationMap);
 		Collection existingLinks = new LinkedList(getDiagram().getEdges());
-		for (Iterator linksIterator = existingLinks.iterator(); linksIterator
-				.hasNext();) {
+		for (Iterator linksIterator = existingLinks.iterator(); linksIterator.hasNext();) {
 			Edge nextDiagramLink = (Edge) linksIterator.next();
 			int diagramLinkVisualID = dataMapper.diagram.part.DataMapperVisualIDRegistry
 					.getVisualID(nextDiagramLink);
 			if (diagramLinkVisualID == -1) {
-				if (nextDiagramLink.getSource() != null
-						&& nextDiagramLink.getTarget() != null) {
+				if (nextDiagramLink.getSource() != null && nextDiagramLink.getTarget() != null) {
 					linksIterator.remove();
 				}
 				continue;
@@ -210,10 +220,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 						.next();
 				if (diagramLinkObject == nextLinkDescriptor.getModelElement()
 						&& diagramLinkSrc == nextLinkDescriptor.getSource()
-						&& diagramLinkDst == nextLinkDescriptor
-								.getDestination()
-						&& diagramLinkVisualID == nextLinkDescriptor
-								.getVisualID()) {
+						&& diagramLinkDst == nextLinkDescriptor.getDestination()
+						&& diagramLinkVisualID == nextLinkDescriptor.getVisualID()) {
 					linksIterator.remove();
 					linkDescriptorsIterator.remove();
 					break;
@@ -227,169 +235,156 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private Collection<dataMapper.diagram.part.DataMapperLinkDescriptor> collectAllLinks(
-			View view, Domain2Notation domain2NotationMap) {
+	private Collection<dataMapper.diagram.part.DataMapperLinkDescriptor> collectAllLinks(View view,
+			Domain2Notation domain2NotationMap) {
 		if (!dataMapper.diagram.edit.parts.DataMapperRootEditPart.MODEL_ID
-				.equals(dataMapper.diagram.part.DataMapperVisualIDRegistry
-						.getModelID(view))) {
+				.equals(dataMapper.diagram.part.DataMapperVisualIDRegistry.getModelID(view))) {
 			return Collections.emptyList();
 		}
 		LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor>();
-		switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
-				.getVisualID(view)) {
-			case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getDataMapperRoot_1000ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
+		switch (dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view)) {
+		case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getDataMapperRoot_1000ContainedLinks(view));
 			}
-			case dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getDataMapperDiagram_2001ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getInput_3001ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getTreeNode_3002ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getTreeNode_3003ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getAttribute_3004ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getInNode_3005ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getOutNode_3006ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getElement_3007ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getInNode_3008ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getOutNode_3009ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getOutput_3010ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getTreeNode_3011ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getOperations_3012ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getConcat_3013ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getInNode_3014ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getOutNode_3015ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
-			case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID : {
-				if (!domain2NotationMap.containsKey(view.getElement())) {
-					result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
-							.getDataMapperLink_4001ContainedLinks(view));
-				}
-				domain2NotationMap.putView(view.getElement(), view);
-				break;
-			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
 		}
-		for (Iterator children = view.getChildren().iterator(); children
-				.hasNext();) {
-			result.addAll(collectAllLinks((View) children.next(),
-					domain2NotationMap));
+		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getInput_2002ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOutput_2003ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOperations_2004ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getTreeNode_3002ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getTreeNode_3003ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getAttribute_3004ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getInNode_3005ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOutNode_3006ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getElement_3007ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getInNode_3008ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOutNode_3009ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getTreeNode_3011ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getConcat_3013ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getInNode_3014ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOutNode_3015ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getDataMapperLink_4001ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		}
+		for (Iterator children = view.getChildren().iterator(); children.hasNext();) {
+			result.addAll(collectAllLinks((View) children.next(), domain2NotationMap));
 		}
 		for (Iterator edges = view.getSourceEdges().iterator(); edges.hasNext();) {
-			result.addAll(collectAllLinks((View) edges.next(),
-					domain2NotationMap));
+			result.addAll(collectAllLinks((View) edges.next(), domain2NotationMap));
 		}
 		return result;
 	}
@@ -402,22 +397,17 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			Domain2Notation domain2NotationMap) {
 		LinkedList<IAdaptable> adapters = new LinkedList<IAdaptable>();
 		for (dataMapper.diagram.part.DataMapperLinkDescriptor nextLinkDescriptor : linkDescriptors) {
-			EditPart sourceEditPart = getSourceEditPart(nextLinkDescriptor,
-					domain2NotationMap);
-			EditPart targetEditPart = getTargetEditPart(nextLinkDescriptor,
-					domain2NotationMap);
+			EditPart sourceEditPart = getSourceEditPart(nextLinkDescriptor, domain2NotationMap);
+			EditPart targetEditPart = getTargetEditPart(nextLinkDescriptor, domain2NotationMap);
 			if (sourceEditPart == null || targetEditPart == null) {
 				continue;
 			}
 			CreateConnectionViewRequest.ConnectionViewDescriptor descriptor = new CreateConnectionViewRequest.ConnectionViewDescriptor(
 					nextLinkDescriptor.getSemanticAdapter(),
-					dataMapper.diagram.part.DataMapperVisualIDRegistry
-							.getType(nextLinkDescriptor.getVisualID()),
-					ViewUtil.APPEND, false,
-					((IGraphicalEditPart) getHost())
-							.getDiagramPreferencesHint());
-			CreateConnectionViewRequest ccr = new CreateConnectionViewRequest(
-					descriptor);
+					dataMapper.diagram.part.DataMapperVisualIDRegistry.getType(nextLinkDescriptor
+							.getVisualID()), ViewUtil.APPEND, false,
+					((IGraphicalEditPart) getHost()).getDiagramPreferencesHint());
+			CreateConnectionViewRequest ccr = new CreateConnectionViewRequest(descriptor);
 			ccr.setType(RequestConstants.REQ_CONNECTION_START);
 			ccr.setSourceEditPart(sourceEditPart);
 			sourceEditPart.getCommand(ccr);
@@ -438,12 +428,10 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	private EditPart getEditPart(EObject domainModelElement,
-			Domain2Notation domain2NotationMap) {
+	private EditPart getEditPart(EObject domainModelElement, Domain2Notation domain2NotationMap) {
 		View view = (View) domain2NotationMap.get(domainModelElement);
 		if (view != null) {
-			return (EditPart) getHost().getViewer().getEditPartRegistry()
-					.get(view);
+			return (EditPart) getHost().getViewer().getEditPartRegistry().get(view);
 		}
 		return null;
 	}
@@ -477,11 +465,9 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	protected final EditPart getHintedEditPart(EObject domainModelElement,
 			Domain2Notation domain2NotationMap, int hintVisualId) {
 		View view = (View) domain2NotationMap.getHinted(domainModelElement,
-				dataMapper.diagram.part.DataMapperVisualIDRegistry
-						.getType(hintVisualId));
+				dataMapper.diagram.part.DataMapperVisualIDRegistry.getType(hintVisualId));
 		if (view != null) {
-			return (EditPart) getHost().getViewer().getEditPartRegistry()
-					.get(view);
+			return (EditPart) getHost().getViewer().getEditPartRegistry().get(view);
 		}
 		return null;
 	}

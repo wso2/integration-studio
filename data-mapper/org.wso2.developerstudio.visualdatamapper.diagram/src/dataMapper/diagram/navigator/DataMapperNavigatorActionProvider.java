@@ -59,9 +59,9 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 	 * @generated
 	 */
 	private OpenDiagramAction myOpenDiagramAction;
-	
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
+
 	/**
 	 * @generated
 	 */
@@ -86,17 +86,17 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 	 * @generated NOT
 	 */
 	public void fillActionBars(IActionBars actionBars) {
-/*		if (!myContribute) {
-			return;
-		}
-		IStructuredSelection selection = (IStructuredSelection) getContext()
-				.getSelection();
-		myOpenDiagramAction.selectionChanged(selection);
-		if (myOpenDiagramAction.isEnabled()) {
-			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
-					myOpenDiagramAction);
-		}*/
-		
+		/*		if (!myContribute) {
+		 return;
+		 }
+		 IStructuredSelection selection = (IStructuredSelection) getContext()
+		 .getSelection();
+		 myOpenDiagramAction.selectionChanged(selection);
+		 if (myOpenDiagramAction.isEnabled()) {
+		 actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
+		 myOpenDiagramAction);
+		 }*/
+
 		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 		if (selection instanceof TreeSelection) {
 			TreeSelection treeSelection = (TreeSelection) selection;
@@ -116,7 +116,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 							}
 						}
 					}
-					
+
 				} catch (CoreException e) {
 					/* ignore */
 				}
@@ -139,7 +139,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 		 * @generated
 		 */
 		private Diagram myDiagram;
-		
+
 		private IFile selection;
 
 		/**
@@ -151,8 +151,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 		 * @generated
 		 */
 		public OpenDiagramAction(ICommonViewerWorkbenchSite viewerSite) {
-			super(
-					dataMapper.diagram.part.Messages.NavigatorActionProvider_OpenDiagramActionName);
+			super(dataMapper.diagram.part.Messages.NavigatorActionProvider_OpenDiagramActionName);
 			myViewerSite = viewerSite;
 		}
 
@@ -167,8 +166,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 					selectedElement = ((dataMapper.diagram.navigator.DataMapperNavigatorItem) selectedElement)
 							.getView();
 				} else if (selectedElement instanceof IAdaptable) {
-					selectedElement = ((IAdaptable) selectedElement)
-							.getAdapter(View.class);
+					selectedElement = ((IAdaptable) selectedElement).getAdapter(View.class);
 				}
 				if (selectedElement instanceof Diagram) {
 					Diagram diagram = (Diagram) selectedElement;
@@ -186,49 +184,48 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 		 * @generated NOT
 		 */
 		public void run() {
-/*			if (myDiagram == null || myDiagram.eResource() == null) {
-				return;
-			}
+			/*			if (myDiagram == null || myDiagram.eResource() == null) {
+			 return;
+			 }
 
-			IEditorInput editorInput = getEditorInput(myDiagram);
-			IWorkbenchPage page = myViewerSite.getPage();
-			try {
-				page.openEditor(editorInput,
-						dataMapper.diagram.part.DataMapperDiagramEditor.ID);
-			} catch (PartInitException e) {
-				dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-						.getInstance().logError(
-								"Exception while openning diagram", e); //$NON-NLS-1$
-			}*/
-			
+			 IEditorInput editorInput = getEditorInput(myDiagram);
+			 IWorkbenchPage page = myViewerSite.getPage();
+			 try {
+			 page.openEditor(editorInput,
+			 dataMapper.diagram.part.DataMapperDiagramEditor.ID);
+			 } catch (PartInitException e) {
+			 dataMapper.diagram.part.DataMapperDiagramEditorPlugin
+			 .getInstance().logError(
+			 "Exception while openning diagram", e); //$NON-NLS-1$
+			 }*/
+
 			IFile fileTobeOpen = null;
 			String synFilePath = selection.getFullPath().toOSString();
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = window.getActivePage();
 			Path path = new Path(getGraphicalResource(selection));
-			try{
+			try {
 				if (selection.getWorkspace().getRoot().getFile(path).exists()) {
-					fileTobeOpen = selection.getWorkspace().getRoot()
-					.getFile(path);
-						IDE.openEditor(page, fileTobeOpen);
-				} else {							
-					String location=selection.getLocation().toOSString();				
+					fileTobeOpen = selection.getWorkspace().getRoot().getFile(path);
+					IDE.openEditor(page, fileTobeOpen);
+				} else {
+					String location = selection.getLocation().toOSString();
 					String source = FileUtils.getContentAsString(new File(location));
-					String name =selection.getName().split("\\.")[0];													
-					String fullPath=selection.getFullPath().removeLastSegments(1).toOSString()+"/";
+					String name = selection.getName().split("\\.")[0];
+					String fullPath = selection.getFullPath().removeLastSegments(1).toOSString()
+							+ "/";
 					Openable openable = DataMapperEditor.getOpenable();
 					openable.editorOpen(name, null, fullPath, source);
 				}
-			}catch (Exception e) {
+			} catch (Exception e) {
 				log.error("Can't open " + fileTobeOpen, e);
 			}
 		}
-		
-		
-		private String getGraphicalResource(IFile selection){
+
+		private String getGraphicalResource(IFile selection) {
 			String synFilePath = selection.getFullPath().toOSString();
-			synFilePath=synFilePath.replaceAll(Pattern.quote("\\"), "/");
-			String graphicalResource = synFilePath.replaceAll(".js$",".datamapper_diagram");
+			synFilePath = synFilePath.replaceAll(Pattern.quote("\\"), "/");
+			String graphicalResource = synFilePath.replaceAll(".js$", ".datamapper_diagram");
 			return graphicalResource;
 		}
 
@@ -239,8 +236,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 			Resource diagramResource = diagram.eResource();
 			for (EObject nextEObject : diagramResource.getContents()) {
 				if (nextEObject == diagram) {
-					return new FileEditorInput(
-							WorkspaceSynchronizer.getFile(diagramResource));
+					return new FileEditorInput(WorkspaceSynchronizer.getFile(diagramResource));
 				}
 				if (nextEObject instanceof Diagram) {
 					break;
@@ -252,7 +248,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 			IEditorInput editorInput = new URIEditorInput(uri, editorName);
 			return editorInput;
 		}
-		
+
 		public void setSelection(IFile selection) {
 			this.selection = selection;
 		}

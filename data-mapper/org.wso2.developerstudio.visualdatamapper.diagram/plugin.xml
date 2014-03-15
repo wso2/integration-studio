@@ -227,7 +227,7 @@
       <viewProvider class="dataMapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2004,3002,3003,3004,3005,3006,3007,3008,3009,3011,3013,3014,3015"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -240,7 +240,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015"/>
+            <method name="getType()" value="2002,2003,2004,3002,3003,3004,3005,3006,3007,3008,3009,3011,3013,3014,3015"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -257,27 +257,87 @@
 
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
       <?gmfgen generated="true"?>
-      <modelingAssistantProvider class="dataMapper.diagram.providers.DataMapperModelingAssistantProvider">
+      <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfDataMapperRootEditPart">
          <Priority name="Lowest"/>
          <object class="dataMapper.diagram.edit.parts.DataMapperRootEditPart" id="DataMapperRoot_1000"/>
-         <object class="dataMapper.diagram.edit.parts.DataMapperDiagramEditPart" id="DataMapperDiagram_2001"/>
-         <object class="dataMapper.diagram.edit.parts.InputEditPart" id="Input_3001"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNodeEditPart" id="TreeNode_3002"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNode2EditPart" id="TreeNode_3003"/>
-         <object class="dataMapper.diagram.edit.parts.AttributeEditPart" id="Attribute_3004"/>
-         <object class="dataMapper.diagram.edit.parts.InNodeEditPart" id="InNode_3005"/>
-         <object class="dataMapper.diagram.edit.parts.OutNodeEditPart" id="OutNode_3006"/>
-         <object class="dataMapper.diagram.edit.parts.ElementEditPart" id="Element_3007"/>
-         <object class="dataMapper.diagram.edit.parts.InNode2EditPart" id="InNode_3008"/>
-         <object class="dataMapper.diagram.edit.parts.OutNode2EditPart" id="OutNode_3009"/>
-         <object class="dataMapper.diagram.edit.parts.OutputEditPart" id="Output_3010"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNode3EditPart" id="TreeNode_3011"/>
-         <object class="dataMapper.diagram.edit.parts.OperationsEditPart" id="Operations_3012"/>
-         <object class="dataMapper.diagram.edit.parts.ConcatEditPart" id="Concat_3013"/>
-         <object class="dataMapper.diagram.edit.parts.InNode3EditPart" id="InNode_3014"/>
-         <object class="dataMapper.diagram.edit.parts.OutNode3EditPart" id="OutNode_3015"/>
-         <context elements="DataMapperRoot_1000,DataMapperDiagram_2001,Input_3001,TreeNode_3002,TreeNode_3003,Attribute_3004,InNode_3005,OutNode_3006,Element_3007,InNode_3008,OutNode_3009,Output_3010,TreeNode_3011,Operations_3012,Concat_3013,InNode_3014,OutNode_3015"/>
+         <context elements="DataMapperRoot_1000"/>
       </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInputEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.InputEditPart" id="Input_2002"/>
+         <context elements="Input_2002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutputEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OutputEditPart" id="Output_2003"/>
+         <context elements="Output_2003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperationsEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OperationsEditPart" id="Operations_2004"/>
+         <context elements="Operations_2004"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.TreeNodeEditPart" id="TreeNode_3002"/>
+         <context elements="TreeNode_3002"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.TreeNode2EditPart" id="TreeNode_3003"/>
+         <context elements="TreeNode_3003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfAttributeEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.AttributeEditPart" id="Attribute_3004"/>
+         <context elements="Attribute_3004"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.InNodeEditPart" id="InNode_3005"/>
+         <context elements="InNode_3005"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNodeEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OutNodeEditPart" id="OutNode_3006"/>
+         <context elements="OutNode_3006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfElementEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.ElementEditPart" id="Element_3007"/>
+         <context elements="Element_3007"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.InNode2EditPart" id="InNode_3008"/>
+         <context elements="InNode_3008"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNode2EditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OutNode2EditPart" id="OutNode_3009"/>
+         <context elements="OutNode_3009"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.TreeNode3EditPart" id="TreeNode_3011"/>
+         <context elements="TreeNode_3011"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfConcatEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.ConcatEditPart" id="Concat_3013"/>
+         <context elements="Concat_3013"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.InNode3EditPart" id="InNode_3014"/>
+         <context elements="InNode_3014"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OutNode3EditPart" id="OutNode_3015"/>
+         <context elements="OutNode_3015"/>
+      </modelingAssistantProvider>
+      
    </extension>
 
    <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
@@ -301,22 +361,32 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperDiagram_2001"
-               name="%metatype.name.DataMapperDiagram_2001"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Input_2002"
+               name="%metatype.name.Input_2002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="DataMapperDiagram"
-               edithelper="dataMapper.diagram.edit.helpers.DataMapperDiagramEditHelper">
-            <param name="semanticHint" value="2001"/>
+               eclass="Input"
+               edithelper="dataMapper.diagram.edit.helpers.InputEditHelper">
+            <param name="semanticHint" value="2002"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.Input_3001"
-               name="%metatype.name.Input_3001"
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Output_2003"
+               name="%metatype.name.Output_2003"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Input"
-               edithelper="dataMapper.diagram.edit.helpers.InputEditHelper">
-            <param name="semanticHint" value="3001"/>
+               eclass="Output"
+               edithelper="dataMapper.diagram.edit.helpers.OutputEditHelper">
+            <param name="semanticHint" value="2003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Operations_2004"
+               name="%metatype.name.Operations_2004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Operations"
+               edithelper="dataMapper.diagram.edit.helpers.OperationsEditHelper">
+            <param name="semanticHint" value="2004"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
@@ -397,16 +467,6 @@
          </specializationType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
-         <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.Output_3010"
-               name="%metatype.name.Output_3010"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Output"
-               edithelper="dataMapper.diagram.edit.helpers.OutputEditHelper">
-            <param name="semanticHint" value="3010"/>
-         </metamodelType>
-      </metamodel>
-      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <specializationType
                id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"
                name="%metatype.name.TreeNode_3011"
@@ -414,16 +474,6 @@
             <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
             <param name="semanticHint" value="3011"/>
          </specializationType>
-      </metamodel>
-      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
-         <metamodelType
-               id="org.wso2.developerstudio.visualdatamapper.diagram.Operations_3012"
-               name="%metatype.name.Operations_3012"
-               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Operations"
-               edithelper="dataMapper.diagram.edit.helpers.OperationsEditHelper">
-            <param name="semanticHint" value="3012"/>
-         </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
@@ -476,8 +526,9 @@
       </clientContext> 
       <binding context="org.wso2.developerstudio.visualdatamapper.diagram.TypeContext">
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperRoot_1000"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperDiagram_2001"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Input_3001"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Input_2002"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Output_2003"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Operations_2004"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3004"/>
@@ -486,9 +537,7 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Element_3007"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3009"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Output_3010"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"/>
-         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Operations_3012"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Concat_3013"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3014"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3015"/>
@@ -687,6 +736,76 @@
 			</describer>
 		</content-type>
 	</extension>
+<extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="org.wso2.developerstudio.visualdatamapper.diagram.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="dataMapper.diagram.navigator.DataMapperNavigatorContentProvider" 
+            labelProvider="dataMapper.diagram.navigator.DataMapperNavigatorLabelProvider"
+            icon="icons/obj16/DataMapperDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="datamapper_diagram"/>
+               </and>
+               <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="org.wso2.developerstudio.visualdatamapper.diagram.navigatorSorter" 
+               class="dataMapper.diagram.navigator.DataMapperNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="datamapper_diagram"/>
+                  </and>
+                  <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="org.wso2.developerstudio.visualdatamapper.diagram.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="dataMapper.diagram.navigator.DataMapperDomainNavigatorContentProvider" 
+            labelProvider="dataMapper.diagram.navigator.DataMapperDomainNavigatorLabelProvider"
+            icon="icons/obj16/DataMapperDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="datamapper"/>
+               </and>
+               <instanceof value="dataMapper.diagram.navigator.DataMapperDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="dataMapper.diagram.navigator.DataMapperDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="org.wso2.developerstudio.visualdatamapper.diagram.navigatorActionProvider"
+            class="dataMapper.diagram.navigator.DataMapperNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+
 
    <!-- optionally, specify keybindings -->
 </plugin>

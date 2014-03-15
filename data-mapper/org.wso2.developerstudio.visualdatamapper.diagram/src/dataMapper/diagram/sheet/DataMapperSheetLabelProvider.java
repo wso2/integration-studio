@@ -11,9 +11,7 @@ import org.eclipse.swt.graphics.Image;
 /**
  * @generated
  */
-public class DataMapperSheetLabelProvider extends BaseLabelProvider
-		implements
-			ILabelProvider {
+public class DataMapperSheetLabelProvider extends BaseLabelProvider implements ILabelProvider {
 
 	/**
 	 * @generated
@@ -21,8 +19,7 @@ public class DataMapperSheetLabelProvider extends BaseLabelProvider
 	public String getText(Object element) {
 		element = unwrap(element);
 		if (element instanceof dataMapper.diagram.navigator.DataMapperNavigatorGroup) {
-			return ((dataMapper.diagram.navigator.DataMapperNavigatorGroup) element)
-					.getGroupName();
+			return ((dataMapper.diagram.navigator.DataMapperNavigatorGroup) element).getGroupName();
 		}
 		IElementType etype = getElementType(getView(element));
 		return etype == null ? "" : etype.getDisplayName();
@@ -33,10 +30,8 @@ public class DataMapperSheetLabelProvider extends BaseLabelProvider
 	 */
 	public Image getImage(Object element) {
 		IElementType etype = getElementType(getView(unwrap(element)));
-		return etype == null
-				? null
-				: dataMapper.diagram.providers.DataMapperElementTypes
-						.getImage(etype);
+		return etype == null ? null : dataMapper.diagram.providers.DataMapperElementTypes
+				.getImage(etype);
 	}
 
 	/**
@@ -68,16 +63,13 @@ public class DataMapperSheetLabelProvider extends BaseLabelProvider
 	private IElementType getElementType(View view) {
 		// For intermediate views climb up the containment hierarchy to find the one associated with an element type.
 		while (view != null) {
-			int vid = dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getVisualID(view);
+			int vid = dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view);
 			IElementType etype = dataMapper.diagram.providers.DataMapperElementTypes
 					.getElementType(vid);
 			if (etype != null) {
 				return etype;
 			}
-			view = view.eContainer() instanceof View
-					? (View) view.eContainer()
-					: null;
+			view = view.eContainer() instanceof View ? (View) view.eContainer() : null;
 		}
 		return null;
 	}

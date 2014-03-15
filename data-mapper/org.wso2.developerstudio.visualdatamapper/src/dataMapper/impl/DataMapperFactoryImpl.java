@@ -37,7 +37,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public static DataMapperFactory init() {
 		try {
-			DataMapperFactory theDataMapperFactory = (DataMapperFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/wso2/developerstudio/eclipse/gmf/datamapper"); 
+			DataMapperFactory theDataMapperFactory = (DataMapperFactory)EPackage.Registry.INSTANCE.getEFactory(DataMapperPackage.eNS_URI);
 			if (theDataMapperFactory != null) {
 				return theDataMapperFactory;
 			}
@@ -102,9 +102,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public DataMapperDiagram createDataMapperDiagram() {
 		DataMapperDiagramImpl dataMapperDiagram = new DataMapperDiagramImpl();
-		dataMapperDiagram.setInput(createInput());
-		dataMapperDiagram.setOperations(createOperations());
-		dataMapperDiagram.setOutput(createOutput());
+
 		return dataMapperDiagram;
 	}
 
@@ -115,7 +113,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public DataMapperRoot createDataMapperRoot() {
 		DataMapperRootImpl dataMapperRoot = new DataMapperRootImpl();
-		dataMapperRoot.setDataMapperDiagram(createDataMapperDiagram());
+		dataMapperRoot.setInput(createInput());
+		dataMapperRoot.setOperations(createOperations());
+		dataMapperRoot.setOutput(createOutput());
 		return dataMapperRoot;
 	}
 

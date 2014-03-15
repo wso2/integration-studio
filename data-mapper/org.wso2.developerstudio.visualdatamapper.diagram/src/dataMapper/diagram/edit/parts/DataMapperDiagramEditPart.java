@@ -59,7 +59,7 @@ public class DataMapperDiagramEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
 		installEditPolicy(
@@ -67,14 +67,14 @@ public class DataMapperDiagramEditPart extends ShapeNodeEditPart {
 				new CreationEditPolicyWithCustomReparent(
 						dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
+/*		installEditPolicy(
 				EditPolicyRoles.SEMANTIC_ROLE,
-				new dataMapper.diagram.edit.policies.DataMapperDiagramItemSemanticEditPolicy());
+				new dataMapper.diagram.edit.policies.DataMapperDiagramItemSemanticEditPolicy());*/
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
 				new DragDropEditPolicy());
-		installEditPolicy(
+/*		installEditPolicy(
 				EditPolicyRoles.CANONICAL_ROLE,
-				new dataMapper.diagram.edit.policies.DataMapperDiagramCanonicalEditPolicy());
+				new dataMapper.diagram.edit.policies.DataMapperDiagramCanonicalEditPolicy());*/
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that
 		// would let children add reasonable editpolicies
@@ -146,7 +146,7 @@ public class DataMapperDiagramEditPart extends ShapeNodeEditPart {
 		ToolbarLayout layout = new ToolbarLayout();
 
 		layout.setHorizontal(true);
-		layout.setSpacing(400);
+		layout.setSpacing(200);
 		layout.setStretchMinorAxis(false); // don't resize children figures with
 
 		StackLayout sLayout = new StackLayout();

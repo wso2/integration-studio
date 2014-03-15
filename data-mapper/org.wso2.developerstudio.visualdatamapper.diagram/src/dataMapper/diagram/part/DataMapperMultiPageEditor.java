@@ -209,7 +209,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		// rootDiagram.getDataMapperDiagram().getOutput().getTreeNode().get(0).getName().split(",")[1];
 
 		ArrayList<String> functionsList = new ArrayList<String>();
-		functionsList = DataMapperConfigurationGenerator.findForAction(rootDiagram.getDataMapperDiagram().getInput().getTreeNode());
+		functionsList = DataMapperConfigurationGenerator.findForAction(rootDiagram.getInput().getTreeNode());
 
 		String allFunctions = "";
 

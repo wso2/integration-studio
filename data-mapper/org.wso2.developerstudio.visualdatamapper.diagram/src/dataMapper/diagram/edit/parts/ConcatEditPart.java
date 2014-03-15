@@ -66,26 +66,20 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.ConcatItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.ConcatCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE); //remove small rectangle nodes
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); //remove selection rectangle
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); //remove selection rectangle
 		//
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); //ballon remove
 	}
@@ -98,14 +92,12 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				View childView = (View) child.getModel();
-				switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
-						.getVisualID(childView)) {
-					case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID :
-					case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID :
-						return new BorderItemSelectionEditPolicy();
+				switch (dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(childView)) {
+				case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
+				case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
+					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -127,7 +119,7 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ConcatFigure();
+		return primaryShape = new RectangleFigure();
 	}
 
 	/**
@@ -226,35 +218,30 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 	@Override
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (childEditPart instanceof InNode3EditPart) {
-			IFigure borderItemFigure = ((InNode3EditPart) childEditPart)
-					.getFigure();
+			IFigure borderItemFigure = ((InNode3EditPart) childEditPart).getFigure();
 
 			BorderItemLocator locator;
 			if (!added) {
-				locator = new FixedBorderItemLocator(getMainFigure(),
-						borderItemFigure, PositionConstants.WEST, 0.2);
+				locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+						PositionConstants.WEST, 0.2);
 				added = true;
 			} else {
-				locator = new FixedBorderItemLocator(getMainFigure(),
-						borderItemFigure, PositionConstants.WEST, 0.8);
+				locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+						PositionConstants.WEST, 0.8);
 			}
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 
 		} else if (childEditPart instanceof OutNode3EditPart) {
-			IFigure borderItemFigure = ((OutNode3EditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			IFigure borderItemFigure = ((OutNode3EditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.EAST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 
 		} else {
 
 		}
 	}
-	
+
 	class ConcatFigure extends RectangleFigure {
 		/**
 		 * @generated NOT
@@ -268,7 +255,6 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 			layoutThis.setVertical(false);
 			this.setLayoutManager(layoutThis);
 
-
 			//setBorder(new SimpleRaisedBorder(3));
 
 			createContents();
@@ -280,10 +266,8 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 		 */
 		private void createContents() {
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(
-							"org.wso2.developerstudio.visualdatamapper.diagram",
-							"icons/gmf/concat.png");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/concat.png");
 
 			int nodeDimension = 80; // width for connection nodes
 
@@ -291,10 +275,8 @@ public class ConcatEditPart extends AbstractBorderedShapeEditPart {
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
-			mainImageRectangle
-					.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension,
-					nodeDimension));
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
 
 			mainImageRectangle.setFill(false);

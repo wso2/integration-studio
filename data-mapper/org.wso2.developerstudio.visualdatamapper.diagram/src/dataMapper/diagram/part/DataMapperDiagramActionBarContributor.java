@@ -9,9 +9,7 @@ import org.eclipse.ui.IWorkbenchPage;
 /**
  * @generated
  */
-public class DataMapperDiagramActionBarContributor
-		extends
-			DiagramActionBarContributor {
+public class DataMapperDiagramActionBarContributor extends DiagramActionBarContributor {
 
 	/**
 	 * @generated

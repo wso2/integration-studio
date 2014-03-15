@@ -13,9 +13,7 @@ import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
 /**
  * @generated
  */
-public class DataMapperLinkEditPart extends ConnectionNodeEditPart
-		implements
-			ITreeBranchEditPart {
+public class DataMapperLinkEditPart extends ConnectionNodeEditPart implements ITreeBranchEditPart {
 
 	/**
 	 * @generated
@@ -34,12 +32,10 @@ public class DataMapperLinkEditPart extends ConnectionNodeEditPart
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.DataMapperLinkItemSemanticEditPolicy());
 
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); // remove selection
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // remove selection
 
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}

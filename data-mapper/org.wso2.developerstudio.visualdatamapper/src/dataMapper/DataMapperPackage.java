@@ -85,40 +85,13 @@ public interface DataMapperPackage extends EPackage {
 	int DATA_MAPPER_DIAGRAM = 1;
 
 	/**
-	 * The feature id for the '<em><b>Input</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_MAPPER_DIAGRAM__INPUT = DATA_MAPPER_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Output</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_MAPPER_DIAGRAM__OUTPUT = DATA_MAPPER_NODE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Operations</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_MAPPER_DIAGRAM__OPERATIONS = DATA_MAPPER_NODE_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Diagram</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_DIAGRAM_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 3;
+	int DATA_MAPPER_DIAGRAM_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.DataMapperRootImpl <em>Root</em>}' class.
@@ -131,13 +104,31 @@ public interface DataMapperPackage extends EPackage {
 	int DATA_MAPPER_ROOT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Data Mapper Diagram</b></em>' containment reference.
+	 * The feature id for the '<em><b>Input</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_ROOT__DATA_MAPPER_DIAGRAM = 0;
+	int DATA_MAPPER_ROOT__INPUT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_ROOT__OUTPUT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_ROOT__OPERATIONS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Root</em>' class.
@@ -146,7 +137,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_ROOT_FEATURE_COUNT = 1;
+	int DATA_MAPPER_ROOT_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.InputImpl <em>Input</em>}' class.
@@ -655,39 +646,6 @@ public interface DataMapperPackage extends EPackage {
 	EClass getDataMapperDiagram();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dataMapper.DataMapperDiagram#getInput <em>Input</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Input</em>'.
-	 * @see dataMapper.DataMapperDiagram#getInput()
-	 * @see #getDataMapperDiagram()
-	 * @generated
-	 */
-	EReference getDataMapperDiagram_Input();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link dataMapper.DataMapperDiagram#getOutput <em>Output</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Output</em>'.
-	 * @see dataMapper.DataMapperDiagram#getOutput()
-	 * @see #getDataMapperDiagram()
-	 * @generated
-	 */
-	EReference getDataMapperDiagram_Output();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link dataMapper.DataMapperDiagram#getOperations <em>Operations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Operations</em>'.
-	 * @see dataMapper.DataMapperDiagram#getOperations()
-	 * @see #getDataMapperDiagram()
-	 * @generated
-	 */
-	EReference getDataMapperDiagram_Operations();
-
-	/**
 	 * Returns the meta object for class '{@link dataMapper.DataMapperRoot <em>Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -698,15 +656,37 @@ public interface DataMapperPackage extends EPackage {
 	EClass getDataMapperRoot();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dataMapper.DataMapperRoot#getDataMapperDiagram <em>Data Mapper Diagram</em>}'.
+	 * Returns the meta object for the containment reference '{@link dataMapper.DataMapperRoot#getInput <em>Input</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Data Mapper Diagram</em>'.
-	 * @see dataMapper.DataMapperRoot#getDataMapperDiagram()
+	 * @return the meta object for the containment reference '<em>Input</em>'.
+	 * @see dataMapper.DataMapperRoot#getInput()
 	 * @see #getDataMapperRoot()
 	 * @generated
 	 */
-	EReference getDataMapperRoot_DataMapperDiagram();
+	EReference getDataMapperRoot_Input();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link dataMapper.DataMapperRoot#getOutput <em>Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Output</em>'.
+	 * @see dataMapper.DataMapperRoot#getOutput()
+	 * @see #getDataMapperRoot()
+	 * @generated
+	 */
+	EReference getDataMapperRoot_Output();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link dataMapper.DataMapperRoot#getOperations <em>Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Operations</em>'.
+	 * @see dataMapper.DataMapperRoot#getOperations()
+	 * @see #getDataMapperRoot()
+	 * @generated
+	 */
+	EReference getDataMapperRoot_Operations();
 
 	/**
 	 * Returns the meta object for class '{@link dataMapper.Input <em>Input</em>}'.
@@ -1191,30 +1171,6 @@ public interface DataMapperPackage extends EPackage {
 		EClass DATA_MAPPER_DIAGRAM = eINSTANCE.getDataMapperDiagram();
 
 		/**
-		 * The meta object literal for the '<em><b>Input</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DATA_MAPPER_DIAGRAM__INPUT = eINSTANCE.getDataMapperDiagram_Input();
-
-		/**
-		 * The meta object literal for the '<em><b>Output</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DATA_MAPPER_DIAGRAM__OUTPUT = eINSTANCE.getDataMapperDiagram_Output();
-
-		/**
-		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DATA_MAPPER_DIAGRAM__OPERATIONS = eINSTANCE.getDataMapperDiagram_Operations();
-
-		/**
 		 * The meta object literal for the '{@link dataMapper.impl.DataMapperRootImpl <em>Root</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1225,12 +1181,28 @@ public interface DataMapperPackage extends EPackage {
 		EClass DATA_MAPPER_ROOT = eINSTANCE.getDataMapperRoot();
 
 		/**
-		 * The meta object literal for the '<em><b>Data Mapper Diagram</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Input</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_MAPPER_ROOT__DATA_MAPPER_DIAGRAM = eINSTANCE.getDataMapperRoot_DataMapperDiagram();
+		EReference DATA_MAPPER_ROOT__INPUT = eINSTANCE.getDataMapperRoot_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Output</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_ROOT__OUTPUT = eINSTANCE.getDataMapperRoot_Output();
+
+		/**
+		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_ROOT__OPERATIONS = eINSTANCE.getDataMapperRoot_Operations();
 
 		/**
 		 * The meta object literal for the '{@link dataMapper.impl.InputImpl <em>Input</em>}' class.

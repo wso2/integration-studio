@@ -21,9 +21,7 @@ import org.eclipse.ui.navigator.ICommonContentProvider;
 /**
  * @generated
  */
-public class DataMapperDomainNavigatorContentProvider
-		implements
-			ICommonContentProvider {
+public class DataMapperDomainNavigatorContentProvider implements ICommonContentProvider {
 
 	/**
 	 * @generated
@@ -60,8 +58,8 @@ public class DataMapperDomainNavigatorContentProvider
 	 */
 	public DataMapperDomainNavigatorContentProvider() {
 		myAdapterFctoryContentProvier = new AdapterFactoryContentProvider(
-				dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-						.getInstance().getItemProvidersAdapterFactory());
+				dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+						.getItemProvidersAdapterFactory());
 		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
 				.createEditingDomain();
 		myEditingDomain = (AdapterFactoryEditingDomain) editingDomain;
@@ -97,8 +95,7 @@ public class DataMapperDomainNavigatorContentProvider
 						return true;
 					}
 
-					public boolean handleResourceMoved(Resource resource,
-							final URI newURI) {
+					public boolean handleResourceMoved(Resource resource, final URI newURI) {
 						unloadAllResources();
 						asyncRefresh();
 						return true;
@@ -130,8 +127,7 @@ public class DataMapperDomainNavigatorContentProvider
 	 * @generated
 	 */
 	void unloadAllResources() {
-		for (Resource nextResource : myEditingDomain.getResourceSet()
-				.getResources()) {
+		for (Resource nextResource : myEditingDomain.getResourceSet().getResources()) {
 			nextResource.unload();
 		}
 	}
@@ -141,8 +137,7 @@ public class DataMapperDomainNavigatorContentProvider
 	 */
 	void asyncRefresh() {
 		if (myViewer != null && !myViewer.getControl().isDisposed()) {
-			myViewer.getControl().getDisplay()
-					.asyncExec(myViewerRefreshRunnable);
+			myViewer.getControl().getDisplay().asyncExec(myViewerRefreshRunnable);
 		}
 	}
 
@@ -177,13 +172,9 @@ public class DataMapperDomainNavigatorContentProvider
 	public Object[] getChildren(Object parentElement) {
 		if (parentElement instanceof IFile) {
 			IFile file = (IFile) parentElement;
-			URI fileURI = URI.createPlatformResourceURI(file.getFullPath()
-					.toString(), true);
-			Resource resource = myEditingDomain.getResourceSet().getResource(
-					fileURI, true);
-			return wrapEObjects(
-					myAdapterFctoryContentProvier.getChildren(resource),
-					parentElement);
+			URI fileURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+			Resource resource = myEditingDomain.getResourceSet().getResource(fileURI, true);
+			return wrapEObjects(myAdapterFctoryContentProvier.getChildren(resource), parentElement);
 		}
 
 		if (parentElement instanceof dataMapper.diagram.navigator.DataMapperDomainNavigatorItem) {
@@ -202,8 +193,7 @@ public class DataMapperDomainNavigatorContentProvider
 		for (int i = 0; i < objects.length; i++) {
 			if (objects[i] instanceof EObject) {
 				result.add(new dataMapper.diagram.navigator.DataMapperDomainNavigatorItem(
-						(EObject) objects[i], parentElement,
-						myAdapterFctoryContentProvier));
+						(EObject) objects[i], parentElement, myAdapterFctoryContentProvier));
 			}
 		}
 		return result.toArray();

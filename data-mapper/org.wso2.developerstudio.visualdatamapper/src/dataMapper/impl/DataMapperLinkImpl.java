@@ -128,7 +128,7 @@ public class DataMapperLinkImpl extends EObjectImpl implements DataMapperLink {
 	 */
 	public OutNode getOutNode() {
 		if (eContainerFeatureID() != DataMapperPackage.DATA_MAPPER_LINK__OUT_NODE) return null;
-		return (OutNode)eContainer();
+		return (OutNode)eInternalContainer();
 	}
 
 	/**

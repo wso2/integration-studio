@@ -112,18 +112,13 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	protected void createDefaultEditPolicies() {
 		// installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE., editPolicy)
 
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.ElementItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.ElementCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that
@@ -152,14 +147,12 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				View childView = (View) child.getModel();
-				switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
-						.getVisualID(childView)) {
-					case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID :
-					case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID :
-						return new BorderItemSelectionEditPolicy();
+				switch (dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(childView)) {
+				case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID:
+				case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID:
+					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -209,12 +202,10 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 
-		if (childEditPart instanceof InNode2EditPart
-				|| childEditPart instanceof InNodeEditPart) {
+		if (childEditPart instanceof InNode2EditPart || childEditPart instanceof InNodeEditPart) {
 
 			EditPart temp = this.getParent();
-			while ((!(temp instanceof DataMapperDiagramEditPart))
-					&& (temp != null)) {
+			while ((!(temp instanceof DataMapperDiagramEditPart)) && (temp != null)) {
 
 				if (temp instanceof InputEditPart) {
 
@@ -242,24 +233,18 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			 * Innodes for Output elements
 			 */
 			if (childEditPart instanceof InNode2EditPart) {
-				IFigure borderItemFigure = ((InNode2EditPart) childEditPart)
-						.getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(
-						getMainFigure(), borderItemFigure,
-						PositionConstants.WEST, 0.5);
-				getBorderedFigure().getBorderItemContainer().add(
-						borderItemFigure, locator);
+				IFigure borderItemFigure = ((InNode2EditPart) childEditPart).getFigure();
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.WEST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 
 			else {
-				IFigure borderItemFigure = ((InNodeEditPart) childEditPart)
-						.getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(
-						getMainFigure(), borderItemFigure,
-						PositionConstants.WEST, 0.5);
-				getBorderedFigure().getBorderItemContainer().add(
-						borderItemFigure, locator);
+				IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.WEST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 		}
@@ -268,8 +253,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				|| childEditPart instanceof OutNodeEditPart) {
 
 			EditPart temp = this.getParent();
-			while ((!(temp instanceof DataMapperDiagramEditPart))
-					&& (temp != null)) {
+			while ((!(temp instanceof DataMapperDiagramEditPart)) && (temp != null)) {
 
 				if (temp instanceof OutputEditPart) {
 					if (childEditPart instanceof OutNodeEditPart) {
@@ -296,25 +280,19 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			}
 
 			if (childEditPart instanceof OutNodeEditPart) {
-				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart)
-						.getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(
-						getMainFigure(), borderItemFigure,
-						PositionConstants.EAST, 0.5);
-				getBorderedFigure().getBorderItemContainer().add(
-						borderItemFigure, locator);
+				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.EAST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 
 			else {
 
-				IFigure borderItemFigure = ((OutNode2EditPart) childEditPart)
-						.getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(
-						getMainFigure(), borderItemFigure,
-						PositionConstants.EAST, 0.5);
-				getBorderedFigure().getBorderItemContainer().add(
-						borderItemFigure, locator);
+				IFigure borderItemFigure = ((OutNode2EditPart) childEditPart).getFigure();
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.EAST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 		}
@@ -469,13 +447,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseEntered(MouseEvent me) {
 
-					getEditDomain()
-							.getPaletteViewer()
-							.setActiveTool(
-									(ToolEntry) (((PaletteContainer) getEditDomain()
-											.getPaletteViewer()
-											.getPaletteRoot().getChildren()
-											.get(1)).getChildren().get(1)));
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(1)));
 					setOutline(true);
 
 				}
@@ -523,33 +497,29 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			figure.setOpaque(false);
 			figure.setFill(false);
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(
-							"org.wso2.developerstudio.visualdatamapper.diagram",
-							"icons/gmf/symbol_element_of.gif");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram",
+					"icons/gmf/symbol_element_of.gif");
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
 			mainImg.setSize(new Dimension(20, 8));
 
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
-			mainImageRectangle
-					.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
 			mainImageRectangle.setPreferredSize(new Dimension(20, 8));
 			mainImageRectangle.add(mainImg);
 
 			WrappingLabel fFigureFileNameFigure = new WrappingLabel(); // element nme holding rectangle
-			String name = (((Element) ((View) getModel()).getElement())
-					.getName()).split(",")[1];
-			int tabCount = Integer.parseInt((((Element) ((View) getModel())
-					.getElement()).getName()).split(",")[0]);
+			String name = (((Element) ((View) getModel()).getElement()).getName()).split(",")[1];
+			int tabCount = Integer
+					.parseInt((((Element) ((View) getModel()).getElement()).getName()).split(",")[0]);
 
 			figure.setPreferredSize((tabCount - 1) * 30, 100);
 
 			fFigureFileNameFigure.setText(name);
 			fFigureFileNameFigure.setForegroundColor(ColorConstants.black);
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 12,
-					SWT.NORMAL));
+			fFigureFileNameFigure.setFont(new Font(null, "Arial", 12, SWT.NORMAL));
 
 			figure.setOutline(false);
 			mainImageRectangle.setOutline(false);

@@ -36,8 +36,8 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 	/**
 	 * @generated
 	 */
-	public DataMapperCreationWizardPage(String pageName,
-			IStructuredSelection selection, String fileExtension) {
+	public DataMapperCreationWizardPage(String pageName, IStructuredSelection selection,
+			String fileExtension) {
 		super(pageName, selection);
 		this.fileExtension = fileExtension;
 	}
@@ -94,11 +94,11 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 			}
 		});
 		setButtonLayoutData(avroFileButton);
-		
+
 		/*
 		 * 
 		 */
-		
+
 		GridLayout layout2 = new GridLayout();
 		layout2.numColumns = 4;
 		layout2.marginHeight = 0;
@@ -140,16 +140,16 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 	 */
 	private String selectAvroFileIn() {
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
-//		dialog.setFilterExtensions(new String[]{"*.avro"});
+		//		dialog.setFilterExtensions(new String[]{"*.avro"});
 		// dialog.setFilterPath("c:\\temp");
 		String result = dialog.open();
 		avroFilePathIn = result;
 		return result;
 	}
-	
+
 	private String selectAvroFileOut() {
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
-//		dialog.setFilterExtensions(new String[]{"*.avro"});
+		//		dialog.setFilterExtensions(new String[]{"*.avro"});
 		// dialog.setFilterPath("c:\\temp");
 		String result = dialog.open();
 		avroFilePathOut = result;
@@ -192,9 +192,8 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 	 */
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		setFileName(dataMapper.diagram.part.DataMapperDiagramEditorUtil
-				.getUniqueFileName(getContainerFullPath(), getFileName(),
-						getExtension()));
+		setFileName(dataMapper.diagram.part.DataMapperDiagramEditorUtil.getUniqueFileName(
+				getContainerFullPath(), getFileName(), getExtension()));
 		setPageComplete(validatePage());
 	}
 
@@ -206,11 +205,10 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 			return false;
 		}
 		String extension = getExtension();
-		if (extension != null
-				&& !getFilePath().toString().endsWith("." + extension)) {
-			setErrorMessage(NLS
-					.bind(dataMapper.diagram.part.Messages.DataMapperCreationWizardPageExtensionError,
-							extension));
+		if (extension != null && !getFilePath().toString().endsWith("." + extension)) {
+			setErrorMessage(NLS.bind(
+					dataMapper.diagram.part.Messages.DataMapperCreationWizardPageExtensionError,
+					extension));
 			return false;
 		}
 		return true;

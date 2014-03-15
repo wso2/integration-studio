@@ -250,7 +250,7 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 */
 	public TreeNode getFieldParent() {
 		if (eContainerFeatureID() != DataMapperPackage.ELEMENT__FIELD_PARENT) return null;
-		return (TreeNode)eContainer();
+		return (TreeNode)eInternalContainer();
 	}
 
 	/**

@@ -250,7 +250,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	 */
 	public TreeNode getFieldParent() {
 		if (eContainerFeatureID() != DataMapperPackage.ATTRIBUTE__FIELD_PARENT) return null;
-		return (TreeNode)eContainer();
+		return (TreeNode)eInternalContainer();
 	}
 
 	/**

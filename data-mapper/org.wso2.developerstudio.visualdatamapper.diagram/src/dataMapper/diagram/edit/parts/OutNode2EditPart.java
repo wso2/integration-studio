@@ -77,17 +77,14 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				getPrimaryDragEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.OutNode2ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); // remove selection
-														// rectangle
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // remove selection
+																								// rectangle
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
@@ -98,8 +95,7 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -228,46 +224,6 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 		}
 	}
 
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnSource() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(
-			IGraphicalEditPart targetEditPart) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNodeEditPart) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode2EditPart) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode3EditPart) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3005);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3008);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3014);
-		}
-		return types;
-	}
-
 	class OutNode2Figure extends RectangleFigure {
 		/**
 		 * @generated NOT
@@ -305,13 +261,9 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 				@Override
 				public void mouseEntered(MouseEvent me) {
 
-					getEditDomain()
-							.getPaletteViewer()
-							.setActiveTool(
-									(ToolEntry) (((PaletteContainer) getEditDomain()
-											.getPaletteViewer()
-											.getPaletteRoot().getChildren()
-											.get(1)).getChildren().get(1)));
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(1)));
 
 				}
 
@@ -344,10 +296,8 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 			 * return idata; } };
 			 */
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(
-							"org.wso2.developerstudio.visualdatamapper.diagram",
-							"icons/gmf/black.jpg");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
 
 			int nodeDimension = 10; // width for connection nodes
 
@@ -356,10 +306,8 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 			mainImageRectangle.setOutline(false);
-			mainImageRectangle
-					.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension,
-					nodeDimension));
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
 
 			mainImageRectangle.setFill(false);

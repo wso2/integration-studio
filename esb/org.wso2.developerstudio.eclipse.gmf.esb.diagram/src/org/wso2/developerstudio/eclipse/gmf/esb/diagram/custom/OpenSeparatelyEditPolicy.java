@@ -67,10 +67,8 @@ public class OpenSeparatelyEditPolicy extends OpenEditPolicy {
 			
 		}else if (getTargetEditPart(request) instanceof DataMapperMediatorEditPart) {
 
-			//((DataMapperMediatorEditPart)getTargetEditPart(request)).createDialogBox();
-			//openWizard("dataMapper.diagram.part.DataMapperCreationWizardID");
-		 	//DataMapperConfigDialog dmcd = new DataMapperConfigDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell());
-		 	//dmcd.open();
+			((DataMapperMediatorEditPart)getTargetEditPart(request)).openDataMapperDiagram();
+
 		}
 		return  null;
 	}

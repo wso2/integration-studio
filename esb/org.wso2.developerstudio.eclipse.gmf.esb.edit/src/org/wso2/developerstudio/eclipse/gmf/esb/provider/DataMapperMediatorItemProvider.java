@@ -17,13 +17,14 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -33,10 +34,15 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator} object.
@@ -91,7 +97,7 @@ public class DataMapperMediatorItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addConfigurationPropertyDescriptor(Object object) {
+	protected void addConfigurationPropertyDescriptor0(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -105,6 +111,40 @@ public class DataMapperMediatorItemProvider
 				 null,
 				 null,
 				 null));
+	}
+	
+	protected void addConfigurationPropertyDescriptor(Object object) {		
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_configuration_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_configuration_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null){
+					@Override
+					public void setPropertyValue(Object object, Object value) {
+						// TODO Auto-generated method stub
+						if (value instanceof RegistryKeyPropertyImpl){
+							String localPath = ((RegistryKeyPropertyImpl)value).getLocalPathOfRegistryKey();
+							DataMapperMediatorImpl datamapperMediator = (DataMapperMediatorImpl)object;
+						
+							//SetCommand setCommand = new SetCommand(domain, owner, feature, value);
+							//datamapperMediator.setConfigurationLocalPath(localPath);
+							EditingDomain editingDomain = getEditingDomain(object);
+							SetCommand setCmd = new SetCommand(editingDomain, datamapperMediator, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
+							if (setCmd.canExecute()) {
+								editingDomain.getCommandStack().execute(setCmd);
+							}
+						}
+					}
+				
+			});		
 	}
 
 	/**

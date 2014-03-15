@@ -216,33 +216,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataMapperDiagram_Input() {
-		return (EReference)dataMapperDiagramEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDataMapperDiagram_Output() {
-		return (EReference)dataMapperDiagramEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDataMapperDiagram_Operations() {
-		return (EReference)dataMapperDiagramEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDataMapperRoot() {
 		return dataMapperRootEClass;
 	}
@@ -252,8 +225,26 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataMapperRoot_DataMapperDiagram() {
+	public EReference getDataMapperRoot_Input() {
 		return (EReference)dataMapperRootEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataMapperRoot_Output() {
+		return (EReference)dataMapperRootEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataMapperRoot_Operations() {
+		return (EReference)dataMapperRootEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -656,12 +647,11 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		dataMapperNodeEClass = createEClass(DATA_MAPPER_NODE);
 
 		dataMapperDiagramEClass = createEClass(DATA_MAPPER_DIAGRAM);
-		createEReference(dataMapperDiagramEClass, DATA_MAPPER_DIAGRAM__INPUT);
-		createEReference(dataMapperDiagramEClass, DATA_MAPPER_DIAGRAM__OUTPUT);
-		createEReference(dataMapperDiagramEClass, DATA_MAPPER_DIAGRAM__OPERATIONS);
 
 		dataMapperRootEClass = createEClass(DATA_MAPPER_ROOT);
-		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__DATA_MAPPER_DIAGRAM);
+		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__INPUT);
+		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OUTPUT);
+		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OPERATIONS);
 
 		inputEClass = createEClass(INPUT);
 		createEReference(inputEClass, INPUT__TREE_NODE);
@@ -754,12 +744,11 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataMapperDiagramEClass, DataMapperDiagram.class, "DataMapperDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataMapperDiagram_Input(), this.getInput(), null, "input", null, 0, 1, DataMapperDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataMapperDiagram_Output(), this.getOutput(), null, "output", null, 0, 1, DataMapperDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataMapperDiagram_Operations(), this.getOperations(), null, "operations", null, 0, 1, DataMapperDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataMapperRootEClass, DataMapperRoot.class, "DataMapperRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataMapperRoot_DataMapperDiagram(), this.getDataMapperDiagram(), null, "dataMapperDiagram", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperRoot_Input(), this.getInput(), null, "input", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperRoot_Output(), this.getOutput(), null, "output", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperRoot_Operations(), this.getOperations(), null, "operations", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInput_TreeNode(), this.getTreeNode(), this.getTreeNode_InputParent(), "treeNode", null, 0, -1, Input.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

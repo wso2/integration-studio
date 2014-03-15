@@ -6,9 +6,8 @@ import java.util.LinkedList;
 /**
  * @generated
  */
-public class DataMapperNavigatorGroup
-		extends
-			dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem {
+public class DataMapperNavigatorGroup extends
+		dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem {
 
 	/**
 	 * @generated

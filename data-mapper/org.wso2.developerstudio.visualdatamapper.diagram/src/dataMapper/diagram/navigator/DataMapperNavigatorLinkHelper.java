@@ -34,8 +34,7 @@ public class DataMapperNavigatorLinkHelper implements ILinkHelper {
 		Resource diagramResource = diagram.eResource();
 		for (EObject nextEObject : diagramResource.getContents()) {
 			if (nextEObject == diagram) {
-				return new FileEditorInput(
-						WorkspaceSynchronizer.getFile(diagramResource));
+				return new FileEditorInput(WorkspaceSynchronizer.getFile(diagramResource));
 			}
 			if (nextEObject instanceof Diagram) {
 				break;
@@ -53,8 +52,7 @@ public class DataMapperNavigatorLinkHelper implements ILinkHelper {
 	 */
 	public IStructuredSelection findSelection(IEditorInput anInput) {
 		IDiagramDocument document = dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-				.getInstance().getDocumentProvider()
-				.getDiagramDocument(anInput);
+				.getInstance().getDocumentProvider().getDiagramDocument(anInput);
 		if (document == null) {
 			return StructuredSelection.EMPTY;
 		}
@@ -74,8 +72,7 @@ public class DataMapperNavigatorLinkHelper implements ILinkHelper {
 	/**
 	 * @generated
 	 */
-	public void activateEditor(IWorkbenchPage aPage,
-			IStructuredSelection aSelection) {
+	public void activateEditor(IWorkbenchPage aPage, IStructuredSelection aSelection) {
 		if (aSelection == null || aSelection.isEmpty()) {
 			return;
 		}
@@ -107,8 +104,8 @@ public class DataMapperNavigatorLinkHelper implements ILinkHelper {
 		aPage.bringToTop(editor);
 		if (editor instanceof DiagramEditor) {
 			DiagramEditor diagramEditor = (DiagramEditor) editor;
-			ResourceSet diagramEditorResourceSet = diagramEditor
-					.getEditingDomain().getResourceSet();
+			ResourceSet diagramEditorResourceSet = diagramEditor.getEditingDomain()
+					.getResourceSet();
 			EObject selectedView = diagramEditorResourceSet.getEObject(
 					EcoreUtil.getURI(navigatorView), true);
 			if (selectedView == null) {
@@ -116,8 +113,8 @@ public class DataMapperNavigatorLinkHelper implements ILinkHelper {
 			}
 			GraphicalViewer graphicalViewer = (GraphicalViewer) diagramEditor
 					.getAdapter(GraphicalViewer.class);
-			EditPart selectedEditPart = (EditPart) graphicalViewer
-					.getEditPartRegistry().get(selectedView);
+			EditPart selectedEditPart = (EditPart) graphicalViewer.getEditPartRegistry().get(
+					selectedView);
 			if (selectedEditPart != null) {
 				graphicalViewer.select(selectedEditPart);
 			}

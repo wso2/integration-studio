@@ -11,7 +11,7 @@ public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage 
 	 * @generated
 	 */
 	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-				.getInstance().getPreferenceStore());
+		setPreferenceStore(dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

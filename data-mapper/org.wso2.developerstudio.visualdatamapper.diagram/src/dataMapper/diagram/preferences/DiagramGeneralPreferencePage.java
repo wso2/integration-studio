@@ -11,7 +11,7 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
 	 * @generated
 	 */
 	public DiagramGeneralPreferencePage() {
-		setPreferenceStore(dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-				.getInstance().getPreferenceStore());
+		setPreferenceStore(dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

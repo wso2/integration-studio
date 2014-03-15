@@ -26,9 +26,7 @@ import org.eclipse.ui.navigator.ICommonContentProvider;
 /**
  * @generated
  */
-public class DataMapperNavigatorContentProvider
-		implements
-			ICommonContentProvider {
+public class DataMapperNavigatorContentProvider implements ICommonContentProvider {
 
 	/**
 	 * @generated
@@ -58,7 +56,7 @@ public class DataMapperNavigatorContentProvider
 	/**
 	 * @generated
 	 */
-	@SuppressWarnings({"unchecked", "serial", "rawtypes"})
+	@SuppressWarnings({ "unchecked", "serial", "rawtypes" })
 	public DataMapperNavigatorContentProvider() {
 		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
 				.createEditingDomain();
@@ -95,8 +93,7 @@ public class DataMapperNavigatorContentProvider
 						return true;
 					}
 
-					public boolean handleResourceMoved(Resource resource,
-							final URI newURI) {
+					public boolean handleResourceMoved(Resource resource, final URI newURI) {
 						unloadAllResources();
 						asyncRefresh();
 						return true;
@@ -128,8 +125,7 @@ public class DataMapperNavigatorContentProvider
 	 * @generated
 	 */
 	void unloadAllResources() {
-		for (Resource nextResource : myEditingDomain.getResourceSet()
-				.getResources()) {
+		for (Resource nextResource : myEditingDomain.getResourceSet().getResources()) {
 			nextResource.unload();
 		}
 	}
@@ -139,8 +135,7 @@ public class DataMapperNavigatorContentProvider
 	 */
 	void asyncRefresh() {
 		if (myViewer != null && !myViewer.getControl().isDisposed()) {
-			myViewer.getControl().getDisplay()
-					.asyncExec(myViewerRefreshRunnable);
+			myViewer.getControl().getDisplay().asyncExec(myViewerRefreshRunnable);
 		}
 	}
 
@@ -175,23 +170,19 @@ public class DataMapperNavigatorContentProvider
 	public Object[] getChildren(Object parentElement) {
 		if (parentElement instanceof IFile) {
 			IFile file = (IFile) parentElement;
-			URI fileURI = URI.createPlatformResourceURI(file.getFullPath()
-					.toString(), true);
-			Resource resource = myEditingDomain.getResourceSet().getResource(
-					fileURI, true);
+			URI fileURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+			Resource resource = myEditingDomain.getResourceSet().getResource(fileURI, true);
 			ArrayList<dataMapper.diagram.navigator.DataMapperNavigatorItem> result = new ArrayList<dataMapper.diagram.navigator.DataMapperNavigatorItem>();
-			ArrayList<View> topViews = new ArrayList<View>(resource
-					.getContents().size());
+			ArrayList<View> topViews = new ArrayList<View>(resource.getContents().size());
 			for (EObject o : resource.getContents()) {
 				if (o instanceof View) {
 					topViews.add((View) o);
 				}
 			}
 			result.addAll(createNavigatorItems(
-					selectViewsByType(
-							topViews,
-							dataMapper.diagram.edit.parts.DataMapperRootEditPart.MODEL_ID),
-					file, false));
+					selectViewsByType(topViews,
+							dataMapper.diagram.edit.parts.DataMapperRootEditPart.MODEL_ID), file,
+					false));
 			return result.toArray();
 		}
 
@@ -215,398 +206,323 @@ public class DataMapperNavigatorContentProvider
 	 * @generated
 	 */
 	private Object[] getViewChildren(View view, Object parentElement) {
-		switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
-				.getVisualID(view)) {
+		switch (dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view)) {
 
-			case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup incominglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_InNode_3008_incominglinks,
-						"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				Collection<View> connectedViews;
-				connectedViews = getIncomingLinksByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
-				incominglinks.addChildren(createNavigatorItems(connectedViews,
-						incominglinks, true));
-				if (!incominglinks.isEmpty()) {
-					result.add(incominglinks);
-				}
-				return result.toArray();
+		case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Diagram sv = (Diagram) view;
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup links = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_DataMapperRoot_1000_links,
+					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getDiagramLinksByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			if (!links.isEmpty()) {
+				result.add(links);
 			}
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup outgoinglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_OutNode_3015_outgoinglinks,
-						"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				Collection<View> connectedViews;
-				connectedViews = getOutgoingLinksByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
-				outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-						outgoinglinks, true));
-				if (!outgoinglinks.isEmpty()) {
-					result.add(outgoinglinks);
-				}
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Diagram sv = (Diagram) view;
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup links = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_DataMapperRoot_1000_links,
-						"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getDiagramLinksByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
-				links.addChildren(createNavigatorItems(connectedViews, links,
-						false));
-				if (!links.isEmpty()) {
-					result.add(links);
-				}
-				return result.toArray();
+		case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup incominglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_InNode_3005_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
 			}
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup outgoinglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_OutNode_3009_outgoinglinks,
-						"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				Collection<View> connectedViews;
-				connectedViews = getOutgoingLinksByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
-				outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-						outgoinglinks, true));
-				if (!outgoinglinks.isEmpty()) {
-					result.add(outgoinglinks);
-				}
-				return result.toArray();
+		case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup outgoinglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_OutNode_3006_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
 			}
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Edge sv = (Edge) view;
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup target = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_DataMapperLink_4001_target,
-						"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup source = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_DataMapperLink_4001_source,
-						"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				Collection<View> connectedViews;
-				connectedViews = getLinksTargetByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID));
-				target.addChildren(createNavigatorItems(connectedViews, target,
-						true));
-				connectedViews = getLinksTargetByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID));
-				target.addChildren(createNavigatorItems(connectedViews, target,
-						true));
-				connectedViews = getLinksTargetByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID));
-				target.addChildren(createNavigatorItems(connectedViews, target,
-						true));
-				connectedViews = getLinksSourceByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID));
-				source.addChildren(createNavigatorItems(connectedViews, source,
-						true));
-				connectedViews = getLinksSourceByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID));
-				source.addChildren(createNavigatorItems(connectedViews, source,
-						true));
-				connectedViews = getLinksSourceByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID));
-				source.addChildren(createNavigatorItems(connectedViews, source,
-						true));
-				if (!target.isEmpty()) {
-					result.add(target);
-				}
-				if (!source.isEmpty()) {
-					result.add(source);
-				}
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
+		case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup incominglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_InNode_3008_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
 			}
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup outgoinglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_OutNode_3006_outgoinglinks,
-						"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				Collection<View> connectedViews;
-				connectedViews = getOutgoingLinksByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
-				outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-						outgoinglinks, true));
-				if (!outgoinglinks.isEmpty()) {
-					result.add(outgoinglinks);
-				}
-				return result.toArray();
+		case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup outgoinglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_OutNode_3009_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
 			}
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
-			}
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup incominglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_InNode_3014_incominglinks,
-						"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				Collection<View> connectedViews;
-				connectedViews = getIncomingLinksByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
-				incominglinks.addChildren(createNavigatorItems(connectedViews,
-						incominglinks, true));
-				if (!incominglinks.isEmpty()) {
-					result.add(incominglinks);
-				}
-				return result.toArray();
+		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup incominglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_InNode_3014_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews, incominglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
 			}
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.AttributeEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
+		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup outgoinglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_OutNode_3015_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews, outgoinglinks, true));
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
 			}
+			return result.toArray();
+		}
 
-			case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				dataMapper.diagram.navigator.DataMapperNavigatorGroup incominglinks = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
-						dataMapper.diagram.part.Messages.NavigatorGroupName_InNode_3005_incominglinks,
-						"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-				Collection<View> connectedViews;
-				connectedViews = getIncomingLinksByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID));
-				incominglinks.addChildren(createNavigatorItems(connectedViews,
-						incominglinks, true));
-				if (!incominglinks.isEmpty()) {
-					result.add(incominglinks);
-				}
-				return result.toArray();
+		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Edge sv = (Edge) view;
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup target = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_DataMapperLink_4001_target,
+					"icons/linkTargetNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			dataMapper.diagram.navigator.DataMapperNavigatorGroup source = new dataMapper.diagram.navigator.DataMapperNavigatorGroup(
+					dataMapper.diagram.part.Messages.NavigatorGroupName_DataMapperLink_4001_source,
+					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target, true));
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target, true));
+			connectedViews = getLinksTargetByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID));
+			target.addChildren(createNavigatorItems(connectedViews, target, true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source, true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source, true));
+			connectedViews = getLinksSourceByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID));
+			source.addChildren(createNavigatorItems(connectedViews, source, true));
+			if (!target.isEmpty()) {
+				result.add(target);
 			}
-
-			case dataMapper.diagram.edit.parts.DataMapperDiagramEditPart.VISUAL_ID : {
-				LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
-				Node sv = (Node) view;
-				Collection<View> connectedViews;
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				connectedViews = getChildrenByType(
-						Collections.singleton(sv),
-						dataMapper.diagram.part.DataMapperVisualIDRegistry
-								.getType(dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID));
-				result.addAll(createNavigatorItems(connectedViews,
-						parentElement, false));
-				return result.toArray();
+			if (!source.isEmpty()) {
+				result.add(source);
 			}
+			return result.toArray();
+		}
 		}
 		return EMPTY_ARRAY;
 	}
@@ -614,13 +530,11 @@ public class DataMapperNavigatorContentProvider
 	/**
 	 * @generated
 	 */
-	private Collection<View> getLinksSourceByType(Collection<Edge> edges,
-			String type) {
+	private Collection<View> getLinksSourceByType(Collection<Edge> edges, String type) {
 		LinkedList<View> result = new LinkedList<View>();
 		for (Edge nextEdge : edges) {
 			View nextEdgeSource = nextEdge.getSource();
-			if (type.equals(nextEdgeSource.getType())
-					&& isOwnView(nextEdgeSource)) {
+			if (type.equals(nextEdgeSource.getType()) && isOwnView(nextEdgeSource)) {
 				result.add(nextEdgeSource);
 			}
 		}
@@ -630,13 +544,11 @@ public class DataMapperNavigatorContentProvider
 	/**
 	 * @generated
 	 */
-	private Collection<View> getLinksTargetByType(Collection<Edge> edges,
-			String type) {
+	private Collection<View> getLinksTargetByType(Collection<Edge> edges, String type) {
 		LinkedList<View> result = new LinkedList<View>();
 		for (Edge nextEdge : edges) {
 			View nextEdgeTarget = nextEdge.getTarget();
-			if (type.equals(nextEdgeTarget.getType())
-					&& isOwnView(nextEdgeTarget)) {
+			if (type.equals(nextEdgeTarget.getType()) && isOwnView(nextEdgeTarget)) {
 				result.add(nextEdgeTarget);
 			}
 		}
@@ -646,8 +558,7 @@ public class DataMapperNavigatorContentProvider
 	/**
 	 * @generated
 	 */
-	private Collection<View> getOutgoingLinksByType(
-			Collection<? extends View> nodes, String type) {
+	private Collection<View> getOutgoingLinksByType(Collection<? extends View> nodes, String type) {
 		LinkedList<View> result = new LinkedList<View>();
 		for (View nextNode : nodes) {
 			result.addAll(selectViewsByType(nextNode.getSourceEdges(), type));
@@ -658,8 +569,7 @@ public class DataMapperNavigatorContentProvider
 	/**
 	 * @generated
 	 */
-	private Collection<View> getIncomingLinksByType(
-			Collection<? extends View> nodes, String type) {
+	private Collection<View> getIncomingLinksByType(Collection<? extends View> nodes, String type) {
 		LinkedList<View> result = new LinkedList<View>();
 		for (View nextNode : nodes) {
 			result.addAll(selectViewsByType(nextNode.getTargetEdges(), type));
@@ -670,8 +580,7 @@ public class DataMapperNavigatorContentProvider
 	/**
 	 * @generated
 	 */
-	private Collection<View> getChildrenByType(
-			Collection<? extends View> nodes, String type) {
+	private Collection<View> getChildrenByType(Collection<? extends View> nodes, String type) {
 		LinkedList<View> result = new LinkedList<View>();
 		for (View nextNode : nodes) {
 			result.addAll(selectViewsByType(nextNode.getChildren(), type));
@@ -682,8 +591,7 @@ public class DataMapperNavigatorContentProvider
 	/**
 	 * @generated
 	 */
-	private Collection<View> getDiagramLinksByType(
-			Collection<Diagram> diagrams, String type) {
+	private Collection<View> getDiagramLinksByType(Collection<Diagram> diagrams, String type) {
 		ArrayList<View> result = new ArrayList<View>();
 		for (Diagram nextDiagram : diagrams) {
 			result.addAll(selectViewsByType(nextDiagram.getEdges(), type));
@@ -695,8 +603,7 @@ public class DataMapperNavigatorContentProvider
 	/**
 	 * @generated
 	 */
-	private Collection<View> selectViewsByType(Collection<View> views,
-			String type) {
+	private Collection<View> selectViewsByType(Collection<View> views, String type) {
 		ArrayList<View> result = new ArrayList<View>();
 		for (View nextView : views) {
 			if (type.equals(nextView.getType()) && isOwnView(nextView)) {
@@ -711,8 +618,7 @@ public class DataMapperNavigatorContentProvider
 	 */
 	private boolean isOwnView(View view) {
 		return dataMapper.diagram.edit.parts.DataMapperRootEditPart.MODEL_ID
-				.equals(dataMapper.diagram.part.DataMapperVisualIDRegistry
-						.getModelID(view));
+				.equals(dataMapper.diagram.part.DataMapperVisualIDRegistry.getModelID(view));
 	}
 
 	/**
@@ -723,8 +629,8 @@ public class DataMapperNavigatorContentProvider
 		ArrayList<dataMapper.diagram.navigator.DataMapperNavigatorItem> result = new ArrayList<dataMapper.diagram.navigator.DataMapperNavigatorItem>(
 				views.size());
 		for (View nextView : views) {
-			result.add(new dataMapper.diagram.navigator.DataMapperNavigatorItem(
-					nextView, parent, isLeafs));
+			result.add(new dataMapper.diagram.navigator.DataMapperNavigatorItem(nextView, parent,
+					isLeafs));
 		}
 		return result;
 	}

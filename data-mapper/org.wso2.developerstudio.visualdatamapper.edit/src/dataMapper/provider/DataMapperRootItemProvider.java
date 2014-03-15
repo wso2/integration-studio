@@ -77,7 +77,9 @@ public class DataMapperRootItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__DATA_MAPPER_DIAGRAM);
+			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__INPUT);
+			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OUTPUT);
+			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -129,7 +131,9 @@ public class DataMapperRootItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DataMapperRoot.class)) {
-			case DataMapperPackage.DATA_MAPPER_ROOT__DATA_MAPPER_DIAGRAM:
+			case DataMapperPackage.DATA_MAPPER_ROOT__INPUT:
+			case DataMapperPackage.DATA_MAPPER_ROOT__OUTPUT:
+			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -149,8 +153,18 @@ public class DataMapperRootItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__DATA_MAPPER_DIAGRAM,
-				 DataMapperFactory.eINSTANCE.createDataMapperDiagram()));
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__INPUT,
+				 DataMapperFactory.eINSTANCE.createInput()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OUTPUT,
+				 DataMapperFactory.eINSTANCE.createOutput()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
+				 DataMapperFactory.eINSTANCE.createOperations()));
 	}
 
 	/**

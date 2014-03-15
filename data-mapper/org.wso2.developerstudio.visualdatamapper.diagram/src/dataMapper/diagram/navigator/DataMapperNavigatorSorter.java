@@ -18,8 +18,7 @@ public class DataMapperNavigatorSorter extends ViewerSorter {
 	public int category(Object element) {
 		if (element instanceof dataMapper.diagram.navigator.DataMapperNavigatorItem) {
 			dataMapper.diagram.navigator.DataMapperNavigatorItem item = (dataMapper.diagram.navigator.DataMapperNavigatorItem) element;
-			return dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getVisualID(item.getView());
+			return dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(item.getView());
 		}
 		return GROUP_CATEGORY;
 	}

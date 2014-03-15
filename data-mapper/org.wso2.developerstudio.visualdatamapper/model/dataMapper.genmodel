@@ -6,13 +6,11 @@
   <foreignModel>dataMapper.ecore</foreignModel>
   <genPackages prefix="DataMapper" disposableProviderFactory="true" ecorePackage="dataMapper.ecore#/">
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperNode"/>
-    <genClasses ecoreClass="dataMapper.ecore#//DataMapperDiagram">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperDiagram/input"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperDiagram/output"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperDiagram/operations"/>
-    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//DataMapperDiagram"/>
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperRoot">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/dataMapperDiagram"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/input"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/output"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/operations"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Input">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Input/treeNode"/>

@@ -24,211 +24,20 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 /**
  * @generated
  */
-public class DataMapperModelingAssistantProvider
-		extends
-			ModelingAssistantProvider {
+public class DataMapperModelingAssistantProvider extends ModelingAssistantProvider {
 
 	/**
 	 * @generated
 	 */
-	public List getTypesForPopupBar(IAdaptable host) {
-		IGraphicalEditPart editPart = (IGraphicalEditPart) host
-				.getAdapter(IGraphicalEditPart.class);
-		if (editPart instanceof dataMapper.diagram.edit.parts.DataMapperRootEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperDiagram_2001);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.DataMapperDiagramEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Input_3001);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Output_3010);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Operations_3012);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.InputEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3002);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.TreeNodeEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3003);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3004);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Element_3007);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.TreeNode2EditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3003);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3004);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Element_3007);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.AttributeEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3005);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.ElementEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3008);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3009);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.OutputEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3011);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.TreeNode3EditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3003);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Attribute_3004);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Element_3007);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.OperationsEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.Concat_3013);
-			return types;
-		}
-		if (editPart instanceof dataMapper.diagram.edit.parts.ConcatEditPart) {
-			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3014);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3015);
-			return types;
-		}
-		return Collections.EMPTY_LIST;
+	public EObject selectExistingElementForSource(IAdaptable target, IElementType relationshipType) {
+		return selectExistingElement(target, getTypesForSource(target, relationshipType));
 	}
 
 	/**
 	 * @generated
 	 */
-	public List getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNodeEditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNodeEditPart) sourceEditPart)
-					.getMARelTypesOnSource();
-		}
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNode2EditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNode2EditPart) sourceEditPart)
-					.getMARelTypesOnSource();
-		}
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNode3EditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNode3EditPart) sourceEditPart)
-					.getMARelTypesOnSource();
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnTarget(IAdaptable target) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNodeEditPart) {
-			return ((dataMapper.diagram.edit.parts.InNodeEditPart) targetEditPart)
-					.getMARelTypesOnTarget();
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode2EditPart) {
-			return ((dataMapper.diagram.edit.parts.InNode2EditPart) targetEditPart)
-					.getMARelTypesOnTarget();
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode3EditPart) {
-			return ((dataMapper.diagram.edit.parts.InNode3EditPart) targetEditPart)
-					.getMARelTypesOnTarget();
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getRelTypesOnSourceAndTarget(IAdaptable source,
-			IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNodeEditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNodeEditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNode2EditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNode2EditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNode3EditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNode3EditPart) sourceEditPart)
-					.getMARelTypesOnSourceAndTarget(targetEditPart);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForSource(IAdaptable target,
-			IElementType relationshipType) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNodeEditPart) {
-			return ((dataMapper.diagram.edit.parts.InNodeEditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode2EditPart) {
-			return ((dataMapper.diagram.edit.parts.InNode2EditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode3EditPart) {
-			return ((dataMapper.diagram.edit.parts.InNode3EditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List getTypesForTarget(IAdaptable source,
-			IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNodeEditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNodeEditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNode2EditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNode2EditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		if (sourceEditPart instanceof dataMapper.diagram.edit.parts.OutNode3EditPart) {
-			return ((dataMapper.diagram.edit.parts.OutNode3EditPart) sourceEditPart)
-					.getMATypesForTarget(relationshipType);
-		}
-		return Collections.EMPTY_LIST;
-	}
-
-	/**
-	 * @generated
-	 */
-	public EObject selectExistingElementForSource(IAdaptable target,
-			IElementType relationshipType) {
-		return selectExistingElement(target,
-				getTypesForSource(target, relationshipType));
-	}
-
-	/**
-	 * @generated
-	 */
-	public EObject selectExistingElementForTarget(IAdaptable source,
-			IElementType relationshipType) {
-		return selectExistingElement(source,
-				getTypesForTarget(source, relationshipType));
+	public EObject selectExistingElementForTarget(IAdaptable source, IElementType relationshipType) {
+		return selectExistingElement(source, getTypesForTarget(source, relationshipType));
 	}
 
 	/**
@@ -245,8 +54,7 @@ public class DataMapperModelingAssistantProvider
 		}
 		Diagram diagram = (Diagram) editPart.getRoot().getContents().getModel();
 		HashSet<EObject> elements = new HashSet<EObject>();
-		for (Iterator<EObject> it = diagram.getElement().eAllContents(); it
-				.hasNext();) {
+		for (Iterator<EObject> it = diagram.getElement().eAllContents(); it.hasNext();) {
 			EObject element = it.next();
 			if (isApplicableElement(element, types)) {
 				elements.add(element);
@@ -255,16 +63,14 @@ public class DataMapperModelingAssistantProvider
 		if (elements.isEmpty()) {
 			return null;
 		}
-		return selectElement((EObject[]) elements.toArray(new EObject[elements
-				.size()]));
+		return selectElement((EObject[]) elements.toArray(new EObject[elements.size()]));
 	}
 
 	/**
 	 * @generated
 	 */
 	protected boolean isApplicableElement(EObject element, Collection types) {
-		IElementType type = ElementTypeRegistry.getInstance().getElementType(
-				element);
+		IElementType type = ElementTypeRegistry.getInstance().getElementType(element);
 		return types.contains(type);
 	}
 
@@ -274,10 +80,9 @@ public class DataMapperModelingAssistantProvider
 	protected EObject selectElement(EObject[] elements) {
 		Shell shell = Display.getCurrent().getActiveShell();
 		ILabelProvider labelProvider = new AdapterFactoryLabelProvider(
-				dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-						.getInstance().getItemProvidersAdapterFactory());
-		ElementListSelectionDialog dialog = new ElementListSelectionDialog(
-				shell, labelProvider);
+				dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+						.getItemProvidersAdapterFactory());
+		ElementListSelectionDialog dialog = new ElementListSelectionDialog(shell, labelProvider);
 		dialog.setMessage(dataMapper.diagram.part.Messages.DataMapperModelingAssistantProviderMessage);
 		dialog.setTitle(dataMapper.diagram.part.Messages.DataMapperModelingAssistantProviderTitle);
 		dialog.setMultipleSelection(false);

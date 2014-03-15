@@ -53,7 +53,7 @@ public class InputCanonicalEditPolicy extends CanonicalEditPolicy {
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getInput_3001SemanticChildren(viewObject);
+				.getInput_2002SemanticChildren(viewObject);
 		for (dataMapper.diagram.part.DataMapperNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -63,10 +63,8 @@ public class InputCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren,
-			final View view) {
-		return isMyDiagramElement(view)
-				&& !semanticChildren.contains(view.getElement());
+	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
+		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
 	}
 
 	/**
@@ -86,7 +84,7 @@ public class InputCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<dataMapper.diagram.part.DataMapperNodeDescriptor> childDescriptors = dataMapper.diagram.part.DataMapperDiagramUpdater
-				.getInput_3001SemanticChildren((View) getHost().getModel());
+				.getInput_2002SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
@@ -102,10 +100,9 @@ public class InputCanonicalEditPolicy extends CanonicalEditPolicy {
 		// to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
 		for (Iterator<dataMapper.diagram.part.DataMapperNodeDescriptor> descriptorsIterator = childDescriptors
 				.iterator(); descriptorsIterator.hasNext();) {
-			dataMapper.diagram.part.DataMapperNodeDescriptor next = descriptorsIterator
-					.next();
-			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getType(next.getVisualID());
+			dataMapper.diagram.part.DataMapperNodeDescriptor next = descriptorsIterator.next();
+			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry.getType(next
+					.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
 			for (View childView : getViewChildren()) {
 				EObject semanticElement = childView.getElement();
@@ -131,13 +128,12 @@ public class InputCanonicalEditPolicy extends CanonicalEditPolicy {
 		ArrayList<CreateViewRequest.ViewDescriptor> viewDescriptors = new ArrayList<CreateViewRequest.ViewDescriptor>(
 				childDescriptors.size());
 		for (dataMapper.diagram.part.DataMapperNodeDescriptor next : childDescriptors) {
-			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getType(next.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(
-					next.getModelElement(), hint);
+			String hint = dataMapper.diagram.part.DataMapperVisualIDRegistry.getType(next
+					.getVisualID());
+			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
 			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
-					host().getDiagramPreferencesHint());
+					elementAdapter, Node.class, hint, ViewUtil.APPEND, false, host()
+							.getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -146,8 +142,8 @@ public class InputCanonicalEditPolicy extends CanonicalEditPolicy {
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(
-					new EObjectAdapter(host().getNotationView())).execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView()))
+					.execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
@@ -158,8 +154,8 @@ public class InputCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
-					.getEditingDomain(), createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(),
+					createdViews, host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 

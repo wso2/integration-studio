@@ -80,8 +80,7 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 	/**
 	 * @generated
 	 */
-	public void setOpenNewlyCreatedDiagramEditor(
-			boolean openNewlyCreatedDiagramEditor) {
+	public void setOpenNewlyCreatedDiagramEditor(boolean openNewlyCreatedDiagramEditor) {
 		this.openNewlyCreatedDiagramEditor = openNewlyCreatedDiagramEditor;
 	}
 
@@ -119,11 +118,10 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0, fileName.length()
-							- ".datamapper_diagram".length()); //$NON-NLS-1$
+					fileName = fileName.substring(0,
+							fileName.length() - ".datamapper_diagram".length()); //$NON-NLS-1$
 					setFileName(dataMapper.diagram.part.DataMapperDiagramEditorUtil
-							.getUniqueFileName(getContainerFullPath(),
-									fileName, "datamapper")); //$NON-NLS-1$
+							.getUniqueFileName(getContainerFullPath(), fileName, "datamapper")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}
@@ -142,15 +140,13 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 		IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 
-			protected void execute(IProgressMonitor monitor)
-					throws CoreException, InterruptedException {
-				diagram = dataMapper.diagram.part.DataMapperDiagramEditorUtil
-						.createDiagram(diagramModelFilePage.getURI(),
-								domainModelFilePage.getURI(), monitor);
+			protected void execute(IProgressMonitor monitor) throws CoreException,
+					InterruptedException {
+				diagram = dataMapper.diagram.part.DataMapperDiagramEditorUtil.createDiagram(
+						diagramModelFilePage.getURI(), domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
-						dataMapper.diagram.part.DataMapperDiagramEditorUtil
-								.openDiagram(diagram);
+						dataMapper.diagram.part.DataMapperDiagramEditorUtil.openDiagram(diagram);
 					} catch (PartInitException e) {
 						ErrorDialog
 								.openError(
@@ -167,17 +163,12 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 			return false;
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
-				ErrorDialog
-						.openError(
-								getContainer().getShell(),
-								dataMapper.diagram.part.Messages.DataMapperCreationWizardCreationError,
-								null, ((CoreException) e.getTargetException())
-										.getStatus());
+				ErrorDialog.openError(getContainer().getShell(),
+						dataMapper.diagram.part.Messages.DataMapperCreationWizardCreationError,
+						null, ((CoreException) e.getTargetException()).getStatus());
 			} else {
-				dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-						.getInstance()
-						.logError(
-								"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
+				dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+						"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
 			}
 			return false;
 		}

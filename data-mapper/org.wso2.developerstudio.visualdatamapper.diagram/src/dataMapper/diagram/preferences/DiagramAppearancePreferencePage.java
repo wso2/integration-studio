@@ -11,7 +11,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 	 * @generated
 	 */
 	public DiagramAppearancePreferencePage() {
-		setPreferenceStore(dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-				.getInstance().getPreferenceStore());
+		setPreferenceStore(dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

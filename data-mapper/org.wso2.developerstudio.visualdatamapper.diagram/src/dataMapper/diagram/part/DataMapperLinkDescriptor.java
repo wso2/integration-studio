@@ -11,16 +11,16 @@ public class DataMapperLinkDescriptor extends UpdaterLinkDescriptor {
 	/**
 	 * @generated
 	 */
-	public DataMapperLinkDescriptor(EObject source, EObject destination,
-			IElementType elementType, int linkVID) {
+	public DataMapperLinkDescriptor(EObject source, EObject destination, IElementType elementType,
+			int linkVID) {
 		super(source, destination, elementType, linkVID);
 	}
 
 	/**
 	 * @generated
 	 */
-	public DataMapperLinkDescriptor(EObject source, EObject destination,
-			EObject linkElement, IElementType elementType, int linkVID) {
+	public DataMapperLinkDescriptor(EObject source, EObject destination, EObject linkElement,
+			IElementType elementType, int linkVID) {
 		super(source, destination, linkElement, elementType, linkVID);
 	}
 

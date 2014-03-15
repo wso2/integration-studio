@@ -85,7 +85,7 @@ public class OutNodeImpl extends EObjectImpl implements OutNode {
 	 */
 	public Element getElementParent() {
 		if (eContainerFeatureID() != DataMapperPackage.OUT_NODE__ELEMENT_PARENT) return null;
-		return (Element)eContainer();
+		return (Element)eInternalContainer();
 	}
 
 	/**

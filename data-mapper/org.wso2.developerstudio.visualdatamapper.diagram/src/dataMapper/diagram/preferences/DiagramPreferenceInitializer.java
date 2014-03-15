@@ -13,16 +13,11 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
 	 */
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = getPreferenceStore();
-		dataMapper.diagram.preferences.DiagramGeneralPreferencePage
-				.initDefaults(store);
-		dataMapper.diagram.preferences.DiagramAppearancePreferencePage
-				.initDefaults(store);
-		dataMapper.diagram.preferences.DiagramConnectionsPreferencePage
-				.initDefaults(store);
-		dataMapper.diagram.preferences.DiagramPrintingPreferencePage
-				.initDefaults(store);
-		dataMapper.diagram.preferences.DiagramRulersAndGridPreferencePage
-				.initDefaults(store);
+		dataMapper.diagram.preferences.DiagramGeneralPreferencePage.initDefaults(store);
+		dataMapper.diagram.preferences.DiagramAppearancePreferencePage.initDefaults(store);
+		dataMapper.diagram.preferences.DiagramConnectionsPreferencePage.initDefaults(store);
+		dataMapper.diagram.preferences.DiagramPrintingPreferencePage.initDefaults(store);
+		dataMapper.diagram.preferences.DiagramRulersAndGridPreferencePage.initDefaults(store);
 
 	}
 
@@ -30,7 +25,7 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
 	 * @generated
 	 */
 	protected IPreferenceStore getPreferenceStore() {
-		return dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-				.getInstance().getPreferenceStore();
+		return dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+				.getPreferenceStore();
 	}
 }

@@ -37,7 +37,7 @@ public class OperationsEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3012;
+	public static final int VISUAL_ID = 2004;
 
 	/**
 	 * @generated
@@ -60,25 +60,19 @@ public class OperationsEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(
-				EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.OperationsItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.OperationsCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE); //remove small rectangle nodes
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); //remove selection rectangle
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); //remove selection rectangle
 		//
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); //ballon remove
 	}
@@ -90,8 +84,7 @@ public class OperationsEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -145,8 +138,8 @@ public class OperationsEditPart extends ShapeNodeEditPart {
 		IFigure shape = createNodeShape();
 		figure.add(shape);
 		contentPane = setupContentPane(shape);
-//		FreeFormLayoutEx frame = new FreeFormLayoutEx();
-//		shape.setLayoutManager(frame);
+		//		FreeFormLayoutEx frame = new FreeFormLayoutEx();
+		//		shape.setLayoutManager(frame);
 		return figure;
 	}
 
@@ -230,12 +223,11 @@ public class OperationsEditPart extends ShapeNodeEditPart {
 
 			this.setLayoutManager(layoutThis);
 
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(500),
-					getMapMode().DPtoLP(500)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(500), getMapMode().DPtoLP(500)));
 			this.setOutline(false);
 			this.setFill(false);
-//			this.setBorder(new org.eclipse.draw2d.LineBorder(new Color(null,
-//					244, 100, 144), 2, SWT.BORDER_DASH));
+			//			this.setBorder(new org.eclipse.draw2d.LineBorder(new Color(null,
+			//					244, 100, 144), 2, SWT.BORDER_DASH));
 			//
 			//			XYLayout layout = new XYLayout();
 			//			layout.

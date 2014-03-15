@@ -179,7 +179,7 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 */
 	public TreeNode getFieldParent() {
 		if (eContainerFeatureID() != DataMapperPackage.TREE_NODE__FIELD_PARENT) return null;
-		return (TreeNode)eContainer();
+		return (TreeNode)eInternalContainer();
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 */
 	public Output getOutputParent() {
 		if (eContainerFeatureID() != DataMapperPackage.TREE_NODE__OUTPUT_PARENT) return null;
-		return (Output)eContainer();
+		return (Output)eInternalContainer();
 	}
 
 	/**
@@ -261,7 +261,7 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	 */
 	public Input getInputParent() {
 		if (eContainerFeatureID() != DataMapperPackage.TREE_NODE__INPUT_PARENT) return null;
-		return (Input)eContainer();
+		return (Input)eInternalContainer();
 	}
 
 	/**

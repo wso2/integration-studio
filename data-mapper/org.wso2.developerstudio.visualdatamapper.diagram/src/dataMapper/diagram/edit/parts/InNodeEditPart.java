@@ -73,10 +73,8 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				getPrimaryDragEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.InNodeItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -100,8 +98,7 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -216,28 +213,6 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 		}
 	}
 
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMARelTypesOnTarget() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3009);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3015);
-		}
-		return types;
-	}
-
 	class InNodeFigure extends RectangleFigure {
 		/**
 		 * @generated NOT
@@ -264,10 +239,8 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 		 */
 		private void createContents() {
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin
-					.imageDescriptorFromPlugin(
-							"org.wso2.developerstudio.visualdatamapper.diagram",
-							"icons/gmf/black.jpg");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
 
 			int nodeDimension = 10; // width for connection nodes
 
@@ -275,10 +248,8 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
 			RectangleFigure mainImageRectangle = new RectangleFigure();
 
-			mainImageRectangle
-					.setBackgroundColor(new Color(null, 255, 255, 255));
-			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension,
-					nodeDimension));
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
 			mainImageRectangle.add(mainImg);
 
 			mainImageRectangle.setFill(false);

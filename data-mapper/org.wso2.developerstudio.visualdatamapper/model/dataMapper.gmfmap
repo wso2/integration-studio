@@ -8,136 +8,122 @@
     xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
   <nodes>
     <containmentFeature
-        href="dataMapper.ecore#//DataMapperRoot/dataMapperDiagram"/>
+        href="dataMapper.ecore#//DataMapperRoot/input"/>
     <ownedChild>
       <domainMetaElement
-          href="dataMapper.ecore#//DataMapperDiagram"/>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="dataMapper.gmftool#//@palette/@tools.0/@tools.0"/>
+          href="dataMapper.ecore#//Input"/>
       <diagramNode
-          href="dataMapper.gmfgraph#DataMapperDiagram"/>
+          href="dataMapper.gmfgraph#Input"/>
       <children>
         <containmentFeature
-            href="dataMapper.ecore#//DataMapperDiagram/input"/>
+            href="dataMapper.ecore#//Input/treeNode"/>
         <ownedChild>
           <domainMetaElement
-              href="dataMapper.ecore#//Input"/>
+              href="dataMapper.ecore#//TreeNode"/>
           <diagramNode
-              href="dataMapper.gmfgraph#Input"/>
+              href="dataMapper.gmfgraph#TreeNode"/>
+          <children
+              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild">
+            <containmentFeature
+                href="dataMapper.ecore#//TreeNode/node"/>
+          </children>
           <children>
             <containmentFeature
-                href="dataMapper.ecore#//Input/treeNode"/>
+                href="dataMapper.ecore#//TreeNode/attribute"/>
             <ownedChild>
               <domainMetaElement
-                  href="dataMapper.ecore#//TreeNode"/>
+                  href="dataMapper.ecore#//Attribute"/>
               <diagramNode
-                  href="dataMapper.gmfgraph#TreeNode"/>
+                  href="dataMapper.gmfgraph#Attribute"/>
               <children
-                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild">
+                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.0/@ownedChild">
                 <containmentFeature
-                    href="dataMapper.ecore#//TreeNode/node"/>
+                    href="dataMapper.ecore#//Attribute/inNode"/>
               </children>
+              <children
+                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
+                <containmentFeature
+                    href="dataMapper.ecore#//Attribute/outNode"/>
+              </children>
+            </ownedChild>
+          </children>
+          <children>
+            <containmentFeature
+                href="dataMapper.ecore#//TreeNode/element"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="dataMapper.ecore#//Element"/>
+              <diagramNode
+                  href="dataMapper.gmfgraph#Element"/>
               <children>
                 <containmentFeature
-                    href="dataMapper.ecore#//TreeNode/attribute"/>
+                    href="dataMapper.ecore#//Element/inNode"/>
                 <ownedChild>
                   <domainMetaElement
-                      href="dataMapper.ecore#//Attribute"/>
+                      href="dataMapper.ecore#//InNode"/>
                   <diagramNode
-                      href="dataMapper.gmfgraph#Attribute"/>
-                  <children
-                      referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.0/@ownedChild">
-                    <containmentFeature
-                        href="dataMapper.ecore#//Attribute/inNode"/>
-                  </children>
-                  <children
-                      referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
-                    <containmentFeature
-                        href="dataMapper.ecore#//Attribute/outNode"/>
-                  </children>
+                      href="dataMapper.gmfgraph#InNode"/>
                 </ownedChild>
               </children>
               <children>
                 <containmentFeature
-                    href="dataMapper.ecore#//TreeNode/element"/>
+                    href="dataMapper.ecore#//Element/outNode"/>
                 <ownedChild>
                   <domainMetaElement
-                      href="dataMapper.ecore#//Element"/>
+                      href="dataMapper.ecore#//OutNode"/>
                   <diagramNode
-                      href="dataMapper.gmfgraph#Element"/>
-                  <children>
-                    <containmentFeature
-                        href="dataMapper.ecore#//Element/inNode"/>
-                    <ownedChild>
-                      <domainMetaElement
-                          href="dataMapper.ecore#//InNode"/>
-                      <diagramNode
-                          href="dataMapper.gmfgraph#InNode"/>
-                    </ownedChild>
-                  </children>
-                  <children>
-                    <containmentFeature
-                        href="dataMapper.ecore#//Element/outNode"/>
-                    <ownedChild>
-                      <domainMetaElement
-                          href="dataMapper.ecore#//OutNode"/>
-                      <diagramNode
-                          href="dataMapper.gmfgraph#OutNode"/>
-                    </ownedChild>
-                  </children>
+                      href="dataMapper.gmfgraph#OutNode"/>
                 </ownedChild>
               </children>
             </ownedChild>
           </children>
         </ownedChild>
       </children>
-      <children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/output"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Output"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Output"/>
+      <children
+          referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild">
         <containmentFeature
-            href="dataMapper.ecore#//DataMapperDiagram/output"/>
-        <ownedChild>
-          <domainMetaElement
-              href="dataMapper.ecore#//Output"/>
-          <diagramNode
-              href="dataMapper.gmfgraph#Output"/>
-          <children
-              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild">
-            <containmentFeature
-                href="dataMapper.ecore#//Output/treeNode"/>
-          </children>
-        </ownedChild>
+            href="dataMapper.ecore#//Output/treeNode"/>
       </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operations"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Operations"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Operations"/>
       <children>
         <containmentFeature
-            href="dataMapper.ecore#//DataMapperDiagram/operations"/>
+            href="dataMapper.ecore#//Operations/concat"/>
         <ownedChild>
           <domainMetaElement
-              href="dataMapper.ecore#//Operations"/>
+              href="dataMapper.ecore#//Concat"/>
+          <tool
+              xsi:type="gmftool:CreationTool"
+              href="dataMapper.gmftool#//@palette/@tools.0/@tools.2"/>
           <diagramNode
-              href="dataMapper.gmfgraph#Operations"/>
+              href="dataMapper.gmfgraph#Concat"/>
           <children
-              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
+              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.0/@ownedChild">
             <containmentFeature
-                href="dataMapper.ecore#//Operations/concat"/>
-            <ownedChild>
-              <domainMetaElement
-                  href="dataMapper.ecore#//Concat"/>
-              <tool
-                  xsi:type="gmftool:CreationTool"
-                  href="dataMapper.gmftool#//@palette/@tools.0/@tools.2"/>
-              <diagramNode
-                  href="dataMapper.gmfgraph#Concat"/>
-              <children
-                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.0/@ownedChild">
-                <containmentFeature
-                    href="dataMapper.ecore#//Concat/inNode"/>
-              </children>
-              <children
-                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
-                <containmentFeature
-                    href="dataMapper.ecore#//Concat/outNode"/>
-              </children>
-            </ownedChild>
+                href="dataMapper.ecore#//Concat/inNode"/>
+          </children>
+          <children
+              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
+            <containmentFeature
+                href="dataMapper.ecore#//Concat/outNode"/>
           </children>
         </ownedChild>
       </children>

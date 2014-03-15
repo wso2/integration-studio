@@ -19,9 +19,8 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class InNode2ItemSemanticEditPolicy
-		extends
-			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class InNode2ItemSemanticEditPolicy extends
+		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -35,15 +34,14 @@ public class InNode2ItemSemanticEditPolicy
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
+				null);
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
-			if (dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getVisualID(incomingLink) == dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						incomingLink.getElement(), false);
+			if (dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(incomingLink) == dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID) {
+				DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(),
+						false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
@@ -65,18 +63,15 @@ public class InNode2ItemSemanticEditPolicy
 	 * @generated
 	 */
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
-		Command command = req.getTarget() == null
-				? getStartCreateRelationshipCommand(req)
+		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
 				: getCompleteCreateRelationshipCommand(req);
-		return command != null ? command : super
-				.getCreateRelationshipCommand(req);
+		return command != null ? command : super.getCreateRelationshipCommand(req);
 	}
 
 	/**
 	 * @generated
 	 */
-	protected Command getStartCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
+	protected Command getStartCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001 == req
 				.getElementType()) {
 			return null;
@@ -87,8 +82,7 @@ public class InNode2ItemSemanticEditPolicy
 	/**
 	 * @generated
 	 */
-	protected Command getCompleteCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
+	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001 == req
 				.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.DataMapperLinkCreateCommand(
@@ -103,12 +97,11 @@ public class InNode2ItemSemanticEditPolicy
 	 * 
 	 * @generated
 	 */
-	protected Command getReorientRelationshipCommand(
-			ReorientRelationshipRequest req) {
+	protected Command getReorientRelationshipCommand(ReorientRelationshipRequest req) {
 		switch (getVisualID(req)) {
-			case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID :
-				return getGEFWrapper(new dataMapper.diagram.edit.commands.DataMapperLinkReorientCommand(
-						req));
+		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.DataMapperLinkReorientCommand(
+					req));
 		}
 		return super.getReorientRelationshipCommand(req);
 	}

@@ -51,8 +51,8 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 	/**
 	 * @generated
 	 */
-	public DataMapperNewDiagramFileWizard(URI domainModelURI,
-			EObject diagramRoot, TransactionalEditingDomain editingDomain) {
+	public DataMapperNewDiagramFileWizard(URI domainModelURI, EObject diagramRoot,
+			TransactionalEditingDomain editingDomain) {
 		assert domainModelURI != null : "Domain model uri must be specified"; //$NON-NLS-1$
 		assert diagramRoot != null : "Doagram root element must be specified"; //$NON-NLS-1$
 		assert editingDomain != null : "Editing domain must be specified"; //$NON-NLS-1$
@@ -67,23 +67,18 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 						.bind(dataMapper.diagram.part.Messages.DataMapperNewDiagramFileWizard_CreationPageDescription,
 								dataMapper.diagram.edit.parts.DataMapperRootEditPart.MODEL_ID));
 		IPath filePath;
-		String fileName = URI.decode(domainModelURI.trimFileExtension()
-				.lastSegment());
+		String fileName = URI.decode(domainModelURI.trimFileExtension().lastSegment());
 		if (domainModelURI.isPlatformResource()) {
-			filePath = new Path(domainModelURI.trimSegments(1)
-					.toPlatformString(true));
+			filePath = new Path(domainModelURI.trimSegments(1).toPlatformString(true));
 		} else if (domainModelURI.isFile()) {
 			filePath = new Path(domainModelURI.trimSegments(1).toFileString());
 		} else {
 			// TODO : use some default path
-			throw new IllegalArgumentException(
-					"Unsupported URI: " + domainModelURI); //$NON-NLS-1$
+			throw new IllegalArgumentException("Unsupported URI: " + domainModelURI); //$NON-NLS-1$
 		}
 		myFileCreationPage.setContainerFullPath(filePath);
-		myFileCreationPage
-				.setFileName(dataMapper.diagram.part.DataMapperDiagramEditorUtil
-						.getUniqueFileName(filePath, fileName,
-								"datamapper_diagram")); //$NON-NLS-1$
+		myFileCreationPage.setFileName(dataMapper.diagram.part.DataMapperDiagramEditorUtil
+				.getUniqueFileName(filePath, fileName, "datamapper_diagram")); //$NON-NLS-1$
 
 		diagramRootElementSelectionPage = new DiagramRootElementSelectionPage(
 				dataMapper.diagram.part.Messages.DataMapperNewDiagramFileWizard_RootSelectionPageName);
@@ -110,33 +105,27 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 	public boolean performFinish() {
 		LinkedList<IFile> affectedFiles = new LinkedList<IFile>();
 		IFile diagramFile = myFileCreationPage.createNewFile();
-		dataMapper.diagram.part.DataMapperDiagramEditorUtil
-				.setCharset(diagramFile);
+		dataMapper.diagram.part.DataMapperDiagramEditorUtil.setCharset(diagramFile);
 		affectedFiles.add(diagramFile);
-		URI diagramModelURI = URI.createPlatformResourceURI(diagramFile
-				.getFullPath().toString(), true);
+		URI diagramModelURI = URI.createPlatformResourceURI(diagramFile.getFullPath().toString(),
+				true);
 		ResourceSet resourceSet = myEditingDomain.getResourceSet();
-		final Resource diagramResource = resourceSet
-				.createResource(diagramModelURI);
-		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-				myEditingDomain,
+		final Resource diagramResource = resourceSet.createResource(diagramModelURI);
+		AbstractTransactionalCommand command = new AbstractTransactionalCommand(myEditingDomain,
 				dataMapper.diagram.part.Messages.DataMapperNewDiagramFileWizard_InitDiagramCommand,
 				affectedFiles) {
 
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 				int diagramVID = dataMapper.diagram.part.DataMapperVisualIDRegistry
-						.getDiagramVisualID(diagramRootElementSelectionPage
-								.getModelElement());
+						.getDiagramVisualID(diagramRootElementSelectionPage.getModelElement());
 				if (diagramVID != dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID) {
 					return CommandResult
 							.newErrorCommandResult(dataMapper.diagram.part.Messages.DataMapperNewDiagramFileWizard_IncorrectRootError);
 				}
 				Diagram diagram = ViewService
 						.createDiagram(
-								diagramRootElementSelectionPage
-										.getModelElement(),
+								diagramRootElementSelectionPage.getModelElement(),
 								dataMapper.diagram.edit.parts.DataMapperRootEditPart.MODEL_ID,
 								dataMapper.diagram.part.DataMapperDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
 				diagramResource.getContents().add(diagram);
@@ -146,22 +135,18 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 		try {
 			OperationHistoryFactory.getOperationHistory().execute(command,
 					new NullProgressMonitor(), null);
-			diagramResource
-					.save(dataMapper.diagram.part.DataMapperDiagramEditorUtil
-							.getSaveOptions());
-			dataMapper.diagram.part.DataMapperDiagramEditorUtil
-					.openDiagram(diagramResource);
+			diagramResource.save(dataMapper.diagram.part.DataMapperDiagramEditorUtil
+					.getSaveOptions());
+			dataMapper.diagram.part.DataMapperDiagramEditorUtil.openDiagram(diagramResource);
 		} catch (ExecutionException e) {
-			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
-					.logError("Unable to create model and diagram", e); //$NON-NLS-1$
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"Unable to create model and diagram", e); //$NON-NLS-1$
 		} catch (IOException ex) {
-			dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-					.getInstance()
-					.logError(
-							"Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
 		} catch (PartInitException ex) {
-			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
-					.logError("Unable to open editor", ex); //$NON-NLS-1$
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"Unable to open editor", ex); //$NON-NLS-1$
 		}
 		return true;
 	}
@@ -169,9 +154,8 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 	/**
 	 * @generated
 	 */
-	private static class DiagramRootElementSelectionPage
-			extends
-				dataMapper.diagram.part.ModelElementSelectionPage {
+	private static class DiagramRootElementSelectionPage extends
+			dataMapper.diagram.part.ModelElementSelectionPage {
 
 		/**
 		 * @generated
@@ -191,7 +175,7 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 		 * @generated
 		 */
 		protected boolean validatePage() {
-			if (selectedModelElement == null) {
+			if (getModelElement() == null) {
 				setErrorMessage(dataMapper.diagram.part.Messages.DataMapperNewDiagramFileWizard_RootSelectionPageNoSelectionMessage);
 				return false;
 			}
@@ -199,11 +183,10 @@ public class DataMapperNewDiagramFileWizard extends Wizard {
 					.getInstance()
 					.provides(
 							new CreateDiagramViewOperation(
-									new EObjectAdapter(selectedModelElement),
+									new EObjectAdapter(getModelElement()),
 									dataMapper.diagram.edit.parts.DataMapperRootEditPart.MODEL_ID,
 									dataMapper.diagram.part.DataMapperDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
-			setErrorMessage(result
-					? null
+			setErrorMessage(result ? null
 					: dataMapper.diagram.part.Messages.DataMapperNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
 			return result;
 		}

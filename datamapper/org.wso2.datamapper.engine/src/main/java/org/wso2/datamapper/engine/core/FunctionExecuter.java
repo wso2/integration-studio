@@ -15,13 +15,8 @@
  */
 package org.wso2.datamapper.engine.core;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
@@ -70,12 +65,16 @@ public class FunctionExecuter {
 			}
 
 			ScriptableObjectFactory inputRecordWrapper = new ScriptableObjectFactory(inputRecord);
+			inputRecordWrapper.setScope(this.scope);
 			ScriptableObjectFactory outputRecordWrapper = new ScriptableObjectFactory(outputRecord);
-			
+			outputRecordWrapper.setScope(this.scope);
 			//this.scope.put("input", scope, inputRecordWrapper);
 			//this.scope.put("output", scope, outputRecordWrapper);
 			
 			//Function fn = context.compileFunction(this.scope, funtionSourceAsString, "xyz-func", 0, null);
+			
+			Object wrappedOut = Context.javaToJS(System.out, scope);
+	        ScriptableObject.putProperty(scope, "out", wrappedOut);
 			
 			 String fnName = "map_"+funcType+"_"+inputDataType+"_"+funcType+"_"+outputDataType;
 			 Function fn = (Function)scope.get(fnName, scope);

@@ -50,7 +50,7 @@ public class ConfigurationExportWizard extends Wizard {
 
 		// create file, run configuration generation , put it to file
 
-		String input = DataMapperMultiPageEditor.generateFunction();
+		String input = DataMapperConfigurationGenerator.generateFunction();
 
 		File config = new File(page.getConfigExportrPath(), (page.getConfigurationFileName() + ".js"));
 

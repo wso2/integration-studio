@@ -209,7 +209,9 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	 * function generator
 	 */
 
-	public static String generateFunction() {
+	
+	
+/*	public static String generateFunction() {
 		DataMapperRoot rootDiagram = (DataMapperRoot) graphicalEditor.getDiagram().getElement();
 		// String input =
 		// rootDiagram.getDataMapperDiagram().getInput().getTreeNode().get(0).getName().split(",")[1];
@@ -225,16 +227,16 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			allFunctions = allFunctions + "\n" + function;
 		}
 
-		/*
+		
 		 * String flagLSInput = "S"; // @param for set List or Single flag in
 		 * configuration if(TreeFromAvro.multipleData) flagLSInput = "L";
-		 */
+		 
 		// String function =
 		// "function map_"+flagLSInput+"_"+input.toLowerCase()+"_"+flagLSInput+"_"+output.toLowerCase()+"( "+"input"
 		// +" , "+"output"+" ){ \n "+
 		// allActions.toLowerCase()+" \n return output;"+" \n}";
 		return allFunctions;
-	}
+	}*/
 
 
 
@@ -265,7 +267,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	// generated not
 	public void updateSourceEditor() {
 
-		sourceEditor.update(generateFunction());
+		sourceEditor.update(DataMapperConfigurationGenerator.generateFunction());
 		sourceDirty = false;
 		firePropertyChange(PROP_DIRTY);
 	}
@@ -281,7 +283,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 					.replaceAll(".datamapper_diagram$", ".js");
 			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
 			try {
-				String source = generateFunction();
+				String source = DataMapperConfigurationGenerator.generateFunction();
 				if (source == null) {
 					log.warn("Could get source");
 					return;
@@ -297,6 +299,10 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 				log.warn("Could not save file " + configFile);
 			}
 		}
+	}
+	
+	public static DataMapperDiagramEditor getGraphicalEditor() {
+		return graphicalEditor;
 	}
 
 	@Override

@@ -8,13 +8,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.w3c.dom.Element;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -324,6 +322,14 @@ public class RegistryKeyPropertyImpl extends EObjectImpl implements RegistryKeyP
 		StringBuffer result = new StringBuffer();
 		result.append(keyValue);
 		return result.toString();
+	}
+	
+	private String localPathOfRegistryKey = null;
+	public void setLocalPathOfRegistryKey(String localPathOfRegistryKey) {
+		this.localPathOfRegistryKey = localPathOfRegistryKey;
+	}
+	public String getLocalPathOfRegistryKey() {
+		return localPathOfRegistryKey;
 	}
 
 } //RegistryKeyPropertyImpl

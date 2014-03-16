@@ -46,6 +46,7 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	private Class<?>[] type;
 	private TreeViewer treeViewer;
 	private String selectedPath = null;
+	private String ipathOfselection = null;
 	private Button chkOpenResource;
 	private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.esb.editor");
 	private Map<String, List<String>> filters;
@@ -235,10 +236,14 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	}
 	
 	protected void okPressed() {
+		Object selectedElement = getSelectedElement();
+		IDeveloperStudioElement resource = (IDeveloperStudioElement) selectedElement;
+		if (resource.getSource() instanceof IFile) {
+			IFile selectedIFile = (IFile) resource.getSource();
+			ipathOfselection = selectedIFile.getFullPath().toString();
+		}
+		
 		if (chkOpenResource.getSelection()) {
-			Object selectedElement = getSelectedElement();
-			IDeveloperStudioElement resource = (IDeveloperStudioElement) selectedElement;
-
 			try {
 				if (resource.getSource() instanceof IFile) {
 					IDE.openEditor(PlatformUI.getWorkbench()
@@ -296,6 +301,10 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 
 	public String getSelectedPath() {
 		return selectedPath;
+	}
+	
+	public String getIPathOfSelection() {
+		return ipathOfselection;
 	}
 
 	private void updateSelectedElement() {

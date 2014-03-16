@@ -15,14 +15,23 @@
  */
 package org.wso2.datamapper.engine.core;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.avro.Schema.Field;
+import org.apache.avro.Schema.Type;
+import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.Scriptable;
+import org.apache.avro.generic.GenericData.Array;
 
 public class ScriptableObjectFactory implements Scriptable{
 	
 	private GenericRecord record;
 	private Scriptable prototype;
+	private Scriptable scope;
 	
 	
 	public ScriptableObjectFactory(GenericRecord record) {	
@@ -40,12 +49,33 @@ public class ScriptableObjectFactory implements Scriptable{
 
 	public Object get(String name, Scriptable start) {
 		Object resource = this.record.get(name);
+		Field field = record.getSchema().getField(name);
 		if(resource instanceof GenericRecord){
-		return	new ScriptableObjectFactory((GenericRecord)resource);
-		}
-		if(resource != null){
-			return resource;
-		}		
+			return	new ScriptableObjectFactory((GenericRecord)resource);
+		} else if (resource instanceof Array){
+			Array<Object> recordArray = (Array<Object>) resource;
+			List<Object> list = new ArrayList<Object>();
+			Iterator<Object> iterator = recordArray.iterator();
+			while(iterator.hasNext()){
+				Object next = iterator.next();
+				if(next instanceof GenericRecord){
+					list.add(new ScriptableObjectFactory((GenericRecord)next));
+				} else{
+					list.add(next);
+				}
+			}
+			return new AvroAwareNativeJavaArray(getScope(),list.toArray(),recordArray);
+		} else if (resource != null){
+				return resource;
+		}	else if(field!=null){
+			if(field.schema().getType().equals(Type.ARRAY)){
+				Array<Object> recordArray = new GenericData.Array<Object>(32,field.schema());
+				record.put(name,recordArray);
+				return  new AvroAwareNativeJavaArray(getScope(),new Object[32],recordArray);
+			} else{
+				return NOT_FOUND;
+			}
+		} 	
 		return NOT_FOUND;
 	}
 
@@ -114,6 +144,14 @@ public class ScriptableObjectFactory implements Scriptable{
 	public Object[] getIds() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Scriptable getScope() {
+		return scope;
+	}
+
+	public void setScope(Scriptable scope) {
+		this.scope = scope;
 	}
 
 }

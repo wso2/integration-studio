@@ -68,7 +68,7 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SERVICE_URL_EDEFAULT = "";
+	protected static final String SERVICE_URL_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getServiceURL() <em>Service URL</em>}' attribute.
@@ -88,7 +88,7 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SOAP_ACTION_EDEFAULT = "";
+	protected static final String SOAP_ACTION_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getSoapAction() <em>Soap Action</em>}' attribute.
@@ -108,7 +108,7 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PATH_TO_AXIS2XML_EDEFAULT = "";
+	protected static final String PATH_TO_AXIS2XML_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPathToAxis2xml() <em>Path To Axis2xml</em>}' attribute.
@@ -128,7 +128,7 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PATH_TO_AXIS2_REPOSITORY_EDEFAULT = "";
+	protected static final String PATH_TO_AXIS2_REPOSITORY_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPathToAxis2Repository() <em>Path To Axis2 Repository</em>}' attribute.

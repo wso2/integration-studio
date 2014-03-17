@@ -17,24 +17,32 @@ package org.wso2.developerstudio.eclipse.gmf.esb.provider;
 
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator} object.
@@ -64,15 +72,189 @@ public class DataMapperMediatorItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
+		if (itemPropertyDescriptors != null) {
+			itemPropertyDescriptors.clear();
+		}
 			super.getPropertyDescriptors(object);
 
-		}
+			addConfigurationPropertyDescriptor(object);
+			addInputSchemaPropertyDescriptor(object);
+			addOutputSchemaPropertyDescriptor(object);
+			//addConfigurationLocalPathPropertyDescriptor(object);
+			//addInputSchemaLocalPathPropertyDescriptor(object);
+			//addOutputSchemaLocalPathPropertyDescriptor(object);
+		
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Configuration feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConfigurationPropertyDescriptor0(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_configuration_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_configuration_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+	
+	protected void addConfigurationPropertyDescriptor(Object object) {		
+		itemPropertyDescriptors.add
+			(new ItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_configuration_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_configuration_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null){
+					@Override
+					public void setPropertyValue(Object object, Object value) {
+						// TODO Auto-generated method stub
+						if (value instanceof RegistryKeyPropertyImpl){
+							String localPath = ((RegistryKeyPropertyImpl)value).getLocalPathOfRegistryKey();
+							DataMapperMediatorImpl datamapperMediator = (DataMapperMediatorImpl)object;
+						
+							//SetCommand setCommand = new SetCommand(domain, owner, feature, value);
+							//datamapperMediator.setConfigurationLocalPath(localPath);
+							EditingDomain editingDomain = getEditingDomain(object);
+							SetCommand setCmd = new SetCommand(editingDomain, datamapperMediator, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
+							if (setCmd.canExecute()) {
+								editingDomain.getCommandStack().execute(setCmd);
+							}
+						}
+					}
+				
+			});		
+	}
+
+	/**
+	 * This adds a property descriptor for the Input Schema feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInputSchemaPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_InputSchema_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_InputSchema_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Output Schema feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutputSchemaPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_outputSchema_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_outputSchema_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Configuration Local Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConfigurationLocalPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_configurationLocalPath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_configurationLocalPath_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Input Schema Local Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInputSchemaLocalPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_inputSchemaLocalPath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_inputSchemaLocalPath_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Output Schema Local Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutputSchemaLocalPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_outputSchemaLocalPath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_outputSchemaLocalPath_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -89,6 +271,9 @@ public class DataMapperMediatorItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR);
+			childrenFeatures.add(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION);
+			childrenFeatures.add(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA);
+			childrenFeatures.add(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA);
 		}
 		return childrenFeatures;
 	}
@@ -143,8 +328,16 @@ public class DataMapperMediatorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DataMapperMediator.class)) {
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH:
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH:
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR:
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
+			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION:
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA:
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -171,6 +364,45 @@ public class DataMapperMediatorItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR,
 				 EsbFactory.eINSTANCE.createDataMapperMediatorOutputConnector()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION,
+				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA,
+				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA,
+				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION ||
+			childFeature == EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA ||
+			childFeature == EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

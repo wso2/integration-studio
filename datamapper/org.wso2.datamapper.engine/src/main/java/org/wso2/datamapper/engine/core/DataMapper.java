@@ -72,7 +72,7 @@ public class DataMapper {
 			}
 		}
 		
-		context.evaluateString(scope, configScript ,"", 1, null);
+		context.evaluateString(scope, configScript ,"	", 1, null);
 		GenericRecord outputRecord = null;	
 		
 		try {

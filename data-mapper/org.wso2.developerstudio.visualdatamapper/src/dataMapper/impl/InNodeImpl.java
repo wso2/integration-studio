@@ -87,7 +87,7 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 	 */
 	public Element getElementParent() {
 		if (eContainerFeatureID() != DataMapperPackage.IN_NODE__ELEMENT_PARENT) return null;
-		return (Element)eContainer();
+		return (Element)eInternalContainer();
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 	 */
 	public Attribute getAttributeParent() {
 		if (eContainerFeatureID() != DataMapperPackage.IN_NODE__ATTRIBUTE_PARENT) return null;
-		return (Attribute)eContainer();
+		return (Attribute)eInternalContainer();
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class InNodeImpl extends EObjectImpl implements InNode {
 	 */
 	public Concat getConcatParent() {
 		if (eContainerFeatureID() != DataMapperPackage.IN_NODE__CONCAT_PARENT) return null;
-		return (Concat)eContainer();
+		return (Concat)eInternalContainer();
 	}
 
 	/**

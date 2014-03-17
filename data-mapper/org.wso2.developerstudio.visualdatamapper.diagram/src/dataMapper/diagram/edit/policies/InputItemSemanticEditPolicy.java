@@ -15,15 +15,14 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class InputItemSemanticEditPolicy
-		extends
-			dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
+public class InputItemSemanticEditPolicy extends
+		dataMapper.diagram.edit.policies.DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
 	 */
 	public InputItemSemanticEditPolicy() {
-		super(dataMapper.diagram.providers.DataMapperElementTypes.Input_3001);
+		super(dataMapper.diagram.providers.DataMapperElementTypes.Input_2002);
 	}
 
 	/**
@@ -32,8 +31,7 @@ public class InputItemSemanticEditPolicy
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3002 == req
 				.getElementType()) {
-			return getGEFWrapper(new dataMapper.diagram.edit.commands.TreeNodeCreateCommand(
-					req));
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.TreeNodeCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}
@@ -43,8 +41,8 @@ public class InputItemSemanticEditPolicy
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
+				null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -66,15 +64,13 @@ public class InputItemSemanticEditPolicy
 		View view = (View) getHost().getModel();
 		for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
 			Node node = (Node) nit.next();
-			switch (dataMapper.diagram.part.DataMapperVisualIDRegistry
-					.getVisualID(node)) {
-				case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID :
-					cmd.add(new DestroyElementCommand(
-							new DestroyElementRequest(getEditingDomain(), node
-									.getElement(), false))); // directlyOwned: true
-					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-					break;
+			switch (dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(node)) {
+			case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
+						node.getElement(), false))); // directlyOwned: true
+				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+				break;
 			}
 		}
 	}

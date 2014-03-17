@@ -15,15 +15,18 @@
  */
 package org.wso2.datamapper.engine.inputAdapters;
 
+import org.apache.avro.Schema.Field;
+import org.apache.avro.Schema.Type;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericData.Array;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMXMLBuilderFactory;
@@ -86,21 +89,69 @@ public class XmlInputReader implements InputDataReaderAdapter{
 			childIter = childElement.getChildElements();
 		}
 		
-		GenericRecord childRecord = getChild(childElement,childIter);
+		GenericRecord childRecord = null;
+		Schema schema = inputSchemaMap.get(childElement.getLocalName());
+		if(schema instanceof Schema){
+			childRecord =  getChild(schema, childIter);
+		}
+		
 			
 		if ((childRecord == null) && (arrayChildList == null)) {	
 			rootRecord.put(childName, childElement.getText());
 		}
-	
 		return childRecord;
 	}
 
-	public GenericRecord getChild(OMElement element, Iterator<OMElement> childIter) {
+	private GenericRecord getChild(Schema schema, Iterator<OMElement> iter) {
+		GenericRecord record = new GenericData.Record(schema);
+
+		while (iter.hasNext()) {
+			OMElement element = iter.next();
+			String localName = element.getLocalName();
+			Field field = schema.getField(localName);
+			if(field!=null){
+				if(field.schema().getType().equals(Type.ARRAY)){
+					Iterator childElements = element.getChildElements();
+					GenericRecord child = getChild(field.schema().getElementType(), childElements);
+					Object object = record.get(localName);
+					if(object==null){
+						 // FIXME: I know this is bad, 32 just used for save the time  
+						 Array<GenericRecord> childArray = new GenericData.Array<GenericRecord>(32,field.schema());
+						 childArray.add(child);
+						 record.put(localName,childArray);
+					} else{
+						 Array<GenericRecord> childArray = (Array<GenericRecord>) object;
+						 childArray.add(child);
+					}
+				} else if(field.schema().getType().equals(Type.RECORD)){
+					Iterator childElements = element.getChildElements();
+					GenericRecord child = getChild(field.schema(), childElements);
+					record.put(localName, child);
+				} else{
+					record.put(localName, element.getText());
+					//TODO: fix for other types too... !(ARRAY||RECORD) != primitive type
+				}
+			} else{
+			}
+
+		}
+		return record;
+	}
+
+	public GenericRecord getFinalRecord(Schema schema) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*private GenericRecord getChild(OMElement element, Iterator<OMElement> childIter) {
 		
-		GenericRecord childRec = null;
+ 		GenericRecord childRec = null;
 		OMElement parentElement = element;	
 		String parentId = parentElement.getLocalName();
-		Schema sc = inputSchemaMap.get(parentId);	
+		Schema sc = inputSchemaMap.get(parentId + "Array");	
+		if(!(sc instanceof Schema)){
+			sc = inputSchemaMap.get(parentId);
+		}
 		boolean isArray = false;
 				
 		if(sc != null) {
@@ -120,14 +171,26 @@ public class XmlInputReader implements InputDataReaderAdapter{
 				childElement = childIter.next();
 				GenericRecord tempRec = getChild(childElement, childElement.getChildElements());
 				
+				String localName = childElement.getLocalName();
 				if(tempRec != null){
+				//	childRec.getSchema()
+					if(childRec.getSchema().getField(localName).schema().getType().equals(Type.ARRAY)){
+						arrayChildList.add(tempRec);
+					} else{
+						childRec.put(localName, tempRec);
+					}
 					if(!isArray){
-						childRec.put(childElement.getLocalName(), tempRec);
+						childRec.put(localName, tempRec);
 					}else{
 						arrayChildList.add(tempRec);
 					}
 				}else{
-					childRec.put(childElement.getLocalName(), childElement.getText());
+					if(isArray){
+						childRec.put(localName, childElement.getText());
+					} else {
+						
+					}
+					
 				}
 			}
 			if(isArray){
@@ -136,5 +199,9 @@ public class XmlInputReader implements InputDataReaderAdapter{
 		}
 		
 		return childRec;
-	}
+	}*/
+	
+	
+	
+	
 }

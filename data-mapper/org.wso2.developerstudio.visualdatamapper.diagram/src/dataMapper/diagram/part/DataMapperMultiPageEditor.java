@@ -1,6 +1,7 @@
 package dataMapper.diagram.part;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,6 +15,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.DocumentEvent;
@@ -30,7 +32,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.ide.FileStoreEditorInput;
 import org.eclipse.ui.ide.IGotoMarker;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
 
 import dataMapper.Attribute;
 import dataMapper.Concat;
@@ -54,6 +60,8 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	private static final int SOURCE_VIEW_PAGE_INDEX = 1;
 
 	private static final int DESIGN_VIEW_PAGE_INDEX = 0;
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private Set<IFile> tempFiles = new HashSet<IFile>();
 	
@@ -201,7 +209,9 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	 * function generator
 	 */
 
-	public static String generateFunction() {
+	
+	
+/*	public static String generateFunction() {
 		DataMapperRoot rootDiagram = (DataMapperRoot) graphicalEditor.getDiagram().getElement();
 		// String input =
 		// rootDiagram.getDataMapperDiagram().getInput().getTreeNode().get(0).getName().split(",")[1];
@@ -209,7 +219,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		// rootDiagram.getDataMapperDiagram().getOutput().getTreeNode().get(0).getName().split(",")[1];
 
 		ArrayList<String> functionsList = new ArrayList<String>();
-		functionsList = DataMapperConfigurationGenerator.findForAction(rootDiagram.getDataMapperDiagram().getInput().getTreeNode());
+		functionsList = DataMapperConfigurationGenerator.findForAction(rootDiagram.getInput().getTreeNode());
 
 		String allFunctions = "";
 
@@ -217,16 +227,16 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			allFunctions = allFunctions + "\n" + function;
 		}
 
-		/*
+		
 		 * String flagLSInput = "S"; // @param for set List or Single flag in
 		 * configuration if(TreeFromAvro.multipleData) flagLSInput = "L";
-		 */
+		 
 		// String function =
 		// "function map_"+flagLSInput+"_"+input.toLowerCase()+"_"+flagLSInput+"_"+output.toLowerCase()+"( "+"input"
 		// +" , "+"output"+" ){ \n "+
 		// allActions.toLowerCase()+" \n return output;"+" \n}";
 		return allFunctions;
-	}
+	}*/
 
 
 
@@ -257,9 +267,42 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	// generated not
 	public void updateSourceEditor() {
 
-		sourceEditor.update(generateFunction());
+		sourceEditor.update(DataMapperConfigurationGenerator.generateFunction());
 		sourceDirty = false;
 		firePropertyChange(PROP_DIRTY);
+	}
+	
+	
+	private void updateAssociatedConfigFile(IProgressMonitor monitor) {
+		IEditorInput editorInput = getEditor(0).getEditorInput();
+		
+		if (editorInput instanceof IFileEditorInput) {
+			IFile diagramFile = ((FileEditorInput) editorInput).getFile();
+			String configFilePath = diagramFile.getFullPath().toString();
+			configFilePath = configFilePath
+					.replaceAll(".datamapper_diagram$", ".js");
+			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
+			try {
+				String source = DataMapperConfigurationGenerator.generateFunction();
+				if (source == null) {
+					log.warn("Could get source");
+					return;
+				}
+				InputStream is = new ByteArrayInputStream(source.getBytes());
+				if (configFile.exists()) {
+					configFile.setContents(is, true, true, monitor);
+				} else {
+					configFile.create(is, true, monitor);
+				}
+
+			} catch (Exception e) {
+				log.warn("Could not save file " + configFile);
+			}
+		}
+	}
+	
+	public static DataMapperDiagramEditor getGraphicalEditor() {
+		return graphicalEditor;
 	}
 
 	@Override
@@ -270,8 +313,8 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-		// TODO Auto-generated method stub
-
+		updateAssociatedConfigFile(monitor);
+		getEditor(0).doSave(monitor);
 	}
 
 	@Override

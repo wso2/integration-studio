@@ -1505,6 +1505,13 @@
              name="HTTP Endpoint Template"
              mediaType="application/vnd.wso2.template.endpoint"
              extension="xml">
+       </template>       
+       <template
+             file="resources/templates/datamapper/datamapper-config-template.js"
+             id="org.wso2.developerstudio.eclipse.esb.template.datamapper"
+             name="Datamapper Configuration"
+             mediaType="application/vnd+wso2.datamapper"
+             extension="js">
        </template>
     </extension>
 </plugin>

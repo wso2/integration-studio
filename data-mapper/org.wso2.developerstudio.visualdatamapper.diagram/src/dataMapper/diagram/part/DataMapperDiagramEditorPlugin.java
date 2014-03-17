@@ -33,8 +33,7 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 	/**
 	 * @generated
 	 */
-	public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(
-			ID);
+	public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(ID);
 
 	/**
 	 * @generated
@@ -73,8 +72,7 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		instance = this;
-		PreferencesHint.registerPreferenceStore(DIAGRAM_PREFERENCES_HINT,
-				getPreferenceStore());
+		PreferencesHint.registerPreferenceStore(DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
 		adapterFactory = createAdapterFactory();
 	}
 
@@ -110,8 +108,7 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 	 * @generated
 	 */
 	protected void fillItemProviderFactories(List<AdapterFactory> factories) {
-		factories
-				.add(new dataMapper.provider.DataMapperItemProviderAdapterFactory());
+		factories.add(new dataMapper.provider.DataMapperItemProviderAdapterFactory());
 		factories.add(new ResourceItemProviderAdapterFactory());
 		factories.add(new ReflectiveItemProviderAdapterFactory());
 	}
@@ -127,8 +124,8 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 	 * @generated
 	 */
 	public ImageDescriptor getItemImageDescriptor(Object item) {
-		IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory
-				.adapt(item, IItemLabelProvider.class);
+		IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(item,
+				IItemLabelProvider.class);
 		if (labelProvider != null) {
 			return ExtendedImageRegistry.getInstance().getImageDescriptor(
 					labelProvider.getImage(item));
@@ -228,8 +225,7 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 	/**
 	 * @generated
 	 */
-	public void setElementInitializers(
-			dataMapper.diagram.providers.ElementInitializers i) {
+	public void setElementInitializers(dataMapper.diagram.providers.ElementInitializers i) {
 		this.initializers = i;
 	}
 
@@ -248,8 +244,8 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 			error = throwable.getMessage();
 		}
 		getLog().log(
-				new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID,
-						IStatus.OK, error, throwable));
+				new Status(IStatus.ERROR, DataMapperDiagramEditorPlugin.ID, IStatus.OK, error,
+						throwable));
 		debug(error, throwable);
 	}
 
@@ -268,8 +264,8 @@ public class DataMapperDiagramEditorPlugin extends AbstractUIPlugin {
 			message = throwable.getMessage();
 		}
 		getLog().log(
-				new Status(IStatus.INFO, DataMapperDiagramEditorPlugin.ID,
-						IStatus.OK, message, throwable));
+				new Status(IStatus.INFO, DataMapperDiagramEditorPlugin.ID, IStatus.OK, message,
+						throwable));
 		debug(message, throwable);
 	}
 

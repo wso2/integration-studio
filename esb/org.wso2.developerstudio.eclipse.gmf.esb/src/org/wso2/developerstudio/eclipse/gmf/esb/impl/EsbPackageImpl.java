@@ -9333,6 +9333,60 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDataMapperMediator_Configuration() {
+		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataMapperMediator_InputSchema() {
+		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataMapperMediator_OutputSchema() {
+		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataMapperMediator_ConfigurationLocalPath() {
+		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataMapperMediator_InputSchemaLocalPath() {
+		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataMapperMediator_OutputSchemaLocalPath() {
+		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataMapperMediatorInputConnector() {
 		return dataMapperMediatorInputConnectorEClass;
 	}
@@ -16983,6 +17037,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		dataMapperMediatorEClass = createEClass(DATA_MAPPER_MEDIATOR);
 		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR);
 		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR);
+		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__CONFIGURATION);
+		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__INPUT_SCHEMA);
+		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA);
+		createEAttribute(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH);
+		createEAttribute(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH);
+		createEAttribute(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH);
 
 		dataMapperMediatorInputConnectorEClass = createEClass(DATA_MAPPER_MEDIATOR_INPUT_CONNECTOR);
 
@@ -17506,8 +17566,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(endPointPropertyEClass, EndPointProperty.class, "EndPointProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEndPointProperty_Name(), ecorePackage.getEString(), "name", null, 1, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEndPointProperty_Value(), ecorePackage.getEString(), "value", null, 1, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEndPointProperty_Scope(), this.getEndPointPropertyScope(), "scope", "", 1, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEndPointProperty_ValueType(), this.getPropertyValueType(), "valueType", "VALUE", 0, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEndPointProperty_Scope(), this.getEndPointPropertyScope(), "scope", null, 1, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEndPointProperty_ValueType(), this.getPropertyValueType(), "valueType", null, 0, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEndPointProperty_ValueExpression(), this.getNamespacedProperty(), null, "valueExpression", null, 0, 1, EndPointProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(proxyServiceEClass, ProxyService.class, "ProxyService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -17638,7 +17698,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getTemplateEndpoint_Address(), ecorePackage.getEString(), "address", null, 0, 1, TemplateEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTemplateEndpoint_TargetTemplate(), ecorePackage.getEString(), "targetTemplate", null, 0, 1, TemplateEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTemplateEndpoint_Parameters(), this.getTemplateEndpointParameter(), null, "parameters", null, 0, -1, TemplateEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTemplateEndpoint_AvailableTemplates(), ecorePackage.getEString(), "availableTemplates", "", 0, 1, TemplateEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTemplateEndpoint_AvailableTemplates(), ecorePackage.getEString(), "availableTemplates", null, 0, 1, TemplateEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(templateEndpointInputConnectorEClass, TemplateEndpointInputConnector.class, "TemplateEndpointInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -17706,7 +17766,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(logMediatorEClass, LogMediator.class, "LogMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLogMediator_LogCategory(), this.getLogCategory(), "logCategory", "INFO", 0, 1, LogMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLogMediator_LogLevel(), this.getLogLevel(), "logLevel", null, 0, 1, LogMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLogMediator_LogSeparator(), ecorePackage.getEString(), "logSeparator", "", 0, 1, LogMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLogMediator_LogSeparator(), ecorePackage.getEString(), "logSeparator", null, 0, 1, LogMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLogMediator_InputConnector(), this.getLogMediatorInputConnector(), null, "inputConnector", null, 0, 1, LogMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLogMediator_OutputConnector(), this.getLogMediatorOutputConnector(), null, "outputConnector", null, 0, 1, LogMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLogMediator_Properties(), this.getLogProperty(), null, "properties", null, 0, -1, LogMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17782,8 +17842,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getPropertyMediator_OutputConnector(), this.getPropertyMediatorOutputConnector(), null, "outputConnector", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_PropertyName(), ecorePackage.getEString(), "propertyName", "property_name", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_PropertyDataType(), this.getPropertyDataType(), "propertyDataType", "STRING", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyMediator_PropertyAction(), this.getPropertyAction(), "propertyAction", "SET", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyMediator_PropertyScope(), this.getPropertyScope(), "propertyScope", "SYNAPSE", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyMediator_PropertyAction(), this.getPropertyAction(), "propertyAction", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyMediator_PropertyScope(), this.getPropertyScope(), "propertyScope", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueType(), this.getPropertyValueType(), "valueType", "LITERAL", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueLiteral(), ecorePackage.getEString(), "valueLiteral", "value", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17791,7 +17851,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getPropertyMediator_Namespace(), ecorePackage.getEString(), "namespace", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPropertyMediator_ValueExpression(), this.getNamespacedProperty(), null, "valueExpression", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueOM(), ecorePackage.getEString(), "valueOM", "<value/>", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyMediator_ValueStringPattern(), ecorePackage.getEString(), "valueStringPattern", "", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyMediator_ValueStringPattern(), ecorePackage.getEString(), "valueStringPattern", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueStringCapturingGroup(), ecorePackage.getEInt(), "valueStringCapturingGroup", "0", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyMediatorInputConnectorEClass, PropertyMediatorInputConnector.class, "PropertyMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -17813,12 +17873,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(enrichMediatorEClass, EnrichMediator.class, "EnrichMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEnrichMediator_CloneSource(), ecorePackage.getEBoolean(), "cloneSource", "false", 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnrichMediator_SourceType(), this.getEnrichSourceType(), "sourceType", "CUSTOM", 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEnrichMediator_SourceType(), this.getEnrichSourceType(), "sourceType", null, 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEnrichMediator_SourceXpath(), this.getNamespacedProperty(), null, "sourceXpath", null, 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEnrichMediator_SourceProperty(), ecorePackage.getEString(), "sourceProperty", "source_property", 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEnrichMediator_SourceXML(), ecorePackage.getEString(), "sourceXML", "<inline/>", 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnrichMediator_TargetAction(), this.getEnrichTargetAction(), "targetAction", "REPLACE", 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnrichMediator_TargetType(), this.getEnrichTargetType(), "targetType", "CUSTOM", 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEnrichMediator_TargetAction(), this.getEnrichTargetAction(), "targetAction", null, 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEnrichMediator_TargetType(), this.getEnrichTargetType(), "targetType", null, 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEnrichMediator_TargetXpath(), this.getNamespacedProperty(), null, "targetXpath", null, 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEnrichMediator_TargetProperty(), ecorePackage.getEString(), "targetProperty", "target_property", 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEnrichMediator_InlineType(), this.getEnrichSourceInlineType(), "inlineType", null, 0, 1, EnrichMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17832,7 +17892,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(abstractNameValueExpressionPropertyEClass, AbstractNameValueExpressionProperty.class, "AbstractNameValueExpressionProperty", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractNameValueExpressionProperty_PropertyName(), ecorePackage.getEString(), "propertyName", "property_name", 0, 1, AbstractNameValueExpressionProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAbstractNameValueExpressionProperty_PropertyValueType(), this.getPropertyValueType(), "propertyValueType", "VALUE", 0, 1, AbstractNameValueExpressionProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractNameValueExpressionProperty_PropertyValueType(), this.getPropertyValueType(), "propertyValueType", null, 0, 1, AbstractNameValueExpressionProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractNameValueExpressionProperty_PropertyValue(), ecorePackage.getEString(), "propertyValue", "property_value", 0, 1, AbstractNameValueExpressionProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractNameValueExpressionProperty_PropertyExpression(), this.getNamespacedProperty(), null, "propertyExpression", null, 0, 1, AbstractNameValueExpressionProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -17922,7 +17982,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(esbSequenceOutputConnectorEClass, EsbSequenceOutputConnector.class, "EsbSequenceOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sequenceEClass, Sequence.class, "Sequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSequence_Name(), ecorePackage.getEString(), "name", "", 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequence_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequence_Key(), ecorePackage.getEString(), "key", "<inline/>", 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSequence_InputConnector(), this.getSequenceInputConnector(), null, "inputConnector", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSequence_OutputConnector(), this.getSequenceOutputConnector(), null, "outputConnector", null, 0, -1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17938,7 +17998,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(sequenceOutputConnectorEClass, SequenceOutputConnector.class, "SequenceOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(eventMediatorEClass, EventMediator.class, "EventMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEventMediator_TopicType(), this.getEventTopicType(), "topicType", "CUSTOM", 0, 1, EventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEventMediator_TopicType(), this.getEventTopicType(), "topicType", null, 0, 1, EventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEventMediator_StaticTopic(), ecorePackage.getEString(), "staticTopic", "source_property", 0, 1, EventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventMediator_DynamicTopic(), this.getNamespacedProperty(), null, "dynamicTopic", null, 0, 1, EventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventMediator_EventExpression(), this.getNamespacedProperty(), null, "eventExpression", null, 0, 1, EventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18042,13 +18102,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(scriptMediatorEClass, ScriptMediator.class, "ScriptMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getScriptMediator_ScriptType(), this.getScriptType(), "scriptType", "REGISTRY_REFERENCE", 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScriptMediator_ScriptLanguage(), this.getScriptLanguage(), "scriptLanguage", "JAVASCRIPT", 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScriptMediator_ScriptLanguage(), this.getScriptLanguage(), "scriptLanguage", null, 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScriptMediator_MediateFunction(), ecorePackage.getEString(), "mediateFunction", "mediate", 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScriptMediator_ScriptDynamicKey(), this.getNamespacedProperty(), null, "scriptDynamicKey", null, 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScriptMediator_ScriptBody(), ecorePackage.getEString(), "scriptBody", "script_code", 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScriptMediator_InputConnector(), this.getScriptMediatorInputConnector(), null, "inputConnector", null, 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScriptMediator_OutputConnector(), this.getScriptMediatorOutputConnector(), null, "outputConnector", null, 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScriptMediator_KeyType(), this.getscriptKeyTypeEnum(), "keyType", "", 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScriptMediator_KeyType(), this.getscriptKeyTypeEnum(), "keyType", null, 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScriptMediator_ScriptStaticKey(), this.getRegistryKeyProperty(), null, "scriptStaticKey", null, 0, 1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScriptMediator_ScriptKeys(), this.getRegistryKeyProperty(), null, "scriptKeys", null, 0, -1, ScriptMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -18057,24 +18117,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(scriptMediatorOutputConnectorEClass, ScriptMediatorOutputConnector.class, "ScriptMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(faultMediatorEClass, FaultMediator.class, "FaultMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFaultMediator_SoapVersion(), this.getFaultSoapVersion(), "soapVersion", "SOAP_1_1", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_SoapVersion(), this.getFaultSoapVersion(), "soapVersion", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFaultMediator_SerializeResponse(), ecorePackage.getEBoolean(), "serializeResponse", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFaultMediator_MarkAsResponse(), ecorePackage.getEBoolean(), "markAsResponse", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFaultMediator_FaultCodeSoap11(), this.getFaultCodeSoap11(), "faultCodeSoap11", "VERSION_MISSMATCH", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFaultMediator_FaultCodeType(), this.getFaultCodeType(), "faultCodeType", "VALUE", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_FaultCodeSoap11(), this.getFaultCodeSoap11(), "faultCodeSoap11", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_FaultCodeType(), this.getFaultCodeType(), "faultCodeType", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFaultMediator_FaultCodeExpression(), this.getNamespacedProperty(), null, "faultCodeExpression", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFaultMediator_FaultStringType(), this.getFaultStringType(), "faultStringType", "VALUE", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_FaultStringType(), this.getFaultStringType(), "faultStringType", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFaultMediator_FaultStringValue(), ecorePackage.getEString(), "faultStringValue", "fault_string", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFaultMediator_FaultStringExpression(), this.getNamespacedProperty(), null, "faultStringExpression", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFaultMediator_FaultActor(), ecorePackage.getEString(), "faultActor", "", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFaultMediator_FaultCodeSoap12(), this.getFaultCodeSoap12(), "faultCodeSoap12", "VERSION_MISSMATCH", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFaultMediator_FaultReasonType(), this.getFaultReasonType(), "faultReasonType", "VALUE", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_FaultActor(), ecorePackage.getEString(), "faultActor", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_FaultCodeSoap12(), this.getFaultCodeSoap12(), "faultCodeSoap12", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_FaultReasonType(), this.getFaultReasonType(), "faultReasonType", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFaultMediator_FaultReasonValue(), ecorePackage.getEString(), "faultReasonValue", "fault_reason", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFaultMediator_FaultReasonExpression(), this.getNamespacedProperty(), null, "faultReasonExpression", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFaultMediator_RoleName(), ecorePackage.getEString(), "roleName", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFaultMediator_NodeName(), ecorePackage.getEString(), "nodeName", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFaultMediator_FaultDetailType(), this.getFaultDetailType(), "faultDetailType", "VALUE", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFaultMediator_FaultDetailValue(), ecorePackage.getEString(), "faultDetailValue", "", 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_FaultDetailType(), this.getFaultDetailType(), "faultDetailType", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFaultMediator_FaultDetailValue(), ecorePackage.getEString(), "faultDetailValue", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFaultMediator_FaultDetailExpression(), this.getNamespacedProperty(), null, "faultDetailExpression", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFaultMediator_InputConnector(), this.getFaultMediatorInputConnector(), null, "inputConnector", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFaultMediator_OutputConnector(), this.getFaultMediatorOutputConnector(), null, "outputConnector", null, 0, 1, FaultMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18087,8 +18147,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getAggregateMediator_AggregateID(), ecorePackage.getEString(), "aggregateID", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAggregateMediator_CorrelationExpression(), this.getNamespacedProperty(), null, "correlationExpression", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAggregateMediator_CompletionTimeout(), ecorePackage.getELong(), "completionTimeout", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAggregateMediator_CompletionMinMessagesType(), this.getCompletionMessagesType(), "completionMinMessagesType", "VALUE", 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAggregateMediator_CompletionMaxMessagesType(), this.getCompletionMessagesType(), "completionMaxMessagesType", "VALUE", 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAggregateMediator_CompletionMinMessagesType(), this.getCompletionMessagesType(), "completionMinMessagesType", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAggregateMediator_CompletionMaxMessagesType(), this.getCompletionMessagesType(), "completionMaxMessagesType", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAggregateMediator_CompletionMinMessagesValue(), ecorePackage.getEInt(), "completionMinMessagesValue", "-1", 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAggregateMediator_CompletionMinMessagesExpression(), this.getNamespacedProperty(), null, "completionMinMessagesExpression", null, 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAggregateMediator_CompletionMaxMessagesValue(), ecorePackage.getEInt(), "completionMaxMessagesValue", "-1", 0, 1, AggregateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18211,12 +18271,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(cacheMediatorEClass, CacheMediator.class, "CacheMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCacheMediator_CacheId(), ecorePackage.getEString(), "cacheId", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCacheMediator_CacheScope(), this.getCacheScope(), "cacheScope", "PER_MEDIATOR", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheMediator_CacheScope(), this.getCacheScope(), "cacheScope", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_CacheAction(), this.getCacheAction(), "cacheAction", "FINDER", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_HashGenerator(), ecorePackage.getEString(), "hashGenerator", "org.wso2.caching.digest.DOMHashGenerator", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_CacheTimeout(), ecorePackage.getEInt(), "cacheTimeout", "120", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_MaxMessageSize(), ecorePackage.getEInt(), "maxMessageSize", "2000", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCacheMediator_ImplementationType(), this.getCacheImplementationType(), "implementationType", "IN_MEMORY", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCacheMediator_ImplementationType(), this.getCacheImplementationType(), "implementationType", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_MaxEntryCount(), ecorePackage.getEInt(), "maxEntryCount", "1000", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCacheMediator_SequenceType(), this.getCacheSequenceType(), "sequenceType", "REGISTRY_REFERENCE", 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCacheMediator_SequenceKey(), this.getRegistryKeyProperty(), null, "sequenceKey", null, 0, 1, CacheMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18256,13 +18316,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getXQueryVariable_ValueKey(), this.getRegistryKeyProperty(), null, "valueKey", null, 0, 1, XQueryVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(calloutMediatorEClass, CalloutMediator.class, "CalloutMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCalloutMediator_ServiceURL(), ecorePackage.getEString(), "serviceURL", "", 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCalloutMediator_SoapAction(), ecorePackage.getEString(), "soapAction", "", 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCalloutMediator_PathToAxis2xml(), ecorePackage.getEString(), "pathToAxis2xml", "", 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCalloutMediator_PathToAxis2Repository(), ecorePackage.getEString(), "pathToAxis2Repository", "", 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCalloutMediator_PayloadType(), this.getCalloutPayloadType(), "payloadType", "MESSAGE_ELEMENT", 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCalloutMediator_ServiceURL(), ecorePackage.getEString(), "serviceURL", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCalloutMediator_SoapAction(), ecorePackage.getEString(), "soapAction", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCalloutMediator_PathToAxis2xml(), ecorePackage.getEString(), "pathToAxis2xml", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCalloutMediator_PathToAxis2Repository(), ecorePackage.getEString(), "pathToAxis2Repository", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCalloutMediator_PayloadType(), this.getCalloutPayloadType(), "payloadType", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_PayloadMessageXpath(), this.getNamespacedProperty(), null, "payloadMessageXpath", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCalloutMediator_ResultType(), this.getCalloutResultType(), "resultType", "MESSAGE_ELEMENT", 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCalloutMediator_ResultType(), this.getCalloutResultType(), "resultType", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_ResultMessageXpath(), this.getNamespacedProperty(), null, "resultMessageXpath", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_ResultContextProperty(), ecorePackage.getEString(), "resultContextProperty", "context_property_name", 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_PassHeaders(), ecorePackage.getEBoolean(), "passHeaders", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18283,7 +18343,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(calloutMediatorOutputConnectorEClass, CalloutMediatorOutputConnector.class, "CalloutMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(rmSequenceMediatorEClass, RMSequenceMediator.class, "RMSequenceMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRMSequenceMediator_RmSpecVersion(), this.getRMSpecVersion(), "rmSpecVersion", "VERSION_1_0", 0, 1, RMSequenceMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRMSequenceMediator_RmSpecVersion(), this.getRMSpecVersion(), "rmSpecVersion", null, 0, 1, RMSequenceMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRMSequenceMediator_SequenceType(), this.getRMSequenceType(), "sequenceType", "SINGLE_MESSAGE", 0, 1, RMSequenceMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRMSequenceMediator_CorrelationXpath(), this.getNamespacedProperty(), null, "correlationXpath", null, 0, 1, RMSequenceMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRMSequenceMediator_LastMessageXpath(), this.getNamespacedProperty(), null, "lastMessageXpath", null, 0, 1, RMSequenceMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18305,8 +18365,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(oAuthMediatorEClass, OAuthMediator.class, "OAuthMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOAuthMediator_RemoteServiceUrl(), ecorePackage.getEString(), "remoteServiceUrl", "service_url", 0, 1, OAuthMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOAuthMediator_Username(), ecorePackage.getEString(), "username", "", 0, 1, OAuthMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOAuthMediator_Password(), ecorePackage.getEString(), "password", "", 0, 1, OAuthMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOAuthMediator_Username(), ecorePackage.getEString(), "username", null, 0, 1, OAuthMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOAuthMediator_Password(), ecorePackage.getEString(), "password", null, 0, 1, OAuthMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOAuthMediator_InputConnector(), this.getOAuthMediatorInputConnector(), null, "inputConnector", null, 0, 1, OAuthMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOAuthMediator_OutputConnector(), this.getOAuthMediatorOutputConnector(), null, "outputConnector", null, 0, 1, OAuthMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -18320,14 +18380,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(headerMediatorEClass, HeaderMediator.class, "HeaderMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHeaderMediator_HeaderName(), this.getNamespacedProperty(), null, "headerName", null, 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHeaderMediator_HeaderAction(), this.getHeaderAction(), "headerAction", "", 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHeaderMediator_ValueType(), this.getHeaderValueType(), "valueType", "", 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHeaderMediator_Scope(), this.getScopeType(), "scope", "", 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHeaderMediator_HeaderAction(), this.getHeaderAction(), "headerAction", null, 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHeaderMediator_ValueType(), this.getHeaderValueType(), "valueType", null, 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHeaderMediator_Scope(), this.getScopeType(), "scope", null, 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHeaderMediator_ValueLiteral(), ecorePackage.getEString(), "valueLiteral", "header_value", 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHeaderMediator_ValueExpression(), this.getNamespacedProperty(), null, "valueExpression", null, 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHeaderMediator_InputConnector(), this.getHeaderMediatorInputConnector(), null, "inputConnector", null, 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHeaderMediator_OutputConnector(), this.getHeaderMediatorOutputConnector(), null, "outputConnector", null, 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHeaderMediator_ValueInline(), ecorePackage.getEString(), "valueInline", "", 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHeaderMediator_ValueInline(), ecorePackage.getEString(), "valueInline", null, 0, 1, HeaderMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(headerMediatorInputConnectorEClass, HeaderMediatorInputConnector.class, "HeaderMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -18369,7 +18429,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(throttlePolicyEntryEClass, ThrottlePolicyEntry.class, "ThrottlePolicyEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getThrottlePolicyEntry_ThrottleType(), this.getThrottleConditionType(), "throttleType", "IP", 0, 1, ThrottlePolicyEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getThrottlePolicyEntry_ThrottleRange(), ecorePackage.getEString(), "throttleRange", "other", 0, 1, ThrottlePolicyEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getThrottlePolicyEntry_AccessType(), this.getThrottleAccessType(), "accessType", "ALLOW", 0, 1, ThrottlePolicyEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getThrottlePolicyEntry_AccessType(), this.getThrottleAccessType(), "accessType", null, 0, 1, ThrottlePolicyEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getThrottlePolicyEntry_MaxRequestCount(), ecorePackage.getEInt(), "maxRequestCount", null, 0, 1, ThrottlePolicyEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getThrottlePolicyEntry_UnitTime(), ecorePackage.getEInt(), "unitTime", null, 0, 1, ThrottlePolicyEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getThrottlePolicyEntry_ProhibitPeriod(), ecorePackage.getEInt(), "prohibitPeriod", null, 0, 1, ThrottlePolicyEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18408,8 +18468,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getCommandProperty_ValueLiteral(), ecorePackage.getEString(), "valueLiteral", "literal_value", 0, 1, CommandProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCommandProperty_ValueContextPropertyName(), ecorePackage.getEString(), "valueContextPropertyName", "context_property_name", 0, 1, CommandProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCommandProperty_ValueMessageElementXpath(), this.getNamespacedProperty(), null, "valueMessageElementXpath", null, 0, 1, CommandProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCommandProperty_ContextAction(), this.getCommandPropertyContextAction(), "contextAction", "READ_AND_UPDATE_CONTEXT", 0, 1, CommandProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCommandProperty_MessageAction(), this.getCommandPropertyMessageAction(), "messageAction", "READ_AND_UPDATE_MESSAGE", 0, 1, CommandProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCommandProperty_ContextAction(), this.getCommandPropertyContextAction(), "contextAction", null, 0, 1, CommandProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCommandProperty_MessageAction(), this.getCommandPropertyMessageAction(), "messageAction", null, 0, 1, CommandProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractSqlExecutorMediatorEClass, AbstractSqlExecutorMediator.class, "AbstractSqlExecutorMediator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractSqlExecutorMediator_ConnectionType(), this.getSqlExecutorConnectionType(), "connectionType", "DB_CONNECTION", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18430,7 +18490,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getAbstractSqlExecutorMediator_PropertyPoolstatements(), this.getSqlExecutorBooleanValue(), "propertyPoolstatements", "DEFAULT", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractSqlExecutorMediator_PropertyTestonborrow(), this.getSqlExecutorBooleanValue(), "propertyTestonborrow", "DEFAULT", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractSqlExecutorMediator_PropertyTestwhileidle(), this.getSqlExecutorBooleanValue(), "propertyTestwhileidle", "DEFAULT", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAbstractSqlExecutorMediator_PropertyValidationquery(), ecorePackage.getEString(), "propertyValidationquery", "", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractSqlExecutorMediator_PropertyValidationquery(), ecorePackage.getEString(), "propertyValidationquery", null, 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractSqlExecutorMediator_PropertyInitialsize(), ecorePackage.getEInt(), "propertyInitialsize", "-1", 0, 1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractSqlExecutorMediator_SqlStatements(), this.getSqlStatement(), null, "sqlStatements", null, 0, -1, AbstractSqlExecutorMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -18468,7 +18528,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(dbReportMediatorOutputConnectorEClass, DBReportMediatorOutputConnector.class, "DBReportMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(ruleMediatorEClass, RuleMediator.class, "RuleMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRuleMediator_RuleSetURL(), ecorePackage.getEString(), "RuleSetURL", "", 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRuleMediator_RuleSetURL(), ecorePackage.getEString(), "RuleSetURL", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRuleMediator_RuleSetSourceType(), this.getRuleSourceType(), "ruleSetSourceType", "INLINE", 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRuleMediator_RuleSetSourceCode(), ecorePackage.getEString(), "ruleSetSourceCode", "<code/>", 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRuleMediator_RuleSetSourceKey(), this.getRegistryKeyProperty(), null, "ruleSetSourceKey", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18481,7 +18541,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getRuleMediator_OutputConnector(), this.getRuleMediatorOutputConnector(), null, "outputConnector", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRuleMediator_ChildMediatorsOutputConnector(), this.getRuleMediatorChildMediatorsOutputConnector(), null, "childMediatorsOutputConnector", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRuleMediator_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRuleMediator_SourceValue(), ecorePackage.getEString(), "sourceValue", "", 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRuleMediator_SourceValue(), ecorePackage.getEString(), "sourceValue", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRuleMediator_SourceXpath(), this.getNamespacedProperty(), null, "sourceXpath", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRuleMediator_TargetValue(), ecorePackage.getEString(), "targetValue", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRuleMediator_TargetResultXpath(), this.getNamespacedProperty(), null, "targetResultXpath", null, 0, 1, RuleMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18570,7 +18630,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getSmooksMediator_OutputExpression(), this.getNamespacedProperty(), null, "outputExpression", null, 0, 1, SmooksMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSmooksMediator_OutputProperty(), ecorePackage.getEString(), "outputProperty", null, 0, 1, SmooksMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSmooksMediator_OutputAction(), this.getExpressionAction(), "outputAction", null, 0, 1, SmooksMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSmooksMediator_OutputMethod(), this.getOutputMethod(), "outputMethod", "", 0, 1, SmooksMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSmooksMediator_OutputMethod(), this.getOutputMethod(), "outputMethod", null, 0, 1, SmooksMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSmooksMediator_InputConnector(), this.getSmooksMediatorInputConnector(), null, "inputConnector", null, 0, 1, SmooksMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSmooksMediator_OutputConnector(), this.getSmooksMediatorOutputConnector(), null, "outputConnector", null, 0, 1, SmooksMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -18583,7 +18643,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getStoreMediator_OnStoreSequence(), this.getRegistryKeyProperty(), null, "onStoreSequence", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStoreMediator_InputConnector(), this.getStoreMediatorInputConnector(), null, "inputConnector", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStoreMediator_OutputConnector(), this.getStoreMediatorOutputConnector(), null, "outputConnector", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStoreMediator_AvailableMessageStores(), ecorePackage.getEString(), "availableMessageStores", "", 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStoreMediator_AvailableMessageStores(), ecorePackage.getEString(), "availableMessageStores", null, 0, 1, StoreMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(storeMediatorInputConnectorEClass, StoreMediatorInputConnector.class, "StoreMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -18741,12 +18801,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(sequencesInputConnectorEClass, SequencesInputConnector.class, "SequencesInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(urlRewriteRuleActionEClass, URLRewriteRuleAction.class, "URLRewriteRuleAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getURLRewriteRuleAction_RuleAction(), this.getRuleActionType(), "ruleAction", "", 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getURLRewriteRuleAction_RuleFragment(), this.getRuleFragmentType(), "ruleFragment", "", 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getURLRewriteRuleAction_RuleOption(), this.getRuleOptionType(), "ruleOption", "", 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getURLRewriteRuleAction_RuleAction(), this.getRuleActionType(), "ruleAction", null, 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getURLRewriteRuleAction_RuleFragment(), this.getRuleFragmentType(), "ruleFragment", null, 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getURLRewriteRuleAction_RuleOption(), this.getRuleOptionType(), "ruleOption", null, 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getURLRewriteRuleAction_ActionExpression(), this.getNamespacedProperty(), null, "actionExpression", null, 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getURLRewriteRuleAction_ActionValue(), ecorePackage.getEString(), "actionValue", "", 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getURLRewriteRuleAction_ActionRegex(), ecorePackage.getEString(), "actionRegex", "", 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getURLRewriteRuleAction_ActionValue(), ecorePackage.getEString(), "actionValue", null, 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getURLRewriteRuleAction_ActionRegex(), ecorePackage.getEString(), "actionRegex", null, 0, 1, URLRewriteRuleAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(urlRewriteRuleEClass, URLRewriteRule.class, "URLRewriteRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getURLRewriteRule_UrlRewriteRuleCondition(), this.getEvaluatorExpressionProperty(), null, "urlRewriteRuleCondition", null, 0, 1, URLRewriteRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -19000,6 +19060,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(dataMapperMediatorEClass, DataMapperMediator.class, "DataMapperMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataMapperMediator_InputConnector(), this.getDataMapperMediatorInputConnector(), null, "inputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataMapperMediator_OutputConnector(), this.getDataMapperMediatorOutputConnector(), null, "outputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperMediator_Configuration(), this.getRegistryKeyProperty(), null, "configuration", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperMediator_InputSchema(), this.getRegistryKeyProperty(), null, "InputSchema", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperMediator_OutputSchema(), this.getRegistryKeyProperty(), null, "outputSchema", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataMapperMediator_ConfigurationLocalPath(), ecorePackage.getEString(), "configurationLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataMapperMediator_InputSchemaLocalPath(), ecorePackage.getEString(), "inputSchemaLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataMapperMediator_OutputSchemaLocalPath(), ecorePackage.getEString(), "outputSchemaLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataMapperMediatorInputConnectorEClass, DataMapperMediatorInputConnector.class, "DataMapperMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

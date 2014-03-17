@@ -32,7 +32,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 */
 	public static EsbFactory init() {
 		try {
-			EsbFactory theEsbFactory = (EsbFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/wso2/developerstudio/eclipse/gmf/esb"); 
+			EsbFactory theEsbFactory = (EsbFactory)EPackage.Registry.INSTANCE.getEFactory(EsbPackage.eNS_URI);
 			if (theEsbFactory != null) {
 				return theEsbFactory;
 			}

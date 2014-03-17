@@ -134,7 +134,7 @@ public class DataMapperObjectSourceEditor {
 //		getDocument().setDocumentPartitioner(new StructuredTextPartitioner());
 		getDocument().set(configuration);
 		
-		export(configuration);
+//		export(configuration);
 //		 EList<TreeNode> tree= configuration.getTreeNode();
 		
 //		printHierarchy(configuration);

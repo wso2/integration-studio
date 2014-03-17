@@ -92,7 +92,6 @@ public interface EndPointProperty extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Scope</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -104,7 +103,7 @@ public interface EndPointProperty extends EObject {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope
 	 * @see #setScope(EndPointPropertyScope)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_Scope()
-	 * @model default="" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	EndPointPropertyScope getScope();
@@ -122,7 +121,6 @@ public interface EndPointProperty extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Value Type</b></em>' attribute.
-	 * The default value is <code>"VALUE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -134,7 +132,7 @@ public interface EndPointProperty extends EObject {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
 	 * @see #setValueType(PropertyValueType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointProperty_ValueType()
-	 * @model default="VALUE"
+	 * @model
 	 * @generated
 	 */
 	PropertyValueType getValueType();

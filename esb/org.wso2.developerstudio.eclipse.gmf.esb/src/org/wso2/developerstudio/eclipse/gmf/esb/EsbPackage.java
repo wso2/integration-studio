@@ -19851,13 +19851,67 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__CONFIGURATION = MEDIATOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Input Schema</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Output Schema</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Configuration Local Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Input Schema Local Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Output Schema Local Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Data Mapper Mediator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 2;
+	int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.
@@ -27682,6 +27736,72 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getDataMapperMediator_OutputConnector();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfiguration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Configuration</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfiguration()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EReference getDataMapperMediator_Configuration();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchema <em>Input Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Input Schema</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchema()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EReference getDataMapperMediator_InputSchema();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchema <em>Output Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Output Schema</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchema()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EReference getDataMapperMediator_OutputSchema();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigurationLocalPath <em>Configuration Local Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Configuration Local Path</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigurationLocalPath()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_ConfigurationLocalPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchemaLocalPath <em>Input Schema Local Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Input Schema Local Path</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchemaLocalPath()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_InputSchemaLocalPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchemaLocalPath <em>Output Schema Local Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Output Schema Local Path</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchemaLocalPath()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_OutputSchemaLocalPath();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector <em>Data Mapper Mediator Input Connector</em>}'.
@@ -40301,6 +40421,54 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = eINSTANCE.getDataMapperMediator_OutputConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_MEDIATOR__CONFIGURATION = eINSTANCE.getDataMapperMediator_Configuration();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Schema</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_MEDIATOR__INPUT_SCHEMA = eINSTANCE.getDataMapperMediator_InputSchema();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Schema</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA = eINSTANCE.getDataMapperMediator_OutputSchema();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration Local Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH = eINSTANCE.getDataMapperMediator_ConfigurationLocalPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Schema Local Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH = eINSTANCE.getDataMapperMediator_InputSchemaLocalPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Schema Local Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = eINSTANCE.getDataMapperMediator_OutputSchemaLocalPath();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.

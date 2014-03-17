@@ -45,6 +45,7 @@ import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
@@ -81,6 +82,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 	 */
 	private RegistryKeyProperty rkProperty;
 	
+
 	/**
 	 * Local named entities.
 	 */
@@ -307,6 +309,8 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 			registryResourceProviderSelector.open();
 			if (registryResourceProviderSelector.getReturnCode()==Window.OK){
 				setSelectedPath(registryResourceProviderSelector.getSelectedPath());
+				String localPathOfRegistryKey = registryResourceProviderSelector.getIPathOfSelection();
+				((RegistryKeyPropertyImpl)rkProperty).setLocalPathOfRegistryKey(localPathOfRegistryKey);
 			}
 		}finally{
 			show();

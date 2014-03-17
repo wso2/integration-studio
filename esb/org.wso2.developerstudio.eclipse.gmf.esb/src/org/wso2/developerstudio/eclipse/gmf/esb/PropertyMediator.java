@@ -97,7 +97,6 @@ public interface PropertyMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Property Action</b></em>' attribute.
-	 * The default value is <code>"SET"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -109,7 +108,7 @@ public interface PropertyMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction
 	 * @see #setPropertyAction(PropertyAction)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_PropertyAction()
-	 * @model default="SET"
+	 * @model
 	 * @generated
 	 */
 	PropertyAction getPropertyAction();
@@ -127,7 +126,6 @@ public interface PropertyMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Property Scope</b></em>' attribute.
-	 * The default value is <code>"SYNAPSE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -139,7 +137,7 @@ public interface PropertyMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope
 	 * @see #setPropertyScope(PropertyScope)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_PropertyScope()
-	 * @model default="SYNAPSE"
+	 * @model
 	 * @generated
 	 */
 	PropertyScope getPropertyScope();
@@ -345,7 +343,6 @@ public interface PropertyMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Value String Pattern</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value String Pattern</em>' attribute isn't clear,
@@ -355,7 +352,7 @@ public interface PropertyMediator extends Mediator {
 	 * @return the value of the '<em>Value String Pattern</em>' attribute.
 	 * @see #setValueStringPattern(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_ValueStringPattern()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getValueStringPattern();

@@ -67,7 +67,6 @@ public interface ScriptMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Script Language</b></em>' attribute.
-	 * The default value is <code>"JAVASCRIPT"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptLanguage}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -79,7 +78,7 @@ public interface ScriptMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ScriptLanguage
 	 * @see #setScriptLanguage(ScriptLanguage)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_ScriptLanguage()
-	 * @model default="JAVASCRIPT"
+	 * @model
 	 * @generated
 	 */
 	ScriptLanguage getScriptLanguage();
@@ -229,7 +228,6 @@ public interface ScriptMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Key Type</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -241,7 +239,7 @@ public interface ScriptMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.scriptKeyTypeEnum
 	 * @see #setKeyType(scriptKeyTypeEnum)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getScriptMediator_KeyType()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	scriptKeyTypeEnum getKeyType();

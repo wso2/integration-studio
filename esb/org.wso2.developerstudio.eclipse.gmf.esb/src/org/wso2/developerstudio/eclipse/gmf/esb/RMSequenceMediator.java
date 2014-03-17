@@ -31,7 +31,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface RMSequenceMediator extends Mediator {
 	/**
 	 * Returns the value of the '<em><b>Rm Spec Version</b></em>' attribute.
-	 * The default value is <code>"VERSION_1_0"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.RMSpecVersion}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -43,7 +42,7 @@ public interface RMSequenceMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.RMSpecVersion
 	 * @see #setRmSpecVersion(RMSpecVersion)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getRMSequenceMediator_RmSpecVersion()
-	 * @model default="VERSION_1_0"
+	 * @model
 	 * @generated
 	 */
 	RMSpecVersion getRmSpecVersion();

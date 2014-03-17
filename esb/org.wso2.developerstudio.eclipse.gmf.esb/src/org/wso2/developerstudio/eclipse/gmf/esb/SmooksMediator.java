@@ -226,7 +226,6 @@ public interface SmooksMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Output Method</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.OutputMethod}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -238,7 +237,7 @@ public interface SmooksMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.OutputMethod
 	 * @see #setOutputMethod(OutputMethod)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSmooksMediator_OutputMethod()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	OutputMethod getOutputMethod();

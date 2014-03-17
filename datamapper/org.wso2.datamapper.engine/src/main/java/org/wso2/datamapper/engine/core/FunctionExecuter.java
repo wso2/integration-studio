@@ -22,6 +22,7 @@ import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import org.mozilla.javascript.Context;
+import org.mozilla.javascript.Function;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
 import org.wso2.datamapper.engine.models.MappingConfigModel;
@@ -64,13 +65,22 @@ public class FunctionExecuter {
 			}
 
 			ScriptableObjectFactory inputRecordWrapper = new ScriptableObjectFactory(inputRecord);
+			inputRecordWrapper.setScope(this.scope);
 			ScriptableObjectFactory outputRecordWrapper = new ScriptableObjectFactory(outputRecord);
+			outputRecordWrapper.setScope(this.scope);
+			//this.scope.put("input", scope, inputRecordWrapper);
+			//this.scope.put("output", scope, outputRecordWrapper);
 			
-			this.scope.put("input", scope, inputRecordWrapper);
-			this.scope.put("output", scope, outputRecordWrapper);
+			//Function fn = context.compileFunction(this.scope, funtionSourceAsString, "xyz-func", 0, null);
 			
-			StringBuilder configScript = new StringBuilder("map_"+funcType+"_"+inputDataType+"_"+funcType+"_"+outputDataType+"();");
-			Object resultOb = context.evaluateString(scope, configScript.toString(), "", 1, null);
+			Object wrappedOut = Context.javaToJS(System.out, scope);
+	        ScriptableObject.putProperty(scope, "out", wrappedOut);
+			
+			 String fnName = "map_"+funcType+"_"+inputDataType+"_"+funcType+"_"+outputDataType;
+			 Function fn = (Function)scope.get(fnName, scope);
+			 Object resultOb = fn.call(context, this.scope, this.scope, new Object[] {inputRecordWrapper,outputRecordWrapper});
+		
+			//Object resultOb = context.evaluateString(scope, configScript.toString(), "", 1, null);
 
 			if(resultOb != ScriptableObject.NOT_FOUND){
 				resultRecord = outputRecordWrapper.getRecord();

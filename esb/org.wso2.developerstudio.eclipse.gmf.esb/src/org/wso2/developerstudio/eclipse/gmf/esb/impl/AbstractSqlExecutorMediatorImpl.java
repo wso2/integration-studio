@@ -431,7 +431,7 @@ public abstract class AbstractSqlExecutorMediatorImpl extends MediatorImpl imple
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PROPERTY_VALIDATIONQUERY_EDEFAULT = "";
+	protected static final String PROPERTY_VALIDATIONQUERY_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPropertyValidationquery() <em>Property Validationquery</em>}' attribute.

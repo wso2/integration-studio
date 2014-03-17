@@ -11,7 +11,7 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
 	 * @generated
 	 */
 	public DiagramConnectionsPreferencePage() {
-		setPreferenceStore(dataMapper.diagram.part.DataMapperDiagramEditorPlugin
-				.getInstance().getPreferenceStore());
+		setPreferenceStore(dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

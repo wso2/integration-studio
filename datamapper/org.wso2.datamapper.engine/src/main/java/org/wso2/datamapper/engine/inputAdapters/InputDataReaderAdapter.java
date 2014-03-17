@@ -22,6 +22,7 @@ import java.util.Map;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.axiom.om.OMElement;
 
 public interface InputDataReaderAdapter {
 	
@@ -31,6 +32,7 @@ public interface InputDataReaderAdapter {
 	public void setRootRecord(GenericRecord rootRecord);
 	public GenericRecord getRootRecord();
 	public GenericRecord getChildRecord();
+	public GenericRecord getFinalRecord(Schema schema);
 	public List<GenericRecord> getArrayChildList();
 	
 }

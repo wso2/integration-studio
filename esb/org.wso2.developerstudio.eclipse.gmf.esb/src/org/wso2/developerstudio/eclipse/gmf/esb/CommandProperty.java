@@ -170,7 +170,6 @@ public interface CommandProperty extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Context Action</b></em>' attribute.
-	 * The default value is <code>"READ_AND_UPDATE_CONTEXT"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -182,7 +181,7 @@ public interface CommandProperty extends EObject {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction
 	 * @see #setContextAction(CommandPropertyContextAction)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_ContextAction()
-	 * @model default="READ_AND_UPDATE_CONTEXT"
+	 * @model
 	 * @generated
 	 */
 	CommandPropertyContextAction getContextAction();
@@ -200,7 +199,6 @@ public interface CommandProperty extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Message Action</b></em>' attribute.
-	 * The default value is <code>"READ_AND_UPDATE_MESSAGE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyMessageAction}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -212,7 +210,7 @@ public interface CommandProperty extends EObject {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyMessageAction
 	 * @see #setMessageAction(CommandPropertyMessageAction)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCommandProperty_MessageAction()
-	 * @model default="READ_AND_UPDATE_MESSAGE"
+	 * @model
 	 * @generated
 	 */
 	CommandPropertyMessageAction getMessageAction();

@@ -130,6 +130,7 @@ public class DataMapperMediatorItemProvider
 					@Override
 					public void setPropertyValue(Object object, Object value) {
 						// TODO Auto-generated method stub
+						super.setPropertyValue(object, value);
 						if (value instanceof RegistryKeyPropertyImpl){
 							String localPath = ((RegistryKeyPropertyImpl)value).getLocalPathOfRegistryKey();
 							DataMapperMediatorImpl datamapperMediator = (DataMapperMediatorImpl)object;

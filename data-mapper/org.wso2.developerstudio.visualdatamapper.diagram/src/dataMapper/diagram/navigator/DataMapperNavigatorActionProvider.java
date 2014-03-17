@@ -199,8 +199,12 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 			 "Exception while openning diagram", e); //$NON-NLS-1$
 			 }*/
 
+			openDataMapperDiagram(selection);
+		}
+
+		public static void openDataMapperDiagram(IFile selection) {
 			IFile fileTobeOpen = null;
-			String synFilePath = selection.getFullPath().toOSString();
+			//String synFilePath = selection.getFullPath().toOSString();
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = window.getActivePage();
 			Path path = new Path(getGraphicalResource(selection));
@@ -222,7 +226,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 			}
 		}
 
-		private String getGraphicalResource(IFile selection) {
+		private static String getGraphicalResource(IFile selection) {
 			String synFilePath = selection.getFullPath().toOSString();
 			synFilePath = synFilePath.replaceAll(Pattern.quote("\\"), "/");
 			String graphicalResource = synFilePath.replaceAll(".js$", ".datamapper_diagram");

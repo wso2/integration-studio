@@ -1,5 +1,8 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import java.io.File;
+import java.util.regex.Pattern;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
@@ -35,6 +38,8 @@ import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
@@ -48,6 +53,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapper
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**
  * @generated NOT
@@ -336,19 +344,13 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 	
 	public void openDataMapperDiagram() {
+		
 		NodeImpl eobject = ((NodeImpl)this.getModel());
 		DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl)eobject.getElement();
 		String localPath = datamapper.getConfigurationLocalPath();
-		localPath = localPath.replace(".js", ".datamapper_diagram");
 		Path path = new Path(localPath);
 		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-		
-		try {
-			IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), file);
-		} catch (PartInitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		DataMapperEditor.open(file);
 	}
 
 }

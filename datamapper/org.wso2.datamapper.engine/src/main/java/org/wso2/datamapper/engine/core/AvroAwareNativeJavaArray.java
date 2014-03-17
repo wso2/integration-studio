@@ -24,13 +24,13 @@ import org.apache.avro.generic.GenericData.Array;
 import org.mozilla.javascript.NativeJavaArray;
 import org.mozilla.javascript.Scriptable;
 
-public class  AvroAwareNativeJavaArray<T> extends NativeJavaArray  {
+public class  AvroAwareNativeJavaArray extends NativeJavaArray  {
 	
-	private Array<T> recordArray;
+	private Array<Object> recordArray;
 
 	private static final long serialVersionUID = 1625850167152425723L;
 
-	public AvroAwareNativeJavaArray(Scriptable scope, Object array,Array<T> recordArray) {
+	public AvroAwareNativeJavaArray(Scriptable scope, Object array,Array<Object> recordArray) {
 		super(scope, array);
 		this.recordArray = recordArray;
 	}
@@ -40,9 +40,9 @@ public class  AvroAwareNativeJavaArray<T> extends NativeJavaArray  {
 		Schema elementType = recordArray.getSchema().getElementType();
 		if(elementType.getType().equals(Type.RECORD)){
 		GenericRecord record = new GenericData.Record(elementType);
-		recordArray.add((T)record);
+		recordArray.add(record);
 		} else{
-			recordArray.add((T)value);
+			recordArray.add(value);
 		}
 		//super.put(index, start, value);
 	}
@@ -52,5 +52,21 @@ public class  AvroAwareNativeJavaArray<T> extends NativeJavaArray  {
 		// TODO Auto-generated method stub
 		super.put(id, start, value);
 	}
+
+	
+	@Override
+    public Object get(int index, Scriptable start) {
+            Schema elementType = recordArray.getSchema().getElementType();
+            if(elementType.getType().equals(Type.RECORD)){
+                    if((recordArray.size() -1) < index){
+                            recordArray.add(new GenericData.Record(elementType));
+                    }
+                    return new ScriptableObjectFactory((GenericRecord)recordArray.get(index));
+            } else{
+                    return recordArray.get(index);
+            }
+            //return super.get(index, start);
+    }
+
 
 }

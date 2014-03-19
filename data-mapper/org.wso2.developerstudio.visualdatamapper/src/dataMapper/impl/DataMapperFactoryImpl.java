@@ -114,7 +114,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public DataMapperRoot createDataMapperRoot() {
 		DataMapperRootImpl dataMapperRoot = new DataMapperRootImpl();
 		dataMapperRoot.setInput(createInput());
-		dataMapperRoot.setOperations(createOperations());
 		dataMapperRoot.setOutput(createOutput());
 		return dataMapperRoot;
 	}

@@ -168,10 +168,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * @generated NOT
 	 */
 	public Attribute createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();
-		
-		attribute.setInNode(createInNode());
-		attribute.setOutNode(createOutNode());
+		AttributeImpl attribute = new AttributeImpl();		
+		//attribute.setInNode(createInNode());
+		//attribute.setOutNode(createOutNode());
 		return attribute;
 	}
 

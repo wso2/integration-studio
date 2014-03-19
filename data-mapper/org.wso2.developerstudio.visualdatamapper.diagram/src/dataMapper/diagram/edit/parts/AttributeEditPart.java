@@ -453,7 +453,7 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 			fFigureFileNameFigure.setText(name);
 			fFigureFileNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);
 
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 12, SWT.NORMAL));
+			fFigureFileNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			figure.setOutline(false);
 			mainImageRectangle.setOutline(false);
 			figure.setFill(false);

@@ -1,5 +1,6 @@
 package dataMapper.diagram.edit.parts;
 
+import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
@@ -22,13 +23,16 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 
 import dataMapper.Attribute;
 import dataMapper.DataMapperFactory;
@@ -220,7 +224,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 				new dataMapper.diagram.edit.policies.InputCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // remove selection
+		//installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); // remove selection
 																								// rectangle
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 
@@ -269,6 +273,32 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 		return figure;
 	}
+	
+/*	protected void addChildVisual(EditPart childEditPart, int index) {
+		if (addFixedChild(childEditPart)) {
+			return;
+		}
+		super.addChildVisual(childEditPart, -1);
+	}
+	
+	protected boolean addFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof TreeNodeEditPart) {
+			((IFigure) this.getContentPane().getChildren().get(1)).add(((TreeNodeEditPart) childEditPart).getFigure());
+			return true;
+		}
+		
+		if (childEditPart instanceof TreeNode2EditPart) {
+			((IFigure) this.getContentPane().getChildren().get(1)).add(((TreeNode2EditPart) childEditPart).getFigure());
+			return true;
+		}
+		
+		if (childEditPart instanceof TreeNode3EditPart) {
+			((IFigure) this.getContentPane().getChildren().get(1)).add(((TreeNode3EditPart) childEditPart).getFigure());
+			return true;
+		}
+
+		return false;
+	}*/
 
 	/**
 	 * @generated NOT
@@ -285,17 +315,33 @@ public class InputEditPart extends ShapeNodeEditPart {
 		 */
 		public InputFigure() {
 
+			
+			
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
 			layoutThis.setSpacing(0);
-
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(100)));
 			this.setOutline(true);
 
-			this.setBorder(new TitleBarBorder("Input"));
+/*			
+			RectangleFigure figure= new RectangleFigure();
+			figure.setBackgroundColor(new Color(null, 96, 148, 219));
+			figure.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(25)));
+			this.add(figure);
+			
+			RectangleFigure figure2= new RectangleFigure();
+			figure2.setBackgroundColor(new Color(null, 96, 148, 219));
+			figure2.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(75)));
+			this.add(figure2);*/
+			
+			TitleBarBorder titleBarBorder=new TitleBarBorder("Input");
+			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setFont(new Font(null, "Arial", 10,SWT.NORMAL));
+			this.setBorder(titleBarBorder);
 
 		}
 
@@ -310,6 +356,12 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 			this.add(fFigureSourceNameFigure);
 
+		}
+		
+		@Override
+		public void add(IFigure figure, Object constraint, int index) {
+			// TODO Auto-generated method stub
+			super.add(figure, constraint, index);
 		}
 
 	}

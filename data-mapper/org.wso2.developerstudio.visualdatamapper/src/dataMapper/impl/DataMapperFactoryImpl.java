@@ -114,7 +114,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public DataMapperRoot createDataMapperRoot() {
 		DataMapperRootImpl dataMapperRoot = new DataMapperRootImpl();
 		dataMapperRoot.setInput(createInput());
-		dataMapperRoot.setOperations(createOperations());
 		dataMapperRoot.setOutput(createOutput());
 		return dataMapperRoot;
 	}
@@ -168,10 +167,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * @generated NOT
 	 */
 	public Attribute createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();
-		
-		attribute.setInNode(createInNode());
-		attribute.setOutNode(createOutNode());
+		AttributeImpl attribute = new AttributeImpl();		
+		//attribute.setInNode(createInNode());
+		//attribute.setOutNode(createOutNode());
 		return attribute;
 	}
 

@@ -27,6 +27,7 @@
 		<module>registry</module>
 		<module>carbon</module>  
 		<module>data-services</module>
+                <module>data-mapper</module>
 		<module>esb</module>
 		<module>gs</module>
 		<module>cep</module>

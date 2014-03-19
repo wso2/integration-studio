@@ -21,7 +21,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 
 import dataMapper.Element;
 import dataMapper.diagram.edit.parts.AttributeEditPart;
-import dataMapper.diagram.edit.parts.DataMapperDiagramEditPart;
+import dataMapper.diagram.edit.parts.DataMapperRootEditPart;
 import dataMapper.diagram.edit.parts.ElementEditPart;
 import dataMapper.diagram.edit.parts.InNode2EditPart;
 import dataMapper.diagram.edit.parts.InNodeEditPart;
@@ -33,7 +33,6 @@ import dataMapper.diagram.edit.parts.OutputEditPart;
 import org.eclipse.gef.tools.AbstractTool;
 import org.eclipse.gef.tools.SelectEditPartTracker;
 import org.eclipse.ui.part.IShowInSource;
-
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.ConnectionRefreshMgr;
 
 /**
@@ -155,7 +154,7 @@ public class DataMapperPaletteFactory {
 
 		private EditPart getRoot(EditPart editPart) {
 			EditPart temp = editPart.getParent();
-			while ((!(temp instanceof DataMapperDiagramEditPart)) && (temp != null)) {
+			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
 				// System.out.println("Node     " +temp);
 				// System.out.println("NodeNodeNodeNodeNodeNodeNodeNode     "
 				// +childEditPart.getClass().getName() );

@@ -32,7 +32,9 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 
 import dataMapper.*;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
@@ -196,9 +198,9 @@ public class OutputEditPart extends ShapeNodeEditPart {
 				new dataMapper.diagram.edit.policies.OutputCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		//removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
+		//installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
@@ -351,6 +353,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		 */
 		public OutputFigure() {
 
+			
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
@@ -358,11 +361,25 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(100)));
-
 			this.setOutline(true);
-			this.setFill(false);
 
-			this.setBorder(new TitleBarBorder("Output"));
+/*			
+			RectangleFigure figure= new RectangleFigure();
+			figure.setBackgroundColor(new Color(null, 96, 148, 219));
+			figure.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(25)));
+			this.add(figure);
+			
+			RectangleFigure figure2= new RectangleFigure();
+			figure2.setBackgroundColor(new Color(null, 96, 148, 219));
+			figure2.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(75)));
+			this.add(figure2);*/
+			
+			TitleBarBorder titleBarBorder=new TitleBarBorder("Output");
+			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setFont(new Font(null, "Arial", 10,SWT.NORMAL));
+			this.setBorder(titleBarBorder);
+			
 
 		}
 

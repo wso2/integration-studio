@@ -197,10 +197,10 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 * org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#isSelectable
 	 * ()
 	 */
-/*	@Override
+	@Override
 	public boolean isSelectable() {
 		return false;
-	}*/
+	}
 
 	/*
 	 * add In/Out Nodes if Element is Input , dont add inNodes if Element is
@@ -208,13 +208,41 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 
-		if (childEditPart instanceof InNode2EditPart || childEditPart instanceof InNodeEditPart) {
+/*		if (childEditPart instanceof InNode2EditPart || childEditPart instanceof InNodeEditPart) {
 			
 			EditPart temp = this.getParent();
 			while (!(temp instanceof InputEditPart) && !(temp instanceof OutputEditPart) && (temp != null)) {
 				temp = temp.getParent();
-			}
-			if(temp instanceof OutputEditPart){				
+			}			
+			
+			if (childEditPart instanceof InNodeEditPart) {
+				IFigure borderItemFigure = ((InNodeEditPart) childEditPart)
+						.getFigure();				
+				
+				if(temp instanceof InputEditPart){	
+					borderItemFigure = new Figure();
+				}
+				
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.WEST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+				return true;
+			}else if(childEditPart instanceof InNode2EditPart){
+				IFigure borderItemFigure = ((InNode2EditPart) childEditPart)
+						.getFigure();
+				
+				if(temp instanceof InputEditPart){	
+					borderItemFigure = new Figure();
+				}
+				
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.WEST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+				return true;
+			}*/
+			
+			
+/*			if(temp instanceof OutputEditPart){				
 				if (childEditPart instanceof InNodeEditPart) {
 					IFigure borderItemFigure = ((InNodeEditPart) childEditPart)
 							.getFigure();
@@ -232,9 +260,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				}
 			}else{
 				return true;
-			}
+			}*/
 
-
+/*
 		}
 		
 		else if (childEditPart instanceof OutNode2EditPart	|| childEditPart instanceof OutNodeEditPart) {
@@ -244,9 +272,46 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				temp = temp.getParent();
 			}
 			
+			
+			
+			
+			if (childEditPart instanceof OutNodeEditPart) {
+				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart)
+						.getFigure();
+				
+				if(temp instanceof OutputEditPart){	
+					borderItemFigure = new Figure();
+				}
+				
+				
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.EAST, 0.5);
+				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+				return true;
+				}
+
+				else if(childEditPart instanceof OutNode2EditPart){
+					IFigure borderItemFigure = ((OutNode2EditPart) childEditPart)
+							.getFigure();
+					
+					if(temp instanceof OutputEditPart){	
+						borderItemFigure = new Figure();
+					}
+					
+					
+					BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+							borderItemFigure, PositionConstants.EAST, 0.5);
+					getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+					return true;
+				}
+			
+			*/
+			
+			
+/*			
 			if(temp instanceof InputEditPart){				
-			if (childEditPart instanceof OutputEditPart) {
-				IFigure borderItemFigure = ((OutputEditPart) childEditPart)
+			if (childEditPart instanceof OutNodeEditPart) {
+				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart)
 						.getFigure();
 				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
 						borderItemFigure, PositionConstants.EAST, 0.5);
@@ -264,16 +329,16 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				}			
 			}else{
 				return true;
-			}
+			}*/
 			
-		}
+		//}
 	
 		
 		
-/*		if (childEditPart instanceof InNode2EditPart || childEditPart instanceof InNodeEditPart) {
+		if (childEditPart instanceof InNode2EditPart || childEditPart instanceof InNodeEditPart) {
 
 			EditPart temp = this.getParent();
-			while ((!(temp instanceof DataMapperDiagramEditPart)) && (temp != null)) {
+			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
 
 				if (temp instanceof InputEditPart) {
 
@@ -285,8 +350,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 						figureInput.add(emptyFigure);
 						break;
 					} else {
-						NodeFigure figureInput = ((InNode2EditPart) childEditPart)
-								.getNodeFigureOutput();
+						NodeFigure figureInput = (NodeFigure) ((InNode2EditPart) childEditPart)
+								.getFigure();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -298,7 +363,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			}
 			
-			 * Innodes for Output elements
+			 // Innodes for Output elements
 			 
 			if (childEditPart instanceof InNode2EditPart) {
 				IFigure borderItemFigure = ((InNode2EditPart) childEditPart).getFigure();
@@ -321,7 +386,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				|| childEditPart instanceof OutNodeEditPart) {
 
 			EditPart temp = this.getParent();
-			while ((!(temp instanceof DataMapperDiagramEditPart)) && (temp != null)) {
+			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
 
 				if (temp instanceof OutputEditPart) {
 					if (childEditPart instanceof OutNodeEditPart) {
@@ -334,8 +399,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 					}
 
 					else {
-						NodeFigure figureInput = ((OutNode2EditPart) childEditPart)
-								.getNodeFigureOutput();
+						NodeFigure figureInput = (NodeFigure) ((OutNode2EditPart) childEditPart)
+								.getFigure();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -364,7 +429,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				return true;
 			}
 		}
-*/
+
 		return false;
 	}
 

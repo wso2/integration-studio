@@ -296,20 +296,17 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 */
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
-		
+
 		IDiagramGraphicalViewer viewer = getDiagramGraphicalViewer();
 		KeyHandler viewerKeyHandler = new CustomDiagramGraphicalViewerKeyHandler(this, viewer);
-
 
 		viewerKeyHandler.setParent(getKeyHandler());
 		viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
 
-
 		//This enables the property view to be informed of selection changes in our graphical view, 
 		//when our view is the active workbench part.
 		dataMapperEditor.getSite().setSelectionProvider(viewer);
-		
-		
+
 		dataMapper.diagram.part.DiagramEditorContextMenuProvider provider = new dataMapper.diagram.part.DiagramEditorContextMenuProvider(
 				this, getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);

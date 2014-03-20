@@ -7,6 +7,7 @@ import dataMapper.DataMapperPackage;
 import dataMapper.DataMapperRoot;
 
 import dataMapper.Input;
+import dataMapper.Operation;
 import dataMapper.Operations;
 import dataMapper.Output;
 import org.eclipse.emf.common.notify.Notification;
@@ -60,7 +61,7 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * @generated
 	 * @ordered
 	 */
-	protected Operations operations;
+	protected Operation operations;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -171,7 +172,7 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operations getOperations() {
+	public Operation getOperations() {
 		return operations;
 	}
 
@@ -180,8 +181,8 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOperations(Operations newOperations, NotificationChain msgs) {
-		Operations oldOperations = operations;
+	public NotificationChain basicSetOperations(Operation newOperations, NotificationChain msgs) {
+		Operation oldOperations = operations;
 		operations = newOperations;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS, oldOperations, newOperations);
@@ -195,7 +196,7 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOperations(Operations newOperations) {
+	public void setOperations(Operation newOperations) {
 		if (newOperations != operations) {
 			NotificationChain msgs = null;
 			if (operations != null)
@@ -260,7 +261,7 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 				setOutput((Output)newValue);
 				return;
 			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
-				setOperations((Operations)newValue);
+				setOperations((Operation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -281,7 +282,7 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 				setOutput((Output)null);
 				return;
 			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
-				setOperations((Operations)null);
+				setOperations((Operation)null);
 				return;
 		}
 		super.eUnset(featureID);

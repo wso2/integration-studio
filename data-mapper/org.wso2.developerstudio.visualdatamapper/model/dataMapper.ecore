@@ -9,7 +9,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Output"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" eType="#//Operations"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" eType="#//Operation"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//DataMapperNode">
@@ -64,8 +64,7 @@
         eOpposite="#//Element/inNode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributeParent" eType="#//Attribute"
         eOpposite="#//Attribute/inNode"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="concatParent" eType="#//Concat"
-        eOpposite="#//Concat/inNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concatParent" eType="#//Concat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OutNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLink" upperBound="-1"
@@ -79,14 +78,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
         eOpposite="#//OutNode/outgoingLink"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Concat">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" upperBound="-1"
-        eType="#//InNode" containment="true" eOpposite="#//InNode/concatParent"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" upperBound="-1"
+  <eClassifiers xsi:type="ecore:EClass" name="Concat" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//DataMapperNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNodes" upperBound="-1"
+        eType="#//InNode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNodes" upperBound="-1"
         eType="#//OutNode" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Operations" eSuperTypes="#//DataMapperNode">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="concat" upperBound="-1"
-        eType="#//Concat" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

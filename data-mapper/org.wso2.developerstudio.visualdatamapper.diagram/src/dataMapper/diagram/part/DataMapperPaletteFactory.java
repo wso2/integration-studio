@@ -94,44 +94,11 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createConcat3CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(
-				dataMapper.diagram.part.Messages.Concat3CreationTool_title,
-				dataMapper.diagram.part.Messages.Concat3CreationTool_desc,
-				Collections
-						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.Concat_3013));
+		ToolEntry entry = new ToolEntry(dataMapper.diagram.part.Messages.Concat3CreationTool_title,
+				dataMapper.diagram.part.Messages.Concat3CreationTool_desc, null, null) {
+		};
 		entry.setId("createConcat3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
-				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Concat_3013));
-		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static class NodeToolEntry extends ToolEntry {
-
-		/**
-		 * @generated
-		 */
-		private final List<IElementType> elementTypes;
-
-		/**
-		 * @generated
-		 */
-		private NodeToolEntry(String title, String description, List<IElementType> elementTypes) {
-			super(title, description, null, null);
-			this.elementTypes = elementTypes;
-		}
-
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeCreationTool(elementTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
 	}
 
 	/**

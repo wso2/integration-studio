@@ -29,9 +29,6 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 			case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 				return new dataMapper.diagram.edit.parts.OutputEditPart(view);
 
-			case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID:
-				return new dataMapper.diagram.edit.parts.OperationsEditPart(view);
-
 			case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 				return new dataMapper.diagram.edit.parts.TreeNodeEditPart(view);
 
@@ -58,15 +55,6 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 
 			case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 				return new dataMapper.diagram.edit.parts.TreeNode3EditPart(view);
-
-			case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-				return new dataMapper.diagram.edit.parts.ConcatEditPart(view);
-
-			case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
-				return new dataMapper.diagram.edit.parts.InNode3EditPart(view);
-
-			case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
-				return new dataMapper.diagram.edit.parts.OutNode3EditPart(view);
 
 			case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
 				return new dataMapper.diagram.edit.parts.DataMapperLinkEditPart(view);

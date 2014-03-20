@@ -30,8 +30,6 @@ public class DataMapperDiagramUpdater {
 			return getInput_2002SemanticChildren(view);
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getOutput_2003SemanticChildren(view);
-		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID:
-			return getOperations_2004SemanticChildren(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002SemanticChildren(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -42,8 +40,6 @@ public class DataMapperDiagramUpdater {
 			return getElement_3007SemanticChildren(view);
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011SemanticChildren(view);
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-			return getConcat_3013SemanticChildren(view);
 		}
 		return Collections.emptyList();
 	}
@@ -72,15 +68,6 @@ public class DataMapperDiagramUpdater {
 			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
 					childElement);
 			if (visualID == dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID) {
-				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
-						visualID));
-			}
-		}
-		{
-			dataMapper.Operations childElement = modelElement.getOperations();
-			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID) {
 				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
 						visualID));
 			}
@@ -126,29 +113,6 @@ public class DataMapperDiagramUpdater {
 			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
 					childElement);
 			if (visualID == dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID) {
-				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
-						visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperNodeDescriptor> getOperations_2004SemanticChildren(
-			View view) {
-		if (!view.isSetElement()) {
-			return Collections.emptyList();
-		}
-		dataMapper.Operations modelElement = (dataMapper.Operations) view.getElement();
-		LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getConcat().iterator(); it.hasNext();) {
-			dataMapper.Concat childElement = (dataMapper.Concat) it.next();
-			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID) {
 				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
 						visualID));
 				continue;
@@ -351,39 +315,6 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<dataMapper.diagram.part.DataMapperNodeDescriptor> getConcat_3013SemanticChildren(
-			View view) {
-		if (!view.isSetElement()) {
-			return Collections.emptyList();
-		}
-		dataMapper.Concat modelElement = (dataMapper.Concat) view.getElement();
-		LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor>();
-		for (Iterator<?> it = modelElement.getInNode().iterator(); it.hasNext();) {
-			dataMapper.InNode childElement = (dataMapper.InNode) it.next();
-			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID) {
-				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
-						visualID));
-				continue;
-			}
-		}
-		for (Iterator<?> it = modelElement.getOutNode().iterator(); it.hasNext();) {
-			dataMapper.OutNode childElement = (dataMapper.OutNode) it.next();
-			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID) {
-				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
-						visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getContainedLinks(View view) {
 		switch (dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view)) {
 		case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID:
@@ -392,8 +323,6 @@ public class DataMapperDiagramUpdater {
 			return getInput_2002ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getOutput_2003ContainedLinks(view);
-		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID:
-			return getOperations_2004ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -412,12 +341,6 @@ public class DataMapperDiagramUpdater {
 			return getOutNode_3009ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011ContainedLinks(view);
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-			return getConcat_3013ContainedLinks(view);
-		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
-			return getInNode_3014ContainedLinks(view);
-		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
-			return getOutNode_3015ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
 			return getDataMapperLink_4001ContainedLinks(view);
 		}
@@ -433,8 +356,6 @@ public class DataMapperDiagramUpdater {
 			return getInput_2002IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getOutput_2003IncomingLinks(view);
-		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID:
-			return getOperations_2004IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -453,12 +374,6 @@ public class DataMapperDiagramUpdater {
 			return getOutNode_3009IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011IncomingLinks(view);
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-			return getConcat_3013IncomingLinks(view);
-		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
-			return getInNode_3014IncomingLinks(view);
-		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
-			return getOutNode_3015IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
 			return getDataMapperLink_4001IncomingLinks(view);
 		}
@@ -474,8 +389,6 @@ public class DataMapperDiagramUpdater {
 			return getInput_2002OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getOutput_2003OutgoingLinks(view);
-		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID:
-			return getOperations_2004OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -494,12 +407,6 @@ public class DataMapperDiagramUpdater {
 			return getOutNode_3009OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011OutgoingLinks(view);
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-			return getConcat_3013OutgoingLinks(view);
-		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
-			return getInNode_3014OutgoingLinks(view);
-		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
-			return getOutNode_3015OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
 			return getDataMapperLink_4001OutgoingLinks(view);
 		}
@@ -526,14 +433,6 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOutput_2003ContainedLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOperations_2004ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -619,33 +518,6 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getConcat_3013ContainedLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getInNode_3014ContainedLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOutNode_3015ContainedLinks(
-			View view) {
-		dataMapper.OutNode modelElement = (dataMapper.OutNode) view.getElement();
-		LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor>();
-		result.addAll(getContainedTypeModelFacetLinks_DataMapperLink_4001(modelElement));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getDataMapperLink_4001ContainedLinks(
 			View view) {
 		return Collections.emptyList();
@@ -663,14 +535,6 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOutput_2003IncomingLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOperations_2004IncomingLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -762,36 +626,6 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getConcat_3013IncomingLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getInNode_3014IncomingLinks(
-			View view) {
-		dataMapper.InNode modelElement = (dataMapper.InNode) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement,
-				crossReferences));
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOutNode_3015IncomingLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getDataMapperLink_4001IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -809,14 +643,6 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOutput_2003OutgoingLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOperations_2004OutgoingLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -897,33 +723,6 @@ public class DataMapperDiagramUpdater {
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getTreeNode_3011OutgoingLinks(
 			View view) {
 		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getConcat_3013OutgoingLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getInNode_3014OutgoingLinks(
-			View view) {
-		return Collections.emptyList();
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOutNode_3015OutgoingLinks(
-			View view) {
-		dataMapper.OutNode modelElement = (dataMapper.OutNode) view.getElement();
-		LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperLinkDescriptor>();
-		result.addAll(getOutgoingTypeModelFacetLinks_DataMapperLink_4001(modelElement));
-		return result;
 	}
 
 	/**

@@ -84,12 +84,12 @@ public interface DataMapperRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operations</em>' containment reference.
-	 * @see #setOperations(Operations)
+	 * @see #setOperations(Operation)
 	 * @see dataMapper.DataMapperPackage#getDataMapperRoot_Operations()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Operations getOperations();
+	Operation getOperations();
 
 	/**
 	 * Sets the value of the '{@link dataMapper.DataMapperRoot#getOperations <em>Operations</em>}' containment reference.
@@ -99,6 +99,6 @@ public interface DataMapperRoot extends EObject {
 	 * @see #getOperations()
 	 * @generated
 	 */
-	void setOperations(Operations value);
+	void setOperations(Operation value);
 
 } // DataMapperRoot

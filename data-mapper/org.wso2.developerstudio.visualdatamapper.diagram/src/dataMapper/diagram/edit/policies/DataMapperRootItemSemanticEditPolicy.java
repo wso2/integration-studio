@@ -30,10 +30,6 @@ public class DataMapperRootItemSemanticEditPolicy extends
 		if (dataMapper.diagram.providers.DataMapperElementTypes.Output_2003 == req.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.OutputCreateCommand(req));
 		}
-		if (dataMapper.diagram.providers.DataMapperElementTypes.Operations_2004 == req
-				.getElementType()) {
-			return getGEFWrapper(new dataMapper.diagram.edit.commands.OperationsCreateCommand(req));
-		}
 		return super.getCreateCommand(req);
 	}
 

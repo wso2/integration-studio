@@ -53,7 +53,6 @@ public class DataMapperModelingAssistantProviderOfInNode2EditPart extends
 		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3006);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3009);
-			types.add(dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3015);
 		}
 		return types;
 	}

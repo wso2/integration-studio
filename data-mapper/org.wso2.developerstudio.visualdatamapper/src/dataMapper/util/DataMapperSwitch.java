@@ -145,13 +145,31 @@ public class DataMapperSwitch<T> extends Switch<T> {
 			case DataMapperPackage.CONCAT: {
 				Concat concat = (Concat)theEObject;
 				T result = caseConcat(concat);
+				if (result == null) result = caseOperation(concat);
+				if (result == null) result = caseDataMapperNode(concat);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DataMapperPackage.OPERATIONS: {
-				Operations operations = (Operations)theEObject;
-				T result = caseOperations(operations);
-				if (result == null) result = caseDataMapperNode(operations);
+			case DataMapperPackage.EQUAL: {
+				Equal equal = (Equal)theEObject;
+				T result = caseEqual(equal);
+				if (result == null) result = caseOperation(equal);
+				if (result == null) result = caseDataMapperNode(equal);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.CONSTANT: {
+				Constant constant = (Constant)theEObject;
+				T result = caseConstant(constant);
+				if (result == null) result = caseOperation(constant);
+				if (result == null) result = caseDataMapperNode(constant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DataMapperPackage.OPERATION: {
+				Operation operation = (Operation)theEObject;
+				T result = caseOperation(operation);
+				if (result == null) result = caseDataMapperNode(operation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -355,17 +373,47 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Operations</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Equal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Operations</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Equal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOperations(Operations object) {
+	public T caseEqual(Equal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConstant(Constant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperation(Operation object) {
 		return null;
 	}
 

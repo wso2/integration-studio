@@ -79,30 +79,31 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	public void activate() {
 
 		super.activate();
-/*		if (notActivated) {
-			EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
-					.getModel()).getElement();
-			TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		/*		if (notActivated) {
+		 EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
+		 .getModel()).getElement();
+		 TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 
-			Tree tree = new Tree();
-			tree = (new TreeFromAVSC()).generateOutputTree();
-			convertTree(tree, treeNode);
+		 Tree tree = new Tree();
+		 tree = (new TreeFromAVSC()).generateOutputTree();
+		 convertTree(tree, treeNode);
 
-			AddCommand addTreeNodeCmd = new AddCommand(getEditingDomain(), parentContainer,
-					DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
-			if (addTreeNodeCmd.canExecute()) {
-				getEditingDomain().getCommandStack().execute(addTreeNodeCmd);
+		 AddCommand addTreeNodeCmd = new AddCommand(getEditingDomain(), parentContainer,
+		 DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+		 if (addTreeNodeCmd.canExecute()) {
+		 getEditingDomain().getCommandStack().execute(addTreeNodeCmd);
 
-			}
-			getPrimaryShape().setPreferredSize(250, 15);
-			notActivated = false;
-		}*/
+		 }
+		 getPrimaryShape().setPreferredSize(250, 15);
+		 notActivated = false;
+		 }*/
 
 	}
-	
+
 	public void resetOutputTreeFromFile(String filePath) {
-		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl)(this).getModel()).getElement();
-		Output iip = (Output)parentContainer;
+		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
+				.getModel()).getElement();
+		Output iip = (Output) parentContainer;
 
 		DeleteCommand deleteComand = new DeleteCommand(getEditingDomain(), iip.getTreeNode());
 		if (deleteComand.canExecute()) {
@@ -114,12 +115,13 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		//funcFillTree(tree, element);
 		convertTree(tree, treeNode);
 
-		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer, DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
+				DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
 		getPrimaryShape().setPreferredSize(250, 15);
-		
+
 	}
 
 	private void convertTree(Tree tree, TreeNode treeNode) {
@@ -353,7 +355,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		 */
 		public OutputFigure() {
 
-			
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
@@ -363,23 +364,22 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(100)));
 			this.setOutline(true);
 
-/*			
-			RectangleFigure figure= new RectangleFigure();
-			figure.setBackgroundColor(new Color(null, 96, 148, 219));
-			figure.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(25)));
-			this.add(figure);
+			/*			
+			 RectangleFigure figure= new RectangleFigure();
+			 figure.setBackgroundColor(new Color(null, 96, 148, 219));
+			 figure.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(25)));
+			 this.add(figure);
 			
-			RectangleFigure figure2= new RectangleFigure();
-			figure2.setBackgroundColor(new Color(null, 96, 148, 219));
-			figure2.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(75)));
-			this.add(figure2);*/
-			
-			TitleBarBorder titleBarBorder=new TitleBarBorder("Output");
+			 RectangleFigure figure2= new RectangleFigure();
+			 figure2.setBackgroundColor(new Color(null, 96, 148, 219));
+			 figure2.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(75)));
+			 this.add(figure2);*/
+
+			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
 			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
-			titleBarBorder.setFont(new Font(null, "Arial", 10,SWT.NORMAL));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
 			this.setBorder(titleBarBorder);
-			
 
 		}
 

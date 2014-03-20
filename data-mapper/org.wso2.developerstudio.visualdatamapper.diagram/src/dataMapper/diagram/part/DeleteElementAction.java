@@ -30,7 +30,7 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 	public DeleteElementAction(IWorkbenchPart part) {
 		super(part);
 	}
-	
+
 	public void init() {
 		super.init();
 		setId(ActionIds.ACTION_DELETE_FROM_MODEL);

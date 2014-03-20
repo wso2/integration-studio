@@ -5,15 +5,13 @@ package dataMapper.provider;
 
 import dataMapper.DataMapperFactory;
 import dataMapper.DataMapperPackage;
-import dataMapper.DataMapperRoot;
+import dataMapper.Operation;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -23,17 +21,16 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link dataMapper.DataMapperRoot} object.
+ * This is the item provider adapter for a {@link dataMapper.Operation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class DataMapperRootItemProvider
-	extends ItemProviderAdapter
+public class OperationItemProvider
+	extends DataMapperNodeItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -46,7 +43,7 @@ public class DataMapperRootItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataMapperRootItemProvider(AdapterFactory adapterFactory) {
+	public OperationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -77,9 +74,8 @@ public class DataMapperRootItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__INPUT);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OUTPUT);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS);
+			childrenFeatures.add(DataMapperPackage.Literals.OPERATION__IN_NODES);
+			childrenFeatures.add(DataMapperPackage.Literals.OPERATION__OUT_NODES);
 		}
 		return childrenFeatures;
 	}
@@ -98,14 +94,14 @@ public class DataMapperRootItemProvider
 	}
 
 	/**
-	 * This returns DataMapperRoot.gif.
+	 * This returns Operation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DataMapperRoot"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Operation"));
 	}
 
 	/**
@@ -116,7 +112,7 @@ public class DataMapperRootItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DataMapperRoot_type");
+		return getString("_UI_Operation_type");
 	}
 
 	/**
@@ -130,10 +126,9 @@ public class DataMapperRootItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(DataMapperRoot.class)) {
-			case DataMapperPackage.DATA_MAPPER_ROOT__INPUT:
-			case DataMapperPackage.DATA_MAPPER_ROOT__OUTPUT:
-			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
+		switch (notification.getFeatureID(Operation.class)) {
+			case DataMapperPackage.OPERATION__IN_NODES:
+			case DataMapperPackage.OPERATION__OUT_NODES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -153,44 +148,13 @@ public class DataMapperRootItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__INPUT,
-				 DataMapperFactory.eINSTANCE.createInput()));
+				(DataMapperPackage.Literals.OPERATION__IN_NODES,
+				 DataMapperFactory.eINSTANCE.createInNode()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OUTPUT,
-				 DataMapperFactory.eINSTANCE.createOutput()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
-				 DataMapperFactory.eINSTANCE.createOperation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
-				 DataMapperFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
-				 DataMapperFactory.eINSTANCE.createEqual()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
-				 DataMapperFactory.eINSTANCE.createConstant()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return DataMapperEditPlugin.INSTANCE;
+				(DataMapperPackage.Literals.OPERATION__OUT_NODES,
+				 DataMapperFactory.eINSTANCE.createOutNode()));
 	}
 
 }

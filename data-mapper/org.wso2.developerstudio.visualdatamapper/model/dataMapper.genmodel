@@ -56,12 +56,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/inNode"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/outNode"/>
     </genClasses>
-    <genClasses ecoreClass="dataMapper.ecore#//Concat">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Concat/inNode"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Concat/outNode"/>
-    </genClasses>
-    <genClasses ecoreClass="dataMapper.ecore#//Operations">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operations/concat"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Concat"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Constant"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Operation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operation/inNodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operation/outNodes"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -371,26 +371,72 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dataMapper.Operations} instances.
+	 * This keeps track of the one adapter used for all {@link dataMapper.Equal} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperationsItemProvider operationsItemProvider;
+	protected EqualItemProvider equalItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dataMapper.Operations}.
+	 * This creates an adapter for a {@link dataMapper.Equal}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOperationsAdapter() {
-		if (operationsItemProvider == null) {
-			operationsItemProvider = new OperationsItemProvider(this);
+	public Adapter createEqualAdapter() {
+		if (equalItemProvider == null) {
+			equalItemProvider = new EqualItemProvider(this);
 		}
 
-		return operationsItemProvider;
+		return equalItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.Constant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConstantItemProvider constantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.Constant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConstantAdapter() {
+		if (constantItemProvider == null) {
+			constantItemProvider = new ConstantItemProvider(this);
+		}
+
+		return constantItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.Operation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperationItemProvider operationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.Operation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperationAdapter() {
+		if (operationItemProvider == null) {
+			operationItemProvider = new OperationItemProvider(this);
+		}
+
+		return operationItemProvider;
 	}
 
 	/**
@@ -505,7 +551,9 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (outNodeItemProvider != null) outNodeItemProvider.dispose();
 		if (dataMapperLinkItemProvider != null) dataMapperLinkItemProvider.dispose();
 		if (concatItemProvider != null) concatItemProvider.dispose();
-		if (operationsItemProvider != null) operationsItemProvider.dispose();
+		if (equalItemProvider != null) equalItemProvider.dispose();
+		if (constantItemProvider != null) constantItemProvider.dispose();
+		if (operationItemProvider != null) operationItemProvider.dispose();
 	}
 
 }

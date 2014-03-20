@@ -63,11 +63,6 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType Operations_2004 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Operations_2004"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
 	public static final IElementType TreeNode_3002 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"); //$NON-NLS-1$
 
 	/**
@@ -109,21 +104,6 @@ public class DataMapperElementTypes {
 	 * @generated
 	 */
 	public static final IElementType TreeNode_3011 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
-	public static final IElementType Concat_3013 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Concat_3013"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
-	public static final IElementType InNode_3014 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.InNode_3014"); //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
-	public static final IElementType OutNode_3015 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3015"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -175,8 +155,6 @@ public class DataMapperElementTypes {
 
 			elements.put(Output_2003, dataMapper.DataMapperPackage.eINSTANCE.getOutput());
 
-			elements.put(Operations_2004, dataMapper.DataMapperPackage.eINSTANCE.getOperations());
-
 			elements.put(TreeNode_3002, dataMapper.DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(TreeNode_3003, dataMapper.DataMapperPackage.eINSTANCE.getTreeNode());
@@ -194,12 +172,6 @@ public class DataMapperElementTypes {
 			elements.put(OutNode_3009, dataMapper.DataMapperPackage.eINSTANCE.getOutNode());
 
 			elements.put(TreeNode_3011, dataMapper.DataMapperPackage.eINSTANCE.getTreeNode());
-
-			elements.put(Concat_3013, dataMapper.DataMapperPackage.eINSTANCE.getConcat());
-
-			elements.put(InNode_3014, dataMapper.DataMapperPackage.eINSTANCE.getInNode());
-
-			elements.put(OutNode_3015, dataMapper.DataMapperPackage.eINSTANCE.getOutNode());
 
 			elements.put(DataMapperLink_4001,
 					dataMapper.DataMapperPackage.eINSTANCE.getDataMapperLink());
@@ -223,7 +195,6 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(DataMapperRoot_1000);
 			KNOWN_ELEMENT_TYPES.add(Input_2002);
 			KNOWN_ELEMENT_TYPES.add(Output_2003);
-			KNOWN_ELEMENT_TYPES.add(Operations_2004);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3003);
 			KNOWN_ELEMENT_TYPES.add(Attribute_3004);
@@ -233,9 +204,6 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
 			KNOWN_ELEMENT_TYPES.add(OutNode_3009);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3011);
-			KNOWN_ELEMENT_TYPES.add(Concat_3013);
-			KNOWN_ELEMENT_TYPES.add(InNode_3014);
-			KNOWN_ELEMENT_TYPES.add(OutNode_3015);
 			KNOWN_ELEMENT_TYPES.add(DataMapperLink_4001);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
@@ -252,8 +220,6 @@ public class DataMapperElementTypes {
 			return Input_2002;
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return Output_2003;
-		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID:
-			return Operations_2004;
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -272,12 +238,6 @@ public class DataMapperElementTypes {
 			return OutNode_3009;
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 			return TreeNode_3011;
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-			return Concat_3013;
-		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
-			return InNode_3014;
-		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
-			return OutNode_3015;
 		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
 			return DataMapperLink_4001;
 		}

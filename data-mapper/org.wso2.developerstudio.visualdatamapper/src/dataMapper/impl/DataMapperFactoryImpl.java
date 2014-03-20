@@ -79,7 +79,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OUT_NODE: return createOutNode();
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
 			case DataMapperPackage.CONCAT: return createConcat();
-			case DataMapperPackage.OPERATIONS: return createOperations();
+			case DataMapperPackage.EQUAL: return createEqual();
+			case DataMapperPackage.CONSTANT: return createConstant();
+			case DataMapperPackage.OPERATION: return createOperation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -216,13 +218,10 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
-		concat.getInNode().add(createInNode());
-		concat.getInNode().add(createInNode());
-		concat.getOutNode().add(createOutNode());
 		return concat;
 	}
 
@@ -231,9 +230,29 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operations createOperations() {
-		OperationsImpl operations = new OperationsImpl();
-		return operations;
+	public Equal createEqual() {
+		EqualImpl equal = new EqualImpl();
+		return equal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constant createConstant() {
+		ConstantImpl constant = new ConstantImpl();
+		return constant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Operation createOperation() {
+		OperationImpl operation = new OperationImpl();
+		return operation;
 	}
 
 	/**

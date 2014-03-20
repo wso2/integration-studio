@@ -31,6 +31,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -86,6 +87,7 @@ public class NewResourceTemplateDialog extends Dialog {
 	private int emptyXmlFileTemplate;
 	private int emptyTextFileTemplate;
 	private String selectedPath;
+	private String ipathOfSelection;
 	private Map<String, java.util.List<String>> filters;
 
 	private Combo cmbProject;
@@ -335,6 +337,7 @@ public class NewResourceTemplateDialog extends Dialog {
 			}
 			path=path.endsWith("/")?path+name:path+"/"+name;
 			setSelectedPath(path);
+			setIPathOfSelection(project.getFullPath().append(name).toString());
 			createNewTempTag.clearAndEnd();
 		} catch (IOException e) {
 			log.error(e);
@@ -512,4 +515,12 @@ public class NewResourceTemplateDialog extends Dialog {
 		
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 	}
+
+	public void setIPathOfSelection(String ipath) {
+		ipathOfSelection = ipath;
+	}
+	public String getIPathOfSelection() {
+		return ipathOfSelection;
+	}
+	
 }

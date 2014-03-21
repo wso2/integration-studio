@@ -72,6 +72,16 @@ public class DataMapperDiagramUpdater {
 						visualID));
 			}
 		}
+		for (Iterator<?> it = modelElement.getOperators().iterator(); it.hasNext();) {
+			dataMapper.Operator childElement = (dataMapper.Operator) it.next();
+			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID) {
+				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
+						visualID));
+				continue;
+			}
+		}
 		return result;
 	}
 
@@ -323,6 +333,8 @@ public class DataMapperDiagramUpdater {
 			return getInput_2002ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getOutput_2003ContainedLinks(view);
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+			return getEqual_2005ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -356,6 +368,8 @@ public class DataMapperDiagramUpdater {
 			return getInput_2002IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getOutput_2003IncomingLinks(view);
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+			return getEqual_2005IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -389,6 +403,8 @@ public class DataMapperDiagramUpdater {
 			return getInput_2002OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getOutput_2003OutgoingLinks(view);
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+			return getEqual_2005OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -433,6 +449,14 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOutput_2003ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getEqual_2005ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -542,6 +566,14 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getEqual_2005IncomingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getTreeNode_3002IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -643,6 +675,14 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getOutput_2003OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getEqual_2005OutgoingLinks(
 			View view) {
 		return Collections.emptyList();
 	}

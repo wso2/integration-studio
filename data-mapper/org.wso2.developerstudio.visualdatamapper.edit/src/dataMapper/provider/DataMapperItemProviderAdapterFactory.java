@@ -187,26 +187,26 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dataMapper.Operators} instances.
+	 * This keeps track of the one adapter used for all {@link dataMapper.Operator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperatorsItemProvider operatorsItemProvider;
+	protected OperatorItemProvider operatorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dataMapper.Operators}.
+	 * This creates an adapter for a {@link dataMapper.Operator}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOperatorsAdapter() {
-		if (operatorsItemProvider == null) {
-			operatorsItemProvider = new OperatorsItemProvider(this);
+	public Adapter createOperatorAdapter() {
+		if (operatorItemProvider == null) {
+			operatorItemProvider = new OperatorItemProvider(this);
 		}
 
-		return operatorsItemProvider;
+		return operatorItemProvider;
 	}
 
 	/**
@@ -394,52 +394,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dataMapper.Constant} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ConstantItemProvider constantItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link dataMapper.Constant}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createConstantAdapter() {
-		if (constantItemProvider == null) {
-			constantItemProvider = new ConstantItemProvider(this);
-		}
-
-		return constantItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link dataMapper.Operation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OperationItemProvider operationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link dataMapper.Operation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOperationAdapter() {
-		if (operationItemProvider == null) {
-			operationItemProvider = new OperationItemProvider(this);
-		}
-
-		return operationItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -543,7 +497,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (dataMapperRootItemProvider != null) dataMapperRootItemProvider.dispose();
 		if (inputItemProvider != null) inputItemProvider.dispose();
 		if (outputItemProvider != null) outputItemProvider.dispose();
-		if (operatorsItemProvider != null) operatorsItemProvider.dispose();
+		if (operatorItemProvider != null) operatorItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
 		if (attributeItemProvider != null) attributeItemProvider.dispose();
 		if (treeNodeItemProvider != null) treeNodeItemProvider.dispose();
@@ -552,8 +506,6 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (dataMapperLinkItemProvider != null) dataMapperLinkItemProvider.dispose();
 		if (concatItemProvider != null) concatItemProvider.dispose();
 		if (equalItemProvider != null) equalItemProvider.dispose();
-		if (constantItemProvider != null) constantItemProvider.dispose();
-		if (operationItemProvider != null) operationItemProvider.dispose();
 	}
 
 }

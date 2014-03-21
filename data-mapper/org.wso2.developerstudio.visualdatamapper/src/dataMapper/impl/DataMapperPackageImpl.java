@@ -17,6 +17,7 @@ import dataMapper.InNode;
 import dataMapper.Input;
 import dataMapper.Operation;
 import dataMapper.Operations;
+import dataMapper.Operator;
 import dataMapper.Operators;
 import dataMapper.OutNode;
 import dataMapper.Output;
@@ -77,7 +78,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass operatorsEClass = null;
+	private EClass operatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,20 +135,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass equalEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass constantEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass operationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -260,7 +247,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataMapperRoot_Operations() {
+	public EReference getDataMapperRoot_Operators() {
 		return (EReference)dataMapperRootEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -305,8 +292,26 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOperators() {
-		return operatorsEClass;
+	public EClass getOperator() {
+		return operatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperator_InNodes() {
+		return (EReference)operatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperator_OutNodes() {
+		return (EReference)operatorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -611,42 +616,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getConstant() {
-		return constantEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOperation() {
-		return operationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOperation_InNodes() {
-		return (EReference)operationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOperation_OutNodes() {
-		return (EReference)operationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public DataMapperFactory getDataMapperFactory() {
 		return (DataMapperFactory)getEFactoryInstance();
 	}
@@ -677,7 +646,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		dataMapperRootEClass = createEClass(DATA_MAPPER_ROOT);
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__INPUT);
 		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OUTPUT);
-		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OPERATIONS);
+		createEReference(dataMapperRootEClass, DATA_MAPPER_ROOT__OPERATORS);
 
 		inputEClass = createEClass(INPUT);
 		createEReference(inputEClass, INPUT__TREE_NODE);
@@ -685,7 +654,9 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		outputEClass = createEClass(OUTPUT);
 		createEReference(outputEClass, OUTPUT__TREE_NODE);
 
-		operatorsEClass = createEClass(OPERATORS);
+		operatorEClass = createEClass(OPERATOR);
+		createEReference(operatorEClass, OPERATOR__IN_NODES);
+		createEReference(operatorEClass, OPERATOR__OUT_NODES);
 
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__NAME);
@@ -727,12 +698,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		concatEClass = createEClass(CONCAT);
 
 		equalEClass = createEClass(EQUAL);
-
-		constantEClass = createEClass(CONSTANT);
-
-		operationEClass = createEClass(OPERATION);
-		createEReference(operationEClass, OPERATION__IN_NODES);
-		createEReference(operationEClass, OPERATION__OUT_NODES);
 	}
 
 	/**
@@ -766,11 +731,9 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		dataMapperDiagramEClass.getESuperTypes().add(this.getDataMapperNode());
 		inputEClass.getESuperTypes().add(this.getDataMapperNode());
 		outputEClass.getESuperTypes().add(this.getDataMapperNode());
-		operatorsEClass.getESuperTypes().add(this.getDataMapperNode());
-		concatEClass.getESuperTypes().add(this.getOperation());
-		equalEClass.getESuperTypes().add(this.getOperation());
-		constantEClass.getESuperTypes().add(this.getOperation());
-		operationEClass.getESuperTypes().add(this.getDataMapperNode());
+		operatorEClass.getESuperTypes().add(this.getDataMapperNode());
+		concatEClass.getESuperTypes().add(this.getOperator());
+		equalEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -780,7 +743,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(dataMapperRootEClass, DataMapperRoot.class, "DataMapperRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataMapperRoot_Input(), this.getInput(), null, "input", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataMapperRoot_Output(), this.getOutput(), null, "output", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataMapperRoot_Operations(), this.getOperation(), null, "operations", null, 0, 1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataMapperRoot_Operators(), this.getOperator(), null, "operators", null, 0, -1, DataMapperRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInput_TreeNode(), this.getTreeNode(), this.getTreeNode_InputParent(), "treeNode", null, 0, -1, Input.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -788,7 +751,9 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutput_TreeNode(), this.getTreeNode(), this.getTreeNode_OutputParent(), "treeNode", null, 0, -1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(operatorsEClass, Operators.class, "Operators", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(operatorEClass, Operator.class, "Operator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperator_InNodes(), this.getInNode(), null, "inNodes", null, 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperator_OutNodes(), this.getOutNode(), null, "outNodes", null, 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -830,12 +795,6 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(equalEClass, Equal.class, "Equal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperation_InNodes(), this.getInNode(), null, "inNodes", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOperation_OutNodes(), this.getOutNode(), null, "outNodes", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

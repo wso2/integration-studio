@@ -16,6 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Concat extends Operation {
+public interface Concat extends Operator {
 
 } // Concat

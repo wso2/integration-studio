@@ -329,6 +329,31 @@
             href="dataMapper.genmodel#//dataMapper/DataMapperRoot/output"/>
       </modelFacet>
     </topLevelNodes>
+    <topLevelNodes
+        visualID="2005"
+        editPartClassName="EqualEditPart"
+        itemSemanticEditPolicyClassName="EqualItemSemanticEditPolicy"
+        notationViewFactoryClassName="EqualViewFactory"
+        canonicalEditPolicyClassName="EqualCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="EqualGraphicalNodeEditPolicy"
+        createCommandClassName="EqualCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="EqualEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//dataMapper/Equal"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
     <links
         visualID="4001"
         editPartClassName="DataMapperLinkEditPart"
@@ -363,17 +388,14 @@
           title="dataMapper">
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Operators"
-            description="Create new Operators"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
             title="DataMapperLink"
-            description="Create new DataMapperLink"
-            genLinks="//@diagram/@links.0"/>
+            description="Create new DataMapperLink"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Concat"
-            description="Create new Concat"/>
+            title="Equal"
+            description="Create new Equal"
+            genNodes="//@diagram/@topLevelNodes.2"
+            genLinks="//@diagram/@links.0"/>
       </groups>
     </palette>
     <preferencePages
@@ -462,6 +484,9 @@
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.1"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.2"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.0"

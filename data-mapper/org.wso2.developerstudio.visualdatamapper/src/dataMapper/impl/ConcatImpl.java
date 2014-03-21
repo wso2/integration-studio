@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ConcatImpl extends OperationImpl implements Concat {
+public class ConcatImpl extends OperatorImpl implements Concat {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

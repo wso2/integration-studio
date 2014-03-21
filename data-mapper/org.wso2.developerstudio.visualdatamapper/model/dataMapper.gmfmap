@@ -96,6 +96,19 @@
       </children>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Equal"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.1"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Equal"/>
+    </ownedChild>
+  </nodes>
   <links>
     <domainMetaElement
         href="dataMapper.ecore#//DataMapperLink"/>

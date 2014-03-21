@@ -29,6 +29,9 @@ public class DataMapperEditPartFactory implements EditPartFactory {
 			case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 				return new dataMapper.diagram.edit.parts.OutputEditPart(view);
 
+			case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+				return new dataMapper.diagram.edit.parts.EqualEditPart(view);
+
 			case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 				return new dataMapper.diagram.edit.parts.TreeNodeEditPart(view);
 

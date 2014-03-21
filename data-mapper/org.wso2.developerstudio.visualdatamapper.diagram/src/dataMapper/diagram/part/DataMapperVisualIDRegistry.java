@@ -121,6 +121,10 @@ public class DataMapperVisualIDRegistry {
 					domainElement.eClass())) {
 				return dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID;
 			}
+			if (dataMapper.DataMapperPackage.eINSTANCE.getEqual().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID;
+			}
 			break;
 		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID:
 			if (dataMapper.DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(
@@ -226,6 +230,9 @@ public class DataMapperVisualIDRegistry {
 				return true;
 			}
 			if (dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -342,6 +349,7 @@ public class DataMapperVisualIDRegistry {
 		switch (visualID) {
 		case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID:
 			return false;
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID:

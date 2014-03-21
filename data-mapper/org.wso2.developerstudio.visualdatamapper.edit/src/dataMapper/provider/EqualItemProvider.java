@@ -23,7 +23,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * @generated
  */
 public class EqualItemProvider
-	extends OperationItemProvider
+	extends OperatorItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,

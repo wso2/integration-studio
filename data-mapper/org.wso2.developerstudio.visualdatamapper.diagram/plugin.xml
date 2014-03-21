@@ -227,7 +227,7 @@
       <viewProvider class="dataMapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,3002,3003,3004,3005,3006,3007,3008,3009,3011"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,3002,3003,3004,3005,3006,3007,3008,3009,3011"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -240,7 +240,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2002,2003,3002,3003,3004,3005,3006,3007,3008,3009,3011"/>
+            <method name="getType()" value="2002,2003,2005,3002,3003,3004,3005,3006,3007,3008,3009,3011"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -271,6 +271,11 @@
          <Priority name="Lowest"/>
          <object class="dataMapper.diagram.edit.parts.OutputEditPart" id="Output_2003"/>
          <context elements="Output_2003"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfEqualEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.EqualEditPart" id="Equal_2005"/>
+         <context elements="Equal_2005"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
          <Priority name="Lowest"/>
@@ -357,6 +362,16 @@
                eclass="Output"
                edithelper="dataMapper.diagram.edit.helpers.OutputEditHelper">
             <param name="semanticHint" value="2003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Equal_2005"
+               name="%metatype.name.Equal_2005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Equal"
+               edithelper="dataMapper.diagram.edit.helpers.EqualEditHelper">
+            <param name="semanticHint" value="2005"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
@@ -470,6 +485,7 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperRoot_1000"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Input_2002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Output_2003"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Equal_2005"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3004"/>

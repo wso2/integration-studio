@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class EqualImpl extends OperationImpl implements Equal {
+public class EqualImpl extends OperatorImpl implements Equal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

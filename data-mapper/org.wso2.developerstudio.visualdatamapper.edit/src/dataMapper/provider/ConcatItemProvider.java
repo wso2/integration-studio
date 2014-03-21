@@ -33,7 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class ConcatItemProvider
-	extends OperationItemProvider
+	extends OperatorItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,

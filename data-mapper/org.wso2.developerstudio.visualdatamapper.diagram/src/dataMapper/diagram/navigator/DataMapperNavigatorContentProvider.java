@@ -223,6 +223,10 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 					dataMapper.diagram.part.DataMapperVisualIDRegistry
 							.getType(dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getDiagramLinksByType(
 					Collections.singleton(sv),
 					dataMapper.diagram.part.DataMapperVisualIDRegistry

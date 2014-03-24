@@ -98,35 +98,15 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="dataMapper.ecore#//DataMapperRoot/operations"/>
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
     <ownedChild>
       <domainMetaElement
-          href="dataMapper.ecore#//Operations"/>
+          href="dataMapper.ecore#//Equal"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.1"/>
       <diagramNode
-          href="dataMapper.gmfgraph#Operations"/>
-      <children>
-        <containmentFeature
-            href="dataMapper.ecore#//Operations/concat"/>
-        <ownedChild>
-          <domainMetaElement
-              href="dataMapper.ecore#//Concat"/>
-          <tool
-              xsi:type="gmftool:CreationTool"
-              href="dataMapper.gmftool#//@palette/@tools.0/@tools.2"/>
-          <diagramNode
-              href="dataMapper.gmfgraph#Concat"/>
-          <children
-              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.0/@ownedChild">
-            <containmentFeature
-                href="dataMapper.ecore#//Concat/inNode"/>
-          </children>
-          <children
-              referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.2/@ownedChild/@children.1/@ownedChild">
-            <containmentFeature
-                href="dataMapper.ecore#//Concat/outNode"/>
-          </children>
-        </ownedChild>
-      </children>
+          href="dataMapper.gmfgraph#Equal"/>
     </ownedChild>
   </nodes>
   <links>

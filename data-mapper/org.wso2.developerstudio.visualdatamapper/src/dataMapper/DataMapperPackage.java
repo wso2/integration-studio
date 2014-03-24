@@ -122,13 +122,13 @@ public interface DataMapperPackage extends EPackage {
 	int DATA_MAPPER_ROOT__OUTPUT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Operations</b></em>' containment reference.
+	 * The feature id for the '<em><b>Operators</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_ROOT__OPERATIONS = 2;
+	int DATA_MAPPER_ROOT__OPERATORS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Root</em>' class.
@@ -197,24 +197,41 @@ public interface DataMapperPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link dataMapper.impl.OperatorsImpl <em>Operators</em>}' class.
+	 * The meta object id for the '{@link dataMapper.impl.OperatorImpl <em>Operator</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dataMapper.impl.OperatorsImpl
-	 * @see dataMapper.impl.DataMapperPackageImpl#getOperators()
+	 * @see dataMapper.impl.OperatorImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getOperator()
 	 * @generated
 	 */
-	int OPERATORS = 5;
+	int OPERATOR = 5;
 
 	/**
-	 * The number of structural features of the '<em>Operators</em>' class.
+	 * The feature id for the '<em><b>In Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATORS_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 0;
+	int OPERATOR__IN_NODES = DATA_MAPPER_NODE_FEATURE_COUNT + 0;
 
+	/**
+	 * The feature id for the '<em><b>Out Nodes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR__OUT_NODES = DATA_MAPPER_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Operator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.ElementImpl <em>Element</em>}' class.
@@ -465,7 +482,7 @@ public interface DataMapperPackage extends EPackage {
 	int IN_NODE__ATTRIBUTE_PARENT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Concat Parent</b></em>' container reference.
+	 * The feature id for the '<em><b>Concat Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -569,22 +586,22 @@ public interface DataMapperPackage extends EPackage {
 	int CONCAT = 12;
 
 	/**
-	 * The feature id for the '<em><b>In Node</b></em>' containment reference list.
+	 * The feature id for the '<em><b>In Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCAT__IN_NODE = 0;
+	int CONCAT__IN_NODES = OPERATOR__IN_NODES;
 
 	/**
-	 * The feature id for the '<em><b>Out Node</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Out Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCAT__OUT_NODE = 1;
+	int CONCAT__OUT_NODES = OPERATOR__OUT_NODES;
 
 	/**
 	 * The number of structural features of the '<em>Concat</em>' class.
@@ -593,37 +610,45 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCAT_FEATURE_COUNT = 2;
+	int CONCAT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 
 	/**
-	 * The meta object id for the '{@link dataMapper.impl.OperationsImpl <em>Operations</em>}' class.
+	 * The meta object id for the '{@link dataMapper.impl.EqualImpl <em>Equal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dataMapper.impl.OperationsImpl
-	 * @see dataMapper.impl.DataMapperPackageImpl#getOperations()
+	 * @see dataMapper.impl.EqualImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getEqual()
 	 * @generated
 	 */
-	int OPERATIONS = 13;
+	int EQUAL = 13;
 
 	/**
-	 * The feature id for the '<em><b>Concat</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATIONS__CONCAT = DATA_MAPPER_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Operations</em>' class.
+	 * The feature id for the '<em><b>In Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATIONS_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 1;
+	int EQUAL__IN_NODES = OPERATOR__IN_NODES;
 
+	/**
+	 * The feature id for the '<em><b>Out Nodes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUAL__OUT_NODES = OPERATOR__OUT_NODES;
+
+	/**
+	 * The number of structural features of the '<em>Equal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUAL_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link dataMapper.DataMapperNode <em>Node</em>}'.
@@ -678,15 +703,15 @@ public interface DataMapperPackage extends EPackage {
 	EReference getDataMapperRoot_Output();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dataMapper.DataMapperRoot#getOperations <em>Operations</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dataMapper.DataMapperRoot#getOperators <em>Operators</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Operations</em>'.
-	 * @see dataMapper.DataMapperRoot#getOperations()
+	 * @return the meta object for the containment reference list '<em>Operators</em>'.
+	 * @see dataMapper.DataMapperRoot#getOperators()
 	 * @see #getDataMapperRoot()
 	 * @generated
 	 */
-	EReference getDataMapperRoot_Operations();
+	EReference getDataMapperRoot_Operators();
 
 	/**
 	 * Returns the meta object for class '{@link dataMapper.Input <em>Input</em>}'.
@@ -731,14 +756,36 @@ public interface DataMapperPackage extends EPackage {
 	EReference getOutput_TreeNode();
 
 	/**
-	 * Returns the meta object for class '{@link dataMapper.Operators <em>Operators</em>}'.
+	 * Returns the meta object for class '{@link dataMapper.Operator <em>Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Operators</em>'.
-	 * @see dataMapper.Operators
+	 * @return the meta object for class '<em>Operator</em>'.
+	 * @see dataMapper.Operator
 	 * @generated
 	 */
-	EClass getOperators();
+	EClass getOperator();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dataMapper.Operator#getInNodes <em>In Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>In Nodes</em>'.
+	 * @see dataMapper.Operator#getInNodes()
+	 * @see #getOperator()
+	 * @generated
+	 */
+	EReference getOperator_InNodes();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dataMapper.Operator#getOutNodes <em>Out Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Out Nodes</em>'.
+	 * @see dataMapper.Operator#getOutNodes()
+	 * @see #getOperator()
+	 * @generated
+	 */
+	EReference getOperator_OutNodes();
 
 	/**
 	 * Returns the meta object for class '{@link dataMapper.Element <em>Element</em>}'.
@@ -1001,10 +1048,10 @@ public interface DataMapperPackage extends EPackage {
 	EReference getInNode_AttributeParent();
 
 	/**
-	 * Returns the meta object for the container reference '{@link dataMapper.InNode#getConcatParent <em>Concat Parent</em>}'.
+	 * Returns the meta object for the reference '{@link dataMapper.InNode#getConcatParent <em>Concat Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Concat Parent</em>'.
+	 * @return the meta object for the reference '<em>Concat Parent</em>'.
 	 * @see dataMapper.InNode#getConcatParent()
 	 * @see #getInNode()
 	 * @generated
@@ -1086,47 +1133,14 @@ public interface DataMapperPackage extends EPackage {
 	EClass getConcat();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dataMapper.Concat#getInNode <em>In Node</em>}'.
+	 * Returns the meta object for class '{@link dataMapper.Equal <em>Equal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>In Node</em>'.
-	 * @see dataMapper.Concat#getInNode()
-	 * @see #getConcat()
+	 * @return the meta object for class '<em>Equal</em>'.
+	 * @see dataMapper.Equal
 	 * @generated
 	 */
-	EReference getConcat_InNode();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link dataMapper.Concat#getOutNode <em>Out Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Out Node</em>'.
-	 * @see dataMapper.Concat#getOutNode()
-	 * @see #getConcat()
-	 * @generated
-	 */
-	EReference getConcat_OutNode();
-
-	/**
-	 * Returns the meta object for class '{@link dataMapper.Operations <em>Operations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Operations</em>'.
-	 * @see dataMapper.Operations
-	 * @generated
-	 */
-	EClass getOperations();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link dataMapper.Operations#getConcat <em>Concat</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Concat</em>'.
-	 * @see dataMapper.Operations#getConcat()
-	 * @see #getOperations()
-	 * @generated
-	 */
-	EReference getOperations_Concat();
+	EClass getEqual();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1197,12 +1211,12 @@ public interface DataMapperPackage extends EPackage {
 		EReference DATA_MAPPER_ROOT__OUTPUT = eINSTANCE.getDataMapperRoot_Output();
 
 		/**
-		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Operators</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_MAPPER_ROOT__OPERATIONS = eINSTANCE.getDataMapperRoot_Operations();
+		EReference DATA_MAPPER_ROOT__OPERATORS = eINSTANCE.getDataMapperRoot_Operators();
 
 		/**
 		 * The meta object literal for the '{@link dataMapper.impl.InputImpl <em>Input</em>}' class.
@@ -1241,14 +1255,30 @@ public interface DataMapperPackage extends EPackage {
 		EReference OUTPUT__TREE_NODE = eINSTANCE.getOutput_TreeNode();
 
 		/**
-		 * The meta object literal for the '{@link dataMapper.impl.OperatorsImpl <em>Operators</em>}' class.
+		 * The meta object literal for the '{@link dataMapper.impl.OperatorImpl <em>Operator</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dataMapper.impl.OperatorsImpl
-		 * @see dataMapper.impl.DataMapperPackageImpl#getOperators()
+		 * @see dataMapper.impl.OperatorImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getOperator()
 		 * @generated
 		 */
-		EClass OPERATORS = eINSTANCE.getOperators();
+		EClass OPERATOR = eINSTANCE.getOperator();
+
+		/**
+		 * The meta object literal for the '<em><b>In Nodes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATOR__IN_NODES = eINSTANCE.getOperator_InNodes();
+
+		/**
+		 * The meta object literal for the '<em><b>Out Nodes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATOR__OUT_NODES = eINSTANCE.getOperator_OutNodes();
 
 		/**
 		 * The meta object literal for the '{@link dataMapper.impl.ElementImpl <em>Element</em>}' class.
@@ -1451,7 +1481,7 @@ public interface DataMapperPackage extends EPackage {
 		EReference IN_NODE__ATTRIBUTE_PARENT = eINSTANCE.getInNode_AttributeParent();
 
 		/**
-		 * The meta object literal for the '<em><b>Concat Parent</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Concat Parent</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1521,38 +1551,14 @@ public interface DataMapperPackage extends EPackage {
 		EClass CONCAT = eINSTANCE.getConcat();
 
 		/**
-		 * The meta object literal for the '<em><b>In Node</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link dataMapper.impl.EqualImpl <em>Equal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.EqualImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getEqual()
 		 * @generated
 		 */
-		EReference CONCAT__IN_NODE = eINSTANCE.getConcat_InNode();
-
-		/**
-		 * The meta object literal for the '<em><b>Out Node</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONCAT__OUT_NODE = eINSTANCE.getConcat_OutNode();
-
-		/**
-		 * The meta object literal for the '{@link dataMapper.impl.OperationsImpl <em>Operations</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dataMapper.impl.OperationsImpl
-		 * @see dataMapper.impl.DataMapperPackageImpl#getOperations()
-		 * @generated
-		 */
-		EClass OPERATIONS = eINSTANCE.getOperations();
-
-		/**
-		 * The meta object literal for the '<em><b>Concat</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPERATIONS__CONCAT = eINSTANCE.getOperations_Concat();
+		EClass EQUAL = eINSTANCE.getEqual();
 
 	}
 

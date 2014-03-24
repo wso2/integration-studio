@@ -15,12 +15,12 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class InNode4CreateCommand extends EditElementCommand {
+public class EqualCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public InNode4CreateCommand(CreateElementRequest req) {
+	public EqualCreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -29,8 +29,7 @@ public class InNode4CreateCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -48,13 +47,12 @@ public class InNode4CreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		dataMapper.InNode newElement = dataMapper.DataMapperFactory.eINSTANCE
-				.createInNode();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		dataMapper.Equal newElement = dataMapper.DataMapperFactory.eINSTANCE.createEqual();
 
-		dataMapper.Concat owner = (dataMapper.Concat) getElementToEdit();
-		owner.getInNode().add(newElement);
+		dataMapper.DataMapperRoot owner = (dataMapper.DataMapperRoot) getElementToEdit();
+		owner.getOperators().add(newElement);
 
 		doConfigure(newElement, monitor, info);
 
@@ -65,18 +63,14 @@ public class InNode4CreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(dataMapper.InNode newElement,
-			IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+	protected void doConfigure(dataMapper.Equal newElement, IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
+				elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

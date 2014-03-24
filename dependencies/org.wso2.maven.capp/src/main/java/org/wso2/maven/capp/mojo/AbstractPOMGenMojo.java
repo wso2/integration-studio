@@ -22,6 +22,9 @@ import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.AbstractMojo;
@@ -358,5 +361,28 @@ public abstract class AbstractPOMGenMojo extends AbstractMojo {
 	protected File processTokenReplacement(Artifact artifact){
 		return null;
 		//Do nothing. Implementations should be done by impplementations
+	}
+	
+	/**
+	 * Replace artifact tokens with maven properties.
+	 * @param content
+	 * @param mavenProperties
+	 * @return
+	 */
+	public String replaceTokens(String content, Properties mavenProperties) {
+		StringBuffer sb = new StringBuffer();
+		Pattern pattern = Pattern.compile("\\$\\{(.*?)\\}");
+		Matcher matcher = pattern.matcher(content);
+		while (matcher.find()) {
+			String match = matcher.group(0).replaceAll("^\\$\\{", "");
+			match = match.replaceAll("\\}$", "");
+			String value = (String) mavenProperties.get(match);
+			if(value != null && !value.trim().equals("")){
+				matcher.appendReplacement(sb, value);
+				getLog().info("Replacing the token: "+match+" with value: "+value);
+			}		
+		}
+		matcher.appendTail(sb);
+		return sb.toString();
 	}
 }

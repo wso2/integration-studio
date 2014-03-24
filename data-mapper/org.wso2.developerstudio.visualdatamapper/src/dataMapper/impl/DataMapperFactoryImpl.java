@@ -71,7 +71,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.DATA_MAPPER_ROOT: return createDataMapperRoot();
 			case DataMapperPackage.INPUT: return createInput();
 			case DataMapperPackage.OUTPUT: return createOutput();
-			case DataMapperPackage.OPERATORS: return createOperators();
+			case DataMapperPackage.OPERATOR: return createOperator();
 			case DataMapperPackage.ELEMENT: return createElement();
 			case DataMapperPackage.ATTRIBUTE: return createAttribute();
 			case DataMapperPackage.TREE_NODE: return createTreeNode();
@@ -79,7 +79,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.OUT_NODE: return createOutNode();
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
 			case DataMapperPackage.CONCAT: return createConcat();
-			case DataMapperPackage.OPERATIONS: return createOperations();
+			case DataMapperPackage.EQUAL: return createEqual();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -114,7 +114,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public DataMapperRoot createDataMapperRoot() {
 		DataMapperRootImpl dataMapperRoot = new DataMapperRootImpl();
 		dataMapperRoot.setInput(createInput());
-		dataMapperRoot.setOperations(createOperations());
 		dataMapperRoot.setOutput(createOutput());
 		return dataMapperRoot;
 	}
@@ -144,9 +143,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operators createOperators() {
-		OperatorsImpl operators = new OperatorsImpl();
-		return operators;
+	public Operator createOperator() {
+		OperatorImpl operator = new OperatorImpl();
+		return operator;
 	}
 
 	/**
@@ -168,10 +167,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * @generated NOT
 	 */
 	public Attribute createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();
-		
-		attribute.setInNode(createInNode());
-		attribute.setOutNode(createOutNode());
+		AttributeImpl attribute = new AttributeImpl();		
+		//attribute.setInNode(createInNode());
+		//attribute.setOutNode(createOutNode());
 		return attribute;
 	}
 
@@ -218,13 +216,10 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
-		concat.getInNode().add(createInNode());
-		concat.getInNode().add(createInNode());
-		concat.getOutNode().add(createOutNode());
 		return concat;
 	}
 
@@ -233,9 +228,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operations createOperations() {
-		OperationsImpl operations = new OperationsImpl();
-		return operations;
+	public Equal createEqual() {
+		EqualImpl equal = new EqualImpl();
+		return equal;
 	}
 
 	/**

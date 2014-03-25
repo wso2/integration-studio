@@ -20,17 +20,24 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+import org.wso2.developerstudio.eclipse.artifact.registry.Activator;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class ResourcesContentProvider implements ITreeContentProvider {
+	
+	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	
 	private static final String navigatorLabel = "Registry Resources View";
 	private IProject project;
-	NavigatorNode root;
+	private NavigatorNode root;
 	
 	public void initContent(){
 		List<RegistryElement> content = new ArrayList<RegistryElement>();
@@ -42,22 +49,33 @@ public class ResourcesContentProvider implements ITreeContentProvider {
 			    for (RegistryArtifact artifact : regArtifact) {
 			    	List<RegistryElement> items = artifact.getAllRegistryItems();
 			    	for (RegistryElement item : items) {
-	                    content.add(item);
+			    		if(StringUtils.isNotEmpty(item.getPath())){
+			    			if(item.getPath().startsWith("/")){
+			    				content.add(item);
+			    			} else{
+			    				log.warn("Invalid resource path found for : " + artifact.getName());
+			    			}
+			    		} else{
+			    			log.warn("Null resource path found for : " + artifact.getName());
+			    		}
                     }
 		    	}
 			    root = new NavigatorNode();
 			    root.setRoot(true);
 			    root.setContent(content);
 			    root.setPath("/");
-			    root.setProject(project);
+			    root.setProject(getProject());
 		      } catch (Exception e) {
-			 /*ignore*/
+		    	 /* log the error and initialize with empty content*/
+		    	 log.error("Cannot initialize navigator content for ", e );
+		    	 root = new NavigatorNode();
+		    	 root.setContent(content);
+				 root.setRoot(true);
 		  }
 	   }
 
 	
     public void dispose() {
-	    
     }
 
 	

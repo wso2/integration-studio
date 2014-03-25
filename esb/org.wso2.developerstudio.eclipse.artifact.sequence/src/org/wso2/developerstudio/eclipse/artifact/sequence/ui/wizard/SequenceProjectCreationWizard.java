@@ -254,6 +254,8 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		addGeneralProjectPlugin(project);
 		File pomLocation = project.getFile("pom.xml").getLocation().toFile();
 		String groupId = getMavenGroupId(pomLocation) + ".resource";
+		MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+		String version = mavenProject.getVersion();
 		
 		
 		String registryPath = sequenceModel.getDynamicSeqRegistryPath()
@@ -292,7 +294,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		
 		RegistryArtifact artifact=new RegistryArtifact();
 		artifact.setName(sequenceModel.getSequenceName());
-		artifact.setVersion("1.0.0");
+		artifact.setVersion(version);
 		artifact.setType("registry/resource");
 		artifact.setServerRole("EnterpriseServiceBus");
 		artifact.setGroupId(groupId);

@@ -288,7 +288,7 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
 					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
 
-			int nodeDimension = 10; // width for connection nodes
+			int nodeDimension = 4; // width for connection nodes
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));

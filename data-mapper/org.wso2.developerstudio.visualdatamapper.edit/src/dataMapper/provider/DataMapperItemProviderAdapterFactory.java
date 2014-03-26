@@ -187,26 +187,26 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dataMapper.Operators} instances.
+	 * This keeps track of the one adapter used for all {@link dataMapper.Operator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperatorsItemProvider operatorsItemProvider;
+	protected OperatorItemProvider operatorItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dataMapper.Operators}.
+	 * This creates an adapter for a {@link dataMapper.Operator}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOperatorsAdapter() {
-		if (operatorsItemProvider == null) {
-			operatorsItemProvider = new OperatorsItemProvider(this);
+	public Adapter createOperatorAdapter() {
+		if (operatorItemProvider == null) {
+			operatorItemProvider = new OperatorItemProvider(this);
 		}
 
-		return operatorsItemProvider;
+		return operatorItemProvider;
 	}
 
 	/**
@@ -371,26 +371,26 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dataMapper.Operations} instances.
+	 * This keeps track of the one adapter used for all {@link dataMapper.Equal} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperationsItemProvider operationsItemProvider;
+	protected EqualItemProvider equalItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dataMapper.Operations}.
+	 * This creates an adapter for a {@link dataMapper.Equal}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOperationsAdapter() {
-		if (operationsItemProvider == null) {
-			operationsItemProvider = new OperationsItemProvider(this);
+	public Adapter createEqualAdapter() {
+		if (equalItemProvider == null) {
+			equalItemProvider = new EqualItemProvider(this);
 		}
 
-		return operationsItemProvider;
+		return equalItemProvider;
 	}
 
 	/**
@@ -497,7 +497,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (dataMapperRootItemProvider != null) dataMapperRootItemProvider.dispose();
 		if (inputItemProvider != null) inputItemProvider.dispose();
 		if (outputItemProvider != null) outputItemProvider.dispose();
-		if (operatorsItemProvider != null) operatorsItemProvider.dispose();
+		if (operatorItemProvider != null) operatorItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
 		if (attributeItemProvider != null) attributeItemProvider.dispose();
 		if (treeNodeItemProvider != null) treeNodeItemProvider.dispose();
@@ -505,7 +505,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (outNodeItemProvider != null) outNodeItemProvider.dispose();
 		if (dataMapperLinkItemProvider != null) dataMapperLinkItemProvider.dispose();
 		if (concatItemProvider != null) concatItemProvider.dispose();
-		if (operationsItemProvider != null) operationsItemProvider.dispose();
+		if (equalItemProvider != null) equalItemProvider.dispose();
 	}
 
 }

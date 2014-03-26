@@ -121,9 +121,9 @@ public class DataMapperVisualIDRegistry {
 					domainElement.eClass())) {
 				return dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID;
 			}
-			if (dataMapper.DataMapperPackage.eINSTANCE.getOperations().isSuperTypeOf(
+			if (dataMapper.DataMapperPackage.eINSTANCE.getEqual().isSuperTypeOf(
 					domainElement.eClass())) {
-				return dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID;
+				return dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID;
 			}
 			break;
 		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID:
@@ -136,12 +136,6 @@ public class DataMapperVisualIDRegistry {
 			if (dataMapper.DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(
 					domainElement.eClass())) {
 				return dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID;
-			}
-			break;
-		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID:
-			if (dataMapper.DataMapperPackage.eINSTANCE.getConcat().isSuperTypeOf(
-					domainElement.eClass())) {
-				return dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID;
 			}
 			break;
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
@@ -206,16 +200,6 @@ public class DataMapperVisualIDRegistry {
 				return dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID;
 			}
 			break;
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-			if (dataMapper.DataMapperPackage.eINSTANCE.getInNode().isSuperTypeOf(
-					domainElement.eClass())) {
-				return dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID;
-			}
-			if (dataMapper.DataMapperPackage.eINSTANCE.getOutNode().isSuperTypeOf(
-					domainElement.eClass())) {
-				return dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID;
-			}
-			break;
 		}
 		return -1;
 	}
@@ -248,7 +232,7 @@ public class DataMapperVisualIDRegistry {
 			if (dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID == nodeVisualID) {
+			if (dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -259,11 +243,6 @@ public class DataMapperVisualIDRegistry {
 			break;
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			if (dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case dataMapper.diagram.edit.parts.OperationsEditPart.VISUAL_ID:
-			if (dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -313,14 +292,6 @@ public class DataMapperVisualIDRegistry {
 				return true;
 			}
 			if (dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
-			if (dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -378,12 +349,11 @@ public class DataMapperVisualIDRegistry {
 		switch (visualID) {
 		case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID:
 			return false;
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID:
-		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
-		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

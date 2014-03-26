@@ -10,7 +10,7 @@
     <genClasses ecoreClass="dataMapper.ecore#//DataMapperRoot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/input"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/output"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperRoot/operators"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Input">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Input/treeNode"/>
@@ -18,7 +18,10 @@
     <genClasses ecoreClass="dataMapper.ecore#//Output">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Output/treeNode"/>
     </genClasses>
-    <genClasses ecoreClass="dataMapper.ecore#//Operators"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Operator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operator/inNodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operator/outNodes"/>
+    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Element">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/value"/>
@@ -56,12 +59,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/inNode"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/outNode"/>
     </genClasses>
-    <genClasses ecoreClass="dataMapper.ecore#//Concat">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Concat/inNode"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Concat/outNode"/>
-    </genClasses>
-    <genClasses ecoreClass="dataMapper.ecore#//Operations">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operations/concat"/>
-    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//Concat"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
   </genPackages>
 </genmodel:GenModel>

@@ -88,8 +88,8 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createOutputAdapter();
 			}
 			@Override
-			public Adapter caseOperators(Operators object) {
-				return createOperatorsAdapter();
+			public Adapter caseOperator(Operator object) {
+				return createOperatorAdapter();
 			}
 			@Override
 			public Adapter caseElement(Element object) {
@@ -120,8 +120,8 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createConcatAdapter();
 			}
 			@Override
-			public Adapter caseOperations(Operations object) {
-				return createOperationsAdapter();
+			public Adapter caseEqual(Equal object) {
+				return createEqualAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -214,16 +214,16 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dataMapper.Operators <em>Operators</em>}'.
+	 * Creates a new adapter for an object of class '{@link dataMapper.Operator <em>Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dataMapper.Operators
+	 * @see dataMapper.Operator
 	 * @generated
 	 */
-	public Adapter createOperatorsAdapter() {
+	public Adapter createOperatorAdapter() {
 		return null;
 	}
 
@@ -326,16 +326,16 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dataMapper.Operations <em>Operations</em>}'.
+	 * Creates a new adapter for an object of class '{@link dataMapper.Equal <em>Equal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dataMapper.Operations
+	 * @see dataMapper.Equal
 	 * @generated
 	 */
-	public Adapter createOperationsAdapter() {
+	public Adapter createEqualAdapter() {
 		return null;
 	}
 

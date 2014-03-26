@@ -10,8 +10,8 @@
       visualID="2003"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Output') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'DataMapperRoot') and _containmentMF_.name = 'output')"/>
   <nodeTraces
-      visualID="2004"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Operations') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'DataMapperRoot') and _containmentMF_.name = 'operations')"/>
+      visualID="2005"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Equal') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'DataMapperRoot') and _containmentMF_.name = 'operators')"/>
   <childNodeTraces
       visualID="3002"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'TreeNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Input') and _containmentMF_.name = 'treeNode')"/>
@@ -39,15 +39,6 @@
   <childNodeTraces
       visualID="3011"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'TreeNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Output') and _containmentMF_.name = 'treeNode')"/>
-  <childNodeTraces
-      visualID="3013"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Concat') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Operations') and _containmentMF_.name = 'concat')"/>
-  <childNodeTraces
-      visualID="3014"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'InNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Concat') and _containmentMF_.name = 'inNode')"/>
-  <childNodeTraces
-      visualID="3015"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'OutNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'Concat') and _containmentMF_.name = 'outNode')"/>
   <linkTraces
       visualID="4001"
       queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http:///org/wso2/developerstudio/eclipse/gmf/datamapper' and _eClass_.name = 'DataMapperLink')"/>

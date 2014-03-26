@@ -155,7 +155,7 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 		if (childEditPart instanceof InNode2EditPart || childEditPart instanceof InNodeEditPart) {
 
 			EditPart temp = this.getParent();
-			while ((!(temp instanceof DataMapperDiagramEditPart)) && (temp != null)) {
+			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
 				// System.out.println("Node     " +temp);
 				if (temp instanceof InputEditPart) {
 					if (childEditPart instanceof InNodeEditPart) {
@@ -199,7 +199,7 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 		if (childEditPart instanceof OutNode2EditPart || childEditPart instanceof OutNodeEditPart) {
 
 			EditPart temp = this.getParent();
-			while ((!(temp instanceof DataMapperDiagramEditPart)) && (temp != null)) {
+			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
 
 				if (temp instanceof OutputEditPart) {
 					if (childEditPart instanceof OutNodeEditPart) {
@@ -453,7 +453,7 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 			fFigureFileNameFigure.setText(name);
 			fFigureFileNameFigure.setForegroundColor(org.eclipse.draw2d.ColorConstants.black);
 
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 12, SWT.NORMAL));
+			fFigureFileNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			figure.setOutline(false);
 			mainImageRectangle.setOutline(false);
 			figure.setFill(false);

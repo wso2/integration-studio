@@ -101,28 +101,26 @@ public interface InNode extends EObject {
 	void setAttributeParent(Attribute value);
 
 	/**
-	 * Returns the value of the '<em><b>Concat Parent</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link dataMapper.Concat#getInNode <em>In Node</em>}'.
+	 * Returns the value of the '<em><b>Concat Parent</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Concat Parent</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Concat Parent</em>' container reference.
+	 * @return the value of the '<em>Concat Parent</em>' reference.
 	 * @see #setConcatParent(Concat)
 	 * @see dataMapper.DataMapperPackage#getInNode_ConcatParent()
-	 * @see dataMapper.Concat#getInNode
-	 * @model opposite="inNode" transient="false"
+	 * @model
 	 * @generated
 	 */
 	Concat getConcatParent();
 
 	/**
-	 * Sets the value of the '{@link dataMapper.InNode#getConcatParent <em>Concat Parent</em>}' container reference.
+	 * Sets the value of the '{@link dataMapper.InNode#getConcatParent <em>Concat Parent</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Concat Parent</em>' container reference.
+	 * @param value the new value of the '<em>Concat Parent</em>' reference.
 	 * @see #getConcatParent()
 	 * @generated
 	 */

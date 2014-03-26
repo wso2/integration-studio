@@ -271,93 +271,11 @@
             href="dataMapper.genmodel#//dataMapper/Output/treeNode"/>
       </modelFacet>
     </childNodes>
-    <childNodes
-        visualID="3013"
-        editPartClassName="ConcatEditPart"
-        itemSemanticEditPolicyClassName="ConcatItemSemanticEditPolicy"
-        notationViewFactoryClassName="ConcatViewFactory"
-        canonicalEditPolicyClassName="ConcatCanonicalEditPolicy"
-        childNodes="//@diagram/@childNodes.10 //@diagram/@childNodes.11"
-        graphicalNodeEditPolicyClassName="ConcatGraphicalNodeEditPolicy"
-        createCommandClassName="ConcatCreateCommand"
-        containers="//@diagram/@topLevelNodes.2">
-      <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType
-          xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="ConcatEditHelper"/>
-      <viewmap
-          xsi:type="gmfgen:FigureViewmap"
-          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
-      <modelFacet>
-        <metaClass
-            href="dataMapper.genmodel#//dataMapper/Concat"/>
-        <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Operations/concat"/>
-        <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Operations/concat"/>
-      </modelFacet>
-    </childNodes>
-    <childNodes
-        xsi:type="gmfgen:GenChildSideAffixedNode"
-        visualID="3014"
-        editPartClassName="InNode3EditPart"
-        itemSemanticEditPolicyClassName="InNode3ItemSemanticEditPolicy"
-        notationViewFactoryClassName="InNodeViewFactory"
-        canonicalEditPolicyClassName="InNode3CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="InNode3GraphicalNodeEditPolicy"
-        createCommandClassName="InNode3CreateCommand"
-        containers="//@diagram/@childNodes.9"
-        preferredSideName="WEST">
-      <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType
-          xsi:type="gmfgen:SpecializationType"
-          metamodelType="//@diagram/@childNodes.3/@elementType"/>
-      <viewmap
-          xsi:type="gmfgen:FigureViewmap"
-          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
-      <modelFacet>
-        <metaClass
-            href="dataMapper.genmodel#//dataMapper/InNode"/>
-        <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Concat/inNode"/>
-        <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Concat/inNode"/>
-      </modelFacet>
-    </childNodes>
-    <childNodes
-        xsi:type="gmfgen:GenChildSideAffixedNode"
-        visualID="3015"
-        editPartClassName="OutNode3EditPart"
-        itemSemanticEditPolicyClassName="OutNode3ItemSemanticEditPolicy"
-        notationViewFactoryClassName="OutNodeViewFactory"
-        canonicalEditPolicyClassName="OutNode3CanonicalEditPolicy"
-        graphicalNodeEditPolicyClassName="OutNode3GraphicalNodeEditPolicy"
-        createCommandClassName="OutNode3CreateCommand"
-        containers="//@diagram/@childNodes.9"
-        preferredSideName="EAST">
-      <diagramRunTimeClass
-          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
-      <elementType
-          xsi:type="gmfgen:SpecializationType"
-          metamodelType="//@diagram/@childNodes.4/@elementType"/>
-      <viewmap
-          xsi:type="gmfgen:FigureViewmap"
-          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
-      <modelFacet>
-        <metaClass
-            href="dataMapper.genmodel#//dataMapper/OutNode"/>
-        <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Concat/outNode"/>
-        <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Concat/outNode"/>
-      </modelFacet>
-    </childNodes>
     <topLevelNodes
         visualID="2002"
         editPartClassName="InputEditPart"
         itemSemanticEditPolicyClassName="InputItemSemanticEditPolicy"
+        notationViewFactoryClassName="InputViewFactory"
         canonicalEditPolicyClassName="InputCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.0"
         graphicalNodeEditPolicyClassName="InputGraphicalNodeEditPolicy"
@@ -386,6 +304,7 @@
         visualID="2003"
         editPartClassName="OutputEditPart"
         itemSemanticEditPolicyClassName="OutputItemSemanticEditPolicy"
+        notationViewFactoryClassName="OutputViewFactory"
         canonicalEditPolicyClassName="OutputCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.8"
         graphicalNodeEditPolicyClassName="OutputGraphicalNodeEditPolicy"
@@ -411,28 +330,28 @@
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
-        visualID="2004"
-        editPartClassName="OperationsEditPart"
-        itemSemanticEditPolicyClassName="OperationsItemSemanticEditPolicy"
-        canonicalEditPolicyClassName="OperationsCanonicalEditPolicy"
-        childNodes="//@diagram/@childNodes.9"
-        graphicalNodeEditPolicyClassName="OperationsGraphicalNodeEditPolicy"
-        createCommandClassName="OperationsCreateCommand">
+        visualID="2005"
+        editPartClassName="EqualEditPart"
+        itemSemanticEditPolicyClassName="EqualItemSemanticEditPolicy"
+        notationViewFactoryClassName="EqualViewFactory"
+        canonicalEditPolicyClassName="EqualCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="EqualGraphicalNodeEditPolicy"
+        createCommandClassName="EqualCreateCommand">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
           xsi:type="gmfgen:MetamodelType"
-          editHelperClassName="OperationsEditHelper"/>
+          editHelperClassName="EqualEditHelper"/>
       <viewmap
           xsi:type="gmfgen:FigureViewmap"
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Operations"/>
+            href="dataMapper.genmodel#//dataMapper/Equal"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operations"/>
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operations"/>
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
     <links
@@ -469,18 +388,14 @@
           title="dataMapper">
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Operators"
-            description="Create new Operators"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
             title="DataMapperLink"
-            description="Create new DataMapperLink"
-            genLinks="//@diagram/@links.0"/>
+            description="Create new DataMapperLink"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Concat"
-            description="Create new Concat"
-            genNodes="//@diagram/@childNodes.9"/>
+            title="Equal"
+            description="Create new Equal"
+            genNodes="//@diagram/@topLevelNodes.2"
+            genLinks="//@diagram/@links.0"/>
       </groups>
     </palette>
     <preferencePages
@@ -570,15 +485,6 @@
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.1"/>
     <childReferences
-        parent="//@diagram/@childNodes.9"
-        child="//@diagram/@childNodes.10"/>
-    <childReferences
-        parent="//@diagram/@childNodes.9"
-        child="//@diagram/@childNodes.11"/>
-    <childReferences
-        parent="//@diagram/@topLevelNodes.2"
-        child="//@diagram/@childNodes.9"/>
-    <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.2"/>
     <childReferences
@@ -612,18 +518,6 @@
         groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.0"
-        child="//@diagram/@childNodes.10"
-        referenceType="out_target"
-        groupName="target"
-        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.10"
-        child="//@diagram/@links.0"
-        referenceType="in_source"
-        groupName="incoming links"
-        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.0"
         child="//@diagram/@childNodes.4"
         referenceType="in_source"
         groupName="source"
@@ -642,18 +536,6 @@
         groupIcon="icons/linkSourceNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@childNodes.7"
-        child="//@diagram/@links.0"
-        referenceType="out_target"
-        groupName="outgoing links"
-        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@links.0"
-        child="//@diagram/@childNodes.11"
-        referenceType="in_source"
-        groupName="source"
-        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
-    <childReferences
-        parent="//@diagram/@childNodes.11"
         child="//@diagram/@links.0"
         referenceType="out_target"
         groupName="outgoing links"

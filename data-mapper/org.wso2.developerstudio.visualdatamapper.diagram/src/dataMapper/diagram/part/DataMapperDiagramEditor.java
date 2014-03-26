@@ -12,10 +12,15 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
+import org.eclipse.gef.KeyHandler;
+import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.ui.palette.PaletteViewer;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
+import org.eclipse.gmf.runtime.diagram.ui.internal.parts.DirectEditKeyHandler;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentProvider;
@@ -28,6 +33,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorMatchingStrategy;
@@ -40,6 +46,8 @@ import org.eclipse.ui.navigator.resources.ProjectExplorer;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
+
+import dataMapper.diagram.custom.part.CustomDiagramGraphicalViewerKeyHandler;
 
 /**
  * @generated
@@ -284,10 +292,21 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
+
+		IDiagramGraphicalViewer viewer = getDiagramGraphicalViewer();
+		KeyHandler viewerKeyHandler = new CustomDiagramGraphicalViewerKeyHandler(this, viewer);
+
+		viewerKeyHandler.setParent(getKeyHandler());
+		viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
+
+		//This enables the property view to be informed of selection changes in our graphical view, 
+		//when our view is the active workbench part.
+		dataMapperEditor.getSite().setSelectionProvider(viewer);
+
 		dataMapper.diagram.part.DiagramEditorContextMenuProvider provider = new dataMapper.diagram.part.DiagramEditorContextMenuProvider(
 				this, getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);

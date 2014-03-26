@@ -1,0 +1,32 @@
+ {
+ "name" : "engineers",
+ "type" : "record", 
+ "fields": [
+             { "name": "engineerRecord", 
+                         "type": { 
+                                           "type": "array", 
+                                           "items": { 
+                                                                     "name": "engineer", 
+                                                                     "type": "record", 
+                                                                     "fields": [ 
+                                                                                          { "name" : "fullname", "type" : "string"}, 
+                                                                                   { "name" : "address", 
+                                                                                                                                                                       
+                                                                                   "type": {
+                                                    "type": "array", 
+                                                    "items":                                                     
+                                                          {  
+                                                            "name": "address", 
+                                                            "type": "record", 
+                                                            "fields": [                                                                 
+                                                            {"name" : "addresscode", "type" : "string"}
+                                                            ]
+                                                            }
+                                                                                           }
+                                                                                           }
+                                                                             ] 
+                                                                  } 
+                                         } 
+                             }        
+           ]
+}

@@ -134,7 +134,7 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(20, 20);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 		result.getBounds().setSize(result.getPreferredSize());
 		return result;
 	}

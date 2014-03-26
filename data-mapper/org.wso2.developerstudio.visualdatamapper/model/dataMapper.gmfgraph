@@ -92,6 +92,12 @@
           name="CompartmentFigure"
           outline="false"/>
     </descriptors>
+    <descriptors
+        name="EqualFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="EqualFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -134,6 +140,9 @@
   <nodes
       name="Operations"
       figure="OperationsFigure"/>
+  <nodes
+      name="Equal"
+      figure="EqualFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

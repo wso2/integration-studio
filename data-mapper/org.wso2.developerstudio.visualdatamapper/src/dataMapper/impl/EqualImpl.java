@@ -3,26 +3,26 @@
 package dataMapper.impl;
 
 import dataMapper.DataMapperPackage;
-import dataMapper.Operators;
+import dataMapper.Equal;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Operators</b></em>'.
+ * An implementation of the model object '<em><b>Equal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class OperatorsImpl extends DataMapperNodeImpl implements Operators {
+public class EqualImpl extends OperatorImpl implements Equal {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperatorsImpl() {
+	protected EqualImpl() {
 		super();
 	}
 
@@ -33,7 +33,7 @@ public class OperatorsImpl extends DataMapperNodeImpl implements Operators {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DataMapperPackage.Literals.OPERATORS;
+		return DataMapperPackage.Literals.EQUAL;
 	}
 
-} //OperatorsImpl
+} //EqualImpl

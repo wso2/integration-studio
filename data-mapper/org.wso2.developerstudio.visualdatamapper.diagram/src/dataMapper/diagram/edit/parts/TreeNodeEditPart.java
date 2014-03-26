@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -291,10 +292,10 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
-			layoutThis.setSpacing(1);
+			//layoutThis.setSpacing(1);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
-			this.setOutline(false);
+			this.setOutline(true);
 			this.setFill(false);
 			createContents();
 
@@ -309,7 +310,8 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			ToolbarLayout l = new ToolbarLayout();
 			l.setVertical(false);
 			figure.setLayoutManager(l);
-			figure.setPreferredSize(10, 10);
+			//figure.setPreferredSize(10, 10);
+
 			figure.setBorder(null);
 
 			figure.setOpaque(false);
@@ -340,7 +342,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			fFigureFileNameFigure.setText(name);
 			fFigureFileNameFigure.setForegroundColor(ColorConstants.black);
 
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 12, SWT.NORMAL));
+			fFigureFileNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			clickNode = new ClickNode(mainExpand);
 			clickNode.setEnabled(true);
 			clickNode.setPreferredSize(20, 8);

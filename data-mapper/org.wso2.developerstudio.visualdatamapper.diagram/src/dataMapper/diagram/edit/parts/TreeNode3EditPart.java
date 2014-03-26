@@ -288,7 +288,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
-			layoutThis.setSpacing(1);
+			//layoutThis.setSpacing(1);
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setOpaque(false);
@@ -307,7 +307,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 			ToolbarLayout l = new ToolbarLayout();
 			l.setVertical(false);
 			figure.setLayoutManager(l);
-			figure.setPreferredSize(10, 10);
+			//figure.setPreferredSize(10, 10);
 			figure.setBorder(null);
 
 			figure.setOpaque(true);
@@ -338,7 +338,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 					.split(",")[0]);
 			fFigureFileNameFigure.setText(name);
 			fFigureFileNameFigure.setForegroundColor(ColorConstants.black);
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 12, SWT.NORMAL));
+			fFigureFileNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			clickNode = new ClickNode(mainExpand);
 			clickNode.setEnabled(true);
 			clickNode.setPreferredSize(20, 8);

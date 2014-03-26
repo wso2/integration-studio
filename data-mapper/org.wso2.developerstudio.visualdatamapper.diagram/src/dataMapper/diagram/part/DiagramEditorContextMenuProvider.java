@@ -36,27 +36,24 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	/**
 	 * @generated
 	 */
-	private DeleteElementAction deleteAction;
+	private dataMapper.diagram.part.DeleteElementAction deleteAction;
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> contextActions;
+	LoadInputSchemaAction lisa;
+
 	//AddChildFeildAction addAction;
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public DiagramEditorContextMenuProvider(IWorkbenchPart part, EditPartViewer viewer) {
 		super(part, viewer);
 		this.part = part;
-		deleteAction = new DeleteElementAction(part);
+		deleteAction = new dataMapper.diagram.part.DeleteElementAction(part);
 		deleteAction.init();
-		
-		// Initialize context sensitive actions.
 
 		contextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		contextActions.put(InputEditPart.class, new LoadInputSchemaAction(part));
 		contextActions.put(OutputEditPart.class, new LoadOutputSchemaAction(part));
-		//addAction = new AddChildFeildAction(part);
-		//contextActions.put(InputEditPart.class, new AddChildFeildAction(part));
-
 	}
 
 	/**
@@ -71,7 +68,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public void buildContextMenu(final IMenuManager menu) {
 		getViewer().flush();
@@ -84,28 +81,30 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									DiagramEditorContextMenuProvider.this, part);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
 							menu.appendToGroup("editGroup", deleteAction);
-							
-							
+
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
-								EditPart selectedEditorPart = (IGraphicalEditPart) selectedEPs.get(0);
-								EObject contextObj = ((View) selectedEditorPart.getModel()).getElement();
-								
+								EditPart selectedEditorPart = (IGraphicalEditPart) selectedEPs
+										.get(0);
+								EObject contextObj = ((View) selectedEditorPart.getModel())
+										.getElement();
+
 								AbstractActionHandler contextAction = null;
 								if (contextObj instanceof EObject) {
-									contextAction = contextActions.get(selectedEditorPart.getClass());
+									contextAction = contextActions.get(selectedEditorPart
+											.getClass());
 									if (null != contextAction) {
 										menu.appendToGroup("editGroup", contextAction);
 										//menu.appendToGroup("editGroup", addAction);
 									}
 								}
-								
+
 							}
-							
+
 						}
 					});
 		} catch (Exception e) {
-			DataMapperDiagramEditorPlugin.getInstance().logError(
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
 					"Error building context menu", e);
 		}
 	}

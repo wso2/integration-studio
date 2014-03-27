@@ -98,6 +98,42 @@
           xsi:type="gmfgraph:Rectangle"
           name="EqualFigure"/>
     </descriptors>
+    <descriptors
+        name="OperatorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorBasicContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorBasicContainerFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorLeftContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorLeftContainerFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorLeftConnectorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorLeftConnectorFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorRightContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorRightContainerFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorRightConnectorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorRightConnectorFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="DataMapperNode"
@@ -143,6 +179,24 @@
   <nodes
       name="Equal"
       figure="EqualFigure"/>
+  <nodes
+      name="Operator"
+      figure="OperatorFigure"/>
+  <nodes
+      name="OperatorBasicContainer"
+      figure="OperatorBasicContainerFigure"/>
+  <nodes
+      name="OperatorLeftContainer"
+      figure="OperatorLeftContainerFigure"/>
+  <nodes
+      name="OperatorLeftConnector"
+      figure="OperatorLeftConnectorFigure"/>
+  <nodes
+      name="OperatorRightContainer"
+      figure="OperatorRightContainerFigure"/>
+  <nodes
+      name="OperatorRightConnector"
+      figure="OperatorRightConnectorFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>

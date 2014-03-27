@@ -138,6 +138,12 @@ public class DataMapperVisualIDRegistry {
 				return dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID;
 			}
 			break;
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+			if (dataMapper.DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			if (dataMapper.DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(
 					domainElement.eClass())) {
@@ -200,6 +206,40 @@ public class DataMapperVisualIDRegistry {
 				return dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID;
 			}
 			break;
+		case dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID:
+			if (dataMapper.DataMapperPackage.eINSTANCE.getOperatorLeftContainer().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart.VISUAL_ID;
+			}
+			if (dataMapper.DataMapperPackage.eINSTANCE.getOperatorRightContainer().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.OperatorRightContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart.VISUAL_ID:
+			if (dataMapper.DataMapperPackage.eINSTANCE.getOperatorLeftConnector().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart.VISUAL_ID;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart.VISUAL_ID:
+			if (dataMapper.DataMapperPackage.eINSTANCE.getInNode().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorRightContainerEditPart.VISUAL_ID:
+			if (dataMapper.DataMapperPackage.eINSTANCE.getOperatorRightConnector().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart.VISUAL_ID;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart.VISUAL_ID:
+			if (dataMapper.DataMapperPackage.eINSTANCE.getOutNode().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID;
+			}
+			break;
 		}
 		return -1;
 	}
@@ -243,6 +283,11 @@ public class DataMapperVisualIDRegistry {
 			break;
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			if (dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -292,6 +337,34 @@ public class DataMapperVisualIDRegistry {
 				return true;
 			}
 			if (dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (dataMapper.diagram.edit.parts.OperatorRightContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorRightContainerEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -349,11 +422,12 @@ public class DataMapperVisualIDRegistry {
 		switch (visualID) {
 		case dataMapper.diagram.edit.parts.DataMapperRootEditPart.VISUAL_ID:
 			return false;
-		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.InNodeEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.OutNodeEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

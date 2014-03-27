@@ -19,8 +19,23 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Output/treeNode"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Operator">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operator/inNodes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operator/outNodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//Operator/basicContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorBasicContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorBasicContainer/leftContainer"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorBasicContainer/rightContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorLeftContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorLeftContainer/leftConnectors"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorLeftConnector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorLeftConnector/inNode"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorRightContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorRightContainer/rightConnectors"/>
+    </genClasses>
+    <genClasses ecoreClass="dataMapper.ecore#//OperatorRightConnector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dataMapper.ecore#//OperatorRightConnector/outNode"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Element">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Element/name"/>
@@ -61,5 +76,6 @@
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Concat"/>
     <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Constant"/>
   </genPackages>
 </genmodel:GenModel>

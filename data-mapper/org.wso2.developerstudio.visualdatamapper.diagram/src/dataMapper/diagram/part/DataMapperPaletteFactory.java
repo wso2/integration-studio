@@ -56,33 +56,32 @@ public class DataMapperPaletteFactory {
 		PaletteGroup paletteContainer = new PaletteGroup(
 				dataMapper.diagram.part.Messages.DataMapper1Group_title);
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
-		paletteContainer.add(createDataMapperLink1CreationTool());
-		paletteContainer.add(createEqual2CreationTool());
+		paletteContainer.add(createEqual1CreationTool());
+		paletteContainer.add(createDataMapperLink2CreationTool());
 		return paletteContainer;
 	}
 
 	/**
 	 * @generated
 	 */
-	private ToolEntry createDataMapperLink1CreationTool() {
-		ToolEntry entry = new ToolEntry(
-				dataMapper.diagram.part.Messages.DataMapperLink1CreationTool_title,
-				dataMapper.diagram.part.Messages.DataMapperLink1CreationTool_desc, null, null) {
+	private ToolEntry createEqual1CreationTool() {
+		ToolEntry entry = new ToolEntry(dataMapper.diagram.part.Messages.Equal1CreationTool_title,
+				dataMapper.diagram.part.Messages.Equal1CreationTool_desc, null, null) {
 		};
-		entry.setId("createDataMapperLink1CreationTool"); //$NON-NLS-1$
+		entry.setId("createEqual1CreationTool"); //$NON-NLS-1$
 		return entry;
 	}
 
 	/**
 	 * @generated
 	 */
-	private ToolEntry createEqual2CreationTool() {
+	private ToolEntry createDataMapperLink2CreationTool() {
 		NodeToolEntry entry = new NodeToolEntry(
-				dataMapper.diagram.part.Messages.Equal2CreationTool_title,
-				dataMapper.diagram.part.Messages.Equal2CreationTool_desc,
+				dataMapper.diagram.part.Messages.DataMapperLink2CreationTool_title,
+				dataMapper.diagram.part.Messages.DataMapperLink2CreationTool_desc,
 				Collections
 						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005));
-		entry.setId("createEqual2CreationTool"); //$NON-NLS-1$
+		entry.setId("createDataMapperLink2CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
 				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005));
 		entry.setLargeIcon(entry.getSmallIcon());

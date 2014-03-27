@@ -176,19 +176,19 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
   		RegistryKeyProperty configuration = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
   		configuration.setKeyName("Configuration");
   		configuration.setPrettyName("configuration");
-  		configuration.setKeyValue("/default/key");
+  		//configuration.setKeyValue("/default/key");
   		setConfiguration(configuration);
   		
   		RegistryKeyProperty inputSchema = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
   		inputSchema.setKeyName("InputSchema");
   		inputSchema.setPrettyName("inputschema");
-  		inputSchema.setKeyValue("/default/key");
+  		//inputSchema.setKeyValue("/default/key");
   		setInputSchema(inputSchema);
   		
   		RegistryKeyProperty outputSchema = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
   		outputSchema.setKeyName("OutputSchema");
   		outputSchema.setPrettyName("outputschema");
-  		outputSchema.setKeyValue("/default/key");
+  		//outputSchema.setKeyValue("/default/key");
   		setOutputSchema(outputSchema);
 	}
 

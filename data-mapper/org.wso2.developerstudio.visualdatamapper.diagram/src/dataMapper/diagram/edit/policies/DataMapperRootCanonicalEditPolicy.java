@@ -63,6 +63,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 					.getDataMapperRoot_Input());
 			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
 					.getDataMapperRoot_Output());
+			myFeaturesToSynchronize.add(dataMapper.DataMapperPackage.eINSTANCE
+					.getDataMapperRoot_Operators());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -95,7 +97,8 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	private boolean isMyDiagramElement(View view) {
 		int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view);
 		return visualID == dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID
-				|| visualID == dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID;
+				|| visualID == dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID
+				|| visualID == dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID;
 	}
 
 	/**
@@ -260,6 +263,14 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
 						.getOutput_2003ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getEqual_2005ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

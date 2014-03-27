@@ -2,6 +2,7 @@
  */
 package dataMapper;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link dataMapper.DataMapperRoot#getInput <em>Input</em>}</li>
  *   <li>{@link dataMapper.DataMapperRoot#getOutput <em>Output</em>}</li>
- *   <li>{@link dataMapper.DataMapperRoot#getOperations <em>Operations</em>}</li>
+ *   <li>{@link dataMapper.DataMapperRoot#getOperators <em>Operators</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,29 +77,19 @@ public interface DataMapperRoot extends EObject {
 	void setOutput(Output value);
 
 	/**
-	 * Returns the value of the '<em><b>Operations</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Operators</b></em>' containment reference list.
+	 * The list contents are of type {@link dataMapper.Operator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Operations</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Operators</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operations</em>' containment reference.
-	 * @see #setOperations(Operation)
-	 * @see dataMapper.DataMapperPackage#getDataMapperRoot_Operations()
+	 * @return the value of the '<em>Operators</em>' containment reference list.
+	 * @see dataMapper.DataMapperPackage#getDataMapperRoot_Operators()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Operation getOperations();
-
-	/**
-	 * Sets the value of the '{@link dataMapper.DataMapperRoot#getOperations <em>Operations</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operations</em>' containment reference.
-	 * @see #getOperations()
-	 * @generated
-	 */
-	void setOperations(Operation value);
+	EList<Operator> getOperators();
 
 } // DataMapperRoot

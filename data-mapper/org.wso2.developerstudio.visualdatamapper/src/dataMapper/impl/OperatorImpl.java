@@ -4,7 +4,7 @@ package dataMapper.impl;
 
 import dataMapper.DataMapperPackage;
 import dataMapper.InNode;
-import dataMapper.Operation;
+import dataMapper.Operator;
 import dataMapper.OutNode;
 
 import java.util.Collection;
@@ -21,19 +21,19 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Operation</b></em>'.
+ * An implementation of the model object '<em><b>Operator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dataMapper.impl.OperationImpl#getInNodes <em>In Nodes</em>}</li>
- *   <li>{@link dataMapper.impl.OperationImpl#getOutNodes <em>Out Nodes</em>}</li>
+ *   <li>{@link dataMapper.impl.OperatorImpl#getInNodes <em>In Nodes</em>}</li>
+ *   <li>{@link dataMapper.impl.OperatorImpl#getOutNodes <em>Out Nodes</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OperationImpl extends DataMapperNodeImpl implements Operation {
+public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	/**
 	 * The cached value of the '{@link #getInNodes() <em>In Nodes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -59,7 +59,7 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperationImpl() {
+	protected OperatorImpl() {
 		super();
 	}
 
@@ -70,7 +70,7 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DataMapperPackage.Literals.OPERATION;
+		return DataMapperPackage.Literals.OPERATOR;
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	 */
 	public EList<InNode> getInNodes() {
 		if (inNodes == null) {
-			inNodes = new EObjectContainmentEList<InNode>(InNode.class, this, DataMapperPackage.OPERATION__IN_NODES);
+			inNodes = new EObjectContainmentEList<InNode>(InNode.class, this, DataMapperPackage.OPERATOR__IN_NODES);
 		}
 		return inNodes;
 	}
@@ -92,7 +92,7 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	 */
 	public EList<OutNode> getOutNodes() {
 		if (outNodes == null) {
-			outNodes = new EObjectContainmentEList<OutNode>(OutNode.class, this, DataMapperPackage.OPERATION__OUT_NODES);
+			outNodes = new EObjectContainmentEList<OutNode>(OutNode.class, this, DataMapperPackage.OPERATOR__OUT_NODES);
 		}
 		return outNodes;
 	}
@@ -105,9 +105,9 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATION__IN_NODES:
+			case DataMapperPackage.OPERATOR__IN_NODES:
 				return ((InternalEList<?>)getInNodes()).basicRemove(otherEnd, msgs);
-			case DataMapperPackage.OPERATION__OUT_NODES:
+			case DataMapperPackage.OPERATOR__OUT_NODES:
 				return ((InternalEList<?>)getOutNodes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -121,9 +121,9 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATION__IN_NODES:
+			case DataMapperPackage.OPERATOR__IN_NODES:
 				return getInNodes();
-			case DataMapperPackage.OPERATION__OUT_NODES:
+			case DataMapperPackage.OPERATOR__OUT_NODES:
 				return getOutNodes();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -138,11 +138,11 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATION__IN_NODES:
+			case DataMapperPackage.OPERATOR__IN_NODES:
 				getInNodes().clear();
 				getInNodes().addAll((Collection<? extends InNode>)newValue);
 				return;
-			case DataMapperPackage.OPERATION__OUT_NODES:
+			case DataMapperPackage.OPERATOR__OUT_NODES:
 				getOutNodes().clear();
 				getOutNodes().addAll((Collection<? extends OutNode>)newValue);
 				return;
@@ -158,10 +158,10 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATION__IN_NODES:
+			case DataMapperPackage.OPERATOR__IN_NODES:
 				getInNodes().clear();
 				return;
-			case DataMapperPackage.OPERATION__OUT_NODES:
+			case DataMapperPackage.OPERATOR__OUT_NODES:
 				getOutNodes().clear();
 				return;
 		}
@@ -176,12 +176,12 @@ public class OperationImpl extends DataMapperNodeImpl implements Operation {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATION__IN_NODES:
+			case DataMapperPackage.OPERATOR__IN_NODES:
 				return inNodes != null && !inNodes.isEmpty();
-			case DataMapperPackage.OPERATION__OUT_NODES:
+			case DataMapperPackage.OPERATOR__OUT_NODES:
 				return outNodes != null && !outNodes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //OperationImpl
+} //OperatorImpl

@@ -3,11 +3,17 @@
 package dataMapper.provider;
 
 
+import dataMapper.DataMapperFactory;
+import dataMapper.DataMapperPackage;
+import dataMapper.Operator;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -15,15 +21,16 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link dataMapper.Constant} object.
+ * This is the item provider adapter for a {@link dataMapper.Operator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConstantItemProvider
-	extends OperationItemProvider
+public class OperatorItemProvider
+	extends DataMapperNodeItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -36,7 +43,7 @@ public class ConstantItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConstantItemProvider(AdapterFactory adapterFactory) {
+	public OperatorItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,14 +63,45 @@ public class ConstantItemProvider
 	}
 
 	/**
-	 * This returns Constant.gif.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(DataMapperPackage.Literals.OPERATOR__IN_NODES);
+			childrenFeatures.add(DataMapperPackage.Literals.OPERATOR__OUT_NODES);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns Operator.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Constant"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Operator"));
 	}
 
 	/**
@@ -74,7 +112,7 @@ public class ConstantItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Constant_type");
+		return getString("_UI_Operator_type");
 	}
 
 	/**
@@ -87,6 +125,13 @@ public class ConstantItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Operator.class)) {
+			case DataMapperPackage.OPERATOR__IN_NODES:
+			case DataMapperPackage.OPERATOR__OUT_NODES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -100,6 +145,16 @@ public class ConstantItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.OPERATOR__IN_NODES,
+				 DataMapperFactory.eINSTANCE.createInNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.OPERATOR__OUT_NODES,
+				 DataMapperFactory.eINSTANCE.createOutNode()));
 	}
 
 }

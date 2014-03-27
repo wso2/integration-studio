@@ -71,7 +71,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.DATA_MAPPER_ROOT: return createDataMapperRoot();
 			case DataMapperPackage.INPUT: return createInput();
 			case DataMapperPackage.OUTPUT: return createOutput();
-			case DataMapperPackage.OPERATORS: return createOperators();
+			case DataMapperPackage.OPERATOR: return createOperator();
 			case DataMapperPackage.ELEMENT: return createElement();
 			case DataMapperPackage.ATTRIBUTE: return createAttribute();
 			case DataMapperPackage.TREE_NODE: return createTreeNode();
@@ -80,8 +80,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.DATA_MAPPER_LINK: return createDataMapperLink();
 			case DataMapperPackage.CONCAT: return createConcat();
 			case DataMapperPackage.EQUAL: return createEqual();
-			case DataMapperPackage.CONSTANT: return createConstant();
-			case DataMapperPackage.OPERATION: return createOperation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -145,9 +143,9 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operators createOperators() {
-		OperatorsImpl operators = new OperatorsImpl();
-		return operators;
+	public Operator createOperator() {
+		OperatorImpl operator = new OperatorImpl();
+		return operator;
 	}
 
 	/**
@@ -233,26 +231,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public Equal createEqual() {
 		EqualImpl equal = new EqualImpl();
 		return equal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constant createConstant() {
-		ConstantImpl constant = new ConstantImpl();
-		return constant;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Operation createOperation() {
-		OperationImpl operation = new OperationImpl();
-		return operation;
 	}
 
 	/**

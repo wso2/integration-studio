@@ -79,7 +79,7 @@ public class DataMapperRootItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__INPUT);
 			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OUTPUT);
-			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS);
+			childrenFeatures.add(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS);
 		}
 		return childrenFeatures;
 	}
@@ -133,7 +133,7 @@ public class DataMapperRootItemProvider
 		switch (notification.getFeatureID(DataMapperRoot.class)) {
 			case DataMapperPackage.DATA_MAPPER_ROOT__INPUT:
 			case DataMapperPackage.DATA_MAPPER_ROOT__OUTPUT:
-			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
+			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATORS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -163,23 +163,18 @@ public class DataMapperRootItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
-				 DataMapperFactory.eINSTANCE.createOperation()));
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createOperator()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
 				 DataMapperFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
 				 DataMapperFactory.eINSTANCE.createEqual()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATIONS,
-				 DataMapperFactory.eINSTANCE.createConstant()));
 	}
 
 	/**

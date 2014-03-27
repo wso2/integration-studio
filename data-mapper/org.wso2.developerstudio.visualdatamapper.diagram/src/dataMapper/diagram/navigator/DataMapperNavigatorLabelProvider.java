@@ -78,6 +78,9 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Output", dataMapper.diagram.providers.DataMapperElementTypes.Output_2003); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Equal", dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005); //$NON-NLS-1$
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3002); //$NON-NLS-1$
@@ -168,6 +171,8 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 			return getInput_2002Text(view);
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 			return getOutput_2003Text(view);
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+			return getEqual_2005Text(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -210,6 +215,13 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getOutput_2003Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getEqual_2005Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

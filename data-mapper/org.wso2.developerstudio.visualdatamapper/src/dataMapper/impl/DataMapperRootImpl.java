@@ -9,15 +9,20 @@ import dataMapper.DataMapperRoot;
 import dataMapper.Input;
 import dataMapper.Operation;
 import dataMapper.Operations;
+import dataMapper.Operator;
 import dataMapper.Output;
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +33,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link dataMapper.impl.DataMapperRootImpl#getInput <em>Input</em>}</li>
  *   <li>{@link dataMapper.impl.DataMapperRootImpl#getOutput <em>Output</em>}</li>
- *   <li>{@link dataMapper.impl.DataMapperRootImpl#getOperations <em>Operations</em>}</li>
+ *   <li>{@link dataMapper.impl.DataMapperRootImpl#getOperators <em>Operators</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,14 +59,14 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 */
 	protected Output output;
 	/**
-	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference.
+	 * The cached value of the '{@link #getOperators() <em>Operators</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOperations()
+	 * @see #getOperators()
 	 * @generated
 	 * @ordered
 	 */
-	protected Operation operations;
+	protected EList<Operator> operators;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -172,42 +177,11 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getOperations() {
-		return operations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOperations(Operation newOperations, NotificationChain msgs) {
-		Operation oldOperations = operations;
-		operations = newOperations;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS, oldOperations, newOperations);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Operator> getOperators() {
+		if (operators == null) {
+			operators = new EObjectContainmentEList<Operator>(Operator.class, this, DataMapperPackage.DATA_MAPPER_ROOT__OPERATORS);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOperations(Operation newOperations) {
-		if (newOperations != operations) {
-			NotificationChain msgs = null;
-			if (operations != null)
-				msgs = ((InternalEObject)operations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS, null, msgs);
-			if (newOperations != null)
-				msgs = ((InternalEObject)newOperations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS, null, msgs);
-			msgs = basicSetOperations(newOperations, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS, newOperations, newOperations));
+		return operators;
 	}
 
 	/**
@@ -222,8 +196,8 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 				return basicSetInput(null, msgs);
 			case DataMapperPackage.DATA_MAPPER_ROOT__OUTPUT:
 				return basicSetOutput(null, msgs);
-			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
-				return basicSetOperations(null, msgs);
+			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATORS:
+				return ((InternalEList<?>)getOperators()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -240,8 +214,8 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 				return getInput();
 			case DataMapperPackage.DATA_MAPPER_ROOT__OUTPUT:
 				return getOutput();
-			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
-				return getOperations();
+			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATORS:
+				return getOperators();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -251,6 +225,7 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -260,8 +235,9 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 			case DataMapperPackage.DATA_MAPPER_ROOT__OUTPUT:
 				setOutput((Output)newValue);
 				return;
-			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
-				setOperations((Operation)newValue);
+			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATORS:
+				getOperators().clear();
+				getOperators().addAll((Collection<? extends Operator>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -281,8 +257,8 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 			case DataMapperPackage.DATA_MAPPER_ROOT__OUTPUT:
 				setOutput((Output)null);
 				return;
-			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
-				setOperations((Operation)null);
+			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATORS:
+				getOperators().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -300,8 +276,8 @@ public class DataMapperRootImpl extends EObjectImpl implements DataMapperRoot {
 				return input != null;
 			case DataMapperPackage.DATA_MAPPER_ROOT__OUTPUT:
 				return output != null;
-			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATIONS:
-				return operations != null;
+			case DataMapperPackage.DATA_MAPPER_ROOT__OPERATORS:
+				return operators != null && !operators.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

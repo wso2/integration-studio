@@ -162,12 +162,12 @@ public class ESBTemplatePOMGenMojo extends AbstractPOMGenMojo {
 			StringBuffer sb=new StringBuffer();
 			try {
 				fileContent = org.wso2.developerstudio.eclipse.utils.file.FileUtils.getContentAsString(file);
-				StringTokenizer st=new StringTokenizer(fileContent, CAppMavenUtils.REPLACER_DEFAULT_DELIMETER);
+				//StringTokenizer st=new StringTokenizer(fileContent, CAppMavenUtils.REPLACER_DEFAULT_DELIMETER);
 				
 				Properties mavenProperties = getProject().getModel().getProperties();
 				//Check whether the content actually has tokens and Properties section should define them. Otherwise skip. 
 				//By default there are 2 such properties. So size check is 2.
-				if (st.countTokens()>1 && mavenProperties.size()>1) {
+				/*if (st.countTokens()>1 && mavenProperties.size()>1) {
 					while (st.hasMoreTokens()) {
 						String nextToken = st.nextToken();
 						if (mavenProperties.containsKey(nextToken)) {
@@ -179,9 +179,12 @@ public class ESBTemplatePOMGenMojo extends AbstractPOMGenMojo {
 					} 
 				}else{
 					sb.append(fileContent);
-				}
+				}*/
+				
+				String newFileContent = replaceTokens(fileContent, mavenProperties);
 				File tempFile = org.wso2.developerstudio.eclipse.utils.file.FileUtils.createTempFile();
-				org.wso2.developerstudio.eclipse.utils.file.FileUtils.writeContent(tempFile, sb.toString());
+				//org.wso2.developerstudio.eclipse.utils.file.FileUtils.writeContent(tempFile, sb.toString());
+				org.wso2.developerstudio.eclipse.utils.file.FileUtils.writeContent(tempFile, newFileContent);
 				return tempFile;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

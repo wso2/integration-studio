@@ -67,13 +67,13 @@ public interface DataMapperFactory extends EFactory {
 	Output createOutput();
 
 	/**
-	 * Returns a new object of class '<em>Operators</em>'.
+	 * Returns a new object of class '<em>Operator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operators</em>'.
+	 * @return a new object of class '<em>Operator</em>'.
 	 * @generated
 	 */
-	Operators createOperators();
+	Operator createOperator();
 
 	/**
 	 * Returns a new object of class '<em>Element</em>'.
@@ -146,24 +146,6 @@ public interface DataMapperFactory extends EFactory {
 	 * @generated
 	 */
 	Equal createEqual();
-
-	/**
-	 * Returns a new object of class '<em>Constant</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Constant</em>'.
-	 * @generated
-	 */
-	Constant createConstant();
-
-	/**
-	 * Returns a new object of class '<em>Operation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operation</em>'.
-	 * @generated
-	 */
-	Operation createOperation();
 
 	/**
 	 * Returns the package supported by this factory.

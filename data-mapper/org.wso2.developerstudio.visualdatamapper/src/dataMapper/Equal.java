@@ -13,5 +13,5 @@ package dataMapper;
  * @model
  * @generated
  */
-public interface Equal extends Operation {
+public interface Equal extends Operator {
 } // Equal

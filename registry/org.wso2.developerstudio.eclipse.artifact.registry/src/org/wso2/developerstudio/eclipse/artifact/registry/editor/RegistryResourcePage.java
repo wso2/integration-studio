@@ -1,32 +1,57 @@
+/*
+ * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 package org.wso2.developerstudio.eclipse.artifact.registry.editor;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TableEditor;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
@@ -34,15 +59,20 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.FileEditorInput;
+import org.wso2.developerstudio.eclipse.artifact.registry.Activator;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryCollection;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryDump;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 public class RegistryResourcePage extends FormPage {
+	
+	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
 	private Table artifactListTable;
 	private Map<Integer,RegistryElement> itemMap;
@@ -54,7 +84,6 @@ public class RegistryResourcePage extends FormPage {
     private TableEditor artifactNameEditor;
     private TableEditor registryPathEditor;
     private TableEditor mediaTypeEditor;
-    private GridData tableGridData;
     private ScrolledForm form;
     private static final int INDEX_COLUMN = 0;
     private static final int ARTIFACT_NAME_COLUMN = 1;
@@ -129,7 +158,7 @@ public class RegistryResourcePage extends FormPage {
 		createTable(comp2);
 		new Label(comp2, SWT.NONE);
 		
-		//Setting uo Listeners
+		//Setting up Listeners
 		addArtifactListListener();
 		addTableListener();
 		editorMain();
@@ -174,7 +203,7 @@ public class RegistryResourcePage extends FormPage {
 		//Adding Selection Listener to populate the elements list 
 		artifactListTable.addSelectionListener(new SelectionListener() {
 		      public void widgetSelected(SelectionEvent event) {
-		       addResourcesPath1();	  
+		       addResourcesPath();	  
              }
 		      public void widgetDefaultSelected(SelectionEvent event) {
 		        widgetSelected(event);
@@ -203,7 +232,7 @@ public class RegistryResourcePage extends FormPage {
 		        	  return;
 		        }
 		        final String olderText=item.getText(ARTIFACT_NAME_COLUMN);
-		        Text newEditor = new Text(item.getParent(), SWT.NONE);
+		        final Text newEditor = new Text(item.getParent(), SWT.NONE);
 		        
 		        newEditor.addKeyListener(new KeyListener() {
 					
@@ -221,13 +250,54 @@ public class RegistryResourcePage extends FormPage {
 					
 					@Override
 					public void keyPressed(KeyEvent e) {
-						// TODO Auto-generated method stub
 						
 					}
 				});
 		        String newPath =item.getText(ARTIFACT_NAME_COLUMN);
 		        final Integer index = Integer.parseInt(item.getText(INDEX_COLUMN));
 		        newEditor.setText(newPath);
+		        newEditor.addFocusListener(new FocusListener() {
+					
+					@Override
+					public void focusLost(FocusEvent e) {
+						final Text widget = (Text) e.widget;
+						Random rnd = new Random();
+						String newValue = widget.getText();
+						TableItem[] items = artifactListTable.getItems();
+	            		int selectionIndex = artifactListTable.getSelectionIndex();
+	            		for (int i = 0; i < items.length; i++) {
+							if(i == selectionIndex)
+	            				continue;
+							if(newValue.equalsIgnoreCase(items[i].getText(1))){
+								String artifactName = newValue + rnd.nextInt();
+								String msgText = "Cannot have duplicate names for resource artifacts. Artifact name will be renamed to " 
+															+ artifactName;
+								MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
+								msg.setMessage(msgText);
+								msg.open();
+								items[selectionIndex].setText(1, artifactName);
+							}
+						}
+						
+					}
+					
+					@Override
+					public void focusGained(FocusEvent e) {
+						
+					}
+				});
+		        newEditor.addVerifyListener(new VerifyListener() {
+					
+					@Override
+					public void verifyText(VerifyEvent e) {
+						final String oldValue = newEditor.getText();
+					    final String newValue = oldValue.substring(0, e.start) + e.text + oldValue.substring(e.end);
+						if(StringUtils.isBlank(newValue)){
+							 e.doit = false;
+					            return;
+		            	}
+					}
+				});
 		        newEditor.addModifyListener(new ModifyListener() {
 			          public void modifyText(ModifyEvent me) {
 			        	setSave(true);  
@@ -257,7 +327,7 @@ public class RegistryResourcePage extends FormPage {
 	}
 	
 	
-	private void addResourcesPath1(){
+	private void addResourcesPath(){
 		 table.removeAll();
 	      if(registryPathEditor.getEditor() instanceof Text){
 	         Text t =(Text)registryPathEditor.getEditor();
@@ -339,12 +409,25 @@ public class RegistryResourcePage extends FormPage {
 			        if (item == null){
 			        	  return;
 			        }
-			        Text newEditor = new Text(table, SWT.NONE);
+			        final Text newEditor = new Text(table, SWT.NONE);
 			        String newPath =item.getText(EDITABLE_COLUMN);
 			        Text newMTEditor = new Text(table, SWT.NONE);
 			        String newMediatype =item.getText(MEDIATYPE_COLUMN);
 			        final Integer index = Integer.parseInt(item.getText(INDEX_COLUMN));
 			        newEditor.setText(newPath);
+			        newEditor.addVerifyListener(new VerifyListener() {
+						
+						@Override
+						public void verifyText(VerifyEvent e) {
+							final String oldValue = newEditor.getText();
+						    final String newValue = oldValue.substring(0, e.start) + e.text + oldValue.substring(e.end);
+							if(StringUtils.isBlank(newValue) || !newValue.startsWith("/")){
+								 e.doit = false;
+						            return;
+			            	}
+							
+						}
+					});
 			        newEditor.addModifyListener(new ModifyListener() {
 				          public void modifyText(ModifyEvent me) {
 				        	setSave(true);  
@@ -397,7 +480,7 @@ public class RegistryResourcePage extends FormPage {
 			          artifactListTable.setData(artifact.getName(), artifact);
 		    	}
 		      } catch (Exception e) {
-			  e.printStackTrace();
+		    	  log.error("Content cannot be initialized", e);
 		  }
 	   }
   
@@ -407,10 +490,10 @@ public class RegistryResourcePage extends FormPage {
 			setSave(false);
 			((ResourceFormEditor)getEditor()).setDirty(false);
 			updateDirtyState();
-			addResourcesPath1();
+			addResourcesPath();
 			((FileEditorInput) getEditorInput()).getFile().getProject().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		 } catch (Exception e) {
-			e.printStackTrace(); 
+			 log.error("Cannot save the content", e);
 		}
 	}
 

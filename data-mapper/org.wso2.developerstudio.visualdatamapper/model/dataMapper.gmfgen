@@ -581,6 +581,11 @@
             title="DataMapperLink"
             description="Create new DataMapperLink"
             genLinks="//@diagram/@links.0"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Equal"
+            description="Create new Equal"
+            genNodes="//@diagram/@topLevelNodes.2"/>
       </groups>
     </palette>
     <preferencePages

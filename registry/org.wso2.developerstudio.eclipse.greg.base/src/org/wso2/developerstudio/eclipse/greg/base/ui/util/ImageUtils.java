@@ -38,6 +38,7 @@ public class ImageUtils {
 	public static final String STATE_CONFLICT = "conflict.png";
 	public static final String STATE_LOGIN = "login.png";
 	public static final String STATE_DELETED = "deleted.png";
+	public static final String STATE_ADDED = "added.png";
 	public static final String STATE_CONFILCTED_LOCAL_COPY = "conflictedLocalCopy.png";
 	public static final String STATE_CONFILCTED_LOCAL_COPY_RESOLVED = "conflictedLocalCopyResolve.png";
 	public static final String STATE_CONFILCTED_SERVER_COPY = "conflictedServerVersions.png";

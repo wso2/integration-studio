@@ -18,12 +18,10 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 
-import org.apache.synapse.Mediator;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
 import org.apache.synapse.endpoints.ResolvingEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.mediators.builtin.SendMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
@@ -80,9 +78,18 @@ public class NamedEndPointTransformer extends AbstractEndpointTransformer{
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
+			List<Endpoint> endPoints) throws Exception{
+		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
+		NamedEndpoint visualEP = (NamedEndpoint) subject;
+		Endpoint endPoint=(Endpoint)create(visualEP, visualEP.getEndPointName());
+		endPoints.add(endPoint);
 		
+		//Next node may be a Failover endPoint. So that this should be edited to be compatible with that also.
+		info.setParentSequence(info.getOriginOutSequence());
+		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);		
+
+		// Transform endpoint output data flow.
+		transformEndpointOutflow(info);
 	}
 
 	public void transformWithinSequence(TransformationInfo information,

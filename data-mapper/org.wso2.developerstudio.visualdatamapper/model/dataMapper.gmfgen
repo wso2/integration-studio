@@ -578,14 +578,14 @@
           title="dataMapper">
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="Equal"
-            description="Create new Equal"/>
-        <entries
-            xsi:type="gmfgen:ToolEntry"
             title="DataMapperLink"
             description="Create new DataMapperLink"
-            genNodes="//@diagram/@topLevelNodes.2"
             genLinks="//@diagram/@links.0"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Equal"
+            description="Create new Equal"
+            genNodes="//@diagram/@topLevelNodes.2"/>
       </groups>
     </palette>
     <preferencePages

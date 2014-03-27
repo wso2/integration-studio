@@ -11,8 +11,8 @@
         title="dataMapper">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Equal"
-          description="Create new Equal">
+          title="DataMapperLink"
+          description="Create new DataMapperLink">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -20,8 +20,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="DataMapperLink"
-          description="Create new DataMapperLink">
+          title="Equal"
+          description="Create new Equal">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

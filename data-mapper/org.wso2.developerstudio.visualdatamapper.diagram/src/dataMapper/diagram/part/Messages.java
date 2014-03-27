@@ -248,22 +248,22 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String DataMapperLink1CreationTool_title;
+	public static String Equal1CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String DataMapperLink1CreationTool_desc;
+	public static String Equal1CreationTool_desc;
 
 	/**
 	 * @generated
 	 */
-	public static String Equal2CreationTool_title;
+	public static String DataMapperLink2CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String Equal2CreationTool_desc;
+	public static String DataMapperLink2CreationTool_desc;
 
 	/**
 	 * @generated
@@ -294,6 +294,16 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_OutNode_3009_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_InNode_3015_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_OutNode_3018_outgoinglinks;
 
 	/**
 	 * @generated

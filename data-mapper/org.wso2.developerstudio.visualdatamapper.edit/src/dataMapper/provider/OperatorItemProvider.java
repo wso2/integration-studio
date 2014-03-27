@@ -74,8 +74,7 @@ public class OperatorItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(DataMapperPackage.Literals.OPERATOR__IN_NODES);
-			childrenFeatures.add(DataMapperPackage.Literals.OPERATOR__OUT_NODES);
+			childrenFeatures.add(DataMapperPackage.Literals.OPERATOR__BASIC_CONTAINER);
 		}
 		return childrenFeatures;
 	}
@@ -127,8 +126,7 @@ public class OperatorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Operator.class)) {
-			case DataMapperPackage.OPERATOR__IN_NODES:
-			case DataMapperPackage.OPERATOR__OUT_NODES:
+			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -148,13 +146,8 @@ public class OperatorItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DataMapperPackage.Literals.OPERATOR__IN_NODES,
-				 DataMapperFactory.eINSTANCE.createInNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DataMapperPackage.Literals.OPERATOR__OUT_NODES,
-				 DataMapperFactory.eINSTANCE.createOutNode()));
+				(DataMapperPackage.Literals.OPERATOR__BASIC_CONTAINER,
+				 DataMapperFactory.eINSTANCE.createOperatorBasicContainer()));
 	}
 
 }

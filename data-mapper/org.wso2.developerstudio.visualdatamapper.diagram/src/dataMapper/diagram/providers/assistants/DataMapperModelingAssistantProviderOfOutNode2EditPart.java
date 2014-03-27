@@ -59,6 +59,9 @@ public class DataMapperModelingAssistantProviderOfOutNode2EditPart extends
 		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode2EditPart) {
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
 		}
+		if (targetEditPart instanceof dataMapper.diagram.edit.parts.InNode3EditPart) {
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001);
+		}
 		return types;
 	}
 
@@ -82,6 +85,7 @@ public class DataMapperModelingAssistantProviderOfOutNode2EditPart extends
 		if (relationshipType == dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001) {
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3005);
 			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3008);
+			types.add(dataMapper.diagram.providers.DataMapperElementTypes.InNode_3015);
 		}
 		return types;
 	}

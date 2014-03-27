@@ -76,6 +76,51 @@ public interface DataMapperFactory extends EFactory {
 	Operator createOperator();
 
 	/**
+	 * Returns a new object of class '<em>Operator Basic Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Basic Container</em>'.
+	 * @generated
+	 */
+	OperatorBasicContainer createOperatorBasicContainer();
+
+	/**
+	 * Returns a new object of class '<em>Operator Left Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Left Container</em>'.
+	 * @generated
+	 */
+	OperatorLeftContainer createOperatorLeftContainer();
+
+	/**
+	 * Returns a new object of class '<em>Operator Left Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Left Connector</em>'.
+	 * @generated
+	 */
+	OperatorLeftConnector createOperatorLeftConnector();
+
+	/**
+	 * Returns a new object of class '<em>Operator Right Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Right Container</em>'.
+	 * @generated
+	 */
+	OperatorRightContainer createOperatorRightContainer();
+
+	/**
+	 * Returns a new object of class '<em>Operator Right Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operator Right Connector</em>'.
+	 * @generated
+	 */
+	OperatorRightConnector createOperatorRightConnector();
+
+	/**
 	 * Returns a new object of class '<em>Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,6 +191,15 @@ public interface DataMapperFactory extends EFactory {
 	 * @generated
 	 */
 	Equal createEqual();
+
+	/**
+	 * Returns a new object of class '<em>Constant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Constant</em>'.
+	 * @generated
+	 */
+	Constant createConstant();
 
 	/**
 	 * Returns the package supported by this factory.

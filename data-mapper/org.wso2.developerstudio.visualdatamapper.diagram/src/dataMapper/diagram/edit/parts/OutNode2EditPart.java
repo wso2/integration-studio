@@ -263,7 +263,7 @@ public class OutNode2EditPart extends AbstractBorderItemEditPart {
 
 					getEditDomain().getPaletteViewer().setActiveTool(
 							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(1)).getChildren().get(1)));
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
 
 				}
 

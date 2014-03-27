@@ -56,64 +56,24 @@ public class DataMapperPaletteFactory {
 		PaletteGroup paletteContainer = new PaletteGroup(
 				dataMapper.diagram.part.Messages.DataMapper1Group_title);
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
-		paletteContainer.add(createEqual1CreationTool());
-		paletteContainer.add(createDataMapperLink2CreationTool());
+		paletteContainer.add(createDataMapperLink1CreationTool());
 		return paletteContainer;
 	}
 
 	/**
 	 * @generated
 	 */
-	private ToolEntry createEqual1CreationTool() {
-		ToolEntry entry = new ToolEntry(dataMapper.diagram.part.Messages.Equal1CreationTool_title,
-				dataMapper.diagram.part.Messages.Equal1CreationTool_desc, null, null) {
-		};
-		entry.setId("createEqual1CreationTool"); //$NON-NLS-1$
-		return entry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private ToolEntry createDataMapperLink2CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(
-				dataMapper.diagram.part.Messages.DataMapperLink2CreationTool_title,
-				dataMapper.diagram.part.Messages.DataMapperLink2CreationTool_desc,
+	private ToolEntry createDataMapperLink1CreationTool() {
+		LinkToolEntry entry = new LinkToolEntry(
+				dataMapper.diagram.part.Messages.DataMapperLink1CreationTool_title,
+				dataMapper.diagram.part.Messages.DataMapperLink1CreationTool_desc,
 				Collections
-						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005));
-		entry.setId("createDataMapperLink2CreationTool"); //$NON-NLS-1$
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001));
+		entry.setId("createDataMapperLink1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
-				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005));
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private static class NodeToolEntry extends ToolEntry {
-
-		/**
-		 * @generated
-		 */
-		private final List<IElementType> elementTypes;
-
-		/**
-		 * @generated
-		 */
-		private NodeToolEntry(String title, String description, List<IElementType> elementTypes) {
-			super(title, description, null, null);
-			this.elementTypes = elementTypes;
-		}
-
-		/**
-		 * @generated
-		 */
-		public Tool createTool() {
-			Tool tool = new UnspecifiedTypeCreationTool(elementTypes);
-			tool.setProperties(getToolProperties());
-			return tool;
-		}
 	}
 
 	/**

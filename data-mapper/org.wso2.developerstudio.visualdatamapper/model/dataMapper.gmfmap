@@ -102,9 +102,6 @@
     <ownedChild>
       <domainMetaElement
           href="dataMapper.ecore#//Equal"/>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="dataMapper.gmftool#//@palette/@tools.0/@tools.1"/>
       <diagramNode
           href="dataMapper.gmfgraph#Equal"/>
       <children>
@@ -186,7 +183,7 @@
         href="dataMapper.ecore#//OutNode/outgoingLink"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="dataMapper.gmftool#//@palette/@tools.0/@tools.1"/>
+        href="dataMapper.gmftool#//@palette/@tools.0/@tools.0"/>
     <diagramLink
         href="dataMapper.gmfgraph#DataMapperLink"/>
     <sourceMetaFeature

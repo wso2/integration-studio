@@ -33,48 +33,55 @@ import org.eclipse.ui.PlatformUI;
 import dataMapper.Output;
 import dataMapper.diagram.custom.util.SchemaKeyEditorDialog;
 
-public class LoadOutputSchemaAction extends AbstractActionHandler{
+public class LoadOutputSchemaAction extends AbstractActionHandler {
+
+	private static final String CONFIGURE_OUTPUT_SCHEMA_ACTION_ID = "configure-output-schema-action-id"; //$NON-NLS-1$
+	private static final String INVALID_SELECTION = "Invalid selection."; //$NON-NLS-1$
+
+	private static final String OUTPUT_SCHEMA_DIALOG = Messages.LoadOutputSchemaAction_OutputSchemaDialog;
+	private static final String SCHEMA_TYPE_OUTPUT = Messages.LoadOutputSchemaAction_SchemaTypeOutput;
+	private static final String LOAD_OUTPUT_SCHEMA_FROM_FILE = Messages.LoadOutputSchemaAction_LoadOutputSchemaFromFile;
+	private static final String EMPTY_SELECTION = Messages.LoadOutputSchemaAction_EmptySelection;
 
 	public LoadOutputSchemaAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
-		
-		setId("configure-output-schema-action-id");
-		setText("Load output schema from file");
-		setToolTipText("Load output schema from file.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
+
+		setId(CONFIGURE_OUTPUT_SCHEMA_ACTION_ID);
+		setText(LOAD_OUTPUT_SCHEMA_FROM_FILE);
+		setToolTipText(LOAD_OUTPUT_SCHEMA_FROM_FILE);
+		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
 
 	@Override
 	public void refresh() {
-		// TODO Auto-generated method stub
-		
+		// TODO refresh action. Does not do anything
 	}
 
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
+		Assert.isNotNull(selectedEP, EMPTY_SELECTION);
+
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof Output, "Invalid selection.");
-		
+		Assert.isTrue(selectedObj instanceof Output, INVALID_SELECTION);
+
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
-		
-		//List<String> localEntries = new ArrayList<String>();//edit dialog
-		SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(shell, selectedEP, getWorkbenchPart(), "output");
-		//		getStyle(), null, localEntries);
+
+		// Schema key editor dialog : create/import schema
+		SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(shell, selectedEP,
+				getWorkbenchPart(), SCHEMA_TYPE_OUTPUT);
+
 		dialog.create();
-		dialog.getShell().setSize(520,250);
-		dialog.getShell().setText("Output schema dialog");
+		dialog.getShell().setSize(520, 250);
+		dialog.getShell().setText(OUTPUT_SCHEMA_DIALOG);
 		dialog.open();
-		
-		if (dialog.getReturnCode()==Window.OK) {
-			//propertyDescriptor.setPropertyValue(propertyContainer, registryKeyProperty);
-			System.out.println("WINDOW OK");
+
+		if (dialog.getReturnCode() == Window.OK) {
+			// This function is currently overridden by the second dialog
 		}
 	}
-	
+
 	protected EditPart getSelectedEditPart() {
 		IStructuredSelection selection = getStructuredSelection();
 		if (selection.size() == 1) {

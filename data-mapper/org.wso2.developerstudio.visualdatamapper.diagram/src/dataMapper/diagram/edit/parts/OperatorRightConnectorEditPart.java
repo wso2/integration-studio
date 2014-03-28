@@ -1,6 +1,7 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -11,20 +12,24 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
 
+import dataMapper.diagram.edit.parts.custom.FixedBorderItemLocator;
+
 /**
  * @generated
  */
-public class OperatorRightConnectorEditPart extends ShapeNodeEditPart {
+public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPart {
 
 	/**
 	 * @generated
@@ -90,11 +95,63 @@ public class OperatorRightConnectorEditPart extends ShapeNodeEditPart {
 		return lep;
 	}
 
+	protected boolean addFixedChild(EditPart childEditPart) {
+		
+		if (childEditPart instanceof OutNode3EditPart) {
+			IFigure borderItemFigure = ((OutNode3EditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.EAST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			return true;
+		}
+		
+		return false;
+	}
+
 	/**
 	 * @generated
 	 */
+	protected boolean removeFixedChild(EditPart childEditPart) {
+		
+		if (childEditPart instanceof OutNode3EditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(
+					((OutNode3EditPart) childEditPart).getFigure());
+			return true;
+		}
+		
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void addChildVisual(EditPart childEditPart, int index) {
+		if (addFixedChild(childEditPart)) {
+			return;
+		}
+		super.addChildVisual(childEditPart, -1);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
+	}
+
+	/**
+	 * @generated NOT
+	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		
+		RectangleFigure primaryShape = new RectangleFigure();
+		RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+		border.setColor(new Color(null, 0, 255, 0));
+		primaryShape.setBorder(border ); //FIXME just for identification, remove once we done
+		return primaryShape;
 	}
 
 	/**
@@ -111,7 +168,8 @@ public class OperatorRightConnectorEditPart extends ShapeNodeEditPart {
 		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
-
+	
+	
 	/**
 	 * Creates figure for this edit part.
 	 * 
@@ -120,7 +178,7 @@ public class OperatorRightConnectorEditPart extends ShapeNodeEditPart {
 	 * 
 	 * @generated
 	 */
-	protected NodeFigure createNodeFigure() {
+	protected NodeFigure createMainFigure() {
 		NodeFigure figure = createNodePlate();
 		figure.setLayoutManager(new StackLayout());
 		IFigure shape = createNodeShape();
@@ -128,7 +186,8 @@ public class OperatorRightConnectorEditPart extends ShapeNodeEditPart {
 		contentPane = setupContentPane(shape);
 		return figure;
 	}
-
+	
+	
 	/**
 	 * Default implementation treats passed figure as content pane.
 	 * Respects layout one may have set for generated figure.

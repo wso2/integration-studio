@@ -1,9 +1,11 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -15,6 +17,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -91,17 +94,18 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		primaryShape = new OperatorLeftContainerFigure();
+		return primaryShape;
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
-	public RectangleFigure getPrimaryShape() {
-		return (RectangleFigure) primaryShape;
+	public OperatorLeftContainerFigure getPrimaryShape() {
+		return (OperatorLeftContainerFigure) primaryShape;
 	}
 
 	/**
@@ -189,5 +193,43 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	
+	
+	public class OperatorLeftContainerFigure extends RoundedRectangle {
+
+		public OperatorLeftContainerFigure() {
+
+			this.setBackgroundColor(THIS_BACK);
+			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			border.setColor(new Color(null, 255, 0, 0));
+			this.setBorder(border); //TODO just for identification remove once we are done
+			
+			ToolbarLayout layoutThis = new ToolbarLayout();
+			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+			layoutThis.setSpacing(0);
+			//layoutThis.setHorizontal(true);
+			layoutThis.setMatchWidth(true);
+			this.setLayoutManager(layoutThis);
+			
+		}
+
+		public String getIconPath() {
+			return "icons/ico20/log-mediator.gif";
+		}
+
+		public String getNodeName() {
+			return "OperatorLeftContainer";
+		}
+
+		public IFigure getToolTip() {
+			return new Label("OperatorLeftContainer");
+		}
+
+	}
+
+	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }
+
+

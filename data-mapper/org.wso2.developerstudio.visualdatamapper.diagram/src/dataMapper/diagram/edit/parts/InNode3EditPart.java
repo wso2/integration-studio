@@ -1,9 +1,9 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -18,8 +18,9 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
 
-/**
- * @generated
+
+/** 
+ * @generated NOT
  */
 public class InNode3EditPart extends AbstractBorderItemEditPart {
 
@@ -84,24 +85,24 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		return primaryShape = new EastPointerFigure();
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
-	public RectangleFigure getPrimaryShape() {
-		return (RectangleFigure) primaryShape;
+	public EastPointerFigure getPrimaryShape() {
+		return (EastPointerFigure) primaryShape;
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 10);
 
 		//FIXME: workaround for #154536
 		result.getBounds().setSize(result.getPreferredSize());
@@ -180,5 +181,16 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	
+	public class EastPointerFigure extends EastPointerShape {
+
+		public EastPointerFigure() {
+
+			this.setBackgroundColor(THIS_BACK);
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+		}
+	}
+	
+	static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

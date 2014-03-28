@@ -1,6 +1,7 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -15,12 +16,17 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
+
+import dataMapper.diagram.edit.parts.custom.FixedBorderItemLocator;
+
 
 /**
  * @generated
@@ -95,12 +101,64 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 		};
 		return lep;
 	}
+	
+	protected boolean addFixedChild(EditPart childEditPart) {
+		
+		if (childEditPart instanceof InNode3EditPart) {
+			IFigure borderItemFigure = ((InNode3EditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			return true;
+		}
+		
+		return false;
+	}
 
 	/**
 	 * @generated
 	 */
+	protected boolean removeFixedChild(EditPart childEditPart) {
+		
+		if (childEditPart instanceof InNodeEditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(
+					((InNodeEditPart) childEditPart).getFigure());
+			return true;
+		}
+		
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void addChildVisual(EditPart childEditPart, int index) {
+		if (addFixedChild(childEditPart)) {
+			return;
+		}
+		super.addChildVisual(childEditPart, -1);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
+	}
+
+	/**
+	 * @generated NOT
+	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		
+		RectangleFigure primaryShape = new RectangleFigure();
+		RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+		border.setColor(new Color(null, 0, 0, 255));
+		primaryShape.setBorder(border ); //FIXME just for identification, remove once we done
+		return primaryShape;
 	}
 
 	/**

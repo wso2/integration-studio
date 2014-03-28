@@ -3,8 +3,11 @@ package dataMapper.diagram.edit.parts;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -16,6 +19,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -25,6 +29,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 
 import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
+import dataMapper.diagram.custom.figure.EditPartDrawingHelper;
 import dataMapper.diagram.custom.figure.OperatorFigure;
 
 /**
@@ -195,24 +200,17 @@ public class EqualEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-
-	public class EqualFigure extends OperatorFigure {
+	
+	
+	public class EqualFigure extends RoundedRectangle {
 
 		public EqualFigure() {
-
 			this.setBackgroundColor(THIS_BACK);
-			createContents();
+			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			border.setColor(new Color(null, 255, 0, 0));
+			this.setBorder(border );
 		}
-
-		private void createContents() {
-
-			/*			fFigureLogCatogeryLogPropertyLabel = new WrappingLabel();
-			 fFigureLogCatogeryLogPropertyLabel.setText("<...>");
-			 fFigureLogCatogeryLogPropertyLabel.setAlignment(SWT.CENTER);*/
-			//this.getPropertyValueRectangle1().add(fFigureLogCatogeryLogPropertyLabel);
-
-			//fFigureLogDescriptionLabel = getPropertyNameLabel();
-		}
+		
 
 		public String getIconPath() {
 			return "icons/ico20/log-mediator.gif";

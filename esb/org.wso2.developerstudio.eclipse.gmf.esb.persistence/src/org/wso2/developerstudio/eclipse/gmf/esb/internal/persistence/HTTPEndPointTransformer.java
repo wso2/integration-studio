@@ -115,8 +115,8 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 
 		// Next node may be a Failover endPoint. So that this should be edited
 		// to be compatible with that also.
-		info.setParentSequence(info.getOriginOutSequence());
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+/*		info.setParentSequence(info.getOriginOutSequence());
+		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);*/
 
 		transformEndpointOutflow(info);
 	}

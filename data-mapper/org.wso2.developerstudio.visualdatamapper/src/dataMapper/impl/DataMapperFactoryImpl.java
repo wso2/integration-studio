@@ -169,7 +169,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OperatorLeftContainer createOperatorLeftContainer() {
 		OperatorLeftContainerImpl operatorLeftContainer = new OperatorLeftContainerImpl();
@@ -192,7 +192,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OperatorRightContainer createOperatorRightContainer() {
 		OperatorRightContainerImpl operatorRightContainer = new OperatorRightContainerImpl();

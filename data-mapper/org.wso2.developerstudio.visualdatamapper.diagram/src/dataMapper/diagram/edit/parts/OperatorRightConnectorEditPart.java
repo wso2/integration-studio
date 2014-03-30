@@ -148,9 +148,9 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	protected IFigure createNodeShape() {
 		
 		RectangleFigure primaryShape = new RectangleFigure();
-		RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-		border.setColor(new Color(null, 0, 255, 0));
-		primaryShape.setBorder(border ); //FIXME just for identification, remove once we done
+		//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+		//border.setColor(new Color(null, 0, 255, 0));
+		//primaryShape.setBorder(border ); //FIXME just for identification, remove once we done
 		return primaryShape;
 	}
 

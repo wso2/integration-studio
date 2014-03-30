@@ -6,6 +6,7 @@ import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
@@ -27,6 +28,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
 
 import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 import dataMapper.diagram.custom.figure.EditPartDrawingHelper;
@@ -206,9 +208,18 @@ public class EqualEditPart extends AbstractOperatorEditPart {
 
 		public EqualFigure() {
 			this.setBackgroundColor(THIS_BACK);
-			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			border.setColor(new Color(null, 255, 0, 0));
-			this.setBorder(border );
+			
+			TitleBarBorder titleBarBorder = new TitleBarBorder("Equal");
+			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
+			this.setBorder(titleBarBorder);
+			
+			
+			
+/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			border.setColor(new Color(null, 255, 0, 0));*/
+			this.setBorder(titleBarBorder);
 		}
 		
 

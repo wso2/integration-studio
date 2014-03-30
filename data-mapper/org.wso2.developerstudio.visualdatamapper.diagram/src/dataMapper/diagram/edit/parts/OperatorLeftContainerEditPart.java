@@ -200,9 +200,9 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		public OperatorLeftContainerFigure() {
 
 			this.setBackgroundColor(THIS_BACK);
-			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			border.setColor(new Color(null, 255, 0, 0));
-			this.setBorder(border); //TODO just for identification remove once we are done
+			//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			//border.setColor(new Color(null, 255, 0, 0));
+			//this.setBorder(border); //TODO just for identification remove once we are done
 			
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);

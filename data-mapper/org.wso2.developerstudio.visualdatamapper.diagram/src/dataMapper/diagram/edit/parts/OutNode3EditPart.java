@@ -1,8 +1,13 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.ImageFigure;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseMotionListener;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -10,13 +15,17 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.palette.PaletteContainer;
+import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 
 /**
@@ -87,21 +96,21 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new EastPointerFigure();
+		return primaryShape = new OutNode3Figure();
 	}
 
 	/**
 	 * @generated NOT
 	 */
-	public EastPointerFigure getPrimaryShape() {
-		return (EastPointerFigure) primaryShape;
+	public RectangleFigure getPrimaryShape() {
+		return (RectangleFigure) primaryShape;
 	}
 
 	/**
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(12, 10);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 
 		//FIXME: workaround for #154536
 		result.getBounds().setSize(result.getPreferredSize());
@@ -188,6 +197,102 @@ public class OutNode3EditPart extends AbstractBorderItemEditPart {
 
 			this.setBackgroundColor(THIS_BACK);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+		}
+	}
+	
+	class OutNode3Figure extends RectangleFigure {
+		/**
+		 * @generated NOT
+		 */
+		public OutNode3Figure() {
+
+			ToolbarLayout layoutThis = new ToolbarLayout();
+			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
+			layoutThis.setSpacing(0);
+			layoutThis.setVertical(false);
+			this.setLayoutManager(layoutThis);
+
+			this.addMouseMotionListener(new MouseMotionListener() {
+
+				@Override
+				public void mouseMoved(MouseEvent me) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mouseHover(MouseEvent me) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mouseExited(MouseEvent me) {
+
+					getEditDomain().getPaletteViewer().setActiveTool(null);
+
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent me) {
+
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+
+				}
+
+				@Override
+				public void mouseDragged(MouseEvent me) {
+					// TODO Auto-generated method stub
+
+				}
+			});
+
+			this.setOpaque(false);
+			this.setFill(false);
+
+			createContents();
+
+		}
+
+		/**
+		 * @generated NOT
+		 */
+		private void createContents() {
+
+			/*
+			 * ImageDescriptor mainImgDesc = new ImageDescriptor() {
+			 * 
+			 * @Override public ImageData getImageData() { ImageData idata =
+			 * null; try { idata = new ImageData( new FileInputStream(
+			 * "/home/lali/workspaceWork/org.wso2.developerstudio.visualdatamapper.diagram/icons/gmf/black.jpg"
+			 * )); } catch (FileNotFoundException e) { e.printStackTrace(); }
+			 * return idata; } };
+			 */
+
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
+
+			int nodeDimension = 10; // width for connection nodes
+
+			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+
+			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
+			RectangleFigure mainImageRectangle = new RectangleFigure();
+			mainImageRectangle.setOutline(false);
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
+			mainImageRectangle.add(mainImg);
+
+			mainImageRectangle.setFill(false);
+
+			this.add(mainImageRectangle);
+			this.setOpaque(false);
+			this.setOutline(false);
+			this.setFill(false);
+
 		}
 	}
 	

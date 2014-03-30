@@ -155,9 +155,9 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	protected IFigure createNodeShape() {
 		
 		RectangleFigure primaryShape = new RectangleFigure();
-		RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-		border.setColor(new Color(null, 0, 0, 255));
-		primaryShape.setBorder(border ); //FIXME just for identification, remove once we done
+		//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+		//border.setColor(new Color(null, 0, 0, 255));
+		//primaryShape.setBorder(border ); //FIXME just for identification, remove once we done
 		return primaryShape;
 	}
 
@@ -169,10 +169,10 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(60, 20);
 		return result;
 	}
 

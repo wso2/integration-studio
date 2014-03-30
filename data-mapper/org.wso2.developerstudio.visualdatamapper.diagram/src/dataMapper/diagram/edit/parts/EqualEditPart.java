@@ -1,9 +1,13 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -12,16 +16,26 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 
+import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
+import dataMapper.diagram.custom.figure.EditPartDrawingHelper;
+import dataMapper.diagram.custom.figure.OperatorFigure;
+
 /**
- * @generated
+ * @generated NOT
  */
-public class EqualEditPart extends ShapeNodeEditPart {
+public class EqualEditPart extends AbstractOperatorEditPart {
 
 	/**
 	 * @generated
@@ -49,9 +63,14 @@ public class EqualEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.EqualItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+				new dataMapper.diagram.edit.policies.EqualCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -83,10 +102,10 @@ public class EqualEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		return primaryShape = new EqualFigure();
 	}
 
 	/**
@@ -128,6 +147,11 @@ public class EqualEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
+		if (nodeShape.getLayoutManager() == null) {
+			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
+			layout.setSpacing(5);
+			nodeShape.setLayoutManager(layout);
+		}
 		return nodeShape; // use nodeShape itself as contentPane
 	}
 
@@ -176,5 +200,32 @@ public class EqualEditPart extends ShapeNodeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	
+	
+	public class EqualFigure extends RoundedRectangle {
+
+		public EqualFigure() {
+			this.setBackgroundColor(THIS_BACK);
+			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			border.setColor(new Color(null, 255, 0, 0));
+			this.setBorder(border );
+		}
+		
+
+		public String getIconPath() {
+			return "icons/ico20/log-mediator.gif";
+		}
+
+		public String getNodeName() {
+			return "Equal";
+		}
+
+		public IFigure getToolTip() {
+			return new Label("Equal Operation");
+		}
+
+	}
+
+	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

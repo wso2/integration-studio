@@ -12,8 +12,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link dataMapper.Operator#getInNodes <em>In Nodes</em>}</li>
- *   <li>{@link dataMapper.Operator#getOutNodes <em>Out Nodes</em>}</li>
+ *   <li>{@link dataMapper.Operator#getBasicContainer <em>Basic Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,35 +22,29 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Operator extends DataMapperNode {
 	/**
-	 * Returns the value of the '<em><b>In Nodes</b></em>' containment reference list.
-	 * The list contents are of type {@link dataMapper.InNode}.
+	 * Returns the value of the '<em><b>Basic Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>In Nodes</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Basic Container</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>In Nodes</em>' containment reference list.
-	 * @see dataMapper.DataMapperPackage#getOperator_InNodes()
+	 * @return the value of the '<em>Basic Container</em>' containment reference.
+	 * @see #setBasicContainer(OperatorBasicContainer)
+	 * @see dataMapper.DataMapperPackage#getOperator_BasicContainer()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<InNode> getInNodes();
+	OperatorBasicContainer getBasicContainer();
 
 	/**
-	 * Returns the value of the '<em><b>Out Nodes</b></em>' containment reference list.
-	 * The list contents are of type {@link dataMapper.OutNode}.
+	 * Sets the value of the '{@link dataMapper.Operator#getBasicContainer <em>Basic Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Out Nodes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Out Nodes</em>' containment reference list.
-	 * @see dataMapper.DataMapperPackage#getOperator_OutNodes()
-	 * @model containment="true"
+	 * @param value the new value of the '<em>Basic Container</em>' containment reference.
+	 * @see #getBasicContainer()
 	 * @generated
 	 */
-	EList<OutNode> getOutNodes();
+	void setBasicContainer(OperatorBasicContainer value);
 
 } // Operator

@@ -88,6 +88,9 @@ public class DetailSectionUiUtil {
 		
 		if (input != null && metaObject != null) {
 
+			if(displayValues.length>0){
+				setStringAttribute(input, metaObject, displayValues[0]);
+			}
 			addModifyListnerForCustomComboFields(combo, input, metaObject);
 
 		}

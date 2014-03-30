@@ -5,10 +5,12 @@ package dataMapper.impl;
 import dataMapper.DataMapperPackage;
 import dataMapper.InNode;
 import dataMapper.Operator;
+import dataMapper.OperatorBasicContainer;
 import dataMapper.OutNode;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -26,8 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dataMapper.impl.OperatorImpl#getInNodes <em>In Nodes</em>}</li>
- *   <li>{@link dataMapper.impl.OperatorImpl#getOutNodes <em>Out Nodes</em>}</li>
+ *   <li>{@link dataMapper.impl.OperatorImpl#getBasicContainer <em>Basic Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,24 +37,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	/**
-	 * The cached value of the '{@link #getInNodes() <em>In Nodes</em>}' containment reference list.
+	 * The cached value of the '{@link #getBasicContainer() <em>Basic Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInNodes()
+	 * @see #getBasicContainer()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InNode> inNodes;
-
-	/**
-	 * The cached value of the '{@link #getOutNodes() <em>Out Nodes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutNodes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<OutNode> outNodes;
+	protected OperatorBasicContainer basicContainer;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -78,11 +70,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<InNode> getInNodes() {
-		if (inNodes == null) {
-			inNodes = new EObjectContainmentEList<InNode>(InNode.class, this, DataMapperPackage.OPERATOR__IN_NODES);
-		}
-		return inNodes;
+	public OperatorBasicContainer getBasicContainer() {
+		return basicContainer;
 	}
 
 	/**
@@ -90,11 +79,33 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<OutNode> getOutNodes() {
-		if (outNodes == null) {
-			outNodes = new EObjectContainmentEList<OutNode>(OutNode.class, this, DataMapperPackage.OPERATOR__OUT_NODES);
+	public NotificationChain basicSetBasicContainer(OperatorBasicContainer newBasicContainer, NotificationChain msgs) {
+		OperatorBasicContainer oldBasicContainer = basicContainer;
+		basicContainer = newBasicContainer;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataMapperPackage.OPERATOR__BASIC_CONTAINER, oldBasicContainer, newBasicContainer);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return outNodes;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBasicContainer(OperatorBasicContainer newBasicContainer) {
+		if (newBasicContainer != basicContainer) {
+			NotificationChain msgs = null;
+			if (basicContainer != null)
+				msgs = ((InternalEObject)basicContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.OPERATOR__BASIC_CONTAINER, null, msgs);
+			if (newBasicContainer != null)
+				msgs = ((InternalEObject)newBasicContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataMapperPackage.OPERATOR__BASIC_CONTAINER, null, msgs);
+			msgs = basicSetBasicContainer(newBasicContainer, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.OPERATOR__BASIC_CONTAINER, newBasicContainer, newBasicContainer));
 	}
 
 	/**
@@ -105,10 +116,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATOR__IN_NODES:
-				return ((InternalEList<?>)getInNodes()).basicRemove(otherEnd, msgs);
-			case DataMapperPackage.OPERATOR__OUT_NODES:
-				return ((InternalEList<?>)getOutNodes()).basicRemove(otherEnd, msgs);
+			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
+				return basicSetBasicContainer(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -121,10 +130,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATOR__IN_NODES:
-				return getInNodes();
-			case DataMapperPackage.OPERATOR__OUT_NODES:
-				return getOutNodes();
+			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
+				return getBasicContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -138,13 +145,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATOR__IN_NODES:
-				getInNodes().clear();
-				getInNodes().addAll((Collection<? extends InNode>)newValue);
-				return;
-			case DataMapperPackage.OPERATOR__OUT_NODES:
-				getOutNodes().clear();
-				getOutNodes().addAll((Collection<? extends OutNode>)newValue);
+			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
+				setBasicContainer((OperatorBasicContainer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -158,11 +160,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATOR__IN_NODES:
-				getInNodes().clear();
-				return;
-			case DataMapperPackage.OPERATOR__OUT_NODES:
-				getOutNodes().clear();
+			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
+				setBasicContainer((OperatorBasicContainer)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -176,10 +175,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DataMapperPackage.OPERATOR__IN_NODES:
-				return inNodes != null && !inNodes.isEmpty();
-			case DataMapperPackage.OPERATOR__OUT_NODES:
-				return outNodes != null && !outNodes.isEmpty();
+			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
+				return basicContainer != null;
 		}
 		return super.eIsSet(featureID);
 	}

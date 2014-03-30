@@ -21,10 +21,30 @@
         eType="#//TreeNode" containment="true" eOpposite="#//TreeNode/outputParent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operator" eSuperTypes="#//DataMapperNode">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inNodes" upperBound="-1"
-        eType="#//InNode" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outNodes" upperBound="-1"
-        eType="#//OutNode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="basicContainer" eType="#//OperatorBasicContainer"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorBasicContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftContainer" eType="#//OperatorLeftContainer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightContainer" eType="#//OperatorRightContainer"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorLeftContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftConnectors" upperBound="-1"
+        eType="#//OperatorLeftConnector" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorLeftConnector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inNode" eType="#//InNode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorRightContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightConnectors" upperBound="-1"
+        eType="#//OperatorRightConnector" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperatorRightConnector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outNode" eType="#//OutNode"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -85,4 +105,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Concat" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Operator"/>
 </ecore:EPackage>

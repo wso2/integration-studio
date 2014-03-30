@@ -92,6 +92,26 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createOperatorAdapter();
 			}
 			@Override
+			public Adapter caseOperatorBasicContainer(OperatorBasicContainer object) {
+				return createOperatorBasicContainerAdapter();
+			}
+			@Override
+			public Adapter caseOperatorLeftContainer(OperatorLeftContainer object) {
+				return createOperatorLeftContainerAdapter();
+			}
+			@Override
+			public Adapter caseOperatorLeftConnector(OperatorLeftConnector object) {
+				return createOperatorLeftConnectorAdapter();
+			}
+			@Override
+			public Adapter caseOperatorRightContainer(OperatorRightContainer object) {
+				return createOperatorRightContainerAdapter();
+			}
+			@Override
+			public Adapter caseOperatorRightConnector(OperatorRightConnector object) {
+				return createOperatorRightConnectorAdapter();
+			}
+			@Override
 			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
@@ -122,6 +142,10 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEqual(Equal object) {
 				return createEqualAdapter();
+			}
+			@Override
+			public Adapter caseConstant(Constant object) {
+				return createConstantAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -224,6 +248,76 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOperatorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.OperatorBasicContainer <em>Operator Basic Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.OperatorBasicContainer
+	 * @generated
+	 */
+	public Adapter createOperatorBasicContainerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.OperatorLeftContainer <em>Operator Left Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.OperatorLeftContainer
+	 * @generated
+	 */
+	public Adapter createOperatorLeftContainerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.OperatorLeftConnector <em>Operator Left Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.OperatorLeftConnector
+	 * @generated
+	 */
+	public Adapter createOperatorLeftConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.OperatorRightContainer <em>Operator Right Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.OperatorRightContainer
+	 * @generated
+	 */
+	public Adapter createOperatorRightContainerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.OperatorRightConnector <em>Operator Right Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.OperatorRightConnector
+	 * @generated
+	 */
+	public Adapter createOperatorRightConnectorAdapter() {
 		return null;
 	}
 
@@ -336,6 +430,20 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEqualAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.Constant <em>Constant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.Constant
+	 * @generated
+	 */
+	public Adapter createConstantAdapter() {
 		return null;
 	}
 

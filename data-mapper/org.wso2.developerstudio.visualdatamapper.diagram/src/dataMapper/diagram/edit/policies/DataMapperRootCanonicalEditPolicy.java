@@ -347,6 +347,62 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
+		case dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOperatorBasicContainer_3012ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOperatorLeftContainer_3013ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOperatorLeftConnector_3014ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getInNode_3015ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OperatorRightContainerEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOperatorRightContainer_3016ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOperatorRightConnector_3017ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getOutNode_3018ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
 		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater

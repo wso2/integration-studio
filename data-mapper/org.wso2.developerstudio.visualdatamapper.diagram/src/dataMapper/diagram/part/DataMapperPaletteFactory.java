@@ -65,11 +65,15 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createDataMapperLink1CreationTool() {
-		ToolEntry entry = new ToolEntry(
+		LinkToolEntry entry = new LinkToolEntry(
 				dataMapper.diagram.part.Messages.DataMapperLink1CreationTool_title,
-				dataMapper.diagram.part.Messages.DataMapperLink1CreationTool_desc, null, null) {
-		};
+				dataMapper.diagram.part.Messages.DataMapperLink1CreationTool_desc,
+				Collections
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001));
 		entry.setId("createDataMapperLink1CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001));
+		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
 

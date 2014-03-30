@@ -1,6 +1,9 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -41,6 +44,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -48,6 +54,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.DeveloperStudioElementProviderDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
@@ -55,6 +62,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapper
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 
 /**
@@ -354,11 +363,24 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			
 			Shell shell = new Shell(Display.getDefault());
 			final RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			ArrayList<NamedEntityDescriptor> localNamedEntities = new ArrayList<NamedEntityDescriptor>();
-			RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(shell, SWT.NULL, registryKeyProperty, localNamedEntities);
-			dialog.setTitle("Specify DataMapper configuration.");
+			
+			Map<String, List<String>> filters = new HashMap<String, List<String>>();
+			
+			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
+			List<String> types = new ArrayList<String>();
+			//types.add("application/vnd+wso2.datamapper");
+			//types.add("application/vnd.wso2.esb.endpoint");
+			types.add("application/javascript"); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
+			filters.put(mediaTypeKey, types);
+			
+			final DeveloperStudioElementProviderDialog dialog = new DeveloperStudioElementProviderDialog(shell, new Class[]{IRegistryFile.class}, filters);
+			dialog.configureDialog("Specify DataMapper Configuration.", false, true);
 			
 			if (dialog.open() == Dialog.OK) {
+				
+				String selectedPath = formatRegistryPath(dialog.getSelectedPath());
+				registryKeyProperty.setKeyValue(selectedPath);
+				
 				Display.getDefault().asyncExec(new Runnable() {
 
 					public void run() {
@@ -368,10 +390,10 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 						SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION, registryKeyProperty);
 
 						if (setCmd.canExecute()) {
-						getEditingDomain().getCommandStack().execute(setCmd);
+							getEditingDomain().getCommandStack().execute(setCmd);
 						}
 						
-						String localPath = ((RegistryKeyPropertyImpl)registryKeyProperty).getLocalPathOfRegistryKey();
+						String localPath = dialog.getIPathOfSelection();
 						SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
 						if (setCmd2.canExecute()) {
 							editingDomain.getCommandStack().execute(setCmd2);
@@ -387,6 +409,18 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			openDataMapperEditor(datamapper);
 		}
  
+	}
+
+	private String formatRegistryPath(String selectedPath) {
+		final String G_REG_PATH_PREFIX = "/_system/governance/";
+		final String C_REG_PATH_PREFIX = "/_system/config/";
+		String formattedPath = selectedPath;
+		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
+			formattedPath = String.format("gov:%s", selectedPath.substring(G_REG_PATH_PREFIX.length()));
+		} else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
+			formattedPath = String.format("conf:%s", selectedPath.substring(C_REG_PATH_PREFIX.length()));
+		}
+		return formattedPath;
 	}
 
 	private void openDataMapperEditor(final DataMapperMediatorImpl datamapper) {

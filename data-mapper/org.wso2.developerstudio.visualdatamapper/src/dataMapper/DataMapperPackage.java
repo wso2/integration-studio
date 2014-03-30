@@ -207,22 +207,13 @@ public interface DataMapperPackage extends EPackage {
 	int OPERATOR = 5;
 
 	/**
-	 * The feature id for the '<em><b>In Nodes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR__IN_NODES = DATA_MAPPER_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Out Nodes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATOR__OUT_NODES = DATA_MAPPER_NODE_FEATURE_COUNT + 1;
+	int OPERATOR__BASIC_CONTAINER = DATA_MAPPER_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Operator</em>' class.
@@ -231,7 +222,156 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 2;
+	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.impl.OperatorBasicContainerImpl <em>Operator Basic Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.OperatorBasicContainerImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorBasicContainer()
+	 * @generated
+	 */
+	int OPERATOR_BASIC_CONTAINER = 6;
+
+	/**
+	 * The feature id for the '<em><b>Left Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_BASIC_CONTAINER__LEFT_CONTAINER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Right Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_BASIC_CONTAINER__RIGHT_CONTAINER = 1;
+
+	/**
+	 * The number of structural features of the '<em>Operator Basic Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_BASIC_CONTAINER_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.impl.OperatorLeftContainerImpl <em>Operator Left Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.OperatorLeftContainerImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorLeftContainer()
+	 * @generated
+	 */
+	int OPERATOR_LEFT_CONTAINER = 7;
+
+	/**
+	 * The feature id for the '<em><b>Left Connectors</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Operator Left Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_LEFT_CONTAINER_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.impl.OperatorLeftConnectorImpl <em>Operator Left Connector</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.OperatorLeftConnectorImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorLeftConnector()
+	 * @generated
+	 */
+	int OPERATOR_LEFT_CONNECTOR = 8;
+
+	/**
+	 * The feature id for the '<em><b>In Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_LEFT_CONNECTOR__IN_NODE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Operator Left Connector</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_LEFT_CONNECTOR_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.impl.OperatorRightContainerImpl <em>Operator Right Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.OperatorRightContainerImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorRightContainer()
+	 * @generated
+	 */
+	int OPERATOR_RIGHT_CONTAINER = 9;
+
+	/**
+	 * The feature id for the '<em><b>Right Connectors</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Operator Right Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_RIGHT_CONTAINER_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.impl.OperatorRightConnectorImpl <em>Operator Right Connector</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.OperatorRightConnectorImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorRightConnector()
+	 * @generated
+	 */
+	int OPERATOR_RIGHT_CONNECTOR = 10;
+
+	/**
+	 * The feature id for the '<em><b>Out Node</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_RIGHT_CONNECTOR__OUT_NODE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Operator Right Connector</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR_RIGHT_CONNECTOR_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.ElementImpl <em>Element</em>}' class.
@@ -241,7 +381,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getElement()
 	 * @generated
 	 */
-	int ELEMENT = 6;
+	int ELEMENT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -305,7 +445,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getAttribute()
 	 * @generated
 	 */
-	int ATTRIBUTE = 7;
+	int ATTRIBUTE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -369,7 +509,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getTreeNode()
 	 * @generated
 	 */
-	int TREE_NODE = 8;
+	int TREE_NODE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -452,7 +592,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getInNode()
 	 * @generated
 	 */
-	int IN_NODE = 9;
+	int IN_NODE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Link</b></em>' reference list.
@@ -507,7 +647,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getOutNode()
 	 * @generated
 	 */
-	int OUT_NODE = 10;
+	int OUT_NODE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference list.
@@ -545,7 +685,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getDataMapperLink()
 	 * @generated
 	 */
-	int DATA_MAPPER_LINK = 11;
+	int DATA_MAPPER_LINK = 16;
 
 	/**
 	 * The feature id for the '<em><b>In Node</b></em>' reference.
@@ -583,25 +723,16 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 12;
+	int CONCAT = 17;
 
 	/**
-	 * The feature id for the '<em><b>In Nodes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCAT__IN_NODES = OPERATOR__IN_NODES;
-
-	/**
-	 * The feature id for the '<em><b>Out Nodes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCAT__OUT_NODES = OPERATOR__OUT_NODES;
+	int CONCAT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
 	 * The number of structural features of the '<em>Concat</em>' class.
@@ -621,25 +752,16 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getEqual()
 	 * @generated
 	 */
-	int EQUAL = 13;
+	int EQUAL = 18;
 
 	/**
-	 * The feature id for the '<em><b>In Nodes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EQUAL__IN_NODES = OPERATOR__IN_NODES;
-
-	/**
-	 * The feature id for the '<em><b>Out Nodes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUAL__OUT_NODES = OPERATOR__OUT_NODES;
+	int EQUAL__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
 	 * The number of structural features of the '<em>Equal</em>' class.
@@ -649,6 +771,34 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int EQUAL_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.impl.ConstantImpl <em>Constant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.ConstantImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getConstant()
+	 * @generated
+	 */
+	int CONSTANT = 19;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTANT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The number of structural features of the '<em>Constant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link dataMapper.DataMapperNode <em>Node</em>}'.
@@ -766,26 +916,131 @@ public interface DataMapperPackage extends EPackage {
 	EClass getOperator();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dataMapper.Operator#getInNodes <em>In Nodes</em>}'.
+	 * Returns the meta object for the containment reference '{@link dataMapper.Operator#getBasicContainer <em>Basic Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>In Nodes</em>'.
-	 * @see dataMapper.Operator#getInNodes()
+	 * @return the meta object for the containment reference '<em>Basic Container</em>'.
+	 * @see dataMapper.Operator#getBasicContainer()
 	 * @see #getOperator()
 	 * @generated
 	 */
-	EReference getOperator_InNodes();
+	EReference getOperator_BasicContainer();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dataMapper.Operator#getOutNodes <em>Out Nodes</em>}'.
+	 * Returns the meta object for class '{@link dataMapper.OperatorBasicContainer <em>Operator Basic Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Out Nodes</em>'.
-	 * @see dataMapper.Operator#getOutNodes()
-	 * @see #getOperator()
+	 * @return the meta object for class '<em>Operator Basic Container</em>'.
+	 * @see dataMapper.OperatorBasicContainer
 	 * @generated
 	 */
-	EReference getOperator_OutNodes();
+	EClass getOperatorBasicContainer();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link dataMapper.OperatorBasicContainer#getLeftContainer <em>Left Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left Container</em>'.
+	 * @see dataMapper.OperatorBasicContainer#getLeftContainer()
+	 * @see #getOperatorBasicContainer()
+	 * @generated
+	 */
+	EReference getOperatorBasicContainer_LeftContainer();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link dataMapper.OperatorBasicContainer#getRightContainer <em>Right Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right Container</em>'.
+	 * @see dataMapper.OperatorBasicContainer#getRightContainer()
+	 * @see #getOperatorBasicContainer()
+	 * @generated
+	 */
+	EReference getOperatorBasicContainer_RightContainer();
+
+	/**
+	 * Returns the meta object for class '{@link dataMapper.OperatorLeftContainer <em>Operator Left Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operator Left Container</em>'.
+	 * @see dataMapper.OperatorLeftContainer
+	 * @generated
+	 */
+	EClass getOperatorLeftContainer();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dataMapper.OperatorLeftContainer#getLeftConnectors <em>Left Connectors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Left Connectors</em>'.
+	 * @see dataMapper.OperatorLeftContainer#getLeftConnectors()
+	 * @see #getOperatorLeftContainer()
+	 * @generated
+	 */
+	EReference getOperatorLeftContainer_LeftConnectors();
+
+	/**
+	 * Returns the meta object for class '{@link dataMapper.OperatorLeftConnector <em>Operator Left Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operator Left Connector</em>'.
+	 * @see dataMapper.OperatorLeftConnector
+	 * @generated
+	 */
+	EClass getOperatorLeftConnector();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link dataMapper.OperatorLeftConnector#getInNode <em>In Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>In Node</em>'.
+	 * @see dataMapper.OperatorLeftConnector#getInNode()
+	 * @see #getOperatorLeftConnector()
+	 * @generated
+	 */
+	EReference getOperatorLeftConnector_InNode();
+
+	/**
+	 * Returns the meta object for class '{@link dataMapper.OperatorRightContainer <em>Operator Right Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operator Right Container</em>'.
+	 * @see dataMapper.OperatorRightContainer
+	 * @generated
+	 */
+	EClass getOperatorRightContainer();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dataMapper.OperatorRightContainer#getRightConnectors <em>Right Connectors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Right Connectors</em>'.
+	 * @see dataMapper.OperatorRightContainer#getRightConnectors()
+	 * @see #getOperatorRightContainer()
+	 * @generated
+	 */
+	EReference getOperatorRightContainer_RightConnectors();
+
+	/**
+	 * Returns the meta object for class '{@link dataMapper.OperatorRightConnector <em>Operator Right Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operator Right Connector</em>'.
+	 * @see dataMapper.OperatorRightConnector
+	 * @generated
+	 */
+	EClass getOperatorRightConnector();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link dataMapper.OperatorRightConnector#getOutNode <em>Out Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Out Node</em>'.
+	 * @see dataMapper.OperatorRightConnector#getOutNode()
+	 * @see #getOperatorRightConnector()
+	 * @generated
+	 */
+	EReference getOperatorRightConnector_OutNode();
 
 	/**
 	 * Returns the meta object for class '{@link dataMapper.Element <em>Element</em>}'.
@@ -1143,6 +1398,16 @@ public interface DataMapperPackage extends EPackage {
 	EClass getEqual();
 
 	/**
+	 * Returns the meta object for class '{@link dataMapper.Constant <em>Constant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Constant</em>'.
+	 * @see dataMapper.Constant
+	 * @generated
+	 */
+	EClass getConstant();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1265,20 +1530,110 @@ public interface DataMapperPackage extends EPackage {
 		EClass OPERATOR = eINSTANCE.getOperator();
 
 		/**
-		 * The meta object literal for the '<em><b>In Nodes</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Basic Container</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERATOR__IN_NODES = eINSTANCE.getOperator_InNodes();
+		EReference OPERATOR__BASIC_CONTAINER = eINSTANCE.getOperator_BasicContainer();
 
 		/**
-		 * The meta object literal for the '<em><b>Out Nodes</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link dataMapper.impl.OperatorBasicContainerImpl <em>Operator Basic Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.OperatorBasicContainerImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorBasicContainer()
+		 * @generated
+		 */
+		EClass OPERATOR_BASIC_CONTAINER = eINSTANCE.getOperatorBasicContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Left Container</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERATOR__OUT_NODES = eINSTANCE.getOperator_OutNodes();
+		EReference OPERATOR_BASIC_CONTAINER__LEFT_CONTAINER = eINSTANCE.getOperatorBasicContainer_LeftContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Right Container</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATOR_BASIC_CONTAINER__RIGHT_CONTAINER = eINSTANCE.getOperatorBasicContainer_RightContainer();
+
+		/**
+		 * The meta object literal for the '{@link dataMapper.impl.OperatorLeftContainerImpl <em>Operator Left Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.OperatorLeftContainerImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorLeftContainer()
+		 * @generated
+		 */
+		EClass OPERATOR_LEFT_CONTAINER = eINSTANCE.getOperatorLeftContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Left Connectors</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS = eINSTANCE.getOperatorLeftContainer_LeftConnectors();
+
+		/**
+		 * The meta object literal for the '{@link dataMapper.impl.OperatorLeftConnectorImpl <em>Operator Left Connector</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.OperatorLeftConnectorImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorLeftConnector()
+		 * @generated
+		 */
+		EClass OPERATOR_LEFT_CONNECTOR = eINSTANCE.getOperatorLeftConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>In Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATOR_LEFT_CONNECTOR__IN_NODE = eINSTANCE.getOperatorLeftConnector_InNode();
+
+		/**
+		 * The meta object literal for the '{@link dataMapper.impl.OperatorRightContainerImpl <em>Operator Right Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.OperatorRightContainerImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorRightContainer()
+		 * @generated
+		 */
+		EClass OPERATOR_RIGHT_CONTAINER = eINSTANCE.getOperatorRightContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Right Connectors</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS = eINSTANCE.getOperatorRightContainer_RightConnectors();
+
+		/**
+		 * The meta object literal for the '{@link dataMapper.impl.OperatorRightConnectorImpl <em>Operator Right Connector</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.OperatorRightConnectorImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getOperatorRightConnector()
+		 * @generated
+		 */
+		EClass OPERATOR_RIGHT_CONNECTOR = eINSTANCE.getOperatorRightConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>Out Node</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATOR_RIGHT_CONNECTOR__OUT_NODE = eINSTANCE.getOperatorRightConnector_OutNode();
 
 		/**
 		 * The meta object literal for the '{@link dataMapper.impl.ElementImpl <em>Element</em>}' class.
@@ -1559,6 +1914,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EQUAL = eINSTANCE.getEqual();
+
+		/**
+		 * The meta object literal for the '{@link dataMapper.impl.ConstantImpl <em>Constant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.ConstantImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getConstant()
+		 * @generated
+		 */
+		EClass CONSTANT = eINSTANCE.getConstant();
 
 	}
 

@@ -113,6 +113,41 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType OperatorBasicContainer_3012 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorBasicContainer_3012"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType OperatorLeftContainer_3013 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftContainer_3013"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType OperatorLeftConnector_3014 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftConnector_3014"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType InNode_3015 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.InNode_3015"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType OperatorRightContainer_3016 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightContainer_3016"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType OperatorRightConnector_3017 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightConnector_3017"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType OutNode_3018 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3018"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType DataMapperLink_4001 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4001"); //$NON-NLS-1$
 
 	/**
@@ -180,6 +215,25 @@ public class DataMapperElementTypes {
 
 			elements.put(TreeNode_3011, dataMapper.DataMapperPackage.eINSTANCE.getTreeNode());
 
+			elements.put(OperatorBasicContainer_3012,
+					dataMapper.DataMapperPackage.eINSTANCE.getOperatorBasicContainer());
+
+			elements.put(OperatorLeftContainer_3013,
+					dataMapper.DataMapperPackage.eINSTANCE.getOperatorLeftContainer());
+
+			elements.put(OperatorLeftConnector_3014,
+					dataMapper.DataMapperPackage.eINSTANCE.getOperatorLeftConnector());
+
+			elements.put(InNode_3015, dataMapper.DataMapperPackage.eINSTANCE.getInNode());
+
+			elements.put(OperatorRightContainer_3016,
+					dataMapper.DataMapperPackage.eINSTANCE.getOperatorRightContainer());
+
+			elements.put(OperatorRightConnector_3017,
+					dataMapper.DataMapperPackage.eINSTANCE.getOperatorRightConnector());
+
+			elements.put(OutNode_3018, dataMapper.DataMapperPackage.eINSTANCE.getOutNode());
+
 			elements.put(DataMapperLink_4001,
 					dataMapper.DataMapperPackage.eINSTANCE.getDataMapperLink());
 		}
@@ -212,6 +266,13 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(InNode_3008);
 			KNOWN_ELEMENT_TYPES.add(OutNode_3009);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3011);
+			KNOWN_ELEMENT_TYPES.add(OperatorBasicContainer_3012);
+			KNOWN_ELEMENT_TYPES.add(OperatorLeftContainer_3013);
+			KNOWN_ELEMENT_TYPES.add(OperatorLeftConnector_3014);
+			KNOWN_ELEMENT_TYPES.add(InNode_3015);
+			KNOWN_ELEMENT_TYPES.add(OperatorRightContainer_3016);
+			KNOWN_ELEMENT_TYPES.add(OperatorRightConnector_3017);
+			KNOWN_ELEMENT_TYPES.add(OutNode_3018);
 			KNOWN_ELEMENT_TYPES.add(DataMapperLink_4001);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
@@ -248,6 +309,20 @@ public class DataMapperElementTypes {
 			return OutNode_3009;
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 			return TreeNode_3011;
+		case dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID:
+			return OperatorBasicContainer_3012;
+		case dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart.VISUAL_ID:
+			return OperatorLeftContainer_3013;
+		case dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart.VISUAL_ID:
+			return OperatorLeftConnector_3014;
+		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
+			return InNode_3015;
+		case dataMapper.diagram.edit.parts.OperatorRightContainerEditPart.VISUAL_ID:
+			return OperatorRightContainer_3016;
+		case dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart.VISUAL_ID:
+			return OperatorRightConnector_3017;
+		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
+			return OutNode_3018;
 		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
 			return DataMapperLink_4001;
 		}

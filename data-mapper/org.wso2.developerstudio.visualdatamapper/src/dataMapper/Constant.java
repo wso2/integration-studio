@@ -13,5 +13,5 @@ package dataMapper;
  * @model
  * @generated
  */
-public interface Constant extends Operation {
+public interface Constant extends Operator {
 } // Constant

@@ -6,13 +6,17 @@ import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 
 import dataMapper.Attribute;
 import dataMapper.Concat;
 import dataMapper.DataMapperLink;
 import dataMapper.DataMapperRoot;
 import dataMapper.Element;
+import dataMapper.Equal;
 import dataMapper.InNode;
+import dataMapper.OperatorLeftConnector;
 import dataMapper.OutNode;
 import dataMapper.Output;
 import dataMapper.TreeNode;
@@ -40,7 +44,7 @@ public class DataMapperConfigurationGenerator {
     	DataMapperRoot rootDiagram =  (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
 		String input = rootDiagram.getInput().getTreeNode().get(0).getName().split(",")[1];
 		String output = rootDiagram.getOutput().getTreeNode().get(0).getName().split(",")[1];
-		
+		OPERATION_LIST.clear();
 		ArrayList<String> actionList = new ArrayList<String>();
 		actionList = findForAction(rootDiagram.getInput().getTreeNode());
 
@@ -127,7 +131,6 @@ public class DataMapperConfigurationGenerator {
     			while(mapperLinkIterator.hasNext()){
     				DataMapperLink mapperLinkObject = mapperLinkIterator.next();
     				if(mapperLinkObject.getInNode() != null){
-	 
     					//element -----> element
     					if(mapperLinkObject.getInNode().getElementParent() != null){
 	    					Element outputElement = mapperLinkObject.getInNode().getElementParent();
@@ -151,6 +154,43 @@ public class DataMapperConfigurationGenerator {
 	    					String action = goUpOnOutputTree(outputAttribute.getFieldParent())+outputAttribute.getName().split(",")[1]+" = "+ goUpOnInputTree(eListObject)+elementIteratorObject.getName().split(",")[1];
 	    					actionList.add(action);
     					}
+    					
+    					//FIXME Need to Change this logic ASAP.
+    					
+    					//if there is a equal operator
+    					else if ((mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer().getClass().getName()).equalsIgnoreCase("dataMapper.impl.EqualImpl")) {
+    						Equal equal = (Equal) mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer();
+    						if(!OPERATION_LIST.contains(System.identityHashCode(equal))){
+    							OPERATION_LIST.add(System.identityHashCode(equal));
+        						EList<OperatorLeftConnector> leftConnectores = equal.getBasicContainer().getLeftContainer().getLeftConnectors();
+        						//FIXME only works on one tree level. can fix by using 'goUpOnOutputTree' / 'goUpOnInputTree' methods
+        						String action = "\toutput."+getOutputElementForRight(equal)+" = input."+getInputElementForLeft(leftConnectores.get(0))+".equal(input."+getInputElementForLeft(leftConnectores.get(1))+");";
+        						System.out.println("ds");
+        						actionList.add(action);
+
+    						}
+
+    					//to add more operators, add else-if and force to generate config
+    						
+						} else if ((mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer().getClass().getName()).equalsIgnoreCase("dataMapper.impl.ConcatImpl")) {
+    						Concat concat = (Concat) mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer();
+    						if(!OPERATION_LIST.contains(System.identityHashCode(concat))){
+    							OPERATION_LIST.add(System.identityHashCode(concat));
+        						EList<OperatorLeftConnector> leftConnectores = concat.getBasicContainer().getLeftContainer().getLeftConnectors();
+        						//FIXME only works on one tree level. can fix by using 'goUpOnOutputTree' / 'goUpOnInputTree' methods
+        						String action = "\toutput."+getOutputElementForRight(concat)+" = input."+getInputElementForLeft(leftConnectores.get(0))+".concat(input."+getInputElementForLeft(leftConnectores.get(1))+");";
+        						System.out.println("ds");
+        						actionList.add(action);
+
+    						}
+
+    					//to add more operators, add else-if and force to generate config
+    						
+						}
+    					
+    					
+    					
+    					
     				}// end if linkobject element
     			}//end itrt links element
     		}//end itrt element	
@@ -223,4 +263,16 @@ public class DataMapperConfigurationGenerator {
 		}
 		return temp;
     }
+    
+    private static String getInputElementForLeft(OperatorLeftConnector leftConnector){
+		return leftConnector.getInNode().getIncomingLink().get(0).getOutNode().getElementParent().getName().split(",")[1];
+    	
+    }
+    private static String getOutputElementForRight(Equal equal) {
+		return equal.getBasicContainer().getRightContainer().getRightConnectors().get(0).getOutNode().getOutgoingLink().get(0).getInNode().getElementParent().getName().split(",")[1];
+	}
+    
+    private static String getOutputElementForRight(Concat concat) {
+		return concat.getBasicContainer().getRightContainer().getRightConnectors().get(0).getOutNode().getOutgoingLink().get(0).getInNode().getElementParent().getName().split(",")[1];
+	}
 }

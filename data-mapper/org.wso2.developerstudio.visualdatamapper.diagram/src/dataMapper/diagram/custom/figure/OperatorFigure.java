@@ -15,7 +15,7 @@ import org.eclipse.swt.graphics.FontData;
 
 public class OperatorFigure extends RoundedRectangle{
 
-	public GridData tempConstraintPropertyValueRectangle;
+	/*public GridData tempConstraintPropertyValueRectangle;
 	public RoundedRectangle tempPropertyValueRectangle1;
 	private WrappingLabel propertyNameLabel;
 	static int Figure_PreferredWidth = 75;//FixedSizedAbstractMediator.FigureWidth;
@@ -47,7 +47,7 @@ public class OperatorFigure extends RoundedRectangle{
 
 	private void createContents() {
 
-		/* main image grid data */
+		 main image grid data 
 		GridData constraintMainImageRectangle = new GridData();
 		constraintMainImageRectangle.verticalAlignment = GridData.BEGINNING;
 		constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
@@ -107,5 +107,5 @@ public class OperatorFigure extends RoundedRectangle{
 
 	public Color getLabelBackColor() {
 		return this.getBackgroundColor();
-	}
+	}*/
 }

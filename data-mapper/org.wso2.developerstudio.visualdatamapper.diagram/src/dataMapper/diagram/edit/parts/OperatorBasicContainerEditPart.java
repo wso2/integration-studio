@@ -1,9 +1,12 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -15,11 +18,14 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
+
+import dataMapper.diagram.edit.parts.EqualEditPart.EqualFigure;
 
 /**
  * @generated
@@ -94,7 +100,8 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		primaryShape = new OperatorBasicFigure();
+			return primaryShape;
 	}
 
 	/**
@@ -105,10 +112,10 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(60, 20);
 		return result;
 	}
 
@@ -188,6 +195,35 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 		if (primaryShape instanceof Shape) {
 			((Shape) primaryShape).setLineStyle(style);
 		}
+	}
+	
+	
+	public class OperatorBasicFigure extends RoundedRectangle {
+		
+		public OperatorBasicFigure() {
+
+			ToolbarLayout layoutThis = new ToolbarLayout();
+			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+			layoutThis.setSpacing(0);
+			layoutThis.setVertical(false);
+			this.setLayoutManager(layoutThis);
+
+		}
+		
+
+		public String getIconPath() {
+			return "icons/ico20/log-mediator.gif";
+		}
+
+		public String getNodeName() {
+			return "OperatorBasicContainer";
+		}
+
+		public IFigure getToolTip() {
+			return new Label("OperatorBasicContainer");
+		}
+
 	}
 
 }

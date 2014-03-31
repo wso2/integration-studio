@@ -1,9 +1,12 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -16,10 +19,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-/**
- * @generated
+
+/** 
+ * @generated NOT
  */
 public class InNode3EditPart extends AbstractBorderItemEditPart {
 
@@ -84,24 +90,24 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		return primaryShape = new InNode3Figure();
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public RectangleFigure getPrimaryShape() {
 		return (RectangleFigure) primaryShape;
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(10, 10);
 
 		//FIXME: workaround for #154536
 		result.getBounds().setSize(result.getPreferredSize());
@@ -180,5 +186,64 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+	
+	public class EastPointerFigure extends EastPointerShape {
+
+		public EastPointerFigure() {
+
+			this.setBackgroundColor(THIS_BACK);
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+		}
+	}
+	
+	class InNode3Figure extends RectangleFigure {
+		/**
+		 * @generated NOT
+		 */
+		public InNode3Figure() {
+
+			ToolbarLayout layoutThis = new ToolbarLayout();
+			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
+			layoutThis.setSpacing(0);
+			layoutThis.setVertical(false);
+			this.setLayoutManager(layoutThis);
+			this.setOpaque(false);
+			this.setFill(false);
+			this.setOutline(false);
+			createContents();
+
+		}
+
+		/**
+		 * @generated NOT
+		 */
+		private void createContents() {
+
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
+
+			int nodeDimension = 10; // width for connection nodes
+
+			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
+			mainImg.setSize(new Dimension(nodeDimension, nodeDimension));
+			RectangleFigure mainImageRectangle = new RectangleFigure();
+
+			mainImageRectangle.setBackgroundColor(new Color(null, 255, 255, 255));
+			mainImageRectangle.setPreferredSize(new Dimension(nodeDimension, nodeDimension));
+			mainImageRectangle.add(mainImg);
+
+			mainImageRectangle.setFill(false);
+			mainImageRectangle.setOutline(false);
+			//
+			this.add(mainImageRectangle);
+			this.setOpaque(false);
+			this.setOutline(false);
+			this.setFill(false);
+
+		}
+	}
+	
+	static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

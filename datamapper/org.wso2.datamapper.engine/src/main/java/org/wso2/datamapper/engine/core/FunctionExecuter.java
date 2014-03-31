@@ -43,44 +43,27 @@ public class FunctionExecuter {
 
 	public GenericRecord execute(String elementId, GenericRecord inRecord) {
 		
-		GenericRecord inputRecord = inRecord;
-		String inElementId = elementId;
-		
+ 
 		GenericRecord resultRecord = null;		
-		MappingConfigModel mappingModel = mappingModelMap.get(inElementId);
+		MappingConfigModel mappingModel = mappingModelMap.get(elementId);
 		
 		if (mappingModel != null) {
 
-			String inputDataType = inElementId;
+		//	String inputDataType = inElementId;
 			String outputDataType = mappingModel.getOutputDataType();
 			String funcType = mappingModel.getMappingFunctionType();
-			
 			Schema outputSchema = outputSchemaMap.get(outputDataType);
-			GenericRecord  outputRecord = null;
-			
-			if(outputSchema.getType() == Schema.Type.ARRAY){
-				outputRecord = new GenericData.Record(outputSchema.getElementType());
-			}else{
-				outputRecord = new GenericData.Record(outputSchema);
-			}
 
-			ScriptableObjectFactory inputRecordWrapper = new ScriptableObjectFactory(inputRecord);
-			inputRecordWrapper.setScope(this.scope);
-			ScriptableObjectFactory outputRecordWrapper = new ScriptableObjectFactory(outputRecord);
-			outputRecordWrapper.setScope(this.scope);
-			//this.scope.put("input", scope, inputRecordWrapper);
-			//this.scope.put("output", scope, outputRecordWrapper);
+			GenericRecord  outputRecord = new GenericData.Record(outputSchema);
+			ScriptableObjectFactory inputRecordWrapper = new ScriptableObjectFactory(inRecord,this.scope);
+			ScriptableObjectFactory outputRecordWrapper = new ScriptableObjectFactory(outputRecord,this.scope);
 			
-			//Function fn = context.compileFunction(this.scope, funtionSourceAsString, "xyz-func", 0, null);
+			/*Object wrappedOut = Context.javaToJS(System.out, scope);
+	        ScriptableObject.putProperty(scope, "out", wrappedOut);*/
 			
-			Object wrappedOut = Context.javaToJS(System.out, scope);
-	        ScriptableObject.putProperty(scope, "out", wrappedOut);
-			
-			 String fnName = "map_"+funcType+"_"+inputDataType+"_"+funcType+"_"+outputDataType;
+			 String fnName = "map_"+funcType+"_"+elementId+"_"+funcType+"_"+outputDataType;
 			 Function fn = (Function)scope.get(fnName, scope);
 			 Object resultOb = fn.call(context, this.scope, this.scope, new Object[] {inputRecordWrapper,outputRecordWrapper});
-		
-			//Object resultOb = context.evaluateString(scope, configScript.toString(), "", 1, null);
 
 			if(resultOb != ScriptableObject.NOT_FOUND){
 				resultRecord = outputRecordWrapper.getRecord();

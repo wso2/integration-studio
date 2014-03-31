@@ -1,6 +1,7 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.Border;
+import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.FrameBorder;
 import org.eclipse.draw2d.IFigure;
@@ -11,11 +12,15 @@ import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.EAttributeImpl;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
@@ -31,6 +36,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.impl.BoundsImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -230,12 +236,48 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		};
 		return lep;
 	}
+	
+/*	public void notifyChanged(Notification notification) {
+		super.notifyChanged(notification);
+		if (notification.getFeature() instanceof EAttributeImpl) {
+			if (notification.getNotifier() instanceof BoundsImpl) {
+				alignLeft(((BoundsImpl) notification.getNotifier()).getX(),
+						((BoundsImpl) notification.getNotifier()).getY(),
+						((BoundsImpl) notification.getNotifier()).getWidth(),
+						((BoundsImpl) notification.getNotifier()).getHeight());
+				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+				canvas.getViewport().repaint();
+			}
+		}
+	}*/
+	
+	private void alignLeft(int x, int y, int width, int height) {
+		if(y==0){
+			y = 100;
+		}
+		Rectangle constraints = new Rectangle(x, y, width, height);
+		((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
+		FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+		canvas.getViewport().repaint();
+	}
+	
+	private void alignLeft() {
+		alignLeft(getFigure().getBounds().x,getFigure().getBounds().y, getFigure().getBounds().width,
+				getFigure().getBounds().height);
+	}
 
 	/**
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new OutputFigure();
+		return primaryShape = new OutputFigure(){
+			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+				super.setBounds(rect);
+				//if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+					alignLeft();
+				//}
+			};
+		};
 	}
 
 	/**

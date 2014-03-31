@@ -15,10 +15,6 @@
  */
 package org.wso2.datamapper.engine.core;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.apache.avro.Schema.Field;
 import org.apache.avro.Schema.Type;
 import org.apache.avro.generic.GenericData;
@@ -34,8 +30,9 @@ public class ScriptableObjectFactory implements Scriptable{
 	private Scriptable scope;
 	
 	
-	public ScriptableObjectFactory(GenericRecord record) {	
+	public ScriptableObjectFactory(GenericRecord record,Scriptable scope) {	
 		this.record = record;
+		this.scope = scope;
 	}
 
 	public GenericRecord getRecord() {
@@ -51,27 +48,22 @@ public class ScriptableObjectFactory implements Scriptable{
 		Object resource = this.record.get(name);
 		Field field = record.getSchema().getField(name);
 		if(resource instanceof GenericRecord){
-			return	new ScriptableObjectFactory((GenericRecord)resource);
+			return	new ScriptableObjectFactory((GenericRecord)resource,getScope());
 		} else if (resource instanceof Array){
+			@SuppressWarnings("unchecked")
 			Array<Object> recordArray = (Array<Object>) resource;
-			List<Object> list = new ArrayList<Object>();
-			Iterator<Object> iterator = recordArray.iterator();
-			while(iterator.hasNext()){
-				Object next = iterator.next();
-				if(next instanceof GenericRecord){
-					list.add(new ScriptableObjectFactory((GenericRecord)next));
-				} else{
-					list.add(next);
-				}
-			}
-			return new AvroAwareNativeJavaArray(getScope(),list.toArray(),recordArray);
+			return new AvroAwareNativeJavaArray(getScope(),recordArray);
 		} else if (resource != null){
 				return resource;
-		}	else if(field!=null){
+		} else if(field!=null){
 			if(field.schema().getType().equals(Type.ARRAY)){
 				Array<Object> recordArray = new GenericData.Array<Object>(32,field.schema());
 				record.put(name,recordArray);
-				return  new AvroAwareNativeJavaArray(getScope(),new Object[32],recordArray);
+				return  new AvroAwareNativeJavaArray(getScope(),recordArray);
+			} else if(field.schema().getType().equals(Type.RECORD)){
+				GenericRecord subRecord = new GenericData.Record(field.schema());
+				record.put(name,subRecord);
+				return new ScriptableObjectFactory((GenericRecord)record.get(name),getScope());
 			} else{
 				return NOT_FOUND;
 			}

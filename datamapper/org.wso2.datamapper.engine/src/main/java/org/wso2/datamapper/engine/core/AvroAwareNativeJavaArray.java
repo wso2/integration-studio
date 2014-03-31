@@ -16,6 +16,10 @@
 
 package org.wso2.datamapper.engine.core;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.avro.Schema;
 import org.apache.avro.Schema.Type;
 import org.apache.avro.generic.GenericData;
@@ -27,46 +31,72 @@ import org.mozilla.javascript.Scriptable;
 public class  AvroAwareNativeJavaArray extends NativeJavaArray  {
 	
 	private Array<Object> recordArray;
+	private static Scriptable scope;
 
 	private static final long serialVersionUID = 1625850167152425723L;
 
-	public AvroAwareNativeJavaArray(Scriptable scope, Object array,Array<Object> recordArray) {
-		super(scope, array);
+	public AvroAwareNativeJavaArray(Scriptable scope, Array<Object> recordArray) {
+		super(scope, toArray(recordArray)); //FIXME: we don't need to place data in two places
 		this.recordArray = recordArray;
+		AvroAwareNativeJavaArray.scope = scope;
 	}
 	
 	@Override
 	public void put(int index, Scriptable start, Object value) {
+		if((recordArray.size() -1) < index){
+			//TODO : resize array
+		}
 		Schema elementType = recordArray.getSchema().getElementType();
 		if(elementType.getType().equals(Type.RECORD)){
 		GenericRecord record = new GenericData.Record(elementType);
-		recordArray.add(record);
+		recordArray.add((GenericRecord)record);
 		} else{
 			recordArray.add(value);
 		}
-		//super.put(index, start, value);
+	//	super.put(index, start, value);
 	}
 	
 	@Override
 	public void put(String id, Scriptable start, Object value) {
-		// TODO Auto-generated method stub
 		super.put(id, start, value);
 	}
-
 	
 	@Override
-    public Object get(int index, Scriptable start) {
-            Schema elementType = recordArray.getSchema().getElementType();
-            if(elementType.getType().equals(Type.RECORD)){
-                    if((recordArray.size() -1) < index){
-                            recordArray.add(new GenericData.Record(elementType));
-                    }
-                    return new ScriptableObjectFactory((GenericRecord)recordArray.get(index));
-            } else{
-                    return recordArray.get(index);
-            }
-            //return super.get(index, start);
-    }
-
+	public Object get(int index, Scriptable start) {
+		Schema elementType = recordArray.getSchema().getElementType();
+		if(elementType.getType().equals(Type.RECORD)){
+			if((recordArray.size() -1) < index){
+				recordArray.add(new GenericData.Record(elementType));
+			}
+			return new ScriptableObjectFactory((GenericRecord)recordArray.get(index),scope);
+		} else{
+			return recordArray.get(index);
+		}
+		//return super.get(index, start);
+	}
+	
+	@Override
+	public boolean has(int index, Scriptable start) {
+		return super.has(index, start);
+	}
+	
+	@Override
+	public boolean has(String id, Scriptable start) {
+		return super.has(id, start);
+	}
+	
+	private static Object toArray(Array<Object> recordArray){
+		List<Object> list = new ArrayList<Object>();
+		Iterator<Object> iterator = recordArray.iterator();
+		while(iterator.hasNext()){
+			Object next = iterator.next();
+			if(next instanceof GenericRecord){
+				list.add(new ScriptableObjectFactory((GenericRecord)next,scope));
+			} else{
+				list.add(next);
+			}
+		}
+		return list.toArray();
+	}
 
 }

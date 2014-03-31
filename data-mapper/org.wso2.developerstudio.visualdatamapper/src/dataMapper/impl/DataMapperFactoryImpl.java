@@ -147,11 +147,10 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public Operator createOperator() {
 		OperatorImpl operator = new OperatorImpl();
-		operator.setBasicContainer(createOperatorBasicContainer());
 		return operator;
 	}
 
@@ -170,10 +169,12 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OperatorLeftContainer createOperatorLeftContainer() {
 		OperatorLeftContainerImpl operatorLeftContainer = new OperatorLeftContainerImpl();
+		operatorLeftContainer.getLeftConnectors().add(createOperatorLeftConnector()); //FIXME these need to be programmaticaly handled not hard coded
+		operatorLeftContainer.getLeftConnectors().add(createOperatorLeftConnector()); //FIXME these need to be programmaticaly handled not hard coded
 		return operatorLeftContainer;
 	}
 
@@ -191,10 +192,13 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public OperatorRightContainer createOperatorRightContainer() {
 		OperatorRightContainerImpl operatorRightContainer = new OperatorRightContainerImpl();
+		operatorRightContainer.getRightConnectors().add(createOperatorRightConnector()); //FIXME these need to be programmaticaly handled not hard coded
+		//operatorRightContainer.getRightConnectors().add(createOperatorRightConnector());
+		//operatorRightContainer.getRightConnectors().add(createOperatorRightConnector());
 		return operatorRightContainer;
 	}
 
@@ -261,6 +265,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public OutNode createOutNode() {
 		OutNodeImpl outNode = new OutNodeImpl();
+		//outNode.getOutgoingLink().add(createDataMapperLink()); //TODO need to add a arrow connector by default ??
 		return outNode;
 	}
 
@@ -291,6 +296,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public Equal createEqual() {
 		EqualImpl equal = new EqualImpl();
+		equal.setBasicContainer(createOperatorBasicContainer());
 		return equal;
 	}
 

@@ -2,6 +2,7 @@ package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -193,8 +194,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
-	
+
 	public class OperatorLeftContainerFigure extends RoundedRectangle {
 
 		public OperatorLeftContainerFigure() {
@@ -203,7 +203,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
 			//border.setColor(new Color(null, 255, 0, 0));
 			//this.setBorder(border); //TODO just for identification remove once we are done
-			
+
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
@@ -211,7 +211,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			//layoutThis.setHorizontal(true);
 			layoutThis.setMatchWidth(true);
 			this.setLayoutManager(layoutThis);
-			
+
 		}
 
 		public String getIconPath() {
@@ -231,5 +231,3 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }
-
-

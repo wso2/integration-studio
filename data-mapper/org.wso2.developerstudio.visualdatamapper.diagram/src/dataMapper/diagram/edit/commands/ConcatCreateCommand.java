@@ -51,8 +51,8 @@ public class ConcatCreateCommand extends EditElementCommand {
 			throws ExecutionException {
 		dataMapper.Concat newElement = dataMapper.DataMapperFactory.eINSTANCE.createConcat();
 
-		dataMapper.Operations owner = (dataMapper.Operations) getElementToEdit();
-		owner.getConcat().add(newElement);
+		dataMapper.DataMapperRoot owner = (dataMapper.DataMapperRoot) getElementToEdit();
+		owner.getOperators().add(newElement);
 
 		doConfigure(newElement, monitor, info);
 

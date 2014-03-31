@@ -3,6 +3,7 @@ package dataMapper.diagram.edit.parts;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -194,7 +195,7 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class OperatorRightContainerFigure extends RoundedRectangle {
 
 		public OperatorRightContainerFigure() {
@@ -203,18 +204,17 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 			//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
 			//border.setColor(new Color(null, 255, 0, 0)); 
 			//this.setBorder(border ); //TODO just for identification remove once we are done
-			
+
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
 			layoutThis.setSpacing(0);
 			layoutThis.setHorizontal(true);
 			layoutThis.setMatchWidth(true);
-			
+
 			this.setLayoutManager(layoutThis);
 
 		}
-		
 
 		public String getIconPath() {
 			return "icons/ico20/log-mediator.gif";

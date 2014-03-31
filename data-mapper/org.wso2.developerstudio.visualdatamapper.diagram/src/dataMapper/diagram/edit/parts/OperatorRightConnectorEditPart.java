@@ -27,7 +27,7 @@ import org.eclipse.swt.graphics.Color;
 import dataMapper.diagram.edit.parts.custom.FixedBorderItemLocator;
 
 /**
- * @generated
+ * @generated NOT
  */
 public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPart {
 
@@ -96,7 +96,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	}
 
 	protected boolean addFixedChild(EditPart childEditPart) {
-		
+
 		if (childEditPart instanceof OutNode3EditPart) {
 			IFigure borderItemFigure = ((OutNode3EditPart) childEditPart).getFigure();
 			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
@@ -104,7 +104,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -112,13 +112,13 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	 * @generated
 	 */
 	protected boolean removeFixedChild(EditPart childEditPart) {
-		
+
 		if (childEditPart instanceof OutNode3EditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
 					((OutNode3EditPart) childEditPart).getFigure());
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -146,7 +146,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		
+
 		RectangleFigure primaryShape = new RectangleFigure();
 		//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
 		//border.setColor(new Color(null, 0, 255, 0));
@@ -168,8 +168,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
-	
-	
+
 	/**
 	 * Creates figure for this edit part.
 	 * 
@@ -186,8 +185,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 		contentPane = setupContentPane(shape);
 		return figure;
 	}
-	
-	
+
 	/**
 	 * Default implementation treats passed figure as content pane.
 	 * Respects layout one may have set for generated figure.

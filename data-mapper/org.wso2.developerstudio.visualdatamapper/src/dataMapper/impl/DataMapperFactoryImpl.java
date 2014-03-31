@@ -282,17 +282,18 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
+		concat.setBasicContainer(createOperatorBasicContainer());
 		return concat;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Equal createEqual() {
 		EqualImpl equal = new EqualImpl();

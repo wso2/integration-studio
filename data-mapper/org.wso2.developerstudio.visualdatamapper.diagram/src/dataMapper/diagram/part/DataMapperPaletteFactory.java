@@ -8,6 +8,7 @@ import org.eclipse.gef.Tool;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
+import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
@@ -31,7 +32,7 @@ public class DataMapperPaletteFactory {
 
 	public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1,
 			INITIAL_STATE_PINNED_OPEN = 2;
-	
+
 	/**
 	 * @generated
 	 */
@@ -45,14 +46,15 @@ public class DataMapperPaletteFactory {
 	 * @generated NOT
 	 */
 	private PaletteContainer createDataMapper1Group() {
-		
+
 		PaletteDrawer paletteContainer = new PaletteDrawer("Operators");
-		
-/*		PaletteGroup paletteContainer = new PaletteGroup(
-				dataMapper.diagram.part.Messages.DataMapper1Group_title);*/
+
+		/*		PaletteGroup paletteContainer = new PaletteGroup(
+		 dataMapper.diagram.part.Messages.DataMapper1Group_title);*/
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
 		paletteContainer.add(createEqual2CreationTool());
+		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -85,6 +87,22 @@ public class DataMapperPaletteFactory {
 		entry.setId("createEqual2CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
 				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createConcat3CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				dataMapper.diagram.part.Messages.Concat3CreationTool_title,
+				dataMapper.diagram.part.Messages.Concat3CreationTool_desc,
+				Collections
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.Concat_2006));
+		entry.setId("createConcat3CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Concat_2006));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

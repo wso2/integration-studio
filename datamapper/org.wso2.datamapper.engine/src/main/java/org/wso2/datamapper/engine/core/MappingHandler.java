@@ -15,14 +15,7 @@
  */
 package org.wso2.datamapper.engine.core;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.avro.Schema;
@@ -68,7 +61,6 @@ public class MappingHandler {
 		outputSchemaCreator.setSchema(outputSchema);
 		outputSchemaMap = outputSchemaCreator.getSchemaMap();		
 		
-		Map<String, String> outputAvroArrayMap = outputSchemaCreator.getAvroArrayMap();
 		Map<String, String> inputAvroArrayMap = inputSchemaCreator.getAvroArrayMap();
 		inputDataReader.setInputSchemaMap(inputSchemaMap);
 		
@@ -78,121 +70,22 @@ public class MappingHandler {
 		GenericRecord inputRecord = new GenericData.Record(inputSchema);
 		GenericRecord outputRecord = new GenericData.Record(outputSchema);
 		GenericRecord childRecord = null;
-		GenericRecord resultRecord = null;
-		
-		String arrayId = null;
-		GenericData.Array<GenericRecord> recArray =null;
-		
+
 		inputDataReader.setRootRecord(inputRecord);
-		
-		List<GenericRecord> outRecordList = null;
-		Map<String, List<GenericRecord>> outRecordMap = new HashMap<String, List<GenericRecord>>();
-		String outSchemaName = null;
-		GenericRecord rootRecord;
-		List<GenericRecord> inChildRecordList = new ArrayList<GenericRecord>();
-		List<GenericRecord> arrayChildList;
-		
-		while (inputDataReader.hasChildRecords()) {
-			
-			childRecord = inputDataReader.getChildRecord();
-			arrayChildList = inputDataReader.getArrayChildList();
-			
-			if(childRecord != null){	
-				resultRecord = funcExecuter.execute(childRecord.getSchema().getName(), childRecord);	
-				
-				 if(resultRecord != null) {
-					arrayId = outputAvroArrayMap.get(resultRecord.getSchema().getName());
-
-					if(arrayId != null){		
-						if((outSchemaName != null) && (arrayId.equals(outSchemaName))){
-							outRecordList.add(resultRecord);
-							outRecordMap.put(resultRecord.getSchema().getName(), outRecordList);
-						}else{
-							outSchemaName = arrayId;
-							outRecordList = new ArrayList<GenericRecord>();
-							outRecordList.add(resultRecord);	
-						}
-					}else{
-						outRecordList = new ArrayList<GenericRecord>();
-						outRecordList.add(resultRecord);
-						outRecordMap.put(resultRecord.getSchema().getName(), outRecordList);
-					}
-				}else{
-					inChildRecordList.add(childRecord);
-				}
-				
-			}else if(arrayChildList != null){
-				
-				outRecordList = new ArrayList<GenericRecord>();	
-				String recordId = null;
-				for (GenericRecord arrayChild : arrayChildList) {
-					recordId = arrayChild.getSchema().getName();
-					if(inputAvroArrayMap.containsKey(recordId)){
-						resultRecord = funcExecuter.execute(recordId, arrayChild);
-					}else{
-						resultRecord = funcExecuter.execute(inputAvroArrayMap.get(recordId), arrayChild);
-					}	
-					outRecordList.add(resultRecord);
-				}
-				String resultrecordId = resultRecord.getSchema().getName();
-				if(recordId != null){
-					outRecordMap.put(resultrecordId, outRecordList);
-				}
-			}
+		childRecord = inputDataReader.getChildRecord(inputSchema);
+		if(childRecord != null){	
+			outputRecord = funcExecuter.execute(childRecord.getSchema().getName(), childRecord);						
 		}
 		
-		rootRecord = inputDataReader.getRootRecord();
-		
-		for (GenericRecord genericRecord : inChildRecordList) {
-			rootRecord.put(genericRecord.getSchema().getName(), genericRecord);
-		}
-		
-		outputRecord = funcExecuter.execute(inputDataReader.getRootRecord().getSchema().getName(), rootRecord);
-		
-		if (outputRecord == null) {
-			outputRecord = new GenericData.Record(outputSchema);
-		}
-		
-		Iterator<String> outRecordKeySet = outRecordMap.keySet().iterator();
-		String key;
-		List<GenericRecord> recList;
-		
-		while (outRecordKeySet.hasNext()) {
-			key = outRecordKeySet.next();
-			Schema tempsc = null;
-			
-			if(outputAvroArrayMap.containsKey(key)){
-				tempsc = outputSchemaMap.get(outputAvroArrayMap.get(key));
-			}else{
-				tempsc = outputSchemaMap.get(key);
-			}
-			recList = outRecordMap.get(key);
-			
-			if (tempsc.getType() == Schema.Type.RECORD) {
-				for (GenericRecord genericRecord : recList) {
-					outputRecord.put(key, genericRecord);
-				}	
-			}else if (tempsc.getType() == Schema.Type.ARRAY) {
-				recArray = new GenericData.Array<GenericRecord>(recList.size(), tempsc);
-				
-				for (GenericRecord genericRecord : recList) {
-					recArray.add(genericRecord);
-				}	
-				outputRecord.put(outputAvroArrayMap.get(key), recArray);
-			}
-		}	
-
 		return outputRecord;
 	}
 	
-	public void endmapping() throws IOException{
+/*	public void endmapping1() throws IOException{
 				
 		BufferedWriter outputWriter = new BufferedWriter(new FileWriter(new File("./resources/output.json")));
 		outputWriter.write(outputJson.toString());
 		outputWriter.flush();
 		outputWriter.close();
-		
-		System.out.println("end writing");
-	}
+	}*/
 
 }

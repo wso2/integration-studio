@@ -20,6 +20,7 @@ public class MappingConfigModel {
 
 	private String outputDataType;
 	private String mappingFunctionType;
+	private String functionSignature;
 
 	public String getOutputDataType() {
 		return outputDataType;
@@ -35,6 +36,14 @@ public class MappingConfigModel {
 
 	public void setMappingFunctionType(String mappingFunctionType) {
 		this.mappingFunctionType = mappingFunctionType;
+	}
+
+	public String getFunctionSignature() {
+		return functionSignature;
+	}
+
+	public void setFunctionSignature(String functionSignature) {
+		this.functionSignature = functionSignature;
 	}
 
 }

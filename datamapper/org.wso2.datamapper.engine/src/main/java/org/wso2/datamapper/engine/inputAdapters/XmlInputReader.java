@@ -15,9 +15,6 @@
  */
 package org.wso2.datamapper.engine.inputAdapters;
 
-import org.apache.avro.Schema.Field;
-import org.apache.avro.Schema.Type;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
@@ -25,6 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.avro.Schema;
+import org.apache.avro.Schema.Field;
+import org.apache.avro.Schema.Type;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericData.Array;
 import org.apache.avro.generic.GenericRecord;
@@ -66,6 +65,7 @@ public class XmlInputReader implements InputDataReaderAdapter{
 		this.rootRecord = rootRecord;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setInptStream(InputStream inputStream) throws IOException {
 		
 		InputStream in = inputStream;
@@ -77,9 +77,11 @@ public class XmlInputReader implements InputDataReaderAdapter{
 
 	}
 	
-	public GenericRecord getChildRecord() {
-		
-		OMElement childElement = null;
+public GenericRecord getChildRecord(Schema input) {
+	  GenericRecord childRecord = null;
+	  childRecord =  getChild(input, this.documentElement.getChildElements());
+	
+	/*	OMElement childElement = null;
 		String childName;	
 			
 		childElement = childElementIter.next();
@@ -89,26 +91,28 @@ public class XmlInputReader implements InputDataReaderAdapter{
 			childIter = childElement.getChildElements();
 		}
 		
-		GenericRecord childRecord = null;
+		 
 		Schema schema = inputSchemaMap.get(childElement.getLocalName());
 		if(schema instanceof Schema){
-			childRecord =  getChild(schema, childIter);
+			childRecord =  getChild(input, this.documentElement.getChildElements());
 		}
 		
 			
 		if ((childRecord == null) && (arrayChildList == null)) {	
 			rootRecord.put(childName, childElement.getText());
-		}
+		}*/
 		return childRecord;
 	}
 
 	private GenericRecord getChild(Schema schema, Iterator<OMElement> iter) {
 		GenericRecord record = new GenericData.Record(schema);
-
+        
 		while (iter.hasNext()) {
 			OMElement element = iter.next();
 			String localName = element.getLocalName();
 			Field field = schema.getField(localName);
+			 
+			//schema.g
 			if(field!=null){
 				if(field.schema().getType().equals(Type.ARRAY)){
 					Iterator childElements = element.getChildElements();
@@ -137,71 +141,4 @@ public class XmlInputReader implements InputDataReaderAdapter{
 		}
 		return record;
 	}
-
-	public GenericRecord getFinalRecord(Schema schema) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*private GenericRecord getChild(OMElement element, Iterator<OMElement> childIter) {
-		
- 		GenericRecord childRec = null;
-		OMElement parentElement = element;	
-		String parentId = parentElement.getLocalName();
-		Schema sc = inputSchemaMap.get(parentId + "Array");	
-		if(!(sc instanceof Schema)){
-			sc = inputSchemaMap.get(parentId);
-		}
-		boolean isArray = false;
-				
-		if(sc != null) {
-			OMElement childElement = null;
-			
-			if( sc.getType() == Schema.Type.RECORD){
-				childRec = new GenericData.Record(sc);							
-			}else if(sc.getType() == Schema.Type.ARRAY){
-				if(this.arrayChildList == null){
-					this.arrayChildList = new ArrayList<GenericRecord>();	
-				}
-				childRec = new GenericData.Record(sc.getElementType());
-				isArray = true;
-			}	
-			
-			while (childIter.hasNext()) {
-				childElement = childIter.next();
-				GenericRecord tempRec = getChild(childElement, childElement.getChildElements());
-				
-				String localName = childElement.getLocalName();
-				if(tempRec != null){
-				//	childRec.getSchema()
-					if(childRec.getSchema().getField(localName).schema().getType().equals(Type.ARRAY)){
-						arrayChildList.add(tempRec);
-					} else{
-						childRec.put(localName, tempRec);
-					}
-					if(!isArray){
-						childRec.put(localName, tempRec);
-					}else{
-						arrayChildList.add(tempRec);
-					}
-				}else{
-					if(isArray){
-						childRec.put(localName, childElement.getText());
-					} else {
-						
-					}
-					
-				}
-			}
-			if(isArray){
-				return null;
-			}
-		}
-		
-		return childRec;
-	}*/
-	
-	
-	
-	
 }

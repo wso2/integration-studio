@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,11 +37,13 @@ import org.wso2.datamapper.engine.models.MappingConfigModel;
 
 public class DataMapper {
 	
-	public String doMap(File configFile, InputStream inStream, File inputSchema,File outputSchema) throws IOException, IllegalAccessException, InstantiationException, JSONException {
+	public String doMap(InputStream configFile, InputStream inStream, InputStream inputSchema,InputStream outputSchema) throws IOException, IllegalAccessException, InstantiationException, JSONException {
+		
 		
 		InputStream inputStream = inStream;
 		
 		Schema inputAvroSchema = new Parser().parse(inputSchema);
+		
 		Schema outputAvroSchema = new Parser().parse(outputSchema);
 		
 		XmlInputReader inputReader = new XmlInputReader();
@@ -50,7 +53,7 @@ public class DataMapper {
 		context.setOptimizationLevel(-1);
 		Scriptable scope = context.initStandardObjects();
 		
-		BufferedReader configReader = new BufferedReader(new FileReader(configFile));
+		BufferedReader configReader = new BufferedReader(new InputStreamReader(configFile));
 		MappingHandler mappingHandler = new MappingHandler(inputAvroSchema,outputAvroSchema,scope,inputReader,context);	
 		
 		String configLine = "";

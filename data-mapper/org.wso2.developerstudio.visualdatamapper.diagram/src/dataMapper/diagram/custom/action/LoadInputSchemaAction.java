@@ -23,7 +23,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
@@ -33,15 +32,19 @@ import org.eclipse.ui.PlatformUI;
 import dataMapper.impl.InputImpl;
 import dataMapper.diagram.custom.util.SchemaKeyEditorDialog;
 
+/**
+ * This class handles context menu action 'load input schema'
+ */
 public class LoadInputSchemaAction extends AbstractActionHandler {
 
+	private static final int DIALOG_HEIGHT = 250;
+	private static final int DIALOG_WIDTH = 520;
 	private static final String CONFIGURE_INPUT_SCHEMA_ACTION_ID = "configure-input-schema-action-id"; //$NON-NLS-1$
 	private static final String INVALID_SELECTION = "Invalid selection."; //$NON-NLS-1$
 
 	private static final String INPUT_SCHEMA_DIALOG = Messages.LoadInputSchemaAction_InputSchemaDialog;
 	private static final String SCHEMA_TYPE_INPUT = Messages.LoadInputSchemaAction_SchemaTypeInput;
 	private static final String LOAD_INPUT_SCHEMA_FROM_FILE = Messages.LoadInputSchemaAction_LoadFromFile;
-	private static final String EMPTY_SELECTION = Messages.LoadInputSchemaAction_EmptySelection;
 
 	public LoadInputSchemaAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -53,32 +56,22 @@ public class LoadInputSchemaAction extends AbstractActionHandler {
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
 
-	@Override
-	public void refresh() {
-		// TODO refresh action. Does not do anything
-	}
-
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, EMPTY_SELECTION);
 
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof InputImpl, INVALID_SELECTION);
-
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
-
-		// Schema key editor dialog : create/import schema
-		SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(shell, selectedEP,
-				getWorkbenchPart(), SCHEMA_TYPE_INPUT);
-
-		dialog.create();
-		dialog.getShell().setSize(520, 250);
-		dialog.getShell().setText(INPUT_SCHEMA_DIALOG);
-		dialog.open();
-
-		if (dialog.getReturnCode() == Window.OK) {
-			// This function is currently overridden by the second dialog
+		if (selectedEP != null) {
+			if (selectedEP.getModel() instanceof View) {
+				EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+				Assert.isTrue(selectedObj instanceof InputImpl, INVALID_SELECTION);
+			}
+			Shell shell = new Shell(Display.getDefault());
+			// Schema key editor dialog : create/import schema
+			SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(shell, selectedEP,
+					getWorkbenchPart(), SCHEMA_TYPE_INPUT);
+			dialog.create();
+			dialog.getShell().setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
+			dialog.getShell().setText(INPUT_SCHEMA_DIALOG);
+			dialog.open(); // This handles loading of input schema
 		}
 	}
 
@@ -90,7 +83,13 @@ public class LoadInputSchemaAction extends AbstractActionHandler {
 				return (EditPart) selectedEP;
 			}
 		}
-		return null;
+
+		return null; /* In case of selecting the wrong editpart */
+	}
+
+	@Override
+	public void refresh() {
+		/* refresh action. Does not do anything */
 	}
 
 }

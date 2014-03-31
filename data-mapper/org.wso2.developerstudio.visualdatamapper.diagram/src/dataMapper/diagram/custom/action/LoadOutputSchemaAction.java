@@ -23,7 +23,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
@@ -41,7 +40,6 @@ public class LoadOutputSchemaAction extends AbstractActionHandler {
 	private static final String OUTPUT_SCHEMA_DIALOG = Messages.LoadOutputSchemaAction_OutputSchemaDialog;
 	private static final String SCHEMA_TYPE_OUTPUT = Messages.LoadOutputSchemaAction_SchemaTypeOutput;
 	private static final String LOAD_OUTPUT_SCHEMA_FROM_FILE = Messages.LoadOutputSchemaAction_LoadOutputSchemaFromFile;
-	private static final String EMPTY_SELECTION = Messages.LoadOutputSchemaAction_EmptySelection;
 
 	public LoadOutputSchemaAction(IWorkbenchPart workbenchPart) {
 		super(workbenchPart);
@@ -53,32 +51,24 @@ public class LoadOutputSchemaAction extends AbstractActionHandler {
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
 
-	@Override
-	public void refresh() {
-		// TODO refresh action. Does not do anything
-	}
-
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, EMPTY_SELECTION);
 
-		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof Output, INVALID_SELECTION);
+		if (selectedEP != null) {
+			EObject selectedObj = ((View) selectedEP.getModel()).getElement();
+			Assert.isTrue(selectedObj instanceof Output, INVALID_SELECTION);
 
-		Display display = Display.getDefault();
-		Shell shell = new Shell(display);
+			Display display = Display.getDefault();
+			Shell shell = new Shell(display);
 
-		// Schema key editor dialog : create/import schema
-		SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(shell, selectedEP,
-				getWorkbenchPart(), SCHEMA_TYPE_OUTPUT);
+			// Schema key editor dialog : create/import schema
+			SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(shell, selectedEP,
+					getWorkbenchPart(), SCHEMA_TYPE_OUTPUT);
 
-		dialog.create();
-		dialog.getShell().setSize(520, 250);
-		dialog.getShell().setText(OUTPUT_SCHEMA_DIALOG);
-		dialog.open();
-
-		if (dialog.getReturnCode() == Window.OK) {
-			// This function is currently overridden by the second dialog
+			dialog.create();
+			dialog.getShell().setSize(520, 250);
+			dialog.getShell().setText(OUTPUT_SCHEMA_DIALOG);
+			dialog.open();
 		}
 	}
 
@@ -90,7 +80,13 @@ public class LoadOutputSchemaAction extends AbstractActionHandler {
 				return (EditPart) selectedEP;
 			}
 		}
-		return null;
+
+		return null; /* In case of selecting the wrong editpart */
+	}
+
+	@Override
+	public void refresh() {
+		/* refresh action. Does not do anything */
 	}
 
 }

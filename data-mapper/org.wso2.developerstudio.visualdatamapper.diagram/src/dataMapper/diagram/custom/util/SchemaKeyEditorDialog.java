@@ -105,8 +105,11 @@ public class SchemaKeyEditorDialog extends Dialog {
 	// + "</a>, <a>" + WORKSPACE + "</a> or <a>" + LOCAL_ENTRIES + "</a>";
 
 	private static final String ERROR_OPENING_FILE = Messages.SchemaKeyEditorDialog_ErrorOpeningFile;
+	private static final String REASON_OPENING_FILE = Messages.SchemaKeyEditorDialog_ReasonOpeningFile;
 	private static final String ERROR_REGISTRY_BROWSER = Messages.SchemaKeyEditorDialog_ErrorRegistryBrowser;
+	private static final String REASON_REGISTRY_BROWSER = Messages.SchemaKeyEditorDialog_ReasonRegistryBrowser;
 	private static final String ERROR_REGISTRY_URL = Messages.SchemaKeyEditorDialog_ErrorRegistryURL;
+	private static final String REASON_REGISTRY_URL = Messages.SchemaKeyEditorDialog_ReasonRegistryURL;
 	private static final String ERROR_DIALOG_VISIBILITY = "Error occured while changing dialog visibility"; //$NON-NLS-1$
 
 	public SchemaKeyEditorDialog(Shell parent, EditPart selectedEP, IWorkbenchPart workbenchPart,
@@ -282,7 +285,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 				} catch (MalformedURLException e) {
 					log.error(ERROR_REGISTRY_URL, e);
 
-					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, ""); //$NON-NLS-1$
+					IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_REGISTRY_URL);
 					ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
 							ERROR_REGISTRY_URL, editorStatus);
 				}
@@ -312,7 +315,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		} catch (Exception e) {
 			log.error(ERROR_REGISTRY_BROWSER, e);
 
-			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, ""); //$NON-NLS-1$
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_REGISTRY_BROWSER);
 			ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
 					ERROR_REGISTRY_BROWSER, editorStatus);
 		} finally {
@@ -389,7 +392,7 @@ public class SchemaKeyEditorDialog extends Dialog {
 		} catch (Exception e) {
 			log.error(ERROR_OPENING_FILE, e);
 
-			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, ""); //$NON-NLS-1$
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, REASON_OPENING_FILE);
 			ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_MSG_HEADER,
 					ERROR_OPENING_FILE, editorStatus);
 		} finally {

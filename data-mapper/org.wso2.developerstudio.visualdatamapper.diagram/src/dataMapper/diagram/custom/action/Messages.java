@@ -19,6 +19,9 @@ public class Messages extends NLS {
 	public static String SchemaKeyEditorDialog_ErrorRegistryURL;
 	public static String SchemaKeyEditorDialog_InputSchemaFile;
 	public static String SchemaKeyEditorDialog_NewResource;
+	public static String SchemaKeyEditorDialog_ReasonOpeningFile;
+	public static String SchemaKeyEditorDialog_ReasonRegistryBrowser;
+	public static String SchemaKeyEditorDialog_ReasonRegistryURL;
 	public static String SchemaKeyEditorDialog_RegistryBrowser;
 	public static String SchemaKeyEditorDialog_ResourceKey;
 	public static String SchemaKeyEditorDialog_SchemaKeyEditorDialogMessage;

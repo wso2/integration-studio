@@ -61,6 +61,7 @@ public class ConfigurationExportWizardPage extends WizardPage {
 		Label fileName = new Label(container, SWT.NONE);
 		fileName.setText("Configuration file name:");
 
+		containerText = new Text(container, SWT.BORDER);
 		txtConfigurationFileName = new Text(container, SWT.BORDER);
 		
 		GridData gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);

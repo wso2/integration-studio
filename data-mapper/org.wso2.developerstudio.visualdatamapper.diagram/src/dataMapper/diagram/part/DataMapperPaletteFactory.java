@@ -3,23 +3,17 @@ package dataMapper.diagram.part;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.gef.Request;
 import org.eclipse.gef.Tool;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.palette.PaletteContainer;
-import org.eclipse.gef.palette.PaletteGroup;
+import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
-import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 
-import dataMapper.Element;
 import dataMapper.diagram.edit.parts.AttributeEditPart;
 import dataMapper.diagram.edit.parts.DataMapperRootEditPart;
 import dataMapper.diagram.edit.parts.ElementEditPart;
@@ -30,16 +24,14 @@ import dataMapper.diagram.edit.parts.OutNode2EditPart;
 import dataMapper.diagram.edit.parts.OutNodeEditPart;
 import dataMapper.diagram.edit.parts.OutputEditPart;
 
-import org.eclipse.gef.tools.AbstractTool;
-import org.eclipse.gef.tools.SelectEditPartTracker;
-import org.eclipse.ui.part.IShowInSource;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.ConnectionRefreshMgr;
-
 /**
  * @generated
  */
 public class DataMapperPaletteFactory {
 
+	public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1,
+			INITIAL_STATE_PINNED_OPEN = 2;
+	
 	/**
 	 * @generated
 	 */
@@ -50,14 +42,18 @@ public class DataMapperPaletteFactory {
 	/**
 	 * Creates "dataMapper" palette tool group
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	private PaletteContainer createDataMapper1Group() {
-		PaletteGroup paletteContainer = new PaletteGroup(
-				dataMapper.diagram.part.Messages.DataMapper1Group_title);
+		
+		PaletteDrawer paletteContainer = new PaletteDrawer("Operators");
+		
+/*		PaletteGroup paletteContainer = new PaletteGroup(
+				dataMapper.diagram.part.Messages.DataMapper1Group_title);*/
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
 		paletteContainer.add(createEqual2CreationTool());
+		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
 

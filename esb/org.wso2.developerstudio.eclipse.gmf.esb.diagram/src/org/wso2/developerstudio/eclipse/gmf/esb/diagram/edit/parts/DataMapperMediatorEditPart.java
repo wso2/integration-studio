@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import java.util.ArrayList;
@@ -13,7 +29,6 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
@@ -23,8 +38,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
@@ -33,20 +46,14 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
-import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
-import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
-import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
-import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -55,13 +62,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLo
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.DeveloperStudioElementProviderDialog;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.NamedEntityDescriptor;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.RegistryKeyPropertyEditorDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
@@ -357,8 +361,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		NodeImpl eobject = ((NodeImpl)this.getModel());
 		final DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl)eobject.getElement();
 
-		
-		
+
 		if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
 			
 			Shell shell = new Shell(Display.getDefault());
@@ -368,22 +371,26 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			
 			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
 			List<String> types = new ArrayList<String>();
-			//types.add("application/vnd+wso2.datamapper");
-			//types.add("application/vnd.wso2.esb.endpoint");
 			types.add("application/javascript"); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
 			filters.put(mediaTypeKey, types);
+
+			//final DeveloperStudioElementProviderDialog dialog = null;
+			//boolean noExistingResources = true;
+			//dialog = new CreateNewConfigurationDialog(shell,filters);
+			//dialog.create();
+			//dialog.getShell().setText("New Datamapper Configuration");
 			
 			final DeveloperStudioElementProviderDialog dialog = new DeveloperStudioElementProviderDialog(shell, new Class[]{IRegistryFile.class}, filters);
 			dialog.configureDialog("Specify DataMapper Configuration.", false, true);
 			
+
 			if (dialog.open() == Dialog.OK) {
-				
 				String selectedPath = formatRegistryPath(dialog.getSelectedPath());
 				registryKeyProperty.setKeyValue(selectedPath);
 				
 				Display.getDefault().asyncExec(new Runnable() {
 
-					public void run() {
+				public void run() {
 						
 						TransactionalEditingDomain editingDomain = getEditingDomain();
 					
@@ -394,6 +401,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 						}
 						
 						String localPath = dialog.getIPathOfSelection();
+						
 						SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
 						if (setCmd2.canExecute()) {
 							editingDomain.getCommandStack().execute(setCmd2);

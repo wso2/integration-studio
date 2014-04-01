@@ -54,6 +54,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-LazyStart: true
 Import-Package: com.damnhandy.uri.template,
  dataMapper,
+ dataMapper.diagram.custom.util,
  dataMapper.diagram.edit.parts,
  dataMapper.diagram.part,
  dataMapper.diagram.providers,

@@ -97,11 +97,10 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		primaryShape = new OperatorBasicFigure();
-			return primaryShape;
+		return primaryShape = new OperatorBasicFigure();
 	}
 
 	/**
@@ -196,10 +195,9 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
-	
+
 	public class OperatorBasicFigure extends RoundedRectangle {
-		
+
 		public OperatorBasicFigure() {
 
 			ToolbarLayout layoutThis = new ToolbarLayout();
@@ -210,7 +208,6 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 			this.setLayoutManager(layoutThis);
 
 		}
-		
 
 		public String getIconPath() {
 			return "icons/ico20/log-mediator.gif";

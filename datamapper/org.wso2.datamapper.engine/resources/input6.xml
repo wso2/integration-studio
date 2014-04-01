@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<employees>
+<employees xmlns:e="http://www.w3schools.com/furniture">
+ <types>Account</types>
 	<employee>
 		<firstname>Asanka</firstname>
 		<lastname>Sanjeewa</lastname>
@@ -7,11 +8,27 @@
 		    <no>No.123</no>
 		    <road>Main Street</road>
 		    <city>Negombo</city>
+		    <foo>
+		    <bar1>bar : aaaaaaa</bar1>
+		    <bar2>bar : bbbbbbb</bar2>
+		    </foo>
+		    <foo>
+		    <bar1>bar : ccccccc</bar1>
+		    <bar2>bar : ddddddd</bar2>
+		    </foo>
 		</address>
-				<address>
+		<address>
 		    <no>No.22323</no>
 		    <road>Main Street</road>
 		    <city>Negombo</city>
+		    		    <foo>
+		    <bar1>bar : eeeeeee</bar1>
+		    <bar2>bar : fffffff</bar2>
+		    </foo>
+		    <foo>
+		    <bar1>bar : ggggggg</bar1>
+		    <bar2>bar : hhhhhhh</bar2>
+		    </foo>
 		</address>
 	</employee>
 	<employee>
@@ -21,11 +38,27 @@
 		    <no>No. 622</no>
 		    <road>Main Street</road>
 		    <city>Negombo</city>
+		      <foo>
+		    <bar1>bar : aaaaaaa</bar1>
+		    <bar2>bar : bbbbbbb</bar2>
+		    </foo>
+		    <foo>
+		    <bar1>bar : ccccccc</bar1>
+		    <bar2>bar : ddddddd</bar2>
+		    </foo>
 		</address>
 				<address>
 		    <no>No.2434</no>
 		    <road>Main Street</road>
 		    <city>Negombo</city>
+		      <foo>
+		    <bar1>bar : aaaaaaa</bar1>
+		    <bar2>bar : bbbbbbb</bar2>
+		    </foo>
+		    <foo>
+		    <bar1>bar : ccccccc</bar1>
+		    <bar2>bar : ddddddd</bar2>
+		    </foo>
 		</address>
 	</employee>
 	<employee>
@@ -35,11 +68,27 @@
 		    <no>No.5624</no>
 		    <road>Main Street</road>
 		    <city>Negombo</city>
+		      <foo>
+		    <bar1>bar : aaaaaaa</bar1>
+		    <bar2>bar : bbbbbbb</bar2>
+		    </foo>
+		    <foo>
+		    <bar1>bar : ccccccc</bar1>
+		    <bar2>bar : ddddddd</bar2>
+		    </foo>
 		</address>
 		<address>
 		    <no>No.4677</no>
 		    <road>Main Street</road>
 		    <city>Negombo</city>
+		      <foo>
+		    <bar1>bar : aaaaaaa</bar1>
+		    <bar2>bar : bbbbbbb</bar2>
+		    </foo>
+		    <foo>
+		    <bar1>bar : ccccccc</bar1>
+		    <bar2>bar : ddddddd</bar2>
+		    </foo>
 		</address>
 	</employee>
 </employees>

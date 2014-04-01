@@ -32,26 +32,34 @@ public class ArtifactPriorityMapping {
 		// Local entries get second priority.
 		priority.put("synapse/local-entry", 2);
 
-		// Custom mediators get third priority.
+		// lib type artifacts get third priority.
 		priority.put("lib/synapse/mediator", 3);
+		priority.put("lib/registry/filter", 3);
+		priority.put("lib/library/bundle", 3);
+		priority.put("lib/dataservice/validator", 3);
+		priority.put("lib/registry/handlers", 3);
+		priority.put("lib/carbon/ui", 3);
 
 		// Message stores get fourth priority.
 		priority.put("synapse/message-store", 4);
+		
+		/*
+		 * Service meta should deploy prior to the services. Service meta
+		 * artifacts gets high priority over services (proxy-service,
+		 * dataservice, axis2)
+		 */
+		priority.put("service/meta", 4);
 
 		// Equal priority.
 		priority.put("jaggery/app", 5);
-		priority.put("bpel/workflow", 5);
-		priority.put("lib/registry/filter", 5);
-		priority.put("webapp/jaxws", 5);
-		priority.put("lib/library/bundle", 5);
+		priority.put("bpel/workflow", 5);		
+		priority.put("webapp/jaxws", 5);		
 		priority.put("service/dataservice", 5);
 		priority.put("cep/bucket", 5);
 		priority.put("synapse/proxy-service", 5);
-		priority.put("carbon/application", 5);
-		priority.put("lib/dataservice/validator", 5);
+		priority.put("carbon/application", 5);	
 		priority.put("synapse/endpoint", 5);
-		priority.put("web/application", 5);
-		priority.put("lib/carbon/ui", 5);
+		priority.put("web/application", 5);		
 		priority.put("service/axis2", 5);
 		priority.put("synapse/sequence", 5);
 		priority.put("synapse/configuration", 5);
@@ -62,11 +70,8 @@ public class ArtifactPriorityMapping {
 		priority.put("synapse/event-source", 5);
 		priority.put("synapse/message-processors", 5);
 		priority.put("synapse/priority-executor", 5);
-		priority.put("wso2/gadget", 5);
-		priority.put("lib/registry/handlers", 5);
+		priority.put("wso2/gadget", 5);	
 		priority.put("service/rule", 5);
-		priority.put("service/meta", 5);
-		priority.put("jaggery/app", 5);
 
 		// Tasks get least priority.
 		priority.put("synapse/task", 6);

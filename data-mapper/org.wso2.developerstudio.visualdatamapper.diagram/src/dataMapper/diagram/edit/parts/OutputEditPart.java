@@ -1,6 +1,9 @@
 package dataMapper.diagram.edit.parts;
 
+import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.FlowLayout;
+import org.eclipse.draw2d.FrameBorder;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
@@ -27,6 +30,7 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -38,23 +42,18 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 
-import dataMapper.Attribute;
-import dataMapper.DataMapperFactory;
-import dataMapper.DataMapperPackage;
-import dataMapper.Element;
-import dataMapper.Output;
-import dataMapper.TreeNode;
+import dataMapper.*;
+import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
+import dataMapper.diagram.tree.generator.TestTreeModel;
 import dataMapper.diagram.tree.generator.TreeFromAVSC;
+import dataMapper.diagram.tree.generator.TreeFromAvro;
 import dataMapper.diagram.tree.model.Tree;
+import dataMapper.impl.InputImpl;
 
 /**
  * @generated
  */
 public class OutputEditPart extends ShapeNodeEditPart {
-
-	private static final int Y = 800;
-
-	private static final int X = 200;
 
 	/**
 	 * @generated
@@ -78,8 +77,33 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		super(view);
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	private boolean notActivated = true;
+
 	public void activate() {
+
 		super.activate();
+		/*		if (notActivated) {
+		 EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
+		 .getModel()).getElement();
+		 TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+
+		 Tree tree = new Tree();
+		 tree = (new TreeFromAVSC()).generateOutputTree();
+		 convertTree(tree, treeNode);
+
+		 AddCommand addTreeNodeCmd = new AddCommand(getEditingDomain(), parentContainer,
+		 DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+		 if (addTreeNodeCmd.canExecute()) {
+		 getEditingDomain().getCommandStack().execute(addTreeNodeCmd);
+
+		 }
+		 getPrimaryShape().setPreferredSize(250, 15);
+		 notActivated = false;
+		 }*/
+
 	}
 
 	public void resetOutputTreeFromFile(String filePath) {
@@ -94,6 +118,7 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 		Tree tree = TreeFromAVSC.generateInputTreeFromFile(filePath);
+		//funcFillTree(tree, element);
 		convertTree(tree, treeNode);
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
@@ -180,6 +205,10 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.OutputCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
+		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		//removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+
+		//installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
@@ -208,24 +237,23 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		return lep;
 	}
 
-	public void notifyChanged(Notification notification) {
-		super.notifyChanged(notification);
-		if (notification.getFeature() instanceof EAttributeImpl) {
-			if (notification.getNotifier() instanceof BoundsImpl) {
-				reposition(((BoundsImpl) notification.getNotifier()).getX(),
-						((BoundsImpl) notification.getNotifier()).getY(),
-						((BoundsImpl) notification.getNotifier()).getWidth(),
-						((BoundsImpl) notification.getNotifier()).getHeight());
-				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
-				canvas.getViewport().repaint();
-			}
-		}
-	}
+	/*	public void notifyChanged(Notification notification) {
+	 super.notifyChanged(notification);
+	 if (notification.getFeature() instanceof EAttributeImpl) {
+	 if (notification.getNotifier() instanceof BoundsImpl) {
+	 alignLeft(((BoundsImpl) notification.getNotifier()).getX(),
+	 ((BoundsImpl) notification.getNotifier()).getY(),
+	 ((BoundsImpl) notification.getNotifier()).getWidth(),
+	 ((BoundsImpl) notification.getNotifier()).getHeight());
+	 FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+	 canvas.getViewport().repaint();
+	 }
+	 }
+	 }*/
 
-	private void reposition(int x, int y, int width, int height) {
+	private void alignLeft(int x, int y, int width, int height) {
 		if (y == 0) {
-			y = X;
-			x = Y;
+			y = 100;
 		}
 		Rectangle constraints = new Rectangle(x, y, width, height);
 		((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
@@ -233,8 +261,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		canvas.getViewport().repaint();
 	}
 
-	private void reposition() {
-		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
+	private void alignLeft() {
+		alignLeft(getFigure().getBounds().x, getFigure().getBounds().y,
 				getFigure().getBounds().width, getFigure().getBounds().height);
 	}
 
@@ -245,7 +273,9 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		return primaryShape = new OutputFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				reposition();
+				//if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+				alignLeft();
+				//}
 			};
 		};
 	}
@@ -280,8 +310,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	/**
 	 * Creates figure for this edit part.
 	 * 
-	 * Body of this method does not depend on settings in generation model so
-	 * you may safely remove <i>generated</i> tag and modify it.
+	 * Body of this method does not depend on settings in generation model
+	 * so you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -295,11 +325,9 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane. Respects
-	 * layout one may have set for generated figure.
-	 * 
-	 * @param nodeShape
-	 *            instance of generated figure class
+	 * Default implementation treats passed figure as content pane.
+	 * Respects layout one may have set for generated figure.
+	 * @param nodeShape instance of generated figure class
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
@@ -367,7 +395,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated NOT
 		 */
-		@SuppressWarnings("deprecation")
 		public OutputFigure() {
 
 			ToolbarLayout layoutThis = new ToolbarLayout();
@@ -378,6 +405,17 @@ public class OutputEditPart extends ShapeNodeEditPart {
 			this.setLayoutManager(layoutThis);
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(100)));
 			this.setOutline(true);
+
+			/*			
+			 RectangleFigure figure= new RectangleFigure();
+			 figure.setBackgroundColor(new Color(null, 96, 148, 219));
+			 figure.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(25)));
+			 this.add(figure);
+			
+			 RectangleFigure figure2= new RectangleFigure();
+			 figure2.setBackgroundColor(new Color(null, 96, 148, 219));
+			 figure2.setPreferredSize(new Dimension(getMapMode().DPtoLP(250), getMapMode().DPtoLP(75)));
+			 this.add(figure2);*/
 
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Output");
 			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
@@ -390,7 +428,6 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		/**
 		 * @generated NOT
 		 */
-		@SuppressWarnings("unused")
 		private void createContents() {
 
 			fFigureTargetNameFigure = new WrappingLabel();

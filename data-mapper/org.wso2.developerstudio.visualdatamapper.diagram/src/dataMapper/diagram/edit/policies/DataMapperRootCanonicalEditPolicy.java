@@ -96,9 +96,14 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(view);
-		return visualID == dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID
-				|| visualID == dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID
-				|| visualID == dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID;
+		switch (visualID) {
+		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -271,6 +276,14 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
 						.getEqual_2005ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getConcat_2006ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

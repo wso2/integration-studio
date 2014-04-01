@@ -248,8 +248,11 @@ public class UserRolesDialog extends Dialog {
 
 			if (roles != null && roles.length > 0) {
 				for (String role : roles) {
-					TableItem item = new TableItem(userRolesTable, SWT.NONE);
-					item.setText(new String[] { "", role });
+					if(!role.equals("false")) {
+						TableItem item = new TableItem(userRolesTable, SWT.NONE);
+						item.setText(new String[] { "", role });
+					}
+					
 				}
 			}
 		}

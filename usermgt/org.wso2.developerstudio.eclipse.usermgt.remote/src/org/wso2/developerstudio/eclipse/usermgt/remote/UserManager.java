@@ -35,8 +35,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.wso2.carbon.core.services.authentication.AuthenticationAdminStub;
 import org.wso2.carbon.core.services.authentication.AuthenticationExceptionException;
-import org.wso2.carbon.user.mgt.stub.GetUsersOfRoleUserAdminExceptionException;
+//import org.wso2.carbon.user.mgt.stub.GetUsersOfRoleUserAdminExceptionException;
 import org.wso2.carbon.user.mgt.stub.UserAdminStub;
+import org.wso2.carbon.user.mgt.stub.UserAdminUserAdminException;
 import org.wso2.carbon.user.mgt.stub.types.carbon.FlaggedName;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -164,7 +165,7 @@ public class UserManager {
 
 	public String[] getUsers() {
 		try {
-			FlaggedName[] usersOfRole = getStub().getUsersOfRole("", "*");
+			FlaggedName[] usersOfRole = getStub().getUsersOfRole("", "*", -1);
 			List<String> list = new ArrayList<String>();
 			for (FlaggedName flaggedName : usersOfRole) {
 				list.add(flaggedName.getItemName());
@@ -174,7 +175,9 @@ public class UserManager {
 			log.error(e);
 		} catch (AuthenticationExceptionException e) {
 			log.error(e);
-		} catch (GetUsersOfRoleUserAdminExceptionException e) {
+		} /*catch (GetUsersOfRoleUserAdminExceptionException e) {
+			log.error(e);
+		}*/ catch (UserAdminUserAdminException e) {
 			log.error(e);
 		}
 		return new String[] {};
@@ -182,7 +185,7 @@ public class UserManager {
 
 	public String[] getRoles() {
 		try {
-			FlaggedName[] roles = getStub().getAllRolesNames();
+			FlaggedName[] roles = getStub().getAllRolesNames("*", -1);
 			List<String> list = new ArrayList<String>();
 			for (FlaggedName flaggedName : roles) {
 				list.add(flaggedName.getItemName());
@@ -197,11 +200,11 @@ public class UserManager {
 	public String[] getUsersForRoles(String role) {
 		List<String> list = new ArrayList<String>();
 		FlaggedName[] usersOfRole;
-		if("everyone".equals(role)){
+		if("Internal/everyone".equals(role)){
 			return list.toArray(new String[] {});
 		}
 		try {
-			usersOfRole = getStub().getUsersOfRole(role, "*");
+			usersOfRole = getStub().getUsersOfRole(role, "*", -1);
 			for (FlaggedName ur : usersOfRole) {
 				if (ur.getSelected())
 					list.add(ur.getItemName());
@@ -217,7 +220,7 @@ public class UserManager {
 			AuthenticationExceptionException {
 		if (stub != null) {
 			try {
-				stub.getAllRolesNames();
+				stub.getAllRolesNames("*", -1);
 			} catch (Exception e) {
 				stub = null;
 			}
@@ -279,7 +282,7 @@ public class UserManager {
 
 	public String[] getRolesPerUser(String username) throws Exception {
 
-		FlaggedName[] ur = getStub().getRolesOfUser(username);
+		FlaggedName[] ur = getStub().getRolesOfUser(username, "*", -1);
 		String[] roles = new String[ur.length];
 		int count = 0;
 		for (int i = 0; i < ur.length; i++) {
@@ -306,7 +309,7 @@ public class UserManager {
 	}
 	
 	public void addRole(String roleName, String[] userList,String[] permissions) throws RemoteException, Exception, AuthenticationExceptionException{
-		getStub().addRole(roleName, userList, permissions);
+		getStub().addRole(roleName, userList, permissions, false);
 	}
 	
 	public void deleteRole(String roleName) throws RemoteException, Exception, AuthenticationExceptionException{

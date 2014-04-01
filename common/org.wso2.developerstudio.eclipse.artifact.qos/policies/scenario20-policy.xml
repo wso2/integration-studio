@@ -14,15 +14,26 @@
   ~ limitations under the License.
   -->
 
-<wsp:Policy wsu:Id="SgnEncrAnonymous"
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
 	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
-	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
-	xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+	wsu:Id="SigEncrSAML11Supporting34">
 	<wsp:ExactlyOne>
 		<wsp:All>
-			<sp:SymmetricBinding>
+			<sp:AsymmetricBinding
+				xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
 				<wsp:Policy>
-					<sp:ProtectionToken>
+					<sp:InitiatorToken>
+						<wsp:Policy>
+							<sp:X509Token
+								sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+								<wsp:Policy>
+									<sp:RequireThumbprintReference />
+									<sp:WssX509V3Token10 />
+								</wsp:Policy>
+							</sp:X509Token>
+						</wsp:Policy>
+					</sp:InitiatorToken>
+					<sp:RecipientToken>
 						<wsp:Policy>
 							<sp:X509Token
 								sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
@@ -32,7 +43,7 @@
 								</wsp:Policy>
 							</sp:X509Token>
 						</wsp:Policy>
-					</sp:ProtectionToken>
+					</sp:RecipientToken>
 					<sp:AlgorithmSuite>
 						<wsp:Policy>
 							<sp:Basic256 />
@@ -40,35 +51,57 @@
 					</sp:AlgorithmSuite>
 					<sp:Layout>
 						<wsp:Policy>
-							<sp:Lax />
+							<sp:Strict />
 						</wsp:Policy>
 					</sp:Layout>
 					<sp:IncludeTimestamp />
 					<sp:OnlySignEntireHeadersAndBody />
 				</wsp:Policy>
-			</sp:SymmetricBinding>
-			<sp:SignedParts>
-				<sp:Body />
-			</sp:SignedParts>
-			<sp:EncryptedParts>
-				<sp:Body />
-			</sp:EncryptedParts>
-			<sp:Wss11>
+			</sp:AsymmetricBinding>
+			<sp:SupportingTokens
+				xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
 				<wsp:Policy>
+					<sp:IssuedToken
+						sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+						<sp:Issuer>
+							<Address xmlns="http://www.w3.org/2005/08/addressing">https://localhost:9443/services/wso2carbon-sts
+							</Address>
+						</sp:Issuer>
+						<sp:RequestSecurityTokenTemplate>
+							<t:TokenType xmlns:t="http://schemas.xmlsoap.org/ws/2005/02/trust">http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV1.1
+							</t:TokenType>
+							<t:KeyType xmlns:t="http://schemas.xmlsoap.org/ws/2005/02/trust">http://schemas.xmlsoap.org/ws/2005/02/trust/SymmetricKey
+							</t:KeyType>
+							<t:KeySize xmlns:t="http://schemas.xmlsoap.org/ws/2005/02/trust">256</t:KeySize>
+						</sp:RequestSecurityTokenTemplate>
+						<wsp:Policy>
+							<sp:RequireInternalReference />
+						</wsp:Policy>
+					</sp:IssuedToken>
+				</wsp:Policy>
+			</sp:SupportingTokens>
+			<sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+				<sp:Policy>
 					<sp:MustSupportRefKeyIdentifier />
 					<sp:MustSupportRefIssuerSerial />
 					<sp:MustSupportRefThumbprint />
-					<sp:MustSupportRefEncryptedKey />
 					<sp:RequireSignatureConfirmation />
-				</wsp:Policy>
+				</sp:Policy>
 			</sp:Wss11>
-			<sp:Trust10>
-				<wsp:Policy>
-					<sp:MustSupportIssuedTokens />
-					<sp:RequireClientEntropy />
-					<sp:RequireServerEntropy />
-				</wsp:Policy>
-			</sp:Trust10>
+			<sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+				<sp:Policy>
+					<sp:MustSupportRefKeyIdentifier />
+					<sp:MustSupportRefIssuerSerial />
+				</sp:Policy>
+			</sp:Wss10>
+			<sp:SignedParts
+				xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+				<sp:Body />
+			</sp:SignedParts>
+			<sp:EncryptedParts
+				xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+				<sp:Body />
+			</sp:EncryptedParts>
 		</wsp:All>
 	</wsp:ExactlyOne>
 	<rampart:RampartConfig xmlns:rampart="http://ws.apache.org/rampart/policy">

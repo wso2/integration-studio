@@ -1,28 +1,23 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
-
-import org.apache.synapse.Mediator;
 import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.ClassMediatorExt;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.DummyClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 
 public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer{
 
 	public void transform(TransformationInfo info, EsbNode subject) throws Exception {
 		 info.getParentSequence().addChild(createDataMapperMediator(subject));
-			
-		 // Transform the class mediator output data flow path.
 		 doTransform(info, ((DataMapperMediator)subject).getOutputConnector());
 		
 	}
-
+	
 	public void createSynapseObject(TransformationInfo info, EObject subject,
 			List<Endpoint> endPoints) throws Exception {
 		// TODO Auto-generated method stub
@@ -36,23 +31,60 @@ public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer{
 				
 	}
 	
-	private ClassMediatorExt createDataMapperMediator(EsbNode subject) throws Exception {
+
+	private org.wso2.carbon.mediator.datamapper.DataMapperMediator createDataMapperMediator(EsbNode subject) throws Exception{
 		Assert.isTrue(subject instanceof DataMapperMediator, "Invalid subject.");
-		DataMapperMediator visualDataMapper = (DataMapperMediator) subject;
+		DataMapperMediator visualDataMapperMediator = (DataMapperMediator)subject;
+		
+		org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator = new  org.wso2.carbon.mediator.datamapper.DataMapperMediator();
+		setCommonProperties(carbonDataMapperMediator, visualDataMapperMediator);
+		
+		setConfigKey(visualDataMapperMediator, carbonDataMapperMediator);
+		
+		setInputSchemaKey(visualDataMapperMediator, carbonDataMapperMediator);
+		
+		setOutputSchemaKey(visualDataMapperMediator, carbonDataMapperMediator);
 
-		ClassMediatorExt classMediator = new ClassMediatorExt("wso2.datamappermediator.DataMapperMediator");
-		setCommonProperties(classMediator, visualDataMapper);
-		Mediator m = new DummyClassMediator();
+		return carbonDataMapperMediator;
+	}
 
-		classMediator.setMediator((Mediator) m);
+	private void setOutputSchemaKey(
+			DataMapperMediator visualDataMapperMediator,
+			org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) {
+		Value outputSchemaKey = null;
+		String key = visualDataMapperMediator.getOutputSchema().getKeyValue();
+		if(key!=null && !key.equals("")){
+			outputSchemaKey = new Value(key);
+		}
+		if(outputSchemaKey!=null){
+			carbonDataMapperMediator.setOutputSchemaKey(outputSchemaKey);
+		}
+	}
+	
+	private void setInputSchemaKey(
+			DataMapperMediator visualDataMapperMediator,
+			org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) {
+		Value inputSchemaKey = null;
+		String key = visualDataMapperMediator.getInputSchema().getKeyValue();
+		if(key!=null && !key.equals("")){
+			inputSchemaKey = new Value(key);
+		}
+		if(inputSchemaKey!=null){
+			carbonDataMapperMediator.setInputSchemaKey(inputSchemaKey);
+		}
+	}
 
-		// Class properties.
-/*		for (ClassProperty visualProperty : visualClass.getProperties()) {
-			classMediator.addProperty(visualProperty.getPropertyName(),
-					visualProperty.getPropertyValue());
-		}*/
-		return classMediator;
-
+	private void setConfigKey(
+			DataMapperMediator visualDataMapperMediator,
+			org.wso2.carbon.mediator.datamapper.DataMapperMediator carbonDataMapperMediator) {
+		Value configKey = null;
+		String key = visualDataMapperMediator.getConfiguration().getKeyValue();
+		if(key!=null && !key.equals("")){
+			configKey = new Value(key);
+		}
+		if(configKey!=null){
+			carbonDataMapperMediator.setCongigurationKey(configKey);
+		}
 	}
 
 }

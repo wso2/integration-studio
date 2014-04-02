@@ -22,7 +22,6 @@ import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
@@ -35,7 +34,6 @@ public class MappingHandler {
 	private Scriptable scope;
 	private InputDataReaderAdapter inputDataReader;
 	private Context context;
-	private JSONObject outputJson;
 	private Map<String, Schema> inputSchemaMap;
 	private Map<String, Schema> outputSchemaMap;
 	private HashMap<String, MappingConfigModel> mappingModelMap;

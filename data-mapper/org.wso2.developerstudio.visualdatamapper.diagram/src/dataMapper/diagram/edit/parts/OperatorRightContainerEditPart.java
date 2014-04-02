@@ -8,6 +8,8 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -25,6 +27,14 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Display;
+
+import dataMapper.DataMapperFactory;
+import dataMapper.DataMapperPackage;
+import dataMapper.OperatorLeftConnector;
+import dataMapper.OperatorLeftContainer;
+import dataMapper.OperatorRightConnector;
+import dataMapper.OperatorRightContainer;
 
 /**
  * @generated
@@ -46,11 +56,72 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	 */
 	protected IFigure primaryShape;
 
+
 	/**
 	 * @generated
 	 */
 	public OperatorRightContainerEditPart(View view) {
 		super(view);
+	}
+	
+	@Override
+	public void activate() {
+
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+
+				if (getParent().getParent() instanceof SplitEditPart) {
+					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
+							.getElement();
+					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
+						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
+								.createOperatorRightConnector();
+						OperatorRightConnector rightConnector2 = DataMapperFactory.eINSTANCE
+								.createOperatorRightConnector();
+						AddCommand addCaseConnectorCmd = new AddCommand(
+								getEditingDomain(),
+								parentContainer,
+								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
+								rightConnector);
+						if (addCaseConnectorCmd.canExecute()) {
+							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
+						}
+
+						AddCommand addCaseConnectorCmd2 = new AddCommand(
+								getEditingDomain(),
+								parentContainer,
+								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
+								rightConnector2);
+						if (addCaseConnectorCmd2.canExecute()) {
+							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd2);
+						}
+
+					}
+				}
+
+				else if (getParent().getParent() instanceof EqualEditPart || getParent().getParent() instanceof ConcatEditPart) {
+					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
+							.getElement();
+					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
+						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
+								.createOperatorRightConnector();
+
+						AddCommand addCaseConnectorCmd = new AddCommand(
+								getEditingDomain(),
+								parentContainer,
+								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
+								rightConnector);
+						if (addCaseConnectorCmd.canExecute()) {
+							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
+						}
+
+					}
+				}
+			}// run end
+		});
+
+		super.activate();
 	}
 
 	/**
@@ -114,7 +185,7 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40,20);
 		return result;
 	}
 
@@ -209,7 +280,7 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
 			layoutThis.setSpacing(0);
-			layoutThis.setHorizontal(true);
+			layoutThis.setHorizontal(false);
 			layoutThis.setMatchWidth(true);
 
 			this.setLayoutManager(layoutThis);

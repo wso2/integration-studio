@@ -23,6 +23,8 @@ import dataMapper.TreeNode;
 import dataMapper.diagram.part.DataMapperMultiPageEditor;
 import dataMapper.diagram.tree.generator.TreeFromAVSC;
 import dataMapper.diagram.tree.generator.TreeFromAvro;
+import dataMapper.impl.ConcatImpl;
+import dataMapper.impl.EqualImpl;
 
 public class DataMapperConfigurationGenerator {
 	
@@ -49,6 +51,7 @@ public class DataMapperConfigurationGenerator {
 		actionList = findForAction(rootDiagram.getInput().getTreeNode());
 
 		String allActions = "";
+		String function = "";
 		
 		ListIterator<String> actionitarator = actionList.listIterator();
 		while(actionitarator.hasNext()){
@@ -59,7 +62,10 @@ public class DataMapperConfigurationGenerator {
 		if(TreeFromAvro.multipleData)
 			flagLSInput = "L";
 		
-		String function = "function map_"+flagLSInput+"_"+input.toLowerCase()+"_"+flagLSInput+"_"+output.toLowerCase()+"( "+"input" +" , "+"output"+" ){ \n \t"+ allActions.toLowerCase()+" \n \t return output;"+" \n}";
+		if(!allActions.equals("")){
+			function = "function map_"+flagLSInput+"_"+input.toLowerCase()+"_"+flagLSInput+"_"+output.toLowerCase()+"( "+"input" +" , "+"output"+" ){ \n \t"+ allActions.toLowerCase()+" \n \t return output;"+" \n}";
+		}
+		
 		return function;
     }
     
@@ -158,7 +164,7 @@ public class DataMapperConfigurationGenerator {
     					//FIXME Need to Change this logic ASAP.
     					
     					//if there is a equal operator
-    					else if ((mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer().getClass().getName()).equalsIgnoreCase("dataMapper.impl.EqualImpl")) {
+    					else if ((mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer() instanceof EqualImpl)) {
     						Equal equal = (Equal) mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer();
     						if(!OPERATION_LIST.contains(System.identityHashCode(equal))){
     							OPERATION_LIST.add(System.identityHashCode(equal));
@@ -172,7 +178,7 @@ public class DataMapperConfigurationGenerator {
 
     					//to add more operators, add else-if and force to generate config
     						
-						} else if ((mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer().getClass().getName()).equalsIgnoreCase("dataMapper.impl.ConcatImpl")) {
+						} else if ((mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer() instanceof ConcatImpl)) {
     						Concat concat = (Concat) mapperLinkObject.getInNode().eContainer().eContainer().eContainer().eContainer();
     						if(!OPERATION_LIST.contains(System.identityHashCode(concat))){
     							OPERATION_LIST.add(System.identityHashCode(concat));

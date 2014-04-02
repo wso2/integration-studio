@@ -73,6 +73,11 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType Split_2007 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.Split_2007"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType TreeNode_3002 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"); //$NON-NLS-1$
 
 	/**
@@ -204,6 +209,8 @@ public class DataMapperElementTypes {
 
 			elements.put(Concat_2006, dataMapper.DataMapperPackage.eINSTANCE.getConcat());
 
+			elements.put(Split_2007, dataMapper.DataMapperPackage.eINSTANCE.getSplit());
+
 			elements.put(TreeNode_3002, dataMapper.DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(TreeNode_3003, dataMapper.DataMapperPackage.eINSTANCE.getTreeNode());
@@ -265,6 +272,7 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Output_2003);
 			KNOWN_ELEMENT_TYPES.add(Equal_2005);
 			KNOWN_ELEMENT_TYPES.add(Concat_2006);
+			KNOWN_ELEMENT_TYPES.add(Split_2007);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3003);
 			KNOWN_ELEMENT_TYPES.add(Attribute_3004);
@@ -301,6 +309,8 @@ public class DataMapperElementTypes {
 			return Equal_2005;
 		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
 			return Concat_2006;
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
+			return Split_2007;
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:

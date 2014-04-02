@@ -202,6 +202,15 @@ public interface DataMapperFactory extends EFactory {
 	Constant createConstant();
 
 	/**
+	 * Returns a new object of class '<em>Split</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Split</em>'.
+	 * @generated
+	 */
+	Split createSplit();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

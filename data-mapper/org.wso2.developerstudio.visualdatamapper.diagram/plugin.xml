@@ -227,7 +227,7 @@
       <viewProvider class="dataMapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2006,3002,3003,3004,3005,3006,3007,3008,3009,3011,3012,3013,3014,3015,3016,3017,3018"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2006,2007,3002,3003,3004,3005,3006,3007,3008,3009,3011,3012,3013,3014,3015,3016,3017,3018"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -240,7 +240,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2002,2003,2005,2006,3002,3003,3004,3005,3006,3007,3008,3009,3011,3012,3013,3014,3015,3016,3017,3018"/>
+            <method name="getType()" value="2002,2003,2005,2006,2007,3002,3003,3004,3005,3006,3007,3008,3009,3011,3012,3013,3014,3015,3016,3017,3018"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -281,6 +281,11 @@
          <Priority name="Lowest"/>
          <object class="dataMapper.diagram.edit.parts.ConcatEditPart" id="Concat_2006"/>
          <context elements="Concat_2006"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfSplitEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.SplitEditPart" id="Split_2007"/>
+         <context elements="Split_2007"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
          <Priority name="Lowest"/>
@@ -422,6 +427,16 @@
                eclass="Concat"
                edithelper="dataMapper.diagram.edit.helpers.ConcatEditHelper">
             <param name="semanticHint" value="2006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Split_2007"
+               name="%metatype.name.Split_2007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Split"
+               edithelper="dataMapper.diagram.edit.helpers.SplitEditHelper">
+            <param name="semanticHint" value="2007"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
@@ -605,6 +620,7 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Output_2003"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Equal_2005"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Concat_2006"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Split_2007"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3004"/>

@@ -63,6 +63,8 @@ public class TreeNodeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addSchemaDataTypePropertyDescriptor(object);
+			addLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -90,6 +92,50 @@ public class TreeNodeItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Schema Data Type feature.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected void addSchemaDataTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TreeNode_schemaDataType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TreeNode_schemaDataType_feature", "_UI_TreeNode_type"),
+				 DataMapperPackage.Literals.TREE_NODE__SCHEMA_DATA_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+    /**
+	 * This adds a property descriptor for the Level feature.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected void addLevelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TreeNode_level_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TreeNode_level_feature", "_UI_TreeNode_type"),
+				 DataMapperPackage.Literals.TREE_NODE__LEVEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+    /**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -159,6 +205,8 @@ public class TreeNodeItemProvider
 
 		switch (notification.getFeatureID(TreeNode.class)) {
 			case DataMapperPackage.TREE_NODE__NAME:
+			case DataMapperPackage.TREE_NODE__SCHEMA_DATA_TYPE:
+			case DataMapperPackage.TREE_NODE__LEVEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.TREE_NODE__NODE:

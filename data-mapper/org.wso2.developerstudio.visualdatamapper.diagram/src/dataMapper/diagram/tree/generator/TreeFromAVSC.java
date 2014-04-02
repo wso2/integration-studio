@@ -107,6 +107,7 @@ public class TreeFromAVSC{
 			
 			Tree child = new Tree(parent);
 			child.setName(field.name());
+			child.setSchemaType(fieldType);
 
 			List<Field> list = field.schema().getFields();
 			
@@ -125,6 +126,7 @@ public class TreeFromAVSC{
 					Tree childParent = new Tree(parent);
 					List<Field> fieldList = arraySchema.getFields();
 					childParent.setName(arraySchema.getName()); //employee
+					childParent.setSchemaType(fieldType);
 					multipleChunk.add(arraySchema.getName());
 //					parent.getTrees().add(childParent);
 //					Tree child = new Tree(childParent);
@@ -138,8 +140,9 @@ public class TreeFromAVSC{
 //				}
 		}
 		else{	
-				Element elementNew=new Element(parent);
+			Element elementNew=new Element(parent);
 			elementNew.setName(field.name());
+			elementNew.setSchemaType(fieldType);
 			parent.getElements().add(elementNew);
 		}
 //		return parent;

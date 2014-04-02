@@ -1,0 +1,45 @@
+{  
+  "name" : "queryResponse",
+  "type": "record", 
+  "fields" : [
+                { "name": "result",
+                  "type" : {   
+							   "name": "resultRecord", 
+              				   "type": "record", 
+      	       				   "fields" : [ 
+                                             { "name" : "done","type" : "string"},
+                                             { "name" : "queryLocator","type" : "string","default" : "null"},
+		            		 				 { "name" : "records", "type" : { 
+                                            									"type": "array", 
+                                           									  "items" : { 
+							       															 "name": "records", 
+              											 									 "type": "record", 
+              																				  "fields": [ 
+                   																							{ "name" : "type", "type" : "string"}, 
+                    																						{ "name" : "id", "type" : "string",  "default" : "null"}, 
+							                        														{ "name" : "Account",  "type" : {
+							                        																					 "name" : "AccountRecord",
+							                        														                             "type": "record",
+							                        																					 "fields": [ 
+																																					 {"name" : "type", "type" : "string"},
+											         								 																 {"name" : "id", "type" : "string",  "default" : "null"},
+											         								 												 				 {"name" : "Name", "type" : "string"}
+											     																								   ]
+											     																						  }		   
+																											},
+																											{"name" : "Name", "type" : "string"},
+																											{"name" : "Amount", "type" : "string"}
+																										 ]
+																							}
+											                                   }
+
+                                               },
+			      			                   {
+			      				                  "name" : "size","type" : "string"
+                                               }
+						                   ]	
+
+		   			                    }
+                                }
+                ]
+	 }

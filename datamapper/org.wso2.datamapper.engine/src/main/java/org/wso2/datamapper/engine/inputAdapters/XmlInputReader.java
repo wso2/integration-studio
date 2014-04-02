@@ -16,7 +16,6 @@
 package org.wso2.datamapper.engine.inputAdapters;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -28,16 +27,12 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericData.Array;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMXMLBuilderFactory;
-import org.apache.axiom.om.OMXMLParserWrapper;
 
 public class XmlInputReader implements InputDataReaderAdapter{
 
 	private OMElement documentElement;	
 	private Iterator<OMElement> childElementIter;
-	private Map<String, Schema> inputSchemaMap;
 	private GenericRecord rootRecord;
-	private Iterator<OMElement> childIter;
 	private boolean hasComplexChilds;
 	private List<GenericRecord> arrayChildList;
 
@@ -54,7 +49,6 @@ public class XmlInputReader implements InputDataReaderAdapter{
 	}
 
 	public void setInputSchemaMap(Map<String, Schema> inputSchemaMap) {
-		this.inputSchemaMap = inputSchemaMap;
 	}
 
 	public GenericRecord getRootRecord() {
@@ -64,43 +58,19 @@ public class XmlInputReader implements InputDataReaderAdapter{
 	public void setRootRecord(GenericRecord rootRecord) {
 		this.rootRecord = rootRecord;
 	}
-
-	@SuppressWarnings("unchecked")
-	public void setInptStream(InputStream inputStream) throws IOException {
-		
-		InputStream in = inputStream;
-		OMXMLParserWrapper builder = OMXMLBuilderFactory.createOMBuilder(in);
-		this.documentElement = builder.getDocumentElement();
-		childElementIter = this.documentElement.getChildElements();
-		
-		in.close();
-
+    /**
+     * 
+     * @param msg - Soap Envelop
+     * @throws IOException
+     */
+	public void setInputMsg(OMElement msg) throws IOException {		
+		this.documentElement = msg.getFirstElement().getFirstElement();
 	}
 	
 public GenericRecord getChildRecord(Schema input) {
 	  GenericRecord childRecord = null;
 	  childRecord =  getChild(input, this.documentElement.getChildElements());
 	
-	/*	OMElement childElement = null;
-		String childName;	
-			
-		childElement = childElementIter.next();
-		childName = childElement.getLocalName();
-		
-		if((childIter == null) || (!childIter.hasNext())){
-			childIter = childElement.getChildElements();
-		}
-		
-		 
-		Schema schema = inputSchemaMap.get(childElement.getLocalName());
-		if(schema instanceof Schema){
-			childRecord =  getChild(input, this.documentElement.getChildElements());
-		}
-		
-			
-		if ((childRecord == null) && (arrayChildList == null)) {	
-			rootRecord.put(childName, childElement.getText());
-		}*/
 		return childRecord;
 	}
 
@@ -111,8 +81,7 @@ public GenericRecord getChildRecord(Schema input) {
 			OMElement element = iter.next();
 			String localName = element.getLocalName();
 			Field field = schema.getField(localName);
-			 
-			//schema.g
+
 			if(field!=null){
 				if(field.schema().getType().equals(Type.ARRAY)){
 					Iterator childElements = element.getChildElements();

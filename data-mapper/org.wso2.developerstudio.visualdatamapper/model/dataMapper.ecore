@@ -55,6 +55,8 @@
         containment="true" eOpposite="#//InNode/elementParent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fieldParent" eType="#//TreeNode"
         eOpposite="#//TreeNode/element"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaDataType" eType="#//SchemaDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -81,6 +83,8 @@
         eOpposite="#//Output/treeNode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputParent" eType="#//Input"
         eOpposite="#//Input/treeNode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemaDataType" eType="#//SchemaDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLink" upperBound="-1"
@@ -107,4 +111,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Split" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="SchemaDataType">
+    <eLiterals name="ARRAY"/>
+    <eLiterals name="BOOLEAN" value="1"/>
+    <eLiterals name="BYTES" value="2"/>
+    <eLiterals name="DOUBLE" value="3"/>
+    <eLiterals name="ENUM" value="4"/>
+    <eLiterals name="FIXED" value="5"/>
+    <eLiterals name="FLOAT" value="6"/>
+    <eLiterals name="INT" value="7"/>
+    <eLiterals name="LONG" value="8"/>
+    <eLiterals name="MAP" value="9"/>
+    <eLiterals name="NULL" value="10"/>
+    <eLiterals name="RECORD" value="11"/>
+    <eLiterals name="STRING" value="12"/>
+    <eLiterals name="UNION" value="13"/>
+  </eClassifiers>
 </ecore:EPackage>

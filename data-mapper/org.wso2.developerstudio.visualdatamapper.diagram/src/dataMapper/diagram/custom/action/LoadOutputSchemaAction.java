@@ -32,6 +32,9 @@ import org.eclipse.ui.PlatformUI;
 import dataMapper.Output;
 import dataMapper.diagram.custom.util.SchemaKeyEditorDialog;
 
+/**
+ * This class handles context menu action 'load output schema'
+ */
 public class LoadOutputSchemaAction extends AbstractActionHandler {
 
 	private static final String CONFIGURE_OUTPUT_SCHEMA_ACTION_ID = "configure-output-schema-action-id"; //$NON-NLS-1$

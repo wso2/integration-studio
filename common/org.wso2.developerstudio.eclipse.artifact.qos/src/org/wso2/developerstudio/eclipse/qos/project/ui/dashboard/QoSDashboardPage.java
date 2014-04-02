@@ -112,6 +112,8 @@ import org.wso2.developerstudio.eclipse.qos.project.ui.dialog.UserRolesDialog;
 import org.wso2.developerstudio.eclipse.qos.project.ui.wizard.QOSProjectWizard;
 import org.wso2.developerstudio.eclipse.qos.project.utils.QoSTemplateUtil;
 import org.wso2.developerstudio.eclipse.qos.project.utils.RegistryUtils;
+import org.wso2.developerstudio.eclipse.qos.project.utils.SecurityPolicies;
+import org.wso2.developerstudio.eclipse.qos.project.utils.SecurityPolicyUtils;
 import org.xml.sax.SAXException;
 
 
@@ -149,6 +151,14 @@ public class QoSDashboardPage extends FormPage {
 	
 	private static final String PACKAGE_EXPLORER_PARTID = "org.eclipse.jdt.ui.PackageExplorer";
 	
+	private static final String REGISTRY_POLICY_PARAMETER = "secPolicyRegistryPath";
+	
+	private static final String ALLOW_ROLES_PARAMETER = "allowRoles";
+	
+	private static final String RAMPART_MODULE_VERSION = "1.61-wso2v12";
+	
+	private static final String RAHAS_MODULE_VERSION = "1.61-wso2v12";
+	
 	public static String serviceName;
 	public static IProject metaProject;
 	public static String metaFileName;
@@ -180,7 +190,17 @@ public class QoSDashboardPage extends FormPage {
 	
 	private Button registryBrowser;
 	
-	private Button userRolesButton;
+	private Button policyOneUserRolesButton;
+	
+	private Button policySevenUserRolesButton;
+	
+	private Button policyEightUserRolesButton;
+	
+	private Button policyFourteenUserRolesButton;
+	
+	private Button policyFifteenUserRolesButton;
+	
+	private Button policyTwentyOneUserRolesButton;
 	
 	private Text policyPathText;
 
@@ -412,38 +432,18 @@ public class QoSDashboardPage extends FormPage {
 	    secSecurity = (Section) result[0];
 	    secSecurity.setEnabled(false);
 		final Composite seccomposite = (Composite) result[1];
-		GridLayout gridSecLayout = new GridLayout(4, false);
+		GridLayout gridSecLayout = new GridLayout(5, false);
 		seccomposite.setLayout(gridSecLayout);
-
-		String[] names = new String[] { "UsernameToken", "Non-repudiation",
-				"Integrity", "Confidentiality" };
+		
 		createCategory(managedForm, seccomposite, "Basic Scenarios");
-		createSecurityItems(seccomposite, names, managedForm,0);
-
-		names = new String[] {
-				"Sign and Encrypt - X509 Authentication",
-				"Sign and Encrypt - Anonymous clients",
-				"Encrypt only - Username Token Authentication",
-				"Sign and Encrypt - Username Token Authentication",
-				"SecureConversation - Sign only - Service as STS - Bootstrap policy - Sign and Encrypt , X509 Authentication",
-				"SecureConversation - Encrypt only - Service as STS - Bootstrap policy - Sign and Encrypt , X509 Authentication",
-				"SecureConversation - Sign and Encrypt - Service as STS - Bootstrap policy - Sign and Encrypt , X509 Authentication",
-				"SecureConversation - Sign Only - Service as STS - Bootstrap policy - Sign and Encrypt , Anonymous clients",
-				"SecureConversation - Sign and Encrypt - Service as STS - Bootstrap policy - Sign and Encrypt , Anonymous clients",
-				"SecureConversation - Encrypt Only - Service as STS - Bootstrap policy - Sign and Encrypt , Username Token Authentication",
-				"SecureConversation - Sign and Encrypt - Service as STS - Bootstrap policy - Sign and Encrypt , Username Token Authentication",
-				"Kerberos Authentication - Sign - Sign based on a Kerberos Token.",
-				"Sign and Encrypt - X509 Authentication - SAML 2.0 Token Required",
-				"Sign and Encrypt - Anonymous clients - SAML 2.0 Token Required" };
+		createSecurityItems(seccomposite, SecurityPolicyUtils.getInstance().getBasicSecurityScenarios(), managedForm,0);
 
 		createCategory(managedForm, seccomposite, "Advanced Scenarios");
-		createSecurityItems(seccomposite, names, managedForm,4);
+		createSecurityItems(seccomposite, SecurityPolicyUtils.getInstance().getAdvancedSecurityScenarios(), managedForm,4);
 
 		createCategory(managedForm, seccomposite, "Policy From Registry");
-		names = new String[] { "registry" };
-		createSecurityItems(seccomposite, names, managedForm,20);
+		createSecurityItems(seccomposite, SecurityPolicyUtils.getInstance().getRegistrySecurityScenarios(), managedForm,20);
         
-		
 		Object[] aAdresult = CreateMainSection(managedForm, body,"Advance Configuration(Rampart)",10, 15, 600, 30, true);
 		Composite rmaportInfComposite = (Composite)aAdresult[1];
 		GridLayout ramportlayout = new GridLayout();
@@ -593,10 +593,8 @@ public class QoSDashboardPage extends FormPage {
 		    RefreshProject();
 		} catch (Exception e) {
 			log.error("Saving Error");
-		} /*finally {
-			// Delete temp files checked out from registry.
-		    deleteTempFiles();
-		}*/
+			e.printStackTrace();
+		} 
 	}
 	
 	private void updateRampartUI(){
@@ -617,18 +615,25 @@ public class QoSDashboardPage extends FormPage {
 			
 			Text txt = (Text)basicRampartControlMap.get(RAMPART_USER);
 			txt.setText(alise);
+			
 		    txt =(Text)basicRampartControlMap.get(RAMPART_ENCRYPTION_USER);
 			txt.setText("useReqSigCert");
+			
 			txt =(Text)basicRampartControlMap.get(RAMPART_TIMESTAMP_TTL);
 			txt.setText("300");
+			
 			txt =(Text)basicRampartControlMap.get(RAMPART_TIMESTAMP_MAX_SKEW);
 			txt.setText("300");
+			
 			txt =(Text)basicRampartControlMap.get(RAMPART_TOKEN_STORE_CLASS);
 			txt.setText("org.wso2.carbon.security.util.SecurityTokenStore");
+			
 			txt =(Text)basicRampartControlMap.get(RAMPART_NONCE_LIFE_TIME);
 			txt.setText("300");
+			
 			Combo	co =(Combo)basicRampartControlMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS);
 			co.select(1);
+			
 			co =(Combo)basicRampartControlMap.get(RAMPART_TIMESTAMP_STRICT);
 			co.select(0);
 		}
@@ -648,20 +653,24 @@ public class QoSDashboardPage extends FormPage {
 			 serviceNameText.setItems(new String[]{service.getName()});
 			 serviceNameText.select(0);
 			 Policies policies = service.getPolicies();
-			 if (policies != null) {
-				 List<Policy> policy = policies.getPolicy();
-				 for (Policy policy2 : policy) {
-					 Button button = policyeMap.get(policy2.getPolicyUUID());
-					 if(button!=null){
-						 button.setSelection(true);
-						 setPolicyFileName((String) button.getData());
-						 break;
-					 }
+			if (policies != null) {
+				List<Policy> policy = policies.getPolicy();
+				for (Policy policy2 : policy) {
+					Button button = policyeMap.get(policy2.getPolicyUUID());
+					if (button != null) {
+						button.setSelection(true);
+						setPolicyFileName((String) button.getData());
+						selectedPolicy = SecurityPolicyUtils.getInstance()
+								.getPolicyTypeFromPolicyUUID(policy2.getPolicyUUID());
+						break;
+					}
 				}
-			 }
-			 enableSecCombo.select(1); 
-			 secSecurity.setEnabled(true);
-			 saveButton.setEnabled(true);
+				enableSecCombo.select(1);
+				secSecurity.setEnabled(true);
+				saveButton.setEnabled(true);
+				enableButtons(selectedPolicy);
+			}
+			
 			 serviceMetaFile = file;
 		} catch (Exception e) {
 			 log.error("File loading error", e);
@@ -745,15 +754,6 @@ public class QoSDashboardPage extends FormPage {
 			String filename = "";
 			File resourceFile = null;
 			
-			/*if (StringUtils.isNotBlank(selectedPolicy)
-						&& selectedPolicy.equals("registry")) {
-				filename = getPolicyFileName();
-				resourceFile = new File(filename);
-			} else {
-				filename = "policies/" + getPolicyFileName();
-				resourceFile = qoSTemplateUtil.getResourceFile(filename);
-			}*/
-			
 			filename = "policies/" + getPolicyFileName();
 			resourceFile = qoSTemplateUtil.getResourceFile(filename);
 						
@@ -772,40 +772,47 @@ public class QoSDashboardPage extends FormPage {
 				policies.getPolicy().add(policy);
 				service.setPolicies(policies);
 				
-				//Define roles in UsernameToken security policy.
+				//Define roles in UsernameToken based security policies.
 				if (StringUtils.isNotBlank(selectedPolicy)
-						&& selectedPolicy.equals("UsernameToken") && utRoles != null
-						&& utRoles.size() > 0) {
-					String roleList = "";
-					Parameter parameter = new Parameter(); 
-					parameter.setName("allowRoles");
-					for (int i = 0; i < utRoles.size(); i++) {
-						if (i == utRoles.size() - 1) {
-							roleList += utRoles.get(i);
-						} else {
-							roleList += utRoles.get(i) + ",";
-						}
+						&& utRoles != null
+						&& utRoles.size() > 0
+						&& (SecurityPolicies.POLICY_TYPE_1.equals(selectedPolicy)
+								|| SecurityPolicies.POLICY_TYPE_7.equals(selectedPolicy)
+								|| SecurityPolicies.POLICY_TYPE_8.equals(selectedPolicy)
+								|| SecurityPolicies.POLICY_TYPE_14.equals(selectedPolicy) 
+								|| SecurityPolicies.POLICY_TYPE_15.equals(selectedPolicy))) {
+					
+					String allowRoles = getAllowRoles();
+					if(StringUtils.isNotBlank(allowRoles)) {
+						addParameter(ALLOW_ROLES_PARAMETER, allowRoles, null);
 					}
-					parameter.setValue(roleList);
-					
-					// add 'allowRoles' parameter for UT policy.
-					service.getModuleOrParameterOrPolicyUUID().add(parameter);
+		
+					List<String> remove = new ArrayList<String>();
+					remove.add(REGISTRY_POLICY_PARAMETER);
+					removeParameters(remove);
+
 				} else if (StringUtils.isNotBlank(selectedPolicy)
-						&& selectedPolicy.equals("registry")) {
-					Parameter parameter = new Parameter();
-					parameter.setName("secPolicyRegistryPath");
-					parameter.setType(new BigInteger("1"));
-					parameter.setValue(policyPathText.getText().trim());
+						&& SecurityPolicies.POLICY_TYPE_21.equals(selectedPolicy)) {
 					
-					// add 'secPolicyRegistryPath' parameter for Registry policy.
-					service.getModuleOrParameterOrPolicyUUID().add(parameter);
+					addParameter(REGISTRY_POLICY_PARAMETER, policyPathText.getText().trim(), new BigInteger("1"));
+					
+					String allowRoles = getAllowRoles();
+					if(StringUtils.isNotBlank(allowRoles)) {
+						addParameter(ALLOW_ROLES_PARAMETER, allowRoles, null);
+					}
+
+				} else {
+					List<String> remove = new ArrayList<String>();
+					remove.add(REGISTRY_POLICY_PARAMETER);
+					remove.add(ALLOW_ROLES_PARAMETER);
+					removeParameters(remove);
 				}
 				
 				Bindings bindings = service.getBindings();
 				if (bindings != null) {
 					List<Binding> bindingList = bindings.getBinding();
 					for (Binding binding : bindingList) {
-						if (binding.getName().contains("Soap")) {
+						if (StringUtils.isNotBlank(binding.getName())) {
 							binding.setPolicyUUID(policy2.getId());
 						}
 					}
@@ -813,48 +820,8 @@ public class QoSDashboardPage extends FormPage {
 				
 				service.setBindings(bindings);
 				
-				List<Object> moduleParamOrasociationList =  service.getModuleOrParameterOrPolicyUUID();
-				boolean rampartModulefound = false;
-				boolean serviceKeystoreFound = false;
-				boolean trustedKeystoreFound  = false;
-				
-				for (Object object : moduleParamOrasociationList) {
-					if (object instanceof Module) {
-						Module module = (Module)object;
-						if (module.getName().equals("rampart")) {
-							rampartModulefound = true;
-						}
-					} else if (object instanceof Association) {
-						Association association = (Association)object;
-						if (association.getType().equals("service-keystore")){
-							serviceKeystoreFound = true;
-						} else if (association.getType().equals("trusted-keystore")) {
-							trustedKeystoreFound = true;
-						}
-					}
-				}
-				
-				if (!rampartModulefound) {
-					Module module = new Module();
-					module.setName("rampart");
-					module.setVersion("1.61-wso2v10");
-					module.setType("engagedModules");
-					service.getModuleOrParameterOrPolicyUUID().add(module);
-				}
-				
-				if (!serviceKeystoreFound) {
-					Association associationKeyStore = new Association();
-					associationKeyStore.setDestinationPath("/_system/governance/repository/security/key-stores/carbon-primary-ks");
-					associationKeyStore.setType("service-keystore");
-					service.getModuleOrParameterOrPolicyUUID().add(associationKeyStore);
-				}
-				
-				if (!trustedKeystoreFound) {
-					Association associationTrustStore = new Association();
-					associationTrustStore.setDestinationPath("/_system/governance/repository/security/key-stores/carbon-primary-ks");
-					associationTrustStore.setType("trusted-keystore");
-					service.getModuleOrParameterOrPolicyUUID().add(associationTrustStore);
-				}
+				configureAssociation();
+				configureRampartRahasModules();
 			}
 		}
 	}
@@ -871,8 +838,9 @@ public class QoSDashboardPage extends FormPage {
 	}
 
 	private void RefreshProject() throws CoreException {
-		if(QoSDashboardPage.metaProject != null){
-		QoSDashboardPage.metaProject.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
+		if (QoSDashboardPage.metaProject != null) {
+			QoSDashboardPage.metaProject.refreshLocal(IResource.DEPTH_INFINITE,
+					new NullProgressMonitor());
 		}
 	}
 
@@ -894,47 +862,77 @@ public class QoSDashboardPage extends FormPage {
 		
 		if (!kerberossignandencrypt) {
 			Node user = rampart.getElementsByTagName(RAMPART_USER).item(0);
-			configMap.put(RAMPART_USER, user.getTextContent());
+			if(user != null) {
+				configMap.put(RAMPART_USER, user.getTextContent());
+			}
 			
 			Node encryptionUser = rampart.getElementsByTagName(RAMPART_ENCRYPTION_USER).item(0);
-			configMap.put(RAMPART_ENCRYPTION_USER, encryptionUser.getTextContent());
+			if(encryptionUser != null) {
+				configMap.put(RAMPART_ENCRYPTION_USER, encryptionUser.getTextContent());
+			}
+			
 		}
 		
-		
 		Node timestampPrecisionInMilliseconds = rampart.getElementsByTagName(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS).item(0);
-		configMap.put(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS, timestampPrecisionInMilliseconds.getTextContent());
+		if(timestampPrecisionInMilliseconds != null) {
+			configMap.put(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS, timestampPrecisionInMilliseconds.getTextContent());
+		}
 		
 		Node timestampTTL = rampart.getElementsByTagName(RAMPART_TIMESTAMP_TTL).item(0);
-		configMap.put(RAMPART_TIMESTAMP_TTL, timestampTTL.getTextContent());
-		
+		if(timestampTTL != null) {
+			configMap.put(RAMPART_TIMESTAMP_TTL, timestampTTL.getTextContent());
+		}
+			
 		Node timestampMaxSkew = rampart.getElementsByTagName(RAMPART_TIMESTAMP_MAX_SKEW).item(0);
-		configMap.put(RAMPART_TIMESTAMP_MAX_SKEW, timestampMaxSkew.getTextContent());
+		if(timestampMaxSkew != null) {
+			configMap.put(RAMPART_TIMESTAMP_MAX_SKEW, timestampMaxSkew.getTextContent());
+		}
 		
 		Node timestampStrict = rampart.getElementsByTagName(RAMPART_TIMESTAMP_STRICT).item(0);
-		configMap.put(RAMPART_TIMESTAMP_STRICT, timestampStrict.getTextContent());
+		if(timestampStrict != null) {
+			configMap.put(RAMPART_TIMESTAMP_STRICT, timestampStrict.getTextContent());
+		}
 		
 		if (!kerberossignandencrypt) {
 			Node tokenStoreClass = rampart.getElementsByTagName(RAMPART_TOKEN_STORE_CLASS).item(0);
-			configMap.put(RAMPART_TOKEN_STORE_CLASS, tokenStoreClass.getTextContent());
+			if(tokenStoreClass != null) {
+				configMap.put(RAMPART_TOKEN_STORE_CLASS, tokenStoreClass.getTextContent());
+			}
 		}
 		
 		Node nonceLifeTime = rampart.getElementsByTagName(RAMPART_NONCE_LIFE_TIME).item(0);
-		configMap.put(RAMPART_NONCE_LIFE_TIME, nonceLifeTime.getTextContent());
+		if(nonceLifeTime != null) {
+			configMap.put(RAMPART_NONCE_LIFE_TIME, nonceLifeTime.getTextContent());
+		}
 		
 		if (!kerberossignandencrypt) {
+			// rampart:encryptionCrypto
 		    Node encryptionCrypto = rampart.getElementsByTagName("rampart:encryptionCrypto").item(0);
-		    getenCryto(encryptionCrypto);
+		    if(encryptionCrypto != null) {
+		    	addRampartCryptoProperties(encryptionCrypto);
+		    }
+		   
+		    // rampart:signatureCrypto
 		    Node signatureCrypto = rampart.getElementsByTagName("rampart:signatureCrypto").item(0);
-		    getenCryto(signatureCrypto);
+		    if(signatureCrypto != null) {
+		    	addRampartCryptoProperties(signatureCrypto);
+		    }
 		} else {
+			// rampart:kerberosConfig
 			Node kerberosConfig = rampart.getElementsByTagName("rampart:kerberosConfig").item(0);
-			getKerberosConfig(kerberosConfig);
+			if(kerberosConfig != null) {
+				addRampartKerberosConfigPropertis(kerberosConfig);
+			}
 		}
 
 	}
 
-	private void getenCryto(Node encryptionCrypto) {
-		Node encrypto = ((Element) encryptionCrypto).getElementsByTagName("rampart:crypto").item(0);
+	/**
+	 * Add rampart:encryptionCrypto or rampart:signatureCrypto properties.
+	 * @param crypto
+	 */
+	private void addRampartCryptoProperties(Node crypto) {
+		Node encrypto = ((Element) crypto).getElementsByTagName("rampart:crypto").item(0);
 	    
 	    NodeList list = ((Element) encrypto).getChildNodes();
 	    
@@ -948,7 +946,11 @@ public class QoSDashboardPage extends FormPage {
 	       }
 	}
 	
-	private void getKerberosConfig(Node kerberosConfig) {
+	/**
+	 * Add rampart:kerberosConfig properties.
+	 * @param kerberosConfig
+	 */
+	private void addRampartKerberosConfigPropertis(Node kerberosConfig) {
 				
 		NodeList list = ((Element) kerberosConfig).getChildNodes();
 	    
@@ -966,23 +968,35 @@ public class QoSDashboardPage extends FormPage {
 		
 		if (!kerberossignandencrypt) {
 			Node user = rampart.getElementsByTagName(RAMPART_USER).item(0);
-			user.setTextContent(configMap.get(RAMPART_USER));
+			if(user != null && StringUtils.isNotBlank(configMap.get(RAMPART_USER))) {
+				user.setTextContent(configMap.get(RAMPART_USER));
+			}
 			
 			Node encryptionUser = rampart.getElementsByTagName(RAMPART_ENCRYPTION_USER).item(0);
-			encryptionUser.setTextContent(configMap.get(RAMPART_ENCRYPTION_USER));
+			if(encryptionUser != null && StringUtils.isNotBlank(configMap.get(RAMPART_ENCRYPTION_USER))){
+				encryptionUser.setTextContent(configMap.get(RAMPART_ENCRYPTION_USER));
+			}
 		}
 		
 		Node timestampPrecisionInMilliseconds = rampart.getElementsByTagName(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS).item(0);
-		timestampPrecisionInMilliseconds.setTextContent(configMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS));
+		if(timestampPrecisionInMilliseconds != null && StringUtils.isNotBlank(configMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS))) {
+			timestampPrecisionInMilliseconds.setTextContent(configMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS));
+		}
 		
 		Node timestampTTL = rampart.getElementsByTagName(RAMPART_TIMESTAMP_TTL).item(0);
-		timestampTTL.setTextContent(configMap.get(RAMPART_TIMESTAMP_TTL));
+		if(timestampTTL != null && StringUtils.isNotBlank(configMap.get(RAMPART_TIMESTAMP_TTL))) {
+			timestampTTL.setTextContent(configMap.get(RAMPART_TIMESTAMP_TTL));
+		}
 		
 		Node timestampMaxSkew = rampart.getElementsByTagName(RAMPART_TIMESTAMP_MAX_SKEW).item(0);
-		timestampMaxSkew.setTextContent(configMap.get(RAMPART_TIMESTAMP_MAX_SKEW));
+		if(timestampMaxSkew != null && StringUtils.isNotBlank(configMap.get(RAMPART_TIMESTAMP_MAX_SKEW))) {
+			timestampMaxSkew.setTextContent(configMap.get(RAMPART_TIMESTAMP_MAX_SKEW));
+		}
 		
 		Node timestampStrict = rampart.getElementsByTagName(RAMPART_TIMESTAMP_STRICT).item(0);
-		timestampStrict.setTextContent(configMap.get(RAMPART_TIMESTAMP_STRICT));
+		if(timestampStrict != null && StringUtils.isNotBlank(configMap.get(RAMPART_TIMESTAMP_STRICT))) {
+			timestampStrict.setTextContent(configMap.get(RAMPART_TIMESTAMP_STRICT));
+		}
 		
 		if (!kerberossignandencrypt) {
 			Node tokenStoreClass = rampart.getElementsByTagName(RAMPART_TOKEN_STORE_CLASS).item(0);
@@ -990,17 +1004,25 @@ public class QoSDashboardPage extends FormPage {
 		}
 		
 		Node nonceLifeTime = rampart.getElementsByTagName(RAMPART_NONCE_LIFE_TIME).item(0);
-		nonceLifeTime.setTextContent(configMap.get(RAMPART_NONCE_LIFE_TIME));
+		if(nonceLifeTime != null && StringUtils.isNotBlank(configMap.get(RAMPART_NONCE_LIFE_TIME))) {
+			nonceLifeTime.setTextContent(configMap.get(RAMPART_NONCE_LIFE_TIME));
+		}
 
 		if (!kerberossignandencrypt) {
 		    Node encryptionCrypto = rampart.getElementsByTagName("rampart:encryptionCrypto").item(0);
-		    setenCryto(encryptionCrypto);
+		    if (encryptionCrypto != null) {
+		    	setenCryto(encryptionCrypto);
+		    }
 		    
 		    Node signatureCrypto = rampart.getElementsByTagName("rampart:signatureCrypto").item(0);
-		    setenCryto(signatureCrypto);
+		    if(signatureCrypto != null) {
+		    	setenCryto(signatureCrypto);
+		    }
 		} else {
 			Node kerberosConfig = rampart.getElementsByTagName("rampart:kerberosConfig").item(0);
-			setKerberosConfig(kerberosConfig);
+			if(kerberosConfig != null) {
+				setKerberosConfig(kerberosConfig);
+			}
 		}
 	    
 		return configMap;
@@ -1008,32 +1030,36 @@ public class QoSDashboardPage extends FormPage {
 	
 	private void setenCryto(Node encryptionCrypto) {
 		Node encrypto = ((Element) encryptionCrypto).getElementsByTagName("rampart:crypto").item(0);
-    
+
 		NodeList list = ((Element) encrypto).getChildNodes();
-    
+
 		for (int i = 0; i < list.getLength(); i++) {
- 		   Node node = list.item(i);
- 		  if("rampart:property".equals(node.getNodeName())){
- 			 Element eElement = (Element) node;
-				 String attribute = eElement.getAttribute("name");
-				 node.setTextContent(configMap.get(attribute));
- 		  }
-       }
+			Node node = list.item(i);
+			if (node != null && "rampart:property".equals(node.getNodeName())) {
+				Element eElement = (Element) node;
+				String attribute = eElement.getAttribute("name");
+				if(StringUtils.isNotBlank(attribute)) {
+					node.setTextContent(configMap.get(attribute));
+				}
+			}
+		}
 	}
 	
 		
 	private void setKerberosConfig(Node kerberosConfig) {
-		
+
 		NodeList list = ((Element) kerberosConfig).getChildNodes();
-    
+
 		for (int i = 0; i < list.getLength(); i++) {
- 		   Node node = list.item(i);
- 		  if("rampart:property".equals(node.getNodeName())){
- 			 Element eElement = (Element) node;
-				 String attribute = eElement.getAttribute("name");
-				 node.setTextContent(configMap.get(attribute));
- 		  }
-       }
+			Node node = list.item(i);
+			if (node != null && "rampart:property".equals(node.getNodeName())) {
+				Element eElement = (Element) node;
+				String attribute = eElement.getAttribute("name");
+				if(StringUtils.isNotBlank(attribute)) {
+					node.setTextContent(configMap.get(attribute));
+				}
+			}
+		}
 	}
 
 	private void saveRampartConfigToFile(File file) throws TransformerException{
@@ -1094,17 +1120,71 @@ public class QoSDashboardPage extends FormPage {
 					 policySelected = true;
 					 saveButton.setEnabled(true);
 					 
-					 // Enable/Disable buttons. 
-					 if (secBtn.getToolTipText().equals("registry")) {
-						 registryBrowser.setEnabled(true);
-						 userRolesButton.setEnabled(false);
-					 } else if (secBtn.getToolTipText().equals("UsernameToken")) {
-						 userRolesButton.setEnabled(true);
-						 registryBrowser.setEnabled(false);
-					 } else {
-						 registryBrowser.setEnabled(false);
-						 userRolesButton.setEnabled(false);
-					 }
+					// Enable/Disable buttons.
+					if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_21)) {
+						policyOneUserRolesButton.setVisible(false);
+						policySevenUserRolesButton.setVisible(false);
+						policyEightUserRolesButton.setVisible(false);
+						policyFourteenUserRolesButton.setVisible(false);
+						policyFifteenUserRolesButton.setVisible(false);
+						policyTwentyOneUserRolesButton.setVisible(true);
+						registryBrowser.setVisible(true);
+						
+					} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_1)) {
+						policyOneUserRolesButton.setVisible(true);
+						policySevenUserRolesButton.setVisible(false);
+						policyEightUserRolesButton.setVisible(false);
+						policyFourteenUserRolesButton.setVisible(false);
+						policyFifteenUserRolesButton.setVisible(false);
+						policyTwentyOneUserRolesButton.setVisible(false);
+						registryBrowser.setVisible(false);
+						
+					} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_7)) {
+						policyOneUserRolesButton.setVisible(false);
+						policySevenUserRolesButton.setVisible(true);
+						policyEightUserRolesButton.setVisible(false);
+						policyFourteenUserRolesButton.setVisible(false);
+						policyFifteenUserRolesButton.setVisible(false);	
+						policyTwentyOneUserRolesButton.setVisible(false);
+						registryBrowser.setVisible(false);
+						
+					} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_8)) {
+						policyOneUserRolesButton.setVisible(false);
+						policySevenUserRolesButton.setVisible(false);
+						policyEightUserRolesButton.setVisible(true);
+						policyFourteenUserRolesButton.setVisible(false);
+						policyFifteenUserRolesButton.setVisible(false);
+						policyTwentyOneUserRolesButton.setVisible(false);
+						registryBrowser.setVisible(false);
+						
+					} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_14)) {
+						policyOneUserRolesButton.setVisible(false);
+						policySevenUserRolesButton.setVisible(false);
+						policyEightUserRolesButton.setVisible(false);
+						policyFourteenUserRolesButton.setVisible(true);
+						policyFifteenUserRolesButton.setVisible(false);
+						policyTwentyOneUserRolesButton.setVisible(false);
+						registryBrowser.setVisible(false);
+						
+					} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_15)) {
+						policyOneUserRolesButton.setVisible(false);
+						policySevenUserRolesButton.setVisible(false);
+						policyEightUserRolesButton.setVisible(false);
+						policyFourteenUserRolesButton.setVisible(false);
+						policyFifteenUserRolesButton.setVisible(true);
+						policyTwentyOneUserRolesButton.setVisible(false);
+						registryBrowser.setVisible(false);
+						
+					} else {
+						policyOneUserRolesButton.setVisible(false);
+						policySevenUserRolesButton.setVisible(false);
+						policyEightUserRolesButton.setVisible(false);
+						policyFourteenUserRolesButton.setVisible(false);
+						policyFifteenUserRolesButton.setVisible(false);
+						policyTwentyOneUserRolesButton.setVisible(false);
+						registryBrowser.setVisible(false);
+
+					}
 				}
 			});
 			 
@@ -1137,7 +1217,7 @@ public class QoSDashboardPage extends FormPage {
 				  
 			  });
 			  
-			if (name.equals("registry")) {
+			if (SecurityPolicies.POLICY_TYPE_21.equals(name)) {
 				GridData policyLinkGrdiData = new GridData();
 				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
 				policyLinkGrdiData.grabExcessHorizontalSpace = false;
@@ -1147,33 +1227,47 @@ public class QoSDashboardPage extends FormPage {
 				policyPathText.setEnabled(false);
 				GridData policyPathTextGridData = new GridData();
 				policyPathTextGridData.horizontalAlignment = GridData.FILL;
+				policyPathTextGridData.grabExcessHorizontalSpace = true;
 				policyPathTextGridData.minimumWidth = 200;
 				policyPathText.setLayoutData(policyPathTextGridData);
 				
 				registryBrowser = new Button(seccomposite, SWT.NONE);
 				registryBrowser.setText("Browse From Registry");
-				registryBrowser.setEnabled(false);
+				registryBrowser.setVisible(false);
 				registryBrowser.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
 						openRegistryDialog();
 					}
 				});
 				GridData browseButtonGridData = new GridData();
-				browseButtonGridData.horizontalAlignment = GridData.BEGINNING;
+				browseButtonGridData.horizontalAlignment = GridData.END;
 				browseButtonGridData.grabExcessHorizontalSpace = false;
 				registryBrowser.setLayoutData(browseButtonGridData);
 				
-			} else if (name.equals("UsernameToken")) {
+				policyTwentyOneUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyTwentyOneUserRolesButton.setText("User Roles");
+				policyTwentyOneUserRolesButton.setVisible(false);
+				policyTwentyOneUserRolesButton.addListener(SWT.Selection, new Listener() {
+					public void handleEvent(Event event) {
+						openUserRolesDialog();
+					}
+				});
+				GridData userRolesButtonGridData = new GridData();
+				userRolesButtonGridData.horizontalAlignment = GridData.BEGINNING;
+				userRolesButtonGridData.grabExcessHorizontalSpace = false;
+				policyTwentyOneUserRolesButton.setLayoutData(userRolesButtonGridData);
+				
+			} else if(SecurityPolicies.POLICY_TYPE_1.equals(name)) {
 				GridData policyLinkGrdiData = new GridData();
 				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
 				policyLinkGrdiData.grabExcessHorizontalSpace = true;
-				policyLinkGrdiData.horizontalSpan = 2;
+				policyLinkGrdiData.horizontalSpan = 3;
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 				
-				userRolesButton = new Button(seccomposite, SWT.NONE);
-				userRolesButton.setText("User Roles");
-				userRolesButton.setEnabled(false);
-				userRolesButton.addListener(SWT.Selection, new Listener() {
+				policyOneUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyOneUserRolesButton.setText("User Roles");
+				policyOneUserRolesButton.setVisible(false);
+				policyOneUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
 					}
@@ -1182,11 +1276,91 @@ public class QoSDashboardPage extends FormPage {
 				GridData userRolesButtonGridData = new GridData();
 				userRolesButtonGridData.horizontalAlignment = GridData.BEGINNING;
 				userRolesButtonGridData.grabExcessHorizontalSpace = false;
-				userRolesButton.setLayoutData(userRolesButtonGridData);
+				policyOneUserRolesButton.setLayoutData(userRolesButtonGridData);
+			} else if(SecurityPolicies.POLICY_TYPE_7.equals(name)) {
+				GridData policyLinkGrdiData = new GridData();
+				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
+				policyLinkGrdiData.grabExcessHorizontalSpace = true;
+				policyLinkGrdiData.horizontalSpan = 3;
+				createHyperlink.setLayoutData(policyLinkGrdiData);
+				
+				policySevenUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policySevenUserRolesButton.setText("User Roles");
+				policySevenUserRolesButton.setVisible(false);
+				policySevenUserRolesButton.addListener(SWT.Selection, new Listener() {
+					public void handleEvent(Event event) {
+						openUserRolesDialog();
+					}
+				});
+				
+				GridData userRolesButtonGridData = new GridData();
+				userRolesButtonGridData.horizontalAlignment = GridData.BEGINNING;
+				userRolesButtonGridData.grabExcessHorizontalSpace = false;
+				policySevenUserRolesButton.setLayoutData(userRolesButtonGridData);
+			} else if(SecurityPolicies.POLICY_TYPE_8.equals(name)) {
+				GridData policyLinkGrdiData = new GridData();
+				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
+				policyLinkGrdiData.grabExcessHorizontalSpace = true;
+				policyLinkGrdiData.horizontalSpan = 3;
+				createHyperlink.setLayoutData(policyLinkGrdiData);
+				
+				policyEightUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyEightUserRolesButton.setText("User Roles");
+				policyEightUserRolesButton.setVisible(false);
+				policyEightUserRolesButton.addListener(SWT.Selection, new Listener() {
+					public void handleEvent(Event event) {
+						openUserRolesDialog();
+					}
+				});
+				
+				GridData userRolesButtonGridData = new GridData();
+				userRolesButtonGridData.horizontalAlignment = GridData.BEGINNING;
+				userRolesButtonGridData.grabExcessHorizontalSpace = false;
+				policyEightUserRolesButton.setLayoutData(userRolesButtonGridData);
+			} else if (SecurityPolicies.POLICY_TYPE_14.equals(name)) {
+				GridData policyLinkGrdiData = new GridData();
+				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
+				policyLinkGrdiData.grabExcessHorizontalSpace = true;
+				policyLinkGrdiData.horizontalSpan = 3;
+				createHyperlink.setLayoutData(policyLinkGrdiData);
+				
+				policyFourteenUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyFourteenUserRolesButton.setText("User Roles");
+				policyFourteenUserRolesButton.setVisible(false);
+				policyFourteenUserRolesButton.addListener(SWT.Selection, new Listener() {
+					public void handleEvent(Event event) {
+						openUserRolesDialog();
+					}
+				});
+				
+				GridData userRolesButtonGridData = new GridData();
+				userRolesButtonGridData.horizontalAlignment = GridData.BEGINNING;
+				userRolesButtonGridData.grabExcessHorizontalSpace = false;
+				policyFourteenUserRolesButton.setLayoutData(userRolesButtonGridData);
+			} else if (SecurityPolicies.POLICY_TYPE_15.equals(name)) {
+				GridData policyLinkGrdiData = new GridData();
+				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
+				policyLinkGrdiData.grabExcessHorizontalSpace = true;
+				policyLinkGrdiData.horizontalSpan = 3;
+				createHyperlink.setLayoutData(policyLinkGrdiData);
+				
+				policyFifteenUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyFifteenUserRolesButton.setText("User Roles");
+				policyFifteenUserRolesButton.setVisible(false);
+				policyFifteenUserRolesButton.addListener(SWT.Selection, new Listener() {
+					public void handleEvent(Event event) {
+						openUserRolesDialog();
+					}
+				});
+				
+				GridData userRolesButtonGridData = new GridData();
+				userRolesButtonGridData.horizontalAlignment = GridData.BEGINNING;
+				userRolesButtonGridData.grabExcessHorizontalSpace = false;
+				policyFifteenUserRolesButton.setLayoutData(userRolesButtonGridData);
 			} else {
 				GridData policyLinkGrdiData = new GridData();
 				policyLinkGrdiData.horizontalAlignment = GridData.BEGINNING;
-				policyLinkGrdiData.horizontalSpan = 3;
+				policyLinkGrdiData.horizontalSpan = 4;
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 			}
 			  
@@ -1253,7 +1427,7 @@ public class QoSDashboardPage extends FormPage {
 	private void createCategory(IManagedForm managedForm,Composite composite, String category){
 		Label lblcategory = managedForm.getToolkit().createLabel(composite, category, SWT.NONE);
 		lblcategory.setFont(SWTResourceManager.getFont("Sans", 10, SWT.BOLD));
-		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false,4, 1);
+		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false,5, 1);
 		gd_category.verticalIndent=10;
 		lblcategory.setLayoutData(gd_category);
 		 
@@ -1389,8 +1563,216 @@ public class QoSDashboardPage extends FormPage {
 		}		
 	}
 	
-}
+	/**
+	 * Add parameter to the service.
+	 * @param parameterName
+	 * @param parameterValue
+	 * @param type
+	 */
+	private void addParameter(String parameterName, String parameterValue, BigInteger type) {
+		Parameter newParameter = null;
+		for(Object parameter : service.getModuleOrParameterOrPolicyUUID()){
+			if (parameter instanceof Parameter
+					&& StringUtils.isNotBlank(((Parameter) parameter).getName())
+					&& ((Parameter) parameter).getName().equals(parameterName)) {
+				// Set new value to the existing parameter. 
+				newParameter = (Parameter) parameter;
+				newParameter.setValue(parameterValue);
+				break;
+			}
+		}
+		
+		if(newParameter == null) {
+			// Create new parameter since it is not available.
+			newParameter = new Parameter();
+			newParameter.setName(parameterName);
+			newParameter.setValue(parameterValue);
+			if(type != null) {
+				newParameter.setType(type);
+			}
+			
+			// add parameter to the policy.
+			service.getModuleOrParameterOrPolicyUUID().add(newParameter);
+		}
+	}
+	
+	/**
+	 * Removes parameters from service.
+	 * @param parameters
+	 */
+	private void removeParameters(List<String> parameters) {
+		if (service != null) {
+			List<Object> remove = new ArrayList<Object>();
+			for (Object parameter : service.getModuleOrParameterOrPolicyUUID()) {
+				if (parameter instanceof Parameter
+						&& StringUtils.isNotBlank(((Parameter) parameter).getName())
+						&& parameters.contains(((Parameter) parameter).getName())) {
+					remove.add(parameter);
+				}
+			}
+			
+			for(Object parameter : remove) {
+				service.getModuleOrParameterOrPolicyUUID().remove(parameter);
+			}
+		}
+	}
+	
+	/**
+	 * Get allow roles in role1,role2, format.
+	 * @return
+	 */
+	private String getAllowRoles() {
+		String allowRoles = "";
+		
+		for (int i = 0; i < utRoles.size(); i++) {
+			if (i == utRoles.size() - 1) {
+				allowRoles += utRoles.get(i);
+			} else {
+				allowRoles += utRoles.get(i) + ",";
+			}
+		}
+		return allowRoles;
+	}
+	
+	/**
+	 * Configure associations.
+	 */
+	private void configureAssociation() {
+		List<Object> moduleParamOrasociationList = service.getModuleOrParameterOrPolicyUUID();
+		List<Object> remove = new ArrayList<Object>();
+		boolean exposedTransportsAssociationFound = false;
+		boolean keyStoreAssociationFound = false;
 
+		for (Object object : moduleParamOrasociationList) {
+			if (object instanceof Association) {
+				Association association = (Association) object;
+				if (association.getType().equals("service-keystore")
+						|| association.getType().equals("trusted-keystore")) {
+					if ((SecurityPolicies.POLICY_TYPE_1.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_16
+							.equals(selectedPolicy))) {
+						remove.add(object);
+					}
+					keyStoreAssociationFound = true;
+				}
+				if (association.getType().equals("exposedTransports")) {
+					exposedTransportsAssociationFound = true;
+				}
+			}
+		}
+
+		if (!exposedTransportsAssociationFound) {
+			Association exposedTransportsAssociation = new Association();
+			exposedTransportsAssociation
+					.setDestinationPath("/repository/transports/https/listener");
+			exposedTransportsAssociation.setType("exposedTransports");
+			service.getModuleOrParameterOrPolicyUUID().add(exposedTransportsAssociation);
+		}
+
+		if (!keyStoreAssociationFound
+				&& !(SecurityPolicies.POLICY_TYPE_1.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_16
+						.equals(selectedPolicy))) {
+			Association associationKeyStore = new Association();
+			associationKeyStore
+					.setDestinationPath("/_system/governance/repository/security/key-stores/carbon-primary-ks");
+			associationKeyStore.setType("service-keystore");
+			service.getModuleOrParameterOrPolicyUUID().add(associationKeyStore);
+
+			Association associationTrustStore = new Association();
+			associationTrustStore
+					.setDestinationPath("/_system/governance/repository/security/key-stores/carbon-primary-ks");
+			associationTrustStore.setType("trusted-keystore");
+			service.getModuleOrParameterOrPolicyUUID().add(associationTrustStore);
+		}
+
+		for (Object association : remove) {
+			// Remove key-store associations from policy 1 and 16.
+			service.getModuleOrParameterOrPolicyUUID().remove(association);
+		}
+	}
+	
+	/**
+	 * Configure rampart and rahas modules.
+	 */
+	private void configureRampartRahasModules() {
+		List<Object> moduleParamOrasociationList = service.getModuleOrParameterOrPolicyUUID();
+		boolean rampartModuleFound = false;
+		boolean rahasModuleFound = false;
+		Object rahasModule = null;
+		
+		for (Object object : moduleParamOrasociationList) {
+			if (object instanceof Module) {
+				Module module = (Module)object;
+				if (module.getName().equals("rampart")) {
+					rampartModuleFound = true;
+				} else if (module.getName().equals("rahas")) {
+					if((SecurityPolicies.POLICY_TYPE_1.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_2.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_3.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_4.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_5.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_6.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_7.equals(selectedPolicy) 
+						|| SecurityPolicies.POLICY_TYPE_8.equals(selectedPolicy))) {
+						rahasModule = object;
+					}				
+					rahasModuleFound = true;
+				}
+			} 
+		}
+		
+		if (!rahasModuleFound
+				&& !(SecurityPolicies.POLICY_TYPE_1.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_2.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_3.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_4.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_5.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_6.equals(selectedPolicy)
+						|| SecurityPolicies.POLICY_TYPE_7.equals(selectedPolicy) 
+						|| SecurityPolicies.POLICY_TYPE_8.equals(selectedPolicy))) {
+			Module module = new Module();
+			module.setName("rahas");
+			module.setVersion(RAHAS_MODULE_VERSION);
+			module.setType("engagedModules");
+			service.getModuleOrParameterOrPolicyUUID().add(module);
+		} 
+		
+		if(!rampartModuleFound) {
+			Module module = new Module();
+			module.setName("rampart");
+			module.setVersion(RAMPART_MODULE_VERSION);
+			module.setType("engagedModules");
+			service.getModuleOrParameterOrPolicyUUID().add(module);
+		}
+		
+		if(rahasModule != null) {
+			service.getModuleOrParameterOrPolicyUUID().remove(rahasModule);
+		}
+	}
+	
+	/**
+	 * Enable buttons based on the selected policy.
+	 * @param policyType
+	 */
+	private void enableButtons(String policyType) {
+		if (policyType != null) {
+			if (SecurityPolicies.POLICY_TYPE_1.equals(policyType)) {
+				policyOneUserRolesButton.setVisible(true);
+			} else if (SecurityPolicies.POLICY_TYPE_7.equals(policyType)) {
+				policySevenUserRolesButton.setVisible(true);
+			} else if (SecurityPolicies.POLICY_TYPE_8.equals(policyType)) {
+				policyEightUserRolesButton.setVisible(true); 
+			} else if (SecurityPolicies.POLICY_TYPE_14.equals(policyType)) {
+				policyFourteenUserRolesButton.setVisible(true);
+			} else if (SecurityPolicies.POLICY_TYPE_15.equals(policyType)) {
+				policyFifteenUserRolesButton.setVisible(true);
+			} else if (SecurityPolicies.POLICY_TYPE_21.equals(policyType)) {
+				policyTwentyOneUserRolesButton.setVisible(true);
+				registryBrowser.setVisible(true);
+			}
+		}
+	}
+	
+}
 
 
 

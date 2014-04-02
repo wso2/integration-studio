@@ -4,6 +4,16 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "dataMapper.diagram.custom.action.messages"; //$NON-NLS-1$
+	public static String CreateNewConfigurationDialog_DefaultConfigName;
+	public static String CreateNewConfigurationDialog_DialogHeaderLoadingCAppProjects;
+	public static String CreateNewConfigurationDialog_DialogHeaderResourceCreation;
+	public static String CreateNewConfigurationDialog_DialogHeaderTemplateCreation;
+	public static String CreateNewConfigurationDialog_DialogMessage;
+	public static String CreateNewConfigurationDialog_LinkCreateNewProject;
+	public static String CreateNewConfigurationDialog_TxtFileName;
+	public static String CreateNewConfigurationDialog_TxtProject;
+	public static String CreateNewConfigurationDialog_TxtRegistryPath;
+	public static String GENERAL_PROJECT_NATURE;
 	public static String LoadInputSchemaAction_EmptySelection;
 	public static String LoadInputSchemaAction_InputSchemaDialog;
 	public static String LoadInputSchemaAction_LoadFromFile;

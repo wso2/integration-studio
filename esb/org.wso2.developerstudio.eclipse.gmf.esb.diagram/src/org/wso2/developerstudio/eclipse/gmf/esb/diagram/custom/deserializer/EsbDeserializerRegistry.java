@@ -19,7 +19,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import org.apache.synapse.config.Entry;
 import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.AddressEndpoint;
@@ -34,7 +33,6 @@ import org.apache.synapse.endpoints.SALoadbalanceEndpoint;
 import org.apache.synapse.endpoints.Template;
 import org.apache.synapse.endpoints.TemplateEndpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
-
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.bsf.ScriptMediator;
 import org.apache.synapse.mediators.builtin.CallMediator;
@@ -92,6 +90,7 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.POJOCommandMediatorExt;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
+import org.wso2.carbon.mediator.datamapper.DataMapperMediator;
 
 
 /**
@@ -191,6 +190,7 @@ public class EsbDeserializerRegistry {
 		addDeserializer(RespondMediator.class, new RespondMediatorDeserializer());
 		addDeserializer(CallMediator.class, new CallMediatorDeserializer());
 		addDeserializer(CloudConnectorOperationExt.class, new CloudConnectorOperationDeserializer());
+		addDeserializer(DataMapperMediator.class, new DataMapperMediatorDeserializer());
 	}
 	
 	/**

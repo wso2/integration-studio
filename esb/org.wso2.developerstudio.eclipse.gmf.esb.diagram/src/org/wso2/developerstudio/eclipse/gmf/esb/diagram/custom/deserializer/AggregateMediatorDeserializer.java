@@ -62,7 +62,7 @@ public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<A
 		
 		//Setting completion timeout
 		//vishualAggrigate.setCompletionTimeout(aggregateMediator.getCompletionTimeoutMillis());
-		executeSetValueCommand(AGGREGATE_MEDIATOR__COMPLETION_TIMEOUT, aggregateMediator.getCompletionTimeoutMillis());
+		executeSetValueCommand(AGGREGATE_MEDIATOR__COMPLETION_TIMEOUT, (aggregateMediator.getCompletionTimeoutMillis()/1000));
 		
 		//Setting aggregate expression.
 		if(aggregateMediator.getAggregationExpression() != null){

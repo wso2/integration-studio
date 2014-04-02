@@ -114,7 +114,7 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(60, 20);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(20, 20);
 		return result;
 	}
 

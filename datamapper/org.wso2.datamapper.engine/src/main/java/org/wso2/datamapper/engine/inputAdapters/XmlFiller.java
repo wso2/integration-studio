@@ -52,14 +52,14 @@ public class XmlFiller implements InputDataReaderAdapter{
 		this.rootRecord = rootRecord;
 	}
 
-	public void setInptStream(InputStream inputStream) throws IOException {
+	public void setInputMsg(OMElement msg) throws IOException {
 		
-		InputStream in = inputStream;
+		/*InputStream in = inputStream;
 		OMXMLParserWrapper builder = OMXMLBuilderFactory.createOMBuilder(in);
 		this.documentElement = builder.getDocumentElement();
 		childElementIter = this.documentElement.getChildElements();
 		
-		in.close();
+		in.close();*/
 
 	}
 	

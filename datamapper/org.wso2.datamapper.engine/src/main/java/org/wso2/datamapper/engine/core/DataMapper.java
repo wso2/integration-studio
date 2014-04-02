@@ -28,32 +28,30 @@ import java.util.regex.Pattern;
 import org.apache.avro.Schema;
 import org.apache.avro.Schema.Parser;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.axiom.om.OMElement;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 import org.wso2.datamapper.engine.inputAdapters.XmlInputReader;
 import org.wso2.datamapper.engine.models.MappingConfigModel;
+import org.wso2.datamapper.engine.models.MappingResourceModel;
 
 public class DataMapper {
 	
-	public String doMap(InputStream configFile, InputStream inStream, InputStream inputSchema,InputStream outputSchema) throws IOException, IllegalAccessException, InstantiationException, JSONException {
+	public String doMap(OMElement inputMsg, MappingResourceModel resourceModel) throws IOException, IllegalAccessException, InstantiationException, JSONException {
 		
-		
-		InputStream inputStream = inStream;
-		
-		Schema inputAvroSchema = new Parser().parse(inputSchema);
-		
-		Schema outputAvroSchema = new Parser().parse(outputSchema);
+		Schema inputAvroSchema = new Parser().parse(resourceModel.getInputSchema());
+		Schema outputAvroSchema = new Parser().parse(resourceModel.getOutPutSchema());
 		
 		XmlInputReader inputReader = new XmlInputReader();
-		inputReader.setInptStream(inputStream);
+		inputReader.setInputMsg(inputMsg);
 		
 		Context context = Context.enter();
 		context.setOptimizationLevel(-1);
 		Scriptable scope = context.initStandardObjects();
 		
-		BufferedReader configReader = new BufferedReader(new InputStreamReader(configFile));
+		BufferedReader configReader = new BufferedReader(new InputStreamReader(resourceModel.getMappingConfig()));
 		MappingHandler mappingHandler = new MappingHandler(inputAvroSchema,outputAvroSchema,scope,inputReader,context);	
 		
 		String configLine = "";

@@ -49,7 +49,6 @@ public class FunctionExecuter {
 		
 		if (mappingModel != null) {
 
-		//	String inputDataType = inElementId;
 			String outputDataType = mappingModel.getOutputDataType();
 			String funcType = mappingModel.getMappingFunctionType();
 			Schema outputSchema = outputSchemaMap.get(outputDataType);

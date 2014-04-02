@@ -46,6 +46,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	 */
 	protected IFigure primaryShape;
 
+
 	/**
 	 * @generated
 	 */
@@ -165,7 +166,7 @@ public class OperatorRightConnectorEditPart extends AbstractBorderedShapeEditPar
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40,20);
 		return result;
 	}
 

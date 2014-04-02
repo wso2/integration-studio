@@ -64,6 +64,8 @@ public class ElementItemProvider
 
 			addNamePropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
+			addSchemaDataTypePropertyDescriptor(object);
+			addLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -113,6 +115,50 @@ public class ElementItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Schema Data Type feature.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected void addSchemaDataTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Element_schemaDataType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Element_schemaDataType_feature", "_UI_Element_type"),
+				 DataMapperPackage.Literals.ELEMENT__SCHEMA_DATA_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+    /**
+	 * This adds a property descriptor for the Level feature.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected void addLevelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Element_level_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Element_level_feature", "_UI_Element_type"),
+				 DataMapperPackage.Literals.ELEMENT__LEVEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+    /**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -182,6 +228,8 @@ public class ElementItemProvider
 		switch (notification.getFeatureID(Element.class)) {
 			case DataMapperPackage.ELEMENT__NAME:
 			case DataMapperPackage.ELEMENT__VALUE:
+			case DataMapperPackage.ELEMENT__SCHEMA_DATA_TYPE:
+			case DataMapperPackage.ELEMENT__LEVEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DataMapperPackage.ELEMENT__OUT_NODE:

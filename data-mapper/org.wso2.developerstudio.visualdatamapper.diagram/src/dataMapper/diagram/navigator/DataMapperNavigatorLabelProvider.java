@@ -81,6 +81,9 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Equal", dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Concat", dataMapper.diagram.providers.DataMapperElementTypes.Concat_2006); //$NON-NLS-1$
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3002); //$NON-NLS-1$
@@ -108,6 +111,27 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3011); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorBasicContainer", dataMapper.diagram.providers.DataMapperElementTypes.OperatorBasicContainer_3012); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorLeftContainer", dataMapper.diagram.providers.DataMapperElementTypes.OperatorLeftContainer_3013); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorLeftConnector", dataMapper.diagram.providers.DataMapperElementTypes.OperatorLeftConnector_3014); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?InNode", dataMapper.diagram.providers.DataMapperElementTypes.InNode_3015); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.OperatorRightContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorRightContainer", dataMapper.diagram.providers.DataMapperElementTypes.OperatorRightContainer_3016); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OperatorRightConnector", dataMapper.diagram.providers.DataMapperElementTypes.OperatorRightConnector_3017); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?OutNode", dataMapper.diagram.providers.DataMapperElementTypes.OutNode_3018); //$NON-NLS-1$
 		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?DataMapperLink", dataMapper.diagram.providers.DataMapperElementTypes.DataMapperLink_4001); //$NON-NLS-1$
@@ -173,6 +197,8 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 			return getOutput_2003Text(view);
 		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 			return getEqual_2005Text(view);
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			return getConcat_2006Text(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -191,6 +217,20 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 			return getOutNode_3009Text(view);
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
 			return getTreeNode_3011Text(view);
+		case dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID:
+			return getOperatorBasicContainer_3012Text(view);
+		case dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart.VISUAL_ID:
+			return getOperatorLeftContainer_3013Text(view);
+		case dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart.VISUAL_ID:
+			return getOperatorLeftConnector_3014Text(view);
+		case dataMapper.diagram.edit.parts.InNode3EditPart.VISUAL_ID:
+			return getInNode_3015Text(view);
+		case dataMapper.diagram.edit.parts.OperatorRightContainerEditPart.VISUAL_ID:
+			return getOperatorRightContainer_3016Text(view);
+		case dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart.VISUAL_ID:
+			return getOperatorRightConnector_3017Text(view);
+		case dataMapper.diagram.edit.parts.OutNode3EditPart.VISUAL_ID:
+			return getOutNode_3018Text(view);
 		case dataMapper.diagram.edit.parts.DataMapperLinkEditPart.VISUAL_ID:
 			return getDataMapperLink_4001Text(view);
 		}
@@ -222,6 +262,13 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEqual_2005Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getConcat_2006Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -328,6 +375,55 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 					"No domain element for view with visualID = " + 3011); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getOperatorBasicContainer_3012Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getOperatorLeftContainer_3013Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getOperatorLeftConnector_3014Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInNode_3015Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getOperatorRightContainer_3016Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getOperatorRightConnector_3017Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getOutNode_3018Text(View view) {
+		return ""; //$NON-NLS-1$
 	}
 
 	/**

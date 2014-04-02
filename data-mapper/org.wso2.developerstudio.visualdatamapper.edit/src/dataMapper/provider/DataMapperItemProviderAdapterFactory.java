@@ -210,6 +210,121 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.OperatorBasicContainer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperatorBasicContainerItemProvider operatorBasicContainerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.OperatorBasicContainer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperatorBasicContainerAdapter() {
+		if (operatorBasicContainerItemProvider == null) {
+			operatorBasicContainerItemProvider = new OperatorBasicContainerItemProvider(this);
+		}
+
+		return operatorBasicContainerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.OperatorLeftContainer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperatorLeftContainerItemProvider operatorLeftContainerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.OperatorLeftContainer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperatorLeftContainerAdapter() {
+		if (operatorLeftContainerItemProvider == null) {
+			operatorLeftContainerItemProvider = new OperatorLeftContainerItemProvider(this);
+		}
+
+		return operatorLeftContainerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.OperatorLeftConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperatorLeftConnectorItemProvider operatorLeftConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.OperatorLeftConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperatorLeftConnectorAdapter() {
+		if (operatorLeftConnectorItemProvider == null) {
+			operatorLeftConnectorItemProvider = new OperatorLeftConnectorItemProvider(this);
+		}
+
+		return operatorLeftConnectorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.OperatorRightContainer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperatorRightContainerItemProvider operatorRightContainerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.OperatorRightContainer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperatorRightContainerAdapter() {
+		if (operatorRightContainerItemProvider == null) {
+			operatorRightContainerItemProvider = new OperatorRightContainerItemProvider(this);
+		}
+
+		return operatorRightContainerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.OperatorRightConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperatorRightConnectorItemProvider operatorRightConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.OperatorRightConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperatorRightConnectorAdapter() {
+		if (operatorRightConnectorItemProvider == null) {
+			operatorRightConnectorItemProvider = new OperatorRightConnectorItemProvider(this);
+		}
+
+		return operatorRightConnectorItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link dataMapper.Element} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -394,6 +509,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.Constant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConstantItemProvider constantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.Constant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConstantAdapter() {
+		if (constantItemProvider == null) {
+			constantItemProvider = new ConstantItemProvider(this);
+		}
+
+		return constantItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -498,6 +636,11 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (inputItemProvider != null) inputItemProvider.dispose();
 		if (outputItemProvider != null) outputItemProvider.dispose();
 		if (operatorItemProvider != null) operatorItemProvider.dispose();
+		if (operatorBasicContainerItemProvider != null) operatorBasicContainerItemProvider.dispose();
+		if (operatorLeftContainerItemProvider != null) operatorLeftContainerItemProvider.dispose();
+		if (operatorLeftConnectorItemProvider != null) operatorLeftConnectorItemProvider.dispose();
+		if (operatorRightContainerItemProvider != null) operatorRightContainerItemProvider.dispose();
+		if (operatorRightConnectorItemProvider != null) operatorRightConnectorItemProvider.dispose();
 		if (elementItemProvider != null) elementItemProvider.dispose();
 		if (attributeItemProvider != null) attributeItemProvider.dispose();
 		if (treeNodeItemProvider != null) treeNodeItemProvider.dispose();
@@ -506,6 +649,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (dataMapperLinkItemProvider != null) dataMapperLinkItemProvider.dispose();
 		if (concatItemProvider != null) concatItemProvider.dispose();
 		if (equalItemProvider != null) equalItemProvider.dispose();
+		if (constantItemProvider != null) constantItemProvider.dispose();
 	}
 
 }

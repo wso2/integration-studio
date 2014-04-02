@@ -139,8 +139,8 @@ public class AddressEndPointTransformer extends AbstractEndpointTransformer {
 
 		// Next node may be a Failover endPoint. So that this should be edited
 		// to be compatible with that also.
-		info.setParentSequence(info.getOriginOutSequence());
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);
+/*		info.setParentSequence(info.getOriginOutSequence());
+		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);*/
 
 		// Transform endpoint output data flow.
 

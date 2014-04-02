@@ -20,92 +20,97 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
 import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
 
+import dataMapper.diagram.custom.action.Messages;
 import dataMapper.diagram.custom.util.EditorUtils;
 
 public class DataMapperSchemaEditorUtil {
 
-	IFile graphicalFile;
-	IProject project;
-	
-	File inputSchemaFile; 
-	IFile inputSchemaIFile;
-	
-	File outputSchemaFile; 
-	IFile outputSchemaIFile;
-	
-	static String SCHEMA_FILE_EXTENSION = ".avsc";
-	static String INPUT_SCHEMA_FILE_SUFFIX = "_input_schema";
-	static String OUTPUT_SCHEMA_FILE_SUFFIX = "_output_schema";
+	private IProject project;
+	private File inputSchemaFile;
+	private IFile inputSchemaIFile;
+	private File outputSchemaFile;
+	private IFile outputSchemaIFile;
 
-	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
-	public DataMapperSchemaEditorUtil(IFile graphicalFile){
-		this.graphicalFile = graphicalFile;
+	private static final String SCHEMA_FILE_EXTENSION = ".avsc";
+	private static final String INPUT_SCHEMA_FILE_SUFFIX = "_input_schema";
+	private static final String OUTPUT_SCHEMA_FILE_SUFFIX = "_output_schema";
+
+	public DataMapperSchemaEditorUtil(IFile graphicalFile) {
 		this.project = graphicalFile.getProject();
-		
-		String configFileName = graphicalFile.getName().substring(0, graphicalFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
+
+		String configFileName = graphicalFile.getName().substring(0,
+				graphicalFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
 		String graphicalFileDirPath = graphicalFile.getParent().getProjectRelativePath().toString();
-		if(graphicalFileDirPath != null && !"".equals(graphicalFileDirPath)){
+		if (graphicalFileDirPath != null && !"".equals(graphicalFileDirPath)) {
 			graphicalFileDirPath += File.separator;
 		}
-		//graphicalFileDirPath = graphicalFileDirPath.substring(graphicalFileDirPath.indexOf(File.separator), graphicalFileDirPath.length()-1);
-		String newInputFilePath = graphicalFileDirPath + configFileName + INPUT_SCHEMA_FILE_SUFFIX + SCHEMA_FILE_EXTENSION;
-		String newOutputFilePath = graphicalFileDirPath + configFileName + OUTPUT_SCHEMA_FILE_SUFFIX + SCHEMA_FILE_EXTENSION;
+
+		String newInputFilePath = graphicalFileDirPath + configFileName + INPUT_SCHEMA_FILE_SUFFIX
+				+ SCHEMA_FILE_EXTENSION;
+		String newOutputFilePath = graphicalFileDirPath + configFileName
+				+ OUTPUT_SCHEMA_FILE_SUFFIX + SCHEMA_FILE_EXTENSION;
 
 		inputSchemaIFile = project.getFile(newInputFilePath);
 		outputSchemaIFile = project.getFile(newOutputFilePath);
 	}
-	
-	public String createDiagram(Object schemaData, String fileType) {
-		
-		try {
-			if("input".equals(fileType)){
 
-				if(!inputSchemaIFile.exists()){
-					byte[] bytes = "".getBytes();
-					InputStream source = new ByteArrayInputStream(bytes);
-					inputSchemaIFile.create(source, IResource.NONE, null);
-				}
-				inputSchemaFile = inputSchemaIFile.getRawLocation().makeAbsolute().toFile();
-				
-				if(schemaData instanceof IRegistryData){
-					CAppEnvironment.getRegistryHandler().importRegistryResourceToFileSystem( (IRegistryData)schemaData, inputSchemaFile);
-				}
-				return inputSchemaFile.getAbsolutePath();
-				
-			}else if("output".equals(fileType)){
-				
-				if(!outputSchemaIFile.exists()){
-					byte[] bytes = "".getBytes();
-					InputStream source = new ByteArrayInputStream(bytes);
-					outputSchemaIFile.create(source, IResource.NONE, null);
-				}
-				outputSchemaFile = outputSchemaIFile.getRawLocation().makeAbsolute().toFile();
-				
-				if(schemaData instanceof IRegistryData){
-					CAppEnvironment.getRegistryHandler().importRegistryResourceToFileSystem( (IRegistryData)schemaData, outputSchemaFile);
-				}
-				return outputSchemaFile.getAbsolutePath();
-				
+	public String createDiagram(Object schemaData, String fileType) throws Exception {
+
+		if (Messages.LoadInputSchemaAction_SchemaTypeInput.equals(fileType)) {
+
+			// Check whether input schema file already exists
+			if (!inputSchemaIFile.exists()) {
+				byte[] bytes = "".getBytes();
+				InputStream source = new ByteArrayInputStream(bytes);
+				inputSchemaIFile.create(source, IResource.NONE, null);
 			}
-			
-		} catch (CoreException e) {
-			log.error("Error occured while creating the schema file", e);
-		} catch (Exception e) {
-			log.error("Error occured while creating the schema file", e);
-		}	
-		
+			inputSchemaFile = inputSchemaIFile.getRawLocation().makeAbsolute().toFile();
+
+			// case: Browse from registry
+			if (schemaData instanceof IRegistryData) {
+				CAppEnvironment.getRegistryHandler().importRegistryResourceToFileSystem(
+						(IRegistryData) schemaData, inputSchemaFile);
+			}
+
+			// case: Browse from file system
+			else if (schemaData instanceof String) {
+				FileUtils.writeStringToFile(inputSchemaFile, (String) schemaData);
+			}
+
+			return inputSchemaFile.getAbsolutePath();
+
+		} else if (Messages.LoadOutputSchemaAction_SchemaTypeOutput.equals(fileType)) {
+
+			// Check whether output schema file already exists
+			if (!outputSchemaIFile.exists()) {
+				byte[] bytes = "".getBytes();
+				InputStream source = new ByteArrayInputStream(bytes);
+				outputSchemaIFile.create(source, IResource.NONE, null);
+			}
+			outputSchemaFile = outputSchemaIFile.getRawLocation().makeAbsolute().toFile();
+
+			// case: Browse from registry
+			if (schemaData instanceof IRegistryData) {
+				CAppEnvironment.getRegistryHandler().importRegistryResourceToFileSystem(
+						(IRegistryData) schemaData, outputSchemaFile);
+			}
+
+			// case: Browse from file system
+			else if (schemaData instanceof String) {
+				FileUtils.writeStringToFile(outputSchemaFile, (String) schemaData);
+			}
+
+			return outputSchemaFile.getAbsolutePath();
+
+		}
+
 		return null;
-		
 	}
 }

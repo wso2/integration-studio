@@ -227,7 +227,7 @@
       <viewProvider class="dataMapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,3002,3003,3004,3005,3006,3007,3008,3009,3011"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2006,3002,3003,3004,3005,3006,3007,3008,3009,3011,3012,3013,3014,3015,3016,3017,3018"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -240,7 +240,7 @@
             <method name="getType()" value="DataMapper"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2002,2003,2005,3002,3003,3004,3005,3006,3007,3008,3009,3011"/>
+            <method name="getType()" value="2002,2003,2005,2006,3002,3003,3004,3005,3006,3007,3008,3009,3011,3012,3013,3014,3015,3016,3017,3018"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
@@ -276,6 +276,11 @@
          <Priority name="Lowest"/>
          <object class="dataMapper.diagram.edit.parts.EqualEditPart" id="Equal_2005"/>
          <context elements="Equal_2005"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfConcatEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.ConcatEditPart" id="Concat_2006"/>
+         <context elements="Concat_2006"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
          <Priority name="Lowest"/>
@@ -321,6 +326,41 @@
          <Priority name="Lowest"/>
          <object class="dataMapper.diagram.edit.parts.TreeNode3EditPart" id="TreeNode_3011"/>
          <context elements="TreeNode_3011"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorBasicContainerEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart" id="OperatorBasicContainer_3012"/>
+         <context elements="OperatorBasicContainer_3012"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorLeftContainerEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart" id="OperatorLeftContainer_3013"/>
+         <context elements="OperatorLeftContainer_3013"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorLeftConnectorEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart" id="OperatorLeftConnector_3014"/>
+         <context elements="OperatorLeftConnector_3014"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.InNode3EditPart" id="InNode_3015"/>
+         <context elements="InNode_3015"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorRightContainerEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OperatorRightContainerEditPart" id="OperatorRightContainer_3016"/>
+         <context elements="OperatorRightContainer_3016"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorRightConnectorEditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart" id="OperatorRightConnector_3017"/>
+         <context elements="OperatorRightConnector_3017"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNode3EditPart">
+         <Priority name="Lowest"/>
+         <object class="dataMapper.diagram.edit.parts.OutNode3EditPart" id="OutNode_3018"/>
+         <context elements="OutNode_3018"/>
       </modelingAssistantProvider>
       
    </extension>
@@ -372,6 +412,16 @@
                eclass="Equal"
                edithelper="dataMapper.diagram.edit.helpers.EqualEditHelper">
             <param name="semanticHint" value="2005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.Concat_2006"
+               name="%metatype.name.Concat_2006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Concat"
+               edithelper="dataMapper.diagram.edit.helpers.ConcatEditHelper">
+            <param name="semanticHint" value="2006"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
@@ -462,6 +512,74 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
          <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OperatorBasicContainer_3012"
+               name="%metatype.name.OperatorBasicContainer_3012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="OperatorBasicContainer"
+               edithelper="dataMapper.diagram.edit.helpers.OperatorBasicContainerEditHelper">
+            <param name="semanticHint" value="3012"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftContainer_3013"
+               name="%metatype.name.OperatorLeftContainer_3013"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="OperatorLeftContainer"
+               edithelper="dataMapper.diagram.edit.helpers.OperatorLeftContainerEditHelper">
+            <param name="semanticHint" value="3013"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftConnector_3014"
+               name="%metatype.name.OperatorLeftConnector_3014"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="OperatorLeftConnector"
+               edithelper="dataMapper.diagram.edit.helpers.OperatorLeftConnectorEditHelper">
+            <param name="semanticHint" value="3014"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <specializationType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3015"
+               name="%metatype.name.InNode_3015"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3005"/>
+            <param name="semanticHint" value="3015"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightContainer_3016"
+               name="%metatype.name.OperatorRightContainer_3016"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="OperatorRightContainer"
+               edithelper="dataMapper.diagram.edit.helpers.OperatorRightContainerEditHelper">
+            <param name="semanticHint" value="3016"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightConnector_3017"
+               name="%metatype.name.OperatorRightConnector_3017"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="OperatorRightConnector"
+               edithelper="dataMapper.diagram.edit.helpers.OperatorRightConnectorEditHelper">
+            <param name="semanticHint" value="3017"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <specializationType
+               id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3018"
+               name="%metatype.name.OutNode_3018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3006"/>
+            <param name="semanticHint" value="3018"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+         <metamodelType
                id="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4001"
                name="%metatype.name.DataMapperLink_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -486,6 +604,7 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Input_2002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Output_2003"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Equal_2005"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Concat_2006"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3003"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.Attribute_3004"/>
@@ -495,6 +614,13 @@
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3008"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3009"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3011"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OperatorBasicContainer_3012"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftContainer_3013"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OperatorLeftConnector_3014"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.InNode_3015"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightContainer_3016"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OperatorRightConnector_3017"/>
+         <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.OutNode_3018"/>
          <elementType ref="org.wso2.developerstudio.visualdatamapper.diagram.DataMapperLink_4001"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>

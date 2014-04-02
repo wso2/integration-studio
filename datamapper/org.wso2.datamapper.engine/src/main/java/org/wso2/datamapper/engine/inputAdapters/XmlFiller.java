@@ -12,10 +12,9 @@ import org.apache.avro.Schema;
 import org.apache.avro.Schema.Field;
 import org.apache.avro.Schema.Type;
 import org.apache.avro.generic.GenericData;
-import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.generic.GenericData.Array;
+import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMNode;
 import org.apache.axiom.om.OMXMLBuilderFactory;
 import org.apache.axiom.om.OMXMLParserWrapper;
 
@@ -190,6 +189,11 @@ public class XmlFiller implements InputDataReaderAdapter{
 		}
 		
 		return childRec;
+	}
+
+	public GenericRecord getChildRecord(Schema input) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

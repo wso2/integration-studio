@@ -26,7 +26,7 @@ import javax.xml.stream.XMLStreamReader;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
-import org.wso2.carbon.registry.synchronization.Utils;
+import org.apache.commons.lang.StringUtils;
 import org.wso2.developerstudio.eclipse.capp.core.manifest.AbstractXMLDoc;
 import org.wso2.developerstudio.eclipse.platform.core.MediaManager;
 
@@ -48,43 +48,32 @@ public class ResourceMetaData extends AbstractXMLDoc{
 			return metadataFile;
 		}
 		String mediaType = MediaManager.getMediaType(resourceFile);
-		String content = "";
+		StringBuffer content = new StringBuffer();
 		FileOutputStream fos;		
 		if(isResource){
-			String md5 = Utils.getMD5(Utils.getBytesFromFile(resourceFile));
 			fos = new FileOutputStream(metadataFile);
-			content = "<resource name=" +
-						"\"" + resourceFile.getName() + "\"" +
-						" isCollection=" + "\"" + !isResource + "\"" + 
-						" path=" + "\"" + checkOutPath + "/" + resourceFile.getName() + "\"" +
-						" registryUrl=" + "\"" + "https://localhost:9443/registry" + "\"" +
-						" md5=" + "\"" + md5 + "\">" + 
-						"<mediaType>" + mediaType + "</mediaType>" + 
-						"<version>1844</version>" + 
-						"<creator>admin</creator>" + 
-						"<createdTime>1277482288897</createdTime>" + 
-						"<lastUpdater>admin</lastUpdater>" + 
-						"<lastModified>1277482288897</lastModified> " + 
-						"<description>" + "" + "</description>" + 
-						"</resource>";
+			// carbon 4.2 format
+			content.append("<resource name=");
+			content.append("\"" + resourceFile.getName() + "\"");
+			content.append(" isCollection=" + "\"false\"");
+			content.append(" path=" + "\"" + checkOutPath + "/" + resourceFile.getName() + "\"");
+			content.append(" registryUrl=" + "\"" + "https://localhost:9443/registry" + "\"");
+			content.append(" status=\"added\">");
+			if(StringUtils.isNotBlank(mediaType)) {
+				content.append("<mediaType>" + mediaType + "</mediaType>");
+			}
+			content.append("</resource>");
 		}else{
 			fos = new FileOutputStream(metadataFile);
-			content = "<resource name=" +
-						"\"" + resourceFile.getName() + "\"" +
-						" isCollection=" + "\"" + !isResource + "\"" + 
-						" path=" + "\"" + checkOutPath + "\"" +
-						" registryUrl=" + "\"" + "https://localhost:9443/registry" + "\">" +
-						"<mediaType>" + "" + "</mediaType>" + 
-						"<version>1844</version>" + 
-						"<creator>admin</creator>" + 
-						"<createdTime>1277482288897</createdTime>" + 
-						"<lastUpdater>admin</lastUpdater>" + 
-						"<lastModified>1277482288897</lastModified> " + 
-						"<description>" + "" + "</description>"+ 
-						"</resource>";
+			content.append("<resource name=");
+			content.append("\"" + resourceFile.getName() + "\"");
+			content.append(" isCollection=" + "\"true\"");
+			content.append(" path=" + "\"" + checkOutPath + "\"");
+			content.append(" registryUrl=" + "\"" + "https://localhost:9443/registry" + "\"");
+			content.append(" status=\"added\"/>");
 		}
 
-		XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(content.getBytes()));
+		XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(new ByteArrayInputStream(content.toString().getBytes()));
 		StAXOMBuilder builder = new StAXOMBuilder(parser);
 		OMElement documentElement = builder.getDocumentElement();
 		prettify(documentElement, fos);

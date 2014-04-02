@@ -18,6 +18,11 @@ import dataMapper.Input;
 import dataMapper.Operation;
 import dataMapper.Operations;
 import dataMapper.Operator;
+import dataMapper.OperatorBasicContainer;
+import dataMapper.OperatorLeftConnector;
+import dataMapper.OperatorLeftContainer;
+import dataMapper.OperatorRightConnector;
+import dataMapper.OperatorRightContainer;
 import dataMapper.Operators;
 import dataMapper.OutNode;
 import dataMapper.Output;
@@ -85,6 +90,41 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass operatorBasicContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operatorLeftContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operatorLeftConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operatorRightContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operatorRightConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass elementEClass = null;
 
 	/**
@@ -135,6 +175,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass equalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass constantEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -301,7 +348,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperator_InNodes() {
+	public EReference getOperator_BasicContainer() {
 		return (EReference)operatorEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -310,8 +357,98 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperator_OutNodes() {
-		return (EReference)operatorEClass.getEStructuralFeatures().get(1);
+	public EClass getOperatorBasicContainer() {
+		return operatorBasicContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperatorBasicContainer_LeftContainer() {
+		return (EReference)operatorBasicContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperatorBasicContainer_RightContainer() {
+		return (EReference)operatorBasicContainerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOperatorLeftContainer() {
+		return operatorLeftContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperatorLeftContainer_LeftConnectors() {
+		return (EReference)operatorLeftContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOperatorLeftConnector() {
+		return operatorLeftConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperatorLeftConnector_InNode() {
+		return (EReference)operatorLeftConnectorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOperatorRightContainer() {
+		return operatorRightContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperatorRightContainer_RightConnectors() {
+		return (EReference)operatorRightContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOperatorRightConnector() {
+		return operatorRightConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperatorRightConnector_OutNode() {
+		return (EReference)operatorRightConnectorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -616,6 +753,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getConstant() {
+		return constantEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataMapperFactory getDataMapperFactory() {
 		return (DataMapperFactory)getEFactoryInstance();
 	}
@@ -655,8 +801,23 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(outputEClass, OUTPUT__TREE_NODE);
 
 		operatorEClass = createEClass(OPERATOR);
-		createEReference(operatorEClass, OPERATOR__IN_NODES);
-		createEReference(operatorEClass, OPERATOR__OUT_NODES);
+		createEReference(operatorEClass, OPERATOR__BASIC_CONTAINER);
+
+		operatorBasicContainerEClass = createEClass(OPERATOR_BASIC_CONTAINER);
+		createEReference(operatorBasicContainerEClass, OPERATOR_BASIC_CONTAINER__LEFT_CONTAINER);
+		createEReference(operatorBasicContainerEClass, OPERATOR_BASIC_CONTAINER__RIGHT_CONTAINER);
+
+		operatorLeftContainerEClass = createEClass(OPERATOR_LEFT_CONTAINER);
+		createEReference(operatorLeftContainerEClass, OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS);
+
+		operatorLeftConnectorEClass = createEClass(OPERATOR_LEFT_CONNECTOR);
+		createEReference(operatorLeftConnectorEClass, OPERATOR_LEFT_CONNECTOR__IN_NODE);
+
+		operatorRightContainerEClass = createEClass(OPERATOR_RIGHT_CONTAINER);
+		createEReference(operatorRightContainerEClass, OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS);
+
+		operatorRightConnectorEClass = createEClass(OPERATOR_RIGHT_CONNECTOR);
+		createEReference(operatorRightConnectorEClass, OPERATOR_RIGHT_CONNECTOR__OUT_NODE);
 
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__NAME);
@@ -698,6 +859,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		concatEClass = createEClass(CONCAT);
 
 		equalEClass = createEClass(EQUAL);
+
+		constantEClass = createEClass(CONSTANT);
 	}
 
 	/**
@@ -734,6 +897,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		operatorEClass.getESuperTypes().add(this.getDataMapperNode());
 		concatEClass.getESuperTypes().add(this.getOperator());
 		equalEClass.getESuperTypes().add(this.getOperator());
+		constantEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -752,8 +916,23 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getOutput_TreeNode(), this.getTreeNode(), this.getTreeNode_OutputParent(), "treeNode", null, 0, -1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operatorEClass, Operator.class, "Operator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperator_InNodes(), this.getInNode(), null, "inNodes", null, 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOperator_OutNodes(), this.getOutNode(), null, "outNodes", null, 0, -1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperator_BasicContainer(), this.getOperatorBasicContainer(), null, "basicContainer", null, 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operatorBasicContainerEClass, OperatorBasicContainer.class, "OperatorBasicContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperatorBasicContainer_LeftContainer(), this.getOperatorLeftContainer(), null, "leftContainer", null, 0, 1, OperatorBasicContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperatorBasicContainer_RightContainer(), this.getOperatorRightContainer(), null, "rightContainer", null, 0, 1, OperatorBasicContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operatorLeftContainerEClass, OperatorLeftContainer.class, "OperatorLeftContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperatorLeftContainer_LeftConnectors(), this.getOperatorLeftConnector(), null, "leftConnectors", null, 0, -1, OperatorLeftContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operatorLeftConnectorEClass, OperatorLeftConnector.class, "OperatorLeftConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperatorLeftConnector_InNode(), this.getInNode(), null, "inNode", null, 0, 1, OperatorLeftConnector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operatorRightContainerEClass, OperatorRightContainer.class, "OperatorRightContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperatorRightContainer_RightConnectors(), this.getOperatorRightConnector(), null, "rightConnectors", null, 0, -1, OperatorRightContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operatorRightConnectorEClass, OperatorRightConnector.class, "OperatorRightConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperatorRightConnector_OutNode(), this.getOutNode(), null, "outNode", null, 0, 1, OperatorRightConnector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -795,6 +974,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(equalEClass, Equal.class, "Equal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

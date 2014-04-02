@@ -107,6 +107,94 @@
           href="dataMapper.gmftool#//@palette/@tools.0/@tools.1"/>
       <diagramNode
           href="dataMapper.gmfgraph#Equal"/>
+      <children>
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+        <ownedChild>
+          <domainMetaElement
+              href="dataMapper.ecore#//OperatorBasicContainer"/>
+          <diagramNode
+              href="dataMapper.gmfgraph#OperatorBasicContainer"/>
+          <children>
+            <containmentFeature
+                href="dataMapper.ecore#//OperatorBasicContainer/leftContainer"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="dataMapper.ecore#//OperatorLeftContainer"/>
+              <diagramNode
+                  href="dataMapper.gmfgraph#OperatorLeftContainer"/>
+              <children>
+                <containmentFeature
+                    href="dataMapper.ecore#//OperatorLeftContainer/leftConnectors"/>
+                <ownedChild>
+                  <domainMetaElement
+                      href="dataMapper.ecore#//OperatorLeftConnector"/>
+                  <diagramNode
+                      href="dataMapper.gmfgraph#OperatorLeftConnector"/>
+                  <children>
+                    <containmentFeature
+                        href="dataMapper.ecore#//OperatorLeftConnector/inNode"/>
+                    <ownedChild>
+                      <domainMetaElement
+                          href="dataMapper.ecore#//InNode"/>
+                      <diagramNode
+                          href="dataMapper.gmfgraph#InNode"/>
+                    </ownedChild>
+                  </children>
+                </ownedChild>
+              </children>
+            </ownedChild>
+          </children>
+          <children>
+            <containmentFeature
+                href="dataMapper.ecore#//OperatorBasicContainer/rightContainer"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="dataMapper.ecore#//OperatorRightContainer"/>
+              <diagramNode
+                  href="dataMapper.gmfgraph#OperatorRightContainer"/>
+              <children>
+                <containmentFeature
+                    href="dataMapper.ecore#//OperatorRightContainer/rightConnectors"/>
+                <ownedChild>
+                  <domainMetaElement
+                      href="dataMapper.ecore#//OperatorRightConnector"/>
+                  <diagramNode
+                      href="dataMapper.gmfgraph#OperatorRightConnector"/>
+                  <children>
+                    <containmentFeature
+                        href="dataMapper.ecore#//OperatorRightConnector/outNode"/>
+                    <ownedChild>
+                      <domainMetaElement
+                          href="dataMapper.ecore#//OutNode"/>
+                      <diagramNode
+                          href="dataMapper.gmfgraph#Operations"/>
+                    </ownedChild>
+                  </children>
+                </ownedChild>
+              </children>
+            </ownedChild>
+          </children>
+        </ownedChild>
+      </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Concat"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.2"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Concat"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
     </ownedChild>
   </nodes>
   <links>
@@ -116,7 +204,7 @@
         href="dataMapper.ecore#//OutNode/outgoingLink"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="dataMapper.gmftool#//@palette/@tools.0/@tools.1"/>
+        href="dataMapper.gmftool#//@palette/@tools.0/@tools.0"/>
     <diagramLink
         href="dataMapper.gmfgraph#DataMapperLink"/>
     <sourceMetaFeature

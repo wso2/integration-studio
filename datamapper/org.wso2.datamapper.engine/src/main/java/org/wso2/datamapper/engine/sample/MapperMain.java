@@ -15,12 +15,15 @@ public class MapperMain {
 		
 		DataMapper mapper = new DataMapper();
 		InputStream inStream = new FileInputStream(new File("./resources/input6.xml"));
+		InputStream config = new FileInputStream(new File("./resources/MappingConfig6.js"));
+		InputStream inputSchema = new FileInputStream(new File("./resources/inputSchema6.avsc"));
+		InputStream outputSchema = new FileInputStream(new File("./resources/outputSchema6.avsc"));
 		//InputStream inStream = new FileInputStream(new File("./resources/input3.xml"));
 		
 		try {
 		//	String doMap = mapper.doMap(new File("./resources/MappingConfig3.js"),inStream,new File("./resources/inputSchema3.avsc"),new File("./resources/outputSchema3.avsc"));			
 			
-			String doMap = mapper.doMap(new File("./resources/MappingConfig6.js"),inStream,new File("./resources/inputSchema6.avsc"),new File("./resources/outputSchema6.avsc"));			
+			String doMap = mapper.doMap(config,inStream,inputSchema,outputSchema);			
 			
 			System.out.println(doMap);
 			inStream.close();

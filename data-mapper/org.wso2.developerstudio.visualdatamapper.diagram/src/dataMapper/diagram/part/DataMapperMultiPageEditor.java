@@ -264,7 +264,6 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		return temp;
 	}
 
-	// generated not
 	public void updateSourceEditor() {
 
 		sourceEditor.update(DataMapperConfigurationGenerator.generateFunction());

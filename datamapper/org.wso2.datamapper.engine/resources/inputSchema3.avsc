@@ -1,10 +1,7 @@
 {
   "name" : "employees",
   "type": "record", 
-  "fields": [{
-  			  "name": "types",
-  			  "type": "string"
-  			  },	
+  "fields": [
               { "name": "employee", 
           		"type": { 
             				"type": "array", 

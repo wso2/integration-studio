@@ -268,6 +268,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String Concat3CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String Concat3CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
 	public static String CommandName_OpenDiagram;
 
 	/**
@@ -294,6 +304,16 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_OutNode_3009_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_InNode_3015_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_OutNode_3018_outgoinglinks;
 
 	/**
 	 * @generated

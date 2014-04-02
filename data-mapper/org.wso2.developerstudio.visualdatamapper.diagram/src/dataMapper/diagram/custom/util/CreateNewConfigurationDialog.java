@@ -53,6 +53,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
+import org.wso2.developerstudio.eclipse.esb.impl.MediatorImpl;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
@@ -454,6 +455,7 @@ public class CreateNewConfigurationDialog extends Dialog {
 				item.setPath(registryResourceInfo.getDeployPath().replaceAll(
 						"/$", "")); //$NON-NLS-1$ //$NON-NLS-2$
 				artifact.addRegistryElement(item);
+				((RegistryItem) item).setMediaType("text/plain");
 			}
 		}
 		generalProjectArtifact.addArtifact(artifact);

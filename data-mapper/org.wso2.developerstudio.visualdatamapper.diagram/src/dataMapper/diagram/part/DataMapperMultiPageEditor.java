@@ -1,6 +1,7 @@
 package dataMapper.diagram.part;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -281,13 +282,14 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			configFilePath = configFilePath
 					.replaceAll(".datamapper_diagram$", ".js");
 			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
+			InputStream is = null;
 			try {
 				String source = DataMapperConfigurationGenerator.generateFunction();
 				if (source == null) {
 					log.warn("Could get source");
 					return;
 				}
-				InputStream is = new ByteArrayInputStream(source.getBytes());
+				is = new ByteArrayInputStream(source.getBytes());
 				if (configFile.exists()) {
 					configFile.setContents(is, true, true, monitor);
 				} else {
@@ -296,6 +298,14 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 
 			} catch (Exception e) {
 				log.warn("Could not save file " + configFile);
+			} finally {
+				if(is != null) {
+					try {
+						is.close();
+					} catch (IOException e) {
+						// ignore.
+					}
+				}
 			}
 		}
 	}

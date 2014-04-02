@@ -3,6 +3,9 @@ package dataMapper.diagram.tree.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.avro.Schema.Type;
+import org.apache.commons.lang.StringUtils;
+
 public class Element {
 
 	private String name;
@@ -10,6 +13,7 @@ public class Element {
 	private List<Attribute> attributes;
 	private Tree parent;
 	private int count;
+	private Type schemaType;
 	
 	public  Element(Tree parent) {
 		this.parent=parent;
@@ -53,5 +57,30 @@ public class Element {
 			attributes = new ArrayList<Attribute>();
 		}
 		return this.attributes;
+	}
+	
+	/**
+	 * @return the schemaType
+	 */
+	public Type getSchemaType() {
+		return schemaType;
+	}
+
+	/**
+	 * @param schemaType the schemaType to set
+	 */
+	public void setSchemaType(Type schemaType) {
+		this.schemaType = schemaType;
+	}
+	
+	public String toString() {
+		if (StringUtils.isNotBlank(name) &&
+		    (schemaType != null && StringUtils.isNotBlank(schemaType.getName()))) {
+			return name + ":" + schemaType.getName();
+		} else if (StringUtils.isNotBlank(name)) {
+			return name;
+		} else {
+			return "";
+		}
 	}
 }

@@ -136,7 +136,9 @@ public class SchemaKeyEditorDialog extends Dialog {
 
 	private void changeVisibility(boolean visible) {
 		try {
-			this.getShell().setVisible(visible);
+			if(this.getShell() != null) {
+				this.getShell().setVisible(visible);
+			}
 		} catch (Exception e) {
 			log.error(ERROR_DIALOG_VISIBILITY, e);
 		}

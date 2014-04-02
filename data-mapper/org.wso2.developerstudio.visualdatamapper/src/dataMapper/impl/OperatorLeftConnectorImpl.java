@@ -44,7 +44,7 @@ public class OperatorLeftConnectorImpl extends EObjectImpl implements OperatorLe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperatorLeftConnectorImpl() {
+	protected OperatorLeftConnectorImpl() {
 		super();
 	}
 

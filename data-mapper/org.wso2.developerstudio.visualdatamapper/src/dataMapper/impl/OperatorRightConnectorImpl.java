@@ -44,7 +44,7 @@ public class OperatorRightConnectorImpl extends EObjectImpl implements OperatorR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperatorRightConnectorImpl() {
+	public OperatorRightConnectorImpl() {
 		super();
 	}
 

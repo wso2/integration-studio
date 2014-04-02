@@ -393,7 +393,7 @@ public class InputEditPart extends ShapeNodeEditPart {
 			layout.setSpacing(5);
 			nodeShape.setLayoutManager(layout);
 		}
-		return nodeShape; /* use nodeShape itself as contentPane */
+		return nodeShape; // use nodeShape itself as contentPane
 	}
 
 	/**

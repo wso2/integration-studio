@@ -801,6 +801,34 @@ public interface DataMapperPackage extends EPackage {
 	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link dataMapper.impl.SplitImpl <em>Split</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.SplitImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getSplit()
+	 * @generated
+	 */
+	int SPLIT = 20;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The number of structural features of the '<em>Split</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link dataMapper.DataMapperNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1408,6 +1436,16 @@ public interface DataMapperPackage extends EPackage {
 	EClass getConstant();
 
 	/**
+	 * Returns the meta object for class '{@link dataMapper.Split <em>Split</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Split</em>'.
+	 * @see dataMapper.Split
+	 * @generated
+	 */
+	EClass getSplit();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1924,6 +1962,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONSTANT = eINSTANCE.getConstant();
+
+		/**
+		 * The meta object literal for the '{@link dataMapper.impl.SplitImpl <em>Split</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.SplitImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getSplit()
+		 * @generated
+		 */
+		EClass SPLIT = eINSTANCE.getSplit();
 
 	}
 

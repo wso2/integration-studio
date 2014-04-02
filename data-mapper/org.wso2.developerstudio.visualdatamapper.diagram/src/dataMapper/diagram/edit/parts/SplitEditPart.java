@@ -1,15 +1,21 @@
 package dataMapper.diagram.edit.parts;
 
-import org.eclipse.draw2d.FlowLayout;
+import java.util.List;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
-import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.TitleBarBorder;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.EditDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -20,31 +26,39 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.providers.LeftRightProvider;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.graphics.Font;
 
 import dataMapper.DataMapperFactory;
 import dataMapper.DataMapperPackage;
+import dataMapper.OperatorBasicContainer;
 import dataMapper.OperatorLeftConnector;
 import dataMapper.OperatorLeftContainer;
-import dataMapper.OperatorRightConnector;
-import dataMapper.OperatorRightContainer;
+import dataMapper.Split;
+import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
+import dataMapper.impl.DataMapperFactoryImpl;
+import dataMapper.impl.OperatorBasicContainerImpl;
+import dataMapper.impl.OperatorLeftConnectorImpl;
+import dataMapper.impl.OperatorLeftContainerImpl;
+import dataMapper.impl.OperatorRightConnectorImpl;
+import dataMapper.impl.OperatorRightContainerImpl;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
+public class SplitEditPart extends AbstractOperatorEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3016;
+	public static final int VISUAL_ID = 2007;
 
 	/**
 	 * @generated
@@ -56,73 +70,17 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	 */
 	protected IFigure primaryShape;
 
+	private int sizeX = 40;
+
+	private int sizeY = 20;
 
 	/**
 	 * @generated
 	 */
-	public OperatorRightContainerEditPart(View view) {
+	public SplitEditPart(View view) {
 		super(view);
 	}
 	
-	@Override
-	public void activate() {
-
-		Display.getDefault().asyncExec(new Runnable() {
-			@Override
-			public void run() {
-
-				if (getParent().getParent() instanceof SplitEditPart) {
-					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
-							.getElement();
-					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
-						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-						OperatorRightConnector rightConnector2 = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-						AddCommand addCaseConnectorCmd = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector);
-						if (addCaseConnectorCmd.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
-						}
-
-						AddCommand addCaseConnectorCmd2 = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector2);
-						if (addCaseConnectorCmd2.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd2);
-						}
-
-					}
-				}
-
-				else if (getParent().getParent() instanceof EqualEditPart || getParent().getParent() instanceof ConcatEditPart) {
-					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
-							.getElement();
-					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
-						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-
-						AddCommand addCaseConnectorCmd = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector);
-						if (addCaseConnectorCmd.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
-						}
-
-					}
-				}
-			}// run end
-		});
-
-		super.activate();
-	}
 
 	/**
 	 * @generated
@@ -132,10 +90,10 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new dataMapper.diagram.edit.policies.OperatorRightContainerItemSemanticEditPolicy());
+				new dataMapper.diagram.edit.policies.SplitItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new dataMapper.diagram.edit.policies.OperatorRightContainerCanonicalEditPolicy());
+				new dataMapper.diagram.edit.policies.SplitCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -167,30 +125,29 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		primaryShape = new OperatorRightContainerFigure();
-		return primaryShape;
+		return primaryShape = new SplitFigure();
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
-	public OperatorRightContainerFigure getPrimaryShape() {
-		return (OperatorRightContainerFigure) primaryShape;
+	public RectangleFigure getPrimaryShape() {
+		return (RectangleFigure) primaryShape;
 	}
 
 	/**
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40,20);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(sizeX, sizeY);
 		return result;
 	}
 
 	/**
-	 * Creates figure for this edit part.
+	 * Creates figure for this	 edit part.
 	 * 
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
@@ -267,24 +224,20 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		}
 	}
 
-	public class OperatorRightContainerFigure extends RoundedRectangle {
+	public class SplitFigure extends RoundedRectangle {
 
-		public OperatorRightContainerFigure() {
-
+		public SplitFigure() {
 			this.setBackgroundColor(THIS_BACK);
-			//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			//border.setColor(new Color(null, 255, 0, 0)); 
-			//this.setBorder(border ); //TODO just for identification remove once we are done
 
-			ToolbarLayout layoutThis = new ToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
-			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
-			layoutThis.setSpacing(0);
-			layoutThis.setHorizontal(false);
-			layoutThis.setMatchWidth(true);
+			TitleBarBorder titleBarBorder = new TitleBarBorder("Split");
+			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
+			this.setBorder(titleBarBorder);
 
-			this.setLayoutManager(layoutThis);
-
+			/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			 border.setColor(new Color(null, 255, 0, 0));*/
+			this.setBorder(titleBarBorder);
 		}
 
 		public String getIconPath() {
@@ -292,11 +245,11 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		}
 
 		public String getNodeName() {
-			return "OperatorRightContainer";
+			return "Split";
 		}
 
 		public IFigure getToolTip() {
-			return new Label("OperatorRightContainer");
+			return new Label("Split Operation");
 		}
 
 	}

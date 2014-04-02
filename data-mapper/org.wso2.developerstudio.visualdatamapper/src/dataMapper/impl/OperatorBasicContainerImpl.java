@@ -56,7 +56,7 @@ public class OperatorBasicContainerImpl extends EObjectImpl implements OperatorB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperatorBasicContainerImpl() {
+	public OperatorBasicContainerImpl() {
 		super();
 	}
 

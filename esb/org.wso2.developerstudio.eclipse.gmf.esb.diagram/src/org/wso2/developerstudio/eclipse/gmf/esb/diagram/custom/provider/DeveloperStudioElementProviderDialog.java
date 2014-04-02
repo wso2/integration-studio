@@ -25,6 +25,7 @@ import java.util.Map;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -56,11 +57,13 @@ import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
 import org.wso2.developerstudio.eclipse.greg.core.RegistryManager;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.RegistryFileImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProvider;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
+
 import dataMapper.diagram.custom.util.CreateNewConfigurationDialog;
 
 
@@ -312,10 +315,30 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	protected void okPressed() {
 		Object selectedElement = getSelectedElement();
 		IDeveloperStudioElement resource = (IDeveloperStudioElement) selectedElement;
+		
 		if (resource.getSource() instanceof IFile) {
 			IFile selectedIFile = (IFile) resource.getSource();
 			ipathOfselection = selectedIFile.getFullPath().toString();
+			
+			IProject project = selectedIFile.getProject();
+			RegistryFileImpl rpi = (RegistryFileImpl)selectedElement;
+			String fileName = rpi.getName();
+			String fullPath = rpi.getPath();
+			int index = fullPath.lastIndexOf('/');
+			String path = "";
+			if (index > 0) {
+				path = fullPath.substring(0,index);
+			}
+			
+			if (path != null && !path.isEmpty())
+				try {
+					CreateNewConfigurationDialog.createRegistryResourcesForInputScemaAndOutputSchema(fileName, project, path);
+				} catch (Exception e) {
+					log.error(e.getMessage());
+				}
 		}
+	
+		
 		
 		if (showOpenResourceCheckBox && chkOpenResource.getSelection()) {
 			try {

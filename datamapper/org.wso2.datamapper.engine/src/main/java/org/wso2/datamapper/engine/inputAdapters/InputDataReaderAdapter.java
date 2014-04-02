@@ -22,10 +22,11 @@ import java.util.Map;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.axiom.om.OMElement;
 
 public interface InputDataReaderAdapter {
 	
-	public void setInptStream(InputStream inputStream)throws IOException;
+	public void setInputMsg(OMElement msg)throws IOException;
 	public boolean hasChildRecords();
 	public void setInputSchemaMap(Map<String, Schema> inputSchemaMap);
 	public void setRootRecord(GenericRecord rootRecord);

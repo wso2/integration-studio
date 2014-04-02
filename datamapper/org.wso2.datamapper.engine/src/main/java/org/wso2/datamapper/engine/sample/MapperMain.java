@@ -6,26 +6,31 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMXMLBuilderFactory;
+import org.apache.axiom.om.OMXMLParserWrapper;
 import org.json.JSONException;
 import org.wso2.datamapper.engine.core.DataMapper;
+import org.wso2.datamapper.engine.models.MappingResourceModel;
 
 public class MapperMain {
 
 	public static void main(String[] args) throws FileNotFoundException, JSONException {
 		
 		DataMapper mapper = new DataMapper();
-		InputStream inStream = new FileInputStream(new File("./resources/input6.xml"));
-		InputStream config = new FileInputStream(new File("./resources/MappingConfig6.js"));
-		InputStream inputSchema = new FileInputStream(new File("./resources/inputSchema6.avsc"));
-		InputStream outputSchema = new FileInputStream(new File("./resources/outputSchema6.avsc"));
-		//InputStream inStream = new FileInputStream(new File("./resources/input3.xml"));
+		InputStream inStream = new FileInputStream(new File("./resources/sf-input.xml"));
+		InputStream config = new FileInputStream(new File("./resources/MappingConfigSF.js"));
+		InputStream inputSchema = new FileInputStream(new File("./resources/sf-inputavroschema.avsc"));
+		InputStream outputSchema = new FileInputStream(new File("./resources/sf-outputavroschema.avsc"));
 		
 		try {
-		//	String doMap = mapper.doMap(new File("./resources/MappingConfig3.js"),inStream,new File("./resources/inputSchema3.avsc"),new File("./resources/outputSchema3.avsc"));			
+	
+			MappingResourceModel configModel = new MappingResourceModel(inputSchema,outputSchema, config);
+			OMXMLParserWrapper builder = OMXMLBuilderFactory.createOMBuilder(inStream);
+		    OMElement documentElement = builder.getDocumentElement();
+			String doMap = mapper.doMap(documentElement,configModel);			
 			
-			String doMap = mapper.doMap(config,inStream,inputSchema,outputSchema);			
-			
-			System.out.println(doMap);
+			System.out.println(doMap);  
 			inStream.close();
 
 		} catch (IOException e) {

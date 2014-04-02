@@ -532,6 +532,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.Split} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SplitItemProvider splitItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.Split}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSplitAdapter() {
+		if (splitItemProvider == null) {
+			splitItemProvider = new SplitItemProvider(this);
+		}
+
+		return splitItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -650,6 +673,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (concatItemProvider != null) concatItemProvider.dispose();
 		if (equalItemProvider != null) equalItemProvider.dispose();
 		if (constantItemProvider != null) constantItemProvider.dispose();
+		if (splitItemProvider != null) splitItemProvider.dispose();
 	}
 
 }

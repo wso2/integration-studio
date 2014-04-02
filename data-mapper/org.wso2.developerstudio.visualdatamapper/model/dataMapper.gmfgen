@@ -280,7 +280,7 @@
         childNodes="//@diagram/@childNodes.10 //@diagram/@childNodes.13"
         graphicalNodeEditPolicyClassName="OperatorBasicContainerGraphicalNodeEditPolicy"
         createCommandClassName="OperatorBasicContainerCreateCommand"
-        containers="//@diagram/@topLevelNodes.2">
+        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -544,6 +544,57 @@
             href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
+    <topLevelNodes
+        visualID="2006"
+        editPartClassName="ConcatEditPart"
+        itemSemanticEditPolicyClassName="ConcatItemSemanticEditPolicy"
+        notationViewFactoryClassName="ConcatViewFactory"
+        canonicalEditPolicyClassName="ConcatCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.9"
+        graphicalNodeEditPolicyClassName="ConcatGraphicalNodeEditPolicy"
+        createCommandClassName="ConcatCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="ConcatEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//dataMapper/Concat"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
+    <topLevelNodes
+        visualID="2007"
+        editPartClassName="SplitEditPart"
+        itemSemanticEditPolicyClassName="SplitItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="SplitCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.9"
+        graphicalNodeEditPolicyClassName="SplitGraphicalNodeEditPolicy"
+        createCommandClassName="SplitCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="SplitEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//dataMapper/Split"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
     <links
         visualID="4001"
         editPartClassName="DataMapperLinkEditPart"
@@ -586,6 +637,16 @@
             title="Equal"
             description="Create new Equal"
             genNodes="//@diagram/@topLevelNodes.2"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Concat"
+            description="Create new Concat"
+            genNodes="//@diagram/@topLevelNodes.3"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Split"
+            description="Create new Split"
+            genNodes="//@diagram/@topLevelNodes.4"/>
       </groups>
     </palette>
     <preferencePages
@@ -698,6 +759,18 @@
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.2"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.3"
+        child="//@diagram/@childNodes.9"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.3"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.4"
+        child="//@diagram/@childNodes.9"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.4"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.0"

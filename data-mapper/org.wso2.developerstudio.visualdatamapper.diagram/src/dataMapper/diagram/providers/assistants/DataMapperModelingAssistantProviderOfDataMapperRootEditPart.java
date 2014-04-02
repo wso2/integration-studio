@@ -17,10 +17,12 @@ public class DataMapperModelingAssistantProviderOfDataMapperRootEditPart extends
 	 */
 	@Override
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(3);
+		List<IElementType> types = new ArrayList<IElementType>(5);
 		types.add(dataMapper.diagram.providers.DataMapperElementTypes.Input_2002);
 		types.add(dataMapper.diagram.providers.DataMapperElementTypes.Output_2003);
 		types.add(dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005);
+		types.add(dataMapper.diagram.providers.DataMapperElementTypes.Concat_2006);
+		types.add(dataMapper.diagram.providers.DataMapperElementTypes.Split_2007);
 		return types;
 	}
 

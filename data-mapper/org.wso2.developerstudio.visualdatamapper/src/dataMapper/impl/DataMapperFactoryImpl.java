@@ -16,9 +16,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 
@@ -86,6 +84,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.CONCAT: return createConcat();
 			case DataMapperPackage.EQUAL: return createEqual();
 			case DataMapperPackage.CONSTANT: return createConstant();
+			case DataMapperPackage.SPLIT: return createSplit();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -173,8 +172,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public OperatorLeftContainer createOperatorLeftContainer() {
 		OperatorLeftContainerImpl operatorLeftContainer = new OperatorLeftContainerImpl();
-		operatorLeftContainer.getLeftConnectors().add(createOperatorLeftConnector()); //FIXME these need to be programmaticaly handled not hard coded
-		operatorLeftContainer.getLeftConnectors().add(createOperatorLeftConnector()); //FIXME these need to be programmaticaly handled not hard coded
+//		operatorLeftContainer.getLeftConnectors().add(createOperatorLeftConnector()); //FIXME these need to be programmaticaly handled not hard coded
+//		operatorLeftContainer.getLeftConnectors().add(createOperatorLeftConnector()); //FIXME these need to be programmaticaly handled not hard coded
 		return operatorLeftContainer;
 	}
 
@@ -196,7 +195,7 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public OperatorRightContainer createOperatorRightContainer() {
 		OperatorRightContainerImpl operatorRightContainer = new OperatorRightContainerImpl();
-		operatorRightContainer.getRightConnectors().add(createOperatorRightConnector()); //FIXME these need to be programmaticaly handled not hard coded
+//		operatorRightContainer.getRightConnectors().add(createOperatorRightConnector()); //FIXME these need to be programmaticaly handled not hard coded
 		//operatorRightContainer.getRightConnectors().add(createOperatorRightConnector());
 		//operatorRightContainer.getRightConnectors().add(createOperatorRightConnector());
 		return operatorRightContainer;
@@ -265,7 +264,6 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	 */
 	public OutNode createOutNode() {
 		OutNodeImpl outNode = new OutNodeImpl();
-		//outNode.getOutgoingLink().add(createDataMapperLink()); //TODO need to add a arrow connector by default ??
 		return outNode;
 	}
 
@@ -282,17 +280,18 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
+		concat.setBasicContainer(createOperatorBasicContainer());
 		return concat;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Equal createEqual() {
 		EqualImpl equal = new EqualImpl();
@@ -308,6 +307,17 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	public Constant createConstant() {
 		ConstantImpl constant = new ConstantImpl();
 		return constant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Split createSplit() {
+		SplitImpl split = new SplitImpl();
+		split.setBasicContainer(createOperatorBasicContainer());
+		return split;
 	}
 
 	/**

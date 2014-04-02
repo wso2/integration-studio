@@ -202,26 +202,22 @@ public class EqualEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
-	
+
 	public class EqualFigure extends RoundedRectangle {
 
 		public EqualFigure() {
 			this.setBackgroundColor(THIS_BACK);
-			
+
 			TitleBarBorder titleBarBorder = new TitleBarBorder("Equal");
 			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
 			this.setBorder(titleBarBorder);
-			
-			
-			
-/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			border.setColor(new Color(null, 255, 0, 0));*/
+
+			/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			 border.setColor(new Color(null, 255, 0, 0));*/
 			this.setBorder(titleBarBorder);
 		}
-		
 
 		public String getIconPath() {
 			return "icons/ico20/log-mediator.gif";

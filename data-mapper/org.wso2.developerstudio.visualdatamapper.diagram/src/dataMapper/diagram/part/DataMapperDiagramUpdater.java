@@ -32,6 +32,10 @@ public class DataMapperDiagramUpdater {
 			return getOutput_2003SemanticChildren(view);
 		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 			return getEqual_2005SemanticChildren(view);
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			return getConcat_2006SemanticChildren(view);
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
+			return getSplit_2007SemanticChildren(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002SemanticChildren(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -89,6 +93,16 @@ public class DataMapperDiagramUpdater {
 			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
 					childElement);
 			if (visualID == dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID) {
+				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
+						visualID));
+				continue;
+			}
+			if (visualID == dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID) {
+				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
+						visualID));
+				continue;
+			}
+			if (visualID == dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID) {
 				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
 						visualID));
 				continue;
@@ -152,6 +166,50 @@ public class DataMapperDiagramUpdater {
 			return Collections.emptyList();
 		}
 		dataMapper.Equal modelElement = (dataMapper.Equal) view.getElement();
+		LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor>();
+		{
+			dataMapper.OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
+						visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperNodeDescriptor> getConcat_2006SemanticChildren(
+			View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		dataMapper.Concat modelElement = (dataMapper.Concat) view.getElement();
+		LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor>();
+		{
+			dataMapper.OperatorBasicContainer childElement = modelElement.getBasicContainer();
+			int visualID = dataMapper.diagram.part.DataMapperVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID) {
+				result.add(new dataMapper.diagram.part.DataMapperNodeDescriptor(childElement,
+						visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperNodeDescriptor> getSplit_2007SemanticChildren(
+			View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		dataMapper.Split modelElement = (dataMapper.Split) view.getElement();
 		LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor> result = new LinkedList<dataMapper.diagram.part.DataMapperNodeDescriptor>();
 		{
 			dataMapper.OperatorBasicContainer childElement = modelElement.getBasicContainer();
@@ -497,6 +555,10 @@ public class DataMapperDiagramUpdater {
 			return getOutput_2003ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 			return getEqual_2005ContainedLinks(view);
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			return getConcat_2006ContainedLinks(view);
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
+			return getSplit_2007ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002ContainedLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -546,6 +608,10 @@ public class DataMapperDiagramUpdater {
 			return getOutput_2003IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 			return getEqual_2005IncomingLinks(view);
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			return getConcat_2006IncomingLinks(view);
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
+			return getSplit_2007IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002IncomingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -595,6 +661,10 @@ public class DataMapperDiagramUpdater {
 			return getOutput_2003OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 			return getEqual_2005OutgoingLinks(view);
+		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			return getConcat_2006OutgoingLinks(view);
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
+			return getSplit_2007OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002OutgoingLinks(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -661,6 +731,22 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getEqual_2005ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getConcat_2006ContainedLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getSplit_2007ContainedLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -830,6 +916,22 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getEqual_2005IncomingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getConcat_2006IncomingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getSplit_2007IncomingLinks(
 			View view) {
 		return Collections.emptyList();
 	}
@@ -1008,6 +1110,22 @@ public class DataMapperDiagramUpdater {
 	 * @generated
 	 */
 	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getEqual_2005OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getConcat_2006OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<dataMapper.diagram.part.DataMapperLinkDescriptor> getSplit_2007OutgoingLinks(
 			View view) {
 		return Collections.emptyList();
 	}

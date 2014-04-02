@@ -3,9 +3,7 @@ package dataMapper.diagram.tree.generator;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.avro.Schema;
@@ -40,9 +38,9 @@ public class TreeFromAVSC{
 	@SuppressWarnings({ "static-access", "deprecation", "null" })
 	public  Tree generateInputTree(){
 		multipleChunk = new ArrayList<String>();
-		GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
+		//GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
 
-		DataFileReader <GenericData> dataFileReader;
+		//DataFileReader <GenericData> dataFileReader;
 		Tree root = new Tree(); //root tree for Tree data struture
 		try {
 
@@ -74,9 +72,9 @@ public class TreeFromAVSC{
 	
 	public static Tree generateInputTreeFromFile(String path) {
 		multipleChunk = new ArrayList<String>();
-		GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
+		//GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
 
-		DataFileReader <GenericData> dataFileReader;
+		//DataFileReader <GenericData> dataFileReader;
 		Tree root = new Tree(); //root tree for Tree data struture
 		try {
 
@@ -221,9 +219,9 @@ public class TreeFromAVSC{
 	public Tree generateOutputTree(){
 		
 
-		GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
+		//GenericDatumReader<GenericData> genericReader = new GenericDatumReader<GenericData>();
 
-		DataFileReader <GenericData> dataFileReader;
+		//DataFileReader <GenericData> dataFileReader;
 		Tree root = new Tree(); //root tree for Tree data struture
 		try {
 

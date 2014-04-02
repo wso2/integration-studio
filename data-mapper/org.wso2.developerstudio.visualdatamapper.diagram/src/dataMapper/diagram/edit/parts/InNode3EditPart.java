@@ -23,7 +23,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-
 /** 
  * @generated NOT
  */
@@ -186,7 +185,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class EastPointerFigure extends EastPointerShape {
 
 		public EastPointerFigure() {
@@ -195,7 +194,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
 		}
 	}
-	
+
 	class InNode3Figure extends RectangleFigure {
 		/**
 		 * @generated NOT
@@ -243,7 +242,7 @@ public class InNode3EditPart extends AbstractBorderItemEditPart {
 
 		}
 	}
-	
+
 	static final Color THIS_BACK = new Color(null, 50, 50, 50);
 
 }

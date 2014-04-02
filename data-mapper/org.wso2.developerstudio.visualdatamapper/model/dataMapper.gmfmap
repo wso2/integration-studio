@@ -179,6 +179,42 @@
       </children>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Concat"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.2"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Concat"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Split"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.3"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Split"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
   <links>
     <domainMetaElement
         href="dataMapper.ecore#//DataMapperLink"/>

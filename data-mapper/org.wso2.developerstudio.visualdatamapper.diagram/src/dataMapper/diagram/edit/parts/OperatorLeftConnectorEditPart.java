@@ -27,7 +27,6 @@ import org.eclipse.swt.graphics.Color;
 
 import dataMapper.diagram.edit.parts.custom.FixedBorderItemLocator;
 
-
 /**
  * @generated
  */
@@ -47,6 +46,7 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	 * @generated
 	 */
 	protected IFigure primaryShape;
+
 
 	/**
 	 * @generated
@@ -101,9 +101,9 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 		};
 		return lep;
 	}
-	
+
 	protected boolean addFixedChild(EditPart childEditPart) {
-		
+
 		if (childEditPart instanceof InNode3EditPart) {
 			IFigure borderItemFigure = ((InNode3EditPart) childEditPart).getFigure();
 			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
@@ -111,49 +111,15 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
-		
+
 		return false;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected boolean removeFixedChild(EditPart childEditPart) {
-		
-		if (childEditPart instanceof InNodeEditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((InNodeEditPart) childEditPart).getFigure());
-			return true;
-		}
-		
-		return false;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected void addChildVisual(EditPart childEditPart, int index) {
-		if (addFixedChild(childEditPart)) {
-			return;
-		}
-		super.addChildVisual(childEditPart, -1);
-	}
-
-	/**
-	 * @generated
-	 */
-	protected void removeChildVisual(EditPart childEditPart) {
-		if (removeFixedChild(childEditPart)) {
-			return;
-		}
-		super.removeChildVisual(childEditPart);
 	}
 
 	/**
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		
+
 		RectangleFigure primaryShape = new RectangleFigure();
 		//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
 		//border.setColor(new Color(null, 0, 0, 255));
@@ -172,7 +138,7 @@ public class OperatorLeftConnectorEditPart extends AbstractBorderedShapeEditPart
 	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(60, 20);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40,20);
 		return result;
 	}
 

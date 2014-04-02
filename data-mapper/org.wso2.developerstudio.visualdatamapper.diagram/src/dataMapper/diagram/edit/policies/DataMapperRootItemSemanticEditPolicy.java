@@ -33,6 +33,12 @@ public class DataMapperRootItemSemanticEditPolicy extends
 		if (dataMapper.diagram.providers.DataMapperElementTypes.Equal_2005 == req.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.EqualCreateCommand(req));
 		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Concat_2006 == req.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.ConcatCreateCommand(req));
+		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Split_2007 == req.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.SplitCreateCommand(req));
+		}
 		return super.getCreateCommand(req);
 	}
 

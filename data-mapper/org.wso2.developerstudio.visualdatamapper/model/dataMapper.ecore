@@ -106,4 +106,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="Concat" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Equal" eSuperTypes="#//Operator"/>
   <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Split" eSuperTypes="#//Operator"/>
 </ecore:EPackage>

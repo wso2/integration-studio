@@ -129,6 +129,10 @@ public class DataMapperVisualIDRegistry {
 					domainElement.eClass())) {
 				return dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID;
 			}
+			if (dataMapper.DataMapperPackage.eINSTANCE.getSplit().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID;
+			}
 			break;
 		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID:
 			if (dataMapper.DataMapperPackage.eINSTANCE.getTreeNode().isSuperTypeOf(
@@ -149,6 +153,12 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			if (dataMapper.DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(
+					domainElement.eClass())) {
+				return dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
 			if (dataMapper.DataMapperPackage.eINSTANCE.getOperatorBasicContainer().isSuperTypeOf(
 					domainElement.eClass())) {
 				return dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID;
@@ -288,6 +298,9 @@ public class DataMapperVisualIDRegistry {
 			if (dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case dataMapper.diagram.edit.parts.InputEditPart.VISUAL_ID:
 			if (dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID == nodeVisualID) {
@@ -305,6 +318,11 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
 			if (dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}

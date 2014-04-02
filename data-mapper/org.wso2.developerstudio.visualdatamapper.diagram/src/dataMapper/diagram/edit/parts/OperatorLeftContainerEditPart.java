@@ -7,6 +7,13 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -24,6 +31,15 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
+//import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+
+import org.eclipse.swt.widgets.Display;
+
+import dataMapper.DataMapperFactory;
+import dataMapper.DataMapperPackage;
+import dataMapper.OperatorLeftConnector;
+import dataMapper.OperatorLeftContainer;
+import dataMapper.impl.DataMapperPackageImpl;
 
 /**
  * @generated
@@ -52,6 +68,66 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		super(view);
 	}
 
+	@Override
+	public void activate() {
+
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+
+				if (getParent().getParent() instanceof SplitEditPart) {
+					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
+							.getElement();
+					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
+						OperatorLeftConnector peratorLeftConnector = DataMapperFactory.eINSTANCE
+								.createOperatorLeftConnector();
+						AddCommand addCaseConnectorCmd = new AddCommand(
+								getEditingDomain(),
+								parentContainer,
+								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS,
+								peratorLeftConnector);
+						if (addCaseConnectorCmd.canExecute()) {
+							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
+						}
+
+					}
+				}
+				
+				else if(getParent().getParent() instanceof EqualEditPart || getParent().getParent() instanceof ConcatEditPart){
+					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
+							.getElement();
+					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
+						OperatorLeftConnector leftConnector1 = DataMapperFactory.eINSTANCE
+								.createOperatorLeftConnector();
+						OperatorLeftConnector leftConnector2 = DataMapperFactory.eINSTANCE
+								.createOperatorLeftConnector();
+						AddCommand addCaseConnectorCmd1 = new AddCommand(
+								getEditingDomain(),
+								parentContainer,
+								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS,
+								leftConnector1);
+						if (addCaseConnectorCmd1.canExecute()) {
+							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd1);
+						}
+						
+						AddCommand addCaseConnectorCmd2 = new AddCommand(
+								getEditingDomain(),
+								parentContainer,
+								DataMapperPackage.Literals.OPERATOR_LEFT_CONTAINER__LEFT_CONNECTORS,
+								leftConnector2);
+						if (addCaseConnectorCmd2.canExecute()) {
+							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd2);
+						}
+
+					}
+				}
+				
+			}// runend
+		});
+
+		super.activate();
+	}
+
 	/**
 	 * @generated
 	 */
@@ -65,7 +141,8 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.OperatorLeftContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
+		// XXX need an SCR to runtime to have another abstract superclass that
+		// would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
@@ -113,15 +190,15 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40,20);
 		return result;
 	}
 
 	/**
 	 * Creates figure for this edit part.
 	 * 
-	 * Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * Body of this method does not depend on settings in generation model so
+	 * you may safely remove <i>generated</i> tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -135,9 +212,11 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane.
-	 * Respects layout one may have set for generated figure.
-	 * @param nodeShape instance of generated figure class
+	 * Default implementation treats passed figure as content pane. Respects
+	 * layout one may have set for generated figure.
+	 * 
+	 * @param nodeShape
+	 *            instance of generated figure class
 	 * @generated
 	 */
 	protected IFigure setupContentPane(IFigure nodeShape) {
@@ -200,15 +279,16 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		public OperatorLeftContainerFigure() {
 
 			this.setBackgroundColor(THIS_BACK);
-			//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			//border.setColor(new Color(null, 255, 0, 0));
-			//this.setBorder(border); //TODO just for identification remove once we are done
+			// RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			// border.setColor(new Color(null, 255, 0, 0));
+			// this.setBorder(border); //TODO just for identification remove
+			// once we are done
 
 			ToolbarLayout layoutThis = new ToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
 			layoutThis.setSpacing(0);
-			//layoutThis.setHorizontal(true);
+			// layoutThis.setHorizontal(true);
 			layoutThis.setMatchWidth(true);
 			this.setLayoutManager(layoutThis);
 

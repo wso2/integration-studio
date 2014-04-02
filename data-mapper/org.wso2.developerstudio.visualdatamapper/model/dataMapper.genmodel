@@ -77,5 +77,6 @@
     <genClasses ecoreClass="dataMapper.ecore#//Concat"/>
     <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
     <genClasses ecoreClass="dataMapper.ecore#//Constant"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Split"/>
   </genPackages>
 </genmodel:GenModel>

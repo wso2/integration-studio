@@ -101,6 +101,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case dataMapper.diagram.edit.parts.OutputEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -284,6 +285,14 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
 						.getConcat_2006ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getSplit_2007ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

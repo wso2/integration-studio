@@ -27,6 +27,7 @@ import dataMapper.Operators;
 import dataMapper.OutNode;
 import dataMapper.Output;
 
+import dataMapper.Split;
 import dataMapper.TreeNode;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -182,6 +183,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass constantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass splitEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -762,6 +770,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSplit() {
+		return splitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataMapperFactory getDataMapperFactory() {
 		return (DataMapperFactory)getEFactoryInstance();
 	}
@@ -861,6 +878,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		equalEClass = createEClass(EQUAL);
 
 		constantEClass = createEClass(CONSTANT);
+
+		splitEClass = createEClass(SPLIT);
 	}
 
 	/**
@@ -898,6 +917,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		concatEClass.getESuperTypes().add(this.getOperator());
 		equalEClass.getESuperTypes().add(this.getOperator());
 		constantEClass.getESuperTypes().add(this.getOperator());
+		splitEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -976,6 +996,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(equalEClass, Equal.class, "Equal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(splitEClass, Split.class, "Split", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

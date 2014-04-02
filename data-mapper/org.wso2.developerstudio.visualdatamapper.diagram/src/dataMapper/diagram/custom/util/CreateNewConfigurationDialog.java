@@ -53,6 +53,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
+import org.wso2.developerstudio.eclipse.esb.impl.MediatorImpl;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
@@ -66,7 +67,9 @@ import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryReso
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
+
 import dataMapper.diagram.custom.action.Messages;
+
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
@@ -82,7 +85,7 @@ public class CreateNewConfigurationDialog extends Dialog {
 	private Combo cmbProject;
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
+
 	private static final String REPO_ID_1 = "wso2-nexus-maven2-repository-1"; //$NON-NLS-1$
 	private static final String REPO_URL_1 = "http://maven.wso2.org/nexus/content/groups/wso2-public/"; //$NON-NLS-1$
 	private static final String REPO_ID = "wso2-maven2-repository-1"; //$NON-NLS-1$
@@ -109,7 +112,7 @@ public class CreateNewConfigurationDialog extends Dialog {
 	private static final int REGISTRY_RESOURCE = 0;
 	private static final String DATA_MAPPER_TEMPLATE_STRING = "/* WSO2 Data Mapper Config */"; //$NON-NLS-1$
 	private static final String DEFAULT_REGISTRY_PATH = "/_system/governance/datamapper"; //$NON-NLS-1$
-	
+
 	private static final String DIALOG_MESSAGE = Messages.CreateNewConfigurationDialog_DialogMessage;
 	private static final String DIALOG_HEADER_TEMPLATE_CREATION = Messages.CreateNewConfigurationDialog_DialogHeaderTemplateCreation;
 	private static final String DIALOG_HEADER_RESOURCE_CREATION = Messages.CreateNewConfigurationDialog_DialogHeaderResourceCreation;
@@ -168,8 +171,10 @@ public class CreateNewConfigurationDialog extends Dialog {
 		linkButton.setLayoutData(fd_linkButton);
 		linkButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
-				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell);
+				Shell shell = PlatformUI.getWorkbench()
+						.getActiveWorkbenchWindow().getShell();
+				IProject generalProject = GeneralProjectUtils
+						.createGeneralProject(shell);
 				if (generalProject != null) {
 					cmbProject.add(generalProject.getName());
 					if (cmbProject.getItems().length > 0) {
@@ -193,7 +198,8 @@ public class CreateNewConfigurationDialog extends Dialog {
 		});
 		txtResourceName.setText(DEFAULT_CONFIG_NAME);
 		FormData fd_txtResourceName = new FormData();
-		fd_txtResourceName.top = new FormAttachment(lblArtifactName, -5, SWT.TOP);
+		fd_txtResourceName.top = new FormAttachment(lblArtifactName, -5,
+				SWT.TOP);
 		fd_txtResourceName.right = new FormAttachment(cmbProject, 0, SWT.RIGHT);
 		fd_txtResourceName.left = new FormAttachment(lblArtifactName, 52);
 		txtResourceName.setLayoutData(fd_txtResourceName);
@@ -213,7 +219,8 @@ public class CreateNewConfigurationDialog extends Dialog {
 		});
 		txtRegistryPath.setText(DEFAULT_REGISTRY_PATH);
 		FormData fd_txtRegistryPath = new FormData();
-		fd_txtRegistryPath.top = new FormAttachment(lblRegistryPath, -5, SWT.TOP);
+		fd_txtRegistryPath.top = new FormAttachment(lblRegistryPath, -5,
+				SWT.TOP);
 		fd_txtRegistryPath.left = new FormAttachment(lblRegistryPath, 30);
 		fd_txtRegistryPath.right = new FormAttachment(cmbProject, 0, SWT.RIGHT);
 		txtRegistryPath.setLayoutData(fd_txtRegistryPath);
@@ -232,17 +239,19 @@ public class CreateNewConfigurationDialog extends Dialog {
 	}
 
 	private void loadCAppProjects() {
-		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot()
+				.getProjects();
 		cmbProject.removeAll();
 		for (IProject project : projects) {
 			try {
-				if (project.isOpen() && project.hasNature(Messages.GENERAL_PROJECT_NATURE)) {
+				if (project.isOpen()
+						&& project.hasNature(Messages.GENERAL_PROJECT_NATURE)) {
 					cmbProject.add(project.getName());
 				}
 			} catch (Exception e) {
 				log.error(e);
-				MessageDialog.openError(getShell(), DIALOG_HEADER_LOADING_CAPP_PROJECTS,
-						e.getMessage());
+				MessageDialog.openError(getShell(),
+						DIALOG_HEADER_LOADING_CAPP_PROJECTS, e.getMessage());
 			}
 		}
 		if (cmbProject.getItemCount() > 0) {
@@ -270,7 +279,8 @@ public class CreateNewConfigurationDialog extends Dialog {
 		if (selectedTemplateExtension == null) {
 			txtResourceName.setText(resourceFileName);
 		} else {
-			txtResourceName.setText(resourceFileName + "." + selectedTemplateExtension); //$NON-NLS-1$
+			txtResourceName.setText(resourceFileName
+					+ "." + selectedTemplateExtension); //$NON-NLS-1$
 		}
 	}
 
@@ -279,7 +289,8 @@ public class CreateNewConfigurationDialog extends Dialog {
 	}
 
 	private void loadTemplateList() {
-		artifactTemplates = ArtifactTemplateHandler.getArtifactTemplates(getFilters());
+		artifactTemplates = ArtifactTemplateHandler
+				.getArtifactTemplates(getFilters());
 
 		updateResourceFileName();
 	}
@@ -288,45 +299,65 @@ public class CreateNewConfigurationDialog extends Dialog {
 	protected void okPressed() {
 		try {
 			String templateString;
-
-			// ArtifactTemplate esbArtifactTemplate = artifactTemplates[0];
-			// FileUtils.getContentAsString(esbArtifactTemplate.getTemplateUrl());
-
 			templateString = DATA_MAPPER_TEMPLATE_STRING;
-
 			String name = txtResourceName.getText();
-			String content = EsbTemplateFormatter.stripParameters(templateString, name);
+
+			String content = EsbTemplateFormatter.stripParameters(
+					templateString, name);
 			ITemporaryFileTag createNewTempTag = FileUtils.createNewTempTag();
 			File tempFile = new File(FileUtils.createTempDirectory(), name);
 			tempFile.getParentFile().mkdirs();
 			FileUtils.writeContent(tempFile, content);
+
 			String projectName = cmbProject.getText();
-			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+			IProject project = ResourcesPlugin.getWorkspace().getRoot()
+					.getProject(projectName);
 			String path = txtRegistryPath.getText();
-			boolean ret = createRegistryArtifact(project, name, path, content);
-			if (!ret) {
-				MessageDialog.openInformation(getShell(), DIALOG_HEADER_RESOURCE_CREATION,
+
+			boolean configFileCreationSucess = createRegistryArtifact(project,
+					name, path, content);
+
+			createRegistryResourcesForInputScemaAndOutputSchema(name, project,
+					path);
+
+			if (!configFileCreationSucess) {
+				MessageDialog.openInformation(getShell(),
+						DIALOG_HEADER_RESOURCE_CREATION,
 						String.format(DIALOG_MESSAGE, name, projectName));
 				return;
 			}
-			path = path.endsWith("/") ? path + name : path + "/" + name; //$NON-NLS-1$ //$NON-NLS-2$
-			setSelectedPath(path);
+
+			String configPath = path.endsWith("/") ? path + name : path + "/" + name; //$NON-NLS-1$ //$NON-NLS-2$
+
+			setSelectedPath(configPath);
 			setIPathOfSelection(project.getFullPath().append(name).toString());
+
 			createNewTempTag.clearAndEnd();
 		} catch (IOException e) {
 			log.error(e);
-			MessageDialog.openError(getShell(), DIALOG_HEADER_TEMPLATE_CREATION, e.getMessage());
+			MessageDialog.openError(getShell(),
+					DIALOG_HEADER_TEMPLATE_CREATION, e.getMessage());
 			return;
 		} catch (CoreException e) {
 			log.error(e);
-			MessageDialog.openError(getShell(), DIALOG_HEADER_RESOURCE_CREATION, e.getMessage());
+			MessageDialog.openError(getShell(),
+					DIALOG_HEADER_RESOURCE_CREATION, e.getMessage());
 			return;
 		} catch (Exception e) {
 			log.error(e);
-			MessageDialog.openError(getShell(), DIALOG_HEADER_RESOURCE_CREATION, e.getMessage());
+			MessageDialog.openError(getShell(),
+					DIALOG_HEADER_RESOURCE_CREATION, e.getMessage());
 			return;
 		}
 		super.okPressed();
+	}
+
+	public static void createRegistryResourcesForInputScemaAndOutputSchema(
+			String name, IProject project, String path) throws Exception {
+		String inputAvroSchemaName = name.replace(".js", "_inputSchema.avsc");
+		String outputAvroSchemaName = name.replace(".js", "_outputSchema.avsc");
+		createRegistryArtifact(project, inputAvroSchemaName, path, "");
+		createRegistryArtifact(project, outputAvroSchemaName, path, "");
 	}
 
 	/**
@@ -336,8 +367,10 @@ public class CreateNewConfigurationDialog extends Dialog {
 	 */
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-		createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
+				true);
+		createButton(parent, IDialogConstants.CANCEL_ID,
+				IDialogConstants.CANCEL_LABEL, false);
 		validate();
 	}
 
@@ -365,11 +398,12 @@ public class CreateNewConfigurationDialog extends Dialog {
 		return filters;
 	}
 
-	private String getMavenGroupId(File pomLocation) {
+	private static String getMavenGroupId(File pomLocation) {
 		String groupId = GROUP_ID;
 		if (pomLocation != null && pomLocation.exists()) {
 			try {
-				MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+				MavenProject mavenProject = MavenUtils
+						.getMavenProject(pomLocation);
 				groupId = mavenProject.getGroupId();
 			} catch (Exception e) {
 				log.error(ERROR_READING_POM_FILE, e);
@@ -378,27 +412,31 @@ public class CreateNewConfigurationDialog extends Dialog {
 		return groupId;
 	}
 
-	private boolean createRegistryArtifact(IProject project, String fileName, String registryPath,
-			String content) throws Exception {
+	private static boolean createRegistryArtifact(IProject project,
+			String fileName, String registryPath, String content)
+			throws Exception {
 		File destFile = project.getFile(fileName).getLocation().toFile();
 		String resourceName = FileUtils.getResourceFileName(fileName);
 		if (destFile.exists()) {
 			return false;
 		}
 
-		String groupId = getMavenGroupId(project.getFile(POM_FILE).getLocation().toFile());
+		String groupId = getMavenGroupId(project.getFile(POM_FILE)
+				.getLocation().toFile());
 		groupId += GROUP_ID_RESOURCE;
 
 		FileUtils.createFile(destFile, content);
 
 		RegistryResourceInfoDoc regResInfoDoc = new RegistryResourceInfoDoc();
 
-		RegistryResourceUtils.createMetaDataForFolder(registryPath, project.getLocation().toFile());
-		RegistryResourceUtils.addRegistryResourceInfo(destFile, regResInfoDoc, project
-				.getLocation().toFile(), registryPath);
+		RegistryResourceUtils.createMetaDataForFolder(registryPath, project
+				.getLocation().toFile());
+		RegistryResourceUtils.addRegistryResourceInfo(destFile, regResInfoDoc,
+				project.getLocation().toFile(), registryPath);
 
 		GeneralProjectArtifact generalProjectArtifact = new GeneralProjectArtifact();
-		generalProjectArtifact.fromFile(project.getFile(ARTIFACT_FILE).getLocation().toFile());
+		generalProjectArtifact.fromFile(project.getFile(ARTIFACT_FILE)
+				.getLocation().toFile());
 
 		RegistryArtifact artifact = new RegistryArtifact();
 		artifact.setName(resourceName);
@@ -412,38 +450,46 @@ public class CreateNewConfigurationDialog extends Dialog {
 			RegistryElement item = null;
 			if (registryResourceInfo.getType() == REGISTRY_RESOURCE) { //$NON-NLS-1$
 				item = new RegistryItem();
-				((RegistryItem) item).setFile(registryResourceInfo.getResourceBaseRelativePath());
-				item.setPath(registryResourceInfo.getDeployPath().replaceAll("/$", "")); //$NON-NLS-1$ //$NON-NLS-2$
+				((RegistryItem) item).setFile(registryResourceInfo
+						.getResourceBaseRelativePath());
+				item.setPath(registryResourceInfo.getDeployPath().replaceAll(
+						"/$", "")); //$NON-NLS-1$ //$NON-NLS-2$
 				artifact.addRegistryElement(item);
+				((RegistryItem) item).setMediaType("text/plain");
 			}
 		}
 		generalProjectArtifact.addArtifact(artifact);
 		generalProjectArtifact.toFile();
 		addGeneralProjectPlugin(project);
-		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+		project.refreshLocal(IResource.DEPTH_INFINITE,
+				new NullProgressMonitor());
 		return true;
 	}
 
-	private void addGeneralProjectPlugin(IProject project) throws Exception {
+	private static void addGeneralProjectPlugin(IProject project)
+			throws Exception {
 		MavenProject mavenProject;
 
-		File mavenProjectPomLocation = project.getFile(POM_FILE).getLocation().toFile();
+		File mavenProjectPomLocation = project.getFile(POM_FILE).getLocation()
+				.toFile();
 		if (!mavenProjectPomLocation.exists()) {
-			mavenProject = MavenUtils.createMavenProject(GROUP_ID, project.getName(),
-					ARTIFACT_VERSION, POM_PACKAGING_TYPE);
+			mavenProject = MavenUtils.createMavenProject(GROUP_ID,
+					project.getName(), ARTIFACT_VERSION, POM_PACKAGING_TYPE);
 		} else {
 			mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		}
 
-		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject, MAVEN_GROUP_ID,
-				MAVEN_ARTIFACT_ID, MavenConstants.WSO2_GENERAL_PROJECT_VERSION);
+		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
+				MAVEN_GROUP_ID, MAVEN_ARTIFACT_ID,
+				MavenConstants.WSO2_GENERAL_PROJECT_VERSION);
 		if (pluginExists) {
 			return;
 		}
 
 		mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		Plugin plugin = MavenUtils.createPluginEntry(mavenProject, MAVEN_GROUP_ID,
-				MAVEN_ARTIFACT_ID, MavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
+		Plugin plugin = MavenUtils.createPluginEntry(mavenProject,
+				MAVEN_GROUP_ID, MAVEN_ARTIFACT_ID,
+				MavenConstants.WSO2_GENERAL_PROJECT_VERSION, true);
 
 		PluginExecution pluginExecution;
 
@@ -454,10 +500,11 @@ public class CreateNewConfigurationDialog extends Dialog {
 		plugin.addExecution(pluginExecution);
 
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode,
-				ARTIFACT_LOCATION);
+		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(
+				configurationNode, ARTIFACT_LOCATION);
 		artifactLocationNode.setValue("."); //$NON-NLS-1$
-		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, TYPE_LIST);
+		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode,
+				TYPE_LIST);
 		typeListNode.setValue(ARTIFACT_TYPES);
 		pluginExecution.setConfiguration(configurationNode);
 

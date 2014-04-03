@@ -86,6 +86,8 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.EQUAL: return createEqual();
 			case DataMapperPackage.CONSTANT: return createConstant();
 			case DataMapperPackage.SPLIT: return createSplit();
+			case DataMapperPackage.LOWER_CASE: return createLowerCase();
+			case DataMapperPackage.CONTAINS: return createContains();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -333,10 +335,11 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constant createConstant() {
 		ConstantImpl constant = new ConstantImpl();
+		constant.setBasicContainer(createOperatorBasicContainer());
 		return constant;
 	}
 
@@ -349,6 +352,28 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 		SplitImpl split = new SplitImpl();
 		split.setBasicContainer(createOperatorBasicContainer());
 		return split;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public LowerCase createLowerCase() {
+		LowerCaseImpl lowerCase = new LowerCaseImpl();
+		lowerCase.setBasicContainer(createOperatorBasicContainer());
+		return lowerCase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Contains createContains() {
+		ContainsImpl contains = new ContainsImpl();
+		contains.setBasicContainer(createOperatorBasicContainer());
+		return contains;
 	}
 
 	/**

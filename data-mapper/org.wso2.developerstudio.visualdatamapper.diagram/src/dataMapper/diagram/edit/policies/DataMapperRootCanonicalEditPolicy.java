@@ -102,6 +102,9 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case dataMapper.diagram.edit.parts.EqualEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.ConcatEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.ConstantEditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.LowerCaseEditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -293,6 +296,30 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
 						.getSplit_2007ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.ConstantEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getConstant_2008ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.LowerCaseEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getLowerCase_2009ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getContains_2010ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

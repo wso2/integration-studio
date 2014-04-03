@@ -56,6 +56,9 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.add(createSplit4CreationTool());
+		paletteContainer.add(createConstant5CreationTool());
+		paletteContainer.add(createLowerCase6CreationTool());
+		paletteContainer.add(createContains7CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -120,6 +123,54 @@ public class DataMapperPaletteFactory {
 		entry.setId("createSplit4CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
 				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Split_2007));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createConstant5CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				dataMapper.diagram.part.Messages.Constant5CreationTool_title,
+				dataMapper.diagram.part.Messages.Constant5CreationTool_desc,
+				Collections
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.Constant_2008));
+		entry.setId("createConstant5CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Constant_2008));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createLowerCase6CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				dataMapper.diagram.part.Messages.LowerCase6CreationTool_title,
+				dataMapper.diagram.part.Messages.LowerCase6CreationTool_desc,
+				Collections
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.LowerCase_2009));
+		entry.setId("createLowerCase6CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.LowerCase_2009));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createContains7CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				dataMapper.diagram.part.Messages.Contains7CreationTool_title,
+				dataMapper.diagram.part.Messages.Contains7CreationTool_desc,
+				Collections
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.Contains_2010));
+		entry.setId("createContains7CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Contains_2010));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

@@ -87,6 +87,15 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Split", dataMapper.diagram.providers.DataMapperElementTypes.Split_2007); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.ConstantEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Constant", dataMapper.diagram.providers.DataMapperElementTypes.Constant_2008); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.LowerCaseEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?LowerCase", dataMapper.diagram.providers.DataMapperElementTypes.LowerCase_2009); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Contains", dataMapper.diagram.providers.DataMapperElementTypes.Contains_2010); //$NON-NLS-1$
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3002); //$NON-NLS-1$
@@ -204,6 +213,12 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 			return getConcat_2006Text(view);
 		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID:
 			return getSplit_2007Text(view);
+		case dataMapper.diagram.edit.parts.ConstantEditPart.VISUAL_ID:
+			return getConstant_2008Text(view);
+		case dataMapper.diagram.edit.parts.LowerCaseEditPart.VISUAL_ID:
+			return getLowerCase_2009Text(view);
+		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID:
+			return getContains_2010Text(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -281,6 +296,27 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getSplit_2007Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getConstant_2008Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getLowerCase_2009Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getContains_2010Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

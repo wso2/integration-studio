@@ -824,7 +824,7 @@
    
    	<extension point="org.eclipse.core.contenttype.contentTypes">
 		<content-type base-type="org.eclipse.wst.jsdt.core.jsSource"
-			file-extensions="js"
+			file-extensions="dmc"
 			id="org.wso2.developerstudio.eclipse.datamapper.contenttype.datamapperconfig"
 			name="Data Mapper Configuration File" priority="high">
 	        <describer

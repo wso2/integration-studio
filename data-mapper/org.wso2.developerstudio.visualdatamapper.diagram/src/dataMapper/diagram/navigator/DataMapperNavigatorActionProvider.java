@@ -229,7 +229,7 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 		private static String getGraphicalResource(IFile selection) {
 			String synFilePath = selection.getFullPath().toOSString();
 			synFilePath = synFilePath.replaceAll(Pattern.quote("\\"), "/");
-			String graphicalResource = synFilePath.replaceAll(".js$", ".datamapper_diagram");
+			String graphicalResource = synFilePath.replaceAll(".dmc$", ".datamapper_diagram");
 			return graphicalResource;
 		}
 

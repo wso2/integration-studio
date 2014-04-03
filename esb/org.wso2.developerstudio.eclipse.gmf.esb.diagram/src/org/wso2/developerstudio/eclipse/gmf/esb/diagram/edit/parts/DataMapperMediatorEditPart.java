@@ -52,6 +52,7 @@ import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -61,14 +62,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.DeveloperStudioElementProviderDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
+
+import dataMapper.diagram.custom.util.DataMapperConfigurationDialog;
 
 
 /**
@@ -76,8 +77,15 @@ import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
  */
 public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
+	private static final String DATAMAPPER_FILTER_TYPE = "application/datamapper";
 	private static final String  INPUT_AVROSCHEMA = "_inputSchema.avsc";
 	private static final String  OUTPUT_AVROSCHEMA = "_outputSchema.avsc";
+	private static final String G_REG_PATH_PREFIX = "/_system/governance/"; 
+	private static final String C_REG_PATH_PREFIX = "/_system/config/"; 
+	private static final String G_REG_PREFIX = "gov:%s";
+	private static final String C_REG_PREFIX = "conf:%s";
+	private static final String DATAMAPPER_CONFIG_EXT = ".dmc";
+
 	/**
 	 * @generated
 	 */
@@ -373,23 +381,23 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			
 			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
 			List<String> types = new ArrayList<String>();
-			types.add("application/datamapper"); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
+			types.add(DATAMAPPER_FILTER_TYPE); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
 			filters.put(mediaTypeKey, types);
-
-			//final DeveloperStudioElementProviderDialog dialog = null;
-			//boolean noExistingResources = true;
-			//dialog = new CreateNewConfigurationDialog(shell,filters);
-			//dialog.create();
-			//dialog.getShell().setText("New Datamapper Configuration");
 			
-			final DeveloperStudioElementProviderDialog dialog = new DeveloperStudioElementProviderDialog(shell, new Class[]{IRegistryFile.class}, filters);
-			dialog.configureDialog("Specify DataMapper Configuration.", false, true);
-			
+			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(shell, filters);
+			dataMapperConfigurationDialog.create();
 
-			if (dialog.open() == Dialog.OK) {
-				String configurationPath = formatRegistryPath(dialog.getSelectedPath());
-				String inputSchemaPath = configurationPath.replace(".dmc", INPUT_AVROSCHEMA);
-				String outputSchemaPath = configurationPath.replace(".dmc", OUTPUT_AVROSCHEMA);
+			Rectangle monitor = dataMapperConfigurationDialog.getShell().getDisplay()
+					.getPrimaryMonitor().getBounds();
+			Rectangle dialog = dataMapperConfigurationDialog.getShell().getBounds();
+			int x = monitor.x + (monitor.width - dialog.width) / 2;
+			int y = monitor.y + (monitor.height - dialog.height) / 3;
+			dataMapperConfigurationDialog.getShell().setLocation(x, y);
+			
+			if (dataMapperConfigurationDialog.open() == Dialog.OK) {
+				String configurationPath = formatRegistryPath(dataMapperConfigurationDialog.getSelectedPath());
+				String inputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
+				String outputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
 				
 				final RegistryKeyProperty configurationKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 				configurationKeyProperty.setKeyValue(configurationPath);
@@ -405,9 +413,9 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 				public void run() {
 						
 						TransactionalEditingDomain editingDomain = getEditingDomain();
-						String configLocalPath = dialog.getIPathOfSelection();
-						String inputSchemaLocalPath = configLocalPath.replace(".dmc", INPUT_AVROSCHEMA);
-						String outputSchemaLocalPath = configLocalPath.replace(".dmc", OUTPUT_AVROSCHEMA);
+						String configLocalPath = dataMapperConfigurationDialog.getIPathOfSelection();
+						String inputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
+						String outputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
 						
 						setConfigurationKey(datamapper, configurationKeyProperty, configLocalPath, editingDomain);
 						setInputSchemaKey(datamapper, inputSchemaKeyProperty, inputSchemaLocalPath, editingDomain);
@@ -479,13 +487,11 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	}
 
 	private String formatRegistryPath(String selectedPath) {
-		final String G_REG_PATH_PREFIX = "/_system/governance/";
-		final String C_REG_PATH_PREFIX = "/_system/config/";
 		String formattedPath = selectedPath;
 		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
-			formattedPath = String.format("gov:%s", selectedPath.substring(G_REG_PATH_PREFIX.length()));
+			formattedPath = String.format(G_REG_PREFIX, selectedPath.substring(G_REG_PATH_PREFIX.length()));
 		} else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
-			formattedPath = String.format("conf:%s", selectedPath.substring(C_REG_PATH_PREFIX.length()));
+			formattedPath = String.format(C_REG_PREFIX, selectedPath.substring(C_REG_PATH_PREFIX.length()));
 		}
 		return formattedPath;
 	}

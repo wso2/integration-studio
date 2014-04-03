@@ -323,7 +323,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		    }
 		
 			private void setTitleOfDataMapperDiagramConfiguration(String name) {
-				String title = name.replace("datamapper_diagram","datamapper_config");
+				String title = name.replace("datamapper_diagram","dmc");
 				setTitle(title);
 			}    
 

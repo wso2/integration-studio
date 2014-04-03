@@ -144,52 +144,52 @@ public class InputEditPart extends ShapeNodeEditPart {
 	private void createElement(dataMapper.diagram.tree.model.Element element, TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		ele.setName(element.getCount() + "," + element.getName());
-		if(element.getSchemaType() != null) {
-			switch(element.getSchemaType()) {
-				case ARRAY:
-					ele.setSchemaDataType(SchemaDataType.ARRAY);
-					break;
-				case BOOLEAN:
-					ele.setSchemaDataType(SchemaDataType.BOOLEAN);
-					break;
-				case BYTES:
-					ele.setSchemaDataType(SchemaDataType.BYTES);
-					break;
-				case DOUBLE:
-					ele.setSchemaDataType(SchemaDataType.DOUBLE);
-					break;
-				case ENUM:
-					ele.setSchemaDataType(SchemaDataType.ENUM );
-					break;
-				case FIXED:
-					ele.setSchemaDataType(SchemaDataType.FIXED);
-					break;
-				case FLOAT:
-					ele.setSchemaDataType(SchemaDataType.FLOAT);
-					break;
-				case INT:
-					ele.setSchemaDataType(SchemaDataType.INT);
-					break;
-				case LONG:
-					ele.setSchemaDataType(SchemaDataType.LONG);
-					break;
-				case MAP:
-					ele.setSchemaDataType(SchemaDataType.MAP);
-					break;
-				case NULL:
-					ele.setSchemaDataType(SchemaDataType.NULL);
-					break;
-				case RECORD:
-					ele.setSchemaDataType(SchemaDataType.RECORD);
-					break;
-				case STRING:
-					ele.setSchemaDataType(SchemaDataType.STRING);
-					break;
-				case UNION:
-					ele.setSchemaDataType(SchemaDataType.UNION);
-					break;
-				default:
-					break;
+		if (element.getSchemaType() != null) {
+			switch (element.getSchemaType()) {
+			case ARRAY:
+				ele.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case BOOLEAN:
+				ele.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				ele.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				ele.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				ele.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				ele.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				ele.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				ele.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				ele.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				ele.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				ele.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				ele.setSchemaDataType(SchemaDataType.RECORD);
+				break;
+			case STRING:
+				ele.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				ele.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
 			}
 		}
 		treeNode.getElement().add(ele);
@@ -217,56 +217,56 @@ public class InputEditPart extends ShapeNodeEditPart {
 	private void createTree(Tree treeN, TreeNode treeNode) {
 		TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
 		treeNodeNew.setName(treeN.getCount() + "," + treeN.getName());
-		if(treeN.getSchemaType() != null) {
-			switch(treeN.getSchemaType()) {
-				case ARRAY:
-					treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
-					break;
-				case BOOLEAN:
-					treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
-					break;
-				case BYTES:
-					treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
-					break;
-				case DOUBLE:
-					treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
-					break;
-				case ENUM:
-					treeNodeNew.setSchemaDataType(SchemaDataType.ENUM );
-					break;
-				case FIXED:
-					treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
-					break;
-				case FLOAT:
-					treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
-					break;
-				case INT:
-					treeNodeNew.setSchemaDataType(SchemaDataType.INT);
-					break;
-				case LONG:
-					treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
-					break;
-				case MAP:
-					treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
-					break;
-				case NULL:
-					treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
-					break;
-				case RECORD:
-					treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
-					break;
-				case STRING:
-					treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
-					break;
-				case UNION:
-					treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
-					break;
-				default:
-					break;
+		if (treeN.getSchemaType() != null) {
+			switch (treeN.getSchemaType()) {
+			case ARRAY:
+				treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case BOOLEAN:
+				treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				treeNodeNew.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				treeNodeNew.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
+				break;
+			case STRING:
+				treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
 			}
 		}
 		treeNode.getNode().add(treeNodeNew);
-		
+
 		if (!(treeN.getTrees().isEmpty())) {
 			for (Tree treeNew : treeN.getTrees()) {
 				createTree(treeNew, treeNodeNew);

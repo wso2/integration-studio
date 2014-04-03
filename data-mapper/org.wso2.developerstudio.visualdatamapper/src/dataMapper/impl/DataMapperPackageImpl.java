@@ -5,6 +5,7 @@ package dataMapper.impl;
 import dataMapper.Attribute;
 import dataMapper.Concat;
 import dataMapper.Constant;
+import dataMapper.Contains;
 import dataMapper.DataMapperDiagram;
 import dataMapper.DataMapperFactory;
 import dataMapper.DataMapperLink;
@@ -15,6 +16,7 @@ import dataMapper.Element;
 import dataMapper.Equal;
 import dataMapper.InNode;
 import dataMapper.Input;
+import dataMapper.LowerCase;
 import dataMapper.Operation;
 import dataMapper.Operations;
 import dataMapper.Operator;
@@ -192,6 +194,20 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass splitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lowerCaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass containsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -821,6 +837,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLowerCase() {
+		return lowerCaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContains() {
+		return containsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -939,6 +973,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		splitEClass = createEClass(SPLIT);
 
+		lowerCaseEClass = createEClass(LOWER_CASE);
+
+		containsEClass = createEClass(CONTAINS);
+
 		// Create enums
 		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
 	}
@@ -979,6 +1017,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		equalEClass.getESuperTypes().add(this.getOperator());
 		constantEClass.getESuperTypes().add(this.getOperator());
 		splitEClass.getESuperTypes().add(this.getOperator());
+		lowerCaseEClass.getESuperTypes().add(this.getOperator());
+		containsEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1063,6 +1103,10 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(splitEClass, Split.class, "Split", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lowerCaseEClass, LowerCase.class, "LowerCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(schemaDataTypeEEnum, SchemaDataType.class, "SchemaDataType");

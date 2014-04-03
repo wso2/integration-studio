@@ -215,6 +215,60 @@
       </children>
     </ownedChild>
   </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Constant"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.4"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Constant"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//LowerCase"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.5"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#LowerCase"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="dataMapper.ecore#//DataMapperRoot/operators"/>
+    <ownedChild>
+      <domainMetaElement
+          href="dataMapper.ecore#//Contains"/>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="dataMapper.gmftool#//@palette/@tools.0/@tools.6"/>
+      <diagramNode
+          href="dataMapper.gmfgraph#Contains"/>
+      <children
+          referencedChild="//@nodes.2/@ownedChild/@children.0/@ownedChild">
+        <containmentFeature
+            href="dataMapper.ecore#//Operator/basicContainer"/>
+      </children>
+    </ownedChild>
+  </nodes>
   <links>
     <domainMetaElement
         href="dataMapper.ecore#//DataMapperLink"/>

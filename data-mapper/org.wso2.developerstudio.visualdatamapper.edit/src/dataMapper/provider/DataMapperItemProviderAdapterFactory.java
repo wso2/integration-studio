@@ -555,6 +555,52 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.LowerCase} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LowerCaseItemProvider lowerCaseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.LowerCase}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLowerCaseAdapter() {
+		if (lowerCaseItemProvider == null) {
+			lowerCaseItemProvider = new LowerCaseItemProvider(this);
+		}
+
+		return lowerCaseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.Contains} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContainsItemProvider containsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.Contains}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContainsAdapter() {
+		if (containsItemProvider == null) {
+			containsItemProvider = new ContainsItemProvider(this);
+		}
+
+		return containsItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -674,6 +720,8 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (equalItemProvider != null) equalItemProvider.dispose();
 		if (constantItemProvider != null) constantItemProvider.dispose();
 		if (splitItemProvider != null) splitItemProvider.dispose();
+		if (lowerCaseItemProvider != null) lowerCaseItemProvider.dispose();
+		if (containsItemProvider != null) containsItemProvider.dispose();
 	}
 
 }

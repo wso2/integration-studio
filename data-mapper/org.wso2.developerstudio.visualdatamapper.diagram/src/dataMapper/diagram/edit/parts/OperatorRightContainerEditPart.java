@@ -56,14 +56,13 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	 */
 	protected IFigure primaryShape;
 
-
 	/**
 	 * @generated
 	 */
 	public OperatorRightContainerEditPart(View view) {
 		super(view);
 	}
-	
+
 	@Override
 	public void activate() {
 
@@ -100,7 +99,10 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 					}
 				}
 
-				else if (getParent().getParent() instanceof EqualEditPart || getParent().getParent() instanceof ConcatEditPart) {
+				else if (getParent().getParent() instanceof EqualEditPart
+						|| getParent().getParent() instanceof ConcatEditPart
+						|| getParent().getParent() instanceof LowerCaseEditPart
+						|| getParent().getParent() instanceof ConstantEditPart || getParent().getParent() instanceof ContainsEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
@@ -185,7 +187,7 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40,20);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
@@ -281,6 +283,7 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
 			layoutThis.setSpacing(0);
 			layoutThis.setHorizontal(false);
+			layoutThis.setStretchMinorAxis(true);
 			layoutThis.setMatchWidth(true);
 
 			this.setLayoutManager(layoutThis);

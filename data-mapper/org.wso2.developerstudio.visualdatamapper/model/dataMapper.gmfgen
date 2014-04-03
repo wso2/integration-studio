@@ -280,7 +280,7 @@
         childNodes="//@diagram/@childNodes.10 //@diagram/@childNodes.13"
         graphicalNodeEditPolicyClassName="OperatorBasicContainerGraphicalNodeEditPolicy"
         createCommandClassName="OperatorBasicContainerCreateCommand"
-        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4">
+        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -574,6 +574,7 @@
         visualID="2007"
         editPartClassName="SplitEditPart"
         itemSemanticEditPolicyClassName="SplitItemSemanticEditPolicy"
+        notationViewFactoryClassName="SplitViewFactory"
         canonicalEditPolicyClassName="SplitCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="SplitGraphicalNodeEditPolicy"
@@ -589,6 +590,83 @@
       <modelFacet>
         <metaClass
             href="dataMapper.genmodel#//dataMapper/Split"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
+    <topLevelNodes
+        visualID="2008"
+        editPartClassName="ConstantEditPart"
+        itemSemanticEditPolicyClassName="ConstantItemSemanticEditPolicy"
+        notationViewFactoryClassName="ConstantViewFactory"
+        canonicalEditPolicyClassName="ConstantCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.9"
+        graphicalNodeEditPolicyClassName="ConstantGraphicalNodeEditPolicy"
+        createCommandClassName="ConstantCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="ConstantEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//dataMapper/Constant"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
+    <topLevelNodes
+        visualID="2009"
+        editPartClassName="LowerCaseEditPart"
+        itemSemanticEditPolicyClassName="LowerCaseItemSemanticEditPolicy"
+        notationViewFactoryClassName="LowerCaseViewFactory"
+        canonicalEditPolicyClassName="LowerCaseCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.9"
+        graphicalNodeEditPolicyClassName="LowerCaseGraphicalNodeEditPolicy"
+        createCommandClassName="LowerCaseCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="LowerCaseEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//dataMapper/LowerCase"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
+    <topLevelNodes
+        visualID="2010"
+        editPartClassName="ContainsEditPart"
+        itemSemanticEditPolicyClassName="ContainsItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="ContainsCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.9"
+        graphicalNodeEditPolicyClassName="ContainsGraphicalNodeEditPolicy"
+        createCommandClassName="ContainsCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="ContainsEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//dataMapper/Contains"/>
         <containmentMetaFeature
             href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
         <childMetaFeature
@@ -647,6 +725,21 @@
             title="Split"
             description="Create new Split"
             genNodes="//@diagram/@topLevelNodes.4"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Constant"
+            description="Create new Constant"
+            genNodes="//@diagram/@topLevelNodes.5"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="LowerCase"
+            description="Create new LowerCase"
+            genNodes="//@diagram/@topLevelNodes.6"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Contains"
+            description="Create new Contains"
+            genNodes="//@diagram/@topLevelNodes.7"/>
       </groups>
     </palette>
     <preferencePages
@@ -771,6 +864,24 @@
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.4"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.5"
+        child="//@diagram/@childNodes.9"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.5"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.6"
+        child="//@diagram/@childNodes.9"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.6"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.7"
+        child="//@diagram/@childNodes.9"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.7"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.0"

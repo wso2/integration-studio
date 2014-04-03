@@ -1,7 +1,5 @@
 package dataMapper.diagram.edit.parts;
 
-import java.util.List;
-
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
@@ -9,13 +7,6 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.TitleBarBorder;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gef.EditDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -26,7 +17,6 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.gmf.runtime.diagram.ui.providers.LeftRightProvider;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -36,29 +26,17 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 
-import dataMapper.DataMapperFactory;
-import dataMapper.DataMapperPackage;
-import dataMapper.OperatorBasicContainer;
-import dataMapper.OperatorLeftConnector;
-import dataMapper.OperatorLeftContainer;
-import dataMapper.Split;
 import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
-import dataMapper.impl.DataMapperFactoryImpl;
-import dataMapper.impl.OperatorBasicContainerImpl;
-import dataMapper.impl.OperatorLeftConnectorImpl;
-import dataMapper.impl.OperatorLeftContainerImpl;
-import dataMapper.impl.OperatorRightConnectorImpl;
-import dataMapper.impl.OperatorRightContainerImpl;
 
 /**
  * @generated NOT
  */
-public class SplitEditPart extends AbstractOperatorEditPart {
+public class ContainsEditPart extends AbstractOperatorEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 2007;
+	public static final int VISUAL_ID = 2010;
 
 	/**
 	 * @generated
@@ -70,14 +48,10 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	 */
 	protected IFigure primaryShape;
 
-	private int sizeX = 40;
-
-	private int sizeY = 20;
-
 	/**
 	 * @generated
 	 */
-	public SplitEditPart(View view) {
+	public ContainsEditPart(View view) {
 		super(view);
 	}
 
@@ -89,10 +63,10 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new dataMapper.diagram.edit.policies.SplitItemSemanticEditPolicy());
+				new dataMapper.diagram.edit.policies.ContainsItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new dataMapper.diagram.edit.policies.SplitCanonicalEditPolicy());
+				new dataMapper.diagram.edit.policies.ContainsCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -127,7 +101,7 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new SplitFigure();
+		return primaryShape = new ContainsFigure();
 	}
 
 	/**
@@ -138,15 +112,15 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(sizeX, sizeY);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 20);
 		return result;
 	}
 
 	/**
-	 * Creates figure for this	 edit part.
+	 * Creates figure for this edit part.
 	 * 
 	 * Body of this method does not depend on settings in generation model
 	 * so you may safely remove <i>generated</i> tag and modify it.
@@ -223,12 +197,12 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 		}
 	}
 
-	public class SplitFigure extends RoundedRectangle {
+	public class ContainsFigure extends RoundedRectangle {
 
-		public SplitFigure() {
+		public ContainsFigure() {
 			this.setBackgroundColor(THIS_BACK);
 
-			TitleBarBorder titleBarBorder = new TitleBarBorder("Split");
+			TitleBarBorder titleBarBorder = new TitleBarBorder("Contains");
 			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
 			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
 			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
@@ -244,11 +218,11 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 		}
 
 		public String getNodeName() {
-			return "Split";
+			return "Contains";
 		}
 
 		public IFigure getToolTip() {
-			return new Label("Split Operation");
+			return new Label("Contains Operation");
 		}
 
 	}

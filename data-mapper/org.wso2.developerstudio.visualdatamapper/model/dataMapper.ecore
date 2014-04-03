@@ -127,4 +127,6 @@
     <eLiterals name="STRING" value="12"/>
     <eLiterals name="UNION" value="13"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LowerCase" eSuperTypes="#//Operator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Contains" eSuperTypes="#//Operator"/>
 </ecore:EPackage>

@@ -67,6 +67,15 @@
     <descriptors name="SplitFigure">
       <actualFigure xsi:type="gmfgraph:Rectangle" name="SplitFigure"/>
     </descriptors>
+    <descriptors name="ConstantFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="ConstantFigure"/>
+    </descriptors>
+    <descriptors name="LowerCaseFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="LowerCaseFigure"/>
+    </descriptors>
+    <descriptors name="ContainsFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="ContainsFigure"/>
+    </descriptors>
   </figures>
   <nodes name="DataMapperNode" figure="DataMapperNodeFigure"/>
   <nodes name="DataMapperDiagram" figure="DataMapperDiagramFigure"/>
@@ -88,6 +97,9 @@
   <nodes name="OperatorRightContainer" figure="OperatorRightContainerFigure"/>
   <nodes name="OperatorRightConnector" figure="OperatorRightConnectorFigure"/>
   <nodes name="Split" figure="SplitFigure"/>
+  <nodes name="Constant" figure="ConstantFigure"/>
+  <nodes name="LowerCase" figure="LowerCaseFigure"/>
+  <nodes name="Contains" figure="ContainsFigure"/>
   <connections name="DataMapperLink" figure="DataMapperLinkFigure"/>
   <compartments name="OperationsCompartment" figure="CompartmentFigure"/>
 </gmfgraph:Canvas>

@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
+import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.ContributionItemService;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -16,10 +17,11 @@ import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 
+import dataMapper.diagram.custom.action.ConcatManyAction;
 import dataMapper.diagram.custom.action.LoadInputSchemaAction;
 import dataMapper.diagram.custom.action.LoadOutputSchemaAction;
+import dataMapper.diagram.edit.parts.ConcatEditPart;
 import dataMapper.diagram.edit.parts.InputEditPart;
 import dataMapper.diagram.edit.parts.OutputEditPart;
 
@@ -54,6 +56,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		contextActions.put(InputEditPart.class, new LoadInputSchemaAction(part));
 		contextActions.put(OutputEditPart.class, new LoadOutputSchemaAction(part));
+		contextActions.put(ConcatEditPart.class, new ConcatManyAction(part));
 	}
 
 	/**

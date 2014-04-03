@@ -7,6 +7,7 @@ import dataMapper.Element;
 
 import dataMapper.InNode;
 import dataMapper.OutNode;
+import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -30,6 +31,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link dataMapper.impl.ElementImpl#getOutNode <em>Out Node</em>}</li>
  *   <li>{@link dataMapper.impl.ElementImpl#getInNode <em>In Node</em>}</li>
  *   <li>{@link dataMapper.impl.ElementImpl#getFieldParent <em>Field Parent</em>}</li>
+ *   <li>{@link dataMapper.impl.ElementImpl#getSchemaDataType <em>Schema Data Type</em>}</li>
+ *   <li>{@link dataMapper.impl.ElementImpl#getLevel <em>Level</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,6 +100,46 @@ public class ElementImpl extends EObjectImpl implements Element {
 	protected InNode inNode;
 
 	/**
+	 * The default value of the '{@link #getSchemaDataType() <em>Schema Data Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getSchemaDataType()
+	 * @generated
+	 * @ordered
+	 */
+    protected static final SchemaDataType SCHEMA_DATA_TYPE_EDEFAULT = SchemaDataType.ARRAY;
+
+    /**
+	 * The cached value of the '{@link #getSchemaDataType() <em>Schema Data Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getSchemaDataType()
+	 * @generated
+	 * @ordered
+	 */
+    protected SchemaDataType schemaDataType = SCHEMA_DATA_TYPE_EDEFAULT;
+
+    /**
+	 * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getLevel()
+	 * @generated
+	 * @ordered
+	 */
+    protected static final int LEVEL_EDEFAULT = 0;
+
+    /**
+	 * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getLevel()
+	 * @generated
+	 * @ordered
+	 */
+    protected int level = LEVEL_EDEFAULT;
+
+    /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -286,6 +329,48 @@ public class ElementImpl extends EObjectImpl implements Element {
 
 	/**
 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public SchemaDataType getSchemaDataType() {
+		return schemaDataType;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setSchemaDataType(SchemaDataType newSchemaDataType) {
+		SchemaDataType oldSchemaDataType = schemaDataType;
+		schemaDataType = newSchemaDataType == null ? SCHEMA_DATA_TYPE_EDEFAULT : newSchemaDataType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.ELEMENT__SCHEMA_DATA_TYPE, oldSchemaDataType, schemaDataType));
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public int getLevel() {
+		return level;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setLevel(int newLevel) {
+		int oldLevel = level;
+		level = newLevel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.ELEMENT__LEVEL, oldLevel, level));
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -358,6 +443,10 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return getInNode();
 			case DataMapperPackage.ELEMENT__FIELD_PARENT:
 				return getFieldParent();
+			case DataMapperPackage.ELEMENT__SCHEMA_DATA_TYPE:
+				return getSchemaDataType();
+			case DataMapperPackage.ELEMENT__LEVEL:
+				return getLevel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -384,6 +473,12 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return;
 			case DataMapperPackage.ELEMENT__FIELD_PARENT:
 				setFieldParent((TreeNode)newValue);
+				return;
+			case DataMapperPackage.ELEMENT__SCHEMA_DATA_TYPE:
+				setSchemaDataType((SchemaDataType)newValue);
+				return;
+			case DataMapperPackage.ELEMENT__LEVEL:
+				setLevel((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -412,6 +507,12 @@ public class ElementImpl extends EObjectImpl implements Element {
 			case DataMapperPackage.ELEMENT__FIELD_PARENT:
 				setFieldParent((TreeNode)null);
 				return;
+			case DataMapperPackage.ELEMENT__SCHEMA_DATA_TYPE:
+				setSchemaDataType(SCHEMA_DATA_TYPE_EDEFAULT);
+				return;
+			case DataMapperPackage.ELEMENT__LEVEL:
+				setLevel(LEVEL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -434,6 +535,10 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return inNode != null;
 			case DataMapperPackage.ELEMENT__FIELD_PARENT:
 				return getFieldParent() != null;
+			case DataMapperPackage.ELEMENT__SCHEMA_DATA_TYPE:
+				return schemaDataType != SCHEMA_DATA_TYPE_EDEFAULT;
+			case DataMapperPackage.ELEMENT__LEVEL:
+				return level != LEVEL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -452,6 +557,10 @@ public class ElementImpl extends EObjectImpl implements Element {
 		result.append(name);
 		result.append(", value: ");
 		result.append(value);
+		result.append(", schemaDataType: ");
+		result.append(schemaDataType);
+		result.append(", level: ");
+		result.append(level);
 		result.append(')');
 		return result.toString();
 	}

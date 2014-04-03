@@ -55,6 +55,7 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createDataMapperLink1CreationTool());
 		paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
+		paletteContainer.add(createSplit4CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -103,6 +104,22 @@ public class DataMapperPaletteFactory {
 		entry.setId("createConcat3CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
 				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Concat_2006));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createSplit4CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				dataMapper.diagram.part.Messages.Split4CreationTool_title,
+				dataMapper.diagram.part.Messages.Split4CreationTool_desc,
+				Collections
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.Split_2007));
+		entry.setId("createSplit4CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Split_2007));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

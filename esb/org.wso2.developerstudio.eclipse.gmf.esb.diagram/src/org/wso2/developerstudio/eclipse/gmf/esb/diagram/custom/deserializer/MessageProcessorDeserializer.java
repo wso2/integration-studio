@@ -221,7 +221,7 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 						Object value = parameters.get("concurrency");
 						if (value != null && StringUtils.isNumeric(value.toString())) {
 							executeSetValueCommand(MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY,
-									new Long(value.toString()));
+									new Integer(value.toString()));
 						}
 					}
 					if (parameters.containsKey("quartz.conf")) {

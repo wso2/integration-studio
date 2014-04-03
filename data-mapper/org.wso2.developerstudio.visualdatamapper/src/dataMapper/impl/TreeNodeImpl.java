@@ -7,6 +7,7 @@ import dataMapper.DataMapperPackage;
 import dataMapper.Element;
 import dataMapper.Input;
 import dataMapper.Output;
+import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
 
 import java.util.Collection;
@@ -40,6 +41,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link dataMapper.impl.TreeNodeImpl#getFieldParent <em>Field Parent</em>}</li>
  *   <li>{@link dataMapper.impl.TreeNodeImpl#getOutputParent <em>Output Parent</em>}</li>
  *   <li>{@link dataMapper.impl.TreeNodeImpl#getInputParent <em>Input Parent</em>}</li>
+ *   <li>{@link dataMapper.impl.TreeNodeImpl#getSchemaDataType <em>Schema Data Type</em>}</li>
+ *   <li>{@link dataMapper.impl.TreeNodeImpl#getLevel <em>Level</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,6 +100,46 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 	protected EList<Element> element;
 
 	/**
+	 * The default value of the '{@link #getSchemaDataType() <em>Schema Data Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getSchemaDataType()
+	 * @generated
+	 * @ordered
+	 */
+    protected static final SchemaDataType SCHEMA_DATA_TYPE_EDEFAULT = SchemaDataType.ARRAY;
+
+    /**
+	 * The cached value of the '{@link #getSchemaDataType() <em>Schema Data Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getSchemaDataType()
+	 * @generated
+	 * @ordered
+	 */
+    protected SchemaDataType schemaDataType = SCHEMA_DATA_TYPE_EDEFAULT;
+
+    /**
+	 * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getLevel()
+	 * @generated
+	 * @ordered
+	 */
+    protected static final int LEVEL_EDEFAULT = 0;
+
+    /**
+	 * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getLevel()
+	 * @generated
+	 * @ordered
+	 */
+    protected int level = LEVEL_EDEFAULT;
+
+    /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -297,6 +340,48 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 
 	/**
 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public SchemaDataType getSchemaDataType() {
+		return schemaDataType;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setSchemaDataType(SchemaDataType newSchemaDataType) {
+		SchemaDataType oldSchemaDataType = schemaDataType;
+		schemaDataType = newSchemaDataType == null ? SCHEMA_DATA_TYPE_EDEFAULT : newSchemaDataType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.TREE_NODE__SCHEMA_DATA_TYPE, oldSchemaDataType, schemaDataType));
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public int getLevel() {
+		return level;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setLevel(int newLevel) {
+		int oldLevel = level;
+		level = newLevel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.TREE_NODE__LEVEL, oldLevel, level));
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -390,6 +475,10 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return getOutputParent();
 			case DataMapperPackage.TREE_NODE__INPUT_PARENT:
 				return getInputParent();
+			case DataMapperPackage.TREE_NODE__SCHEMA_DATA_TYPE:
+				return getSchemaDataType();
+			case DataMapperPackage.TREE_NODE__LEVEL:
+				return getLevel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -427,6 +516,12 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__INPUT_PARENT:
 				setInputParent((Input)newValue);
 				return;
+			case DataMapperPackage.TREE_NODE__SCHEMA_DATA_TYPE:
+				setSchemaDataType((SchemaDataType)newValue);
+				return;
+			case DataMapperPackage.TREE_NODE__LEVEL:
+				setLevel((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -460,6 +555,12 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 			case DataMapperPackage.TREE_NODE__INPUT_PARENT:
 				setInputParent((Input)null);
 				return;
+			case DataMapperPackage.TREE_NODE__SCHEMA_DATA_TYPE:
+				setSchemaDataType(SCHEMA_DATA_TYPE_EDEFAULT);
+				return;
+			case DataMapperPackage.TREE_NODE__LEVEL:
+				setLevel(LEVEL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -486,6 +587,10 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 				return getOutputParent() != null;
 			case DataMapperPackage.TREE_NODE__INPUT_PARENT:
 				return getInputParent() != null;
+			case DataMapperPackage.TREE_NODE__SCHEMA_DATA_TYPE:
+				return schemaDataType != SCHEMA_DATA_TYPE_EDEFAULT;
+			case DataMapperPackage.TREE_NODE__LEVEL:
+				return level != LEVEL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -502,6 +607,10 @@ public class TreeNodeImpl extends EObjectImpl implements TreeNode {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", schemaDataType: ");
+		result.append(schemaDataType);
+		result.append(", level: ");
+		result.append(level);
 		result.append(')');
 		return result.toString();
 	}

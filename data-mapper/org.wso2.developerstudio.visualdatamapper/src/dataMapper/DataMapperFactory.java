@@ -211,6 +211,24 @@ public interface DataMapperFactory extends EFactory {
 	Split createSplit();
 
 	/**
+	 * Returns a new object of class '<em>Lower Case</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Lower Case</em>'.
+	 * @generated
+	 */
+	LowerCase createLowerCase();
+
+	/**
+	 * Returns a new object of class '<em>Contains</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Contains</em>'.
+	 * @generated
+	 */
+	Contains createContains();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

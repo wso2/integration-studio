@@ -185,6 +185,16 @@ public class DataMapperRootItemProvider
 			(createChildParameter
 				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
 				 DataMapperFactory.eINSTANCE.createSplit()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createLowerCase()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DataMapperPackage.Literals.DATA_MAPPER_ROOT__OPERATORS,
+				 DataMapperFactory.eINSTANCE.createContains()));
 	}
 
 	/**

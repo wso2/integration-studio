@@ -98,5 +98,7 @@
     <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
     <genClasses ecoreClass="dataMapper.ecore#//Constant"/>
     <genClasses ecoreClass="dataMapper.ecore#//Split"/>
+    <genClasses ecoreClass="dataMapper.ecore#//LowerCase"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
   </genPackages>
 </genmodel:GenModel>

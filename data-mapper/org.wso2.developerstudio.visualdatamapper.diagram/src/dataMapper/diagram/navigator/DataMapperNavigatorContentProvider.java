@@ -235,6 +235,18 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 					dataMapper.diagram.part.DataMapperVisualIDRegistry
 							.getType(dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.ConstantEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.LowerCaseEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
 			connectedViews = getDiagramLinksByType(
 					Collections.singleton(sv),
 					dataMapper.diagram.part.DataMapperVisualIDRegistry
@@ -293,6 +305,42 @@ public class DataMapperNavigatorContentProvider implements ICommonContentProvide
 		}
 
 		case dataMapper.diagram.edit.parts.SplitEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case dataMapper.diagram.edit.parts.ConstantEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case dataMapper.diagram.edit.parts.LowerCaseEditPart.VISUAL_ID: {
+			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(
+					Collections.singleton(sv),
+					dataMapper.diagram.part.DataMapperVisualIDRegistry
+							.getType(dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement, false));
+			return result.toArray();
+		}
+
+		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID: {
 			LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem> result = new LinkedList<dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			Collection<View> connectedViews;

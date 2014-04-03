@@ -866,6 +866,62 @@ public interface DataMapperPackage extends EPackage {
 	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link dataMapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.LowerCaseImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getLowerCase()
+	 * @generated
+	 */
+	int LOWER_CASE = 21;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_CASE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The number of structural features of the '<em>Lower Case</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_CASE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.impl.ContainsImpl <em>Contains</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.ContainsImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getContains()
+	 * @generated
+	 */
+	int CONTAINS = 22;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINS__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The number of structural features of the '<em>Contains</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINS_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}' enum.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -873,7 +929,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 21;
+    int SCHEMA_DATA_TYPE = 23;
 
     /**
 	 * Returns the meta object for class '{@link dataMapper.DataMapperNode <em>Node</em>}'.
@@ -1537,6 +1593,26 @@ public interface DataMapperPackage extends EPackage {
 	EClass getSplit();
 
 	/**
+	 * Returns the meta object for class '{@link dataMapper.LowerCase <em>Lower Case</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Lower Case</em>'.
+	 * @see dataMapper.LowerCase
+	 * @generated
+	 */
+	EClass getLowerCase();
+
+	/**
+	 * Returns the meta object for class '{@link dataMapper.Contains <em>Contains</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Contains</em>'.
+	 * @see dataMapper.Contains
+	 * @generated
+	 */
+	EClass getContains();
+
+	/**
 	 * Returns the meta object for enum '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2107,6 +2183,26 @@ public interface DataMapperPackage extends EPackage {
 		EClass SPLIT = eINSTANCE.getSplit();
 
         /**
+		 * The meta object literal for the '{@link dataMapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.LowerCaseImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getLowerCase()
+		 * @generated
+		 */
+		EClass LOWER_CASE = eINSTANCE.getLowerCase();
+
+								/**
+		 * The meta object literal for the '{@link dataMapper.impl.ContainsImpl <em>Contains</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.ContainsImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getContains()
+		 * @generated
+		 */
+		EClass CONTAINS = eINSTANCE.getContains();
+
+								/**
 		 * The meta object literal for the '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}' enum.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

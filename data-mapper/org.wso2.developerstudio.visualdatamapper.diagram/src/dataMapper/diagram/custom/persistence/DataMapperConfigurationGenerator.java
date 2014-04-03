@@ -108,6 +108,7 @@ public class DataMapperConfigurationGenerator {
     	while(node.getFieldParent() != null){
     		String name = node.getFieldParent().getName().split(",")[1];
     		temp = name + "." + temp;
+    		node = node.getFieldParent();
     	}
     	temp = "input." + temp;
 		return temp;
@@ -118,6 +119,7 @@ public class DataMapperConfigurationGenerator {
     	while(node.getFieldParent() != null){
     		String name = node.getFieldParent().getName().split(",")[1];
     		temp = name + "." + temp;
+    		node = node.getFieldParent();
     	}
     	temp = "output." + temp;
 		return temp;

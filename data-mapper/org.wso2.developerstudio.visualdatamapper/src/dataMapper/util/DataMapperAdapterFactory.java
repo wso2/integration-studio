@@ -152,6 +152,14 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 				return createSplitAdapter();
 			}
 			@Override
+			public Adapter caseLowerCase(LowerCase object) {
+				return createLowerCaseAdapter();
+			}
+			@Override
+			public Adapter caseContains(Contains object) {
+				return createContainsAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -462,6 +470,34 @@ public class DataMapperAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSplitAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.LowerCase <em>Lower Case</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.LowerCase
+	 * @generated
+	 */
+	public Adapter createLowerCaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dataMapper.Contains <em>Contains</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dataMapper.Contains
+	 * @generated
+	 */
+	public Adapter createContainsAdapter() {
 		return null;
 	}
 

@@ -112,6 +112,8 @@ public class CreateNewConfigurationDialog extends Dialog {
 	private static final int REGISTRY_RESOURCE = 0;
 	private static final String DATA_MAPPER_TEMPLATE_STRING = "/* WSO2 Data Mapper Config */"; //$NON-NLS-1$
 	private static final String DEFAULT_REGISTRY_PATH = "/_system/governance/datamapper"; //$NON-NLS-1$
+	private static final String INPUT_AVROSCHEMA = "_inputSchema.avsc";
+	private static final String OUTPUT_AVROSCHEMA = "_outputSchema.avsc";
 
 	private static final String DIALOG_MESSAGE = Messages.CreateNewConfigurationDialog_DialogMessage;
 	private static final String DIALOG_HEADER_TEMPLATE_CREATION = Messages.CreateNewConfigurationDialog_DialogHeaderTemplateCreation;
@@ -354,8 +356,8 @@ public class CreateNewConfigurationDialog extends Dialog {
 
 	public static void createRegistryResourcesForInputScemaAndOutputSchema(
 			String name, IProject project, String path) throws Exception {
-		String inputAvroSchemaName = name.replace(".js", "_inputSchema.avsc");
-		String outputAvroSchemaName = name.replace(".js", "_outputSchema.avsc");
+		String inputAvroSchemaName = name.replace(".dmc", INPUT_AVROSCHEMA);
+		String outputAvroSchemaName = name.replace(".dmc", OUTPUT_AVROSCHEMA);
 		createRegistryArtifact(project, inputAvroSchemaName, path, "");
 		createRegistryArtifact(project, outputAvroSchemaName, path, "");
 	}

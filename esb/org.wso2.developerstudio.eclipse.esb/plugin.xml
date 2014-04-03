@@ -1507,11 +1507,12 @@
              extension="xml">
        </template>       
        <template
-             file="resources/templates/datamapper/datamapper-config-template.js"
+             file="resources/templates/datamapper/datamapper-config-template.dmc"
              id="org.wso2.developerstudio.eclipse.esb.template.datamapper"
              name="Datamapper Configuration"
-             mediaType="application/vnd+wso2.datamapper"
-             extension="js">
+             mediaType="application/datamapper"
+             extension="dmc">
        </template>
+
     </extension>
 </plugin>

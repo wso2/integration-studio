@@ -70,11 +70,14 @@ import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 
+
 /**
  * @generated NOT
  */
 public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
+	private static final String  INPUT_AVROSCHEMA = "_inputSchema.avsc";
+	private static final String  OUTPUT_AVROSCHEMA = "_outputSchema.avsc";
 	/**
 	 * @generated
 	 */
@@ -352,7 +355,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 	
@@ -370,7 +373,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			
 			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
 			List<String> types = new ArrayList<String>();
-			types.add("application/javascript"); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
+			types.add("application/datamapper"); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
 			filters.put(mediaTypeKey, types);
 
 			//final DeveloperStudioElementProviderDialog dialog = null;
@@ -385,8 +388,8 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
 			if (dialog.open() == Dialog.OK) {
 				String configurationPath = formatRegistryPath(dialog.getSelectedPath());
-				String inputSchemaPath = configurationPath.replace(".js", "_inputSchema.avsc");
-				String outputSchemaPath = configurationPath.replace(".js", "_outputSchema.avsc");
+				String inputSchemaPath = configurationPath.replace(".dmc", INPUT_AVROSCHEMA);
+				String outputSchemaPath = configurationPath.replace(".dmc", OUTPUT_AVROSCHEMA);
 				
 				final RegistryKeyProperty configurationKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 				configurationKeyProperty.setKeyValue(configurationPath);
@@ -403,8 +406,8 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 						
 						TransactionalEditingDomain editingDomain = getEditingDomain();
 						String configLocalPath = dialog.getIPathOfSelection();
-						String inputSchemaLocalPath = configLocalPath.replace(".js", "_inputSchema.avsc");
-						String outputSchemaLocalPath = configLocalPath.replace(".js", "_outputSchema.avsc");
+						String inputSchemaLocalPath = configLocalPath.replace(".dmc", INPUT_AVROSCHEMA);
+						String outputSchemaLocalPath = configLocalPath.replace(".dmc", OUTPUT_AVROSCHEMA);
 						
 						setConfigurationKey(datamapper, configurationKeyProperty, configLocalPath, editingDomain);
 						setInputSchemaKey(datamapper, inputSchemaKeyProperty, inputSchemaLocalPath, editingDomain);

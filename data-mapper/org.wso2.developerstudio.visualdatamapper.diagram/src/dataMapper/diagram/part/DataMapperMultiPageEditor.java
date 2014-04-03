@@ -25,6 +25,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -205,7 +206,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		}
 
 	}
-
+	
 	/*
 	 * function generator
 	 */
@@ -280,7 +281,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			IFile diagramFile = ((FileEditorInput) editorInput).getFile();
 			String configFilePath = diagramFile.getFullPath().toString();
 			configFilePath = configFilePath
-					.replaceAll(".datamapper_diagram$", ".js");
+					.replaceAll(".datamapper_diagram$", ".dmc");
 			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
 			InputStream is = null;
 			try {
@@ -309,6 +310,23 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			}
 		}
 	}
+	
+	public void init(IEditorSite site, IEditorInput editorInput)
+	           throws PartInitException {    	
+		
+		        if (!(editorInput instanceof IFileEditorInput))
+		            throw new PartInitException("InvalidInput"); //$NON-NLS-1$     
+		       
+		       super.init(site, editorInput);
+		       String name = editorInput.getName();
+		       setTitleOfDataMapperDiagramConfiguration(name);
+		    }
+		
+			private void setTitleOfDataMapperDiagramConfiguration(String name) {
+				String title = name.replace("datamapper_diagram","dmc");
+				setTitle(title);
+			}    
+
 	
 	public static DataMapperDiagramEditor getGraphicalEditor() {
 		return graphicalEditor;

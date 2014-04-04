@@ -248,7 +248,8 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	private String goUpOnOutputTree(TreeNode node) {
 		String temp = "";
 		if (node.getOutputParent() == null) {
-			temp = goUpOnOutputTree(node.getFieldParent()) + node.getName().split(",")[1] + ".";
+			//temp = goUpOnOutputTree(node.getFieldParent()) + node.getName().split(",")[1] + ".";
+			temp = goUpOnOutputTree(node.getFieldParent()) + node.getName() + ".";
 		} else {
 			return "output.";
 		}
@@ -259,7 +260,8 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		String temp = "";
 
 		if (node.getInputParent() == null) {
-			temp = goUpOnInputTree(node.getFieldParent()) + node.getName().split(",")[1] + ".";
+			//temp = goUpOnInputTree(node.getFieldParent()) + node.getName().split(",")[1] + ".";
+			temp = goUpOnInputTree(node.getFieldParent()) + node.getName() + ".";
 		} else {
 			return "input.";
 		}

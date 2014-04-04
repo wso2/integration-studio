@@ -3,7 +3,9 @@ package dataMapper.diagram.custom.persistence;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
+
 import dataMapper.Concat;
 import dataMapper.DataMapperLink;
 import dataMapper.DataMapperRoot;
@@ -17,6 +19,9 @@ public class DataMapperConfigurationGenerator {
 	
 
     public static String generateFunction(){
+    	
+    	List<JsFunction> dmcFunctions = new ArrayList<JsFunction>();
+    	
     	DataMapperRoot rootDiagram =  (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
     	TreeNode inputTreeNode = rootDiagram.getInput().getTreeNode().get(0);
     	TreeNode outputTreeNode = rootDiagram.getInput().getTreeNode().get(0);
@@ -26,46 +31,49 @@ public class DataMapperConfigurationGenerator {
 		
 		String functionStart = "function map_S_"+input.toLowerCase()+"_S_"+output.toLowerCase()+"(input, output){\n";
 		String functionReturn = "return output;\n";
-		String functionEnd = "}\n";
 		
-		JsFunction dmcFunction = new JsFunction();
-		dmcFunction.functionStart = functionStart;
-		dmcFunction.functionReturn = functionReturn;
-		dmcFunction.functionEnd = functionEnd;
-		String dmcString = dmcFunction.getString();
+		JsFunction mainFunction = new JsFunction(0);
+		mainFunction.functionStart = functionStart;
+		mainFunction.functionReturn = functionReturn;
+		dmcFunctions.add(mainFunction);
 		
-		List<JsFunction> functions = getFunctionsForTheElements(rootDiagram.getInput().getTreeNode());
-		dmcFunction.functions.addAll(functions);
-		dmcString = dmcFunction.getString();
+		List<JsFunction> innerFunctions = getFunctionForTheTreeNode(rootDiagram.getInput().getTreeNode(), dmcFunctions, 0);
+		mainFunction.functions.addAll(innerFunctions);
 		
-		return dmcString;
+		String documentString = "";
+		for (JsFunction func : dmcFunctions) {
+			documentString += func.toString() + "\n\n";
+		}
+		
+		return documentString;
     }
     
 
-    private static List<JsFunction> getFunctionsForTheElements(EList<TreeNode> eList){
-    	
+    private static List<JsFunction> getFunctionForTheTreeNode(EList<TreeNode> eList, List<JsFunction> allFunctions, int indentation){
+    	indentation++;
     	Iterator<TreeNode> treeNodeIterator =  eList.iterator();
-    	List<JsFunction> functions = new ArrayList<JsFunction>() ;
+    	List<JsFunction> mappingFunctions = new ArrayList<JsFunction>();
 		while(treeNodeIterator.hasNext()){
-			TreeNode eListObject = treeNodeIterator.next();
-			JsFunction func = getOnetoOneFunction(eListObject);
+			TreeNode node = treeNodeIterator.next();
+			JsFunction func = getOnetoOneFunction(node, allFunctions, indentation);
 			if (func != null) {
-				functions.add(func);
+				mappingFunctions.add(func);
 			}
-			
-			List<JsFunction> l2Functions = getFunctionsForTheElements(eListObject.getNode());
-			functions.addAll(l2Functions);
     	} 	
-    	return functions;
+    	return mappingFunctions;
     }
 
-	private static JsFunction getOnetoOneFunction(TreeNode treeNode) {
+	
+
+	private static JsFunction getOnetoOneFunction(TreeNode treeNode, List<JsFunction> allFunctions, int indentation) {
 		
-		JsFunction onetooneMappingFunc = new JsFunction();
+		JsFunction forLoopFunction = new JsFunction(indentation);
 		String collectionName = getInputSuperparentName(treeNode);
-		String functionStart = "for (var x in " + collectionName+") { \n";
-		onetooneMappingFunc.functionStart = functionStart;
-		onetooneMappingFunc.functionEnd = "}\n";
+		String indexer = getIndexFromIndent(indentation);
+		String functionStart = "for (var " + indexer + " in " + collectionName+") {\n";
+		forLoopFunction.functionStart = functionStart;
+		
+		JsFunction one2OnemapingFunction = null;
 		
 		//for element
 		Iterator<Element> elementIterator = treeNode.getElement().iterator();
@@ -79,27 +87,65 @@ public class DataMapperConfigurationGenerator {
 				DataMapperLink mapperLinkObject = mapperLinkIterator.next();
 				if(mapperLinkObject.getInNode() != null){
 					//element -----> element
-					Element outputElement = mapperLinkObject.getInNode().getElementParent();
+					Element outputElement = mapperLinkObject.getInNode().getElementParent();					
 					if(outputElement != null){
+						
+						if (one2OnemapingFunction == null) { // we want this to happen only in one time
+							one2OnemapingFunction = new JsFunction(0);
+							String outputChild = outputElement.getName().split(",")[1];
+							String inputChild = inputElement.getName().split(",")[1];
+							String outputParent = getOutputSuperparentName(outputElement.getFieldParent());
+							String inputParent = getInputSuperparentName(inputElement.getFieldParent());
+							
+							String outputImmediateParent = getOutputParentName(outputElement);
+							String inputImmediateParent = getInputParentName(inputElement);
+							
+							String indexerWithBrackets = "["+ indexer +"]";
+							inputParent = inputParent.replace("." + inputChild, "") + indexerWithBrackets;
+							outputParent = outputParent.replace("." + outputChild, "") + indexerWithBrackets;
+							one2OnemapingFunction.functionStart = "function map_S_"+inputImmediateParent.toLowerCase()+"_S_"+outputImmediateParent.toLowerCase()+"(" + inputImmediateParent + ", " + outputImmediateParent + "){\n";
+							String functionCallStatement = "\tmap_S_"+inputImmediateParent.toLowerCase()+"_S_"+outputImmediateParent.toLowerCase()+"(" + inputParent + ", " + outputParent + ");\n";
+							forLoopFunction.assignmentStatements.add(functionCallStatement);
+						}
+						
 						String mapStatement = getOnetoOneMappingStatement(inputElement, outputElement);
-						onetooneMappingFunc.assignmentStatements.add(mapStatement);
+						one2OnemapingFunction.assignmentStatements.add(mapStatement);
 					}	
 				}
 			}
 			
 		}
-		return onetooneMappingFunc;
+		
+		
+		List<JsFunction> l2Function = getFunctionForTheTreeNode(treeNode.getNode(), allFunctions, indentation);
+		forLoopFunction.functions.addAll(l2Function);
+		
+		
+		if (one2OnemapingFunction != null) {
+			allFunctions.add(one2OnemapingFunction);
+		}
+		
+		return forLoopFunction;
 	}
 	
 
 
+	private static String getIndexFromIndent(int indentation) {
+		char indexChar = 'i';
+		for (int i=0; i< indentation; i++) {
+			indexChar ++;
+		}
+		return Character.toString(indexChar);
+	}
+
+
 	private static String getOnetoOneMappingStatement(Element inputElement, Element outputElement) {
 		
-		String outputParent = getOutputSuperparentName(outputElement.getFieldParent());
+		String outputParent = getOutputParentName(outputElement);
 		String outputChild = outputElement.getName().split(",")[1];
-		String inputParent = getInputSuperparentName(inputElement.getFieldParent());
+		String inputParent = getInputParentName(inputElement);
 		String inputChild = inputElement.getName().split(",")[1];
-		String statement = outputParent +"[x]."+outputChild+"="+inputParent+"[x]."+inputChild +"\n";
+		String statement = "\t" + outputParent +"." + outputChild + "=" + inputParent + "."+ inputChild +";\n";
 		return statement;
 	}
     
@@ -122,6 +168,22 @@ public class DataMapperConfigurationGenerator {
     		node = node.getFieldParent();
     	}
     	temp = "output." + temp;
+		return temp;
+    }
+    
+    private static String getInputParentName(Element node){
+    	String temp = "input";
+    	if(node.getFieldParent() != null){
+    		temp = node.getFieldParent().getName().split(",")[1];
+    	}
+		return temp;
+    }
+    
+    private static String getOutputParentName(Element node){
+    	String temp = "output";
+    	if(node.getFieldParent() != null){
+    		temp = node.getFieldParent().getName().split(",")[1];
+    	}
 		return temp;
     }
     

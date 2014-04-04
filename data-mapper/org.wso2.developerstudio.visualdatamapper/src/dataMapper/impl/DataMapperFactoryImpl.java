@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -85,12 +86,44 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 			case DataMapperPackage.EQUAL: return createEqual();
 			case DataMapperPackage.CONSTANT: return createConstant();
 			case DataMapperPackage.SPLIT: return createSplit();
+			case DataMapperPackage.LOWER_CASE: return createLowerCase();
+			case DataMapperPackage.CONTAINS: return createContains();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case DataMapperPackage.SCHEMA_DATA_TYPE:
+				return createSchemaDataTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case DataMapperPackage.SCHEMA_DATA_TYPE:
+				return convertSchemaDataTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+    /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -302,10 +335,11 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public Constant createConstant() {
 		ConstantImpl constant = new ConstantImpl();
+		constant.setBasicContainer(createOperatorBasicContainer());
 		return constant;
 	}
 
@@ -321,6 +355,48 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public LowerCase createLowerCase() {
+		LowerCaseImpl lowerCase = new LowerCaseImpl();
+		lowerCase.setBasicContainer(createOperatorBasicContainer());
+		return lowerCase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Contains createContains() {
+		ContainsImpl contains = new ContainsImpl();
+		contains.setBasicContainer(createOperatorBasicContainer());
+		return contains;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public SchemaDataType createSchemaDataTypeFromString(EDataType eDataType, String initialValue) {
+		SchemaDataType result = SchemaDataType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public String convertSchemaDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+    /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

@@ -52,6 +52,7 @@ import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -61,7 +62,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.DeveloperStudioElementProviderDialog;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
@@ -70,10 +70,22 @@ import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 
+import dataMapper.diagram.custom.util.DataMapperConfigurationDialog;
+
+
 /**
  * @generated NOT
  */
 public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
+
+	private static final String DATAMAPPER_FILTER_TYPE = "application/datamapper";
+	private static final String  INPUT_AVROSCHEMA = "_inputSchema.avsc";
+	private static final String  OUTPUT_AVROSCHEMA = "_outputSchema.avsc";
+	private static final String G_REG_PATH_PREFIX = "/_system/governance/"; 
+	private static final String C_REG_PATH_PREFIX = "/_system/config/"; 
+	private static final String G_REG_PREFIX = "gov:%s";
+	private static final String C_REG_PREFIX = "conf:%s";
+	private static final String DATAMAPPER_CONFIG_EXT = ".dmc";
 
 	/**
 	 * @generated
@@ -352,7 +364,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 	
@@ -365,51 +377,108 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
 			
 			Shell shell = new Shell(Display.getDefault());
-			final RegistryKeyProperty registryKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 			
 			Map<String, List<String>> filters = new HashMap<String, List<String>>();
 			
 			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
 			List<String> types = new ArrayList<String>();
-			types.add("application/javascript"); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
+			types.add(DATAMAPPER_FILTER_TYPE); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
 			filters.put(mediaTypeKey, types);
-
-			//final DeveloperStudioElementProviderDialog dialog = null;
-			//boolean noExistingResources = true;
-			//dialog = new CreateNewConfigurationDialog(shell,filters);
-			//dialog.create();
-			//dialog.getShell().setText("New Datamapper Configuration");
 			
-			final DeveloperStudioElementProviderDialog dialog = new DeveloperStudioElementProviderDialog(shell, new Class[]{IRegistryFile.class}, filters);
-			dialog.configureDialog("Specify DataMapper Configuration.", false, true);
-			
+			/* IRegistryFile class is only required for datamapper related filtering */
+			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(shell, new Class[]{IRegistryFile.class}, filters); 
+			dataMapperConfigurationDialog.create();
 
-			if (dialog.open() == Dialog.OK) {
-				String selectedPath = formatRegistryPath(dialog.getSelectedPath());
-				registryKeyProperty.setKeyValue(selectedPath);
+			Rectangle monitor = dataMapperConfigurationDialog.getShell().getDisplay()
+					.getPrimaryMonitor().getBounds();
+			Rectangle dialog = dataMapperConfigurationDialog.getShell().getBounds();
+			int x = monitor.x + (monitor.width - dialog.width) / 2;
+			int y = monitor.y + (monitor.height - dialog.height) / 3;
+			dataMapperConfigurationDialog.getShell().setLocation(x, y);
+			
+			if (dataMapperConfigurationDialog.open() == Dialog.OK) {
+				String configurationPath = formatRegistryPath(dataMapperConfigurationDialog.getSelectedPath());
+				String inputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
+				String outputSchemaPath = configurationPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
+				
+				final RegistryKeyProperty configurationKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+				configurationKeyProperty.setKeyValue(configurationPath);
+				
+				final RegistryKeyProperty inputSchemaKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+				inputSchemaKeyProperty.setKeyValue(inputSchemaPath);
+				
+				final RegistryKeyProperty outputSchemaKeyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+				outputSchemaKeyProperty.setKeyValue(outputSchemaPath);
 				
 				Display.getDefault().asyncExec(new Runnable() {
 
 				public void run() {
 						
 						TransactionalEditingDomain editingDomain = getEditingDomain();
-					
-						SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION, registryKeyProperty);
-
-						if (setCmd.canExecute()) {
-							getEditingDomain().getCommandStack().execute(setCmd);
-						}
+						String configLocalPath = dataMapperConfigurationDialog.getIPathOfSelection();
+						String inputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
+						String outputSchemaLocalPath = configLocalPath.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
 						
-						String localPath = dialog.getIPathOfSelection();
-						
-						SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
-						if (setCmd2.canExecute()) {
-							editingDomain.getCommandStack().execute(setCmd2);
-						}
+						setConfigurationKey(datamapper, configurationKeyProperty, configLocalPath, editingDomain);
+						setInputSchemaKey(datamapper, inputSchemaKeyProperty, inputSchemaLocalPath, editingDomain);
+						setOutputSchemaKey(datamapper, outputSchemaKeyProperty, outputSchemaLocalPath, editingDomain);
 						
 						openDataMapperEditor(datamapper);
 
 					}
+
+				private void setOutputSchemaKey(
+						DataMapperMediatorImpl datamapper,
+						RegistryKeyProperty registryKeyProperty,
+						String localPath,
+						TransactionalEditingDomain editingDomain) {
+					
+					SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA, registryKeyProperty);
+					if (setCmd.canExecute()) {
+						getEditingDomain().getCommandStack().execute(setCmd);
+					}
+					
+					SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH, localPath);
+					if (setCmd2.canExecute()) {
+						editingDomain.getCommandStack().execute(setCmd2);
+					}
+					
+				}
+
+				private void setInputSchemaKey(
+						DataMapperMediatorImpl datamapper,
+						RegistryKeyProperty registryKeyProperty,
+						String localPath,
+						TransactionalEditingDomain editingDomain) {
+					
+					SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA, registryKeyProperty);
+					if (setCmd.canExecute()) {
+						getEditingDomain().getCommandStack().execute(setCmd);
+					}
+					
+					SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH, localPath);
+					if (setCmd2.canExecute()) {
+						editingDomain.getCommandStack().execute(setCmd2);
+					}
+					
+				}
+
+				private void setConfigurationKey(
+						final DataMapperMediatorImpl datamapper,
+						final RegistryKeyProperty registryKeyProperty,
+						String localPath,
+						TransactionalEditingDomain editingDomain) {
+					
+					SetCommand setCmd = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION, registryKeyProperty);
+					if (setCmd.canExecute()) {
+						getEditingDomain().getCommandStack().execute(setCmd);
+					}
+					
+					SetCommand setCmd2 = new SetCommand(editingDomain, datamapper, EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH, localPath);
+					if (setCmd2.canExecute()) {
+						editingDomain.getCommandStack().execute(setCmd2);
+					}
+				}
 				});
 			}
 
@@ -420,13 +489,11 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	}
 
 	private String formatRegistryPath(String selectedPath) {
-		final String G_REG_PATH_PREFIX = "/_system/governance/";
-		final String C_REG_PATH_PREFIX = "/_system/config/";
 		String formattedPath = selectedPath;
 		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
-			formattedPath = String.format("gov:%s", selectedPath.substring(G_REG_PATH_PREFIX.length()));
+			formattedPath = String.format(G_REG_PREFIX, selectedPath.substring(G_REG_PATH_PREFIX.length()));
 		} else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
-			formattedPath = String.format("conf:%s", selectedPath.substring(C_REG_PATH_PREFIX.length()));
+			formattedPath = String.format(C_REG_PREFIX, selectedPath.substring(C_REG_PATH_PREFIX.length()));
 		}
 		return formattedPath;
 	}

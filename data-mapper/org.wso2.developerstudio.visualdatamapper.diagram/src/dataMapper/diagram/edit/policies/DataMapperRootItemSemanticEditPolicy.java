@@ -39,6 +39,18 @@ public class DataMapperRootItemSemanticEditPolicy extends
 		if (dataMapper.diagram.providers.DataMapperElementTypes.Split_2007 == req.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.SplitCreateCommand(req));
 		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Constant_2008 == req
+				.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.ConstantCreateCommand(req));
+		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.LowerCase_2009 == req
+				.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.LowerCaseCreateCommand(req));
+		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.Contains_2010 == req
+				.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.ContainsCreateCommand(req));
+		}
 		return super.getCreateCommand(req);
 	}
 

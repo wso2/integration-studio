@@ -4,6 +4,7 @@ package dataMapper;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -429,13 +430,31 @@ public interface DataMapperPackage extends EPackage {
 	int ELEMENT__FIELD_PARENT = 4;
 
 	/**
+	 * The feature id for the '<em><b>Schema Data Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int ELEMENT__SCHEMA_DATA_TYPE = 5;
+
+    /**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int ELEMENT__LEVEL = 6;
+
+    /**
 	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = 5;
+	int ELEMENT_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -575,13 +594,31 @@ public interface DataMapperPackage extends EPackage {
 	int TREE_NODE__INPUT_PARENT = 6;
 
 	/**
+	 * The feature id for the '<em><b>Schema Data Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int TREE_NODE__SCHEMA_DATA_TYPE = 7;
+
+    /**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int TREE_NODE__LEVEL = 8;
+
+    /**
 	 * The number of structural features of the '<em>Tree Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TREE_NODE_FEATURE_COUNT = 7;
+	int TREE_NODE_FEATURE_COUNT = 9;
 
 
 	/**
@@ -829,6 +866,72 @@ public interface DataMapperPackage extends EPackage {
 	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link dataMapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.LowerCaseImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getLowerCase()
+	 * @generated
+	 */
+	int LOWER_CASE = 21;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_CASE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The number of structural features of the '<em>Lower Case</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_CASE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.impl.ContainsImpl <em>Contains</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.ContainsImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getContains()
+	 * @generated
+	 */
+	int CONTAINS = 22;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINS__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The number of structural features of the '<em>Contains</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINS_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see dataMapper.SchemaDataType
+	 * @see dataMapper.impl.DataMapperPackageImpl#getSchemaDataType()
+	 * @generated
+	 */
+    int SCHEMA_DATA_TYPE = 23;
+
+    /**
 	 * Returns the meta object for class '{@link dataMapper.DataMapperNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1136,6 +1239,28 @@ public interface DataMapperPackage extends EPackage {
 	EReference getElement_FieldParent();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dataMapper.Element#getSchemaDataType <em>Schema Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Schema Data Type</em>'.
+	 * @see dataMapper.Element#getSchemaDataType()
+	 * @see #getElement()
+	 * @generated
+	 */
+    EAttribute getElement_SchemaDataType();
+
+    /**
+	 * Returns the meta object for the attribute '{@link dataMapper.Element#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see dataMapper.Element#getLevel()
+	 * @see #getElement()
+	 * @generated
+	 */
+    EAttribute getElement_Level();
+
+    /**
 	 * Returns the meta object for class '{@link dataMapper.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1288,6 +1413,28 @@ public interface DataMapperPackage extends EPackage {
 	EReference getTreeNode_InputParent();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dataMapper.TreeNode#getSchemaDataType <em>Schema Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Schema Data Type</em>'.
+	 * @see dataMapper.TreeNode#getSchemaDataType()
+	 * @see #getTreeNode()
+	 * @generated
+	 */
+    EAttribute getTreeNode_SchemaDataType();
+
+    /**
+	 * Returns the meta object for the attribute '{@link dataMapper.TreeNode#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see dataMapper.TreeNode#getLevel()
+	 * @see #getTreeNode()
+	 * @generated
+	 */
+    EAttribute getTreeNode_Level();
+
+    /**
 	 * Returns the meta object for class '{@link dataMapper.InNode <em>In Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1446,6 +1593,36 @@ public interface DataMapperPackage extends EPackage {
 	EClass getSplit();
 
 	/**
+	 * Returns the meta object for class '{@link dataMapper.LowerCase <em>Lower Case</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Lower Case</em>'.
+	 * @see dataMapper.LowerCase
+	 * @generated
+	 */
+	EClass getLowerCase();
+
+	/**
+	 * Returns the meta object for class '{@link dataMapper.Contains <em>Contains</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Contains</em>'.
+	 * @see dataMapper.Contains
+	 * @generated
+	 */
+	EClass getContains();
+
+	/**
+	 * Returns the meta object for enum '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Schema Data Type</em>'.
+	 * @see dataMapper.SchemaDataType
+	 * @generated
+	 */
+    EEnum getSchemaDataType();
+
+    /**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1724,6 +1901,22 @@ public interface DataMapperPackage extends EPackage {
 		EReference ELEMENT__FIELD_PARENT = eINSTANCE.getElement_FieldParent();
 
 		/**
+		 * The meta object literal for the '<em><b>Schema Data Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+		 * @generated
+		 */
+        EAttribute ELEMENT__SCHEMA_DATA_TYPE = eINSTANCE.getElement_SchemaDataType();
+
+        /**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+		 * @generated
+		 */
+        EAttribute ELEMENT__LEVEL = eINSTANCE.getElement_Level();
+
+        /**
 		 * The meta object literal for the '{@link dataMapper.impl.AttributeImpl <em>Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1840,6 +2033,22 @@ public interface DataMapperPackage extends EPackage {
 		EReference TREE_NODE__INPUT_PARENT = eINSTANCE.getTreeNode_InputParent();
 
 		/**
+		 * The meta object literal for the '<em><b>Schema Data Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+		 * @generated
+		 */
+        EAttribute TREE_NODE__SCHEMA_DATA_TYPE = eINSTANCE.getTreeNode_SchemaDataType();
+
+        /**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+		 * @generated
+		 */
+        EAttribute TREE_NODE__LEVEL = eINSTANCE.getTreeNode_Level();
+
+        /**
 		 * The meta object literal for the '{@link dataMapper.impl.InNodeImpl <em>In Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1972,6 +2181,36 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SPLIT = eINSTANCE.getSplit();
+
+        /**
+		 * The meta object literal for the '{@link dataMapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.LowerCaseImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getLowerCase()
+		 * @generated
+		 */
+		EClass LOWER_CASE = eINSTANCE.getLowerCase();
+
+								/**
+		 * The meta object literal for the '{@link dataMapper.impl.ContainsImpl <em>Contains</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.ContainsImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getContains()
+		 * @generated
+		 */
+		EClass CONTAINS = eINSTANCE.getContains();
+
+								/**
+		 * The meta object literal for the '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+		 * @see dataMapper.SchemaDataType
+		 * @see dataMapper.impl.DataMapperPackageImpl#getSchemaDataType()
+		 * @generated
+		 */
+        EEnum SCHEMA_DATA_TYPE = eINSTANCE.getSchemaDataType();
 
 	}
 

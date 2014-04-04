@@ -80,7 +80,6 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	public SplitEditPart(View view) {
 		super(view);
 	}
-	
 
 	/**
 	 * @generated
@@ -125,7 +124,7 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
 		return primaryShape = new SplitFigure();
@@ -139,7 +138,7 @@ public class SplitEditPart extends AbstractOperatorEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
 		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(sizeX, sizeY);

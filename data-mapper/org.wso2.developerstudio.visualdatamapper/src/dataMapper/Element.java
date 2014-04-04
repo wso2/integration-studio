@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link dataMapper.Element#getOutNode <em>Out Node</em>}</li>
  *   <li>{@link dataMapper.Element#getInNode <em>In Node</em>}</li>
  *   <li>{@link dataMapper.Element#getFieldParent <em>Field Parent</em>}</li>
+ *   <li>{@link dataMapper.Element#getSchemaDataType <em>Schema Data Type</em>}</li>
+ *   <li>{@link dataMapper.Element#getLevel <em>Level</em>}</li>
  * </ul>
  * </p>
  *
@@ -160,5 +162,60 @@ public interface Element extends EObject {
 	 * @generated
 	 */
 	void setFieldParent(TreeNode value);
+
+    /**
+	 * Returns the value of the '<em><b>Schema Data Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link dataMapper.SchemaDataType}.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Schema Data Type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+	 * @return the value of the '<em>Schema Data Type</em>' attribute.
+	 * @see dataMapper.SchemaDataType
+	 * @see #setSchemaDataType(SchemaDataType)
+	 * @see dataMapper.DataMapperPackage#getElement_SchemaDataType()
+	 * @model
+	 * @generated
+	 */
+    SchemaDataType getSchemaDataType();
+
+    /**
+	 * Sets the value of the '{@link dataMapper.Element#getSchemaDataType <em>Schema Data Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Schema Data Type</em>' attribute.
+	 * @see dataMapper.SchemaDataType
+	 * @see #getSchemaDataType()
+	 * @generated
+	 */
+    void setSchemaDataType(SchemaDataType value);
+
+    /**
+	 * Returns the value of the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Level</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+	 * @return the value of the '<em>Level</em>' attribute.
+	 * @see #setLevel(int)
+	 * @see dataMapper.DataMapperPackage#getElement_Level()
+	 * @model
+	 * @generated
+	 */
+    int getLevel();
+
+    /**
+	 * Sets the value of the '{@link dataMapper.Element#getLevel <em>Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Level</em>' attribute.
+	 * @see #getLevel()
+	 * @generated
+	 */
+    void setLevel(int value);
 
 } // Element

@@ -5,6 +5,7 @@ package dataMapper.impl;
 import dataMapper.Attribute;
 import dataMapper.Concat;
 import dataMapper.Constant;
+import dataMapper.Contains;
 import dataMapper.DataMapperDiagram;
 import dataMapper.DataMapperFactory;
 import dataMapper.DataMapperLink;
@@ -15,6 +16,7 @@ import dataMapper.Element;
 import dataMapper.Equal;
 import dataMapper.InNode;
 import dataMapper.Input;
+import dataMapper.LowerCase;
 import dataMapper.Operation;
 import dataMapper.Operations;
 import dataMapper.Operator;
@@ -27,11 +29,13 @@ import dataMapper.Operators;
 import dataMapper.OutNode;
 import dataMapper.Output;
 
+import dataMapper.SchemaDataType;
 import dataMapper.Split;
 import dataMapper.TreeNode;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -192,6 +196,27 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	private EClass splitEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lowerCaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass containsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    private EEnum schemaDataTypeEEnum = null;
+
+    /**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -515,6 +540,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 	/**
 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public EAttribute getElement_SchemaDataType() {
+		return (EAttribute)elementEClass.getEStructuralFeatures().get(5);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public EAttribute getElement_Level() {
+		return (EAttribute)elementEClass.getEStructuralFeatures().get(6);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -640,6 +683,24 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public EAttribute getTreeNode_SchemaDataType() {
+		return (EAttribute)treeNodeEClass.getEStructuralFeatures().get(7);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public EAttribute getTreeNode_Level() {
+		return (EAttribute)treeNodeEClass.getEStructuralFeatures().get(8);
+	}
+
+    /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -779,6 +840,33 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLowerCase() {
+		return lowerCaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContains() {
+		return containsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public EEnum getSchemaDataType() {
+		return schemaDataTypeEEnum;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataMapperFactory getDataMapperFactory() {
 		return (DataMapperFactory)getEFactoryInstance();
 	}
@@ -842,6 +930,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(elementEClass, ELEMENT__OUT_NODE);
 		createEReference(elementEClass, ELEMENT__IN_NODE);
 		createEReference(elementEClass, ELEMENT__FIELD_PARENT);
+		createEAttribute(elementEClass, ELEMENT__SCHEMA_DATA_TYPE);
+		createEAttribute(elementEClass, ELEMENT__LEVEL);
 
 		attributeEClass = createEClass(ATTRIBUTE);
 		createEAttribute(attributeEClass, ATTRIBUTE__NAME);
@@ -858,6 +948,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(treeNodeEClass, TREE_NODE__FIELD_PARENT);
 		createEReference(treeNodeEClass, TREE_NODE__OUTPUT_PARENT);
 		createEReference(treeNodeEClass, TREE_NODE__INPUT_PARENT);
+		createEAttribute(treeNodeEClass, TREE_NODE__SCHEMA_DATA_TYPE);
+		createEAttribute(treeNodeEClass, TREE_NODE__LEVEL);
 
 		inNodeEClass = createEClass(IN_NODE);
 		createEReference(inNodeEClass, IN_NODE__INCOMING_LINK);
@@ -880,6 +972,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		constantEClass = createEClass(CONSTANT);
 
 		splitEClass = createEClass(SPLIT);
+
+		lowerCaseEClass = createEClass(LOWER_CASE);
+
+		containsEClass = createEClass(CONTAINS);
+
+		// Create enums
+		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
 	}
 
 	/**
@@ -918,6 +1017,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		equalEClass.getESuperTypes().add(this.getOperator());
 		constantEClass.getESuperTypes().add(this.getOperator());
 		splitEClass.getESuperTypes().add(this.getOperator());
+		lowerCaseEClass.getESuperTypes().add(this.getOperator());
+		containsEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -960,6 +1061,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getElement_OutNode(), this.getOutNode(), this.getOutNode_ElementParent(), "outNode", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElement_InNode(), this.getInNode(), this.getInNode_ElementParent(), "inNode", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElement_FieldParent(), this.getTreeNode(), this.getTreeNode_Element(), "fieldParent", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElement_SchemaDataType(), this.getSchemaDataType(), "schemaDataType", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElement_Level(), ecorePackage.getEInt(), "level", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -976,6 +1079,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getTreeNode_FieldParent(), this.getTreeNode(), this.getTreeNode_Node(), "fieldParent", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTreeNode_OutputParent(), this.getOutput(), this.getOutput_TreeNode(), "outputParent", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTreeNode_InputParent(), this.getInput(), this.getInput_TreeNode(), "inputParent", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTreeNode_SchemaDataType(), this.getSchemaDataType(), "schemaDataType", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTreeNode_Level(), ecorePackage.getEInt(), "level", null, 0, 1, TreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inNodeEClass, InNode.class, "InNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInNode_IncomingLink(), this.getDataMapperLink(), this.getDataMapperLink_InNode(), "incomingLink", null, 0, -1, InNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -998,6 +1103,27 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(splitEClass, Split.class, "Split", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lowerCaseEClass, LowerCase.class, "LowerCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(schemaDataTypeEEnum, SchemaDataType.class, "SchemaDataType");
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.ARRAY);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.BOOLEAN);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.BYTES);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.DOUBLE);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.ENUM);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.FIXED);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.FLOAT);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.INT);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.LONG);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.MAP);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.NULL);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.RECORD);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.STRING);
+		addEEnumLiteral(schemaDataTypeEEnum, SchemaDataType.UNION);
 
 		// Create resource
 		createResource(eNS_URI);

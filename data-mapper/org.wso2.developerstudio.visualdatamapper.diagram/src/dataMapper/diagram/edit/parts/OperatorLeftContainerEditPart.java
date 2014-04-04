@@ -75,7 +75,8 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			@Override
 			public void run() {
 
-				if (getParent().getParent() instanceof SplitEditPart) {
+				if (getParent().getParent() instanceof SplitEditPart
+						|| getParent().getParent() instanceof LowerCaseEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
@@ -92,8 +93,9 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 
 					}
 				}
-				
-				else if(getParent().getParent() instanceof EqualEditPart || getParent().getParent() instanceof ConcatEditPart){
+
+				else if (getParent().getParent() instanceof EqualEditPart
+						|| getParent().getParent() instanceof ConcatEditPart || getParent().getParent() instanceof ContainsEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
@@ -109,7 +111,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 						if (addCaseConnectorCmd1.canExecute()) {
 							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd1);
 						}
-						
+
 						AddCommand addCaseConnectorCmd2 = new AddCommand(
 								getEditingDomain(),
 								parentContainer,
@@ -121,7 +123,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 
 					}
 				}
-				
+
 			}// runend
 		});
 
@@ -141,8 +143,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.OperatorLeftContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that
-		// would let children add reasonable editpolicies
+		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
@@ -190,7 +191,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40,20);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
@@ -278,14 +279,15 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 
 		public OperatorLeftContainerFigure() {
 
-			this.setBackgroundColor(THIS_BACK);
+//			this.setBackgroundColor(THIS_BACK);
 			// RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
 			// border.setColor(new Color(null, 255, 0, 0));
 			// this.setBorder(border); //TODO just for identification remove
 			// once we are done
 
-			ToolbarLayout layoutThis = new ToolbarLayout();
+			ConstrainedToolbarLayout layoutThis = new ConstrainedToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setStretchMajorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
 			layoutThis.setSpacing(0);
 			// layoutThis.setHorizontal(true);

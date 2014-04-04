@@ -39,8 +39,8 @@ public class DataMapperSchemaEditorUtil {
 	private IFile outputSchemaIFile;
 
 	private static final String SCHEMA_FILE_EXTENSION = ".avsc";
-	private static final String INPUT_SCHEMA_FILE_SUFFIX = "_input_schema";
-	private static final String OUTPUT_SCHEMA_FILE_SUFFIX = "_output_schema";
+	private static final String INPUT_SCHEMA_FILE_SUFFIX = "_inputSchema";
+	private static final String OUTPUT_SCHEMA_FILE_SUFFIX = "_outputSchema";
 
 	public DataMapperSchemaEditorUtil(IFile graphicalFile) {
 		this.project = graphicalFile.getProject();

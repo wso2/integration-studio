@@ -1,6 +1,7 @@
 package dataMapper.diagram.part;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,6 +25,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -204,7 +206,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		}
 
 	}
-
+	
 	/*
 	 * function generator
 	 */
@@ -279,15 +281,16 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			IFile diagramFile = ((FileEditorInput) editorInput).getFile();
 			String configFilePath = diagramFile.getFullPath().toString();
 			configFilePath = configFilePath
-					.replaceAll(".datamapper_diagram$", ".js");
+					.replaceAll(".datamapper_diagram$", ".dmc");
 			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
+			InputStream is = null;
 			try {
 				String source = DataMapperConfigurationGenerator.generateFunction();
 				if (source == null) {
 					log.warn("Could get source");
 					return;
 				}
-				InputStream is = new ByteArrayInputStream(source.getBytes());
+				is = new ByteArrayInputStream(source.getBytes());
 				if (configFile.exists()) {
 					configFile.setContents(is, true, true, monitor);
 				} else {
@@ -296,9 +299,34 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 
 			} catch (Exception e) {
 				log.warn("Could not save file " + configFile);
+			} finally {
+				if(is != null) {
+					try {
+						is.close();
+					} catch (IOException e) {
+						// ignore.
+					}
+				}
 			}
 		}
 	}
+	
+	public void init(IEditorSite site, IEditorInput editorInput)
+	           throws PartInitException {    	
+		
+		        if (!(editorInput instanceof IFileEditorInput))
+		            throw new PartInitException("InvalidInput"); //$NON-NLS-1$     
+		       
+		       super.init(site, editorInput);
+		       String name = editorInput.getName();
+		       setTitleOfDataMapperDiagramConfiguration(name);
+		    }
+		
+			private void setTitleOfDataMapperDiagramConfiguration(String name) {
+				String title = name.replace("datamapper_diagram","dmc");
+				setTitle(title);
+			}    
+
 	
 	public static DataMapperDiagramEditor getGraphicalEditor() {
 		return graphicalEditor;

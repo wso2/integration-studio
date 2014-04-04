@@ -49,7 +49,7 @@ public class OperatorRightContainerImpl extends EObjectImpl implements OperatorR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperatorRightContainerImpl() {
+	protected OperatorRightContainerImpl() {
 		super();
 	}
 

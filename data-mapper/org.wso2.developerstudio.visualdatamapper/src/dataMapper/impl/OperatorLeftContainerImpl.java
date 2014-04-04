@@ -49,7 +49,7 @@ public class OperatorLeftContainerImpl extends EObjectImpl implements OperatorLe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperatorLeftContainerImpl() {
+	protected OperatorLeftContainerImpl() {
 		super();
 	}
 

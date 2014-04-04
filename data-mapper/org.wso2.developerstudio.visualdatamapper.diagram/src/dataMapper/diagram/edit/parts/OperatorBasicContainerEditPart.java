@@ -200,8 +200,9 @@ public class OperatorBasicContainerEditPart extends ShapeNodeEditPart {
 
 		public OperatorBasicFigure() {
 
-			ToolbarLayout layoutThis = new ToolbarLayout();
+			ConstrainedToolbarLayout layoutThis = new ConstrainedToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setStretchMajorAxis(true);
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(false);

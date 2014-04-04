@@ -66,6 +66,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapper
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.DataMapperMediatorItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 
@@ -384,7 +385,8 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			types.add(DATAMAPPER_FILTER_TYPE); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
 			filters.put(mediaTypeKey, types);
 			
-			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(shell, filters);
+			/* IRegistryFile class is only required for datamapper related filtering */
+			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(shell, new Class[]{IRegistryFile.class}, filters); 
 			dataMapperConfigurationDialog.create();
 
 			Rectangle monitor = dataMapperConfigurationDialog.getShell().getDisplay()

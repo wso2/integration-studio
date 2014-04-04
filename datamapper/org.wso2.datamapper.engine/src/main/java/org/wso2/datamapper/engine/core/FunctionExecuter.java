@@ -15,61 +15,26 @@
  */
 package org.wso2.datamapper.engine.core;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
-import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Function;
-import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
-import org.wso2.datamapper.engine.models.MappingConfigModel;
 
 public class FunctionExecuter {
-	
-	private HashMap<String, MappingConfigModel> mappingModelMap;
-	private Scriptable scope;
-	private Map<String, Schema> outputSchemaMap;
-	private Context context;
-	
-	public FunctionExecuter(HashMap<String, MappingConfigModel> mappingTypes , Scriptable scope , Map<String, Schema> outputSchemaMap , Context context, Map<String, String> avroArrayMap) {
-		this.mappingModelMap = mappingTypes;
-		this.scope = scope;
-		this.outputSchemaMap = outputSchemaMap;
-		this.context = context;
-	}
 
-	public GenericRecord execute(String elementId, GenericRecord inRecord) {
+	public static GenericRecord execute(MappingResourceLoader resourceModel, GenericRecord inRecord) {
+		GenericRecord genericOutRecord = new GenericData.Record(resourceModel.getOutputSchema());
 		
- 
-		GenericRecord resultRecord = null;		
-		MappingConfigModel mappingModel = mappingModelMap.get(elementId);
-		
-		if (mappingModel != null) {
+		ScriptableRecord inScriptableRecord = new ScriptableRecord(inRecord,resourceModel.getScope());
+		ScriptableRecord outScriptableRecord = new ScriptableRecord(genericOutRecord,
+				resourceModel.getScope());
+		Function fn = resourceModel.getFunction();
+		Object resultOb = fn.call(resourceModel.getContext(), resourceModel.getScope(),
+				resourceModel.getScope(), new Object[] { inScriptableRecord, outScriptableRecord });
 
-			String outputDataType = mappingModel.getOutputDataType();
-			String funcType = mappingModel.getMappingFunctionType();
-			Schema outputSchema = outputSchemaMap.get(outputDataType);
-
-			GenericRecord  outputRecord = new GenericData.Record(outputSchema);
-			ScriptableObjectFactory inputRecordWrapper = new ScriptableObjectFactory(inRecord,this.scope);
-			ScriptableObjectFactory outputRecordWrapper = new ScriptableObjectFactory(outputRecord,this.scope);
-			
-			/*Object wrappedOut = Context.javaToJS(System.out, scope);
-	        ScriptableObject.putProperty(scope, "out", wrappedOut);*/
-			
-			 String fnName = "map_"+funcType+"_"+elementId+"_"+funcType+"_"+outputDataType;
-			 Function fn = (Function)scope.get(fnName, scope);
-			 Object resultOb = fn.call(context, this.scope, this.scope, new Object[] {inputRecordWrapper,outputRecordWrapper});
-
-			if(resultOb != ScriptableObject.NOT_FOUND){
-				resultRecord = outputRecordWrapper.getRecord();
-			}
+		if (resultOb != ScriptableObject.NOT_FOUND) {
+			return outScriptableRecord.getRecord();
 		}
-
-		return resultRecord;
-		
+		return null;
 	}
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.datamapper.engine.core;
+package org.wso2.datamapper.engine.utils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,6 +27,7 @@ import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.generic.GenericData.Array;
 import org.mozilla.javascript.NativeJavaArray;
 import org.mozilla.javascript.Scriptable;
+import org.wso2.datamapper.engine.core.ScriptableRecord;
 
 public class  AvroAwareNativeJavaArray extends NativeJavaArray  {
 	
@@ -58,8 +59,10 @@ public class  AvroAwareNativeJavaArray extends NativeJavaArray  {
 	
 	@Override
 	public void put(String id, Scriptable start, Object value) {
+		// TODO Auto-generated method stub
 		super.put(id, start, value);
 	}
+	
 	
 	@Override
 	public Object get(int index, Scriptable start) {
@@ -68,7 +71,7 @@ public class  AvroAwareNativeJavaArray extends NativeJavaArray  {
 			if((recordArray.size() -1) < index){
 				recordArray.add(new GenericData.Record(elementType));
 			}
-			return new ScriptableObjectFactory((GenericRecord)recordArray.get(index),scope);
+			return new ScriptableRecord((GenericRecord)recordArray.get(index),scope);
 		} else{
 			return recordArray.get(index);
 		}
@@ -77,13 +80,16 @@ public class  AvroAwareNativeJavaArray extends NativeJavaArray  {
 	
 	@Override
 	public boolean has(int index, Scriptable start) {
+		// TODO Auto-generated method stub
 		return super.has(index, start);
 	}
 	
 	@Override
 	public boolean has(String id, Scriptable start) {
+		// TODO Auto-generated method stub
 		return super.has(id, start);
 	}
+	
 	
 	private static Object toArray(Array<Object> recordArray){
 		List<Object> list = new ArrayList<Object>();
@@ -91,7 +97,7 @@ public class  AvroAwareNativeJavaArray extends NativeJavaArray  {
 		while(iterator.hasNext()){
 			Object next = iterator.next();
 			if(next instanceof GenericRecord){
-				list.add(new ScriptableObjectFactory((GenericRecord)next,scope));
+				list.add(new ScriptableRecord((GenericRecord)next,scope));
 			} else{
 				list.add(next);
 			}

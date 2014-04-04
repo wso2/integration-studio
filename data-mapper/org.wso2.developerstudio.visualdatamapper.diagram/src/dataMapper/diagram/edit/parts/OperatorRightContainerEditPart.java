@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 
@@ -273,17 +274,20 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 
 		public OperatorRightContainerFigure() {
 
-			this.setBackgroundColor(THIS_BACK);
-			//RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			//border.setColor(new Color(null, 255, 0, 0)); 
-			//this.setBorder(border ); //TODO just for identification remove once we are done
+			// this.setBackgroundColor(THIS_BACK);
+			// RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			// border.setColor(new Color(null, 255, 0, 0));
+			// this.setBorder(border ); //TODO just for identification remove
+			// once we are done
 
-			ToolbarLayout layoutThis = new ToolbarLayout();
+			ConstrainedToolbarLayout layoutThis = new ConstrainedToolbarLayout();
 			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setStretchMajorAxis(true);
+
 			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
 			layoutThis.setSpacing(0);
 			layoutThis.setHorizontal(false);
-			layoutThis.setStretchMinorAxis(true);
+
 			layoutThis.setMatchWidth(true);
 
 			this.setLayoutManager(layoutThis);

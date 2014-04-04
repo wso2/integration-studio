@@ -18,6 +18,10 @@ package dataMapper.diagram.custom.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.maven.model.Plugin;
@@ -25,6 +29,7 @@ import org.apache.maven.model.PluginExecution;
 import org.apache.maven.model.Repository;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -33,24 +38,24 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Link;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Link;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
@@ -59,9 +64,15 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifac
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.general.project.utils.GeneralProjectUtils;
+import org.wso2.developerstudio.eclipse.greg.core.RegistryManager;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.RegistryFileImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
+import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProvider;
+import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfo;
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceInfoDoc;
 import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryResourceUtils;
@@ -83,7 +94,9 @@ public class DataMapperConfigurationDialog extends Dialog {
 
 	private int selectedOption;
 	private ArtifactTemplate[] artifactTemplates;
+	private Class<?>[] type;
 	private Map<String, java.util.List<String>> filters;
+	private Map<String, IDeveloperStudioElement> importListMap;
 	private String selectedPath;
 	private String ipathOfSelection;
 
@@ -139,10 +152,11 @@ public class DataMapperConfigurationDialog extends Dialog {
 	 * 
 	 * @param parentShell
 	 */
-	public DataMapperConfigurationDialog(Shell parentShell,
+	public DataMapperConfigurationDialog(Shell parentShell, Class<?>[] type,
 			Map<String, java.util.List<String>> filters) {
 		super(parentShell);
 		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
+		setType(type);
 		setFilters(filters);
 	}
 
@@ -276,6 +290,10 @@ public class DataMapperConfigurationDialog extends Dialog {
 		loadTemplateList();
 		validate();
 
+		/* Get projects that provide datamapper configurations */
+		IDeveloperStudioProviderData[] providerProjectsList = loadProviderProjectsList();
+		setImportConfigurationsList(providerProjectsList);
+
 		return container;
 	}
 
@@ -360,8 +378,33 @@ public class DataMapperConfigurationDialog extends Dialog {
 				return;
 			}
 		} else if (getSelectedOption() == USE_EXISTING_OPTION) {
-			// TODO use existing case
 
+			Object selectedElement = importListMap.get(comboConfiguration.getText());
+			IDeveloperStudioElement resource = (IDeveloperStudioElement) selectedElement;
+
+			if (resource.getSource() instanceof IFile) {
+				IFile selectedIFile = (IFile) resource.getSource();
+				ipathOfSelection = selectedIFile.getFullPath().toString();
+
+				IProject project = selectedIFile.getProject();
+				RegistryFileImpl rpi = (RegistryFileImpl) selectedElement;
+				String fileName = rpi.getName();
+				String fullPath = rpi.getPath();
+				int index = fullPath.lastIndexOf('/');
+				String path = "";
+				if (index > 0) {
+					path = fullPath.substring(0, index);
+				}
+
+				if (path != null && !path.isEmpty())
+					try {
+						setSelectedPath(fullPath);
+						setIPathOfSelection(project.getFullPath().append(fileName).toString());
+						createRegistryResourcesForInputScemaAndOutputSchema(fileName, project, path);
+					} catch (Exception e) {
+						log.error(e.getMessage());
+					}
+			}
 		}
 
 		super.okPressed();
@@ -540,6 +583,67 @@ public class DataMapperConfigurationDialog extends Dialog {
 		}
 	}
 
+	private IDeveloperStudioProviderData[] loadProviderProjectsList() {
+		List<Object> list = new ArrayList<Object>();
+		List<Class<?>> typesList = Arrays.asList(type);
+
+		if (typesList.contains(IRegistryFile.class)) {
+			list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
+		}
+
+		return list.toArray(new IDeveloperStudioProviderData[] {});
+	}
+
+	private void setImportConfigurationsList(IDeveloperStudioProviderData[] providerProjectsList) {
+
+		for (IDeveloperStudioProviderData data : providerProjectsList) {
+			IDeveloperStudioProvider provider = data.getProvider();
+
+			List<IDeveloperStudioProvider> registryProjectsList = getRegistryProjectsList(provider);
+			importListMap = new HashMap<String, IDeveloperStudioElement>();
+
+			for (IDeveloperStudioProvider registryProject : registryProjectsList) {
+				List<IDeveloperStudioProvider> childrenList = getChildrenList(registryProject);
+
+				for (IDeveloperStudioProvider child : childrenList) {
+					IDeveloperStudioElement childElement = child.getElements(getFilters())[0];
+					String configName = childElement.getName().substring(0,
+							childElement.getName().lastIndexOf(DATAMAPPER_CONFIG_EXT));
+					String comboItemText = configName + " (" + registryProject.getText() + ")";
+					importListMap.put(comboItemText, childElement);
+					comboConfiguration.add(comboItemText);
+				}
+			}
+		}
+
+		if (comboConfiguration.getItemCount() > 0) {
+			comboConfiguration.select(0);
+		}
+
+	}
+
+	private List<IDeveloperStudioProvider> getRegistryProjectsList(IDeveloperStudioProvider provider) {
+		List<IDeveloperStudioProvider> list = new ArrayList<IDeveloperStudioProvider>();
+		IDeveloperStudioProvider[] categories = provider.getCategories(getFilters());
+		if (categories != null) {
+			list.addAll(Arrays.asList(categories));
+		}
+
+		return list;
+	}
+
+	private List<IDeveloperStudioProvider> getChildrenList(IDeveloperStudioProvider provider) {
+		List<IDeveloperStudioProvider> list = new ArrayList<IDeveloperStudioProvider>();
+
+		/* Get sub categories of registry project */
+		IDeveloperStudioProvider[] resources = provider.getCategories(getFilters());
+		if (resources != null) {
+			list.addAll(Arrays.asList(resources));
+		}
+
+		return list;
+	}
+
 	private String getSelectedTemplateExtension() {
 		return artifactTemplates[0].getDefaultExtension();
 	}
@@ -554,6 +658,14 @@ public class DataMapperConfigurationDialog extends Dialog {
 
 	public void setSelectedOption(int selectedOption) {
 		this.selectedOption = selectedOption;
+	}
+
+	public Class<?>[] getType() {
+		return type;
+	}
+
+	public void setType(Class<?>[] type) {
+		this.type = type;
 	}
 
 	public void setFilters(Map<String, java.util.List<String>> filters) {

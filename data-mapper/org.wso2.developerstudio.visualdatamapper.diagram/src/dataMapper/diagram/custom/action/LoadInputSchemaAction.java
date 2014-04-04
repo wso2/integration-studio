@@ -23,6 +23,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
@@ -71,6 +72,14 @@ public class LoadInputSchemaAction extends AbstractActionHandler {
 			dialog.create();
 			dialog.getShell().setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
 			dialog.getShell().setText(INPUT_SCHEMA_DIALOG);
+			
+			Rectangle monitor = dialog.getShell().getDisplay()
+					.getPrimaryMonitor().getBounds();
+			Rectangle dialogRectangle = dialog.getShell().getBounds();
+			int x = monitor.x + (monitor.width - dialogRectangle.width) / 2;
+			int y = monitor.y + (monitor.height - dialogRectangle.height) / 3;
+			dialog.getShell().setLocation(x, y);
+			
 			dialog.open(); // This handles loading of input schema
 		}
 	}

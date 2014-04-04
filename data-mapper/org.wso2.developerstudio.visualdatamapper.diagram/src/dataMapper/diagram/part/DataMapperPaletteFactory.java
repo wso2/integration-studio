@@ -19,8 +19,10 @@ import dataMapper.diagram.edit.parts.AttributeEditPart;
 import dataMapper.diagram.edit.parts.DataMapperRootEditPart;
 import dataMapper.diagram.edit.parts.ElementEditPart;
 import dataMapper.diagram.edit.parts.InNode2EditPart;
+import dataMapper.diagram.edit.parts.InNode3EditPart;
 import dataMapper.diagram.edit.parts.InNodeEditPart;
 import dataMapper.diagram.edit.parts.InputEditPart;
+import dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart;
 import dataMapper.diagram.edit.parts.OutNode2EditPart;
 import dataMapper.diagram.edit.parts.OutNodeEditPart;
 import dataMapper.diagram.edit.parts.OutputEditPart;
@@ -300,6 +302,28 @@ public class DataMapperPaletteFactory {
 
 						}// for
 					}// for element mouse enter
+					
+					
+					/*
+					 * for leftconnector
+					 */
+					if (getTargetEditPart() instanceof OperatorLeftConnectorEditPart) {
+						for (int i = 0; i < ((OperatorLeftConnectorEditPart) getTargetEditPart())
+								.getChildren().size(); ++i) {
+
+							if ((getTargetEditPart()).getChildren().get(i) instanceof InNode3EditPart) {
+								return ((EditPart) (getTargetEditPart())
+										.getChildren().get(i))
+										.getCommand(getTargetRequest());
+
+							}
+
+						}// for
+					}// for leftconnector mouse enter
+					
+					
+					
+					
 
 					/*
 					 * for attribute

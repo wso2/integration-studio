@@ -15,10 +15,14 @@
  */
 package org.wso2.datamapper.engine.inputAdapters;
 
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.apache.avro.Schema;
 import org.apache.avro.Schema.Field;
@@ -28,86 +32,85 @@ import org.apache.avro.generic.GenericData.Array;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
 
-public class XmlInputReader implements InputDataReaderAdapter{
 
-	private OMElement documentElement;	
-	private Iterator<OMElement> childElementIter;
-	private GenericRecord rootRecord;
-	private boolean hasComplexChilds;
-	private List<GenericRecord> arrayChildList;
+public class XmlInputReader implements InputDataReaderAdapter {
 
-	public boolean hasChildRecords() {
-		
-		if(hasComplexChilds){
-			return hasComplexChilds;
-		}	
-		return childElementIter.hasNext();
+	private OMElement body; /* Soap Message body */
+ 
+	/**
+	 * @param msg - Soap Envelop
+	 * @throws IOException
+	 */
+	public void setInputMsg(OMElement msg) {
+		this.body = msg.getFirstElement().getFirstElement();
 	}
 
-	public List<GenericRecord> getArrayChildList() {
-		return arrayChildList;
+	public GenericRecord getInputRecord(Schema input) {
+
+		@SuppressWarnings("unchecked")
+		GenericRecord inputRecord = getChild(input, this.body.getChildElements());
+		return inputRecord;
 	}
 
-	public void setInputSchemaMap(Map<String, Schema> inputSchemaMap) {
-	}
-
-	public GenericRecord getRootRecord() {
-		return rootRecord;
-	}
-
-	public void setRootRecord(GenericRecord rootRecord) {
-		this.rootRecord = rootRecord;
-	}
-    /**
-     * 
-     * @param msg - Soap Envelop
-     * @throws IOException
-     */
-	public void setInputMsg(OMElement msg) throws IOException {		
-		this.documentElement = msg.getFirstElement().getFirstElement();
-	}
-	
-public GenericRecord getChildRecord(Schema input) {
-	  GenericRecord childRecord = null;
-	  childRecord =  getChild(input, this.documentElement.getChildElements());
-	
-		return childRecord;
-	}
-
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private GenericRecord getChild(Schema schema, Iterator<OMElement> iter) {
+
 		GenericRecord record = new GenericData.Record(schema);
-        
+		ConcurrentMap<String, Collection<Object>> arrMap = new ConcurrentHashMap<String, Collection<Object>>();
+
 		while (iter.hasNext()) {
 			OMElement element = iter.next();
 			String localName = element.getLocalName();
 			Field field = schema.getField(localName);
-
-			if(field!=null){
-				if(field.schema().getType().equals(Type.ARRAY)){
-					Iterator childElements = element.getChildElements();
-					GenericRecord child = getChild(field.schema().getElementType(), childElements);
-					Object object = record.get(localName);
-					if(object==null){
-						 // FIXME: I know this is bad, 32 just used for save the time  
-						 Array<GenericRecord> childArray = new GenericData.Array<GenericRecord>(32,field.schema());
-						 childArray.add(child);
-						 record.put(localName,childArray);
-					} else{
-						 Array<GenericRecord> childArray = (Array<GenericRecord>) object;
-						 childArray.add(child);
+			if (field != null) {
+				if (field.schema().getType().equals(Type.ARRAY)) {
+					Collection<Object> arr = arrMap.get(localName);
+					if (arr == null) {
+						arr = new ArrayList<Object>();
+						arrMap.put(localName, arr);
 					}
-				} else if(field.schema().getType().equals(Type.RECORD)){
+					if (field.schema().getElementType().getType().equals(Type.RECORD)) {
+						Iterator childElements = element.getChildElements();
+						GenericRecord child = getChild(field.schema().getElementType(),
+								childElements);
+						arr.add(child);
+					} else if (field.schema().getElementType().getType().equals(Type.ARRAY)) {
+						// not supports yet!
+					} else { // !(ARRAY||RECORD) != primitive type
+						arr.add(element.getText());
+					}
+				} else if (field.schema().getType().equals(Type.RECORD)) {
 					Iterator childElements = element.getChildElements();
 					GenericRecord child = getChild(field.schema(), childElements);
 					record.put(localName, child);
-				} else{
+				} else {
 					record.put(localName, element.getText());
-					//TODO: fix for other types too... !(ARRAY||RECORD) != primitive type
+					// TODO: fix for other types too... !(ARRAY||RECORD) !=
+					// primitive type
 				}
-			} else{
+			} else {
+				// TODO: log unrecognized element
 			}
+		}
+
+		for (Entry<String, Collection<Object>> arrEntry : arrMap.entrySet()) {
+			String key = arrEntry.getKey();
+			Object object = record.get(key);
+			Array<Object> childArray = null;
+			Collection<Object> value = arrEntry.getValue();
+			if (object == null) {
+				childArray = new GenericData.Array<Object>(value.size(), schema.getField(key)
+						.schema());
+			} else {
+				childArray = (Array<Object>) object;
+			}
+			for (Object obj : value) {
+				childArray.add(obj);
+			}
+			record.put(key, childArray);
 
 		}
+
 		return record;
 	}
 }

@@ -10,15 +10,21 @@ public class JsFunction {
 	private String functionStart;
 	private String functionReturn;
 	private String functionEnd;
+	private String indexer;
+	private String inputObjectExpression;
+	private String outputObjectExpression;
 	private List<String> assignmentStatements;
 	private List<JsFunction> functions;
 	private int indentation = 0;
+	private boolean recursive;
+	
 	
 	public JsFunction(int indentation){
 		assignmentStatements = new ArrayList<String>();
 		functions =  new ArrayList<JsFunction>();
 		this.indentation = indentation;
 		this.functionEnd = "}\n";
+		this.recursive = false;
 	}
 	
 	public String getFunctionStart() {
@@ -69,6 +75,38 @@ public class JsFunction {
 		this.indentation = indentation;
 	}
 	
+	public boolean isRecursive() {
+		return recursive;
+	}
+
+	public void setRecursive(boolean recursive) {
+		this.recursive = recursive;
+	}
+
+	public String getIndxer() {
+		return indexer;
+	}
+
+	public void setIndexer(String indexer) {
+		this.indexer = indexer;
+	}
+	
+	public String getInputObjectExpression() {
+		return inputObjectExpression;
+	}
+
+	public void setInputObjectExpression(String inputObjectExpression) {
+		this.inputObjectExpression = inputObjectExpression;
+	}
+
+	public String getOutputObjectExpression() {
+		return outputObjectExpression;
+	}
+
+	public void setOutputObjectExpression(String outputObjectExpression) {
+		this.outputObjectExpression = outputObjectExpression;
+	}
+
 	public String toString() {
 		
 		if (StringUtils.isEmpty(functionReturn) && assignmentStatements.isEmpty() && functions.isEmpty()) {

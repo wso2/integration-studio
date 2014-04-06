@@ -39,7 +39,7 @@ public class DataMapperConfigurationGenerator {
 		mainFunction.setFunctionReturn(functionReturn);
 		dmcFunctions.add(mainFunction);
 		
-		List<JsFunction> innerFunctions = getFunctionForTheTreeNode(rootDiagram.getInput().getTreeNode(), dmcFunctions, 0);
+		List<JsFunction> innerFunctions = getFunctionForTheTreeNode(rootDiagram.getInput().getTreeNode(), dmcFunctions, 0, null);
 		mainFunction.getFunctions().addAll(innerFunctions);
 		
 		String documentString = "";
@@ -51,14 +51,14 @@ public class DataMapperConfigurationGenerator {
     }
     
 
-    private static List<JsFunction> getFunctionForTheTreeNode(EList<TreeNode> eList, List<JsFunction> allFunctions, int indentation){
+    private static List<JsFunction> getFunctionForTheTreeNode(EList<TreeNode> eList, List<JsFunction> allFunctions, int indentation, JsFunction parentForLoop){
     	indentation++;
     	Iterator<TreeNode> treeNodeIterator =  eList.iterator();
     	List<JsFunction> mappingFunctions = new ArrayList<JsFunction>();
 		while(treeNodeIterator.hasNext()){
 			TreeNode node = treeNodeIterator.next();
-			JsFunction func = getOnetoOneFunction(node, allFunctions, indentation);
-			if (func != null && func.getAssignmentStatements().size() > 0) {
+			JsFunction func = getOnetoOneFunction(node, allFunctions, indentation, parentForLoop);
+			if (func != null) {
 				mappingFunctions.add(func);
 			}
     	} 	
@@ -67,17 +67,22 @@ public class DataMapperConfigurationGenerator {
 
 	
 
-	private static JsFunction getOnetoOneFunction(TreeNode treeNode, List<JsFunction> allFunctions, int indentation) {
+	private static JsFunction getOnetoOneFunction(TreeNode treeNode, List<JsFunction> allFunctions, int indentation, JsFunction parentForLoop) {
 		
 		JsFunction forLoopFunction = new JsFunction(indentation);
 		String collectionName = getInputSuperparentName(treeNode);
 		String indexer = getIndexFromIndent(indentation);
 		String functionStart = "";
-		boolean recursive = false;
 			
 		if (treeNode.getSchemaDataType().equals(SchemaDataType.ARRAY)) {
-			functionStart = "for (var " + indexer + " in " + collectionName+") {\n";
-			recursive = true;
+			if (parentForLoop != null && parentForLoop.isRecursive()) {
+				collectionName = parentForLoop.getInputObjectExpression() + "." + treeNode.getName();
+				functionStart = "for (var " + indexer + " in " + collectionName +") {\n";
+			} else {
+				functionStart = "for (var " + indexer + " in " + collectionName +") {\n";
+			}
+			forLoopFunction.setRecursive(true);
+			forLoopFunction.setIndexer(indexer);
 		} else {
 			forLoopFunction.setFunctionEnd("");
 		}
@@ -110,22 +115,46 @@ public class DataMapperConfigurationGenerator {
 							
 							String outputImmediateParent = getOutputParentName(outputElement);
 							String inputImmediateParent = getInputParentName(inputElement);
+							if (inputImmediateParent.equals(outputImmediateParent)) {
+								outputImmediateParent = "output" + outputImmediateParent;
+							}
 							
 							String inputFunctionName = inputImmediateParent + WordUtils.capitalize(inputChild);
 							String outputFunctionName = outputImmediateParent + WordUtils.capitalize(outputChild);
 							
-							if (recursive) {
+							if (forLoopFunction.isRecursive()) {
 								String indexerWithBrackets = "["+ indexer +"]";
-								inputParent = inputParent.replace("." + inputChild, "") + indexerWithBrackets;
-								outputParent = outputParent.replace("." + outputChild, "") + indexerWithBrackets;
+								
+								if (parentForLoop != null && parentForLoop.isRecursive() && forLoopFunction.isRecursive()) {
+									inputParent = parentForLoop.getInputObjectExpression() + "." + inputElement.getFieldParent().getName() + indexerWithBrackets;
+									outputParent = parentForLoop.getOutputObjectExpression() + "." + outputElement.getFieldParent().getName() + indexerWithBrackets;
+								} else {
+									inputParent = inputParent.replace("." + inputChild, "") + indexerWithBrackets;
+									outputParent = outputParent.replace("." + outputChild, "") + indexerWithBrackets;									
+								}
+					
 								String innerFunctionStart = "function map_L_"+inputImmediateParent+"_L_"+outputImmediateParent+"(" + inputImmediateParent + ", " + outputImmediateParent + "){\n";
 								one2OnemapingFunction.setFunctionStart(innerFunctionStart);
 								String functionCallStatement = "\tmap_L_"+inputImmediateParent+"_L_"+outputImmediateParent+"(" + inputParent + ", " + outputParent + ");\n";
 								forLoopFunction.getAssignmentStatements().add(functionCallStatement);
+								
+								forLoopFunction.setInputObjectExpression(inputParent);
+								forLoopFunction.setOutputObjectExpression(outputParent);
+								
 							} else {
 								String innerFunctionStart = "function map_S_"+inputFunctionName+"_S_"+outputFunctionName+"(" + inputImmediateParent + ", " + outputImmediateParent + "){\n";
 								one2OnemapingFunction.setFunctionStart(innerFunctionStart);
-								String functionCallStatement = "\tmap_S_"+inputFunctionName+"_S_"+outputFunctionName+"(" + inputParent + ", " + outputParent + ");\n";
+								String functionCallStatement = "";
+								
+								if (parentForLoop != null && parentForLoop.isRecursive()) {
+									String indexerWithBrackets = "["+ parentForLoop.getIndxer() +"]";
+									inputParent = parentForLoop.getInputObjectExpression() + "." + inputElement.getFieldParent().getName();
+									outputParent = outputParent.replace("." + outputChild, "") + indexerWithBrackets;
+									functionCallStatement = "\tmap_S_"+inputFunctionName+"_S_"+outputFunctionName+"(" + inputParent + ", " + outputParent + ");\n";
+								} else {
+									functionCallStatement = "\tmap_S_"+inputFunctionName+"_S_"+outputFunctionName+"(" + inputParent + ", " + outputParent + ");\n";
+								}
+								
 								forLoopFunction.getAssignmentStatements().add(functionCallStatement);
 							}	
 						}
@@ -138,7 +167,7 @@ public class DataMapperConfigurationGenerator {
 			
 		}
 	
-		List<JsFunction> l2Function = getFunctionForTheTreeNode(treeNode.getNode(), allFunctions, indentation);
+		List<JsFunction> l2Function = getFunctionForTheTreeNode(treeNode.getNode(), allFunctions, indentation, forLoopFunction);
 		forLoopFunction.getFunctions().addAll(l2Function);
 
 		if (one2OnemapingFunction != null) {
@@ -164,6 +193,10 @@ public class DataMapperConfigurationGenerator {
 		String outputChild = outputElement.getName();
 		String inputParent = getInputParentName(inputElement);
 		String inputChild = inputElement.getName();
+		
+		if (inputParent.equals(outputParent)) {
+			outputParent = "output" + outputParent;
+		}
 		String statement = "\t" + outputParent +"." + outputChild + "=" + inputParent + "."+ inputChild +";\n";
 		return statement;
 	}

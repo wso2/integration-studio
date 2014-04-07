@@ -23,7 +23,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISharedImages;
@@ -31,6 +30,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 import dataMapper.Output;
+import dataMapper.diagram.custom.util.DialogDisplayUtils;
 import dataMapper.diagram.custom.util.SchemaKeyEditorDialog;
 
 /**
@@ -38,6 +38,8 @@ import dataMapper.diagram.custom.util.SchemaKeyEditorDialog;
  */
 public class LoadOutputSchemaAction extends AbstractActionHandler {
 
+	private static final int DIALOG_HEIGHT = 250;
+	private static final int DIALOG_WIDTH = 520;
 	private static final String CONFIGURE_OUTPUT_SCHEMA_ACTION_ID = "configure-output-schema-action-id"; //$NON-NLS-1$
 	private static final String INVALID_SELECTION = "Invalid selection."; //$NON-NLS-1$
 
@@ -70,16 +72,10 @@ public class LoadOutputSchemaAction extends AbstractActionHandler {
 					getWorkbenchPart(), SCHEMA_TYPE_OUTPUT);
 
 			dialog.create();
-			dialog.getShell().setSize(520, 250);
+			dialog.getShell().setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
 			dialog.getShell().setText(OUTPUT_SCHEMA_DIALOG);
-			
-			Rectangle monitor = dialog.getShell().getDisplay()
-					.getPrimaryMonitor().getBounds();
-			Rectangle dialogRectangle = dialog.getShell().getBounds();
-			int x = monitor.x + (monitor.width - dialogRectangle.width) / 2;
-			int y = monitor.y + (monitor.height - dialogRectangle.height) / 3;
-			dialog.getShell().setLocation(x, y);
-			
+			DialogDisplayUtils.setPositionInCenter(dialog.getShell());
+			dialog.getShell().forceActive();
 			dialog.open();
 		}
 	}

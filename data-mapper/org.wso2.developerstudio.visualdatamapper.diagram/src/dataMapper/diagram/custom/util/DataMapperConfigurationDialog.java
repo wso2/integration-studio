@@ -155,7 +155,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 	public DataMapperConfigurationDialog(Shell parentShell, Class<?>[] type,
 			Map<String, java.util.List<String>> filters) {
 		super(parentShell);
-		setShellStyle(SWT.NO_TRIM | SWT.ON_TOP | SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
+		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
 		setType(type);
 		setFilters(filters);
 	}

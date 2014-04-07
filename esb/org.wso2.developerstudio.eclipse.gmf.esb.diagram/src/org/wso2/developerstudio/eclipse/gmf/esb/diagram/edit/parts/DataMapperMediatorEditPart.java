@@ -376,8 +376,6 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
 		if (datamapper.getConfiguration().getKeyValue().isEmpty()) {
 			
-			Shell shell = new Shell(Display.getDefault());
-			
 			Map<String, List<String>> filters = new HashMap<String, List<String>>();
 			
 			String mediaTypeKey = CSProviderConstants.FILTER_MEDIA_TYPE;
@@ -386,7 +384,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			filters.put(mediaTypeKey, types);
 			
 			/* IRegistryFile class is only required for datamapper related filtering */
-			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(shell, new Class[]{IRegistryFile.class}, filters); 
+			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters); 
 			dataMapperConfigurationDialog.create();
 
 			DialogDisplayUtils.setPositionInCenter(dataMapperConfigurationDialog.getShell());

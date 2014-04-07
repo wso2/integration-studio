@@ -15,75 +15,26 @@
  */
 package org.wso2.datamapper.engine.core;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 
-import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.axiom.om.OMElement;
 import org.json.JSONException;
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.Scriptable;
-import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
-import org.wso2.datamapper.engine.models.MappingConfigModel;
+import org.wso2.datamapper.engine.inputAdapters.XmlInputReader;
 
 public class MappingHandler {
-
-	private Schema inputSchema;
-	private Schema outputSchema;
-	private Scriptable scope;
-	private InputDataReaderAdapter inputDataReader;
-	private Context context;
-	private Map<String, Schema> inputSchemaMap;
-	private Map<String, Schema> outputSchemaMap;
-	private HashMap<String, MappingConfigModel> mappingModelMap;
-
-	public MappingHandler(Schema inSchema, Schema outSchema, Scriptable scope,
-			InputDataReaderAdapter inputDataReader, Context context) {
-		
-		this.inputSchema = inSchema;
-		this.outputSchema = outSchema;
-		this.scope = scope;
-		this.inputDataReader = inputDataReader;
-		this.context = context;
-		
-	}
-
-	public GenericRecord executeMappingFunctions(HashMap<String, MappingConfigModel> mappingTypes) throws JSONException {
-		
-		SchemaCreator inputSchemaCreator = new SchemaCreator();	
-		inputSchemaCreator.setSchema(inputSchema);
-		inputSchemaMap = inputSchemaCreator.getSchemaMap();
-			
-		SchemaCreator outputSchemaCreator = new SchemaCreator();	
-		outputSchemaCreator.setSchema(outputSchema);
-		outputSchemaMap = outputSchemaCreator.getSchemaMap();		
-		
-		Map<String, String> inputAvroArrayMap = inputSchemaCreator.getAvroArrayMap();
-		inputDataReader.setInputSchemaMap(inputSchemaMap);
-		
-		mappingModelMap = mappingTypes;
-		FunctionExecuter funcExecuter = new FunctionExecuter(mappingModelMap, scope, outputSchemaMap, context, inputAvroArrayMap);	
-		
-		GenericRecord inputRecord = new GenericData.Record(inputSchema);
-		GenericRecord outputRecord = new GenericData.Record(outputSchema);
-		GenericRecord childRecord = null;
-
-		inputDataReader.setRootRecord(inputRecord);
-		childRecord = inputDataReader.getChildRecord(inputSchema);
-		if(childRecord != null){	
-			outputRecord = funcExecuter.execute(childRecord.getSchema().getName(), childRecord);						
-		}
-		
-		return outputRecord;
-	}
 	
-/*	public void endmapping1() throws IOException{
-				
-		BufferedWriter outputWriter = new BufferedWriter(new FileWriter(new File("./resources/output.json")));
-		outputWriter.write(outputJson.toString());
-		outputWriter.flush();
-		outputWriter.close();
-	}*/
+	public static GenericRecord doMap(OMElement inputMsg, MappingResourceLoader resourceModel)
+			throws IOException, IllegalAccessException, InstantiationException, JSONException {
+
+		XmlInputReader inputReader = new XmlInputReader();
+		inputReader.setInputMsg(inputMsg);  
+	    GenericRecord inputRecord = inputReader.getInputRecord(resourceModel.getInputSchema());
+		GenericRecord outputRecord = FunctionExecuter.execute(resourceModel, inputRecord);
+	    
+		return outputRecord;
+
+	}
+
 
 }

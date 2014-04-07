@@ -86,6 +86,7 @@ public class TreeFromAVSC{
 			Schema schm = Schema.parse(entireFileText);
 
 			root.setName(schm.getName());
+			root.setSchemaType(schm.getType());
 
 			List<Field> fieldsList = schm.getFields();
 

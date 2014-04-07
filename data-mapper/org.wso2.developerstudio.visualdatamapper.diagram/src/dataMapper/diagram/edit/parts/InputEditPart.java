@@ -116,7 +116,57 @@ public class InputEditPart extends ShapeNodeEditPart {
 	 */
 	private void convertTree(Tree tree, TreeNode treeNode) {
 
-		treeNode.setName(tree.getCount() + "," + tree.getName());
+		//treeNode.setName(tree.getCount() + "," + tree.getName());
+		treeNode.setName(tree.getName());
+		treeNode.setLevel(tree.getCount());
+		if (tree.getSchemaType() != null) {
+			switch (tree.getSchemaType()) {
+			case ARRAY:
+				treeNode.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case BOOLEAN:
+				treeNode.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				treeNode.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				treeNode.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				treeNode.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				treeNode.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				treeNode.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				treeNode.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				treeNode.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				treeNode.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				treeNode.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				treeNode.setSchemaDataType(SchemaDataType.RECORD);
+				break;
+			case STRING:
+				treeNode.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				treeNode.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
+			}
+		}
 
 		if (!(tree.getTrees().isEmpty())) {
 			for (Tree treeN : tree.getTrees()) {
@@ -143,7 +193,9 @@ public class InputEditPart extends ShapeNodeEditPart {
 	 */
 	private void createElement(dataMapper.diagram.tree.model.Element element, TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
-		ele.setName(element.getCount() + "," + element.getName());
+		//ele.setName(element.getCount() + "," + element.getName());
+		ele.setName(element.getName());
+		ele.setLevel(element.getCount());
 		if (element.getSchemaType() != null) {
 			switch (element.getSchemaType()) {
 			case ARRAY:
@@ -216,7 +268,9 @@ public class InputEditPart extends ShapeNodeEditPart {
 
 	private void createTree(Tree treeN, TreeNode treeNode) {
 		TreeNode treeNodeNew = DataMapperFactory.eINSTANCE.createTreeNode();
-		treeNodeNew.setName(treeN.getCount() + "," + treeN.getName());
+		//treeNodeNew.setName(treeN.getCount() + "," + treeN.getName());
+		treeNodeNew.setName(treeN.getName());
+		treeNodeNew.setLevel(treeN.getCount());
 		if (treeN.getSchemaType() != null) {
 			switch (treeN.getSchemaType()) {
 			case ARRAY:

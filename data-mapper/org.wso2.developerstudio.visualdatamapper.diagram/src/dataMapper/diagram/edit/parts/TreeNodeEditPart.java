@@ -336,9 +336,11 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			mainImageRectangle.setBorder(null);
 
 			WrappingLabel fFigureFileNameFigure = new WrappingLabel();
-			String name = (((TreeNode) ((View) getModel()).getElement()).getName()).split(",")[1];
-			int count = Integer.parseInt((((TreeNode) ((View) getModel()).getElement()).getName())
-					.split(",")[0]);
+			//String name = (((TreeNode) ((View) getModel()).getElement()).getName()).split(",")[1];
+			/*int count = Integer.parseInt((((TreeNode) ((View) getModel()).getElement()).getName())
+					.split(",")[0]);*/
+			String name = (((TreeNode) ((View) getModel()).getElement()).getName());
+			int count = ((TreeNode) ((View) getModel()).getElement()).getLevel();
 			fFigureFileNameFigure.setText(name);
 			fFigureFileNameFigure.setForegroundColor(ColorConstants.black);
 

@@ -52,7 +52,6 @@ import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -71,6 +70,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
 
 import dataMapper.diagram.custom.util.DataMapperConfigurationDialog;
+import dataMapper.diagram.custom.util.DialogDisplayUtils;
 
 
 /**
@@ -389,12 +389,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(shell, new Class[]{IRegistryFile.class}, filters); 
 			dataMapperConfigurationDialog.create();
 
-			Rectangle monitor = dataMapperConfigurationDialog.getShell().getDisplay()
-					.getPrimaryMonitor().getBounds();
-			Rectangle dialog = dataMapperConfigurationDialog.getShell().getBounds();
-			int x = monitor.x + (monitor.width - dialog.width) / 2;
-			int y = monitor.y + (monitor.height - dialog.height) / 3;
-			dataMapperConfigurationDialog.getShell().setLocation(x, y);
+			DialogDisplayUtils.setPositionInCenter(dataMapperConfigurationDialog.getShell());
 			
 			if (dataMapperConfigurationDialog.open() == Dialog.OK) {
 				String configurationPath = formatRegistryPath(dataMapperConfigurationDialog.getSelectedPath());

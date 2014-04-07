@@ -102,50 +102,50 @@ public class DataMapperConfigurationDialog extends Dialog {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static final String DATAMAPPER_REGISTRY_PATH = "/_system/governance/datamapper";
-	private static final String MSG_LOADING_CAPP_PROJECTS = "Loading CApp Projects";
-	private static final String ERROR_LOADING_CAPP_PROJECTS = "Error loading CApp projects";
-	private static final String CONFIGURATION = "Configuration";
-	private static final String USE_EXISTING = "Use existing";
-	private static final String CREATE_NEW_PROJECT = "<a>Create new project</a>";
-	private static final String SAVE_IN_PROJECT = "Save in project";
-	private static final String CONFIGURATION_NAME = "Configuration name";
-	private static final String CREATE_NEW_CONFIGURATION = "Create new configuration";
-	private static final String DIALOG_TITLE = "Data mapper configuration";
-	private static final String DEFAULT_CONFIG_NAME = "NewConfig";
-	private static final String DATA_MAPPER_TEMPLATE_STRING = "/* WSO2 Data Mapper Config */";
-	private static final String DIALOG_HEADER_RESOURCE_CREATION = "Resource creation";
-	private static final String DIALOG_MESSAGE = "A resource already exists with name '%s' on %s";
-	private static final String DIALOG_HEADER_TEMPLATE_CREATION = "Template creation";
+	private static final String DATAMAPPER_REGISTRY_PATH = "/_system/governance/datamapper"; //$NON-NLS-1$
+	private static final String DATA_MAPPER_TEMPLATE_STRING = "/* WSO2 Data Mapper Config */"; //$NON-NLS-1$
+	private static final String REPO_ID_1 = "wso2-nexus-maven2-repository-1"; //$NON-NLS-1$
+	private static final String REPO_URL_1 = "http://maven.wso2.org/nexus/content/groups/wso2-public/"; //$NON-NLS-1$
+	private static final String REPO_ID = "wso2-maven2-repository-1"; //$NON-NLS-1$
+	private static final String REPO_URL = "http://dist.wso2.org/maven2"; //$NON-NLS-1$
+	private static final String ARTIFACT_TYPES = "${artifact.types}"; //$NON-NLS-1$
+	private static final String TYPE_LIST = "typeList"; //$NON-NLS-1$
+	private static final String ARTIFACT_LOCATION = "artifactLocation"; //$NON-NLS-1$
+	private static final String REGISTRY = "registry"; //$NON-NLS-1$
+	private static final String PROCESS_RESOURCES = "process-resources"; //$NON-NLS-1$
+	private static final String POM_GEN = "pom-gen"; //$NON-NLS-1$
+	private static final String MAVEN_ARTIFACT_ID = "wso2-general-project-plugin"; //$NON-NLS-1$
+	private static final String MAVEN_GROUP_ID = "org.wso2.maven"; //$NON-NLS-1$
+	private static final String POM_PACKAGING_TYPE = "pom"; //$NON-NLS-1$
+	private static final String SERVER_ROLE = "EnterpriseServiceBus"; //$NON-NLS-1$
+	private static final String ARTIFACT_TYPE = "registry/resource"; //$NON-NLS-1$
+	private static final String ARTIFACT_VERSION = "1.0.0"; //$NON-NLS-1$
+	private static final String ARTIFACT_FILE = "artifact.xml"; //$NON-NLS-1$
+	private static final String GROUP_ID_RESOURCE = ".resource"; //$NON-NLS-1$
+	private static final String POM_FILE = "pom.xml"; //$NON-NLS-1$
+	private static final String ERROR_READING_POM_FILE = "error reading pom file"; //$NON-NLS-1$
+	private static final String GROUP_ID = "org.wso2.carbon"; //$NON-NLS-1$
+	private static final String INPUT_AVROSCHEMA = "_inputSchema.avsc"; //$NON-NLS-1$
+	private static final String OUTPUT_AVROSCHEMA = "_outputSchema.avsc"; //$NON-NLS-1$
+	private static final String DATAMAPPER_CONFIG_EXT = ".dmc"; //$NON-NLS-1$
+	private static final String TYPE_TEXT_PLAIN = "text/plain"; //$NON-NLS-1$
+	private static final int REGISTRY_RESOURCE = 0;
 	private static final int CREATE_NEW_CONFIGURATION_OPTION = 0;
 	private static final int USE_EXISTING_OPTION = 1;
 
-	private static final String REPO_ID_1 = "wso2-nexus-maven2-repository-1";
-	private static final String REPO_URL_1 = "http://maven.wso2.org/nexus/content/groups/wso2-public/";
-	private static final String REPO_ID = "wso2-maven2-repository-1";
-	private static final String REPO_URL = "http://dist.wso2.org/maven2";
-	private static final String ARTIFACT_TYPES = "${artifact.types}";
-	private static final String TYPE_LIST = "typeList";
-	private static final String ARTIFACT_LOCATION = "artifactLocation";
-	private static final String REGISTRY = "registry";
-	private static final String PROCESS_RESOURCES = "process-resources";
-	private static final String POM_GEN = "pom-gen";
-	private static final String MAVEN_ARTIFACT_ID = "wso2-general-project-plugin";
-	private static final String MAVEN_GROUP_ID = "org.wso2.maven";
-	private static final String POM_PACKAGING_TYPE = "pom";
-	private static final String SERVER_ROLE = "EnterpriseServiceBus";
-	private static final String ARTIFACT_TYPE = "registry/resource";
-	private static final String ARTIFACT_VERSION = "1.0.0";
-	private static final String ARTIFACT_FILE = "artifact.xml";
-	private static final String GROUP_ID_RESOURCE = ".resource";
-	private static final String POM_FILE = "pom.xml";
-	private static final String ERROR_READING_POM_FILE = "error reading pom file";
-	private static final String GROUP_ID = "org.wso2.carbon";
-	private static final String INPUT_AVROSCHEMA = "_inputSchema.avsc";
-	private static final String OUTPUT_AVROSCHEMA = "_outputSchema.avsc";
-	private static final String DATAMAPPER_CONFIG_EXT = ".dmc";
-	private static final String TYPE_TEXT_PLAIN = "text/plain";
-	private static final int REGISTRY_RESOURCE = 0;
+	private static final String MSG_LOADING_CAPP_PROJECTS = Messages.DataMapperConfigurationDialog_MsgLoadingCAppProjects;
+	private static final String ERROR_LOADING_CAPP_PROJECTS = Messages.DataMapperConfigurationDialog_ErrorLoadingCAppProjects;
+	private static final String CONFIGURATION = Messages.DataMapperConfigurationDialog_Configuration;
+	private static final String USE_EXISTING = Messages.DataMapperConfigurationDialog_UseExisting;
+	private static final String CREATE_NEW_PROJECT = Messages.DataMapperConfigurationDialog_CreateNewProject;
+	private static final String SAVE_IN_PROJECT = Messages.DataMapperConfigurationDialog_SaveInProject;
+	private static final String CONFIGURATION_NAME = Messages.DataMapperConfigurationDialog_ConfigurationName;
+	private static final String CREATE_NEW_CONFIGURATION = Messages.DataMapperConfigurationDialog_CreateNewConfiguration;
+	private static final String DIALOG_TITLE = Messages.DataMapperConfigurationDialog_DialogTitle;
+	private static final String DEFAULT_CONFIG_NAME = Messages.DataMapperConfigurationDialog_DefaultConfigName;
+	private static final String DIALOG_HEADER_RESOURCE_CREATION = Messages.DataMapperConfigurationDialog_DialogHeaderResourceCreation;
+	private static final String DIALOG_MESSAGE = Messages.DataMapperConfigurationDialog_DialogMessage;
+	private static final String DIALOG_HEADER_TEMPLATE_CREATION = Messages.DataMapperConfigurationDialog_DialogHeaderTemplateCreation;
 
 	/**
 	 * Create the dialog.
@@ -155,7 +155,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 	public DataMapperConfigurationDialog(Shell parentShell, Class<?>[] type,
 			Map<String, java.util.List<String>> filters) {
 		super(parentShell);
-		setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
+		setShellStyle(SWT.NO_TRIM | SWT.ON_TOP | SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK | SWT.APPLICATION_MODAL);
 		setType(type);
 		setFilters(filters);
 	}
@@ -329,7 +329,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 				if (selectedTemplateExtension == null) {
 					name = textConfigName.getText();
 				} else {
-					name = textConfigName.getText() + "." + selectedTemplateExtension;
+					name = textConfigName.getText() + "." + selectedTemplateExtension; //$NON-NLS-1$
 				}
 
 				String content = EsbTemplateFormatter.stripParameters(templateString, name);
@@ -353,9 +353,9 @@ public class DataMapperConfigurationDialog extends Dialog {
 					return;
 				}
 
-				String configPath = DATAMAPPER_REGISTRY_PATH.endsWith("/") ? DATAMAPPER_REGISTRY_PATH
+				String configPath = DATAMAPPER_REGISTRY_PATH.endsWith("/") ? DATAMAPPER_REGISTRY_PATH //$NON-NLS-1$
 						+ name
-						: DATAMAPPER_REGISTRY_PATH + "/" + name;
+						: DATAMAPPER_REGISTRY_PATH + "/" + name; //$NON-NLS-1$
 
 				setSelectedPath(configPath);
 				setIPathOfSelection(project.getFullPath().append(name).toString());
@@ -391,7 +391,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 				String fileName = rpi.getName();
 				String fullPath = rpi.getPath();
 				int index = fullPath.lastIndexOf('/');
-				String path = "";
+				String path = ""; //$NON-NLS-1$
 				if (index > 0) {
 					path = fullPath.substring(0, index);
 				}
@@ -445,7 +445,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 			if (registryResourceInfo.getType() == REGISTRY_RESOURCE) {
 				item = new RegistryItem();
 				((RegistryItem) item).setFile(registryResourceInfo.getResourceBaseRelativePath());
-				item.setPath(registryResourceInfo.getDeployPath().replaceAll("/$", ""));
+				item.setPath(registryResourceInfo.getDeployPath().replaceAll("/$", "")); //$NON-NLS-1$ //$NON-NLS-2$
 				artifact.addRegistryElement(item);
 				((RegistryItem) item).setMediaType(TYPE_TEXT_PLAIN);
 			}
@@ -461,8 +461,8 @@ public class DataMapperConfigurationDialog extends Dialog {
 			IProject project, String path) throws Exception {
 		String inputAvroSchemaName = name.replace(DATAMAPPER_CONFIG_EXT, INPUT_AVROSCHEMA);
 		String outputAvroSchemaName = name.replace(DATAMAPPER_CONFIG_EXT, OUTPUT_AVROSCHEMA);
-		createRegistryArtifact(project, inputAvroSchemaName, path, "");
-		createRegistryArtifact(project, outputAvroSchemaName, path, "");
+		createRegistryArtifact(project, inputAvroSchemaName, path, ""); //$NON-NLS-1$
+		createRegistryArtifact(project, outputAvroSchemaName, path, ""); //$NON-NLS-1$
 	}
 
 	private static String getMavenGroupId(File pomLocation) {
@@ -510,7 +510,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
 		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode,
 				ARTIFACT_LOCATION);
-		artifactLocationNode.setValue(".");
+		artifactLocationNode.setValue("."); //$NON-NLS-1$
 		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, TYPE_LIST);
 		typeListNode.setValue(ARTIFACT_TYPES);
 		pluginExecution.setConfiguration(configurationNode);
@@ -548,13 +548,13 @@ public class DataMapperConfigurationDialog extends Dialog {
 
 		if (getSelectedOption() == CREATE_NEW_CONFIGURATION_OPTION) {
 			/* Create new configuration case */
-			if (comboProject.getText() == null || comboProject.getText().equals("")
-					|| textConfigName.getText().trim().equals("")) {
+			if (comboProject.getText() == null || comboProject.getText().equals("") //$NON-NLS-1$
+					|| textConfigName.getText().trim().equals("")) { //$NON-NLS-1$
 				okButtonState = false;
 			}
 		} else if (getSelectedOption() == USE_EXISTING_OPTION) {
 			/* use existing */
-			if (comboConfiguration.getText() == null || comboConfiguration.getText().equals("")) {
+			if (comboConfiguration.getText() == null || comboConfiguration.getText().equals("")) { //$NON-NLS-1$
 				okButtonState = false;
 			}
 		}
@@ -609,7 +609,7 @@ public class DataMapperConfigurationDialog extends Dialog {
 					IDeveloperStudioElement childElement = child.getElements(getFilters())[0];
 					String configName = childElement.getName().substring(0,
 							childElement.getName().lastIndexOf(DATAMAPPER_CONFIG_EXT));
-					String comboItemText = configName + " (" + registryProject.getText() + ")";
+					String comboItemText = configName + " (" + registryProject.getText() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
 					importListMap.put(comboItemText, childElement);
 					comboConfiguration.add(comboItemText);
 				}

@@ -57,6 +57,8 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -300,8 +302,7 @@ public class QoSDashboardPage extends FormPage {
 		GridLayout BasicInfoLayout = new GridLayout(3,false);
 		compositeBasicInfo.setLayout(BasicInfoLayout);
 		Composite compositeAdvaceInfo = new Composite(serviceInfoMainComposite, SWT.NULL);
-		
-		
+				
 		managedForm.getToolkit().createLabel(compositeBasicInfo, "Services List :");
 		serviceNameText = new Combo(compositeBasicInfo, SWT.FLAT | SWT.READ_ONLY);
 		managedForm.getToolkit().adapt(serviceNameText,true,true);
@@ -361,7 +362,8 @@ public class QoSDashboardPage extends FormPage {
          String[] keys = keyStoreMap.keySet().toArray(new String[0]);
         
 		 managedForm.getToolkit().createLabel(compositeBasicInfo, "Privatestore :");
-		 keysCombo = new Combo(compositeBasicInfo, SWT.FLAT | SWT.READ_ONLY);
+		 //keysCombo = new Combo(compositeBasicInfo, SWT.FLAT | SWT.READ_ONLY);
+		 keysCombo = new Combo(compositeBasicInfo, SWT.FLAT);
 		 keysCombo.setItems(keys);
 		 keysCombo.select(0);
 		 GridData keyslayoutData = new GridData();
@@ -369,12 +371,22 @@ public class QoSDashboardPage extends FormPage {
 		 keyslayoutData.horizontalAlignment = SWT.FILL;
 		 keyslayoutData.grabExcessHorizontalSpace = true;
 		 keysCombo.setLayoutData(keyslayoutData);
-	 	 keysCombo.addSelectionListener(new SelectionAdapter() {
+	 	 
+		 // selection listener 
+		 keysCombo.addSelectionListener(new SelectionAdapter() {
 			 @Override
 			public void widgetSelected(SelectionEvent e) {
 			  updateRampartUI();
 			}
 		 }); 
+	 	 
+		 // text modification listener
+	 	 keysCombo.addModifyListener(new ModifyListener() {		
+			@Override
+			public void modifyText(ModifyEvent e) {
+				updateRampartUI();
+			}
+		});
 		 
 		 new Label(compositeBasicInfo, SWT.None);
 		
@@ -449,12 +461,12 @@ public class QoSDashboardPage extends FormPage {
 		GridLayout ramportlayout = new GridLayout();
 		rmaportInfComposite.setLayout(ramportlayout);
 		
-		    Object[] ramBasicresult = CreateMainSection(managedForm, rmaportInfComposite,"Rampart Configuration",10, 20, 600, 30, true);
-		    Composite rampartBasic = (Composite)ramBasicresult[1];
-		    GridLayout ramparlayout = new GridLayout(2,false);
-		    rampartBasic.setLayout(ramparlayout);
-		    Section ramBasicSec = (Section)ramBasicresult[0];
-		    ramBasicSec.setExpanded(false);
+		Object[] ramBasicresult = CreateMainSection(managedForm, rmaportInfComposite,"Rampart Configuration",10, 20, 600, 30, true);
+		Composite rampartBasic = (Composite)ramBasicresult[1];
+		GridLayout ramparlayout = new GridLayout(2,false);
+		rampartBasic.setLayout(ramparlayout);
+		Section ramBasicSec = (Section)ramBasicresult[0];
+		ramBasicSec.setExpanded(false);
 		
 		
 	/*	Composite rampartBasic = new Composite(rmaportInfComposite, SWT.NULL);
@@ -599,43 +611,54 @@ public class QoSDashboardPage extends FormPage {
 	
 	private void updateRampartUI(){
 		if(enControlMap.size()>0){
-			String keyName = keysCombo.getItem(keysCombo.getSelectionIndex());
-			String alise = keyStoreMap.get(keyName);
-			enControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText(alise);
-			enControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(keyName);
-			enControlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText("-1234");
-			enControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(keyName);
-			enControlMap.get(RAMPART_CONFIG_USER).setText(alise);
-			
-			singControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText(alise);
-			singControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(keyName);
-			singControlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText("-1234");
-			singControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(keyName);
-			singControlMap.get(RAMPART_CONFIG_USER).setText(alise);
-			
-			Text txt = (Text)basicRampartControlMap.get(RAMPART_USER);
-			txt.setText(alise);
-			
-		    txt =(Text)basicRampartControlMap.get(RAMPART_ENCRYPTION_USER);
-			txt.setText("useReqSigCert");
-			
-			txt =(Text)basicRampartControlMap.get(RAMPART_TIMESTAMP_TTL);
-			txt.setText("300");
-			
-			txt =(Text)basicRampartControlMap.get(RAMPART_TIMESTAMP_MAX_SKEW);
-			txt.setText("300");
-			
-			txt =(Text)basicRampartControlMap.get(RAMPART_TOKEN_STORE_CLASS);
-			txt.setText("org.wso2.carbon.security.util.SecurityTokenStore");
-			
-			txt =(Text)basicRampartControlMap.get(RAMPART_NONCE_LIFE_TIME);
-			txt.setText("300");
-			
-			Combo	co =(Combo)basicRampartControlMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS);
-			co.select(1);
-			
-			co =(Combo)basicRampartControlMap.get(RAMPART_TIMESTAMP_STRICT);
-			co.select(0);
+			if (StringUtils.isNotBlank(keysCombo.getText())) {
+				//String keyName = keysCombo.getItem(keysCombo.getSelectionIndex());	
+				String keyName = keysCombo.getText();		
+				String alise = "";
+				
+				if (keyStoreMap.get(keyName) != null) {
+					alise = keyStoreMap.get(keyName);
+				}
+				
+				// encryption properties
+				enControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText(alise);
+				enControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(keyName);
+				enControlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText("-1234");
+				enControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(keyName);
+				enControlMap.get(RAMPART_CONFIG_USER).setText(alise);
+				
+				// signature properties
+				singControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText(alise);
+				singControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(keyName);
+				singControlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText("-1234");
+				singControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(keyName);
+				singControlMap.get(RAMPART_CONFIG_USER).setText(alise);
+				
+				// rampart configuration
+				Text txt = (Text)basicRampartControlMap.get(RAMPART_USER);
+				txt.setText(alise);
+				
+			    txt =(Text)basicRampartControlMap.get(RAMPART_ENCRYPTION_USER);
+				txt.setText("useReqSigCert");
+				
+				txt =(Text)basicRampartControlMap.get(RAMPART_TIMESTAMP_TTL);
+				txt.setText("300");
+				
+				txt =(Text)basicRampartControlMap.get(RAMPART_TIMESTAMP_MAX_SKEW);
+				txt.setText("300");
+				
+				txt =(Text)basicRampartControlMap.get(RAMPART_TOKEN_STORE_CLASS);
+				txt.setText("org.wso2.carbon.security.util.SecurityTokenStore");
+				
+				txt =(Text)basicRampartControlMap.get(RAMPART_NONCE_LIFE_TIME);
+				txt.setText("300");
+				
+				Combo	co =(Combo)basicRampartControlMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS);
+				co.select(1);
+				
+				co =(Combo)basicRampartControlMap.get(RAMPART_TIMESTAMP_STRICT);
+				co.select(0);
+			}
 		}
 	}
 	
@@ -968,7 +991,7 @@ public class QoSDashboardPage extends FormPage {
 		
 		if (!kerberossignandencrypt) {
 			Node user = rampart.getElementsByTagName(RAMPART_USER).item(0);
-			if(user != null && StringUtils.isNotBlank(configMap.get(RAMPART_USER))) {
+			if(user != null) {
 				user.setTextContent(configMap.get(RAMPART_USER));
 			}
 			
@@ -1364,7 +1387,7 @@ public class QoSDashboardPage extends FormPage {
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 			}
 			  
-		   } 
+		} 
 	}
 
 	private Object[] CreateMainSection(IManagedForm managedForm,final Composite body,

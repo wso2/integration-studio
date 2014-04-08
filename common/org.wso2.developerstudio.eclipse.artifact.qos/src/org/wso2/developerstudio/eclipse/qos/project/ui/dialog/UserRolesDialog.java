@@ -44,12 +44,17 @@ public class UserRolesDialog extends Dialog {
 	private Label passwordLabel;
 	private Label roleNamePatternLabel;
 	private Label rolesLabel;
+	private Label inlineUserRolesLabel;
+	private Label rolesFromServerLabel;
 
+	private Text inlineUserRolesText;
 	private Text serverUrlText;
 	private Text userNameText;
 	private Text passwordText;
 	private Text roleNamePatternText;
 
+	private Button inlineRadioButton;
+	private Button fromServerRadioButton;
 	private Button getRolesButton;
 
 	private Table userRolesTable;
@@ -79,22 +84,74 @@ public class UserRolesDialog extends Dialog {
 		mainLayout.marginWidth = 5;
 		container.setLayout(mainLayout);
 
-		serverUrlLabel = new Label(container, SWT.NONE);
+		inlineRadioButton = new Button(container, SWT.RADIO);
 		{
-			serverUrlLabel.setText("URL: ");
-			FormData serverUrlLabelLayoutData = new FormData();
-			serverUrlLabelLayoutData.top = new FormAttachment(0, 5);
-			serverUrlLabelLayoutData.left = new FormAttachment(0);
-			serverUrlLabel.setLayoutData(serverUrlLabelLayoutData);
-		}
+			inlineRadioButton.setText("Define Inline");
+			FormData inlineRadioButtonLayoutData = new FormData();
+			inlineRadioButtonLayoutData.top = new FormAttachment(0, 5);
+			inlineRadioButtonLayoutData.left = new FormAttachment(0);
+			inlineRadioButton.setLayoutData(inlineRadioButtonLayoutData);
+			inlineRadioButton.setSelection(true);
 
+			inlineRadioButton.addListener(SWT.Selection, new Listener() {
+				public void handleEvent(Event event) {
+					updateUI(event);
+				}
+			});
+		}
+		
+		fromServerRadioButton = new Button(container, SWT.RADIO);
+		{
+			fromServerRadioButton.setText("Get from Server");
+			FormData fromServerRadioButtonLayoutData = new FormData();
+			fromServerRadioButtonLayoutData.top = new FormAttachment(0, 5);
+			fromServerRadioButtonLayoutData.left = new FormAttachment(inlineRadioButton, 50);
+			fromServerRadioButtonLayoutData.right = new FormAttachment(100, -5);
+			fromServerRadioButton.setLayoutData(fromServerRadioButtonLayoutData);
+
+			fromServerRadioButton.addListener(SWT.Selection, new Listener() {
+				public void handleEvent(Event event) {
+					updateUI(event);
+				}
+			});
+		}
+		
+		inlineUserRolesText = new Text(container, SWT.SINGLE | SWT.BORDER);
+		{
+			FormData inlineUserRolesTextLayoutData = new FormData(100, SWT.DEFAULT);
+			inlineUserRolesTextLayoutData.top = new FormAttachment(fromServerRadioButton, 20);
+			inlineUserRolesTextLayoutData.left = new FormAttachment(fromServerRadioButton, 40, SWT.LEFT);
+			inlineUserRolesTextLayoutData.right = new FormAttachment(100, -5);
+			inlineUserRolesText.setLayoutData(inlineUserRolesTextLayoutData);
+		}
+		
+		inlineUserRolesLabel = new Label(container, SWT.NONE);
+		{
+			inlineUserRolesLabel.setText("Inline User Roles: ");
+			FormData inlineUserRolesLabelLayoutData = new FormData(20, SWT.DEFAULT);
+			inlineUserRolesLabelLayoutData.top = new FormAttachment(inlineUserRolesText, 0, SWT.CENTER);
+			inlineUserRolesLabelLayoutData.right = new FormAttachment(inlineUserRolesText, -5);
+			inlineUserRolesLabelLayoutData.left = new FormAttachment(0);
+			inlineUserRolesLabel.setLayoutData(inlineUserRolesLabelLayoutData);
+		}
+			
 		serverUrlText = new Text(container, SWT.SINGLE | SWT.BORDER);
 		{
 			FormData serverUrlTextLayoutData = new FormData(100, SWT.DEFAULT);
-			serverUrlTextLayoutData.top = new FormAttachment(serverUrlLabel, 0, SWT.CENTER);
-			serverUrlTextLayoutData.left = new FormAttachment(serverUrlLabel, 170);
+			serverUrlTextLayoutData.top = new FormAttachment(inlineUserRolesText, 25);
+			serverUrlTextLayoutData.left = new FormAttachment(inlineUserRolesText, 0, SWT.LEFT);
 			serverUrlTextLayoutData.right = new FormAttachment(100, -5);
 			serverUrlText.setLayoutData(serverUrlTextLayoutData);
+		}
+		
+		serverUrlLabel = new Label(container, SWT.NONE);
+		{
+			serverUrlLabel.setText("URL: ");
+			FormData serverUrlLabelLayoutData = new FormData(20, SWT.DEFAULT);
+			serverUrlLabelLayoutData.top = new FormAttachment(serverUrlText, 0, SWT.CENTER);
+			serverUrlLabelLayoutData.right = new FormAttachment(serverUrlText, -5);
+			serverUrlLabelLayoutData.left = new FormAttachment(0);
+			serverUrlLabel.setLayoutData(serverUrlLabelLayoutData);
 		}
 
 		userNameText = new Text(container, SWT.SINGLE | SWT.BORDER);
@@ -223,6 +280,8 @@ public class UserRolesDialog extends Dialog {
 			userNameText.setText("admin");
 			passwordText.setText("admin");
 			roleNamePatternText.setText("*");
+			
+			updateServerRolesUI(false);
 		}
 
 		return container;
@@ -260,12 +319,43 @@ public class UserRolesDialog extends Dialog {
 
 	@Override
 	protected void okPressed() {
-
-		for (TableItem item : userRolesTable.getItems()) {
-			if (item.getChecked()) {
-				selectedRoles.add(item.getText(1));
+		if (inlineRadioButton.getSelection()) {
+			String inlineUserRoles = inlineUserRolesText.getText();
+			if (StringUtils.isNotBlank(inlineUserRoles)) {
+				String[] roles = inlineUserRoles.split(",");
+				for (int i = 0; i < roles.length; i++) {
+					if (StringUtils.isNotBlank(roles[i])) {
+						selectedRoles.add(roles[i].trim());
+					}
+				}
 			}
-		}
+		} else {
+			for (TableItem item : userRolesTable.getItems()) {
+				if (item.getChecked()) {
+					selectedRoles.add(item.getText(1));
+				}
+			}
+		}	
 		super.okPressed();
+	}
+	
+	private void updateUI(Event event) {
+		if (((Button)event.widget).getText().equals("Define Inline")) {
+			inlineUserRolesText.setEnabled(true);
+			updateServerRolesUI(false);
+			
+		} else {
+			updateServerRolesUI(true);
+			inlineUserRolesText.setEnabled(false);
+		}
+	}
+	
+	private void updateServerRolesUI(boolean enable) {
+		serverUrlText.setEnabled(enable);
+		userNameText.setEnabled(enable);
+		passwordText.setEnabled(enable);
+		roleNamePatternText.setEnabled(enable);
+		userRolesTable.setEnabled(enable);
+		getRolesButton.setEnabled(enable);
 	}
 }

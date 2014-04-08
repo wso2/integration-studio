@@ -28,6 +28,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -71,6 +72,7 @@ import org.eclipse.ui.forms.editor.FormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.distribution.project.model.DependencyData;
 import org.wso2.developerstudio.eclipse.distribution.project.model.NodeData;
@@ -154,6 +156,12 @@ public class DistProjectEditorPage extends FormPage {
 		}
 		
 		parentPrj = MavenUtils.getMavenProject(pomFile);
+		
+				/*
+				 * if propeties of pom in old format(DevS 3.2 or earlier) reformat it to new format.
+				 * 
+				 */
+				updatePomToNewFormat();
 		
 		for(Dependency dependency : (List<Dependency>)parentPrj.getDependencies()){
 			dependencyMap.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependency);
@@ -926,6 +934,50 @@ public class DistProjectEditorPage extends FormPage {
 		} catch (CoreException e) {
 			log.error("cannot save session propery 'export-path'", e);
 		}
+	}
+	
+	/*
+	 * Check whether format of properties in old fomat.
+	 * If in old format transformProperties(). 
+	 */
+	private void updatePomToNewFormat() throws Exception{
+		List<Dependency> dependency = parentPrj.getDependencies();
+		Properties properties = parentPrj.getModel().getProperties();
+		
+		for(Dependency dep : dependency){
+			String artifactInfoOld = DistProjectUtils.getArtifactInfoAsStringOld(dep);
+			if(properties.containsKey(artifactInfoOld )){
+				transformProperties(properties);
+				break;
+			}
+		}
+	}
+ 
+	
+	private void transformProperties(Properties properties) {
+		Map<String,String> oldServerRoleList = new HashMap<String, String>();
+		for(Dependency dependency : (List<Dependency>)parentPrj.getDependencies()){
+			oldServerRoleList.put(DistProjectUtils.getArtifactInfoAsString(dependency), DistProjectUtils.getServerRole(parentPrj, dependency));
+		}
+		
+		properties.clear();
+		Map<String, String> map = oldServerRoleList;
+		for( String key: oldServerRoleList.keySet()){
+			properties.setProperty(key, oldServerRoleList.get(key));
+		}
+		
+		//change maven-car-plugin version to 2.0.5 and car-deploy version 1.0.4
+		List<Plugin> pluginList = parentPrj.getBuildPlugins();
+		for(Plugin plugin  : pluginList){
+			if (plugin.getArtifactId().equalsIgnoreCase("maven-car-plugin")) {
+				plugin.setVersion(MavenConstants.MAVEN_CAR_VERSION);
+			}
+			else if (plugin.getArtifactId().equalsIgnoreCase("maven-car-deploy-plugin")) {
+				plugin.setVersion(MavenConstants.MAVEN_CAR_DEPLOY_VERSION);
+			}
+		}
+		setPageDirty(true);
+		updateDirtyState();
 	}
 
 }

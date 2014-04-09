@@ -29,8 +29,9 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-import dataMapper.impl.InputImpl;
+import dataMapper.diagram.custom.util.DialogDisplayUtils;
 import dataMapper.diagram.custom.util.SchemaKeyEditorDialog;
+import dataMapper.impl.InputImpl;
 
 /**
  * This class handles context menu action 'load input schema'
@@ -68,9 +69,12 @@ public class LoadInputSchemaAction extends AbstractActionHandler {
 			// Schema key editor dialog : create/import schema
 			SchemaKeyEditorDialog dialog = new SchemaKeyEditorDialog(shell, selectedEP,
 					getWorkbenchPart(), SCHEMA_TYPE_INPUT);
+
 			dialog.create();
 			dialog.getShell().setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
 			dialog.getShell().setText(INPUT_SCHEMA_DIALOG);
+			DialogDisplayUtils.setPositionInCenter(dialog.getShell());
+			dialog.getShell().forceActive();
 			dialog.open(); // This handles loading of input schema
 		}
 	}

@@ -645,9 +645,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			mainImageRectangle.add(mainImg);
 
 			WrappingLabel fFigureFileNameFigure = new WrappingLabel(); // element nme holding rectangle
-			String name = (((Element) ((View) getModel()).getElement()).getName()).split(",")[1];
+			/*String name = (((Element) ((View) getModel()).getElement()).getName()).split(",")[1];
 			int tabCount = Integer
-					.parseInt((((Element) ((View) getModel()).getElement()).getName()).split(",")[0]);
+					.parseInt((((Element) ((View) getModel()).getElement()).getName()).split(",")[0]);*/
+			String name = (((Element) ((View) getModel()).getElement()).getName());
+			int tabCount = ((Element) ((View) getModel()).getElement()).getLevel();
 
 			figure.setPreferredSize((tabCount - 1) * 30, 100);
 

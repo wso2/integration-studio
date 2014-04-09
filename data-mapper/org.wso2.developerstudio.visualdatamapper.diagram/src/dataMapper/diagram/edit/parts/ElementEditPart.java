@@ -5,10 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import javax.swing.border.CompoundBorder;
-
-//import jfb.examples.gmf.filesystem.Element;
-
 import org.eclipse.draw2d.Border;
+import org.eclipse.draw2d.FocusEvent;
+import org.eclipse.draw2d.FocusListener;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.ColorConstants;
@@ -20,6 +19,7 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
@@ -112,33 +112,23 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		// installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE., editPolicy)
-
 		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
 				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.ElementItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.ElementCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that
-		// would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		/*
-		 * installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new
-		 * CustomNonResizableEditPolicyEx());
-		 * 
-		 * NonResizableEditPolicy selectionPolicy = new
-		 * CustomNonResizableEditPolicyEx();
-		 * selectionPolicy.setDragAllowed(false);
-		 * installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
-		 * selectionPolicy);
-		 */
 
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); // ballon remove
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.PopupBarEditPolicy.);
+		/* Disable dragging and resizing */
+		NonResizableEditPolicy selectionPolicy = new CustomNonResizableEditPolicyEx();
+		selectionPolicy.setDragAllowed(false);
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, selectionPolicy);
+
+		/* remove balloon */
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/**
@@ -195,7 +185,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	@Override
 	public boolean isSelectable() {
-		return false;
+		return true;
 	}
 
 	/*

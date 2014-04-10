@@ -131,17 +131,17 @@ public class EsbObjectSourceEditor {
 	 * 
 	 * @param object {@link ModelObject} to be edited.
 	 */
-	public void update(EsbServer server){//ModelObject object) {
-		String newSource = null;		
+	public void update(EsbServer server) throws Exception{//ModelObject object) {
+		String newSource = EsbModelTransformer.instance.designToSource(server);		
 //		try {
-			try {
-				newSource=EsbModelTransformer.instance.designToSource(server);
-			}catch (Exception e) {
-				log.error("Cannot update source view", e);
-				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
-				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
-				ErrorDialog.openError(getEditor().getSite().getShell(), "Error", "Cannot update source view. The following error(s) have been detected", editorStatus);
-			} 
+			//try {
+//				newSource=EsbModelTransformer.instance.designToSource(server);
+//			}catch (Exception e) {
+//				log.error("Cannot update source view", e);
+//				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+//				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+//				ErrorDialog.openError(getEditor().getSite().getShell(), "Error", "Cannot update source view. The following error(s) have been detected", editorStatus);
+//			} 
 			
 //			newSource = EsbFactory.eINSTANCE.serializeToString(object);
 //		} catch (Exception ex) {

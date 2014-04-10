@@ -26,6 +26,7 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
 
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
@@ -447,8 +448,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 * end-user-doc -->
 	 */
 	
-	protected void pageChange(int pageIndex) {
-		super.pageChange(pageIndex);
+	protected void pageChange(int pageIndex) {		
+		super.pageChange(pageIndex);		
 
 		// I do not understand why this is necessary (emf generated code).
 		// if (contentOutlinePage != null) {
@@ -492,11 +493,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		
 			break;
 		}
-		case SOURCE_VIEW_PAGE_INDEX: {
-			updateSequenceDetails();
-			handleSourceViewActivatedEvent();
+		case SOURCE_VIEW_PAGE_INDEX: {			
+			try {
+				updateSequenceDetails();
+				handleSourceViewActivatedEvent();
+			} catch (Exception e) {
+				log.error("Cannot update source view", e);
+				String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+				IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+				setActivePage(0);
+				ErrorDialog.openError(getActiveEditor().getSite().getShell(), "Error", "Cannot update source view. The following error(s) have been detected. Please see the error log for more details ", editorStatus);				
+			}
 			break;
-
 		}
 		}
 	}
@@ -524,8 +532,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	/**
 	 * Performs necessary house-keeping tasks whenever the source view is
 	 * activated.
+	 * @throws Exception 
 	 */
-	private void handleSourceViewActivatedEvent() {
+	private void handleSourceViewActivatedEvent() throws Exception {
 //		if (null == contentOutlinePage) {
 //			// Need to sync the soure editor explicitly.
 		
@@ -533,7 +542,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 //		}
 	}
 
-    private void updateSourceEditor() {
+    private void updateSourceEditor() throws Exception {
     	EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();	
 		sourceEditor.update(server);		
@@ -542,7 +551,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	}
     
     
-	private void updateAssociatedXMLFile(IProgressMonitor monitor) {
+	private void updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
 		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();
 		IEditorInput editorInput = getEditor(0).getEditorInput();
@@ -555,7 +564,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					.replaceFirst("/(endpoint_|localentry_|proxy_|sequence_|task_|template_|api_|messageStore_|messageProcessor_)", "/") /* Fixing TOOLS-1578 */
 					.replaceAll(".esb_diagram$", ".xml");
 			IFile xmlFile = diagramFile.getWorkspace().getRoot().getFile(new Path(xmlFilePath));
-			try {
+//			try {
 				String source = EsbModelTransformer.instance.designToSource(server);
 				if (source == null) {
 					log.warn("Could get source");
@@ -568,9 +577,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					xmlFile.create(is, true, monitor);
 				}
 
-			} catch (Exception e) {
-				log.warn("Could not save file " + xmlFile);
-			}
+//			} catch (Exception e) {
+//				log.warn("Could not save file " + xmlFile);
+//			}
 		}
 	}
 	
@@ -642,8 +651,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         
         //Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.
         if(!esbServer.getType().equals(ArtifactType.COMPLEX_ENDPOINT)){
-        	
+
+        try {
         	updateAssociatedXMLFile(monitor);
+		} catch (Exception e) {
+			sourceDirty=true;
+			log.error("Error while saving the diagram", e);
+			String errorMsgHeader = "Save failed. Following error(s) have been detected."
+							+ " Please see the error log for more details.";
+			String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
+		}
         }
         
 		EditorUtils.setLockmode(graphicalEditor, true);
@@ -719,7 +738,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     }
     
     
-    private void updateSequenceDetails(){
+    private void updateSequenceDetails() throws Exception{
 
 		IEditorPart editorPart = null;
 		IProject activeProject = null;

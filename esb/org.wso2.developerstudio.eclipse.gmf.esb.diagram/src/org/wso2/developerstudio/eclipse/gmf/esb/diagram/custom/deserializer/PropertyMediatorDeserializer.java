@@ -132,7 +132,13 @@ public class PropertyMediatorDeserializer extends
 					//vishualProp.setPropertyDataType(PropertyDataType.SHORT);
 					executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_DATA_TYPE, PropertyDataType.SHORT);
 
-				} else if (type.equals(XMLConfigConstants.DATA_TYPES.LONG
+				}else if (type.equals(XMLConfigConstants.DATA_TYPES.OM
+ 						.toString())) {
+ 
+ 					//vishualProp.setPropertyDataType(PropertyDataType.OM);
+ 					executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_DATA_TYPE, PropertyDataType.OM);
+ 
+  				} else if (type.equals(XMLConfigConstants.DATA_TYPES.LONG
 						.toString())) {
 
 					//vishualProp.setPropertyDataType(PropertyDataType.LONG);

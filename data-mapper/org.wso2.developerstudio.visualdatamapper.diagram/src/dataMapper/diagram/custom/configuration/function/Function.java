@@ -26,6 +26,16 @@ public class Function {
 	private FunctionBody functionBody;
 	private String returnStatement;
 
+	
+	
+	public Function() {
+		this.declaration = null;
+		this.inputParameter = null;
+		this.outputParameter = null;
+		this.functionBody = new FunctionBody();
+		this.returnStatement = null;
+	}
+
 	public String getReturnStatement() {
 		return returnStatement;
 	}
@@ -66,7 +76,7 @@ public class Function {
 		this.functionBody = functionBody;
 	}
 	
-	public void createMainFunction() {
+	private void createMainFunction() {
 		String mainFunctionDeclaration = 	"function map_S_" + getInputParameter().getName() + "_S_"
 											+ getOutputParameter().getName() + "(" + getInputParameter().getName() + ", "
 											+ getOutputParameter().getName() + "){\n";
@@ -74,12 +84,12 @@ public class Function {
 		setDeclaration(mainFunctionDeclaration);
 		
 		setReturnStatement("return " + getOutputParameter().getName() + ";\n" +"}");
-		
 	}
 	
 	@Override
 	public String toString() {
-		StringBuilder functionToString =  new StringBuilder(getDeclaration()+"\n"+getFunctionBody()+"\n"+getReturnStatement());
+		createMainFunction();
+		StringBuilder functionToString =  new StringBuilder(getDeclaration()+"\n"+getFunctionBody().toString()+"\n"+getReturnStatement());
 	return functionToString.toString();
 	}
 	

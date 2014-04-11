@@ -19,6 +19,10 @@ package dataMapper.diagram.custom.configuration.function;
 public class AssignmentStatement {
 	private String statement;
 
+	public AssignmentStatement() {
+		this.statement = null;
+		
+	}
 	public String getStatement() {
 		return statement;
 	}

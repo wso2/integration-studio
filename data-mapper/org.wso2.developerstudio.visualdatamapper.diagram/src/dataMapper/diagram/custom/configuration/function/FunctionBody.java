@@ -17,25 +17,54 @@
 package dataMapper.diagram.custom.configuration.function;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FunctionBody {
-	private ArrayList<AssignmentStatement> assignmentStatements;
-	private ArrayList<ForLoop> forLoop;
+	private List<AssignmentStatement> assignmentStatements;
+	private List<ForLoop> forLoop;
+	private List<String> functionCall;
 	
 	
-	public ArrayList<AssignmentStatement> getAssignmentStatements() {
+	
+	public FunctionBody() {
+		this.assignmentStatements = new ArrayList<AssignmentStatement>();
+		this.forLoop = new ArrayList<ForLoop>();
+		this.functionCall = new ArrayList<String>();
+	}
+	public List<AssignmentStatement> getAssignmentStatements() {
 		return assignmentStatements;
 	}
 	public void setAssignmentStatements(
 			ArrayList<AssignmentStatement> assignmentStatements) {
 		this.assignmentStatements = assignmentStatements;
 	}
-	public ArrayList<ForLoop> getForLoop() {
+	public List<ForLoop> getForLoop() {
 		return forLoop;
 	}
 	public void setForLoop(ArrayList<ForLoop> forLoop) {
 		this.forLoop = forLoop;
 	}
 	
+	public List<String> getFunctionCall() {
+		return functionCall;
+	}
+	public void setFunctionCall(List<String> functionCall) {
+		this.functionCall = functionCall;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder functionBody = new StringBuilder();
+		for(AssignmentStatement assignment : getAssignmentStatements()){
+			functionBody.append(assignment.getStatement());
+			functionBody.append("\n");
+		}
+		
+		for (ForLoop loop : getForLoop()){
+			functionBody.append(loop.toString());
+			functionBody.append("\n");
+		}
+		return functionBody.toString();
+	}
 	
 }

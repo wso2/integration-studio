@@ -17,12 +17,36 @@
 package dataMapper.diagram.custom.configuration.function;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import dataMapper.TreeNode;
 
 public class ForLoop {
 	private String arguments;
 	private ArrayList<String> functionCall;
 	private ForLoop forLoop;
+	private String index;
+	private TreeNode arrayTree;
+	private List<AssignmentStatement> assignmentStatements;
+	private String decleration;
 	
+	
+	
+	public ForLoop() {
+		this.arguments = null;
+		this.functionCall = null;
+		this.forLoop = new ForLoop();
+		this.index = "i";
+		this.arrayTree = null;
+		this.assignmentStatements = new ArrayList<AssignmentStatement>();
+		this.decleration = null;
+	}
+	public String getIndex() {
+		return index;
+	}
+	public void setIndex(String index) {
+		this.index = index;
+	}
 	public String getArguments() {
 		return arguments;
 	}
@@ -40,6 +64,46 @@ public class ForLoop {
 	}
 	public void setForLoop(ForLoop forLoop) {
 		this.forLoop = forLoop;
+	}
+	public TreeNode getArrayTree() {
+		return arrayTree;
+	}
+	public void setArrayTree(TreeNode arrayTree) {
+		this.arrayTree = arrayTree;
+	}
+	public List<AssignmentStatement> getAssignmentStatements() {
+		return assignmentStatements;
+	}
+	public void setAssignmentStatements(ArrayList<AssignmentStatement> assignmentStatements) {
+		this.assignmentStatements = assignmentStatements;
+	}
+	
+	public String getDecleration() {
+		return decleration;
+	}
+	public void setDecleration(String decleration) {
+		this.decleration = decleration;
+	}
+
+	private void createDecleration() {
+		setDecleration("for ( var "+getIndex()+ ":" + getArrayTree().getName()+") {\n");
+		
+	}
+	
+	@Override
+	public String toString() {
+		createDecleration();
+		StringBuilder loop = new StringBuilder(getDecleration());
+		for(String call : getFunctionCall()){
+			loop.append(call);
+			loop.append("\n");
+		}
+		for(AssignmentStatement assign : getAssignmentStatements()){
+			loop.append(assign.getStatement());
+			loop.append("\n");
+		}
+		loop.append("}");
+		return loop.toString();
 	}
 	
 }

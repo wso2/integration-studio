@@ -16,11 +16,14 @@
 package dataMapper.diagram.custom.persistence;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 import dataMapper.Element;
 import dataMapper.TreeNode;
+import dataMapper.diagram.custom.configuration.function.Function;
 
 public class OperatorConfigurationUtil {
 	public static String oneToOneMapping(Object input) {
@@ -61,7 +64,7 @@ public class OperatorConfigurationUtil {
 	}
 	
 	public static boolean isMaped(Element inputElement) {
-		if(inputElement.getOutNode().getOutgoingLink().get(0) != null)
+		if(inputElement.getOutNode().getOutgoingLink().size() != 0)
 			return true;
 		return false;
 	}
@@ -118,6 +121,20 @@ public class OperatorConfigurationUtil {
 		}
 		
 		return false;
+	}
+	
+	public static EObject getOperatorClass(Element element) {
+		return element.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer();
+	}
+	public static  Function isFunctionExisit(Function functionForElement,
+			List<Function> functionListForTree) {
+		for(Function function : functionListForTree){
+			if((function.getInputParameter().getName().equals(functionForElement.getInputParameter().getName()) )&& (function.getOutputParameter().getName().equals(functionForElement.getOutputParameter().getName()))){
+				return function;
+			}
+			
+		}
+		return null;
 	}
 
 }

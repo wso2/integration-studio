@@ -25,7 +25,9 @@ public class Function {
 	private TreeNode outputParameter;
 	private FunctionBody functionBody;
 	private String returnStatement;
-
+	private AssignmentStatement functionCall;
+	private boolean single;
+	private Function parentFunction;
 	
 	
 	public Function() {
@@ -34,6 +36,8 @@ public class Function {
 		this.outputParameter = null;
 		this.functionBody = new FunctionBody();
 		this.returnStatement = null;
+		this.functionCall = new AssignmentStatement();
+		this.single = false;
 	}
 
 	public String getReturnStatement() {
@@ -75,9 +79,45 @@ public class Function {
 	public void setFunctionBody(FunctionBody functionBody) {
 		this.functionBody = functionBody;
 	}
+	public AssignmentStatement getFunctionCall() {
+		setFunctionCall(createFunctionCall());
+		return functionCall;
+	}
+	private String getFlag(){
+		String flag = "L";
+		if(this.single){
+			flag = "S";
+		}
+		return flag;
+	}
 	
+	public void setFunctionCall(AssignmentStatement functionCall) {
+		this.functionCall = functionCall;
+	}
+	
+	private AssignmentStatement createFunctionCall(){
+
+		
+		String tempory = "map_"+getFlag()+"_" + getInputParameter().getName() + "_"+getFlag()+"_"
+						+ getOutputParameter().getName() + "(" + getInputTreeHierarchy() + ", "
+						+ getOutputTreeHierarchy() + ");";
+		AssignmentStatement assign = new AssignmentStatement();
+		assign.setStatement(tempory);
+		return assign;
+	}
+	
+	private String getOutputTreeHierarchy() {
+		
+		return getTreeHierarchy(this.getOutputParameter(), this.getParentFunction().getOutputParameter());
+	}
+
+	private String getInputTreeHierarchy() {
+
+		return getTreeHierarchy(this.getInputParameter(), this.getParentFunction().getInputParameter());
+	}
+
 	private void createMainFunction() {
-		String mainFunctionDeclaration = 	"function map_S_" + getInputParameter().getName() + "_S_"
+		String mainFunctionDeclaration = 	"\nfunction map_"+getFlag()+"_" + getInputParameter().getName() + "_"+getFlag()+"_"
 											+ getOutputParameter().getName() + "(" + getInputParameter().getName() + ", "
 											+ getOutputParameter().getName() + "){\n";
 		
@@ -91,6 +131,37 @@ public class Function {
 		createMainFunction();
 		StringBuilder functionToString =  new StringBuilder(getDeclaration()+"\n"+getFunctionBody().toString()+"\n"+getReturnStatement());
 	return functionToString.toString();
+	}
+
+	public boolean isSingle() {
+		return single;
+	}
+
+	public void setSingle(boolean single) {
+		this.single = single;
+	}
+
+	public Function getParentFunction() {
+		return parentFunction;
+	}
+
+	public void setParentFunction(Function parentFunction) {
+		this.parentFunction = parentFunction;
+	}
+
+	private String getTreeHierarchy(TreeNode tree, TreeNode parent) {
+		StringBuilder hierarchy = new StringBuilder();
+
+		while (!(tree.equals(parent))) {
+			hierarchy.insert(0,tree.getName());
+			hierarchy.insert(0,".");
+			tree = tree.getFieldParent();
+		}
+
+		hierarchy.insert(0,tree.getName());
+
+		return hierarchy.toString();
+
 	}
 	
 	

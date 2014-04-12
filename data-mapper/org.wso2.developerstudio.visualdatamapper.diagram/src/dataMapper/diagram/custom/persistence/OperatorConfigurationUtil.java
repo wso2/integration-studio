@@ -123,9 +123,19 @@ public class OperatorConfigurationUtil {
 		return false;
 	}
 	
+	public static boolean isChildrenElementMaped(TreeNode tree) {
+		for(Element element : tree.getElement()){
+			if (isMaped(element)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public static EObject getOperatorClass(Element element) {
 		return element.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer();
 	}
+	
 	public static  Function isFunctionExisit(Function functionForElement,
 			List<Function> functionListForTree) {
 		for(Function function : functionListForTree){

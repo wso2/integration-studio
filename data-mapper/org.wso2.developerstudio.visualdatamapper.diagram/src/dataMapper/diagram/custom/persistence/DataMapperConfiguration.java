@@ -18,7 +18,8 @@ package dataMapper.diagram.custom.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-import dataMapper.diagram.custom.configuration.function.Function;;
+import dataMapper.diagram.custom.configuration.function.Function;
+import dataMapper.diagram.custom.persistence.util.FunctionBuilder;
 
 public class DataMapperConfiguration {
 	private List <Function> functionList;
@@ -33,5 +34,14 @@ public class DataMapperConfiguration {
 
 	public void setFunctionList(List<Function> functionList) {
 	this.functionList = functionList;
+	}
+
+	public String getMappingConfiguration() {
+	StringBuilder mappingConfiguration = new StringBuilder();
+	for (Function function : functionList) {
+	mappingConfiguration.append(FunctionBuilder.getInstance().buildFunction(function));
+	}
+
+	return mappingConfiguration.toString();
 	}
 }

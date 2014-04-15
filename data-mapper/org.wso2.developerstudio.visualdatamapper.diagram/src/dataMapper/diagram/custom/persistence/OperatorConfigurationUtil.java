@@ -146,5 +146,16 @@ public class OperatorConfigurationUtil {
 		}
 		return null;
 	}
+	
+	/**
+	 * @param element input tree node child element which one to one map
+	 * @return	assignment statement with arrya indexed for each in/out nodes
+	 */
+	public static String getSimpleArrayMappingStatement(Element element) {
+		if(isSimpleMap(element)){
+			return "\t" +  getElementParentName(getSimpleMapOutputElement(element))+"[i]." +  getSimpleMapOutputElement(element).getName()+ " = " + element.getFieldParent().getName()+ "[i]."+ element.getName()+";\n";
+		}
+		return null;
+	}
 
 }

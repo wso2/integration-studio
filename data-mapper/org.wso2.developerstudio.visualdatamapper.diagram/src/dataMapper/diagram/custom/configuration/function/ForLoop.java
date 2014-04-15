@@ -23,7 +23,7 @@ import dataMapper.TreeNode;
 
 public class ForLoop {
 	private String arguments;
-	private ArrayList<String> functionCall;
+	private List<String> functionCall;
 	private ForLoop forLoop;
 	private String index;
 	private TreeNode arrayTree;
@@ -34,8 +34,8 @@ public class ForLoop {
 	
 	public ForLoop() {
 		this.arguments = null;
-		this.functionCall = null;
-		this.forLoop = new ForLoop();
+		this.functionCall = new ArrayList<String>();
+//		this.forLoop = new ForLoop();
 		this.index = "i";
 		this.arrayTree = null;
 		this.assignmentStatements = new ArrayList<AssignmentStatement>();
@@ -53,7 +53,7 @@ public class ForLoop {
 	public void setArguments(String arguments) {
 		this.arguments = arguments;
 	}
-	public ArrayList<String> getFunctionCall() {
+	public List<String> getFunctionCall() {
 		return functionCall;
 	}
 	public void setFunctionCall(ArrayList<String> functionCall) {

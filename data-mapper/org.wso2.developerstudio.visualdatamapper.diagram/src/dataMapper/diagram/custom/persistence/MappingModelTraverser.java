@@ -24,6 +24,7 @@ import dataMapper.Element;
 import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
+import dataMapper.diagram.custom.configuration.function.ForLoop;
 import dataMapper.diagram.custom.configuration.function.Function;
 import dataMapper.diagram.custom.configuration.function.FunctionBody;
 
@@ -47,14 +48,7 @@ public class MappingModelTraverser {
 		 Function mainFunction = createMainFunction(rootDiagram.getInput()
 		 .getTreeNode().get(0), rootDiagram.getOutput().getTreeNode()
 		 .get(0));
-		//
-		// if (mainFunction != null) {
-		// mappingConfig.getFunctionList().add(mainFunction);
-		// traverse(rootDiagram.getInput()
-		// .getTreeNode().get(0));
-		// }
-//		mappingConfig = new DataMapperConfiguration();
-//		mappingConfig.setFunctionList(new ArrayList<>());
+
 		 mappingConfig.getFunctionList().add(mainFunction);
 		traverse(rootDiagram.getInput().getTreeNode().get(0), mappingConfig, mainFunction);
 
@@ -63,7 +57,7 @@ public class MappingModelTraverser {
 	/**
 	 * @param inputTreeNode 	main input tree
 	 * @param outputTreeNode	main output tree
-	 * @return
+	 * @return	
 	 */
 	private Function createMainFunction(TreeNode inputTreeNode,TreeNode outputTreeNode) {
 		Function mainFunction = null;
@@ -82,7 +76,7 @@ public class MappingModelTraverser {
 	/**
 	 * @param tree 				tree element which would be travers
 	 * @param config			full configuration 
-	 * @param parentFunction	function which would be the function call statement set
+	 * @param parentFunction	function which would be the function call statement execute
 	 */
 	private static void traverse(TreeNode tree, DataMapperConfiguration config, Function parentFunction) {
 		List<Function> functionListForTree = new ArrayList<Function>();
@@ -94,7 +88,39 @@ public class MappingModelTraverser {
 				Function functionForElement = new Function();
 				functionForElement.setInputParameter(tree);
 				if(tree.getSchemaDataType().equals(SchemaDataType.ARRAY)){
-					//FIXME
+					
+					if(OperatorConfigurationUtil.isSimpleMap(element)){
+						String mapAssignmennt = OperatorConfigurationUtil.getSimpleArrayMappingStatement(element);
+						AssignmentStatement assign = new AssignmentStatement();
+						assign.setStatement(mapAssignmennt);
+						
+						functionForElement.setOutputParameter(OperatorConfigurationUtil.getSimpleMapOutputElement(element).getFieldParent());
+						functionForElement.setSingle(false);
+						Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
+						
+						if( oldFunction == null){
+							ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();
+							assignmentList.add(assign);
+							FunctionBody body = new FunctionBody();
+							ForLoop loop = new ForLoop();
+							loop.setArrayTree(tree);
+							loop.setAssignmentStatements(assignmentList);
+							ArrayList<ForLoop> forLoop = new ArrayList<ForLoop>();
+							forLoop.add(loop);
+							body.setForLoop(forLoop);
+//							assignmentList.add(assign);
+//							body.setAssignmentStatements(assignmentList);
+							functionForElement.setFunctionBody(body);
+							functionListForTree.add(functionForElement);
+						}
+						else {
+							oldFunction.getFunctionBody().getForLoop().get(0).getAssignmentStatements().add(assign);
+						}
+						
+					}
+					else {
+							//FIXME add operation 
+					}
 				}
 				else{
 					if(OperatorConfigurationUtil.isSimpleMap(element)){
@@ -141,9 +167,14 @@ public class MappingModelTraverser {
 					if(functionListForTree.size() != 0){
 						traverse(childTree , config, functionListForTree.get(0));						
 					}
+					else {
+						traverse(childTree, config, parentFunction);
+					}
 					
 				}
-				traverse(childTree, config, parentFunction);
+				else{
+					traverse(childTree, config, parentFunction);
+				}
 			}
 		}
 		

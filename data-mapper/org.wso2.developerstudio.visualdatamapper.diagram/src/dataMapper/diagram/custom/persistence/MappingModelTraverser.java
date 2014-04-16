@@ -21,6 +21,7 @@ import java.util.List;
 
 import dataMapper.DataMapperRoot;
 import dataMapper.Element;
+import dataMapper.Operator;
 import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
@@ -67,6 +68,7 @@ public class MappingModelTraverser {
 			mainFunction.setInputParameter(inputTreeNode);
 			mainFunction.setOutputParameter(outputTreeNode);
 			mainFunction.setSingle(true);
+			mainFunction.setMainFunction(true);
 
 		}
 
@@ -108,8 +110,6 @@ public class MappingModelTraverser {
 							ArrayList<ForLoop> forLoop = new ArrayList<ForLoop>();
 							forLoop.add(loop);
 							body.setForLoop(forLoop);
-//							assignmentList.add(assign);
-//							body.setAssignmentStatements(assignmentList);
 							functionForElement.setFunctionBody(body);
 							functionListForTree.add(functionForElement);
 						}
@@ -147,6 +147,8 @@ public class MappingModelTraverser {
 					}
 					else {
 							//FIXME add operation
+
+						
 					}
 				}
 			}

@@ -86,7 +86,7 @@ public class ForLoop {
 	}
 
 	private void createDecleration() {
-		setDecleration("for ( var "+getIndex()+ ":" + getArrayTree().getName()+") {\n");
+		setDecleration("for ( var "+getIndex()+ " in " + getArrayTree().getName()+") {\n");
 		
 	}
 	

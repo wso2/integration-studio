@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import dataMapper.Element;
+import dataMapper.Operator;
 import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.Function;
 
@@ -147,7 +148,7 @@ public class OperatorConfigurationUtil {
 		return null;
 	}
 	
-	/**
+	/**util method for create simple map staement with indexing
 	 * @param element input tree node child element which one to one map
 	 * @return	assignment statement with arrya indexed for each in/out nodes
 	 */
@@ -157,5 +158,12 @@ public class OperatorConfigurationUtil {
 		}
 		return null;
 	}
+	public static Operator getMappingOperator(Element inputElement) {
+		EObject eObject = inputElement.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer();
+		Operator opertor = (Operator) eObject;
+		return opertor;
+	}
+	
+	
 
 }

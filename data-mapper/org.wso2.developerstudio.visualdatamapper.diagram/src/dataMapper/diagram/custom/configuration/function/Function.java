@@ -28,6 +28,7 @@ public class Function {
 	private AssignmentStatement functionCall;
 	private boolean single;
 	private Function parentFunction;
+	private boolean mainFunction;
 	
 	
 	public Function() {
@@ -38,6 +39,7 @@ public class Function {
 		this.returnStatement = null;
 		this.functionCall = new AssignmentStatement();
 		this.single = false;
+		this.mainFunction = false;
 	}
 
 	public String getReturnStatement() {
@@ -122,8 +124,12 @@ public class Function {
 											+ getOutputParameter().getName() + "){\n";
 		
 		setDeclaration(mainFunctionDeclaration);
-		
-		setReturnStatement("return " + getOutputParameter().getName() + ";\n" +"}");
+		if(mainFunction){
+			setReturnStatement("return " + getOutputParameter().getName() + ";\n" +"}\n");			
+		}
+		else {
+			setReturnStatement("}\n");
+		}
 	}
 	
 	@Override
@@ -162,6 +168,14 @@ public class Function {
 
 		return hierarchy.toString();
 
+	}
+
+	public boolean isMainFunction() {
+		return mainFunction;
+	}
+
+	public void setMainFunction(boolean mainFunction) {
+		this.mainFunction = mainFunction;
 	}
 	
 	

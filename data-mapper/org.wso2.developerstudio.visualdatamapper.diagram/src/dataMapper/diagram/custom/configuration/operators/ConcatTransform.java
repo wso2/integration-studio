@@ -20,9 +20,11 @@ import java.util.ArrayList;
 
 import org.eclipse.emf.common.util.EList;
 
+import dataMapper.Concat;
 import dataMapper.Element;
 import dataMapper.Operator;
 import dataMapper.OperatorLeftConnector;
+import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
 
@@ -30,25 +32,35 @@ public class ConcatTransform implements OperatorsTransformer{
 
 	@Override
 	public AssignmentStatement transform(Operator operator) {
-		AssignmentStatement assign = new AssignmentStatement();
-		StringBuilder statement = new StringBuilder(getElementParent(operator).getName()+"."+getOutputElement(operator).getName()+"=");
 		ArrayList<Element> concatInput = getInputElements(operator);
-		statement.append(concatInput.get(0).getFieldParent().getName()+"."+concatInput.get(0).getName());
+		String index = "";
+		if(concatInput.get(0).getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
+			index = "[i]";
+		}
+		
+		AssignmentStatement assign = new AssignmentStatement();
+		StringBuilder statement = new StringBuilder(getOutputElementParent(operator).getName()+index+"."+getOutputElement(operator).getName()+"=");
+		statement.append(concatInput.get(0).getFieldParent().getName()+index+"."+concatInput.get(0).getName());
 		concatInput.remove(0);
+		Concat concat = (Concat) operator;
+		
 		for(Element element : concatInput){
-			statement.append(".concat("+element.getFieldParent().getName()+"."+element.getName()+")");
+			if(concat.getDelimiter() != null && concat.getDelimiter().equalsIgnoreCase("")){
+				statement.append(".concat("+"\""+concat.getDelimiter()+"\"+"+element.getFieldParent().getName()+index+"."+element.getName()+")");
+			}else{				
+				statement.append(".concat("+element.getFieldParent().getName()+index+"."+element.getName()+")");
+			}
 		}
 		statement.append(";");
-//		String action = getOutputElement(operator).getName()+"."+getOutputElement(operator).getName()+"="+operator.get
-		assign.setStatement(statement.toString());;
+		assign.setStatement(statement.toString());
 		return assign;
 	}
 	
 	private Element getOutputElement( Operator operator) {
 		return operator.getBasicContainer().getRightContainer().getRightConnectors().get(0).getOutNode().getOutgoingLink().get(0).getInNode().getElementParent();
 	}
-	
-	private TreeNode getElementParent(Operator operator) {
+	@Override
+	public TreeNode getOutputElementParent(Operator operator) {
 		return getOutputElement(operator).getFieldParent();
 	}
 	

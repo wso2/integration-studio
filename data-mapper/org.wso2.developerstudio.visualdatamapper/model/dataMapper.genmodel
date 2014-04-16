@@ -94,10 +94,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/inNode"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dataMapper.ecore#//DataMapperLink/outNode"/>
     </genClasses>
-    <genClasses ecoreClass="dataMapper.ecore#//Concat"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Concat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Concat/delimiter"/>
+    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
     <genClasses ecoreClass="dataMapper.ecore#//Constant"/>
-    <genClasses ecoreClass="dataMapper.ecore#//Split"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Split">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/delimiter"/>
+    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//LowerCase"/>
     <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
   </genPackages>

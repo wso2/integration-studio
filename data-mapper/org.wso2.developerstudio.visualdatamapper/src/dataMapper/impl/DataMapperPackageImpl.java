@@ -813,6 +813,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getConcat_Delimiter() {
+		return (EAttribute)concatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEqual() {
 		return equalEClass;
 	}
@@ -833,6 +842,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 */
 	public EClass getSplit() {
 		return splitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSplit_Delimiter() {
+		return (EAttribute)splitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -966,12 +984,14 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		createEReference(dataMapperLinkEClass, DATA_MAPPER_LINK__OUT_NODE);
 
 		concatEClass = createEClass(CONCAT);
+		createEAttribute(concatEClass, CONCAT__DELIMITER);
 
 		equalEClass = createEClass(EQUAL);
 
 		constantEClass = createEClass(CONSTANT);
 
 		splitEClass = createEClass(SPLIT);
+		createEAttribute(splitEClass, SPLIT__DELIMITER);
 
 		lowerCaseEClass = createEClass(LOWER_CASE);
 
@@ -1097,12 +1117,14 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEReference(getDataMapperLink_OutNode(), this.getOutNode(), this.getOutNode_OutgoingLink(), "outNode", null, 0, 1, DataMapperLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConcat_Delimiter(), ecorePackage.getEString(), "delimiter", null, 0, 1, Concat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(equalEClass, Equal.class, "Equal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(splitEClass, Split.class, "Split", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSplit_Delimiter(), ecorePackage.getEString(), "delimiter", null, 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(lowerCaseEClass, LowerCase.class, "LowerCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

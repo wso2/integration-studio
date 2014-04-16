@@ -19,6 +19,8 @@ package dataMapper.diagram.custom.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+
 import dataMapper.DataMapperRoot;
 import dataMapper.Element;
 import dataMapper.Operator;
@@ -28,10 +30,14 @@ import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
 import dataMapper.diagram.custom.configuration.function.ForLoop;
 import dataMapper.diagram.custom.configuration.function.Function;
 import dataMapper.diagram.custom.configuration.function.FunctionBody;
+import dataMapper.diagram.custom.configuration.operators.DataMapperTransformerRegistry;
+import dataMapper.diagram.custom.configuration.operators.OperatorsTransformer;
+
 
 public class MappingModelTraverser {
 
 	private static MappingModelTraverser instance;
+	private static List<Integer> operatorsList;
 
 	private MappingModelTraverser() {
 		
@@ -51,6 +57,7 @@ public class MappingModelTraverser {
 		 .get(0));
 
 		 mappingConfig.getFunctionList().add(mainFunction);
+		 operatorsList = new ArrayList<Integer>();
 		traverse(rootDiagram.getInput().getTreeNode().get(0), mappingConfig, mainFunction);
 
 	}
@@ -118,11 +125,42 @@ public class MappingModelTraverser {
 						}
 						
 					}
+					// array type elment map with operators
 					else {
-							//FIXME add operation 
+						EObject eObjectoperator = OperatorConfigurationUtil.getOperatorClass(element);
+						Operator operator = (Operator) eObjectoperator;
+						if(!operatorsList.contains(System.identityHashCode(operator))){
+							operatorsList.add(System.identityHashCode(operator));
+							
+							OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(operator);
+							AssignmentStatement assign = transformer.transform(operator); //FIXME wrong assignment get for array. should handle in each operator class
+							functionForElement.setOutputParameter(transformer.getOutputElementParent(operator));
+							functionForElement.setSingle(false);
+							Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
+							
+							if( oldFunction == null){
+								ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();
+								FunctionBody body = new FunctionBody();
+								assignmentList.add(assign);
+								ForLoop loop = new ForLoop();
+								loop.setArrayTree(tree);
+								loop.setAssignmentStatements(assignmentList);
+								ArrayList<ForLoop> forLoop = new ArrayList<ForLoop>();
+								forLoop.add(loop);
+								body.setForLoop(forLoop);
+
+								functionForElement.setFunctionBody(body);
+								functionListForTree.add(functionForElement);
+							}
+							else {
+								oldFunction.getFunctionBody().getForLoop().get(0).getAssignmentStatements().add(assign);
+							}
+						}
 					}
 				}
+				//Record type mapping
 				else{
+					//record type one to one mapping
 					if(OperatorConfigurationUtil.isSimpleMap(element)){
 						String mapAssignmennt = OperatorConfigurationUtil.getSimpleMappingStatement(element);
 						AssignmentStatement assign = new AssignmentStatement();
@@ -145,10 +183,31 @@ public class MappingModelTraverser {
 						}
 						
 					}
+					//record type with operator mapping
 					else {
-							//FIXME add operation
-
-						
+						EObject eObjectoperator = OperatorConfigurationUtil.getOperatorClass(element);
+						Operator operator = (Operator) eObjectoperator;
+						if(!operatorsList.contains(System.identityHashCode(operator))){
+							operatorsList.add(System.identityHashCode(operator));
+							
+							OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(operator);
+							AssignmentStatement assign = transformer.transform(operator);
+							functionForElement.setOutputParameter(transformer.getOutputElementParent(operator));
+							functionForElement.setSingle(true);
+							Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
+							
+							if( oldFunction == null){
+								ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();
+								FunctionBody body = new FunctionBody();
+								assignmentList.add(assign);
+								body.setAssignmentStatements(assignmentList);
+								functionForElement.setFunctionBody(body);
+								functionListForTree.add(functionForElement);
+							}
+							else {
+								oldFunction.getFunctionBody().getAssignmentStatements().add(assign);
+							}
+						}
 					}
 				}
 			}
@@ -172,7 +231,6 @@ public class MappingModelTraverser {
 					else {
 						traverse(childTree, config, parentFunction);
 					}
-					
 				}
 				else{
 					traverse(childTree, config, parentFunction);

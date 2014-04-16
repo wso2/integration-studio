@@ -17,8 +17,10 @@
 package dataMapper.diagram.custom.configuration.operators;
 
 import dataMapper.Operator;
+import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
 
 public interface OperatorsTransformer {
 	public AssignmentStatement transform(Operator operator); 
+	public TreeNode getOutputElementParent(Operator operator);
 }

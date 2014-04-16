@@ -156,6 +156,22 @@ public class DataSourceConfigurationAction extends StaticSelectionCommandAction 
 
 			imageURL = "wso2/rdbms-datatypes";
 		}
+		
+		if (mainType.equals(DSActionConstants.CASSANDRA_TYPE)) {
+			listOfProperties = new ArrayList<String>();
+			listOfProperties.add(DSActionConstants.CASSANDRA_SERVER_URL);
+			listOfProperties.add(DSActionConstants.CASSANDRA_USERNAME);
+			listOfProperties.add(DSActionConstants.CASSANDRA_PASSWORD);
+			listOfProperties.add(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME);
+
+			listOfValues = new ArrayList<String>();
+			listOfValues.add("");
+			listOfValues.add("");
+			listOfValues.add("");
+			listOfValues.add(driverValue);
+
+			imageURL = "wso2/cassandra-datasource";
+		}
 
 		if (mainType.equals(DSActionConstants.CSV_TYPE)) {
 			listOfProperties = new ArrayList<String>();

@@ -131,6 +131,30 @@ public interface DSActionConstants {
 	public String VALIDATIONQUERY_DISPLAY = "Validation Query";
 
 	public String ENABLE_AUTO_COMMIT_DISPLAY = "Enable Auto Commit";
+		
+	
+	// Cassandra Data Source Properties
+
+	public String CASSANDRA_TYPE = "Cassandra";
+	
+	public String CASSANDRA_SERVER_URL = "url";
+
+	public String CASSANDRA_USERNAME = "username";
+
+	public String CASSANDRA_PASSWORD = "password";
+	
+	public String CASSANDRA_DRIVER_CLASS_NAME = "driverClassName";
+
+	// Cassandra Data Source Display Values
+
+	public String CASSANDRA_SERVER_URL_DISPLAY = "Server URL";
+
+	public String CASSANDRA_USERNAME_DISPLAY = "User Name";
+
+	public String CASSANDRA_PASSWORD_DISPLAY = "Password";
+	
+	public String CASSANDRA_DRIVER_CLASS_NAME_DISPLAY = "Driver Class Name";
+		
 
 	// CSV Properties
 
@@ -312,6 +336,10 @@ public interface DSActionConstants {
 	public String GENERIC_DRIVER_VALUE = "Generic";
 
 	public String GENERIC_PROTOCOL_VALUE = "Generic";
+	
+	// Cassandra
+	
+	public String CASSANDRA_DRIVER_VALUE = "org.apache.cassandra.cql.jdbc.CassandraDriver";
 
 	// Query Properties
 

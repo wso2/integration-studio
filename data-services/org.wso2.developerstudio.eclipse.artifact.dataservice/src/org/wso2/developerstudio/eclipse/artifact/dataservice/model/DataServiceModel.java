@@ -8,7 +8,7 @@ import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedEx
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
-public class DataServiceModel extends ProjectDataModel {
+public class DataServiceModel extends ProjectDataModel {	
 	
 	private String serviceName;
 	private String serviceGroup;
@@ -18,6 +18,7 @@ public class DataServiceModel extends ProjectDataModel {
 	
 	//configuration 
 	private RdbmsConfig rdbmsConfig;
+	private CassandraConfig cassandraConfig;
 	private CsvConfig csvConfig;
 	private JndiConfig jndiConfig;
 	private GoogleSpreadsheetConfig gSpreadsheetConfig;
@@ -29,6 +30,7 @@ public class DataServiceModel extends ProjectDataModel {
 	
 	public DataServiceModel() {
 		rdbmsConfig = new RdbmsConfig();
+		cassandraConfig = new CassandraConfig();
 		csvConfig = new CsvConfig();
 		jndiConfig = new JndiConfig();
 		gSpreadsheetConfig = new GoogleSpreadsheetConfig();
@@ -116,6 +118,10 @@ public class DataServiceModel extends ProjectDataModel {
 	public RdbmsConfig getRdbmsConfig(){
 		return rdbmsConfig;
 	}
+	
+	public CassandraConfig getCassandraConfig(){
+		return cassandraConfig;
+	}
 
 	public CsvConfig getCsvConfig(){
 		return csvConfig;
@@ -153,26 +159,29 @@ public class DataServiceModel extends ProjectDataModel {
 		switch(dataSource){
 		case 0:
 			setDataSourceConfig(getRdbmsConfig());
-			break;
+			break;			
 		case 1:
+			setDataSourceConfig(getCassandraConfig());
+			break;				
+		case 2:
 			setDataSourceConfig(getCsvConfig());
 			break;
-		case 2:
+		case 3:
 			setDataSourceConfig(getExcelConfig());
 			break;
-		case 3:
+		case 4:
 			setDataSourceConfig(getRdfConfig());
 			break;
-		case 4:
+		case 5:
 			setDataSourceConfig(getJndiConfig());
 			break;
-		case 5:
+		case 6:
 			setDataSourceConfig(getGoogleSpreadsheetConfig());
 			break;
-		case 6:
+		case 7:
 			setDataSourceConfig(getCarbonDataConfig());
 			break;
-		case 7:
+		case 8:
 			setDataSourceConfig(getWebDataSourceConfig());
 			break;
 		}
@@ -261,6 +270,51 @@ public class DataServiceModel extends ProjectDataModel {
 			return config;
 		}
 	}
+	
+	
+	public static class CassandraConfig implements DataSourceConfig{		
+		private static final String CASSANDRA_DRIVER_CLASS_NAME = "org.apache.cassandra.cql.jdbc.CassandraDriver";
+		private LinkedHashMap<String,String>  config;
+		private String serverURL;
+		private String userName;
+		private String password;
+
+		public LinkedHashMap<String,String>  getConfig(){
+			config = new LinkedHashMap<String, String>();
+			config.put("url", getServerURL());
+			config.put("username", getUserName());
+			config.put("password", getPassword()); 
+			// Cassandra Driver class name shouldn't be altered.
+			config.put("driverClassName", CASSANDRA_DRIVER_CLASS_NAME);
+			return config;
+		}
+		
+		public String getServerURL() {
+			return serverURL;
+		}
+
+		public void setServerURL(String serverURL) {
+			this.serverURL = serverURL;
+		}
+		
+		public String getUserName() {
+			return userName;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}	
+		
+		public String getPassword() {
+			return password;
+		}
+
+		public void setPassword(String password) {
+			this.password = password;
+		}
+	}
+	
+	
 	
 	public static class CsvConfig implements DataSourceConfig{
 		private LinkedHashMap<String,String>  config;

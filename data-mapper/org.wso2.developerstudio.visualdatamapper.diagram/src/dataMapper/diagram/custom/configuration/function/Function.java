@@ -16,6 +16,10 @@
 
 package dataMapper.diagram.custom.configuration.function;
 
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
+
 import dataMapper.TreeNode;
 
 public class Function {
@@ -30,6 +34,10 @@ public class Function {
 	private Function parentFunction;
 	private boolean mainFunction;
 	
+	private static final String LIST_FLAG = "L";
+	private static final String SINGLE_FLAG = "S";
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	public Function() {
 		this.declaration = null;
@@ -86,9 +94,9 @@ public class Function {
 		return functionCall;
 	}
 	private String getFlag(){
-		String flag = "L";
+		String flag = LIST_FLAG;
 		if(this.single){
-			flag = "S";
+			flag = SINGLE_FLAG;
 		}
 		return flag;
 	}
@@ -119,23 +127,32 @@ public class Function {
 	}
 
 	private void createMainFunction() {
-		String mainFunctionDeclaration = 	"\nfunction map_"+getFlag()+"_" + getInputParameter().getName() + "_"+getFlag()+"_"
-											+ getOutputParameter().getName() + "(" + getInputParameter().getName() + ", "
-											+ getOutputParameter().getName() + "){\n";
-		
-		setDeclaration(mainFunctionDeclaration);
-		if(mainFunction){
-			setReturnStatement("return " + getOutputParameter().getName() + ";\n" +"}\n");			
-		}
-		else {
-			setReturnStatement("}\n");
+		try {
+			String mainFunctionDeclaration = 	"\nfunction map_"+getFlag()+"_" + getInputParameter().getName() + "_"+getFlag()+"_"
+												+ getOutputParameter().getName() + "(" + getInputParameter().getName() + ", "
+												+ getOutputParameter().getName() + "){\n";
+			
+			setDeclaration(mainFunctionDeclaration);
+			if(mainFunction){
+				setReturnStatement("return " + getOutputParameter().getName() + ";\n" +"}\n");			
+			}
+			else {
+				setReturnStatement("}\n");
+			}
+		} catch (Exception e) {
+			log.error("Exception while creating function decleration", e);
 		}
 	}
 	
 	@Override
 	public String toString() {
 		createMainFunction();
-		StringBuilder functionToString =  new StringBuilder(getDeclaration()+"\n"+getFunctionBody().toString()+"\n"+getReturnStatement());
+		StringBuilder functionToString = new StringBuilder();
+		try {
+			functionToString.append(getDeclaration()+"\n"+getFunctionBody().toString()+"\n"+getReturnStatement());
+		} catch (Exception e) {
+			log.error("Exception while converting function to string", e);
+		}
 	return functionToString.toString();
 	}
 

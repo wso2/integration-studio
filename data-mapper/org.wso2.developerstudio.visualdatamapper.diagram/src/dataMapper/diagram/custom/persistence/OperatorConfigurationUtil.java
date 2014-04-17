@@ -31,19 +31,33 @@ public class OperatorConfigurationUtil {
 		return null;
 
 	}
+	
+	
 	public static String concatMapping(Object input) {
 		return null;
 	}
 
+	/**util method for get mapped output tree element
+	 * @param inputElement input tree element which is mapped
+	 * @return	element
+	 */
 	public static Element getSimpleMapOutputElement(Element inputElement) {
 		return inputElement.getOutNode().getOutgoingLink().get(0).getInNode()
 				.getElementParent();
 	}
 
+	/**util method for get tree hierarchy to the given element 
+	 * @param element which is child element of tree hierarchy
+	 * @return	String which gives tree hierarchy
+	 */
 	public static String getElementHierarchy(Element element) {
 		return getSuperparentName(element.getFieldParent()) +"."+element.getName();
 	}
 	
+	/**util method for get one to one map assignment statement
+	 * @param inputElement input tree element which is mapped
+	 * @return	String one to one map assignment statement
+	 */
 	public static String getSimpleMappingStatement(Element inputElement) {
 		if(isSimpleMap(inputElement)){
 			return "\t" +  getElementParentName(getSimpleMapOutputElement(inputElement))+"." +  getSimpleMapOutputElement(inputElement).getName()+ " = " + inputElement.getFieldParent().getName()+ "."+ inputElement.getName()+";\n";
@@ -51,6 +65,10 @@ public class OperatorConfigurationUtil {
 		return null;
 	}
 	
+	/**util method for check whether an element in one to one map 
+	 * @param inputElement element which need to be check for map 
+	 * @return	boolean is it one to one map or not
+	 */
 	public static boolean isSimpleMap(Element inputElement) {
 		if(isMaped(inputElement)){
 			if(inputElement.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent() != null)
@@ -60,16 +78,22 @@ public class OperatorConfigurationUtil {
 		return false;
 	}
 	
+	
 	public static String getElementParentName(Element element) {
 		return element.getFieldParent().getName();
 	}
 	
+	/**util method for find wheather an element is mapped
+	 * @param inputElement element which need to be check for map 
+	 * @return	boolean is it maped or not
+	 */
 	public static boolean isMaped(Element inputElement) {
 		if(inputElement.getOutNode().getOutgoingLink().size() != 0)
 			return true;
 		return false;
 	}
 
+	
 	private static String getSuperparentName(TreeNode node) {
 		String paramName = "";
 		if (node.getFieldParent() != null) {
@@ -108,6 +132,11 @@ public class OperatorConfigurationUtil {
 		return null;
 	}
 
+	
+	/**util method for find wheather  child-elements/child-tree is mapped of a tree node
+	 * @param tree  node which need to be check for map 
+	 * @return	boolean is it maped or not
+	 */
 	public static boolean isChildrenMaped(TreeNode tree) {
 		for(Element element : tree.getElement()){
 			if (isMaped(element)){
@@ -124,6 +153,10 @@ public class OperatorConfigurationUtil {
 		return false;
 	}
 	
+	/**util method for find wheather  child-elements is mapped of a tree node
+	 * @param tree  node which need to be check for map 
+	 * @return	boolean is it maped or not
+	 */
 	public static boolean isChildrenElementMaped(TreeNode tree) {
 		for(Element element : tree.getElement()){
 			if (isMaped(element)){
@@ -133,10 +166,16 @@ public class OperatorConfigurationUtil {
 		return false;
 	}
 	
+
 	public static EObject getOperatorClass(Element element) {
 		return element.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer();
 	}
 	
+	/**util method for find wheather exist faunction for a specific tree node mapping
+	 * @param functionForElement  new function created
+	 * @param functionListForTree all exisiting functions
+	 * @return null if does not exisit, else return equal function 
+	 */
 	public static  Function isFunctionExisit(Function functionForElement,
 			List<Function> functionListForTree) {
 		for(Function function : functionListForTree){
@@ -158,6 +197,11 @@ public class OperatorConfigurationUtil {
 		}
 		return null;
 	}
+	
+	/**util method for get mapped operator eObject of a element
+	 * @param element  which is mapped to operator
+	 * @return	eObject operator object
+	 */
 	public static Operator getMappingOperator(Element inputElement) {
 		EObject eObject = inputElement.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer();
 		Operator opertor = (Operator) eObject;

@@ -22,26 +22,27 @@ import dataMapper.diagram.custom.configuration.function.Function;
 import dataMapper.diagram.custom.persistence.util.FunctionBuilder;
 
 public class DataMapperConfiguration {
-	private List <Function> functionList;
+	private List<Function> functionList;
 
 	public DataMapperConfiguration() {
-	functionList = new ArrayList<Function>();
+		functionList = new ArrayList<Function>();
 	}
 
 	public List<Function> getFunctionList() {
-	return functionList;
+		return functionList;
 	}
 
 	public void setFunctionList(List<Function> functionList) {
-	this.functionList = functionList;
+		this.functionList = functionList;
 	}
 
 	public String getMappingConfiguration() {
-	StringBuilder mappingConfiguration = new StringBuilder();
-	for (Function function : functionList) {
-	mappingConfiguration.append(FunctionBuilder.getInstance().buildFunction(function));
-	}
+		StringBuilder mappingConfiguration = new StringBuilder();
+		for (Function function : functionList) {
+			mappingConfiguration.append(FunctionBuilder.getInstance()
+					.buildFunction(function));
+		}
 
-	return mappingConfiguration.toString();
+		return mappingConfiguration.toString();
 	}
 }

@@ -17,7 +17,6 @@ package dataMapper.diagram.custom.persistence;
 
 import dataMapper.DataMapperRoot;
 import dataMapper.diagram.custom.configuration.function.Function;
-import dataMapper.diagram.custom.persistence.util.FunctionBuilder;
 
 /**
  * Transform mapping model into mapping 
@@ -38,14 +37,7 @@ public class DataMapperModelTransformer {
 		}
 		return instance;
 	}
-	
-//	public DataMapperConfiguration transform(DataMapperRoot rootDiagram) {
-//		DataMapperConfiguration mappingConfig = null;
-//		MappingModelTraverser.getInstance().traverse(rootDiagram, mappingConfig);
-//		
-////		return mappingConfig;
-//		
-//	}
+
 	public String transform(DataMapperRoot rootDiagram) {
 		DataMapperConfiguration mappingConfig = new DataMapperConfiguration();
 		MappingModelTraverser.getInstance().traverse(rootDiagram, mappingConfig);

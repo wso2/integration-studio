@@ -30,13 +30,13 @@ public class ForLoop {
 	private List<AssignmentStatement> assignmentStatements;
 	private String decleration;
 	
-	
+	private static final String INDEX = "i";
 	
 	public ForLoop() {
 		this.arguments = null;
 		this.functionCall = new ArrayList<String>();
 //		this.forLoop = new ForLoop();
-		this.index = "i";
+		this.index = INDEX;
 		this.arrayTree = null;
 		this.assignmentStatements = new ArrayList<AssignmentStatement>();
 		this.decleration = null;

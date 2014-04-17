@@ -58,14 +58,14 @@ public class MappingModelTraverser {
 
 		 mappingConfig.getFunctionList().add(mainFunction);
 		 operatorsList = new ArrayList<Integer>();
-		traverse(rootDiagram.getInput().getTreeNode().get(0), mappingConfig, mainFunction);
+		 traverse(rootDiagram.getInput().getTreeNode().get(0), mappingConfig, mainFunction);
 
 	}
 
 	/**
 	 * @param inputTreeNode 	main input tree
 	 * @param outputTreeNode	main output tree
-	 * @return	
+	 * @return	Main function for configuration
 	 */
 	private Function createMainFunction(TreeNode inputTreeNode,TreeNode outputTreeNode) {
 		Function mainFunction = null;
@@ -90,8 +90,6 @@ public class MappingModelTraverser {
 	private static void traverse(TreeNode tree, DataMapperConfiguration config, Function parentFunction) {
 		List<Function> functionListForTree = new ArrayList<Function>();
 
-		
-		
 		for(Element element : tree.getElement()){
 			if(OperatorConfigurationUtil.isMaped(element)){
 				Function functionForElement = new Function();
@@ -213,15 +211,19 @@ public class MappingModelTraverser {
 			}
 		}//for element end
 	
-		
+		//all functions for the current tree node should copy to DataMapperConfiguration
 		if(!functionListForTree.isEmpty()){
 			config.getFunctionList().addAll(functionListForTree);
 			for (Function function : functionListForTree) {
 				function.setParentFunction(parentFunction);
-				parentFunction.getFunctionBody().getAssignmentStatements().add(function.getFunctionCall());
+				//set functon call staement for appropriate parent function
+				
+					parentFunction.getFunctionBody().getAssignmentStatements().add(function.getFunctionCall());
+				
 			}
 		}
 
+		//iterate in child trees
 		if(tree.getNode() != null){
 			for(TreeNode childTree : tree.getNode()){
 				if(OperatorConfigurationUtil.isChildrenElementMaped(childTree)){

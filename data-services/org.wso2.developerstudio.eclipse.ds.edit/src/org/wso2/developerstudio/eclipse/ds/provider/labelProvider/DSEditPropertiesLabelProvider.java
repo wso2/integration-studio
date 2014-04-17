@@ -47,6 +47,22 @@ public class DSEditPropertiesLabelProvider {
 	private String AUTO_COMMIT_PROPERTY = "org.wso2.ws.dataservice.autocommit";
 	private String AUTO_COMMIT_DISPLAY = "Auto Commit";
 
+	
+	// Cassandra Data Source Properties
+
+	private String CASSANDRA_SERVER_URL = "url";
+	private String CASSANDRA_SERVER_URL_DISPLAY = "Server URL";
+
+	private String CASSANDRA_USER_NAME = "username";
+	private String CASSANDRA_USER_NAME_DISPLAY = "User Name";
+
+	private String CASSANDRA_PASSWORD= "password";
+	private String CASSANDRA_PASSWORD_DISPLAY = "Password";
+	
+	private String CASSANDRA_DRIVER_CLASS_NAME= "driverClassName";
+	private String CASSANDRA_DRIVER_CLASS_NAME_DISPLAY = "Driver Class Name";
+		
+	
 	// CSV Properties
 
 	private String CSV_DATASOURCE_PROPERTY = "csv_datasource";
@@ -144,6 +160,12 @@ public class DSEditPropertiesLabelProvider {
 		nameMap.put(XA_DATASOURCE_CLASS_PROPERTY, XA_DATASOURCE_CLASS_DISPLAY);
 		nameMap.put(XA_DATASOURCE_PROPS_PROPERTY, XA_DATASOURCE_PROPS_DISPLAY);
 
+		// Cassandra Data Source
+		nameMap.put(CASSANDRA_SERVER_URL, CASSANDRA_SERVER_URL_DISPLAY);
+		nameMap.put(CASSANDRA_USER_NAME, CASSANDRA_USER_NAME_DISPLAY);
+		nameMap.put(CASSANDRA_PASSWORD, CASSANDRA_PASSWORD_DISPLAY);
+		nameMap.put(CASSANDRA_DRIVER_CLASS_NAME, CASSANDRA_DRIVER_CLASS_NAME_DISPLAY);
+		
 		// CSV
 		nameMap.put(CSV_DATASOURCE_PROPERTY, CSV_DATASOURCE_DISPLAY);
 		nameMap.put(COLUMN_SEPERATOR_PROPERTY, COLUMN_SEPERATOR_DISPLAY);

@@ -1162,7 +1162,12 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 		                                                        newDSChildDescriptors,
 		                                                        DSActionConstants.CSV_TYPE, null,
 		                                                        null, null));
-
+		
+		// Cassandra Type
+		dataSourceActions.add(new DataSourceConfigurationAction(selection, domain,
+		                                                        newDSChildDescriptors,
+		                                                        DSActionConstants.CASSANDRA_TYPE, null,
+		                                                        DSActionConstants.CASSANDRA_DRIVER_VALUE, null));
 		// Excel Type
 		dataSourceActions.add(new DataSourceConfigurationAction(selection, domain,
 		                                                        newDSChildDescriptors,

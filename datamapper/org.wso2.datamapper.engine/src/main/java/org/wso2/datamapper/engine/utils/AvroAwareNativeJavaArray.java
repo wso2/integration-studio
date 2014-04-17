@@ -36,12 +36,20 @@ public class  AvroAwareNativeJavaArray extends NativeJavaArray  {
 
 	private static final long serialVersionUID = 1625850167152425723L;
 
+	/**
+	 * Need a native array to iterate using rhino
+	 * @param scope
+	 * @param recordArray
+	 */
 	public AvroAwareNativeJavaArray(Scriptable scope, Array<Object> recordArray) {
 		super(scope, toArray(recordArray)); //FIXME: we don't need to place data in two places
 		this.recordArray = recordArray;
 		AvroAwareNativeJavaArray.scope = scope;
 	}
 	
+	/**
+	 * filling array on demand
+	 */
 	@Override
 	public void put(int index, Scriptable start, Object value) {
 		if((recordArray.size() -1) < index){

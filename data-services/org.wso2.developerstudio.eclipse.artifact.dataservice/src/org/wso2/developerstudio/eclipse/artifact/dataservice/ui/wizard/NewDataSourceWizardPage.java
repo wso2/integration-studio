@@ -57,12 +57,13 @@ public class NewDataSourceWizardPage extends WizardPage {
 	private Text txtDataSourceId;
 	private CTabFolder tabConfig;
 	/* avalable datasource types */
-	private static String[] dataSourceType = new String[] {"RDBMS", "CSV", "EXCEL", "RDF", "JNDI Datasource", "Google Spreadsheet", "Carbon Data Source", "Web Data Source"};
+	private static String[] dataSourceType = new String[] {"RDBMS", "Cassandra", "CSV", "EXCEL", "RDF", "JNDI Datasource", "Google Spreadsheet", "Carbon Data Source", "Web Data Source"};
 	private static String[] rdbmsType = new String[] {"MySQL", "Apache Derby", "Microsoft SQL Server", "Oracle", "IBM DB2", "HSQLDB", "Informix", "PostgreSQL", "Sybase ASE", "H2", "Generic"};
 	private static HashMap<String,String[]> rdbmsConfig = new HashMap<String,String[]>();
 	private DataServiceModel model;
 	
 	private CTabItem tbtmRDBMS;
+	private CTabItem tbtmCASSANDRA;
 	private CTabItem tbtmCSV;
 	private CTabItem tbtmEXCEL;
 	private CTabItem tbtmRDF;
@@ -79,6 +80,11 @@ public class NewDataSourceWizardPage extends WizardPage {
 	private Text txtJdbcUrl;
 	private Text txtUserName;
 	private Text txtPassword;
+	
+	/* Cassandra DS controls */
+	private Text txtCassandraServerUrl;
+	private Text txtCassandraUserName;
+	private Text txtCassandraPassword;		
 	
 	/* CSV DS controls*/
 	private Text txtCsvFileLocation;
@@ -109,6 +115,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 	private Text txtWebConfigText;
 
 	private ModifyListener rdbmsFieldListener;
+	private ModifyListener cassandraFieldListener;
 	private ModifyListener csvFieldListener;
 	private ModifyListener jndiFieldListener;
 	private ModifyListener gspreadFieldListener;
@@ -271,7 +278,55 @@ public class NewDataSourceWizardPage extends WizardPage {
 		gd_txtPassword.widthHint = 100;
 		txtPassword.setLayoutData(gd_txtPassword);
 		new Label(cRDBMS, SWT.NONE);
+			
 		
+		//Cassandra Data source configuration controls
+		tbtmCASSANDRA = new CTabItem(tabConfig, SWT.NONE);
+		
+		Composite cCassandra = new Composite(tabConfig, SWT.NONE);
+		tbtmCASSANDRA.setControl(cCassandra);
+		cCassandra.setLayout(new GridLayout(2, false));
+		
+		Label lblCassandraServerUrl = new Label(cCassandra, SWT.NONE);
+		lblCassandraServerUrl.setText("Server URL");
+		
+		txtCassandraServerUrl = new Text(cCassandra, SWT.BORDER);
+		GridData gd_txtCassandraServerUrl = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtCassandraServerUrl.widthHint = 315;
+		txtCassandraServerUrl.setLayoutData(gd_txtCassandraServerUrl);
+		
+		ControlDecoration cdtxtCassandraServerUrl = new ControlDecoration(txtCassandraServerUrl, SWT.LEFT | SWT.TOP);
+		cdtxtCassandraServerUrl.setDescriptionText("Cassandra Server URL required");
+		cdtxtCassandraServerUrl.setImage(fd.getImage());		
+		
+		Label lblCassandraUserName = new Label(cCassandra, SWT.NONE);
+		lblCassandraUserName.setText("User Name");
+		
+		txtCassandraUserName = new Text(cCassandra, SWT.BORDER);
+		GridData gd_txtCassandraUserName = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtCassandraUserName.widthHint = 140;
+		txtCassandraUserName.setLayoutData(gd_txtCassandraUserName);
+		
+		ControlDecoration cdtxtCassandraUserName = new ControlDecoration(txtCassandraUserName, SWT.LEFT | SWT.TOP);
+		cdtxtCassandraUserName.setDescriptionText("User Name required");
+		cdtxtCassandraUserName.setImage(fd.getImage());
+				
+		Label lblCassandraPassword = new Label(cCassandra, SWT.NONE);
+		lblCassandraPassword.setText("Password");
+		
+		txtCassandraPassword = new Text(cCassandra, SWT.BORDER | SWT.PASSWORD);
+		GridData gd_txtCassandraPassword = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_txtCassandraPassword.widthHint = 140;
+		txtCassandraPassword.setLayoutData(gd_txtCassandraPassword);
+		
+		ControlDecoration cdtxtCassandraPassword = new ControlDecoration(txtCassandraPassword, SWT.LEFT | SWT.TOP);
+		cdtxtCassandraPassword.setDescriptionText("Password required");
+		cdtxtCassandraPassword.setImage(fd.getImage());		
+		
+		Label lblCassandraHidden = new Label(cCassandra, SWT.NONE);
+		lblCassandraHidden.setText("");
+		lblCassandraHidden.setLayoutData(gd_leftcol);
+
 		//CSV Data source configuration controls
 		tbtmCSV = new CTabItem(tabConfig, SWT.NONE);
 		
@@ -666,26 +721,29 @@ public class NewDataSourceWizardPage extends WizardPage {
 				switch (selectedIndex) {
 				case 0:
 					rdbmsFieldListener.modifyText(null);
-					break;
+					break;					
 				case 1:
+					cassandraFieldListener.modifyText(null);
+					break;					
+				case 2:
 					csvFieldListener.modifyText(null);
 					break;
-				case 2:
+				case 3:
 					excelFieldListener.modifyText(null);
 					break;
-				case 3:
+				case 4:
 					rdfFieldListener.modifyText(null);
 					break;
-				case 4:
+				case 5:
 					jndiFieldListener.modifyText(null);
 					break;
-				case 5:
+				case 6:
 					gspreadFieldListener.modifyText(null);
 					break;
-				case 6:
+				case 7:
 					carbonFieldListener.modifyText(null);
 					break;
-				case 7:
+				case 8:
 					webConfigFieldListener.modifyText(null);
 					break;
 				default:
@@ -794,6 +852,28 @@ public class NewDataSourceWizardPage extends WizardPage {
 		txtUserName.addModifyListener(rdbmsFieldListener);
 		txtPassword.addModifyListener(rdbmsFieldListener);
 
+		
+		cassandraFieldListener = new ModifyListener() {
+			
+			public void modifyText(ModifyEvent text) {
+				
+				model.getCassandraConfig().setServerURL(txtCassandraServerUrl.getText());
+				model.getCassandraConfig().setUserName(txtCassandraUserName.getText());
+				model.getCassandraConfig().setPassword(txtCassandraPassword.getText());
+				if(txtCassandraServerUrl.getText().trim().equals("")|| txtCassandraUserName.getText().trim().equals("")|| txtCassandraPassword.getText().trim().equals("")){
+					setPageComplete(false);
+					setErrorMessage("Required Field(s) are missing or invalid");
+				}else{
+					setPageComplete(true);
+					setErrorMessage(null);
+				}
+				
+			}
+		};
+		
+		txtCassandraServerUrl.addModifyListener(cassandraFieldListener);
+		txtCassandraUserName.addModifyListener(cassandraFieldListener);
+		txtCassandraPassword.addModifyListener(cassandraFieldListener);
 		
 		csvFieldListener = new ModifyListener() {
 			

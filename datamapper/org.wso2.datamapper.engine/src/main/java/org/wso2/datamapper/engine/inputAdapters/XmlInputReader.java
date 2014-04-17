@@ -35,7 +35,7 @@ import org.apache.axiom.om.OMElement;
 
 public class XmlInputReader implements InputDataReaderAdapter {
 
-	private OMElement body; /* Soap Message body */
+	private OMElement body; // Soap Message body
  
 	/**
 	 * @param msg - Soap Envelop

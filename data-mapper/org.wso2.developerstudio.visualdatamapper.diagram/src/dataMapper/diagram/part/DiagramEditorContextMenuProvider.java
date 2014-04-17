@@ -21,9 +21,11 @@ import org.eclipse.ui.IWorkbenchPart;
 import dataMapper.diagram.custom.action.ConcatManyAction;
 import dataMapper.diagram.custom.action.LoadInputSchemaAction;
 import dataMapper.diagram.custom.action.LoadOutputSchemaAction;
+import dataMapper.diagram.custom.action.SplitManyAction;
 import dataMapper.diagram.edit.parts.ConcatEditPart;
 import dataMapper.diagram.edit.parts.InputEditPart;
 import dataMapper.diagram.edit.parts.OutputEditPart;
+import dataMapper.diagram.edit.parts.SplitEditPart;
 
 /**
  * @generated
@@ -57,6 +59,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(InputEditPart.class, new LoadInputSchemaAction(part));
 		contextActions.put(OutputEditPart.class, new LoadOutputSchemaAction(part));
 		contextActions.put(ConcatEditPart.class, new ConcatManyAction(part));
+		contextActions.put(SplitEditPart.class, new SplitManyAction(part));
 	}
 
 	/**

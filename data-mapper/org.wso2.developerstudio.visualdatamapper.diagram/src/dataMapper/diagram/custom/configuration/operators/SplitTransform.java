@@ -27,9 +27,12 @@ public class SplitTransform implements OperatorsTransformer {
 		Split split = (Split) operator;
 		int i=0;
 		for(Element output : splitOutputs){
-
-				statement.append(output.getFieldParent().getName()+index+"."+output.getName()+ " = " + splitInput.getFieldParent().getName()+index+"."+splitInput.getName()+".split(\""+split.getDelimiter()+"\")"+"["+i+"];\n");
-
+			if(split.getDelimiter() != null){
+				statement.append(output.getFieldParent().getName()+index+"."+output.getName()+ " = " + splitInput.getFieldParent().getName()+index+"."+splitInput.getName()+".split(\""+split.getDelimiter()+"\")"+"["+i+"];\n");				
+			}
+			else {
+				statement.append(output.getFieldParent().getName()+index+"."+output.getName()+ " = " + splitInput.getFieldParent().getName()+index+"."+splitInput.getName()+".split(\"\")"+"["+i+"];\n");
+			}
 			i++;
 		}
 		

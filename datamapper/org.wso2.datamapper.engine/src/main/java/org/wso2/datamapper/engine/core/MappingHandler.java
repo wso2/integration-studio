@@ -20,9 +20,7 @@ import java.io.IOException;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
 import org.json.JSONException;
-import org.wso2.datamapper.engine.inputAdapters.CsvInputReader;
 import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
-import org.wso2.datamapper.engine.inputAdapters.XmlInputReader;
 
 public class MappingHandler {
 	

@@ -38,7 +38,8 @@ public class CsvInputReader implements InputDataReaderAdapter {
 	
    // CSV dataset has been wrapped using <text> element
 	private  OMElement getTextElement(OMElement element){
-		 Iterator<OMElement> iter = element.getChildElements();
+		 @SuppressWarnings("unchecked")
+		Iterator<OMElement> iter = element.getChildElements();
 		 while(iter.hasNext()){
 			 OMElement childElement = iter.next();
 			  if("text".equals(childElement.getLocalName())){

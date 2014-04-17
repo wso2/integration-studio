@@ -1,3 +1,18 @@
+/*
+ * Copyright 2005,2013 WSO2, Inc. http://www.wso2.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.datamapper.engine.core;
 
 import java.io.BufferedReader;
@@ -24,6 +39,15 @@ public class MappingResourceLoader {
 	private Scriptable scope;
 	private Function function;
 	
+	/**
+	 * 
+	 * @param inputSchema - Respective output Avro schema as a a stream of bytes
+	 * @param outPutSchema -Respective output Avro schema as a a stream of bytes
+	 * @param mappingConfig-Mapping configuration file as a stream of bytes
+	 * @throws IOException - when input errors, If there any parser exception occur while passing above schemas method
+	 *  will this exception
+	 * 
+	 */
 	public MappingResourceLoader(InputStream inputSchema, InputStream outPutSchema,
 			InputStream mappingConfig) throws IOException {
 
@@ -70,11 +94,20 @@ public class MappingResourceLoader {
 		return new Parser().parse(schema);
 	}
 	
+	/**
+	 * need to create java script function by passing the configuration file 
+	 * Since this function going to execute every time when message hit the mapping backend
+	 * so this function save in the resource model
+	 * @param mappingConfig
+	 * @return
+	 * @throws IOException
+	 */
 	private Function getFunction(InputStream mappingConfig) throws IOException {
 
-		initScriptEnviroment();
+		 initScriptEnviroment();
 
 		BufferedReader configReader = new BufferedReader(new InputStreamReader(mappingConfig));
+//need to identify the main method of the configuration because that method going to execute in engine		
 		Pattern functionIdPattern = Pattern.compile("(function )(map_(L|S)_" + inputRootelement
 				+ "_(L|S)_" + outputRootelement + ")");
 		String fnName = null;
@@ -96,6 +129,10 @@ public class MappingResourceLoader {
 		return null;
 	}
 
+	/**
+	 * Before executing a script, an instance of Context must be created
+	 * and associated with the thread that will be executing the script
+	 */
 	private void initScriptEnviroment() {
 		context = Context.enter();
 		context.setOptimizationLevel(-1);

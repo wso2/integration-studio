@@ -1,0 +1,22 @@
+{
+  "name" : "ProductRecords",
+  "type": "record", 
+  "fields": [
+              { "name": "Product", 
+          		"type": { 
+            				"type": "array", 
+            				"items": { 
+              							"name": "Product", 
+              							"type": "record", 
+              							"fields": [ 
+                   									{"name" : "Key", "type" : "string"}, 
+                    								{"name" : "Summary", "type" : "string"},
+                    								{"name" : "Description", "type" : "string"},
+                    								{"name" : "version", "type" : "string"}
+                    							 ] 
+          							 } 
+        				  } 
+      			}	
+            
+          ]
+}

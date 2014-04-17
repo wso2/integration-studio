@@ -26,7 +26,6 @@ public class OutputJsonBuilder {
 		
 		JSONObject outputJson = new JSONObject();
 		outputJson.put(rootElementName, new JSONObject(outputRecord.toString()));
-
 		return outputJson;
 	}
 }

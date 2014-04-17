@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope"><soapenv:Body><ns:getAllCellsResultCSV xmlns:ns="http://org.wso2.esbconnectors.googlespreadsheet"><ns:result>true</ns:result><ns:data><ns:text>Key,Summary,Description,Version,
+Tools,Bug-Data Mapper Issue 1,Sample description for issue 1,1.0.0-Future,
+Tools,Bug-Data Mapper Issue 2,Sample description for issue 2,1.0.0-1.1.0,</ns:text></ns:data></ns:getAllCellsResultCSV></soapenv:Body></soapenv:Envelope>

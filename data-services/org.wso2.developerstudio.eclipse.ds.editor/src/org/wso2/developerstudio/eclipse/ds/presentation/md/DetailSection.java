@@ -627,7 +627,33 @@ public class DetailSection {
 		    configProperty.getName().equals(DSActionConstants.ENABLE_AUTO_COMMIT)) {
 
 			labelMaker(DSActionConstants.ENABLE_AUTO_COMMIT_DISPLAY);
+		}		
+		
+		// Cassandra type
+
+		if (configProperty.getName() != null &&
+		    configProperty.getName().equals(DSActionConstants.CASSANDRA_SERVER_URL)) {
+
+			labelMaker(DSActionConstants.CASSANDRA_SERVER_URL_DISPLAY);
 		}
+
+		if (configProperty.getName() != null &&
+		    configProperty.getName().equals(DSActionConstants.CASSANDRA_USERNAME)) {
+
+			labelMaker(DSActionConstants.CASSANDRA_USERNAME_DISPLAY);
+		}
+
+		if (configProperty.getName() != null &&
+		    configProperty.getName().equals(DSActionConstants.CASSANDRA_PASSWORD)) {
+
+			labelMaker(DSActionConstants.CASSANDRA_PASSWORD_DISPLAY);
+		}	
+		
+		if (configProperty.getName() != null &&
+			configProperty.getName().equals(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME)) {
+
+		    labelMaker(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME_DISPLAY);
+		}	
 
 		// CSV constants
 		if (configProperty.getName() != null &&
@@ -732,7 +758,8 @@ public class DetailSection {
 			                                                 DsPackage.eINSTANCE.getConfigurationProperty_Value());
 
 		} else if (configProperty.getName() != null &&
-		           configProperty.getName().equals(DSActionConstants.PASSWORD_PROPERTY)) {
+		           (configProperty.getName().equals(DSActionConstants.PASSWORD_PROPERTY) || 
+		        		   configProperty.getName().equals(DSActionConstants.CASSANDRA_PASSWORD))) {
 
 			sectionUtil.getPassWordField(detailsclient, toolkit, configProperty,
 			                             configProperty.getValue(),

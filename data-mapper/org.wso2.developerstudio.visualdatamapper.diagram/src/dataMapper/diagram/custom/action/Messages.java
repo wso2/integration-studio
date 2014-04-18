@@ -50,6 +50,13 @@ public class Messages extends NLS {
 	public static String SchemaKeyEditorDialog_SchemaKeyEditorDialogMessage;
 	public static String SchemaKeyEditorDialog_SelectRegistryResource;
 	public static String SchemaKeyEditorDialog_WorkspaceElementProviders;
+	public static String Configure_Split_Operator_Action_Id;
+	public static String Add_Remove_Split_Branches;
+	public static String Configure_Split_Operator;
+	public static String Configure_Concat_Operator_Action_Id;
+	public static String Add_Remove_Concat_Branches;
+	public static String Configure_Concat_Operator;
+	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

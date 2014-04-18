@@ -48,7 +48,10 @@ import dataMapper.Element;
 import dataMapper.InNode;
 import dataMapper.OutNode;
 import dataMapper.TreeNode;
+import dataMapper.diagram.custom.configuration.function.Function;
+import dataMapper.diagram.custom.persistence.DataMapperConfiguration;
 import dataMapper.diagram.custom.persistence.DataMapperConfigurationGenerator;
+import dataMapper.diagram.custom.persistence.DataMapperModelTransformer;
 import dataMapper.diagram.tree.generator.TreeFromAvro;
 
 public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IGotoMarker {
@@ -270,7 +273,21 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 
 	public void updateSourceEditor() {
 
-		sourceEditor.update(DataMapperConfigurationGenerator.generateFunction());
+//		sourceEditor.update(DataMapperConfigurationGenerator.generateFunction());
+//		DataMapperConfiguration temp = DataMapperModelTransformer.getInstance().transform((DataMapperRoot) graphicalEditor.getDiagram().getElement());
+//		String temp2="";
+//		if (temp != null) {
+//			for (Function temp3 : temp.getFunctionList()) {
+//				temp2 += temp3.toString();
+//			}
+//		}
+//		sourceEditor.update(temp2);
+//		sourceDirty = false;
+//		firePropertyChange(PROP_DIRTY);
+		
+		DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
+		String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
+		sourceEditor.update(source);
 		sourceDirty = false;
 		firePropertyChange(PROP_DIRTY);
 	}
@@ -287,7 +304,8 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
 			InputStream is = null;
 			try {
-				String source = DataMapperConfigurationGenerator.generateFunction();
+				DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
+				String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
 				if (source == null) {
 					log.warn("Could get source");
 					return;

@@ -314,7 +314,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 		Label lblCassandraPassword = new Label(cCassandra, SWT.NONE);
 		lblCassandraPassword.setText("Password");
 		
-		txtCassandraPassword = new Text(cCassandra, SWT.BORDER);
+		txtCassandraPassword = new Text(cCassandra, SWT.BORDER | SWT.PASSWORD);
 		GridData gd_txtCassandraPassword = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_txtCassandraPassword.widthHint = 140;
 		txtCassandraPassword.setLayoutData(gd_txtCassandraPassword);

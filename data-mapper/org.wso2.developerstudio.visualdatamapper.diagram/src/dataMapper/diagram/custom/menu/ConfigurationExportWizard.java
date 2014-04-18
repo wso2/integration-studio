@@ -21,6 +21,7 @@ import org.eclipse.ui.internal.dialogs.ExportWizard;
 
 import dataMapper.DataMapperRoot;
 import dataMapper.diagram.custom.persistence.DataMapperConfigurationGenerator;
+import dataMapper.diagram.custom.persistence.DataMapperModelTransformer;
 import dataMapper.diagram.part.DataMapperDiagramEditor;
 import dataMapper.diagram.part.DataMapperMultiPageEditor;
 
@@ -50,7 +51,8 @@ public class ConfigurationExportWizard extends Wizard {
 
 		// create file, run configuration generation , put it to file
 
-		String input = DataMapperConfigurationGenerator.generateFunction();
+		DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
+		String input = DataMapperModelTransformer.getInstance().transform(rootDiagram);
 
 		File config = new File(page.getConfigExportrPath(), (page.getConfigurationFileName() + ".js"));
 

@@ -772,13 +772,22 @@ public interface DataMapperPackage extends EPackage {
 	int CONCAT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
+	 * The feature id for the '<em><b>Delimiter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT__DELIMITER = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Concat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCAT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int CONCAT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 
 	/**
@@ -857,13 +866,22 @@ public interface DataMapperPackage extends EPackage {
 	int SPLIT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
+	 * The feature id for the '<em><b>Delimiter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__DELIMITER = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Split</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
@@ -1563,6 +1581,17 @@ public interface DataMapperPackage extends EPackage {
 	EClass getConcat();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dataMapper.Concat#getDelimiter <em>Delimiter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Delimiter</em>'.
+	 * @see dataMapper.Concat#getDelimiter()
+	 * @see #getConcat()
+	 * @generated
+	 */
+	EAttribute getConcat_Delimiter();
+
+	/**
 	 * Returns the meta object for class '{@link dataMapper.Equal <em>Equal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1591,6 +1620,17 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSplit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dataMapper.Split#getDelimiter <em>Delimiter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Delimiter</em>'.
+	 * @see dataMapper.Split#getDelimiter()
+	 * @see #getSplit()
+	 * @generated
+	 */
+	EAttribute getSplit_Delimiter();
 
 	/**
 	 * Returns the meta object for class '{@link dataMapper.LowerCase <em>Lower Case</em>}'.
@@ -2153,6 +2193,14 @@ public interface DataMapperPackage extends EPackage {
 		EClass CONCAT = eINSTANCE.getConcat();
 
 		/**
+		 * The meta object literal for the '<em><b>Delimiter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONCAT__DELIMITER = eINSTANCE.getConcat_Delimiter();
+
+		/**
 		 * The meta object literal for the '{@link dataMapper.impl.EqualImpl <em>Equal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2183,6 +2231,14 @@ public interface DataMapperPackage extends EPackage {
 		EClass SPLIT = eINSTANCE.getSplit();
 
         /**
+		 * The meta object literal for the '<em><b>Delimiter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPLIT__DELIMITER = eINSTANCE.getSplit_Delimiter();
+
+								/**
 		 * The meta object literal for the '{@link dataMapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

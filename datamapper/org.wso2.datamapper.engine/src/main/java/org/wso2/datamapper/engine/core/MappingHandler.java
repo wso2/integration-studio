@@ -20,15 +20,16 @@ import java.io.IOException;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
 import org.json.JSONException;
-import org.wso2.datamapper.engine.inputAdapters.XmlInputReader;
+import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
 
 public class MappingHandler {
 	
-	public static GenericRecord doMap(OMElement inputMsg, MappingResourceLoader resourceModel)
+	public static GenericRecord doMap(OMElement inputMsg, MappingResourceLoader resourceModel,InputDataReaderAdapter inputReader)
 			throws IOException, IllegalAccessException, InstantiationException, JSONException {
 
-		XmlInputReader inputReader = new XmlInputReader();
-		inputReader.setInputMsg(inputMsg);  
+		//XmlInputReader inputReader = new XmlInputReader(); OR
+		//InputDataReaderAdapter inputReader = new CsvInputReader();
+		inputReader.setInputMsg(inputMsg);
 	    GenericRecord inputRecord = inputReader.getInputRecord(resourceModel.getInputSchema());
 		GenericRecord outputRecord = FunctionExecuter.execute(resourceModel, inputRecord);
 	    

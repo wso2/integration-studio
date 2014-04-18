@@ -758,7 +758,8 @@ public class DetailSection {
 			                                                 DsPackage.eINSTANCE.getConfigurationProperty_Value());
 
 		} else if (configProperty.getName() != null &&
-		           configProperty.getName().equals(DSActionConstants.PASSWORD_PROPERTY)) {
+		           (configProperty.getName().equals(DSActionConstants.PASSWORD_PROPERTY) || 
+		        		   configProperty.getName().equals(DSActionConstants.CASSANDRA_PASSWORD))) {
 
 			sectionUtil.getPassWordField(detailsclient, toolkit, configProperty,
 			                             configProperty.getValue(),

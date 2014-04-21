@@ -247,7 +247,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 		return (T) this.fModelObject;
 	}
 
-	protected final <T extends EObject> T getInput() {
+	public final <T extends EObject> T getInput() {
 		return getModel();
 	}
 

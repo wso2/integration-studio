@@ -1,6 +1,5 @@
 package dataMapper.diagram.custom.action;
 
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
@@ -20,7 +19,6 @@ import org.eclipse.ui.PlatformUI;
 
 import dataMapper.Concat;
 import dataMapper.diagram.custom.util.ConfigureConcatOperatorDialog;
-import dataMapper.impl.ConcatImpl;
 
 public class ConcatManyAction extends AbstractActionHandler {
 
@@ -29,41 +27,41 @@ public class ConcatManyAction extends AbstractActionHandler {
 	/**
 	 * Creates a new {@link ConfigureSwitchMediatorAction} instance.
 	 * 
-	 * @param part a {@link IWorkbenchPart} instance.
+	 * @param part
+	 *            a {@link IWorkbenchPart} instance.
 	 */
 	public ConcatManyAction(IWorkbenchPart part) {
 		super(part);
-		setId("configure-concat-operator-action-id");
-		setText("Add/Remove Concat Branches");
-		setToolTipText("Configure Concat Operator.");
-		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
-		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
+		setId(Messages.Configure_Concat_Operator_Action_Id);
+		setText(Messages.Add_Remove_Concat_Branches);
+		setToolTipText(Messages.Configure_Concat_Operator);
+		ISharedImages workbenchImages = PlatformUI.getWorkbench()
+				.getSharedImages();
+		setImageDescriptor(workbenchImages
+				.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
-	
 
 	/**
 	 * {@inheritDoc}
 	 */
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
-		
+
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
-		Assert.isTrue(selectedObj instanceof ConcatImpl, "Invalid selection.");
 
 		Display display = Display.getDefault();
-		Shell shell = new Shell(display);		
-		Dialog configureConcat = new ConfigureConcatOperatorDialog(shell, (Concat) selectedObj, getEditingDomain(), selectedEP);
+		Shell shell = new Shell(display);
+		Dialog configureConcat = new ConfigureConcatOperatorDialog(shell,
+				(Concat) selectedObj, getEditingDomain(), selectedEP);
 		configureConcat.setBlockOnOpen(true);
 		configureConcat.open();
-		
-	}
 
+	}
 
 	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
-		
+
 	}
 	protected EditPart getSelectedEditPart() {
 		IStructuredSelection selection = getStructuredSelection();
@@ -76,31 +74,30 @@ public class ConcatManyAction extends AbstractActionHandler {
 
 		return null; /* In case of selecting the wrong editpart */
 	}
-	
+
 	/**
 	 * Utility method for calculating the editing domain.
 	 * 
 	 * @return editing domain for this action.
 	 */
-	protected TransactionalEditingDomain getEditingDomain() {        
-        // try adapting the workbench part
-        IWorkbenchPart part = getWorkbenchPart();
+	protected TransactionalEditingDomain getEditingDomain() {
+		// try adapting the workbench part
+		IWorkbenchPart part = getWorkbenchPart();
 
-        if (part != null) {
-            IEditingDomainProvider edProvider = (IEditingDomainProvider) part
-                .getAdapter(IEditingDomainProvider.class);
+		if (part != null) {
+			IEditingDomainProvider edProvider = (IEditingDomainProvider) part
+					.getAdapter(IEditingDomainProvider.class);
 
-            if (edProvider != null) {
-            	EditingDomain domain = edProvider.getEditingDomain();
-            	
-            	if (domain instanceof TransactionalEditingDomain) {
-            		return (TransactionalEditingDomain) domain;
-            	}
-            }
-        }
-        
-        return null;
-    }
+			if (edProvider != null) {
+				EditingDomain domain = edProvider.getEditingDomain();
 
+				if (domain instanceof TransactionalEditingDomain) {
+					return (TransactionalEditingDomain) domain;
+				}
+			}
+		}
+
+		return null;
+	}
 
 }

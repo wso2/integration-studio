@@ -20,10 +20,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import dataMapper.Concat;
 import dataMapper.DataMapperFactory;
 import dataMapper.DataMapperPackage;
-import dataMapper.OperatorLeftConnector;
 import dataMapper.OperatorRightConnector;
 import dataMapper.Split;
 
@@ -52,7 +50,7 @@ public class ConfigureSplitOperatorDialog extends Dialog {
 		super.configureShell(newShell);
 
 		// Set title.
-		newShell.setText("Add Case Branches.");
+		newShell.setText("Add Split Branches.");
 	}
 
 	protected Control createDialogArea(Composite parent) {

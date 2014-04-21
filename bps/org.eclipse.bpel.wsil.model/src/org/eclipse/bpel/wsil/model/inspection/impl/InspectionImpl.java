@@ -64,7 +64,7 @@ public class InspectionImpl extends ItemWithAbstractsImpl implements Inspection 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return InspectionPackage.Literals.INSPECTION;
 	}
@@ -104,7 +104,7 @@ public class InspectionImpl extends ItemWithAbstractsImpl implements Inspection 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case InspectionPackage.INSPECTION__GROUPS:
@@ -122,7 +122,7 @@ public class InspectionImpl extends ItemWithAbstractsImpl implements Inspection 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case InspectionPackage.INSPECTION__GROUPS:
@@ -142,7 +142,7 @@ public class InspectionImpl extends ItemWithAbstractsImpl implements Inspection 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-		
+		@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InspectionPackage.INSPECTION__GROUPS:
@@ -165,7 +165,7 @@ public class InspectionImpl extends ItemWithAbstractsImpl implements Inspection 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case InspectionPackage.INSPECTION__GROUPS:
@@ -186,7 +186,7 @@ public class InspectionImpl extends ItemWithAbstractsImpl implements Inspection 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InspectionPackage.INSPECTION__GROUPS:
@@ -204,7 +204,7 @@ public class InspectionImpl extends ItemWithAbstractsImpl implements Inspection 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -1,16 +1,8 @@
 /**
  * <copyright>
- * Copyright (c) 2005 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *     IBM Corporation - initial API and implementation
  * </copyright>
  *
- * $Id: MessagepropertiesSwitch.java,v 1.5 2011/03/31 14:04:41 rbrodt Exp $
+ * $Id$
  */
 package org.eclipse.bpel.model.messageproperties.util;
 
@@ -23,7 +15,6 @@ import org.eclipse.bpel.model.messageproperties.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.wst.wsdl.WSDLElement;
 
 /**
@@ -81,10 +72,13 @@ public class MessagepropertiesSwitch<T> {
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
-		} else {
+		}
+		else {
 			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
-					eSuperTypes.get(0), theEObject);
+			return
+				eSuperTypes.isEmpty() ?
+					defaultCase(theEObject) :
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -97,47 +91,34 @@ public class MessagepropertiesSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case MessagepropertiesPackage.PROPERTY: {
-			Property property = (Property) theEObject;
-			T result = caseProperty(property);
-			if (result == null)
-				result = caseExtensibilityElement(property);
-			if (result == null)
-				result = caseWSDLElement(property);
-			if (result == null)
-				result = caseIExtensibilityElement(property);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MessagepropertiesPackage.PROPERTY_ALIAS: {
-			PropertyAlias propertyAlias = (PropertyAlias) theEObject;
-			T result = casePropertyAlias(propertyAlias);
-			if (result == null)
-				result = caseExtensibilityElement(propertyAlias);
-			if (result == null)
-				result = caseWSDLElement(propertyAlias);
-			if (result == null)
-				result = caseIExtensibilityElement(propertyAlias);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case MessagepropertiesPackage.QUERY: {
-			Query query = (Query) theEObject;
-			T result = caseQuery(query);
-			if (result == null)
-				result = caseExtensibilityElement(query);
-			if (result == null)
-				result = caseWSDLElement(query);
-			if (result == null)
-				result = caseIExtensibilityElement(query);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case MessagepropertiesPackage.PROPERTY: {
+				Property property = (Property)theEObject;
+				T result = caseProperty(property);
+				if (result == null) result = caseExtensibilityElement(property);
+				if (result == null) result = caseWSDLElement(property);
+				if (result == null) result = caseIExtensibilityElement(property);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MessagepropertiesPackage.PROPERTY_ALIAS: {
+				PropertyAlias propertyAlias = (PropertyAlias)theEObject;
+				T result = casePropertyAlias(propertyAlias);
+				if (result == null) result = caseExtensibilityElement(propertyAlias);
+				if (result == null) result = caseWSDLElement(propertyAlias);
+				if (result == null) result = caseIExtensibilityElement(propertyAlias);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MessagepropertiesPackage.QUERY: {
+				Query query = (Query)theEObject;
+				T result = caseQuery(query);
+				if (result == null) result = caseExtensibilityElement(query);
+				if (result == null) result = caseWSDLElement(query);
+				if (result == null) result = caseIExtensibilityElement(query);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
 		}
 	}
 
@@ -227,8 +208,7 @@ public class MessagepropertiesSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExtensibilityElement(
-			org.eclipse.wst.wsdl.ExtensibilityElement object) {
+	public T caseExtensibilityElement(org.eclipse.wst.wsdl.ExtensibilityElement object) {
 		return null;
 	}
 

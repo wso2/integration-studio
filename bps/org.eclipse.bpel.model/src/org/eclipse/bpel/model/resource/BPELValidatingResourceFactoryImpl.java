@@ -61,7 +61,7 @@ public class BPELValidatingResourceFactoryImpl extends BPELResourceFactoryImpl {
 	/**
 	 * @see org.eclipse.bpel.model.resource.BPELResourceFactoryImpl#createResource(org.eclipse.emf.common.util.URI)
 	 */
-	
+	@Override
 	public Resource createResource(URI uri) {
 		try {
 			return new BPELResourceImpl(uri, fEntityResolver, fErrorHandler);

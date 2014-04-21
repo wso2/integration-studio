@@ -82,7 +82,7 @@ public class BPELPlugin extends EMFPlugin
 	/**
 	 * @see org.eclipse.emf.common.EMFPlugin#getPluginResourceLocator()
 	 */
-	
+	@Override
 	public ResourceLocator getPluginResourceLocator()
 	{
 		return plugin;

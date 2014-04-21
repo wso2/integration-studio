@@ -91,7 +91,7 @@ public class FlowImpl extends ActivityImpl implements Flow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.FLOW;
 	}
@@ -231,7 +231,7 @@ public class FlowImpl extends ActivityImpl implements Flow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -251,7 +251,7 @@ public class FlowImpl extends ActivityImpl implements Flow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.FLOW__ACTIVITIES:
@@ -270,7 +270,7 @@ public class FlowImpl extends ActivityImpl implements Flow {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.FLOW__ACTIVITIES:
@@ -292,7 +292,7 @@ public class FlowImpl extends ActivityImpl implements Flow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.FLOW__ACTIVITIES:
@@ -313,7 +313,7 @@ public class FlowImpl extends ActivityImpl implements Flow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.FLOW__ACTIVITIES:

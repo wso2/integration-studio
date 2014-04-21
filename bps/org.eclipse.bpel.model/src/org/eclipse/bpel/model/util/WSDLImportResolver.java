@@ -42,7 +42,7 @@ public class WSDLImportResolver extends XSDImportResolver {
     /** 
      * @return The import type for which this resolver resolves.
      */
-    
+    @Override
 	public String getImportType() {
         return WSDLConstants.WSDL_NAMESPACE_URI;
     }
@@ -50,7 +50,7 @@ public class WSDLImportResolver extends XSDImportResolver {
     /**
      * @see org.eclipse.bpel.model.util.ImportResolver#resolve(org.eclipse.bpel.model.Import, javax.xml.namespace.QName, java.lang.String, java.lang.String)
      */
-    
+    @Override
 	public EObject resolve(Import imp, QName qname, String name, String refType) {
     	
         EObject result = null;
@@ -122,7 +122,7 @@ public class WSDLImportResolver extends XSDImportResolver {
 	 * 
 	 */
     
-		
+	@Override	
 	public List<Object> resolve (Import imp, int what ) {
 		
 		if (getImportType().equals(imp.getImportType()) == false) {

@@ -36,11 +36,8 @@ import org.eclipse.bpel.model.EventHandler;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
-import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
-import org.eclipse.bpel.model.FailureHandling;
 import org.eclipse.bpel.model.FaultHandler;
-import org.eclipse.bpel.model.FaultOnFailure;
 import org.eclipse.bpel.model.From;
 import org.eclipse.bpel.model.FromPart;
 import org.eclipse.bpel.model.FromParts;
@@ -55,8 +52,6 @@ import org.eclipse.bpel.model.OnMessage;
 import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.PartnerLinks;
 import org.eclipse.bpel.model.Query;
-import org.eclipse.bpel.model.RetryDelay;
-import org.eclipse.bpel.model.RetryFor;
 import org.eclipse.bpel.model.ServiceRef;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
@@ -89,298 +84,261 @@ public class ElementFactory {
 			super(bpelResource, document);
 		}
 
-		
+		@Override
 		protected Element createBPELElement(String tagName) {
 			return super.createBPELElement(tagName);
 		}
-		
-		
-		protected Element createElementWithName(String tagName) {
-			return super.createElementWithName(tagName);
-		}
 
-		
+		@Override
 		public Element activity2XML(org.eclipse.bpel.model.Activity activity) {
 			return super.activity2XML(activity);
 		}
 
-		
+		@Override
 		protected Element variable2XML(Variable variable) {
 			return super.variable2XML(variable);
 		}
 
-		
+		@Override
 		protected Element variables2XML(Variables variables) {
 			return super.variables2XML(variables);
 		}
 
-		
+		@Override
 		protected Element completionCondition2XML(
 				CompletionCondition completionCondition) {
 			return super.completionCondition2XML(completionCondition);
 		}
 
-		
+		@Override
 		protected Element expression2XML(Expression expression,
 				String elementName) {
 			return super.expression2XML(expression, elementName);
 		}
 
-		
+		@Override
 		protected Element branches2XML(Branches branches) {
 			return super.branches2XML(branches);
 		}
 
-		
+		@Override
 		protected Element extensibilityElement2XML(
 				ExtensibilityElement extensibilityElement) {
 			return super.extensibilityElement2XML(extensibilityElement);
 		}
 
-		
+		@Override
 		protected Element correlationSets2XML(CorrelationSets correlationSets) {
 			return super.correlationSets2XML(correlationSets);
 		}
 
-		
+		@Override
 		protected Element fromParts2XML(FromParts fromParts) {
 			return super.fromParts2XML(fromParts);
 		}
 
-		
+		@Override
 		protected Element fromPart2XML(FromPart fromPart) {
 			return super.fromPart2XML(fromPart);
 		}
 
-		
+		@Override
 		protected Element toParts2XML(ToParts toParts) {
 			return super.toParts2XML(toParts);
 		}
 
-		
+		@Override
 		protected Element toPart2XML(ToPart toPart) {
 			return super.toPart2XML(toPart);
 		}
 
-		
+		@Override
 		protected Element correlationSet2XML(CorrelationSet correlationSet) {
 			return super.correlationSet2XML(correlationSet);
 		}
 
-		
+		@Override
 		protected Element partnerLinks2XML(PartnerLinks partnerLinks) {
 			return super.partnerLinks2XML(partnerLinks);
 		}
 
-		
+		@Override
 		protected Element messageExchanges2XML(MessageExchanges messageExchanges) {
 			return super.messageExchanges2XML(messageExchanges);
 		}
 
-		
+		@Override
 		protected Element elseIf2XML(ElseIf elseIf) {
 			return super.elseIf2XML(elseIf);
 		}
 
-		
+		@Override
 		protected Element else2XML(Else _else) {
 			return super.else2XML(_else);
 		}
 
-		
+		@Override
 		protected Element onAlarm2XML(OnAlarm onAlarm) {
 			return super.onAlarm2XML(onAlarm);
 		}
 
-		
+		@Override
 		protected Element onMessage2XML(OnMessage onMsg) {
 			return super.onMessage2XML(onMsg);
 		}
 
-		
+		@Override
 		protected Element onEvent2XML(OnEvent onEvent) {
 			return super.onEvent2XML(onEvent);
 		}
 
-		
+		@Override
 		protected Element copy2XML(Copy copy) {
 			return super.copy2XML(copy);
 		}
 
-		
+		@Override
 		protected Element catch2XML(Catch _catch) {
 			return super.catch2XML(_catch);
 		}
-		
-		
-		protected Element extensionAssignOperation2XML(ExtensionAssignOperation eao) {
-			return super.extensionAssignOperation2XML(eao);
-		}
 
-		
+		@Override
 		protected Element catchAll2XML(CatchAll catchAll) {
 			return super.catchAll2XML(catchAll);
 		}
 
-		
+		@Override
 		protected Element compensationHandler2XML(
 				CompensationHandler compensationHandler) {
 			return super.compensationHandler2XML(compensationHandler);
 		}
 
-		
+		@Override
 		protected void to2XML(To to, Element toElement) {
 			super.to2XML(to, toElement);
 		}
 
-		
+		@Override
 		protected void from2XML(From from, Element fromElement) {
 			super.from2XML(from, fromElement);
 		}
 
-		
+		@Override
 		protected Element eventHandler2XML(EventHandler eventHandler) {
 			return super.eventHandler2XML(eventHandler);
 		}
 
-		
+		@Override
 		protected Element partnerLink2XML(PartnerLink partnerLink) {
 			return super.partnerLink2XML(partnerLink);
 		}
 
-		
+		@Override
 		protected Element messageExchange2XML(MessageExchange messageExchange) {
 			return super.messageExchange2XML(messageExchange);
 		}
 
-		
+		@Override
 		protected Element validate2XML(Validate activity) {
 			return super.validate2XML(activity);
 		}
 
-		
+		@Override
 		protected Element query2XML(Query query) {
 			return super.query2XML(query);
 		}
 
-		
+		@Override
 		protected Element faultHandlers2XML(FaultHandler faultHandler) {
 			return super.faultHandlers2XML(faultHandler);
 		}
 
-		
+		@Override
 		protected void faultHandler2XML(Element parentElement,
 				FaultHandler faultHandler) {
 			super.faultHandler2XML(parentElement, faultHandler);
 		}
 
-		
+		@Override
 		protected Element import2XML(Import imp) {
 			return super.import2XML(imp);
 		}
 
-		
+		@Override
 		protected Element correlation2XML(Correlation correlation) {
 			return super.correlation2XML(correlation);
 		}
 
-		
+		@Override
 		protected Element correlations2XML(Correlations correlations) {
 			return super.correlations2XML(correlations);
 		}
 
-		
+		@Override
 		protected String properties2XML(CorrelationSet correlationSet) {
 			return super.properties2XML(correlationSet);
 		}
 
-		
+		@Override
 		protected Element link2XML(Link link) {
 			return super.link2XML(link);
 		}
 
-		
+		@Override
 		protected Element links2XML(Links links) {
 			return super.links2XML(links);
 		}
 
-		
+		@Override
 		protected Element extension2XML(Extension extension) {
 			return super.extension2XML(extension);
 		}
 
-		
+		@Override
 		protected Element extensions2XML(Extensions extensions) {
 			return super.extensions2XML(extensions);
 		}
 
-		
+		@Override
 		protected Element terminationHandler2XML(
 				TerminationHandler terminationHandler) {
 			return super.terminationHandler2XML(terminationHandler);
 		}
 
-		
+		@Override
 		protected Element source2XML(Source source) {
 			return super.source2XML(source);
 		}
 
-		
+		@Override
 		protected Element sources2XML(Sources sources) {
 			return super.sources2XML(sources);
 		}
 
-		
+		@Override
 		protected Element target2XML(Target target) {
 			return super.target2XML(target);
 		}
 
-		
+		@Override
 		protected Element targets2XML(Targets targets) {
 			return super.targets2XML(targets);
 		}
 
-		
+		@Override
 		protected Element serviceRef2XML(ServiceRef serviceRef) {
 			return super.serviceRef2XML(serviceRef);
 		}
 
-		
+		@Override
 		protected Node serviceRefValue2XML(ServiceRef serviceRef) {
 			return super.serviceRefValue2XML(serviceRef);
 		}
 		
-		
+		@Override
 		protected Element documentation2XML(Documentation documentation) {
 			return super.documentation2XML(documentation);
 		}
-		
-		/**
-		 * for failureHandling extension provided by ODE: JIRA:TOOLS-785
-		 * 
-		 */
-		
-		protected Element failureHandling2XML(FailureHandling failureHandling)
-		{
-			return super.failureHandling2XML(failureHandling);
-		}
-		
-		
-		protected Element faultOnFailure2XML(FaultOnFailure faultOnFailure, Element faultOnFailureElement)
-		{
-			return super.faultOnFailure2XML(faultOnFailure, faultOnFailureElement);
-		}
-		
-		protected Element retryFor2XML(RetryFor retryFor, Element retryForElement)
-		{
-			return super.retryFor2XML(retryFor, retryForElement);
-		}
-		
-		protected Element retryDelay2XML(RetryDelay retryDelay, Element retryDelayElement)
-		{
-			return super.retryDelay2XML(retryDelay, retryDelayElement);
-		} 
-		
 	}
 
 	private static ElementFactory factory;
@@ -548,26 +506,6 @@ public class ElementFactory {
 		if (element instanceof Documentation) {
 			return writer.documentation2XML((Documentation) element);
 		}
-		// JIRA: TOOLS-785
-		if (element instanceof FailureHandling){
-			return writer.failureHandling2XML((FailureHandling) element);
-		}
-		if (element instanceof FaultOnFailure){
-			Element faultOnFailureElement = writer.createElementWithName(BPELConstants.NODE_FAULT_ON_FAILURE);
-			writer.faultOnFailure2XML((FaultOnFailure)element, faultOnFailureElement);
-			return faultOnFailureElement;
-		}
-		if (element instanceof RetryDelay){
-			Element retryDelayElement = writer.createElementWithName(BPELConstants.NODE_RETRY_DELAY);
-			writer.retryDelay2XML((RetryDelay) element, retryDelayElement);
-			return retryDelayElement;
-		}
-		if (element instanceof RetryFor){
-			Element retryForElement = writer.createElementWithName(BPELConstants.NODE_RETRY_FOR);
-			writer.retryFor2XML((RetryFor) element, retryForElement);
-			return retryForElement;
-		}
-		
 		throw new IllegalArgumentException("Cannot create element for type: " + element.getClass().getName());
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,20 +24,20 @@ public class RevertAction extends EditorPartAction {
 		super(editor);
 	}
 	
-	
+	@Override
 	protected boolean calculateEnabled() {
 		// Disable revert for now
 		//return getEditorPart().isDirty();
 		return false;
 	}
 	
-	
+	@Override
 	protected void init(){
 		setText(Messages.RevertAction_0); 
 		setId(ActionFactory.REVERT.getId());
 	}
 	
-	
+	@Override
 	public void run() {
 		((BPELMultipageEditorPart)getEditorPart()).doRevertToSaved(new NullProgressMonitor());
 		getEditorPart().setFocus();

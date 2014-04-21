@@ -34,7 +34,7 @@ public class ExitImpl extends ActivityImpl implements Exit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.EXIT;
 	}

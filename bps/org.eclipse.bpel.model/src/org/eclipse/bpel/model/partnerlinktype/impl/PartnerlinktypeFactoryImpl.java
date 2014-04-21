@@ -39,12 +39,12 @@ public class PartnerlinktypeFactoryImpl extends EFactoryImpl implements
 	 */
 	public static PartnerlinktypeFactory init() {
 		try {
-			PartnerlinktypeFactory thePartnerlinktypeFactory = (PartnerlinktypeFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/plnktype"); //$NON-NLS-1$ 
+			PartnerlinktypeFactory thePartnerlinktypeFactory = (PartnerlinktypeFactory)EPackage.Registry.INSTANCE.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/plnktype"); 
 			if (thePartnerlinktypeFactory != null) {
 				return thePartnerlinktypeFactory;
 			}
-		} catch (Exception exception) {
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new PartnerlinktypeFactoryImpl();
@@ -65,16 +65,13 @@ public class PartnerlinktypeFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE:
-			return createPartnerLinkType();
-		case PartnerlinktypePackage.ROLE:
-			return createRole();
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE: return createPartnerLinkType();
+			case PartnerlinktypePackage.ROLE: return createRole();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -104,7 +101,7 @@ public class PartnerlinktypeFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	public PartnerlinktypePackage getPartnerlinktypePackage() {
-		return (PartnerlinktypePackage) getEPackage();
+		return (PartnerlinktypePackage)getEPackage();
 	}
 
 	/**

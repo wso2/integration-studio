@@ -1,7 +1,7 @@
 package org.eclipse.bpel.apache.ode.runtime;
 
 /*******************************************************************************
- * Copyright (c) 2008 IBM Corporation, University of Stuttgart (IAAS) and others.
+ * Copyright (c) 2008, 2012 IBM Corporation, University of Stuttgart (IAAS) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ public class OdeBPELPublisher extends GenericBPELPublisher {
 		super();
 	}
 
-	
+	@Override
 	public IStatus[] publish(IModuleArtifact[] artifacts, IProgressMonitor monitor) {
 		// resources will always be null for some weird reason :(
 		// therefore we generate a BPELModuleArtifact
@@ -52,6 +52,14 @@ public class OdeBPELPublisher extends GenericBPELPublisher {
 			ModuleDelegate delegate = (ModuleDelegate)last.loadAdapter(ModuleDelegate.class, new NullProgressMonitor());
 			IModuleResource[] resources = delegate.members();
 			PublishUtil.publishFull(resources, root, monitor);
+
+			// https://bugs.eclipse.org/bugs/show_bug.cgi?id=379613
+			// remove the "*.deployed" file, so Ode knows to reload the changes
+			File f = root.addFileExtension("deployed").toFile();
+			if (f.exists()) {
+				f.delete();
+			}
+			
 		} catch(  CoreException ce ) {
 			// TODO return bad status
 		}
@@ -59,7 +67,7 @@ public class OdeBPELPublisher extends GenericBPELPublisher {
 
 	}
 
-	
+	@Override
 	public IStatus[] unpublish(IProgressMonitor monitor) {
 		IModule[] modules = super.getModule();
 		IModule last = modules[modules.length - 1];

@@ -31,8 +31,7 @@ public interface MessagepropertiesFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MessagepropertiesFactory eINSTANCE = org.eclipse.bpel.model.messageproperties.impl.MessagepropertiesFactoryImpl
-			.init();
+	MessagepropertiesFactory eINSTANCE = org.eclipse.bpel.model.messageproperties.impl.MessagepropertiesFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Property</em>'.

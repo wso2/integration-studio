@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -96,7 +96,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	
 		
 	final protected ModelContentProposalProvider.ValueProvider inputValueProvider =  new ModelContentProposalProvider.ValueProvider () {
-		
+		@Override
 		public Object value() {
 			return getModel();
 		}		
@@ -106,7 +106,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#getWidgetFactory()
 	 */
-	
+	@Override
 	public TabbedPropertySheetWidgetFactory getWidgetFactory() {
 		TabbedPropertySheetWidgetFactory wf = super.getWidgetFactory();
 		wf.setBorderStyle(SWT.BORDER);
@@ -200,7 +200,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
 	 */
-	
+	@Override
 	public final void setInput(IWorkbenchPart part, ISelection selection) {
 		
 		super.setInput(part, selection);
@@ -230,7 +230,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeHidden()
 	 */
-	
+	@Override
 	public void aboutToBeHidden() {
 		isHidden = true;
 	}
@@ -238,7 +238,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
 	 */
-	
+	@Override
 	public void aboutToBeShown() {
 		isHidden = false;
 	}
@@ -272,7 +272,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#createControls(org.eclipse.swt.widgets.Composite, org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
 	 */
 	
-	
+	@Override
 	public void createControls (final Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		
 		super.createControls(parent, aTabbedPropertySheetPage);
@@ -308,7 +308,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#dispose()
 	 */
-	
+	@Override
 	public void dispose() {		
 		if (isCreated) {
 			// TODO HACK: this shouldn't really be here!  But where should it be??
@@ -321,7 +321,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#refresh()
 	 */
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 		updateStatusLabels();
@@ -412,7 +412,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 
 	protected EditController createEditController ( ) {
 		return new EditController ( getCommandFramework() ) {
-			
+			@Override
 			public Command createApplyCommand() {				
 				return wrapInShowContextCommand( super.createApplyCommand() );
 			}			
@@ -465,27 +465,27 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 		return new AbstractEditModelCommand() {
 			Object beforeContext, afterContext;
 			
-			
+			@Override
 			public String getLabel() {
 				return inner.getLabel();
 			}
 			
-			
+			@Override
 			public void setLabel(String label) {
 				inner.setLabel(label);
 			}
 			
-			
+			@Override
 			public String getDebugLabel() {
 				return "ShowContext wrapper:[" + inner.getDebugLabel() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
 			}
 			
-			
+			@Override
 			public boolean canExecute() {
 				return inner.canExecute();
 			}
 			
-			
+			@Override
 			public void execute() {
 				BPELPropertySection aSection = getSection(sectionIndex); 
 				beforeContext = (aSection==null)? null : aSection.getUserContext();
@@ -493,12 +493,12 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 				afterContext = (aSection==null)? null : aSection.getUserContext();
 			}
 			
-			
+			@Override
 			public boolean canUndo() {
 				return inner.canUndo();
 			}
 			
-			
+			@Override
 			public void undo() {
 				inner.undo();
 				showPropertiesTab();
@@ -508,7 +508,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 				}
 			}
 			
-			
+			@Override
 			public void redo() {
 				inner.redo();
 				showPropertiesTab();
@@ -518,7 +518,7 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 				}
 			}
 			
-			
+			@Override
 			public void dispose() {
 				inner.dispose();
 			}
@@ -545,12 +545,12 @@ public abstract class BPELPropertySection extends AbstractPropertySection
 			}
 			
 			// TODO: THIS IS A HACK.. these helpers might belong somewhere else.
-			
+			@Override
 			public Resource[] getResources() { 
 				return EditModelCommandStack.getResources(inner); 
 			}
 			
-			
+			@Override
 			public Resource[] getModifiedResources() { 
 				return EditModelCommandStack.getModifiedResources(inner); 
 			}

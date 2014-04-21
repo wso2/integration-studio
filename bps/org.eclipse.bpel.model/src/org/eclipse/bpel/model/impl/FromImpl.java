@@ -14,6 +14,7 @@
  */
 package org.eclipse.bpel.model.impl;
 
+import org.eclipse.bpel.model.AbstractAssignBound;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.EndpointReferenceRole;
 import org.eclipse.bpel.model.Expression;
@@ -44,24 +45,90 @@ import org.eclipse.xsd.XSDTypeDefinition;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getOpaque <em>Opaque</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getEndpointReference <em>Endpoint Reference</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getLiteral <em>Literal</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getUnsafeLiteral <em>Unsafe Literal</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getServiceRef <em>Service Ref</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getVariable <em>Variable</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getPart <em>Part</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getPartnerLink <em>Partner Link</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getProperty <em>Property</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getQuery <em>Query</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getOpaque <em>Opaque</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getEndpointReference <em>Endpoint Reference</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getLiteral <em>Literal</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getUnsafeLiteral <em>Unsafe Literal</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getServiceRef <em>Service Ref</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.FromImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class FromImpl extends BPELExtensibleElementImpl implements From {
+	/**
+	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariable()
+	 * @generated
+	 * @ordered
+	 */
+	protected Variable variable;
+
+	/**
+	 * The cached value of the '{@link #getPart() <em>Part</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPart()
+	 * @generated
+	 * @ordered
+	 */
+	protected Part part;
+
+	/**
+	 * The deserialized value of the part name.
+	 * @customized
+	 */
+	protected String partName = null;
+
+	/**
+	 * The cached value of the '{@link #getPartnerLink() <em>Partner Link</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartnerLink()
+	 * @generated
+	 * @ordered
+	 */
+	protected PartnerLink partnerLink;
+
+	/**
+	 * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperty()
+	 * @generated
+	 * @ordered
+	 */
+	protected Property property;
+
+	/**
+	 * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQuery()
+	 * @generated
+	 * @ordered
+	 */
+	protected Query query;
+
+	/**
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression expression;
+
 	/**
 	 * The default value of the '{@link #getOpaque() <em>Opaque</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -170,16 +237,6 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	protected Boolean unsafeLiteral = UNSAFE_LITERAL_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected Expression expression;
-
-	/**
 	 * The cached value of the '{@link #getServiceRef() <em>Service Ref</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -200,62 +257,6 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	protected XSDTypeDefinition type;
 
 	/**
-	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVariable()
-	 * @generated
-	 * @ordered
-	 */
-	protected Variable variable;
-
-	/**
-	 * The cached value of the '{@link #getPart() <em>Part</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPart()
-	 * @generated
-	 * @ordered
-	 */
-	protected Part part;
-
-	/**
-	 * The deserialized value of the part name.
-	 * @customized
-	 */
-	protected String partName = null;
-
-	/**
-	 * The cached value of the '{@link #getPartnerLink() <em>Partner Link</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPartnerLink()
-	 * @generated
-	 * @ordered
-	 */
-	protected PartnerLink partnerLink;
-
-	/**
-	 * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProperty()
-	 * @generated
-	 * @ordered
-	 */
-	protected Property property;
-
-	/**
-	 * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQuery()
-	 * @generated
-	 * @ordered
-	 */
-	protected Query query;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -269,7 +270,7 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.FROM;
 	}
@@ -888,16 +889,16 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case BPELPackage.FROM__QUERY:
+			return basicSetQuery(null, msgs);
 		case BPELPackage.FROM__EXPRESSION:
 			return basicSetExpression(null, msgs);
 		case BPELPackage.FROM__SERVICE_REF:
 			return basicSetServiceRef(null, msgs);
-		case BPELPackage.FROM__QUERY:
-			return basicSetQuery(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -907,25 +908,9 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case BPELPackage.FROM__OPAQUE:
-			return getOpaque();
-		case BPELPackage.FROM__ENDPOINT_REFERENCE:
-			return getEndpointReference();
-		case BPELPackage.FROM__LITERAL:
-			return getLiteral();
-		case BPELPackage.FROM__UNSAFE_LITERAL:
-			return getUnsafeLiteral();
-		case BPELPackage.FROM__EXPRESSION:
-			return getExpression();
-		case BPELPackage.FROM__SERVICE_REF:
-			return getServiceRef();
-		case BPELPackage.FROM__TYPE:
-			if (resolve)
-				return getType();
-			return basicGetType();
 		case BPELPackage.FROM__VARIABLE:
 			if (resolve)
 				return getVariable();
@@ -944,6 +929,22 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 			return basicGetProperty();
 		case BPELPackage.FROM__QUERY:
 			return getQuery();
+		case BPELPackage.FROM__EXPRESSION:
+			return getExpression();
+		case BPELPackage.FROM__OPAQUE:
+			return getOpaque();
+		case BPELPackage.FROM__ENDPOINT_REFERENCE:
+			return getEndpointReference();
+		case BPELPackage.FROM__LITERAL:
+			return getLiteral();
+		case BPELPackage.FROM__UNSAFE_LITERAL:
+			return getUnsafeLiteral();
+		case BPELPackage.FROM__SERVICE_REF:
+			return getServiceRef();
+		case BPELPackage.FROM__TYPE:
+			if (resolve)
+				return getType();
+			return basicGetType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -953,30 +954,9 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case BPELPackage.FROM__OPAQUE:
-			setOpaque((Boolean) newValue);
-			return;
-		case BPELPackage.FROM__ENDPOINT_REFERENCE:
-			setEndpointReference((EndpointReferenceRole) newValue);
-			return;
-		case BPELPackage.FROM__LITERAL:
-			setLiteral((String) newValue);
-			return;
-		case BPELPackage.FROM__UNSAFE_LITERAL:
-			setUnsafeLiteral((Boolean) newValue);
-			return;
-		case BPELPackage.FROM__EXPRESSION:
-			setExpression((Expression) newValue);
-			return;
-		case BPELPackage.FROM__SERVICE_REF:
-			setServiceRef((ServiceRef) newValue);
-			return;
-		case BPELPackage.FROM__TYPE:
-			setType((XSDTypeDefinition) newValue);
-			return;
 		case BPELPackage.FROM__VARIABLE:
 			setVariable((Variable) newValue);
 			return;
@@ -992,6 +972,27 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 		case BPELPackage.FROM__QUERY:
 			setQuery((Query) newValue);
 			return;
+		case BPELPackage.FROM__EXPRESSION:
+			setExpression((Expression) newValue);
+			return;
+		case BPELPackage.FROM__OPAQUE:
+			setOpaque((Boolean) newValue);
+			return;
+		case BPELPackage.FROM__ENDPOINT_REFERENCE:
+			setEndpointReference((EndpointReferenceRole) newValue);
+			return;
+		case BPELPackage.FROM__LITERAL:
+			setLiteral((String) newValue);
+			return;
+		case BPELPackage.FROM__UNSAFE_LITERAL:
+			setUnsafeLiteral((Boolean) newValue);
+			return;
+		case BPELPackage.FROM__SERVICE_REF:
+			setServiceRef((ServiceRef) newValue);
+			return;
+		case BPELPackage.FROM__TYPE:
+			setType((XSDTypeDefinition) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1001,30 +1002,9 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case BPELPackage.FROM__OPAQUE:
-			unsetOpaque();
-			return;
-		case BPELPackage.FROM__ENDPOINT_REFERENCE:
-			unsetEndpointReference();
-			return;
-		case BPELPackage.FROM__LITERAL:
-			unsetLiteral();
-			return;
-		case BPELPackage.FROM__UNSAFE_LITERAL:
-			setUnsafeLiteral(UNSAFE_LITERAL_EDEFAULT);
-			return;
-		case BPELPackage.FROM__EXPRESSION:
-			setExpression((Expression) null);
-			return;
-		case BPELPackage.FROM__SERVICE_REF:
-			setServiceRef((ServiceRef) null);
-			return;
-		case BPELPackage.FROM__TYPE:
-			setType((XSDTypeDefinition) null);
-			return;
 		case BPELPackage.FROM__VARIABLE:
 			setVariable((Variable) null);
 			return;
@@ -1040,6 +1020,27 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 		case BPELPackage.FROM__QUERY:
 			setQuery((Query) null);
 			return;
+		case BPELPackage.FROM__EXPRESSION:
+			setExpression((Expression) null);
+			return;
+		case BPELPackage.FROM__OPAQUE:
+			unsetOpaque();
+			return;
+		case BPELPackage.FROM__ENDPOINT_REFERENCE:
+			unsetEndpointReference();
+			return;
+		case BPELPackage.FROM__LITERAL:
+			unsetLiteral();
+			return;
+		case BPELPackage.FROM__UNSAFE_LITERAL:
+			setUnsafeLiteral(UNSAFE_LITERAL_EDEFAULT);
+			return;
+		case BPELPackage.FROM__SERVICE_REF:
+			setServiceRef((ServiceRef) null);
+			return;
+		case BPELPackage.FROM__TYPE:
+			setType((XSDTypeDefinition) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1049,24 +1050,9 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case BPELPackage.FROM__OPAQUE:
-			return isSetOpaque();
-		case BPELPackage.FROM__ENDPOINT_REFERENCE:
-			return isSetEndpointReference();
-		case BPELPackage.FROM__LITERAL:
-			return isSetLiteral();
-		case BPELPackage.FROM__UNSAFE_LITERAL:
-			return UNSAFE_LITERAL_EDEFAULT == null ? unsafeLiteral != null
-					: !UNSAFE_LITERAL_EDEFAULT.equals(unsafeLiteral);
-		case BPELPackage.FROM__EXPRESSION:
-			return expression != null;
-		case BPELPackage.FROM__SERVICE_REF:
-			return serviceRef != null;
-		case BPELPackage.FROM__TYPE:
-			return type != null;
 		case BPELPackage.FROM__VARIABLE:
 			return variable != null;
 		case BPELPackage.FROM__PART:
@@ -1077,6 +1063,21 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 			return property != null;
 		case BPELPackage.FROM__QUERY:
 			return query != null;
+		case BPELPackage.FROM__EXPRESSION:
+			return expression != null;
+		case BPELPackage.FROM__OPAQUE:
+			return isSetOpaque();
+		case BPELPackage.FROM__ENDPOINT_REFERENCE:
+			return isSetEndpointReference();
+		case BPELPackage.FROM__LITERAL:
+			return isSetLiteral();
+		case BPELPackage.FROM__UNSAFE_LITERAL:
+			return UNSAFE_LITERAL_EDEFAULT == null ? unsafeLiteral != null
+					: !UNSAFE_LITERAL_EDEFAULT.equals(unsafeLiteral);
+		case BPELPackage.FROM__SERVICE_REF:
+			return serviceRef != null;
+		case BPELPackage.FROM__TYPE:
+			return type != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1086,7 +1087,63 @@ public class FromImpl extends BPELExtensibleElementImpl implements From {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractAssignBound.class) {
+			switch (derivedFeatureID) {
+			case BPELPackage.FROM__VARIABLE:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__VARIABLE;
+			case BPELPackage.FROM__PART:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__PART;
+			case BPELPackage.FROM__PARTNER_LINK:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__PARTNER_LINK;
+			case BPELPackage.FROM__PROPERTY:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__PROPERTY;
+			case BPELPackage.FROM__QUERY:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__QUERY;
+			case BPELPackage.FROM__EXPRESSION:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__EXPRESSION;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractAssignBound.class) {
+			switch (baseFeatureID) {
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__VARIABLE:
+				return BPELPackage.FROM__VARIABLE;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__PART:
+				return BPELPackage.FROM__PART;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__PARTNER_LINK:
+				return BPELPackage.FROM__PARTNER_LINK;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__PROPERTY:
+				return BPELPackage.FROM__PROPERTY;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__QUERY:
+				return BPELPackage.FROM__QUERY;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__EXPRESSION:
+				return BPELPackage.FROM__EXPRESSION;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

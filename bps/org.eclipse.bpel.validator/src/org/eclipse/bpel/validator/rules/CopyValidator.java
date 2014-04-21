@@ -55,7 +55,7 @@ public class CopyValidator extends CValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren ( ) {
 		super.checkChildren ();
 		checkChild(ND_FROM,1,1);
@@ -67,7 +67,7 @@ public class CopyValidator extends CValidator {
 	 * 
 	 */
 	
-	
+	@Override
 	protected void start() {		
 		super.start();
 		

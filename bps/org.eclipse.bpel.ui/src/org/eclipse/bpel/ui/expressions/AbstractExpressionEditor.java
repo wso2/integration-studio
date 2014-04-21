@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import org.eclipse.bpel.common.ui.composite.EditorInViewManager;
 import org.eclipse.bpel.ui.BPELUIPlugin;
 import org.eclipse.bpel.ui.IBPELUIConstants;
 import org.eclipse.bpel.ui.commands.CompoundCommand;
-import org.eclipse.bpel.ui.properties.BPELPropertySection;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
@@ -27,7 +26,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 
 /**
  * @author IBM Original Contribution.
@@ -41,11 +40,11 @@ public abstract class AbstractExpressionEditor implements IExpressionEditor {
 
 	protected EditorInViewManager fManager;
 
-	/** The owner BPELProperty section */
-	protected BPELPropertySection fSection;
-
 	/** The underlying model object */
 	private Object fModelObject;
+	
+	/** a {@link FormToolkit} to use */
+	protected FormToolkit wf;
 	
 	/** The expression type */
 	private String fExprType ;
@@ -54,8 +53,8 @@ public abstract class AbstractExpressionEditor implements IExpressionEditor {
 	 * @see org.eclipse.bpel.ui.expressions.IExpressionEditor#createControls(org.eclipse.swt.widgets.Composite,
 	 *      org.eclipse.bpel.ui.properties.BPELPropertySection)
 	 */
-	public void createControls(Composite parent, BPELPropertySection aSection) {
-		this.fSection = aSection;
+	public void createControls(Composite parent, FormToolkit toolkit) {
+		this.wf = toolkit;
 	}
 
 	/**
@@ -139,16 +138,6 @@ public abstract class AbstractExpressionEditor implements IExpressionEditor {
 	}
 
 	/**
-	 * Return the BPELPropertySection in which we are created.
-	 * 
-	 * @return the BPELProperty section.
-	 */
-
-	public BPELPropertySection getSection() {
-		return fSection;
-	}
-
-	/**
 	 * @see org.eclipse.bpel.ui.expressions.IExpressionEditor#setExpressionType(java.lang.String)
 	 */
 
@@ -172,7 +161,4 @@ public abstract class AbstractExpressionEditor implements IExpressionEditor {
 		return fModelObject;
 	}
 
-	protected TabbedPropertySheetWidgetFactory getWidgetFactory() {
-		return fSection.getWidgetFactory();
-	}
 }

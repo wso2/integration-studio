@@ -192,7 +192,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getProperty_QName() {
-		return (EAttribute) propertyEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getProperty_Name() {
-		return (EAttribute) propertyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getProperty_Type() {
-		return (EAttribute) propertyEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)propertyEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getProperty_ID() {
-		return (EAttribute) propertyEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)propertyEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -237,7 +237,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyAlias_MessageType() {
-		return (EAttribute) propertyAliasEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)propertyAliasEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -246,7 +246,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyAlias_Part() {
-		return (EAttribute) propertyAliasEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)propertyAliasEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyAlias_PropertyName() {
-		return (EAttribute) propertyAliasEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)propertyAliasEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -264,7 +264,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyAlias_ID() {
-		return (EAttribute) propertyAliasEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)propertyAliasEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -273,7 +273,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getPropertyAlias_WsdlPart() {
-		return (EReference) propertyAliasEClass.getEStructuralFeatures().get(4);
+		return (EReference)propertyAliasEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -282,7 +282,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getPropertyAlias_Query() {
-		return (EReference) propertyAliasEClass.getEStructuralFeatures().get(5);
+		return (EReference)propertyAliasEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -291,7 +291,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyAlias_Type() {
-		return (EAttribute) propertyAliasEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)propertyAliasEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -300,7 +300,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyAlias_XSDElement() {
-		return (EAttribute) propertyAliasEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)propertyAliasEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -318,7 +318,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getQuery_QueryLanguage() {
-		return (EAttribute) queryEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)queryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -327,7 +327,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getQuery_Value() {
-		return (EAttribute) queryEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)queryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -336,7 +336,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public MessagepropertiesFactory getMessagepropertiesFactory() {
-		return (MessagepropertiesFactory) getEFactoryInstance();
+		return (MessagepropertiesFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -354,8 +354,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated)
-			return;
+		if (isCreated) return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -395,8 +394,7 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized)
-			return;
+		if (isInitialized) return;
 		isInitialized = true;
 
 		// Initialize package
@@ -405,96 +403,38 @@ public class MessagepropertiesPackageImpl extends EPackageImpl implements
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		WSDLPackage theWSDLPackage = (WSDLPackage) EPackage.Registry.INSTANCE
-				.getEPackage(WSDLPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
+		WSDLPackage theWSDLPackage = (WSDLPackage)EPackage.Registry.INSTANCE.getEPackage(WSDLPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		propertyEClass.getESuperTypes().add(
-				theWSDLPackage.getExtensibilityElement());
-		propertyAliasEClass.getESuperTypes().add(
-				theWSDLPackage.getExtensibilityElement());
-		queryEClass.getESuperTypes().add(
-				theWSDLPackage.getExtensibilityElement());
+		propertyEClass.getESuperTypes().add(theWSDLPackage.getExtensibilityElement());
+		propertyAliasEClass.getESuperTypes().add(theWSDLPackage.getExtensibilityElement());
+		queryEClass.getESuperTypes().add(theWSDLPackage.getExtensibilityElement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(
-				propertyEClass,
-				Property.class,
-				"Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getProperty_QName(),
-				theWSDLPackage.getQName(),
-				"qName", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getProperty_Name(),
-				ecorePackage.getEString(),
-				"name", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getProperty_Type(),
-				theEcorePackage.getEJavaObject(),
-				"type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getProperty_ID(),
-				ecorePackage.getEString(),
-				"ID", null, 0, 1, Property.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProperty_QName(), theWSDLPackage.getQName(), "qName", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProperty_Type(), theEcorePackage.getEJavaObject(), "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProperty_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Property.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				propertyAliasEClass,
-				PropertyAlias.class,
-				"PropertyAlias", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getPropertyAlias_MessageType(),
-				theEcorePackage.getEJavaObject(),
-				"messageType", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPropertyAlias_Part(),
-				ecorePackage.getEString(),
-				"part", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPropertyAlias_PropertyName(),
-				theEcorePackage.getEJavaObject(),
-				"propertyName", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPropertyAlias_ID(),
-				ecorePackage.getEString(),
-				"ID", null, 0, 1, PropertyAlias.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getPropertyAlias_WsdlPart(),
-				theWSDLPackage.getPart(),
-				null,
-				"wsdlPart", null, 1, 1, PropertyAlias.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getPropertyAlias_Query(),
-				this.getQuery(),
-				null,
-				"query", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPropertyAlias_Type(),
-				theEcorePackage.getEJavaObject(),
-				"type", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPropertyAlias_XSDElement(),
-				theEcorePackage.getEJavaObject(),
-				"XSDElement", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(propertyAliasEClass, PropertyAlias.class, "PropertyAlias", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPropertyAlias_MessageType(), theEcorePackage.getEJavaObject(), "messageType", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyAlias_Part(), ecorePackage.getEString(), "part", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyAlias_PropertyName(), theEcorePackage.getEJavaObject(), "propertyName", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyAlias_ID(), ecorePackage.getEString(), "ID", null, 0, 1, PropertyAlias.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getPropertyAlias_WsdlPart(), theWSDLPackage.getPart(), null, "wsdlPart", null, 1, 1, PropertyAlias.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPropertyAlias_Query(), this.getQuery(), null, "query", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyAlias_Type(), theEcorePackage.getEJavaObject(), "type", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyAlias_XSDElement(), theEcorePackage.getEJavaObject(), "XSDElement", null, 0, 1, PropertyAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				queryEClass,
-				Query.class,
-				"Query", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getQuery_QueryLanguage(),
-				ecorePackage.getEString(),
-				"queryLanguage", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getQuery_Value(),
-				ecorePackage.getEString(),
-				"value", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(queryEClass, Query.class, "Query", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getQuery_QueryLanguage(), ecorePackage.getEString(), "queryLanguage", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQuery_Value(), ecorePackage.getEString(), "value", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

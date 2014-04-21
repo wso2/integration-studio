@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class AppendNewAction extends SelectionAction {
 		setImageDescriptor(factory.getSmallImageDescriptor());
 	}
 
-	
+	@Override
 	protected void init() {
 		super.init();
 		setEnabled(false);
@@ -125,7 +125,7 @@ public class AppendNewAction extends SelectionAction {
 	
 	
 	
-	
+	@Override
 	protected boolean calculateEnabled() {
 			
 		List<?> objects = getSelectedObjects();
@@ -170,7 +170,7 @@ public class AppendNewAction extends SelectionAction {
 	/**
 	 * @see org.eclipse.jface.action.Action#run()
 	 */
-	
+	@Override
 	public void run() {		
 		execute( getCreateCommand() );
 	}

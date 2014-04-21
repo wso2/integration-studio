@@ -140,7 +140,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return MessagepropertiesPackage.Literals.PROPERTY;
 	}
@@ -181,8 +181,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					MessagepropertiesPackage.PROPERTY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY__NAME, oldName, name));
 	}
 
 	/**
@@ -203,8 +202,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 		Object oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					MessagepropertiesPackage.PROPERTY__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY__TYPE, oldType, type));
 	}
 
 	/**
@@ -226,17 +224,17 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MessagepropertiesPackage.PROPERTY__QNAME:
-			return getQName();
-		case MessagepropertiesPackage.PROPERTY__NAME:
-			return getName();
-		case MessagepropertiesPackage.PROPERTY__TYPE:
-			return getType();
-		case MessagepropertiesPackage.PROPERTY__ID:
-			return getID();
+			case MessagepropertiesPackage.PROPERTY__QNAME:
+				return getQName();
+			case MessagepropertiesPackage.PROPERTY__NAME:
+				return getName();
+			case MessagepropertiesPackage.PROPERTY__TYPE:
+				return getType();
+			case MessagepropertiesPackage.PROPERTY__ID:
+				return getID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -246,18 +244,18 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MessagepropertiesPackage.PROPERTY__QNAME:
-			setQName((QName) newValue);
-			return;
-		case MessagepropertiesPackage.PROPERTY__NAME:
-			setName((String) newValue);
-			return;
-		case MessagepropertiesPackage.PROPERTY__TYPE:
-			setType(newValue);
-			return;
+			case MessagepropertiesPackage.PROPERTY__QNAME:
+				setQName((QName)newValue);
+				return;
+			case MessagepropertiesPackage.PROPERTY__NAME:
+				setName((String)newValue);
+				return;
+			case MessagepropertiesPackage.PROPERTY__TYPE:
+				setType(newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -267,18 +265,18 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MessagepropertiesPackage.PROPERTY__QNAME:
-			setQName(QNAME_EDEFAULT);
-			return;
-		case MessagepropertiesPackage.PROPERTY__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case MessagepropertiesPackage.PROPERTY__TYPE:
-			setType(TYPE_EDEFAULT);
-			return;
+			case MessagepropertiesPackage.PROPERTY__QNAME:
+				setQName(QNAME_EDEFAULT);
+				return;
+			case MessagepropertiesPackage.PROPERTY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case MessagepropertiesPackage.PROPERTY__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -288,21 +286,17 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MessagepropertiesPackage.PROPERTY__QNAME:
-			return QNAME_EDEFAULT == null ? qName != null : !QNAME_EDEFAULT
-					.equals(qName);
-		case MessagepropertiesPackage.PROPERTY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
-		case MessagepropertiesPackage.PROPERTY__TYPE:
-			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT
-					.equals(type);
-		case MessagepropertiesPackage.PROPERTY__ID:
-			return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT
-					.equals(getID());
+			case MessagepropertiesPackage.PROPERTY__QNAME:
+				return QNAME_EDEFAULT == null ? qName != null : !QNAME_EDEFAULT.equals(qName);
+			case MessagepropertiesPackage.PROPERTY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case MessagepropertiesPackage.PROPERTY__TYPE:
+				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+			case MessagepropertiesPackage.PROPERTY__ID:
+				return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT.equals(getID());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -312,17 +306,16 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (qName: "); //$NON-NLS-1$
+		result.append(" (qName: ");
 		result.append(qName);
-		result.append(", name: "); //$NON-NLS-1$
+		result.append(", name: ");
 		result.append(name);
-		result.append(", type: "); //$NON-NLS-1$
+		result.append(", type: ");
 		result.append(type);
 		result.append(')');
 		return result.toString();
@@ -331,7 +324,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	/**
 	 * Override the XML element token.
 	 */
-	
+	@Override
 	public QName getElementType() {
 		if (elementType == null)
 			elementType = new QName(MessagepropertiesConstants.NAMESPACE,
@@ -343,7 +336,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	// Reconcile methods: DOM -> Model
 	//
 
-	
+	@Override
 	public void reconcileAttributes(Element changedElement) {
 		super.reconcileAttributes(changedElement);
 
@@ -353,7 +346,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 		reconcileReferences(false);
 	}
 
-	
+	@Override
 	public void reconcileReferences(boolean deep) {
 		Definition definition = getEnclosingDefinition();
 		Element element = getElement();
@@ -393,7 +386,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 		super.reconcileReferences(deep);
 	}
 
-	
+	@Override
 	public void handleUnreconciledElement(Element child,
 			Collection remainingModelObjects) {
 	}
@@ -402,7 +395,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	// For reconciliation: Model -> DOM
 	//
 
-	
+	@Override
 	protected void changeAttribute(EAttribute eAttribute) {
 		if (isReconciling)
 			return;
@@ -452,7 +445,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 		}
 	}
 
-	
+	@Override
 	public Element createElement() {
 		// Register a prefix for the namespace.  
 		// If we don't do this, the WSDL model will deserialize our elements as UnknownExtensibilityElements.

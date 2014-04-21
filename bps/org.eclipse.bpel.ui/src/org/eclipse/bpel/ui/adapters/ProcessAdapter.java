@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class ProcessAdapter extends ContainerAdapter implements INamedElement,
 	
 	/* IContainer delegate */
 
-	
+	@Override
 	public IContainer createContainerDelegate() {
 		MultiContainer omc = new MultiContainer();
 		omc.add(new ActivityContainer(BPELPackage.eINSTANCE.getProcess_Activity()));
@@ -159,7 +159,7 @@ public class ProcessAdapter extends ContainerAdapter implements INamedElement,
 	 * Overrides the base class actions and appends the declaration actions
 	 * @see https://issues.jboss.org/browse/JBIDE-7953
 	 */
-	
+	@Override
 	public List<? extends IEditPartAction> getEditPartActions(EditPart editPart) {
 		List<AbstractAction> actions = new ArrayList<AbstractAction>();
 		actions.add(new CreatePartnerLinkAction(editPart));

@@ -117,7 +117,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return PartnerlinktypePackage.Literals.PARTNER_LINK_TYPE;
 	}
@@ -140,9 +140,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME, oldName,
-					name));
+			eNotify(new ENotificationImpl(this, Notification.SET, PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME, oldName, name));
 	}
 
 	/**
@@ -163,8 +161,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 */
 	public EList<Role> getRole() {
 		if (role == null) {
-			role = new EObjectContainmentEList<Role>(Role.class, this,
-					PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE);
+			role = new EObjectContainmentEList<Role>(Role.class, this, PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE);
 		}
 		return role;
 	}
@@ -174,12 +171,12 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-			return ((InternalEList<?>) getRole()).basicRemove(otherEnd, msgs);
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+				return ((InternalEList<?>)getRole()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -189,15 +186,15 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
-			return getName();
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ID:
-			return getID();
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-			return getRole();
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
+				return getName();
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ID:
+				return getID();
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+				return getRole();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -208,16 +205,16 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
-			setName((String) newValue);
-			return;
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-			getRole().clear();
-			getRole().addAll((Collection<? extends Role>) newValue);
-			return;
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
+				setName((String)newValue);
+				return;
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+				getRole().clear();
+				getRole().addAll((Collection<? extends Role>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -227,15 +224,15 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-			getRole().clear();
-			return;
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+				getRole().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -245,17 +242,15 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ID:
-			return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT
-					.equals(getID());
-		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-			return role != null && !role.isEmpty();
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ID:
+				return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT.equals(getID());
+			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+				return role != null && !role.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -265,13 +260,12 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: "); //$NON-NLS-1$
+		result.append(" (name: ");
 		result.append(name);
 		result.append(')');
 		return result.toString();
@@ -280,7 +274,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	/**
 	 * Override the XML element token.
 	 */
-	
+	@Override
 	public QName getElementType() {
 		if (elementType == null)
 			elementType = new QName(PartnerlinktypeConstants.NAMESPACE,
@@ -292,7 +286,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	// Reconcile methods: DOM -> Model
 	//
 
-	
+	@Override
 	public void reconcileAttributes(Element changedElement) {
 		//System.out.println("PartnerLinkTypeImpl.reconcileAttributes()");
 		super.reconcileAttributes(changedElement);
@@ -303,13 +297,13 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		reconcileReferences(false); // TODO true?
 	}
 
-	
+	@Override
 	public void reconcileReferences(boolean deep) {
 		//System.out.println("PartnerLinkTypeImpl.reconcileReferences("+deep+")");
 		super.reconcileReferences(deep);
 	}
 
-	
+	@Override
 	public void handleUnreconciledElement(Element child,
 			Collection remainingModelObjects) {
 		//System.out.println("PartnerLinkTypeImpl.handleUnreconciledElement()");
@@ -322,7 +316,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		}
 	}
 
-	
+	@Override
 	protected void handleReconciliation(Collection remainingModelObjects) {
 		//System.out.println("PartnerLinkTypeImpl.handleReconciliation("+remainingModelObjects+")");
 		for (Iterator i = remainingModelObjects.iterator(); i.hasNext();) {
@@ -342,7 +336,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	// For reconciliation: Model -> DOM
 	//
 
-	
+	@Override
 	protected void changeAttribute(EAttribute eAttribute) {
 		//System.out.println("PartnerLinkTypeImpl.changeAttribute("+eAttribute+")");
 
@@ -360,7 +354,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		}
 	}
 
-	
+	@Override
 	protected void changeReference(EReference eReference) {
 		//System.out.println("PartnerLinkTypeImpl.changeReference("+eReference+")");
 
@@ -383,7 +377,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		}
 	}
 
-	
+	@Override
 	public Element createElement() {
 		//System.out.println("PartnerLinkTypeImpl.createElement()");
 

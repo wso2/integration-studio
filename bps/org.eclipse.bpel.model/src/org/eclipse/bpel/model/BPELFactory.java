@@ -205,33 +205,6 @@ public interface BPELFactory extends EFactory {
 	OnAlarm createOnAlarm();
 
 	/**
-	 * Returns a new object of class '<em>Assign E4X</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Assign E4X</em>'.
-	 * @generated
-	 */
-	AssignE4X createAssignE4X();
-
-	/**
-	 * Returns a new object of class '<em>Extension Assign Operation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Extension Assign Operation</em>'.
-	 * @generated
-	 */
-	ExtensionAssignOperation createExtensionAssignOperation();
-
-	/**
-	 * Returns a new object of class '<em>Snippet</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Snippet</em>'.
-	 * @generated
-	 */
-	Snippet createSnippet();
-
-	/**
 	 * Returns a new object of class '<em>Assign</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -293,42 +266,6 @@ public interface BPELFactory extends EFactory {
 	 * @generated
 	 */
 	ToParts createToParts();
-
-	/**
-	 * Returns a new object of class '<em>Failure Handling</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Failure Handling</em>'.
-	 * @generated
-	 */
-	FailureHandling createFailureHandling();
-
-	/**
-	 * Returns a new object of class '<em>Fault On Failure</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fault On Failure</em>'.
-	 * @generated
-	 */
-	FaultOnFailure createFaultOnFailure();
-
-	/**
-	 * Returns a new object of class '<em>Retry For</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Retry For</em>'.
-	 * @generated
-	 */
-	RetryFor createRetryFor();
-
-	/**
-	 * Returns a new object of class '<em>Retry Delay</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Retry Delay</em>'.
-	 * @generated
-	 */
-	RetryDelay createRetryDelay();
 
 	/**
 	 * Returns a new object of class '<em>Compensation Handler</em>'.

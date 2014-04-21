@@ -97,14 +97,10 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public static PartnerlinktypePackage initGen() {
-		if (isInited)
-			return (PartnerlinktypePackage) EPackage.Registry.INSTANCE
-					.getEPackage(PartnerlinktypePackage.eNS_URI);
+		if (isInited) return (PartnerlinktypePackage)EPackage.Registry.INSTANCE.getEPackage(PartnerlinktypePackage.eNS_URI);
 
 		// Obtain or create and register package
-		PartnerlinktypePackageImpl thePartnerlinktypePackage = (PartnerlinktypePackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof PartnerlinktypePackageImpl ? EPackage.Registry.INSTANCE
-				.get(eNS_URI) : new PartnerlinktypePackageImpl());
+		PartnerlinktypePackageImpl thePartnerlinktypePackage = (PartnerlinktypePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof PartnerlinktypePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new PartnerlinktypePackageImpl());
 
 		isInited = true;
 
@@ -112,31 +108,18 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 		EcorePackage.eINSTANCE.eClass();
 		WSDLPackage.eINSTANCE.eClass();
 
-		// Obtain or create and register interdependencies
-		BPELPackageImpl theBPELPackage = (BPELPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(BPELPackage.eNS_URI) instanceof BPELPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(BPELPackage.eNS_URI) : BPELPackage.eINSTANCE);
-		MessagepropertiesPackageImpl theMessagepropertiesPackage = (MessagepropertiesPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(MessagepropertiesPackage.eNS_URI) instanceof MessagepropertiesPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(MessagepropertiesPackage.eNS_URI)
-				: MessagepropertiesPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		thePartnerlinktypePackage.createPackageContents();
-		theBPELPackage.createPackageContents();
-		theMessagepropertiesPackage.createPackageContents();
 
 		// Initialize created meta-data
 		thePartnerlinktypePackage.initializePackageContents();
-		theBPELPackage.initializePackageContents();
-		theMessagepropertiesPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		thePartnerlinktypePackage.freeze();
 
+  
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(PartnerlinktypePackage.eNS_URI,
-				thePartnerlinktypePackage);
+		EPackage.Registry.INSTANCE.put(PartnerlinktypePackage.eNS_URI, thePartnerlinktypePackage);
 		return thePartnerlinktypePackage;
 	}
 
@@ -182,8 +165,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPartnerLinkType_Name() {
-		return (EAttribute) partnerLinkTypeEClass.getEStructuralFeatures().get(
-				0);
+		return (EAttribute)partnerLinkTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -192,8 +174,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPartnerLinkType_ID() {
-		return (EAttribute) partnerLinkTypeEClass.getEStructuralFeatures().get(
-				1);
+		return (EAttribute)partnerLinkTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -202,8 +183,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getPartnerLinkType_Role() {
-		return (EReference) partnerLinkTypeEClass.getEStructuralFeatures().get(
-				2);
+		return (EReference)partnerLinkTypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -221,7 +201,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getRole_ID() {
-		return (EAttribute) roleEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)roleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -230,7 +210,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getRole_Name() {
-		return (EAttribute) roleEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)roleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -239,7 +219,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getRole_PortType() {
-		return (EAttribute) roleEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)roleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -248,7 +228,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public PartnerlinktypeFactory getPartnerlinktypeFactory() {
-		return (PartnerlinktypeFactory) getEFactoryInstance();
+		return (PartnerlinktypeFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -266,8 +246,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated)
-			return;
+		if (isCreated) return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -297,8 +276,7 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized)
-			return;
+		if (isInitialized) return;
 		isInitialized = true;
 
 		// Initialize package
@@ -307,56 +285,27 @@ public class PartnerlinktypePackageImpl extends EPackageImpl implements
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		WSDLPackage theWSDLPackage = (WSDLPackage) EPackage.Registry.INSTANCE
-				.getEPackage(WSDLPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
+		WSDLPackage theWSDLPackage = (WSDLPackage)EPackage.Registry.INSTANCE.getEPackage(WSDLPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		partnerLinkTypeEClass.getESuperTypes().add(
-				theWSDLPackage.getExtensibilityElement());
-		roleEClass.getESuperTypes().add(
-				theWSDLPackage.getExtensibilityElement());
+		partnerLinkTypeEClass.getESuperTypes().add(theWSDLPackage.getExtensibilityElement());
+		roleEClass.getESuperTypes().add(theWSDLPackage.getExtensibilityElement());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(
-				partnerLinkTypeEClass,
-				PartnerLinkType.class,
-				"PartnerLinkType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getPartnerLinkType_Name(),
-				ecorePackage.getEString(),
-				"name", null, 0, 1, PartnerLinkType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPartnerLinkType_ID(),
-				ecorePackage.getEString(),
-				"ID", null, 0, 1, PartnerLinkType.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getPartnerLinkType_Role(),
-				this.getRole(),
-				null,
-				"role", null, 0, -1, PartnerLinkType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(partnerLinkTypeEClass, PartnerLinkType.class, "PartnerLinkType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPartnerLinkType_Name(), ecorePackage.getEString(), "name", null, 0, 1, PartnerLinkType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPartnerLinkType_ID(), ecorePackage.getEString(), "ID", null, 0, 1, PartnerLinkType.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getPartnerLinkType_Role(), this.getRole(), null, "role", null, 0, -1, PartnerLinkType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				roleEClass,
-				Role.class,
-				"Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getRole_ID(),
-				ecorePackage.getEString(),
-				"ID", null, 0, 1, Role.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getRole_Name(),
-				ecorePackage.getEString(),
-				"name", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getRole_PortType(),
-				theEcorePackage.getEJavaObject(),
-				"portType", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRole_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Role.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRole_Name(), ecorePackage.getEString(), "name", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRole_PortType(), theEcorePackage.getEJavaObject(), "portType", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

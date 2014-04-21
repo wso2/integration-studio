@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class BPELEditModelClient extends EditModelClient {
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.common.ui.editmodel.EditModelClient#loadPrimaryResource(org.eclipse.core.resources.IFile, java.util.Map)
 	 */
-	
+	@Override
 	public void loadPrimaryResource(IFile file, Map loadOptions) throws RuntimeException {
 
 		super.loadPrimaryResource(file,loadOptions);
@@ -117,7 +117,7 @@ public class BPELEditModelClient extends EditModelClient {
 		}
 	}
 	
-	
+	@Override
 	protected EditModelCommandStack createCommandStack() {
 		EditModelCommandStack commandStack = super.createCommandStack();
 		commandStack.setUndoLimit(50);
@@ -125,7 +125,7 @@ public class BPELEditModelClient extends EditModelClient {
 		return commandStack;
 	}
 	
-	
+	@Override
 	public void dispose() {
 		if (artifactsResourceInfo != null) {
 			bpelEditModel.releaseReference(artifactsResourceInfo);
@@ -136,7 +136,7 @@ public class BPELEditModelClient extends EditModelClient {
 		super.dispose();
 	}
 
-	
+	@Override
 	protected EditModel getSharedResourceSet(IFile file) {
 		return BPELEditModel.getEditModel(file);
 	}

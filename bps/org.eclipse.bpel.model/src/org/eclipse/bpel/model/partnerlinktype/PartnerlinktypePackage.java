@@ -67,8 +67,7 @@ public interface PartnerlinktypePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	PartnerlinktypePackage eINSTANCE = org.eclipse.bpel.model.partnerlinktype.impl.PartnerlinktypePackageImpl
-			.init();
+	PartnerlinktypePackage eINSTANCE = org.eclipse.bpel.model.partnerlinktype.impl.PartnerlinktypePackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.partnerlinktype.impl.PartnerLinkTypeImpl <em>Partner Link Type</em>}' class.
@@ -358,8 +357,7 @@ public interface PartnerlinktypePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARTNER_LINK_TYPE__NAME = eINSTANCE
-				.getPartnerLinkType_Name();
+		EAttribute PARTNER_LINK_TYPE__NAME = eINSTANCE.getPartnerLinkType_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
@@ -375,8 +373,7 @@ public interface PartnerlinktypePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PARTNER_LINK_TYPE__ROLE = eINSTANCE
-				.getPartnerLinkType_Role();
+		EReference PARTNER_LINK_TYPE__ROLE = eINSTANCE.getPartnerLinkType_Role();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.model.partnerlinktype.impl.RoleImpl <em>Role</em>}' class.

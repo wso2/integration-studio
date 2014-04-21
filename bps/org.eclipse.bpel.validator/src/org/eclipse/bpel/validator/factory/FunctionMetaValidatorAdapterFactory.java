@@ -43,7 +43,7 @@ public class FunctionMetaValidatorAdapterFactory extends FMAdapterFactory {
 	/**
 	 * @see org.eclipse.bpel.fnmeta.model.util.FMAdapterFactory#createFunctionAdapter()
 	 */
-	
+	@Override
 	public Adapter createFunctionAdapter() {
 		return provider.getAdapter(FunctionAdapter.class);
 	}
@@ -57,7 +57,7 @@ public class FunctionMetaValidatorAdapterFactory extends FMAdapterFactory {
 	 * @return an suitable adapter
 	 */
 	
-	
+	@Override
 	public Adapter adaptNew ( Notifier target, Object type ) {
 	
 		Adapter adapter = createAdapter(target, type);
@@ -69,7 +69,7 @@ public class FunctionMetaValidatorAdapterFactory extends FMAdapterFactory {
 		
 	}
 	
-	
+	@Override
 	protected Object resolve(Object object, Object type) {
 		return null;
 	}

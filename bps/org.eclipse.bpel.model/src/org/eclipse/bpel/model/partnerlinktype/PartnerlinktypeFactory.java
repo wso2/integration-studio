@@ -31,8 +31,7 @@ public interface PartnerlinktypeFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	PartnerlinktypeFactory eINSTANCE = org.eclipse.bpel.model.partnerlinktype.impl.PartnerlinktypeFactoryImpl
-			.init();
+	PartnerlinktypeFactory eINSTANCE = org.eclipse.bpel.model.partnerlinktype.impl.PartnerlinktypeFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Partner Link Type</em>'.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ public class AddSelectedObjectFilter extends ViewerFilter {
 
 	Object selectedObject;
 	
-	
+	@Override
 	public Object[] filter(Viewer viewer, Object parent, Object[] elements) {
 		if (selectedObject == null) return elements;
 		for (int i = 0; i<elements.length; i++) {
@@ -36,7 +36,7 @@ public class AddSelectedObjectFilter extends ViewerFilter {
 		return result;
 	}
 	
-	
+	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		return true;
 	}

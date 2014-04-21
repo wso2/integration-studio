@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ import org.eclipse.gef.EditPolicy;
 public class SequenceEditPart extends CollapsableEditPart {
 	
 	private class SequenceHorizontalBPELOrderedLayoutPolicy extends BPELOrderedLayoutEditPolicy{
-		
+		@Override
 		protected ArrayList<PolylineConnection> createHorizontalConnections(BPELEditPart parent) {
 			ArrayList<PolylineConnection> connections = new ArrayList<PolylineConnection>();
 			List children = getConnectionChildren(parent);
@@ -94,17 +94,17 @@ public class SequenceEditPart extends CollapsableEditPart {
 		}
 	}
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		
 		// Show the selection rectangle
 		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new ContainerHighlightEditPolicy(false, true) {
-			
+			@Override
 			protected int getDrawerInset() {
 				return DrawerBorder.DRAWER_WIDTH;
 			}
-			
+			@Override
 			protected int getNorthInset() {
 				if (isCollapsed()) {
 					return 0;
@@ -115,15 +115,15 @@ public class SequenceEditPart extends CollapsableEditPart {
 				return 10 ;
 			}
 			
-			
+			@Override
 			protected int getSouthInset() {
 				return isCollapsed() ? 8 : 2;
 			}
-			
+			@Override
 			protected int getEastInset() {
 				return DrawerBorder.DRAWER_WIDTH ;
 			}
-			
+			@Override
 			protected int getWestInset() {
 				return DrawerBorder.DRAWER_WIDTH ;
 			}
@@ -138,7 +138,7 @@ public class SequenceEditPart extends CollapsableEditPart {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, policy);
 	}
 	
-	
+	@Override
 	protected void configureExpandedFigure(IFigure aFigure) {
 		
 		FlowLayout layout = new FlowLayout();

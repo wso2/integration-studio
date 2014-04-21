@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -83,14 +83,14 @@ public class BPELTabbedPropertySheetPage extends TabbedPropertySheetPage {
 		actionBars.updateActionBars();
 	}
 		
-	
+	@Override
 	public void init(IPageSite pageSite) {
 		super.init(pageSite);
 		// add some actions to the properties view
 		setBPELEditorActions();
 	}
 	
-	
+	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		// TODO: (DO) If we change selection in the Designer then it causes
 		// changing selection in the SourceTab too. We are not going to create

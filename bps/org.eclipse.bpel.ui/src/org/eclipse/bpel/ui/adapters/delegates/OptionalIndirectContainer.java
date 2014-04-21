@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ public class OptionalIndirectContainer extends IndirectContainer {
 	
 	/* IContainer */
 	
-	
+	@Override
 	public boolean addChild(EObject object, EObject child, EObject insertBefore) {
 		if (getTarget(object) == null) {
 			createTarget(object);
@@ -48,7 +48,7 @@ public class OptionalIndirectContainer extends IndirectContainer {
 		return super.addChild(object, child, insertBefore);
 	}
 	
-	
+	@Override
 	public boolean removeChild(EObject object, EObject child) {
 		if (getTarget(object) == null) return false;
 		boolean result = super.removeChild(object, child);
@@ -56,7 +56,7 @@ public class OptionalIndirectContainer extends IndirectContainer {
 		return result;
 	}
 	
-	
+	@Override
 	public boolean replaceChild(EObject object, EObject oldChild, EObject newChild) {
 		if (getTarget(object) == null) return false;
 		return super.replaceChild(object, oldChild, newChild);

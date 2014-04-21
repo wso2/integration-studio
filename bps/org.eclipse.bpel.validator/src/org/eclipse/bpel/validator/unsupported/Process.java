@@ -34,7 +34,7 @@ public class Process extends CValidator {
 	protected String fTypeName;
 	
 		
-	
+	@Override
 	protected void start () {
 		super.start();		
 		ncName = mNode.getAttribute( AT_NAME );		
@@ -72,7 +72,7 @@ public class Process extends CValidator {
 		)
 	public void rule_ReportUnsupportedProcessVariant_5 () {
 		
-		IProblem problem = createError();
+		IProblem problem = createWarning();
 		problem.fill("BPELC__UNSUPPORTED_VALIDATION", 
 				toString(mNode.nodeName()), ncName, mNode.nodeName().getNamespaceURI() );
 		

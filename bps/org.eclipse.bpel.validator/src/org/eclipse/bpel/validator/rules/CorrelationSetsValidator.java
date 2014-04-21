@@ -32,7 +32,7 @@ public class CorrelationSetsValidator extends CContainerValidator {
 	 * @see org.eclipse.bpel.validator.rules.CContainerValidator#checkChildren()
 	 */
 	
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		checkChild(ND_CORRELATION_SET, 1, Integer.MAX_VALUE);

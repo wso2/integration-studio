@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 Intel Corporation.
+ * Copyright (c) 2008, 2012 Intel Corporation.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ public class SwapCopyCommand extends SwapInListCommand {
 				IBPELUIConstants.CMD_SWAP_COPY);
 	}
 
-	
+	@Override
 	protected EList<Copy> getList() {
 		return ((Assign) target).getCopy();
 	}

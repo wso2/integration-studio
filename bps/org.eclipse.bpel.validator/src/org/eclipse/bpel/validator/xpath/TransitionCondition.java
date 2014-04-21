@@ -33,7 +33,7 @@ public class TransitionCondition extends XPathValidator {
 		date = "01/30/2007",
 		order = 999
 	)
-	
+	@Override
 	public void checkBooleanExpression () {
 		super.checkBooleanExpression();
 	}

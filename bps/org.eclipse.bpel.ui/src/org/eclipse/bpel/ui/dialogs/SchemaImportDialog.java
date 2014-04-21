@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -208,7 +208,7 @@ public class SchemaImportDialog extends SelectionStatusDialog {
 	 * @return the composite it created to be used in the dialog area.
 	 */
 
-	
+	@Override
 	public Control createDialogArea(Composite parent) {
 
 		Composite contents = (Composite) super.createDialogArea(parent);
@@ -220,7 +220,7 @@ public class SchemaImportDialog extends SelectionStatusDialog {
 		return contents;
 	}
 
-	
+	@Override
 	protected void buttonPressed(int buttonId) {
 		switch (buttonId) {
 		case BID_BROWSE:
@@ -290,7 +290,7 @@ public class SchemaImportDialog extends SelectionStatusDialog {
 	 * 
 	 */
 
-	
+	@Override
 	public void create() {
 		super.create();
 		buttonPressed(KIND, true);
@@ -306,7 +306,7 @@ public class SchemaImportDialog extends SelectionStatusDialog {
 		button.setSelection(checked);
 
 		button.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent event) {
 				Button b = (Button) event.widget;
 				int bid = ((Integer) b.getData()).intValue();
@@ -643,7 +643,7 @@ public class SchemaImportDialog extends SelectionStatusDialog {
 		final String msg = MessageFormat.format(Messages.SchemaImportDialog_17,fRunnableLoadURI);		 	    
 		fLoaderJob = new Job(msg) {
 
-			
+			@Override
 			protected IStatus run (IProgressMonitor monitor) {
 				monitor.beginTask(msg, 1);				
 				// Bug 290090 - move this to asyncExec() as below because the method will
@@ -751,7 +751,7 @@ public class SchemaImportDialog extends SelectionStatusDialog {
 	 * @see org.eclipse.ui.dialogs.SelectionStatusDialog#computeResult()
 	 */
 
-	
+	@Override
 	protected void computeResult() {
 		Object object = fTreeViewer.getInput();
 		if (object == null) {
@@ -813,7 +813,7 @@ public class SchemaImportDialog extends SelectionStatusDialog {
 		 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
 		 *      java.lang.Object, java.lang.Object)
 		 */
-		
+		@Override
 		public boolean select(Viewer viewer, Object parentElement,
 				Object element) {
 
@@ -850,7 +850,7 @@ public class SchemaImportDialog extends SelectionStatusDialog {
 		/**
 		 * @see org.eclipse.jface.viewers.ViewerComparator#category(java.lang.Object)
 		 */
-		
+		@Override
 		public int category(Object element) {
 			if (element instanceof Inspection)
 				return 1;

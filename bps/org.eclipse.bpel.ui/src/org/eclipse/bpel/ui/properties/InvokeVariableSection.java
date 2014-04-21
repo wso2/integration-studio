@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007 IBM Corporation and others.
+ * Copyright (c) 2007, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -109,7 +109,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 			}
 			// Null out the fromParts and toParts
 			ccmd.add(new AutoUndoCommand(getInput()) {
-				
+				@Override
 				public void doExecute() {
 					try {
 						ModelHelper.setToParts(getInput(), null);
@@ -129,7 +129,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 	private VariableFilter fInputVariableFilter = new VariableFilter();
 	private VariableFilter fOutputVariableFilter = new VariableFilter();
 	private IControlContentAdapter fTextContentAdapter = new TextContentAdapter() {
-		
+		@Override
 		public void insertControlContents(Control control, String text,
 				int cursorPosition) {
 			if (text != null) {
@@ -137,7 +137,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 			}
 		}
 
-		
+		@Override
 		public void setControlContents(Control control, String text,
 				int cursorPosition) {
 			if (text != null) {
@@ -159,7 +159,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 	private Composite partMappingComposite;
 	private Button usePartMappingCheckbox;
 
-	
+	@Override
 	protected void addAllAdapters() {
 		// model object
 		super.addAllAdapters();
@@ -195,7 +195,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		}
 	}
 
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 		super.basicSetInput(newInput);
 
@@ -203,18 +203,18 @@ public class InvokeVariableSection extends BPELPropertySection {
 				.setSelection(shouldUsePartMapping(getModel()));
 	}
 
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 		/* model object */
 		new BatchedMultiObjectAdapter() {
 
-			
+			@Override
 			public void finish() {
 				refresh();
 			}
 
-			
+			@Override
 			public void notify(Notification n) {
 
 				/*
@@ -246,7 +246,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		} };
 	}
 
-	
+	@Override
 	protected void createClient(Composite parent) {
 
 		Composite composite = createFlatFormComposite(parent);
@@ -278,7 +278,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		// Content assist on partnerName
 		RunnableProposal proposal = new RunnableProposal() {
 
-			
+			@Override
 			public String getLabel() {
 				return Messages.InvokeImplSection_10;
 			}
@@ -292,7 +292,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 
 		RunnableProposal proposal2 = new RunnableProposal() {
 
-			
+			@Override
 			public String getLabel() {
 				return Messages.InvokeImplSection_11;
 			}
@@ -305,7 +305,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		};
 
 		RunnableProposal proposal3 = new RunnableProposal() {
-			
+			@Override
 			public String getLabel() {
 				return Messages.InvokeImplSection_12;
 			}
@@ -322,7 +322,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider(
 				new ModelContentProposalProvider.ValueProvider() {
-					
+					@Override
 					public Object value() {
 						return getInput();
 					}
@@ -461,7 +461,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		// Runnable proposal.
 		RunnableProposal proposal = new RunnableProposal() {
 
-			
+			@Override
 			public String getLabel() {
 				return Messages.InvokeImplSection_16;
 			}
@@ -474,7 +474,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		};
 
 		RunnableProposal proposal2 = new RunnableProposal() {
-			
+			@Override
 			public String getLabel() {
 				return "Create Local Output Variable"; //$NON-NLS-1$
 			}
@@ -487,7 +487,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		};
 
 		RunnableProposal proposal3 = new RunnableProposal() {
-			
+			@Override
 			public String getLabel() {
 				return "Clear Output Variable"; //$NON-NLS-1$
 			}
@@ -504,7 +504,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider(
 				new ModelContentProposalProvider.ValueProvider() {
-					
+					@Override
 					public Object value() {
 						return getInput();
 					}
@@ -687,7 +687,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 			 */
 			RunnableProposal proposal1 = new RunnableProposal() {
 
-				
+				@Override
 				public String getLabel() {
 					return "Create global Variable";
 				}
@@ -701,7 +701,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 
 			RunnableProposal proposal2 = new RunnableProposal() {
 
-				
+				@Override
 				public String getLabel() {
 					return "Create local Variable";
 				}
@@ -715,7 +715,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 
 			RunnableProposal proposal3 = new RunnableProposal() {
 
-				
+				@Override
 				public String getLabel() {
 					return "Clear Variable";
 				}
@@ -742,7 +742,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 			ModelContentProposalProvider proposalProvider = new ModelContentProposalProvider(
 					new ModelContentProposalProvider.ValueProvider() {
 
-						
+						@Override
 						public Object value() {
 							return getInput();
 						}
@@ -1060,7 +1060,7 @@ public class InvokeVariableSection extends BPELPropertySection {
 				: Messages.InvokeImplDetails_Request_3_Plain;
 	}
 
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 

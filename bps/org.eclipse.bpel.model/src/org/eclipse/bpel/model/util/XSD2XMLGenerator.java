@@ -120,7 +120,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 	/* (non-Javadoc)
 	 * @see org.eclipse.wst.xml.ui.internal.wizards.NewXMLGenerator#setBuildPolicy(int)
 	 */
-	
+	@Override
 	public void setBuildPolicy(int buildPolicy) {
 		this.myBuildPolicy = buildPolicy;
 	}
@@ -250,7 +250,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 		/* (non-Javadoc)
 		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#createDefaultRootContent(org.eclipse.wst.xml.core.internal.contentmodel.CMDocument, org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration)
 		 */
-		
+		@Override
 		public void createDefaultRootContent(CMDocument cmDocument,
 				CMElementDeclaration rootCMElementDeclaration) throws Exception {
 			if (namespaceInfoList != null) {
@@ -272,7 +272,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 		/* (non-Javadoc)
 		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#visitCMGroup(org.eclipse.wst.xml.core.internal.contentmodel.CMGroup)
 		 */
-		
+		@Override
 		public void visitCMGroup(CMGroup e) {
 			// this was copied directly from DOMContentBuilderImpl because there is apparently
 			// no way of having CMNode return the "contentHint" property (see original implementation)
@@ -335,7 +335,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 		/* (non-Javadoc)
 		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#handlePushParent(org.w3c.dom.Element, org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration)
 		 */
-		
+		@Override
 		protected void handlePushParent(Element parent, CMElementDeclaration ed) {
 			super.handlePushParent(parent, ed);
 			cmNodeStack.push(ed);
@@ -344,7 +344,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 		/* (non-Javadoc)
 		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#handlePopParent(org.w3c.dom.Element, org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration)
 		 */
-		
+		@Override
 		protected void handlePopParent(Element element, CMElementDeclaration ed) {
 			super.handlePopParent(element, ed);
 			cmNodeStack.pop();
@@ -353,7 +353,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 		/* (non-Javadoc)
 		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#createElement(org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration, java.lang.String, org.w3c.dom.Node)
 		 */
-		
+		@Override
 		protected org.w3c.dom.Element createElement(CMElementDeclaration ed, String name, Node parent) {
 			// if building XML that represents only structure, use a generic element name
 			// (either "simpleElem" or "complexElem") instead of the elements actual tag name
@@ -369,7 +369,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 		/* (non-Javadoc)
 		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#createAttribute(org.eclipse.wst.xml.core.internal.contentmodel.CMAttributeDeclaration, java.lang.String, org.w3c.dom.Node)
 		 */
-		
+		@Override
 		protected org.w3c.dom.Attr createAttribute(CMAttributeDeclaration ad, String name, Node parent) {
 			// TODO: I think attribute names MUST match even if we're only building XML structure
 			// for the purposes of comparing two XSD fragments...
@@ -379,7 +379,7 @@ public class XSD2XMLGenerator extends NewXMLGenerator {
 		/* (non-Javadoc)
 		 * @see org.eclipse.wst.xml.core.internal.contentmodel.util.DOMContentBuilderImpl#createTextNode(org.eclipse.wst.xml.core.internal.contentmodel.CMDataType, java.lang.String, org.w3c.dom.Node)
 		 */
-		
+		@Override
 		protected org.w3c.dom.Text createTextNode(CMDataType dataType, String value, Node parent) {
 
 			// get XSD type definition from parent object currently at the top of our stack

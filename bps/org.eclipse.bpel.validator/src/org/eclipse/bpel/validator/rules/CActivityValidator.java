@@ -46,7 +46,7 @@ public class CActivityValidator extends CValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		
@@ -60,7 +60,7 @@ public class CActivityValidator extends CValidator {
 	/**
 	 * Start the validation of this node.
 	 */
-	
+	@Override
 	protected void start () {
 		super.start();
 		

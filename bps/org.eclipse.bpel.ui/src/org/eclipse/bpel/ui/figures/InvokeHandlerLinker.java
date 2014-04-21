@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.bpel.ui.figures;
 
 import org.eclipse.bpel.model.CompensationHandler;
@@ -15,27 +25,27 @@ public class InvokeHandlerLinker extends HandlerLinkerAdapter {
 		this.invoke = editPart;
 	}
 
-	
+	@Override
 	protected CompensationHandler getCompensationHandler() {
 		return invoke.getCompensationHandler();
 	}
 
-	
+	@Override
 	protected FaultHandler getFaultHandler() {
 		return invoke.getFaultHandler();
 	}
 
-	
+	@Override
 	protected boolean isShowCH() {
 		return invoke.getShowCompensationHandler();
 	}
 
-	
+	@Override
 	protected boolean isShowFH() {
 		return invoke.getShowFaultHandler();
 	}
 
-	
+	@Override
 	protected int getCHTargetAnchorLoc() {
 		if (!isHorizontalLayout()) {
 			return getFaultHandler() != null ? CenteredConnectionAnchor.LEFT
@@ -44,13 +54,13 @@ public class InvokeHandlerLinker extends HandlerLinkerAdapter {
 			return super.getCHTargetAnchorLoc();
 	}
 
-	
+	@Override
 	protected IFigure getCHFigure() {
 		return ((LeafBorder)invoke.getContentPane().getBorder()).getCompensationImageFigure();
 	}
 
 
-	
+	@Override
 	protected IFigure getFHFigure() {
 		return ((LeafBorder)invoke.getContentPane().getBorder()).getFaultImageFigure();
 	}

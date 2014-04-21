@@ -29,7 +29,7 @@ import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
-import org.eclipse.bpel.model.AssignE4X;
+import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Branches;
@@ -52,14 +52,10 @@ import org.eclipse.bpel.model.Empty;
 import org.eclipse.bpel.model.EventHandler;
 import org.eclipse.bpel.model.Exit;
 import org.eclipse.bpel.model.Expression;
-import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionActivity;
-import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
-import org.eclipse.bpel.model.FailureHandling;
 import org.eclipse.bpel.model.FaultHandler;
-import org.eclipse.bpel.model.FaultOnFailure;
 import org.eclipse.bpel.model.Flow;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.model.From;
@@ -85,12 +81,9 @@ import org.eclipse.bpel.model.Receive;
 import org.eclipse.bpel.model.RepeatUntil;
 import org.eclipse.bpel.model.Reply;
 import org.eclipse.bpel.model.Rethrow;
-import org.eclipse.bpel.model.RetryDelay;
-import org.eclipse.bpel.model.RetryFor;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
-import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -146,12 +139,20 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 
 /**
- * BPELWriter is responsible for serializing the BPEL EMF model to an output
- * stream.
+ * BPELWriter is responsible for serializing the BPEL EMF model to an output stream.
  */
-
 @SuppressWarnings("nls")
 public class BPELWriter {
+
+	/**
+	 * Prevents the BPEL writer from searching and adding automatically import declarations.
+	 * <p>
+	 * This option was added because the BPEL writer performs some actions that are
+	 * not natural with a pure EMF approach. Using this option in the EMF serialization
+	 * allows to by-pass these actions for the automatic resolution of imports.
+	 * </p>
+	 */
+	public static final String SKIP_AUTO_IMPORT = "bpel.skip.auto.import";
 
 	static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
@@ -162,7 +163,7 @@ public class BPELWriter {
 	private List<IExtensibilityElementListHandler> extensibilityElementListHandlers = null;
 	protected BPELPackage bpelPackage = null;
 
-	private BPELExtensionRegistry extensionRegistry = BPELExtensionRegistry
+	private final BPELExtensionRegistry extensionRegistry = BPELExtensionRegistry
 			.getInstance();
 
 	/**
@@ -174,20 +175,20 @@ public class BPELWriter {
 		Process fProcessContext;
 
 		// Map of resource URIs to namespaces
-		private Map<String, String> fResourceNamespaceMap;
+		private final Map<String, String> fResourceNamespaceMap;
 
 		/**
 		 * @param context
 		 */
 		WsdlImportsManager(Process process) {
 
-			fProcessContext = process;
+			this.fProcessContext = process;
 
-			fResourceNamespaceMap = new HashMap<String, String>();
+			this.fResourceNamespaceMap = new HashMap<String, String>();
 
 			// For each existing import in the process, add it to the namespace
 			// map.
-			for (Object next : fProcessContext.getImports()) {
+			for (Object next : this.fProcessContext.getImports()) {
 				Import imp = (org.eclipse.bpel.model.Import) next;
 				if (imp.getLocation() == null) {
 					System.err.println("Import location is unexpectedly null: "
@@ -197,7 +198,7 @@ public class BPELWriter {
 					String importPath = locationURI.resolve(
 							getResource().getURI()).toString();
 
-					fResourceNamespaceMap.put(importPath, imp.getNamespace());
+					this.fResourceNamespaceMap.put(importPath, imp.getNamespace());
 				}
 			}
 		}
@@ -206,7 +207,7 @@ public class BPELWriter {
 		 * Ensure that there exists an import mapping the given namespace to the
 		 * given resource. If the import doesn't exist in our map, add it to the
 		 * map and create a new Import in the process.
-		 * 
+		 *
 		 * @param resource
 		 * @param namespace
 		 */
@@ -221,7 +222,7 @@ public class BPELWriter {
 
 			String key = resource.getURI().toString();
 
-			if (fResourceNamespaceMap.containsKey(key)) {
+			if (this.fResourceNamespaceMap.containsKey(key)) {
 				return;
 			}
 			// second check to ensure the calculated path is not empty
@@ -242,10 +243,10 @@ public class BPELWriter {
 							.setImportType(XSDConstants.SCHEMA_FOR_SCHEMA_URI_2001);
 				}
 
-				fProcessContext.getImports().add(_import);
+				this.fProcessContext.getImports().add(_import);
 
 				// Add it to our namespace map for easy reference
-				fResourceNamespaceMap.put(key, namespace);
+				this.fResourceNamespaceMap.put(key, namespace);
 			}
 		}
 
@@ -276,18 +277,18 @@ public class BPELWriter {
 
 	/**
 	 * Return the resource used in this writer.
-	 * 
+	 *
 	 * @return the resource used in this writer.
 	 */
 
 	public BPELResource getResource() {
-		return fBPELResource;
+		return this.fBPELResource;
 	}
 
 	/**
 	 * Convert the BPEL model to an XML DOM model and then write the DOM model
 	 * to the output stream.
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doSave(OutputStream,
 	 *      Map)
 	 */
@@ -306,32 +307,36 @@ public class BPELWriter {
 			documentBuilderFactory.setValidating(false);
 			DocumentBuilder builder = documentBuilderFactory
 					.newDocumentBuilder();
-			document = builder.newDocument();
+			this.document = builder.newDocument();
 
 			// Transform the EMF model to the DOM document.
 
-			bpelPackage = BPELPackage.eINSTANCE;
+			this.bpelPackage = BPELPackage.eINSTANCE;
 
-			fBPELResource = resource;
+			this.fBPELResource = resource;
 
 			Process process = resource.getProcess();
 
 			// bpelNamespacePrefixManager = new NamespacePrefixManager( resource
 			// );
-			wsdlNamespacePrefixManager = new WsdlImportsManager(process);
+			this.wsdlNamespacePrefixManager = new WsdlImportsManager(process);
 
-			walkExternalReferences();
+			// VZ: do not force auto imports
+			Boolean skipAutoImport = (Boolean) args.get( SKIP_AUTO_IMPORT );
+			if( skipAutoImport == null || ! skipAutoImport )
+				walkExternalReferences();
+			// VZ
 
-			document = resource2XML(resource);
+			this.document = resource2XML(resource);
 
 			// Transform the DOM document to its serialized form.
 
-			OutputFormat fmt = new OutputFormat(document);
+			OutputFormat fmt = new OutputFormat(this.document);
 			fmt.setIndenting(true);
 			fmt.setIndent(4);
 
 			XMLSerializer serializer = new XMLSerializer(out, fmt);
-			serializer.serialize(document);
+			serializer.serialize(this.document);
 
 			// The code below does not indent, due to bug in JDK 1.5. Read it
 			// here.
@@ -342,10 +347,10 @@ public class BPELWriter {
 			// TransformerFactory.newInstance();
 			// Transformer transformer = transformerFactory.newTransformer();
 			//
-			//			
+			//
 			// transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			// transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-			//		      
+			//
 			// // Unless a width is set, there will be only line breaks but no
 			// indentation.
 			// // The IBM JDK and the Sun JDK don't agree on the property name,
@@ -371,10 +376,10 @@ public class BPELWriter {
 	/**
 	 * Convert the BPEL model to an XML DOM model and then write the DOM model
 	 * to the output stream.
-	 * 
+	 *
 	 * @param eObj
 	 * @return
-	 * 
+	 *
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#doSave(OutputStream,
 	 *      Map)
 	 */
@@ -395,25 +400,25 @@ public class BPELWriter {
 		} catch (Exception ex) {
 			return EMPTY_STRING;
 		}
-		document = builder.newDocument();
+		this.document = builder.newDocument();
 
 		// Transform the EMF model to the DOM document.
 
-		bpelPackage = BPELPackage.eINSTANCE;
+		this.bpelPackage = BPELPackage.eINSTANCE;
 
 		// bpelNamespacePrefixManager = new NamespacePrefixManager(
 		// getResource() );
 		if (eObj instanceof Process) {
-			wsdlNamespacePrefixManager = new WsdlImportsManager((Process) eObj);
+			this.wsdlNamespacePrefixManager = new WsdlImportsManager((Process) eObj);
 		} else {
-			wsdlNamespacePrefixManager = null;
+			this.wsdlNamespacePrefixManager = null;
 		}
 
 		anyBPELObject2xml(eObj);
 
 		// Transform the DOM document to its serialized form.
 
-		OutputFormat fmt = new OutputFormat(document);
+		OutputFormat fmt = new OutputFormat(this.document);
 		fmt.setIndenting(true);
 		fmt.setIndent(4);
 		fmt.setOmitDocumentType(true);
@@ -423,9 +428,9 @@ public class BPELWriter {
 		XMLSerializer serializer = new XMLSerializer(out, fmt);
 
 		try {
-			serializer.serialize(document);
+			serializer.serialize(this.document);
 		} catch (Exception ex) {
-			// 
+			//
 		}
 
 		return out.toString();
@@ -434,10 +439,10 @@ public class BPELWriter {
 	protected Document anyBPELObject2xml(EObject eObj) {
 
 		Element element = anyObject2xml(eObj);
-		document.appendChild(element);
+		this.document.appendChild(element);
 		serializePrefixes(eObj, element);
 
-		return document;
+		return this.document;
 	}
 
 	protected Element anyObject2xml(EObject eObj) {
@@ -490,9 +495,9 @@ public class BPELWriter {
 	protected Document resource2XML(BPELResource resource) {
 		Process process = resource.getProcess();
 		Element procElement = process2XML(process);
-		document.appendChild(procElement);
+		this.document.appendChild(procElement);
 		serializePrefixes(process, procElement);
-		return document;
+		return this.document;
 	}
 
 	protected Element process2XML(Process process) {
@@ -521,7 +526,7 @@ public class BPELWriter {
 		if (process.isSetAbstractProcessProfile())
 			processElement.setAttribute("abstractProcessProfile", process
 					.getAbstractProcessProfile());
-		
+
 
 		for (Object next : process.getImports()) {
 			processElement
@@ -570,17 +575,16 @@ public class BPELWriter {
 		Map<?, ?> crossReferences = EcoreUtil.ExternalCrossReferencer
 				.find(getResource());
 
-		for (Iterator<?> externalRefIt = crossReferences.keySet().iterator(); externalRefIt
-				.hasNext();) {
-			EObject externalObject = (EObject) externalRefIt.next();
-			String namespace = getNamespace(externalObject);
-			if (XSDConstants.SCHEMA_FOR_SCHEMA_URI_2001.equals(namespace)) {
-				addNewRootPrefix("xsd", namespace);
-			} else if (namespace != null && externalObject.eResource() != null) {
-				wsdlNamespacePrefixManager.ensureImported(externalObject
-						.eResource(), namespace);
-			}
-		}
+		for (Object name : crossReferences.keySet()) {
+EObject externalObject = (EObject) name;
+String namespace = getNamespace(externalObject);
+if (XSDConstants.SCHEMA_FOR_SCHEMA_URI_2001.equals(namespace)) {
+		addNewRootPrefix("xsd", namespace);
+} else if (namespace != null && externalObject.eResource() != null) {
+		this.wsdlNamespacePrefixManager.ensureImported(externalObject
+				.eResource(), namespace);
+}
+}
 	}
 
 	protected QName getQName(EObject object) {
@@ -952,88 +956,7 @@ public class BPELWriter {
 
 		return toPartsElement;
 	}
-	
-	/**
-	 * for failureHandling extension provided by ODE: JIRA:TOOLS-785
-	 * 
-	 */
-	
-	protected Element failureHandling2XML(FailureHandling  failureHandling ) {
-		Element failureHandlingElement = createElementWithTag(
-				BPELConstants.NAMESPACE_FAILURE_HANDLING_URL,
-				BPELConstants.NAMESPACE_FAILURE_HANDLING_PREFIX,
-				BPELConstants.NODE_FAILURE_HANDLING);
 
-		//FaultOnFailure
-		FaultOnFailure faultOnFailure = failureHandling.getFaultOnFailure();
-		if (faultOnFailure != null) {
-			// Creating Element with ext nameSpace;
-			Element faultOnFailureElement = document.createElement(BPELConstants.NODE_FAULT_ON_FAILURE);
-			faultOnFailure2XML(faultOnFailure, faultOnFailureElement);
-			failureHandlingElement.appendChild(faultOnFailureElement);
-		}
-		
-		//retryFor
-		RetryFor retryFor = failureHandling.getRetryFor();
-		if (retryFor != null) {
-			// Creating Element with ext nameSpace;
-			Element retryForElement = document.createElement(BPELConstants.NODE_RETRY_FOR);
-			retryFor2XML(retryFor, retryForElement);
-			failureHandlingElement.appendChild(retryForElement);
-		}
-		
-		//retryFor
-		RetryDelay retryDelay = failureHandling.getRetryDelay();
-		if (retryDelay != null) {
-			// Creating Element with ext nameSpace;
-			Element retryDelayElement = document.createElement(BPELConstants.NODE_RETRY_DELAY);
-			retryDelay2XML(retryDelay, retryDelayElement);
-			failureHandlingElement.appendChild(retryDelayElement);
-		}
-		
-		// serialize local namespace prefixes to XML
-		failureHandlingElement.setAttributeNS(XSDConstants.XMLNS_URI_2000,
-					"xmlns:" + BPELConstants.NAMESPACE_FAILURE_HANDLING_PREFIX
-					, BPELConstants.NAMESPACE_FAILURE_HANDLING_URL);
-		
-		//extensibleElement2XML(eao, ecoElement);
-		
-		return failureHandlingElement;
-		
-	}
-
-	protected Element faultOnFailure2XML(FaultOnFailure faultOnFailure, Element faultOnFailureElement)
-	{
-		// adding Body content.
-		Boolean body = faultOnFailure.isValue();
-//		faultOnFailureElement.setNodeValue(String.valueOf(body));
-		CDATASection cdata = BPELUtils.createCDATASection(document,	String.valueOf(body));
-		faultOnFailureElement.appendChild(cdata);
-		return faultOnFailureElement;
-	}
-	
-	protected Element retryFor2XML(RetryFor retryFor, Element retryForElement)
-	{
-		// adding Body content.
-		int body = retryFor.getValue();
-//		retryForElement.setNodeValue(String.valueOf(body));
-		CDATASection cdata = BPELUtils.createCDATASection(document,	String.valueOf(body));
-		retryForElement.appendChild(cdata);
-		return retryForElement;
-	}
-	
-	protected Element retryDelay2XML(RetryDelay retryDelay, Element retryDelayElement)
-	{
-		// adding Body content.
-		int body = retryDelay.getValue();
-//		retryDelayElement.setNodeValue(String.valueOf(body));
-		
-		CDATASection cdata = BPELUtils.createCDATASection(document,	String.valueOf(body));
-		retryDelayElement.appendChild(cdata);
-		
-		return retryDelayElement;
-	}
-	
 	protected Element correlations2XML(Correlations correlations) {
 		Element correlationsElement = createBPELElement("correlations");
 
@@ -1133,12 +1056,12 @@ public class BPELWriter {
 
 		// TODO: For backwards compatibility with 1.1 we should serialize
 		// OnMessages here.
-		for (Iterator<?> it = eventHandler.getEvents().iterator(); it.hasNext();) {
-			OnEvent onEvent = (OnEvent) it.next();
+		for (Object name : eventHandler.getEvents()) {
+			OnEvent onEvent = (OnEvent) name;
 			eventHandlerElement.appendChild(onEvent2XML(onEvent));
 		}
-		for (Iterator<?> it = eventHandler.getAlarm().iterator(); it.hasNext();) {
-			OnAlarm onAlarm = (OnAlarm) it.next();
+		for (Object name : eventHandler.getAlarm()) {
+			OnAlarm onAlarm = (OnAlarm) name;
 			eventHandlerElement.appendChild(onAlarm2XML(onAlarm));
 		}
 		// serialize local namespace prefixes to XML
@@ -1151,15 +1074,14 @@ public class BPELWriter {
 
 		Element activityElement = null;
 
-		if (activity instanceof Empty)
+		if (activity instanceof ExtensionActivity)
+			activityElement = extensionActivity2XML((ExtensionActivity) activity);
+		else if (activity instanceof Empty)
 			activityElement = empty2XML((Empty) activity);
 		else if (activity instanceof Invoke)
 			activityElement = invoke2XML((Invoke) activity);
 		else if (activity instanceof Assign)
 			activityElement = assign2XML((Assign) activity);
-		else if (activity instanceof AssignE4X)
-			//If activity is E4X assign
-			activityElement = assignE4X2XML((AssignE4X) activity);
 		else if (activity instanceof Reply)
 			activityElement = reply2XML((Reply) activity);
 		else if (activity instanceof Receive)
@@ -1196,8 +1118,6 @@ public class BPELWriter {
 			activityElement = repeatUntil2XML((RepeatUntil) activity);
 		else if (activity instanceof Validate)
 			activityElement = validate2XML((Validate) activity);
-		else if (activity instanceof ExtensionActivity)
-			activityElement = extensionActivity2XML((ExtensionActivity) activity);
 
 		return activityElement;
 	}
@@ -1303,11 +1223,11 @@ public class BPELWriter {
 		Element activityElement = createBPELElement("opaqueActivity");
 
 		//Set Namespace to Abstract Process
-		INamespaceMap<String, String> nsMap = BPELUtils.getNamespaceMap(fBPELResource.getProcess());
+		INamespaceMap<String, String> nsMap = BPELUtils.getNamespaceMap(this.fBPELResource.getProcess());
 
-		if (fBPELResource.getOptionUseNSPrefix()) {
+		if (this.fBPELResource.getOptionUseNSPrefix()) {
         	nsMap.remove("");
-            List<String> prefix = nsMap.getReverse(fBPELResource.getNamespaceURI());
+            List<String> prefix = nsMap.getReverse(this.fBPELResource.getNamespaceURI());
             if (prefix.isEmpty()){
             	nsMap.put(BPELConstants.PREFIX, BPELConstants.NAMESPACE_ABSTRACT_2007);
             } else {
@@ -1317,10 +1237,10 @@ public class BPELWriter {
     	} else {
             nsMap.put("", BPELConstants.NAMESPACE_ABSTRACT_2007);
         }
-		
-		fBPELResource.setNamespaceURI(BPELConstants.NAMESPACE_ABSTRACT_2007);
-		
-		Process process = fBPELResource.getProcess(); 
+
+		this.fBPELResource.setNamespaceURI(BPELConstants.NAMESPACE_ABSTRACT_2007);
+
+		Process process = this.fBPELResource.getProcess();
 		//Set Default Abstract Process Profile
 		//TODO: Let user decide whether to use a profile
 			if (!process.isSetAbstractProcessProfile()){
@@ -1422,11 +1342,11 @@ public class BPELWriter {
 		String localName = activity.eClass().getName();
 		String namespace = activity.eClass().getEPackage().getNsURI();
 		QName qName = new QName(namespace, localName);
-		BPELActivitySerializer serializer = extensionRegistry
+		BPELActivitySerializer serializer = this.extensionRegistry
 				.getActivitySerializer(qName);
 		DocumentFragment fragment = null;
 		if (serializer != null) {
-			fragment = document.createDocumentFragment();
+			fragment = this.document.createDocumentFragment();
 			serializer.marshall(qName, activity, fragment, getProcess(), this);
 			// https://bugs.eclipse.org/bugs/show_bug.cgi?id=335458
 			// Only append Element nodes generated by the serializer
@@ -1550,107 +1470,6 @@ public class BPELWriter {
 		addCommonActivityItems(activityElement, activity);
 		return activityElement;
 	}
-	/**
-	 * Returns assign Element which suppots for E4X 
-	 */
-	protected Element assignE4X2XML(AssignE4X activity) {
-
-		Element activityElement = createBPELElement("assign");
-
-		// setting Validate Attribute 
-		if (activity.getValidate() != null)
-			activityElement.setAttribute("validate", BPELUtils
-					.boolean2XML(activity.getValidate()));
-		
-		//Adding ExtensionAssign Operations to the assign element.
-		List<?> eaos = activity.getExtensionAssignOperation();
-		if (!eaos.isEmpty()) {
-			for (Iterator<?> i = eaos.iterator(); i.hasNext();) {
-				ExtensionAssignOperation eao = (ExtensionAssignOperation) i.next();
-				activityElement.appendChild(extensionAssignOperation2XML(eao));
-			}
-		}
-
-		addCommonActivityItems(activityElement, activity);
-		return activityElement;
-	}
-	
-	/** 
-	 * Returns a ExtensionAssignOperation Element 
-	 * 
-	 */
-	protected Element extensionAssignOperation2XML(ExtensionAssignOperation eao) {
-		Element ecoElement = createBPELElement("extensionAssignOperation");
-
-		//getting Snippet of eao
-		Snippet snippet = eao.getSnippet();
-		if (snippet != null) {
-			// Creating Element with js nameSpace;
-			Element snippetElement = createElementWithTag( "http://ode.apache.org/extensions/e4x","js" , "snippet");
-			snippet2XML(snippet, snippetElement);
-			ecoElement.appendChild(snippetElement);
-		}
-		
-		// serialize local namespace prefixes to XML
-		serializePrefixes(eao, ecoElement);
-		extensibleElement2XML(eao, ecoElement);
-
-		return ecoElement;
-	}
-	
-	/** 
-	 * Returns a Snippet Element 
-	 * 
-	 */
-	protected Element snippet2XML(Snippet snippet, Element snippetElement)
-	{
-		// adding Body content.
-		if (snippet.getBody() != null) {
-			Object body = snippet.getBody();
-			if (body instanceof ExtensibilityElement) {
-				ExtensibilityElement extensibilityElement = (ExtensibilityElement) body;
-				Element child = extensibilityElement2XML(extensibilityElement);
-				if (child != null) {
-					snippetElement.appendChild(child);
-				}
-			} else {
-				CDATASection cdata = BPELUtils.createCDATASection(document,
-						snippet.getBody().toString());
-				snippetElement.appendChild(cdata);
-			}
-		}
-		
-		// adding "xmln:js=http://ode.apache.org/extensions/e4x" attribute for Snippet.
-		String prefix = "js";
-		String namespace = "http://ode.apache.org/extensions/e4x";
-		snippetElement.setAttributeNS(XSDConstants.XMLNS_URI_2000,
-					"xmlns:" + prefix, namespace);
-
-		return snippetElement;
-	
-	}
-	
-	/**
-	 * Creating Elements with given nameSpace;
-	 * exampel:if  ns=js, nameSpaceURI= http://ode.apache.org/extensions/e4x; tagName=snippet
-	 * this will generate <js:snippet>
-	 * 
-	 * @param namespaceURI
-	 * @param ns
-	 * @param tagName
-	 * @return
-	 */
-	protected Element createElementWithTag(String nameSpaceURI , String ns ,String tagName) {
-		
-	    return document.createElementNS(nameSpaceURI, ns+ ":" + tagName);
-		
-	}
-	
-	protected Element createElementWithName(String tagName)
-	{
-		return document.createElement(tagName);
-	}
-	
 
 	protected Element assign2XML(Assign activity) {
 
@@ -1662,8 +1481,8 @@ public class BPELWriter {
 
 		List<?> copies = activity.getCopy();
 		if (!copies.isEmpty()) {
-			for (Iterator<?> i = copies.iterator(); i.hasNext();) {
-				Copy copy = (Copy) i.next();
+			for (Object name : copies) {
+				Copy copy = (Copy) name;
 				activityElement.appendChild(copy2XML(copy));
 			}
 		}
@@ -1756,7 +1575,7 @@ public class BPELWriter {
 					DOMUtil.copyInto(child, literal);
 				}
 			} else {
-				CDATASection cdata = BPELUtils.createCDATASection(document,
+				CDATASection cdata = BPELUtils.createCDATASection(this.document,
 						from.getLiteral());
 				fromElement.appendChild(cdata);
 			}
@@ -1775,7 +1594,7 @@ public class BPELWriter {
 						.getExpressionLanguage());
 			}
 			if (expression.getBody() != null) {
-				CDATASection cdata = BPELUtils.createCDATASection(document,
+				CDATASection cdata = BPELUtils.createCDATASection(this.document,
 						(String) expression.getBody());
 				fromElement.appendChild(cdata);
 			}
@@ -1815,7 +1634,7 @@ public class BPELWriter {
 			BPELExtensionSerializer serializer = null;
 			QName qname = extensibilityElement.getElementType();
 			try {
-				serializer = (BPELExtensionSerializer) extensionRegistry
+				serializer = (BPELExtensionSerializer) this.extensionRegistry
 						.querySerializer(BPELExtensibleElement.class, qname);
 			} catch (WSDLException e) {
 			}
@@ -1824,11 +1643,11 @@ public class BPELWriter {
 				// Deserialize the DOM element and add the new Extensibility
 				// element to the parent
 				// BPELExtensibleElement
-				DocumentFragment fragment = document.createDocumentFragment();
+				DocumentFragment fragment = this.document.createDocumentFragment();
 				try {
 					serializer.marshall(BPELExtensibleElement.class, qname,
 							extensibilityElement, fragment, getProcess(),
-							extensionRegistry, this);
+							this.extensionRegistry, this);
 					// https://bugs.eclipse.org/bugs/show_bug.cgi?id=335458
 					Element child = getFirstChildElement(fragment);
 					return child;
@@ -1837,18 +1656,18 @@ public class BPELWriter {
 				}
 			}
 		} else if (serviceRef.getValue() != null) {
-			ServiceReferenceSerializer serializer = extensionRegistry
+			ServiceReferenceSerializer serializer = this.extensionRegistry
 					.getServiceReferenceSerializer(serviceRef
 							.getReferenceScheme());
 			if (serializer != null) {
-				DocumentFragment fragment = document.createDocumentFragment();
+				DocumentFragment fragment = this.document.createDocumentFragment();
 				serializer.marshall(value, fragment, getProcess(), serviceRef
 						.eContainer(), this);
 				// https://bugs.eclipse.org/bugs/show_bug.cgi?id=335458
 				Element child = getFirstChildElement(fragment);
 				return child;
 			} else {
-				CDATASection cdata = BPELUtils.createCDATASection(document,
+				CDATASection cdata = BPELUtils.createCDATASection(this.document,
 						serviceRef.getValue().toString());
 				return cdata;
 			}
@@ -1863,7 +1682,7 @@ public class BPELWriter {
 					.setAttribute("queryLanguage", query.getQueryLanguage());
 		}
 		if (query.getValue() != null) {
-			CDATASection cdata = BPELUtils.createCDATASection(document, query
+			CDATASection cdata = BPELUtils.createCDATASection(this.document, query
 					.getValue());
 			queryElement.appendChild(cdata);
 		}
@@ -1900,7 +1719,7 @@ public class BPELWriter {
 						.getExpressionLanguage());
 			}
 			if (expression.getBody() != null) {
-				CDATASection cdata = BPELUtils.createCDATASection(document,
+				CDATASection cdata = BPELUtils.createCDATASection(this.document,
 						(String) expression.getBody());
 				toElement.appendChild(cdata);
 			}
@@ -2134,7 +1953,7 @@ public class BPELWriter {
 					expressionElement.appendChild(child);
 				}
 			} else {
-				CDATASection cdata = BPELUtils.createCDATASection(document,
+				CDATASection cdata = BPELUtils.createCDATASection(this.document,
 						expression.getBody().toString());
 				expressionElement.appendChild(cdata);
 			}
@@ -2446,26 +2265,25 @@ public class BPELWriter {
 		// order they appear.
 		List<org.eclipse.wst.wsdl.ExtensibleElement> extensibilityElements;
 		if (Platform.isRunning()) {
-			if (extensibilityElementListHandlers == null) {
-				extensibilityElementListHandlers = ExtensionFactory.INSTANCE
+			if (this.extensibilityElementListHandlers == null) {
+				this.extensibilityElementListHandlers = ExtensionFactory.INSTANCE
 						.createHandlers(ExtensionFactory.ID_EXTENSION_REORDERING);
 			}
 			extensibilityElements = BPELUtils.reorderExtensibilityList(
-					extensibilityElementListHandlers, extensibleElement);
+					this.extensibilityElementListHandlers, extensibleElement);
 		} else {
 			extensibilityElements = extensibleElement.getExtensibilityElements();
 		}
 
 		// Loop through the extensibility elements
-		for (Iterator<?> i = extensibilityElements.iterator(); i.hasNext();) {
-			ExtensibilityElement extensibilityElement = (ExtensibilityElement) i
-					.next();
+		for (Object name : extensibilityElements) {
+			ExtensibilityElement extensibilityElement = (ExtensibilityElement) name;
 
 			// Lookup a serializer for the extensibility element
 			BPELExtensionSerializer serializer = null;
 			QName qname = extensibilityElement.getElementType();
 			try {
-				serializer = (BPELExtensionSerializer) extensionRegistry
+				serializer = (BPELExtensionSerializer) this.extensionRegistry
 						.querySerializer(BPELExtensibleElement.class, qname);
 			} catch (WSDLException e) {
 				// TODO: Exception handling
@@ -2473,14 +2291,14 @@ public class BPELWriter {
 			if (serializer != null) {
 
 				// Create a temp document fragment for the serializer
-				DocumentFragment fragment = document.createDocumentFragment();
+				DocumentFragment fragment = this.document.createDocumentFragment();
 
 				// Serialize the extensibility element into the parent DOM
 				// element
 				try {
 					serializer.marshall(BPELExtensibleElement.class, qname,
 							extensibilityElement, fragment, getProcess(),
-							extensionRegistry, this);
+							this.extensionRegistry, this);
 				} catch (WSDLException e) {
 					throw new WrappedException(e);
 				}
@@ -2535,7 +2353,7 @@ public class BPELWriter {
 	}
 
 	/**
-	 * Get process from the resource 
+	 * Get process from the resource
 	 * @return the Process
 	 */
 	private Process getProcess() {
@@ -2551,7 +2369,7 @@ public class BPELWriter {
 		BPELExtensionSerializer serializer = null;
 		QName qname = extensibilityElement.getElementType();
 		try {
-			serializer = (BPELExtensionSerializer) extensionRegistry
+			serializer = (BPELExtensionSerializer) this.extensionRegistry
 					.querySerializer(BPELExtensibleElement.class, qname);
 		} catch (WSDLException e) {
 			return null;
@@ -2560,12 +2378,12 @@ public class BPELWriter {
 		// Deserialize the DOM element and add the new Extensibility element to
 		// the parent
 		// BPELExtensibleElement
-		DocumentFragment fragment = document.createDocumentFragment();
+		DocumentFragment fragment = this.document.createDocumentFragment();
 		try {
 			serializer
 					.marshall(BPELExtensibleElement.class, qname,
 							extensibilityElement, fragment, getProcess(),
-							extensionRegistry, this);
+							this.extensionRegistry, this);
 			// https://bugs.eclipse.org/bugs/show_bug.cgi?id=335458
 			Element child = getFirstChildElement(fragment);
 			return child;
@@ -2589,16 +2407,16 @@ public class BPELWriter {
 			List<String> prefixes = BPELUtils.getNamespaceMap(
 					getProcess()).getReverse(namespaceURI);
 			if (!prefixes.isEmpty() && !prefixes.get(0).equals("")) {
-				return document.createElementNS(namespaceURI, prefixes.get(0)
+				return this.document.createElementNS(namespaceURI, prefixes.get(0)
 						+ ":" + tagName);
 			}
 		}
 
-		return document.createElement(tagName);
+		return this.document.createElement(tagName);
 	}
 
 	/**
-	 * 
+	 *
 	 * @return the namespace prefix manager.
 	 */
 
@@ -2681,11 +2499,11 @@ public class BPELWriter {
 		while (child != null && !(child instanceof Element)) {
 			child = child.getNextSibling();
 		}
-		
+
 		// We are out of the loop: either child is null, or it is an element
 		if( child != null )
 			return (Element) child;
-		
+
 		throw new IllegalArgumentException("Document Fragment does not contain any Elements");
 	}
 }

@@ -114,7 +114,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return PartnerlinktypePackage.Literals.ROLE;
 	}
@@ -152,8 +152,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PartnerlinktypePackage.ROLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, PartnerlinktypePackage.ROLE__NAME, oldName, name));
 	}
 
 	/**
@@ -182,9 +181,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 		Object oldPortType = portType;
 		portType = newPortType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					PartnerlinktypePackage.ROLE__PORT_TYPE, oldPortType,
-					portType));
+			eNotify(new ENotificationImpl(this, Notification.SET, PartnerlinktypePackage.ROLE__PORT_TYPE, oldPortType, portType));
 	}
 
 	/**
@@ -192,15 +189,15 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case PartnerlinktypePackage.ROLE__ID:
-			return getID();
-		case PartnerlinktypePackage.ROLE__NAME:
-			return getName();
-		case PartnerlinktypePackage.ROLE__PORT_TYPE:
-			return getPortType();
+			case PartnerlinktypePackage.ROLE__ID:
+				return getID();
+			case PartnerlinktypePackage.ROLE__NAME:
+				return getName();
+			case PartnerlinktypePackage.ROLE__PORT_TYPE:
+				return getPortType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -210,15 +207,15 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case PartnerlinktypePackage.ROLE__NAME:
-			setName((String) newValue);
-			return;
-		case PartnerlinktypePackage.ROLE__PORT_TYPE:
-			setPortType(newValue);
-			return;
+			case PartnerlinktypePackage.ROLE__NAME:
+				setName((String)newValue);
+				return;
+			case PartnerlinktypePackage.ROLE__PORT_TYPE:
+				setPortType(newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -228,15 +225,15 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case PartnerlinktypePackage.ROLE__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case PartnerlinktypePackage.ROLE__PORT_TYPE:
-			setPortType(PORT_TYPE_EDEFAULT);
-			return;
+			case PartnerlinktypePackage.ROLE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case PartnerlinktypePackage.ROLE__PORT_TYPE:
+				setPortType(PORT_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -246,18 +243,15 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case PartnerlinktypePackage.ROLE__ID:
-			return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT
-					.equals(getID());
-		case PartnerlinktypePackage.ROLE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
-		case PartnerlinktypePackage.ROLE__PORT_TYPE:
-			return PORT_TYPE_EDEFAULT == null ? portType != null
-					: !PORT_TYPE_EDEFAULT.equals(portType);
+			case PartnerlinktypePackage.ROLE__ID:
+				return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT.equals(getID());
+			case PartnerlinktypePackage.ROLE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case PartnerlinktypePackage.ROLE__PORT_TYPE:
+				return PORT_TYPE_EDEFAULT == null ? portType != null : !PORT_TYPE_EDEFAULT.equals(portType);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -267,15 +261,14 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: "); //$NON-NLS-1$
+		result.append(" (name: ");
 		result.append(name);
-		result.append(", portType: "); //$NON-NLS-1$
+		result.append(", portType: ");
 		result.append(portType);
 		result.append(')');
 		return result.toString();
@@ -284,7 +277,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	/**
 	 * Override the XML element token.
 	 */
-	
+	@Override
 	public QName getElementType() {
 		if (elementType == null)
 			elementType = new QName(PartnerlinktypeConstants.NAMESPACE,
@@ -296,7 +289,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	// Reconcile methods: DOM -> Model
 	//
 
-	
+	@Override
 	public void reconcileAttributes(Element changedElement) {
 		super.reconcileAttributes(changedElement);
 
@@ -306,7 +299,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 		reconcileReferences(false);
 	}
 
-	
+	@Override
 	public void reconcileReferences(boolean deep) {
 
 		if (deep == false) {
@@ -343,7 +336,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	// For reconciliation: Model -> DOM
 	//
 
-	
+	@Override
 	protected void changeAttribute(EAttribute eAttribute) {
 		//System.out.println("RoleImpl.changeAttribute("+eAttribute+")");
 		if (isReconciling)

@@ -38,7 +38,7 @@ public class WaitValidator extends CActivityValidator {
 	/**
 	 * Start the validation of this node.
 	 */
-	
+	@Override
 	protected void start () {
 		
 		super.start();		

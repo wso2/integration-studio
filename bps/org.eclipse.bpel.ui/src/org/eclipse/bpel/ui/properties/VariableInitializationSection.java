@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,58 +47,58 @@ import org.eclipse.xsd.XSDTypeDefinition;
 
 /**
  * Variable from-spec section. This is allowed in BPEL 2.0.
- *  
+ *
  * @author Michal Chmielewski (michal.chmielewski@oracle.com)
  * @date June, 2007
  */
 
 
 public class VariableInitializationSection extends BPELPropertySection {
-			
+
 	/** The from section */
 	CategorySection fFromSection = null;
-	
+
 	/** The current copy rule being edited. */
 	Variable fVariable;
-	
+
 	Composite copySelectComposite;
-	
-	
+
+
 	/**
 	 * Variable initialization section. This is the LHS of the copy rule.
-	 * 
+	 *
 	 */
-	
+
 	public VariableInitializationSection()  {
-		
+
 		super();
-		fFromSection = new CategorySection(this);
-	
-		fFromSection.fAllowed = new IAssignCategory[] {			
+		this.fFromSection = new CategorySection(this);
+
+		this.fFromSection.fAllowed = new IAssignCategory[] {
 			new VariablePartAssignCategory( this ),
 			new ExpressionAssignCategory( this ),
 			new LiteralAssignCategory( this ),
 			new VariablePropertyAssignCategory( this ),
 			new PartnerRoleAssignCategory( this, true ),
-			new EndpointReferenceAssignCategory( this ),						
+			new EndpointReferenceAssignCategory( this ),
 			new OpaqueAssignCategory( this ),
-			new NullAssignCategory (this  ) 
+			new NullAssignCategory (this  )
 		};
-		
+
 	}
-	
-	protected boolean isFromAffected ( Notification n ) {		
-		return n.getFeature() == BPELPackage.eINSTANCE.getVariable_From();		
+
+	protected boolean isFromAffected ( Notification n ) {
+		return n.getFeature() == BPELPackage.eINSTANCE.getVariable_From();
 	}
-	
-	
-	
+
+
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object */
 			new MultiObjectAdapter() {
-				
-				
+
+				@Override
 				public void notify (Notification n) {
 					if ( isFromAffected (n) ) {
 						selectCategoriesForInput( null );
@@ -109,44 +109,44 @@ public class VariableInitializationSection extends BPELPropertySection {
 	}
 
 	protected void createCategorySectionWidgets (Composite composite, final CategorySection section ) {
-		
+
 		FlatFormData data;
-				
-		section.fLabel = fWidgetFactory.createLabel(composite, Messages.AssignImplDetails_From__1 );
-		
+
+		section.fLabel = this.fWidgetFactory.createLabel(composite, Messages.AssignImplDetails_From__1 );
+
 		section.fCombo = new Combo(composite,SWT.FLAT | SWT.BORDER | SWT.READ_ONLY );
 		data = new FlatFormData();
-		
+
 		data.left = new FlatFormAttachment(0, BPELUtil.calculateLabelWidth(section.fLabel, STANDARD_LABEL_WIDTH_SM));
 		data.right = new FlatFormAttachment(100, 0);
 
 		data.top = new FlatFormAttachment(0,0);
 		section.fCombo.setLayoutData(data);
-		
+
 		data = new FlatFormData();
 		data.left = new FlatFormAttachment(0, 0);
 		data.right = new FlatFormAttachment(section.fCombo, -IDetailsAreaConstants.CENTER_SPACE);
 		data.top = new FlatFormAttachment(section.fCombo, 0, SWT.CENTER);
 		section.fLabel.setLayoutData(data);
-		
+
 		for (IAssignCategory category : section.fAllowed ) {
-			section.fCombo.add( category.getName() );			
+			section.fCombo.add( category.getName() );
 		}
-		
+
 		section.fCombo.addSelectionListener(new SelectionListener() {
-			
-			public void widgetSelected (SelectionEvent e) {		
+
+			@Override
+			public void widgetSelected (SelectionEvent e) {
 				int index = section.fCombo.getSelectionIndex();
-				
 				updateCategorySelection ( section , index , true );
-				
 			}
-			// TODO: is this correct?
-			public void widgetDefaultSelected(SelectionEvent e) { 
-				widgetSelected(e); 
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
 			}
 		});
-		
+
 		section.fOuterComposite = createFlatFormComposite(composite);
 		data = new FlatFormData();
 		data.left = new FlatFormAttachment(section.fLabel, 0, SWT.LEFT);
@@ -155,74 +155,74 @@ public class VariableInitializationSection extends BPELPropertySection {
 		data.bottom = new FlatFormAttachment(100,0);
 		section.fOuterComposite.setLayoutData(data);
 	}
-	
-	
+
+
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
 	 */
-	
-	public boolean shouldUseExtraSpace() { 
-		return true; 
+	@Override
+	public boolean shouldUseExtraSpace() {
+		return true;
 	}
-	
-	
-	
+
+
+	@Override
 	protected void createClient(Composite parent) {
-		
-		Composite composite = createFlatFormComposite(parent);		
+
+		Composite composite = createFlatFormComposite(parent);
 		Composite mainComposite = createFlatFormComposite(composite);
 		FlatFormData data = new FlatFormData();
-		data.left = new FlatFormAttachment (copySelectComposite, IDetailsAreaConstants.HSPACE);
+		data.left = new FlatFormAttachment (this.copySelectComposite, IDetailsAreaConstants.HSPACE);
 		data.top = new FlatFormAttachment(0,0);
 		data.right = new FlatFormAttachment(100,0);
 		data.bottom = new FlatFormAttachment(100,0);
 		mainComposite.setLayoutData(data);
-		
-		createCategorySectionWidgets(mainComposite,fFromSection );		
-		
+
+		createCategorySectionWidgets(mainComposite,this.fFromSection );
+
 	}
 
-	
+
 	// Total Hack until we have Copy objects in graphical editor
-	
+	@Override
 	protected void basicSetInput (EObject newInput) {
 		super.basicSetInput(newInput);
-		
-		fVariable = getModel();
-		selectCategoriesForInput (fVariable);						
-	}
-	
-	
-	 
 
-	/** 
+		this.fVariable = getModel();
+		selectCategoriesForInput (this.fVariable);
+	}
+
+
+
+
+	/**
 	 * Called when the copy rule changes or is created.
 	 *
 	 */
 	protected void selectCategoriesForInput (Variable variable) {
-				
+
 		if (variable != null) {
-			fVariable = variable;
+			this.fVariable = variable;
 		}
-		
-		for (IAssignCategory category : fFromSection.fAllowed) {
-			if (category.isCategoryForModel( fVariable.getFrom() )) {				
-				updateCategorySelection(fFromSection,category,false);
+
+		for (IAssignCategory category : this.fFromSection.fAllowed) {
+			if (category.isCategoryForModel( this.fVariable.getFrom() )) {
+				updateCategorySelection(this.fFromSection,category,false);
 				return;
 			}
 		}
-		
+
 		/** In case we can't find the appropriate one, just display the first one */
-		if ( fFromSection.fCurrent == null)  {
-			updateCategorySelection(fFromSection,0,false);
-		}			
+		if ( this.fFromSection.fCurrent == null)  {
+			updateCategorySelection(this.fFromSection,0,false);
+		}
 	}
-	
-	
+
+
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
 	 */
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 	}
@@ -230,120 +230,120 @@ public class VariableInitializationSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#aboutToBeHidden()
 	 */
-	
+	@Override
 	public void aboutToBeHidden() {
 		super.aboutToBeHidden();
-		
-		if (fFromSection.fCurrent != null) {
-			fFromSection.fCurrent.aboutToBeHidden();
+
+		if (this.fFromSection.fCurrent != null) {
+			this.fFromSection.fCurrent.aboutToBeHidden();
 		}
-		
+
 	}
 
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#aboutToBeShown()
 	 */
-	
+	@Override
 	public void aboutToBeShown() {
 		super.aboutToBeShown();
-		if (fFromSection.fCurrent != null) {
-			fFromSection.fCurrent.aboutToBeShown();
+		if (this.fFromSection.fCurrent != null) {
+			this.fFromSection.fCurrent.aboutToBeShown();
 		}
 	}
-	
-	
+
+
 	void updateCategorySelection ( CategorySection section, int index , boolean bVisual ) {
 		updateCategorySelection(section, section.fAllowed[index], bVisual);
 	}
 
 	void updateCategorySelection ( CategorySection section, IAssignCategory newCurrent, boolean bVisual) {
-		
+
 		if (section.fCurrent != newCurrent) {
 			/** Hide current */
-			section.hideCurrent();						
-			
+			section.hideCurrent();
+
 			/** Update current to the one that picked from */
-			section.fCurrent = newCurrent;		
+			section.fCurrent = newCurrent;
 			section.ensureCategoryCompositeCreated();
-		}		
-		
+		}
+
 		/** Visual selection */
-		
-		if (bVisual || fVariable.getFrom() == null) {
-			
+
+		if (bVisual || this.fVariable.getFrom() == null) {
+
 			Command cmd ;
-			
+
 			if ( section.fCurrent.isCategoryForModel (null) == false ) {
-				cmd = new SetCommand( getInput(), BPELFactory.eINSTANCE.createFrom(), BPELPackage.eINSTANCE.getVariable_From() );	
+				cmd = new SetCommand( getInput(), BPELFactory.eINSTANCE.createFrom(), BPELPackage.eINSTANCE.getVariable_From() );
 			} else {
 				cmd = new SetCommand( getInput(), null , BPELPackage.eINSTANCE.getVariable_From() );
-								
+
 			}
 			// Execute this right away.
-			getBPELEditor().getCommandFramework().execute( cmd );			
-		} 
-		
-		if (!bVisual) {			
+			getBPELEditor().getCommandFramework().execute( cmd );
+		}
+
+		if (!bVisual) {
 			section.updateCombo();
-		}				
-		
+		}
+
         // https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813
 		// https://jira.jboss.org/browse/JBIDE-7351
 		// generate an appropriate XML initializer literal if currently empty
 		if (section.fCurrent instanceof LiteralAssignCategory) {
-			From from = fVariable.getFrom();
+			From from = this.fVariable.getFrom();
 			if (from!=null) {
 				String literal = from.getLiteral();
 				// https://issues.jboss.org/browse/JBIDE-8345
 				// remove dependency on Java 1.6
 				if (literal==null || "".equals(literal.trim())) {
-					literal = createDefaultInitializer(getBPELEditor(), fVariable, null);
+					literal = createDefaultInitializer(getBPELEditor(), this.fVariable, null);
 					from.setLiteral(literal);
 				}
 			}
 		}
-		
+
 		// Set the input of the category after we insert the to or from into the model.
-		section.fCurrent.setInput( fVariable.getFrom() );			
+		section.fCurrent.setInput( this.fVariable.getFrom() );
 		section.showCurrent();
 		section.fCurrent.refresh();
-		
+
 		// TODO: should the categories only store when a widget change is committed?
 		// Cons of that idea:
 		//   - Changing the category in the combo, but *not* changing anything else,
-		//     then clicking elsewhere and back, would cause the combo to revert. 
+		//     then clicking elsewhere and back, would cause the combo to revert.
 		//   - The OpaqueAssignCategory doesn't have any widgets..
 	}
 
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
-	 */	
-	
+	 */
+	@Override
 	public Object getUserContext() {
 		return null;
 	}
-	
-	
+
+
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
 	@SuppressWarnings("boxing")
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
-		
+
 	}
-	
+
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#gotoMarker(org.eclipse.core.resources.IMarker)
 	 */
-	
-	public void gotoMarker(IMarker marker) {						
+	@Override
+	public void gotoMarker(IMarker marker) {
 		refresh();
 	}
-	
+
 	/**
 	 * Construct an appropriate XML literal initializer for the given "from" and "to" parts
-	 *  
+	 *
 	 * @param bpelEditor
 	 * @param from
 	 * @param to
@@ -363,12 +363,12 @@ public class VariableInitializationSection extends BPELPropertySection {
 
 	/**
 	 * Construct an appropriate XML literal initializer for the given variable and message part.
-	 *  
+	 *
 	 * @param bpelEditor
 	 * @param var - the variable to be initialized
 	 * @param part - if the variable is defined as a message, this is the message part
 	 *               otherwise null
-	 * @return - XML string representing an intializer for the given variable
+	 * @return - XML string representing an initializer for the given variable
      * @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813
 	 * @see https://jira.jboss.org/browse/JBIDE-7351
 	 */
@@ -379,7 +379,7 @@ public class VariableInitializationSection extends BPELPropertySection {
 			String uriWSDL = null;
 
 			// Variable is defined using "messageType"
-			Message msg = (Message)var.getMessageType();
+			Message msg = var.getMessageType();
 			if (msg != null) {
 				if (msg.eIsProxy()) {
 					msg = (Message)EmfModelQuery.resolveProxy(bpelEditor.getProcess(), msg);

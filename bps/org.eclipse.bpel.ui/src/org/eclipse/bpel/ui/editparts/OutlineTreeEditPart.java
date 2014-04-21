@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,13 +60,13 @@ public class OutlineTreeEditPart extends AbstractTreeEditPart {
 		adapter = new BatchedMultiObjectAdapter() {
 			boolean needRefresh = false;
 			
-			
+			@Override
 			public void notify(Notification notification) {				
 				needRefresh = true;
 				refreshAdapters();
 			}
 			
-			
+			@Override
 			public void finish() {
 				if (isActive() && needRefresh) handleModelChanged();
 				needRefresh = false;
@@ -107,7 +107,7 @@ public class OutlineTreeEditPart extends AbstractTreeEditPart {
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#activate()
 	 */
-	
+	@Override
 	public void activate() {
 		if (isActive()) {
 			return;
@@ -120,7 +120,7 @@ public class OutlineTreeEditPart extends AbstractTreeEditPart {
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#deactivate()
 	 */
-	
+	@Override
 	public void deactivate() {
 		if (!isActive()) {
 			return;
@@ -130,7 +130,7 @@ public class OutlineTreeEditPart extends AbstractTreeEditPart {
 	}
 
 	
-	
+	@Override
 	protected void unregisterVisuals() {
 		if (outlineImage != null) {
 			outlineImage = null;
@@ -146,7 +146,7 @@ public class OutlineTreeEditPart extends AbstractTreeEditPart {
 	 * @param property  Property to be refreshed.
 	 */
 	
-	
+	@Override
 	protected void refreshVisuals() {
 		if (getWidget() instanceof Tree)
 			return;
@@ -185,7 +185,7 @@ public class OutlineTreeEditPart extends AbstractTreeEditPart {
 		return null;
 	}
 
-	
+	@Override
 	protected void createEditPolicies() {
 		
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new BPELComponentEditPolicy());
@@ -198,7 +198,7 @@ public class OutlineTreeEditPart extends AbstractTreeEditPart {
 		}
 	}
 	
-	
+	@Override
 	protected List getModelChildren() {	
 		return OutlineTreePartFactory.getModelChildren(this.getModel());
 	}
@@ -215,7 +215,7 @@ public class OutlineTreeEditPart extends AbstractTreeEditPart {
 	}
 
 	
-	
+	@Override
 	protected void reorderChild(EditPart editpart, int index) {
 		
 		boolean expanded = false;

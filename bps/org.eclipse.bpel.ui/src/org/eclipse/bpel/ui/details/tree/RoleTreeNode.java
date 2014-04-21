@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ public class RoleTreeNode extends TreeNode {
 	 * @see org.eclipse.bpel.ui.details.tree.TreeNode#getChildren()
 	 */
 	
-	
+	@Override
 	public Object[] getChildren() {
 		Role role = (Role) modelObject;
 		if (role == null) {
@@ -48,7 +48,7 @@ public class RoleTreeNode extends TreeNode {
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.ui.details.tree.TreeNode#hasChildren()
 	 */
-	
+	@Override
 	public boolean hasChildren() {
 		Role role = (Role) modelObject;
 		return role != null && role.getPortType() != null ;

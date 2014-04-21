@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.bpel.ui.util.ModelHelper;
 public class DeletePartnerLinkTypeCommand extends DeleteWSDLExtensibilityElementCommand {
 
 	// TODO: wrong label?
-	
+	@Override
 	public String getDefaultLabel() { return IBPELUIConstants.CMD_DELETE_ROLE; }
 
 	public DeletePartnerLinkTypeCommand(PartnerLinkType plt) {
@@ -34,7 +34,7 @@ public class DeletePartnerLinkTypeCommand extends DeleteWSDLExtensibilityElement
 	/**
 	 * Override super's method because we should not delete other partner link
 	 */
-	
+	@Override
 	public void doExecute() {
 		fDefinition = fElement.getEnclosingDefinition();
 	

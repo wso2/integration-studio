@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,17 +64,17 @@ public class ValidateVariablesSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace() { 
 		return true; 
 	}
 
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object and Correlations object */
 			new MultiObjectAdapter() {
-				
+				@Override
 				public void notify(Notification n) {
 
 					if (n.getFeature() == BPELPackage.eINSTANCE.getValidate_Variables() ) {						
@@ -85,7 +85,7 @@ public class ValidateVariablesSection extends BPELPropertySection {
 			},
 			/* correlation(s) and correlation set(s) */
 			new MultiObjectAdapter() {
-				
+				@Override
 				public void notify(Notification n) {
 					if (n.getNotifier() instanceof Variable) {
 						updateVariableWidgets((Variable)n.getNotifier());
@@ -96,7 +96,7 @@ public class ValidateVariablesSection extends BPELPropertySection {
 		};
 	}
 	
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		Validate validate = getModel();
@@ -140,7 +140,7 @@ public class ValidateVariablesSection extends BPELPropertySection {
 				EObject model = getInput();
 				VariableSelectorDialog dialog = new VariableSelectorDialog(shell, model, ModelHelper.getVariableType(model, ModelHelper.OUTGOING)){
 
-					
+					@Override
 					protected void computeResult() {
 						Object[] results = getSelectedElements() ;
 				        setResult(Arrays.asList(results));
@@ -204,7 +204,7 @@ public class ValidateVariablesSection extends BPELPropertySection {
 		fVariablesViewer = new ListViewer(fVariableList);				
 		fVariablesViewer.setLabelProvider(new ModelLabelProvider() );		
 		fVariablesViewer.setContentProvider(new AbstractContentProvider(){
-			
+			@Override
 			public Object[] getElements (Object inputElement)  {
 				try {
 					Validate input = (Validate)inputElement;
@@ -226,7 +226,7 @@ public class ValidateVariablesSection extends BPELPropertySection {
 				composite, IHelpContextIds.PROPERTY_PAGE_VALIDATE_DETAILS);
 	}
 	
-	
+	@Override
 	protected void createClient(Composite parent)  {
 		Composite composite = createFlatFormComposite(parent);
 		createVariablesWidgets(composite);
@@ -252,7 +252,7 @@ public class ValidateVariablesSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
 	 */
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 		updateVariableWidgets(null);
@@ -261,14 +261,14 @@ public class ValidateVariablesSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return ((StructuredSelection)fVariablesViewer.getSelection()).getFirstElement();
 	}
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		fVariableList.setFocus();
 		if (userContext != null) {
@@ -278,7 +278,7 @@ public class ValidateVariablesSection extends BPELPropertySection {
 		}
 	}
 	
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 		saveUserContextToInput();
 		super.basicSetInput(newInput);

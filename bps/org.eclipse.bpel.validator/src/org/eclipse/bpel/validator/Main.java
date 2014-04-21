@@ -105,7 +105,7 @@ public class Main extends CmdValidator {
 	 * @return the list of validation errors.
 	 */
 	
-	
+	@Override
 	public IProblem[] validate (File file) {
 		//
 		//Step 1. Read the BPEL process using the Model API.
@@ -137,7 +137,7 @@ public class Main extends CmdValidator {
 	 * @return the validation result
 	 */
 	
-	
+	@Override
 	public IProblem[] validate (URL source) {
 		//
 		//Step 1. Read the BPEL process using the Model API.

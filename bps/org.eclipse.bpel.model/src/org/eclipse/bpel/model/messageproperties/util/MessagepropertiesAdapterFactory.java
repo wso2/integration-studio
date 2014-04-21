@@ -64,13 +64,13 @@ public class MessagepropertiesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -82,42 +82,35 @@ public class MessagepropertiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	protected MessagepropertiesSwitch<Adapter> modelSwitch = new MessagepropertiesSwitch<Adapter>() {
-		
-		public Adapter caseProperty(Property object) {
-			return createPropertyAdapter();
-		}
-
-		
-		public Adapter casePropertyAlias(PropertyAlias object) {
-			return createPropertyAliasAdapter();
-		}
-
-		
-		public Adapter caseQuery(Query object) {
-			return createQueryAdapter();
-		}
-
-		
-		public Adapter caseWSDLElement(WSDLElement object) {
-			return createWSDLElementAdapter();
-		}
-
-		
-		public Adapter caseIExtensibilityElement(ExtensibilityElement object) {
-			return createIExtensibilityElementAdapter();
-		}
-
-		
-		public Adapter caseExtensibilityElement(
-				org.eclipse.wst.wsdl.ExtensibilityElement object) {
-			return createExtensibilityElementAdapter();
-		}
-
-		
-		public Adapter defaultCase(EObject object) {
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseProperty(Property object) {
+				return createPropertyAdapter();
+			}
+			@Override
+			public Adapter casePropertyAlias(PropertyAlias object) {
+				return createPropertyAliasAdapter();
+			}
+			@Override
+			public Adapter caseQuery(Query object) {
+				return createQueryAdapter();
+			}
+			@Override
+			public Adapter caseWSDLElement(WSDLElement object) {
+				return createWSDLElementAdapter();
+			}
+			@Override
+			public Adapter caseIExtensibilityElement(ExtensibilityElement object) {
+				return createIExtensibilityElementAdapter();
+			}
+			@Override
+			public Adapter caseExtensibilityElement(org.eclipse.wst.wsdl.ExtensibilityElement object) {
+				return createExtensibilityElementAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -127,9 +120,9 @@ public class MessagepropertiesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

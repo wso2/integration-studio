@@ -39,12 +39,12 @@ public class MessagepropertiesFactoryImpl extends EFactoryImpl implements
 	 */
 	public static MessagepropertiesFactory init() {
 		try {
-			MessagepropertiesFactory theMessagepropertiesFactory = (MessagepropertiesFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/varprop"); //$NON-NLS-1$ 
+			MessagepropertiesFactory theMessagepropertiesFactory = (MessagepropertiesFactory)EPackage.Registry.INSTANCE.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/varprop"); 
 			if (theMessagepropertiesFactory != null) {
 				return theMessagepropertiesFactory;
 			}
-		} catch (Exception exception) {
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new MessagepropertiesFactoryImpl();
@@ -65,18 +65,14 @@ public class MessagepropertiesFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case MessagepropertiesPackage.PROPERTY:
-			return createProperty();
-		case MessagepropertiesPackage.PROPERTY_ALIAS:
-			return createPropertyAlias();
-		case MessagepropertiesPackage.QUERY:
-			return createQuery();
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			case MessagepropertiesPackage.PROPERTY: return createProperty();
+			case MessagepropertiesPackage.PROPERTY_ALIAS: return createPropertyAlias();
+			case MessagepropertiesPackage.QUERY: return createQuery();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -116,7 +112,7 @@ public class MessagepropertiesFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	public MessagepropertiesPackage getMessagepropertiesPackage() {
-		return (MessagepropertiesPackage) getEPackage();
+		return (MessagepropertiesPackage)getEPackage();
 	}
 
 	/**

@@ -40,7 +40,7 @@ public class FaultHandlersValidator extends CValidator {
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
 	
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		fCatches  = checkChild(ND_CATCH,     0, Integer.MAX_VALUE);
@@ -52,7 +52,7 @@ public class FaultHandlersValidator extends CValidator {
 	 * @see org.eclipse.bpel.validator.model.Validator#start()
 	 */
 	
-	
+	@Override
 	protected void start () {
 		super.start();
 

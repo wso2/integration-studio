@@ -16,7 +16,6 @@ import javax.xml.parsers.DocumentBuilder;
 import org.apache.xerces.parsers.DOMParser;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
-import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.BPELPlugin;
@@ -44,11 +43,8 @@ import org.eclipse.bpel.model.Exit;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
-import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
-import org.eclipse.bpel.model.FailureHandling;
 import org.eclipse.bpel.model.FaultHandler;
-import org.eclipse.bpel.model.FaultOnFailure;
 import org.eclipse.bpel.model.Flow;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.model.From;
@@ -75,12 +71,9 @@ import org.eclipse.bpel.model.Receive;
 import org.eclipse.bpel.model.RepeatUntil;
 import org.eclipse.bpel.model.Reply;
 import org.eclipse.bpel.model.Rethrow;
-import org.eclipse.bpel.model.RetryDelay;
-import org.eclipse.bpel.model.RetryFor;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
-import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -1754,26 +1747,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 		} else if (localName.equals("invoke")) {
 			activity = xml2Invoke(activity, activityElement);
 		} else if (localName.equals("assign")) {
-     		// Identifying the Correct Assign Activity 
-
-			String childLocalName = "";
-			// Since E4X Assign Activity has at least one ExtensionAssignOperation by default
-			if (activityElement.getFirstChild() != null) {
-				//Reading all (*) child elements
-				NodeList node = activityElement.getElementsByTagName("*");
-				// checking for first child. 
-				// This implementation supports only for either <copy> or <extensionAssignOpetion>
-				childLocalName = node.item(0).getLocalName();
-				if ("extensionAssignOperation".equalsIgnoreCase(childLocalName)) {
-					activity = xml2AssignE4X(activity, activityElement);
-				} else if ("copy".equalsIgnoreCase(childLocalName)) {
-					activity = xml2Assign(activity, activityElement);
-				}
-
-			} else {
-				// Default Assign Activity. Since there is no child elements.
-				activity = xml2Assign(activity, activityElement);
-			}
+			activity = xml2Assign(activity, activityElement);
 		} else if (localName.equals("throw")) {
 			activity = xml2Throw(activity, activityElement);
 		} else if (localName.equals("exit")) {
@@ -2168,100 +2142,6 @@ public class ReconciliationBPELReader extends BPELReader implements
 		return links;
 	}
 
-	
-	/**
-	 * Converts an XML assignE4X element to a BPEL Assign object.
-	 * 
-	 */
-	protected Activity xml2AssignE4X(Activity assignE4XActivity, Element assignE4XElement) {
-		AssignE4X assignE4X;
-		
-		if (assignE4XActivity instanceof AssignE4X) {
-			assignE4X = (AssignE4X) assignE4XActivity;
-		} else {
-			assignE4X = BPELFactory.eINSTANCE.createAssignE4X();
-			assignE4X.setElement(assignE4XElement);
-		}
-		//setting Validate Attribute value
-		if (assignE4XElement.hasAttribute("validate")) {
-			assignE4X.setValidate(BPELUtils.xml2boolean(assignE4XElement
-					.getAttribute("validate")));
-		} else {
-			assignE4X.setValidate(false);
-		}
-
-		syncLists(assignE4XElement, ReconciliationHelper
-				.getBPELChildElementsByLocalName(assignE4XElement, "extensionAssignOperation"), assignE4X
-				.getExtensionAssignOperation(), new Creator() {
-			public WSDLElement create(Element element) {
-				return xml2ExtensionAssignOperation(null, element);
-			}
-		});
-
-		setStandardAttributes(assignE4XElement, assignE4X);
-
-		return assignE4X;
-	}
-	
-	/**
-	 * Converts an XML ExtensionAssignOperation element to a BPEL ExtensionAssignOperation object.
-	 * 
-	 */
-	protected ExtensionAssignOperation xml2ExtensionAssignOperation(ExtensionAssignOperation eao, Element eaoElement) {
-		if (eao == null) {
-			eao = BPELFactory.eINSTANCE.createExtensionAssignOperation();
-			eao.setElement(eaoElement);
-		}
-
-		// Save all the references to external namespaces
-		saveNamespacePrefix(eao, eaoElement);
-
-		Element snippetElement = ReconciliationHelper
-				.getSnippet(eaoElement);
-		if (snippetElement != null && eao.getSnippet() == null) {
-			eao.setSnippet(xml2Snippet(eao.getSnippet(), snippetElement));
-		} else if (snippetElement == null) {
-			eao.setSnippet(null);
-		}
-
-		xml2ExtensibleElement(eao, eaoElement);
-
-		return eao;
-	}
-	
-	
-	
-	/**
-	 * returns a Snippet element from parent ExtensionAssignperation
-	 * 
-	 * @param parentElement
-	 * @return
-	 */
-	protected Snippet xml2Snippet(Snippet snippet,Element snippetElement)
-	{
-		if (snippet == null) {
-			snippet = BPELFactory.eINSTANCE.createSnippet();
-			snippet.setElement(snippetElement);
-		}
-
-		// Save all the references to external namespaces
-		saveNamespacePrefix(snippet, snippetElement);
-
-		if (snippetElement == null) {
-			return snippet;
-		}
-
-		String data = getText(snippetElement);
-		if (data != null) {
-			snippet.setBody(data);
-		} else {
-			snippet.setBody(null);
-		}
-
-		return snippet;
-	}
-	
-	
 	/**
 	 * Converts an XML link element to a BPEL Link object.
 	 */
@@ -3103,153 +2983,6 @@ public class ReconciliationBPELReader extends BPELReader implements
 	}
 
 	/**
-	 *  Converts an XML FaultOnFailure element to a FaultOnFailure object
-	 *  for failureHandling extension provided by ODE: JIRA:TOOLS-785
-	 */
-	protected FailureHandling xml2FailureHandling(FailureHandling failureHandling,Element failureHandlingElement) {
-		if (!failureHandlingElement.getLocalName().equals("failureHandling"))
-			return null;
-		if (failureHandling == null) {
-			failureHandling = BPELFactory.eINSTANCE.createFailureHandling();
-			failureHandling.setElement(failureHandlingElement);
-		}	
-		
-		
-		// Save all the references to external namespaces		
-		saveNamespacePrefix(failureHandling, failureHandlingElement);		
-		
-		// Reading faultOnFailure Element
-        Element faultOnFailureElement=  null;
-        
-        String localName = "faultOnFailure";
-		NodeList children = failureHandlingElement.getChildNodes();
-			for (int i = 0; i < children.getLength(); i++) {
-				Node node = children.item(i);
-				if (localName.equals(node.getLocalName())) {
-					faultOnFailureElement = (Element) node;
-	            }
-			}	
-        if (faultOnFailureElement != null) {
-        	FaultOnFailure faultOnFailure = BPELFactory.eINSTANCE.createFaultOnFailure();
-        	faultOnFailure.setElement(faultOnFailureElement);
-            xml2FaultOnFailure(faultOnFailure, faultOnFailureElement); 
-            failureHandling.setFaultOnFailure(faultOnFailure);
-        }
-        
-     // Reading retryFor Element
-        Element retryForElement=  null;
-        
-        localName = "retryFor";
-			for (int i = 0; i < children.getLength(); i++) {
-				Node node = children.item(i);
-				if (localName.equals(node.getLocalName())) {
-					retryForElement = (Element) node;
-	            }
-			}	
-        if (retryForElement != null) {
-        	RetryFor retryFor = BPELFactory.eINSTANCE.createRetryFor();
-        	retryFor.setElement(retryForElement);
-            xml2RetryFor(retryFor, retryForElement); 
-            failureHandling.setRetryFor(retryFor);
-        }
-        
-     // Reading retryDelay Element
-        Element retryDelayElement=  null;
-        
-        localName = "retryDelay";
-			for (int i = 0; i < children.getLength(); i++) {
-				Node node = children.item(i);
-				if (localName.equals(node.getLocalName())) {
-					retryDelayElement = (Element) node;
-	            }
-			}	
-        if (retryDelayElement != null) {
-        	RetryDelay retryDelay = BPELFactory.eINSTANCE.createRetryDelay();
-        	retryDelay.setElement(retryDelayElement);
-            xml2RetryDelay(retryDelay, retryDelayElement); 
-            failureHandling.setRetryDelay(retryDelay);
-        }
-        
-		xml2ExtensibleElement(failureHandling, failureHandlingElement);
-		
-		return failureHandling;
-	}
-	/**
-	 *  Converts an XML FaultOnFailure element to a FaultOnFailure object
-	 *  for failureHandling extension provided by ODE: JIRA:TOOLS-785
-	 */
-	protected FaultOnFailure xml2FaultOnFailure(FaultOnFailure faultOnFailure,Element faultOnFailureElement)
-	{
-		if (faultOnFailure == null) {
-			faultOnFailure = BPELFactory.eINSTANCE.createFaultOnFailure();
-			faultOnFailure.setElement(faultOnFailureElement);
-		}
-		// Save all the references to external namespaces
-		saveNamespacePrefix(faultOnFailure, faultOnFailureElement);
-    	
-		//reading body of the faultOnFailure and add it into the faultOnFailure object
-		String data = getText(faultOnFailureElement);
-		if (data != null) {
-			faultOnFailure.setValue(Boolean.getBoolean(data));
-		}
-    	return faultOnFailure;
-	}
-	
-	/**
-	 *  Converts an XML retryFor element to a retryFor object
-	 *  for failureHandling extension provided by ODE: JIRA:TOOLS-785
-	 */
-	protected RetryFor xml2RetryFor(RetryFor retryFor,Element retryForElement)
-	{
-		if (retryFor == null) {
-			retryFor = BPELFactory.eINSTANCE.createRetryFor();
-			retryFor.setElement(retryForElement);
-		}
-		// Save all the references to external namespaces
-		saveNamespacePrefix(retryFor, retryForElement);
-    	
-		if (retryForElement == null) {
-			return retryFor;
-		}
-		
-		//reading body of the retryFor and add it into the retryFor object
-		String data = getText(retryForElement);
-		if (data != null) {
-			retryFor.setValue(Integer.parseInt(data));
-		}
-	
-    	return retryFor;
-	}
-	
-
-	/**
-	 *  Converts an XML RetryDelay element to a RetryDelay object
-	 *  for failureHandling extension provided by ODE: JIRA:TOOLS-785
-	 */
-	protected RetryDelay xml2RetryDelay(RetryDelay retryDelay,Element retryDelayElement)
-	{
-		if (retryDelay == null) {
-			retryDelay = BPELFactory.eINSTANCE.createRetryDelay();
-			retryDelay.setElement(retryDelayElement);
-		}
-		
-		// Save all the references to external namespaces
-		saveNamespacePrefix(retryDelay, retryDelayElement);
-    	
-		
-		if (retryDelayElement == null) {
-			return retryDelay;
-		}
-		
-		//reading body of the retryDelay and add it into the retryDelay object
-		String data = getText(retryDelayElement);
-		if (data != null) {
-			retryDelay.setValue(Integer.parseInt(data));
-		}
-	
-    	return retryDelay;
-	}
-	/**
 	 * Converts an XML "to" element to a BPEL To object.
 	 */
 	protected To xml2To(To to, Element toElement) {
@@ -3266,7 +2999,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 
 		if (variable != null && variable.getSpecified()) {
 			setVariable(toElement, to, "variable", BPELPackage.eINSTANCE
-					.getTo_Variable());
+					.getAbstractAssignBound_Variable());
 		} else {
 			to.setVariable(null);
 		}
@@ -3286,7 +3019,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 
 		if (partnerLink != null && partnerLink.getSpecified()) {
 			setPartnerLink(toElement, to, BPELPackage.eINSTANCE
-					.getTo_PartnerLink());
+					.getAbstractAssignBound_PartnerLink());
 		} else {
 			to.setPartnerLink(null);
 		}
@@ -3337,7 +3070,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 
 		if (variable != null && variable.getSpecified()) {
 			setVariable(fromElement, from, "variable", BPELPackage.eINSTANCE
-					.getFrom_Variable());
+					.getAbstractAssignBound_Variable());
 		} else {
 			from.setVariable(null);
 		}
@@ -3356,7 +3089,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 		Attr partnerLink = fromElement.getAttributeNode("partnerLink");
 		if (partnerLink != null && partnerLink.getSpecified()) {
 			setPartnerLink(fromElement, from, BPELPackage.eINSTANCE
-					.getFrom_PartnerLink());
+					.getAbstractAssignBound_PartnerLink());
 		} else {
 			from.setPartnerLink(null);
 		}
@@ -3667,23 +3400,6 @@ public class ReconciliationBPELReader extends BPELReader implements
 					fromPartsElement));
 		} else if (fromPartsElement == null) {
 			invoke.setFromParts(null);
-		}
-		// Set failureHandling
-		NodeList children = invokeElement.getChildNodes();
-		Element failureHandlingElement = null;
-		for (int i = 0; i < children.getLength(); i++) {
-			Node node = children.item(i);
-			if ("failureHandling".equals(node.getLocalName())){
-               
-				failureHandlingElement=  (Element) node;
-				break;
-			}
-		}
-		if (failureHandlingElement != null) {
-			FailureHandling failureHandling = xml2FailureHandling(invoke.getFailureHandling(),failureHandlingElement);
-			invoke.setFailureHandling(failureHandling);
-		}else if (fromPartsElement == null) {
-			invoke.setFailureHandling(null);
 		}
 
 		return invoke;

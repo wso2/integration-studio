@@ -67,8 +67,7 @@ public interface MessagepropertiesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MessagepropertiesPackage eINSTANCE = org.eclipse.bpel.model.messageproperties.impl.MessagepropertiesPackageImpl
-			.init();
+	MessagepropertiesPackage eINSTANCE = org.eclipse.bpel.model.messageproperties.impl.MessagepropertiesPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.messageproperties.impl.PropertyImpl <em>Property</em>}' class.
@@ -625,8 +624,7 @@ public interface MessagepropertiesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_ALIAS__MESSAGE_TYPE = eINSTANCE
-				.getPropertyAlias_MessageType();
+		EAttribute PROPERTY_ALIAS__MESSAGE_TYPE = eINSTANCE.getPropertyAlias_MessageType();
 
 		/**
 		 * The meta object literal for the '<em><b>Part</b></em>' attribute feature.
@@ -642,8 +640,7 @@ public interface MessagepropertiesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_ALIAS__PROPERTY_NAME = eINSTANCE
-				.getPropertyAlias_PropertyName();
+		EAttribute PROPERTY_ALIAS__PROPERTY_NAME = eINSTANCE.getPropertyAlias_PropertyName();
 
 		/**
 		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
@@ -659,8 +656,7 @@ public interface MessagepropertiesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROPERTY_ALIAS__WSDL_PART = eINSTANCE
-				.getPropertyAlias_WsdlPart();
+		EReference PROPERTY_ALIAS__WSDL_PART = eINSTANCE.getPropertyAlias_WsdlPart();
 
 		/**
 		 * The meta object literal for the '<em><b>Query</b></em>' containment reference feature.
@@ -684,8 +680,7 @@ public interface MessagepropertiesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_ALIAS__XSD_ELEMENT = eINSTANCE
-				.getPropertyAlias_XSDElement();
+		EAttribute PROPERTY_ALIAS__XSD_ELEMENT = eINSTANCE.getPropertyAlias_XSDElement();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.model.messageproperties.impl.QueryImpl <em>Query</em>}' class.

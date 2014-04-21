@@ -68,7 +68,7 @@ public class FilterExpr extends Expr {
     	return fList.size() > 0;
     }
     
-    
+    @Override
 	protected String asText()
     {
         StringBuilder sb = new StringBuilder();
@@ -85,7 +85,7 @@ public class FilterExpr extends Expr {
     /**
      * @see org.eclipse.bpel.xpath10.Expr#getPosition()
      */
-    
+    @Override
 	public int getPosition ()  {
     	return fExpr != null ? fExpr.getPosition() : -1;
     }
@@ -93,7 +93,7 @@ public class FilterExpr extends Expr {
     /**
      * @see org.eclipse.bpel.xpath10.Expr#getEndPosition()
      */
-    
+    @Override
 	public int getEndPosition () {
     	return fExpr != null ? fExpr.getEndPosition() : -1;
     }

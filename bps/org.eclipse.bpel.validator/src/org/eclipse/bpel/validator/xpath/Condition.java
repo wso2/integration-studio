@@ -23,7 +23,7 @@ public class Condition extends XPathValidator {
 	 * @see org.eclipse.bpel.validator.xpath.XPathValidator#checkBooleanExpression()
 	 */
 	
-	
+	@Override
 	@ARule(
 		sa = 0,
 		desc = "Checks for boolean expression on conditions",

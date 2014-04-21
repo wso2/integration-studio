@@ -42,7 +42,7 @@ public class FlowValidator extends CActivityValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CContainerValidator#start()
 	 */
-	
+	@Override
 	protected void start() {
 		super.start();		
 		setValue(LINKS_SET, new HashSet<String>());
@@ -53,7 +53,7 @@ public class FlowValidator extends CActivityValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		checkChild(ND_LINKS,0,1);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 JBoss, Inc. and others
+ * Copyright (c) 2010, 2012 JBoss, Inc. and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,7 +58,7 @@ public class MarkerDelegateAdapter extends AbstractStatefulAdapter implements IM
 	}
 
 	
-	
+	@Override
 	public void notifyChanged(Notification notification) {
 		if (isMarkerEvent(notification) && target instanceof EObject) {
 			EObject parent = ((EObject)target).eContainer();

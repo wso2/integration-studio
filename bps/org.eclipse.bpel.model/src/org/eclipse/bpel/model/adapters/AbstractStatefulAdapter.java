@@ -22,7 +22,7 @@ public class AbstractStatefulAdapter extends AbstractAdapter implements
 	 * @see org.eclipse.bpel.model.adapters.IStatefullAdapter#setTarget(java.lang.Object)
 	 */
 	
-	
+	@Override
 	public void setTarget (Object newTarget) {		
 		super.setTarget(newTarget);
 	}

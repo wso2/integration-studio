@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 University College London Software Systems Engineering
+ * Copyright (c) 2006, 2012 University College London Software Systems Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,7 +56,7 @@ public class BPELModuleDelegate extends ProjectModule {
 	 * @see ProjectModule#getId()
 	 * @return <code>String</code> representing module type id
 	 */
-	
+	@Override
 	public String getId() {
 		return IBPELModuleFacetConstants.BPEL20_MODULE_TYPE;
 	}
@@ -68,7 +68,7 @@ public class BPELModuleDelegate extends ProjectModule {
 	 * @see ProjectModule#getName()
 	 * @return <code>String</code>
 	 */
-	
+	@Override
 	public String getName() {
 		return file.getName();
 	}
@@ -88,7 +88,7 @@ public class BPELModuleDelegate extends ProjectModule {
 	 * @see ProjectModule#exists()
 	 * @return <code>true</code> if the module exists, <code>false</code> otherwise
 	 */
-	
+	@Override
 	public boolean exists() {
 		return file.exists();
 	}
@@ -112,7 +112,7 @@ public class BPELModuleDelegate extends ProjectModule {
 	 * @see ModuleDelegate#members()
 	 * @return <code>IModuleResource</code>[]
 	 */
-	
+	@Override
 	public IModuleResource[] members() {
 		IModuleResource[] result = {new ModuleFile(file, file.getName(), Path.EMPTY)};
 		
@@ -127,7 +127,7 @@ public class BPELModuleDelegate extends ProjectModule {
 	 * <p>
 	 * TODO should also allow for BPEL projects being valid modules
 	 */
-	
+	@Override
 	public IStatus validate() {
 		super.validate();
 		if (IBPELModuleFacetConstants.DOT_BPEL_FILE_EXTENSION.equalsIgnoreCase(
@@ -143,7 +143,7 @@ public class BPELModuleDelegate extends ProjectModule {
 				null);
 	}
 	
-	
+	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) return false;
 		
@@ -177,7 +177,7 @@ public class BPELModuleDelegate extends ProjectModule {
 	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
-	
+	@Override
 	public int hashCode() {
 		return file == null ? 0 : file.getFullPath().toOSString().length();
 	}

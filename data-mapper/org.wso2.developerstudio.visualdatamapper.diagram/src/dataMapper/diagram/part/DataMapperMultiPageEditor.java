@@ -1,6 +1,7 @@
 package dataMapper.diagram.part;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.avro.Schema;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
@@ -18,6 +20,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocumentListener;
@@ -49,10 +52,13 @@ import dataMapper.InNode;
 import dataMapper.OutNode;
 import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.Function;
+import dataMapper.diagram.custom.persistence.AvroSchemaTransformer;
 import dataMapper.diagram.custom.persistence.DataMapperConfiguration;
 import dataMapper.diagram.custom.persistence.DataMapperConfigurationGenerator;
 import dataMapper.diagram.custom.persistence.DataMapperModelTransformer;
 import dataMapper.diagram.tree.generator.TreeFromAvro;
+import dataMapper.impl.DataMapperRootImpl;
+import dataMapper.impl.TreeNodeImpl;
 
 public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IGotoMarker {
 
@@ -329,6 +335,36 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 				}
 			}
 		}
+	}	
+	
+	/**
+	 * Traverses input and output trees and generates respective avro schema
+	 */
+	private void updateAvroSchema() {
+		// Get model root of the active DataMapperDiagramEditor
+		EObject modelRoot = ((DataMapperDiagramEditor)getEditor(0)).getDiagram().getElement();
+		DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) modelRoot;
+		
+		// Model root of input schema tree
+		TreeNodeImpl inputTreeNode = (TreeNodeImpl)((DataMapperRoot)datamapperRoot).getInput().getTreeNode().get(0);
+		// Model root of output schema tree
+		TreeNodeImpl outputTreeNode = (TreeNodeImpl)((DataMapperRoot)datamapperRoot).getOutput().getTreeNode().get(0);
+		
+		// This traverses both tree views and returns updated avro schema
+		AvroSchemaTransformer avroSchemaTransformer = new AvroSchemaTransformer();
+		Schema inputAvroSchema = avroSchemaTransformer.transform(inputTreeNode);
+		avroSchemaTransformer = new AvroSchemaTransformer();
+		Schema outputAvroSchema = avroSchemaTransformer.transform(outputTreeNode);		
+	}
+	
+	/**
+	 * Writes the avro schema to target file
+	 * 
+	 * @param schemaFile File suffix is either _inputSchema.avsc or _outputSchema.avsc
+	 * @param schema Avro schema respective to modified tree
+	 */
+	private void updateSchemaFile(File schemaFile, Schema schema){
+		
 	}
 	
 	public void init(IEditorSite site, IEditorInput editorInput)
@@ -360,6 +396,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 
 	@Override
 	public void doSave(IProgressMonitor monitor) {
+		updateAvroSchema();
 		updateAssociatedConfigFile(monitor);
 		getEditor(0).doSave(monitor);
 	}

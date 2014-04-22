@@ -23,10 +23,8 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -40,9 +38,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import dataMapper.TreeNode;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-// import jfb.examples.gmf.filesystem.TreeNode;
-// import
-// jfb.examples.gmf.filesystem.diagram.edit.parts.TreeNodeEditPart.TreeNodeFigure.ClickNode;
 
 /**
  * @generated
@@ -107,7 +102,6 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	}
 
 	protected void addChild(EditPart child, int index) {
-		// TODO Auto-generated method stub
 		super.addChild(child, index);
 	}
 
@@ -120,7 +114,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	 */
 	@Override
 	public boolean isSelectable() {
-		return false;
+		return true;
 	}
 
 	/**
@@ -132,15 +126,17 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.TreeNodeItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.TreeNodeCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that
-		// would let childrenIFigure add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
+		/* Disable dragging and resizing */
+		NonResizableEditPolicy selectionPolicy = new CustomNonResizableEditPolicyEx();
+		selectionPolicy.setDragAllowed(false);
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, selectionPolicy);
+
+		/* remove balloon */
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
@@ -409,7 +405,6 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 
 			@Override
 			protected void setContents(IFigure contents) {
-				// TODO Auto-generated method stub
 				super.setContents(contents);
 			}
 		}

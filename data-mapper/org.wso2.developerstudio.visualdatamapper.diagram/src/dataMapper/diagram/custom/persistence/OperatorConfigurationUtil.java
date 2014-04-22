@@ -18,6 +18,7 @@ package dataMapper.diagram.custom.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -60,7 +61,7 @@ public class OperatorConfigurationUtil {
 	 */
 	public static String getSimpleMappingStatement(Element inputElement) {
 		if(isSimpleMap(inputElement)){
-			return "\t" +  getElementParentName(getSimpleMapOutputElement(inputElement))+"." +  getSimpleMapOutputElement(inputElement).getName()+ " = " + inputElement.getFieldParent().getName()+ "."+ inputElement.getName()+";\n";
+			return getElementParentName(getSimpleMapOutputElement(inputElement))+"." +  getSimpleMapOutputElement(inputElement).getName()+ " = " + inputElement.getFieldParent().getName()+ "."+ inputElement.getName()+";";
 		}
 		return null;
 	}
@@ -193,7 +194,18 @@ public class OperatorConfigurationUtil {
 	 */
 	public static String getSimpleArrayMappingStatement(Element element) {
 		if(isSimpleMap(element)){
-			return "\t" +  getElementParentName(getSimpleMapOutputElement(element))+"[i]." +  getSimpleMapOutputElement(element).getName()+ " = " + element.getFieldParent().getName()+ "[i]."+ element.getName()+";\n";
+			String inputParentName = getElementParentName(getSimpleMapOutputElement(element));
+			String outputParentName = element.getFieldParent().getName();
+			
+			/*
+			 * If input parameter and output parameter names are identical,
+			 * append term 'output' to the output parameter as a convention.
+			 */
+			if (inputParentName.equals(outputParentName)) {
+				outputParentName = "output" + WordUtils.capitalize(outputParentName);
+			}
+			
+			return outputParentName + "[i]." +  getSimpleMapOutputElement(element).getName()+ " = " + inputParentName + "[i]."+ element.getName() + ";";
 		}
 		return null;
 	}

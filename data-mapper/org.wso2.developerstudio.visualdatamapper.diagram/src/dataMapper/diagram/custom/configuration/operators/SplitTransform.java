@@ -27,15 +27,46 @@ public class SplitTransform implements OperatorsTransformer {
 		}
 		Split split = (Split) operator;
 		int i=0;
+		int splitArrayMapIndex = split.getArrayOutput() - 1;
 		for(Element output : splitOutputs){
-			if(split.getDelimiter() != null){
-				statement.append(output.getFieldParent().getName()+index+"."+output.getName()+ " = " + splitInput.getFieldParent().getName()+index+"."+splitInput.getName()+".split(\""+split.getDelimiter()+"\")"+"["+i+"];\n");				
+			
+			if (output != null && splitArrayMapIndex != i ) {
+				if (split.getDelimiter() != null) {
+					statement.append(output.getFieldParent().getName() + index + "."
+							+ output.getName() + " = " + splitInput.getFieldParent().getName()
+							+ index + "." + splitInput.getName() + ".split(\""
+							+ split.getDelimiter() + "\")" + "[" + i + "];\n");
+				} 
+				else {
+					statement.append(output.getFieldParent().getName() + index + "."
+							+ output.getName() + " = " + splitInput.getFieldParent().getName()
+							+ index + "." + splitInput.getName() + ".split(\"\")" + "[" + i
+							+ "];\n");
+				}
 			}
-			else {
-				statement.append(output.getFieldParent().getName()+index+"."+output.getName()+ " = " + splitInput.getFieldParent().getName()+index+"."+splitInput.getName()+".split(\"\")"+"["+i+"];\n");
+			else if(output != null && splitArrayMapIndex == i){
+
+				statement.append(output.getFieldParent().getName() + index + "."+ output.getName() + " = new Array();\n");
+				if (split.getDelimiter() != null) {
+					ArrayList<Integer> indexList = getUnmappedOutputNodes(operator);
+					for(Integer unmappedIndex : indexList){
+						
+						statement.append(output.getFieldParent().getName() + index + "."
+								+ output.getName() + ".push(" + splitInput.getFieldParent().getName()
+								+ index + "." + splitInput.getName() + ".split(\""
+								+ split.getDelimiter() + "\")" + "[" + unmappedIndex.intValue() + "]);\n");
+					}
+				} 
+				else {
+					statement.append(output.getFieldParent().getName() + index + "."
+							+ output.getName() + " = " + splitInput.getFieldParent().getName()
+							+ index + "." + splitInput.getName() + ".split(\"\")" + "[" + i
+							+ "];\n");
+				}
 			}
 			i++;
 		}
+		
 		
 		assign.setStatement(statement.toString());
 
@@ -67,19 +98,42 @@ public class SplitTransform implements OperatorsTransformer {
 		for(OperatorRightConnector connector : rightConnectors){
 			if(connector.getOutNode().getOutgoingLink().size() !=0){
 				elementList.add(connector.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent());
+			}else {
+				elementList.add(null);
 			}
 		}
 		return elementList;
 	}
 	
-	private Operator getNextOperator(Operator currentOperator){
-		for (OperatorRightConnector connector : currentOperator.getBasicContainer().getRightContainer().getRightConnectors()){
-			if(connector.getOutNode().getOutgoingLink().size() != 0){
-				
+//	private Operator getNextOperator(Operator currentOperator){
+//		for (OperatorRightConnector connector : currentOperator.getBasicContainer().getRightContainer().getRightConnectors()){
+//			if(connector.getOutNode().getOutgoingLink().size() != 0){
+//				
+//			}
+//		}
+//		return null;
+//	}
+	
+	/**
+	 * unmapped output nodes index needs when unmapped result array mapped to an element
+	 * @param operator split operator
+	 * @return unmapped output connector indexes of the operator
+	 */
+	private ArrayList<Integer> getUnmappedOutputNodes(Operator operator) {
+		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
+		ArrayList<Integer> connectorList = new ArrayList<Integer>();
+		int i=0;
+		int j = ((Split) operator).getArrayOutput()-1;
+		for(OperatorRightConnector connector : rightConnectors){
+			if(connector.getOutNode().getOutgoingLink().size() ==0){
+				connectorList.add(i);
 			}
+			else if(i == j){
+				connectorList.add(i);
+			}
+			i++;
 		}
-		return null;
+		return connectorList;
 	}
-
 
 }

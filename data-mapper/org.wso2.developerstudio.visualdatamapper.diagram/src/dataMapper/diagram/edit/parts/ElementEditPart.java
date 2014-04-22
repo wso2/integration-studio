@@ -1,35 +1,18 @@
 package dataMapper.diagram.edit.parts;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
-import javax.swing.border.CompoundBorder;
-
-//import jfb.examples.gmf.filesystem.Element;
-
-import org.eclipse.draw2d.Border;
-import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.BorderLayout;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.LineBorder;
-import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
-import org.eclipse.draw2d.SimpleRaisedBorder;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.geometry.Insets;
-import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -40,41 +23,26 @@ import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
-import org.eclipse.gef.ui.parts.AbstractEditPartViewer;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.FontMetrics;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.ui.*;
-
-import dataMapper.*;
-import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-import dataMapper.diagram.edit.parts.custom.FixedBorderItemLocator;
-
-import org.eclipse.swt.graphics.Pattern;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+import dataMapper.Element;
+import dataMapper.diagram.edit.parts.custom.FixedBorderItemLocator;
 
 /**
  * @generated
@@ -104,7 +72,6 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	protected void addChild(EditPart child, int index) {
-		// TODO Auto-generated method stub
 		super.addChild(child, index);
 	}
 
@@ -112,33 +79,22 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		// installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE., editPolicy)
-
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.ElementItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.ElementCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that
-		// would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		/*
-		 * installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new
-		 * CustomNonResizableEditPolicyEx());
-		 * 
-		 * NonResizableEditPolicy selectionPolicy = new
-		 * CustomNonResizableEditPolicyEx();
-		 * selectionPolicy.setDragAllowed(false);
-		 * installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
-		 * selectionPolicy);
-		 */
 
-		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE); // ballon remove
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.PopupBarEditPolicy.);
+		/* Disable dragging and resizing */
+		NonResizableEditPolicy selectionPolicy = new NonResizableEditPolicy();
+		selectionPolicy.setDragAllowed(false);
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, selectionPolicy);
+
+		/* remove balloon */
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
 	/**
@@ -195,7 +151,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 */
 	@Override
 	public boolean isSelectable() {
-		return false;
+		return true;
 	}
 
 	/*
@@ -469,11 +425,6 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		return figure;
 	}
 
-	private Color getBackgroundColor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
 		if (editPart instanceof IBorderItemEditPart) {
 			return getBorderedFigure().getBorderItemContainer();
@@ -566,56 +517,37 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			this.setFill(false);
 			this.setBorder(null);
 
-			/*
-			 * draw rectangle when mosue hover enable Link tool when mouse hover
-			 */
-			/*			this.addMouseMotionListener(new MouseMotionListener() {
+			this.addMouseMotionListener(new MouseMotionListener() {
 
-			 @Override
-			 public void mouseDragged(MouseEvent me) {
-			 // TODO Auto-generated method stub
+				@Override
+				public void mouseDragged(MouseEvent me) {
+				}
 
-			 }
+				@Override
+				public void mouseEntered(MouseEvent me) {
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(1)));
+					setOutline(true);
+				}
 
-			 @Override
-			 public void mouseEntered(MouseEvent me) {
+				@Override
+				public void mouseExited(MouseEvent me) {
+					getEditDomain().getPaletteViewer().setActiveTool(null);
+					setOutline(false);
+				}
 
-			 getEditDomain().getPaletteViewer().setActiveTool(
-			 (ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-			 .getPaletteRoot().getChildren().get(1)).getChildren().get(1)));
-			 setOutline(true);
+				@Override
+				public void mouseHover(MouseEvent me) {
+				}
 
-			 }
+				@Override
+				public void mouseMoved(MouseEvent me) {
+				}
 
-			 @Override
-			 public void mouseExited(MouseEvent me) {
-
-			 getEditDomain().getPaletteViewer().setActiveTool(null);
-
-			 setOutline(false);
-
-			 }
-
-			 @Override
-			 public void mouseHover(MouseEvent me) {
-			 // TODO Auto-generated method stub
-
-			 }
-
-			 @Override
-			 public void mouseMoved(MouseEvent me) {
-			 // TODO Auto-generated method stub
-
-			 }
-
-			 });*/
+			});
 
 			createContents();
-
-		}
-
-		private void setBackgroundPattern(Pattern pattern) {
-			// TODO Auto-generated method stub
 
 		}
 

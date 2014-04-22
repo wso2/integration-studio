@@ -24,7 +24,6 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -40,9 +39,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import dataMapper.TreeNode;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-//
-//import jfb.examples.gmf.filesystem.TreeNode;
-//import jfb.examples.gmf.filesystem.diagram.edit.parts.TreeNode3EditPart.TreeNodeFigure.ClickNode;
 
 /**
  * @generated
@@ -120,14 +116,17 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new dataMapper.diagram.edit.policies.TreeNode3ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new dataMapper.diagram.edit.policies.TreeNode3CanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		// XXX need an SCR to runtime to have another abstract superclass that would let childrenIFigure add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
+		/* Disable dragging and resizing */
+		NonResizableEditPolicy selectionPolicy = new CustomNonResizableEditPolicyEx();
+		selectionPolicy.setDragAllowed(false);
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, selectionPolicy);
+
+		/* remove balloon */
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
 
@@ -138,7 +137,7 @@ public class TreeNode3EditPart extends ShapeNodeEditPart {
 	 */
 	@Override
 	public boolean isSelectable() {
-		return false;
+		return true;
 	}
 
 	/**

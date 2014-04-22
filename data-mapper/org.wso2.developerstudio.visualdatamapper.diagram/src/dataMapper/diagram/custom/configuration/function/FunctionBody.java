@@ -22,49 +22,60 @@ import java.util.List;
 public class FunctionBody {
 	private List<AssignmentStatement> assignmentStatements;
 	private List<ForLoop> forLoop;
-	private List<String> functionCall;
-	
-	
-	
+	private List<String> functionCallStatements;
+
 	public FunctionBody() {
 		this.assignmentStatements = new ArrayList<AssignmentStatement>();
 		this.forLoop = new ArrayList<ForLoop>();
-		this.functionCall = new ArrayList<String>();
+		this.functionCallStatements = new ArrayList<String>();
 	}
+
 	public List<AssignmentStatement> getAssignmentStatements() {
 		return assignmentStatements;
 	}
-	public void setAssignmentStatements(
-			ArrayList<AssignmentStatement> assignmentStatements) {
+
+	public void setAssignmentStatements(ArrayList<AssignmentStatement> assignmentStatements) {
 		this.assignmentStatements = assignmentStatements;
 	}
+
 	public List<ForLoop> getForLoop() {
 		return forLoop;
 	}
+
 	public void setForLoop(ArrayList<ForLoop> forLoop) {
 		this.forLoop = forLoop;
 	}
-	
-	public List<String> getFunctionCall() {
-		return functionCall;
+
+	public List<String> getFunctionCallStatements() {
+		return functionCallStatements;
 	}
-	public void setFunctionCall(List<String> functionCall) {
-		this.functionCall = functionCall;
+
+	public void setFunctionCallStatements(List<String> functionCall) {
+		this.functionCallStatements = functionCall;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder functionBody = new StringBuilder();
-		for(AssignmentStatement assignment : getAssignmentStatements()){
+		
+		for (AssignmentStatement assignment : getAssignmentStatements()) {
+			functionBody.append("\t");
 			functionBody.append(assignment.getStatement());
-			functionBody.append("\n");
+			functionBody.append(System.lineSeparator());
 		}
 		
-		for (ForLoop loop : getForLoop()){
+		for(String callStatement : getFunctionCallStatements()) {
+			functionBody.append("\t");
+			functionBody.append(callStatement);
+			functionBody.append(System.lineSeparator());
+		}
+		
+		for (ForLoop loop : getForLoop()) {
 			functionBody.append(loop.toString());
 			functionBody.append("\n");
 		}
+		
 		return functionBody.toString();
 	}
-	
+
 }

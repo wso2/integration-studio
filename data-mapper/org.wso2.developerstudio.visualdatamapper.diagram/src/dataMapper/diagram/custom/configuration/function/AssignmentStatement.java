@@ -20,9 +20,8 @@ public class AssignmentStatement {
 	private String statement;
 
 	public AssignmentStatement() {
-		this.statement = null;
-		
 	}
+
 	public String getStatement() {
 		return statement;
 	}
@@ -30,6 +29,5 @@ public class AssignmentStatement {
 	public void setStatement(String statement) {
 		this.statement = statement;
 	}
-	
-	
+
 }

@@ -32,7 +32,8 @@ public class SvnRepoManager {
  private static SVNClientManager ourClientManager;
  
  
- 
+ /**
+  */
  public SvnRepoManager() {
 	 String url = "http://svn.svnkit.com/repos/svnkit/trunk/doc";
      String name = "anonymous";
@@ -48,7 +49,15 @@ public class SvnRepoManager {
     	 
     }        
   }
- 
+ /**
+  * 
+  * @param url
+  * @param revision
+  * @param destPath
+  * @param isRecursive
+  * @return
+  * @throws SVNException
+  */
 	public long checkout(SVNURL url, SVNRevision revision,
 			File destPath, boolean isRecursive) throws SVNException {
 		SVNUpdateClient updateClient = ourClientManager.getUpdateClient();

@@ -52,7 +52,9 @@ public class SplitTransform implements OperatorsTransformer {
 		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
 		ArrayList<Element> elementList = new ArrayList<Element>();
 		for(OperatorRightConnector connector : rightConnectors){
-			elementList.add(connector.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent());
+			if(connector.getOutNode().getOutgoingLink().size() !=0){
+				elementList.add(connector.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent());
+			}
 		}
 		return elementList;
 	}

@@ -38,15 +38,24 @@ public class DataMapperModelTransformer {
 		return instance;
 	}
 
+	/**
+	 * traverse in datamapper map model and generate DataMapperConfigurtion config  
+	 * @param rootDiagram datamapper graphical model root
+	 * @return complete configuration of mapping
+	 */
 	public String transform(DataMapperRoot rootDiagram) {
 		DataMapperConfiguration mappingConfig = new DataMapperConfiguration();
 		MappingModelTraverser.getInstance().traverse(rootDiagram, mappingConfig);
 
 		StringBuilder result = new StringBuilder();
-		for(Function function : mappingConfig.getFunctionList()){
-			result.append(function.toString());
+		if(mappingConfig.getFunctionList().get(0) != null){
+			
+			for(Function function : mappingConfig.getFunctionList()){
+				result.append(function.toString());
+			}
+			return result.toString();
 		}
-		return result.toString();
 
+		return result.toString();
 		}
 }

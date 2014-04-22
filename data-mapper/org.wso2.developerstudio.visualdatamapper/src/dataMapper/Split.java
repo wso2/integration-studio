@@ -12,6 +12,7 @@ package dataMapper;
  * The following features are supported:
  * <ul>
  *   <li>{@link dataMapper.Split#getDelimiter <em>Delimiter</em>}</li>
+ *   <li>{@link dataMapper.Split#getArrayOutput <em>Array Output</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,4 +47,31 @@ public interface Split extends Operator {
 	 * @generated
 	 */
 	void setDelimiter(String value);
+
+    /**
+	 * Returns the value of the '<em><b>Array Output</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Array Output</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+	 * @return the value of the '<em>Array Output</em>' attribute.
+	 * @see #setArrayOutput(int)
+	 * @see dataMapper.DataMapperPackage#getSplit_ArrayOutput()
+	 * @model default="-1"
+	 * @generated
+	 */
+    int getArrayOutput();
+
+    /**
+	 * Sets the value of the '{@link dataMapper.Split#getArrayOutput <em>Array Output</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Array Output</em>' attribute.
+	 * @see #getArrayOutput()
+	 * @generated
+	 */
+    void setArrayOutput(int value);
 } // Split

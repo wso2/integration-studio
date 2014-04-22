@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link dataMapper.impl.SplitImpl#getDelimiter <em>Delimiter</em>}</li>
+ *   <li>{@link dataMapper.impl.SplitImpl#getArrayOutput <em>Array Output</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,6 +44,25 @@ public class SplitImpl extends OperatorImpl implements Split {
 	protected String delimiter = DELIMITER_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getArrayOutput() <em>Array Output</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getArrayOutput()
+	 * @generated
+	 * @ordered
+	 */
+    protected static final int ARRAY_OUTPUT_EDEFAULT = -1;
+    /**
+	 * The cached value of the '{@link #getArrayOutput() <em>Array Output</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #getArrayOutput()
+	 * @generated
+	 * @ordered
+	 */
+    protected int arrayOutput = ARRAY_OUTPUT_EDEFAULT;
+
+    /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -84,6 +104,27 @@ public class SplitImpl extends OperatorImpl implements Split {
 
 	/**
 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public int getArrayOutput() {
+		return arrayOutput;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setArrayOutput(int newArrayOutput) {
+		int oldArrayOutput = arrayOutput;
+		arrayOutput = newArrayOutput;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.SPLIT__ARRAY_OUTPUT, oldArrayOutput, arrayOutput));
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -92,6 +133,8 @@ public class SplitImpl extends OperatorImpl implements Split {
 		switch (featureID) {
 			case DataMapperPackage.SPLIT__DELIMITER:
 				return getDelimiter();
+			case DataMapperPackage.SPLIT__ARRAY_OUTPUT:
+				return getArrayOutput();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,6 +149,9 @@ public class SplitImpl extends OperatorImpl implements Split {
 		switch (featureID) {
 			case DataMapperPackage.SPLIT__DELIMITER:
 				setDelimiter((String)newValue);
+				return;
+			case DataMapperPackage.SPLIT__ARRAY_OUTPUT:
+				setArrayOutput((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,6 +168,9 @@ public class SplitImpl extends OperatorImpl implements Split {
 			case DataMapperPackage.SPLIT__DELIMITER:
 				setDelimiter(DELIMITER_EDEFAULT);
 				return;
+			case DataMapperPackage.SPLIT__ARRAY_OUTPUT:
+				setArrayOutput(ARRAY_OUTPUT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -136,6 +185,8 @@ public class SplitImpl extends OperatorImpl implements Split {
 		switch (featureID) {
 			case DataMapperPackage.SPLIT__DELIMITER:
 				return DELIMITER_EDEFAULT == null ? delimiter != null : !DELIMITER_EDEFAULT.equals(delimiter);
+			case DataMapperPackage.SPLIT__ARRAY_OUTPUT:
+				return arrayOutput != ARRAY_OUTPUT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -152,6 +203,8 @@ public class SplitImpl extends OperatorImpl implements Split {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (delimiter: ");
 		result.append(delimiter);
+		result.append(", arrayOutput: ");
+		result.append(arrayOutput);
 		result.append(')');
 		return result.toString();
 	}

@@ -57,6 +57,7 @@ public class SplitItemProvider
 			super.getPropertyDescriptors(object);
 
 			addDelimiterPropertyDescriptor(object);
+			addArrayOutputPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -84,6 +85,28 @@ public class SplitItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Array Output feature.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected void addArrayOutputPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Split_arrayOutput_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Split_arrayOutput_feature", "_UI_Split_type"),
+				 DataMapperPackage.Literals.SPLIT__ARRAY_OUTPUT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+    /**
 	 * This returns Split.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -121,6 +144,7 @@ public class SplitItemProvider
 
 		switch (notification.getFeatureID(Split.class)) {
 			case DataMapperPackage.SPLIT__DELIMITER:
+			case DataMapperPackage.SPLIT__ARRAY_OUTPUT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -83,12 +83,16 @@ public class MappingModelTraverser {
 	}
 
 	/**
-	 * @param tree 				tree element which would be travers
+	 * @param tree 				tree element which would be traverse
 	 * @param config			full configuration 
 	 * @param parentFunction	function which would be the function call statement execute
 	 */
 	private static void traverse(TreeNode tree, DataMapperConfiguration config, Function parentFunction) {
 		List<Function> functionListForTree = new ArrayList<Function>();
+		
+		/*if (parentFunction.isMainFunction()) {
+			functionListForTree.add(parentFunction);
+		}*/
 
 		for(Element element : tree.getElement()){
 			if(OperatorConfigurationUtil.isMaped(element)){
@@ -123,7 +127,7 @@ public class MappingModelTraverser {
 						}
 						
 					}
-					// array type elment map with operators
+					// array type element map with operators
 					else {
 						EObject eObjectoperator = OperatorConfigurationUtil.getOperatorClass(element);
 						Operator operator = (Operator) eObjectoperator;
@@ -216,9 +220,9 @@ public class MappingModelTraverser {
 			config.getFunctionList().addAll(functionListForTree);
 			for (Function function : functionListForTree) {
 				function.setParentFunction(parentFunction);
-				//set functon call staement for appropriate parent function
+				//set function call statement for appropriate parent function
 				
-					parentFunction.getFunctionBody().getAssignmentStatements().add(function.getFunctionCall());
+					parentFunction.getFunctionBody().getFunctionCallStatements().add(function.getFunctionCall());
 				
 			}
 		}

@@ -14,6 +14,7 @@ import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
 
 public class SplitTransform implements OperatorsTransformer {
 
+	private static final String INDEX = "[i]"; 
 	@Override
 	public AssignmentStatement transform(Operator operator) {
 		AssignmentStatement assign = new AssignmentStatement();
@@ -22,7 +23,7 @@ public class SplitTransform implements OperatorsTransformer {
 		Element splitInput = getInputElement(operator);
 		String index = "";
 		if(splitInput.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
-			index = "[i]";
+			index = INDEX;
 		}
 		Split split = (Split) operator;
 		int i=0;
@@ -37,9 +38,16 @@ public class SplitTransform implements OperatorsTransformer {
 		}
 		
 		assign.setStatement(statement.toString());
+
+		
 		return assign;
 	}
 	
+	/**
+	 * mapped input element needs for create map statements
+	 * @param operator split operator
+	 * @return input element for split
+	 */
 	private Element getInputElement( Operator operator) {
 		return operator.getBasicContainer().getLeftContainer().getLeftConnectors().get(0).getInNode().getIncomingLink().get(0).getOutNode().getElementParent();
 	}
@@ -48,6 +56,11 @@ public class SplitTransform implements OperatorsTransformer {
 		return getOutputElements(operator).get(0).getFieldParent();
 	}
 	
+	/**
+	 * mapped output elements needs for create map statements
+	 * @param operator split operator
+	 * @return output elements which split results mapped
+	 */
 	private ArrayList<Element> getOutputElements(Operator operator) {
 		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
 		ArrayList<Element> elementList = new ArrayList<Element>();
@@ -58,5 +71,15 @@ public class SplitTransform implements OperatorsTransformer {
 		}
 		return elementList;
 	}
+	
+	private Operator getNextOperator(Operator currentOperator){
+		for (OperatorRightConnector connector : currentOperator.getBasicContainer().getRightContainer().getRightConnectors()){
+			if(connector.getOutNode().getOutgoingLink().size() != 0){
+				
+			}
+		}
+		return null;
+	}
+
 
 }

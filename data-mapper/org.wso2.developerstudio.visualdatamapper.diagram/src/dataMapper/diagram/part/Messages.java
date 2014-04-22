@@ -380,5 +380,7 @@ public class Messages extends NLS {
 	 */
 	public static String DataMapperModelingAssistantProviderMessage;
 
+	public static String DiagramEditorContextMenuProvider_errorContextMenu;
+
 	//TODO: put accessor fields manually	
 }

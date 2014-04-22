@@ -24,7 +24,6 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -376,10 +375,6 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 			figure2.setFill(false);
 			this.setOutline(false);
 			this.setFill(false);
-
-			figure.add(figure2);
-			figure.add(clickNode);
-			figure.add(fFigureFileNameFigure);
 
 			this.add(figure);
 

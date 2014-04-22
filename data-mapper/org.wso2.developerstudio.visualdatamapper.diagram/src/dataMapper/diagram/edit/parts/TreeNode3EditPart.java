@@ -24,7 +24,6 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -40,9 +39,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import dataMapper.TreeNode;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-//
-//import jfb.examples.gmf.filesystem.TreeNode;
-//import jfb.examples.gmf.filesystem.diagram.edit.parts.TreeNode3EditPart.TreeNodeFigure.ClickNode;
 
 /**
  * @generated

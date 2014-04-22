@@ -23,10 +23,8 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
@@ -40,9 +38,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import dataMapper.TreeNode;
 import dataMapper.diagram.edit.parts.custom.CustomNonResizableEditPolicyEx;
-// import jfb.examples.gmf.filesystem.TreeNode;
-// import
-// jfb.examples.gmf.filesystem.diagram.edit.parts.TreeNodeEditPart.TreeNodeFigure.ClickNode;
 
 /**
  * @generated
@@ -107,7 +102,6 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	}
 
 	protected void addChild(EditPart child, int index) {
-		// TODO Auto-generated method stub
 		super.addChild(child, index);
 	}
 
@@ -411,7 +405,6 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 
 			@Override
 			protected void setContents(IFigure contents) {
-				// TODO Auto-generated method stub
 				super.setContents(contents);
 			}
 		}

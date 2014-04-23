@@ -517,7 +517,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			this.setFill(false);
 			this.setBorder(null);
 
-			this.addMouseMotionListener(new MouseMotionListener() {
+			/*this.addMouseMotionListener(new MouseMotionListener() {
 
 				@Override
 				public void mouseDragged(MouseEvent me) {
@@ -545,7 +545,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				public void mouseMoved(MouseEvent me) {
 				}
 
-			});
+			});*/
 
 			createContents();
 

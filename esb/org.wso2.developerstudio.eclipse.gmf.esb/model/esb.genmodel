@@ -537,6 +537,11 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CloudConnectorOperationParamEditorType/Inline"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CloudConnectorOperationParamEditorType/NamespacedPropertyEditor"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//DataMapperMediatorDataTypes">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DataMapperMediatorDataTypes/XML"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DataMapperMediatorDataTypes/CSV"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DataMapperMediatorDataTypes/JSON"/>
+    </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/V"/>
@@ -1980,6 +1985,7 @@
     <genClasses ecoreClass="esb.ecore#//CloudConnectorOperationOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//DataMapperMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/inputConnector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/inputType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/outputConnector"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/configuration"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//DataMapperMediator/InputSchema"/>
@@ -1987,6 +1993,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/configurationLocalPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/inputSchemaLocalPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/outputSchemaLocalPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//DataMapperMediator/outputType"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//DataMapperMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//DataMapperMediatorOutputConnector"/>

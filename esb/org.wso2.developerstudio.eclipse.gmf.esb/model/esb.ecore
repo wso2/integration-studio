@@ -2552,6 +2552,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//DataMapperMediatorInputConnector"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputType" eType="#//DataMapperMediatorDataTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//DataMapperMediatorOutputConnector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="#//RegistryKeyProperty"
@@ -2565,6 +2566,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputSchemaLocalPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputSchemaLocalPath"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputType" eType="#//DataMapperMediatorDataTypes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataMapperMediatorDataTypes">
+    <eLiterals name="XML" literal="application/xml"/>
+    <eLiterals name="CSV" value="1" literal="text/csv"/>
+    <eLiterals name="JSON" value="2" literal="application/json"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>

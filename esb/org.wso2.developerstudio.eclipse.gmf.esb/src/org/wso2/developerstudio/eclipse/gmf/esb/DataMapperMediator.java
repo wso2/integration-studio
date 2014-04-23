@@ -25,6 +25,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputType <em>Input Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchema <em>Input Schema</em>}</li>
@@ -32,6 +33,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigurationLocalPath <em>Configuration Local Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchemaLocalPath <em>Input Schema Local Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchemaLocalPath <em>Output Schema Local Path</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputType <em>Output Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,6 +67,35 @@ public interface DataMapperMediator extends Mediator {
 	 * @generated
 	 */
 	void setInputConnector(DataMapperMediatorInputConnector value);
+
+	/**
+	 * Returns the value of the '<em><b>Input Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+	 * @see #setInputType(DataMapperMediatorDataTypes)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getDataMapperMediator_InputType()
+	 * @model
+	 * @generated
+	 */
+	DataMapperMediatorDataTypes getInputType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputType <em>Input Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Input Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+	 * @see #getInputType()
+	 * @generated
+	 */
+	void setInputType(DataMapperMediatorDataTypes value);
 
 	/**
 	 * Returns the value of the '<em><b>Output Connector</b></em>' containment reference.
@@ -247,5 +278,34 @@ public interface DataMapperMediator extends Mediator {
 	 * @generated
 	 */
 	void setOutputSchemaLocalPath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Output Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Output Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+	 * @see #setOutputType(DataMapperMediatorDataTypes)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getDataMapperMediator_OutputType()
+	 * @model
+	 * @generated
+	 */
+	DataMapperMediatorDataTypes getOutputType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputType <em>Output Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Output Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+	 * @see #getOutputType()
+	 * @generated
+	 */
+	void setOutputType(DataMapperMediatorDataTypes value);
 
 } // DataMapperMediator

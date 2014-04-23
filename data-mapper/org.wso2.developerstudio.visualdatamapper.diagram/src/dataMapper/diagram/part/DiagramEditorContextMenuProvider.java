@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
 
+import dataMapper.Split;
 import dataMapper.diagram.custom.action.AddNewFieldAction;
 import dataMapper.diagram.custom.action.AddNewRecordAction;
 import dataMapper.diagram.custom.action.AddNewRecordsListAction;
@@ -25,9 +26,11 @@ import dataMapper.diagram.custom.action.AddNewRootRecordAction;
 import dataMapper.diagram.custom.action.ConcatManyAction;
 import dataMapper.diagram.custom.action.LoadInputSchemaAction;
 import dataMapper.diagram.custom.action.LoadOutputSchemaAction;
+import dataMapper.diagram.custom.action.SplitManyAction;
 import dataMapper.diagram.edit.parts.ConcatEditPart;
 import dataMapper.diagram.edit.parts.InputEditPart;
 import dataMapper.diagram.edit.parts.OutputEditPart;
+import dataMapper.diagram.edit.parts.SplitEditPart;
 import dataMapper.diagram.edit.parts.TreeNode2EditPart;
 import dataMapper.diagram.edit.parts.TreeNode3EditPart;
 import dataMapper.diagram.edit.parts.TreeNodeEditPart;
@@ -73,6 +76,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		contextActions.put(InputEditPart.class, new LoadInputSchemaAction(part));
 		contextActions.put(OutputEditPart.class, new LoadOutputSchemaAction(part));
 		contextActions.put(ConcatEditPart.class, new ConcatManyAction(part));
+		contextActions.put(SplitEditPart.class, new SplitManyAction(part));
 
 		// Initialize new root record context sensitive actions.
 		addNewRootRecordContextActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();

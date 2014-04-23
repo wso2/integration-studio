@@ -96,9 +96,17 @@ public class DataMapperMediatorDeserializer extends
 					executeSetValueCommand(DATA_MAPPER_MEDIATOR__INPUT_TYPE,
 							DataMapperMediatorDataTypes.CSV);
 					break;
-				default:
+				case XML:
 					executeSetValueCommand(DATA_MAPPER_MEDIATOR__INPUT_TYPE,
 							DataMapperMediatorDataTypes.XML);
+					break;
+				case JSON:
+					executeSetValueCommand(DATA_MAPPER_MEDIATOR__INPUT_TYPE,
+							DataMapperMediatorDataTypes.JSON);
+					break;
+				default:
+					executeSetValueCommand(DATA_MAPPER_MEDIATOR__INPUT_TYPE,
+							DataMapperMediatorDataTypes.JSON);
 				}
 			}
 		}

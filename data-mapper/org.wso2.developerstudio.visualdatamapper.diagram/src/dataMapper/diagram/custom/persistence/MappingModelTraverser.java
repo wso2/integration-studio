@@ -131,33 +131,35 @@ public class MappingModelTraverser {
 					else {
 						EObject eObjectoperator = OperatorConfigurationUtil.getOperatorClass(element);
 						Operator operator = (Operator) eObjectoperator;
-						if(!operatorsList.contains(System.identityHashCode(operator))){
-							operatorsList.add(System.identityHashCode(operator));
-							
-							OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(operator);
-							AssignmentStatement assign = transformer.transform(operator); //FIXME wrong assignment get for array. should handle in each operator class
-							functionForElement.setOutputParameter(transformer.getOutputElementParent(operator));
-							functionForElement.setSingle(false);
-							Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
-							
-							if( oldFunction == null){
-								ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();
-								FunctionBody body = new FunctionBody();
-								assignmentList.add(assign);
-								ForLoop loop = new ForLoop();
-								loop.setArrayTree(tree);
-								loop.setAssignmentStatements(assignmentList);
-								ArrayList<ForLoop> forLoop = new ArrayList<ForLoop>();
-								forLoop.add(loop);
-								body.setForLoop(forLoop);
+						if (operator != null) {
+							if(!operatorsList.contains(System.identityHashCode(operator))){
+								operatorsList.add(System.identityHashCode(operator));
+								
+								OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(operator);
+								AssignmentStatement assign = transformer.transform(operator); //FIXME wrong assignment get for array. should handle in each operator class
+								functionForElement.setOutputParameter(transformer.getOutputElementParent(operator));
+								functionForElement.setSingle(false);
+								Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
+								
+								if( oldFunction == null){
+									ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();
+									FunctionBody body = new FunctionBody();
+									assignmentList.add(assign);
+									ForLoop loop = new ForLoop();
+									loop.setArrayTree(tree);
+									loop.setAssignmentStatements(assignmentList);
+									ArrayList<ForLoop> forLoop = new ArrayList<ForLoop>();
+									forLoop.add(loop);
+									body.setForLoop(forLoop);
 
-								functionForElement.setFunctionBody(body);
-								functionListForTree.add(functionForElement);
+									functionForElement.setFunctionBody(body);
+									functionListForTree.add(functionForElement);
+								}
+								else {
+									oldFunction.getFunctionBody().getForLoop().get(0).getAssignmentStatements().add(assign);
+								}
 							}
-							else {
-								oldFunction.getFunctionBody().getForLoop().get(0).getAssignmentStatements().add(assign);
-							}
-						}
+						}	
 					}
 				}
 				//Record type mapping

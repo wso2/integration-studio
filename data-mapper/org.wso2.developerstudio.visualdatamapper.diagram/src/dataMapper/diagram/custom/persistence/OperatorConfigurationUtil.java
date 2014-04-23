@@ -188,14 +188,14 @@ public class OperatorConfigurationUtil {
 		return null;
 	}
 	
-	/**util method for create simple map staement with indexing
+	/** Util method for create simple map statement with indexing
 	 * @param element input tree node child element which one to one map
-	 * @return	assignment statement with arrya indexed for each in/out nodes
+	 * @return	assignment statement with array indexed for each in/out nodes
 	 */
 	public static String getSimpleArrayMappingStatement(Element element) {
 		if(isSimpleMap(element)){
-			String inputParentName = getElementParentName(getSimpleMapOutputElement(element));
-			String outputParentName = element.getFieldParent().getName();
+			String outputParentName = getElementParentName(getSimpleMapOutputElement(element));
+			String inputParentName = element.getFieldParent().getName();
 			
 			/*
 			 * If input parameter and output parameter names are identical,

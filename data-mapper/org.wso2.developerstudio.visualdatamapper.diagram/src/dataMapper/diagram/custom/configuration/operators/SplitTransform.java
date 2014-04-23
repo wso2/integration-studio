@@ -29,10 +29,19 @@ public class SplitTransform implements OperatorsTransformer {
 		Split split = (Split) operator;
 		int i=0;
 		int splitArrayMapIndex = split.getArrayOutput() - 1;
+		/**
+		 * due to there can be different requirement with number of output connectors, it needs to iterate through all output connectors and build config assignments
+		 */
 		for(Element output : splitOutputs){
 			
-			String outputParentName = output.getFieldParent().getName();
-			String inputParentName = splitInput.getFieldParent().getName();
+			//input parent name can be same as the output parent name. in that case we needs to append "output" string to output parent name.
+			String outputParentName = "";
+			String inputParentName = "";
+			if(output != null ){
+				
+				outputParentName = output.getFieldParent().getName();
+				inputParentName = splitInput.getFieldParent().getName();
+			}
 			
 			/*
 			 * If input parameter and output parameter names are identical,
@@ -65,8 +74,8 @@ public class SplitTransform implements OperatorsTransformer {
 				statement.append(outputParentName + index + "."+ output.getName() + " = new Array();");
 				statement.append(System.lineSeparator());
 				
+				ArrayList<Integer> indexList = getUnmappedOutputNodes(operator);
 				if (split.getDelimiter() != null) {
-					ArrayList<Integer> indexList = getUnmappedOutputNodes(operator);
 					for(Integer unmappedIndex : indexList){
 						
 						statement.append(outputParentName + index + "."
@@ -78,14 +87,18 @@ public class SplitTransform implements OperatorsTransformer {
 					}
 				} 
 				else {
-					statement.append(outputParentName + index + "."
-							+ output.getName() + " = " + inputParentName
-							+ index + "." + splitInput.getName() + ".split(\"\")" + "[" + i
-							+ "];");
-					statement.append(System.lineSeparator());
-					statement.append("\t\t");
+					for(Integer unmappedIndex : indexList){
+						
+						statement.append(outputParentName + index + "."
+								+ output.getName() + " = " + inputParentName
+								+ index + "." + splitInput.getName() + ".split(\"\")" + "[" + unmappedIndex.intValue()
+								+ "];");
+						statement.append(System.lineSeparator());
+						statement.append("\t\t");
+					}
 				}
 			}
+
 			i++;
 		}
 		

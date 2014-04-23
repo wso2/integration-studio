@@ -30,12 +30,14 @@ import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
 
 public class ConcatTransform implements OperatorsTransformer{
 
+	private static final String INDEX = "[i]";
+	
 	@Override
 	public AssignmentStatement transform(Operator operator) {
 		ArrayList<Element> concatInput = getInputElements(operator);
 		String index = "";
 		if(concatInput.get(0).getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
-			index = "[i]";
+			index = INDEX;
 		}
 		
 		AssignmentStatement assign = new AssignmentStatement();
@@ -56,14 +58,25 @@ public class ConcatTransform implements OperatorsTransformer{
 		return assign;
 	}
 	
+	/**
+	 * to complete assignment statement output element needs to be find
+	 * @param operator concat operator object
+	 * @return out put element of output tree which have mapped 
+	 */
 	private Element getOutputElement( Operator operator) {
 		return operator.getBasicContainer().getRightContainer().getRightConnectors().get(0).getOutNode().getOutgoingLink().get(0).getInNode().getElementParent();
 	}
+	
 	@Override
 	public TreeNode getOutputElementParent(Operator operator) {
 		return getOutputElement(operator).getFieldParent();
 	}
 	
+	/**
+	 * list of input elements needs to create assignment statements 
+	 * @param operator concat operator object
+	 * @return input elements of input tree which have mapped to concat 
+	 */
 	private ArrayList<Element> getInputElements(Operator operator) {
 		EList<OperatorLeftConnector> leftConnectors = operator.getBasicContainer().getLeftContainer().getLeftConnectors();
 		ArrayList<Element> elementList = new ArrayList<Element>();
@@ -72,5 +85,6 @@ public class ConcatTransform implements OperatorsTransformer{
 		}
 		return elementList;
 	}
+
 
 }

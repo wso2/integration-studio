@@ -2,6 +2,7 @@ package dataMapper.diagram.custom.configuration.operators;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.util.EList;
 
 import dataMapper.Element;
@@ -30,38 +31,59 @@ public class SplitTransform implements OperatorsTransformer {
 		int splitArrayMapIndex = split.getArrayOutput() - 1;
 		for(Element output : splitOutputs){
 			
+			String outputParentName = output.getFieldParent().getName();
+			String inputParentName = splitInput.getFieldParent().getName();
+			
+			/*
+			 * If input parameter and output parameter names are identical,
+			 * append term 'output' to the output parameter as a convention.
+			 */
+			if (outputParentName.equals(inputParentName)) {
+				outputParentName = "output" + WordUtils.capitalize(outputParentName);
+			}
+			
 			if (output != null && splitArrayMapIndex != i ) {
 				if (split.getDelimiter() != null) {
-					statement.append(output.getFieldParent().getName() + index + "."
-							+ output.getName() + " = " + splitInput.getFieldParent().getName()
+					statement.append(outputParentName + index + "."
+							+ output.getName() + " = " + inputParentName
 							+ index + "." + splitInput.getName() + ".split(\""
-							+ split.getDelimiter() + "\")" + "[" + i + "];\n");
+							+ split.getDelimiter() + "\")" + "[" + i + "];");
+					statement.append(System.lineSeparator());
+					statement.append("\t\t");
 				} 
 				else {
-					statement.append(output.getFieldParent().getName() + index + "."
-							+ output.getName() + " = " + splitInput.getFieldParent().getName()
+					statement.append(outputParentName + index + "."
+							+ output.getName() + " = " + inputParentName
 							+ index + "." + splitInput.getName() + ".split(\"\")" + "[" + i
-							+ "];\n");
+							+ "];");
+					statement.append(System.lineSeparator());
+					statement.append("\t\t");
 				}
 			}
 			else if(output != null && splitArrayMapIndex == i){
 
-				statement.append(output.getFieldParent().getName() + index + "."+ output.getName() + " = new Array();\n");
+				statement.append(outputParentName + index + "."+ output.getName() + " = new Array();");
+				statement.append(System.lineSeparator());
+				
 				if (split.getDelimiter() != null) {
 					ArrayList<Integer> indexList = getUnmappedOutputNodes(operator);
 					for(Integer unmappedIndex : indexList){
 						
-						statement.append(output.getFieldParent().getName() + index + "."
-								+ output.getName() + ".push(" + splitInput.getFieldParent().getName()
+						statement.append(outputParentName + index + "."
+								+ output.getName() + ".push(" + inputParentName
 								+ index + "." + splitInput.getName() + ".split(\""
-								+ split.getDelimiter() + "\")" + "[" + unmappedIndex.intValue() + "]);\n");
+								+ split.getDelimiter() + "\")" + "[" + unmappedIndex.intValue() + "]);");
+						statement.append(System.lineSeparator());
+						statement.append("\t\t");
 					}
 				} 
 				else {
-					statement.append(output.getFieldParent().getName() + index + "."
-							+ output.getName() + " = " + splitInput.getFieldParent().getName()
+					statement.append(outputParentName + index + "."
+							+ output.getName() + " = " + inputParentName
 							+ index + "." + splitInput.getName() + ".split(\"\")" + "[" + i
-							+ "];\n");
+							+ "];");
+					statement.append(System.lineSeparator());
+					statement.append("\t\t");
 				}
 			}
 			i++;

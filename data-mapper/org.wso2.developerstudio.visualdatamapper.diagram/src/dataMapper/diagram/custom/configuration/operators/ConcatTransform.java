@@ -18,6 +18,7 @@ package dataMapper.diagram.custom.configuration.operators;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.util.EList;
 
 import dataMapper.Concat;
@@ -41,13 +42,25 @@ public class ConcatTransform implements OperatorsTransformer{
 		}
 		
 		AssignmentStatement assign = new AssignmentStatement();
-		StringBuilder statement = new StringBuilder(getOutputElementParent(operator).getName()+index+"."+getOutputElement(operator).getName()+"=");
-		statement.append(concatInput.get(0).getFieldParent().getName()+index+"."+concatInput.get(0).getName());
+		
+		String outputParentName = getOutputElementParent(operator).getName();
+		String inputParentName = concatInput.get(0).getFieldParent().getName();
+		
+		/*
+		 * If input parameter and output parameter names are identical,
+		 * append term 'output' to the output parameter as a convention.
+		 */
+		if (outputParentName.equals(inputParentName)) {
+			outputParentName = "output" + WordUtils.capitalize(outputParentName);
+		}
+		
+		StringBuilder statement = new StringBuilder(outputParentName + index + "." + getOutputElement(operator).getName() + "=");
+		statement.append(concatInput.get(0).getFieldParent().getName() + index + "." + concatInput.get(0).getName());
 		concatInput.remove(0);
 		Concat concat = (Concat) operator;
 		
 		for(Element element : concatInput){
-			if(concat.getDelimiter() != null && concat.getDelimiter().equalsIgnoreCase("")){
+			if(concat.getDelimiter() != null && !concat.getDelimiter().equalsIgnoreCase("")){
 				statement.append(".concat("+"\""+concat.getDelimiter()+"\"+"+element.getFieldParent().getName()+index+"."+element.getName()+")");
 			}else{				
 				statement.append(".concat("+element.getFieldParent().getName()+index+"."+element.getName()+")");

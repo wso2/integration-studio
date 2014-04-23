@@ -604,6 +604,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createProcessorStateFromString(eDataType, initialValue);
 			case EsbPackage.CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE:
 				return createCloudConnectorOperationParamEditorTypeFromString(eDataType, initialValue);
+			case EsbPackage.DATA_MAPPER_MEDIATOR_DATA_TYPES:
+				return createDataMapperMediatorDataTypesFromString(eDataType, initialValue);
 			case EsbPackage.MAP:
 				return createMapFromString(eDataType, initialValue);
 			default:
@@ -820,6 +822,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertProcessorStateToString(eDataType, instanceValue);
 			case EsbPackage.CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE:
 				return convertCloudConnectorOperationParamEditorTypeToString(eDataType, instanceValue);
+			case EsbPackage.DATA_MAPPER_MEDIATOR_DATA_TYPES:
+				return convertDataMapperMediatorDataTypesToString(eDataType, instanceValue);
 			case EsbPackage.MAP:
 				return convertMapToString(eDataType, instanceValue);
 			default:
@@ -6360,6 +6364,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertCloudConnectorOperationParamEditorTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataMapperMediatorDataTypes createDataMapperMediatorDataTypesFromString(EDataType eDataType, String initialValue) {
+		DataMapperMediatorDataTypes result = DataMapperMediatorDataTypes.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataMapperMediatorDataTypesToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

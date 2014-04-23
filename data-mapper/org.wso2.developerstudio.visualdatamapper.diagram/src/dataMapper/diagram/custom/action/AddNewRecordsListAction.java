@@ -17,8 +17,10 @@
 package dataMapper.diagram.custom.action;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.ui.action.AbstractActionHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
@@ -30,12 +32,19 @@ import org.eclipse.ui.PlatformUI;
 
 import dataMapper.DataMapperFactory;
 import dataMapper.DataMapperPackage;
+import dataMapper.DataMapperRoot;
 import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
+import dataMapper.diagram.edit.parts.InputEditPart;
+import dataMapper.diagram.edit.parts.OutputEditPart;
+import dataMapper.diagram.part.DataMapperMultiPageEditor;
+import dataMapper.impl.TreeNodeImpl;
 
 public class AddNewRecordsListAction extends AbstractActionHandler {
 
 	private EditPart selectedEP;
+	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
+	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
 	private static final String NEW_RECORDS_LIST_ID = "NewRecordsList"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewRecordsListAction_addNewRecordsList;
@@ -76,6 +85,80 @@ public class AddNewRecordsListAction extends AbstractActionHandler {
 				((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
 						.execute(addCmd);
 			}
+
+			// FIXME force refresh root
+			String selectedInputOutputEditPart = getSelectedInputOutputEditPart();
+			if (null != selectedInputOutputEditPart) {
+				DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor
+						.getGraphicalEditor().getDiagram().getElement();
+				if (INPUT_EDITPART.equals(selectedInputOutputEditPart)) {
+					EList<TreeNode> inputTreeNodesList = rootDiagram.getInput().getTreeNode();
+					if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {
+						// keep a temp reference
+						TreeNodeImpl inputTreeNode = (TreeNodeImpl) inputTreeNodesList.get(0);
+						// remove and add to rectify placing
+						RemoveCommand rootRemCmd = new RemoveCommand(
+								((GraphicalEditPart) selectedEP).getEditingDomain(),
+								rootDiagram.getInput(),
+								DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode);
+						if (rootRemCmd.canExecute()) {
+							((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+									.execute(rootRemCmd);
+						}
+
+						AddCommand rootAddCmd = new AddCommand(
+								((GraphicalEditPart) selectedEP).getEditingDomain(),
+								rootDiagram.getInput(),
+								DataMapperPackage.Literals.INPUT__TREE_NODE, inputTreeNode, 0);
+						if (rootAddCmd.canExecute()) {
+							((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+									.execute(rootAddCmd);
+						}
+					}
+				} else {
+					EList<TreeNode> outputTreeNodesList = rootDiagram.getOutput().getTreeNode();
+					if (null != outputTreeNodesList && !outputTreeNodesList.isEmpty()) {
+						// keep a temp reference
+						TreeNodeImpl outputTreeNode = (TreeNodeImpl) outputTreeNodesList.get(0);
+						// remove and add to rectify placing
+						RemoveCommand rootRemCmd = new RemoveCommand(
+								((GraphicalEditPart) selectedEP).getEditingDomain(),
+								rootDiagram.getOutput(),
+								DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputTreeNode);
+						if (rootRemCmd.canExecute()) {
+							((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+									.execute(rootRemCmd);
+						}
+
+						AddCommand rootAddCmd = new AddCommand(
+								((GraphicalEditPart) selectedEP).getEditingDomain(),
+								rootDiagram.getOutput(),
+								DataMapperPackage.Literals.OUTPUT__TREE_NODE, outputTreeNode, 0);
+						if (rootAddCmd.canExecute()) {
+							((GraphicalEditPart) selectedEP).getEditingDomain().getCommandStack()
+									.execute(rootAddCmd);
+						}
+
+					}
+				}
+
+			}
+		}
+	}
+
+	private String getSelectedInputOutputEditPart() {
+		EditPart tempEP = selectedEP;
+		while (!(tempEP instanceof InputEditPart) && !(tempEP instanceof OutputEditPart)) {
+			tempEP = tempEP.getParent();
+		}
+
+		if (tempEP instanceof InputEditPart) {
+			return INPUT_EDITPART;
+		} else if (tempEP instanceof OutputEditPart) {
+			return OUTPUT_EDITPART;
+		} else {
+			// When the selected editpart is not InputEditPart or OutputEditPart
+			return null;
 		}
 	}
 

@@ -601,6 +601,29 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link dataMapper.UpperCase} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UpperCaseItemProvider upperCaseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link dataMapper.UpperCase}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUpperCaseAdapter() {
+		if (upperCaseItemProvider == null) {
+			upperCaseItemProvider = new UpperCaseItemProvider(this);
+		}
+
+		return upperCaseItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -722,6 +745,7 @@ public class DataMapperItemProviderAdapterFactory extends DataMapperAdapterFacto
 		if (splitItemProvider != null) splitItemProvider.dispose();
 		if (lowerCaseItemProvider != null) lowerCaseItemProvider.dispose();
 		if (containsItemProvider != null) containsItemProvider.dispose();
+		if (upperCaseItemProvider != null) upperCaseItemProvider.dispose();
 	}
 
 }

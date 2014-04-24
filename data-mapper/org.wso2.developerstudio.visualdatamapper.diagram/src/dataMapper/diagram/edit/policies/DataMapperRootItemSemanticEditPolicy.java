@@ -51,6 +51,10 @@ public class DataMapperRootItemSemanticEditPolicy extends
 				.getElementType()) {
 			return getGEFWrapper(new dataMapper.diagram.edit.commands.ContainsCreateCommand(req));
 		}
+		if (dataMapper.diagram.providers.DataMapperElementTypes.UpperCase_2011 == req
+				.getElementType()) {
+			return getGEFWrapper(new dataMapper.diagram.edit.commands.UpperCaseCreateCommand(req));
+		}
 		return super.getCreateCommand(req);
 	}
 

@@ -1,12 +1,9 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
-import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
-import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -22,21 +19,17 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
-
-import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 
 /**
- * @generated NOT
+ * @generated
  */
-public class ConcatEditPart extends AbstractOperatorEditPart {
+public class UpperCaseEditPart extends ShapeNodeEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 2006;
+	public static final int VISUAL_ID = 2011;
 
 	/**
 	 * @generated
@@ -51,7 +44,7 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 	/**
 	 * @generated
 	 */
-	public ConcatEditPart(View view) {
+	public UpperCaseEditPart(View view) {
 		super(view);
 	}
 
@@ -63,10 +56,10 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new dataMapper.diagram.edit.policies.ConcatItemSemanticEditPolicy());
+				new dataMapper.diagram.edit.policies.UpperCaseItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new dataMapper.diagram.edit.policies.ConcatCanonicalEditPolicy());
+				new dataMapper.diagram.edit.policies.UpperCaseCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -98,10 +91,10 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new ConcatFigure();
+		return primaryShape = new RectangleFigure();
 	}
 
 	/**
@@ -196,37 +189,5 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-
-	public class ConcatFigure extends RoundedRectangle {
-
-		public ConcatFigure() {
-			this.setBackgroundColor(THIS_BACK);
-
-			TitleBarBorder titleBarBorder = new TitleBarBorder("Concat");
-			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
-			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
-			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
-			this.setBorder(titleBarBorder);
-
-			/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			 border.setColor(new Color(null, 255, 0, 0));*/
-			this.setBorder(titleBarBorder);
-		}
-
-		public String getIconPath() {
-			return "icons/ico20/log-mediator.gif";
-		}
-
-		public String getNodeName() {
-			return "Equal";
-		}
-
-		public IFigure getToolTip() {
-			return new Label("Equal Operation");
-		}
-
-	}
-
-	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

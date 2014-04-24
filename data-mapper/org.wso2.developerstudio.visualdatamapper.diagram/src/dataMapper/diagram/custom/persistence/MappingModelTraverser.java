@@ -105,7 +105,7 @@ public class MappingModelTraverser {
 						AssignmentStatement assign = new AssignmentStatement();
 						assign.setStatement(mapAssignmennt);
 						
-						functionForElement.setOutputParameter(OperatorConfigurationUtil.getSimpleMapOutputElement(element).getFieldParent());
+						functionForElement.setOutputParameter(OperatorConfigurationUtil.getSimpleArrayMapOutputParent(element));
 						functionForElement.setSingle(false);
 						Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
 						

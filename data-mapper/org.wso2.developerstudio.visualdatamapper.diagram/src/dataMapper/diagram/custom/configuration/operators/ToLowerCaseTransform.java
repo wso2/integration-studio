@@ -38,10 +38,10 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 		
 		if(lowerCaseInput instanceof Element){
 			Element inputElement = (Element) lowerCaseInput;
-			if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
-				String index = INDEX;
-				return getSimpleOperatorMapping(operator, inputElement, index);
-			}
+//			if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
+//				String index = INDEX;
+//				return getSimpleOperatorMapping(operator, inputElement, index);
+//			}
 			
 			return getSimpleOperatorMapping(operator, inputElement);
 			
@@ -59,7 +59,17 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 	}
 	@Override
 	public TreeNode getOutputElementParent(Operator operator) {
-		return getOutputElement(operator).getFieldParent();
+		Element outputElement = getOutputElement(operator);
+		Element inputElement = (Element)getInputObject(operator);
+		TreeNode outputParent = outputElement.getFieldParent();
+
+		if (inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY) && !(outputParent.getSchemaDataType().equals(SchemaDataType.ARRAY))) {
+			while (outputParent.getFieldParent() != null && !(outputParent.getSchemaDataType().equals(SchemaDataType.ARRAY))) {
+				outputParent = outputParent.getFieldParent();
+			}
+		}
+		
+		return outputParent;
 	}
 	
 	private EObject getInputObject(Operator operator) {
@@ -80,9 +90,33 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 	}
 	
 	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement){
-		String assign = getOutputElementParent(operator).getName()+"."+getOutputElement(operator).getName()+" = "+inputElement.getFieldParent().getName()+"."+inputElement.getName()+".toLowerCase();";
+		Element outputElement = getOutputElement(operator);
+		TreeNode outputParent = getOutputElementParent(operator);
+
+		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + inputElement.getFieldParent().getName()+INDEX + "." + inputElement.getName() + ".toLowerCase();";
+
 		AssignmentStatement statement = new AssignmentStatement();
 		statement.setStatement(assign);
 		return statement;
+	}
+	
+	private String getTreeHierarchy(TreeNode tree, TreeNode parent) {
+		StringBuilder hierarchy = new StringBuilder();
+
+		while (!(tree.equals(parent))) {
+			hierarchy.insert(0, tree.getName());
+			hierarchy.insert(0, ".");
+			tree = tree.getFieldParent();
+		}
+		
+		if(tree.getSchemaDataType().equals(SchemaDataType.ARRAY)){
+			hierarchy.insert(0, (tree.getName()+INDEX));
+		}
+		else {
+			hierarchy.insert(0, tree.getName());
+		}
+
+		return hierarchy.toString();
+
 	}
 }

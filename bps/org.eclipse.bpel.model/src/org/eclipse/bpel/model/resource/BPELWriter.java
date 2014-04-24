@@ -140,6 +140,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
+import org.eclipse.bpel.model.FailureHandling;
+import org.eclipse.bpel.model.FaultOnFailure;
+import org.eclipse.bpel.model.RetryDelay;
+import org.eclipse.bpel.model.RetryFor;
 
 /**
  * BPELWriter is responsible for serializing the BPEL EMF model to an output stream.
@@ -960,8 +964,86 @@ if (XSDConstants.SCHEMA_FOR_SCHEMA_URI_2001.equals(namespace)) {
 		return toPartsElement;
 	}
 
+
+	/**
+	 * for failureHandling extension provided by ODE: JIRA:TOOLS-785
+	 * 
+	 */
+	
+	protected Element failureHandling2XML(FailureHandling  failureHandling ) {
+		Element failureHandlingElement = createElementWithTag(
+				BPELConstants.NAMESPACE_FAILURE_HANDLING_URL,
+				BPELConstants.NAMESPACE_FAILURE_HANDLING_PREFIX,
+				BPELConstants.NODE_FAILURE_HANDLING);
+
+		//FaultOnFailure
+		FaultOnFailure faultOnFailure = failureHandling.getFaultOnFailure();
+		if (faultOnFailure != null) {
+			// Creating Element with ext nameSpace;
+			Element faultOnFailureElement = document.createElement(BPELConstants.NODE_FAULT_ON_FAILURE);
+			faultOnFailure2XML(faultOnFailure, faultOnFailureElement);
+			failureHandlingElement.appendChild(faultOnFailureElement);
+		}
+		
+		//retryFor
+		RetryFor retryFor = failureHandling.getRetryFor();
+		if (retryFor != null) {
+			// Creating Element with ext nameSpace;
+			Element retryForElement = document.createElement(BPELConstants.NODE_RETRY_FOR);
+			retryFor2XML(retryFor, retryForElement);
+			failureHandlingElement.appendChild(retryForElement);
+		}
+		
+		//retryFor
+		RetryDelay retryDelay = failureHandling.getRetryDelay();
+		if (retryDelay != null) {
+			// Creating Element with ext nameSpace;
+			Element retryDelayElement = document.createElement(BPELConstants.NODE_RETRY_DELAY);
+			retryDelay2XML(retryDelay, retryDelayElement);
+			failureHandlingElement.appendChild(retryDelayElement);
+		}
+		
+		// serialize local namespace prefixes to XML
+		failureHandlingElement.setAttributeNS(XSDConstants.XMLNS_URI_2000,
+					"xmlns:" + BPELConstants.NAMESPACE_FAILURE_HANDLING_PREFIX
+					, BPELConstants.NAMESPACE_FAILURE_HANDLING_URL);
+		
+		//extensibleElement2XML(eao, ecoElement);
+		
+		return failureHandlingElement;
+		
+	}
+
+	protected Element faultOnFailure2XML(FaultOnFailure faultOnFailure, Element faultOnFailureElement)
+	{
+		// adding Body content.
+		Boolean body = faultOnFailure.isValue();
+		CDATASection cdata = BPELUtils.createCDATASection(document,	String.valueOf(body));
+		faultOnFailureElement.appendChild(cdata);
+		return faultOnFailureElement;
+	}
+	
+	protected Element retryFor2XML(RetryFor retryFor, Element retryForElement)
+	{
+		// adding Body content.
+		int body = retryFor.getValue();
+		CDATASection cdata = BPELUtils.createCDATASection(document,	String.valueOf(body));
+		retryForElement.appendChild(cdata);
+		return retryForElement;
+	}
+	
+	protected Element retryDelay2XML(RetryDelay retryDelay, Element retryDelayElement)
+	{
+		// adding Body content.
+		int body = retryDelay.getValue();
+		CDATASection cdata = BPELUtils.createCDATASection(document,	String.valueOf(body));
+		retryDelayElement.appendChild(cdata);
+		
+		return retryDelayElement;
+	}
+	
 	protected Element correlations2XML(Correlations correlations) {
-		Element correlationsElement = createBPELElement("correlations");
+	Element correlationsElement = createBPELElement("correlations");
 
 		Iterator<?> it = correlations.getChildren().iterator();
 		while (it.hasNext()) {
@@ -1574,6 +1656,9 @@ if (XSDConstants.SCHEMA_FOR_SCHEMA_URI_2001.equals(namespace)) {
 		
 	}
 
+	protected Element createElementWithName(String tagName)	{
+		return document.createElement(tagName);
+	}
 
 	protected Element assign2XML(Assign activity) {
 

@@ -33,6 +33,7 @@ package org.eclipse.bpel.model;
  *   <li>{@link org.eclipse.bpel.model.Invoke#getFaultHandler <em>Fault Handler</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.Invoke#getFromParts <em>From Parts</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.Invoke#getToParts <em>To Parts</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.Invoke#getFailureHandling <em>Failure Handling</em>}</li>
  * </ul>
  * </p>
  *
@@ -194,5 +195,31 @@ public interface Invoke extends PartnerActivity {
 	 * @generated
 	 */
 	void setToParts(ToParts value);
+
+	/**
+	 * Returns the value of the '<em><b>Failure Handling</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Failure Handling</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Failure Handling</em>' containment reference.
+	 * @see #setFailureHandling(FailureHandling)
+	 * @see org.eclipse.bpel.model.BPELPackage#getInvoke_FailureHandling()
+	 * @model containment="true"
+	 * @generated
+	 */
+	FailureHandling getFailureHandling();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.model.Invoke#getFailureHandling <em>Failure Handling</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Failure Handling</em>' containment reference.
+	 * @see #getFailureHandling()
+	 * @generated
+	 */
+	void setFailureHandling(FailureHandling value);
 
 } // Invoke

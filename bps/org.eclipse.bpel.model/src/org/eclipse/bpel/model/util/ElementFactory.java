@@ -38,7 +38,9 @@ import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
+import org.eclipse.bpel.model.FailureHandling;
 import org.eclipse.bpel.model.FaultHandler;
+import org.eclipse.bpel.model.FaultOnFailure;
 import org.eclipse.bpel.model.From;
 import org.eclipse.bpel.model.FromPart;
 import org.eclipse.bpel.model.FromParts;
@@ -53,6 +55,8 @@ import org.eclipse.bpel.model.OnMessage;
 import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.PartnerLinks;
 import org.eclipse.bpel.model.Query;
+import org.eclipse.bpel.model.RetryDelay;
+import org.eclipse.bpel.model.RetryFor;
 import org.eclipse.bpel.model.ServiceRef;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
@@ -88,6 +92,11 @@ public class ElementFactory {
 		@Override
 		protected Element createBPELElement(String tagName) {
 			return super.createBPELElement(tagName);
+		}
+		
+		@Override
+		protected Element createElementWithName(String tagName) {
+			return super.createElementWithName(tagName);
 		}
 
 		@Override
@@ -345,6 +354,33 @@ public class ElementFactory {
 		protected Element documentation2XML(Documentation documentation) {
 			return super.documentation2XML(documentation);
 		}
+		
+		/**
+		 * for failureHandling extension provided by ODE: JIRA:TOOLS-785
+		 * 
+		 */
+		@Override
+		protected Element failureHandling2XML(FailureHandling failureHandling)
+		{
+			return super.failureHandling2XML(failureHandling);
+		}
+		
+		@Override
+		protected Element faultOnFailure2XML(FaultOnFailure faultOnFailure, Element faultOnFailureElement)
+		{
+			return super.faultOnFailure2XML(faultOnFailure, faultOnFailureElement);
+		}
+		@Override
+		protected Element retryFor2XML(RetryFor retryFor, Element retryForElement)
+		{
+			return super.retryFor2XML(retryFor, retryForElement);
+		}
+		@Override
+		protected Element retryDelay2XML(RetryDelay retryDelay, Element retryDelayElement)
+		{
+			return super.retryDelay2XML(retryDelay, retryDelayElement);
+		} 
+		
 	}
 
 	private static ElementFactory factory;
@@ -512,6 +548,26 @@ public class ElementFactory {
 		if (element instanceof Documentation) {
 			return writer.documentation2XML((Documentation) element);
 		}
+		// JIRA: TOOLS-785
+		if (element instanceof FailureHandling){
+			return writer.failureHandling2XML((FailureHandling) element);
+		}
+		if (element instanceof FaultOnFailure){
+			Element faultOnFailureElement = writer.createElementWithName(BPELConstants.NODE_FAULT_ON_FAILURE);
+			writer.faultOnFailure2XML((FaultOnFailure)element, faultOnFailureElement);
+			return faultOnFailureElement;
+		}
+		if (element instanceof RetryDelay){
+			Element retryDelayElement = writer.createElementWithName(BPELConstants.NODE_RETRY_DELAY);
+			writer.retryDelay2XML((RetryDelay) element, retryDelayElement);
+			return retryDelayElement;
+		}
+		if (element instanceof RetryFor){
+			Element retryForElement = writer.createElementWithName(BPELConstants.NODE_RETRY_FOR);
+			writer.retryFor2XML((RetryFor) element, retryForElement);
+			return retryForElement;
+		}
+		
 		throw new IllegalArgumentException("Cannot create element for type: " + element.getClass().getName());
 	}
 

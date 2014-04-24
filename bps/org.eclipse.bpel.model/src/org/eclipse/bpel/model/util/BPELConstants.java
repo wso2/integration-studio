@@ -69,6 +69,19 @@ public class BPELConstants {
 	 */
 	public static String NAMESPACE_ABSTRACT_PROFILE = NAMESPACE_ABSTRACT_PROFILE_T;
 	
+	/**
+	 *  failureHandling extension provided by ODE: JIRA:TOOLS-785
+	 *  Constants;
+	 *  
+	 */
+	public static String NAMESPACE_FAILURE_HANDLING_URL = "http://ode.apache.org/activityRecovery";
+	public static String NAMESPACE_FAILURE_HANDLING_PREFIX = "ext";
+	public static String NODE_FAILURE_HANDLING= "failureHandling";
+	
+	public static String NODE_FAULT_ON_FAILURE = "ext:faultOnFailure";
+	public static String NODE_RETRY_FOR = "ext:retryFor";
+	public static String NODE_RETRY_DELAY = "ext:retryDelay";
+	
     /**
 	 * Tests if <code>namespace</code> equals any of the valid namespaces.
 	 * @param namespace The namespace

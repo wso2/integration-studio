@@ -140,7 +140,9 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -161,7 +163,8 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 */
 	public EList<Role> getRole() {
 		if (role == null) {
-			role = new EObjectContainmentEList<Role>(Role.class, this, PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE);
+			role = new EObjectContainmentEList<Role>(Role.class, this,
+					PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE);
 		}
 		return role;
 	}
@@ -175,8 +178,8 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-				return ((InternalEList<?>)getRole()).basicRemove(otherEnd, msgs);
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+			return ((InternalEList<?>) getRole()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -189,12 +192,12 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
-				return getName();
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ID:
-				return getID();
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-				return getRole();
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
+			return getName();
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ID:
+			return getID();
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+			return getRole();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -208,13 +211,13 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
-				setName((String)newValue);
-				return;
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-				getRole().clear();
-				getRole().addAll((Collection<? extends Role>)newValue);
-				return;
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
+			setName((String) newValue);
+			return;
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+			getRole().clear();
+			getRole().addAll((Collection<? extends Role>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -227,12 +230,12 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-				getRole().clear();
-				return;
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+			getRole().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -245,12 +248,14 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ID:
-				return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT.equals(getID());
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
-				return role != null && !role.isEmpty();
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ID:
+			return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT
+					.equals(getID());
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE__ROLE:
+			return role != null && !role.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -262,10 +267,11 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');
 		return result.toString();

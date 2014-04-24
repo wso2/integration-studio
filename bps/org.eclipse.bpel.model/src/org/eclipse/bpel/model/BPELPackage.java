@@ -1539,13 +1539,22 @@ public interface BPELPackage extends EPackage {
 	int INVOKE__TO_PARTS = PARTNER_ACTIVITY_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Failure Handling</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVOKE__FAILURE_HANDLING = PARTNER_ACTIVITY_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Invoke</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INVOKE_FEATURE_COUNT = PARTNER_ACTIVITY_FEATURE_COUNT + 6;
+	int INVOKE_FEATURE_COUNT = PARTNER_ACTIVITY_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -7105,6 +7114,280 @@ public interface BPELPackage extends EPackage {
 	int TO_PARTS_FEATURE_COUNT = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.FailureHandlingImpl <em>Failure Handling</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.model.impl.FailureHandlingImpl
+	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getFailureHandling()
+	 * @generated
+	 */
+	int FAILURE_HANDLING = 76;
+
+	/**
+	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_HANDLING__DOCUMENTATION_ELEMENT = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_HANDLING__ELEMENT = BPEL_EXTENSIBLE_ELEMENT__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_HANDLING__EEXTENSIBILITY_ELEMENTS = BPEL_EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_HANDLING__DOCUMENTATION = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Fault On Failure</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_HANDLING__FAULT_ON_FAILURE = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Retry For</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_HANDLING__RETRY_FOR = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Retry Delay</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_HANDLING__RETRY_DELAY = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Failure Handling</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILURE_HANDLING_FEATURE_COUNT = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.FaultOnFailureImpl <em>Fault On Failure</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.model.impl.FaultOnFailureImpl
+	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getFaultOnFailure()
+	 * @generated
+	 */
+	int FAULT_ON_FAILURE = 77;
+
+	/**
+	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAULT_ON_FAILURE__DOCUMENTATION_ELEMENT = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAULT_ON_FAILURE__ELEMENT = BPEL_EXTENSIBLE_ELEMENT__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAULT_ON_FAILURE__EEXTENSIBILITY_ELEMENTS = BPEL_EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAULT_ON_FAILURE__DOCUMENTATION = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAULT_ON_FAILURE__VALUE = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Fault On Failure</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAULT_ON_FAILURE_FEATURE_COUNT = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.RetryForImpl <em>Retry For</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.model.impl.RetryForImpl
+	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getRetryFor()
+	 * @generated
+	 */
+	int RETRY_FOR = 78;
+
+	/**
+	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_FOR__DOCUMENTATION_ELEMENT = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_FOR__ELEMENT = BPEL_EXTENSIBLE_ELEMENT__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_FOR__EEXTENSIBILITY_ELEMENTS = BPEL_EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_FOR__DOCUMENTATION = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_FOR__VALUE = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Retry For</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_FOR_FEATURE_COUNT = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.RetryDelayImpl <em>Retry Delay</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.model.impl.RetryDelayImpl
+	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getRetryDelay()
+	 * @generated
+	 */
+	int RETRY_DELAY = 79;
+
+	/**
+	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_DELAY__DOCUMENTATION_ELEMENT = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_DELAY__ELEMENT = BPEL_EXTENSIBLE_ELEMENT__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_DELAY__EEXTENSIBILITY_ELEMENTS = BPEL_EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_DELAY__DOCUMENTATION = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_DELAY__VALUE = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Retry Delay</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RETRY_DELAY_FEATURE_COUNT = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.CorrelationPattern <em>Correlation Pattern</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7112,7 +7395,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCorrelationPattern()
 	 * @generated
 	 */
-	int CORRELATION_PATTERN = 76;
+	int CORRELATION_PATTERN = 80;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.EndpointReferenceRole <em>Endpoint Reference Role</em>}' enum.
@@ -7122,7 +7405,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getEndpointReferenceRole()
 	 * @generated
 	 */
-	int ENDPOINT_REFERENCE_ROLE = 77;
+	int ENDPOINT_REFERENCE_ROLE = 81;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.model.Process <em>Process</em>}'.
@@ -7579,6 +7862,17 @@ public interface BPELPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInvoke_ToParts();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.Invoke#getFailureHandling <em>Failure Handling</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Failure Handling</em>'.
+	 * @see org.eclipse.bpel.model.Invoke#getFailureHandling()
+	 * @see #getInvoke()
+	 * @generated
+	 */
+	EReference getInvoke_FailureHandling();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.model.Link <em>Link</em>}'.
@@ -8491,6 +8785,112 @@ public interface BPELPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getToParts_Children();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.model.FailureHandling <em>Failure Handling</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Failure Handling</em>'.
+	 * @see org.eclipse.bpel.model.FailureHandling
+	 * @generated
+	 */
+	EClass getFailureHandling();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.FailureHandling#getFaultOnFailure <em>Fault On Failure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Fault On Failure</em>'.
+	 * @see org.eclipse.bpel.model.FailureHandling#getFaultOnFailure()
+	 * @see #getFailureHandling()
+	 * @generated
+	 */
+	EReference getFailureHandling_FaultOnFailure();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.FailureHandling#getRetryFor <em>Retry For</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Retry For</em>'.
+	 * @see org.eclipse.bpel.model.FailureHandling#getRetryFor()
+	 * @see #getFailureHandling()
+	 * @generated
+	 */
+	EReference getFailureHandling_RetryFor();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.FailureHandling#getRetryDelay <em>Retry Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Retry Delay</em>'.
+	 * @see org.eclipse.bpel.model.FailureHandling#getRetryDelay()
+	 * @see #getFailureHandling()
+	 * @generated
+	 */
+	EReference getFailureHandling_RetryDelay();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.model.FaultOnFailure <em>Fault On Failure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Fault On Failure</em>'.
+	 * @see org.eclipse.bpel.model.FaultOnFailure
+	 * @generated
+	 */
+	EClass getFaultOnFailure();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.FaultOnFailure#isValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.bpel.model.FaultOnFailure#isValue()
+	 * @see #getFaultOnFailure()
+	 * @generated
+	 */
+	EAttribute getFaultOnFailure_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.model.RetryFor <em>Retry For</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Retry For</em>'.
+	 * @see org.eclipse.bpel.model.RetryFor
+	 * @generated
+	 */
+	EClass getRetryFor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.RetryFor#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.bpel.model.RetryFor#getValue()
+	 * @see #getRetryFor()
+	 * @generated
+	 */
+	EAttribute getRetryFor_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.model.RetryDelay <em>Retry Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Retry Delay</em>'.
+	 * @see org.eclipse.bpel.model.RetryDelay
+	 * @generated
+	 */
+	EClass getRetryDelay();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.RetryDelay#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.bpel.model.RetryDelay#getValue()
+	 * @see #getRetryDelay()
+	 * @generated
+	 */
+	EAttribute getRetryDelay_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.model.CompensationHandler <em>Compensation Handler</em>}'.
@@ -10437,6 +10837,15 @@ public interface BPELPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INVOKE__TO_PARTS = eINSTANCE.getInvoke_ToParts();
+
+		/**
+		 * The meta object literal for the '<em><b>Failure Handling</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INVOKE__FAILURE_HANDLING = eINSTANCE
+				.getInvoke_FailureHandling();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.LinkImpl <em>Link</em>}' class.
@@ -12460,6 +12869,98 @@ public interface BPELPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TO_PARTS__CHILDREN = eINSTANCE.getToParts_Children();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.FailureHandlingImpl <em>Failure Handling</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.model.impl.FailureHandlingImpl
+		 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getFailureHandling()
+		 * @generated
+		 */
+		EClass FAILURE_HANDLING = eINSTANCE.getFailureHandling();
+
+		/**
+		 * The meta object literal for the '<em><b>Fault On Failure</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FAILURE_HANDLING__FAULT_ON_FAILURE = eINSTANCE
+				.getFailureHandling_FaultOnFailure();
+
+		/**
+		 * The meta object literal for the '<em><b>Retry For</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FAILURE_HANDLING__RETRY_FOR = eINSTANCE
+				.getFailureHandling_RetryFor();
+
+		/**
+		 * The meta object literal for the '<em><b>Retry Delay</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FAILURE_HANDLING__RETRY_DELAY = eINSTANCE
+				.getFailureHandling_RetryDelay();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.FaultOnFailureImpl <em>Fault On Failure</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.model.impl.FaultOnFailureImpl
+		 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getFaultOnFailure()
+		 * @generated
+		 */
+		EClass FAULT_ON_FAILURE = eINSTANCE.getFaultOnFailure();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FAULT_ON_FAILURE__VALUE = eINSTANCE
+				.getFaultOnFailure_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.RetryForImpl <em>Retry For</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.model.impl.RetryForImpl
+		 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getRetryFor()
+		 * @generated
+		 */
+		EClass RETRY_FOR = eINSTANCE.getRetryFor();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RETRY_FOR__VALUE = eINSTANCE.getRetryFor_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.RetryDelayImpl <em>Retry Delay</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.model.impl.RetryDelayImpl
+		 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getRetryDelay()
+		 * @generated
+		 */
+		EClass RETRY_DELAY = eINSTANCE.getRetryDelay();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RETRY_DELAY__VALUE = eINSTANCE.getRetryDelay_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.model.CorrelationPattern <em>Correlation Pattern</em>}' enum.

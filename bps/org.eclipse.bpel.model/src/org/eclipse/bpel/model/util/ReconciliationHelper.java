@@ -44,6 +44,7 @@ import org.eclipse.bpel.model.ExtensionActivity;
 import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
+import org.eclipse.bpel.model.FaultOnFailure;
 import org.eclipse.bpel.model.Flow;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.model.From;
@@ -68,6 +69,8 @@ import org.eclipse.bpel.model.Query;
 import org.eclipse.bpel.model.Receive;
 import org.eclipse.bpel.model.RepeatUntil;
 import org.eclipse.bpel.model.Reply;
+import org.eclipse.bpel.model.RetryDelay;
+import org.eclipse.bpel.model.RetryFor;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
@@ -935,6 +938,75 @@ public class ReconciliationHelper {
 			Element element = parent.getElement();
 			if (newSnippet != null) {
 				replaceText(parent, newSnippet.getBody());			
+			} else {
+				replaceText(parent, null);
+			}
+		} finally {
+			setUpdatingDom(parent, oldUpdatingDom);
+		}
+	}
+	
+	public static void replaceFaultOnFailure(WSDLElement parent, FaultOnFailure newFaultOnFailure) {
+		boolean oldUpdatingDom = isUpdatingDom(parent);
+		try {
+			setUpdatingDom(parent, true);
+			
+				if (isLoading(parent)) {
+				return;
+			}
+			if (parent.getElement() == null) {
+				System.err.println("trying to replace FaultOnFailure on null element:" + parent.getClass());
+				return;
+			}
+			Element element = parent.getElement();
+			if (newFaultOnFailure != null) {
+				replaceText(parent, newFaultOnFailure.isValue());			
+			} else {
+				replaceText(parent, null);
+			}
+		} finally {
+			setUpdatingDom(parent, oldUpdatingDom);
+		}
+	}
+	
+	public static void replaceRetryFor(WSDLElement parent, RetryFor newRetryFor) {
+		boolean oldUpdatingDom = isUpdatingDom(parent);
+		try {
+			setUpdatingDom(parent, true);
+			
+				if (isLoading(parent)) {
+				return;
+			}
+			if (parent.getElement() == null) {
+				System.err.println("trying to replace RetryFor on null element:" + parent.getClass());
+				return;
+			}
+			Element element = parent.getElement();
+			if (newRetryFor != null) {
+				replaceText(parent, newRetryFor.getValue());			
+			} else {
+				replaceText(parent, null);
+			}
+		} finally {
+			setUpdatingDom(parent, oldUpdatingDom);
+		}
+	}
+	
+	public static void replaceRetryDelay(WSDLElement parent, RetryDelay newRetryDelay) {
+		boolean oldUpdatingDom = isUpdatingDom(parent);
+		try {
+			setUpdatingDom(parent, true);
+			
+				if (isLoading(parent)) {
+				return;
+			}
+			if (parent.getElement() == null) {
+				System.err.println("trying to replace RetryDelay on null element:" + parent.getClass());
+				return;
+			}
+			Element element = parent.getElement();
+			if (newRetryDelay != null) {
+				replaceText(parent, newRetryDelay.getValue());			
 			} else {
 				replaceText(parent, null);
 			}

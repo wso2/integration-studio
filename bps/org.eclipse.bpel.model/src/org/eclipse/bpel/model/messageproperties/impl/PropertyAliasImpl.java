@@ -244,7 +244,9 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		Object oldMessageType = messageType;
 		messageType = newMessageType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE, oldMessageType, messageType));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE,
+					oldMessageType, messageType));
 	}
 
 	/**
@@ -265,7 +267,9 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		String oldPart = part;
 		part = newPart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY_ALIAS__PART, oldPart, part));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MessagepropertiesPackage.PROPERTY_ALIAS__PART, oldPart,
+					part));
 	}
 
 	/**
@@ -286,7 +290,9 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		Object oldPropertyName = propertyName;
 		propertyName = newPropertyName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME, oldPropertyName, propertyName));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME,
+					oldPropertyName, propertyName));
 	}
 
 	/**
@@ -305,11 +311,13 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 */
 	public Part getWsdlPart() {
 		if (wsdlPart != null && wsdlPart.eIsProxy()) {
-			InternalEObject oldWsdlPart = (InternalEObject)wsdlPart;
-			wsdlPart = (Part)eResolveProxy(oldWsdlPart);
+			InternalEObject oldWsdlPart = (InternalEObject) wsdlPart;
+			wsdlPart = (Part) eResolveProxy(oldWsdlPart);
 			if (wsdlPart != oldWsdlPart) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART, oldWsdlPart, wsdlPart));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART,
+							oldWsdlPart, wsdlPart));
 			}
 		}
 		return wsdlPart;
@@ -333,7 +341,9 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		Part oldWsdlPart = wsdlPart;
 		wsdlPart = newWsdlPart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART, oldWsdlPart, wsdlPart));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART,
+					oldWsdlPart, wsdlPart));
 	}
 
 	/**
@@ -355,8 +365,14 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		Query oldQuery = query;
 		query = newQuery;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY_ALIAS__QUERY, oldQuery, newQuery);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET,
+					MessagepropertiesPackage.PROPERTY_ALIAS__QUERY, oldQuery,
+					newQuery);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -370,14 +386,26 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		if (newQuery != query) {
 			NotificationChain msgs = null;
 			if (query != null)
-				msgs = ((InternalEObject)query).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MessagepropertiesPackage.PROPERTY_ALIAS__QUERY, null, msgs);
+				msgs = ((InternalEObject) query)
+						.eInverseRemove(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- MessagepropertiesPackage.PROPERTY_ALIAS__QUERY,
+								null, msgs);
 			if (newQuery != null)
-				msgs = ((InternalEObject)newQuery).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MessagepropertiesPackage.PROPERTY_ALIAS__QUERY, null, msgs);
+				msgs = ((InternalEObject) newQuery)
+						.eInverseAdd(
+								this,
+								EOPPOSITE_FEATURE_BASE
+										- MessagepropertiesPackage.PROPERTY_ALIAS__QUERY,
+								null, msgs);
 			msgs = basicSetQuery(newQuery, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY_ALIAS__QUERY, newQuery, newQuery));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MessagepropertiesPackage.PROPERTY_ALIAS__QUERY, newQuery,
+					newQuery));
 	}
 
 	/**
@@ -407,7 +435,9 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		Object oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY_ALIAS__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MessagepropertiesPackage.PROPERTY_ALIAS__TYPE, oldType,
+					type));
 	}
 
 	/**
@@ -439,7 +469,9 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		Object oldXSDElement = xsdElement;
 		xsdElement = newXSDElement;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT, oldXSDElement, xsdElement));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT,
+					oldXSDElement, xsdElement));
 	}
 
 	/**
@@ -451,8 +483,8 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
-				return basicSetQuery(null, msgs);
+		case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
+			return basicSetQuery(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -465,23 +497,24 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
-				return getMessageType();
-			case MessagepropertiesPackage.PROPERTY_ALIAS__PART:
-				return getPart();
-			case MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME:
-				return getPropertyName();
-			case MessagepropertiesPackage.PROPERTY_ALIAS__ID:
-				return getID();
-			case MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART:
-				if (resolve) return getWsdlPart();
-				return basicGetWsdlPart();
-			case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
-				return getQuery();
-			case MessagepropertiesPackage.PROPERTY_ALIAS__TYPE:
-				return getType();
-			case MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT:
-				return getXSDElement();
+		case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
+			return getMessageType();
+		case MessagepropertiesPackage.PROPERTY_ALIAS__PART:
+			return getPart();
+		case MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME:
+			return getPropertyName();
+		case MessagepropertiesPackage.PROPERTY_ALIAS__ID:
+			return getID();
+		case MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART:
+			if (resolve)
+				return getWsdlPart();
+			return basicGetWsdlPart();
+		case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
+			return getQuery();
+		case MessagepropertiesPackage.PROPERTY_ALIAS__TYPE:
+			return getType();
+		case MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT:
+			return getXSDElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -494,27 +527,27 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
-				setMessageType(newValue);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__PART:
-				setPart((String)newValue);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME:
-				setPropertyName(newValue);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART:
-				setWsdlPart((Part)newValue);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
-				setQuery((Query)newValue);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__TYPE:
-				setType(newValue);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT:
-				setXSDElement(newValue);
-				return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
+			setMessageType(newValue);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__PART:
+			setPart((String) newValue);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME:
+			setPropertyName(newValue);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART:
+			setWsdlPart((Part) newValue);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
+			setQuery((Query) newValue);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__TYPE:
+			setType(newValue);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT:
+			setXSDElement(newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -527,27 +560,27 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
-				setMessageType(MESSAGE_TYPE_EDEFAULT);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__PART:
-				setPart(PART_EDEFAULT);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME:
-				setPropertyName(PROPERTY_NAME_EDEFAULT);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART:
-				setWsdlPart((Part)null);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
-				setQuery((Query)null);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT:
-				setXSDElement(XSD_ELEMENT_EDEFAULT);
-				return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
+			setMessageType(MESSAGE_TYPE_EDEFAULT);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__PART:
+			setPart(PART_EDEFAULT);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME:
+			setPropertyName(PROPERTY_NAME_EDEFAULT);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART:
+			setWsdlPart((Part) null);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
+			setQuery((Query) null);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT:
+			setXSDElement(XSD_ELEMENT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -560,22 +593,28 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
-				return MESSAGE_TYPE_EDEFAULT == null ? messageType != null : !MESSAGE_TYPE_EDEFAULT.equals(messageType);
-			case MessagepropertiesPackage.PROPERTY_ALIAS__PART:
-				return PART_EDEFAULT == null ? part != null : !PART_EDEFAULT.equals(part);
-			case MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME:
-				return PROPERTY_NAME_EDEFAULT == null ? propertyName != null : !PROPERTY_NAME_EDEFAULT.equals(propertyName);
-			case MessagepropertiesPackage.PROPERTY_ALIAS__ID:
-				return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT.equals(getID());
-			case MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART:
-				return wsdlPart != null;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
-				return query != null;
-			case MessagepropertiesPackage.PROPERTY_ALIAS__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-			case MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT:
-				return XSD_ELEMENT_EDEFAULT == null ? xsdElement != null : !XSD_ELEMENT_EDEFAULT.equals(xsdElement);
+		case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
+			return MESSAGE_TYPE_EDEFAULT == null ? messageType != null
+					: !MESSAGE_TYPE_EDEFAULT.equals(messageType);
+		case MessagepropertiesPackage.PROPERTY_ALIAS__PART:
+			return PART_EDEFAULT == null ? part != null : !PART_EDEFAULT
+					.equals(part);
+		case MessagepropertiesPackage.PROPERTY_ALIAS__PROPERTY_NAME:
+			return PROPERTY_NAME_EDEFAULT == null ? propertyName != null
+					: !PROPERTY_NAME_EDEFAULT.equals(propertyName);
+		case MessagepropertiesPackage.PROPERTY_ALIAS__ID:
+			return ID_EDEFAULT == null ? getID() != null : !ID_EDEFAULT
+					.equals(getID());
+		case MessagepropertiesPackage.PROPERTY_ALIAS__WSDL_PART:
+			return wsdlPart != null;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__QUERY:
+			return query != null;
+		case MessagepropertiesPackage.PROPERTY_ALIAS__TYPE:
+			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT
+					.equals(type);
+		case MessagepropertiesPackage.PROPERTY_ALIAS__XSD_ELEMENT:
+			return XSD_ELEMENT_EDEFAULT == null ? xsdElement != null
+					: !XSD_ELEMENT_EDEFAULT.equals(xsdElement);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -587,18 +626,19 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (messageType: ");
+		result.append(" (messageType: "); //$NON-NLS-1$
 		result.append(messageType);
-		result.append(", part: ");
+		result.append(", part: "); //$NON-NLS-1$
 		result.append(part);
-		result.append(", propertyName: ");
+		result.append(", propertyName: "); //$NON-NLS-1$
 		result.append(propertyName);
-		result.append(", type: ");
+		result.append(", type: "); //$NON-NLS-1$
 		result.append(type);
-		result.append(", XSDElement: ");
+		result.append(", XSDElement: "); //$NON-NLS-1$
 		result.append(xsdElement);
 		result.append(')');
 		return result.toString();

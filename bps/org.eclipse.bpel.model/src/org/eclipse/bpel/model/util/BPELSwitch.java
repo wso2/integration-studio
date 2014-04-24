@@ -95,6 +95,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.wst.wsdl.ExtensibleElement;
 import org.eclipse.wst.wsdl.UnknownExtensibilityElement;
 import org.eclipse.wst.wsdl.WSDLElement;
+import org.eclipse.bpel.model.FailureHandling;
+import org.eclipse.bpel.model.FaultOnFailure;
+import org.eclipse.bpel.model.RetryDelay;
+import org.eclipse.bpel.model.RetryFor;
 
 /**
  * <!-- begin-user-doc -->
@@ -1483,6 +1487,74 @@ public class BPELSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case BPELPackage.FAILURE_HANDLING: {
+			FailureHandling failureHandling = (FailureHandling) theEObject;
+			T result = caseFailureHandling(failureHandling);
+			if (result == null)
+				result = caseBPELExtensibleElement(failureHandling);
+			if (result == null)
+				result = caseExtensibleElement(failureHandling);
+			if (result == null)
+				result = caseWSDLElement(failureHandling);
+			if (result == null)
+				result = caseIElementExtensible(failureHandling);
+			if (result == null)
+				result = caseIAttributeExtensible(failureHandling);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case BPELPackage.FAULT_ON_FAILURE: {
+			FaultOnFailure faultOnFailure = (FaultOnFailure) theEObject;
+			T result = caseFaultOnFailure(faultOnFailure);
+			if (result == null)
+				result = caseBPELExtensibleElement(faultOnFailure);
+			if (result == null)
+				result = caseExtensibleElement(faultOnFailure);
+			if (result == null)
+				result = caseWSDLElement(faultOnFailure);
+			if (result == null)
+				result = caseIElementExtensible(faultOnFailure);
+			if (result == null)
+				result = caseIAttributeExtensible(faultOnFailure);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case BPELPackage.RETRY_FOR: {
+			RetryFor retryFor = (RetryFor) theEObject;
+			T result = caseRetryFor(retryFor);
+			if (result == null)
+				result = caseBPELExtensibleElement(retryFor);
+			if (result == null)
+				result = caseExtensibleElement(retryFor);
+			if (result == null)
+				result = caseWSDLElement(retryFor);
+			if (result == null)
+				result = caseIElementExtensible(retryFor);
+			if (result == null)
+				result = caseIAttributeExtensible(retryFor);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case BPELPackage.RETRY_DELAY: {
+			RetryDelay retryDelay = (RetryDelay) theEObject;
+			T result = caseRetryDelay(retryDelay);
+			if (result == null)
+				result = caseBPELExtensibleElement(retryDelay);
+			if (result == null)
+				result = caseExtensibleElement(retryDelay);
+			if (result == null)
+				result = caseWSDLElement(retryDelay);
+			if (result == null)
+				result = caseIElementExtensible(retryDelay);
+			if (result == null)
+				result = caseIAttributeExtensible(retryDelay);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -2626,6 +2698,66 @@ public class BPELSwitch<T> {
 	 * @generated
 	 */
 	public T caseToParts(ToParts object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Failure Handling</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Failure Handling</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFailureHandling(FailureHandling object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fault On Failure</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fault On Failure</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFaultOnFailure(FaultOnFailure object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Retry For</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Retry For</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRetryFor(RetryFor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Retry Delay</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Retry Delay</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRetryDelay(RetryDelay object) {
 		return null;
 	}
 

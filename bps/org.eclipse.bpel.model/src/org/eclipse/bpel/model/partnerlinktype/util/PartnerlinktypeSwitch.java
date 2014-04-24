@@ -72,13 +72,10 @@ public class PartnerlinktypeSwitch<T> {
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
+		} else {
 			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
+			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
+					eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -91,25 +88,34 @@ public class PartnerlinktypeSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE: {
-				PartnerLinkType partnerLinkType = (PartnerLinkType)theEObject;
-				T result = casePartnerLinkType(partnerLinkType);
-				if (result == null) result = caseExtensibilityElement(partnerLinkType);
-				if (result == null) result = caseWSDLElement(partnerLinkType);
-				if (result == null) result = caseIExtensibilityElement(partnerLinkType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PartnerlinktypePackage.ROLE: {
-				Role role = (Role)theEObject;
-				T result = caseRole(role);
-				if (result == null) result = caseExtensibilityElement(role);
-				if (result == null) result = caseWSDLElement(role);
-				if (result == null) result = caseIExtensibilityElement(role);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
+		case PartnerlinktypePackage.PARTNER_LINK_TYPE: {
+			PartnerLinkType partnerLinkType = (PartnerLinkType) theEObject;
+			T result = casePartnerLinkType(partnerLinkType);
+			if (result == null)
+				result = caseExtensibilityElement(partnerLinkType);
+			if (result == null)
+				result = caseWSDLElement(partnerLinkType);
+			if (result == null)
+				result = caseIExtensibilityElement(partnerLinkType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case PartnerlinktypePackage.ROLE: {
+			Role role = (Role) theEObject;
+			T result = caseRole(role);
+			if (result == null)
+				result = caseExtensibilityElement(role);
+			if (result == null)
+				result = caseWSDLElement(role);
+			if (result == null)
+				result = caseIExtensibilityElement(role);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 
@@ -184,7 +190,8 @@ public class PartnerlinktypeSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExtensibilityElement(org.eclipse.wst.wsdl.ExtensibilityElement object) {
+	public T caseExtensibilityElement(
+			org.eclipse.wst.wsdl.ExtensibilityElement object) {
 		return null;
 	}
 

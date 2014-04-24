@@ -108,6 +108,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toParts" eType="#//ToParts"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="failureHandling" eType="#//FailureHandling"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="#//BPELExtensibleElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -593,5 +595,22 @@
   <eClassifiers xsi:type="ecore:EClass" name="ToParts" eSuperTypes="#//BPELExtensibleElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//ToPart" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FailureHandling" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="faultOnFailure" eType="#//FaultOnFailure"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="retryFor" eType="#//RetryFor"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="retryDelay" eType="#//RetryDelay"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FaultOnFailure" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RetryFor" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RetryDelay" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -59,7 +59,9 @@ import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
+import org.eclipse.bpel.model.FailureHandling;
 import org.eclipse.bpel.model.FaultHandler;
+import org.eclipse.bpel.model.FaultOnFailure;
 import org.eclipse.bpel.model.Flow;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.model.From;
@@ -86,6 +88,8 @@ import org.eclipse.bpel.model.Receive;
 import org.eclipse.bpel.model.RepeatUntil;
 import org.eclipse.bpel.model.Reply;
 import org.eclipse.bpel.model.Rethrow;
+import org.eclipse.bpel.model.RetryDelay;
+import org.eclipse.bpel.model.RetryFor;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
@@ -1151,6 +1155,135 @@ public class BPELReader implements ErrorHandler {
 		return toParts;
 	}
 
+	protected FailureHandling xml2FailureHandling(Element failureHandlingElement) {
+		if (!failureHandlingElement.getLocalName().equals("failureHandling"))
+			return null;
+			
+		FailureHandling failureHandling = BPELFactory.eINSTANCE.createFailureHandling();
+		failureHandling.setElement(failureHandlingElement);
+		
+		// Save all the references to external namespaces		
+		saveNamespacePrefix(failureHandling, failureHandlingElement);		
+		
+		// Reading faultOnFailure Element
+        Element faultOnFailureElement=  null;
+        
+        String localName = "faultOnFailure";
+		NodeList children = failureHandlingElement.getChildNodes();
+			for (int i = 0; i < children.getLength(); i++) {
+				Node node = children.item(i);
+				if (localName.equals(node.getLocalName())) {
+					faultOnFailureElement = (Element) node;
+	            }
+			}	
+        if (faultOnFailureElement != null) {
+        	FaultOnFailure faultOnFailure = BPELFactory.eINSTANCE.createFaultOnFailure();
+        	faultOnFailure.setElement(faultOnFailureElement);
+            xml2FaultOnFailure(faultOnFailure, faultOnFailureElement); 
+            failureHandling.setFaultOnFailure(faultOnFailure);
+        }
+        
+     	// Reading retryFor Element
+        Element retryForElement=  null;
+        
+        localName = "retryFor";
+			for (int i = 0; i < children.getLength(); i++) {
+				Node node = children.item(i);
+				if (localName.equals(node.getLocalName())) {
+					retryForElement = (Element) node;
+	            }
+			}	
+        if (retryForElement != null) {
+        	RetryFor retryFor = BPELFactory.eINSTANCE.createRetryFor();
+        	retryFor.setElement(retryForElement);
+            xml2RetryFor(retryFor, retryForElement); 
+            failureHandling.setRetryFor(retryFor);
+        }
+        
+     // Reading retryDelay Element
+        Element retryDelayElement=  null;
+        
+        localName = "retryDelay";
+			for (int i = 0; i < children.getLength(); i++) {
+				Node node = children.item(i);
+				if (localName.equals(node.getLocalName())) {
+					retryDelayElement = (Element) node;
+	            }
+			}	
+        if (retryDelayElement != null) {
+        	RetryDelay retryDelay = BPELFactory.eINSTANCE.createRetryDelay();
+        	retryDelay.setElement(retryDelayElement);
+            xml2RetryDelay(retryDelay, retryDelayElement); 
+            failureHandling.setRetryDelay(retryDelay);
+        }
+        
+		xml2ExtensibleElement(failureHandling, failureHandlingElement);
+		
+		return failureHandling;
+	}
+	
+	protected FaultOnFailure xml2FaultOnFailure(FaultOnFailure faultOnFailure,Element faultOnFailureElement)
+	{
+		// Save all the references to external namespaces
+		saveNamespacePrefix(faultOnFailure, faultOnFailureElement);
+    	
+		if (faultOnFailureElement == null) {
+			return faultOnFailure;
+		}
+		
+		//reading body of the faultOnFailure and add it into the faultOnFailure object
+		String data = getText(faultOnFailureElement);
+		if (data != null) {
+
+			if("true".equalsIgnoreCase(data)){
+				faultOnFailure.setValue(true);
+			}
+			else
+			{
+				faultOnFailure.setValue(false);
+			}
+			
+		}
+	
+    	return faultOnFailure;
+	}
+	
+	protected RetryFor xml2RetryFor(RetryFor retryFor,Element retryForElement)
+	{
+		// Save all the references to external namespaces
+		saveNamespacePrefix(retryFor, retryForElement);
+    	
+		if (retryForElement == null) {
+			return retryFor;
+		}
+		
+		//reading body of the retryFor and add it into the retryFor object
+		String data = getText(retryForElement);
+		if (data != null) {
+			retryFor.setValue(Integer.parseInt(data));
+		}
+	
+    	return retryFor;
+	}
+	
+	protected RetryDelay xml2RetryDelay(RetryDelay retryDelay,Element retryDelayElement)
+	{
+		// Save all the references to external namespaces
+		saveNamespacePrefix(retryDelay, retryDelayElement);
+    	
+		if (retryDelayElement == null) {
+			return retryDelay;
+		}
+		
+		//reading body of the retryDelay and add it into the retryDelay object
+		String data = getText(retryDelayElement);
+		if (data != null) {
+			retryDelay.setValue(Integer.parseInt(data));
+		}
+	
+    	return retryDelay;
+	}
+	
 	public MessageExchanges xml2MessageExchanges(Element messageExchangesElement) {
 		if (!messageExchangesElement.getLocalName().equals("messageExchanges"))
 			return null;
@@ -3085,7 +3218,23 @@ public class BPELReader implements ErrorHandler {
 		if (fromPartsElement != null) {
 			FromParts fromParts = xml2FromParts(fromPartsElement);
 			invoke.setFromParts(fromParts);
-		}		
+		}
+		// Set failureHandling
+		NodeList children = invokeElement.getChildNodes();
+		Element failureHandlingElement = null;
+		for (int i = 0; i < children.getLength(); i++) {
+			Node node = children.item(i);
+			if ("failureHandling".equals(node.getLocalName())){
+               
+				failureHandlingElement=  (Element) node;
+				break;
+			}
+		}
+		if (failureHandlingElement != null) {
+			FailureHandling failureHandling = xml2FailureHandling(failureHandlingElement);
+			invoke.setFailureHandling(failureHandling);
+		}
+		
 		return invoke;
 	}
 

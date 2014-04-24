@@ -16,6 +16,7 @@ package org.eclipse.bpel.model.impl;
 
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.CompensationHandler;
+import org.eclipse.bpel.model.FailureHandling;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.FromParts;
 import org.eclipse.bpel.model.Invoke;
@@ -44,6 +45,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.bpel.model.impl.InvokeImpl#getFaultHandler <em>Fault Handler</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.InvokeImpl#getFromParts <em>From Parts</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.InvokeImpl#getToParts <em>To Parts</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.InvokeImpl#getFailureHandling <em>Failure Handling</em>}</li>
  * </ul>
  * </p>
  *
@@ -110,6 +112,16 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 	 * @ordered
 	 */
 	protected ToParts toParts;
+
+	/**
+	 * The cached value of the '{@link #getFailureHandling() <em>Failure Handling</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFailureHandling()
+	 * @generated
+	 * @ordered
+	 */
+	protected FailureHandling failureHandling;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -458,6 +470,68 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public FailureHandling getFailureHandling() {
+		return failureHandling;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	// JIRA Tools-785
+	public NotificationChain basicSetFailureHandling(
+			FailureHandling newFailureHandling, NotificationChain msgs) {
+		FailureHandling oldFailureHandling = failureHandling;
+		if (!isReconciling) {
+			ReconciliationHelper.replaceChild(this, oldFailureHandling,
+					newFailureHandling);
+		}
+		failureHandling = newFailureHandling;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, BPELPackage.INVOKE__FAILURE_HANDLING,
+					oldFailureHandling, newFailureHandling);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFailureHandling(FailureHandling newFailureHandling) {
+		if (newFailureHandling != failureHandling) {
+			NotificationChain msgs = null;
+			if (failureHandling != null)
+				msgs = ((InternalEObject) failureHandling).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- BPELPackage.INVOKE__FAILURE_HANDLING, null,
+						msgs);
+			if (newFailureHandling != null)
+				msgs = ((InternalEObject) newFailureHandling).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- BPELPackage.INVOKE__FAILURE_HANDLING, null,
+						msgs);
+			msgs = basicSetFailureHandling(newFailureHandling, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					BPELPackage.INVOKE__FAILURE_HANDLING, newFailureHandling,
+					newFailureHandling));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -470,6 +544,8 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 			return basicSetFromParts(null, msgs);
 		case BPELPackage.INVOKE__TO_PARTS:
 			return basicSetToParts(null, msgs);
+		case BPELPackage.INVOKE__FAILURE_HANDLING:
+			return basicSetFailureHandling(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -498,6 +574,8 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 			return getFromParts();
 		case BPELPackage.INVOKE__TO_PARTS:
 			return getToParts();
+		case BPELPackage.INVOKE__FAILURE_HANDLING:
+			return getFailureHandling();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -529,6 +607,9 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 		case BPELPackage.INVOKE__TO_PARTS:
 			setToParts((ToParts) newValue);
 			return;
+		case BPELPackage.INVOKE__FAILURE_HANDLING:
+			setFailureHandling((FailureHandling) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -559,6 +640,9 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 		case BPELPackage.INVOKE__TO_PARTS:
 			setToParts((ToParts) null);
 			return;
+		case BPELPackage.INVOKE__FAILURE_HANDLING:
+			setFailureHandling((FailureHandling) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -583,6 +667,8 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 			return fromParts != null;
 		case BPELPackage.INVOKE__TO_PARTS:
 			return toParts != null;
+		case BPELPackage.INVOKE__FAILURE_HANDLING:
+			return failureHandling != null;
 		}
 		return super.eIsSet(featureID);
 	}

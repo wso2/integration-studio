@@ -48,7 +48,9 @@ import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionActivity;
 import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
+import org.eclipse.bpel.model.FailureHandling;
 import org.eclipse.bpel.model.FaultHandler;
+import org.eclipse.bpel.model.FaultOnFailure;
 import org.eclipse.bpel.model.Flow;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.model.From;
@@ -74,6 +76,8 @@ import org.eclipse.bpel.model.Receive;
 import org.eclipse.bpel.model.RepeatUntil;
 import org.eclipse.bpel.model.Reply;
 import org.eclipse.bpel.model.Rethrow;
+import org.eclipse.bpel.model.RetryDelay;
+import org.eclipse.bpel.model.RetryFor;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
@@ -316,6 +320,34 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 * @generated
 	 */
 	private EClass toPartsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass failureHandlingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass faultOnFailureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass retryForEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass retryDelayEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1140,6 +1172,15 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getInvoke_FailureHandling() {
+		return (EReference) invokeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLink() {
 		return linkEClass;
 	}
@@ -1903,6 +1944,100 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 */
 	public EReference getToParts_Children() {
 		return (EReference) toPartsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFailureHandling() {
+		return failureHandlingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFailureHandling_FaultOnFailure() {
+		return (EReference) failureHandlingEClass.getEStructuralFeatures().get(
+				0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFailureHandling_RetryFor() {
+		return (EReference) failureHandlingEClass.getEStructuralFeatures().get(
+				1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFailureHandling_RetryDelay() {
+		return (EReference) failureHandlingEClass.getEStructuralFeatures().get(
+				2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFaultOnFailure() {
+		return faultOnFailureEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFaultOnFailure_Value() {
+		return (EAttribute) faultOnFailureEClass.getEStructuralFeatures()
+				.get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRetryFor() {
+		return retryForEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRetryFor_Value() {
+		return (EAttribute) retryForEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRetryDelay() {
+		return retryDelayEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRetryDelay_Value() {
+		return (EAttribute) retryDelayEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3310,6 +3445,7 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 		createEReference(invokeEClass, INVOKE__FAULT_HANDLER);
 		createEReference(invokeEClass, INVOKE__FROM_PARTS);
 		createEReference(invokeEClass, INVOKE__TO_PARTS);
+		createEReference(invokeEClass, INVOKE__FAILURE_HANDLING);
 
 		linkEClass = createEClass(LINK);
 		createEAttribute(linkEClass, LINK__NAME);
@@ -3622,6 +3758,21 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 		toPartsEClass = createEClass(TO_PARTS);
 		createEReference(toPartsEClass, TO_PARTS__CHILDREN);
 
+		failureHandlingEClass = createEClass(FAILURE_HANDLING);
+		createEReference(failureHandlingEClass,
+				FAILURE_HANDLING__FAULT_ON_FAILURE);
+		createEReference(failureHandlingEClass, FAILURE_HANDLING__RETRY_FOR);
+		createEReference(failureHandlingEClass, FAILURE_HANDLING__RETRY_DELAY);
+
+		faultOnFailureEClass = createEClass(FAULT_ON_FAILURE);
+		createEAttribute(faultOnFailureEClass, FAULT_ON_FAILURE__VALUE);
+
+		retryForEClass = createEClass(RETRY_FOR);
+		createEAttribute(retryForEClass, RETRY_FOR__VALUE);
+
+		retryDelayEClass = createEClass(RETRY_DELAY);
+		createEAttribute(retryDelayEClass, RETRY_DELAY__VALUE);
+
 		// Create enums
 		correlationPatternEEnum = createEEnum(CORRELATION_PATTERN);
 		endpointReferenceRoleEEnum = createEEnum(ENDPOINT_REFERENCE_ROLE);
@@ -3763,6 +3914,12 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 		compensateEClass.getESuperTypes().add(this.getActivity());
 		fromPartsEClass.getESuperTypes().add(this.getBPELExtensibleElement());
 		toPartsEClass.getESuperTypes().add(this.getBPELExtensibleElement());
+		failureHandlingEClass.getESuperTypes().add(
+				this.getBPELExtensibleElement());
+		faultOnFailureEClass.getESuperTypes().add(
+				this.getBPELExtensibleElement());
+		retryForEClass.getESuperTypes().add(this.getBPELExtensibleElement());
+		retryDelayEClass.getESuperTypes().add(this.getBPELExtensibleElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(
@@ -3961,6 +4118,11 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 				this.getToParts(),
 				null,
 				"toParts", null, 0, 1, Invoke.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+				getInvoke_FailureHandling(),
+				this.getFailureHandling(),
+				null,
+				"failureHandling", null, 0, 1, Invoke.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
 				linkEClass,
@@ -5064,6 +5226,53 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 				this.getToPart(),
 				null,
 				"children", null, 0, -1, ToParts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(
+				failureHandlingEClass,
+				FailureHandling.class,
+				"FailureHandling", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(
+				getFailureHandling_FaultOnFailure(),
+				this.getFaultOnFailure(),
+				null,
+				"faultOnFailure", null, 0, 1, FailureHandling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+				getFailureHandling_RetryFor(),
+				this.getRetryFor(),
+				null,
+				"retryFor", null, 0, 1, FailureHandling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(
+				getFailureHandling_RetryDelay(),
+				this.getRetryDelay(),
+				null,
+				"retryDelay", null, 0, 1, FailureHandling.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(
+				faultOnFailureEClass,
+				FaultOnFailure.class,
+				"FaultOnFailure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+				getFaultOnFailure_Value(),
+				theEcorePackage.getEBoolean(),
+				"value", null, 0, 1, FaultOnFailure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(
+				retryForEClass,
+				RetryFor.class,
+				"RetryFor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+				getRetryFor_Value(),
+				theEcorePackage.getEInt(),
+				"value", null, 0, 1, RetryFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(
+				retryDelayEClass,
+				RetryDelay.class,
+				"RetryDelay", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+				getRetryDelay_Value(),
+				theEcorePackage.getEInt(),
+				"value", null, 0, 1, RetryDelay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(correlationPatternEEnum, CorrelationPattern.class,

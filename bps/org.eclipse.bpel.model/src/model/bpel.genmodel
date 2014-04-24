@@ -64,6 +64,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//Invoke/faultHandler"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//Invoke/fromParts"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//Invoke/toParts"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference bpel.ecore#//Invoke/failureHandling"/>
     </genClasses>
     <genClasses ecoreClass="bpel.ecore#//Link">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//Link/name"/>
@@ -353,6 +354,20 @@
     </genClasses>
     <genClasses ecoreClass="bpel.ecore#//ToParts">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//ToParts/children"/>
+    </genClasses>
+    <genClasses ecoreClass="bpel.ecore#//FailureHandling">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//FailureHandling/faultOnFailure"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//FailureHandling/retryFor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//FailureHandling/retryDelay"/>
+    </genClasses>
+    <genClasses ecoreClass="bpel.ecore#//FaultOnFailure">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//FaultOnFailure/value"/>
+    </genClasses>
+    <genClasses ecoreClass="bpel.ecore#//RetryFor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//RetryFor/value"/>
+    </genClasses>
+    <genClasses ecoreClass="bpel.ecore#//RetryDelay">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//RetryDelay/value"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Partnerlinktype" basePackage="org.eclipse.bpel.model" disposableProviderFactory="true"

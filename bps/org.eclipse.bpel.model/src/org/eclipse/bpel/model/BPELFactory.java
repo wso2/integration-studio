@@ -295,6 +295,42 @@ public interface BPELFactory extends EFactory {
 	ToParts createToParts();
 
 	/**
+	 * Returns a new object of class '<em>Failure Handling</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Failure Handling</em>'.
+	 * @generated
+	 */
+	FailureHandling createFailureHandling();
+
+	/**
+	 * Returns a new object of class '<em>Fault On Failure</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fault On Failure</em>'.
+	 * @generated
+	 */
+	FaultOnFailure createFaultOnFailure();
+
+	/**
+	 * Returns a new object of class '<em>Retry For</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Retry For</em>'.
+	 * @generated
+	 */
+	RetryFor createRetryFor();
+
+	/**
+	 * Returns a new object of class '<em>Retry Delay</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Retry Delay</em>'.
+	 * @generated
+	 */
+	RetryDelay createRetryDelay();
+
+	/**
 	 * Returns a new object of class '<em>Compensation Handler</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

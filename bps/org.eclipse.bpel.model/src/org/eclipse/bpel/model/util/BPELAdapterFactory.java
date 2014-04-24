@@ -50,7 +50,9 @@ import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionActivity;
 import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
+import org.eclipse.bpel.model.FailureHandling;
 import org.eclipse.bpel.model.FaultHandler;
+import org.eclipse.bpel.model.FaultOnFailure;
 import org.eclipse.bpel.model.Flow;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.model.From;
@@ -76,6 +78,8 @@ import org.eclipse.bpel.model.Receive;
 import org.eclipse.bpel.model.RepeatUntil;
 import org.eclipse.bpel.model.Reply;
 import org.eclipse.bpel.model.Rethrow;
+import org.eclipse.bpel.model.RetryDelay;
+import org.eclipse.bpel.model.RetryFor;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
@@ -541,6 +545,26 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseFailureHandling(FailureHandling object) {
+			return createFailureHandlingAdapter();
+		}
+
+		@Override
+		public Adapter caseFaultOnFailure(FaultOnFailure object) {
+			return createFaultOnFailureAdapter();
+		}
+
+		@Override
+		public Adapter caseRetryFor(RetryFor object) {
+			return createRetryForAdapter();
+		}
+
+		@Override
+		public Adapter caseRetryDelay(RetryDelay object) {
+			return createRetryDelayAdapter();
+		}
+
+		@Override
 		public Adapter caseWSDLElement(WSDLElement object) {
 			return createWSDLElementAdapter();
 		}
@@ -999,6 +1023,62 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createToPartsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.FailureHandling <em>Failure Handling</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.model.FailureHandling
+	 * @generated
+	 */
+	public Adapter createFailureHandlingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.FaultOnFailure <em>Fault On Failure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.model.FaultOnFailure
+	 * @generated
+	 */
+	public Adapter createFaultOnFailureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.RetryFor <em>Retry For</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.model.RetryFor
+	 * @generated
+	 */
+	public Adapter createRetryForAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.RetryDelay <em>Retry Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.model.RetryDelay
+	 * @generated
+	 */
+	public Adapter createRetryDelayAdapter() {
 		return null;
 	}
 

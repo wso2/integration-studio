@@ -180,12 +180,6 @@
                category="implementation"
                afterTab="org.eclipse.bpel.ui.tabs.details"
                id="org.eclipse.bpel.ui.tabs.joinBehaviour"/>
-	<propertyTab
-              afterTab="org.eclipse.bpel.ui.tabs.details"
-              category="implementation"
-              id="org.eclipse.bpel.ui.tabs.failureHandling"
-              label="Fault on Failure"/>
-        <propertyTab>
         <propertyTab
                label="%DETAILS_PAGES_CORRELATION_LABEL"
                category="implementation"
@@ -508,12 +502,6 @@
               id="org.eclipse.bpel.ui.sections.DocumentationSection"
               tab="org.eclipse.bpel.ui.tabs.documentation">
            <input type="org.eclipse.bpel.model.BPELExtensibleElement"/>
-        </propertySection>
-	<propertySection
-              class="org.eclipse.bpel.ui.properties.FailureHandlingProperty"
-              id="org.eclipse.bpel.ui.sections.FailureHandlingPropertySection"
-              tab="org.eclipse.bpel.ui.tabs.failureHandling">
-           <input type="org.eclipse.bpel.model.Invoke"/>
         </propertySection>
      </propertySections>
 

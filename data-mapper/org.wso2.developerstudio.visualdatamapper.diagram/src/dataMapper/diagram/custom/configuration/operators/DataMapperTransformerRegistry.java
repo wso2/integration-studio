@@ -7,6 +7,7 @@ import dataMapper.Concat;
 import dataMapper.LowerCase;
 import dataMapper.Operator;
 import dataMapper.Split;
+import dataMapper.UpperCase;
 
 public class DataMapperTransformerRegistry {
 
@@ -32,6 +33,7 @@ public class DataMapperTransformerRegistry {
 		addTransformer(Concat.class, new ConcatTransform());
 		addTransformer(Split.class, new SplitTransform());
 		addTransformer(LowerCase.class, new ToLowerCaseTransform());
+		addTransformer(UpperCase.class, new ToUpperCaseTransformer());
 
 	}
 

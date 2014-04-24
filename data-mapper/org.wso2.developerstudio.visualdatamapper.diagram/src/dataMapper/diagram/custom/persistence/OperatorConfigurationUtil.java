@@ -24,10 +24,14 @@ import org.eclipse.emf.ecore.EObject;
 
 import dataMapper.Element;
 import dataMapper.Operator;
+import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.Function;
 
 public class OperatorConfigurationUtil {
+	
+	private static final String INDEX = "[i]";
+	
 	public static String oneToOneMapping(Object input) {
 		return null;
 
@@ -45,6 +49,25 @@ public class OperatorConfigurationUtil {
 	public static Element getSimpleMapOutputElement(Element inputElement) {
 		return inputElement.getOutNode().getOutgoingLink().get(0).getInNode()
 				.getElementParent();
+	}
+	
+
+	/**util method for get mapped output array tree element
+	 * @param inputElement input tree element which is mapped
+	 * @return	element
+	 */
+	public static TreeNode getSimpleArrayMapOutputParent(Element inputElement) {
+		Element outputElement = getSimpleMapOutputElement(inputElement);
+		TreeNode outputParent = outputElement.getFieldParent();
+		
+		if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY) && !(outputParent.getSchemaDataType().equals(SchemaDataType.ARRAY))){
+			while(outputParent.getFieldParent() != null && !(outputParent.getSchemaDataType().equals(SchemaDataType.ARRAY))){
+				outputParent = outputParent.getFieldParent();
+			}
+		}
+		
+		return outputParent;
+				
 	}
 
 	/**util method for get tree hierarchy to the given element 
@@ -192,10 +215,18 @@ public class OperatorConfigurationUtil {
 	 * @param element input tree node child element which one to one map
 	 * @return	assignment statement with array indexed for each in/out nodes
 	 */
-	public static String getSimpleArrayMappingStatement(Element element) {
-		if(isSimpleMap(element)){
-			String outputParentName = getElementParentName(getSimpleMapOutputElement(element));
-			String inputParentName = element.getFieldParent().getName();
+	public static String getSimpleArrayMappingStatement(Element inputElement) {
+		if(isSimpleMap(inputElement)){
+			Element outputElement = getSimpleMapOutputElement(inputElement);
+			TreeNode outputParent = outputElement.getFieldParent();
+			String outputParentName = getElementParentName(getSimpleMapOutputElement(inputElement));
+			String inputParentName = inputElement.getFieldParent().getName();
+			
+			if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY) && !(outputParent.getSchemaDataType().equals(SchemaDataType.ARRAY))){
+				while(outputParent.getFieldParent() != null && !(outputParent.getSchemaDataType().equals(SchemaDataType.ARRAY))){
+					outputParent = outputParent.getFieldParent();
+				}
+			}
 			
 			/*
 			 * If input parameter and output parameter names are identical,
@@ -205,7 +236,7 @@ public class OperatorConfigurationUtil {
 				outputParentName = "output" + WordUtils.capitalize(outputParentName);
 			}
 			
-			return outputParentName + "[i]." +  getSimpleMapOutputElement(element).getName()+ " = " + inputParentName + "[i]."+ element.getName() + ";";
+			return getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "."+  getSimpleMapOutputElement(inputElement).getName()+ " = " + inputParentName + "[i]."+ inputElement.getName() + ";";
 		}
 		return null;
 	}
@@ -219,6 +250,27 @@ public class OperatorConfigurationUtil {
 		Operator opertor = (Operator) eObject;
 		return opertor;
 	}
+	
+	private static String getTreeHierarchy(TreeNode tree, TreeNode parent) {
+		StringBuilder hierarchy = new StringBuilder();
+
+		while (!(tree.equals(parent))) {
+			hierarchy.insert(0, tree.getName());
+			hierarchy.insert(0, ".");
+			tree = tree.getFieldParent();
+		}
+		
+		if(tree.getSchemaDataType().equals(SchemaDataType.ARRAY)){
+			hierarchy.insert(0, (tree.getName()+INDEX));
+		}
+		else {
+			hierarchy.insert(0, tree.getName());
+		}
+
+		return hierarchy.toString();
+
+	}
+
 	
 	
 

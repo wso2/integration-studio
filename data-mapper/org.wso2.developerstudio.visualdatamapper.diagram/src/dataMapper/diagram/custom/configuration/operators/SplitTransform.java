@@ -165,13 +165,6 @@ public class SplitTransform implements OperatorsTransformer {
 		ArrayList<Element> elementList = new ArrayList<Element>();
 		for (OperatorRightConnector connector : rightConnectors) {
 			if (connector.getOutNode().getOutgoingLink().size() != 0) {
-				EObject nextOperator = connector.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer();
-				if (nextOperator instanceof Operator) {
-					Operator next = (Operator) nextOperator;
-					OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(next);
-					transformer.transform(next);
-					System.out.println();
-				}
 				elementList.add(connector.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent());
 			} else {
 				elementList.add(null);

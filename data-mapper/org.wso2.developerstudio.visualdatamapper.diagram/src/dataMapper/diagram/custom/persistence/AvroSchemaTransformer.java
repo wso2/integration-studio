@@ -111,6 +111,11 @@ public class AvroSchemaTransformer {
 		 * under ARRAY
 		 */
 		Schema recordSchema = Schema.createRecord(node.getName(), null, null, false);
+		/*
+		 * FIXME Appends the suffix "Item" to identify as the RECORD under ARRAY
+		 * Schema recordSchema = Schema.createRecord(node.getName() +
+		 * EditorUtils.AVRO_ARRAY_ITEM_SUFFIX, null, null, false);
+		 */
 		List<Field> fieldsForRecord = new ArrayList<Field>();
 
 		if (!node.getNode().isEmpty()) {

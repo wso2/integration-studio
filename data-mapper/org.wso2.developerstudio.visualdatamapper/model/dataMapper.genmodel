@@ -105,5 +105,6 @@
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//LowerCase"/>
     <genClasses ecoreClass="dataMapper.ecore#//Contains"/>
+    <genClasses ecoreClass="dataMapper.ecore#//UpperCase"/>
   </genPackages>
 </genmodel:GenModel>

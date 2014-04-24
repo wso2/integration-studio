@@ -8,7 +8,6 @@ import org.eclipse.gef.Tool;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
-import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
@@ -61,6 +60,7 @@ public class DataMapperPaletteFactory {
 		paletteContainer.add(createConstant5CreationTool());
 		paletteContainer.add(createLowerCase6CreationTool());
 		paletteContainer.add(createContains7CreationTool());
+		paletteContainer.add(createUpperCase8CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -173,6 +173,22 @@ public class DataMapperPaletteFactory {
 		entry.setId("createContains7CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
 				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.Contains_2010));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createUpperCase8CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				dataMapper.diagram.part.Messages.UpperCase8CreationTool_title,
+				dataMapper.diagram.part.Messages.UpperCase8CreationTool_desc,
+				Collections
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.UpperCase_2011));
+		entry.setId("createUpperCase8CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.UpperCase_2011));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -302,8 +318,7 @@ public class DataMapperPaletteFactory {
 
 						}// for
 					}// for element mouse enter
-					
-					
+
 					/*
 					 * for leftconnector
 					 */
@@ -312,18 +327,13 @@ public class DataMapperPaletteFactory {
 								.getChildren().size(); ++i) {
 
 							if ((getTargetEditPart()).getChildren().get(i) instanceof InNode3EditPart) {
-								return ((EditPart) (getTargetEditPart())
-										.getChildren().get(i))
+								return ((EditPart) (getTargetEditPart()).getChildren().get(i))
 										.getCommand(getTargetRequest());
 
 							}
 
 						}// for
 					}// for leftconnector mouse enter
-					
-					
-					
-					
 
 					/*
 					 * for attribute

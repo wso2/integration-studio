@@ -16,6 +16,7 @@ import javax.xml.parsers.DocumentBuilder;
 import org.apache.xerces.parsers.DOMParser;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
+import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.BPELPlugin;
@@ -43,6 +44,7 @@ import org.eclipse.bpel.model.Exit;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.Flow;
@@ -74,6 +76,7 @@ import org.eclipse.bpel.model.Rethrow;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
+import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -1747,7 +1750,26 @@ public class ReconciliationBPELReader extends BPELReader implements
 		} else if (localName.equals("invoke")) {
 			activity = xml2Invoke(activity, activityElement);
 		} else if (localName.equals("assign")) {
-			activity = xml2Assign(activity, activityElement);
+     		// Identifying the Correct Assign Activity 
+
+			String childLocalName = "";
+			// Since E4X Assign Activity has at least one ExtensionAssignOperation by default
+			if (activityElement.getFirstChild() != null) {
+				//Reading all (*) child elements
+				NodeList node = activityElement.getElementsByTagName("*");
+				// checking for first child. 
+				// This implementation supports only for either <copy> or <extensionAssignOpetion>
+				childLocalName = node.item(0).getLocalName();
+				if ("extensionAssignOperation".equalsIgnoreCase(childLocalName)) {
+					activity = xml2AssignE4X(activity, activityElement);
+				} else if ("copy".equalsIgnoreCase(childLocalName)) {
+					activity = xml2Assign(activity, activityElement);
+				}
+
+			} else {
+				// Default Assign Activity. Since there is no child elements.
+				activity = xml2Assign(activity, activityElement);
+			}
 		} else if (localName.equals("throw")) {
 			activity = xml2Throw(activity, activityElement);
 		} else if (localName.equals("exit")) {
@@ -2142,6 +2164,100 @@ public class ReconciliationBPELReader extends BPELReader implements
 		return links;
 	}
 
+	
+	/**
+	 * Converts an XML assignE4X element to a BPEL Assign object.
+	 * 
+	 */
+	protected Activity xml2AssignE4X(Activity assignE4XActivity, Element assignE4XElement) {
+		AssignE4X assignE4X;
+		
+		if (assignE4XActivity instanceof AssignE4X) {
+			assignE4X = (AssignE4X) assignE4XActivity;
+		} else {
+			assignE4X = BPELFactory.eINSTANCE.createAssignE4X();
+			assignE4X.setElement(assignE4XElement);
+		}
+		//setting Validate Attribute value
+		if (assignE4XElement.hasAttribute("validate")) {
+			assignE4X.setValidate(BPELUtils.xml2boolean(assignE4XElement
+					.getAttribute("validate")));
+		} else {
+			assignE4X.setValidate(false);
+		}
+
+		syncLists(assignE4XElement, ReconciliationHelper
+				.getBPELChildElementsByLocalName(assignE4XElement, "extensionAssignOperation"), assignE4X
+				.getExtensionAssignOperation(), new Creator() {
+			public WSDLElement create(Element element) {
+				return xml2ExtensionAssignOperation(null, element);
+			}
+		});
+
+		setStandardAttributes(assignE4XElement, assignE4X);
+
+		return assignE4X;
+	}
+	
+	/**
+	 * Converts an XML ExtensionAssignOperation element to a BPEL ExtensionAssignOperation object.
+	 * 
+	 */
+	protected ExtensionAssignOperation xml2ExtensionAssignOperation(ExtensionAssignOperation extensionAssignOperation, Element extensionAssignOperationElement) {
+		if (extensionAssignOperation == null) {
+			extensionAssignOperation = BPELFactory.eINSTANCE.createExtensionAssignOperation();
+			extensionAssignOperation.setElement(extensionAssignOperationElement);
+		}
+
+		// Save all the references to external namespaces
+		saveNamespacePrefix(extensionAssignOperation, extensionAssignOperationElement);
+
+		Element snippetElement = ReconciliationHelper
+				.getSnippet(extensionAssignOperationElement);
+		if (snippetElement != null && extensionAssignOperation.getSnippet() == null) {
+			extensionAssignOperation.setSnippet(xml2Snippet(extensionAssignOperation.getSnippet(), snippetElement));
+		} else if (snippetElement == null) {
+			extensionAssignOperation.setSnippet(null);
+		}
+
+		xml2ExtensibleElement(extensionAssignOperation, extensionAssignOperationElement);
+
+		return extensionAssignOperation;
+	}
+	
+	
+	
+	/**
+	 * returns a Snippet element from parent ExtensionAssignperation
+	 * 
+	 * @param parentElement
+	 * @return
+	 */
+	protected Snippet xml2Snippet(Snippet snippet,Element snippetElement)
+	{
+		if (snippet == null) {
+			snippet = BPELFactory.eINSTANCE.createSnippet();
+			snippet.setElement(snippetElement);
+		}
+
+		// Save all the references to external namespaces
+		saveNamespacePrefix(snippet, snippetElement);
+
+		if (snippetElement == null) {
+			return snippet;
+		}
+
+		String data = getText(snippetElement);
+		if (data != null) {
+			snippet.setBody(data);
+		} else {
+			snippet.setBody(null);
+		}
+
+		return snippet;
+	}
+	
+	
 	/**
 	 * Converts an XML link element to a BPEL Link object.
 	 */

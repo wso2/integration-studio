@@ -21,6 +21,7 @@ import javax.wsdl.extensions.ExtensibilityElement;
 import org.eclipse.bpel.model.AbstractAssignBound;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
+import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.BooleanExpression;
@@ -47,6 +48,7 @@ import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionActivity;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.Flow;
@@ -77,6 +79,7 @@ import org.eclipse.bpel.model.Rethrow;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
+import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -253,6 +256,22 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseOnAlarm(OnAlarm object) {
 			return createOnAlarmAdapter();
+		}
+
+		@Override
+		public Adapter caseAssignE4X(AssignE4X object) {
+			return createAssignE4XAdapter();
+		}
+
+		@Override
+		public Adapter caseExtensionAssignOperation(
+				ExtensionAssignOperation object) {
+			return createExtensionAssignOperationAdapter();
+		}
+
+		@Override
+		public Adapter caseSnippet(Snippet object) {
+			return createSnippetAdapter();
 		}
 
 		@Override
@@ -840,6 +859,48 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOnAlarmAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.AssignE4X <em>Assign E4X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.model.AssignE4X
+	 * @generated
+	 */
+	public Adapter createAssignE4XAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.ExtensionAssignOperation <em>Extension Assign Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.model.ExtensionAssignOperation
+	 * @generated
+	 */
+	public Adapter createExtensionAssignOperationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.Snippet <em>Snippet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.model.Snippet
+	 * @generated
+	 */
+	public Adapter createSnippetAdapter() {
 		return null;
 	}
 

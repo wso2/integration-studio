@@ -29,6 +29,7 @@ import javax.xml.parsers.DocumentBuilder;
 import org.apache.xerces.parsers.DOMParser;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
+import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.BPELPlugin;
@@ -56,6 +57,7 @@ import org.eclipse.bpel.model.Exit;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.Flow;
@@ -87,6 +89,7 @@ import org.eclipse.bpel.model.Rethrow;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
+import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -1521,7 +1524,26 @@ public class BPELReader implements ErrorHandler {
      	} else if (localName.equals("invoke")) {
       		activity = xml2Invoke(activityElement);
      	} else if (localName.equals("assign")) {
-      		activity = xml2Assign(activityElement);
+     		// Identifying the Correct Assign Activity 
+ 		
+     		String childLocalName = "";
+     		// Since E4X Assign Activity has at least one ExtensionAssignOperation by default
+			if (activityElement.getFirstChild() != null) {
+				//Reading all (*) child elements
+				NodeList node = activityElement.getElementsByTagName("*");
+				// checking for first child. 
+				// This implementation supports only for either <copy> or <extensionAssignOpetion>
+				childLocalName = node.item(0).getLocalName();
+				if ("extensionAssignOperation".equalsIgnoreCase(childLocalName)) {
+					activity = xml2AssignE4X(activityElement);
+				} else if ("copy".equalsIgnoreCase(childLocalName)) {
+					activity = xml2Assign(activityElement);
+				}
+
+			} else {
+				// Default Assign Activity. Since there is no child elements.
+				activity = xml2Assign(activityElement);
+			}
      	} else if (localName.equals("throw")) {
       		activity = xml2Throw(activityElement);
      	} else if (localName.equals("exit")) {
@@ -2905,6 +2927,101 @@ public class BPELReader implements ErrorHandler {
 			from.setType(type);						
 		}
 		return from;
+	}
+	
+	/**
+	 * Converts an XML assignE4X element to a BPEL Assign object.
+	 * 
+	 */
+	protected Activity xml2AssignE4X(Element assignE4XElement) {
+		AssignE4X assignE4X = BPELFactory.eINSTANCE.createAssignE4X();
+		assignE4X.setElement(assignE4XElement);			
+        
+		//setting Validate Attribute value
+		if (assignE4XElement.hasAttribute("validate")) {
+			assignE4X.setValidate( Boolean.valueOf( assignE4XElement.getAttribute("validate").equals("yes")));
+		}
+		
+		// Reading "extensionAssignOperation" Elements and adding them in to assignE4X
+		for (Element extensionAssignOperationElement : getBPELChildElementsByLocalName(assignE4XElement, "extensionAssignOperation") ) {                    
+            assignE4X.getExtensionAssignOperation().add( xml2ExtensionAssignOperation(extensionAssignOperationElement));
+        }
+        
+        setStandardAttributes(assignE4XElement, assignE4X);
+
+		return assignE4X;
+	}
+	
+	/**
+	 * Converts an XML ExtensionAssignOperation element to a BPEL ExtensionAssignOperation object.
+	 * 
+	 */
+	protected ExtensionAssignOperation xml2ExtensionAssignOperation(Element extensionAssignOperationElement) {
+		ExtensionAssignOperation extensionAssignOperation = BPELFactory.eINSTANCE.createExtensionAssignOperation();
+		extensionAssignOperation.setElement(extensionAssignOperationElement);
+        
+
+		// Save all the references to external namespaces		
+		saveNamespacePrefix(extensionAssignOperation, extensionAssignOperationElement);
+
+		// Reading snippet Element
+        Element snippetElement = getSnippet(extensionAssignOperationElement);
+        
+        if (snippetElement != null) {
+            Snippet snippet = BPELFactory.eINSTANCE.createSnippet();
+            snippet.setElement(snippetElement);
+            
+            xml2Snippet(snippet, snippetElement); 
+            extensionAssignOperation.setSnippet(snippet);
+        }
+        
+
+		xml2ExtensibleElement(extensionAssignOperation, extensionAssignOperationElement);
+		return extensionAssignOperation;
+	}
+	
+	/**
+	 * returns a Snippet element from parent ExtensionAssignperation
+	 * @param parentElement
+	 * @return
+	 */
+	private Element getSnippet(Element parentElement) {
+		String localName = "snippet";
+		
+		// Reading child nodes and check for localName is equal to "snippet"
+		// by default snippet element is the first child of extensionAssignOperation element
+		// in this implementation.
+				
+		NodeList children = parentElement.getChildNodes();
+			for (int i = 0; i < children.getLength(); i++) {
+				Node node = children.item(i);
+				if (localName.equals(node.getLocalName())) {
+	                return (Element) node;
+	            }
+			}	
+
+		return null;
+	}
+	
+	/**
+	 * Converts an XML Snippet element to a Snippet object.
+	 */
+	protected Snippet xml2Snippet(Snippet snippet,Element snippetElement)
+	{
+		// Save all the references to external namespaces
+		saveNamespacePrefix(snippet, snippetElement);
+    	
+		if (snippetElement == null) {
+			return snippet;
+		}
+		
+		//reading body of the snippet and add it into the Snippet object
+		String data = getText(snippetElement);
+		if (data != null) {
+			snippet.setBody(data);
+		}
+	
+    	return snippet;
 	}
 
 

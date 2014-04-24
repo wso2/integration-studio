@@ -17,6 +17,7 @@ package org.eclipse.bpel.model.impl;
 import org.eclipse.bpel.model.AbstractAssignBound;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
+import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
@@ -45,6 +46,7 @@ import org.eclipse.bpel.model.Exit;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionActivity;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.Flow;
@@ -75,6 +77,7 @@ import org.eclipse.bpel.model.Rethrow;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
+import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -243,6 +246,27 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 * @generated
 	 */
 	private EClass onAlarmEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assignE4XEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass extensionAssignOperationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass snippetEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1563,6 +1587,70 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 */
 	public EReference getOnAlarm_RepeatEvery() {
 		return (EReference) onAlarmEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAssignE4X() {
+		return assignE4XEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssignE4X_Validate() {
+		return (EAttribute) assignE4XEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAssignE4X_ExtensionAssignOperation() {
+		return (EReference) assignE4XEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExtensionAssignOperation() {
+		return extensionAssignOperationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExtensionAssignOperation_Snippet() {
+		return (EReference) extensionAssignOperationEClass
+				.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSnippet() {
+		return snippetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSnippet_Body() {
+		return (EAttribute) snippetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3288,6 +3376,18 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 		createEReference(onAlarmEClass, ON_ALARM__UNTIL);
 		createEReference(onAlarmEClass, ON_ALARM__REPEAT_EVERY);
 
+		assignE4XEClass = createEClass(ASSIGN_E4X);
+		createEAttribute(assignE4XEClass, ASSIGN_E4X__VALIDATE);
+		createEReference(assignE4XEClass,
+				ASSIGN_E4X__EXTENSION_ASSIGN_OPERATION);
+
+		extensionAssignOperationEClass = createEClass(EXTENSION_ASSIGN_OPERATION);
+		createEReference(extensionAssignOperationEClass,
+				EXTENSION_ASSIGN_OPERATION__SNIPPET);
+
+		snippetEClass = createEClass(SNIPPET);
+		createEAttribute(snippetEClass, SNIPPET__BODY);
+
 		assignEClass = createEClass(ASSIGN);
 		createEReference(assignEClass, ASSIGN__COPY);
 		createEAttribute(assignEClass, ASSIGN__VALIDATE);
@@ -3591,6 +3691,10 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 		pickEClass.getESuperTypes().add(this.getActivity());
 		flowEClass.getESuperTypes().add(this.getActivity());
 		onAlarmEClass.getESuperTypes().add(this.getBPELExtensibleElement());
+		assignE4XEClass.getESuperTypes().add(this.getActivity());
+		extensionAssignOperationEClass.getESuperTypes().add(
+				this.getBPELExtensibleElement());
+		snippetEClass.getESuperTypes().add(this.getBPELExtensibleElement());
 		assignEClass.getESuperTypes().add(this.getActivity());
 		copyEClass.getESuperTypes().add(this.getBPELExtensibleElement());
 		extensionEClass.getESuperTypes().add(this.getBPELExtensibleElement());
@@ -4106,6 +4210,39 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 				this.getExpression(),
 				null,
 				"repeatEvery", null, 0, 1, OnAlarm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(
+				assignE4XEClass,
+				AssignE4X.class,
+				"AssignE4X", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+				getAssignE4X_Validate(),
+				theEcorePackage.getEBooleanObject(),
+				"Validate", "", 1, 1, AssignE4X.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEReference(
+				getAssignE4X_ExtensionAssignOperation(),
+				this.getExtensionAssignOperation(),
+				null,
+				"extensionAssignOperation", null, 1, -1, AssignE4X.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(
+				extensionAssignOperationEClass,
+				ExtensionAssignOperation.class,
+				"ExtensionAssignOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(
+				getExtensionAssignOperation_Snippet(),
+				this.getSnippet(),
+				null,
+				"snippet", null, 1, 1, ExtensionAssignOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(
+				snippetEClass,
+				Snippet.class,
+				"Snippet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(
+				getSnippet_Body(),
+				theEcorePackage.getEJavaObject(),
+				"body", null, 1, 1, Snippet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
 				assignEClass,

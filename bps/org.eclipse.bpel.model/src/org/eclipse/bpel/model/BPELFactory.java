@@ -205,6 +205,33 @@ public interface BPELFactory extends EFactory {
 	OnAlarm createOnAlarm();
 
 	/**
+	 * Returns a new object of class '<em>Assign E4X</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assign E4X</em>'.
+	 * @generated
+	 */
+	AssignE4X createAssignE4X();
+
+	/**
+	 * Returns a new object of class '<em>Extension Assign Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Extension Assign Operation</em>'.
+	 * @generated
+	 */
+	ExtensionAssignOperation createExtensionAssignOperation();
+
+	/**
+	 * Returns a new object of class '<em>Snippet</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Snippet</em>'.
+	 * @generated
+	 */
+	Snippet createSnippet();
+
+	/**
 	 * Returns a new object of class '<em>Assign</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

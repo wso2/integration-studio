@@ -16,6 +16,7 @@ package org.eclipse.bpel.model.impl;
 
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
+import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
@@ -44,6 +45,7 @@ import org.eclipse.bpel.model.Exit;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionActivity;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.Flow;
@@ -74,6 +76,7 @@ import org.eclipse.bpel.model.Rethrow;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
+import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -114,7 +117,7 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
 	public static BPELFactory init() {
 		try {
 			BPELFactory theBPELFactory = (BPELFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/process/executable"); //$NON-NLS-1$ 
+					.getEFactory(BPELPackage.eNS_URI);
 			if (theBPELFactory != null) {
 				return theBPELFactory;
 			}
@@ -182,6 +185,12 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
 			return createFlow();
 		case BPELPackage.ON_ALARM:
 			return createOnAlarm();
+		case BPELPackage.ASSIGN_E4X:
+			return createAssignE4X();
+		case BPELPackage.EXTENSION_ASSIGN_OPERATION:
+			return createExtensionAssignOperation();
+		case BPELPackage.SNIPPET:
+			return createSnippet();
 		case BPELPackage.ASSIGN:
 			return createAssign();
 		case BPELPackage.COPY:
@@ -518,6 +527,36 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
 	public OnAlarm createOnAlarm() {
 		OnAlarmImpl onAlarm = new OnAlarmImpl();
 		return onAlarm;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssignE4X createAssignE4X() {
+		AssignE4XImpl assignE4X = new AssignE4XImpl();
+		return assignE4X;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExtensionAssignOperation createExtensionAssignOperation() {
+		ExtensionAssignOperationImpl extensionAssignOperation = new ExtensionAssignOperationImpl();
+		return extensionAssignOperation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Snippet createSnippet() {
+		SnippetImpl snippet = new SnippetImpl();
+		return snippet;
 	}
 
 	/**

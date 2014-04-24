@@ -30,6 +30,7 @@ import org.apache.xml.serialize.XMLSerializer;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
 import org.eclipse.bpel.model.BPELExtensibleElement;
+import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Branches;
@@ -54,6 +55,7 @@ import org.eclipse.bpel.model.Exit;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionActivity;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.Flow;
@@ -84,6 +86,7 @@ import org.eclipse.bpel.model.Rethrow;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
+import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -1082,6 +1085,9 @@ if (XSDConstants.SCHEMA_FOR_SCHEMA_URI_2001.equals(namespace)) {
 			activityElement = invoke2XML((Invoke) activity);
 		else if (activity instanceof Assign)
 			activityElement = assign2XML((Assign) activity);
+		else if (activity instanceof AssignE4X)
+			//If activity is E4X assign
+			activityElement = assignE4X2XML((AssignE4X) activity);
 		else if (activity instanceof Reply)
 			activityElement = reply2XML((Reply) activity);
 		else if (activity instanceof Receive)
@@ -1470,6 +1476,104 @@ if (XSDConstants.SCHEMA_FOR_SCHEMA_URI_2001.equals(namespace)) {
 		addCommonActivityItems(activityElement, activity);
 		return activityElement;
 	}
+
+
+	/**
+	 * Returns assign Element which suppots for E4X 
+	 */
+	protected Element assignE4X2XML(AssignE4X activity) {
+ 
+		Element activityElement = createBPELElement("assign");
+
+		// setting Validate Attribute 
+		if (activity.getValidate() != null)
+			activityElement.setAttribute("validate", BPELUtils
+					.boolean2XML(activity.getValidate()));
+		
+		//Adding ExtensionAssign Operations to the assign element.
+		List<?> extensionAssignOperationList = activity.getExtensionAssignOperation();
+		if (!extensionAssignOperationList.isEmpty()) {
+			for (Iterator<?> i = extensionAssignOperationList.iterator(); i.hasNext();) {
+				ExtensionAssignOperation extensionAssignOperation = (ExtensionAssignOperation) i.next();
+				activityElement.appendChild(extensionAssignOperation2XML(extensionAssignOperation));
+			}
+		}
+
+		addCommonActivityItems(activityElement, activity);
+		return activityElement;
+	}
+	
+	/** 
+	 * Returns a ExtensionAssignOperation Element 
+	 * 
+	 */
+	protected Element extensionAssignOperation2XML(ExtensionAssignOperation extensionAssignOpearation) {
+		Element ecoElement = createBPELElement("extensionAssignOperation");
+
+		//getting Snippet of ExtensionAssignOperation
+		Snippet snippet = extensionAssignOpearation.getSnippet();
+		if (snippet != null) {
+			// Creating Element with js nameSpace;
+			Element snippetElement = createElementWithTag( "http://ode.apache.org/extensions/e4x","js" , "snippet");
+			snippet2XML(snippet, snippetElement);
+			ecoElement.appendChild(snippetElement);
+		}
+		
+		// serialize local namespace prefixes to XML
+		serializePrefixes(extensionAssignOpearation, ecoElement);
+		extensibleElement2XML(extensionAssignOpearation, ecoElement);
+
+		return ecoElement;
+	}
+	
+	/** 
+	 * Returns a Snippet Element 
+	 * 
+	 */
+	protected Element snippet2XML(Snippet snippet, Element snippetElement)
+	{
+		// adding Body content.
+		if (snippet.getBody() != null) {
+			Object body = snippet.getBody();
+			if (body instanceof ExtensibilityElement) {
+				ExtensibilityElement extensibilityElement = (ExtensibilityElement) body;
+				Element child = extensibilityElement2XML(extensibilityElement);
+				if (child != null) {
+					snippetElement.appendChild(child);
+				}
+			} else {
+				CDATASection cdata = BPELUtils.createCDATASection(document,
+						snippet.getBody().toString());
+				snippetElement.appendChild(cdata);
+			}
+		}
+		
+		// adding "xmln:js=http://ode.apache.org/extensions/e4x" attribute for Snippet.
+		String prefix = "js";
+		String namespace = "http://ode.apache.org/extensions/e4x";
+		snippetElement.setAttributeNS(XSDConstants.XMLNS_URI_2000,
+					"xmlns:" + prefix, namespace);
+
+		return snippetElement;
+	
+	}
+	
+	/**
+	 * Creating Elements with given nameSpace;
+	 * exampel:if  ns=js, nameSpaceURI= http://ode.apache.org/extensions/e4x; tagName=snippet
+	 * this will generate <js:snippet>
+	 * 
+	 * @param namespaceURI
+	 * @param ns
+	 * @param tagName
+	 * @return
+	 */
+	protected Element createElementWithTag(String nameSpaceURI , String ns ,String tagName) {
+		
+	    return document.createElementNS(nameSpaceURI, ns+ ":" + tagName);
+		
+	}
+
 
 	protected Element assign2XML(Assign activity) {
 

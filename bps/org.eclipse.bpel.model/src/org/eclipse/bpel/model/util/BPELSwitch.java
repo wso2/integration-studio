@@ -15,6 +15,7 @@ import javax.wsdl.extensions.ExtensibilityElement;
 import org.eclipse.bpel.model.AbstractAssignBound;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
+import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.BooleanExpression;
@@ -40,6 +41,7 @@ import org.eclipse.bpel.model.Exit;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.ExtensionActivity;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.Flow;
@@ -70,6 +72,7 @@ import org.eclipse.bpel.model.Rethrow;
 import org.eclipse.bpel.model.Scope;
 import org.eclipse.bpel.model.Sequence;
 import org.eclipse.bpel.model.ServiceRef;
+import org.eclipse.bpel.model.Snippet;
 import org.eclipse.bpel.model.Source;
 import org.eclipse.bpel.model.Sources;
 import org.eclipse.bpel.model.Target;
@@ -530,6 +533,59 @@ public class BPELSwitch<T> {
 				result = caseIElementExtensible(onAlarm);
 			if (result == null)
 				result = caseIAttributeExtensible(onAlarm);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case BPELPackage.ASSIGN_E4X: {
+			AssignE4X assignE4X = (AssignE4X) theEObject;
+			T result = caseAssignE4X(assignE4X);
+			if (result == null)
+				result = caseActivity(assignE4X);
+			if (result == null)
+				result = caseBPELExtensibleElement(assignE4X);
+			if (result == null)
+				result = caseExtensibleElement(assignE4X);
+			if (result == null)
+				result = caseWSDLElement(assignE4X);
+			if (result == null)
+				result = caseIElementExtensible(assignE4X);
+			if (result == null)
+				result = caseIAttributeExtensible(assignE4X);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case BPELPackage.EXTENSION_ASSIGN_OPERATION: {
+			ExtensionAssignOperation extensionAssignOperation = (ExtensionAssignOperation) theEObject;
+			T result = caseExtensionAssignOperation(extensionAssignOperation);
+			if (result == null)
+				result = caseBPELExtensibleElement(extensionAssignOperation);
+			if (result == null)
+				result = caseExtensibleElement(extensionAssignOperation);
+			if (result == null)
+				result = caseWSDLElement(extensionAssignOperation);
+			if (result == null)
+				result = caseIElementExtensible(extensionAssignOperation);
+			if (result == null)
+				result = caseIAttributeExtensible(extensionAssignOperation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case BPELPackage.SNIPPET: {
+			Snippet snippet = (Snippet) theEObject;
+			T result = caseSnippet(snippet);
+			if (result == null)
+				result = caseBPELExtensibleElement(snippet);
+			if (result == null)
+				result = caseExtensibleElement(snippet);
+			if (result == null)
+				result = caseWSDLElement(snippet);
+			if (result == null)
+				result = caseIElementExtensible(snippet);
+			if (result == null)
+				result = caseIAttributeExtensible(snippet);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1729,6 +1785,51 @@ public class BPELSwitch<T> {
 	 * @generated
 	 */
 	public T caseOnAlarm(OnAlarm object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assign E4X</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assign E4X</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssignE4X(AssignE4X object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Extension Assign Operation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extension Assign Operation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExtensionAssignOperation(ExtensionAssignOperation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Snippet</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Snippet</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSnippet(Snippet object) {
 		return null;
 	}
 

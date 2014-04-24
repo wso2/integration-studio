@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model"
-    nsURI="http://docs.oasis-open.org/wsbpel/2.0/process/executable" nsPrefix="bpws">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    nsPrefix="bpws">
   <eClassifiers xsi:type="ecore:EClass" name="Process" eSuperTypes="#//BPELExtensibleElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Describes behavior based on interactions between the activities performed by partners through Web Service interfaces. Defines how individual or composite activities are coordinated to achieve a business goal, as well as the state and logic necessary for this coordination. Represents stateful, long-running interactions in which each interaction has a beginning, defined behavior during its lifetime, and an end.&#xD;&#xA;&#xD;&#xA;Abstract processes approach data handling in a way that reflects the level of abstraction required to describe the public aspects of the business protocol. Abstract processes handle only protocol-relevant data as defined by message properties.&#xD;&#xA;&#xD;&#xA;Processes and Partners are modeled as WSDL services."/>
@@ -239,6 +238,20 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="repeatEvery" eType="#//Expression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssignE4X" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Validate" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionAssignOperation"
+        lowerBound="1" upperBound="-1" eType="#//ExtensionAssignOperation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtensionAssignOperation" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="snippet" lowerBound="1"
+        eType="#//Snippet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Snippet" eSuperTypes="#//BPELExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Assign" eSuperTypes="#//Activity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

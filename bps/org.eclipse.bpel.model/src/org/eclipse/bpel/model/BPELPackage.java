@@ -77,7 +77,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getBPELExtensibleElement()
 	 * @generated
 	 */
-	int BPEL_EXTENSIBLE_ELEMENT = 68;
+	int BPEL_EXTENSIBLE_ELEMENT = 71;
 
 	/**
 	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -322,7 +322,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getAssign()
 	 * @generated
 	 */
-	int ASSIGN = 20;
+	int ASSIGN = 23;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CopyImpl <em>Copy</em>}' class.
@@ -332,7 +332,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCopy()
 	 * @generated
 	 */
-	int COPY = 21;
+	int COPY = 24;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -342,7 +342,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getExtension()
 	 * @generated
 	 */
-	int EXTENSION = 22;
+	int EXTENSION = 25;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ScopeImpl <em>Scope</em>}' class.
@@ -352,7 +352,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getScope()
 	 * @generated
 	 */
-	int SCOPE = 23;
+	int SCOPE = 26;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CompensateImpl <em>Compensate</em>}' class.
@@ -362,7 +362,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCompensate()
 	 * @generated
 	 */
-	int COMPENSATE = 70;
+	int COMPENSATE = 73;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CompensationHandlerImpl <em>Compensation Handler</em>}' class.
@@ -372,7 +372,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCompensationHandler()
 	 * @generated
 	 */
-	int COMPENSATION_HANDLER = 25;
+	int COMPENSATION_HANDLER = 28;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ToImpl <em>To</em>}' class.
@@ -382,7 +382,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getTo()
 	 * @generated
 	 */
-	int TO = 27;
+	int TO = 30;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.FromImpl <em>From</em>}' class.
@@ -392,7 +392,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getFrom()
 	 * @generated
 	 */
-	int FROM = 28;
+	int FROM = 31;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.OnMessageImpl <em>On Message</em>}' class.
@@ -402,7 +402,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getOnMessage()
 	 * @generated
 	 */
-	int ON_MESSAGE = 29;
+	int ON_MESSAGE = 32;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -412,7 +412,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 30;
+	int EXPRESSION = 33;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
@@ -422,7 +422,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getBooleanExpression()
 	 * @generated
 	 */
-	int BOOLEAN_EXPRESSION = 31;
+	int BOOLEAN_EXPRESSION = 34;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CorrelationImpl <em>Correlation</em>}' class.
@@ -432,7 +432,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCorrelation()
 	 * @generated
 	 */
-	int CORRELATION = 32;
+	int CORRELATION = 35;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.EventHandlerImpl <em>Event Handler</em>}' class.
@@ -442,7 +442,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getEventHandler()
 	 * @generated
 	 */
-	int EVENT_HANDLER = 34;
+	int EVENT_HANDLER = 37;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.SourceImpl <em>Source</em>}' class.
@@ -452,7 +452,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getSource()
 	 * @generated
 	 */
-	int SOURCE = 35;
+	int SOURCE = 38;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.TargetImpl <em>Target</em>}' class.
@@ -462,7 +462,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getTarget()
 	 * @generated
 	 */
-	int TARGET = 36;
+	int TARGET = 39;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.PartnerLinksImpl <em>Partner Links</em>}' class.
@@ -472,7 +472,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getPartnerLinks()
 	 * @generated
 	 */
-	int PARTNER_LINKS = 37;
+	int PARTNER_LINKS = 40;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.VariablesImpl <em>Variables</em>}' class.
@@ -482,7 +482,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getVariables()
 	 * @generated
 	 */
-	int VARIABLES = 39;
+	int VARIABLES = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CorrelationSetsImpl <em>Correlation Sets</em>}' class.
@@ -492,7 +492,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCorrelationSets()
 	 * @generated
 	 */
-	int CORRELATION_SETS = 40;
+	int CORRELATION_SETS = 43;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.LinksImpl <em>Links</em>}' class.
@@ -502,7 +502,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getLinks()
 	 * @generated
 	 */
-	int LINKS = 41;
+	int LINKS = 44;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CatchAllImpl <em>Catch All</em>}' class.
@@ -512,7 +512,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCatchAll()
 	 * @generated
 	 */
-	int CATCH_ALL = 42;
+	int CATCH_ALL = 45;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CorrelationsImpl <em>Correlations</em>}' class.
@@ -522,7 +522,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCorrelations()
 	 * @generated
 	 */
-	int CORRELATIONS = 43;
+	int CORRELATIONS = 46;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.VariableImpl <em>Variable</em>}' class.
@@ -532,7 +532,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 44;
+	int VARIABLE = 47;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.UnknownExtensibilityAttributeImpl <em>Unknown Extensibility Attribute</em>}' class.
@@ -542,7 +542,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getUnknownExtensibilityAttribute()
 	 * @generated
 	 */
-	int UNKNOWN_EXTENSIBILITY_ATTRIBUTE = 45;
+	int UNKNOWN_EXTENSIBILITY_ATTRIBUTE = 48;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.OnEventImpl <em>On Event</em>}' class.
@@ -552,7 +552,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getOnEvent()
 	 * @generated
 	 */
-	int ON_EVENT = 46;
+	int ON_EVENT = 49;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ImportImpl <em>Import</em>}' class.
@@ -562,7 +562,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getImport()
 	 * @generated
 	 */
-	int IMPORT = 47;
+	int IMPORT = 50;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.RethrowImpl <em>Rethrow</em>}' class.
@@ -572,7 +572,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getRethrow()
 	 * @generated
 	 */
-	int RETHROW = 48;
+	int RETHROW = 51;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ConditionImpl <em>Condition</em>}' class.
@@ -582,7 +582,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 49;
+	int CONDITION = 52;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.TargetsImpl <em>Targets</em>}' class.
@@ -592,7 +592,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getTargets()
 	 * @generated
 	 */
-	int TARGETS = 50;
+	int TARGETS = 53;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.SourcesImpl <em>Sources</em>}' class.
@@ -602,7 +602,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getSources()
 	 * @generated
 	 */
-	int SOURCES = 51;
+	int SOURCES = 54;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.QueryImpl <em>Query</em>}' class.
@@ -612,7 +612,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getQuery()
 	 * @generated
 	 */
-	int QUERY = 52;
+	int QUERY = 55;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ServiceRefImpl <em>Service Ref</em>}' class.
@@ -622,7 +622,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getServiceRef()
 	 * @generated
 	 */
-	int SERVICE_REF = 53;
+	int SERVICE_REF = 56;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ExitImpl <em>Exit</em>}' class.
@@ -642,7 +642,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getExtensions()
 	 * @generated
 	 */
-	int EXTENSIONS = 54;
+	int EXTENSIONS = 57;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ExtensionActivityImpl <em>Extension Activity</em>}' class.
@@ -652,7 +652,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getExtensionActivity()
 	 * @generated
 	 */
-	int EXTENSION_ACTIVITY = 55;
+	int EXTENSION_ACTIVITY = 58;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.FromPartImpl <em>From Part</em>}' class.
@@ -662,7 +662,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getFromPart()
 	 * @generated
 	 */
-	int FROM_PART = 56;
+	int FROM_PART = 59;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ToPartImpl <em>To Part</em>}' class.
@@ -672,7 +672,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getToPart()
 	 * @generated
 	 */
-	int TO_PART = 57;
+	int TO_PART = 60;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.OpaqueActivityImpl <em>Opaque Activity</em>}' class.
@@ -682,7 +682,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getOpaqueActivity()
 	 * @generated
 	 */
-	int OPAQUE_ACTIVITY = 58;
+	int OPAQUE_ACTIVITY = 61;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ForEachImpl <em>For Each</em>}' class.
@@ -692,7 +692,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getForEach()
 	 * @generated
 	 */
-	int FOR_EACH = 59;
+	int FOR_EACH = 62;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.RepeatUntilImpl <em>Repeat Until</em>}' class.
@@ -702,7 +702,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getRepeatUntil()
 	 * @generated
 	 */
-	int REPEAT_UNTIL = 60;
+	int REPEAT_UNTIL = 63;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.TerminationHandlerImpl <em>Termination Handler</em>}' class.
@@ -712,7 +712,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getTerminationHandler()
 	 * @generated
 	 */
-	int TERMINATION_HANDLER = 61;
+	int TERMINATION_HANDLER = 64;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.IfImpl <em>If</em>}' class.
@@ -722,7 +722,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getIf()
 	 * @generated
 	 */
-	int IF = 63;
+	int IF = 66;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ElseIfImpl <em>Else If</em>}' class.
@@ -732,7 +732,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getElseIf()
 	 * @generated
 	 */
-	int ELSE_IF = 64;
+	int ELSE_IF = 67;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ElseImpl <em>Else</em>}' class.
@@ -742,7 +742,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getElse()
 	 * @generated
 	 */
-	int ELSE = 65;
+	int ELSE = 68;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CompletionConditionImpl <em>Completion Condition</em>}' class.
@@ -752,7 +752,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCompletionCondition()
 	 * @generated
 	 */
-	int COMPLETION_CONDITION = 66;
+	int COMPLETION_CONDITION = 69;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.BranchesImpl <em>Branches</em>}' class.
@@ -762,7 +762,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getBranches()
 	 * @generated
 	 */
-	int BRANCHES = 67;
+	int BRANCHES = 70;
 
 	/**
 	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -2862,6 +2862,243 @@ public interface BPELPackage extends EPackage {
 	int ON_ALARM_FEATURE_COUNT = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.AssignE4XImpl <em>Assign E4X</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.model.impl.AssignE4XImpl
+	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getAssignE4X()
+	 * @generated
+	 */
+	int ASSIGN_E4X = 20;
+
+	/**
+	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__DOCUMENTATION_ELEMENT = ACTIVITY__DOCUMENTATION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__ELEMENT = ACTIVITY__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__EEXTENSIBILITY_ELEMENTS = ACTIVITY__EEXTENSIBILITY_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__DOCUMENTATION = ACTIVITY__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__NAME = ACTIVITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__SUPPRESS_JOIN_FAILURE = ACTIVITY__SUPPRESS_JOIN_FAILURE;
+
+	/**
+	 * The feature id for the '<em><b>Targets</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__TARGETS = ACTIVITY__TARGETS;
+
+	/**
+	 * The feature id for the '<em><b>Sources</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__SOURCES = ACTIVITY__SOURCES;
+
+	/**
+	 * The feature id for the '<em><b>Validate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__VALIDATE = ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Extension Assign Operation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X__EXTENSION_ASSIGN_OPERATION = ACTIVITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Assign E4X</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_E4X_FEATURE_COUNT = ACTIVITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.ExtensionAssignOperationImpl <em>Extension Assign Operation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.model.impl.ExtensionAssignOperationImpl
+	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getExtensionAssignOperation()
+	 * @generated
+	 */
+	int EXTENSION_ASSIGN_OPERATION = 21;
+
+	/**
+	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_ASSIGN_OPERATION__DOCUMENTATION_ELEMENT = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_ASSIGN_OPERATION__ELEMENT = BPEL_EXTENSIBLE_ELEMENT__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_ASSIGN_OPERATION__EEXTENSIBILITY_ELEMENTS = BPEL_EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_ASSIGN_OPERATION__DOCUMENTATION = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Snippet</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_ASSIGN_OPERATION__SNIPPET = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Extension Assign Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSION_ASSIGN_OPERATION_FEATURE_COUNT = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.SnippetImpl <em>Snippet</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.model.impl.SnippetImpl
+	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getSnippet()
+	 * @generated
+	 */
+	int SNIPPET = 22;
+
+	/**
+	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SNIPPET__DOCUMENTATION_ELEMENT = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SNIPPET__ELEMENT = BPEL_EXTENSIBLE_ELEMENT__ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SNIPPET__EEXTENSIBILITY_ELEMENTS = BPEL_EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SNIPPET__DOCUMENTATION = BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SNIPPET__BODY = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Snippet</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SNIPPET_FEATURE_COUNT = BPEL_EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3292,7 +3529,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getValidate()
 	 * @generated
 	 */
-	int VALIDATE = 62;
+	int VALIDATE = 65;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.DocumentationImpl <em>Documentation</em>}' class.
@@ -3302,7 +3539,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDocumentation()
 	 * @generated
 	 */
-	int DOCUMENTATION = 69;
+	int DOCUMENTATION = 72;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.MessageExchangesImpl <em>Message Exchanges</em>}' class.
@@ -3312,7 +3549,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getMessageExchanges()
 	 * @generated
 	 */
-	int MESSAGE_EXCHANGES = 38;
+	int MESSAGE_EXCHANGES = 41;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.MessageExchangeImpl <em>Message Exchange</em>}' class.
@@ -3322,7 +3559,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getMessageExchange()
 	 * @generated
 	 */
-	int MESSAGE_EXCHANGE = 33;
+	int MESSAGE_EXCHANGE = 36;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.impl.CompensateScopeImpl <em>Compensate Scope</em>}' class.
@@ -3332,7 +3569,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCompensateScope()
 	 * @generated
 	 */
-	int COMPENSATE_SCOPE = 24;
+	int COMPENSATE_SCOPE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -3486,7 +3723,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getAbstractAssignBound()
 	 * @generated
 	 */
-	int ABSTRACT_ASSIGN_BOUND = 26;
+	int ABSTRACT_ASSIGN_BOUND = 29;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' reference.
@@ -6747,7 +6984,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getFromParts()
 	 * @generated
 	 */
-	int FROM_PARTS = 71;
+	int FROM_PARTS = 74;
 
 	/**
 	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -6811,7 +7048,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getToParts()
 	 * @generated
 	 */
-	int TO_PARTS = 72;
+	int TO_PARTS = 75;
 
 	/**
 	 * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -6875,7 +7112,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getCorrelationPattern()
 	 * @generated
 	 */
-	int CORRELATION_PATTERN = 73;
+	int CORRELATION_PATTERN = 76;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.model.EndpointReferenceRole <em>Endpoint Reference Role</em>}' enum.
@@ -6885,7 +7122,7 @@ public interface BPELPackage extends EPackage {
 	 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getEndpointReferenceRole()
 	 * @generated
 	 */
-	int ENDPOINT_REFERENCE_ROLE = 74;
+	int ENDPOINT_REFERENCE_ROLE = 77;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.model.Process <em>Process</em>}'.
@@ -7879,6 +8116,80 @@ public interface BPELPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOnAlarm_RepeatEvery();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.model.AssignE4X <em>Assign E4X</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assign E4X</em>'.
+	 * @see org.eclipse.bpel.model.AssignE4X
+	 * @generated
+	 */
+	EClass getAssignE4X();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.AssignE4X#getValidate <em>Validate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Validate</em>'.
+	 * @see org.eclipse.bpel.model.AssignE4X#getValidate()
+	 * @see #getAssignE4X()
+	 * @generated
+	 */
+	EAttribute getAssignE4X_Validate();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.bpel.model.AssignE4X#getExtensionAssignOperation <em>Extension Assign Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Extension Assign Operation</em>'.
+	 * @see org.eclipse.bpel.model.AssignE4X#getExtensionAssignOperation()
+	 * @see #getAssignE4X()
+	 * @generated
+	 */
+	EReference getAssignE4X_ExtensionAssignOperation();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.model.ExtensionAssignOperation <em>Extension Assign Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Extension Assign Operation</em>'.
+	 * @see org.eclipse.bpel.model.ExtensionAssignOperation
+	 * @generated
+	 */
+	EClass getExtensionAssignOperation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.ExtensionAssignOperation#getSnippet <em>Snippet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Snippet</em>'.
+	 * @see org.eclipse.bpel.model.ExtensionAssignOperation#getSnippet()
+	 * @see #getExtensionAssignOperation()
+	 * @generated
+	 */
+	EReference getExtensionAssignOperation_Snippet();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.model.Snippet <em>Snippet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Snippet</em>'.
+	 * @see org.eclipse.bpel.model.Snippet
+	 * @generated
+	 */
+	EClass getSnippet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.Snippet#getBody <em>Body</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Body</em>'.
+	 * @see org.eclipse.bpel.model.Snippet#getBody()
+	 * @see #getSnippet()
+	 * @generated
+	 */
+	EAttribute getSnippet_Body();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.model.Assign <em>Assign</em>}'.
@@ -10571,6 +10882,71 @@ public interface BPELPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ON_ALARM__REPEAT_EVERY = eINSTANCE.getOnAlarm_RepeatEvery();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.AssignE4XImpl <em>Assign E4X</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.model.impl.AssignE4XImpl
+		 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getAssignE4X()
+		 * @generated
+		 */
+		EClass ASSIGN_E4X = eINSTANCE.getAssignE4X();
+
+		/**
+		 * The meta object literal for the '<em><b>Validate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSIGN_E4X__VALIDATE = eINSTANCE.getAssignE4X_Validate();
+
+		/**
+		 * The meta object literal for the '<em><b>Extension Assign Operation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSIGN_E4X__EXTENSION_ASSIGN_OPERATION = eINSTANCE
+				.getAssignE4X_ExtensionAssignOperation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.ExtensionAssignOperationImpl <em>Extension Assign Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.model.impl.ExtensionAssignOperationImpl
+		 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getExtensionAssignOperation()
+		 * @generated
+		 */
+		EClass EXTENSION_ASSIGN_OPERATION = eINSTANCE
+				.getExtensionAssignOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Snippet</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXTENSION_ASSIGN_OPERATION__SNIPPET = eINSTANCE
+				.getExtensionAssignOperation_Snippet();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.SnippetImpl <em>Snippet</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.model.impl.SnippetImpl
+		 * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getSnippet()
+		 * @generated
+		 */
+		EClass SNIPPET = eINSTANCE.getSnippet();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SNIPPET__BODY = eINSTANCE.getSnippet_Body();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.model.impl.AssignImpl <em>Assign</em>}' class.

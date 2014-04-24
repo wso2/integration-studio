@@ -36,6 +36,7 @@ import org.eclipse.bpel.model.EventHandler;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.Extension;
+import org.eclipse.bpel.model.ExtensionAssignOperation;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
 import org.eclipse.bpel.model.From;
@@ -200,6 +201,11 @@ public class ElementFactory {
 		@Override
 		protected Element catch2XML(Catch _catch) {
 			return super.catch2XML(_catch);
+		}
+		
+		@Override
+		protected Element extensionAssignOperation2XML(ExtensionAssignOperation extensionAssignOperation) {
+			return super.extensionAssignOperation2XML(extensionAssignOperation);
 		}
 
 		@Override

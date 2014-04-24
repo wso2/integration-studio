@@ -466,7 +466,13 @@
                class="org.eclipse.bpel.ui.properties.AssignImplSection"
                id="org.eclipse.bpel.ui.sections.AssignImpl">
             <input type="org.eclipse.bpel.model.Assign"/>
-        </propertySection>        
+        </propertySection>
+        <propertySection
+               tab="org.eclipse.bpel.ui.tabs.details"
+               class="org.eclipse.bpel.ui.properties.AssignE4XImplSection"
+               id="org.eclipse.bpel.ui.sections.AssignE4XImpl">
+            <input type="org.eclipse.bpel.model.AssignE4X"/> 
+        </propertySection>
         <propertySection		       
                tab="org.eclipse.bpel.ui.tabs.details"
                class="org.eclipse.bpel.ui.properties.ValidateSection"

@@ -67,7 +67,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			public void run() {
 
 				if (getParent().getParent() instanceof SplitEditPart
-						|| getParent().getParent() instanceof LowerCaseEditPart) {
+						|| getParent().getParent() instanceof LowerCaseEditPart || getParent().getParent() instanceof UpperCaseEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
@@ -86,7 +86,8 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 				}
 
 				else if (getParent().getParent() instanceof EqualEditPart
-						|| getParent().getParent() instanceof ConcatEditPart || getParent().getParent() instanceof ContainsEditPart) {
+						|| getParent().getParent() instanceof ConcatEditPart
+						|| getParent().getParent() instanceof ContainsEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
@@ -270,7 +271,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 
 		public OperatorLeftContainerFigure() {
 
-//			this.setBackgroundColor(THIS_BACK);
+			//			this.setBackgroundColor(THIS_BACK);
 			// RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
 			// border.setColor(new Color(null, 255, 0, 0));
 			// this.setBorder(border); //TODO just for identification remove

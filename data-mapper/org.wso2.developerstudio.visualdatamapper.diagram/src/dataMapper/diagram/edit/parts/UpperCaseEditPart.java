@@ -1,9 +1,12 @@
 package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -19,12 +22,16 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+
+import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class UpperCaseEditPart extends ShapeNodeEditPart {
+public class UpperCaseEditPart extends AbstractOperatorEditPart {
 
 	/**
 	 * @generated
@@ -94,7 +101,7 @@ public class UpperCaseEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RectangleFigure();
+		return primaryShape = new UpperCaseFigure();
 	}
 
 	/**
@@ -108,7 +115,7 @@ public class UpperCaseEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 20);
 		return result;
 	}
 
@@ -189,5 +196,37 @@ public class UpperCaseEditPart extends ShapeNodeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
+
+	public class UpperCaseFigure extends RoundedRectangle {
+
+		public UpperCaseFigure() {
+			this.setBackgroundColor(THIS_BACK);
+
+			TitleBarBorder titleBarBorder = new TitleBarBorder("To Upper Case");
+			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
+			this.setBorder(titleBarBorder);
+
+			/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			 border.setColor(new Color(null, 255, 0, 0));*/
+			this.setBorder(titleBarBorder);
+		}
+
+		public String getIconPath() {
+			return "icons/ico20/log-mediator.gif";
+		}
+
+		public String getNodeName() {
+			return "To Upper Case";
+		}
+
+		public IFigure getToolTip() {
+			return new Label("To Upper Case Operation");
+		}
+
+	}
+
+	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

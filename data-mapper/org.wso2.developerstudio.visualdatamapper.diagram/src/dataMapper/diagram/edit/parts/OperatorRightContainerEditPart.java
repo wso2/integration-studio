@@ -1,9 +1,7 @@
 package dataMapper.diagram.edit.parts;
 
-import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -21,19 +19,15 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 
 import dataMapper.DataMapperFactory;
 import dataMapper.DataMapperPackage;
-import dataMapper.OperatorLeftConnector;
-import dataMapper.OperatorLeftContainer;
 import dataMapper.OperatorRightConnector;
 import dataMapper.OperatorRightContainer;
 
@@ -103,7 +97,9 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 				else if (getParent().getParent() instanceof EqualEditPart
 						|| getParent().getParent() instanceof ConcatEditPart
 						|| getParent().getParent() instanceof LowerCaseEditPart
-						|| getParent().getParent() instanceof ConstantEditPart || getParent().getParent() instanceof ContainsEditPart) {
+						|| getParent().getParent() instanceof ConstantEditPart
+						|| getParent().getParent() instanceof ContainsEditPart
+						|| getParent().getParent() instanceof UpperCaseEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {

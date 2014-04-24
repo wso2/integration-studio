@@ -99,7 +99,7 @@ public interface IConstants {
 
 	/** The BPEL 2.0 executable namespace */
 	public static final String XMLNS_BPEL20_EXECUTABLE = "http://docs.oasis-open.org/wsbpel/2.0/process/executable";
-	
+	public static final String XMLNS_ODE_E4X = "http://ode.apache.org/extensions/e4x";
 
 	/** The old pre 2.0 NS */
 	public static final String XMLNS_BPEL20_OLD = "http://schemas.xmlsoap.org/ws/2004/03/business-process/"; //$NON-NLS-1$
@@ -118,6 +118,15 @@ public interface IConstants {
 	 */
 	public static final String XMLNS_BPEL = XMLNS_BPEL20_EXECUTABLE;
 	
+	/** 
+	 * E4X Name Space 
+	 */
+	public static final String XMLNS_E4X = "http://ode.apache.org/extensions/e4x";
+	
+	/**
+	 * BPEL4PEOPLE Name Space
+	 */
+	public static final String XMLNS_BPEL4PEOPLE = "http://docs.oasis-open.org/ns/bpel4people/bpel4people/200803";
 	//
     // constants
     //
@@ -200,6 +209,7 @@ public interface IConstants {
     public static final QName ND_EXTENSION_ACTIVITY = new QName(XMLNS_BPEL20_EXECUTABLE,"extensionActivity");
     
     public static final QName ND_EXTENSION_ASSIGN_OPERATION = new QName(XMLNS_BPEL20_EXECUTABLE,"extensionAssignOperation");
+    public static final QName ND_Snippet = new QName(XMLNS_ODE_E4X,"snippet");
     
     public static final QName ND_CORRELATIONS = new QName(XMLNS_BPEL20_EXECUTABLE,"correlations");
     public static final QName ND_CORRELATION = new QName(XMLNS_BPEL20_EXECUTABLE,"correlation");

@@ -126,8 +126,12 @@ public class ModelQueryImpl  implements IModelQuery {
 			IConstants.AT_VAL_IMPORT_WSDL.equals ( value ) ;
 		
 		case SUPPORT_EXTENSION :
-			// by default we have no extensions that we support
-			return false;
+
+			return 
+			IConstants.XMLNS_E4X.equals(value)|| // Support for E4X; 
+			IConstants.XMLNS_BPEL4PEOPLE.equals(value); // Support for bpel4people; 
+			
+
 		}
 				
 		throw new XNotImplemented("Not implemented: hasSupport(item=" + item + ")");

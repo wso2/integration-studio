@@ -34,3 +34,4 @@ Export-Package: org.eclipse.bpel.validator,
  org.eclipse.bpel.validator.wsdl,
  org.eclipse.bpel.validator.xpath,
  org.eclipse.bpel.validator.xpath0
+Import-Package: org.eclipse.bpel.validator.model

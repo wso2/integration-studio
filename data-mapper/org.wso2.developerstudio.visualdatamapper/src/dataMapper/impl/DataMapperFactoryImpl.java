@@ -380,10 +380,11 @@ public class DataMapperFactoryImpl extends EFactoryImpl implements DataMapperFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UpperCase createUpperCase() {
 		UpperCaseImpl upperCase = new UpperCaseImpl();
+		upperCase.setBasicContainer(createOperatorBasicContainer());
 		return upperCase;
 	}
 

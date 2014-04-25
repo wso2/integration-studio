@@ -93,6 +93,11 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType UpperCase_2011 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.UpperCase_2011"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType TreeNode_3002 = getElementType("org.wso2.developerstudio.visualdatamapper.diagram.TreeNode_3002"); //$NON-NLS-1$
 
 	/**
@@ -232,6 +237,8 @@ public class DataMapperElementTypes {
 
 			elements.put(Contains_2010, dataMapper.DataMapperPackage.eINSTANCE.getContains());
 
+			elements.put(UpperCase_2011, dataMapper.DataMapperPackage.eINSTANCE.getUpperCase());
+
 			elements.put(TreeNode_3002, dataMapper.DataMapperPackage.eINSTANCE.getTreeNode());
 
 			elements.put(TreeNode_3003, dataMapper.DataMapperPackage.eINSTANCE.getTreeNode());
@@ -297,6 +304,7 @@ public class DataMapperElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Constant_2008);
 			KNOWN_ELEMENT_TYPES.add(LowerCase_2009);
 			KNOWN_ELEMENT_TYPES.add(Contains_2010);
+			KNOWN_ELEMENT_TYPES.add(UpperCase_2011);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3002);
 			KNOWN_ELEMENT_TYPES.add(TreeNode_3003);
 			KNOWN_ELEMENT_TYPES.add(Attribute_3004);
@@ -341,6 +349,8 @@ public class DataMapperElementTypes {
 			return LowerCase_2009;
 		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID:
 			return Contains_2010;
+		case dataMapper.diagram.edit.parts.UpperCaseEditPart.VISUAL_ID:
+			return UpperCase_2011;
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return TreeNode_3002;
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:

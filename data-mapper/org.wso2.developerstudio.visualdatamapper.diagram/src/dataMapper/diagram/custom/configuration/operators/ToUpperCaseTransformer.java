@@ -27,17 +27,16 @@ import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
 
-public class ToLowerCaseTransform implements OperatorsTransformer{
+public class ToUpperCaseTransformer implements OperatorsTransformer{
 
 	private static final String INDEX = "[i]"; 
-
 	@Override
 	public AssignmentStatement transform(Operator operator) {
-		EObject lowerCaseInput = getInputObject(operator);
+	EObject upperCaseInput = getInputObject(operator);
 		
 		
-		if(lowerCaseInput instanceof Element){
-			Element inputElement = (Element) lowerCaseInput;
+		if(upperCaseInput instanceof Element){
+			Element inputElement = (Element) upperCaseInput;
 //			if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
 //				String index = INDEX;
 //				return getSimpleOperatorMapping(operator, inputElement, index);
@@ -46,7 +45,7 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 			return getSimpleOperatorMapping(operator, inputElement);
 			
 		}
-		else if(lowerCaseInput instanceof OperatorRightConnector){
+		else if(upperCaseInput instanceof OperatorRightConnector){
 			//FIXME implementation of operator chaining 
 		}
 		
@@ -83,21 +82,22 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 	}
 	
 	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement, String index){
-		String assign = getOutputElementParent(operator).getName()+index+"."+getOutputElement(operator).getName()+" = "+inputElement.getFieldParent().getName()+index+"."+inputElement.getName()+".toLowerCase();";
+		String assign = getOutputElementParent(operator).getName()+index+"."+getOutputElement(operator).getName()+" = "+inputElement.getFieldParent().getName()+index+"."+inputElement.getName()+".toUpperCase();";
 		AssignmentStatement statement = new AssignmentStatement();
 		statement.setStatement(assign);
 		return statement;
 	}
 	
-	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement){
+	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement) {
+
 		Element outputElement = getOutputElement(operator);
 		TreeNode outputParent = getOutputElementParent(operator);
 
 		String index="";
 		if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY))
 			index = INDEX;
-		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + inputElement.getFieldParent().getName()+index + "." + inputElement.getName() + ".toLowerCase();";
-
+		
+		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + inputElement.getFieldParent().getName()+index + "." + inputElement.getName() + ".toUpperCase();";
 		AssignmentStatement statement = new AssignmentStatement();
 		statement.setStatement(assign);
 		return statement;
@@ -122,4 +122,5 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 		return hierarchy.toString();
 
 	}
+
 }

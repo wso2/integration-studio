@@ -33,6 +33,7 @@ import dataMapper.SchemaDataType;
 import dataMapper.Split;
 import dataMapper.TreeNode;
 
+import dataMapper.UpperCase;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -208,6 +209,13 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 	 * @generated
 	 */
 	private EClass containsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass upperCaseEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -882,6 +890,15 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUpperCase() {
+		return upperCaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1007,6 +1024,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 
 		containsEClass = createEClass(CONTAINS);
 
+		upperCaseEClass = createEClass(UPPER_CASE);
+
 		// Create enums
 		schemaDataTypeEEnum = createEEnum(SCHEMA_DATA_TYPE);
 	}
@@ -1049,6 +1068,7 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		splitEClass.getESuperTypes().add(this.getOperator());
 		lowerCaseEClass.getESuperTypes().add(this.getOperator());
 		containsEClass.getESuperTypes().add(this.getOperator());
+		upperCaseEClass.getESuperTypes().add(this.getOperator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataMapperNodeEClass, DataMapperNode.class, "DataMapperNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1140,6 +1160,8 @@ public class DataMapperPackageImpl extends EPackageImpl implements DataMapperPac
 		initEClass(lowerCaseEClass, LowerCase.class, "LowerCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(upperCaseEClass, UpperCase.class, "UpperCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(schemaDataTypeEEnum, SchemaDataType.class, "SchemaDataType");

@@ -2,12 +2,11 @@ package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
-import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.draw2d.TitleBarBorder;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -23,23 +22,21 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.graphics.Font;
 
-import dataMapper.DataMapperFactory;
-import dataMapper.DataMapperPackage;
-import dataMapper.OperatorRightConnector;
-import dataMapper.OperatorRightContainer;
+import dataMapper.diagram.custom.edit.part.AbstractOperatorEditPart;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
+public class UpperCaseEditPart extends AbstractOperatorEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 3016;
+	public static final int VISUAL_ID = 2011;
 
 	/**
 	 * @generated
@@ -54,73 +51,8 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public OperatorRightContainerEditPart(View view) {
+	public UpperCaseEditPart(View view) {
 		super(view);
-	}
-
-	@Override
-	public void activate() {
-
-		Display.getDefault().asyncExec(new Runnable() {
-			@Override
-			public void run() {
-
-				if (getParent().getParent() instanceof SplitEditPart) {
-					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
-							.getElement();
-					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
-						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-						OperatorRightConnector rightConnector2 = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-						AddCommand addCaseConnectorCmd = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector);
-						if (addCaseConnectorCmd.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
-						}
-
-						AddCommand addCaseConnectorCmd2 = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector2);
-						if (addCaseConnectorCmd2.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd2);
-						}
-
-					}
-				}
-
-				else if (getParent().getParent() instanceof EqualEditPart
-						|| getParent().getParent() instanceof ConcatEditPart
-						|| getParent().getParent() instanceof LowerCaseEditPart
-						|| getParent().getParent() instanceof ConstantEditPart
-						|| getParent().getParent() instanceof ContainsEditPart
-						|| getParent().getParent() instanceof UpperCaseEditPart) {
-					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
-							.getElement();
-					if (((OperatorRightContainer) parentContainer).getRightConnectors().size() == 0) {
-						OperatorRightConnector rightConnector = DataMapperFactory.eINSTANCE
-								.createOperatorRightConnector();
-
-						AddCommand addCaseConnectorCmd = new AddCommand(
-								getEditingDomain(),
-								parentContainer,
-								DataMapperPackage.Literals.OPERATOR_RIGHT_CONTAINER__RIGHT_CONNECTORS,
-								rightConnector);
-						if (addCaseConnectorCmd.canExecute()) {
-							getEditingDomain().getCommandStack().execute(addCaseConnectorCmd);
-						}
-
-					}
-				}
-			}// run end
-		});
-
-		super.activate();
 	}
 
 	/**
@@ -131,10 +63,10 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 				dataMapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new dataMapper.diagram.edit.policies.OperatorRightContainerItemSemanticEditPolicy());
+				new dataMapper.diagram.edit.policies.UpperCaseItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new dataMapper.diagram.edit.policies.OperatorRightContainerCanonicalEditPolicy());
+				new dataMapper.diagram.edit.policies.UpperCaseCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -166,25 +98,24 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		primaryShape = new OperatorRightContainerFigure();
-		return primaryShape;
+		return primaryShape = new UpperCaseFigure();
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated
 	 */
-	public OperatorRightContainerFigure getPrimaryShape() {
-		return (OperatorRightContainerFigure) primaryShape;
+	public RectangleFigure getPrimaryShape() {
+		return (RectangleFigure) primaryShape;
 	}
 
 	/**
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 20);
 		return result;
 	}
 
@@ -266,28 +197,20 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		}
 	}
 
-	public class OperatorRightContainerFigure extends RoundedRectangle {
+	public class UpperCaseFigure extends RoundedRectangle {
 
-		public OperatorRightContainerFigure() {
+		public UpperCaseFigure() {
+			this.setBackgroundColor(THIS_BACK);
 
-			// this.setBackgroundColor(THIS_BACK);
-			// RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
-			// border.setColor(new Color(null, 255, 0, 0));
-			// this.setBorder(border ); //TODO just for identification remove
-			// once we are done
+			TitleBarBorder titleBarBorder = new TitleBarBorder("To Upper Case");
+			titleBarBorder.setBackgroundColor(new Color(null, 96, 148, 219));
+			titleBarBorder.setTextColor(new Color(null, 0, 0, 0));
+			titleBarBorder.setFont(new Font(null, "Arial", 10, SWT.NORMAL));
+			this.setBorder(titleBarBorder);
 
-			ConstrainedToolbarLayout layoutThis = new ConstrainedToolbarLayout();
-			layoutThis.setStretchMinorAxis(true);
-			layoutThis.setStretchMajorAxis(true);
-
-			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
-			layoutThis.setSpacing(0);
-			layoutThis.setHorizontal(false);
-
-			layoutThis.setMatchWidth(true);
-
-			this.setLayoutManager(layoutThis);
-
+			/*			RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
+			 border.setColor(new Color(null, 255, 0, 0));*/
+			this.setBorder(titleBarBorder);
 		}
 
 		public String getIconPath() {
@@ -295,11 +218,11 @@ public class OperatorRightContainerEditPart extends ShapeNodeEditPart {
 		}
 
 		public String getNodeName() {
-			return "OperatorRightContainer";
+			return "To Upper Case";
 		}
 
 		public IFigure getToolTip() {
-			return new Label("OperatorRightContainer");
+			return new Label("To Upper Case Operation");
 		}
 
 	}

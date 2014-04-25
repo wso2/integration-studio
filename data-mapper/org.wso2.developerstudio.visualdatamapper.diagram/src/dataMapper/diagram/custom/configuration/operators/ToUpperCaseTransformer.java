@@ -93,7 +93,11 @@ public class ToUpperCaseTransformer implements OperatorsTransformer{
 		Element outputElement = getOutputElement(operator);
 		TreeNode outputParent = getOutputElementParent(operator);
 
-		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + inputElement.getFieldParent().getName()+INDEX + "." + inputElement.getName() + ".toUpperCase();";
+		String index="";
+		if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY))
+			index = INDEX;
+		
+		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + inputElement.getFieldParent().getName()+index + "." + inputElement.getName() + ".toUpperCase();";
 		AssignmentStatement statement = new AssignmentStatement();
 		statement.setStatement(assign);
 		return statement;

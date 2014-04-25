@@ -196,7 +196,7 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public class ConcatFigure extends RoundedRectangle {
 
 		public ConcatFigure() {
@@ -226,7 +226,7 @@ public class ConcatEditPart extends AbstractOperatorEditPart {
 		}
 
 	}
-	
+
 	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 
 }

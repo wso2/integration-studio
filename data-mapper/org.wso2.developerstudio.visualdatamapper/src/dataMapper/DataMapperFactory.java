@@ -229,6 +229,15 @@ public interface DataMapperFactory extends EFactory {
 	Contains createContains();
 
 	/**
+	 * Returns a new object of class '<em>Upper Case</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Upper Case</em>'.
+	 * @generated
+	 */
+	UpperCase createUpperCase();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

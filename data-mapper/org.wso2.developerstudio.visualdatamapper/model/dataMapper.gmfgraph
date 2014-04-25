@@ -76,6 +76,9 @@
     <descriptors name="ContainsFigure">
       <actualFigure xsi:type="gmfgraph:Rectangle" name="ContainsFigure"/>
     </descriptors>
+    <descriptors name="UpperCaseFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="UpperCaseFigure"/>
+    </descriptors>
   </figures>
   <nodes name="DataMapperNode" figure="DataMapperNodeFigure"/>
   <nodes name="DataMapperDiagram" figure="DataMapperDiagramFigure"/>
@@ -100,6 +103,7 @@
   <nodes name="Constant" figure="ConstantFigure"/>
   <nodes name="LowerCase" figure="LowerCaseFigure"/>
   <nodes name="Contains" figure="ContainsFigure"/>
+  <nodes name="UpperCase" figure="UpperCaseFigure"/>
   <connections name="DataMapperLink" figure="DataMapperLinkFigure"/>
   <compartments name="OperationsCompartment" figure="CompartmentFigure"/>
 </gmfgraph:Canvas>

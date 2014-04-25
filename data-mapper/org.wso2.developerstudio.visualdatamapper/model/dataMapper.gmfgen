@@ -280,7 +280,7 @@
         childNodes="//@diagram/@childNodes.10 //@diagram/@childNodes.13"
         graphicalNodeEditPolicyClassName="OperatorBasicContainerGraphicalNodeEditPolicy"
         createCommandClassName="OperatorBasicContainerCreateCommand"
-        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7">
+        containers="//@diagram/@topLevelNodes.2 //@diagram/@topLevelNodes.3 //@diagram/@topLevelNodes.4 //@diagram/@topLevelNodes.5 //@diagram/@topLevelNodes.6 //@diagram/@topLevelNodes.7 //@diagram/@topLevelNodes.8">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -652,6 +652,7 @@
         visualID="2010"
         editPartClassName="ContainsEditPart"
         itemSemanticEditPolicyClassName="ContainsItemSemanticEditPolicy"
+        notationViewFactoryClassName="ContainsViewFactory"
         canonicalEditPolicyClassName="ContainsCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="ContainsGraphicalNodeEditPolicy"
@@ -667,6 +668,31 @@
       <modelFacet>
         <metaClass
             href="dataMapper.genmodel#//dataMapper/Contains"/>
+        <containmentMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+        <childMetaFeature
+            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+      </modelFacet>
+    </topLevelNodes>
+    <topLevelNodes
+        visualID="2011"
+        editPartClassName="UpperCaseEditPart"
+        itemSemanticEditPolicyClassName="UpperCaseItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="UpperCaseCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.9"
+        graphicalNodeEditPolicyClassName="UpperCaseGraphicalNodeEditPolicy"
+        createCommandClassName="UpperCaseCreateCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="UpperCaseEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:FigureViewmap"
+          figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
+      <modelFacet>
+        <metaClass
+            href="dataMapper.genmodel#//dataMapper/UpperCase"/>
         <containmentMetaFeature
             href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
         <childMetaFeature
@@ -740,6 +766,11 @@
             title="Contains"
             description="Create new Contains"
             genNodes="//@diagram/@topLevelNodes.7"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="UpperCase"
+            description="Create new UpperCase"
+            genNodes="//@diagram/@topLevelNodes.8"/>
       </groups>
     </palette>
     <preferencePages
@@ -882,6 +913,12 @@
     <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.7"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.8"
+        child="//@diagram/@childNodes.9"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@topLevelNodes.8"/>
     <childReferences
         parent="//@diagram"
         child="//@diagram/@links.0"

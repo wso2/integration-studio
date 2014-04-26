@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
  */
 package org.wso2.developerstudio.eclipse.ds.impl;
 
@@ -14,48 +10,48 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
-import org.wso2.developerstudio.eclipse.ds.HasHeader;
+import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Has Header</b></em>'.
+ * An implementation of the model object '<em><b>Query Expression</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.HasHeaderImpl#isValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.QueryExpressionImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class HasHeaderImpl extends EObjectImpl implements HasHeader {
+public class QueryExpressionImpl extends EObjectImpl implements QueryExpression {
 	/**
-	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean VALUE_EDEFAULT = false;
+	protected static final String VALUE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean value = VALUE_EDEFAULT;
+	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HasHeaderImpl() {
+	protected QueryExpressionImpl() {
 		super();
 	}
 
@@ -64,10 +60,9 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	protected EClass eStaticClass() {
-		return DsPackage.Literals.HAS_HEADER;
+		return DsPackage.Literals.QUERY_EXPRESSION;
 	}
 
 	/**
@@ -75,7 +70,7 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isValue() {
+	public String getValue() {
 		return value;
 	}
 
@@ -84,11 +79,11 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(boolean newValue) {
-		boolean oldValue = value;
+	public void setValue(String newValue) {
+		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.HAS_HEADER__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.QUERY_EXPRESSION__VALUE, oldValue, value));
 	}
 
 	/**
@@ -96,12 +91,11 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DsPackage.HAS_HEADER__VALUE:
-				return isValue();
+			case DsPackage.QUERY_EXPRESSION__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -111,12 +105,11 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DsPackage.HAS_HEADER__VALUE:
-				setValue((Boolean)newValue);
+			case DsPackage.QUERY_EXPRESSION__VALUE:
+				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,11 +120,10 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DsPackage.HAS_HEADER__VALUE:
+			case DsPackage.QUERY_EXPRESSION__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -143,12 +135,11 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DsPackage.HAS_HEADER__VALUE:
-				return value != VALUE_EDEFAULT;
+			case DsPackage.QUERY_EXPRESSION__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -158,7 +149,6 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
@@ -170,4 +160,4 @@ public class HasHeaderImpl extends EObjectImpl implements HasHeader {
 		return result.toString();
 	}
 
-} // HasHeaderImpl
+} //QueryExpressionImpl

@@ -23,11 +23,10 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DescriptionImpl#getValue
- * <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DescriptionImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DescriptionImpl extends EObjectImpl implements Description {
@@ -35,7 +34,6 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -46,7 +44,6 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -56,7 +53,6 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DescriptionImpl() {
@@ -66,7 +62,6 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -78,7 +73,6 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getValue() {
@@ -88,21 +82,18 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setValue(String newValue) {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.DESCRIPTION__VALUE,
-			                              oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.DESCRIPTION__VALUE, oldValue, value));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -118,7 +109,6 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -126,7 +116,7 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.DESCRIPTION__VALUE:
-				setValue((String) newValue);
+				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,7 +125,6 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -152,7 +141,6 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -168,14 +156,12 @@ public class DescriptionImpl extends EObjectImpl implements Description {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");

@@ -51,6 +51,7 @@ import org.wso2.developerstudio.eclipse.ds.Operation;
 import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
 import org.wso2.developerstudio.eclipse.ds.PatternValidator;
 import org.wso2.developerstudio.eclipse.ds.Query;
+import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 import org.wso2.developerstudio.eclipse.ds.QueryParameter;
 import org.wso2.developerstudio.eclipse.ds.QueryProperty;
 import org.wso2.developerstudio.eclipse.ds.QueryPropertyList;
@@ -201,7 +202,10 @@ public class DSAction extends StaticSelectionCommandAction {
 
 			imageURL = "wso2/sql";
 		}
+		if (commandName.equals(DSActionConstants.ADD_QUERY_EXPRESSION_ACTION)) {
 
+			imageURL = "wso2/query-expression";
+		}
 		if (commandName.equals(DSActionConstants.ADD_RESULT_ACTION)) {
 
 			imageURL = "wso2/result";
@@ -312,6 +316,11 @@ public class DSAction extends StaticSelectionCommandAction {
 
 				if (childObj instanceof Sparql &&
 				    commandName.equals(DSActionConstants.ADD_SPARQL_ACTION)) {
+
+					return getChildCommand(param, collection, owner);
+				}
+				
+				if (childObj instanceof QueryExpression && commandName.equals(DSActionConstants.ADD_QUERY_EXPRESSION_ACTION)) {
 
 					return getChildCommand(param, collection, owner);
 				}

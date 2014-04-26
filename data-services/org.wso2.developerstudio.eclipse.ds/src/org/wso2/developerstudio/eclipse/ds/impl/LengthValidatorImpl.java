@@ -25,24 +25,18 @@ import org.wso2.developerstudio.eclipse.ds.LengthValidator;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.LengthValidatorImpl#getMaximum
- * <em>Maximum</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.LengthValidatorImpl#getMinimum
- * <em>Minimum</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.LengthValidatorImpl#getMaximum <em>Maximum</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.LengthValidatorImpl#getMinimum <em>Minimum</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LengthValidatorImpl extends EObjectImpl implements LengthValidator {
 	/**
-	 * The default value of the '{@link #getMaximum() <em>Maximum</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getMaximum() <em>Maximum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMaximum()
 	 * @generated
 	 * @ordered
@@ -50,11 +44,9 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	protected static final long MAXIMUM_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getMaximum() <em>Maximum</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getMaximum() <em>Maximum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMaximum()
 	 * @generated
 	 * @ordered
@@ -62,11 +54,9 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	protected long maximum = MAXIMUM_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMinimum() <em>Minimum</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getMinimum() <em>Minimum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMinimum()
 	 * @generated
 	 * @ordered
@@ -74,11 +64,9 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	protected static final long MINIMUM_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getMinimum() <em>Minimum</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getMinimum() <em>Minimum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMinimum()
 	 * @generated
 	 * @ordered
@@ -88,7 +76,6 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected LengthValidatorImpl() {
@@ -98,7 +85,6 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -110,7 +96,6 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public long getMaximum() {
@@ -120,21 +105,18 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMaximum(long newMaximum) {
 		long oldMaximum = maximum;
 		maximum = newMaximum;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.LENGTH_VALIDATOR__MAXIMUM, oldMaximum, maximum));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.LENGTH_VALIDATOR__MAXIMUM, oldMaximum, maximum));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public long getMinimum() {
@@ -144,21 +126,18 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMinimum(long newMinimum) {
 		long oldMinimum = minimum;
 		minimum = newMinimum;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.LENGTH_VALIDATOR__MINIMUM, oldMinimum, minimum));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.LENGTH_VALIDATOR__MINIMUM, oldMinimum, minimum));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -176,7 +155,6 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -184,10 +162,10 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.LENGTH_VALIDATOR__MAXIMUM:
-				setMaximum((Long) newValue);
+				setMaximum((Long)newValue);
 				return;
 			case DsPackage.LENGTH_VALIDATOR__MINIMUM:
-				setMinimum((Long) newValue);
+				setMinimum((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -196,7 +174,6 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -216,7 +193,6 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -234,14 +210,12 @@ public class LengthValidatorImpl extends EObjectImpl implements LengthValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (maximum: ");

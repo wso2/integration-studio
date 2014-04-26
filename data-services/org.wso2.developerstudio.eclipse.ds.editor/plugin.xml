@@ -9,6 +9,22 @@
 -->
 
 <plugin>
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ds -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.wso2.developerstudio.eclipse.ds.presentation.DsModelWizardID"
+            name="%_UI_DsModelWizard_label"
+            class="org.wso2.developerstudio.eclipse.ds.presentation.DsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DsModelFile.gif">
+         <description>%_UI_DsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
    <extension point="org.eclipse.ui.editors">
 	 <editor id="org.wso2.developerstudio.eclipse.ds.presentation.DsEditorID"
 			name="%_UI_DsEditor_label" icon="icons/wso2/dbsIcon.gif"

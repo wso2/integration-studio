@@ -21,7 +21,6 @@ import org.wso2.developerstudio.eclipse.ds.*;
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
@@ -29,17 +28,16 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static DsFactory init() {
 		try {
-			DsFactory theDsFactory =
-			                         (DsFactory) EPackage.Registry.INSTANCE.getEFactory("http://org/wso2/developerstudio/eclipse/ds");
+			DsFactory theDsFactory = (DsFactory)EPackage.Registry.INSTANCE.getEFactory(DsPackage.eNS_URI);
 			if (theDsFactory != null) {
 				return theDsFactory;
 			}
-		} catch (Exception exception) {
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new DsFactoryImpl();
@@ -49,7 +47,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DsFactoryImpl() {
@@ -59,95 +56,57 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case DsPackage.ATTRIBUTE_MAPPING:
-				return createAttributeMapping();
-			case DsPackage.CALL_QUERY:
-				return createCallQuery();
-			case DsPackage.CALL_QUERY_LIST:
-				return createCallQueryList();
-			case DsPackage.CONFIGURATION_PROPERTY:
-				return createConfigurationProperty();
-			case DsPackage.CUSTOM_VALIDATOR:
-				return createCustomValidator();
-			case DsPackage.DATA_SERVICE:
-				return createDataService();
-			case DsPackage.DATA_SOURCE_CONFIGURATION:
-				return createDataSourceConfiguration();
-			case DsPackage.DESCRIPTION:
-				return createDescription();
-			case DsPackage.DOCUMENT_ROOT:
-				return createDocumentRoot();
-			case DsPackage.DOUBLE_RANGE_VALIDATOR:
-				return createDoubleRangeValidator();
-			case DsPackage.ELEMENT_MAPPING:
-				return createElementMapping();
-			case DsPackage.EVENT_SUBSCRIPTION_LIST:
-				return createEventSubscriptionList();
-			case DsPackage.EVENT_TRIGGER:
-				return createEventTrigger();
-			case DsPackage.EXCEL_QUERY:
-				return createExcelQuery();
-			case DsPackage.EXPRESSION:
-				return createExpression();
-			case DsPackage.GSPREAD_QUERY:
-				return createGSpreadQuery();
-			case DsPackage.HAS_HEADER:
-				return createHasHeader();
-			case DsPackage.LENGTH_VALIDATOR:
-				return createLengthValidator();
-			case DsPackage.LONG_RANGE_VALIDATOR:
-				return createLongRangeValidator();
-			case DsPackage.MAX_ROW_COUNT:
-				return createMaxRowCount();
-			case DsPackage.OPERATION:
-				return createOperation();
-			case DsPackage.PARAMETER_MAPPING:
-				return createParameterMapping();
-			case DsPackage.PATTERN_VALIDATOR:
-				return createPatternValidator();
-			case DsPackage.QUERY:
-				return createQuery();
-			case DsPackage.QUERY_PARAMETER:
-				return createQueryParameter();
-			case DsPackage.QUERY_PROPERTY:
-				return createQueryProperty();
-			case DsPackage.QUERY_PROPERTY_LIST:
-				return createQueryPropertyList();
-			case DsPackage.RESOURCE:
-				return createResource();
-			case DsPackage.RESULT_MAPPING:
-				return createResultMapping();
-			case DsPackage.SPARQL:
-				return createSparql();
-			case DsPackage.SQL:
-				return createSql();
-			case DsPackage.STARTING_ROW:
-				return createStartingRow();
-			case DsPackage.SUBSCRIPTION:
-				return createSubscription();
-			case DsPackage.TARGET_TOPIC:
-				return createTargetTopic();
-			case DsPackage.WORK_BOOK_NAME:
-				return createWorkBookName();
-			case DsPackage.WORK_SHEET_NUMBER:
-				return createWorkSheetNumber();
+			case DsPackage.ATTRIBUTE_MAPPING: return createAttributeMapping();
+			case DsPackage.CALL_QUERY: return createCallQuery();
+			case DsPackage.CALL_QUERY_LIST: return createCallQueryList();
+			case DsPackage.CONFIGURATION_PROPERTY: return createConfigurationProperty();
+			case DsPackage.CUSTOM_VALIDATOR: return createCustomValidator();
+			case DsPackage.DATA_SERVICE: return createDataService();
+			case DsPackage.DATA_SOURCE_CONFIGURATION: return createDataSourceConfiguration();
+			case DsPackage.DESCRIPTION: return createDescription();
+			case DsPackage.DOCUMENT_ROOT: return createDocumentRoot();
+			case DsPackage.DOUBLE_RANGE_VALIDATOR: return createDoubleRangeValidator();
+			case DsPackage.ELEMENT_MAPPING: return createElementMapping();
+			case DsPackage.EVENT_SUBSCRIPTION_LIST: return createEventSubscriptionList();
+			case DsPackage.EVENT_TRIGGER: return createEventTrigger();
+			case DsPackage.EXCEL_QUERY: return createExcelQuery();
+			case DsPackage.EXPRESSION: return createExpression();
+			case DsPackage.GSPREAD_QUERY: return createGSpreadQuery();
+			case DsPackage.HAS_HEADER: return createHasHeader();
+			case DsPackage.LENGTH_VALIDATOR: return createLengthValidator();
+			case DsPackage.LONG_RANGE_VALIDATOR: return createLongRangeValidator();
+			case DsPackage.MAX_ROW_COUNT: return createMaxRowCount();
+			case DsPackage.OPERATION: return createOperation();
+			case DsPackage.PARAMETER_MAPPING: return createParameterMapping();
+			case DsPackage.PATTERN_VALIDATOR: return createPatternValidator();
+			case DsPackage.QUERY: return createQuery();
+			case DsPackage.QUERY_PARAMETER: return createQueryParameter();
+			case DsPackage.QUERY_PROPERTY: return createQueryProperty();
+			case DsPackage.QUERY_PROPERTY_LIST: return createQueryPropertyList();
+			case DsPackage.RESOURCE: return createResource();
+			case DsPackage.RESULT_MAPPING: return createResultMapping();
+			case DsPackage.SPARQL: return createSparql();
+			case DsPackage.SQL: return createSql();
+			case DsPackage.QUERY_EXPRESSION: return createQueryExpression();
+			case DsPackage.STARTING_ROW: return createStartingRow();
+			case DsPackage.SUBSCRIPTION: return createSubscription();
+			case DsPackage.TARGET_TOPIC: return createTargetTopic();
+			case DsPackage.WORK_BOOK_NAME: return createWorkBookName();
+			case DsPackage.WORK_SHEET_NUMBER: return createWorkSheetNumber();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() +
-				                                   "' is not a valid classifier");
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -159,15 +118,13 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 			case DsPackage.SERVICE_STATUS_OBJECT:
 				return createServiceStatusObjectFromString(eDataType, initialValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() +
-				                                   "' is not a valid classifier");
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -179,15 +136,13 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 			case DsPackage.SERVICE_STATUS_OBJECT:
 				return convertServiceStatusObjectToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() +
-				                                   "' is not a valid classifier");
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public AttributeMapping createAttributeMapping() {
@@ -198,7 +153,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public CallQuery createCallQuery() {
@@ -209,7 +163,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public CallQueryList createCallQueryList() {
@@ -220,7 +173,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ConfigurationProperty createConfigurationProperty() {
@@ -231,7 +183,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public CustomValidator createCustomValidator() {
@@ -242,7 +193,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DataService createDataService() {
@@ -253,7 +203,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DataSourceConfiguration createDataSourceConfiguration() {
@@ -264,7 +213,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Description createDescription() {
@@ -275,7 +223,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DocumentRoot createDocumentRoot() {
@@ -286,7 +233,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DoubleRangeValidator createDoubleRangeValidator() {
@@ -297,7 +243,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ElementMapping createElementMapping() {
@@ -308,7 +253,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EventSubscriptionList createEventSubscriptionList() {
@@ -319,7 +263,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EventTrigger createEventTrigger() {
@@ -330,7 +273,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ExcelQuery createExcelQuery() {
@@ -341,7 +283,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Expression createExpression() {
@@ -352,7 +293,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public GSpreadQuery createGSpreadQuery() {
@@ -363,7 +303,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public HasHeader createHasHeader() {
@@ -374,7 +313,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public LengthValidator createLengthValidator() {
@@ -385,7 +323,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public LongRangeValidator createLongRangeValidator() {
@@ -396,7 +333,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public MaxRowCount createMaxRowCount() {
@@ -407,7 +343,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Operation createOperation() {
@@ -418,7 +353,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ParameterMapping createParameterMapping() {
@@ -429,7 +363,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public PatternValidator createPatternValidator() {
@@ -440,7 +373,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Query createQuery() {
@@ -451,7 +383,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public QueryParameter createQueryParameter() {
@@ -462,7 +393,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public QueryProperty createQueryProperty() {
@@ -473,7 +403,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public QueryPropertyList createQueryPropertyList() {
@@ -484,7 +413,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Resource createResource() {
@@ -495,7 +423,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ResultMapping createResultMapping() {
@@ -506,7 +433,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Sparql createSparql() {
@@ -517,7 +443,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Sql createSql() {
@@ -528,7 +453,16 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 * @generated
+	 */
+	public QueryExpression createQueryExpression() {
+		QueryExpressionImpl queryExpression = new QueryExpressionImpl();
+		return queryExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public StartingRow createStartingRow() {
@@ -539,7 +473,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Subscription createSubscription() {
@@ -550,7 +483,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public TargetTopic createTargetTopic() {
@@ -561,7 +493,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public WorkBookName createWorkBookName() {
@@ -572,7 +503,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public WorkSheetNumber createWorkSheetNumber() {
@@ -583,22 +513,17 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ServiceStatus createServiceStatusFromString(EDataType eDataType, String initialValue) {
 		ServiceStatus result = ServiceStatus.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue +
-			                                   "' is not a valid enumerator of '" +
-			                                   eDataType.getName() + "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String convertServiceStatusToString(EDataType eDataType, Object instanceValue) {
@@ -608,7 +533,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ServiceStatus createServiceStatusObjectFromString(EDataType eDataType,
@@ -619,7 +543,6 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String convertServiceStatusObjectToString(EDataType eDataType, Object instanceValue) {
@@ -629,17 +552,15 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DsPackage getDsPackage() {
-		return (DsPackage) getEPackage();
+		return (DsPackage)getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */

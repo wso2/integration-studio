@@ -1,21 +1,14 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
  */
 package org.wso2.developerstudio.eclipse.ds.provider;
 
-import java.math.BigInteger;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -26,29 +19,30 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
-import org.wso2.developerstudio.eclipse.ds.LengthValidator;
+import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 
 /**
- * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.LengthValidator} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.QueryExpression} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LengthValidatorItemProvider extends ItemProviderAdapter implements
-                                                                    IEditingDomainItemProvider,
-                                                                    IStructuredItemContentProvider,
-                                                                    ITreeItemContentProvider,
-                                                                    IItemLabelProvider,
-                                                                    IItemPropertySource {
+public class QueryExpressionItemProvider
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LengthValidatorItemProvider(AdapterFactory adapterFactory) {
+	public QueryExpressionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -58,85 +52,63 @@ public class LengthValidatorItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addMaximumPropertyDescriptor(object);
-			addMinimumPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Maximum feature.
+	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMaximumPropertyDescriptor(Object object) {
+	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LengthValidator_maximum_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LengthValidator_maximum_feature", "_UI_LengthValidator_type"),
-				 DsPackage.Literals.LENGTH_VALIDATOR__MAXIMUM,
+				 getString("_UI_QueryExpression_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_QueryExpression_value_feature", "_UI_QueryExpression_type"),
+				 DsPackage.Literals.QUERY_EXPRESSION__VALUE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Minimum feature.
+	 * This returns QueryExpression.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMinimumPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LengthValidator_minimum_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LengthValidator_minimum_feature", "_UI_LengthValidator_type"),
-				 DsPackage.Literals.LENGTH_VALIDATOR__MINIMUM,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns LengthValidator.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * 
 	 * @generated NOT
 	 */
-
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("wso2/validateLength"));
+		return overlayImage(object, getResourceLocator().getImage("wso2/query-expression"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-
 	@Override
-	public String getText(Object object) {
-		LengthValidator lengthValidator = (LengthValidator)object;
-		return getString("_UI_LengthValidator_type") + " " + lengthValidator.getMaximum();
+	public String getText(Object object) {		
+		String type = " (" + getString("_UI_QueryExpression_type") + ")";
+		return type;		
+/*		String label = ((QueryExpression)object).getValue();
+		return label == null || label.length() == 0 ?
+			getString("_UI_QueryExpression_type") :
+			getString("_UI_QueryExpression_type") + " " + label;*/
 	}
 
 	/**
@@ -146,14 +118,12 @@ public class LengthValidatorItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(LengthValidator.class)) {
-			case DsPackage.LENGTH_VALIDATOR__MAXIMUM:
-			case DsPackage.LENGTH_VALIDATOR__MINIMUM:
+		switch (notification.getFeatureID(QueryExpression.class)) {
+			case DsPackage.QUERY_EXPRESSION__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -167,7 +137,6 @@ public class LengthValidatorItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
@@ -179,7 +148,6 @@ public class LengthValidatorItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return DsEditPlugin.INSTANCE;

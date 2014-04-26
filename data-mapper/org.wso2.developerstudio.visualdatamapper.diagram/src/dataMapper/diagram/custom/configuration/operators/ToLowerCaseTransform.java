@@ -122,4 +122,13 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 		return hierarchy.toString();
 
 	}
+
+	@Override
+	public TreeNode getInputElementParent(Operator operator) {
+		return getInputElement(operator).getFieldParent();
+	}
+
+	private Element getInputElement(Operator operator) {
+		return operator.getBasicContainer().getLeftContainer().getLeftConnectors().get(0).getInNode().getIncomingLink().get(0).getOutNode().getElementParent();
+	}
 }

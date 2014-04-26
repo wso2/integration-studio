@@ -245,4 +245,9 @@ public class SplitTransform implements OperatorsTransformer {
 		return hierarchy.toString();
 
 	}
+
+	@Override
+	public TreeNode getInputElementParent(Operator operator) {
+		return getInputElement(operator).getFieldParent();
+	}
 }

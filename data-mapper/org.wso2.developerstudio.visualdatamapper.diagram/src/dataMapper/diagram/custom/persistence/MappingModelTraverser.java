@@ -51,6 +51,11 @@ public class MappingModelTraverser {
 		return instance;
 	}
 
+	/**
+	 * public traverser method will build the main config function and functions which describe the mapping 
+	 * @param rootDiagram	parent model object of graphical representation
+	 * @param mappingConfig configuration model of mapping
+	 */
 	public void traverse(DataMapperRoot rootDiagram,DataMapperConfiguration mappingConfig) {
 		 Function mainFunction = createMainFunction(rootDiagram.getInput()
 		 .getTreeNode().get(0), rootDiagram.getOutput().getTreeNode()
@@ -63,6 +68,8 @@ public class MappingModelTraverser {
 	}
 
 	/**
+	 * main function is special case. 
+	 * it needs to handle with more details
 	 * @param inputTreeNode 	main input tree
 	 * @param outputTreeNode	main output tree
 	 * @return	Main function for configuration
@@ -83,6 +90,8 @@ public class MappingModelTraverser {
 	}
 
 	/**
+	 * Recursive traverser method, would build function for describe mappings.
+	 * 
 	 * @param tree 				tree element which would be traverse
 	 * @param config			full configuration 
 	 * @param parentFunction	function which would be the function call statement execute

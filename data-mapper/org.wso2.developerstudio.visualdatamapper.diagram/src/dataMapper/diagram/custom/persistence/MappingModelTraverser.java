@@ -134,10 +134,10 @@ public class MappingModelTraverser {
 						if (operator != null) {
 							if(!operatorsList.contains(System.identityHashCode(operator))){
 								operatorsList.add(System.identityHashCode(operator));
-								
 								OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(operator);
 								AssignmentStatement assign = transformer.transform(operator); //FIXME wrong assignment get for array. should handle in each operator class
 								functionForElement.setOutputParameter(transformer.getOutputElementParent(operator));
+								functionForElement.setInputParameter(transformer.getInputElementParent(operator));
 								functionForElement.setSingle(false);
 								Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
 								
@@ -197,6 +197,7 @@ public class MappingModelTraverser {
 							OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(operator);
 							AssignmentStatement assign = transformer.transform(operator);
 							functionForElement.setOutputParameter(transformer.getOutputElementParent(operator));
+							functionForElement.setInputParameter(transformer.getInputElementParent(operator));
 							functionForElement.setSingle(true);
 							Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
 							

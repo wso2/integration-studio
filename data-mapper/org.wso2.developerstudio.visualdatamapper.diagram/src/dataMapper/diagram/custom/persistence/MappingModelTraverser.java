@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 
+import dataMapper.Constant;
 import dataMapper.DataMapperRoot;
 import dataMapper.Element;
 import dataMapper.Operator;
@@ -64,8 +65,10 @@ public class MappingModelTraverser {
 		 mappingConfig.getFunctionList().add(mainFunction);
 		 operatorsList = new ArrayList<Integer>();
 		 traverse(rootDiagram.getInput().getTreeNode().get(0), mappingConfig, mainFunction);
-
+		 //traverse 0:1 operators
+		 traverse(rootDiagram, mappingConfig, mainFunction);
 	}
+
 
 	/**
 	 * main function is special case. 
@@ -75,16 +78,14 @@ public class MappingModelTraverser {
 	 * @return	Main function for configuration
 	 */
 	private Function createMainFunction(TreeNode inputTreeNode,TreeNode outputTreeNode) {
-		Function mainFunction = null;
-		if (OperatorConfigurationUtil.isChildrenMaped(inputTreeNode)) {
-			mainFunction = new Function();
+		Function mainFunction = new Function();
 
 			mainFunction.setInputParameter(inputTreeNode);
 			mainFunction.setOutputParameter(outputTreeNode);
 			mainFunction.setSingle(true);
 			mainFunction.setMainFunction(true);
 
-		}
+		
 
 		return mainFunction;
 	}
@@ -256,6 +257,18 @@ public class MappingModelTraverser {
 			}
 		}
 		
+	}
+
+	private void traverse(DataMapperRoot rootDiagram, DataMapperConfiguration mappingConfig, Function mainFunction) {
+		for(Operator operator : rootDiagram.getOperators()){
+			if(operator instanceof Constant && !operatorsList.contains(System.identityHashCode(operator))){
+				OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(operator);
+				AssignmentStatement assign = transformer.transform(operator);
+				
+				mainFunction.getFunctionBody().getAssignmentStatements().add(assign);
+				System.out.println();
+			}
+		}
 	}
 
 }

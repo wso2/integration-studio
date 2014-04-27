@@ -37,11 +37,9 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.Query;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.Query} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.Query} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class QueryItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -52,7 +50,6 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public QueryItemProvider(AdapterFactory adapterFactory) {
@@ -86,132 +83,132 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_Query_id_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_Query_id_feature",
-		                                                                   "_UI_Query_type"),
-		                                                         DsPackage.Literals.QUERY__ID,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Query_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Query_id_feature", "_UI_Query_type"),
+				 DsPackage.Literals.QUERY__ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Input Event Trigger feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addInputEventTriggerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_Query_inputEventTrigger_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_Query_inputEventTrigger_feature",
-		                                                                   "_UI_Query_type"),
-		                                                         DsPackage.Literals.QUERY__INPUT_EVENT_TRIGGER,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Query_inputEventTrigger_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Query_inputEventTrigger_feature", "_UI_Query_type"),
+				 DsPackage.Literals.QUERY__INPUT_EVENT_TRIGGER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Output Event Trigger feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addOutputEventTriggerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_Query_outputEventTrigger_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_Query_outputEventTrigger_feature",
-		                                                                   "_UI_Query_type"),
-		                                                         DsPackage.Literals.QUERY__OUTPUT_EVENT_TRIGGER,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Query_outputEventTrigger_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Query_outputEventTrigger_feature", "_UI_Query_type"),
+				 DsPackage.Literals.QUERY__OUTPUT_EVENT_TRIGGER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Return Generated Keys feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addReturnGeneratedKeysPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_Query_returnGeneratedKeys_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_Query_returnGeneratedKeys_feature",
-		                                                                   "_UI_Query_type"),
-		                                                         DsPackage.Literals.QUERY__RETURN_GENERATED_KEYS,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Query_returnGeneratedKeys_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Query_returnGeneratedKeys_feature", "_UI_Query_type"),
+				 DsPackage.Literals.QUERY__RETURN_GENERATED_KEYS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Use Config feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addUseConfigPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_Query_useConfig_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_Query_useConfig_feature",
-		                                                                   "_UI_Query_type"),
-		                                                         DsPackage.Literals.QUERY__USE_CONFIG,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Query_useConfig_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Query_useConfig_feature", "_UI_Query_type"),
+				 DsPackage.Literals.QUERY__USE_CONFIG,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Key Columns feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addKeyColumnsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_Query_keyColumns_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_Query_keyColumns_feature",
-		                                                                   "_UI_Query_type"),
-		                                                         DsPackage.Literals.QUERY__KEY_COLUMNS,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Query_keyColumns_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Query_keyColumns_feature", "_UI_Query_type"),
+				 DsPackage.Literals.QUERY__KEY_COLUMNS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -234,6 +231,7 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 			// childrenFeatures.add(DsPackage.Literals.QUERY__MIXED);
 			childrenFeatures.add(DsPackage.Literals.QUERY__SQL);
 			childrenFeatures.add(DsPackage.Literals.QUERY__SPARQL);
+			childrenFeatures.add(DsPackage.Literals.QUERY__EXPRESSION);
 			childrenFeatures.add(DsPackage.Literals.QUERY__PROPERTIES);
 			childrenFeatures.add(DsPackage.Literals.QUERY__RESULT);
 			childrenFeatures.add(DsPackage.Literals.QUERY__EXCEL);
@@ -246,14 +244,12 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper
-		// feature to use for
+		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
@@ -287,13 +283,10 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached
-	 * children and by creating a viewer notification, which it passes to
-	 * {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -308,10 +301,10 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 			case DsPackage.QUERY__RETURN_GENERATED_KEYS:
 			case DsPackage.QUERY__USE_CONFIG:
 			case DsPackage.QUERY__KEY_COLUMNS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(),
-				                                         false, true));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DsPackage.QUERY__MIXED:
+			case DsPackage.QUERY__EXPRESSION:
 			case DsPackage.QUERY__SQL:
 			case DsPackage.QUERY__SPARQL:
 			case DsPackage.QUERY__PROPERTIES:
@@ -319,20 +312,17 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 			case DsPackage.QUERY__EXCEL:
 			case DsPackage.QUERY__GSPREAD:
 			case DsPackage.QUERY__PARAM:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(),
-				                                         true, false));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing the children
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -340,78 +330,128 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__COMMENT,
-		                                                                        "")));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__COMMENT,
+					 "")));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__TEXT,
-		                                                                        "")));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__TEXT,
+					 "")));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__PROCESSING_INSTRUCTION,
-		                                                                        XMLTypeFactory.eINSTANCE.createProcessingInstruction())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__PROCESSING_INSTRUCTION,
+					 XMLTypeFactory.eINSTANCE.createProcessingInstruction())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__CDATA,
-		                                                                        "")));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__CDATA,
+					 "")));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(DsPackage.Literals.QUERY__SQL,
-		                                                                        DsFactory.eINSTANCE.createSql())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.QUERY__SQL,
+					 DsFactory.eINSTANCE.createSql())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(DsPackage.Literals.QUERY__SPARQL,
-		                                                                        DsFactory.eINSTANCE.createSparql())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.QUERY__SPARQL,
+					 DsFactory.eINSTANCE.createSparql())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(DsPackage.Literals.QUERY__PROPERTIES,
-		                                                                        DsFactory.eINSTANCE.createQueryPropertyList())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.QUERY__PROPERTIES,
+					 DsFactory.eINSTANCE.createQueryPropertyList())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(DsPackage.Literals.QUERY__RESULT,
-		                                                                        DsFactory.eINSTANCE.createResultMapping())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.QUERY__RESULT,
+					 DsFactory.eINSTANCE.createResultMapping())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(DsPackage.Literals.QUERY__EXCEL,
-		                                                                        DsFactory.eINSTANCE.createExcelQuery())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.QUERY__EXCEL,
+					 DsFactory.eINSTANCE.createExcelQuery())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(DsPackage.Literals.QUERY__GSPREAD,
-		                                                                        DsFactory.eINSTANCE.createGSpreadQuery())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.QUERY__GSPREAD,
+					 DsFactory.eINSTANCE.createGSpreadQuery())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__MIXED,
-		                                             FeatureMapUtil.createEntry(DsPackage.Literals.QUERY__PARAM,
-		                                                                        DsFactory.eINSTANCE.createQueryParameter())));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.QUERY__PARAM,
+					 DsFactory.eINSTANCE.createQueryParameter())));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__SQL,
-		                                             DsFactory.eINSTANCE.createSql()));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__EXPRESSION,
+				 DsFactory.eINSTANCE.createQueryExpression()));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__SPARQL,
-		                                             DsFactory.eINSTANCE.createSparql()));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__SQL,
+				 DsFactory.eINSTANCE.createSql()));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__PROPERTIES,
-		                                             DsFactory.eINSTANCE.createQueryPropertyList()));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__SPARQL,
+				 DsFactory.eINSTANCE.createSparql()));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__RESULT,
-		                                             DsFactory.eINSTANCE.createResultMapping()));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__PROPERTIES,
+				 DsFactory.eINSTANCE.createQueryPropertyList()));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__EXCEL,
-		                                             DsFactory.eINSTANCE.createExcelQuery()));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__RESULT,
+				 DsFactory.eINSTANCE.createResultMapping()));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__GSPREAD,
-		                                             DsFactory.eINSTANCE.createGSpreadQuery()));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__EXCEL,
+				 DsFactory.eINSTANCE.createExcelQuery()));
 
-		newChildDescriptors.add(createChildParameter(DsPackage.Literals.QUERY__PARAM,
-		                                             DsFactory.eINSTANCE.createQueryParameter()));
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__GSPREAD,
+				 DsFactory.eINSTANCE.createGSpreadQuery()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.QUERY__PARAM,
+				 DsFactory.eINSTANCE.createQueryParameter()));
 	}
 
 	/**
-	 * This returns the label text for
-	 * {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -420,26 +460,25 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 		Object childFeature = feature;
 		Object childObject = child;
 
-		if (childFeature instanceof EStructuralFeature &&
-		    FeatureMapUtil.isFeatureMap((EStructuralFeature) childFeature)) {
-			FeatureMap.Entry entry = (FeatureMap.Entry) childObject;
+		if (childFeature instanceof EStructuralFeature && FeatureMapUtil.isFeatureMap((EStructuralFeature)childFeature)) {
+			FeatureMap.Entry entry = (FeatureMap.Entry)childObject;
 			childFeature = entry.getEStructuralFeature();
 			childObject = entry.getValue();
 		}
 
 		boolean qualify =
-		                  childFeature == DsPackage.Literals.QUERY__SQL ||
-		                          childFeature == DsPackage.Literals.QUERY__SPARQL ||
-		                          childFeature == DsPackage.Literals.QUERY__PROPERTIES ||
-		                          childFeature == DsPackage.Literals.QUERY__RESULT ||
-		                          childFeature == DsPackage.Literals.QUERY__EXCEL ||
-		                          childFeature == DsPackage.Literals.QUERY__GSPREAD ||
-		                          childFeature == DsPackage.Literals.QUERY__PARAM;
+			childFeature == DsPackage.Literals.QUERY__SQL ||
+			childFeature == DsPackage.Literals.QUERY__SPARQL ||
+			childFeature == DsPackage.Literals.QUERY__PROPERTIES ||
+			childFeature == DsPackage.Literals.QUERY__RESULT ||
+			childFeature == DsPackage.Literals.QUERY__EXCEL ||
+			childFeature == DsPackage.Literals.QUERY__GSPREAD ||
+			childFeature == DsPackage.Literals.QUERY__PARAM;
 
 		if (qualify) {
-			return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject),
-			                                                        getFeatureText(childFeature),
-			                                                        getTypeText(owner) });
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}
@@ -448,7 +487,6 @@ public class QueryItemProvider extends ItemProviderAdapter implements IEditingDo
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 

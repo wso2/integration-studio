@@ -36,27 +36,19 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getMixed
- * <em>Mixed</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getProperty
- * <em>Property</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getId
- * <em>Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DataSourceConfigurationImpl extends EObjectImpl implements DataSourceConfiguration {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute
-	 * list.
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -67,7 +59,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -78,7 +69,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -88,7 +78,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DataSourceConfigurationImpl() {
@@ -98,7 +87,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -110,7 +98,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -123,7 +110,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<ConfigurationProperty> getProperty() {
@@ -133,7 +119,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -143,21 +128,18 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.DATA_SOURCE_CONFIGURATION__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.DATA_SOURCE_CONFIGURATION__ID, oldId, id));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -166,9 +148,9 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	                                        NotificationChain msgs) {
 		switch (featureID) {
 			case DsPackage.DATA_SOURCE_CONFIGURATION__MIXED:
-				return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 			case DsPackage.DATA_SOURCE_CONFIGURATION__PROPERTY:
-				return ((InternalEList<?>) getProperty()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getProperty()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -176,7 +158,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -184,9 +165,8 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DsPackage.DATA_SOURCE_CONFIGURATION__MIXED:
-				if (coreType)
-					return getMixed();
-				return ((FeatureMap.Internal) getMixed()).getWrapper();
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case DsPackage.DATA_SOURCE_CONFIGURATION__PROPERTY:
 				return getProperty();
 			case DsPackage.DATA_SOURCE_CONFIGURATION__ID:
@@ -198,7 +178,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -206,14 +185,14 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.DATA_SOURCE_CONFIGURATION__MIXED:
-				((FeatureMap.Internal) getMixed()).set(newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case DsPackage.DATA_SOURCE_CONFIGURATION__PROPERTY:
 				getProperty().clear();
-				getProperty().addAll((Collection<? extends ConfigurationProperty>) newValue);
+				getProperty().addAll((Collection<? extends ConfigurationProperty>)newValue);
 				return;
 			case DsPackage.DATA_SOURCE_CONFIGURATION__ID:
-				setId((String) newValue);
+				setId((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -222,7 +201,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -245,7 +223,6 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -265,14 +242,12 @@ public class DataSourceConfigurationImpl extends EObjectImpl implements DataSour
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mixed: ");

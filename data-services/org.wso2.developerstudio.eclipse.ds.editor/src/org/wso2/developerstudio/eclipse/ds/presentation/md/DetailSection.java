@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.ds.Operation;
 import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
 import org.wso2.developerstudio.eclipse.ds.PatternValidator;
 import org.wso2.developerstudio.eclipse.ds.Query;
+import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 import org.wso2.developerstudio.eclipse.ds.QueryParameter;
 import org.wso2.developerstudio.eclipse.ds.QueryProperty;
 import org.wso2.developerstudio.eclipse.ds.QueryPropertyList;
@@ -194,6 +195,17 @@ public class DetailSection {
 			labelMaker(DetailSectionCustomUiConstants.QUERY_SPARQL);
 			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input, sparql.getValue(),
 			                                   DsPackage.eINSTANCE.getSparql_Value(),
+			                                   DetailSectionCustomUiConstants.STRING);
+			voidMaker();
+			voidMaker();
+
+		}else if (input instanceof QueryExpression) {
+
+			QueryExpression queryExpression = (QueryExpression) input;
+
+			labelMaker(DetailSectionCustomUiConstants.QUERY_EXPRESSION);
+			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input, queryExpression.getValue(),
+			                                   DsPackage.eINSTANCE.getQueryExpression_Value(),
 			                                   DetailSectionCustomUiConstants.STRING);
 			voidMaker();
 			voidMaker();

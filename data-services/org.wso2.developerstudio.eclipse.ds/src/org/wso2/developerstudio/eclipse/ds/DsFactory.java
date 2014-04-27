@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * 
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage
  * @generated
  */
@@ -22,7 +21,6 @@ public interface DsFactory extends EFactory {
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	DsFactory eINSTANCE = org.wso2.developerstudio.eclipse.ds.impl.DsFactoryImpl.init();
@@ -31,7 +29,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Attribute Mapping</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Attribute Mapping</em>'.
 	 * @generated
 	 */
@@ -41,7 +38,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Call Query</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Call Query</em>'.
 	 * @generated
 	 */
@@ -51,7 +47,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Call Query List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Call Query List</em>'.
 	 * @generated
 	 */
@@ -61,7 +56,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Configuration Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Configuration Property</em>'.
 	 * @generated
 	 */
@@ -71,7 +65,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Custom Validator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Custom Validator</em>'.
 	 * @generated
 	 */
@@ -81,7 +74,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Data Service</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Data Service</em>'.
 	 * @generated
 	 */
@@ -91,7 +83,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Data Source Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Data Source Configuration</em>'.
 	 * @generated
 	 */
@@ -101,7 +92,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Description</em>'.
 	 * @generated
 	 */
@@ -111,7 +101,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Document Root</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Document Root</em>'.
 	 * @generated
 	 */
@@ -121,7 +110,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Double Range Validator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Double Range Validator</em>'.
 	 * @generated
 	 */
@@ -131,7 +119,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Element Mapping</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Element Mapping</em>'.
 	 * @generated
 	 */
@@ -141,7 +128,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Event Subscription List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Event Subscription List</em>'.
 	 * @generated
 	 */
@@ -151,7 +137,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Event Trigger</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Event Trigger</em>'.
 	 * @generated
 	 */
@@ -161,7 +146,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Excel Query</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Excel Query</em>'.
 	 * @generated
 	 */
@@ -171,7 +155,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Expression</em>'.
 	 * @generated
 	 */
@@ -181,7 +164,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>GSpread Query</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>GSpread Query</em>'.
 	 * @generated
 	 */
@@ -191,7 +173,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Has Header</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Has Header</em>'.
 	 * @generated
 	 */
@@ -201,7 +182,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Length Validator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Length Validator</em>'.
 	 * @generated
 	 */
@@ -211,7 +191,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Long Range Validator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Long Range Validator</em>'.
 	 * @generated
 	 */
@@ -221,7 +200,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Max Row Count</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Max Row Count</em>'.
 	 * @generated
 	 */
@@ -231,7 +209,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Operation</em>'.
 	 * @generated
 	 */
@@ -241,7 +218,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Parameter Mapping</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Parameter Mapping</em>'.
 	 * @generated
 	 */
@@ -251,7 +227,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Pattern Validator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Pattern Validator</em>'.
 	 * @generated
 	 */
@@ -261,7 +236,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Query</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Query</em>'.
 	 * @generated
 	 */
@@ -271,7 +245,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Query Parameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Query Parameter</em>'.
 	 * @generated
 	 */
@@ -281,7 +254,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Query Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Query Property</em>'.
 	 * @generated
 	 */
@@ -291,7 +263,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Query Property List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Query Property List</em>'.
 	 * @generated
 	 */
@@ -301,7 +272,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Resource</em>'.
 	 * @generated
 	 */
@@ -311,7 +281,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Result Mapping</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Result Mapping</em>'.
 	 * @generated
 	 */
@@ -321,7 +290,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Sparql</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Sparql</em>'.
 	 * @generated
 	 */
@@ -331,17 +299,24 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Sql</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Sql</em>'.
 	 * @generated
 	 */
 	Sql createSql();
 
 	/**
+	 * Returns a new object of class '<em>Query Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Query Expression</em>'.
+	 * @generated
+	 */
+	QueryExpression createQueryExpression();
+
+	/**
 	 * Returns a new object of class '<em>Starting Row</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Starting Row</em>'.
 	 * @generated
 	 */
@@ -351,7 +326,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Subscription</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Subscription</em>'.
 	 * @generated
 	 */
@@ -361,7 +335,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Target Topic</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Target Topic</em>'.
 	 * @generated
 	 */
@@ -371,7 +344,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Work Book Name</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Work Book Name</em>'.
 	 * @generated
 	 */
@@ -381,7 +353,6 @@ public interface DsFactory extends EFactory {
 	 * Returns a new object of class '<em>Work Sheet Number</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return a new object of class '<em>Work Sheet Number</em>'.
 	 * @generated
 	 */
@@ -391,7 +362,6 @@ public interface DsFactory extends EFactory {
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the package supported by this factory.
 	 * @generated
 	 */

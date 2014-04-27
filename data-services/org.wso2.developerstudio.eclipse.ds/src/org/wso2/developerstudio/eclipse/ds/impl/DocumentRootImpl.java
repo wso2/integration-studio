@@ -42,46 +42,26 @@ import org.wso2.developerstudio.eclipse.ds.Subscription;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getMixed
- * <em>Mixed</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getXMLNSPrefixMap
- * <em>XMLNS Prefix Map</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getXSISchemaLocation
- * <em>XSI Schema Location</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getCallQuery
- * <em>Call Query</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getData
- * <em>Data</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getHasheader
- * <em>Hasheader</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getMaxrowcount
- * <em>Maxrowcount</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getProperty
- * <em>Property</em>}</li>
- * <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getSql
- * <em>Sql</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getStartingrow
- * <em>Startingrow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getData <em>Data</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getHasheader <em>Hasheader</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getSql <em>Sql</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DocumentRootImpl#getStartingrow <em>Startingrow</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute
-	 * list.
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -89,11 +69,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected FeatureMap mixed;
 
 	/**
-	 * The cached value of the '{@link #getXMLNSPrefixMap()
-	 * <em>XMLNS Prefix Map</em>}' map.
+	 * The cached value of the '{@link #getXMLNSPrefixMap() <em>XMLNS Prefix Map</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getXMLNSPrefixMap()
 	 * @generated
 	 * @ordered
@@ -101,11 +79,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	protected EMap<String, String> xMLNSPrefixMap;
 
 	/**
-	 * The cached value of the '{@link #getXSISchemaLocation()
-	 * <em>XSI Schema Location</em>}' map.
+	 * The cached value of the '{@link #getXSISchemaLocation() <em>XSI Schema Location</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getXSISchemaLocation()
 	 * @generated
 	 * @ordered
@@ -115,7 +91,6 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DocumentRootImpl() {
@@ -125,7 +100,6 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -137,7 +111,6 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -150,17 +123,11 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EMap<String, String> getXMLNSPrefixMap() {
 		if (xMLNSPrefixMap == null) {
-			xMLNSPrefixMap =
-			                 new EcoreEMap<String, String>(
-			                                               EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
-			                                               EStringToStringMapEntryImpl.class,
-			                                               this,
-			                                               DsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+			xMLNSPrefixMap = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, DsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		}
 		return xMLNSPrefixMap;
 	}
@@ -168,17 +135,11 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EMap<String, String> getXSISchemaLocation() {
 		if (xSISchemaLocation == null) {
-			xSISchemaLocation =
-			                    new EcoreEMap<String, String>(
-			                                                  EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY,
-			                                                  EStringToStringMapEntryImpl.class,
-			                                                  this,
-			                                                  DsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+			xSISchemaLocation = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, DsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
 		}
 		return xSISchemaLocation;
 	}
@@ -186,231 +147,196 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public CallQuery getCallQuery() {
-		return (CallQuery) getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__CALL_QUERY, true);
+		return (CallQuery)getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__CALL_QUERY, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCallQuery(CallQuery newCallQuery, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__CALL_QUERY,
-		                                                   newCallQuery, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__CALL_QUERY, newCallQuery, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setCallQuery(CallQuery newCallQuery) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__CALL_QUERY,
-		                                       newCallQuery);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__CALL_QUERY, newCallQuery);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DataService getData() {
-		return (DataService) getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__DATA, true);
+		return (DataService)getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__DATA, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetData(DataService newData, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__DATA,
-		                                                   newData, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__DATA, newData, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setData(DataService newData) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__DATA, newData);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__DATA, newData);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public HasHeader getHasheader() {
-		return (HasHeader) getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__HASHEADER, true);
+		return (HasHeader)getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__HASHEADER, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHasheader(HasHeader newHasheader, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__HASHEADER,
-		                                                   newHasheader, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__HASHEADER, newHasheader, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHasheader(HasHeader newHasheader) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__HASHEADER,
-		                                       newHasheader);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__HASHEADER, newHasheader);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public MaxRowCount getMaxrowcount() {
-		return (MaxRowCount) getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__MAXROWCOUNT, true);
+		return (MaxRowCount)getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__MAXROWCOUNT, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetMaxrowcount(MaxRowCount newMaxrowcount, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__MAXROWCOUNT,
-		                                                   newMaxrowcount, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__MAXROWCOUNT, newMaxrowcount, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMaxrowcount(MaxRowCount newMaxrowcount) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__MAXROWCOUNT,
-		                                       newMaxrowcount);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__MAXROWCOUNT, newMaxrowcount);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ConfigurationProperty getProperty() {
-		return (ConfigurationProperty) getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__PROPERTY,
-		                                              true);
+		return (ConfigurationProperty)getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__PROPERTY, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetProperty(ConfigurationProperty newProperty,
 	                                          NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__PROPERTY,
-		                                                   newProperty, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__PROPERTY, newProperty, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setProperty(ConfigurationProperty newProperty) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__PROPERTY,
-		                                       newProperty);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__PROPERTY, newProperty);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Sql getSql() {
-		return (Sql) getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__SQL, true);
+		return (Sql)getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__SQL, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetSql(Sql newSql, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__SQL,
-		                                                   newSql, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__SQL, newSql, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setSql(Sql newSql) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__SQL, newSql);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__SQL, newSql);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public StartingRow getStartingrow() {
-		return (StartingRow) getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__STARTINGROW, true);
+		return (StartingRow)getMixed().get(DsPackage.Literals.DOCUMENT_ROOT__STARTINGROW, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetStartingrow(StartingRow newStartingrow, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__STARTINGROW,
-		                                                   newStartingrow, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DOCUMENT_ROOT__STARTINGROW, newStartingrow, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setStartingrow(StartingRow newStartingrow) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__STARTINGROW,
-		                                       newStartingrow);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DOCUMENT_ROOT__STARTINGROW, newStartingrow);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -419,11 +345,11 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	                                        NotificationChain msgs) {
 		switch (featureID) {
 			case DsPackage.DOCUMENT_ROOT__MIXED:
-				return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 			case DsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				return ((InternalEList<?>) getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
 			case DsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				return ((InternalEList<?>) getXSISchemaLocation()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
 			case DsPackage.DOCUMENT_ROOT__CALL_QUERY:
 				return basicSetCallQuery(null, msgs);
 			case DsPackage.DOCUMENT_ROOT__DATA:
@@ -445,7 +371,6 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -453,19 +378,14 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DsPackage.DOCUMENT_ROOT__MIXED:
-				if (coreType)
-					return getMixed();
-				return ((FeatureMap.Internal) getMixed()).getWrapper();
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case DsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				if (coreType)
-					return getXMLNSPrefixMap();
-				else
-					return getXMLNSPrefixMap().map();
+				if (coreType) return getXMLNSPrefixMap();
+				else return getXMLNSPrefixMap().map();
 			case DsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				if (coreType)
-					return getXSISchemaLocation();
-				else
-					return getXSISchemaLocation().map();
+				if (coreType) return getXSISchemaLocation();
+				else return getXSISchemaLocation().map();
 			case DsPackage.DOCUMENT_ROOT__CALL_QUERY:
 				return getCallQuery();
 			case DsPackage.DOCUMENT_ROOT__DATA:
@@ -487,7 +407,6 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -495,34 +414,34 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.DOCUMENT_ROOT__MIXED:
-				((FeatureMap.Internal) getMixed()).set(newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-				((EStructuralFeature.Setting) getXMLNSPrefixMap()).set(newValue);
+				((EStructuralFeature.Setting)getXMLNSPrefixMap()).set(newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-				((EStructuralFeature.Setting) getXSISchemaLocation()).set(newValue);
+				((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__CALL_QUERY:
-				setCallQuery((CallQuery) newValue);
+				setCallQuery((CallQuery)newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__DATA:
-				setData((DataService) newValue);
+				setData((DataService)newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__HASHEADER:
-				setHasheader((HasHeader) newValue);
+				setHasheader((HasHeader)newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__MAXROWCOUNT:
-				setMaxrowcount((MaxRowCount) newValue);
+				setMaxrowcount((MaxRowCount)newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__PROPERTY:
-				setProperty((ConfigurationProperty) newValue);
+				setProperty((ConfigurationProperty)newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__SQL:
-				setSql((Sql) newValue);
+				setSql((Sql)newValue);
 				return;
 			case DsPackage.DOCUMENT_ROOT__STARTINGROW:
-				setStartingrow((StartingRow) newValue);
+				setStartingrow((StartingRow)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -531,7 +450,6 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -548,25 +466,25 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 				getXSISchemaLocation().clear();
 				return;
 			case DsPackage.DOCUMENT_ROOT__CALL_QUERY:
-				setCallQuery((CallQuery) null);
+				setCallQuery((CallQuery)null);
 				return;
 			case DsPackage.DOCUMENT_ROOT__DATA:
-				setData((DataService) null);
+				setData((DataService)null);
 				return;
 			case DsPackage.DOCUMENT_ROOT__HASHEADER:
-				setHasheader((HasHeader) null);
+				setHasheader((HasHeader)null);
 				return;
 			case DsPackage.DOCUMENT_ROOT__MAXROWCOUNT:
-				setMaxrowcount((MaxRowCount) null);
+				setMaxrowcount((MaxRowCount)null);
 				return;
 			case DsPackage.DOCUMENT_ROOT__PROPERTY:
-				setProperty((ConfigurationProperty) null);
+				setProperty((ConfigurationProperty)null);
 				return;
 			case DsPackage.DOCUMENT_ROOT__SQL:
-				setSql((Sql) null);
+				setSql((Sql)null);
 				return;
 			case DsPackage.DOCUMENT_ROOT__STARTINGROW:
-				setStartingrow((StartingRow) null);
+				setStartingrow((StartingRow)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -575,7 +493,6 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -609,14 +526,12 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mixed: ");

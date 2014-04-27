@@ -54,7 +54,7 @@ public class DataMapperPaletteFactory {
 		 dataMapper.diagram.part.Messages.DataMapper1Group_title);*/
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
-		paletteContainer.add(createEqual2CreationTool());
+//		paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.add(createSplit4CreationTool());
 		paletteContainer.add(createConstant5CreationTool());

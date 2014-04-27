@@ -838,13 +838,22 @@ public interface DataMapperPackage extends EPackage {
 	int CONSTANT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
+	 * The feature id for the '<em><b>Constant Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTANT__CONSTANT_VALUE = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.SplitImpl <em>Split</em>}' class.
@@ -1649,6 +1658,17 @@ public interface DataMapperPackage extends EPackage {
 	EClass getConstant();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dataMapper.Constant#getConstantValue <em>Constant Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Constant Value</em>'.
+	 * @see dataMapper.Constant#getConstantValue()
+	 * @see #getConstant()
+	 * @generated
+	 */
+	EAttribute getConstant_ConstantValue();
+
+	/**
 	 * Returns the meta object for class '{@link dataMapper.Split <em>Split</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2277,6 +2297,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONSTANT = eINSTANCE.getConstant();
+
+		/**
+		 * The meta object literal for the '<em><b>Constant Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTANT__CONSTANT_VALUE = eINSTANCE.getConstant_ConstantValue();
 
 		/**
 		 * The meta object literal for the '{@link dataMapper.impl.SplitImpl <em>Split</em>}' class.

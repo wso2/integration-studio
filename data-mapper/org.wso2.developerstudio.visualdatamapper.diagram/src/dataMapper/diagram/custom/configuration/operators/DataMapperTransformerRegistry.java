@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dataMapper.Concat;
+import dataMapper.Contains;
+import dataMapper.Equal;
 import dataMapper.LowerCase;
 import dataMapper.Operator;
 import dataMapper.Split;
@@ -34,6 +36,7 @@ public class DataMapperTransformerRegistry {
 		addTransformer(Split.class, new SplitTransform());
 		addTransformer(LowerCase.class, new ToLowerCaseTransform());
 		addTransformer(UpperCase.class, new ToUpperCaseTransformer());
+		addTransformer(Contains.class, new ContainsTransformer());
 
 	}
 

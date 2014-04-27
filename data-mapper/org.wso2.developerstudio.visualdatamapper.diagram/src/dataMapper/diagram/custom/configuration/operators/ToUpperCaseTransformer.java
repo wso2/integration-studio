@@ -37,11 +37,6 @@ public class ToUpperCaseTransformer implements OperatorsTransformer{
 		
 		if(upperCaseInput instanceof Element){
 			Element inputElement = (Element) upperCaseInput;
-//			if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
-//				String index = INDEX;
-//				return getSimpleOperatorMapping(operator, inputElement, index);
-//			}
-			
 			return getSimpleOperatorMapping(operator, inputElement);
 			
 		}

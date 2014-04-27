@@ -38,11 +38,6 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 		
 		if(lowerCaseInput instanceof Element){
 			Element inputElement = (Element) lowerCaseInput;
-//			if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
-//				String index = INDEX;
-//				return getSimpleOperatorMapping(operator, inputElement, index);
-//			}
-			
 			return getSimpleOperatorMapping(operator, inputElement);
 			
 		}

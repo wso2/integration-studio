@@ -18,6 +18,7 @@ package dataMapper.diagram.custom.generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -25,21 +26,22 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
-// FIXME This is not the real implementation of this class only for R&D
-public class JavaScriptGenerator {	
-	
- private static final String ARRAY = "[]";
- private String inRoot ="ProductRecords";
- private String outRoot="jiras";	
- private Stack<Character> characters;
- private Queue<Character> indexSequence;
- private Set<Integer> elementSet;
- private Loop lasLoop;
- private ArrayList<Operator> operation;
- private Map<String,Loop> loopMap;
- private ArrayList<String> bodys;
- 
 
+// FIXME This is not the real implementation of this class only for R&D
+public class JavaScriptGenerator {
+
+	private static final String ARRAY = "[]";
+	private String inRoot = "ProductRecords";
+	private String outRoot = "jiras";
+	private Stack<Character> characters;
+	private Queue<Character> indexSequence;
+	private Set<Integer> elementSet;
+	private Loop lasLoop;
+	private ArrayList<Operator> operation;
+	private Map<String, Loop> loopMap;
+	private ArrayList<String> bodys;
+
+	
 	public JavaScriptGenerator(ArrayList<Operator> operation) {
 		characters = new Stack<Character>();
 		characters.add('x');
@@ -53,14 +55,15 @@ public class JavaScriptGenerator {
 		indexSequence = new PriorityQueue<Character>();
 		loopMap = new HashMap<String, Loop>();
 		bodys = new ArrayList<String>();
-
+		elementSet = new HashSet<Integer>();
 	}
          
-   public void generate() {
+	public void generate() {
 		try {
 			for (Operator operator : operation) {
 				Map<Integer, String> inputs = operator.getInputs();
 				Map<Integer, String> outputs = operator.getOutputs();
+				elementSet.clear();
 				int operatorCode = operator.getOperatorName().getOperatorCode();
 				if (OperatorName.ASSIGNE.getOperatorCode() == operatorCode) {
 					String inputPath = inputs.get(1);
@@ -91,12 +94,13 @@ public class JavaScriptGenerator {
 										indexSequence.add(indexChar);
 										loopMap.put(element, loop);
 									}
+									loop.setSource(source);
 									createLoopTemplate(elements, loop, index, source);
 									createLoopBody(elements, outElements);
 									break;// Top level loop created
 								}
-							}//End of the elements loop
-									// function Create Loop
+							}// End of the elements loop
+								// function Create Loop
 						} else {
 							// required output iteration
 						}
@@ -118,13 +122,18 @@ public class JavaScriptGenerator {
 		}
 	}
 
-   private String createInputWire(String[] inelements){
-	   String insource = lasLoop.getSource();
-	   String line = insource +"["+lasLoop.getIndex()+"]."+inelements[inelements.length-1];
-	   return line;
-   }
-   
-   private String createOutputWire(String[] outelements){
+	private String createInputWire(String[] inelements) {
+		String insource = lasLoop.getSource();
+		String[] sourcItems = insource.split("\\.");
+		String midElements = "";
+		for (int i = sourcItems.length; i < inelements.length; i++) {
+			midElements = midElements + "." + inelements[i];
+		}
+		String line = insource + "[" + lasLoop.getIndex() + "]" + midElements;
+		return line;
+	}
+
+	private String createOutputWire(String[] outelements) {
 		String outLine = null;
 		for (String el : outelements) {
 			if (outLine == null) {
@@ -144,74 +153,73 @@ public class JavaScriptGenerator {
 			}
 		}
 		return outLine;
-   }
-   
-   private String doAssigneOperation(String inputWire,String outWire){
-	   return inputWire + " = " + outWire;
-   }
-   
-   private void createLoopBody(String[] inelements,String[] outelements){
-	   
-	   String inputWire = createInputWire(inelements);
-	   String outputWire = createOutputWire(outelements);
-	   String line = doAssigneOperation(inputWire, outputWire);
-	   lasLoop.getSingleLine().add(line);
-   }
-   
-   private void createLoopTemplate(String[] elements,Loop loop,int currentIndex,
-		   String source){
-		  // Loop loop = new Loop();
-	       for(int i = currentIndex; i < elements.length;i++){
-	    	   if(elements[i].contains(ARRAY)){
-	    		   Loop nestedloop= loop.getLoops().get(elements[i]);
-	    		   if(nestedloop==null){
-	    			   Character indexChar = characters.pop();
-					   nestedloop = new JavaScriptGenerator.Loop(indexChar);
-					   indexSequence.add(indexChar);
-	    			   nestedloop.setSource(source);
-	    			   loop.getLoops().put(elements[i], nestedloop);
-	    		   }
-	    		     lasLoop = nestedloop;
-	    		     createLoopTemplate(elements, nestedloop, ++i,source+"["+loop.getIndex()+"]");
-	    	   }else{
-	    		   //single line mapping or function call 
-	    		   //need to loop from Current index 
-	    		   elementSet.add(i);
-	    	   }
-	       }
-	   } 
+	}
 
-   public String printLoop(Loop loop){
-	   StringBuilder op = new StringBuilder();
-	   op.append("for(var "+loop.getIndex()+" in "+loop.getSource()+"){");
-	   op.append("\n");
-	   op.append("\n\t");
-	   List<String> singleLine = loop.getSingleLine();
-	   for (String line : singleLine) {
-		   op.append(line);
-		   op.append("\n");
-	   }
-	  Map<String, Loop> loops = loop.getLoops();
-	  if(!loops.isEmpty()){
-		  Set<String> keySet = loops.keySet();
-		  for (String key : keySet) {
-			  printLoop(loops.get(key));
+	private String doAssigneOperation(String inputWire, String outWire) {
+		return inputWire + " = " + outWire + ";";
+	}
+
+	private void createLoopBody(String[] inelements, String[] outelements) {
+
+		String inputWire = createInputWire(inelements);
+		String outputWire = createOutputWire(outelements);
+		String line = doAssigneOperation(inputWire, outputWire);
+		lasLoop.getSingleLine().add(line);
+	}
+
+	private void createLoopTemplate(String[] elements, Loop loop, int currentIndex, String source) {
+		// Loop loop = new Loop();
+		lasLoop = loop;
+		for (int i = currentIndex; i < elements.length; i++) {
+			if (elements[i].contains(ARRAY)) {
+				Loop nestedloop = loop.getLoops().get(elements[i]);
+				if (nestedloop == null) {
+					Character indexChar = characters.pop();
+					nestedloop = new JavaScriptGenerator.Loop(indexChar);
+					indexSequence.add(indexChar);
+					nestedloop.setSource(source);
+					loop.getLoops().put(elements[i], nestedloop);
+				}
+
+				createLoopTemplate(elements, nestedloop, ++i, source + "[" + loop.getIndex() + "]");
+			} else {
+				// single line mapping or function call
+				// need to loop from Current index
+				elementSet.add(i);
+			}
 		}
-	  }
-	   op.append("\n");
-	   op.append("}");
-	   
-	   return op.toString();
-   }
- 
-  
-   public String printConfig(ArrayList<String> bodys) {
+	}
+
+	public String printLoop(Loop loop) {
+		StringBuilder op = new StringBuilder();
+		op.append("for(var " + loop.getIndex() + " in " + loop.getSource() + "){");
+		op.append("\n");
+		op.append("\n\t");
+		List<String> singleLine = loop.getSingleLine();
+		for (String line : singleLine) {
+			op.append(line);
+			op.append("\n");
+		}
+		Map<String, Loop> loops = loop.getLoops();
+		if (!loops.isEmpty()) {
+			Set<String> keySet = loops.keySet();
+			for (String key : keySet) {
+				printLoop(loops.get(key));
+			}
+		}
+		op.append("\n");
+		op.append("}");
+
+		return op.toString();
+	}
+
+	public String printConfig() {
 		StringBuilder fun = new StringBuilder();
 		fun.append("function map_S_");
 		fun.append(inRoot);
 		fun.append("_S_");
 		fun.append(outRoot);
-		fun.append("("+inRoot+", "+outRoot+")");
+		fun.append("(" + inRoot + ", " + outRoot + ")");
 		fun.append("{ ");
 		fun.append("\n");
 		for (String bodyCode : bodys) {
@@ -219,47 +227,61 @@ public class JavaScriptGenerator {
 			fun.append("\n");
 		}
 		fun.append("\n");
-		fun.append("return "+outRoot);
+		fun.append("return " + outRoot);
 		fun.append(";");
 		fun.append("\n");
 		fun.append("}");
 
 		return fun.toString();
 	}
-   
-   class Function {
+
+	public Map<String, Loop> getLoopMap() {
+		return loopMap;
+	}
+
+	public ArrayList<String> getBodys() {
+		return bodys;
+	}
+
+	class Function {
 		String signature;
 		String paramList;
+
 		/**
 		 * @return the signature
 		 */
 		public String getSignature() {
 			return signature;
 		}
+
 		/**
-		 * @param signature the signature to set
+		 * @param signature
+		 *            the signature to set
 		 */
 		public void setSignature(String signature) {
 			this.signature = signature;
 		}
+
 		/**
 		 * @return the paramList
 		 */
 		public String getParamList() {
 			return paramList;
 		}
+
 		/**
-		 * @param paramList the paramList to set
+		 * @param paramList
+		 *            the paramList to set
 		 */
 		public void setParamList(String paramList) {
 			this.paramList = paramList;
 		}
 	}
-	
+
 	class Loop {
 		String source;
 		Character index;
-		
+
 		List<String> singleLine;
 		Map<String, JavaScriptGenerator.Loop> loops;
 		List<Function> functions;
@@ -269,7 +291,7 @@ public class JavaScriptGenerator {
 			loops = new HashMap<String, JavaScriptGenerator.Loop>();
 			functions = new ArrayList<JavaScriptGenerator.Function>();
 			this.index = index;
-			
+
 		}
 
 		/**
@@ -294,8 +316,6 @@ public class JavaScriptGenerator {
 			return index;
 		}
 
-	
-
 		/**
 		 * @return the singleLine
 		 */
@@ -318,5 +338,5 @@ public class JavaScriptGenerator {
 		}
 
 	}
-    
+
 }

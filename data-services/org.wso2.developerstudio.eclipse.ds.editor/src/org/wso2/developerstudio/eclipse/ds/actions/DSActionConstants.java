@@ -37,6 +37,8 @@ public interface DSActionConstants {
 	public String ADD_SQL_ACTION = "Add Sql";
 
 	public String ADD_SPARQL_ACTION = "Add Sparql";
+	
+	public String ADD_QUERY_EXPRESSION_ACTION = "Add Expression";	
 
 	public String ADD_RESULT_ACTION = "Add Result";
 
@@ -136,6 +138,8 @@ public interface DSActionConstants {
 	// Cassandra Data Source Properties
 
 	public String CASSANDRA_TYPE = "Cassandra";
+	
+	public String CASSANDRA_DATASOURCE_PROPERTY = "cassandra_datasource";
 	
 	public String CASSANDRA_SERVER_URL = "url";
 

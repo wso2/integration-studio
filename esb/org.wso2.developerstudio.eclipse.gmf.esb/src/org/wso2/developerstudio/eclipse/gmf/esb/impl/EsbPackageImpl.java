@@ -129,6 +129,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPoint;
@@ -3580,6 +3581,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum cloudConnectorOperationParamEditorTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum dataMapperMediatorDataTypesEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9324,8 +9332,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataMapperMediator_OutputConnector() {
-		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(1);
+	public EAttribute getDataMapperMediator_InputType() {
+		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -9333,7 +9341,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataMapperMediator_Configuration() {
+	public EReference getDataMapperMediator_OutputConnector() {
 		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -9342,7 +9350,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataMapperMediator_InputSchema() {
+	public EReference getDataMapperMediator_Configuration() {
 		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -9351,7 +9359,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataMapperMediator_OutputSchema() {
+	public EReference getDataMapperMediator_InputSchema() {
 		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -9360,8 +9368,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataMapperMediator_ConfigurationLocalPath() {
-		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(5);
+	public EReference getDataMapperMediator_OutputSchema() {
+		return (EReference)dataMapperMediatorEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -9369,7 +9377,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataMapperMediator_InputSchemaLocalPath() {
+	public EAttribute getDataMapperMediator_ConfigurationLocalPath() {
 		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -9378,8 +9386,26 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataMapperMediator_OutputSchemaLocalPath() {
+	public EAttribute getDataMapperMediator_InputSchemaLocalPath() {
 		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataMapperMediator_OutputSchemaLocalPath() {
+		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataMapperMediator_OutputType() {
+		return (EAttribute)dataMapperMediatorEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -15462,6 +15488,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getDataMapperMediatorDataTypes() {
+		return dataMapperMediatorDataTypesEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getMap() {
 		return mapEDataType;
 	}
@@ -17036,6 +17071,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		dataMapperMediatorEClass = createEClass(DATA_MAPPER_MEDIATOR);
 		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR);
+		createEAttribute(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__INPUT_TYPE);
 		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR);
 		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__CONFIGURATION);
 		createEReference(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__INPUT_SCHEMA);
@@ -17043,6 +17079,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH);
 		createEAttribute(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH);
 		createEAttribute(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH);
+		createEAttribute(dataMapperMediatorEClass, DATA_MAPPER_MEDIATOR__OUTPUT_TYPE);
 
 		dataMapperMediatorInputConnectorEClass = createEClass(DATA_MAPPER_MEDIATOR_INPUT_CONNECTOR);
 
@@ -17149,6 +17186,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		messageProcessorTypeEEnum = createEEnum(MESSAGE_PROCESSOR_TYPE);
 		processorStateEEnum = createEEnum(PROCESSOR_STATE);
 		cloudConnectorOperationParamEditorTypeEEnum = createEEnum(CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE);
+		dataMapperMediatorDataTypesEEnum = createEEnum(DATA_MAPPER_MEDIATOR_DATA_TYPES);
 
 		// Create data types
 		mapEDataType = createEDataType(MAP);
@@ -19059,6 +19097,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(dataMapperMediatorEClass, DataMapperMediator.class, "DataMapperMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataMapperMediator_InputConnector(), this.getDataMapperMediatorInputConnector(), null, "inputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataMapperMediator_InputType(), this.getDataMapperMediatorDataTypes(), "inputType", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataMapperMediator_OutputConnector(), this.getDataMapperMediatorOutputConnector(), null, "outputConnector", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataMapperMediator_Configuration(), this.getRegistryKeyProperty(), null, "configuration", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataMapperMediator_InputSchema(), this.getRegistryKeyProperty(), null, "InputSchema", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -19066,6 +19105,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getDataMapperMediator_ConfigurationLocalPath(), ecorePackage.getEString(), "configurationLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataMapperMediator_InputSchemaLocalPath(), ecorePackage.getEString(), "inputSchemaLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataMapperMediator_OutputSchemaLocalPath(), ecorePackage.getEString(), "outputSchemaLocalPath", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataMapperMediator_OutputType(), this.getDataMapperMediatorDataTypes(), "outputType", null, 0, 1, DataMapperMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataMapperMediatorInputConnectorEClass, DataMapperMediatorInputConnector.class, "DataMapperMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -19601,6 +19641,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEEnum(cloudConnectorOperationParamEditorTypeEEnum, CloudConnectorOperationParamEditorType.class, "CloudConnectorOperationParamEditorType");
 		addEEnumLiteral(cloudConnectorOperationParamEditorTypeEEnum, CloudConnectorOperationParamEditorType.INLINE);
 		addEEnumLiteral(cloudConnectorOperationParamEditorTypeEEnum, CloudConnectorOperationParamEditorType.NAMESPACED_PROPERTY_EDITOR);
+
+		initEEnum(dataMapperMediatorDataTypesEEnum, DataMapperMediatorDataTypes.class, "DataMapperMediatorDataTypes");
+		addEEnumLiteral(dataMapperMediatorDataTypesEEnum, DataMapperMediatorDataTypes.XML);
+		addEEnumLiteral(dataMapperMediatorDataTypesEEnum, DataMapperMediatorDataTypes.CSV);
+		addEEnumLiteral(dataMapperMediatorDataTypesEEnum, DataMapperMediatorDataTypes.JSON);
 
 		// Initialize data types
 		initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

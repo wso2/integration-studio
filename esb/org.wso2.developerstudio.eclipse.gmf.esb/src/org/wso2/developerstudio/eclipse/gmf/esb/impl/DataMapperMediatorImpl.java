@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -42,6 +43,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputType <em>Input Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputSchema <em>Input Schema</em>}</li>
@@ -49,6 +51,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getConfigurationLocalPath <em>Configuration Local Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getInputSchemaLocalPath <em>Input Schema Local Path</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputSchemaLocalPath <em>Output Schema Local Path</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl#getOutputType <em>Output Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,6 +67,26 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 	 * @ordered
 	 */
 	protected DataMapperMediatorInputConnector inputConnector;
+
+	/**
+	 * The default value of the '{@link #getInputType() <em>Input Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final DataMapperMediatorDataTypes INPUT_TYPE_EDEFAULT = DataMapperMediatorDataTypes.XML;
+
+	/**
+	 * The cached value of the '{@link #getInputType() <em>Input Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataMapperMediatorDataTypes inputType = INPUT_TYPE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOutputConnector() <em>Output Connector</em>}' containment reference.
@@ -166,6 +189,26 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 	protected String outputSchemaLocalPath = OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getOutputType() <em>Output Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final DataMapperMediatorDataTypes OUTPUT_TYPE_EDEFAULT = DataMapperMediatorDataTypes.XML;
+
+	/**
+	 * The cached value of the '{@link #getOutputType() <em>Output Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataMapperMediatorDataTypes outputType = OUTPUT_TYPE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -243,6 +286,27 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR, newInputConnector, newInputConnector));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataMapperMediatorDataTypes getInputType() {
+		return inputType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInputType(DataMapperMediatorDataTypes newInputType) {
+		DataMapperMediatorDataTypes oldInputType = inputType;
+		inputType = newInputType == null ? INPUT_TYPE_EDEFAULT : newInputType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_TYPE, oldInputType, inputType));
 	}
 
 	/**
@@ -485,6 +549,27 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataMapperMediatorDataTypes getOutputType() {
+		return outputType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutputType(DataMapperMediatorDataTypes newOutputType) {
+		DataMapperMediatorDataTypes oldOutputType = outputType;
+		outputType = newOutputType == null ? OUTPUT_TYPE_EDEFAULT : newOutputType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE, oldOutputType, outputType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -512,6 +597,8 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 		switch (featureID) {
 			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR:
 				return getInputConnector();
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_TYPE:
+				return getInputType();
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				return getOutputConnector();
 			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION:
@@ -526,6 +613,8 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 				return getInputSchemaLocalPath();
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
 				return getOutputSchemaLocalPath();
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE:
+				return getOutputType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -540,6 +629,9 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 		switch (featureID) {
 			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR:
 				setInputConnector((DataMapperMediatorInputConnector)newValue);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_TYPE:
+				setInputType((DataMapperMediatorDataTypes)newValue);
 				return;
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				setOutputConnector((DataMapperMediatorOutputConnector)newValue);
@@ -562,6 +654,9 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
 				setOutputSchemaLocalPath((String)newValue);
 				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE:
+				setOutputType((DataMapperMediatorDataTypes)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -576,6 +671,9 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 		switch (featureID) {
 			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR:
 				setInputConnector((DataMapperMediatorInputConnector)null);
+				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_TYPE:
+				setInputType(INPUT_TYPE_EDEFAULT);
 				return;
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				setOutputConnector((DataMapperMediatorOutputConnector)null);
@@ -598,6 +696,9 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
 				setOutputSchemaLocalPath(OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT);
 				return;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE:
+				setOutputType(OUTPUT_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -612,6 +713,8 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 		switch (featureID) {
 			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR:
 				return inputConnector != null;
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_TYPE:
+				return inputType != INPUT_TYPE_EDEFAULT;
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR:
 				return outputConnector != null;
 			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION:
@@ -626,6 +729,8 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 				return INPUT_SCHEMA_LOCAL_PATH_EDEFAULT == null ? inputSchemaLocalPath != null : !INPUT_SCHEMA_LOCAL_PATH_EDEFAULT.equals(inputSchemaLocalPath);
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
 				return OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT == null ? outputSchemaLocalPath != null : !OUTPUT_SCHEMA_LOCAL_PATH_EDEFAULT.equals(outputSchemaLocalPath);
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE:
+				return outputType != OUTPUT_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -640,12 +745,16 @@ public class DataMapperMediatorImpl extends MediatorImpl implements DataMapperMe
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (configurationLocalPath: ");
+		result.append(" (inputType: ");
+		result.append(inputType);
+		result.append(", configurationLocalPath: ");
 		result.append(configurationLocalPath);
 		result.append(", inputSchemaLocalPath: ");
 		result.append(inputSchemaLocalPath);
 		result.append(", outputSchemaLocalPath: ");
 		result.append(outputSchemaLocalPath);
+		result.append(", outputType: ");
+		result.append(outputType);
 		result.append(')');
 		return result.toString();
 	}

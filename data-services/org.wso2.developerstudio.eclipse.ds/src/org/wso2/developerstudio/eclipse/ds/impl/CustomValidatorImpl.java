@@ -23,12 +23,10 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorImpl#getClass_
- * <em>Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.CustomValidatorImpl#getClass_ <em>Class</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CustomValidatorImpl extends EObjectImpl implements CustomValidator {
@@ -36,7 +34,6 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	 * The default value of the '{@link #getClass_() <em>Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getClass_()
 	 * @generated
 	 * @ordered
@@ -47,7 +44,6 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	 * The cached value of the '{@link #getClass_() <em>Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getClass_()
 	 * @generated
 	 * @ordered
@@ -57,7 +53,6 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CustomValidatorImpl() {
@@ -67,7 +62,6 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -79,7 +73,6 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getClass_() {
@@ -89,21 +82,18 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setClass(String newClass) {
 		String oldClass = class_;
 		class_ = newClass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.CUSTOM_VALIDATOR__CLASS, oldClass, class_));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.CUSTOM_VALIDATOR__CLASS, oldClass, class_));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -119,7 +109,6 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -127,7 +116,7 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.CUSTOM_VALIDATOR__CLASS:
-				setClass((String) newValue);
+				setClass((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,7 +125,6 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -153,7 +141,6 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -169,14 +156,12 @@ public class CustomValidatorImpl extends EObjectImpl implements CustomValidator 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (class: ");

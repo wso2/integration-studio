@@ -838,13 +838,22 @@ public interface DataMapperPackage extends EPackage {
 	int CONSTANT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
+	 * The feature id for the '<em><b>Constant Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTANT__CONSTANT_VALUE = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Constant</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+	int CONSTANT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.SplitImpl <em>Split</em>}' class.
@@ -875,13 +884,22 @@ public interface DataMapperPackage extends EPackage {
 	int SPLIT__DELIMITER = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Array Output</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int SPLIT__ARRAY_OUTPUT = OPERATOR_FEATURE_COUNT + 1;
+
+    /**
 	 * The number of structural features of the '<em>Split</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 1;
+	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
@@ -940,6 +958,34 @@ public interface DataMapperPackage extends EPackage {
 	int CONTAINS_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link dataMapper.impl.UpperCaseImpl <em>Upper Case</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dataMapper.impl.UpperCaseImpl
+	 * @see dataMapper.impl.DataMapperPackageImpl#getUpperCase()
+	 * @generated
+	 */
+	int UPPER_CASE = 23;
+
+	/**
+	 * The feature id for the '<em><b>Basic Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPPER_CASE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The number of structural features of the '<em>Upper Case</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPPER_CASE_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}' enum.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -947,7 +993,7 @@ public interface DataMapperPackage extends EPackage {
 	 * @see dataMapper.impl.DataMapperPackageImpl#getSchemaDataType()
 	 * @generated
 	 */
-    int SCHEMA_DATA_TYPE = 23;
+    int SCHEMA_DATA_TYPE = 24;
 
     /**
 	 * Returns the meta object for class '{@link dataMapper.DataMapperNode <em>Node</em>}'.
@@ -1612,6 +1658,17 @@ public interface DataMapperPackage extends EPackage {
 	EClass getConstant();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dataMapper.Constant#getConstantValue <em>Constant Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Constant Value</em>'.
+	 * @see dataMapper.Constant#getConstantValue()
+	 * @see #getConstant()
+	 * @generated
+	 */
+	EAttribute getConstant_ConstantValue();
+
+	/**
 	 * Returns the meta object for class '{@link dataMapper.Split <em>Split</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1633,6 +1690,17 @@ public interface DataMapperPackage extends EPackage {
 	EAttribute getSplit_Delimiter();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dataMapper.Split#getArrayOutput <em>Array Output</em>}'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Array Output</em>'.
+	 * @see dataMapper.Split#getArrayOutput()
+	 * @see #getSplit()
+	 * @generated
+	 */
+    EAttribute getSplit_ArrayOutput();
+
+    /**
 	 * Returns the meta object for class '{@link dataMapper.LowerCase <em>Lower Case</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1651,6 +1719,16 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContains();
+
+	/**
+	 * Returns the meta object for class '{@link dataMapper.UpperCase <em>Upper Case</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Upper Case</em>'.
+	 * @see dataMapper.UpperCase
+	 * @generated
+	 */
+	EClass getUpperCase();
 
 	/**
 	 * Returns the meta object for enum '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}'.
@@ -2221,6 +2299,14 @@ public interface DataMapperPackage extends EPackage {
 		EClass CONSTANT = eINSTANCE.getConstant();
 
 		/**
+		 * The meta object literal for the '<em><b>Constant Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTANT__CONSTANT_VALUE = eINSTANCE.getConstant_ConstantValue();
+
+		/**
 		 * The meta object literal for the '{@link dataMapper.impl.SplitImpl <em>Split</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2239,6 +2325,14 @@ public interface DataMapperPackage extends EPackage {
 		EAttribute SPLIT__DELIMITER = eINSTANCE.getSplit_Delimiter();
 
 								/**
+		 * The meta object literal for the '<em><b>Array Output</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+		 * @generated
+		 */
+        EAttribute SPLIT__ARRAY_OUTPUT = eINSTANCE.getSplit_ArrayOutput();
+
+                                /**
 		 * The meta object literal for the '{@link dataMapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2257,6 +2351,16 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTAINS = eINSTANCE.getContains();
+
+								/**
+		 * The meta object literal for the '{@link dataMapper.impl.UpperCaseImpl <em>Upper Case</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dataMapper.impl.UpperCaseImpl
+		 * @see dataMapper.impl.DataMapperPackageImpl#getUpperCase()
+		 * @generated
+		 */
+		EClass UPPER_CASE = eINSTANCE.getUpperCase();
 
 								/**
 		 * The meta object literal for the '{@link dataMapper.SchemaDataType <em>Schema Data Type</em>}' enum.

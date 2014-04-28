@@ -34,33 +34,21 @@ import org.wso2.developerstudio.eclipse.ds.WorkSheetNumber;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getMixed
- * <em>Mixed</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getWorksheetnumber
- * <em>Worksheetnumber</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getStartingrow
- * <em>Startingrow</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getMaxrowcount
- * <em>Maxrowcount</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getHasheader
- * <em>Hasheader</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getWorksheetnumber <em>Worksheetnumber</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getStartingrow <em>Startingrow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.GSpreadQueryImpl#getHasheader <em>Hasheader</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute
-	 * list.
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -70,7 +58,6 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected GSpreadQueryImpl() {
@@ -80,7 +67,6 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -92,7 +78,6 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -105,137 +90,115 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public WorkSheetNumber getWorksheetnumber() {
-		return (WorkSheetNumber) getMixed().get(DsPackage.Literals.GSPREAD_QUERY__WORKSHEETNUMBER,
-		                                        true);
+		return (WorkSheetNumber)getMixed().get(DsPackage.Literals.GSPREAD_QUERY__WORKSHEETNUMBER, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetWorksheetnumber(WorkSheetNumber newWorksheetnumber,
 	                                                 NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.GSPREAD_QUERY__WORKSHEETNUMBER,
-		                                                   newWorksheetnumber, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.GSPREAD_QUERY__WORKSHEETNUMBER, newWorksheetnumber, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setWorksheetnumber(WorkSheetNumber newWorksheetnumber) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.GSPREAD_QUERY__WORKSHEETNUMBER,
-		                                       newWorksheetnumber);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.GSPREAD_QUERY__WORKSHEETNUMBER, newWorksheetnumber);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public StartingRow getStartingrow() {
-		return (StartingRow) getMixed().get(DsPackage.Literals.GSPREAD_QUERY__STARTINGROW, true);
+		return (StartingRow)getMixed().get(DsPackage.Literals.GSPREAD_QUERY__STARTINGROW, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetStartingrow(StartingRow newStartingrow, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.GSPREAD_QUERY__STARTINGROW,
-		                                                   newStartingrow, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.GSPREAD_QUERY__STARTINGROW, newStartingrow, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setStartingrow(StartingRow newStartingrow) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.GSPREAD_QUERY__STARTINGROW,
-		                                       newStartingrow);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.GSPREAD_QUERY__STARTINGROW, newStartingrow);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public MaxRowCount getMaxrowcount() {
-		return (MaxRowCount) getMixed().get(DsPackage.Literals.GSPREAD_QUERY__MAXROWCOUNT, true);
+		return (MaxRowCount)getMixed().get(DsPackage.Literals.GSPREAD_QUERY__MAXROWCOUNT, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetMaxrowcount(MaxRowCount newMaxrowcount, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.GSPREAD_QUERY__MAXROWCOUNT,
-		                                                   newMaxrowcount, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.GSPREAD_QUERY__MAXROWCOUNT, newMaxrowcount, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMaxrowcount(MaxRowCount newMaxrowcount) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.GSPREAD_QUERY__MAXROWCOUNT,
-		                                       newMaxrowcount);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.GSPREAD_QUERY__MAXROWCOUNT, newMaxrowcount);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public HasHeader getHasheader() {
-		return (HasHeader) getMixed().get(DsPackage.Literals.GSPREAD_QUERY__HASHEADER, true);
+		return (HasHeader)getMixed().get(DsPackage.Literals.GSPREAD_QUERY__HASHEADER, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHasheader(HasHeader newHasheader, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.GSPREAD_QUERY__HASHEADER,
-		                                                   newHasheader, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.GSPREAD_QUERY__HASHEADER, newHasheader, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHasheader(HasHeader newHasheader) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.GSPREAD_QUERY__HASHEADER,
-		                                       newHasheader);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.GSPREAD_QUERY__HASHEADER, newHasheader);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -244,7 +207,7 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	                                        NotificationChain msgs) {
 		switch (featureID) {
 			case DsPackage.GSPREAD_QUERY__MIXED:
-				return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 			case DsPackage.GSPREAD_QUERY__WORKSHEETNUMBER:
 				return basicSetWorksheetnumber(null, msgs);
 			case DsPackage.GSPREAD_QUERY__STARTINGROW:
@@ -260,7 +223,6 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -268,9 +230,8 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DsPackage.GSPREAD_QUERY__MIXED:
-				if (coreType)
-					return getMixed();
-				return ((FeatureMap.Internal) getMixed()).getWrapper();
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case DsPackage.GSPREAD_QUERY__WORKSHEETNUMBER:
 				return getWorksheetnumber();
 			case DsPackage.GSPREAD_QUERY__STARTINGROW:
@@ -286,7 +247,6 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -294,19 +254,19 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.GSPREAD_QUERY__MIXED:
-				((FeatureMap.Internal) getMixed()).set(newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case DsPackage.GSPREAD_QUERY__WORKSHEETNUMBER:
-				setWorksheetnumber((WorkSheetNumber) newValue);
+				setWorksheetnumber((WorkSheetNumber)newValue);
 				return;
 			case DsPackage.GSPREAD_QUERY__STARTINGROW:
-				setStartingrow((StartingRow) newValue);
+				setStartingrow((StartingRow)newValue);
 				return;
 			case DsPackage.GSPREAD_QUERY__MAXROWCOUNT:
-				setMaxrowcount((MaxRowCount) newValue);
+				setMaxrowcount((MaxRowCount)newValue);
 				return;
 			case DsPackage.GSPREAD_QUERY__HASHEADER:
-				setHasheader((HasHeader) newValue);
+				setHasheader((HasHeader)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -315,7 +275,6 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -326,16 +285,16 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 				getMixed().clear();
 				return;
 			case DsPackage.GSPREAD_QUERY__WORKSHEETNUMBER:
-				setWorksheetnumber((WorkSheetNumber) null);
+				setWorksheetnumber((WorkSheetNumber)null);
 				return;
 			case DsPackage.GSPREAD_QUERY__STARTINGROW:
-				setStartingrow((StartingRow) null);
+				setStartingrow((StartingRow)null);
 				return;
 			case DsPackage.GSPREAD_QUERY__MAXROWCOUNT:
-				setMaxrowcount((MaxRowCount) null);
+				setMaxrowcount((MaxRowCount)null);
 				return;
 			case DsPackage.GSPREAD_QUERY__HASHEADER:
-				setHasheader((HasHeader) null);
+				setHasheader((HasHeader)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -344,7 +303,6 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -368,13 +326,11 @@ public class GSpreadQueryImpl extends EObjectImpl implements GSpreadQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mixed: ");

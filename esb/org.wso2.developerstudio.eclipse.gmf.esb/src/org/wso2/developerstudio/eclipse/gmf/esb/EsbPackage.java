@@ -19842,13 +19842,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Input Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__INPUT_TYPE = MEDIATOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Output Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 1;
+	int DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
@@ -19857,7 +19866,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR__CONFIGURATION = MEDIATOR_FEATURE_COUNT + 2;
+	int DATA_MAPPER_MEDIATOR__CONFIGURATION = MEDIATOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Input Schema</b></em>' containment reference.
@@ -19866,7 +19875,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 3;
+	int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Output Schema</b></em>' containment reference.
@@ -19875,7 +19884,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 4;
+	int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Configuration Local Path</b></em>' attribute.
@@ -19884,7 +19893,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 5;
+	int DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Input Schema Local Path</b></em>' attribute.
@@ -19893,7 +19902,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 6;
+	int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Output Schema Local Path</b></em>' attribute.
@@ -19902,7 +19911,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 7;
+	int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Output Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__OUTPUT_TYPE = MEDIATOR_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Data Mapper Mediator</em>' class.
@@ -19911,7 +19929,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 8;
+	int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.
@@ -20971,6 +20989,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE = 441;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes <em>Data Mapper Mediator Data Types</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediatorDataTypes()
+	 * @generated
+	 */
+	int DATA_MAPPER_MEDIATOR_DATA_TYPES = 442;
+
+	/**
 	 * The meta object id for the '<em>Map</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20978,7 +21006,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 442;
+	int MAP = 443;
 
 
 	/**
@@ -27727,6 +27755,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getDataMapperMediator_InputConnector();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputType <em>Input Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Input Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputType()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_InputType();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputConnector <em>Output Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -27802,6 +27841,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getDataMapperMediator_OutputSchemaLocalPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputType <em>Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Output Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputType()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_OutputType();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector <em>Data Mapper Mediator Input Connector</em>}'.
@@ -34972,6 +35022,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EEnum getCloudConnectorOperationParamEditorType();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes <em>Data Mapper Mediator Data Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Data Mapper Mediator Data Types</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+	 * @generated
+	 */
+	EEnum getDataMapperMediatorDataTypes();
+
+	/**
 	 * Returns the meta object for data type '{@link java.util.Map <em>Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40415,6 +40475,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EReference DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR = eINSTANCE.getDataMapperMediator_InputConnector();
 
 		/**
+		 * The meta object literal for the '<em><b>Input Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__INPUT_TYPE = eINSTANCE.getDataMapperMediator_InputType();
+
+		/**
 		 * The meta object literal for the '<em><b>Output Connector</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -40469,6 +40537,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = eINSTANCE.getDataMapperMediator_OutputSchemaLocalPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__OUTPUT_TYPE = eINSTANCE.getDataMapperMediator_OutputType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.
@@ -46383,6 +46459,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE = eINSTANCE.getCloudConnectorOperationParamEditorType();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes <em>Data Mapper Mediator Data Types</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediatorDataTypes()
+		 * @generated
+		 */
+		EEnum DATA_MAPPER_MEDIATOR_DATA_TYPES = eINSTANCE.getDataMapperMediatorDataTypes();
 
 		/**
 		 * The meta object literal for the '<em>Map</em>' data type.

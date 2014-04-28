@@ -1,14 +1,15 @@
 package dataMapper.diagram.part;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.avro.Schema;
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
@@ -18,6 +19,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocumentListener;
@@ -40,19 +42,13 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
 
-import dataMapper.Attribute;
-import dataMapper.Concat;
-import dataMapper.DataMapperLink;
 import dataMapper.DataMapperRoot;
-import dataMapper.Element;
-import dataMapper.InNode;
-import dataMapper.OutNode;
 import dataMapper.TreeNode;
-import dataMapper.diagram.custom.configuration.function.Function;
-import dataMapper.diagram.custom.persistence.DataMapperConfiguration;
-import dataMapper.diagram.custom.persistence.DataMapperConfigurationGenerator;
+import dataMapper.diagram.custom.persistence.AvroSchemaTransformer;
 import dataMapper.diagram.custom.persistence.DataMapperModelTransformer;
-import dataMapper.diagram.tree.generator.TreeFromAvro;
+import dataMapper.diagram.custom.util.EditorUtils;
+import dataMapper.impl.DataMapperRootImpl;
+import dataMapper.impl.TreeNodeImpl;
 
 public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IGotoMarker {
 
@@ -60,11 +56,17 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 
 	private DataMapperObjectSourceEditor sourceEditor;
 
-	public static final String TEMPORARY_RESOURCES_DIRECTORY = "org.wso2.developerstudio.visualdatamapper";
+	public static final String TEMPORARY_RESOURCES_DIRECTORY = "org.wso2.developerstudio.visualdatamapper"; //$NON-NLS-1$
 
 	private static final int SOURCE_VIEW_PAGE_INDEX = 1;
 
 	private static final int DESIGN_VIEW_PAGE_INDEX = 0;
+	
+	private static final String INPUT_SCHEMA_ID = "Input-Schema"; //$NON-NLS-1$
+	
+	private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
+
+	private static final String ERROR_WRITING_SCHEMA_FILE = Messages.DataMapperMultiPageEditor_errorWritingSchemaFile;
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -83,7 +85,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 
 		try {
-			workbench.showPerspective("org.wso2.developerstudio.visualdatamapper.diagram.custom.perspective", window);
+			workbench.showPerspective("org.wso2.developerstudio.visualdatamapper.diagram.custom.perspective", window); //$NON-NLS-1$
 		} catch (WorkbenchException e) {
 		}
 
@@ -93,14 +95,14 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		try {
 			graphicalEditor = new DataMapperDiagramEditor(this);
 			addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, getEditorInput());
-			setPageText(DESIGN_VIEW_PAGE_INDEX, "Design");
+			setPageText(DESIGN_VIEW_PAGE_INDEX, "Design"); //$NON-NLS-1$
 
 			// if(getDiagramGraphicalViewer() != null){
 			// getDiagramGraphicalViewer().setProperty(
 			// MouseWheelHandler.KeyGenerator.getKey(SWT.CTRL));
 			// }
 		} catch (PartInitException e) {
-			ErrorDialog.openError(getSite().getShell(), "ErrorCreating", null, e.getStatus());
+			ErrorDialog.openError(getSite().getShell(), "ErrorCreating", null, e.getStatus()); //$NON-NLS-1$
 		}
 
 		// EditorUtil.setLockmode(graphicalEditor,false);
@@ -114,9 +116,9 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	void createPage1() {
 
 		try {
-			sourceEditor = new DataMapperObjectSourceEditor(getTemporaryFile("xml"));
+			sourceEditor = new DataMapperObjectSourceEditor(getTemporaryFile("xml")); //$NON-NLS-1$
 			addPage(SOURCE_VIEW_PAGE_INDEX, sourceEditor.getEditor(), sourceEditor.getInput());
-			setPageText(SOURCE_VIEW_PAGE_INDEX, "Source");
+			setPageText(SOURCE_VIEW_PAGE_INDEX, "Source"); //$NON-NLS-1$
 
 			sourceEditor.getDocument().addDocumentListener(new IDocumentListener() {
 
@@ -144,7 +146,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	}
 
 	private IFile getTemporaryFile(String extension) throws Exception {
-		String fileName = String.format("%s.%s", UUID.randomUUID().toString(), extension);
+		String fileName = String.format("%s.%s", UUID.randomUUID().toString(), extension); //$NON-NLS-1$
 		IFile tempFile = getTemporaryDirectory().getFile(fileName);
 		if (!tempFile.exists()) {
 			tempFile.create(new ByteArrayInputStream(new byte[0]), true, null);
@@ -157,7 +159,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		IEditorInput editorInput = getEditorInput();
 		if (editorInput instanceof IFileEditorInput || editorInput instanceof FileStoreEditorInput) {
 
-			IProject tempProject = ResourcesPlugin.getWorkspace().getRoot().getProject(".tmp");
+			IProject tempProject = ResourcesPlugin.getWorkspace().getRoot().getProject(".tmp"); //$NON-NLS-1$
 
 			if (!tempProject.exists()) {
 				tempProject.create(new NullProgressMonitor());
@@ -179,7 +181,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 
 			return folder;
 		} else {
-			throw new Exception("Unable to create temporary resources directory.");
+			throw new Exception("Unable to create temporary resources directory."); //$NON-NLS-1$
 		}
 	}
 
@@ -249,24 +251,24 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	 * walk through tree structure and return each data field.
 	 */
 	private String goUpOnOutputTree(TreeNode node) {
-		String temp = "";
+		String temp = ""; //$NON-NLS-1$
 		if (node.getOutputParent() == null) {
 			//temp = goUpOnOutputTree(node.getFieldParent()) + node.getName().split(",")[1] + ".";
-			temp = goUpOnOutputTree(node.getFieldParent()) + node.getName() + ".";
+			temp = goUpOnOutputTree(node.getFieldParent()) + node.getName() + "."; //$NON-NLS-1$
 		} else {
-			return "output.";
+			return "output."; //$NON-NLS-1$
 		}
 		return temp;
 	}
 
 	private String goUpOnInputTree(TreeNode node) {
-		String temp = "";
+		String temp = ""; //$NON-NLS-1$
 
 		if (node.getInputParent() == null) {
 			//temp = goUpOnInputTree(node.getFieldParent()) + node.getName().split(",")[1] + ".";
-			temp = goUpOnInputTree(node.getFieldParent()) + node.getName() + ".";
+			temp = goUpOnInputTree(node.getFieldParent()) + node.getName() + "."; //$NON-NLS-1$
 		} else {
-			return "input.";
+			return "input."; //$NON-NLS-1$
 		}
 		return temp;
 	}
@@ -300,14 +302,14 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			IFile diagramFile = ((FileEditorInput) editorInput).getFile();
 			String configFilePath = diagramFile.getFullPath().toString();
 			configFilePath = configFilePath
-					.replaceAll(".datamapper_diagram$", ".dmc");
+					.replaceAll(".datamapper_diagram$", ".dmc"); //$NON-NLS-1$ //$NON-NLS-2$
 			IFile configFile = diagramFile.getWorkspace().getRoot().getFile(new Path(configFilePath));
 			InputStream is = null;
 			try {
 				DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
 				String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
 				if (source == null) {
-					log.warn("Could get source");
+					log.warn("Could get source"); //$NON-NLS-1$
 					return;
 				}
 				is = new ByteArrayInputStream(source.getBytes());
@@ -318,7 +320,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 				}
 
 			} catch (Exception e) {
-				log.warn("Could not save file " + configFile);
+				log.warn("Could not save file " + configFile); //$NON-NLS-1$
 			} finally {
 				if(is != null) {
 					try {
@@ -329,6 +331,99 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 				}
 			}
 		}
+	}	
+
+	/**
+	 * Traverses input and output trees and generates respective avro schema
+	 */
+	private void updateAvroSchema() {
+		// Get model root of the active DataMapperDiagramEditor
+		EObject modelRoot = ((DataMapperDiagramEditor) getEditor(0)).getDiagram().getElement();
+		DataMapperRootImpl datamapperRoot = (DataMapperRootImpl) modelRoot;
+
+		// Model root of input schema tree
+		EList<TreeNode> inputTreeNodesList = ((DataMapperRoot) datamapperRoot).getInput()
+				.getTreeNode();
+		// If a tree node is found, continue saving
+		if (null != inputTreeNodesList && !inputTreeNodesList.isEmpty()) {
+			TreeNodeImpl inputTreeNode = (TreeNodeImpl) inputTreeNodesList.get(0);
+			// This traverses input tree view and returns the updated avro
+			// schema
+			AvroSchemaTransformer avroSchemaTransformer = new AvroSchemaTransformer();
+			Schema inputAvroSchema = avroSchemaTransformer.transform(inputTreeNode);
+			updateSchemaFile(INPUT_SCHEMA_ID, inputAvroSchema);
+		}
+		// Empty tree node, clear the file
+		else {
+			updateSchemaFile(INPUT_SCHEMA_ID, null);
+		}
+
+		// Model root of output schema tree
+		EList<TreeNode> outputTreeNodesList = ((DataMapperRoot) datamapperRoot).getOutput()
+				.getTreeNode();
+		// If a tree node is found, continue saving
+		if (null != outputTreeNodesList && !outputTreeNodesList.isEmpty()) {
+			TreeNodeImpl outputTreeNode = (TreeNodeImpl) outputTreeNodesList.get(0);
+			// This traverses output tree view and returns the updated avro
+			// schema
+			AvroSchemaTransformer avroSchemaTransformer = new AvroSchemaTransformer();
+			Schema outputAvroSchema = avroSchemaTransformer.transform(outputTreeNode);
+			updateSchemaFile(OUTPUT_SCHEMA_ID, outputAvroSchema);
+		}
+		// Empty tree node, clear the file
+		else {
+			updateSchemaFile(OUTPUT_SCHEMA_ID, null);
+		}
+
+	}
+
+	/**
+	 * Writes the avro schema to target file
+	 * 
+	 * @param schemaType
+	 *            either input or output
+	 * @param schema
+	 *            Avro schema respective to modified tree
+	 */
+	private void updateSchemaFile(String schemaType, Schema schema) {
+		// Schema file location is identified using editor input
+		IFile graphicalFile = ((IFileEditorInput) getEditorInput()).getFile();
+		String configName = graphicalFile.getName().substring(0,
+				graphicalFile.getName().indexOf(EditorUtils.DIAGRAM_FILE_EXTENSION));
+
+		String graphicalFileDirPath = graphicalFile.getParent().getProjectRelativePath().toString();
+		if (graphicalFileDirPath != null && !"".equals(graphicalFileDirPath)) { //$NON-NLS-1$
+			graphicalFileDirPath += File.separator;
+		}
+
+		String newFilePath;
+		IFile newSchemaIFile;
+		// Schema type can only be either input or output
+		if (INPUT_SCHEMA_ID.equals(schemaType)) {
+			newFilePath = graphicalFileDirPath + configName + EditorUtils.INPUT_SCHEMA_FILE_SUFFIX
+					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+		} else {
+			newFilePath = graphicalFileDirPath + configName + EditorUtils.OUTPUT_SCHEMA_FILE_SUFFIX
+					+ EditorUtils.AVRO_SCHEMA_FILE_EXTENSION;
+			newSchemaIFile = graphicalFile.getProject().getFile(newFilePath);
+		}
+		File newSchemaFile = newSchemaIFile.getRawLocation().makeAbsolute().toFile();
+
+		String fileContent;
+		// Becomes null when tree is cleared. Write empty string
+		if (null != schema) {
+			fileContent = schema.toString(true);
+		} else {
+			fileContent = "";
+		}
+
+		try {
+			FileUtils.writeStringToFile(newSchemaFile, fileContent);
+		} catch (IOException e) {
+			log.error(ERROR_WRITING_SCHEMA_FILE + newSchemaIFile.getName(), e);
+		}
+
 	}
 	
 	public void init(IEditorSite site, IEditorInput editorInput)
@@ -343,7 +438,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		    }
 		
 			private void setTitleOfDataMapperDiagramConfiguration(String name) {
-				String title = name.replace("datamapper_diagram","dmc");
+				String title = name.replace("datamapper_diagram","dmc"); //$NON-NLS-1$ //$NON-NLS-2$
 				setTitle(title);
 			}    
 
@@ -360,6 +455,7 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 
 	@Override
 	public void doSave(IProgressMonitor monitor) {
+		updateAvroSchema();
 		updateAssociatedConfigFile(monitor);
 		getEditor(0).doSave(monitor);
 	}

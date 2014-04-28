@@ -29,81 +29,106 @@ public class ForLoop {
 	private TreeNode arrayTree;
 	private List<AssignmentStatement> assignmentStatements;
 	private String decleration;
-	
+
 	private static final String INDEX = "i";
-	
+
 	public ForLoop() {
 		this.arguments = null;
 		this.functionCall = new ArrayList<String>();
-//		this.forLoop = new ForLoop();
+		// this.forLoop = new ForLoop();
 		this.index = INDEX;
 		this.arrayTree = null;
 		this.assignmentStatements = new ArrayList<AssignmentStatement>();
 		this.decleration = null;
 	}
+
 	public String getIndex() {
 		return index;
 	}
+
 	public void setIndex(String index) {
 		this.index = index;
 	}
+
 	public String getArguments() {
 		return arguments;
 	}
+
 	public void setArguments(String arguments) {
 		this.arguments = arguments;
 	}
+
 	public List<String> getFunctionCall() {
 		return functionCall;
 	}
+
 	public void setFunctionCall(ArrayList<String> functionCall) {
 		this.functionCall = functionCall;
 	}
+
 	public ForLoop getForLoop() {
 		return forLoop;
 	}
+
 	public void setForLoop(ForLoop forLoop) {
 		this.forLoop = forLoop;
 	}
+
 	public TreeNode getArrayTree() {
 		return arrayTree;
 	}
+
 	public void setArrayTree(TreeNode arrayTree) {
 		this.arrayTree = arrayTree;
 	}
+
 	public List<AssignmentStatement> getAssignmentStatements() {
 		return assignmentStatements;
 	}
+
 	public void setAssignmentStatements(ArrayList<AssignmentStatement> assignmentStatements) {
 		this.assignmentStatements = assignmentStatements;
 	}
-	
+
 	public String getDecleration() {
 		return decleration;
 	}
+
 	public void setDecleration(String decleration) {
 		this.decleration = decleration;
 	}
 
 	private void createDecleration() {
-		setDecleration("for ( var "+getIndex()+ " in " + getArrayTree().getName()+") {\n");
-		
+		setDecleration("for ( var " + getIndex() + " in " + getArrayTree().getName() + ") {");
 	}
-	
+
 	@Override
 	public String toString() {
+		StringBuilder forLoopBuilder = new StringBuilder();
+		
 		createDecleration();
-		StringBuilder loop = new StringBuilder(getDecleration());
-		for(String call : getFunctionCall()){
-			loop.append(call);
-			loop.append("\n");
+		
+		forLoopBuilder.append("\t");
+		forLoopBuilder.append(getDecleration());
+		forLoopBuilder.append(System.lineSeparator());
+
+		for (String call : getFunctionCall()) {
+			forLoopBuilder.append("\t\t");
+			forLoopBuilder.append(call);
+			forLoopBuilder.append(System.lineSeparator());
 		}
-		for(AssignmentStatement assign : getAssignmentStatements()){
-			loop.append(assign.getStatement());
-			loop.append("\n");
+		
+		for (AssignmentStatement assign : getAssignmentStatements()) {
+			forLoopBuilder.append("\t\t");
+			forLoopBuilder.append(assign.getStatement());
+			forLoopBuilder.append(System.lineSeparator());
 		}
-		loop.append("}");
-		return loop.toString();
+		
+		forLoopBuilder.append(System.lineSeparator());
+		forLoopBuilder.append("\t");
+		forLoopBuilder.append("}");
+		
+		return forLoopBuilder.toString();
 	}
-	
+
 }

@@ -29,11 +29,9 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.ParameterMapping} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.ParameterMapping} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ParameterMappingItemProvider extends ItemProviderAdapter
@@ -47,7 +45,6 @@ public class ParameterMappingItemProvider extends ItemProviderAdapter
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ParameterMappingItemProvider(AdapterFactory adapterFactory) {
@@ -79,66 +76,66 @@ public class ParameterMappingItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Column feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addColumnPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_ParameterMapping_column_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_ParameterMapping_column_feature",
-		                                                                   "_UI_ParameterMapping_type"),
-		                                                         DsPackage.Literals.PARAMETER_MAPPING__COLUMN,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ParameterMapping_column_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterMapping_column_feature", "_UI_ParameterMapping_type"),
+				 DsPackage.Literals.PARAMETER_MAPPING__COLUMN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_ParameterMapping_name_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_ParameterMapping_name_feature",
-		                                                                   "_UI_ParameterMapping_type"),
-		                                                         DsPackage.Literals.PARAMETER_MAPPING__NAME,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ParameterMapping_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterMapping_name_feature", "_UI_ParameterMapping_type"),
+				 DsPackage.Literals.PARAMETER_MAPPING__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Query Param feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addQueryParamPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_ParameterMapping_queryParam_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_ParameterMapping_queryParam_feature",
-		                                                                   "_UI_ParameterMapping_type"),
-		                                                         DsPackage.Literals.PARAMETER_MAPPING__QUERY_PARAM,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ParameterMapping_queryParam_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterMapping_queryParam_feature", "_UI_ParameterMapping_type"),
+				 DsPackage.Literals.PARAMETER_MAPPING__QUERY_PARAM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -170,13 +167,10 @@ public class ParameterMappingItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached
-	 * children and by creating a viewer notification, which it passes to
-	 * {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -188,20 +182,17 @@ public class ParameterMappingItemProvider extends ItemProviderAdapter
 			case DsPackage.PARAMETER_MAPPING__COLUMN:
 			case DsPackage.PARAMETER_MAPPING__NAME:
 			case DsPackage.PARAMETER_MAPPING__QUERY_PARAM:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(),
-				                                         false, true));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing the children
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -214,7 +205,6 @@ public class ParameterMappingItemProvider extends ItemProviderAdapter
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 

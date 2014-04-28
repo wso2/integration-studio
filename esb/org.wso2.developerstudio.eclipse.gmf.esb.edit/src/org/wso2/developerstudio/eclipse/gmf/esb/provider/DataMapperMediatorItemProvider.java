@@ -87,32 +87,34 @@ public class DataMapperMediatorItemProvider
 			//addConfigurationLocalPathPropertyDescriptor(object);
 			//addInputSchemaLocalPathPropertyDescriptor(object);
 			//addOutputSchemaLocalPathPropertyDescriptor(object);
+			addInputTypePropertyDescriptor(object);
+			addOutputTypePropertyDescriptor(object);
 		
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Configuration feature.
+	 * This adds a property descriptor for the Input Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addConfigurationPropertyDescriptor0(Object object) {
+	protected void addInputTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DataMapperMediator_configuration_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_configuration_feature", "_UI_DataMapperMediator_type"),
-				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__CONFIGURATION,
+				 getString("_UI_DataMapperMediator_inputType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_inputType_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__INPUT_TYPE,
 				 true,
 				 false,
 				 false,
-				 null,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
-	
+
 	protected void addConfigurationPropertyDescriptor(Object object) {		
 		itemPropertyDescriptors.add
 			(new ItemPropertyDescriptor
@@ -259,6 +261,28 @@ public class DataMapperMediatorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Output Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutputTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataMapperMediator_outputType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataMapperMediator_outputType_feature", "_UI_DataMapperMediator_type"),
+				 EsbPackage.Literals.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -329,9 +353,11 @@ public class DataMapperMediatorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DataMapperMediator.class)) {
+			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_TYPE:
 			case EsbPackage.DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH:
 			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH:
 			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH:
+			case EsbPackage.DATA_MAPPER_MEDIATOR__OUTPUT_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR:

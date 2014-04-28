@@ -318,6 +318,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String UpperCase8CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String UpperCase8CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
 	public static String CommandName_OpenDiagram;
 
 	/**
@@ -379,6 +389,10 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String DataMapperModelingAssistantProviderMessage;
+
+	public static String DataMapperMultiPageEditor_errorWritingSchemaFile;
+
+	public static String DiagramEditorContextMenuProvider_errorContextMenu;
 
 	//TODO: put accessor fields manually	
 }

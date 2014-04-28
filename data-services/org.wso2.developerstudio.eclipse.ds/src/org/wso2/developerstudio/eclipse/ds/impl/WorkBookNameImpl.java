@@ -23,12 +23,10 @@ import org.wso2.developerstudio.eclipse.ds.WorkBookName;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.WorkBookNameImpl#getValue
- * <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.WorkBookNameImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
@@ -36,7 +34,6 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -47,7 +44,6 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -57,7 +53,6 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected WorkBookNameImpl() {
@@ -67,7 +62,6 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -79,7 +73,6 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getValue() {
@@ -89,21 +82,18 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setValue(String newValue) {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.WORK_BOOK_NAME__VALUE,
-			                              oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.WORK_BOOK_NAME__VALUE, oldValue, value));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -119,7 +109,6 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -127,7 +116,7 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.WORK_BOOK_NAME__VALUE:
-				setValue((String) newValue);
+				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,7 +125,6 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -153,7 +141,6 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -169,14 +156,12 @@ public class WorkBookNameImpl extends EObjectImpl implements WorkBookName {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");

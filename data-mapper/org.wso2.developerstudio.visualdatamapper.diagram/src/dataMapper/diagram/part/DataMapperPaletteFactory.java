@@ -8,6 +8,7 @@ import org.eclipse.gef.Tool;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
+import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
@@ -54,7 +55,7 @@ public class DataMapperPaletteFactory {
 		 dataMapper.diagram.part.Messages.DataMapper1Group_title);*/
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
-//		paletteContainer.add(createEqual2CreationTool());
+		//		paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.add(createSplit4CreationTool());
 		paletteContainer.add(createConstant5CreationTool());

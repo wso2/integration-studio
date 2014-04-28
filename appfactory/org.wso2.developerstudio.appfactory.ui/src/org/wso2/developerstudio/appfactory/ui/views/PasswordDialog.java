@@ -235,12 +235,11 @@ public class PasswordDialog extends Dialog {
 		error.setText("Username or Password cannot be empty !");
 		return;
 	}
+    action.setUsername(getUser());
+    action.setPassword(getPassword());
+    action.setLoginUrl(getHost());
+    action.setSave(isSave());
     
-	  action.setUsername(getUser());
-	  action.setPassword(getPassword());
-	  action.setLoginUrl(getHost());
-	  action.setSave(isSave());
-	  
     if(login()){
     	try {
     		if (isSave) {

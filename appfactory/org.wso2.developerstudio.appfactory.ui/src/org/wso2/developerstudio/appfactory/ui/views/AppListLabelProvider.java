@@ -20,69 +20,65 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.StyledCellLabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.ViewerCell;
-import org.eclipse.swt.internal.gtk.GObjectClass;
 import org.wso2.developerstudio.appfactory.core.model.AppVersionGroup;
 import org.wso2.developerstudio.appfactory.core.model.AppVersionInfo;
 import org.wso2.developerstudio.appfactory.core.model.ApplicationInfo;
 import org.wso2.developerstudio.appfactory.ui.Activator;
 
-
 public class AppListLabelProvider extends StyledCellLabelProvider {
-	  @Override
-	  public void update(ViewerCell cell) {
-	    Object element = cell.getElement();
-	    StyledString text = new StyledString();
-	    if (element instanceof ApplicationInfo) {
-	      ApplicationInfo app = (ApplicationInfo) element;
-	      text.append(app.getKey());
-	      ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
-					 "/icons/submodules.gif");
-	      cell.setImage(imageDescriptorFromPlugin.createImage());
-	      
-	      if(app.getLableState()==1){
-	    	  text.append(" (Loading)", StyledString.DECORATIONS_STYLER);
-	      }else if(app.getLableState()==2){
-	    	  text.append(" (Opened)", StyledString.COUNTER_STYLER);
-	      }else{
-	    	  text.append(" (Closed)", StyledString.DECORATIONS_STYLER);
-	      }
-	    } 
-	    else if (element instanceof AppVersionGroup){
-	    	AppVersionGroup group = (AppVersionGroup) element;
-	    	 ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
-					 "/icons/branch_obj.gif");
-	         cell.setImage(imageDescriptorFromPlugin.createImage());
-	         
-	         text.append(""+ group.getVersionGroupName(), StyledString.DECORATIONS_STYLER);
-	    	
-	    }
-	    else {
-	      AppVersionInfo version = (AppVersionInfo) element;
-	      
-	      if(version.isCheckedout()){
-	    	  
-	    	  if(version.isAForkedRepo()){
-		    	  text.append("forked -Checked out",StyledString.COUNTER_STYLER);
-		      }else{
-		    	  text.append("main -Checked out",StyledString.COUNTER_STYLER);
-		      }
-	    	  
-	      }else{
-	    	  
-	    	  if(version.isAForkedRepo()){
-		    	  text.append("forked -Closed",StyledString.DECORATIONS_STYLER);
-		      }else{
-		    	  text.append("main -Closed",StyledString.DECORATIONS_STYLER);
-		      }
-	    	  
-	      }
-	     
-	      ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
-					 "/icons/branch_obj.gif");
-	      cell.setImage(imageDescriptorFromPlugin.createImage());
-	    }
-	    cell.setText(text.toString());
-	    cell.setStyleRanges(text.getStyleRanges());
-	    super.update(cell);
-	  }
-} 
+	@Override
+	public void update(ViewerCell cell) {
+		Object element = cell.getElement();
+		StyledString text = new StyledString();
+		if (element instanceof ApplicationInfo) {
+			ApplicationInfo app = (ApplicationInfo) element;
+			text.append(app.getKey());
+			ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+					"/icons/submodules.gif");
+			cell.setImage(imageDescriptorFromPlugin.createImage());
+
+			if (app.getLableState() == 1) {
+				text.append(" (Loading)", StyledString.DECORATIONS_STYLER);
+			} else if (app.getLableState() == 2) {
+				text.append(" (Opened)", StyledString.COUNTER_STYLER);
+			} else {
+				text.append(" (Closed)", StyledString.DECORATIONS_STYLER);
+			}
+		} else if (element instanceof AppVersionGroup) {
+			AppVersionGroup group = (AppVersionGroup) element;
+			ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+					"/icons/branch_obj.gif");
+			cell.setImage(imageDescriptorFromPlugin.createImage());
+
+			text.append("" + group.getVersionGroupName(), StyledString.DECORATIONS_STYLER);
+
+		} else {
+			AppVersionInfo version = (AppVersionInfo) element;
+
+			if (version.isCheckedout()) {
+
+				if (version.isAForkedRepo()) {
+					text.append("forked -Checked out", StyledString.COUNTER_STYLER);
+				} else {
+					text.append("main -Checked out", StyledString.COUNTER_STYLER);
+				}
+
+			} else {
+
+				if (version.isAForkedRepo()) {
+					text.append("forked -Closed", StyledString.DECORATIONS_STYLER);
+				} else {
+					text.append("main -Closed", StyledString.DECORATIONS_STYLER);
+				}
+
+			}
+
+			ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+					"/icons/branch_obj.gif");
+			cell.setImage(imageDescriptorFromPlugin.createImage());
+		}
+		cell.setText(text.toString());
+		cell.setStyleRanges(text.getStyleRanges());
+		super.update(cell);
+	}
+}

@@ -60,8 +60,6 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.wizard.IWizard;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.jgit.api.errors.CheckoutConflictException;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRefNameException;
@@ -74,14 +72,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IViewSite;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.osgi.framework.Bundle;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -124,7 +118,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	private static AppfactoryApplicationDetailsView appDetailView;
 	
 	private TreeViewer viewer;
-	private Composite parent; 
+	//private Composite parent; 
 	private AppListModel model;
 	private AppListLabelProvider labelProvider;
 	private AppListContentProvider contentProvider;
@@ -173,7 +167,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 
 	public void createPartControl(Composite parent) {
-        this.parent = parent;
+      //  this.parent = parent;
         contentProvider = new AppListContentProvider(appLists);
         labelProvider = new AppListLabelProvider();
         createToolbar();
@@ -264,8 +258,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 						        manager.add(repoSettingsAction(appInfo));
 						    }else if (selection.getFirstElement() instanceof AppVersionGroup){
 						    	
-						    	AppVersionGroup group = (AppVersionGroup) selection.getFirstElement();
-						    	    	
+						    //	AppVersionGroup group = (AppVersionGroup) selection.getFirstElement();
+						    	// TODO     	
 						    }
 						}
 					} catch (Throwable e) {
@@ -296,7 +290,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 
 	
-	@SuppressWarnings("restriction")
 	private void doSubscribe() {
 		 
 		buildhandler = getBuildLogEventHandler();
@@ -318,7 +311,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 		broker.subscribe("Projectupdate",projectOpenhandler); //$NON-NLS-1$
 	}
 	
-	@SuppressWarnings("restriction")
 	private void doUnSubscribe() {
 		broker.unsubscribe(buildhandler); //$NON-NLS-1$
 		broker.unsubscribe(apphandler); //$NON-NLS-1$
@@ -327,13 +319,10 @@ public class AppfactoryApplicationListView extends ViewPart {
 		broker.unsubscribe(infoLoghandler); //$NON-NLS-1$
 		broker.unsubscribe(projectOpenhandler); //$NON-NLS-1$
 	}
-	@SuppressWarnings("restriction")
-	
 	private void printErrorLog(String msg){
 		 broker.send("Errorupdate", "\n"+"["+new Timestamp(new Date().getTime()) +"] : "+msg); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 	}
 	
-	@SuppressWarnings("restriction")
 	private void printInfoLog(String msg){
 		 broker.send("Infoupdate", "\n"+"["+new Timestamp(new Date().getTime()) +"] : "+msg); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 	}
@@ -343,7 +332,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			public void handleEvent(final Event event) {
  
 				Display.getDefault().asyncExec(new Runnable() {
-					@SuppressWarnings({ "unchecked", "restriction" })
+					@SuppressWarnings({ "unchecked" })
 					@Override
 					public void run() {
             			List<ApplicationInfo> oldappLists = appLists;
@@ -385,7 +374,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 
 					@Override
 					public void run() {
-						@SuppressWarnings("restriction")
 						AppListModel refModel = (AppListModel) event.getProperty(IEventBroker.DATA);
 						contentProvider.inputChanged(viewer, model, refModel);
 						viewer.refresh();
@@ -402,7 +390,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 				final Display display = Display.getDefault();
 				Display.getDefault().asyncExec(new Runnable() {
 
-					@SuppressWarnings("restriction")
 					@Override
 					public void run() {
 						buildOut.setColor(SWTResourceManager.getColor(SWT.COLOR_DARK_CYAN));
@@ -419,7 +406,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 				
 				Display.getDefault().asyncExec(new Runnable() {
 
-					@SuppressWarnings("restriction")
 					@Override
 					public void run() {
 						errorOut.setColor(SWTResourceManager.getColor(SWT.COLOR_RED));
@@ -435,7 +421,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 			public void handleEvent(final Event event) {
 				Display.getDefault().asyncExec(new Runnable() {
 
-					@SuppressWarnings("restriction")
 					@Override
 					public void run() {
 						infoOut.setColor(SWTResourceManager.getColor(SWT.COLOR_BLACK));
@@ -558,8 +543,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 	private void  updateApplicationView(){
 		Job job = new Job(Messages.AppfactoryApplicationListView_updateApplicationView_job_title) {
-		   @SuppressWarnings("restriction")
-			@Override
+		   @Override
 			  protected IStatus run(final IProgressMonitor monitor) {
 				monitor.beginTask(Messages.AppfactoryApplicationListView_updateApplicationView_monitor_text_0, 100);
 				  UISynchronize uiSynchronize = new UISynchronize() {
@@ -601,8 +585,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 	private void  getAppVersions(final ApplicationInfo appInfo){
 		Job job = new Job(Messages.AppfactoryApplicationListView_getAppVersions_job_title) {
-		   @SuppressWarnings("restriction")
-			@Override
+		   @Override
 			  protected IStatus run(final IProgressMonitor monitor) {
 				monitor.beginTask(Messages.AppfactoryApplicationListView_getAppVersions_monitor_text_1, 100);
 				  UISynchronize uiSynchronize = new UISynchronize() {
@@ -760,7 +743,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 		 
 		Job job = new Job(Messages.AppfactoryApplicationListView_getbuildLogsJob_title) {
 		 
-			@SuppressWarnings("restriction")
 			@Override
 			protected IStatus run(final IProgressMonitor monitor) {
 				UISynchronize uiSynchronize = new UISynchronize() {
@@ -1129,8 +1111,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 	private void getcheckoutJob(final AppVersionInfo info){
 		Job job = new Job(Messages.AppfactoryApplicationListView_getcheckoutJob_title) {
-		   @SuppressWarnings("restriction")
-			@Override
+		   @Override
 			  protected IStatus run(final IProgressMonitor monitor) {
 				monitor.beginTask(Messages.AppfactoryApplicationListView_getcheckoutJob_monitor_msg_1, 100);
 				  UISynchronize uiSynchronize = new UISynchronize() {
@@ -1163,7 +1144,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 		job.schedule();
 	}	
 	
-	@SuppressWarnings("restriction")
 	private void checkout(final AppVersionInfo info,
 			final IProgressMonitor monitor)
 			throws IOException, InvalidRemoteException,
@@ -1231,7 +1211,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	}
 */
 
-	private void openDSSettingsWizard() {
+	/*private void openDSSettingsWizard() {
 
 		IWizardDescriptor descriptor = PlatformUI.getWorkbench()
 				.getNewWizardRegistry().findWizard(REPO_WIZARD_ID);
@@ -1253,7 +1233,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 		} catch (Exception e) {
 			 log.error("Wizard invoke error", e); //$NON-NLS-1$
 		}
-	}
+	}*/
 	private class AppImportJobJob implements IRunnableWithProgress {
 		
 	AppVersionInfo appInfo;

@@ -42,7 +42,6 @@ public class ApplicationInfo{
 	private boolean loaded;
 	
 	public ApplicationInfo() {
-
 	}
 	
 	public ApplicationInfo(String applicationKey) {
@@ -200,17 +199,16 @@ public class ApplicationInfo{
 	    return properties;
     }
     
-    public void updateVersions(){
-    	List<AppVersionInfo> getappVersionList = getappVersionList();
-    	 for (AppVersionInfo appVersionInfo : getappVersionList) {
+	public void updateVersions() {
+		List<AppVersionInfo> getappVersionList = getappVersionList();
+		for (AppVersionInfo appVersionInfo : getappVersionList) {
 			appVersionInfo.setLocalRepo(this.getLocalrepoLocation());
 		}
-    	 
-    	for (AppVersionInfo forkedVersion : forkedversions){
-    		
-    		forkedVersion.setLocalRepo(localForkRepoLocation);
-    	}
-    }
+
+		for (AppVersionInfo forkedVersion : forkedversions) {
+			forkedVersion.setLocalRepo(localForkRepoLocation);
+		}
+	}
 
 	/**
 	 * @param properties the properties to set
@@ -236,14 +234,13 @@ public class ApplicationInfo{
 		this.localrepoLocation = localrepoLocation;
 	}
 
-	public boolean isForked(){
-		
+	public boolean isForked(){		
 		return !getForkedversions().isEmpty();
 	}
     
 	public List<AppVersionInfo> getForkedversions() {
-		
-		if(forkedversions==null){
+
+		if (forkedversions == null) {
 			return Collections.EMPTY_LIST;
 		}
 		return forkedversions;
@@ -268,5 +265,4 @@ public class ApplicationInfo{
 	public void setLocalForkRepoLocation(String localForkRepoLocation) {
 		this.localForkRepoLocation = localForkRepoLocation;
 	}
-
 }

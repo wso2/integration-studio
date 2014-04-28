@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.appfactory.ui.perspective;
 
 import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -24,7 +25,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
-import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.console.IConsoleConstants;
 import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
 import org.wso2.developerstudio.appfactory.ui.Activator;
@@ -39,13 +39,13 @@ public class AppFactoryPerspectiveFactory implements IPerspectiveFactory {
 			"views.AppfactoryApplicationListView"; //$NON-NLS-1$
 	private static final String APPDETILS_ID = "org.wso2.developerstudio.appfactory.ui." + //$NON-NLS-1$
 			"views.AppfactoryApplicationDetailsView"; //$NON-NLS-1$
-	private static final String APPBUILD_ID = "org.wso2.developerstudio.appfactory.ui." + //$NON-NLS-1$
+/*	private static final String APPBUILD_ID = "org.wso2.developerstudio.appfactory.ui." + //$NON-NLS-1$
 			"views.AppfactoryBuildInfoView"; //$NON-NLS-1$
-	private static final String PROJECT_EXPOR_VIEW = "org.eclipse.ui.navigator.ProjectExplorer"; //$NON-NLS-1$
+*/	private static final String PROJECT_EXPOR_VIEW = "org.eclipse.ui.navigator.ProjectExplorer"; //$NON-NLS-1$
 	
 	private static final String GhostView = "org.wso2.developerstudio.appfactory.ui.views.AppfactoryGhostViewId"; //$NON-NLS-1$
 	
-	private static IWebBrowser browser = null;
+	//private static IWebBrowser browser = null;
  
 	public void createInitialLayout(IPageLayout appfacLayout) {
 

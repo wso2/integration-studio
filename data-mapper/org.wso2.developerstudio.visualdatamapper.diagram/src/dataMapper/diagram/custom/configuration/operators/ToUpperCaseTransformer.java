@@ -37,11 +37,6 @@ public class ToUpperCaseTransformer implements OperatorsTransformer{
 		
 		if(upperCaseInput instanceof Element){
 			Element inputElement = (Element) upperCaseInput;
-//			if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
-//				String index = INDEX;
-//				return getSimpleOperatorMapping(operator, inputElement, index);
-//			}
-			
 			return getSimpleOperatorMapping(operator, inputElement);
 			
 		}
@@ -123,4 +118,12 @@ public class ToUpperCaseTransformer implements OperatorsTransformer{
 
 	}
 
+	@Override
+	public TreeNode getInputElementParent(Operator operator) {
+		return getInputElement(operator).getFieldParent();
+	}
+
+	private Element getInputElement(Operator operator) {
+		return operator.getBasicContainer().getLeftContainer().getLeftConnectors().get(0).getInNode().getIncomingLink().get(0).getOutNode().getElementParent();
+	}
 }

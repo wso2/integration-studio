@@ -21,6 +21,26 @@ import dataMapper.TreeNode;
 import dataMapper.diagram.custom.configuration.function.AssignmentStatement;
 
 public interface OperatorsTransformer {
+	/**
+	 * depend on operator, the config build logic must implement
+	 * @param operator the operator 
+	 * @return	config assignment which can execute 
+	 */
 	public AssignmentStatement transform(Operator operator); 
+	
+	/**
+	 * output parent would be change due to complexity of map.
+	 * its needs to identify the correct parent tree node for build the config function
+	 * @param operator	the operator used to map
+	 * @return parent tree node of output schema which consider for build config function
+	 */
 	public TreeNode getOutputElementParent(Operator operator);
+	
+	/**
+	 * input parent would be change due to complexity of map.
+	 * its needs to identify the correct parent tree node for build the config function
+	 * @param operator	the operator used to map
+	 * @return parent tree node of input schema which consider for build config function
+	 */ 
+	public TreeNode getInputElementParent(Operator operator);
 }

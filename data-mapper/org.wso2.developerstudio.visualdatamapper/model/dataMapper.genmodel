@@ -98,7 +98,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Concat/delimiter"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Equal"/>
-    <genClasses ecoreClass="dataMapper.ecore#//Constant"/>
+    <genClasses ecoreClass="dataMapper.ecore#//Constant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Constant/constantValue"/>
+    </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//Split">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/delimiter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/arrayOutput"/>

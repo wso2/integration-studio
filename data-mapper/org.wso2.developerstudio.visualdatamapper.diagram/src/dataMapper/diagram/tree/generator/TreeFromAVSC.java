@@ -102,7 +102,6 @@ public class TreeFromAVSC{
 	}
 	
 	private static  void fetchToTree(Field field, Tree parent, List<String>  multipleChunk) {
-//		System.out.println(" Field: " + field.name());
 		Type fieldType = field.schema().getType();
 		if (fieldType.toString().equalsIgnoreCase("RECORD")) {		
 			
@@ -155,7 +154,6 @@ public class TreeFromAVSC{
 	 * else fetch field as a element
 	 */
 	private static  void fetchToTree(Field field, Tree parent) {
-//		System.out.println(" Field: " + field.name());
 		Type fieldType = field.schema().getType();
 		if (fieldType.toString().equalsIgnoreCase("RECORD")) {		
 			

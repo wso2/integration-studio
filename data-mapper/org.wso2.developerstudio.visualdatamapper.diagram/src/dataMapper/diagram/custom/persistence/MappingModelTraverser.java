@@ -66,7 +66,7 @@ public class MappingModelTraverser {
 		 operatorsList = new ArrayList<Integer>();
 		 traverse(rootDiagram.getInput().getTreeNode().get(0), mappingConfig, mainFunction);
 		 //traverse 0:1 operators
-		 traverse(rootDiagram, mappingConfig, mainFunction);
+		 traverse(rootDiagram, mainFunction);
 	}
 
 
@@ -259,14 +259,18 @@ public class MappingModelTraverser {
 		
 	}
 
-	private void traverse(DataMapperRoot rootDiagram, DataMapperConfiguration mappingConfig, Function mainFunction) {
+	/**
+	 * directly connected operators to output schema tree may not serialized due to they are out of traversing path of input schema
+	 * overloaded traverse method will filter the untraversed operators an build here config
+	 * @param rootDiagram	root mapping object model 
+	 * @param mainFunction  main function for the map config
+	 */
+	private void traverse(DataMapperRoot rootDiagram, Function mainFunction) {
 		for(Operator operator : rootDiagram.getOperators()){
 			if(operator instanceof Constant && !operatorsList.contains(System.identityHashCode(operator))){
 				OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(operator);
 				AssignmentStatement assign = transformer.transform(operator);
-				
 				mainFunction.getFunctionBody().getAssignmentStatements().add(assign);
-				System.out.println();
 			}
 		}
 	}

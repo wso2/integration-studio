@@ -55,7 +55,7 @@ public class AttributeItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -63,7 +63,7 @@ public class AttributeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
+			//addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

@@ -2,6 +2,7 @@ package dataMapper.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
@@ -67,7 +68,8 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			public void run() {
 
 				if (getParent().getParent() instanceof SplitEditPart
-						|| getParent().getParent() instanceof LowerCaseEditPart || getParent().getParent() instanceof UpperCaseEditPart) {
+						|| getParent().getParent() instanceof LowerCaseEditPart
+						|| getParent().getParent() instanceof UpperCaseEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {

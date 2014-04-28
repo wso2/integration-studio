@@ -678,6 +678,7 @@
         visualID="2011"
         editPartClassName="UpperCaseEditPart"
         itemSemanticEditPolicyClassName="UpperCaseItemSemanticEditPolicy"
+        notationViewFactoryClassName="UpperCaseViewFactory"
         canonicalEditPolicyClassName="UpperCaseCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="UpperCaseGraphicalNodeEditPolicy"

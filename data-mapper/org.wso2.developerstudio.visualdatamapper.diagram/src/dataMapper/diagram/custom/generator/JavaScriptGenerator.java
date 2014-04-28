@@ -31,8 +31,8 @@ import java.util.Stack;
 public class JavaScriptGenerator {
 
 	private static final String ARRAY = "[]";
-	private String inRoot = "ProductRecords";
-	private String outRoot = "jiras";
+	private String inRoot;
+	private String outRoot;
 	private Stack<Character> characters;
 	private Queue<Character> indexSequence;
 	private Set<Integer> elementSet;
@@ -42,13 +42,15 @@ public class JavaScriptGenerator {
 	private List<String> bodys;
 
 	
-	public JavaScriptGenerator(List<Operator> operation) {
+	public JavaScriptGenerator(List<Operator> operation,String inputRoot,String outRoot) {
 		characters = new Stack<Character>();
 		this.operation = operation;
 		indexSequence = new PriorityQueue<Character>();
 		loopMap = new HashMap<String, Loop>();
 		bodys = new ArrayList<String>();
 		elementSet = new HashSet<Integer>();
+		this.inRoot = inputRoot;
+		this.outRoot = outRoot;		
 	}
 
 	private void loadCharQue() {
@@ -347,7 +349,5 @@ public class JavaScriptGenerator {
 		public Map<String, JavaScriptGenerator.Loop> getLoops() {
 			return loops;
 		}
-
 	}
-
 }

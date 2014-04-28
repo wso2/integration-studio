@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -44,6 +45,7 @@ import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
 
 import dataMapper.DataMapperRoot;
 import dataMapper.TreeNode;
+import dataMapper.diagram.custom.generator.MappingModelNavigator;
 import dataMapper.diagram.custom.persistence.AvroSchemaTransformer;
 import dataMapper.diagram.custom.persistence.DataMapperModelTransformer;
 import dataMapper.diagram.custom.util.EditorUtils;
@@ -289,6 +291,8 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		
 		DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
 		String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
+		//String source = MappingModelNavigator.getInstance().getMappingConfig(rootDiagram);
+				
 		sourceEditor.update(source);
 		sourceDirty = false;
 		firePropertyChange(PROP_DIRTY);
@@ -308,6 +312,8 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			try {
 				DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
 				String source = DataMapperModelTransformer.getInstance().transform(rootDiagram);
+				//String source = MappingModelNavigator.getInstance().getMappingConfig(rootDiagram);		
+
 				if (source == null) {
 					log.warn("Could get source"); //$NON-NLS-1$
 					return;

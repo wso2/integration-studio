@@ -20,8 +20,7 @@ public class JagApiProperties {
 	
 	
 	/*URLS*/  
-	//private static  String domain= "https://appfactory.cloudpreview.wso2.com";
-	private static  String domain="https://milestones.appfactory.wso2.com:9443";
+	private static  String domain= "https://appfactory.cloudpreview.wso2.com";
 	
 	private static final String APP_INFO_URL_SFX = "/appmgt/site/blocks/application/get/ajax/list.jag";
 	private static final String LOGIN_URL_SFX  = "/appmgt/site/blocks/user/login/ajax/login.jag";

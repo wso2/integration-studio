@@ -139,7 +139,7 @@ public class LoginAction {
 	}
 	
 	private void showLoginDialog(boolean isFromDashboad){
-		  PasswordDialog dialog = new PasswordDialog(activeShell);
+		  PasswordDialog dialog = new PasswordDialog(activeShell, this);
 		  dialog.setHost(JagApiProperties.getDomain());
 		  dialog.setUser(getUsername());
 		  dialog.setPassword(getPassword());

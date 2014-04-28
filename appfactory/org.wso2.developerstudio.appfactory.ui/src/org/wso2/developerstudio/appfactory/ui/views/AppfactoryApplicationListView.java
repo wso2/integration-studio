@@ -212,10 +212,13 @@ public class AppfactoryApplicationListView extends ViewPart {
 					IStructuredSelection thisSelection = (IStructuredSelection) event
 							.getSelection();
 					Object selectedNode = thisSelection.getFirstElement();
-					//if (selectedNode instanceof AppVersionInfo) {
+					if (selectedNode instanceof AppVersionInfo) {
 						viewer.setExpandedState(selectedNode,
 								!viewer.getExpandedState(selectedNode));
-					//}
+					}else if (selectedNode instanceof AppVersionGroup) {
+						viewer.setExpandedState(selectedNode,
+								!viewer.getExpandedState(selectedNode));
+					}
 				} catch (Throwable e) {
 					  /*safe to ignore*/
 				 } 

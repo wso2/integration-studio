@@ -37,25 +37,34 @@ public class JavaScriptGenerator {
 	private Queue<Character> indexSequence;
 	private Set<Integer> elementSet;
 	private Loop lasLoop;
-	private ArrayList<Operator> operation;
+	private List<Operator> operation;
 	private Map<String, Loop> loopMap;
-	private ArrayList<String> bodys;
+	private List<String> bodys;
 
 	
-	public JavaScriptGenerator(ArrayList<Operator> operation) {
+	public JavaScriptGenerator(List<Operator> operation) {
 		characters = new Stack<Character>();
-		characters.add('x');
-		characters.add('y');
-		characters.add('z');
-		characters.add('i');
-		characters.add('j');
-		characters.add('k');
-
 		this.operation = operation;
 		indexSequence = new PriorityQueue<Character>();
 		loopMap = new HashMap<String, Loop>();
 		bodys = new ArrayList<String>();
 		elementSet = new HashSet<Integer>();
+	}
+
+	private void loadCharQue() {
+		characters.clear();
+		
+		characters.add('n');
+		characters.add('m');
+		characters.add('l');
+		
+		characters.add('z');
+		characters.add('y');
+		characters.add('x');
+		
+		characters.add('k');
+		characters.add('j');
+		characters.add('i');
 	}
          
 	public void generate() {
@@ -64,6 +73,7 @@ public class JavaScriptGenerator {
 				Map<Integer, String> inputs = operator.getInputs();
 				Map<Integer, String> outputs = operator.getOutputs();
 				elementSet.clear();
+				loadCharQue();
 				int operatorCode = operator.getOperatorName().getOperatorCode();
 				if (OperatorName.ASSIGNE.getOperatorCode() == operatorCode) {
 					String inputPath = inputs.get(1);
@@ -239,7 +249,7 @@ public class JavaScriptGenerator {
 		return loopMap;
 	}
 
-	public ArrayList<String> getBodys() {
+	public List<String> getBodys() {
 		return bodys;
 	}
 

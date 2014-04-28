@@ -322,7 +322,14 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getConstant_2008Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.Constant domainModelElement = (dataMapper.Constant) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getConstantValue();
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2008); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**

@@ -265,4 +265,43 @@ public class AppListModel {
 		}
 	}
 	
+	public boolean setForkedRepoInfo(ApplicationInfo applicationInfo){
+		String respond = "";
+		/* Getting version information */
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("action", JagApiProperties.FORKED_REPO_INFO_ACTION);
+		params.put("userName", Authenticator.getInstance().getCredentials()
+				.getUser());
+		params.put("applicationKey", applicationInfo.getKey());
+		respond = HttpsJaggeryClient.httpPost(JagApiProperties.getForkedAppInfoUrl(),
+				params);
+		if ("false".equals(respond)) {
+			return false;
+		} else {
+			JsonElement jelement = new JsonParser().parse(respond);
+			JsonArray infoArray = jelement.getAsJsonArray();
+			ArrayList<AppVersionInfo> appVersionList = new ArrayList<AppVersionInfo>();
+			for (JsonElement jsonElement2 : infoArray) {
+				JsonObject asJsonObject = jsonElement2.getAsJsonObject().get("version").getAsJsonObject();
+				
+				
+				AppVersionInfo version =  new AppVersionInfo();
+				
+				version.setVersion(asJsonObject.get("current").getAsString());
+				version.setIsAutoBuild(asJsonObject.get("isAutoBuild").getAsString());
+				version.setIsAutoDeploy(asJsonObject.get("isAutoDeploy").getAsString());
+				version.setLastBuildResult(asJsonObject.get("currentBuildStatus").getAsString());
+				//version.setStage(asJsonObject.get("stage").getAsString());
+				version.setRepoURL(asJsonObject.get("repoURL").getAsString());
+				version.setAppName(applicationInfo.getKey());
+				version.setLocalRepo(applicationInfo.getLocalForkRepoLocation());
+				version.setAForkedRepo(true);
+				appVersionList.add(version);
+			}
+			applicationInfo.setForkedversions(appVersionList);
+			return true;
+		}
+	}
+	
+	
 }

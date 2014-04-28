@@ -27,6 +27,7 @@ public class ApplicationInfo{
 	private String name;
 	private String repositoryType;
 	private String localrepoLocation;
+	private String localForkRepoLocation;
 	private String type;
 	private int lableState; // 0-closed 1-opening 2-opened
 	private long revision;
@@ -37,6 +38,7 @@ public class ApplicationInfo{
 	private List<String> apis;
 	private List<String> properties;
 	private List<AppVersionInfo> version;
+	private List<AppVersionInfo> forkedversions;
 	private boolean loaded;
 	
 	public ApplicationInfo() {
@@ -203,6 +205,11 @@ public class ApplicationInfo{
     	 for (AppVersionInfo appVersionInfo : getappVersionList) {
 			appVersionInfo.setLocalRepo(this.getLocalrepoLocation());
 		}
+    	 
+    	for (AppVersionInfo forkedVersion : forkedversions){
+    		
+    		forkedVersion.setLocalRepo(localForkRepoLocation);
+    	}
     }
 
 	/**
@@ -221,11 +228,29 @@ public class ApplicationInfo{
 	}
 
 	public String getLocalrepoLocation() {
+		
 		return localrepoLocation;
 	}
 
 	public void setLocalrepoLocation(String localrepoLocation) {
 		this.localrepoLocation = localrepoLocation;
+	}
+
+	public boolean isForked(){
+		
+		return !getForkedversions().isEmpty();
+	}
+    
+	public List<AppVersionInfo> getForkedversions() {
+		
+		if(forkedversions==null){
+			return Collections.EMPTY_LIST;
+		}
+		return forkedversions;
+	}
+
+	public void setForkedversions(List<AppVersionInfo> forkedversions) {
+		this.forkedversions = forkedversions;
 	}
 
 	public int getLableState() {
@@ -234,6 +259,14 @@ public class ApplicationInfo{
 
 	public void setLableState(int lableState) {
 		this.lableState = lableState;
+	}
+
+	public String getLocalForkRepoLocation() {
+		return localForkRepoLocation;
+	}
+
+	public void setLocalForkRepoLocation(String localForkRepoLocation) {
+		this.localForkRepoLocation = localForkRepoLocation;
 	}
 
 }

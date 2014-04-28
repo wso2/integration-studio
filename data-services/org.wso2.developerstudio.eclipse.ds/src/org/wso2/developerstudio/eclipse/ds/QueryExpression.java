@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- * 
- * $Id$
  */
 package org.wso2.developerstudio.eclipse.ds;
 
@@ -10,32 +6,32 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Expression</b></em>'.
+ * A representation of the model object '<em><b>Query Expression</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.ds.Expression#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.QueryExpression#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getExpression()
- * @model extendedMetaData="name='expression_._type' kind='simple'"
+ * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQueryExpression()
+ * @model extendedMetaData="name='queryExpression_._type' kind='simple'"
  * @generated
  */
-public interface Expression extends EObject {
+public interface QueryExpression extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear, there
-	 * really should be more of a description here...
+	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
-	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getExpression_Value()
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQueryExpression_Value()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="name=':0' kind='simple'"
 	 * @generated
@@ -43,7 +39,7 @@ public interface Expression extends EObject {
 	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.Expression#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.QueryExpression#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
@@ -52,4 +48,4 @@ public interface Expression extends EObject {
 	 */
 	void setValue(String value);
 
-} // Expression
+} // QueryExpression

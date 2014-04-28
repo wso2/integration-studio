@@ -34,32 +34,21 @@ import org.wso2.developerstudio.eclipse.ds.WorkBookName;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getMixed
- * <em>Mixed</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getWorkbookname
- * <em>Workbookname</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getHasheader
- * <em>Hasheader</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getStartingrow
- * <em>Startingrow</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getMaxrowcount
- * <em>Maxrowcount</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getWorkbookname <em>Workbookname</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getHasheader <em>Hasheader</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getStartingrow <em>Startingrow</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ExcelQueryImpl#getMaxrowcount <em>Maxrowcount</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute
-	 * list.
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -69,7 +58,6 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ExcelQueryImpl() {
@@ -79,7 +67,6 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -91,7 +78,6 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -104,136 +90,115 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public WorkBookName getWorkbookname() {
-		return (WorkBookName) getMixed().get(DsPackage.Literals.EXCEL_QUERY__WORKBOOKNAME, true);
+		return (WorkBookName)getMixed().get(DsPackage.Literals.EXCEL_QUERY__WORKBOOKNAME, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetWorkbookname(WorkBookName newWorkbookname,
 	                                              NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.EXCEL_QUERY__WORKBOOKNAME,
-		                                                   newWorkbookname, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.EXCEL_QUERY__WORKBOOKNAME, newWorkbookname, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setWorkbookname(WorkBookName newWorkbookname) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.EXCEL_QUERY__WORKBOOKNAME,
-		                                       newWorkbookname);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.EXCEL_QUERY__WORKBOOKNAME, newWorkbookname);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public HasHeader getHasheader() {
-		return (HasHeader) getMixed().get(DsPackage.Literals.EXCEL_QUERY__HASHEADER, true);
+		return (HasHeader)getMixed().get(DsPackage.Literals.EXCEL_QUERY__HASHEADER, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetHasheader(HasHeader newHasheader, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.EXCEL_QUERY__HASHEADER,
-		                                                   newHasheader, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.EXCEL_QUERY__HASHEADER, newHasheader, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setHasheader(HasHeader newHasheader) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.EXCEL_QUERY__HASHEADER,
-		                                       newHasheader);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.EXCEL_QUERY__HASHEADER, newHasheader);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public StartingRow getStartingrow() {
-		return (StartingRow) getMixed().get(DsPackage.Literals.EXCEL_QUERY__STARTINGROW, true);
+		return (StartingRow)getMixed().get(DsPackage.Literals.EXCEL_QUERY__STARTINGROW, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetStartingrow(StartingRow newStartingrow, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.EXCEL_QUERY__STARTINGROW,
-		                                                   newStartingrow, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.EXCEL_QUERY__STARTINGROW, newStartingrow, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setStartingrow(StartingRow newStartingrow) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.EXCEL_QUERY__STARTINGROW,
-		                                       newStartingrow);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.EXCEL_QUERY__STARTINGROW, newStartingrow);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public MaxRowCount getMaxrowcount() {
-		return (MaxRowCount) getMixed().get(DsPackage.Literals.EXCEL_QUERY__MAXROWCOUNT, true);
+		return (MaxRowCount)getMixed().get(DsPackage.Literals.EXCEL_QUERY__MAXROWCOUNT, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetMaxrowcount(MaxRowCount newMaxrowcount, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.EXCEL_QUERY__MAXROWCOUNT,
-		                                                   newMaxrowcount, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.EXCEL_QUERY__MAXROWCOUNT, newMaxrowcount, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMaxrowcount(MaxRowCount newMaxrowcount) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.EXCEL_QUERY__MAXROWCOUNT,
-		                                       newMaxrowcount);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.EXCEL_QUERY__MAXROWCOUNT, newMaxrowcount);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -242,7 +207,7 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	                                        NotificationChain msgs) {
 		switch (featureID) {
 			case DsPackage.EXCEL_QUERY__MIXED:
-				return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 			case DsPackage.EXCEL_QUERY__WORKBOOKNAME:
 				return basicSetWorkbookname(null, msgs);
 			case DsPackage.EXCEL_QUERY__HASHEADER:
@@ -258,7 +223,6 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -266,9 +230,8 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DsPackage.EXCEL_QUERY__MIXED:
-				if (coreType)
-					return getMixed();
-				return ((FeatureMap.Internal) getMixed()).getWrapper();
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case DsPackage.EXCEL_QUERY__WORKBOOKNAME:
 				return getWorkbookname();
 			case DsPackage.EXCEL_QUERY__HASHEADER:
@@ -284,7 +247,6 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -292,19 +254,19 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.EXCEL_QUERY__MIXED:
-				((FeatureMap.Internal) getMixed()).set(newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case DsPackage.EXCEL_QUERY__WORKBOOKNAME:
-				setWorkbookname((WorkBookName) newValue);
+				setWorkbookname((WorkBookName)newValue);
 				return;
 			case DsPackage.EXCEL_QUERY__HASHEADER:
-				setHasheader((HasHeader) newValue);
+				setHasheader((HasHeader)newValue);
 				return;
 			case DsPackage.EXCEL_QUERY__STARTINGROW:
-				setStartingrow((StartingRow) newValue);
+				setStartingrow((StartingRow)newValue);
 				return;
 			case DsPackage.EXCEL_QUERY__MAXROWCOUNT:
-				setMaxrowcount((MaxRowCount) newValue);
+				setMaxrowcount((MaxRowCount)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -313,7 +275,6 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -324,16 +285,16 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 				getMixed().clear();
 				return;
 			case DsPackage.EXCEL_QUERY__WORKBOOKNAME:
-				setWorkbookname((WorkBookName) null);
+				setWorkbookname((WorkBookName)null);
 				return;
 			case DsPackage.EXCEL_QUERY__HASHEADER:
-				setHasheader((HasHeader) null);
+				setHasheader((HasHeader)null);
 				return;
 			case DsPackage.EXCEL_QUERY__STARTINGROW:
-				setStartingrow((StartingRow) null);
+				setStartingrow((StartingRow)null);
 				return;
 			case DsPackage.EXCEL_QUERY__MAXROWCOUNT:
-				setMaxrowcount((MaxRowCount) null);
+				setMaxrowcount((MaxRowCount)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -342,7 +303,6 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -366,13 +326,11 @@ public class ExcelQueryImpl extends EObjectImpl implements ExcelQuery {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mixed: ");

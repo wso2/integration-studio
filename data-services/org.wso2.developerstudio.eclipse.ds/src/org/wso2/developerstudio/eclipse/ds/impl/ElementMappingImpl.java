@@ -34,66 +34,32 @@ import org.wso2.developerstudio.eclipse.ds.ElementMapping;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getMixed
- * <em>Mixed</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getColumn
- * <em>Column</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getExport
- * <em>Export</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getName
- * <em>Name</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getRequiredRoles
- * <em>Required Roles</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getExportType
- * <em>Export Type</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getNamespace
- * <em>Namespace</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getXsdType
- * <em>Xsd Type</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getElement
- * <em>Element</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getAttribute
- * <em>Attribute</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getCallQuery
- * <em>Call Query</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#isIsComplexType
- * <em>Is Complex Type</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getQueryParam
- * <em>Query Param</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getValue
- * <em>Value</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#isOptional
- * <em>Optional</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getArrayName
- * <em>Array Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getExport <em>Export</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getRequiredRoles <em>Required Roles</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getExportType <em>Export Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getXsdType <em>Xsd Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getAttribute <em>Attribute</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getCallQuery <em>Call Query</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#isIsComplexType <em>Is Complex Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getQueryParam <em>Query Param</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#isOptional <em>Optional</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ElementMappingImpl#getArrayName <em>Array Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute
-	 * list.
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMixed()
 	 * @generated
 	 * @ordered
@@ -101,11 +67,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected FeatureMap mixed;
 
 	/**
-	 * The default value of the '{@link #getColumn() <em>Column</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getColumn() <em>Column</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getColumn()
 	 * @generated
 	 * @ordered
@@ -116,7 +80,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	 * The cached value of the '{@link #getColumn() <em>Column</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getColumn()
 	 * @generated
 	 * @ordered
@@ -124,11 +87,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected String column = COLUMN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getExport() <em>Export</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getExport() <em>Export</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getExport()
 	 * @generated
 	 * @ordered
@@ -139,7 +100,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	 * The cached value of the '{@link #getExport() <em>Export</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getExport()
 	 * @generated
 	 * @ordered
@@ -150,7 +110,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -161,7 +120,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -169,11 +127,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRequiredRoles()
-	 * <em>Required Roles</em>}' attribute.
+	 * The default value of the '{@link #getRequiredRoles() <em>Required Roles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getRequiredRoles()
 	 * @generated
 	 * @ordered
@@ -181,11 +137,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected static final String REQUIRED_ROLES_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getRequiredRoles()
-	 * <em>Required Roles</em>}' attribute.
+	 * The cached value of the '{@link #getRequiredRoles() <em>Required Roles</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getRequiredRoles()
 	 * @generated
 	 * @ordered
@@ -193,11 +147,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected String requiredRoles = REQUIRED_ROLES_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getExportType() <em>Export Type</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getExportType() <em>Export Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getExportType()
 	 * @generated
 	 * @ordered
@@ -205,11 +157,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected static final String EXPORT_TYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getExportType() <em>Export Type</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getExportType() <em>Export Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getExportType()
 	 * @generated
 	 * @ordered
@@ -217,11 +167,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected String exportType = EXPORT_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getNamespace() <em>Namespace</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getNamespace() <em>Namespace</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getNamespace()
 	 * @generated
 	 * @ordered
@@ -229,11 +177,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected static final String NAMESPACE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getNamespace() <em>Namespace</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getNamespace() <em>Namespace</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getNamespace()
 	 * @generated
 	 * @ordered
@@ -241,11 +187,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected String namespace = NAMESPACE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getXsdType() <em>Xsd Type</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getXsdType() <em>Xsd Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getXsdType()
 	 * @generated
 	 * @ordered
@@ -253,11 +197,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected static final String XSD_TYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getXsdType() <em>Xsd Type</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getXsdType() <em>Xsd Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getXsdType()
 	 * @generated
 	 * @ordered
@@ -265,11 +207,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected String xsdType = XSD_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsComplexType()
-	 * <em>Is Complex Type</em>}' attribute.
+	 * The default value of the '{@link #isIsComplexType() <em>Is Complex Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #isIsComplexType()
 	 * @generated
 	 * @ordered
@@ -277,11 +217,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected static final boolean IS_COMPLEX_TYPE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsComplexType()
-	 * <em>Is Complex Type</em>}' attribute.
+	 * The cached value of the '{@link #isIsComplexType() <em>Is Complex Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #isIsComplexType()
 	 * @generated
 	 * @ordered
@@ -289,11 +227,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected boolean isComplexType = IS_COMPLEX_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getQueryParam() <em>Query Param</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getQueryParam() <em>Query Param</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getQueryParam()
 	 * @generated
 	 * @ordered
@@ -301,11 +237,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected static final String QUERY_PARAM_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getQueryParam() <em>Query Param</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getQueryParam() <em>Query Param</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getQueryParam()
 	 * @generated
 	 * @ordered
@@ -316,7 +250,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -327,7 +260,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -335,11 +267,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected String value = VALUE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isOptional() <em>Optional</em>}'
-	 * attribute.
+	 * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #isOptional()
 	 * @generated
 	 * @ordered
@@ -347,11 +277,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected static final boolean OPTIONAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isOptional() <em>Optional</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #isOptional()
 	 * @generated
 	 * @ordered
@@ -359,11 +287,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected boolean optional = OPTIONAL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getArrayName() <em>Array Name</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getArrayName() <em>Array Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getArrayName()
 	 * @generated
 	 * @ordered
@@ -371,11 +297,9 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	protected static final String ARRAY_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getArrayName() <em>Array Name</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getArrayName() <em>Array Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getArrayName()
 	 * @generated
 	 * @ordered
@@ -387,7 +311,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ElementMappingImpl() {
@@ -397,7 +320,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -409,7 +331,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public FeatureMap getMixed() {
@@ -422,7 +343,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getColumn() {
@@ -432,21 +352,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setColumn(String newColumn) {
 		String oldColumn = column;
 		column = newColumn;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__COLUMN, oldColumn, column));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__COLUMN, oldColumn, column));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getExport() {
@@ -456,21 +373,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setExport(String newExport) {
 		String oldExport = export;
 		export = newExport;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__EXPORT, oldExport, export));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__EXPORT, oldExport, export));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -480,21 +394,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__NAME,
-			                              oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getRequiredRoles() {
@@ -504,22 +415,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setRequiredRoles(String newRequiredRoles) {
 		String oldRequiredRoles = requiredRoles;
 		requiredRoles = newRequiredRoles;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__REQUIRED_ROLES,
-			                              oldRequiredRoles, requiredRoles));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__REQUIRED_ROLES, oldRequiredRoles, requiredRoles));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getExportType() {
@@ -529,22 +436,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setExportType(String newExportType) {
 		String oldExportType = exportType;
 		exportType = newExportType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__EXPORT_TYPE, oldExportType,
-			                              exportType));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__EXPORT_TYPE, oldExportType, exportType));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getNamespace() {
@@ -554,22 +457,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setNamespace(String newNamespace) {
 		String oldNamespace = namespace;
 		namespace = newNamespace;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__NAMESPACE, oldNamespace,
-			                              namespace));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__NAMESPACE, oldNamespace, namespace));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getXsdType() {
@@ -579,21 +478,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setXsdType(String newXsdType) {
 		String oldXsdType = xsdType;
 		xsdType = newXsdType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__XSD_TYPE, oldXsdType, xsdType));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__XSD_TYPE, oldXsdType, xsdType));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<ElementMapping> getElement() {
@@ -603,7 +499,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<AttributeMapping> getAttribute() {
@@ -613,39 +508,33 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public CallQuery getCallQuery() {
-		return (CallQuery) getMixed().get(DsPackage.Literals.ELEMENT_MAPPING__CALL_QUERY, true);
+		return (CallQuery)getMixed().get(DsPackage.Literals.ELEMENT_MAPPING__CALL_QUERY, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCallQuery(CallQuery newCallQuery, NotificationChain msgs) {
-		return ((FeatureMap.Internal) getMixed()).basicAdd(DsPackage.Literals.ELEMENT_MAPPING__CALL_QUERY,
-		                                                   newCallQuery, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.ELEMENT_MAPPING__CALL_QUERY, newCallQuery, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setCallQuery(CallQuery newCallQuery) {
-		((FeatureMap.Internal) getMixed()).set(DsPackage.Literals.ELEMENT_MAPPING__CALL_QUERY,
-		                                       newCallQuery);
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.ELEMENT_MAPPING__CALL_QUERY, newCallQuery);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isIsComplexType() {
@@ -655,22 +544,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setIsComplexType(boolean newIsComplexType) {
 		boolean oldIsComplexType = isComplexType;
 		isComplexType = newIsComplexType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__IS_COMPLEX_TYPE,
-			                              oldIsComplexType, isComplexType));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__IS_COMPLEX_TYPE, oldIsComplexType, isComplexType));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getQueryParam() {
@@ -680,22 +565,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setQueryParam(String newQueryParam) {
 		String oldQueryParam = queryParam;
 		queryParam = newQueryParam;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__QUERY_PARAM, oldQueryParam,
-			                              queryParam));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__QUERY_PARAM, oldQueryParam, queryParam));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getValue() {
@@ -705,21 +586,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setValue(String newValue) {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__VALUE,
-			                              oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__VALUE, oldValue, value));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isOptional() {
@@ -729,22 +607,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setOptional(boolean newOptional) {
 		boolean oldOptional = optional;
 		optional = newOptional;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__OPTIONAL, oldOptional,
-			                              optional));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__OPTIONAL, oldOptional, optional));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getArrayName() {
@@ -754,22 +628,18 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setArrayName(String newArrayName) {
 		String oldArrayName = arrayName;
 		arrayName = newArrayName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.ELEMENT_MAPPING__ARRAY_NAME, oldArrayName,
-			                              arrayName));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.ELEMENT_MAPPING__ARRAY_NAME, oldArrayName, arrayName));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -777,11 +647,11 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	                                        NotificationChain msgs) {
 		switch (featureID) {
 			case DsPackage.ELEMENT_MAPPING__MIXED:
-				return ((InternalEList<?>) getMixed()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 			case DsPackage.ELEMENT_MAPPING__ELEMENT:
-				return ((InternalEList<?>) getElement()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getElement()).basicRemove(otherEnd, msgs);
 			case DsPackage.ELEMENT_MAPPING__ATTRIBUTE:
-				return ((InternalEList<?>) getAttribute()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getAttribute()).basicRemove(otherEnd, msgs);
 			case DsPackage.ELEMENT_MAPPING__CALL_QUERY:
 				return basicSetCallQuery(null, msgs);
 		}
@@ -791,7 +661,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -799,9 +668,8 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DsPackage.ELEMENT_MAPPING__MIXED:
-				if (coreType)
-					return getMixed();
-				return ((FeatureMap.Internal) getMixed()).getWrapper();
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case DsPackage.ELEMENT_MAPPING__COLUMN:
 				return getColumn();
 			case DsPackage.ELEMENT_MAPPING__EXPORT:
@@ -839,7 +707,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -848,54 +715,54 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.ELEMENT_MAPPING__MIXED:
-				((FeatureMap.Internal) getMixed()).set(newValue);
+				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__COLUMN:
-				setColumn((String) newValue);
+				setColumn((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__EXPORT:
-				setExport((String) newValue);
+				setExport((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__NAME:
-				setName((String) newValue);
+				setName((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__REQUIRED_ROLES:
-				setRequiredRoles((String) newValue);
+				setRequiredRoles((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__EXPORT_TYPE:
-				setExportType((String) newValue);
+				setExportType((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__NAMESPACE:
-				setNamespace((String) newValue);
+				setNamespace((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__XSD_TYPE:
-				setXsdType((String) newValue);
+				setXsdType((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__ELEMENT:
 				getElement().clear();
-				getElement().addAll((Collection<? extends ElementMapping>) newValue);
+				getElement().addAll((Collection<? extends ElementMapping>)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__ATTRIBUTE:
 				getAttribute().clear();
-				getAttribute().addAll((Collection<? extends AttributeMapping>) newValue);
+				getAttribute().addAll((Collection<? extends AttributeMapping>)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__CALL_QUERY:
-				setCallQuery((CallQuery) newValue);
+				setCallQuery((CallQuery)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__IS_COMPLEX_TYPE:
-				setIsComplexType((Boolean) newValue);
+				setIsComplexType((Boolean)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__QUERY_PARAM:
-				setQueryParam((String) newValue);
+				setQueryParam((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__VALUE:
-				setValue((String) newValue);
+				setValue((String)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__OPTIONAL:
-				setOptional((Boolean) newValue);
+				setOptional((Boolean)newValue);
 				return;
 			case DsPackage.ELEMENT_MAPPING__ARRAY_NAME:
-				setArrayName((String) newValue);
+				setArrayName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -904,7 +771,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -942,7 +808,7 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 				getAttribute().clear();
 				return;
 			case DsPackage.ELEMENT_MAPPING__CALL_QUERY:
-				setCallQuery((CallQuery) null);
+				setCallQuery((CallQuery)null);
 				return;
 			case DsPackage.ELEMENT_MAPPING__IS_COMPLEX_TYPE:
 				setIsComplexType(IS_COMPLEX_TYPE_EDEFAULT);
@@ -966,7 +832,6 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -982,18 +847,13 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 			case DsPackage.ELEMENT_MAPPING__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case DsPackage.ELEMENT_MAPPING__REQUIRED_ROLES:
-				return REQUIRED_ROLES_EDEFAULT == null
-				                                      ? requiredRoles != null
-				                                      : !REQUIRED_ROLES_EDEFAULT.equals(requiredRoles);
+				return REQUIRED_ROLES_EDEFAULT == null ? requiredRoles != null : !REQUIRED_ROLES_EDEFAULT.equals(requiredRoles);
 			case DsPackage.ELEMENT_MAPPING__EXPORT_TYPE:
-				return EXPORT_TYPE_EDEFAULT == null ? exportType != null
-				                                   : !EXPORT_TYPE_EDEFAULT.equals(exportType);
+				return EXPORT_TYPE_EDEFAULT == null ? exportType != null : !EXPORT_TYPE_EDEFAULT.equals(exportType);
 			case DsPackage.ELEMENT_MAPPING__NAMESPACE:
-				return NAMESPACE_EDEFAULT == null ? namespace != null
-				                                 : !NAMESPACE_EDEFAULT.equals(namespace);
+				return NAMESPACE_EDEFAULT == null ? namespace != null : !NAMESPACE_EDEFAULT.equals(namespace);
 			case DsPackage.ELEMENT_MAPPING__XSD_TYPE:
-				return XSD_TYPE_EDEFAULT == null ? xsdType != null
-				                                : !XSD_TYPE_EDEFAULT.equals(xsdType);
+				return XSD_TYPE_EDEFAULT == null ? xsdType != null : !XSD_TYPE_EDEFAULT.equals(xsdType);
 			case DsPackage.ELEMENT_MAPPING__ELEMENT:
 				return !getElement().isEmpty();
 			case DsPackage.ELEMENT_MAPPING__ATTRIBUTE:
@@ -1003,15 +863,13 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 			case DsPackage.ELEMENT_MAPPING__IS_COMPLEX_TYPE:
 				return isComplexType != IS_COMPLEX_TYPE_EDEFAULT;
 			case DsPackage.ELEMENT_MAPPING__QUERY_PARAM:
-				return QUERY_PARAM_EDEFAULT == null ? queryParam != null
-				                                   : !QUERY_PARAM_EDEFAULT.equals(queryParam);
+				return QUERY_PARAM_EDEFAULT == null ? queryParam != null : !QUERY_PARAM_EDEFAULT.equals(queryParam);
 			case DsPackage.ELEMENT_MAPPING__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case DsPackage.ELEMENT_MAPPING__OPTIONAL:
 				return optional != OPTIONAL_EDEFAULT;
 			case DsPackage.ELEMENT_MAPPING__ARRAY_NAME:
-				return ARRAY_NAME_EDEFAULT == null ? arrayName != null
-				                                  : !ARRAY_NAME_EDEFAULT.equals(arrayName);
+				return ARRAY_NAME_EDEFAULT == null ? arrayName != null : !ARRAY_NAME_EDEFAULT.equals(arrayName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1019,14 +877,12 @@ public class ElementMappingImpl extends EObjectImpl implements ElementMapping {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mixed: ");

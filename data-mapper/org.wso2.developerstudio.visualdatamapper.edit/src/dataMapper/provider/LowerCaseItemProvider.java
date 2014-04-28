@@ -3,6 +3,7 @@
 package dataMapper.provider;
 
 
+import dataMapper.LowerCase;
 import java.util.Collection;
 import java.util.List;
 
@@ -74,7 +75,8 @@ public class LowerCaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_LowerCase_type");
+		LowerCase lowerCase = (LowerCase)object;
+		return getString("_UI_LowerCase_type") + " " + lowerCase.isSerialized();
 	}
 
 	/**

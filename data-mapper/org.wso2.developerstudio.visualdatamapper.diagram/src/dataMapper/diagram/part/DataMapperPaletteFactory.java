@@ -54,7 +54,7 @@ public class DataMapperPaletteFactory {
 		 dataMapper.diagram.part.Messages.DataMapper1Group_title);*/
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
-		paletteContainer.add(createEqual2CreationTool());
+//		paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.add(createSplit4CreationTool());
 		paletteContainer.add(createConstant5CreationTool());
@@ -242,9 +242,6 @@ public class DataMapperPaletteFactory {
 		private EditPart getRoot(EditPart editPart) {
 			EditPart temp = editPart.getParent();
 			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
-				// System.out.println("Node     " +temp);
-				// System.out.println("NodeNodeNodeNodeNodeNodeNodeNode     "
-				// +childEditPart.getClass().getName() );
 				if (temp instanceof InputEditPart) {
 					return temp;
 					/*
@@ -284,7 +281,6 @@ public class DataMapperPaletteFactory {
 					 * for Element
 					 */
 					if (getTargetEditPart() instanceof ElementEditPart) {
-						// System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 
 						for (int i = 0; i < ((ElementEditPart) getTargetEditPart()).getChildren()
 								.size(); ++i) {

@@ -38,11 +38,6 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 		
 		if(lowerCaseInput instanceof Element){
 			Element inputElement = (Element) lowerCaseInput;
-//			if(inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
-//				String index = INDEX;
-//				return getSimpleOperatorMapping(operator, inputElement, index);
-//			}
-			
 			return getSimpleOperatorMapping(operator, inputElement);
 			
 		}
@@ -121,5 +116,14 @@ public class ToLowerCaseTransform implements OperatorsTransformer{
 
 		return hierarchy.toString();
 
+	}
+
+	@Override
+	public TreeNode getInputElementParent(Operator operator) {
+		return getInputElement(operator).getFieldParent();
+	}
+
+	private Element getInputElement(Operator operator) {
+		return operator.getBasicContainer().getLeftContainer().getLeftConnectors().get(0).getInNode().getIncomingLink().get(0).getOutNode().getElementParent();
 	}
 }

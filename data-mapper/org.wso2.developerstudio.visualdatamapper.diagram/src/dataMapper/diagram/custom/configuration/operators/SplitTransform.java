@@ -213,7 +213,6 @@ public class SplitTransform implements OperatorsTransformer {
 		for (OperatorRightConnector connector : rightConnectors) {
 			if (connector.getOutNode().getOutgoingLink().size() != 0) {
 				if (connector.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent() != null) {
-					System.out.println();
 				}
 				// EObject nextOperator =
 				// connector.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer()
@@ -244,5 +243,10 @@ public class SplitTransform implements OperatorsTransformer {
 
 		return hierarchy.toString();
 
+	}
+
+	@Override
+	public TreeNode getInputElementParent(Operator operator) {
+		return getInputElement(operator).getFieldParent();
 	}
 }

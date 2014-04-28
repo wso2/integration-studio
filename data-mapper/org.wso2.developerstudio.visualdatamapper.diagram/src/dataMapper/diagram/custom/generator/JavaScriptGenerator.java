@@ -67,8 +67,8 @@ public class JavaScriptGenerator {
 		characters.add('i');
 	}
          
-	public void generate() {
-		try {
+	public void generate() throws Exception {
+	 
 			for (Operator operator : operation) {
 				Map<Integer, String> inputs = operator.getInputs();
 				Map<Integer, String> outputs = operator.getOutputs();
@@ -125,11 +125,6 @@ public class JavaScriptGenerator {
 					// TODO Implements other operators
 				}
 			}// End of the Operation Loop
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	private String createInputWire(String[] inelements) {
@@ -200,7 +195,7 @@ public class JavaScriptGenerator {
 		}
 	}
 
-	public String printLoop(Loop loop) {
+	private String printLoop(Loop loop) {
 		StringBuilder op = new StringBuilder();
 		op.append("for(var " + loop.getIndex() + " in " + loop.getSource() + "){");
 		op.append("\n");
@@ -223,7 +218,13 @@ public class JavaScriptGenerator {
 		return op.toString();
 	}
 
-	public String printConfig() {
+	public String printConfig() throws Exception{
+		
+		Set<String> keySet = getLoopMap().keySet();
+		for (String key : keySet) {
+			String printLoop = printLoop(getLoopMap().get(key));
+			getBodys().add(printLoop);
+		}	
 		StringBuilder fun = new StringBuilder();
 		fun.append("function map_S_");
 		fun.append(inRoot);

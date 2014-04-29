@@ -10228,22 +10228,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CALLOUT_MEDIATOR__ENDPOINT_TYPE = MEDIATOR_FEATURE_COUNT + 13;
 
 	/**
-	 * The feature id for the '<em><b>Init Axis2 Client Options</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = MEDIATOR_FEATURE_COUNT + 14;
-
-	/**
 	 * The feature id for the '<em><b>Payload Property</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__PAYLOAD_PROPERTY = MEDIATOR_FEATURE_COUNT + 15;
+	int CALLOUT_MEDIATOR__PAYLOAD_PROPERTY = MEDIATOR_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Security Type</b></em>' attribute.
@@ -10252,7 +10243,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__SECURITY_TYPE = MEDIATOR_FEATURE_COUNT + 16;
+	int CALLOUT_MEDIATOR__SECURITY_TYPE = MEDIATOR_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Outbound Policy Key</b></em>' containment reference.
@@ -10261,7 +10252,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__OUTBOUND_POLICY_KEY = MEDIATOR_FEATURE_COUNT + 17;
+	int CALLOUT_MEDIATOR__OUTBOUND_POLICY_KEY = MEDIATOR_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Policy Key</b></em>' containment reference.
@@ -10270,7 +10261,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__INBOUND_POLICY_KEY = MEDIATOR_FEATURE_COUNT + 18;
+	int CALLOUT_MEDIATOR__INBOUND_POLICY_KEY = MEDIATOR_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Policies</b></em>' attribute.
@@ -10279,7 +10270,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__POLICIES = MEDIATOR_FEATURE_COUNT + 19;
+	int CALLOUT_MEDIATOR__POLICIES = MEDIATOR_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Policy Key</b></em>' containment reference.
@@ -10288,7 +10279,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__POLICY_KEY = MEDIATOR_FEATURE_COUNT + 20;
+	int CALLOUT_MEDIATOR__POLICY_KEY = MEDIATOR_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Init Axis2 Client Options</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = MEDIATOR_FEATURE_COUNT + 20;
 
 	/**
 	 * The number of structural features of the '<em>Callout Mediator</em>' class.
@@ -29951,17 +29951,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getCalloutMediator_EndpointType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Init Axis2 Client Options</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInitAxis2ClientOptions()
-	 * @see #getCalloutMediator()
-	 * @generated
-	 */
-	EAttribute getCalloutMediator_InitAxis2ClientOptions();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getPayloadProperty <em>Payload Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30026,6 +30015,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getCalloutMediator_PolicyKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Init Axis2 Client Options</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions()
+	 * @see #getCalloutMediator()
+	 * @generated
+	 */
+	EAttribute getCalloutMediator_InitAxis2ClientOptions();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediatorInputConnector <em>Callout Mediator Input Connector</em>}'.
@@ -42203,14 +42203,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute CALLOUT_MEDIATOR__ENDPOINT_TYPE = eINSTANCE.getCalloutMediator_EndpointType();
 
 		/**
-		 * The meta object literal for the '<em><b>Init Axis2 Client Options</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = eINSTANCE.getCalloutMediator_InitAxis2ClientOptions();
-
-		/**
 		 * The meta object literal for the '<em><b>Payload Property</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -42257,6 +42249,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference CALLOUT_MEDIATOR__POLICY_KEY = eINSTANCE.getCalloutMediator_PolicyKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Init Axis2 Client Options</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = eINSTANCE.getCalloutMediator_InitAxis2ClientOptions();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorInputConnectorImpl <em>Callout Mediator Input Connector</em>}' class.

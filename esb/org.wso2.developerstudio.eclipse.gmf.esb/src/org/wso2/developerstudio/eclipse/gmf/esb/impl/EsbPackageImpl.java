@@ -11168,7 +11168,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCalloutMediator_InitAxis2ClientOptions() {
+	public EAttribute getCalloutMediator_PayloadProperty() {
 		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -11177,7 +11177,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCalloutMediator_PayloadProperty() {
+	public EAttribute getCalloutMediator_SecurityType() {
 		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -11186,17 +11186,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCalloutMediator_SecurityType() {
-		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getCalloutMediator_OutboundPolicyKey() {
-		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(17);
+		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -11205,7 +11196,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCalloutMediator_InboundPolicyKey() {
-		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(18);
+		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -11214,7 +11205,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getCalloutMediator_Policies() {
-		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(19);
+		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -11223,7 +11214,16 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCalloutMediator_PolicyKey() {
-		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(20);
+		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCalloutMediator_InitAxis2ClientOptions() {
+		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -16342,13 +16342,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__OUTPUT_CONNECTOR);
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__ADDRESS_ENDPOINT);
 		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__ENDPOINT_TYPE);
-		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS);
 		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__PAYLOAD_PROPERTY);
 		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__SECURITY_TYPE);
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__OUTBOUND_POLICY_KEY);
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__INBOUND_POLICY_KEY);
 		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__POLICIES);
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__POLICY_KEY);
+		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS);
 
 		calloutMediatorInputConnectorEClass = createEClass(CALLOUT_MEDIATOR_INPUT_CONNECTOR);
 
@@ -18368,13 +18368,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getCalloutMediator_OutputConnector(), this.getCalloutMediatorOutputConnector(), null, "outputConnector", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_AddressEndpoint(), this.getRegistryKeyProperty(), null, "AddressEndpoint", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_EndpointType(), this.getCalloutEndpointType(), "EndpointType", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCalloutMediator_InitAxis2ClientOptions(), ecorePackage.getEString(), "initAxis2ClientOptions", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_PayloadProperty(), ecorePackage.getEString(), "payloadProperty", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_SecurityType(), this.getCalloutSecurityType(), "securityType", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_OutboundPolicyKey(), this.getRegistryKeyProperty(), null, "outboundPolicyKey", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_InboundPolicyKey(), this.getRegistryKeyProperty(), null, "inboundPolicyKey", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_Policies(), this.getCalloutSecurityPolicies(), "policies", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_PolicyKey(), this.getRegistryKeyProperty(), null, "policyKey", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCalloutMediator_InitAxis2ClientOptions(), ecorePackage.getEBoolean(), "initAxis2ClientOptions", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(calloutMediatorInputConnectorEClass, CalloutMediatorInputConnector.class, "CalloutMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

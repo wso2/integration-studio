@@ -38,6 +38,7 @@ public class CalloutMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 		
 		
 		executeSetValueCommand(CALLOUT_MEDIATOR__SOAP_ACTION, calloutMediator.getAction());
+		executeSetValueCommand(CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS, calloutMediator.getInitClientOptions());
 		
 		if(calloutMediator.getRequestXPath()!=null){
 			executeSetValueCommand(CALLOUT_MEDIATOR__PAYLOAD_MESSAGE_XPATH, createNamespacedProperty(calloutMediator.getRequestXPath()));

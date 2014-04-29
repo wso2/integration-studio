@@ -29,13 +29,13 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getAddressEndpoint <em>Address Endpoint</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getPayloadProperty <em>Payload Property</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getSecurityType <em>Security Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getOutboundPolicyKey <em>Outbound Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInboundPolicyKey <em>Inbound Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getPolicies <em>Policies</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  * </ul>
  * </p>
  *
@@ -419,32 +419,6 @@ public interface CalloutMediator extends Mediator {
 	void setEndpointType(CalloutEndpointType value);
 
 	/**
-	 * Returns the value of the '<em><b>Init Axis2 Client Options</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Init Axis2 Client Options</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Init Axis2 Client Options</em>' attribute.
-	 * @see #setInitAxis2ClientOptions(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_InitAxis2ClientOptions()
-	 * @model
-	 * @generated
-	 */
-	String getInitAxis2ClientOptions();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Init Axis2 Client Options</em>' attribute.
-	 * @see #getInitAxis2ClientOptions()
-	 * @generated
-	 */
-	void setInitAxis2ClientOptions(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Payload Property</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -605,5 +579,31 @@ public interface CalloutMediator extends Mediator {
 	 * @generated
 	 */
 	void setPolicyKey(RegistryKeyProperty value);
+
+	/**
+	 * Returns the value of the '<em><b>Init Axis2 Client Options</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Init Axis2 Client Options</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Init Axis2 Client Options</em>' attribute.
+	 * @see #setInitAxis2ClientOptions(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_InitAxis2ClientOptions()
+	 * @model
+	 * @generated
+	 */
+	boolean isInitAxis2ClientOptions();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Init Axis2 Client Options</em>' attribute.
+	 * @see #isInitAxis2ClientOptions()
+	 * @generated
+	 */
+	void setInitAxis2ClientOptions(boolean value);
 
 } // CalloutMediator

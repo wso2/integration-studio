@@ -1290,7 +1290,6 @@
       <genFeatures children="true" createChild="true" propertyCategory="Service" propertyDescription=""
           ecoreFeature="ecore:EReference esb.ecore#//CalloutMediator/AddressEndpoint"/>
       <genFeatures createChild="false" propertyCategory="Service" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/EndpointType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/initAxis2ClientOptions"/>
       <genFeatures createChild="false" propertyCategory="Source" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/payloadProperty"/>
       <genFeatures createChild="false" propertyCategory="WS" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/securityType"/>
       <genFeatures notify="false" createChild="false" propertyCategory="WS" propertySortChoices="true"
@@ -1300,6 +1299,7 @@
       <genFeatures createChild="false" propertyCategory="WS" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/policies"/>
       <genFeatures notify="false" createChild="false" propertyCategory="WS" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//CalloutMediator/policyKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/initAxis2ClientOptions"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CalloutMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CalloutMediatorOutputConnector"/>

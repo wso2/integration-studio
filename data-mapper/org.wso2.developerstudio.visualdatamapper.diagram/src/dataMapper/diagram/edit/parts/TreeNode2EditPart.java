@@ -23,6 +23,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
@@ -99,7 +100,7 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 				childrenIFigure.add(figure);
 				getPrimaryShape().getChildren().remove(figure);
 			}
-			for (int i = count - 1; i >= 0; i--) {
+			for (int i = 0; i < count; i++) {
 				getPrimaryShape().getChildren().add(figures.get(i));
 			}
 			((Figure) (getPrimaryShape().getChildren().get(0))).setPreferredSize(100, 20);
@@ -133,7 +134,7 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
@@ -177,8 +178,57 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public RectangleFigure getPrimaryShape() {
-		return (RectangleFigure) primaryShape;
+	public TreeNodeFigure getPrimaryShape() {
+		return (TreeNodeFigure) primaryShape;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected boolean addFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof dataMapper.diagram.edit.parts.TreeNodeName2EditPart) {
+			((dataMapper.diagram.edit.parts.TreeNodeName2EditPart) childEditPart)
+					.setLabel(getPrimaryShape().getFigureTreeNodeNameFigure());
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected boolean removeFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof dataMapper.diagram.edit.parts.TreeNodeName2EditPart) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void addChildVisual(EditPart childEditPart, int index) {
+		if (addFixedChild(childEditPart)) {
+			return;
+		}
+		super.addChildVisual(childEditPart, -1);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
+		return getContentPane();
 	}
 
 	/**
@@ -268,9 +318,22 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 	}
 
 	/**
+	 * @generated
+	 */
+	public EditPart getPrimaryChildEditPart() {
+		return getChildBySemanticHint(dataMapper.diagram.part.DataMapperVisualIDRegistry
+				.getType(dataMapper.diagram.edit.parts.TreeNodeName2EditPart.VISUAL_ID));
+	}
+
+	/**
 	 * @generated NOT
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
+		/**
+		 * @generated
+		 */
+		private WrappingLabel fFigureTreeNodeNameFigure;
+
 		/**
 		 * @generated NOT
 		 */
@@ -332,17 +395,17 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 			mainImageRectangle.add(mainImg);
 			mainImageRectangle.setBorder(new MarginBorder(1, 1, 1, 1));
 
-			WrappingLabel fFigureFileNameFigure = new WrappingLabel();
+			fFigureTreeNodeNameFigure = new WrappingLabel();
 
 			/*String name = (((TreeNode) ((View) getModel()).getElement()).getName()).split(",")[1];
 			int count = Integer.parseInt((((TreeNode) ((View) getModel()).getElement()).getName())
 					.split(",")[0]);*/
 			String name = (((TreeNode) ((View) getModel()).getElement()).getName());
 			int count = ((TreeNode) ((View) getModel()).getElement()).getLevel();
-			fFigureFileNameFigure.setText(name);
-			fFigureFileNameFigure.setForegroundColor(ColorConstants.black);
+			fFigureTreeNodeNameFigure.setText(name);
+			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
 
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
+			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 
 			clickNode = new ClickNode(mainExpand);
 			clickNode.setEnabled(true);
@@ -368,7 +431,7 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 			figure2.setOutline(false);
 			figure.add(figure2);
 			figure.add(clickNode);
-			figure.add(fFigureFileNameFigure);
+			figure.add(fFigureTreeNodeNameFigure);
 			mainImageRectangle.setOutline(false);
 			mainImageRectangle.setFill(false);
 			figure.setFill(false);
@@ -378,6 +441,13 @@ public class TreeNode2EditPart extends ShapeNodeEditPart {
 
 			this.add(figure);
 
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureTreeNodeNameFigure() {
+			return fFigureTreeNodeNameFigure;
 		}
 
 		/**

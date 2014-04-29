@@ -3,6 +3,7 @@
 package dataMapper.provider;
 
 
+import dataMapper.UpperCase;
 import java.util.Collection;
 import java.util.List;
 
@@ -74,7 +75,8 @@ public class UpperCaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_UpperCase_type");
+		UpperCase upperCase = (UpperCase)object;
+		return getString("_UI_UpperCase_type") + " " + upperCase.isSerialized();
 	}
 
 	/**

@@ -55,7 +55,7 @@ public class ElementItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -63,9 +63,9 @@ public class ElementItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
+			//addValuePropertyDescriptor(object);
 			addSchemaDataTypePropertyDescriptor(object);
-			addLevelPropertyDescriptor(object);
+			//addLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

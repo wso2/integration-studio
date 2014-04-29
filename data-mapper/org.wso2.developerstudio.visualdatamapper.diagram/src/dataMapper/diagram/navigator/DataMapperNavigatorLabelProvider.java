@@ -1,5 +1,8 @@
 package dataMapper.diagram.navigator;
 
+import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
+import org.eclipse.gmf.runtime.common.ui.services.parser.ParserOptions;
+import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -287,7 +290,14 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEqual_2005Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.Equal domainModelElement = (dataMapper.Equal) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2005); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -296,7 +306,7 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	private String getConcat_2006Text(View view) {
 		dataMapper.Concat domainModelElement = (dataMapper.Concat) view.getElement();
 		if (domainModelElement != null) {
-			return domainModelElement.getDelimiter();
+			return String.valueOf(domainModelElement.isSerialized());
 		} else {
 			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
 					"No domain element for view with visualID = " + 2006); //$NON-NLS-1$
@@ -310,7 +320,7 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	private String getSplit_2007Text(View view) {
 		dataMapper.Split domainModelElement = (dataMapper.Split) view.getElement();
 		if (domainModelElement != null) {
-			return domainModelElement.getDelimiter();
+			return String.valueOf(domainModelElement.isSerialized());
 		} else {
 			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
 					"No domain element for view with visualID = " + 2007); //$NON-NLS-1$
@@ -322,28 +332,56 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getConstant_2008Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.Constant domainModelElement = (dataMapper.Constant) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2008); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getLowerCase_2009Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.LowerCase domainModelElement = (dataMapper.LowerCase) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2009); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getContains_2010Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.Contains domainModelElement = (dataMapper.Contains) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2010); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getUpperCase_2011Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.UpperCase domainModelElement = (dataMapper.UpperCase) view.getElement();
+		if (domainModelElement != null) {
+			return String.valueOf(domainModelElement.isSerialized());
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2011); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -371,12 +409,18 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getTreeNode_3003Text(View view) {
-		dataMapper.TreeNode domainModelElement = (dataMapper.TreeNode) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getName();
+		IParser parser = dataMapper.diagram.providers.DataMapperParserProvider.getParser(
+				dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3003, view
+						.getElement() != null ? view.getElement() : view,
+				dataMapper.diagram.part.DataMapperVisualIDRegistry
+						.getType(dataMapper.diagram.edit.parts.TreeNodeName2EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(
+					new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3003); //$NON-NLS-1$
+					"Parser was not found for label " + 5001); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -406,12 +450,18 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getTreeNode_3002Text(View view) {
-		dataMapper.TreeNode domainModelElement = (dataMapper.TreeNode) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getName();
+		IParser parser = dataMapper.diagram.providers.DataMapperParserProvider.getParser(
+				dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3002, view
+						.getElement() != null ? view.getElement() : view,
+				dataMapper.diagram.part.DataMapperVisualIDRegistry
+						.getType(dataMapper.diagram.edit.parts.TreeNodeNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(
+					new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3002); //$NON-NLS-1$
+					"Parser was not found for label " + 5002); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -420,12 +470,18 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getElement_3007Text(View view) {
-		dataMapper.Element domainModelElement = (dataMapper.Element) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getName();
+		IParser parser = dataMapper.diagram.providers.DataMapperParserProvider.getParser(
+				dataMapper.diagram.providers.DataMapperElementTypes.Element_3007,
+				view.getElement() != null ? view.getElement() : view,
+				dataMapper.diagram.part.DataMapperVisualIDRegistry
+						.getType(dataMapper.diagram.edit.parts.ElementNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(
+					new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3007); //$NON-NLS-1$
+					"Parser was not found for label " + 5004); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -441,12 +497,18 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getTreeNode_3011Text(View view) {
-		dataMapper.TreeNode domainModelElement = (dataMapper.TreeNode) view.getElement();
-		if (domainModelElement != null) {
-			return domainModelElement.getName();
+		IParser parser = dataMapper.diagram.providers.DataMapperParserProvider.getParser(
+				dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3011, view
+						.getElement() != null ? view.getElement() : view,
+				dataMapper.diagram.part.DataMapperVisualIDRegistry
+						.getType(dataMapper.diagram.edit.parts.TreeNodeName3EditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(
+					new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3011); //$NON-NLS-1$
+					"Parser was not found for label " + 5003); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

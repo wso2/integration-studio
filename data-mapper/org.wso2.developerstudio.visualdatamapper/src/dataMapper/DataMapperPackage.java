@@ -217,13 +217,22 @@ public interface DataMapperPackage extends EPackage {
 	int OPERATOR__BASIC_CONTAINER = DATA_MAPPER_NODE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATOR__SERIALIZED = DATA_MAPPER_NODE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Operator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 1;
+	int OPERATOR_FEATURE_COUNT = DATA_MAPPER_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link dataMapper.impl.OperatorBasicContainerImpl <em>Operator Basic Container</em>}' class.
@@ -772,6 +781,15 @@ public interface DataMapperPackage extends EPackage {
 	int CONCAT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
 	 * The feature id for the '<em><b>Delimiter</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -810,6 +828,15 @@ public interface DataMapperPackage extends EPackage {
 	int EQUAL__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUAL__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
 	 * The number of structural features of the '<em>Equal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -836,6 +863,15 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTANT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTANT__SERIALIZED = OPERATOR__SERIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Constant Value</b></em>' attribute.
@@ -873,6 +909,15 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int SPLIT__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__SERIALIZED = OPERATOR__SERIALIZED;
 
 	/**
 	 * The feature id for the '<em><b>Delimiter</b></em>' attribute.
@@ -921,6 +966,15 @@ public interface DataMapperPackage extends EPackage {
 	int LOWER_CASE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_CASE__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
 	 * The number of structural features of the '<em>Lower Case</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -949,6 +1003,15 @@ public interface DataMapperPackage extends EPackage {
 	int CONTAINS__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
 
 	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINS__SERIALIZED = OPERATOR__SERIALIZED;
+
+	/**
 	 * The number of structural features of the '<em>Contains</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -975,6 +1038,15 @@ public interface DataMapperPackage extends EPackage {
 	 * @ordered
 	 */
 	int UPPER_CASE__BASIC_CONTAINER = OPERATOR__BASIC_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Serialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPPER_CASE__SERIALIZED = OPERATOR__SERIALIZED;
 
 	/**
 	 * The number of structural features of the '<em>Upper Case</em>' class.
@@ -1120,6 +1192,17 @@ public interface DataMapperPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOperator_BasicContainer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dataMapper.Operator#isSerialized <em>Serialized</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Serialized</em>'.
+	 * @see dataMapper.Operator#isSerialized()
+	 * @see #getOperator()
+	 * @generated
+	 */
+	EAttribute getOperator_Serialized();
 
 	/**
 	 * Returns the meta object for class '{@link dataMapper.OperatorBasicContainer <em>Operator Basic Container</em>}'.
@@ -1869,6 +1952,14 @@ public interface DataMapperPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OPERATOR__BASIC_CONTAINER = eINSTANCE.getOperator_BasicContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Serialized</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATOR__SERIALIZED = eINSTANCE.getOperator_Serialized();
 
 		/**
 		 * The meta object literal for the '{@link dataMapper.impl.OperatorBasicContainerImpl <em>Operator Basic Container</em>}' class.

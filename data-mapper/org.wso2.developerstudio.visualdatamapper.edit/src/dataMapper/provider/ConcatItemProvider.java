@@ -109,10 +109,8 @@ public class ConcatItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Concat)object).getDelimiter();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Concat_type") :
-			getString("_UI_Concat_type") + " " + label;
+		Concat concat = (Concat)object;
+		return getString("_UI_Concat_type") + " " + concat.isSerialized();
 	}
 
 	/**

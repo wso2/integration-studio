@@ -7,13 +7,8 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -25,21 +20,18 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
 //import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-
 import org.eclipse.swt.widgets.Display;
 
 import dataMapper.DataMapperFactory;
 import dataMapper.DataMapperPackage;
 import dataMapper.OperatorLeftConnector;
 import dataMapper.OperatorLeftContainer;
-import dataMapper.impl.DataMapperPackageImpl;
 
 /**
  * @generated
@@ -76,7 +68,8 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 			public void run() {
 
 				if (getParent().getParent() instanceof SplitEditPart
-						|| getParent().getParent() instanceof LowerCaseEditPart) {
+						|| getParent().getParent() instanceof LowerCaseEditPart
+						|| getParent().getParent() instanceof UpperCaseEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
@@ -95,7 +88,8 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 				}
 
 				else if (getParent().getParent() instanceof EqualEditPart
-						|| getParent().getParent() instanceof ConcatEditPart || getParent().getParent() instanceof ContainsEditPart) {
+						|| getParent().getParent() instanceof ConcatEditPart
+						|| getParent().getParent() instanceof ContainsEditPart) {
 					EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 							.getElement();
 					if (((OperatorLeftContainer) parentContainer).getLeftConnectors().size() == 0) {
@@ -279,7 +273,7 @@ public class OperatorLeftContainerEditPart extends ShapeNodeEditPart {
 
 		public OperatorLeftContainerFigure() {
 
-//			this.setBackgroundColor(THIS_BACK);
+			//			this.setBackgroundColor(THIS_BACK);
 			// RoundedRectangleBorder border = new RoundedRectangleBorder(8, 8);
 			// border.setColor(new Color(null, 255, 0, 0));
 			// this.setBorder(border); //TODO just for identification remove

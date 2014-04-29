@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -20,6 +21,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.internal.dialogs.ExportWizard;
 
 import dataMapper.DataMapperRoot;
+import dataMapper.diagram.custom.generator.MappingModelNavigator;
 import dataMapper.diagram.custom.persistence.DataMapperConfigurationGenerator;
 import dataMapper.diagram.custom.persistence.DataMapperModelTransformer;
 import dataMapper.diagram.part.DataMapperDiagramEditor;
@@ -53,6 +55,7 @@ public class ConfigurationExportWizard extends Wizard {
 
 		DataMapperRoot rootDiagram = (DataMapperRoot) DataMapperMultiPageEditor.getGraphicalEditor().getDiagram().getElement();
 		String input = DataMapperModelTransformer.getInstance().transform(rootDiagram);
+		//String input = MappingModelNavigator.getInstance().getMappingConfig(rootDiagram);		
 
 		File config = new File(page.getConfigExportrPath(), (page.getConfigurationFileName() + ".js"));
 

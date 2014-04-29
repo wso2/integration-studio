@@ -96,6 +96,9 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?Contains", dataMapper.diagram.providers.DataMapperElementTypes.Contains_2010); //$NON-NLS-1$
+		case dataMapper.diagram.edit.parts.UpperCaseEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?UpperCase", dataMapper.diagram.providers.DataMapperElementTypes.UpperCase_2011); //$NON-NLS-1$
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/datamapper?TreeNode", dataMapper.diagram.providers.DataMapperElementTypes.TreeNode_3002); //$NON-NLS-1$
@@ -219,6 +222,8 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 			return getLowerCase_2009Text(view);
 		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID:
 			return getContains_2010Text(view);
+		case dataMapper.diagram.edit.parts.UpperCaseEditPart.VISUAL_ID:
+			return getUpperCase_2011Text(view);
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
 			return getTreeNode_3002Text(view);
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
@@ -289,21 +294,42 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getConcat_2006Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.Concat domainModelElement = (dataMapper.Concat) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getDelimiter();
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2006); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getSplit_2007Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.Split domainModelElement = (dataMapper.Split) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getDelimiter();
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2007); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getConstant_2008Text(View view) {
-		return ""; //$NON-NLS-1$
+		dataMapper.Constant domainModelElement = (dataMapper.Constant) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getConstantValue();
+		} else {
+			dataMapper.diagram.part.DataMapperDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 2008); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**
@@ -317,6 +343,13 @@ public class DataMapperNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getContains_2010Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getUpperCase_2011Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

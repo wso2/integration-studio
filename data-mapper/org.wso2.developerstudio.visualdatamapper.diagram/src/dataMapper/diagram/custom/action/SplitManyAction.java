@@ -18,11 +18,8 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-import dataMapper.Concat;
 import dataMapper.Split;
-import dataMapper.diagram.custom.util.ConfigureConcatOperatorDialog;
 import dataMapper.diagram.custom.util.ConfigureSplitOperatorDialog;
-import dataMapper.impl.ConcatImpl;
 
 public class SplitManyAction extends AbstractActionHandler {
 
@@ -35,9 +32,9 @@ public class SplitManyAction extends AbstractActionHandler {
 	 */
 	public SplitManyAction(IWorkbenchPart part) {
 		super(part);
-		setId("configure-split-operator-action-id");
-		setText("Add/Remove Split Branches");
-		setToolTipText("Configure Split Operator.");
+		setId(Messages.Configure_Split_Operator_Action_Id);
+		setText(Messages.Add_Remove_Split_Branches);
+		setToolTipText(Messages.Configure_Split_Operator);
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();		
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_NEW_WIZARD));
 	}
@@ -48,7 +45,6 @@ public class SplitManyAction extends AbstractActionHandler {
 	 */
 	protected void doRun(IProgressMonitor progressMonitor) {
 		EditPart selectedEP = getSelectedEditPart();
-		Assert.isNotNull(selectedEP, "Empty selection.");
 		
 		EObject selectedObj = ((View) selectedEP.getModel()).getElement();
 		

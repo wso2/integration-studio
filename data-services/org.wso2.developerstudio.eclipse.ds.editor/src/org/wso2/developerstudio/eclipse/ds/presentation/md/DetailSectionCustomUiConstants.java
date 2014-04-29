@@ -39,6 +39,7 @@ public interface DetailSectionCustomUiConstants {
 
 	public String QUERY_SQL = "SQL Statment";
 	public String QUERY_SPARQL = "SPARQL Statment";
+	public String QUERY_EXPRESSION = "Expression Statment";
 
 	public String QUERY_TIMEOUT = "org.wso2.ws.dataservice.query_timeout";
 	public String FETCH_DIRECTION = "org.wso2.ws.dataservice.fetch_direction";

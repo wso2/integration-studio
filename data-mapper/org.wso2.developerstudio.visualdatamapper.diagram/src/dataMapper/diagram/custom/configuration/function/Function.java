@@ -16,6 +16,8 @@
 
 package dataMapper.diagram.custom.configuration.function;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
@@ -29,23 +31,18 @@ public class Function {
 	private TreeNode outputParameter;
 	private FunctionBody functionBody;
 	private String returnStatement;
-	private AssignmentStatement functionCall;
+	private String functionCall;
 	private boolean single;
 	private Function parentFunction;
 	private boolean mainFunction;
-	
+
 	private static final String LIST_FLAG = "L";
 	private static final String SINGLE_FLAG = "S";
-	
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	
+
 	public Function() {
-		this.declaration = null;
-		this.inputParameter = null;
-		this.outputParameter = null;
 		this.functionBody = new FunctionBody();
-		this.returnStatement = null;
-		this.functionCall = new AssignmentStatement();
 		this.single = false;
 		this.mainFunction = false;
 	}
@@ -89,71 +86,112 @@ public class Function {
 	public void setFunctionBody(FunctionBody functionBody) {
 		this.functionBody = functionBody;
 	}
-	public AssignmentStatement getFunctionCall() {
+
+	public String getFunctionCall() {
 		setFunctionCall(createFunctionCall());
 		return functionCall;
 	}
-	private String getFlag(){
+
+	private String getFlag() {
 		String flag = LIST_FLAG;
-		if(this.single){
+		if (this.single) {
 			flag = SINGLE_FLAG;
 		}
 		return flag;
 	}
-	
-	public void setFunctionCall(AssignmentStatement functionCall) {
+
+	public void setFunctionCall(String functionCall) {
 		this.functionCall = functionCall;
 	}
-	
-	private AssignmentStatement createFunctionCall(){
 
+	private String createFunctionCall() {
+		String inputSection = getInputParameter().getName();
+		String outputSection = getOutputParameter().getName();
 		
-		String tempory = "map_"+getFlag()+"_" + getInputParameter().getName() + "_"+getFlag()+"_"
-						+ getOutputParameter().getName() + "(" + getInputTreeHierarchy() + ", "
-						+ getOutputTreeHierarchy() + ");";
-		AssignmentStatement assign = new AssignmentStatement();
-		assign.setStatement(tempory);
-		return assign;
+		String inputParameter = getInputTreeHierarchy();
+		String outputParameter = getOutputTreeHierarchy();
+		
+		if (inputSection.equals(outputSection)) {
+			outputSection = "output" + WordUtils.capitalize(outputSection);
+		}
+		
+		/*
+		 * If input parameter and output parameter names are identical,
+		 * append term 'output' to the output parameter as a convention.
+		 */
+		if (inputParameter.equals(outputParameter)) {
+			outputParameter = "output" + WordUtils.capitalize(outputParameter);
+		}
+		
+		String functinCall = "map_" + getFlag() + "_" + inputSection + "_"
+				+ getFlag() + "_" + outputSection + "(" + inputParameter
+				+ ", " + outputParameter + ");";
+
+		return functinCall;
 	}
-	
+
 	private String getOutputTreeHierarchy() {
-		
-		return getTreeHierarchy(this.getOutputParameter(), this.getParentFunction().getOutputParameter());
+		return getTreeHierarchy(this.getOutputParameter(), this.getParentFunction()
+				.getOutputParameter());
 	}
 
 	private String getInputTreeHierarchy() {
-
-		return getTreeHierarchy(this.getInputParameter(), this.getParentFunction().getInputParameter());
+		return getTreeHierarchy(this.getInputParameter(), this.getParentFunction()
+				.getInputParameter());
 	}
 
 	private void createMainFunction() {
 		try {
-			String mainFunctionDeclaration = 	"\nfunction map_"+getFlag()+"_" + getInputParameter().getName() + "_"+getFlag()+"_"
-												+ getOutputParameter().getName() + "(" + getInputParameter().getName() + ", "
-												+ getOutputParameter().getName() + "){\n";
+			String inputParameter = getInputParameter().getName();
+			String outputParameter = getOutputParameter().getName();
 			
-			setDeclaration(mainFunctionDeclaration);
-			if(mainFunction){
-				setReturnStatement("return " + getOutputParameter().getName() + ";\n" +"}\n");			
+			/*
+			 * If input parameter and output parameter names are identical,
+			 * append term 'output' to the output parameter as a convention.
+			 */
+			if (inputParameter.equals(outputParameter)) {
+				outputParameter = "output" + WordUtils.capitalize(outputParameter);
 			}
-			else {
-				setReturnStatement("}\n");
+			
+			String mainFunctionDeclaration = "function map_" + getFlag() + "_" + inputParameter
+					+ "_" + getFlag() + "_" + outputParameter + "(" + inputParameter + ", "
+					+ outputParameter + ") {";
+
+			setDeclaration(mainFunctionDeclaration);
+			
+			if (mainFunction) {
+				setReturnStatement("return " + getOutputParameter().getName() + ";");
+			} else {
+				setReturnStatement("");
 			}
 		} catch (Exception e) {
-			log.error("Exception while creating function decleration", e);
+			log.error("Exception while creating main function decleration", e);
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		createMainFunction();
-		StringBuilder functionToString = new StringBuilder();
+		StringBuilder functionBuilder = new StringBuilder();
 		try {
-			functionToString.append(getDeclaration()+"\n"+getFunctionBody().toString()+"\n"+getReturnStatement());
+			functionBuilder.append(System.lineSeparator());
+			functionBuilder.append(getDeclaration());
+			functionBuilder.append(System.lineSeparator());
+			functionBuilder.append(getFunctionBody().toString());
+
+			if (StringUtils.isNotBlank(getReturnStatement())) {
+				functionBuilder.append("\t");
+				functionBuilder.append(getReturnStatement());
+				functionBuilder.append(System.lineSeparator());
+			}
+
+			functionBuilder.append("}");
+			functionBuilder.append(System.lineSeparator());
+
 		} catch (Exception e) {
-			log.error("Exception while converting function to string", e);
+			log.error("Exception while building function ", e);
 		}
-	return functionToString.toString();
+		return functionBuilder.toString();
 	}
 
 	public boolean isSingle() {
@@ -176,12 +214,12 @@ public class Function {
 		StringBuilder hierarchy = new StringBuilder();
 
 		while (!(tree.equals(parent))) {
-			hierarchy.insert(0,tree.getName());
-			hierarchy.insert(0,".");
+			hierarchy.insert(0, tree.getName());
+			hierarchy.insert(0, ".");
 			tree = tree.getFieldParent();
 		}
 
-		hierarchy.insert(0,tree.getName());
+		hierarchy.insert(0, tree.getName());
 
 		return hierarchy.toString();
 
@@ -194,8 +232,5 @@ public class Function {
 	public void setMainFunction(boolean mainFunction) {
 		this.mainFunction = mainFunction;
 	}
-	
-	
-	
-	
+
 }

@@ -73,7 +73,6 @@ public class TreeFromAvro {
 	 * else fetch field as a element
 	 */
 	private static  void fetchToTree(Field field, Tree parent) {
-//		System.out.println(" Field: " + field.name());
 		if (field.schema().getType().toString().equalsIgnoreCase("RECORD")) {
 //			if(!multipleData)
 //				multipleData = true;

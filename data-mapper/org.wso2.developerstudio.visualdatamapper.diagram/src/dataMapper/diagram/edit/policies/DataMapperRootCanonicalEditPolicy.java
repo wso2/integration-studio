@@ -105,6 +105,7 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 		case dataMapper.diagram.edit.parts.ConstantEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.LowerCaseEditPart.VISUAL_ID:
 		case dataMapper.diagram.edit.parts.ContainsEditPart.VISUAL_ID:
+		case dataMapper.diagram.edit.parts.UpperCaseEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;
@@ -320,6 +321,14 @@ public class DataMapperRootCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
 						.getContains_2010ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case dataMapper.diagram.edit.parts.UpperCaseEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(dataMapper.diagram.part.DataMapperDiagramUpdater
+						.getUpperCase_2011ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

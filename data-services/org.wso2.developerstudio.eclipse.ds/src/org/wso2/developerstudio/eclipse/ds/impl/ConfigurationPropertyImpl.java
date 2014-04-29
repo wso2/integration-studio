@@ -24,15 +24,11 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getValue
- * <em>Value</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getName
- * <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.ConfigurationPropertyImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ConfigurationPropertyImpl extends EObjectImpl implements ConfigurationProperty {
@@ -40,7 +36,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -51,7 +46,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -62,7 +56,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -73,7 +66,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -83,7 +75,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ConfigurationPropertyImpl() {
@@ -93,7 +84,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -105,7 +95,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getValue() {
@@ -115,21 +104,18 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setValue(String newValue) {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.CONFIGURATION_PROPERTY__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.CONFIGURATION_PROPERTY__VALUE, oldValue, value));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -139,21 +125,18 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.CONFIGURATION_PROPERTY__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.CONFIGURATION_PROPERTY__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -171,7 +154,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -179,10 +161,10 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.CONFIGURATION_PROPERTY__VALUE:
-				setValue((String) newValue);
+				setValue((String)newValue);
 				return;
 			case DsPackage.CONFIGURATION_PROPERTY__NAME:
-				setName((String) newValue);
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -191,7 +173,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -211,7 +192,6 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -229,14 +209,12 @@ public class ConfigurationPropertyImpl extends EObjectImpl implements Configurat
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");

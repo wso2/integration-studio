@@ -24,24 +24,18 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DoubleRangeValidatorImpl#getMaximum
- * <em>Maximum</em>}</li>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.DoubleRangeValidatorImpl#getMinimum
- * <em>Minimum</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DoubleRangeValidatorImpl#getMaximum <em>Maximum</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DoubleRangeValidatorImpl#getMinimum <em>Minimum</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRangeValidator {
 	/**
-	 * The default value of the '{@link #getMaximum() <em>Maximum</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getMaximum() <em>Maximum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMaximum()
 	 * @generated
 	 * @ordered
@@ -49,11 +43,9 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	protected static final double MAXIMUM_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getMaximum() <em>Maximum</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getMaximum() <em>Maximum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMaximum()
 	 * @generated
 	 * @ordered
@@ -61,11 +53,9 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	protected double maximum = MAXIMUM_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMinimum() <em>Minimum</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getMinimum() <em>Minimum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMinimum()
 	 * @generated
 	 * @ordered
@@ -73,11 +63,9 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	protected static final double MINIMUM_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getMinimum() <em>Minimum</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getMinimum() <em>Minimum</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getMinimum()
 	 * @generated
 	 * @ordered
@@ -87,7 +75,6 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DoubleRangeValidatorImpl() {
@@ -97,7 +84,6 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -109,7 +95,6 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public double getMaximum() {
@@ -119,22 +104,18 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMaximum(double newMaximum) {
 		double oldMaximum = maximum;
 		maximum = newMaximum;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.DOUBLE_RANGE_VALIDATOR__MAXIMUM, oldMaximum,
-			                              maximum));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.DOUBLE_RANGE_VALIDATOR__MAXIMUM, oldMaximum, maximum));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public double getMinimum() {
@@ -144,22 +125,18 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setMinimum(double newMinimum) {
 		double oldMinimum = minimum;
 		minimum = newMinimum;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.DOUBLE_RANGE_VALIDATOR__MINIMUM, oldMinimum,
-			                              minimum));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.DOUBLE_RANGE_VALIDATOR__MINIMUM, oldMinimum, minimum));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -177,7 +154,6 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -185,10 +161,10 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.DOUBLE_RANGE_VALIDATOR__MAXIMUM:
-				setMaximum((Double) newValue);
+				setMaximum((Double)newValue);
 				return;
 			case DsPackage.DOUBLE_RANGE_VALIDATOR__MINIMUM:
-				setMinimum((Double) newValue);
+				setMinimum((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -197,7 +173,6 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -217,7 +192,6 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -235,14 +209,12 @@ public class DoubleRangeValidatorImpl extends EObjectImpl implements DoubleRange
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (maximum: ");

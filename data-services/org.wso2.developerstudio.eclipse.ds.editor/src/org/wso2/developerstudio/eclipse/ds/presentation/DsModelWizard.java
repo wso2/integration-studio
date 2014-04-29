@@ -95,7 +95,6 @@ import org.eclipse.ui.PartInitException;
  * This is a simple wizard for creating a new model file.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class DsModelWizard extends Wizard implements INewWizard {
@@ -103,30 +102,24 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * The supported extensions for created files.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static final List<String> FILE_EXTENSIONS =
-	                                                   Collections.unmodifiableList(Arrays.asList(DsEditorPlugin.INSTANCE.getString("_UI_DsEditorFilenameExtensions")
-	                                                                                                                     .split("\\s*,\\s*")));
+	                                                   Collections.unmodifiableList(Arrays.asList(DsEditorPlugin.INSTANCE.getString("_UI_DsEditorFilenameExtensions").split("\\s*,\\s*")));
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static final String FORMATTED_FILE_EXTENSIONS =
-	                                                       DsEditorPlugin.INSTANCE.getString("_UI_DsEditorFilenameExtensions")
-	                                                                              .replaceAll("\\s*,\\s*",
-	                                                                                          ", ");
+	                                                       DsEditorPlugin.INSTANCE.getString("_UI_DsEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
 	/**
 	 * This caches an instance of the model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DsPackage dsPackage = DsPackage.eINSTANCE;
@@ -135,7 +128,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * This caches an instance of the model factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DsFactory dsFactory = dsPackage.getDsFactory();
@@ -144,7 +136,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * This is the file creation page.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DsModelWizardNewFileCreationPage newFileCreationPage;
@@ -153,17 +144,14 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * This is the initial object creation page.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DsModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
 	/**
-	 * Remember the selection during initialization for populating the default
-	 * container.
+	 * Remember the selection during initialization for populating the default container.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IStructuredSelection selection;
@@ -172,7 +160,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * Remember the workbench during initialization.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IWorkbench workbench;
@@ -181,7 +168,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * Caches the names of the features representing global elements.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected List<String> initialObjectNames;
@@ -190,7 +176,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * This just records the information.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
@@ -204,7 +189,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * Returns the names of the features representing global elements.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Collection<String> getInitialObjectNames() {
@@ -214,7 +198,7 @@ public class DsModelWizard extends Wizard implements INewWizard {
 				if (eStructuralFeature.isChangeable()) {
 					EClassifier eClassifier = eStructuralFeature.getEType();
 					if (eClassifier instanceof EClass) {
-						EClass eClass = (EClass) eClassifier;
+						EClass eClass = (EClass)eClassifier;
 						if (!eClass.isAbstract()) {
 							initialObjectNames.add(eStructuralFeature.getName());
 						}
@@ -230,16 +214,13 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * Create a new model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
 		EClass eClass = ExtendedMetaData.INSTANCE.getDocumentRoot(dsPackage);
-		EStructuralFeature eStructuralFeature =
-		                                        eClass.getEStructuralFeature(initialObjectCreationPage.getInitialObjectName());
+		EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(initialObjectCreationPage.getInitialObjectName());
 		EObject rootObject = dsFactory.create(eClass);
-		rootObject.eSet(eStructuralFeature,
-		                EcoreUtil.create((EClass) eStructuralFeature.getEType()));
+		rootObject.eSet(eStructuralFeature, EcoreUtil.create((EClass)eStructuralFeature.getEType()));
 		return rootObject;
 	}
 
@@ -247,7 +228,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * Do the work after everything is specified.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -260,44 +240,44 @@ public class DsModelWizard extends Wizard implements INewWizard {
 
 			// Do the work within an operation.
 			//
-			WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
-				@Override
-				protected void execute(IProgressMonitor progressMonitor) {
-					try {
-						// Create a resource set
-						//
-						ResourceSet resourceSet = new ResourceSetImpl();
+			WorkspaceModifyOperation operation =
+				new WorkspaceModifyOperation() {
+					@Override
+					protected void execute(IProgressMonitor progressMonitor) {
+						try {
+							// Create a resource set
+							//
+							ResourceSet resourceSet = new ResourceSetImpl();
 
-						// Get the URI of the model file.
-						//
-						URI fileURI =
-						              URI.createPlatformResourceURI(modelFile.getFullPath()
-						                                                     .toString(), true);
+							// Get the URI of the model file.
+							//
+							URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
-						// Create a resource for this file.
-						//
-						Resource resource = resourceSet.createResource(fileURI);
+							// Create a resource for this file.
+							//
+							Resource resource = resourceSet.createResource(fileURI);
 
-						// Add the initial model object to the contents.
-						//
-						EObject rootObject = createInitialModel();
-						if (rootObject != null) {
-							resource.getContents().add(rootObject);
+							// Add the initial model object to the contents.
+							//
+							EObject rootObject = createInitialModel();
+							if (rootObject != null) {
+								resource.getContents().add(rootObject);
+							}
+
+							// Save the contents of the resource to the file system.
+							//
+							Map<Object, Object> options = new HashMap<Object, Object>();
+							options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
+							resource.save(options);
 						}
-
-						// Save the contents of the resource to the file system.
-						//
-						Map<Object, Object> options = new HashMap<Object, Object>();
-						options.put(XMLResource.OPTION_ENCODING,
-						            initialObjectCreationPage.getEncoding());
-						resource.save(options);
-					} catch (Exception exception) {
-						DsEditorPlugin.INSTANCE.log(exception);
-					} finally {
-						progressMonitor.done();
+						catch (Exception exception) {
+							DsEditorPlugin.INSTANCE.log(exception);
+						}
+						finally {
+							progressMonitor.done();
+						}
 					}
-				}
-			};
+				};
 
 			getContainer().run(false, false, operation);
 
@@ -308,29 +288,29 @@ public class DsModelWizard extends Wizard implements INewWizard {
 			final IWorkbenchPart activePart = page.getActivePart();
 			if (activePart instanceof ISetSelectionTarget) {
 				final ISelection targetSelection = new StructuredSelection(modelFile);
-				getShell().getDisplay().asyncExec(new Runnable() {
-					public void run() {
-						((ISetSelectionTarget) activePart).selectReveal(targetSelection);
-					}
-				});
+				getShell().getDisplay().asyncExec
+					(new Runnable() {
+						 public void run() {
+							 ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
+						 }
+					 });
 			}
 
 			// Open an editor on the new file.
 			//
 			try {
-				page.openEditor(new FileEditorInput(modelFile),
-				                workbench.getEditorRegistry()
-				                         .getDefaultEditor(modelFile.getFullPath().toString())
-				                         .getId());
-			} catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(),
-				                        DsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"),
-				                        exception.getMessage());
+				page.openEditor
+					(new FileEditorInput(modelFile),
+					 workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());					 	 
+			}
+			catch (PartInitException exception) {
+				MessageDialog.openError(workbenchWindow.getShell(), DsEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
 				return false;
 			}
 
 			return true;
-		} catch (Exception exception) {
+		}
+		catch (Exception exception) {
 			DsEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
@@ -340,7 +320,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * This is the one page of the wizard.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public class DsModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
@@ -348,7 +327,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public DsModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
@@ -359,7 +337,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		 * The framework calls this to see if the file is correct.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 
@@ -368,11 +345,8 @@ public class DsModelWizard extends Wizard implements INewWizard {
 			if (super.validatePage()) {
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-					String key =
-					             FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions"
-					                                       : "_WARN_FilenameExtension";
-					setErrorMessage(DsEditorPlugin.INSTANCE.getString(key,
-					                                                  new Object[] { FORMATTED_FILE_EXTENSIONS }));
+					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+					setErrorMessage(DsEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
 				return true;
@@ -383,12 +357,10 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public IFile getModelFile() {
-			return ResourcesPlugin.getWorkspace().getRoot()
-			                      .getFile(getContainerFullPath().append(getFileName()));
+			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
 
@@ -396,14 +368,12 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * This is the page where the type of object to create is selected.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public class DsModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected Combo initialObjectField;
@@ -418,7 +388,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected Combo encodingField;
@@ -427,7 +396,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public DsModelWizardInitialObjectCreationPage(String pageId) {
@@ -437,12 +405,10 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE);
-			{
+			Composite composite = new Composite(parent, SWT.NONE); {
 				GridLayout layout = new GridLayout();
 				layout.numColumns = 1;
 				layout.verticalSpacing = 12;
@@ -511,30 +477,26 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected ModifyListener validator = new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				setPageComplete(validatePage());
-			}
-		};
+				public void modifyText(ModifyEvent e) {
+					setPageComplete(validatePage());
+				}
+			};
 
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected boolean validatePage() {
-			return getInitialObjectName() != null &&
-			       getEncodings().contains(encodingField.getText());
+			return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
 		}
 
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 
@@ -545,7 +507,8 @@ public class DsModelWizard extends Wizard implements INewWizard {
 				if (initialObjectField.getItemCount() == 1) {
 					initialObjectField.clearSelection();
 					encodingField.setFocus();
-				} else {
+				}
+				else {
 					encodingField.clearSelection();
 					initialObjectField.setFocus();
 				}
@@ -555,7 +518,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public String getInitialObjectName() {
@@ -572,7 +534,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		public String getEncoding() {
@@ -583,14 +544,13 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		 * Returns the label for the specified feature name.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected String getLabel(String featureName) {
 			try {
-				return DsEditPlugin.INSTANCE.getString("_UI_DocumentRoot_" + featureName +
-				                                       "_feature");
-			} catch (MissingResourceException mre) {
+				return DsEditPlugin.INSTANCE.getString("_UI_DocumentRoot_" + featureName + "_feature");
+			}
+			catch(MissingResourceException mre) {
 				DsEditorPlugin.INSTANCE.log(mre);
 			}
 			return featureName;
@@ -599,15 +559,12 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		protected Collection<String> getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer =
-				                                       new StringTokenizer(
-				                                                           DsEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) {
+				for (StringTokenizer stringTokenizer = new StringTokenizer(DsEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -619,7 +576,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * The framework calls this to create the contents of the wizard.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -630,12 +586,10 @@ public class DsModelWizard extends Wizard implements INewWizard {
 		newFileCreationPage = new DsModelWizardNewFileCreationPage("Whatever", selection);
 		newFileCreationPage.setTitle(DsEditorPlugin.INSTANCE.getString("_UI_DsModelWizard_label"));
 		newFileCreationPage.setDescription(DsEditorPlugin.INSTANCE.getString("_UI_DsModelWizard_description"));
-		newFileCreationPage.setFileName(DsEditorPlugin.INSTANCE.getString("_UI_DsEditorFilenameDefaultBase") +
-		                                "." + FILE_EXTENSIONS.get(0));
+		newFileCreationPage.setFileName(DsEditorPlugin.INSTANCE.getString("_UI_DsEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
-		// Try and get the resource selection to determine a current directory
-		// for the file dialog.
+		// Try and get the resource selection to determine a current directory for the file dialog.
 		//
 		if (selection != null && !selection.isEmpty()) {
 			// Get the resource...
@@ -644,7 +598,7 @@ public class DsModelWizard extends Wizard implements INewWizard {
 			if (selectedElement instanceof IResource) {
 				// Get the resource parent, if its a file.
 				//
-				IResource selectedResource = (IResource) selectedElement;
+				IResource selectedResource = (IResource)selectedElement;
 				if (selectedResource.getType() == IResource.FILE) {
 					selectedResource = selectedResource.getParent();
 				}
@@ -658,16 +612,11 @@ public class DsModelWizard extends Wizard implements INewWizard {
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename =
-					                                  DsEditorPlugin.INSTANCE.getString("_UI_DsEditorFilenameDefaultBase");
+					String defaultModelBaseFilename = DsEditorPlugin.INSTANCE.getString("_UI_DsEditorFilenameDefaultBase");
 					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
-					String modelFilename =
-					                       defaultModelBaseFilename + "." +
-					                               defaultModelFilenameExtension;
-					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
-						modelFilename =
-						                defaultModelBaseFilename + i + "." +
-						                        defaultModelFilenameExtension;
+					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
+					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
+						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
 					}
 					newFileCreationPage.setFileName(modelFilename);
 				}
@@ -683,7 +632,6 @@ public class DsModelWizard extends Wizard implements INewWizard {
 	 * Get the file from the page.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IFile getModelFile() {

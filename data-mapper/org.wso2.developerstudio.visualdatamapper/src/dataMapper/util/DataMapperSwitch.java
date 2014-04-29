@@ -220,6 +220,14 @@ public class DataMapperSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataMapperPackage.UPPER_CASE: {
+				UpperCase upperCase = (UpperCase)theEObject;
+				T result = caseUpperCase(upperCase);
+				if (result == null) result = caseOperator(upperCase);
+				if (result == null) result = caseDataMapperNode(upperCase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -566,6 +574,21 @@ public class DataMapperSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseContains(Contains object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Upper Case</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Upper Case</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUpperCase(UpperCase object) {
 		return null;
 	}
 

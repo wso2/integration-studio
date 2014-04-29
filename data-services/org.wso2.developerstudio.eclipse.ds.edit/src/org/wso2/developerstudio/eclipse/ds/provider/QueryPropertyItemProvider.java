@@ -30,11 +30,9 @@ import org.wso2.developerstudio.eclipse.ds.QueryProperty;
 import org.wso2.developerstudio.eclipse.ds.provider.labelProvider.DSEditPropertiesLabelProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.QueryProperty} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.QueryProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class QueryPropertyItemProvider extends ItemProviderAdapter implements
@@ -47,7 +45,6 @@ public class QueryPropertyItemProvider extends ItemProviderAdapter implements
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public QueryPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -86,44 +83,44 @@ public class QueryPropertyItemProvider extends ItemProviderAdapter implements
 	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_QueryProperty_value_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_QueryProperty_value_feature",
-		                                                                   "_UI_QueryProperty_type"),
-		                                                         DsPackage.Literals.QUERY_PROPERTY__VALUE,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_QueryProperty_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_QueryProperty_value_feature", "_UI_QueryProperty_type"),
+				 DsPackage.Literals.QUERY_PROPERTY__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_QueryProperty_name_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_QueryProperty_name_feature",
-		                                                                   "_UI_QueryProperty_type"),
-		                                                         DsPackage.Literals.QUERY_PROPERTY__NAME,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_QueryProperty_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_QueryProperty_name_feature", "_UI_QueryProperty_type"),
+				 DsPackage.Literals.QUERY_PROPERTY__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -157,13 +154,10 @@ public class QueryPropertyItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached
-	 * children and by creating a viewer notification, which it passes to
-	 * {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -174,20 +168,17 @@ public class QueryPropertyItemProvider extends ItemProviderAdapter implements
 		switch (notification.getFeatureID(QueryProperty.class)) {
 			case DsPackage.QUERY_PROPERTY__VALUE:
 			case DsPackage.QUERY_PROPERTY__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(),
-				                                         false, true));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing the children
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -200,7 +191,6 @@ public class QueryPropertyItemProvider extends ItemProviderAdapter implements
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 

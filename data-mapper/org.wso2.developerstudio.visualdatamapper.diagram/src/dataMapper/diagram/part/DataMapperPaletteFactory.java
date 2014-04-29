@@ -55,12 +55,13 @@ public class DataMapperPaletteFactory {
 		 dataMapper.diagram.part.Messages.DataMapper1Group_title);*/
 		paletteContainer.setId("createDataMapper1Group"); //$NON-NLS-1$
 		paletteContainer.add(createDataMapperLink1CreationTool());
-		paletteContainer.add(createEqual2CreationTool());
+		//		paletteContainer.add(createEqual2CreationTool());
 		paletteContainer.add(createConcat3CreationTool());
 		paletteContainer.add(createSplit4CreationTool());
 		paletteContainer.add(createConstant5CreationTool());
 		paletteContainer.add(createLowerCase6CreationTool());
 		paletteContainer.add(createContains7CreationTool());
+		paletteContainer.add(createUpperCase8CreationTool());
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
 	}
@@ -180,6 +181,22 @@ public class DataMapperPaletteFactory {
 	/**
 	 * @generated
 	 */
+	private ToolEntry createUpperCase8CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				dataMapper.diagram.part.Messages.UpperCase8CreationTool_title,
+				dataMapper.diagram.part.Messages.UpperCase8CreationTool_desc,
+				Collections
+						.singletonList(dataMapper.diagram.providers.DataMapperElementTypes.UpperCase_2011));
+		entry.setId("createUpperCase8CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(dataMapper.diagram.providers.DataMapperElementTypes
+				.getImageDescriptor(dataMapper.diagram.providers.DataMapperElementTypes.UpperCase_2011));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
 	private static class NodeToolEntry extends ToolEntry {
 
 		/**
@@ -226,9 +243,6 @@ public class DataMapperPaletteFactory {
 		private EditPart getRoot(EditPart editPart) {
 			EditPart temp = editPart.getParent();
 			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
-				// System.out.println("Node     " +temp);
-				// System.out.println("NodeNodeNodeNodeNodeNodeNodeNode     "
-				// +childEditPart.getClass().getName() );
 				if (temp instanceof InputEditPart) {
 					return temp;
 					/*
@@ -268,7 +282,6 @@ public class DataMapperPaletteFactory {
 					 * for Element
 					 */
 					if (getTargetEditPart() instanceof ElementEditPart) {
-						// System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 
 						for (int i = 0; i < ((ElementEditPart) getTargetEditPart()).getChildren()
 								.size(); ++i) {
@@ -302,8 +315,7 @@ public class DataMapperPaletteFactory {
 
 						}// for
 					}// for element mouse enter
-					
-					
+
 					/*
 					 * for leftconnector
 					 */
@@ -312,18 +324,13 @@ public class DataMapperPaletteFactory {
 								.getChildren().size(); ++i) {
 
 							if ((getTargetEditPart()).getChildren().get(i) instanceof InNode3EditPart) {
-								return ((EditPart) (getTargetEditPart())
-										.getChildren().get(i))
+								return ((EditPart) (getTargetEditPart()).getChildren().get(i))
 										.getCommand(getTargetRequest());
 
 							}
 
 						}// for
 					}// for leftconnector mouse enter
-					
-					
-					
-					
 
 					/*
 					 * for attribute

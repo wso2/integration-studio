@@ -54,6 +54,8 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -68,9 +70,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorImpl;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.DataMapperEditor;
-
-import dataMapper.diagram.custom.util.DataMapperConfigurationDialog;
-import dataMapper.diagram.custom.util.DialogDisplayUtils;
 
 
 /**

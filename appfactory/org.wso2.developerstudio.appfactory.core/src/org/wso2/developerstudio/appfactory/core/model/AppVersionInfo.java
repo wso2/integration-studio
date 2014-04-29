@@ -18,7 +18,7 @@ package org.wso2.developerstudio.appfactory.core.model;
 
 public class AppVersionInfo {
  
-	private String isAutoDeploy;
+	  private String isAutoDeploy;
 	  private String repoURL;
 	  private String version;
 	  private String stage;
@@ -28,6 +28,8 @@ public class AppVersionInfo {
 	  private String localRepo;
 	  private boolean isCheckedout;
 	  private boolean isbuildRequestCansel;
+	  private boolean isAForkedRepo;
+	  private AppVersionGroup versionGroup;
 	  
 	public String getIsAutoDeploy() {
 		return isAutoDeploy;
@@ -97,5 +99,22 @@ public class AppVersionInfo {
 
 	public void setCheckedout(boolean isCheckedout) {
 		this.isCheckedout = isCheckedout;
+	}
+
+	public boolean isAForkedRepo() {
+		return isAForkedRepo;
+	}
+
+	public void setAForkedRepo(boolean isAForkedRepo) {
+		this.isAForkedRepo = isAForkedRepo;
+	}
+
+	public AppVersionGroup getVersionGroup() {
+		return versionGroup;
+	}
+
+	public void setVersionGroup(AppVersionGroup versionGroup) {
+		this.versionGroup = versionGroup;
 	} 
+
 }

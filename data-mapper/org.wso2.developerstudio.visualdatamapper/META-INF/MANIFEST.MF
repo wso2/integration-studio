@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: dataMapper,
- dataMapper.impl,
- dataMapper.util
+Export-Package: org.wso2.developerstudio.datamapper,
+ org.wso2.developerstudio.datamapper.impl,
+ org.wso2.developerstudio.datamapper.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

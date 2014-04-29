@@ -4,7 +4,8 @@
     modelPluginID="org.wso2.developerstudio.visualdatamapper" modelName="DataMapper"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false">
   <foreignModel>dataMapper.ecore</foreignModel>
-  <genPackages prefix="DataMapper" disposableProviderFactory="true" ecorePackage="dataMapper.ecore#/">
+  <genPackages prefix="DataMapper" basePackage="org.wso2.developerstudio" disposableProviderFactory="true"
+      ecorePackage="dataMapper.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dataMapper.ecore#//SchemaDataType">
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/ARRAY"/>
       <genEnumLiterals ecoreEnumLiteral="dataMapper.ecore#//SchemaDataType/BOOLEAN"/>

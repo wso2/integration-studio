@@ -23,9 +23,9 @@
          icon="icons/obj16/DataMapperDiagramFile.gif"
          extensions="datamapper_diagram"
          default="true"
-         class="dataMapper.diagram.part.DataMapperMultiPageEditor"
-         matchingStrategy="dataMapper.diagram.part.DataMapperMatchingStrategy"
-         contributorClass="dataMapper.diagram.part.DataMapperDiagramActionBarContributor">
+         class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperMultiPageEditor"
+         matchingStrategy="org.wso2.developerstudio.datamapper.diagram.part.DataMapperMatchingStrategy"
+         contributorClass="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramActionBarContributor">
       </editor>
    </extension>
    
@@ -33,7 +33,7 @@
       <?gmfgen generated="true"?>
       <context
          description="%context.description"
-         id="dataMapper.diagram.ui.diagramContext"
+         id="org.wso2.developerstudio.datamapper.diagram.ui.diagramContext"
          name="%context.name"
          parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
       </context>
@@ -45,8 +45,8 @@
   	     name="%newWizardName"
   	     icon="icons/obj16/DataMapperDiagramFile.gif"
   	     category="org.eclipse.ui.Examples"
-  	     class="dataMapper.diagram.part.DataMapperCreationWizard"
-  	     id="dataMapper.diagram.part.DataMapperCreationWizardID">
+  	     class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizard"
+  	     id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardID">
   	  	 <description>%newWizardDesc</description>  
       </wizard>
    </extension>
@@ -59,7 +59,7 @@
             objectClass="org.eclipse.core.resources.IFile">
          <action
                label="%initDiagramActionLabel"
-               class="dataMapper.diagram.part.DataMapperInitDiagramFileAction"
+               class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperInitDiagramFileAction"
                menubarPath="additions"
                enablesFor="1"
                id="org.wso2.developerstudio.visualdatamapper.diagram.InitDiagramAction">
@@ -70,7 +70,7 @@
             id="org.wso2.developerstudio.visualdatamapper.diagram.ExportConfiguration"
             objectClass="org.eclipse.core.resources.IFile">
          <action
-               class="dataMapper.diagram.custom.menu.ExportConfigurationAction"
+               class="org.wso2.developerstudio.datamapper.diagram.custom.menu.ExportConfigurationAction"
                id="org.wso2.developerstudio.visualdatamapper.diagram.ExportConfigurationAction"
                label="Export Configuration">
          </action>
@@ -83,7 +83,7 @@
          class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
          id="DataMapperPresentation">
          <Priority name="Lowest"/>
-         <ViewId id="dataMapper.diagram.part.DataMapperDiagramEditorID">
+         <ViewId id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID">
             <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                <GlobalActionId actionId="delete"/>
             </ElementType>
@@ -100,7 +100,7 @@
          class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
          id="DataMapperPresentationIDE">
          <Priority name="Lowest"/>
-         <ViewId id="dataMapper.diagram.part.DataMapperDiagramEditorID">
+         <ViewId id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID">
             <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                <GlobalActionId actionId="bookmark"/>
             </ElementType>
@@ -110,7 +110,7 @@
             class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
             id="DataMapperRender">
          <Priority name="Lowest"/>
-         <ViewId id="dataMapper.diagram.part.DataMapperDiagramEditorID">
+         <ViewId id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID">
             <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
                <GlobalActionId actionId="cut"/>
                <GlobalActionId actionId="copy"/>
@@ -123,7 +123,7 @@
 
    <extension point="org.eclipse.core.runtime.preferences" id="prefs">
       <?gmfgen generated="true"?>
-      <initializer class="dataMapper.diagram.preferences.DiagramPreferenceInitializer"/>
+      <initializer class="org.wso2.developerstudio.datamapper.diagram.preferences.DiagramPreferenceInitializer"/>
    </extension>
 
    <extension point="org.eclipse.ui.preferencePages" id="prefpages">
@@ -131,31 +131,31 @@
       <page
             id="org.wso2.developerstudio.visualdatamapper.diagram.general"
             name="%prefpage.org.wso2.developerstudio.visualdatamapper.diagram.general"
-            class="dataMapper.diagram.preferences.DiagramGeneralPreferencePage">
+            class="org.wso2.developerstudio.datamapper.diagram.preferences.DiagramGeneralPreferencePage">
       </page>
       <page
             id="org.wso2.developerstudio.visualdatamapper.diagram.appearance"
             name="%prefpage.org.wso2.developerstudio.visualdatamapper.diagram.appearance"
             category="org.wso2.developerstudio.visualdatamapper.diagram.general"
-            class="dataMapper.diagram.preferences.DiagramAppearancePreferencePage">
+            class="org.wso2.developerstudio.datamapper.diagram.preferences.DiagramAppearancePreferencePage">
       </page>
       <page
             id="org.wso2.developerstudio.visualdatamapper.diagram.connections"
             name="%prefpage.org.wso2.developerstudio.visualdatamapper.diagram.connections"
             category="org.wso2.developerstudio.visualdatamapper.diagram.general"
-            class="dataMapper.diagram.preferences.DiagramConnectionsPreferencePage">
+            class="org.wso2.developerstudio.datamapper.diagram.preferences.DiagramConnectionsPreferencePage">
       </page>
       <page
             id="org.wso2.developerstudio.visualdatamapper.diagram.printing"
             name="%prefpage.org.wso2.developerstudio.visualdatamapper.diagram.printing"
             category="org.wso2.developerstudio.visualdatamapper.diagram.general"
-            class="dataMapper.diagram.preferences.DiagramPrintingPreferencePage">
+            class="org.wso2.developerstudio.datamapper.diagram.preferences.DiagramPrintingPreferencePage">
       </page>
       <page
             id="org.wso2.developerstudio.visualdatamapper.diagram.rulersAndGrid"
             name="%prefpage.org.wso2.developerstudio.visualdatamapper.diagram.rulersAndGrid"
             category="org.wso2.developerstudio.visualdatamapper.diagram.general"
-            class="dataMapper.diagram.preferences.DiagramRulersAndGridPreferencePage">
+            class="org.wso2.developerstudio.datamapper.diagram.preferences.DiagramRulersAndGridPreferencePage">
       </page>
    </extension>
 
@@ -163,7 +163,7 @@
       <?gmfgen generated="true"?>
       <propertyContributor
             contributorId="org.wso2.developerstudio.visualdatamapper.diagram"
-            labelProvider="dataMapper.diagram.sheet.DataMapperSheetLabelProvider">
+            labelProvider="org.wso2.developerstudio.datamapper.diagram.sheet.DataMapperSheetLabelProvider">
          <propertyCategory category="domain"/>
          <propertyCategory category="visual"/>
          <propertyCategory category="extra"/>
@@ -214,17 +214,17 @@
          <propertySection
             id="property.section.domain" 
             tab="property.tab.domain"
-            class="dataMapper.diagram.sheet.DataMapperPropertySection">
+            class="org.wso2.developerstudio.datamapper.diagram.sheet.DataMapperPropertySection">
             <input type="org.eclipse.gmf.runtime.notation.View"/>
             <input type="org.eclipse.gef.EditPart"/>
-            <input type="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+            <input type="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
          </propertySection>
       </propertySections>
    </extension>
 
    <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
       <?gmfgen generated="true"?>
-      <viewProvider class="dataMapper.diagram.providers.DataMapperViewProvider">
+      <viewProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="DataMapper"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2002,2003,2005,2006,2007,2008,2009,2010,2011,3002,3003,3004,3005,3006,3007,3008,3009,3011,3012,3013,3014,3015,3016,3017,3018"/>
@@ -234,7 +234,7 @@
 
    <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
       <?gmfgen generated="true"?>
-      <editpartProvider class="dataMapper.diagram.providers.DataMapperEditPartProvider">
+      <editpartProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperEditPartProvider">
          <Priority name="Lowest"/>
          <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
             <method name="getType()" value="DataMapper"/>
@@ -257,134 +257,134 @@
 
    <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
       <?gmfgen generated="true"?>
-      <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfDataMapperRootEditPart">
+      <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfDataMapperRootEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.DataMapperRootEditPart" id="DataMapperRoot_1000"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart" id="DataMapperRoot_1000"/>
          <context elements="DataMapperRoot_1000"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInputEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInputEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.InputEditPart" id="Input_2002"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart" id="Input_2002"/>
          <context elements="Input_2002"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutputEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutputEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OutputEditPart" id="Output_2003"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OutputEditPart" id="Output_2003"/>
          <context elements="Output_2003"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfEqualEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfEqualEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.EqualEditPart" id="Equal_2005"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.EqualEditPart" id="Equal_2005"/>
          <context elements="Equal_2005"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfConcatEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfConcatEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.ConcatEditPart" id="Concat_2006"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart" id="Concat_2006"/>
          <context elements="Concat_2006"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfSplitEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfSplitEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.SplitEditPart" id="Split_2007"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.SplitEditPart" id="Split_2007"/>
          <context elements="Split_2007"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfConstantEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfConstantEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.ConstantEditPart" id="Constant_2008"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.ConstantEditPart" id="Constant_2008"/>
          <context elements="Constant_2008"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfLowerCaseEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfLowerCaseEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.LowerCaseEditPart" id="LowerCase_2009"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.LowerCaseEditPart" id="LowerCase_2009"/>
          <context elements="LowerCase_2009"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfContainsEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfContainsEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.ContainsEditPart" id="Contains_2010"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.ContainsEditPart" id="Contains_2010"/>
          <context elements="Contains_2010"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfUpperCaseEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfUpperCaseEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.UpperCaseEditPart" id="UpperCase_2011"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.UpperCaseEditPart" id="UpperCase_2011"/>
          <context elements="UpperCase_2011"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNodeEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNodeEditPart" id="TreeNode_3002"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart" id="TreeNode_3002"/>
          <context elements="TreeNode_3002"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNode2EditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNode2EditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNode2EditPart" id="TreeNode_3003"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode2EditPart" id="TreeNode_3003"/>
          <context elements="TreeNode_3003"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfAttributeEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfAttributeEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.AttributeEditPart" id="Attribute_3004"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.AttributeEditPart" id="Attribute_3004"/>
          <context elements="Attribute_3004"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNodeEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNodeEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.InNodeEditPart" id="InNode_3005"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.InNodeEditPart" id="InNode_3005"/>
          <context elements="InNode_3005"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNodeEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNodeEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OutNodeEditPart" id="OutNode_3006"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNodeEditPart" id="OutNode_3006"/>
          <context elements="OutNode_3006"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfElementEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfElementEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.ElementEditPart" id="Element_3007"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementEditPart" id="Element_3007"/>
          <context elements="Element_3007"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNode2EditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNode2EditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.InNode2EditPart" id="InNode_3008"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart" id="InNode_3008"/>
          <context elements="InNode_3008"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNode2EditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNode2EditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OutNode2EditPart" id="OutNode_3009"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart" id="OutNode_3009"/>
          <context elements="OutNode_3009"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNode3EditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfTreeNode3EditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.TreeNode3EditPart" id="TreeNode_3011"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNode3EditPart" id="TreeNode_3011"/>
          <context elements="TreeNode_3011"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorBasicContainerEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorBasicContainerEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OperatorBasicContainerEditPart" id="OperatorBasicContainer_3012"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorBasicContainerEditPart" id="OperatorBasicContainer_3012"/>
          <context elements="OperatorBasicContainer_3012"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorLeftContainerEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorLeftContainerEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OperatorLeftContainerEditPart" id="OperatorLeftContainer_3013"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftContainerEditPart" id="OperatorLeftContainer_3013"/>
          <context elements="OperatorLeftContainer_3013"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorLeftConnectorEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorLeftConnectorEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OperatorLeftConnectorEditPart" id="OperatorLeftConnector_3014"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorLeftConnectorEditPart" id="OperatorLeftConnector_3014"/>
          <context elements="OperatorLeftConnector_3014"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNode3EditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfInNode3EditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.InNode3EditPart" id="InNode_3015"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode3EditPart" id="InNode_3015"/>
          <context elements="InNode_3015"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorRightContainerEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorRightContainerEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OperatorRightContainerEditPart" id="OperatorRightContainer_3016"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRightContainerEditPart" id="OperatorRightContainer_3016"/>
          <context elements="OperatorRightContainer_3016"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorRightConnectorEditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOperatorRightConnectorEditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OperatorRightConnectorEditPart" id="OperatorRightConnector_3017"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OperatorRightConnectorEditPart" id="OperatorRightConnector_3017"/>
          <context elements="OperatorRightConnector_3017"/>
       </modelingAssistantProvider>
-            <modelingAssistantProvider class="dataMapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNode3EditPart">
+            <modelingAssistantProvider class="org.wso2.developerstudio.datamapper.diagram.providers.assistants.DataMapperModelingAssistantProviderOfOutNode3EditPart">
          <Priority name="Lowest"/>
-         <object class="dataMapper.diagram.edit.parts.OutNode3EditPart" id="OutNode_3018"/>
+         <object class="org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode3EditPart" id="OutNode_3018"/>
          <context elements="OutNode_3018"/>
       </modelingAssistantProvider>
       
@@ -392,7 +392,7 @@
 
    <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
       <?gmfgen generated="true"?>
-      <IconProvider class="dataMapper.diagram.providers.DataMapperIconProvider">
+      <IconProvider class="org.wso2.developerstudio.datamapper.diagram.providers.DataMapperIconProvider">
          <Priority name="Low"/>
       </IconProvider>
    </extension>
@@ -405,7 +405,7 @@
                name="%metatype.name.DataMapperRoot_1000"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="DataMapperRoot"
-               edithelper="dataMapper.diagram.edit.helpers.DataMapperRootEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.DataMapperRootEditHelper">
             <param name="semanticHint" value="1000"/>
          </metamodelType>
       </metamodel>
@@ -415,7 +415,7 @@
                name="%metatype.name.Input_2002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Input"
-               edithelper="dataMapper.diagram.edit.helpers.InputEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.InputEditHelper">
             <param name="semanticHint" value="2002"/>
          </metamodelType>
       </metamodel>
@@ -425,7 +425,7 @@
                name="%metatype.name.Output_2003"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Output"
-               edithelper="dataMapper.diagram.edit.helpers.OutputEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.OutputEditHelper">
             <param name="semanticHint" value="2003"/>
          </metamodelType>
       </metamodel>
@@ -435,7 +435,7 @@
                name="%metatype.name.Equal_2005"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Equal"
-               edithelper="dataMapper.diagram.edit.helpers.EqualEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.EqualEditHelper">
             <param name="semanticHint" value="2005"/>
          </metamodelType>
       </metamodel>
@@ -445,7 +445,7 @@
                name="%metatype.name.Concat_2006"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Concat"
-               edithelper="dataMapper.diagram.edit.helpers.ConcatEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.ConcatEditHelper">
             <param name="semanticHint" value="2006"/>
          </metamodelType>
       </metamodel>
@@ -455,7 +455,7 @@
                name="%metatype.name.Split_2007"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Split"
-               edithelper="dataMapper.diagram.edit.helpers.SplitEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.SplitEditHelper">
             <param name="semanticHint" value="2007"/>
          </metamodelType>
       </metamodel>
@@ -465,7 +465,7 @@
                name="%metatype.name.Constant_2008"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Constant"
-               edithelper="dataMapper.diagram.edit.helpers.ConstantEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.ConstantEditHelper">
             <param name="semanticHint" value="2008"/>
          </metamodelType>
       </metamodel>
@@ -475,7 +475,7 @@
                name="%metatype.name.LowerCase_2009"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="LowerCase"
-               edithelper="dataMapper.diagram.edit.helpers.LowerCaseEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.LowerCaseEditHelper">
             <param name="semanticHint" value="2009"/>
          </metamodelType>
       </metamodel>
@@ -485,7 +485,7 @@
                name="%metatype.name.Contains_2010"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Contains"
-               edithelper="dataMapper.diagram.edit.helpers.ContainsEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.ContainsEditHelper">
             <param name="semanticHint" value="2010"/>
          </metamodelType>
       </metamodel>
@@ -495,7 +495,7 @@
                name="%metatype.name.UpperCase_2011"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="UpperCase"
-               edithelper="dataMapper.diagram.edit.helpers.UpperCaseEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.UpperCaseEditHelper">
             <param name="semanticHint" value="2011"/>
          </metamodelType>
       </metamodel>
@@ -505,7 +505,7 @@
                name="%metatype.name.TreeNode_3002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="TreeNode"
-               edithelper="dataMapper.diagram.edit.helpers.TreeNodeEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.TreeNodeEditHelper">
             <param name="semanticHint" value="3002"/>
          </metamodelType>
       </metamodel>
@@ -524,7 +524,7 @@
                name="%metatype.name.Attribute_3004"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Attribute"
-               edithelper="dataMapper.diagram.edit.helpers.AttributeEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.AttributeEditHelper">
             <param name="semanticHint" value="3004"/>
          </metamodelType>
       </metamodel>
@@ -534,7 +534,7 @@
                name="%metatype.name.InNode_3005"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="InNode"
-               edithelper="dataMapper.diagram.edit.helpers.InNodeEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.InNodeEditHelper">
             <param name="semanticHint" value="3005"/>
          </metamodelType>
       </metamodel>
@@ -544,7 +544,7 @@
                name="%metatype.name.OutNode_3006"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="OutNode"
-               edithelper="dataMapper.diagram.edit.helpers.OutNodeEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.OutNodeEditHelper">
             <param name="semanticHint" value="3006"/>
          </metamodelType>
       </metamodel>
@@ -554,7 +554,7 @@
                name="%metatype.name.Element_3007"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="Element"
-               edithelper="dataMapper.diagram.edit.helpers.ElementEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.ElementEditHelper">
             <param name="semanticHint" value="3007"/>
          </metamodelType>
       </metamodel>
@@ -591,7 +591,7 @@
                name="%metatype.name.OperatorBasicContainer_3012"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="OperatorBasicContainer"
-               edithelper="dataMapper.diagram.edit.helpers.OperatorBasicContainerEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.OperatorBasicContainerEditHelper">
             <param name="semanticHint" value="3012"/>
          </metamodelType>
       </metamodel>
@@ -601,7 +601,7 @@
                name="%metatype.name.OperatorLeftContainer_3013"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="OperatorLeftContainer"
-               edithelper="dataMapper.diagram.edit.helpers.OperatorLeftContainerEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.OperatorLeftContainerEditHelper">
             <param name="semanticHint" value="3013"/>
          </metamodelType>
       </metamodel>
@@ -611,7 +611,7 @@
                name="%metatype.name.OperatorLeftConnector_3014"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="OperatorLeftConnector"
-               edithelper="dataMapper.diagram.edit.helpers.OperatorLeftConnectorEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.OperatorLeftConnectorEditHelper">
             <param name="semanticHint" value="3014"/>
          </metamodelType>
       </metamodel>
@@ -630,7 +630,7 @@
                name="%metatype.name.OperatorRightContainer_3016"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="OperatorRightContainer"
-               edithelper="dataMapper.diagram.edit.helpers.OperatorRightContainerEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.OperatorRightContainerEditHelper">
             <param name="semanticHint" value="3016"/>
          </metamodelType>
       </metamodel>
@@ -640,7 +640,7 @@
                name="%metatype.name.OperatorRightConnector_3017"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="OperatorRightConnector"
-               edithelper="dataMapper.diagram.edit.helpers.OperatorRightConnectorEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.OperatorRightConnectorEditHelper">
             <param name="semanticHint" value="3017"/>
          </metamodelType>
       </metamodel>
@@ -659,7 +659,7 @@
                name="%metatype.name.DataMapperLink_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="DataMapperLink"
-               edithelper="dataMapper.diagram.edit.helpers.DataMapperLinkEditHelper">
+               edithelper="org.wso2.developerstudio.datamapper.diagram.edit.helpers.DataMapperLinkEditHelper">
             <param name="semanticHint" value="4001"/>
          </metamodelType>
       </metamodel>
@@ -712,7 +712,7 @@
            type="org.eclipse.emf.common.ui.URIEditorInput"
            namespace="org.wso2.developerstudio.visualdatamapper.diagram"
            properties="isURIEditorInput"
-           class="dataMapper.diagram.part.DataMapperUriEditorInputTester">
+           class="org.wso2.developerstudio.datamapper.diagram.part.DataMapperUriEditorInputTester">
        </propertyTester>
    </extension>
 
@@ -736,7 +736,7 @@
 
 	<extension point="org.eclipse.ui.navigator.navigatorContent">  
         <actionProvider
-             class="dataMapper.diagram.navigator.DataMapperNavigatorActionProvider"
+             class="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorActionProvider"
              id="dataMapper.diagram.navigator.DataMapperNavigatorActionProvider"> 
 			<enablement>
      			<adapt type="org.eclipse.core.resources.IFile" /> 
@@ -818,7 +818,7 @@
       <?gmfgen generated="true"?>
       <linkHelper
             id="org.wso2.developerstudio.visualdatamapper.diagram.navigatorLinkHelper"
-            class="dataMapper.diagram.navigator.DataMapperNavigatorLinkHelper">
+            class="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorLinkHelper">
          <editorInputEnablement>
             <and>
                <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
@@ -826,7 +826,7 @@
             </and>
          </editorInputEnablement>
          <selectionEnablement>
-            <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+            <instanceof value="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
          </selectionEnablement>
       </linkHelper>
    </extension>
@@ -834,17 +834,17 @@
       <?gmfgen generated="true"?>
       <command
          categoryId="org.eclipse.ui.category.edit"
-         defaultHandler="dataMapper.diagram.part.DataMapperDiagramUpdateCommand"
+         defaultHandler="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramUpdateCommand"
          description="%update.diagram.description"
-         id="dataMapper.diagram.updateDiagram"
+         id="org.wso2.developerstudio.datamapper.diagram.updateDiagram"
          name="%update.diagram.name"/>
    </extension>
    
    <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
       <?gmfgen generated="true"?>
       <key 
-         commandId="dataMapper.diagram.updateDiagram"
-         contextId="dataMapper.diagram.ui.diagramContext"
+         commandId="org.wso2.developerstudio.datamapper.diagram.updateDiagram"
+         contextId="org.wso2.developerstudio.datamapper.diagram.ui.diagramContext"
          schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
          sequence="F5"/>
    </extension>
@@ -859,9 +859,9 @@
          <command commandId="org.wso2.developerstudio.visualdatamapper.diagram.LoadResourceAction">
             <visibleWhen>
                <and>
-                  <with variable="activePartId"><equals value="dataMapper.diagram.part.DataMapperDiagramEditorID"/></with>
+                  <with variable="activePartId"><equals value="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID"/></with>
                   <with variable="selection"><iterate ifEmpty="false"> 
-                     <instanceof value="dataMapper.diagram.edit.parts.DataMapperRootEditPart"/>
+                     <instanceof value="org.wso2.developerstudio.datamapper.diagram.edit.parts.DataMapperRootEditPart"/>
                   </iterate></with>
                </and>
             </visibleWhen>
@@ -871,11 +871,11 @@
 
    <extension point="org.eclipse.ui.commands" id="menu-commands">
       <?gmfgen generated="true"?>
-      <category id="dataMapper.diagram.part.DataMapperDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <category id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
       <command id="org.wso2.developerstudio.visualdatamapper.diagram.LoadResourceAction"
          name="Load Resource"
-         categoryId="dataMapper.diagram.part.DataMapperDiagramEditorID"
-         defaultHandler="dataMapper.diagram.part.LoadResourceAction"/>
+         categoryId="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID"
+         defaultHandler="org.wso2.developerstudio.datamapper.diagram.part.LoadResourceAction"/>
    </extension>
 
    <extension point="org.eclipse.ui.handlers" id="menu-handlers">
@@ -883,7 +883,7 @@
    </extension>
    
    <extension point="org.eclipse.ui.startup">
- 		<startup class="dataMapper.diagram.custom.startup.DataMapperEditorStartup"/>
+ 		<startup class="org.wso2.developerstudio.datamapper.diagram.custom.startup.DataMapperEditorStartup"/>
    </extension>
    
    	<extension point="org.eclipse.core.contenttype.contentTypes">
@@ -892,7 +892,7 @@
 			id="org.wso2.developerstudio.eclipse.datamapper.contenttype.datamapperconfig"
 			name="Data Mapper Configuration File" priority="high">
 	        <describer
-				class="dataMapper.diagram.custom.util.DataMapperContentDescriber">	
+				class="org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperContentDescriber">	
 			</describer>
 		</content-type>
 	</extension>
@@ -902,8 +902,8 @@
             id="org.wso2.developerstudio.visualdatamapper.diagram.resourceContent" 
             name="%navigatorContentName" 
             priority="normal" 
-            contentProvider="dataMapper.diagram.navigator.DataMapperNavigatorContentProvider" 
-            labelProvider="dataMapper.diagram.navigator.DataMapperNavigatorLabelProvider"
+            contentProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorContentProvider" 
+            labelProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorLabelProvider"
             icon="icons/obj16/DataMapperDiagramFile.gif"
             activeByDefault="true">
          <triggerPoints>
@@ -912,24 +912,24 @@
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
         	      <test property="org.eclipse.core.resources.extension" value="datamapper_diagram"/>
                </and>
-               <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+               <instanceof value="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
             </or>
          </triggerPoints>
          <possibleChildren>
             <or>
-         	   <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+         	   <instanceof value="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
             </or>
          </possibleChildren>
          <commonSorter 
                id="org.wso2.developerstudio.visualdatamapper.diagram.navigatorSorter" 
-               class="dataMapper.diagram.navigator.DataMapperNavigatorSorter">
+               class="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorSorter">
             <parentExpression>
                <or>
 	              <and>
     	             <instanceof value="org.eclipse.core.resources.IFile"/>
         	         <test property="org.eclipse.core.resources.extension" value="datamapper_diagram"/>
                   </and>
-                  <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+                  <instanceof value="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
                </or>
             </parentExpression>
          </commonSorter>
@@ -938,8 +938,8 @@
             id="org.wso2.developerstudio.visualdatamapper.diagram.domainResourceContent" 
             name="%domainNavigatorContentName" 
             priority="normal" 
-            contentProvider="dataMapper.diagram.navigator.DataMapperDomainNavigatorContentProvider" 
-            labelProvider="dataMapper.diagram.navigator.DataMapperDomainNavigatorLabelProvider"
+            contentProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorContentProvider" 
+            labelProvider="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorLabelProvider"
             icon="icons/obj16/DataMapperDiagramFile.gif"
             activeByDefault="true">
          <triggerPoints>
@@ -948,19 +948,19 @@
     	          <instanceof value="org.eclipse.core.resources.IFile"/>
         	      <test property="org.eclipse.core.resources.extension" value="datamapper"/>
                </and>
-               <instanceof value="dataMapper.diagram.navigator.DataMapperDomainNavigatorItem"/>
+               <instanceof value="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem"/>
             </or>
          </triggerPoints>
          <possibleChildren>
-            <instanceof value="dataMapper.diagram.navigator.DataMapperDomainNavigatorItem"/>
+            <instanceof value="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem"/>
          </possibleChildren>
       </navigatorContent>
       <actionProvider
             id="org.wso2.developerstudio.visualdatamapper.diagram.navigatorActionProvider"
-            class="dataMapper.diagram.navigator.DataMapperNavigatorActionProvider">
+            class="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorActionProvider">
          <enablement>
             <or>
-               <instanceof value="dataMapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
+               <instanceof value="org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperAbstractNavigatorItem"/>
             </or>
          </enablement>
       </actionProvider>

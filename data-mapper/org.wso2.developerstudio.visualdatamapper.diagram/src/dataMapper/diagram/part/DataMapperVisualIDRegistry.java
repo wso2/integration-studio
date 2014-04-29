@@ -400,6 +400,9 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case dataMapper.diagram.edit.parts.TreeNodeEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.TreeNodeNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -411,6 +414,9 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.TreeNodeName2EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -430,6 +436,9 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case dataMapper.diagram.edit.parts.ElementEditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.ElementNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (dataMapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
@@ -438,6 +447,9 @@ public class DataMapperVisualIDRegistry {
 			}
 			break;
 		case dataMapper.diagram.edit.parts.TreeNode3EditPart.VISUAL_ID:
+			if (dataMapper.diagram.edit.parts.TreeNodeName3EditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (dataMapper.diagram.edit.parts.TreeNode2EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}

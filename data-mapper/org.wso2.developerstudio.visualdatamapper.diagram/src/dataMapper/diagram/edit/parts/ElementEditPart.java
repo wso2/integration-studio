@@ -5,8 +5,6 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
@@ -20,15 +18,12 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
-import org.eclipse.gef.palette.PaletteContainer;
-import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
@@ -36,7 +31,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -140,8 +134,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	/**
 	 * @generated
 	 */
-	public RectangleFigure getPrimaryShape() {
-		return (RectangleFigure) primaryShape;
+	public ElementFigure getPrimaryShape() {
+		return (ElementFigure) primaryShape;
 	}
 
 	/*
@@ -161,6 +155,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 * Output, dont add outNodes
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof dataMapper.diagram.edit.parts.ElementNameEditPart) {
+			((dataMapper.diagram.edit.parts.ElementNameEditPart) childEditPart)
+					.setLabel(getPrimaryShape().getFigureElementNameFigure());
+			return true;
+		}
 
 		/*		if (childEditPart instanceof InNode2EditPart || childEditPart instanceof InNodeEditPart) {
 		
@@ -383,11 +382,41 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		return false;
 	}
 
+	/**
+	 * @generated
+	 */
+	protected boolean removeFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof dataMapper.diagram.edit.parts.ElementNameEditPart) {
+			return true;
+		}
+		if (childEditPart instanceof dataMapper.diagram.edit.parts.InNode2EditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(
+					((dataMapper.diagram.edit.parts.InNode2EditPart) childEditPart).getFigure());
+			return true;
+		}
+		if (childEditPart instanceof dataMapper.diagram.edit.parts.OutNode2EditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(
+					((dataMapper.diagram.edit.parts.OutNode2EditPart) childEditPart).getFigure());
+			return true;
+		}
+		return false;
+	}
+
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (addFixedChild(childEditPart)) {
 			return;
 		}
 		super.addChildVisual(childEditPart, -1);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
 	}
 
 	/**
@@ -498,9 +527,22 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * @generated
+	 */
+	public EditPart getPrimaryChildEditPart() {
+		return getChildBySemanticHint(dataMapper.diagram.part.DataMapperVisualIDRegistry
+				.getType(dataMapper.diagram.edit.parts.ElementNameEditPart.VISUAL_ID));
+	}
+
+	/**
 	 * @generated NOT
 	 */
 	public class ElementFigure extends RectangleFigure {
+
+		/**
+		 * @generated
+		 */
+		private WrappingLabel fFigureElementNameFigure;
 
 		/**
 		 * @generated NOT
@@ -578,7 +620,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			mainImageRectangle.setPreferredSize(new Dimension(20, 8));
 			mainImageRectangle.add(mainImg);
 
-			WrappingLabel fFigureFileNameFigure = new WrappingLabel(); // element nme holding rectangle
+			fFigureElementNameFigure = new WrappingLabel(); // element nme holding rectangle
 			/*String name = (((Element) ((View) getModel()).getElement()).getName()).split(",")[1];
 			int tabCount = Integer
 					.parseInt((((Element) ((View) getModel()).getElement()).getName()).split(",")[0]);*/
@@ -587,9 +629,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			figure.setPreferredSize((tabCount - 1) * 30, 100);
 
-			fFigureFileNameFigure.setText(name);
-			fFigureFileNameFigure.setForegroundColor(ColorConstants.black);
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
+			fFigureElementNameFigure.setText(name);
+			fFigureElementNameFigure.setForegroundColor(ColorConstants.black);
+			fFigureElementNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 
 			figure.setOutline(false);
 			mainImageRectangle.setOutline(false);
@@ -599,9 +641,16 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			this.setFill(false);
 			this.add(figure);
 			this.add(mainImageRectangle);
-			this.add(fFigureFileNameFigure);
+			this.add(fFigureElementNameFigure);
 			//this.setMinimumSize(new Dimension(100, 20));
 
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureElementNameFigure() {
+			return fFigureElementNameFigure;
 		}
 
 	}

@@ -37,12 +37,12 @@ public class JavaScriptGenerator {
 	private Queue<Character> indexSequence;
 	private Set<Integer> elementSet;
 	private Loop lasLoop;
-	private List<Operator> operation;
+	private List<MappingWire> operation;
 	private Map<String, Loop> loopMap;
 	private List<String> bodys;
 
 	
-	public JavaScriptGenerator(List<Operator> operation,String inputRoot,String outRoot) {
+	public JavaScriptGenerator(List<MappingWire> operation,String inputRoot,String outRoot) {
 		characters = new Stack<Character>();
 		this.operation = operation;
 		indexSequence = new PriorityQueue<Character>();
@@ -71,7 +71,7 @@ public class JavaScriptGenerator {
          
 	public void generate() throws Exception {
 	 
-			for (Operator operator : operation) {
+			for (MappingWire operator : operation) {
 				Map<Integer, String> inputs = operator.getInputs();
 				Map<Integer, String> outputs = operator.getOutputs();
 				elementSet.clear();
@@ -103,7 +103,7 @@ public class JavaScriptGenerator {
 										// not yet created
 										Character indexChar = characters.pop();
 										loop = new Loop(indexChar);
-										indexSequence.add(indexChar);
+										//indexSequence.add(indexChar);
 										loopMap.put(element, loop);
 									}
 									loop.setSource(source);
@@ -163,7 +163,7 @@ public class JavaScriptGenerator {
 	}
 
 	private String doAssigneOperation(String inputWire, String outWire) {
-		return inputWire + " = " + outWire + ";";
+		return outWire + " = " + inputWire + ";";
 	}
 
 	private void createLoopBody(String[] inelements, String[] outelements) {
@@ -177,13 +177,14 @@ public class JavaScriptGenerator {
 	private void createLoopTemplate(String[] elements, Loop loop, int currentIndex, String source) {
 		// Loop loop = new Loop();
 		lasLoop = loop;
+		indexSequence.add(loop.getIndex());
 		for (int i = currentIndex; i < elements.length; i++) {
 			if (elements[i].contains(ARRAY)) {
 				Loop nestedloop = loop.getLoops().get(elements[i]);
 				if (nestedloop == null) {
 					Character indexChar = characters.pop();
 					nestedloop = new JavaScriptGenerator.Loop(indexChar);
-					indexSequence.add(indexChar);
+				//	indexSequence.add(indexChar);
 					nestedloop.setSource(source);
 					loop.getLoops().put(elements[i], nestedloop);
 				}

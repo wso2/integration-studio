@@ -3,6 +3,7 @@
 package dataMapper.provider;
 
 
+import dataMapper.Equal;
 import java.util.Collection;
 import java.util.List;
 
@@ -74,7 +75,8 @@ public class EqualItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Equal_type");
+		Equal equal = (Equal)object;
+		return getString("_UI_Equal_type") + " " + equal.isSerialized();
 	}
 
 	/**

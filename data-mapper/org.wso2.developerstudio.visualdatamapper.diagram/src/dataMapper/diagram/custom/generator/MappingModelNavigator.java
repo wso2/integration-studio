@@ -24,9 +24,12 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.visualdatamapper.diagram.Activator;
 
+import dataMapper.Concat;
 import dataMapper.DataMapperLink;
 import dataMapper.DataMapperRoot;
 import dataMapper.Element;
+import dataMapper.Operator;
+import dataMapper.OperatorLeftConnector;
 import dataMapper.SchemaDataType;
 import dataMapper.TreeNode;
 import dataMapper.diagram.custom.persistence.OperatorConfigurationUtil;
@@ -66,7 +69,7 @@ public class MappingModelNavigator {
 	 * @return
 	 */
 	public String getMappingConfig(DataMapperRoot rootDiagram) {
-		List<Operator> operations = new ArrayList<Operator>();
+		List<MappingWire> operations = new ArrayList<MappingWire>();
 		traverseInputTree(rootDiagram.getInput().getTreeNode().get(0), operations);
 
 		String inputRoot = rootDiagram.getInput().getTreeNode().get(0).getName();
@@ -97,7 +100,7 @@ public class MappingModelNavigator {
 	 * @param treeNode
 	 * @param operations
 	 */
-	private void traverseInputTree(TreeNode treeNode, List<Operator> operations) {
+	private void traverseInputTree(TreeNode treeNode, List<MappingWire> operations) {
 
 		// Iterator over each element and check whether elements are mapped.
 		for (Element element : treeNode.getElement()) {
@@ -106,7 +109,7 @@ public class MappingModelNavigator {
 				EList<DataMapperLink> elementLinkList = element.getOutNode().getOutgoingLink();
 
 				for (DataMapperLink mappingLink : elementLinkList) {
-					Operator operator = null;
+					MappingWire operator = null;
 					if (isDirectMapping(mappingLink)) {
 						// Link is directly connected with output element.
 						operator = createAssignOperator(element, mappingLink);
@@ -165,8 +168,8 @@ public class MappingModelNavigator {
 	 * @param mappingLink
 	 * @return
 	 */
-	private Operator createAssignOperator(Element mappedInputElement, DataMapperLink mappingLink) {
-		Operator assignOperator = new Operator(OperatorName.ASSIGNE);
+	private MappingWire createAssignOperator(Element mappedInputElement, DataMapperLink mappingLink) {
+		MappingWire assignOperator = new MappingWire(OperatorName.ASSIGNE);
 
 		String inputMappingStatement = getElementHierarchy(mappedInputElement);
 		assignOperator.getInputs().put(1, inputMappingStatement);
@@ -178,12 +181,33 @@ public class MappingModelNavigator {
 		return assignOperator;
 	}
 
-	/*
-	 * private Operator createOperator(Element mappedInputElement,
-	 * DataMapperLink mappingLink) { Operator operator = null;
+	/**
+	 * Create Operator with relevant mapping operation parameters.
 	 * 
-	 * return operator; }
+	 * @param mappedInputElement
+	 * @param mappingLink
+	 * @return
 	 */
+	/*private MappingWire createOperator(Element mappedInputElement, DataMapperLink mappingLink) {
+		MappingWire mappingWire = null;
+		int index = 1;
+
+		Operator operator = getOperatorFromLink(mappingLink);
+		if (operator != null && !operator.isSerialized()) {
+			operator.setSerialized(true);
+
+			if (operator instanceof Concat) {
+				mappingWire = new MappingWire(OperatorName.CONCAT);
+				List<Element> concatInput = getInputElements(operator);
+				for(Element element : concatInput){
+					mappingWire.getInputs().put(index, getElementHierarchy(element));
+					index++;
+				}
+			}
+		}
+
+		return mappingWire;
+	}*/
 
 	/**
 	 * Get element hierarchy from root element.
@@ -226,5 +250,23 @@ public class MappingModelNavigator {
 		}
 
 		return elementHierarchy.toString();
+	}
+
+	private Operator getOperatorFromLink(DataMapperLink mappingLink) {
+		return (Operator) mappingLink.getInNode().eContainer().eContainer().eContainer()
+				.eContainer();
+	}
+
+	private List<Element> getInputElements(Operator operator) {
+		EList<OperatorLeftConnector> leftConnectors = operator.getBasicContainer()
+				.getLeftContainer().getLeftConnectors();
+		List<Element> elementList = new ArrayList<Element>();
+		for (OperatorLeftConnector connector : leftConnectors) {
+			if (connector.getInNode().getIncomingLink().size() != 0) {
+				elementList.add(connector.getInNode().getIncomingLink().get(0).getOutNode()
+						.getElementParent());
+			}
+		}
+		return elementList;
 	}
 }

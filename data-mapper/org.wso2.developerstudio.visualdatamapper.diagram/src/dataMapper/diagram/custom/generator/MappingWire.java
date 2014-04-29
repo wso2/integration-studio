@@ -19,14 +19,14 @@ package dataMapper.diagram.custom.generator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Operator {
+public class MappingWire {
 
 	private Map<Integer, String> inputs;
 	private Map<Integer, String> outputs;
 	//private String name;
 	private OperatorName operatorName;
 
-	public Operator(OperatorName operatorName) {
+	public MappingWire(OperatorName operatorName) {
 		this.operatorName = operatorName;
 		inputs = new HashMap<Integer, String>();
 		outputs = new HashMap<Integer, String>();

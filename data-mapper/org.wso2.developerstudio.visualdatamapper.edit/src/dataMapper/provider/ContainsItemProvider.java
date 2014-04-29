@@ -3,6 +3,7 @@
 package dataMapper.provider;
 
 
+import dataMapper.Contains;
 import java.util.Collection;
 import java.util.List;
 
@@ -74,7 +75,8 @@ public class ContainsItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Contains_type");
+		Contains contains = (Contains)object;
+		return getString("_UI_Contains_type") + " " + contains.isSerialized();
 	}
 
 	/**

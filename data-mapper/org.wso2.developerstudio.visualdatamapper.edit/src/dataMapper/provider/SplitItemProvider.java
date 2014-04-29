@@ -125,10 +125,8 @@ public class SplitItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Split)object).getDelimiter();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Split_type") :
-			getString("_UI_Split_type") + " " + label;
+		Split split = (Split)object;
+		return getString("_UI_Split_type") + " " + split.isSerialized();
 	}
 
 	/**

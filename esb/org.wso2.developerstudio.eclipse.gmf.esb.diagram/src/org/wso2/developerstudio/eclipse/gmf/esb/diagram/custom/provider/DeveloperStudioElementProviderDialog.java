@@ -51,6 +51,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.wso2.developerstudio.datamapper.diagram.custom.util.CreateNewConfigurationDialog;
 import org.wso2.developerstudio.eclipse.esb.core.EsbConfigurationManager;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
@@ -63,8 +64,6 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProvider;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioProviderData;
-
-import dataMapper.diagram.custom.util.CreateNewConfigurationDialog;
 
 
 public class DeveloperStudioElementProviderDialog extends Dialog {

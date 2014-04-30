@@ -74,9 +74,9 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 	private Composite repoTypeComposite;
 	private Composite appOwnerComposite;
 	private Composite descriptionComposite;
-	private Composite databaseInfoComposite;
+/*	private Composite databaseInfoComposite;
 	private Composite databaseUsersComposite;
-	private Composite databaseTemplatesComposite;
+	private Composite databaseTemplatesComposite;*/
 	private TabFolder tabFolder;
 	private TabItem appInfoTabItem;
 	private TabItem currentStatusTabItem;
@@ -193,7 +193,7 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 	/**
 	 * Update page content on based on the selected tab
 	 */
-	private void updatePageContent() {
+	/*private void updatePageContent() {
 		int selectionIndex = tabFolder.getSelectionIndex();
 		TabItem item = tabFolder.getItem(selectionIndex);
 
@@ -205,7 +205,7 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 			// Team tab
 		}
 	}
-
+*/
 	/**
 	 * Create application information tab page
 	 */

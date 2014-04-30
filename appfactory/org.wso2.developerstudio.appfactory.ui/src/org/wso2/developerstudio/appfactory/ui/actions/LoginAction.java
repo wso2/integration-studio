@@ -36,8 +36,8 @@ public class LoginAction {
 	 private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	 private String username="";
 	 private String password="";
-	 private Authenticator authenticator;
-	 private UserPasswordCredentials credentials;
+/*	 private Authenticator authenticator;
+	 private UserPasswordCredentials credentials;*/
 	 private Shell activeShell;
 	 private IPreferenceStore preferenceStore;
 	 private boolean isCansel;
@@ -61,7 +61,7 @@ public class LoginAction {
 
 	public LoginAction() throws Exception{
 		 preferenceStore = Activator.getDefault().getPreferenceStore();
-		 authenticator = Authenticator.getInstance();
+	//	 authenticator = Authenticator.getInstance();
 		 activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
 		 preferenceStore.setDefault(AppFactoryPreferencePage.APP_FACTORY_LOCATION, JagApiProperties.getDomain());
 		 setLoginUrl(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_LOCATION));
@@ -139,7 +139,7 @@ public class LoginAction {
 	}
 	
 	private void showLoginDialog(boolean isFromDashboad){
-		  PasswordDialog dialog = new PasswordDialog(activeShell);
+		  PasswordDialog dialog = new PasswordDialog(activeShell, this);
 		  dialog.setHost(JagApiProperties.getDomain());
 		  dialog.setUser(getUsername());
 		  dialog.setPassword(getPassword());

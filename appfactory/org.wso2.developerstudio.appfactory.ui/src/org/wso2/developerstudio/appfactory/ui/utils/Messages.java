@@ -33,6 +33,8 @@ public class Messages extends NLS {
 	public static String AppfactoryApplicationListView_getApplist_plog_msg_3;
 	public static String AppfactoryApplicationListView_getAppVersions_job_title;
 	public static String AppfactoryApplicationListView_getAppVersions_monitor_text_1;
+	public static String AppfactoryApplicationListView_getForkedAppVersions_job_title;
+	public static String AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_pError_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_pInfo_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_plog_1;

@@ -60,8 +60,6 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.jface.wizard.IWizard;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.jgit.api.errors.CheckoutConflictException;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRefNameException;
@@ -74,14 +72,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
-import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IViewSite;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
-import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.osgi.framework.Bundle;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -91,6 +85,7 @@ import org.wso2.developerstudio.appfactory.core.client.HttpsJaggeryClient;
 import org.wso2.developerstudio.appfactory.core.client.HttpsJenkinsClient;
 import org.wso2.developerstudio.appfactory.core.jag.api.JagApiProperties;
 import org.wso2.developerstudio.appfactory.core.model.AppListModel;
+import org.wso2.developerstudio.appfactory.core.model.AppVersionGroup;
 import org.wso2.developerstudio.appfactory.core.model.AppVersionInfo;
 import org.wso2.developerstudio.appfactory.core.model.ApplicationInfo;
 import org.wso2.developerstudio.appfactory.core.repository.JgitRepoManager;
@@ -113,13 +108,17 @@ public class AppfactoryApplicationListView extends ViewPart {
 	public static final String ID = "org.wso2.developerstudio.appfactory.ui.views.AppfactoryView"; //$NON-NLS-1$
 	
 	public static final String REPO_WIZARD_ID = "org.eclipse.egit.ui.internal.clone.GitCloneWizard"; //$NON-NLS-1$
+	
+	public static final String FORKED_REPO_SUFFIX = "_forked";
+	
+	public static final String MAIN_REPO_SUFFIX = "_main";
 
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 	private static AppfactoryApplicationDetailsView appDetailView;
 	
 	private TreeViewer viewer;
-	private Composite parent; 
+	//private Composite parent; 
 	private AppListModel model;
 	private AppListLabelProvider labelProvider;
 	private AppListContentProvider contentProvider;
@@ -168,7 +167,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 
 	public void createPartControl(Composite parent) {
-        this.parent = parent;
+      //  this.parent = parent;
         contentProvider = new AppListContentProvider(appLists);
         labelProvider = new AppListLabelProvider();
         createToolbar();
@@ -210,6 +209,9 @@ public class AppfactoryApplicationListView extends ViewPart {
 					if (selectedNode instanceof AppVersionInfo) {
 						viewer.setExpandedState(selectedNode,
 								!viewer.getExpandedState(selectedNode));
+					}else if (selectedNode instanceof AppVersionGroup) {
+						viewer.setExpandedState(selectedNode,
+								!viewer.getExpandedState(selectedNode));
 					}
 				} catch (Throwable e) {
 					  /*safe to ignore*/
@@ -240,16 +242,24 @@ public class AppfactoryApplicationListView extends ViewPart {
 						    	manager.add(buildInfoAction(appVersionInfo)); 
 						    	
 						    	
+						    	
 						    }else if (selection.getFirstElement() instanceof ApplicationInfo){
 						    	ApplicationInfo appInfo = (ApplicationInfo) selection.getFirstElement();
 						    	String title =""; //$NON-NLS-1$
+						    	
 						        if(appInfo.getappVersionList().isEmpty()){
 						        	title = "Open  "; //$NON-NLS-1$
 						        }else{
 						        	title = "Update"; //$NON-NLS-1$
 						        }
+						        
+						      
 						    	manager.add(appOpenAction(appInfo,title));
 						        manager.add(repoSettingsAction(appInfo));
+						    }else if (selection.getFirstElement() instanceof AppVersionGroup){
+						    	
+						    //	AppVersionGroup group = (AppVersionGroup) selection.getFirstElement();
+						    	// TODO     	
 						    }
 						}
 					} catch (Throwable e) {
@@ -280,7 +290,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 
 	
-	@SuppressWarnings("restriction")
 	private void doSubscribe() {
 		 
 		buildhandler = getBuildLogEventHandler();
@@ -302,7 +311,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 		broker.subscribe("Projectupdate",projectOpenhandler); //$NON-NLS-1$
 	}
 	
-	@SuppressWarnings("restriction")
 	private void doUnSubscribe() {
 		broker.unsubscribe(buildhandler); //$NON-NLS-1$
 		broker.unsubscribe(apphandler); //$NON-NLS-1$
@@ -311,13 +319,10 @@ public class AppfactoryApplicationListView extends ViewPart {
 		broker.unsubscribe(infoLoghandler); //$NON-NLS-1$
 		broker.unsubscribe(projectOpenhandler); //$NON-NLS-1$
 	}
-	@SuppressWarnings("restriction")
-	
 	private void printErrorLog(String msg){
 		 broker.send("Errorupdate", "\n"+"["+new Timestamp(new Date().getTime()) +"] : "+msg); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 	}
 	
-	@SuppressWarnings("restriction")
 	private void printInfoLog(String msg){
 		 broker.send("Infoupdate", "\n"+"["+new Timestamp(new Date().getTime()) +"] : "+msg); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 	}
@@ -327,7 +332,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			public void handleEvent(final Event event) {
  
 				Display.getDefault().asyncExec(new Runnable() {
-					@SuppressWarnings({ "unchecked", "restriction" })
+					@SuppressWarnings({ "unchecked" })
 					@Override
 					public void run() {
             			List<ApplicationInfo> oldappLists = appLists;
@@ -369,7 +374,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 
 					@Override
 					public void run() {
-						@SuppressWarnings("restriction")
 						AppListModel refModel = (AppListModel) event.getProperty(IEventBroker.DATA);
 						contentProvider.inputChanged(viewer, model, refModel);
 						viewer.refresh();
@@ -386,7 +390,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 				final Display display = Display.getDefault();
 				Display.getDefault().asyncExec(new Runnable() {
 
-					@SuppressWarnings("restriction")
 					@Override
 					public void run() {
 						buildOut.setColor(SWTResourceManager.getColor(SWT.COLOR_DARK_CYAN));
@@ -403,7 +406,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 				
 				Display.getDefault().asyncExec(new Runnable() {
 
-					@SuppressWarnings("restriction")
 					@Override
 					public void run() {
 						errorOut.setColor(SWTResourceManager.getColor(SWT.COLOR_RED));
@@ -419,7 +421,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 			public void handleEvent(final Event event) {
 				Display.getDefault().asyncExec(new Runnable() {
 
-					@SuppressWarnings("restriction")
 					@Override
 					public void run() {
 						infoOut.setColor(SWTResourceManager.getColor(SWT.COLOR_BLACK));
@@ -542,8 +543,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 	private void  updateApplicationView(){
 		Job job = new Job(Messages.AppfactoryApplicationListView_updateApplicationView_job_title) {
-		   @SuppressWarnings("restriction")
-			@Override
+		   @Override
 			  protected IStatus run(final IProgressMonitor monitor) {
 				monitor.beginTask(Messages.AppfactoryApplicationListView_updateApplicationView_monitor_text_0, 100);
 				  UISynchronize uiSynchronize = new UISynchronize() {
@@ -585,8 +585,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 	private void  getAppVersions(final ApplicationInfo appInfo){
 		Job job = new Job(Messages.AppfactoryApplicationListView_getAppVersions_job_title) {
-		   @SuppressWarnings("restriction")
-			@Override
+		   @Override
 			  protected IStatus run(final IProgressMonitor monitor) {
 				monitor.beginTask(Messages.AppfactoryApplicationListView_getAppVersions_monitor_text_1, 100);
 				  UISynchronize uiSynchronize = new UISynchronize() {
@@ -599,6 +598,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 							appInfo.setLableState(1);
 							broker.send("Appversionupdate", model); //$NON-NLS-1$
 							if(getVersionInfo(appInfo, monitor)){
+								getForkedVersionsInfo(appInfo, monitor);
 								getTeamInfo(appInfo, monitor);
 								//getDbInfo(appInfo, monitor);/*currently not supporting*/
 								getDSInfo(appInfo, monitor);
@@ -622,7 +622,31 @@ public class AppfactoryApplicationListView extends ViewPart {
 							}
 							if(result){
 							monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
-							monitor.worked(40);	 
+							monitor.worked(30);	 
+							broker.send("Appversionupdate", model); //$NON-NLS-1$
+							monitor.worked(32);
+							return true;
+							}else{
+
+								return false;
+							}
+						}
+						
+						private boolean getForkedVersionsInfo(
+								final ApplicationInfo appInfo,
+								final IProgressMonitor monitor) {
+							monitor.subTask(Messages.AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1);
+							monitor.worked(38);	   
+							boolean result = model.setForkedRepoInfo(appInfo);
+							if(!result){
+								boolean reLogin = Authenticator.getInstance().reLogin();
+								if(reLogin){
+									result = model.setForkedRepoInfo(appInfo);
+								}
+							}
+							if(result){
+							monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
+							monitor.worked(42);	 
 							broker.send("Appversionupdate", model); //$NON-NLS-1$
 							monitor.worked(50);
 							return true;
@@ -719,7 +743,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 		 
 		Job job = new Job(Messages.AppfactoryApplicationListView_getbuildLogsJob_title) {
 		 
-			@SuppressWarnings("restriction")
 			@Override
 			protected IStatus run(final IProgressMonitor monitor) {
 				UISynchronize uiSynchronize = new UISynchronize() {
@@ -1088,8 +1111,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 	private void getcheckoutJob(final AppVersionInfo info){
 		Job job = new Job(Messages.AppfactoryApplicationListView_getcheckoutJob_title) {
-		   @SuppressWarnings("restriction")
-			@Override
+		   @Override
 			  protected IStatus run(final IProgressMonitor monitor) {
 				monitor.beginTask(Messages.AppfactoryApplicationListView_getcheckoutJob_monitor_msg_1, 100);
 				  UISynchronize uiSynchronize = new UISynchronize() {
@@ -1122,7 +1144,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 		job.schedule();
 	}	
 	
-	@SuppressWarnings("restriction")
 	private void checkout(final AppVersionInfo info,
 			final IProgressMonitor monitor)
 			throws IOException, InvalidRemoteException,
@@ -1132,11 +1153,18 @@ public class AppfactoryApplicationListView extends ViewPart {
 			CheckoutConflictException {
 		monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_1);
 		printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_1);
-		monitor.worked(10);	  
+		monitor.worked(10);	 
+		String localRepo = "";
 		if(info.getLocalRepo()==null||info.getLocalRepo().equals("")){ //$NON-NLS-1$
-		 info.setLocalRepo(ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString());
+			
+			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();			
+			localRepo = workspace + info.getLocalRepo() + File.separator + info.getAppName();
+			
+			// Add relevant suffix to repo location
+			localRepo += (info.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;		
+		    info.setLocalRepo(localRepo);
 		}
-		String localRepo =info.getLocalRepo()+File.separator+info.getAppName();
+		
 		monitor.worked(20);	
 		JgitRepoManager manager = new JgitRepoManager(localRepo,info.getRepoURL());
 		monitor.worked(30);
@@ -1183,7 +1211,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	}
 */
 
-	private void openDSSettingsWizard() {
+	/*private void openDSSettingsWizard() {
 
 		IWizardDescriptor descriptor = PlatformUI.getWorkbench()
 				.getNewWizardRegistry().findWizard(REPO_WIZARD_ID);
@@ -1205,7 +1233,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 		} catch (Exception e) {
 			 log.error("Wizard invoke error", e); //$NON-NLS-1$
 		}
-	}
+	}*/
 	private class AppImportJobJob implements IRunnableWithProgress {
 		
 	AppVersionInfo appInfo;
@@ -1221,13 +1249,19 @@ public class AppfactoryApplicationListView extends ViewPart {
 				operationText=Messages.AppfactoryApplicationListView_AppImportJob_opMSG_2;
 				monitor.subTask(operationText);
 				monitor.worked(10);
+				
 				IProjectDescription description = ResourcesPlugin
-						.getWorkspace()
-						.loadProjectDescription(new Path(appInfo.getLocalRepo()+
-								File.separator+appInfo.getAppName()+File.separator+".project")); //$NON-NLS-1$
+													.getWorkspace()
+													.loadProjectDescription(new Path(appInfo.getLocalRepo() + File.separator + ".project"));
+				
 				operationText=Messages.AppfactoryApplicationListView_AppImportJob_opMSG_3;
 				monitor.subTask(operationText);
 				monitor.worked(10); 
+				
+				String name = description.getName();
+				name += (appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
+				description.setName(name);
+				
 				final IProject project = ResourcesPlugin.getWorkspace()
 						.getRoot().getProject(description.getName());
 				        if(!project.exists()){
@@ -1269,13 +1303,19 @@ public class AppfactoryApplicationListView extends ViewPart {
 				operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_2;
 				monitor.subTask(operationText);
 				monitor.worked(10);
+				
 				IProjectDescription description = ResourcesPlugin
-						.getWorkspace()
-						.loadProjectDescription(new Path(appInfo.getLocalRepo()+
-								File.separator+appInfo.getAppName()+File.separator+".project")); //$NON-NLS-1$
+													.getWorkspace()
+													.loadProjectDescription(new Path(appInfo.getLocalRepo() + File.separator + ".project")); //$NON-NLS-1$
+				
 				operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
 				monitor.subTask(operationText);
 				monitor.worked(10); 
+				
+				String name = description.getName();
+				name += (appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
+				description.setName(name);
+				
 				final IProject project = ResourcesPlugin.getWorkspace()
 						.getRoot().getProject(description.getName());
 				        if(!project.exists()){

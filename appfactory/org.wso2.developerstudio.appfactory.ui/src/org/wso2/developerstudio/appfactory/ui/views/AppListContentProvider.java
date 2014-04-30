@@ -15,11 +15,14 @@
  */
 
 package org.wso2.developerstudio.appfactory.ui.views;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.wso2.developerstudio.appfactory.core.model.AppListModel;
+import org.wso2.developerstudio.appfactory.core.model.AppVersionGroup;
+import org.wso2.developerstudio.appfactory.core.model.AppVersionInfo;
 import org.wso2.developerstudio.appfactory.core.model.ApplicationInfo;
 
 
@@ -40,7 +43,9 @@ public class AppListContentProvider implements ITreeContentProvider {
 	  if(newInput instanceof AppListModel){
         this.model = (AppListModel) newInput;
 	  }else if (newInput instanceof List){
-		  this.apps = (List<ApplicationInfo>) newInput;
+		  @SuppressWarnings("unchecked")
+        List<ApplicationInfo> newInput2 = (List<ApplicationInfo>) newInput;
+		this.apps = newInput2;
 	  }
   }
 
@@ -51,26 +56,57 @@ public class AppListContentProvider implements ITreeContentProvider {
 
   @Override
   public Object[] getChildren(Object parentElement) {
-    if (parentElement instanceof ApplicationInfo) {
-       ApplicationInfo app = (ApplicationInfo) parentElement;
-      if(app.getappVersionList()!=null){
-      return app.getappVersionList().toArray();
-      }
-    }
-    return null;
+
+	  if (parentElement instanceof ApplicationInfo) {
+		  ApplicationInfo app = (ApplicationInfo) parentElement;
+		  List<AppVersionGroup> versionGroups = new ArrayList<AppVersionGroup>();
+
+		  for (AppVersionInfo mainVersion : app.getappVersionList()) {
+
+			  AppVersionGroup group = new AppVersionGroup(app, mainVersion.getVersion(),
+			                                              mainVersion);
+			  mainVersion.setVersionGroup(group);
+			  for (AppVersionInfo forkedVersion : app.getForkedversions()) {
+				  if (forkedVersion.getVersion().equals(mainVersion.getVersion())) {
+					  forkedVersion.setVersionGroup(group);
+					  group.setForkedVersion(forkedVersion);
+				  }
+			  }
+			  versionGroups.add(group);
+		  }
+		  return versionGroups.toArray();
+	  } else if (parentElement instanceof AppVersionGroup) {
+
+		  AppVersionGroup versionGroup = (AppVersionGroup) parentElement;
+		  List<AppVersionInfo> versions = new ArrayList<AppVersionInfo>();
+		  versions.add(versionGroup.getMainVersion());
+
+		  if (versionGroup.getForkedVersion() != null) {
+			  versions.add(versionGroup.getForkedVersion());
+		  }
+		  return versions.toArray();
+	  }
+	  return null;
   }
 
   @Override
   public Object getParent(Object element) {
-    return null;
+	  if (element instanceof AppVersionGroup) {
+		  return ((AppVersionGroup) element).getApplication();
+	  } else if (element instanceof AppVersionInfo) {
+		  return ((AppVersionInfo) element).getVersionGroup();
+	  }
+	  return null;
   }
 
   @Override
   public boolean hasChildren(Object element) {
-    if (element instanceof ApplicationInfo) {
-      return true;
-    }
-    return false;
+	  if (element instanceof ApplicationInfo) {
+		  return !((ApplicationInfo) element).getappVersionList().isEmpty();
+	  } else if (element instanceof AppVersionGroup) {
+		  return ((AppVersionGroup) element).getMainVersion() != null;
+	  }
+	  return false;
   }
 
 } 

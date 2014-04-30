@@ -18,7 +18,7 @@
    <extension point="org.eclipse.ui.editors" id="gmf-editor">
       <?gmfgen generated="false"?>
       <editor
-         id="dataMapper.diagram.part.DataMapperDiagramEditorID"
+         id="org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorID"
          name="%editorName"
          icon="icons/obj16/DataMapperDiagramFile.gif"
          extensions="datamapper_diagram"

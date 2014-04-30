@@ -90,11 +90,18 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(
+				EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(
+						org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.AttributeItemSemanticEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.SEMANTIC_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.AttributeItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.AttributeCanonicalEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.CANONICAL_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.AttributeCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that
 		// would let children add reasonable editpolicies
@@ -113,9 +120,9 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				View childView = (View) child.getModel();
 				switch (DataMapperVisualIDRegistry.getVisualID(childView)) {
-					case InNodeEditPart.VISUAL_ID :
-					case OutNodeEditPart.VISUAL_ID :
-						return new BorderItemSelectionEditPolicy();
+				case InNodeEditPart.VISUAL_ID:
+				case OutNodeEditPart.VISUAL_ID:
+					return new BorderItemSelectionEditPolicy();
 				}
 				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
@@ -158,13 +165,15 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 				// System.out.println("Node     " +temp);
 				if (temp instanceof InputEditPart) {
 					if (childEditPart instanceof InNodeEditPart) {
-						NodeFigure figureInput = ((InNodeEditPart) childEditPart).getNodeFigureOutput();
+						NodeFigure figureInput = ((InNodeEditPart) childEditPart)
+								.getNodeFigureOutput();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
 						break;
 					} else {
-						NodeFigure figureInput = ((InNode2EditPart) childEditPart).getNodeFigureOutput();
+						NodeFigure figureInput = ((InNode2EditPart) childEditPart)
+								.getNodeFigureOutput();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -178,14 +187,16 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 
 			if (childEditPart instanceof InNode2EditPart) {
 				IFigure borderItemFigure = ((InNode2EditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.WEST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 
 			else {
 				IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.WEST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
@@ -198,7 +209,8 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 
 				if (temp instanceof OutputEditPart) {
 					if (childEditPart instanceof OutNodeEditPart) {
-						NodeFigure figureInput = ((OutNodeEditPart) childEditPart).getNodeFigureOutput();
+						NodeFigure figureInput = ((OutNodeEditPart) childEditPart)
+								.getNodeFigureOutput();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -206,7 +218,8 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 					}
 
 					else {
-						NodeFigure figureInput = ((OutNode2EditPart) childEditPart).getNodeFigureOutput();
+						NodeFigure figureInput = ((OutNode2EditPart) childEditPart)
+								.getNodeFigureOutput();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -220,7 +233,8 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 
 			if (childEditPart instanceof OutNodeEditPart) {
 				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.EAST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
@@ -228,7 +242,8 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 			else {
 
 				IFigure borderItemFigure = ((OutNode2EditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.EAST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
@@ -374,7 +389,9 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 				@Override
 				public void mouseEntered(MouseEvent me) {
 
-					getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot().getChildren().get(1)).getChildren().get(1)));
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(1)));
 
 					setOutline(true);
 
@@ -418,7 +435,9 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 
 			figure.setOpaque(true);
 			figure.setFill(false);
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin("org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/AttributeIcon.png");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram",
+					"icons/gmf/AttributeIcon.png");
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage());
 			mainImg.setSize(new Dimension(20, 10));
@@ -432,7 +451,8 @@ public class AttributeEditPart extends AbstractBorderedShapeEditPart {
 
 			WrappingLabel fFigureFileNameFigure = new WrappingLabel();
 			String name = (((Attribute) ((View) getModel()).getElement()).getName()).split(",")[1];
-			int tabCount = Integer.parseInt((((Attribute) ((View) getModel()).getElement()).getName()).split(",")[0]);
+			int tabCount = Integer.parseInt((((Attribute) ((View) getModel()).getElement())
+					.getName()).split(",")[0]);
 
 			figure.setPreferredSize((tabCount - 1) * 30, 100);
 

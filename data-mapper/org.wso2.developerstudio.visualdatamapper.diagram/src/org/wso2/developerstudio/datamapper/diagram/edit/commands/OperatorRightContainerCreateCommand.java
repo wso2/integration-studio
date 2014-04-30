@@ -54,8 +54,10 @@ public class OperatorRightContainerCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		OperatorRightContainer newElement = DataMapperFactory.eINSTANCE.createOperatorRightContainer();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		OperatorRightContainer newElement = DataMapperFactory.eINSTANCE
+				.createOperatorRightContainer();
 
 		OperatorBasicContainer owner = (OperatorBasicContainer) getElementToEdit();
 		owner.setRightContainer(newElement);
@@ -69,9 +71,11 @@ public class OperatorRightContainerCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(OperatorRightContainer newElement, IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+	protected void doConfigure(OperatorRightContainer newElement, IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
+				elementType);
 		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
 		ICommand configureCommand = elementType.getEditCommand(configureRequest);

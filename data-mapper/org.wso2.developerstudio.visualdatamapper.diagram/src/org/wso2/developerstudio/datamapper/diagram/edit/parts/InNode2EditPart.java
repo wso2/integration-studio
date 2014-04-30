@@ -73,7 +73,9 @@ public class InNode2EditPart extends AbstractBorderItemEditPart {
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.InNode2ItemSemanticEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.SEMANTIC_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.InNode2ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that
 		// would let children add reasonable editpolicies
@@ -248,7 +250,8 @@ public class InNode2EditPart extends AbstractBorderItemEditPart {
 		 */
 		private void createContents() {
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin("org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
 
 			int nodeDimension = 10; // width for connection nodes
 

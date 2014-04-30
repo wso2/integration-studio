@@ -78,7 +78,9 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutNodeItemSemanticEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.SEMANTIC_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutNodeItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -260,7 +262,9 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 				@Override
 				public void mouseEntered(MouseEvent me) {
 
-					getEditDomain().getPaletteViewer().setActiveTool((ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
+					getEditDomain().getPaletteViewer().setActiveTool(
+							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
+									.getPaletteRoot().getChildren().get(1)).getChildren().get(0)));
 				}
 
 				@Override
@@ -282,7 +286,8 @@ public class OutNodeEditPart extends AbstractBorderItemEditPart {
 		 */
 		private void createContents() {
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin("org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
 
 			int nodeDimension = 4; // width for connection nodes
 

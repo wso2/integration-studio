@@ -238,7 +238,8 @@ public class InNodeEditPart extends AbstractBorderItemEditPart {
 		 */
 		private void createContents() {
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin("org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/black.jpg");
 
 			int nodeDimension = 10; // width for connection nodes
 

@@ -49,7 +49,8 @@ public class DataMapperModelingAssistantProvider extends ModelingAssistantProvid
 		if (types.isEmpty()) {
 			return null;
 		}
-		IGraphicalEditPart editPart = (IGraphicalEditPart) host.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart editPart = (IGraphicalEditPart) host
+				.getAdapter(IGraphicalEditPart.class);
 		if (editPart == null) {
 			return null;
 		}
@@ -80,7 +81,8 @@ public class DataMapperModelingAssistantProvider extends ModelingAssistantProvid
 	 */
 	protected EObject selectElement(EObject[] elements) {
 		Shell shell = Display.getCurrent().getActiveShell();
-		ILabelProvider labelProvider = new AdapterFactoryLabelProvider(DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+		ILabelProvider labelProvider = new AdapterFactoryLabelProvider(
+				DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 		ElementListSelectionDialog dialog = new ElementListSelectionDialog(shell, labelProvider);
 		dialog.setMessage(Messages.DataMapperModelingAssistantProviderMessage);
 		dialog.setTitle(Messages.DataMapperModelingAssistantProviderTitle);

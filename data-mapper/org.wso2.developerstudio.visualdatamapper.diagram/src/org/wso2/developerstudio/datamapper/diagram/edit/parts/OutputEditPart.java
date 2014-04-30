@@ -86,7 +86,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	public void resetOutputTreeFromFile(String filePath) {
-		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this).getModel()).getElement();
+		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
+				.getModel()).getElement();
 		Output iip = (Output) parentContainer;
 
 		DeleteCommand deleteComand = new DeleteCommand(getEditingDomain(), iip.getTreeNode());
@@ -98,7 +99,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		Tree tree = TreeFromAVSC.generateInputTreeFromFile(filePath);
 		convertTree(tree, treeNode);
 
-		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer, DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
+				DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
 		if (addTreeNodeCmd2.canExecute()) {
 			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
 		}
@@ -113,60 +115,62 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		treeNode.setLevel(tree.getCount());
 		if (tree.getSchemaType() != null) {
 			switch (tree.getSchemaType()) {
-				case ARRAY :
-					treeNode.setSchemaDataType(SchemaDataType.ARRAY);
-					break;
-				case BOOLEAN :
-					treeNode.setSchemaDataType(SchemaDataType.BOOLEAN);
-					break;
-				case BYTES :
-					treeNode.setSchemaDataType(SchemaDataType.BYTES);
-					break;
-				case DOUBLE :
-					treeNode.setSchemaDataType(SchemaDataType.DOUBLE);
-					break;
-				case ENUM :
-					treeNode.setSchemaDataType(SchemaDataType.ENUM);
-					break;
-				case FIXED :
-					treeNode.setSchemaDataType(SchemaDataType.FIXED);
-					break;
-				case FLOAT :
-					treeNode.setSchemaDataType(SchemaDataType.FLOAT);
-					break;
-				case INT :
-					treeNode.setSchemaDataType(SchemaDataType.INT);
-					break;
-				case LONG :
-					treeNode.setSchemaDataType(SchemaDataType.LONG);
-					break;
-				case MAP :
-					treeNode.setSchemaDataType(SchemaDataType.MAP);
-					break;
-				case NULL :
-					treeNode.setSchemaDataType(SchemaDataType.NULL);
-					break;
-				case RECORD :
-					treeNode.setSchemaDataType(SchemaDataType.RECORD);
-					break;
-				case STRING :
-					treeNode.setSchemaDataType(SchemaDataType.STRING);
-					break;
-				case UNION :
-					treeNode.setSchemaDataType(SchemaDataType.UNION);
-					break;
-				default :
-					break;
+			case ARRAY:
+				treeNode.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case BOOLEAN:
+				treeNode.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				treeNode.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				treeNode.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				treeNode.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				treeNode.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				treeNode.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				treeNode.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				treeNode.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				treeNode.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				treeNode.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				treeNode.setSchemaDataType(SchemaDataType.RECORD);
+				break;
+			case STRING:
+				treeNode.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				treeNode.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
 			}
 		}
 
 		if (!(tree.getElements().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : tree.getElements()) {
+			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : tree
+					.getElements()) {
 				createElement(element, treeNode);
 			}
 		}
 		if (!(tree.getAttributes().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : tree.getAttributes()) {
+			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : tree
+					.getAttributes()) {
 				createAttribute(attribute, treeNode);
 			}
 		}
@@ -178,68 +182,73 @@ public class OutputEditPart extends ShapeNodeEditPart {
 
 	}
 
-	private void createElement(org.wso2.developerstudio.datamapper.diagram.tree.model.Element element, TreeNode treeNode) {
+	private void createElement(
+			org.wso2.developerstudio.datamapper.diagram.tree.model.Element element,
+			TreeNode treeNode) {
 		Element ele = DataMapperFactory.eINSTANCE.createElement();
 		//ele.setName(element.getCount() + "," + element.getName());
 		ele.setName(element.getName());
 		ele.setLevel(element.getCount());
 		if (element.getSchemaType() != null) {
 			switch (element.getSchemaType()) {
-				case ARRAY :
-					ele.setSchemaDataType(SchemaDataType.ARRAY);
-					break;
-				case BOOLEAN :
-					ele.setSchemaDataType(SchemaDataType.BOOLEAN);
-					break;
-				case BYTES :
-					ele.setSchemaDataType(SchemaDataType.BYTES);
-					break;
-				case DOUBLE :
-					ele.setSchemaDataType(SchemaDataType.DOUBLE);
-					break;
-				case ENUM :
-					ele.setSchemaDataType(SchemaDataType.ENUM);
-					break;
-				case FIXED :
-					ele.setSchemaDataType(SchemaDataType.FIXED);
-					break;
-				case FLOAT :
-					ele.setSchemaDataType(SchemaDataType.FLOAT);
-					break;
-				case INT :
-					ele.setSchemaDataType(SchemaDataType.INT);
-					break;
-				case LONG :
-					ele.setSchemaDataType(SchemaDataType.LONG);
-					break;
-				case MAP :
-					ele.setSchemaDataType(SchemaDataType.MAP);
-					break;
-				case NULL :
-					ele.setSchemaDataType(SchemaDataType.NULL);
-					break;
-				case RECORD :
-					ele.setSchemaDataType(SchemaDataType.RECORD);
-					break;
-				case STRING :
-					ele.setSchemaDataType(SchemaDataType.STRING);
-					break;
-				case UNION :
-					ele.setSchemaDataType(SchemaDataType.UNION);
-					break;
-				default :
-					break;
+			case ARRAY:
+				ele.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case BOOLEAN:
+				ele.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				ele.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				ele.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				ele.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				ele.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				ele.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				ele.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				ele.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				ele.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				ele.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				ele.setSchemaDataType(SchemaDataType.RECORD);
+				break;
+			case STRING:
+				ele.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				ele.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
 			}
 		}
 		treeNode.getElement().add(ele);
 		if (!(element.getAttribute().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : element.getAttribute()) {
+			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : element
+					.getAttribute()) {
 				createAttribute(attribute, treeNode);
 			}
 		}
 	}
 
-	private void createAttribute(org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute, TreeNode treeNode) {
+	private void createAttribute(
+			org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute,
+			TreeNode treeNode) {
 		Attribute attr = DataMapperFactory.eINSTANCE.createAttribute();
 		attr.setName(attribute.getCount() + "," + attribute.getName());
 		treeNode.getAttribute().add(attr);
@@ -252,61 +261,63 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		treeNodeNew.setLevel(treeN.getCount());
 		if (treeN.getSchemaType() != null) {
 			switch (treeN.getSchemaType()) {
-				case ARRAY :
-					treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
-					break;
-				case BOOLEAN :
-					treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
-					break;
-				case BYTES :
-					treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
-					break;
-				case DOUBLE :
-					treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
-					break;
-				case ENUM :
-					treeNodeNew.setSchemaDataType(SchemaDataType.ENUM);
-					break;
-				case FIXED :
-					treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
-					break;
-				case FLOAT :
-					treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
-					break;
-				case INT :
-					treeNodeNew.setSchemaDataType(SchemaDataType.INT);
-					break;
-				case LONG :
-					treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
-					break;
-				case MAP :
-					treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
-					break;
-				case NULL :
-					treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
-					break;
-				case RECORD :
-					treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
-					break;
-				case STRING :
-					treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
-					break;
-				case UNION :
-					treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
-					break;
-				default :
-					break;
+			case ARRAY:
+				treeNodeNew.setSchemaDataType(SchemaDataType.ARRAY);
+				break;
+			case BOOLEAN:
+				treeNodeNew.setSchemaDataType(SchemaDataType.BOOLEAN);
+				break;
+			case BYTES:
+				treeNodeNew.setSchemaDataType(SchemaDataType.BYTES);
+				break;
+			case DOUBLE:
+				treeNodeNew.setSchemaDataType(SchemaDataType.DOUBLE);
+				break;
+			case ENUM:
+				treeNodeNew.setSchemaDataType(SchemaDataType.ENUM);
+				break;
+			case FIXED:
+				treeNodeNew.setSchemaDataType(SchemaDataType.FIXED);
+				break;
+			case FLOAT:
+				treeNodeNew.setSchemaDataType(SchemaDataType.FLOAT);
+				break;
+			case INT:
+				treeNodeNew.setSchemaDataType(SchemaDataType.INT);
+				break;
+			case LONG:
+				treeNodeNew.setSchemaDataType(SchemaDataType.LONG);
+				break;
+			case MAP:
+				treeNodeNew.setSchemaDataType(SchemaDataType.MAP);
+				break;
+			case NULL:
+				treeNodeNew.setSchemaDataType(SchemaDataType.NULL);
+				break;
+			case RECORD:
+				treeNodeNew.setSchemaDataType(SchemaDataType.RECORD);
+				break;
+			case STRING:
+				treeNodeNew.setSchemaDataType(SchemaDataType.STRING);
+				break;
+			case UNION:
+				treeNodeNew.setSchemaDataType(SchemaDataType.UNION);
+				break;
+			default:
+				break;
 			}
 		}
 		treeNode.getNode().add(treeNodeNew);
 
 		if (!(treeN.getElements().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : treeN.getElements()) {
+			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Element element : treeN
+					.getElements()) {
 				createElement(element, treeNodeNew);
 			}
 		}
 		if (!(treeN.getAttributes().isEmpty())) {
-			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : treeN.getAttributes()) {
+			for (org.wso2.developerstudio.datamapper.diagram.tree.model.Attribute attribute : treeN
+					.getAttributes()) {
 				createAttribute(attribute, treeNodeNew);
 			}
 		}
@@ -321,11 +332,18 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(
+				EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(
+						org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputItemSemanticEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.SEMANTIC_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputCanonicalEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.CANONICAL_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
@@ -360,7 +378,10 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		super.notifyChanged(notification);
 		if (notification.getFeature() instanceof EAttributeImpl) {
 			if (notification.getNotifier() instanceof BoundsImpl) {
-				reposition(((BoundsImpl) notification.getNotifier()).getX(), ((BoundsImpl) notification.getNotifier()).getY(), ((BoundsImpl) notification.getNotifier()).getWidth(), ((BoundsImpl) notification.getNotifier()).getHeight());
+				reposition(((BoundsImpl) notification.getNotifier()).getX(),
+						((BoundsImpl) notification.getNotifier()).getY(),
+						((BoundsImpl) notification.getNotifier()).getWidth(),
+						((BoundsImpl) notification.getNotifier()).getHeight());
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
 			}
@@ -379,7 +400,8 @@ public class OutputEditPart extends ShapeNodeEditPart {
 	}
 
 	private void reposition() {
-		reposition(getFigure().getBounds().x, getFigure().getBounds().y, getFigure().getBounds().width, getFigure().getBounds().height);
+		reposition(getFigure().getBounds().x, getFigure().getBounds().y,
+				getFigure().getBounds().width, getFigure().getBounds().height);
 	}
 
 	/**

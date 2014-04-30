@@ -66,7 +66,8 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
-	private static DiagramElementTypeImages elementTypeImages = new DiagramElementTypeImages(DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+	private static DiagramElementTypeImages elementTypeImages = new DiagramElementTypeImages(
+			DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 
 	/**
 	 * @generated
@@ -283,17 +284,22 @@ public class DataMapperElementTypes {
 
 			elements.put(TreeNode_3011, DataMapperPackage.eINSTANCE.getTreeNode());
 
-			elements.put(OperatorBasicContainer_3012, DataMapperPackage.eINSTANCE.getOperatorBasicContainer());
+			elements.put(OperatorBasicContainer_3012,
+					DataMapperPackage.eINSTANCE.getOperatorBasicContainer());
 
-			elements.put(OperatorLeftContainer_3013, DataMapperPackage.eINSTANCE.getOperatorLeftContainer());
+			elements.put(OperatorLeftContainer_3013,
+					DataMapperPackage.eINSTANCE.getOperatorLeftContainer());
 
-			elements.put(OperatorLeftConnector_3014, DataMapperPackage.eINSTANCE.getOperatorLeftConnector());
+			elements.put(OperatorLeftConnector_3014,
+					DataMapperPackage.eINSTANCE.getOperatorLeftConnector());
 
 			elements.put(InNode_3015, DataMapperPackage.eINSTANCE.getInNode());
 
-			elements.put(OperatorRightContainer_3016, DataMapperPackage.eINSTANCE.getOperatorRightContainer());
+			elements.put(OperatorRightContainer_3016,
+					DataMapperPackage.eINSTANCE.getOperatorRightContainer());
 
-			elements.put(OperatorRightConnector_3017, DataMapperPackage.eINSTANCE.getOperatorRightConnector());
+			elements.put(OperatorRightConnector_3017,
+					DataMapperPackage.eINSTANCE.getOperatorRightConnector());
 
 			elements.put(OutNode_3018, DataMapperPackage.eINSTANCE.getOutNode());
 
@@ -351,60 +357,60 @@ public class DataMapperElementTypes {
 	 */
 	public static IElementType getElementType(int visualID) {
 		switch (visualID) {
-			case DataMapperRootEditPart.VISUAL_ID :
-				return DataMapperRoot_1000;
-			case InputEditPart.VISUAL_ID :
-				return Input_2002;
-			case OutputEditPart.VISUAL_ID :
-				return Output_2003;
-			case EqualEditPart.VISUAL_ID :
-				return Equal_2005;
-			case ConcatEditPart.VISUAL_ID :
-				return Concat_2006;
-			case SplitEditPart.VISUAL_ID :
-				return Split_2007;
-			case ConstantEditPart.VISUAL_ID :
-				return Constant_2008;
-			case LowerCaseEditPart.VISUAL_ID :
-				return LowerCase_2009;
-			case ContainsEditPart.VISUAL_ID :
-				return Contains_2010;
-			case UpperCaseEditPart.VISUAL_ID :
-				return UpperCase_2011;
-			case TreeNodeEditPart.VISUAL_ID :
-				return TreeNode_3002;
-			case TreeNode2EditPart.VISUAL_ID :
-				return TreeNode_3003;
-			case AttributeEditPart.VISUAL_ID :
-				return Attribute_3004;
-			case InNodeEditPart.VISUAL_ID :
-				return InNode_3005;
-			case OutNodeEditPart.VISUAL_ID :
-				return OutNode_3006;
-			case ElementEditPart.VISUAL_ID :
-				return Element_3007;
-			case InNode2EditPart.VISUAL_ID :
-				return InNode_3008;
-			case OutNode2EditPart.VISUAL_ID :
-				return OutNode_3009;
-			case TreeNode3EditPart.VISUAL_ID :
-				return TreeNode_3011;
-			case OperatorBasicContainerEditPart.VISUAL_ID :
-				return OperatorBasicContainer_3012;
-			case OperatorLeftContainerEditPart.VISUAL_ID :
-				return OperatorLeftContainer_3013;
-			case OperatorLeftConnectorEditPart.VISUAL_ID :
-				return OperatorLeftConnector_3014;
-			case InNode3EditPart.VISUAL_ID :
-				return InNode_3015;
-			case OperatorRightContainerEditPart.VISUAL_ID :
-				return OperatorRightContainer_3016;
-			case OperatorRightConnectorEditPart.VISUAL_ID :
-				return OperatorRightConnector_3017;
-			case OutNode3EditPart.VISUAL_ID :
-				return OutNode_3018;
-			case DataMapperLinkEditPart.VISUAL_ID :
-				return DataMapperLink_4001;
+		case DataMapperRootEditPart.VISUAL_ID:
+			return DataMapperRoot_1000;
+		case InputEditPart.VISUAL_ID:
+			return Input_2002;
+		case OutputEditPart.VISUAL_ID:
+			return Output_2003;
+		case EqualEditPart.VISUAL_ID:
+			return Equal_2005;
+		case ConcatEditPart.VISUAL_ID:
+			return Concat_2006;
+		case SplitEditPart.VISUAL_ID:
+			return Split_2007;
+		case ConstantEditPart.VISUAL_ID:
+			return Constant_2008;
+		case LowerCaseEditPart.VISUAL_ID:
+			return LowerCase_2009;
+		case ContainsEditPart.VISUAL_ID:
+			return Contains_2010;
+		case UpperCaseEditPart.VISUAL_ID:
+			return UpperCase_2011;
+		case TreeNodeEditPart.VISUAL_ID:
+			return TreeNode_3002;
+		case TreeNode2EditPart.VISUAL_ID:
+			return TreeNode_3003;
+		case AttributeEditPart.VISUAL_ID:
+			return Attribute_3004;
+		case InNodeEditPart.VISUAL_ID:
+			return InNode_3005;
+		case OutNodeEditPart.VISUAL_ID:
+			return OutNode_3006;
+		case ElementEditPart.VISUAL_ID:
+			return Element_3007;
+		case InNode2EditPart.VISUAL_ID:
+			return InNode_3008;
+		case OutNode2EditPart.VISUAL_ID:
+			return OutNode_3009;
+		case TreeNode3EditPart.VISUAL_ID:
+			return TreeNode_3011;
+		case OperatorBasicContainerEditPart.VISUAL_ID:
+			return OperatorBasicContainer_3012;
+		case OperatorLeftContainerEditPart.VISUAL_ID:
+			return OperatorLeftContainer_3013;
+		case OperatorLeftConnectorEditPart.VISUAL_ID:
+			return OperatorLeftConnector_3014;
+		case InNode3EditPart.VISUAL_ID:
+			return InNode_3015;
+		case OperatorRightContainerEditPart.VISUAL_ID:
+			return OperatorRightContainer_3016;
+		case OperatorRightConnectorEditPart.VISUAL_ID:
+			return OperatorRightConnector_3017;
+		case OutNode3EditPart.VISUAL_ID:
+			return OutNode_3018;
+		case DataMapperLinkEditPart.VISUAL_ID:
+			return DataMapperLink_4001;
 		}
 		return null;
 	}
@@ -412,14 +418,16 @@ public class DataMapperElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(elementTypeImages) {
+	public static final DiagramElementTypes TYPED_INSTANCE = new DiagramElementTypes(
+			elementTypeImages) {
 
 		/**
 		 * @generated
 		 */
 		@Override
 		public boolean isKnownElementType(IElementType elementType) {
-			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes.isKnownElementType(elementType);
+			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes
+					.isKnownElementType(elementType);
 		}
 
 		/**
@@ -427,7 +435,8 @@ public class DataMapperElementTypes {
 		 */
 		@Override
 		public IElementType getElementTypeForVisualId(int visualID) {
-			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes.getElementType(visualID);
+			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes
+					.getElementType(visualID);
 		}
 
 		/**
@@ -435,7 +444,8 @@ public class DataMapperElementTypes {
 		 */
 		@Override
 		public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
-			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes.getElement(elementTypeAdapter);
+			return org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTypes
+					.getElement(elementTypeAdapter);
 		}
 	};
 

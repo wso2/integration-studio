@@ -74,46 +74,46 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperNodeDescriptor> getSemanticChildren(View view) {
 		switch (DataMapperVisualIDRegistry.getVisualID(view)) {
-			case DataMapperRootEditPart.VISUAL_ID :
-				return getDataMapperRoot_1000SemanticChildren(view);
-			case InputEditPart.VISUAL_ID :
-				return getInput_2002SemanticChildren(view);
-			case OutputEditPart.VISUAL_ID :
-				return getOutput_2003SemanticChildren(view);
-			case EqualEditPart.VISUAL_ID :
-				return getEqual_2005SemanticChildren(view);
-			case ConcatEditPart.VISUAL_ID :
-				return getConcat_2006SemanticChildren(view);
-			case SplitEditPart.VISUAL_ID :
-				return getSplit_2007SemanticChildren(view);
-			case ConstantEditPart.VISUAL_ID :
-				return getConstant_2008SemanticChildren(view);
-			case LowerCaseEditPart.VISUAL_ID :
-				return getLowerCase_2009SemanticChildren(view);
-			case ContainsEditPart.VISUAL_ID :
-				return getContains_2010SemanticChildren(view);
-			case UpperCaseEditPart.VISUAL_ID :
-				return getUpperCase_2011SemanticChildren(view);
-			case TreeNodeEditPart.VISUAL_ID :
-				return getTreeNode_3002SemanticChildren(view);
-			case TreeNode2EditPart.VISUAL_ID :
-				return getTreeNode_3003SemanticChildren(view);
-			case AttributeEditPart.VISUAL_ID :
-				return getAttribute_3004SemanticChildren(view);
-			case ElementEditPart.VISUAL_ID :
-				return getElement_3007SemanticChildren(view);
-			case TreeNode3EditPart.VISUAL_ID :
-				return getTreeNode_3011SemanticChildren(view);
-			case OperatorBasicContainerEditPart.VISUAL_ID :
-				return getOperatorBasicContainer_3012SemanticChildren(view);
-			case OperatorLeftContainerEditPart.VISUAL_ID :
-				return getOperatorLeftContainer_3013SemanticChildren(view);
-			case OperatorLeftConnectorEditPart.VISUAL_ID :
-				return getOperatorLeftConnector_3014SemanticChildren(view);
-			case OperatorRightContainerEditPart.VISUAL_ID :
-				return getOperatorRightContainer_3016SemanticChildren(view);
-			case OperatorRightConnectorEditPart.VISUAL_ID :
-				return getOperatorRightConnector_3017SemanticChildren(view);
+		case DataMapperRootEditPart.VISUAL_ID:
+			return getDataMapperRoot_1000SemanticChildren(view);
+		case InputEditPart.VISUAL_ID:
+			return getInput_2002SemanticChildren(view);
+		case OutputEditPart.VISUAL_ID:
+			return getOutput_2003SemanticChildren(view);
+		case EqualEditPart.VISUAL_ID:
+			return getEqual_2005SemanticChildren(view);
+		case ConcatEditPart.VISUAL_ID:
+			return getConcat_2006SemanticChildren(view);
+		case SplitEditPart.VISUAL_ID:
+			return getSplit_2007SemanticChildren(view);
+		case ConstantEditPart.VISUAL_ID:
+			return getConstant_2008SemanticChildren(view);
+		case LowerCaseEditPart.VISUAL_ID:
+			return getLowerCase_2009SemanticChildren(view);
+		case ContainsEditPart.VISUAL_ID:
+			return getContains_2010SemanticChildren(view);
+		case UpperCaseEditPart.VISUAL_ID:
+			return getUpperCase_2011SemanticChildren(view);
+		case TreeNodeEditPart.VISUAL_ID:
+			return getTreeNode_3002SemanticChildren(view);
+		case TreeNode2EditPart.VISUAL_ID:
+			return getTreeNode_3003SemanticChildren(view);
+		case AttributeEditPart.VISUAL_ID:
+			return getAttribute_3004SemanticChildren(view);
+		case ElementEditPart.VISUAL_ID:
+			return getElement_3007SemanticChildren(view);
+		case TreeNode3EditPart.VISUAL_ID:
+			return getTreeNode_3011SemanticChildren(view);
+		case OperatorBasicContainerEditPart.VISUAL_ID:
+			return getOperatorBasicContainer_3012SemanticChildren(view);
+		case OperatorLeftContainerEditPart.VISUAL_ID:
+			return getOperatorLeftContainer_3013SemanticChildren(view);
+		case OperatorLeftConnectorEditPart.VISUAL_ID:
+			return getOperatorLeftConnector_3014SemanticChildren(view);
+		case OperatorRightContainerEditPart.VISUAL_ID:
+			return getOperatorRightContainer_3016SemanticChildren(view);
+		case OperatorRightConnectorEditPart.VISUAL_ID:
+			return getOperatorRightConnector_3017SemanticChildren(view);
 		}
 		return Collections.emptyList();
 	}
@@ -512,7 +512,8 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorBasicContainer_3012SemanticChildren(View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorBasicContainer_3012SemanticChildren(
+			View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -538,7 +539,8 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorLeftContainer_3013SemanticChildren(View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorLeftContainer_3013SemanticChildren(
+			View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -558,7 +560,8 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorLeftConnector_3014SemanticChildren(View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorLeftConnector_3014SemanticChildren(
+			View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -577,7 +580,8 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorRightContainer_3016SemanticChildren(View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorRightContainer_3016SemanticChildren(
+			View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -597,7 +601,8 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperNodeDescriptor> getOperatorRightConnector_3017SemanticChildren(View view) {
+	public static List<DataMapperNodeDescriptor> getOperatorRightConnector_3017SemanticChildren(
+			View view) {
 		if (!view.isSetElement()) {
 			return Collections.emptyList();
 		}
@@ -618,60 +623,60 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getContainedLinks(View view) {
 		switch (DataMapperVisualIDRegistry.getVisualID(view)) {
-			case DataMapperRootEditPart.VISUAL_ID :
-				return getDataMapperRoot_1000ContainedLinks(view);
-			case InputEditPart.VISUAL_ID :
-				return getInput_2002ContainedLinks(view);
-			case OutputEditPart.VISUAL_ID :
-				return getOutput_2003ContainedLinks(view);
-			case EqualEditPart.VISUAL_ID :
-				return getEqual_2005ContainedLinks(view);
-			case ConcatEditPart.VISUAL_ID :
-				return getConcat_2006ContainedLinks(view);
-			case SplitEditPart.VISUAL_ID :
-				return getSplit_2007ContainedLinks(view);
-			case ConstantEditPart.VISUAL_ID :
-				return getConstant_2008ContainedLinks(view);
-			case LowerCaseEditPart.VISUAL_ID :
-				return getLowerCase_2009ContainedLinks(view);
-			case ContainsEditPart.VISUAL_ID :
-				return getContains_2010ContainedLinks(view);
-			case UpperCaseEditPart.VISUAL_ID :
-				return getUpperCase_2011ContainedLinks(view);
-			case TreeNodeEditPart.VISUAL_ID :
-				return getTreeNode_3002ContainedLinks(view);
-			case TreeNode2EditPart.VISUAL_ID :
-				return getTreeNode_3003ContainedLinks(view);
-			case AttributeEditPart.VISUAL_ID :
-				return getAttribute_3004ContainedLinks(view);
-			case InNodeEditPart.VISUAL_ID :
-				return getInNode_3005ContainedLinks(view);
-			case OutNodeEditPart.VISUAL_ID :
-				return getOutNode_3006ContainedLinks(view);
-			case ElementEditPart.VISUAL_ID :
-				return getElement_3007ContainedLinks(view);
-			case InNode2EditPart.VISUAL_ID :
-				return getInNode_3008ContainedLinks(view);
-			case OutNode2EditPart.VISUAL_ID :
-				return getOutNode_3009ContainedLinks(view);
-			case TreeNode3EditPart.VISUAL_ID :
-				return getTreeNode_3011ContainedLinks(view);
-			case OperatorBasicContainerEditPart.VISUAL_ID :
-				return getOperatorBasicContainer_3012ContainedLinks(view);
-			case OperatorLeftContainerEditPart.VISUAL_ID :
-				return getOperatorLeftContainer_3013ContainedLinks(view);
-			case OperatorLeftConnectorEditPart.VISUAL_ID :
-				return getOperatorLeftConnector_3014ContainedLinks(view);
-			case InNode3EditPart.VISUAL_ID :
-				return getInNode_3015ContainedLinks(view);
-			case OperatorRightContainerEditPart.VISUAL_ID :
-				return getOperatorRightContainer_3016ContainedLinks(view);
-			case OperatorRightConnectorEditPart.VISUAL_ID :
-				return getOperatorRightConnector_3017ContainedLinks(view);
-			case OutNode3EditPart.VISUAL_ID :
-				return getOutNode_3018ContainedLinks(view);
-			case DataMapperLinkEditPart.VISUAL_ID :
-				return getDataMapperLink_4001ContainedLinks(view);
+		case DataMapperRootEditPart.VISUAL_ID:
+			return getDataMapperRoot_1000ContainedLinks(view);
+		case InputEditPart.VISUAL_ID:
+			return getInput_2002ContainedLinks(view);
+		case OutputEditPart.VISUAL_ID:
+			return getOutput_2003ContainedLinks(view);
+		case EqualEditPart.VISUAL_ID:
+			return getEqual_2005ContainedLinks(view);
+		case ConcatEditPart.VISUAL_ID:
+			return getConcat_2006ContainedLinks(view);
+		case SplitEditPart.VISUAL_ID:
+			return getSplit_2007ContainedLinks(view);
+		case ConstantEditPart.VISUAL_ID:
+			return getConstant_2008ContainedLinks(view);
+		case LowerCaseEditPart.VISUAL_ID:
+			return getLowerCase_2009ContainedLinks(view);
+		case ContainsEditPart.VISUAL_ID:
+			return getContains_2010ContainedLinks(view);
+		case UpperCaseEditPart.VISUAL_ID:
+			return getUpperCase_2011ContainedLinks(view);
+		case TreeNodeEditPart.VISUAL_ID:
+			return getTreeNode_3002ContainedLinks(view);
+		case TreeNode2EditPart.VISUAL_ID:
+			return getTreeNode_3003ContainedLinks(view);
+		case AttributeEditPart.VISUAL_ID:
+			return getAttribute_3004ContainedLinks(view);
+		case InNodeEditPart.VISUAL_ID:
+			return getInNode_3005ContainedLinks(view);
+		case OutNodeEditPart.VISUAL_ID:
+			return getOutNode_3006ContainedLinks(view);
+		case ElementEditPart.VISUAL_ID:
+			return getElement_3007ContainedLinks(view);
+		case InNode2EditPart.VISUAL_ID:
+			return getInNode_3008ContainedLinks(view);
+		case OutNode2EditPart.VISUAL_ID:
+			return getOutNode_3009ContainedLinks(view);
+		case TreeNode3EditPart.VISUAL_ID:
+			return getTreeNode_3011ContainedLinks(view);
+		case OperatorBasicContainerEditPart.VISUAL_ID:
+			return getOperatorBasicContainer_3012ContainedLinks(view);
+		case OperatorLeftContainerEditPart.VISUAL_ID:
+			return getOperatorLeftContainer_3013ContainedLinks(view);
+		case OperatorLeftConnectorEditPart.VISUAL_ID:
+			return getOperatorLeftConnector_3014ContainedLinks(view);
+		case InNode3EditPart.VISUAL_ID:
+			return getInNode_3015ContainedLinks(view);
+		case OperatorRightContainerEditPart.VISUAL_ID:
+			return getOperatorRightContainer_3016ContainedLinks(view);
+		case OperatorRightConnectorEditPart.VISUAL_ID:
+			return getOperatorRightConnector_3017ContainedLinks(view);
+		case OutNode3EditPart.VISUAL_ID:
+			return getOutNode_3018ContainedLinks(view);
+		case DataMapperLinkEditPart.VISUAL_ID:
+			return getDataMapperLink_4001ContainedLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -681,58 +686,58 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getIncomingLinks(View view) {
 		switch (DataMapperVisualIDRegistry.getVisualID(view)) {
-			case InputEditPart.VISUAL_ID :
-				return getInput_2002IncomingLinks(view);
-			case OutputEditPart.VISUAL_ID :
-				return getOutput_2003IncomingLinks(view);
-			case EqualEditPart.VISUAL_ID :
-				return getEqual_2005IncomingLinks(view);
-			case ConcatEditPart.VISUAL_ID :
-				return getConcat_2006IncomingLinks(view);
-			case SplitEditPart.VISUAL_ID :
-				return getSplit_2007IncomingLinks(view);
-			case ConstantEditPart.VISUAL_ID :
-				return getConstant_2008IncomingLinks(view);
-			case LowerCaseEditPart.VISUAL_ID :
-				return getLowerCase_2009IncomingLinks(view);
-			case ContainsEditPart.VISUAL_ID :
-				return getContains_2010IncomingLinks(view);
-			case UpperCaseEditPart.VISUAL_ID :
-				return getUpperCase_2011IncomingLinks(view);
-			case TreeNodeEditPart.VISUAL_ID :
-				return getTreeNode_3002IncomingLinks(view);
-			case TreeNode2EditPart.VISUAL_ID :
-				return getTreeNode_3003IncomingLinks(view);
-			case AttributeEditPart.VISUAL_ID :
-				return getAttribute_3004IncomingLinks(view);
-			case InNodeEditPart.VISUAL_ID :
-				return getInNode_3005IncomingLinks(view);
-			case OutNodeEditPart.VISUAL_ID :
-				return getOutNode_3006IncomingLinks(view);
-			case ElementEditPart.VISUAL_ID :
-				return getElement_3007IncomingLinks(view);
-			case InNode2EditPart.VISUAL_ID :
-				return getInNode_3008IncomingLinks(view);
-			case OutNode2EditPart.VISUAL_ID :
-				return getOutNode_3009IncomingLinks(view);
-			case TreeNode3EditPart.VISUAL_ID :
-				return getTreeNode_3011IncomingLinks(view);
-			case OperatorBasicContainerEditPart.VISUAL_ID :
-				return getOperatorBasicContainer_3012IncomingLinks(view);
-			case OperatorLeftContainerEditPart.VISUAL_ID :
-				return getOperatorLeftContainer_3013IncomingLinks(view);
-			case OperatorLeftConnectorEditPart.VISUAL_ID :
-				return getOperatorLeftConnector_3014IncomingLinks(view);
-			case InNode3EditPart.VISUAL_ID :
-				return getInNode_3015IncomingLinks(view);
-			case OperatorRightContainerEditPart.VISUAL_ID :
-				return getOperatorRightContainer_3016IncomingLinks(view);
-			case OperatorRightConnectorEditPart.VISUAL_ID :
-				return getOperatorRightConnector_3017IncomingLinks(view);
-			case OutNode3EditPart.VISUAL_ID :
-				return getOutNode_3018IncomingLinks(view);
-			case DataMapperLinkEditPart.VISUAL_ID :
-				return getDataMapperLink_4001IncomingLinks(view);
+		case InputEditPart.VISUAL_ID:
+			return getInput_2002IncomingLinks(view);
+		case OutputEditPart.VISUAL_ID:
+			return getOutput_2003IncomingLinks(view);
+		case EqualEditPart.VISUAL_ID:
+			return getEqual_2005IncomingLinks(view);
+		case ConcatEditPart.VISUAL_ID:
+			return getConcat_2006IncomingLinks(view);
+		case SplitEditPart.VISUAL_ID:
+			return getSplit_2007IncomingLinks(view);
+		case ConstantEditPart.VISUAL_ID:
+			return getConstant_2008IncomingLinks(view);
+		case LowerCaseEditPart.VISUAL_ID:
+			return getLowerCase_2009IncomingLinks(view);
+		case ContainsEditPart.VISUAL_ID:
+			return getContains_2010IncomingLinks(view);
+		case UpperCaseEditPart.VISUAL_ID:
+			return getUpperCase_2011IncomingLinks(view);
+		case TreeNodeEditPart.VISUAL_ID:
+			return getTreeNode_3002IncomingLinks(view);
+		case TreeNode2EditPart.VISUAL_ID:
+			return getTreeNode_3003IncomingLinks(view);
+		case AttributeEditPart.VISUAL_ID:
+			return getAttribute_3004IncomingLinks(view);
+		case InNodeEditPart.VISUAL_ID:
+			return getInNode_3005IncomingLinks(view);
+		case OutNodeEditPart.VISUAL_ID:
+			return getOutNode_3006IncomingLinks(view);
+		case ElementEditPart.VISUAL_ID:
+			return getElement_3007IncomingLinks(view);
+		case InNode2EditPart.VISUAL_ID:
+			return getInNode_3008IncomingLinks(view);
+		case OutNode2EditPart.VISUAL_ID:
+			return getOutNode_3009IncomingLinks(view);
+		case TreeNode3EditPart.VISUAL_ID:
+			return getTreeNode_3011IncomingLinks(view);
+		case OperatorBasicContainerEditPart.VISUAL_ID:
+			return getOperatorBasicContainer_3012IncomingLinks(view);
+		case OperatorLeftContainerEditPart.VISUAL_ID:
+			return getOperatorLeftContainer_3013IncomingLinks(view);
+		case OperatorLeftConnectorEditPart.VISUAL_ID:
+			return getOperatorLeftConnector_3014IncomingLinks(view);
+		case InNode3EditPart.VISUAL_ID:
+			return getInNode_3015IncomingLinks(view);
+		case OperatorRightContainerEditPart.VISUAL_ID:
+			return getOperatorRightContainer_3016IncomingLinks(view);
+		case OperatorRightConnectorEditPart.VISUAL_ID:
+			return getOperatorRightConnector_3017IncomingLinks(view);
+		case OutNode3EditPart.VISUAL_ID:
+			return getOutNode_3018IncomingLinks(view);
+		case DataMapperLinkEditPart.VISUAL_ID:
+			return getDataMapperLink_4001IncomingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -742,58 +747,58 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getOutgoingLinks(View view) {
 		switch (DataMapperVisualIDRegistry.getVisualID(view)) {
-			case InputEditPart.VISUAL_ID :
-				return getInput_2002OutgoingLinks(view);
-			case OutputEditPart.VISUAL_ID :
-				return getOutput_2003OutgoingLinks(view);
-			case EqualEditPart.VISUAL_ID :
-				return getEqual_2005OutgoingLinks(view);
-			case ConcatEditPart.VISUAL_ID :
-				return getConcat_2006OutgoingLinks(view);
-			case SplitEditPart.VISUAL_ID :
-				return getSplit_2007OutgoingLinks(view);
-			case ConstantEditPart.VISUAL_ID :
-				return getConstant_2008OutgoingLinks(view);
-			case LowerCaseEditPart.VISUAL_ID :
-				return getLowerCase_2009OutgoingLinks(view);
-			case ContainsEditPart.VISUAL_ID :
-				return getContains_2010OutgoingLinks(view);
-			case UpperCaseEditPart.VISUAL_ID :
-				return getUpperCase_2011OutgoingLinks(view);
-			case TreeNodeEditPart.VISUAL_ID :
-				return getTreeNode_3002OutgoingLinks(view);
-			case TreeNode2EditPart.VISUAL_ID :
-				return getTreeNode_3003OutgoingLinks(view);
-			case AttributeEditPart.VISUAL_ID :
-				return getAttribute_3004OutgoingLinks(view);
-			case InNodeEditPart.VISUAL_ID :
-				return getInNode_3005OutgoingLinks(view);
-			case OutNodeEditPart.VISUAL_ID :
-				return getOutNode_3006OutgoingLinks(view);
-			case ElementEditPart.VISUAL_ID :
-				return getElement_3007OutgoingLinks(view);
-			case InNode2EditPart.VISUAL_ID :
-				return getInNode_3008OutgoingLinks(view);
-			case OutNode2EditPart.VISUAL_ID :
-				return getOutNode_3009OutgoingLinks(view);
-			case TreeNode3EditPart.VISUAL_ID :
-				return getTreeNode_3011OutgoingLinks(view);
-			case OperatorBasicContainerEditPart.VISUAL_ID :
-				return getOperatorBasicContainer_3012OutgoingLinks(view);
-			case OperatorLeftContainerEditPart.VISUAL_ID :
-				return getOperatorLeftContainer_3013OutgoingLinks(view);
-			case OperatorLeftConnectorEditPart.VISUAL_ID :
-				return getOperatorLeftConnector_3014OutgoingLinks(view);
-			case InNode3EditPart.VISUAL_ID :
-				return getInNode_3015OutgoingLinks(view);
-			case OperatorRightContainerEditPart.VISUAL_ID :
-				return getOperatorRightContainer_3016OutgoingLinks(view);
-			case OperatorRightConnectorEditPart.VISUAL_ID :
-				return getOperatorRightConnector_3017OutgoingLinks(view);
-			case OutNode3EditPart.VISUAL_ID :
-				return getOutNode_3018OutgoingLinks(view);
-			case DataMapperLinkEditPart.VISUAL_ID :
-				return getDataMapperLink_4001OutgoingLinks(view);
+		case InputEditPart.VISUAL_ID:
+			return getInput_2002OutgoingLinks(view);
+		case OutputEditPart.VISUAL_ID:
+			return getOutput_2003OutgoingLinks(view);
+		case EqualEditPart.VISUAL_ID:
+			return getEqual_2005OutgoingLinks(view);
+		case ConcatEditPart.VISUAL_ID:
+			return getConcat_2006OutgoingLinks(view);
+		case SplitEditPart.VISUAL_ID:
+			return getSplit_2007OutgoingLinks(view);
+		case ConstantEditPart.VISUAL_ID:
+			return getConstant_2008OutgoingLinks(view);
+		case LowerCaseEditPart.VISUAL_ID:
+			return getLowerCase_2009OutgoingLinks(view);
+		case ContainsEditPart.VISUAL_ID:
+			return getContains_2010OutgoingLinks(view);
+		case UpperCaseEditPart.VISUAL_ID:
+			return getUpperCase_2011OutgoingLinks(view);
+		case TreeNodeEditPart.VISUAL_ID:
+			return getTreeNode_3002OutgoingLinks(view);
+		case TreeNode2EditPart.VISUAL_ID:
+			return getTreeNode_3003OutgoingLinks(view);
+		case AttributeEditPart.VISUAL_ID:
+			return getAttribute_3004OutgoingLinks(view);
+		case InNodeEditPart.VISUAL_ID:
+			return getInNode_3005OutgoingLinks(view);
+		case OutNodeEditPart.VISUAL_ID:
+			return getOutNode_3006OutgoingLinks(view);
+		case ElementEditPart.VISUAL_ID:
+			return getElement_3007OutgoingLinks(view);
+		case InNode2EditPart.VISUAL_ID:
+			return getInNode_3008OutgoingLinks(view);
+		case OutNode2EditPart.VISUAL_ID:
+			return getOutNode_3009OutgoingLinks(view);
+		case TreeNode3EditPart.VISUAL_ID:
+			return getTreeNode_3011OutgoingLinks(view);
+		case OperatorBasicContainerEditPart.VISUAL_ID:
+			return getOperatorBasicContainer_3012OutgoingLinks(view);
+		case OperatorLeftContainerEditPart.VISUAL_ID:
+			return getOperatorLeftContainer_3013OutgoingLinks(view);
+		case OperatorLeftConnectorEditPart.VISUAL_ID:
+			return getOperatorLeftConnector_3014OutgoingLinks(view);
+		case InNode3EditPart.VISUAL_ID:
+			return getInNode_3015OutgoingLinks(view);
+		case OperatorRightContainerEditPart.VISUAL_ID:
+			return getOperatorRightContainer_3016OutgoingLinks(view);
+		case OperatorRightConnectorEditPart.VISUAL_ID:
+			return getOperatorRightConnector_3017OutgoingLinks(view);
+		case OutNode3EditPart.VISUAL_ID:
+			return getOutNode_3018OutgoingLinks(view);
+		case DataMapperLinkEditPart.VISUAL_ID:
+			return getDataMapperLink_4001OutgoingLinks(view);
 		}
 		return Collections.emptyList();
 	}
@@ -940,21 +945,24 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012ContainedLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012ContainedLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013ContainedLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013ContainedLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014ContainedLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014ContainedLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
@@ -968,14 +976,16 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016ContainedLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016ContainedLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017ContainedLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017ContainedLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
@@ -1085,9 +1095,11 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getInNode_3005IncomingLinks(View view) {
 		InNode modelElement = (InNode) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer.find(view.eResource().getResourceSet().getResources());
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement,
+				crossReferences));
 		return result;
 	}
 
@@ -1110,9 +1122,11 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getInNode_3008IncomingLinks(View view) {
 		InNode modelElement = (InNode) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer.find(view.eResource().getResourceSet().getResources());
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement,
+				crossReferences));
 		return result;
 	}
 
@@ -1133,21 +1147,24 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012IncomingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012IncomingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013IncomingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013IncomingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014IncomingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014IncomingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
@@ -1156,23 +1173,27 @@ public class DataMapperDiagramUpdater {
 	 */
 	public static List<DataMapperLinkDescriptor> getInNode_3015IncomingLinks(View view) {
 		InNode modelElement = (InNode) view.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer.find(view.eResource().getResourceSet().getResources());
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DataMapperLink_4001(modelElement,
+				crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016IncomingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016IncomingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017IncomingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017IncomingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
@@ -1325,21 +1346,24 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012OutgoingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorBasicContainer_3012OutgoingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013OutgoingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftContainer_3013OutgoingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014OutgoingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorLeftConnector_3014OutgoingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
@@ -1353,14 +1377,16 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016OutgoingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightContainer_3016OutgoingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017OutgoingLinks(View view) {
+	public static List<DataMapperLinkDescriptor> getOperatorRightConnector_3017OutgoingLinks(
+			View view) {
 		return Collections.emptyList();
 	}
 
@@ -1384,7 +1410,8 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection<DataMapperLinkDescriptor> getContainedTypeModelFacetLinks_DataMapperLink_4001(OutNode container) {
+	private static Collection<DataMapperLinkDescriptor> getContainedTypeModelFacetLinks_DataMapperLink_4001(
+			OutNode container) {
 		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
 		for (Iterator<?> links = container.getOutgoingLink().iterator(); links.hasNext();) {
 			EObject linkObject = (EObject) links.next();
@@ -1392,12 +1419,14 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			DataMapperLink link = (DataMapperLink) linkObject;
-			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry.getLinkWithClassVisualID(link)) {
+			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
 			InNode dst = link.getInNode();
 			OutNode src = link.getOutNode();
-			result.add(new DataMapperLinkDescriptor(src, dst, link, DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
+			result.add(new DataMapperLinkDescriptor(src, dst, link,
+					DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -1405,19 +1434,24 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection<DataMapperLinkDescriptor> getIncomingTypeModelFacetLinks_DataMapperLink_4001(InNode target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+	private static Collection<DataMapperLinkDescriptor> getIncomingTypeModelFacetLinks_DataMapperLink_4001(
+			InNode target, Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<DataMapperLinkDescriptor> result = new LinkedList<DataMapperLinkDescriptor>();
 		Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
-			if (setting.getEStructuralFeature() != DataMapperPackage.eINSTANCE.getDataMapperLink_InNode() || false == setting.getEObject() instanceof DataMapperLink) {
+			if (setting.getEStructuralFeature() != DataMapperPackage.eINSTANCE
+					.getDataMapperLink_InNode()
+					|| false == setting.getEObject() instanceof DataMapperLink) {
 				continue;
 			}
 			DataMapperLink link = (DataMapperLink) setting.getEObject();
-			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry.getLinkWithClassVisualID(link)) {
+			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
 			OutNode src = link.getOutNode();
-			result.add(new DataMapperLinkDescriptor(src, target, link, DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
+			result.add(new DataMapperLinkDescriptor(src, target, link,
+					DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
 		}
 		return result;
 	}
@@ -1425,12 +1459,14 @@ public class DataMapperDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection<DataMapperLinkDescriptor> getOutgoingTypeModelFacetLinks_DataMapperLink_4001(OutNode source) {
+	private static Collection<DataMapperLinkDescriptor> getOutgoingTypeModelFacetLinks_DataMapperLink_4001(
+			OutNode source) {
 		OutNode container = null;
 		// Find container element for the link.
 		// Climb up by containment hierarchy starting from the source
 		// and return the first element that is instance of the container class.
-		for (EObject element = source; element != null && container == null; element = element.eContainer()) {
+		for (EObject element = source; element != null && container == null; element = element
+				.eContainer()) {
 			if (element instanceof OutNode) {
 				container = (OutNode) element;
 			}
@@ -1445,7 +1481,8 @@ public class DataMapperDiagramUpdater {
 				continue;
 			}
 			DataMapperLink link = (DataMapperLink) linkObject;
-			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry.getLinkWithClassVisualID(link)) {
+			if (DataMapperLinkEditPart.VISUAL_ID != DataMapperVisualIDRegistry
+					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
 			InNode dst = link.getInNode();
@@ -1453,7 +1490,8 @@ public class DataMapperDiagramUpdater {
 			if (src != source) {
 				continue;
 			}
-			result.add(new DataMapperLinkDescriptor(src, dst, link, DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
+			result.add(new DataMapperLinkDescriptor(src, dst, link,
+					DataMapperElementTypes.DataMapperLink_4001, DataMapperLinkEditPart.VISUAL_ID));
 		}
 		return result;
 	}

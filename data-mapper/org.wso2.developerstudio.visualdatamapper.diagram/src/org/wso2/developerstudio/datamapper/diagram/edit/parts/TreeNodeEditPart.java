@@ -8,6 +8,7 @@ import org.eclipse.draw2d.ActionListener;
 import org.eclipse.draw2d.Clickable;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
 import org.eclipse.draw2d.RectangleFigure;
@@ -22,9 +23,11 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.FlowLayoutEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -94,7 +97,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 				childrenIFigure.add(figure);
 				getPrimaryShape().getChildren().remove(figure);
 			}
-			for (int i = count - 1; i >= 0; i--) {
+			for (int i = 0; i < count; i++) {
 				getPrimaryShape().getChildren().add(figures.get(i));
 			}
 			((Figure) (getPrimaryShape().getChildren().get(0))).setPreferredSize(1000, 40);
@@ -124,10 +127,17 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(
+				EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(
+						org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNodeItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNodeCanonicalEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.SEMANTIC_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNodeItemSemanticEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.CANONICAL_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.TreeNodeCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
@@ -141,7 +151,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
@@ -175,8 +185,57 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public RectangleFigure getPrimaryShape() {
-		return (RectangleFigure) primaryShape;
+	public TreeNodeFigure getPrimaryShape() {
+		return (TreeNodeFigure) primaryShape;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected boolean addFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof TreeNodeNameEditPart) {
+			((TreeNodeNameEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getFigureTreeNodeNameFigure());
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected boolean removeFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof TreeNodeNameEditPart) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void addChildVisual(EditPart childEditPart, int index) {
+		if (addFixedChild(childEditPart)) {
+			return;
+		}
+		super.addChildVisual(childEditPart, -1);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
+		return getContentPane();
 	}
 
 	/**
@@ -268,9 +327,21 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
+	 * @generated
+	 */
+	public EditPart getPrimaryChildEditPart() {
+		return getChildBySemanticHint(DataMapperVisualIDRegistry
+				.getType(TreeNodeNameEditPart.VISUAL_ID));
+	}
+
+	/**
 	 * @generated NOT
 	 */
 	public class TreeNodeFigure extends RectangleFigure {
+		/**
+		 * @generated
+		 */
+		private WrappingLabel fFigureTreeNodeNameFigure;
 		/**
 		 * @generated NOT
 		 */
@@ -316,8 +387,10 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			figure2.setBorder(null);
 			figure2.setOpaque(false);
 
-			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin("org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/plus.gif");
-			ImageDescriptor mainImgDescExpand = AbstractUIPlugin.imageDescriptorFromPlugin("org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/minus.gif");
+			ImageDescriptor mainImgDescCollapse = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/plus.gif");
+			ImageDescriptor mainImgDescExpand = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/minus.gif");
 
 			final ImageFigure mainImg = new ImageFigure(mainImgDescCollapse.createImage());
 			final ImageFigure mainExpand = new ImageFigure(mainImgDescExpand.createImage());
@@ -329,16 +402,16 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			mainImageRectangle.add(mainImg);
 			mainImageRectangle.setBorder(null);
 
-			WrappingLabel fFigureFileNameFigure = new WrappingLabel();
+			fFigureTreeNodeNameFigure = new WrappingLabel();
 			//String name = (((TreeNode) ((View) getModel()).getElement()).getName()).split(",")[1];
 			/*int count = Integer.parseInt((((TreeNode) ((View) getModel()).getElement()).getName())
 					.split(",")[0]);*/
 			String name = (((TreeNode) ((View) getModel()).getElement()).getName());
 			int count = ((TreeNode) ((View) getModel()).getElement()).getLevel();
-			fFigureFileNameFigure.setText(name);
-			fFigureFileNameFigure.setForegroundColor(ColorConstants.black);
+			fFigureTreeNodeNameFigure.setText(name);
+			fFigureTreeNodeNameFigure.setForegroundColor(ColorConstants.black);
 
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
+			fFigureTreeNodeNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 			clickNode = new ClickNode(mainExpand);
 			clickNode.setEnabled(true);
 			clickNode.setPreferredSize(20, 8);
@@ -361,7 +434,7 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 			figure2.setOutline(false);
 			figure.add(figure2);
 			figure.add(clickNode);
-			figure.add(fFigureFileNameFigure);
+			figure.add(fFigureTreeNodeNameFigure);
 			figure.setFill(false);
 			figure2.setFill(false);
 			mainImageRectangle.setFill(false);
@@ -371,6 +444,13 @@ public class TreeNodeEditPart extends ShapeNodeEditPart {
 
 			this.add(figure);
 
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureTreeNodeNameFigure() {
+			return fFigureTreeNodeNameFigure;
 		}
 
 		/**

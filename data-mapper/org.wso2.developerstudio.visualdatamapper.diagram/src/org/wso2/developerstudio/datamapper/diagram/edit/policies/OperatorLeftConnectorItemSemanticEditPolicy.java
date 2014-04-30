@@ -22,7 +22,8 @@ import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTy
 /**
  * @generated
  */
-public class OperatorLeftConnectorItemSemanticEditPolicy extends DataMapperBaseItemSemanticEditPolicy {
+public class OperatorLeftConnectorItemSemanticEditPolicy extends
+		DataMapperBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -46,7 +47,8 @@ public class OperatorLeftConnectorItemSemanticEditPolicy extends DataMapperBaseI
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
+				null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -69,20 +71,22 @@ public class OperatorLeftConnectorItemSemanticEditPolicy extends DataMapperBaseI
 		for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
 			Node node = (Node) nit.next();
 			switch (DataMapperVisualIDRegistry.getVisualID(node)) {
-				case InNode3EditPart.VISUAL_ID :
-					for (Iterator<?> it = node.getTargetEdges().iterator(); it.hasNext();) {
-						Edge incomingLink = (Edge) it.next();
-						if (DataMapperVisualIDRegistry.getVisualID(incomingLink) == DataMapperLinkEditPart.VISUAL_ID) {
-							DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
-							cmd.add(new DestroyElementCommand(r));
-							cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
-							continue;
-						}
+			case InNode3EditPart.VISUAL_ID:
+				for (Iterator<?> it = node.getTargetEdges().iterator(); it.hasNext();) {
+					Edge incomingLink = (Edge) it.next();
+					if (DataMapperVisualIDRegistry.getVisualID(incomingLink) == DataMapperLinkEditPart.VISUAL_ID) {
+						DestroyElementRequest r = new DestroyElementRequest(
+								incomingLink.getElement(), false);
+						cmd.add(new DestroyElementCommand(r));
+						cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
+						continue;
 					}
-					cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(), false))); // directlyOwned: true
-					// don't need explicit deletion of node as parent's view deletion would clean child views as well 
-					// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
-					break;
+				}
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
+						node.getElement(), false))); // directlyOwned: true
+				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+				break;
 			}
 		}
 	}

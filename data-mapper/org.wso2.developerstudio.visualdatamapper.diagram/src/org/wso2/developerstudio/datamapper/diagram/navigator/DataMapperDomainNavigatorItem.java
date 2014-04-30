@@ -17,28 +17,31 @@ public class DataMapperDomainNavigatorItem extends PlatformObject {
 	 * @generated
 	 */
 	static {
-		final Class[] supportedTypes = new Class[]{EObject.class, IPropertySource.class};
-		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
+		final Class[] supportedTypes = new Class[] { EObject.class, IPropertySource.class };
+		Platform.getAdapterManager().registerAdapters(
+				new IAdapterFactory() {
 
-			public Object getAdapter(Object adaptableObject, Class adapterType) {
-				if (adaptableObject instanceof org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) {
-					org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem domainNavigatorItem = (org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) adaptableObject;
-					EObject eObject = domainNavigatorItem.getEObject();
-					if (adapterType == EObject.class) {
-						return eObject;
+					public Object getAdapter(Object adaptableObject, Class adapterType) {
+						if (adaptableObject instanceof org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) {
+							org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem domainNavigatorItem = (org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) adaptableObject;
+							EObject eObject = domainNavigatorItem.getEObject();
+							if (adapterType == EObject.class) {
+								return eObject;
+							}
+							if (adapterType == IPropertySource.class) {
+								return domainNavigatorItem.getPropertySourceProvider()
+										.getPropertySource(eObject);
+							}
+						}
+
+						return null;
 					}
-					if (adapterType == IPropertySource.class) {
-						return domainNavigatorItem.getPropertySourceProvider().getPropertySource(eObject);
+
+					public Class[] getAdapterList() {
+						return supportedTypes;
 					}
-				}
-
-				return null;
-			}
-
-			public Class[] getAdapterList() {
-				return supportedTypes;
-			}
-		}, org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem.class);
+				},
+				org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem.class);
 	}
 
 	/**
@@ -59,7 +62,8 @@ public class DataMapperDomainNavigatorItem extends PlatformObject {
 	/**
 	 * @generated
 	 */
-	public DataMapperDomainNavigatorItem(EObject eObject, Object parent, IPropertySourceProvider propertySourceProvider) {
+	public DataMapperDomainNavigatorItem(EObject eObject, Object parent,
+			IPropertySourceProvider propertySourceProvider) {
 		myParent = parent;
 		myEObject = eObject;
 		myPropertySourceProvider = propertySourceProvider;
@@ -91,7 +95,11 @@ public class DataMapperDomainNavigatorItem extends PlatformObject {
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) {
-			return EcoreUtil.getURI(getEObject()).equals(EcoreUtil.getURI(((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) obj).getEObject()));
+			return EcoreUtil
+					.getURI(getEObject())
+					.equals(EcoreUtil
+							.getURI(((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperDomainNavigatorItem) obj)
+									.getEObject()));
 		}
 		return super.equals(obj);
 	}

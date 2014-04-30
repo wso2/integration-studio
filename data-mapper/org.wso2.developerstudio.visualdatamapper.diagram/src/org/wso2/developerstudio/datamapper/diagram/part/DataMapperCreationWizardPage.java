@@ -36,7 +36,8 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 	/**
 	 * @generated
 	 */
-	public DataMapperCreationWizardPage(String pageName, IStructuredSelection selection, String fileExtension) {
+	public DataMapperCreationWizardPage(String pageName, IStructuredSelection selection,
+			String fileExtension) {
 		super(pageName, selection);
 		this.fileExtension = fileExtension;
 	}
@@ -191,7 +192,8 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 	 */
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		setFileName(DataMapperDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), getFileName(), getExtension()));
+		setFileName(DataMapperDiagramEditorUtil.getUniqueFileName(getContainerFullPath(),
+				getFileName(), getExtension()));
 		setPageComplete(validatePage());
 	}
 
@@ -204,7 +206,8 @@ public class DataMapperCreationWizardPage extends WizardNewFileCreationPage {
 		}
 		String extension = getExtension();
 		if (extension != null && !getFilePath().toString().endsWith("." + extension)) {
-			setErrorMessage(NLS.bind(Messages.DataMapperCreationWizardPageExtensionError, extension));
+			setErrorMessage(NLS
+					.bind(Messages.DataMapperCreationWizardPageExtensionError, extension));
 			return false;
 		}
 		return true;

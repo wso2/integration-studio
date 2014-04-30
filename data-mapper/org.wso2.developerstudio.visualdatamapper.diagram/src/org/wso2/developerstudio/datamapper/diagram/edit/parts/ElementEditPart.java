@@ -5,8 +5,6 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
-import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.Shape;
@@ -20,15 +18,12 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
-import org.eclipse.gef.palette.PaletteContainer;
-import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
@@ -36,7 +31,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -44,8 +38,6 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.custom.FixedBorderItemLocator;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementCanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementItemSemanticEditPolicy;
 import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 
 /**
@@ -85,8 +77,12 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	protected void createDefaultEditPolicies() {
 		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementCanonicalEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.SEMANTIC_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementItemSemanticEditPolicy());
+		installEditPolicy(
+				EditPolicyRoles.CANONICAL_ROLE,
+				new org.wso2.developerstudio.datamapper.diagram.edit.policies.ElementCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 
@@ -107,10 +103,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				View childView = (View) child.getModel();
-				switch (org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry.getVisualID(childView)) {
-					case org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID :
-					case org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID :
-						return new BorderItemSelectionEditPolicy();
+				switch (org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry
+						.getVisualID(childView)) {
+				case org.wso2.developerstudio.datamapper.diagram.edit.parts.InNode2EditPart.VISUAL_ID:
+				case org.wso2.developerstudio.datamapper.diagram.edit.parts.OutNode2EditPart.VISUAL_ID:
+					return new BorderItemSelectionEditPolicy();
 				}
 				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
@@ -140,8 +137,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	/**
 	 * @generated
 	 */
-	public RectangleFigure getPrimaryShape() {
-		return (RectangleFigure) primaryShape;
+	public ElementFigure getPrimaryShape() {
+		return (ElementFigure) primaryShape;
 	}
 
 	/*
@@ -161,6 +158,11 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	 * Output, dont add outNodes
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementNameEditPart) {
+			((org.wso2.developerstudio.datamapper.diagram.edit.parts.ElementNameEditPart) childEditPart)
+					.setLabel(getPrimaryShape().getFigureElementNameFigure());
+			return true;
+		}
 
 		/*		if (childEditPart instanceof InNode2EditPart || childEditPart instanceof InNodeEditPart) {
 		
@@ -293,13 +295,15 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 				if (temp instanceof InputEditPart) {
 
 					if (childEditPart instanceof InNodeEditPart) {
-						NodeFigure figureInput = ((InNodeEditPart) childEditPart).getNodeFigureOutput();
+						NodeFigure figureInput = ((InNodeEditPart) childEditPart)
+								.getNodeFigureOutput();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
 						break;
 					} else {
-						NodeFigure figureInput = (NodeFigure) ((InNode2EditPart) childEditPart).getFigure();
+						NodeFigure figureInput = (NodeFigure) ((InNode2EditPart) childEditPart)
+								.getFigure();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -315,27 +319,31 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			if (childEditPart instanceof InNode2EditPart) {
 				IFigure borderItemFigure = ((InNode2EditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.WEST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 
 			else {
 				IFigure borderItemFigure = ((InNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.WEST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
 		}
 
-		else if (childEditPart instanceof OutNode2EditPart || childEditPart instanceof OutNodeEditPart) {
+		else if (childEditPart instanceof OutNode2EditPart
+				|| childEditPart instanceof OutNodeEditPart) {
 
 			EditPart temp = this.getParent();
 			while ((!(temp instanceof DataMapperRootEditPart)) && (temp != null)) {
 
 				if (temp instanceof OutputEditPart) {
 					if (childEditPart instanceof OutNodeEditPart) {
-						NodeFigure figureInput = ((OutNodeEditPart) childEditPart).getNodeFigureOutput();
+						NodeFigure figureInput = ((OutNodeEditPart) childEditPart)
+								.getNodeFigureOutput();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -343,7 +351,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 					}
 
 					else {
-						NodeFigure figureInput = (NodeFigure) ((OutNode2EditPart) childEditPart).getFigure();
+						NodeFigure figureInput = (NodeFigure) ((OutNode2EditPart) childEditPart)
+								.getFigure();
 						figureInput.removeAll();
 						Figure emptyFigure = new Figure();
 						figureInput.add(emptyFigure);
@@ -357,7 +366,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			if (childEditPart instanceof OutNodeEditPart) {
 				IFigure borderItemFigure = ((OutNodeEditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.EAST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
@@ -365,7 +375,8 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			else {
 
 				IFigure borderItemFigure = ((OutNode2EditPart) childEditPart).getFigure();
-				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.EAST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+						borderItemFigure, PositionConstants.EAST, 0.5);
 				getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 				return true;
 			}
@@ -374,11 +385,41 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 		return false;
 	}
 
+	/**
+	 * @generated
+	 */
+	protected boolean removeFixedChild(EditPart childEditPart) {
+		if (childEditPart instanceof ElementNameEditPart) {
+			return true;
+		}
+		if (childEditPart instanceof InNode2EditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(
+					((InNode2EditPart) childEditPart).getFigure());
+			return true;
+		}
+		if (childEditPart instanceof OutNode2EditPart) {
+			getBorderedFigure().getBorderItemContainer().remove(
+					((OutNode2EditPart) childEditPart).getFigure());
+			return true;
+		}
+		return false;
+	}
+
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (addFixedChild(childEditPart)) {
 			return;
 		}
 		super.addChildVisual(childEditPart, -1);
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void removeChildVisual(EditPart childEditPart) {
+		if (removeFixedChild(childEditPart)) {
+			return;
+		}
+		super.removeChildVisual(childEditPart);
 	}
 
 	/**
@@ -489,9 +530,22 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 	}
 
 	/**
+	 * @generated
+	 */
+	public EditPart getPrimaryChildEditPart() {
+		return getChildBySemanticHint(DataMapperVisualIDRegistry
+				.getType(ElementNameEditPart.VISUAL_ID));
+	}
+
+	/**
 	 * @generated NOT
 	 */
 	public class ElementFigure extends RectangleFigure {
+
+		/**
+		 * @generated
+		 */
+		private WrappingLabel fFigureElementNameFigure;
 
 		/**
 		 * @generated NOT
@@ -556,7 +610,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			figure.setOpaque(false);
 			figure.setFill(false);
 
-			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin("org.wso2.developerstudio.visualdatamapper.diagram", "icons/gmf/symbol_element_of.gif");
+			ImageDescriptor mainImgDesc = AbstractUIPlugin.imageDescriptorFromPlugin(
+					"org.wso2.developerstudio.visualdatamapper.diagram",
+					"icons/gmf/symbol_element_of.gif");
 
 			ImageFigure mainImg = new ImageFigure(mainImgDesc.createImage()); //elemet symbole figure 
 			mainImg.setSize(new Dimension(20, 8));
@@ -567,7 +623,7 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			mainImageRectangle.setPreferredSize(new Dimension(20, 8));
 			mainImageRectangle.add(mainImg);
 
-			WrappingLabel fFigureFileNameFigure = new WrappingLabel(); // element nme holding rectangle
+			fFigureElementNameFigure = new WrappingLabel(); // element nme holding rectangle
 			/*String name = (((Element) ((View) getModel()).getElement()).getName()).split(",")[1];
 			int tabCount = Integer
 					.parseInt((((Element) ((View) getModel()).getElement()).getName()).split(",")[0]);*/
@@ -576,9 +632,9 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 
 			figure.setPreferredSize((tabCount - 1) * 30, 100);
 
-			fFigureFileNameFigure.setText(name);
-			fFigureFileNameFigure.setForegroundColor(ColorConstants.black);
-			fFigureFileNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
+			fFigureElementNameFigure.setText(name);
+			fFigureElementNameFigure.setForegroundColor(ColorConstants.black);
+			fFigureElementNameFigure.setFont(new Font(null, "Arial", 10, SWT.BOLD));
 
 			figure.setOutline(false);
 			mainImageRectangle.setOutline(false);
@@ -588,9 +644,16 @@ public class ElementEditPart extends AbstractBorderedShapeEditPart {
 			this.setFill(false);
 			this.add(figure);
 			this.add(mainImageRectangle);
-			this.add(fFigureFileNameFigure);
+			this.add(fFigureElementNameFigure);
 			//this.setMinimumSize(new Dimension(100, 20));
 
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureElementNameFigure() {
+			return fFigureElementNameFigure;
 		}
 
 	}

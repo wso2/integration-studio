@@ -26,6 +26,7 @@ import org.wso2.developerstudio.datamapper.OutNode;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#getBasicContainer <em>Basic Container</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.impl.OperatorImpl#isSerialized <em>Serialized</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,6 +42,25 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * @ordered
 	 */
 	protected OperatorBasicContainer basicContainer;
+
+	/**
+	 * The default value of the '{@link #isSerialized() <em>Serialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSerialized()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SERIALIZED_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isSerialized() <em>Serialized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSerialized()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean serialized = SERIALIZED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,6 +129,27 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSerialized() {
+		return serialized;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSerialized(boolean newSerialized) {
+		boolean oldSerialized = serialized;
+		serialized = newSerialized;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DataMapperPackage.OPERATOR__SERIALIZED, oldSerialized, serialized));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -128,6 +169,8 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 		switch (featureID) {
 			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
 				return getBasicContainer();
+			case DataMapperPackage.OPERATOR__SERIALIZED:
+				return isSerialized();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -144,6 +187,9 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
 				setBasicContainer((OperatorBasicContainer)newValue);
 				return;
+			case DataMapperPackage.OPERATOR__SERIALIZED:
+				setSerialized((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -159,6 +205,9 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
 				setBasicContainer((OperatorBasicContainer)null);
 				return;
+			case DataMapperPackage.OPERATOR__SERIALIZED:
+				setSerialized(SERIALIZED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -173,8 +222,26 @@ public class OperatorImpl extends DataMapperNodeImpl implements Operator {
 		switch (featureID) {
 			case DataMapperPackage.OPERATOR__BASIC_CONTAINER:
 				return basicContainer != null;
+			case DataMapperPackage.OPERATOR__SERIALIZED:
+				return serialized != SERIALIZED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (serialized: ");
+		result.append(serialized);
+		result.append(')');
+		return result.toString();
 	}
 
 } //OperatorImpl

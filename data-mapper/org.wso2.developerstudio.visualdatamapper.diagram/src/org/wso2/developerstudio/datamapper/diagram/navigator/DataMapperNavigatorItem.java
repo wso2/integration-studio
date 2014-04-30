@@ -15,12 +15,14 @@ public class DataMapperNavigatorItem extends DataMapperAbstractNavigatorItem {
 	 * @generated
 	 */
 	static {
-		final Class[] supportedTypes = new Class[]{View.class, EObject.class};
+		final Class[] supportedTypes = new Class[] { View.class, EObject.class };
 		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
 			public Object getAdapter(Object adaptableObject, Class adapterType) {
-				if (adaptableObject instanceof org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem && (adapterType == View.class || adapterType == EObject.class)) {
-					return ((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem) adaptableObject).getView();
+				if (adaptableObject instanceof org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem
+						&& (adapterType == View.class || adapterType == EObject.class)) {
+					return ((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem) adaptableObject)
+							.getView();
 				}
 				return null;
 			}
@@ -69,7 +71,11 @@ public class DataMapperNavigatorItem extends DataMapperAbstractNavigatorItem {
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem) {
-			return EcoreUtil.getURI(getView()).equals(EcoreUtil.getURI(((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem) obj).getView()));
+			return EcoreUtil
+					.getURI(getView())
+					.equals(EcoreUtil
+							.getURI(((org.wso2.developerstudio.datamapper.diagram.navigator.DataMapperNavigatorItem) obj)
+									.getView()));
 		}
 		return super.equals(obj);
 	}

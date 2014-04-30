@@ -101,10 +101,8 @@ public class ConstantItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Constant)object).getConstantValue();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Constant_type") :
-			getString("_UI_Constant_type") + " " + label;
+		Constant constant = (Constant)object;
+		return getString("_UI_Constant_type") + " " + constant.isSerialized();
 	}
 
 	/**

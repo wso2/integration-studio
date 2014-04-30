@@ -23,6 +23,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Operator" eSuperTypes="#//DataMapperNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="basicContainer" eType="#//OperatorBasicContainer"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serialized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperatorBasicContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftContainer" eType="#//OperatorLeftContainer"

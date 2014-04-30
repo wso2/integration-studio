@@ -15,6 +15,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.wso2.developerstudio.datamapper.Contains;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.datamapper.Contains} object.
@@ -74,7 +75,8 @@ public class ContainsItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Contains_type");
+		Contains contains = (Contains)object;
+		return getString("_UI_Contains_type") + " " + contains.isSerialized();
 	}
 
 	/**

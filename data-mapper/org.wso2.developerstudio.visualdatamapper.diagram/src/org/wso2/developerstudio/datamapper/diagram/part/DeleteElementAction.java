@@ -39,6 +39,7 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
 		setHoverImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
 		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
-		setDisabledImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
+		setDisabledImageDescriptor(workbenchImages
+				.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
 	}
 }

@@ -32,7 +32,8 @@ import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperElementTy
  */
 public class DataMapperPaletteFactory {
 
-	public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1, INITIAL_STATE_PINNED_OPEN = 2;
+	public static final int INITIAL_STATE_OPEN = 0, INITIAL_STATE_CLOSED = 1,
+			INITIAL_STATE_PINNED_OPEN = 2;
 
 	/**
 	 * @generated
@@ -69,9 +70,12 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createDataMapperLink1CreationTool() {
-		LinkToolEntry entry = new LinkToolEntry(Messages.DataMapperLink1CreationTool_title, Messages.DataMapperLink1CreationTool_desc, Collections.singletonList(DataMapperElementTypes.DataMapperLink_4001));
+		LinkToolEntry entry = new LinkToolEntry(Messages.DataMapperLink1CreationTool_title,
+				Messages.DataMapperLink1CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.DataMapperLink_4001));
 		entry.setId("createDataMapperLink1CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.DataMapperLink_4001));
+		entry.setSmallIcon(DataMapperElementTypes
+				.getImageDescriptor(DataMapperElementTypes.DataMapperLink_4001));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -80,9 +84,12 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createEqual2CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Equal2CreationTool_title, Messages.Equal2CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Equal_2005));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Equal2CreationTool_title,
+				Messages.Equal2CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Equal_2005));
 		entry.setId("createEqual2CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Equal_2005));
+		entry.setSmallIcon(DataMapperElementTypes
+				.getImageDescriptor(DataMapperElementTypes.Equal_2005));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -91,9 +98,12 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createConcat3CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Concat3CreationTool_title, Messages.Concat3CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Concat_2006));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Concat3CreationTool_title,
+				Messages.Concat3CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Concat_2006));
 		entry.setId("createConcat3CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Concat_2006));
+		entry.setSmallIcon(DataMapperElementTypes
+				.getImageDescriptor(DataMapperElementTypes.Concat_2006));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -102,9 +112,12 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createSplit4CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Split4CreationTool_title, Messages.Split4CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Split_2007));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Split4CreationTool_title,
+				Messages.Split4CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Split_2007));
 		entry.setId("createSplit4CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Split_2007));
+		entry.setSmallIcon(DataMapperElementTypes
+				.getImageDescriptor(DataMapperElementTypes.Split_2007));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -113,9 +126,12 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createConstant5CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Constant5CreationTool_title, Messages.Constant5CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Constant_2008));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Constant5CreationTool_title,
+				Messages.Constant5CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Constant_2008));
 		entry.setId("createConstant5CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Constant_2008));
+		entry.setSmallIcon(DataMapperElementTypes
+				.getImageDescriptor(DataMapperElementTypes.Constant_2008));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -124,9 +140,12 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createLowerCase6CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.LowerCase6CreationTool_title, Messages.LowerCase6CreationTool_desc, Collections.singletonList(DataMapperElementTypes.LowerCase_2009));
+		NodeToolEntry entry = new NodeToolEntry(Messages.LowerCase6CreationTool_title,
+				Messages.LowerCase6CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.LowerCase_2009));
 		entry.setId("createLowerCase6CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.LowerCase_2009));
+		entry.setSmallIcon(DataMapperElementTypes
+				.getImageDescriptor(DataMapperElementTypes.LowerCase_2009));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -135,9 +154,12 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createContains7CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.Contains7CreationTool_title, Messages.Contains7CreationTool_desc, Collections.singletonList(DataMapperElementTypes.Contains_2010));
+		NodeToolEntry entry = new NodeToolEntry(Messages.Contains7CreationTool_title,
+				Messages.Contains7CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.Contains_2010));
 		entry.setId("createContains7CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.Contains_2010));
+		entry.setSmallIcon(DataMapperElementTypes
+				.getImageDescriptor(DataMapperElementTypes.Contains_2010));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -146,9 +168,12 @@ public class DataMapperPaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createUpperCase8CreationTool() {
-		NodeToolEntry entry = new NodeToolEntry(Messages.UpperCase8CreationTool_title, Messages.UpperCase8CreationTool_desc, Collections.singletonList(DataMapperElementTypes.UpperCase_2011));
+		NodeToolEntry entry = new NodeToolEntry(Messages.UpperCase8CreationTool_title,
+				Messages.UpperCase8CreationTool_desc,
+				Collections.singletonList(DataMapperElementTypes.UpperCase_2011));
 		entry.setId("createUpperCase8CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(DataMapperElementTypes.getImageDescriptor(DataMapperElementTypes.UpperCase_2011));
+		entry.setSmallIcon(DataMapperElementTypes
+				.getImageDescriptor(DataMapperElementTypes.UpperCase_2011));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -242,24 +267,31 @@ public class DataMapperPaletteFactory {
 					 */
 					if (getTargetEditPart() instanceof ElementEditPart) {
 
-						for (int i = 0; i < ((ElementEditPart) getTargetEditPart()).getChildren().size(); ++i) {
+						for (int i = 0; i < ((ElementEditPart) getTargetEditPart()).getChildren()
+								.size(); ++i) {
 
 							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
 
 								if (((ElementEditPart) getTargetEditPart()).getChildren().get(i) instanceof InNodeEditPart) {
-									return ((EditPart) ((ElementEditPart) getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+									return ((EditPart) ((ElementEditPart) getTargetEditPart())
+											.getChildren().get(i)).getCommand(getTargetRequest());
 
-								} else if (((ElementEditPart) getTargetEditPart()).getChildren().get(i) instanceof InNode2EditPart) {
-									return ((InNode2EditPart) ((ElementEditPart) getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+								} else if (((ElementEditPart) getTargetEditPart()).getChildren()
+										.get(i) instanceof InNode2EditPart) {
+									return ((InNode2EditPart) ((ElementEditPart) getTargetEditPart())
+											.getChildren().get(i)).getCommand(getTargetRequest());
 
 								}
 							} else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
 
 								if (((ElementEditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNodeEditPart) {
-									return ((OutNodeEditPart) ((ElementEditPart) getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+									return ((OutNodeEditPart) ((ElementEditPart) getTargetEditPart())
+											.getChildren().get(i)).getCommand(getTargetRequest());
 
-								} else if (((ElementEditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNode2EditPart) {
-									return ((OutNode2EditPart) ((ElementEditPart) getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+								} else if (((ElementEditPart) getTargetEditPart()).getChildren()
+										.get(i) instanceof OutNode2EditPart) {
+									return ((OutNode2EditPart) ((ElementEditPart) getTargetEditPart())
+											.getChildren().get(i)).getCommand(getTargetRequest());
 
 								}
 
@@ -272,10 +304,12 @@ public class DataMapperPaletteFactory {
 					 * for leftconnector
 					 */
 					if (getTargetEditPart() instanceof OperatorLeftConnectorEditPart) {
-						for (int i = 0; i < ((OperatorLeftConnectorEditPart) getTargetEditPart()).getChildren().size(); ++i) {
+						for (int i = 0; i < ((OperatorLeftConnectorEditPart) getTargetEditPart())
+								.getChildren().size(); ++i) {
 
 							if ((getTargetEditPart()).getChildren().get(i) instanceof InNode3EditPart) {
-								return ((EditPart) (getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+								return ((EditPart) (getTargetEditPart()).getChildren().get(i))
+										.getCommand(getTargetRequest());
 
 							}
 
@@ -286,28 +320,35 @@ public class DataMapperPaletteFactory {
 					 * for attribute
 					 */
 					else if (getTargetEditPart() instanceof AttributeEditPart) {
-						for (int i = 0; i < ((AttributeEditPart) getTargetEditPart()).getChildren().size(); ++i) {
+						for (int i = 0; i < ((AttributeEditPart) getTargetEditPart()).getChildren()
+								.size(); ++i) {
 
 							if (getRoot(getTargetEditPart()) instanceof OutputEditPart) {
 								if (((AttributeEditPart) getTargetEditPart()).getChildren().get(i) instanceof InNodeEditPart) {
-									return ((InNodeEditPart) ((AttributeEditPart) getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+									return ((InNodeEditPart) ((AttributeEditPart) getTargetEditPart())
+											.getChildren().get(i)).getCommand(getTargetRequest());
 
 								}
 
-								else if (((AttributeEditPart) getTargetEditPart()).getChildren().get(i) instanceof InNode2EditPart) {
-									return ((InNode2EditPart) ((AttributeEditPart) getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+								else if (((AttributeEditPart) getTargetEditPart()).getChildren()
+										.get(i) instanceof InNode2EditPart) {
+									return ((InNode2EditPart) ((AttributeEditPart) getTargetEditPart())
+											.getChildren().get(i)).getCommand(getTargetRequest());
 
 								}
 							}
 
 							else if (getRoot(getTargetEditPart()) instanceof InputEditPart) {
 								if (((AttributeEditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNodeEditPart) {
-									return ((OutNodeEditPart) ((AttributeEditPart) getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+									return ((OutNodeEditPart) ((AttributeEditPart) getTargetEditPart())
+											.getChildren().get(i)).getCommand(getTargetRequest());
 
 								}
 
-								else if (((AttributeEditPart) getTargetEditPart()).getChildren().get(i) instanceof OutNode2EditPart) {
-									return ((OutNode2EditPart) ((AttributeEditPart) getTargetEditPart()).getChildren().get(i)).getCommand(getTargetRequest());
+								else if (((AttributeEditPart) getTargetEditPart()).getChildren()
+										.get(i) instanceof OutNode2EditPart) {
+									return ((OutNode2EditPart) ((AttributeEditPart) getTargetEditPart())
+											.getChildren().get(i)).getCommand(getTargetRequest());
 
 								}
 							}

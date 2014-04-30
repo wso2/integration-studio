@@ -11,7 +11,8 @@ import org.wso2.developerstudio.datamapper.diagram.providers.DataMapperModelingA
 /**
  * @generated
  */
-public class DataMapperModelingAssistantProviderOfInputEditPart extends DataMapperModelingAssistantProvider {
+public class DataMapperModelingAssistantProviderOfInputEditPart extends
+		DataMapperModelingAssistantProvider {
 
 	/**
 	 * @generated

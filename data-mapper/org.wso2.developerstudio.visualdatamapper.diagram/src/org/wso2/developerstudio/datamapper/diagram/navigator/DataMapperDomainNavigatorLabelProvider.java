@@ -16,7 +16,8 @@ public class DataMapperDomainNavigatorLabelProvider implements ICommonLabelProvi
 	/**
 	 * @generated
 	 */
-	private AdapterFactoryLabelProvider myAdapterFactoryLabelProvider = new AdapterFactoryLabelProvider(DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+	private AdapterFactoryLabelProvider myAdapterFactoryLabelProvider = new AdapterFactoryLabelProvider(
+			DataMapperDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 
 	/**
 	 * @generated
@@ -29,7 +30,8 @@ public class DataMapperDomainNavigatorLabelProvider implements ICommonLabelProvi
 	 */
 	public Image getImage(Object element) {
 		if (element instanceof DataMapperDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider.getImage(((DataMapperDomainNavigatorItem) element).getEObject());
+			return myAdapterFactoryLabelProvider.getImage(((DataMapperDomainNavigatorItem) element)
+					.getEObject());
 		}
 		return null;
 	}
@@ -39,7 +41,8 @@ public class DataMapperDomainNavigatorLabelProvider implements ICommonLabelProvi
 	 */
 	public String getText(Object element) {
 		if (element instanceof DataMapperDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider.getText(((DataMapperDomainNavigatorItem) element).getEObject());
+			return myAdapterFactoryLabelProvider.getText(((DataMapperDomainNavigatorItem) element)
+					.getEObject());
 		}
 		return null;
 	}

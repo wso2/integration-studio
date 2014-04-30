@@ -113,9 +113,11 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 					if (contentDescription != null) {
 						IContentType contentType = contentDescription.getContentType();
 						if (contentType.getId() != null) {
-							if ("org.wso2.developerstudio.eclipse.datamapper.contenttype.datamapperconfig".equals(contentType.getId())) {
+							if ("org.wso2.developerstudio.eclipse.datamapper.contenttype.datamapperconfig"
+									.equals(contentType.getId())) {
 								myOpenDiagramAction.setSelection(file);
-								actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, myOpenDiagramAction);
+								actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
+										myOpenDiagramAction);
 							}
 						}
 					}
@@ -172,7 +174,8 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 				}
 				if (selectedElement instanceof Diagram) {
 					Diagram diagram = (Diagram) selectedElement;
-					if (DataMapperRootEditPart.MODEL_ID.equals(DataMapperVisualIDRegistry.getModelID(diagram))) {
+					if (DataMapperRootEditPart.MODEL_ID.equals(DataMapperVisualIDRegistry
+							.getModelID(diagram))) {
 						myDiagram = diagram;
 					}
 				}
@@ -216,7 +219,8 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 					String location = selection.getLocation().toOSString();
 					String source = FileUtils.getContentAsString(new File(location));
 					String name = selection.getName().split("\\.")[0];
-					String fullPath = selection.getFullPath().removeLastSegments(1).toOSString() + "/";
+					String fullPath = selection.getFullPath().removeLastSegments(1).toOSString()
+							+ "/";
 					Openable openable = DataMapperEditor.getOpenable();
 					openable.editorOpen(name, null, fullPath, source);
 				}
@@ -246,7 +250,8 @@ public class DataMapperNavigatorActionProvider extends CommonActionProvider {
 				}
 			}
 			URI uri = EcoreUtil.getURI(diagram);
-			String editorName = uri.lastSegment() + '#' + diagram.eResource().getContents().indexOf(diagram);
+			String editorName = uri.lastSegment() + '#'
+					+ diagram.eResource().getContents().indexOf(diagram);
 			IEditorInput editorInput = new URIEditorInput(uri, editorName);
 			return editorInput;
 		}

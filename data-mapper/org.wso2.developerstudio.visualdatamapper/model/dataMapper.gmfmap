@@ -20,6 +20,13 @@
         <ownedChild>
           <domainMetaElement
               href="dataMapper.ecore#//TreeNode"/>
+          <labelMappings
+              xsi:type="gmfmap:FeatureLabelMapping">
+            <diagramLabel
+                href="dataMapper.gmfgraph#TreeNodeName"/>
+            <features
+                href="dataMapper.ecore#//TreeNode/name"/>
+          </labelMappings>
           <diagramNode
               href="dataMapper.gmfgraph#TreeNode"/>
           <children
@@ -53,6 +60,13 @@
             <ownedChild>
               <domainMetaElement
                   href="dataMapper.ecore#//Element"/>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="dataMapper.gmfgraph#ElementName"/>
+                <features
+                    href="dataMapper.ecore#//Element/name"/>
+              </labelMappings>
               <diagramNode
                   href="dataMapper.gmfgraph#Element"/>
               <children>

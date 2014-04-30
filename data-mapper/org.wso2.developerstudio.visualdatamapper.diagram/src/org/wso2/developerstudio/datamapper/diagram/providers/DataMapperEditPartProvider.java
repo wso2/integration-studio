@@ -24,6 +24,7 @@ public class DataMapperEditPartProvider extends DefaultEditPartProvider {
 	 * @generated
 	 */
 	public DataMapperEditPartProvider() {
-		super(new DataMapperEditPartFactory(), DataMapperVisualIDRegistry.TYPED_INSTANCE, DataMapperRootEditPart.MODEL_ID);
+		super(new DataMapperEditPartFactory(), DataMapperVisualIDRegistry.TYPED_INSTANCE,
+				DataMapperRootEditPart.MODEL_ID);
 	}
 }

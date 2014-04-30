@@ -119,7 +119,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		if (type == IShowInTargetList.class) {
 			return new IShowInTargetList() {
 				public String[] getShowInTargetIds() {
-					return new String[]{ProjectExplorer.VIEW_ID};
+					return new String[] { ProjectExplorer.VIEW_ID };
 				}
 			};
 		}
@@ -140,7 +140,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	 * @generated
 	 */
 	public TransactionalEditingDomain getEditingDomain() {
-		IDocument document = getEditorInput() != null ? getDocumentProvider().getDocument(getEditorInput()) : null;
+		IDocument document = getEditorInput() != null ? getDocumentProvider().getDocument(
+				getEditorInput()) : null;
 		if (document instanceof IDiagramDocument) {
 			return ((IDiagramDocument) document).getEditingDomain();
 		}
@@ -186,7 +187,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		Shell shell = getSite().getShell();
 		IEditorInput input = getEditorInput();
 		SaveAsDialog dialog = new SaveAsDialog(shell);
-		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input).getFile() : null;
+		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input).getFile()
+				: null;
 		if (original != null) {
 			dialog.setOriginalFile(original);
 		}
@@ -197,7 +199,8 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 			return;
 		}
 		if (provider.isDeleted(input) && original != null) {
-			String message = NLS.bind(Messages.DataMapperDiagramEditor_SavingDeletedFile, original.getName());
+			String message = NLS.bind(Messages.DataMapperDiagramEditor_SavingDeletedFile,
+					original.getName());
 			dialog.setErrorMessage(null);
 			dialog.setMessage(message, IMessageProvider.WARNING);
 		}
@@ -218,23 +221,28 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		IFile file = workspaceRoot.getFile(filePath);
 		final IEditorInput newInput = new FileEditorInput(file);
 		// Check if the editor is already open
-		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor().getEditorMatchingStrategy();
-		IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences();
+		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor()
+				.getEditorMatchingStrategy();
+		IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().getEditorReferences();
 		for (int i = 0; i < editorRefs.length; i++) {
 			if (matchingStrategy.matches(editorRefs[i], newInput)) {
-				MessageDialog.openWarning(shell, Messages.DataMapperDiagramEditor_SaveAsErrorTitle, Messages.DataMapperDiagramEditor_SaveAsErrorMessage);
+				MessageDialog.openWarning(shell, Messages.DataMapperDiagramEditor_SaveAsErrorTitle,
+						Messages.DataMapperDiagramEditor_SaveAsErrorMessage);
 				return;
 			}
 		}
 		boolean success = false;
 		try {
 			provider.aboutToChange(newInput);
-			getDocumentProvider(newInput).saveDocument(progressMonitor, newInput, getDocumentProvider().getDocument(getEditorInput()), true);
+			getDocumentProvider(newInput).saveDocument(progressMonitor, newInput,
+					getDocumentProvider().getDocument(getEditorInput()), true);
 			success = true;
 		} catch (CoreException x) {
 			IStatus status = x.getStatus();
 			if (status == null || status.getSeverity() != IStatus.CANCEL) {
-				ErrorDialog.openError(shell, Messages.DataMapperDiagramEditor_SaveErrorTitle, Messages.DataMapperDiagramEditor_SaveErrorMessage, x.getStatus());
+				ErrorDialog.openError(shell, Messages.DataMapperDiagramEditor_SaveErrorTitle,
+						Messages.DataMapperDiagramEditor_SaveErrorMessage, x.getStatus());
 			}
 		} finally {
 			provider.changed(newInput);
@@ -275,7 +283,7 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 	}
 
 	/**
-	 * @generated NOT
+	 * @generated 
 	 */
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
@@ -290,9 +298,11 @@ public class DataMapperDiagramEditor extends DiagramDocumentEditor implements IG
 		//when our view is the active workbench part.
 		dataMapperEditor.getSite().setSelectionProvider(viewer);
 
-		org.wso2.developerstudio.datamapper.diagram.part.DiagramEditorContextMenuProvider provider = new org.wso2.developerstudio.datamapper.diagram.part.DiagramEditorContextMenuProvider(this, getDiagramGraphicalViewer());
+		org.wso2.developerstudio.datamapper.diagram.part.DiagramEditorContextMenuProvider provider = new org.wso2.developerstudio.datamapper.diagram.part.DiagramEditorContextMenuProvider(
+				this, getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);
-		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
+		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider,
+				getDiagramGraphicalViewer());
 	}
 
 }

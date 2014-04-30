@@ -91,7 +91,8 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(Messages.DataMapperCreationWizardTitle);
-		setDefaultPageImageDescriptor(DataMapperDiagramEditorPlugin.getBundledImageDescriptor("icons/wizban/NewDataMapperWizard.gif")); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(DataMapperDiagramEditorPlugin
+				.getBundledImageDescriptor("icons/wizban/NewDataMapperWizard.gif")); //$NON-NLS-1$
 		setNeedsProgressMonitor(true);
 	}
 
@@ -102,26 +103,34 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 	 * @see org.eclipse.jface.wizard.Wizard#addPages()
 	 */
 	public void addPages() {
-		diagramModelFilePage = new org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardPage("DiagramModelFile", getSelection(), "datamapper_diagram"); //$NON-NLS-1$ //$NON-NLS-2$
+		diagramModelFilePage = new org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardPage(
+				"DiagramModelFile", getSelection(), "datamapper_diagram"); //$NON-NLS-1$ //$NON-NLS-2$
 
-		diagramModelFilePage.setTitle(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageTitle);
-		diagramModelFilePage.setDescription(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageDescription);
+		diagramModelFilePage
+				.setTitle(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageTitle);
+		diagramModelFilePage
+				.setDescription(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DiagramModelFilePageDescription);
 		addPage(diagramModelFilePage);
 
-		domainModelFilePage = new org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardPage("DomainModelFile", getSelection(), "datamapper") { //$NON-NLS-1$ //$NON-NLS-2$
+		domainModelFilePage = new org.wso2.developerstudio.datamapper.diagram.part.DataMapperCreationWizardPage(
+				"DomainModelFile", getSelection(), "datamapper") { //$NON-NLS-1$ //$NON-NLS-2$
 
 			public void setVisible(boolean visible) {
 				if (visible) {
 					String fileName = diagramModelFilePage.getFileName();
-					fileName = fileName.substring(0, fileName.length() - ".datamapper_diagram".length()); //$NON-NLS-1$
-					setFileName(org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), fileName, "datamapper")); //$NON-NLS-1$
+					fileName = fileName.substring(0,
+							fileName.length() - ".datamapper_diagram".length()); //$NON-NLS-1$
+					setFileName(org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorUtil
+							.getUniqueFileName(getContainerFullPath(), fileName, "datamapper")); //$NON-NLS-1$
 				}
 				super.setVisible(visible);
 			}
 		};
 
-		domainModelFilePage.setTitle(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageTitle);
-		domainModelFilePage.setDescription(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageDescription);
+		domainModelFilePage
+				.setTitle(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageTitle);
+		domainModelFilePage
+				.setDescription(org.wso2.developerstudio.datamapper.diagram.part.Messages.DataMapperCreationWizard_DomainModelFilePageDescription);
 		addPage(domainModelFilePage);
 	}
 
@@ -131,13 +140,17 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 		IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 
-			protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
-				diagram = DataMapperDiagramEditorUtil.createDiagram(diagramModelFilePage.getURI(), domainModelFilePage.getURI(), monitor);
+			protected void execute(IProgressMonitor monitor) throws CoreException,
+					InterruptedException {
+				diagram = DataMapperDiagramEditorUtil.createDiagram(diagramModelFilePage.getURI(),
+						domainModelFilePage.getURI(), monitor);
 				if (isOpenNewlyCreatedDiagramEditor() && diagram != null) {
 					try {
 						DataMapperDiagramEditorUtil.openDiagram(diagram);
 					} catch (PartInitException e) {
-						ErrorDialog.openError(getContainer().getShell(), Messages.DataMapperCreationWizardOpenEditorError, null, e.getStatus());
+						ErrorDialog.openError(getContainer().getShell(),
+								Messages.DataMapperCreationWizardOpenEditorError, null,
+								e.getStatus());
 					}
 				}
 			}
@@ -148,9 +161,12 @@ public class DataMapperCreationWizard extends Wizard implements INewWizard {
 			return false;
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof CoreException) {
-				ErrorDialog.openError(getContainer().getShell(), Messages.DataMapperCreationWizardCreationError, null, ((CoreException) e.getTargetException()).getStatus());
+				ErrorDialog.openError(getContainer().getShell(),
+						Messages.DataMapperCreationWizardCreationError, null,
+						((CoreException) e.getTargetException()).getStatus());
 			} else {
-				DataMapperDiagramEditorPlugin.getInstance().logError("Error creating diagram", e.getTargetException()); //$NON-NLS-1$
+				DataMapperDiagramEditorPlugin.getInstance().logError(
+						"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
 			}
 			return false;
 		}

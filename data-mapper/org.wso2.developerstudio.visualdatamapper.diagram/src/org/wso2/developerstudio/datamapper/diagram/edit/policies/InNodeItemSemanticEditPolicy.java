@@ -38,12 +38,14 @@ public class InNodeItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdit
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
+				null);
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (DataMapperVisualIDRegistry.getVisualID(incomingLink) == DataMapperLinkEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(), false);
+				DestroyElementRequest r = new DestroyElementRequest(incomingLink.getElement(),
+						false);
 				cmd.add(new DestroyElementCommand(r));
 				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 				continue;
@@ -65,7 +67,8 @@ public class InNodeItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdit
 	 * @generated
 	 */
 	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
-		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req) : getCompleteCreateRelationshipCommand(req);
+		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
+				: getCompleteCreateRelationshipCommand(req);
 		return command != null ? command : super.getCreateRelationshipCommand(req);
 	}
 
@@ -84,7 +87,8 @@ public class InNodeItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdit
 	 */
 	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
 		if (DataMapperElementTypes.DataMapperLink_4001 == req.getElementType()) {
-			return getGEFWrapper(new DataMapperLinkCreateCommand(req, req.getSource(), req.getTarget()));
+			return getGEFWrapper(new DataMapperLinkCreateCommand(req, req.getSource(),
+					req.getTarget()));
 		}
 		return null;
 	}
@@ -97,8 +101,8 @@ public class InNodeItemSemanticEditPolicy extends DataMapperBaseItemSemanticEdit
 	 */
 	protected Command getReorientRelationshipCommand(ReorientRelationshipRequest req) {
 		switch (getVisualID(req)) {
-			case DataMapperLinkEditPart.VISUAL_ID :
-				return getGEFWrapper(new DataMapperLinkReorientCommand(req));
+		case DataMapperLinkEditPart.VISUAL_ID:
+			return getGEFWrapper(new DataMapperLinkReorientCommand(req));
 		}
 		return super.getReorientRelationshipCommand(req);
 	}

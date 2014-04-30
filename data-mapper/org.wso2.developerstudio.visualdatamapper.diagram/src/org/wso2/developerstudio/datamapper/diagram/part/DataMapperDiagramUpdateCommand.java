@@ -36,14 +36,17 @@ public class DataMapperDiagramUpdateCommand implements IHandler {
 	 * @generated
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection();
+		ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getSelectionService().getSelection();
 		if (selection instanceof IStructuredSelection) {
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			if (structuredSelection.size() != 1) {
 				return null;
 			}
-			if (structuredSelection.getFirstElement() instanceof EditPart && ((EditPart) structuredSelection.getFirstElement()).getModel() instanceof View) {
-				EObject modelElement = ((View) ((EditPart) structuredSelection.getFirstElement()).getModel()).getElement();
+			if (structuredSelection.getFirstElement() instanceof EditPart
+					&& ((EditPart) structuredSelection.getFirstElement()).getModel() instanceof View) {
+				EObject modelElement = ((View) ((EditPart) structuredSelection.getFirstElement())
+						.getModel()).getElement();
 				List editPolicies = CanonicalEditPolicy.getRegisteredEditPolicies(modelElement);
 				for (Iterator it = editPolicies.iterator(); it.hasNext();) {
 					CanonicalEditPolicy nextEditPolicy = (CanonicalEditPolicy) it.next();

@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import org.apache.avro.Schema;
+import org.apache.avro.SchemaParseException;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -16,8 +17,10 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -66,6 +69,8 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 	private static final String OUTPUT_SCHEMA_ID = "Output-Schema"; //$NON-NLS-1$
 
 	private static final String ERROR_WRITING_SCHEMA_FILE = Messages.DataMapperMultiPageEditor_errorWritingSchemaFile;
+
+	private static final String ERROR_PARSING_THE_SCHEMA = "Error parsing the schema";
 	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -409,12 +414,17 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 		}
 		File newSchemaFile = newSchemaIFile.getRawLocation().makeAbsolute().toFile();
 
-		String fileContent;
+		String fileContent = "";
 		// Becomes null when tree is cleared. Write empty string
 		if (null != schema) {
-			fileContent = schema.toString(true);
-		} else {
-			fileContent = "";
+			try {
+				fileContent = schema.toString(true);
+			} catch (SchemaParseException e) {
+				log.error(ERROR_PARSING_THE_SCHEMA, e);
+				IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+				ErrorDialog.openError(getSite().getShell(), ERROR_PARSING_THE_SCHEMA, null, status);
+				return;
+			}
 		}
 
 		try {

@@ -15,6 +15,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.wso2.developerstudio.datamapper.UpperCase;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.datamapper.UpperCase} object.
@@ -74,7 +75,8 @@ public class UpperCaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_UpperCase_type");
+		UpperCase upperCase = (UpperCase)object;
+		return getString("_UI_UpperCase_type") + " " + upperCase.isSerialized();
 	}
 
 	/**

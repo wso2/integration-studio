@@ -70,7 +70,8 @@ public class DataMapperLinkReorientCommand extends EditElementCommand {
 			return false;
 		}
 		OutNode container = (OutNode) getLink().eContainer();
-		return DataMapperBaseItemSemanticEditPolicy.getLinkConstraints().canExistDataMapperLink_4001(container, getLink(), getNewSource(), target);
+		return DataMapperBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistDataMapperLink_4001(container, getLink(), getNewSource(), target);
 	}
 
 	/**
@@ -85,13 +86,15 @@ public class DataMapperLinkReorientCommand extends EditElementCommand {
 			return false;
 		}
 		OutNode container = (OutNode) getLink().eContainer();
-		return DataMapperBaseItemSemanticEditPolicy.getLinkConstraints().canExistDataMapperLink_4001(container, getLink(), source, getNewTarget());
+		return DataMapperBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistDataMapperLink_4001(container, getLink(), source, getNewTarget());
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		if (!canExecute()) {
 			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}

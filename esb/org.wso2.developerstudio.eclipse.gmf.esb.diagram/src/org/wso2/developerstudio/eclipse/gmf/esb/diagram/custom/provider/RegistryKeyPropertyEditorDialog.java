@@ -322,7 +322,7 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 		
 		try{
 			DeveloperStudioElementProviderDialog registryResourceProviderSelector = null;
-			if(rkProperty.getKeyName().equals("receive")){
+			if(rkProperty.getKeyName().equals("receive") || rkProperty.getKeyName().equals("onStore Sequence") || rkProperty.getKeyName().equals("Sequence Key")){
 				registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(getParentShell(), new Class[]{IEsbSequence.class}, (Map<String,List<String>>)rkProperty.getFilters());
 			}
 			else{ registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(getParentShell(),new Class[]{IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class},(Map<String,List<String>>)rkProperty.getFilters());

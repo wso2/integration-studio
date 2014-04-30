@@ -9,6 +9,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -211,16 +212,16 @@ public class SequenceImpl extends MediatorImpl implements Sequence {
 	protected SequenceImpl() {
 		super();		
 		NamespacedProperty dynamicKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
-		DeveloperStudioProviderUtils.addFilter(
-				(Map<String, List<String>>) staticReferenceKey.getFilters(),
-				CSProviderConstants.FILTER_MEDIA_TYPE,
-				ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
 		dynamicKey.setPrettyName("Sequence Expression");
 		dynamicKey.setPropertyName("expression");
 		dynamicKey.setPropertyValue("/default/expression");
 		setDynamicReferenceKey(dynamicKey);
 		
 		RegistryKeyProperty staticKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		DeveloperStudioProviderUtils.addFilter(
+				(Map<String, List<String>>) staticKey.getFilters(),
+				CSProviderConstants.FILTER_MEDIA_TYPE,
+				ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
 		staticKey.setKeyName("Sequence Key");
 		staticKey.setPrettyName("Sequence Key");
 		staticKey.setKeyValue("");

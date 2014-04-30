@@ -39,7 +39,7 @@ public enum EndPointPropertyScope implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SYNAPSE(0, "SYNAPSE", "default"),
+	SYNAPSE(0, "SYNAPSE", "Synapse"),
 
 	/**
 	 * The '<em><b>TRANSPORT</b></em>' literal object.
@@ -80,7 +80,7 @@ public enum EndPointPropertyScope implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SYNAPSE
-	 * @model literal="default"
+	 * @model literal="Synapse"
 	 * @generated
 	 * @ordered
 	 */

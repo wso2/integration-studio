@@ -1670,16 +1670,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ParentEndPoint/name"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//WSDLEndPoint">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//WSDLEndPoint/WSDLDefinition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//WSDLEndPoint/WSDLDescription"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//WSDLEndPoint/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//WSDLEndPoint/outputConnector"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//WSDLEndPoint/wsdlUri"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//WSDLEndPoint/service"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//WSDLEndPoint/port"/>
     </genClasses>
-    <genClasses ecoreClass="esb.ecore#//WSDLDefinition"/>
-    <genClasses ecoreClass="esb.ecore#//WSDLDescription"/>
     <genClasses ecoreClass="esb.ecore#//WSDLEndPointInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//WSDLEndPointOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LoadBalanceEndPoint">

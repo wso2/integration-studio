@@ -320,8 +320,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.FAILOVER_END_POINT_WEST_OUTPUT_CONNECTOR: return createFailoverEndPointWestOutputConnector();
 			case EsbPackage.PARENT_END_POINT: return createParentEndPoint();
 			case EsbPackage.WSDL_END_POINT: return createWSDLEndPoint();
-			case EsbPackage.WSDL_DEFINITION: return createWSDLDefinition();
-			case EsbPackage.WSDL_DESCRIPTION: return createWSDLDescription();
 			case EsbPackage.WSDL_END_POINT_INPUT_CONNECTOR: return createWSDLEndPointInputConnector();
 			case EsbPackage.WSDL_END_POINT_OUTPUT_CONNECTOR: return createWSDLEndPointOutputConnector();
 			case EsbPackage.LOAD_BALANCE_END_POINT: return createLoadBalanceEndPoint();
@@ -4239,26 +4237,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 		WSDLEndPointImpl wsdlEndPoint = new WSDLEndPointImpl();
 		wsdlEndPoint.setInputConnector(createWSDLEndPointInputConnector());
 		return wsdlEndPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public WSDLDefinition createWSDLDefinition() {
-		WSDLDefinitionImpl wsdlDefinition = new WSDLDefinitionImpl();
-		return wsdlDefinition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public WSDLDescription createWSDLDescription() {
-		WSDLDescriptionImpl wsdlDescription = new WSDLDescriptionImpl();
-		return wsdlDescription;
 	}
 
 	/**

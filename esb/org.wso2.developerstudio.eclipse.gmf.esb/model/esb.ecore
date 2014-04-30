@@ -105,7 +105,7 @@
     <eLiterals name="XPATH" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EndPointPropertyScope">
-    <eLiterals name="SYNAPSE" literal="default"/>
+    <eLiterals name="SYNAPSE" literal="Synapse"/>
     <eLiterals name="TRANSPORT" value="1" literal="transport"/>
     <eLiterals name="AXIS2" value="2" literal="axis2"/>
     <eLiterals name="AXIS2_CLIENT" value="3" literal="axis2-client"/>
@@ -2083,10 +2083,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WSDLEndPoint" eSuperTypes="#//AbstractEndPoint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="WSDLDefinition" upperBound="-1"
-        eType="#//WSDLDefinition"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="WSDLDescription" upperBound="-1"
-        eType="#//WSDLDescription"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//WSDLEndPointInputConnector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//WSDLEndPointOutputConnector"
@@ -2095,8 +2091,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WSDLDefinition"/>
-  <eClassifiers xsi:type="ecore:EClass" name="WSDLDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="WSDLEndPointInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="WSDLEndPointOutputConnector" eSuperTypes="#//OutputConnector"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Type">

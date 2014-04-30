@@ -2775,20 +2775,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass wsdlDefinitionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass wsdlDescriptionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass wsdlEndPointInputConnectorEClass = null;
 
 	/**
@@ -14003,7 +13989,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWSDLEndPoint_WSDLDefinition() {
+	public EReference getWSDLEndPoint_InputConnector() {
 		return (EReference)wsdlEndPointEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -14012,7 +13998,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWSDLEndPoint_WSDLDescription() {
+	public EReference getWSDLEndPoint_OutputConnector() {
 		return (EReference)wsdlEndPointEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -14021,26 +14007,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWSDLEndPoint_InputConnector() {
-		return (EReference)wsdlEndPointEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getWSDLEndPoint_OutputConnector() {
-		return (EReference)wsdlEndPointEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getWSDLEndPoint_WsdlUri() {
-		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -14049,7 +14017,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getWSDLEndPoint_Service() {
-		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -14058,25 +14026,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getWSDLEndPoint_Port() {
-		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getWSDLDefinition() {
-		return wsdlDefinitionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getWSDLDescription() {
-		return wsdlDescriptionEClass;
+		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -16750,17 +16700,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(parentEndPointEClass, PARENT_END_POINT__NAME);
 
 		wsdlEndPointEClass = createEClass(WSDL_END_POINT);
-		createEReference(wsdlEndPointEClass, WSDL_END_POINT__WSDL_DEFINITION);
-		createEReference(wsdlEndPointEClass, WSDL_END_POINT__WSDL_DESCRIPTION);
 		createEReference(wsdlEndPointEClass, WSDL_END_POINT__INPUT_CONNECTOR);
 		createEReference(wsdlEndPointEClass, WSDL_END_POINT__OUTPUT_CONNECTOR);
 		createEAttribute(wsdlEndPointEClass, WSDL_END_POINT__WSDL_URI);
 		createEAttribute(wsdlEndPointEClass, WSDL_END_POINT__SERVICE);
 		createEAttribute(wsdlEndPointEClass, WSDL_END_POINT__PORT);
-
-		wsdlDefinitionEClass = createEClass(WSDL_DEFINITION);
-
-		wsdlDescriptionEClass = createEClass(WSDL_DESCRIPTION);
 
 		wsdlEndPointInputConnectorEClass = createEClass(WSDL_END_POINT_INPUT_CONNECTOR);
 
@@ -18776,17 +18720,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getParentEndPoint_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParentEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(wsdlEndPointEClass, WSDLEndPoint.class, "WSDLEndPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWSDLEndPoint_WSDLDefinition(), this.getWSDLDefinition(), null, "WSDLDefinition", null, 0, -1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWSDLEndPoint_WSDLDescription(), this.getWSDLDescription(), null, "WSDLDescription", null, 0, -1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWSDLEndPoint_InputConnector(), this.getWSDLEndPointInputConnector(), null, "inputConnector", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWSDLEndPoint_OutputConnector(), this.getWSDLEndPointOutputConnector(), null, "outputConnector", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWSDLEndPoint_WsdlUri(), ecorePackage.getEString(), "wsdlUri", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWSDLEndPoint_Service(), ecorePackage.getEString(), "service", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWSDLEndPoint_Port(), ecorePackage.getEString(), "port", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(wsdlDefinitionEClass, WSDLDefinition.class, "WSDLDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(wsdlDescriptionEClass, WSDLDescription.class, "WSDLDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(wsdlEndPointInputConnectorEClass, WSDLEndPointInputConnector.class, "WSDLEndPointInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -49,6 +49,7 @@ import org.wso2.developerstudio.appfactory.core.authentication.UserPasswordCrede
 import org.wso2.developerstudio.appfactory.core.jag.api.JagApiProperties;
 import org.wso2.developerstudio.appfactory.core.model.ErrorType;
 import org.wso2.developerstudio.appfactory.ui.Activator;
+import org.wso2.developerstudio.appfactory.ui.actions.LoginAction;
 import org.wso2.developerstudio.appfactory.ui.utils.Messages;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -72,14 +73,17 @@ public class PasswordDialog extends Dialog {
   private ISecurePreferences gitTempNode;
   private Button btnCheckButton;
   private ISecurePreferences preferences;
+  private LoginAction action;
   
-/** * Create the dialog. * * @param parentShell */
+/** * Create the dialog. * * @param parentShell 
+ * @param loginAction */
 
-  public PasswordDialog(Shell parentShell) {
+  public PasswordDialog(Shell parentShell, LoginAction loginAction) {
     super(parentShell);
     setDefaultImage(ResourceManager.getPluginImage(
 			"org.wso2.developerstudio.appfactory.ui", //$NON-NLS-1$
 			"icons/users.gif")); //$NON-NLS-1$
+    this.action = loginAction;
      
   }
   
@@ -231,6 +235,11 @@ public class PasswordDialog extends Dialog {
 		error.setText("Username or Password cannot be empty !");
 		return;
 	}
+    action.setUsername(getUser());
+    action.setPassword(getPassword());
+    action.setLoginUrl(getHost());
+    action.setSave(isSave());
+    
     if(login()){
     	try {
     		if (isSave) {

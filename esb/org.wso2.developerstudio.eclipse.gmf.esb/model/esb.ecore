@@ -2153,8 +2153,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="LocalEntry" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="entryName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="entry_name"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="#//LocalEntryValueType"
-        defaultValueLiteral="LITERAL"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localEntryType" eType="#//LocalEntryValueType"
+        defaultValueLiteral="In-lined Text Entry"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueLiteral" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="entry_value"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueXML" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -2163,9 +2163,9 @@
         defaultValueLiteral="file:/path/to/resource.ext"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LocalEntryValueType">
-    <eLiterals name="LITERAL"/>
-    <eLiterals name="XML" value="1"/>
-    <eLiterals name="URL" value="2"/>
+    <eLiterals name="LITERAL" literal="In-lined Text Entry"/>
+    <eLiterals name="XML" value="1" literal="In-lined XML Entry"/>
+    <eLiterals name="URL" value="2" literal="Source URL Entry"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Session">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Type"/>

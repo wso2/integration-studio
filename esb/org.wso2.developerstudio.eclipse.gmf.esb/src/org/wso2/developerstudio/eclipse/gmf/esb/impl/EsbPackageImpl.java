@@ -14266,7 +14266,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLocalEntry_ValueType() {
+	public EAttribute getLocalEntry_LocalEntryType() {
 		return (EAttribute)localEntryEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -16806,7 +16806,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		localEntryEClass = createEClass(LOCAL_ENTRY);
 		createEAttribute(localEntryEClass, LOCAL_ENTRY__ENTRY_NAME);
-		createEAttribute(localEntryEClass, LOCAL_ENTRY__VALUE_TYPE);
+		createEAttribute(localEntryEClass, LOCAL_ENTRY__LOCAL_ENTRY_TYPE);
 		createEAttribute(localEntryEClass, LOCAL_ENTRY__VALUE_LITERAL);
 		createEAttribute(localEntryEClass, LOCAL_ENTRY__VALUE_XML);
 		createEAttribute(localEntryEClass, LOCAL_ENTRY__VALUE_URL);
@@ -18831,7 +18831,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(localEntryEClass, LocalEntry.class, "LocalEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLocalEntry_EntryName(), ecorePackage.getEString(), "entryName", "entry_name", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLocalEntry_ValueType(), this.getLocalEntryValueType(), "valueType", "LITERAL", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLocalEntry_LocalEntryType(), this.getLocalEntryValueType(), "localEntryType", "In-lined Text Entry", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLocalEntry_ValueLiteral(), ecorePackage.getEString(), "valueLiteral", "entry_value", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLocalEntry_ValueXML(), ecorePackage.getEString(), "valueXML", "<value/>", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLocalEntry_ValueURL(), ecorePackage.getEString(), "valueURL", "file:/path/to/resource.ext", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

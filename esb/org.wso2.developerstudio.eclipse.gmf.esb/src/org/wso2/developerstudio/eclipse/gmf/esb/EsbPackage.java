@@ -16053,13 +16053,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int LOCAL_ENTRY__ENTRY_NAME = ESB_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Local Entry Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL_ENTRY__VALUE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 1;
+	int LOCAL_ENTRY__LOCAL_ENTRY_TYPE = ESB_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Value Literal</b></em>' attribute.
@@ -33633,15 +33633,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getLocalEntry_EntryName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueType <em>Value Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local Entry Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value Type</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueType()
+	 * @return the meta object for the attribute '<em>Local Entry Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType()
 	 * @see #getLocalEntry()
 	 * @generated
 	 */
-	EAttribute getLocalEntry_ValueType();
+	EAttribute getLocalEntry_LocalEntryType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueLiteral <em>Value Literal</em>}'.
@@ -45169,12 +45169,12 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute LOCAL_ENTRY__ENTRY_NAME = eINSTANCE.getLocalEntry_EntryName();
 
 		/**
-		 * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Local Entry Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LOCAL_ENTRY__VALUE_TYPE = eINSTANCE.getLocalEntry_ValueType();
+		EAttribute LOCAL_ENTRY__LOCAL_ENTRY_TYPE = eINSTANCE.getLocalEntry_LocalEntryType();
 
 		/**
 		 * The meta object literal for the '<em><b>Value Literal</b></em>' attribute feature.

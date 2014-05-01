@@ -30,7 +30,7 @@ public enum LocalEntryValueType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LITERAL(0, "LITERAL", "LITERAL"),
+	LITERAL(0, "LITERAL", "In-lined Text Entry"),
 
 	/**
 	 * The '<em><b>XML</b></em>' literal object.
@@ -40,7 +40,7 @@ public enum LocalEntryValueType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	XML(1, "XML", "XML"),
+	XML(1, "XML", "In-lined XML Entry"),
 
 	/**
 	 * The '<em><b>URL</b></em>' literal object.
@@ -50,7 +50,7 @@ public enum LocalEntryValueType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	URL(2, "URL", "URL");
+	URL(2, "URL", "Source URL Entry");
 
 	/**
 	 * The '<em><b>LITERAL</b></em>' literal value.
@@ -61,7 +61,7 @@ public enum LocalEntryValueType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LITERAL
-	 * @model
+	 * @model literal="In-lined Text Entry"
 	 * @generated
 	 * @ordered
 	 */
@@ -76,7 +76,7 @@ public enum LocalEntryValueType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #XML
-	 * @model
+	 * @model literal="In-lined XML Entry"
 	 * @generated
 	 * @ordered
 	 */
@@ -91,7 +91,7 @@ public enum LocalEntryValueType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #URL
-	 * @model
+	 * @model literal="Source URL Entry"
 	 * @generated
 	 * @ordered
 	 */

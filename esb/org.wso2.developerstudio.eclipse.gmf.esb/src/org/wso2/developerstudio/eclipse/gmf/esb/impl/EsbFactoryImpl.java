@@ -414,8 +414,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createProxyWsdlTypeFromString(eDataType, initialValue);
 			case EsbPackage.HTTP_METHOD_TYPE:
 				return createHttpMethodTypeFromString(eDataType, initialValue);
-			case EsbPackage.FILTER_CONDITION_TYPE:
-				return createFilterConditionTypeFromString(eDataType, initialValue);
+			case EsbPackage.FILTER_MEDIATOR_CONDITION_TYPE:
+				return createFilterMediatorConditionTypeFromString(eDataType, initialValue);
 			case EsbPackage.LOG_CATEGORY:
 				return createLogCategoryFromString(eDataType, initialValue);
 			case EsbPackage.LOG_LEVEL:
@@ -446,6 +446,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createEnrichTargetActionFromString(eDataType, initialValue);
 			case EsbPackage.ENRICH_TARGET_TYPE:
 				return createEnrichTargetTypeFromString(eDataType, initialValue);
+			case EsbPackage.FEATURE_BOOLEAN_VALUE:
+				return createFeatureBooleanValueFromString(eDataType, initialValue);
 			case EsbPackage.EVENT_TOPIC_TYPE:
 				return createEventTopicTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENTITLEMENT_SEQUENCE_TYPE:
@@ -632,8 +634,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertProxyWsdlTypeToString(eDataType, instanceValue);
 			case EsbPackage.HTTP_METHOD_TYPE:
 				return convertHttpMethodTypeToString(eDataType, instanceValue);
-			case EsbPackage.FILTER_CONDITION_TYPE:
-				return convertFilterConditionTypeToString(eDataType, instanceValue);
+			case EsbPackage.FILTER_MEDIATOR_CONDITION_TYPE:
+				return convertFilterMediatorConditionTypeToString(eDataType, instanceValue);
 			case EsbPackage.LOG_CATEGORY:
 				return convertLogCategoryToString(eDataType, instanceValue);
 			case EsbPackage.LOG_LEVEL:
@@ -664,6 +666,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertEnrichTargetActionToString(eDataType, instanceValue);
 			case EsbPackage.ENRICH_TARGET_TYPE:
 				return convertEnrichTargetTypeToString(eDataType, instanceValue);
+			case EsbPackage.FEATURE_BOOLEAN_VALUE:
+				return convertFeatureBooleanValueToString(eDataType, instanceValue);
 			case EsbPackage.EVENT_TOPIC_TYPE:
 				return convertEventTopicTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENTITLEMENT_SEQUENCE_TYPE:
@@ -4470,8 +4474,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FilterConditionType createFilterConditionTypeFromString(EDataType eDataType, String initialValue) {
-		FilterConditionType result = FilterConditionType.get(initialValue);
+	public FilterMediatorConditionType createFilterMediatorConditionTypeFromString(EDataType eDataType, String initialValue) {
+		FilterMediatorConditionType result = FilterMediatorConditionType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -4481,7 +4485,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFilterConditionTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertFilterMediatorConditionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -4782,6 +4786,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertEnrichTargetTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeatureBooleanValue createFeatureBooleanValueFromString(EDataType eDataType, String initialValue) {
+		FeatureBooleanValue result = FeatureBooleanValue.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertFeatureBooleanValueToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

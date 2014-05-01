@@ -51,9 +51,9 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/DELETE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/HEAD"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FilterConditionType">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterConditionType/SOURCE_AND_REGEX"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterConditionType/XPATH"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FilterMediatorConditionType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterMediatorConditionType/SOURCE_REGEX"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterMediatorConditionType/XPath"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//LogCategory">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LogCategory/TRACE"/>
@@ -143,6 +143,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/ENVELOPE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/BODY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/PROPERTY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FeatureBooleanValue">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeatureBooleanValue/TRUE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeatureBooleanValue/FALSE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EventTopicType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/STATIC"/>
@@ -901,6 +905,7 @@
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractBooleanFeature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureValue"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractLocationKeyResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractLocationKeyResource/location"/>

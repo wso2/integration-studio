@@ -336,7 +336,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="FilterMediator" eSuperTypes="#//Mediator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conditionType" eType="#//FilterConditionType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conditionType" eType="#//FilterMediatorConditionType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="regex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="default_regex"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//FilterMediatorInputConnector"
@@ -354,6 +354,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="filterContainer" eType="#//FilterContainer"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FilterMediatorConditionType">
+    <eLiterals name="SOURCE_REGEX" literal="Source and Regualar Expression"/>
+    <eLiterals name="XPath" value="1"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterContainer" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="passContainer" eType="#//FilterPassContainer"
         containment="true"/>
@@ -367,10 +371,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="FilterFailContainer" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="FilterConditionType">
-    <eLiterals name="SOURCE_AND_REGEX"/>
-    <eLiterals name="XPATH" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="FilterMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -646,6 +646,11 @@
         defaultValueLiteral="feature_name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FeatureBooleanValue">
+    <eLiterals name="TRUE"/>
+    <eLiterals name="FALSE" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractLocationKeyResource" abstract="true"
       eSuperTypes="#//EsbNode">

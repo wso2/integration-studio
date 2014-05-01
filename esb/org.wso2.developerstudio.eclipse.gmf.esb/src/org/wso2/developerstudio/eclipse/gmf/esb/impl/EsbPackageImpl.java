@@ -13512,7 +13512,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPayloadFactoryMediator_Format() {
+	public EAttribute getPayloadFactoryMediator_Payload() {
 		return (EAttribute)payloadFactoryMediatorEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -13521,7 +13521,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPayloadFactoryMediator_FormatKey() {
+	public EReference getPayloadFactoryMediator_PayloadKey() {
 		return (EReference)payloadFactoryMediatorEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -16654,8 +16654,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageBuilderEClass, MESSAGE_BUILDER__FORMATTER_CLASS);
 
 		payloadFactoryMediatorEClass = createEClass(PAYLOAD_FACTORY_MEDIATOR);
-		createEAttribute(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__FORMAT);
-		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY);
+		createEAttribute(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__PAYLOAD);
+		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY);
 		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__ARGS);
 		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__INPUT_CONNECTOR);
 		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__OUTPUT_CONNECTOR);
@@ -18676,8 +18676,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageBuilder_FormatterClass(), ecorePackage.getEString(), "formatterClass", null, 0, 1, MessageBuilder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(payloadFactoryMediatorEClass, PayloadFactoryMediator.class, "PayloadFactoryMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPayloadFactoryMediator_Format(), ecorePackage.getEString(), "format", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPayloadFactoryMediator_FormatKey(), this.getRegistryKeyProperty(), null, "formatKey", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPayloadFactoryMediator_Payload(), ecorePackage.getEString(), "payload", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPayloadFactoryMediator_PayloadKey(), this.getRegistryKeyProperty(), null, "payloadKey", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPayloadFactoryMediator_Args(), this.getPayloadFactoryArgument(), null, "args", null, 0, -1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPayloadFactoryMediator_InputConnector(), this.getPayloadFactoryMediatorInputConnector(), null, "inputConnector", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPayloadFactoryMediator_OutputConnector(), this.getPayloadFactoryMediatorOutputConnector(), null, "outputConnector", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

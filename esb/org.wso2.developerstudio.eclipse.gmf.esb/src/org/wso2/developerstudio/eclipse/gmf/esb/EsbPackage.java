@@ -14397,22 +14397,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PAYLOAD_FACTORY_MEDIATOR__REVERSE = MEDIATOR__REVERSE;
 
 	/**
-	 * The feature id for the '<em><b>Format</b></em>' attribute.
+	 * The feature id for the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAYLOAD_FACTORY_MEDIATOR__FORMAT = MEDIATOR_FEATURE_COUNT + 0;
+	int PAYLOAD_FACTORY_MEDIATOR__PAYLOAD = MEDIATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Format Key</b></em>' containment reference.
+	 * The feature id for the '<em><b>Payload Key</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY = MEDIATOR_FEATURE_COUNT + 1;
+	int PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY = MEDIATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -32729,26 +32729,26 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EClass getPayloadFactoryMediator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormat <em>Format</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload <em>Payload</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Format</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormat()
+	 * @return the meta object for the attribute '<em>Payload</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload()
 	 * @see #getPayloadFactoryMediator()
 	 * @generated
 	 */
-	EAttribute getPayloadFactoryMediator_Format();
+	EAttribute getPayloadFactoryMediator_Payload();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormatKey <em>Format Key</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey <em>Payload Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Format Key</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormatKey()
+	 * @return the meta object for the containment reference '<em>Payload Key</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey()
 	 * @see #getPayloadFactoryMediator()
 	 * @generated
 	 */
-	EReference getPayloadFactoryMediator_FormatKey();
+	EReference getPayloadFactoryMediator_PayloadKey();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getArgs <em>Args</em>}'.
@@ -44399,20 +44399,20 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EClass PAYLOAD_FACTORY_MEDIATOR = eINSTANCE.getPayloadFactoryMediator();
 
 		/**
-		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Payload</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PAYLOAD_FACTORY_MEDIATOR__FORMAT = eINSTANCE.getPayloadFactoryMediator_Format();
+		EAttribute PAYLOAD_FACTORY_MEDIATOR__PAYLOAD = eINSTANCE.getPayloadFactoryMediator_Payload();
 
 		/**
-		 * The meta object literal for the '<em><b>Format Key</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Payload Key</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY = eINSTANCE.getPayloadFactoryMediator_FormatKey();
+		EReference PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY = eINSTANCE.getPayloadFactoryMediator_PayloadKey();
 
 		/**
 		 * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.

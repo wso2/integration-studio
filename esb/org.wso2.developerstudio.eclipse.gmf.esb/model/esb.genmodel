@@ -1611,8 +1611,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageBuilder/formatterClass"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//PayloadFactoryMediator">
-      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryMediator/format"/>
-      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/formatKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryMediator/payload"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/payloadKey"/>
       <genFeatures children="true" createChild="true" propertyDescription="Arguments"
           ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/args"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/inputConnector"/>

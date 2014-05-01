@@ -450,6 +450,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createFeatureBooleanValueFromString(eDataType, initialValue);
 			case EsbPackage.EVENT_TOPIC_TYPE:
 				return createEventTopicTypeFromString(eDataType, initialValue);
+			case EsbPackage.ENTITLEMENT_CALLBACK_HANDLER:
+				return createEntitlementCallbackHandlerFromString(eDataType, initialValue);
+			case EsbPackage.ENTITLEMENT_CLIENT_TYPE:
+				return createEntitlementClientTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENTITLEMENT_SEQUENCE_TYPE:
 				return createEntitlementSequenceTypeFromString(eDataType, initialValue);
 			case EsbPackage.SCRIPT_KEY_TYPE_ENUM:
@@ -670,6 +674,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertFeatureBooleanValueToString(eDataType, instanceValue);
 			case EsbPackage.EVENT_TOPIC_TYPE:
 				return convertEventTopicTypeToString(eDataType, instanceValue);
+			case EsbPackage.ENTITLEMENT_CALLBACK_HANDLER:
+				return convertEntitlementCallbackHandlerToString(eDataType, instanceValue);
+			case EsbPackage.ENTITLEMENT_CLIENT_TYPE:
+				return convertEntitlementClientTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENTITLEMENT_SEQUENCE_TYPE:
 				return convertEntitlementSequenceTypeToString(eDataType, instanceValue);
 			case EsbPackage.SCRIPT_KEY_TYPE_ENUM:
@@ -4826,6 +4834,46 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertEventTopicTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntitlementCallbackHandler createEntitlementCallbackHandlerFromString(EDataType eDataType, String initialValue) {
+		EntitlementCallbackHandler result = EntitlementCallbackHandler.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEntitlementCallbackHandlerToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntitlementClientType createEntitlementClientTypeFromString(EDataType eDataType, String initialValue) {
+		EntitlementClientType result = EntitlementClientType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEntitlementClientTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

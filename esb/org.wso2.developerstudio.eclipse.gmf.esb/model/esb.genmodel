@@ -152,6 +152,19 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/STATIC"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/DYNAMIC"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EntitlementCallbackHandler">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/UT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/X509"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/SAML"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/Kerberos"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/Custom"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EntitlementClientType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementClientType/BASIC_AUTH"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementClientType/THRIFT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementClientType/SOAP"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementClientType/WSXACML"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EntitlementSequenceType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementSequenceType/ANONYMOUS"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementSequenceType/REGISTRY_REFERENCE"/>
@@ -1029,6 +1042,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//EntitlementMediator/onAcceptOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//EntitlementMediator/adviceOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//EntitlementMediator/obligationsOutputConnector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EntitlementMediator/callbackHandler"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//EntitlementMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//EntitlementMediatorOutputConnector"/>

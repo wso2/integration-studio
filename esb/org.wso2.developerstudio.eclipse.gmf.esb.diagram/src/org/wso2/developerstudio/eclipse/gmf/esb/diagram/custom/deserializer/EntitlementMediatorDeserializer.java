@@ -15,6 +15,11 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class EntitlementMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EntitlementMediator>{
 	
+	final static String BASIC_AUTH = "basicAuth";
+	final static String THRIFT = "thrift";
+	final static String SOAP = "soap";
+	final static String WS_XACML ="wsXacml";
+	
 	public EntitlementMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
 		Assert.isTrue(mediator instanceof EntitlementMediatorExt, "Unsupported mediator passed in for deserialization at "+ this.getClass());
 		
@@ -29,9 +34,36 @@ public class EntitlementMediatorDeserializer extends AbstractEsbNodeDeserializer
 		executeSetValueCommand(ENTITLEMENT_MEDIATOR__USERNAME, entitlementMediator.getRemoteServiceUserName());
 		executeSetValueCommand(ENTITLEMENT_MEDIATOR__PASSWORD, entitlementMediator.getRemoteServicePassword());
 		executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_CLASS_NAME, entitlementMediator.getCallbackClass());
-		executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_HOST, entitlementMediator.getThriftHost());
+		/*executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_HOST, entitlementMediator.getThriftHost());
 		executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_PORT, entitlementMediator.getThriftPort());
 		executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE, entitlementMediator.getClient());
+		*/
+		if (entitlementMediator.getClient() != null) {
+			String clientType = entitlementMediator.getClient();
+			if (clientType != null && !clientType.equals("")) {
+				switch (clientType) {
+				case BASIC_AUTH:
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
+							entitlementMediator.getClient());
+					break;
+				case THRIFT:
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
+							entitlementMediator.getClient());
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_HOST, entitlementMediator.getThriftHost());
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_PORT, entitlementMediator.getThriftPort());	
+					break;
+				case SOAP:
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
+							entitlementMediator.getClient());
+					break;
+				case WS_XACML:
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
+							entitlementMediator.getClient());
+					break;
+				}
+			}
+	}
+	
 		
 		if(entitlementMediator.getOnRejectMediator() != null){
 			SequenceMediator sequence = (SequenceMediator) entitlementMediator.getOnRejectMediator();

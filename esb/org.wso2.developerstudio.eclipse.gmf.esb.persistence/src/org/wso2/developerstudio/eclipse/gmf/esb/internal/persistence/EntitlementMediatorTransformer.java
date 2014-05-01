@@ -6,7 +6,8 @@ import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.developerstudio.eclipse.gmf.esb.AggregateSequenceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
@@ -15,6 +16,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerUtils;
 
 public class EntitlementMediatorTransformer extends AbstractEsbNodeTransformer{
+	
+	
+	final static String BASIC_AUTH = "basicAuth";
+	final static String THRIFT = "thrift";
+	final static String SOAP = "soap";
+	final static String WS_XACML ="wsXacml";
 
 	public void transform(TransformationInfo information, EsbNode subject)
 			throws Exception {
@@ -50,12 +57,41 @@ public class EntitlementMediatorTransformer extends AbstractEsbNodeTransformer{
 			entitlementMediator.setRemoteServiceUrl(visualEntitlement.getEntitlementServerURL());
 			entitlementMediator.setRemoteServiceUserName(visualEntitlement.getUsername());
 			entitlementMediator.setRemoteServicePassword(visualEntitlement.getPassword());
+		//	entitlementMediator.setCallbackClass(visualEntitlement.getCallbackClassName());
+			
+		
+		}	
+		
+		if(visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.CUSTOM)){
 			entitlementMediator.setCallbackClass(visualEntitlement.getCallbackClassName());
+			}
+			else if (visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.SAML)){
+				entitlementMediator.setCallbackClass("org.wso2.carbon.identity.entitlement.mediator.callback.SAMLEntitlementCallbackHandler");
+				}
+			else if (visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.UT)){
+				entitlementMediator.setCallbackClass("org.wso2.carbon.identity.entitlement.mediator.callback.UIEntitlementCallbackHandler");
+				}
+			else if (visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.KERBEROS)){
+				entitlementMediator.setCallbackClass("org.wso2.carbon.identity.entitlement.mediator.callback.KerberosEntitlementCallbackHandler");
+				}
+			else if (visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.X509)){
+				entitlementMediator.setCallbackClass("org.wso2.carbon.identity.entitlement.mediator.callback.X509EntitlementCallbackHandler");
+
+			}
+			
+		if(visualEntitlement.getEntitlementClientType().equals(EntitlementClientType.THRIFT))	{
+			entitlementMediator.setClient(THRIFT);
 			entitlementMediator.setThriftHost(visualEntitlement.getThriftHost());
 			entitlementMediator.setThriftPort(visualEntitlement.getThriftPort());
-			entitlementMediator.setClient(visualEntitlement.getEntitlementClientType());
-		}	
+		}else if(visualEntitlement.getEntitlementClientType().equals(EntitlementClientType.BASIC_AUTH)){
+			entitlementMediator.setClient(BASIC_AUTH);
+		}else if (visualEntitlement.getEntitlementClientType().equals(EntitlementClientType.SOAP)){
+			entitlementMediator.setClient(SOAP);
+		}else if (visualEntitlement.getEntitlementClientType().equals(EntitlementClientType.WSXACML)){
+			entitlementMediator.setClient(WS_XACML);
+		}
 
+		
 		
 		if (visualEntitlement.getOnRejectSequenceType().equals(EntitlementSequenceType.REGISTRY_REFERENCE)) {
 			entitlementMediator.setOnRejectSeqKey(visualEntitlement.getOnRejectSequenceKey().getKeyValue());

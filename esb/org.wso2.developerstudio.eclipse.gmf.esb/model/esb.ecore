@@ -813,7 +813,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="thriftHost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="thriftPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="entitlementClientType"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="#//EntitlementClientType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="onRejectSequenceType" eType="#//EntitlementSequenceType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="onAcceptSequenceType" eType="#//EntitlementSequenceType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adviceSequenceType" eType="#//EntitlementSequenceType"/>
@@ -841,6 +841,20 @@
         eType="#//EntitlementMediatorAdviceOutputConnector" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="obligationsOutputConnector"
         eType="#//EntitlementMediatorObligationsOutputConnector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="callbackHandler" eType="#//EntitlementCallbackHandler"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EntitlementCallbackHandler">
+    <eLiterals name="UT"/>
+    <eLiterals name="X509" value="1"/>
+    <eLiterals name="SAML" value="2"/>
+    <eLiterals name="Kerberos" value="3"/>
+    <eLiterals name="Custom" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EntitlementClientType">
+    <eLiterals name="BASIC_AUTH" literal=" SOAP - Basic Auth (WSO2 IS 4.0.0 or later)"/>
+    <eLiterals name="THRIFT" value="1"/>
+    <eLiterals name="SOAP" value="2" literal="SOAP - Authentication Admin (WSO2 IS 3.2.3 or earlier) "/>
+    <eLiterals name="WSXACML" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntitlementMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="EntitlementMediatorOutputConnector"

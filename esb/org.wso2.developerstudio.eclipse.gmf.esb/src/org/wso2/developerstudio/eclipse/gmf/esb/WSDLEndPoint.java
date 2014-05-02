@@ -16,8 +16,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getWSDLDefinition <em>WSDL Definition</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getWSDLDescription <em>WSDL Description</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getWsdlUri <em>Wsdl Uri</em>}</li>
@@ -31,38 +29,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface WSDLEndPoint extends AbstractEndPoint {
-	/**
-	 * Returns the value of the '<em><b>WSDL Definition</b></em>' reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDefinition}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>WSDL Definition</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>WSDL Definition</em>' reference list.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getWSDLEndPoint_WSDLDefinition()
-	 * @model
-	 * @generated
-	 */
-	EList<WSDLDefinition> getWSDLDefinition();
-
-	/**
-	 * Returns the value of the '<em><b>WSDL Description</b></em>' reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDescription}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>WSDL Description</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>WSDL Description</em>' reference list.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getWSDLEndPoint_WSDLDescription()
-	 * @model
-	 * @generated
-	 */
-	EList<WSDLDescription> getWSDLDescription();
-
 	/**
 	 * Returns the value of the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

@@ -53,7 +53,7 @@ public class LocalEntryTransformer extends AbstractEsbNodeTransformer{
 	
 	public Entry createEntry(LocalEntry visualLocalEntry) throws Exception{
 		Entry localEntry = new Entry(visualLocalEntry.getEntryName());
-		switch (visualLocalEntry.getValueType()) {
+		switch (visualLocalEntry.getLocalEntryType()) {
 		case LITERAL: {
 			localEntry.setValue(visualLocalEntry.getValueLiteral());
 			localEntry.setType(Entry.INLINE_TEXT);

@@ -320,8 +320,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.FAILOVER_END_POINT_WEST_OUTPUT_CONNECTOR: return createFailoverEndPointWestOutputConnector();
 			case EsbPackage.PARENT_END_POINT: return createParentEndPoint();
 			case EsbPackage.WSDL_END_POINT: return createWSDLEndPoint();
-			case EsbPackage.WSDL_DEFINITION: return createWSDLDefinition();
-			case EsbPackage.WSDL_DESCRIPTION: return createWSDLDescription();
 			case EsbPackage.WSDL_END_POINT_INPUT_CONNECTOR: return createWSDLEndPointInputConnector();
 			case EsbPackage.WSDL_END_POINT_OUTPUT_CONNECTOR: return createWSDLEndPointOutputConnector();
 			case EsbPackage.LOAD_BALANCE_END_POINT: return createLoadBalanceEndPoint();
@@ -416,8 +414,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createProxyWsdlTypeFromString(eDataType, initialValue);
 			case EsbPackage.HTTP_METHOD_TYPE:
 				return createHttpMethodTypeFromString(eDataType, initialValue);
-			case EsbPackage.FILTER_CONDITION_TYPE:
-				return createFilterConditionTypeFromString(eDataType, initialValue);
+			case EsbPackage.FILTER_MEDIATOR_CONDITION_TYPE:
+				return createFilterMediatorConditionTypeFromString(eDataType, initialValue);
 			case EsbPackage.LOG_CATEGORY:
 				return createLogCategoryFromString(eDataType, initialValue);
 			case EsbPackage.LOG_LEVEL:
@@ -448,8 +446,14 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createEnrichTargetActionFromString(eDataType, initialValue);
 			case EsbPackage.ENRICH_TARGET_TYPE:
 				return createEnrichTargetTypeFromString(eDataType, initialValue);
+			case EsbPackage.FEATURE_BOOLEAN_VALUE:
+				return createFeatureBooleanValueFromString(eDataType, initialValue);
 			case EsbPackage.EVENT_TOPIC_TYPE:
 				return createEventTopicTypeFromString(eDataType, initialValue);
+			case EsbPackage.ENTITLEMENT_CALLBACK_HANDLER:
+				return createEntitlementCallbackHandlerFromString(eDataType, initialValue);
+			case EsbPackage.ENTITLEMENT_CLIENT_TYPE:
+				return createEntitlementClientTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENTITLEMENT_SEQUENCE_TYPE:
 				return createEntitlementSequenceTypeFromString(eDataType, initialValue);
 			case EsbPackage.SCRIPT_KEY_TYPE_ENUM:
@@ -634,8 +638,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertProxyWsdlTypeToString(eDataType, instanceValue);
 			case EsbPackage.HTTP_METHOD_TYPE:
 				return convertHttpMethodTypeToString(eDataType, instanceValue);
-			case EsbPackage.FILTER_CONDITION_TYPE:
-				return convertFilterConditionTypeToString(eDataType, instanceValue);
+			case EsbPackage.FILTER_MEDIATOR_CONDITION_TYPE:
+				return convertFilterMediatorConditionTypeToString(eDataType, instanceValue);
 			case EsbPackage.LOG_CATEGORY:
 				return convertLogCategoryToString(eDataType, instanceValue);
 			case EsbPackage.LOG_LEVEL:
@@ -666,8 +670,14 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertEnrichTargetActionToString(eDataType, instanceValue);
 			case EsbPackage.ENRICH_TARGET_TYPE:
 				return convertEnrichTargetTypeToString(eDataType, instanceValue);
+			case EsbPackage.FEATURE_BOOLEAN_VALUE:
+				return convertFeatureBooleanValueToString(eDataType, instanceValue);
 			case EsbPackage.EVENT_TOPIC_TYPE:
 				return convertEventTopicTypeToString(eDataType, instanceValue);
+			case EsbPackage.ENTITLEMENT_CALLBACK_HANDLER:
+				return convertEntitlementCallbackHandlerToString(eDataType, instanceValue);
+			case EsbPackage.ENTITLEMENT_CLIENT_TYPE:
+				return convertEntitlementClientTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENTITLEMENT_SEQUENCE_TYPE:
 				return convertEntitlementSequenceTypeToString(eDataType, instanceValue);
 			case EsbPackage.SCRIPT_KEY_TYPE_ENUM:
@@ -4246,26 +4256,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WSDLDefinition createWSDLDefinition() {
-		WSDLDefinitionImpl wsdlDefinition = new WSDLDefinitionImpl();
-		return wsdlDefinition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public WSDLDescription createWSDLDescription() {
-		WSDLDescriptionImpl wsdlDescription = new WSDLDescriptionImpl();
-		return wsdlDescription;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public WSDLEndPointInputConnector createWSDLEndPointInputConnector() {
 		WSDLEndPointInputConnectorImpl wsdlEndPointInputConnector = new WSDLEndPointInputConnectorImpl();
 		return wsdlEndPointInputConnector;
@@ -4492,8 +4482,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FilterConditionType createFilterConditionTypeFromString(EDataType eDataType, String initialValue) {
-		FilterConditionType result = FilterConditionType.get(initialValue);
+	public FilterMediatorConditionType createFilterMediatorConditionTypeFromString(EDataType eDataType, String initialValue) {
+		FilterMediatorConditionType result = FilterMediatorConditionType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -4503,7 +4493,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFilterConditionTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertFilterMediatorConditionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -4812,6 +4802,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public FeatureBooleanValue createFeatureBooleanValueFromString(EDataType eDataType, String initialValue) {
+		FeatureBooleanValue result = FeatureBooleanValue.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertFeatureBooleanValueToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EventTopicType createEventTopicTypeFromString(EDataType eDataType, String initialValue) {
 		EventTopicType result = EventTopicType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -4824,6 +4834,46 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertEventTopicTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntitlementCallbackHandler createEntitlementCallbackHandlerFromString(EDataType eDataType, String initialValue) {
+		EntitlementCallbackHandler result = EntitlementCallbackHandler.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEntitlementCallbackHandlerToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntitlementClientType createEntitlementClientTypeFromString(EDataType eDataType, String initialValue) {
+		EntitlementClientType result = EntitlementClientType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEntitlementClientTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

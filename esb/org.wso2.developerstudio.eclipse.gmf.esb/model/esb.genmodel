@@ -51,9 +51,9 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/DELETE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/HEAD"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FilterConditionType">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterConditionType/SOURCE_AND_REGEX"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterConditionType/XPATH"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FilterMediatorConditionType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterMediatorConditionType/SOURCE_REGEX"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterMediatorConditionType/XPath"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//LogCategory">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LogCategory/TRACE"/>
@@ -144,9 +144,26 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/BODY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/PROPERTY"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FeatureBooleanValue">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeatureBooleanValue/TRUE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeatureBooleanValue/FALSE"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EventTopicType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/STATIC"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/DYNAMIC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EntitlementCallbackHandler">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/UT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/X509"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/SAML"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/Kerberos"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementCallbackHandler/Custom"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EntitlementClientType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementClientType/BASIC_AUTH"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementClientType/THRIFT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementClientType/SOAP"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementClientType/WSXACML"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EntitlementSequenceType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EntitlementSequenceType/ANONYMOUS"/>
@@ -901,6 +918,7 @@
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractBooleanFeature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureValue"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractLocationKeyResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractLocationKeyResource/location"/>
@@ -1024,6 +1042,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//EntitlementMediator/onAcceptOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//EntitlementMediator/adviceOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//EntitlementMediator/obligationsOutputConnector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EntitlementMediator/callbackHandler"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//EntitlementMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//EntitlementMediatorOutputConnector"/>
@@ -1290,7 +1309,6 @@
       <genFeatures children="true" createChild="true" propertyCategory="Service" propertyDescription=""
           ecoreFeature="ecore:EReference esb.ecore#//CalloutMediator/AddressEndpoint"/>
       <genFeatures createChild="false" propertyCategory="Service" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/EndpointType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/initAxis2ClientOptions"/>
       <genFeatures createChild="false" propertyCategory="Source" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/payloadProperty"/>
       <genFeatures createChild="false" propertyCategory="WS" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/securityType"/>
       <genFeatures notify="false" createChild="false" propertyCategory="WS" propertySortChoices="true"
@@ -1300,6 +1318,7 @@
       <genFeatures createChild="false" propertyCategory="WS" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/policies"/>
       <genFeatures notify="false" createChild="false" propertyCategory="WS" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//CalloutMediator/policyKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//CalloutMediator/initAxis2ClientOptions"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//CalloutMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//CalloutMediatorOutputConnector"/>
@@ -1606,8 +1625,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageBuilder/formatterClass"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//PayloadFactoryMediator">
-      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryMediator/format"/>
-      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/formatKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PayloadFactoryMediator/payload"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/payloadKey"/>
       <genFeatures children="true" createChild="true" propertyDescription="Arguments"
           ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/args"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PayloadFactoryMediator/inputConnector"/>
@@ -1670,16 +1689,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ParentEndPoint/name"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//WSDLEndPoint">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//WSDLEndPoint/WSDLDefinition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//WSDLEndPoint/WSDLDescription"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//WSDLEndPoint/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//WSDLEndPoint/outputConnector"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//WSDLEndPoint/wsdlUri"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//WSDLEndPoint/service"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//WSDLEndPoint/port"/>
     </genClasses>
-    <genClasses ecoreClass="esb.ecore#//WSDLDefinition"/>
-    <genClasses ecoreClass="esb.ecore#//WSDLDescription"/>
     <genClasses ecoreClass="esb.ecore#//WSDLEndPointInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//WSDLEndPointOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LoadBalanceEndPoint">
@@ -1704,7 +1719,7 @@
     <genClasses ecoreClass="esb.ecore#//LoadBalanceEndPointWestOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LocalEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/entryName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/valueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/localEntryType"/>
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/valueLiteral"/>
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/valueXML"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LocalEntry/valueURL"/>

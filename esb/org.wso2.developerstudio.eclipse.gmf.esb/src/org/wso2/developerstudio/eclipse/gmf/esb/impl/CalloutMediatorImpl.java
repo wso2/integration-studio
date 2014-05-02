@@ -47,13 +47,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getAddressEndpoint <em>Address Endpoint</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPayloadProperty <em>Payload Property</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getSecurityType <em>Security Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getOutboundPolicyKey <em>Outbound Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getInboundPolicyKey <em>Inbound Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPolicies <em>Policies</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorImpl#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  * </ul>
  * </p>
  *
@@ -291,26 +291,6 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 	protected CalloutEndpointType endpointType = ENDPOINT_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getInitAxis2ClientOptions() <em>Init Axis2 Client Options</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInitAxis2ClientOptions()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getInitAxis2ClientOptions() <em>Init Axis2 Client Options</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInitAxis2ClientOptions()
-	 * @generated
-	 * @ordered
-	 */
-	protected String initAxis2ClientOptions = INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getPayloadProperty() <em>Payload Property</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -399,6 +379,26 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 	 * @ordered
 	 */
 	protected RegistryKeyProperty policyKey;
+
+	/**
+	 * The default value of the '{@link #isInitAxis2ClientOptions() <em>Init Axis2 Client Options</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInitAxis2ClientOptions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isInitAxis2ClientOptions() <em>Init Axis2 Client Options</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInitAxis2ClientOptions()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean initAxis2ClientOptions = INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -884,27 +884,6 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getInitAxis2ClientOptions() {
-		return initAxis2ClientOptions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInitAxis2ClientOptions(String newInitAxis2ClientOptions) {
-		String oldInitAxis2ClientOptions = initAxis2ClientOptions;
-		initAxis2ClientOptions = newInitAxis2ClientOptions;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS, oldInitAxis2ClientOptions, initAxis2ClientOptions));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getPayloadProperty() {
 		return payloadProperty;
 	}
@@ -1097,6 +1076,27 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isInitAxis2ClientOptions() {
+		return initAxis2ClientOptions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInitAxis2ClientOptions(boolean newInitAxis2ClientOptions) {
+		boolean oldInitAxis2ClientOptions = initAxis2ClientOptions;
+		initAxis2ClientOptions = newInitAxis2ClientOptions;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS, oldInitAxis2ClientOptions, initAxis2ClientOptions));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -1158,8 +1158,6 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 				return getAddressEndpoint();
 			case EsbPackage.CALLOUT_MEDIATOR__ENDPOINT_TYPE:
 				return getEndpointType();
-			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
-				return getInitAxis2ClientOptions();
 			case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY:
 				return getPayloadProperty();
 			case EsbPackage.CALLOUT_MEDIATOR__SECURITY_TYPE:
@@ -1172,6 +1170,8 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 				return getPolicies();
 			case EsbPackage.CALLOUT_MEDIATOR__POLICY_KEY:
 				return getPolicyKey();
+			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+				return isInitAxis2ClientOptions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1227,9 +1227,6 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 			case EsbPackage.CALLOUT_MEDIATOR__ENDPOINT_TYPE:
 				setEndpointType((CalloutEndpointType)newValue);
 				return;
-			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
-				setInitAxis2ClientOptions((String)newValue);
-				return;
 			case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY:
 				setPayloadProperty((String)newValue);
 				return;
@@ -1247,6 +1244,9 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 				return;
 			case EsbPackage.CALLOUT_MEDIATOR__POLICY_KEY:
 				setPolicyKey((RegistryKeyProperty)newValue);
+				return;
+			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+				setInitAxis2ClientOptions((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1303,9 +1303,6 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 			case EsbPackage.CALLOUT_MEDIATOR__ENDPOINT_TYPE:
 				setEndpointType(ENDPOINT_TYPE_EDEFAULT);
 				return;
-			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
-				setInitAxis2ClientOptions(INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT);
-				return;
 			case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY:
 				setPayloadProperty(PAYLOAD_PROPERTY_EDEFAULT);
 				return;
@@ -1323,6 +1320,9 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 				return;
 			case EsbPackage.CALLOUT_MEDIATOR__POLICY_KEY:
 				setPolicyKey((RegistryKeyProperty)null);
+				return;
+			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+				setInitAxis2ClientOptions(INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1365,8 +1365,6 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 				return addressEndpoint != null;
 			case EsbPackage.CALLOUT_MEDIATOR__ENDPOINT_TYPE:
 				return endpointType != ENDPOINT_TYPE_EDEFAULT;
-			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
-				return INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT == null ? initAxis2ClientOptions != null : !INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT.equals(initAxis2ClientOptions);
 			case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY:
 				return PAYLOAD_PROPERTY_EDEFAULT == null ? payloadProperty != null : !PAYLOAD_PROPERTY_EDEFAULT.equals(payloadProperty);
 			case EsbPackage.CALLOUT_MEDIATOR__SECURITY_TYPE:
@@ -1379,6 +1377,8 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 				return policies != POLICIES_EDEFAULT;
 			case EsbPackage.CALLOUT_MEDIATOR__POLICY_KEY:
 				return policyKey != null;
+			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
+				return initAxis2ClientOptions != INIT_AXIS2_CLIENT_OPTIONS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1412,14 +1412,14 @@ public class CalloutMediatorImpl extends MediatorImpl implements CalloutMediator
 		result.append(passHeaders);
 		result.append(", EndpointType: ");
 		result.append(endpointType);
-		result.append(", initAxis2ClientOptions: ");
-		result.append(initAxis2ClientOptions);
 		result.append(", payloadProperty: ");
 		result.append(payloadProperty);
 		result.append(", securityType: ");
 		result.append(securityType);
 		result.append(", policies: ");
 		result.append(policies);
+		result.append(", initAxis2ClientOptions: ");
+		result.append(initAxis2ClientOptions);
 		result.append(')');
 		return result.toString();
 	}

@@ -160,6 +160,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementAdviceContainer;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediatorAdviceOutputConnector;
@@ -207,10 +209,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultReasonType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultSoapVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultStringType;
+import org.wso2.developerstudio.eclipse.gmf.esb.FeatureBooleanValue;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterFailContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorFailOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorOutputConnector;
@@ -2775,20 +2779,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass wsdlDefinitionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass wsdlDescriptionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass wsdlEndPointInputConnectorEClass = null;
 
 	/**
@@ -2929,7 +2919,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum filterConditionTypeEEnum = null;
+	private EEnum filterMediatorConditionTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3041,7 +3031,28 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum featureBooleanValueEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum eventTopicTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum entitlementCallbackHandlerEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum entitlementClientTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -6344,6 +6355,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAbstractBooleanFeature_FeatureValue() {
+		return (EAttribute)abstractBooleanFeatureEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractLocationKeyResource() {
 		return abstractLocationKeyResourceEClass;
 	}
@@ -7291,6 +7311,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EReference getEntitlementMediator_ObligationsOutputConnector() {
 		return (EReference)entitlementMediatorEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEntitlementMediator_CallbackHandler() {
+		return (EAttribute)entitlementMediatorEClass.getEStructuralFeatures().get(22);
 	}
 
 	/**
@@ -11168,7 +11197,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCalloutMediator_InitAxis2ClientOptions() {
+	public EAttribute getCalloutMediator_PayloadProperty() {
 		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -11177,7 +11206,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCalloutMediator_PayloadProperty() {
+	public EAttribute getCalloutMediator_SecurityType() {
 		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -11186,17 +11215,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCalloutMediator_SecurityType() {
-		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getCalloutMediator_OutboundPolicyKey() {
-		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(17);
+		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -11205,7 +11225,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCalloutMediator_InboundPolicyKey() {
-		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(18);
+		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -11214,7 +11234,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getCalloutMediator_Policies() {
-		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(19);
+		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -11223,7 +11243,16 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getCalloutMediator_PolicyKey() {
-		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(20);
+		return (EReference)calloutMediatorEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCalloutMediator_InitAxis2ClientOptions() {
+		return (EAttribute)calloutMediatorEClass.getEStructuralFeatures().get(20);
 	}
 
 	/**
@@ -13508,7 +13537,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPayloadFactoryMediator_Format() {
+	public EAttribute getPayloadFactoryMediator_Payload() {
 		return (EAttribute)payloadFactoryMediatorEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -13517,7 +13546,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPayloadFactoryMediator_FormatKey() {
+	public EReference getPayloadFactoryMediator_PayloadKey() {
 		return (EReference)payloadFactoryMediatorEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -14003,7 +14032,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWSDLEndPoint_WSDLDefinition() {
+	public EReference getWSDLEndPoint_InputConnector() {
 		return (EReference)wsdlEndPointEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -14012,7 +14041,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWSDLEndPoint_WSDLDescription() {
+	public EReference getWSDLEndPoint_OutputConnector() {
 		return (EReference)wsdlEndPointEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -14021,26 +14050,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWSDLEndPoint_InputConnector() {
-		return (EReference)wsdlEndPointEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getWSDLEndPoint_OutputConnector() {
-		return (EReference)wsdlEndPointEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getWSDLEndPoint_WsdlUri() {
-		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -14049,7 +14060,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getWSDLEndPoint_Service() {
-		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -14058,25 +14069,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getWSDLEndPoint_Port() {
-		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getWSDLDefinition() {
-		return wsdlDefinitionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getWSDLDescription() {
-		return wsdlDescriptionEClass;
+		return (EAttribute)wsdlEndPointEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -14273,7 +14266,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLocalEntry_ValueType() {
+	public EAttribute getLocalEntry_LocalEntryType() {
 		return (EAttribute)localEntryEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -14642,8 +14635,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getFilterConditionType() {
-		return filterConditionTypeEEnum;
+	public EEnum getFilterMediatorConditionType() {
+		return filterMediatorConditionTypeEEnum;
 	}
 
 	/**
@@ -14786,8 +14779,35 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getFeatureBooleanValue() {
+		return featureBooleanValueEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEventTopicType() {
 		return eventTopicTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getEntitlementCallbackHandler() {
+		return entitlementCallbackHandlerEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getEntitlementClientType() {
+		return entitlementClientTypeEEnum;
 	}
 
 	/**
@@ -15911,6 +15931,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		abstractBooleanFeatureEClass = createEClass(ABSTRACT_BOOLEAN_FEATURE);
 		createEAttribute(abstractBooleanFeatureEClass, ABSTRACT_BOOLEAN_FEATURE__FEATURE_NAME);
 		createEAttribute(abstractBooleanFeatureEClass, ABSTRACT_BOOLEAN_FEATURE__FEATURE_ENABLED);
+		createEAttribute(abstractBooleanFeatureEClass, ABSTRACT_BOOLEAN_FEATURE__FEATURE_VALUE);
 
 		abstractLocationKeyResourceEClass = createEClass(ABSTRACT_LOCATION_KEY_RESOURCE);
 		createEAttribute(abstractLocationKeyResourceEClass, ABSTRACT_LOCATION_KEY_RESOURCE__LOCATION);
@@ -16048,6 +16069,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(entitlementMediatorEClass, ENTITLEMENT_MEDIATOR__ON_ACCEPT_OUTPUT_CONNECTOR);
 		createEReference(entitlementMediatorEClass, ENTITLEMENT_MEDIATOR__ADVICE_OUTPUT_CONNECTOR);
 		createEReference(entitlementMediatorEClass, ENTITLEMENT_MEDIATOR__OBLIGATIONS_OUTPUT_CONNECTOR);
+		createEAttribute(entitlementMediatorEClass, ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER);
 
 		entitlementMediatorInputConnectorEClass = createEClass(ENTITLEMENT_MEDIATOR_INPUT_CONNECTOR);
 
@@ -16342,13 +16364,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__OUTPUT_CONNECTOR);
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__ADDRESS_ENDPOINT);
 		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__ENDPOINT_TYPE);
-		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS);
 		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__PAYLOAD_PROPERTY);
 		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__SECURITY_TYPE);
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__OUTBOUND_POLICY_KEY);
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__INBOUND_POLICY_KEY);
 		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__POLICIES);
 		createEReference(calloutMediatorEClass, CALLOUT_MEDIATOR__POLICY_KEY);
+		createEAttribute(calloutMediatorEClass, CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS);
 
 		calloutMediatorInputConnectorEClass = createEClass(CALLOUT_MEDIATOR_INPUT_CONNECTOR);
 
@@ -16676,8 +16698,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageBuilderEClass, MESSAGE_BUILDER__FORMATTER_CLASS);
 
 		payloadFactoryMediatorEClass = createEClass(PAYLOAD_FACTORY_MEDIATOR);
-		createEAttribute(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__FORMAT);
-		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY);
+		createEAttribute(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__PAYLOAD);
+		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY);
 		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__ARGS);
 		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__INPUT_CONNECTOR);
 		createEReference(payloadFactoryMediatorEClass, PAYLOAD_FACTORY_MEDIATOR__OUTPUT_CONNECTOR);
@@ -16750,17 +16772,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(parentEndPointEClass, PARENT_END_POINT__NAME);
 
 		wsdlEndPointEClass = createEClass(WSDL_END_POINT);
-		createEReference(wsdlEndPointEClass, WSDL_END_POINT__WSDL_DEFINITION);
-		createEReference(wsdlEndPointEClass, WSDL_END_POINT__WSDL_DESCRIPTION);
 		createEReference(wsdlEndPointEClass, WSDL_END_POINT__INPUT_CONNECTOR);
 		createEReference(wsdlEndPointEClass, WSDL_END_POINT__OUTPUT_CONNECTOR);
 		createEAttribute(wsdlEndPointEClass, WSDL_END_POINT__WSDL_URI);
 		createEAttribute(wsdlEndPointEClass, WSDL_END_POINT__SERVICE);
 		createEAttribute(wsdlEndPointEClass, WSDL_END_POINT__PORT);
-
-		wsdlDefinitionEClass = createEClass(WSDL_DEFINITION);
-
-		wsdlDescriptionEClass = createEClass(WSDL_DESCRIPTION);
 
 		wsdlEndPointInputConnectorEClass = createEClass(WSDL_END_POINT_INPUT_CONNECTOR);
 
@@ -16790,7 +16806,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		localEntryEClass = createEClass(LOCAL_ENTRY);
 		createEAttribute(localEntryEClass, LOCAL_ENTRY__ENTRY_NAME);
-		createEAttribute(localEntryEClass, LOCAL_ENTRY__VALUE_TYPE);
+		createEAttribute(localEntryEClass, LOCAL_ENTRY__LOCAL_ENTRY_TYPE);
 		createEAttribute(localEntryEClass, LOCAL_ENTRY__VALUE_LITERAL);
 		createEAttribute(localEntryEClass, LOCAL_ENTRY__VALUE_XML);
 		createEAttribute(localEntryEClass, LOCAL_ENTRY__VALUE_URL);
@@ -17092,7 +17108,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		sequenceTypeEEnum = createEEnum(SEQUENCE_TYPE);
 		proxyWsdlTypeEEnum = createEEnum(PROXY_WSDL_TYPE);
 		httpMethodTypeEEnum = createEEnum(HTTP_METHOD_TYPE);
-		filterConditionTypeEEnum = createEEnum(FILTER_CONDITION_TYPE);
+		filterMediatorConditionTypeEEnum = createEEnum(FILTER_MEDIATOR_CONDITION_TYPE);
 		logCategoryEEnum = createEEnum(LOG_CATEGORY);
 		logLevelEEnum = createEEnum(LOG_LEVEL);
 		beanMediatorActionEEnum = createEEnum(BEAN_MEDIATOR_ACTION);
@@ -17108,7 +17124,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		enrichSourceTypeEEnum = createEEnum(ENRICH_SOURCE_TYPE);
 		enrichTargetActionEEnum = createEEnum(ENRICH_TARGET_ACTION);
 		enrichTargetTypeEEnum = createEEnum(ENRICH_TARGET_TYPE);
+		featureBooleanValueEEnum = createEEnum(FEATURE_BOOLEAN_VALUE);
 		eventTopicTypeEEnum = createEEnum(EVENT_TOPIC_TYPE);
+		entitlementCallbackHandlerEEnum = createEEnum(ENTITLEMENT_CALLBACK_HANDLER);
+		entitlementClientTypeEEnum = createEEnum(ENTITLEMENT_CLIENT_TYPE);
 		entitlementSequenceTypeEEnum = createEEnum(ENTITLEMENT_SEQUENCE_TYPE);
 		scriptKeyTypeEnumEEnum = createEEnum(SCRIPT_KEY_TYPE_ENUM);
 		scriptTypeEEnum = createEEnum(SCRIPT_TYPE);
@@ -17762,7 +17781,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(dropMediatorInputConnectorEClass, DropMediatorInputConnector.class, "DropMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(filterMediatorEClass, FilterMediator.class, "FilterMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFilterMediator_ConditionType(), this.getFilterConditionType(), "conditionType", null, 0, 1, FilterMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFilterMediator_ConditionType(), this.getFilterMediatorConditionType(), "conditionType", null, 0, 1, FilterMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFilterMediator_Regex(), ecorePackage.getEString(), "regex", "default_regex", 0, 1, FilterMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFilterMediator_InputConnector(), this.getFilterMediatorInputConnector(), null, "inputConnector", null, 0, 1, FilterMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFilterMediator_OutputConnector(), this.getFilterMediatorOutputConnector(), null, "outputConnector", null, 0, 1, FilterMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17937,6 +17956,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(abstractBooleanFeatureEClass, AbstractBooleanFeature.class, "AbstractBooleanFeature", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractBooleanFeature_FeatureName(), ecorePackage.getEString(), "featureName", "feature_name", 0, 1, AbstractBooleanFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractBooleanFeature_FeatureEnabled(), ecorePackage.getEBoolean(), "featureEnabled", "true", 0, 1, AbstractBooleanFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractBooleanFeature_FeatureValue(), ecorePackage.getEString(), "featureValue", null, 0, 1, AbstractBooleanFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractLocationKeyResourceEClass, AbstractLocationKeyResource.class, "AbstractLocationKeyResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractLocationKeyResource_Location(), ecorePackage.getEString(), "location", "default_location", 0, 1, AbstractLocationKeyResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18058,7 +18078,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getEntitlementMediator_CallbackClassName(), ecorePackage.getEString(), "callbackClassName", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEntitlementMediator_ThriftHost(), ecorePackage.getEString(), "thriftHost", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEntitlementMediator_ThriftPort(), ecorePackage.getEString(), "thriftPort", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEntitlementMediator_EntitlementClientType(), ecorePackage.getEString(), "entitlementClientType", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEntitlementMediator_EntitlementClientType(), this.getEntitlementClientType(), "entitlementClientType", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEntitlementMediator_OnRejectSequenceType(), this.getEntitlementSequenceType(), "onRejectSequenceType", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEntitlementMediator_OnAcceptSequenceType(), this.getEntitlementSequenceType(), "onAcceptSequenceType", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEntitlementMediator_AdviceSequenceType(), this.getEntitlementSequenceType(), "adviceSequenceType", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18074,6 +18094,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getEntitlementMediator_OnAcceptOutputConnector(), this.getEntitlementMediatorOnAcceptOutputConnector(), null, "onAcceptOutputConnector", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntitlementMediator_AdviceOutputConnector(), this.getEntitlementMediatorAdviceOutputConnector(), null, "adviceOutputConnector", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntitlementMediator_ObligationsOutputConnector(), this.getEntitlementMediatorObligationsOutputConnector(), null, "obligationsOutputConnector", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEntitlementMediator_CallbackHandler(), this.getEntitlementCallbackHandler(), "callbackHandler", null, 0, 1, EntitlementMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entitlementMediatorInputConnectorEClass, EntitlementMediatorInputConnector.class, "EntitlementMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -18368,13 +18389,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getCalloutMediator_OutputConnector(), this.getCalloutMediatorOutputConnector(), null, "outputConnector", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_AddressEndpoint(), this.getRegistryKeyProperty(), null, "AddressEndpoint", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_EndpointType(), this.getCalloutEndpointType(), "EndpointType", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCalloutMediator_InitAxis2ClientOptions(), ecorePackage.getEString(), "initAxis2ClientOptions", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_PayloadProperty(), ecorePackage.getEString(), "payloadProperty", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_SecurityType(), this.getCalloutSecurityType(), "securityType", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_OutboundPolicyKey(), this.getRegistryKeyProperty(), null, "outboundPolicyKey", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_InboundPolicyKey(), this.getRegistryKeyProperty(), null, "inboundPolicyKey", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCalloutMediator_Policies(), this.getCalloutSecurityPolicies(), "policies", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCalloutMediator_PolicyKey(), this.getRegistryKeyProperty(), null, "policyKey", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCalloutMediator_InitAxis2ClientOptions(), ecorePackage.getEBoolean(), "initAxis2ClientOptions", null, 0, 1, CalloutMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(calloutMediatorInputConnectorEClass, CalloutMediatorInputConnector.class, "CalloutMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -18702,8 +18723,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageBuilder_FormatterClass(), ecorePackage.getEString(), "formatterClass", null, 0, 1, MessageBuilder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(payloadFactoryMediatorEClass, PayloadFactoryMediator.class, "PayloadFactoryMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPayloadFactoryMediator_Format(), ecorePackage.getEString(), "format", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPayloadFactoryMediator_FormatKey(), this.getRegistryKeyProperty(), null, "formatKey", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPayloadFactoryMediator_Payload(), ecorePackage.getEString(), "payload", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPayloadFactoryMediator_PayloadKey(), this.getRegistryKeyProperty(), null, "payloadKey", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPayloadFactoryMediator_Args(), this.getPayloadFactoryArgument(), null, "args", null, 0, -1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPayloadFactoryMediator_InputConnector(), this.getPayloadFactoryMediatorInputConnector(), null, "inputConnector", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPayloadFactoryMediator_OutputConnector(), this.getPayloadFactoryMediatorOutputConnector(), null, "outputConnector", null, 0, 1, PayloadFactoryMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -18776,17 +18797,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getParentEndPoint_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParentEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(wsdlEndPointEClass, WSDLEndPoint.class, "WSDLEndPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWSDLEndPoint_WSDLDefinition(), this.getWSDLDefinition(), null, "WSDLDefinition", null, 0, -1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWSDLEndPoint_WSDLDescription(), this.getWSDLDescription(), null, "WSDLDescription", null, 0, -1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWSDLEndPoint_InputConnector(), this.getWSDLEndPointInputConnector(), null, "inputConnector", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWSDLEndPoint_OutputConnector(), this.getWSDLEndPointOutputConnector(), null, "outputConnector", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWSDLEndPoint_WsdlUri(), ecorePackage.getEString(), "wsdlUri", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWSDLEndPoint_Service(), ecorePackage.getEString(), "service", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWSDLEndPoint_Port(), ecorePackage.getEString(), "port", null, 0, 1, WSDLEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(wsdlDefinitionEClass, WSDLDefinition.class, "WSDLDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(wsdlDescriptionEClass, WSDLDescription.class, "WSDLDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(wsdlEndPointInputConnectorEClass, WSDLEndPointInputConnector.class, "WSDLEndPointInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -18816,7 +18831,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(localEntryEClass, LocalEntry.class, "LocalEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLocalEntry_EntryName(), ecorePackage.getEString(), "entryName", "entry_name", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLocalEntry_ValueType(), this.getLocalEntryValueType(), "valueType", "LITERAL", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLocalEntry_LocalEntryType(), this.getLocalEntryValueType(), "localEntryType", "In-lined Text Entry", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLocalEntry_ValueLiteral(), ecorePackage.getEString(), "valueLiteral", "entry_value", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLocalEntry_ValueXML(), ecorePackage.getEString(), "valueXML", "<value/>", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLocalEntry_ValueURL(), ecorePackage.getEString(), "valueURL", "file:/path/to/resource.ext", 0, 1, LocalEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -19156,9 +19171,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.DELETE);
 		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.HEAD);
 
-		initEEnum(filterConditionTypeEEnum, FilterConditionType.class, "FilterConditionType");
-		addEEnumLiteral(filterConditionTypeEEnum, FilterConditionType.SOURCE_AND_REGEX);
-		addEEnumLiteral(filterConditionTypeEEnum, FilterConditionType.XPATH);
+		initEEnum(filterMediatorConditionTypeEEnum, FilterMediatorConditionType.class, "FilterMediatorConditionType");
+		addEEnumLiteral(filterMediatorConditionTypeEEnum, FilterMediatorConditionType.SOURCE_REGEX);
+		addEEnumLiteral(filterMediatorConditionTypeEEnum, FilterMediatorConditionType.XPATH);
 
 		initEEnum(logCategoryEEnum, LogCategory.class, "LogCategory");
 		addEEnumLiteral(logCategoryEEnum, LogCategory.TRACE);
@@ -19249,9 +19264,26 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(enrichTargetTypeEEnum, EnrichTargetType.BODY);
 		addEEnumLiteral(enrichTargetTypeEEnum, EnrichTargetType.PROPERTY);
 
+		initEEnum(featureBooleanValueEEnum, FeatureBooleanValue.class, "FeatureBooleanValue");
+		addEEnumLiteral(featureBooleanValueEEnum, FeatureBooleanValue.TRUE);
+		addEEnumLiteral(featureBooleanValueEEnum, FeatureBooleanValue.FALSE);
+
 		initEEnum(eventTopicTypeEEnum, EventTopicType.class, "EventTopicType");
 		addEEnumLiteral(eventTopicTypeEEnum, EventTopicType.STATIC);
 		addEEnumLiteral(eventTopicTypeEEnum, EventTopicType.DYNAMIC);
+
+		initEEnum(entitlementCallbackHandlerEEnum, EntitlementCallbackHandler.class, "EntitlementCallbackHandler");
+		addEEnumLiteral(entitlementCallbackHandlerEEnum, EntitlementCallbackHandler.UT);
+		addEEnumLiteral(entitlementCallbackHandlerEEnum, EntitlementCallbackHandler.X509);
+		addEEnumLiteral(entitlementCallbackHandlerEEnum, EntitlementCallbackHandler.SAML);
+		addEEnumLiteral(entitlementCallbackHandlerEEnum, EntitlementCallbackHandler.KERBEROS);
+		addEEnumLiteral(entitlementCallbackHandlerEEnum, EntitlementCallbackHandler.CUSTOM);
+
+		initEEnum(entitlementClientTypeEEnum, EntitlementClientType.class, "EntitlementClientType");
+		addEEnumLiteral(entitlementClientTypeEEnum, EntitlementClientType.BASIC_AUTH);
+		addEEnumLiteral(entitlementClientTypeEEnum, EntitlementClientType.THRIFT);
+		addEEnumLiteral(entitlementClientTypeEEnum, EntitlementClientType.SOAP);
+		addEEnumLiteral(entitlementClientTypeEEnum, EntitlementClientType.WSXACML);
 
 		initEEnum(entitlementSequenceTypeEEnum, EntitlementSequenceType.class, "EntitlementSequenceType");
 		addEEnumLiteral(entitlementSequenceTypeEEnum, EntitlementSequenceType.ANONYMOUS);

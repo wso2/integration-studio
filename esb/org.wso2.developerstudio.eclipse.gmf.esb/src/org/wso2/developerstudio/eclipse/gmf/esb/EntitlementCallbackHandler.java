@@ -23,145 +23,163 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>End Point Property Scope</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Entitlement Callback Handler</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointPropertyScope()
+ * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementCallbackHandler()
  * @model
  * @generated
  */
-public enum EndPointPropertyScope implements Enumerator {
+public enum EntitlementCallbackHandler implements Enumerator {
 	/**
-	 * The '<em><b>SYNAPSE</b></em>' literal object.
+	 * The '<em><b>UT</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SYNAPSE_VALUE
+	 * @see #UT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SYNAPSE(0, "SYNAPSE", "Synapse"),
-
-	/**
-	 * The '<em><b>TRANSPORT</b></em>' literal object.
+	UT(0, "UT", "UT"), /**
+	 * The '<em><b>X509</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #TRANSPORT_VALUE
+	 * @see #X509_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	TRANSPORT(1, "TRANSPORT", "transport"),
-
-	/**
-	 * The '<em><b>AXIS2</b></em>' literal object.
+	X509(1, "X509", "X509"), /**
+	 * The '<em><b>SAML</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #AXIS2_VALUE
+	 * @see #SAML_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	AXIS2(2, "AXIS2", "axis2"),
-
-	/**
-	 * The '<em><b>AXIS2 CLIENT</b></em>' literal object.
+	SAML(2, "SAML", "SAML"), /**
+	 * The '<em><b>Kerberos</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #AXIS2_CLIENT_VALUE
+	 * @see #KERBEROS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	AXIS2_CLIENT(3, "AXIS2_CLIENT", "axis2-client");
+	KERBEROS(3, "Kerberos", "Kerberos"), /**
+	 * The '<em><b>Custom</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CUSTOM_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CUSTOM(4, "Custom", "Custom");
 
 	/**
-	 * The '<em><b>SYNAPSE</b></em>' literal value.
+	 * The '<em><b>UT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>SYNAPSE</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>UT</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SYNAPSE
-	 * @model literal="Synapse"
+	 * @see #UT
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SYNAPSE_VALUE = 0;
+	public static final int UT_VALUE = 0;
 
 	/**
-	 * The '<em><b>TRANSPORT</b></em>' literal value.
+	 * The '<em><b>X509</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>TRANSPORT</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>X509</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TRANSPORT
-	 * @model literal="transport"
+	 * @see #X509
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TRANSPORT_VALUE = 1;
+	public static final int X509_VALUE = 1;
 
 	/**
-	 * The '<em><b>AXIS2</b></em>' literal value.
+	 * The '<em><b>SAML</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>AXIS2</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>SAML</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #AXIS2
-	 * @model literal="axis2"
+	 * @see #SAML
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int AXIS2_VALUE = 2;
+	public static final int SAML_VALUE = 2;
 
 	/**
-	 * The '<em><b>AXIS2 CLIENT</b></em>' literal value.
+	 * The '<em><b>Kerberos</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>AXIS2 CLIENT</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Kerberos</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #AXIS2_CLIENT
-	 * @model literal="axis2-client"
+	 * @see #KERBEROS
+	 * @model name="Kerberos"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int AXIS2_CLIENT_VALUE = 3;
+	public static final int KERBEROS_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>End Point Property Scope</b></em>' enumerators.
+	 * The '<em><b>Custom</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Custom</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CUSTOM
+	 * @model name="Custom"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CUSTOM_VALUE = 4;
+
+	/**
+	 * An array of all the '<em><b>Entitlement Callback Handler</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EndPointPropertyScope[] VALUES_ARRAY =
-		new EndPointPropertyScope[] {
-			SYNAPSE,
-			TRANSPORT,
-			AXIS2,
-			AXIS2_CLIENT,
+	private static final EntitlementCallbackHandler[] VALUES_ARRAY =
+		new EntitlementCallbackHandler[] {
+			UT,
+			X509,
+			SAML,
+			KERBEROS,
+			CUSTOM,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>End Point Property Scope</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Entitlement Callback Handler</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EndPointPropertyScope> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EntitlementCallbackHandler> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Entitlement Callback Handler</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static EndPointPropertyScope get(String literal) {
+	public static EntitlementCallbackHandler get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			EndPointPropertyScope result = VALUES_ARRAY[i];
+			EntitlementCallbackHandler result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -170,14 +188,14 @@ public enum EndPointPropertyScope implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Entitlement Callback Handler</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static EndPointPropertyScope getByName(String name) {
+	public static EntitlementCallbackHandler getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			EndPointPropertyScope result = VALUES_ARRAY[i];
+			EntitlementCallbackHandler result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -186,17 +204,18 @@ public enum EndPointPropertyScope implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Entitlement Callback Handler</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static EndPointPropertyScope get(int value) {
+	public static EntitlementCallbackHandler get(int value) {
 		switch (value) {
-			case SYNAPSE_VALUE: return SYNAPSE;
-			case TRANSPORT_VALUE: return TRANSPORT;
-			case AXIS2_VALUE: return AXIS2;
-			case AXIS2_CLIENT_VALUE: return AXIS2_CLIENT;
+			case UT_VALUE: return UT;
+			case X509_VALUE: return X509;
+			case SAML_VALUE: return SAML;
+			case KERBEROS_VALUE: return KERBEROS;
+			case CUSTOM_VALUE: return CUSTOM;
 		}
 		return null;
 	}
@@ -228,7 +247,7 @@ public enum EndPointPropertyScope implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EndPointPropertyScope(int value, String name, String literal) {
+	private EntitlementCallbackHandler(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -272,4 +291,4 @@ public enum EndPointPropertyScope implements Enumerator {
 		return literal;
 	}
 	
-} //EndPointPropertyScope
+} //EntitlementCallbackHandler

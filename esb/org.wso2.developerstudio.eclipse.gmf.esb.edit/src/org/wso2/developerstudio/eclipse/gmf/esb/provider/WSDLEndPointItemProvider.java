@@ -64,57 +64,10 @@ public class WSDLEndPointItemProvider
 			itemPropertyDescriptors.clear();
 		}
 		super.getPropertyDescriptors(object);
-
-		addWSDLDefinitionPropertyDescriptor(object);
-		addWSDLDescriptionPropertyDescriptor(object);
 		addWsdlUriPropertyDescriptor(object);
 		addServicePropertyDescriptor(object);
 		addPortPropertyDescriptor(object);
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the WSDL Definition feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWSDLDefinitionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_WSDLEndPoint_WSDLDefinition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WSDLEndPoint_WSDLDefinition_feature", "_UI_WSDLEndPoint_type"),
-				 EsbPackage.Literals.WSDL_END_POINT__WSDL_DEFINITION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the WSDL Description feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWSDLDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_WSDLEndPoint_WSDLDescription_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WSDLEndPoint_WSDLDescription_feature", "_UI_WSDLEndPoint_type"),
-				 EsbPackage.Literals.WSDL_END_POINT__WSDL_DESCRIPTION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

@@ -70,7 +70,9 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 			if (visualCallout.getSoapAction()!=null && !visualCallout.getSoapAction().isEmpty()) {
 				calloutMediator.setAction(visualCallout.getSoapAction());
 			}
-
+				
+			calloutMediator.setInitClientOptions(visualCallout.isInitAxis2ClientOptions());
+			
 			if (visualCallout.getPayloadType().getValue() == 0) {
 
 				NamespacedProperty payLoadExp = visualCallout

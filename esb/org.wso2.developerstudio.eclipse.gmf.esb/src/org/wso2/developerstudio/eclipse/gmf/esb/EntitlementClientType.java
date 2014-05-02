@@ -23,145 +23,141 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>End Point Property Scope</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Entitlement Client Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEndPointPropertyScope()
+ * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementClientType()
  * @model
  * @generated
  */
-public enum EndPointPropertyScope implements Enumerator {
+public enum EntitlementClientType implements Enumerator {
 	/**
-	 * The '<em><b>SYNAPSE</b></em>' literal object.
+	 * The '<em><b>BASIC AUTH</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SYNAPSE_VALUE
+	 * @see #BASIC_AUTH_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SYNAPSE(0, "SYNAPSE", "Synapse"),
-
-	/**
-	 * The '<em><b>TRANSPORT</b></em>' literal object.
+	BASIC_AUTH(0, "BASIC_AUTH", " SOAP - Basic Auth (WSO2 IS 4.0.0 or later)"), /**
+	 * The '<em><b>THRIFT</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #TRANSPORT_VALUE
+	 * @see #THRIFT_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	TRANSPORT(1, "TRANSPORT", "transport"),
+	THRIFT(1, "THRIFT", "THRIFT"),
 
 	/**
-	 * The '<em><b>AXIS2</b></em>' literal object.
+	 * The '<em><b>SOAP</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #AXIS2_VALUE
+	 * @see #SOAP_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	AXIS2(2, "AXIS2", "axis2"),
-
-	/**
-	 * The '<em><b>AXIS2 CLIENT</b></em>' literal object.
+	SOAP(2, "SOAP", "SOAP - Authentication Admin (WSO2 IS 3.2.3 or earlier) "), /**
+	 * The '<em><b>WSXACML</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #AXIS2_CLIENT_VALUE
+	 * @see #WSXACML_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	AXIS2_CLIENT(3, "AXIS2_CLIENT", "axis2-client");
+	WSXACML(3, "WSXACML", "WSXACML");
 
 	/**
-	 * The '<em><b>SYNAPSE</b></em>' literal value.
+	 * The '<em><b>BASIC AUTH</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>SYNAPSE</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>BASIC AUTH</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SYNAPSE
-	 * @model literal="Synapse"
+	 * @see #BASIC_AUTH
+	 * @model literal=" SOAP - Basic Auth (WSO2 IS 4.0.0 or later)"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SYNAPSE_VALUE = 0;
+	public static final int BASIC_AUTH_VALUE = 0;
 
 	/**
-	 * The '<em><b>TRANSPORT</b></em>' literal value.
+	 * The '<em><b>THRIFT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>TRANSPORT</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Thrift</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TRANSPORT
-	 * @model literal="transport"
+	 * @see #THRIFT
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TRANSPORT_VALUE = 1;
+	public static final int THRIFT_VALUE = 1;
 
 	/**
-	 * The '<em><b>AXIS2</b></em>' literal value.
+	 * The '<em><b>SOAP</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>AXIS2</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>SOAP</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #AXIS2
-	 * @model literal="axis2"
+	 * @see #SOAP
+	 * @model literal="SOAP - Authentication Admin (WSO2 IS 3.2.3 or earlier) "
 	 * @generated
 	 * @ordered
 	 */
-	public static final int AXIS2_VALUE = 2;
+	public static final int SOAP_VALUE = 2;
 
 	/**
-	 * The '<em><b>AXIS2 CLIENT</b></em>' literal value.
+	 * The '<em><b>WSXACML</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>AXIS2 CLIENT</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>WSXACML</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #AXIS2_CLIENT
-	 * @model literal="axis2-client"
+	 * @see #WSXACML
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int AXIS2_CLIENT_VALUE = 3;
+	public static final int WSXACML_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>End Point Property Scope</b></em>' enumerators.
+	 * An array of all the '<em><b>Entitlement Client Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EndPointPropertyScope[] VALUES_ARRAY =
-		new EndPointPropertyScope[] {
-			SYNAPSE,
-			TRANSPORT,
-			AXIS2,
-			AXIS2_CLIENT,
+	private static final EntitlementClientType[] VALUES_ARRAY =
+		new EntitlementClientType[] {
+			BASIC_AUTH,
+			THRIFT,
+			SOAP,
+			WSXACML,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>End Point Property Scope</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Entitlement Client Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EndPointPropertyScope> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EntitlementClientType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Entitlement Client Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static EndPointPropertyScope get(String literal) {
+	public static EntitlementClientType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			EndPointPropertyScope result = VALUES_ARRAY[i];
+			EntitlementClientType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -170,14 +166,14 @@ public enum EndPointPropertyScope implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Entitlement Client Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static EndPointPropertyScope getByName(String name) {
+	public static EntitlementClientType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			EndPointPropertyScope result = VALUES_ARRAY[i];
+			EntitlementClientType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -186,17 +182,17 @@ public enum EndPointPropertyScope implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>End Point Property Scope</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Entitlement Client Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static EndPointPropertyScope get(int value) {
+	public static EntitlementClientType get(int value) {
 		switch (value) {
-			case SYNAPSE_VALUE: return SYNAPSE;
-			case TRANSPORT_VALUE: return TRANSPORT;
-			case AXIS2_VALUE: return AXIS2;
-			case AXIS2_CLIENT_VALUE: return AXIS2_CLIENT;
+			case BASIC_AUTH_VALUE: return BASIC_AUTH;
+			case THRIFT_VALUE: return THRIFT;
+			case SOAP_VALUE: return SOAP;
+			case WSXACML_VALUE: return WSXACML;
 		}
 		return null;
 	}
@@ -228,7 +224,7 @@ public enum EndPointPropertyScope implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EndPointPropertyScope(int value, String name, String literal) {
+	private EntitlementClientType(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -272,4 +268,4 @@ public enum EndPointPropertyScope implements Enumerator {
 		return literal;
 	}
 	
-} //EndPointPropertyScope
+} //EntitlementClientType

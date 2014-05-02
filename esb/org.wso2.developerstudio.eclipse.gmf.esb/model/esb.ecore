@@ -105,7 +105,7 @@
     <eLiterals name="XPATH" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EndPointPropertyScope">
-    <eLiterals name="SYNAPSE" literal="Synapse"/>
+    <eLiterals name="SYNAPSE" literal="default"/>
     <eLiterals name="TRANSPORT" value="1" literal="transport"/>
     <eLiterals name="AXIS2" value="2" literal="axis2"/>
     <eLiterals name="AXIS2_CLIENT" value="3" literal="axis2-client"/>

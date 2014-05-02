@@ -144,10 +144,6 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/BODY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EnrichTargetType/PROPERTY"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FeatureBooleanValue">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeatureBooleanValue/TRUE"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FeatureBooleanValue/FALSE"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//EventTopicType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/STATIC"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//EventTopicType/DYNAMIC"/>
@@ -918,7 +914,6 @@
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractBooleanFeature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureEnabled"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractBooleanFeature/featureValue"/>
     </genClasses>
     <genClasses image="false" ecoreClass="esb.ecore#//AbstractLocationKeyResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractLocationKeyResource/location"/>

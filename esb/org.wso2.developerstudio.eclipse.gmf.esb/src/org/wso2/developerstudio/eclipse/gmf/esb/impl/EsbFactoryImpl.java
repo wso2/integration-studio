@@ -446,8 +446,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createEnrichTargetActionFromString(eDataType, initialValue);
 			case EsbPackage.ENRICH_TARGET_TYPE:
 				return createEnrichTargetTypeFromString(eDataType, initialValue);
-			case EsbPackage.FEATURE_BOOLEAN_VALUE:
-				return createFeatureBooleanValueFromString(eDataType, initialValue);
 			case EsbPackage.EVENT_TOPIC_TYPE:
 				return createEventTopicTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENTITLEMENT_CALLBACK_HANDLER:
@@ -670,8 +668,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertEnrichTargetActionToString(eDataType, instanceValue);
 			case EsbPackage.ENRICH_TARGET_TYPE:
 				return convertEnrichTargetTypeToString(eDataType, instanceValue);
-			case EsbPackage.FEATURE_BOOLEAN_VALUE:
-				return convertFeatureBooleanValueToString(eDataType, instanceValue);
 			case EsbPackage.EVENT_TOPIC_TYPE:
 				return convertEventTopicTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENTITLEMENT_CALLBACK_HANDLER:
@@ -4794,26 +4790,6 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertEnrichTargetTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FeatureBooleanValue createFeatureBooleanValueFromString(EDataType eDataType, String initialValue) {
-		FeatureBooleanValue result = FeatureBooleanValue.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertFeatureBooleanValueToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

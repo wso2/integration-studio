@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ public class PartnerLinksAdapter extends ContainerAdapter implements EditPartFac
 
 	/* IContainer delegate */
 	
-	
+	@Override
 	public IContainer createContainerDelegate() {
 		return new ReferenceContainer(BPELPackage.eINSTANCE.getPartnerLinks_Children());
 	}
@@ -76,7 +76,7 @@ public class PartnerLinksAdapter extends ContainerAdapter implements EditPartFac
 	
 	public EditPart createOutlineEditPart(EditPart context, final Object model) {
 		EditPart result = new OutlineTreeEditPart() {
-			
+			@Override
 			protected List getModelChildren() {
 				PartnerLinks parnterLinks = (PartnerLinks) model;
 				return parnterLinks.getChildren();

@@ -82,7 +82,7 @@ public class TargetsImpl extends BPELExtensibleElementImpl implements Targets {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.TARGETS;
 	}
@@ -172,7 +172,7 @@ public class TargetsImpl extends BPELExtensibleElementImpl implements Targets {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -190,7 +190,7 @@ public class TargetsImpl extends BPELExtensibleElementImpl implements Targets {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.TARGETS__CHILDREN:
@@ -207,7 +207,7 @@ public class TargetsImpl extends BPELExtensibleElementImpl implements Targets {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.TARGETS__CHILDREN:
@@ -226,7 +226,7 @@ public class TargetsImpl extends BPELExtensibleElementImpl implements Targets {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.TARGETS__CHILDREN:
@@ -244,7 +244,7 @@ public class TargetsImpl extends BPELExtensibleElementImpl implements Targets {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.TARGETS__CHILDREN:
@@ -255,7 +255,7 @@ public class TargetsImpl extends BPELExtensibleElementImpl implements Targets {
 		return super.eIsSet(featureID);
 	}
 
-	
+	@Override
 	protected void adoptContent(EReference reference, Object object) {
 		if (object instanceof Target) {
 			ReconciliationHelper.adoptChild(this, children, (Target) object,
@@ -264,7 +264,7 @@ public class TargetsImpl extends BPELExtensibleElementImpl implements Targets {
 		super.adoptContent(reference, object);
 	}
 
-	
+	@Override
 	protected void orphanContent(EReference reference, Object obj) {
 		if (obj instanceof Target) {
 			ReconciliationHelper.orphanChild(this, (Target) obj);

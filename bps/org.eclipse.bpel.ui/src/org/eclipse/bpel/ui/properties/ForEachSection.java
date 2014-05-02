@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.bpel.common.ui.flatui.FlatFormData;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Variable;
+import org.eclipse.bpel.ui.IHelpContextIds;
 import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.factories.BPELUIObjectFactory;
 import org.eclipse.bpel.ui.util.BPELUtil;
@@ -31,6 +32,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * Details section for the ForEach activity
@@ -50,7 +52,7 @@ public class ForEachSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return fContext.get();
 	}
@@ -58,13 +60,13 @@ public class ForEachSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext (Object userContext) {
 		fContext.set(userContext);
 	}
 
 	
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {		
 		super.basicSetInput(newInput);
 		
@@ -86,7 +88,7 @@ public class ForEachSection extends BPELPropertySection {
 		
 		fVariableNameController.setFeature( BPELPackage.eINSTANCE.getForEach_CounterName() );
 		fVariableNameController.setViewIValue( new DelegateIValue( new TextIValue ( fCounterNameText ) ) {
-			
+			@Override
 			public Object get() {
 				String name = (String) fDelegate.get();
 				if (name.length() == 0) {
@@ -99,7 +101,7 @@ public class ForEachSection extends BPELPropertySection {
 				return variable;
 			}
 
-			
+			@Override
 			public void set( Object object ) {
 				if( object == null )
 					fDelegate.set( null );
@@ -169,7 +171,7 @@ public class ForEachSection extends BPELPropertySection {
 	}
 
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		Composite parentComposite = createFlatFormComposite(parent);
 		createIsParallelWidgets(parentComposite);
@@ -177,5 +179,8 @@ public class ForEachSection extends BPELPropertySection {
 		fContext = new FocusContext ( fIsParallelCheckbox, fCounterNameText );
 		
 		createChangeTrackers();
+		
+    PlatformUI.getWorkbench().getHelpSystem().setHelp(
+      parentComposite, IHelpContextIds.PROPERTY_PAGE_FOR_EACH);
 	}
 }

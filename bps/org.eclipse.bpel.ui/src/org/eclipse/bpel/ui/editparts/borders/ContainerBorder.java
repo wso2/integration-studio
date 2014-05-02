@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -74,7 +74,7 @@ public class ContainerBorder extends CollapsableBorder {
 		this.roundRect.setCornerDimensions(new Dimension(IBPELUIConstants.ARC_WIDTH, IBPELUIConstants.ARC_WIDTH));
 	}
 
-	
+	@Override
 	public Dimension getPreferredSize(IFigure f) {
 		calculate(f);
 		Dimension d = new Dimension(rectLabelBorder.getSize().width, rectLabelBorder.getSize().height + expandedHeight);
@@ -85,7 +85,7 @@ public class ContainerBorder extends CollapsableBorder {
 		return d;
 	}
 	
-	
+	@Override
 	protected void doPaint(IFigure figure, Graphics graphics, Insets insets) {
 		super.doPaint(figure, graphics, insets);
 		ColorRegistry registry = BPELUIPlugin.INSTANCE.getColorRegistry();
@@ -136,7 +136,7 @@ public class ContainerBorder extends CollapsableBorder {
 	}
 	
 	// Initialize a bunch of location and size variables based on the contents
-	
+	@Override
 	protected void calculate(IFigure figure) {
 		super.calculate(figure);
 
@@ -246,7 +246,7 @@ public class ContainerBorder extends CollapsableBorder {
 	 * Compute the insets. We only know how to do this for expanded borders,
 	 * so delegate to super in the collapsed state.
 	 */
-	
+	@Override
 	public Insets getInsets(IFigure figure) {
 		if (isCollapsed()) return super.getInsets(figure);
 		calculate(figure);
@@ -259,7 +259,7 @@ public class ContainerBorder extends CollapsableBorder {
 	/**
 	 * throw away values that determine the layout
 	 */
-	
+	@Override
 	public void invalidate() {
 		super.invalidate();
 		rectLabelBorder = null;
@@ -272,7 +272,7 @@ public class ContainerBorder extends CollapsableBorder {
 	 * Tests whether the given point is inside the collapse image. The superclass
 	 * does not know where the collapse image(s) is located.
 	 */
-	
+	@Override
 	public boolean isPointInCollapseImage(int x, int y) {
 		if (isCollapsed()) return super.isPointInCollapseImage(x, y);
 		Point p = new Point(x,y);
@@ -291,7 +291,7 @@ public class ContainerBorder extends CollapsableBorder {
 	/**
 	 * Provide gradient rectangle.
 	 */
-	
+	@Override
 	protected Rectangle getGradientRect() {
 		if (isCollapsed()) return super.getGradientRect();
 		invalidate();

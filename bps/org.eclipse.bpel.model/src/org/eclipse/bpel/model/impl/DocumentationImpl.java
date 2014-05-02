@@ -105,7 +105,7 @@ public class DocumentationImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.DOCUMENTATION;
 	}
@@ -189,7 +189,7 @@ public class DocumentationImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.DOCUMENTATION__LANG:
@@ -207,7 +207,7 @@ public class DocumentationImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.DOCUMENTATION__LANG:
@@ -228,7 +228,7 @@ public class DocumentationImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.DOCUMENTATION__LANG:
@@ -249,7 +249,7 @@ public class DocumentationImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.DOCUMENTATION__LANG:
@@ -270,7 +270,7 @@ public class DocumentationImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

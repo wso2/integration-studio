@@ -26,6 +26,8 @@
             category="org.eclipse.bpel.wizards"
             project="true"
             class="org.eclipse.bpel.runtimes.ui.wizards.NewBPELProjectWizard"
+            finalPerspective="org.eclipse.bpel.ui.perspective"
+            preferredPerspectives="org.eclipse.bpel.ui.perspective"
             id="org.eclipse.bpel.runtimes.wizards.newBPELProject">
             <description>%NEW_BPEL_PROJECT_DESCRIPTION</description>
       </wizard>
@@ -53,7 +55,7 @@
    
 	<extension point="org.eclipse.wst.server.ui.serverImages">
 		<image
-			id="org.eclipse.bpel.runtimes.bpel.module"
+			id="org.eclipse.bpel.runtimes.bpel.bpel.module"
 			typeIds="bpel.module"
 			icon="icons/obj16/bpelfacet.gif"/>
 	</extension>
@@ -77,12 +79,15 @@
           </constraint>
         </project-facet-version>
 		
-		
 		<action facet="bpel.facet.core" version="2.0" type="INSTALL" id="bpel.facet.core.install">
 		    <delegate class="org.eclipse.bpel.runtimes.facets.BPELCoreFacetInstallDelegate"/>
 	        <config-factory class="org.eclipse.bpel.runtimes.facets.BPELFacetInstallDataModelProvider"/>	    
 		</action>
-			
+
+        <action facet="bpel.facet.core" version="2.0" type="UNINSTALL" id="bpel.facet.core.uninstall">
+            <delegate class="org.eclipse.bpel.runtimes.facets.BPELCoreFacetUninstallDelegate"/>
+        </action>
+
 		<category id="bpel.category">
 		  <label>%BPEL_FACET_CATEGORY_LABEL</label>
 		  <description>%bpelCoreFacetDescription</description>
@@ -102,6 +107,10 @@
 	<extension point="org.eclipse.wst.common.project.facet.ui.images">
     	<image facet="bpel.facet.core" path="icons/obj16/bpelfacet.gif"/>
     </extension>
+
+<!--=========================================================================-->
+<!-- BPEL Virtual Component				 									 -->
+<!--=========================================================================-->		
     
     <extension
          point="org.eclipse.wst.common.modulecore.componentimpl">
@@ -121,7 +130,8 @@
 		<moduleFactory
             projects="true"
             class="org.eclipse.bpel.runtimes.module.BPELModuleFactoryDelegate"
-            id="org.eclipse.bpel.runtimes.module.moduleFactory">
+            id="org.eclipse.bpel.runtimes.module.moduleFactory"
+            order="10">
      		<moduleType
                versions="1.1, 2.0"
                types="bpel.module">
@@ -136,7 +146,8 @@
 	<extension point="org.eclipse.wst.server.core.moduleArtifactAdapters">
 		<moduleArtifactAdapter
 			id="org.eclipse.bpel.runtimes.module.artifactAdapter1"
-            class="org.eclipse.bpel.runtimes.module.BPELDeployableArtifactAdapterFactory">
+            class="org.eclipse.bpel.runtimes.module.BPELDeployableArtifactAdapterFactory"
+            priority="0">
 			<enablement>
 				<with variable="selection">
 					<adapt type="org.eclipse.core.resources.IProject"/>
@@ -145,7 +156,8 @@
 		</moduleArtifactAdapter>
 		<moduleArtifactAdapter
 			id="org.eclipse.bpel.runtimes.module.artifactAdapter2"
-            class="org.eclipse.bpel.runtimes.module.BPELDeployableArtifactAdapterFactory">
+            class="org.eclipse.bpel.runtimes.module.BPELDeployableArtifactAdapterFactory"
+            priority="0">
 			<enablement>
 				<with variable="selection">
              		<adapt type="org.eclipse.core.resources.IFile"/>
@@ -170,24 +182,5 @@
             <adapter type="org.eclipse.debug.ui.actions.ILaunchable"/>
        </factory>
    </extension> 
-
-<!--=========================================================================-->
-<!-- TO MAKE PROCESSES ACTUALLY LAUNCHABLE VIA RUN ON SERVER				 -->
-<!-- 																		 -->
-<!-- Implement org.eclipse.wst.server.core.clients in order to specify the	 -->
-<!-- the client app to be used for launching.								 -->
-<!-- 																		 -->
-<!-- Implement org.eclipse.wst.server.core.launchableAdapters. Might have to -->
-<!-- do this in server-specific way or maybe can resuse some generic server	 -->
-<!-- framework stuff or maybe can come up with some interface that would	 -->
-<!-- allow us to implement in runtimes plug-in.								 -->
-<!-- 																		 -->
-<!-- N.B. Launching here means launching a Web service. Hence, can do this	 -->
-<!-- via the corresponding WTP feature with no code at all from our end.  	 -->
-<!-- 																		 -->
-<!-- 																		 -->
-<!-- 																		 -->
-<!--=========================================================================-->
-
 
 </plugin>

@@ -93,7 +93,7 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.FAILURE_HANDLING;
 	}
@@ -116,7 +116,8 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 			FaultOnFailure newFaultOnFailure, NotificationChain msgs) {
 		FaultOnFailure oldFaultOnFailure = faultOnFailure;
 		if (!isReconciling) {
-			ReconciliationHelper.replaceChild(this,oldFaultOnFailure, newFaultOnFailure);
+			ReconciliationHelper.replaceChild(this, oldFaultOnFailure,
+					newFaultOnFailure);
 		}
 		faultOnFailure = newFaultOnFailure;
 		if (eNotificationRequired()) {
@@ -181,7 +182,7 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 			NotificationChain msgs) {
 		RetryFor oldRetryFor = retryFor;
 		if (!isReconciling) {
-			ReconciliationHelper.replaceChild(this,oldRetryFor, newRetryFor);
+			ReconciliationHelper.replaceChild(this, oldRetryFor, newRetryFor);
 		}
 		retryFor = newRetryFor;
 		if (eNotificationRequired()) {
@@ -241,7 +242,8 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 			NotificationChain msgs) {
 		RetryDelay oldRetryDelay = retryDelay;
 		if (!isReconciling) {
-			ReconciliationHelper.replaceChild(this,oldRetryDelay, newRetryDelay);
+			ReconciliationHelper.replaceChild(this, oldRetryDelay,
+					newRetryDelay);
 		}
 		retryDelay = newRetryDelay;
 		if (eNotificationRequired()) {
@@ -289,7 +291,7 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -308,7 +310,7 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.FAILURE_HANDLING__FAULT_ON_FAILURE:
@@ -326,7 +328,7 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.FAILURE_HANDLING__FAULT_ON_FAILURE:
@@ -347,7 +349,7 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.FAILURE_HANDLING__FAULT_ON_FAILURE:
@@ -368,7 +370,7 @@ public class FailureHandlingImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.FAILURE_HANDLING__FAULT_ON_FAILURE:

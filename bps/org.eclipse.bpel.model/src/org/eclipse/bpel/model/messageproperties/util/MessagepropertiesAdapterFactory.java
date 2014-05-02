@@ -64,7 +64,7 @@ public class MessagepropertiesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -82,38 +82,38 @@ public class MessagepropertiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	protected MessagepropertiesSwitch<Adapter> modelSwitch = new MessagepropertiesSwitch<Adapter>() {
-		
+		@Override
 		public Adapter caseProperty(Property object) {
 			return createPropertyAdapter();
 		}
 
-		
+		@Override
 		public Adapter casePropertyAlias(PropertyAlias object) {
 			return createPropertyAliasAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseQuery(Query object) {
 			return createQueryAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseWSDLElement(WSDLElement object) {
 			return createWSDLElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseIExtensibilityElement(ExtensibilityElement object) {
 			return createIExtensibilityElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExtensibilityElement(
 				org.eclipse.wst.wsdl.ExtensibilityElement object) {
 			return createExtensibilityElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -127,7 +127,7 @@ public class MessagepropertiesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	
+	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
 	}

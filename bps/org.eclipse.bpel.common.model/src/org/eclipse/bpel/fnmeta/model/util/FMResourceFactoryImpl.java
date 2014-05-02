@@ -36,7 +36,7 @@ public class FMResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Resource createResource(URI uri) {
 		Resource result = new FMResourceImpl(uri);
 		return result;

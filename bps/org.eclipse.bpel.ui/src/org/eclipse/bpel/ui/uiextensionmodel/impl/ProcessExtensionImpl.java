@@ -1,6 +1,6 @@
 /**
  * <copyright>
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,7 +90,7 @@ public class ProcessExtensionImpl extends EObjectImpl implements ProcessExtensio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return UiextensionmodelPackage.Literals.PROCESS_EXTENSION;
 	}
@@ -142,7 +142,7 @@ public class ProcessExtensionImpl extends EObjectImpl implements ProcessExtensio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UiextensionmodelPackage.PROCESS_EXTENSION__SPEC_COMPLIANT:
@@ -158,7 +158,7 @@ public class ProcessExtensionImpl extends EObjectImpl implements ProcessExtensio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UiextensionmodelPackage.PROCESS_EXTENSION__SPEC_COMPLIANT:
@@ -176,7 +176,7 @@ public class ProcessExtensionImpl extends EObjectImpl implements ProcessExtensio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UiextensionmodelPackage.PROCESS_EXTENSION__SPEC_COMPLIANT:
@@ -194,7 +194,7 @@ public class ProcessExtensionImpl extends EObjectImpl implements ProcessExtensio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UiextensionmodelPackage.PROCESS_EXTENSION__SPEC_COMPLIANT:
@@ -210,7 +210,7 @@ public class ProcessExtensionImpl extends EObjectImpl implements ProcessExtensio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

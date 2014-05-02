@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,7 @@ public class BPELSelectionTool extends SelectionTool {
 	 * The following workaround tests if we are notifying the properties view for
 	 * a selection change and ignores the FocusOut event in that case.
 	 */
-	
+	@Override
 	protected boolean handleFocusLost() {
 		if (isSelectionChangeBeingBroadcasted()) return true;
 		return super.handleFocusLost();
@@ -61,7 +61,7 @@ public class BPELSelectionTool extends SelectionTool {
 	 * This workaround is similar to the one in handleFocusLost(). In this particular case
 	 * there was also a timing issue related to when we received the button up event. 
 	 */
-	
+	@Override
 	protected boolean handleButtonUp(int button) {
 		if (isSelectionChangeBeingBroadcasted()) return true;
 		return super.handleButtonUp(button);
@@ -71,7 +71,7 @@ public class BPELSelectionTool extends SelectionTool {
 	 * This workaround is similar to the one in handleFocusLost(). In this particular case
 	 * there was also a timing issue related to when we received the button exit event. 
 	 */
-	
+	@Override
 	protected boolean handleViewerExited() {
 		if (isSelectionChangeBeingBroadcasted()) return true;
 		return super.handleViewerExited();

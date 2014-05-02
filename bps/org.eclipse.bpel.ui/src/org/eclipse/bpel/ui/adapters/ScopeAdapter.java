@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ public class ScopeAdapter extends ContainerActivityAdapter implements IFaultHand
 
 	/* IContainer delegate */
 	
-	
+	@Override
 	public IContainer createContainerDelegate() {
 		MultiContainer omc = new MultiContainer();
 		omc.add(new ActivityContainer(BPELPackage.eINSTANCE.getScope_Activity()));
@@ -107,7 +107,7 @@ public class ScopeAdapter extends ContainerActivityAdapter implements IFaultHand
 
 	/* EditPartFactory */
 	
-	
+	@Override
 	public EditPart createEditPart(EditPart context, Object model) {
 		EditPart result = new ScopeEditPart();
 		result.setModel(model);
@@ -116,13 +116,13 @@ public class ScopeAdapter extends ContainerActivityAdapter implements IFaultHand
 
 	/* IOutlineEditPartFactory */
 	
-	
+	@Override
 	public EditPart createOutlineEditPart(EditPart context, final Object model) {
 		EditPart result = new OutlineTreeEditPart(){
 			// add the getModelChildren() method by Grid.Qian to refresh the scope when
 			// these partner, varaible, and so on change
 			@SuppressWarnings("unchecked")
-			
+			@Override
 			protected List<BPELExtensibleElement> getModelChildren() {
 				Scope  scope = (Scope)model;
 				List<BPELExtensibleElement> list = new ArrayList<BPELExtensibleElement>();
@@ -161,7 +161,7 @@ public class ScopeAdapter extends ContainerActivityAdapter implements IFaultHand
 	 * Overrides the base class actions and appends the declaration actions
 	 * @see https://issues.jboss.org/browse/JBIDE-7953
 	 */
-	
+	@Override
 	public List<AbstractAction> getEditPartActions(final EditPart editPart) {
 		List<AbstractAction> actions = super.getEditPartActions(editPart);
 		actions.add(new CreatePartnerLinkAction(editPart));

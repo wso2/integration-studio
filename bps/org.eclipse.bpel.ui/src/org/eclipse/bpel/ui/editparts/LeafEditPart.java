@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,7 +60,7 @@ public class LeafEditPart extends ActivityEditPart {
 	 */
 	public static class LeafDecorationLayout extends BPELDecorationLayout {
 		
-		
+		@Override
 		protected Point calculateLocation(int locationHint, IFigure container, Dimension childDimension) {
 			Point result = super.calculateLocation(locationHint, container, childDimension);
 			// if it is somewhere on the left we need to add the drawer space
@@ -76,29 +76,29 @@ public class LeafEditPart extends ActivityEditPart {
 	}
 	
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		
 		// Show the selection rectangle
 		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new BPELSelectionEditPolicy(false, true) {
-			
+			@Override
 			protected int getDrawerInset() {
 				return DrawerBorder.DRAWER_WIDTH;
 			}
-			
+			@Override
 			protected int getWestInset() {
 				return DrawerBorder.DRAWER_WIDTH ;
 			}
-			
+			@Override
 			protected int getEastInset() {
 				return DrawerBorder.DRAWER_WIDTH ;
 			}
-			
+			@Override
 			protected int getNorthInset() {
 				return 0;
 			}
-			
+			@Override
 			protected int getSouthInset() {
 				return 0;
 			}
@@ -106,7 +106,7 @@ public class LeafEditPart extends ActivityEditPart {
 	}
 	
 	
-	
+	@Override
 	protected IFigure createFigure() {
 		if (image == null) {
 			// Create the actual figure for the edit part
@@ -197,7 +197,7 @@ public class LeafEditPart extends ActivityEditPart {
 	/**
 	 * Overrides for direct edit 
 	 */
-	
+	@Override
 	public Label getLabelFigure() {
 		return nameLabel;
 	}
@@ -205,7 +205,7 @@ public class LeafEditPart extends ActivityEditPart {
 	/**
 	 * @see org.eclipse.bpel.ui.editparts.BPELEditPart#getLabelContent()
 	 */
-	
+	@Override
 	public String getLabelContent() {
 		return getLabel();
 	}
@@ -214,7 +214,7 @@ public class LeafEditPart extends ActivityEditPart {
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#refreshVisuals()
 	 */
-	
+	@Override
 	public void refreshVisuals() {
 		refreshDrawerImages();
 		super.refreshVisuals();
@@ -231,7 +231,7 @@ public class LeafEditPart extends ActivityEditPart {
 	}
 	
 	
-	
+	@Override
 	protected void unregisterVisuals() {
 		if (contentFigure != null) {
 			contentFigure.removeMouseMotionListener(getMouseMotionListener());
@@ -253,7 +253,7 @@ public class LeafEditPart extends ActivityEditPart {
 //	 *
 //	 * @return  ConnectionAnchor.
 //	 */
-//	
+//	@Override
 //	public ConnectionAnchor getSourceConnectionAnchor(ConnectionEditPart connEditPart) {
 //		// This may be called when the model is disconnected. If so, return null.
 //		if (getActivity().eResource() == null) return null;
@@ -271,7 +271,7 @@ public class LeafEditPart extends ActivityEditPart {
 //	 *
 //	 * @return  ConnectionAnchor.
 //	 */
-//	
+//	@Override
 //	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connEditPart) {
 //		// This may be called when the model is disconnected. If so, return null.
 //		if (getActivity().eResource() == null) {
@@ -286,7 +286,7 @@ public class LeafEditPart extends ActivityEditPart {
 //			anc = new CenteredConnectionAnchor(getMainActivityFigure(), CenteredConnectionAnchor.TOP, 0);
 //		return anc;
 //	}
-	
+	@Override
 	public ConnectionAnchor getConnectionAnchor(int location) {
 		switch(location){
 		case CenteredConnectionAnchor.LEFT:
@@ -303,13 +303,13 @@ public class LeafEditPart extends ActivityEditPart {
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#getContentPane()
 	 */
 	
-	
+	@Override
 	public IFigure getContentPane() {
 		return contentFigure;
 	}
 
 	
-	
+	@Override
 	protected DrawerBorder getDrawerBorder() {
 		return border;
 	}

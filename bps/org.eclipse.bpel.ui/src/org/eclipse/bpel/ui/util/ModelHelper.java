@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.bpel.common.extension.model.ExtensionmodelFactory;
 import org.eclipse.bpel.common.extension.model.adapters.ExtendedObjectUserAdapter;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
-import org.eclipse.bpel.model.AssignE4X;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Catch;
@@ -551,8 +550,7 @@ public class ModelHelper {
 	}
 	
 	public static Boolean getValidate(Object context) {
-		if (context instanceof Assign)  return ((Assign)context).getValidate();	
-		else if (context instanceof AssignE4X)  return ((AssignE4X)context).getValidate();	
+		if (context instanceof Assign)  return ((Assign)context).getValidate();		
 		throw new IllegalArgumentException();
 	}
 
@@ -569,9 +567,7 @@ public class ModelHelper {
 	public static void setValidate(Object context, Boolean validateXML) {
 		if (context instanceof Assign) {
 			((Assign)context).setValidate(validateXML); return;
-		}else if (context instanceof AssignE4X) {
-			((AssignE4X)context).setValidate(validateXML); return;
-		}			
+		}		
 		throw new IllegalArgumentException();
 	}
 	

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.bpel.ui.editparts;
 
 import org.eclipse.bpel.common.ui.tray.TrayCategoryEditPart;
@@ -27,14 +37,14 @@ public abstract class BPELTrayCategoryEditPart extends TrayCategoryEditPart{
 	// the eContainer will be null
 	private EObject eObj;
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		// handles creations
 		installEditPolicy(EditPolicy.CONTAINER_ROLE, new TrayContainerEditPolicy());
 	}
 	
-	
+	@Override
 	protected AccessibleEditPart createAccessible() {
 		return new BPELTrayAccessibleEditPart(this);
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ public class SelectionAndCreationDialog extends TwoPaneElementSelector {
 		allowCreateNewArtifact = true;
 	}
 
-	
+	@Override
 	protected Text createFilterText(Composite parent) {
 	    Composite newComposite = new Composite(parent, SWT.NONE);
 	    GridLayout layout = new GridLayout(2, false);
@@ -61,7 +61,7 @@ public class SelectionAndCreationDialog extends TwoPaneElementSelector {
 				// runs in a job and we have to update the OK button status only
 				// after the selection is updated.
 				WorkbenchJob job = new WorkbenchJob(Display.getCurrent(), "") { //$NON-NLS-1$
-					
+					@Override
 					public IStatus runInUIThread(IProgressMonitor monitor) {
 						updateOkState();
 						return Status.OK_STATUS;
@@ -105,7 +105,7 @@ public class SelectionAndCreationDialog extends TwoPaneElementSelector {
 		this.allowCreateNewArtifact = allowCreateNewArtifact;
 	}
 	
-	
+	@Override
 	protected void okPressed() {
 		// check if there's a selection
 		if (getSelectedElements().length == 0) {

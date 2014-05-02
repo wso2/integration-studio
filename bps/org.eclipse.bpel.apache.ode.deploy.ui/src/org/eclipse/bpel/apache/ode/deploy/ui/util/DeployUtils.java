@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 IBM Corporation, University of Stuttgart (IAAS) and others.
+ * Copyright (c) 2008, 2012 IBM Corporation, University of Stuttgart (IAAS) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
@@ -201,12 +200,15 @@ public class DeployUtils {
 		{
 			// fix a dumb mistake: XSDs don't have Definitions
 			// and will cause this to throw a class cast exception
-			Object obj = res.getContents().get(0);
-			if (obj instanceof Definition)
-			{
-				Definition def = (Definition)obj;
-				if (!wsdlFiles.contains(def))
-					wsdlFiles.add(def);
+			EList<EObject>contents = res.getContents();
+			if (contents!=null && !contents.isEmpty()) {
+				Object obj = contents.get(0);
+				if (obj instanceof Definition)
+				{
+					Definition def = (Definition)obj;
+					if (!wsdlFiles.contains(def))
+						wsdlFiles.add(def);
+				}
 			}
 		}
 		return wsdlFiles;
@@ -247,13 +249,7 @@ public class DeployUtils {
 			}
 		};
 		try {
-			IResource[] reses=null;
-			if(project.exists(getWebContentRootPath(project))){
-				reses = project.getFolder(getWebContentRootPath(project)).members();
-			}
-			else{
-				reses = project.members();
-			}
+			IResource[] reses = project.getFolder(getWebContentRootPath(project)).members();
 			for (IResource res : reses) {
 				res.accept(visitor);
 

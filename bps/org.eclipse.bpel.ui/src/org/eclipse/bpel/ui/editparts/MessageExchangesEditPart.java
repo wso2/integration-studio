@@ -1,6 +1,6 @@
 /**
  * <copyright>
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,13 +35,13 @@ import org.eclipse.gef.requests.CreationFactory;
 
 public class MessageExchangesEditPart extends BPELTrayCategoryEditPart {
 
-	
+	@Override
 	protected CreationFactory getCreationFactory() {
 		return UIObjectFactoryProvider.getInstance().getFactoryFor(BPELPackage.eINSTANCE.getMessageExchange());
 	}
 	
 
-	
+	@Override
 	protected EList<MessageExchange> getModelChildren() {
 		return getMessageExchanges().getChildren();
 	}
@@ -58,25 +58,25 @@ public class MessageExchangesEditPart extends BPELTrayCategoryEditPart {
 		return ModelHelper.getBPELEditor(getContainer());
 	}
 
-	
+	@Override
 	protected IFigure getAddToolTip() {
 	    return new Label(Messages.MessageExchangesEditPart_Add_Message_Exchange_1); 
 	}
 	
-	
+	@Override
 	protected IFigure getRemoveToolTip() {
 	    return new Label(Messages.MessageExchangesEditPart_Remove_Message_Exchange_1); 
 	}	
 
 
-	
+	@Override
 	protected Adapter createAdapter() {
 		return new BatchedMultiObjectAdapter() {
-			
+			@Override
 			public void finish() {
 				refresh();
 			}
-			
+			@Override
 			public void notify(Notification n) {
 			}
 		};

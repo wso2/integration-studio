@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,8 +68,6 @@ public interface IBPELUIConstants {
 	// Activities
 	public final String ICON_ASSIGN_16 = "obj16/assign.gif"; //$NON-NLS-1$
 	public final String ICON_ASSIGN_32 = "obj20/assign.png"; //$NON-NLS-1$
-	public final String ICON_ASSIGNE4X_16 = "obj16/assigne4x.gif"; //$NON-NLS-1$
-	public final String ICON_ASSIGNE4X_32 = "obj20/assigne4x.png"; //$NON-NLS-1$
 	public final String ICON_EMPTY_16 = "obj16/empty.gif"; //$NON-NLS-1$
 	public final String ICON_EMPTY_32 = "obj20/empty.png"; //$NON-NLS-1$
 	public final String ICON_FLOW_16 = "obj16/flow.gif"; //$NON-NLS-1$

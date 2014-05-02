@@ -85,7 +85,7 @@ public class RegistryImpl extends FacadeElementImpl implements Registry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return FMPackage.Literals.REGISTRY;
 	}
@@ -131,7 +131,7 @@ public class RegistryImpl extends FacadeElementImpl implements Registry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case FMPackage.REGISTRY__FUNCTIONS:
@@ -145,7 +145,7 @@ public class RegistryImpl extends FacadeElementImpl implements Registry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case FMPackage.REGISTRY__FUNCTIONS:
@@ -164,7 +164,7 @@ public class RegistryImpl extends FacadeElementImpl implements Registry {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FMPackage.REGISTRY__FUNCTIONS:
@@ -188,7 +188,7 @@ public class RegistryImpl extends FacadeElementImpl implements Registry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FMPackage.REGISTRY__FUNCTIONS:
@@ -209,7 +209,7 @@ public class RegistryImpl extends FacadeElementImpl implements Registry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FMPackage.REGISTRY__FUNCTIONS:

@@ -109,7 +109,7 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return ddPackage.Literals.TSERVICE;
 	}
@@ -173,7 +173,7 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ddPackage.TSERVICE__ANY:
@@ -187,7 +187,7 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ddPackage.TSERVICE__ANY:
@@ -206,7 +206,7 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ddPackage.TSERVICE__ANY:
@@ -227,7 +227,7 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ddPackage.TSERVICE__ANY:
@@ -248,7 +248,7 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ddPackage.TSERVICE__ANY:
@@ -266,7 +266,7 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

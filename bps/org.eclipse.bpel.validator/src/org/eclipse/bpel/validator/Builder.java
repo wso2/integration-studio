@@ -1,7 +1,7 @@
 package org.eclipse.bpel.validator;
 
 /**
- * Java JDK dependencies 
+ * Java JDK dependencies
  */
 
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ import org.w3c.dom.Element;
 /**
  * A builder which is invoked to build (in this case validate), the BPEL files
  * in the projects in which the builder is installed.
- * 
+ *
  * @author Michal Chmielewski (michal.chmielewski@oracle.com)
  * @date Sep 19, 2006
  *
@@ -60,94 +60,90 @@ public class Builder extends IncrementalProjectBuilder {
 	// https://jira.jboss.org/jira/browse/JBIDE-6006
 	// Content Type ID for org.eclipse.bpel editor files
 	public static final String BPEL_CONTENT_TYPE = "org.eclipse.bpel.contenttype"; //$NON-NLS-1$
-	
+
 	Date created = new Date();
-	
+
 	boolean bDebug = false;
-	
+
 	/** Empty problems list */
 	IProblem[] EMPTY_PROBLEMS = {};
-	
+
 	/** The adapter manager for the platform */
-	IAdapterManager fAdapterManager = Platform.getAdapterManager();		
+	IAdapterManager fAdapterManager = Platform.getAdapterManager();
 
 	BPELResourceSetImpl fResourceSet = new BPELResourceSetImpl();
-	
+
 	BPELReader fReader = new BPELReader();
-	
-		 
+
+
 	/**
 	 * Create brand new shiny BPEL Builder.
 	 */
-	
+
 	public Builder() {
-		p("Created on " + created);
+		p("Created on " + this.created);
 	}
-    
+
 	/** (non-Javadoc)
 	 * @see org.eclipse.core.resources.IncrementalProjectBuilder#setInitializationData(org.eclipse.core.runtime.IConfigurationElement, java.lang.String, java.lang.Object)
 	 */
-	
+	@Override
 	public void setInitializationData(IConfigurationElement config, String propertyName, Object data) throws CoreException {
-		super.setInitializationData(config, propertyName, data);	
+		super.setInitializationData(config, propertyName, data);
 	}
 
-	
 
-
-	@SuppressWarnings("unchecked")
-	
-	
+	@Override
 	protected IProject[] build (int kind, Map args, IProgressMonitor monitor)
 			throws CoreException {
-		
-		
+
+
 		long started = System.currentTimeMillis();
 		if (args != null) {
-			bDebug = toBoolean(args.get("debug"),false);
+			this.bDebug = toBoolean(args.get("debug"),false);
 		}
-		
 
-		AdapterFactory.DEBUG = bDebug;
-		if (bDebug) {
+
+		AdapterFactory.DEBUG = this.bDebug;
+		if (this.bDebug) {
 			p("Clear error messages from the cache ... (will re-load)");
-			Messages.clear();			
+			Messages.clear();
 		}
-		
+
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813
 		// https://jira.jboss.org/browse/JBIDE-7116
 		clearCach();
-		
+
 		IProject myProject = this.getProject();
 		IResourceDelta resourceDelta = this.getDelta(myProject);
-		
+
 		if (resourceDelta == null) {
-						
+
 			// Now find all the BPEL files in the project and validate them
 			validate ( myProject, monitor );
-			
+
 		} else {
-						
+
 			processDeltas(resourceDelta.getAffectedChildren( IResourceDelta.CHANGED ), monitor );
-			
+
 		}
-				
+
 		long ended = System.currentTimeMillis();
 		p(" Validation Ended " + (ended-started) + "ms");
 		return new IProject[] { myProject };
 	}
-	
-	
-	
+
+
+
 	void processDeltas ( IResourceDelta [] deltas , IProgressMonitor monitor ) throws CoreException {
-		
-		for(IResourceDelta delta : deltas) {			
-			processDeltas( delta.getAffectedChildren(IResourceDelta.CHANGED, IResource.FILE), monitor );			
+
+		for(IResourceDelta delta : deltas) {
+			processDeltas( delta.getAffectedChildren(IResourceDelta.CHANGED, IResource.FILE), monitor );
 			IResource resource = delta.getResource();
 			if (resource.getType () != IResource.FILE) {
 				continue;
 			}
-			
+
 //			 * @see IResourceDelta#CONTENT
 //			 * @see IResourceDelta#DESCRIPTION
 //			 * @see IResourceDelta#ENCODING
@@ -158,21 +154,21 @@ public class Builder extends IncrementalProjectBuilder {
 //			 * @see IResourceDelta#SYNC
 //			 * @see IResourceDelta#MARKERS
 //			 * @see IResourceDelta#REPLACED
-			 
+
 			if ((delta.getFlags() & IResourceDelta.CONTENT) != IResourceDelta.CONTENT ) {
 				continue;
 			}
-			
-			fResourceSet.resourceChanged((IFile)resource);
-			validate ( resource, monitor );					
-		}		
+
+			this.fResourceSet.resourceChanged((IFile)resource);
+			validate ( resource, monitor );
+		}
 	}
 
-	
+
 	/**
 	 * @see org.eclipse.core.resources.IncrementalProjectBuilder#clean(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	
+	@Override
 	protected void clean (IProgressMonitor monitor) throws CoreException {
 		removeProblemsAndTasksFor(getProject());
 	}
@@ -188,36 +184,34 @@ public class Builder extends IncrementalProjectBuilder {
 	}
 	/**
 	 * Validate the resource using the monitor passed.
-	 * 
+	 *
 	 * @param resource (File or Folder)
 	 * @param monitor the monitor to use.
 	 * @throws CoreException
 	 */
-	
-	@SuppressWarnings("unchecked")
 	public void validate (IResource resource, IProgressMonitor monitor) throws CoreException {
-		
+
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813
 		// https://jira.jboss.org/browse/JBIDE-7116
 		// enable element location tracking for error reporting
 		// TODO: move this to somewhere more appropriate when fixing JBIDE-6839
-		Map<Object, Object> loadOptions = fResourceSet.getLoadOptions();
+		Map<Object, Object> loadOptions = this.fResourceSet.getLoadOptions();
 		loadOptions.put("TRACK_LOCATION", Boolean.TRUE);
-		fResourceSet.setLoadOptions(loadOptions);
-		
+		this.fResourceSet.setLoadOptions(loadOptions);
+
 
 		switch (resource.getType()) {
-		
+
 		case IResource.FOLDER :
-			IFolder folder = (IFolder) resource;			
+			IFolder folder = (IFolder) resource;
 			for(IResource next :  folder.members() ) {
 				validate (next,monitor);
-			}			
+			}
 			break;
-			
-		case IResource.FILE :			
+
+		case IResource.FILE :
 			IFile file = (IFile) resource;
-									
+
 			p("File Resource : " + file.getName() );
 			// https://jira.jboss.org/jira/browse/JBIDE-6006
 			// use content type to check for BPEL files
@@ -226,10 +220,10 @@ public class Builder extends IncrementalProjectBuilder {
 				validate(project, monitor);
 //				file.deleteMarkers(IBPELMarker.ID, true,  IResource.DEPTH_INFINITE);
 //				deleteMarkersInReferencialResources(file);
-//				makeMarkers ( validate (  file, monitor  ) );	
-			} 
+//				makeMarkers ( validate (  file, monitor  ) );
+			}
 			break;
-			
+
 		case IResource.PROJECT:
 			for(IFile bpelFile : getBPELFilesByProject((IProject)resource)){
 				p("File Resource : " + bpelFile.getName() );
@@ -239,15 +233,16 @@ public class Builder extends IncrementalProjectBuilder {
 				makeMarkers ( validate (  bpelFile, monitor  ) );
 			}
 		}
-		
-			
+
+
 	}
-	
+
 	private List<IFile> getBPELFilesByProject(IProject project){
-		
+
 		final List<IFile> bpelFolders = new ArrayList<IFile>();
 		IResourceVisitor bpelFolderFinder = new IResourceVisitor() {
-			
+
+			@Override
 			public boolean visit(IResource resource) throws CoreException {
 				if( resource.getType() == IResource.FILE){
 					// https://jira.jboss.org/jira/browse/JBIDE-6006
@@ -264,16 +259,16 @@ public class Builder extends IncrementalProjectBuilder {
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
-		
+
 		return bpelFolders;
 	}
-	
+
 	private void deleteMarkersInReferencialResources(IFile bpelFile) throws CoreException{
-		
-		fResourceSet.resourceChanged(bpelFile);
-		fReader.read( bpelFile, fResourceSet );
-		Process process = fReader.getProcess();
-		
+
+		this.fResourceSet.resourceChanged(bpelFile);
+		this.fReader.read( bpelFile, this.fResourceSet );
+		Process process = this.fReader.getProcess();
+
 		p("Delete markers");
 		// https://jira.jboss.org/browse/JBIDE-6825
 		// in case of XML parse errors, the Process will be null!
@@ -281,7 +276,7 @@ public class Builder extends IncrementalProjectBuilder {
 			p ("Cannot read BPEL Process !!!");
 			return;
 		}
-		
+
 		IContainer container = bpelFile.getParent();
 		for(Import impt : process.getImports()){
 			String fileLocation = impt.getLocation();
@@ -290,37 +285,35 @@ public class Builder extends IncrementalProjectBuilder {
 				importedFile.deleteMarkers(IBPELMarker.ID, false,  IResource.DEPTH_ZERO);
 			}
 		}
-		
+
 	}
-	
-	
+
+
 	public void clearCach(){
-		fResourceSet.getResources().clear();
+		this.fResourceSet.getResources().clear();
 	}
 	/**
 	 * @param file
 	 * @param monitor
-	 * @return return the list of problems found 
+	 * @return return the list of problems found
 	 */
-	
-	@SuppressWarnings("unchecked")
 	public IProblem[] validate (IFile file, IProgressMonitor monitor  ) {
-		
-		
+
+
 		p("Validating BPEL Resource : " + file.getName() );
-				
+
 		// Step 1. Read the BPEL process using the Model API.
-		
-		fResourceSet.resourceChanged(file);
-		fReader.read( file, fResourceSet );
-		Process process = fReader.getProcess();
-		
+
+		this.fResourceSet.resourceChanged(file);
+		this.fReader.read( file, this.fResourceSet );
+		Process process = this.fReader.getProcess();
+
 		if (process == null) {
 			// https://jira.jboss.org/browse/JBIDE-6825
 			// if the resource failed to parse because of malformed XML, the Process
 			// will be null. Fetch the SAXParseDiagnostics from the resource and build
 			// problem markers for this resource.
-			Resource resource = fReader.getProcessResource();
+			Resource resource = this.fReader.getProcessResource();
 			if ( resource!=null && !resource.getErrors().isEmpty() )
 			{
 				ArrayList<IProblem> problems = new ArrayList<IProblem>(resource.getErrors().size());
@@ -336,8 +329,8 @@ public class Builder extends IncrementalProjectBuilder {
 					else
 						problem.setAttribute(IProblem.SEVERITY, IProblem.SEVERITY_ERROR);
 					problem.setAttribute(IProblem.LINE_NUMBER, d.getLine());
-					problem.setAttribute(IProblem.COLUMN_NUMBER, d.getColumn()); 
-					problem.setAttribute(IProblem.MESSAGE, d.getMessage());    
+					problem.setAttribute(IProblem.COLUMN_NUMBER, d.getColumn());
+					problem.setAttribute(IProblem.MESSAGE, d.getMessage());
 
 					problems.add(problem);
 				}
@@ -345,30 +338,30 @@ public class Builder extends IncrementalProjectBuilder {
 			}
 
 			p ("Cannot read BPEL Process !!!");
-			return EMPTY_PROBLEMS ;
+			return this.EMPTY_PROBLEMS ;
 		}
-		
+
 		p("Read in BPEL Model OK" );
-		
+
 		// Step 2. Preparation for the validator.
 		linkModels ( process );
-		p("Models Linked" );		
-		
-		// Process as INode 
-		INode node = (INode) fAdapterManager.getAdapter( process.getElement(), INode.class );
-		
-		// Debug: Dump the dom from the reader, just to see what we have 
-		// p( org.eclipse.bpel.model.util.BPELUtils.elementToString(process.getElement())); 
-		
+		p("Models Linked" );
+
+		// Process as INode
+		INode node = (INode) this.fAdapterManager.getAdapter( process.getElement(), INode.class );
+
+		// Debug: Dump the dom from the reader, just to see what we have
+		// p( org.eclipse.bpel.model.util.BPELUtils.elementToString(process.getElement()));
+
 		// Step 4. Run the validator.
-		
+
 		IProblem[] problemList = new Runner (ModelQueryImpl.getModelQuery(), node ).run();
 		p("Validator Executed" );
-		return problemList;	
+		return problemList;
 	}
 
-	
-	
+
+
 	/**
 	 * @param problemList
 	 */
@@ -378,27 +371,27 @@ public class Builder extends IncrementalProjectBuilder {
 			return ;
 		}
 
-		// Step 5. Adapt problems to markers.		
+		// Step 5. Adapt problems to markers.
 		for(IProblem problem : problemList) {
-			fAdapterManager.getAdapter(problem, IMarker.class);			
+			this.fAdapterManager.getAdapter(problem, IMarker.class);
 		}
-		
+
 		p( "Markers Created " );
 		p( " ------ Done" );
-		
+
 		// done.
 	}
-	
-	
-	
+
+
+
 	void linkModels ( EObject process ) {
-		
-		// 
-		// Each extensible element points to the DOM element that 
+
+		//
+		// Each extensible element points to the DOM element that
 		// comprises it. This is done in the BPEL reader as well as
-		// the WSDL readers. Here we add a pointer to the 
+		// the WSDL readers. Here we add a pointer to the
 		// emf objects from the DOM objects.
-	
+
 		Iterator<?> emfIterator = process.eAllContents();
 		while (emfIterator.hasNext()) {
 			Object obj = emfIterator.next();
@@ -414,20 +407,20 @@ public class Builder extends IncrementalProjectBuilder {
 			}
 		}
 	}
-	
-	
-	@SuppressWarnings("boxing")	
+
+
+	@SuppressWarnings("boxing")
 	boolean toBoolean ( Object obj , boolean def) {
 		if (obj instanceof String) {
-			return Boolean.valueOf((String)obj);			
+			return Boolean.valueOf((String)obj);
 		}
 		return def;
 	}
-	
-	
-		
+
+
+
 	void p (String msg ) {
-		if (bDebug) {
+		if (this.bDebug) {
 			System.out.printf( "[%1$s]>> %2$s\n", getClass().getName(), msg);
 			System.out.flush();
 		}
@@ -450,7 +443,7 @@ public class Builder extends IncrementalProjectBuilder {
 		catch(Exception ex)
 		{
 		}
-		return false;	
+		return false;
 	}
 
 }

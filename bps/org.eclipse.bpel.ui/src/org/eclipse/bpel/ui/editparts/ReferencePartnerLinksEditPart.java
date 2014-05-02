@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ public class ReferencePartnerLinksEditPart extends PartnerLinksEditPart {
 	/**
 	 * Only add outbound partners.
 	 */
-	
+	@Override
 	protected List<PartnerLink> getModelChildren() {
 		List<PartnerLink> result = new ArrayList<PartnerLink>();
 		for (Iterator<PartnerLink> iter = getPartnerLinks().getChildren().iterator(); iter.hasNext();) {
@@ -40,34 +40,34 @@ public class ReferencePartnerLinksEditPart extends PartnerLinksEditPart {
 		return result;
 	}
 
-	
+	@Override
 	protected int getRoleKind() {
 		return ModelHelper.PARTNER_ROLE;
 	}
 	
-	
+	@Override
 	protected PartnerLinks getPartnerLinks() {
 		return ((ReferencePartnerLinks)getModel()).getPartnerLinks();
 	}
 
-	
+	@Override
 	public void activate() {
 		super.activate();
 		getPartnerLinks().eAdapters().add(adapter);
 	}
 
-	
+	@Override
 	public void deactivate() {
 		super.deactivate();
 		getPartnerLinks().eAdapters().remove(adapter);
 	}
 
-	
+	@Override
 	protected IFigure getAddToolTip() {
 	    return new Label(Messages.ReferencePartnerLinksEditPart_0); 
 	}
 	
-	
+	@Override
 	protected IFigure getRemoveToolTip() {
 	    return new Label(Messages.ReferencePartnerLinksEditPart_1); 
 	}

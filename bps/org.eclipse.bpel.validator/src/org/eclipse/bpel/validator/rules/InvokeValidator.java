@@ -54,7 +54,7 @@ public class InvokeValidator extends CPartnerActivityValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		checkChild(ND_CATCH,0,Integer.MAX_VALUE);
@@ -70,7 +70,7 @@ public class InvokeValidator extends CPartnerActivityValidator {
 	 * @see org.eclipse.bpel.validator.model.Validator#start()
 	 */
 	
-	
+	@Override
 	protected void start () {
 		
 		super.start();		
@@ -274,7 +274,7 @@ public class InvokeValidator extends CPartnerActivityValidator {
 	/**
 	 * One-way invocation requires only the inputVariable (or its equivalent
 	 * <toPart> elements) since a response is not expected as part of the
-	 * operation (see section 10.4. Providing Web Service Operations ï¿½ Receive
+	 * operation (see section 10.4. Providing Web Service Operations – Receive
 	 * and Reply ). Request-response invocation requires both an inputVariable
 	 * (or its equivalent <toPart> elements) and an outputVariable (or its
 	 * equivalent <fromPart> elements). If a WSDL message definition does not

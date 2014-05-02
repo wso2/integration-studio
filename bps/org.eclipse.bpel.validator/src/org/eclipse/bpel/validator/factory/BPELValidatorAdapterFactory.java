@@ -47,7 +47,7 @@ public class BPELValidatorAdapterFactory extends BPELAdapterFactory {
 	 * @see org.eclipse.bpel.model.util.BPELAdapterFactory#createEObjectAdapter()
 	 */
 	
-	
+	@Override
 	public Adapter createEObjectAdapter() {
 		return provider.getAdapter(BasicAdapter.class);
 	}
@@ -57,7 +57,7 @@ public class BPELValidatorAdapterFactory extends BPELAdapterFactory {
 	 * @see org.eclipse.bpel.model.util.BPELAdapterFactory#createPartnerActivityAdapter()
 	 */
 	
-	
+	@Override
 	public Adapter createPartnerActivityAdapter() {
 		return provider.getAdapter ( PartnerActivityAdapter.class );
 	}
@@ -71,7 +71,7 @@ public class BPELValidatorAdapterFactory extends BPELAdapterFactory {
 	 * @return an suitable adapter
 	 */
 	
-	
+	@Override
 	public Adapter adaptNew ( Notifier target, Object type ) {
 	
 		Adapter adapter = createAdapter(target, type);
@@ -83,13 +83,13 @@ public class BPELValidatorAdapterFactory extends BPELAdapterFactory {
 		
 	}
 	
-	
+	@Override
 	protected Object resolve(Object object, Object type) {
 		return null;
 	}
 
 	
-    
+    @Override
 	protected Adapter createAdapter (Notifier target, Object type) {
     	    	
 //    	if (BPELUtil.isCustomActivity(target)) {

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>Structured Activities</title>
+</head>
+
+<body>
+	<h1>Structured Activities</h1>
+
+	<p>
+		Structured activities can be thought of as containers that can hold
+		one or more activities. The <strong>Controls</strong> section of the <strong>Palette</strong>
+		contains all of the <em>structured activities</em>.
+		When you drag and drop one of these onto the drawing canvas, the BPEL
+		Designer will create a basic skeleton of the activity, and assign
+		default properties.
+	</p>
+	<p>
+		All structured activities will require some additional
+		configuration before they are considered valid. For example, BPEL does
+		not allow an empty Sequence activity. Invalid structured activities
+		will be decorated with an error icon similar to basic activities.</p>
+	<p>
+		Structured activities can be expanded and collapsed on the
+		drawing canvas by clicking the plus and minus buttons at the bottom of
+		the figure. Illustrated below is a collapsed and expanded Sequence:
+	</p>
+
+	<p><img src="../../..images/reference/BPEL_Designer_12.png" alt="Collapsed Sequence" /></p>
+	<p><b>Collapsed Sequence</b></p>
+	
+	<p><img src="../../../images/reference/BPEL_Designer_13.png" alt="Expanded Sequence" /></p>
+	<p><b>Expanded Sequence</b></p>
+
+	<p>
+		The following sections describe the structured activities and
+		how each must be configured to be considered valid for BPEL.
+	</p>
+
+	<h5>If</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_14.png" alt="If, ElseIf and Else" /></p>
+	<p><b>If, ElseIf and Else</b></p>
+	<p>
+		The If activity allows conditional execution of one or more
+		sequences of activities. It consists of a sequence of one or more
+		conditional branches defined by If and optional ElseIf elements. The
+		elements are evaluated in left-to-right order (or top-to-bottom if you
+		have selected horizontal layout). An optional Else branch will be
+		executed if none of the other conditions are true.
+	</p>
+	<p>
+		An If activity must define a condition (expressed as an XPath)
+		and an activity which is executed if the condition evaluates true. To
+		insert additional ElseIf and Else elements, right-click the If figure
+		and select the desired element from the context menu. The figure above
+		shows a complete If activity with optional ElseIf and Else elements.
+	</p>
+
+	<h5>Pick</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_15.png" alt="Pick" /></p>
+	<p><b>Pick</b></p>
+	<p>
+		The Pick activity will cause the process to wait for one of any number
+		of messages to be received. An optional timer can be set to limit the
+		time to wait for receipt of these messages. Activities to handle
+		receipt of messages and timer expiration are defined in the Pick.
+		Message receipts are handled by OnMessage activities (
+		<a href="#Reference-Details_tab-OnMessage">OnMessage</a>), and timer expiration is handled by the OnAlaram
+		activity (<a href="#Reference-Details_tab-OnAlarm">OnAlarm</a>).
+	</p>
+
+	<h5>While</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_16.png" alt="While" /></p>
+	<p><b>While</b></p>
+	<p>
+		The While activity repeatedly executes the contained activity as
+		long as a condition evaluates true at the beginning of each iteration.
+		A While activity must define a condition and must contain an activity.
+	</p>
+
+	<h5>ForEach</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_17.png" alt="ForEach" /></p>
+	<p><b>ForEach</b></p>
+	<p>
+		ForEach is a looping activity that executes the activities
+		contained in its Scope a specified number of times. A counter
+		variable, defined in the ForEach property detail tab, is used to keep
+		track of the iterations. The ForEach properties must be configured
+		with starting and ending value expressions for this counter variable.
+		The counter is initially set to the starting value and activities in
+		the Scope are executed until the counter exceeds the ending value.
+	</p>
+	<p>
+		This activity can also be configured to execute all iterations
+		in parallel, meaning the enclosed Scope activity behaves as if
+		multiple Scopes are enclosed in a Flow activity.
+	</p>
+	<p>
+		An optional early termination value can be defined, which will cause
+		the loop to complete before the counter has reached its ending value.
+		The ForEach will complete when the counter is equal to this early
+		termination value for the sequential execution case. For the parallel
+		execution case, the early termination value is the number of completed
+		iterations. For example, the ForEach completes when at least
+		<em>some number</em> of <em>some action</em> have finished.
+	</p>
+	
+	<h5>RepeatUntil</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_18.png" alt="RepeatUntil" /></p>
+	<p><b>RepeatUntil</b></p>
+	<p>
+		The RepeatUntil activity repeatedly executes the contained
+		activity as long as a condition evaluates true at the end of each
+		iteration. A condition must be defined for a RepeatUntil, and it must
+		contain an activity.
+	</p>
+	
+	<h5>Sequence</h5>
+	<p>
+		A Sequence is a container for one or more other activities,
+		which are executed in sequential order and (unlike Scope and Flow
+		activities), has no other special characteristics. Because the
+		conditional activities ( If, While, RepeatUntil and ForEach) can have
+		only one activity as the target of their execution, a Sequence is
+		typically used to execute multiple activities.
+	</p>
+	<p>For example, the If shown below contains only a single Assign activity:</p>
+	
+	<p><img src="../../../images/reference/BPEL_Designer_19.png" alt="Sequence" /></p>
+	<p><b>Sequence</b></p>
+	<p>
+		If it were necessary to perform an assignment and then invoke
+		another web service, the Assign and Invoke could be contained within a
+		Sequence. The Sequence would then become the target of the If:
+	</p>
+
+	<p><img src="../../../images/reference/BPEL_Designer_20.png" alt="Sequence" /></p>
+	<p><b>Sequence</b></p>
+	
+	<h2>Note</h2>
+	<p>
+		The BPEL Designer will automatically create a  Sequence if you drag-drop a second
+		activity into any of the conditional activities.
+	</p>
+
+	<h5>Scope</h5>
+	<p><img src="../../../images/reference/BPEL_Designer_21.png" alt="Scope" /></p>
+	<p><b>Scope</b></p>
+	<p>
+		A Scope provides a context for its enclosed activity. This
+		context includes variables, partner links, message exchanges,
+		correlation sets, event handlers, fault handlers, a compensation
+		handler and a termination handler. These Scope contexts can be nested
+		hierarchically where the root context is provided by the process
+		itself.
+	</p>
+	<p>
+		A Scope can be thought of as a compartmentalized sub-process. If the
+		Scope is declared as being <em>isolated</em> , then the variables and
+		partner links shared with the process are locked to prevent other
+		concurrent Scopes from altering them while a Scope is executing. Scope
+		may also be nested to any depth and all variables, partner links and
+		others defined in a Scope, are inherited by its children. Refer to 
+		<a href="#Reference-BPEL_Designer-Structured_Activities-Flow">Flow</a> for
+		a discussion of concurrent execution.
+	</p>
+
+	<p>
+		To be valid, a Scope must have a single activity. The typical
+		use of a Scope activity is to invoke a service and wait for a response
+		message or timeout. In the above figure, the Scope has defined a
+		message variable and a partner link used to interact with the invoked
+		service.
+	</p>
+	
+	<h5>Flow</h5>
+	<p>
+		The Flow activity allows multiple activities to be executed in
+		parallel. All activities or Sequences of activities that are contained
+		in a Flow, are executed (or begun) at the same time by the BPEL
+		engine. A Flow completes when all of its enclosed activities have
+		completed.
+	</p>
+	<p>
+		Parallel processing is typically used to save time by doing more than
+		one thing at a time and as a result, speed up the process. However, in
+		many situations several tasks can be started at the same time, but one
+		or more tasks may depend on the successful completion of other tasks.
+		This task dependency sequencing is called <em>synchronization</em> and
+		is achieved using Links.
+	</p>
+	<p>
+		For example, a process that handles purchase orders for material
+		goods needs to:
+	</p>
+
+	<ol>
+		<li><p>Calculate the total order price</p></li>
+		<li><p>Calculate shipping costs for the order</p></li>
+		<li><p>Send a customer invoice</p></li>
+	</ol>
+
+	<p>
+		All of these activities can be started at the same time, however
+		the shipping cost must be finalized before the total order price can
+		be determined, and the invoice can be sent.
+	</p>
+
+	<p>
+		To create a Link, right-click on the activity that must be completed
+		first (the activity that is the <em>source</em> of the dependency) and
+		select <strong>Add Link</strong> from the context
+		menu. Next, move the mouse to the activity in the Flow that depends on
+		this one (the <em>target</em>) and click the left mouse button to
+		create the link.
+	</p>
+	<p>
+		A Link is identified by a name that must be unique within the
+		Flow. The BPEL Designer generates a reasonable default name, but you
+		can change this in its properties. You can also add a test to the Link
+		that defines the conditions for considering an activity to be
+		complete. For example an activity in a Flow may require two pieces of
+		information, provided by other services, in order to continue.
+		Consider the process Flow shown below:
+	</p>
+
+	<p><img src="../../../images/reference/BPEL_Designer_22.png" alt="Flow example" /></p>
+	<p><b>Flow example</b></p>
+	<p>
+		In this example, the <em>Billing</em> department can begin preparation
+		of a customer invoice, but it needs to know if sufficient stock is on
+		hand to fulfill the order and if an outside vendor needs to provide
+		the additional quantities ordered. The following condition would
+		enable the Link so that execution can continue for the price
+		calculation and customer invoicing:
+	</p>
+
+	<p><img src="../../../images/reference/BPEL_Designer_23.png" alt="Link example" /></p>
+	<p><b>Link example</b></p>
+	
+	<p>
+		This process is only partially complete though as it does
+		not consider the number of outside vendors, or if the total
+		quantity being ordered can ever be filled.
+	</p>
+</body>
+</html>

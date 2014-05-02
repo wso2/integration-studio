@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 Red Hat and others.
+ * Copyright (c) 2009, 2012 Red Hat and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -140,7 +140,7 @@ public abstract class FlatComponentDeployable extends ProjectModule {
 		return component == null ? false : component.isBinary();
 	}
 
-	
+	@Override
 	public IModuleResource[] members() throws CoreException {
 		if( component.isBinary() ) 
 			return LEGACY_binaryMembers();
@@ -164,7 +164,7 @@ public abstract class FlatComponentDeployable extends ProjectModule {
      * 
      * @return org.eclipse.wst.server.core.model.IModule[]
      */
-    
+    @Override
 	public IModule[] getChildModules() {
         return getModules();
     }
@@ -194,7 +194,7 @@ public abstract class FlatComponentDeployable extends ProjectModule {
     	return new IModule[]{};
 	}
     
-	
+	@Override
 	public String getPath(IModule m) {
 		return getURI(m);
 	}
@@ -314,7 +314,7 @@ public abstract class FlatComponentDeployable extends ProjectModule {
 			super(resource);
 		}
 		
-		
+		@Override
 		public boolean equals(Object obj) {
 			if (obj == this)
 				return true;
@@ -330,7 +330,7 @@ public abstract class FlatComponentDeployable extends ProjectModule {
 			return true;
 		}
 		
-		
+		@Override
 		public int hashCode() {
 			return getName().hashCode() * 37 + getModuleRelativePath().hashCode();
 		}
@@ -341,7 +341,7 @@ public abstract class FlatComponentDeployable extends ProjectModule {
 			super(resource);
 		}
 
-		
+		@Override
 		public boolean equals(Object obj) {
 			if (obj == this)
 				return true;
@@ -357,7 +357,7 @@ public abstract class FlatComponentDeployable extends ProjectModule {
 			return true;
 		}
 		
-		
+		@Override
 		public int hashCode() {
 			return getName().hashCode() * 37 + getModuleRelativePath().hashCode();
 		}

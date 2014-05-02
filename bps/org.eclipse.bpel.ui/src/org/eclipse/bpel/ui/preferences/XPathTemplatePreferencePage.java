@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.bpel.ui.preferences;
 
 import org.eclipse.swt.graphics.Font;
@@ -31,7 +41,7 @@ public class XPathTemplatePreferencePage extends TemplatePreferencePage	implemen
         colorManager = null;
 	}
 
-	
+	@Override
 	protected SourceViewer createViewer(Composite parent) {
 		SourceViewer viewer = new SourceViewer(parent, null, null, false, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
 		Font font= JFaceResources.getFont(JFaceResources.TEXT_FONT);
@@ -49,7 +59,7 @@ public class XPathTemplatePreferencePage extends TemplatePreferencePage	implemen
     /* (non-Javadoc)
      * @see org.eclipse.jface.preference.IPreferencePage#performOk()
      */
-    
+    @Override
 	public boolean performOk() {
 	  boolean ok = super.performOk();
 	  BPELUIPlugin.INSTANCE.savePluginPreferences();
@@ -58,7 +68,7 @@ public class XPathTemplatePreferencePage extends TemplatePreferencePage	implemen
 	  return ok;
     }
 
-	
+	@Override
 	public boolean performCancel() {
 		boolean cancel = super.performCancel();
 		if (colorManager != null)

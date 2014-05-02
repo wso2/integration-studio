@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,12 +27,12 @@ public class VariablePropertyAssignCategory extends VariablePartAssignCategory {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.VariablePartAssignCategory#getName()
 	 */
-	
+	@Override
 	public String getName() { 
 		return Messages.VariablePropertyAssignCategory_Property_of_a_Variable_1; 
 	} 
 	
-	
+	@Override
 	protected boolean isPropertyTree() { 
 		return true; 
 	}

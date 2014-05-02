@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -97,6 +97,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 
 	WSILDocument fWsilDocument;
 
+	Button addButton;
 	Button removeButton;
 	Button moveUpButton;
 	Button moveDownButton;
@@ -112,7 +113,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		 * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 		 */
 		
-		
+		@Override
 		public void notifyChanged(Notification arg0) {				
 
 			super.notifyChanged(arg0);								
@@ -128,7 +129,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 
 	
 		
-	
+	@Override
 	protected Control createContents (Composite parent) {
 		
 		Composite result = new Composite(parent, SWT.NONE);	
@@ -176,7 +177,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		browse.setLayoutData(data);
 		browse.addSelectionListener(new SelectionAdapter() {
 			
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				FileDialog fd = new FileDialog(getShell(), SWT.OPEN);
 				fd.setFilterExtensions(new String[]{"*."+WSIL});
@@ -235,7 +236,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		linkTableViewer.setContentProvider( wsilContentProvider );
 		
 		linkTableViewer.addFilter(new ViewerFilter() {
-			
+			@Override
 			public boolean select(Viewer viewer, Object parentElement, Object element) {
 				return element instanceof Link;
 			}			
@@ -260,13 +261,13 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		data = new GridData( GridData.VERTICAL_ALIGN_BEGINNING | GridData.HORIZONTAL_ALIGN_CENTER );		 
 		buttonList.setLayoutData( data );
 		
-		Button add = new Button(buttonList, SWT.NONE);
-		add.setText(Messages.BPELPreferencePage_WSIL_Add);
+		addButton = new Button(buttonList, SWT.NONE);
+		addButton.setText(Messages.BPELPreferencePage_WSIL_Add);
 		data = new GridData(  GridData.FILL_HORIZONTAL );
 	
-		add.setLayoutData(data);
-		add.addSelectionListener(new SelectionAdapter() {
-			
+		addButton.setLayoutData(data);
+		addButton.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				
 				Link link = InspectionFactory.eINSTANCE.createLink();
@@ -295,7 +296,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		removeButton.setLayoutData(data);
 		
 		removeButton.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				 if (fLinkSelection == null) {
 					 return ;
@@ -315,7 +316,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		moveUpButton.setLayoutData(data);
 		
 		moveUpButton.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				 if (fLinkSelection == null) {
 					 return ;
@@ -338,7 +339,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		moveDownButton.setLayoutData(data);
 		
 		moveDownButton.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				 if (fLinkSelection == null) {
 					 return ;
@@ -360,7 +361,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		openInBrowserButton.setLayoutData(data);
 		
 		openInBrowserButton.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				 if (fLinkSelection == null) {
 					 return ;
@@ -405,7 +406,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		
 	}
 	
-	
+	@Override
 	protected void performDefaults() {
 		super.performDefaults();
 		initializeDefaults();
@@ -414,13 +415,13 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 	/**
 	 * @see org.eclipse.jface.preference.PreferencePage#performOk()
 	 */
-	
+	@Override
 	public boolean performOk() {
 		storeValues();
 		return true;
 	}
 
-	
+	@Override
 	protected void performApply() {
 		performOk();
 	}
@@ -475,6 +476,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		moveUpButton.setEnabled(idx > 0);
 		moveDownButton.setEnabled(idx >= 0 && idx < linkList.size() - 1);
 		removeButton.setEnabled( fLinkSelection != null );
+		addButton.setEnabled(fWsilDocument!=null);
 		openInBrowserButton.setEnabled( fLinkSelection != null );
 	}
 	
@@ -483,7 +485,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 	/**
 	 * @see org.eclipse.jface.dialogs.DialogPage#dispose()
 	 */
-	
+	@Override
 	public void dispose() {
 		
 		Iterator it = resourceSet.getResources().iterator();
@@ -556,7 +558,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getHeaderText()
 		 */
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.BPELPreferencePage_WSIL_Abstract;
 		}
@@ -564,7 +566,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getProperty()
 		 */
-		
+		@Override
 		public String getProperty() {
 			return "abstract"; //$NON-NLS-1$
 		} 
@@ -572,7 +574,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getInitialWeight()
 		 */
-		
+		@Override
 		public int getInitialWeight() {
 			return 50;
 		}
@@ -597,7 +599,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#createCellEditor(org.eclipse.swt.widgets.Composite)
 		 */
-		
+		@Override
 		public CellEditor createCellEditor (Composite parent) {			
 			return new TextCellEditor(parent, SWT.NO_BACKGROUND );
 		}
@@ -651,7 +653,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getHeaderText()
 		 */
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.BPELPreferencePage_WSIL_Location;
 		}
@@ -659,7 +661,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getProperty()
 		 */
-		
+		@Override
 		public String getProperty() {
 			return "location"; //$NON-NLS-1$
 		}
@@ -668,7 +670,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/** (non-Javadoc)
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getInitialWeight()
 		 */
-		
+		@Override
 		public int getInitialWeight() {
 			return 50;
 		}
@@ -687,7 +689,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#createCellEditor(org.eclipse.swt.widgets.Composite)
 		 */
-		
+		@Override
 		public CellEditor createCellEditor (Composite parent) {			
 			return new TextCellEditor(parent, SWT.NO_BACKGROUND );
 		}
@@ -759,7 +761,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getHeaderText()
 		 */
 		
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.BPELPreferencePage_WSIL_Namespace;
 		}
@@ -768,7 +770,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getProperty()
 		 */
-		
+		@Override
 		public String getProperty() {
 			return "namespace"; //$NON-NLS-1$
 		}
@@ -776,7 +778,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getInitialWeight()
 		 */
-		
+		@Override
 		public int getInitialWeight() {
 			return 30;
 		}
@@ -807,7 +809,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getHeaderText()
 		 */
 		
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.BPELPreferencePage_WSIL_Index;
 		}
@@ -816,7 +818,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getProperty()
 		 */
-		
+		@Override
 		public String getProperty() {
 			return "index"; //$NON-NLS-1$
 		}
@@ -824,7 +826,7 @@ public class WSILPreferencePage extends PreferencePage implements IWorkbenchPref
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.ColumnTableProvider.Column#getInitialWeight()
 		 */
-		
+		@Override
 		public int getInitialWeight() {
 			return 5;
 		}

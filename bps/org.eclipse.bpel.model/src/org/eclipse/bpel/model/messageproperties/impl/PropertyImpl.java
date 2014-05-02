@@ -140,7 +140,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return MessagepropertiesPackage.Literals.PROPERTY;
 	}
@@ -226,7 +226,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case MessagepropertiesPackage.PROPERTY__QNAME:
@@ -246,7 +246,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case MessagepropertiesPackage.PROPERTY__QNAME:
@@ -267,7 +267,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case MessagepropertiesPackage.PROPERTY__QNAME:
@@ -288,7 +288,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case MessagepropertiesPackage.PROPERTY__QNAME:
@@ -312,7 +312,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -331,7 +331,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	/**
 	 * Override the XML element token.
 	 */
-	
+	@Override
 	public QName getElementType() {
 		if (elementType == null)
 			elementType = new QName(MessagepropertiesConstants.NAMESPACE,
@@ -343,7 +343,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	// Reconcile methods: DOM -> Model
 	//
 
-	
+	@Override
 	public void reconcileAttributes(Element changedElement) {
 		super.reconcileAttributes(changedElement);
 
@@ -353,7 +353,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 		reconcileReferences(false);
 	}
 
-	
+	@Override
 	public void reconcileReferences(boolean deep) {
 		Definition definition = getEnclosingDefinition();
 		Element element = getElement();
@@ -393,7 +393,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 		super.reconcileReferences(deep);
 	}
 
-	
+	@Override
 	public void handleUnreconciledElement(Element child,
 			Collection remainingModelObjects) {
 	}
@@ -402,7 +402,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 	// For reconciliation: Model -> DOM
 	//
 
-	
+	@Override
 	protected void changeAttribute(EAttribute eAttribute) {
 		if (isReconciling)
 			return;
@@ -452,7 +452,7 @@ public class PropertyImpl extends ExtensibilityElementImpl implements Property {
 		}
 	}
 
-	
+	@Override
 	public Element createElement() {
 		// Register a prefix for the namespace.  
 		// If we don't do this, the WSDL model will deserialize our elements as UnknownExtensibilityElements.

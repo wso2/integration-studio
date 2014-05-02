@@ -36,7 +36,7 @@ public class AssistantProxy extends AssistantImpl {
 	/**
 	 * @see org.eclipse.emf.ecore.impl.EObjectImpl#eIsProxy()
 	 */
-	
+	@Override
 	public boolean eIsProxy() {
 		return true;
 	}
@@ -45,7 +45,7 @@ public class AssistantProxy extends AssistantImpl {
 	 * @see org.eclipse.emf.ecore.impl.BasicEObjectImpl#eProxyURI()
 	 */
 	
-	
+	@Override
 	public URI eProxyURI() {
 		return fURI.appendFragment("assistant=" + fName);		
 	}
@@ -53,7 +53,7 @@ public class AssistantProxy extends AssistantImpl {
 	/**
 	 * @see org.eclipse.bpel.fnmeta.model.impl.AssistantImpl#getName()
 	 */
-	
+	@Override
 	public String getName() {
 		return fName;
 	}

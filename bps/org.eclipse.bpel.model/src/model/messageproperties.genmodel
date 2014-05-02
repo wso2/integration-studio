@@ -3,7 +3,8 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.bpel.model/src"
     modelPluginID="org.eclipse.bpel.model" modelName="messageproperties" testsDirectory="/org.eclipse.bpel.model.tests/src"
-    importerID="org.eclipse.emf.importer.ecore" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.genmodel#//wsdl platform:/plugin/org.eclipse.xsd/model/XSD.genmodel#//xsd">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" runtimeVersion="2.6"
+    usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.genmodel#//wsdl platform:/plugin/org.eclipse.xsd/model/XSD.genmodel#//xsd">
   <foreignModel>messageproperties.ecore</foreignModel>
   <genPackages prefix="Messageproperties" basePackage="org.eclipse.bpel.model" disposableProviderFactory="true"
       ecorePackage="messageproperties.ecore#/">

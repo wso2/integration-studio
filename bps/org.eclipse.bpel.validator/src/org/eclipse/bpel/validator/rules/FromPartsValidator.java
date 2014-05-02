@@ -31,7 +31,7 @@ public class FromPartsValidator extends CContainerValidator {
 	 * @see org.eclipse.bpel.validator.rules.CContainerValidator#checkChildren()
 	 */
 	
-	
+	@Override
 	public void checkChildren() {
 		super.checkChildren();
 		checkChild(ND_FROM_PART, 1, Integer.MAX_VALUE);

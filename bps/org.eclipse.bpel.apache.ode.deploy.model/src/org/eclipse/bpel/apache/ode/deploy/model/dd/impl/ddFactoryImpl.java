@@ -63,7 +63,7 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ddPackage.BINDING_TYPE: return createBindingType();
@@ -89,7 +89,7 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case ddPackage.GENERATE_TYPE:
@@ -106,7 +106,7 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case ddPackage.GENERATE_TYPE:

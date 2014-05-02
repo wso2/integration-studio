@@ -57,7 +57,7 @@ public class PropertyAlias extends CValidator {
 	 * Start performing link checks.
 	 */	
 	
-	
+	@Override
 	public void start () {
 		super.start();			
 		fPropertyName = mNode.getAttribute( WSDL_AT_PROPERTY_NAME );	

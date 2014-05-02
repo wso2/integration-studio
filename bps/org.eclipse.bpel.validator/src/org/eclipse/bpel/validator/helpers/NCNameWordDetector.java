@@ -19,7 +19,7 @@ public class NCNameWordDetector extends XMLNameWordDetector {
 	/**
 	 * 
 	 */
-	
+	@Override
 	public boolean isWordPart (char c) {			
 		 return c != ':' && super.isWordPart(c); 
 	}

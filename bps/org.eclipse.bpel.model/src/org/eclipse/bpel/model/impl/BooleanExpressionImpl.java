@@ -43,7 +43,7 @@ public class BooleanExpressionImpl extends ExpressionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.BOOLEAN_EXPRESSION;
 	}

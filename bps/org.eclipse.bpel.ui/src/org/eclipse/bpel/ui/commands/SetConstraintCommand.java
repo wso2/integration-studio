@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class SetConstraintCommand extends AutoUndoCommand {
 		addModelRoot(activity);
 	}
 
-	
+	@Override
 	public void doExecute() {
 		// TODO: HACK!
 		addModelRoot(ModelHelper.getExtension(activity));
@@ -51,7 +51,7 @@ public class SetConstraintCommand extends AutoUndoCommand {
 		if (newSize != null)  ModelHelper.setSize(activity, newSize);
 	}
 
-	
+	@Override
 	public String getLabel() {
 		// bug 327644
 		if (newSize == null || newSize.equals(oldSize))

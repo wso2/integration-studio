@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -128,40 +128,40 @@ public class EditPropertyAliasDialog extends Dialog {
 			return getExpressionLanguage(elm);
 		}
 		
-		
+		@Override
 		protected String getExpressionType() { 
 			return IEditorConstants.ET_ANY; 
 		}
 		
-		
+		@Override
 		public BPELEditor getBPELEditor() {
 			return bpelEditor;
 		}
 		
-		
+		@Override
 		public TabbedPropertySheetWidgetFactory getWidgetFactory() {
 			return wf;
 		}
 		
-		
+		@Override
 		protected EStructuralFeature getStructuralFeature () {
 			fStructuralFeature = MessagepropertiesPackage.eINSTANCE.getPropertyAlias_Query();
 			return fStructuralFeature;
 		}
 
-		
+		@Override
 		protected void setStructuralFeature ( EStructuralFeature feature ) {
 			fStructuralFeature = feature;
 		}
 
-		
+		@Override
 		protected EStructuralFeature getStructuralFeature ( EObject eObject ) {
 			if (eObject != null)
 				return MessagepropertiesPackage.eINSTANCE.getPropertyAlias_Query();
 			return null;
 		}
 
-		
+		@Override
 		protected Command wrapInShowContextCommand(Command inner) {
 			EditPropertyAliasDialog.this.updateWidgets();
 			return null;
@@ -201,7 +201,7 @@ public class EditPropertyAliasDialog extends Dialog {
 		}
 	}
 
-	
+	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite composite = (Composite) super.createDialogArea(parent);
 		GridLayout layout = (GridLayout) composite.getLayout();
@@ -296,7 +296,7 @@ public class EditPropertyAliasDialog extends Dialog {
 		button.setSelection( checked );
 		
 		button.addSelectionListener (new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected (SelectionEvent event) {
 				Button b = (Button) event.widget;
 				int val = ((Integer) b.getData()).intValue();
@@ -425,7 +425,7 @@ public class EditPropertyAliasDialog extends Dialog {
 		}
 	}
 
-	
+	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (isNew) {
@@ -527,7 +527,7 @@ public class EditPropertyAliasDialog extends Dialog {
 		return alias;
 	}
 
-	
+	@Override
 	protected void okPressed() {
 		alias.setPropertyName(property);
 		if (typeElementOrMessage == BID_USE_TYPE) {
@@ -553,7 +553,7 @@ public class EditPropertyAliasDialog extends Dialog {
 		super.okPressed();
 	}
 
-	
+	@Override
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 		updateEnablement();

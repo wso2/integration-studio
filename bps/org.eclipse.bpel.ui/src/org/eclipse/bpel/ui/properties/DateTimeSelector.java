@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TypedListener;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 
 
 /**
@@ -84,12 +84,12 @@ public class DateTimeSelector extends Composite {
 
 	private static String[] MONTH_NAMES;
 	
-	private TabbedPropertySheetWidgetFactory wf;
+	private FormToolkit wf;
 
-	public DateTimeSelector(TabbedPropertySheetWidgetFactory factory, Composite parent, int style, int yearMin, int yearMax) {
+	public DateTimeSelector(FormToolkit toolkit, Composite parent, int style, int yearMin, int yearMax) {
 		super(parent, style);
 		combo = new Combo[6];
-		this.wf = factory;
+		this.wf = toolkit;
 		this.yearMin = yearMin;
 		this.yearMax = yearMax;
 		if (MONTH_NAMES == null)  {
@@ -388,7 +388,7 @@ public class DateTimeSelector extends Composite {
 		}		
 	}
 	
-	
+	@Override
 	public void setEnabled (boolean enabled) {
 		super.setEnabled(enabled);
 		for (int i = 0; i < combo.length; i++) {

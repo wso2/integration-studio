@@ -60,7 +60,7 @@ public class MessageExchangesImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.MESSAGE_EXCHANGES;
 	}
@@ -84,7 +84,7 @@ public class MessageExchangesImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -100,7 +100,7 @@ public class MessageExchangesImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.MESSAGE_EXCHANGES__CHILDREN:
@@ -115,7 +115,7 @@ public class MessageExchangesImpl extends BPELExtensibleElementImpl implements
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.MESSAGE_EXCHANGES__CHILDREN:
@@ -132,7 +132,7 @@ public class MessageExchangesImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.MESSAGE_EXCHANGES__CHILDREN:
@@ -147,7 +147,7 @@ public class MessageExchangesImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.MESSAGE_EXCHANGES__CHILDREN:
@@ -156,7 +156,7 @@ public class MessageExchangesImpl extends BPELExtensibleElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-	
+	@Override
 	protected void adoptContent(EReference reference, Object object) {
 		if (object instanceof MessageExchange) {
 			if (getElement() == null) {
@@ -172,7 +172,7 @@ public class MessageExchangesImpl extends BPELExtensibleElementImpl implements
 		super.adoptContent(reference, object);
 	}
 
-	
+	@Override
 	protected void orphanContent(EReference reference, Object obj) {
 		if (obj instanceof MessageExchange) {
 			ReconciliationHelper.orphanChild(this, (MessageExchange) obj);

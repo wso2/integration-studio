@@ -33,7 +33,7 @@ public class TerminationHandlerValidator extends CValidator {
 	 * (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		checkChild(Filters.ACTIVITIES, 1, 1);

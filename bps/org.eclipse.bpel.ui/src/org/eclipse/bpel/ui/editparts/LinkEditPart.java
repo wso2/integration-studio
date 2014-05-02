@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,7 +71,7 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 	
 	public LinkEditPart() {
 		adapter = new MultiObjectAdapter() {
-			
+			@Override
 			public void notify(Notification n) {
 				// TODO: check if we care about this notification
 				if (isActive()) handleModelChanged();
@@ -133,7 +133,7 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 	 * Overriden to change to connection router. That's needed cause ManhattanConnectionRouter
 	 * produces bad routing in case of horizontal layout
 	 */
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 		applyConnectionRouter(getConnectionFigure());
@@ -170,7 +170,7 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 	}
 	
 
-	
+	@Override
 	protected IFigure createFigure() {
 		if (getLink() == null) return null;
 		BPELUIPlugin plugin = BPELUIPlugin.INSTANCE;
@@ -195,14 +195,14 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 		map.put(this, e);
 	}
 
-	
+	@Override
 	public void activate() {
 		if (isActive()) return;
 		super.activate();
 		addAllAdapters();
 	}
 
-	
+	@Override
 	public void deactivate() {
 		if (!isActive()) return;
 		removeAllAdapters();
@@ -210,13 +210,13 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 
 	}
 
-	
+	@Override
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
 		installEditPolicy(EditPolicy.CONNECTION_ROLE, new LinkConnectionEditPolicy());
 	}
 
-	
+	@Override
 	protected void unregisterVisuals() {
 		if (decorationImage != null) {
 			decorationImage.dispose();
@@ -233,7 +233,7 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 	 * Override to be sure we put the figure in the right layer
 	 * TODO: yuck..
 	 */
-	
+	@Override
 	protected void activateFigure() {
 		this.layer = getLayer(CONNECTION_LAYER);
 		this.layer.add(getFigure());
@@ -241,14 +241,14 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 	/**
 	 * Override to be sure we remove the figure from the right layer
 	 */
-	
+	@Override
 	protected void deactivateFigure() {
 		this.layer.remove(getFigure());
 		getConnectionFigure().setSourceAnchor(null);
 		getConnectionFigure().setTargetAnchor(null);
 	}
 	
-	
+	@Override
 	protected void refreshVisuals() {
 		super.refreshVisuals();
 		refreshDecorations();
@@ -366,7 +366,7 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 		return desc.getImageData();
 	}	
 	
-	
+	@Override
 	protected AccessibleEditPart getAccessibleEditPart() {
 		if (acc == null) acc = createAccessible();
 		return acc;
@@ -377,7 +377,7 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 
 		// kind of similar but not the same as GEF's AccessibleGraphicalEditPart class
 		return new AccessibleGraphicalEditPart() {
-			
+			@Override
 			public void getName(AccessibleEvent e) {
 				String childType = null;
 				String displayName = null;
@@ -412,7 +412,7 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 					e.result = null;
 				return;
 			}
-			
+			@Override
 			public void getValue(AccessibleControlEvent e) {
 				Link link = (Link)thisPart.getModel();
 				Activity source = FlowLinkUtil.getLinkSource(link);

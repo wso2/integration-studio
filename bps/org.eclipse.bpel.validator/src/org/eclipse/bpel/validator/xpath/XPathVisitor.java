@@ -322,7 +322,7 @@ public class XPathVisitor  {
 				} else {
 					mContext.push(Collections.EMPTY_LIST);
 					// information and ignore
-					problem = mValidator.createError();
+					problem = mValidator.createWarning();
 					problem.fill("XPATH_NAME_STEP", //$NON-NLS-1$							
 							step.getText()
 						);

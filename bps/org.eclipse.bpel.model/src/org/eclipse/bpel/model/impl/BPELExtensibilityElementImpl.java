@@ -20,14 +20,14 @@ import org.w3c.dom.Element;
 @SuppressWarnings("restriction")
 public class BPELExtensibilityElementImpl extends org.eclipse.wst.wsdl.internal.impl.ExtensibilityElementImpl implements ExtensibilityElement {
 
-	
+	@Override
 	protected void reconcile(Element changedElement) {
 	    reconcileAttributes(changedElement);
 	    reconcileContents(changedElement);
 //		ReconciliationHelper.getInstance().reconcile(this, changedElement);
 	}
 	
-	
+	@Override
 	public void elementChanged(Element changedElement) {
 		if (!isUpdatingDOM()) {
 			if (!isReconciling) {
@@ -47,7 +47,7 @@ public class BPELExtensibilityElementImpl extends org.eclipse.wst.wsdl.internal.
 	    } 
 	}
 	
-	
+	@Override
 	public boolean isUpdatingDOM() {
 		return super.isUpdatingDOM();
 	}

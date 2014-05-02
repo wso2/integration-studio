@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,7 +52,7 @@ public class BPELAdaptingSelectionProvider extends AdaptingSelectionProvider {
 	/**
 	 * @see org.eclipse.bpel.common.ui.tray.MultiViewerSelectionProvider#setSelection(org.eclipse.jface.viewers.ISelection)
 	 */
-	
+	@Override
 	public void setSelection (ISelection selection) {
 		if (selection instanceof IStructuredSelection == false) {
 			return;

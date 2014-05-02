@@ -67,7 +67,7 @@ public class SourcesImpl extends BPELExtensibleElementImpl implements Sources {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.SOURCES;
 	}
@@ -90,7 +90,7 @@ public class SourcesImpl extends BPELExtensibleElementImpl implements Sources {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -106,7 +106,7 @@ public class SourcesImpl extends BPELExtensibleElementImpl implements Sources {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.SOURCES__CHILDREN:
@@ -121,7 +121,7 @@ public class SourcesImpl extends BPELExtensibleElementImpl implements Sources {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.SOURCES__CHILDREN:
@@ -137,7 +137,7 @@ public class SourcesImpl extends BPELExtensibleElementImpl implements Sources {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.SOURCES__CHILDREN:
@@ -152,7 +152,7 @@ public class SourcesImpl extends BPELExtensibleElementImpl implements Sources {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.SOURCES__CHILDREN:
@@ -161,7 +161,7 @@ public class SourcesImpl extends BPELExtensibleElementImpl implements Sources {
 		return super.eIsSet(featureID);
 	}
 
-	
+	@Override
 	protected void adoptContent(EReference reference, Object object) {
 		if (object instanceof Source) {
 			ReconciliationHelper.adoptChild(this, children, (Source) object,
@@ -170,7 +170,7 @@ public class SourcesImpl extends BPELExtensibleElementImpl implements Sources {
 		super.adoptContent(reference, object);
 	}
 
-	
+	@Override
 	protected void orphanContent(EReference reference, Object obj) {
 		if (obj instanceof Source) {
 			ReconciliationHelper.orphanChild(this, (Source) obj);

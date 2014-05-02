@@ -95,7 +95,7 @@ public class IfImpl extends ActivityImpl implements If {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.IF;
 	}
@@ -284,7 +284,7 @@ public class IfImpl extends ActivityImpl implements If {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -305,7 +305,7 @@ public class IfImpl extends ActivityImpl implements If {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.IF__CONDITION:
@@ -326,7 +326,7 @@ public class IfImpl extends ActivityImpl implements If {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.IF__CONDITION:
@@ -351,7 +351,7 @@ public class IfImpl extends ActivityImpl implements If {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.IF__CONDITION:
@@ -375,7 +375,7 @@ public class IfImpl extends ActivityImpl implements If {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.IF__CONDITION:

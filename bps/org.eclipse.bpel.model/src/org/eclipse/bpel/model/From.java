@@ -32,14 +32,8 @@ import org.eclipse.xsd.XSDTypeDefinition;
  *   <li>{@link org.eclipse.bpel.model.From#getEndpointReference <em>Endpoint Reference</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.From#getLiteral <em>Literal</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.From#getUnsafeLiteral <em>Unsafe Literal</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.From#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.From#getServiceRef <em>Service Ref</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.From#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.From#getVariable <em>Variable</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.From#getPart <em>Part</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.From#getPartnerLink <em>Partner Link</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.From#getProperty <em>Property</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.From#getQuery <em>Query</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,7 +41,7 @@ import org.eclipse.xsd.XSDTypeDefinition;
  * @model
  * @generated
  */
-public interface From extends BPELExtensibleElement {
+public interface From extends BPELExtensibleElement, AbstractAssignBound {
 	/**
 	 * Returns the value of the '<em><b>Opaque</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -230,32 +224,6 @@ public interface From extends BPELExtensibleElement {
 	void setUnsafeLiteral(Boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expression</em>' containment reference.
-	 * @see #setExpression(Expression)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Expression()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Expression getExpression();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getExpression <em>Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expression</em>' containment reference.
-	 * @see #getExpression()
-	 * @generated
-	 */
-	void setExpression(Expression value);
-
-	/**
 	 * Returns the value of the '<em><b>Service Ref</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -307,22 +275,6 @@ public interface From extends BPELExtensibleElement {
 	void setType(XSDTypeDefinition value);
 
 	/**
-	 * Returns the value of the '<em><b>Variable</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variable</em>' reference.
-	 * @see #setVariable(Variable)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Variable()
-	 * @model
-	 * @generated
-	 */
-	Variable getVariable();
-
-	/**
 	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getVariable <em>Variable</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -330,22 +282,6 @@ public interface From extends BPELExtensibleElement {
 	 * @see #getVariable()
 	 */
 	void setVariable(Variable value);
-
-	/**
-	 * Returns the value of the '<em><b>Part</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Part</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Part</em>' reference.
-	 * @see #setPart(Part)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Part()
-	 * @model
-	 * @generated
-	 */
-	Part getPart();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getPart <em>Part</em>}' reference.
@@ -357,22 +293,6 @@ public interface From extends BPELExtensibleElement {
 	void setPart(Part value);
 
 	/**
-	 * Returns the value of the '<em><b>Partner Link</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Partner Link</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Partner Link</em>' reference.
-	 * @see #setPartnerLink(PartnerLink)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_PartnerLink()
-	 * @model
-	 * @generated
-	 */
-	PartnerLink getPartnerLink();
-
-	/**
 	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getPartnerLink <em>Partner Link</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -382,22 +302,6 @@ public interface From extends BPELExtensibleElement {
 	void setPartnerLink(PartnerLink value);
 
 	/**
-	 * Returns the value of the '<em><b>Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Property</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Property</em>' reference.
-	 * @see #setProperty(Property)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Property()
-	 * @model
-	 * @generated
-	 */
-	Property getProperty();
-
-	/**
 	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getProperty <em>Property</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -405,31 +309,5 @@ public interface From extends BPELExtensibleElement {
 	 * @see #getProperty()
 	 */
 	void setProperty(Property value);
-
-	/**
-	 * Returns the value of the '<em><b>Query</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Query</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Query</em>' containment reference.
-	 * @see #setQuery(Query)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Query()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Query getQuery();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getQuery <em>Query</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Query</em>' containment reference.
-	 * @see #getQuery()
-	 * @generated
-	 */
-	void setQuery(Query value);
 
 } // From

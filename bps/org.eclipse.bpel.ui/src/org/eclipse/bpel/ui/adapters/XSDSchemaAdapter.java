@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import org.eclipse.xsd.XSDSchema;
 public class XSDSchemaAdapter extends XSDAbstractAdapter  {
 
 		
-	
+	@Override
 	public String getLabel(Object obj) {
 		XSDSchema schema = (XSDSchema) obj;
 		String tns = schema.getTargetNamespace();
@@ -31,7 +31,7 @@ public class XSDSchemaAdapter extends XSDAbstractAdapter  {
 										new Object[] { tns } );
 	}
 
-	
+	@Override
 	public String getTypeLabel(Object object) {
 		return Messages.XSDTypeDefinitionAdapter_XSD_Type_1; 
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,7 @@ public class XPathTextEditor extends TextEditor {
 	/**
 	 * 
 	 */
-	
+	@Override
 	
 	protected void createActions() {
 		super.createActions();
@@ -116,7 +116,7 @@ public class XPathTextEditor extends TextEditor {
 	}
 	
 	
-	
+	@Override
 	protected void doSetInput (IEditorInput input) throws CoreException {
 		
 		super.doSetInput(input);
@@ -145,7 +145,7 @@ public class XPathTextEditor extends TextEditor {
 	/**
 	 * @see AbstractTextEditor#createPartControl(Composite)
 	 */
-	
+	@Override
 	public void createPartControl(Composite parent) {
 		
 		super.createPartControl(parent);
@@ -171,7 +171,7 @@ public class XPathTextEditor extends TextEditor {
 	 * @since 3.1
 	 */
 	
-	
+	@Override
 	protected void editorContextMenuAboutToShow(IMenuManager menu) {
 		
 		super.editorContextMenuAboutToShow(menu);
@@ -194,7 +194,7 @@ public class XPathTextEditor extends TextEditor {
 	 * 
 	 * @see org.eclipse.ui.texteditor.AbstractTextEditor#dispose()
 	 */
-	
+	@Override
 	
 	public void dispose() 
     {
@@ -215,7 +215,7 @@ public class XPathTextEditor extends TextEditor {
    
     
     
-    
+    @Override
 	protected void configureSourceViewerDecorationSupport(SourceViewerDecorationSupport support) {
 		
 		support.setCharacterPairMatcher(fBracketMatcher);
@@ -226,7 +226,7 @@ public class XPathTextEditor extends TextEditor {
 		super.configureSourceViewerDecorationSupport(support);
 	}
 
-	
+	@Override
 	protected void setPreferenceStore (IPreferenceStore store) {
 		if (store != null) {
 			PreferenceConstants.initializeDefaultValues( store );
@@ -238,7 +238,7 @@ public class XPathTextEditor extends TextEditor {
 	/**
 	 * @see AbstractTextEditor#handlePreferenceStoreChanged(PropertyChangeEvent)
 	 */
-	
+	@Override
 	protected void handlePreferenceStoreChanged (PropertyChangeEvent event) {
 		
 		String p = event.getProperty();		

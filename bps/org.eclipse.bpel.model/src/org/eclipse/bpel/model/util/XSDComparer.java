@@ -8,6 +8,8 @@
 package org.eclipse.bpel.model.util;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -59,13 +61,24 @@ public class XSDComparer {
 	protected boolean strict = false;
 	protected boolean debug = false;
 	protected List<XSDDiagnostic> diagnostics;
-
+	protected Hashtable<XSDTerm,XSDTerm> terms = new Hashtable<XSDTerm,XSDTerm>();
+	
 	public void setStrict(boolean flag) {
 		strict = flag;
 	}
 
 	public void setDebug(boolean flag) {
 		debug = flag;
+	}
+	
+	protected boolean alreadyCompared(XSDTerm term1, XSDTerm term2) {
+		XSDTerm t = terms.get(term1);
+		if (t==term2)
+			return true;
+		t = terms.get(term2);
+		if (t==term1)
+			return true;
+		return false;
 	}
 	
 	/**
@@ -122,169 +135,175 @@ public class XSDComparer {
 			while (index1 < size1 && index2 < size2) {
 				term1 = list1.get(index1);
 				term2 = list2.get(index2);
-				if ( term1 instanceof XSDElementDeclaration && term2 instanceof XSDElementDeclaration) {
-					XSDElementDeclaration elem1 = (XSDElementDeclaration)term1;
-					XSDElementDeclaration elem2 = (XSDElementDeclaration)term2;
-					XSDTypeDefinition type1 = elem1.getTypeDefinition();
-					XSDTypeDefinition type2 = elem2.getTypeDefinition();
-					if (type1 instanceof XSDSimpleTypeDefinition && type2 instanceof XSDSimpleTypeDefinition) {
-						dump("Comparing ", elem1, type1, level);
-						dump("       to ", elem2, type2, level);
-						if (!compareQNames(elem1, elem2)) {
-							addError("different QNames: " + elem1.getQName() + " vs " + elem2.getQName(), term1,term2);
-							return false;
-						}
-						String s1 = getTypeNameHierarchy(elem1);
-						String s2 = getTypeNameHierarchy(elem2);
-						if (!s1.equals(s2)) {
-							addError("different data types: "+s1+" vs "+s2,elem1,elem2);
-							return false;
-						}
-					} else if (type1 instanceof XSDComplexTypeDefinition && type2 instanceof XSDComplexTypeDefinition) {
-						dump("Comparing ", elem1, type1, level);
-						dump("       to ", elem2, type2, level);
-						if (!compareQNames(elem1, elem2)) {
-							addError("different QNames: " + elem1.getQName() + " vs " + elem2.getQName(), term1,term2);
-							return false;
-						}
-						int min1 = getMinOccurs(term1);
-						int min2 = getMinOccurs(term2);
-						int max1 = getMaxOccurs(term1);
-						int max2 = getMaxOccurs(term2);
-						if (strict) {
-							if (min1 != min2 || max1 != max2) {
-								addError("different cardinality: " + min1 + " to " + max1 + " vs " + min2 + " to " + max2, term1,term2);
-								return false;
-							}
-						} else {
-							if ((max2>0 && min1 > max2) || (max1>0 && min2 > max1)) {
-								addError("incompatible cardinality: " + min1 + " to " + max1 + " vs " + min2 + " to " + max2, term1,term2);
-								return false;
-							}
-						}
-						boolean result = compare(getChildTerms(elem1), getChildTerms(elem2), level + 1);
-						if (!result) {
-							addError("different complex element structures",elem1,elem2);
-							return false;
-						}
-					} else {
-						if (!strict) {
-							// try shifting optional elements and continue from there
-							dump("Elements out of sync - skipping optional elements");
-							if (isOptional(elem1)) {
-								// skip over this one and compare remaining elements
-								List<XSDTerm> newList1 = new ArrayList<XSDTerm>();
-								List<XSDTerm> newList2 = new ArrayList<XSDTerm>();
-								for (int i = index1 + 1; i < size1; ++i)
-									newList1.add(list1.get(i));
-								for (int i = index2; i < size2; ++i)
-									newList2.add(list2.get(i));
-								if (compare(newList1, newList2, level)) {
-									addWarning("skipped optional element(s) in left schema",elem1,elem2);
-									return true;
-								}
-								addError("different complex element structures",elem1,elem2);
-							}
-							if (isOptional(elem2)) {
-								// skip over this one and compare remaining elements
-								List<XSDTerm> newList1 = new ArrayList<XSDTerm>();
-								List<XSDTerm> newList2 = new ArrayList<XSDTerm>();
-								for (int i = index1; i < size1; ++i)
-									newList1.add(list1.get(i));
-								for (int i = index2 + 1; i < size2; ++i)
-									newList2.add(list2.get(i));
-								if (compare(newList1, newList2, level)) {
-									addWarning("skipped optional element(s) in right schema",elem1,elem2);
-									return true;
-								}
-								addError("different complex element structures",elem1,elem2);
-							}
-						}
-						addError("different complex element structures",elem1,elem2);
-						return false;
-					}
-					
-					List<XSDAttributeDeclaration> attrs1 = getAttributeDeclarations(elem1);
-					List<XSDAttributeDeclaration> attrs2 = getAttributeDeclarations(elem2);
-					if (attrs1.size() != attrs2.size()) {
-						addError("different number of attributes",elem1,elem2);
-						return false;
-					}
-					for (int i = 0; i < attrs1.size(); ++i) {
-						XSDAttributeDeclaration attr1 = attrs1.get(i);
-						XSDAttributeDeclaration attr2 = attrs2.get(i);
-						if (!attr1.getQName().equals(attr2.getQName())) {
-							addError("different attribute names: "+attr1.getQName()+" vs "+attr2.getQName(),elem1,elem2);
-							return false;
-						}
-						String value1 = attr1.getLexicalValue(); 
-						String value2 = attr2.getLexicalValue();
-						if (value1==null)
-							value1 = "";
-						if (value2==null)
-							value2 = "";
-						if (!value1.equals(value2)) {
-							addError("different attribute values: "+attr1.getLexicalValue()+" vs "+attr2.getLexicalValue(),elem1,elem2);
-							return false;
-						}
-					}
-					
-				} else if (term1 instanceof XSDWildcard && !(term2 instanceof XSDWildcard) ) {
-					// left schema term is a wildcard, right schema is not
-					int min = getMinOccurs(term1);
-					int max = getMinOccurs(term1);
-					if (max==-1)
-						max = size1;
-					
-					for (int n=min; n<=max; ++n) {
-						// skip over this one and compare remaining elements
-						List<XSDTerm> newList1 = new ArrayList<XSDTerm>();
-						List<XSDTerm> newList2 = new ArrayList<XSDTerm>();
-						for (int i = index1 + 1 + n; i < size1; ++i)
-							newList1.add(list1.get(i));
-						for (int i = index2; i < size2; ++i)
-							newList2.add(list2.get(i));
-						if (compare(newList1, newList2, level)) {
-							addWarning("skipped optional element(s) in left schema",term1,term2);
-							return true;
-						}
-					}
-					addError("different complex element structures",term1,term2);
-					return false;
-				} else if (term1 instanceof XSDWildcard && !(term2 instanceof XSDWildcard) ) {
-					// right schema is a wildcard, left schema is not
-					int min = getMinOccurs(term2);
-					int max = getMinOccurs(term2);
-					if (max==-1)
-						max = size2;
-					
-					for (int n=min; n<=max; ++n) {
-						// skip over this one and compare remaining elements
-						List<XSDTerm> newList1 = new ArrayList<XSDTerm>();
-						List<XSDTerm> newList2 = new ArrayList<XSDTerm>();
-						for (int i = index1; i < size1; ++i)
-							newList1.add(list1.get(i));
-						for (int i = index2 + 1 + n; i < size2; ++i)
-							newList2.add(list2.get(i));
-						if (compare(newList1, newList2, level)) {
-							addWarning("skipped optional element(s) in right schema",term1,term2);
-							return true;
-						}
-					}
-					addError("different complex element structures",term1,term2);
-					return false;
-				} else if (term1 instanceof XSDWildcard && term2 instanceof XSDWildcard) {
-					// both wildcards - it's a match!
-					int min1 = getMinOccurs(term1);
-					int max1 = getMinOccurs(term1);
-					int min2 = getMinOccurs(term2);
-					int max2 = getMinOccurs(term2);
-					if (min1!=min2 || max1!=max2) {
-						// not possible
-						addError("different <xsd:any> cardinality: "+min1+" to "+max1+" vs "+min2+" to "+max2,term1,term2);
-					}
+				if (alreadyCompared(term1,term2)) {
+					dump("Skipping ",term1,null,level);
 				}
-
+				else {
+					terms.put(term1,term2);
+					if ( term1 instanceof XSDElementDeclaration && term2 instanceof XSDElementDeclaration) {
+    					XSDElementDeclaration elem1 = (XSDElementDeclaration)term1;
+    					XSDElementDeclaration elem2 = (XSDElementDeclaration)term2;
+    					XSDTypeDefinition type1 = elem1.getTypeDefinition();
+    					XSDTypeDefinition type2 = elem2.getTypeDefinition();
+    					if (type1 instanceof XSDSimpleTypeDefinition && type2 instanceof XSDSimpleTypeDefinition) {
+    						dump("Comparing ", elem1, type1, level);
+    						dump("       to ", elem2, type2, level);
+    						if (!compareQNames(elem1, elem2)) {
+    							addError("different QNames: " + elem1.getQName() + " vs " + elem2.getQName(), term1,term2);
+    							return false;
+    						}
+    						String s1 = getTypeNameHierarchy(elem1);
+    						String s2 = getTypeNameHierarchy(elem2);
+    						if (!s1.equals(s2)) {
+    							addError("different data types: "+s1+" vs "+s2,elem1,elem2);
+    							return false;
+    						}
+    					} else if (type1 instanceof XSDComplexTypeDefinition && type2 instanceof XSDComplexTypeDefinition) {
+    						dump("Comparing ", elem1, type1, level);
+    						dump("       to ", elem2, type2, level);
+    						if (!compareQNames(elem1, elem2)) {
+    							addError("different QNames: " + elem1.getQName() + " vs " + elem2.getQName(), term1,term2);
+    							return false;
+    						}
+    						int min1 = getMinOccurs(term1);
+    						int min2 = getMinOccurs(term2);
+    						int max1 = getMaxOccurs(term1);
+    						int max2 = getMaxOccurs(term2);
+    						if (strict) {
+    							if (min1 != min2 || max1 != max2) {
+    								addError("different cardinality: " + min1 + " to " + max1 + " vs " + min2 + " to " + max2, term1,term2);
+    								return false;
+    							}
+    						} else {
+    							if ((max2>0 && min1 > max2) || (max1>0 && min2 > max1)) {
+    								addError("incompatible cardinality: " + min1 + " to " + max1 + " vs " + min2 + " to " + max2, term1,term2);
+    								return false;
+    							}
+    						}
+    						boolean result = compare(getChildTerms(elem1), getChildTerms(elem2), level + 1);
+    						if (!result) {
+    							addError("different complex element structures",elem1,elem2);
+    							return false;
+    						}
+    					} else {
+    						if (!strict) {
+    							// try shifting optional elements and continue from there
+    							dump("Elements out of sync - skipping optional elements");
+    							if (isOptional(elem1)) {
+    								// skip over this one and compare remaining elements
+    								List<XSDTerm> newList1 = new ArrayList<XSDTerm>();
+    								List<XSDTerm> newList2 = new ArrayList<XSDTerm>();
+    								for (int i = index1 + 1; i < size1; ++i)
+    									newList1.add(list1.get(i));
+    								for (int i = index2; i < size2; ++i)
+    									newList2.add(list2.get(i));
+    								if (compare(newList1, newList2, level)) {
+    									addWarning("skipped optional element(s) in left schema",elem1,elem2);
+    									return true;
+    								}
+    								addError("different complex element structures",elem1,elem2);
+    							}
+    							if (isOptional(elem2)) {
+    								// skip over this one and compare remaining elements
+    								List<XSDTerm> newList1 = new ArrayList<XSDTerm>();
+    								List<XSDTerm> newList2 = new ArrayList<XSDTerm>();
+    								for (int i = index1; i < size1; ++i)
+    									newList1.add(list1.get(i));
+    								for (int i = index2 + 1; i < size2; ++i)
+    									newList2.add(list2.get(i));
+    								if (compare(newList1, newList2, level)) {
+    									addWarning("skipped optional element(s) in right schema",elem1,elem2);
+    									return true;
+    								}
+    								addError("different complex element structures",elem1,elem2);
+    							}
+    						}
+    						addError("different complex element structures",elem1,elem2);
+    						return false;
+    					}
+    					
+    					List<XSDAttributeDeclaration> attrs1 = getAttributeDeclarations(elem1);
+    					List<XSDAttributeDeclaration> attrs2 = getAttributeDeclarations(elem2);
+    					if (attrs1.size() != attrs2.size()) {
+    						addError("different number of attributes",elem1,elem2);
+    						return false;
+    					}
+    					for (int i = 0; i < attrs1.size(); ++i) {
+    						XSDAttributeDeclaration attr1 = attrs1.get(i);
+    						XSDAttributeDeclaration attr2 = attrs2.get(i);
+    						if (!attr1.getQName().equals(attr2.getQName())) {
+    							addError("different attribute names: "+attr1.getQName()+" vs "+attr2.getQName(),elem1,elem2);
+    							return false;
+    						}
+    						String value1 = attr1.getLexicalValue(); 
+    						String value2 = attr2.getLexicalValue();
+    						if (value1==null)
+    							value1 = "";
+    						if (value2==null)
+    							value2 = "";
+    						if (!value1.equals(value2)) {
+    							addError("different attribute values: "+attr1.getLexicalValue()+" vs "+attr2.getLexicalValue(),elem1,elem2);
+    							return false;
+    						}
+    					}
+    					
+    				} else if (term1 instanceof XSDWildcard && !(term2 instanceof XSDWildcard) ) {
+    					// left schema term is a wildcard, right schema is not
+    					int min = getMinOccurs(term1);
+    					int max = getMinOccurs(term1);
+    					if (max==-1)
+    						max = size1;
+    					
+    					for (int n=min; n<=max; ++n) {
+    						// skip over this one and compare remaining elements
+    						List<XSDTerm> newList1 = new ArrayList<XSDTerm>();
+    						List<XSDTerm> newList2 = new ArrayList<XSDTerm>();
+    						for (int i = index1 + 1 + n; i < size1; ++i)
+    							newList1.add(list1.get(i));
+    						for (int i = index2; i < size2; ++i)
+    							newList2.add(list2.get(i));
+    						if (compare(newList1, newList2, level)) {
+    							addWarning("skipped optional element(s) in left schema",term1,term2);
+    							return true;
+    						}
+    					}
+    					addError("different complex element structures",term1,term2);
+    					return false;
+    				} else if (term1 instanceof XSDWildcard && !(term2 instanceof XSDWildcard) ) {
+    					// right schema is a wildcard, left schema is not
+    					int min = getMinOccurs(term2);
+    					int max = getMinOccurs(term2);
+    					if (max==-1)
+    						max = size2;
+    					
+    					for (int n=min; n<=max; ++n) {
+    						// skip over this one and compare remaining elements
+    						List<XSDTerm> newList1 = new ArrayList<XSDTerm>();
+    						List<XSDTerm> newList2 = new ArrayList<XSDTerm>();
+    						for (int i = index1; i < size1; ++i)
+    							newList1.add(list1.get(i));
+    						for (int i = index2 + 1 + n; i < size2; ++i)
+    							newList2.add(list2.get(i));
+    						if (compare(newList1, newList2, level)) {
+    							addWarning("skipped optional element(s) in right schema",term1,term2);
+    							return true;
+    						}
+    					}
+    					addError("different complex element structures",term1,term2);
+    					return false;
+    				} else if (term1 instanceof XSDWildcard && term2 instanceof XSDWildcard) {
+    					// both wildcards - it's a match!
+    					int min1 = getMinOccurs(term1);
+    					int max1 = getMinOccurs(term1);
+    					int min2 = getMinOccurs(term2);
+    					int max2 = getMinOccurs(term2);
+    					if (min1!=min2 || max1!=max2) {
+    						// not possible
+    						addError("different <xsd:any> cardinality: "+min1+" to "+max1+" vs "+min2+" to "+max2,term1,term2);
+    					}
+    				}
+				}
+				
 				++index1;
 				++index2;
 			}
@@ -768,7 +787,7 @@ public class XSDComparer {
 	private void dump(String label, XSDTerm term, XSDTypeDefinition type, int level) {
 		
 		if (debug) {
-			if (term != null && type != null) {
+			if (term != null) {
 				StringBuilder indent = new StringBuilder();
 				for (int i = 0; i < level; ++i)
 					indent.append( "    " );
@@ -779,7 +798,7 @@ public class XSDComparer {
 						System.err.println(label + indent + "<" + decl.getName() + "> type=\""
 								+ this.getTypeNameHierarchy(decl)+"\"");
 					else if (type instanceof XSDComplexTypeDefinition || type == null)
-						System.err.println(label + indent + "<" + decl.getName() + "\">");
+						System.err.println(label + indent + "<" + decl.getName() + ">");
 					else
 						System.err.println("dump: unknown XSD type: " + type.getClass().toString());
 				} else if (term instanceof XSDWildcard) {
@@ -826,6 +845,14 @@ public class XSDComparer {
 
 		public interface Visitor {
 			boolean visit(XSDTypeDefinition type);
+		}
+	}
+	
+	private static class XSDTermTuple {
+		public XSDTerm term1, term2;
+		public XSDTermTuple(XSDTerm term1, XSDTerm term2) {
+			this.term1 = term1;
+			this.term2 = term2;
 		}
 	}
 }

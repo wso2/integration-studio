@@ -191,7 +191,7 @@ public class OnEventImpl extends BPELExtensibleElementImpl implements OnEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.ON_EVENT;
 	}
@@ -830,7 +830,7 @@ public class OnEventImpl extends BPELExtensibleElementImpl implements OnEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -853,7 +853,7 @@ public class OnEventImpl extends BPELExtensibleElementImpl implements OnEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.ON_EVENT__ACTIVITY:
@@ -900,7 +900,7 @@ public class OnEventImpl extends BPELExtensibleElementImpl implements OnEvent {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.ON_EVENT__ACTIVITY:
@@ -945,7 +945,7 @@ public class OnEventImpl extends BPELExtensibleElementImpl implements OnEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.ON_EVENT__ACTIVITY:
@@ -990,7 +990,7 @@ public class OnEventImpl extends BPELExtensibleElementImpl implements OnEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.ON_EVENT__ACTIVITY:

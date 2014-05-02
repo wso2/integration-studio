@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -199,7 +199,7 @@ public abstract class AutoUndoCommand extends AbstractEditModelCommand {
 	 * Default implementation.  Assume that any resource containing a modelRoot
 	 * will be modified by the command.
 	 */
-	
+	@Override
 	public Resource[] getResources() {
 		if (getModelRoots().size() < 2) {
 			if (getModelRoots().isEmpty()) {
@@ -232,7 +232,7 @@ public abstract class AutoUndoCommand extends AbstractEditModelCommand {
 	 * TODO: maybe a better way is to just query the recorder for affected resources...!
 	 */
 	
-	
+	@Override
 	public final Resource[] getModifiedResources() {
 		return getResources(); 
 	}

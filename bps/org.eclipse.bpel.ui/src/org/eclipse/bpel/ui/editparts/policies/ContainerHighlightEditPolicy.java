@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ public class ContainerHighlightEditPolicy extends BPELSelectionEditPolicy {
 		super(resizable, movable);
 	}
 	
-	
+	@Override
 	public void eraseTargetFeedback(Request request) {
 		if (revertColor != null) {
 			setContainerBackground(revertColor);
@@ -41,7 +41,7 @@ public class ContainerHighlightEditPolicy extends BPELSelectionEditPolicy {
 		}
 	}
 
-	
+	@Override
 	public void activate() {
 		super.activate();
 		if (highlightColor == null) {
@@ -51,7 +51,7 @@ public class ContainerHighlightEditPolicy extends BPELSelectionEditPolicy {
 		}
 	}
 
-	
+	@Override
 	public void deactivate() {
 		super.deactivate();
 		if (highlightColor != null) {
@@ -74,7 +74,7 @@ public class ContainerHighlightEditPolicy extends BPELSelectionEditPolicy {
 		return ((GraphicalEditPart) getHost()).getContentPane();
 	}
 
-	
+	@Override
 	public EditPart getTargetEditPart(Request request) {
 		return request.getType().equals(RequestConstants.REQ_SELECTION_HOVER) ? getHost() : null;
 	}
@@ -92,7 +92,7 @@ public class ContainerHighlightEditPolicy extends BPELSelectionEditPolicy {
 		}
 	}
 
-	
+	@Override
 	public void showTargetFeedback(Request request) {
 		super.showTargetFeedback(request);
 		if (request.getType().equals(RequestConstants.REQ_MOVE)

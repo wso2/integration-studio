@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class RenameAction extends SelectionAction {
 		this.editor = (BPELEditor)editor;
 	}
 
-	
+	@Override
 	protected void init() {
 		super.init();
 		setText(Messages.RenameAction_Rename_0); 
@@ -56,7 +56,7 @@ public class RenameAction extends SelectionAction {
 	 * no objects selected or the selected objects are not
 	 * {@link EditPart}s.
 	 */
-	
+	@Override
 	protected boolean calculateEnabled() {
 		if (getSelectedObjects().size() != 1) return false;
 		Object o = getSelectedObjects().get(0);
@@ -65,7 +65,7 @@ public class RenameAction extends SelectionAction {
 		return part.understandsRequest(request);
 	}
 
-	
+	@Override
 	public void run() {
 		Object o = getSelectedObjects().get(0);
 		GraphicalEditPart part = (GraphicalEditPart)editor.getGraphicalViewer().getEditPartRegistry().get(o);

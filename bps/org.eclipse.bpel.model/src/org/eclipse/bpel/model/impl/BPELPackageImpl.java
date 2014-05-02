@@ -14,6 +14,7 @@
  */
 package org.eclipse.bpel.model.impl;
 
+import org.eclipse.bpel.model.AbstractAssignBound;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
 import org.eclipse.bpel.model.AssignE4X;
@@ -354,6 +355,13 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 * @generated
 	 */
 	private EClass compensationHandlerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractAssignBoundEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2056,62 +2064,77 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAbstractAssignBound() {
+		return abstractAssignBoundEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractAssignBound_Variable() {
+		return (EReference) abstractAssignBoundEClass.getEStructuralFeatures()
+				.get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractAssignBound_Part() {
+		return (EReference) abstractAssignBoundEClass.getEStructuralFeatures()
+				.get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractAssignBound_PartnerLink() {
+		return (EReference) abstractAssignBoundEClass.getEStructuralFeatures()
+				.get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractAssignBound_Property() {
+		return (EReference) abstractAssignBoundEClass.getEStructuralFeatures()
+				.get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractAssignBound_Query() {
+		return (EReference) abstractAssignBoundEClass.getEStructuralFeatures()
+				.get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractAssignBound_Expression() {
+		return (EReference) abstractAssignBoundEClass.getEStructuralFeatures()
+				.get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTo() {
 		return toEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTo_Variable() {
-		return (EReference) toEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTo_Part() {
-		return (EReference) toEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTo_PartnerLink() {
-		return (EReference) toEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTo_Property() {
-		return (EReference) toEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTo_Query() {
-		return (EReference) toEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTo_Expression() {
-		return (EReference) toEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -2164,7 +2187,7 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFrom_Expression() {
+	public EReference getFrom_ServiceRef() {
 		return (EReference) fromEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -2173,62 +2196,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getFrom_ServiceRef() {
-		return (EReference) fromEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getFrom_Type() {
-		return (EReference) fromEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFrom_Variable() {
-		return (EReference) fromEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFrom_Part() {
-		return (EReference) fromEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFrom_PartnerLink() {
-		return (EReference) fromEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFrom_Property() {
-		return (EReference) fromEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFrom_Query() {
-		return (EReference) fromEClass.getEStructuralFeatures().get(11);
+		return (EReference) fromEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -3589,27 +3558,28 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 		createEReference(compensationHandlerEClass,
 				COMPENSATION_HANDLER__ACTIVITY);
 
+		abstractAssignBoundEClass = createEClass(ABSTRACT_ASSIGN_BOUND);
+		createEReference(abstractAssignBoundEClass,
+				ABSTRACT_ASSIGN_BOUND__VARIABLE);
+		createEReference(abstractAssignBoundEClass, ABSTRACT_ASSIGN_BOUND__PART);
+		createEReference(abstractAssignBoundEClass,
+				ABSTRACT_ASSIGN_BOUND__PARTNER_LINK);
+		createEReference(abstractAssignBoundEClass,
+				ABSTRACT_ASSIGN_BOUND__PROPERTY);
+		createEReference(abstractAssignBoundEClass,
+				ABSTRACT_ASSIGN_BOUND__QUERY);
+		createEReference(abstractAssignBoundEClass,
+				ABSTRACT_ASSIGN_BOUND__EXPRESSION);
+
 		toEClass = createEClass(TO);
-		createEReference(toEClass, TO__VARIABLE);
-		createEReference(toEClass, TO__PART);
-		createEReference(toEClass, TO__PARTNER_LINK);
-		createEReference(toEClass, TO__PROPERTY);
-		createEReference(toEClass, TO__QUERY);
-		createEReference(toEClass, TO__EXPRESSION);
 
 		fromEClass = createEClass(FROM);
 		createEAttribute(fromEClass, FROM__OPAQUE);
 		createEAttribute(fromEClass, FROM__ENDPOINT_REFERENCE);
 		createEAttribute(fromEClass, FROM__LITERAL);
 		createEAttribute(fromEClass, FROM__UNSAFE_LITERAL);
-		createEReference(fromEClass, FROM__EXPRESSION);
 		createEReference(fromEClass, FROM__SERVICE_REF);
 		createEReference(fromEClass, FROM__TYPE);
-		createEReference(fromEClass, FROM__VARIABLE);
-		createEReference(fromEClass, FROM__PART);
-		createEReference(fromEClass, FROM__PARTNER_LINK);
-		createEReference(fromEClass, FROM__PROPERTY);
-		createEReference(fromEClass, FROM__QUERY);
 
 		onMessageEClass = createEClass(ON_MESSAGE);
 		createEReference(onMessageEClass, ON_MESSAGE__VARIABLE);
@@ -3884,7 +3854,9 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 		compensationHandlerEClass.getESuperTypes().add(
 				this.getBPELExtensibleElement());
 		toEClass.getESuperTypes().add(this.getBPELExtensibleElement());
+		toEClass.getESuperTypes().add(this.getAbstractAssignBound());
 		fromEClass.getESuperTypes().add(this.getBPELExtensibleElement());
+		fromEClass.getESuperTypes().add(this.getAbstractAssignBound());
 		onMessageEClass.getESuperTypes().add(this.getBPELExtensibleElement());
 		expressionEClass.getESuperTypes().add(
 				theWSDLPackage.getExtensibilityElement());
@@ -4562,38 +4534,43 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 				null,
 				"activity", null, 1, 1, CompensationHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(toEClass, To.class,
-				"To", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(
+				abstractAssignBoundEClass,
+				AbstractAssignBound.class,
+				"AbstractAssignBound", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(
-				getTo_Variable(),
+				getAbstractAssignBound_Variable(),
 				this.getVariable(),
 				null,
-				"variable", null, 0, 1, To.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+				"variable", null, 0, 1, AbstractAssignBound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
-				getTo_Part(),
+				getAbstractAssignBound_Part(),
 				theWSDLPackage.getPart(),
 				null,
-				"part", null, 0, 1, To.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+				"part", null, 0, 1, AbstractAssignBound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
-				getTo_PartnerLink(),
+				getAbstractAssignBound_PartnerLink(),
 				this.getPartnerLink(),
 				null,
-				"partnerLink", null, 0, 1, To.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+				"partnerLink", null, 0, 1, AbstractAssignBound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
-				getTo_Property(),
+				getAbstractAssignBound_Property(),
 				theMessagepropertiesPackage.getProperty(),
 				null,
-				"property", null, 0, 1, To.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+				"property", null, 0, 1, AbstractAssignBound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
-				getTo_Query(),
+				getAbstractAssignBound_Query(),
 				this.getQuery(),
 				null,
-				"query", null, 0, 1, To.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+				"query", null, 0, 1, AbstractAssignBound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
-				getTo_Expression(),
+				getAbstractAssignBound_Expression(),
 				this.getExpression(),
 				null,
-				"expression", null, 0, 1, To.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+				"expression", null, 0, 1, AbstractAssignBound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(toEClass, To.class,
+				"To", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(
 				fromEClass,
@@ -4616,11 +4593,6 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 				ecorePackage.getEBooleanObject(),
 				"unsafeLiteral", null, 0, 1, From.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
-				getFrom_Expression(),
-				this.getExpression(),
-				null,
-				"expression", null, 0, 1, From.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
 				getFrom_ServiceRef(),
 				this.getServiceRef(),
 				null,
@@ -4630,31 +4602,6 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
 				theXSDPackage.getXSDTypeDefinition(),
 				null,
 				"type", null, 0, 1, From.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getFrom_Variable(),
-				this.getVariable(),
-				null,
-				"variable", null, 0, 1, From.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getFrom_Part(),
-				theWSDLPackage.getPart(),
-				null,
-				"part", null, 0, 1, From.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getFrom_PartnerLink(),
-				this.getPartnerLink(),
-				null,
-				"partnerLink", null, 0, 1, From.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getFrom_Property(),
-				theMessagepropertiesPackage.getProperty(),
-				null,
-				"property", null, 0, 1, From.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getFrom_Query(),
-				this.getQuery(),
-				null,
-				"query", null, 0, 1, From.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
 				onMessageEClass,

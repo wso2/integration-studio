@@ -114,7 +114,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return PartnerlinktypePackage.Literals.ROLE;
 	}
@@ -192,7 +192,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case PartnerlinktypePackage.ROLE__ID:
@@ -210,7 +210,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case PartnerlinktypePackage.ROLE__NAME:
@@ -228,7 +228,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case PartnerlinktypePackage.ROLE__NAME:
@@ -246,7 +246,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case PartnerlinktypePackage.ROLE__ID:
@@ -267,7 +267,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -284,7 +284,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	/**
 	 * Override the XML element token.
 	 */
-	
+	@Override
 	public QName getElementType() {
 		if (elementType == null)
 			elementType = new QName(PartnerlinktypeConstants.NAMESPACE,
@@ -296,7 +296,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	// Reconcile methods: DOM -> Model
 	//
 
-	
+	@Override
 	public void reconcileAttributes(Element changedElement) {
 		super.reconcileAttributes(changedElement);
 
@@ -306,7 +306,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 		reconcileReferences(false);
 	}
 
-	
+	@Override
 	public void reconcileReferences(boolean deep) {
 
 		if (deep == false) {
@@ -343,7 +343,7 @@ public class RoleImpl extends ExtensibilityElementImpl implements Role {
 	// For reconciliation: Model -> DOM
 	//
 
-	
+	@Override
 	protected void changeAttribute(EAttribute eAttribute) {
 		//System.out.println("RoleImpl.changeAttribute("+eAttribute+")");
 		if (isReconciling)

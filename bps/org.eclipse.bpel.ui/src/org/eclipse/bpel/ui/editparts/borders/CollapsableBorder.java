@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -138,7 +138,7 @@ public abstract class CollapsableBorder extends GradientBorder {
 	 * This method first invalidates and recalculates any bounds, and then
 	 * paints the top and bottom drawers, as well as any markers contained within them.
 	 */
-	
+	@Override
 	public final void paint(IFigure figure, Graphics graphics, Insets insets) {
 		invalidate();
 		calculate(figure);
@@ -193,12 +193,12 @@ public abstract class CollapsableBorder extends GradientBorder {
 	 * We only know about the gradient rectangle when we are collapsed.
 	 * TODO: Do we need a gradient rectangle when collapsed?
 	 */
-	
+	@Override
 	protected Rectangle getGradientRect() {
 		return new Rectangle(0,0,0,0);
 	}
 	
-	
+	@Override
 	public boolean isPointInTopDrawer(int x, int y) {
 		if (getTopMarker() == null) return false;
 		Point p = new Point(x, y);
@@ -208,7 +208,7 @@ public abstract class CollapsableBorder extends GradientBorder {
 		return imageBounds.contains(p);
 	}
 	
-	
+	@Override
 	public boolean isPointInBottomDrawer(int x, int y) {
 		if (getBottomMarker() == null) return false;
 		Point p = new Point(x, y);
@@ -223,7 +223,7 @@ public abstract class CollapsableBorder extends GradientBorder {
 	 * know how to answer. Insets don't matter in the collapsed state because there
 	 * are no children.
 	 */
-	
+	@Override
 	public Insets getInsets(IFigure figure) {
 		return new Insets(0, 0, 0, 0);
 	}	

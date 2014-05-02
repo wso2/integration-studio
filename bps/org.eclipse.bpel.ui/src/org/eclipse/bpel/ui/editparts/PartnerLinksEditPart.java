@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ public class PartnerLinksEditPart extends BPELTrayCategoryEditPart {
 	/**
 	 * Only add inbound partners.
 	 */
-	
+	@Override
 	protected List<PartnerLink> getModelChildren() {
 		return getPartnerLinks().getChildren();
 //		
@@ -85,29 +85,29 @@ public class PartnerLinksEditPart extends BPELTrayCategoryEditPart {
 		return ModelHelper.getBPELEditor(getContainer());
 	}
 	
-	
+	@Override
 	protected CreationFactory getCreationFactory() {
 		return UIObjectFactoryProvider.getInstance().getFactoryFor(BPELPackage.eINSTANCE.getPartnerLink());
 	}
 	
-	
+	@Override
 	protected IFigure getAddToolTip() {
 	    return new Label(Messages.PartnerLinksEditPart_0); 
 	}
 	
-	
+	@Override
 	protected IFigure getRemoveToolTip() {
 	    return new Label(Messages.PartnerLinksEditPart_1); 
 	}
 
-	
+	@Override
 	protected Adapter createAdapter() {
 		return new BatchedMultiObjectAdapter() {
-			
+			@Override
 			public void finish() {
 				refresh();
 			}
-			
+			@Override
 			public void notify(Notification n) {
 			}
 		};

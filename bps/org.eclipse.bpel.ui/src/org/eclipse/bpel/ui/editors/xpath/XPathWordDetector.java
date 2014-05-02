@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ public class XPathWordDetector implements IWordDetector {
 		/** (non-Javadoc)
 		 * @see org.eclipse.bpel.ui.editors.xpath.XPathWordDetector#isWordPart(char)
 		 */
-		
+		@Override
 		public boolean isWordPart (char c) {			
 			 return c != ':' && super.isWordPart(c); 
 		}
@@ -49,7 +49,7 @@ public class XPathWordDetector implements IWordDetector {
 		 * These always start with a $
 		 * @see org.eclipse.bpel.ui.editors.xpath.XPathWordDetector#isWordStart(char)
 		 */
-		
+		@Override
 		public boolean isWordStart (char c) {
 			return c == '$' ;
 		}
@@ -57,7 +57,7 @@ public class XPathWordDetector implements IWordDetector {
 		/** 
 		 * The rest of the variable is a NCName but does not contain a '.' 
 		 */
-		
+		@Override
 		public boolean isWordPart (char c) {
 			 return c != '.' && super.isWordPart(c); 
 		}
@@ -74,7 +74,7 @@ public class XPathWordDetector implements IWordDetector {
 		 * These always start with a $
 		 * @see org.eclipse.bpel.ui.editors.xpath.XPathWordDetector#isWordStart(char)
 		 */
-		
+		@Override
 		public boolean isWordStart (char c) {
 			return c == '.' ;
 		}
@@ -82,7 +82,7 @@ public class XPathWordDetector implements IWordDetector {
 		/** 
 		 * The rest of the variable is a NCName but does not contain a '.' 
 		 */
-		
+		@Override
 		public boolean isWordPart (char c) {
 			 return c != '.' && c != '/' && super.isWordPart(c); 
 		}
@@ -102,7 +102,7 @@ public class XPathWordDetector implements IWordDetector {
 		 * These always start with a $
 		 * @see org.eclipse.bpel.ui.editors.xpath.XPathWordDetector#isWordStart(char)
 		 */
-		
+		@Override
 		public boolean isWordStart (char c) {
 			colCount = 0;
 			return super.isWordStart(c);
@@ -111,7 +111,7 @@ public class XPathWordDetector implements IWordDetector {
 		/** 
 		 * The rest of the variable is a NCName but does not contain a '.' 
 		 */
-		
+		@Override
 		public boolean isWordPart (char c) {
 			if (c == ':') {
 				if (colCount == 0) {

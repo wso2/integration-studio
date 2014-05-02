@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class BPELUIExtensionAdapterFactory extends UiextensionmodelAdapterFactor
 	/**
 	 * @see org.eclipse.bpel.ui.uiextensionmodel.util.UiextensionmodelAdapterFactory#createStartNodeAdapter()
 	 */
-	
+	@Override
 	public Adapter createStartNodeAdapter() {
 		return provider.getAdapter( StartNodeAdapter.class);
 	}
@@ -61,7 +61,7 @@ public class BPELUIExtensionAdapterFactory extends UiextensionmodelAdapterFactor
 	/**
 	 * @see org.eclipse.bpel.ui.uiextensionmodel.util.UiextensionmodelAdapterFactory#createEndNodeAdapter()
 	 */
-	
+	@Override
 	public Adapter createEndNodeAdapter() {
 		return provider.getAdapter( EndNodeAdapter.class);
 	}
@@ -70,7 +70,7 @@ public class BPELUIExtensionAdapterFactory extends UiextensionmodelAdapterFactor
 	/**
 	 * @see org.eclipse.bpel.ui.uiextensionmodel.util.UiextensionmodelAdapterFactory#createReferencePartnerLinksAdapter()
 	 */
-	
+	@Override
 	public Adapter createReferencePartnerLinksAdapter() {
 		return provider.getAdapter( ReferencePartnerLinksAdapter.class );
 	}
@@ -80,7 +80,7 @@ public class BPELUIExtensionAdapterFactory extends UiextensionmodelAdapterFactor
 	/**
 	 * @see org.eclipse.emf.common.notify.impl.AdapterFactoryImpl#adaptNew(org.eclipse.emf.common.notify.Notifier, java.lang.Object)
 	 */
-	
+	@Override
 	public Adapter adaptNew(Notifier target, Object type) {
 		Adapter adapter = createAdapter(target, type);
 		// Bugzilla 330519
@@ -93,7 +93,7 @@ public class BPELUIExtensionAdapterFactory extends UiextensionmodelAdapterFactor
 		return null;		
 	}
 	
-	
+	@Override
 	protected Object resolve (Object object, Object type) {
 		return null;
 	}

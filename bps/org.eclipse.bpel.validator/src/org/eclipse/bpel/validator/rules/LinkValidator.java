@@ -64,7 +64,7 @@ public class LinkValidator extends CValidator {
 	 * Start performing link checks.
 	 */	
 	
-	
+	@Override
 	protected void start () {
 		super.start();		
 		ncName = mNode.getAttribute( AT_NAME );

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class BPELConnectionCreationTool extends AbstractConnectionCreationTool {
 		setUnloadWhenFinished(true);
 	}
 
-	
+	@Override
 	protected boolean handleKeyDown(KeyEvent event) {
 		boolean ret = ourHandleKeyDown(event);
 		if (getDomain().getActiveTool() != this) {
@@ -59,7 +59,7 @@ public class BPELConnectionCreationTool extends AbstractConnectionCreationTool {
 		return ret;
 	}
 
-	
+	@Override
 	protected void handleFinished() {
 		super.handleFinished();
 		//set.setLockOut(false);
@@ -92,7 +92,7 @@ public class BPELConnectionCreationTool extends AbstractConnectionCreationTool {
 		return;
 	}
 
-	
+	@Override
 	protected boolean handleButtonDown(int button) {
 		if (button == 1 && stateTransition(STATE_CONNECTION_STARTED, STATE_TERMINAL)) {
 			boolean ret = handleCreateConnection();
@@ -127,13 +127,13 @@ public class BPELConnectionCreationTool extends AbstractConnectionCreationTool {
 		return true;
 	}
 
-	
+	@Override
 	public void deactivate() {
 		viewer = null;
 		super.deactivate();
 	}
 
-	
+	@Override
 	protected boolean handleMove() {
 		if (isInState(STATE_CONNECTION_STARTED) && viewer != getCurrentViewer())
 			return false;
@@ -147,7 +147,7 @@ public class BPELConnectionCreationTool extends AbstractConnectionCreationTool {
 		return true;
 	}
 	
-	
+	@Override
 	protected boolean updateTargetUnderMouse() {
 		if (!isTargetLocked()) {
 			Collection exclude = getExclusionSet();
@@ -165,7 +165,7 @@ public class BPELConnectionCreationTool extends AbstractConnectionCreationTool {
 		return false;
 	}
 	
-	
+	@Override
 	protected EditPartViewer.Conditional getTargetingConditional() {
 		return new EditPartViewer.Conditional() {
 			public boolean evaluate(EditPart editpart) {
@@ -199,7 +199,7 @@ public class BPELConnectionCreationTool extends AbstractConnectionCreationTool {
 	 * Cleans up feedback and resets the tool when focus is lost.
 	 * @return <code>true</code> if this focus lost event was processed
 	 */
-	
+	@Override
 	protected boolean handleFocusLost() {
 		if (isInState(STATE_CONNECTION_STARTED | STATE_ACCESSIBLE_DRAG_IN_PROGRESS)) {
 			eraseSourceFeedback();

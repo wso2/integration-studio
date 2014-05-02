@@ -3,8 +3,8 @@
 <plugin>
 
    <extension-point id="hoverHelpers" name="%HOVERHELP_HELPER_NAME" schema="schema/hoverHelpers.exsd"/>
-   <extension-point id="expressionEditors" name="Expression Language Editors" schema="schemas/expressionEditors.exsd"/>
-   <extension-point id="actions" name="Actions" schema="schemas/actions.exsd"/>
+   <extension-point id="expressionEditors" name="%EXPRESSION_LANGUAGE_EDITORS" schema="schemas/expressionEditors.exsd"/>
+   <extension-point id="actions" name="%ACTIONS_NAME" schema="schemas/actions.exsd"/>
    <extension-point id="modelListener" name="Model Listener" schema="schemas/modelListener.exsd"/>
    <extension-point id="uiObjectFactories" name="UIObjectFactories" schema="schemas/uiObjectFactories.exsd"/>
 
@@ -15,6 +15,7 @@
             class="org.eclipse.bpel.ui.BPELMultipageEditorPart"
             contributorClass="org.eclipse.bpel.ui.BPELMultiPageEditorActionBarContributor"
             default="true"
+            icon="icons/obj16/bpel.gif"
             id="org.eclipse.bpel.ui.bpeleditor"
             name="%BPEL_EDITOR_NAME">
          <!-- use content type to identify BPEL files // Bugzilla 320545: -->
@@ -36,11 +37,11 @@
                enablesFor="*"
                icon="icons/elcl16/duplicate.png"
                id="org.eclipse.bpel.ui.duplicate.action"
-               label="Duplicate"
+               label="%DUPLICATE_ACTION_NAME"
                menubarPath="edit/paste"
                style="push"
                toolbarPath="edit/paste"
-               tooltip="Duplicate the selected object."/>
+               tooltip="%DUPLICATE_ACTION_TOOLTIP"/>
       </editorContribution>
    </extension>
 
@@ -93,7 +94,7 @@
 <!-- Markers used in expression editors. -->
    <extension
          id="uiExpressionProblemMarker"
-         name="Expression Problem Marker"
+         name="%EXPRESSION_PROBLEM_MARKER_NAME"
          point="org.eclipse.core.resources.markers">
       <super type="org.eclipse.core.resources.problemmarker"/>
       <super type="org.eclipse.bpel.common.ui.textMarker"/>
@@ -179,12 +180,6 @@
                category="implementation"
                afterTab="org.eclipse.bpel.ui.tabs.details"
                id="org.eclipse.bpel.ui.tabs.joinBehaviour"/>
-        <!--for failureHandling extension provided by ODE: JIRA:TOOLS-785-->      
-        <propertyTab
-              afterTab="org.eclipse.bpel.ui.tabs.details"
-              category="implementation"
-              id="org.eclipse.bpel.ui.tabs.failureHandling"
-              label="Fault on Failure"/>
         <propertyTab
                label="%DETAILS_PAGES_CORRELATION_LABEL"
                category="implementation"
@@ -483,13 +478,7 @@
                class="org.eclipse.bpel.ui.properties.AssignImplSection"
                id="org.eclipse.bpel.ui.sections.AssignImpl">
             <input type="org.eclipse.bpel.model.Assign"/>
-        </propertySection>
-        <propertySection
-               tab="org.eclipse.bpel.ui.tabs.details"
-               class="org.eclipse.bpel.ui.properties.AssignE4XImplSection"
-               id="org.eclipse.bpel.ui.sections.AssignE4XImpl">
-            <input type="org.eclipse.bpel.model.AssignE4X"/> 
-        </propertySection>
+        </propertySection>        
         <propertySection		       
                tab="org.eclipse.bpel.ui.tabs.details"
                class="org.eclipse.bpel.ui.properties.ValidateSection"
@@ -513,13 +502,6 @@
               id="org.eclipse.bpel.ui.sections.DocumentationSection"
               tab="org.eclipse.bpel.ui.tabs.documentation">
            <input type="org.eclipse.bpel.model.BPELExtensibleElement"/>
-        </propertySection>
-         <!--for failureHandling extension provided by ODE: JIRA:TOOLS-785-->      
-        <propertySection
-              class="org.eclipse.bpel.ui.properties.FailureHandlingProperty"
-              id="org.eclipse.bpel.ui.sections.FailureHandlingPropertySection"
-              tab="org.eclipse.bpel.ui.tabs.failureHandling">
-           <input type="org.eclipse.bpel.model.Invoke"/>
         </propertySection>
      </propertySections>
 
@@ -572,7 +554,7 @@
                publicId="http://schemas.xmlsoap.org/ws/2004/03/partner-link/"
                uri="platform:/plugin/org.eclipse.bpel.ui/schemas/wsbpel_plinkType.xsd">           
          </public>			
-		</catalogContribution>
+		</catalogContribution>			
 	</extension>
 	<extension
 		point="org.eclipse.wst.xml.core.catalogContributions">		
@@ -592,7 +574,7 @@
       <wizard
             canFinishEarly="false"
             category="org.eclipse.bpel.wizards"
-            class="org.eclipse.bpel.ui.wizards.NewFileWizard"
+            class="org.eclipse.bpel.ui.wizards.NewBpelFileWizard"
             hasPages="true"
             icon="icons/obj16/bpel.gif"
             id="org.eclipse.bpel.ui.newFile"
@@ -616,7 +598,7 @@
    </extension>
    <extension
          id="org.eclipse.bpel.ui.adapters.1"
-         name="Runtime Adapters"
+         name="%RUNTIME_ADAPTERS_NAME"
          point="org.eclipse.core.runtime.adapters">
       <factory
             adaptableType="java.lang.Object"
@@ -691,7 +673,7 @@
 	   <content-type
 	   		base-type="org.eclipse.core.runtime.xml"
 	        id="org.eclipse.bpel.contenttype"
-	        name="BPEL Editor File"
+	        name="%BPEL_EDITOR_FILE_NAME"
 	        file-extensions="bpel,bpel2"
 	        priority="normal">
 	      <!-- problems with XMLRootElementContentDescriber2 - had to roll my own -->
@@ -700,13 +682,14 @@
           </describer>
 	   </content-type>
 	</extension>
+   <!-- Turn of decorator, as the file type is not a real "decoration"
    <extension
          point="org.eclipse.ui.decorators">
       <decorator
             adaptable="true"
             icon="icons/obj16/bpel.gif"
             id="org.eclipse.bpel.ui.icondecorator"
-            label="BPEL Resource Decorator"
+            label="%BPEL_RESOURCE_DECORATOR_LABEL"
             lightweight="true"
             location="TOP_LEFT"
             state="true">
@@ -722,7 +705,7 @@
             </and>
          </enablement>
       </decorator>
-   </extension>
+   </extension>-->
    <!-- Bugzilla 324163 -->
    <extension
          point="org.eclipse.ui.perspectives">
@@ -730,7 +713,7 @@
             class="org.eclipse.bpel.ui.perspectives.BPELPerspectiveFactory"
             icon="icons/obj20/bpel.png"
             id="org.eclipse.bpel.ui.perspective"
-            name="BPEL Perspective">
+            name="%BPEL_PERSPECTIVE_NAME">
       </perspective>
    </extension>
 </plugin>

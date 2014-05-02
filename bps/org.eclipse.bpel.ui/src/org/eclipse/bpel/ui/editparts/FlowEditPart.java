@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,7 +72,7 @@ public class FlowEditPart extends CollapsableEditPart {
 
 	protected FlowHighlightEditPolicy flowHighlightEditPolicy;
 
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		Links links = ((Flow) getActivity()).getLinks();
@@ -100,7 +100,7 @@ public class FlowEditPart extends CollapsableEditPart {
 	};
 
 	class FlowDecorationLayout extends BPELDecorationLayout {
-		
+		@Override
 		protected Point calculateLocation(int locationHint, IFigure container,
 				Dimension childDimension) {
 			Rectangle area = container.getClientArea();
@@ -190,7 +190,7 @@ public class FlowEditPart extends CollapsableEditPart {
 		// basically delegate the notifications to a real
 		// batched adapter
 		flowContentAdapter = new EContentAdapter() {
-			
+			@Override
 			public void notifyChanged(Notification n) {
 				switch (n.getEventType()) {
 					case Notification.ADD_MANY:
@@ -210,7 +210,7 @@ public class FlowEditPart extends CollapsableEditPart {
 		flowBatchedAdapter = new BatchedMultiObjectAdapter() {
 			protected boolean refreshLayout = false;
 
-			
+			@Override
 			public void finish() {
 				if (refreshLayout) {
 					if (getAutoLayout())
@@ -219,7 +219,7 @@ public class FlowEditPart extends CollapsableEditPart {
 				refreshLayout = false;
 			}
 
-			
+			@Override
 			public void notify(Notification n) {
 				if (isActive()) {
 					refreshLayout = true;
@@ -228,7 +228,7 @@ public class FlowEditPart extends CollapsableEditPart {
 		};
 	}
 
-	
+	@Override
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		IFigure child = ((GraphicalEditPart) childEditPart).getFigure();
 		getContentPane().add(child,
@@ -245,12 +245,12 @@ public class FlowEditPart extends CollapsableEditPart {
 	protected void setFlowEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new FlowXYLayoutEditPolicy());
 		flowHighlightEditPolicy = new FlowHighlightEditPolicy(!collapsed) {
-			
+			@Override
 			protected int getDrawerInset() {
 				return DrawerBorder.DRAWER_WIDTH;
 			}
 
-			
+			@Override
 			protected int getNorthInset() {
 				if (isCollapsed()) {
 					return 2;
@@ -259,17 +259,17 @@ public class FlowEditPart extends CollapsableEditPart {
 				}
 			}
 
-			
+			@Override
 			protected int getSouthInset() {
 				return 0;
 			}
 
-			
+			@Override
 			protected int getEastInset() {
 				return DrawerBorder.DRAWER_WIDTH;
 			}
 
-			
+			@Override
 			protected int getWestInset() {
 				return DrawerBorder.DRAWER_WIDTH + 2;
 			}
@@ -278,7 +278,7 @@ public class FlowEditPart extends CollapsableEditPart {
 				flowHighlightEditPolicy);
 	}
 
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		// installEditPolicy(EditPolicy.NODE_ROLE, null);
@@ -286,14 +286,14 @@ public class FlowEditPart extends CollapsableEditPart {
 		installEditPolicy("childFlowResize", new FlowResizeEditPolicy()); //$NON-NLS-1$
 	}
 
-	
+	@Override
 	public Label getLabelFigure() {
 		if (isCollapsed())
 			return super.getLabelFigure();
 		return null;
 	}
 
-	
+	@Override
 	public void setCollapsed(boolean collapsed) {
 		if (collapsed != this.collapsed) {
 			if (flowHighlightEditPolicy != null) {
@@ -303,7 +303,7 @@ public class FlowEditPart extends CollapsableEditPart {
 		super.setCollapsed(collapsed);
 	}
 
-	
+	@Override
 	protected IFigure createFigure() {
 		createEditPolicies(); // reset the edit policies based on flow display
 								// mode
@@ -325,7 +325,7 @@ public class FlowEditPart extends CollapsableEditPart {
 		return editPartMarkerDecorator.createFigure(figure);
 	}
 
-	
+	@Override
 	protected void configureExpandedFigure(IFigure figure) {
 		LayoutManager layout;
 
@@ -354,12 +354,12 @@ public class FlowEditPart extends CollapsableEditPart {
 		return (Flow) getModel();
 	}
 
-	
+	@Override
 	protected boolean isCollapsable() {
 		return true;
 	}
 
-	
+	@Override
 	public void deactivate() {
 		if (!isActive())
 			return;
@@ -380,7 +380,7 @@ public class FlowEditPart extends CollapsableEditPart {
 				IBPELUIConstants.PREF_AUTO_FLOW_LAYOUT);
 	}
 
-	
+	@Override
 	public IFigure getContentPane() {
 		return contentFigure;
 	}
@@ -389,7 +389,7 @@ public class FlowEditPart extends CollapsableEditPart {
 		return (getContentPane().getLayoutManager() instanceof NonclippingXYLayout);
 	}
 
-	
+	@Override
 	public void regenerateVisuals() {
 		if (collapsed) {
 			addCollapsedContents(this.contentFigure);
@@ -527,7 +527,7 @@ public class FlowEditPart extends CollapsableEditPart {
 		}
 	}
 
-	
+	@Override
 	protected void handleModelChanged() {
 		// The size of the flow may have changed. Rebuild the edit part.
 
@@ -540,7 +540,7 @@ public class FlowEditPart extends CollapsableEditPart {
 		regenerateVisuals();
 	}
 
-	
+	@Override
 	public void activate() {
 		super.activate();
 		((Notifier) getModel()).eAdapters().add(flowContentAdapter);

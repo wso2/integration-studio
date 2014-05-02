@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,32 +68,32 @@ public class CommandStackChangeBatcher extends AbstractSharedCommandStackListene
 		liveBatchedAdapters.add(adapter); 
 	}
 
-	
+	@Override
 	protected void startExecute() { 
 		startBatch(); 
 	}
 	
-	
+	@Override
 	protected void startRedo() { 
 		startBatch(); 
 	}
 	
-	
+	@Override
 	protected void startUndo() { 
 		startBatch(); 
 	}
 
-	
+	@Override
 	protected void finishExecute() { 
 		finishBatch(); 
 	}
 	
-	
+	@Override
 	protected void finishRedo() { 
 		finishBatch(); 
 	}
 	
-	
+	@Override
 	protected void finishUndo() { 
 		finishBatch(); 
 	}

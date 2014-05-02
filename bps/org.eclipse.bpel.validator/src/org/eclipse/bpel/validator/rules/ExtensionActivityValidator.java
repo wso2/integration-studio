@@ -52,7 +52,7 @@ public class ExtensionActivityValidator extends CActivityValidator {
 	}
 
 	// Bugzilla 324115
-	
+	@Override
 	@ARule(
 			sa = -1,
 			desc = "Check the extensionActivity",

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -148,7 +148,7 @@ public class ModelAutoUndoRecorder implements IAutoUndoRecorder  {
 		/**
 		 * Handles a containment change by adding and removing the adapter as appropriate.
 		 */
-		
+		@Override
 		protected void handleContainment(Notification notification) {
 			switch (notification.getEventType()) {
 			case Notification.SET:
@@ -186,7 +186,7 @@ public class ModelAutoUndoRecorder implements IAutoUndoRecorder  {
 		 * 
 		 * @see org.eclipse.emf.ecore.util.EContentAdapter#setTarget(org.eclipse.emf.common.notify.Notifier)
 		 */
-		
+		@Override
 		public void setTarget(Notifier aTarget) {
 			this.target = aTarget;
 
@@ -214,7 +214,7 @@ public class ModelAutoUndoRecorder implements IAutoUndoRecorder  {
 		 * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 		 */
 		
-		
+		@Override
 		public void notifyChanged(Notification n) {
 			switch (n.getEventType()) {
 			case Notification.ADD_MANY:

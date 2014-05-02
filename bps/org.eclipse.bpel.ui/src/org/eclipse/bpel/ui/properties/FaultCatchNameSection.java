@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -130,7 +130,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 		super();
 	}
 	
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new BatchedMultiObjectAdapter[] {
 			/* model object */
@@ -140,7 +140,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 				boolean refreshFaultNamespace = false;
 				boolean refreshVariable = false;
 
-				
+				@Override
 				public void notify(Notification n) {
 					if (ModelHelper.isFaultNameAffected(getInput(), n) && builtinRadio.getSelection()) {
 						refreshFaultName = true;
@@ -158,7 +158,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 						refreshVariable = true;
 					}
 				}
-				
+				@Override
 				public void finish() {
 					if (refreshFaultName) updateFaultNameWidgets();
 					if (refreshFaultNamespace) updateFaultNamespaceWidgets();
@@ -212,12 +212,12 @@ public class FaultCatchNameSection extends BPELPropertySection {
 		parentComposite.getParent().layout(true);
 	}
 
-	
+	@Override
 	public boolean shouldUseExtraSpace() {
 		return true;
 	}
 	
-	
+	@Override
 	protected void basicSetInput(EObject input) {
 		super.basicSetInput(input);
 		rearrangeWidgets();
@@ -521,7 +521,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 			final Catch _catch = (Catch)getInput();
 			CompoundCommand command = new CompoundCommand();
 			command.add(new AutoUndoCommand(getProcess()) {
-				
+				@Override
 				public void doExecute() {
 					Variable variable = _catch.getFaultVariable();
 					if (variable == null) {
@@ -552,7 +552,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 			final Variable variable2 = variable;
 			CompoundCommand command = new CompoundCommand();
 			command.add(new AutoUndoCommand(getProcess()) {
-				
+				@Override
 				public void doExecute() {
 					if (_catch.getFaultVariable() != variable2) {
 						_catch.setFaultVariable(variable2);
@@ -622,7 +622,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 		variableTypeSelector.setLayoutData(data);
 	}
 
-	
+	@Override
 	protected void createClient(Composite parent) {
 		parentComposite = createFlatFormComposite(parent);
 		createFaultTypeWidgets(parentComposite);
@@ -737,7 +737,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 		}
 	}
 	
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 		updateFaultTypeWidgets();
@@ -893,7 +893,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 		FaultCatchContext(int context) { this.context = context; }
 	}
 	
-	
+	@Override
 	public Object getUserContext() {
 		FaultCatchContext result = new FaultCatchContext(lastChangeContext);
 		if (lastChangeContext == FAULT_VARIABLE_TYPE_CONTEXT) {
@@ -901,7 +901,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 		}
 		return result;
 	}
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		FaultCatchContext c = (FaultCatchContext)userContext; 
 		switch (c.context) {
@@ -919,7 +919,7 @@ public class FaultCatchNameSection extends BPELPropertySection {
 
 	private Command getCreateNewVariableCommand() {
 		return new AutoUndoCommand(getProcess()) {
-			
+			@Override
 			public void doExecute() {
 				CompoundCommand result = new CompoundCommand();
 				// if the variable does not exist or does not have a type,

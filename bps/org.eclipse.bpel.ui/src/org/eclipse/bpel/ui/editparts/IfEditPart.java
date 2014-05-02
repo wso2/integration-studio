@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class IfEditPart extends PickEditPart {
 		 * activity children of its parent (the IfEditPart). Therefor we return
 		 * the parent's children list without the non-activity elements.
 		 */
-		
+		@Override
 		public List getChildren() {
 			List<EditPart> children = new ArrayList<EditPart>();
 			for (Iterator i = getParent().getChildren().iterator(); i.hasNext();) {
@@ -55,7 +55,7 @@ public class IfEditPart extends PickEditPart {
 			return children;
 		}
 		
-		
+		@Override
 		protected void handleModelChanged() {
 			/*
 			 * don't react on model changes - everything is handled by the
@@ -64,7 +64,7 @@ public class IfEditPart extends PickEditPart {
 			return;
 		}
 
-		
+		@Override
 		protected void refreshChildren() {
 			/*
 			 * refreshing children is done by the hosting IfEditPart
@@ -72,12 +72,12 @@ public class IfEditPart extends PickEditPart {
 			return;
 		}
 
-		
+		@Override
 		protected void addChildVisual(EditPart childEditPart, int index) {
 			super.addChildVisual(childEditPart, index);
 		}
 		
-		
+		@Override
 		protected void removeChildVisual(EditPart childEditPart) {
 			super.removeChildVisual(childEditPart);
 		}
@@ -101,7 +101,7 @@ public class IfEditPart extends PickEditPart {
 		 * (everything except else and elseIf) of the IfEditPart.
 		 */
 		@SuppressWarnings("unchecked")
-		
+		@Override
 		public void refreshConnections() {
 			// remove connections before redrawing
 			clearConnections();
@@ -117,7 +117,7 @@ public class IfEditPart extends PickEditPart {
 		 * The IfNodeEditPart's layout policy is responsible for handling the
 		 * target feedbacks.
 		 */
-		
+		@Override
 		protected void eraseLayoutTargetFeedback(Request request) {
 			EditPolicy policy = ifEditPart
 					.getEditPolicy(EditPolicy.LAYOUT_ROLE);
@@ -128,7 +128,7 @@ public class IfEditPart extends PickEditPart {
 		 * Returns list of children to create connections for.
 		 */
 		@SuppressWarnings("unchecked")
-		
+		@Override
 		protected List getConnectionChildren(BPELEditPart editPart) {
 			List<EditPart> children = getChildren();
 			List<EditPart> newChildren = new ArrayList<EditPart>();
@@ -158,7 +158,7 @@ public class IfEditPart extends PickEditPart {
 		 * The IfNodeEditPart's layout policy is responsible for handling the
 		 * target feedbacks.
 		 */
-		
+		@Override
 		public int getFeedbackIndexFor(Request request) {
 			EditPolicy policy = ifEditPart
 					.getEditPolicy(EditPolicy.LAYOUT_ROLE);
@@ -172,7 +172,7 @@ public class IfEditPart extends PickEditPart {
 		 * The IfNodeEditPart's layout policy is responsible for handling the
 		 * target feedbacks.
 		 */
-		
+		@Override
 		protected void showLayoutTargetFeedback(Request request) {
 			EditPolicy policy = ifEditPart
 					.getEditPolicy(EditPolicy.LAYOUT_ROLE);
@@ -186,7 +186,7 @@ public class IfEditPart extends PickEditPart {
 	 *
 	 */
 	private class IfOrderedHorizontalLayoutEditPolicy extends IfEditPart.IfOrderedLayoutEditPolicy{
-		
+		@Override
 		public void refreshConnections() {
 			// remove connections before redrawing
 			clearConnections();
@@ -197,7 +197,7 @@ public class IfEditPart extends PickEditPart {
 			}
 		}
 		
-		
+		@Override
 		protected ArrayList createVerticalConnections(BPELEditPart parent) {
 			ArrayList connections = new ArrayList();
 			List children = getConnectionChildren(parent);
@@ -228,7 +228,7 @@ public class IfEditPart extends PickEditPart {
 			return connections;
 		}
 		
-		
+		@Override
 		protected ArrayList createHorizontalConnections(BPELEditPart parent) {
 			ArrayList connections = new ArrayList();
 			List children = getConnectionChildren(parent);
@@ -251,19 +251,19 @@ public class IfEditPart extends PickEditPart {
 
 	private IfNodeEditPart ifEditPart;
 
-	
+	@Override
 	public void activate() {
 		super.activate();
 		getIfNodeEditPart().activate();
 	}
 
-	
+	@Override
 	public void deactivate() {
 		getIfNodeEditPart().deactivate();
 		super.deactivate();
 	}
 
-	
+	@Override
 	public void refreshVisuals() {
 		getIfNodeEditPart().refreshVisuals();
 		super.refreshVisuals();
@@ -298,7 +298,7 @@ public class IfEditPart extends PickEditPart {
 		return this.ifEditPart;
 	}
 
-	
+	@Override
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (childEditPart instanceof ElseIfEditPart) {
 			// add the "nodes" to the IfEditPart
@@ -309,7 +309,7 @@ public class IfEditPart extends PickEditPart {
 		}
 	}
 
-	
+	@Override
 	protected void configureExpandedFigure(IFigure figure) {
 		super.configureExpandedFigure(figure);
 
@@ -320,7 +320,7 @@ public class IfEditPart extends PickEditPart {
 		this.addChildVisual(getIfNodeEditPart(), 0);
 	}
 
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		if(ModelHelper.isHorizontalLayout(getModel()))
@@ -329,7 +329,7 @@ public class IfEditPart extends PickEditPart {
 			installEditPolicy(EditPolicy.LAYOUT_ROLE,new IfOrderedLayoutEditPolicy());
 	}
 
-	
+	@Override
 	protected void removeChildVisual(EditPart childEditPart) {
 		if (childEditPart instanceof ElseIfEditPart) {
 			// remove the "nodes" form the IfEditPart
@@ -340,7 +340,7 @@ public class IfEditPart extends PickEditPart {
 		}
 	}
 
-	
+	@Override
 	protected void unregisterVisuals() {
 		getIfNodeEditPart().unregisterVisuals();
 		super.unregisterVisuals();
@@ -349,7 +349,7 @@ public class IfEditPart extends PickEditPart {
 	/**
 	 * Overridden to also switch the layout of our fake node
 	 */
-	
+	@Override
 	public void switchLayout(boolean horizontal) {
 		removeEditPolicy(EditPolicy.LAYOUT_ROLE);
 		

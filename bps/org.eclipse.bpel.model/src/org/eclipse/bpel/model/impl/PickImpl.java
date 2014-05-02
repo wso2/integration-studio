@@ -112,7 +112,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.PICK;
 	}
@@ -202,7 +202,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -220,7 +220,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.PICK__CREATE_INSTANCE:
@@ -239,7 +239,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.PICK__CREATE_INSTANCE:
@@ -262,7 +262,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.PICK__CREATE_INSTANCE:
@@ -283,7 +283,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.PICK__CREATE_INSTANCE:
@@ -301,7 +301,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -316,7 +316,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 		return result.toString();
 	}
 
-	
+	@Override
 	protected void adoptContent(EReference reference, Object object) {
 		if (object instanceof OnMessage) {
 			ReconciliationHelper.adoptChild(this, messages, (OnMessage) object,
@@ -329,7 +329,7 @@ public class PickImpl extends ActivityImpl implements Pick {
 		super.adoptContent(reference, object);
 	}
 
-	
+	@Override
 	protected void orphanContent(EReference reference, Object object) {
 		if (object instanceof OnMessage) {
 			ReconciliationHelper.orphanChild(this, (OnMessage) object);

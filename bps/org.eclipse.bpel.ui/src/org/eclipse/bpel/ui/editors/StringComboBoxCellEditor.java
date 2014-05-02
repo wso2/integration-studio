@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -133,21 +133,21 @@ public class StringComboBoxCellEditor extends CellEditor {
 		populateComboBoxItems();
 	}
 
-	
+	@Override
 	protected Control createControl(Composite parent) {
 
 		comboBox = new CCombo(parent, getStyle());
 		comboBox.setFont(parent.getFont());
 
 		comboBox.addKeyListener(new KeyAdapter() {
-			
+			@Override
 			public void keyPressed(KeyEvent e) {
 				keyReleaseOccured(e);
 			}
 		});
 
 		comboBox.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetDefaultSelected(SelectionEvent event) {
 				applyEditorValueAndDeactivate();
 			}
@@ -162,7 +162,7 @@ public class StringComboBoxCellEditor extends CellEditor {
 		});
 
 		comboBox.addFocusListener(new FocusAdapter() {
-			
+			@Override
 			public void focusLost(FocusEvent e) {
 				StringComboBoxCellEditor.this.focusLost();
 			}
@@ -181,7 +181,7 @@ public class StringComboBoxCellEditor extends CellEditor {
 	 * @return the zero-based index of the current selection wrapped
 	 *  as an <code>Integer</code>
 	 */
-	
+	@Override
 	protected Object doGetValue() {
 
 		//********************************************************
@@ -204,7 +204,7 @@ public class StringComboBoxCellEditor extends CellEditor {
 
 	}
 
-	
+	@Override
 	protected void doSetFocus() {
 		comboBox.setFocus();
 	}
@@ -224,7 +224,7 @@ public class StringComboBoxCellEditor extends CellEditor {
 	 * of your parent composite. In the CellEditor implementation it would be outside 
 	 * the parent control (as wide as the longest item in the dropdown list. 
 	 */
-	
+	@Override
 	public LayoutData getLayoutData() {
 		LayoutData layoutData = super.getLayoutData();
 		if ((comboBox == null) || comboBox.isDisposed()) {
@@ -252,7 +252,7 @@ public class StringComboBoxCellEditor extends CellEditor {
 	 * @param value the zero-based index of the selection wrapped
 	 *   as an <code>Integer</code>
 	 */
-	
+	@Override
 	protected void doSetValue(Object value) {
 		Assert.isTrue(comboBox != null && ((value instanceof Integer) || (value instanceof String)));
 		//selection = ((Integer) value).intValue();
@@ -297,7 +297,7 @@ public class StringComboBoxCellEditor extends CellEditor {
 		deactivate();
 	}
 
-	
+	@Override
 	protected void focusLost() {
 		if (isActivated()) {
 			applyEditorValueAndDeactivate();
@@ -319,7 +319,7 @@ public class StringComboBoxCellEditor extends CellEditor {
 		return modifyListener;
 	}
 
-	
+	@Override
 	protected void keyReleaseOccured(KeyEvent keyEvent) {
 		if (keyEvent.character == '\u001b') { // Escape character
 			fireCancelEditor();

@@ -27,7 +27,7 @@ public class VariableNameWordDetector extends NCNameWordDetector {
 	/**
 	 * These always start with a $ 
 	 */
-	
+	@Override
 	public boolean isWordStart (char c) {
 		return c == '$' ;
 	}
@@ -35,7 +35,7 @@ public class VariableNameWordDetector extends NCNameWordDetector {
 	/** 
 	 * The rest of the variable is a NCName but does not contain a '.' 
 	 */
-	
+	@Override
 	public boolean isWordPart (char c) {
 		 return c != '.' && super.isWordPart(c); 
 	}

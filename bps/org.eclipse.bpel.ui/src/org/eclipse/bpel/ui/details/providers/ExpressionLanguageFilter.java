@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ public class ExpressionLanguageFilter extends ViewerFilter {
 		this.exclude = exclude;
 	}
 
-	
+	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		if (element instanceof ExpressionEditorDescriptor) {
 			ExpressionEditorDescriptor descriptor = (ExpressionEditorDescriptor)element;

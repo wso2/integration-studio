@@ -65,7 +65,7 @@ public class ModelQuery extends ModelQueryImpl {
 	 * @see org.eclipse.bpel.validator.model.IModelQuery#hasSupport(int, java.lang.String)
 	 */
 	
-	
+	@Override
 	public boolean hasSupport (int item, String value) {
 		
 		switch (item) {
@@ -105,7 +105,7 @@ public class ModelQuery extends ModelQueryImpl {
 	 * @return true/false depending if the objects are the same.
 	 */
 	
-	
+	@Override
 	public boolean check ( int test, INode n1, INode n2 ) {
 		
 		switch (test) {
@@ -172,7 +172,7 @@ public class ModelQuery extends ModelQueryImpl {
 	 * @see org.eclipse.bpel.validator.model.IModelQuery#lookupFunction(String language, String ns, String name)
 	 */
 	
-	
+	@Override
 	public IFunctionMeta lookupFunction (String language, String ns, String name) {
 		
 		FunctionRegistry registry = FunctionLibrary.INSTANCE.getRegistryForLanguage(language);
@@ -244,7 +244,7 @@ public class ModelQuery extends ModelQueryImpl {
 	 * @return the result of the lookup
 	 */
 	
-	
+	@Override
 	public INode lookup ( INode context, int what, QName qname ) {
 			
 		if (qname == null) {
@@ -439,7 +439,7 @@ public class ModelQuery extends ModelQueryImpl {
 	 * 
 	 */
 	
-	
+	@Override
 	@SuppressWarnings("nls")
 	public String lookup ( INode context, int what, String key, String def) {
 						
@@ -497,7 +497,7 @@ public class ModelQuery extends ModelQueryImpl {
 	 * @return the looked-up value, or the default return value passed.
 	 * 
 	 */
-	
+	@Override
 	@SuppressWarnings("nls")
 	
 	public int lookup ( INode context, int what, int def ) {
@@ -595,7 +595,7 @@ public class ModelQuery extends ModelQueryImpl {
 	 * @return an object that is the adapter the target with the given class.
 	 */
 		
-	
+	@Override
 	public <T extends Object> T adapt (Object target, Class<T> type, int hint ) {
 		
 		// short cut

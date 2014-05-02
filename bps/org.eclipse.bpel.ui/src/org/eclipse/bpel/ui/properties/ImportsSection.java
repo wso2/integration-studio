@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ public class ImportsSection extends BPELPropertySection {
 	 * Make this section use all the vertical space it can get.
 	 * 
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace() {
 		return true;
 	}
@@ -83,7 +83,7 @@ public class ImportsSection extends BPELPropertySection {
 	 * If use super-class's directly, when change the import attributes
 	 * the properties section do not change. Grid Qian
 	 */
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		if (fAdapters.length > 0) {
@@ -99,10 +99,10 @@ public class ImportsSection extends BPELPropertySection {
 		}
 	}
 
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] { new MultiObjectAdapter() {
-			
+			@Override
 			public void notify(Notification n) {
 				importViewer.setInput(getInput());
 			}
@@ -222,17 +222,17 @@ public class ImportsSection extends BPELPropertySection {
 
 	public class NamespaceColumn extends ColumnTableProvider.Column implements
 			ILabelProvider {
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.ImportDetails_Import_Namespace_12;
 		}
 
-		
+		@Override
 		public String getProperty() {
 			return "Namespace"; //$NON-NLS-1$
 		} 
 
-		
+		@Override
 		public int getInitialWeight() {
 			return 30;
 		}
@@ -245,17 +245,17 @@ public class ImportsSection extends BPELPropertySection {
 
 	public class LocationColumn extends ColumnTableProvider.Column implements
 			ILabelProvider {
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.ImportDetails_Import_Location_12;
 		}
 
-		
+		@Override
 		public String getProperty() {
 			return "Location"; //$NON-NLS-1$
 		}
 
-		
+		@Override
 		public int getInitialWeight() {
 			return 30;
 		}
@@ -268,17 +268,17 @@ public class ImportsSection extends BPELPropertySection {
 
 	public class ImportTypeColumn extends ColumnTableProvider.Column implements
 			ILabelProvider {
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.ImportsSection_3;
 		}
 
-		
+		@Override
 		public String getProperty() {
 			return "ImportType"; //$NON-NLS-1$
 		}
 
-		
+		@Override
 		public int getInitialWeight() {
 			return 30;
 		}
@@ -291,7 +291,7 @@ public class ImportsSection extends BPELPropertySection {
 	
 	
 
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {		
 		super.basicSetInput(newInput);
 		
@@ -301,22 +301,21 @@ public class ImportsSection extends BPELPropertySection {
 	}
 	
 
-	
+	@Override
 	protected void createClient(Composite parent) {
 		Composite composite = parentComposite = createFlatFormComposite(parent);
 
 		createImportWidgets(composite);
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(parentComposite,
-				IHelpContextIds.PROPERTY_PAGE_BPEL_IMPORTS);
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(parentComposite, IHelpContextIds.PROPERTY_PAGE_IMPORTS);
 	}
 
-	
+	@Override
 	public Object getUserContext() {
 		return ((StructuredSelection) importViewer.getSelection())
 				.getFirstElement();
 	}
 
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		importTable.setFocus();
 		if (userContext != null) {
@@ -390,7 +389,7 @@ public class ImportsSection extends BPELPropertySection {
 
 	
 	
-	
+	@Override
 	public void gotoMarker(IMarker marker) {
 		// TODO Auto-generated method stub
 		super.gotoMarker(marker);
@@ -401,7 +400,7 @@ public class ImportsSection extends BPELPropertySection {
 	 */
 	
 
-	
+	@Override
 	public boolean isValidMarker(IMarker marker) {
 		return super.isValidMarker(marker);
 	}

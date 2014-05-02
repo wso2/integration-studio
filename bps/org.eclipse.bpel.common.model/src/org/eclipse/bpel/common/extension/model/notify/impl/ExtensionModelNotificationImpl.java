@@ -47,7 +47,7 @@ public class ExtensionModelNotificationImpl extends NotificationImpl implements 
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.common.notify.Notification#getFeatureID(java.lang.Class)
 	 */
-	
+	@Override
 	public int getFeatureID(Class expectedClass) {
 		return featureID;
 	}
@@ -55,7 +55,7 @@ public class ExtensionModelNotificationImpl extends NotificationImpl implements 
 	/* (non-Javadoc)
 	 * @see org.eclipse.emf.common.notify.Notification#getNotifier()
 	 */
-	
+	@Override
 	public Object getNotifier() {
 		return notifier;
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -145,7 +145,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 
 
 
-	
+	@Override
 	protected void saveSettings() {
 		
 		IDialogSettings settings = getDialogSettings();
@@ -155,7 +155,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 	}
 	
 
-	
+	@Override
 	protected void buttonPressed(int buttonId) {
 		if (buttonId == BID_ADD_IMPORT) {
 			handleAddImport();
@@ -167,7 +167,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 	/**
 	 * Check to make sure that the mappings for the XML namespace exist
 	 */
-	
+	@Override
 	protected void okPressed() {
 		computeResult();
 		Object obj[] = getResult();
@@ -190,7 +190,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 	 * https://jira.jboss.org/browse/JBIDE-7107
 	 * Added support for returning two results
      */
-    
+    @Override
 	protected void computeResult() {
     	
     	List result = new ArrayList();
@@ -359,7 +359,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 		button.setSelection( checked );
 		
 		button.addSelectionListener (new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected (SelectionEvent event) {
 				Button b = (Button) event.widget;
 				int val = ((Integer) b.getData()).intValue();
@@ -381,7 +381,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 		button.setSelection( checked );
 		
 		button.addSelectionListener (new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected (SelectionEvent event) {
 				Button b = (Button) event.widget;
 				int val = ((Integer) b.getData()).intValue();
@@ -394,7 +394,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 	
 	}
 
-	
+	@Override
 	protected Text createFilterText(Composite parent) {
 		filterText = super.createFilterText(parent);
 		
@@ -405,7 +405,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 	}
 
 	
-	
+	@Override
 	protected Label createMessageArea(Composite composite) {
 		filterLabel = super.createMessageArea(composite);
 		return filterLabel;
@@ -487,13 +487,13 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 	}
 
 		
-	
+	@Override
 	protected Object createLowerView(Composite parent) {
 		//	Tree viewer for variable structure ...
 		fTree = new Tree(parent, SWT.BORDER );
 		fTree.addSelectionListener(new SelectionAdapter() {
 
-			
+			@Override
 			public void widgetSelected(SelectionEvent arg0) {
 				// https://jira.jboss.org/browse/JBIDE-7107
 				// update "OK" button enablement
@@ -525,7 +525,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 	}
 	
 	
-	
+	@Override
 	protected void updateLowerViewWidget(Object[] elements) {
 				
 		if (elements == null || elements.length < 1) {
@@ -699,7 +699,7 @@ public class BrowseSelectorDialog extends ListAndViewDialog {
 		buttonPressed(BID_FROM_IMPORTS_ONLY, true, false);
 	}
 
-	
+	@Override
 	protected void handleEmptyList() {
 		fTreeViewer.setInput ( null );	
 		

@@ -40,7 +40,7 @@ public class FMResourceImpl extends XMLResourceImpl {
 	/**
 	 * @generated NOT 
 	 */
-	
+	@Override
 	protected XMLLoad createXMLLoad() {
 		return new FMReader();
 	}
@@ -49,7 +49,7 @@ public class FMResourceImpl extends XMLResourceImpl {
 	 * @generated NOT 
 	 */
 	
-	
+	@Override
 	protected XMLSave createXMLSave() {
 		throw new RuntimeException("Resource does know how to save itself");
 	}
@@ -57,7 +57,7 @@ public class FMResourceImpl extends XMLResourceImpl {
 	/**
 	 * @generated NOT 
 	 */
-    
+    @Override
 	public String getURIFragment(EObject eObject)
     {
         return super.getURIFragment(eObject);
@@ -66,7 +66,7 @@ public class FMResourceImpl extends XMLResourceImpl {
 	/**
 	 * @generated NOT 
 	 */
-    
+    @Override
 	public EObject getEObject (String uriFragment) {
 	    
     	if (uriFragment == null) {

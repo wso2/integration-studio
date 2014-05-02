@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ public class XPathTemplateCompletionProcessor extends TemplateCompletionProcesso
 	/** Template context type */
 	TemplateContextType fTemplateContextType;
 	
-	
+	@Override
 	protected TemplateContextType getContextType(ITextViewer viewer,
 			IRegion region) {
 		if (fTemplateContextType == null) {
@@ -36,12 +36,12 @@ public class XPathTemplateCompletionProcessor extends TemplateCompletionProcesso
 		return fTemplateContextType;	
 	}
 
-	
+	@Override
 	protected Image getImage(Template template) {
 		return BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_PROPERTY_16);
 	}
 
-	
+	@Override
 	protected Template[] getTemplates(String contextTypeId) {
 		if (XPATH_TEMPLATE.compareTo(contextTypeId) == 0) {
 			TemplateStore store = XPathEditorTemplateAccess.getDefault().getTemplateStore();

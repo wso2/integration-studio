@@ -2207,26 +2207,26 @@ public class ReconciliationBPELReader extends BPELReader implements
 	 * Converts an XML ExtensionAssignOperation element to a BPEL ExtensionAssignOperation object.
 	 * 
 	 */
-	protected ExtensionAssignOperation xml2ExtensionAssignOperation(ExtensionAssignOperation eao, Element eaoElement) {
-		if (eao == null) {
-			eao = BPELFactory.eINSTANCE.createExtensionAssignOperation();
-			eao.setElement(eaoElement);
+	protected ExtensionAssignOperation xml2ExtensionAssignOperation(ExtensionAssignOperation extensionAssignOperation, Element extensionAssignOperationElement) {
+		if (extensionAssignOperation == null) {
+			extensionAssignOperation = BPELFactory.eINSTANCE.createExtensionAssignOperation();
+			extensionAssignOperation.setElement(extensionAssignOperationElement);
 		}
 
 		// Save all the references to external namespaces
-		saveNamespacePrefix(eao, eaoElement);
+		saveNamespacePrefix(extensionAssignOperation, extensionAssignOperationElement);
 
 		Element snippetElement = ReconciliationHelper
-				.getSnippet(eaoElement);
-		if (snippetElement != null && eao.getSnippet() == null) {
-			eao.setSnippet(xml2Snippet(eao.getSnippet(), snippetElement));
+				.getSnippet(extensionAssignOperationElement);
+		if (snippetElement != null && extensionAssignOperation.getSnippet() == null) {
+			extensionAssignOperation.setSnippet(xml2Snippet(extensionAssignOperation.getSnippet(), snippetElement));
 		} else if (snippetElement == null) {
-			eao.setSnippet(null);
+			extensionAssignOperation.setSnippet(null);
 		}
 
-		xml2ExtensibleElement(eao, eaoElement);
+		xml2ExtensibleElement(extensionAssignOperation, extensionAssignOperationElement);
 
-		return eao;
+		return extensionAssignOperation;
 	}
 	
 	
@@ -3266,7 +3266,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 
 		if (variable != null && variable.getSpecified()) {
 			setVariable(toElement, to, "variable", BPELPackage.eINSTANCE
-					.getTo_Variable());
+					.getAbstractAssignBound_Variable());
 		} else {
 			to.setVariable(null);
 		}
@@ -3286,7 +3286,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 
 		if (partnerLink != null && partnerLink.getSpecified()) {
 			setPartnerLink(toElement, to, BPELPackage.eINSTANCE
-					.getTo_PartnerLink());
+					.getAbstractAssignBound_PartnerLink());
 		} else {
 			to.setPartnerLink(null);
 		}
@@ -3337,7 +3337,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 
 		if (variable != null && variable.getSpecified()) {
 			setVariable(fromElement, from, "variable", BPELPackage.eINSTANCE
-					.getFrom_Variable());
+					.getAbstractAssignBound_Variable());
 		} else {
 			from.setVariable(null);
 		}
@@ -3356,7 +3356,7 @@ public class ReconciliationBPELReader extends BPELReader implements
 		Attr partnerLink = fromElement.getAttributeNode("partnerLink");
 		if (partnerLink != null && partnerLink.getSpecified()) {
 			setPartnerLink(fromElement, from, BPELPackage.eINSTANCE
-					.getFrom_PartnerLink());
+					.getAbstractAssignBound_PartnerLink());
 		} else {
 			from.setPartnerLink(null);
 		}

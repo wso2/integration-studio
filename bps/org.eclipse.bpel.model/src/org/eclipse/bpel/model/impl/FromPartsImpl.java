@@ -60,7 +60,7 @@ public class FromPartsImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.FROM_PARTS;
 	}
@@ -83,7 +83,7 @@ public class FromPartsImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -99,7 +99,7 @@ public class FromPartsImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.FROM_PARTS__CHILDREN:
@@ -114,7 +114,7 @@ public class FromPartsImpl extends BPELExtensibleElementImpl implements
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.FROM_PARTS__CHILDREN:
@@ -130,7 +130,7 @@ public class FromPartsImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.FROM_PARTS__CHILDREN:
@@ -145,7 +145,7 @@ public class FromPartsImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.FROM_PARTS__CHILDREN:
@@ -154,7 +154,7 @@ public class FromPartsImpl extends BPELExtensibleElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-	
+	@Override
 	protected void adoptContent(EReference reference, Object object) {
 		if (object instanceof FromPart) {
 			ReconciliationHelper.adoptChild(this, children, (FromPart) object,
@@ -163,7 +163,7 @@ public class FromPartsImpl extends BPELExtensibleElementImpl implements
 		super.adoptContent(reference, object);
 	}
 
-	
+	@Override
 	protected void orphanContent(EReference reference, Object obj) {
 		if (obj instanceof FromPart) {
 			ReconciliationHelper.orphanChild(this, (FromPart) obj);

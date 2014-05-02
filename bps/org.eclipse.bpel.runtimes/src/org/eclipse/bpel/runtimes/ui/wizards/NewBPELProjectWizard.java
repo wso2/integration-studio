@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 University College London Software Systems Engineering
+ * Copyright (c) 2006, 2012 University College London Software Systems Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,7 +60,7 @@ public class NewBPELProjectWizard extends NewProjectDataModelFacetWizard
 	 * @see <code>FacetProjectCreationDataModelProvider</code>
 	 * @return <code>IDataModel</code>
 	 */
-	
+	@Override
 	protected IDataModel createDataModel() {
 		
 		/*
@@ -76,7 +76,7 @@ public class NewBPELProjectWizard extends NewProjectDataModelFacetWizard
 	 * 
 	 * @return <code>ImageDescriptor</code>
 	 */
-	
+	@Override
 	protected ImageDescriptor getDefaultPageImageDescriptor() {
 		return RuntimesPlugin.getPlugin().getImageDescriptor(IRuntimesUIConstants.ICON_NEWPRJ_WIZARD_BANNER);
 	}
@@ -90,7 +90,7 @@ public class NewBPELProjectWizard extends NewProjectDataModelFacetWizard
 	 * @return org.eclipse.wst.common.project.core.IFacetedProjectTemplate
 	 * 
 	 */
-	
+	@Override
 	protected IFacetedProjectTemplate getTemplate() {
 		return ProjectFacetsManager.getTemplate(IBPELModuleFacetConstants.BPEL20_FACET_TEMPLATE); 
 	}
@@ -100,10 +100,12 @@ public class NewBPELProjectWizard extends NewProjectDataModelFacetWizard
 	 * (non-Javadoc)
 	 * @see org.eclipse.wst.web.ui.internal.wizards.NewProjectDataModelFacetWizard#createFirstPage()
 	 */
-	
+	@Override
 	protected IWizardPage createFirstPage() {
 		return new NewBPELProjectWizardPage1(model, "newBPELProject"); // $NON-NLS-1$
 	}
 	
-
+	protected String getFinalPerspectiveID() {
+		return "org.eclipse.bpel.ui.perspective"; //$NON-NLS-1$
+	}
 }

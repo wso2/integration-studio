@@ -41,7 +41,7 @@ public class Query extends XPathValidator {
 	 * @see org.eclipse.bpel.validator.xpath.XPathValidator#start()
 	 */
 	
-	
+	@Override
 	public void start () {
 		super.start();
 		bBpelFunctions = getValue("bpel.function",  bBpelFunctions);

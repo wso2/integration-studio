@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,7 +60,7 @@ public class MultiContainer extends AbstractContainer {
 		return null;
 	}
 	
-	
+	@Override
 	protected final boolean isValidChild(EObject object, EObject child) {
 		return getSubContainer(object, child) != null;
 	}
@@ -165,7 +165,7 @@ public class MultiContainer extends AbstractContainer {
 	 * @see org.eclipse.bpel.ui.adapters.delegates.AbstractContainer#canAddObject(java.lang.Object, java.lang.Object, java.lang.Object)
 	 */
 	
-	
+	@Override
 	public boolean canAddObject (EObject object, EObject child, EObject insertBefore) {
 		AbstractContainer ac = getSubContainer(object, child);
 		return (ac == null)? false : ac.canAddObject(object, child, insertBefore);

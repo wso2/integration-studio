@@ -56,7 +56,7 @@ public class ScopeValidator extends CActivityValidator {
 	 * 
 	 */
 	
-	
+	@Override
 	protected void start () {
 		super.start ();				
 	}
@@ -66,7 +66,7 @@ public class ScopeValidator extends CActivityValidator {
 	 */
 	
 	
-	
+	@Override
 	public void checkChildren () {
 		
 		super.checkChildren();

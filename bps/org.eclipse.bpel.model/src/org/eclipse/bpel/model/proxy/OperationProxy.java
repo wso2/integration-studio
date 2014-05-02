@@ -26,19 +26,19 @@ public class OperationProxy extends OperationImpl
 		proxyURI = new BPELProxyURI(WSDLPackage.eINSTANCE.getOperation(), baseURI, portType.getQName(), name);
 	}
 	
-	
+	@Override
 	public boolean eIsProxy()
 	{
 		return true;
 	}
 
-	
+	@Override
 	public URI eProxyURI()
 	{
 	    return proxyURI.getProxyURI();
 	}
 
-    
+    @Override
 	public String getName()
     {
         return proxyURI.getID();

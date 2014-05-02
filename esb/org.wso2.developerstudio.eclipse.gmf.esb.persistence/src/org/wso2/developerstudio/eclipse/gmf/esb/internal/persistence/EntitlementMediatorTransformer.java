@@ -22,6 +22,10 @@ public class EntitlementMediatorTransformer extends AbstractEsbNodeTransformer{
 	final static String THRIFT = "thrift";
 	final static String SOAP = "soap";
 	final static String WS_XACML ="wsXacml";
+	final static String UT ="org.wso2.carbon.identity.entitlement.mediator.callback.UTEntitlementCallbackHandler";
+	final static String SAML ="org.wso2.carbon.identity.entitlement.mediator.callback.SAMLEntitlementCallbackHandler";
+	final static String KERBEROS ="org.wso2.carbon.identity.entitlement.mediator.callback.KerberosEntitlementCallbackHandler";
+	final static String X509 ="org.wso2.carbon.identity.entitlement.mediator.callback.X509EntitlementCallbackHandler";
 
 	public void transform(TransformationInfo information, EsbNode subject)
 			throws Exception {
@@ -66,16 +70,16 @@ public class EntitlementMediatorTransformer extends AbstractEsbNodeTransformer{
 			entitlementMediator.setCallbackClass(visualEntitlement.getCallbackClassName());
 			}
 			else if (visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.SAML)){
-				entitlementMediator.setCallbackClass("org.wso2.carbon.identity.entitlement.mediator.callback.SAMLEntitlementCallbackHandler");
+				entitlementMediator.setCallbackClass(SAML);
 				}
 			else if (visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.UT)){
-				entitlementMediator.setCallbackClass("org.wso2.carbon.identity.entitlement.mediator.callback.UIEntitlementCallbackHandler");
+				entitlementMediator.setCallbackClass(UT);
 				}
 			else if (visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.KERBEROS)){
-				entitlementMediator.setCallbackClass("org.wso2.carbon.identity.entitlement.mediator.callback.KerberosEntitlementCallbackHandler");
+				entitlementMediator.setCallbackClass(KERBEROS);
 				}
 			else if (visualEntitlement.getCallbackHandler().equals(EntitlementCallbackHandler.X509)){
-				entitlementMediator.setCallbackClass("org.wso2.carbon.identity.entitlement.mediator.callback.X509EntitlementCallbackHandler");
+				entitlementMediator.setCallbackClass(X509);
 
 			}
 			

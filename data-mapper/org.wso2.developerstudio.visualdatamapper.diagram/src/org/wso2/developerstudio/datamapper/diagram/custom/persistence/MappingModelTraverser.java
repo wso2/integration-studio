@@ -116,7 +116,7 @@ public class MappingModelTraverser {
 						
 						functionForElement.setOutputParameter(OperatorConfigurationUtil.getSimpleArrayMapOutputParent(element));
 						functionForElement.setSingle(false);
-						Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
+						Function oldFunction = OperatorConfigurationUtil.isFunctionExist(functionForElement , functionListForTree);
 						
 						if( oldFunction == null){
 							ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();
@@ -148,7 +148,7 @@ public class MappingModelTraverser {
 								functionForElement.setOutputParameter(transformer.getOutputElementParent(operator));
 								functionForElement.setInputParameter(transformer.getInputElementParent(operator));
 								functionForElement.setSingle(false);
-								Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
+								Function oldFunction = OperatorConfigurationUtil.isFunctionExist(functionForElement , functionListForTree);
 								
 								if( oldFunction == null){
 									ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();
@@ -181,7 +181,7 @@ public class MappingModelTraverser {
 						
 						functionForElement.setOutputParameter(OperatorConfigurationUtil.getSimpleMapOutputElement(element).getFieldParent());
 						functionForElement.setSingle(true);
-						Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
+						Function oldFunction = OperatorConfigurationUtil.isFunctionExist(functionForElement , functionListForTree);
 						
 						if( oldFunction == null){
 							ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();
@@ -208,7 +208,7 @@ public class MappingModelTraverser {
 							functionForElement.setOutputParameter(transformer.getOutputElementParent(operator));
 							functionForElement.setInputParameter(transformer.getInputElementParent(operator));
 							functionForElement.setSingle(true);
-							Function oldFunction = OperatorConfigurationUtil.isFunctionExisit(functionForElement , functionListForTree);
+							Function oldFunction = OperatorConfigurationUtil.isFunctionExist(functionForElement , functionListForTree);
 							
 							if( oldFunction == null){
 								ArrayList<AssignmentStatement> assignmentList = new ArrayList<AssignmentStatement>();

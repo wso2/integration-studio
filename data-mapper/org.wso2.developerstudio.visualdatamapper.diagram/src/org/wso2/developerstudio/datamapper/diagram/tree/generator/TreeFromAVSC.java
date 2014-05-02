@@ -96,10 +96,31 @@ public class TreeFromAVSC{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return root;
 	}
-	
+
+	/**
+	 * @param schema
+	 *            Avro schema that is used to parse to tree
+	 * @return
+	 */
+	public static Tree generateInputTreeFromSchema(Schema schema) {
+		multipleChunk = new ArrayList<String>();
+
+		// root node for Tree data structure
+		Tree root = new Tree();
+		root.setName(schema.getName());
+		root.setSchemaType(schema.getType());
+
+		List<Field> fieldsList = schema.getFields();
+
+		for (Field field : fieldsList)
+			fetchToTree(field, root, multipleChunk);
+
+		return root;
+	}
+
 	private static  void fetchToTree(Field field, Tree parent, List<String>  multipleChunk) {
 		Type fieldType = field.schema().getType();
 		if (fieldType.toString().equalsIgnoreCase("RECORD")) {		

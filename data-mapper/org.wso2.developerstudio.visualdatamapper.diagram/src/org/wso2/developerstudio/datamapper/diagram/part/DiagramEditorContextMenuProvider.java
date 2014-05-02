@@ -25,6 +25,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecor
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.SchemaFromJsonAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
@@ -61,6 +62,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewRecordsListContextActions;
 	// Actions for adding a new field
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewFieldContextActions;
+	// Actions for getting schema from data-set
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> schemaFromDatasetActions;
 
 	/**
 	 * @generated NOT
@@ -108,6 +111,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addNewFieldContextActions.put(TreeNode2EditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode3EditPart.class, new AddNewFieldAction(part));
 
+		// Initialize schema from dataset actions.
+		schemaFromDatasetActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
+		schemaFromDatasetActions.put(InputEditPart.class, new SchemaFromJsonAction(part));
+		schemaFromDatasetActions.put(OutputEditPart.class, new SchemaFromJsonAction(part));
 	}
 
 	/**
@@ -178,6 +185,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 											.get(selectedEditorPart.getClass());
 									if (null != addNewFieldContextAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addNewFieldContextAction);
+									}
+
+									// Append Schema from dataset item to menu
+									AbstractActionHandler schemaFromDatasetAction = schemaFromDatasetActions
+											.get(selectedEditorPart.getClass());
+									if (null != schemaFromDatasetAction) {
+										menu.appendToGroup(EDIT_GROUP_ID, schemaFromDatasetAction);
 									}
 								}
 

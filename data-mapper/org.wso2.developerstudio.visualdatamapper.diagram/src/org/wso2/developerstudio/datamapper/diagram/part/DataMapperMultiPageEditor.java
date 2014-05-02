@@ -431,6 +431,10 @@ public class DataMapperMultiPageEditor extends MultiPageEditorPart implements IG
 			FileUtils.writeStringToFile(newSchemaFile, fileContent);
 		} catch (IOException e) {
 			log.error(ERROR_WRITING_SCHEMA_FILE + newSchemaIFile.getName(), e);
+			IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage());
+			ErrorDialog.openError(getSite().getShell(),
+					ERROR_WRITING_SCHEMA_FILE + newSchemaIFile.getName(), null, status);
+			return;
 		}
 
 	}

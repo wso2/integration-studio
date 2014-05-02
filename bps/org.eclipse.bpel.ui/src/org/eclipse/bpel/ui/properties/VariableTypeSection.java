@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,7 +46,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	 * Make this section use all the vertical space it can get. 
 	 * 
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace() { 
 		return true;
 	}
@@ -69,7 +69,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	}
 
 
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object */
@@ -77,7 +77,7 @@ public class VariableTypeSection extends BPELPropertySection {
 				
 				boolean update = false;
 				
-				
+				@Override
 				public void notify (Notification n) {
 					if (update) {
 						return ;
@@ -107,7 +107,7 @@ public class VariableTypeSection extends BPELPropertySection {
 					}
 				}
 				
-				
+				@Override
 				public void finish() {
 					if (update) {
 						updateVariableTypeSelector();
@@ -119,7 +119,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	}
 
 	
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		VariableExtension varExt = (VariableExtension)ModelHelper.getExtension(getInput());
@@ -183,7 +183,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	}
 	
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		Composite composite = parentComposite = createFlatFormComposite(parent);
 		
@@ -208,7 +208,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	}
 	
 	
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 		super.basicSetInput(newInput);
 		updateVariableTypeSelector();
@@ -218,7 +218,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return variableTypeSelector.getUserContext();
 	}
@@ -228,7 +228,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
 	
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		variableTypeSelector.restoreUserContext(userContext);
 	}
@@ -240,7 +240,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	 */
 	
 	@SuppressWarnings("nls")
-	
+	@Override
 	public boolean isValidMarker (IMarker marker) {
 
 		String context = null;
@@ -255,7 +255,7 @@ public class VariableTypeSection extends BPELPropertySection {
 	
 	
 
-	
+	@Override
 	protected void updateMarkers () {				
 		variableTypeSelector.dataTypeLabel.clear();		
 		for(IMarker m : getMarkers(getInput())) {

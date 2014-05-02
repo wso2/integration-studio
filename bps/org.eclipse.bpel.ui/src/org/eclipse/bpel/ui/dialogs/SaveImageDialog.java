@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.bpel.ui.dialogs;
 
 import org.eclipse.bpel.ui.BPELUIPlugin;
@@ -39,13 +49,13 @@ public class SaveImageDialog extends TrayDialog {
 		settings = BPELUIPlugin.INSTANCE.getDialogSettingsFor(this);
 	}
 
-	
+	@Override
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
 		shell.setText("Export as image");
 	}
 
-	
+	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite composite = (Composite) super.createDialogArea(parent);
 
@@ -67,7 +77,7 @@ public class SaveImageDialog extends TrayDialog {
 		Button browseButton = new Button(composite, SWT.NONE);
 		browseButton.setText("Browse...");
 		browseButton.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectFile();
 			}
@@ -123,7 +133,7 @@ public class SaveImageDialog extends TrayDialog {
 		return transparent;
 	}
 
-	
+	@Override
 	protected void okPressed() {
 		imageFileName = txtImageFileName.getText();
 		transparent = btnTransparent.getSelection();

@@ -42,7 +42,7 @@ public class TargetsValidator extends CContainerValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CContainerValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren() {
 		super.checkChildren();
 		checkChild( ND_JOIN_CONDITION, 0,1 );

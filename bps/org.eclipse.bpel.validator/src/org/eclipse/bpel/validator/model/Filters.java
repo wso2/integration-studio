@@ -59,7 +59,7 @@ public class Filters implements IConstants {
 	
 	/** The BPEL activities filter */
 	static public final IFilter<INode> ACTIVITIES = new NodeNameFilter( BPEL_ACTIVITIES ) {
-		
+		@Override
 		public String toString() {
 			return "text.bpel.activities.filter";
 		}
@@ -68,7 +68,7 @@ public class Filters implements IConstants {
 	
 	/** Activity containers filter */
 	static public final IFilter<INode> ACTIVITY_CONTAINER = new NodeNameFilter( BPEL_ACTIVITIES_CONTAINERS ) {
-		
+		@Override
 		public String toString() {
 			return "text.bpel.activities.container.filter";
 		}
@@ -91,7 +91,7 @@ public class Filters implements IConstants {
 			return fWordDetector.isValid(name);
 		}
 		
-		
+		@Override
 		public String toString() {
 			return "Valid-NCName";
 		}

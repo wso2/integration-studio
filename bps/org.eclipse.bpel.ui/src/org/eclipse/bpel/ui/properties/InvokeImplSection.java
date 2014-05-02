@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -145,13 +145,13 @@ public class InvokeImplSection extends BPELPropertySection {
 	private Text messageOrElementText;
 	
 	private IControlContentAdapter fTextContentAdapter = new TextContentAdapter() {
-		
+		@Override
 		public void insertControlContents(Control control, String text, int cursorPosition) {
 			if (text != null) {
 				super.insertControlContents(control, text, cursorPosition);
 			}
 		}
-		
+		@Override
 		public void setControlContents(Control control, String text, int cursorPosition) {
 			if (text != null) {
 				super.setControlContents(control, text, cursorPosition);
@@ -174,7 +174,7 @@ public class InvokeImplSection extends BPELPropertySection {
 	/** 
 	 * Stretch this section to maximum use of space
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace () {
 		return true;
 	}
@@ -204,13 +204,13 @@ public class InvokeImplSection extends BPELPropertySection {
 		return (direction == ModelHelper.OUTGOING || direction == ModelHelper.NOT_SPECIFIED)? Messages.InvokeImplDetails_Response_4_Plain:Messages.InvokeImplDetails_Request_3_Plain;  
 	}
 
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object */
 			new MultiObjectAdapter() {
 				
-				
+				@Override
 				public void notify(Notification n) {
 				    try {
 						Object input = getInput();
@@ -262,7 +262,7 @@ public class InvokeImplSection extends BPELPropertySection {
 		parentComposite.layout(true);
 	}
 
-	
+	@Override
 	protected void basicSetInput(EObject input) {
 		
 		super.basicSetInput(input);	
@@ -314,7 +314,7 @@ public class InvokeImplSection extends BPELPropertySection {
 
 		RunnableProposal proposal = new RunnableProposal() {
 			
-			
+			@Override
 			public String getLabel() {
 				return Messages.InvokeImplSection_0;
 			}
@@ -325,7 +325,7 @@ public class InvokeImplSection extends BPELPropertySection {
 
 		RunnableProposal proposal2 = new RunnableProposal() {
 			
-			
+			@Override
 			public String getLabel() {
 				return Messages.InvokeImplSection_1;
 			}
@@ -335,7 +335,7 @@ public class InvokeImplSection extends BPELPropertySection {
 		};
 
 		RunnableProposal proposal3 = new RunnableProposal() {			
-			
+			@Override
 			public String getLabel() {
 				return Messages.InvokeImplSection_2;
 			}
@@ -349,7 +349,7 @@ public class InvokeImplSection extends BPELPropertySection {
 		PartnerLinkContentProvider provider = new PartnerLinkContentProvider();
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider( new ModelContentProposalProvider.ValueProvider () {
-			
+			@Override
 			public Object value() {
 				return getInput();
 			}			
@@ -487,7 +487,7 @@ public class InvokeImplSection extends BPELPropertySection {
 		interfaceLabel = fWidgetFactory.createLabel(composite, Messages.InvokeImplSection_3); 
 		interfaceName = fWidgetFactory.createHyperlink(composite, EMPTY_STRING, SWT.NONE);
 		interfaceName.addHyperlinkListener(new HyperlinkAdapter() {
-			
+			@Override
 			public void linkActivated(HyperlinkEvent e) { 
 				PortType pt =  ModelHelper.getPortType(getInput());
 				if (pt != null) {
@@ -536,7 +536,7 @@ public class InvokeImplSection extends BPELPropertySection {
 		OperationContentProvider provider = new OperationContentProvider();
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider( new ModelContentProposalProvider.ValueProvider () {
-			
+			@Override
 			public Object value() {
 				return getInput();
 			}			
@@ -718,7 +718,7 @@ public class InvokeImplSection extends BPELPropertySection {
 //		// Content assist on partnerName
 //		RunnableProposal proposal = new RunnableProposal() {
 //			
-//			
+//			@Override
 //			public String getLabel() {
 //				return Messages.InvokeImplSection_10;
 //			}
@@ -732,7 +732,7 @@ public class InvokeImplSection extends BPELPropertySection {
 //
 //		RunnableProposal proposal2 = new RunnableProposal() {
 //			
-//			
+//			@Override
 //			public String getLabel() {
 //				return Messages.InvokeImplSection_11;
 //			}
@@ -745,7 +745,7 @@ public class InvokeImplSection extends BPELPropertySection {
 //		};
 //
 //		RunnableProposal proposal3 = new RunnableProposal() {			
-//			
+//			@Override
 //			public String getLabel() {
 //				return Messages.InvokeImplSection_12;
 //			}
@@ -758,7 +758,7 @@ public class InvokeImplSection extends BPELPropertySection {
 //		VariableContentProvider provider = new VariableContentProvider();
 //		ModelContentProposalProvider proposalProvider;
 //		proposalProvider = new ModelContentProposalProvider( new ModelContentProposalProvider.ValueProvider () {
-//			
+//			@Override
 //			public Object value() {
 //				return getInput();
 //			}			
@@ -871,7 +871,7 @@ public class InvokeImplSection extends BPELPropertySection {
 //		// Runnable proposal.
 //		RunnableProposal proposal = new RunnableProposal() {
 //			
-//			
+//			@Override
 //			public String getLabel() {
 //				return Messages.InvokeImplSection_16;
 //			}
@@ -881,7 +881,7 @@ public class InvokeImplSection extends BPELPropertySection {
 //		};
 //
 //		RunnableProposal proposal2 = new RunnableProposal() {			
-//			
+//			@Override
 //			public String getLabel() {
 //				return "Create Local Output Variable"; //$NON-NLS-1$
 //			}
@@ -892,7 +892,7 @@ public class InvokeImplSection extends BPELPropertySection {
 //
 //
 //		RunnableProposal proposal3 = new RunnableProposal() {			
-//			
+//			@Override
 //			public String getLabel() {
 //				return "Clear Output Variable"; //$NON-NLS-1$
 //			}
@@ -904,7 +904,7 @@ public class InvokeImplSection extends BPELPropertySection {
 //		VariableContentProvider provider = new VariableContentProvider();
 //		ModelContentProposalProvider proposalProvider;
 //		proposalProvider = new ModelContentProposalProvider( new ModelContentProposalProvider.ValueProvider () {
-//			
+//			@Override
 //			public Object value() {
 //				return getInput();
 //			}			
@@ -1021,14 +1021,14 @@ public class InvokeImplSection extends BPELPropertySection {
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider(
 				new ModelContentProposalProvider.ValueProvider() {
-					
+					@Override
 					public Object value() {
 						return ModelHelper.getOperation(getInput());
 					}
 				}, provider);
 
 		RunnableProposal proposalClearFault = new RunnableProposal() {			
-			
+			@Override
 			public String getLabel() {
 				return Messages.InvokeImplSection_25;
 			}
@@ -1209,7 +1209,7 @@ public class InvokeImplSection extends BPELPropertySection {
 		return composite;
 	}
 	
-	
+	@Override
 	protected void createClient(Composite parent)  {
 		
 		Composite composite = parentComposite = createFlatFormComposite(parent);
@@ -1467,7 +1467,7 @@ public class InvokeImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#aboutToBeShown()
 	 */
-	
+	@Override
 	public void aboutToBeShown() {
 		super.aboutToBeShown();
 		doChildLayout();
@@ -1476,7 +1476,7 @@ public class InvokeImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return Integer.valueOf( lastChangeContext );
 	}
@@ -1484,7 +1484,7 @@ public class InvokeImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		
 		int i = ((Integer)userContext).intValue();
@@ -2021,7 +2021,7 @@ public class InvokeImplSection extends BPELPropertySection {
 		
 		if (fWSDLEditRunnableProposal == null) {
 			fWSDLEditRunnableProposal = new RunnableProposal() {				
-				
+				@Override
 				public String getLabel() {
 					return Messages.InvokeImplSection_24;
 				}

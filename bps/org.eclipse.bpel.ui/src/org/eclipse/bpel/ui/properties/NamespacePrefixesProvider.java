@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 JBoss, Inc. and others
+ * Copyright (c) 2010, 2012 JBoss, Inc. and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public class NamespacePrefixesProvider extends AbstractContentProvider  {
 	/**
 	 * @see org.eclipse.bpel.ui.details.providers.AbstractContentProvider#collectElements(java.lang.Object, java.util.List)
 	 */
-	
+	@Override
 	public void collectElements(Object input, List<Object> list)  {
 		
 		List<NamespacePrefixElement> elements = new ArrayList<NamespacePrefixElement>();
@@ -174,13 +174,8 @@ public class NamespacePrefixesProvider extends AbstractContentProvider  {
 				{
 					if (o instanceof org.eclipse.wst.wsdl.Import)
 					{
-						Definition wsdl = ((org.eclipse.wst.wsdl.Import)o).getEDefinition();
-						
 						if ( ((org.eclipse.wst.wsdl.Import)o).getLocationURI().equals(wsdlImp.getLocationURI()) )
 							foundNew = false;
-						
-						Object ns = wsdl.getNamespaces().entrySet();
-						System.out.println("ns="+ns);
 					}
 					else if (o instanceof org.eclipse.bpel.model.Import)
 					{
@@ -191,6 +186,7 @@ public class NamespacePrefixesProvider extends AbstractContentProvider  {
 				if (foundNew)
 					imports.add(wsdlImp);
 				
+				// FIXME: we need to be able to support WSDL locations outside of the containing project!
 				if (!wsdlImp.getLocationURI().startsWith("http://"))
 				{
 					if (wsdlImp.getDefinition()!=null)

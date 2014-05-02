@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,10 +24,10 @@ public class XSDTypeDefinitionTreeNode extends XSDTreeNode {
 		super(xsdType, isCondensed);
 	}
 
-	
+	@Override
 	public boolean isNodeFlattenable() { return true; }
 	
-	
+	@Override
 	public Object[] getChildren() {
 		XSDTypeDefinition xsdType = (XSDTypeDefinition)modelObject;
 		if (xsdType instanceof XSDComplexTypeDefinition) {
@@ -39,7 +39,7 @@ public class XSDTypeDefinitionTreeNode extends XSDTreeNode {
 		return EMPTY_ARRAY;
 	}
 
-	
+	@Override
 	public boolean hasChildren() {
 		XSDTypeDefinition xsdType = (XSDTypeDefinition)modelObject;
 		if (xsdType instanceof XSDComplexTypeDefinition) {
@@ -49,14 +49,14 @@ public class XSDTypeDefinitionTreeNode extends XSDTreeNode {
 		return false;
 	}
 	
-	
+	@Override
 	public String getLabel() {
 		XSDTypeDefinition xsdType = (XSDTypeDefinition)modelObject;
 		String name = xsdType.getName();
 		return (name != null) ? name : ""; //$NON-NLS-1$
 	}
 	
-	
+	@Override
 	public String getLabelSuffix() {
 		return super.getLabelSuffix();
 	}

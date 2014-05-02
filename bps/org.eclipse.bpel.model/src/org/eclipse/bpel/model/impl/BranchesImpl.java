@@ -72,7 +72,7 @@ public class BranchesImpl extends ExpressionImpl implements Branches {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.BRANCHES;
 	}
@@ -143,7 +143,7 @@ public class BranchesImpl extends ExpressionImpl implements Branches {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.BRANCHES__COUNT_COMPLETED_BRANCHES_ONLY:
@@ -157,7 +157,7 @@ public class BranchesImpl extends ExpressionImpl implements Branches {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.BRANCHES__COUNT_COMPLETED_BRANCHES_ONLY:
@@ -172,7 +172,7 @@ public class BranchesImpl extends ExpressionImpl implements Branches {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.BRANCHES__COUNT_COMPLETED_BRANCHES_ONLY:
@@ -187,7 +187,7 @@ public class BranchesImpl extends ExpressionImpl implements Branches {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.BRANCHES__COUNT_COMPLETED_BRANCHES_ONLY:
@@ -201,7 +201,7 @@ public class BranchesImpl extends ExpressionImpl implements Branches {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

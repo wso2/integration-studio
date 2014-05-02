@@ -68,7 +68,7 @@ public class LocationCapturingDOMParser extends DOMParser {
 	 *      java.lang.String, org.apache.xerces.xni.NamespaceContext,
 	 *      org.apache.xerces.xni.Augmentations)
 	 */
-	
+	@Override
 	public void startDocument(XMLLocator arg0, String arg1,
 			NamespaceContext arg2, Augmentations arg3) throws XNIException {
 		mLocator = arg0;
@@ -80,7 +80,7 @@ public class LocationCapturingDOMParser extends DOMParser {
 	 * @see org.apache.xerces.parsers.AbstractDOMParser#characters(org.apache.xerces.xni.XMLString,
 	 *      org.apache.xerces.xni.Augmentations)
 	 */
-	
+	@Override
 	public void characters(XMLString arg0, Augmentations arg1)
 			throws XNIException {
 		super.characters(arg0, arg1);
@@ -91,7 +91,7 @@ public class LocationCapturingDOMParser extends DOMParser {
 	 * @see org.apache.xerces.parsers.AbstractDOMParser#comment(org.apache.xerces.xni.XMLString,
 	 *      org.apache.xerces.xni.Augmentations)
 	 */
-	
+	@Override
 	public void comment(XMLString arg0, Augmentations arg1) throws XNIException {
 		super.comment(arg0, arg1);
 		lastSource();
@@ -103,7 +103,7 @@ public class LocationCapturingDOMParser extends DOMParser {
 	 * @see org.apache.xerces.parsers.AbstractDOMParser#textDecl(java.lang.String,
 	 *      java.lang.String, org.apache.xerces.xni.Augmentations)
 	 */
-	
+	@Override
 	public void textDecl(String arg0, String arg1, Augmentations arg2)
 			throws XNIException {
 		super.textDecl(arg0, arg1, arg2);
@@ -116,7 +116,7 @@ public class LocationCapturingDOMParser extends DOMParser {
 	 *      org.apache.xerces.xni.Augmentations)
 	 */
 	@SuppressWarnings( { "nls", "boxing" })
-	
+	@Override
 	public void startElement(QName arg0,
 			XMLAttributes arg1, Augmentations arg2) throws XNIException {
 		super.startElement(arg0, arg1, arg2);
@@ -150,7 +150,7 @@ public class LocationCapturingDOMParser extends DOMParser {
 	/**
 	 * @see org.apache.xerces.parsers.AbstractDOMParser#startCDATA(org.apache.xerces.xni.Augmentations)
 	 */
-	
+	@Override
 	public void startCDATA(Augmentations aug) {
 		super.startCDATA(aug);
 		lastSource();
@@ -160,7 +160,7 @@ public class LocationCapturingDOMParser extends DOMParser {
 	/**
 	 * @see org.apache.xerces.parsers.AbstractDOMParser#endCDATA(org.apache.xerces.xni.Augmentations)
 	 */
-	
+	@Override
 	public void endCDATA(Augmentations aug) {
 		super.endCDATA(aug);
 		lastSource();
@@ -170,7 +170,7 @@ public class LocationCapturingDOMParser extends DOMParser {
 	 * @see org.apache.xerces.parsers.AbstractDOMParser#endElement(org.apache.xerces.xni.QName,
 	 *      org.apache.xerces.xni.Augmentations)
 	 */
-	
+	@Override
 	public void endElement(QName element,
 			Augmentations aug) {
 		super.endElement(element, aug);

@@ -80,7 +80,7 @@ public class EventHandlerImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.EVENT_HANDLER;
 	}
@@ -116,7 +116,7 @@ public class EventHandlerImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -133,7 +133,7 @@ public class EventHandlerImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.EVENT_HANDLER__ALARM:
@@ -150,7 +150,7 @@ public class EventHandlerImpl extends BPELExtensibleElementImpl implements
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.EVENT_HANDLER__ALARM:
@@ -170,7 +170,7 @@ public class EventHandlerImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.EVENT_HANDLER__ALARM:
@@ -188,7 +188,7 @@ public class EventHandlerImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.EVENT_HANDLER__ALARM:
@@ -199,7 +199,7 @@ public class EventHandlerImpl extends BPELExtensibleElementImpl implements
 		return super.eIsSet(featureID);
 	}
 
-	
+	@Override
 	protected void adoptContent(EReference reference, Object object) {
 		if (object instanceof OnEvent) {
 			ReconciliationHelper.adoptChild(this, events, (OnEvent) object,
@@ -212,7 +212,7 @@ public class EventHandlerImpl extends BPELExtensibleElementImpl implements
 		super.adoptContent(reference, object);
 	}
 
-	
+	@Override
 	protected void orphanContent(EReference reference, Object object) {
 		if (object instanceof OnEvent) {
 			ReconciliationHelper.orphanChild(this, (OnEvent) object);

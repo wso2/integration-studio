@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,14 +49,14 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 		}
 	}
 	
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		
 		MultiObjectAdapter adapter = new BatchedMultiObjectAdapter() {
 			
 			boolean needRefresh = false;
 			
-			
+			@Override
 			public void notify (Notification n) {
 				
 				if (markersHaveChanged(n)) {
@@ -67,7 +67,7 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 				refreshAdapters();
 			}
 			
-			
+			@Override
 			public void finish() {
 				if (needRefresh) {
 					updateWidgets();
@@ -102,18 +102,18 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 				
 				// refresh the editor
 				result.add(new AbstractEditModelCommand() {
-					
+					@Override
 					public void execute() { 
 						if (fEditor != null) {
 							fEditor.markAsClean(); 
 						}
 						}
 					// TODO: is this correct?
-					
+					@Override
 					public Resource[] getResources() { 
 						return EMPTY_RESOURCE_ARRAY; 
 					}
-					
+					@Override
 					public Resource[] getModifiedResources() { 
 						return EMPTY_RESOURCE_ARRAY; 
 					}
@@ -131,13 +131,13 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace() {
 		return true;
 	}
 	
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		createEditor(parent);
 		createChangeHelper();
@@ -159,7 +159,7 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#aboutToBeHidden()
 	 */
-	
+	@Override
 	public void aboutToBeHidden() {
 		if (Policy.DEBUG) System.out.println("exprdetails.aboutToBeHidden() - "+this); //$NON-NLS-1$
 		super.aboutToBeHidden();
@@ -173,7 +173,7 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#aboutToBeShown()
 	 */
-	
+	@Override
 	public void aboutToBeShown() {
 		if (Policy.DEBUG) {
 			System.out.println("exprdetails.aboutToBeShown() - "+this); //$NON-NLS-1$
@@ -198,7 +198,7 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#dispose()
 	 */
 	
-	
+	@Override
 	public void dispose() {
 		super.dispose();
 	    disposeEditor();
@@ -223,7 +223,7 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {		
     	return (fEditor==null)? null : fEditor.getUserContext();
     }
@@ -231,7 +231,7 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
     /**
      * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
      */
-    
+    @Override
 	public void restoreUserContext(Object userContext) {
     	if (fEditor != null) {
     		fEditor.restoreUserContext(userContext);
@@ -251,7 +251,7 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#gotoMarker(org.eclipse.core.resources.IMarker)
 	 */
-	
+	@Override
 	public void gotoMarker(IMarker marker) {
 		// TODO: Look up the use type.
 		String useType = null;
@@ -261,9 +261,5 @@ public abstract class TextSection extends BPELPropertySection implements IGetExp
 			return ;
 		}
 		editor.gotoTextMarker(marker, useType, fModelObject);
-	}
-	
-	public boolean isExecutingStoreCommand() {
-		return false; // isExecutingStoreCommand;
 	}
 }

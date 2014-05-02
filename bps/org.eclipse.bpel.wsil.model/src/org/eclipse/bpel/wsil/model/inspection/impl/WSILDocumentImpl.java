@@ -88,7 +88,7 @@ public class WSILDocumentImpl extends EObjectImpl implements WSILDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return InspectionPackage.Literals.WSIL_DOCUMENT;
 	}
@@ -161,7 +161,7 @@ public class WSILDocumentImpl extends EObjectImpl implements WSILDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case InspectionPackage.WSIL_DOCUMENT__MIXED:
@@ -181,7 +181,7 @@ public class WSILDocumentImpl extends EObjectImpl implements WSILDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case InspectionPackage.WSIL_DOCUMENT__MIXED:
@@ -204,7 +204,7 @@ public class WSILDocumentImpl extends EObjectImpl implements WSILDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case InspectionPackage.WSIL_DOCUMENT__MIXED:
@@ -228,7 +228,7 @@ public class WSILDocumentImpl extends EObjectImpl implements WSILDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case InspectionPackage.WSIL_DOCUMENT__MIXED:
@@ -252,7 +252,7 @@ public class WSILDocumentImpl extends EObjectImpl implements WSILDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case InspectionPackage.WSIL_DOCUMENT__MIXED:
@@ -272,7 +272,7 @@ public class WSILDocumentImpl extends EObjectImpl implements WSILDocument {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

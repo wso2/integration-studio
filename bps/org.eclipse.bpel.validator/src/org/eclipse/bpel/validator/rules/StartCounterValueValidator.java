@@ -32,7 +32,7 @@ public class StartCounterValueValidator extends ConditionValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.ConditionValidator#start()
 	 */
-	
+	@Override
 	protected void start() {		
 		super.start();
 	}	

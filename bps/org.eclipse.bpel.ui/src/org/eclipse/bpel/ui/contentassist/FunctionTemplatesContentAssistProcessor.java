@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,7 @@ public class FunctionTemplatesContentAssistProcessor extends TemplateCompletionP
 	/**
 	 * @see org.eclipse.jface.text.templates.TemplateCompletionProcessor#getContextType(org.eclipse.jface.text.ITextViewer, org.eclipse.jface.text.IRegion)
 	 */
-	
+	@Override
 	protected TemplateContextType getContextType (ITextViewer viewer, IRegion region) {
 		if (fTemplateContextType == null) {
 			fTemplateContextType = new TemplateContextType (XPATH_FUNCTIONS,"XPath functions");  //$NON-NLS-1$
@@ -77,7 +77,7 @@ public class FunctionTemplatesContentAssistProcessor extends TemplateCompletionP
 	 * 
 	 * @see org.eclipse.jface.text.templates.TemplateCompletionProcessor#getImage(org.eclipse.jface.text.templates.Template)
 	 */
-	
+	@Override
 	protected Image getImage(Template template) {
 		return BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_EXPR_FUNCTION);		
 	}
@@ -88,7 +88,7 @@ public class FunctionTemplatesContentAssistProcessor extends TemplateCompletionP
 	 * 
 	 * @see org.eclipse.jface.text.templates.TemplateCompletionProcessor#getTemplates(java.lang.String)
 	 */
-	
+	@Override
 	protected Template[] getTemplates (String contextTypeId) {
 		
 		if ( XPATH_FUNCTIONS.equals ( contextTypeId )) {

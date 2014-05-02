@@ -26,17 +26,17 @@ public class LinkProxy extends LinkImpl {
         proxyURI = new BPELProxyURI(BPELPackage.eINSTANCE.getLink(), baseURI, new QName("process", name));
 	}
 
-    
+    @Override
 	public boolean eIsProxy() {
         return true;
     }
 
-    
+    @Override
 	public URI eProxyURI() {
         return proxyURI.getProxyURI();
     }
 
-    
+    @Override
 	public String getName() {
         return proxyURI.getQName().getLocalPart();
     }

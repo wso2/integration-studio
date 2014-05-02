@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,7 +56,7 @@ public abstract class RemoveFromListCommand extends AutoUndoCommand {
 	protected void deleteList() {	}
 
 
-	
+	@Override
 	public boolean canDoExecute() {
 		if (oldElement == null) return false;
 		if (getList().indexOf(oldElement) < 0) return false;
@@ -64,7 +64,7 @@ public abstract class RemoveFromListCommand extends AutoUndoCommand {
 		return true; // !getList().contains(newElement)
 	}
 
-	
+	@Override
 	public void doExecute() {
 		if (oldElement == null) throw new IllegalStateException();
 

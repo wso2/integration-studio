@@ -54,7 +54,7 @@ public class Activator extends Plugin {
 	 */
 	
 
-	
+	@Override
 	public void start (BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
@@ -139,7 +139,7 @@ public class Activator extends Plugin {
 	
 	void initializeAsync ( ) {
 		Job job = new Job ("Registering Validator factories ...") {	
-			
+			@Override
 			protected IStatus run (IProgressMonitor monitor) {
 				IStatus status = initializeAndTime();
 				monitor.done();
@@ -157,7 +157,7 @@ public class Activator extends Plugin {
 	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 */
 	
-	
+	@Override
 	public void stop(BundleContext context) throws Exception {		
 		plugin = null;
 				
@@ -220,7 +220,7 @@ public class Activator extends Plugin {
 		/** (non-Javadoc)
 		 * @see java.util.logging.Handler#close()
 		 */
-		
+		@Override
 		public void close() throws SecurityException {			
 			
 		}
@@ -228,7 +228,7 @@ public class Activator extends Plugin {
 		/** (non-Javadoc)
 		 * @see java.util.logging.Handler#flush()
 		 */
-		
+		@Override
 		public void flush() {
 			
 		}
@@ -238,7 +238,7 @@ public class Activator extends Plugin {
 		 */
 		
 		@SuppressWarnings("nls")
-		
+		@Override
 		public void publish (LogRecord record) {								
 			
 			StringBuilder sb = new StringBuilder();

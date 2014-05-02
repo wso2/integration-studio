@@ -20,7 +20,7 @@
         xsi:type="gmfgen:FigureViewmap"
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
     <domainDiagramElement
-        href="dataMapper.genmodel#//dataMapper/DataMapperRoot"/>
+        href="dataMapper.genmodel#//datamapper/DataMapperRoot"/>
     <childNodes
         visualID="3002"
         editPartClassName="TreeNodeEditPart"
@@ -43,11 +43,11 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class TreeNodeFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTreeNodeNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public TreeNodeFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.FlowLayout layoutThis = new org.eclipse.draw2d.FlowLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(false);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#xA;&#x9;layoutThis.setMajorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#x9;layoutThis.setMajorSpacing(5);&#xA;&#x9;layoutThis.setMinorSpacing(5);&#xA;&#x9;layoutThis.setHorizontal(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureTreeNodeNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTreeNodeNameFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;this.add(fFigureTreeNodeNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTreeNodeNameFigure() {&#xA;&#x9;&#x9;return fFigureTreeNodeNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/TreeNode"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Input/treeNode"/>
+            href="dataMapper.genmodel#//datamapper/Input/treeNode"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Input/treeNode"/>
+            href="dataMapper.genmodel#//datamapper/Input/treeNode"/>
       </modelFacet>
       <labels
           visualID="5002"
@@ -64,7 +64,7 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0">
           <metaFeatures
-              href="dataMapper.genmodel#//dataMapper/TreeNode/name"/>
+              href="dataMapper.genmodel#//datamapper/TreeNode/name"/>
         </modelFacet>
       </labels>
     </childNodes>
@@ -90,11 +90,11 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class TreeNodeFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTreeNodeNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public TreeNodeFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.FlowLayout layoutThis = new org.eclipse.draw2d.FlowLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(false);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#xA;&#x9;layoutThis.setMajorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#x9;layoutThis.setMajorSpacing(5);&#xA;&#x9;layoutThis.setMinorSpacing(5);&#xA;&#x9;layoutThis.setHorizontal(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureTreeNodeNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTreeNodeNameFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;this.add(fFigureTreeNodeNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTreeNodeNameFigure() {&#xA;&#x9;&#x9;return fFigureTreeNodeNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/TreeNode"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/TreeNode/node"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode/node"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/TreeNode/node"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode/node"/>
       </modelFacet>
       <labels
           visualID="5001"
@@ -111,7 +111,7 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0">
           <metaFeatures
-              href="dataMapper.genmodel#//dataMapper/TreeNode/name"/>
+              href="dataMapper.genmodel#//datamapper/TreeNode/name"/>
         </modelFacet>
       </labels>
     </childNodes>
@@ -135,11 +135,11 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Attribute"/>
+            href="dataMapper.genmodel#//datamapper/Attribute"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/TreeNode/attribute"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode/attribute"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/TreeNode/attribute"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode/attribute"/>
       </modelFacet>
     </childNodes>
     <childNodes
@@ -163,11 +163,11 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/InNode"/>
+            href="dataMapper.genmodel#//datamapper/InNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Attribute/inNode"/>
+            href="dataMapper.genmodel#//datamapper/Attribute/inNode"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Attribute/inNode"/>
+            href="dataMapper.genmodel#//datamapper/Attribute/inNode"/>
       </modelFacet>
     </childNodes>
     <childNodes
@@ -191,11 +191,11 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/OutNode"/>
+            href="dataMapper.genmodel#//datamapper/OutNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Attribute/outNode"/>
+            href="dataMapper.genmodel#//datamapper/Attribute/outNode"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Attribute/outNode"/>
+            href="dataMapper.genmodel#//datamapper/Attribute/outNode"/>
       </modelFacet>
     </childNodes>
     <childNodes
@@ -223,11 +223,11 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Element"/>
+            href="dataMapper.genmodel#//datamapper/Element"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/TreeNode/element"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode/element"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/TreeNode/element"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode/element"/>
       </modelFacet>
       <labels
           visualID="5004"
@@ -243,7 +243,7 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0">
           <metaFeatures
-              href="dataMapper.genmodel#//dataMapper/Element/name"/>
+              href="dataMapper.genmodel#//datamapper/Element/name"/>
         </modelFacet>
       </labels>
     </childNodes>
@@ -252,7 +252,6 @@
         visualID="3008"
         editPartClassName="InNode2EditPart"
         itemSemanticEditPolicyClassName="InNode2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="InNodeViewFactory"
         canonicalEditPolicyClassName="InNode2CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="InNode2GraphicalNodeEditPolicy"
         createCommandClassName="InNode2CreateCommand"
@@ -268,11 +267,11 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/InNode"/>
+            href="dataMapper.genmodel#//datamapper/InNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Element/inNode"/>
+            href="dataMapper.genmodel#//datamapper/Element/inNode"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Element/inNode"/>
+            href="dataMapper.genmodel#//datamapper/Element/inNode"/>
       </modelFacet>
     </childNodes>
     <childNodes
@@ -280,7 +279,6 @@
         visualID="3009"
         editPartClassName="OutNode2EditPart"
         itemSemanticEditPolicyClassName="OutNode2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="OutNodeViewFactory"
         canonicalEditPolicyClassName="OutNode2CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="OutNode2GraphicalNodeEditPolicy"
         createCommandClassName="OutNode2CreateCommand"
@@ -296,18 +294,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/OutNode"/>
+            href="dataMapper.genmodel#//datamapper/OutNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Element/outNode"/>
+            href="dataMapper.genmodel#//datamapper/Element/outNode"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Element/outNode"/>
+            href="dataMapper.genmodel#//datamapper/Element/outNode"/>
       </modelFacet>
     </childNodes>
     <childNodes
         visualID="3011"
         editPartClassName="TreeNode3EditPart"
         itemSemanticEditPolicyClassName="TreeNode3ItemSemanticEditPolicy"
-        notationViewFactoryClassName="TreeNodeViewFactory"
         canonicalEditPolicyClassName="TreeNode3CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.1 //@diagram/@childNodes.2 //@diagram/@childNodes.5"
         graphicalNodeEditPolicyClassName="TreeNode3GraphicalNodeEditPolicy"
@@ -325,17 +322,16 @@
           classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class TreeNodeFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTreeNodeNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public TreeNodeFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.FlowLayout layoutThis = new org.eclipse.draw2d.FlowLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(false);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#xA;&#x9;layoutThis.setMajorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#x9;layoutThis.setMajorSpacing(5);&#xA;&#x9;layoutThis.setMinorSpacing(5);&#xA;&#x9;layoutThis.setHorizontal(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureTreeNodeNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;&#xA;fFigureTreeNodeNameFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;this.add(fFigureTreeNodeNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTreeNodeNameFigure() {&#xA;&#x9;&#x9;return fFigureTreeNodeNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/TreeNode"/>
+            href="dataMapper.genmodel#//datamapper/TreeNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Output/treeNode"/>
+            href="dataMapper.genmodel#//datamapper/Output/treeNode"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Output/treeNode"/>
+            href="dataMapper.genmodel#//datamapper/Output/treeNode"/>
       </modelFacet>
       <labels
           visualID="5003"
           editPartClassName="TreeNodeName3EditPart"
-          itemSemanticEditPolicyClassName="TreeNodeName3ItemSemanticEditPolicy"
-          notationViewFactoryClassName="TreeNodeNameViewFactory">
+          itemSemanticEditPolicyClassName="TreeNodeName3ItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -346,7 +342,7 @@
             xsi:type="gmfgen:FeatureLabelModelFacet"
             parser="//@labelParsers/@implementations.0">
           <metaFeatures
-              href="dataMapper.genmodel#//dataMapper/TreeNode/name"/>
+              href="dataMapper.genmodel#//datamapper/TreeNode/name"/>
         </modelFacet>
       </labels>
     </childNodes>
@@ -354,7 +350,6 @@
         visualID="3012"
         editPartClassName="OperatorBasicContainerEditPart"
         itemSemanticEditPolicyClassName="OperatorBasicContainerItemSemanticEditPolicy"
-        notationViewFactoryClassName="OperatorBasicContainerViewFactory"
         canonicalEditPolicyClassName="OperatorBasicContainerCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.10 //@diagram/@childNodes.13"
         graphicalNodeEditPolicyClassName="OperatorBasicContainerGraphicalNodeEditPolicy"
@@ -370,18 +365,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/OperatorBasicContainer"/>
+            href="dataMapper.genmodel#//datamapper/OperatorBasicContainer"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Operator/basicContainer"/>
+            href="dataMapper.genmodel#//datamapper/Operator/basicContainer"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/Operator/basicContainer"/>
+            href="dataMapper.genmodel#//datamapper/Operator/basicContainer"/>
       </modelFacet>
     </childNodes>
     <childNodes
         visualID="3013"
         editPartClassName="OperatorLeftContainerEditPart"
         itemSemanticEditPolicyClassName="OperatorLeftContainerItemSemanticEditPolicy"
-        notationViewFactoryClassName="OperatorLeftContainerViewFactory"
         canonicalEditPolicyClassName="OperatorLeftContainerCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.11"
         graphicalNodeEditPolicyClassName="OperatorLeftContainerGraphicalNodeEditPolicy"
@@ -397,18 +391,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/OperatorLeftContainer"/>
+            href="dataMapper.genmodel#//datamapper/OperatorLeftContainer"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorBasicContainer/leftContainer"/>
+            href="dataMapper.genmodel#//datamapper/OperatorBasicContainer/leftContainer"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorBasicContainer/leftContainer"/>
+            href="dataMapper.genmodel#//datamapper/OperatorBasicContainer/leftContainer"/>
       </modelFacet>
     </childNodes>
     <childNodes
         visualID="3014"
         editPartClassName="OperatorLeftConnectorEditPart"
         itemSemanticEditPolicyClassName="OperatorLeftConnectorItemSemanticEditPolicy"
-        notationViewFactoryClassName="OperatorLeftConnectorViewFactory"
         canonicalEditPolicyClassName="OperatorLeftConnectorCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.12"
         graphicalNodeEditPolicyClassName="OperatorLeftConnectorGraphicalNodeEditPolicy"
@@ -424,11 +417,11 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/OperatorLeftConnector"/>
+            href="dataMapper.genmodel#//datamapper/OperatorLeftConnector"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorLeftContainer/leftConnectors"/>
+            href="dataMapper.genmodel#//datamapper/OperatorLeftContainer/leftConnectors"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorLeftContainer/leftConnectors"/>
+            href="dataMapper.genmodel#//datamapper/OperatorLeftContainer/leftConnectors"/>
       </modelFacet>
     </childNodes>
     <childNodes
@@ -436,7 +429,6 @@
         visualID="3015"
         editPartClassName="InNode3EditPart"
         itemSemanticEditPolicyClassName="InNode3ItemSemanticEditPolicy"
-        notationViewFactoryClassName="InNodeViewFactory"
         canonicalEditPolicyClassName="InNode3CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="InNode3GraphicalNodeEditPolicy"
         createCommandClassName="InNode3CreateCommand"
@@ -452,18 +444,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/InNode"/>
+            href="dataMapper.genmodel#//datamapper/InNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorLeftConnector/inNode"/>
+            href="dataMapper.genmodel#//datamapper/OperatorLeftConnector/inNode"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorLeftConnector/inNode"/>
+            href="dataMapper.genmodel#//datamapper/OperatorLeftConnector/inNode"/>
       </modelFacet>
     </childNodes>
     <childNodes
         visualID="3016"
         editPartClassName="OperatorRightContainerEditPart"
         itemSemanticEditPolicyClassName="OperatorRightContainerItemSemanticEditPolicy"
-        notationViewFactoryClassName="OperatorRightContainerViewFactory"
         canonicalEditPolicyClassName="OperatorRightContainerCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.14"
         graphicalNodeEditPolicyClassName="OperatorRightContainerGraphicalNodeEditPolicy"
@@ -479,18 +470,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/OperatorRightContainer"/>
+            href="dataMapper.genmodel#//datamapper/OperatorRightContainer"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorBasicContainer/rightContainer"/>
+            href="dataMapper.genmodel#//datamapper/OperatorBasicContainer/rightContainer"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorBasicContainer/rightContainer"/>
+            href="dataMapper.genmodel#//datamapper/OperatorBasicContainer/rightContainer"/>
       </modelFacet>
     </childNodes>
     <childNodes
         visualID="3017"
         editPartClassName="OperatorRightConnectorEditPart"
         itemSemanticEditPolicyClassName="OperatorRightConnectorItemSemanticEditPolicy"
-        notationViewFactoryClassName="OperatorRightConnectorViewFactory"
         canonicalEditPolicyClassName="OperatorRightConnectorCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.15"
         graphicalNodeEditPolicyClassName="OperatorRightConnectorGraphicalNodeEditPolicy"
@@ -506,18 +496,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/OperatorRightConnector"/>
+            href="dataMapper.genmodel#//datamapper/OperatorRightConnector"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorRightContainer/rightConnectors"/>
+            href="dataMapper.genmodel#//datamapper/OperatorRightContainer/rightConnectors"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorRightContainer/rightConnectors"/>
+            href="dataMapper.genmodel#//datamapper/OperatorRightContainer/rightConnectors"/>
       </modelFacet>
     </childNodes>
     <childNodes
         visualID="3018"
         editPartClassName="OutNode3EditPart"
         itemSemanticEditPolicyClassName="OutNode3ItemSemanticEditPolicy"
-        notationViewFactoryClassName="OutNodeViewFactory"
         canonicalEditPolicyClassName="OutNode3CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="OutNode3GraphicalNodeEditPolicy"
         createCommandClassName="OutNode3CreateCommand"
@@ -532,18 +521,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/OutNode"/>
+            href="dataMapper.genmodel#//datamapper/OutNode"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorRightConnector/outNode"/>
+            href="dataMapper.genmodel#//datamapper/OperatorRightConnector/outNode"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OperatorRightConnector/outNode"/>
+            href="dataMapper.genmodel#//datamapper/OperatorRightConnector/outNode"/>
       </modelFacet>
     </childNodes>
     <topLevelNodes
         visualID="2002"
         editPartClassName="InputEditPart"
         itemSemanticEditPolicyClassName="InputItemSemanticEditPolicy"
-        notationViewFactoryClassName="InputViewFactory"
         canonicalEditPolicyClassName="InputCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.0"
         graphicalNodeEditPolicyClassName="InputGraphicalNodeEditPolicy"
@@ -561,18 +549,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Input"/>
+            href="dataMapper.genmodel#//datamapper/Input"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/input"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/input"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/input"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/input"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
         visualID="2003"
         editPartClassName="OutputEditPart"
         itemSemanticEditPolicyClassName="OutputItemSemanticEditPolicy"
-        notationViewFactoryClassName="OutputViewFactory"
         canonicalEditPolicyClassName="OutputCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.8"
         graphicalNodeEditPolicyClassName="OutputGraphicalNodeEditPolicy"
@@ -590,18 +577,17 @@
       </viewmap>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Output"/>
+            href="dataMapper.genmodel#//datamapper/Output"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/output"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/output"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/output"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/output"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
         visualID="2005"
         editPartClassName="EqualEditPart"
         itemSemanticEditPolicyClassName="EqualItemSemanticEditPolicy"
-        notationViewFactoryClassName="EqualViewFactory"
         canonicalEditPolicyClassName="EqualCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="EqualGraphicalNodeEditPolicy"
@@ -616,18 +602,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Equal"/>
+            href="dataMapper.genmodel#//datamapper/Equal"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
         visualID="2006"
         editPartClassName="ConcatEditPart"
         itemSemanticEditPolicyClassName="ConcatItemSemanticEditPolicy"
-        notationViewFactoryClassName="ConcatViewFactory"
         canonicalEditPolicyClassName="ConcatCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="ConcatGraphicalNodeEditPolicy"
@@ -642,18 +627,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Concat"/>
+            href="dataMapper.genmodel#//datamapper/Concat"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
         visualID="2007"
         editPartClassName="SplitEditPart"
         itemSemanticEditPolicyClassName="SplitItemSemanticEditPolicy"
-        notationViewFactoryClassName="SplitViewFactory"
         canonicalEditPolicyClassName="SplitCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="SplitGraphicalNodeEditPolicy"
@@ -668,18 +652,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Split"/>
+            href="dataMapper.genmodel#//datamapper/Split"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
         visualID="2008"
         editPartClassName="ConstantEditPart"
         itemSemanticEditPolicyClassName="ConstantItemSemanticEditPolicy"
-        notationViewFactoryClassName="ConstantViewFactory"
         canonicalEditPolicyClassName="ConstantCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="ConstantGraphicalNodeEditPolicy"
@@ -694,18 +677,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Constant"/>
+            href="dataMapper.genmodel#//datamapper/Constant"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
         visualID="2009"
         editPartClassName="LowerCaseEditPart"
         itemSemanticEditPolicyClassName="LowerCaseItemSemanticEditPolicy"
-        notationViewFactoryClassName="LowerCaseViewFactory"
         canonicalEditPolicyClassName="LowerCaseCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="LowerCaseGraphicalNodeEditPolicy"
@@ -720,18 +702,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/LowerCase"/>
+            href="dataMapper.genmodel#//datamapper/LowerCase"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
         visualID="2010"
         editPartClassName="ContainsEditPart"
         itemSemanticEditPolicyClassName="ContainsItemSemanticEditPolicy"
-        notationViewFactoryClassName="ContainsViewFactory"
         canonicalEditPolicyClassName="ContainsCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="ContainsGraphicalNodeEditPolicy"
@@ -746,18 +727,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/Contains"/>
+            href="dataMapper.genmodel#//datamapper/Contains"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
     <topLevelNodes
         visualID="2011"
         editPartClassName="UpperCaseEditPart"
         itemSemanticEditPolicyClassName="UpperCaseItemSemanticEditPolicy"
-        notationViewFactoryClassName="UpperCaseViewFactory"
         canonicalEditPolicyClassName="UpperCaseCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="UpperCaseGraphicalNodeEditPolicy"
@@ -772,18 +752,17 @@
           figureQualifiedClassName="org.eclipse.draw2d.RectangleFigure"/>
       <modelFacet>
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/UpperCase"/>
+            href="dataMapper.genmodel#//datamapper/UpperCase"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperRoot/operators"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperRoot/operators"/>
       </modelFacet>
     </topLevelNodes>
     <links
         visualID="4001"
         editPartClassName="DataMapperLinkEditPart"
         itemSemanticEditPolicyClassName="DataMapperLinkItemSemanticEditPolicy"
-        notationViewFactoryClassName="DataMapperLinkViewFactory"
         createCommandClassName="DataMapperLinkCreateCommand"
         reorientCommandClassName="DataMapperLinkReorientCommand">
       <diagramRunTimeClass
@@ -797,15 +776,15 @@
       <modelFacet
           xsi:type="gmfgen:TypeLinkModelFacet">
         <metaClass
-            href="dataMapper.genmodel#//dataMapper/DataMapperLink"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperLink"/>
         <containmentMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OutNode/outgoingLink"/>
+            href="dataMapper.genmodel#//datamapper/OutNode/outgoingLink"/>
         <childMetaFeature
-            href="dataMapper.genmodel#//dataMapper/OutNode/outgoingLink"/>
+            href="dataMapper.genmodel#//datamapper/OutNode/outgoingLink"/>
         <sourceMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperLink/outNode"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperLink/outNode"/>
         <targetMetaFeature
-            href="dataMapper.genmodel#//dataMapper/DataMapperLink/inNode"/>
+            href="dataMapper.genmodel#//datamapper/DataMapperLink/inNode"/>
       </modelFacet>
     </links>
     <palette>

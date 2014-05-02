@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.bpel.ui.util.XSDUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -86,7 +87,7 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.IAssignCategory#getName()
 	 */
-	
+	@Override
 	public String getName() {
 		return Messages.VariablePartAssignCategory_Variable_or_Part_1;
 	}
@@ -105,7 +106,7 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 	protected void updateQueryFieldFromTreeSelection() {
 
 		if (displayQuery() == false || fChangeHelper.isNonUserChange()
-				|| this.fModelObject == null) {
+				|| this.fModelObject == null || fModelObject.eContainer()==null) {
 			return;
 		}
 
@@ -196,7 +197,7 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 		}
 	}
 
-	
+	@Override
 	protected void createClient2(Composite parent) {
 
 		FlatFormData data;
@@ -270,7 +271,7 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 	 * @see org.eclipse.bpel.ui.properties.IAssignCategory#isCategoryForModel(org.eclipse.emf.ecore.EObject)
 	 */
 
-	
+	@Override
 	public boolean isCategoryForModel(EObject aModel) {
 
 		if (aModel == null) {
@@ -286,7 +287,7 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 	}
 
 	@SuppressWarnings("nls")
-	
+	@Override
 	protected void load(IVirtualCopyRuleSide side) {
 
 		fChangeHelper.startNonUserChange();
@@ -441,7 +442,7 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 				.equals(EMPTY_STRING) && xsdNamed.getTargetNamespace() == null));
 	}
 
-	
+	@Override
 	protected void store(IVirtualCopyRuleSide side) {
 		IStructuredSelection sel = (IStructuredSelection) fVariableViewer
 				.getSelection();
@@ -629,24 +630,27 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 			Copy copy = BPELFactory.eINSTANCE.createCopy();
 			Assign a = (Assign) ((To) side.getCopyRuleSide()).getContainer()
 					.getContainer();
-			To to = BPELFactory.eINSTANCE.createTo();
-			From from = BPELFactory.eINSTANCE.createFrom();
-			copy.setFrom(from);
-			copy.setTo(to);
-			from.setLiteral(literal);
-			to.setVariable(side.getVariable());
-			to.setPart(side.getPart());
 			getCommandFramework()
 			.execute(
 					wrapInShowContextCommand(new InsertCopyCommand(a,
 							copy, 0)));
+			To to = BPELFactory.eINSTANCE.createTo();
+			From from = BPELFactory.eINSTANCE.createFrom();
+			from.setLiteral(literal);
+			copy.setFrom(from);
+			to.setVariable(side.getVariable());
+			to.setPart(side.getPart());
+			copy.setTo(to);
+			fChangeHelper.startNonUserChange();
+			fOwnerSection.basicSetInput(a);
+			fChangeHelper.finishNonUserChange();
 		} catch (Exception e) {
 			throw new IllegalStateException(
 					"Can't generate initializer, check WSDL file");
 		}
 	}
 
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 
 		super.basicSetInput(newInput);
@@ -674,7 +678,7 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return null;
 	}
@@ -682,7 +686,7 @@ public class VariablePartAssignCategory extends AssignCategoryBase {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		fVariableTree.setFocus();
 	}

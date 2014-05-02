@@ -45,7 +45,7 @@ public class OpaqueActivityImpl extends ActivityImpl implements OpaqueActivity {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.OPAQUE_ACTIVITY;
 	}

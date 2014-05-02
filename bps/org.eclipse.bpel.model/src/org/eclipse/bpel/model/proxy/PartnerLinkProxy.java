@@ -26,17 +26,17 @@ public class PartnerLinkProxy extends PartnerLinkImpl {
         proxyURI = new BPELProxyURI(BPELPackage.eINSTANCE.getPartnerLink(), baseURI, new QName("process", name));
     }
 
-    
+    @Override
 	public boolean eIsProxy() {
         return true;
     }
 
-    
+    @Override
 	public URI eProxyURI() {
         return proxyURI.getProxyURI();
     }
 
-    
+    @Override
 	public String getName() {
         return proxyURI.getQName().getLocalPart();
     }

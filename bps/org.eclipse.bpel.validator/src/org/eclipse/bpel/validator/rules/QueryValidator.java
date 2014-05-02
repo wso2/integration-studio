@@ -55,7 +55,7 @@ public class QueryValidator extends CValidator {
 	 * @see org.eclipse.bpel.validator.model.Validator#start()
 	 */
 	 
-	
+	@Override
 	protected void start () {
 		super.start();			
 	}	

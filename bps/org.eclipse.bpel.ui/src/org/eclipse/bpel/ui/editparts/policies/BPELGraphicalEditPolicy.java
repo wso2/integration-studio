@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,7 @@ public class BPELGraphicalEditPolicy extends GraphicalNodeEditPolicy {
 			process, Messages.BPELGraphicalEditPolicy_link1_1, Collections.singletonList(link))); 
 	}
 
-	
+	@Override
 	protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
 		if (getHost() == null)
 			return null;
@@ -168,14 +168,14 @@ public class BPELGraphicalEditPolicy extends GraphicalNodeEditPolicy {
 		return connection;
 	}
 
-	
+	@Override
 	protected Connection createDummyConnection(Request req) {
 		if (getLinkMode((CreateConnectionRequest)req) == FLOWLINK)
 			return super.createDummyConnection(req);
 		return createConnection(null, null, false, true);
 	}
 
-	
+	@Override
 	protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
 		Command startCommand  = request.getStartCommand();
 		if (getLinkMode(request) == FLOWLINK) {
@@ -215,7 +215,7 @@ public class BPELGraphicalEditPolicy extends GraphicalNodeEditPolicy {
 		return null;
 	}
 
-	
+	@Override
 	protected Command getReconnectTargetCommand(ReconnectRequest request) {
 		Activity activity = getActivity();
 		Link link = (Link)request.getConnectionEditPart().getModel();
@@ -232,7 +232,7 @@ public class BPELGraphicalEditPolicy extends GraphicalNodeEditPolicy {
 		return cmd;
 	}
 
-	
+	@Override
 	protected Command getReconnectSourceCommand(ReconnectRequest request) {
 		Activity activity = getActivity();
 		Link link = (Link)request.getConnectionEditPart().getModel();
@@ -284,7 +284,7 @@ public class BPELGraphicalEditPolicy extends GraphicalNodeEditPolicy {
 		return (Variable)model;
 	}
 	
-	
+	@Override
 	protected ConnectionAnchor getSourceConnectionAnchor(CreateConnectionRequest request) {
 		EditPart source = request.getSourceEditPart();
 		if (source instanceof NodeEditPart) {
@@ -295,7 +295,7 @@ public class BPELGraphicalEditPolicy extends GraphicalNodeEditPolicy {
 		return null;
 	}
 
-	
+	@Override
 	protected ConnectionAnchor getTargetConnectionAnchor(CreateConnectionRequest request) {
 		EditPart target = request.getTargetEditPart();
 		if (target instanceof NodeEditPart) {
@@ -332,7 +332,7 @@ public class BPELGraphicalEditPolicy extends GraphicalNodeEditPolicy {
 		return null;
 	}
 
-	
+	@Override
 	public Command getCommand(Request request) {
 		if ("changeType".equals(request.getType())) //$NON-NLS-1$
 			return getReplaceInContainerCommand((CreateRequest)request);

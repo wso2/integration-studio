@@ -31,19 +31,19 @@ public class PartProxy extends PartImpl
         proxyURI = new BPELProxyURI(WSDLPackage.eINSTANCE.getPart(), baseURI, qName, name);
     }
 
-    
+    @Override
 	public boolean eIsProxy()
     {
         return true;
     }
 
-    
+    @Override
 	public URI eProxyURI()
     {
         return proxyURI.getProxyURI();
     }
     
-    
+    @Override
 	public String getName()
     {
         return proxyURI.getID();

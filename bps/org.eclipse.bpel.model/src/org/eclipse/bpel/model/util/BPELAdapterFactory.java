@@ -18,6 +18,7 @@ import javax.wsdl.extensions.AttributeExtensible;
 import javax.wsdl.extensions.ElementExtensible;
 import javax.wsdl.extensions.ExtensibilityElement;
 
+import org.eclipse.bpel.model.AbstractAssignBound;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Assign;
 import org.eclipse.bpel.model.AssignE4X;
@@ -143,7 +144,7 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -161,441 +162,446 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	protected BPELSwitch<Adapter> modelSwitch = new BPELSwitch<Adapter>() {
-		
+		@Override
 		public Adapter caseProcess(org.eclipse.bpel.model.Process object) {
 			return createProcessAdapter();
 		}
 
-		
+		@Override
 		public Adapter casePartnerLink(PartnerLink object) {
 			return createPartnerLinkAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseFaultHandler(FaultHandler object) {
 			return createFaultHandlerAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseActivity(Activity object) {
 			return createActivityAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCorrelationSet(CorrelationSet object) {
 			return createCorrelationSetAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseInvoke(Invoke object) {
 			return createInvokeAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseLink(Link object) {
 			return createLinkAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCatch(Catch object) {
 			return createCatchAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseReply(Reply object) {
 			return createReplyAdapter();
 		}
 
-		
+		@Override
 		public Adapter casePartnerActivity(PartnerActivity object) {
 			return createPartnerActivityAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseReceive(Receive object) {
 			return createReceiveAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExit(Exit object) {
 			return createExitAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseThrow(Throw object) {
 			return createThrowAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseWait(Wait object) {
 			return createWaitAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseEmpty(Empty object) {
 			return createEmptyAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseSequence(Sequence object) {
 			return createSequenceAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseWhile(While object) {
 			return createWhileAdapter();
 		}
 
-		
+		@Override
 		public Adapter casePick(Pick object) {
 			return createPickAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseFlow(Flow object) {
 			return createFlowAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseOnAlarm(OnAlarm object) {
 			return createOnAlarmAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseAssignE4X(AssignE4X object) {
 			return createAssignE4XAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExtensionAssignOperation(
 				ExtensionAssignOperation object) {
 			return createExtensionAssignOperationAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseSnippet(Snippet object) {
 			return createSnippetAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseAssign(Assign object) {
 			return createAssignAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCopy(Copy object) {
 			return createCopyAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExtension(Extension object) {
 			return createExtensionAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseScope(Scope object) {
 			return createScopeAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCompensateScope(CompensateScope object) {
 			return createCompensateScopeAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCompensationHandler(CompensationHandler object) {
 			return createCompensationHandlerAdapter();
 		}
 
-		
+		@Override
+		public Adapter caseAbstractAssignBound(AbstractAssignBound object) {
+			return createAbstractAssignBoundAdapter();
+		}
+
+		@Override
 		public Adapter caseTo(To object) {
 			return createToAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseFrom(From object) {
 			return createFromAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseOnMessage(OnMessage object) {
 			return createOnMessageAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExpression(Expression object) {
 			return createExpressionAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseBooleanExpression(BooleanExpression object) {
 			return createBooleanExpressionAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCorrelation(Correlation object) {
 			return createCorrelationAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseMessageExchange(MessageExchange object) {
 			return createMessageExchangeAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseEventHandler(EventHandler object) {
 			return createEventHandlerAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseSource(Source object) {
 			return createSourceAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseTarget(Target object) {
 			return createTargetAdapter();
 		}
 
-		
+		@Override
 		public Adapter casePartnerLinks(PartnerLinks object) {
 			return createPartnerLinksAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseMessageExchanges(MessageExchanges object) {
 			return createMessageExchangesAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseVariables(Variables object) {
 			return createVariablesAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCorrelationSets(CorrelationSets object) {
 			return createCorrelationSetsAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseLinks(Links object) {
 			return createLinksAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCatchAll(CatchAll object) {
 			return createCatchAllAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCorrelations(Correlations object) {
 			return createCorrelationsAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseVariable(Variable object) {
 			return createVariableAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseUnknownExtensibilityAttribute(
 				UnknownExtensibilityAttribute object) {
 			return createUnknownExtensibilityAttributeAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseOnEvent(OnEvent object) {
 			return createOnEventAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseImport(Import object) {
 			return createImportAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseRethrow(Rethrow object) {
 			return createRethrowAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCondition(Condition object) {
 			return createConditionAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseTargets(Targets object) {
 			return createTargetsAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseSources(Sources object) {
 			return createSourcesAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseQuery(Query object) {
 			return createQueryAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseServiceRef(ServiceRef object) {
 			return createServiceRefAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExtensions(Extensions object) {
 			return createExtensionsAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExtensionActivity(ExtensionActivity object) {
 			return createExtensionActivityAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseFromPart(FromPart object) {
 			return createFromPartAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseToPart(ToPart object) {
 			return createToPartAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseOpaqueActivity(OpaqueActivity object) {
 			return createOpaqueActivityAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseForEach(ForEach object) {
 			return createForEachAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseRepeatUntil(RepeatUntil object) {
 			return createRepeatUntilAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseTerminationHandler(TerminationHandler object) {
 			return createTerminationHandlerAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseValidate(Validate object) {
 			return createValidateAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseIf(If object) {
 			return createIfAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseElseIf(ElseIf object) {
 			return createElseIfAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseElse(Else object) {
 			return createElseAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCompletionCondition(CompletionCondition object) {
 			return createCompletionConditionAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseBranches(Branches object) {
 			return createBranchesAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseBPELExtensibleElement(BPELExtensibleElement object) {
 			return createBPELExtensibleElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseDocumentation(Documentation object) {
 			return createDocumentationAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseCompensate(Compensate object) {
 			return createCompensateAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseFromParts(FromParts object) {
 			return createFromPartsAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseToParts(ToParts object) {
 			return createToPartsAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseFailureHandling(FailureHandling object) {
 			return createFailureHandlingAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseFaultOnFailure(FaultOnFailure object) {
 			return createFaultOnFailureAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseRetryFor(RetryFor object) {
 			return createRetryForAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseRetryDelay(RetryDelay object) {
 			return createRetryDelayAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseWSDLElement(WSDLElement object) {
 			return createWSDLElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseIElementExtensible(ElementExtensible object) {
 			return createIElementExtensibleAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseIAttributeExtensible(AttributeExtensible object) {
 			return createIAttributeExtensibleAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExtensibleElement(ExtensibleElement object) {
 			return createExtensibleElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseIExtensibilityElement(ExtensibilityElement object) {
 			return createIExtensibilityElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExtensibilityElement(
 				org.eclipse.wst.wsdl.ExtensibilityElement object) {
 			return createExtensibilityElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseUnknownExtensibilityElement(
 				UnknownExtensibilityElement object) {
 			return createUnknownExtensibilityElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -609,7 +615,7 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	
+	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
 	}
@@ -1087,6 +1093,20 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCompensationHandlerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.AbstractAssignBound <em>Abstract Assign Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.model.AbstractAssignBound
+	 * @generated
+	 */
+	public Adapter createAbstractAssignBoundAdapter() {
 		return null;
 	}
 

@@ -63,7 +63,7 @@ public class ExtendedObjectAdapterImpl extends AdapterImpl implements ExtendedOb
 	/**
 	 * @see org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	
+	@Override
 	public void notifyChanged(Notification notification) {
 		super.notifyChanged(notification);
 	}
@@ -85,7 +85,7 @@ public class ExtendedObjectAdapterImpl extends AdapterImpl implements ExtendedOb
 	/**
 	 * @see org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
 	 */
-	
+	@Override
 	public boolean isAdapterForType(Object type) {
 		return EObjectImpl.class.equals(type);
 	}

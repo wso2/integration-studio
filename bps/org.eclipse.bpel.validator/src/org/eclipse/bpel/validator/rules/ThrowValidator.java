@@ -41,7 +41,7 @@ public class ThrowValidator extends CActivityValidator {
 	 * Start the validation.
 	 * 
 	 */
-	
+	@Override
 	protected void start () {
 		super.start();
 			

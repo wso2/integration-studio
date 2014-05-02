@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ public class AddLinkCommand extends AutoUndoCommand {
 		this.setNameCmd = setNameCmd;
 	}
 	
-	
+	@Override
 	public boolean canDoExecute() {
 		if (link == null || source == null || target == null)  
 			return false;
@@ -49,7 +49,7 @@ public class AddLinkCommand extends AutoUndoCommand {
 		return true;
 	}
 	
-	
+	@Override
 	public void doExecute() {
 		if (setNameCmd != null) {
 			// This is a hack.

@@ -18,7 +18,7 @@ public class BPELResourceFactoryImpl extends XMIResourceFactoryImpl {
 	/**
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl#createResource(URI)
 	 */
-	
+	@Override
 	public Resource createResource(URI uri) {
 		return new BPELResourceImpl(uri);
 	}

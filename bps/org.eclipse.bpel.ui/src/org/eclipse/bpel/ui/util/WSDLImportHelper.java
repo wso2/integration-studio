@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.bpel.ui.util;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.bpel.common.wsdl.helpers.UriAndUrlHelper;
 import org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage;
 import org.eclipse.bpel.model.messageproperties.Property;
 import org.eclipse.bpel.model.messageproperties.PropertyAlias;
@@ -27,6 +29,9 @@ import org.eclipse.bpel.model.partnerlinktype.Role;
 import org.eclipse.bpel.model.partnerlinktype.util.PartnerlinktypeConstants;
 import org.eclipse.bpel.ui.details.providers.XSDTypeOrElementContentProvider;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -52,8 +57,8 @@ public class WSDLImportHelper {
 	static final String WSDL_PREFIX_KIND = "wsdl"; //$NON-NLS-1$
 	static final String XSD_PREFIX_KIND = "xsd"; //$NON-NLS-1$
 
-	
-	
+
+
 	public static void addAllImportsAndNamespaces(Definition definition, IResource contextObject) {
 		String TNS = definition.getTargetNamespace();
 		if (TNS == null) {
@@ -86,7 +91,7 @@ public class WSDLImportHelper {
 					addImportAndNamespace(definition, msg.getEnclosingDefinition());
 			        // add the namespaces of the propertyalias, message, part, type definition
 			        // for maybe the query of the propertyalias will use the elements in the namespaces
-					
+
 					// https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813
 					Query q = ((PropertyAlias) ee).getQuery();
 					if (q != null && q.getValue() != null && !"".equals(q.getValue())) {
@@ -109,9 +114,9 @@ public class WSDLImportHelper {
 											.getQNamePrefixToNamespaceMap();
 									if (map != null) {
 			                            for (Object obj : map.keySet().toArray()) {
-			                                if (prefixList.contains((String) obj)) {
+			                                if (prefixList.contains(obj)) {
 			                                    definition.addNamespace((String) obj,
-			                                            (String) map.get((String) obj));
+			                                            map.get(obj));
 											}
 
 										}
@@ -154,18 +159,6 @@ public class WSDLImportHelper {
 
 		addNamespace(definition, PartnerlinktypeConstants.NAMESPACE, PartnerlinktypePackage.eNS_PREFIX );
 		addNamespace(definition, MessagepropertiesConstants.NAMESPACE, MessagepropertiesPackage.eNS_PREFIX );
-
-//		if (getEnclosingDefinition().getPrefix(MessagepropertiesConstants.NAMESPACE) == null) {
-		//	getEnclosingDefinition().addNamespace(MessagepropertiesPackage.eNS_PREFIX, MessagepropertiesConstants.NAMESPACE);
-		// }
-//		if (definition.getNamespace(PartnerlinktypePackage.eNS_PREFIX) == null) {
-		// definition.addNamespace(PartnerlinktypePackage.eNS_PREFIX,
-		// PartnerlinktypePackage.eNS_URI);
-		// }
-//		if (definition.getNamespace(MessagepropertiesPackage.eNS_PREFIX) == null) {
-		// definition.addNamespace(MessagepropertiesPackage.eNS_PREFIX,
-		// MessagepropertiesPackage.eNS_URI);
-		// }
 	}
 
 	public static void addImportAndNamespace(Definition definition, XSDSchema importedSchema,
@@ -227,14 +220,14 @@ public class WSDLImportHelper {
 				found = true;
 			}
 		}
-		if (!found) {
-			String locationURI = createBuildPathRelativeReference(importingUri, importedUri);
 
-			if (locationURI != null && locationURI.length() != 0) {
+		if( ! found ) {
+			String importLocation = computeRelativeLocationWithProjectScope( importingUri, importedUri );
+			if( importLocation != null ) {
 				// Create and add the import to the definition
 				Import _import = wsdlFactory.createImport();
 				_import.setEDefinition(importedDefinition);
-				_import.setLocationURI(locationURI);
+				_import.setLocationURI( importLocation );
 				_import.setNamespaceURI(namespace);
 				importingDefinition.addImport(_import);
 			} else {
@@ -265,16 +258,13 @@ public class WSDLImportHelper {
 			// Don't add this import!
 			// It's not for something in the workspace.
 		} else {
-			String locationString = createBuildPathRelativeReference(importingUri, importedUri);
-
-			if (locationString != null && locationString.length() != 0) {
+			String importLocation = computeRelativeLocationWithProjectScope( importingUri, importedUri );
+			if( importLocation != null ) {
 				// Create and add the import to the definition
 				Import _import = wsdlFactory.createImport();
 				_import.setESchema(importedSchema);
-				_import.setLocationURI(locationString);
+				_import.setLocationURI( importLocation );
 				_import.setNamespaceURI(namespace);
-				// imports.add(_import);
-				//importingDefinition.getImports().put(importedSchema.getTargetNamespace(), imports);
 				importingDefinition.addImport(_import);
 			}
 			// https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813
@@ -288,16 +278,88 @@ public class WSDLImportHelper {
 		}
 	}
 
-	public static String createBuildPathRelativeReference(URI sourceURI, URI targetURI) {
-		if (sourceURI == null || targetURI == null)
-			throw new IllegalArgumentException();
 
-		// BaseURI source = new BaseURI(sourceURI);
-		// return source.getRelativeURI(targetURI);
-		// TODO: this is probably bogus.
-		String result = targetURI.deresolve(sourceURI, true, true, true).toFileString();
-		// When absolute URLs
-		return (result == null ? targetURI.toString() : result);
+	/**
+	 * Computes a relative location between two EMF URI.
+	 * @param importingUri the URI of the importer
+	 * @param importedUri the URI of the imported
+	 * @return a non-null string
+	 */
+	public static String computeRelativeLocationWithProjectScope( URI importingUri, URI importedUri ) {
+
+		java.net.URI originUri = convertEmfUriToJavaNetUri( importingUri );
+		java.net.URI uri = convertEmfUriToJavaNetUri( importedUri );
+
+		String result;
+
+		// Both are files...
+		// Use UriAndUrlHelper#getRelativeLocationToUri( URI, URI ) only if
+		// both resources are in the same project.
+		if( "file".equalsIgnoreCase( originUri.getScheme())
+				&& "file".equalsIgnoreCase( uri.getScheme())) {
+
+			IPath originPath = new Path( new File( originUri ).getAbsolutePath());
+			IPath path = new Path( new File( uri ).getAbsolutePath());
+
+			IPath rootPath = ResourcesPlugin.getWorkspace().getRoot().getLocation();
+			int cpt = rootPath.segmentCount();
+			String originParent = originPath.segment( cpt );
+
+			// Importing and Imported are in the same project => Use a relative URL.
+			if( originParent != null && originParent.equals( path.segment( cpt )))
+				result = UriAndUrlHelper.getRelativeLocationToUri( originUri, uri ).toString();
+
+			// Otherwise, the import references an absolute URL
+			else
+				result = uri.toString();
+		}
+
+		// Otherwise, compute their relative location
+		else {
+			result = UriAndUrlHelper.getRelativeLocationToUri( originUri, uri ).toString();
+		}
+
+		return result;
+	}
+
+
+	/**
+	 * Converts an EMF URI to a java.net.URI.
+	 * <p>
+	 * This is only interesting for local files.
+	 * </p>
+	 *
+	 * @param emfUri an EMF URI (may have specific schemes)
+	 * @return a java.net.URI, or null if it could not be converted
+	 */
+	public static java.net.URI convertEmfUriToJavaNetUri( org.eclipse.emf.common.util.URI emfUri ) {
+
+		File f = getFileFromEmfUri( emfUri );
+		return f == null ? UriAndUrlHelper.urlToUri( emfUri.toString()) : f.toURI();
+	}
+
+
+	/**
+	 * Converts an EMF URI to a java.net.URI.
+	 * <p>
+	 * This is only interesting for local files.
+	 * </p>
+	 *
+	 * @param emfUri an EMF URI (may have specific schemes)
+	 * @return a java.net.URI, or null if it could not be converted
+	 */
+	public static File getFileFromEmfUri( org.eclipse.emf.common.util.URI emfUri ) {
+
+		File file = null;
+		if( emfUri.isFile())
+			file = new File( emfUri.toFileString());
+		else if( emfUri.isPlatform()) {
+			IPath path = ResourcesPlugin.getWorkspace().getRoot().getLocation();
+			path = path.append( emfUri.toPlatformString( true ));
+			file = path.toFile();
+		}
+
+		return file;
 	}
 
 	public static Definition getDefinition(org.eclipse.bpel.model.Import bpelImport) {

@@ -9,6 +9,8 @@ package org.eclipse.bpel.model.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.wsdl.extensions.ExtensibilityElement;
+
 import org.eclipse.bpel.model.BPELExtensibleElement;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Documentation;
@@ -75,7 +77,7 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.BPEL_EXTENSIBLE_ELEMENT;
 	}
@@ -220,7 +222,7 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -235,7 +237,7 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION:
@@ -249,7 +251,7 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION:
@@ -264,7 +266,7 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION:
@@ -279,7 +281,7 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.BPEL_EXTENSIBLE_ELEMENT__DOCUMENTATION:
@@ -296,7 +298,7 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 	 * @generated NOT
 	 */
 
-	
+	@Override
 	public void setElement(Element elm) {
 		super.setElement(elm);
 
@@ -312,7 +314,7 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 	 * @generated NOT
 	 */
 
-	
+	@Override
 	public Element getElement() {
 		return super.getElement();
 	}
@@ -358,14 +360,14 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 
 	// Reconciliation stuff. Has copy in ExtensibilityElement
 	// TODO: (DU) remove duplication					
-	
+	@Override
 	protected void reconcile(Element changedElement) {
 		//	    reconcileAttributes(changedElement);
 		//	    reconcileContents(changedElement);
 		ReconciliationHelper.getInstance().reconcile(this, changedElement);
 	}
 
-	
+	@Override
 	public void elementChanged(Element changedElement) {
 		if (!isUpdatingDOM()) {
 			if (!isReconciling) {
@@ -397,6 +399,13 @@ public class BPELExtensibleElementImpl extends ExtensibleElementImpl implements
 
 	public void setUpdatingDOM(boolean updatingDOM) {
 		this.updatingDOM = updatingDOM;
+	}
+
+	//	@Override
+	public ExtensibilityElement removeExtensibilityElement(
+			ExtensibilityElement arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 } //BPELExtensibleElementImpl

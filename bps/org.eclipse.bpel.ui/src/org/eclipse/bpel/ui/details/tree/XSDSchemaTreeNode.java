@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,12 +25,12 @@ public class XSDSchemaTreeNode extends XSDTreeNode {
 		super(schema, isCondensed);
 	}
 
-	
+	@Override
 	public boolean isNodeFlattenable() { 
 		return true; 
 	}
 	
-	
+	@Override
 	public Object[] getChildren() {
 		XSDSchema schema = (XSDSchema)modelObject;
 		ArrayList<TreeNode> list = new ArrayList<TreeNode>();
@@ -40,14 +40,14 @@ public class XSDSchemaTreeNode extends XSDTreeNode {
 		return list.toArray();
 	}
 
-	
+	@Override
 	public boolean hasChildren() {
 		XSDSchema schema = (XSDSchema)modelObject;
 		return schema.getElementDeclarations().size() > 0 ||
 		 schema.getTypeDefinitions().size() > 0;
 	}
 	
-	
+	@Override
 	public String getLabel() {
 		XSDSchema schema = (XSDSchema)modelObject;
 		schema.getTargetNamespace();
@@ -60,7 +60,7 @@ public class XSDSchemaTreeNode extends XSDTreeNode {
 							new Object[]{ tns });		
 	}
 	
-	
+	@Override
 	public String getLabelSuffix() {
 		return super.getLabelSuffix();
 	}

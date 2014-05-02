@@ -36,7 +36,7 @@ public class ExtensionActivityImpl extends ActivityImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.EXTENSION_ACTIVITY;
 	}

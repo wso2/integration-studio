@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 Intel Corporation.
+ * Copyright (c) 2008, 2012 Intel Corporation.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,7 +46,7 @@ public abstract class SwapInListCommand extends AutoUndoCommand {
 	protected abstract List getList();
 
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void doExecute() {
 		List list = getList();
 		if (list == null || list.isEmpty())

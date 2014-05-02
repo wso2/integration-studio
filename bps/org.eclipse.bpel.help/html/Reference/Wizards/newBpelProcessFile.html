@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="CONTENT-TYPE" />
+<link rel="stylesheet" href="../../book.css" type="text/css" />
+<title>New BPEL Process File</title>
+</head>
+
+<body>
+	<h1>New BPEL Process File</h1>
+
+	<p>
+		The <strong>New BPEL Process File Wizard</strong> allows to create a BPEL process based on one of several
+		templates defined by the wizard. The wizard assumes the new BPEL
+		process is to be created in the currently selected project of the 
+			<strong>Project Explorer</strong>  or 
+			<strong>Navigator</strong>  view. If a BPEL
+		process of the same name already exists within the project, a warning
+		message will be displayed before any action is performed.
+	</p>
+	
+	<p>
+		<img src="../../../images/reference/Create_a_BPEL_Process_File_01.png" alt="New BPEL Process" />
+	</p>
+	<p><b>New BPEL Process</b></p>
+	
+	<p>The first page includes the following options:</p>
+	<p><b>New BPEL Process file wizard. First page options.</b></p>
+
+	<table summary="New BPEL Process file wizard. First page options." border="1">
+		<colgroup>
+			<col align="left" />
+			<col align="left" />
+			<col align="left" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th align="left">Field</th>
+				<th align="left">Description</th>
+				<th align="left">Default</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align="left">Name</td>
+				<td align="left">Enter the process name.</td>
+				<td align="left">no default value</td>
+			</tr>
+			<tr>
+				<td align="left">Namespace</td>
+				<td align="left">Enter the namespace URL. All namespaces should
+					follow the W3C recommendation (<a href="http://www.w3.org/1999/10/nsuri">http://www.w3.org/1999/10/nsuri</a>).</td>
+				<td align="left">no default value</td>
+			</tr>
+			<tr>
+				<td align="left">Template</td>
+				<td align="left">Select one of the provided templates:
+						<ul>
+							<li><em>Asynchronous BPEL Process</em> - generates
+									the basis of orchestration logic: receive and reply activities
+									are included into the process; client WSDL is generated,
+									service is defined in the class="property">parentlink of the
+									process. The caller is notified asynchronously when the process
+									completes.
+							</li>
+							<li><em>Empty BPEL Process</em> - list of services
+									participating in this BPEL process together with the one of
+									messages used within the process is empty.There are no any
+									orchestration logic.
+							</li>
+							<li><em>Synchronous BPEL Process</em> - similar to
+									Asynchronous BPEL Process template except the fact that here
+									the caller is notified synchronously when the process
+									completes.
+							</li>
+						</ul>
+				</td>
+				<td align="left">Asynchronous BPEL Process</td>
+			</tr>
+			<tr>
+				<td align="left">Abstract Process</td>
+				<td align="left">Specifies the created process as an abstract
+					one -partially specified processes that are not intended to be executed.</td>
+				<td align="left">unchecked</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p>The second page of the wizard defines the process interface
+				(WSDL file) including the web service address, port definition and
+				protocol. The wizard will populate all of these fields with
+				appropriate default values based on the information provided on the
+				previous page.
+	</p>
+	
+	<p>
+		<img src="../../../images/reference/Create_a_BPEL_Process_File_02.png" alt="New BPEL Process" />
+	</p>
+	<p><b>New BPEL Process</b></p>
+		
+	<p>The second page includes the following options:</p> </a>
+	<p><b>New BPEL process file wizard. Second page options.</b></p>
+
+
+	<table summary="New BPEL process file wizard. Second page options."
+		border="1">
+		<colgroup>
+			<col align="left" />
+			<col align="left" />
+			<col align="left" />
+		</colgroup>
+		<thead>
+			<tr>
+				<th align="left">Field</th>
+				<th align="left">Description</th>
+				<th align="left">Default</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align="left">Service Name</td>
+				<td align="left">Enter a WDSL service name for the BPEL process.</td>
+				<td align="left">The process name</td>
+			</tr>
+			<tr>
+				<td align="left">Port Name</td>
+				<td align="left">Enter a WDSL port name for the BPEL process.</td>
+				<td align="left">The process name + 'Port'</td>
+			</tr>
+			<tr>
+				<td align="left">Service Address</td>
+				<td align="left">Enter an address of the WDSL service for the BPEL process.</td>
+				<td align="left">http://localhost:8080/ + process name</td>
+			</tr>
+			<tr>
+				<td align="left">Binding Protocol</td>
+				<td align="left">Choose the binding protocol that you use in the WDSL: SOAP or HTTP</td>
+				<td align="left">SOAP</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>The final page allows you to select the target project and
+		folder for the new process artifacts. If a process with the name you
+		provided already exists in that project and folder, the wizard will
+		display an error message.
+	</p>
+	<p>
+		If the project is not a BPEL Project (does not define a BPEL facet)
+		the wizard will display a warning message. You can still create the
+		BPEL process, however it will not be deployable to a BPEL runtime
+		engine until the BPEL facet has been added to the project (see the <strong>Help</strong>
+		menu for more information about project facets).
+	</p>
+	
+	<div style="border: solid black 1px; background-color: #ccc">
+		<h2>Important</h2>
+
+		<p>
+			BPEL artifacts must be contained somewhere within the
+			<code>bpelContent</code> folder hierarchy if you intend to deploy the process. Complex
+			projects may be organized into a folder hierarchy, but these folders must be contained within
+			<code>bpelContent</code>.
+		</p>
+		<p>
+			The <code>Deployment Descriptor</code> file must be contained within the
+			<code>bpelContent</code> folder and at the root of any folder hierarchy.
+		</p>
+	</div>
+	
+	<p>
+		<img src="../../../images/reference/Create_a_BPEL_Process_File_03.png" alt="New BPEL Process" />
+	</p>
+	<p class="title"><b>New BPEL Process</b></p>
+	<p>You will be asked if you wish for the BPEL perspective to be opened once this wizard completes.</p>
+</body>
+</html>

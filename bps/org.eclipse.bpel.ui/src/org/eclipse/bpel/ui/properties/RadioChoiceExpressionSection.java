@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ public abstract class RadioChoiceExpressionSection extends ExpressionSection {
 	protected int fButtonCount ;
 	protected int fCurrentButtonIndex;
 	
-	
+	@Override
 	protected String getExpressionType() { 
 		return getButtonExprType(fCurrentButtonIndex); 
 	}
@@ -50,7 +50,7 @@ public abstract class RadioChoiceExpressionSection extends ExpressionSection {
 	 * 
 	 */
 	
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 		
 		super.basicSetInput(newInput);
@@ -102,7 +102,7 @@ public abstract class RadioChoiceExpressionSection extends ExpressionSection {
 	    fParentComposite.layout(true);
 	}
 	
-	
+	@Override
 	protected void updateWidgets() {
 		super.updateWidgets();
 		updateRadioButtonWidgets();
@@ -156,7 +156,7 @@ public abstract class RadioChoiceExpressionSection extends ExpressionSection {
 	protected abstract void radioButtonSelected (int index, Button button) ;
 
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		super.createClient(parent);	
 		createRadioButtonWidgets(fParentComposite);
@@ -172,7 +172,7 @@ public abstract class RadioChoiceExpressionSection extends ExpressionSection {
 	 * by that editor.  (calculateEnabled() will decide which radio buttons to actually
 	 * enable for the selected editor).
 	 */
-	
+	@Override
 	protected boolean isEditorSupported(IExpressionEditor exEditor) {
 				
 		for (int i = 0; i< fButtonCount; i++) {

@@ -210,7 +210,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return MessagepropertiesPackage.Literals.PROPERTY_ALIAS;
 	}
@@ -479,7 +479,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -494,7 +494,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
@@ -524,7 +524,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
@@ -557,7 +557,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
@@ -590,7 +590,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case MessagepropertiesPackage.PROPERTY_ALIAS__MESSAGE_TYPE:
@@ -624,7 +624,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -647,7 +647,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	/**
 	 * Override the XML element token.
 	 */
-	
+	@Override
 	public QName getElementType() {
 		if (elementType == null)
 			elementType = new QName(MessagepropertiesConstants.NAMESPACE,
@@ -659,7 +659,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	// Reconcile methods: DOM -> Model
 	//
 
-	
+	@Override
 	public void reconcileAttributes(Element changedElement) {
 		super.reconcileAttributes(changedElement);
 
@@ -669,7 +669,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		reconcileReferences(false);
 	}
 
-	
+	@Override
 	public void reconcileReferences(boolean deep) {
 		Definition definition = getEnclosingDefinition();
 		Element element = getElement();
@@ -775,7 +775,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		super.reconcileReferences(deep);
 	}
 
-	
+	@Override
 	public void handleUnreconciledElement(Element child,
 			Collection remainingModelObjects) {
 		//System.out.println("PropertyAliasImpl.handleUnreconciledElement()");
@@ -792,7 +792,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 	// For reconciliation: Model -> DOM
 	//
 
-	
+	@Override
 	protected void changeAttribute(EAttribute eAttribute) {
 		if (isReconciling)
 			return;
@@ -926,7 +926,7 @@ public class PropertyAliasImpl extends ExtensibilityElementImpl implements
 		}
 	}
 
-	
+	@Override
 	public Element createElement() {
 		// Register a prefix for the namespace.  
 		// If we don't do this, the WSDL model will deserialize our elements as UnknownExtensibilityElements.

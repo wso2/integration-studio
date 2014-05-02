@@ -4,13 +4,13 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.visualdatamapper.diagram; singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: dataMapper.diagram.part.DataMapperDiagramEditorPlugin
+Bundle-Activator: org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: dataMapper.diagram.custom.util,
- dataMapper.diagram.edit.parts,
- dataMapper.diagram.part,
- dataMapper.diagram.providers
+Export-Package: org.wso2.developerstudio.datamapper.diagram.custom.util,
+ org.wso2.developerstudio.datamapper.diagram.edit.parts,
+ org.wso2.developerstudio.datamapper.diagram.part,
+ org.wso2.developerstudio.datamapper.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.core.expressions,

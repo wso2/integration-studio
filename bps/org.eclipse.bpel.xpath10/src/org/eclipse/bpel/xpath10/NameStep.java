@@ -65,12 +65,12 @@ public class NameStep extends Step {
     }
 
     
-	
+	@Override
 	protected String asString () {
 		return asText();
 	}
 	
-	
+	@Override
 	protected String asText() {
 		StringBuilder buf = new StringBuilder(64);
 

@@ -248,7 +248,7 @@ public class FunctionImpl extends FacadeElementImpl implements Function {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return FMPackage.Literals.FUNCTION;
 	}
@@ -459,7 +459,7 @@ public class FunctionImpl extends FacadeElementImpl implements Function {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case FMPackage.FUNCTION__NAME:
@@ -492,7 +492,7 @@ public class FunctionImpl extends FacadeElementImpl implements Function {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FMPackage.FUNCTION__NAME:
@@ -535,7 +535,7 @@ public class FunctionImpl extends FacadeElementImpl implements Function {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FMPackage.FUNCTION__NAME:
@@ -577,7 +577,7 @@ public class FunctionImpl extends FacadeElementImpl implements Function {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FMPackage.FUNCTION__NAME:
@@ -609,7 +609,7 @@ public class FunctionImpl extends FacadeElementImpl implements Function {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2007 IBM Corporation and others.
+ * Copyright (c) 2003, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.wst.server.core.internal.Module;
 import org.eclipse.wst.server.core.internal.ModuleFactory;
 import org.eclipse.wst.server.core.internal.ServerPlugin;
 import org.eclipse.wst.server.core.model.ModuleDelegate;
+import org.eclipse.wst.server.core.model.ModuleFactoryDelegate;
 import org.eclipse.wst.server.core.util.ProjectModuleFactoryDelegate;
 
 /**
@@ -67,7 +68,7 @@ public class BPELModuleFactoryDelegate extends ProjectModuleFactoryDelegate impl
 		super();
 	}
 	
-	
+	@Override
 	public void initialize() {
 		super.initialize();
 		if( getId().equals(BPEL_FACTORY))
@@ -75,7 +76,7 @@ public class BPELModuleFactoryDelegate extends ProjectModuleFactoryDelegate impl
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 	}
 	
-	
+	@Override
 	protected IModule[] createModules(IProject project) {
 		IVirtualComponent component = ComponentCore.createComponent(project);
 		if(component != null)
@@ -84,7 +85,7 @@ public class BPELModuleFactoryDelegate extends ProjectModuleFactoryDelegate impl
 	}
 
 
-	
+	@Override
 	public ModuleDelegate getModuleDelegate(IModule module) {
 		if (module == null)
 			return null;
@@ -100,8 +101,10 @@ public class BPELModuleFactoryDelegate extends ProjectModuleFactoryDelegate impl
 		return md;
 	}
 
+	@SuppressWarnings("restriction")
 	protected boolean canHandleProject(IProject p) {
-		return FacetedProjectUtilities.isProjectOfType(p, IBPELModuleFacetConstants.BPEL20_PROJECT_FACET);
+		boolean result = FacetedProjectUtilities.isProjectOfType(p, IBPELModuleFacetConstants.BPEL20_PROJECT_FACET);
+		return result;
 	}
 	
 	protected IModule[] createModuleDelegates(IVirtualComponent component) {
@@ -110,12 +113,29 @@ public class BPELModuleFactoryDelegate extends ProjectModuleFactoryDelegate impl
 		}
 		
 		List<IModule> projectModules = new ArrayList<IModule>();
+		IProject project = component.getProject();
+		
 		try {
-			if (canHandleProject(component.getProject())) {
+			if (canHandleProject(project)) {
+				// defer to other ProjectModuleFactoryDelegates who think they can handle BPEL modules
+				ModuleFactory[] factories = ServerPlugin.getModuleFactories();
+				for (int i = 0; i < factories.length; i++) {
+					if(!factories[i].getId().equals(BPEL_FACTORY)) { // it's not me!
+						ModuleFactoryDelegate d = factories[i].getDelegate(new NullProgressMonitor());
+						if (d instanceof ProjectModuleFactoryDelegate) {
+							ProjectModuleFactoryDelegate pd = (ProjectModuleFactoryDelegate)d;
+							IModule[] modules = pd.getModules(project);
+							if (modules!=null && modules.length>0)
+								// return empty array - let the other guy handle this one
+								return new IModule[0];
+						}
+					}
+				}
+				
 				String type = IBPELModuleFacetConstants.BPEL20_MODULE_TYPE;
 				String version = IBPELModuleFacetConstants.BPEL20_MODULE_VERSION;
-				IModule module = createModule(component.getName(), component.getName(), type, version, component.getProject());
-				FlatComponentDeployable moduleDelegate = createModuleDelegate(component.getProject(), component);
+				IModule module = createModule(component.getName(), component.getName(), type, version, project);
+				FlatComponentDeployable moduleDelegate = createModuleDelegate(project, component);
 				moduleDelegates.put(module, moduleDelegate);
 				projectModules.add(module);
 
@@ -147,7 +167,7 @@ public class BPELModuleFactoryDelegate extends ProjectModuleFactoryDelegate impl
 	 * 
 	 * @return a possibly empty array of paths
 	 */
-	
+	@Override
 	protected IPath[] getListenerPaths() {
 		return new IPath[] { new Path(".project"), // nature //$NON-NLS-1$
 				new Path(StructureEdit.MODULE_META_FILE_NAME), // component
@@ -155,7 +175,7 @@ public class BPELModuleFactoryDelegate extends ProjectModuleFactoryDelegate impl
 		};
 	}
 
-	
+	@Override
 	protected void clearCache(IProject project) {
 		super.clearCache(project);
 		List<IModule> modulesToRemove = null;

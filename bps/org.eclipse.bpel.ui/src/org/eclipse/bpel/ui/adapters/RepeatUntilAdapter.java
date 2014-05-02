@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,14 +22,14 @@ import org.eclipse.gef.EditPart;
 public class RepeatUntilAdapter extends ContainerActivityAdapter implements IAnnotatedElement {
 
 
-	
+	@Override
 	public IContainer createContainerDelegate() {
 		return new ActivityContainer(BPELPackage.eINSTANCE.getRepeatUntil_Activity());
 	}
 
 	/* EditPartFactory */
 	
-	
+	@Override
 	public EditPart createEditPart(EditPart context, Object model) {	
 		EditPart result = new SequenceEditPart();
 		result.setModel(model);
@@ -38,7 +38,7 @@ public class RepeatUntilAdapter extends ContainerActivityAdapter implements IAnn
 
 	/* IOutlineEditPartFactory */
 	
-	
+	@Override
 	public EditPart createOutlineEditPart(EditPart context, Object model) {
 		EditPart result = new OutlineTreeEditPart();
 		result.setModel(model);

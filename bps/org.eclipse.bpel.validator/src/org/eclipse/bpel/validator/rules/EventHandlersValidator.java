@@ -42,7 +42,7 @@ public class EventHandlersValidator extends CValidator {
 	 * (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		fOnEvents = checkChild (ND_ON_EVENT,0,Integer.MAX_VALUE);

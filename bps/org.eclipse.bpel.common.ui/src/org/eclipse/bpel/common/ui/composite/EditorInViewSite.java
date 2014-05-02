@@ -41,7 +41,7 @@ public class EditorInViewSite extends EditorSite {
 	/**
 	 * Returns a CompositeEditorKeybinding for an embedded editor.
 	 */
-	
+	@Override
 	public IKeyBindingService getKeyBindingService() {
 		if (keyBindingService == null) {
 			INestableKeyBindingService service = (INestableKeyBindingService) parent.getKeyBindingService();
@@ -90,7 +90,7 @@ public class EditorInViewSite extends EditorSite {
 	 *
 	 * @see #handleSelectionChanged
 	 */
-	
+	@Override
 	public void setSelectionProvider(ISelectionProvider provider) {
 		ISelectionProvider oldSelectionProvider = selectionProvider;
 		selectionProvider = provider;
@@ -139,7 +139,7 @@ public class EditorInViewSite extends EditorSite {
 		}
 	}
 
-	
+	@Override
 	public ISelectionProvider getSelectionProvider() {
 		return selectionProvider;
 	}
@@ -154,7 +154,7 @@ public class EditorInViewSite extends EditorSite {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ui.internal.PartSite#dispose()
 	 */
-	
+	@Override
 	public void dispose() {
 	   deactivate();
 	   super.dispose();

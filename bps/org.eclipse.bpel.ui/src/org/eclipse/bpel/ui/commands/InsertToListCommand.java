@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 Intel Corporation.
+ * Copyright (c) 2008, 2012 Intel Corporation.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ public abstract class InsertToListCommand extends AutoUndoCommand {
 	 */
 	protected abstract List getList();
 
-	
+	@Override
 	public void doExecute() {
 		if (newElement == null) throw new IllegalStateException();
 		List list = getList();

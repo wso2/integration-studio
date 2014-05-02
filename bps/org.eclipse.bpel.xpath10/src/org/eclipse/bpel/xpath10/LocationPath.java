@@ -89,7 +89,7 @@ public class LocationPath extends Expr {
 	}
 	
 
-	
+	@Override
 	protected String asText()
     {
         StringBuilder buf = new StringBuilder();
@@ -112,7 +112,7 @@ public class LocationPath extends Expr {
 	 * @see org.eclipse.bpel.xpath10.Expr#toString()
 	 */
 	
-	
+	@Override
 	public String toString()
     {
         StringBuilder buf = new StringBuilder();
@@ -136,7 +136,7 @@ public class LocationPath extends Expr {
 	/**
 	 * @see org.eclipse.bpel.xpath10.Expr#getPosition()
 	 */
-	
+	@Override
 	public int getPosition () 
 	{
 		return fSteps.size() > 0 ? fSteps.get(0).getPosition() : -1;
@@ -145,7 +145,7 @@ public class LocationPath extends Expr {
 	/**
 	 * @see org.eclipse.bpel.xpath10.Expr#getEndPosition()
 	 */
-	
+	@Override
 	public int getEndPosition () {
 		int size = fSteps.size();
 		return size > 0 ? fSteps.get(size-1).getEndPosition() : -1;

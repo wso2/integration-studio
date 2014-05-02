@@ -27,19 +27,19 @@ public class PortTypeProxy extends PortTypeImpl
         proxyURI = new BPELProxyURI(WSDLPackage.eINSTANCE.getPortType(), baseURI, qname);
     }
 
-    
+    @Override
 	public boolean eIsProxy()
     {
         return true;
     }
 
-    
+    @Override
 	public URI eProxyURI()
     {
         return proxyURI.getProxyURI();
     }
     
-    
+    @Override
 	public QName getQName()
     {
         return proxyURI.getQName();

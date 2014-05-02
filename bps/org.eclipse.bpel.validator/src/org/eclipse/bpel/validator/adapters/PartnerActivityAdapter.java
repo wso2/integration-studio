@@ -39,7 +39,7 @@ public class PartnerActivityAdapter extends BasicAdapter {
 	 * @see org.eclipse.bpel.validator.adapters.BasicAdapter#getNodeList(javax.xml.namespace.QName)
 	 */
 	
-	
+	@Override
 	public List<INode> getNodeList ( QName name ) {
 		PartnerActivity pa = (PartnerActivity) getTarget();
 		

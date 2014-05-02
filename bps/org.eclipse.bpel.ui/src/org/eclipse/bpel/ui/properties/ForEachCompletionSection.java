@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,18 +29,18 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class ForEachCompletionSection extends ExpressionSection {
 
-	
+	@Override
 	protected String getExpressionType() { 
 		return IEditorConstants.ET_UNSIGNED_INT; 
 	}	
 	
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();		
 		fAdapters[0].addToObject( getExpressionTarget() );		
 	}
 	
-	
+	@Override
 	protected Composite createNoEditorWidgets(Composite composite) {
 		
 		return createNoEditorWidgetsCreateComposite(composite,			
@@ -50,7 +50,7 @@ public class ForEachCompletionSection extends ExpressionSection {
 				Messages.ForEachCompletionConditionSection_Create_a_New_Condition_3);			
 	}
 	
-	
+	@Override
 	protected EStructuralFeature getStructuralFeature (EObject object) {
 		if (object instanceof ForEach) {
 			return BPELPackage.eINSTANCE.getCompletionCondition_Branches() ;
@@ -59,7 +59,7 @@ public class ForEachCompletionSection extends ExpressionSection {
 	}
 	
 	
-	
+	@Override
 	protected EObject getExpressionTarget() {
 		
 		EObject obj = getInput();
@@ -79,7 +79,7 @@ public class ForEachCompletionSection extends ExpressionSection {
 		return super.getExpressionTarget();
 	}
 
-	
+	@Override
 	protected Expression getExpression4Target ( Expression expression ) {
 		
 		if (expression instanceof Branches) {
@@ -95,7 +95,7 @@ public class ForEachCompletionSection extends ExpressionSection {
 	}
 	
 
-	
+	@Override
 	protected boolean isValidClientUseType(String useType) {
 		return IBPELUIConstants.USE_TYPE_CONDITION.equals(useType);
 	}

@@ -22,7 +22,7 @@ public class QNameWordDetector extends XMLNameWordDetector {
 	/**
 	 * These always start with a $
 	 */
-	
+	@Override
 	public boolean isWordStart (char c) {
 		colCount = 0;
 		return super.isWordStart(c);
@@ -31,7 +31,7 @@ public class QNameWordDetector extends XMLNameWordDetector {
 	/** 
 	 *
 	 */
-	
+	@Override
 	public boolean isWordPart (char c) {
 		if (c == ':') {
 			if (colCount == 0) {

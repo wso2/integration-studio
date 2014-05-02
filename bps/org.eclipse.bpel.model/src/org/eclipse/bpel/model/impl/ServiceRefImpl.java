@@ -14,6 +14,8 @@
  */
 package org.eclipse.bpel.model.impl;
 
+import javax.wsdl.extensions.ExtensibilityElement;
+
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.ServiceRef;
 import org.eclipse.bpel.model.util.BPELConstants;
@@ -97,7 +99,7 @@ public class ServiceRefImpl extends ExtensibleElementImpl implements ServiceRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.SERVICE_REF;
 	}
@@ -160,7 +162,7 @@ public class ServiceRefImpl extends ExtensibleElementImpl implements ServiceRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
@@ -176,7 +178,7 @@ public class ServiceRefImpl extends ExtensibleElementImpl implements ServiceRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
@@ -194,7 +196,7 @@ public class ServiceRefImpl extends ExtensibleElementImpl implements ServiceRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
@@ -212,7 +214,7 @@ public class ServiceRefImpl extends ExtensibleElementImpl implements ServiceRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
@@ -230,7 +232,7 @@ public class ServiceRefImpl extends ExtensibleElementImpl implements ServiceRef 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -242,6 +244,13 @@ public class ServiceRefImpl extends ExtensibleElementImpl implements ServiceRef 
 		result.append(value);
 		result.append(')');
 		return result.toString();
+	}
+
+	//	@Override
+	public ExtensibilityElement removeExtensibilityElement(
+			ExtensibilityElement arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 } //ServiceRefImpl

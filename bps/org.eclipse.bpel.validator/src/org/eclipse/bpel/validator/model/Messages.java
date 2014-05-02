@@ -42,7 +42,7 @@ public class Messages {
 	
 	/** The empty resource bundle */
 	static final ResourceBundle EMPTY_BUNDLE = new ListResourceBundle() {
-		
+		@Override
 		protected Object[][] getContents() {
 			return new Object[][] {
 				{"empty", "empty"}

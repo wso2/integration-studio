@@ -91,7 +91,7 @@ public class NodeNameFilter extends Filter implements IFilter<INode> {
 	 * @return a to string pretty print of this filter
 	 */
 
-	
+	@Override
 	public String toString() {
 		return toString (fNodeNames);
 	}

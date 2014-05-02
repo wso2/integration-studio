@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 IBM Corporation, University of Stuttgart (IAAS) and others.
+ * Copyright (c) 2008, 2012 IBM Corporation, University of Stuttgart (IAAS) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 
 package org.eclipse.bpel.apache.ode.deploy.ui.pages;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,9 +34,10 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 import org.eclipse.bpel.apache.ode.deploy.ui.Activator;
 import org.eclipse.bpel.apache.ode.deploy.ui.editors.ODEDeployMultiPageEditor;
+import org.eclipse.bpel.apache.ode.deploy.ui.messages.ODEDeployUIMessages;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployResourceSetImpl;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
-import org.eclipse.bpel.model.BPELFactory;
+import org.eclipse.bpel.model.Import;
 import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.PartnerLinks;
 import org.eclipse.bpel.model.Process;
@@ -57,9 +59,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
@@ -67,6 +67,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
@@ -154,7 +155,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 	private Form mainform;
 	// Bugzilla 324164
 	// we will manage this for ServiceCellEditor and PortTypeLabelProvider
-	private ResourceSetImpl resourceSet = null;
+	private DeployResourceSetImpl resourceSet = null;
 	
 	public ProcessPage(FormEditor editor, ProcessType pt) {
 		super(editor, "ODED" + pt.getName().toString(), pt.getName().getLocalPart()); //$NON-NLS-1$
@@ -166,9 +167,25 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		this.domain = this.editor.getEditingDomain();
 		// Bugzilla 324164
 		resourceSet = new DeployResourceSetImpl();
+		Process process = processType.getModel();
+		for (Import imp : process.getImports()) {
+			try {
+				// NOTE: File URIs will be resolved by DeployUtils#loadAllWSDLFromProject(). This avoids the
+				// hassle of having to deal with relative file paths here.
+				URI uri = URI.createURI(imp.getLocation());
+				if (!uri.isFile())
+					resourceSet.getResource(uri, true);
+			} catch (Exception e) {
+				MessageDialog.openError(editor.getSite().getShell(), "Load Error", "Unable to load the import file:\n\n\t"+
+						imp.getLocation()+"\n\n"+
+						"Reason: "+e.getMessage()+"\n"+
+						"Process definitions may not be available!"
+				);
+			}
+		}
 	}
 
-	
+	@Override
 	protected void createFormContent(IManagedForm managedForm) {
 		toolkit = managedForm.getToolkit();
 		ScrolledForm form = managedForm.getForm();
@@ -176,7 +193,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		toolkit.decorateFormHeading(form.getForm());
 		mainform = form.getForm(); 
 		mainform.addMessageHyperlinkListener(new HyperlinkAdapter() {
-			
+			@Override
 			public void linkActivated(HyperlinkEvent e) {
 				refreshModel();
 			}
@@ -204,7 +221,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 
 		final Composite statusArea = new Composite(client, SWT.NONE);
 		statusArea.setLayout(new GridLayout(2, false));
-		toolkit.createLabel(statusArea, "This process is ");
+		toolkit.createLabel(statusArea, ODEDeployUIMessages.ProcessPage_GeneralStatus_Label);
 		final Combo comboStatus = new Combo(statusArea, SWT.READ_ONLY);
 		toolkit.adapt(comboStatus);
 		comboStatus.setItems(PROCESS_STATUS);
@@ -219,7 +236,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		}
 		comboStatus.addSelectionListener(new SelectionAdapter() {
 		
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Command setActiveCommand = SetCommand.create(domain, processType, ddPackage.eINSTANCE.getProcessType_Active(), comboStatus.getSelectionIndex() == STATUS_ACTIVATED);
 				Command setRetiredCommand = SetCommand.create(domain, processType, ddPackage.eINSTANCE.getProcessType_Retired(), comboStatus.getSelectionIndex() == STATUS_RETIRED);				
@@ -230,12 +247,12 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			}
 		});
 		
-		final Button btnRunInMemory = toolkit.createButton(client, "Run this process in memory", SWT.CHECK); 
-		btnRunInMemory.setToolTipText("Define a process as being executed only in-memory. This gives better performance, but the processes cannot be queried by using the ODE Management API.");
+		final Button btnRunInMemory = toolkit.createButton(client, ODEDeployUIMessages.ProcessPage_GeneralMemoryButton, SWT.CHECK); 
+		btnRunInMemory.setToolTipText(ODEDeployUIMessages.ProcessPage_GeneralMemoryButton_Tooltip);
 		btnRunInMemory.setSelection(processType.isInMemory());
 		btnRunInMemory.addSelectionListener(new SelectionAdapter() {
 		
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Command setInMemoryCommand = SetCommand.create(domain, processType, ddPackage.eINSTANCE.getProcessType_InMemory(), btnRunInMemory.getSelection());
 				domain.getCommandStack().execute(setInMemoryCommand);
@@ -243,10 +260,8 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		
 		});
 
-		String serviceDescription = "The table contains interfaces the process provides.  Specify the service, port and binding you want to use for each PartnerLink listed";
-		createInterfaceWidget(form.getBody(), processType, managedForm, "Inbound Interfaces (Services)", serviceDescription, true);
-		String invokeDescription = "The table contains interfaces the process invokes.  Specify the service, port and binding you want to use for each PartnerLink listed";	
-		createInterfaceWidget(form.getBody(), processType, managedForm, "Outbound Interfaces (Invokes)", invokeDescription, false);		
+		createInterfaceWidget(form.getBody(), processType, managedForm, "Inbound Interfaces (Services)", ODEDeployUIMessages.ProcessPage_Service_Description, true);
+		createInterfaceWidget(form.getBody(), processType, managedForm, "Outbound Interfaces (Invokes)", ODEDeployUIMessages.ProcessPage_Invoke_Description, false);		
 
 		createProcessMonitoringSection(form.getBody());
 		createScopeMonitoringSection(form.getBody());
@@ -502,7 +517,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		ctv.setContentProvider(new ArrayContentProvider());
 		ctv.setLabelProvider(new LabelProvider() {
 		
-			
+			@Override
 			public String getText(Object element) {
 				return eventNameById.get(element);
 			}
@@ -535,7 +550,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		}
 		
 		final SelectionAdapter sa = new SelectionAdapter(){
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnAll == e.getSource()) {
 					ctv.getControl().setEnabled(false);
@@ -570,6 +585,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		ctv.addSelectionChangedListener(scl);
 	}
 	
+	@SuppressWarnings("deprecation")
 	private void createScopeMonitoringSection(Composite parent) {
 		Composite client = createSection(parent, "Scope-level Monitoring Events", null, 1);
 		
@@ -582,12 +598,12 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		column.getColumn().setText("Scope");
 		column.setLabelProvider(new ColumnLabelProvider() {
 		
-			
+			@Override
 			public String getText(Object element) {
 				return ((Scope)element).getName();
 			}
 
-			
+			@Override
 			public Image getImage(Object element) {
 				return BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_SCOPE_16);
 			}
@@ -843,7 +859,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				if (DeployUtils.isBPELFile(res)) {
 					Display.getDefault().syncExec(new Runnable() {
 						public void run() {
-							mainform.setMessage("Associated BPEL and/or WSDL has been changed, click to update!", IMessageProvider.WARNING);
+							mainform.setMessage(ODEDeployUIMessages.ProcessPage_UpdateWarning_Message, IMessageProvider.WARNING);
 						}
 					});
 				}
@@ -875,7 +891,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		}	
 	}
 
-	
+	@Override
 	public void dispose() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
 		super.dispose();
@@ -891,18 +907,18 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			this.checkboxCellEditor = new CheckboxCellEditor(viewer.getTable());
 		}
 		
-		
+		@Override
 		protected boolean canEdit(Object element) {
 			String scName = ((Scope)element).getName();
 			return scName != null && !"".equals(scName); //$NON-NLS-1$
 		}
 
-		
+		@Override
 		protected CellEditor getCellEditor(Object element) {
 			return checkboxCellEditor;
 		}
 
-		
+		@Override
 		protected Object getValue(Object element) {
 			String scName = ((Scope)element).getName();
 			for (TScopeEvents se : processType.getProcessEvents().getScopeEvents()) {
@@ -914,7 +930,7 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 			return false;
 		}
 
-		
+		@Override
 		protected void setValue(Object element, Object value) {
 			String scName = ((Scope)element).getName();
 			TScopeEvents match = null;

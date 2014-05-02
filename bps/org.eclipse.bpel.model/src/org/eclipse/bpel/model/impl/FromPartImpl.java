@@ -80,7 +80,7 @@ public class FromPartImpl extends BPELExtensibleElementImpl implements FromPart 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.FROM_PART;
 	}
@@ -230,7 +230,7 @@ public class FromPartImpl extends BPELExtensibleElementImpl implements FromPart 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.FROM_PART__TO_VARIABLE:
@@ -250,7 +250,7 @@ public class FromPartImpl extends BPELExtensibleElementImpl implements FromPart 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.FROM_PART__TO_VARIABLE:
@@ -268,7 +268,7 @@ public class FromPartImpl extends BPELExtensibleElementImpl implements FromPart 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.FROM_PART__TO_VARIABLE:
@@ -286,7 +286,7 @@ public class FromPartImpl extends BPELExtensibleElementImpl implements FromPart 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.FROM_PART__TO_VARIABLE:

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 University College London Software Systems Engineering
+ * Copyright (c) 2006, 2012 University College London Software Systems Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,7 +52,7 @@ public class BPELModuleArtifact implements IModuleArtifact {
 	/**
 	 * @see Object#toString()
 	 */
-	
+	@Override
 	public String toString() {
 		return "BPELModuleArtifact [module=" + module + "]";
 	}

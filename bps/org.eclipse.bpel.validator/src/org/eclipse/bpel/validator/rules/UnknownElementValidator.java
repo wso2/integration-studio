@@ -19,7 +19,7 @@ import org.eclipse.bpel.validator.model.IProblem;
  */
 public class UnknownElementValidator extends CValidator {
 	
-	
+	@Override
 	@ARule(
 			sa = -1,
 			desc = "Check for unknown elements",
@@ -37,7 +37,7 @@ public class UnknownElementValidator extends CValidator {
 			mNode.nodeName().getNamespaceURI());
 	}
 	
-	
+	@Override
 	public void checkParentNode () {
 	}
 }

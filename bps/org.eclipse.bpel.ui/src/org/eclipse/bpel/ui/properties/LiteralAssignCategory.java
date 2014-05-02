@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,17 +44,17 @@ public class LiteralAssignCategory extends AssignCategoryBase {
 	 * @see org.eclipse.bpel.ui.properties.IAssignCategory#getName()
 	 */
 	
-	
+	@Override
 	public String getName() { 
 		return Messages.LiteralAssignCategory_Fixed_Value_1;
 	} 
 
-	
+	@Override
 	protected String getLabelFlatFormatString() {
 		return IBPELUIConstants.FORMAT_CMD_EDIT;
 	}
 
-	
+	@Override
 	protected void createClient2(Composite parent) {
 		FlatFormData data;
 
@@ -76,13 +76,13 @@ public class LiteralAssignCategory extends AssignCategoryBase {
 	 * @see org.eclipse.bpel.ui.properties.IAssignCategory#isCategoryForModel(org.eclipse.emf.ecore.EObject)
 	 */
 	
-	
+	@Override
 	public boolean isCategoryForModel (EObject aModel) {
 		From from = BPELUtil.adapt(aModel, From.class);
 		return (from != null && from.getLiteral() != null);
 	}
 	
-	
+	@Override
 	protected void load (IVirtualCopyRuleSide aModel) {
 			
 		From from = BPELUtil.adapt(aModel.getCopyRuleSide(), From.class);
@@ -104,7 +104,7 @@ public class LiteralAssignCategory extends AssignCategoryBase {
 	}
 	
 	
-	
+	@Override
 	protected void store (IVirtualCopyRuleSide aModel) {
 		
 		From from = BPELUtil.adapt(aModel.getCopyRuleSide(), From.class);
@@ -132,7 +132,7 @@ public class LiteralAssignCategory extends AssignCategoryBase {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return null;
 	}
@@ -141,7 +141,7 @@ public class LiteralAssignCategory extends AssignCategoryBase {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
 	
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		fLiteralText.setFocus();
 	}

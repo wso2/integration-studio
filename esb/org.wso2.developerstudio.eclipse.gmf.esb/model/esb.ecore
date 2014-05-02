@@ -646,11 +646,6 @@
         defaultValueLiteral="feature_name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="FeatureBooleanValue">
-    <eLiterals name="TRUE"/>
-    <eLiterals name="FALSE" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractLocationKeyResource" abstract="true"
       eSuperTypes="#//EsbNode">

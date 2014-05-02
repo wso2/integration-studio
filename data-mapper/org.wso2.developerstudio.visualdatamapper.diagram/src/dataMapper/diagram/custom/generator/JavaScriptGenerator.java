@@ -71,12 +71,13 @@ public class JavaScriptGenerator {
          
 	public void generate() throws Exception {
 	 
-			for (MappingWire operator : operation) {
-				Map<Integer, String> inputs = operator.getInputs();
-				Map<Integer, String> outputs = operator.getOutputs();
+			for (MappingWire wire : operation) {
+				Map<Integer, String> inputs = wire.getInputs();
+				Map<Integer, String> outputs = wire.getOutputs();
+				Map<Integer, String> operatorNames = wire.getOperatorNames();
 				elementSet.clear();
 				loadCharQue();
-				int operatorCode = operator.getOperatorName().getOperatorCode();
+				int operatorCode = wire.getOperatorName().getOperatorCode();	
 				if (OperatorName.ASSIGNE.getOperatorCode() == operatorCode) {
 					String inputPath = inputs.get(1);
 					String outPath = outputs.get(1);
@@ -128,7 +129,80 @@ public class JavaScriptGenerator {
 				}
 			}// End of the Operation Loop
 	}
-
+	//a.concat(c).concat(b).split(":")[0].toLowerCase()
+	
+	
+    private void travelOPs(IOperator op,Loop loop){
+    	
+    	if(op.getName().getOperatorCode()==OperatorName.CONCAT.getOperatorCode()){
+           if (op.getNextOP()==null){
+        	   String input = generateOUT(op,loop);
+        	   String out = (String)op.getInputMap().get(1);
+        	   String line = doAssigneOperation(input, out);
+        	   if(loop!=null){
+        		   loop.getSingleLine().add(line);
+        	   }else{// Direct Mapping no needs loops
+        		   bodys.add(line);
+        	   }
+        	   return ;
+           }else {
+        	   if (op.getOutMap().isEmpty()){
+        		   String temp = generateOUT(op,loop);
+        		   op.getOutMap().put(1, temp);
+        		   Map<Integer, IOperator> nextOP = op.getNextOP();
+        		   Set<Integer> keySet = nextOP.keySet();
+        		   for (Integer key : keySet) {
+        			    IOperator iOperator = nextOP.get(key);
+        			    travelOPs(iOperator, loop);
+				    }
+        	   }else {
+        		   
+        	   }
+           }
+    	}
+    }
+	
+	private String generateOUT(IOperator op,Loop loop){
+		 Map<Integer, Object> inputMap = op.getInputMap();
+		 Set<Integer> keySet = inputMap.keySet();
+		 String out="";
+		 String input ="";
+		 for (Integer key : keySet) {
+			  Object object = inputMap.get(key);
+			  
+			  if (object instanceof IOperator){
+				  	IOperator inOp = (IOperator)object;
+				  	Object object2 = inOp.getOutMap().get(1);
+				  	if (object2==null){
+				  		travelOPs(op,loop);
+				  		object2 = inOp.getOutMap().get(1);
+				  	}			  
+			  }else{
+				  input = (String)object;
+			  }	 
+		     if (op.getName().getOperatorCode()==OperatorName.CONCAT.getOperatorCode()){
+					  if (key==1){
+						  out = input;
+					  }else{  
+						   if (op.getDelimeter()!=null){
+							   out = out+".concat("+op.getDelimeter() +").concat("+input+")";
+						   }else {
+							   out = out+".concat("+input+")";
+						   }						 
+					  }		  
+		     }else if(op.getName().getOperatorCode()==OperatorName.SPLIT.getOperatorCode()){
+					  
+					  
+		     }else if (op.getName().getOperatorCode()==OperatorName.TOUPPER.getOperatorCode()){
+					  
+			 }else{
+				 				 //Default OP 
+			 }
+		  }
+		 return out;
+	}
+	
+	
 	private String createInputWire(String[] inelements) {
 		String insource = lasLoop.getSource();
 		String[] sourcItems = insource.split("\\.");
@@ -165,11 +239,23 @@ public class JavaScriptGenerator {
 	private String doAssigneOperation(String inputWire, String outWire) {
 		return outWire + " = " + inputWire + ";";
 	}
+	
+	
+    private Map<Integer, String> doOperationToinput(Map<Integer, String>lines, Map<Integer, String> operatorNames){
+    	 
+    	
+    	
+    	return lines;
+    }
+	
+	
 
 	private void createLoopBody(String[] inelements, String[] outelements) {
 
 		String inputWire = createInputWire(inelements);
 		String outputWire = createOutputWire(outelements);
+		
+		
 		String line = doAssigneOperation(inputWire, outputWire);
 		lasLoop.getSingleLine().add(line);
 	}

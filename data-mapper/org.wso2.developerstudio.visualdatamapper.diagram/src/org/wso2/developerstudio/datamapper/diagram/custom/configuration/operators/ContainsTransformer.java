@@ -144,4 +144,10 @@ public class ContainsTransformer implements OperatorsTransformer{
 		return elementList;
 	}
 
+	@Override
+	public String trasnform(String statement, Operator operator, Operator nextOperator) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -43,4 +43,6 @@ public interface OperatorsTransformer {
 	 * @return parent tree node of input schema which consider for build config function
 	 */ 
 	public TreeNode getInputElementParent(Operator operator);
+
+	public String trasnform(String statement, Operator operator, Operator nextOperator);
 }

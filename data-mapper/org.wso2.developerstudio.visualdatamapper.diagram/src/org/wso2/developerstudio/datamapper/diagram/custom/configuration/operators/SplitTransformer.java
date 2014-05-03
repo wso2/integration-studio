@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operators;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.util.EList;
@@ -29,7 +30,7 @@ import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.AssignmentStatement;
 
-public class SplitTransform implements OperatorsTransformer {
+public class SplitTransformer extends OneToManyTransformer {
 
 	private static final String INDEX = "[i]";
 
@@ -38,7 +39,7 @@ public class SplitTransform implements OperatorsTransformer {
 		AssignmentStatement assign = new AssignmentStatement();
 		StringBuilder statement = new StringBuilder();
 		ArrayList<Element> splitOutputs = getOutputElements(operator);
-//		getOutputEObjects(operator);
+		// getOutputEObjects(operator);
 		Element splitInput = getInputElement(operator);
 		String index = "";
 		if (splitInput.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)) {
@@ -47,9 +48,9 @@ public class SplitTransform implements OperatorsTransformer {
 		Split split = (Split) operator;
 		int i = 0;
 		int splitArrayMapIndex = split.getArrayOutput() - 1;
-		
+
 		TreeNode rootForMap = getOutputElementParent(operator);
-		
+
 		/**
 		 * due to there can be different requirement with number of output
 		 * connectors, it needs to iterate through all output connectors and
@@ -77,35 +78,50 @@ public class SplitTransform implements OperatorsTransformer {
 
 			if (output != null && splitArrayMapIndex != i) {
 				if (split.getDelimiter() != null) {
-					statement.append(getTreeHierarchy(output.getFieldParent(),rootForMap) + "." + output.getName() + " = " + inputParentName + index + "." + splitInput.getName() + ".split(\"" + split.getDelimiter() + "\")" + "[" + i + "];");
+					statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap) + "." + output.getName() + " = " + inputParentName + index + "." + splitInput.getName() + ".split(\"" + split.getDelimiter() + "\")" + "[" + i + "];");
 					statement.append(System.lineSeparator());
-					statement.append("\t\t");
+					statement.append("\t");
 				} else {
-					statement.append(getTreeHierarchy(output.getFieldParent(),rootForMap)+ "." + output.getName() + " = " + inputParentName + index + "." + splitInput.getName() + ".split(\"\")" + "[" + i + "];");
+					statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap) + "." + output.getName() + " = " + inputParentName + index + "." + splitInput.getName() + ".split(\"\")" + "[" + i + "];");
 					statement.append(System.lineSeparator());
-					statement.append("\t\t");
+					statement.append("\t");
 				}
 			} else if (output != null && splitArrayMapIndex == i) {
 
-				statement.append(getTreeHierarchy(output.getFieldParent(),rootForMap) +  "." + output.getName() + " = new Array();");
+				statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap) + "." + output.getName() + " = new Array();");
 				statement.append(System.lineSeparator());
 
-				ArrayList<Integer> indexList = getUnmappedOutputNodes(operator);
+				StringBuilder builder = new StringBuilder();
 				if (split.getDelimiter() != null) {
-					for (Integer unmappedIndex : indexList) {
-
-						statement.append(getTreeHierarchy(output.getFieldParent(),rootForMap)  + "." + output.getName() + ".push(" + inputParentName + index + "." + splitInput.getName() + ".split(\"" + split.getDelimiter() + "\")" + "[" + unmappedIndex.intValue() + "]);");
-						statement.append(System.lineSeparator());
-						statement.append("\t\t");
-					}
+					builder.append("var unmappedResultArray = ").append(inputParentName).append(index).append(".").append(splitInput.getName()).append(".split(\"").append(split.getDelimiter()).append("\");");
 				} else {
-					for (Integer unmappedIndex : indexList) {
-
-						statement.append(getTreeHierarchy(output.getFieldParent(),rootForMap) + "." + output.getName() + " = " + inputParentName + index + "." + splitInput.getName() + ".split(\"\")" + "[" + unmappedIndex.intValue() + "];");
-						statement.append(System.lineSeparator());
-						statement.append("\t\t");
-					}
+					builder.append("var unmappedResultArray = ").append(inputParentName).append(index).append(".").append(splitInput.getName()).append(".split(\"\");");
 				}
+				statement.append("\t");
+				statement.append(builder.toString());
+				statement.append(System.lineSeparator());
+
+				List<Integer> mappedIndexes = getMappedOutputNodes(operator);
+				builder.setLength(0);
+				builder.append("var mappedIndexArray = new Array(");
+				for (Integer each : mappedIndexes) {
+					builder.append(each).append(",");
+				}
+				builder.deleteCharAt(builder.length() - 1);
+				builder.append(");");
+				statement.append("\t");
+				statement.append(builder.toString());
+				statement.append(System.lineSeparator());
+
+				builder.setLength(0);
+				builder.append("for (var j in mappedIndexArray ){ \n \t\t newArray.splice( mappedIndexArray[j],1); \n\t}");
+				statement.append("\t");
+				statement.append(builder.toString());
+				statement.append(System.lineSeparator());
+
+				statement.append("\t");
+				statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap)).append(".").append(output.getName()).append(" = unmappedResultArray;");
+				statement.append(System.lineSeparator());
 			}
 
 			i++;
@@ -117,88 +133,20 @@ public class SplitTransform implements OperatorsTransformer {
 	}
 
 	/**
-	 * mapped input element needs for create map statements
-	 * 
-	 * @param operator
-	 *            split operator
-	 * @return input element for split
-	 */
-	private Element getInputElement(Operator operator) {
-		return operator.getBasicContainer().getLeftContainer().getLeftConnectors().get(0).getInNode().getIncomingLink().get(0).getOutNode().getElementParent();
-	}
-
-	@Override
-	public TreeNode getOutputElementParent(Operator operator) {
-		ArrayList<Element> elements = getOutputElements(operator);
-		TreeNode highestParent = null;
-		for (Element element : elements){
-			if (element != null) {
-				if (highestParent != null) {
-					if (highestParent.getLevel() >= element.getFieldParent().getLevel()) {
-						highestParent = element.getFieldParent();
-					}
-				} else {
-					highestParent = element.getFieldParent();
-				}
-			}
-		}
-		
-		if(getInputElement(operator).getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY) && !(highestParent.getSchemaDataType().equals(SchemaDataType.ARRAY))){
-			while(highestParent.getFieldParent() != null && !(highestParent.getSchemaDataType().equals(SchemaDataType.ARRAY))){
-				highestParent = highestParent.getFieldParent();
-			}
-		}
-		
-		return highestParent;
-	}
-
-	/**
-	 * mapped output elements needs for create map statements
-	 * 
-	 * @param operator
-	 *            split operator
-	 * @return output elements which split results mapped
-	 */
-	private ArrayList<Element> getOutputElements(Operator operator) {
-		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
-		ArrayList<Element> elementList = new ArrayList<Element>();
-		for (OperatorRightConnector connector : rightConnectors) {
-			if (connector.getOutNode().getOutgoingLink().size() != 0) {
-				elementList.add(connector.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent());
-			} else {
-				elementList.add(null);
-			}
-		}
-		return elementList;
-	}
-
-	// private Operator getNextOperator(Operator currentOperator){
-	// for (OperatorRightConnector connector :
-	// currentOperator.getBasicContainer().getRightContainer().getRightConnectors()){
-	// if(connector.getOutNode().getOutgoingLink().size() != 0){
-	//
-	// }
-	// }
-	// return null;
-	// }
-
-	/**
-	 * unmapped output nodes index needs when unmapped result array mapped to an
+	 * mapped output nodes index needs when unmapped result array mapped to an
 	 * element
 	 * 
 	 * @param operator
 	 *            split operator
 	 * @return unmapped output connector indexes of the operator
 	 */
-	private ArrayList<Integer> getUnmappedOutputNodes(Operator operator) {
+	private List<Integer> getMappedOutputNodes(Operator operator) {
 		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
 		ArrayList<Integer> connectorList = new ArrayList<Integer>();
 		int i = 0;
 		int j = ((Split) operator).getArrayOutput() - 1;
 		for (OperatorRightConnector connector : rightConnectors) {
-			if (connector.getOutNode().getOutgoingLink().size() == 0) {
-				connectorList.add(i);
-			} else if (i == j) {
+			if (connector.getOutNode().getOutgoingLink().size() != 0 && j != i) {
 				connectorList.add(i);
 			}
 			i++;
@@ -206,7 +154,7 @@ public class SplitTransform implements OperatorsTransformer {
 		return connectorList;
 	}
 
-	private ArrayList<EObject> getOutputEObjects(Operator operator) {
+	private List<EObject> getOutputEObjects(Operator operator) {
 		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
 		ArrayList<EObject> eObjectList = new ArrayList<EObject>();
 		for (OperatorRightConnector connector : rightConnectors) {
@@ -223,7 +171,7 @@ public class SplitTransform implements OperatorsTransformer {
 		}
 		return eObjectList;
 	}
-	
+
 	private String getTreeHierarchy(TreeNode tree, TreeNode parent) {
 		StringBuilder hierarchy = new StringBuilder();
 
@@ -232,11 +180,10 @@ public class SplitTransform implements OperatorsTransformer {
 			hierarchy.insert(0, ".");
 			tree = tree.getFieldParent();
 		}
-		
-		if(tree.getSchemaDataType().equals(SchemaDataType.ARRAY)){
-			hierarchy.insert(0, (tree.getName()+INDEX));
-		}
-		else {
+
+		if (tree.getSchemaDataType().equals(SchemaDataType.ARRAY)) {
+			hierarchy.insert(0, (tree.getName() + INDEX));
+		} else {
 			hierarchy.insert(0, tree.getName());
 		}
 

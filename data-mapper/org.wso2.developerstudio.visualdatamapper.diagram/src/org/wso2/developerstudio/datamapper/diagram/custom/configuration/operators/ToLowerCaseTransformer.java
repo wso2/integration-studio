@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operators;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Operator;
@@ -25,9 +26,9 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.AssignmentStatement;
 
-public class ToUpperCaseTransformer extends OneToOneTransformer {
+public class ToLowerCaseTransformer extends OneToOneTransformer {
 
-	private final String OPERATOR_FUNCTION = ".toUpperCase()";
+	private final String OPERATOR_FUNCTION = ".toLowerCase()";
 
 	@Override
 	public AssignmentStatement transform(Operator operator) {
@@ -39,7 +40,7 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 			return getSimpleOperatorMapping(operator, inputElement);
 
 		} else if (operatorInput instanceof OperatorRightConnector && operatorOutput instanceof Element) {
-
+			// FIXME implementation of operator chaining
 		}
 
 		else if (operatorInput instanceof Element && operatorOutput instanceof OperatorLeftConnector) {
@@ -53,6 +54,7 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 			statement.setStatement(assign);
 			
 			return statement;
+
 			
 		} else {
 			// if operator middle of operators
@@ -62,39 +64,34 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 	}
 
 	
-
 	private String createSubAssignment(Element operatorInput) {
 		String assign = " = " + operatorInput.getFieldParent().getName()+"."+operatorInput.getName()+getOperatorFunction();
 		return assign;
 	}
-
-
-
+	
 	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement, String index) {
-		String assign = getOutputElementParent(operator).getName() + index + "." + getOutputElement(operator).getName() + " = " + inputElement.getFieldParent().getName() + index + "." + inputElement.getName() + ".toUpperCase();";
+		String assign = getOutputElementParent(operator).getName() + index + "." + getOutputElement(operator).getName() + " = " + inputElement.getFieldParent().getName() + index + "." + inputElement.getName() + ".toLowerCase();";
 		AssignmentStatement statement = new AssignmentStatement();
 		statement.setStatement(assign);
 		return statement;
 	}
 
 	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement) {
-
 		Element outputElement = getOutputElement(operator);
 		TreeNode outputParent = getOutputElementParent(operator);
 
 		String index = "";
 		if (inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY))
 			index = getIndex();
+		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + inputElement.getFieldParent().getName() + index + "." + inputElement.getName() + ".toLowerCase();";
 
-		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + inputElement.getFieldParent().getName() + index + "." + inputElement.getName() + ".toUpperCase();";
 		AssignmentStatement statement = new AssignmentStatement();
 		statement.setStatement(assign);
 		return statement;
 	}
 
 	@Override
-	public String trasnform(String subStatement ,Operator previousOperator, Operator operator) {
-		EObject operatorInput = getInputObject(operator);
+	public String trasnform(String subStatement, Operator previousOperator, Operator operator) {
 		EObject operatorOutput = getOutputObject(operator);
 
 		StringBuilder builder = new StringBuilder();
@@ -106,15 +103,12 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 			builder.append(getOperatorFunction()).append(";");
 			return builder.toString();
 		}
-		
-		else if (operatorOutput instanceof OperatorLeftConnector) {
-//			nexto
-		}
 		return null;
-
 	}
 
 	public String getOperatorFunction() {
 		return OPERATOR_FUNCTION;
 	}
+
+
 }

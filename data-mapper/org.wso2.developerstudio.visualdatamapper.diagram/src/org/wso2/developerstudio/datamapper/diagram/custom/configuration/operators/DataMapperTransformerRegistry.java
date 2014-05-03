@@ -36,14 +36,15 @@ public class DataMapperTransformerRegistry {
 	 */
 	private DataMapperTransformerRegistry() {
 		transformersMap = new HashMap<Class<?>, OperatorsTransformer>();
-		addTransformer(Concat.class, new ConcatTransform());
-		addTransformer(Split.class, new SplitTransform());
-		addTransformer(LowerCase.class, new ToLowerCaseTransform());
+		addTransformer(Concat.class, new ConcatTransformer());
+		addTransformer(Split.class, new SplitTransformer());
+		addTransformer(LowerCase.class, new ToLowerCaseTransformer());
 		addTransformer(UpperCase.class, new ToUpperCaseTransformer());
 		addTransformer(Contains.class, new ContainsTransformer());
 		addTransformer(Constant.class, new ConstantTransformer());
 
 	}
+
 
 	public <K extends Operator> void addTransformer(Class<K> visualModelClass,
 			OperatorsTransformer transformer) {

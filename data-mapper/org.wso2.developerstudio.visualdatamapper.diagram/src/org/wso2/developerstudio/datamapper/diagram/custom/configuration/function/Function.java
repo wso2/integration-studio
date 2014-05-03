@@ -18,10 +18,14 @@ package org.wso2.developerstudio.datamapper.diagram.custom.configuration.functio
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.eclipse.ui.PlatformUI;
 
 public class Function {
 
@@ -106,44 +110,40 @@ public class Function {
 	private String createFunctionCall() {
 		String inputSection = getInputParameter().getName();
 		String outputSection = getOutputParameter().getName();
-		
+
 		String inputParameter = getInputTreeHierarchy();
 		String outputParameter = getOutputTreeHierarchy();
-		
+
 		if (inputSection.equals(outputSection)) {
 			outputSection = "output" + WordUtils.capitalize(outputSection);
 		}
-		
+
 		/*
-		 * If input parameter and output parameter names are identical,
-		 * append term 'output' to the output parameter as a convention.
+		 * If input parameter and output parameter names are identical, append
+		 * term 'output' to the output parameter as a convention.
 		 */
 		if (inputParameter.equals(outputParameter)) {
 			outputParameter = "output" + WordUtils.capitalize(outputParameter);
 		}
-		
-		String functinCall = "map_" + getFlag() + "_" + inputSection + "_"
-				+ getFlag() + "_" + outputSection + "(" + inputParameter
-				+ ", " + outputParameter + ");";
+
+		String functinCall = "map_" + getFlag() + "_" + inputSection + "_" + getFlag() + "_" + outputSection + "(" + inputParameter + ", " + outputParameter + ");";
 
 		return functinCall;
 	}
 
 	private String getOutputTreeHierarchy() {
-		return getTreeHierarchy(this.getOutputParameter(), this.getParentFunction()
-				.getOutputParameter());
+		return getTreeHierarchy(this.getOutputParameter(), this.getParentFunction().getOutputParameter());
 	}
 
 	private String getInputTreeHierarchy() {
-		return getTreeHierarchy(this.getInputParameter(), this.getParentFunction()
-				.getInputParameter());
+		return getTreeHierarchy(this.getInputParameter(), this.getParentFunction().getInputParameter());
 	}
 
 	private void createMainFunction() {
 		try {
 			String inputParameter = getInputParameter().getName();
 			String outputParameter = getOutputParameter().getName();
-			
+
 			/*
 			 * If input parameter and output parameter names are identical,
 			 * append term 'output' to the output parameter as a convention.
@@ -151,13 +151,11 @@ public class Function {
 			if (inputParameter.equals(outputParameter)) {
 				outputParameter = "output" + WordUtils.capitalize(outputParameter);
 			}
-			
-			String mainFunctionDeclaration = "function map_" + getFlag() + "_" + inputParameter
-					+ "_" + getFlag() + "_" + outputParameter + "(" + inputParameter + ", "
-					+ outputParameter + ") {";
+
+			String mainFunctionDeclaration = "function map_" + getFlag() + "_" + inputParameter + "_" + getFlag() + "_" + outputParameter + "(" + inputParameter + ", " + outputParameter + ") {";
 
 			setDeclaration(mainFunctionDeclaration);
-			
+
 			if (mainFunction) {
 				setReturnStatement("return " + getOutputParameter().getName() + ";");
 			} else {
@@ -165,6 +163,9 @@ public class Function {
 			}
 		} catch (Exception e) {
 			log.error("Exception while creating main function decleration", e);
+			String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+			ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Cannot generate configuration. The following error(s) have been detected. Please see the error log for more details ", editorStatus);
 		}
 	}
 
@@ -189,6 +190,10 @@ public class Function {
 
 		} catch (Exception e) {
 			log.error("Exception while building function ", e);
+			String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+			ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Cannot generate configuration. The following error(s) have been detected. Please see the error log for more details ", editorStatus);
+
 		}
 		return functionBuilder.toString();
 	}

@@ -57,6 +57,7 @@ public class SplitItemProvider
 
 			addDelimiterPropertyDescriptor(object);
 			addArrayOutputPropertyDescriptor(object);
+			addArrayOutputResultOmitingIndicesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -106,6 +107,28 @@ public class SplitItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Array Output Result Omiting Indices feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addArrayOutputResultOmitingIndicesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Split_arrayOutputResultOmitingIndices_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Split_arrayOutputResultOmitingIndices_feature", "_UI_Split_type"),
+				 DataMapperPackage.Literals.SPLIT__ARRAY_OUTPUT_RESULT_OMITING_INDICES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This returns Split.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,6 +165,7 @@ public class SplitItemProvider
 		switch (notification.getFeatureID(Split.class)) {
 			case DataMapperPackage.SPLIT__DELIMITER:
 			case DataMapperPackage.SPLIT__ARRAY_OUTPUT:
+			case DataMapperPackage.SPLIT__ARRAY_OUTPUT_RESULT_OMITING_INDICES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

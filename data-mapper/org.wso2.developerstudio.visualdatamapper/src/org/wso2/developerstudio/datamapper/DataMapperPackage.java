@@ -938,13 +938,22 @@ public interface DataMapperPackage extends EPackage {
     int SPLIT__ARRAY_OUTPUT = OPERATOR_FEATURE_COUNT + 1;
 
     /**
+	 * The feature id for the '<em><b>Array Output Result Omiting Indices</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__ARRAY_OUTPUT_RESULT_OMITING_INDICES = OPERATOR_FEATURE_COUNT + 2;
+
+				/**
 	 * The number of structural features of the '<em>Split</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 2;
+	int SPLIT_FEATURE_COUNT = OPERATOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.datamapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
@@ -1784,6 +1793,17 @@ public interface DataMapperPackage extends EPackage {
     EAttribute getSplit_ArrayOutput();
 
     /**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.datamapper.Split#getArrayOutputResultOmitingIndices <em>Array Output Result Omiting Indices</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Array Output Result Omiting Indices</em>'.
+	 * @see org.wso2.developerstudio.datamapper.Split#getArrayOutputResultOmitingIndices()
+	 * @see #getSplit()
+	 * @generated
+	 */
+	EAttribute getSplit_ArrayOutputResultOmitingIndices();
+
+				/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.datamapper.LowerCase <em>Lower Case</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2424,6 +2444,14 @@ public interface DataMapperPackage extends EPackage {
         EAttribute SPLIT__ARRAY_OUTPUT = eINSTANCE.getSplit_ArrayOutput();
 
                                 /**
+		 * The meta object literal for the '<em><b>Array Output Result Omiting Indices</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPLIT__ARRAY_OUTPUT_RESULT_OMITING_INDICES = eINSTANCE.getSplit_ArrayOutputResultOmitingIndices();
+
+																																/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.datamapper.impl.LowerCaseImpl <em>Lower Case</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

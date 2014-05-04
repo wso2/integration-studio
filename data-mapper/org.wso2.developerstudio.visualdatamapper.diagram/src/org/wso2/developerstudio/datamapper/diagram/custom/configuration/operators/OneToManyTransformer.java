@@ -10,7 +10,8 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.AssignmentStatement;
 
-public class OneToManyTransformer implements OperatorsTransformer{
+public class OneToManyTransformer implements OperatorsTransformer {
+	private static final String INDEX = "[i]";
 
 	@Override
 	public AssignmentStatement transform(Operator operator) {
@@ -18,12 +19,11 @@ public class OneToManyTransformer implements OperatorsTransformer{
 		return null;
 	}
 
-
 	@Override
 	public TreeNode getOutputElementParent(Operator operator) {
 		ArrayList<Element> elements = getOutputElements(operator);
 		TreeNode highestParent = null;
-		for (Element element : elements){
+		for (Element element : elements) {
 			if (element != null) {
 				if (highestParent != null) {
 					if (highestParent.getLevel() >= element.getFieldParent().getLevel()) {
@@ -34,13 +34,13 @@ public class OneToManyTransformer implements OperatorsTransformer{
 				}
 			}
 		}
-		
-		if(getInputElement(operator).getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY) && !(highestParent.getSchemaDataType().equals(SchemaDataType.ARRAY))){
-			while(highestParent.getFieldParent() != null && !(highestParent.getSchemaDataType().equals(SchemaDataType.ARRAY))){
+
+		if (getInputElement(operator).getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY) && !(highestParent.getSchemaDataType().equals(SchemaDataType.ARRAY))) {
+			while (highestParent.getFieldParent() != null && !(highestParent.getSchemaDataType().equals(SchemaDataType.ARRAY))) {
 				highestParent = highestParent.getFieldParent();
 			}
 		}
-		
+
 		return highestParent;
 	}
 
@@ -50,9 +50,6 @@ public class OneToManyTransformer implements OperatorsTransformer{
 		return null;
 	}
 
-
-
-	
 	/**
 	 * mapped output elements needs for create map statements
 	 * 
@@ -72,7 +69,7 @@ public class OneToManyTransformer implements OperatorsTransformer{
 		}
 		return elementList;
 	}
-	
+
 	/**
 	 * mapped input element needs for create map statements
 	 * 
@@ -84,11 +81,35 @@ public class OneToManyTransformer implements OperatorsTransformer{
 		return operator.getBasicContainer().getLeftContainer().getLeftConnectors().get(0).getInNode().getIncomingLink().get(0).getOutNode().getElementParent();
 	}
 
-
 	@Override
 	public String trasnform(String statement, Operator operator, Operator nextOperator) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/**
+	 * traverse up from a given treeNode to given root treenode and build path
+	 * @param tree	given treenode
+	 * @param parent	given root treenode
+	 * @return path to root treeNode from given treeNode
+	 */
+	public String getTreeHierarchy(TreeNode tree, TreeNode parent) {
+		StringBuilder hierarchy = new StringBuilder();
+
+		while (!(tree.equals(parent))) {
+			hierarchy.insert(0, tree.getName());
+			hierarchy.insert(0, ".");
+			tree = tree.getFieldParent();
+		}
+
+		if (tree.getSchemaDataType().equals(SchemaDataType.ARRAY)) {
+			hierarchy.insert(0, (tree.getName() + INDEX));
+		} else {
+			hierarchy.insert(0, tree.getName());
+		}
+
+		return hierarchy.toString();
+
 	}
 
 }

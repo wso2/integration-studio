@@ -78,17 +78,18 @@ public class SplitTransformer extends OneToManyTransformer {
 
 			if (output != null && splitArrayMapIndex != i) {
 				if (split.getDelimiter() != null) {
-					statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap) + "." + output.getName() + " = " + inputParentName + index + "." + splitInput.getName() + ".split(\"" + split.getDelimiter() + "\")" + "[" + i + "];");
+					statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap)).append(".").append(output.getName()).append(" = ").append(inputParentName).append(index).append(".").append(splitInput.getName()).append(".split(\"").append(split.getDelimiter()).append("\")[").append(i)
+							.append("];");
 					statement.append(System.lineSeparator());
 					statement.append("\t");
 				} else {
-					statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap) + "." + output.getName() + " = " + inputParentName + index + "." + splitInput.getName() + ".split(\"\")" + "[" + i + "];");
+					statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap)).append(".").append(output.getName()).append(" = ").append(inputParentName).append(index).append(".").append(splitInput.getName()).append(".split(\"\")[").append(i).append("];");
 					statement.append(System.lineSeparator());
 					statement.append("\t");
 				}
 			} else if (output != null && splitArrayMapIndex == i) {
 
-				statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap) + "." + output.getName() + " = new Array();");
+				statement.append(getTreeHierarchy(output.getFieldParent(), rootForMap)).append(".").append(output.getName()).append(" = new Array();");
 				statement.append(System.lineSeparator());
 
 				StringBuilder builder = new StringBuilder();
@@ -107,14 +108,21 @@ public class SplitTransformer extends OneToManyTransformer {
 				for (Integer each : mappedIndexes) {
 					builder.append(each).append(",");
 				}
-				builder.deleteCharAt(builder.length() - 1);
+
+				// add omiting indices to slice
+				if (split.getArrayOutputResultOmitingIndices() != null) {
+					builder.append(split.getArrayOutputResultOmitingIndices()); // FIXME before add user inputs, must validate
+				} else {
+					builder.deleteCharAt(builder.length() - 1);
+				}
+
 				builder.append(");");
 				statement.append("\t");
 				statement.append(builder.toString());
 				statement.append(System.lineSeparator());
 
 				builder.setLength(0);
-				builder.append("for (var j in mappedIndexArray ){ \n \t\t newArray.splice( mappedIndexArray[j],1); \n\t}");
+				builder.append("for (var j in mappedIndexArray ){ \n \t\t unmappedResultArray.splice( mappedIndexArray[j],1); \n\t}");
 				statement.append("\t");
 				statement.append(builder.toString());
 				statement.append(System.lineSeparator());
@@ -161,34 +169,12 @@ public class SplitTransformer extends OneToManyTransformer {
 			if (connector.getOutNode().getOutgoingLink().size() != 0) {
 				if (connector.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent() != null) {
 				}
-				// EObject nextOperator =
-				// connector.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer()
-				// ;
 
 			} else {
 				eObjectList.add(null);
 			}
 		}
 		return eObjectList;
-	}
-
-	private String getTreeHierarchy(TreeNode tree, TreeNode parent) {
-		StringBuilder hierarchy = new StringBuilder();
-
-		while (!(tree.equals(parent))) {
-			hierarchy.insert(0, tree.getName());
-			hierarchy.insert(0, ".");
-			tree = tree.getFieldParent();
-		}
-
-		if (tree.getSchemaDataType().equals(SchemaDataType.ARRAY)) {
-			hierarchy.insert(0, (tree.getName() + INDEX));
-		} else {
-			hierarchy.insert(0, tree.getName());
-		}
-
-		return hierarchy.toString();
-
 	}
 
 	@Override

@@ -44,5 +44,12 @@ public interface OperatorsTransformer {
 	 */ 
 	public TreeNode getInputElementParent(Operator operator);
 
+	/**
+	 * transform of an operator in chaining needs to be handle with already created config assignment
+	 * @param statement already created config for chain
+	 * @param operator	the operator which created statement
+	 * @param nextOperator	the next operator 
+	 * @return  configuration which have been created
+	 */
 	public String trasnform(String statement, Operator operator, Operator nextOperator);
 }

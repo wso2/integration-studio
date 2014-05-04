@@ -86,6 +86,12 @@ public class OneToOneTransformer implements OperatorsTransformer {
 		return getInputElement(operator).getFieldParent();
 	}
 
+	/**
+	 * traverse up from a given treeNode to given root treenode and build path
+	 * @param tree	given treenode
+	 * @param parent	given root treenode
+	 * @return path to root treeNode from given treeNode
+	 */
 	protected String getTreeHierarchy(TreeNode tree, TreeNode parent) {
 		StringBuilder hierarchy = new StringBuilder();
 

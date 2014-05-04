@@ -16,7 +16,6 @@
 
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operators;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Operator;
@@ -44,18 +43,17 @@ public class ToLowerCaseTransformer extends OneToOneTransformer {
 		}
 
 		else if (operatorInput instanceof Element && operatorOutput instanceof OperatorLeftConnector) {
-			Operator nextOperator = (Operator)getOperator(operatorOutput);
-			//create ___ = me ____ and pass
-			String subAssign = createSubAssignment((Element)operatorInput);
-			
+			Operator nextOperator = (Operator) getOperator(operatorOutput);
+			// create ___ = me ____ and pass
+			String subAssign = createSubAssignment((Element) operatorInput);
+
 			OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(nextOperator);
 			String assign = transformer.trasnform(subAssign, operator, nextOperator);
 			AssignmentStatement statement = new AssignmentStatement();
 			statement.setStatement(assign);
-			
+
 			return statement;
 
-			
 		} else {
 			// if operator middle of operators
 		}
@@ -63,17 +61,10 @@ public class ToLowerCaseTransformer extends OneToOneTransformer {
 		return null;
 	}
 
-	
 	private String createSubAssignment(Element operatorInput) {
-		String assign = " = " + operatorInput.getFieldParent().getName()+"."+operatorInput.getName()+getOperatorFunction();
-		return assign;
-	}
-	
-	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement, String index) {
-		String assign = getOutputElementParent(operator).getName() + index + "." + getOutputElement(operator).getName() + " = " + inputElement.getFieldParent().getName() + index + "." + inputElement.getName() + ".toLowerCase();";
-		AssignmentStatement statement = new AssignmentStatement();
-		statement.setStatement(assign);
-		return statement;
+		StringBuilder builder = new StringBuilder();
+		builder.append(" = ").append(operatorInput.getFieldParent().getName()).append(".").append(operatorInput.getName()).append(getOperatorFunction());
+		return builder.toString();
 	}
 
 	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement) {
@@ -83,10 +74,12 @@ public class ToLowerCaseTransformer extends OneToOneTransformer {
 		String index = "";
 		if (inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY))
 			index = getIndex();
-		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + inputElement.getFieldParent().getName() + index + "." + inputElement.getName() + ".toLowerCase();";
+
+		StringBuilder builder = new StringBuilder();
+		builder.append(getTreeHierarchy(outputElement.getFieldParent(), outputParent)).append(".").append(outputElement.getName()).append(" = ").append(inputElement.getFieldParent().getName()).append(index).append(".").append(inputElement.getName()).append(getOperatorFunction()).append(";");
 
 		AssignmentStatement statement = new AssignmentStatement();
-		statement.setStatement(assign);
+		statement.setStatement(builder.toString());
 		return statement;
 	}
 
@@ -97,11 +90,20 @@ public class ToLowerCaseTransformer extends OneToOneTransformer {
 		StringBuilder builder = new StringBuilder();
 		builder.append(subStatement);
 		if (operatorOutput instanceof Element) {
-			//fill the blank
-			Element outputElement = (Element)operatorOutput;
-			builder.insert(0,outputElement.getFieldParent().getName()+"."+outputElement.getName());
+			// fill the blank
+			Element outputElement = (Element) operatorOutput;
+			builder.insert(0, outputElement.getFieldParent().getName() + "." + outputElement.getName());
 			builder.append(getOperatorFunction()).append(";");
 			return builder.toString();
+		} else if (operatorOutput instanceof OperatorLeftConnector) {
+			Operator nextOperator = (Operator) getOperator(operatorOutput);
+			builder.append(getOperatorFunction());
+
+			OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(nextOperator);
+			String assign = transformer.trasnform(builder.toString(), operator, nextOperator);
+
+			return assign;
+
 		}
 		return null;
 	}
@@ -109,6 +111,5 @@ public class ToLowerCaseTransformer extends OneToOneTransformer {
 	public String getOperatorFunction() {
 		return OPERATOR_FUNCTION;
 	}
-
 
 }

@@ -111,20 +111,41 @@ public class OneToOneTransformer implements OperatorsTransformer {
 
 	}
 
+	/**
+	 * retrieve mapped element from output schema
+	 * @param operator this operator
+	 * @return mapped element from output schema
+	 */
 	protected Element getOutputElement(Operator operator) {
 		return operator.getBasicContainer().getRightContainer().getRightConnectors().get(0).getOutNode().getOutgoingLink().get(0).getInNode().getElementParent();
 	}
 
+	/**
+	 * retrieve mapped element from input schema
+	 * @param operator this operator
+	 * @return mapped element from input schema
+	 */
 	private Element getInputElement(Operator operator) {
 		return operator.getBasicContainer().getLeftContainer().getLeftConnectors().get(0).getInNode().getIncomingLink().get(0).getOutNode().getElementParent();
 	}
 
+	/**
+	 * retrieve mapped object to input connector of operator
+	 * @param operator this operator
+	 * @return mapped object to input connector of operator
+	 */
 	protected EObject getInputObject(Operator operator) {
 		EList<OperatorLeftConnector> leftConnectors = operator.getBasicContainer().getLeftContainer().getLeftConnectors();
 		EObject inputObject = leftConnectors.get(0).getInNode().getIncomingLink().get(0).getOutNode().eContainer();
 		return inputObject;
 	}
 
+	
+	/**
+	 * retrieve mapped object to output connector of operator
+	 * @param operator this operator
+	 * @return mapped object to output connector of operator
+	 */
 	public EObject getOutputObject(Operator operator) {
 		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
 		return rightConnectors.get(0).getOutNode().getOutgoingLink().get(0).getInNode().eContainer();

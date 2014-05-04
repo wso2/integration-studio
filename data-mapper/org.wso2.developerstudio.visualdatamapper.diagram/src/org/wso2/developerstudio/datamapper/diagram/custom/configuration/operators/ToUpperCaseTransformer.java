@@ -55,12 +55,23 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 		return null;
 	}
 
+	/**
+	 * config generation in operator chaining is partial. This method provide partial config for complete ful assignment.
+	 * @param operatorInput element map from input schema tree
+	 * @return partial of config
+	 */
 	private String createSubAssignment(Element operatorInput) {
 		StringBuilder builder = new StringBuilder();
 		builder.append(" = ").append(operatorInput.getFieldParent().getName()).append(".").append(operatorInput.getName()).append(getOperatorFunction());
 		return builder.toString();
 	}
 
+	/**
+	 * config generation for 'element -- operator -- element' mapping scenario stright forwerd and this method provide assignment for this operator
+	 * @param operator		this operator
+	 * @param inputElement  element map from input schema tree
+	 * @return	assignment statement for map
+	 */
 	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement) {
 
 		Element outputElement = getOutputElement(operator);

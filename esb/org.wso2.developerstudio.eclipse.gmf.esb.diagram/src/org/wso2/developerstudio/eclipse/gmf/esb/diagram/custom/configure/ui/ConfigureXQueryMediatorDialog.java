@@ -74,7 +74,7 @@ public class ConfigureXQueryMediatorDialog extends Dialog {
 		super.configureShell(newShell);
 		parentShell = newShell;
 		// Set title.
-		newShell.setText("XQuery Mediator Configuration");
+		newShell.setText("XQuery Variables Configuration");
 	}
 	
 	protected Control createDialogArea(Composite parent) {

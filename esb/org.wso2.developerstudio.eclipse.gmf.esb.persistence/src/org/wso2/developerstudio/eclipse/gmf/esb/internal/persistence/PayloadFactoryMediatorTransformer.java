@@ -25,7 +25,6 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.transform.Argument;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
-import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -76,11 +75,11 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
 		setCommonProperties(payloadFactoryMediator, visualPayloadFactory);
 		
 		if (visualPayloadFactory.getPayloadFormat().equals(PayloadFormatType.REGISTRY_REFERENCE)) {
-			Value formatKey = new Value(visualPayloadFactory.getFormatKey().getKeyValue());
+			Value formatKey = new Value(visualPayloadFactory.getPayloadKey().getKeyValue());
 			payloadFactoryMediator.setFormatKey(formatKey);
 			payloadFactoryMediator.setFormatDynamic(true);
 		} else {
-			payloadFactoryMediator.setFormat(visualPayloadFactory.getFormat());
+			payloadFactoryMediator.setFormat(visualPayloadFactory.getPayload());
 			payloadFactoryMediator.setFormatDynamic(false);
 		}
 		

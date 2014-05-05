@@ -37,11 +37,11 @@ public class PayloadFactoryMediatorDeserializer extends AbstractEsbNodeDeseriali
 			RegistryKeyProperty payloadFormatKey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 			payloadFormatKey.setKeyValue(payloadFactoryMediator.getFormatKey().getKeyValue());
 			
-			executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY, payloadFormatKey);
+			executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY, payloadFormatKey);
 			
 		} else {
 			executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT, PayloadFormatType.INLINE);
-			executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__FORMAT, payloadFactoryMediator.getFormat());
+			executeSetValueCommand(PAYLOAD_FACTORY_MEDIATOR__PAYLOAD, payloadFactoryMediator.getFormat());
 		}
 		
 		if (payloadFactoryMediator.getType() != null) {

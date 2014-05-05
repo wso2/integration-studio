@@ -180,7 +180,7 @@ public class EsbPropertySource extends PropertySource {
 			return new ConditionalRouterMediatorPropertyDescriptor(object,itemPropertyDescriptor);
 		} else if (pkg.getPayloadFactoryMediator_Args().equals(feature)) {
 			return new PayloadFactoryPropertyDescriptor(object,itemPropertyDescriptor);
-		} else if(pkg.getPayloadFactoryMediator_FormatKey().equals(feature)){
+		} else if(pkg.getPayloadFactoryMediator_PayloadKey().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if (pkg.getAbstractSqlExecutorMediator_SqlStatements().equals(feature)) {
 			return new SqlExecutorMediatorSqlStatementsPropertyDescriptor(object,itemPropertyDescriptor);		}
@@ -318,7 +318,7 @@ public class EsbPropertySource extends PropertySource {
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		}else if(pkg.getCalloutMediator_OutboundPolicyKey().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
-		}else if(pkg.getPayloadFactoryMediator_Format().equals(feature)){
+		}else if(pkg.getPayloadFactoryMediator_Payload().equals(feature)){
 			return new PayloadFactoryMediatorFormatPropertyDescriptor(object, itemPropertyDescriptor);
 		}else if(pkg.getMessageProcessor_MessageStore().equals(feature)){
 			return new MessageProcessorMesageStorePropertyDescriptor(object, itemPropertyDescriptor);

@@ -20,9 +20,10 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class FilterMediatorDeserializer extends
@@ -44,7 +45,7 @@ public class FilterMediatorDeserializer extends
 
 		if (filterMediator.getSource() != null && filterMediator.getRegex() != null) {
 			//Setting type
-			executeSetValueCommand(FILTER_MEDIATOR__CONDITION_TYPE, FilterConditionType.SOURCE_AND_REGEX);
+			executeSetValueCommand(FILTER_MEDIATOR__CONDITION_TYPE, FilterMediatorConditionType.SOURCE_REGEX);
 			// Setting source
 			if(filterMediator.getSource()!=null){
 				executeSetValueCommand(FILTER_MEDIATOR__SOURCE, createNamespacedProperty(filterMediator.getSource()));
@@ -58,7 +59,7 @@ public class FilterMediatorDeserializer extends
 
 		} else if (filterMediator.getXpath() != null) {
 			//Setting type
-			executeSetValueCommand(FILTER_MEDIATOR__CONDITION_TYPE, FilterConditionType.XPATH);
+			executeSetValueCommand(FILTER_MEDIATOR__CONDITION_TYPE, FilterMediatorConditionType.XPATH);
 			//Setting XPath
 			if(filterMediator.getXpath()!=null){
 				executeSetValueCommand(FILTER_MEDIATOR__XPATH, createNamespacedProperty(filterMediator.getXpath()));

@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.avro.Schema;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -44,9 +45,6 @@ import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Output;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputCanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.OutputItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.TreeFromAVSC;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 
@@ -106,6 +104,32 @@ public class OutputEditPart extends ShapeNodeEditPart {
 		}
 		getPrimaryShape().setPreferredSize(250, 15);
 
+	}
+
+	/**
+	 * @param schema
+	 *            Avro schema that is used to parse to tree
+	 */
+	public void resetOutputTreeFromSchema(Schema schema) {
+		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
+				.getModel()).getElement();
+		Output iip = (Output) parentContainer;
+
+		DeleteCommand deleteComand = new DeleteCommand(getEditingDomain(), iip.getTreeNode());
+		if (deleteComand.canExecute()) {
+			getEditingDomain().getCommandStack().execute(deleteComand);
+		}
+
+		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		Tree tree = TreeFromAVSC.generateInputTreeFromSchema(schema);
+		convertTree(tree, treeNode);
+
+		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
+				DataMapperPackage.Literals.OUTPUT__TREE_NODE, treeNode);
+		if (addTreeNodeCmd2.canExecute()) {
+			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
+		}
+		getPrimaryShape().setPreferredSize(250, 15);
 	}
 
 	private void convertTree(Tree tree, TreeNode treeNode) {

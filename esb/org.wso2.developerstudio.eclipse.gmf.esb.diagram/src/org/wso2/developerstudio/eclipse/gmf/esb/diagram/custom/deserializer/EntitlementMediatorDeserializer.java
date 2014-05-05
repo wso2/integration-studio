@@ -4,6 +4,8 @@ import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
@@ -14,6 +16,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.Enti
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class EntitlementMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EntitlementMediator>{
+	
+	final static String BASIC_AUTH = "basicAuth";
+	final static String THRIFT = "thrift";
+	final static String SOAP = "soap";
+	final static String WS_XACML ="wsXacml";
+	final static String UT ="org.wso2.carbon.identity.entitlement.mediator.callback.UTEntitlementCallbackHandler";
+	final static String SAML ="org.wso2.carbon.identity.entitlement.mediator.callback.SAMLEntitlementCallbackHandler";
+	final static String KERBEROS ="org.wso2.carbon.identity.entitlement.mediator.callback.KerberosEntitlementCallbackHandler";
+	final static String X509 ="org.wso2.carbon.identity.entitlement.mediator.callback.X509EntitlementCallbackHandler";
 	
 	public EntitlementMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
 		Assert.isTrue(mediator instanceof EntitlementMediatorExt, "Unsupported mediator passed in for deserialization at "+ this.getClass());
@@ -28,10 +39,65 @@ public class EntitlementMediatorDeserializer extends AbstractEsbNodeDeserializer
 		executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_SERVER_URL, entitlementMediator.getRemoteServiceUrl());
 		executeSetValueCommand(ENTITLEMENT_MEDIATOR__USERNAME, entitlementMediator.getRemoteServiceUserName());
 		executeSetValueCommand(ENTITLEMENT_MEDIATOR__PASSWORD, entitlementMediator.getRemoteServicePassword());
-		executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_CLASS_NAME, entitlementMediator.getCallbackClass());
-		executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_HOST, entitlementMediator.getThriftHost());
-		executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_PORT, entitlementMediator.getThriftPort());
-		executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE, entitlementMediator.getClient());
+	//	executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_CLASS_NAME, entitlementMediator.getCallbackClass());
+		
+		
+		
+		if (entitlementMediator.getCallbackClass() != null) {
+			String callbackClass = entitlementMediator.getCallbackClass();
+			if (callbackClass != null && !callbackClass.equals("")) {
+				if(callbackClass.equalsIgnoreCase(UT)){
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
+							EntitlementCallbackHandler.UT);
+				}
+				else if(callbackClass.equalsIgnoreCase(SAML)){
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
+							EntitlementCallbackHandler.SAML);
+				}
+				else if(callbackClass.equalsIgnoreCase(KERBEROS)){
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
+							EntitlementCallbackHandler.KERBEROS);
+				}
+				else if(callbackClass.equalsIgnoreCase(X509)){
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
+							EntitlementCallbackHandler.X509);
+				}
+				else{
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
+							EntitlementCallbackHandler.CUSTOM);
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_CLASS_NAME, entitlementMediator.getCallbackClass());
+
+				}
+			}
+		}
+	
+		if (entitlementMediator.getClient() != null) {
+			String clientType = entitlementMediator.getClient();
+			if (clientType != null && !clientType.equals("")) {
+				if(clientType.equalsIgnoreCase(BASIC_AUTH)){
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
+							EntitlementClientType.BASIC_AUTH);
+				}
+				else if(clientType.equalsIgnoreCase(THRIFT)){
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
+							EntitlementClientType.THRIFT);
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_HOST, entitlementMediator.getThriftHost());
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_PORT, entitlementMediator.getThriftPort());	
+				}
+				else if(clientType.equalsIgnoreCase(SOAP)){
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
+							EntitlementClientType.SOAP);
+					
+				}
+				else if(clientType.equalsIgnoreCase(WS_XACML)){
+					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
+							EntitlementClientType.WSXACML);
+					
+				}
+			}
+	}
+	
+	
 		
 		if(entitlementMediator.getOnRejectMediator() != null){
 			SequenceMediator sequence = (SequenceMediator) entitlementMediator.getOnRejectMediator();

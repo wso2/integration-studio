@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.datamapper.diagram.edit.parts;
 
+import org.apache.avro.Schema;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -43,9 +44,6 @@ import org.wso2.developerstudio.datamapper.DataMapperPackage;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.InputCanonicalEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.edit.policies.InputItemSemanticEditPolicy;
-import org.wso2.developerstudio.datamapper.diagram.part.DataMapperVisualIDRegistry;
 import org.wso2.developerstudio.datamapper.diagram.tree.generator.TreeFromAVSC;
 import org.wso2.developerstudio.datamapper.diagram.tree.model.Tree;
 import org.wso2.developerstudio.datamapper.impl.InputImpl;
@@ -102,6 +100,33 @@ public class InputEditPart extends ShapeNodeEditPart {
 		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
 		Tree tree = TreeFromAVSC.generateInputTreeFromFile(filePath);
 		// funcFillTree(tree, element);
+		convertTree(tree, treeNode);
+
+		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,
+				DataMapperPackage.Literals.INPUT__TREE_NODE, treeNode);
+		if (addTreeNodeCmd2.canExecute()) {
+			getEditingDomain().getCommandStack().execute(addTreeNodeCmd2);
+		}
+		getPrimaryShape().setPreferredSize(250, 15);
+
+	}
+
+	/**
+	 * @param schema
+	 *            Avro schema that is used to parse to tree
+	 */
+	public void resetInputTreeFromSchema(Schema schema) {
+		EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
+				.getModel()).getElement();
+		InputImpl iip = (InputImpl) parentContainer;
+
+		DeleteCommand deleteComand = new DeleteCommand(getEditingDomain(), iip.getTreeNode());
+		if (deleteComand.canExecute()) {
+			getEditingDomain().getCommandStack().execute(deleteComand);
+		}
+
+		TreeNode treeNode = DataMapperFactory.eINSTANCE.createTreeNode();
+		Tree tree = TreeFromAVSC.generateInputTreeFromSchema(schema);
 		convertTree(tree, treeNode);
 
 		AddCommand addTreeNodeCmd2 = new AddCommand(getEditingDomain(), parentContainer,

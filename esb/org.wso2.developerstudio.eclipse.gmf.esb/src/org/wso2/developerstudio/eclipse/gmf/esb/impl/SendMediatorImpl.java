@@ -7,33 +7,22 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.osgi.internal.module.MappedList;
-
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
-import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
-import org.wso2.developerstudio.eclipse.gmf.esb.EndpointFlow;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.ReceivingSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.SendContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediatorEndpointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediatorInputConnector;
@@ -204,14 +193,15 @@ public class SendMediatorImpl extends MediatorImpl implements SendMediator {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@SuppressWarnings("unchecked")
 	protected SendMediatorImpl() {
 		super();
 		// Static Receiving Sequence
 		staticReceivingSequence = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
-	/*	DeveloperStudioProviderUtils.addFilter(
-				(Map<String, List<String>>) staticReceivingSequence
-						.getFilters(), CSProviderConstants.FILTER_MEDIA_TYPE,
-				ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);*/
+		DeveloperStudioProviderUtils.addFilter(
+				(Map<String, List<String>>) staticReceivingSequence.getFilters(),
+				CSProviderConstants.FILTER_MEDIA_TYPE,
+				ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
 		staticReceivingSequence.setPrettyName("Static");
 		staticReceivingSequence.setKeyName("receive");
 		staticReceivingSequence

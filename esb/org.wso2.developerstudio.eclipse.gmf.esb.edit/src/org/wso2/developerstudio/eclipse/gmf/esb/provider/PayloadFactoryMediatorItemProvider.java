@@ -73,7 +73,7 @@ public class PayloadFactoryMediatorItemProvider
 		if (mediator.getPayloadFormat().equals(PayloadFormatType.REGISTRY_REFERENCE)) {
 			addFormatKeyPropertyDescriptor(object);
 		} else {
-			addFormatPropertyDescriptor(object);
+			addPayloadPropertyDescriptor(object);
 		}
 		
 		addArgsPropertyDescriptor(object);
@@ -84,45 +84,23 @@ public class PayloadFactoryMediatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Format feature.
+	 * This adds a property descriptor for the Payload feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFormatPropertyDescriptor(Object object) {
+	protected void addPayloadPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PayloadFactoryMediator_format_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryMediator_format_feature", "_UI_PayloadFactoryMediator_type"),
-				 EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__FORMAT,
+				 getString("_UI_PayloadFactoryMediator_payload_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryMediator_payload_feature", "_UI_PayloadFactoryMediator_type"),
+				 EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD,
 				 true,
-				 true,
+				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Format Key feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFormatKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_PayloadFactoryMediator_formatKey_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryMediator_formatKey_feature", "_UI_PayloadFactoryMediator_type"),
-				 EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY,
-				 true,
-				 false,
-				 false,
-				 null,
 				 null,
 				 null));
 	}
@@ -148,6 +126,29 @@ public class PayloadFactoryMediatorItemProvider
 				 null,
 				 null));
 	}
+	
+	/**
+	 * This adds a property descriptor for the Format Key feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addFormatKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PayloadFactoryMediator_formatKey_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PayloadFactoryMediator_formatKey_feature", "_UI_PayloadFactoryMediator_type"),
+				 EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
 
 	/**
 	 * This adds a property descriptor for the Media Type feature.
@@ -205,7 +206,7 @@ public class PayloadFactoryMediatorItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY);
+			childrenFeatures.add(EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY);
 			childrenFeatures.add(EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__ARGS);
 			childrenFeatures.add(EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__INPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__OUTPUT_CONNECTOR);
@@ -260,12 +261,12 @@ public class PayloadFactoryMediatorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PayloadFactoryMediator.class)) {
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT:
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD:
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__MEDIA_TYPE:
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_FORMAT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY:
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY:
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__ARGS:
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__INPUT_CONNECTOR:
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__OUTPUT_CONNECTOR:
@@ -288,7 +289,7 @@ public class PayloadFactoryMediatorItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY,
+				(EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY,
 				 EsbFactory.eINSTANCE.createRegistryKeyProperty()));
 
 		newChildDescriptors.add

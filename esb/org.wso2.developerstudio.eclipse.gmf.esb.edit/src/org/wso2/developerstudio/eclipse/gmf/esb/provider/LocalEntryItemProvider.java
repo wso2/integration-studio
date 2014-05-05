@@ -64,9 +64,9 @@ public class LocalEntryItemProvider
 		super.getPropertyDescriptors(object);
 
 		addEntryNamePropertyDescriptor(object);
-		addValueTypePropertyDescriptor(object);
+		addLocalEntryTypePropertyDescriptor(object);
 
-		switch (entry.getValueType()) {
+		switch (entry.getLocalEntryType()) {
 		case LITERAL:
 			addValueLiteralPropertyDescriptor(object);
 			break;
@@ -103,19 +103,19 @@ public class LocalEntryItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Value Type feature.
+	 * This adds a property descriptor for the Local Entry Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValueTypePropertyDescriptor(Object object) {
+	protected void addLocalEntryTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LocalEntry_valueType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LocalEntry_valueType_feature", "_UI_LocalEntry_type"),
-				 EsbPackage.Literals.LOCAL_ENTRY__VALUE_TYPE,
+				 getString("_UI_LocalEntry_localEntryType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LocalEntry_localEntryType_feature", "_UI_LocalEntry_type"),
+				 EsbPackage.Literals.LOCAL_ENTRY__LOCAL_ENTRY_TYPE,
 				 true,
 				 false,
 				 false,
@@ -228,7 +228,7 @@ public class LocalEntryItemProvider
 
 		switch (notification.getFeatureID(LocalEntry.class)) {
 			case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
-			case EsbPackage.LOCAL_ENTRY__VALUE_TYPE:
+			case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
 			case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
 			case EsbPackage.LOCAL_ENTRY__VALUE_XML:
 			case EsbPackage.LOCAL_ENTRY__VALUE_URL:

@@ -1161,14 +1161,6 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 				return createWSDLEndPointAdapter();
 			}
 			@Override
-			public Adapter caseWSDLDefinition(WSDLDefinition object) {
-				return createWSDLDefinitionAdapter();
-			}
-			@Override
-			public Adapter caseWSDLDescription(WSDLDescription object) {
-				return createWSDLDescriptionAdapter();
-			}
-			@Override
 			public Adapter caseWSDLEndPointInputConnector(WSDLEndPointInputConnector object) {
 				return createWSDLEndPointInputConnectorAdapter();
 			}
@@ -5966,34 +5958,6 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWSDLEndPointAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDefinition <em>WSDL Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSDLDefinition
-	 * @generated
-	 */
-	public Adapter createWSDLDefinitionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDescription <em>WSDL Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSDLDescription
-	 * @generated
-	 */
-	public Adapter createWSDLDescriptionAdapter() {
 		return null;
 	}
 

@@ -45,7 +45,7 @@ public class AddNewRecordsListAction extends AbstractActionHandler {
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORDS_LIST_ACTION_ID = "add-new-records-list-action-id"; //$NON-NLS-1$
-	private static final String NEW_RECORDS_LIST_ID = "NewRecordsList"; //$NON-NLS-1$
+	private static final String NEW_RECORDS_LIST_ID = "NewList"; //$NON-NLS-1$
 	private static final String ADD_NEW_RECORDS_LIST = Messages.AddNewRecordsListAction_addNewRecordsList;
 
 	public AddNewRecordsListAction(IWorkbenchPart workbenchPart) {

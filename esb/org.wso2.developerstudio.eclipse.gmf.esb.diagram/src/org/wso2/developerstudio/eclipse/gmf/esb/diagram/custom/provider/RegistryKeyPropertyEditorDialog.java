@@ -319,8 +319,10 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 	@SuppressWarnings("unchecked")
 	private void openRegistryResourceProviderDialog(){
 		hide();
+		
 		try{
-			DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(getParentShell(),new Class[]{IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class},(Map<String,List<String>>)rkProperty.getFilters());
+		DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(getParentShell(),new Class[]{IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class},(Map<String,List<String>>)rkProperty.getFilters());
+			
 			registryResourceProviderSelector.create();
 			registryResourceProviderSelector.getShell().setText("Workspace Element Providers");
 			registryResourceProviderSelector.open();

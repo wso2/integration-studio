@@ -15,12 +15,13 @@
  */
 package org.wso2.datamapper.engine.inputAdapters;
 
+import java.io.InputStream;
+
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.axiom.om.OMElement;
 
 public interface InputDataReaderAdapter {
 	
-	public void setInputMsg(OMElement msg);
+	public void setInputMsg(InputStream msg);
 	public GenericRecord getInputRecord(Schema input);	
 }

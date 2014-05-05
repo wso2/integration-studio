@@ -12,6 +12,8 @@ import org.apache.avro.Schema.Field;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMXMLBuilderFactory;
+import org.apache.axiom.om.OMXMLParserWrapper;
 
 import au.com.bytecode.opencsv.CSVReader;
 /**
@@ -28,8 +30,10 @@ public class CsvInputReader implements InputDataReaderAdapter {
 	 * @param msg - Soap Envelop
 	 * @throws IOException
 	 */
-	public void setInputMsg(OMElement msg) {
-		 OMElement body = msg.getFirstElement().getFirstElement();
+	public void setInputMsg(InputStream in) {
+		 OMXMLParserWrapper builder = OMXMLBuilderFactory.createOMBuilder(in);
+		 OMElement documentElement = builder.getDocumentElement(); ;
+		 OMElement body = documentElement.getFirstElement().getFirstElement();
 		 getTextElement(body);
 		 String text = textEement.getText();
 		 InputStream is = new ByteArrayInputStream(text.getBytes());
@@ -94,5 +98,9 @@ public class CsvInputReader implements InputDataReaderAdapter {
 			}
  
 		return ParentRecord;
+	}
+
+	public static String getType() {
+		return "text/csv";
 	}
 }

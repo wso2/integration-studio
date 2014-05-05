@@ -22,6 +22,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRecordAct
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRecordsListAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SchemaFromJsonAction;
@@ -67,6 +68,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewFieldContextActions;
 	// Actions for getting schema from data-set
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> schemaFromDatasetActions;
+	// Actions for exporting schema
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> exportSchemaActions;
 
 	/**
 	 * @generated NOT
@@ -118,6 +121,11 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		schemaFromDatasetActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		schemaFromDatasetActions.put(InputEditPart.class, new SchemaFromJsonAction(part));
 		schemaFromDatasetActions.put(OutputEditPart.class, new SchemaFromJsonAction(part));
+
+		// Initialize export schema actions.
+		exportSchemaActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
+		exportSchemaActions.put(InputEditPart.class, new ExportSchemaAction(part));
+		exportSchemaActions.put(OutputEditPart.class, new ExportSchemaAction(part));
 	}
 
 	/**
@@ -144,7 +152,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							ContributionItemService.getInstance().contributeToPopupMenu(
 									DiagramEditorContextMenuProvider.this, part);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
-							
+
 							// Fixing TOOLS-2425
 							menu.remove(ActionIds.MENU_NAVIGATE);
 							menu.remove(ActionIds.MENU_EDIT);
@@ -197,19 +205,27 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									AbstractActionHandler schemaFromDatasetAction = schemaFromDatasetActions
 											.get(selectedEditorPart.getClass());
 									if (null != schemaFromDatasetAction) {
-										menu.appendToGroup(NAVIGATE_GROUP_ID, schemaFromDatasetAction);
+										menu.appendToGroup(NAVIGATE_GROUP_ID,
+												schemaFromDatasetAction);
 									}
-									
+
 									// Append load from file item to menu
 									AbstractActionHandler contextAction = contextActions
 											.get(selectedEditorPart.getClass());
 									if (null != contextAction) {
 										menu.appendToGroup(NAVIGATE_GROUP_ID, contextAction);
 									}
+
+									// Append export schema item to menu
+									AbstractActionHandler exportSchemaAction = exportSchemaActions
+											.get(selectedEditorPart.getClass());
+									if (null != exportSchemaAction) {
+										menu.appendToGroup(NAVIGATE_GROUP_ID, exportSchemaAction);
+									}
 								}
 
 							}
-							
+
 							menu.prependToGroup(PROPERTIES_GROUP_ID, deleteAction);
 						}
 					});

@@ -50,7 +50,7 @@ public class AddNewRootRecordAction extends AbstractActionHandler {
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String ADD_NEW_ROOT_RECORD_ACTION_ID = "add-new-root-record-action-id"; //$NON-NLS-1$
-	private static final String NEW_ROOT_RECORD_ID = "NewRootRecord"; //$NON-NLS-1$
+	private static final String NEW_ROOT_RECORD_ID = "NewRootType"; //$NON-NLS-1$
 	private static final String ADD_NEW_ROOT_RECORD = Messages.AddNewRootRecordAction_addNewRoot;
 	private static final String ERROR = Messages.AddNewRootRecordAction_errorHeader;
 	private static final String ERROR_ADDING_NEW_CHILD = Messages.AddNewRootRecordAction_errorAddChild;

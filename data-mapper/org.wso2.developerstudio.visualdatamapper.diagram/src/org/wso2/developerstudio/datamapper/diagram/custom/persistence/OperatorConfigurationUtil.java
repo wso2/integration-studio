@@ -134,20 +134,23 @@ public class OperatorConfigurationUtil {
 	
 	public static String jsFunction(String input, String output, ArrayList<String> assignments, boolean recursive) {
 		if(recursive){
-
-			String function = "function map_L_"+input+"_L_"+output+"(" + input + ", " + output + "){\n";
+			StringBuilder function = new StringBuilder();
+			function.append("function map_L_").append(input).append("_L_").append(output).append("(" ).append( input ).append( ", " ).append( output ).append( "){\n");
 			for(String assignment : assignments){
-				function.concat(assignment).concat("\n");
+				function.append(assignment).append("\n");
 			}
-			return function.concat("}");
+			function.append("}");
+			return function.toString();
 		}
 		
 
-		String function = "function map_S_"+input+"_S_"+output+"(" + input + ", " + output + "){\n";
+		StringBuilder function = new StringBuilder();
+		function.append("function map_S_").append(input).append("_S_").append(output).append("(" ).append( input ).append( ", " ).append( output ).append( "){\n");
 		for(String assignment : assignments){
-			function.concat(assignment).concat("\n");
+			function.append(assignment).append("\n");
 		}
-		return function.concat("}");
+		function.append("}");
+		return function.toString();
 	}
 	
 	public static String getForLoop() {

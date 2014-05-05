@@ -46,7 +46,7 @@ public class AddNewFieldAction extends AbstractActionHandler {
 	private static final String OUTPUT_EDITPART = "Output"; //$NON-NLS-1$
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String ADD_NEW_FIELD_ACTION_ID = "add-new-field-action-id"; //$NON-NLS-1$
-	private static final String NEW_FIELD_ID = "NewField"; //$NON-NLS-1$
+	private static final String NEW_FIELD_ID = "NewAttribute"; //$NON-NLS-1$
 	private static final String ADD_NEW_FIELD = Messages.AddNewFieldAction_addNewField;
 
 	public AddNewFieldAction(IWorkbenchPart workbenchPart) {

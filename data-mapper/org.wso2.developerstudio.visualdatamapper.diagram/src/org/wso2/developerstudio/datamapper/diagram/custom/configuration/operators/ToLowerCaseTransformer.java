@@ -24,9 +24,9 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.AssignmentStatement;
 
-public class ToUpperCaseTransformer extends OneToOneTransformer {
+public class ToLowerCaseTransformer extends OneToOneTransformer {
 
-	private final String OPERATOR_FUNCTION = ".toUpperCase()";
+	private final String OPERATOR_FUNCTION = ".toLowerCase()";
 
 	@Override
 	public AssignmentStatement transform(Operator operator) {
@@ -36,8 +36,8 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 		if (operatorInput instanceof Element && operatorOutput instanceof Element) {
 			Element inputElement = (Element) operatorInput;
 			return getSimpleOperatorMapping(operator, inputElement);
-		}
 
+		}
 		else if (operatorInput instanceof Element && operatorOutput instanceof OperatorLeftConnector) {
 			Operator nextOperator = (Operator) getOperator(operatorOutput);
 			// create ___ = me ____ and pass
@@ -73,16 +73,17 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 	 * @return	assignment statement for map
 	 */
 	private AssignmentStatement getSimpleOperatorMapping(Operator operator, Element inputElement) {
-
 		Element outputElement = getOutputElement(operator);
 		TreeNode outputParent = getOutputElementParent(operator);
 
 		String index = "";
-		if (inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY))
+		if (inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
 			index = getIndex();
+		}
 
 		StringBuilder builder = new StringBuilder();
 		builder.append(getTreeHierarchy(outputElement.getFieldParent(), outputParent)).append(".").append(outputElement.getName()).append(" = ").append(inputElement.getFieldParent().getName()).append(index).append(".").append(inputElement.getName()).append(getOperatorFunction()).append(";");
+
 		AssignmentStatement statement = new AssignmentStatement();
 		statement.setStatement(builder.toString());
 		return statement;
@@ -95,14 +96,11 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 		StringBuilder builder = new StringBuilder();
 		builder.append(subStatement);
 		if (operatorOutput instanceof Element) {
-			// fill the blank
 			Element outputElement = (Element) operatorOutput;
 			builder.insert(0, outputElement.getFieldParent().getName() + "." + outputElement.getName());
 			builder.append(getOperatorFunction()).append(";");
 			return builder.toString();
-		}
-
-		else if (operatorOutput instanceof OperatorLeftConnector) {
+		} else if (operatorOutput instanceof OperatorLeftConnector) {
 			Operator nextOperator = (Operator) getOperator(operatorOutput);
 			builder.append(getOperatorFunction());
 
@@ -113,10 +111,10 @@ public class ToUpperCaseTransformer extends OneToOneTransformer {
 
 		}
 		return null;
-
 	}
 
 	public String getOperatorFunction() {
 		return OPERATOR_FUNCTION;
 	}
+
 }

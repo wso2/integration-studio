@@ -94,4 +94,12 @@ public class ConstantTransformer implements OperatorsTransformer {
 		return tree;
 	}
 
+
+
+	@Override
+	public String trasnform(String statement, Operator operator, Operator nextOperator) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -1,0 +1,20 @@
+{
+
+ "name" : "widgetX",
+  "type": "record", 
+  "fields" : [
+                 { "name" : "debugX","type" : "string"},
+                 { "name": "windowX",
+                  "type" : {   
+  "name": "windowX", 
+                "type": "record", 
+             	"fields" : [ 
+                                            { "name" : "titleX","type" : "string"},
+{ "name" : "nameX","type" : "string"},
+{ "name" : "widthX","type" : "string"},
+{ "name" : "heightX","type" : "string"}
+]
+}
+}
+]
+}

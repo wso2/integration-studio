@@ -46,57 +46,57 @@ public class EntitlementMediatorDeserializer extends AbstractEsbNodeDeserializer
 		if (entitlementMediator.getCallbackClass() != null) {
 			String callbackClass = entitlementMediator.getCallbackClass();
 			if (callbackClass != null && !callbackClass.equals("")) {
-				switch (callbackClass) {
-				case UT:
+				if(callbackClass.equalsIgnoreCase(UT)){
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
 							EntitlementCallbackHandler.UT);
-					break;
-				case SAML:
+				}
+				else if(callbackClass.equalsIgnoreCase(SAML)){
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
 							EntitlementCallbackHandler.SAML);
-					break;
-				case KERBEROS:
+				}
+				else if(callbackClass.equalsIgnoreCase(KERBEROS)){
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
 							EntitlementCallbackHandler.KERBEROS);
-					break;
-				case X509:
+				}
+				else if(callbackClass.equalsIgnoreCase(X509)){
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
 							EntitlementCallbackHandler.X509);
-					break;
-				default:
+				}
+				else{
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER,
 							EntitlementCallbackHandler.CUSTOM);
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__CALLBACK_CLASS_NAME, entitlementMediator.getCallbackClass());
 
 				}
 			}
-	}
+		}
 	
 		if (entitlementMediator.getClient() != null) {
 			String clientType = entitlementMediator.getClient();
 			if (clientType != null && !clientType.equals("")) {
-				switch (clientType) {
-				case BASIC_AUTH:
+				if(clientType.equalsIgnoreCase(BASIC_AUTH)){
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
 							EntitlementClientType.BASIC_AUTH);
-					break;
-				case THRIFT:
+				}
+				else if(clientType.equalsIgnoreCase(THRIFT)){
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
 							EntitlementClientType.THRIFT);
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_HOST, entitlementMediator.getThriftHost());
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__THRIFT_PORT, entitlementMediator.getThriftPort());	
-					break;
-				case SOAP:
+				}
+				else if(clientType.equalsIgnoreCase(SOAP)){
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
 							EntitlementClientType.SOAP);
-					break;
-				case WS_XACML:
+					
+				}
+				else if(clientType.equalsIgnoreCase(WS_XACML)){
 					executeSetValueCommand(ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE,
 							EntitlementClientType.WSXACML);
-					break;
+					
 				}
 			}
 	}
+	
 	
 		
 		if(entitlementMediator.getOnRejectMediator() != null){

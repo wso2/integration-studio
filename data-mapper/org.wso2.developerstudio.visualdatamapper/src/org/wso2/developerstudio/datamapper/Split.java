@@ -13,6 +13,7 @@ package org.wso2.developerstudio.datamapper;
  * <ul>
  *   <li>{@link org.wso2.developerstudio.datamapper.Split#getDelimiter <em>Delimiter</em>}</li>
  *   <li>{@link org.wso2.developerstudio.datamapper.Split#getArrayOutput <em>Array Output</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.datamapper.Split#getArrayOutputResultOmitingIndices <em>Array Output Result Omiting Indices</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,4 +75,30 @@ public interface Split extends Operator {
 	 * @generated
 	 */
     void setArrayOutput(int value);
+
+				/**
+	 * Returns the value of the '<em><b>Array Output Result Omiting Indices</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Array Output Result Omiting Indices</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Array Output Result Omiting Indices</em>' attribute.
+	 * @see #setArrayOutputResultOmitingIndices(String)
+	 * @see org.wso2.developerstudio.datamapper.DataMapperPackage#getSplit_ArrayOutputResultOmitingIndices()
+	 * @model
+	 * @generated
+	 */
+	String getArrayOutputResultOmitingIndices();
+
+				/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.datamapper.Split#getArrayOutputResultOmitingIndices <em>Array Output Result Omiting Indices</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Array Output Result Omiting Indices</em>' attribute.
+	 * @see #getArrayOutputResultOmitingIndices()
+	 * @generated
+	 */
+	void setArrayOutputResultOmitingIndices(String value);
 } // Split

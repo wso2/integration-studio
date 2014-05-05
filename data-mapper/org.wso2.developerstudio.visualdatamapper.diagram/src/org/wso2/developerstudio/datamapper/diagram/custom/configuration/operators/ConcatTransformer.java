@@ -28,7 +28,7 @@ import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.AssignmentStatement;
 
-public class ConcatTransform implements OperatorsTransformer{
+public class ConcatTransformer extends ManyToOneTransformer{
 
 	private static final String INDEX = "[i]";
 	
@@ -146,6 +146,7 @@ public class ConcatTransform implements OperatorsTransformer{
 		return hierarchy.toString();
 
 	}
+
 
 
 }

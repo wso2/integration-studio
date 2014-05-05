@@ -41,6 +41,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 
 	private static final String EDIT_GROUP_ID = "editGroup"; //$NON-NLS-1$
 	private static final String NAVIGATE_GROUP_ID = "navigateGroup";
+	private static final String PROPERTIES_GROUP_ID = "propertiesGroup";
+	private static final String MENU_ADDITIONS = "additions";
+	private static final String MENU_PROPERTIES = "properties";
 	private static final String ERROR_BUILDING_CONTEXT_MENU = Messages.DiagramEditorContextMenuProvider_errorContextMenu;
 
 	/**
@@ -148,6 +151,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							menu.remove(ActionIds.MENU_FORMAT);
 							menu.remove(ActionIds.MENU_FILTERS);
 							menu.remove(ActionIds.MENU_FILE);
+							menu.remove(MENU_PROPERTIES);
+							menu.remove(MENU_ADDITIONS);
 
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
@@ -205,8 +210,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 
 							}
 							
-							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
-
+							menu.prependToGroup(PROPERTIES_GROUP_ID, deleteAction);
 						}
 					});
 		} catch (Exception e) {

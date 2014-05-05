@@ -21,7 +21,6 @@ import java.util.List;
 
 import org.apache.commons.lang.WordUtils;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
@@ -162,23 +161,6 @@ public class SplitTransformer extends OneToManyTransformer {
 		return connectorList;
 	}
 
-	private List<EObject> getOutputEObjects(Operator operator) {
-		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
-		ArrayList<EObject> eObjectList = new ArrayList<EObject>();
-		for (OperatorRightConnector connector : rightConnectors) {
-			if (connector.getOutNode().getOutgoingLink().size() != 0) {
-				if (connector.getOutNode().getOutgoingLink().get(0).getInNode().getElementParent() != null) {
-				}
 
-			} else {
-				eObjectList.add(null);
-			}
-		}
-		return eObjectList;
-	}
 
-	@Override
-	public TreeNode getInputElementParent(Operator operator) {
-		return getInputElement(operator).getFieldParent();
-	}
 }

@@ -1,8 +1,23 @@
+/*
+ * Copyright 2014 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operators;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.diagram.ui.providers.LeftRightProvider;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
@@ -15,11 +30,9 @@ public class OneToOneTransformer implements OperatorsTransformer {
 
 	private static final String INDEX = "[i]";
 
-	
-
 	@Override
 	public AssignmentStatement transform(Operator operator) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -27,38 +40,37 @@ public class OneToOneTransformer implements OperatorsTransformer {
 	public TreeNode getOutputElementParent(Operator operator) {
 		EObject outputObject = getOutputObject(operator);
 		EObject inputObject = getInputObject(operator);
-		
+
 		Element outputElement;
 		TreeNode outputParent;
-		Element inputElement ;
-		
-		if(inputObject instanceof Element && outputObject instanceof Element){
-			outputElement = (Element)outputObject;
+		Element inputElement;
+
+		if (inputObject instanceof Element && outputObject instanceof Element) {
+			outputElement = (Element) outputObject;
 			outputParent = outputElement.getFieldParent();
-			inputElement =  (Element) inputObject;
-			
+			inputElement = (Element) inputObject;
+
 			outputParent = getOutputArrayParent(inputElement, outputParent);
-			return outputParent;	
+			return outputParent;
 		}
 
 		else if (inputObject instanceof Element && outputObject instanceof OperatorLeftConnector) {
-			Operator nextOperator = (Operator)getOperator(outputObject);
-			inputElement =  (Element) inputObject;
-			OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(nextOperator);			
+			Operator nextOperator = (Operator) getOperator(outputObject);
+			inputElement = (Element) inputObject;
+			OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(nextOperator);
 			outputParent = transformer.getOutputElementParent(nextOperator);
 			outputParent = getOutputArrayParent(inputElement, outputParent);
 			return outputParent;
-		}
-		else if (inputObject instanceof OperatorRightConnector && outputObject instanceof OperatorLeftConnector) {
-			Operator nextOperator = (Operator)getOperator(outputObject);
-			OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(nextOperator);			
+		} else if (inputObject instanceof OperatorRightConnector && outputObject instanceof OperatorLeftConnector) {
+			Operator nextOperator = (Operator) getOperator(outputObject);
+			OperatorsTransformer transformer = DataMapperTransformerRegistry.getInstance().getTransformer(nextOperator);
 			outputParent = transformer.getOutputElementParent(nextOperator);
 
 			return outputParent;
 		}
-		
+
 		else if (inputObject instanceof OperatorRightConnector && outputObject instanceof Element) {
-			outputElement = (Element)outputObject;
+			outputElement = (Element) outputObject;
 			outputParent = outputElement.getFieldParent();
 			return outputParent;
 		}
@@ -66,21 +78,24 @@ public class OneToOneTransformer implements OperatorsTransformer {
 	}
 
 	/**
-	 * when input is an element of array treenode, the outputparent treenode also need to be an array
-	 * @param inputElement input schema element
-	 * @param outputParent 
+	 * when input is an element of array treenode, the outputparent treenode
+	 * also need to be an array
+	 * 
+	 * @param inputElement
+	 *            input schema element
+	 * @param outputParent
 	 * @return
 	 */
-	private TreeNode getOutputArrayParent(Element inputElement, TreeNode outputParent ){
+	private TreeNode getOutputArrayParent(Element inputElement, TreeNode outputParent) {
 		if (inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY) && !(outputParent.getSchemaDataType().equals(SchemaDataType.ARRAY))) {
 			while (outputParent.getFieldParent() != null && !(outputParent.getSchemaDataType().equals(SchemaDataType.ARRAY))) {
 				outputParent = outputParent.getFieldParent();
 			}
 		}
-		
+
 		return outputParent;
 	}
-	
+
 	@Override
 	public TreeNode getInputElementParent(Operator operator) {
 		return getInputElement(operator).getFieldParent();
@@ -88,8 +103,11 @@ public class OneToOneTransformer implements OperatorsTransformer {
 
 	/**
 	 * traverse up from a given treeNode to given root treenode and build path
-	 * @param tree	given treenode
-	 * @param parent	given root treenode
+	 * 
+	 * @param tree
+	 *            given treenode
+	 * @param parent
+	 *            given root treenode
 	 * @return path to root treeNode from given treeNode
 	 */
 	protected String getTreeHierarchy(TreeNode tree, TreeNode parent) {
@@ -113,7 +131,9 @@ public class OneToOneTransformer implements OperatorsTransformer {
 
 	/**
 	 * retrieve mapped element from output schema
-	 * @param operator this operator
+	 * 
+	 * @param operator
+	 *            this operator
 	 * @return mapped element from output schema
 	 */
 	protected Element getOutputElement(Operator operator) {
@@ -122,7 +142,9 @@ public class OneToOneTransformer implements OperatorsTransformer {
 
 	/**
 	 * retrieve mapped element from input schema
-	 * @param operator this operator
+	 * 
+	 * @param operator
+	 *            this operator
 	 * @return mapped element from input schema
 	 */
 	private Element getInputElement(Operator operator) {
@@ -131,7 +153,9 @@ public class OneToOneTransformer implements OperatorsTransformer {
 
 	/**
 	 * retrieve mapped object to input connector of operator
-	 * @param operator this operator
+	 * 
+	 * @param operator
+	 *            this operator
 	 * @return mapped object to input connector of operator
 	 */
 	protected EObject getInputObject(Operator operator) {
@@ -140,10 +164,11 @@ public class OneToOneTransformer implements OperatorsTransformer {
 		return inputObject;
 	}
 
-	
 	/**
 	 * retrieve mapped object to output connector of operator
-	 * @param operator this operator
+	 * 
+	 * @param operator
+	 *            this operator
 	 * @return mapped object to output connector of operator
 	 */
 	public EObject getOutputObject(Operator operator) {
@@ -151,15 +176,16 @@ public class OneToOneTransformer implements OperatorsTransformer {
 		return rightConnectors.get(0).getOutNode().getOutgoingLink().get(0).getInNode().eContainer();
 	}
 
-
-
 	public static String getIndex() {
 		return INDEX;
 	}
 
 	/**
-	 * in three econtainers of a eobject would be an operator. it would be easy to declare it a class
-	 * @param connector in or put node eobject
+	 * in three econtainers of a eobject would be an operator. it would be easy
+	 * to declare it a class
+	 * 
+	 * @param connector
+	 *            in or put node eobject
 	 * @return operator which connected to in/out node
 	 */
 	public Operator getOperator(EObject connector) {
@@ -171,11 +197,5 @@ public class OneToOneTransformer implements OperatorsTransformer {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-	
-	
-	
-
 
 }

@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorLeftConnector;
-import org.wso2.developerstudio.datamapper.OperatorRightConnector;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.AssignmentStatement;
@@ -38,10 +37,7 @@ public class ToLowerCaseTransformer extends OneToOneTransformer {
 			Element inputElement = (Element) operatorInput;
 			return getSimpleOperatorMapping(operator, inputElement);
 
-		} else if (operatorInput instanceof OperatorRightConnector && operatorOutput instanceof Element) {
-			// FIXME implementation of operator chaining
 		}
-
 		else if (operatorInput instanceof Element && operatorOutput instanceof OperatorLeftConnector) {
 			Operator nextOperator = (Operator) getOperator(operatorOutput);
 			// create ___ = me ____ and pass
@@ -54,8 +50,6 @@ public class ToLowerCaseTransformer extends OneToOneTransformer {
 
 			return statement;
 
-		} else {
-			// if operator middle of operators
 		}
 
 		return null;
@@ -83,8 +77,9 @@ public class ToLowerCaseTransformer extends OneToOneTransformer {
 		TreeNode outputParent = getOutputElementParent(operator);
 
 		String index = "";
-		if (inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY))
+		if (inputElement.getFieldParent().getSchemaDataType().equals(SchemaDataType.ARRAY)){
 			index = getIndex();
+		}
 
 		StringBuilder builder = new StringBuilder();
 		builder.append(getTreeHierarchy(outputElement.getFieldParent(), outputParent)).append(".").append(outputElement.getName()).append(" = ").append(inputElement.getFieldParent().getName()).append(index).append(".").append(inputElement.getName()).append(getOperatorFunction()).append(";");

@@ -1,8 +1,26 @@
+/*
+ * Copyright 2014 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operators;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.OperatorRightConnector;
@@ -15,7 +33,7 @@ public class OneToManyTransformer implements OperatorsTransformer {
 
 	@Override
 	public AssignmentStatement transform(Operator operator) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -42,12 +60,6 @@ public class OneToManyTransformer implements OperatorsTransformer {
 		}
 
 		return highestParent;
-	}
-
-	@Override
-	public TreeNode getInputElementParent(Operator operator) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/**
@@ -89,8 +101,11 @@ public class OneToManyTransformer implements OperatorsTransformer {
 
 	/**
 	 * traverse up from a given treeNode to given root treenode and build path
-	 * @param tree	given treenode
-	 * @param parent	given root treenode
+	 * 
+	 * @param tree
+	 *            given treenode
+	 * @param parent
+	 *            given root treenode
 	 * @return path to root treeNode from given treeNode
 	 */
 	public String getTreeHierarchy(TreeNode tree, TreeNode parent) {
@@ -112,4 +127,26 @@ public class OneToManyTransformer implements OperatorsTransformer {
 
 	}
 
+	/**
+	 * retrieve mapped objects to output connector of operator
+	 * @param operator this operator
+	 * @return mapped object to output connector of operator
+	 */
+	public List<EObject> getOutputEObjects(Operator operator) {
+		EList<OperatorRightConnector> rightConnectors = operator.getBasicContainer().getRightContainer().getRightConnectors();
+		ArrayList<EObject> eObjectList = new ArrayList<EObject>();
+		for (OperatorRightConnector connector : rightConnectors) {
+			if (connector.getOutNode().getOutgoingLink().size() != 0) {
+				eObjectList.add(connector.getOutNode().getOutgoingLink().get(0).getInNode().eContainer());
+			} else {
+				eObjectList.add(null);
+			}
+		}
+		return eObjectList;
+	}
+
+	@Override
+	public TreeNode getInputElementParent(Operator operator) {
+		return getInputElement(operator).getFieldParent();
+	}
 }

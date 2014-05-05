@@ -196,12 +196,12 @@ public class OperatorConfigurationUtil {
 		return element.getOutNode().getOutgoingLink().get(0).getInNode().eContainer().eContainer().eContainer().eContainer();
 	}
 	
-	/**util method for find wheather exist faunction for a specific tree node mapping
+	/**util method for find whether exist faunction for a specific tree node mapping
 	 * @param functionForElement  new function created
 	 * @param functionListForTree all exisiting functions
 	 * @return null if does not exisit, else return equal function 
 	 */
-	public static  Function isFunctionExisit(Function functionForElement,
+	public static  Function isFunctionExist(Function functionForElement,
 			List<Function> functionListForTree) {
 		for(Function function : functionListForTree){
 			if((function.getInputParameter().getName().equals(functionForElement.getInputParameter().getName()) )&& (function.getOutputParameter().getName().equals(functionForElement.getOutputParameter().getName()))){

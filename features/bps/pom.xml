@@ -9,13 +9,12 @@
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>wso2-eclipse-carbonstudio-bps-feature</artifactId>
+    <artifactId>wso2-eclipse-developerstudio-bpel-features</artifactId>
     <packaging>pom</packaging>
     <name>WSO2 Eclipse BPS Features</name>
     <modules>
 	<module>org.wso2.developerstudio.eclipse.bpel.artifact.feature</module>
-    	<module>org.wso2.developerstudio.eclipse.bps.feature</module>
-	<!--module>org.eclipse.bpel.feature</module>-->
+    	<module>org.wso2.developerstudio.eclipse.bpel.feature</module>
     </modules>
 </project>
 

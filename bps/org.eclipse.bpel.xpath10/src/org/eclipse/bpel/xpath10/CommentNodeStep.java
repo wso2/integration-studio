@@ -34,13 +34,13 @@ public class CommentNodeStep extends Step {
 	/**
 	 * @see org.eclipse.bpel.xpath10.Step#getText()
 	 */
-	
+	@Override
 	public String getText() {
 		return asString();
 	}
 	
 		
-	
+	@Override
 	protected String asString () {
 		return "comment()";
 	}

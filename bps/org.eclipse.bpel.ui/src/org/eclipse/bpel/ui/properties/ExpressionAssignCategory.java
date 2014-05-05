@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,10 @@
  *******************************************************************************/
 package org.eclipse.bpel.ui.properties;
 
+import org.eclipse.bpel.model.AbstractAssignBound;
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Expression;
-import org.eclipse.bpel.model.From;
-import org.eclipse.bpel.model.To;
 import org.eclipse.bpel.ui.IBPELUIConstants;
 import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.adapters.IVirtualCopyRuleSide;
@@ -67,7 +66,7 @@ public class ExpressionAssignCategory extends ExpressionSection implements IAssi
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#createControls(org.eclipse.swt.widgets.Composite, org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
 	 */
-	
+	@Override
 	public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {		
 		super.createControls(parent, aTabbedPropertySheetPage);
 		fParent = parent;
@@ -97,12 +96,12 @@ public class ExpressionAssignCategory extends ExpressionSection implements IAssi
 	}
 
 	
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		MultiObjectAdapter adapter = new BatchedMultiObjectAdapter() {
 			boolean needRefresh = false;
 			boolean toOrFromAffected = false;
-			
+			@Override
 			public void notify(Notification n) {
 				needRefresh = isBodyAffected(n);
 				
@@ -112,7 +111,7 @@ public class ExpressionAssignCategory extends ExpressionSection implements IAssi
 				}
 				refreshAdapters();
 			}
-			
+			@Override
 			public void finish() {
 				if (needRefresh || toOrFromAffected) {
 					updateWidgets();
@@ -137,7 +136,7 @@ public class ExpressionAssignCategory extends ExpressionSection implements IAssi
 	 * to the category's methods. 
 	 */
 	
-	
+	@Override
 	protected Command wrapInShowContextCommand(Command inner) {
 		return super.wrapInShowContextCommand(inner, fOwnerSection);
 	}
@@ -162,7 +161,7 @@ public class ExpressionAssignCategory extends ExpressionSection implements IAssi
 	}
 
 	
-	
+	@Override
 	protected Command newStoreToModelCommand  (Object body) {
 		CompoundCommand result = new CompoundCommand();
 		// If there is no condition, create one.
@@ -181,13 +180,10 @@ public class ExpressionAssignCategory extends ExpressionSection implements IAssi
 	}
 
 	
-	
+	@Override
 	protected EStructuralFeature getStructuralFeature(EObject object) {
-		if (object instanceof To) {
-			return BPELPackage.eINSTANCE.getTo_Expression();
-		}
-		if (object instanceof From) {
-			return BPELPackage.eINSTANCE.getFrom_Expression();
+		if (object instanceof AbstractAssignBound) {
+			return BPELPackage.eINSTANCE.getAbstractAssignBound_Expression();
 		}
 		return super.getStructuralFeature(object);
 	}
@@ -211,7 +207,7 @@ public class ExpressionAssignCategory extends ExpressionSection implements IAssi
 	}
 	
 	
-	
+	@Override
 	protected final void createClient(Composite parent) {
 		// ugly HACK to make subclasses work
 		//FlatFormLayout layout = new FlatFormLayout();

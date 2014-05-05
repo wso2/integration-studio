@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,7 @@ import org.eclipse.swt.graphics.Image;
 public class EndNodeEditPart extends BPELEditPart implements NodeEditPart {
 	Image image;
 
-	
+	@Override
 	protected IFigure createFigure() {
 		if (image == null) {
 			ILabeledElement element = BPELUtil.adapt(getEndNode(), ILabeledElement.class);
@@ -35,7 +35,7 @@ public class EndNodeEditPart extends BPELEditPart implements NodeEditPart {
 		ImageFigure imageFigure = new ImageFigure(image);
 		return imageFigure;
 	}	
-	
+	@Override
 	public boolean isSelectable() {
 		return false;
 	}

@@ -66,6 +66,7 @@ public class FailoverEndPointItemProvider
 		}
 		
 		super.getPropertyDescriptors(object);
+		addPropertiesPropertyDescriptor(object);
 	
 		return itemPropertyDescriptors;
 	}

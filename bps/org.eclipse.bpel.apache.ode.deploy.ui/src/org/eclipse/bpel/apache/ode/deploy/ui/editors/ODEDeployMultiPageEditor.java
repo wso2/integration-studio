@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 IBM Corporation, University of Stuttgart (IAAS) and others.
+ * Copyright (c) 2008, 2012 IBM Corporation, University of Stuttgart (IAAS) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,13 +15,13 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Vector;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.DocumentRoot;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.util.ddResourceFactoryImpl;
+import org.eclipse.bpel.apache.ode.deploy.ui.messages.ODEDeployUIMessages;
 import org.eclipse.bpel.apache.ode.deploy.ui.pages.ProcessPage;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
 import org.eclipse.bpel.model.BPELFactory;
@@ -56,9 +56,7 @@ import org.eclipse.ui.forms.editor.FormEditor;
  * @author Simon Moser (IBM)
  */
 public class ODEDeployMultiPageEditor extends FormEditor implements IEditingDomainProvider {
-	
-	// Display this in title if no BPEL process files are found in current directory
-	private final static String NO_PROCESSES_FOUND = " *** No Processes Found *** ";
+
 	private boolean readOnly = false;
 	// https://jira.jboss.org/jira/browse/JBIDE-6230
 	// if BPEL processes were added or deleted, DD model is not in sync and needs to be saved 
@@ -92,7 +90,7 @@ public class ODEDeployMultiPageEditor extends FormEditor implements IEditingDoma
 	 * SaveAs is not supported.
 	 */
 	public void doSaveAs() {
-		throw new UnsupportedOperationException("SaveAs is not allowed."); //$NON-NLS-1$
+		throw new UnsupportedOperationException(ODEDeployUIMessages.ODEDeployEditor_No_SaveAs);
 	}
 	
 	/**
@@ -104,7 +102,7 @@ public class ODEDeployMultiPageEditor extends FormEditor implements IEditingDoma
 		setPartName(editorInput.getName());
 		
 		if (!(editorInput instanceof IFileEditorInput)) {
-			throw new PartInitException("Invalid Input: Must be IFileEditorInput"); //$NON-NLS-1$
+			throw new PartInitException(ODEDeployUIMessages.ODEDeployEditor_InvalidInput);
 		}
 		
 		createModel();
@@ -145,7 +143,7 @@ public class ODEDeployMultiPageEditor extends FormEditor implements IEditingDoma
 
 	}
 
-	
+	@Override
 	protected void addPages() {		
 		try {
 			for (ProcessType pt : deployDescriptor.getProcess()) {
@@ -188,7 +186,7 @@ public class ODEDeployMultiPageEditor extends FormEditor implements IEditingDoma
 		return editingDomain;
 	}
 
-	
+	@Override
 	public boolean isDirty() {
 		return !readOnly && // Bugzilla 320545:
 			(
@@ -197,7 +195,7 @@ public class ODEDeployMultiPageEditor extends FormEditor implements IEditingDoma
 			);
 	}
 	
-	
+	@Override
 	public void setFocus() {
 		if (getActivePage() != -1 && getControl(getActivePage()) != null) {
 			getControl(getActivePage()).setFocus();
@@ -229,7 +227,7 @@ public class ODEDeployMultiPageEditor extends FormEditor implements IEditingDoma
 			// https://jira.jboss.org/jira/browse/JBIDE-6006
 			// add a process stub to DD so the editor doesn't crash
 			org.eclipse.bpel.model.Process p = BPELFactory.eINSTANCE.createProcess();
-			p.setName(NO_PROCESSES_FOUND);
+			p.setName(ODEDeployUIMessages.ODEDeployEditor_NO_PROCESSES_FOUND);
 			ProcessType pt = DeployUtils.createProcessStub(p);
 			deployDescriptor.getProcess().add(pt);
 			// set model

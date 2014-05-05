@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -165,7 +165,7 @@ public class XPathSourceScanner extends BufferedRuleBasedScanner {
 		wordRule = new WordRule ( new XPathWordDetector.MessagePartDetector() );
 		wordRule.addWord ( WordRule.ANY , partToken );
 		wordRule.setTokenContextCheck( new TokenContext () {
-			
+			@Override
 			public boolean checkSeenTokens(XPathSourceScanner scanner) {
 				return (scanner.lastToken(0) == variableToken);
 			}			
@@ -198,7 +198,7 @@ public class XPathSourceScanner extends BufferedRuleBasedScanner {
 		wordRule.addWord ("or",operatorToken);
 		
 		wordRule.setTokenContextCheck( new TokenContext() {
-			
+			@Override
 			public boolean checkSeenTokens(XPathSourceScanner scanner) {
 				int idx = (scanner.lastToken(0) == Token.WHITESPACE ? 1 : 0);								
 				return scanner.lastToken(idx) != operatorToken;
@@ -241,7 +241,7 @@ public class XPathSourceScanner extends BufferedRuleBasedScanner {
 	 * @see org.eclipse.jface.text.rules.RuleBasedScanner#nextToken()
 	 */
 	
-	
+	@Override
 	public IToken nextToken() {
 		
 		IToken next = super.nextToken();

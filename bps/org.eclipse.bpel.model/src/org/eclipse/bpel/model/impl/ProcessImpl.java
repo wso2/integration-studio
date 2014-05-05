@@ -379,7 +379,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.PROCESS;
 	}
@@ -1120,7 +1120,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1152,7 +1152,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.PROCESS__NAME:
@@ -1199,7 +1199,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.PROCESS__NAME:
@@ -1263,7 +1263,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.PROCESS__NAME:
@@ -1326,7 +1326,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.PROCESS__NAME:
@@ -1505,7 +1505,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1546,7 +1546,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 		return result.toString();
 	}
 
-	
+	@Override
 	protected void adoptContent(EReference reference, Object object) {
 		if (object instanceof Import) {
 			ReconciliationHelper.adoptChild(this, imports, (Import) object,
@@ -1555,7 +1555,7 @@ public class ProcessImpl extends BPELExtensibleElementImpl implements
 		super.adoptContent(reference, object);
 	}
 
-	
+	@Override
 	protected void orphanContent(EReference reference, Object obj) {
 		if (obj instanceof Import) {
 			ReconciliationHelper.orphanChild(this, (Import) obj);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,7 +67,7 @@ public abstract class ActivityEditPart extends BPELEditPart implements NodeEditP
 		super();
 	}
 
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		
@@ -113,7 +113,7 @@ public abstract class ActivityEditPart extends BPELEditPart implements NodeEditP
 	 * Install the BPELGraphicalEditPolicy as GRAPHICAL_NODE_ROLE. This policy allows
 	 * the graphical creation of flow links between activities.
 	 */
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new BPELGraphicalEditPolicy());
@@ -124,7 +124,7 @@ public abstract class ActivityEditPart extends BPELEditPart implements NodeEditP
 	 * - Any flow links that the model is the source of
 	 * - Any other connections that the model's parent determines the model is the source of
 	 */	
-	
+	@Override
 	protected List<Link> getModelSourceConnections() {
 		Sources sources = getActivity().getSources();
 		if (sources == null) {
@@ -144,7 +144,7 @@ public abstract class ActivityEditPart extends BPELEditPart implements NodeEditP
 	 * - Any flow links that the model is the target of
 	 * - Any other connections that the model's parent determines the model is the target of
 	 */
-	
+	@Override
 	protected List<Link> getModelTargetConnections() {
 		Targets targets = getActivity().getTargets();
 		if (targets == null) {
@@ -189,7 +189,7 @@ public abstract class ActivityEditPart extends BPELEditPart implements NodeEditP
 	 * If the model change involves the addition of an ActivityExtension, add an adapter
 	 * to that extension.
 	 */
-	
+	@Override
 	protected void handleModelChanged() {
 		super.handleModelChanged();
 		refreshSourceConnections();
@@ -208,7 +208,7 @@ public abstract class ActivityEditPart extends BPELEditPart implements NodeEditP
 	 * Override so we can set the constraint for every XY placed object
 	 */
 	
-	
+	@Override
 	public void refreshVisuals() {
 		Rectangle r = null;
 		
@@ -341,7 +341,7 @@ public abstract class ActivityEditPart extends BPELEditPart implements NodeEditP
 	 * if that is what is currently being displayed.
 	 */
 	
-	
+	@Override
 	public void refreshHoverHelp() {
 		switch (mouseLocation) {
 			case 1:

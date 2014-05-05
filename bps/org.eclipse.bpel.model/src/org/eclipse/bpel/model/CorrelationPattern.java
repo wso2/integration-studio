@@ -235,7 +235,7 @@ public enum CorrelationPattern implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		return literal;
 	}

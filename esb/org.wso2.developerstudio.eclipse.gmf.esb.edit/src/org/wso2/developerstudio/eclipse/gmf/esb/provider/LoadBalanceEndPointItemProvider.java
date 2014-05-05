@@ -74,6 +74,7 @@ public class LoadBalanceEndPointItemProvider
 		if(!"NONE".equals(sessionType.getLiteral())){
 			addSessionTimeoutPropertyDescriptor(object);
 		}
+		
 		addAlgorithmPropertyDescriptor(object);
 		addDescriptionPropertyDescriptor(object);
  		return itemPropertyDescriptors;

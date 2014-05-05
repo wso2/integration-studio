@@ -30,7 +30,7 @@ public class VariableAdapter extends BasicAdapter {
 	 * @return the accessor method name for the attribute given.
 	 */
 	
-	
+	@Override
 	public String getAccessorMethodName ( String attributeName ) {
 		
 		if (IConstants.AT_ELEMENT.getLocalPart().equals (attributeName)) {

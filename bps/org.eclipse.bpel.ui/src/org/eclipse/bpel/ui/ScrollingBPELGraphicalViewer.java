@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class ScrollingBPELGraphicalViewer extends GraphicalViewerImpl {
 	protected boolean hasFocus;
 	protected boolean notifyingOfSelectionChange;
 
-	
+	@Override
 	protected void createDefaultRoot() {
 		setRootEditPart(new GraphicalBPELRootEditPart());
 	}
@@ -84,7 +84,7 @@ public class ScrollingBPELGraphicalViewer extends GraphicalViewerImpl {
 	/**
 	 * @see org.eclipse.gef.ui.parts.AbstractEditPartViewer#appendSelection(org.eclipse.gef.EditPart)
 	 */
-	
+	@Override
 	public void appendSelection(EditPart editpart) {
 		super.appendSelection(editpart);
 		
@@ -106,7 +106,7 @@ public class ScrollingBPELGraphicalViewer extends GraphicalViewerImpl {
 	/**
 	 * @see org.eclipse.gef.EditPartViewer#createControl(org.eclipse.swt.widgets.Composite)
 	 */
-	
+	@Override
 	public final Control createControl(Composite parent) {
 		final FigureCanvas canvas = new FigureCanvas(parent, getLightweightSystem());
 		canvas.addFocusListener(new FocusListener() {
@@ -156,7 +156,7 @@ public class ScrollingBPELGraphicalViewer extends GraphicalViewerImpl {
 	 * super's implementation has completed.
 	 * @see org.eclipse.gef.EditPartViewer#reveal(org.eclipse.gef.EditPart)
 	 */
-	
+	@Override
 	public void reveal(EditPart part) {
 		// New rule: Don't scroll *up* if it would cause any currently visible
 		// part of the edit part to disappear off the bottom.
@@ -207,7 +207,7 @@ public class ScrollingBPELGraphicalViewer extends GraphicalViewerImpl {
 	/**
 	 * @see GraphicalViewerImpl#setRootFigure(IFigure)
 	 */
-	
+	@Override
 	protected void setRootFigure(IFigure figure) {
 		// Warning: The super does more work than the old method did.
 		super.setRootFigure(figure);
@@ -244,7 +244,7 @@ public class ScrollingBPELGraphicalViewer extends GraphicalViewerImpl {
 	 * See comments in BPELSelectionTool.handleFocusLost().
 	 */
 	
-	
+	@Override
 	protected void fireSelectionChanged() {		
 		try {
 			notifyingOfSelectionChange = true;
@@ -268,7 +268,7 @@ public class ScrollingBPELGraphicalViewer extends GraphicalViewerImpl {
 	/** (non-Javadoc)
 	 * @see org.eclipse.gef.ui.parts.AbstractEditPartViewer#setSelection(org.eclipse.jface.viewers.ISelection)
 	 */
-	
+	@Override
 	public void setSelection( ISelection arg0 ) {
 		
 		if (notifyingOfSelectionChange) { 
@@ -281,7 +281,7 @@ public class ScrollingBPELGraphicalViewer extends GraphicalViewerImpl {
 	 * 
 	 */
 	
-	
+	@Override
 	public ISelection getSelection() {
 		if (getSelectedEditParts().isEmpty()) {
 			return StructuredSelection.EMPTY;

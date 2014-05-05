@@ -22,7 +22,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getEntryName <em>Entry Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getLocalEntryType <em>Local Entry Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueLiteral <em>Value Literal</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueXML <em>Value XML</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LocalEntryImpl#getValueURL <em>Value URL</em>}</li>
@@ -51,23 +51,23 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
 	 */
 	protected String entryName = ENTRY_NAME_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+	 * The default value of the '{@link #getLocalEntryType() <em>Local Entry Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueType()
+	 * @see #getLocalEntryType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final LocalEntryValueType VALUE_TYPE_EDEFAULT = LocalEntryValueType.LITERAL;
+	protected static final LocalEntryValueType LOCAL_ENTRY_TYPE_EDEFAULT = LocalEntryValueType.LITERAL;
 	/**
-	 * The cached value of the '{@link #getValueType() <em>Value Type</em>}' attribute.
+	 * The cached value of the '{@link #getLocalEntryType() <em>Local Entry Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueType()
+	 * @see #getLocalEntryType()
 	 * @generated
 	 * @ordered
 	 */
-	protected LocalEntryValueType valueType = VALUE_TYPE_EDEFAULT;
+	protected LocalEntryValueType localEntryType = LOCAL_ENTRY_TYPE_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getValueLiteral() <em>Value Literal</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -168,8 +168,8 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LocalEntryValueType getValueType() {
-		return valueType;
+	public LocalEntryValueType getLocalEntryType() {
+		return localEntryType;
 	}
 
 	/**
@@ -177,11 +177,11 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValueType(LocalEntryValueType newValueType) {
-		LocalEntryValueType oldValueType = valueType;
-		valueType = newValueType == null ? VALUE_TYPE_EDEFAULT : newValueType;
+	public void setLocalEntryType(LocalEntryValueType newLocalEntryType) {
+		LocalEntryValueType oldLocalEntryType = localEntryType;
+		localEntryType = newLocalEntryType == null ? LOCAL_ENTRY_TYPE_EDEFAULT : newLocalEntryType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__VALUE_TYPE, oldValueType, valueType));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE, oldLocalEntryType, localEntryType));
 	}
 
 	/**
@@ -257,8 +257,8 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
 		switch (featureID) {
 			case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
 				return getEntryName();
-			case EsbPackage.LOCAL_ENTRY__VALUE_TYPE:
-				return getValueType();
+			case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
+				return getLocalEntryType();
 			case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
 				return getValueLiteral();
 			case EsbPackage.LOCAL_ENTRY__VALUE_XML:
@@ -280,8 +280,8 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
 			case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
 				setEntryName((String)newValue);
 				return;
-			case EsbPackage.LOCAL_ENTRY__VALUE_TYPE:
-				setValueType((LocalEntryValueType)newValue);
+			case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
+				setLocalEntryType((LocalEntryValueType)newValue);
 				return;
 			case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
 				setValueLiteral((String)newValue);
@@ -307,8 +307,8 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
 			case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
 				setEntryName(ENTRY_NAME_EDEFAULT);
 				return;
-			case EsbPackage.LOCAL_ENTRY__VALUE_TYPE:
-				setValueType(VALUE_TYPE_EDEFAULT);
+			case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
+				setLocalEntryType(LOCAL_ENTRY_TYPE_EDEFAULT);
 				return;
 			case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
 				setValueLiteral(VALUE_LITERAL_EDEFAULT);
@@ -333,8 +333,8 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
 		switch (featureID) {
 			case EsbPackage.LOCAL_ENTRY__ENTRY_NAME:
 				return ENTRY_NAME_EDEFAULT == null ? entryName != null : !ENTRY_NAME_EDEFAULT.equals(entryName);
-			case EsbPackage.LOCAL_ENTRY__VALUE_TYPE:
-				return valueType != VALUE_TYPE_EDEFAULT;
+			case EsbPackage.LOCAL_ENTRY__LOCAL_ENTRY_TYPE:
+				return localEntryType != LOCAL_ENTRY_TYPE_EDEFAULT;
 			case EsbPackage.LOCAL_ENTRY__VALUE_LITERAL:
 				return VALUE_LITERAL_EDEFAULT == null ? valueLiteral != null : !VALUE_LITERAL_EDEFAULT.equals(valueLiteral);
 			case EsbPackage.LOCAL_ENTRY__VALUE_XML:
@@ -357,8 +357,8 @@ public class LocalEntryImpl extends EsbElementImpl implements LocalEntry {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (entryName: ");
 		result.append(entryName);
-		result.append(", valueType: ");
-		result.append(valueType);
+		result.append(", localEntryType: ");
+		result.append(localEntryType);
 		result.append(", valueLiteral: ");
 		result.append(valueLiteral);
 		result.append(", valueXML: ");

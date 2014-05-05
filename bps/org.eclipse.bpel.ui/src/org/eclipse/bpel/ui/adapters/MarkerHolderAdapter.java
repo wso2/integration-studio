@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 JBoss, Inc. and others
+ * Copyright (c) 2010, 2012 JBoss, Inc. and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ public class MarkerHolderAdapter extends AbstractStatefulAdapter implements IMar
 	private class UniqueMarkers extends ArrayList<IMarker> {
 
 		// prevent duplicate marker IDs from being added to the list
-		
+		@Override
 		public boolean add(IMarker e) {
 			for (int i=0; i<size(); ++i) {
 				IMarker m = get(i);
@@ -43,7 +43,7 @@ public class MarkerHolderAdapter extends AbstractStatefulAdapter implements IMar
 	/**
 	 * @see org.eclipse.bpel.model.adapters.AbstractAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	
+	@Override
 	public void notifyChanged(Notification notification) {		
 		super.notifyChanged(notification);
 		switch (notification.getEventType()) {

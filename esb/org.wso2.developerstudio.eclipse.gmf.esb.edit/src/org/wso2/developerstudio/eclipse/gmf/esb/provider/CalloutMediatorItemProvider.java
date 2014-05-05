@@ -80,8 +80,10 @@ public class CalloutMediatorItemProvider
 			addSoapActionPropertyDescriptor(object);
 			addPathToAxis2xmlPropertyDescriptor(object);
 			addPathToAxis2RepositoryPropertyDescriptor(object);
+			addInitAxis2ClientOptionsPropertyDescriptor(object);
 			addPayloadTypePropertyDescriptor(object);
 			addResultTypePropertyDescriptor(object);
+			
 			
 			//addPassHeadersPropertyDescriptor(object);
 			
@@ -388,28 +390,6 @@ public class CalloutMediatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Init Axis2 Client Options feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInitAxis2ClientOptionsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CalloutMediator_initAxis2ClientOptions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_initAxis2ClientOptions_feature", "_UI_CalloutMediator_type"),
-				 EsbPackage.Literals.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Payload Property feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -542,6 +522,28 @@ public class CalloutMediatorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Init Axis2 Client Options feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addInitAxis2ClientOptionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CalloutMediator_initAxis2ClientOptions_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CalloutMediator_initAxis2ClientOptions_feature", "_UI_CalloutMediator_type"),
+				 EsbPackage.Literals.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Service",
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -626,10 +628,10 @@ public class CalloutMediatorItemProvider
 			case EsbPackage.CALLOUT_MEDIATOR__RESULT_CONTEXT_PROPERTY:
 			case EsbPackage.CALLOUT_MEDIATOR__PASS_HEADERS:
 			case EsbPackage.CALLOUT_MEDIATOR__ENDPOINT_TYPE:
-			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
 			case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_PROPERTY:
 			case EsbPackage.CALLOUT_MEDIATOR__SECURITY_TYPE:
 			case EsbPackage.CALLOUT_MEDIATOR__POLICIES:
+			case EsbPackage.CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.CALLOUT_MEDIATOR__PAYLOAD_MESSAGE_XPATH:

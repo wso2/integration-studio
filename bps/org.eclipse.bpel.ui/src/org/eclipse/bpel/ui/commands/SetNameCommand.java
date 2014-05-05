@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,18 +29,18 @@ public class SetNameCommand extends SetCommand {
 		super(target, newName);
 	}
 
-	
+	@Override
 	public boolean canDoExecute() {
 		if (BPELUtil.adapt(fTarget, INamedElement.class) == null) return false;
 		return super.canDoExecute();
 	}
 
-	
+	@Override
 	public Object get() {
 		INamedElement namedElement = BPELUtil.adapt(fTarget, INamedElement.class);
 		return namedElement.getName(fTarget);
 	}
-	
+	@Override
 	public void set(Object o) {
 		INamedElement namedElement = BPELUtil.adapt(fTarget, INamedElement.class);
 		namedElement.setName(fTarget, (String)o);

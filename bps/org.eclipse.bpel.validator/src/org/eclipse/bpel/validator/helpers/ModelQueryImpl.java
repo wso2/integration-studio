@@ -977,7 +977,7 @@ public class ModelQueryImpl  implements IModelQuery {
      * if there are no conflicts.
      * @see https://issues.jboss.org/browse/JBIDE-8088
      */
-	
+	@Override
 	public List<Import> findConflictingXSD(Process process, INode node) {
 
 		EObject o1 = adapt(node, EObject.class, ADAPT_HINT_NONE);
@@ -999,8 +999,6 @@ public class ModelQueryImpl  implements IModelQuery {
 			imports = emfModelQuery.scanAllImports(process, qname, XSDUtil.XSD_ELEMENT_DECLARATION);
 		}
 
-		
-		//TODO: Fix this logic!! This is completely WRONG!!
 		if (imports != null && imports.size() > 1) {
 			EObject o2 = null;
 			o1 = null;
@@ -1037,7 +1035,7 @@ public class ModelQueryImpl  implements IModelQuery {
      * @return the Process or null
      * @see https://issues.jboss.org/browse/JBIDE-8088
      */
-	
+	@Override
 	public Process lookupProcess(INode node) {
 		EObject root = emfModelQuery.getRoot( adapt(node, EObject.class, ADAPT_HINT_NONE) );
 		if (root instanceof Process)

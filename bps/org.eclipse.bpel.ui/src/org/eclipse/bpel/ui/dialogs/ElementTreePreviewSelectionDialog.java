@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,7 +59,7 @@ public class ElementTreePreviewSelectionDialog extends ElementTreeSelectionDialo
 	private String theFilter = ""; //$NON-NLS-1$
 	
 	public class TreeFilter extends ViewerFilter {
-	    
+	    @Override
 		public Object[] filter(Viewer viewer, Object parent, Object[] elements) {
 	        int size = elements.length;
 	        ArrayList out = new ArrayList(size);
@@ -72,7 +72,7 @@ public class ElementTreePreviewSelectionDialog extends ElementTreeSelectionDialo
 	        return out.toArray();
 	    }
 	    
-		
+		@Override
 		public boolean select(Viewer viewer, Object parentElement, Object element) {
 			if (element instanceof BPELVariableTreeNode) {
 				Variable var = (Variable)((BPELVariableTreeNode)element).getModelObject();
@@ -185,7 +185,7 @@ public class ElementTreePreviewSelectionDialog extends ElementTreeSelectionDialo
 		}
     }
     
-    
+    @Override
 	protected Control createDialogArea(Composite parent) {
     	Composite filter = new Composite(parent, SWT.NONE);
     	GridData data1 = new GridData(GridData.FILL_BOTH);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ public class FlowBorder extends GradientBorder {
 		this.parentFigure = parentFigure;
 	}
 	
-	
+	@Override
 	public void paint(IFigure figure, Graphics graphics, Insets insets) {
 		this.bounds = figure.getBounds();
 		
@@ -98,16 +98,16 @@ public class FlowBorder extends GradientBorder {
 		graphics.drawLine(lineStartX, y+1, lineEndX, y+1);
 	}
 
-	
+	@Override
 	public Insets getInsets(IFigure figure) {
 		return new Insets(margin + LINE_WIDTH, margin + DRAWER_WIDTH, margin + LINE_WIDTH, margin + DRAWER_WIDTH);
 	}
-	
+	@Override
 	public Dimension getPreferredSize(IFigure f) {
 		return new Dimension(200, 200);
 	}
 	
-	
+	@Override
 	protected Rectangle getGradientRect() {
 		
 		BPELEditPart ep = getEditPart();
@@ -125,7 +125,7 @@ public class FlowBorder extends GradientBorder {
 		
 		return rect;
 	}
-	
+	@Override
 	public boolean isPointInTopDrawer(int x, int y) {
 		if (bounds == null) return false;
 		if (getTopMarker() == null) return false;
@@ -138,7 +138,7 @@ public class FlowBorder extends GradientBorder {
 		Rectangle imageBounds = new Rectangle(imageX, imageY, imageSize.width, imageSize.height);
 		return imageBounds.contains(p);
 	}
-	
+	@Override
 	public boolean isPointInBottomDrawer(int x, int y) {
 		if (bounds == null) return false;
 		if (getBottomMarker() == null) return false;

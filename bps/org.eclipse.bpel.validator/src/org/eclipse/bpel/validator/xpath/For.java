@@ -24,7 +24,7 @@ public class For extends XPathValidator {
 	 * @see org.eclipse.bpel.validator.xpath.XPathValidator#checkDurationExpression()
 	 */
 	
-	
+	@Override
 	@ARule(
 		sa = 0,
 		desc = "Checks duration expression on for, and repeatUntil",

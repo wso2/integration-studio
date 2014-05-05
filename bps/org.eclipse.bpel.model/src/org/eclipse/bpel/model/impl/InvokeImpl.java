@@ -137,7 +137,7 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.INVOKE;
 	}
@@ -484,7 +484,8 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 			FailureHandling newFailureHandling, NotificationChain msgs) {
 		FailureHandling oldFailureHandling = failureHandling;
 		if (!isReconciling) {
-			ReconciliationHelper.replaceChild(this, oldFailureHandling, newFailureHandling);
+			ReconciliationHelper.replaceChild(this, oldFailureHandling,
+					newFailureHandling);
 		}
 		failureHandling = newFailureHandling;
 		if (eNotificationRequired()) {
@@ -531,7 +532,7 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -554,7 +555,7 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.INVOKE__OUTPUT_VARIABLE:
@@ -585,7 +586,7 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.INVOKE__OUTPUT_VARIABLE:
@@ -618,7 +619,7 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.INVOKE__OUTPUT_VARIABLE:
@@ -651,7 +652,7 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.INVOKE__OUTPUT_VARIABLE:
@@ -672,7 +673,7 @@ public class InvokeImpl extends PartnerActivityImpl implements Invoke {
 		return super.eIsSet(featureID);
 	}
 
-	
+	@Override
 	public EList getWSDLContents() {
 		// TODO: (DU) It's a hack to make children of FaultHandler to be found
 		// by

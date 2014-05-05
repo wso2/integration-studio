@@ -36,14 +36,14 @@ public class BasicBPELAdapterFactory extends BPELAdapterFactory {
 	/**
 	 * @see org.eclipse.bpel.model.util.BPELAdapterFactory#createEObjectAdapter()
 	 */
-	
+	@Override
 	public Adapter createEObjectAdapter() {
 		return provider.getAdapter(BasicEObjectaAdapter.class);
 	}	
 	/**
 	 * @see org.eclipse.emf.common.notify.impl.AdapterFactoryImpl#adaptNew(org.eclipse.emf.common.notify.Notifier, java.lang.Object)
 	 */
-	
+	@Override
 	public Adapter adaptNew(Notifier target, Object type) {
 		Adapter adapter = createAdapter(target, type);
 		// Bugzilla 330519

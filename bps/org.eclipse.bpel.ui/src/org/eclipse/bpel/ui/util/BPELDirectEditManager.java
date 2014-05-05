@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ public class BPELDirectEditManager extends DirectEditManager {
 		this.validator = validator;
 	}
 
-	
+	@Override
 	protected void commit() {
 		if (validator != null) {
 			Text text = (Text) getCellEditor().getControl();
@@ -54,7 +54,7 @@ public class BPELDirectEditManager extends DirectEditManager {
 		super.commit();
 	}
 
-	
+	@Override
 	protected void initCellEditor() {
 		getEditPart().getFigure().validate();
 		Object model = getEditPart().getModel();

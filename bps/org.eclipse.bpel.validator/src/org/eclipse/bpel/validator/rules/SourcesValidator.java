@@ -36,7 +36,7 @@ public class SourcesValidator extends CContainerValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CContainerValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren() {
 		super.checkChildren();
 		checkChild( ND_SOURCE, 1, Integer.MAX_VALUE);

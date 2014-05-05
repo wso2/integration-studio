@@ -14,6 +14,7 @@
  */
 package org.eclipse.bpel.model.impl;
 
+import org.eclipse.bpel.model.AbstractAssignBound;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Expression;
 import org.eclipse.bpel.model.PartnerLink;
@@ -131,7 +132,7 @@ public class ToImpl extends BPELExtensibleElementImpl implements To {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.TO;
 	}
@@ -456,7 +457,7 @@ public class ToImpl extends BPELExtensibleElementImpl implements To {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -473,7 +474,7 @@ public class ToImpl extends BPELExtensibleElementImpl implements To {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.TO__VARIABLE:
@@ -505,7 +506,7 @@ public class ToImpl extends BPELExtensibleElementImpl implements To {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.TO__VARIABLE:
@@ -535,7 +536,7 @@ public class ToImpl extends BPELExtensibleElementImpl implements To {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.TO__VARIABLE:
@@ -565,7 +566,7 @@ public class ToImpl extends BPELExtensibleElementImpl implements To {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.TO__VARIABLE:
@@ -582,6 +583,62 @@ public class ToImpl extends BPELExtensibleElementImpl implements To {
 			return expression != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractAssignBound.class) {
+			switch (derivedFeatureID) {
+			case BPELPackage.TO__VARIABLE:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__VARIABLE;
+			case BPELPackage.TO__PART:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__PART;
+			case BPELPackage.TO__PARTNER_LINK:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__PARTNER_LINK;
+			case BPELPackage.TO__PROPERTY:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__PROPERTY;
+			case BPELPackage.TO__QUERY:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__QUERY;
+			case BPELPackage.TO__EXPRESSION:
+				return BPELPackage.ABSTRACT_ASSIGN_BOUND__EXPRESSION;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractAssignBound.class) {
+			switch (baseFeatureID) {
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__VARIABLE:
+				return BPELPackage.TO__VARIABLE;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__PART:
+				return BPELPackage.TO__PART;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__PARTNER_LINK:
+				return BPELPackage.TO__PARTNER_LINK;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__PROPERTY:
+				return BPELPackage.TO__PROPERTY;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__QUERY:
+				return BPELPackage.TO__QUERY;
+			case BPELPackage.ABSTRACT_ASSIGN_BOUND__EXPRESSION:
+				return BPELPackage.TO__EXPRESSION;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //ToImpl

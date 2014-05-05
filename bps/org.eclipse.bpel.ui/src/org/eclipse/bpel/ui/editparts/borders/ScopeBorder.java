@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -109,7 +109,7 @@ public class ScopeBorder extends CollapsableBorder {
 		eventImageFigure.setParent(parentFigure);
 	}
 
-	
+	@Override
 	public Dimension getPreferredSize(IFigure f) {
 		calculate(f);
 		Dimension d = new Dimension(rectCollapsed.width, rectCollapsed.height + expandedHeight);
@@ -120,7 +120,7 @@ public class ScopeBorder extends CollapsableBorder {
 		return d;
 	}
 	
-	
+	@Override
 	protected void doPaint(IFigure figure, Graphics graphics, Insets insets) {
 		super.doPaint(figure, graphics, insets);
 		
@@ -172,7 +172,7 @@ public class ScopeBorder extends CollapsableBorder {
 		}
 	}
 	
-	
+	@Override
 	protected void calculate(IFigure figure) {
 		super.calculate(figure);
 
@@ -245,7 +245,7 @@ public class ScopeBorder extends CollapsableBorder {
 	}
 	
 
-	
+	@Override
 	public Insets getInsets(IFigure figure) {
 		calculate(figure);
 		Insets result;
@@ -263,7 +263,7 @@ public class ScopeBorder extends CollapsableBorder {
 	/**
 	 * Throw away values that determine the layout
 	 */
-	
+	@Override
 	public void invalidate() {
 		rectExpandedTop = null;
 		rectExpandedBottom = null;
@@ -325,7 +325,7 @@ public class ScopeBorder extends CollapsableBorder {
 	 * Tests whether the given point is inside the collapse image. The superclass
 	 * does not know where the collapse image(s) is located.
 	 */
-	
+	@Override
 	public boolean isPointInCollapseImage(int x, int y) {
 		if (isCollapsed()) return super.isPointInCollapseImage(x, y);
 		Point p = new Point(x,y);
@@ -343,7 +343,7 @@ public class ScopeBorder extends CollapsableBorder {
 	/**
 	 * Provide gradient rectangle.
 	 */
-	
+	@Override
 	protected Rectangle getGradientRect() {
 		if (isCollapsed()) return super.getGradientRect();
 		invalidate();

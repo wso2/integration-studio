@@ -17,7 +17,6 @@ import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.ui.IWorkbenchPart;
-import org.wso2.developerstudio.datamapper.Split;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewFieldAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRecordsListAction;
@@ -25,6 +24,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecor
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.SchemaFromJsonAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SplitManyAction;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.ConcatEditPart;
 import org.wso2.developerstudio.datamapper.diagram.edit.parts.InputEditPart;
@@ -40,6 +40,7 @@ import org.wso2.developerstudio.datamapper.diagram.edit.parts.TreeNodeEditPart;
 public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider {
 
 	private static final String EDIT_GROUP_ID = "editGroup"; //$NON-NLS-1$
+	private static final String NAVIGATE_GROUP_ID = "navigateGroup";
 	private static final String ERROR_BUILDING_CONTEXT_MENU = Messages.DiagramEditorContextMenuProvider_errorContextMenu;
 
 	/**
@@ -61,6 +62,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewRecordsListContextActions;
 	// Actions for adding a new field
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewFieldContextActions;
+	// Actions for getting schema from data-set
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> schemaFromDatasetActions;
 
 	/**
 	 * @generated NOT
@@ -108,6 +111,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		addNewFieldContextActions.put(TreeNode2EditPart.class, new AddNewFieldAction(part));
 		addNewFieldContextActions.put(TreeNode3EditPart.class, new AddNewFieldAction(part));
 
+		// Initialize schema from dataset actions.
+		schemaFromDatasetActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
+		schemaFromDatasetActions.put(InputEditPart.class, new SchemaFromJsonAction(part));
+		schemaFromDatasetActions.put(OutputEditPart.class, new SchemaFromJsonAction(part));
 	}
 
 	/**
@@ -134,7 +141,13 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							ContributionItemService.getInstance().contributeToPopupMenu(
 									DiagramEditorContextMenuProvider.this, part);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
-							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
+							
+							// Fixing TOOLS-2425
+							menu.remove(ActionIds.MENU_NAVIGATE);
+							menu.remove(ActionIds.MENU_EDIT);
+							menu.remove(ActionIds.MENU_FORMAT);
+							menu.remove(ActionIds.MENU_FILTERS);
+							menu.remove(ActionIds.MENU_FILE);
 
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
@@ -144,11 +157,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 										.getElement();
 
 								if (contextObj instanceof EObject) {
-									AbstractActionHandler contextAction = contextActions
-											.get(selectedEditorPart.getClass());
-									if (null != contextAction) {
-										menu.appendToGroup(EDIT_GROUP_ID, contextAction);
-									}
 
 									// Append new root item to menu
 									AbstractActionHandler addNewRootRecordContextAction = addNewRootRecordContextActions
@@ -179,9 +187,25 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									if (null != addNewFieldContextAction) {
 										menu.appendToGroup(EDIT_GROUP_ID, addNewFieldContextAction);
 									}
+
+									// Append Schema from dataset item to menu
+									AbstractActionHandler schemaFromDatasetAction = schemaFromDatasetActions
+											.get(selectedEditorPart.getClass());
+									if (null != schemaFromDatasetAction) {
+										menu.appendToGroup(NAVIGATE_GROUP_ID, schemaFromDatasetAction);
+									}
+									
+									// Append load from file item to menu
+									AbstractActionHandler contextAction = contextActions
+											.get(selectedEditorPart.getClass());
+									if (null != contextAction) {
+										menu.appendToGroup(NAVIGATE_GROUP_ID, contextAction);
+									}
 								}
 
 							}
+							
+							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
 
 						}
 					});

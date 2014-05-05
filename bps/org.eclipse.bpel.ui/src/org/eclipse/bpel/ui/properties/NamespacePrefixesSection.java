@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 JBoss, Inc. and others
+ * Copyright (c) 2010, 2012 JBoss, Inc. and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,7 +92,7 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 	 * Make this section use all the vertical space it can get.
 	 * 
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace() {
 		return true;
 	}
@@ -102,7 +102,7 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 	 * If use super-class's directly, when change the import attributes
 	 * the properties section do not change. Grid Qian
 	 */
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		if (fAdapters.length > 0) {
@@ -118,10 +118,10 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 		}
 	}
 
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] { new MultiObjectAdapter() {
-			
+			@Override
 			public void notify(Notification n) {
 				prefixesViewer.setInput(getInput());
 			}
@@ -212,17 +212,17 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 	public class PrefixColumn extends ColumnTableProvider.Column implements
 			ILabelProvider {
 		
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.NamespacePrefixesSection_0;
 		}
 
-		
+		@Override
 		public String getProperty() {
 			return "NamespacePrefix"; //$NON-NLS-1$
 		}
 
-		
+		@Override
 		public int getInitialWeight() {
 			return 10;
 		}
@@ -236,17 +236,17 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 	
 	public class NamespaceColumn extends ColumnTableProvider.Column implements
 			ILabelProvider {
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.NamespacePrefixesSection_1;
 		}
 
-		
+		@Override
 		public String getProperty() {
 			return "Namespace"; //$NON-NLS-1$
 		} 
 
-		
+		@Override
 		public int getInitialWeight() {
 			return 40;
 		}
@@ -261,17 +261,17 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 	public class ContextColumn extends ColumnTableProvider.Column implements
 			ILabelProvider {
 		
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.NamespacePrefixesSection_2;
 		}
 
-		
+		@Override
 		public String getProperty() {
 			return "Context"; //$NON-NLS-1$
 		}
 
-		
+		@Override
 		public int getInitialWeight() {
 			return 10;
 		}
@@ -290,17 +290,17 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 
 	public class LocationColumn extends ColumnTableProvider.Column implements
 			ILabelProvider {
-		
+		@Override
 		public String getHeaderText() {
 			return Messages.NamespacePrefixesSection_3;
 		}
 
-		
+		@Override
 		public String getProperty() {
 			return "Location"; //$NON-NLS-1$
 		}
 
-		
+		@Override
 		public int getInitialWeight() {
 			return 40;
 		}
@@ -314,7 +314,7 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 
 	
 
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {		
 		super.basicSetInput(newInput);
 		
@@ -324,22 +324,22 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 	}
 	
 
-	
+	@Override
 	protected void createClient(Composite parent) {
 		Composite composite = parentComposite = createFlatFormComposite(parent);
 
 		createWidgets(composite);
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(parentComposite,
-				IHelpContextIds.PROPERTY_PAGE_BPEL_NAMESPACE_PREFIXES);
+				IHelpContextIds.PROPERTY_PAGE_NAMESPACE_PREFIXES);
 	}
 
-	
+	@Override
 	public Object getUserContext() {
 		return ((StructuredSelection) prefixesViewer.getSelection())
 				.getFirstElement();
 	}
 
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		prefixesTable.setFocus();
 		if (userContext != null) {
@@ -383,7 +383,7 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 
 	
 	
-	
+	@Override
 	public void gotoMarker(IMarker marker) {
 		// TODO Auto-generated method stub
 		super.gotoMarker(marker);
@@ -394,7 +394,7 @@ public class NamespacePrefixesSection extends BPELPropertySection {
 	 */
 	
 
-	
+	@Override
 	public boolean isValidMarker(IMarker marker) {
 		return super.isValidMarker(marker);
 	}

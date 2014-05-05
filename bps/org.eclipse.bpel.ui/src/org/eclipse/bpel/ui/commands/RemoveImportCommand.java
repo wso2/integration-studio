@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,7 @@ public class RemoveImportCommand extends RemoveFromListCommand {
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.ui.commands.RemoveFromListCommand#getList()
 	 */
-	
+	@Override
 	protected List getList() {
 		return BPELUtils.getProcess( target ).getImports();
 	}

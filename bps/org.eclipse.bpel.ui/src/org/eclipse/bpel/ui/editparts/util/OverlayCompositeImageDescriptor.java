@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ public class OverlayCompositeImageDescriptor extends CompositeImageDescriptor {
 		this.bottomLeft = bl;
 		this.bottomRight = br;
 	}
-	
+	@Override
 	protected void drawCompositeImage(int width, int height) {
 		drawImage(background, 0, 0);
 		if (topLeft != null) {
@@ -45,7 +45,7 @@ public class OverlayCompositeImageDescriptor extends CompositeImageDescriptor {
 			drawImage(bottomRight, background.width - bottomRight.width, background.height - bottomRight.height);
 		}
 	}
-	
+	@Override
 	protected Point getSize() {
 		return new Point(background.width, background.height);
 	}

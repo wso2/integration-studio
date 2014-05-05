@@ -35,7 +35,7 @@ public class ExtensionAssignOperationValidator extends CContainerValidator {
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
 	
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren ();
 		checkChild(ND_Snippet,1,1);	

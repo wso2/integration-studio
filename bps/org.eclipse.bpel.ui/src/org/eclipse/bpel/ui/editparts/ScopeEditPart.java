@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	
 	public class ScopeOrderedLayoutEditPolicy extends BPELOrderedLayoutEditPolicy {
 		// return list of children to create vertical connections for.
-		
+		@Override
 		protected List getConnectionChildren(BPELEditPart editPart) {
 			List originalChildren = getChildren();
 			List newChildren = new ArrayList();
@@ -137,7 +137,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	}
 	
 	private class ScopeOrderedHorizontalLayoutEditPolicy extends ScopeEditPart.ScopeOrderedLayoutEditPolicy{
-		
+		@Override
 		protected ArrayList<PolylineConnection> createHorizontalConnections(BPELEditPart parent) {
 			ArrayList<PolylineConnection> connections = new ArrayList<PolylineConnection>();
 			List children = getConnectionChildren(parent);
@@ -177,29 +177,29 @@ public class ScopeEditPart extends CollapsableEditPart {
 		}
 	}
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		
 		// Show the selection rectangle
 		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new ContainerHighlightEditPolicy(false, true) {
-			
+			@Override
 			protected int getDrawerInset() {
 				return DrawerBorder.DRAWER_WIDTH;
 			}
-			
+			@Override
 			protected int getNorthInset() {
 				return 0;
 			}
-			
+			@Override
 			protected int getSouthInset() {
 				return 3;
 			}
-			
+			@Override
 			protected int getEastInset() {
 				return DrawerBorder.DRAWER_WIDTH;
 			}
-			
+			@Override
 			protected int getWestInset() {
 				return DrawerBorder.DRAWER_WIDTH;
 			}			
@@ -210,7 +210,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 			installEditPolicy(EditPolicy.LAYOUT_ROLE, new ScopeOrderedLayoutEditPolicy());
 	}
 
-	
+	@Override
 	protected DrawerBorder getDrawerBorder() {
 		Border border = getContentPane().getBorder();
 		if (border instanceof DrawerBorder) return (DrawerBorder)border;
@@ -221,12 +221,12 @@ public class ScopeEditPart extends CollapsableEditPart {
 	 * The label figure to return for direct editing
 	 * TODO: Enable this
 	 */
-	
+	@Override
 	public Label getLabelFigure() {
 		return null;
 	}
 
-	
+	@Override
 	protected IFigure createFigure() {
 		// TODO: Shouldn't have to initialize labels in each subclass.
 		initializeLabels();
@@ -282,12 +282,12 @@ public class ScopeEditPart extends CollapsableEditPart {
 		return editPartMarkerDecorator.createFigure(parentFigure);
 	}
 		
-	
+	@Override
 	protected CollapsableContainerFigure getContentFigure() {
 		return this.contentFigure;
 	}
 	
-	
+	@Override
 	protected void unregisterVisuals() {
 		super.unregisterVisuals();
 		this.editPartMarkerDecorator = null;
@@ -295,7 +295,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 		this.bottomImage = null;
 	}
 
-	
+	@Override
 	protected List getModelChildren() {
 		return getModelChildren(!isCollapsed());
 	}
@@ -303,7 +303,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#refreshVisuals()
 	 */
-	
+	@Override
 	public void refreshVisuals() {
 		refreshDrawerImages();
 		super.refreshVisuals();
@@ -324,7 +324,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	/**
 	 * Return a string which should be displayed in this node while collapsed.
 	 */
-	
+	@Override
 	protected String getLabel() {
 		ILabeledElement element = BPELUtil.adapt(getActivity(), ILabeledElement.class);
 		if (element != null) {
@@ -337,7 +337,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	 * Make sure the images in the drawers are up to date. Recalculate them and
 	 * inform the border of any changes.
 	 */
-	
+	@Override
 	protected void refreshDrawerImages() {
 		ScopeBorder border = getScopeBorder();
 		
@@ -428,7 +428,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	 * the expansion icon. All other connections are centered on the contentFigure
 	 * with an offset of 0.
 	 */
-	
+	@Override
 	public ConnectionAnchor getConnectionAnchor(int location) {
 		switch(location){
 		case CenteredConnectionAnchor.TOP_INNER:
@@ -446,7 +446,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	 * Override addChildVisual so that it adds the childEditPart to the correct
 	 * figure. FH/EH/CH go in a different figure than the activity does.
 	 */
-	
+	@Override
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		IFigure child = ((GraphicalEditPart)childEditPart).getFigure();
 		IFigure content = getContentPane(childEditPart);
@@ -496,7 +496,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	 * the correct figure. FH/EH/CH live in a different figure than the
 	 * activity does.
 	 */
-	
+	@Override
 	protected void removeChildVisual(EditPart childEditPart) {
 		IFigure child = ((GraphicalEditPart)childEditPart).getFigure();
 		getContentPane(childEditPart).remove(child);
@@ -505,7 +505,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	/**
 	 * Also overridden to call getContentPane(child) in the appropriate place.
 	 */
-	
+	@Override
 	protected void reorderChild(EditPart child, int index) {
 		// Save the constraint of the child so that it does not
 		// get lost during the remove and re-add.
@@ -527,7 +527,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	/**
 	 * Yet Another Overridden Method.
 	 */
-	
+	@Override
 	public void setLayoutConstraint(EditPart child, IFigure childFigure, Object constraint) {
 		getContentPane(child).setConstraint(childFigure, constraint);
 	}
@@ -535,7 +535,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	/**
 	 * This method hopefully shouldn't be called, in favour of getContentPane(EditPart).
 	 */
-	
+	@Override
 	public IFigure getContentPane() {
 		return contentFigure;
 	}
@@ -564,17 +564,17 @@ public class ScopeEditPart extends CollapsableEditPart {
 	
 	// Support for collapsability
 	
-	
+	@Override
 	public DragTracker getDragTracker(Request request) {
 		return new BPELDragEditPartsTracker(this) {
-			
+			@Override
 			protected boolean handleDoubleClick(int button) {
 				//if (isCollapsed()) setCollapsed(false);
 				setCollapsed(!isCollapsed());
 				return true;
 			}
 			
-			
+			@Override
 			protected boolean handleButtonDown(int button) {
 				Point point = getLocation();
 				ScopeBorder border = getScopeBorder();
@@ -603,17 +603,17 @@ public class ScopeEditPart extends CollapsableEditPart {
 		};	
 	}
 
-	
+	@Override
 	protected boolean isPointInCollapseIcon(Point point) {
 		return getContentFigure().isPointInCollapseImage(point.x, point.y);
 	}
 
-	
+	@Override
 	public boolean isCollapsed() {
 		return getContentFigure().isCollapsed();
 	}
 	
-	
+	@Override
 	public void setCollapsed(boolean collapsed) {
 		if (isCollapsed() == collapsed) return;
 		getContentFigure().setCollapsed(collapsed);
@@ -669,7 +669,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	/**
 	 * Set the layout of the figure for expanded state.
 	 */
-	
+	@Override
 	protected void configureExpandedFigure(IFigure figure) {
 		FlowLayout layout = new FlowLayout();
 		layout.setMajorAlignment(FlowLayout.ALIGN_CENTER);
@@ -756,7 +756,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 		return null;
 	}
 	
-	
+	@Override
 	public IFigure getMainActivityFigure() {
 		return contentFigure;
 	}
@@ -779,7 +779,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 	/**
 	 * Overridden to refresh the handlerLinks as needed.
 	 */
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 		getHandlerLinker().refreshHandlerLinks();
@@ -787,7 +787,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 		
 	}
 	
-	
+	@Override
 	protected void clearConnections() {
 		super.clearConnections();
 		getHandlerLinker().clearHandlerConnections();
@@ -799,7 +799,7 @@ public class ScopeEditPart extends CollapsableEditPart {
 		return handlerLinker;
 	}
 	
-	
+	@Override
 	protected void handleModelChanged() {
 		super.handleModelChanged();
 		

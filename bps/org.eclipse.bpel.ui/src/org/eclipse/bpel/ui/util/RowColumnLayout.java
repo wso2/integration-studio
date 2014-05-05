@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -193,7 +193,7 @@ public class RowColumnLayout extends AbstractLayout {
 		return child.getPreferredSize(wHint, hHint);
 	}
 
-	
+	@Override
 	public Object getConstraint(IFigure figure) {
 		return constraints.get(figure);
 	}
@@ -215,7 +215,7 @@ public class RowColumnLayout extends AbstractLayout {
 		cols = 0;
 	}
 
-	
+	@Override
 	public void remove(IFigure figure) {
 		super.remove(figure);
 		constraints.remove(figure);
@@ -243,7 +243,7 @@ public class RowColumnLayout extends AbstractLayout {
 	 * @see  #getConstraint(IFigure)
 	 * @since 2.0
 	 */
-	
+	@Override
 	public void setConstraint(IFigure figure, Object newConstraint) {
 		super.setConstraint(figure, newConstraint);
 		if (newConstraint != null)
@@ -254,7 +254,7 @@ public class RowColumnLayout extends AbstractLayout {
 		}
 	}
 
-	
+	@Override
 	protected Dimension calculatePreferredSize(IFigure container, int wHint, int hHint) {
 		// Subtract out the insets from the hints
 		characterizeGrid(container);

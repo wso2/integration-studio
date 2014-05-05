@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,6 @@ package org.eclipse.bpel.ui.expressions;
 
 import org.eclipse.bpel.ui.editors.TextEditor;
 import org.eclipse.bpel.ui.editors.TextEditorInput;
-import org.eclipse.bpel.ui.properties.BPELPropertySection;
-import org.eclipse.bpel.ui.properties.TextSection;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -24,7 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPropertyListener;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 
 
 /**
@@ -48,7 +46,7 @@ public class DefaultExpressionEditor extends AbstractExpressionEditor {
 	 * @see org.eclipse.bpel.ui.expressions.AbstractExpressionEditor#getEditorContent()
 	 */
 	
-	
+	@Override
 	public String getEditorContent() {
 		if (editor != null) {
 			return editor.getContents();
@@ -62,9 +60,9 @@ public class DefaultExpressionEditor extends AbstractExpressionEditor {
 	 * @see org.eclipse.bpel.ui.expressions.AbstractExpressionEditor#createControls(org.eclipse.swt.widgets.Composite, org.eclipse.bpel.ui.properties.BPELPropertySection)
 	 */
 	
-	
-	public void createControls(Composite parent, BPELPropertySection aSection) {
-		super.createControls(parent, aSection);
+	@Override
+	public void createControls(Composite parent, FormToolkit toolkit) {
+		super.createControls(parent, toolkit);
 		createEditor(parent);
 	}
 
@@ -73,7 +71,7 @@ public class DefaultExpressionEditor extends AbstractExpressionEditor {
 	 * @see org.eclipse.bpel.ui.expressions.AbstractExpressionEditor#setEditorContent(java.lang.String)
 	 */
 	
-	
+	@Override
 	public void setEditorContent (String aBody) {
 	    this.fBody = aBody;
 	    	    
@@ -92,7 +90,6 @@ public class DefaultExpressionEditor extends AbstractExpressionEditor {
 	protected void createEditor(Composite parent) {
 		IEditorInput input = new TextEditorInput( fBody, getModelObject(), getExprType() );
 		
-		TabbedPropertySheetWidgetFactory wf = getWidgetFactory();
 		
 		editorComposite = wf.createComposite(parent, SWT.BORDER);
 		editorComposite.setLayout( new FillLayout() );		
@@ -153,7 +150,7 @@ public class DefaultExpressionEditor extends AbstractExpressionEditor {
 		if (propertyListener == null) {
 			propertyListener = new IPropertyListener() {
 				public void propertyChanged(Object source, int propId) {
-					if (!updating && propId == IEditorPart.PROP_DIRTY && editor.isDirty() && !((TextSection)fSection).isExecutingStoreCommand()) {
+					if (!updating && propId == IEditorPart.PROP_DIRTY && editor.isDirty()) {
 						notifyChanged();
 					}
 				}

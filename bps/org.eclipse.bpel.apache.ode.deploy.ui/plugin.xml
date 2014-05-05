@@ -20,7 +20,7 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <wizard
-            name="Apache ODE Deployment Descriptor"
+            name="BPEL Deployment Descriptor"
             icon="icons/obj16/ode.gif"
             category="org.eclipse.bpel.wizards"
             class="org.eclipse.bpel.apache.ode.deploy.ui.wizards.NewODEDeployWizard"

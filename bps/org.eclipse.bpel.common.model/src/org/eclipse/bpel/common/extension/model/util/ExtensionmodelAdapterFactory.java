@@ -61,7 +61,7 @@ public class ExtensionmodelAdapterFactory extends AdapterFactoryImpl
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -80,15 +80,15 @@ public class ExtensionmodelAdapterFactory extends AdapterFactoryImpl
 	 */
 	protected ExtensionmodelSwitch modelSwitch =
 		new ExtensionmodelSwitch() {
-			
+			@Override
 			public Object caseExtensionMap(ExtensionMap object) {
 				return createExtensionMapAdapter();
 			}
-			
+			@Override
 			public Object caseExtension(Extension object) {
 				return createExtensionAdapter();
 			}
-			
+			@Override
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -102,7 +102,7 @@ public class ExtensionmodelAdapterFactory extends AdapterFactoryImpl
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	
+	@Override
 	public Adapter createAdapter(Notifier target) {
 		return (Adapter)modelSwitch.doSwitch((EObject)target);
 	}

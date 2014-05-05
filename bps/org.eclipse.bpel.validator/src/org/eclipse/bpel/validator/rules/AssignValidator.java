@@ -45,7 +45,7 @@ public class AssignValidator extends CActivityValidator {
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
 	
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren ();
 		
@@ -60,7 +60,7 @@ public class AssignValidator extends CActivityValidator {
 	 * This is custom method to Validate both ExtensionAssignOperation and Copy nodes.
 	 * NOTE: The Existing Validator is not suitable to validate two children at ones.
 	 */
-	
+	@Override
 	public int checkChild ( IFilter<INode> filter, int min, int max) {
 		
 		final int CASE_COPY =1; 						// represents the case of default Assign Activity which has a copy element 
@@ -144,7 +144,7 @@ public class AssignValidator extends CActivityValidator {
 	 * 
 	 */
 	
-	
+	@Override
 	protected void start () {
 		super.start();
 		

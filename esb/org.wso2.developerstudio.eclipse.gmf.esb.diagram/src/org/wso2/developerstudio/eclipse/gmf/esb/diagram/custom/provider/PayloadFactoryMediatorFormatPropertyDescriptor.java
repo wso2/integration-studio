@@ -48,7 +48,7 @@ public class PayloadFactoryMediatorFormatPropertyDescriptor extends PropertyDesc
 											new Object [] { getDisplayName(), getEditLabelProvider().getText(object) });
 					PayloadFactoryMediator payloadFactoryMediator = (PayloadFactoryMediator) object;
 					PayloadFactoryMediatorFormatPropertyDialog nediatorConfigurationDialog = new PayloadFactoryMediatorFormatPropertyDialog(title, shell, 
-							payloadFactoryMediator, EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__FORMAT, payloadFactoryMediator.getFormat());
+							payloadFactoryMediator, EsbPackage.Literals.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD, payloadFactoryMediator.getPayload());
 					nediatorConfigurationDialog.setBlockOnOpen(true);
 					nediatorConfigurationDialog.open();
 					

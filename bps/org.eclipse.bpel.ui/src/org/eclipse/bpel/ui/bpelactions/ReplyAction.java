@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,22 +19,22 @@ import org.eclipse.emf.ecore.EClass;
 
 public class ReplyAction extends AbstractBPELAction {
 
-    
+    @Override
 	public EClass getModelType() {
         return BPELPackage.eINSTANCE.getReply();
     }
 
-    
+    @Override
 	public String getLabel() {
     	return BPELTerms.getString("Reply"); //$NON-NLS-1$
     }
 
-    
+    @Override
 	public String getDescription() {
         return Messages.ReplyAction_Reply_HTML_Description_1; 
     }
 
-    
+    @Override
 	public AdapterFactory getAdapterFactory() {
         return BPELUIAdapterFactory.getInstance();
 	}

@@ -85,7 +85,7 @@ public class Filter {
 	/***
 	 * @see java.lang.Object#toString()
 	 */
-		
+	@Override	
 	public String toString () {
 		if (fName != null) {
 			return fName;

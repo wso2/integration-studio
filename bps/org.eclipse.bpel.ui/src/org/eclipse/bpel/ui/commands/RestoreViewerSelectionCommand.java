@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,7 +56,7 @@ public class RestoreViewerSelectionCommand extends AbstractEditModelCommand {
 		}
 	}
 
-	
+	@Override
 	public void execute() {
 		if (selectedModelObjects == null)  captureSelection();
 	}
@@ -71,13 +71,13 @@ public class RestoreViewerSelectionCommand extends AbstractEditModelCommand {
 		}
 	}
 
-	
+	@Override
 	public void undo() { if (restoreOnUndo)  restoreSelection(); }
-	
+	@Override
 	public void redo() { if (restoreOnRedo)  restoreSelection(); }
 
-	
+	@Override
 	public Resource[] getResources() { return EMPTY_RESOURCE_ARRAY; }
-	
+	@Override
 	public Resource[] getModifiedResources() { return EMPTY_RESOURCE_ARRAY; }
 }

@@ -42,7 +42,7 @@ public class RethrowImpl extends ActivityImpl implements Rethrow {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.RETHROW;
 	}

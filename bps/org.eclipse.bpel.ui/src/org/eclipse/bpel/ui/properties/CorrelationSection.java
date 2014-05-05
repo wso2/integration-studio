@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.bpel.model.Invoke;
 import org.eclipse.bpel.model.OnEvent;
 import org.eclipse.bpel.model.OnMessage;
 import org.eclipse.bpel.model.PartnerActivity;
+import org.eclipse.bpel.ui.IHelpContextIds;
 import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.commands.AddCorrelationCommand;
 import org.eclipse.bpel.ui.commands.RemoveCorrelationCommand;
@@ -68,6 +69,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.ui.PlatformUI;
 
 
 /**
@@ -92,11 +94,11 @@ public class CorrelationSection extends BPELPropertySection {
 	protected boolean allowIncoming;
 
 	public class DirectionColumn extends ColumnTableProvider.Column implements ILabelProvider, ICellModifier {
-		
+		@Override
 		public String getHeaderText() { return Messages.CorrelationDetails_Direction_1; } 
-		
+		@Override
 		public String getProperty() { return "direction"; } //$NON-NLS-1$
-		
+		@Override
 		public int getInitialWeight() { return 15; }
 
 		// TODO: convert DirectionColumn to use images instead of text?
@@ -104,7 +106,7 @@ public class CorrelationSection extends BPELPropertySection {
 		protected final String[] oneWayStrings = { Messages.CorrelationDetails_Send_5, Messages.CorrelationDetails_Receive_4 }; 
 		protected final String[] twoWayStrings = { Messages.CorrelationDetails_Send_5, Messages.CorrelationDetails_Receive_6, Messages.CorrelationDetails_Both_7 }; 
 
-		
+		@Override
 		public CellEditor createCellEditor(Composite parent) {
 			return new ComboBoxCellEditor(parent, twoWayStrings);
 		}
@@ -122,7 +124,7 @@ public class CorrelationSection extends BPELPropertySection {
 			}
 			throw new IllegalArgumentException();
 		}
-		
+		@Override
 		public Image getImage(Object element) {
 			return null;
 		}
@@ -147,11 +149,11 @@ public class CorrelationSection extends BPELPropertySection {
 	}
 
 	public class InitiationColumn extends ColumnTableProvider.Column implements ILabelProvider, ICellModifier {
-		
+		@Override
 		public String getHeaderText() { return Messages.CorrelationDetails_Initiation_8; } 
-		
+		@Override
 		public String getProperty() { return "initiation"; } //$NON-NLS-1$
-		
+		@Override
 		public int getInitialWeight() { return 10; }
 
 		protected final String[] strings = {
@@ -160,7 +162,7 @@ public class CorrelationSection extends BPELPropertySection {
 			Messages.CorrelationDetails_Join_11
 		};
 		
-		
+		@Override
 		public CellEditor createCellEditor(Composite parent) {
 			ComboBoxCellEditor result = new ComboBoxCellEditor();
 			result.setStyle(SWT.READ_ONLY);
@@ -204,17 +206,17 @@ public class CorrelationSection extends BPELPropertySection {
 	}
 
 	public class NameColumn extends ColumnTableProvider.Column implements ILabelProvider, ICellModifier {
-		
+		@Override
 		public String getHeaderText() { return Messages.CorrelationDetails_Correlation_Set_12; } 
-		
+		@Override
 		public String getProperty() { return "setName"; } //$NON-NLS-1$
-		
+		@Override
 		public int getInitialWeight() { return 30; }
 
 		ComboViewerCellEditor cellEditor;
 		ModelLabelProvider labelProvider;
 
-		
+		@Override
 		public CellEditor createCellEditor(Composite parent) {
 			cellEditor = new ComboViewerCellEditor();
 			cellEditor.setStyle(SWT.READ_ONLY);
@@ -224,7 +226,7 @@ public class CorrelationSection extends BPELPropertySection {
 			viewer.addFilter(AddNullFilter.getInstance());
 			viewer.setContentProvider(new AbstractContentProvider(){
 				
-				
+				@Override
 				public Object[] getElements(Object input)  {
 					if (input instanceof EObject)						
 						return BPELUtil.getVisibleCorrelationSets((EObject)input);
@@ -252,7 +254,7 @@ public class CorrelationSection extends BPELPropertySection {
 		}
 	}
 
-	
+	@Override
 	public boolean shouldUseExtraSpace() { return true; }
 
 	protected boolean isCorrelationListAffected(Notification n) {
@@ -270,12 +272,12 @@ public class CorrelationSection extends BPELPropertySection {
 		return false;
 	}
 
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object and Correlations object */
 			new MultiObjectAdapter() {
-				
+				@Override
 				public void notify(Notification n) {
 					if (isCorrelationListAffected(n)) {
 						updateCorrelationWidgets(null);
@@ -285,7 +287,7 @@ public class CorrelationSection extends BPELPropertySection {
 			},
 			/* correlation(s) and correlation set(s) */
 			new MultiObjectAdapter() {
-				
+				@Override
 				public void notify(Notification n) {
 					if (n.getNotifier() instanceof Correlation) {
 						updateCorrelationWidgets((Correlation)n.getNotifier());
@@ -309,7 +311,7 @@ public class CorrelationSection extends BPELPropertySection {
 		};
 	}
 
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		Correlations c = ModelHelper.getCorrelations(getInput());
@@ -454,10 +456,13 @@ public class CorrelationSection extends BPELPropertySection {
 		tableCursor = BPELUtil.createTableCursor(correlationTable, correlationViewer);
 	}
 	
-	
+	@Override
 	protected void createClient(Composite parent)  {
 		Composite composite = createFlatFormComposite(parent);
 		createCorrelationSetWidgets(composite);
+		
+    PlatformUI.getWorkbench().getHelpSystem().setHelp(
+      composite, IHelpContextIds.PROPERTY_PAGE_CORRELATION);
 	}
 
 	protected void updateCorrelationWidgets(Correlation corr) {
@@ -476,17 +481,17 @@ public class CorrelationSection extends BPELPropertySection {
 			tableCursor.refresh();
 	}
 	
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 		updateCorrelationWidgets(null);
 	}
 
-	
+	@Override
 	public Object getUserContext() {
 		return ((StructuredSelection)correlationViewer.getSelection()).getFirstElement();
 	}
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		correlationTable.setFocus();
 		if (userContext != null) {
@@ -494,7 +499,7 @@ public class CorrelationSection extends BPELPropertySection {
 		}
 	}
 	
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 		super.basicSetInput(newInput);
 		correlationViewer.setCellEditors(tableProvider.createCellEditors(correlationTable));

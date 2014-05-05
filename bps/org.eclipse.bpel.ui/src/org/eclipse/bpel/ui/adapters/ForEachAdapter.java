@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,14 +23,14 @@ public class ForEachAdapter extends ContainerActivityAdapter implements IAnnotat
 
 	/* IContainer delegate */
 	
-	
+	@Override
 	public IContainer createContainerDelegate() {
 		return new ActivityContainer(BPELPackage.eINSTANCE.getForEach_Activity());
 	}
 
 	/* EditPartFactory */
 	
-	
+	@Override
 	public EditPart createEditPart(EditPart context, Object model) {
 		EditPart result = new SequenceEditPart();
 		result.setModel(model);
@@ -39,7 +39,7 @@ public class ForEachAdapter extends ContainerActivityAdapter implements IAnnotat
 
 	/* IOutlineEditPartFactory */
 	
-	
+	@Override
 	public EditPart createOutlineEditPart(EditPart context, Object model) {
 		EditPart result = new OutlineTreeEditPart();
 		result.setModel(model);
@@ -56,7 +56,7 @@ public class ForEachAdapter extends ContainerActivityAdapter implements IAnnotat
 			Messages.ForEachAdapter_1, AnnotationHelper.getAnnotation(obj.getStartCounterValue()),
 			};
 	}
-	
+	@Override
 	public boolean canAddObject(Object object, Object child, Object insertBefore) {
 		ForEach forEach = (ForEach)object;
 		if (forEach.getActivity()==null && child instanceof Scope) {

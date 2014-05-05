@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class FaultHandlerEditPart extends BPELEditPart implements ILayoutAware{
 	
 	public static final int LEFT_MARGIN = 30;
 		
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		
@@ -53,7 +53,7 @@ public class FaultHandlerEditPart extends BPELEditPart implements ILayoutAware{
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new BPELOrderedLayoutEditPolicy());
 	}
 
-	
+	@Override
 	protected IFigure createFigure() {
 		IFigure figure = new Figure();
 		FlowLayout layout = new FlowLayout();
@@ -92,7 +92,7 @@ public class FaultHandlerEditPart extends BPELEditPart implements ILayoutAware{
 		return container;
 	}
 
-	
+	@Override
 	public void deactivate() {
 		if (!isActive()) return;
 		super.deactivate();
@@ -103,7 +103,7 @@ public class FaultHandlerEditPart extends BPELEditPart implements ILayoutAware{
 	
 	}	
 	
-	
+	@Override
 	public IFigure getContentPane() {
 		return contentPane;
 	}

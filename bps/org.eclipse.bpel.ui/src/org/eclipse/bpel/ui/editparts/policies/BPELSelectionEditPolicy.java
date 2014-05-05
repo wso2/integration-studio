@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,7 +58,7 @@ public class BPELSelectionEditPolicy extends NonResizableEditPolicy {
 		this.fMovable = movable;
 	}
 	
-	
+	@Override
 	protected List<Handle> createSelectionHandles() {
 								
 		if (fResizable) {
@@ -72,7 +72,7 @@ public class BPELSelectionEditPolicy extends NonResizableEditPolicy {
 	 * @see org.eclipse.gef.EditPolicy#eraseSourceFeedback(org.eclipse.gef.Request)
 	 */
 	
-	
+	@Override
 	public void eraseSourceFeedback(Request request) {
 		if (fResizable && REQ_RESIZE.equals(request.getType()))
 			eraseChangeBoundsFeedback((ChangeBoundsRequest)request);
@@ -83,7 +83,7 @@ public class BPELSelectionEditPolicy extends NonResizableEditPolicy {
 	/**
 	 * @see org.eclipse.gef.EditPolicy#getCommand(org.eclipse.gef.Request)
 	 */
-	
+	@Override
 	public Command getCommand(Request request) {
 		if (fResizable && REQ_RESIZE.equals(request.getType()))
 			return getResizeCommand((ChangeBoundsRequest)request);
@@ -113,7 +113,7 @@ public class BPELSelectionEditPolicy extends NonResizableEditPolicy {
 	/**
 	 * @see org.eclipse.gef.EditPolicy#showSourceFeedback(org.eclipse.gef.Request)
 	 */
-	
+	@Override
 	public void showSourceFeedback(Request request) {
 		if (fResizable && REQ_RESIZE.equals(request.getType()))
 			showChangeBoundsFeedback((ChangeBoundsRequest)request);
@@ -124,7 +124,7 @@ public class BPELSelectionEditPolicy extends NonResizableEditPolicy {
 	/**
 	 * @see org.eclipse.gef.EditPolicy#understandsRequest(org.eclipse.gef.Request)
 	 */
-	
+	@Override
 	public boolean understandsRequest(Request request) {
 		if (fResizable && REQ_RESIZE.equals(request.getType()))
 			return true;
@@ -177,7 +177,7 @@ public class BPELSelectionEditPolicy extends NonResizableEditPolicy {
 		return handle;
 	}
 	
-	
+	@Override
 	protected void eraseChangeBoundsFeedback(ChangeBoundsRequest request) {
 		if (REQ_MOVE.equals(request.getType()) && !fMovable)
 			return;
@@ -185,7 +185,7 @@ public class BPELSelectionEditPolicy extends NonResizableEditPolicy {
 	}
 
 	
-	
+	@Override
 	protected void showChangeBoundsFeedback(ChangeBoundsRequest request) {
 		if (REQ_MOVE.equals(request.getType()) && !fMovable)
 			return;
@@ -210,7 +210,7 @@ public class BPELSelectionEditPolicy extends NonResizableEditPolicy {
 	/**
 	 * Override method from superclass to adjust for drawer width on ghost figure
 	 */
-	
+	@Override
 	protected IFigure createDragSourceFeedbackFigure() {
 		// Use a ghost rectangle for feedback
 		ColorRegistry registry = BPELUIPlugin.INSTANCE.getColorRegistry();

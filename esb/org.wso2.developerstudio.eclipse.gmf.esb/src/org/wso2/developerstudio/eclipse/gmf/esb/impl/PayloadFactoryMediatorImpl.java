@@ -37,8 +37,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getFormat <em>Format</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getFormatKey <em>Format Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayload <em>Payload</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getPayloadKey <em>Payload Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getArgs <em>Args</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PayloadFactoryMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -51,34 +51,34 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
  */
 public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadFactoryMediator {
 	/**
-	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
+	 * The default value of the '{@link #getPayload() <em>Payload</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFormat()
+	 * @see #getPayload()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String FORMAT_EDEFAULT = null;
+	protected static final String PAYLOAD_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
+	 * The cached value of the '{@link #getPayload() <em>Payload</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFormat()
+	 * @see #getPayload()
 	 * @generated
 	 * @ordered
 	 */
-	protected String format = FORMAT_EDEFAULT;
+	protected String payload = PAYLOAD_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getFormatKey() <em>Format Key</em>}' containment reference.
+	 * The cached value of the '{@link #getPayloadKey() <em>Payload Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFormatKey()
+	 * @see #getPayloadKey()
 	 * @generated
 	 * @ordered
 	 */
-	protected RegistryKeyProperty formatKey;
+	protected RegistryKeyProperty payloadKey;
 
 	/**
 	 * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -157,13 +157,13 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	 */
 	protected PayloadFactoryMediatorImpl() {
 		super();
-		setFormat("<inline/>");
+		setPayload("<inline/>");
 		
 		RegistryKeyProperty payloadFormatKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
 		payloadFormatKey.setKeyName("Sequence Key");
 		payloadFormatKey.setPrettyName("Sequence Key");
 		payloadFormatKey.setKeyValue("/default/key");
-		setFormatKey(payloadFormatKey);
+		setPayloadKey(payloadFormatKey);
 	}
 
 	/**
@@ -181,8 +181,8 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getFormat() {
-		return format;
+	public String getPayload() {
+		return payload;
 	}
 
 	/**
@@ -190,11 +190,11 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFormat(String newFormat) {
-		String oldFormat = format;
-		format = newFormat;
+	public void setPayload(String newPayload) {
+		String oldPayload = payload;
+		payload = newPayload;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT, oldFormat, format));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD, oldPayload, payload));
 	}
 
 	/**
@@ -202,8 +202,8 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RegistryKeyProperty getFormatKey() {
-		return formatKey;
+	public RegistryKeyProperty getPayloadKey() {
+		return payloadKey;
 	}
 
 	/**
@@ -211,11 +211,11 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFormatKey(RegistryKeyProperty newFormatKey, NotificationChain msgs) {
-		RegistryKeyProperty oldFormatKey = formatKey;
-		formatKey = newFormatKey;
+	public NotificationChain basicSetPayloadKey(RegistryKeyProperty newPayloadKey, NotificationChain msgs) {
+		RegistryKeyProperty oldPayloadKey = payloadKey;
+		payloadKey = newPayloadKey;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY, oldFormatKey, newFormatKey);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY, oldPayloadKey, newPayloadKey);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -226,18 +226,18 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setFormatKey(RegistryKeyProperty newFormatKey) {
-		if (newFormatKey != formatKey) {
+	public void setPayloadKey(RegistryKeyProperty newPayloadKey) {
+		if (newPayloadKey != payloadKey) {
 			NotificationChain msgs = null;
-			if (formatKey != null)
-				msgs = ((InternalEObject)formatKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY, null, msgs);
-			if (newFormatKey != null)
-				msgs = ((InternalEObject)newFormatKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY, null, msgs);
-			msgs = basicSetFormatKey(newFormatKey, msgs);
+			if (payloadKey != null)
+				msgs = ((InternalEObject)payloadKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY, null, msgs);
+			if (newPayloadKey != null)
+				msgs = ((InternalEObject)newPayloadKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY, null, msgs);
+			msgs = basicSetPayloadKey(newPayloadKey, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY, newFormatKey, newFormatKey));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY, newPayloadKey, newPayloadKey));
 	}
 
 	/**
@@ -388,8 +388,8 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY:
-				return basicSetFormatKey(null, msgs);
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY:
+				return basicSetPayloadKey(null, msgs);
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__ARGS:
 				return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__INPUT_CONNECTOR:
@@ -408,10 +408,10 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT:
-				return getFormat();
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY:
-				return getFormatKey();
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD:
+				return getPayload();
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY:
+				return getPayloadKey();
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__ARGS:
 				return getArgs();
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__INPUT_CONNECTOR:
@@ -435,11 +435,11 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT:
-				setFormat((String)newValue);
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD:
+				setPayload((String)newValue);
 				return;
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY:
-				setFormatKey((RegistryKeyProperty)newValue);
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY:
+				setPayloadKey((RegistryKeyProperty)newValue);
 				return;
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__ARGS:
 				getArgs().clear();
@@ -469,11 +469,11 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT:
-				setFormat(FORMAT_EDEFAULT);
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD:
+				setPayload(PAYLOAD_EDEFAULT);
 				return;
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY:
-				setFormatKey((RegistryKeyProperty)null);
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY:
+				setPayloadKey((RegistryKeyProperty)null);
 				return;
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__ARGS:
 				getArgs().clear();
@@ -502,10 +502,10 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT:
-				return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
-			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY:
-				return formatKey != null;
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD:
+				return PAYLOAD_EDEFAULT == null ? payload != null : !PAYLOAD_EDEFAULT.equals(payload);
+			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY:
+				return payloadKey != null;
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__ARGS:
 				return args != null && !args.isEmpty();
 			case EsbPackage.PAYLOAD_FACTORY_MEDIATOR__INPUT_CONNECTOR:
@@ -530,8 +530,8 @@ public class PayloadFactoryMediatorImpl extends MediatorImpl implements PayloadF
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (format: ");
-		result.append(format);
+		result.append(" (payload: ");
+		result.append(payload);
 		result.append(", mediaType: ");
 		result.append(mediaType);
 		result.append(", payloadFormat: ");

@@ -34,7 +34,7 @@ public class ExtensionAdapterImpl extends AdapterImpl {
 	/**
 	 * @see org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	
+	@Override
 	public void notifyChanged(Notification notification) {
 
 		switch (notification.getEventType()) {
@@ -72,7 +72,7 @@ public class ExtensionAdapterImpl extends AdapterImpl {
 	/**
 	 * @see org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
 	 */
-	
+	@Override
 	public boolean isAdapterForType(Object type) {
 		return ExtensionImpl.class.equals(type);
 	}

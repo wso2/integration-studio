@@ -42,7 +42,7 @@ public class EmptyImpl extends ActivityImpl implements Empty {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.EMPTY;
 	}

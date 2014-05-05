@@ -29,7 +29,7 @@ public class JoinCondition extends XPathValidator {
 	/**
 	 * Boolean expressions on joinCondition
 	 */
-	
+	@Override
 	@ARule(
 		sa = 73,
 		desc = "Checks for boolean expression on joinCondition",

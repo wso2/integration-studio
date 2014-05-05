@@ -35,13 +35,13 @@ public class LocalEntryDeserializer extends AbstractEsbNodeDeserializer<Entry, L
 		executeSetValueCommand(LOCAL_ENTRY__ENTRY_NAME, entry.getKey());
 
 		if (entry.getType() == URL_SRC) {
-			executeSetValueCommand(LOCAL_ENTRY__VALUE_TYPE, LocalEntryValueType.URL);
+			executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.URL);
 			executeSetValueCommand(LOCAL_ENTRY__VALUE_URL, entry.getSrc().toString());
 		} else if (entry.getType() == INLINE_XML) {
-			executeSetValueCommand(LOCAL_ENTRY__VALUE_TYPE, LocalEntryValueType.XML);
+			executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.XML);
 			executeSetValueCommand(LOCAL_ENTRY__VALUE_XML, entry.getValue().toString());
 		} else if (entry.getType() == INLINE_TEXT){
-			executeSetValueCommand(LOCAL_ENTRY__VALUE_TYPE, LocalEntryValueType.LITERAL);
+			executeSetValueCommand(LOCAL_ENTRY__LOCAL_ENTRY_TYPE, LocalEntryValueType.LITERAL);
 			executeSetValueCommand(LOCAL_ENTRY__VALUE_LITERAL, entry.getValue().toString());
 		} else{
 			/* REMOTE_ENTRY? nothing to do */

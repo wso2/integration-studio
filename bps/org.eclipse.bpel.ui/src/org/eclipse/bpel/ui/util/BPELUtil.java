@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,6 +54,7 @@ import org.eclipse.bpel.model.messageproperties.PropertyAlias;
 import org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage;
 import org.eclipse.bpel.model.util.BPELUtils;
 import org.eclipse.bpel.names.NCNameWordDetector;
+import org.eclipse.bpel.runtimes.IBPELModuleFacetConstants;
 import org.eclipse.bpel.ui.BPELEditor;
 import org.eclipse.bpel.ui.BPELUIPlugin;
 import org.eclipse.bpel.ui.IBPELUIConstants;
@@ -87,9 +88,9 @@ import org.eclipse.bpel.validator.EmfModelQuery;
 import org.eclipse.bpel.wsil.model.inspection.InspectionPackage;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
@@ -151,6 +152,13 @@ import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+import org.eclipse.wst.common.componentcore.ComponentCore;
+import org.eclipse.wst.common.componentcore.ModuleCoreNature;
+import org.eclipse.wst.common.componentcore.resources.IVirtualComponent;
+import org.eclipse.wst.common.project.facet.core.IFacetedProject;
+import org.eclipse.wst.common.project.facet.core.IProjectFacet;
+import org.eclipse.wst.common.project.facet.core.IProjectFacetVersion;
+import org.eclipse.wst.common.project.facet.core.ProjectFacetsManager;
 import org.eclipse.wst.wsdl.Definition;
 import org.eclipse.wst.wsdl.Fault;
 import org.eclipse.wst.wsdl.Input;
@@ -167,7 +175,7 @@ import org.eclipse.xsd.XSDPackage;
 
 /**
  * BPELUtil is a place to put *static* helper methods for the BPEL editor.
- * 
+ *
  * Note that helpers which have specifically to do with accessing model objects are
  * usually found in the ModelHelper class.
  */
@@ -186,120 +194,117 @@ public class BPELUtil {
 	 * Global variable storing the path of the last BPEL file selected
 	 */
 	public static IPath lastBPELFilePath = null;
-	
+
 	/**
 	 * Global variable storing the path of the last XSD file selected
 	 */
 	public static IPath lastXSDFilePath;
-	
-	
+
+
 	static {
 		AdapterRegistry.INSTANCE.registerAdapterFactory(
 				BPELPackage.eINSTANCE, BPELUIAdapterFactory.getInstance());
-		
+
 		AdapterRegistry.INSTANCE.registerAdapterFactory(
 			    WSDLPackage.eINSTANCE, BPELUIWSDLAdapterFactory.getInstance());
-		
+
 		AdapterRegistry.INSTANCE.registerAdapterFactory(
 			    PartnerlinktypePackage.eINSTANCE, BPELUIPartnerLinkTypeAdapterFactory.getInstance());
-		
+
 		AdapterRegistry.INSTANCE.registerAdapterFactory(
 			    XSDPackage.eINSTANCE, BPELUIXSDAdapterFactory.getInstance());
-		
+
 		AdapterRegistry.INSTANCE.registerAdapterFactory(
 			    MessagepropertiesPackage.eINSTANCE, BPELUIMessagePropertiesAdapterFactory.getInstance());
-	
+
 		AdapterRegistry.INSTANCE.registerAdapterFactory(
 			    UiextensionmodelPackage.eINSTANCE, BPELUIExtensionAdapterFactory.getInstance());
-		
+
 		AdapterRegistry.INSTANCE.registerAdapterFactory(
 			    InspectionPackage.eINSTANCE, BPELUIWSILAdapterFactory.getInstance() );
-		
+
 	}
 
-	
+
 	/**
 	 * Register adapter factory for the given EClass.
-	 * 
+	 *
 	 * @param key
 	 * @param factory
 	 */
-	
+
 	public static void registerAdapterFactory(EClass key, AdapterFactory factory) {
 		AdapterRegistry.INSTANCE.registerAdapterFactory(key,factory);
 	}
-	
+
 	public static void registerAdapterFactory(EPackage key, AdapterFactory factory) {
 		AdapterRegistry.INSTANCE.registerAdapterFactory(key, factory);
 	}
-	
+
 	static Class<?> adapterInterface ( Object type ) {
-		
+
 		if (type instanceof Class) {
 			return (Class) type;
 		}
-		
+
 		if (type instanceof String) {
 			try {
 				return Class.forName((String)type);
 			} catch (ClassNotFoundException e) {
 				throw new RuntimeException(e);
-			}				
+			}
 		}
-		
+
 		throw new RuntimeException("Adapter type " + type + " is not understood.");		 //$NON-NLS-1$ //$NON-NLS-2$
 	}
-	
+
 	/**
 	 * @param <T>
 	 * @param target
 	 * @param clazz
 	 * @return the adapted interface or object
 	 */
-	
-	@SuppressWarnings("unchecked")
-	
-	public static <T extends Object> T adapt ( Object target,  Class<T> clazz) {	
+	public static <T extends Object> T adapt ( Object target,  Class<T> clazz) {
 		return AdapterRegistry.INSTANCE.adapt(target, clazz);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * This method tries the registered adapter factories one by one, returning
 	 * the first non-null result it gets.  If none of the factories can adapt
 	 * the result, it returns null.
-	 * @param target target object 
+	 * @param target target object
 	 * @param type type of the adapter to find
 	 * @return the adapter for the target.
 	 */
-	
+
 	public static Object adapt (Object target, Object type) {
 		return AdapterRegistry.INSTANCE.adapt(target, type);
 	}
-	
-	
+
+
 	/**
-	 * Create an adapter for the given target of the given type. 
-	 * In addition, pass a context object to the adapter(s) of the target. 
-	 * 
-	 * The idea is that some adapters can be stateful and depend not only 
+	 * Create an adapter for the given target of the given type.
+	 * In addition, pass a context object to the adapter(s) of the target.
+	 *
+	 * The idea is that some adapters can be stateful and depend not only
 	 * on the objects that they wrap, but also on some other context that is needed
 	 * to completely and correctly implement the interface for which the adaptor is
 	 * needed.
-	 * 
+	 *
 	 * Adapters that are stateless, should ignore any notifications sent to them.
-	 *  
+	 *
 	 * @param target the target object
 	 * @param type the type it wants to adapt to
 	 * @param context the context object
-	 * 
+	 *
 	 * @return the adapter
 	 */
-	public static Object adapt (Object target, Object type, Object context) {		
+	public static Object adapt (Object target, Object type, Object context) {
 		return AdapterRegistry.INSTANCE.adapt(target, type,context);
 	}
-		
+
 
 	/**
 	 * Returns the effective EClass for a custom activity (action).
@@ -307,8 +312,8 @@ public class BPELUtil {
 	public static EClass getEClassFor(Object target) {
 	    if (target instanceof Invoke) {
 	        ActionDescriptor[] descriptors = BPELUIRegistry.getInstance().getActionDescriptors();
-	        for (int i = 0; i < descriptors.length; i++) {
-	            AbstractBPELAction action = descriptors[i].getAction();
+	        for( ActionDescriptor descriptor : descriptors ) {
+	            AbstractBPELAction action = descriptor.getAction();
                 if (action.isInstanceOf(target)) {
                     return action.getModelType();
                 }
@@ -319,12 +324,12 @@ public class BPELUtil {
 	    }
 	    return ((EObject)target).eClass();
 	}
-	
+
 	public static boolean isCustomActivity(Object target) {
         if (target instanceof Invoke) {
 	        ActionDescriptor[] descriptors = BPELUIRegistry.getInstance().getActionDescriptors();
-	        for (int i = 0; i < descriptors.length; i++) {
-	            AbstractBPELAction action = descriptors[i].getAction();
+	        for( ActionDescriptor descriptor : descriptors ) {
+	            AbstractBPELAction action = descriptor.getAction();
 	            if (action.getModelType() == BPELPackage.eINSTANCE.getInvoke()) continue;
                 if (action.isInstanceOf(target)) {
                     return true;
@@ -333,11 +338,11 @@ public class BPELUtil {
         }
 		return false;
 	}
-	
+
 	public static boolean isBPELAction(EClass target) {
 		ActionDescriptor[] descriptors = BPELUIRegistry.getInstance().getActionDescriptors();
-        for (int i = 0; i < descriptors.length; i++) {
-            AbstractBPELAction action = descriptors[i].getAction();
+        for( ActionDescriptor descriptor : descriptors ) {
+            AbstractBPELAction action = descriptor.getAction();
             if (action.getModelType() == target) {
                 return true;
             }
@@ -346,76 +351,76 @@ public class BPELUtil {
 	}
 
 	/**
-	 * Creates a new instance of clazz using the EFactory of the EPackage clazz belongs to. 
+	 * Creates a new instance of clazz using the EFactory of the EPackage clazz belongs to.
 	 */
 	public static EObject createEObject(EClass clazz) {
 		return clazz.getEPackage().getEFactoryInstance().create(clazz);
 	}
-	
+
 	// This is a hack to bundle the result of a cloneSubtree with enough state to undo/redo
-	// the extension map changes it caused. 
+	// the extension map changes it caused.
 	public static class CloneResult {
-		
+
 		/** The result of the clone */
 		public EObject targetRoot;
 		Map<EObject,EObject> targetMap;
 		Map<EObject,EObject> targetMapAdditions = new HashMap<EObject,EObject>();
-		
+
 		/**
 		 * Undo ... ?
 		 */
 		public void undo() {
-			for (EObject next : targetMapAdditions.keySet()) {			
-				targetMap.remove(next);
+			for (EObject next : this.targetMapAdditions.keySet()) {
+				this.targetMap.remove(next);
 			}
 		}
-		
+
 		/**
-		 * Redo ... ? 
+		 * Redo ... ?
 		 */
 		public void redo() {
-			for (EObject key : targetMapAdditions.keySet()) {				
-				targetMap.put(key, targetMapAdditions.get(key));
+			for (EObject key : this.targetMapAdditions.keySet()) {
+				this.targetMap.put(key, this.targetMapAdditions.get(key));
 			}
 		}
 	}
-	
+
 	// This helper is used by the cloneSubtree() method.
 	protected static void cloneSubtreeHelper (EObject source, Map<EObject,EObject> sourceMap, Map<EObject,EObject> targetMap,
 		Map<EObject,EObject> copyMap, CloneResult result)
 	{
 		EObject targetObject = createEObject(source.eClass());
 		copyMap.put(source, targetObject);
-		
+
 		if (sourceMap != null && sourceMap.containsKey(source)) {
-			
+
 			EObject sourceExtension = sourceMap.get(source);
 			EObject targetExtension = createEObject(sourceExtension.eClass());
-			
+
 			copyMap.put(sourceExtension, targetExtension);
-			
+
 			for (TreeIterator<?> it2 = sourceExtension.eAllContents(); it2.hasNext(); ) {
 				EObject source2 = (EObject)it2.next();
 				EObject target2 = createEObject(source2.eClass());
 				copyMap.put(source2, target2);
 			}
-			
+
 			targetMap.put(targetObject, targetExtension);
 			result.targetMapAdditions.put(targetObject, targetExtension);
 		}
 	}
-	
+
 	/**
 	 * Clones an EObject and all EObjects contained directly or indirectly within it.  All
 	 * cloned objects possessing an extension in the sourceMap will also have their extensions
 	 * cloned into the targetMap.  Containment references and other references to any of the
 	 * cloned object(s) will be fixed up to point into the target objects.  Any references to
 	 * non-cloned objects will be copied as-is in the cloned objects.
-	 * 
+	 *
 	 * NOTE: This method relies on BPELUtil.createEObject() knowing how to create new instances
 	 * of the EClasses of all copied objects (i.e. objectFactories must contain the necessary
 	 * EFactory instances for everything copied by this method).
-	 * 
+	 *
 	 * @param source The root of the source subtree to clone.
 	 * @param sourceMap The extension map containing source extensions of cloned objects.
 	 * @param targetMap The extension map in which cloned extensions should be recorded.
@@ -424,12 +429,12 @@ public class BPELUtil {
 	 */
 	@SuppressWarnings("nls")
 	public static CloneResult cloneSubtree (EObject source, Map<EObject,EObject> sourceMap, Map<EObject,EObject> targetMap) {
-		
+
 		HashMap<EObject,EObject> copyMap = new HashMap<EObject,EObject>();
-		
+
 		CloneResult result = new CloneResult();
 		result.targetMap = targetMap;
-		
+
 		// (1) Create target objects for each EObject in the containment subtree of source.
 		// If the source object has an extension in sourceMap, create copies of the extension
 		// and its containment tree as well.
@@ -437,46 +442,46 @@ public class BPELUtil {
 		// work with fixing up references.  We have to iterate its eAllContents also here.
 
 		cloneSubtreeHelper(source, sourceMap, targetMap, copyMap, result);
-		
+
 		for (TreeIterator<?> it = source.eAllContents(); it.hasNext(); ) {
 			EObject sourceObject = (EObject)it.next();
 			cloneSubtreeHelper(sourceObject, sourceMap, targetMap, copyMap, result);
 		}
-		
+
 		// (2) Copy the features from each cloned source object to the corresponding target
 		// object.  As we copy, we replace any references to cloned source objects with
 		// references to the corresponding target objects--but references to non-cloned
 		// objects are copied as-is.
-		
+
 		for (Map.Entry<EObject,EObject> entry : copyMap.entrySet() ) {
-			
+
 			EObject sourceObject = entry.getKey();
-			EObject targetObject = entry.getValue(); 
-			
+			EObject targetObject = entry.getValue();
+
 			if (sourceObject.eClass() != targetObject.eClass()) {
 				throw new IllegalStateException("Source and target objects are not of the same class after cloning.");
 			}
-			
+
 			if (Policy.DEBUG) {
 				System.out.println("copying a "+sourceObject.eClass().getName()); //$NON-NLS-1$
 			}
-			
+
 			for ( EStructuralFeature feature : sourceObject.eClass().getEAllStructuralFeatures()) {
-				
+
 				// special cases first.
 				if (!feature.isChangeable()) {
 					if (Policy.DEBUG) System.out.println("  *** skipping unchangeable feature "+feature); //$NON-NLS-1$
 					continue;
-				} 
-				
+				}
+
 				if (feature.isUnsettable() && !targetObject.eIsSet(feature)) {
 					if (Policy.DEBUG) System.out.println("  unsetting feature "+feature.getName()); //$NON-NLS-1$
-					targetObject.eUnset(feature); 
+					targetObject.eUnset(feature);
 					continue;
 				}
-				
+
 				Object value = sourceObject.eGet(feature);
-				
+
 				boolean treatAsReference = (feature instanceof EReference);
 
 				if (treatAsReference) {
@@ -484,16 +489,16 @@ public class BPELUtil {
 						// list of references.
 						EList<Object> newValues = new BasicEList<Object>();
 						if (Policy.DEBUG) System.out.println("  copying multi-reference feature "+feature.getName()+":"); //$NON-NLS-1$ //$NON-NLS-2$
-						
+
 						for (Iterator<?> it3 = ((Collection)value).iterator(); it3.hasNext(); ) {
 							Object oldValue = it3.next();
 							Object newValue = (oldValue==null ? null : copyMap.get(oldValue));
-							
+
 							if (newValue == null)  {
 								newValue = oldValue;
 							}
 							if (Policy.DEBUG) System.out.println("+ (oldValue="+oldValue+" newValue="+newValue+")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-							newValues.add(newValue); 
+							newValues.add(newValue);
 						}
 						targetObject.eSet(feature, newValues);
 					} else {
@@ -504,28 +509,28 @@ public class BPELUtil {
 						}
 						if (Policy.DEBUG) System.out.println("  copying reference feature "+feature.getName() //$NON-NLS-1$
 							+" (value="+value+" newValue="+newValue+")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						targetObject.eSet(feature, newValue); 
+						targetObject.eSet(feature, newValue);
 					}
 				} else {
-					
+
 					/** In case of a DOM Node and the "element" feature, we simply clone the result */
 					if (value instanceof org.w3c.dom.Node && "element".equals(feature.getName())) {
 						org.w3c.dom.Node  e = (org.w3c.dom.Node)value;
 						value = e.cloneNode(true);
 					}
-					
+
 					// non-reference attribute.  just copy the value
 					if (Policy.DEBUG) System.out.println("  copying attr feature "+feature.getName()+" (value="+value+")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 					targetObject.eSet(feature, value);
 				}
 			}
 		}
-		
+
 		result.targetRoot = copyMap.get(source);
 		return result;
 	}
 
-	
+
 	/**
 	 * Convenience formatting methods.
 	 */
@@ -535,24 +540,24 @@ public class BPELUtil {
 	public static String formatString(String format, String arg1, String arg2) {
 		return MessageFormat.format(format, new Object[] { arg1, arg2 });
 	}
-	
+
 	/**
 	 * strips out invalid characters to conform to QName specs.
 	 * If the resulting name is null, returns "bpel" as a valid QName
 	 * to guarantee that something valid is returned.
-	 * 
+	 *
 	 * TODO: This has to be a valid NCName ...
-	 * 
+	 *
 	 * @param str
-	 *  
-	 * @return 
+	 *
+	 * @return
 	 */
-	
+
 	public static String generateValidName(String str) {
-		
+
 		StringBuilder result = new StringBuilder(""); //$NON-NLS-1$
 		if (str != null) {
-			for(char ch : str.trim().toCharArray()) {			
+			for(char ch : str.trim().toCharArray()) {
 				int destLength = result.length();
 				if (((destLength == 0) && (Character.isLetter(ch) || ch == '_'))
 					|| ((destLength > 0) && Character.isJavaIdentifierPart(ch))) {
@@ -560,17 +565,17 @@ public class BPELUtil {
 				}
 			}
 		}
-		
+
 		if (result.length() == 0)
 			result.append(IBPELUIConstants.EXTENSION_BPEL);
-		
+
 		return result.toString();
 	}
 
 	/**
 	 * Helper that traverses the IContainer hierarchy of the given modelObject in depth
 	 * first fashion and applies the given visitor to each node.
-	 * 
+	 *
 	 * DO NOT USE THIS for anything that must see "all" model objects (including implicit
 	 * sequences, for example).  Use TreeIterator modelObject.eAllContents() for that.
 	 */
@@ -592,38 +597,39 @@ public class BPELUtil {
 			}
 		}
 	}
-	
+
 	private static class NameUnusedVisitor implements IModelVisitor {
 		private boolean unused = true;
-		private String candidateName;
-		private Collection<EObject> ignoreObjects;
-		
+		private final String candidateName;
+		private final Collection<EObject> ignoreObjects;
+
 		NameUnusedVisitor(String candidateName, Collection<EObject> ignoreObjects) {
 			this.candidateName = candidateName;
 			if (ignoreObjects == null)  ignoreObjects = Collections.emptySet();
 			this.ignoreObjects = ignoreObjects;
 		}
-		
+
+		@Override
 		public boolean visit(Object child) {
-			if (!ignoreObjects.contains(child)) {
+			if (!this.ignoreObjects.contains(child)) {
 			INamedElement namedElement = BPELUtil.adapt(child, INamedElement.class);
 				if (namedElement != null) {
 					String name = namedElement.getName(child);
-					if ((name != null) && (name.compareToIgnoreCase(candidateName) == 0))
-						unused = false;
+					if ((name != null) && (name.compareToIgnoreCase(this.candidateName) == 0))
+						this.unused = false;
 				}
 			}
 			return true;//unused;
 		}
-		
-		public boolean isUnused() { 
-			return unused;
+
+		public boolean isUnused() {
+			return this.unused;
 		}
 	}
-	
-	/** 
+
+	/**
 	 * checks if a name is available for use within the given process (i.e. if this name
-	 * were added within the modelRoot, would it be unique).  
+	 * were added within the modelRoot, would it be unique).
 	 */
 	public static boolean isNameUnused(EObject modelRoot, String candidateName, Collection ignoreObjects) {
 		NameUnusedVisitor visitor = new NameUnusedVisitor(candidateName, ignoreObjects);
@@ -636,30 +642,30 @@ public class BPELUtil {
 
 	/**
 	 * return a mangled name (based on the given hint) which is unique in the given process.
-	 */	
+	 */
 	public static String getUniqueModelName(EObject context, String hint, Collection ignoreObjects) {
 		return getUniqueModelName2(context, hint, ignoreObjects);
 	}
 
 	/**
 	 * return a mangled name (based on the given hint) which is unique in the given WSDL definition.
-	 */	
+	 */
 	public static String getUniqueModelName (Definition definition, String hint, Collection ignoreObjects) {
 		return getUniqueModelName2(definition, hint, ignoreObjects);
 	}
-	
+
 	protected static String getUniqueModelName2 (EObject modelRoot, String hint, Collection ignoreObjects) {
-		
+
 		// first try it exactly as hinted.
 		String result = BPELUtil.generateValidName((hint==null)?"":hint.trim()); //$NON-NLS-1$
 		if (isNameUnused(modelRoot, result, ignoreObjects))  return result;
-		
+
 		// go back to the first non-digit
 		int digitPos = result.length()-1;
 		while (digitPos >= 0 && Character.isDigit(result.charAt(digitPos)))  digitPos--;
 		digitPos++; // move back to the digit
 		String nameWithoutNum = result.substring(0, digitPos);
-		
+
 		// try increasing numbers until one is accepted.
 		for (int num = 1; ; num++)  {
 			result = nameWithoutNum+String.valueOf(num);
@@ -668,16 +674,16 @@ public class BPELUtil {
 	}
 
 	public static String generateUniqueModelName (EObject context, String hint, EObject model) {
-		
+
 		if (hint == null || "".equals(hint)) { //$NON-NLS-1$
 			ILabeledElement element = BPELUtil.adapt(model, ILabeledElement.class);
 			hint = (element != null) ? element.getTypeLabel(model) : ""; //$NON-NLS-1$
 		}
 		return BPELUtil.getUniqueModelName(context, hint, Collections.singletonList(model));
 	}
-	
+
 	public static String getFilenameFromUri(String uri) {
-		if (uri == null)  return Messages.BPELUtil__unknown_URI__54; 
+		if (uri == null)  return Messages.BPELUtil__unknown_URI__54;
 		// Hack. Why aren't we just using URI objects?
 		int idx = Math.max(uri.lastIndexOf("/"), uri.lastIndexOf("\\")); //$NON-NLS-1$ //$NON-NLS-2$
 		return (idx >= 0)? uri.substring(idx+1) : uri;
@@ -685,7 +691,7 @@ public class BPELUtil {
 
 	/**
 	 * Converts the first letter of the target String to upper case.
-	 * @param target 
+	 * @param target
 	 * @return the name with the first letter uppercased.
 	 */
 	public static String upperCaseFirstLetter (String target) {
@@ -747,9 +753,9 @@ public class BPELUtil {
 		ModelHelper.createExtensionIfNecessary(extensionMap, impSeq);
 		Collection ignoreObjects = Collections.singletonList(impSeq);
 		if (ModelHelper.isSpecCompliant(process)) {
-			impSeq.setName(getUniqueModelName(process, Messages.BPELUtil_Sequence_1, ignoreObjects)); 
+			impSeq.setName(getUniqueModelName(process, Messages.BPELUtil_Sequence_1, ignoreObjects));
 		} else {
-			impSeq.setName(getUniqueModelName(process, Messages.BPELUtil_HiddenSequence_2, ignoreObjects)); 
+			impSeq.setName(getUniqueModelName(process, Messages.BPELUtil_HiddenSequence_2, ignoreObjects));
 			((ActivityExtension)ModelHelper.getExtension(impSeq)).setImplicit(true);
 		}
 		// TODO: also give sequence a unique ID marked as implicit!
@@ -760,38 +766,43 @@ public class BPELUtil {
 		final TreeIterator<EObject> allContents = node.eAllContents();
 		return new TreeIterator() {
 			boolean didNode = false;
+			@Override
 			public void prune() {
 				// TODO: This won't work when calling on the first item.
-				if (!didNode) throw new IllegalStateException();
+				if (!this.didNode) throw new IllegalStateException();
 				allContents.prune();
 			}
 
+			@Override
 			public boolean hasNext() {
-				if (didNode) return allContents.hasNext();
+				if (this.didNode) return allContents.hasNext();
 				return node != null;
 			}
 
+			@Override
 			public Object next() {
-				if (didNode) return allContents.next();
-				didNode = true;	return node;
+				if (this.didNode) return allContents.next();
+				this.didNode = true;	return node;
 			}
 
+			@Override
 			public void remove() {
 				// This won't work when calling on the first item.
-				if (!didNode) throw new IllegalStateException();
+				if (!this.didNode) throw new IllegalStateException();
 				allContents.remove();
 			}
 		};
 	}
-	
+
 	private static class RefreshActionVisitor implements IModelVisitor {
-		private GraphicalViewer viewer;
+		private final GraphicalViewer viewer;
 		public RefreshActionVisitor(GraphicalViewer viewer) {
-			this.viewer = viewer;			
+			this.viewer = viewer;
 		}
 
+		@Override
 		public boolean visit(Object child) {
-			EditPart ep = (EditPart) viewer.getEditPartRegistry().get(child);
+			EditPart ep = (EditPart) this.viewer.getEditPartRegistry().get(child);
 			if (ep != null && ep instanceof BPELEditPart) {
 				IFigure fig = ((BPELEditPart)ep).getContentPane();
 				if (fig != null) {
@@ -805,8 +816,8 @@ public class BPELUtil {
 			return true;//unused;
 		}
 	}
-	
-	/** 
+
+	/**
 	 * refreshes all the editparts of the process. Useful for changing layouts etc
 	 */
 	public static void regenerateVisuals(Process process, GraphicalViewer viewer) {
@@ -814,8 +825,8 @@ public class BPELUtil {
 		visitModelDepthFirst(process, visitor);
 		return;
 	}
-	
-	
+
+
 	/**
 	 * The policy for whether a BPELEditPart's edges should be hilighted or not.  This one defers
 	 * to the active tool if it is an IHilightControllingTool and says no otherwise.
@@ -827,8 +838,8 @@ public class BPELUtil {
 		}
 		return false;
 	}
-	
-	
+
+
 	/**
 	 * Used to determine the type of pattern to paint a container in the Process.
 	 * Because the nesting of containers is confusing, we want to draw nice gradients
@@ -837,7 +848,7 @@ public class BPELUtil {
 	 * 0 and 2 mean gradient fills.
 	 */
 	public static int getRepaintFillType(IFigure fig) {
-		int depth = 0;		
+		int depth = 0;
 		IFigure parent = fig.getParent();
 		while (parent != null) {
 			if (parent != null && parent.getBorder() != null &&  parent.getBorder() instanceof GradientBorder) {
@@ -854,11 +865,11 @@ public class BPELUtil {
 
 		for (int i = 0; i<resultSize; i++) {
 			for (int j = i+1; j<resultSize; j++) {
-				Flow flow1 = (Flow)(result.get(i)).getModel();	
+				Flow flow1 = (Flow)(result.get(i)).getModel();
 				Flow flow2 = (Flow)(result.get(j)).getModel();
 				Flow[] parents = FlowLinkUtil.getParentFlows(flow2);
-				for (int k = 0; k<parents.length; k++) {
-					if (parents[k] == flow1) {
+				for( Flow parent : parents ) {
+					if (parent == flow1) {
 						// flow2 must be layed out before flow1 so its size will be known!
 						FlowEditPart temp = result.get(i);
 						result.set(i, result.get(j));
@@ -877,7 +888,7 @@ public class BPELUtil {
 		String s = ((ILabelProvider)viewer.getLabelProvider()).getText(selectedObject);
 		viewer.getCombo().setText(s);
 	}
-	
+
 	/**
 	 * Helper method to calculate the width of a button.
 	 * This is necessary for internationalization and accessibility.
@@ -887,19 +898,19 @@ public class BPELUtil {
 	public static int calculateButtonWidth(Widget widget, int defaultSize){
 		GC gc;
 		int width = 0;
-		
+
 		if (widget instanceof Button) {
 			Button w = (Button)widget;
 			gc = new GC(w);
-			gc.setFont(w.getFont());			
-			width = gc.textExtent(w.getText()).x + 17;			
+			gc.setFont(w.getFont());
+			width = gc.textExtent(w.getText()).x + 17;
 			gc.dispose();
-			return Math.max(width, defaultSize);			
-		}		
+			return Math.max(width, defaultSize);
+		}
 		return defaultSize;
 	}
-	
-	
+
+
 	public static String getMaxLengthString(String strings[]) {
 		int max = -1;
 		int index = -1;
@@ -909,48 +920,48 @@ public class BPELUtil {
 				index = i;
 			}
 		}
-		
+
 		if (index >= 0) return strings[index];
 		return "";  //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * Helper method to calculate the width of a CLabel.
 	 * This is necessary for internationalization and accessibility.
-	 * 
+	 *
 	 * Returned value is the calculated width or defaultSize, whichever
 	 * is larger.
 	 */
 	public static int calculateLabelWidth(Widget widget, int defaultSize){
 		GC gc;
 		int width = 0;
-		
+
 		if (widget instanceof CLabel) {
 			CLabel w = (CLabel)widget;
 			gc = new GC(w);
-			gc.setFont(w.getFont());			
-			width = gc.textExtent(w.getText()).x + 17;			
+			gc.setFont(w.getFont());
+			width = gc.textExtent(w.getText()).x + 17;
 			gc.dispose();
-			
-			return Math.max(width, defaultSize);			
+
+			return Math.max(width, defaultSize);
 		}
 		if (widget instanceof DecoratedLabel) {
 			DecoratedLabel w = (DecoratedLabel)widget;
 			gc = new GC(w);
-			gc.setFont(w.getFont());			
-			width = gc.textExtent(w.getText()).x + 17;			
-			gc.dispose();			
-			return Math.max(width, defaultSize);			
-		}		
+			gc.setFont(w.getFont());
+			width = gc.textExtent(w.getText()).x + 17;
+			gc.dispose();
+			return Math.max(width, defaultSize);
+		}
 
-		
+
 		if (widget instanceof Label) {
 			Label w = (Label)widget;
 			gc = new GC(w);
-			gc.setFont(w.getFont());			
-			width = gc.textExtent(w.getText()).x + 5;			
+			gc.setFont(w.getFont());
+			width = gc.textExtent(w.getText()).x + 5;
 			gc.dispose();
-			return Math.max(width, defaultSize);			
+			return Math.max(width, defaultSize);
 		}
 		return defaultSize;
 	}
@@ -961,7 +972,7 @@ public class BPELUtil {
 		}
 		return getFileFromPlatformURI(uri);
 	}
-	
+
 	public static IFile getFileFromDeviceURI(URI uri) {
 		String device = uri.device();
 		Iterator pathIt = uri.segmentsList().iterator();
@@ -971,7 +982,7 @@ public class BPELUtil {
 		}
 		return ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(device, path.toString()));
 	}
-	
+
 	public static IFile getFileFromPlatformURI(URI uri) {
 		String [] segs  = uri.segments();
 		IPath path = null;
@@ -986,7 +997,7 @@ public class BPELUtil {
 		return ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 	}
 
-	/** 
+	/**
 	 * Function to return a platform URI from a standard hierarchital URI.
 	 * Normally we can use URI.createPlatformURI, but that function always assumes
 	 * that it is non-platform
@@ -998,7 +1009,7 @@ public class BPELUtil {
 	}
 
 	/* external fault handler helpers */
-	
+
 	public static boolean getShowFaultHandler(EditPart part) {
 		if (part instanceof ScopeEditPart)
 			return ((ScopeEditPart)part).getShowFaultHandler();
@@ -1008,7 +1019,7 @@ public class BPELUtil {
 			return ((StartNodeEditPart)part).getShowFaultHandler();
 		return false;
 	}
-	
+
 	public static void setShowFaultHandler(EditPart part, boolean show) {
 		if (part instanceof ScopeEditPart)
 			((ScopeEditPart)part).setShowFaultHandler(show);
@@ -1017,9 +1028,9 @@ public class BPELUtil {
 		else if (part instanceof StartNodeEditPart)
 			((StartNodeEditPart)part).setShowFaultHandler(show);
 	}
-	
+
 	/* external compensation handler helpers */
-	
+
 	public static boolean getShowCompensationHandler(EditPart part) {
 		if (part instanceof ScopeEditPart)
 			return ((ScopeEditPart)part).getShowCompensationHandler();
@@ -1047,7 +1058,7 @@ public class BPELUtil {
 	}
 
 	/* external event handler helpers */
-	
+
 	public static boolean getShowEventHandler(EditPart part) {
 		if (part instanceof ScopeEditPart)
 			return ((ScopeEditPart)part).getShowEventHandler();
@@ -1070,7 +1081,7 @@ public class BPELUtil {
 		IPath path = bpelFile.getFullPath().removeFileExtension().addFileExtension(IBPELUIConstants.EXTENSION_MODEL_EXTENSIONS);
 		return ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 	}
-	
+
 	/**
 	 * Returns the artifacts WSDL of the given BPEL file.
 	 */
@@ -1081,7 +1092,7 @@ public class BPELUtil {
 		wsdlPath = wsdlPath.addFileExtension(IBPELUIConstants.EXTENSION_WSDL);
 		return ResourcesPlugin.getWorkspace().getRoot().getFile(wsdlPath);
 	}
-	
+
 	public static Image getImage(IMarker marker) {
 	    Image img = ModelMarkerUtil.getImage(marker);
 	    ImageData background = null;
@@ -1124,7 +1135,7 @@ public class BPELUtil {
 		ImageDescriptor desc = ImageDescriptor.createFromURL(url);
 		return desc.getImageData();
 	}
-	
+
 	/**
 	 * Returns the EditPart which is responsible for the given IFigure.
 	 */
@@ -1153,9 +1164,9 @@ public class BPELUtil {
 
 	public static AccessibleEditPart getAccessibleEditPart(GraphicalEditPart part) {
 		final GraphicalEditPart thisPart = part;
-		
+
 		return new AccessibleEditPart() {
-				
+				@Override
 				public void getName(AccessibleEvent e) {
 					String childType = null;
 					String displayName = null;
@@ -1188,7 +1199,7 @@ public class BPELUtil {
 					return;
 				}
 
-				
+				@Override
 				public void getChildCount(AccessibleControlEvent e) {
 					List<EditPart> list = thisPart.getChildren();
 					int count = 0;
@@ -1201,7 +1212,7 @@ public class BPELUtil {
 					e.detail = count;
 				}
 
-				
+				@Override
 				public void getChildren(AccessibleControlEvent e) {
 					List<EditPart> list = thisPart.getChildren();
 					Vector<Integer> childList = new Vector<Integer>();
@@ -1213,8 +1224,8 @@ public class BPELUtil {
 					}
 					e.children = childList.toArray();
 				}
-				
-				
+
+				@Override
 				public void getLocation(AccessibleControlEvent e) {
 					Rectangle bounds = thisPart.getFigure().getBounds().getCopy();
 					thisPart.getFigure().translateToAbsolute(bounds);
@@ -1225,11 +1236,11 @@ public class BPELUtil {
 					e.width = bounds.width;
 					e.height = bounds.height;
 				}
-	
+
 				/**
 				 * @see AccessibleEditPart#getState(AccessibleControlEvent)
 				 */
-				
+				@Override
 				public void getState(AccessibleControlEvent e) {
 					e.detail = ACC.STATE_SELECTABLE | ACC.STATE_FOCUSABLE;
 					if (thisPart.getSelected() != EditPart.SELECTED_NONE)
@@ -1239,22 +1250,22 @@ public class BPELUtil {
 				}
 			};
 	}
-	
-	
+
+
 	/** creates a table cursor that can be used to navigate tables for keyboard accessibility **/
-	
+
 	public static TableCursor createTableCursor(final Table table, final TableViewer tableViewer) {
 		// create a TableCursor to navigate around the table
 		final TableCursor cursor = new TableCursor(table, SWT.NONE);
 		cursor.addSelectionListener(new SelectionAdapter() {
 			// when the TableEditor is over a cell, select the corresponding row in the table
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (cursor.getRow() != null)
 					table.setSelection(new TableItem[] {cursor.getRow()});
 			}
 			// when the user hits "ENTER" in the TableCursor, pop up an editor
-			
+			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				TableItem row = cursor.getRow();
 				if (row != null) {
@@ -1269,17 +1280,19 @@ public class BPELUtil {
 		// Hide the TableCursor when the user hits the "CTRL" or "SHIFT" key.
 		// This alows the user to select multiple items in the table.
 		cursor.addKeyListener(new KeyAdapter() {
-			
+			@Override
 			public void keyPressed(KeyEvent e) {
-				if ((e.keyCode == SWT.CTRL) || (e.keyCode == SWT.SHIFT)	|| 
+				if ((e.keyCode == SWT.CTRL) || (e.keyCode == SWT.SHIFT)	||
 					(e.stateMask & SWT.CONTROL) != 0	|| (e.stateMask & SWT.SHIFT) != 0) {
 					cursor.setVisible(false);
 				}
 			}
 		});
-		
+
 		cursor.addMouseListener(new MouseListener() {
+			@Override
 			public void mouseDoubleClick(MouseEvent e) { }
+			@Override
 			public void mouseDown(MouseEvent e) {
 				TableItem row = cursor.getRow();
 				if (row != null) {
@@ -1289,14 +1302,15 @@ public class BPELUtil {
 					tableViewer.editElement(obj, column);
 				}
 			}
+			@Override
 			public void mouseUp(MouseEvent e) {
 			}
 		});
-				
+
 		// Show the TableCursor when the user releases the "SHIFT" or "CTRL" key.
 		// This signals the end of the multiple selection task.
 		table.addKeyListener(new KeyAdapter() {
-			
+			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.keyCode == SWT.CONTROL && (e.stateMask & SWT.SHIFT) != 0)
 					return;
@@ -1313,25 +1327,26 @@ public class BPELUtil {
 				TableItem row = (selection.length == 0) ? table.getItem(table.getTopIndex()) : selection[0];
 				table.showItem(row);
 				cursor.setSelection(row, 0);
-				cursor.setVisible(true);				
+				cursor.setVisible(true);
 				cursor.setFocus();
 			}
 		});
 		return cursor;
 	}
-	
+
 	public static ResourceSet createResourceSetImpl() {
 		// TODO: Extensibility
 		return new ResourceSetImpl();
 	}
-	
+
 	static final NCNameWordDetector NCNAME_DETECTOR = new NCNameWordDetector ();
-	
+
 	/**
 	 * Returns a validator that checks that the new value is a valid NCName.
 	 */
 	public static IInputValidator getNCNameValidator() {
 		return new IInputValidator() {
+			@Override
 			public String isValid (String newText) {
 				if ( NCNAME_DETECTOR.isValid( newText ) == false ) {
 					return Messages.BPELUtil_NCName;
@@ -1341,7 +1356,7 @@ public class BPELUtil {
 			}
 		};
 	}
-	
+
 	public static void deleteNonContainmentRefs(EObject modelObject, Collection referents) {
 		if (modelObject == null) return;
 		for (EReference feature : modelObject.eClass().getEAllReferences()) {
@@ -1372,7 +1387,7 @@ public class BPELUtil {
 	//@return:  returns arraylist with all activities the compensate
 	//			can validly point to
 	public static ArrayList getCompensableActivities(Object context){
-		final ArrayList returnObjects = new ArrayList();		
+		final ArrayList returnObjects = new ArrayList();
 		if (context instanceof CompensateScope) {
 			CompensateScope compensateScope = (CompensateScope) context;
 			EObject enclosingContainer = compensateScope;
@@ -1384,10 +1399,11 @@ public class BPELUtil {
 					enclosingContainer = enclosingContainer.eContainer();
 				}
 			}
-	
+
 			// Put all scopes and invokes within parent scope in arraylist
 			visitModelDepthFirst(enclosingContainer,
 					new IModelVisitor() {
+						@Override
 						public boolean visit(Object modelObject) {
 							if (modelObject instanceof Scope) {
 								returnObjects.add(modelObject);
@@ -1399,12 +1415,12 @@ public class BPELUtil {
 					});
 			// https://issues.jboss.org/browse/JBIDE-8044
 			if (!returnObjects.isEmpty())
-				returnObjects.remove(0);	//remove the scope containing the compensate			
+				returnObjects.remove(0);	//remove the scope containing the compensate
 			return returnObjects;
 		}
-		throw new IllegalArgumentException();			
+		throw new IllegalArgumentException();
 	}
-	
+
 	public static Object resolveXSDObject(Object xsdObject) {
 		if (xsdObject instanceof XSDElementDeclaration) {
 			XSDElementDeclaration resolvedElement = ((XSDElementDeclaration)xsdObject).getResolvedElementDeclaration();
@@ -1415,7 +1431,7 @@ public class BPELUtil {
 		}
 		return xsdObject;
 	}
-	
+
 	public static String debugObject(Object object) {
 		if (object == null) return "null"; //$NON-NLS-1$
 		if (object instanceof String) { return "\""+(String)object+"\""; } //$NON-NLS-1$ //$NON-NLS-2$
@@ -1456,7 +1472,7 @@ public class BPELUtil {
 		}
 		return b.toString();
 	}
-	
+
 	public static String debug(Notification n) {
 		StringBuffer b = new StringBuffer(shortClassName(n.getClass()));
 		b.append("("); //$NON-NLS-1$
@@ -1482,7 +1498,7 @@ public class BPELUtil {
 			b.append(String.valueOf(n.getPosition()));
 			b.append("]"); //$NON-NLS-1$
 		} else {
-			if (feature != null && feature.isMany()) b.append("{***}"); //$NON-NLS-1$ 
+			if (feature != null && feature.isMany()) b.append("{***}"); //$NON-NLS-1$
 		}
 		b.append(": "); //$NON-NLS-1$
 		b.append(debugObject(n.getOldValue()));
@@ -1490,7 +1506,7 @@ public class BPELUtil {
 		b.append(debugObject(n.getNewValue()));
 		b.append(")"); //$NON-NLS-1$
 		return b.toString();
-		
+
 	}
 	protected static String shortClassName(Class clazz) {
 		StringBuffer b = new StringBuffer(clazz.getName());
@@ -1510,6 +1526,7 @@ public class BPELUtil {
 		layout.marginWidth = margin;
 		result.setLayout(layout);
 		result.addPaintListener(new PaintListener() {
+			@Override
 			public void paintControl(PaintEvent e) {
 				org.eclipse.swt.graphics.Rectangle bounds = result.getBounds();
 				bounds.x = margin-1;
@@ -1536,8 +1553,8 @@ public class BPELUtil {
 			}
 		}
 	}
-	
-	
+
+
 	static void addVisibleVariables (Map<String,Variable> targetMap, EObject target, Variable refVariable ) {
 		if (target == null) {
 			return;
@@ -1545,14 +1562,14 @@ public class BPELUtil {
 		if (target instanceof Resource) {
 			return;
 		}
-		
+
 		if (target instanceof Process) {
 			addVariablesToMap(targetMap, ((Process)target).getVariables(), refVariable );
 			return ;
-		} 
+		}
 		// recursively add less local variables first
 		addVisibleVariables(targetMap, target.eContainer(), refVariable );
-		
+
 		if (target instanceof Scope) {
 			addVariablesToMap(targetMap, ((Scope)target).getVariables(), refVariable );
 		}
@@ -1568,7 +1585,7 @@ public class BPELUtil {
 				targetMap.put(v.getName(), v);
 			}
 		}
-		
+
 		if (target instanceof ForEach) {
 			Variable v = ((ForEach)target).getCounterName();
 			if (v != null && v.getName() != null) {
@@ -1596,11 +1613,10 @@ public class BPELUtil {
 			}
 		}
 	}
-	
+
 	private static void addCorrelationSetsToMap(Map<String, CorrelationSet> targetMap, CorrelationSets csets) {
 		if (csets == null) return;
-		for (Iterator<CorrelationSet> it = csets.getChildren().iterator(); it.hasNext(); ) {
-			CorrelationSet c = it.next();
+		for( CorrelationSet c : csets.getChildren() ) {
 			if (c.getName() != null) targetMap.put(c.getName(), c);
 		}
 	}
@@ -1617,41 +1633,42 @@ public class BPELUtil {
 			}
 		}
 	}
-	
+
 	/**
 	 * Look up the variables visible to a certain context activity (or the whole process).
 	 * Variables in BPEL follow lexical scoping rules (resolved OASIS issue 101).
-	 * 
+	 *
 	 * The returned variables are in no particular order.
 	 */
 	public static Variable[] getVisibleVariables (EObject target) {
-		
+
 		Map<String,Variable> name2Variable = new HashMap<String,Variable>();
-		
+
 		addVisibleVariables(name2Variable, target,  target instanceof Variable ? (Variable) target: null );
-		
+
 		if (name2Variable.isEmpty()) {
 			return EMPTY_VARIABLE_ARRAY;
 		}
-		
-		Collection<Variable> variables =  name2Variable.values();		
-		if (variables.size() == 1) {			
+
+		Collection<Variable> variables =  name2Variable.values();
+		if (variables.size() == 1) {
 			return variables.toArray(EMPTY_VARIABLE_ARRAY);
-		}		
+		}
 		ArrayList<Variable> list = new ArrayList<Variable>( variables );
 		Collections.sort(list, new Comparator<Variable>() {
+			@Override
 			public int compare(Variable o1, Variable o2) {
 				return o1.getName().compareTo(o2.getName());
-			}				
-		});		
-		return list.toArray(EMPTY_VARIABLE_ARRAY);		
+			}
+		});
+		return list.toArray(EMPTY_VARIABLE_ARRAY);
 	}
-	
+
 	/**
 	 * Look up the PartnerLinks visible to a certain context activity (or the whole process).
 	 * When local PartnerLinks are added to the spec, they will follow lexical scoping rules
 	 * just like variables.
-	 * 
+	 *
 	 * The returned PartnerLinks are in no particular order.
 	 */
 	public static PartnerLink[] getVisiblePartnerLinks(EObject target) {
@@ -1662,12 +1679,12 @@ public class BPELUtil {
 		name2PartnerLink.values().toArray(result);
 		return result;
 	}
-	
+
 	/**
 	 * Look up the PartnerLinks visible to a certain context activity (or the whole process).
 	 * When local PartnerLinks are added to the spec, they will follow lexical scoping rules
 	 * just like variables.
-	 * 
+	 *
 	 * The returned PartnerLinks are in no particular order.
 	 */
 	public static CorrelationSet[] getVisibleCorrelationSets(EObject target) {
@@ -1678,11 +1695,11 @@ public class BPELUtil {
 		name2CorrelationSet.values().toArray(result);
 		return result;
 	}
-	
+
 	/**
 	 * If the given message is used by an operation in the same definition,
-	 * returns the Operation that uses the given message.  
-	 * Otherwise, returns null. 
+	 * returns the Operation that uses the given message.
+	 * Otherwise, returns null.
 	 */
 	public static Operation getOperationFromMessage(Message message) {
 		if (message == null) return null;
@@ -1722,7 +1739,7 @@ public class BPELUtil {
 		}
 		return null;
 	}
-	
+
 	public static void openEditor(EObject modelObject, BPELEditor editor) {
 		try {
 			// https://issues.jboss.org/browse/JBIDE-8044
@@ -1733,7 +1750,7 @@ public class BPELUtil {
 						Messages.BPELUtil_NoEditorForNullObject);
 				return;
 			}
-			
+
 			EObject resolvedObject = null;
 			if (modelObject.eResource()==null) {
 				// https://jira.jboss.org/browse/JBIDE-7351
@@ -1744,7 +1761,7 @@ public class BPELUtil {
 			}
 			else
 				resolvedObject = modelObject;
-			
+
 			if (resolvedObject==null) {
 				// https://issues.jboss.org/browse/JBIDE-8601
 				MessageDialog.openError(editor.getEditorSite().getShell(),
@@ -1754,7 +1771,7 @@ public class BPELUtil {
 				return;
 			}
 			IFile file = BPELUtil.getFileFromURI(resolvedObject.eResource().getURI());
-			IDE.openEditor(editor.getSite().getWorkbenchWindow().getActivePage(), file);	
+			IDE.openEditor(editor.getSite().getWorkbenchWindow().getActivePage(), file);
 		} catch (PartInitException ex) {
 			BPELUIPlugin.log(ex, IStatus.WARNING);
 		}
@@ -1767,33 +1784,33 @@ public class BPELUtil {
 		return getFileFromURI(process.eResource().getURI());
 	}
 
-	
-	
+
+
 	public static String lookupOrCreateNamespacePrefix ( EObject context, String namespace, String prefix, Shell shell ) {
-		
+
 		String nsPrefix = BPELUtils.getNamespacePrefix(context, namespace);
 		if (nsPrefix != null && nsPrefix.length() > 0) {
 			return nsPrefix;
 		}
-		
+
 		NamespaceMappingDialog dialog = new NamespaceMappingDialog (shell, context);
-		dialog.setNamespace(namespace);		
+		dialog.setNamespace(namespace);
 		if (prefix != null) {
 			dialog.setPrefix(prefix);
 		}
-		
+
 		if (dialog.open() == Window.CANCEL) {
 			return nsPrefix;
 		}
-		
+
 		nsPrefix = dialog.getPrefix();
 		BPELUtils.setNamespacePrefix(context, namespace, nsPrefix);
-		return nsPrefix;				
+		return nsPrefix;
 	}
-		
-	
+
+
 	/**
-	 * Traverses the root object and returns all objects under it that are of the same 
+	 * Traverses the root object and returns all objects under it that are of the same
 	 * class or subclasses of "target".
 	 */
 	public static List<EObject> getAllEObjectsOfType(EObject root, EClass eClass) {
@@ -1806,5 +1823,62 @@ public class BPELUtil {
 			}
 		}
 		return allElems;
-	}	
+	}
+
+
+	public static boolean isBPELProject(IProject project){
+		if (project == null) {
+			return false;
+		}
+		if (ModuleCoreNature.isFlexibleProject(project)) {
+			IFacetedProject fproj = null;
+			try {
+			    fproj = ProjectFacetsManager.create(project);
+			} catch (CoreException e) {
+				return false;
+			}
+			if (fproj.hasProjectFacet(getBPELFacetVersion())) {
+				return true;
+			}
+			// added for backward compatibility with jbt.bpel.facet.core:
+			if (fproj.hasProjectFacet(getJBT_BPELFacetVersion())) {
+				return true;
+			}
+		}
+		return false;
+
+	}
+
+	public static IProjectFacetVersion getBPELFacetVersion() {
+		IProjectFacet bpelFacet = ProjectFacetsManager.getProjectFacet(IBPELModuleFacetConstants.BPEL20_PROJECT_FACET);
+		IProjectFacetVersion bpelFacetVersion = bpelFacet.getVersion(IBPELModuleFacetConstants.BPEL20_MODULE_VERSION);
+		return bpelFacetVersion;
+	}
+
+	public static IProjectFacetVersion getJBT_BPELFacetVersion() {
+		IProjectFacet bpelFacet = ProjectFacetsManager.getProjectFacet(IBPELModuleFacetConstants.JBT_BPEL20_PROJECT_FACET);
+		IProjectFacetVersion bpelFacetVersion = bpelFacet.getVersion(IBPELModuleFacetConstants.BPEL20_MODULE_VERSION);
+		return bpelFacetVersion;
+	}
+
+
+	public static org.eclipse.core.resources.IContainer getBPELContentFolder(IProject project) {
+		org.eclipse.core.resources.IContainer bpelContent = null;
+		if (BPELUtil.isBPELProject(project)) {
+			IPath rootPath = getWebContentRootPath(project);
+			if (rootPath != null && !rootPath.isEmpty()) {
+				bpelContent = project.getFolder(rootPath);
+			}
+		}
+		return bpelContent;
+	}
+
+	public static IPath getWebContentRootPath(IProject project) {
+		IPath path = null;
+		IVirtualComponent component = ComponentCore.createComponent(project);
+		if (component != null && component.exists()) {
+			path = component.getRootFolder().getProjectRelativePath();
+		}
+		return path;
+	}
 }

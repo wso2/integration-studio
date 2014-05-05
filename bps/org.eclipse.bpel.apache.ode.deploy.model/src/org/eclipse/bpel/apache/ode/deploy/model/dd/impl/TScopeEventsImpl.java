@@ -68,7 +68,7 @@ public class TScopeEventsImpl extends TEnableEventListImpl implements TScopeEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return ddPackage.Literals.TSCOPE_EVENTS;
 	}
@@ -99,7 +99,7 @@ public class TScopeEventsImpl extends TEnableEventListImpl implements TScopeEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ddPackage.TSCOPE_EVENTS__NAME:
@@ -113,7 +113,7 @@ public class TScopeEventsImpl extends TEnableEventListImpl implements TScopeEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ddPackage.TSCOPE_EVENTS__NAME:
@@ -128,7 +128,7 @@ public class TScopeEventsImpl extends TEnableEventListImpl implements TScopeEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ddPackage.TSCOPE_EVENTS__NAME:
@@ -143,7 +143,7 @@ public class TScopeEventsImpl extends TEnableEventListImpl implements TScopeEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ddPackage.TSCOPE_EVENTS__NAME:
@@ -157,7 +157,7 @@ public class TScopeEventsImpl extends TEnableEventListImpl implements TScopeEven
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

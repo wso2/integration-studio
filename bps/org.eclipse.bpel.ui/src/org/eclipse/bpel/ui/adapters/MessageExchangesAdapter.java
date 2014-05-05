@@ -1,6 +1,6 @@
 /**
  * <copyright>
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class MessageExchangesAdapter extends ContainerAdapter implements EditPar
 	
 	/* IContainer delegate */
 
-	
+	@Override
 	public IContainer createContainerDelegate() {
 		return new ReferenceContainer(BPELPackage.eINSTANCE.getMessageExchanges_Children());
 	}
@@ -84,7 +84,7 @@ public class MessageExchangesAdapter extends ContainerAdapter implements EditPar
 	
 	public EditPart createOutlineEditPart(EditPart context, final Object model) {
 		EditPart result = new OutlineTreeEditPart(){
-			
+			@Override
 			protected List getModelChildren() {
 				MessageExchanges messageExchanges = (MessageExchanges) model;
 				List list =  messageExchanges.getChildren(); 

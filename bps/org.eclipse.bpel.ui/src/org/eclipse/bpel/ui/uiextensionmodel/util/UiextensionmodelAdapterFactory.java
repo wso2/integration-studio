@@ -1,6 +1,6 @@
 /**
  * <copyright>
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,7 +60,7 @@ public class UiextensionmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -79,59 +79,59 @@ public class UiextensionmodelAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected UiextensionmodelSwitch<Adapter> modelSwitch =
 		new UiextensionmodelSwitch<Adapter>() {
-			
+			@Override
 			public Adapter caseActivityExtension(ActivityExtension object) {
 				return createActivityExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter caseCaseExtension(CaseExtension object) {
 				return createCaseExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter caseCopyExtension(CopyExtension object) {
 				return createCopyExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter caseEndNode(EndNode object) {
 				return createEndNodeAdapter();
 			}
-			
+			@Override
 			public Adapter caseLinkExtension(LinkExtension object) {
 				return createLinkExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter caseOnAlarmExtension(OnAlarmExtension object) {
 				return createOnAlarmExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter caseOnEventExtension(OnEventExtension object) {
 				return createOnEventExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter caseOnMessageExtension(OnMessageExtension object) {
 				return createOnMessageExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter casePartnerLinkExtension(PartnerLinkExtension object) {
 				return createPartnerLinkExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter caseProcessExtension(ProcessExtension object) {
 				return createProcessExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter caseReferencePartnerLinks(ReferencePartnerLinks object) {
 				return createReferencePartnerLinksAdapter();
 			}
-			
+			@Override
 			public Adapter caseStartNode(StartNode object) {
 				return createStartNodeAdapter();
 			}
-			
+			@Override
 			public Adapter caseVariableExtension(VariableExtension object) {
 				return createVariableExtensionAdapter();
 			}
-			
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -145,7 +145,7 @@ public class UiextensionmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	
+	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject)target);
 	}

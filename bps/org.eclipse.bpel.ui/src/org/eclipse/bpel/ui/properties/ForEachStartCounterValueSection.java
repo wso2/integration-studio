@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,12 +27,12 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class ForEachStartCounterValueSection extends ExpressionSection {
 
-	
+	@Override
 	protected String getExpressionType() { 
 		return IEditorConstants.ET_UNSIGNED_INT; 
 	}	
 	
-	
+	@Override
 	protected Composite createNoEditorWidgets(Composite composite) {
 		
 		return super.createNoEditorWidgetsCreateComposite(composite,			
@@ -42,7 +42,7 @@ public class ForEachStartCounterValueSection extends ExpressionSection {
 				Messages.ForEachCounterValuesSection_Create_a_New_Expression_3);
 	}
 	
-	
+	@Override
 	protected EStructuralFeature getStructuralFeature(EObject object) {
 		if (object instanceof ForEach) {
 			return BPELPackage.eINSTANCE.getForEach_StartCounterValue();
@@ -50,7 +50,7 @@ public class ForEachStartCounterValueSection extends ExpressionSection {
 		return super.getStructuralFeature(object);
 	}
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		this.title = Messages.ForEachStartCounterValuesSection_TITLE_3;
 		super.createClient(parent);

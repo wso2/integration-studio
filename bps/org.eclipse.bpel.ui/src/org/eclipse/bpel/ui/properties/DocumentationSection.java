@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,13 +85,13 @@ public class DocumentationSection extends BPELPropertySection {
 	 * 
 	 */
 	
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object */
 			new MultiObjectAdapter() {
 				
-				
+				@Override
 				public void notify (Notification n) {					
 					if (markersHaveChanged(n)) {
 						updateMarkers();
@@ -131,7 +131,7 @@ public class DocumentationSection extends BPELPropertySection {
 	
 	
 	@SuppressWarnings("nls")
-	
+	@Override
 	protected void basicSetInput (EObject input) {
 		
 		saveUserContextToInput();
@@ -276,10 +276,10 @@ public class DocumentationSection extends BPELPropertySection {
 
 	
 
-	
+	@Override
 	protected EditController createEditController() {
 		 return new EditController(getCommandFramework()) {
-				
+				@Override
 				public Command createApplyCommand() {
 					CompoundCommand cmd = attachDocumentationCommand();
 					if (cmd != null) {					
@@ -312,12 +312,12 @@ public class DocumentationSection extends BPELPropertySection {
 		fLangEditHelper = createEditController() ;		
 		fLangEditHelper.setFeature( BPELPackage.eINSTANCE.getDocumentation_Lang() );		
 		fLangEditHelper.setViewIValue( new DelegateIValue( new ViewerIValue ( fLangViewer )) {
-			
+			@Override
 			public Object get() {				
 				Locale locale = (Locale) fDelegate.get() ;
 				return locale.getLanguage();
 			}
-			
+			@Override
 			public void set(Object object) {
 				fDelegate.set( BPELUtils.lookupLocaleFor( (String) object ));				
 			}			
@@ -328,7 +328,7 @@ public class DocumentationSection extends BPELPropertySection {
 	
 	
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		Composite composite = createFlatFormComposite(parent);
 		
@@ -339,20 +339,19 @@ public class DocumentationSection extends BPELPropertySection {
 		fContext = new FocusContext( fDescription, fSourceText, fLangCombo );
 		
 		createChangeTrackers();
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(
-			composite, IHelpContextIds.PROPERTY_PAGE_NAME);
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(		composite, IHelpContextIds.PROPERTY_PAGE_DOCUMENTATION);
 	}
 
 		
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace() {		
 		return true;
 	}
 
-	
+	@Override
 	protected void updateMarkers () {				
 		fSourceLabel.clear();		
 		for(IMarker m : getMarkers(getInput())) {
@@ -364,7 +363,7 @@ public class DocumentationSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return fContext.get();
 	}
@@ -373,7 +372,7 @@ public class DocumentationSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext (Object userContext) {
 		fContext.set( userContext );
 	}
@@ -385,7 +384,7 @@ public class DocumentationSection extends BPELPropertySection {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#gotoMarker(org.eclipse.core.resources.IMarker)
 	 */
 	
-	
+	@Override
 	public void gotoMarker (IMarker marker) {
 		// fDescription.setFocus() ;		
 	}
@@ -395,7 +394,7 @@ public class DocumentationSection extends BPELPropertySection {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#isValidMarker(org.eclipse.core.resources.IMarker)
 	 */
 	
-	
+	@Override
 	public boolean isValidMarker (IMarker marker) {
 		return false;
 	}	

@@ -57,7 +57,7 @@ public class ddAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -76,59 +76,59 @@ public class ddAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected ddSwitch<Adapter> modelSwitch =
 		new ddSwitch<Adapter>() {
-			
+			@Override
 			public Adapter caseBindingType(BindingType object) {
 				return createBindingTypeAdapter();
 			}
-			
+			@Override
 			public Adapter caseDocumentRoot(DocumentRoot object) {
 				return createDocumentRootAdapter();
 			}
-			
+			@Override
 			public Adapter caseMexInterceptorsType(MexInterceptorsType object) {
 				return createMexInterceptorsTypeAdapter();
 			}
-			
+			@Override
 			public Adapter caseProcessType(ProcessType object) {
 				return createProcessTypeAdapter();
 			}
-			
+			@Override
 			public Adapter casePropertyType(PropertyType object) {
 				return createPropertyTypeAdapter();
 			}
-			
+			@Override
 			public Adapter caseTDeployment(TDeployment object) {
 				return createTDeploymentAdapter();
 			}
-			
+			@Override
 			public Adapter caseTEnableEventList(TEnableEventList object) {
 				return createTEnableEventListAdapter();
 			}
-			
+			@Override
 			public Adapter caseTInvoke(TInvoke object) {
 				return createTInvokeAdapter();
 			}
-			
+			@Override
 			public Adapter caseTMexInterceptor(TMexInterceptor object) {
 				return createTMexInterceptorAdapter();
 			}
-			
+			@Override
 			public Adapter caseTProcessEvents(TProcessEvents object) {
 				return createTProcessEventsAdapter();
 			}
-			
+			@Override
 			public Adapter caseTProvide(TProvide object) {
 				return createTProvideAdapter();
 			}
-			
+			@Override
 			public Adapter caseTScopeEvents(TScopeEvents object) {
 				return createTScopeEventsAdapter();
 			}
-			
+			@Override
 			public Adapter caseTService(TService object) {
 				return createTServiceAdapter();
 			}
-			
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -142,7 +142,7 @@ public class ddAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	
+	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject)target);
 	}

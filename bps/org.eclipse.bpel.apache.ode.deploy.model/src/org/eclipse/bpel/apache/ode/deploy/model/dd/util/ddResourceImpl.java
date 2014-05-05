@@ -35,7 +35,7 @@ public class ddResourceImpl extends XMLResourceImpl {
 		super(uri);
 	}
 	
-	
+	@Override
 	protected XMLHelper createXMLHelper() {
 		return new DDXMLHelperImpl();
 	}

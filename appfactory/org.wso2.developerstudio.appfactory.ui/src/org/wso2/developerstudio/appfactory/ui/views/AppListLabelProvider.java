@@ -42,7 +42,7 @@ public class AppListLabelProvider extends StyledCellLabelProvider {
 			} else if (app.getLableState() == 2) {
 				text.append(" (Opened)", StyledString.COUNTER_STYLER);
 			} else {
-				text.append(" (Closed)", StyledString.DECORATIONS_STYLER);
+				text.append("", StyledString.DECORATIONS_STYLER);
 			}
 		} else if (element instanceof AppVersionGroup) {
 			AppVersionGroup group = (AppVersionGroup) element;
@@ -66,9 +66,9 @@ public class AppListLabelProvider extends StyledCellLabelProvider {
 			} else {
 
 				if (version.isAForkedRepo()) {
-					text.append("forked -Closed", StyledString.DECORATIONS_STYLER);
+					text.append("forked", StyledString.DECORATIONS_STYLER);
 				} else {
-					text.append("main -Closed", StyledString.DECORATIONS_STYLER);
+					text.append("main", StyledString.DECORATIONS_STYLER);
 				}
 
 			}

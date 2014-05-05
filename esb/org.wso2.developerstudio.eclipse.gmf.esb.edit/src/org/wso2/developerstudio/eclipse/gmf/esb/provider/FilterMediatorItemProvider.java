@@ -24,8 +24,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator} object.
@@ -66,7 +66,7 @@ public class FilterMediatorItemProvider
 		super.getPropertyDescriptors(object);
 
 		addConditionTypePropertyDescriptor(object);
-		if (filterMediator.getConditionType().equals(FilterConditionType.SOURCE_AND_REGEX)) {
+		if (filterMediator.getConditionType().equals(FilterMediatorConditionType.SOURCE_REGEX)) {
 			addSourcePropertyDescriptor(object);
 			addRegexPropertyDescriptor(object);
 		} else {

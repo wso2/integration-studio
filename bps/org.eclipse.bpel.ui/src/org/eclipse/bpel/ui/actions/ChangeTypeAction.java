@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class ChangeTypeAction extends SelectionAction {
 		return "changeType." + factory.getUniqueIdString(); //$NON-NLS-1$
 	}
 	
-	
+	@Override
 	protected boolean calculateEnabled() {
 		// TODO: there should be a better way that doesn't do as much work.
 		Command cmd = createReplaceInListCommand(getSelectedObjects());
@@ -100,7 +100,7 @@ public class ChangeTypeAction extends SelectionAction {
 		return editPart.getCommand(request);		
 	}
 
-	
+	@Override
 	public void run() {
 		execute(createReplaceInListCommand(getSelectedObjects()));
 	}

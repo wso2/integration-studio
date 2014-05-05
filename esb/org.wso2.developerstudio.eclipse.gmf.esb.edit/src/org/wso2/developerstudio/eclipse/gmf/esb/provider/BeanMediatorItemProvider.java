@@ -21,9 +21,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -33,8 +31,8 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediatorAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
@@ -72,16 +70,34 @@ public class BeanMediatorItemProvider
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		BeanMediator beanMediator=(BeanMediator)object;
+		
+		super.getPropertyDescriptors(object);
+		
 		if (itemPropertyDescriptors != null) {
 			itemPropertyDescriptors.clear();
 		}
-		super.getPropertyDescriptors(object);
-
-		addClassPropertyDescriptor(object);
+		
 		addActionPropertyDescriptor(object);
 		addVarPropertyDescriptor(object);
-		addPropertyPropertyDescriptor(object);
-		addValueTypePropertyDescriptor(object);
+		addDescriptionPropertyDescriptor(object);
+		
+		switch(beanMediator.getAction()){
+		case CREATE: 
+			addClassPropertyDescriptor(object);
+			break;
+		case SET_PROPERTY:
+			addPropertyPropertyDescriptor(object);
+			addValueTypePropertyDescriptor(object);
+			break;
+		case GET_PROPERTY:
+			addPropertyPropertyDescriptor(object);
+			addTargetTypePropertyDescriptor(object);
+			break;
+		case REMOVE:
+			break;
+		}
+		
+		if(beanMediator.getAction().equals(BeanMediatorAction.SET_PROPERTY)){
 		switch (beanMediator.getValueType()) {
 		case LITERAL:
 			addValueLiteralPropertyDescriptor(object);
@@ -90,7 +106,8 @@ public class BeanMediatorItemProvider
 			addValueExpressionPropertyDescriptor(object);
 			break;
 		}
-		addTargetTypePropertyDescriptor(object);
+		}
+		else if(beanMediator.getAction().equals(BeanMediatorAction.GET_PROPERTY)){
 		switch (beanMediator.getTargetType()) {
 		case LITERAL:
 			addTargetLiteralPropertyDescriptor(object);
@@ -99,7 +116,7 @@ public class BeanMediatorItemProvider
 			addTargetExpressionPropertyDescriptor(object);
 			break;
 		}	
-		addDescriptionPropertyDescriptor(object);
+		}
 			
 		return itemPropertyDescriptors;
 	}

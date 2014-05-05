@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.bpel.ui.editparts;
 
 import java.util.List;
@@ -46,12 +56,12 @@ public abstract class BPELTrayCategoryEntryEditPart extends TrayCategoryEntryEdi
 	// the editpart parent will be null
 	private RootEditPart holdRoot;
 
-	
+	@Override
 	protected AccessibleEditPart createAccessible() {
 		return new BPELTrayAccessibleEditPart(this);
 	}
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		// handles deletions
@@ -63,11 +73,11 @@ public abstract class BPELTrayCategoryEntryEditPart extends TrayCategoryEntryEdi
 	 * @see org.eclipse.bpel.common.ui.tray.TrayCategoryEntryEditPart#createEditPartMarkerDecorator()
 	 */
 	
-	
+	@Override
 	protected EditPartMarkerDecorator createEditPartMarkerDecorator() {
 
 		return new TrayMarkerDecorator((EObject)getModel(), new ToolbarLayout()) {
-			
+			@Override
 			protected IMarker[] getMarkers () {
 				
 				IMarkerHolder holder = BPELUtil.adapt(modelObject, IMarkerHolder.class);
@@ -127,7 +137,7 @@ public abstract class BPELTrayCategoryEntryEditPart extends TrayCategoryEntryEdi
 		return mouseMotionListener;
 	}
 	
-	
+	@Override
 	protected IFigure createFigure() {
 		IFigure fig =  super.createFigure();
 		fig.addMouseMotionListener(getMouseMotionListener());
@@ -139,7 +149,7 @@ public abstract class BPELTrayCategoryEntryEditPart extends TrayCategoryEntryEdi
 	 * See comments in org.eclipse.bpel.ui.editparts.BPELTrayCategoryEditPart.selectAnotherEntry()
 	 */
 	
-	
+	@Override
 	public void removeNotify() {
 		// we only do the following hack if we are dealing with scoped variables
 		

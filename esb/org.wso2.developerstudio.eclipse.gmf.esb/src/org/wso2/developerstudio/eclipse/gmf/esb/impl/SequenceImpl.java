@@ -7,20 +7,18 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType;
-import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction;
-import org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType;
+import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Mediator;
@@ -29,7 +27,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceOutputConnector;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+import org.wso2.developerstudio.eclipse.platform.core.utils.CSProviderConstants;
+import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProviderUtils;
 
 /**
  * <!-- begin-user-doc -->
@@ -209,6 +208,7 @@ public class SequenceImpl extends MediatorImpl implements Sequence {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@SuppressWarnings("unchecked")
 	protected SequenceImpl() {
 		super();		
 		NamespacedProperty dynamicKey = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
@@ -218,6 +218,10 @@ public class SequenceImpl extends MediatorImpl implements Sequence {
 		setDynamicReferenceKey(dynamicKey);
 		
 		RegistryKeyProperty staticKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		DeveloperStudioProviderUtils.addFilter(
+				(Map<String, List<String>>) staticKey.getFilters(),
+				CSProviderConstants.FILTER_MEDIA_TYPE,
+				ESBMediaTypeConstants.MEDIA_TYPE_SEQUENCE);
 		staticKey.setKeyName("Sequence Key");
 		staticKey.setPrettyName("Sequence Key");
 		staticKey.setKeyValue("");

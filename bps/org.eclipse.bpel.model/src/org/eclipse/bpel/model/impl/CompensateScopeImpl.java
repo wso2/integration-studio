@@ -66,7 +66,7 @@ public class CompensateScopeImpl extends ActivityImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.COMPENSATE_SCOPE;
 	}
@@ -121,7 +121,7 @@ public class CompensateScopeImpl extends ActivityImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.COMPENSATE_SCOPE__TARGET:
@@ -137,7 +137,7 @@ public class CompensateScopeImpl extends ActivityImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.COMPENSATE_SCOPE__TARGET:
@@ -152,7 +152,7 @@ public class CompensateScopeImpl extends ActivityImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.COMPENSATE_SCOPE__TARGET:
@@ -167,7 +167,7 @@ public class CompensateScopeImpl extends ActivityImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.COMPENSATE_SCOPE__TARGET:

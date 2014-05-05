@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.wso2.developerstudio.eclipse.esb.core.utils.ESBMediaTypeConstants;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler;
+import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediatorAdviceOutputConnector;
@@ -61,6 +63,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getAdviceOutputConnector <em>Advice Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getObligationsOutputConnector <em>Obligations Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorImpl#getCallbackHandler <em>Callback Handler</em>}</li>
  * </ul>
  * </p>
  *
@@ -195,7 +198,7 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ENTITLEMENT_CLIENT_TYPE_EDEFAULT = null;
+	protected static final EntitlementClientType ENTITLEMENT_CLIENT_TYPE_EDEFAULT = EntitlementClientType.BASIC_AUTH;
 
 	/**
 	 * The cached value of the '{@link #getEntitlementClientType() <em>Entitlement Client Type</em>}' attribute.
@@ -205,7 +208,7 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 	 * @generated
 	 * @ordered
 	 */
-	protected String entitlementClientType = ENTITLEMENT_CLIENT_TYPE_EDEFAULT;
+	protected EntitlementClientType entitlementClientType = ENTITLEMENT_CLIENT_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getOnRejectSequenceType() <em>On Reject Sequence Type</em>}' attribute.
@@ -398,6 +401,26 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 	protected EntitlementMediatorObligationsOutputConnector obligationsOutputConnector;
 
 	/**
+	 * The default value of the '{@link #getCallbackHandler() <em>Callback Handler</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCallbackHandler()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EntitlementCallbackHandler CALLBACK_HANDLER_EDEFAULT = EntitlementCallbackHandler.UT;
+
+	/**
+	 * The cached value of the '{@link #getCallbackHandler() <em>Callback Handler</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCallbackHandler()
+	 * @generated
+	 * @ordered
+	 */
+	protected EntitlementCallbackHandler callbackHandler = CALLBACK_HANDLER_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
@@ -576,7 +599,7 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getEntitlementClientType() {
+	public EntitlementClientType getEntitlementClientType() {
 		return entitlementClientType;
 	}
 
@@ -585,9 +608,9 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEntitlementClientType(String newEntitlementClientType) {
-		String oldEntitlementClientType = entitlementClientType;
-		entitlementClientType = newEntitlementClientType;
+	public void setEntitlementClientType(EntitlementClientType newEntitlementClientType) {
+		EntitlementClientType oldEntitlementClientType = entitlementClientType;
+		entitlementClientType = newEntitlementClientType == null ? ENTITLEMENT_CLIENT_TYPE_EDEFAULT : newEntitlementClientType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE, oldEntitlementClientType, entitlementClientType));
 	}
@@ -1154,6 +1177,27 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EntitlementCallbackHandler getCallbackHandler() {
+		return callbackHandler;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCallbackHandler(EntitlementCallbackHandler newCallbackHandler) {
+		EntitlementCallbackHandler oldCallbackHandler = callbackHandler;
+		callbackHandler = newCallbackHandler == null ? CALLBACK_HANDLER_EDEFAULT : newCallbackHandler;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER, oldCallbackHandler, callbackHandler));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -1237,6 +1281,8 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 				return getAdviceOutputConnector();
 			case EsbPackage.ENTITLEMENT_MEDIATOR__OBLIGATIONS_OUTPUT_CONNECTOR:
 				return getObligationsOutputConnector();
+			case EsbPackage.ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER:
+				return getCallbackHandler();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1269,7 +1315,7 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 				setThriftPort((String)newValue);
 				return;
 			case EsbPackage.ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE:
-				setEntitlementClientType((String)newValue);
+				setEntitlementClientType((EntitlementClientType)newValue);
 				return;
 			case EsbPackage.ENTITLEMENT_MEDIATOR__ON_REJECT_SEQUENCE_TYPE:
 				setOnRejectSequenceType((EntitlementSequenceType)newValue);
@@ -1315,6 +1361,9 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 				return;
 			case EsbPackage.ENTITLEMENT_MEDIATOR__OBLIGATIONS_OUTPUT_CONNECTOR:
 				setObligationsOutputConnector((EntitlementMediatorObligationsOutputConnector)newValue);
+				return;
+			case EsbPackage.ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER:
+				setCallbackHandler((EntitlementCallbackHandler)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1395,6 +1444,9 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 			case EsbPackage.ENTITLEMENT_MEDIATOR__OBLIGATIONS_OUTPUT_CONNECTOR:
 				setObligationsOutputConnector((EntitlementMediatorObligationsOutputConnector)null);
 				return;
+			case EsbPackage.ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER:
+				setCallbackHandler(CALLBACK_HANDLER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1421,7 +1473,7 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 			case EsbPackage.ENTITLEMENT_MEDIATOR__THRIFT_PORT:
 				return THRIFT_PORT_EDEFAULT == null ? thriftPort != null : !THRIFT_PORT_EDEFAULT.equals(thriftPort);
 			case EsbPackage.ENTITLEMENT_MEDIATOR__ENTITLEMENT_CLIENT_TYPE:
-				return ENTITLEMENT_CLIENT_TYPE_EDEFAULT == null ? entitlementClientType != null : !ENTITLEMENT_CLIENT_TYPE_EDEFAULT.equals(entitlementClientType);
+				return entitlementClientType != ENTITLEMENT_CLIENT_TYPE_EDEFAULT;
 			case EsbPackage.ENTITLEMENT_MEDIATOR__ON_REJECT_SEQUENCE_TYPE:
 				return onRejectSequenceType != ON_REJECT_SEQUENCE_TYPE_EDEFAULT;
 			case EsbPackage.ENTITLEMENT_MEDIATOR__ON_ACCEPT_SEQUENCE_TYPE:
@@ -1452,6 +1504,8 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 				return adviceOutputConnector != null;
 			case EsbPackage.ENTITLEMENT_MEDIATOR__OBLIGATIONS_OUTPUT_CONNECTOR:
 				return obligationsOutputConnector != null;
+			case EsbPackage.ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER:
+				return callbackHandler != CALLBACK_HANDLER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1489,6 +1543,8 @@ public class EntitlementMediatorImpl extends MediatorImpl implements Entitlement
 		result.append(adviceSequenceType);
 		result.append(", obligationsSequenceType: ");
 		result.append(obligationsSequenceType);
+		result.append(", callbackHandler: ");
+		result.append(callbackHandler);
 		result.append(')');
 		return result.toString();
 	}

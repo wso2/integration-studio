@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,13 +26,13 @@ import org.eclipse.swt.widgets.Composite;
 public class CaseConditionSection extends ExpressionSection {
 	
 
-	
+	@Override
 	protected String getExpressionType() { 
 		return IEditorConstants.ET_BOOLEAN ; 
 	}
 	
 	
-	
+	@Override
 	protected Composite createNoEditorWidgets(Composite composite) {
 		
 		return createNoEditorWidgetsCreateComposite(composite,			
@@ -41,7 +41,7 @@ public class CaseConditionSection extends ExpressionSection {
 				Messages.ElseIfConditionSection_Create_a_New_Condition_2);
 	}
 	
-	
+	@Override
 	protected EStructuralFeature getStructuralFeature (EObject object) {
 		
 		if (object instanceof If) {

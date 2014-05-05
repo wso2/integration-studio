@@ -16,15 +16,16 @@
 package org.wso2.datamapper.engine.core;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.apache.avro.generic.GenericRecord;
-import org.apache.axiom.om.OMElement;
 import org.json.JSONException;
 import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
 
+
 public class MappingHandler {
 	
-	public static GenericRecord doMap(OMElement inputMsg, MappingResourceLoader resourceModel,InputDataReaderAdapter inputReader)
+	public static GenericRecord doMap(InputStream inputMsg, MappingResourceLoader resourceModel,InputDataReaderAdapter inputReader)
 			throws IOException, IllegalAccessException, InstantiationException, JSONException {
 
 		//XmlInputReader inputReader = new XmlInputReader(); OR

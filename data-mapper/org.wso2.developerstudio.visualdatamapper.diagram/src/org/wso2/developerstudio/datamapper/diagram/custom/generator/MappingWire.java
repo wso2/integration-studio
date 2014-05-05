@@ -25,11 +25,15 @@ public class MappingWire {
 	private Map<Integer, String> outputs;
 	//private String name;
 	private OperatorName operatorName;
+	private IOperator operator;
+	private Map<Integer, String> operatorNames;
 
 	public MappingWire(OperatorName operatorName) {
 		this.operatorName = operatorName;
 		inputs = new HashMap<Integer, String>();
 		outputs = new HashMap<Integer, String>();
+		operatorNames = new HashMap<Integer, String>();
+		
 	}
 
 	/**
@@ -51,6 +55,24 @@ public class MappingWire {
 	 */
 	public OperatorName getOperatorName() {
 		return operatorName;
+	}
+
+	public Map<Integer, String> getOperatorNames() {
+		return operatorNames;
+	}
+
+	/**
+	 * @return the operator
+	 */
+	public IOperator getOperator() {
+		return operator;
+	}
+
+	/**
+	 * @param operator the operator to set
+	 */
+	public void setOperator(IOperator operator) {
+		this.operator = operator;
 	}
 
 }

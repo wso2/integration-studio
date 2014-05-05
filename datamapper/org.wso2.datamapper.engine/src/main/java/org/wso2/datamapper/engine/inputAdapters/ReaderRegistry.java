@@ -15,62 +15,62 @@
  */
 
 
-package org.wso2.datamapper.engine.core.writer;
+package org.wso2.datamapper.engine.inputAdapters;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.avro.generic.GenericRecord;
-import org.apache.avro.io.DatumWriter;
-
 /**
- * A registry of writer.
+ * A registry of readers.
  */
-public class WriterRegistry {
+public class ReaderRegistry {
+	/*
+	 * This class should re-write with Apache Avro aware readers (stranded DatumReader )   
+	 */
 	
 	/**
 	 * Singleton instance.
 	 */
-	private static WriterRegistry singleton;
+	private static ReaderRegistry singleton;
 	
 	
 	/**
-	 * writer map.
+	 * reader map.
 	 */
-	private Map<String, Class<? extends DatumWriter<GenericRecord>>> writerMap;
+	private Map<String, Class<?>> readerMap;
 	
 	/**
 	 * 
 	 */
-	private WriterRegistry() {
-		writerMap = new HashMap<String, Class<? extends DatumWriter<GenericRecord>>>();
+	private ReaderRegistry() {
+		readerMap = new HashMap<String, Class<?>>();
 		
 		// FIXME : use java service provider interface rather than hard-coding class names/ importing classes
-		writerMap.put("text/csv",CSVDatumWriter.class);
-		writerMap.put("application/xml", XMLDatumWriter.class);
-		writerMap.put("application/json", JSONDatumWriter.class);
+		readerMap.put(CsvInputReader.getType(), CsvInputReader.class);
+		readerMap.put(XmlInputReader.getType(), XmlInputReader.class);
+		readerMap.put(JsonInputReader.getType(), JsonInputReader.class);
 	}
 	
 	/**
 	 * @return singleton instance.
 	 */
-	public static WriterRegistry getInstance() {
+	public static ReaderRegistry getInstance() {
 		if (null == singleton) {
-			singleton = new WriterRegistry();
+			singleton = new ReaderRegistry();
 		}
 		return singleton;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Class<DatumWriter<GenericRecord>> get(String mediaType){
-		Class<DatumWriter<GenericRecord>> writer = null;
-		if(writerMap.containsKey(mediaType)){
-			writer = (Class<DatumWriter<GenericRecord>>) writerMap.get(mediaType);
+	public Class<InputDataReaderAdapter> get(String mediaType){
+		Class<InputDataReaderAdapter> reader = null;
+		if(readerMap.containsKey(mediaType)){
+			reader = (Class<InputDataReaderAdapter>) readerMap.get(mediaType);
 		} else {
-			throw new RuntimeException("No writer found for " + mediaType);
+			throw new RuntimeException("No reader found for " + mediaType);
 		}
 		//FIXME: use proper error handling 
-		return writer;
+		return reader;
 	}
 
 }

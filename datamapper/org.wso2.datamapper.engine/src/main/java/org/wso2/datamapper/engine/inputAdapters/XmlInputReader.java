@@ -17,6 +17,7 @@ package org.wso2.datamapper.engine.inputAdapters;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -31,6 +32,8 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericData.Array;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMXMLBuilderFactory;
+import org.apache.axiom.om.OMXMLParserWrapper;
 
 
 public class XmlInputReader implements InputDataReaderAdapter {
@@ -41,8 +44,10 @@ public class XmlInputReader implements InputDataReaderAdapter {
 	 * @param msg - Soap Envelop
 	 * @throws IOException
 	 */
-	public void setInputMsg(OMElement msg) {
-		this.body = msg.getFirstElement().getFirstElement();
+	public void setInputMsg(InputStream in) {
+		OMXMLParserWrapper builder = OMXMLBuilderFactory.createOMBuilder(in);
+		OMElement documentElement = builder.getDocumentElement(); 
+		this.body = documentElement.getFirstElement().getFirstElement();
 	}
 
 	public GenericRecord getInputRecord(Schema input) {
@@ -112,5 +117,9 @@ public class XmlInputReader implements InputDataReaderAdapter {
 		}
 
 		return record;
+	}
+	
+	public static String getType() {
+		return "application/xml";
 	}
 }

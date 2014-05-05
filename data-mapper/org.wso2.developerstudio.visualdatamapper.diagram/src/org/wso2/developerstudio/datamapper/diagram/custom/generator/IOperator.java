@@ -1,5 +1,5 @@
 /*
- * Copyright 2005,2013 WSO2, Inc. http://www.wso2.org
+ * Copyright 2005,2014 WSO2, Inc. http://www.wso2.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,15 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wso2.datamapper.engine.inputAdapters;
 
-import java.io.InputStream;
+package org.wso2.developerstudio.datamapper.diagram.custom.generator;
 
-import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericRecord;
+import java.util.Map;
 
-public interface InputDataReaderAdapter {
-	
-	public void setInputMsg(InputStream msg);
-	public GenericRecord getInputRecord(Schema input);	
+public interface IOperator {
+
+	public void setName(OperatorName name);
+	public OperatorName getName();
+	public Map<Integer, Object> getInputMap();
+	public Map<Integer, Object> getOutMap();
+	public Map<Integer, IOperator>getPreviousOP();
+	public  Map<Integer, IOperator> getNextOP();
+	public void generateOutput();
+	public String getDelimeter();
+	public void setDelimeter(String delimeter);
 }

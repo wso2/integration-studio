@@ -130,34 +130,39 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
 				if (visualProp.getValueType().getName().equals("LITERAL")) {
 					switch (visualProp.getPropertyDataType()) {
 					case BOOLEAN:
-						propMediator.setValue(visualProp.getValueLiteral(),
+						String value= null;
+						if(visualProp.isBoolean()){
+							value = "true";
+						}	
+						else {value ="false";}
+						propMediator.setValue(value,
 								XMLConfigConstants.DATA_TYPES.BOOLEAN.toString());
 						break;
 					case FLOAT:
-						propMediator.setValue(visualProp.getValueLiteral(),
+						propMediator.setValue(visualProp.getValue(),
 								XMLConfigConstants.DATA_TYPES.FLOAT.toString());
 						break;
 					case DOUBLE:
-						propMediator.setValue(visualProp.getValueLiteral(),
+						propMediator.setValue(visualProp.getValue(),
 								XMLConfigConstants.DATA_TYPES.DOUBLE.toString());
 						break;
 					case INTEGER:
-						propMediator.setValue(visualProp.getValueLiteral(),
+						propMediator.setValue(visualProp.getValue(),
 								XMLConfigConstants.DATA_TYPES.INTEGER.toString());
 						break;
 					case LONG:
-						propMediator.setValue(visualProp.getValueLiteral(),
+						propMediator.setValue(visualProp.getValue(),
 								XMLConfigConstants.DATA_TYPES.LONG.toString());
 						break;
 					case OM:
-						propMediator.setValueElement(AXIOMUtil.stringToOM(visualProp.getValueOM()));
+						propMediator.setValueElement(AXIOMUtil.stringToOM(visualProp.getOM()));
 						break;
 					case SHORT:
-						propMediator.setValue(visualProp.getValueLiteral(),
+						propMediator.setValue(visualProp.getValue(),
 								XMLConfigConstants.DATA_TYPES.SHORT.toString());
 						break;
 					case STRING:
-						propMediator.setValue(visualProp.getValueLiteral(),
+						propMediator.setValue(visualProp.getValue(),
 								XMLConfigConstants.DATA_TYPES.STRING.toString());
 						break;
 					}

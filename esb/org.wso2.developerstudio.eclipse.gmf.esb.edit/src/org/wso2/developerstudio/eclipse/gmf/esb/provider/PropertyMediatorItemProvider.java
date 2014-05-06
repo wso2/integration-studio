@@ -77,31 +77,35 @@ public class PropertyMediatorItemProvider
 						
 		if (property.getPropertyAction().equals(PropertyAction.SET)) {
 			addValueTypePropertyDescriptor(object);
-			addPropertyDataTypePropertyDescriptor(object);
 			if (property.getValueType().equals(PropertyValueType.LITERAL)) {
+				addPropertyDataTypePropertyDescriptor(object);
 				switch (property.getPropertyDataType()) {
 					case OM: {
-						addValueOMPropertyDescriptor(object);
+						addOMPropertyDescriptor(object);
 						break;
 					}
 
 					case STRING: {
-						addValueLiteralPropertyDescriptor(object);
+						addValuePropertyDescriptor(object);
 						addValueStringPatternPropertyDescriptor(object);
 						addValueStringCapturingGroupPropertyDescriptor(object);
 						break;
 					}
+					case BOOLEAN:{
+						addBooleanPropertyDescriptor(object);
+						break;
+					}
 
 					default: {
-						addValueLiteralPropertyDescriptor(object);
+						addValuePropertyDescriptor(object);
 					}
 				}
 			} else {
 				addValueExpressionPropertyDescriptor(object);
-				if (property.getPropertyDataType() == PropertyDataType.STRING) {
+				/*if (property.getPropertyDataType() == PropertyDataType.STRING) {
 					addValueStringPatternPropertyDescriptor(object);
 					addValueStringCapturingGroupPropertyDescriptor(object);
-				}
+				}*/
 			}
 		}								
 		
@@ -239,19 +243,19 @@ public class PropertyMediatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Value Literal feature.
+	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValueLiteralPropertyDescriptor(Object object) {
+	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PropertyMediator_valueLiteral_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PropertyMediator_valueLiteral_feature", "_UI_PropertyMediator_type"),
-				 EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_LITERAL,
+				 getString("_UI_PropertyMediator_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PropertyMediator_value_feature", "_UI_PropertyMediator_type"),
+				 EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE,
 				 true,
 				 false,
 				 false,
@@ -327,19 +331,41 @@ public class PropertyMediatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Value OM feature.
+	 * This adds a property descriptor for the Boolean feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValueOMPropertyDescriptor(Object object) {
+	protected void addBooleanPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PropertyMediator_valueOM_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PropertyMediator_valueOM_feature", "_UI_PropertyMediator_type"),
-				 EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_OM,
+				 getString("_UI_PropertyMediator_boolean_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PropertyMediator_boolean_feature", "_UI_PropertyMediator_type"),
+				 EsbPackage.Literals.PROPERTY_MEDIATOR__BOOLEAN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the OM feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOMPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PropertyMediator_OM_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PropertyMediator_OM_feature", "_UI_PropertyMediator_type"),
+				 EsbPackage.Literals.PROPERTY_MEDIATOR__OM,
 				 true,
 				 false,
 				 false,
@@ -487,11 +513,12 @@ public class PropertyMediatorItemProvider
 			case EsbPackage.PROPERTY_MEDIATOR__PROPERTY_ACTION:
 			case EsbPackage.PROPERTY_MEDIATOR__PROPERTY_SCOPE:
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_TYPE:
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_LITERAL:
+			case EsbPackage.PROPERTY_MEDIATOR__VALUE:
 			case EsbPackage.PROPERTY_MEDIATOR__EXPRESSION:
 			case EsbPackage.PROPERTY_MEDIATOR__NAMESPACE_PREFIX:
 			case EsbPackage.PROPERTY_MEDIATOR__NAMESPACE:
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_OM:
+			case EsbPackage.PROPERTY_MEDIATOR__BOOLEAN:
+			case EsbPackage.PROPERTY_MEDIATOR__OM:
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN:
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

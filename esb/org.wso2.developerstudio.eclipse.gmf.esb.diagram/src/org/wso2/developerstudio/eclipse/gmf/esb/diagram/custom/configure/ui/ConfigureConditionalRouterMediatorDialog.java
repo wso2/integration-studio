@@ -383,6 +383,8 @@ public class ConfigureConditionalRouterMediatorDialog extends Dialog {
 
 	protected void updateSelection() {
 		if(tblRoutes.getSelectionIndex()==-1){
+
+			txtEvaluatorExpression.setText("");
 			comConfig.setEnabled(false);
 			cmdRouteRemove.setEnabled(false);
 		} else{

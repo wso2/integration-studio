@@ -75,14 +75,14 @@ public class ValidateFeatureDialog extends Dialog {
 		featureTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION
 				| SWT.HIDE_SELECTION);
 
-		TableColumn keyTypeColumn = new TableColumn(featureTable, SWT.LEFT);
-		TableColumn staticKey = new TableColumn(featureTable, SWT.LEFT);
+		TableColumn nameColumn = new TableColumn(featureTable, SWT.LEFT);
+		TableColumn valueColumn = new TableColumn(featureTable, SWT.LEFT);
 
-		keyTypeColumn.setText("Name");
-		keyTypeColumn.setWidth(150);
+		nameColumn.setText("Name");
+		nameColumn.setWidth(150);
 
-		staticKey.setText("Value");
-		staticKey.setWidth(150);
+		valueColumn.setText("Value");
+		valueColumn.setWidth(150);
 
 		featureTable.setHeaderVisible(true);
 		featureTable.setLinesVisible(true);
@@ -177,10 +177,11 @@ public class ValidateFeatureDialog extends Dialog {
 
 	private void unbindFeature(int selectedIndex) {
 
-		TableItem item = featureTable.getItem(selectedIndex);
-
+		TableItem item= featureTable.getItem(selectedIndex);
+		
 		ValidateFeature feature = (ValidateFeature) item.getData();
-
+		
+		
 		if (null != feature.eContainer()) {
 
 			RemoveCommand reoveCmd = new RemoveCommand(editingDomain,
@@ -190,7 +191,15 @@ public class ValidateFeatureDialog extends Dialog {
 
 		}
 
+	    
 		featureTable.remove(featureTable.indexOf(item));
+		
+		if (null != isEnbaledEdior) {
+			Control lastCtrl = isEnbaledEdior.getEditor();
+			if (null != lastCtrl) {
+				lastCtrl.dispose();
+			}
+		}
 
 	}
 
@@ -246,16 +255,18 @@ public class ValidateFeatureDialog extends Dialog {
 			public void mouseDoubleClick(MouseEvent e) {
 				// Dispose the old editor control (if one is setup).
 				Control oldEditorControl = cellEditor.getEditor();
-				if (null != oldEditorControl)
+				if (null != oldEditorControl){
 					oldEditorControl.dispose();
+				}
 
 				// Mouse location.
 				Point mouseLocation = new Point(e.x, e.y);
 
 				// Grab the selected row.
 				TableItem item = (TableItem) table.getItem(mouseLocation);
-				if (null == item)
+				if (null == item){
 					return;
+				}
 
 				// Determine which column was selected.
 				int selectedColumn = -1;

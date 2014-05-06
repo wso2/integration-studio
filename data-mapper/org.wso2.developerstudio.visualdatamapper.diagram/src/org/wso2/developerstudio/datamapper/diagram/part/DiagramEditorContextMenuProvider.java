@@ -22,6 +22,7 @@ import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRecordAct
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRecordsListAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.AddNewRootRecordAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.ConcatManyAction;
+import org.wso2.developerstudio.datamapper.diagram.custom.action.ExportSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadInputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.LoadOutputSchemaAction;
 import org.wso2.developerstudio.datamapper.diagram.custom.action.SchemaFromJsonAction;
@@ -41,6 +42,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 
 	private static final String EDIT_GROUP_ID = "editGroup"; //$NON-NLS-1$
 	private static final String NAVIGATE_GROUP_ID = "navigateGroup";
+	private static final String PROPERTIES_GROUP_ID = "propertiesGroup";
+	private static final String MENU_ADDITIONS = "additions";
+	private static final String MENU_PROPERTIES = "properties";
 	private static final String ERROR_BUILDING_CONTEXT_MENU = Messages.DiagramEditorContextMenuProvider_errorContextMenu;
 
 	/**
@@ -64,6 +68,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> addNewFieldContextActions;
 	// Actions for getting schema from data-set
 	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> schemaFromDatasetActions;
+	// Actions for exporting schema
+	Map<Class<? extends ShapeNodeEditPart>, AbstractActionHandler> exportSchemaActions;
 
 	/**
 	 * @generated NOT
@@ -115,6 +121,11 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 		schemaFromDatasetActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
 		schemaFromDatasetActions.put(InputEditPart.class, new SchemaFromJsonAction(part));
 		schemaFromDatasetActions.put(OutputEditPart.class, new SchemaFromJsonAction(part));
+
+		// Initialize export schema actions.
+		exportSchemaActions = new HashMap<Class<? extends ShapeNodeEditPart>, AbstractActionHandler>();
+		exportSchemaActions.put(InputEditPart.class, new ExportSchemaAction(part));
+		exportSchemaActions.put(OutputEditPart.class, new ExportSchemaAction(part));
 	}
 
 	/**
@@ -141,13 +152,15 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 							ContributionItemService.getInstance().contributeToPopupMenu(
 									DiagramEditorContextMenuProvider.this, part);
 							menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
-							
+
 							// Fixing TOOLS-2425
 							menu.remove(ActionIds.MENU_NAVIGATE);
 							menu.remove(ActionIds.MENU_EDIT);
 							menu.remove(ActionIds.MENU_FORMAT);
 							menu.remove(ActionIds.MENU_FILTERS);
 							menu.remove(ActionIds.MENU_FILE);
+							menu.remove(MENU_PROPERTIES);
+							menu.remove(MENU_ADDITIONS);
 
 							List<?> selectedEPs = getViewer().getSelectedEditParts();
 							if (selectedEPs.size() == 1) {
@@ -192,21 +205,28 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 									AbstractActionHandler schemaFromDatasetAction = schemaFromDatasetActions
 											.get(selectedEditorPart.getClass());
 									if (null != schemaFromDatasetAction) {
-										menu.appendToGroup(NAVIGATE_GROUP_ID, schemaFromDatasetAction);
+										menu.appendToGroup(NAVIGATE_GROUP_ID,
+												schemaFromDatasetAction);
 									}
-									
+
 									// Append load from file item to menu
 									AbstractActionHandler contextAction = contextActions
 											.get(selectedEditorPart.getClass());
 									if (null != contextAction) {
 										menu.appendToGroup(NAVIGATE_GROUP_ID, contextAction);
 									}
+
+									// Append export schema item to menu
+									AbstractActionHandler exportSchemaAction = exportSchemaActions
+											.get(selectedEditorPart.getClass());
+									if (null != exportSchemaAction) {
+										menu.appendToGroup(NAVIGATE_GROUP_ID, exportSchemaAction);
+									}
 								}
 
 							}
-							
-							menu.appendToGroup(EDIT_GROUP_ID, deleteAction);
 
+							menu.prependToGroup(PROPERTIES_GROUP_ID, deleteAction);
 						}
 					});
 		} catch (Exception e) {

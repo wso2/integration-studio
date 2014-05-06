@@ -82,6 +82,12 @@ public class Messages extends NLS {
 	public static String AddNewRootRecordAction_errorHeader;
 	public static String Configure_Concat_Operator;
 	
+	public static String ExportSchemaAction_errorSavingFile;
+	public static String ExportSchemaAction_errorWrongEdipart;
+	public static String ExportSchemaAction_fileDialogHeader;
+	public static String ExportSchemaAction_menuTitle;
+	public static String ExportSchemaAction_warnNotSavedToFile;
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

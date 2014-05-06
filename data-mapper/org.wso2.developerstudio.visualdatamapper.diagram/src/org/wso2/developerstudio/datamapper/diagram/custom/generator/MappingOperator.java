@@ -29,10 +29,10 @@ public class MappingOperator implements IOperator {
 	private String delimeter;
 	public MappingOperator(OperatorName concat) {
 		setName(concat);
-		inputs = new HashMap<>();
-		output = new HashMap<>();
-		previos =new HashMap<>();
-		next = new HashMap<>();
+		inputs = new HashMap<Integer, Object>();
+		output = new HashMap<Integer, Object>();
+		previos =new HashMap<Integer, IOperator>();
+		next = new HashMap<Integer, IOperator>();
 	}
 
 	public Map<Integer, Object> getInputMap() {

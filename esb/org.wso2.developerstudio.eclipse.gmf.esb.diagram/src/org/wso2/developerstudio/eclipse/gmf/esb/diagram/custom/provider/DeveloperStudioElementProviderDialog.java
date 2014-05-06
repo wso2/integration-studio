@@ -51,7 +51,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.CreateNewConfigurationDialog;
+//import org.wso2.developerstudio.datamapper.diagram.custom.util.CreateNewConfigurationDialog;
 import org.wso2.developerstudio.eclipse.esb.core.EsbConfigurationManager;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
@@ -315,6 +315,7 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 		Object selectedElement = getSelectedElement();
 		IDeveloperStudioElement resource = (IDeveloperStudioElement) selectedElement;
 		
+		/*
 		if (resource.getSource() instanceof IFile) {
 			IFile selectedIFile = (IFile) resource.getSource();
 			ipathOfselection = selectedIFile.getFullPath().toString();
@@ -336,6 +337,7 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 					log.error(e.getMessage());
 				}
 		}
+		*/
 	
 		
 		
@@ -429,8 +431,8 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	protected void openNewResourceTemplateDialog() {
 		//FIXME handle this in a proper way
 		try{
-			//NewResourceTemplateDialog newResourceTemplateDialog = new NewResourceTemplateDialog(getParentShell(),(Map<String, List<String>>) getFilters());
-			CreateNewConfigurationDialog newResourceTemplateDialog = new CreateNewConfigurationDialog(getParentShell(),(Map<String, List<String>>) getFilters());
+			NewResourceTemplateDialog newResourceTemplateDialog = new NewResourceTemplateDialog(getParentShell(),(Map<String, List<String>>) getFilters());
+			//CreateNewConfigurationDialog newResourceTemplateDialog = new CreateNewConfigurationDialog(getParentShell(),(Map<String, List<String>>) getFilters());
 			newResourceTemplateDialog.create();
 			newResourceTemplateDialog.getShell().setText("New DataMapper Configuration");
 			newResourceTemplateDialog.open();

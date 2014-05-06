@@ -54,8 +54,8 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
-import org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
+//import org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
+//import org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -368,7 +368,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	static final Color THIS_BACK = new Color(null, 230, 230, 230);
 	
 	public void openDataMapperDiagram() {
-		
+		/*
 		NodeImpl eobject = ((NodeImpl)this.getModel());
 		final DataMapperMediatorImpl datamapper = (DataMapperMediatorImpl)eobject.getElement();
 
@@ -382,7 +382,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			types.add(DATAMAPPER_FILTER_TYPE); //FIXME we need to give this our mediatype like vnd.wso2.esb.datamapper
 			filters.put(mediaTypeKey, types);
 			
-			/* IRegistryFile class is only required for datamapper related filtering */
+			// IRegistryFile class is only required for datamapper related filtering 
 			final DataMapperConfigurationDialog dataMapperConfigurationDialog = new DataMapperConfigurationDialog(Display.getCurrent().getActiveShell(), new Class[]{IRegistryFile.class}, filters); 
 			dataMapperConfigurationDialog.create();
 
@@ -477,6 +477,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		} else {
 			openDataMapperEditor(datamapper);
 		}
+		*/
  
 	}
 

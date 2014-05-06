@@ -91,7 +91,7 @@ public class MessageStoreItemProvider
 			addPasswordPropertyDescriptor(object);
 			addJmsSpecVersionPropertyDescriptor(object);
 			addEnableCachingPropertyDescriptor(object);
-			addTimeoutPropertyDescriptor(object);
+			//addTimeoutPropertyDescriptor(object);
 			break;
 		case CUSTOM:
 			addProviderClassPropertyDescriptor(object);
@@ -325,28 +325,6 @@ public class MessageStoreItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Timeout feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTimeoutPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MessageStore_timeout_feature"),
-				 getString("_UI_MessageStore_timeout_description"),
-				 EsbPackage.Literals.MESSAGE_STORE__TIMEOUT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 getString("_UI_AdditionalParametersPropertyCategory"),
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Provider Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -467,7 +445,6 @@ public class MessageStoreItemProvider
 			case EsbPackage.MESSAGE_STORE__PASSWORD:
 			case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
-			case EsbPackage.MESSAGE_STORE__TIMEOUT:
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

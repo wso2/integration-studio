@@ -80,8 +80,8 @@ public class MessageStoreTransformer {
 			parameters.put("store.jms.JMSSpecVersion", model.getJmsSpecVersion().getLiteral());
 			parameters.put("store.jms.cache.connection",
 					((Boolean) model.isEnableCaching()).toString());
-			parameters.put("store.jms.ConsumerReceiveTimeOut",
-					((Long) model.getTimeout()).toString());
+			/*parameters.put("store.jms.ConsumerReceiveTimeOut",
+					((Long) model.getTimeout()).toString());*/
 
 			/*
 			 * Any additional parameters not listed above will handle here

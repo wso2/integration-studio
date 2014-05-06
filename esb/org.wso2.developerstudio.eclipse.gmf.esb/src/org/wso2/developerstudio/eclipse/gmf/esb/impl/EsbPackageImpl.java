@@ -8858,7 +8858,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_Timeout() {
+	public EAttribute getMessageStore_ProviderClass() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -8867,17 +8867,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_ProviderClass() {
-		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getMessageStore_Parameters() {
-		return (EReference)messageStoreEClass.getEStructuralFeatures().get(12);
+		return (EReference)messageStoreEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -17004,7 +16995,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__PASSWORD);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__JMS_SPEC_VERSION);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__ENABLE_CACHING);
-		createEAttribute(messageStoreEClass, MESSAGE_STORE__TIMEOUT);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__PROVIDER_CLASS);
 		createEReference(messageStoreEClass, MESSAGE_STORE__PARAMETERS);
 
@@ -19028,7 +19018,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageStore_Password(), ecorePackage.getEString(), "password", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_JmsSpecVersion(), this.getJMSSpecVersion(), "jmsSpecVersion", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_EnableCaching(), ecorePackage.getEBoolean(), "enableCaching", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMessageStore_Timeout(), ecorePackage.getELong(), "timeout", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_ProviderClass(), ecorePackage.getEString(), "providerClass", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMessageStore_Parameters(), this.getMessageStoreParameter(), null, "parameters", null, 0, -1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

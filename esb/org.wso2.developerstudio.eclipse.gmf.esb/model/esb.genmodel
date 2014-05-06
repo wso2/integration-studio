@@ -1918,8 +1918,6 @@
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jmsSpecVersion"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Enable Connection caching"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/enableCaching"/>
-      <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Consumer Receive Timeout"
-          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/timeout"/>
       <genFeatures createChild="false" propertyCategory="basic" propertyDescription="Provider Class"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/providerClass"/>
       <genFeatures children="true" createChild="true" propertyCategory="Additional Parameters"

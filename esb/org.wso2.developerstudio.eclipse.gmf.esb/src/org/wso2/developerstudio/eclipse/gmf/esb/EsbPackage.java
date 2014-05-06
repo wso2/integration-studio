@@ -19109,22 +19109,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__ENABLE_CACHING = ESB_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Timeout</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_STORE__TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 10;
-
-	/**
 	 * The feature id for the '<em><b>Provider Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 11;
+	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -19133,7 +19124,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 12;
+	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Message Store</em>' class.
@@ -19142,7 +19133,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 13;
+	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.
@@ -27163,17 +27154,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getMessageStore_EnableCaching();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getTimeout <em>Timeout</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Timeout</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getTimeout()
-	 * @see #getMessageStore()
-	 * @generated
-	 */
-	EAttribute getMessageStore_Timeout();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}'.
@@ -40009,14 +39989,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute MESSAGE_STORE__ENABLE_CACHING = eINSTANCE.getMessageStore_EnableCaching();
-
-		/**
-		 * The meta object literal for the '<em><b>Timeout</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MESSAGE_STORE__TIMEOUT = eINSTANCE.getMessageStore_Timeout();
 
 		/**
 		 * The meta object literal for the '<em><b>Provider Class</b></em>' attribute feature.

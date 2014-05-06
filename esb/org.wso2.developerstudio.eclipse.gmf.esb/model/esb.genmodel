@@ -869,12 +869,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/propertyAction"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/propertyScope"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/valueType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/valueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/expression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/namespacePrefix"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/namespace"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PropertyMediator/valueExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/valueOM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/boolean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/OM"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/valueStringPattern"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PropertyMediator/valueStringCapturingGroup"/>
     </genClasses>

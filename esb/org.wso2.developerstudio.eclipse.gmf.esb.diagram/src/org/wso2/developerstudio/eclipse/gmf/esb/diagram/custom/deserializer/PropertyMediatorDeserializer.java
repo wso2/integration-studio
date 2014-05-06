@@ -21,11 +21,12 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPE
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__PROPERTY_NAME;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__PROPERTY_SCOPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_EXPRESSION;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_LITERAL;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_TYPE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__VALUE_OM;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__OM;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.PROPERTY_MEDIATOR__BOOLEAN;
 
 import java.util.regex.Pattern;
 
@@ -93,7 +94,7 @@ public class PropertyMediatorDeserializer extends
 			//vishualProp.setValueExpression(null);
 			executeSetValueCommand(PROPERTY_MEDIATOR__VALUE_EXPRESSION, null);
 			//vishualProp.setValueLiteral(null);
-			executeSetValueCommand(PROPERTY_MEDIATOR__VALUE_LITERAL, null);
+			executeSetValueCommand(PROPERTY_MEDIATOR__VALUE, null);
 
 		} else {
 			// For the Set action
@@ -113,7 +114,7 @@ public class PropertyMediatorDeserializer extends
 
 				//vishualProp.setValueLiteral(propertyMediator.getValue()
 						//.toString());
-				executeSetValueCommand(PROPERTY_MEDIATOR__VALUE_LITERAL, propertyMediator.getValue().toString());
+				executeSetValueCommand(PROPERTY_MEDIATOR__VALUE, propertyMediator.getValue().toString());
 
 			}
 			// Setting common things for both.
@@ -167,10 +168,11 @@ public class PropertyMediatorDeserializer extends
 
 					//vishualProp.setPropertyDataType(PropertyDataType.BOOLEAN);
 					executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_DATA_TYPE, PropertyDataType.BOOLEAN);
+					executeSetValueCommand(PROPERTY_MEDIATOR__BOOLEAN, propertyMediator.getValue());
 				}
 			} else if (propertyMediator.getValueElement() != null){
 				executeSetValueCommand(PROPERTY_MEDIATOR__PROPERTY_DATA_TYPE,PropertyDataType.OM);
-				executeSetValueCommand(PROPERTY_MEDIATOR__VALUE_OM,propertyMediator.getValueElement().toString());				
+				executeSetValueCommand(PROPERTY_MEDIATOR__OM,propertyMediator.getValueElement().toString());				
 			}
 
 			Pattern pattern = propertyMediator.getPattern();

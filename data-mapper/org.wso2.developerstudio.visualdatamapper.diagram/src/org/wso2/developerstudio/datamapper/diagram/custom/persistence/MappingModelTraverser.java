@@ -233,8 +233,30 @@ public class MappingModelTraverser {
 			for (Function function : functionListForTree) {
 				function.setParentFunction(parentFunction);
 				//set function call statement for appropriate parent function
-				
-					parentFunction.getFunctionBody().getFunctionCallStatements().add(function.getFunctionCall());
+					TreeNode parentFunctionInTree = parentFunction.getInputParameter();
+					
+					/*
+					 * when the parent function is array and array child being a call statement,
+					 * the arguments of method call statements should be with indexed
+					 */
+					if(parentFunctionInTree.getSchemaDataType().equals(SchemaDataType.ARRAY)){
+						ForLoop callStatmentLoop ;
+						
+						//if there are for loops exist already set function call statement to it
+						if(OperatorConfigurationUtil.isForLoopCreated(parentFunction.getFunctionBody().getForLoop(), parentFunctionInTree) != null){
+							callStatmentLoop = OperatorConfigurationUtil.isForLoopCreated(parentFunction.getFunctionBody().getForLoop(), parentFunctionInTree);
+							callStatmentLoop.getFunctionCall().add(function.getFunctionCall(parentFunction));
+						}
+						else {
+							callStatmentLoop = new ForLoop();
+							callStatmentLoop.setArrayTree(parentFunctionInTree);
+							callStatmentLoop.getFunctionCall().add(function.getFunctionCall(parentFunction));
+							parentFunction.getFunctionBody().getForLoop().add(callStatmentLoop);
+						}
+					}
+					else{						
+						parentFunction.getFunctionBody().getFunctionCallStatements().add(function.getFunctionCall());
+					}
 				
 			}
 		}

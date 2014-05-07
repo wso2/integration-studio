@@ -25,6 +25,7 @@ import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.ForLoop;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.Function;
 
 public class OperatorConfigurationUtil {
@@ -272,7 +273,22 @@ public class OperatorConfigurationUtil {
 
 	}
 
-	
+	/**
+	 * there can be multiple for loops in a function. When new assignment or function call needs to be set to a for-loop,
+	 * it needs to find exist for-loop.
+	 * @param loop	list of exist for loops
+	 * @param parentTreeNode the array treenode of a for-loop (which would be the ID)
+	 * @return	matching for-loop if exisit or null
+	 */
+	public static ForLoop isForLoopCreated(List<ForLoop> loop, TreeNode parentTreeNode){
+		for(ForLoop eachLoop : loop){
+			if(eachLoop.getArrayTree().equals(parentTreeNode)){
+				return eachLoop;
+			}
+		}
+		
+		return null;
+	}
 	
 
 }

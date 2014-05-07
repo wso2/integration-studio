@@ -5978,7 +5978,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPropertyMediator_ValueLiteral() {
+	public EAttribute getPropertyMediator_Value() {
 		return (EAttribute)propertyMediatorEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -6023,7 +6023,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPropertyMediator_ValueOM() {
+	public EAttribute getPropertyMediator_Boolean() {
 		return (EAttribute)propertyMediatorEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -6032,7 +6032,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPropertyMediator_ValueStringPattern() {
+	public EAttribute getPropertyMediator_OM() {
 		return (EAttribute)propertyMediatorEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -6041,8 +6041,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPropertyMediator_ValueStringCapturingGroup() {
+	public EAttribute getPropertyMediator_ValueStringPattern() {
 		return (EAttribute)propertyMediatorEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPropertyMediator_ValueStringCapturingGroup() {
+		return (EAttribute)propertyMediatorEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -8849,7 +8858,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_Timeout() {
+	public EAttribute getMessageStore_ProviderClass() {
 		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -8858,17 +8867,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessageStore_ProviderClass() {
-		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getMessageStore_Parameters() {
-		return (EReference)messageStoreEClass.getEStructuralFeatures().get(12);
+		return (EReference)messageStoreEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -15856,12 +15856,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__PROPERTY_ACTION);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__PROPERTY_SCOPE);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE_TYPE);
-		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE_LITERAL);
+		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__EXPRESSION);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__NAMESPACE_PREFIX);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__NAMESPACE);
 		createEReference(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE_EXPRESSION);
-		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE_OM);
+		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__BOOLEAN);
+		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__OM);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE_STRING_PATTERN);
 		createEAttribute(propertyMediatorEClass, PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP);
 
@@ -16994,7 +16995,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__PASSWORD);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__JMS_SPEC_VERSION);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__ENABLE_CACHING);
-		createEAttribute(messageStoreEClass, MESSAGE_STORE__TIMEOUT);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__PROVIDER_CLASS);
 		createEReference(messageStoreEClass, MESSAGE_STORE__PARAMETERS);
 
@@ -17874,12 +17874,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getPropertyMediator_PropertyAction(), this.getPropertyAction(), "propertyAction", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_PropertyScope(), this.getPropertyScope(), "propertyScope", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueType(), this.getPropertyValueType(), "valueType", "LITERAL", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyMediator_ValueLiteral(), ecorePackage.getEString(), "valueLiteral", "value", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyMediator_Value(), ecorePackage.getEString(), "value", "value", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_NamespacePrefix(), ecorePackage.getEString(), "namespacePrefix", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_Namespace(), ecorePackage.getEString(), "namespace", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPropertyMediator_ValueExpression(), this.getNamespacedProperty(), null, "valueExpression", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyMediator_ValueOM(), ecorePackage.getEString(), "valueOM", "<value/>", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyMediator_Boolean(), ecorePackage.getEBoolean(), "boolean", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyMediator_OM(), ecorePackage.getEString(), "OM", "<value/>", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueStringPattern(), ecorePackage.getEString(), "valueStringPattern", null, 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyMediator_ValueStringCapturingGroup(), ecorePackage.getEInt(), "valueStringCapturingGroup", "0", 0, 1, PropertyMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -19017,7 +19018,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageStore_Password(), ecorePackage.getEString(), "password", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_JmsSpecVersion(), this.getJMSSpecVersion(), "jmsSpecVersion", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_EnableCaching(), ecorePackage.getEBoolean(), "enableCaching", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMessageStore_Timeout(), ecorePackage.getELong(), "timeout", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_ProviderClass(), ecorePackage.getEString(), "providerClass", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMessageStore_Parameters(), this.getMessageStoreParameter(), null, "parameters", null, 0, -1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

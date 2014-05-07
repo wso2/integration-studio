@@ -4891,13 +4891,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PROPERTY_MEDIATOR__VALUE_TYPE = MEDIATOR_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Value Literal</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR__VALUE_LITERAL = MEDIATOR_FEATURE_COUNT + 7;
+	int PROPERTY_MEDIATOR__VALUE = MEDIATOR_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' attribute.
@@ -4936,13 +4936,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PROPERTY_MEDIATOR__VALUE_EXPRESSION = MEDIATOR_FEATURE_COUNT + 11;
 
 	/**
-	 * The feature id for the '<em><b>Value OM</b></em>' attribute.
+	 * The feature id for the '<em><b>Boolean</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR__VALUE_OM = MEDIATOR_FEATURE_COUNT + 12;
+	int PROPERTY_MEDIATOR__BOOLEAN = MEDIATOR_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>OM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_MEDIATOR__OM = MEDIATOR_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Value String Pattern</b></em>' attribute.
@@ -4951,7 +4960,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR__VALUE_STRING_PATTERN = MEDIATOR_FEATURE_COUNT + 13;
+	int PROPERTY_MEDIATOR__VALUE_STRING_PATTERN = MEDIATOR_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Value String Capturing Group</b></em>' attribute.
@@ -4960,7 +4969,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP = MEDIATOR_FEATURE_COUNT + 14;
+	int PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP = MEDIATOR_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of structural features of the '<em>Property Mediator</em>' class.
@@ -4969,7 +4978,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 15;
+	int PROPERTY_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -19100,22 +19109,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__ENABLE_CACHING = ESB_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Timeout</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_STORE__TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 10;
-
-	/**
 	 * The feature id for the '<em><b>Provider Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 11;
+	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -19124,7 +19124,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 12;
+	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Message Store</em>' class.
@@ -19133,7 +19133,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 13;
+	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.
@@ -23711,15 +23711,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getPropertyMediator_ValueType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueLiteral <em>Value Literal</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value Literal</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueLiteral()
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue()
 	 * @see #getPropertyMediator()
 	 * @generated
 	 */
-	EAttribute getPropertyMediator_ValueLiteral();
+	EAttribute getPropertyMediator_Value();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getExpression <em>Expression</em>}'.
@@ -23766,15 +23766,26 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getPropertyMediator_ValueExpression();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueOM <em>Value OM</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean <em>Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value OM</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueOM()
+	 * @return the meta object for the attribute '<em>Boolean</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean()
 	 * @see #getPropertyMediator()
 	 * @generated
 	 */
-	EAttribute getPropertyMediator_ValueOM();
+	EAttribute getPropertyMediator_Boolean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>OM</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM()
+	 * @see #getPropertyMediator()
+	 * @generated
+	 */
+	EAttribute getPropertyMediator_OM();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringPattern <em>Value String Pattern</em>}'.
@@ -27143,17 +27154,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getMessageStore_EnableCaching();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getTimeout <em>Timeout</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Timeout</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getTimeout()
-	 * @see #getMessageStore()
-	 * @generated
-	 */
-	EAttribute getMessageStore_Timeout();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}'.
@@ -37221,12 +37221,12 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute PROPERTY_MEDIATOR__VALUE_TYPE = eINSTANCE.getPropertyMediator_ValueType();
 
 		/**
-		 * The meta object literal for the '<em><b>Value Literal</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_MEDIATOR__VALUE_LITERAL = eINSTANCE.getPropertyMediator_ValueLiteral();
+		EAttribute PROPERTY_MEDIATOR__VALUE = eINSTANCE.getPropertyMediator_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
@@ -37261,12 +37261,20 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EReference PROPERTY_MEDIATOR__VALUE_EXPRESSION = eINSTANCE.getPropertyMediator_ValueExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>Value OM</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Boolean</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_MEDIATOR__VALUE_OM = eINSTANCE.getPropertyMediator_ValueOM();
+		EAttribute PROPERTY_MEDIATOR__BOOLEAN = eINSTANCE.getPropertyMediator_Boolean();
+
+		/**
+		 * The meta object literal for the '<em><b>OM</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY_MEDIATOR__OM = eINSTANCE.getPropertyMediator_OM();
 
 		/**
 		 * The meta object literal for the '<em><b>Value String Pattern</b></em>' attribute feature.
@@ -39981,14 +39989,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute MESSAGE_STORE__ENABLE_CACHING = eINSTANCE.getMessageStore_EnableCaching();
-
-		/**
-		 * The meta object literal for the '<em><b>Timeout</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MESSAGE_STORE__TIMEOUT = eINSTANCE.getMessageStore_Timeout();
 
 		/**
 		 * The meta object literal for the '<em><b>Provider Class</b></em>' attribute feature.

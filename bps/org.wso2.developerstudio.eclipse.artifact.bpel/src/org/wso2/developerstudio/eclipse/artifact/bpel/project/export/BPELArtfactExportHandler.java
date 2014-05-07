@@ -84,7 +84,7 @@ public class BPELArtfactExportHandler extends ProjectArtifactHandler {
 		// Fixing TOOLS-2327.
 		if (bpelContent.toFile().exists()) {
 			// copy bpelContent files
-			FileUtils.copyDirectoryContents(bpelContent.toFile(), bpelResources);
+			FileUtils.copyDirectoryContentsWithoutDotSettingsDir(bpelContent.toFile(), bpelResources);
 		}
 		
 		File tmpArchive = new File(tempProject, project.getName().concat(".zip"));

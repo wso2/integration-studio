@@ -1644,7 +1644,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//ConditionalRouteBranch/targetSequence"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//ConditionalRouterMediator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ConditionalRouterMediator/continueRoute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ConditionalRouterMediator/continueAfterRoute"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ConditionalRouterMediator/conditionalRouteBranches"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ConditionalRouterMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ConditionalRouterMediator/outputConnector"/>

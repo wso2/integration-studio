@@ -285,7 +285,11 @@ public class Function {
 		for(int i=1; i<splited.length;i++){
 			builder.append(splited[i]);
 		}
-		builder.insert(0, splited[0]+"[i].");
+		if(splited.length == 1){
+			builder.insert(0, splited[0]+"[i]");
+		}else {
+			builder.insert(0, splited[0]+"[i].");			
+		}
 		return builder.toString();
 	}
 

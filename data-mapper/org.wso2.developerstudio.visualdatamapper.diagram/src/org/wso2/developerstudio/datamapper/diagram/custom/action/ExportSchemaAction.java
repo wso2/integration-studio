@@ -54,7 +54,7 @@ public class ExportSchemaAction extends AbstractActionHandler {
 	private static final String INPUT_EDITPART = "Input"; //$NON-NLS-1$
 	private static final String EXPORT_SCHEMA_ACTION_ID = "export-schema-action-id"; //$NON-NLS-1$
 	private static final String FILTER_EXTENSION_TXT = "*.txt"; //$NON-NLS-1$
-	private static final String FILTER_EXTENSION_JSON = "*.json"; //$NON-NLS-1$
+	private static final String FILTER_EXTENSION_AVSC = "*.avsc"; //$NON-NLS-1$
 	private static final String MENU_TITLE = Messages.ExportSchemaAction_menuTitle;
 	private static final String ERROR_WRONG_EDITPART = Messages.ExportSchemaAction_errorWrongEdipart;
 	private static final String ERROR_SAVING_FILE = Messages.ExportSchemaAction_errorSavingFile;
@@ -104,7 +104,7 @@ public class ExportSchemaAction extends AbstractActionHandler {
 			Display display = Display.getDefault();
 			Shell shell = new Shell(display);
 			FileDialog dialog = new FileDialog(shell, SWT.SAVE);
-			dialog.setFilterExtensions(new String[] { FILTER_EXTENSION_JSON, FILTER_EXTENSION_TXT });
+			dialog.setFilterExtensions(new String[] { FILTER_EXTENSION_AVSC, FILTER_EXTENSION_TXT });
 			dialog.setText(FILE_DIALOG_HEADER);
 			String filePath = dialog.open();
 
@@ -114,8 +114,8 @@ public class ExportSchemaAction extends AbstractActionHandler {
 				} catch (IOException e) {
 					log.error(ERROR_SAVING_FILE + filePath, e);
 					IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()); //$NON-NLS-1$
-					ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_SAVING_FILE + filePath,
-							null, status);
+					ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_SAVING_FILE
+							+ filePath, null, status);
 					return;
 				}
 			} else {

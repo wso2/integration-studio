@@ -19,10 +19,11 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
 import org.mozilla.javascript.Function;
 import org.mozilla.javascript.ScriptableObject;
+import org.wso2.datamapper.engine.core.MappingResourceLoader.JSException;
 
 public class FunctionExecuter {
 
-	public static GenericRecord execute(MappingResourceLoader resourceModel, GenericRecord inRecord) {
+	public static GenericRecord execute(MappingResourceLoader resourceModel, GenericRecord inRecord) throws JSException  {
 		GenericRecord genericOutRecord = new GenericData.Record(resourceModel.getOutputSchema());
 		
 		ScriptableRecord inScriptableRecord = new ScriptableRecord(inRecord,resourceModel.getScope());

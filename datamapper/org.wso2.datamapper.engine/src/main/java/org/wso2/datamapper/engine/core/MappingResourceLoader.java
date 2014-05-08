@@ -37,7 +37,8 @@ public class MappingResourceLoader {
 	private String outputRootelement;
 	private Context context;
 	private Scriptable scope;
-	private Function function;
+	private MappingResourceLoader.JSFunction function;
+ 
 	
 	/**
 	 * 
@@ -86,8 +87,14 @@ public class MappingResourceLoader {
 		return scope;
 	}
 
-	public Function getFunction() {
-		return function;
+	public Function getFunction() throws MappingResourceLoader.JSException{
+		if(function!=null){
+		initScriptEnviroment();
+	 	context.evaluateString(scope, function.getFunctionBody(), "	", 1, null);
+		return (Function) scope.get(function.getFunctioName(), scope);
+		}else{
+			throw new MappingResourceLoader.JSException("JS function not in a correct format");
+		}
 	}
 
 	private Schema getAvroSchema(InputStream schema) throws IOException{
@@ -102,12 +109,10 @@ public class MappingResourceLoader {
 	 * @return
 	 * @throws IOException
 	 */
-	private Function getFunction(InputStream mappingConfig) throws IOException {
-
-		 initScriptEnviroment();
+	private MappingResourceLoader.JSFunction getFunction(InputStream mappingConfig) throws IOException {
 
 		BufferedReader configReader = new BufferedReader(new InputStreamReader(mappingConfig));
-//need to identify the main method of the configuration because that method going to execute in engine		
+       //need to identify the main method of the configuration because that method going to execute in engine		
 		Pattern functionIdPattern = Pattern.compile("(function )(map_(L|S)_" + inputRootelement
 				+ "_(L|S)_" + outputRootelement + ")");
 		String fnName = null;
@@ -122,10 +127,10 @@ public class MappingResourceLoader {
 		}
 		
 		if (fnName != null) {
-			context.evaluateString(scope, configScriptbuilder.toString(), "	", 1, null);
-			return (Function) scope.get(fnName, scope);
+		    MappingResourceLoader.JSFunction jsfunction = new MappingResourceLoader.JSFunction(fnName,configScriptbuilder.toString());
+			return jsfunction;
+		
 		}
-
 		return null;
 	}
 
@@ -137,5 +142,65 @@ public class MappingResourceLoader {
 		context = Context.enter();
 		context.setOptimizationLevel(-1);
 		scope = context.initStandardObjects();
+	}
+	
+  class JSFunction{
+	  
+	private String functioName;
+	private  String functionBody;
+	  
+	  public JSFunction(String name,String body){
+		  this.setFunctioName(name);
+		  this.setFunctionBody(body);
+	  }
+
+	public String getFunctioName() {
+		return functioName;
+	}
+
+	public void setFunctioName(String functioName) {
+		this.functioName = functioName;
+	}
+
+	public String getFunctionBody() {
+		return functionBody;
+	}
+
+	public void setFunctionBody(String functionBody) {
+		this.functionBody = functionBody;
+	}
+	  
+	  
+  }
+  class JSException extends Exception {
+	  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		private String message = null;
+	 
+	    public JSException() {
+	        super();
+	    }
+	 
+	    public JSException(String message) {
+	        super(message);
+	        this.message = message;
+	    }
+	 
+	    public JSException(Throwable cause) {
+	        super(cause);
+	    }
+	 
+	    @Override
+	    public String toString() {
+	        return message;
+	    }
+	 
+	    @Override
+	    public String getMessage() {
+	        return message;
+	    }
 	}
 }

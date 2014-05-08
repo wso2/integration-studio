@@ -20,13 +20,14 @@ import java.io.InputStream;
 
 import org.apache.avro.generic.GenericRecord;
 import org.json.JSONException;
+import org.wso2.datamapper.engine.core.MappingResourceLoader.JSException;
 import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
 
 
 public class MappingHandler {
 	
 	public static GenericRecord doMap(InputStream inputMsg, MappingResourceLoader resourceModel,InputDataReaderAdapter inputReader)
-			throws IOException, IllegalAccessException, InstantiationException, JSONException {
+			throws IOException, IllegalAccessException, InstantiationException, JSONException, JSException {
 
 		//XmlInputReader inputReader = new XmlInputReader(); OR
 		//InputDataReaderAdapter inputReader = new CsvInputReader();

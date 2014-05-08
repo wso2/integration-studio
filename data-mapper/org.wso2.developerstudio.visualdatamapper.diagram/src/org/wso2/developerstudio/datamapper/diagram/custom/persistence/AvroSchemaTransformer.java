@@ -117,25 +117,33 @@ public class AvroSchemaTransformer {
 		 */
 		List<Field> fieldsForRecord = new ArrayList<Field>();
 
-		if (!node.getNode().isEmpty()) {
-			for (TreeNode node1 : node.getNode()) {
-				if (node1.getSchemaDataType().equals(SchemaDataType.RECORD)) {
-					fieldsForRecord.add(createRecord(node1));
-				} else {
-					// handles the case of schemaDataType.ARRAY
-					fieldsForRecord.add(createArray(node1));
+		// check whether any records or fields exist as children
+		if (!node.getNode().isEmpty() || !node.getElement().isEmpty()) {
+			if (!node.getNode().isEmpty()) {
+				for (TreeNode node1 : node.getNode()) {
+					if (node1.getSchemaDataType().equals(SchemaDataType.RECORD)) {
+						fieldsForRecord.add(createRecord(node1));
+					} else {
+						// handles the case of schemaDataType.ARRAY
+						fieldsForRecord.add(createArray(node1));
+					}
 				}
 			}
-		}
-		if (!node.getElement().isEmpty()) {
-			for (Element element : node.getElement()) {
-				/*
-				 * SchemaDataType can be either BOOLEAN, BYTES, DOUBLE, FLOAT,
-				 * INT, LONG, STRING
-				 */
-				fieldsForRecord.add(createField(element));
+			if (!node.getElement().isEmpty()) {
+				for (Element element : node.getElement()) {
+					/*
+					 * SchemaDataType can be either BOOLEAN, BYTES, DOUBLE,
+					 * FLOAT, INT, LONG, STRING
+					 */
+					fieldsForRecord.add(createField(element));
+				}
 			}
+		} else { // create a null array
+			Schema nullSchema = Schema.create(Type.NULL);
+			Schema nullArraySchema = Schema.createArray(nullSchema);
+			return new Field(node.getName(), nullArraySchema, null, null);
 		}
+
 		recordSchema.setFields(fieldsForRecord);
 
 		// Schema for ARRAY type

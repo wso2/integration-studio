@@ -25,11 +25,10 @@ public class FunctionExecuter {
 
 	public static GenericRecord execute(MappingResourceLoader resourceModel, GenericRecord inRecord) throws JSException  {
 		GenericRecord genericOutRecord = new GenericData.Record(resourceModel.getOutputSchema());
-		
+		Function fn = resourceModel.getFunction();
 		ScriptableRecord inScriptableRecord = new ScriptableRecord(inRecord,resourceModel.getScope());
 		ScriptableRecord outScriptableRecord = new ScriptableRecord(genericOutRecord,
 				resourceModel.getScope());
-		Function fn = resourceModel.getFunction();
 		Object resultOb = fn.call(resourceModel.getContext(), resourceModel.getScope(),
 				resourceModel.getScope(), new Object[] { inScriptableRecord, outScriptableRecord });
 

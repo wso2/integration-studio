@@ -18,6 +18,10 @@ package org.wso2.developerstudio.datamapper.diagram.custom.configuration.functio
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -106,44 +110,76 @@ public class Function {
 	private String createFunctionCall() {
 		String inputSection = getInputParameter().getName();
 		String outputSection = getOutputParameter().getName();
-		
+
 		String inputParameter = getInputTreeHierarchy();
 		String outputParameter = getOutputTreeHierarchy();
-		
+
 		if (inputSection.equals(outputSection)) {
 			outputSection = "output" + WordUtils.capitalize(outputSection);
 		}
-		
+
 		/*
-		 * If input parameter and output parameter names are identical,
-		 * append term 'output' to the output parameter as a convention.
+		 * If input parameter and output parameter names are identical, append
+		 * term 'output' to the output parameter as a convention.
 		 */
 		if (inputParameter.equals(outputParameter)) {
 			outputParameter = "output" + WordUtils.capitalize(outputParameter);
 		}
-		
-		String functinCall = "map_" + getFlag() + "_" + inputSection + "_"
-				+ getFlag() + "_" + outputSection + "(" + inputParameter
-				+ ", " + outputParameter + ");";
+
+
+		String functinCall = "map_" + getFlag() + "_" + inputSection + "_" + getFlag() + "_" + outputSection + "(" + inputParameter + ", " + outputParameter + ");";
 
 		return functinCall;
 	}
 
+	/**
+	 * when the function call parent is an array, the arguments should be call in for loop
+	 * @param functionCall
+	 * @param parentFunction
+	 */
+	public String getFunctionCall(Function parentFunction) {
+		String inputSection = getInputParameter().getName();
+		String outputSection = getOutputParameter().getName();
+
+		String inputParameter = removeLastNode(getInputTreeHierarchy());
+		String outputParameter = removeLastNode( getOutputTreeHierarchy());
+//
+//		String parentFunctionInput = parentFunction.getInputParameter().getName();
+//		String parentFunctionOutput = parentFunction.getOutputParameter().getName();
+		
+		if (inputSection.equals(outputSection)) {
+			outputSection = "output" + WordUtils.capitalize(outputSection);
+		}
+
+		/*
+		 * If input parameter and output parameter names are identical, append
+		 * term 'output' to the output parameter as a convention.
+		 */
+		if (inputParameter.equals(outputParameter)) {
+			outputParameter = "output" + WordUtils.capitalize(outputParameter);
+		}
+
+		
+		String functinCallString = "map_" + getFlag() + "_" + inputSection + "_" + getFlag() + "_" + outputSection + "(" + inputParameter + ", " +outputParameter + ");";
+		
+		return functinCallString;
+		
+	}
+
+	
 	private String getOutputTreeHierarchy() {
-		return getTreeHierarchy(this.getOutputParameter(), this.getParentFunction()
-				.getOutputParameter());
+		return getTreeHierarchy(this.getOutputParameter(), this.getParentFunction().getOutputParameter());
 	}
 
 	private String getInputTreeHierarchy() {
-		return getTreeHierarchy(this.getInputParameter(), this.getParentFunction()
-				.getInputParameter());
+		return getTreeHierarchy(this.getInputParameter(), this.getParentFunction().getInputParameter());
 	}
 
 	private void createMainFunction() {
 		try {
 			String inputParameter = getInputParameter().getName();
 			String outputParameter = getOutputParameter().getName();
-			
+
 			/*
 			 * If input parameter and output parameter names are identical,
 			 * append term 'output' to the output parameter as a convention.
@@ -151,13 +187,11 @@ public class Function {
 			if (inputParameter.equals(outputParameter)) {
 				outputParameter = "output" + WordUtils.capitalize(outputParameter);
 			}
-			
-			String mainFunctionDeclaration = "function map_" + getFlag() + "_" + inputParameter
-					+ "_" + getFlag() + "_" + outputParameter + "(" + inputParameter + ", "
-					+ outputParameter + ") {";
+
+			String mainFunctionDeclaration = "function map_" + getFlag() + "_" + inputParameter + "_" + getFlag() + "_" + outputParameter + "(" + inputParameter + ", " + outputParameter + ") {";
 
 			setDeclaration(mainFunctionDeclaration);
-			
+
 			if (mainFunction) {
 				setReturnStatement("return " + getOutputParameter().getName() + ";");
 			} else {
@@ -165,6 +199,9 @@ public class Function {
 			}
 		} catch (Exception e) {
 			log.error("Exception while creating main function decleration", e);
+			String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+			ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Cannot generate configuration. The following error(s) have been detected. Please see the error log for more details ", editorStatus);
 		}
 	}
 
@@ -189,6 +226,10 @@ public class Function {
 
 		} catch (Exception e) {
 			log.error("Exception while building function ", e);
+			String simpleMessage = ExceptionMessageMapper.getNonTechnicalMessage(e.getMessage());
+			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
+			ErrorDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Error", "Cannot generate configuration. The following error(s) have been detected. Please see the error log for more details ", editorStatus);
+
 		}
 		return functionBuilder.toString();
 	}
@@ -230,6 +271,26 @@ public class Function {
 
 	public void setMainFunction(boolean mainFunction) {
 		this.mainFunction = mainFunction;
+	}
+	
+	/**
+	 * when tree hierarchy path was created, it may needs to remove highest treenode name and add it with index.
+	 * @param hierarchy
+	 * @return
+	 */
+	private static String removeLastNode(String hierarchy){
+		String[] splited = hierarchy.split("\\.");
+		StringBuilder builder = new StringBuilder();
+		
+		for(int i=1; i<splited.length;i++){
+			builder.append(splited[i]);
+		}
+		if(splited.length == 1){
+			builder.insert(0, splited[0]+"[i]");
+		}else {
+			builder.insert(0, splited[0]+"[i].");			
+		}
+		return builder.toString();
 	}
 
 }

@@ -35,7 +35,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getPassword <em>Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableCaching <em>Enable Caching</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getTimeout <em>Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getParameters <em>Parameters</em>}</li>
  * </ul>
@@ -311,32 +310,6 @@ public interface MessageStore extends EsbElement {
 	 * @generated
 	 */
 	void setEnableCaching(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Timeout</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Timeout</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Timeout</em>' attribute.
-	 * @see #setTimeout(long)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_Timeout()
-	 * @model
-	 * @generated
-	 */
-	long getTimeout();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getTimeout <em>Timeout</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Timeout</em>' attribute.
-	 * @see #getTimeout()
-	 * @generated
-	 */
-	void setTimeout(long value);
 
 	/**
 	 * Returns the value of the '<em><b>Provider Class</b></em>' attribute.

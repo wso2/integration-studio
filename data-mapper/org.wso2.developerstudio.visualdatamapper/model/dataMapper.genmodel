@@ -106,6 +106,7 @@
     <genClasses ecoreClass="dataMapper.ecore#//Split">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/delimiter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/arrayOutput"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dataMapper.ecore#//Split/arrayOutputResultOmitingIndices"/>
     </genClasses>
     <genClasses ecoreClass="dataMapper.ecore#//LowerCase"/>
     <genClasses ecoreClass="dataMapper.ecore#//Contains"/>

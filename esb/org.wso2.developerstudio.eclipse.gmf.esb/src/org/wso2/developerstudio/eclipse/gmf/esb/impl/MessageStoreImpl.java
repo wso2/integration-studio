@@ -53,7 +53,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getPassword <em>Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableCaching <em>Enable Caching</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getTimeout <em>Timeout</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderClass <em>Provider Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
@@ -261,26 +260,6 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * @ordered
 	 */
 	protected boolean enableCaching = ENABLE_CACHING_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getTimeout() <em>Timeout</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTimeout()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final long TIMEOUT_EDEFAULT = 0L;
-
-	/**
-	 * The cached value of the '{@link #getTimeout() <em>Timeout</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTimeout()
-	 * @generated
-	 * @ordered
-	 */
-	protected long timeout = TIMEOUT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getProviderClass() <em>Provider Class</em>}' attribute.
@@ -546,27 +525,6 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getTimeout() {
-		return timeout;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTimeout(long newTimeout) {
-		long oldTimeout = timeout;
-		timeout = newTimeout;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__TIMEOUT, oldTimeout, timeout));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getProviderClass() {
 		return providerClass;
 	}
@@ -637,8 +595,6 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return getJmsSpecVersion();
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
 				return isEnableCaching();
-			case EsbPackage.MESSAGE_STORE__TIMEOUT:
-				return getTimeout();
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				return getProviderClass();
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
@@ -685,9 +641,6 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return;
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
 				setEnableCaching((Boolean)newValue);
-				return;
-			case EsbPackage.MESSAGE_STORE__TIMEOUT:
-				setTimeout((Long)newValue);
 				return;
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				setProviderClass((String)newValue);
@@ -738,9 +691,6 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
 				setEnableCaching(ENABLE_CACHING_EDEFAULT);
 				return;
-			case EsbPackage.MESSAGE_STORE__TIMEOUT:
-				setTimeout(TIMEOUT_EDEFAULT);
-				return;
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				setProviderClass(PROVIDER_CLASS_EDEFAULT);
 				return;
@@ -779,8 +729,6 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return jmsSpecVersion != JMS_SPEC_VERSION_EDEFAULT;
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
 				return enableCaching != ENABLE_CACHING_EDEFAULT;
-			case EsbPackage.MESSAGE_STORE__TIMEOUT:
-				return timeout != TIMEOUT_EDEFAULT;
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				return PROVIDER_CLASS_EDEFAULT == null ? providerClass != null : !PROVIDER_CLASS_EDEFAULT.equals(providerClass);
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
@@ -819,8 +767,6 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 		result.append(jmsSpecVersion);
 		result.append(", enableCaching: ");
 		result.append(enableCaching);
-		result.append(", timeout: ");
-		result.append(timeout);
 		result.append(", providerClass: ");
 		result.append(providerClass);
 		result.append(')');

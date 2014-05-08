@@ -22,12 +22,13 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyAction <em>Property Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getPropertyScope <em>Property Scope</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue <em>Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueOM <em>Value OM</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean <em>Boolean</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringPattern <em>Value String Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
  * </ul>
@@ -184,31 +185,31 @@ public interface PropertyMediator extends Mediator {
 	void setValueType(PropertyValueType value);
 
 	/**
-	 * Returns the value of the '<em><b>Value Literal</b></em>' attribute.
+	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"value"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value Literal</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value Literal</em>' attribute.
-	 * @see #setValueLiteral(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_ValueLiteral()
+	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #setValue(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_Value()
 	 * @model default="value"
 	 * @generated
 	 */
-	String getValueLiteral();
+	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueLiteral <em>Value Literal</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Literal</em>' attribute.
-	 * @see #getValueLiteral()
+	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @see #getValue()
 	 * @generated
 	 */
-	void setValueLiteral(String value);
+	void setValue(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Expression</b></em>' attribute.
@@ -315,31 +316,57 @@ public interface PropertyMediator extends Mediator {
 	void setValueExpression(NamespacedProperty value);
 
 	/**
-	 * Returns the value of the '<em><b>Value OM</b></em>' attribute.
-	 * The default value is <code>"<value/>"</code>.
+	 * Returns the value of the '<em><b>Boolean</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value OM</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Boolean</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value OM</em>' attribute.
-	 * @see #setValueOM(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_ValueOM()
+	 * @return the value of the '<em>Boolean</em>' attribute.
+	 * @see #setBoolean(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_Boolean()
+	 * @model
+	 * @generated
+	 */
+	boolean isBoolean();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean <em>Boolean</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Boolean</em>' attribute.
+	 * @see #isBoolean()
+	 * @generated
+	 */
+	void setBoolean(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>OM</b></em>' attribute.
+	 * The default value is <code>"<value/>"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>OM</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>OM</em>' attribute.
+	 * @see #setOM(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPropertyMediator_OM()
 	 * @model default="<value/>"
 	 * @generated
 	 */
-	String getValueOM();
+	String getOM();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueOM <em>Value OM</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value OM</em>' attribute.
-	 * @see #getValueOM()
+	 * @param value the new value of the '<em>OM</em>' attribute.
+	 * @see #getOM()
 	 * @generated
 	 */
-	void setValueOM(String value);
+	void setOM(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Value String Pattern</b></em>' attribute.

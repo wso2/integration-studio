@@ -111,7 +111,8 @@ public class MessageStoreDeserializer
 									executeSetValueCommand(MESSAGE_STORE__ENABLE_CACHING, false);
 								}
 							}
-						} else if (param.getKey().equals("store.jms.ConsumerReceiveTimeOut")) {
+						} 
+					/*	else if (param.getKey().equals("store.jms.ConsumerReceiveTimeOut")) {
 							Object value = params.get("store.jms.ConsumerReceiveTimeOut");
 							if (value != null) {
 								if (StringUtils.isNumeric(value.toString())) {
@@ -119,7 +120,8 @@ public class MessageStoreDeserializer
 											new Long(value.toString()));
 								}
 							}
-						} else {
+						}*/
+						else {
 							/*
 							 * Any additional parameters not listed above will handle here
 							 * Fixing TOOLS-2286

@@ -25,6 +25,7 @@ import org.wso2.developerstudio.datamapper.Element;
 import org.wso2.developerstudio.datamapper.Operator;
 import org.wso2.developerstudio.datamapper.SchemaDataType;
 import org.wso2.developerstudio.datamapper.TreeNode;
+import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.ForLoop;
 import org.wso2.developerstudio.datamapper.diagram.custom.configuration.function.Function;
 
 public class OperatorConfigurationUtil {
@@ -134,20 +135,23 @@ public class OperatorConfigurationUtil {
 	
 	public static String jsFunction(String input, String output, ArrayList<String> assignments, boolean recursive) {
 		if(recursive){
-
-			String function = "function map_L_"+input+"_L_"+output+"(" + input + ", " + output + "){\n";
+			StringBuilder function = new StringBuilder();
+			function.append("function map_L_").append(input).append("_L_").append(output).append("(" ).append( input ).append( ", " ).append( output ).append( "){\n");
 			for(String assignment : assignments){
-				function.concat(assignment).concat("\n");
+				function.append(assignment).append("\n");
 			}
-			return function.concat("}");
+			function.append("}");
+			return function.toString();
 		}
 		
 
-		String function = "function map_S_"+input+"_S_"+output+"(" + input + ", " + output + "){\n";
+		StringBuilder function = new StringBuilder();
+		function.append("function map_S_").append(input).append("_S_").append(output).append("(" ).append( input ).append( ", " ).append( output ).append( "){\n");
 		for(String assignment : assignments){
-			function.concat(assignment).concat("\n");
+			function.append(assignment).append("\n");
 		}
-		return function.concat("}");
+		function.append("}");
+		return function.toString();
 	}
 	
 	public static String getForLoop() {
@@ -269,7 +273,22 @@ public class OperatorConfigurationUtil {
 
 	}
 
-	
+	/**
+	 * there can be multiple for loops in a function. When new assignment or function call needs to be set to a for-loop,
+	 * it needs to find exist for-loop.
+	 * @param loop	list of exist for loops
+	 * @param parentTreeNode the array treenode of a for-loop (which would be the ID)
+	 * @return	matching for-loop if exisit or null
+	 */
+	public static ForLoop isForLoopCreated(List<ForLoop> loop, TreeNode parentTreeNode){
+		for(ForLoop eachLoop : loop){
+			if(eachLoop.getArrayTree().equals(parentTreeNode)){
+				return eachLoop;
+			}
+		}
+		
+		return null;
+	}
 	
 
 }

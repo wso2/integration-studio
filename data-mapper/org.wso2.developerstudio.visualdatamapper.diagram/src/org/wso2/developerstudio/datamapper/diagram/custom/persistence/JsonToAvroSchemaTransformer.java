@@ -29,6 +29,7 @@ import org.codehaus.jackson.JsonFactory;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.node.NullNode;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -42,6 +43,7 @@ import org.wso2.developerstudio.datamapper.diagram.Activator;
  */
 public class JsonToAvroSchemaTransformer {
 
+	private static final String ANONYMOUS_ROOT_ID = "AnonymousRootNode";
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private static final String ERROR_PARSING_JSON_INPUT = Messages.JsonToAvroSchemaTransformer_errorParsingJsonInput;
 
@@ -69,12 +71,18 @@ public class JsonToAvroSchemaTransformer {
 			return null;
 		}
 
-		// Consider only first root. Multi-rooted json are not supported
-		String firstFieldName = jsonNode.getFieldNames().next();
-		jsonNode = jsonNode.get(firstFieldName);
+		String rootName;
+		// JSON can exist with no named-root. if multiple elements exist under
+		// the anonymous-root, create a dummy root node
+		if (jsonNode.size() > 1) {
+			rootName = ANONYMOUS_ROOT_ID;
+		} else {
+			rootName = jsonNode.getFieldNames().next();
+			jsonNode = jsonNode.get(rootName);
+		}
 
 		// Schema of the root element
-		Schema schema = Schema.createRecord(firstFieldName, null, null, false);
+		Schema schema = Schema.createRecord(rootName, null, null, false);
 		List<Field> fields = new ArrayList<Field>();
 
 		Iterator<Entry<String, JsonNode>> jsonFields = jsonNode.getFields();
@@ -101,16 +109,6 @@ public class JsonToAvroSchemaTransformer {
 
 			}
 		}
-		/*
-		 * if (jsonNode.has(0)) { // iterate over children of root node
-		 * Iterator<JsonNode> elements = jsonNode.getElements(); while
-		 * (elements.hasNext()) { JsonNode element = elements.next();
-		 * 
-		 * if (element.isObject()) { // handles if child is a record
-		 * fields.add(createRecord(element)); } else if (element.isArray()) { //
-		 * handles if child is an array fields.add(createArray(element)); } else
-		 * { // handles primitive types fields.add(createField(element)); } } }
-		 */
 
 		/*
 		 * setFields() is locked after first assignment of fields. Call only
@@ -119,19 +117,6 @@ public class JsonToAvroSchemaTransformer {
 		schema.setFields(fields);
 
 		return schema;
-		/*
-		 * //Field Schema schema2 = Schema.create(Type.STRING); Field field2 =
-		 * new Field("CCCC", schema2, null, null); //Record Schema schema1 =
-		 * Schema.createRecord("BBBB", null, null, false); List<Field> fields1 =
-		 * new ArrayList<Field>(); fields1.add(field2);
-		 * schema1.setFields(fields1); Field field11 = new Field("DDDD",
-		 * schema1, null, null); //Root record Schema schema =
-		 * Schema.createRecord("AAAA", null, null, false); List<Field> fields =
-		 * new ArrayList<Field>(); fields.add(field11);
-		 * schema.setFields(fields);
-		 * 
-		 * return schema;
-		 */
 	}
 
 	private Field createRecord(JsonNode node, String nodeFieldKey) {
@@ -183,29 +168,36 @@ public class JsonToAvroSchemaTransformer {
 		 */
 		List<Field> fieldsForRecord = new ArrayList<Field>();
 
-		Iterator<Entry<String, JsonNode>> jsonFields = node.getFields();
-		while (jsonFields.hasNext()) {
-			Entry<String, JsonNode> jsonField = jsonFields.next();
+		if (null != node.get(0) && null != node.get(0).getFields()) {
+			// Get the first child as a reference to all children
+			Iterator<Entry<String, JsonNode>> jsonFields = node.get(0).getFields();
+			while (jsonFields.hasNext()) {
+				Entry<String, JsonNode> jsonField = jsonFields.next();
 
-			// Name of the json node
-			String jsonFieldKey = jsonField.getKey();
-			// Get sub node using node name
-			JsonNode subNode = node.get(jsonFieldKey);
+				// Name of the json node
+				String jsonFieldKey = jsonField.getKey();
+				// Get sub node using node name
+				JsonNode subNode = node.get(0).get(jsonFieldKey);
 
-			// Continue only if a sub node is present
-			if (null != subNode) {
-				if (subNode.isObject()) {
-					// handles if child is a record
-					fieldsForRecord.add(createRecord(subNode, jsonFieldKey));
-				} else if (subNode.isArray()) {
-					// handles if child is an array
-					fieldsForRecord.add(createArray(subNode, jsonFieldKey));
-				} else {
-					// handles primitive types
-					fieldsForRecord.add(createField(subNode, jsonFieldKey));
+				// Continue only if a sub node is present
+				if (null != subNode) {
+					if (subNode.isObject()) {
+						// handles if child is a record
+						fieldsForRecord.add(createRecord(subNode, jsonFieldKey));
+					} else if (subNode.isArray()) {
+						// handles if child is an array
+						fieldsForRecord.add(createArray(subNode, jsonFieldKey));
+					} else {
+						// handles primitive types
+						fieldsForRecord.add(createField(subNode, jsonFieldKey));
+					}
 				}
-			}
 
+			}
+		} else { // Nullable array. This is not yet parsed by TreeFromAVSC
+			Schema nullSchema = Schema.create(Type.NULL);
+			Schema nullArraySchema = Schema.createArray(nullSchema);
+			return new Field(nodeFieldKey, nullArraySchema, null, null);
 		}
 		recordSchema.setFields(fieldsForRecord);
 
@@ -219,25 +211,30 @@ public class JsonToAvroSchemaTransformer {
 	private Field createField(JsonNode node, String nodeFieldKey) {
 		Type fieldDatatype = null;
 
-		// Conversion from primitive type to avro specification
-		if (node.isBoolean()) {
-			fieldDatatype = Type.BOOLEAN;
-		} else if (node.isDouble()) {
-			fieldDatatype = Type.DOUBLE;
-		} else if (node.isFloatingPointNumber()) {
-			fieldDatatype = Type.FLOAT;
-		} else if (node.isInt()) {
-			fieldDatatype = Type.INT;
-		} else if (node.isLong()) {
-			fieldDatatype = Type.LONG;
-		} else if (node.isTextual()) {
-			fieldDatatype = Type.STRING;
+		// node is a NullNode when field becomes null in actual json
+		if (!(node instanceof NullNode)) {
+			// Conversion from primitive type to avro specification
+			if (node.isBoolean()) {
+				fieldDatatype = Type.BOOLEAN;
+			} else if (node.isDouble()) {
+				fieldDatatype = Type.DOUBLE;
+			} else if (node.isFloatingPointNumber()) {
+				fieldDatatype = Type.FLOAT;
+			} else if (node.isInt()) {
+				fieldDatatype = Type.INT;
+			} else if (node.isLong()) {
+				fieldDatatype = Type.LONG;
+			} else if (node.isTextual()) {
+				fieldDatatype = Type.STRING;
+			}
+			// No support for Type.BYTES in jackson
+			// Following types are not supported yet : ENUM, FIXED, MAP, UNION
+		} else {
+			fieldDatatype = Type.NULL;
 		}
-		// No support for Type.BYTES in jackson
-		// Following types are not supported yet : ENUM, FIXED, MAP, NULL, UNION
 
-		// Schema for type:field
 		if (null != fieldDatatype) {
+			// Schema for type:field
 			Schema schema1 = Schema.create(fieldDatatype);
 			Field field = new Field(nodeFieldKey, schema1, null, null);
 			return field;

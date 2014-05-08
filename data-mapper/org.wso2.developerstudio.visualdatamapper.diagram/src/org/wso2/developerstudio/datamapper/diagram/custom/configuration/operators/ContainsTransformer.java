@@ -1,3 +1,19 @@
+/*
+ * Copyright 2014 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.datamapper.diagram.custom.configuration.operators;
 
 import java.util.ArrayList;
@@ -21,7 +37,6 @@ public class ContainsTransformer implements OperatorsTransformer{
 		EObject containsInput = getInputObject(operator);
 
 		if (containsInput instanceof Element) {
-			Element inputElement = (Element) containsInput;
 			return getSimpleOperatorMapping(operator);
 
 		} else if (containsInput instanceof OperatorRightConnector) {
@@ -53,36 +68,44 @@ public class ContainsTransformer implements OperatorsTransformer{
 		return outputParent;
 	}
 
+	/**
+	 * retrieve mapped object to input connector of operator
+	 * @param operator this operator
+	 * @return mapped object to input connector of operator
+	 */
 	private EObject getInputObject(Operator operator) {
 		EList<OperatorLeftConnector> leftConnectors = operator.getBasicContainer().getLeftContainer().getLeftConnectors();
 		EObject inputObject = leftConnectors.get(0).getInNode().getIncomingLink().get(0).getOutNode().eContainer();
 		return inputObject;
 	}
 
-	private Operator getInputOperator(EObject in) {
-		return (Operator) in.eContainer().eContainer().eContainer();
-	}
+//	private Operator getInputOperator(EObject in) {
+//		return (Operator) in.eContainer().eContainer().eContainer();
+//	}
 
-
+	/**
+	 * config generation for mapping with one operator scenario stright forwerd and this method provide assignment for this operator
+	 * @param operator		this operator
+	 * @return	assignment statement for map
+	 */
 	private AssignmentStatement getSimpleOperatorMapping(Operator operator) {
 		ArrayList<Element> inputElements = getInputElements(operator);
 		Element outputElement = getOutputElement(operator);
 		TreeNode outputParent = getOutputElementParent(operator);
 
 		TreeNode inputElementsParent = getInputElementParent(operator);
-//		String assign ="";
 		String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + " = " + getTreeHierarchy(inputElements.get(0).getFieldParent(), inputElementsParent) + "."+inputElements.get(0).getName()+".contains( " +getTreeHierarchy(inputElements.get(1).getFieldParent(), inputElementsParent)+"."+inputElements.get(1).getName() + " );";
-		
-//		for(Element input : inputElements){
-//			String assign = getTreeHierarchy(outputElement.getFieldParent(), outputParent) + "." + outputElement.getName() + ".equel( " + input.getFieldParent().getName() + "." + input.getName() + " );";
-//			
-//		}
-
 		AssignmentStatement statement = new AssignmentStatement();
 		statement.setStatement(assign);
 		return statement;
 	}
 
+	/**
+	 * traverse up from a given treeNode to given root treenode and build path
+	 * @param tree	given treenode
+	 * @param parent	given root treenode
+	 * @return path to root treeNode from given treeNode
+	 */
 	private String getTreeHierarchy(TreeNode tree, TreeNode parent) {
 		StringBuilder hierarchy = new StringBuilder();
 
@@ -142,6 +165,12 @@ public class ContainsTransformer implements OperatorsTransformer{
 			}
 		}
 		return elementList;
+	}
+
+	@Override
+	public String trasnform(String statement, Operator operator, Operator nextOperator) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

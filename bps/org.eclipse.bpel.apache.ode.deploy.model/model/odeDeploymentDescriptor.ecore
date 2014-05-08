@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dd"
-    nsURI="http://www.apache.org/ode/schemas/dd/2007/03" nsPrefix="">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dd" nsURI="http://www.apache.org/ode/schemas/dd/2007/03" nsPrefix="">
   <eClassifiers xsi:type="ecore:EClass" name="BindingType">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="binding_._type"/>
@@ -334,6 +332,7 @@
         <details key="name" value="partnerLink"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="correlationFilter" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TScopeEvents" eSuperTypes="#//TEnableEventList">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

@@ -37,7 +37,7 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 	 */
 	public static ddFactory init() {
 		try {
-			ddFactory theddFactory = (ddFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.apache.org/ode/schemas/dd/2007/03"); 
+			ddFactory theddFactory = (ddFactory)EPackage.Registry.INSTANCE.getEFactory(ddPackage.eNS_URI);
 			if (theddFactory != null) {
 				return theddFactory;
 			}

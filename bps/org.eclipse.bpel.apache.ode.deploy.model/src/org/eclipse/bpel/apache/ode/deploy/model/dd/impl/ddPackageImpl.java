@@ -607,6 +607,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTProvide_CorrelationFilter() {
+		return (EAttribute)tProvideEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTScopeEvents() {
 		return tScopeEventsEClass;
 	}
@@ -754,6 +763,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		tProvideEClass = createEClass(TPROVIDE);
 		createEReference(tProvideEClass, TPROVIDE__SERVICE);
 		createEAttribute(tProvideEClass, TPROVIDE__PARTNER_LINK);
+		createEAttribute(tProvideEClass, TPROVIDE__CORRELATION_FILTER);
 
 		tScopeEventsEClass = createEClass(TSCOPE_EVENTS);
 		createEAttribute(tScopeEventsEClass, TSCOPE_EVENTS__NAME);
@@ -858,6 +868,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEClass(tProvideEClass, TProvide.class, "TProvide", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTProvide_Service(), this.getTService(), null, "service", null, 1, 1, TProvide.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTProvide_PartnerLink(), theXMLTypePackage.getString(), "partnerLink", null, 1, 1, TProvide.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTProvide_CorrelationFilter(), theXMLTypePackage.getString(), "correlationFilter", null, 0, 1, TProvide.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tScopeEventsEClass, TScopeEvents.class, "TScopeEvents", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTScopeEvents_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, TScopeEvents.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

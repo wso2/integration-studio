@@ -555,13 +555,22 @@ public interface ddPackage extends EPackage {
 	int TPROVIDE__PARTNER_LINK = 1;
 
 	/**
+	 * The feature id for the '<em><b>Correlation Filter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TPROVIDE__CORRELATION_FILTER = 2;
+
+	/**
 	 * The number of structural features of the '<em>TProvide</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TPROVIDE_FEATURE_COUNT = 2;
+	int TPROVIDE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TScopeEventsImpl <em>TScope Events</em>}' class.
@@ -1119,6 +1128,17 @@ public interface ddPackage extends EPackage {
 	EAttribute getTProvide_PartnerLink();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide#getCorrelationFilter <em>Correlation Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Correlation Filter</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide#getCorrelationFilter()
+	 * @see #getTProvide()
+	 * @generated
+	 */
+	EAttribute getTProvide_CorrelationFilter();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TScopeEvents <em>TScope Events</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1583,6 +1603,14 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TPROVIDE__PARTNER_LINK = eINSTANCE.getTProvide_PartnerLink();
+
+		/**
+		 * The meta object literal for the '<em><b>Correlation Filter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TPROVIDE__CORRELATION_FILTER = eINSTANCE.getTProvide_CorrelationFilter();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TScopeEventsImpl <em>TScope Events</em>}' class.

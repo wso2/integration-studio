@@ -21,11 +21,11 @@ import org.apache.commons.lang.WordUtils;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.datamapper.TreeNode;
 import org.wso2.developerstudio.datamapper.diagram.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.eclipse.ui.PlatformUI;
 
 public class Function {
 
@@ -126,11 +126,47 @@ public class Function {
 			outputParameter = "output" + WordUtils.capitalize(outputParameter);
 		}
 
+
 		String functinCall = "map_" + getFlag() + "_" + inputSection + "_" + getFlag() + "_" + outputSection + "(" + inputParameter + ", " + outputParameter + ");";
 
 		return functinCall;
 	}
 
+	/**
+	 * when the function call parent is an array, the arguments should be call in for loop
+	 * @param functionCall
+	 * @param parentFunction
+	 */
+	public String getFunctionCall(Function parentFunction) {
+		String inputSection = getInputParameter().getName();
+		String outputSection = getOutputParameter().getName();
+
+		String inputParameter = removeLastNode(getInputTreeHierarchy());
+		String outputParameter = removeLastNode( getOutputTreeHierarchy());
+//
+//		String parentFunctionInput = parentFunction.getInputParameter().getName();
+//		String parentFunctionOutput = parentFunction.getOutputParameter().getName();
+		
+		if (inputSection.equals(outputSection)) {
+			outputSection = "output" + WordUtils.capitalize(outputSection);
+		}
+
+		/*
+		 * If input parameter and output parameter names are identical, append
+		 * term 'output' to the output parameter as a convention.
+		 */
+		if (inputParameter.equals(outputParameter)) {
+			outputParameter = "output" + WordUtils.capitalize(outputParameter);
+		}
+
+		
+		String functinCallString = "map_" + getFlag() + "_" + inputSection + "_" + getFlag() + "_" + outputSection + "(" + inputParameter + ", " +outputParameter + ");";
+		
+		return functinCallString;
+		
+	}
+
+	
 	private String getOutputTreeHierarchy() {
 		return getTreeHierarchy(this.getOutputParameter(), this.getParentFunction().getOutputParameter());
 	}
@@ -235,6 +271,26 @@ public class Function {
 
 	public void setMainFunction(boolean mainFunction) {
 		this.mainFunction = mainFunction;
+	}
+	
+	/**
+	 * when tree hierarchy path was created, it may needs to remove highest treenode name and add it with index.
+	 * @param hierarchy
+	 * @return
+	 */
+	private static String removeLastNode(String hierarchy){
+		String[] splited = hierarchy.split("\\.");
+		StringBuilder builder = new StringBuilder();
+		
+		for(int i=1; i<splited.length;i++){
+			builder.append(splited[i]);
+		}
+		if(splited.length == 1){
+			builder.insert(0, splited[0]+"[i]");
+		}else {
+			builder.insert(0, splited[0]+"[i].");			
+		}
+		return builder.toString();
 	}
 
 }

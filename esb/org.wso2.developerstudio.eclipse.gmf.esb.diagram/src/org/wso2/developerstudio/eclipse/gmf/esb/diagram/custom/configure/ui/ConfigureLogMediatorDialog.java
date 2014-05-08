@@ -231,7 +231,9 @@ public class ConfigureLogMediatorDialog extends Dialog {
 
 		logSeparatorText = new Text(container, SWT.SINGLE | SWT.BORDER);
 		{
+			if(logMediator.getLogSeparator() != null){
 			logSeparatorText.setText(logMediator.getLogSeparator());
+			}
 			FormData logSeparatorTextLayoutData = new FormData(25, SWT.DEFAULT);
 			logSeparatorTextLayoutData.top = new FormAttachment(logLevelCombo,
 					5);

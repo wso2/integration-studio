@@ -112,9 +112,9 @@ public class ExportSchemaAction extends AbstractActionHandler {
 				try {
 					FileUtils.writeStringToFile(new File(filePath), exportContent);
 				} catch (IOException e) {
-					log.error(ERROR_SAVING_FILE);
+					log.error(ERROR_SAVING_FILE + filePath, e);
 					IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()); //$NON-NLS-1$
-					ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_SAVING_FILE,
+					ErrorDialog.openError(Display.getCurrent().getActiveShell(), ERROR_SAVING_FILE + filePath,
 							null, status);
 					return;
 				}

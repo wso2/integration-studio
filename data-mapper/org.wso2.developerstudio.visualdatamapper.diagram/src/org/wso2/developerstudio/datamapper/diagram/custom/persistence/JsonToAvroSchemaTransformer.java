@@ -194,7 +194,7 @@ public class JsonToAvroSchemaTransformer {
 				}
 
 			}
-		} else { // Nullable array. This is not yet parsed by TreeFromAVSC
+		} else { // Nullable array
 			Schema nullSchema = Schema.create(Type.NULL);
 			Schema nullArraySchema = Schema.createArray(nullSchema);
 			return new Field(nodeFieldKey, nullArraySchema, null, null);

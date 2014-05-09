@@ -72,7 +72,7 @@
                                 </artifactItem-->
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-kepler-win32-x86_64</artifactId>
+                                    <artifactId>eclipse-jee-kepler-win64-x86_64</artifactId>
                                     <version>4.3.2</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>

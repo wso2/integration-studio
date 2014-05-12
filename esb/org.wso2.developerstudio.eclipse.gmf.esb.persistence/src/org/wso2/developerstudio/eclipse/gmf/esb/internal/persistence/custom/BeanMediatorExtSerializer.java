@@ -17,7 +17,6 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.BeanMediatorSerializer;
 import org.apache.synapse.config.xml.ValueSerializer;
@@ -38,22 +37,22 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 
         BeanMediatorExt mediator = (BeanMediatorExt) m;
 
-		OMElement mediatorElem = fac.createOMElement(BEAN, synNS);
-		saveTracingState(mediatorElem, mediator);
+        OMElement mediatorElem = fac.createOMElement(BEAN, synNS);
+        saveTracingState(mediatorElem, mediator);
 
-		if (null != mediator.getAction()) { // Never becomes empty
-			mediatorElem.addAttribute(fac.createOMAttribute(BeanConstants.ACTION, nullNS, mediator
-					.getAction().toString()));
-		} else {
-			handleException();
-		}
+        if (mediator.getAction() != null) {
+            mediatorElem.addAttribute(fac.createOMAttribute(
+                    BeanConstants.ACTION, nullNS, mediator.getAction().toString()));
+        } else {
+            handleException();
+        }
 
-		if (StringUtils.isNotBlank(mediator.getVarName())) {
-			mediatorElem.addAttribute(fac.createOMAttribute(BeanConstants.VAR, nullNS,
-					mediator.getVarName()));
-		} else {
-			handleException();
-		}
+        if (mediator.getVarName() != null) {
+            mediatorElem.addAttribute(fac.createOMAttribute(
+                    BeanConstants.VAR, nullNS, mediator.getVarName()));
+        } else {
+            handleException();
+        }
 
         switch (mediator.getAction()) {
             case CREATE:
@@ -74,9 +73,9 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 
     private void serializeCreateBeanCase(OMElement mediatorElem, BeanMediatorExt mediator) {
 
-		if (StringUtils.isNotBlank(mediator.getClassName())) {
-			mediatorElem.addAttribute(fac.createOMAttribute(BeanConstants.CLASS, nullNS,
-					mediator.getClassName()));
+        if (mediator.getClassName() != null) {
+            mediatorElem.addAttribute(fac.createOMAttribute(
+                    BeanConstants.CLASS, nullNS, mediator.getClassName()));
         } else {
             handleException();
         }
@@ -89,17 +88,11 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 
     private void serializeSetPropertyCase(OMElement mediatorElem, BeanMediatorExt mediator) {
 
-		serializePropertyName(mediatorElem, mediator);
+        serializePropertyName(mediatorElem, mediator);
 
-		if (null != mediator.getValue()) {
-			// Check either value literal or expression is not null and not
-			// empty
-			if (StringUtils.isNotBlank(mediator.getValue().getKeyValue())
-					|| StringUtils.isNotBlank(mediator.getValue().getExpression().getExpression())) {
-				new ValueSerializer().serializeValue(mediator.getValue(), BeanConstants.VALUE,
-						mediatorElem);
-			}
-			
+        if (mediator.getValue() != null) {
+            new ValueSerializer().serializeValue(
+                    mediator.getValue(), BeanConstants.VALUE, mediatorElem);
         } else {
             handleException();
         }
@@ -109,16 +102,9 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 
         serializePropertyName(mediatorElem, mediator);
 
-		if (null != mediator.getTargetValue()) {
-			// Check either value literal or expression is not null and not
-			// empty
-			if (StringUtils.isNotBlank(mediator.getTargetValue().getKeyValue())
-					|| StringUtils.isNotBlank(mediator.getTargetValue().getExpression()
-							.getExpression())) {
-				new ValueSerializer().serializeValue(mediator.getTargetValue(),
-						BeanConstants.TARGET, mediatorElem);
-			}
-        	 
+        if (mediator.getTargetValue() != null) {
+        	 new ValueSerializer().serializeValue(
+        			 mediator.getTargetValue(), BeanConstants.TARGET, mediatorElem);
         } else {
             handleException();
         }
@@ -126,7 +112,7 @@ public class BeanMediatorExtSerializer extends BeanMediatorSerializer {
 
     private void serializePropertyName(OMElement mediatorElem, BeanMediator mediator) {
 
-		if (StringUtils.isNotBlank(mediator.getPropertyName())) {
+        if (mediator.getPropertyName() != null) {
             mediatorElem.addAttribute(fac.createOMAttribute(
                     BeanConstants.PROPERTY, nullNS, mediator.getPropertyName()));
         } else {

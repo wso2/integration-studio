@@ -1,1 +1,0 @@
-/* WSO2 Data Mapper Config */

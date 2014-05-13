@@ -209,10 +209,7 @@ public class MessageStoreEditPart extends ShapeNodeEditPart {
 		 */
 		public MessageStoreFigure() {
 			this.setBackgroundColor(THIS_BACK);
-			
-			ToolbarLayout layoutThis = new ToolbarLayout();
-			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
-			this.setLayoutManager(layoutThis);
+
 		}
 
 		@Override

@@ -120,16 +120,17 @@ public class XSLTMediatorDeserializer extends
 					visualFeature.setFeatureName(featureMediatorProperty.getName());
 				}
 
-				if (Boolean.parseBoolean(featureMediatorProperty.getValue())) {
+				//if (Boolean.parseBoolean(featureMediatorProperty.getValue())) {
 
 					visualFeature.setFeatureEnabled(Boolean.parseBoolean(featureMediatorProperty.getValue()));
-				}
+				//}
 
 				vishualFeatureList.add(visualFeature);
 
 			}
 
 			//vishualXslt.getFeatures().addAll(vishualFeatureList);
+			executeSetValueCommand(XSLT_MEDIATOR__FEATURES, vishualFeatureList);
 		}
 
 		if (xsltMediator.getProperties() != null && !xsltMediator.getProperties().isEmpty()) {

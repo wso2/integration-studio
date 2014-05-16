@@ -26,7 +26,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Pattern;
+
 import javax.xml.namespace.QName;
+
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
@@ -50,6 +52,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.model.MessageProcessorModel;
+import org.wso2.developerstudio.eclipse.artifact.messageprocessor.util.MessageProcessorImageUtils;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -76,7 +79,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 		messageProcessorModel = new MessageProcessorModel();
 		setModel(messageProcessorModel);
 		setWindowTitle("New Message processor");
-		// setDefaultPageImageDescriptor(MessageProcessorImageUtils.getInstance().getImageDescriptor("icons/message-store.png"));
+		setDefaultPageImageDescriptor(MessageProcessorImageUtils.getInstance().getImageDescriptor("message-processor.png"));
 	}
 
 	@Override

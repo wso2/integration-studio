@@ -270,8 +270,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			
 	        });
 	        menuMgr.setRemoveAllWhenShown(true);
-	        viewer.getControl().setMenu(menu); 
-	        ShowLoginDialog();
+	        viewer.getControl().setMenu(menu);
 	        updateApplicationView();
 	}
 

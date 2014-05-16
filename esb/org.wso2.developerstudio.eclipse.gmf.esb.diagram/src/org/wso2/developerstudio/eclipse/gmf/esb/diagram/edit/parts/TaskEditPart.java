@@ -233,7 +233,7 @@ public class TaskEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	static final Color THIS_BACK = new Color(null, 245, 243, 215);
 

@@ -225,6 +225,6 @@ public class MessageProcessorEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	static final Color THIS_BACK = new Color(null, 40, 151, 248);
+	static final Color THIS_BACK = new Color(null, 245, 243, 215);
 
 }

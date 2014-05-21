@@ -284,9 +284,6 @@ public class PasswordDialog extends Dialog {
 		    val = Authenticator.getInstance().Authenticate(JagApiProperties.getLoginUrl(), credentials); 
 		    if(val && isfromDashboad()){
 		    	Authenticator.getInstance().setFromDashboad(isfromDashboad());
-		    	hideDashboards();
-		    	IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-	        	PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.appfactory.ui.perspective", window);
 		    } 
 		    resetCredintials(val, oldCredentials, oldServerURL);
 		} catch (Exception e) {

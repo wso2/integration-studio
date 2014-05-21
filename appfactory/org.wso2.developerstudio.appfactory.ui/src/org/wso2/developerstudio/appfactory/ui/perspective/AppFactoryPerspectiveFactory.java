@@ -50,30 +50,12 @@ public class AppFactoryPerspectiveFactory implements IPerspectiveFactory {
 	public void createInitialLayout(IPageLayout appfacLayout) {
 
 		try {
-			if(Authenticator.getInstance().isFromDashboad()){/*Request come form dash-board*/
-				Authenticator.getInstance().setFromDashboad(false);
-				initAfViewsloadingProcess(appfacLayout);
-			}else{
-				if(Authenticator.getInstance().isLoaded()){/*Request come from Perspective selector*/
-					initAfViewsloadingProcess(appfacLayout);
-				}else{
-					Authenticator.getInstance().setCredentials(null);/*Should be a new Login attempts*/
-					LoginAction loginAction = new LoginAction();
-					loginAction.login(false,false);
-					if(Authenticator.getInstance().getCredentials()!=null){
-						initAfViewsloadingProcess(appfacLayout);
-					}else{
-						addGostView(appfacLayout);
-					}
-				}
-			}
+			initAfViewsloadingProcess(appfacLayout);
 		} catch (Exception e) {
 			log.error("Perspective loading issue", e); //$NON-NLS-1$
 		}
 	}
 
-	
-	
 	private void initAfViewsloadingProcess(IPageLayout appfacLayout)
 			throws InvocationTargetException, InterruptedException {
 		ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(

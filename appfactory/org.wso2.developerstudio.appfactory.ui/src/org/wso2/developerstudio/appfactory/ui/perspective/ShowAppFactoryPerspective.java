@@ -15,8 +15,15 @@
  */
 package org.wso2.developerstudio.appfactory.ui.perspective;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.appfactory.core.Activator;
 import org.wso2.developerstudio.appfactory.ui.actions.LoginAction;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -24,12 +31,17 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 public class ShowAppFactoryPerspective extends Action{
-private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
+
+	static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.dashboard";
+	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	public void run() {
 		 try {
-				LoginAction loginAction = new LoginAction();
-				loginAction.login(true,true);
+			    hideDashboards();
+		    	IWorkbenchWindow window=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+	        	PlatformUI.getWorkbench().showPerspective("org.wso2.developerstudio.appfactory.ui.perspective", window);
 				 
 				
 			} catch (Exception e) {
@@ -47,4 +59,24 @@ private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	public String getDescription() {
 		return "Switch to AppFactory perspective";
 	}
+	
+	  private void hideDashboards(){
+		  	try {
+		  		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+					IWorkbenchPage page = window.getActivePage();
+					List<IEditorReference> openEditors = new ArrayList<IEditorReference>();
+					IEditorReference[] editorReferences = PlatformUI.getWorkbench()
+							.getActiveWorkbenchWindow().getActivePage().getEditorReferences();
+					for (IEditorReference iEditorReference : editorReferences) {
+						if (DASHBOARD_VIEW_ID.equals(iEditorReference.getId())) {
+							openEditors.add(iEditorReference);
+						}
+					}
+					if (openEditors.size() > 0) {
+						page.closeEditors(openEditors.toArray(new IEditorReference[] {}), false);
+					}
+				} catch (Exception e) {
+					/* safe to ignore */
+				}
+		  }
 }

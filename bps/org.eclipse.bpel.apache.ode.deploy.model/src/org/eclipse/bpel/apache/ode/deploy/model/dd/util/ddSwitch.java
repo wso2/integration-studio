@@ -157,6 +157,18 @@ public class ddSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ddPackage.TBAM_SERVER_PROFILES: {
+				TBamServerProfiles tBamServerProfiles = (TBamServerProfiles)theEObject;
+				T result = caseTBamServerProfiles(tBamServerProfiles);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ddPackage.TPROFILE: {
+				TProfile tProfile = (TProfile)theEObject;
+				T result = caseTProfile(tProfile);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -353,6 +365,36 @@ public class ddSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTService(TService object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>TBam Server Profiles</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>TBam Server Profiles</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTBamServerProfiles(TBamServerProfiles object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>TProfile</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>TProfile</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTProfile(TProfile object) {
 		return null;
 	}
 

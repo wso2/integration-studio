@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getModel <em>Model</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getBamServerProfiles <em>Bam Server Profiles</em>}</li>
  * </ul>
  * </p>
  *
@@ -453,5 +454,32 @@ public interface ProcessType extends EObject {
 	 * @generated
 	 */
 	void setModel(org.eclipse.bpel.model.Process value);
+
+	/**
+	 * Returns the value of the '<em><b>Bam Server Profiles</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Bam Server Profiles</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Bam Server Profiles</em>' containment reference.
+	 * @see #setBamServerProfiles(TBamServerProfiles)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getProcessType_BamServerProfiles()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='bamServerProfiles' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	TBamServerProfiles getBamServerProfiles();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getBamServerProfiles <em>Bam Server Profiles</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Bam Server Profiles</em>' containment reference.
+	 * @see #getBamServerProfiles()
+	 * @generated
+	 */
+	void setBamServerProfiles(TBamServerProfiles value);
 
 } // ProcessType

@@ -305,13 +305,22 @@ public interface ddPackage extends EPackage {
 	int PROCESS_TYPE__MODEL = 12;
 
 	/**
+	 * The feature id for the '<em><b>Bam Server Profiles</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_TYPE__BAM_SERVER_PROFILES = 13;
+
+	/**
 	 * The number of structural features of the '<em>Process Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_TYPE_FEATURE_COUNT = 13;
+	int PROCESS_TYPE_FEATURE_COUNT = 14;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.
@@ -656,6 +665,71 @@ public interface ddPackage extends EPackage {
 	int TSERVICE_FEATURE_COUNT = 3;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TBamServerProfilesImpl <em>TBam Server Profiles</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TBamServerProfilesImpl
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTBamServerProfiles()
+	 * @generated
+	 */
+	int TBAM_SERVER_PROFILES = 13;
+
+	/**
+	 * The feature id for the '<em><b>Profile</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TBAM_SERVER_PROFILES__PROFILE = 0;
+
+	/**
+	 * The number of structural features of the '<em>TBam Server Profiles</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TBAM_SERVER_PROFILES_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TProfileImpl <em>TProfile</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TProfileImpl
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTProfile()
+	 * @generated
+	 */
+	int TPROFILE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TPROFILE__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TPROFILE__LOCATION = 1;
+
+	/**
+	 * The number of structural features of the '<em>TProfile</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TPROFILE_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -663,7 +737,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateType()
 	 * @generated
 	 */
-	int GENERATE_TYPE = 13;
+	int GENERATE_TYPE = 15;
 
 	/**
 	 * The meta object id for the '<em>Generate Type Object</em>' data type.
@@ -673,7 +747,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateTypeObject()
 	 * @generated
 	 */
-	int GENERATE_TYPE_OBJECT = 14;
+	int GENERATE_TYPE_OBJECT = 16;
 
 
 	/**
@@ -924,6 +998,17 @@ public interface ddPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProcessType_Model();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getBamServerProfiles <em>Bam Server Profiles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Bam Server Profiles</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getBamServerProfiles()
+	 * @see #getProcessType()
+	 * @generated
+	 */
+	EReference getProcessType_BamServerProfiles();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType <em>Property Type</em>}'.
@@ -1203,6 +1288,59 @@ public interface ddPackage extends EPackage {
 	EAttribute getTService_Port();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles <em>TBam Server Profiles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TBam Server Profiles</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles
+	 * @generated
+	 */
+	EClass getTBamServerProfiles();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles#getProfile <em>Profile</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Profile</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles#getProfile()
+	 * @see #getTBamServerProfiles()
+	 * @generated
+	 */
+	EReference getTBamServerProfiles_Profile();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile <em>TProfile</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TProfile</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile
+	 * @generated
+	 */
+	EClass getTProfile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile#getName()
+	 * @see #getTProfile()
+	 * @generated
+	 */
+	EAttribute getTProfile_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile#getLocation()
+	 * @see #getTProfile()
+	 * @generated
+	 */
+	EAttribute getTProfile_Location();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1439,6 +1577,14 @@ public interface ddPackage extends EPackage {
 		EReference PROCESS_TYPE__MODEL = eINSTANCE.getProcessType_Model();
 
 		/**
+		 * The meta object literal for the '<em><b>Bam Server Profiles</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS_TYPE__BAM_SERVER_PROFILES = eINSTANCE.getProcessType_BamServerProfiles();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1663,6 +1809,50 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TSERVICE__PORT = eINSTANCE.getTService_Port();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TBamServerProfilesImpl <em>TBam Server Profiles</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TBamServerProfilesImpl
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTBamServerProfiles()
+		 * @generated
+		 */
+		EClass TBAM_SERVER_PROFILES = eINSTANCE.getTBamServerProfiles();
+
+		/**
+		 * The meta object literal for the '<em><b>Profile</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TBAM_SERVER_PROFILES__PROFILE = eINSTANCE.getTBamServerProfiles_Profile();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TProfileImpl <em>TProfile</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TProfileImpl
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTProfile()
+		 * @generated
+		 */
+		EClass TPROFILE = eINSTANCE.getTProfile();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TPROFILE__NAME = eINSTANCE.getTProfile_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TPROFILE__LOCATION = eINSTANCE.getTProfile_Location();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.

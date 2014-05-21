@@ -17,11 +17,13 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TEnableEventList;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TMexInterceptor;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TScopeEvents;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TService;
@@ -142,6 +144,20 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	private EClass tServiceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tBamServerProfilesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tProfileEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -436,6 +452,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProcessType_BamServerProfiles() {
+		return (EReference)processTypeEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertyType() {
 		return propertyTypeEClass;
 	}
@@ -670,6 +695,51 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTBamServerProfiles() {
+		return tBamServerProfilesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTBamServerProfiles_Profile() {
+		return (EReference)tBamServerProfilesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTProfile() {
+		return tProfileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTProfile_Name() {
+		return (EAttribute)tProfileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTProfile_Location() {
+		return (EAttribute)tProfileEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getGenerateType() {
 		return generateTypeEEnum;
 	}
@@ -737,6 +807,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(processTypeEClass, PROCESS_TYPE__FILE_NAME);
 		createEAttribute(processTypeEClass, PROCESS_TYPE__NAME);
 		createEReference(processTypeEClass, PROCESS_TYPE__MODEL);
+		createEReference(processTypeEClass, PROCESS_TYPE__BAM_SERVER_PROFILES);
 
 		propertyTypeEClass = createEClass(PROPERTY_TYPE);
 		createEAttribute(propertyTypeEClass, PROPERTY_TYPE__ANY);
@@ -772,6 +843,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tServiceEClass, TSERVICE__ANY);
 		createEAttribute(tServiceEClass, TSERVICE__NAME);
 		createEAttribute(tServiceEClass, TSERVICE__PORT);
+
+		tBamServerProfilesEClass = createEClass(TBAM_SERVER_PROFILES);
+		createEReference(tBamServerProfilesEClass, TBAM_SERVER_PROFILES__PROFILE);
+
+		tProfileEClass = createEClass(TPROFILE);
+		createEAttribute(tProfileEClass, TPROFILE__NAME);
+		createEAttribute(tProfileEClass, TPROFILE__LOCATION);
 
 		// Create enums
 		generateTypeEEnum = createEEnum(GENERATE_TYPE);
@@ -842,6 +920,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getProcessType_FileName(), theXMLTypePackage.getString(), "fileName", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessType_Name(), theXMLTypePackage.getQName(), "name", null, 1, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_Model(), theBPELPackage.getProcess(), null, "model", null, 0, 1, ProcessType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessType_BamServerProfiles(), this.getTBamServerProfiles(), null, "bamServerProfiles", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, PropertyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -877,6 +956,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTService_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTService_Name(), theXMLTypePackage.getQName(), "name", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTService_Port(), theXMLTypePackage.getNCName(), "port", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tBamServerProfilesEClass, TBamServerProfiles.class, "TBamServerProfiles", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTBamServerProfiles_Profile(), this.getTProfile(), null, "profile", null, 0, 1, TBamServerProfiles.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tProfileEClass, TProfile.class, "TProfile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTProfile_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, TProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTProfile_Location(), theXMLTypePackage.getString(), "location", null, 0, 1, TProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(generateTypeEEnum, GenerateType.class, "GenerateType");
@@ -1081,6 +1167,14 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 			 "name", "name"
 		   });		
 		addAnnotation
+		  (getProcessType_BamServerProfiles(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "bamServerProfiles",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
 		  (propertyTypeEClass, 
 		   source, 
 		   new String[] {
@@ -1265,6 +1359,42 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "port"
+		   });		
+		addAnnotation
+		  (tBamServerProfilesEClass, 
+		   source, 
+		   new String[] {
+			 "name", "tBamServerProfiles",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getTBamServerProfiles_Profile(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "profile",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
+		  (tProfileEClass, 
+		   source, 
+		   new String[] {
+			 "name", "tProfile",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getTProfile_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "name"
+		   });		
+		addAnnotation
+		  (getTProfile_Location(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "location"
 		   });
 	}
 

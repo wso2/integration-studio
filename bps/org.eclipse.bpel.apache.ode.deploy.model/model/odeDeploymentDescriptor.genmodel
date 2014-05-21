@@ -38,6 +38,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/fileName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/bamServerProfiles"/>
     </genClasses>
     <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//PropertyType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//PropertyType/any"/>
@@ -73,6 +74,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/any"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/port"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TBamServerProfiles">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TBamServerProfiles/profile"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TProfile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProfile/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProfile/location"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

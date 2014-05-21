@@ -10,9 +10,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.apache.maven.model;version="2.2.1",
- org.apache.maven.project;version="2.2.1",
- org.codehaus.plexus.util.xml;version="2.0.1",
+Import-Package: org.apache.maven.model,
+ org.apache.maven.project,
+ org.codehaus.plexus.util.xml,
  org.wso2.developerstudio.eclipse.maven.util,
  org.wso2.developerstudio.eclipse.platform.core.nature,
  org.wso2.developerstudio.eclipse.utils.project

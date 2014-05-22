@@ -79,6 +79,9 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 			case ddPackage.TPROVIDE: return createTProvide();
 			case ddPackage.TSCOPE_EVENTS: return createTScopeEvents();
 			case ddPackage.TSERVICE: return createTService();
+			case ddPackage.TBAM_SERVER_PROFILES: return createTBamServerProfiles();
+			case ddPackage.TPROFILE: return createTProfile();
+			case ddPackage.TEND_POINT: return createTEndPoint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -246,6 +249,36 @@ public class ddFactoryImpl extends EFactoryImpl implements ddFactory {
 	public TService createTService() {
 		TServiceImpl tService = new TServiceImpl();
 		return tService;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TBamServerProfiles createTBamServerProfiles() {
+		TBamServerProfilesImpl tBamServerProfiles = new TBamServerProfilesImpl();
+		return tBamServerProfiles;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TProfile createTProfile() {
+		TProfileImpl tProfile = new TProfileImpl();
+		return tProfile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TEndPoint createTEndPoint() {
+		TEndPointImpl tEndPoint = new TEndPointImpl();
+		return tEndPoint;
 	}
 
 	/**

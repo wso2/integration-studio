@@ -13,7 +13,7 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://docs.oasis-open.org/ns/bpel4people/bpel4people/200803"
-            class="model.ModelPackage"
+            class="org.wso2.developerstudio.bpel.humantask.model.ModelPackage"
             genModel="model/humantask.genmodel"/>
    </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">

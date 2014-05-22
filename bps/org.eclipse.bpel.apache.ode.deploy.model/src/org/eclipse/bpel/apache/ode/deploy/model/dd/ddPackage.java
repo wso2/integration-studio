@@ -656,13 +656,22 @@ public interface ddPackage extends EPackage {
 	int TSERVICE__PORT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Endpoint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TSERVICE__ENDPOINT = 3;
+
+	/**
 	 * The number of structural features of the '<em>TService</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TSERVICE_FEATURE_COUNT = 3;
+	int TSERVICE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TBamServerProfilesImpl <em>TBam Server Profiles</em>}' class.
@@ -730,6 +739,52 @@ public interface ddPackage extends EPackage {
 	int TPROFILE_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TEndPointImpl <em>TEnd Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TEndPointImpl
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTEndPoint()
+	 * @generated
+	 */
+	int TEND_POINT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Xmlns</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEND_POINT__XMLNS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Endpoint Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEND_POINT__ENDPOINT_REFERENCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Service Description Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEND_POINT__SERVICE_DESCRIPTION_REFERENCE = 2;
+
+	/**
+	 * The number of structural features of the '<em>TEnd Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEND_POINT_FEATURE_COUNT = 3;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -737,7 +792,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateType()
 	 * @generated
 	 */
-	int GENERATE_TYPE = 15;
+	int GENERATE_TYPE = 16;
 
 	/**
 	 * The meta object id for the '<em>Generate Type Object</em>' data type.
@@ -747,7 +802,7 @@ public interface ddPackage extends EPackage {
 	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getGenerateTypeObject()
 	 * @generated
 	 */
-	int GENERATE_TYPE_OBJECT = 16;
+	int GENERATE_TYPE_OBJECT = 17;
 
 
 	/**
@@ -1288,6 +1343,17 @@ public interface ddPackage extends EPackage {
 	EAttribute getTService_Port();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TService#getEndpoint <em>Endpoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Endpoint</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TService#getEndpoint()
+	 * @see #getTService()
+	 * @generated
+	 */
+	EReference getTService_Endpoint();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles <em>TBam Server Profiles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1339,6 +1405,49 @@ public interface ddPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTProfile_Location();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint <em>TEnd Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>TEnd Point</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint
+	 * @generated
+	 */
+	EClass getTEndPoint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint#getXmlns <em>Xmlns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Xmlns</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint#getXmlns()
+	 * @see #getTEndPoint()
+	 * @generated
+	 */
+	EAttribute getTEndPoint_Xmlns();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint#getEndpointReference <em>Endpoint Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Endpoint Reference</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint#getEndpointReference()
+	 * @see #getTEndPoint()
+	 * @generated
+	 */
+	EAttribute getTEndPoint_EndpointReference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint#getServiceDescriptionReference <em>Service Description Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Description Reference</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint#getServiceDescriptionReference()
+	 * @see #getTEndPoint()
+	 * @generated
+	 */
+	EAttribute getTEndPoint_ServiceDescriptionReference();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}'.
@@ -1811,6 +1920,14 @@ public interface ddPackage extends EPackage {
 		EAttribute TSERVICE__PORT = eINSTANCE.getTService_Port();
 
 		/**
+		 * The meta object literal for the '<em><b>Endpoint</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TSERVICE__ENDPOINT = eINSTANCE.getTService_Endpoint();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TBamServerProfilesImpl <em>TBam Server Profiles</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1853,6 +1970,40 @@ public interface ddPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TPROFILE__LOCATION = eINSTANCE.getTProfile_Location();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TEndPointImpl <em>TEnd Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TEndPointImpl
+		 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ddPackageImpl#getTEndPoint()
+		 * @generated
+		 */
+		EClass TEND_POINT = eINSTANCE.getTEndPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Xmlns</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEND_POINT__XMLNS = eINSTANCE.getTEndPoint_Xmlns();
+
+		/**
+		 * The meta object literal for the '<em><b>Endpoint Reference</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEND_POINT__ENDPOINT_REFERENCE = eINSTANCE.getTEndPoint_EndpointReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Description Reference</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEND_POINT__SERVICE_DESCRIPTION_REFERENCE = eINSTANCE.getTEndPoint_ServiceDescriptionReference();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType <em>Generate Type</em>}' enum.

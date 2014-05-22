@@ -20,6 +20,7 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TDeployment;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TEnableEventList;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TMexInterceptor;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
@@ -158,6 +159,13 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * @generated
 	 */
 	private EClass tProfileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tEndPointEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -695,6 +703,15 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTService_Endpoint() {
+		return (EReference)tServiceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTBamServerProfiles() {
 		return tBamServerProfilesEClass;
 	}
@@ -733,6 +750,42 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 */
 	public EAttribute getTProfile_Location() {
 		return (EAttribute)tProfileEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTEndPoint() {
+		return tEndPointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTEndPoint_Xmlns() {
+		return (EAttribute)tEndPointEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTEndPoint_EndpointReference() {
+		return (EAttribute)tEndPointEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTEndPoint_ServiceDescriptionReference() {
+		return (EAttribute)tEndPointEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -843,6 +896,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(tServiceEClass, TSERVICE__ANY);
 		createEAttribute(tServiceEClass, TSERVICE__NAME);
 		createEAttribute(tServiceEClass, TSERVICE__PORT);
+		createEReference(tServiceEClass, TSERVICE__ENDPOINT);
 
 		tBamServerProfilesEClass = createEClass(TBAM_SERVER_PROFILES);
 		createEReference(tBamServerProfilesEClass, TBAM_SERVER_PROFILES__PROFILE);
@@ -850,6 +904,11 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		tProfileEClass = createEClass(TPROFILE);
 		createEAttribute(tProfileEClass, TPROFILE__NAME);
 		createEAttribute(tProfileEClass, TPROFILE__LOCATION);
+
+		tEndPointEClass = createEClass(TEND_POINT);
+		createEAttribute(tEndPointEClass, TEND_POINT__XMLNS);
+		createEAttribute(tEndPointEClass, TEND_POINT__ENDPOINT_REFERENCE);
+		createEAttribute(tEndPointEClass, TEND_POINT__SERVICE_DESCRIPTION_REFERENCE);
 
 		// Create enums
 		generateTypeEEnum = createEEnum(GENERATE_TYPE);
@@ -956,6 +1015,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getTService_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTService_Name(), theXMLTypePackage.getQName(), "name", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTService_Port(), theXMLTypePackage.getNCName(), "port", null, 1, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTService_Endpoint(), this.getTEndPoint(), null, "endpoint", null, 0, 1, TService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tBamServerProfilesEClass, TBamServerProfiles.class, "TBamServerProfiles", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTBamServerProfiles_Profile(), this.getTProfile(), null, "profile", null, 0, 1, TBamServerProfiles.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -963,6 +1023,11 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEClass(tProfileEClass, TProfile.class, "TProfile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTProfile_Name(), theXMLTypePackage.getString(), "name", null, 0, 1, TProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTProfile_Location(), theXMLTypePackage.getString(), "location", null, 0, 1, TProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tEndPointEClass, TEndPoint.class, "TEndPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTEndPoint_Xmlns(), theXMLTypePackage.getString(), "xmlns", null, 0, 1, TEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTEndPoint_EndpointReference(), theXMLTypePackage.getString(), "endpointReference", null, 0, 1, TEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTEndPoint_ServiceDescriptionReference(), theXMLTypePackage.getString(), "serviceDescriptionReference", null, 0, 1, TEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(generateTypeEEnum, GenerateType.class, "GenerateType");
@@ -1361,6 +1426,14 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 			 "name", "port"
 		   });		
 		addAnnotation
+		  (getTService_Endpoint(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "endpoint",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
 		  (tBamServerProfilesEClass, 
 		   source, 
 		   new String[] {
@@ -1395,6 +1468,34 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "location"
+		   });		
+		addAnnotation
+		  (tEndPointEClass, 
+		   source, 
+		   new String[] {
+			 "name", "tEndPoint",
+			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getTEndPoint_Xmlns(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "xmlns"
+		   });		
+		addAnnotation
+		  (getTEndPoint_EndpointReference(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "endpointReference"
+		   });		
+		addAnnotation
+		  (getTEndPoint_ServiceDescriptionReference(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "serviceDescriptionReference"
 		   });
 	}
 

@@ -12,6 +12,7 @@
 package org.eclipse.bpel.apache.ode.deploy.model.dd;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->

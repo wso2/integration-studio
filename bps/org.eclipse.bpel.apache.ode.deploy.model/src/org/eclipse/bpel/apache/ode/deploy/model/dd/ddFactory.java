@@ -166,6 +166,15 @@ public interface ddFactory extends EFactory {
 	TProfile createTProfile();
 
 	/**
+	 * Returns a new object of class '<em>TEnd Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TEnd Point</em>'.
+	 * @generated
+	 */
+	TEndPoint createTEndPoint();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

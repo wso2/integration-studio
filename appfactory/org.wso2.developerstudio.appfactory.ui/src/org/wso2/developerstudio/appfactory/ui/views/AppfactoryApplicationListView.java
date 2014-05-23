@@ -123,6 +123,13 @@ public class AppfactoryApplicationListView extends ViewPart {
 	public static final String FORKED_REPO_SUFFIX = "_forked";
 	
 	public static final String MAIN_REPO_SUFFIX = "_main";
+	
+	private static final String MAVEN_CMD_INSTALL = "install";
+	
+	private static final String MAVEN_CMD_CLEAN = "clean";
+	
+	private static final String MAVEN_CMD_ECLIPSE = "eclipse:eclipse";
+	
 
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
@@ -1425,21 +1432,22 @@ public class AppfactoryApplicationListView extends ViewPart {
 	private InvocationResult mavenInstall(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
-		request.setPomFile( pomFile );
+		request.setPomFile( pomFile );		
+		request.setGoals(Collections.singletonList( MAVEN_CMD_INSTALL) );
+		Invoker invoker = new DefaultInvoker();		
+		InvocationResult result =  invoker.execute( request );
 		
-		request.setGoals(Collections.singletonList( "dependency:resolve" ) );
-
-		Invoker invoker = new DefaultInvoker();
+		request.setGoals(Collections.singletonList( MAVEN_CMD_CLEAN ));		
+		invoker.execute(request);
 		
-		return invoker.execute( request );
+		return result;
 	}
 	
 	private static InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
 		request.setPomFile( pomFile );
-		request.setGoals( Collections.singletonList( "eclipse:eclipse" ) );
-
+		request.setGoals( Collections.singletonList( MAVEN_CMD_ECLIPSE ) );
 		Invoker invoker = new DefaultInvoker();
 		
 		return invoker.execute( request );

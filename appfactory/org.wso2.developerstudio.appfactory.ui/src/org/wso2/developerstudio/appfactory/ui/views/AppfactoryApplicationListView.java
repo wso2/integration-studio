@@ -30,6 +30,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
@@ -48,6 +50,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -124,6 +128,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 	
 	private static AppfactoryApplicationDetailsView appDetailView;
 	
+	@Inject UISynchronize uISync;
+	
 	private TreeViewer viewer;
 	//private Composite parent; 
 	private AppListModel model;
@@ -191,12 +197,25 @@ public class AppfactoryApplicationListView extends ViewPart {
 					final IStructuredSelection selection = (IStructuredSelection) viewer
 							.getSelection();
 					Object selectedNode = selection.getFirstElement();
+					ApplicationInfo appInfo = null;
+					
 					if (selectedNode instanceof ApplicationInfo) {
-						ApplicationInfo appInfo = (ApplicationInfo) selection
-								.getFirstElement();
-						if (!appInfo.getappVersionList().isEmpty()) {
-							appDetailView.updateView(appInfo);
-						}
+						appInfo = (ApplicationInfo) selection
+								.getFirstElement();						
+					}
+					else if(selectedNode instanceof AppVersionGroup)					
+					{
+						appInfo = ((AppVersionGroup)selection.getFirstElement()).getApplication();
+					}
+					else if(selectedNode instanceof AppVersionInfo)					
+					{
+						appInfo = ((AppVersionInfo)selection.getFirstElement()).getVersionGroup().getApplication();
+					}
+					
+					if (!appInfo.getappVersionList().isEmpty()) {
+						appDetailView.updateView(appInfo);
+					}else{
+						appDetailView.clear();
 					}
 				} catch (Throwable e) {
 				  /*safe to ignore*/
@@ -589,158 +608,157 @@ public class AppfactoryApplicationListView extends ViewPart {
 		job.schedule();
 	}
 	
+	
+	private void updateUI(final ApplicationInfo appInfo){
+		
+		Display.getDefault().asyncExec(new Runnable() {
+		      public void run() {
+		         viewer.refresh();
+		         appDetailView.updateView(appInfo);
+		      }
+		});
+			
+	}
+	
 	private void  getAppVersions(final ApplicationInfo appInfo){
+		
 		Job job = new Job(Messages.AppfactoryApplicationListView_getAppVersions_job_title) {
-		   @Override
+			  @Override
 			  protected IStatus run(final IProgressMonitor monitor) {
 				monitor.beginTask(Messages.AppfactoryApplicationListView_getAppVersions_monitor_text_1, 100);
-				  UISynchronize uiSynchronize = new UISynchronize() {
-						@Override
-						public void syncExec(Runnable runnable) {
-						}
-						
-						@Override
-						public void asyncExec(Runnable runnable) {
-							appInfo.setLableState(1);
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							if(getVersionInfo(appInfo, monitor)){
-								getForkedVersionsInfo(appInfo, monitor);
-								getTeamInfo(appInfo, monitor);
-								//getDbInfo(appInfo, monitor);/*currently not supporting*/
-								getDSInfo(appInfo, monitor);
-								appInfo.setLableState(2);
-							}else{
-								appInfo.setLableState(0);
-							}
-						}
 
-						private boolean getVersionInfo(
-								final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_2);
-							monitor.worked(20);	   
-							boolean result = model.setversionInfo(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setversionInfo(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
-							monitor.worked(30);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(32);
-							return true;
-							}else{
-
-								return false;
-							}
-						}
-						
-						private boolean getForkedVersionsInfo(
-								final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1);
-							monitor.worked(38);	   
-							boolean result = model.setForkedRepoInfo(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setForkedRepoInfo(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
-							monitor.worked(42);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(50);
-							return true;
-							}else{
-
-								return false;
-							}
-						}
-						
-						private boolean getTeamInfo(final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_1);
-							monitor.worked(60);	   
-							boolean result = model.setRoleInfomation(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setRoleInfomation(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_2);
-							monitor.worked(60);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(90);
-							return true;
-							}else{
-								return false;
-							}
-						}
-						/*Currently not supporting*/
-						@SuppressWarnings("unused")
-						private boolean getDbInfo(final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_1);
-							monitor.worked(60);	   
-							boolean result = model.setDBInfomation(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setDBInfomation(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_2);
-							monitor.worked(60);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(90);
-							return true;
-							}else{
-								return false;
-							}
-						}
-						
-						private boolean getDSInfo(final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_2);
-							monitor.worked(60);	   
-							boolean result = model.setDSInfomation(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setDBInfomation(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_3);
-							monitor.worked(60);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(90);
-							return true;
-							}else{
-								return false;
-							}
-						}
-						
-						
-						
-					};
-					uiSynchronize.asyncExec(new Runnable() {
-						@Override
-						public void run() {
-						
-						}
-					});
+				appInfo.setLableState(1);
+				broker.send("Appversionupdate", model); //$NON-NLS-1$
+				if(getVersionInfo(appInfo, monitor)){
+					getForkedVersionsInfo(appInfo, monitor);
+					getTeamInfo(appInfo, monitor);
+					//getDbInfo(appInfo, monitor);/*currently not supporting*/
+					getDSInfo(appInfo, monitor);
+					appInfo.setLableState(2);
 					
+				}else{
+					appInfo.setLableState(0);
+				}			
+				updateUI(appInfo);
+				
 			    return Status.OK_STATUS;
 			  }
+			  
+			  private boolean getVersionInfo(
+						final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_2);
+					monitor.worked(20);	   
+					boolean result = model.setversionInfo(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setversionInfo(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
+					monitor.worked(30);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(32);
+					return true;
+					}else{
+
+						return false;
+					}
+				}
+				
+				private boolean getForkedVersionsInfo(
+						final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1);
+					monitor.worked(38);	   
+					boolean result = model.setForkedRepoInfo(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setForkedRepoInfo(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
+					monitor.worked(42);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(50);
+					return true;
+					}else{
+
+						return false;
+					}
+				}
+				
+				private boolean getTeamInfo(final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_1);
+					monitor.worked(60);	   
+					boolean result = model.setRoleInfomation(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setRoleInfomation(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_2);
+					monitor.worked(60);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(90);
+					return true;
+					}else{
+						return false;
+					}
+				}
+				/*Currently not supporting*/
+				@SuppressWarnings("unused")
+				private boolean getDbInfo(final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_1);
+					monitor.worked(60);	   
+					boolean result = model.setDBInfomation(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setDBInfomation(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_2);
+					monitor.worked(60);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(90);
+					return true;
+					}else{
+						return false;
+					}
+				}
+				
+				private boolean getDSInfo(final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_2);
+					monitor.worked(60);	   
+					boolean result = model.setDSInfomation(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setDBInfomation(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_3);
+					monitor.worked(60);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(90);
+					return true;
+					}else{
+						return false;
+					}
+				}
+				
 			};
 		job.schedule();
 	}

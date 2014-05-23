@@ -1427,11 +1427,17 @@ public class AppfactoryApplicationListView extends ViewPart {
 		InvocationRequest request = new DefaultInvocationRequest();
 		request.setPomFile( pomFile );
 		
-		request.setGoals(Collections.singletonList( "dependency:resolve" ) );
+		request.setGoals(Collections.singletonList( "install" ) );
 
 		Invoker invoker = new DefaultInvoker();
 		
-		return invoker.execute( request );
+		InvocationResult result =  invoker.execute( request );
+		
+		request.setGoals(Collections.singletonList( "clean" ));
+		
+		invoker.execute(request);
+		
+		return result;
 	}
 	
 	private static InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{

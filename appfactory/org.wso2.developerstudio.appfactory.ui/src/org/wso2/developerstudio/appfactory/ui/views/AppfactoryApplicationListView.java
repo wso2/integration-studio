@@ -24,14 +24,23 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.apache.maven.shared.invoker.DefaultInvocationRequest;
+import org.apache.maven.shared.invoker.DefaultInvoker;
+import org.apache.maven.shared.invoker.InvocationRequest;
+import org.apache.maven.shared.invoker.InvocationResult;
+import org.apache.maven.shared.invoker.Invoker;
+import org.apache.maven.shared.invoker.MavenInvocationException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
@@ -41,6 +50,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -112,10 +123,19 @@ public class AppfactoryApplicationListView extends ViewPart {
 	public static final String FORKED_REPO_SUFFIX = "_forked";
 	
 	public static final String MAIN_REPO_SUFFIX = "_main";
+	
+	private static final String MAVEN_CMD_INSTALL = "install";
+	
+	private static final String MAVEN_CMD_CLEAN = "clean";
+	
+	private static final String MAVEN_CMD_ECLIPSE = "eclipse:eclipse";
+	
 
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 	private static AppfactoryApplicationDetailsView appDetailView;
+	
+	@Inject UISynchronize uISync;
 	
 	private TreeViewer viewer;
 	//private Composite parent; 
@@ -184,12 +204,25 @@ public class AppfactoryApplicationListView extends ViewPart {
 					final IStructuredSelection selection = (IStructuredSelection) viewer
 							.getSelection();
 					Object selectedNode = selection.getFirstElement();
+					ApplicationInfo appInfo = null;
+					
 					if (selectedNode instanceof ApplicationInfo) {
-						ApplicationInfo appInfo = (ApplicationInfo) selection
-								.getFirstElement();
-						if (!appInfo.getappVersionList().isEmpty()) {
-							appDetailView.updateView(appInfo);
-						}
+						appInfo = (ApplicationInfo) selection
+								.getFirstElement();						
+					}
+					else if(selectedNode instanceof AppVersionGroup)					
+					{
+						appInfo = ((AppVersionGroup)selection.getFirstElement()).getApplication();
+					}
+					else if(selectedNode instanceof AppVersionInfo)					
+					{
+						appInfo = ((AppVersionInfo)selection.getFirstElement()).getVersionGroup().getApplication();
+					}
+					
+					if (!appInfo.getappVersionList().isEmpty()) {
+						appDetailView.updateView(appInfo);
+					}else{
+						appDetailView.clear();
 					}
 				} catch (Throwable e) {
 				  /*safe to ignore*/
@@ -582,158 +615,157 @@ public class AppfactoryApplicationListView extends ViewPart {
 		job.schedule();
 	}
 	
+	
+	private void updateUI(final ApplicationInfo appInfo){
+		
+		Display.getDefault().asyncExec(new Runnable() {
+		      public void run() {
+		         viewer.refresh();
+		         appDetailView.updateView(appInfo);
+		      }
+		});
+			
+	}
+	
 	private void  getAppVersions(final ApplicationInfo appInfo){
+		
 		Job job = new Job(Messages.AppfactoryApplicationListView_getAppVersions_job_title) {
-		   @Override
+			  @Override
 			  protected IStatus run(final IProgressMonitor monitor) {
 				monitor.beginTask(Messages.AppfactoryApplicationListView_getAppVersions_monitor_text_1, 100);
-				  UISynchronize uiSynchronize = new UISynchronize() {
-						@Override
-						public void syncExec(Runnable runnable) {
-						}
-						
-						@Override
-						public void asyncExec(Runnable runnable) {
-							appInfo.setLableState(1);
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							if(getVersionInfo(appInfo, monitor)){
-								getForkedVersionsInfo(appInfo, monitor);
-								getTeamInfo(appInfo, monitor);
-								//getDbInfo(appInfo, monitor);/*currently not supporting*/
-								getDSInfo(appInfo, monitor);
-								appInfo.setLableState(2);
-							}else{
-								appInfo.setLableState(0);
-							}
-						}
 
-						private boolean getVersionInfo(
-								final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_2);
-							monitor.worked(20);	   
-							boolean result = model.setversionInfo(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setversionInfo(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
-							monitor.worked(30);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(32);
-							return true;
-							}else{
-
-								return false;
-							}
-						}
-						
-						private boolean getForkedVersionsInfo(
-								final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1);
-							monitor.worked(38);	   
-							boolean result = model.setForkedRepoInfo(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setForkedRepoInfo(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
-							monitor.worked(42);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(50);
-							return true;
-							}else{
-
-								return false;
-							}
-						}
-						
-						private boolean getTeamInfo(final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_1);
-							monitor.worked(60);	   
-							boolean result = model.setRoleInfomation(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setRoleInfomation(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_2);
-							monitor.worked(60);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(90);
-							return true;
-							}else{
-								return false;
-							}
-						}
-						/*Currently not supporting*/
-						@SuppressWarnings("unused")
-						private boolean getDbInfo(final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_1);
-							monitor.worked(60);	   
-							boolean result = model.setDBInfomation(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setDBInfomation(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_2);
-							monitor.worked(60);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(90);
-							return true;
-							}else{
-								return false;
-							}
-						}
-						
-						private boolean getDSInfo(final ApplicationInfo appInfo,
-								final IProgressMonitor monitor) {
-							monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_2);
-							monitor.worked(60);	   
-							boolean result = model.setDSInfomation(appInfo);
-							if(!result){
-								boolean reLogin = Authenticator.getInstance().reLogin();
-								if(reLogin){
-									result = model.setDBInfomation(appInfo);
-								}
-							}
-							if(result){
-							monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_3);
-							monitor.worked(60);	 
-							broker.send("Appversionupdate", model); //$NON-NLS-1$
-							monitor.worked(90);
-							return true;
-							}else{
-								return false;
-							}
-						}
-						
-						
-						
-					};
-					uiSynchronize.asyncExec(new Runnable() {
-						@Override
-						public void run() {
-						
-						}
-					});
+				appInfo.setLableState(1);
+				broker.send("Appversionupdate", model); //$NON-NLS-1$
+				if(getVersionInfo(appInfo, monitor)){
+					getForkedVersionsInfo(appInfo, monitor);
+					getTeamInfo(appInfo, monitor);
+					//getDbInfo(appInfo, monitor);/*currently not supporting*/
+					getDSInfo(appInfo, monitor);
+					appInfo.setLableState(2);
 					
+				}else{
+					appInfo.setLableState(0);
+				}			
+				updateUI(appInfo);
+				
 			    return Status.OK_STATUS;
 			  }
+			  
+			  private boolean getVersionInfo(
+						final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_2);
+					monitor.worked(20);	   
+					boolean result = model.setversionInfo(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setversionInfo(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
+					monitor.worked(30);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(32);
+					return true;
+					}else{
+
+						return false;
+					}
+				}
+				
+				private boolean getForkedVersionsInfo(
+						final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1);
+					monitor.worked(38);	   
+					boolean result = model.setForkedRepoInfo(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setForkedRepoInfo(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getVersionInfo_monitor_text_3);
+					monitor.worked(42);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(50);
+					return true;
+					}else{
+
+						return false;
+					}
+				}
+				
+				private boolean getTeamInfo(final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_1);
+					monitor.worked(60);	   
+					boolean result = model.setRoleInfomation(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setRoleInfomation(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getTeamInfo_monitor_text_2);
+					monitor.worked(60);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(90);
+					return true;
+					}else{
+						return false;
+					}
+				}
+				/*Currently not supporting*/
+				@SuppressWarnings("unused")
+				private boolean getDbInfo(final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_1);
+					monitor.worked(60);	   
+					boolean result = model.setDBInfomation(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setDBInfomation(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getDbInfo_monitor_text_2);
+					monitor.worked(60);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(90);
+					return true;
+					}else{
+						return false;
+					}
+				}
+				
+				private boolean getDSInfo(final ApplicationInfo appInfo,
+						final IProgressMonitor monitor) {
+					monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_2);
+					monitor.worked(60);	   
+					boolean result = model.setDSInfomation(appInfo);
+					if(!result){
+						boolean reLogin = Authenticator.getInstance().reLogin();
+						if(reLogin){
+							result = model.setDBInfomation(appInfo);
+						}
+					}
+					if(result){
+					monitor.subTask(Messages.AppfactoryApplicationListView_getDSInfo_monitor_text_3);
+					monitor.worked(60);	 
+					broker.send("Appversionupdate", model); //$NON-NLS-1$
+					monitor.worked(90);
+					return true;
+					}else{
+						return false;
+					}
+				}
+				
 			};
 		job.schedule();
 	}
@@ -1249,6 +1281,14 @@ public class AppfactoryApplicationListView extends ViewPart {
 				monitor.subTask(operationText);
 				monitor.worked(10);
 				
+				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
+				
+				if(pomFile.exists())
+				{
+					executeMavenCommands(pomFile, monitor);
+				}
+				
+				
 				IProjectDescription description = ResourcesPlugin
 													.getWorkspace()
 													.loadProjectDescription(new Path(appInfo.getLocalRepo() + File.separator + ".project"));
@@ -1260,7 +1300,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 				String name = description.getName();
 				name += (appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
 				description.setName(name);
-				
+
+
 				final IProject project = ResourcesPlugin.getWorkspace()
 						.getRoot().getProject(description.getName());
 				        if(!project.exists()){
@@ -1296,12 +1337,19 @@ public class AppfactoryApplicationListView extends ViewPart {
 		@Override
 		public void run(IProgressMonitor monitor) {
 			String operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_1;
-			monitor.beginTask(operationText, 100);
+			monitor.beginTask(operationText, 10);
 			try{
 				checkout(appInfo, monitor);
 				operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_2;
 				monitor.subTask(operationText);
-				monitor.worked(10);
+				monitor.worked(20);
+				
+				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
+				
+				if(pomFile.exists())
+				{
+					executeMavenCommands(pomFile, monitor);
+				}
 				
 				IProjectDescription description = ResourcesPlugin
 													.getWorkspace()
@@ -1309,7 +1357,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 				
 				operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
 				monitor.subTask(operationText);
-				monitor.worked(10); 
+				monitor.worked(30); 
 				
 				String name = description.getName();
 				name += (appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
@@ -1331,7 +1379,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			}catch(Throwable e){
 				 operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_Faild;
 				 monitor.subTask(operationText);
-				 monitor.worked(10); 
+				 monitor.worked(80); 
 				 log.error("importing failed", e); //$NON-NLS-1$
 			}
 			
@@ -1339,5 +1387,70 @@ public class AppfactoryApplicationListView extends ViewPart {
 			monitor.done();
 		}
 	}  
+	
+	public boolean executeMavenCommands(File pomFile, IProgressMonitor monitor){
+		
+		monitor.worked(40);
+		
+		try {
+			String operationText = Messages.AppfactoryApplicationListView_executeMavenCommands_text;
+			monitor.subTask(operationText);
+			printInfoLog(operationText);
+			
+			InvocationResult result = mavenInstall(pomFile, monitor);
+			
+			if(result.getExitCode()!=0){
+				
+				printErrorLog(Messages.AppfactoryApplicationListView_executeMavenCommands_errorlog_text);
+			}
+			
+			monitor.worked(60);
+		} catch (MavenInvocationException e) {
+			
+		}
+		
+		try {
+			
+			String operationText = Messages.AppfactoryApplicationListView_executeMavenCommands_text2;
+			monitor.subTask(operationText);
+			printInfoLog(operationText);
+			
+			InvocationResult result = mavenEclipse(pomFile, monitor);
+			
+			if(result.getExitCode()!=0){
+				
+				printErrorLog(Messages.AppfactoryApplicationListView_executeMavenCommands_errorlog_text2);
+			}
+
+		} catch (MavenInvocationException e) {
+			
+		}
+		
+		return true;
+	}
+	
+	private InvocationResult mavenInstall(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
+		
+		InvocationRequest request = new DefaultInvocationRequest();
+		request.setPomFile( pomFile );		
+		request.setGoals(Collections.singletonList( MAVEN_CMD_INSTALL) );
+		Invoker invoker = new DefaultInvoker();		
+		InvocationResult result =  invoker.execute( request );
+		
+		request.setGoals(Collections.singletonList( MAVEN_CMD_CLEAN ));		
+		invoker.execute(request);
+		
+		return result;
+	}
+	
+	private static InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
+		
+		InvocationRequest request = new DefaultInvocationRequest();
+		request.setPomFile( pomFile );
+		request.setGoals( Collections.singletonList( MAVEN_CMD_ECLIPSE ) );
+		Invoker invoker = new DefaultInvoker();
+		
+		return invoker.execute( request );
+	}
 
 }

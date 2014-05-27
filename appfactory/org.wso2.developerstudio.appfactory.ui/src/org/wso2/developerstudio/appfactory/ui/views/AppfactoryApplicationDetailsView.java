@@ -151,6 +151,23 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		// Updating the data sources details
 		updateDataSources(applicationInfo);
 	}
+	
+	/**
+	 * Clear details view.
+	 */
+	public void clear(){
+		
+		// Clear Application Info Tab
+		removeChildControls(appTypeComposite);
+		removeChildControls(repoTypeComposite);
+		removeChildControls(appOwnerComposite);
+		removeChildControls(descriptionComposite);
+		
+		currentStatusTable.removeAll();
+		dataSourcesTable.removeAll();	
+		teamDetailsTable.removeAll();
+		
+	}
 
 	private void removeChildControls(Composite composite) {
 		Control[] children = composite.getChildren();

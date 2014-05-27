@@ -43,7 +43,7 @@ public class JagApiProperties {
 	public static final String App_BUILD_ACTION ="createArtifact";
 	public static final String App_USERS_ROLES_ACTION ="getUsersOfApplication";
 	public static final String App_DB_INFO_ACTION = "getDbUserTemplateInfoForStages";
-	public static final String App_DS_INFO_ACTION = "getDataSourceInfoUrl";
+	public static final String App_DS_INFO_ACTION = "getDatasources";
 	
 	public static String getDomain() {
 		return domain;

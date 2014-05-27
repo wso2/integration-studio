@@ -139,7 +139,8 @@ public class AppListModel {
 		Map<String, String> params;
 		params = new HashMap<String, String>();
 		params.put("action", JagApiProperties.App_DS_INFO_ACTION);
-		params.put("stage", "Development");
+		params.put("applicationKey", applicationInfo.getKey());
+
 		respond = HttpsJaggeryClient.httpPost(
 				JagApiProperties.getAppDsInfoUrl(), params);
 		if ("false".equals(respond)) {

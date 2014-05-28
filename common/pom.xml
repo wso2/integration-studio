@@ -41,7 +41,7 @@
 	<module>org.wso2.developerstudio.eclipse.general.project</module>
 	<!--module>org.wso2.developerstudio.eclipse.distribution.project</module-->
 	<module>org.wso2.developerstudio.eclipse.security.ui</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.qos</module>
+	<!--module>org.wso2.developerstudio.eclipse.artifact.qos</module-->
     </modules>
 
   <!--properties>

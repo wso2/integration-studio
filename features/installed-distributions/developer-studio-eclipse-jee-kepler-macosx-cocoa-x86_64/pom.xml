@@ -395,8 +395,8 @@
 						<arg value="org.wso2.soapui.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.tcpmon.feature.feature.group" />
-						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group" />
+						<!--arg value="-installIU" />
+						<arg value="org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group" /-->
 					</java>
 					</tasks>
 				</configuration>

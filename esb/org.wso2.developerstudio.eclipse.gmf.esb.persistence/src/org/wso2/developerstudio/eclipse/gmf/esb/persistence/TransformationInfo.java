@@ -76,6 +76,10 @@ public class TransformationInfo {
 		return previousNode;
 	}
 	
+	public EObject getFirstEndpoint(){
+		return firstEndPoint;
+	}
+
 	public ListMediator getCurrentReferredSequence(){
 		return currentReferredSequence;
 	}
@@ -111,6 +115,10 @@ public class TransformationInfo {
 	
 	public void setPreviousNode(EObject previousNode){
 		this.previousNode=previousNode;
+	}
+	
+	public void setFirstEndpoint(EObject firstEndpointNode){
+		this.firstEndPoint = firstEndpointNode;
 	}
 	
 	public void setCurrentReferredSequence(ListMediator currentReferredSequence){

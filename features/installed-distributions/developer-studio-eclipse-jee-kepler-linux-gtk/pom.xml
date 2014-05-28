@@ -262,10 +262,10 @@
                             		<id>org.wso2.tcpmon.feature.feature.group</id>
                             		<version>${tcpmon.feature.version}</version>
                             	</feature>
-				<!--feature>
+				<feature>
                                         <id>org.wso2.developerstudio.eclipse.qos.artifact.feature.group</id>
                                         <version>${qos.feature.version}</version>
-                                </feature-->
+                                </feature>
                             </features>
                         </configuration>
                     </execution>

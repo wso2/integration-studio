@@ -1,0 +1,51 @@
+{
+  "name" : "employees",
+  "type": "record", 
+  "fields": [ 
+             {
+  			  "name": "types",
+  			  "type": "string"
+  			  },	
+              { "name": "employee", 
+          		"type": { 
+            				"type": "array", 
+            				"items": { 
+              							"name": "employee", 
+              							"type": "record", 
+              							"fields": [ 
+                   									{"name" : "firstname", "type" : "string"}, 
+                    								{"name" : "lastname", "type" : "string"},
+                    								{"name" : "address",
+                                                     "type": { "type": "array", 
+                                                    			 "items": { 
+		            											
+		                       												 "type" : "record",
+		                        											 "name" : "address",
+		                        											 "fields" : [
+		                            														{"name": "no", "type": "string"},
+		                            														{"name": "road", "type":"string"},
+		                            														{"name": "city", "type":"string"},
+		                            														{ "name" : "foo",  "type": {
+                                                    "type": "array", 
+                                                    "items":                                                     
+                                                          {  
+                                                            "name": "foo", 
+                                                            "type": "record", 
+                                                            "fields": [                                                                 
+                                                            {"name" : "bar1", "type" : "string"},
+                                                             {"name" : "bar2", "type" : "string"}
+                                                            ]
+                                                            }
+                                                                                           }
+                                                                                           }
+		                        														]
+		                    											            }
+                                                     }
+                                                     
+                                                     }
+                    							 ] 
+          							 } 
+        				  } 
+      			}	
+            ]
+}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ public class BPELVariableTreeNode extends TreeNode {
 
 	/* ITreeNode */
 
-	
+	@Override
 	public String getLabelSuffix() {
 		if (isCondensed && fNode != null) {
 			return fNode.getLabel();
@@ -52,7 +52,7 @@ public class BPELVariableTreeNode extends TreeNode {
 		return null;
 	}
 
-	
+	@Override
 	public Object[] getChildren() {
 		if (isCondensed) {
 			return fNode != null ? fNode.getChildren() : EMPTY_ARRAY;
@@ -77,7 +77,7 @@ public class BPELVariableTreeNode extends TreeNode {
 		return EMPTY_ARRAY;
 	}
 
-	
+	@Override
 	public boolean hasChildren() {
 		if (isCondensed) {
 			return fNode != null ? fNode.hasChildren() : false;

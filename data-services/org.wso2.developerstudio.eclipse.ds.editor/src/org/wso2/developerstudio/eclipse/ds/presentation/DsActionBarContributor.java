@@ -94,7 +94,6 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	 * This keeps track of the active editor.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IEditorPart activeEditorPart;
@@ -103,7 +102,6 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	 * This keeps track of the current selection provider.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ISelectionProvider selectionProvider;
@@ -253,6 +251,8 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	private DSAction excelAction;
 
 	private DSAction gspredAction;
+	
+	private DSAction queryExpressionAction;
 
 	private DSAction queryParmAction;
 
@@ -263,20 +263,19 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	 * This action opens the Properties view.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	protected IAction showPropertiesViewAction = new Action(
-	        DsEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
-		@Override
-		public void run() {
-			try {
-				getPage().showView("org.eclipse.ui.views.PropertySheet");
-			} catch (PartInitException exception) {
-				DsEditorPlugin.INSTANCE.log(exception);
+	protected IAction showPropertiesViewAction = new Action(DsEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+			@Override
+			public void run() {
+				try {
+					getPage().showView("org.eclipse.ui.views.PropertySheet");
+				}
+				catch (PartInitException exception) {
+					DsEditorPlugin.INSTANCE.log(exception);
+				}
 			}
-		}
-	};
+		};
 
 	/**
 	 * This action refreshes the viewer of the current editor if the editor
@@ -285,31 +284,27 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	 * 
 	 * @generated
 	 */
-	protected IAction refreshViewerAction = new Action(
-	        DsEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
-		@Override
-		public boolean isEnabled() {
-			return activeEditorPart instanceof IViewerProvider;
-		}
+	protected IAction refreshViewerAction = new Action(DsEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+			@Override
+			public boolean isEnabled() {
+				return activeEditorPart instanceof IViewerProvider;
+			}
 
-		@Override
-		public void run() {
-			if (activeEditorPart instanceof IViewerProvider) {
-				Viewer viewer = ((IViewerProvider) activeEditorPart).getViewer();
-				if (viewer != null) {
-					viewer.refresh();
+			@Override
+			public void run() {
+				if (activeEditorPart instanceof IViewerProvider) {
+					Viewer viewer = ((IViewerProvider)activeEditorPart).getViewer();
+					if (viewer != null) {
+						viewer.refresh();
+					}
 				}
 			}
-		}
-	};
+		};
 
 	/**
-	 * This will contain one
-	 * {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to
-	 * each descriptor
+	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
 	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Collection<IAction> createChildActions;
@@ -324,22 +319,17 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	protected IMenuManager createChildMenuManager;
 
 	/**
-	 * This will contain one
-	 * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding
-	 * to each descriptor
+	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
 	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Collection<IAction> createSiblingActions;
 
 	/**
-	 * This is the menu manager into which menu contribution items should be
-	 * added for CreateSibling actions.
+	 * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IMenuManager createSiblingMenuManager;
@@ -348,7 +338,6 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	 * This creates an instance of the contributor.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DsActionBarContributor() {
@@ -451,11 +440,9 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	}
 
 	/**
-	 * When the active editor changes, this remembers the change and registers
-	 * with it as a selection provider.
+	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -471,15 +458,15 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 		}
 		if (part == null) {
 			selectionProvider = null;
-		} else {
+		}
+		else {
 			selectionProvider = part.getSite().getSelectionProvider();
 			selectionProvider.addSelectionChangedListener(this);
 
 			// Fake a selection changed event to update the menus.
 			//
 			if (selectionProvider.getSelection() != null) {
-				selectionChanged(new SelectionChangedEvent(selectionProvider,
-				                                           selectionProvider.getSelection()));
+				selectionChanged(new SelectionChangedEvent(selectionProvider, selectionProvider.getSelection()));
 			}
 		}
 	}
@@ -619,6 +606,10 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 				gspredAction =
 				               new DSAction(selection, domain, newChildDescriptors,
 				                            DSActionConstants.ADD_GSPREAD_QUERY_ACTION);
+				
+				queryExpressionAction =
+			               new DSAction(selection, domain, newChildDescriptors,
+			                            DSActionConstants.ADD_QUERY_EXPRESSION_ACTION);
 
 				queryParmAction =
 				                  new DSAction(selection, domain, newChildDescriptors,
@@ -754,11 +745,9 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	}
 
 	/**
-	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction}
-	 * for each object in <code>descriptors</code>,
+	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
 	 * and returns the collection of these actions.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors,
@@ -773,12 +762,9 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	}
 
 	/**
-	 * This generates a
-	 * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each
-	 * object in <code>descriptors</code>,
+	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
 	 * and returns the collection of these actions.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors,
@@ -793,16 +779,11 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	}
 
 	/**
-	 * This populates the specified <code>manager</code> with
-	 * {@link org.eclipse.jface.action.ActionContributionItem}s
-	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the
-	 * <code>actions</code> collection,
-	 * by inserting them before the specified contribution item
-	 * <code>contributionID</code>.
-	 * If <code>contributionID</code> is <code>null</code>, they are simply
-	 * added.
+	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
+	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
+	 * by inserting them before the specified contribution item <code>contributionID</code>.
+	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void populateManager(IContributionManager manager,
@@ -811,7 +792,8 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 			for (IAction action : actions) {
 				if (contributionID != null) {
 					manager.insertBefore(contributionID, action);
-				} else {
+				}
+				else {
 					manager.add(action);
 				}
 			}
@@ -819,13 +801,10 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	}
 
 	/**
-	 * This removes from the specified <code>manager</code> all
-	 * {@link org.eclipse.jface.action.ActionContributionItem}s
-	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the
-	 * <code>actions</code> collection.
+	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
+	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void depopulateManager(IContributionManager manager,
@@ -837,13 +816,13 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 				//
 				IContributionItem contributionItem = items[i];
 				while (contributionItem instanceof SubContributionItem) {
-					contributionItem = ((SubContributionItem) contributionItem).getInnerItem();
+					contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
 				}
 
 				// Delete the ActionContributionItems with matching action.
 				//
 				if (contributionItem instanceof ActionContributionItem) {
-					IAction action = ((ActionContributionItem) contributionItem).getAction();
+					IAction action = ((ActionContributionItem)contributionItem).getAction();
 					if (actions.contains(action)) {
 						manager.remove(contributionItem);
 					}
@@ -912,6 +891,10 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 					} else if (dataSourceType.equals(DSActionConstants.GSPREAD_DATASOURCE_PROPERTY)) {
 
 						menuManager.insertBefore("edit", gspredAction);
+
+					} else if (dataSourceType.equals(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME)) {
+
+						menuManager.insertBefore("edit", queryExpressionAction);
 
 					} else {
 						// TODO since editor does not have RDF dataSource ,can
@@ -1008,17 +991,15 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
 		menuManager.insertAfter("ui-actions", showPropertiesViewAction);
 
-		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());
+		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
 		menuManager.insertAfter("ui-actions", refreshViewerAction);
 
 		super.addGlobalActions(menuManager);
 	}
 
 	/**
-	 * This ensures that a delete action will clean up all references to deleted
-	 * objects.
+	 * This ensures that a delete action will clean up all references to deleted objects.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -1162,7 +1143,12 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 		                                                        newDSChildDescriptors,
 		                                                        DSActionConstants.CSV_TYPE, null,
 		                                                        null, null));
-
+		
+		// Cassandra Type
+		dataSourceActions.add(new DataSourceConfigurationAction(selection, domain,
+		                                                        newDSChildDescriptors,
+		                                                        DSActionConstants.CASSANDRA_TYPE, null,
+		                                                        DSActionConstants.CASSANDRA_DRIVER_VALUE, null));
 		// Excel Type
 		dataSourceActions.add(new DataSourceConfigurationAction(selection, domain,
 		                                                        newDSChildDescriptors,
@@ -1428,7 +1414,8 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 						    property.getName()
 						            .equals(DSActionConstants.GSPREAD_DATASOURCE_PROPERTY) ||
 						    property.getName()
-						            .equals(DSActionConstants.CARBON_DATASOURCE_NAME_PROPERTY)) {
+						            .equals(DSActionConstants.CARBON_DATASOURCE_NAME_PROPERTY)||
+						    property.getName().equals(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME)) {
 
 							dataSourceType = property.getName();
 						}

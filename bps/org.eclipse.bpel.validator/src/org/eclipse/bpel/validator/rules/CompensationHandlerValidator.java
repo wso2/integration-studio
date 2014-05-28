@@ -35,7 +35,7 @@ public class CompensationHandlerValidator extends CValidator {
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
 	
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		checkChild(Filters.ACTIVITIES,1,1);				

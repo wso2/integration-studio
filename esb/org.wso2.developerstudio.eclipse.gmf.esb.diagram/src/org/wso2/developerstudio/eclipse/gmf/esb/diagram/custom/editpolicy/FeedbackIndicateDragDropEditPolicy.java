@@ -21,7 +21,6 @@ import java.awt.Point;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
@@ -37,10 +36,9 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Control;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EndpoinMediatorFlowCompartmentEditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment19EditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment5EditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartmentEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
@@ -175,30 +173,68 @@ public class FeedbackIndicateDragDropEditPolicy extends DragDropEditPolicy {
 				@SuppressWarnings("rawtypes")
 				Iterator types = elementTypes.iterator();			
 				while(types.hasNext()){
-					Object object = types.next();					
-
-					//MediatorFlowMediatorFlowCompartment19EditPart
-					if (!(getHost() instanceof EndpoinMediatorFlowCompartmentEditPart  )) { 
-						/*
-						 * Allowing endpoints only in Send/Call mediator compartment.
+					Object object = types.next();	
+			
+					
+					if (!(getHost() instanceof EndpoinMediatorFlowCompartmentEditPart)) {
+	                    
+						/*  
+						 * Doesn't allow adding Endpoints in mediators other than
+						 * Send and Call
 						 */
-						if(endPointTypes.contains(object)){
+
+						if (!(getHost() instanceof MediatorFlowMediatorFlowCompartment11EditPart)) {
+						   /*
+							* Allow adding Endpoints in Clone Mediator and not in
+							* other mediators
+							*/
+							if (endPointTypes.contains(object)) {
+								return UnexecutableCommand.INSTANCE;
+							}
+						}
+
+						if (getHost() instanceof MediatorFlowMediatorFlowCompartment11EditPart) {
+					
+							int count = getHost().getChildren().size();
+							if (count > 0) {
+								Object existingMediator = getHost().getChildren()
+										.get(count - 1);
+								if (existingMediator instanceof AbstractEndpoint) {
+	                            /*
+								 *If the last mediator is an Endpoint, then not
+								 *allow to add other mediators
+								 */								
+									if (!endPointTypes.contains(object)) {
+										return UnexecutableCommand.INSTANCE;
+									}
+								
+
+								} else if (existingMediator instanceof AbstractMediator) {
+									/*
+									 * If the last mediator is not an Endpoint and
+									 * if it is another mediator, then not allow to
+									 * add endpoints without a Send
+									 */								
+									if (endPointTypes.contains(object)) {
+										return UnexecutableCommand.INSTANCE;
+									}
+								}
+							}
+						}
+
+					} else {
+
+						/*
+						 *Not allowing mediators in Send and Call mediator
+						 *compartments.
+	                     */
+						if (!endPointTypes.contains(object)) {
 							return UnexecutableCommand.INSTANCE;
 						}
-					} else{
-						/*
-						 * Not allowing mediators in Send mediator compartment.
-						 */
-						if(!endPointTypes.contains(object)){
-							return UnexecutableCommand.INSTANCE;
-					} //else { //comented out since we need to replace endpoint with newly added endpoint
-//						if (getHost().getChildren().size() >= 1) {
-//								return UnexecutableCommand.INSTANCE;
-//							}
-//						}
 					}
+
 				}
-		}
+			}
 		return super.getCommand(request);
 	}
 

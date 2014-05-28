@@ -94,7 +94,7 @@ public class QueryImpl extends WSDLElementImpl implements Query {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.QUERY;
 	}
@@ -154,7 +154,7 @@ public class QueryImpl extends WSDLElementImpl implements Query {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.QUERY__VALUE:
@@ -170,7 +170,7 @@ public class QueryImpl extends WSDLElementImpl implements Query {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.QUERY__VALUE:
@@ -188,7 +188,7 @@ public class QueryImpl extends WSDLElementImpl implements Query {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.QUERY__VALUE:
@@ -206,7 +206,7 @@ public class QueryImpl extends WSDLElementImpl implements Query {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.QUERY__VALUE:
@@ -224,7 +224,7 @@ public class QueryImpl extends WSDLElementImpl implements Query {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -238,7 +238,7 @@ public class QueryImpl extends WSDLElementImpl implements Query {
 		return result.toString();
 	}
 
-	
+	@Override
 	protected void reconcile(Element changedElement) {
 		ReconciliationHelper.getInstance().reconcile(this, changedElement);
 	}

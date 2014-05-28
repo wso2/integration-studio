@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class ElseIfEditPart extends BPELEditPart implements NodeEditPart, ILayou
 	private ElseElseIfBorder border;
 	
 	private class ElseIfOrderedHorizontalLayoutEditPolicy extends BPELOrderedLayoutEditPolicy{
-		
+		@Override
 		protected ArrayList<PolylineConnection> createHorizontalConnections(BPELEditPart parent) {
 			ArrayList<PolylineConnection> connections = new ArrayList<PolylineConnection>();
 			List<BPELEditPart> children = getConnectionChildren(parent);
@@ -84,7 +84,7 @@ public class ElseIfEditPart extends BPELEditPart implements NodeEditPart, ILayou
 		}
 	}
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		
@@ -105,19 +105,19 @@ public class ElseIfEditPart extends BPELEditPart implements NodeEditPart, ILayou
 		return nameLabel;
 	}
 	
-	
+	@Override
 	public Label getLabelFigure() {
 		return null;
 	}
 	
-	
+	@Override
 	public String getLabelContent() {
 		ILabeledElement element = BPELUtil.adapt(getModel(), ILabeledElement.class);
 		return element.getLabel(getModel());
 	}
 
 	
-	
+	@Override
 	protected IFigure createFigure() {
 		ILabeledElement element = BPELUtil.adapt(getModel(), ILabeledElement.class);
 		if (element == null) return null;
@@ -161,7 +161,7 @@ public class ElseIfEditPart extends BPELEditPart implements NodeEditPart, ILayou
 		return figure;
 	}
 
-	
+	@Override
 	protected void unregisterVisuals() {
 		if (this.image != null) {
 			this.image.dispose();
@@ -170,7 +170,7 @@ public class ElseIfEditPart extends BPELEditPart implements NodeEditPart, ILayou
 		super.unregisterVisuals();
 	}
 	
-	
+	@Override
 	protected void handleModelChanged() {
 		ILabeledElement element = BPELUtil.adapt(getModel(), ILabeledElement.class);
 		nameLabel.setText(element.getLabel(getModel()));
@@ -204,7 +204,7 @@ public class ElseIfEditPart extends BPELEditPart implements NodeEditPart, ILayou
 		return new CenteredConnectionAnchor(getFigure(), CenteredConnectionAnchor.BOTTOM, /*HACK*/6);
 	}
 
-	
+	@Override
 	public ConnectionAnchor getConnectionAnchor(int location) {
 		//hack to ensure case connection anchors appear properly
 		if (location == CenteredConnectionAnchor.TOP_INNER){
@@ -263,12 +263,12 @@ public class ElseIfEditPart extends BPELEditPart implements NodeEditPart, ILayou
 	 * We override this method to tell the edit part in which figure to
 	 * place its children.
 	 */
-	
+	@Override
 	public IFigure getContentPane() {
 		return childFigure;
 	}
 	
-	
+	@Override
 	public void refreshVisuals() {
 		super.refreshVisuals();
 		refreshMarkerImages();

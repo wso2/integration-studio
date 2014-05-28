@@ -117,7 +117,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return PartnerlinktypePackage.Literals.PARTNER_LINK_TYPE;
 	}
@@ -174,7 +174,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -189,7 +189,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
@@ -208,7 +208,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
@@ -227,7 +227,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
@@ -245,7 +245,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case PartnerlinktypePackage.PARTNER_LINK_TYPE__NAME:
@@ -265,7 +265,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -280,7 +280,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	/**
 	 * Override the XML element token.
 	 */
-	
+	@Override
 	public QName getElementType() {
 		if (elementType == null)
 			elementType = new QName(PartnerlinktypeConstants.NAMESPACE,
@@ -292,7 +292,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	// Reconcile methods: DOM -> Model
 	//
 
-	
+	@Override
 	public void reconcileAttributes(Element changedElement) {
 		//System.out.println("PartnerLinkTypeImpl.reconcileAttributes()");
 		super.reconcileAttributes(changedElement);
@@ -303,13 +303,13 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		reconcileReferences(false); // TODO true?
 	}
 
-	
+	@Override
 	public void reconcileReferences(boolean deep) {
 		//System.out.println("PartnerLinkTypeImpl.reconcileReferences("+deep+")");
 		super.reconcileReferences(deep);
 	}
 
-	
+	@Override
 	public void handleUnreconciledElement(Element child,
 			Collection remainingModelObjects) {
 		//System.out.println("PartnerLinkTypeImpl.handleUnreconciledElement()");
@@ -322,7 +322,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		}
 	}
 
-	
+	@Override
 	protected void handleReconciliation(Collection remainingModelObjects) {
 		//System.out.println("PartnerLinkTypeImpl.handleReconciliation("+remainingModelObjects+")");
 		for (Iterator i = remainingModelObjects.iterator(); i.hasNext();) {
@@ -342,7 +342,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 	// For reconciliation: Model -> DOM
 	//
 
-	
+	@Override
 	protected void changeAttribute(EAttribute eAttribute) {
 		//System.out.println("PartnerLinkTypeImpl.changeAttribute("+eAttribute+")");
 
@@ -360,7 +360,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		}
 	}
 
-	
+	@Override
 	protected void changeReference(EReference eReference) {
 		//System.out.println("PartnerLinkTypeImpl.changeReference("+eReference+")");
 
@@ -383,7 +383,7 @@ public class PartnerLinkTypeImpl extends ExtensibilityElementImpl implements
 		}
 	}
 
-	
+	@Override
 	public Element createElement() {
 		//System.out.println("PartnerLinkTypeImpl.createElement()");
 

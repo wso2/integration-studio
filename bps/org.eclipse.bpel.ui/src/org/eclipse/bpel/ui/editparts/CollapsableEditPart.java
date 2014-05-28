@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 		public CollapsableDecorationLayout(int borderImageWidth) {
 			this.borderImageWidth = borderImageWidth;
 		}
-		
+		@Override
 		protected Point calculateLocation(int locationHint, IFigure container, Dimension childDimension) {
 			Rectangle area = container.getClientArea();
 			switch (locationHint) {
@@ -178,14 +178,14 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 		return (border != null && border instanceof ContainerBorder);
 	}
 		
-	
+	@Override
 	protected DrawerBorder getDrawerBorder() {
 		Border border = getContentPane().getBorder();
 		if (border instanceof DrawerBorder) return (DrawerBorder)border;
 		return null;
 	}
 	
-	
+	@Override
 	public Label getLabelFigure() {
 		if (isGenericContainerBorder()) {
 			ContainerBorder border = (ContainerBorder)(this.getContentPane().getBorder());
@@ -194,7 +194,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 		return collapsedLabel;
 	}
 
-	
+	@Override
 	protected IFigure createFigure() {		
 		initializeLabels();
 		editPartMarkerDecorator = new BPELEditPartMarkerDecorator(
@@ -306,7 +306,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 		return true;
 	}
 
-	
+	@Override
 	protected void unregisterVisuals() {
 		this.image = null;
 		this.editPartMarkerDecorator = null;
@@ -327,7 +327,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 			figure.add(collapsedLabel);
 		}
 	}
-	
+	@Override
 	protected List getModelChildren() {
 		if (isCollapsed()) return Collections.EMPTY_LIST;
 
@@ -341,17 +341,17 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 		return true;
 	}
 	
-	
+	@Override
 	public DragTracker getDragTracker(Request request) {
 		return new BPELDragEditPartsTracker(this) {
-			
+			@Override
 			protected boolean handleDoubleClick(int button) {
 				if (!isGenericContainerBorder()) 
 					setCollapsed(!isCollapsed());
 				return true;
 			}
 			
-			
+			@Override
 			protected boolean handleButtonDown(int button) {
 				if (isGenericContainerBorder()) {
 					if (isPointInCollapseIcon(getLocation())) {
@@ -367,7 +367,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#refreshVisuals()
 	 */
-	
+	@Override
 	public void refreshVisuals() {
 		super.refreshVisuals();
 		// The name has changed, change the corresponding label
@@ -434,7 +434,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 	 * because it must show flow links for any activities which are inside it but not
 	 * visible (in the case that the CollapsableEditPart is collapsed).
 	 */	
-	
+	@Override
 	protected List<Link> getModelSourceConnections() {
 		final List<Link> result = super.getModelSourceConnections();
 //		if (isCollapsed()) {
@@ -466,7 +466,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 	 * because it must show flow links for any activities which are inside it but not
 	 * visible (in the case that the CollapsableEditPart is collapsed).
 	 */
-	
+	@Override
 	protected List<Link> getModelTargetConnections() {
 		final List<Link> result = super.getModelTargetConnections();
 //		if (isCollapsed()) {
@@ -493,7 +493,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 		return result;
 	}
 	
-	
+	@Override
 	public IFigure getContentPane() {
 		return contentFigure;
 	}
@@ -556,7 +556,7 @@ public abstract class CollapsableEditPart extends CompositeActivityEditPart impl
 	 * 
 	 * This must be called after the figure for this edit part has been created.
 	 */
-	
+	@Override
 	public ConnectionAnchor getConnectionAnchor(int location) {
 		switch(location){
 		case CenteredConnectionAnchor.TOP_INNER:

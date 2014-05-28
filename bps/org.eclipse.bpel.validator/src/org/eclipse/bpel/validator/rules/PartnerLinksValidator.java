@@ -31,7 +31,7 @@ public class PartnerLinksValidator extends CContainerValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CContainerValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {		
 		super.checkChildren();
 		checkChild(ND_PARTNER_LINK, 1, Integer.MAX_VALUE);	

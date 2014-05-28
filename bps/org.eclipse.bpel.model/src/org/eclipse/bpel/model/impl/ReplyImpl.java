@@ -111,7 +111,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.REPLY;
 	}
@@ -296,7 +296,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -311,7 +311,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.REPLY__FAULT_NAME:
@@ -336,7 +336,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.REPLY__FAULT_NAME:
@@ -360,7 +360,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.REPLY__FAULT_NAME:
@@ -384,7 +384,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.REPLY__FAULT_NAME:
@@ -405,7 +405,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -417,7 +417,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 		return result.toString();
 	}
 
-	//	
+	//	@Override
 	//	protected void adoptContent(EReference reference, Object object) {
 	//		if (object instanceof ToPart) {
 	//			ReconciliationHelper
@@ -426,7 +426,7 @@ public class ReplyImpl extends PartnerActivityImpl implements Reply {
 	//		super.adoptContent(reference, object);
 	//	}
 	//
-	//	
+	//	@Override
 	//	protected void orphanContent(EReference reference, Object obj) {
 	//		if (obj instanceof ToPart) {
 	//			ReconciliationHelper.orphanChild(this, (ToPart) obj);

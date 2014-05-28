@@ -68,7 +68,7 @@ public class VariableReferenceExpr extends Expr {
 	}
 
 	
-	
+	@Override
 	protected String asText() {
 		return "$" + getQName();
 	}

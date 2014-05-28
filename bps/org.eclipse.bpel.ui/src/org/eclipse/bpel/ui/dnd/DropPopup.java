@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class DropPopup extends PopupDialog implements StatusTextListener, MenuDe
 		super(parentShell,shellStyle | SWT.TOOL, true, true, false, false, title, statusFieldText);	
 	}
 	
-	
+	@Override
 	protected Control createDialogArea (Composite parent) {
 		fText= new StyledText(parent, SWT.V_SCROLL | SWT.H_SCROLL);
 		fText.setEditable(false);
@@ -86,7 +86,7 @@ public class DropPopup extends PopupDialog implements StatusTextListener, MenuDe
 			/*
 			 * @see org.eclipse.swt.events.ControlAdapter#controlResized(org.eclipse.swt.events.ControlEvent)
 			 */
-			
+			@Override
 			public void controlResized(ControlEvent e) {
 				fText.setText(fText.getText());
 			}

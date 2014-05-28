@@ -36,7 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#isContinueRoute <em>Continue Route</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#isContinueAfterRoute <em>Continue After Route</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getConditionalRouteBranches <em>Conditional Route Branches</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ConditionalRouterMediatorImpl#getOutputConnector <em>Output Connector</em>}</li>
@@ -49,24 +49,24 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  */
 public class ConditionalRouterMediatorImpl extends MediatorImpl implements ConditionalRouterMediator {
 	/**
-	 * The default value of the '{@link #isContinueRoute() <em>Continue Route</em>}' attribute.
+	 * The default value of the '{@link #isContinueAfterRoute() <em>Continue After Route</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isContinueRoute()
+	 * @see #isContinueAfterRoute()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean CONTINUE_ROUTE_EDEFAULT = false;
+	protected static final boolean CONTINUE_AFTER_ROUTE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isContinueRoute() <em>Continue Route</em>}' attribute.
+	 * The cached value of the '{@link #isContinueAfterRoute() <em>Continue After Route</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isContinueRoute()
+	 * @see #isContinueAfterRoute()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean continueRoute = CONTINUE_ROUTE_EDEFAULT;
+	protected boolean continueAfterRoute = CONTINUE_AFTER_ROUTE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getConditionalRouteBranches() <em>Conditional Route Branches</em>}' containment reference list.
@@ -143,8 +143,8 @@ public class ConditionalRouterMediatorImpl extends MediatorImpl implements Condi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isContinueRoute() {
-		return continueRoute;
+	public boolean isContinueAfterRoute() {
+		return continueAfterRoute;
 	}
 
 	/**
@@ -152,11 +152,11 @@ public class ConditionalRouterMediatorImpl extends MediatorImpl implements Condi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setContinueRoute(boolean newContinueRoute) {
-		boolean oldContinueRoute = continueRoute;
-		continueRoute = newContinueRoute;
+	public void setContinueAfterRoute(boolean newContinueAfterRoute) {
+		boolean oldContinueAfterRoute = continueAfterRoute;
+		continueAfterRoute = newContinueAfterRoute;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE, oldContinueRoute, continueRoute));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE, oldContinueAfterRoute, continueAfterRoute));
 	}
 
 	/**
@@ -375,8 +375,8 @@ public class ConditionalRouterMediatorImpl extends MediatorImpl implements Condi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE:
-				return isContinueRoute();
+			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE:
+				return isContinueAfterRoute();
 			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONDITIONAL_ROUTE_BRANCHES:
 				return getConditionalRouteBranches();
 			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__INPUT_CONNECTOR:
@@ -401,8 +401,8 @@ public class ConditionalRouterMediatorImpl extends MediatorImpl implements Condi
 	
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE:
-				setContinueRoute((Boolean)newValue);
+			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE:
+				setContinueAfterRoute((Boolean)newValue);
 				return;
 			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONDITIONAL_ROUTE_BRANCHES:
 				getConditionalRouteBranches().clear();
@@ -433,8 +433,8 @@ public class ConditionalRouterMediatorImpl extends MediatorImpl implements Condi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE:
-				setContinueRoute(CONTINUE_ROUTE_EDEFAULT);
+			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE:
+				setContinueAfterRoute(CONTINUE_AFTER_ROUTE_EDEFAULT);
 				return;
 			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONDITIONAL_ROUTE_BRANCHES:
 				getConditionalRouteBranches().clear();
@@ -464,8 +464,8 @@ public class ConditionalRouterMediatorImpl extends MediatorImpl implements Condi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE:
-				return continueRoute != CONTINUE_ROUTE_EDEFAULT;
+			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE:
+				return continueAfterRoute != CONTINUE_AFTER_ROUTE_EDEFAULT;
 			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONDITIONAL_ROUTE_BRANCHES:
 				return conditionalRouteBranches != null && !conditionalRouteBranches.isEmpty();
 			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__INPUT_CONNECTOR:
@@ -491,8 +491,8 @@ public class ConditionalRouterMediatorImpl extends MediatorImpl implements Condi
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (continueRoute: ");
-		result.append(continueRoute);
+		result.append(" (continueAfterRoute: ");
+		result.append(continueAfterRoute);
 		result.append(')');
 		return result.toString();
 	}

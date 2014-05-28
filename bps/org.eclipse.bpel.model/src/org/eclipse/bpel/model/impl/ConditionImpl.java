@@ -42,7 +42,7 @@ public class ConditionImpl extends ExpressionImpl implements Condition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.CONDITION;
 	}

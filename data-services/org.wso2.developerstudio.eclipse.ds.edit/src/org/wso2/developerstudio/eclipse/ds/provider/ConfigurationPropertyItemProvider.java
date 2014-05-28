@@ -30,11 +30,9 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.provider.labelProvider.DSEditPropertiesLabelProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.ConfigurationProperty} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ConfigurationPropertyItemProvider extends ItemProviderAdapter
@@ -48,7 +46,6 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ConfigurationPropertyItemProvider(AdapterFactory adapterFactory) {
@@ -151,13 +148,10 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached
-	 * children and by creating a viewer notification, which it passes to
-	 * {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -168,20 +162,17 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter
 		switch (notification.getFeatureID(ConfigurationProperty.class)) {
 			case DsPackage.CONFIGURATION_PROPERTY__VALUE:
 			case DsPackage.CONFIGURATION_PROPERTY__NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(),
-				                                         false, true));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing the children
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -194,7 +185,6 @@ public class ConfigurationPropertyItemProvider extends ItemProviderAdapter
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 

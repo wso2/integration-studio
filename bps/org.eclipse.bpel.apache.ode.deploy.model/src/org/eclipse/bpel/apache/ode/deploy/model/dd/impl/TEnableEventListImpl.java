@@ -62,7 +62,7 @@ public class TEnableEventListImpl extends EObjectImpl implements TEnableEventLis
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return ddPackage.Literals.TENABLE_EVENT_LIST;
 	}
@@ -84,7 +84,7 @@ public class TEnableEventListImpl extends EObjectImpl implements TEnableEventLis
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ddPackage.TENABLE_EVENT_LIST__ENABLE_EVENT:
@@ -99,7 +99,7 @@ public class TEnableEventListImpl extends EObjectImpl implements TEnableEventLis
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ddPackage.TENABLE_EVENT_LIST__ENABLE_EVENT:
@@ -115,7 +115,7 @@ public class TEnableEventListImpl extends EObjectImpl implements TEnableEventLis
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ddPackage.TENABLE_EVENT_LIST__ENABLE_EVENT:
@@ -130,7 +130,7 @@ public class TEnableEventListImpl extends EObjectImpl implements TEnableEventLis
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ddPackage.TENABLE_EVENT_LIST__ENABLE_EVENT:
@@ -144,7 +144,7 @@ public class TEnableEventListImpl extends EObjectImpl implements TEnableEventLis
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

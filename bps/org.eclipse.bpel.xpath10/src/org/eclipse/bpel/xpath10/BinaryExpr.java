@@ -67,7 +67,7 @@ public class BinaryExpr extends Expr {
     }
     
 
-	
+	@Override
 	protected String asText() {
     	StringBuilder sb = new StringBuilder();
     	if (isWrapParen()) {
@@ -85,7 +85,7 @@ public class BinaryExpr extends Expr {
     }
     
 
-    
+    @Override
 	protected String asString () {
     	StringBuilder sb = new StringBuilder();
     	if (isWrapParen()) {
@@ -102,7 +102,7 @@ public class BinaryExpr extends Expr {
     /**
      * @see org.eclipse.bpel.xpath10.Expr#getPosition()
      */
-    
+    @Override
 	public int getPosition () {    	
     	return getLHS().getPosition();
     }
@@ -111,7 +111,7 @@ public class BinaryExpr extends Expr {
      * @see org.eclipse.bpel.xpath10.Expr#getEndPosition()
      */
     
-    
+    @Override
 	public int getEndPosition () {
     	return getRHS().getEndPosition();
     }

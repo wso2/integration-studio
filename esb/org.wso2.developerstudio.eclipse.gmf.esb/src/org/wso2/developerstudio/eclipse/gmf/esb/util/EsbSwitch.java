@@ -2213,18 +2213,6 @@ public class EsbSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EsbPackage.WSDL_DEFINITION: {
-				WSDLDefinition wsdlDefinition = (WSDLDefinition)theEObject;
-				T result = caseWSDLDefinition(wsdlDefinition);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsbPackage.WSDL_DESCRIPTION: {
-				WSDLDescription wsdlDescription = (WSDLDescription)theEObject;
-				T result = caseWSDLDescription(wsdlDescription);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case EsbPackage.WSDL_END_POINT_INPUT_CONNECTOR: {
 				WSDLEndPointInputConnector wsdlEndPointInputConnector = (WSDLEndPointInputConnector)theEObject;
 				T result = caseWSDLEndPointInputConnector(wsdlEndPointInputConnector);
@@ -7598,36 +7586,6 @@ public class EsbSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWSDLEndPoint(WSDLEndPoint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>WSDL Definition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>WSDL Definition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseWSDLDefinition(WSDLDefinition object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>WSDL Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>WSDL Description</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseWSDLDescription(WSDLDescription object) {
 		return null;
 	}
 

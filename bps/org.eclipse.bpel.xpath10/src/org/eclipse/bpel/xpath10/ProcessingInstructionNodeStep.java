@@ -43,7 +43,7 @@ public class ProcessingInstructionNodeStep extends Step {
 	}	
 		
 	
-	
+	@Override
 	protected String asString () {
 		StringBuilder sb = new StringBuilder ();
 		sb.append("processing-instruction(");
@@ -54,7 +54,7 @@ public class ProcessingInstructionNodeStep extends Step {
 		return sb.toString();
 	}
 	
-	
+	@Override
 	protected String asText() {
 		return asString();
 	}

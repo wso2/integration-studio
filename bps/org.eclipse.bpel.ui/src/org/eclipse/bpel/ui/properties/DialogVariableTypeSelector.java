@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,50 +34,50 @@ public class DialogVariableTypeSelector extends VariableTypeSelector {
 		this.shell = shell;
 	}
 	
-	
+	@Override
 	protected Button createButton(Composite parent, String text, int style) {
 		Button button = new Button(parent, style);
 		button.setText(text);
 		return button;
 	}	
-	
+	@Override
 	protected Composite createComposite(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NULL);
 		return composite;
 	}
-	
+	@Override
 	protected Label createLabel(Composite parent, String text) {
 		Label label = new Label(parent, SWT.NULL);
 		label.setText(text);
 		return label;
 	}	
-	
+	@Override
 	protected Hyperlink createHyperlink(Composite parent, String text, int style) {
 		Hyperlink hyperlink = new Hyperlink(parent, style);
 		if (text != null)
 			hyperlink.setText(text);
 		return hyperlink;
 	}	
-	
+	@Override
 	protected CCombo createCCombo(Composite parent) {
 		CCombo ccombo = new CCombo(parent, SWT.READ_ONLY|SWT.BORDER);
 		ccombo.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_LIST_BACKGROUND));
 		return ccombo;
 	}	
 	
-	
+	@Override
 	protected void updateCompositeSelection() {
 		interfaceComposite.setVisible(true);
 		dataTypeComposite.setVisible(false);
 		doChildLayout();
 	}
 	
-	
+	@Override
 	protected void createRadioButtonWidgets(Composite composite) {
 		// Don't do anything
 	}
 	
-	
+	@Override
 	protected void internalSetLayoutData() {
 		// TODO: Some of this is redundant.
 		FlatFormData data = new FlatFormData();

@@ -79,7 +79,7 @@ public class RuleMediatorImpl extends MediatorImpl implements RuleMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String RULE_SET_URL_EDEFAULT = "";
+	protected static final String RULE_SET_URL_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getRuleSetURL() <em>Rule Set URL</em>}' attribute.
@@ -249,7 +249,7 @@ public class RuleMediatorImpl extends MediatorImpl implements RuleMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SOURCE_VALUE_EDEFAULT = "";
+	protected static final String SOURCE_VALUE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getSourceValue() <em>Source Value</em>}' attribute.

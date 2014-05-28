@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,7 +90,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace() { 
 		return true; 
 	}
@@ -143,7 +143,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 	}
 		
 	
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object */
@@ -151,13 +151,13 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 				boolean updateInterface = false;
 				boolean refreshAdapters = false;
 				
-				
+				@Override
 				public void notify(Notification n) {
 					updateInterface = updateInterface || notificationInterest.contains( n.getFeature() );
 					refreshAdapters = refreshAdapters || updateInterface;
 				}
 				
-				
+				@Override
 				public void finish() {
 					if (updateInterface) {
 						updatePartnerLinkTypeWidgets();
@@ -173,7 +173,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 		};
 	}
 
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		if (fAdapters.length > 0) {
@@ -220,7 +220,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 		fPartnerLinkTypeHref = fWidgetFactory.createHyperlink(composite, "", SWT.NONE); //$NON-NLS-1$
 		fPartnerLinkTypeHref.addHyperlinkListener(new HyperlinkAdapter() {
 			
-			
+			@Override
 			public void linkActivated(HyperlinkEvent e) {
 				PartnerLinkType plt = getPartnerLinkType();
 				if (plt == null) {
@@ -432,7 +432,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 	
 	
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		
 		Composite composite = parentComposite = createFlatFormComposite(parent);
@@ -454,7 +454,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 		// createReferenceWidgets(composite);
 
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(
-			parentComposite, IHelpContextIds.PROPERTY_PAGE_PARTNER_IMPLEMENTATION);
+			parentComposite, IHelpContextIds.PROPERTY_PAGE_PARTNER_LINK);
 	}
 	
 	
@@ -577,7 +577,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 	
 	
 	
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 		
 		super.basicSetInput(newInput);
@@ -590,7 +590,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return Integer.valueOf( lastChangeContext );
 	}
@@ -599,7 +599,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 				
 	}
@@ -625,7 +625,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 			// set port type
 			cmd.add(new AutoUndoCommand(plt) {
 				
-	            
+	            @Override
 				public void doExecute() {
 	            	Role role = (whichRole == ModelHelper.MY_ROLE) ? partnerLink.getMyRole() : partnerLink.getPartnerRole();
 	            	role.setPortType(portType);
@@ -647,7 +647,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 		
 		button.addSelectionListener (new SelectionAdapter() {
 			
-			
+			@Override
 			public void widgetSelected (SelectionEvent event) {
 				Button b = (Button) event.widget;				
 				buttonPressed(((Integer) b.getData()), b.getSelection(),true);
@@ -786,7 +786,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#isValidMarker(org.eclipse.core.resources.IMarker)
 	 */
 	
-	
+	@Override
 	public boolean isValidMarker (IMarker marker) {
 
 		boolean isValid = super.isValidMarker(marker);
@@ -807,7 +807,7 @@ public class PartnerLinkImplSection extends BPELPropertySection {
 	
 	
 
-	
+	@Override
 	protected void updateMarkers () {				
 		fPartnerLinkTypeLabel.clear();		
 		for(IMarker m : getMarkers(getInput())) {

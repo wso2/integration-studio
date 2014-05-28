@@ -86,10 +86,10 @@ public class AbstractCommonTargetImpl extends EsbNodeImpl implements AbstractCom
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getEndpointType()
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	protected static final TargetEndpointType ENDPOINT_TYPE_EDEFAULT = TargetEndpointType.NONE;
+	protected static final TargetEndpointType ENDPOINT_TYPE_EDEFAULT = TargetEndpointType.ANONYMOUS;
 
 	/**
 	 * The cached value of the '{@link #getEndpointType() <em>Endpoint Type</em>}' attribute.

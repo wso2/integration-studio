@@ -37,6 +37,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getOnAcceptOutputConnector <em>On Accept Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getAdviceOutputConnector <em>Advice Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getObligationsOutputConnector <em>Obligations Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackHandler <em>Callback Handler</em>}</li>
  * </ul>
  * </p>
  *
@@ -206,6 +207,7 @@ public interface EntitlementMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Entitlement Client Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entitlement Client Type</em>' attribute isn't clear,
@@ -213,22 +215,24 @@ public interface EntitlementMediator extends Mediator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entitlement Client Type</em>' attribute.
-	 * @see #setEntitlementClientType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType
+	 * @see #setEntitlementClientType(EntitlementClientType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_EntitlementClientType()
 	 * @model
 	 * @generated
 	 */
-	String getEntitlementClientType();
+	EntitlementClientType getEntitlementClientType();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getEntitlementClientType <em>Entitlement Client Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Entitlement Client Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType
 	 * @see #getEntitlementClientType()
 	 * @generated
 	 */
-	void setEntitlementClientType(String value);
+	void setEntitlementClientType(EntitlementClientType value);
 
 	/**
 	 * Returns the value of the '<em><b>On Reject Sequence Type</b></em>' attribute.
@@ -631,5 +635,34 @@ public interface EntitlementMediator extends Mediator {
 	 * @generated
 	 */
 	void setObligationsOutputConnector(EntitlementMediatorObligationsOutputConnector value);
+
+	/**
+	 * Returns the value of the '<em><b>Callback Handler</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Callback Handler</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Callback Handler</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler
+	 * @see #setCallbackHandler(EntitlementCallbackHandler)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEntitlementMediator_CallbackHandler()
+	 * @model
+	 * @generated
+	 */
+	EntitlementCallbackHandler getCallbackHandler();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackHandler <em>Callback Handler</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Callback Handler</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler
+	 * @see #getCallbackHandler()
+	 * @generated
+	 */
+	void setCallbackHandler(EntitlementCallbackHandler value);
 
 } // EntitlementMediator

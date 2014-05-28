@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,12 +68,12 @@ public class NamespaceSection extends BPELPropertySection {
 		fNamspaceEditHelper = createEditController() ;
 		fNamspaceEditHelper.setFeature( BPELPackage.eINSTANCE.getProcess_TargetNamespace() );
 		fNamspaceEditHelper.setViewIValue(new DelegateIValue( new TextIValue ( namespaceText )) {
-			
+			@Override
 			public String get() {
 				String text = fDelegate.get().toString();
 				return EMPTY_STRING.equals(text) ? null : NamespaceUtils.convertNamespaceToUri(text);
 			}
-			
+			@Override
 			public void set (Object object) {
 				if (object == null) {
 					fDelegate.set(EMPTY_STRING);
@@ -88,16 +88,15 @@ public class NamespaceSection extends BPELPropertySection {
 	
 	
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		Composite composite = createFlatFormComposite(parent);
 		createNamespaceWidgets(composite);
 		createChangeTrackers();
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(
-			composite, IHelpContextIds.PROPERTY_PAGE_NAME);
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, IHelpContextIds.PROPERTY_PAGE_NAMESPACE);
 	}
 
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {		
 		super.basicSetInput(newInput);
 		fNamspaceEditHelper.setInput (newInput);
@@ -107,7 +106,7 @@ public class NamespaceSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return null;
 	}
@@ -115,7 +114,7 @@ public class NamespaceSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		namespaceText.setFocus();
 	}

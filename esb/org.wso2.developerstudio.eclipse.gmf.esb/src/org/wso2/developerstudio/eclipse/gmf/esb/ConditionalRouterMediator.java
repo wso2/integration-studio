@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueRoute <em>Continue Route</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute <em>Continue After Route</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getConditionalRouteBranches <em>Conditional Route Branches</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getOutputConnector <em>Output Connector</em>}</li>
@@ -31,30 +31,30 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ConditionalRouterMediator extends Mediator {
 	/**
-	 * Returns the value of the '<em><b>Continue Route</b></em>' attribute.
+	 * Returns the value of the '<em><b>Continue After Route</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Continue Route</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Continue After Route</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Continue Route</em>' attribute.
-	 * @see #setContinueRoute(boolean)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator_ContinueRoute()
+	 * @return the value of the '<em>Continue After Route</em>' attribute.
+	 * @see #setContinueAfterRoute(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getConditionalRouterMediator_ContinueAfterRoute()
 	 * @model
 	 * @generated
 	 */
-	boolean isContinueRoute();
+	boolean isContinueAfterRoute();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueRoute <em>Continue Route</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute <em>Continue After Route</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Continue Route</em>' attribute.
-	 * @see #isContinueRoute()
+	 * @param value the new value of the '<em>Continue After Route</em>' attribute.
+	 * @see #isContinueAfterRoute()
 	 * @generated
 	 */
-	void setContinueRoute(boolean value);
+	void setContinueAfterRoute(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Conditional Route Branches</b></em>' containment reference list.

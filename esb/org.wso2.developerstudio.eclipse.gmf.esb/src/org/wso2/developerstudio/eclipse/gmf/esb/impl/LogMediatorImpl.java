@@ -96,7 +96,7 @@ public class LogMediatorImpl extends MediatorImpl implements LogMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LOG_SEPARATOR_EDEFAULT = "";
+	protected static final String LOG_SEPARATOR_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getLogSeparator() <em>Log Separator</em>}' attribute.

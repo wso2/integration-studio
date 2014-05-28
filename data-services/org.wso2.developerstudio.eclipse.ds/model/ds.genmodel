@@ -155,6 +155,7 @@
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//Query">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//Query/mixed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/expression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/sql"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/sparql"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ds.ecore#//Query/properties"/>
@@ -217,6 +218,9 @@
     <genClasses ecoreClass="ds.ecore#//Sql">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Sql/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Sql/dialect"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//QueryExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//QueryExpression/value"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//StartingRow">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//StartingRow/value"/>

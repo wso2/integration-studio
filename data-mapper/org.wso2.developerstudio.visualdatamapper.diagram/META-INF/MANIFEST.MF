@@ -2,14 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.visualdatamapper.diagram; singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: dataMapper.diagram.part.DataMapperDiagramEditorPlugin
+Bundle-Activator: org.wso2.developerstudio.datamapper.diagram.part.DataMapperDiagramEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: dataMapper.diagram.edit.parts,
- dataMapper.diagram.part,
- dataMapper.diagram.providers
+Export-Package: org.wso2.developerstudio.datamapper.diagram.custom.util,
+ org.wso2.developerstudio.datamapper.diagram.edit.parts,
+ org.wso2.developerstudio.datamapper.diagram.part,
+ org.wso2.developerstudio.datamapper.diagram.providers
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.core.expressions,
@@ -48,6 +49,10 @@ Import-Package: org.apache.avro,
  org.apache.avro.reflect,
  org.apache.avro.specific,
  org.apache.avro.util,
+ org.apache.commons.io;version="2.0.0.wso2v1",
+ org.apache.commons.lang;version="2.6.0.wso2v1",
+ org.apache.maven.model,
+ org.apache.maven.project,
  org.codehaus.jackson,
  org.codehaus.jackson.annotate,
  org.codehaus.jackson.format,
@@ -72,8 +77,32 @@ Import-Package: org.apache.avro,
  org.codehaus.jackson.sym,
  org.codehaus.jackson.type,
  org.codehaus.jackson.util,
+ org.codehaus.plexus.util.xml,
+ org.eclipse.core.filesystem,
  org.eclipse.wst.sse.core,
  org.eclipse.wst.sse.core.internal.provisional,
  org.eclipse.wst.sse.core.internal.provisional.text,
  org.eclipse.wst.sse.core.internal.text.rules,
- org.eclipse.wst.sse.ui
+ org.eclipse.wst.sse.ui,
+ org.wso2.developerstudio.eclipse.capp.core.artifacts.manager,
+ org.wso2.developerstudio.eclipse.capp.core.model,
+ org.wso2.developerstudio.eclipse.capp.maven.utils,
+ org.wso2.developerstudio.eclipse.esb.core.interfaces,
+ org.wso2.developerstudio.eclipse.esb.core.utils,
+ org.wso2.developerstudio.eclipse.esb.impl,
+ org.wso2.developerstudio.eclipse.esb.presentation.ui,
+ org.wso2.developerstudio.eclipse.general.project.artifact,
+ org.wso2.developerstudio.eclipse.general.project.artifact.bean,
+ org.wso2.developerstudio.eclipse.general.project.utils,
+ org.wso2.developerstudio.eclipse.greg.core,
+ org.wso2.developerstudio.eclipse.greg.core.interfaces,
+ org.wso2.developerstudio.eclipse.logging.core,
+ org.wso2.developerstudio.eclipse.maven.util,
+ org.wso2.developerstudio.eclipse.platform.core.interfaces,
+ org.wso2.developerstudio.eclipse.platform.core.registry.util,
+ org.wso2.developerstudio.eclipse.platform.core.templates,
+ org.wso2.developerstudio.eclipse.platform.core.utils,
+ org.wso2.developerstudio.eclipse.platform.ui.editor,
+ org.wso2.developerstudio.eclipse.platform.ui.startup,
+ org.wso2.developerstudio.eclipse.utils.data,
+ org.wso2.developerstudio.eclipse.utils.file

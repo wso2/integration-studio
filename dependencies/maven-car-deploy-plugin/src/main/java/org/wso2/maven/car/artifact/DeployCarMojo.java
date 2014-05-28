@@ -327,7 +327,7 @@ public class DeployCarMojo extends AbstractMojo {
 		ApplicationAdminStub appAdminStub = getApplicationAdminStub(serverURL, username, pwd);
 		String[] existingApplications = appAdminStub.listAllApplications();
 		if (existingApplications!=null && Arrays.asList(existingApplications).contains(project.getArtifactId()+"_"+project.getVersion())){
-			appAdminStub.deleteApplication(project.getArtifactId());
+			appAdminStub.deleteApplication(project.getArtifactId() + "_" + project.getVersion());
 			getLog().info("Located the C-App "+project.getArtifactId()+"_"+project.getVersion()+ " and undeployed...");
 		}
 	}

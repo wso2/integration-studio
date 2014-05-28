@@ -96,7 +96,7 @@ public class RegistryResourceUtils {
 				resMetaData.createElement(fromPath, checkoutPath, false, metaFolderPath, false);
 				File[] listFiles = fromPath.listFiles();
 				for (File file : listFiles) {
-					createMetaDataForFolder(checkoutPath+"/"+fromPath.getName(), file);
+					createMetaDataForFolder(checkoutPath.replaceAll("/$", "") +"/"+fromPath.getName(), file);
 				}
 			}
 		} catch (FactoryConfigurationError e) {

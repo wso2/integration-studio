@@ -98,10 +98,10 @@ public class SynapseUtils {
 			}else if(name.equals("templates")){
 				processFiles(editorList, synapseConfigFolderPath + "/"
 						+ ADDITIONAL_FOLDERS + "/templates",SynapseEntryType.TEMPLATE);
-			} else if(name.equals("templates")){
+			} else if(name.equals("message-stores")){
 				processFiles(editorList, synapseConfigFolderPath + "/"
 						+ ADDITIONAL_FOLDERS + "/message-stores",SynapseEntryType.MESSAGE_STORE);
-			} else if(name.equals("templates")){
+			} else if(name.equals("message-processors")){
 				processFiles(editorList, synapseConfigFolderPath + "/"
 						+ ADDITIONAL_FOLDERS + "/message-processors",SynapseEntryType.MESSAGE_PROCESSOR);
 			}

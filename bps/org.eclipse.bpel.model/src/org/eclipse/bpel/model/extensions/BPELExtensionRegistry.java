@@ -67,7 +67,7 @@ public class BPELExtensionRegistry extends ExtensionRegistry
 	/**
 	 * @see javax.wsdl.extensions.ExtensionRegistry#createExtension(Class, QName)
 	 */
-	
+	@Override
 	public ExtensibilityElement createExtension (Class parentType, QName qname) throws WSDLException {
 		
 		// Make sure that the EMF package corresponding to the given namespace is initialized
@@ -79,7 +79,7 @@ public class BPELExtensionRegistry extends ExtensionRegistry
 	/**
 	 * @see javax.wsdl.extensions.ExtensionRegistry#queryDeserializer(Class, QName)
 	 */
-	
+	@Override
 	public ExtensionDeserializer queryDeserializer (Class parentType, QName qname) throws WSDLException {
 
 		// Make sure that the EMF package corresponding to the given namespace is initialized
@@ -91,7 +91,7 @@ public class BPELExtensionRegistry extends ExtensionRegistry
 	/**
 	 * @see javax.wsdl.extensions.ExtensionRegistry#querySerializer(Class, QName)
 	 */
-	
+	@Override
 	public ExtensionSerializer querySerializer (Class parentType, QName qname) throws WSDLException {
 
 		// Make sure that the EMF package corresponding to the given namespace is initialized
@@ -104,7 +104,7 @@ public class BPELExtensionRegistry extends ExtensionRegistry
 	 * @param es must be a {@link BPELExtensionSerializer}
 	 */
 	
-	
+	@Override
 	public void registerSerializer (Class parentType, QName elementType, ExtensionSerializer es) {
 		
         if (!(es instanceof BPELExtensionSerializer)) {
@@ -116,7 +116,7 @@ public class BPELExtensionRegistry extends ExtensionRegistry
 	/**
 	 * @param ed deserializer must be a {@link BPELExtensionDeserializer}
 	 */
-	
+	@Override
 	public void registerDeserializer(Class parentType, QName elementType, ExtensionDeserializer ed) {
 	    if (!(ed instanceof BPELExtensionDeserializer)) {
 	        throw new IllegalArgumentException("ExtensionDeserializer is not a BPELExtensionDeserializer");

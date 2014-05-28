@@ -62,7 +62,7 @@ public void fireSelectionChanged(final SelectionChangedEvent event) {
 			public void run() {
 				l.selectionChanged(event);
 			}
-			
+			@Override
 			public void handleException(Throwable e) {
 				super.handleException(e);
 				//If an unexpected exception happens, remove it

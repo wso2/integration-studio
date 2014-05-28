@@ -64,7 +64,7 @@ public class PartnerlinktypeAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -82,33 +82,33 @@ public class PartnerlinktypeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	protected PartnerlinktypeSwitch<Adapter> modelSwitch = new PartnerlinktypeSwitch<Adapter>() {
-		
+		@Override
 		public Adapter casePartnerLinkType(PartnerLinkType object) {
 			return createPartnerLinkTypeAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseRole(Role object) {
 			return createRoleAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseWSDLElement(WSDLElement object) {
 			return createWSDLElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseIExtensibilityElement(ExtensibilityElement object) {
 			return createIExtensibilityElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter caseExtensibilityElement(
 				org.eclipse.wst.wsdl.ExtensibilityElement object) {
 			return createExtensibilityElementAdapter();
 		}
 
-		
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -122,7 +122,7 @@ public class PartnerlinktypeAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	
+	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
 	}

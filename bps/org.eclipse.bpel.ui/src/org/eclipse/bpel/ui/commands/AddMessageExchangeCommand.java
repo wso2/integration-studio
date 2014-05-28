@@ -1,6 +1,6 @@
 /**
  * <copyright>
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ public class AddMessageExchangeCommand extends AddToListCommand {
 	/**
 	 * List in which to insert new element
 	 */
-	
+	@Override
 	protected EList<MessageExchange> getList() {
 		if (process != null) {
 			if (process.getMessageExchanges() != null)
@@ -61,7 +61,7 @@ public class AddMessageExchangeCommand extends AddToListCommand {
 	/**
 	 * Called before adding to the list, if getList() returns null or if it returns an empty list.
 	 */
-	
+	@Override
 	protected void createList() {
 		if (process != null) {
 			if (process.getMessageExchanges() == null)

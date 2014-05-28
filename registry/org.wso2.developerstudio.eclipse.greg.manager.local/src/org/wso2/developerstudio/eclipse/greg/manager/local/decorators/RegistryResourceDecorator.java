@@ -18,7 +18,10 @@ package org.wso2.developerstudio.eclipse.greg.manager.local.decorators;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -45,6 +48,8 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class RegistryResourceDecorator extends LabelProvider implements ILightweightLabelDecorator {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	
+	private static List<String> distinctFiles = Collections.unmodifiableList(Arrays.asList("pom.xml", ".classpath", "artifact.xml", ".project"));
 
 	/**
 	 * decorate checked out files and folders with images according to the state
@@ -53,6 +58,10 @@ public class RegistryResourceDecorator extends LabelProvider implements ILightwe
 	public void decorate(Object element, IDecoration decoration) {
 		if (element instanceof IFolder || element instanceof IFile) {
 			IResource resource = (IResource) element;
+			if(distinctFiles.contains(resource.getName())){
+				if(resource.getParent() instanceof IProject)
+					return;
+			}
 			ImageDescriptor imageDescriptor = getImageDescriptor(resource);
 			if (imageDescriptor != null) {
 				decoration.addOverlay(imageDescriptor);
@@ -112,6 +121,9 @@ public class RegistryResourceDecorator extends LabelProvider implements ILightwe
 				break;
 			case RegistryCheckInClientUtils.RESOURCE_STATE_DELETED:
 				overlay = ImageUtils.getImageDescriptor(ImageUtils.STATE_DELETED);
+				break;
+			case RegistryCheckInClientUtils.RESOURCE_STATE_ADDED:
+				overlay = ImageUtils.getImageDescriptor(ImageUtils.STATE_ADDED);
 				break;
 		}
 		return overlay;

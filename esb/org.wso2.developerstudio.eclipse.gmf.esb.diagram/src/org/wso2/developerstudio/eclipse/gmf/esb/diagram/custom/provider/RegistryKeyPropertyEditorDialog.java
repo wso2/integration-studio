@@ -45,6 +45,7 @@ import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.RegistryKeyPropertyImpl;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
@@ -81,6 +82,9 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 	 */
 	private RegistryKeyProperty rkProperty;
 	
+	String title;
+	
+
 	/**
 	 * Local named entities.
 	 */
@@ -110,6 +114,19 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 		this.rkProperty = property;
 		this.localNamedEntities = localNamedEntities;
 	}	
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	@Override
+	protected void configureShell(Shell newShell) {
+		// TODO Auto-generated method stub
+		super.configureShell(newShell);
+		if (title != null) {
+			newShell.setText(title);
+		}
+	}
 	
 	/**
 	 * Main function used for testing purposes.
@@ -251,6 +268,8 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 			newResourceTemplateDialog.open();
 			if (newResourceTemplateDialog.getReturnCode()==Window.OK){
 				setSelectedPath(newResourceTemplateDialog.getSelectedPath());
+				String localPathOfRegistryKey = newResourceTemplateDialog.getIPathOfSelection();
+				((RegistryKeyPropertyImpl)rkProperty).setLocalPathOfRegistryKey(localPathOfRegistryKey);
 			}
 		}finally{
 			show();
@@ -300,13 +319,17 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 	@SuppressWarnings("unchecked")
 	private void openRegistryResourceProviderDialog(){
 		hide();
+		
 		try{
-			DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(getParentShell(),new Class[]{IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class},(Map<String,List<String>>)rkProperty.getFilters());
+		DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(getParentShell(),new Class[]{IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class},(Map<String,List<String>>)rkProperty.getFilters());
+			
 			registryResourceProviderSelector.create();
 			registryResourceProviderSelector.getShell().setText("Workspace Element Providers");
 			registryResourceProviderSelector.open();
 			if (registryResourceProviderSelector.getReturnCode()==Window.OK){
 				setSelectedPath(registryResourceProviderSelector.getSelectedPath());
+				String localPathOfRegistryKey = registryResourceProviderSelector.getIPathOfSelection();
+				((RegistryKeyPropertyImpl)rkProperty).setLocalPathOfRegistryKey(localPathOfRegistryKey);
 			}
 		}finally{
 			show();

@@ -1,7 +1,22 @@
+/*
+ * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider;
 
 import java.io.File;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +25,7 @@ import java.util.Map;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -18,6 +34,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -27,14 +44,21 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+//import org.wso2.developerstudio.datamapper.diagram.custom.util.CreateNewConfigurationDialog;
 import org.wso2.developerstudio.eclipse.esb.core.EsbConfigurationManager;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEndpoint;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbLocalEntry;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbSequence;
 import org.wso2.developerstudio.eclipse.greg.core.RegistryManager;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.RegistryFileImpl;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
@@ -46,9 +70,14 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	private Class<?>[] type;
 	private TreeViewer treeViewer;
 	private String selectedPath = null;
+	private String ipathOfselection = null;
 	private Button chkOpenResource;
 	private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.esb.editor");
 	private Map<String, List<String>> filters;
+	private String title;
+	private boolean showOpenResourceCheckBox = true;
+	private boolean showCreateNewResourceLink = false;
+	Link createNewLink;
 	
 	/**
 	 * Create the dialog.
@@ -60,6 +89,14 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 		setType(type);
 		setFilters(filters);
 	}
+	
+	@Override
+	protected void configureShell(Shell newShell) {
+		super.configureShell(newShell);
+		if (title != null) {
+			newShell.setText(title);
+		}
+	}
 
 	/**
 	 * Create contents of the dialog.
@@ -67,7 +104,7 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	 * @param parent
 	 */
 	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
+		final Composite container = (Composite) super.createDialogArea(parent);
 		treeViewer = new TreeViewer(container, SWT.BORDER);
 		Tree treeResrouceProviders = treeViewer.getTree();
 		treeResrouceProviders.addSelectionListener(new SelectionAdapter() {
@@ -77,13 +114,18 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 				updateOKButtonStatus();
 			}
 		});
+		
 		treeResrouceProviders.setLayoutData(new GridData(SWT.FILL, SWT.FILL,
 				true, true, 1, 1));
 
-		chkOpenResource = new Button(container, SWT.CHECK);
-		chkOpenResource.setText("Open the resource for editing");
+			
 		treeViewer.setContentProvider(new ITreeContentProvider() {
 			public Object[] getChildren(Object o) {
+				return createTreeItemList(o);
+			}
+
+
+			private Object[] createTreeItemList(Object o) {
 				List<Object> list = new ArrayList<Object>();
 				if (o instanceof IDeveloperStudioProviderData[]) {
 					IDeveloperStudioProviderData[] oo = (IDeveloperStudioProviderData[]) o;
@@ -113,6 +155,7 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 				}
 				return list.toArray();
 			}
+		
 
 			private boolean isChildElementsPresent(
 					IDeveloperStudioProvider provider) {
@@ -207,12 +250,46 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 
 		});
 		List<Object> list=new ArrayList<Object>();
-		list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
-		list.addAll(Arrays.asList(EsbConfigurationManager.getEndpointProviders(true)));
-		list.addAll(Arrays.asList(EsbConfigurationManager.getSequenceProviders(true)));
-		list.addAll(Arrays.asList(EsbConfigurationManager.getLocalEntryProviders(true)));
-		treeViewer.setInput(list.toArray(new IDeveloperStudioProviderData[]{}));
+		
+		List<Class<?>> typesList = Arrays.asList(type);
+		
+		//IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class
+		if (typesList.contains(IRegistryFile.class)) {
+			list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
+		}
+		
+		if (typesList.contains(IEsbEndpoint.class)) {
+			list.addAll(Arrays.asList(EsbConfigurationManager.getEndpointProviders(true)));
+		}
+		
+		if (typesList.contains(IEsbSequence.class)) {
+			list.addAll(Arrays.asList(EsbConfigurationManager.getSequenceProviders(true)));
+		}
+		
+		if (typesList.contains(IEsbLocalEntry.class)) {
+			list.addAll(Arrays.asList(EsbConfigurationManager.getLocalEntryProviders(true)));
+		}
+		
 
+		treeViewer.setInput(list.toArray(new IDeveloperStudioProviderData[]{}));
+		
+		if (showOpenResourceCheckBox) {
+			chkOpenResource = new Button(container, SWT.CHECK);
+			chkOpenResource.setText("Open the resource for editing");
+		}
+		
+		if (showCreateNewResourceLink) {
+			createNewLink = new Link(container, SWT.NONE);
+			createNewLink.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					openNewResourceTemplateDialog();
+				}
+			});
+			createNewLink.setText("<a>Create && point to a new DataMapper Configuration. </a>");
+		}
+		
+		
 		return container;
 	}
 
@@ -235,10 +312,36 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	}
 	
 	protected void okPressed() {
-		if (chkOpenResource.getSelection()) {
-			Object selectedElement = getSelectedElement();
-			IDeveloperStudioElement resource = (IDeveloperStudioElement) selectedElement;
-
+		Object selectedElement = getSelectedElement();
+		IDeveloperStudioElement resource = (IDeveloperStudioElement) selectedElement;
+		
+		/*
+		if (resource.getSource() instanceof IFile) {
+			IFile selectedIFile = (IFile) resource.getSource();
+			ipathOfselection = selectedIFile.getFullPath().toString();
+			
+			IProject project = selectedIFile.getProject();
+			RegistryFileImpl rpi = (RegistryFileImpl)selectedElement;
+			String fileName = rpi.getName();
+			String fullPath = rpi.getPath();
+			int index = fullPath.lastIndexOf('/');
+			String path = "";
+			if (index > 0) {
+				path = fullPath.substring(0,index);
+			}
+			
+			if (path != null && !path.isEmpty())
+				try {
+					CreateNewConfigurationDialog.createRegistryResourcesForInputScemaAndOutputSchema(fileName, project, path);
+				} catch (Exception e) {
+					log.error(e.getMessage());
+				}
+		}
+		*/
+	
+		
+		
+		if (showOpenResourceCheckBox && chkOpenResource.getSelection()) {
 			try {
 				if (resource.getSource() instanceof IFile) {
 					IDE.openEditor(PlatformUI.getWorkbench()
@@ -297,6 +400,10 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	public String getSelectedPath() {
 		return selectedPath;
 	}
+	
+	public String getIPathOfSelection() {
+		return ipathOfselection;
+	}
 
 	private void updateSelectedElement() {
 		Object selectedElement = getSelectedElement();
@@ -313,6 +420,31 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 
 	public Map<String, List<String>> getFilters() {
 		return filters;
+	}
+
+	public void configureDialog(String title, boolean showOpenResourceCheckBox, boolean showCreateNewResourceLink) {
+		this.title = title;
+		this.showOpenResourceCheckBox = showOpenResourceCheckBox;
+		this.showCreateNewResourceLink = showCreateNewResourceLink;
+	}
+	
+	protected void openNewResourceTemplateDialog() {
+		//FIXME handle this in a proper way
+		try{
+			NewResourceTemplateDialog newResourceTemplateDialog = new NewResourceTemplateDialog(getParentShell(),(Map<String, List<String>>) getFilters());
+			//CreateNewConfigurationDialog newResourceTemplateDialog = new CreateNewConfigurationDialog(getParentShell(),(Map<String, List<String>>) getFilters());
+			newResourceTemplateDialog.create();
+			newResourceTemplateDialog.getShell().setText("New DataMapper Configuration");
+			newResourceTemplateDialog.open();
+			if (newResourceTemplateDialog.getReturnCode()==Window.OK){
+				setSelectedPath(newResourceTemplateDialog.getSelectedPath());
+				ipathOfselection = newResourceTemplateDialog.getIPathOfSelection();
+			    this.close();
+			}
+		}finally{
+			
+		}
+
 	}
 
 }

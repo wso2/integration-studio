@@ -58,6 +58,7 @@ public class RegistryCheckInClientUtils {
 	private static final QName PATH_Q_NAME = new QName("path");
 	private static final QName REGISTRY_URL_Q_NAME = new QName("registryUrl");
 	private static final QName MD5_Q_NAME = new QName("md5");
+	private static final QName STATUS_Q_NAME = new QName("status");
 	
 	private static final String META_PREFIX = "~";
 	private static final String CONFLICT_SERVER_EXTENSION = ".server";
@@ -76,6 +77,7 @@ public class RegistryCheckInClientUtils {
 	public static final int RESOURCE_STATE_CONFLICT_SERVER = 5;
 	public static final int RESOURCE_STATE_CONFLICT_MINE = 6;
 	public static final int RESOURCE_STATE_ERROR = 7;
+	public static final int RESOURCE_STATE_ADDED = 8;
 
 	/**
 	 * Return the path to the metadata folder for a registry resource folder
@@ -318,6 +320,8 @@ public class RegistryCheckInClientUtils {
 					return RESOURCE_STATE_CONFLICT;
 				} else if (childState == RESOURCE_STATE_MODIFIED || childState == RESOURCE_STATE_NEW){
 					directoryState = RESOURCE_STATE_MODIFIED;
+				} else if (childState == RESOURCE_STATE_ADDED){
+					directoryState = RESOURCE_STATE_ADDED;
 				}
 			}
 		}
@@ -360,7 +364,14 @@ public class RegistryCheckInClientUtils {
 
 		if (isResourceConflict(resource.getAbsolutePath())){
 			state = RESOURCE_STATE_CONFLICT;
-		}else{
+		} else if(metaFileElement.getAttributeValue(STATUS_Q_NAME) != null){
+			String statusValue = metaFileElement.getAttributeValue(STATUS_Q_NAME);
+			if("added".equals(statusValue)){
+				state = RESOURCE_STATE_ADDED;
+			} else if ("deleted".equals(statusValue)){
+				state = RESOURCE_STATE_DELETED;
+			}
+		} else{
 			try {
 				//Retrieve the checksum of the original file when checkedout
 				String checksum = metaFileElement.getAttributeValue(MD5_Q_NAME);
@@ -573,13 +584,18 @@ public class RegistryCheckInClientUtils {
 			String relativePath = metaFileElement.getAttributeValue(PATH_Q_NAME);
 			boolean isCollection = metaFileElement.getAttributeValue(IS_COLLECTION_Q_NAME)
 				.equalsIgnoreCase("true");
-			String creator = metaFileElement.getFirstChildWithName(CREATOR_Q_NAME).getText();
-			long createdTime = Long.parseLong(metaFileElement.getFirstChildWithName(
-					CREATED_TIME_Q_NAME).getText());
-			String lastUpdater = metaFileElement.getFirstChildWithName(LAST_UPDATER_Q_NAME).getText();
-			long lastModified = Long.parseLong(metaFileElement.getFirstChildWithName(
-					LAST_MODIFIED_Q_NAME).getText());
-
+			OMElement creatorEle = metaFileElement.getFirstChildWithName(CREATOR_Q_NAME);
+			String creator = (creatorEle!=null)?creatorEle.getText():null;
+			
+			OMElement createdTimeEle = metaFileElement.getFirstChildWithName(
+					CREATED_TIME_Q_NAME);
+			long createdTime = Long.parseLong((createdTimeEle!=null)?createdTimeEle.getText():"0");
+			OMElement lastUpdaterEle = metaFileElement.getFirstChildWithName(LAST_UPDATER_Q_NAME);
+			String lastUpdater = (lastUpdaterEle!=null)?lastUpdaterEle.getText():"";
+			OMElement lastModifiedEle = metaFileElement.getFirstChildWithName(
+					LAST_MODIFIED_Q_NAME);
+			long lastModified = (lastModifiedEle!=null)?Long.parseLong(lastModifiedEle.getText()):metaFile.lastModified();
+			
 			RemoteRegistryInfo remoteRegistryInfo = new RemoteRegistryInfo();
 			try {
 				remoteRegistryInfo.setUrl(new URL(registryUrl));

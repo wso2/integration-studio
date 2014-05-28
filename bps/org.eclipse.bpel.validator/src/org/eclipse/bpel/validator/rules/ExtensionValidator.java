@@ -44,7 +44,7 @@ public class ExtensionValidator extends CValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#start()
 	 */
-	
+	@Override
 	protected void start() {
 		super.start();
 	}

@@ -554,7 +554,6 @@ public interface AbstractSqlExecutorMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Property Validationquery</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Property Validationquery</em>' attribute isn't clear,
@@ -564,7 +563,7 @@ public interface AbstractSqlExecutorMediator extends Mediator {
 	 * @return the value of the '<em>Property Validationquery</em>' attribute.
 	 * @see #setPropertyValidationquery(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractSqlExecutorMediator_PropertyValidationquery()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getPropertyValidationquery();

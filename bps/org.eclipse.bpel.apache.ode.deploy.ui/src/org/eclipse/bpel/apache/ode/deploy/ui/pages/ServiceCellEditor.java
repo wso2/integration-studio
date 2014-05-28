@@ -1,7 +1,7 @@
 package org.eclipse.bpel.apache.ode.deploy.ui.pages;
 
 /*******************************************************************************
- * Copyright (c) 2008 IBM Corporation, University of Stuttgart (IAAS) and others.
+ * Copyright (c) 2008, 2012 IBM Corporation, University of Stuttgart (IAAS) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class ServiceCellEditor extends ComboBoxCellEditor {
 		}
 	}
 
-	
+	@Override
 	protected Object doGetValue() {
 		
 		Integer integer = (Integer) super.doGetValue();
@@ -79,10 +79,10 @@ public class ServiceCellEditor extends ComboBoxCellEditor {
 	}
 
 	@SuppressWarnings("unchecked") //$NON-NLS-1$
-	
+	@Override
 	protected void doSetValue(Object value) {
 		
-		List<Service> serviceList = new ArrayList();
+		List<Service> serviceList = new ArrayList<Service>();
 		portList = new ArrayList<Port>();
 		
 		//load WSDL's 
@@ -90,8 +90,10 @@ public class ServiceCellEditor extends ComboBoxCellEditor {
 		//Assemble All Services from WSDL's 
 		for (Iterator<Definition> iterator = wsdlDefs.iterator(); iterator.hasNext();) {
 			Definition current = (Definition) iterator.next();
+			@SuppressWarnings("rawtypes")
 			Map services = current.getServices();
 			if (!services.isEmpty()){
+				@SuppressWarnings("rawtypes")
 				Collection values = services.values();	
 				for (Iterator<Service> iterator2 = values.iterator(); iterator2.hasNext();) {
 					Service name = iterator2.next();
@@ -103,6 +105,7 @@ public class ServiceCellEditor extends ComboBoxCellEditor {
 		//now we have all services in a List .. get All Ports from these services
 		for (Iterator<Service> iterator = serviceList.iterator(); iterator.hasNext();) {
 			Service currentService = iterator.next();
+			@SuppressWarnings("rawtypes")
 			Map portMap = currentService.getPorts();
 			Collection<Port> ports = portMap.values();
 			portList.addAll(ports);

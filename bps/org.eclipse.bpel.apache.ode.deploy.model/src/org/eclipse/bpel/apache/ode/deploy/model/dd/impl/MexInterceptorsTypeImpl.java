@@ -67,7 +67,7 @@ public class MexInterceptorsTypeImpl extends EObjectImpl implements MexIntercept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return ddPackage.Literals.MEX_INTERCEPTORS_TYPE;
 	}
@@ -89,7 +89,7 @@ public class MexInterceptorsTypeImpl extends EObjectImpl implements MexIntercept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ddPackage.MEX_INTERCEPTORS_TYPE__MEX_INTERCEPTOR:
@@ -103,7 +103,7 @@ public class MexInterceptorsTypeImpl extends EObjectImpl implements MexIntercept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ddPackage.MEX_INTERCEPTORS_TYPE__MEX_INTERCEPTOR:
@@ -118,7 +118,7 @@ public class MexInterceptorsTypeImpl extends EObjectImpl implements MexIntercept
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ddPackage.MEX_INTERCEPTORS_TYPE__MEX_INTERCEPTOR:
@@ -134,7 +134,7 @@ public class MexInterceptorsTypeImpl extends EObjectImpl implements MexIntercept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ddPackage.MEX_INTERCEPTORS_TYPE__MEX_INTERCEPTOR:
@@ -149,7 +149,7 @@ public class MexInterceptorsTypeImpl extends EObjectImpl implements MexIntercept
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ddPackage.MEX_INTERCEPTORS_TYPE__MEX_INTERCEPTOR:

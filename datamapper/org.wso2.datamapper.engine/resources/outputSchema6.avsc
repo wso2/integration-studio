@@ -1,0 +1,45 @@
+ {
+ "name" : "engineers",
+ "type" : "record", 
+ "fields": [{
+  			  "name": "types",
+  			  "type": "string"
+  			  },
+             { "name": "engineer", 
+                         "type": { 
+                                           "type": "array", 
+                                           "items": { 
+                                                                     "name": "engineerRecord", 
+                                                                     "type": "record", 
+                                                                     "fields": [ 
+                                                                                          { "name" : "fullname", "type" : "string"}, 
+                                                                                          {
+            											"name": "some",
+            											"type": {
+                                                                                          "type" : "record",
+                                                                                          "name" : "someRecord", 
+                                                            							"fields" : [                                                                 
+                                                            								 {"name" : "field1", "type" : "string"},
+                                                            								 {"name" : "field2", "type" : "string"},
+                                                            								 {"name" : "field3", "type" : "string"}
+                                                            										]
+ 																							}},
+                                                                                   			{ "name" : "address",  "type": {
+                                                    "type": "array", 
+                                                    "items":                                                     
+                                                          {  
+                                                            "name": "address", 
+                                                            "type": "record", 
+                                                            "fields": [                                                                 
+                                                            {"name" : "addresscode", "type" : "string"},
+                                                             {"name" : "city", "type" : "string"}
+                                                            ]
+                                                            }
+                                                                                           }
+                                                                                           }
+                                                                             ] 
+                                                                  } 
+                                         } 
+                             }        
+           ]
+}

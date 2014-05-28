@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2008 IBM Corporation, University of Stuttgart (IAAS) and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;    IBM Corporation, University of Stuttgart (IAAS) - initial API and implementation"
     modelDirectory="/org.eclipse.bpel.apache.ode.deploy.model/src" modelPluginID="org.eclipse.bpel.apache.ode.deploy.model"
     modelName="OdeDeploymentDescriptor" importerID="org.eclipse.emf.importer.ecore"
@@ -39,6 +38,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/fileName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//ProcessType/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//ProcessType/bamServerProfiles"/>
     </genClasses>
     <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//PropertyType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//PropertyType/any"/>
@@ -65,6 +65,7 @@
     <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TProvide">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TProvide/service"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProvide/partnerLink"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProvide/correlationFilter"/>
     </genClasses>
     <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TScopeEvents">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TScopeEvents/name"/>
@@ -73,6 +74,19 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/any"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TService/port"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TService/endpoint"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TBamServerProfiles">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference odeDeploymentDescriptor.ecore#//TBamServerProfiles/profile"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TProfile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProfile/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TProfile/location"/>
+    </genClasses>
+    <genClasses ecoreClass="odeDeploymentDescriptor.ecore#//TEndPoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TEndPoint/xmlns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TEndPoint/endpointReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute odeDeploymentDescriptor.ecore#//TEndPoint/serviceDescriptionReference"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

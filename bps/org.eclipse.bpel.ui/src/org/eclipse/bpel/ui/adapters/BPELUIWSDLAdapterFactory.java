@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	 * https://jira.jboss.org/browse/JBIDE-7107
 	 * This adds the INamespace adapter to Definition objects (required for the XPath expression editor)
 	 */
-	
+	@Override
 	public Adapter createDefinitionAdapter() {
 		return provider.getAdapter( DefinitionAdapter.class );
 	}
@@ -73,7 +73,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	/**
 	 * @see org.eclipse.wst.wsdl.internal.util.WSDLAdapterFactory#createMessageAdapter()
 	 */
-	
+	@Override
 	public Adapter createMessageAdapter() {
 		return provider.getAdapter( MessageAdapter.class );
 	}
@@ -81,7 +81,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	/**
 	 * @see org.eclipse.wst.wsdl.internal.util.WSDLAdapterFactory#createFaultAdapter()
 	 */
-	
+	@Override
 	public Adapter createFaultAdapter() {
 		return provider.getAdapter( FaultAdapter.class );
 	}
@@ -99,7 +99,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	 * @see org.eclipse.wst.wsdl.internal.util.WSDLAdapterFactory#createOperationAdapter()
 	 */
 	
-	
+	@Override
 	public Adapter createOperationAdapter() {
 		return provider.getAdapter( OperationAdapter.class );
 	}
@@ -107,7 +107,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	/**
 	 * @see org.eclipse.wst.wsdl.internal.util.WSDLAdapterFactory#createPartAdapter()
 	 */
-	
+	@Override
 	public Adapter createPartAdapter() {
 		return provider.getAdapter( PartAdapter.class );
 	}
@@ -115,7 +115,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	/**
 	 * @see org.eclipse.wst.wsdl.internal.util.WSDLAdapterFactory#createPortTypeAdapter()
 	 */
-	
+	@Override
 	public Adapter createPortTypeAdapter() {
 		return provider.getAdapter( PortTypeAdapter.class );
 	}
@@ -123,7 +123,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	/**
 	 * @see org.eclipse.wst.wsdl.internal.util.WSDLAdapterFactory#createInputAdapter()
 	 */
-		
+	@Override	
 	public Adapter createInputAdapter() {
 		return provider.getAdapter(InputMessageAdapter.class);
 	}
@@ -131,7 +131,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	/**
 	 * @see org.eclipse.wst.wsdl.internal.util.WSDLAdapterFactory#createOutputAdapter()
 	 */
-	
+	@Override
 	public Adapter createOutputAdapter() {
 		return provider.getAdapter(OutputMessageAdapter.class);
 	}
@@ -140,7 +140,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	/**
 	 * @see org.eclipse.emf.common.notify.impl.AdapterFactoryImpl#adaptNew(org.eclipse.emf.common.notify.Notifier, java.lang.Object)
 	 */
-	
+	@Override
 	public Adapter adaptNew(Notifier target, Object type) {
 		Adapter adapter = createAdapter(target, type);
 		// Bugzilla 330519
@@ -155,7 +155,7 @@ public class BPELUIWSDLAdapterFactory extends WSDLAdapterFactory {
 	
 	
 	
-	
+	@Override
 	protected Object resolve(Object object, Object type) {
 		return null;
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,17 +29,17 @@ public class ActionUIObjectFactory extends AbstractUIObjectFactory {
         this.action = action;
     }
 
-    
+    @Override
 	public EClass getModelType() {
         return action.getModelType();
     }
 
-    
+    @Override
 	public ImageDescriptor getSmallImageDescriptor() {
         return action.getSmallImageDescriptor();
     }
 
-    
+    @Override
 	public ImageDescriptor getLargeImageDescriptor() {
         return action.getLargeImageDescriptor();
     }
@@ -55,19 +55,19 @@ public class ActionUIObjectFactory extends AbstractUIObjectFactory {
         return result;
     }
 
-    
+    @Override
 	public Image getSmallImage() {
         String key = getUniqueIdString() + "#SmallImage"; //$NON-NLS-1$
         return getImage(key, getSmallImageDescriptor());
     }
 
-    
+    @Override
 	public Image getLargeImage() {
         String key = getUniqueIdString() + "#LargeImage"; //$NON-NLS-1$
         return getImage(key, getLargeImageDescriptor());
     }
 
-    
+    @Override
 	public String getTypeLabel() {
         return action.getLabel();
     }
@@ -83,7 +83,7 @@ public class ActionUIObjectFactory extends AbstractUIObjectFactory {
         return super.createInstance(); // default
     }
 
-    
+    @Override
 	public EObject createInstance() {
     	return createInstance(null);
     }

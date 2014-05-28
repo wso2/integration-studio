@@ -23,21 +23,17 @@ import org.wso2.developerstudio.eclipse.ds.PatternValidator;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.wso2.developerstudio.eclipse.ds.impl.PatternValidatorImpl#getPattern
- * <em>Pattern</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.PatternValidatorImpl#getPattern <em>Pattern</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PatternValidatorImpl extends EObjectImpl implements PatternValidator {
 	/**
-	 * The default value of the '{@link #getPattern() <em>Pattern</em>}'
-	 * attribute.
+	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getPattern()
 	 * @generated
 	 * @ordered
@@ -45,11 +41,9 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	protected static final String PATTERN_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}'
-	 * attribute.
+	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getPattern()
 	 * @generated
 	 * @ordered
@@ -59,7 +53,6 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PatternValidatorImpl() {
@@ -69,7 +62,6 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -81,7 +73,6 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getPattern() {
@@ -91,21 +82,18 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setPattern(String newPattern) {
 		String oldPattern = pattern;
 		pattern = newPattern;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-			                              DsPackage.PATTERN_VALIDATOR__PATTERN, oldPattern, pattern));
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.PATTERN_VALIDATOR__PATTERN, oldPattern, pattern));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -121,7 +109,6 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -129,7 +116,7 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DsPackage.PATTERN_VALIDATOR__PATTERN:
-				setPattern((String) newValue);
+				setPattern((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,7 +125,6 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -155,7 +141,6 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -163,8 +148,7 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case DsPackage.PATTERN_VALIDATOR__PATTERN:
-				return PATTERN_EDEFAULT == null ? pattern != null
-				                               : !PATTERN_EDEFAULT.equals(pattern);
+				return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -172,14 +156,12 @@ public class PatternValidatorImpl extends EObjectImpl implements PatternValidato
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (pattern: ");

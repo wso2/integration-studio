@@ -7291,52 +7291,6 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDefinition} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WSDLDefinitionItemProvider wsdlDefinitionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDefinition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createWSDLDefinitionAdapter() {
-		if (wsdlDefinitionItemProvider == null) {
-			wsdlDefinitionItemProvider = new WSDLDefinitionItemProvider(this);
-		}
-
-		return wsdlDefinitionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDescription} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WSDLDescriptionItemProvider wsdlDescriptionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDescription}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createWSDLDescriptionAdapter() {
-		if (wsdlDescriptionItemProvider == null) {
-			wsdlDescriptionItemProvider = new WSDLDescriptionItemProvider(this);
-		}
-
-		return wsdlDescriptionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointInputConnector} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8110,8 +8064,6 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 		if (failoverEndPointWestOutputConnectorItemProvider != null) failoverEndPointWestOutputConnectorItemProvider.dispose();
 		if (parentEndPointItemProvider != null) parentEndPointItemProvider.dispose();
 		if (wsdlEndPointItemProvider != null) wsdlEndPointItemProvider.dispose();
-		if (wsdlDefinitionItemProvider != null) wsdlDefinitionItemProvider.dispose();
-		if (wsdlDescriptionItemProvider != null) wsdlDescriptionItemProvider.dispose();
 		if (wsdlEndPointInputConnectorItemProvider != null) wsdlEndPointInputConnectorItemProvider.dispose();
 		if (wsdlEndPointOutputConnectorItemProvider != null) wsdlEndPointOutputConnectorItemProvider.dispose();
 		if (loadBalanceEndPointItemProvider != null) loadBalanceEndPointItemProvider.dispose();

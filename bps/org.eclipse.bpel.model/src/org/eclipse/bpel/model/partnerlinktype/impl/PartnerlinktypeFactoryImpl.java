@@ -40,7 +40,7 @@ public class PartnerlinktypeFactoryImpl extends EFactoryImpl implements
 	public static PartnerlinktypeFactory init() {
 		try {
 			PartnerlinktypeFactory thePartnerlinktypeFactory = (PartnerlinktypeFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/plnktype"); //$NON-NLS-1$ 
+					.getEFactory(PartnerlinktypePackage.eNS_URI);
 			if (thePartnerlinktypeFactory != null) {
 				return thePartnerlinktypeFactory;
 			}
@@ -65,7 +65,7 @@ public class PartnerlinktypeFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 		case PartnerlinktypePackage.PARTNER_LINK_TYPE:

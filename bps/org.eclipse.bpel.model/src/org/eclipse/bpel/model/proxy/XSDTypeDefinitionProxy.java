@@ -27,25 +27,25 @@ public class XSDTypeDefinitionProxy extends XSDTypeDefinitionImpl
 	    proxyURI = new BPELProxyURI(XSDPackage.eINSTANCE.getXSDTypeDefinition(), baseURI, qName);
 	}
 
-	
+	@Override
 	public boolean eIsProxy()
 	{
 		return true;
 	}
 	
-	
+	@Override
 	public URI eProxyURI()
 	{
 	    return proxyURI.getProxyURI();
 	}
 
-	
+	@Override
 	public String getTargetNamespace()
     {
     	return proxyURI.getQName().getNamespaceURI();
     }
 	
-	
+	@Override
 	public String getName()
 	{
 	    return proxyURI.getQName().getLocalPart();

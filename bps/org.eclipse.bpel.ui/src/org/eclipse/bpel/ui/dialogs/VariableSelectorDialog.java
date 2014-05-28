@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,7 @@ import org.eclipse.xsd.XSDTypeDefinition;
 public class VariableSelectorDialog extends SelectionAndCreationDialog {
 
 	protected static class TypeLabelProvider extends LabelProvider {
-		
+		@Override
 		public String getText(Object element) {
 			if (element instanceof Variable) {
 				Variable variable = (Variable)element;
@@ -142,14 +142,14 @@ public class VariableSelectorDialog extends SelectionAndCreationDialog {
 		}
 	}
 	
-	
+	@Override
 	protected FilteredList createFilteredList(Composite parent) {
 		FilteredList result = super.createFilteredList(parent);
 		result.setComparator(new VariableComparator());
 		return result;
 	}
 	
-	
+	@Override
 	protected void handleNewButtonPushed() {
 		Variable variable = BPELFactory.eINSTANCE.createVariable();
 		Process process = BPELUtils.getProcess(modelObject);
@@ -201,7 +201,7 @@ public class VariableSelectorDialog extends SelectionAndCreationDialog {
 	/**
 	 * Only used to get the Text instance.
 	 */
-	
+	@Override
 	protected Text createFilterText(Composite parent) {
 		filterText = super.createFilterText(parent);
 		return filterText;

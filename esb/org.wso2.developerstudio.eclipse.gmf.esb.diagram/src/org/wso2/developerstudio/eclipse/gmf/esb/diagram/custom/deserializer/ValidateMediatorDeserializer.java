@@ -138,10 +138,10 @@ public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 				feature.setFeatureName(featureProperty.getName());
 			}
 			
-			if(Boolean.parseBoolean(featureProperty.getValue())){
+			//if(Boolean.parseBoolean(featureProperty.getValue())){
 				
 				feature.setFeatureEnabled(Boolean.parseBoolean(featureProperty.getValue()));
-			}
+			//}
 			
 			validateFeatureList.add(feature);
 		}

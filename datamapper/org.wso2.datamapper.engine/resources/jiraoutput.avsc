@@ -1,0 +1,22 @@
+{
+  "name" : "jiras",
+  "type": "record", 
+  "fields": [
+              { "name": "jira", 
+          		"type": { 
+            				"type": "array", 
+            				"items": { 
+              							"name": "jira", 
+              							"type": "record", 
+              							"fields": [ 
+                   									{"name" : "Key", "type" : "string"}, 
+                    								{"name" : "Summary", "type" : "string"},
+                    								{"name" : "Description", "type" : "string"},
+                    								{"name" : "version", "type" : "string"}
+                    							 ] 
+          							 } 
+        				  } 
+      			}	
+            
+          ]
+}

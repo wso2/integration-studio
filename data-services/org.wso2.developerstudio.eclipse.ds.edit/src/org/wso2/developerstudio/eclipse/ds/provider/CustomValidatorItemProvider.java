@@ -29,11 +29,9 @@ import org.wso2.developerstudio.eclipse.ds.CustomValidator;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.CustomValidator} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.CustomValidator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CustomValidatorItemProvider extends ItemProviderAdapter implements
@@ -46,7 +44,6 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public CustomValidatorItemProvider(AdapterFactory adapterFactory) {
@@ -57,7 +54,6 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -75,22 +71,22 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements
 	 * This adds a property descriptor for the Class feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addClassPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_CustomValidator_class_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_CustomValidator_class_feature",
-		                                                                   "_UI_CustomValidator_type"),
-		                                                         DsPackage.Literals.CUSTOM_VALIDATOR__CLASS,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CustomValidator_class_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CustomValidator_class_feature", "_UI_CustomValidator_type"),
+				 DsPackage.Literals.CUSTOM_VALIDATOR__CLASS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -123,13 +119,10 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached
-	 * children and by creating a viewer notification, which it passes to
-	 * {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -139,20 +132,17 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements
 
 		switch (notification.getFeatureID(CustomValidator.class)) {
 			case DsPackage.CUSTOM_VALIDATOR__CLASS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(),
-				                                         false, true));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing the children
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -165,7 +155,6 @@ public class CustomValidatorItemProvider extends ItemProviderAdapter implements
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 

@@ -235,6 +235,8 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		addGeneralProjectPlugin(project);
 		File pomLocation = project.getFile("pom.xml").getLocation().toFile();
 		String groupId = getMavenGroupId(pomLocation) + ".resource";
+		MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+		String version = mavenProject.getVersion();
 		
 		String registryPath = model.getDynamicEpRegistryPath()
 				.replaceAll("^conf:", "/_system/config")
@@ -300,7 +302,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 
 		RegistryArtifact artifact = new RegistryArtifact();
 		artifact.setName(epModel.getEpName());
-		artifact.setVersion("1.0.0");
+		artifact.setVersion(version);
 		artifact.setType("registry/resource");
 		artifact.setServerRole("EnterpriseServiceBus");
 		artifact.setGroupId(groupId);

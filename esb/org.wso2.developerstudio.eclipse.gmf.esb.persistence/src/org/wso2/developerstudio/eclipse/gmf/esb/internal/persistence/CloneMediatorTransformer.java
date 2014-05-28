@@ -3,19 +3,41 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.synapse.config.xml.AnonymousListMediator;
+import org.apache.synapse.endpoints.AddressEndpoint;
+import org.apache.synapse.endpoints.DefaultEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
-import org.apache.synapse.mediators.ListMediator;
+import org.apache.synapse.endpoints.FailoverEndpoint;
+import org.apache.synapse.endpoints.HTTPEndpoint;
+import org.apache.synapse.endpoints.LoadbalanceEndpoint;
+import org.apache.synapse.endpoints.RecipientListEndpoint;
+import org.apache.synapse.endpoints.TemplateEndpoint;
+import org.apache.synapse.endpoints.WSDLEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget;
+import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
+import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.TargetEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
+import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.AddressEndPointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.DefaultEndPointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.HTTPEndpointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.NamedEndpointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
+import org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 
 public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
@@ -116,9 +138,85 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 
 				if (visualTarget.getEndpointType().equals(
 						TargetEndpointType.ANONYMOUS)) {
+				
+					EObject endpoint = null;
+					CloneMediatorTargetOutputConnector outputConnector = visualClone
+							.getTargetsOutputConnector().get(i);
 
-					// TODO handle this situation.
+					SequenceMediator targetSequence = new SequenceMediator();
+					TransformationInfo newInfo = new TransformationInfo();
+					newInfo.setTraversalDirection(information
+							.getTraversalDirection());
+					newInfo.setSynapseConfiguration(information
+							.getSynapseConfiguration());
+					newInfo.setOriginInSequence(information
+							.getOriginInSequence());
+					newInfo.setOriginOutSequence(information
+							.getOriginOutSequence());
+					newInfo.setCurrentProxy(information.getCurrentProxy());
+					newInfo.setParentSequence(targetSequence);
+					
+					doTransform(newInfo, outputConnector);
+					
 
+					if (newInfo.isEndPointFound) {
+						endpoint = newInfo.getFirstEndpoint();
+
+						if (endpoint instanceof DefaultEndPointImpl) {
+							DefaultEndPointTransformer transformer = new DefaultEndPointTransformer();
+							DefaultEndpoint synapseEP = transformer.create(
+									(DefaultEndPoint) endpoint, null);
+							target.setEndpoint(synapseEP);
+						} else if (endpoint instanceof AddressEndPointImpl) {
+							AddressEndPointTransformer transformer = new AddressEndPointTransformer();
+							AddressEndpoint synapseEP = transformer.create(
+									(AddressEndPoint) endpoint, null);
+							target.setEndpoint(synapseEP);
+						} else if (endpoint instanceof FailoverEndPointImpl) {
+							FailoverEndPointTransformer transformer = new FailoverEndPointTransformer();
+							FailoverEndpoint synapseEP = transformer.create(
+									newInfo, (FailoverEndPoint) endpoint, null,
+									null);
+							target.setEndpoint(synapseEP);
+						} else if (endpoint instanceof HTTPEndpointImpl) {
+							HTTPEndPointTransformer transformer = new HTTPEndPointTransformer();
+							HTTPEndpoint synapseEP = transformer
+									.create((org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint) endpoint,
+											null);
+							target.setEndpoint(synapseEP);
+						} else if (endpoint instanceof LoadBalanceEndPointImpl) {
+							LoadBalanceEndPointTransformer transformer = new LoadBalanceEndPointTransformer();
+							LoadbalanceEndpoint synapseEP = transformer.create(
+									newInfo, (LoadBalanceEndPoint) endpoint,
+									null, null);
+							target.setEndpoint(synapseEP);
+						} else if (endpoint instanceof NamedEndpointImpl) {
+							NamedEndPointTransformer transformer = new NamedEndPointTransformer();
+							@SuppressWarnings("static-access")
+							Endpoint synapseEP = transformer.create(
+									(NamedEndpoint) endpoint, null);
+							target.setEndpoint(synapseEP);
+						} else if (endpoint instanceof RecipientListEndPointImpl) {
+							RecipientListEndPointTransformer transformer = new RecipientListEndPointTransformer();
+							RecipientListEndpoint synapseEP = transformer
+									.create(newInfo,
+											(RecipientListEndPoint) endpoint,
+											null, null);
+							target.setEndpoint(synapseEP);
+						} else if (endpoint instanceof TemplateEndpointImpl) {
+							TemplateEndPointTransformer transformer = new TemplateEndPointTransformer();
+							TemplateEndpoint synapseEP = transformer
+									.create((org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint) endpoint,
+											null);
+							target.setEndpoint(synapseEP);
+						} else if (endpoint instanceof WSDLEndPointImpl) {
+							WSDLEndPointTransformer transformer = new WSDLEndPointTransformer();
+							WSDLEndpoint synapseEP = transformer.create(
+									(WSDLEndPoint) endpoint, null);
+							target.setEndpoint(synapseEP);
+						}
+
+					}
 				} else if (visualTarget.getEndpointType().equals(
 						TargetEndpointType.REGISTRY_REFERENCE)) {
 
@@ -135,4 +233,5 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 		return cloneMediator;
 	}
 
+	
 }

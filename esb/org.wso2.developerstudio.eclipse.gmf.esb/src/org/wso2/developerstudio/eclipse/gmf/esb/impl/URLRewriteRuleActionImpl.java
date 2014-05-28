@@ -118,7 +118,7 @@ public class URLRewriteRuleActionImpl extends EsbNodeImpl implements URLRewriteR
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ACTION_VALUE_EDEFAULT = "";
+	protected static final String ACTION_VALUE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getActionValue() <em>Action Value</em>}' attribute.
@@ -138,7 +138,7 @@ public class URLRewriteRuleActionImpl extends EsbNodeImpl implements URLRewriteR
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ACTION_REGEX_EDEFAULT = "";
+	protected static final String ACTION_REGEX_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getActionRegex() <em>Action Regex</em>}' attribute.

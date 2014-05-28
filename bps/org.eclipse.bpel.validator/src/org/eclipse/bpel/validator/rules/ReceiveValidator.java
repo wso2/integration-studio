@@ -51,7 +51,7 @@ public class ReceiveValidator extends CPartnerActivityValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		fFromPartsCount = checkChild(ND_FROM_PARTS,0,1);		
@@ -63,7 +63,7 @@ public class ReceiveValidator extends CPartnerActivityValidator {
 	 * @see org.eclipse.bpel.validator.model.Validator#start()
 	 */
 	
-	
+	@Override
 	protected void start () {
 		
 		super.start();

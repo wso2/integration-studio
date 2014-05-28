@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.bpel.ui.palette;
 
 import org.eclipse.bpel.common.ui.CommonUIPlugin;
@@ -152,16 +162,6 @@ public class PaletteFactory implements IPaletteProvider {
 						.getFactoryFor(bpelPackage.getCompensateScope())));
 		
 		palette.add(faultCategory);
-		
-		// Creating new Category for New Extensions
-
-		PaletteCategory extension = new PaletteCategory("Extensions"); 
-		extension.setOrder(40);
-		extension.setCategoryId("bpel.extensions");
-
-		extension.add(new BPELCreationToolEntry("AssignE4X", "E4X Assign Activity",provider.getFactoryFor(bpelPackage.getAssignE4X())));
-		palette.add(extension);
-
 	}
 
 	void createTopControlPaletteEntries(PaletteRoot root) {

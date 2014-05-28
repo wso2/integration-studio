@@ -38,7 +38,7 @@
         commandId="org.wso2.developerstudio.eclipse.qos.QoSDashboard">
   	</handler>
  </extension>
-<extension point="org.eclipse.ui.menus">
+<!--extension point="org.eclipse.ui.menus">
  <menuContribution 
  				locationURI="popup:org.eclipse.ui.popup.any?after=additions">
      <command
@@ -74,7 +74,7 @@
         </visibleWhen>
      </command>
   </menuContribution>
-</extension> 
+</extension--> 
 
 <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.qos.project.nature" name="QoS Project Nature">

@@ -34,7 +34,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface FilterMediator extends Mediator {
 	/**
 	 * Returns the value of the '<em><b>Condition Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType}.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Condition Type</em>' attribute isn't clear,
@@ -42,24 +42,24 @@ public interface FilterMediator extends Mediator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Condition Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType
-	 * @see #setConditionType(FilterConditionType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType
+	 * @see #setConditionType(FilterMediatorConditionType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFilterMediator_ConditionType()
 	 * @model
 	 * @generated
 	 */
-	FilterConditionType getConditionType();
+	FilterMediatorConditionType getConditionType();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator#getConditionType <em>Condition Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Condition Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType
 	 * @see #getConditionType()
 	 * @generated
 	 */
-	void setConditionType(FilterConditionType value);
+	void setConditionType(FilterMediatorConditionType value);
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' containment reference.

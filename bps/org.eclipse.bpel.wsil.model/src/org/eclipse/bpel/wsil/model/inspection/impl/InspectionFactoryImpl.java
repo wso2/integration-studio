@@ -57,7 +57,7 @@ public class InspectionFactoryImpl extends EFactoryImpl implements InspectionFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case InspectionPackage.DESCRIPTION: return createDescription();

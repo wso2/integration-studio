@@ -89,7 +89,6 @@ public interface ThrottlePolicyEntry extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Access Type</b></em>' attribute.
-	 * The default value is <code>"ALLOW"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.ThrottleAccessType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -101,7 +100,7 @@ public interface ThrottlePolicyEntry extends EObject {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ThrottleAccessType
 	 * @see #setAccessType(ThrottleAccessType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getThrottlePolicyEntry_AccessType()
-	 * @model default="ALLOW"
+	 * @model
 	 * @generated
 	 */
 	ThrottleAccessType getAccessType();

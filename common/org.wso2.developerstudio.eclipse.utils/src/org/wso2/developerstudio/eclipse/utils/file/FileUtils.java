@@ -218,6 +218,21 @@ public class FileUtils{
 		}
 	}
 	
+	public static void copyDirectoryContentsWithoutDotSettingsDir(File srcDir, File dstDir) throws IOException {
+		File[] listFiles = srcDir.listFiles();
+		if (listFiles != null) {
+			for (File srcFile : listFiles) {
+				if (srcFile.isDirectory()) {
+					if (!srcFile.getName().equals(".settings")) {
+						copyDirectory(srcFile, new File(dstDir, srcFile.getName()));
+					}
+				} else {
+					copy(srcFile, new File(dstDir, srcFile.getName()));
+				}
+			}
+		}
+	}
+	
 	//Copies src file to dst file.
 	// If the dst file does not exist, it is created
 	public static void copy(File src, File dst) throws IOException {

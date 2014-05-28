@@ -1,6 +1,6 @@
 /**
  * <copyright>
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,13 +71,13 @@ public class MessageExchangeSection extends BPELPropertySection {
 	private Button messExBrowseButton; 
 	
 	private IControlContentAdapter fTextContentAdapter = new TextContentAdapter() {
-		
+		@Override
 		public void insertControlContents(Control control, String text, int cursorPosition) {
 			if (text != null) {
 				super.insertControlContents(control, text, cursorPosition);
 			}
 		}
-		
+		@Override
 		public void setControlContents(Control control, String text, int cursorPosition) {
 			if (text != null) {
 				super.setControlContents(control, text, cursorPosition);
@@ -86,12 +86,12 @@ public class MessageExchangeSection extends BPELPropertySection {
 	};
 		
 	//TODO check this
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object */
 			new MultiObjectAdapter() {
-				
+				@Override
 				public void notify (Notification n) {
 				    try {
 						if (ModelHelper.isMessageExchangeAffected(getInput(), n)) {
@@ -106,7 +106,7 @@ public class MessageExchangeSection extends BPELPropertySection {
 	}
 
 	@SuppressWarnings("nls")
-	
+	@Override
 	/**
 	 * Depending on the element selected a entry for the table will be defined
 	 */
@@ -126,7 +126,7 @@ public class MessageExchangeSection extends BPELPropertySection {
 
 		// Content Assist for Message Exchange
 		RunnableProposal proposal = new RunnableProposal() {
-			
+			@Override
 			public String getLabel() {
 				return Messages.MessageExchangeImplSection_Create_Global;
 			}
@@ -136,7 +136,7 @@ public class MessageExchangeSection extends BPELPropertySection {
 		};
 
 		RunnableProposal proposal2 = new RunnableProposal() {
-			
+			@Override
 			public String getLabel() {
 				return Messages.MessageExchangeImplSection_Create_Local;
 			}
@@ -146,7 +146,7 @@ public class MessageExchangeSection extends BPELPropertySection {
 		};
 
 		RunnableProposal proposal3 = new RunnableProposal() {			
-			
+			@Override
 			public String getLabel() {
 				return Messages.MessageExchangeImplSection_Clear;
 			}
@@ -160,7 +160,7 @@ public class MessageExchangeSection extends BPELPropertySection {
 		MessageExchangeContentProvider provider = new MessageExchangeContentProvider();
 		ModelContentProposalProvider proposalProvider;
 		proposalProvider = new ModelContentProposalProvider( new ModelContentProposalProvider.ValueProvider () {
-			
+			@Override
 			public Object value() {
 				return getInput();
 			}			
@@ -237,19 +237,17 @@ public class MessageExchangeSection extends BPELPropertySection {
 		messExLabel.setLayoutData(data);
 	}
 
-	
+	@Override
 	protected void createClient(Composite parent) {
 		Composite composite = parentComposite = createFlatFormComposite(parent);
 		createMessExWidgets(composite);
-		//TODO Write Help!!
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(
-			composite, IHelpContextIds.PROPERTY_PAGE_NAME);
+    PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, IHelpContextIds.PROPERTY_PAGE_MESSAGE_EXCHANGE);
 	}
     
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return null;
 	}
@@ -257,7 +255,7 @@ public class MessageExchangeSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		messExName.setFocus();
 	}

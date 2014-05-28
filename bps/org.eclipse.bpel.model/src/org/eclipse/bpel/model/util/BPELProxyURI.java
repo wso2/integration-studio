@@ -152,7 +152,7 @@ public final class BPELProxyURI {
 		return baseURI.appendFragment(getFragment());
 	}
 
-	
+	@Override
 	public String toString() {
 		return super.toString() + "[baseURI=" + baseURI + ", proxyType="
 				+ proxyType + ", typeName=" + typeName + ", qName=" + qName

@@ -33,6 +33,8 @@ public class Messages extends NLS {
 	public static String AppfactoryApplicationListView_getApplist_plog_msg_3;
 	public static String AppfactoryApplicationListView_getAppVersions_job_title;
 	public static String AppfactoryApplicationListView_getAppVersions_monitor_text_1;
+	public static String AppfactoryApplicationListView_getForkedAppVersions_job_title;
+	public static String AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_pError_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_pInfo_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_plog_1;
@@ -74,6 +76,10 @@ public class Messages extends NLS {
 	public static String AppfactoryApplicationListView_updateApplicationView_monitor_text_1;
 	public static String AppfactoryApplicationListView_updateApplicationView_monitor_text_2;
 	public static String AppfactoryApplicationListView_updateApplicationView_monitor_text_3;
+	public static String AppfactoryApplicationListView_executeMavenCommands_text;
+	public static String AppfactoryApplicationListView_executeMavenCommands_text2;
+	public static String AppfactoryApplicationListView_executeMavenCommands_errorlog_text;
+	public static String AppfactoryApplicationListView_executeMavenCommands_errorlog_text2;
 	public static String AppfactoryConsoleView_Console_Title;
 	public static String AppFactoryPerspectiveFactory_LoadAppFacPerfectiveJob_monitor_op_text1;
 	public static String AppFactoryPerspectiveFactory_LoadAppFacPerfectiveJob_monitor_op_text2;

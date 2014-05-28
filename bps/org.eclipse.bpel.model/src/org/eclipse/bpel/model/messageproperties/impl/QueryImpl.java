@@ -113,7 +113,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return MessagepropertiesPackage.Literals.QUERY;
 	}
@@ -168,7 +168,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case MessagepropertiesPackage.QUERY__QUERY_LANGUAGE:
@@ -184,7 +184,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case MessagepropertiesPackage.QUERY__QUERY_LANGUAGE:
@@ -202,7 +202,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case MessagepropertiesPackage.QUERY__QUERY_LANGUAGE:
@@ -220,7 +220,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case MessagepropertiesPackage.QUERY__QUERY_LANGUAGE:
@@ -238,7 +238,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -256,7 +256,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	// Reconcile methods: DOM -> Model
 	//
 
-	
+	@Override
 	public void reconcileAttributes(Element changedElement) {
 		//System.out.println("RoleImpl.reconcileAttributes("+changedElement+")");
 		super.reconcileAttributes(changedElement);
@@ -286,7 +286,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 		reconcileReferences(true); // TODO true?
 	}
 
-	
+	@Override
 	public void handleUnreconciledElement(Element child,
 			Collection remainingModelObjects) {
 		//System.out.println("QueryImpl.handleUnreconciledElement()");
@@ -300,7 +300,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	// For reconciliation: Model -> DOM
 	//
 
-	
+	@Override
 	protected void changeAttribute(EAttribute eAttribute) {
 		//System.out.println("RoleImpl.changeAttribute("+eAttribute+")");
 		if (isReconciling)
@@ -319,7 +319,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 		}
 	}
 
-	
+	@Override
 	public Element createElement() {
 		//System.out.println("QueryImpl.createElement()");
 		Element newElement = super.createElement();
@@ -376,7 +376,7 @@ public class QueryImpl extends BPELExtensibilityElementImpl implements Query,
 	/**
 	 * Override the XML element token.
 	 */
-	
+	@Override
 	public QName getElementType() {
 		if (elementType == null)
 			elementType = new QName(MessagepropertiesConstants.NAMESPACE,

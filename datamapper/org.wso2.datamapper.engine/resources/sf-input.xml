@@ -1,0 +1,354 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns="urn:partner.soap.sforce.com" xmlns:sf="urn:sobject.partner.soap.sforce.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soapenv:Body>
+		<queryResponse>
+			<result xsi:type="QueryResult">
+				<done>true</done>
+				<queryLocator xsi:nil="true"></queryLocator>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Edge Communications</sf:Name>
+					</sf:Account>
+					<sf:Name>Edge SLA</sf:Name>
+					<sf:Amount>60000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Grand Hotels &amp; Resorts Ltd</sf:Name>
+					</sf:Account>
+					<sf:Name>Grand Hotels Kitchen Generator</sf:Name>
+					<sf:Amount>15000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Grand Hotels &amp; Resorts Ltd</sf:Name>
+					</sf:Account>
+					<sf:Name>Grand Hotels SLA</sf:Name>
+					<sf:Amount>90000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Express Logistics and Transport</sf:Name>
+					</sf:Account>
+					<sf:Name>Express Logistics Portable Truck Generators</sf:Name>
+					<sf:Amount>80000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Express Logistics and Transport</sf:Name>
+					</sf:Account>
+					<sf:Name>Express Logistics SLA</sf:Name>
+					<sf:Amount>120000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Express Logistics and Transport</sf:Name>
+					</sf:Account>
+					<sf:Name>Express Logistics Standby Generator</sf:Name>
+					<sf:Amount>220000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>University of Arizona</sf:Name>
+					</sf:Account>
+					<sf:Name>University of AZ Installations</sf:Name>
+					<sf:Amount>100000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>University of Arizona</sf:Name>
+					</sf:Account>
+					<sf:Name>University of AZ Portable Generators</sf:Name>
+					<sf:Amount>50000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>University of Arizona</sf:Name>
+					</sf:Account>
+					<sf:Name>University of AZ SLA</sf:Name>
+					<sf:Amount>90000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Emergency Generators</sf:Name>
+					<sf:Amount>440000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Installations</sf:Name>
+					<sf:Amount>270000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Installations</sf:Name>
+					<sf:Amount>270000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Office Portable Generators</sf:Name>
+					<sf:Amount>125000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>GenePoint</sf:Name>
+					</sf:Account>
+					<sf:Name>GenePoint Standby Generator</sf:Name>
+					<sf:Amount>85000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Burlington Textiles Corp of America</sf:Name>
+					</sf:Account>
+					<sf:Name>Burlington Textiles Weaving Plant Generator</sf:Name>
+					<sf:Amount>235000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Installations</sf:Name>
+					<sf:Amount>235000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Plant Standby Generators</sf:Name>
+					<sf:Amount>675000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Refinery Generators</sf:Name>
+					<sf:Amount>915000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Refinery Generators</sf:Name>
+					<sf:Amount>270000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil SLA</sf:Name>
+					<sf:Amount>120000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>United Oil &amp; Gas Corp.</sf:Name>
+					</sf:Account>
+					<sf:Name>United Oil Standby Generators</sf:Name>
+					<sf:Amount>120000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>GenePoint</sf:Name>
+					</sf:Account>
+					<sf:Name>GenePoint Lab Generators</sf:Name>
+					<sf:Amount>60000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>GenePoint</sf:Name>
+					</sf:Account>
+					<sf:Name>GenePoint SLA</sf:Name>
+					<sf:Amount>30000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Edge Communications</sf:Name>
+					</sf:Account>
+					<sf:Name>Edge Emergency Generator</sf:Name>
+					<sf:Amount>75000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Edge Communications</sf:Name>
+					</sf:Account>
+					<sf:Name>Edge Emergency Generator</sf:Name>
+					<sf:Amount>35000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Edge Communications</sf:Name>
+					</sf:Account>
+					<sf:Name>Edge Installation</sf:Name>
+					<sf:Amount>50000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Pyramid Construction Inc.</sf:Name>
+					</sf:Account>
+					<sf:Name>Pyramid Emergency Generators</sf:Name>
+					<sf:Amount>100000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Dickenson plc</sf:Name>
+					</sf:Account>
+					<sf:Name>Dickenson Mobile Generators</sf:Name>
+					<sf:Amount>15000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Grand Hotels &amp; Resorts Ltd</sf:Name>
+					</sf:Account>
+					<sf:Name>Grand Hotels Emergency Generators</sf:Name>
+					<sf:Amount>210000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Grand Hotels &amp; Resorts Ltd</sf:Name>
+					</sf:Account>
+					<sf:Name>Grand Hotels Generator Installations</sf:Name>
+					<sf:Amount>350000.0</sf:Amount>
+				</records>
+				<records xsi:type="sf:sObject">
+					<sf:type>Opportunity</sf:type>
+					<sf:Id xsi:nil="true"></sf:Id>
+					<sf:Account xsi:type="sf:sObject">
+						<sf:type>Account</sf:type>
+						<sf:Id xsi:nil="true"></sf:Id>
+						<sf:Name>Grand Hotels &amp; Resorts Ltd</sf:Name>
+					</sf:Account>
+					<sf:Name>Grand Hotels Guest Portable Generators</sf:Name>
+					<sf:Amount>250000.0</sf:Amount>
+				</records>
+				<size>31</size>
+			</result>
+		</queryResponse>
+	</soapenv:Body>
+</soapenv:Envelope>

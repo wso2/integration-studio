@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,7 @@ public class StartNodeEditPart extends BPELEditPart implements NodeEditPart, ILa
 		/**
 		 * @see org.eclipse.draw2d.Figure#paint(org.eclipse.draw2d.Graphics)
 		 */
-		
+		@Override
 		public void paint(Graphics graphics) {
 			super.paint(graphics);
 			computeHandlerIconPositions(ModelHelper.isHorizontalLayout(getModel()));
@@ -115,20 +115,20 @@ public class StartNodeEditPart extends BPELEditPart implements NodeEditPart, ILa
 		this.eventImageHeight = r.height;
 	}
 	
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		adapter.addToObject(getProcess());
 	}
 	
 	
-	
+	@Override
 	protected void removeAllAdapters() {
 		adapter.removedFrom(getProcess());
 		super.removeAllAdapters();
 	} 
 	
-	
+	@Override
 	protected IFigure createFigure() {
 		if (image == null) {
 			ILabeledElement element = BPELUtil.adapt(getStartNode(), ILabeledElement.class);
@@ -164,7 +164,7 @@ public class StartNodeEditPart extends BPELEditPart implements NodeEditPart, ILa
 	/**
 	 * @see org.eclipse.bpel.ui.editparts.BPELEditPart#refreshVisuals()
 	 */
-	
+	@Override
 	public void refreshVisuals() {
 		super.refreshVisuals();
 		// Refresh any decorations on this edit part
@@ -191,14 +191,14 @@ public class StartNodeEditPart extends BPELEditPart implements NodeEditPart, ILa
 		return getStartNode().getProcess();
 	}
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		// Don't call super because we don't want a component edit policy
 		// or a direct edit policy.
 		
 		// Show the selection rectangle
 		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, new BPELSelectionEditPolicy(false, false){
-			
+			@Override
 			protected int getWestInset() {
 				Insets ins = ((StartNodeEditPart)getHost()).getFigure().getInsets();
 				if(ins != null){
@@ -207,7 +207,7 @@ public class StartNodeEditPart extends BPELEditPart implements NodeEditPart, ILa
 				return super.getWestInset();
 			}
 			
-			
+			@Override
 			protected int getEastInset() {
 				Insets ins = ((StartNodeEditPart)getHost()).getFigure().getInsets();
 				if(ins != null){
@@ -315,15 +315,15 @@ public class StartNodeEditPart extends BPELEditPart implements NodeEditPart, ILa
 	/**
 	 * @see org.eclipse.bpel.ui.editparts.BPELEditPart#getDragTracker(org.eclipse.gef.Request)
 	 */
-	
+	@Override
 	public DragTracker getDragTracker(Request request) {
 		return new BPELDragEditPartsTracker(this) {
-			
+			@Override
 			protected boolean handleDoubleClick(int button) {
 				return true;
 			}
 			
-			
+			@Override
 			protected boolean handleButtonDown(int button) {
 				Point point = getLocation();
 				if (isPointInFaultImage(point.x, point.y)) {

@@ -16,8 +16,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormat <em>Format</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormatKey <em>Format Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload <em>Payload</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey <em>Payload Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getArgs <em>Args</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getOutputConnector <em>Output Connector</em>}</li>
@@ -32,56 +32,56 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface PayloadFactoryMediator extends Mediator {
 	/**
-	 * Returns the value of the '<em><b>Format</b></em>' attribute.
+	 * Returns the value of the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Format</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Payload</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Format</em>' attribute.
-	 * @see #setFormat(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_Format()
+	 * @return the value of the '<em>Payload</em>' attribute.
+	 * @see #setPayload(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_Payload()
 	 * @model
 	 * @generated
 	 */
-	String getFormat();
+	String getPayload();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormat <em>Format</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload <em>Payload</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Format</em>' attribute.
-	 * @see #getFormat()
+	 * @param value the new value of the '<em>Payload</em>' attribute.
+	 * @see #getPayload()
 	 * @generated
 	 */
-	void setFormat(String value);
+	void setPayload(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Format Key</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Payload Key</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Format Key</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Payload Key</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Format Key</em>' containment reference.
-	 * @see #setFormatKey(RegistryKeyProperty)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_FormatKey()
+	 * @return the value of the '<em>Payload Key</em>' containment reference.
+	 * @see #setPayloadKey(RegistryKeyProperty)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getPayloadFactoryMediator_PayloadKey()
 	 * @model containment="true"
 	 * @generated
 	 */
-	RegistryKeyProperty getFormatKey();
+	RegistryKeyProperty getPayloadKey();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormatKey <em>Format Key</em>}' containment reference.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey <em>Payload Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Format Key</em>' containment reference.
-	 * @see #getFormatKey()
+	 * @param value the new value of the '<em>Payload Key</em>' containment reference.
+	 * @see #getPayloadKey()
 	 * @generated
 	 */
-	void setFormatKey(RegistryKeyProperty value);
+	void setPayloadKey(RegistryKeyProperty value);
 
 	/**
 	 * Returns the value of the '<em><b>Args</b></em>' containment reference list.

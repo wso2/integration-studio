@@ -29,7 +29,7 @@ public class SequenceValidator extends CActivityValidator {
 	 * @see org.eclipse.bpel.validator.rules.CActivityValidator#checkChildren()
 	 */
 	
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		checkChild(Filters.ACTIVITIES,1,Integer.MAX_VALUE);
@@ -39,7 +39,7 @@ public class SequenceValidator extends CActivityValidator {
 	 * Start the validation process
 	 */
 	
-	
+	@Override
 	protected void start () {		
 		super.start();
 							

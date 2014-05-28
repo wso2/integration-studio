@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ public class PortTypeTreeNode extends TreeNode {
 		fDerivedFromPartnerRole = derivedFromPartnerRole;
 	}
 
-	
+	@Override
 	public Object[] getChildren() {
 		PortType pt = (PortType)modelObject;
 		if (pt.getOperations() == null)  return EMPTY_ARRAY;
@@ -59,7 +59,7 @@ public class PortTypeTreeNode extends TreeNode {
 		return v.toArray();
 	}
 
-	
+	@Override
 	public boolean hasChildren() {
 		PortType pt = (PortType)modelObject;
 		if (pt.getOperations() == null)  return false;

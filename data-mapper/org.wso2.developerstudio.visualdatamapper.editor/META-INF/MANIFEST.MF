@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.visualdatamapper.editor;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: dataMapper.presentation.DataMapperEditorPlugin$Implementation
+Bundle-Activator: org.wso2.developerstudio.datamapper.presentation.DataMapperEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: dataMapper.presentation
+Export-Package: org.wso2.developerstudio.datamapper.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.wso2.developerstudio.visualdatamapper.edit;visibility:=reexport,

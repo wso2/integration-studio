@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,18 +42,18 @@ public class ModelTreeContentProvider extends CachedTreeContentProvider {
 
 	public boolean isCondensed() { return isCondensed; }
 
-	
+	@Override
 	protected Object[] primGetChildren(Object node) {
 		if (!(node instanceof ITreeNode)) return EMPTY_ARRAY;
 		return ((ITreeNode)node).getChildren();
 	}
 
-	
+	@Override
 	protected Object[] primGetElements(Object node) {
 		return primGetChildren(node);
 	}
 
-	
+	@Override
 	protected boolean primHasChildren(Object node) {
 		if (!(node instanceof ITreeNode)) return false;
 		return ((ITreeNode)node).hasChildren();
@@ -87,12 +87,12 @@ public class ModelTreeContentProvider extends CachedTreeContentProvider {
 
 	/* IContentProvider */
 
-	
+	@Override
 	public void dispose() {
 		super.dispose();
 	}
 
-	
+	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		super.inputChanged(viewer, oldInput, newInput);
 		// TODO: hook model listener?

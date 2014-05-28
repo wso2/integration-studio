@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.eclipse.gef.EditPolicy;
 public class PickEditPart extends SequenceEditPart {
 	
 	private class PickOrderedLayoutEditPolicy extends BPELOrderedLayoutEditPolicy{
-		
+		@Override
 		protected ArrayList createVerticalConnections(BPELEditPart parent) {
 			ArrayList<PolylineConnection> connections = new ArrayList<PolylineConnection>();
 			List children = getConnectionChildren(parent);
@@ -49,7 +49,7 @@ public class PickEditPart extends SequenceEditPart {
 		}
 	}
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		if(ModelHelper.isHorizontalLayout(getModel()))
 			installEditPolicy(EditPolicy.LAYOUT_ROLE, new PickOrderedLayoutEditPolicy());
@@ -57,7 +57,7 @@ public class PickEditPart extends SequenceEditPart {
 			super.createEditPolicies();
 	}
 	
-	
+	@Override
 	protected void configureExpandedFigure(IFigure figure) {
 		super.configureExpandedFigure(figure);
 		boolean horizontal = ModelHelper.isHorizontalLayout(getModel());
@@ -72,7 +72,7 @@ public class PickEditPart extends SequenceEditPart {
 	}
 	
 	// Overridden to return a PickContainerFigure
-	
+	@Override
 	protected IFigure getNewContentPane(Layer layer) {
 		CollapsablePickContainerFigure fig =  new CollapsablePickContainerFigure(getModel(), image, getLabel());
 		fig.addMouseMotionListener(getMouseMotionListener());
@@ -80,7 +80,7 @@ public class PickEditPart extends SequenceEditPart {
 		return fig;
 	}
 	
-	
+	@Override
 	public ConnectionAnchor getConnectionAnchor(int location) {
 		if(location == CenteredConnectionAnchor.LEFT){
 			return new CenteredConnectionAnchor(getContentPane(),CenteredConnectionAnchor.LEFT_INNER,0);
@@ -93,7 +93,7 @@ public class PickEditPart extends SequenceEditPart {
 	 * the layout orientation is horizontal, the children of a pick should
 	 * be laid out vertically and the other way around.
 	 */
-	
+	@Override
 	public void switchLayout(boolean horizontal) {
 		removeEditPolicy(EditPolicy.LAYOUT_ROLE);
 		

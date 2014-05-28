@@ -46,7 +46,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface FaultMediator extends Mediator {
 	/**
 	 * Returns the value of the '<em><b>Soap Version</b></em>' attribute.
-	 * The default value is <code>"SOAP_1_1"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FaultSoapVersion}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -58,7 +57,7 @@ public interface FaultMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultSoapVersion
 	 * @see #setSoapVersion(FaultSoapVersion)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_SoapVersion()
-	 * @model default="SOAP_1_1"
+	 * @model
 	 * @generated
 	 */
 	FaultSoapVersion getSoapVersion();
@@ -128,7 +127,6 @@ public interface FaultMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Fault Code Soap11</b></em>' attribute.
-	 * The default value is <code>"VERSION_MISSMATCH"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap11}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -140,7 +138,7 @@ public interface FaultMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap11
 	 * @see #setFaultCodeSoap11(FaultCodeSoap11)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultCodeSoap11()
-	 * @model default="VERSION_MISSMATCH"
+	 * @model
 	 * @generated
 	 */
 	FaultCodeSoap11 getFaultCodeSoap11();
@@ -158,7 +156,6 @@ public interface FaultMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Fault Code Type</b></em>' attribute.
-	 * The default value is <code>"VALUE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -170,7 +167,7 @@ public interface FaultMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeType
 	 * @see #setFaultCodeType(FaultCodeType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultCodeType()
-	 * @model default="VALUE"
+	 * @model
 	 * @generated
 	 */
 	FaultCodeType getFaultCodeType();
@@ -214,7 +211,6 @@ public interface FaultMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Fault String Type</b></em>' attribute.
-	 * The default value is <code>"VALUE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FaultStringType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -226,7 +222,7 @@ public interface FaultMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultStringType
 	 * @see #setFaultStringType(FaultStringType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultStringType()
-	 * @model default="VALUE"
+	 * @model
 	 * @generated
 	 */
 	FaultStringType getFaultStringType();
@@ -297,7 +293,6 @@ public interface FaultMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Fault Actor</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Fault Actor</em>' attribute isn't clear,
@@ -307,7 +302,7 @@ public interface FaultMediator extends Mediator {
 	 * @return the value of the '<em>Fault Actor</em>' attribute.
 	 * @see #setFaultActor(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultActor()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getFaultActor();
@@ -324,7 +319,6 @@ public interface FaultMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Fault Code Soap12</b></em>' attribute.
-	 * The default value is <code>"VERSION_MISSMATCH"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap12}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -336,7 +330,7 @@ public interface FaultMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap12
 	 * @see #setFaultCodeSoap12(FaultCodeSoap12)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultCodeSoap12()
-	 * @model default="VERSION_MISSMATCH"
+	 * @model
 	 * @generated
 	 */
 	FaultCodeSoap12 getFaultCodeSoap12();
@@ -354,7 +348,6 @@ public interface FaultMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Fault Reason Type</b></em>' attribute.
-	 * The default value is <code>"VALUE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FaultReasonType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -366,7 +359,7 @@ public interface FaultMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultReasonType
 	 * @see #setFaultReasonType(FaultReasonType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultReasonType()
-	 * @model default="VALUE"
+	 * @model
 	 * @generated
 	 */
 	FaultReasonType getFaultReasonType();
@@ -489,7 +482,6 @@ public interface FaultMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Fault Detail Type</b></em>' attribute.
-	 * The default value is <code>"VALUE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.FaultDetailType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -501,7 +493,7 @@ public interface FaultMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FaultDetailType
 	 * @see #setFaultDetailType(FaultDetailType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultDetailType()
-	 * @model default="VALUE"
+	 * @model
 	 * @generated
 	 */
 	FaultDetailType getFaultDetailType();
@@ -519,7 +511,6 @@ public interface FaultMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Fault Detail Value</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Fault Detail Value</em>' attribute isn't clear,
@@ -529,7 +520,7 @@ public interface FaultMediator extends Mediator {
 	 * @return the value of the '<em>Fault Detail Value</em>' attribute.
 	 * @see #setFaultDetailValue(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getFaultMediator_FaultDetailValue()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getFaultDetailValue();

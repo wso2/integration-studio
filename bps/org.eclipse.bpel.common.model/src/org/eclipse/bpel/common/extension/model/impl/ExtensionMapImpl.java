@@ -113,7 +113,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return ExtensionmodelPackage.eINSTANCE.getExtensionMap();
 	}
@@ -176,7 +176,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
 		if (featureID >= 0) {
 			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
@@ -194,7 +194,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case ExtensionmodelPackage.EXTENSION_MAP__NAMESPACE:
@@ -210,7 +210,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(EStructuralFeature eFeature, Object newValue) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case ExtensionmodelPackage.EXTENSION_MAP__NAMESPACE:
@@ -229,7 +229,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case ExtensionmodelPackage.EXTENSION_MAP__NAMESPACE:
@@ -247,7 +247,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(EStructuralFeature eFeature) {
 		switch (eDerivedStructuralFeatureID(eFeature)) {
 			case ExtensionmodelPackage.EXTENSION_MAP__NAMESPACE:
@@ -263,7 +263,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
@@ -293,11 +293,11 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		/**
 		 * @see java.util.AbstractCollection#iterator()
 		 */
-		
+		@Override
 		public java.util.Iterator<Map.Entry<K,V>> iterator () {
 			return new EIterator<Map.Entry<K,V>> () {
 
-				
+				@Override
 				protected Map.Entry<K,V> next(Extension extension) {
 					return new Entry (extension.getExtendedObject(), extension.getExtensionObject());
 				}				
@@ -307,7 +307,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		/**
 		 * @see java.util.AbstractCollection#size()
 		 */
-		
+		@Override
 		public int size() {
 			int n=0;
 			for (Iterator<?> i=iterator(); i.hasNext(); ) {
@@ -334,10 +334,10 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		/**
 		 * @see java.util.AbstractCollection#iterator()
 		 */
-		
+		@Override
 		public java.util.Iterator<EObject> iterator() {
 			return new EIterator<EObject>() {
-				
+				@Override
 				protected EObject next (Extension extension) {
 					return extension.getExtendedObject();
 				}				
@@ -347,7 +347,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		/**
 		 * @see java.util.AbstractCollection#size()
 		 */
-		
+		@Override
 		public int size() {
 			int n=0;
 			for (Iterator<?> i=iterator(); i.hasNext(); ) {
@@ -374,11 +374,11 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		/**
 		 * @see java.util.AbstractCollection#iterator()
 		 */
-		
+		@Override
 		public java.util.Iterator<EObject> iterator() {
 			
 			return new EIterator<EObject>() {
-				
+				@Override
 				protected EObject next (Extension extension) {
 					return extension.getExtensionObject() ;
 				}				
@@ -389,7 +389,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		/**
 		 * @see java.util.AbstractCollection#size()
 		 */
-		
+		@Override
 		public int size() {
 			int n=0;
 			for (Iterator<?> i=iterator(); i.hasNext(); ) {
@@ -505,7 +505,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		/**
 		 * @see java.lang.Object#equals(java.lang.Object)
 		 */
-		
+		@Override
 		public boolean equals(Object o) {
 			if (!(o instanceof Map.Entry)) {
 				return false;
@@ -518,7 +518,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		/**
 		 * @see java.lang.Object#hashCode()
 		 */
-		
+		@Override
 		public int hashCode() {
 			return key == null ? 0 : key.hashCode();
 		}
@@ -527,7 +527,7 @@ public class ExtensionMapImpl extends EObjectImpl implements ExtensionMap  {
 		 * @see java.lang.Object#toString()
 		 */
 		@SuppressWarnings("nls")
-				
+		@Override		
 		public String toString() {
 			return key + "=" + value;
 		}

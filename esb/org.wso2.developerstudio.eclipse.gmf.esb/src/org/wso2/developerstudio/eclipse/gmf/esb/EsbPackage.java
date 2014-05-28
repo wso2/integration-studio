@@ -4891,13 +4891,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PROPERTY_MEDIATOR__VALUE_TYPE = MEDIATOR_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Value Literal</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR__VALUE_LITERAL = MEDIATOR_FEATURE_COUNT + 7;
+	int PROPERTY_MEDIATOR__VALUE = MEDIATOR_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' attribute.
@@ -4936,13 +4936,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PROPERTY_MEDIATOR__VALUE_EXPRESSION = MEDIATOR_FEATURE_COUNT + 11;
 
 	/**
-	 * The feature id for the '<em><b>Value OM</b></em>' attribute.
+	 * The feature id for the '<em><b>Boolean</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR__VALUE_OM = MEDIATOR_FEATURE_COUNT + 12;
+	int PROPERTY_MEDIATOR__BOOLEAN = MEDIATOR_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>OM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_MEDIATOR__OM = MEDIATOR_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Value String Pattern</b></em>' attribute.
@@ -4951,7 +4960,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR__VALUE_STRING_PATTERN = MEDIATOR_FEATURE_COUNT + 13;
+	int PROPERTY_MEDIATOR__VALUE_STRING_PATTERN = MEDIATOR_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Value String Capturing Group</b></em>' attribute.
@@ -4960,7 +4969,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP = MEDIATOR_FEATURE_COUNT + 14;
+	int PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP = MEDIATOR_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of structural features of the '<em>Property Mediator</em>' class.
@@ -4969,7 +4978,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 15;
+	int PROPERTY_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -6766,13 +6775,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int ENTITLEMENT_MEDIATOR__OBLIGATIONS_OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 21;
 
 	/**
+	 * The feature id for the '<em><b>Callback Handler</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER = MEDIATOR_FEATURE_COUNT + 22;
+
+	/**
 	 * The number of structural features of the '<em>Entitlement Mediator</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITLEMENT_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 22;
+	int ENTITLEMENT_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 23;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorInputConnectorImpl <em>Entitlement Mediator Input Connector</em>}' class.
@@ -7550,7 +7568,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getValidateMediator()
 	 * @generated
 	 */
-	int VALIDATE_MEDIATOR = 292;
+	int VALIDATE_MEDIATOR = 290;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateFeatureImpl <em>Validate Feature</em>}' class.
@@ -7560,7 +7578,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getValidateFeature()
 	 * @generated
 	 */
-	int VALIDATE_FEATURE = 294;
+	int VALIDATE_FEATURE = 292;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateSchemaImpl <em>Validate Schema</em>}' class.
@@ -7570,7 +7588,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getValidateSchema()
 	 * @generated
 	 */
-	int VALIDATE_SCHEMA = 295;
+	int VALIDATE_SCHEMA = 293;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorInputConnectorImpl <em>Validate Mediator Input Connector</em>}' class.
@@ -7580,7 +7598,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getValidateMediatorInputConnector()
 	 * @generated
 	 */
-	int VALIDATE_MEDIATOR_INPUT_CONNECTOR = 296;
+	int VALIDATE_MEDIATOR_INPUT_CONNECTOR = 294;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorOutputConnectorImpl <em>Validate Mediator Output Connector</em>}' class.
@@ -7590,7 +7608,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getValidateMediatorOutputConnector()
 	 * @generated
 	 */
-	int VALIDATE_MEDIATOR_OUTPUT_CONNECTOR = 297;
+	int VALIDATE_MEDIATOR_OUTPUT_CONNECTOR = 295;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ValidateMediatorOnFailOutputConnectorImpl <em>Validate Mediator On Fail Output Connector</em>}' class.
@@ -7600,7 +7618,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getValidateMediatorOnFailOutputConnector()
 	 * @generated
 	 */
-	int VALIDATE_MEDIATOR_ON_FAIL_OUTPUT_CONNECTOR = 298;
+	int VALIDATE_MEDIATOR_ON_FAIL_OUTPUT_CONNECTOR = 296;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ScriptMediatorImpl <em>Script Mediator</em>}' class.
@@ -10228,22 +10246,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CALLOUT_MEDIATOR__ENDPOINT_TYPE = MEDIATOR_FEATURE_COUNT + 13;
 
 	/**
-	 * The feature id for the '<em><b>Init Axis2 Client Options</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = MEDIATOR_FEATURE_COUNT + 14;
-
-	/**
 	 * The feature id for the '<em><b>Payload Property</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__PAYLOAD_PROPERTY = MEDIATOR_FEATURE_COUNT + 15;
+	int CALLOUT_MEDIATOR__PAYLOAD_PROPERTY = MEDIATOR_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Security Type</b></em>' attribute.
@@ -10252,7 +10261,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__SECURITY_TYPE = MEDIATOR_FEATURE_COUNT + 16;
+	int CALLOUT_MEDIATOR__SECURITY_TYPE = MEDIATOR_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Outbound Policy Key</b></em>' containment reference.
@@ -10261,7 +10270,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__OUTBOUND_POLICY_KEY = MEDIATOR_FEATURE_COUNT + 17;
+	int CALLOUT_MEDIATOR__OUTBOUND_POLICY_KEY = MEDIATOR_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Policy Key</b></em>' containment reference.
@@ -10270,7 +10279,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__INBOUND_POLICY_KEY = MEDIATOR_FEATURE_COUNT + 18;
+	int CALLOUT_MEDIATOR__INBOUND_POLICY_KEY = MEDIATOR_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Policies</b></em>' attribute.
@@ -10279,7 +10288,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__POLICIES = MEDIATOR_FEATURE_COUNT + 19;
+	int CALLOUT_MEDIATOR__POLICIES = MEDIATOR_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Policy Key</b></em>' containment reference.
@@ -10288,7 +10297,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int CALLOUT_MEDIATOR__POLICY_KEY = MEDIATOR_FEATURE_COUNT + 20;
+	int CALLOUT_MEDIATOR__POLICY_KEY = MEDIATOR_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Init Axis2 Client Options</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = MEDIATOR_FEATURE_COUNT + 20;
 
 	/**
 	 * The number of structural features of the '<em>Callout Mediator</em>' class.
@@ -14379,22 +14397,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PAYLOAD_FACTORY_MEDIATOR__REVERSE = MEDIATOR__REVERSE;
 
 	/**
-	 * The feature id for the '<em><b>Format</b></em>' attribute.
+	 * The feature id for the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAYLOAD_FACTORY_MEDIATOR__FORMAT = MEDIATOR_FEATURE_COUNT + 0;
+	int PAYLOAD_FACTORY_MEDIATOR__PAYLOAD = MEDIATOR_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Format Key</b></em>' containment reference.
+	 * The feature id for the '<em><b>Payload Key</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY = MEDIATOR_FEATURE_COUNT + 1;
+	int PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY = MEDIATOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -14636,13 +14654,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CONDITIONAL_ROUTER_MEDIATOR__REVERSE = MEDIATOR__REVERSE;
 
 	/**
-	 * The feature id for the '<em><b>Continue Route</b></em>' attribute.
+	 * The feature id for the '<em><b>Continue After Route</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE = MEDIATOR_FEATURE_COUNT + 0;
+	int CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE = MEDIATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Conditional Route Branches</b></em>' containment reference list.
@@ -15577,31 +15595,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int WSDL_END_POINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
 
 	/**
-	 * The feature id for the '<em><b>WSDL Definition</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WSDL_END_POINT__WSDL_DEFINITION = ABSTRACT_END_POINT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>WSDL Description</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WSDL_END_POINT__WSDL_DESCRIPTION = ABSTRACT_END_POINT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WSDL_END_POINT__INPUT_CONNECTOR = ABSTRACT_END_POINT_FEATURE_COUNT + 2;
+	int WSDL_END_POINT__INPUT_CONNECTOR = ABSTRACT_END_POINT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Output Connector</b></em>' containment reference.
@@ -15610,7 +15610,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int WSDL_END_POINT__OUTPUT_CONNECTOR = ABSTRACT_END_POINT_FEATURE_COUNT + 3;
+	int WSDL_END_POINT__OUTPUT_CONNECTOR = ABSTRACT_END_POINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Wsdl Uri</b></em>' attribute.
@@ -15619,7 +15619,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int WSDL_END_POINT__WSDL_URI = ABSTRACT_END_POINT_FEATURE_COUNT + 4;
+	int WSDL_END_POINT__WSDL_URI = ABSTRACT_END_POINT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Service</b></em>' attribute.
@@ -15628,7 +15628,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int WSDL_END_POINT__SERVICE = ABSTRACT_END_POINT_FEATURE_COUNT + 5;
+	int WSDL_END_POINT__SERVICE = ABSTRACT_END_POINT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Port</b></em>' attribute.
@@ -15637,7 +15637,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int WSDL_END_POINT__PORT = ABSTRACT_END_POINT_FEATURE_COUNT + 6;
+	int WSDL_END_POINT__PORT = ABSTRACT_END_POINT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>WSDL End Point</em>' class.
@@ -15646,45 +15646,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int WSDL_END_POINT_FEATURE_COUNT = ABSTRACT_END_POINT_FEATURE_COUNT + 7;
-
-	/**
-	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLDefinitionImpl <em>WSDL Definition</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLDefinitionImpl
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSDLDefinition()
-	 * @generated
-	 */
-	int WSDL_DEFINITION = 272;
-
-	/**
-	 * The number of structural features of the '<em>WSDL Definition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WSDL_DEFINITION_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLDescriptionImpl <em>WSDL Description</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLDescriptionImpl
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSDLDescription()
-	 * @generated
-	 */
-	int WSDL_DESCRIPTION = 273;
-
-	/**
-	 * The number of structural features of the '<em>WSDL Description</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WSDL_DESCRIPTION_FEATURE_COUNT = 0;
+	int WSDL_END_POINT_FEATURE_COUNT = ABSTRACT_END_POINT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointInputConnectorImpl <em>WSDL End Point Input Connector</em>}' class.
@@ -15694,7 +15656,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSDLEndPointInputConnector()
 	 * @generated
 	 */
-	int WSDL_END_POINT_INPUT_CONNECTOR = 274;
+	int WSDL_END_POINT_INPUT_CONNECTOR = 272;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -15722,7 +15684,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSDLEndPointOutputConnector()
 	 * @generated
 	 */
-	int WSDL_END_POINT_OUTPUT_CONNECTOR = 275;
+	int WSDL_END_POINT_OUTPUT_CONNECTOR = 273;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -15750,7 +15712,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLoadBalanceEndPoint()
 	 * @generated
 	 */
-	int LOAD_BALANCE_END_POINT = 276;
+	int LOAD_BALANCE_END_POINT = 274;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -15931,7 +15893,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMember()
 	 * @generated
 	 */
-	int MEMBER = 277;
+	int MEMBER = 275;
 
 	/**
 	 * The feature id for the '<em><b>Host Name</b></em>' attribute.
@@ -15977,7 +15939,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLoadBalanceEndPointInputConnector()
 	 * @generated
 	 */
-	int LOAD_BALANCE_END_POINT_INPUT_CONNECTOR = 278;
+	int LOAD_BALANCE_END_POINT_INPUT_CONNECTOR = 276;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -16005,7 +15967,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLoadBalanceEndPointOutputConnector()
 	 * @generated
 	 */
-	int LOAD_BALANCE_END_POINT_OUTPUT_CONNECTOR = 279;
+	int LOAD_BALANCE_END_POINT_OUTPUT_CONNECTOR = 277;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -16033,7 +15995,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLoadBalanceEndPointWestOutputConnector()
 	 * @generated
 	 */
-	int LOAD_BALANCE_END_POINT_WEST_OUTPUT_CONNECTOR = 280;
+	int LOAD_BALANCE_END_POINT_WEST_OUTPUT_CONNECTOR = 278;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -16061,7 +16023,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLocalEntry()
 	 * @generated
 	 */
-	int LOCAL_ENTRY = 281;
+	int LOCAL_ENTRY = 279;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -16082,13 +16044,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int LOCAL_ENTRY__ENTRY_NAME = ESB_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Value Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Local Entry Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCAL_ENTRY__VALUE_TYPE = ESB_ELEMENT_FEATURE_COUNT + 1;
+	int LOCAL_ENTRY__LOCAL_ENTRY_TYPE = ESB_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Value Literal</b></em>' attribute.
@@ -16134,7 +16096,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getSession()
 	 * @generated
 	 */
-	int SESSION = 282;
+	int SESSION = 280;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -16162,7 +16124,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getSequences()
 	 * @generated
 	 */
-	int SEQUENCES = 283;
+	int SEQUENCES = 281;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -16262,7 +16224,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getSequencesOutputConnector()
 	 * @generated
 	 */
-	int SEQUENCES_OUTPUT_CONNECTOR = 284;
+	int SEQUENCES_OUTPUT_CONNECTOR = 282;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -16290,7 +16252,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getSequencesInputConnector()
 	 * @generated
 	 */
-	int SEQUENCES_INPUT_CONNECTOR = 285;
+	int SEQUENCES_INPUT_CONNECTOR = 283;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -16318,7 +16280,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getURLRewriteRuleAction()
 	 * @generated
 	 */
-	int URL_REWRITE_RULE_ACTION = 286;
+	int URL_REWRITE_RULE_ACTION = 284;
 
 	/**
 	 * The feature id for the '<em><b>Rule Action</b></em>' attribute.
@@ -16391,7 +16353,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getURLRewriteRule()
 	 * @generated
 	 */
-	int URL_REWRITE_RULE = 287;
+	int URL_REWRITE_RULE = 285;
 
 	/**
 	 * The feature id for the '<em><b>Url Rewrite Rule Condition</b></em>' containment reference.
@@ -16428,7 +16390,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getURLRewriteMediator()
 	 * @generated
 	 */
-	int URL_REWRITE_MEDIATOR = 288;
+	int URL_REWRITE_MEDIATOR = 286;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -16510,7 +16472,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getURLRewriteMediatorInputConnector()
 	 * @generated
 	 */
-	int URL_REWRITE_MEDIATOR_INPUT_CONNECTOR = 289;
+	int URL_REWRITE_MEDIATOR_INPUT_CONNECTOR = 287;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -16538,7 +16500,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getURLRewriteMediatorOutputConnector()
 	 * @generated
 	 */
-	int URL_REWRITE_MEDIATOR_OUTPUT_CONNECTOR = 290;
+	int URL_REWRITE_MEDIATOR_OUTPUT_CONNECTOR = 288;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -16566,7 +16528,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEvaluatorExpressionProperty()
 	 * @generated
 	 */
-	int EVALUATOR_EXPRESSION_PROPERTY = 291;
+	int EVALUATOR_EXPRESSION_PROPERTY = 289;
 
 	/**
 	 * The feature id for the '<em><b>Pretty Name</b></em>' attribute.
@@ -16711,7 +16673,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getValidateResource()
 	 * @generated
 	 */
-	int VALIDATE_RESOURCE = 293;
+	int VALIDATE_RESOURCE = 291;
 
 	/**
 	 * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -16874,7 +16836,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEndpointDiagram()
 	 * @generated
 	 */
-	int ENDPOINT_DIAGRAM = 299;
+	int ENDPOINT_DIAGRAM = 297;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -16920,7 +16882,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getNamedEndpoint()
 	 * @generated
 	 */
-	int NAMED_ENDPOINT = 300;
+	int NAMED_ENDPOINT = 298;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -17227,7 +17189,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getNamedEndpointInputConnector()
 	 * @generated
 	 */
-	int NAMED_ENDPOINT_INPUT_CONNECTOR = 301;
+	int NAMED_ENDPOINT_INPUT_CONNECTOR = 299;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -17255,7 +17217,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getNamedEndpointOutputConnector()
 	 * @generated
 	 */
-	int NAMED_ENDPOINT_OUTPUT_CONNECTOR = 302;
+	int NAMED_ENDPOINT_OUTPUT_CONNECTOR = 300;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -17283,7 +17245,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTemplate()
 	 * @generated
 	 */
-	int TEMPLATE = 303;
+	int TEMPLATE = 301;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -17347,7 +17309,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTemplateParameter()
 	 * @generated
 	 */
-	int TEMPLATE_PARAMETER = 304;
+	int TEMPLATE_PARAMETER = 302;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -17375,7 +17337,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTask()
 	 * @generated
 	 */
-	int TASK = 305;
+	int TASK = 303;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -17484,7 +17446,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getNameValueTypeProperty()
 	 * @generated
 	 */
-	int NAME_VALUE_TYPE_PROPERTY = 306;
+	int NAME_VALUE_TYPE_PROPERTY = 304;
 
 	/**
 	 * The feature id for the '<em><b>Property Name</b></em>' attribute.
@@ -17530,7 +17492,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getTaskProperty()
 	 * @generated
 	 */
-	int TASK_PROPERTY = 307;
+	int TASK_PROPERTY = 305;
 
 	/**
 	 * The feature id for the '<em><b>Property Name</b></em>' attribute.
@@ -17576,7 +17538,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getSynapseAPI()
 	 * @generated
 	 */
-	int SYNAPSE_API = 308;
+	int SYNAPSE_API = 306;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -17658,7 +17620,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResource()
 	 * @generated
 	 */
-	int API_RESOURCE = 309;
+	int API_RESOURCE = 307;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -17884,7 +17846,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResourceInputConnector()
 	 * @generated
 	 */
-	int API_RESOURCE_INPUT_CONNECTOR = 310;
+	int API_RESOURCE_INPUT_CONNECTOR = 308;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -17912,7 +17874,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResourceOutputConnector()
 	 * @generated
 	 */
-	int API_RESOURCE_OUTPUT_CONNECTOR = 311;
+	int API_RESOURCE_OUTPUT_CONNECTOR = 309;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -17940,7 +17902,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResourceOutSequenceOutputConnector()
 	 * @generated
 	 */
-	int API_RESOURCE_OUT_SEQUENCE_OUTPUT_CONNECTOR = 312;
+	int API_RESOURCE_OUT_SEQUENCE_OUTPUT_CONNECTOR = 310;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -17968,7 +17930,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResourceInSequenceInputConnector()
 	 * @generated
 	 */
-	int API_RESOURCE_IN_SEQUENCE_INPUT_CONNECTOR = 313;
+	int API_RESOURCE_IN_SEQUENCE_INPUT_CONNECTOR = 311;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -17996,7 +17958,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResourceFaultInputConnector()
 	 * @generated
 	 */
-	int API_RESOURCE_FAULT_INPUT_CONNECTOR = 314;
+	int API_RESOURCE_FAULT_INPUT_CONNECTOR = 312;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -18024,7 +17986,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResourceEndpoint()
 	 * @generated
 	 */
-	int API_RESOURCE_ENDPOINT = 315;
+	int API_RESOURCE_ENDPOINT = 313;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -18295,7 +18257,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResourceEndpointInputConnector()
 	 * @generated
 	 */
-	int API_RESOURCE_ENDPOINT_INPUT_CONNECTOR = 316;
+	int API_RESOURCE_ENDPOINT_INPUT_CONNECTOR = 314;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -18323,7 +18285,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIResourceEndpointOutputConnector()
 	 * @generated
 	 */
-	int API_RESOURCE_ENDPOINT_OUTPUT_CONNECTOR = 317;
+	int API_RESOURCE_ENDPOINT_OUTPUT_CONNECTOR = 315;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -18351,7 +18313,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getComplexEndpoints()
 	 * @generated
 	 */
-	int COMPLEX_ENDPOINTS = 318;
+	int COMPLEX_ENDPOINTS = 316;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -18406,7 +18368,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getComplexEndpointsOutputConnector()
 	 * @generated
 	 */
-	int COMPLEX_ENDPOINTS_OUTPUT_CONNECTOR = 319;
+	int COMPLEX_ENDPOINTS_OUTPUT_CONNECTOR = 317;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -18434,7 +18396,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAddressingEndpoint()
 	 * @generated
 	 */
-	int ADDRESSING_ENDPOINT = 320;
+	int ADDRESSING_ENDPOINT = 318;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -18705,7 +18667,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAddressingEndpointInputConnector()
 	 * @generated
 	 */
-	int ADDRESSING_ENDPOINT_INPUT_CONNECTOR = 321;
+	int ADDRESSING_ENDPOINT_INPUT_CONNECTOR = 319;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -18733,7 +18695,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAddressingEndpointOutputConnector()
 	 * @generated
 	 */
-	int ADDRESSING_ENDPOINT_OUTPUT_CONNECTOR = 322;
+	int ADDRESSING_ENDPOINT_OUTPUT_CONNECTOR = 320;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -18761,7 +18723,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getRecipientListEndPoint()
 	 * @generated
 	 */
-	int RECIPIENT_LIST_END_POINT = 323;
+	int RECIPIENT_LIST_END_POINT = 321;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -18924,7 +18886,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getRecipientListEndPointInputConnector()
 	 * @generated
 	 */
-	int RECIPIENT_LIST_END_POINT_INPUT_CONNECTOR = 324;
+	int RECIPIENT_LIST_END_POINT_INPUT_CONNECTOR = 322;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -18952,7 +18914,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getRecipientListEndPointOutputConnector()
 	 * @generated
 	 */
-	int RECIPIENT_LIST_END_POINT_OUTPUT_CONNECTOR = 325;
+	int RECIPIENT_LIST_END_POINT_OUTPUT_CONNECTOR = 323;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -18980,7 +18942,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getRecipientListEndPointWestOutputConnector()
 	 * @generated
 	 */
-	int RECIPIENT_LIST_END_POINT_WEST_OUTPUT_CONNECTOR = 326;
+	int RECIPIENT_LIST_END_POINT_WEST_OUTPUT_CONNECTOR = 324;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -19008,7 +18970,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMessageStoreParameter()
 	 * @generated
 	 */
-	int MESSAGE_STORE_PARAMETER = 327;
+	int MESSAGE_STORE_PARAMETER = 325;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Name</b></em>' attribute.
@@ -19045,7 +19007,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMessageStore()
 	 * @generated
 	 */
-	int MESSAGE_STORE = 328;
+	int MESSAGE_STORE = 326;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -19147,22 +19109,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__ENABLE_CACHING = ESB_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Timeout</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_STORE__TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 10;
-
-	/**
 	 * The feature id for the '<em><b>Provider Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 11;
+	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -19171,7 +19124,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 12;
+	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Message Store</em>' class.
@@ -19180,7 +19133,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 13;
+	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.
@@ -19190,7 +19143,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMessageProcessorParameter()
 	 * @generated
 	 */
-	int MESSAGE_PROCESSOR_PARAMETER = 329;
+	int MESSAGE_PROCESSOR_PARAMETER = 327;
 
 	/**
 	 * The feature id for the '<em><b>Parameter Name</b></em>' attribute.
@@ -19227,7 +19180,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMessageProcessor()
 	 * @generated
 	 */
-	int MESSAGE_PROCESSOR = 330;
+	int MESSAGE_PROCESSOR = 328;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -19444,7 +19397,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIHandler()
 	 * @generated
 	 */
-	int API_HANDLER = 331;
+	int API_HANDLER = 329;
 
 	/**
 	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
@@ -19481,7 +19434,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getAPIHandlerProperty()
 	 * @generated
 	 */
-	int API_HANDLER_PROPERTY = 332;
+	int API_HANDLER_PROPERTY = 330;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -19518,7 +19471,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCloudConnector()
 	 * @generated
 	 */
-	int CLOUD_CONNECTOR = 333;
+	int CLOUD_CONNECTOR = 331;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -19573,7 +19526,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCloudConnectorInputConnector()
 	 * @generated
 	 */
-	int CLOUD_CONNECTOR_INPUT_CONNECTOR = 334;
+	int CLOUD_CONNECTOR_INPUT_CONNECTOR = 332;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -19601,7 +19554,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCloudConnectorOutputConnector()
 	 * @generated
 	 */
-	int CLOUD_CONNECTOR_OUTPUT_CONNECTOR = 335;
+	int CLOUD_CONNECTOR_OUTPUT_CONNECTOR = 333;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -19629,7 +19582,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCloudConnectorOperation()
 	 * @generated
 	 */
-	int CLOUD_CONNECTOR_OPERATION = 336;
+	int CLOUD_CONNECTOR_OPERATION = 334;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -19756,7 +19709,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCloudConnectorOperationInputConnector()
 	 * @generated
 	 */
-	int CLOUD_CONNECTOR_OPERATION_INPUT_CONNECTOR = 337;
+	int CLOUD_CONNECTOR_OPERATION_INPUT_CONNECTOR = 335;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -19784,7 +19737,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCloudConnectorOperationOutputConnector()
 	 * @generated
 	 */
-	int CLOUD_CONNECTOR_OPERATION_OUTPUT_CONNECTOR = 338;
+	int CLOUD_CONNECTOR_OPERATION_OUTPUT_CONNECTOR = 336;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -19812,7 +19765,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediator()
 	 * @generated
 	 */
-	int DATA_MAPPER_MEDIATOR = 339;
+	int DATA_MAPPER_MEDIATOR = 337;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -19842,13 +19795,85 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Input Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__INPUT_TYPE = MEDIATOR_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Output Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 1;
+	int DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = MEDIATOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__CONFIGURATION = MEDIATOR_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Input Schema</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Output Schema</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA = MEDIATOR_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Configuration Local Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Input Schema Local Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Output Schema Local Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = MEDIATOR_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Output Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__OUTPUT_TYPE = MEDIATOR_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Data Mapper Mediator</em>' class.
@@ -19857,7 +19882,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 2;
+	int DATA_MAPPER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.
@@ -19867,7 +19892,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediatorInputConnector()
 	 * @generated
 	 */
-	int DATA_MAPPER_MEDIATOR_INPUT_CONNECTOR = 340;
+	int DATA_MAPPER_MEDIATOR_INPUT_CONNECTOR = 338;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -19895,7 +19920,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediatorOutputConnector()
 	 * @generated
 	 */
-	int DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR = 341;
+	int DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR = 339;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Link</b></em>' containment reference.
@@ -19923,7 +19948,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getArtifactType()
 	 * @generated
 	 */
-	int ARTIFACT_TYPE = 342;
+	int ARTIFACT_TYPE = 340;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointType <em>Call Mediator Endpoint Type</em>}' enum.
@@ -19933,7 +19958,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCallMediatorEndpointType()
 	 * @generated
 	 */
-	int CALL_MEDIATOR_ENDPOINT_TYPE = 343;
+	int CALL_MEDIATOR_ENDPOINT_TYPE = 341;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointPropertyScope <em>End Point Property Scope</em>}' enum.
@@ -19943,7 +19968,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEndPointPropertyScope()
 	 * @generated
 	 */
-	int END_POINT_PROPERTY_SCOPE = 344;
+	int END_POINT_PROPERTY_SCOPE = 342;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.SequenceType <em>Sequence Type</em>}' enum.
@@ -19953,7 +19978,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getSequenceType()
 	 * @generated
 	 */
-	int SEQUENCE_TYPE = 345;
+	int SEQUENCE_TYPE = 343;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyWsdlType <em>Proxy Wsdl Type</em>}' enum.
@@ -19963,7 +19988,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getProxyWsdlType()
 	 * @generated
 	 */
-	int PROXY_WSDL_TYPE = 346;
+	int PROXY_WSDL_TYPE = 344;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.HttpMethodType <em>Http Method Type</em>}' enum.
@@ -19973,17 +19998,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getHttpMethodType()
 	 * @generated
 	 */
-	int HTTP_METHOD_TYPE = 347;
+	int HTTP_METHOD_TYPE = 345;
 
 	/**
-	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType <em>Filter Condition Type</em>}' enum.
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType <em>Filter Mediator Condition Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getFilterConditionType()
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getFilterMediatorConditionType()
 	 * @generated
 	 */
-	int FILTER_CONDITION_TYPE = 348;
+	int FILTER_MEDIATOR_CONDITION_TYPE = 346;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogCategory <em>Log Category</em>}' enum.
@@ -19993,7 +20018,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLogCategory()
 	 * @generated
 	 */
-	int LOG_CATEGORY = 349;
+	int LOG_CATEGORY = 347;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogLevel <em>Log Level</em>}' enum.
@@ -20003,7 +20028,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getLogLevel()
 	 * @generated
 	 */
-	int LOG_LEVEL = 350;
+	int LOG_LEVEL = 348;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.BeanMediatorAction <em>Bean Mediator Action</em>}' enum.
@@ -20013,7 +20038,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getBeanMediatorAction()
 	 * @generated
 	 */
-	int BEAN_MEDIATOR_ACTION = 351;
+	int BEAN_MEDIATOR_ACTION = 349;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion <em>End Point Addressing Version</em>}' enum.
@@ -20023,7 +20048,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEndPointAddressingVersion()
 	 * @generated
 	 */
-	int END_POINT_ADDRESSING_VERSION = 352;
+	int END_POINT_ADDRESSING_VERSION = 350;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointTimeOutAction <em>End Point Time Out Action</em>}' enum.
@@ -20033,7 +20058,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEndPointTimeOutAction()
 	 * @generated
 	 */
-	int END_POINT_TIME_OUT_ACTION = 353;
+	int END_POINT_TIME_OUT_ACTION = 351;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointMessageFormat <em>End Point Message Format</em>}' enum.
@@ -20043,7 +20068,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEndPointMessageFormat()
 	 * @generated
 	 */
-	int END_POINT_MESSAGE_FORMAT = 354;
+	int END_POINT_MESSAGE_FORMAT = 352;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization <em>End Point Attachment Optimization</em>}' enum.
@@ -20053,7 +20078,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEndPointAttachmentOptimization()
 	 * @generated
 	 */
-	int END_POINT_ATTACHMENT_OPTIMIZATION = 355;
+	int END_POINT_ATTACHMENT_OPTIMIZATION = 353;
 
 
 	/**
@@ -20064,7 +20089,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPropertyDataType()
 	 * @generated
 	 */
-	int PROPERTY_DATA_TYPE = 356;
+	int PROPERTY_DATA_TYPE = 354;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyAction <em>Property Action</em>}' enum.
@@ -20074,7 +20099,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPropertyAction()
 	 * @generated
 	 */
-	int PROPERTY_ACTION = 357;
+	int PROPERTY_ACTION = 355;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope <em>Property Scope</em>}' enum.
@@ -20084,7 +20109,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPropertyScope()
 	 * @generated
 	 */
-	int PROPERTY_SCOPE = 358;
+	int PROPERTY_SCOPE = 356;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType <em>Property Value Type</em>}' enum.
@@ -20094,7 +20119,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getPropertyValueType()
 	 * @generated
 	 */
-	int PROPERTY_VALUE_TYPE = 359;
+	int PROPERTY_VALUE_TYPE = 357;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceInlineType <em>Enrich Source Inline Type</em>}' enum.
@@ -20104,7 +20129,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnrichSourceInlineType()
 	 * @generated
 	 */
-	int ENRICH_SOURCE_INLINE_TYPE = 360;
+	int ENRICH_SOURCE_INLINE_TYPE = 358;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType <em>Enrich Source Type</em>}' enum.
@@ -20114,7 +20139,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnrichSourceType()
 	 * @generated
 	 */
-	int ENRICH_SOURCE_TYPE = 361;
+	int ENRICH_SOURCE_TYPE = 359;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction <em>Enrich Target Action</em>}' enum.
@@ -20124,7 +20149,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnrichTargetAction()
 	 * @generated
 	 */
-	int ENRICH_TARGET_ACTION = 362;
+	int ENRICH_TARGET_ACTION = 360;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType <em>Enrich Target Type</em>}' enum.
@@ -20134,7 +20159,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnrichTargetType()
 	 * @generated
 	 */
-	int ENRICH_TARGET_TYPE = 363;
+	int ENRICH_TARGET_TYPE = 361;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EventTopicType <em>Event Topic Type</em>}' enum.
@@ -20144,7 +20169,27 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEventTopicType()
 	 * @generated
 	 */
-	int EVENT_TOPIC_TYPE = 364;
+	int EVENT_TOPIC_TYPE = 362;
+
+	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler <em>Entitlement Callback Handler</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEntitlementCallbackHandler()
+	 * @generated
+	 */
+	int ENTITLEMENT_CALLBACK_HANDLER = 363;
+
+	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType <em>Entitlement Client Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEntitlementClientType()
+	 * @generated
+	 */
+	int ENTITLEMENT_CLIENT_TYPE = 364;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType <em>Entitlement Sequence Type</em>}' enum.
@@ -20917,6 +20962,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE = 441;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes <em>Data Mapper Mediator Data Types</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediatorDataTypes()
+	 * @generated
+	 */
+	int DATA_MAPPER_MEDIATOR_DATA_TYPES = 442;
+
+	/**
 	 * The meta object id for the '<em>Map</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20924,7 +20979,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 442;
+	int MAP = 443;
 
 
 	/**
@@ -23656,15 +23711,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getPropertyMediator_ValueType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueLiteral <em>Value Literal</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value Literal</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueLiteral()
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValue()
 	 * @see #getPropertyMediator()
 	 * @generated
 	 */
-	EAttribute getPropertyMediator_ValueLiteral();
+	EAttribute getPropertyMediator_Value();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getExpression <em>Expression</em>}'.
@@ -23711,15 +23766,26 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getPropertyMediator_ValueExpression();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueOM <em>Value OM</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean <em>Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value OM</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueOM()
+	 * @return the meta object for the attribute '<em>Boolean</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#isBoolean()
 	 * @see #getPropertyMediator()
 	 * @generated
 	 */
-	EAttribute getPropertyMediator_ValueOM();
+	EAttribute getPropertyMediator_Boolean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM <em>OM</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>OM</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getOM()
+	 * @see #getPropertyMediator()
+	 * @generated
+	 */
+	EAttribute getPropertyMediator_OM();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator#getValueStringPattern <em>Value String Pattern</em>}'.
@@ -25254,6 +25320,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getEntitlementMediator_ObligationsOutputConnector();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackHandler <em>Callback Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Callback Handler</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator#getCallbackHandler()
+	 * @see #getEntitlementMediator()
+	 * @generated
+	 */
+	EAttribute getEntitlementMediator_CallbackHandler();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediatorInputConnector <em>Entitlement Mediator Input Connector</em>}'.
@@ -27079,17 +27156,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getMessageStore_EnableCaching();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getTimeout <em>Timeout</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Timeout</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getTimeout()
-	 * @see #getMessageStore()
-	 * @generated
-	 */
-	EAttribute getMessageStore_Timeout();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -27673,6 +27739,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getDataMapperMediator_InputConnector();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputType <em>Input Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Input Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputType()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_InputType();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputConnector <em>Output Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -27682,6 +27759,83 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getDataMapperMediator_OutputConnector();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfiguration <em>Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Configuration</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfiguration()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EReference getDataMapperMediator_Configuration();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchema <em>Input Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Input Schema</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchema()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EReference getDataMapperMediator_InputSchema();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchema <em>Output Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Output Schema</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchema()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EReference getDataMapperMediator_OutputSchema();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigurationLocalPath <em>Configuration Local Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Configuration Local Path</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getConfigurationLocalPath()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_ConfigurationLocalPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchemaLocalPath <em>Input Schema Local Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Input Schema Local Path</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getInputSchemaLocalPath()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_InputSchemaLocalPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchemaLocalPath <em>Output Schema Local Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Output Schema Local Path</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputSchemaLocalPath()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_OutputSchemaLocalPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputType <em>Output Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Output Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator#getOutputType()
+	 * @see #getDataMapperMediator()
+	 * @generated
+	 */
+	EAttribute getDataMapperMediator_OutputType();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorInputConnector <em>Data Mapper Mediator Input Connector</em>}'.
@@ -29781,17 +29935,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getCalloutMediator_EndpointType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Init Axis2 Client Options</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInitAxis2ClientOptions()
-	 * @see #getCalloutMediator()
-	 * @generated
-	 */
-	EAttribute getCalloutMediator_InitAxis2ClientOptions();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getPayloadProperty <em>Payload Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -29856,6 +29999,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getCalloutMediator_PolicyKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Init Axis2 Client Options</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions()
+	 * @see #getCalloutMediator()
+	 * @generated
+	 */
+	EAttribute getCalloutMediator_InitAxis2ClientOptions();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediatorInputConnector <em>Callout Mediator Input Connector</em>}'.
@@ -32567,26 +32721,26 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EClass getPayloadFactoryMediator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormat <em>Format</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload <em>Payload</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Format</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormat()
+	 * @return the meta object for the attribute '<em>Payload</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayload()
 	 * @see #getPayloadFactoryMediator()
 	 * @generated
 	 */
-	EAttribute getPayloadFactoryMediator_Format();
+	EAttribute getPayloadFactoryMediator_Payload();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormatKey <em>Format Key</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey <em>Payload Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Format Key</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getFormatKey()
+	 * @return the meta object for the containment reference '<em>Payload Key</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getPayloadKey()
 	 * @see #getPayloadFactoryMediator()
 	 * @generated
 	 */
-	EReference getPayloadFactoryMediator_FormatKey();
+	EReference getPayloadFactoryMediator_PayloadKey();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator#getArgs <em>Args</em>}'.
@@ -32771,15 +32925,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EClass getConditionalRouterMediator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueRoute <em>Continue Route</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute <em>Continue After Route</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Continue Route</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueRoute()
+	 * @return the meta object for the attribute '<em>Continue After Route</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute()
 	 * @see #getConditionalRouterMediator()
 	 * @generated
 	 */
-	EAttribute getConditionalRouterMediator_ContinueRoute();
+	EAttribute getConditionalRouterMediator_ContinueAfterRoute();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getConditionalRouteBranches <em>Conditional Route Branches</em>}'.
@@ -33153,28 +33307,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EClass getWSDLEndPoint();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getWSDLDefinition <em>WSDL Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>WSDL Definition</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getWSDLDefinition()
-	 * @see #getWSDLEndPoint()
-	 * @generated
-	 */
-	EReference getWSDLEndPoint_WSDLDefinition();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getWSDLDescription <em>WSDL Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>WSDL Description</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getWSDLDescription()
-	 * @see #getWSDLEndPoint()
-	 * @generated
-	 */
-	EReference getWSDLEndPoint_WSDLDescription();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint#getInputConnector <em>Input Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33228,26 +33360,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getWSDLEndPoint_Port();
-
-	/**
-	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDefinition <em>WSDL Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>WSDL Definition</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSDLDefinition
-	 * @generated
-	 */
-	EClass getWSDLDefinition();
-
-	/**
-	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLDescription <em>WSDL Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>WSDL Description</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.WSDLDescription
-	 * @generated
-	 */
-	EClass getWSDLDescription();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointInputConnector <em>WSDL End Point Input Connector</em>}'.
@@ -33473,15 +33585,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getLocalEntry_EntryName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueType <em>Value Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local Entry Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value Type</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueType()
+	 * @return the meta object for the attribute '<em>Local Entry Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType()
 	 * @see #getLocalEntry()
 	 * @generated
 	 */
-	EAttribute getLocalEntry_ValueType();
+	EAttribute getLocalEntry_LocalEntryType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueLiteral <em>Value Literal</em>}'.
@@ -33912,14 +34024,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EEnum getHttpMethodType();
 
 	/**
-	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType <em>Filter Condition Type</em>}'.
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType <em>Filter Mediator Condition Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Filter Condition Type</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType
+	 * @return the meta object for enum '<em>Filter Mediator Condition Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType
 	 * @generated
 	 */
-	EEnum getFilterConditionType();
+	EEnum getFilterMediatorConditionType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogCategory <em>Log Category</em>}'.
@@ -34080,6 +34192,26 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EEnum getEventTopicType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler <em>Entitlement Callback Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Entitlement Callback Handler</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler
+	 * @generated
+	 */
+	EEnum getEntitlementCallbackHandler();
+
+	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType <em>Entitlement Client Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Entitlement Client Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType
+	 * @generated
+	 */
+	EEnum getEntitlementClientType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType <em>Entitlement Sequence Type</em>}'.
@@ -34850,6 +34982,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EEnum getCloudConnectorOperationParamEditorType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes <em>Data Mapper Mediator Data Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Data Mapper Mediator Data Types</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+	 * @generated
+	 */
+	EEnum getDataMapperMediatorDataTypes();
 
 	/**
 	 * Returns the meta object for data type '{@link java.util.Map <em>Map</em>}'.
@@ -37079,12 +37221,12 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute PROPERTY_MEDIATOR__VALUE_TYPE = eINSTANCE.getPropertyMediator_ValueType();
 
 		/**
-		 * The meta object literal for the '<em><b>Value Literal</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_MEDIATOR__VALUE_LITERAL = eINSTANCE.getPropertyMediator_ValueLiteral();
+		EAttribute PROPERTY_MEDIATOR__VALUE = eINSTANCE.getPropertyMediator_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
@@ -37119,12 +37261,20 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EReference PROPERTY_MEDIATOR__VALUE_EXPRESSION = eINSTANCE.getPropertyMediator_ValueExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>Value OM</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Boolean</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_MEDIATOR__VALUE_OM = eINSTANCE.getPropertyMediator_ValueOM();
+		EAttribute PROPERTY_MEDIATOR__BOOLEAN = eINSTANCE.getPropertyMediator_Boolean();
+
+		/**
+		 * The meta object literal for the '<em><b>OM</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY_MEDIATOR__OM = eINSTANCE.getPropertyMediator_OM();
 
 		/**
 		 * The meta object literal for the '<em><b>Value String Pattern</b></em>' attribute feature.
@@ -38347,6 +38497,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference ENTITLEMENT_MEDIATOR__OBLIGATIONS_OUTPUT_CONNECTOR = eINSTANCE.getEntitlementMediator_ObligationsOutputConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>Callback Handler</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENTITLEMENT_MEDIATOR__CALLBACK_HANDLER = eINSTANCE.getEntitlementMediator_CallbackHandler();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EntitlementMediatorInputConnectorImpl <em>Entitlement Mediator Input Connector</em>}' class.
@@ -39833,14 +39991,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute MESSAGE_STORE__ENABLE_CACHING = eINSTANCE.getMessageStore_EnableCaching();
 
 		/**
-		 * The meta object literal for the '<em><b>Timeout</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MESSAGE_STORE__TIMEOUT = eINSTANCE.getMessageStore_Timeout();
-
-		/**
 		 * The meta object literal for the '<em><b>Provider Class</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -40295,12 +40445,76 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EReference DATA_MAPPER_MEDIATOR__INPUT_CONNECTOR = eINSTANCE.getDataMapperMediator_InputConnector();
 
 		/**
+		 * The meta object literal for the '<em><b>Input Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__INPUT_TYPE = eINSTANCE.getDataMapperMediator_InputType();
+
+		/**
 		 * The meta object literal for the '<em><b>Output Connector</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference DATA_MAPPER_MEDIATOR__OUTPUT_CONNECTOR = eINSTANCE.getDataMapperMediator_OutputConnector();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_MEDIATOR__CONFIGURATION = eINSTANCE.getDataMapperMediator_Configuration();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Schema</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_MEDIATOR__INPUT_SCHEMA = eINSTANCE.getDataMapperMediator_InputSchema();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Schema</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA = eINSTANCE.getDataMapperMediator_OutputSchema();
+
+		/**
+		 * The meta object literal for the '<em><b>Configuration Local Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__CONFIGURATION_LOCAL_PATH = eINSTANCE.getDataMapperMediator_ConfigurationLocalPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Schema Local Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__INPUT_SCHEMA_LOCAL_PATH = eINSTANCE.getDataMapperMediator_InputSchemaLocalPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Schema Local Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__OUTPUT_SCHEMA_LOCAL_PATH = eINSTANCE.getDataMapperMediator_OutputSchemaLocalPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_MAPPER_MEDIATOR__OUTPUT_TYPE = eINSTANCE.getDataMapperMediator_OutputType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.DataMapperMediatorInputConnectorImpl <em>Data Mapper Mediator Input Connector</em>}' class.
@@ -41959,14 +42173,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute CALLOUT_MEDIATOR__ENDPOINT_TYPE = eINSTANCE.getCalloutMediator_EndpointType();
 
 		/**
-		 * The meta object literal for the '<em><b>Init Axis2 Client Options</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = eINSTANCE.getCalloutMediator_InitAxis2ClientOptions();
-
-		/**
 		 * The meta object literal for the '<em><b>Payload Property</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -42013,6 +42219,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference CALLOUT_MEDIATOR__POLICY_KEY = eINSTANCE.getCalloutMediator_PolicyKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Init Axis2 Client Options</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CALLOUT_MEDIATOR__INIT_AXIS2_CLIENT_OPTIONS = eINSTANCE.getCalloutMediator_InitAxis2ClientOptions();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.CalloutMediatorInputConnectorImpl <em>Callout Mediator Input Connector</em>}' class.
@@ -44187,20 +44401,20 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EClass PAYLOAD_FACTORY_MEDIATOR = eINSTANCE.getPayloadFactoryMediator();
 
 		/**
-		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Payload</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PAYLOAD_FACTORY_MEDIATOR__FORMAT = eINSTANCE.getPayloadFactoryMediator_Format();
+		EAttribute PAYLOAD_FACTORY_MEDIATOR__PAYLOAD = eINSTANCE.getPayloadFactoryMediator_Payload();
 
 		/**
-		 * The meta object literal for the '<em><b>Format Key</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Payload Key</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PAYLOAD_FACTORY_MEDIATOR__FORMAT_KEY = eINSTANCE.getPayloadFactoryMediator_FormatKey();
+		EReference PAYLOAD_FACTORY_MEDIATOR__PAYLOAD_KEY = eINSTANCE.getPayloadFactoryMediator_PayloadKey();
 
 		/**
 		 * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.
@@ -44349,12 +44563,12 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EClass CONDITIONAL_ROUTER_MEDIATOR = eINSTANCE.getConditionalRouterMediator();
 
 		/**
-		 * The meta object literal for the '<em><b>Continue Route</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Continue After Route</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE = eINSTANCE.getConditionalRouterMediator_ContinueRoute();
+		EAttribute CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE = eINSTANCE.getConditionalRouterMediator_ContinueAfterRoute();
 
 		/**
 		 * The meta object literal for the '<em><b>Conditional Route Branches</b></em>' containment reference list feature.
@@ -44665,22 +44879,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EClass WSDL_END_POINT = eINSTANCE.getWSDLEndPoint();
 
 		/**
-		 * The meta object literal for the '<em><b>WSDL Definition</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WSDL_END_POINT__WSDL_DEFINITION = eINSTANCE.getWSDLEndPoint_WSDLDefinition();
-
-		/**
-		 * The meta object literal for the '<em><b>WSDL Description</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WSDL_END_POINT__WSDL_DESCRIPTION = eINSTANCE.getWSDLEndPoint_WSDLDescription();
-
-		/**
 		 * The meta object literal for the '<em><b>Input Connector</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -44719,26 +44917,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute WSDL_END_POINT__PORT = eINSTANCE.getWSDLEndPoint_Port();
-
-		/**
-		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLDefinitionImpl <em>WSDL Definition</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLDefinitionImpl
-		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSDLDefinition()
-		 * @generated
-		 */
-		EClass WSDL_DEFINITION = eINSTANCE.getWSDLDefinition();
-
-		/**
-		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLDescriptionImpl <em>WSDL Description</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLDescriptionImpl
-		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getWSDLDescription()
-		 * @generated
-		 */
-		EClass WSDL_DESCRIPTION = eINSTANCE.getWSDLDescription();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointInputConnectorImpl <em>WSDL End Point Input Connector</em>}' class.
@@ -44925,12 +45103,12 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute LOCAL_ENTRY__ENTRY_NAME = eINSTANCE.getLocalEntry_EntryName();
 
 		/**
-		 * The meta object literal for the '<em><b>Value Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Local Entry Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LOCAL_ENTRY__VALUE_TYPE = eINSTANCE.getLocalEntry_ValueType();
+		EAttribute LOCAL_ENTRY__LOCAL_ENTRY_TYPE = eINSTANCE.getLocalEntry_LocalEntryType();
 
 		/**
 		 * The meta object literal for the '<em><b>Value Literal</b></em>' attribute feature.
@@ -45277,14 +45455,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EEnum HTTP_METHOD_TYPE = eINSTANCE.getHttpMethodType();
 
 		/**
-		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType <em>Filter Condition Type</em>}' enum.
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType <em>Filter Mediator Condition Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType
-		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getFilterConditionType()
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getFilterMediatorConditionType()
 		 * @generated
 		 */
-		EEnum FILTER_CONDITION_TYPE = eINSTANCE.getFilterConditionType();
+		EEnum FILTER_MEDIATOR_CONDITION_TYPE = eINSTANCE.getFilterMediatorConditionType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LogCategory <em>Log Category</em>}' enum.
@@ -45445,6 +45623,26 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum EVENT_TOPIC_TYPE = eINSTANCE.getEventTopicType();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler <em>Entitlement Callback Handler</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementCallbackHandler
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEntitlementCallbackHandler()
+		 * @generated
+		 */
+		EEnum ENTITLEMENT_CALLBACK_HANDLER = eINSTANCE.getEntitlementCallbackHandler();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType <em>Entitlement Client Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.EntitlementClientType
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEntitlementClientType()
+		 * @generated
+		 */
+		EEnum ENTITLEMENT_CLIENT_TYPE = eINSTANCE.getEntitlementClientType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType <em>Entitlement Sequence Type</em>}' enum.
@@ -46215,6 +46413,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE = eINSTANCE.getCloudConnectorOperationParamEditorType();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes <em>Data Mapper Mediator Data Types</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediatorDataTypes()
+		 * @generated
+		 */
+		EEnum DATA_MAPPER_MEDIATOR_DATA_TYPES = eINSTANCE.getDataMapperMediatorDataTypes();
 
 		/**
 		 * The meta object literal for the '<em>Map</em>' data type.

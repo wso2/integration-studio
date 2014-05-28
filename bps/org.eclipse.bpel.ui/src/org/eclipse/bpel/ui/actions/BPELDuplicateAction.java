@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,10 +12,7 @@ package org.eclipse.bpel.ui.actions;
 
 import java.util.ArrayList;
 
-import org.eclipse.bpel.ui.BPELEditor;
-import org.eclipse.bpel.ui.BPELUIPlugin;
-import org.eclipse.bpel.ui.IBPELUIConstants;
-import org.eclipse.bpel.ui.Messages;
+import org.eclipse.bpel.ui.*;
 import org.eclipse.bpel.ui.commands.BPELCopyCommand;
 import org.eclipse.bpel.ui.commands.BPELPasteCommand;
 import org.eclipse.bpel.ui.commands.CompoundCommand;
@@ -25,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
@@ -45,8 +43,6 @@ public class BPELDuplicateAction extends BPELCopyAction implements IEditorAction
 	
 	public static final String ACTION_ID = BPELDuplicateAction.class.getName();
 	
-	private IWorkbenchPart fEditor;
-		
 	/**
 	 * 
 	 */
@@ -64,7 +60,7 @@ public class BPELDuplicateAction extends BPELCopyAction implements IEditorAction
 	}
 
 	@SuppressWarnings("nls")
-	
+	@Override
 	protected void init() {
 		super.init();
 		setText(Messages.BPELDuplicateAction_Duplicate_1); 
@@ -82,7 +78,7 @@ public class BPELDuplicateAction extends BPELCopyAction implements IEditorAction
 	/**
 	 * @see org.eclipse.bpel.ui.actions.BPELCopyAction#getCommand()
 	 */
-	
+	@Override
 	protected Command getCommand() {
 		
 		CompoundCommand cmd = new CompoundCommand(Messages.BPELCopyAction_Copy_3); 
@@ -94,6 +90,16 @@ public class BPELDuplicateAction extends BPELCopyAction implements IEditorAction
 
 		// 2. Copy the objects that are selected.
 		BPELCopyCommand copyCmd = new BPELCopyCommand(bpelEditor);
+		if (fSelection.isEmpty()) {
+		  for (Object o : ((IStructuredSelection) bpelEditor.getSelection()).toList()) {
+		    if (o instanceof EObject) {
+		      fSelection.add((EObject) o);
+		    }
+		  }
+		}
+		if (fSelection.isEmpty()) {
+		  return null;
+		}
 		copyCmd.setObjectList( new ArrayList<EObject>(fSelection) );
 		cmd.add(copyCmd);
 				
@@ -108,7 +114,7 @@ public class BPELDuplicateAction extends BPELCopyAction implements IEditorAction
 			 * 
 			 * @see org.eclipse.bpel.ui.commands.BPELPasteCommand#canDoExecute()
 			 */
-			
+			@Override
 			public boolean canDoExecute() {
 				return true;
 			}
@@ -128,10 +134,16 @@ public class BPELDuplicateAction extends BPELCopyAction implements IEditorAction
 	 * @see org.eclipse.ui.IEditorActionDelegate#setActiveEditor(org.eclipse.jface.action.IAction, org.eclipse.ui.IEditorPart)
 	 */
 	public void setActiveEditor (IAction action, IEditorPart targetEditor) {
-		
-		fEditor = targetEditor instanceof BPELEditor ? (BPELEditor) targetEditor : null; 		
-		setWorkbenchPart(fEditor);
-		action.setEnabled(fEditor != null);
+		if (targetEditor instanceof BPELMultipageEditorPart) {
+		  targetEditor = ((BPELMultipageEditorPart) targetEditor).getActiveEditor();
+		}
+		if (!(targetEditor instanceof BPELEditor)) {
+      targetEditor = null;
+		}
+		setWorkbenchPart(targetEditor);
+		if (targetEditor == null) {
+		  action.setEnabled(false);
+		}
 	}
 
 	/**
@@ -147,7 +159,6 @@ public class BPELDuplicateAction extends BPELCopyAction implements IEditorAction
 	 */
 	public void selectionChanged (IAction action, ISelection selection) {
 		setSelection(selection);
-		action.setEnabled( calculateEnabled() );		
 	}
 
 	

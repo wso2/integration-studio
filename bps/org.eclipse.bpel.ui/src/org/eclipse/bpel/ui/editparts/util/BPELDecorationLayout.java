@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,12 +61,12 @@ public abstract class BPELDecorationLayout extends DecorationLayout {
 		}
 	}
 	
-	
+	@Override
 	protected Dimension calculatePreferredSize(IFigure container, int wHint, int hHint) {
 		return new Dimension(0, 0);
 	}
 
-	
+	@Override
 	public void setConstraint(IFigure child, Object constraint) {
 		super.setConstraint(child, constraint);
 		child.addMouseMotionListener(new MouseMotionAdapter(((Integer)constraint).intValue()));

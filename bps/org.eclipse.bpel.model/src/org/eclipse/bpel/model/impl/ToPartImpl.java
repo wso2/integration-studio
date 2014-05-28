@@ -80,7 +80,7 @@ public class ToPartImpl extends BPELExtensibleElementImpl implements ToPart {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.TO_PART;
 	}
@@ -223,7 +223,7 @@ public class ToPartImpl extends BPELExtensibleElementImpl implements ToPart {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.TO_PART__FROM_VARIABLE:
@@ -243,7 +243,7 @@ public class ToPartImpl extends BPELExtensibleElementImpl implements ToPart {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.TO_PART__FROM_VARIABLE:
@@ -261,7 +261,7 @@ public class ToPartImpl extends BPELExtensibleElementImpl implements ToPart {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.TO_PART__FROM_VARIABLE:
@@ -279,7 +279,7 @@ public class ToPartImpl extends BPELExtensibleElementImpl implements ToPart {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.TO_PART__FROM_VARIABLE:

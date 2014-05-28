@@ -96,7 +96,7 @@ public class TaskPropertyDialog extends Dialog{
 
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("Task Configuration");
+		newShell.setText("Task Properties");
 	}
 	
 	protected Control createDialogArea(Composite parent) {

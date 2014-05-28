@@ -1,0 +1,21 @@
+{
+  "name" : "sfRecords",
+  "type": "record", 
+  "fields": [
+              { "name": "sfRecord", 
+          		"type": { 
+            				"type": "array", 
+            				"items": { 
+              							"name": "sfRecord", 
+              							"type": "record", 
+              							"fields": [ 
+                   									{"name" : "Opportunity_Name", "type" : "string"}, 
+                    								{"name" : "Account_Name", "type" : "string"},
+                    								{"name" : "Amount", "type" : "string"}
+                    							 ] 
+          							 } 
+        				  } 
+      			}	
+            
+          ]
+}

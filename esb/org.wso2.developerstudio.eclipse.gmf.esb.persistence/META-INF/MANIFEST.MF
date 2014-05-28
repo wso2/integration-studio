@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Persistence
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.persistence
-Bundle-Version: 1.4.0.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .,
  lib/tribes-6.0.16.jar,
  lib/woden-api-1.0-SNAPSHOT.jar,
@@ -111,6 +111,7 @@ Import-Package: com.damnhandy.uri.template,
  org.wso2.carbon.mediator.bam,
  org.wso2.carbon.mediator.bam.config,
  org.wso2.carbon.mediator.bam.config.stream,
+ org.wso2.carbon.mediator.datamapper,
  org.wso2.carbon.mediator.event,
  org.wso2.carbon.mediator.transform,
  org.wso2.carbon.mediators.router.impl,

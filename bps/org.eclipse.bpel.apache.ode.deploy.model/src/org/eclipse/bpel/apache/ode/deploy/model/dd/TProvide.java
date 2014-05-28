@@ -12,6 +12,7 @@
 package org.eclipse.bpel.apache.ode.deploy.model.dd;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide#getService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide#getPartnerLink <em>Partner Link</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide#getCorrelationFilter <em>Correlation Filter</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,5 +86,31 @@ public interface TProvide extends EObject {
 	 * @generated
 	 */
 	void setPartnerLink(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Correlation Filter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Correlation Filter</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Correlation Filter</em>' attribute.
+	 * @see #setCorrelationFilter(String)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTProvide_CorrelationFilter()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 * @generated
+	 */
+	String getCorrelationFilter();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide#getCorrelationFilter <em>Correlation Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Correlation Filter</em>' attribute.
+	 * @see #getCorrelationFilter()
+	 * @generated
+	 */
+	void setCorrelationFilter(String value);
 
 } // TProvide

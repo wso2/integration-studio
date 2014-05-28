@@ -52,7 +52,7 @@ public class PathExpr extends Expr {
 		return fLocationPath;
 	}
 	
-	
+	@Override
 	protected String asText() {
         StringBuilder buf = new StringBuilder();
 
@@ -72,7 +72,7 @@ public class PathExpr extends Expr {
 	 * @see org.eclipse.bpel.xpath10.Expr#toString()
 	 */
 
-	
+	@Override
 	public String toString() {
 		StringBuilder buf = new StringBuilder();
 		buf.append("{");
@@ -95,7 +95,7 @@ public class PathExpr extends Expr {
 	/**
 	 * @see org.eclipse.bpel.xpath10.Expr#getPosition()
 	 */
-	
+	@Override
 	public int getPosition () {
 		return fFilterExpr.getPosition();
 	}
@@ -103,7 +103,7 @@ public class PathExpr extends Expr {
 	/**
 	 * @see org.eclipse.bpel.xpath10.Expr#getEndPosition()
 	 */
-	
+	@Override
 	public int getEndPosition () {
 		if (fLocationPath != null) {
 			return fLocationPath.getEndPosition();

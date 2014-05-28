@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,7 +92,7 @@ public class LeafBorder extends GradientBorder {
 		eventImageFigure.setParent(parentFigure);
 	}
 
-	
+	@Override
 	public void paint(IFigure figure, Graphics graphics, Insets insets) {
 		this.bounds = figure.getBounds();
 		ColorRegistry registry = BPELUIPlugin.INSTANCE.getColorRegistry();
@@ -181,7 +181,7 @@ public class LeafBorder extends GradientBorder {
 		}
 	}
 
-	
+	@Override
 	public Insets getInsets(IFigure figure) {
 		return new Insets(borderWidth + topMargin, borderWidth + leftMargin + DRAWER_WIDTH, borderWidth + bottomMargin, borderWidth + rightMargin + DRAWER_WIDTH);
 	}
@@ -240,7 +240,7 @@ public class LeafBorder extends GradientBorder {
 		this.showEvent = showEvent;
 	}
 	
-	
+	@Override
 	protected Rectangle getGradientRect() {
 		Rectangle bounds = parentFigure.getBounds();
 		this.rectBounds = new Rectangle();
@@ -253,7 +253,7 @@ public class LeafBorder extends GradientBorder {
 		}
 		return rectBounds;
 	}
-	
+	@Override
 	public boolean isPointInTopDrawer(int x, int y) {
 		if (getTopMarker() == null) return false;
 		if (bounds == null) return false;
@@ -266,7 +266,7 @@ public class LeafBorder extends GradientBorder {
 		Rectangle imageBounds = new Rectangle(imageX, imageY, imageSize.width, imageSize.height);
 		return imageBounds.contains(p);
 	}
-	
+	@Override
 	public boolean isPointInBottomDrawer(int x, int y) {
 		if (getBottomMarker() == null) return false;
 		if (bounds == null) return false;

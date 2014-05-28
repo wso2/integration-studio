@@ -29,13 +29,13 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getAddressEndpoint <em>Address Endpoint</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getEndpointType <em>Endpoint Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getPayloadProperty <em>Payload Property</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getSecurityType <em>Security Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getOutboundPolicyKey <em>Outbound Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInboundPolicyKey <em>Inbound Policy Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getPolicies <em>Policies</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getPolicyKey <em>Policy Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,7 +46,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface CalloutMediator extends Mediator {
 	/**
 	 * Returns the value of the '<em><b>Service URL</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Service URL</em>' attribute isn't clear,
@@ -56,7 +55,7 @@ public interface CalloutMediator extends Mediator {
 	 * @return the value of the '<em>Service URL</em>' attribute.
 	 * @see #setServiceURL(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_ServiceURL()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getServiceURL();
@@ -73,7 +72,6 @@ public interface CalloutMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Soap Action</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Soap Action</em>' attribute isn't clear,
@@ -83,7 +81,7 @@ public interface CalloutMediator extends Mediator {
 	 * @return the value of the '<em>Soap Action</em>' attribute.
 	 * @see #setSoapAction(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_SoapAction()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getSoapAction();
@@ -100,7 +98,6 @@ public interface CalloutMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Path To Axis2xml</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Path To Axis2xml</em>' attribute isn't clear,
@@ -110,7 +107,7 @@ public interface CalloutMediator extends Mediator {
 	 * @return the value of the '<em>Path To Axis2xml</em>' attribute.
 	 * @see #setPathToAxis2xml(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PathToAxis2xml()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getPathToAxis2xml();
@@ -127,7 +124,6 @@ public interface CalloutMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Path To Axis2 Repository</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Path To Axis2 Repository</em>' attribute isn't clear,
@@ -137,7 +133,7 @@ public interface CalloutMediator extends Mediator {
 	 * @return the value of the '<em>Path To Axis2 Repository</em>' attribute.
 	 * @see #setPathToAxis2Repository(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PathToAxis2Repository()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getPathToAxis2Repository();
@@ -154,7 +150,6 @@ public interface CalloutMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Payload Type</b></em>' attribute.
-	 * The default value is <code>"MESSAGE_ELEMENT"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutPayloadType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -166,7 +161,7 @@ public interface CalloutMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CalloutPayloadType
 	 * @see #setPayloadType(CalloutPayloadType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_PayloadType()
-	 * @model default="MESSAGE_ELEMENT"
+	 * @model
 	 * @generated
 	 */
 	CalloutPayloadType getPayloadType();
@@ -210,7 +205,6 @@ public interface CalloutMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Result Type</b></em>' attribute.
-	 * The default value is <code>"MESSAGE_ELEMENT"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutResultType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -222,7 +216,7 @@ public interface CalloutMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CalloutResultType
 	 * @see #setResultType(CalloutResultType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_ResultType()
-	 * @model default="MESSAGE_ELEMENT"
+	 * @model
 	 * @generated
 	 */
 	CalloutResultType getResultType();
@@ -425,32 +419,6 @@ public interface CalloutMediator extends Mediator {
 	void setEndpointType(CalloutEndpointType value);
 
 	/**
-	 * Returns the value of the '<em><b>Init Axis2 Client Options</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Init Axis2 Client Options</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Init Axis2 Client Options</em>' attribute.
-	 * @see #setInitAxis2ClientOptions(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_InitAxis2ClientOptions()
-	 * @model
-	 * @generated
-	 */
-	String getInitAxis2ClientOptions();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#getInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Init Axis2 Client Options</em>' attribute.
-	 * @see #getInitAxis2ClientOptions()
-	 * @generated
-	 */
-	void setInitAxis2ClientOptions(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Payload Property</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -611,5 +579,31 @@ public interface CalloutMediator extends Mediator {
 	 * @generated
 	 */
 	void setPolicyKey(RegistryKeyProperty value);
+
+	/**
+	 * Returns the value of the '<em><b>Init Axis2 Client Options</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Init Axis2 Client Options</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Init Axis2 Client Options</em>' attribute.
+	 * @see #setInitAxis2ClientOptions(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getCalloutMediator_InitAxis2ClientOptions()
+	 * @model
+	 * @generated
+	 */
+	boolean isInitAxis2ClientOptions();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator#isInitAxis2ClientOptions <em>Init Axis2 Client Options</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Init Axis2 Client Options</em>' attribute.
+	 * @see #isInitAxis2ClientOptions()
+	 * @generated
+	 */
+	void setInitAxis2ClientOptions(boolean value);
 
 } // CalloutMediator

@@ -57,6 +57,32 @@
 			</describer>
 		</content-type>
 	</extension>
+	
+	<extension point="org.eclipse.ui.navigator.viewer" id="capp-navigator-viewbinding">
+      	<viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         	<includes>
+            	<actionExtension pattern="org.wso2.developerstudio.eclipse.distribution.project.navigatorActionProvider"/>
+         	</includes>
+      	</viewerActionBinding>
+      	<viewerActionBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
+         	<includes>
+            	<actionExtension pattern="org.wso2.developerstudio.eclipse.distribution.project.navigatorActionProvider"/>
+         	</includes>
+      	</viewerActionBinding>
+	</extension>
+
+
+	<extension point="org.eclipse.ui.navigator.navigatorContent">  
+        <actionProvider
+             class="org.wso2.developerstudio.eclipse.distribution.project.provider.NavigatorActionProvider"
+             id="org.wso2.developerstudio.eclipse.distribution.project.navigatorActionProvider"> 
+			<enablement>
+     			<adapt type="org.eclipse.core.resources.IFile" /> 
+          	</enablement>
+  		</actionProvider>
+	</extension>
+	
+	
 	<extension point="org.eclipse.ui.exportWizards">
 		<category id="org.wso2.developerstudio.eclipse.distribution.export"
 			name="WSO2 Platform Distribution" />

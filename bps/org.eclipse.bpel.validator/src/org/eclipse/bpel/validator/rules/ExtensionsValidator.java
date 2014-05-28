@@ -39,7 +39,7 @@ public class ExtensionsValidator extends CContainerValidator {
 	/** Check children
 	 * @see org.eclipse.bpel.validator.rules.CContainerValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren ( ) {
 		super.checkChildren ();
 		checkChild(ND_EXTENSION,1,Integer.MAX_VALUE);			

@@ -30,7 +30,7 @@ public class MessageExchangesValidator extends CContainerValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CContainerValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {		
 		super.checkChildren();
 		checkChild(ND_MESSAGE_EXCHANGE, 1, Integer.MAX_VALUE);

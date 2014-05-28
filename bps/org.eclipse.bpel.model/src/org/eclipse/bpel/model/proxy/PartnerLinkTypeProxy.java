@@ -27,13 +27,13 @@ public class PartnerLinkTypeProxy extends PartnerLinkTypeImpl implements IBPELSe
         proxyURI = new BPELProxyURI(PartnerlinktypePackage.eINSTANCE.getPartnerLinkType(), baseURI, qname);
     }
 
-    
+    @Override
 	public boolean eIsProxy()
     {
         return true;
     }
 
-    
+    @Override
 	public URI eProxyURI()
     {
         return proxyURI.getProxyURI();

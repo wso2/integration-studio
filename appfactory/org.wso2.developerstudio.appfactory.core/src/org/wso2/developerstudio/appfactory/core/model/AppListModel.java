@@ -139,80 +139,40 @@ public class AppListModel {
 		Map<String, String> params;
 		params = new HashMap<String, String>();
 		params.put("action", JagApiProperties.App_DS_INFO_ACTION);
-		params.put("stage", "Development");
+		params.put("applicationKey", applicationInfo.getKey());
+
 		respond = HttpsJaggeryClient.httpPost(
 				JagApiProperties.getAppDsInfoUrl(), params);
-		if ("false".equals(respond)) {
+		
+		if ("false".equals(respond))
+		{
 			return false;
-		} else {
-			RssClient.getDBinfo("reloadAllDataSources", respond);
-			String dsinfo = RssClient.getDBinfo("getAllDataSources", respond);
-			if (dsinfo == null) {
-				return false;
-			}
-			try {
-				List<DataSource> dsModels = new ArrayList<DataSource>();
-				InputStream is = new ByteArrayInputStream(dsinfo.getBytes());
-				SOAPMessage msg = MessageFactory.newInstance().createMessage(null, is);
-				SOAPBody soapBody = msg.getSOAPBody();
-
-				SOAPElement allDataSources = (SOAPElement) soapBody.getFirstChild();
-				@SuppressWarnings("unchecked")
-				Iterator<SOAPElement> dsList = allDataSources.getChildElements();
-				while (dsList.hasNext()) {
-					SOAPElement element = dsList.next();
-					SOAPElement isactive = (SOAPElement) element.getLastChild().getLastChild();
-					if ("ACTIVE".equalsIgnoreCase(isactive.getValue())) {
-						try {
-							DataSource dsModel = new DataSource();
-							//SOAPElement reInfo = (SOAPElement) element;
-							SOAPElement dsMetaInfo = (SOAPElement)element.getFirstChild();
-							SOAPElement dsName = (SOAPElement) dsMetaInfo
-									.getElementsByTagNameNS( "http://services.core.ndatasource.carbon.wso2.org/xsd",
-											"name").item(0);
-							dsModel.setName(dsName.getValue());
-							SOAPElement dsDefinition = (SOAPElement) dsMetaInfo.getFirstChild();
-							SOAPElement dsType = (SOAPElement) dsDefinition
-									.getElementsByTagNameNS(
-											"http://services.core.ndatasource.carbon.wso2.org/xsd",
-											"type").item(0);
-							dsModel.setType(dsType.getValue());
-							SOAPElement dsXMLConfiguration = (SOAPElement) dsDefinition
-									.getFirstChild();
-							Map<String, String> dbconfig = new HashMap<String, String>();
-							String xmlSource = dsXMLConfiguration.getValue();
-
-							DocumentBuilderFactory factory = DocumentBuilderFactory
-									.newInstance();
-							DocumentBuilder builder = factory
-									.newDocumentBuilder();
-							Document doc = builder.parse(new InputSource(
-									new StringReader(xmlSource)));
-							Node firstChild = doc.getFirstChild();
-							NodeList childNodes = firstChild.getChildNodes();
-							for (int temp = 0; temp < childNodes.getLength(); temp++) {
-								Node nNode = childNodes.item(temp);
-								Element eElement = (Element) nNode;
-								dbconfig.put(eElement.getNodeName(),
-										eElement.getTextContent());
-							}
-							dsModel.setConfig(dbconfig);
-							dsModels.add(dsModel);
-						} catch (Exception e) {
-							log.error("DataSource Response msg processing error",e);
-						}
-
-					}
-				}
-
-				applicationInfo.setDatasources(dsModels);
-			} catch (IOException e) {
-				return false;
-
-			} catch (SOAPException e) {
-				return false;
-			}
 		}
+		else
+		{
+			List<DataSource> dataSources = new ArrayList<DataSource>();
+			
+			JsonElement element = new JsonParser().parse(respond);
+			JsonObject object = element.getAsJsonObject();
+			
+			for (Map.Entry<String,JsonElement> entry : object.entrySet())
+			{
+				DataSource source = new DataSource();
+				source.setName(entry.getKey());
+				
+			    JsonObject objDev = entry.getValue().getAsJsonObject().getAsJsonObject("environments").getAsJsonObject("Development");
+
+			    Map<String, String> configs = new HashMap<String, String>();
+			    configs.put("url", objDev.get("url").getAsString());
+			    configs.put("username", objDev.get("username").getAsString());
+			    
+			    source.setConfig(configs);
+			    dataSources.add(source);
+			}
+			
+			applicationInfo.setDatasources(dataSources);
+		}
+		
 		return true;
 	}
 	

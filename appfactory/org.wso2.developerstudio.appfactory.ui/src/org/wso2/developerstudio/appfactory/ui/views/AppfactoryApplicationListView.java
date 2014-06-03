@@ -752,7 +752,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 					if(!result){
 						boolean reLogin = Authenticator.getInstance().reLogin();
 						if(reLogin){
-							result = model.setDBInfomation(appInfo);
+							result = model.setDSInfomation(appInfo);
 						}
 					}
 					if(result){

@@ -179,14 +179,8 @@ public class CAppDeployer {
 	public static void unDeployCAR(String serverURL, String username, String pwd, String carName) throws Exception{
 		ApplicationAdminStub appAdminStub = getApplicationAdminStub(serverURL, username, pwd);
 		try{
-            String[] splitedParts = carName.split("_");
-            String carFileName = null;
-            if(splitedParts != null){
-            	for (int i = 0; i <= (splitedParts.length-2); i++) {
-            		carFileName = carFileName + splitedParts[i];
-				}
-            	appAdminStub.deleteApplication(carFileName);
-            }
+            String carFileName = carName.substring(0, carName.lastIndexOf("_"));
+            appAdminStub.deleteApplication(carFileName);
         }catch(Exception e){
         	log.error(e);
         }

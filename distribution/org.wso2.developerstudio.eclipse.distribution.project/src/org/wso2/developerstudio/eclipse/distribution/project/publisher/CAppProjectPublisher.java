@@ -158,10 +158,10 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 //			Artifact superArtifact = CAppEnvironment.getcAppManager().getSuperArtifact(project);
 			CarExportHandler handler=new CarExportHandler();
 			List<IResource> exportArtifact = handler.exportArtifact(project);
-			File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();
+			File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();			
+			String cappName =  project.getName();	
 			
 //			String serverCarbonVersion = CarbonServerManager.getServerCarbonVersion(server);
-//			String cappName = null;
 //			if(serverCarbonVersion==null || "4.0.0".equals(serverCarbonVersion)){
 //				cappName = project.getName();
 //			}else{
@@ -170,7 +170,7 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 			CAppDeployer.unDeployCAR(serverURL.toString(), 
 									 serverCredentials.getUsername(), 
 									 serverCredentials.getPassword(), 
-									 project.getName());
+									 cappName);
 	    }
     }
 

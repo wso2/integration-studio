@@ -154,11 +154,11 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 	    	
 			URL serverURL = CarbonServerManager.getServerURL(server);
 			ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
-			CAppDeployer cappDeployer = new CAppDeployer();
+//			CAppDeployer cappDeployer = new CAppDeployer();
 //			Artifact superArtifact = CAppEnvironment.getcAppManager().getSuperArtifact(project);
-			CarExportHandler handler=new CarExportHandler();
-			List<IResource> exportArtifact = handler.exportArtifact(project);
-			File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();			
+//			CarExportHandler handler=new CarExportHandler();
+//			List<IResource> exportArtifact = handler.exportArtifact(project);
+//			File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();			
 			String cappName =  project.getName();	
 			
 //			String serverCarbonVersion = CarbonServerManager.getServerCarbonVersion(server);

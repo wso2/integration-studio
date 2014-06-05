@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.edit;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.0.0
 Bundle-ClassPath: .
 Bundle-Activator: org.wso2.developerstudio.eclipse.gmf.esb.provider.EsbEditPlugin$Implementation
 Bundle-Vendor: %providerName

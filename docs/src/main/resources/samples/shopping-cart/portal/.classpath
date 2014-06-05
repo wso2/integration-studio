@@ -32,13 +32,13 @@
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-mtompolicy/SNAPSHOT/axis2-mtompolicy-SNAPSHOT.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-mtompolicy/SNAPSHOT/axis2-mtompolicy-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-saaj/SNAPSHOT/axis2-saaj-SNAPSHOT.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-saaj/SNAPSHOT/axis2-saaj-SNAPSHOT-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-spring/SNAPSHOT/axis2-spring-SNAPSHOT.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-spring/SNAPSHOT/axis2-spring-SNAPSHOT-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-base/2.0.0-SNAPSHOT/axis2-transport-base-2.0.0-SNAPSHOT.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-base/2.0.0-SNAPSHOT/axis2-transport-base-2.0.0-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-base/2.0.0/axis2-transport-base-2.0.0.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-base/2.0.0/axis2-transport-base-2.0.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-http/SNAPSHOT/axis2-transport-http-SNAPSHOT.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-local/SNAPSHOT/axis2-transport-local-SNAPSHOT.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-mail/2.0.0-SNAPSHOT/axis2-transport-mail-2.0.0-SNAPSHOT.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-mail/2.0.0-SNAPSHOT/axis2-transport-mail-2.0.0-SNAPSHOT-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-tcp/2.0.0-SNAPSHOT/axis2-transport-tcp-2.0.0-SNAPSHOT.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-tcp/2.0.0-SNAPSHOT/axis2-transport-tcp-2.0.0-SNAPSHOT-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-udp/2.0.0-SNAPSHOT/axis2-transport-udp-2.0.0-SNAPSHOT.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-udp/2.0.0-SNAPSHOT/axis2-transport-udp-2.0.0-SNAPSHOT-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-xmpp/2.0.0-SNAPSHOT/axis2-transport-xmpp-2.0.0-SNAPSHOT.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-xmpp/2.0.0-SNAPSHOT/axis2-transport-xmpp-2.0.0-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-mail/2.0.0/axis2-transport-mail-2.0.0.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-mail/2.0.0/axis2-transport-mail-2.0.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-tcp/2.0.0/axis2-transport-tcp-2.0.0.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-tcp/2.0.0/axis2-transport-tcp-2.0.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-udp/2.0.0/axis2-transport-udp-2.0.0.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-udp/2.0.0/axis2-transport-udp-2.0.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-transport-xmpp/2.0.0/axis2-transport-xmpp-2.0.0.jar" sourcepath="M2_REPO/org/apache/axis2/axis2-transport-xmpp/2.0.0/axis2-transport-xmpp-2.0.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-wsdl2code-maven-plugin/1.6-wso2v3/axis2-wsdl2code-maven-plugin-1.6-wso2v3.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-xmlbeans/1.6-wso2v3/axis2-xmlbeans-1.6-wso2v3.jar"/>
   <classpathentry kind="var" path="M2_REPO/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>

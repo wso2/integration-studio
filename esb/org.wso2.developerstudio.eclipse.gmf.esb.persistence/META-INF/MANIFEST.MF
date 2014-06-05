@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Persistence
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.persistence
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.0.0
 Bundle-ClassPath: .,
  lib/tribes-6.0.16.jar,
  lib/woden-api-1.0-SNAPSHOT.jar,

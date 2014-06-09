@@ -70,40 +70,33 @@ public class SynapseUtils {
 		List<OMElement> editorList = new ArrayList<OMElement>();
 		File rootDir = new File(synapseConfigFolderPath + "/"
 				+ ADDITIONAL_FOLDERS);
+		
 		if(!rootDir.exists()){
-			throw new Exception("Please provide a valid synapse-configs directory");
+			//throw new Exception("Please provide a valid synapse-configs directory");
+			rootDir = new File(synapseConfigFolderPath);
 		}
 		File[] dirs = rootDir.listFiles();
 		int dirCount = dirs.length;
 		for (int i = 0; i < dirCount; ++i) {
 			String name=dirs[i].getName();
 			if(name.equals("api")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/api", SynapseEntryType.API);
+				processFiles(editorList, rootDir + "/api", SynapseEntryType.API);
 			}else if(name.equals("endpoints")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/endpoints",SynapseEntryType.END_POINT);
+				processFiles(editorList, rootDir + "/endpoints",SynapseEntryType.END_POINT);
 			}else if(name.equals("local-entries")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/local-entries",SynapseEntryType.LOCAL_ENTRY);
+				processFiles(editorList, rootDir + "/local-entries",SynapseEntryType.LOCAL_ENTRY);
 			}else if(name.equals("proxy-services")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/proxy-services",SynapseEntryType.PROXY_SERVICE);
+				processFiles(editorList, rootDir + "/proxy-services",SynapseEntryType.PROXY_SERVICE);
 			}else if(name.equals("sequences")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/sequences",SynapseEntryType.SEQUENCE);
+				processFiles(editorList, rootDir + "/sequences",SynapseEntryType.SEQUENCE);
 			}else if(name.equals("tasks")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/tasks", SynapseEntryType.TASK);
+				processFiles(editorList, rootDir + "/tasks", SynapseEntryType.TASK);
 			}else if(name.equals("templates")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/templates",SynapseEntryType.TEMPLATE);
+				processFiles(editorList, rootDir + "/templates",SynapseEntryType.TEMPLATE);
 			} else if(name.equals("message-stores")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/message-stores",SynapseEntryType.MESSAGE_STORE);
+				processFiles(editorList,rootDir + "/message-stores",SynapseEntryType.MESSAGE_STORE);
 			} else if(name.equals("message-processors")){
-				processFiles(editorList, synapseConfigFolderPath + "/"
-						+ ADDITIONAL_FOLDERS + "/message-processors",SynapseEntryType.MESSAGE_PROCESSOR);
+				processFiles(editorList, rootDir + "/message-processors",SynapseEntryType.MESSAGE_PROCESSOR);
 			}
 		}
 		return editorList;

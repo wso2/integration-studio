@@ -67,6 +67,8 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject esbProject;
+	private String version = "1.0.0";
+	
 	
 	public LocalEntryProjectCreationWizard() {
 		this.localEntryModel = new LocalEntryModel();
@@ -89,7 +91,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		boolean isNewArtifact =true;
 		IContainer location = esbProject.getFolder("src" + File.separator + "main" + File.separator
 				+ "synapse-config" + File.separator + "local-entries");
-
+		
 		updatePom();
 		esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		File pomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
@@ -119,7 +121,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 
 			ESBArtifact artifact = new ESBArtifact();
 			artifact.setName(localEntryModel.getLocalENtryName());
-			artifact.setVersion("1.0.0");
+			artifact.setVersion(version);
 			artifact.setType("synapse/local-entry");
 			artifact.setServerRole("EnterpriseServiceBus");
 			artifact.setGroupId(groupId);
@@ -162,7 +164,8 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 	public void updatePom() throws Exception{
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
+		 version = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-esb-localentry-plugin",
 				MavenConstants.WSO2_ESB_LOCAL_ENTRY_VERSION);
@@ -259,7 +262,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 				if(isNewArtifact){
 				ESBArtifact artifact=new ESBArtifact();
 				artifact.setName(key);
-				artifact.setVersion("1.0.0");
+				artifact.setVersion(version);
 				artifact.setType("synapse/local-entry");
 				artifact.setServerRole("EnterpriseServiceBus");
 				artifact.setGroupId(groupId);
@@ -276,7 +279,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 			if(isNewArtifact){
 			ESBArtifact artifact=new ESBArtifact();
 			artifact.setName(key);
-			artifact.setVersion("1.0.0");
+			artifact.setVersion(version);
 			artifact.setType("synapse/local-entry");
 			artifact.setServerRole("EnterpriseServiceBus");
 			artifact.setFile(groupId);

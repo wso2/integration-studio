@@ -123,7 +123,7 @@ public class RegistryResourcePOMGenMojo extends AbstractPOMGenMojo {
 		for (RegistryArtifact registryArtifact : artifacts) {
 	        Artifact artifact=new Artifact();
 	        artifact.setName(registryArtifact.getName());
-	        artifact.setVersion(this.getProject().getVersion());
+	        artifact.setVersion(registryArtifact.getVersion());
 	        artifact.setType(registryArtifact.getType());
 	        artifact.setServerRole(registryArtifact.getServerRole());
 	        artifact.setFile("registry-info.xml");

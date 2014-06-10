@@ -67,6 +67,8 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	private ESBProjectArtifact esbProjectArtifact;
 	private IProject esbProject;
 	private List<File> fileLst = new ArrayList<File>();
+
+	private String version = "1.0.0";
 	public TaskCreationWizard() {
 		artifactModel = new TaskModel();
 		setModel(artifactModel);
@@ -112,7 +114,7 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 					new File(location.getLocation().toFile(), artifactModel.getName() + ".xml"))
 					.replaceAll(Pattern.quote(File.separator), "/");
 			esbProjectArtifact.addESBArtifact(createArtifact(artifactModel.getName(), groupId,
-					"1.0.0", relativePath));
+					version, relativePath));
 			esbProjectArtifact.toFile();
             }
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -145,7 +147,7 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 							.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
 							name + ".xml"));
 					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId,
-							"1.0.0", relativePath));
+							version, relativePath));
 				}
 			} 
 			
@@ -159,7 +161,7 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 						.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
 						name + ".xml"));
 				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId,
-						"1.0.0", relativePath));
+						version, relativePath));
 			}
 		}
 		try {
@@ -228,7 +230,8 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	public void updatePom() throws Exception{
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
+		 version  = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-esb-task-plugin",
 				MavenConstants.WSO2_ESB_TASK_VERSION);

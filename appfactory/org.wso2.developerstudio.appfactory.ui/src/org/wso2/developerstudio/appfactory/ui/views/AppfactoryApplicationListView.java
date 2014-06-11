@@ -1344,13 +1344,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 				monitor.subTask(operationText);
 				monitor.worked(20);
 				
-				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-				
-				if(pomFile.exists())
-				{
-					executeMavenCommands(pomFile, monitor);
-				}
-				
 				IProjectDescription description = ResourcesPlugin
 													.getWorkspace()
 													.loadProjectDescription(new Path(appInfo.getLocalRepo() + File.separator + ".project")); //$NON-NLS-1$
@@ -1374,12 +1367,20 @@ public class AppfactoryApplicationListView extends ViewPart {
 				.getRoot()
 				.refreshLocal(IResource.DEPTH_INFINITE,
 						monitor);
+				
+				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
+				
+				if(pomFile.exists())
+				{
+					executeMavenCommands(pomFile, monitor);
+				}
 				monitor.worked(80);
 				
 			}catch(Throwable e){
 				 operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_Faild;
 				 monitor.subTask(operationText);
 				 monitor.worked(80); 
+				 printErrorLog(e.getMessage());
 				 log.error("importing failed", e); //$NON-NLS-1$
 			}
 			

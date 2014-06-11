@@ -67,6 +67,8 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject esbProject;
 
+	private String version = "1.0.0";
+
 	public ProxyServiceProjectCreationWizard() {
 		this.psModel = new ProxyServiceModel();
 		setModel(this.psModel);
@@ -147,7 +149,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 						new File(location.getLocation().toFile(), proxyServiceModel
 								.getProxyServiceName() + ".xml")).replaceAll(Pattern.quote(File.separator), "/");
 				esbProjectArtifact.addESBArtifact(createArtifact(
-						proxyServiceModel.getProxyServiceName(), groupId, "1.0.0", relativePath));
+						proxyServiceModel.getProxyServiceName(), groupId, version, relativePath));
 			}
 			
 			esbProjectArtifact.toFile();
@@ -169,7 +171,8 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 	public void updatePom() throws Exception{
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-		
+		 version = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", ""); 
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-esb-proxy-plugin",
 				MavenConstants.WSO2_ESB_PROXY_VERSION);
@@ -226,7 +229,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 				if(isNewArtifact){
 					relativePath = FileUtils.getRelativePath(location.getProject().getLocation()
 							.toFile(), new File(location.getLocation().toFile(), name + ".xml"));
-					esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,"1.0.0",relativePath) );
+					esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,version,relativePath) );
 				}
 			}			
 		}
@@ -240,7 +243,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 			if(isNewArtifact){
 				relativePath = FileUtils.getRelativePath(location.getProject().getLocation()
 						.toFile(), new File(location.getLocation().toFile(), name + ".xml"));
-			esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,"1.0.0",relativePath) );
+			esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,version,relativePath) );
 			}
 		}
 	}

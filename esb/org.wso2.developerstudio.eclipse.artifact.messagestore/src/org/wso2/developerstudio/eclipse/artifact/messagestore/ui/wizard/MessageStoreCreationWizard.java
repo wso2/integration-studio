@@ -78,6 +78,8 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 	private IProject esbProject;
 	private IFile artifactFile;
 	private List<File> fileLst = new ArrayList<File>();
+
+	private String version = "1.0.0";
 	
 	public MessageStoreCreationWizard() {
 		messageStoreModel = new MessageStoreModel();
@@ -124,7 +126,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 					new File(location.getLocation().toFile(), messageStoreModel.getStoreName() + ".xml"))
 					.replaceAll(Pattern.quote(File.separator), "/");
 			esbProjectArtifact.addESBArtifact(createArtifact(messageStoreModel.getStoreName(), groupId,
-					"1.0.0", relativePath));
+					version, relativePath));
 			esbProjectArtifact.toFile();
             }
 			esbProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
@@ -232,7 +234,8 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 				.getLocation().toFile();
 		MavenProject mavenProject = MavenUtils
 				.getMavenProject(mavenProjectPomLocation);
-
+		 version  = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-esb-messagestore-plugin",
 				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION);
@@ -311,7 +314,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 							.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
 							name + ".xml"));
 					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId,
-							"1.0.0", relativePath));
+							version, relativePath));
 				}
 			} 
 			
@@ -325,7 +328,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 						.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
 						name + ".xml"));
 				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId,
-						"1.0.0", relativePath));
+						version, relativePath));
 			}
 		}
 		try {

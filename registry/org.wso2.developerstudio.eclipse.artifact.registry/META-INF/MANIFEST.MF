@@ -58,4 +58,5 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.utils.ui,
  org.wso2.developerstudio.eclipse.utils.wst,
  org.wso2.registry.checkin
-Export-Package: org.wso2.developerstudio.eclipse.artifact.registry.utils
+Export-Package: org.wso2.developerstudio.eclipse.artifact.registry.filter,
+ org.wso2.developerstudio.eclipse.artifact.registry.utils

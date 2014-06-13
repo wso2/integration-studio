@@ -75,6 +75,8 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 	private IFile artifactFile;
 	private List<File> fileLst = new ArrayList<File>();
 
+	private String version = "1.0.0";
+
 	public MessageProcessorCreationWizard() {
 		messageProcessorModel = new MessageProcessorModel();
 		setModel(messageProcessorModel);
@@ -115,7 +117,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 								.getMessageProcessorName() + ".xml")).replaceAll(
 										Pattern.quote(File.separator), "/");
 				esbProjectArtifact.addESBArtifact(createArtifact(
-						messageProcessorModel.getMessageProcessorName(), groupId, "1.0.0",
+						messageProcessorModel.getMessageProcessorName(), groupId, version,
 						relativePath));
 				esbProjectArtifact.toFile();
 			} else {
@@ -169,7 +171,8 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 	public void updatePom() throws Exception {
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
+		 version  = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
 				"wso2-esb-messageprocessor-plugin",
 				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION);
@@ -386,7 +389,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 					String relativePath = FileUtils.getRelativePath(importLocation.getProject()
 							.getLocation().toFile(), new File(
 									importLocation.getLocation().toFile(), name + ".xml"));
-					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, "1.0.0",
+					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, version,
 							relativePath));
 				}
 			}
@@ -400,7 +403,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				String relativePath = FileUtils.getRelativePath(importLocation.getProject()
 						.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
 								name + ".xml"));
-				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, "1.0.0",
+				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, version,
 						relativePath));
 			}
 		}

@@ -178,15 +178,10 @@ public class CAppDeployer {
 	 */
 	public static void unDeployCAR(String serverURL, String username, String pwd, String carName) throws Exception{
 		ApplicationAdminStub appAdminStub = getApplicationAdminStub(serverURL, username, pwd);
-		try{//For latest servers
+		try{
             appAdminStub.deleteApplication(carName);
         }catch(Exception e){
-            //Old servers we do not send the version 
-            String[] carname = carName.split("\\.");
-            if(carname[0]!=null){
-            String oldCarName = carname[0].substring(0,carname[0].length()-2);
-            appAdminStub.deleteApplication(oldCarName);
-            }
+        	log.error(e);
         }
 	}
 

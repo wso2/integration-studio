@@ -32,10 +32,10 @@
         id="comdeveloperwelcome-introLink-group">
       <link 
           label="WSO2 Developer Studio - Quick Start Guide"
-          url="https://docs.wso2.org/display/DVS360/Quick+Start+Guide"
+          url="https://docs.wso2.org/display/DVS370/Quick+Start+Guide"
           id="carbonStudio-introLink"
           style-id="content-link">
-        <text>Describes the fundamentals Developer Studio to develop WSO2 projects in Eclipse. </text>
+        <text>Describes the fundamentals of Developer Studio to develop WSO2 projects in Eclipse. </text>
       </link>
     </group>
     <group
@@ -44,7 +44,7 @@
         icon="icons/carbon-normal.png">
       <link 
           label="WSO2 Developer Studio - User Guide"
-          url="https://docs.wso2.org/display/DVS360/User+Guide"
+          url="https://docs.wso2.org/display/DVS370/User+Guide"
           id="getting-started-link"
           style-id="content-link">
         <text>Describes how to create, package, test, and deploy artifacts for the various WSO2 products, and how to create and manage these using Composite Application Archive (CAR). 

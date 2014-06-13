@@ -27,6 +27,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Parent;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -126,6 +127,7 @@ public abstract class AbstractPOMGenMojo extends AbstractMojo {
 					// workspace project.
 					MavenProject artifactMavenProject = createMavenProjectForCappArtifact(
 							artifact, artifacts, projectLocation);
+					artifactMavenProject.setDistributionManagement(project.getDistributionManagement());
 					
 					if(getLog().isDebugEnabled()){
 						getLog().debug(new Time(System.currentTimeMillis())+" Maven Project generation completed");
@@ -274,6 +276,8 @@ public abstract class AbstractPOMGenMojo extends AbstractMojo {
 					mavenModuleProject = CAppMavenUtils.createMavenProject(groupId,
 							getProject().getArtifactId() + "_module", getProject()
 									.getVersion(), "pom");
+					
+					mavenModuleProject.getModel().setDistributionManagement(project.getDistributionManagement());
 					CAppMavenUtils.saveMavenProject(mavenModuleProject, getModuleProject());
 				}
 				mavenModuleProject=CAppMavenUtils.getMavenProject(getModuleProject());

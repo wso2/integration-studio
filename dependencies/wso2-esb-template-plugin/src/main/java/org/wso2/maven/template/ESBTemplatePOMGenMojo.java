@@ -113,7 +113,7 @@ public class ESBTemplatePOMGenMojo extends AbstractPOMGenMojo {
 		for (ESBArtifact esbArtifact : artifacts) {
 	        Artifact artifact=new Artifact();
 	        artifact.setName(esbArtifact.getName());
-	        artifact.setVersion(this.getProject().getVersion());
+	        artifact.setVersion(esbArtifact.getVersion());
 	        if(("synapse/sequenceTemplate".equals(esbArtifact.getType()))||("synapse/endpointTemplate".equals(esbArtifact.getType()))){
 	        	artifact.setType("synapse/template");
 	        }else{

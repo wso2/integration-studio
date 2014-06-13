@@ -18,13 +18,16 @@ package org.wso2.developerstudio.eclipse.artifact.sequence.ui.wizard;
 
 import static org.wso2.developerstudio.eclipse.platform.core.registry.util.Constants.REGISTRY_RESOURCE;
 import static org.wso2.developerstudio.eclipse.artifact.sequence.model.SequenceModel.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
 import javax.xml.namespace.QName;
+
 import org.apache.axiom.om.OMElement;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.PluginExecution;
@@ -76,6 +79,8 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject project;
+
+	private String version="1.0.0";
 
 
 	public void setProject(IProject project) {
@@ -142,7 +147,8 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	public void updatePom() throws Exception{
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
+		 version = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-esb-sequence-plugin",
 				MavenConstants.WSO2_ESB_SEQUENCE_VERSION);
@@ -234,7 +240,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			fileLst.add(destFile);
 			ESBArtifact artifact = new ESBArtifact();
 			artifact.setName(sequenceModel.getSequenceName());
-			artifact.setVersion("1.0.0");
+			artifact.setVersion(version);
 			artifact.setType("synapse/sequence");
 			artifact.setServerRole("EnterpriseServiceBus");
 			artifact.setGroupId(groupId);
@@ -381,7 +387,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 				if(isNewAritfact){
 				ESBArtifact artifact=new ESBArtifact();
 				artifact.setName(name);
-				artifact.setVersion("1.0.0");
+				artifact.setVersion(version);
 				artifact.setType("synapse/sequence");
 				artifact.setServerRole("EnterpriseServiceBus");
 				artifact.setGroupId(groupId);
@@ -398,7 +404,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			if(isNewAritfact){
 			ESBArtifact artifact=new ESBArtifact();
 			artifact.setName(name);
-			artifact.setVersion("1.0.0");
+			artifact.setVersion(version);
 			artifact.setType("synapse/sequence");
 			artifact.setServerRole("EnterpriseServiceBus");
 			artifact.setGroupId(groupId);

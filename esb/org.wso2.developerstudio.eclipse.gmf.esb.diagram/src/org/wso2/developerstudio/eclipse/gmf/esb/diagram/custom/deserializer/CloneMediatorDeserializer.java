@@ -120,6 +120,10 @@ public class CloneMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 				regkey.setKeyValue(target.getSequenceRef());
 				executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__SEQUENCE_KEY, regkey);
 			}
+			else {
+				executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE, TargetSequenceType.NONE);
+				refreshEditPartMap();
+			}
 			
 			 if(target.getEndpoint() != null){
 					executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.ANONYMOUS);
@@ -199,6 +203,10 @@ public class CloneMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 					RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 					regkey.setKeyValue(target.getEndpointRef());
 					executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_KEY, regkey);
+				} 
+				else {
+					executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.NONE);
+					refreshEditPartMap();
 				}
 				
 		}

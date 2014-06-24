@@ -22,9 +22,10 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * <!-- begin-user-doc --> The <b>Resource </b> associated with the package.
@@ -34,6 +35,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @generated NOT
  */
 public class DsResourceImpl extends XMLResourceImpl {
+	
+	private static IDeveloperStudioLog log=Logger.getLog("abc");
 
 	private static final String prettyPrintStylesheet =
 	                                                    "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0' "
@@ -84,8 +87,10 @@ public class DsResourceImpl extends XMLResourceImpl {
 			                          new StreamSource(
 			                                           new ByteArrayInputStream(
 			                                                                    prettyPrintStylesheet.getBytes()));
+			String tempSource = source.toString();
+			tempSource = tempSource.replaceAll("&#xD;", "");
 			Source xmlSource =
-			                   new StreamSource(new ByteArrayInputStream(source.toString()
+			                   new StreamSource(new ByteArrayInputStream(tempSource.toString()
 			                                                                   .getBytes()));
 
 			TransformerFactory tf = TransformerFactory.newInstance();

@@ -90,9 +90,12 @@ public class Messages extends NLS {
 	public static String PasswordDialog_Password;
 	public static String PasswordDialog_Save_check;
 	public static String PasswordDialog_URL;
+	public static String APP_CLOUD_URL;
 	public static String PasswordDialog_USER;
 	public static String PasswordDialog_OT_check;
 	public static String AppfactoryApplicationDetailsView_createToolbar_refresh_menu;
+	public static String APP_CLOUD_ZERO_TENANTS_WARNING;
+	public static String APP_CLOUD_ORG_NOT_SELECT_ERROR;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

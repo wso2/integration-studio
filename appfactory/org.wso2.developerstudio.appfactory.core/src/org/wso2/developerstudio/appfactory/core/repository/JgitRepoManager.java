@@ -51,7 +51,7 @@ public class JgitRepoManager {
          localRepo = FileRepositoryBuilder.create(gitDir);
          git = new Git(localRepo); 
          UserPasswordCredentials credentials = Authenticator.getInstance().getCredentials();
-         provider = new UsernamePasswordCredentialsProvider(credentials.getUser(), credentials.getPassword());
+         provider = new UsernamePasswordCredentialsProvider(credentials.getGitUser(), credentials.getPassword());
          
          
 	}

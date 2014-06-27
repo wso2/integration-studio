@@ -24,8 +24,6 @@ import javax.xml.transform.stream.StreamSource;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.xmi.XMLSave;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * <!-- begin-user-doc --> The <b>Resource </b> associated with the package.
@@ -36,8 +34,6 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
  */
 public class DsResourceImpl extends XMLResourceImpl {
 	
-	private static IDeveloperStudioLog log=Logger.getLog("abc");
-
 	private static final String prettyPrintStylesheet =
 	                                                    "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0' "
 	                                                            + " xmlns:xalan='http://xml.apache.org/xslt' "

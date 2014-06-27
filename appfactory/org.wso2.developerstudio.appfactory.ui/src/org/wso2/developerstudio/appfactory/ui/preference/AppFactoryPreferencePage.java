@@ -33,6 +33,7 @@ implements IWorkbenchPreferencePage{
 	public static final String APP_FACTORY_USERNAME = "APP_FACTORY_USERNAME";
 	public static final String APP_FACTORY_LOCATION = "APP_FACTORY_LOCATION";
 	public static final String APP_FACTORY_SAVE = "SAVE_USER_CREDINTIAL";
+	public static final String APP_CLOUD_LOGIN = "LOG_IN_FOR_APP_CLOUD";
 	private StringFieldEditor stringField1;
 	IPreferenceStore preferenceStore;
 

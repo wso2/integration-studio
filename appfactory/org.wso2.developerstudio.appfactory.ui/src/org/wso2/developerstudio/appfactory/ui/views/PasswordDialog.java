@@ -18,18 +18,27 @@ package org.wso2.developerstudio.appfactory.ui.views;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.equinox.security.storage.ISecurePreferences;
 import org.eclipse.equinox.security.storage.SecurePreferencesFactory;
 import org.eclipse.equinox.security.storage.StorageException;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Cursor;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -44,8 +53,10 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.dialogs.ListDialog;
 import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
 import org.wso2.developerstudio.appfactory.core.authentication.UserPasswordCredentials;
+import org.wso2.developerstudio.appfactory.core.client.CloudAdminServiceClient;
 import org.wso2.developerstudio.appfactory.core.jag.api.JagApiProperties;
 import org.wso2.developerstudio.appfactory.core.model.ErrorType;
 import org.wso2.developerstudio.appfactory.ui.Activator;
@@ -68,10 +79,12 @@ public class PasswordDialog extends Dialog {
   private boolean isSave;
   private boolean isOT;
   private Label error;
+  private boolean isAppCloud;
   private UserPasswordCredentials credentials;
   private boolean fromDashboad;
   private ISecurePreferences gitTempNode;
   private Button btnCheckButton;
+  private Button btnCloudCheckButton;
   private ISecurePreferences preferences;
   private LoginAction action;
   
@@ -148,6 +161,31 @@ public class PasswordDialog extends Dialog {
     
     new Label(container, SWT.NONE);
     
+    btnCloudCheckButton = new Button(container, SWT.CHECK);
+    btnCloudCheckButton.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+    btnCloudCheckButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+            1, 1));
+    btnCloudCheckButton.addSelectionListener(new SelectionAdapter() {
+    	@Override
+    	public void widgetSelected(SelectionEvent e) {
+    		 Button button = (Button) e.widget;
+    		 
+    		 isAppCloud = button.getSelection();
+    		 
+    		 if(isAppCloud){
+    			 hostText.setText(Messages.APP_CLOUD_URL);
+    			 hostText.setEditable(false);
+    		 }else{
+    			 
+    			 hostText.setEditable(true);
+    		 }	 
+    	}
+    });
+    btnCloudCheckButton.setText("App Cloud");
+    btnCloudCheckButton.setSelection(isAppCloud);
+    
+    new Label(container, SWT.NONE);
+    
     btnCheckButton = new Button(container, SWT.CHECK);
     btnCheckButton.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
     btnCheckButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
@@ -176,9 +214,9 @@ public class PasswordDialog extends Dialog {
     			} 
     	}
     });
-    btnCheckButton.setText(Messages.PasswordDialog_Save_check);
+    btnCheckButton.setText("Save credentials");
     
-    new Label(container, SWT.NONE);
+   new Label(container, SWT.NONE);
 
     error = new Label(container, SWT.NONE);
     error.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
@@ -239,6 +277,8 @@ public class PasswordDialog extends Dialog {
     action.setPassword(getPassword());
     action.setLoginUrl(getHost());
     action.setSave(isSave());
+    action.setAppCloud(isAppCloud());
+    Authenticator.getInstance().setAppCloud(isAppCloud());
     
     if(login()){
     	try {
@@ -246,7 +286,7 @@ public class PasswordDialog extends Dialog {
 				 gitTempNode.removeNode();
 				 ISecurePreferences preferences = SecurePreferencesFactory.getDefault();
 				 ISecurePreferences node = preferences.node("GIT");
-				 node.put("user",Authenticator.getInstance().getCredentials().getUser(), true);
+				 node.put("user",getUser(), true);
 				 node.put("password",Authenticator.getInstance().getCredentials().getPassword(), true);
 			}
 		} catch (StorageException e) {
@@ -280,8 +320,48 @@ public class PasswordDialog extends Dialog {
 				oldCredentials = Authenticator.getInstance().getCredentials();
 				oldServerURL = Authenticator.getInstance().getServerURL();
 			}
-			credentials = new UserPasswordCredentials(getUser(),getPassword());
-		    val = Authenticator.getInstance().Authenticate(JagApiProperties.getLoginUrl(), credentials); 
+			
+			credentials = new UserPasswordCredentials(getUser(),getPassword());	
+			
+			if(isAppCloud())
+			{
+				Map<String, String> tenants = CloudAdminServiceClient
+						.getTenantDomains(new UserPasswordCredentials(getUser(), getPassword()));
+				if(tenants.size()==0){
+					error.setText(Messages.APP_CLOUD_ZERO_TENANTS_WARNING);
+				}
+				else if(tenants.size()==1){					
+					Authenticator.getInstance().setSelectedTenant(tenants.entrySet().iterator().next().getValue());
+					
+				}else{
+					
+					List<String[]> tenantList = new ArrayList<String[]>();
+					
+					for(Entry<String, String> tenant:tenants.entrySet()){
+						
+						tenantList.add(new String[]{tenant.getKey(), tenant.getValue()});
+					}
+
+					ListDialog dialog = getTenantSeclectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell());
+					dialog.setInput(tenantList);
+					
+					String selectedTenant = getSelectedTenant(dialog);
+					
+					if(selectedTenant!=null)
+					{
+						Authenticator.getInstance().setSelectedTenant(selectedTenant);	
+						val = Authenticator.getInstance().Authenticate(JagApiProperties.getLoginUrl(), credentials); 
+					}else{
+						
+						val = false;
+					}
+					
+				}
+			}else{
+				
+				 	val = Authenticator.getInstance().Authenticate(JagApiProperties.getLoginUrl(), credentials); 
+			}
+			
 		    if(val && isfromDashboad()){
 		    	Authenticator.getInstance().setFromDashboad(isfromDashboad());
 		    } 
@@ -296,6 +376,53 @@ public class PasswordDialog extends Dialog {
 		setCursorNormal();
 		return val;
 	}
+  
+	private String getSelectedTenant(ListDialog dialog) {
+		
+		int feedback = dialog.open();
+		
+		if (feedback == Window.OK) {
+			Object[] result = dialog.getResult();
+			for (int i = 0; i < result.length; i++) {
+				String[] ss = (String[]) result[i];
+				return ss[1];
+			}
+		}
+		else if (feedback == Window.CANCEL) {
+			error.setText(Messages.APP_CLOUD_ORG_NOT_SELECT_ERROR);	
+		}
+		return null;
+	}
+  
+    private ListDialog getTenantSeclectionDialog(Shell shell){
+    	
+    	ListDialog dialog = new ListDialog(shell);
+    	dialog.setContentProvider(new ArrayContentProvider());
+    	dialog.setTitle("Select an orgnization");
+    	dialog.setMessage("Select an orgination and continue");
+    	dialog.setLabelProvider(new ArrayLabelProvider());    	
+    	return dialog;
+    }
+    
+	private static class ArrayLabelProvider extends LabelProvider implements
+			ITableLabelProvider {
+		public String getText(Object element) {
+			return ((String[]) element)[0].toString();
+		}
+		
+		@Override
+		public Image getColumnImage(Object element, int columnIndex) {
+			return null;
+		}
+		
+		@Override
+		public String getColumnText(Object element, int columnIndex) {
+			String[] ss = (String[]) element;
+			return ss[columnIndex];
+		}
+		
+	}
+    
 
 private void resetCredintials(boolean val,
 		UserPasswordCredentials oldCredentials, String oldServerURL) {
@@ -363,36 +490,43 @@ private void resetCredintials(boolean val,
   }
 
 
-public String getHost() {
-	return host;
-}
-
-
-public void setHost(String host) {
-	this.host = host;
-}
-
-public boolean isSave() {
-	return isSave;
-}
-
-public void setSave(boolean isSave) {
-	this.isSave = isSave;
-}
-
-public boolean isOT() {
-	return isOT;
-}
-
-public void setOT(boolean isOT) {
-	this.isOT = isOT;
-}
-
-public boolean isfromDashboad() {
-	return fromDashboad;
-}
-
-public void setIsfromDashboad(boolean isfromDashboad) {
-	this.fromDashboad = isfromDashboad;
-}
+	public String getHost() {
+		return host;
+	}
+	
+	
+	public void setHost(String host) {
+		this.host = host;
+	}
+	
+	public boolean isSave() {
+		return isSave;
+	}
+	
+	public void setSave(boolean isSave) {
+		this.isSave = isSave;
+	}
+	
+	public boolean isOT() {
+		return isOT;
+	}
+	
+	public void setOT(boolean isOT) {
+		this.isOT = isOT;
+	}
+	
+	public boolean isfromDashboad() {
+		return fromDashboad;
+	}
+	
+	public void setIsfromDashboad(boolean isfromDashboad) {
+		this.fromDashboad = isfromDashboad;
+	}
+	public boolean isAppCloud() {
+		return isAppCloud;
+	}
+	
+	public void setAppCloud(boolean isAppCloud) {
+		this.isAppCloud = isAppCloud;
+	}
 }

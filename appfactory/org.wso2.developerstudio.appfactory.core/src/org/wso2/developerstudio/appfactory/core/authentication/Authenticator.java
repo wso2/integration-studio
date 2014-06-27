@@ -40,6 +40,8 @@ public class Authenticator {
     private String errormsg;
     private boolean fromDashboad;
     private boolean loaded;
+    private boolean isAppCloud;
+    private String selectedTenant;
 
 	public String getErrormsg() {
 		return errormsg;
@@ -149,6 +151,22 @@ public class Authenticator {
 
 	public void setServerURL(String serverURL) {
 		this.serverURL = serverURL;
+	}
+
+	public boolean isAppCloud() {
+		return isAppCloud;
+	}
+
+	public void setAppCloud(boolean isAppCloud) {
+		this.isAppCloud = isAppCloud;
+	}
+
+	public String getSelectedTenant() {
+		return selectedTenant;
+	}
+
+	public void setSelectedTenant(String selectedTenant) {
+		this.selectedTenant = selectedTenant;
 	}
 
 	private class LoginToAppFacPerfectiveJob implements IRunnableWithProgress {

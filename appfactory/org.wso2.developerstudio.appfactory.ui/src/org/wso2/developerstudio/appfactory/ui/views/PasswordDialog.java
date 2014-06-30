@@ -127,7 +127,7 @@ public class PasswordDialog extends Dialog {
 	GridData gd_lblNewLabel = new GridData(SWT.LEFT, SWT.TOP, false,
 			true, 2, 1);
 	gd_lblNewLabel.widthHint = 509;
-	gd_lblNewLabel.heightHint = 32;
+	gd_lblNewLabel.heightHint = 38;
 	lblNewLabel.setLayoutData(gd_lblNewLabel);
 	
     Label lblHost = new Label(container, SWT.NONE);

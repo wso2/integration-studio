@@ -50,6 +50,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
@@ -1118,7 +1119,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			    ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
 				progressMonitorDialog.create();
 				progressMonitorDialog.open();
-				progressMonitorDialog.run(true, false, new AppCheckoutAndImportJobJob(info));
+				progressMonitorDialog.run(true, true, new AppCheckoutAndImportJobJob(info));
 				} catch (InvocationTargetException e) {
 					 log.error("project open", e); //$NON-NLS-1$
 				} catch (InterruptedException e) {
@@ -1184,7 +1185,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			CheckoutConflictException {
 		monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_1);
 		printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_1);
-		monitor.worked(10);	 
+		monitor.worked(5);	 
 		String localRepo = "";
 		if(info.getLocalRepo()==null||info.getLocalRepo().equals("")){ //$NON-NLS-1$
 			
@@ -1196,20 +1197,20 @@ public class AppfactoryApplicationListView extends ViewPart {
 		    info.setLocalRepo(localRepo);
 		}
 		
-		monitor.worked(20);	
+		monitor.worked(10);	
 		JgitRepoManager manager = new JgitRepoManager(localRepo,info.getRepoURL());
-		monitor.worked(30);
+		
 		if(!manager.isCloned()){
 			manager.gitClone();
 			if(!"trunk".equals(info.getVersion())){	    //$NON-NLS-1$
 					manager.checkout(info.getVersion());
-					monitor.worked(60);
+					monitor.worked(15);
 					monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_2);
 					printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_2);
 				}
 		}else {
 			manager.checkout(info.getVersion());
-			monitor.worked(60);
+			monitor.worked(15);
 			monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_3);
 			printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_3);
 		}
@@ -1337,12 +1338,12 @@ public class AppfactoryApplicationListView extends ViewPart {
 		@Override
 		public void run(IProgressMonitor monitor) {
 			String operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_1;
-			monitor.beginTask(operationText, 10);
+			monitor.beginTask(operationText, 100);
 			try{
 				checkout(appInfo, monitor);
 				operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_2;
 				monitor.subTask(operationText);
-				monitor.worked(20);
+				monitor.worked(5);
 				
 				IProjectDescription description = ResourcesPlugin
 													.getWorkspace()
@@ -1350,7 +1351,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 				
 				operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
 				monitor.subTask(operationText);
-				monitor.worked(30); 
+				monitor.worked(5); 
 				
 				String name = description.getName();
 				name += (appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
@@ -1359,14 +1360,14 @@ public class AppfactoryApplicationListView extends ViewPart {
 				final IProject project = ResourcesPlugin.getWorkspace()
 						.getRoot().getProject(description.getName());
 				        if(!project.exists()){
-						   project.create(description,monitor);
-						   project.open(monitor);
+						   project.create(description,new SubProgressMonitor(monitor, 10));
+						   project.open(new SubProgressMonitor(monitor, 10));
 				        }	
 				ResourcesPlugin
 				.getWorkspace()
 				.getRoot()
 				.refreshLocal(IResource.DEPTH_INFINITE,
-						monitor);
+						new SubProgressMonitor(monitor, 10));
 				
 				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
 				
@@ -1374,24 +1375,21 @@ public class AppfactoryApplicationListView extends ViewPart {
 				{
 					executeMavenCommands(pomFile, monitor);
 				}
-				monitor.worked(80);
 				
 			}catch(Throwable e){
 				 operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_Faild;
 				 monitor.subTask(operationText);
-				 monitor.worked(80); 
+				 monitor.worked(60); 
 				 printErrorLog(e.getMessage());
 				 log.error("importing failed", e); //$NON-NLS-1$
 			}
-			
-			monitor.worked(100);
 			monitor.done();
 		}
 	}  
 	
 	public boolean executeMavenCommands(File pomFile, IProgressMonitor monitor){
 		
-		monitor.worked(40);
+		monitor.worked(10);
 		
 		try {
 			String operationText = Messages.AppfactoryApplicationListView_executeMavenCommands_text;
@@ -1405,7 +1403,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 				printErrorLog(Messages.AppfactoryApplicationListView_executeMavenCommands_errorlog_text);
 			}
 			
-			monitor.worked(60);
+			monitor.worked(30);
 		} catch (MavenInvocationException e) {
 			
 		}
@@ -1422,9 +1420,10 @@ public class AppfactoryApplicationListView extends ViewPart {
 				
 				printErrorLog(Messages.AppfactoryApplicationListView_executeMavenCommands_errorlog_text2);
 			}
+			monitor.worked(20);
 
 		} catch (MavenInvocationException e) {
-			
+			monitor.worked(50);
 		}
 		
 		return true;

@@ -67,7 +67,9 @@ public class LoginAction {
 		 preferenceStore = Activator.getDefault().getPreferenceStore();
 	//	 authenticator = Authenticator.getInstance();
 		 activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-		 preferenceStore.setDefault(AppFactoryPreferencePage.APP_FACTORY_LOCATION, JagApiProperties.getDomain());
+		 if(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_LOCATION).isEmpty()){
+			 preferenceStore.setDefault(AppFactoryPreferencePage.APP_FACTORY_LOCATION, JagApiProperties.getDomain());
+		 }
 		 setLoginUrl(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_LOCATION));
 		 setUsername(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_USERNAME));
 		 setPassword(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_PASSWORD));
@@ -79,7 +81,11 @@ public class LoginAction {
 		 }
 		 String isCloud = preferenceStore.getString(AppFactoryPreferencePage.APP_CLOUD_LOGIN);
 		 
-		 isAppCloud = (isCloud.equals("true")) ? true : false;
+		 if(isCloud.equals("true") || isCloud.isEmpty()){
+			 isAppCloud = true;
+		 }else if(isCloud.equals("false")){
+			 isAppCloud = false;
+		 }
 	 }
 	
 	public boolean login(boolean isFromDashboad,boolean logoutAndLogin) {
@@ -93,24 +99,8 @@ public class LoginAction {
 			}else{
 				
 				Authenticator.getInstance().setServerURL(JagApiProperties.getLoginUrl());
-				
-				if(isAppCloud())
-				{
-					Map<String, String> tenants = CloudAdminServiceClient
-							.getTenantDomains(new UserPasswordCredentials(getUsername(), getPassword()));
-					
-					if(tenants.size()==1){
-						
-						String userName = getUsername() + "@" + tenants.entrySet().iterator().next().getValue();
-						Authenticator.getInstance().setCredentials(new UserPasswordCredentials(userName
-								, getPassword()));
-					}
-					
-					
-				}else{				
-					Authenticator.getInstance().setCredentials(new UserPasswordCredentials(getUsername()
-							, getPassword()));
-				}
+				Authenticator.getInstance().setCredentials(new UserPasswordCredentials(getUsername()
+						, getPassword()));
 			}
 			if(isCansel){
 				return false;
@@ -126,6 +116,8 @@ public class LoginAction {
 				  
 				  if(isAppCloud()){
 					  preferenceStore.setValue(AppFactoryPreferencePage.APP_CLOUD_LOGIN,"true");
+				  }else{
+					  preferenceStore.setValue(AppFactoryPreferencePage.APP_CLOUD_LOGIN,"false");
 				  }
 			}
 		} catch (Exception e) {

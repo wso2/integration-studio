@@ -184,7 +184,7 @@ public class Authenticator {
 	  
 		@Override
 		public void run(IProgressMonitor monitor) {
-			String operationText="fetching data from AppFactory "+JagApiProperties.getDomain();
+			String operationText="fetching data from App Factory "+JagApiProperties.getDomain();
 			monitor.beginTask(operationText, 100);
 			try{
 				operationText="Sending login request...";

@@ -37,11 +37,13 @@ import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -85,8 +87,11 @@ public class PasswordDialog extends Dialog {
   private ISecurePreferences gitTempNode;
   private Button btnCheckButton;
   private Button btnCloudCheckButton;
+  private Button btnAFCheckButton;
   private ISecurePreferences preferences;
   private LoginAction action;
+  private Label lblHost;
+  private Label lblUser;
   
 /** * Create the dialog. * * @param parentShell 
  * @param loginAction */
@@ -97,6 +102,7 @@ public class PasswordDialog extends Dialog {
 			"org.wso2.developerstudio.appfactory.ui", //$NON-NLS-1$
 			"icons/users.gif")); //$NON-NLS-1$
     this.action = loginAction;
+    this.isAppCloud = true;
      
   }
   
@@ -115,22 +121,24 @@ public class PasswordDialog extends Dialog {
     Composite container = (Composite) super.createDialogArea(parent);
     container.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
     GridLayout gl_container = new GridLayout(2, false);
-    gl_container.marginRight = 5;
-    gl_container.marginLeft = 10;
+    gl_container.marginRight = 15;
+    gl_container.marginLeft = 15;
+    gl_container.marginTop = 35;
+    gl_container.marginBottom = 35;
     container.setLayout(gl_container);
     
-    Label lblNewLabel = new Label(container, SWT.NONE);
-	lblNewLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-	lblNewLabel.setImage(ResourceManager.getPluginImage(
-			"org.wso2.developerstudio.appfactory.ui", //$NON-NLS-1$
-			"icons/appfactory_logo.png")); //$NON-NLS-1$
-	GridData gd_lblNewLabel = new GridData(SWT.LEFT, SWT.TOP, false,
-			true, 2, 1);
-	gd_lblNewLabel.widthHint = 509;
-	gd_lblNewLabel.heightHint = 38;
-	lblNewLabel.setLayoutData(gd_lblNewLabel);
+//    Label lblNewLabel = new Label(container, SWT.NONE);
+//	lblNewLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+//	lblNewLabel.setImage(ResourceManager.getPluginImage(
+//			"org.wso2.developerstudio.appfactory.ui", //$NON-NLS-1$
+//			"icons/appfactory_logo.png")); //$NON-NLS-1$
+//	GridData gd_lblNewLabel = new GridData(SWT.LEFT, SWT.TOP, false,
+//			true, 2, 1);
+//	gd_lblNewLabel.widthHint = 509;
+//	gd_lblNewLabel.heightHint = 38;
+//	lblNewLabel.setLayoutData(gd_lblNewLabel);
 	
-    Label lblHost = new Label(container, SWT.NONE);
+    lblHost = new Label(container, SWT.NONE);
     lblHost.setText(Messages.PasswordDialog_URL);
     lblHost.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
     hostText = new Text(container, SWT.BORDER);
@@ -138,7 +146,7 @@ public class PasswordDialog extends Dialog {
         1, 1));
     hostText.setText(host);
     
-    Label lblUser = new Label(container, SWT.NONE);
+    lblUser = new Label(container, SWT.NONE);
     lblUser.setText(Messages.PasswordDialog_USER);
     lblUser.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
     userText = new Text(container, SWT.BORDER);
@@ -159,30 +167,41 @@ public class PasswordDialog extends Dialog {
         false, 1, 1));
     passwordText.setText(password);
     
-    new Label(container, SWT.NONE);
+    //new Label(container, SWT.NONE);
     
-    btnCloudCheckButton = new Button(container, SWT.CHECK);
+    //btnCloudCheckButton = new Button(container, SWT.CHECK);
+
+    
+    new Label(container, SWT.NONE);
+    Composite composite = new Composite(container, SWT.NULL);
+    composite.setLayout(new RowLayout());
+    composite.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+
+    btnCloudCheckButton = new Button(composite, SWT.RADIO);
+    btnCloudCheckButton.setText("App Cloud");
     btnCloudCheckButton.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-    btnCloudCheckButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
-            1, 1));
     btnCloudCheckButton.addSelectionListener(new SelectionAdapter() {
     	@Override
     	public void widgetSelected(SelectionEvent e) {
-    		 Button button = (Button) e.widget;
-    		 
+    		 Button button = (Button) e.widget;    		 
     		 isAppCloud = button.getSelection();
-    		 
-    		 if(isAppCloud){
-    			 hostText.setText(Messages.APP_CLOUD_URL);
-    			 hostText.setEditable(false);
-    		 }else{
-    			 
-    			 hostText.setEditable(true);
-    		 }	 
+    		 swapLookAndFeel();
     	}
     });
     btnCloudCheckButton.setText("App Cloud");
     btnCloudCheckButton.setSelection(isAppCloud);
+    
+    btnAFCheckButton = new Button(composite, SWT.RADIO);
+    btnAFCheckButton.setText("App Factory");
+    btnAFCheckButton.addSelectionListener(new SelectionAdapter() {
+    	@Override
+    	public void widgetSelected(SelectionEvent e) {
+    		 Button button = (Button) e.widget;    		 
+    		 isAppCloud = !button.getSelection();
+    		 swapLookAndFeel();    		 
+    	}
+    });
+    btnAFCheckButton.setSelection(!isAppCloud);
     
     new Label(container, SWT.NONE);
     
@@ -214,7 +233,7 @@ public class PasswordDialog extends Dialog {
     			} 
     	}
     });
-    btnCheckButton.setText("Save credentials");
+    btnCheckButton.setText("Save connection details");
     
    new Label(container, SWT.NONE);
 
@@ -234,7 +253,25 @@ public class PasswordDialog extends Dialog {
     userText.addFocusListener(adapter);
     passwordText.addFocusListener(adapter);
  
+    swapLookAndFeel();
+    
     return container;
+  }
+  
+  private void swapLookAndFeel(){
+	  
+	  if(isAppCloud){
+		 hostText.setText(Messages.APP_CLOUD_URL);
+		 hostText.setEditable(false);
+		 lblHost.setText(Messages.PasswordDialog_Cloud_URL);
+		 lblUser.setText(Messages.PasswordDialog_Cloud_USER);
+		 
+	 }else{
+		 
+		 hostText.setEditable(true);
+		 lblHost.setText(Messages.PasswordDialog_URL);
+		 lblUser.setText(Messages.PasswordDialog_USER);
+	 }	 
   }
 
   
@@ -332,6 +369,7 @@ public class PasswordDialog extends Dialog {
 				}
 				else if(tenants.size()==1){					
 					Authenticator.getInstance().setSelectedTenant(tenants.entrySet().iterator().next().getValue());
+					val = Authenticator.getInstance().Authenticate(JagApiProperties.getLoginUrl(), credentials); 
 					
 				}else{
 					
@@ -367,7 +405,7 @@ public class PasswordDialog extends Dialog {
 		    } 
 		    resetCredintials(val, oldCredentials, oldServerURL);
 		} catch (Exception e) {
-	        log.error("Login fail", e);
+	        log.error("Login failed", e);
 	        error.setText("Login failed due to system error");
 	        setCursorNormal();
 	        resetCredintials(val, oldCredentials, oldServerURL);
@@ -398,8 +436,8 @@ public class PasswordDialog extends Dialog {
     	
     	ListDialog dialog = new ListDialog(shell);
     	dialog.setContentProvider(new ArrayContentProvider());
-    	dialog.setTitle("Select an orgnization");
-    	dialog.setMessage("Select an orgination and continue");
+    	dialog.setTitle(Messages.TenantSelectionDialog_Title);
+    	dialog.setMessage(Messages.TenantSelectionDialog_Title_2);
     	dialog.setLabelProvider(new ArrayLabelProvider());    	
     	return dialog;
     }

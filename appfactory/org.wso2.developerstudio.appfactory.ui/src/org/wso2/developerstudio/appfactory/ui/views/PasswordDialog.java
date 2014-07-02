@@ -119,12 +119,12 @@ public class PasswordDialog extends Dialog {
   @Override
   protected Control createDialogArea(Composite parent) {
     Composite container = (Composite) super.createDialogArea(parent);
-    container.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+    //container.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
     GridLayout gl_container = new GridLayout(2, false);
-    gl_container.marginRight = 15;
-    gl_container.marginLeft = 15;
-    gl_container.marginTop = 35;
-    gl_container.marginBottom = 35;
+    gl_container.marginRight = 10;
+    gl_container.marginLeft = 10;
+    gl_container.marginTop = 15;
+    gl_container.marginBottom = 5;
     container.setLayout(gl_container);
     
 //    Label lblNewLabel = new Label(container, SWT.NONE);
@@ -137,49 +137,17 @@ public class PasswordDialog extends Dialog {
 //	gd_lblNewLabel.widthHint = 509;
 //	gd_lblNewLabel.heightHint = 38;
 //	lblNewLabel.setLayoutData(gd_lblNewLabel);
-	
-    lblHost = new Label(container, SWT.NONE);
-    lblHost.setText(Messages.PasswordDialog_URL);
-    lblHost.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-    hostText = new Text(container, SWT.BORDER);
-    hostText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
-        1, 1));
-    hostText.setText(host);
     
-    lblUser = new Label(container, SWT.NONE);
-    lblUser.setText(Messages.PasswordDialog_USER);
-    lblUser.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-    userText = new Text(container, SWT.BORDER);
-    userText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
-        1, 1));
-    userText.setText(user);
-
-    Label lblNewLabel1 = new Label(container, SWT.NONE);
-    GridData gd_lblNewLabel1= new GridData(SWT.LEFT, SWT.CENTER, false,
-        false, 1, 1);
-    gd_lblNewLabel1.horizontalIndent = 1;
-    lblNewLabel1.setLayoutData(gd_lblNewLabel1);
-    lblNewLabel1.setText(Messages.PasswordDialog_Password);
-    lblNewLabel1.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-    passwordText = new Text(container, SWT.PASSWORD|SWT.BORDER);
-     
-    passwordText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
-        false, 1, 1));
-    passwordText.setText(password);
+    Label lblTmp =new Label(container, SWT.NONE);
+    lblTmp.setText("Connect to :");
     
-    //new Label(container, SWT.NONE);
-    
-    //btnCloudCheckButton = new Button(container, SWT.CHECK);
-
-    
-    new Label(container, SWT.NONE);
     Composite composite = new Composite(container, SWT.NULL);
-    composite.setLayout(new RowLayout());
-    composite.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
+    composite.setLayout( new RowLayout());
+    composite.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false,
+        1, 1));
 
     btnCloudCheckButton = new Button(composite, SWT.RADIO);
     btnCloudCheckButton.setText("App Cloud");
-    btnCloudCheckButton.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
     btnCloudCheckButton.addSelectionListener(new SelectionAdapter() {
     	@Override
     	public void widgetSelected(SelectionEvent e) {
@@ -188,7 +156,6 @@ public class PasswordDialog extends Dialog {
     		 swapLookAndFeel();
     	}
     });
-    btnCloudCheckButton.setText("App Cloud");
     btnCloudCheckButton.setSelection(isAppCloud);
     
     btnAFCheckButton = new Button(composite, SWT.RADIO);
@@ -203,10 +170,53 @@ public class PasswordDialog extends Dialog {
     });
     btnAFCheckButton.setSelection(!isAppCloud);
     
+	
+    lblHost = new Label(container, SWT.NONE);
+    lblHost.setText(Messages.PasswordDialog_URL);
+    hostText = new Text(container, SWT.BORDER);
+    hostText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+        1, 1));
+    hostText.setText(host);
+    
+    lblUser = new Label(container, SWT.NONE);
+    lblUser.setText(Messages.PasswordDialog_USER);
+    userText = new Text(container, SWT.BORDER);
+    userText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+        1, 1));
+    userText.setText(user);
+
+    Label lblNewLabel1 = new Label(container, SWT.NONE);
+    GridData gd_lblNewLabel1= new GridData(SWT.LEFT, SWT.CENTER, false,
+        false, 1, 1);
+    gd_lblNewLabel1.horizontalIndent = 1;
+    lblNewLabel1.setLayoutData(gd_lblNewLabel1);
+    lblNewLabel1.setText(Messages.PasswordDialog_Password);
+    passwordText = new Text(container, SWT.PASSWORD|SWT.BORDER);
+     
+    passwordText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
+        false, 1, 1));
+    passwordText.setText(password);
+    
+    new Label(container, SWT.NONE);
+
+    error = new Label(container, SWT.NONE);
+    error.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
+            1, 1));
+    error.setForeground(container.getDisplay().getSystemColor(SWT.COLOR_RED));
+    FocusAdapter adapter = new FocusAdapter() {
+    	@Override
+    	public void focusGained(FocusEvent e) {
+    		 error.setText("");
+    		super.focusGained(e);
+    	}
+	};
+    hostText.addFocusListener(adapter);
+    userText.addFocusListener(adapter);
+    passwordText.addFocusListener(adapter);
+    
     new Label(container, SWT.NONE);
     
     btnCheckButton = new Button(container, SWT.CHECK);
-    btnCheckButton.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
     btnCheckButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
             1, 1));
     btnCheckButton.addSelectionListener(new SelectionAdapter() {
@@ -234,24 +244,6 @@ public class PasswordDialog extends Dialog {
     	}
     });
     btnCheckButton.setText("Save connection details");
-    
-   new Label(container, SWT.NONE);
-
-    error = new Label(container, SWT.NONE);
-    error.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-    error.setLayoutData(new GridData(SWT.FILL, SWT.LEFT, true, false,
-            1, 1));
-    error.setForeground(container.getDisplay().getSystemColor(SWT.COLOR_RED));
-    FocusAdapter adapter = new FocusAdapter() {
-    	@Override
-    	public void focusGained(FocusEvent e) {
-    		 error.setText("");
-    		super.focusGained(e);
-    	}
-	};
-    hostText.addFocusListener(adapter);
-    userText.addFocusListener(adapter);
-    passwordText.addFocusListener(adapter);
  
     swapLookAndFeel();
     

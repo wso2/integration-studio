@@ -1408,7 +1408,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			monitor.subTask(operationText);
 			printInfoLog(operationText);
 
-			InvocationResult result = mavenEclipse(pomFile, monitor);
+			InvocationResult result = mavenInstall(pomFile, monitor);
 
 			if (result.getExitCode() != 0) {
 
@@ -1431,7 +1431,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			monitor.subTask(operationText);
 			printInfoLog(operationText);
 
-			InvocationResult result = mavenInstall(pomFile, monitor);
+			InvocationResult result = mavenEclipse(pomFile, monitor);
 
 			if (result.getExitCode() != 0) {
 

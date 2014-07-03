@@ -181,7 +181,7 @@ public class DashboardPage extends FormPage {
 
 		sctnCreate.setExpanded(true);
 		Section sctnDistribution = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnDistribution.setBounds(700, 10, 250, 75);
+		sctnDistribution.setBounds(700, 10, 300, 75);
 		managedForm.getToolkit().paintBordersFor(sctnDistribution);
 		sctnDistribution.setText("Distribution");
 		
@@ -196,7 +196,7 @@ public class DashboardPage extends FormPage {
 		sctnDistribution.setExpanded(true);
 		
 		Section sctnMaven = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnMaven.setBounds(700, 90, 250, 75);
+		sctnMaven.setBounds(700, 90, 300, 75);
 		managedForm.getToolkit().paintBordersFor(sctnMaven);
 		sctnMaven.setText("Maven");
 		
@@ -211,7 +211,7 @@ public class DashboardPage extends FormPage {
 		sctnMaven.setExpanded(true);		
 		
 		Section sctnAddServer = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnAddServer.setBounds(700, 170, 250, 75);
+		sctnAddServer.setBounds(700, 170, 300, 75);
 		managedForm.getToolkit().paintBordersFor(sctnAddServer);
 		sctnAddServer.setText("Add Server");
 		
@@ -226,7 +226,7 @@ public class DashboardPage extends FormPage {
 		sctnAddServer.setExpanded(true);	
 		
 		Section sctnSamples = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnSamples.setBounds(700, 250, 250, 800);
+		sctnSamples.setBounds(700, 250, 300, 800);
 		managedForm.getToolkit().paintBordersFor(sctnSamples);
 		sctnSamples.setText("Samples");
 		

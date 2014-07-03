@@ -47,6 +47,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
@@ -1122,8 +1123,10 @@ public class AppfactoryApplicationListView extends ViewPart {
 				progressMonitorDialog.run(true, true, new AppCheckoutAndImportJobJob(info));
 				} catch (InvocationTargetException e) {
 					 log.error("project open", e); //$NON-NLS-1$
+					 
 				} catch (InterruptedException e) {
 					log.error("project open", e); //$NON-NLS-1$
+					printErrorLog(e.getMessage());
 				}
 				
 			};
@@ -1371,11 +1374,20 @@ public class AppfactoryApplicationListView extends ViewPart {
 				
 				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
 				
+				 if (monitor.isCanceled()){
+				        throw new InterruptedException(Messages.ImportingCancelled_Error);
+				 }
+				
 				if(pomFile.exists())
 				{
 					executeMavenCommands(pomFile, monitor);
 				}
 				
+			}catch(OperationCanceledException e){
+				
+				 printErrorLog(e.getMessage());
+				 log.error("importing failed", e); //$NON-NLS-1$
+			
 			}catch(Throwable e){
 				 operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_Faild;
 				 monitor.subTask(operationText);
@@ -1387,7 +1399,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 		}
 	}  
 	
-	public boolean executeMavenCommands(File pomFile, IProgressMonitor monitor){
+	public boolean executeMavenCommands(File pomFile, IProgressMonitor monitor) throws InterruptedException{
 		
 		monitor.worked(10);
 		
@@ -1395,29 +1407,34 @@ public class AppfactoryApplicationListView extends ViewPart {
 			String operationText = Messages.AppfactoryApplicationListView_executeMavenCommands_text;
 			monitor.subTask(operationText);
 			printInfoLog(operationText);
-			
+
 			InvocationResult result = mavenInstall(pomFile, monitor);
-			
-			if(result.getExitCode()!=0){
-				
+
+			if (result.getExitCode() != 0) {
+
 				printErrorLog(Messages.AppfactoryApplicationListView_executeMavenCommands_errorlog_text);
 			}
-			
+
 			monitor.worked(30);
+
 		} catch (MavenInvocationException e) {
-			
+
 		}
-		
+
+		if (monitor.isCanceled()) {
+			throw new InterruptedException(Messages.ImportingCancelled_Error);
+		}
+
 		try {
-			
+
 			String operationText = Messages.AppfactoryApplicationListView_executeMavenCommands_text2;
 			monitor.subTask(operationText);
 			printInfoLog(operationText);
-			
+
 			InvocationResult result = mavenEclipse(pomFile, monitor);
-			
-			if(result.getExitCode()!=0){
-				
+
+			if (result.getExitCode() != 0) {
+
 				printErrorLog(Messages.AppfactoryApplicationListView_executeMavenCommands_errorlog_text2);
 			}
 			monitor.worked(20);

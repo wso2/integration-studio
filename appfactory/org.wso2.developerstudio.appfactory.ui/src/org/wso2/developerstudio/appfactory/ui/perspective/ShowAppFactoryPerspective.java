@@ -49,7 +49,7 @@ public class ShowAppFactoryPerspective extends Action{
 			}
 	}
 	public String getText() {
-		return "Switch to AppFactory perspective";
+		return "Switch to App Cloud/ App Factory perspective";
 	}
 	public ImageDescriptor getImageDescriptor() {
 		return ImageDescriptor.createFromImage(SWTResourceManager
@@ -57,7 +57,7 @@ public class ShowAppFactoryPerspective extends Action{
 				 
 	}
 	public String getDescription() {
-		return "Switch to AppFactory perspective";
+		return "Switch to App Cloud/ App Factory perspective";
 	}
 	
 	  private void hideDashboards(){

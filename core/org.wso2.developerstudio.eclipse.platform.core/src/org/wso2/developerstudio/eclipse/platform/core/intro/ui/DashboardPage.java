@@ -161,7 +161,7 @@ public class DashboardPage extends FormPage {
 		toolkit.paintBordersFor(body);
 		
 		Section sctnCreate = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnCreate.setBounds(10, 10, 600, 1200);
+		sctnCreate.setBounds(10, 10, 650, 1200);
 		managedForm.getToolkit().paintBordersFor(sctnCreate);
 		sctnCreate.setText("Create");
 		sctnCreate.setExpanded(true);
@@ -181,7 +181,7 @@ public class DashboardPage extends FormPage {
 
 		sctnCreate.setExpanded(true);
 		Section sctnDistribution = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnDistribution.setBounds(650, 10, 300, 75);
+		sctnDistribution.setBounds(700, 10, 300, 75);
 		managedForm.getToolkit().paintBordersFor(sctnDistribution);
 		sctnDistribution.setText("Distribution");
 		
@@ -196,7 +196,7 @@ public class DashboardPage extends FormPage {
 		sctnDistribution.setExpanded(true);
 		
 		Section sctnMaven = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnMaven.setBounds(650, 90, 300, 75);
+		sctnMaven.setBounds(700, 90, 300, 75);
 		managedForm.getToolkit().paintBordersFor(sctnMaven);
 		sctnMaven.setText("Maven");
 		
@@ -211,7 +211,7 @@ public class DashboardPage extends FormPage {
 		sctnMaven.setExpanded(true);		
 		
 		Section sctnAddServer = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnAddServer.setBounds(650, 170, 300, 75);
+		sctnAddServer.setBounds(700, 170, 300, 75);
 		managedForm.getToolkit().paintBordersFor(sctnAddServer);
 		sctnAddServer.setText("Add Server");
 		
@@ -226,7 +226,7 @@ public class DashboardPage extends FormPage {
 		sctnAddServer.setExpanded(true);	
 		
 		Section sctnSamples = managedForm.getToolkit().createSection(managedForm.getForm().getBody(), Section.TWISTIE | Section.TITLE_BAR);
-		sctnSamples.setBounds(650, 250, 300, 800);
+		sctnSamples.setBounds(700, 250, 300, 800);
 		managedForm.getToolkit().paintBordersFor(sctnSamples);
 		sctnSamples.setText("Samples");
 		

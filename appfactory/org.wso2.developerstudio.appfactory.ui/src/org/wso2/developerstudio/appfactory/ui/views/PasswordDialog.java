@@ -200,8 +200,9 @@ public class PasswordDialog extends Dialog {
     new Label(container, SWT.NONE);
 
     error = new Label(container, SWT.NONE);
-    error.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false,
-            1, 1));
+    GridData data = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+    data.heightHint = 35;
+    error.setLayoutData(data);
     error.setForeground(container.getDisplay().getSystemColor(SWT.COLOR_RED));
     FocusAdapter adapter = new FocusAdapter() {
     	@Override
@@ -358,6 +359,7 @@ public class PasswordDialog extends Dialog {
 						.getTenantDomains(new UserPasswordCredentials(getUser(), getPassword()));
 				if(tenants.size()==0){
 					error.setText(Messages.APP_CLOUD_ZERO_TENANTS_WARNING);
+					val = false;
 				}
 				else if(tenants.size()==1){					
 					Authenticator.getInstance().setSelectedTenant(tenants.entrySet().iterator().next().getValue());
@@ -398,7 +400,7 @@ public class PasswordDialog extends Dialog {
 		    resetCredintials(val, oldCredentials, oldServerURL);
 		} catch (Exception e) {
 	        log.error("Login failed", e);
-	        error.setText("Login failed due to system error");
+	        error.setText("Login failed.");
 	        setCursorNormal();
 	        resetCredintials(val, oldCredentials, oldServerURL);
 	        return false;

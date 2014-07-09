@@ -166,7 +166,7 @@ public class EsbObjectSourceEditor {
 //			// Avoid un-necessay refreshing.
 //			if (!getSource().equals(newSource)) {
 //				// Change source editor input.
-			getDocument().setDocumentPartitioner(new StructuredTextPartitioner());
+//			getDocument().setDocumentPartitioner(new StructuredTextPartitioner());
 				getDocument().set(newSource);
 //			}
 //

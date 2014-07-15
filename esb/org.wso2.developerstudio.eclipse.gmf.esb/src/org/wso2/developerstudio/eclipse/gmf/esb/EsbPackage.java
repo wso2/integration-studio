@@ -14654,13 +14654,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CONDITIONAL_ROUTER_MEDIATOR__REVERSE = MEDIATOR__REVERSE;
 
 	/**
-	 * The feature id for the '<em><b>Continue Route</b></em>' attribute.
+	 * The feature id for the '<em><b>Continue After Route</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE = MEDIATOR_FEATURE_COUNT + 0;
+	int CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE = MEDIATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Conditional Route Branches</b></em>' containment reference list.
@@ -32925,15 +32925,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EClass getConditionalRouterMediator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueRoute <em>Continue Route</em>}'.
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute <em>Continue After Route</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Continue Route</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueRoute()
+	 * @return the meta object for the attribute '<em>Continue After Route</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#isContinueAfterRoute()
 	 * @see #getConditionalRouterMediator()
 	 * @generated
 	 */
-	EAttribute getConditionalRouterMediator_ContinueRoute();
+	EAttribute getConditionalRouterMediator_ContinueAfterRoute();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator#getConditionalRouteBranches <em>Conditional Route Branches</em>}'.
@@ -44563,12 +44563,12 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EClass CONDITIONAL_ROUTER_MEDIATOR = eINSTANCE.getConditionalRouterMediator();
 
 		/**
-		 * The meta object literal for the '<em><b>Continue Route</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Continue After Route</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE = eINSTANCE.getConditionalRouterMediator_ContinueRoute();
+		EAttribute CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE = eINSTANCE.getConditionalRouterMediator_ContinueAfterRoute();
 
 		/**
 		 * The meta object literal for the '<em><b>Conditional Route Branches</b></em>' containment reference list feature.

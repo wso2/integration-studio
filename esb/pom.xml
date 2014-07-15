@@ -4,7 +4,7 @@
     <parent>
     	<groupId>org.wso2.eclipse</groupId>
     	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>4.0.0-SNAPSHOT</version>
+    	<version>3.7.0</version>
     </parent>
 	<groupId>org.wso2.developerstudio</groupId>
 	<artifactId>esb-tool-parent</artifactId>
@@ -79,12 +79,12 @@
     	</dependencies>
     </dependencyManagement>
     <properties>
-        <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>                            
-        <esb.tools.version>4.0.0-SNAPSHOT</esb.tools.version>  
-	    <capp.tools.version>4.0.0-SNAPSHOT</capp.tools.version>  
-        <common.libraries.version>4.0.0-SNAPSHOT</common.libraries.version>   	 
-        <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>  
-        <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>                      	                             
+        <core.plugins.version>3.7.0</core.plugins.version>                            
+        <esb.tools.version>3.7.0</esb.tools.version>  
+	    <capp.tools.version>3.7.0</capp.tools.version>  
+        <common.libraries.version>3.7.0</common.libraries.version>   	 
+        <logging.tools.version>3.7.0</logging.tools.version>  
+        <common.utils.version>3.7.0</common.utils.version>                      	                             
     </properties-->
 </project>
 

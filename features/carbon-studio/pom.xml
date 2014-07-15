@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.wso2.eclipse</groupId>
         <artifactId>wso2-eclipse-tools-features</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.7.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.developerstudio</groupId>
@@ -80,11 +80,11 @@
         </plugins>
     </build>
 	<!--properties>
-        <greg.feature.version>4.0.0-SNAPSHOT</greg.feature.version>
-        <bps.feature.version>4.0.0-SNAPSHOT</bps.feature.version>
-        <wsas.feature.version>4.0.0-SNAPSHOT</wsas.feature.version>
-        <ds.feature.version>4.0.0-SNAPSHOT</ds.feature.version>
-        <capp.feature.version>4.0.0-SNAPSHOT</capp.feature.version>
-        <carbon.tools.feature.version>4.0.0-SNAPSHOT</carbon.tools.feature.version>
+        <greg.feature.version>3.7.0</greg.feature.version>
+        <bps.feature.version>3.7.0</bps.feature.version>
+        <wsas.feature.version>3.7.0</wsas.feature.version>
+        <ds.feature.version>3.7.0</ds.feature.version>
+        <capp.feature.version>3.7.0</capp.feature.version>
+        <carbon.tools.feature.version>3.7.0</carbon.tools.feature.version>
 	</properties-->
 </project>

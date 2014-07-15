@@ -4,7 +4,7 @@
     <parent>
     	<groupId>org.wso2.eclipse</groupId>
     	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>4.0.0-SNAPSHOT</version>
+    	<version>3.7.0</version>
     </parent>         
 	<groupId>org.wso2.developerstudio</groupId>
 	<artifactId>ds-tool-parent</artifactId>
@@ -59,11 +59,11 @@
     	</repository>
     </repositories>
     <properties>
-        <capp.tools.version>4.0.0-SNAPSHOT</capp.tools.version>    
-        <ds.tools.version>4.0.0-SNAPSHOT</ds.tools.version>  
-        <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>                	                          
-        <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>  
-    	<common.libraries.version>4.0.0-SNAPSHOT</common.libraries.version>       
+        <capp.tools.version>3.7.0</capp.tools.version>    
+        <ds.tools.version>3.7.0</ds.tools.version>  
+        <logging.tools.version>3.7.0</logging.tools.version>                	                          
+        <common.utils.version>3.7.0</common.utils.version>  
+    	<common.libraries.version>3.7.0</common.libraries.version>       
     </properties-->
 </project>
 

@@ -209,7 +209,10 @@ public class RegistryKeyPropertyEditorDialog extends Dialog {
 		fd_link.top = new FormAttachment(0, -2);
 		fd_link.bottom = new FormAttachment(0, 15);
 		link.setLayoutData(fd_link);
-		link.setText("Type the key or specify from <a>registry</a>, <a>workspace</a> or <a>local entries</a>");
+
+		// Fixing TOOLS-2553
+		// link.setText("Type the key or specify from <a>registry</a>, <a>workspace</a> or <a>local entries</a>");
+		link.setText("Type the key or specify from <a>registry</a> or <a>workspace</a>");
 		
 		Link link_1 = new Link(grpPropertyKey, SWT.NONE);
 		link_1.addSelectionListener(new SelectionAdapter() {

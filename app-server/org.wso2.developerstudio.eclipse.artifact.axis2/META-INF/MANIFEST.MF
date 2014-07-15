@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Axis2
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.axis2;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.7.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.axis2.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.eclipse.ui,
@@ -14,8 +14,8 @@ Bundle-ActivationPolicy: lazy
 Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  org.apache.axiom.om,
  org.apache.axiom.om.impl.builder,
- org.apache.maven.model;version="[2.2.1,3.0.0)",
- org.apache.maven.project;version="[2.2.1,3.0.0)",
+ org.apache.maven.model,
+ org.apache.maven.project,
  org.eclipse.core.resources,
  org.eclipse.emf.common.ui.dialogs,
  org.eclipse.jdt.core,

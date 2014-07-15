@@ -8,7 +8,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -17,6 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallMediatorEndpointOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
@@ -98,7 +98,7 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
 		/*
 		 * Avoid connecting an endpoint to an element other than Send mediator.  
 		 */
-		if (!(sourceEnd instanceof SendMediatorEndpointOutputConnector) && !(sourceEnd instanceof CallMediatorEndpointOutputConnector)
+		if (!(sourceEnd instanceof SendMediatorEndpointOutputConnector) && !(sourceEnd instanceof CallMediatorEndpointOutputConnector) && !(sourceEnd instanceof CloneMediatorTargetOutputConnector)
 				&& !(sourceEnd instanceof ComplexEndpointsOutputConnector)
 				&& this.eContainer instanceof EndPoint) {
 			return false;

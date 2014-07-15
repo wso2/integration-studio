@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.bpel.apache.ode.deploy.model; singleton:=true
+Bundle-SymbolicName: org.eclipse.bpel.apache.ode.deploy.model;singleton:=true
 Bundle-Version: 1.0.3.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -10,7 +10,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.bpel.apache.ode.deploy.model.dd,
  org.eclipse.bpel.apache.ode.deploy.model.dd.impl,
  org.eclipse.bpel.apache.ode.deploy.model.dd.util
-Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="[2.4.0,3.0.0)";visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport;bundle-version="[2.4.0,3.0.0)",
  javax.wsdl;bundle-version="[1.5.0,1.6.2]",
  org.eclipse.bpel.model;bundle-version="1.0.1",
  org.eclipse.wst.wsdl;bundle-version="[1.1.200,2.0.0)",

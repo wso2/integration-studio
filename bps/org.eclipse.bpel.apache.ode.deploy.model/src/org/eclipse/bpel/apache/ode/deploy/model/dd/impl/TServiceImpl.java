@@ -13,6 +13,7 @@ package org.eclipse.bpel.apache.ode.deploy.model.dd.impl;
 
 import javax.xml.namespace.QName;
 
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TService;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TServiceImpl#getAny <em>Any</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TServiceImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TServiceImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TServiceImpl#getEndpoint <em>Endpoint</em>}</li>
  * </ul>
  * </p>
  *
@@ -94,6 +96,16 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * @ordered
 	 */
 	protected String port = PORT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getEndpoint() <em>Endpoint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEndpoint()
+	 * @generated
+	 * @ordered
+	 */
+	protected TEndPoint endpoint;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,11 +185,56 @@ public class TServiceImpl extends EObjectImpl implements TService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TEndPoint getEndpoint() {
+		return endpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetEndpoint(TEndPoint newEndpoint, NotificationChain msgs) {
+		TEndPoint oldEndpoint = endpoint;
+		endpoint = newEndpoint;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ddPackage.TSERVICE__ENDPOINT, oldEndpoint, newEndpoint);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEndpoint(TEndPoint newEndpoint) {
+		if (newEndpoint != endpoint) {
+			NotificationChain msgs = null;
+			if (endpoint != null)
+				msgs = ((InternalEObject)endpoint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ddPackage.TSERVICE__ENDPOINT, null, msgs);
+			if (newEndpoint != null)
+				msgs = ((InternalEObject)newEndpoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ddPackage.TSERVICE__ENDPOINT, null, msgs);
+			msgs = basicSetEndpoint(newEndpoint, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TSERVICE__ENDPOINT, newEndpoint, newEndpoint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ddPackage.TSERVICE__ANY:
 				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
+			case ddPackage.TSERVICE__ENDPOINT:
+				return basicSetEndpoint(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -197,6 +254,8 @@ public class TServiceImpl extends EObjectImpl implements TService {
 				return getName();
 			case ddPackage.TSERVICE__PORT:
 				return getPort();
+			case ddPackage.TSERVICE__ENDPOINT:
+				return getEndpoint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -217,6 +276,9 @@ public class TServiceImpl extends EObjectImpl implements TService {
 				return;
 			case ddPackage.TSERVICE__PORT:
 				setPort((String)newValue);
+				return;
+			case ddPackage.TSERVICE__ENDPOINT:
+				setEndpoint((TEndPoint)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -239,6 +301,9 @@ public class TServiceImpl extends EObjectImpl implements TService {
 			case ddPackage.TSERVICE__PORT:
 				setPort(PORT_EDEFAULT);
 				return;
+			case ddPackage.TSERVICE__ENDPOINT:
+				setEndpoint((TEndPoint)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -257,6 +322,8 @@ public class TServiceImpl extends EObjectImpl implements TService {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ddPackage.TSERVICE__PORT:
 				return PORT_EDEFAULT == null ? port != null : !PORT_EDEFAULT.equals(port);
+			case ddPackage.TSERVICE__ENDPOINT:
+				return endpoint != null;
 		}
 		return super.eIsSet(featureID);
 	}

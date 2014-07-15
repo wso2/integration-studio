@@ -20,7 +20,7 @@ public class JagApiProperties {
 	
 	
 	/*URLS*/  
-	private static  String domain= "https://appfactory.cloudpreview.wso2.com";
+	private static  String domain= "https://apps.cloud.wso2.com";
 	
 	private static final String APP_INFO_URL_SFX = "/appmgt/site/blocks/application/get/ajax/list.jag";
 	private static final String LOGIN_URL_SFX  = "/appmgt/site/blocks/user/login/ajax/login.jag";
@@ -43,7 +43,7 @@ public class JagApiProperties {
 	public static final String App_BUILD_ACTION ="createArtifact";
 	public static final String App_USERS_ROLES_ACTION ="getUsersOfApplication";
 	public static final String App_DB_INFO_ACTION = "getDbUserTemplateInfoForStages";
-	public static final String App_DS_INFO_ACTION = "getDataSourceInfoUrl";
+	public static final String App_DS_INFO_ACTION = "getDatasources";
 	
 	public static String getDomain() {
 		return domain;

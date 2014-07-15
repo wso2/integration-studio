@@ -67,6 +67,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	private ESBProjectArtifact esbProjectArtifact;
 	private IProject esbProject;
 	private List<File> fileLst = new ArrayList<File>();
+
+	private String version ="1.0.0";
 	
 	public SynapseAPICreationWizard() {
 		artifactModel = new APIArtifactModel();
@@ -188,7 +190,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 					String relativePath = FileUtils.getRelativePath(importLocation.getProject()
 							.getLocation().toFile(), new File(
 							importLocation.getLocation().toFile(), name + ".xml"));
-					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, "1.0.0",
+					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, version,
 							relativePath));
 				}
 			} 
@@ -202,7 +204,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 				String relativePath = FileUtils.getRelativePath(importLocation.getProject()
 						.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
 						name + ".xml"));
-				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, "1.0.0",
+				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, version,
 						relativePath));
 			}
 		}
@@ -227,7 +229,8 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	public void updatePom() throws Exception{
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
+		 version  = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-esb-api-plugin",
 				MavenConstants.WSO2_ESB_API_VERSION);

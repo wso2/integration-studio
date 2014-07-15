@@ -575,7 +575,7 @@ public class ElementFactory {
 		MyBPELWriter writer = getWriter(from);
 		Node node = null;
 		Element literal = writer.createBPELElement("literal"); //$NON-NLS-1$
-		literal.setAttribute("xml:space", "preserve"); //$NON-NLS-1$ //$NON-NLS-2$
+		//literal.setAttribute("xml:space", "preserve"); //$NON-NLS-1$ //$NON-NLS-2$
 
 		if (Boolean.TRUE.equals(from.getUnsafeLiteral())) {
 			node = BPELUtils.convertStringToNode(from, text, writer

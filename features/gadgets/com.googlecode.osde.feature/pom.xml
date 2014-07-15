@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.wso2.developerstudio</groupId>
         <artifactId>wso2-eclipse-carbonstudio-gadget-feature</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.7.0</version>
     </parent>
     <groupId>com.googlecode.wso2</groupId>
     <modelVersion>4.0.0</modelVersion>

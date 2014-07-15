@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wso2.eclipse</groupId>
         <artifactId>wso2-developer-studio-eclipse-distributions-parent</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.7.0</version>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>developer-studio-eclipse-jee-kepler-win64-x86_64</artifactId>
@@ -72,7 +72,7 @@
                                 </artifactItem-->
                                 <artifactItem>
                                     <groupId>org.eclipse</groupId>
-                                    <artifactId>eclipse-jee-kepler-win32-x86_64</artifactId>
+                                    <artifactId>eclipse-jee-kepler-win64-x86_64</artifactId>
                                     <version>4.3.2</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
@@ -325,11 +325,9 @@
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.appserver.artifact.feature.feature.group" />
 						<arg value="-installIU" />
-						<arg value="org.eclipse.bpel.feature.feature.group" />
+						<arg value="org.wso2.developerstudio.eclipse.bpel.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.bpel.artifact.feature.feature.group" />
-						<arg value="-installIU" />
-                  <arg value="org.wso2.developerstudio.eclipse.bps.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.registry.feature.feature.group" />
 						<arg value="-installIU" />
@@ -350,8 +348,8 @@
 						<arg value="org.wso2.developerstudio.eclipse.carbon.uibundle.artifact.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.capp.framework.feature.feature.group" />
-						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.bpel.connector.feature.feature.group" />
+						<!--arg value="-installIU" />
+						<arg value="org.wso2.developerstudio.eclipse.bpel.connector.feature.feature.group" /-->
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.registry.connector.feature.feature.group" />
 						<arg value="-installIU" />
@@ -396,8 +394,8 @@
 						<arg value="org.wso2.soapui.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.tcpmon.feature.feature.group" />
-						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group" />
+						<!--arg value="-installIU" />
+						<arg value="org.wso2.developerstudio.eclipse.qos.artifact.feature.feature.group" /-->
 					</java>
 					</tasks>
 				</configuration>

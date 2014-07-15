@@ -109,12 +109,14 @@
 			point="org.eclipse.ui.navigator.viewer">
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.developerstudio.eclipse.esb.project.filter.graphical*" />	
+				<contentExtension pattern="org.wso2.developerstudio.eclipse.esb.project.filter.graphical*" />
+				<contentExtension pattern="org.wso2.ui.navigator.linkHelper.EsbExplorer"/>	
 			</includes>
 		</viewerContentBinding>
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.developerstudio.eclipse.esb.project.filter.graphical*" />	
+				<contentExtension pattern="org.wso2.developerstudio.eclipse.esb.project.filter.graphical*" />
+				<contentExtension pattern="org.wso2.ui.navigator.linkHelper.EsbExplorer"/>	
 			</includes>
 		</viewerContentBinding>
 	</extension>
@@ -161,5 +163,27 @@
 				</enablement>
 	          </objectContribution>     
 	 </extension>
-   
+	 
+	 <extension point="org.eclipse.ui.navigator.linkHelper">
+       	<linkHelper
+             class="org.wso2.developerstudio.eclipse.esb.project.esblinkhelper.ESBExplorerLinkHelper"
+             id="org.wso2.ui.navigator.linkHelper.EsbExplorer">
+      			<selectionEnablement>
+     				<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
+             				</test>
+         			</adapt>
+      			</selectionEnablement>
+      			<editorInputEnablement>
+        				<adapt type="org.eclipse.core.resources.IResource">
+             				<test
+                   				property="org.eclipse.core.resources.projectNature"
+                   				value="org.wso2.developerstudio.eclipse.esb.project.nature">
+             				</test>
+         				</adapt>
+      			</editorInputEnablement>
+   		</linkHelper>
+    </extension>
 </plugin>

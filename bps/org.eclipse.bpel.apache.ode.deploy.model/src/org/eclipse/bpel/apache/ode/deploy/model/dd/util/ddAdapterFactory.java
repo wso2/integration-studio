@@ -129,6 +129,18 @@ public class ddAdapterFactory extends AdapterFactoryImpl {
 				return createTServiceAdapter();
 			}
 			@Override
+			public Adapter caseTBamServerProfiles(TBamServerProfiles object) {
+				return createTBamServerProfilesAdapter();
+			}
+			@Override
+			public Adapter caseTProfile(TProfile object) {
+				return createTProfileAdapter();
+			}
+			@Override
+			public Adapter caseTEndPoint(TEndPoint object) {
+				return createTEndPointAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -327,6 +339,48 @@ public class ddAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTServiceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles <em>TBam Server Profiles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles
+	 * @generated
+	 */
+	public Adapter createTBamServerProfilesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile <em>TProfile</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TProfile
+	 * @generated
+	 */
+	public Adapter createTProfileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint <em>TEnd Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.TEndPoint
+	 * @generated
+	 */
+	public Adapter createTEndPointAdapter() {
 		return null;
 	}
 

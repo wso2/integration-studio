@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Carbon Application Deployment Monitor
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.capp.server
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.7.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.capp.server.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,

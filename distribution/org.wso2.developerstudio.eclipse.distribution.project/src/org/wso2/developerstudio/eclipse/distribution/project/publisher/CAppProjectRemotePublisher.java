@@ -51,15 +51,18 @@ public class CAppProjectRemotePublisher implements ICarbonServerModulePublisher{
 			File deployLocation) throws Exception {
 		URL serverURL = CarbonServerManager.getServerURL(server);
 		ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
-		CAppDeployer cappDeployer = new CAppDeployer();
-//		Artifact superArtifact = CAppEnvironment.getcAppManager().getSuperArtifact(project);
+		
+		String cappName =  project.getName();
+		
+		/*CAppDeployer cappDeployer = new CAppDeployer();
+		Artifact superArtifact = CAppEnvironment.getcAppManager().getSuperArtifact(project);
 		CarExportHandler handler=new CarExportHandler();
 		List<IResource> exportArtifact = handler.exportArtifact(project);
-		File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();
+		File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();*/
 		CAppDeployer.unDeployCAR(serverURL.toString(), 
 								 serverCredentials.getUsername(), 
 								 serverCredentials.getPassword(), 
-								 carFile.getName().substring(0, carFile.getName().length()-4));
+								 cappName);
 		
 	}
 

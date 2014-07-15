@@ -4,7 +4,7 @@
     <parent>
     	<groupId>org.wso2.eclipse</groupId>
     	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>4.0.0-SNAPSHOT</version>
+    	<version>3.7.0</version>
     </parent>
 	<groupId>org.wso2.developerstudio</groupId>
 	<artifactId>wso2-connector-tools-parent</artifactId>
@@ -51,14 +51,14 @@
     </dependencyManagement>
 
     <properties>
-        <common.libraries.version>4.0.0-SNAPSHOT</common.libraries.version>   
-        <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>        
-        <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>
+        <common.libraries.version>3.7.0</common.libraries.version>   
+        <logging.tools.version>3.7.0</logging.tools.version>        
+        <common.utils.version>3.7.0</common.utils.version>
         <bps.export.tool.version>1.2.1</bps.export.tool.version>
         <bps.tools.version>0.5.0.wso2v1</bps.tools.version>
-        <greg.tools.version>4.0.0-SNAPSHOT</greg.tools.version>
-        <capp.tools.version>4.0.0-SNAPSHOT</capp.tools.version>                            
-        <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>                
+        <greg.tools.version>3.7.0</greg.tools.version>
+        <capp.tools.version>3.7.0</capp.tools.version>                            
+        <core.plugins.version>3.7.0</core.plugins.version>                
     </properties-->
 </project>
 

@@ -26,7 +26,7 @@
     <parent>
     	<groupId>org.wso2.eclipse</groupId>
     	<artifactId>wso2-eclipse-common</artifactId>
-    	<version>4.0.0-SNAPSHOT</version>
+    	<version>3.7.0</version>
     </parent>
     <artifactId>org.wso2.developerstudio.eclipse.utils</artifactId>
   <packaging>eclipse-plugin</packaging>

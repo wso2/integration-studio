@@ -38,27 +38,50 @@ public class GeneralProjectNature extends AbstractWSO2ProjectNature {
 			//Adding maven exec plugin entry
 			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.2", true);
 	
-			PluginExecution pluginExecution = new PluginExecution();
-			pluginExecution.addGoal("exec");
-			pluginExecution.setPhase("install");
-
-			Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
-			Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, "executable");
-			executableNode.setValue("mvn");
-			Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode, "workingDirectory");
-			workingDirectoryNode.setValue("${project.build.directory}");
-			Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, "arguments");
-			Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, "argument");
-			cleanArgumentNode.setValue("clean");
-			Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, "argument");
-			installArgumentNode.setValue("install");
-			Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, "argument");
-			testSkipArgumentNode.setValue("-Dmaven.test.skip=${maven.test.skip}");
-			
-			pluginExecution.setConfiguration(configurationNode);
-			
-			plugin.addExecution(pluginExecution);
-			
+			{
+				PluginExecution pluginExecution = new PluginExecution();
+				pluginExecution.setId("install");
+				pluginExecution.addGoal("exec");
+				pluginExecution.setPhase("install");
+	
+				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, "executable");
+				executableNode.setValue("mvn");
+				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode, "workingDirectory");
+				workingDirectoryNode.setValue("${project.build.directory}");
+				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, "arguments");
+				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, "argument");
+				cleanArgumentNode.setValue("clean");
+				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, "argument");
+				installArgumentNode.setValue("install");
+				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, "argument");
+				testSkipArgumentNode.setValue("-Dmaven.test.skip=${maven.test.skip}");
+				
+				pluginExecution.setConfiguration(configurationNode);
+				
+				plugin.addExecution(pluginExecution);
+			}
+			{
+				PluginExecution pluginExecution = new PluginExecution();
+				pluginExecution.setId("deploy");
+				pluginExecution.addGoal("exec");
+				pluginExecution.setPhase("deploy");
+	
+				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, "executable");
+				executableNode.setValue("mvn");
+				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode, "workingDirectory");
+				workingDirectoryNode.setValue("${project.build.directory}");
+				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, "arguments");
+				Xpp3Dom deployArgumentNode = MavenUtils.createXpp3Node(argumentsNode, "argument");
+				deployArgumentNode.setValue("deploy");
+				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, "argument");
+				testSkipArgumentNode.setValue("-Dmaven.test.skip=${maven.test.skip}");
+				
+				pluginExecution.setConfiguration(configurationNode);
+				
+				plugin.addExecution(pluginExecution);
+			}
 			MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 			
 		} catch (Exception e) {

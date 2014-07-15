@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.wso2.eclipse</groupId>
         <artifactId>wso2-eclipse-tools-features</artifactId>
-        <version>4.0.0-SNAPSHOT</version>
+        <version>3.7.0</version>
     </parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>wso2-developer-studio</artifactId>
@@ -119,7 +119,7 @@
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature:${brs.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.soapui.feature:${soapui.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.tcpmon.feature:${tcpmon.feature.version}</featureArtifactDef>
-						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature:${qos.feature.version}</featureArtifactDef>
+						<!--featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature:${qos.feature.version}</featureArtifactDef-->
             			</featureArtifacts>
 				        <bundleArtifacts>
 						<bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.logging:${common.logging.version}</bundleArtifactDef>
@@ -261,7 +261,7 @@
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.brs.artifact.feature:${brs.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.soapui.feature:${soapui.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.tcpmon.feature:${tcpmon.feature.version}</featureArtifactDef>
-							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature:${qos.feature.version}</featureArtifactDef>
+							<!--featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.qos.artifact.feature:${qos.feature.version}</featureArtifactDef-->
 		                            			</features>
 							</category>							    
 								    <!--category>

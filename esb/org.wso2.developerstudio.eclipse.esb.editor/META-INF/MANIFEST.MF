@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.esb.editor;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.7.0
 Bundle-ClassPath: lib/org.eclipse.wb.swt.layout.grouplayout_1.0.0.r36x201106161145.jar,
  lib/org.eclipse.wb.swt_1.0.0.r36x201106161135.jar,
  lib/org.eclipse.wb.swt.widgets.baseline_1.0.0.r36x201106161140.jar,
@@ -27,11 +27,11 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.commons.io;version="2.0.0.wso2v1",
  org.apache.commons.lang,
- org.apache.maven.model;version="[2.2.1,3.0.0)",
- org.apache.maven.model.io.xpp3;version="[2.2.1,3.0.0)",
- org.apache.maven.project;version="[2.2.1,3.0.0)",
+ org.apache.maven.model,
+ org.apache.maven.model.io.xpp3,
+ org.apache.maven.project,
  org.apache.xml.serialize,
- org.codehaus.plexus.util.xml;version="2.0.1",
+ org.codehaus.plexus.util.xml,
  org.eclipse.core.filesystem,
  org.eclipse.emf.query.conditions.eobjects,
  org.eclipse.emf.query.statements,

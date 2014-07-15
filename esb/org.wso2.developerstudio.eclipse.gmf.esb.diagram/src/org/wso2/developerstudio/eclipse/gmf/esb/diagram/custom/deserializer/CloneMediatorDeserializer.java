@@ -17,17 +17,39 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Collection;
-
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_KEY;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__CLONE_ID;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__CONTINUE_PARENT;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__SEQUENTIAL_MEDIATION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_MEDIATOR__TARGETS;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_TARGET__SOAP_ACTION;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.CLONE_TARGET__TO_ADDRESS;
+import org.apache.synapse.endpoints.AbstractEndpoint;
+import org.apache.synapse.endpoints.AddressEndpoint;
+import org.apache.synapse.endpoints.DefaultEndpoint;
+import org.apache.synapse.endpoints.FailoverEndpoint;
+import org.apache.synapse.endpoints.HTTPEndpoint;
+import org.apache.synapse.endpoints.IndirectEndpoint;
+import org.apache.synapse.endpoints.LoadbalanceEndpoint;
+import org.apache.synapse.endpoints.RecipientListEndpoint;
+import org.apache.synapse.endpoints.TemplateEndpoint;
+import org.apache.synapse.endpoints.WSDLEndpoint;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneTarget;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneTargetContainer;
+import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.TargetEndpointType;
@@ -35,7 +57,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.CloneMediatorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.CloneMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
+
 
 
 public class CloneMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, CloneMediator> {
@@ -98,17 +120,95 @@ public class CloneMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 				regkey.setKeyValue(target.getSequenceRef());
 				executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__SEQUENCE_KEY, regkey);
 			}
-			
-			if(target.getEndpoint() != null){
-				executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.ANONYMOUS);
-				//TODO how to proceed ?
-				
-			}else if (target.getEndpointRef() != null && target.getEndpointRef().equals("")) {
-				executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.REGISTRY_REFERENCE);
-				RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-				regkey.setKeyValue(target.getEndpointRef());
-				executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__SEQUENCE_KEY, regkey);
+			else {
+				executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__SEQUENCE_TYPE, TargetSequenceType.NONE);
+				refreshEditPartMap();
 			}
+			
+			 if(target.getEndpoint() != null){
+					executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.ANONYMOUS);
+				
+					    IGraphicalEditPart compartment = (IGraphicalEditPart) getEditpart(cloneTargetContainer.getMediatorFlow()).getChildren().get(0);
+
+						@SuppressWarnings("rawtypes")
+						IEsbNodeDeserializer deserializer = EsbDeserializerRegistry.getInstance().getDeserializer(target.getEndpoint());
+						
+										
+						
+					if(target.getEndpoint() instanceof FailoverEndpoint){
+						@SuppressWarnings("unchecked")
+						EndPoint visualEndPoint = (EndPoint) deserializer.createNode((IGraphicalEditPart) getEditpart(cloneTargetContainer.getMediatorFlow()).getChildren().get(0), target.getEndpoint());
+						FailoverEndpointDeserializer epDeserializer = new FailoverEndpointDeserializer();
+						epDeserializer.createNode(compartment, ((AbstractEndpoint)target.getEndpoint()));
+						executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT, visualEndPoint);
+
+					}
+					else if (target.getEndpoint() instanceof LoadbalanceEndpoint){
+						@SuppressWarnings("unchecked")
+						EndPoint visualEndPoint = (EndPoint) deserializer.createNode((IGraphicalEditPart) getEditpart(cloneTargetContainer.getMediatorFlow()).getChildren().get(0), target.getEndpoint());
+						LoadBalanceEndpointDeserializer epDeserializer = new LoadBalanceEndpointDeserializer();
+						epDeserializer.createNode(compartment, ((AbstractEndpoint)target.getEndpoint()));
+						executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT, visualEndPoint);
+
+					}
+					else if (target.getEndpoint() instanceof RecipientListEndpoint){
+						@SuppressWarnings("unchecked")
+						EndPoint visualEndPoint = (EndPoint) deserializer.createNode((IGraphicalEditPart) getEditpart(cloneTargetContainer.getMediatorFlow()).getChildren().get(0), target.getEndpoint());
+						RecipientListEndpointDeserializer epDeserializer = new RecipientListEndpointDeserializer();
+						epDeserializer.createNode(compartment, ((AbstractEndpoint)target.getEndpoint()));
+						executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT, visualEndPoint);
+
+					}
+					else {
+						
+						@SuppressWarnings("unchecked")
+						AbstractEndPoint visualEndPoint = (AbstractEndPoint) deserializer.createNode((IGraphicalEditPart) getEditpart(cloneTargetContainer.getMediatorFlow()).getChildren().get(0), target.getEndpoint());
+						if(target.getEndpoint() instanceof AddressEndpoint){
+							AddressEndpointDeserializer epDeserializer = new AddressEndpointDeserializer();
+							epDeserializer.createNode(compartment, ((AbstractEndpoint)target.getEndpoint()));
+							
+						}else if(target.getEndpoint() instanceof DefaultEndpoint){
+							DefaultEndpointDeserializer epDeserializer = new DefaultEndpointDeserializer();
+							epDeserializer.createNode(compartment, ((AbstractEndpoint)target.getEndpoint()));
+							
+						}
+
+						else if(target.getEndpoint() instanceof HTTPEndpoint){
+							HTTPEndpointDeserializer epDeserializer = new HTTPEndpointDeserializer();
+							epDeserializer.createNode(compartment, ((AbstractEndpoint)target.getEndpoint()));
+							
+						}
+						else if(target.getEndpoint() instanceof TemplateEndpoint){
+							TemplateEndpointDeserializer epDeserializer = new TemplateEndpointDeserializer();
+							epDeserializer.createNode(compartment, ((AbstractEndpoint)target.getEndpoint()));
+							
+						}
+						else if(target.getEndpoint() instanceof WSDLEndpoint){
+							WSDLEndpointDeserializer epDeserializer = new WSDLEndpointDeserializer();
+							epDeserializer.createNode(compartment, ((AbstractEndpoint)target.getEndpoint()));
+							
+						}
+						else if(target.getEndpoint() instanceof IndirectEndpoint){
+							IndirectEndpointDeserializer epDeserializer = new IndirectEndpointDeserializer();
+							epDeserializer.createNode(compartment, ((IndirectEndpoint)target.getEndpoint()));
+							
+						}
+						executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT, visualEndPoint);
+					
+					}
+					
+					
+				}else if (target.getEndpointRef() != null && !target.getEndpointRef().equals("")) {
+					executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.REGISTRY_REFERENCE);
+					RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+					regkey.setKeyValue(target.getEndpointRef());
+					executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_KEY, regkey);
+				} 
+				else {
+					executeSetValueCommand(visualTarget,ABSTRACT_COMMON_TARGET__ENDPOINT_TYPE, TargetEndpointType.NONE);
+					refreshEditPartMap();
+				}
+				
 		}
 		EditPart editpart = getEditpart(visualClone);
 		if (editpart instanceof CloneMediatorEditPart) {

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.eclipse.php.ui; singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.0.0
 Bundle-Name: %Bundle-Name.1
 Bundle-Activator: org.eclipse.php.internal.ui.PHPUiPlugin
 Bundle-Localization: plugin
@@ -114,9 +114,9 @@ Export-Package: org.eclipse.php.internal.ui;x-internal:=true,
 Bundle-Vendor: %Bundle-Vendor.1
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.apache.commons.io,
- org.apache.maven.model;version="2.2.1",
- org.apache.maven.project;version="2.2.1",
- org.codehaus.plexus.util.xml;version="2.0.1",
+ org.apache.maven.model,
+ org.apache.maven.project,
+ org.codehaus.plexus.util.xml,
  org.eclipse.core.expressions,
  org.eclipse.php.internal.ui.preferences,
  org.wso2.developerstudio.eclipse.maven.util,

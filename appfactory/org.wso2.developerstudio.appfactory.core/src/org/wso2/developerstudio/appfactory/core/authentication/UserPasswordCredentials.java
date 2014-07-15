@@ -32,6 +32,15 @@ public class UserPasswordCredentials {
 	 * @return user
 	 */
 	public String getUser() {
+		
+		if(Authenticator.getInstance().isAppCloud()){
+			
+			String userName = user.replaceFirst("@", ".");
+			userName += "@" + Authenticator.getInstance().getSelectedTenant();
+			
+			return userName;			
+		}
+		
 		return user;
 	}
 
@@ -40,5 +49,15 @@ public class UserPasswordCredentials {
 	 */
 	public String getPassword() {
 		return password;
+	}
+
+	public String getGitUser() {
+		// TODO Auto-generated method stub
+		return user;
+	}
+
+	public String getCloudUserName() {
+		
+		return user.replace("@", ".");
 	}
 }

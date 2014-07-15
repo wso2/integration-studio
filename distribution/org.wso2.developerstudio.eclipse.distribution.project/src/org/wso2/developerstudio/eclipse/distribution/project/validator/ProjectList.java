@@ -91,8 +91,8 @@ public class ProjectList extends AbstractListDataProvider {
 											} else{
 												dependency.setGroupId(mavenProject.getGroupId());
 											}
-										//	dependency.setVersion(artifact.getVersion());
-											dependency.setVersion(mavenProject.getModel().getVersion()); //referring parent version
+											dependency.setVersion(artifact.getVersion());
+										//	dependency.setVersion(mavenProject.getModel().getVersion()); //referring parent version
 											dependency.setType(ArtifactTypeMapping.getType(artifact.getType()));
 											
 											DependencyData dependencyData = new DependencyData();

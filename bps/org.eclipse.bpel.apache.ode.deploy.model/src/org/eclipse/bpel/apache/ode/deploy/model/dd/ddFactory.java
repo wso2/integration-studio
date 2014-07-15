@@ -148,6 +148,33 @@ public interface ddFactory extends EFactory {
 	TService createTService();
 
 	/**
+	 * Returns a new object of class '<em>TBam Server Profiles</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TBam Server Profiles</em>'.
+	 * @generated
+	 */
+	TBamServerProfiles createTBamServerProfiles();
+
+	/**
+	 * Returns a new object of class '<em>TProfile</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TProfile</em>'.
+	 * @generated
+	 */
+	TProfile createTProfile();
+
+	/**
+	 * Returns a new object of class '<em>TEnd Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>TEnd Point</em>'.
+	 * @generated
+	 */
+	TEndPoint createTEndPoint();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

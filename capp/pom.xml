@@ -4,7 +4,7 @@
     <parent>
     	<groupId>org.wso2.eclipse</groupId>
     	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>4.0.0-SNAPSHOT</version>
+    	<version>3.7.0</version>
     </parent>
 	<groupId>org.wso2.developerstudio</groupId>
 	<artifactId>carbon-application-parent</artifactId>
@@ -120,21 +120,21 @@
     </distributionManagement>
 
     <properties>
-        <capp.tools.version>4.0.0-SNAPSHOT</capp.tools.version>    
-        <server.plugins.version>4.0.0-SNAPSHOT</server.plugins.version>            
+        <capp.tools.version>3.7.0</capp.tools.version>    
+        <server.plugins.version>3.7.0</server.plugins.version>            
         <wsas.tools.version>3.2.0</wsas.tools.version>        
-        <greg.tools.version>4.0.0-SNAPSHOT</greg.tools.version>
-        <esb.tools.version>4.0.0-SNAPSHOT</esb.tools.version>        
-        <ds.tools.version>4.0.0-SNAPSHOT</ds.tools.version>                
-        <carbon.tools.version>4.0.0-SNAPSHOT</carbon.tools.version>                        
-        <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>                        
-        <common.libraries.version>4.0.0-SNAPSHOT</common.libraries.version>   
-        <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>   
-        <common.ui.version>4.0.0-SNAPSHOT</common.ui.version>                   
-        <common.maven.version>4.0.0-SNAPSHOT</common.maven.version>                           
+        <greg.tools.version>3.7.0</greg.tools.version>
+        <esb.tools.version>3.7.0</esb.tools.version>        
+        <ds.tools.version>3.7.0</ds.tools.version>                
+        <carbon.tools.version>3.7.0</carbon.tools.version>                        
+        <core.plugins.version>3.7.0</core.plugins.version>                        
+        <common.libraries.version>3.7.0</common.libraries.version>   
+        <common.utils.version>3.7.0</common.utils.version>   
+        <common.ui.version>3.7.0</common.ui.version>                   
+        <common.maven.version>3.7.0</common.maven.version>                           
         <bps.export.tool.version>1.2.0</bps.export.tool.version>
         <bps.tools.version>0.5.0.wso2v1</bps.tools.version>
-        <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>                	                                  
+        <logging.tools.version>3.7.0</logging.tools.version>                	                                  
     </properties-->
 </project>
 

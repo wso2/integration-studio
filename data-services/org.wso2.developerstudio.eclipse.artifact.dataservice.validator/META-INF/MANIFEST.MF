@@ -2,16 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Validator
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.dataservice.validator;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.7.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.ds.validator.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.platform.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.apache.maven.model;version="[2.2.1,3.0.0)",
- org.apache.maven.project;version="[2.2.1,3.0.0)",
- org.codehaus.plexus.util.xml;version="2.0.1",
+Import-Package: org.apache.maven.model,
+ org.apache.maven.project,
+ org.codehaus.plexus.util.xml,
  org.eclipse.core.resources,
  org.eclipse.jdt.core,
  org.eclipse.jdt.ui,

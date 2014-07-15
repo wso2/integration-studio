@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Search
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.greg.search;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.7.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.greg.search.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime

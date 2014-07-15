@@ -5,7 +5,7 @@
     <parent>
     	<groupId>org.wso2.eclipse</groupId>
     	<artifactId>wso2-eclipse-parent</artifactId>
-    	<version>4.0.0-SNAPSHOT</version>
+    	<version>3.7.0</version>
     </parent>
 	<artifactId>wso2-eclipse-common</artifactId>
     <modelVersion>4.0.0</modelVersion>
@@ -41,7 +41,7 @@
 	<module>org.wso2.developerstudio.eclipse.general.project</module>
 	<!--module>org.wso2.developerstudio.eclipse.distribution.project</module-->
 	<module>org.wso2.developerstudio.eclipse.security.ui</module>
-	<module>org.wso2.developerstudio.eclipse.artifact.qos</module>
+	<!--module>org.wso2.developerstudio.eclipse.artifact.qos</module-->
     </modules>
 
   <!--properties>

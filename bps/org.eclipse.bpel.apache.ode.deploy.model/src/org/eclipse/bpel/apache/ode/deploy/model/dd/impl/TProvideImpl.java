@@ -23,6 +23,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.BasicFeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,6 +36,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TProvideImpl#getService <em>Service</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TProvideImpl#getPartnerLink <em>Partner Link</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.TProvideImpl#getCorrelationFilter <em>Correlation Filter</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,6 +72,26 @@ public class TProvideImpl extends EObjectImpl implements TProvide {
 	 * @ordered
 	 */
 	protected String partnerLink = PARTNER_LINK_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCorrelationFilter() <em>Correlation Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCorrelationFilter()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CORRELATION_FILTER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCorrelationFilter() <em>Correlation Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCorrelationFilter()
+	 * @generated
+	 * @ordered
+	 */
+	protected String correlationFilter = CORRELATION_FILTER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,6 +181,27 @@ public class TProvideImpl extends EObjectImpl implements TProvide {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getCorrelationFilter() {
+		return correlationFilter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCorrelationFilter(String newCorrelationFilter) {
+		String oldCorrelationFilter = correlationFilter;
+		correlationFilter = newCorrelationFilter;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.TPROVIDE__CORRELATION_FILTER, oldCorrelationFilter, correlationFilter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -178,6 +223,8 @@ public class TProvideImpl extends EObjectImpl implements TProvide {
 				return getService();
 			case ddPackage.TPROVIDE__PARTNER_LINK:
 				return getPartnerLink();
+			case ddPackage.TPROVIDE__CORRELATION_FILTER:
+				return getCorrelationFilter();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -195,6 +242,9 @@ public class TProvideImpl extends EObjectImpl implements TProvide {
 				return;
 			case ddPackage.TPROVIDE__PARTNER_LINK:
 				setPartnerLink((String)newValue);
+				return;
+			case ddPackage.TPROVIDE__CORRELATION_FILTER:
+				setCorrelationFilter((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,6 +264,9 @@ public class TProvideImpl extends EObjectImpl implements TProvide {
 			case ddPackage.TPROVIDE__PARTNER_LINK:
 				setPartnerLink(PARTNER_LINK_EDEFAULT);
 				return;
+			case ddPackage.TPROVIDE__CORRELATION_FILTER:
+				setCorrelationFilter(CORRELATION_FILTER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -230,6 +283,8 @@ public class TProvideImpl extends EObjectImpl implements TProvide {
 				return service != null;
 			case ddPackage.TPROVIDE__PARTNER_LINK:
 				return PARTNER_LINK_EDEFAULT == null ? partnerLink != null : !PARTNER_LINK_EDEFAULT.equals(partnerLink);
+			case ddPackage.TPROVIDE__CORRELATION_FILTER:
+				return CORRELATION_FILTER_EDEFAULT == null ? correlationFilter != null : !CORRELATION_FILTER_EDEFAULT.equals(correlationFilter);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -246,6 +301,8 @@ public class TProvideImpl extends EObjectImpl implements TProvide {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (partnerLink: ");
 		result.append(partnerLink);
+		result.append(", correlationFilter: ");
+		result.append(correlationFilter);
 		result.append(')');
 		return result.toString();
 	}

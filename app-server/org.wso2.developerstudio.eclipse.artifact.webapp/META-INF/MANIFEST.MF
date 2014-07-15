@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: WebApp
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.webapp;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.7.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.webapp.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
@@ -10,7 +10,7 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om,
  org.apache.axiom.om.impl.builder,
  org.apache.maven.model,
- org.apache.maven.project;version="[2.2.1,3.0.0)",
+ org.apache.maven.project,
  org.eclipse.core.resources,
  org.eclipse.emf.common.notify.impl,
  org.eclipse.emf.ecore.impl,

@@ -52,12 +52,72 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class HttpsJaggeryClient {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
     private static HttpClient  client;
+    private static String cookie;
 
 	public static String httpPostLogin(String urlStr, Map<String,String> params){
  
 	    client = new DefaultHttpClient();
 	    client = HttpsJaggeryClient.wrapClient(client,urlStr);
-	    return  httpPost(urlStr,params);
+
+	    HttpPost post = new HttpPost(urlStr);
+	    String respond = "";
+	    HttpResponse response=null;
+	    
+	     try
+	     {
+			  List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			  Set<String> keySet = params.keySet();
+		  
+			  for (String key : keySet) {
+				  nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
+			   }
+		      post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+		      response = client.execute(post);
+		      
+		      if(200==response.getStatusLine().getStatusCode())
+		      {
+		    	  cookie = response.getFirstHeader("Set-Cookie").getValue().split(";")[0];
+			      HttpEntity entityGetAppsOfUser = response.getEntity();
+			      BufferedReader rd = new BufferedReader(new InputStreamReader(entityGetAppsOfUser.getContent()));
+			      StringBuilder sb = new StringBuilder();
+			      String line ="";
+			      
+			      while ((line = rd.readLine()) != null) {
+			                  sb.append(line);
+			      }
+			      respond = sb.toString();
+			      
+			      if("false".equals(respond)){
+			    	  Authenticator.getInstance().setErrorcode(ErrorType.INVALID);
+			      }
+			      EntityUtils.consume(entityGetAppsOfUser);
+			      
+			      if (entityGetAppsOfUser != null) {
+			    	  entityGetAppsOfUser.getContent().close();
+			      }
+		      }
+		      else
+		      {
+				     Authenticator.getInstance().setErrorcode(ErrorType.FAILD);
+		    	     Authenticator.getInstance().setErrormsg(response.getStatusLine().getReasonPhrase());
+		    	     log.error("("+response.getStatusLine().getStatusCode()+")"+
+		    	    		 ":"+response.getStatusLine().getReasonPhrase());
+		    	     return "false";
+		      }
+		     
+	      }
+	      catch(Exception e)
+	      {   	     
+	    	     Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
+	    	     log.error("Connection failure",e); 
+	        	 return "false";
+	       }
+	       finally
+	       {
+	           client.getConnectionManager().closeExpiredConnections();
+	       }
+ 
+         return respond;
 	}
 	
 	public static String httpPost(String urlStr, Map<String,String> params){
@@ -74,7 +134,11 @@ public class HttpsJaggeryClient {
 			  for (String key : keySet) {
 				  nameValuePairs.add(new BasicNameValuePair(key, params.get(key)));
 			   }
+			  
 		      post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+		      if(cookie!=null){
+		    	  post.setHeader("Cookie", cookie);
+		      }
 		      response = client.execute(post);
 		      if(200==response.getStatusLine().getStatusCode()){
 		      HttpEntity entityGetAppsOfUser = response.getEntity();

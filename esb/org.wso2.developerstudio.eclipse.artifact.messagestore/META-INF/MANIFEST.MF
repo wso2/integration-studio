@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ESB Messagestore Artifact Wizard
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.messagestore;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.0.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.messagestore.Activator
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.eclipse.ui,
@@ -11,13 +11,13 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om,
  org.apache.commons.lang;version="2.6.0.wso2v1",
- org.apache.maven.model;version="[2.2.1,3.0.0)",
- org.apache.maven.project;version="[2.2.1,3.0.0)",
+ org.apache.maven.model,
+ org.apache.maven.project,
  org.apache.synapse,
  org.apache.synapse.config.xml,
  org.apache.synapse.message.store,
  org.apache.synapse.message.store.impl.memory,
- org.codehaus.plexus.util.xml;version="2.0.1",
+ org.codehaus.plexus.util.xml,
  org.eclipse.core.resources,
  org.eclipse.ui.ide,
  org.wso2.developerstudio.eclipse.capp.maven.utils,

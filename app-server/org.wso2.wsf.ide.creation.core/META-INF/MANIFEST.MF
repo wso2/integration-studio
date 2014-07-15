@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Creation Core
 Bundle-SymbolicName: org.wso2.wsf.ide.creation.core;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.7.0
 Bundle-Localization: plugin
 Bundle-Activator: org.wso2.wsf.ide.creation.core.plugin.WebServiceWSASCreationCorePlugin
 Require-Bundle: org.eclipse.core.runtime,

@@ -45,7 +45,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
-
 import org.wso2.developerstudio.eclipse.artifact.template.Activator;
 import org.wso2.developerstudio.eclipse.artifact.template.Utils.TemplateImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.template.model.TemplateModel;
@@ -70,6 +69,8 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject project;
+
+	private String version ="1.0.0";
 
 	
 	public TemplateProjectCreationWizard() {
@@ -150,7 +151,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			fileLst.add(destFile);
 			ESBArtifact artifact = new ESBArtifact();
 			artifact.setName(sequenceModel.getTemplateName());
-			artifact.setVersion("1.0.0");
+			artifact.setVersion(version);
 			if("Sequence Template".equals(selectedTemplate.getName())){
 				artifact.setType("synapse/sequenceTemplate");
 			}else{
@@ -194,7 +195,8 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	public void updatePom() throws Exception{
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
+		 version  = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-esb-template-plugin",
 				MavenConstants.WSO2_ESB_TEMPLATE_VERSION);
@@ -249,7 +251,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 				if(isNewAritfact){
 				ESBArtifact artifact=new ESBArtifact();
 				artifact.setName(name);
-				artifact.setVersion("1.0.0");
+				artifact.setVersion(version);
 				artifact.setType("synapse/template");
 				artifact.setServerRole("EnterpriseServiceBus");
 				artifact.setGroupId(groupId);
@@ -265,7 +267,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			if(isNewAritfact){
 			ESBArtifact artifact=new ESBArtifact();
 			artifact.setName(name);
-			artifact.setVersion("1.0.0");
+			artifact.setVersion(version);
 			artifact.setType("synapse/template");
 			artifact.setServerRole("EnterpriseServiceBus");
 			artifact.setGroupId(groupId);

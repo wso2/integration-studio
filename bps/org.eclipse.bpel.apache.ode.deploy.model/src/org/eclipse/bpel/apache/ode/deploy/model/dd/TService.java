@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TService#getAny <em>Any</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TService#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TService#getPort <em>Port</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TService#getEndpoint <em>Endpoint</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,5 +107,32 @@ public interface TService extends EObject {
 	 * @generated
 	 */
 	void setPort(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Endpoint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Endpoint</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Endpoint</em>' containment reference.
+	 * @see #setEndpoint(TEndPoint)
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage#getTService_Endpoint()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='endpoint' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	TEndPoint getEndpoint();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.TService#getEndpoint <em>Endpoint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Endpoint</em>' containment reference.
+	 * @see #getEndpoint()
+	 * @generated
+	 */
+	void setEndpoint(TEndPoint value);
 
 } // TService

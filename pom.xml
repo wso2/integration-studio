@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wso2.eclipse</groupId>
     <artifactId>wso2-eclipse-parent</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
+    <version>3.7.0</version>
     <packaging>pom</packaging>
     <name>WSO2 Eclipse Tools Parent</name>
 
@@ -27,7 +27,7 @@
 		<module>registry</module>
 		<module>carbon</module>  
 		<module>data-services</module>
-                <module>data-mapper</module>
+                <!--module>data-mapper</module-->
 		<module>esb</module>
 		<module>gs</module>
 		<module>cep</module>
@@ -211,95 +211,95 @@
  	<tycho-version>0.19.0</tycho-version>
 
  <!--********** bundle plugin versions **********-->
-        <capp.tools.version>4.0.0-SNAPSHOT</capp.tools.version>
-        <greg.tools.version>4.0.0-SNAPSHOT</greg.tools.version>
-        <common.libraries.version>4.0.0-SNAPSHOT</common.libraries.version>        
+        <capp.tools.version>3.7.0</capp.tools.version>
+        <greg.tools.version>3.7.0</greg.tools.version>
+        <common.libraries.version>3.7.0</common.libraries.version>        
         <bps.tools.version>0.5.0.wso2v1</bps.tools.version>
 	<eclipse.bps.tools.version>1.0.3-SNAPSHOT</eclipse.bps.tools.version>
-	<bpel.artifact.version>4.0.0-SNAPSHOT</bpel.artifact.version>
-        <logging.tools.version>4.0.0-SNAPSHOT</logging.tools.version>
-        <common.utils.version>4.0.0-SNAPSHOT</common.utils.version>
-        <server.plugins.version>4.0.0-SNAPSHOT</server.plugins.version>   
-        <core.plugins.version>4.0.0-SNAPSHOT</core.plugins.version>                
-        <appserver.tools.version>4.0.0-SNAPSHOT</appserver.tools.version> 
-	<appserver.artifacts.version>4.0.0-SNAPSHOT</appserver.artifacts.version> 
-	<appserver.jaxrs.artifacts.version>2.0.0-SNAPSHOT</appserver.jaxrs.artifacts.version>
-	<cep.artifact.version>2.0.0-SNAPSHOT</cep.artifact.version>
-	<brs.artifact.version>2.0.0-SNAPSHOT</brs.artifact.version>
-    	<user.mgt.tools.version>4.0.0-SNAPSHOT</user.mgt.tools.version>
-        <carbon.tools.version>4.0.0-SNAPSHOT</carbon.tools.version>
-        <ds.tools.version>4.0.0-SNAPSHOT</ds.tools.version>  
-	<ds.tools.artifact.version>4.0.0-SNAPSHOT</ds.tools.artifact.version>
-        <esb.tools.version>4.0.0-SNAPSHOT</esb.tools.version>  
-	<esb.api.artifact.version>2.0.0-SNAPSHOT</esb.api.artifact.version>
-	<esb.messagestore.artifact.version>2.0.0-SNAPSHOT</esb.messagestore.artifact.version>
-	<esb.messageprocessor.artifact.version>2.0.0-SNAPSHOT</esb.messageprocessor.artifact.version>
-	<esb.task.artifact.version>2.0.0-SNAPSHOT</esb.task.artifact.version>
-	<esb.template.artifact.version>2.0.0-SNAPSHOT</esb.template.artifact.version>
-        <common.ui.version>4.0.0-SNAPSHOT</common.ui.version>                   
-        <common.maven.version>4.0.0-SNAPSHOT</common.maven.version>    
-        <common.tools.version>4.0.0-SNAPSHOT</common.tools.version>                         
-        <bps.export.tool.version>2.0.0-SNAPSHOT</bps.export.tool.version>
+	<bpel.artifact.version>3.7.0</bpel.artifact.version>
+        <logging.tools.version>3.7.0</logging.tools.version>
+        <common.utils.version>3.7.0</common.utils.version>
+        <server.plugins.version>3.7.0</server.plugins.version>   
+        <core.plugins.version>3.7.0</core.plugins.version>                
+        <appserver.tools.version>3.7.0</appserver.tools.version> 
+	<appserver.artifacts.version>3.7.0</appserver.artifacts.version> 
+	<appserver.jaxrs.artifacts.version>2.0.0</appserver.jaxrs.artifacts.version>
+	<cep.artifact.version>2.0.0</cep.artifact.version>
+	<brs.artifact.version>2.0.0</brs.artifact.version>
+    	<user.mgt.tools.version>3.7.0</user.mgt.tools.version>
+        <carbon.tools.version>3.7.0</carbon.tools.version>
+        <ds.tools.version>3.7.0</ds.tools.version>  
+	<ds.tools.artifact.version>3.7.0</ds.tools.artifact.version>
+        <esb.tools.version>3.7.0</esb.tools.version>  
+	<esb.api.artifact.version>2.0.0</esb.api.artifact.version>
+	<esb.messagestore.artifact.version>2.0.0</esb.messagestore.artifact.version>
+	<esb.messageprocessor.artifact.version>2.0.0</esb.messageprocessor.artifact.version>
+	<esb.task.artifact.version>2.0.0</esb.task.artifact.version>
+	<esb.template.artifact.version>2.0.0</esb.template.artifact.version>
+        <common.ui.version>3.7.0</common.ui.version>                   
+        <common.maven.version>3.7.0</common.maven.version>    
+        <common.tools.version>3.7.0</common.tools.version>                         
+        <bps.export.tool.version>2.0.0</bps.export.tool.version>
         <bps.tools.version>0.5.0.wso2v2</bps.tools.version>
-        <axis2.mr.tools.version>4.0.0-SNAPSHOT</axis2.mr.tools.version>
-        <usermgt.tools.version>4.0.0-SNAPSHOT</usermgt.tools.version>
-        <carbonserver.30.version>4.0.0-SNAPSHOT</carbonserver.30.version>
-        <carbonserver.31.version>4.0.0-SNAPSHOT</carbonserver.31.version>
-	<carbonserver.32.version>4.0.0-SNAPSHOT</carbonserver.32.version>
-	<carbonserver.40.version>4.0.0-SNAPSHOT</carbonserver.40.version>
-	<carbonserver.42.version>4.0.0-SNAPSHOT</carbonserver.42.version>
-	<carbonserver.remote.version>4.0.0-SNAPSHOT</carbonserver.remote.version>
-        <core.tools.version>4.0.0-SNAPSHOT</core.tools.version>
-        <greg.connector.version>4.0.0-SNAPSHOT</greg.connector.version>
-        <bps.connector.version>4.0.0-SNAPSHOT</bps.connector.version>
-	<gadget.tools.version>4.0.0-SNAPSHOT</gadget.tools.version>
-        <p2.manager.version>4.0.0-SNAPSHOT</p2.manager.version>
-        <p2.manager36.version>4.0.0-SNAPSHOT</p2.manager36.version>
-        <common.logging.version>4.0.0-SNAPSHOT</common.logging.version>        
+        <axis2.mr.tools.version>3.7.0</axis2.mr.tools.version>
+        <usermgt.tools.version>3.7.0</usermgt.tools.version>
+        <carbonserver.30.version>3.7.0</carbonserver.30.version>
+        <carbonserver.31.version>3.7.0</carbonserver.31.version>
+	<carbonserver.32.version>3.7.0</carbonserver.32.version>
+	<carbonserver.40.version>3.7.0</carbonserver.40.version>
+	<carbonserver.42.version>3.7.0</carbonserver.42.version>
+	<carbonserver.remote.version>3.7.0</carbonserver.remote.version>
+        <core.tools.version>3.7.0</core.tools.version>
+        <greg.connector.version>3.7.0</greg.connector.version>
+        <bps.connector.version>3.7.0</bps.connector.version>
+	<gadget.tools.version>3.7.0</gadget.tools.version>
+        <p2.manager.version>3.7.0</p2.manager.version>
+        <p2.manager36.version>3.7.0</p2.manager36.version>
+        <common.logging.version>3.7.0</common.logging.version>        
         <osde.tools.version>0.9.5</osde.tools.version>
 	<smooks.tools.version>1.1.0.v20110215-1231-H25-GA</smooks.tools.version>
-	<esb.graphical.editor.tools.version>2.0.0-SNAPSHOT</esb.graphical.editor.tools.version>
-	<jaggery.tools.version>2.0.0-SNAPSHOT</jaggery.tools.version>
+	<esb.graphical.editor.tools.version>2.0.0</esb.graphical.editor.tools.version>
+	<jaggery.tools.version>2.0.0</jaggery.tools.version>
 	<smooks.edi.editor.version>1.0.1.201105031731</smooks.edi.editor.version>
-	<appfactory.tools.version>2.0.0-SNAPSHOT</appfactory.tools.version>
-	<qos.artifact.version>2.0.0-SNAPSHOT</qos.artifact.version>
+	<appfactory.tools.version>2.0.0</appfactory.tools.version>
+	<qos.artifact.version>2.0.0</qos.artifact.version>
 
  	<!--********** p2 features versions **********-->
-        <server.framework.feature.version>4.0.0-SNAPSHOT</server.framework.feature.version>
-        <core.framework.feature.version>4.0.0-SNAPSHOT</core.framework.feature.version>
-	<common.framework.feature.version>4.0.0-SNAPSHOT</common.framework.feature.version>
-        <appserver.tools.feature.version>4.0.0-SNAPSHOT</appserver.tools.feature.version>
-        <bps.tools.feature.version>4.0.0-SNAPSHOT</bps.tools.feature.version>   
-        <bps.humantask.tools.feature.version>2.0.0-SNAPSHOT</bps.humantask.tools.feature.version>
-        <eclipse.bpel.feature.version>4.0.0-SNAPSHOT</eclipse.bpel.feature.version>       
-        <usermgt.tools.feature.version>4.0.0-SNAPSHOT</usermgt.tools.feature.version>        
-        <registry.tools.feature.version>4.0.0-SNAPSHOT</registry.tools.feature.version>
-        <carbon.tools.feature.version>4.0.0-SNAPSHOT</carbon.tools.feature.version>
-        <ds.tools.feature.version>4.0.0-SNAPSHOT</ds.tools.feature.version>
-	<ds.tools.artifact.feature.version>4.0.0-SNAPSHOT</ds.tools.artifact.feature.version>
-        <esb.tools.feature.version>4.0.0-SNAPSHOT</esb.tools.feature.version>
-	<appfactory.tools.feature.version>2.0.0-SNAPSHOT</appfactory.tools.feature.version>
-        <capp.tools.feature.version>4.0.0-SNAPSHOT</capp.tools.feature.version>
+        <server.framework.feature.version>3.7.0</server.framework.feature.version>
+        <core.framework.feature.version>3.7.0</core.framework.feature.version>
+	<common.framework.feature.version>3.7.0</common.framework.feature.version>
+        <appserver.tools.feature.version>3.7.0</appserver.tools.feature.version>
+        <bps.tools.feature.version>3.7.0</bps.tools.feature.version>   
+        <bps.humantask.tools.feature.version>2.0.0</bps.humantask.tools.feature.version>
+        <eclipse.bpel.feature.version>3.7.0</eclipse.bpel.feature.version>       
+        <usermgt.tools.feature.version>3.7.0</usermgt.tools.feature.version>        
+        <registry.tools.feature.version>3.7.0</registry.tools.feature.version>
+        <carbon.tools.feature.version>3.7.0</carbon.tools.feature.version>
+        <ds.tools.feature.version>3.7.0</ds.tools.feature.version>
+	<ds.tools.artifact.feature.version>3.7.0</ds.tools.artifact.feature.version>
+        <esb.tools.feature.version>3.7.0</esb.tools.feature.version>
+	<appfactory.tools.feature.version>2.0.0</appfactory.tools.feature.version>
+        <capp.tools.feature.version>3.7.0</capp.tools.feature.version>
         
-        <carbonstudio.tools.feature.version>4.0.0-SNAPSHOT</carbonstudio.tools.feature.version>
-        <greg.connector.tools.feature.version>4.0.0-SNAPSHOT</greg.connector.tools.feature.version>
-        <bps.connector.tools.feature.version>4.0.0-SNAPSHOT</bps.connector.tools.feature.version>
-        <carbonserver.30.feature.version>4.0.0-SNAPSHOT</carbonserver.30.feature.version>        
-        <carbonserver.31.feature.version>4.0.0-SNAPSHOT</carbonserver.31.feature.version>  
-	<carbonserver.32.feature.version>4.0.0-SNAPSHOT</carbonserver.32.feature.version>
-	<carbonserver.40.feature.version>4.0.0-SNAPSHOT</carbonserver.40.feature.version>
-	<carbonserver.42.feature.version>4.0.0-SNAPSHOT</carbonserver.42.feature.version>
-	<carbonserver.remote.feature.version>4.0.0-SNAPSHOT</carbonserver.remote.feature.version>
+        <carbonstudio.tools.feature.version>3.7.0</carbonstudio.tools.feature.version>
+        <greg.connector.tools.feature.version>3.7.0</greg.connector.tools.feature.version>
+        <bps.connector.tools.feature.version>3.7.0</bps.connector.tools.feature.version>
+        <carbonserver.30.feature.version>3.7.0</carbonserver.30.feature.version>        
+        <carbonserver.31.feature.version>3.7.0</carbonserver.31.feature.version>  
+	<carbonserver.32.feature.version>3.7.0</carbonserver.32.feature.version>
+	<carbonserver.40.feature.version>3.7.0</carbonserver.40.feature.version>
+	<carbonserver.42.feature.version>3.7.0</carbonserver.42.feature.version>
+	<carbonserver.remote.feature.version>3.7.0</carbonserver.remote.feature.version>
 	    
-        <osde.feature.version>4.0.0-SNAPSHOT</osde.feature.version>
+        <osde.feature.version>3.7.0</osde.feature.version>
 	<smooks.feature.version>1.1.0.v20110215-1231-H25-GA</smooks.feature.version>
-	<esb.graphical.editor.feature.version>2.0.0-SNAPSHOT</esb.graphical.editor.feature.version>
-	<ds.content.assist.feature.version>2.0.0-SNAPSHOT</ds.content.assist.feature.version>
-	<cep.feature.version>2.0.0-SNAPSHOT</cep.feature.version>
-	<jaggery.feature.version>2.0.0-SNAPSHOT</jaggery.feature.version>
-	<brs.feature.version>2.0.0-SNAPSHOT</brs.feature.version>
+	<esb.graphical.editor.feature.version>2.0.0</esb.graphical.editor.feature.version>
+	<ds.content.assist.feature.version>2.0.0</ds.content.assist.feature.version>
+	<cep.feature.version>2.0.0</cep.feature.version>
+	<jaggery.feature.version>2.0.0</jaggery.feature.version>
+	<brs.feature.version>2.0.0</brs.feature.version>
 	<soapui.feature.version>4.0.1</soapui.feature.version>
 	<tcpmon.feature.version>1.0.0</tcpmon.feature.version>
-	<qos.feature.version>2.0.0-SNAPSHOT</qos.feature.version>
+	<qos.feature.version>2.0.0</qos.feature.version>
     </properties>
 </project>

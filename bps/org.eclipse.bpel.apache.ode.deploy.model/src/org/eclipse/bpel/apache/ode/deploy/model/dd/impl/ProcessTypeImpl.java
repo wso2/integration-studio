@@ -18,6 +18,7 @@ import javax.xml.namespace.QName;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.MexInterceptorsType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType;
+import org.eclipse.bpel.apache.ode.deploy.model.dd.TBamServerProfiles;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide;
@@ -57,6 +58,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getBamServerProfiles <em>Bam Server Profiles</em>}</li>
  * </ul>
  * </p>
  *
@@ -289,6 +291,16 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * @ordered
 	 */
 	protected org.eclipse.bpel.model.Process model;
+
+	/**
+	 * The cached value of the '{@link #getBamServerProfiles() <em>Bam Server Profiles</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBamServerProfiles()
+	 * @generated
+	 * @ordered
+	 */
+	protected TBamServerProfiles bamServerProfiles;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -696,6 +708,49 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TBamServerProfiles getBamServerProfiles() {
+		return bamServerProfiles;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetBamServerProfiles(TBamServerProfiles newBamServerProfiles, NotificationChain msgs) {
+		TBamServerProfiles oldBamServerProfiles = bamServerProfiles;
+		bamServerProfiles = newBamServerProfiles;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES, oldBamServerProfiles, newBamServerProfiles);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBamServerProfiles(TBamServerProfiles newBamServerProfiles) {
+		if (newBamServerProfiles != bamServerProfiles) {
+			NotificationChain msgs = null;
+			if (bamServerProfiles != null)
+				msgs = ((InternalEObject)bamServerProfiles).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES, null, msgs);
+			if (newBamServerProfiles != null)
+				msgs = ((InternalEObject)newBamServerProfiles).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES, null, msgs);
+			msgs = basicSetBamServerProfiles(newBamServerProfiles, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES, newBamServerProfiles, newBamServerProfiles));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -709,6 +764,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return ((InternalEList<?>)getInvoke()).basicRemove(otherEnd, msgs);
 			case ddPackage.PROCESS_TYPE__MEX_INTERCEPTORS:
 				return basicSetMexInterceptors(null, msgs);
+			case ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES:
+				return basicSetBamServerProfiles(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -748,6 +805,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__MODEL:
 				if (resolve) return getModel();
 				return basicGetModel();
+			case ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES:
+				return getBamServerProfiles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -803,6 +862,9 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__MODEL:
 				setModel((org.eclipse.bpel.model.Process)newValue);
 				return;
+			case ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES:
+				setBamServerProfiles((TBamServerProfiles)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -854,6 +916,9 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__MODEL:
 				setModel((org.eclipse.bpel.model.Process)null);
 				return;
+			case ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES:
+				setBamServerProfiles((TBamServerProfiles)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -892,6 +957,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ddPackage.PROCESS_TYPE__MODEL:
 				return model != null;
+			case ddPackage.PROCESS_TYPE__BAM_SERVER_PROFILES:
+				return bamServerProfiles != null;
 		}
 		return super.eIsSet(featureID);
 	}

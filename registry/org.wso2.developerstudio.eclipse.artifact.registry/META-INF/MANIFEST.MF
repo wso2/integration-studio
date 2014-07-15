@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Registry Artifact Wizard
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.registry;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 3.7.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.registry.Activator
 Bundle-Vendor: WSO2 Inc,
 Require-Bundle: org.eclipse.ui,
@@ -13,9 +13,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.axiom.om,
  org.apache.axiom.om.impl.builder,
  org.apache.commons.lang;version="2.6.0.wso2v1",
- org.apache.maven.model;version="[2.2.1,3.0.0)",
- org.apache.maven.project;version="[2.2.1,3.0.0)",
- org.codehaus.plexus.util.xml;version="2.0.1",
+ org.apache.maven.model,
+ org.apache.maven.project,
+ org.codehaus.plexus.util.xml,
  org.eclipse.jdt.core,
  org.eclipse.jface.text,
  org.eclipse.ui.forms,
@@ -58,4 +58,5 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.utils.ui,
  org.wso2.developerstudio.eclipse.utils.wst,
  org.wso2.registry.checkin
-Export-Package: org.wso2.developerstudio.eclipse.artifact.registry.utils
+Export-Package: org.wso2.developerstudio.eclipse.artifact.registry.filter,
+ org.wso2.developerstudio.eclipse.artifact.registry.utils

@@ -21,7 +21,7 @@
     <parent>
     	<groupId>org.wso2.developerstudio</groupId>
     	<artifactId>carbon-registry-parent</artifactId>
-    	<version>4.0.0-SNAPSHOT</version>
+    	<version>3.7.0</version>
     </parent>     
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.developerstudio.eclipse.greg.resource.authorization</artifactId>

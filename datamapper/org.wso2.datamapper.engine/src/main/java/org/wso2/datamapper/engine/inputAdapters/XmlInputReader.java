@@ -47,7 +47,7 @@ public class XmlInputReader implements InputDataReaderAdapter {
 	public void setInputMsg(InputStream in) {
 		OMXMLParserWrapper builder = OMXMLBuilderFactory.createOMBuilder(in);
 		OMElement documentElement = builder.getDocumentElement(); 
-		this.body = documentElement.getFirstElement().getFirstElement();
+		this.body = documentElement;
 	}
 
 	public GenericRecord getInputRecord(Schema input) {

@@ -6,7 +6,7 @@
           		"type": { 
             				"type": "array", 
             				"items": { 
-              							"name": "employee", 
+              							"name": "employeeRecord", 
               							"type": "record", 
               							"fields": [ 
                    									{"name" : "firstname", "type" : "string"}, 

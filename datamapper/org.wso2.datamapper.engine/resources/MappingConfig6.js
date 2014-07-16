@@ -17,5 +17,6 @@ function map_L_employee_L_engineer(employee, engineer) {
 }
 function map_L_address_L_address(empAddress, engAddress) {
 	engAddress.addresscode = empAddress.no + "_" + empAddress.road + "_" + empAddress.city;
+	engAddress.city = empAddress.city;
 }
 

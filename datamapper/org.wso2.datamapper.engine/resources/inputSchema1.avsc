@@ -1,24 +1,32 @@
 {
- 	"type": "record", 
  	"name": "pizza", 
- 	"fields": [ 
-
+ 	"type": "record", 
+ 	"fields": [ 	
       			{"name" : "name", "type" : "string"}, 
                 {"name" : "price", "type" : "string"},
-    			{"name": "toppingsList", 
-          		 "type": { 
-            				"type": "array", 
-            				"items": { 
-              							"name": "toppings", 
-              							"type": "record", 
-              							"fields": [ 
-                    								{"name" : "id", "type" : "string"}, 
-                   									{"name" : "name", "type" : "string"}, 
-                    								{"name" : "extraPrice", "type" : "string"},
-                    								{"name" : "category", "type" : "string"}
-                    							  ] 
-          							} 
-        				  } 
-      			} 
+                {
+            		"name": "toppingsList",
+            		"type": {
+            					"type": "record", 
+            					"name": "toppings",
+            					"fields": [
+            								{ "name": "toppings", 
+          						  				"type": { 
+            												"type": "array", 
+            												"items": { 
+              															"name": "toppingsRecord", 
+              															"type": "record", 
+              															"fields": [ 
+                   																	{"name" : "id", "type" : "string"}, 
+                   																	{"name" : "name", "type" : "string"}, 
+                    																{"name" : "extraPrice", "type" : "string"},
+                    																{"name" : "category", "type" : "string"}
+                    							 								  ] 
+          							 								} 
+        				  								} 
+      										}	
+            							]
+            				}
+        		}	
     		 ] 
 }

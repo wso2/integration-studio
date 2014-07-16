@@ -89,9 +89,9 @@ public class MappingResourceLoader {
 
 	public Function getFunction() throws MappingResourceLoader.JSException{
 		if(function!=null){
-		initScriptEnviroment();
-	 	context.evaluateString(scope, function.getFunctionBody(), "	", 1, null);
-		return (Function) scope.get(function.getFunctioName(), scope);
+			initScriptEnviroment();
+			context.evaluateString(scope, function.getFunctionBody(), "	", 1, null);
+			return (Function) scope.get(function.getFunctioName(), scope);
 		}else{
 			throw new MappingResourceLoader.JSException("JS function not in a correct format");
 		}

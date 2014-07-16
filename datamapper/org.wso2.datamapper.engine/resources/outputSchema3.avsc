@@ -17,22 +17,3 @@
       			}	
             ]
 }
-
-
-{  
-  "name" : "queryResponse",
-  "type": "record", 
-  "fields" : [ 
-              {   
-				"name" : "result", 
-                "type" : "record",
-      	        "fields" : [ 
-                             { 
-                               "name" : "done",
-                               "type" : "string"
-                             }
-						 ]	
-
-		   		}
-            ]
-	 }

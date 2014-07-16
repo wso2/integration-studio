@@ -47,7 +47,8 @@ public class RMSequenceMediatorDeserializer extends AbstractEsbNodeDeserializer<
 		if(RMSequenceMediator.getSingle()!=null ){ 
 		if(RMSequenceMediator.isSingle()){
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.SINGLE_MESSAGE);
-		}}else {
+		}
+		}else {
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.CORRELATED_SEQUENCE);
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__CORRELATION_XPATH, createNamespacedProperty(RMSequenceMediator.getCorrelation()));
 			if (RMSequenceMediator.getLastMessage()!=null){

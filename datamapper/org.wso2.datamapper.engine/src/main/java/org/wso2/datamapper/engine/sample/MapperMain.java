@@ -23,10 +23,10 @@ public class MapperMain {
 
 	public static void main(String[] args) throws Exception {
 
-		InputStream inStream = new FileInputStream(new File("./resources/inputSample.json"));
-		InputStream config = new FileInputStream(new File("./resources/jsonMap.js"));
-		InputStream inputSchema = new FileInputStream(new File("./resources/inputSchemaJson.avsc"));
-		InputStream outputSchema = new FileInputStream(new File("./resources/outputSchemaJson.avsc"));
+		InputStream inStream = new FileInputStream(new File("./resources/input1.xml"));
+		InputStream config = new FileInputStream(new File("./resources/MappingConfig1.js"));
+		InputStream inputSchema = new FileInputStream(new File("./resources/inputSchema1.avsc"));
+		InputStream outputSchema = new FileInputStream(new File("./resources/outputSchema1.avsc"));
 		
 		//Contexts are anti-pattern and no need getters/setters for access static class, just used for code readability 
 		MappingContext context = new MappingContext();
@@ -39,7 +39,7 @@ public class MapperMain {
 		//XML : application/xml	
 		//XML : application/json
 		
-		context.setInputType("application/json");
+		context.setInputType("application/xml");
 		context.setOutputType("application/xml");
 		
 		String output = map(context);

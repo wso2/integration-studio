@@ -15,7 +15,7 @@
  */
 
 
-package org.wso2.datamapper.engine.core.writer;
+package org.wso2.datamapper.engine.outputAdapters;
 
 import java.util.HashMap;
 import java.util.Map;

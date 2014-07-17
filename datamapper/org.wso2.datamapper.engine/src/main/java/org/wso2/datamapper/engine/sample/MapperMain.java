@@ -10,10 +10,10 @@ import org.apache.avro.io.DatumWriter;
 import org.apache.avro.io.Encoder;
 import org.wso2.datamapper.engine.core.MappingHandler;
 import org.wso2.datamapper.engine.core.MappingResourceLoader;
-import org.wso2.datamapper.engine.core.writer.DummyEncoder;
-import org.wso2.datamapper.engine.core.writer.WriterRegistry;
 import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
 import org.wso2.datamapper.engine.inputAdapters.ReaderRegistry;
+import org.wso2.datamapper.engine.outputAdapters.DummyEncoder;
+import org.wso2.datamapper.engine.outputAdapters.WriterRegistry;
 
 /**
  * This is a Test class will be removed in the future
@@ -40,7 +40,7 @@ public class MapperMain {
 		//XML : application/json
 		
 		context.setInputType("application/xml");
-		context.setOutputType("application/xml");
+		context.setOutputType("text/csv");
 		
 		String output = map(context);
 		

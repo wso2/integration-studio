@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.wso2.datamapper.engine.core.writer;
+package org.wso2.datamapper.engine.outputAdapters;
 
 import java.io.IOException;
 import java.io.OutputStream;

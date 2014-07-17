@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.wso2.datamapper.engine.core.writer;
+package org.wso2.datamapper.engine.outputAdapters;
 
 import java.io.IOException;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericDatumWriter;
-import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.Encoder;
+import org.apache.avro.generic.GenericRecord;
+import org.json.XML;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-public class JSONDatumWriter extends GenericDatumWriter<GenericRecord> {
+ 
+public class XMLDatumWriter extends GenericDatumWriter<GenericRecord> {
 	
 	
 	@Override
@@ -36,11 +36,10 @@ public class JSONDatumWriter extends GenericDatumWriter<GenericRecord> {
 			String name = record.getSchema().getName();
 			JSONObject rootObj = new JSONObject();
 			rootObj.putOnce(name, new JSONObject(record.toString()));
-			out.writeString(rootObj.toString());
+			out.writeString(XML.toString(rootObj));
 		} catch (JSONException e) {
 			throw new IOException(e);
 		}
 	}
 
 }
-

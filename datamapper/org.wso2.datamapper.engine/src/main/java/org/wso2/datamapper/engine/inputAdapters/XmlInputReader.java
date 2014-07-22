@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -84,11 +85,34 @@ public class XmlInputReader implements InputDataReaderAdapter {
 					} else { // !(ARRAY||RECORD) != primitive type
 						arr.add(element.getText());
 					}
-				} else if (field.schema().getType().equals(Type.RECORD)) {
+				}
+				else if (field.schema().getType().equals(Type.RECORD)) {
 					Iterator childElements = element.getChildElements();
 					GenericRecord child = getChild(field.schema(), childElements);
 					record.put(localName, child);
-				} else {
+				} else if (field.schema().getType().equals(Type.UNION)) {
+					Iterator childElements = element.getChildElements();
+					if(childElements.hasNext()){
+						Schema childSchema = field.schema();
+						if(childSchema != null){	
+							List<Schema> childFieldList = childSchema.getTypes();
+							Iterator chilFields = childFieldList.iterator();
+							while (chilFields.hasNext()) {
+								Schema chSchema = (Schema) chilFields.next();
+								String scName = chSchema.getName();
+								if(!scName.equals("null")){
+									GenericRecord child = getChild(chSchema, childElements);
+									record.put(localName, child);
+								}else{
+									continue;
+								}
+								
+							}
+						}
+					}else{
+						record.put(localName, element.getText());
+					}
+				}else {
 					record.put(localName, element.getText());
 					// TODO: fix for other types too... !(ARRAY||RECORD) !=
 					// primitive type

@@ -14,6 +14,7 @@ import org.wso2.datamapper.engine.inputAdapters.InputDataReaderAdapter;
 import org.wso2.datamapper.engine.inputAdapters.ReaderRegistry;
 import org.wso2.datamapper.engine.outputAdapters.DummyEncoder;
 import org.wso2.datamapper.engine.outputAdapters.WriterRegistry;
+import org.wso2.avroSchemaGen.AvroSchemaBuilder;
 
 /**
  * This is a Test class will be removed in the future
@@ -23,10 +24,15 @@ public class MapperMain {
 
 	public static void main(String[] args) throws Exception {
 
-		InputStream inStream = new FileInputStream(new File("./resources/input1.xml"));
-		InputStream config = new FileInputStream(new File("./resources/MappingConfig1.js"));
-		InputStream inputSchema = new FileInputStream(new File("./resources/inputSchema1.avsc"));
-		InputStream outputSchema = new FileInputStream(new File("./resources/outputSchema1.avsc"));
+		InputStream inStream = new FileInputStream(new File("./resources/input2.xml"));
+		InputStream config = new FileInputStream(new File("./resources/MappingConfig2.js"));
+		/*InputStream inputSchema = new FileInputStream(new File("./resources/inputSchema2.avsc"));
+		InputStream outputSchema = new FileInputStream(new File("./resources/outputSchema2.avsc"));*/
+		
+		AvroSchemaBuilder avroSchemaBuilder = new AvroSchemaBuilder();
+		
+		InputStream inputSchema = avroSchemaBuilder.getAvroSchema("org.wso2.avroSchemaGen.Employee");
+	    InputStream outputSchema = avroSchemaBuilder.getAvroSchema("org.wso2.avroSchemaGen.Engineer");
 		
 		//Contexts are anti-pattern and no need getters/setters for access static class, just used for code readability 
 		MappingContext context = new MappingContext();
@@ -40,7 +46,7 @@ public class MapperMain {
 		//XML : application/json
 		
 		context.setInputType("application/xml");
-		context.setOutputType("text/csv");
+		context.setOutputType("application/xml");
 		
 		String output = map(context);
 		

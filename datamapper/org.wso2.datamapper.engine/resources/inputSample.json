@@ -1,11 +1,1 @@
-{
-    "widget": {
-                  "debug": "on",
-                   "window": {
-                               "title": "Sample Konfabulator Widget",
-        "name": "main_window",
-        "width": "500",
-        "height": "500"
-   	}
-}   
-}     
+{"employee":{"firstname":"sanjiva","lastname":"weerawarna","address":"111,aaaaa,bbbbbb,"}}

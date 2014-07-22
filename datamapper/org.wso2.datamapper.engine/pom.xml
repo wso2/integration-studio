@@ -91,6 +91,11 @@
 			<groupId>net.sf.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
 			<version>2.3</version>
-        </dependency>
+		</dependency>
+		<dependency>
+			<groupId>org.wso2</groupId>
+			<artifactId>avroSchemaGen</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 </project>

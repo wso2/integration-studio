@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wso2.eclipse</groupId>
         <artifactId>wso2-developer-studio-eclipse-distributions-parent</artifactId>
-        <version>3.7.0</version>
+        <version>3.8.0-SNAPSHOT</version>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>developer-studio-eclipse-jee-kepler-macosx-cocoa-x86_64</artifactId>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Maven Invoker
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.maven;singleton:=true
-Bundle-Version: 3.7.0
+Bundle-Version: 3.8.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.maven.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

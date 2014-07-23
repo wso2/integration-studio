@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,13 +55,13 @@ public class NameSection extends BPELPropertySection {
 	INamedElement fNamedElement;
 		
 	
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 			/* model object */
 			new MultiObjectAdapter() {
 				
-				
+				@Override
 				public void notify (Notification n) {
 					if (markersHaveChanged(n)) {
 						updateMarkers();
@@ -72,7 +72,7 @@ public class NameSection extends BPELPropertySection {
 		};
 	}
 
-	
+	@Override
 	protected void basicSetInput (EObject input) {
 		super.basicSetInput(input);
 
@@ -124,7 +124,7 @@ public class NameSection extends BPELPropertySection {
 //				
 //				return wrapInShowContextCommand(
 //						new UpdateModelCommand(getInput(), getLabel() ) {							
-//							
+//							@Override
 //							public void doExecute() {
 //								namedElement.setName(fTarget, newName);
 //							}													
@@ -142,11 +142,11 @@ public class NameSection extends BPELPropertySection {
 		/** TODO: Empty Name should never be set */
 		
 		fNameEditController = new EditController(getCommandFramework()) {
-			
+			@Override
 			public boolean checkNotification (Notification notification) {
 				return fNamedElement != null && fNamedElement.isNameAffected(fNameEditController.getInput(), notification);				
 			}
-			
+			@Override
 			public Command createApplyCommand() {
 				return wrapInShowContextCommand( super.createApplyCommand() );
 			}
@@ -170,7 +170,7 @@ public class NameSection extends BPELPropertySection {
 	
 	}
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		Composite composite = createFlatFormComposite(parent);
 		createNameWidgets(composite);
@@ -181,7 +181,7 @@ public class NameSection extends BPELPropertySection {
 
 	
 	
-	
+	@Override
 	protected void updateMarkers () {				
 		statusLabel.clear();		
 		for(IMarker m : getMarkers(getInput())) {
@@ -256,7 +256,7 @@ public class NameSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return null;
 	}
@@ -265,7 +265,7 @@ public class NameSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		fNameText.setFocus();
 	}
@@ -277,7 +277,7 @@ public class NameSection extends BPELPropertySection {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#gotoMarker(org.eclipse.core.resources.IMarker)
 	 */
 	
-	
+	@Override
 	public void gotoMarker (IMarker marker) {
 		fNameText.setFocus() ;		
 	}
@@ -287,7 +287,7 @@ public class NameSection extends BPELPropertySection {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#isValidMarker(org.eclipse.core.resources.IMarker)
 	 */
 	
-	
+	@Override
 	public boolean isValidMarker (IMarker marker) {
 		String context = null;
 		try {

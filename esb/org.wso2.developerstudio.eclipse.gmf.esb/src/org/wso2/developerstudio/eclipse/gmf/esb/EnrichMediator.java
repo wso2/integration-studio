@@ -65,7 +65,6 @@ public interface EnrichMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Source Type</b></em>' attribute.
-	 * The default value is <code>"CUSTOM"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -77,7 +76,7 @@ public interface EnrichMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichSourceType
 	 * @see #setSourceType(EnrichSourceType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_SourceType()
-	 * @model default="CUSTOM"
+	 * @model
 	 * @generated
 	 */
 	EnrichSourceType getSourceType();
@@ -175,7 +174,6 @@ public interface EnrichMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Target Action</b></em>' attribute.
-	 * The default value is <code>"REPLACE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -187,7 +185,7 @@ public interface EnrichMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetAction
 	 * @see #setTargetAction(EnrichTargetAction)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_TargetAction()
-	 * @model default="REPLACE"
+	 * @model
 	 * @generated
 	 */
 	EnrichTargetAction getTargetAction();
@@ -205,7 +203,6 @@ public interface EnrichMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Target Type</b></em>' attribute.
-	 * The default value is <code>"CUSTOM"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -217,7 +214,7 @@ public interface EnrichMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EnrichTargetType
 	 * @see #setTargetType(EnrichTargetType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEnrichMediator_TargetType()
-	 * @model default="CUSTOM"
+	 * @model
 	 * @generated
 	 */
 	EnrichTargetType getTargetType();

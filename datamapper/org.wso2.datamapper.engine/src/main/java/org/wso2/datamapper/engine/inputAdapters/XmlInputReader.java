@@ -15,126 +15,135 @@
  */
 package org.wso2.datamapper.engine.inputAdapters;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.apache.avro.Schema;
+import org.apache.avro.Schema.Field;
+import org.apache.avro.Schema.Type;
 import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericData.Array;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMXMLBuilderFactory;
 import org.apache.axiom.om.OMXMLParserWrapper;
 
-public class XmlInputReader implements InputDataReaderAdapter{
 
-	private OMElement documentElement;	
-	private Iterator<OMElement> childElementIter;
-	private Map<String, Schema> inputSchemaMap;
-	private GenericRecord rootRecord;
-	private Iterator<OMElement> childIter;
-	private boolean hasComplexChilds;
-	private List<GenericRecord> arrayChildList;
+public class XmlInputReader implements InputDataReaderAdapter {
 
-	public boolean hasChildRecords() {
-		
-		if(hasComplexChilds){
-			return hasComplexChilds;
-		}	
-		return childElementIter.hasNext();
-	}
-
-	public List<GenericRecord> getArrayChildList() {
-		return arrayChildList;
-	}
-
-	public void setInputSchemaMap(Map<String, Schema> inputSchemaMap) {
-		this.inputSchemaMap = inputSchemaMap;
-	}
-
-	public GenericRecord getRootRecord() {
-		return rootRecord;
-	}
-
-	public void setRootRecord(GenericRecord rootRecord) {
-		this.rootRecord = rootRecord;
-	}
-
-	public void setInptStream(InputStream inputStream) throws IOException {
-		
-		InputStream in = inputStream;
+	private OMElement body; // Soap Message body
+ 
+	/**
+	 * @param msg - Soap Envelop
+	 * @throws IOException
+	 */
+	public void setInputMsg(InputStream in) {
 		OMXMLParserWrapper builder = OMXMLBuilderFactory.createOMBuilder(in);
-		this.documentElement = builder.getDocumentElement();
-		childElementIter = this.documentElement.getChildElements();
-		
-		in.close();
-
-	}
-	
-	public GenericRecord getChildRecord() {
-		
-		OMElement childElement = null;
-		String childName;	
-			
-		childElement = childElementIter.next();
-		childName = childElement.getLocalName();
-		
-		if((childIter == null) || (!childIter.hasNext())){
-			childIter = childElement.getChildElements();
-		}
-		
-		GenericRecord childRecord = getChild(childElement,childIter);
-			
-		if ((childRecord == null) && (arrayChildList == null)) {	
-			rootRecord.put(childName, childElement.getText());
-		}
-	
-		return childRecord;
+		OMElement documentElement = builder.getDocumentElement(); 
+		this.body = documentElement;
 	}
 
-	public GenericRecord getChild(OMElement element, Iterator<OMElement> childIter) {
-		
-		GenericRecord childRec = null;
-		OMElement parentElement = element;	
-		String parentId = parentElement.getLocalName();
-		Schema sc = inputSchemaMap.get(parentId);	
-		boolean isArray = false;
-				
-		if(sc != null) {
-			OMElement childElement = null;
-			
-			if( sc.getType() == Schema.Type.RECORD){
-				childRec = new GenericData.Record(sc);							
-			}else if(sc.getType() == Schema.Type.ARRAY){
-				if(this.arrayChildList == null){
-					this.arrayChildList = new ArrayList<GenericRecord>();	
-				}
-				childRec = new GenericData.Record(sc.getElementType());
-				isArray = true;
-			}	
-			
-			while (childIter.hasNext()) {
-				childElement = childIter.next();
-				GenericRecord tempRec = getChild(childElement, childElement.getChildElements());
-				
-				if(tempRec != null){
-					if(!isArray){
-						childRec.put(childElement.getLocalName(), tempRec);
-					}else{
-						arrayChildList.add(tempRec);
+	public GenericRecord getInputRecord(Schema input) {
+
+		@SuppressWarnings("unchecked")
+		GenericRecord inputRecord = getChild(input, this.body.getChildElements());
+		return inputRecord;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private GenericRecord getChild(Schema schema, Iterator<OMElement> iter) {
+
+		GenericRecord record = new GenericData.Record(schema);
+		ConcurrentMap<String, Collection<Object>> arrMap = new ConcurrentHashMap<String, Collection<Object>>();
+
+		while (iter.hasNext()) {
+			OMElement element = iter.next();
+			String localName = element.getLocalName();
+			Field field = schema.getField(localName);
+			if (field != null) {
+				if (field.schema().getType().equals(Type.ARRAY)) {
+					Collection<Object> arr = arrMap.get(localName);
+					if (arr == null) {
+						arr = new ArrayList<Object>();
+						arrMap.put(localName, arr);
 					}
-				}else{
-					childRec.put(childElement.getLocalName(), childElement.getText());
+					if (field.schema().getElementType().getType().equals(Type.RECORD)) {
+						Iterator childElements = element.getChildElements();
+						GenericRecord child = getChild(field.schema().getElementType(),
+								childElements);
+						arr.add(child);
+					} else if (field.schema().getElementType().getType().equals(Type.ARRAY)) {
+						// not supports yet!
+					} else { // !(ARRAY||RECORD) != primitive type
+						arr.add(element.getText());
+					}
 				}
-			}
-			if(isArray){
-				return null;
+				else if (field.schema().getType().equals(Type.RECORD)) {
+					Iterator childElements = element.getChildElements();
+					GenericRecord child = getChild(field.schema(), childElements);
+					record.put(localName, child);
+				} else if (field.schema().getType().equals(Type.UNION)) {
+					Iterator childElements = element.getChildElements();
+					if(childElements.hasNext()){
+						Schema childSchema = field.schema();
+						if(childSchema != null){	
+							List<Schema> childFieldList = childSchema.getTypes();
+							Iterator chilFields = childFieldList.iterator();
+							while (chilFields.hasNext()) {
+								Schema chSchema = (Schema) chilFields.next();
+								String scName = chSchema.getName();
+								if(!scName.equals("null")){
+									GenericRecord child = getChild(chSchema, childElements);
+									record.put(localName, child);
+								}else{
+									continue;
+								}
+								
+							}
+						}
+					}else{
+						record.put(localName, element.getText());
+					}
+				}else {
+					record.put(localName, element.getText());
+					// TODO: fix for other types too... !(ARRAY||RECORD) !=
+					// primitive type
+				}
+			} else {
+				// TODO: log unrecognized element
 			}
 		}
-		
-		return childRec;
+
+		for (Entry<String, Collection<Object>> arrEntry : arrMap.entrySet()) {
+			String key = arrEntry.getKey();
+			Object object = record.get(key);
+			Array<Object> childArray = null;
+			Collection<Object> value = arrEntry.getValue();
+			if (object == null) {
+				childArray = new GenericData.Array<Object>(value.size(), schema.getField(key)
+						.schema());
+			} else {
+				childArray = (Array<Object>) object;
+			}
+			for (Object obj : value) {
+				childArray.add(obj);
+			}
+			record.put(key, childArray);
+
+		}
+
+		return record;
+	}
+	
+	public static String getType() {
+		return "application/xml";
 	}
 }

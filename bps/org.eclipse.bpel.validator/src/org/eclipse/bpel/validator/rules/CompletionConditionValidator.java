@@ -32,7 +32,7 @@ public class CompletionConditionValidator extends CValidator {
 	/**
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren ();
 		checkChild(ND_BRANCHES,1,1);

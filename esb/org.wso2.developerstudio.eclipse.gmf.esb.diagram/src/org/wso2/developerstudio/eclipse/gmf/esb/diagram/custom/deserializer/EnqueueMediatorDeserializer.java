@@ -36,8 +36,8 @@ public class EnqueueMediatorDeserializer extends AbstractEsbNodeDeserializer<Abs
 		//vishualEnqueue.setPriority(enqueueMediator.getPriority());
 		executeSetValueCommand(ENQUEUE_MEDIATOR__PRIORITY, enqueueMediator.getPriority());
 		
-		//Setting sequence
-		if(enqueueMediator.getSequenceName() != null && enqueueMediator.getSequenceName().equals("")){
+		//Setting sequence fix TOOLS-2529
+		if(enqueueMediator.getSequenceName() != null && !enqueueMediator.getSequenceName().equals("") ){
 			
 			RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
 			regkey.setKeyValue(enqueueMediator.getSequenceName());

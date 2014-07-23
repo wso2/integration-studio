@@ -67,7 +67,7 @@ public class ConditionalRouterMediatorItemProvider
 		}
 		super.getPropertyDescriptors(object);
 
-		addContinueRoutePropertyDescriptor(object);
+		addContinueAfterRoutePropertyDescriptor(object);
 		addConditionalRouteBranchesPropertyDescriptor(object);
 		addDescriptionPropertyDescriptor(object);
 
@@ -75,19 +75,19 @@ public class ConditionalRouterMediatorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Continue Route feature.
+	 * This adds a property descriptor for the Continue After Route feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addContinueRoutePropertyDescriptor(Object object) {
+	protected void addContinueAfterRoutePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ConditionalRouterMediator_continueRoute_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ConditionalRouterMediator_continueRoute_feature", "_UI_ConditionalRouterMediator_type"),
-				 EsbPackage.Literals.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE,
+				 getString("_UI_ConditionalRouterMediator_continueAfterRoute_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ConditionalRouterMediator_continueAfterRoute_feature", "_UI_ConditionalRouterMediator_type"),
+				 EsbPackage.Literals.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE,
 				 true,
 				 false,
 				 false,
@@ -194,7 +194,7 @@ public class ConditionalRouterMediatorItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ConditionalRouterMediator.class)) {
-			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE:
+			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.CONDITIONAL_ROUTER_MEDIATOR__CONDITIONAL_ROUTE_BRANCHES:

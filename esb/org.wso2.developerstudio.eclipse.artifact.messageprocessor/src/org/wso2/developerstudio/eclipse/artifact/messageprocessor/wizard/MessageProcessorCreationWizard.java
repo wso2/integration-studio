@@ -26,7 +26,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Pattern;
+
 import javax.xml.namespace.QName;
+
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
@@ -50,6 +52,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messageprocessor.model.MessageProcessorModel;
+import org.wso2.developerstudio.eclipse.artifact.messageprocessor.util.MessageProcessorImageUtils;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
@@ -72,11 +75,13 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 	private IFile artifactFile;
 	private List<File> fileLst = new ArrayList<File>();
 
+	private String version = "1.0.0";
+
 	public MessageProcessorCreationWizard() {
 		messageProcessorModel = new MessageProcessorModel();
 		setModel(messageProcessorModel);
 		setWindowTitle("New Message processor");
-		// setDefaultPageImageDescriptor(MessageProcessorImageUtils.getInstance().getImageDescriptor("icons/message-store.png"));
+		setDefaultPageImageDescriptor(MessageProcessorImageUtils.getInstance().getImageDescriptor("message-processor.png"));
 	}
 
 	@Override
@@ -112,7 +117,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 								.getMessageProcessorName() + ".xml")).replaceAll(
 										Pattern.quote(File.separator), "/");
 				esbProjectArtifact.addESBArtifact(createArtifact(
-						messageProcessorModel.getMessageProcessorName(), groupId, "1.0.0",
+						messageProcessorModel.getMessageProcessorName(), groupId, version,
 						relativePath));
 				esbProjectArtifact.toFile();
 			} else {
@@ -166,7 +171,8 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 	public void updatePom() throws Exception {
 		File mavenProjectPomLocation = esbProject.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
-
+		 version  = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject, "org.wso2.maven",
 				"wso2-esb-messageprocessor-plugin",
 				MavenConstants.WSO2_ESB_MESSAGE_STORE_PLUGIN_VERSION);
@@ -383,7 +389,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 					String relativePath = FileUtils.getRelativePath(importLocation.getProject()
 							.getLocation().toFile(), new File(
 									importLocation.getLocation().toFile(), name + ".xml"));
-					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, "1.0.0",
+					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, version,
 							relativePath));
 				}
 			}
@@ -397,7 +403,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				String relativePath = FileUtils.getRelativePath(importLocation.getProject()
 						.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
 								name + ".xml"));
-				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, "1.0.0",
+				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId, version,
 						relativePath));
 			}
 		}

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Remote
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.usermgt.remote
-Bundle-Version: 3.6.0.qualifier
+Bundle-Version: 3.8.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.usermgt.remote.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
@@ -37,6 +37,6 @@ Import-Package: javax.activation;version="1.1.0",
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.developerstudio.eclipse.utils.jdt
 Bundle-ClassPath: .,
- lib/org.wso2.carbon.user.mgt.stub_4.0.5.jar
+ lib/org.wso2.carbon.user.mgt.stub_4.2.0.jar
 Export-Package: org.wso2.carbon.core.services.authentication,
  org.wso2.developerstudio.eclipse.usermgt.remote

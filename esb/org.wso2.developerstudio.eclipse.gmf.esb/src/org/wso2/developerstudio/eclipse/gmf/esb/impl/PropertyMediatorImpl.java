@@ -38,12 +38,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getPropertyAction <em>Property Action</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getPropertyScope <em>Property Scope</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueType <em>Value Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueLiteral <em>Value Literal</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getNamespacePrefix <em>Namespace Prefix</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueExpression <em>Value Expression</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueOM <em>Value OM</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#isBoolean <em>Boolean</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getOM <em>OM</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueStringPattern <em>Value String Pattern</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.PropertyMediatorImpl#getValueStringCapturingGroup <em>Value String Capturing Group</em>}</li>
  * </ul>
@@ -173,24 +174,24 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	protected PropertyValueType valueType = VALUE_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getValueLiteral() <em>Value Literal</em>}' attribute.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueLiteral()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_LITERAL_EDEFAULT = "value";
+	protected static final String VALUE_EDEFAULT = "value";
 
 	/**
-	 * The cached value of the '{@link #getValueLiteral() <em>Value Literal</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueLiteral()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected String valueLiteral = VALUE_LITERAL_EDEFAULT;
+	protected String value = VALUE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
@@ -263,24 +264,44 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	protected NamespacedProperty valueExpression;
 
 	/**
-	 * The default value of the '{@link #getValueOM() <em>Value OM</em>}' attribute.
+	 * The default value of the '{@link #isBoolean() <em>Boolean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueOM()
+	 * @see #isBoolean()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_OM_EDEFAULT = "<value/>";
+	protected static final boolean BOOLEAN_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getValueOM() <em>Value OM</em>}' attribute.
+	 * The cached value of the '{@link #isBoolean() <em>Boolean</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValueOM()
+	 * @see #isBoolean()
 	 * @generated
 	 * @ordered
 	 */
-	protected String valueOM = VALUE_OM_EDEFAULT;
+	protected boolean boolean_ = BOOLEAN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOM() <em>OM</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOM()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OM_EDEFAULT = "<value/>";
+
+	/**
+	 * The cached value of the '{@link #getOM() <em>OM</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOM()
+	 * @generated
+	 * @ordered
+	 */
+	protected String om = OM_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValueStringPattern() <em>Value String Pattern</em>}' attribute.
@@ -290,7 +311,7 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_STRING_PATTERN_EDEFAULT = "";
+	protected static final String VALUE_STRING_PATTERN_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getValueStringPattern() <em>Value String Pattern</em>}' attribute.
@@ -458,8 +479,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValueLiteral() {
-		return valueLiteral;
+	public String getValue() {
+		return value;
 	}
 
 	/**
@@ -467,11 +488,11 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValueLiteral(String newValueLiteral) {
-		String oldValueLiteral = valueLiteral;
-		valueLiteral = newValueLiteral;
+	public void setValue(String newValue) {
+		String oldValue = value;
+		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__VALUE_LITERAL, oldValueLiteral, valueLiteral));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__VALUE, oldValue, value));
 	}
 
 	/**
@@ -585,8 +606,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValueOM() {
-		return valueOM;
+	public boolean isBoolean() {
+		return boolean_;
 	}
 
 	/**
@@ -594,11 +615,32 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValueOM(String newValueOM) {
-		String oldValueOM = valueOM;
-		valueOM = newValueOM;
+	public void setBoolean(boolean newBoolean) {
+		boolean oldBoolean = boolean_;
+		boolean_ = newBoolean;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__VALUE_OM, oldValueOM, valueOM));
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__BOOLEAN, oldBoolean, boolean_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOM() {
+		return om;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOM(String newOM) {
+		String oldOM = om;
+		om = newOM;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROPERTY_MEDIATOR__OM, oldOM, om));
 	}
 
 	/**
@@ -771,8 +813,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 				return getPropertyScope();
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_TYPE:
 				return getValueType();
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_LITERAL:
-				return getValueLiteral();
+			case EsbPackage.PROPERTY_MEDIATOR__VALUE:
+				return getValue();
 			case EsbPackage.PROPERTY_MEDIATOR__EXPRESSION:
 				return getExpression();
 			case EsbPackage.PROPERTY_MEDIATOR__NAMESPACE_PREFIX:
@@ -781,8 +823,10 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 				return getNamespace();
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_EXPRESSION:
 				return getValueExpression();
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_OM:
-				return getValueOM();
+			case EsbPackage.PROPERTY_MEDIATOR__BOOLEAN:
+				return isBoolean();
+			case EsbPackage.PROPERTY_MEDIATOR__OM:
+				return getOM();
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN:
 				return getValueStringPattern();
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP:
@@ -821,8 +865,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_TYPE:
 				setValueType((PropertyValueType)newValue);
 				return;
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_LITERAL:
-				setValueLiteral((String)newValue);
+			case EsbPackage.PROPERTY_MEDIATOR__VALUE:
+				setValue((String)newValue);
 				return;
 			case EsbPackage.PROPERTY_MEDIATOR__EXPRESSION:
 				setExpression((String)newValue);
@@ -836,8 +880,11 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_EXPRESSION:
 				setValueExpression((NamespacedProperty)newValue);
 				return;
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_OM:
-				setValueOM((String)newValue);
+			case EsbPackage.PROPERTY_MEDIATOR__BOOLEAN:
+				setBoolean((Boolean)newValue);
+				return;
+			case EsbPackage.PROPERTY_MEDIATOR__OM:
+				setOM((String)newValue);
 				return;
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN:
 				setValueStringPattern((String)newValue);
@@ -879,8 +926,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_TYPE:
 				setValueType(VALUE_TYPE_EDEFAULT);
 				return;
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_LITERAL:
-				setValueLiteral(VALUE_LITERAL_EDEFAULT);
+			case EsbPackage.PROPERTY_MEDIATOR__VALUE:
+				setValue(VALUE_EDEFAULT);
 				return;
 			case EsbPackage.PROPERTY_MEDIATOR__EXPRESSION:
 				setExpression(EXPRESSION_EDEFAULT);
@@ -894,8 +941,11 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_EXPRESSION:
 				setValueExpression((NamespacedProperty)null);
 				return;
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_OM:
-				setValueOM(VALUE_OM_EDEFAULT);
+			case EsbPackage.PROPERTY_MEDIATOR__BOOLEAN:
+				setBoolean(BOOLEAN_EDEFAULT);
+				return;
+			case EsbPackage.PROPERTY_MEDIATOR__OM:
+				setOM(OM_EDEFAULT);
 				return;
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN:
 				setValueStringPattern(VALUE_STRING_PATTERN_EDEFAULT);
@@ -930,8 +980,8 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 				return propertyScope != PROPERTY_SCOPE_EDEFAULT;
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_TYPE:
 				return valueType != VALUE_TYPE_EDEFAULT;
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_LITERAL:
-				return VALUE_LITERAL_EDEFAULT == null ? valueLiteral != null : !VALUE_LITERAL_EDEFAULT.equals(valueLiteral);
+			case EsbPackage.PROPERTY_MEDIATOR__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 			case EsbPackage.PROPERTY_MEDIATOR__EXPRESSION:
 				return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
 			case EsbPackage.PROPERTY_MEDIATOR__NAMESPACE_PREFIX:
@@ -940,8 +990,10 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 				return NAMESPACE_EDEFAULT == null ? namespace != null : !NAMESPACE_EDEFAULT.equals(namespace);
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_EXPRESSION:
 				return valueExpression != null;
-			case EsbPackage.PROPERTY_MEDIATOR__VALUE_OM:
-				return VALUE_OM_EDEFAULT == null ? valueOM != null : !VALUE_OM_EDEFAULT.equals(valueOM);
+			case EsbPackage.PROPERTY_MEDIATOR__BOOLEAN:
+				return boolean_ != BOOLEAN_EDEFAULT;
+			case EsbPackage.PROPERTY_MEDIATOR__OM:
+				return OM_EDEFAULT == null ? om != null : !OM_EDEFAULT.equals(om);
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_PATTERN:
 				return VALUE_STRING_PATTERN_EDEFAULT == null ? valueStringPattern != null : !VALUE_STRING_PATTERN_EDEFAULT.equals(valueStringPattern);
 			case EsbPackage.PROPERTY_MEDIATOR__VALUE_STRING_CAPTURING_GROUP:
@@ -971,16 +1023,18 @@ public class PropertyMediatorImpl extends MediatorImpl implements PropertyMediat
 		result.append(propertyScope);
 		result.append(", valueType: ");
 		result.append(valueType);
-		result.append(", valueLiteral: ");
-		result.append(valueLiteral);
+		result.append(", value: ");
+		result.append(value);
 		result.append(", expression: ");
 		result.append(expression);
 		result.append(", namespacePrefix: ");
 		result.append(namespacePrefix);
 		result.append(", namespace: ");
 		result.append(namespace);
-		result.append(", valueOM: ");
-		result.append(valueOM);
+		result.append(", boolean: ");
+		result.append(boolean_);
+		result.append(", OM: ");
+		result.append(om);
 		result.append(", valueStringPattern: ");
 		result.append(valueStringPattern);
 		result.append(", valueStringCapturingGroup: ");

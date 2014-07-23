@@ -178,10 +178,11 @@ public class CAppDeployer {
 	 */
 	public static void unDeployCAR(String serverURL, String username, String pwd, String carName) throws Exception{
 		ApplicationAdminStub appAdminStub = getApplicationAdminStub(serverURL, username, pwd);
-		String[] existingApplications = appAdminStub.listAllApplications();
-		if (existingApplications!=null && Arrays.asList(existingApplications).contains(carName)){
-			appAdminStub.deleteApplication(carName);
-		}
+		try{
+            appAdminStub.deleteApplication(carName);
+        }catch(Exception e){
+        	log.error(e);
+        }
 	}
 
 	private static ApplicationAdminStub getApplicationAdminStub(

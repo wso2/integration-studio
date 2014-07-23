@@ -494,11 +494,6 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
 					return;
 				}
-				else if (this instanceof RespondMediatorEditPart){
-					mediatorType = "Respond Mediator";
-					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
-					return;
-				}
 				else if (this instanceof LoopBackMediatorEditPart){
 					mediatorType = "LoopBack Mediator";
 					deleteNewlyAddedMediator(warningAddingMediatorsAlreadyAvailableBegin + mediatorType + warningAddingMediatorsAlreadyAvailableEnd);
@@ -550,9 +545,12 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 					return;
 				}
 				else if (mediator instanceof RespondMediatorEditPart){
+					EditPart compartment = mediator.getParent();
+					if (!isComplexCompartment(compartment)){
 					mediatorType = "Respond Mediator";
 					deleteNewlyAddedMediator(warningAddingMediatorsAfter + mediatorType);
 					return;
+					}
 				}
 				else if (mediator instanceof LoopBackMediatorEditPart){
 					mediatorType = "LoopBack Mediator";

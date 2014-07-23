@@ -41,7 +41,16 @@
         name="ElementFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="ElementFigure"/>
+          name="ElementFigure">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="ElementNameFigure"
+            text="&lt;...>"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="AttributeFigure">
@@ -53,7 +62,16 @@
         name="TreeNodeFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="TreeNodeFigure"/>
+          name="TreeNodeFigure">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="TreeNodeNameFigure"
+            text="&lt;...>"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.7/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="InNodeFigure">
@@ -91,6 +109,78 @@
           xsi:type="gmfgraph:Rectangle"
           name="CompartmentFigure"
           outline="false"/>
+    </descriptors>
+    <descriptors
+        name="EqualFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="EqualFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorBasicContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorBasicContainerFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorLeftContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorLeftContainerFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorLeftConnectorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorLeftConnectorFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorRightContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorRightContainerFigure"/>
+    </descriptors>
+    <descriptors
+        name="OperatorRightConnectorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="OperatorRightConnectorFigure"/>
+    </descriptors>
+    <descriptors
+        name="SplitFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="SplitFigure"/>
+    </descriptors>
+    <descriptors
+        name="ConstantFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="ConstantFigure"/>
+    </descriptors>
+    <descriptors
+        name="LowerCaseFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="LowerCaseFigure"/>
+    </descriptors>
+    <descriptors
+        name="ContainsFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="ContainsFigure"/>
+    </descriptors>
+    <descriptors
+        name="UpperCaseFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="UpperCaseFigure"/>
     </descriptors>
   </figures>
   <nodes
@@ -134,10 +224,56 @@
   <nodes
       name="Operations"
       figure="OperationsFigure"/>
+  <nodes
+      name="Equal"
+      figure="EqualFigure"/>
+  <nodes
+      name="Operator"
+      figure="OperatorFigure"/>
+  <nodes
+      name="OperatorBasicContainer"
+      figure="OperatorBasicContainerFigure"/>
+  <nodes
+      name="OperatorLeftContainer"
+      figure="OperatorLeftContainerFigure"/>
+  <nodes
+      name="OperatorLeftConnector"
+      figure="OperatorLeftConnectorFigure"/>
+  <nodes
+      name="OperatorRightContainer"
+      figure="OperatorRightContainerFigure"/>
+  <nodes
+      name="OperatorRightConnector"
+      figure="OperatorRightConnectorFigure"/>
+  <nodes
+      name="Split"
+      figure="SplitFigure"/>
+  <nodes
+      name="Constant"
+      figure="ConstantFigure"/>
+  <nodes
+      name="LowerCase"
+      figure="LowerCaseFigure"/>
+  <nodes
+      name="Contains"
+      figure="ContainsFigure"/>
+  <nodes
+      name="UpperCase"
+      figure="UpperCaseFigure"/>
   <connections
       name="DataMapperLink"
       figure="DataMapperLinkFigure"/>
   <compartments
       name="OperationsCompartment"
       figure="CompartmentFigure"/>
+  <labels
+      name="TreeNodeName"
+      figure="TreeNodeFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.7/@accessors.0"/>
+  <labels
+      name="ElementName"
+      figure="ElementFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.5/@accessors.0"/>
 </gmfgraph:Canvas>

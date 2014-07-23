@@ -2823,24 +2823,6 @@ public interface EsbFactory extends EFactory {
 	WSDLEndPoint createWSDLEndPoint();
 
 	/**
-	 * Returns a new object of class '<em>WSDL Definition</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>WSDL Definition</em>'.
-	 * @generated
-	 */
-	WSDLDefinition createWSDLDefinition();
-
-	/**
-	 * Returns a new object of class '<em>WSDL Description</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>WSDL Description</em>'.
-	 * @generated
-	 */
-	WSDLDescription createWSDLDescription();
-
-	/**
 	 * Returns a new object of class '<em>WSDL End Point Input Connector</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

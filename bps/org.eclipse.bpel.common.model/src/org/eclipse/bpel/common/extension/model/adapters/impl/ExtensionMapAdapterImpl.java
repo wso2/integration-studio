@@ -44,7 +44,7 @@ public class ExtensionMapAdapterImpl extends AdapterImpl {
 	/**
 	 * @see org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	
+	@Override
 	public void notifyChanged(Notification notification) {
 
 		if(notification.getFeatureID(null) == ExtensionmodelPackage.EXTENSION_MAP__EXTENSIONS){
@@ -129,7 +129,7 @@ public class ExtensionMapAdapterImpl extends AdapterImpl {
 	/**
 	 * @see org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
 	 */
-	
+	@Override
 	public boolean isAdapterForType(Object type) {
 		return ExtensionMapImpl.class.equals(type);
 	}

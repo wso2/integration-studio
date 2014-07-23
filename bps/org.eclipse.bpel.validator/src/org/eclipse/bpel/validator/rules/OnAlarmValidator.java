@@ -48,7 +48,7 @@ public class OnAlarmValidator extends CValidator {
 	/**
 	 * Start the validation of this node.
 	 */
-	
+	@Override
 	protected void start () {
 		super.start();		
 		forExpr = mNode.getNode( ND_FOR );
@@ -61,7 +61,7 @@ public class OnAlarmValidator extends CValidator {
 	/**
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		
 		super.checkChildren();

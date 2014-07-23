@@ -29,11 +29,9 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.Sparql;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.Sparql} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.Sparql} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SparqlItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -44,7 +42,6 @@ public class SparqlItemProvider extends ItemProviderAdapter implements IEditingD
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public SparqlItemProvider(AdapterFactory adapterFactory) {
@@ -55,7 +52,6 @@ public class SparqlItemProvider extends ItemProviderAdapter implements IEditingD
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -73,29 +69,28 @@ public class SparqlItemProvider extends ItemProviderAdapter implements IEditingD
 	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_Sparql_value_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_Sparql_value_feature",
-		                                                                   "_UI_Sparql_type"),
-		                                                         DsPackage.Literals.SPARQL__VALUE,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sparql_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sparql_value_feature", "_UI_Sparql_type"),
+				 DsPackage.Literals.SPARQL__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This returns Sparql.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -120,13 +115,10 @@ public class SparqlItemProvider extends ItemProviderAdapter implements IEditingD
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached
-	 * children and by creating a viewer notification, which it passes to
-	 * {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -136,20 +128,17 @@ public class SparqlItemProvider extends ItemProviderAdapter implements IEditingD
 
 		switch (notification.getFeatureID(Sparql.class)) {
 			case DsPackage.SPARQL__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(),
-				                                         false, true));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing the children
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -162,7 +151,6 @@ public class SparqlItemProvider extends ItemProviderAdapter implements IEditingD
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 

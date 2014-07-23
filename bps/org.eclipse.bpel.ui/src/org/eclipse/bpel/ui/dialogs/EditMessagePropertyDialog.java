@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -120,11 +120,11 @@ public class EditMessagePropertyDialog extends Dialog {
 	/** inner classes **/
 
 	public class MessageTypeColumn extends ColumnTableProvider.Column implements ILabelProvider {
-		
+		@Override
 		public String getHeaderText() { return Messages.EditMessagePropertyDialog_1; } 
-		
+		@Override
 		public String getProperty() { return "aliasMsgType"; } //$NON-NLS-1$
-		
+		@Override
 		public int getInitialWeight() { return 50; }
 
 		ModelLabelProvider labelProvider = new ModelLabelProvider();
@@ -148,11 +148,11 @@ public class EditMessagePropertyDialog extends Dialog {
 	}
 
 	public class XSDElementColumn extends ColumnTableProvider.Column implements ILabelProvider {
-		
+		@Override
 		public String getHeaderText() { return Messages.EditMessagePropertyDialog_15; } 
-		
+		@Override
 		public String getProperty() { return "aliasElement"; } //$NON-NLS-1$
-		
+		@Override
 		public int getInitialWeight() { return 25; }
 
 		public String getText(Object element) {
@@ -170,11 +170,11 @@ public class EditMessagePropertyDialog extends Dialog {
 	}
 
 	public class XSDTypeColumn extends ColumnTableProvider.Column implements ILabelProvider {
-		
+		@Override
 		public String getHeaderText() { return Messages.EditMessagePropertyDialog_16; } 
-		
+		@Override
 		public String getProperty() { return "aliasType"; } //$NON-NLS-1$
-		
+		@Override
 		public int getInitialWeight() { return 25; }
 
 		public String getText(Object element) {
@@ -232,7 +232,7 @@ public class EditMessagePropertyDialog extends Dialog {
 		return property;
 	}
 
-	
+	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite composite = (Composite) super.createDialogArea(parent);
 		GridLayout layout = (GridLayout) composite.getLayout();
@@ -329,7 +329,7 @@ public class EditMessagePropertyDialog extends Dialog {
 		aliasesTableViewer.setLabelProvider(aliasesTableProvider);
 		// Content provider that combines aliases from the actual model and newAliasesList.
 		aliasesTableViewer.setContentProvider(new PropertyAliasContentProvider() {
-			
+			@Override
 			public Object[] getElements(Object input) {
 				Object[] superResult = super.getElements(input);
 				Object[] result = new Object[superResult.length + newAliasesList.size()];
@@ -424,7 +424,7 @@ public class EditMessagePropertyDialog extends Dialog {
 		button.setSelection( checked );
 		
 		button.addSelectionListener (new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected (SelectionEvent event) {
 				Button b = (Button) event.widget;
 				int val = ((Integer) b.getData()).intValue();
@@ -486,7 +486,7 @@ public class EditMessagePropertyDialog extends Dialog {
 		}
 	}
 
-	
+	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (isNew) {
@@ -496,7 +496,7 @@ public class EditMessagePropertyDialog extends Dialog {
 		}
 	}
 
-	
+	@Override
 	protected Control createContents(Composite parent) {
 		Control result = super.createContents(parent);
 		updateEnablement();
@@ -598,7 +598,7 @@ public class EditMessagePropertyDialog extends Dialog {
 		return property.eResource().getURI();
 	}
 	
-	
+	@Override
 	protected void okPressed() {
 		createProperty();
 		super.okPressed();
@@ -614,7 +614,7 @@ public class EditMessagePropertyDialog extends Dialog {
 		final Definition definition = (Definition) resource.getContents().get(0);
 
 		bpelEditor.getCommandFramework().execute(new AutoUndoCommand(definition) {
-			
+			@Override
 			public void doExecute() {
 				if (isNew) {
 					definition.getEExtensibilityElements().add(property);
@@ -685,7 +685,7 @@ public class EditMessagePropertyDialog extends Dialog {
 				Resource resource = bpelEditor.getResourceSet().getResource(uri, true);
 				final Definition definition = (Definition) resource.getContents().get(0);
 				bpelEditor.getCommandFramework().execute(new AutoUndoCommand(definition) {
-					
+					@Override
 					public void doExecute() {
 						if (isNew) {
 							// save the alias and add them later

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 University College London Software Systems Engineering
+ * Copyright (c) 2006, 2012 University College London Software Systems Engineering
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ public interface IBPELModuleFacetConstants {
 	
 	// facet
 	public final static String BPEL20_PROJECT_FACET = "bpel.facet.core"; //$NON-NLS-1$ 
+	public final static String JBT_BPEL20_PROJECT_FACET = "jbt.bpel.facet.core"; //$NON-NLS-1$ 
 	
 	// bpel file extension
 	public final static String BPEL_FILE_EXTENSION = "bpel";  //$NON-NLS-1$

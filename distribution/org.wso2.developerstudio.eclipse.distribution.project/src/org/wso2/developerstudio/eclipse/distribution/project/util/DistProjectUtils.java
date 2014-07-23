@@ -71,9 +71,15 @@ public class DistProjectUtils {
 		if(project!=null){
 			Properties properties = project.getModel().getProperties();
 			String artifactInfo = getArtifactInfoAsString(dependency);
+			String artifactInfoOld = getArtifactInfoAsStringOld(dependency);	//get artifact info in old property format
 			if(properties.containsKey(artifactInfo)){
 				serverRole = properties.getProperty(artifactInfo);
-			} else {
+			} 
+			else if(properties.containsKey(artifactInfoOld )){
+				//if properties in old format (devs 3.2 or above)
+				serverRole = properties.getProperty(artifactInfoOld);
+			}
+			else {
 				ProjectList projectListProvider = new ProjectList();
 				List<ListData> projectListData = projectListProvider.getListData(null, null);
 				Map<String,DependencyData> projectList= new HashMap<String, DependencyData>();
@@ -85,6 +91,13 @@ public class DistProjectUtils {
 			}
 		}
 		return serverRole;
+	}
+	
+	/*
+		 * method for create property key in old format (devs 3.2 or above)
+		 */
+	public static String getArtifactInfoAsStringOld(Dependency dep) {
+		return  dep.getGroupId().concat(":").concat(dep.getArtifactId()).concat(":").concat(dep.getVersion());
 	}
 	
 	public static String getDefaultServerRole(final Map<String, DependencyData> projectList,final Dependency dependency){

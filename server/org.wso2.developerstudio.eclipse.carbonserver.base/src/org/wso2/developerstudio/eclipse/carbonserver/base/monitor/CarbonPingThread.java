@@ -29,7 +29,7 @@ import org.eclipse.wst.server.core.util.SocketUtil;
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServerBehaviour;
 
 public class CarbonPingThread extends PingThread {
-	private static final int PING_DELAY = 2000;
+	private static final int PING_DELAY = 10000;
 
 	// delay between pings
 	private static final int PING_INTERVAL = 250;

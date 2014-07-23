@@ -32,8 +32,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getWSDLDefinition <em>WSDL Definition</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getWSDLDescription <em>WSDL Description</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl#getWsdlUri <em>Wsdl Uri</em>}</li>
@@ -45,26 +43,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPointOutputConnector;
  * @generated
  */
 public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoint {
-	/**
-	 * The cached value of the '{@link #getWSDLDefinition() <em>WSDL Definition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWSDLDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<WSDLDefinition> wsdlDefinition;
-
-	/**
-	 * The cached value of the '{@link #getWSDLDescription() <em>WSDL Description</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWSDLDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<WSDLDescription> wsdlDescription;
-
 	/**
 	 * The cached value of the '{@link #getInputConnector() <em>Input Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -162,30 +140,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
 	@Override
 	protected EClass eStaticClass() {
 		return EsbPackage.Literals.WSDL_END_POINT;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<WSDLDefinition> getWSDLDefinition() {
-		if (wsdlDefinition == null) {
-			wsdlDefinition = new EObjectResolvingEList<WSDLDefinition>(WSDLDefinition.class, this, EsbPackage.WSDL_END_POINT__WSDL_DEFINITION);
-		}
-		return wsdlDefinition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<WSDLDescription> getWSDLDescription() {
-		if (wsdlDescription == null) {
-			wsdlDescription = new EObjectResolvingEList<WSDLDescription>(WSDLDescription.class, this, EsbPackage.WSDL_END_POINT__WSDL_DESCRIPTION);
-		}
-		return wsdlDescription;
 	}
 
 	/**
@@ -361,10 +315,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EsbPackage.WSDL_END_POINT__WSDL_DEFINITION:
-				return getWSDLDefinition();
-			case EsbPackage.WSDL_END_POINT__WSDL_DESCRIPTION:
-				return getWSDLDescription();
 			case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
 				return getInputConnector();
 			case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:
@@ -388,14 +338,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EsbPackage.WSDL_END_POINT__WSDL_DEFINITION:
-				getWSDLDefinition().clear();
-				getWSDLDefinition().addAll((Collection<? extends WSDLDefinition>)newValue);
-				return;
-			case EsbPackage.WSDL_END_POINT__WSDL_DESCRIPTION:
-				getWSDLDescription().clear();
-				getWSDLDescription().addAll((Collection<? extends WSDLDescription>)newValue);
-				return;
 			case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
 				setInputConnector((WSDLEndPointInputConnector)newValue);
 				return;
@@ -423,12 +365,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EsbPackage.WSDL_END_POINT__WSDL_DEFINITION:
-				getWSDLDefinition().clear();
-				return;
-			case EsbPackage.WSDL_END_POINT__WSDL_DESCRIPTION:
-				getWSDLDescription().clear();
-				return;
 			case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
 				setInputConnector((WSDLEndPointInputConnector)null);
 				return;
@@ -456,10 +392,6 @@ public class WSDLEndPointImpl extends AbstractEndPointImpl implements WSDLEndPoi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EsbPackage.WSDL_END_POINT__WSDL_DEFINITION:
-				return wsdlDefinition != null && !wsdlDefinition.isEmpty();
-			case EsbPackage.WSDL_END_POINT__WSDL_DESCRIPTION:
-				return wsdlDescription != null && !wsdlDescription.isEmpty();
 			case EsbPackage.WSDL_END_POINT__INPUT_CONNECTOR:
 				return inputConnector != null;
 			case EsbPackage.WSDL_END_POINT__OUTPUT_CONNECTOR:

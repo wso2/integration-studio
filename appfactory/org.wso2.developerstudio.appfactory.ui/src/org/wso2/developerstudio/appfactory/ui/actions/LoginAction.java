@@ -16,6 +16,8 @@
 
 package org.wso2.developerstudio.appfactory.ui.actions;
 
+import java.util.Map;
+
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -25,6 +27,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
 import org.wso2.developerstudio.appfactory.core.authentication.UserPasswordCredentials;
+import org.wso2.developerstudio.appfactory.core.client.CloudAdminServiceClient;
 import org.wso2.developerstudio.appfactory.core.jag.api.JagApiProperties;
 import org.wso2.developerstudio.appfactory.ui.Activator;
 import org.wso2.developerstudio.appfactory.ui.preference.AppFactoryPreferencePage;
@@ -36,12 +39,13 @@ public class LoginAction {
 	 private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	 private String username="";
 	 private String password="";
-	 private Authenticator authenticator;
-	 private UserPasswordCredentials credentials;
+/*	 private Authenticator authenticator;
+	 private UserPasswordCredentials credentials;*/
 	 private Shell activeShell;
 	 private IPreferenceStore preferenceStore;
 	 private boolean isCansel;
 	 private boolean isSave;
+	 private boolean isAppCloud;
 	 
 	 public IPreferenceStore getPreferenceStore() {
 		return preferenceStore;
@@ -61,9 +65,11 @@ public class LoginAction {
 
 	public LoginAction() throws Exception{
 		 preferenceStore = Activator.getDefault().getPreferenceStore();
-		 authenticator = Authenticator.getInstance();
+	//	 authenticator = Authenticator.getInstance();
 		 activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-		 preferenceStore.setDefault(AppFactoryPreferencePage.APP_FACTORY_LOCATION, JagApiProperties.getDomain());
+		 if(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_LOCATION).isEmpty()){
+			 preferenceStore.setDefault(AppFactoryPreferencePage.APP_FACTORY_LOCATION, JagApiProperties.getDomain());
+		 }
 		 setLoginUrl(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_LOCATION));
 		 setUsername(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_USERNAME));
 		 setPassword(preferenceStore.getString(AppFactoryPreferencePage.APP_FACTORY_PASSWORD));
@@ -72,6 +78,13 @@ public class LoginAction {
 			 setSave(true);
 		 }else{
 			 setSave(false);
+		 }
+		 String isCloud = preferenceStore.getString(AppFactoryPreferencePage.APP_CLOUD_LOGIN);
+		 
+		 if(isCloud.equals("true") || isCloud.isEmpty()){
+			 isAppCloud = true;
+		 }else if(isCloud.equals("false")){
+			 isAppCloud = false;
 		 }
 	 }
 	
@@ -84,9 +97,10 @@ public class LoginAction {
 			}else if(logoutAndLogin){
 				showLoginDialog(isFromDashboad);
 			}else{
+				
+				Authenticator.getInstance().setServerURL(JagApiProperties.getLoginUrl());
 				Authenticator.getInstance().setCredentials(new UserPasswordCredentials(getUsername()
 						, getPassword()));
-				Authenticator.getInstance().setServerURL(JagApiProperties.getLoginUrl());
 			}
 			if(isCansel){
 				return false;
@@ -99,6 +113,12 @@ public class LoginAction {
 				  preferenceStore.setValue(AppFactoryPreferencePage.APP_FACTORY_USERNAME,getUsername());
 				  preferenceStore.setValue(AppFactoryPreferencePage.APP_FACTORY_PASSWORD,getPassword());
 				  preferenceStore.setValue(AppFactoryPreferencePage.APP_FACTORY_SAVE,"true");
+				  
+				  if(isAppCloud()){
+					  preferenceStore.setValue(AppFactoryPreferencePage.APP_CLOUD_LOGIN,"true");
+				  }else{
+					  preferenceStore.setValue(AppFactoryPreferencePage.APP_CLOUD_LOGIN,"false");
+				  }
 			}
 		} catch (Exception e) {
 			log.error("Login fail", e);
@@ -139,16 +159,19 @@ public class LoginAction {
 	}
 	
 	private void showLoginDialog(boolean isFromDashboad){
-		  PasswordDialog dialog = new PasswordDialog(activeShell);
+		  PasswordDialog dialog = new PasswordDialog(activeShell, this);
 		  dialog.setHost(JagApiProperties.getDomain());
 		  dialog.setUser(getUsername());
 		  dialog.setPassword(getPassword());
 		  dialog.setIsfromDashboad(isFromDashboad);
+		  dialog.setAppCloud(isAppCloud);
+		  
 		 if (dialog.open() == Window.OK) {
 			  setUsername(dialog.getUser());
 			  setPassword(dialog.getPassword());
 			  setLoginUrl(dialog.getHost());
 			  setSave(dialog.isSave());
+			  setAppCloud(dialog.isAppCloud());
 		 }else {
 			   this.setCansel(true);
 		 } 
@@ -167,6 +190,13 @@ public class LoginAction {
 
 	public void setSave(boolean isSave) {
 		this.isSave = isSave;
+	}
+	public boolean isAppCloud() {
+		return isAppCloud;
+	}
+
+	public void setAppCloud(boolean isAppCloud) {
+		this.isAppCloud = isAppCloud;
 	}
 	static final String DASHBOARD_VIEW_ID = "org.wso2.developerstudio.eclipse.dashboard";
 

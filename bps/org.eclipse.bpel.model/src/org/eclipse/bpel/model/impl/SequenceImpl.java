@@ -65,7 +65,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.SEQUENCE;
 	}
@@ -88,7 +88,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -104,7 +104,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case BPELPackage.SEQUENCE__ACTIVITIES:
@@ -119,7 +119,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case BPELPackage.SEQUENCE__ACTIVITIES:
@@ -135,7 +135,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case BPELPackage.SEQUENCE__ACTIVITIES:
@@ -150,7 +150,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case BPELPackage.SEQUENCE__ACTIVITIES:
@@ -159,7 +159,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 		return super.eIsSet(featureID);
 	}
 
-	
+	@Override
 	protected void adoptContent(EReference reference, Object object) {
 		if (object instanceof Activity) {
 			ReconciliationHelper.adoptChild(this, activities,
@@ -169,7 +169,7 @@ public class SequenceImpl extends ActivityImpl implements Sequence {
 
 	}
 
-	
+	@Override
 	protected void orphanContent(EReference reference, Object obj) {
 		if (obj instanceof Activity) {
 			ReconciliationHelper.orphanChild(this, (Activity) obj);

@@ -112,7 +112,7 @@ public class JavaLibraryUtil {
 					File pomFile = pomFiles[0];
 					MavenProject mavenProject = getMavenProject(pomFile);
 					// JavaLibraryBean bean = new
-					// JavaLibraryBean("/media/dev/wso2products/3.2.0/wso2greg-4.0.0-SNAPSHOT/lib",
+					// JavaLibraryBean("/media/dev/wso2products/3.2.0/wso2greg-3.7.0/lib",
 					// "org.wso2.sample", "test.sample", "1.0.0");
 					JavaLibraryBean bean = new JavaLibraryBean(libraryFile,
 							mavenProject.getGroupId(),

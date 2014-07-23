@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -68,10 +68,10 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	 * Override getDragTracker to supply double-click behaviour to expand
 	 * the fault handler if one exists
 	 */
-	
+	@Override
 	public DragTracker getDragTracker(Request request) {
 		return new BPELDragEditPartsTracker(this) {
-			
+			@Override
 			protected boolean handleButtonDown(int button) {
 				Point point = getLocation();
 				if (border.isPointInFaultImage(point.x, point.y)) {
@@ -88,7 +88,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#refreshVisuals()
 	 */
-	
+	@Override
 	public void refreshVisuals() {
 		super.refreshVisuals();
 		border.setShowFault(getFaultHandler() != null);
@@ -103,7 +103,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	}
 
 	// here's the one from scope edit part
-	
+	@Override
 	protected IFigure createFigure() {
 		if (image == null) {
 			ILabeledElement element = BPELUtil.adapt(getActivity(), ILabeledElement.class);
@@ -190,7 +190,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	 * the expansion icon. All other connections are centered on the contentFigure
 	 * with an offset of 0.
 	 */
-	
+	@Override
 	public ConnectionAnchor getConnectionAnchor(int location) {
 		switch(location){
 		case CenteredConnectionAnchor.TOP_INNER:
@@ -208,7 +208,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	 * Override addChildVisual so that it adds the childEditPart to the correct
 	 * figure. FH/EH/CH go in a different figure than the activity does.
 	 */
-	
+	@Override
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		IFigure child = ((GraphicalEditPart)childEditPart).getFigure();
 		IFigure content = getContentPane(childEditPart);
@@ -230,7 +230,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	 * the correct figure. FH/EH/CH live in a different figure than the
 	 * activity does.
 	 */
-	
+	@Override
 	protected void removeChildVisual(EditPart childEditPart) {
 		IFigure child = ((GraphicalEditPart)childEditPart).getFigure();
 		getContentPane(childEditPart).remove(child);
@@ -239,7 +239,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	/**
 	 * Also overridden to call getContentPane(child) in the appropriate place.
 	 */
-	
+	@Override
 	protected void reorderChild(EditPart child, int index) {
 		// Save the constraint of the child so that it does not
 		// get lost during the remove and re-add.
@@ -261,7 +261,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	/**
 	 * Yet Another Overridden Method.
 	 */
-	
+	@Override
 	public void setLayoutConstraint(EditPart child, IFigure childFigure, Object constraint) {
 		getContentPane(child).setConstraint(childFigure, constraint);
 	}
@@ -269,7 +269,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	/**
 	 * This method hopefully shouldn't be called, in favour of getContentPane(EditPart).
 	 */
-	
+	@Override
 	public IFigure getContentPane() {
 		return contentFigure;
 	}
@@ -294,7 +294,7 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 	 * Return a list of the model children that should be displayed. 
 	 * This includes fault handlers and compensation handlers.
 	 */
-	
+	@Override
 	protected List<BPELExtensibleElement> getModelChildren() {
     	ArrayList<BPELExtensibleElement> children = new ArrayList<BPELExtensibleElement>();
 
@@ -311,12 +311,12 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
     	return children;
     }
 	
-	
+	@Override
 	public IFigure getMainActivityFigure() {
 		return contentFigure;
 	}
 	
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 		getHandlerLinker().refreshHandlerLinks();
@@ -330,13 +330,13 @@ public class InvokeEditPart extends LeafEditPart implements ILayoutAware{
 		return handlerLinker;
 	}
 	
-	
+	@Override
 	protected void clearConnections() {
 		super.clearConnections();
 		getHandlerLinker().clearHandlerConnections();
 	}
 	
-	
+	@Override
 	protected void handleModelChanged() {
 		super.handleModelChanged();
 		

@@ -19,6 +19,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorFailOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorOutputConnector;
@@ -56,7 +57,7 @@ public class FilterMediatorImpl extends MediatorImpl implements FilterMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final FilterConditionType CONDITION_TYPE_EDEFAULT = FilterConditionType.SOURCE_AND_REGEX;
+	protected static final FilterMediatorConditionType CONDITION_TYPE_EDEFAULT = FilterMediatorConditionType.SOURCE_REGEX;
 
 	/**
 	 * The cached value of the '{@link #getConditionType() <em>Condition Type</em>}' attribute.
@@ -66,7 +67,7 @@ public class FilterMediatorImpl extends MediatorImpl implements FilterMediator {
 	 * @generated
 	 * @ordered
 	 */
-	protected FilterConditionType conditionType = CONDITION_TYPE_EDEFAULT;
+	protected FilterMediatorConditionType conditionType = CONDITION_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getRegex() <em>Regex</em>}' attribute.
@@ -197,7 +198,7 @@ public class FilterMediatorImpl extends MediatorImpl implements FilterMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FilterConditionType getConditionType() {
+	public FilterMediatorConditionType getConditionType() {
 		return conditionType;
 	}
 
@@ -206,8 +207,8 @@ public class FilterMediatorImpl extends MediatorImpl implements FilterMediator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConditionType(FilterConditionType newConditionType) {
-		FilterConditionType oldConditionType = conditionType;
+	public void setConditionType(FilterMediatorConditionType newConditionType) {
+		FilterMediatorConditionType oldConditionType = conditionType;
 		conditionType = newConditionType == null ? CONDITION_TYPE_EDEFAULT : newConditionType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FILTER_MEDIATOR__CONDITION_TYPE, oldConditionType, conditionType));
@@ -603,7 +604,7 @@ public class FilterMediatorImpl extends MediatorImpl implements FilterMediator {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsbPackage.FILTER_MEDIATOR__CONDITION_TYPE:
-				setConditionType((FilterConditionType)newValue);
+				setConditionType((FilterMediatorConditionType)newValue);
 				return;
 			case EsbPackage.FILTER_MEDIATOR__REGEX:
 				setRegex((String)newValue);

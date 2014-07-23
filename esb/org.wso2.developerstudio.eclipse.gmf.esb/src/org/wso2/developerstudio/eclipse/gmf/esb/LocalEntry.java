@@ -16,7 +16,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getEntryName <em>Entry Name</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueType <em>Value Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local Entry Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueLiteral <em>Value Literal</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueXML <em>Value XML</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueURL <em>Value URL</em>}</li>
@@ -57,34 +57,34 @@ public interface LocalEntry extends EsbElement {
 	void setEntryName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Value Type</b></em>' attribute.
-	 * The default value is <code>"LITERAL"</code>.
+	 * Returns the value of the '<em><b>Local Entry Type</b></em>' attribute.
+	 * The default value is <code>"In-lined Text Entry"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value Type</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Local Entry Type</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value Type</em>' attribute.
+	 * @return the value of the '<em>Local Entry Type</em>' attribute.
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType
-	 * @see #setValueType(LocalEntryValueType)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntry_ValueType()
-	 * @model default="LITERAL"
+	 * @see #setLocalEntryType(LocalEntryValueType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getLocalEntry_LocalEntryType()
+	 * @model default="In-lined Text Entry"
 	 * @generated
 	 */
-	LocalEntryValueType getValueType();
+	LocalEntryValueType getLocalEntryType();
 
 	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getValueType <em>Value Type</em>}' attribute.
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry#getLocalEntryType <em>Local Entry Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Type</em>' attribute.
+	 * @param value the new value of the '<em>Local Entry Type</em>' attribute.
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.LocalEntryValueType
-	 * @see #getValueType()
+	 * @see #getLocalEntryType()
 	 * @generated
 	 */
-	void setValueType(LocalEntryValueType value);
+	void setLocalEntryType(LocalEntryValueType value);
 
 	/**
 	 * Returns the value of the '<em><b>Value Literal</b></em>' attribute.

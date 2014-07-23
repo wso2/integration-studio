@@ -44,7 +44,8 @@ public class EnqueueMediatorTransformer extends AbstractEsbNodeTransformer{
 		setCommonProperties(enqueueMediator, visualEnqueue);
 		enqueueMediator.setExecutorName(visualEnqueue.getExecutor());
 		enqueueMediator.setSequenceName(visualEnqueue.getSequenceKey().getKeyValue());
+		enqueueMediator.setPriority(visualEnqueue.getPriority());
 		return enqueueMediator;
-	}
+	}	
 	
 }

@@ -55,7 +55,7 @@ public class UnaryExpr extends Expr {
 		fOparand = operand;
 	}
 	
-    
+    @Override
 	protected String asText()
     {
     	StringBuilder sb = new StringBuilder();
@@ -69,7 +69,7 @@ public class UnaryExpr extends Expr {
     }
     
     
-	
+	@Override
 	protected String asString () {
     	StringBuilder sb = new StringBuilder();
     	if (fOparand != null) {
@@ -85,7 +85,7 @@ public class UnaryExpr extends Expr {
     /**
      * @see org.eclipse.bpel.xpath10.Expr#isWrapParen()
      */
-    
+    @Override
 	public boolean isWrapParen () {
     	return fExpr != null ? fExpr.isWrapParen() : false;
     }
@@ -93,7 +93,7 @@ public class UnaryExpr extends Expr {
     /**
      * @see org.eclipse.bpel.xpath10.Expr#getPosition()
      */
-    
+    @Override
 	public int getPosition ()  {
     	return fExpr != null ? fExpr.getPosition() : -1;
     }
@@ -101,7 +101,7 @@ public class UnaryExpr extends Expr {
     /**
      * @see org.eclipse.bpel.xpath10.Expr#getEndPosition()
      */
-    
+    @Override
 	public int getEndPosition () {
     	return fExpr != null ? fExpr.getEndPosition() : -1;
     }

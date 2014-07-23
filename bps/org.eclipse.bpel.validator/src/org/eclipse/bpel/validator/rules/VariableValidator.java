@@ -51,7 +51,7 @@ public class VariableValidator extends CValidator {
 	 * Start performing variable checks.
 	 */	
 	
-	
+	@Override
 	protected void start () {
 		super.start();		
 		ncName = mNode.getAttribute( AT_NAME );
@@ -63,7 +63,7 @@ public class VariableValidator extends CValidator {
 	/**
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren() {		
 		super.checkChildren();
 		checkChild(ND_FROM, 0, 1);

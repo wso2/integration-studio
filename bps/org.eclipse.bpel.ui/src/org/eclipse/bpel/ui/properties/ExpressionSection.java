@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -154,7 +154,7 @@ public abstract class ExpressionSection extends TextSection {
 		/**
 		 * @see org.eclipse.bpel.ui.details.providers.AbstractContentProvider#getElements(java.lang.Object)
 		 */
-		
+		@Override
 		public Object[] getElements(Object inputElement) {
 			Object[] descriptors = super.getElements(inputElement);
 			
@@ -193,7 +193,7 @@ public abstract class ExpressionSection extends TextSection {
 	}
 	
 	
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		Expression e = getExprFromModel();
@@ -208,7 +208,7 @@ public abstract class ExpressionSection extends TextSection {
 	 * editor for the expression language.
 	 */
 	
-	
+	@Override
 	protected void disposeEditor() {		
 	    super.disposeEditor();
 		editorLanguage = null;
@@ -273,7 +273,7 @@ public abstract class ExpressionSection extends TextSection {
 
 
 		expressionLanguageViewer.setLabelProvider(new LabelProvider() {
-			
+			@Override
 			public String getText(Object element) {
 				if (element == NO_EXPRESSION) {
 					return Messages.ExpressionSection_No_Expression_2; 
@@ -417,7 +417,7 @@ public abstract class ExpressionSection extends TextSection {
 	 */
 	
 	
-	
+	@Override
 	protected void basicSetInput (EObject newInput) {
 		
 		super.basicSetInput(newInput);
@@ -550,7 +550,7 @@ public abstract class ExpressionSection extends TextSection {
 	
 	
 	
-	
+	@Override
 	protected boolean isBodyAffected(Notification n) {
 		
 		if (n.getOldValue() instanceof Expression ||
@@ -563,7 +563,7 @@ public abstract class ExpressionSection extends TextSection {
 	}
 
 	
-	
+	@Override
 	protected Command newStoreToModelCommand (Object body) {
 		
 		CompoundCommand result = new CompoundCommand();		
@@ -590,7 +590,7 @@ public abstract class ExpressionSection extends TextSection {
 	 * Create the client area. This is just done once.
 	 */
 	
-	
+	@Override
 	protected void createClient (Composite parent) {
 		
 		fParentComposite =  createFlatFormComposite(parent);
@@ -666,7 +666,7 @@ public abstract class ExpressionSection extends TextSection {
 	 * 
 	 */
 	
-	
+	@Override
 	protected void createEditor (Composite parent) {
 									
 		String language = getEffectiveLanguage(getExpressionLanguageFromModel());
@@ -679,7 +679,7 @@ public abstract class ExpressionSection extends TextSection {
 		}
 			
 		editorLanguage = language;
-		fEditor.createControls(parent, this);
+		fEditor.createControls(parent, getWidgetFactory());
 		
 		fEditor.addListener(new IExpressionEditor.Listener() {
 			public void notifyChanged() {
@@ -701,7 +701,7 @@ public abstract class ExpressionSection extends TextSection {
 	 * We update the editor from the model. This is a model-to-ui operation.
 	 * 
 	 */
-	
+	@Override
 	protected void updateEditor() {		
 		Expression expr = getExprFromModel();
 		
@@ -778,7 +778,7 @@ public abstract class ExpressionSection extends TextSection {
 	 * @see org.eclipse.bpel.ui.properties.TextSection#dispose()
 	 */
 	
-	
+	@Override
 	public void dispose() {
 		if (boldFont != null) {
 			boldFont.dispose();
@@ -786,7 +786,7 @@ public abstract class ExpressionSection extends TextSection {
 		super.dispose();
 	}
 	
-	
+	@Override
 	protected void updateMarkers () {				
 		expressionLanguageLabel.clear();		
 		for(IMarker m : getMarkers(getInput())) {

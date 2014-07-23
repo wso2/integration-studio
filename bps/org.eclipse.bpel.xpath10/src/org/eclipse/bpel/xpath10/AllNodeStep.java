@@ -33,12 +33,12 @@ public class AllNodeStep extends Step {
 		super(axis);
 	}
 		
-	
+	@Override
 	protected String asString () {
 		return "node()";
 	}
 	
-	
+	@Override
 	protected String asText () {
 		return asString();
 	}

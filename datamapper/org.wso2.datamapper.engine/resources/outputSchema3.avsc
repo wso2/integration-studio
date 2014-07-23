@@ -1,0 +1,24 @@
+{
+  "type" : "record",
+  "name" : "engineers",
+  "namespace" : "org.wso2.avroSchemaGen",
+  "doc" : "Schema for org.wso2.avroSchemaGen.Employees",
+  "fields" : [ {
+    "name" : "engineer",
+    "type" : [ {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "engineerRecord",
+        "doc" : "Schema for org.wso2.avroSchemaGen.Employee",
+        "fields" : [ {
+          "name" : "address",
+          "type" : [ "null", "string" ]
+        }, {
+          "name" : "fullname",
+          "type" : [ "null", "string" ]
+        }]
+      }
+    } ]
+  } ]
+}

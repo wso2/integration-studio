@@ -95,7 +95,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 	 * Convert the BPEL model to an XML DOM model and then write the DOM model
 	 * to the output stream.
 	 */
-	
+	@Override
 	public void doSave(OutputStream out, Map<?, ?> args) throws IOException
     {
         INamespaceMap<String, String> nsMap = BPELUtils.getNamespaceMap(this.getProcess());
@@ -122,7 +122,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
      * and no profile has been set, the default abstract process profile is being inserted. 
      * 
 	 */
-	
+	@Override
 	public void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException
     {
 //        getPrefixToNamespaceMap().put("", BPELConstants.NAMESPACE);
@@ -164,12 +164,31 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 		} else {
         	setNamespaceURI(BPELConstants.NAMESPACE);
         }
+    	
+    	boolean usePrefix =
+    		checkUseNSPrefix(BPELConstants.NAMESPACE_2004) ||
+    		checkUseNSPrefix(BPELConstants.NAMESPACE_2007) ||
+    		checkUseNSPrefix(BPELConstants.NAMESPACE_ABSTRACT_2007);
+    	this.setOptionUseNSPrefix(usePrefix);
 	}
 
+	private boolean checkUseNSPrefix(String bpelNamespace) {
+        INamespaceMap<String, String> nsMap = BPELUtils.getNamespaceMap(getProcess());
+        List<String> prefixes;
+        prefixes = nsMap.getReverse(bpelNamespace);
+        for (int i=0; i<prefixes.size(); ++i) {
+        	String ns = prefixes.get(i);
+        	if (ns!=null && !ns.equals("")) {
+        		return true;
+        	}
+        }
+        return false;
+	}
+        
     /*
      * TODO Implement getURIFragment to return our encoding.
      */
-    
+    @Override
 	public String getURIFragment(EObject eObject)
     {
         return super.getURIFragment(eObject);
@@ -180,7 +199,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
      *
      * @return the resolved EObject or null if none could be found.
      */
-    
+    @Override
 	public EObject getEObject(String uriFragment) {
 	    if (uriFragment == null) return null;
 	    try {
@@ -193,7 +212,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 			return null;
 	    } catch (RuntimeException e) {
 	    	// TODO: Should log this instead of printing to stderr.
-	        e.printStackTrace();
+//	        e.printStackTrace();
 	        throw e;
 	    }
 	}
@@ -386,7 +405,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 			/**
 			 * @see org.apache.xerces.parsers.AbstractDOMParser#startDocument(org.apache.xerces.xni.XMLLocator, java.lang.String, org.apache.xerces.xni.NamespaceContext, org.apache.xerces.xni.Augmentations)
 			 */
-			
+			@Override
 			public void startDocument(XMLLocator arg0, String arg1, NamespaceContext arg2, Augmentations arg3) throws XNIException {
 				mLocator = arg0;							
 				super.startDocument(arg0, arg1, arg2, arg3);
@@ -399,7 +418,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 			/**
 			 * @see org.apache.xerces.parsers.AbstractDOMParser#characters(org.apache.xerces.xni.XMLString, org.apache.xerces.xni.Augmentations)
 			 */
-			
+			@Override
 			public void characters(XMLString arg0, Augmentations arg1) throws XNIException {
 				super.characters(arg0, arg1);
 				lastSource();
@@ -411,7 +430,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 			/**
 			 * @see org.apache.xerces.parsers.AbstractDOMParser#comment(org.apache.xerces.xni.XMLString, org.apache.xerces.xni.Augmentations)
 			 */
-			
+			@Override
 			public void comment(XMLString arg0, Augmentations arg1) throws XNIException {
 				super.comment(arg0, arg1);
 				lastSource();
@@ -423,7 +442,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 			/* (non-Javadoc)
 			 * @see org.apache.xerces.parsers.AbstractDOMParser#textDecl(java.lang.String, java.lang.String, org.apache.xerces.xni.Augmentations)
 			 */
-			
+			@Override
 			public void textDecl(String arg0, String arg1, Augmentations arg2) throws XNIException {
 				super.textDecl(arg0, arg1, arg2);
 				lastSource();												
@@ -434,7 +453,7 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 			/**
 			 * @see org.apache.xerces.parsers.AbstractDOMParser#startElement(org.apache.xerces.xni.QName, org.apache.xerces.xni.XMLAttributes, org.apache.xerces.xni.Augmentations)
 			 */
-			
+			@Override
 			public void startElement (org.apache.xerces.xni.QName arg0, XMLAttributes arg1, Augmentations arg2) throws XNIException {				
 				super.startElement(arg0, arg1, arg2);
 				// p("startElement: {0} {1}", arg0,arg1);
@@ -458,20 +477,20 @@ public class BPELResourceImpl extends XMLResourceImpl implements BPELResource {
 			}
 			
 			
-			
+			@Override
 			public void startCDATA( Augmentations aug ) {				
 				super.startCDATA(aug);
 				lastSource();
 				
 			}
 			
-			
+			@Override
 			public void endCDATA( Augmentations aug ) {				
 				super.endCDATA(aug);
 				lastSource();				
 			}
 			
-			
+			@Override
 			public void endElement ( org.apache.xerces.xni.QName element, Augmentations aug ) {							
 				super.endElement(element, aug);	
 				// p("endElement: {0}", element);

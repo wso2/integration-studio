@@ -79,7 +79,7 @@ public class OnEventValidator extends CPartnerActivityValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		fFromPartsCount = checkChild(ND_FROM_PARTS,0,1);
@@ -92,7 +92,7 @@ public class OnEventValidator extends CPartnerActivityValidator {
 	 * @see org.eclipse.bpel.validator.model.Validator#start()
 	 */
 	
-	
+	@Override
 	protected void start () {		
 		super.start();
 		
@@ -106,7 +106,7 @@ public class OnEventValidator extends CPartnerActivityValidator {
 	/**
 	 * @see org.eclipse.bpel.validator.rules.CActivityValidator#rule_CheckName_1()
 	 */
-	
+	@Override
 	public void rule_CheckName_1() {
 		// we don't check the name, disable it here.
 	}
@@ -114,7 +114,7 @@ public class OnEventValidator extends CPartnerActivityValidator {
 	/**
 	 * @see org.eclipse.bpel.validator.rules.CActivityValidator#rule_CheckSuppressJoinFailure_1()
 	 */
-	
+	@Override
 	public void rule_CheckSuppressJoinFailure_1() {
 		// we don't do anything here, disable it on OnMessage
 	}
@@ -132,7 +132,7 @@ public class OnEventValidator extends CPartnerActivityValidator {
 		date = "03/15/2007",
 		errors = "BPELC_MISSING_ROLE"
 	)
-	
+	@Override
 	public void rule_LookupPartnerLink_0 () {
 		
 		INode context = fAssociatedScope;

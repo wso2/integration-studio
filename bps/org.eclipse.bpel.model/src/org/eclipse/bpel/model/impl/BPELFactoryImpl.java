@@ -121,7 +121,7 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
 	public static BPELFactory init() {
 		try {
 			BPELFactory theBPELFactory = (BPELFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/process/executable"); //$NON-NLS-1$ 
+					.getEFactory(BPELPackage.eNS_URI);
 			if (theBPELFactory != null) {
 				return theBPELFactory;
 			}
@@ -146,7 +146,7 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 		case BPELPackage.PROCESS:
@@ -318,7 +318,7 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 		case BPELPackage.CORRELATION_PATTERN:
@@ -337,7 +337,7 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 		case BPELPackage.CORRELATION_PATTERN:

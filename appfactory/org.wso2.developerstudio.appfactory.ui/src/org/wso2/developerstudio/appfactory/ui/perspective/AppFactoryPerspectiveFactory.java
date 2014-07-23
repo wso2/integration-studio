@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.appfactory.ui.perspective;
 
 import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -24,7 +25,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
-import org.eclipse.ui.browser.IWebBrowser;
 import org.eclipse.ui.console.IConsoleConstants;
 import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
 import org.wso2.developerstudio.appfactory.ui.Activator;
@@ -39,41 +39,23 @@ public class AppFactoryPerspectiveFactory implements IPerspectiveFactory {
 			"views.AppfactoryApplicationListView"; //$NON-NLS-1$
 	private static final String APPDETILS_ID = "org.wso2.developerstudio.appfactory.ui." + //$NON-NLS-1$
 			"views.AppfactoryApplicationDetailsView"; //$NON-NLS-1$
-	private static final String APPBUILD_ID = "org.wso2.developerstudio.appfactory.ui." + //$NON-NLS-1$
+/*	private static final String APPBUILD_ID = "org.wso2.developerstudio.appfactory.ui." + //$NON-NLS-1$
 			"views.AppfactoryBuildInfoView"; //$NON-NLS-1$
-	private static final String PROJECT_EXPOR_VIEW = "org.eclipse.ui.navigator.ProjectExplorer"; //$NON-NLS-1$
+*/	private static final String PROJECT_EXPOR_VIEW = "org.eclipse.ui.navigator.ProjectExplorer"; //$NON-NLS-1$
 	
 	private static final String GhostView = "org.wso2.developerstudio.appfactory.ui.views.AppfactoryGhostViewId"; //$NON-NLS-1$
 	
-	private static IWebBrowser browser = null;
+	//private static IWebBrowser browser = null;
  
 	public void createInitialLayout(IPageLayout appfacLayout) {
 
 		try {
-			if(Authenticator.getInstance().isFromDashboad()){/*Request come form dash-board*/
-				Authenticator.getInstance().setFromDashboad(false);
-				initAfViewsloadingProcess(appfacLayout);
-			}else{
-				if(Authenticator.getInstance().isLoaded()){/*Request come from Perspective selector*/
-					initAfViewsloadingProcess(appfacLayout);
-				}else{
-					Authenticator.getInstance().setCredentials(null);/*Should be a new Login attempts*/
-					LoginAction loginAction = new LoginAction();
-					loginAction.login(false,false);
-					if(Authenticator.getInstance().getCredentials()!=null){
-						initAfViewsloadingProcess(appfacLayout);
-					}else{
-						addGostView(appfacLayout);
-					}
-				}
-			}
+			initAfViewsloadingProcess(appfacLayout);
 		} catch (Exception e) {
 			log.error("Perspective loading issue", e); //$NON-NLS-1$
 		}
 	}
 
-	
-	
 	private void initAfViewsloadingProcess(IPageLayout appfacLayout)
 			throws InvocationTargetException, InterruptedException {
 		ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(

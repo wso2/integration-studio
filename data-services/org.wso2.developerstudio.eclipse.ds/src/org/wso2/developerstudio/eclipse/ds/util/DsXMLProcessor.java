@@ -22,7 +22,6 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
  * This class contains helper methods to serialize and deserialize XML documents
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class DsXMLProcessor extends XMLProcessor {
@@ -31,7 +30,6 @@ public class DsXMLProcessor extends XMLProcessor {
 	 * Public constructor to instantiate the helper.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DsXMLProcessor() {
@@ -40,11 +38,9 @@ public class DsXMLProcessor extends XMLProcessor {
 	}
 
 	/**
-	 * Register for "*" and "xml" file extensions the DsResourceFactoryImpl
-	 * factory.
+	 * Register for "*" and "xml" file extensions the DsResourceFactoryImpl factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 

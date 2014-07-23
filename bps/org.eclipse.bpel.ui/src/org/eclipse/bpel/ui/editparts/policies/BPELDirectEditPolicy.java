@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.jface.viewers.CellEditor;
 
 public class BPELDirectEditPolicy extends DirectEditPolicy {
 	
-	
+	@Override
 	protected Command getDirectEditCommand(DirectEditRequest edit) {		
 		Command cmd = null;
 		CellEditor editor = edit.getCellEditor();
@@ -50,7 +50,7 @@ public class BPELDirectEditPolicy extends DirectEditPolicy {
 		return cmd;
 	}
 
-	
+	@Override
 	protected void showCurrentEditValue(DirectEditRequest request) {
 		String value = (String) request.getCellEditor().getValue();
 		if (getHost() instanceof BPELEditPart) {

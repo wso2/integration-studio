@@ -57,7 +57,7 @@
             default-charset="UTF-8"
             file-extensions="bpel,bpel2"
 	        id="org.eclipse.bpel.contenttype"
-            name="BPEL Process"
+            name="%CONTENT_TYPE_NAME"
             priority="normal"/>
    </extension>
 
@@ -68,7 +68,7 @@
             adaptable="true"
             location="BOTTOM_LEFT"
             lightweight="true"
-            label="BPEL File Decorator"
+            label="%BPEL_FILE_DECORATOR"
             state="true"
             class="org.eclipse.bpel.common.ui.ResourceMarkerDecorator"
             id="org.eclipse.bpel.ui.decorators">
@@ -79,8 +79,17 @@
                   name="contentTypeId"
                   value="org.eclipse.bpel.contenttype">
                </objectState>
+               <not>
+                  <pluginState
+                        id="org.eclipse.jdt.ui"
+                        value="activated">
+                  </pluginState>
+               </not>
             </and>
          </enablement>
+         <description>
+            %BPEL_FILE_DECORATOR_DESCRIPTION
+         </description>
       </decorator>
     </extension>   
 </plugin>

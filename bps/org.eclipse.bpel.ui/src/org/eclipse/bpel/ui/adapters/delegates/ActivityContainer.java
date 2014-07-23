@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class ActivityContainer extends ReferenceContainer {
 	/**
 	 * @see org.eclipse.bpel.ui.adapters.delegates.ReferenceContainer#addChild(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
 	 */
-	
+	@Override
 	public boolean addChild (EObject object, EObject newChild, EObject insertBefore) {
 		
 		Object currentChild = getSingleChild (object);		
@@ -113,7 +113,7 @@ public class ActivityContainer extends ReferenceContainer {
 	 * @return if we can add this object
 	 * @see org.eclipse.bpel.ui.adapters.IContainer#canAddObject(java.lang.Object, java.lang.Object, java.lang.Object)
 	 */
-	
+	@Override
 	public boolean canAddObject (EObject object, EObject child, EObject insertBefore) {		
 		return child != null && child instanceof Activity;
 	}

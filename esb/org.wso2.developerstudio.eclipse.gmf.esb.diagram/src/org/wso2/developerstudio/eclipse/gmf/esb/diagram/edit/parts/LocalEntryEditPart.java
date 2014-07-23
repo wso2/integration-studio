@@ -1,7 +1,6 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.gef.EditPart;
@@ -19,6 +18,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.CustomNonResizableEditPolicyEx;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.LocalEntryItemSemanticEditPolicy;
@@ -60,7 +60,9 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 		// For handle Double click Event.
 		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
-		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());  //remove 8 corners
+
 	}
 
 	/**
@@ -103,10 +105,10 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(75, 75);
 		return result;
 	}
 
@@ -188,6 +190,7 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 	 */
 	public class LocalEntryFigure extends EsbGraphicalShape {
 
+		
 		/**
 		 * @generated
 		 */
@@ -199,6 +202,7 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 		public LocalEntryFigure() {
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
+			
 		}
 
 		/**
@@ -222,7 +226,7 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/localEntry.gif";
+			return "icons/ico20/localEntry55.gif";
 		}
 
 		public String getNodeName() {
@@ -234,6 +238,6 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	static final Color THIS_BACK = new Color(null, 40, 151, 248);
+	static final Color THIS_BACK = new Color(null,245, 243, 215);
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ import org.eclipse.ui.PlatformUI;
 
 public class WaitConditionSection extends RadioChoiceExpressionSection {
 	
-	
+	@Override
 	protected Composite createNoEditorWidgets(Composite composite) {
 		return createNoEditorWidgetsCreateComposite(composite,
 				
@@ -53,13 +53,13 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	}
 		
 	 
-	
+	@Override
 	protected String[] getButtonLabels() {
 		return gLabels;
 	}
 	
 
-	
+	@Override
 	protected String getButtonExprType (int buttonIndex) {
 		if (buttonIndex == 0) {
 			return IEditorConstants.ET_DATETIME;
@@ -71,7 +71,7 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	}
 	
 	
-	
+	@Override
 	protected void radioButtonSelected (int index, Button button) {
 			
 		if (button.getSelection() == false) {
@@ -120,7 +120,7 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	}
 	
 	
-	
+	@Override
 	protected Expression getExprFromModel() {	
 	
 		EObject input = getInput();
@@ -138,7 +138,7 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	}
 	
 	@SuppressWarnings("nls")
-	
+	@Override
 	protected int getButtonIndexFromModel() {
 		EObject input = getInput();
 		EStructuralFeature feature = getStructuralFeature(input);
@@ -152,13 +152,13 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	}
 
 	
-	
+	@Override
 	protected boolean isValidClientUseType (String useType) {
 		return IBPELUIConstants.USE_TYPE_DEADLINE_CONDITION.equals(useType)
 			|| IBPELUIConstants.USE_TYPE_DURATION_CONDITION.equals(useType);
 	}
 	
-	
+	@Override
 	protected void createClient (Composite parent) {
 		super.createClient(parent);
 		
@@ -172,7 +172,7 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	 * @return true if so, false otherwise.
 	 */
 		
-	
+	@Override
 	public boolean isValidMarker (IMarker marker ) {
 		return false;
 	}
@@ -183,7 +183,7 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	 * that is the Wait activity.  
 	 */
 	
-	
+	@Override
 	protected EStructuralFeature getStructuralFeature (  ) {
 		return getStructuralFeature ( fCurrentButtonIndex );
 	}
@@ -195,7 +195,7 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	}
 	
 	
-	
+	@Override
 	protected EStructuralFeature getStructuralFeature ( EObject eObj ) {
 						
 		EStructuralFeature features [] = CLASS2FEATURES.get(eObj.eClass() );		
@@ -215,7 +215,7 @@ public class WaitConditionSection extends RadioChoiceExpressionSection {
 	 * 
 	 * 
 	 */
-	
+	@Override
 	protected Command newStoreToModelCommand (Object body) {
 		
 		CompoundCommand result = new CompoundCommand();		

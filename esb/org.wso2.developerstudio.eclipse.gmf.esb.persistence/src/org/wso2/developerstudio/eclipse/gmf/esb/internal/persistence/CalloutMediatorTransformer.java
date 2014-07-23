@@ -57,12 +57,17 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 		org.apache.synapse.mediators.builtin.CalloutMediator calloutMediator = new org.apache.synapse.mediators.builtin.CalloutMediator();
 		setCommonProperties(calloutMediator, visualCallout);
 		{
+			if(!(visualCallout.getEndpointType().getValue()==0) ){
 			
-			if (visualCallout.getEndpointType().getValue() == CalloutEndpointType.URL_VALUE) {
+			if (visualCallout.getEndpointType().getValue()== CalloutEndpointType.URL_VALUE) {
+				
+				
 				if (!visualCallout.getServiceURL().isEmpty()) {
 					calloutMediator.setServiceURL(visualCallout.getServiceURL());
 				}
-			} else if (visualCallout.getAddressEndpoint() != null
+			}}			
+			
+			else if (visualCallout.getAddressEndpoint() != null
 					&& StringUtils.isNotBlank(visualCallout.getAddressEndpoint().getKeyValue())) {
 				calloutMediator.setEndpointKey(visualCallout.getAddressEndpoint().getKeyValue());
 			}
@@ -70,7 +75,9 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 			if (visualCallout.getSoapAction()!=null && !visualCallout.getSoapAction().isEmpty()) {
 				calloutMediator.setAction(visualCallout.getSoapAction());
 			}
-
+				
+			calloutMediator.setInitClientOptions(visualCallout.isInitAxis2ClientOptions());
+			
 			if (visualCallout.getPayloadType().getValue() == 0) {
 
 				NamespacedProperty payLoadExp = visualCallout
@@ -125,14 +132,16 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 					calloutMediator.setTargetKey(visualCallout.getResultContextProperty());
 				}
 			}
-
-			if (!visualCallout.getPathToAxis2Repository().equals("")) {
+			
+			if(visualCallout.getPathToAxis2Repository()!= null){
+			if (  !visualCallout.getPathToAxis2Repository().equals("")) {
 				calloutMediator.setClientRepository(visualCallout
 						.getPathToAxis2Repository());
-			}
+			}}			
+			if(visualCallout.getPathToAxis2xml()!=null){
 			if (!visualCallout.getPathToAxis2xml().equals("")) {
 				calloutMediator.setAxis2xml(visualCallout.getPathToAxis2xml());
-			}
+			}}
 			if(visualCallout.getSecurityType().getValue()==CalloutSecurityType.TRUE_VALUE){
 				calloutMediator.setSecurityOn(true);
 		        if(visualCallout.getPolicies().getValue()==CalloutSecurityPolicies.TRUE_VALUE){

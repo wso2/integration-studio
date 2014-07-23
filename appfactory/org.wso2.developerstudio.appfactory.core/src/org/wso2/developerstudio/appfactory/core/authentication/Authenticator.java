@@ -40,6 +40,8 @@ public class Authenticator {
     private String errormsg;
     private boolean fromDashboad;
     private boolean loaded;
+    private boolean isAppCloud;
+    private String selectedTenant;
 
 	public String getErrormsg() {
 		return errormsg;
@@ -151,6 +153,22 @@ public class Authenticator {
 		this.serverURL = serverURL;
 	}
 
+	public boolean isAppCloud() {
+		return isAppCloud;
+	}
+
+	public void setAppCloud(boolean isAppCloud) {
+		this.isAppCloud = isAppCloud;
+	}
+
+	public String getSelectedTenant() {
+		return selectedTenant;
+	}
+
+	public void setSelectedTenant(String selectedTenant) {
+		this.selectedTenant = selectedTenant;
+	}
+
 	private class LoginToAppFacPerfectiveJob implements IRunnableWithProgress {
 		private IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 		UserPasswordCredentials credentials;
@@ -166,7 +184,7 @@ public class Authenticator {
 	  
 		@Override
 		public void run(IProgressMonitor monitor) {
-			String operationText="fetching data from AppFactory "+JagApiProperties.getDomain();
+			String operationText="fetching data from App Factory "+JagApiProperties.getDomain();
 			monitor.beginTask(operationText, 100);
 			try{
 				operationText="Sending login request...";

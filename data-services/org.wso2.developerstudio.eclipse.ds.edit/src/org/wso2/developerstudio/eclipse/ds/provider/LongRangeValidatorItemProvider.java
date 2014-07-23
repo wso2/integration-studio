@@ -29,11 +29,9 @@ import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.LongRangeValidator;
 
 /**
- * This is the item provider adapter for a
- * {@link org.wso2.developerstudio.eclipse.ds.LongRangeValidator} object.
+ * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.LongRangeValidator} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class LongRangeValidatorItemProvider extends ItemProviderAdapter
@@ -47,7 +45,6 @@ public class LongRangeValidatorItemProvider extends ItemProviderAdapter
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public LongRangeValidatorItemProvider(AdapterFactory adapterFactory) {
@@ -58,7 +55,6 @@ public class LongRangeValidatorItemProvider extends ItemProviderAdapter
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -77,44 +73,44 @@ public class LongRangeValidatorItemProvider extends ItemProviderAdapter
 	 * This adds a property descriptor for the Maximum feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addMaximumPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_LongRangeValidator_maximum_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_LongRangeValidator_maximum_feature",
-		                                                                   "_UI_LongRangeValidator_type"),
-		                                                         DsPackage.Literals.LONG_RANGE_VALIDATOR__MAXIMUM,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LongRangeValidator_maximum_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LongRangeValidator_maximum_feature", "_UI_LongRangeValidator_type"),
+				 DsPackage.Literals.LONG_RANGE_VALIDATOR__MAXIMUM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Minimum feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void addMinimumPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-		                                                         getResourceLocator(),
-		                                                         getString("_UI_LongRangeValidator_minimum_feature"),
-		                                                         getString("_UI_PropertyDescriptor_description",
-		                                                                   "_UI_LongRangeValidator_minimum_feature",
-		                                                                   "_UI_LongRangeValidator_type"),
-		                                                         DsPackage.Literals.LONG_RANGE_VALIDATOR__MINIMUM,
-		                                                         true,
-		                                                         false,
-		                                                         false,
-		                                                         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-		                                                         null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LongRangeValidator_minimum_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LongRangeValidator_minimum_feature", "_UI_LongRangeValidator_type"),
+				 DsPackage.Literals.LONG_RANGE_VALIDATOR__MINIMUM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -133,24 +129,20 @@ public class LongRangeValidatorItemProvider extends ItemProviderAdapter
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
 	@Override
 	public String getText(Object object) {
-		LongRangeValidator longRangeValidator = (LongRangeValidator) object;
+		LongRangeValidator longRangeValidator = (LongRangeValidator)object;
 		return getString("_UI_LongRangeValidator_type") + " " + longRangeValidator.getMaximum();
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached
-	 * children and by creating a viewer notification, which it passes to
-	 * {@link #fireNotifyChanged}.
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -161,20 +153,17 @@ public class LongRangeValidatorItemProvider extends ItemProviderAdapter
 		switch (notification.getFeatureID(LongRangeValidator.class)) {
 			case DsPackage.LONG_RANGE_VALIDATOR__MAXIMUM:
 			case DsPackage.LONG_RANGE_VALIDATOR__MINIMUM:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(),
-				                                         false, true));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing the children
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 
@@ -187,7 +176,6 @@ public class LongRangeValidatorItemProvider extends ItemProviderAdapter
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 

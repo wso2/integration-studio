@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 	private ProcessHandlerLinker handlerLinker;
 	
 	private class ProcessOrderedHorizontalLayoutEditPolicy extends ProcessEditPart.ProcessOrderedLayoutEditPolicy{
-		
+		@Override
 		protected ArrayList createHorizontalConnections(BPELEditPart parent) {
 			ArrayList connections = new ArrayList();
 			List children = getConnectionChildren(parent);
@@ -106,7 +106,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 
 	public class ProcessOrderedLayoutEditPolicy extends BPELOrderedLayoutEditPolicy {
 		// return list of children to create vertical connections for.
-		
+		@Override
 		protected List getConnectionChildren(BPELEditPart editPart) {
 			List originalChildren = getChildren();
 			List newChildren = new ArrayList();
@@ -121,7 +121,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 			return newChildren;
 		}
 
-		
+		@Override
 		protected Command getCreateCommand(CreateRequest request) {
 			EditPart insertBefore = getInsertionReference(request);
 			if (insertBefore == null) return null;
@@ -130,7 +130,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 		}
 	}
 		
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 
@@ -147,7 +147,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 	}
 
 	
-	
+	@Override
 	protected IFigure createFigure() {
 		LayeredPane result = new LayeredPane();
 		this.layeredPane = result;
@@ -189,7 +189,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 		return layeredPane;
 	}
 
-	
+	@Override
 	public void setLayoutConstraint(EditPart child, IFigure childFigure, Object constraint) {
 		getContentPane(child).setConstraint(childFigure, constraint);
 	}
@@ -203,7 +203,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 		return activityHolder;
 	}
 	
-	
+	@Override
 	public IFigure getContentPane() {
         return activityHolder;
     }
@@ -211,7 +211,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren()
 	 */
-	
+	@Override
 	protected List getModelChildren() {
 		Process process = getProcess();
 		BPELEditDomain domain = (BPELEditDomain)getViewer().getEditDomain();
@@ -271,7 +271,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 		return (Process)getModel();
 	}
 
-	
+	@Override
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		IFigure child = ((GraphicalEditPart) childEditPart).getFigure();
 		IFigure content = getContentPane(childEditPart);
@@ -310,7 +310,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 		return result;
 	}
 	
-	
+	@Override
 	protected void removeChildVisual(EditPart childEditPart) {
 		IFigure child = ((GraphicalEditPart) childEditPart).getFigure();
 		IFigure content = getContentPane(childEditPart);
@@ -321,7 +321,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 	/**
 	 * Also overridden to call getContentPane(child) in the appropriate place.
 	 */
-	
+	@Override
 	protected void reorderChild(EditPart child, int index) {
 		// Save the constraint of the child so that it does not
 		// get lost during the remove and re-add.
@@ -343,7 +343,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 	/**
 	 * Override to handle direct edit requests
 	 */
-	
+	@Override
 	public void performRequest(Request request) {
 		if (request.getType() == RequestConstants.REQ_DIRECT_EDIT) {
 			// let's not activate the rename or direct edit functionality because it's annoying when
@@ -366,10 +366,10 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 		refresh();
 	}
 	
-	
+	@Override
 	public DragTracker getDragTracker(Request request) {
 		return new MarqueeDragTracker() {
-			
+			@Override
 			protected void handleFinished() {
 				if (getViewer().getSelection().isEmpty()) {
 					// if nothing has been select we should select the process
@@ -422,7 +422,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 		}
 	}
 	
-	
+	@Override
 	protected void clearConnections() {
 		super.clearConnections();
 		getHandlerLinker().clearHandlerConnections();
@@ -431,7 +431,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 	/**
 	 * Overridden to refresh the handlerLinks as needed.
 	 */
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 		getHandlerLinker().refreshHandlerLinks();
@@ -443,7 +443,7 @@ public class ProcessEditPart extends BPELEditPart implements ILayoutAware{
 		return handlerLinker;
 	}
 	
-	
+	@Override
 	protected void handleModelChanged() {
 		super.handleModelChanged();
 		

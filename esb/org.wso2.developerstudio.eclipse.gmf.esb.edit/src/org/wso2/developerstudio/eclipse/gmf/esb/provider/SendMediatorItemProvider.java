@@ -81,7 +81,6 @@ public class SendMediatorItemProvider
 				addDynamicReceivingSequencePropertyDescriptor(object);
 				break;
 			}
-			addDescriptionPropertyDescriptor(object);
 		}
 		
 		return itemPropertyDescriptors;

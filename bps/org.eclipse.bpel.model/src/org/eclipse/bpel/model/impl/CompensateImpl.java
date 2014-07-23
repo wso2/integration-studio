@@ -42,7 +42,7 @@ public class CompensateImpl extends ActivityImpl implements Compensate {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.COMPENSATE;
 	}

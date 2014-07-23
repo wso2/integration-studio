@@ -52,7 +52,7 @@ public class FMAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-	
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -71,31 +71,31 @@ public class FMAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected FMSwitch<Adapter> modelSwitch =
 		new FMSwitch<Adapter>() {
-			
+			@Override
 			public Adapter caseRegistry(Registry object) {
 				return createRegistryAdapter();
 			}
-			
+			@Override
 			public Adapter caseAssistant(Assistant object) {
 				return createAssistantAdapter();
 			}
-			
+			@Override
 			public Adapter caseOption(Option object) {
 				return createOptionAdapter();
 			}
-			
+			@Override
 			public Adapter caseArgument(Argument object) {
 				return createArgumentAdapter();
 			}
-			
+			@Override
 			public Adapter caseFunction(Function object) {
 				return createFunctionAdapter();
 			}
-			
+			@Override
 			public Adapter caseFacadeElement(FacadeElement object) {
 				return createFacadeElementAdapter();
 			}
-			
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -109,7 +109,7 @@ public class FMAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-	
+	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject)target);
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -303,7 +303,7 @@ public class EditController implements IOngoingChange, Listener , Adapter {
 	 */
 	public Command createApplyCommand() {
 		return new UpdateModelCommand(fInput,getLabel()) {
-			
+			@Override
 			public void doExecute() {
 				fModelValue.set ( fViewValue.get() );
 			}			

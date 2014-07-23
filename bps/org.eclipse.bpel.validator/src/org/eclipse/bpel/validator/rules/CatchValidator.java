@@ -49,7 +49,7 @@ public class CatchValidator extends CatchAllValidator {
 	/**
 	 * @see org.eclipse.bpel.validator.model.Validator#start()
 	 */
-	
+	@Override
 	protected void start() {
 		
 		super.start();			

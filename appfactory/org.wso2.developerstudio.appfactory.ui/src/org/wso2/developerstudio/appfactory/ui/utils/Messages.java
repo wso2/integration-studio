@@ -33,6 +33,8 @@ public class Messages extends NLS {
 	public static String AppfactoryApplicationListView_getApplist_plog_msg_3;
 	public static String AppfactoryApplicationListView_getAppVersions_job_title;
 	public static String AppfactoryApplicationListView_getAppVersions_monitor_text_1;
+	public static String AppfactoryApplicationListView_getForkedAppVersions_job_title;
+	public static String AppfactoryApplicationListView_getForkedAppVersions_monitor_text_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_pError_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_pInfo_1;
 	public static String AppfactoryApplicationListView_getbuildLogsJob_plog_1;
@@ -74,6 +76,10 @@ public class Messages extends NLS {
 	public static String AppfactoryApplicationListView_updateApplicationView_monitor_text_1;
 	public static String AppfactoryApplicationListView_updateApplicationView_monitor_text_2;
 	public static String AppfactoryApplicationListView_updateApplicationView_monitor_text_3;
+	public static String AppfactoryApplicationListView_executeMavenCommands_text;
+	public static String AppfactoryApplicationListView_executeMavenCommands_text2;
+	public static String AppfactoryApplicationListView_executeMavenCommands_errorlog_text;
+	public static String AppfactoryApplicationListView_executeMavenCommands_errorlog_text2;
 	public static String AppfactoryConsoleView_Console_Title;
 	public static String AppFactoryPerspectiveFactory_LoadAppFacPerfectiveJob_monitor_op_text1;
 	public static String AppFactoryPerspectiveFactory_LoadAppFacPerfectiveJob_monitor_op_text2;
@@ -81,12 +87,21 @@ public class Messages extends NLS {
 	public static String AppFactoryPerspectiveFactory_LoadAppFacPerfectiveJob_monitor_op_text4;
 	public static String AppFactoryPerspectiveFactory_LoadAppFacPerfectiveJob_monitor_op_text5;
 	public static String PasswordDialog_LoginDialog_title;
+	public static String PasswordDialog_Cloud_LoginDialog_title;
 	public static String PasswordDialog_Password;
 	public static String PasswordDialog_Save_check;
 	public static String PasswordDialog_URL;
+	public static String PasswordDialog_Cloud_URL;
+	public static String APP_CLOUD_URL;
 	public static String PasswordDialog_USER;
+	public static String PasswordDialog_Cloud_USER;
 	public static String PasswordDialog_OT_check;
 	public static String AppfactoryApplicationDetailsView_createToolbar_refresh_menu;
+	public static String APP_CLOUD_ZERO_TENANTS_WARNING;
+	public static String APP_CLOUD_ORG_NOT_SELECT_ERROR;
+	public static String TenantSelectionDialog_Title;
+	public static String TenantSelectionDialog_Title_2;
+	public static String ImportingCancelled_Error;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http:///org/wso2/developerstudio/eclipse/gmf/datamapper"
-            class="dataMapper.DataMapperPackage"
+            class="org.wso2.developerstudio.datamapper.DataMapperPackage"
             genModel="model/dataMapper.genmodel"/>
    </extension>
 

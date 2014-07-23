@@ -45,7 +45,7 @@ public class PickValidator extends CActivityValidator {
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
 	
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		

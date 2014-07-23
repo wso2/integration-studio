@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,7 +88,7 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 	public BPELEditPart() {
 		adapter = new MultiObjectAdapter() {
 			
-			
+			@Override
 			public void notify(Notification n) {
 				int eventGroup = n.getEventType() / 100;
 				if (eventGroup == AdapterNotification.NOTIFICATION_MARKERS_CHANGED_GROUP ) {					
@@ -110,7 +110,7 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 	 * Default implementation based on IContainer.  Should be sufficient except in
 	 * special cases (such as ProcessEditPart?). 
 	 */
-	
+	@Override
 	protected List getModelChildren() {
 		IContainer container = BPELUtil.adapt(getModel(), IContainer.class);
 		if (container != null) {
@@ -152,7 +152,7 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#activate()
 	 */
-	
+	@Override
 	public void activate() {
 		if (isActive()) {
 			return;
@@ -164,7 +164,7 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 	/**
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#deactivate()
 	 */
-	
+	@Override
 	public void deactivate() {
 		if (!isActive()) {
 			return;		
@@ -175,7 +175,7 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 	}
 
 	
-	
+	@Override
 	protected void createEditPolicies() {
 		// The COMPONENT_ROLE policy determines how an edit part is deleted.
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new BPELComponentEditPolicy());
@@ -233,7 +233,7 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 	/**
 	 * Override to handle direct edit requests
 	 */
-	
+	@Override
 	public void performRequest(Request request) {
 		if (request.getType() == RequestConstants.REQ_DIRECT_EDIT) {
 			performDirectEdit();
@@ -304,13 +304,13 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 	 * policies to a separate package.  In future, we should change it back.
 	 */
 	
-	
+	@Override
 	public void refreshVisuals() {
 		super.refreshVisuals();
 		refreshHoverHelp();
 	}
 	
-	
+	@Override
 	protected void refreshChildren() {		
 		super.refreshChildren();
 		
@@ -335,7 +335,7 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 		}
 	}
 	
-	
+	@Override
 	public Object getAdapter(Class key) {
 		if (key.isInstance(getModel())) {
 			return getModel();
@@ -358,14 +358,14 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 				/**
 				 * @see AccessibleAnchorProvider#getSourceAnchorLocations()
 				 */
-				
+				@Override
 				public List<Point> getSourceAnchorLocations() {
 					return getDefaultLocations();
 				}
 				/**
 				 * @see AccessibleAnchorProvider#getTargetAnchorLocations()
 				 */
-				
+				@Override
 				public List<Point> getTargetAnchorLocations() {
 					return getDefaultLocations();
 				}
@@ -378,9 +378,9 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 	}
 	
 	// increase visibility!
-	
+	@Override
 	public void refreshSourceConnections() { super.refreshSourceConnections(); }
-	
+	@Override
 	public void refreshTargetConnections() { super.refreshTargetConnections(); }
 	
 	public void refreshHoverHelp() {
@@ -397,12 +397,12 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 		}		
 	}
 	
-	
+	@Override
 	protected IFigure createFigure() {
 		return null;
 	}
 
-	
+	@Override
 	protected AccessibleEditPart getAccessibleEditPart() {
 		if (acc == null) acc = createAccessible();
 		return acc;
@@ -422,7 +422,7 @@ public abstract class BPELEditPart extends AbstractGraphicalEditPart implements 
 		};	
 	}
 	
-	
+	@Override
 	public DragTracker getDragTracker(Request request) {
 		return new BPELDragEditPartsTracker(this);
 	}

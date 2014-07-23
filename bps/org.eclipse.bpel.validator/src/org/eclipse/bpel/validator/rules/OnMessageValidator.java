@@ -42,7 +42,7 @@ public class OnMessageValidator extends ReceiveValidator {
 	 * @see org.eclipse.bpel.validator.model.Validator#start()
 	 */
 	
-	
+	@Override
 	protected void start () {		
 		super.start();		
 	}
@@ -52,7 +52,7 @@ public class OnMessageValidator extends ReceiveValidator {
 	/**
 	 * @see org.eclipse.bpel.validator.rules.CActivityValidator#rule_CheckName_1()
 	 */
-	
+	@Override
 	public void rule_CheckName_1() {
 		// we don't check the name, disable it here.
 	}
@@ -60,7 +60,7 @@ public class OnMessageValidator extends ReceiveValidator {
 	/**
 	 * @see org.eclipse.bpel.validator.rules.CActivityValidator#rule_CheckSuppressJoinFailure_1()
 	 */
-	
+	@Override
 	public void rule_CheckSuppressJoinFailure_1() {
 		// we don't do anything here, disable it on OnMessage
 	}
@@ -70,7 +70,7 @@ public class OnMessageValidator extends ReceiveValidator {
 	 * Check the presence of fromParts.
 	 */
 	
-	
+	@Override
 	@SuppressWarnings("nls")
 	
 	@ARule(

@@ -74,6 +74,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 	
 	private final RegistryArtifactModel regModel;
 	private IFile resourceFile;
+	private String version = "1.0.0";
 	
 	public RegistryResourceCreationWizard() {
 		regModel = new RegistryArtifactModel();
@@ -169,15 +170,18 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 			getModel().getMavenInfo().setPackageName("registry/resource");
 			updatePOM(project);
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-			String groupId = getMavenGroupId(project.getFile("pom.xml").getLocation().toFile());
+			File pomLocation = project.getFile("pom.xml").getLocation().toFile();
+			String groupId = getMavenGroupId(pomLocation);
 			groupId += ".resource";
+			MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+			String version = mavenProject.getVersion();
 			//Adding the metadata about the endpoint to the metadata store.
 			GeneralProjectArtifact generalProjectArtifact=new GeneralProjectArtifact();
 			generalProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
 			
 			RegistryArtifact artifact=new RegistryArtifact();
 			artifact.setName(regModel.getArtifactName());
-			artifact.setVersion("1.0.0");
+			artifact.setVersion(version);
 			artifact.setType("registry/resource");
 			artifact.setServerRole("GovernanceRegistry");
 			artifact.setGroupId(groupId);
@@ -219,12 +223,15 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 		MavenProject mavenProject;
 		
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
+		
+		
 		if(!mavenProjectPomLocation.exists()){
 			mavenProject = MavenUtils.createMavenProject("org.wso2.carbon." + project.getName() , project.getName(), "1.0.0","pom");
 		} else {
 			mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		}
-		
+		 version = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-general-project-plugin",
 				MavenConstants.WSO2_GENERAL_PROJECT_VERSION);

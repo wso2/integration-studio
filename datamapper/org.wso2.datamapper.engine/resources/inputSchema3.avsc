@@ -1,0 +1,41 @@
+{
+  "type" : "record",
+  "name" : "employees",
+  "namespace" : "org.wso2.avroSchemaGen",
+  "doc" : "Schema for org.wso2.avroSchemaGen.Employees",
+  "fields" : [ {
+    "name" : "employee",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "employeeRecord",
+        "doc" : "Schema for org.wso2.avroSchemaGen.Employee",
+        "fields" : [ {
+          "name" : "address",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "address",
+            "doc" : "Schema for org.wso2.avroSchemaGen.Address",
+            "fields" : [ {
+              "name" : "city",
+              "type" : [ "null", "string" ]
+            }, {
+              "name" : "no",
+              "type" : [ "null", "string" ]
+            }, {
+              "name" : "road",
+              "type" : [ "null", "string" ]
+            } ]
+          } ]
+        }, {
+          "name" : "firstname",
+          "type" : [ "null", "string" ]
+        }, {
+          "name" : "lastname",
+          "type" : [ "null", "string" ]
+        } ]
+      }
+    } ]
+  } ]
+}

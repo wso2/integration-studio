@@ -29,7 +29,7 @@ import org.eclipse.wst.validation.internal.operations.WorkbenchReporter;
  */
 public class ValidatorHelper extends WorkbenchContext {
 
-	
+	@Override
 	public void registerResource(IResource resource) {
 		if(resource!=null) {
 			// https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813

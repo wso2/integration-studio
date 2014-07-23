@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -98,7 +98,7 @@ public class AutoArrangeFlowsAction extends SelectionAction {
 		return result;
 	}
 
-	
+	@Override
 	public void run() {
 		List flowsList = getTargetFlows(getSelectedObjects());
 		for (Iterator it = flowsList.iterator(); it.hasNext(); ) {
@@ -106,7 +106,7 @@ public class AutoArrangeFlowsAction extends SelectionAction {
 		}
 	}
 
-	
+	@Override
 	protected boolean calculateEnabled() {
 		List sel = getSelectedObjects();
 		return sel.size() > 0 && 
@@ -114,7 +114,7 @@ public class AutoArrangeFlowsAction extends SelectionAction {
 				!ModelHelper.getBPELEditor(((EditPart)sel.get(0)).getModel()).getAutoFlowLayout();
 	}
 
-	
+	@Override
 	public boolean isChecked() {
 		// TODO: make auto-arrange sticky in the future?  (would need other support)
 		return false;

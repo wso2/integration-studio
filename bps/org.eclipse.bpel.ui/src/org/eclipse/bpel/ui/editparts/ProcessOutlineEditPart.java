@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,12 +28,12 @@ public class ProcessOutlineEditPart extends OutlineTreeEditPart {
 
 	// protected ReferencePartnerLinks referencePartners = UiextensionmodelFactory.eINSTANCE.createReferencePartnerLinks();
 
-	
+	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
 		// installEditPolicy(EditPolicy.LAYOUT_ROLE, new ProcessLayoutEditPolicy());
 	}
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		if (getModel() instanceof Process) {
@@ -45,7 +45,7 @@ public class ProcessOutlineEditPart extends OutlineTreeEditPart {
 		}
 	}
 
-	
+	@Override
 	protected List<BPELExtensibleElement> getModelChildren() {
 		Process process = (Process)getModel();
 		List<BPELExtensibleElement> list = new ArrayList<BPELExtensibleElement>();

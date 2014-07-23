@@ -48,7 +48,7 @@ public class ConditionalRouterMediatorDeserializer extends
 		setElementToEdit(mediatorModel);
 		setCommonProperties(mediator, mediatorModel);
 
-		executeSetValueCommand(CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_ROUTE,
+		executeSetValueCommand(CONDITIONAL_ROUTER_MEDIATOR__CONTINUE_AFTER_ROUTE,
 				mediator.isContinueAfter());
 
 		for (ConditionalRoute route : mediator.getConditionalRoutes()) {

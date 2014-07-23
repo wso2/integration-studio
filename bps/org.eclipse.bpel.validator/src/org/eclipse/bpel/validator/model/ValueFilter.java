@@ -56,7 +56,7 @@ public class ValueFilter<T> extends Filter implements IFilter<T> {
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
-	
+	@Override
 	public String toString() {
 		return toString(fList);
 	}

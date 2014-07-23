@@ -19,22 +19,26 @@ package org.wso2.developerstudio.appfactory.ui.preference;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.preference.RadioGroupFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.wso2.developerstudio.appfactory.ui.Activator;
+import org.wso2.developerstudio.appfactory.ui.utils.Messages;
 
 public class AppFactoryPreferencePage extends FieldEditorPreferencePage
 implements IWorkbenchPreferencePage{
 
 	public static final String APP_FACTORY_PASSWORD = "APP_FACTORY_PASSWORD";
-	public static final String SHOW_PLAIN_PASSWORD = "SHOW_PLAIN_PASSWORD";
 	public static final String APP_FACTORY_USERNAME = "APP_FACTORY_USERNAME";
 	public static final String APP_FACTORY_LOCATION = "APP_FACTORY_LOCATION";
 	public static final String APP_FACTORY_SAVE = "SAVE_USER_CREDINTIAL";
+	public static final String APP_CLOUD_LOGIN = "LOG_IN_FOR_APP_CLOUD";
 	private StringFieldEditor stringField1;
+	private StringFieldEditor editor;
 	IPreferenceStore preferenceStore;
 
 	public AppFactoryPreferencePage() {
@@ -45,50 +49,62 @@ implements IWorkbenchPreferencePage{
 	public void init(IWorkbench arg0) {
 		preferenceStore = Activator.getDefault().getPreferenceStore();
 		setPreferenceStore(preferenceStore);
-		setDescription("WSO2 App Factory User Preferences.");
+		setDescription("WSO2 App Cloud/ App Factory User Preferences.");
 	}
 
 	@Override
 	protected void createFieldEditors() {
-		StringFieldEditor editor = new StringFieldEditor(APP_FACTORY_LOCATION,
-				"&AppFactory Url:", getFieldEditorParent());
+		
+
+		addField(new RadioGroupFieldEditor(APP_CLOUD_LOGIN,
+				"Connect to :", 1,
+				new String[][] { { "App Cloud", "true" },
+						{ "App Factory", "false" } }, getFieldEditorParent()));
+		
+		editor = new StringFieldEditor(APP_FACTORY_LOCATION,
+				"&Host Url:", getFieldEditorParent());
 		
 		Text textControl = editor.getTextControl(getFieldEditorParent());
 		textControl.setText("https://");
 		addField(editor);
-		addField(new StringFieldEditor(APP_FACTORY_USERNAME, "App&Factory Username",
+		addField(new StringFieldEditor(APP_FACTORY_USERNAME, "Email/ Username",
 				getFieldEditorParent()));
-		stringField1 = new StringFieldEditor(APP_FACTORY_PASSWORD,
-				"AppFactor &Password", getFieldEditorParent());
+		stringField1 = new StringFieldEditor(APP_FACTORY_PASSWORD, "Password", getFieldEditorParent()) {
+
+			@Override
+			    protected void doFillIntoGrid(Composite parent, int numColumns) {
+			        super.doFillIntoGrid(parent, numColumns);
+			
+			        getTextControl().setEchoChar('*');
+			    }
+			
+			};
+
 		addField(stringField1);
-		BooleanFieldEditor booleanFieldEditor = new BooleanFieldEditor(
-				SHOW_PLAIN_PASSWORD, "S&how Password in Plain Text",
-				getFieldEditorParent());
-		addField(booleanFieldEditor);
-		if (!preferenceStore.getBoolean(SHOW_PLAIN_PASSWORD)) {
-			stringField1.getTextControl(getFieldEditorParent())
-					.setEchoChar('*');
-		}
+		
 		preferenceStore
 				.addPropertyChangeListener(new IPropertyChangeListener() {
 
 					@Override
 					public void propertyChange(
 							org.eclipse.jface.util.PropertyChangeEvent arg0) {
-						// Setting/unsetting echo char
-						if (arg0.getProperty() == SHOW_PLAIN_PASSWORD) {
-							boolean boolean1 = preferenceStore
-									.getBoolean(SHOW_PLAIN_PASSWORD);
-							if (boolean1) {
-								stringField1.getTextControl(
-										getFieldEditorParent()).setEchoChar(
-										'\0');
-							} else {
-								stringField1.getTextControl(
-										getFieldEditorParent())
-										.setEchoChar('*');
+
+						if (arg0.getProperty().equals(APP_CLOUD_LOGIN)) {
+
+							if (arg0.getNewValue().toString().equals("true")) {
+								preferenceStore.setValue(APP_FACTORY_LOCATION,
+										Messages.APP_CLOUD_URL);
+								editor.setStringValue(Messages.APP_CLOUD_URL);
 							}
 						}
+						if (arg0.getProperty().equals(APP_FACTORY_LOCATION)) {
+							if(preferenceStore.getString(APP_CLOUD_LOGIN).equals("true")){
+								preferenceStore.setValue(APP_FACTORY_LOCATION,
+										Messages.APP_CLOUD_URL);
+								editor.setStringValue(Messages.APP_CLOUD_URL);
+							}
+						}
+
 					}
 				});
 	}

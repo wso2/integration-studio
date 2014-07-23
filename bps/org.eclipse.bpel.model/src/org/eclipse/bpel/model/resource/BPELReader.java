@@ -2782,7 +2782,7 @@ public class BPELReader implements ErrorHandler {
 		Attr variable = toElement.getAttributeNode("variable"); 
     
 		if (variable != null && variable.getSpecified()) {				
-			setVariable(toElement, to, "variable", BPELPackage.eINSTANCE.getTo_Variable());
+			setVariable(toElement, to, "variable", BPELPackage.eINSTANCE.getAbstractAssignBound_Variable());
 		}
 
 		// Set part
@@ -2797,7 +2797,7 @@ public class BPELReader implements ErrorHandler {
 		Attr partnerLink = toElement.getAttributeNode("partnerLink");			
 		
 		if (partnerLink != null && partnerLink.getSpecified()) {
-			setPartnerLink(toElement, to, BPELPackage.eINSTANCE.getTo_PartnerLink());
+			setPartnerLink(toElement, to, BPELPackage.eINSTANCE.getAbstractAssignBound_PartnerLink());
 		}
 
 		// Set property		
@@ -2866,7 +2866,7 @@ public class BPELReader implements ErrorHandler {
 		Attr variable = fromElement.getAttributeNode("variable"); 
     
 		if (variable != null && variable.getSpecified()) {				
-			setVariable(fromElement, from, "variable", BPELPackage.eINSTANCE.getFrom_Variable() );
+			setVariable(fromElement, from, "variable", BPELPackage.eINSTANCE.getAbstractAssignBound_Variable() );
 		}
 
 		// Set part
@@ -2881,7 +2881,7 @@ public class BPELReader implements ErrorHandler {
 		Attr partnerLink = fromElement.getAttributeNode("partnerLink");			
 		
 		if (partnerLink != null && partnerLink.getSpecified()) {
-			setPartnerLink(fromElement, from, BPELPackage.eINSTANCE.getFrom_PartnerLink());
+			setPartnerLink(fromElement, from, BPELPackage.eINSTANCE.getAbstractAssignBound_PartnerLink());
 		}
 
 		// Set property		
@@ -3076,8 +3076,8 @@ public class BPELReader implements ErrorHandler {
 		}
 		
 		// Reading "extensionAssignOperation" Elements and adding them in to assignE4X
-		for (Element eaoElement : getBPELChildElementsByLocalName(assignE4XElement, "extensionAssignOperation") ) {                    
-            assignE4X.getExtensionAssignOperation().add( xml2ExtensionAssignOperation(eaoElement));
+		for (Element extensionAssignOperationElement : getBPELChildElementsByLocalName(assignE4XElement, "extensionAssignOperation") ) {                    
+            assignE4X.getExtensionAssignOperation().add( xml2ExtensionAssignOperation(extensionAssignOperationElement));
         }
         
         setStandardAttributes(assignE4XElement, assignE4X);
@@ -3089,28 +3089,28 @@ public class BPELReader implements ErrorHandler {
 	 * Converts an XML ExtensionAssignOperation element to a BPEL ExtensionAssignOperation object.
 	 * 
 	 */
-	protected ExtensionAssignOperation xml2ExtensionAssignOperation(Element eaoElement) {
-		ExtensionAssignOperation eao = BPELFactory.eINSTANCE.createExtensionAssignOperation();
-		eao.setElement(eaoElement);
+	protected ExtensionAssignOperation xml2ExtensionAssignOperation(Element extensionAssignOperationElement) {
+		ExtensionAssignOperation extensionAssignOperation = BPELFactory.eINSTANCE.createExtensionAssignOperation();
+		extensionAssignOperation.setElement(extensionAssignOperationElement);
         
 
 		// Save all the references to external namespaces		
-		saveNamespacePrefix(eao, eaoElement);
+		saveNamespacePrefix(extensionAssignOperation, extensionAssignOperationElement);
 
 		// Reading snippet Element
-        Element snippetElement = getSnippet(eaoElement);
+        Element snippetElement = getSnippet(extensionAssignOperationElement);
         
         if (snippetElement != null) {
             Snippet snippet = BPELFactory.eINSTANCE.createSnippet();
             snippet.setElement(snippetElement);
             
             xml2Snippet(snippet, snippetElement); 
-            eao.setSnippet(snippet);
+            extensionAssignOperation.setSnippet(snippet);
         }
         
 
-		xml2ExtensibleElement(eao, eaoElement);
-		return eao;
+		xml2ExtensibleElement(extensionAssignOperation, extensionAssignOperationElement);
+		return extensionAssignOperation;
 	}
 	
 	/**

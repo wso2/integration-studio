@@ -40,7 +40,7 @@ public class MessagepropertiesFactoryImpl extends EFactoryImpl implements
 	public static MessagepropertiesFactory init() {
 		try {
 			MessagepropertiesFactory theMessagepropertiesFactory = (MessagepropertiesFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/varprop"); //$NON-NLS-1$ 
+					.getEFactory(MessagepropertiesPackage.eNS_URI);
 			if (theMessagepropertiesFactory != null) {
 				return theMessagepropertiesFactory;
 			}
@@ -65,7 +65,7 @@ public class MessagepropertiesFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 		case MessagepropertiesPackage.PROPERTY:

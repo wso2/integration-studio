@@ -20,8 +20,7 @@ public class JagApiProperties {
 	
 	
 	/*URLS*/  
-	private static  String domain= "https://appfactory.cloudpreview.wso2.com";
-	//private static  String domain="https://milestones.appfactory.wso2.com:9443";
+	private static  String domain= "https://apps.cloud.wso2.com";
 	
 	private static final String APP_INFO_URL_SFX = "/appmgt/site/blocks/application/get/ajax/list.jag";
 	private static final String LOGIN_URL_SFX  = "/appmgt/site/blocks/user/login/ajax/login.jag";
@@ -32,6 +31,7 @@ public class JagApiProperties {
 	private static final String APP_USER_ROLES_URL_SFX = "/appmgt/site/blocks/application/users/get/ajax/list.jag";
 	private static final String APP_DB_INFO_URL ="/appmgt/site/blocks/rssmanager/add/ajax/add.jag";
 	private static final String APP_DS_INFO_URL ="/appmgt/site/blocks/resources/datasource/get/ajax/list.jag";
+	private static final String FORKED_VERSION_INFO_URL = "/appmgt/site/blocks/buildandrepo/list/ajax/list.jag"; 
 	                                             
 	/*Actions*/
 	public static  final String USER_APP_LIST__ACTION = "getApplicationsOfUser";
@@ -39,10 +39,11 @@ public class JagApiProperties {
 	public static final String App_BUILD_NUMBER_ACTION = "buildinfobyappid";
 	public static final String App_BUILD_URL_ACTIONL = "getBuildLogsUrl";
 	public static final String App_BUILD_INFO_ACTION ="getbuildandrepodata";
+	public static final String FORKED_REPO_INFO_ACTION = "getbuildandrepodataforkedrepo";
 	public static final String App_BUILD_ACTION ="createArtifact";
 	public static final String App_USERS_ROLES_ACTION ="getUsersOfApplication";
 	public static final String App_DB_INFO_ACTION = "getDbUserTemplateInfoForStages";
-	public static final String App_DS_INFO_ACTION = "getDataSourceInfoUrl";
+	public static final String App_DS_INFO_ACTION = "getDatasources";
 	
 	public static String getDomain() {
 		return domain;
@@ -52,6 +53,10 @@ public class JagApiProperties {
 	}
 	public static String getAppInfoUrl(){
 		return domain + APP_INFO_URL_SFX;
+	}
+	
+	public static String getForkedAppInfoUrl(){
+		return domain + FORKED_VERSION_INFO_URL;
 	}
 	public static String getLoginUrl(){
 		return domain + LOGIN_URL_SFX;

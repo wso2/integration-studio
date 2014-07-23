@@ -44,12 +44,16 @@ public class RMSequenceMediatorDeserializer extends AbstractEsbNodeDeserializer<
 		}else if(WSRM_SpecVersion_1_1.equals(RMSequenceMediator.getVersion())){
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__RM_SPEC_VERSION, RMSpecVersion.VERSION_11);
 		}
+		if(RMSequenceMediator.getSingle()!=null ){ 
 		if(RMSequenceMediator.isSingle()){
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.SINGLE_MESSAGE);
-		}else{
+		}
+		}else {
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.CORRELATED_SEQUENCE);
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__CORRELATION_XPATH, createNamespacedProperty(RMSequenceMediator.getCorrelation()));
+			if (RMSequenceMediator.getLastMessage()!=null){
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__LAST_MESSAGE_XPATH, createNamespacedProperty(RMSequenceMediator.getLastMessage()));
+			}
 		}
 		
 		return visualRMSequenceMediator;

@@ -510,7 +510,7 @@ public class MavenUtils {
 		Plugin plugin;
 		
 		PluginExecution pluginExecution;
-		plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-bpel-plugin", "2.0.6", true);
+		plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-bpel-plugin", "2.0.8", true);
 		// FIXME : remove hard-coded version value (cannot use
 		// org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants
 		// due to cyclic reference)

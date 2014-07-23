@@ -235,7 +235,10 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		addGeneralProjectPlugin(project);
 		File pomLocation = project.getFile("pom.xml").getLocation().toFile();
 		String groupId = getMavenGroupId(pomLocation) + ".resource";
-		
+		 MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+		 String version = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
+		 
 		String registryPath = model.getDynamicEpRegistryPath()
 				.replaceAll("^conf:", "/_system/config")
 				.replaceAll("^gov:", "/_system/governance")
@@ -249,8 +252,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			if(!registryPath.startsWith("/_system/governance")){
 				registryPath = "/_system/governance/".concat(registryPath);
 			}
-		} 
-		
+		}  
 		String templateContent = "";
 		String template = "";
 		RegistryResourceInfoDoc regResInfoDoc = new RegistryResourceInfoDoc();

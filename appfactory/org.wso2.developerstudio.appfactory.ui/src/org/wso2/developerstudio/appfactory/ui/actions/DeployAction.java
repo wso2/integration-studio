@@ -27,12 +27,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IActionDelegate;
-import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.appfactory.core.client.HttpsJaggeryClient;
 import org.wso2.developerstudio.appfactory.core.jag.api.JagApiProperties;
 import org.wso2.developerstudio.appfactory.ui.Activator;
-import org.wso2.developerstudio.appfactory.ui.views.AppfactoryApplicationListView;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -47,10 +44,10 @@ public class DeployAction implements IActionDelegate{
 			try {
 				
 				
-				IViewPart findView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().
+			/*	IViewPart findView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().
 				getActivePage().findView("‌​org.wso2.developerstudio.appfactory.ui.views.AppfactoryApplicationListView");
 											 
-				AppfactoryApplicationListView applist = (AppfactoryApplicationListView) findView;
+				AppfactoryApplicationListView applist = (AppfactoryApplicationListView) findView;*/
 				 
 				IProject project = (IProject)selection.getFirstElement();
 				File pomfile = project.getFile("pom.xml").getLocation().toFile();

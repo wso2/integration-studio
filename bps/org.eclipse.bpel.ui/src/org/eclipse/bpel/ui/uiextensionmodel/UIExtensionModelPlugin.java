@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ public class UIExtensionModelPlugin extends Plugin {
 	/**
 	 * This method is called upon plug-in activation
 	 */
-	
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
@@ -40,7 +40,7 @@ public class UIExtensionModelPlugin extends Plugin {
 	/**
 	 * This method is called when the plug-in is stopped
 	 */
-	
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		super.stop(context);
 		plugin = null;

@@ -122,7 +122,6 @@ public interface AggregateMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Completion Min Messages Type</b></em>' attribute.
-	 * The default value is <code>"VALUE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -134,7 +133,7 @@ public interface AggregateMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType
 	 * @see #setCompletionMinMessagesType(CompletionMessagesType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_CompletionMinMessagesType()
-	 * @model default="VALUE"
+	 * @model
 	 * @generated
 	 */
 	CompletionMessagesType getCompletionMinMessagesType();
@@ -152,7 +151,6 @@ public interface AggregateMediator extends Mediator {
 
 	/**
 	 * Returns the value of the '<em><b>Completion Max Messages Type</b></em>' attribute.
-	 * The default value is <code>"VALUE"</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -164,7 +162,7 @@ public interface AggregateMediator extends Mediator {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType
 	 * @see #setCompletionMaxMessagesType(CompletionMessagesType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAggregateMediator_CompletionMaxMessagesType()
-	 * @model default="VALUE"
+	 * @model
 	 * @generated
 	 */
 	CompletionMessagesType getCompletionMaxMessagesType();

@@ -47,7 +47,7 @@
              type="registry/resource">
        </handler>
     </extension>
-    
+        
     <extension
          point="org.wso2.developerstudio.eclipse.greg.resourceProvider">
       <provider
@@ -112,6 +112,28 @@
          </possibleChildren>
       </navigatorContent>
 	</extension>
+	
+     <extension point="org.eclipse.ui.navigator.navigatorContent">
+		<commonFilter
+			class="org.wso2.developerstudio.eclipse.artifact.registry.filter.ArtifactResourceFilter"
+			description="Hide Artifact.xml files."
+			id="org.wso2.developerstudio.eclipse.artifact.registry.navigator.filter"
+			name="Hide Artifact.xml files" activeByDefault="true"/>
+	</extension>
+	
+		<extension
+			point="org.eclipse.ui.navigator.viewer">
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<contentExtension pattern="org.wso2.developerstudio.eclipse.artifact.registry.navigator.filter*" />	
+			</includes>
+		</viewerContentBinding>
+		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
+			<includes>
+				<contentExtension pattern="org.wso2.developerstudio.eclipse.artifact.registry.navigator.filter*" />	
+			</includes>
+		</viewerContentBinding>
+	</extension>
 
 	<extension
 			point="org.eclipse.ui.navigator.viewer">
@@ -122,7 +144,7 @@
 		</viewerContentBinding>
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.developerstudio.eclipse.artifact.registry.navigator*"/>	
+				<contentExtension pattern="org.wso2.developerstudio.eclipse.artifact.registry.navigator*"/>
 			</includes>
 		</viewerContentBinding>
 	</extension>

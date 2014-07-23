@@ -74,9 +74,9 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 	private Composite repoTypeComposite;
 	private Composite appOwnerComposite;
 	private Composite descriptionComposite;
-	private Composite databaseInfoComposite;
+/*	private Composite databaseInfoComposite;
 	private Composite databaseUsersComposite;
-	private Composite databaseTemplatesComposite;
+	private Composite databaseTemplatesComposite;*/
 	private TabFolder tabFolder;
 	private TabItem appInfoTabItem;
 	private TabItem currentStatusTabItem;
@@ -151,6 +151,23 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		// Updating the data sources details
 		updateDataSources(applicationInfo);
 	}
+	
+	/**
+	 * Clear details view.
+	 */
+	public void clear(){
+		
+		// Clear Application Info Tab
+		removeChildControls(appTypeComposite);
+		removeChildControls(repoTypeComposite);
+		removeChildControls(appOwnerComposite);
+		removeChildControls(descriptionComposite);
+		
+		currentStatusTable.removeAll();
+		dataSourcesTable.removeAll();	
+		teamDetailsTable.removeAll();
+		
+	}
 
 	private void removeChildControls(Composite composite) {
 		Control[] children = composite.getChildren();
@@ -193,7 +210,7 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 	/**
 	 * Update page content on based on the selected tab
 	 */
-	private void updatePageContent() {
+	/*private void updatePageContent() {
 		int selectionIndex = tabFolder.getSelectionIndex();
 		TabItem item = tabFolder.getItem(selectionIndex);
 
@@ -205,7 +222,7 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 			// Team tab
 		}
 	}
-
+*/
 	/**
 	 * Create application information tab page
 	 */

@@ -25,7 +25,7 @@ public class Branches extends XPathValidator {
 	 * Branches integer expression.
 	 *
 	 */
-	
+	@Override
 	@ARule(
 		sa = 75,
 		desc = "Check unsigned integer expression on branches",

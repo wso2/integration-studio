@@ -13,7 +13,7 @@
       <wizard
             id="dataMapper.presentation.DataMapperModelWizardID"
             name="%_UI_DataMapperModelWizard_label"
-            class="dataMapper.presentation.DataMapperModelWizard"
+            class="org.wso2.developerstudio.datamapper.presentation.DataMapperModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/DataMapperModelFile.gif">
          <description>%_UI_DataMapperModelWizard_description</description>
@@ -22,13 +22,25 @@
    </extension>
 
    <extension point="org.eclipse.ui.editors">
+      <!-- @generated dataMapper -->
+      <editor
+            id="org.wso2.developerstudio.datamapper.presentation.DataMapperEditorID"
+            name="%_UI_DataMapperEditor_label"
+            icon="icons/full/obj16/DataMapperModelFile.gif"
+            extensions="datamapper"
+            class="org.wso2.developerstudio.datamapper.presentation.DataMapperEditor"
+            contributorClass="org.wso2.developerstudio.datamapper.presentation.DataMapperActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
       <editor
             id="dataMapper.presentation.DataMapperEditorID"
             name="%_UI_DataMapperEditor_label"
             icon="icons/full/obj16/DataMapperModelFile.gif"
             extensions="datamapper"
-            class="dataMapper.presentation.DataMapperEditor"
-            contributorClass="dataMapper.presentation.DataMapperActionBarContributor">
+            class="org.wso2.developerstudio.datamapper.presentation.DataMapperEditor"
+            contributorClass="org.wso2.developerstudio.datamapper.presentation.DataMapperActionBarContributor">
       </editor>
    </extension>
 

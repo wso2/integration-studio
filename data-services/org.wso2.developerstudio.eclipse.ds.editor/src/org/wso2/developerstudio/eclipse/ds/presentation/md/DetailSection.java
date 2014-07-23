@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.ds.Operation;
 import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
 import org.wso2.developerstudio.eclipse.ds.PatternValidator;
 import org.wso2.developerstudio.eclipse.ds.Query;
+import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 import org.wso2.developerstudio.eclipse.ds.QueryParameter;
 import org.wso2.developerstudio.eclipse.ds.QueryProperty;
 import org.wso2.developerstudio.eclipse.ds.QueryPropertyList;
@@ -194,6 +195,17 @@ public class DetailSection {
 			labelMaker(DetailSectionCustomUiConstants.QUERY_SPARQL);
 			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input, sparql.getValue(),
 			                                   DsPackage.eINSTANCE.getSparql_Value(),
+			                                   DetailSectionCustomUiConstants.STRING);
+			voidMaker();
+			voidMaker();
+
+		}else if (input instanceof QueryExpression) {
+
+			QueryExpression queryExpression = (QueryExpression) input;
+
+			labelMaker(DetailSectionCustomUiConstants.QUERY_EXPRESSION);
+			sectionUtil.getMultilineTextFileld(detailsclient, toolkit, input, queryExpression.getValue(),
+			                                   DsPackage.eINSTANCE.getQueryExpression_Value(),
 			                                   DetailSectionCustomUiConstants.STRING);
 			voidMaker();
 			voidMaker();
@@ -627,7 +639,33 @@ public class DetailSection {
 		    configProperty.getName().equals(DSActionConstants.ENABLE_AUTO_COMMIT)) {
 
 			labelMaker(DSActionConstants.ENABLE_AUTO_COMMIT_DISPLAY);
+		}		
+		
+		// Cassandra type
+
+		if (configProperty.getName() != null &&
+		    configProperty.getName().equals(DSActionConstants.CASSANDRA_SERVER_URL)) {
+
+			labelMaker(DSActionConstants.CASSANDRA_SERVER_URL_DISPLAY);
 		}
+
+		if (configProperty.getName() != null &&
+		    configProperty.getName().equals(DSActionConstants.CASSANDRA_USERNAME)) {
+
+			labelMaker(DSActionConstants.CASSANDRA_USERNAME_DISPLAY);
+		}
+
+		if (configProperty.getName() != null &&
+		    configProperty.getName().equals(DSActionConstants.CASSANDRA_PASSWORD)) {
+
+			labelMaker(DSActionConstants.CASSANDRA_PASSWORD_DISPLAY);
+		}	
+		
+		if (configProperty.getName() != null &&
+			configProperty.getName().equals(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME)) {
+
+		    labelMaker(DSActionConstants.CASSANDRA_DRIVER_CLASS_NAME_DISPLAY);
+		}	
 
 		// CSV constants
 		if (configProperty.getName() != null &&
@@ -732,7 +770,8 @@ public class DetailSection {
 			                                                 DsPackage.eINSTANCE.getConfigurationProperty_Value());
 
 		} else if (configProperty.getName() != null &&
-		           configProperty.getName().equals(DSActionConstants.PASSWORD_PROPERTY)) {
+		           (configProperty.getName().equals(DSActionConstants.PASSWORD_PROPERTY) || 
+		        		   configProperty.getName().equals(DSActionConstants.CASSANDRA_PASSWORD))) {
 
 			sectionUtil.getPassWordField(detailsclient, toolkit, configProperty,
 			                             configProperty.getValue(),

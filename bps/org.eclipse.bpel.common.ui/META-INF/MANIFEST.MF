@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Common UI (Incubation)
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.bpel.common.ui; singleton:=true 
-Bundle-Version: 0.5.0.wso2v2
+Bundle-Version: 1.0.3.qualifier
 Bundle-Activator: org.eclipse.bpel.common.ui.CommonUIPlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui;bundle-version="[3.4.0,4.0.0)",
@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.4.0,4.0.0)",
  org.eclipse.core.resources;bundle-version="[3.4.0,4.0.0)",
  org.eclipse.gef;bundle-version="[3.4.0,4.0.0)",
  org.eclipse.emf.ecore.change;bundle-version="[2.4.0,3.0.0)",
- org.eclipse.bpel.model;bundle-version="0.5.0"
+ org.eclipse.bpel.model;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.bpel.common.ui,
  org.eclipse.bpel.common.ui.assist,
@@ -30,5 +30,5 @@ Export-Package: org.eclipse.bpel.common.ui,
  org.eclipse.bpel.common.ui.palette,
  org.eclipse.bpel.common.ui.tray
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-Vendor: eclipse.org
+Bundle-Vendor: %providerName
 Bundle-ClassPath: .

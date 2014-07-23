@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,7 +48,7 @@ public class SetNamespaceMappingCommand extends AbstractEditModelCommand {
 	/**
 	 * @see org.eclipse.gef.commands.Command#canExecute()
 	 */
-	
+	@Override
 	public boolean canExecute() {
 		return BPELUtils.isValidPrefixName(fPrefix);
 	}
@@ -57,7 +57,7 @@ public class SetNamespaceMappingCommand extends AbstractEditModelCommand {
 	/**
 	 * @see org.eclipse.gef.commands.Command#dispose()
 	 */
-	
+	@Override
 	public void dispose() {
 		fTarget = null;
 		fPrefix = null;
@@ -69,7 +69,7 @@ public class SetNamespaceMappingCommand extends AbstractEditModelCommand {
 	/**
 	 * @see org.eclipse.gef.commands.Command#execute()
 	 */
-	
+	@Override
 	public void execute() {
 		INamespaceMap<String, String> nsMap = BPELUtils.getNamespaceMap(fTarget);
 		fPreviousNS = nsMap.put(fPrefix, fNamespace);
@@ -79,7 +79,7 @@ public class SetNamespaceMappingCommand extends AbstractEditModelCommand {
 	/**
 	 * @see org.eclipse.gef.commands.Command#undo()
 	 */
-	
+	@Override
 	public void undo() {
 		INamespaceMap<String, String> nsMap = BPELUtils.getNamespaceMap(fTarget);
 		if (fPreviousNS == null) {
@@ -92,7 +92,7 @@ public class SetNamespaceMappingCommand extends AbstractEditModelCommand {
 	/**
 	 * @see org.eclipse.bpel.common.ui.editmodel.AbstractEditModelCommand#getModifiedResources()
 	 */
-	
+	@Override
 	public Resource[] getModifiedResources() {
 		
 		Resource resource = fTarget.eResource();

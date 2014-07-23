@@ -195,6 +195,10 @@
 			extensions="js" id="org.wso2.developerstudio.eclipse.platform.core.mediatype.js"
 			mediaType="application/x-javascript" name="JS Media type" priority="2" />
 		<resolver
+			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.DMCMediaTypeResolver"
+			extensions="dmc" id="org.wso2.developerstudio.eclipse.platform.core.mediatype.dmc"
+			mediaType="application/datamapper" name="DMC Media type" priority="2" />
+		<resolver
 			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JAVAMediaTypeResolver"
 			extensions="java"
 			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.java"

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 Oracle Corporation and others.
+ * Copyright (c) 2006, 2012 Oracle Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,7 +71,7 @@ public class ListAndViewDialog extends AbstractElementListSelectionDialog {
 	    
 	    
 	    
-	    
+	    @Override
 		public boolean close () {
 	    	saveSettings ();	    
 	    	return super.close();
@@ -116,7 +116,7 @@ public class ListAndViewDialog extends AbstractElementListSelectionDialog {
 	    /*
 	     * @see Dialog#createDialogArea(Composite)
 	     */
-	    
+	    @Override
 		public Control createDialogArea(Composite parent) {
 	    	
 	        Composite contents = (Composite) super.createDialogArea(parent);
@@ -170,7 +170,7 @@ public class ListAndViewDialog extends AbstractElementListSelectionDialog {
 	    /**
 	     * @see SelectionStatusDialog#computeResult()
 	     */
-	    
+	    @Override
 		protected void computeResult() {
 	    	setResult(Arrays.asList(getSelectedElements()));
 	    }
@@ -178,7 +178,7 @@ public class ListAndViewDialog extends AbstractElementListSelectionDialog {
 	    /**
 	     * @see AbstractElementListSelectionDialog#handleDefaultSelected()
 	     */
-	    
+	    @Override
 		protected void handleDefaultSelected() {
 	        if ( validateCurrentSelection() ) {
 				buttonPressed(IDialogConstants.OK_ID);
@@ -188,7 +188,7 @@ public class ListAndViewDialog extends AbstractElementListSelectionDialog {
 	    /**
 	     * @see AbstractElementListSelectionDialog#handleSelectionChanged()
 	     */
-	    
+	    @Override
 		protected void handleSelectionChanged() {
 	        handleUpperSelectionChanged();
 	        // https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813

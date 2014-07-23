@@ -31,7 +31,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
 public interface URLRewriteRuleAction extends EsbNode {
 	/**
 	 * Returns the value of the '<em><b>Rule Action</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleActionType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -43,7 +42,7 @@ public interface URLRewriteRuleAction extends EsbNode {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleActionType
 	 * @see #setRuleAction(RuleActionType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleAction()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	RuleActionType getRuleAction();
@@ -61,7 +60,6 @@ public interface URLRewriteRuleAction extends EsbNode {
 
 	/**
 	 * Returns the value of the '<em><b>Rule Fragment</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleFragmentType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -73,7 +71,7 @@ public interface URLRewriteRuleAction extends EsbNode {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleFragmentType
 	 * @see #setRuleFragment(RuleFragmentType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleFragment()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	RuleFragmentType getRuleFragment();
@@ -91,7 +89,6 @@ public interface URLRewriteRuleAction extends EsbNode {
 
 	/**
 	 * Returns the value of the '<em><b>Rule Option</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -103,7 +100,7 @@ public interface URLRewriteRuleAction extends EsbNode {
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType
 	 * @see #setRuleOption(RuleOptionType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_RuleOption()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	RuleOptionType getRuleOption();
@@ -147,7 +144,6 @@ public interface URLRewriteRuleAction extends EsbNode {
 
 	/**
 	 * Returns the value of the '<em><b>Action Value</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Action Value</em>' attribute isn't clear,
@@ -157,7 +153,7 @@ public interface URLRewriteRuleAction extends EsbNode {
 	 * @return the value of the '<em>Action Value</em>' attribute.
 	 * @see #setActionValue(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_ActionValue()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getActionValue();
@@ -174,7 +170,6 @@ public interface URLRewriteRuleAction extends EsbNode {
 
 	/**
 	 * Returns the value of the '<em><b>Action Regex</b></em>' attribute.
-	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Action Regex</em>' attribute isn't clear,
@@ -184,7 +179,7 @@ public interface URLRewriteRuleAction extends EsbNode {
 	 * @return the value of the '<em>Action Regex</em>' attribute.
 	 * @see #setActionRegex(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getURLRewriteRuleAction_ActionRegex()
-	 * @model default=""
+	 * @model
 	 * @generated
 	 */
 	String getActionRegex();

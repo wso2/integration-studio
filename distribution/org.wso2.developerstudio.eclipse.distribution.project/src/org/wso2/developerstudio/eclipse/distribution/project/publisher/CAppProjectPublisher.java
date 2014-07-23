@@ -154,18 +154,19 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
 	    	
 			URL serverURL = CarbonServerManager.getServerURL(server);
 			ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
-			CAppDeployer cappDeployer = new CAppDeployer();
+//			CAppDeployer cappDeployer = new CAppDeployer();
 //			Artifact superArtifact = CAppEnvironment.getcAppManager().getSuperArtifact(project);
-			CarExportHandler handler=new CarExportHandler();
-			List<IResource> exportArtifact = handler.exportArtifact(project);
-			File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();
-			String serverCarbonVersion = CarbonServerManager.getServerCarbonVersion(server);
-			String cappName=null;
-			if(serverCarbonVersion==null || "4.0.0".equals(serverCarbonVersion)){
-				cappName = project.getName();
-			}else{
-				cappName = carFile.getName().substring(0, carFile.getName().length()-4);
-			}
+//			CarExportHandler handler=new CarExportHandler();
+//			List<IResource> exportArtifact = handler.exportArtifact(project);
+//			File carFile = ((IFile)exportArtifact.get(0)).getLocation().toFile();			
+			String cappName =  project.getName();	
+			
+//			String serverCarbonVersion = CarbonServerManager.getServerCarbonVersion(server);
+//			if(serverCarbonVersion==null || "4.0.0".equals(serverCarbonVersion)){
+//				cappName = project.getName();
+//			}else{
+//				cappName = carFile.getName().substring(0, carFile.getName().length()-4);
+//			}
 			CAppDeployer.unDeployCAR(serverURL.toString(), 
 									 serverCredentials.getUsername(), 
 									 serverCredentials.getPassword(), 

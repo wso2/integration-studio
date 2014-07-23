@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007 Intel Corporation.
+ * Copyright (c) 2007, 2012 Intel Corporation.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -156,7 +156,7 @@ IGotoMarker/*, CommandStackListener*/ {
 		}
 
 		// increase visibility.
-		
+		@Override
 		public EditPartViewer getViewer() {
 			return super.getViewer();
 		}
@@ -179,12 +179,12 @@ IGotoMarker/*, CommandStackListener*/ {
 			// getViewer().addDropTargetListener(new BPELTemplateTransferDropTargetListener(getViewer()));
 			IToolBarManager tbm = getSite().getActionBars().getToolBarManager();
 			this.showOutlineAction = new Action() {
-				
+				@Override
 				public void run() {
 					showPage(ID_OUTLINE);
 				}
 
-				
+				@Override
 				public String getToolTipText() {
 					return Messages.OutlinePage_showOutlineView;
 				}
@@ -192,12 +192,12 @@ IGotoMarker/*, CommandStackListener*/ {
 			this.showOutlineAction.setImageDescriptor(BPELUIPlugin.INSTANCE.getImageDescriptor(IBPELUIConstants.ICON_OUTLINE_16));
 			tbm.add(this.showOutlineAction);
 			this.showOverviewAction = new Action() {
-				
+				@Override
 				public void run() {
 					showPage(ID_OVERVIEW);
 				}
 
-				
+				@Override
 				public String getToolTipText() {
 					return Messages.OutlinePage_showOverviewView;
 				}
@@ -207,12 +207,12 @@ IGotoMarker/*, CommandStackListener*/ {
 			showPage(ID_OUTLINE);
 		}
 
-		
+		@Override
 		public Control getControl() {
 			return this.pageBook;
 		}
 
-		
+		@Override
 		public void createControl(Composite parent) {
 			this.pageBook = new PageBook(parent, SWT.NONE);
 			this.outline = getViewer().createControl(this.pageBook);
@@ -252,12 +252,12 @@ IGotoMarker/*, CommandStackListener*/ {
 			}
 		}
 
-		
+		@Override
 		public void dispose() {
 			super.dispose();
 		}
 
-		
+		@Override
 		public void init(IPageSite pageSite) {
 			super.init(pageSite);
 			//should ActionRegistry be here too?
@@ -438,7 +438,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	}
 
 	// https://jira.jboss.org/browse/JBIDE-6917
-	
+	@Override
 	protected IEditorSite createSite(IEditorPart page) {
 		IEditorSite site = null;
 		if (page == fTextEditor) {
@@ -473,7 +473,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	/**
 	 * Creates the pages of this multi-page editor.
 	 */
-	
+	@Override
 	protected void createPages() {
 		try {
 			// source page must be created before design page
@@ -498,7 +498,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	}
 
 
-	
+	@Override
 	public void dispose() {
 		/*if (outlinePage != null && outlinePage.getViewer() != null) {
 			outlinePage.getViewer().setContents(null);
@@ -600,7 +600,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	/**
 	 * @see org.eclipse.ui.IEditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	
+	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
 		// We use fTextEditor to save, because fDesignViewer.doSave() removes comments on save
 		// Save bpel only
@@ -619,7 +619,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	 * 
 	 * @see org.eclipse.ui.ISaveablePart#doSaveAs()
 	 */
-	
+	@Override
 	public void doSaveAs() {
 		//saveAs is not allowed; do nothing
 	}
@@ -643,7 +643,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	}
 
 
-	
+	@Override
 	public Object getAdapter(Class type) {
 		if (type == Process.class) {
 			return this.process;
@@ -977,7 +977,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	 * @see org.eclipse.ui.IEditorPart#init(org.eclipse.ui.IEditorSite,
 	 *      org.eclipse.ui.IEditorInput)
 	 */
-	
+	@Override
 	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
 		try {
 			super.init(site, input);
@@ -1076,7 +1076,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	 * 
 	 * @see org.eclipse.ui.ISaveablePart#isSaveAsAllowed()
 	 */
-	
+	@Override
 	public boolean isSaveAsAllowed() {
 		return false;
 	}
@@ -1297,7 +1297,7 @@ IGotoMarker/*, CommandStackListener*/ {
 
 		try {
 			markers = file.findMarkers(null, true, IResource.DEPTH_ZERO);
-		} catch (CoreException ex) {
+		} catch (Exception ex) {
 			BPELUIPlugin.log(ex);
 			return;
 		}
@@ -1358,7 +1358,7 @@ IGotoMarker/*, CommandStackListener*/ {
 					continue;
 				}
 				target = resource.getEObject(href);
-			} catch (CoreException ex) {
+			} catch (Exception ex) {
 				continue;
 			}
 			if (target == null) {
@@ -1377,7 +1377,7 @@ IGotoMarker/*, CommandStackListener*/ {
 	}
 
 
-	
+	@Override
 	protected void pageChange(int newPageIndex) {
 		this.currentPage = newPageIndex;
 		super.pageChange(newPageIndex);
@@ -1447,12 +1447,12 @@ IGotoMarker/*, CommandStackListener*/ {
 		}
 	}
 
-	
+	@Override
 	public boolean isDirty() {
 		return this.fTextEditor.isDirty() || this.editDomain.getCommandStack().isDirty();
 	}
 
-	
+	@Override
 	public IEditorPart getActiveEditor() {
 		return super.getActiveEditor();
 	}

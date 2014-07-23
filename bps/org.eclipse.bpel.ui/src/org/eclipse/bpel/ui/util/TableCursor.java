@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -349,7 +349,7 @@ public class TableCursor extends Canvas {
 		updateVisible();
 	}
 
-	
+	@Override
 	public void setVisible(boolean visible) {
 		checkWidget();
 		userVisible = visible;
@@ -400,7 +400,7 @@ public class TableCursor extends Canvas {
 		final Accessible accessible = getAccessible();
 		if (accessAdapter == null) {
 			accessAdapter = new AccessibleAdapter() {
-				
+				@Override
 				public void getName(AccessibleEvent e) {
 					String name = null;
 					TableItem item = null;
@@ -424,18 +424,18 @@ public class TableCursor extends Canvas {
 					e.result = name;
 				}
 
-				
+				@Override
 				public void getHelp(AccessibleEvent e) {
 					String help = null;
 					e.result = help;
 				}
-				
+				@Override
 				public void getKeyboardShortcut(AccessibleEvent e) {
 				}
 			};
 
 			accessControlAdapter = new AccessibleControlAdapter() {
-				
+				@Override
 				public void getChildAtPoint(AccessibleControlEvent e) {
 					Point testPoint = toControl(new Point(e.x, e.y));
 					int childID = ACC.CHILDID_NONE;
@@ -449,7 +449,7 @@ public class TableCursor extends Canvas {
 					e.childID = childID;
 				}
 
-				
+				@Override
 				public void getLocation(AccessibleControlEvent e) {
 					Rectangle location = null;
 					int childID = e.childID;
@@ -465,18 +465,18 @@ public class TableCursor extends Canvas {
 					}
 				}
 
-				
+				@Override
 				public void getChildCount(AccessibleControlEvent e) {
 					e.detail = 0;
 				}
 
-				
+				@Override
 				public void getDefaultAction(AccessibleControlEvent e) {
 					String action = Messages.TableCursor_ScreenReader_Cell_Action1; 
 					e.result = action;
 				}
 
-				
+				@Override
 				public void getFocus(AccessibleControlEvent e) {
 					int childID = ACC.CHILDID_NONE;
 					if (isFocusControl()) {
@@ -485,7 +485,7 @@ public class TableCursor extends Canvas {
 					e.childID = childID;
 				}
 
-				
+				@Override
 				public void getRole(AccessibleControlEvent e) {
 					int role = 0;
 					int childID = e.childID;
@@ -494,12 +494,12 @@ public class TableCursor extends Canvas {
 					e.detail = role;
 				}
 
-				
+				@Override
 				public void getSelection(AccessibleControlEvent e) {
 					e.childID = ACC.CHILDID_NONE;
 				}
 
-				
+				@Override
 				public void getState(AccessibleControlEvent e) {
 					int state = 0;
 					int childID = e.childID;
@@ -515,7 +515,7 @@ public class TableCursor extends Canvas {
 					e.detail = state;
 				}
 
-				
+				@Override
 				public void getChildren(AccessibleControlEvent e) {
 					e.children = null;
 				}

@@ -45,7 +45,7 @@ public class UnknownExtensibilityAttributeImpl extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	
+	@Override
 	protected EClass eStaticClass() {
 		return BPELPackage.Literals.UNKNOWN_EXTENSIBILITY_ATTRIBUTE;
 	}

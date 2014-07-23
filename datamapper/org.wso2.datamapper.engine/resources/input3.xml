@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+  <employee>
+		<firstname>Asanka</firstname>
+		<lastname>Sanjeewa</lastname>
+		<address>
+		    <no>No.123</no>
+		    <road>Main Street</road>
+		    <city>Negombo</city>
+		</address>
+	</employee>
+	<employee>
+		<firstname>Kamal</firstname>
+		<lastname>Silva</lastname>
+		<address>
+		    <no>No.123</no>
+		    <road>Main Street</road>
+		    <city>Negombo</city>
+		</address>
+	</employee>
+	<employee>
+		<firstname>Roshan</firstname>
+		<lastname>Fernando</lastname>
+		<address>
+		    <no>No.123</no>
+		    <road>Main Street</road>
+		    <city>Negombo</city>
+		</address>
+	</employee>
+</employees>

@@ -54,7 +54,7 @@ public class Definitions extends Validator {
 	// https://bugs.eclipse.org/bugs/show_bug.cgi?id=330813
 	// https://jira.jboss.org/browse/JBIDE-7116
 	// Added <import> location checking: missing XSD imports are not reported by WSDL validator!
-	
+	@Override
 	@ARule(
 			sa = -1,
 			desc = "Check WSDL definition",

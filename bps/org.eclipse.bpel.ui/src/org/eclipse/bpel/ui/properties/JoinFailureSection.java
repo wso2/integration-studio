@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.bpel.common.ui.flatui.FlatFormData;
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Process;
+import org.eclipse.bpel.ui.IHelpContextIds;
 import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.util.BPELUtil;
 import org.eclipse.bpel.ui.util.MultiObjectAdapter;
@@ -28,6 +29,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * JoinFailureDetails provides viewing and editing of the suppressJoinFailure
@@ -43,13 +45,13 @@ public class JoinFailureSection extends BPELPropertySection {
 	
 	IValue fContext ;
 	
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		
 		return new MultiObjectAdapter[] {
 		/* model object */
 		new MultiObjectAdapter() {
-			
+			@Override
 			public void notify (Notification n) {
 				
 				Object notifier = n.getNotifier();
@@ -77,7 +79,7 @@ public class JoinFailureSection extends BPELPropertySection {
 		}, };
 	}
 
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		// Also add adapter[0] to each object in our eContainer() chain which
@@ -168,14 +170,15 @@ public class JoinFailureSection extends BPELPropertySection {
 		fRadioController.startListeningTo( yesRadio, noRadio,sameAsParentRadio );
 	}
 	
-	
+	@Override
 	protected void createClient(Composite parent) {
 		fComposite = createFlatFormComposite(parent);
 		createSuppressJoinFailureWidgets(fComposite);
 		createControllers();
+    PlatformUI.getWorkbench().getHelpSystem().setHelp(fComposite, IHelpContextIds.PROPERTY_PAGE_JOIN_FAILURE);
 	}
 	
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 		
 		if (newInput instanceof Process) {
@@ -211,7 +214,7 @@ public class JoinFailureSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
-	
+	@Override
 	public Object getUserContext() {
 		return fContext.get();
 	}
@@ -219,7 +222,7 @@ public class JoinFailureSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 		fContext.set(userContext);
 	}

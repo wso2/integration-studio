@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,13 +26,13 @@ public class RemoveValidateVariableCommand extends RemoveFromListCommand {
 		super(target, oldVariable, IBPELUIConstants.CMD_DELETE_VALIDATE_VARIABLE);
 	}
 
-	
+	@Override
 	protected EList<Variable> getList() {
 		EList<Variable> l = ModelHelper.getValidateVariables(target);
 		return (l == null)? null : l;
 	}
 
-	
+	@Override
 	protected void deleteList() {
 		EList<Variable> l = ModelHelper.getValidateVariables(target);
 		if (l != null)

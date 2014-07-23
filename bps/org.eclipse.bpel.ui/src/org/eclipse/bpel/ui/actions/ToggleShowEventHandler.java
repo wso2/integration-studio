@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ public class ToggleShowEventHandler extends SelectionAction {
 		setToolTipText(Messages.ToggleShowEventHandler_Shows_event_handler_activities_3); 
 	}
 
-	
+	@Override
 	public void run() {
 		List selList = getSelectedObjects();
 		if (selList.size() == 1) {
@@ -52,7 +52,7 @@ public class ToggleShowEventHandler extends SelectionAction {
 		}
 	}
 
-	
+	@Override
 	protected boolean calculateEnabled() {
 		List selList = getSelectedObjects();
 		if (selList.size() != 1)
@@ -68,7 +68,7 @@ public class ToggleShowEventHandler extends SelectionAction {
 		return false;
 	}
 
-	
+	@Override
 	public boolean isChecked() {
 		List selList = getSelectedObjects();
 		if (selList.size() == 1) {

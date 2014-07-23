@@ -35,13 +35,13 @@ public class ExtendedObjectUserAdapterImpl extends AdapterImpl implements Extend
 	/**
 	 * @see org.eclipse.emf.common.notify.Adapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
 	 */
-	
+	@Override
 	public void notifyChanged(Notification notification) {}
 
 	/**
 	 * @see org.eclipse.emf.common.notify.Adapter#isAdapterForType(java.lang.Object)
 	 */
-	
+	@Override
 	public boolean isAdapterForType(Object type) {
 		return EObjectImpl.class.equals(type);
 	}

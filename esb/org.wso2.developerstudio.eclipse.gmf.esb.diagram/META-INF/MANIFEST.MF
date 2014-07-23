@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.diagram; singleton:=true
-Bundle-Version: 1.4.0.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlugin
 Bundle-Vendor: %providerName
@@ -63,8 +63,8 @@ Import-Package: com.damnhandy.uri.template,
  org.apache.commons.io,
  org.apache.commons.lang,
  org.apache.commons.logging,
- org.apache.maven.model;version="[2.2.1,3.0.0)",
- org.apache.maven.project;version="[2.2.1,3.0.0)",
+ org.apache.maven.model,
+ org.apache.maven.project,
  org.apache.synapse,
  org.apache.synapse.commons.evaluators,
  org.apache.synapse.commons.evaluators.config,
@@ -109,7 +109,7 @@ Import-Package: com.damnhandy.uri.template,
  org.apache.synapse.util,
  org.apache.synapse.util.resolver,
  org.apache.synapse.util.xpath,
- org.codehaus.plexus.util.xml;version="2.0.1",
+ org.codehaus.plexus.util.xml,
  org.eclipse.core.filesystem,
  org.eclipse.emf.query.conditions.eobjects,
  org.eclipse.emf.query.statements,
@@ -122,6 +122,7 @@ Import-Package: com.damnhandy.uri.template,
  org.wso2.carbon.identity.oauth.mediator,
  org.wso2.carbon.mediator.bam,
  org.wso2.carbon.mediator.bam.config.stream,
+ org.wso2.carbon.mediator.datamapper,
  org.wso2.carbon.mediator.event,
  org.wso2.carbon.mediator.transform,
  org.wso2.carbon.mediators.router.impl,
@@ -144,6 +145,7 @@ Import-Package: com.damnhandy.uri.template,
  org.wso2.developerstudio.eclipse.esb.core,
  org.wso2.developerstudio.eclipse.esb.core.interfaces,
  org.wso2.developerstudio.eclipse.esb.core.utils,
+ org.wso2.developerstudio.eclipse.esb.presentation.ui,
  org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject,
  org.wso2.developerstudio.eclipse.esb.project.utils,
@@ -171,4 +173,5 @@ Import-Package: com.damnhandy.uri.template,
  org.wso2.developerstudio.eclipse.platform.ui.wizard,
  org.wso2.developerstudio.eclipse.utils.archive,
  org.wso2.developerstudio.eclipse.utils.data,
- org.wso2.developerstudio.eclipse.utils.file
+ org.wso2.developerstudio.eclipse.utils.file,
+ org.wso2.developerstudio.eclipse.utils.ui

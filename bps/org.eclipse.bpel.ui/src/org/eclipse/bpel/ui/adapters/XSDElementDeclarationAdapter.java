@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,12 +21,12 @@ public class XSDElementDeclarationAdapter extends XSDAbstractAdapter
 
 	/* ILabeledElement overrides */
 	
-	
+	@Override
 	public Image getSmallImage(Object object) {		
 		return BPELUIPlugin.INSTANCE.getImage(IBPELUIConstants.ICON_XSD_ELEMENT_DECLARATION_16);
 	}
 		
-	
+	@Override
 	public String getTypeLabel(Object object) {
 		return Messages.XSDElementDeclarationAdapter_XSD_Element_1; 
 	}	

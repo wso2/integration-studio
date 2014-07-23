@@ -49,7 +49,7 @@ public class CPartnerActivityValidator extends CActivityValidator {
 	/** (non-Javadoc)
 	 * @see org.eclipse.bpel.validator.rules.CValidator#checkChildren()
 	 */
-	
+	@Override
 	public void checkChildren () {
 		super.checkChildren();
 		checkChild(ND_CORRELATIONS,0,1);		
@@ -59,7 +59,7 @@ public class CPartnerActivityValidator extends CActivityValidator {
 	 * Start the validation of this node.
 	 */
 	
-	
+	@Override
 	protected void start () {		
 		super.start();			
 	}

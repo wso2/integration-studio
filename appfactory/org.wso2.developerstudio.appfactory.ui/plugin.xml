@@ -5,7 +5,7 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            name="WSO2 AppFactory"
+            name="WSO2 App Factory"
             id="org.wso2.developerstudio.appfactory.ui">
       </category>
       <view
@@ -20,7 +20,7 @@
    <extension
 		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
     <category id="dashboard.category.AF" showTitle="true"
-			title="AppFactory"
+			title="WSO2 App Cloud/ App Factory"
 			priority="9">
 	</category>
 	<wizardLink category="dashboard.category.AF"
@@ -48,7 +48,7 @@
       <extension
          point="org.eclipse.ui.views">
       <category
-            name="WSO2 AppFactory"
+            name="WSO2 App Factory"
             id="org.wso2.developerstudio.appfactory.ui">
       </category>
       <view
@@ -74,11 +74,11 @@
       <extension
          point="org.eclipse.ui.views">
       <category
-            name="WSO2 AppFactory"
+            name="WSO2 App Factory"
             id="org.wso2.developerstudio.appfactory.ui">
       </category>
       <view
-            name="WSO2 AppFactory - Build Info"
+            name="WSO2 App Factory - Build Info"
             icon="icons/appfac.png"
             category="org.wso2.developerstudio.appfactory.ui"
             class="org.wso2.developerstudio.appfactory.ui.views.AppfactoryBuildInfoView"
@@ -126,11 +126,11 @@
       <extension
          point="org.eclipse.ui.views">
       <category
-            name="WSO2 AppFactory"
+            name="WSO2 App Factory"
             id="org.wso2.developerstudio.appfactory.ui">
       </category>
       <view
-            name="WSO2 AppFactory -Ghost view"
+            name="WSO2 App Factory -Ghost view"
             icon="icons/appfac.png"
             category="org.wso2.developerstudio.appfactory.ui"
             class="org.wso2.developerstudio.appfactory.ui.views.AppFactoryGhostView"
@@ -146,7 +146,7 @@
                  class="org.wso2.developerstudio.appfactory.ui.perspective.AppFactoryPerspectiveFactory"
                  icon="icons/appfac.png"
                  id="org.wso2.developerstudio.appfactory.ui.perspective"
-                 name="WSO2 AppFactory">
+                 name="WSO2 App Factory">
            </perspective>
         </extension>
         <extension
@@ -164,7 +164,7 @@
            </perspectiveExtension>
         </extension>
         <extension point="org.eclipse.ui.preferencePages">
-		<page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.appfactory" name="App Factory" 
+		<page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.appfactory" name="App Cloud/ App Factory" 
 		class="org.wso2.developerstudio.appfactory.ui.preference.AppFactoryPreferencePage" category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"></page>
 	</extension>
 	 <!--extension

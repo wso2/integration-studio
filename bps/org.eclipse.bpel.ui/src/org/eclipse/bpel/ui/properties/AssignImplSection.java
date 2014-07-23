@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.From;
 import org.eclipse.bpel.model.To;
+import org.eclipse.bpel.ui.IHelpContextIds;
 import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.commands.AddCopyCommand;
 import org.eclipse.bpel.ui.commands.RemoveCopyCommand;
@@ -37,6 +38,7 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * AssignImplDetails allows viewing and editing of the copy elements in an
@@ -105,13 +107,13 @@ public class AssignImplSection extends BPELPropertySection {
 
 	}
 
-	
+	@Override
 	protected MultiObjectAdapter[] createAdapters() {
 		return new MultiObjectAdapter[] {
 		/* model object */
 		new MultiObjectAdapter() {
 
-			
+			@Override
 			public void notify(Notification n) {
 
 				adjustCopyRulesList();
@@ -128,7 +130,7 @@ public class AssignImplSection extends BPELPropertySection {
 		}, };
 	}
 
-	
+	@Override
 	protected void addAllAdapters() {
 		super.addAllAdapters();
 		EList<Copy> list = ((Assign) getInput()).getCopy();
@@ -390,12 +392,12 @@ public class AssignImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
 	 */
-	
+	@Override
 	public boolean shouldUseExtraSpace() {
 		return true;
 	}
 
-	
+	@Override
 	protected void createClient(Composite parent) {
 
 		Composite composite = createFlatFormComposite(parent);
@@ -411,11 +413,11 @@ public class AssignImplSection extends BPELPropertySection {
 
 		createCategorySectionWidgets(mainComposite, fFromSection, true);
 		createCategorySectionWidgets(mainComposite, fToSection, false);
-
+    PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, IHelpContextIds.PROPERTY_PAGE_ASSIGN);
 	}
 
 	// Total Hack until we have Copy objects in graphical editor
-	
+	@Override
 	protected void basicSetInput(EObject newInput) {
 
 		saveUserContextToInput();
@@ -489,7 +491,7 @@ public class AssignImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#refresh()
 	 */
-	
+	@Override
 	public void refresh() {
 		super.refresh();
 	}
@@ -497,7 +499,7 @@ public class AssignImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#aboutToBeHidden()
 	 */
-	
+	@Override
 	public void aboutToBeHidden() {
 		super.aboutToBeHidden();
 
@@ -513,7 +515,7 @@ public class AssignImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#aboutToBeShown()
 	 */
-	
+	@Override
 	public void aboutToBeShown() {
 		super.aboutToBeShown();
 		if (fToSection.fCurrent != null) {
@@ -616,7 +618,7 @@ public class AssignImplSection extends BPELPropertySection {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#getUserContext()
 	 */
 	@SuppressWarnings("boxing")
-	
+	@Override
 	public Object getUserContext() {
 		Assign assign = getModel();
 		if (assign == null) {
@@ -629,7 +631,7 @@ public class AssignImplSection extends BPELPropertySection {
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#restoreUserContext(java.lang.Object)
 	 */
 	@SuppressWarnings("boxing")
-	
+	@Override
 	public void restoreUserContext(Object userContext) {
 
 		int idx = 0;
@@ -644,7 +646,7 @@ public class AssignImplSection extends BPELPropertySection {
 	/**
 	 * @see org.eclipse.bpel.ui.properties.BPELPropertySection#gotoMarker(org.eclipse.core.resources.IMarker)
 	 */
-	
+	@Override
 	public void gotoMarker(IMarker marker) {
 		// TODO: This code do nothing and sometime causes NPE (from==null), so
 		// temporary disabled (Oleg)

@@ -6,11 +6,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.mediators.builtin.SendMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
@@ -71,8 +68,8 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		Endpoint endPoint =(Endpoint)create(visualEndPoint, visualEndPoint.getEndPointName());
 		endPoints.add(endPoint);		
 		//Next node may be a Failover endPoint. So that this should be edited to be compatible with that also.
-		info.setParentSequence(info.getOriginOutSequence());
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);		
+/*		info.setParentSequence(info.getOriginOutSequence());
+		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);*/		
 
 		// Transform endpoint output data flow.
 		transformEndpointOutflow(info);

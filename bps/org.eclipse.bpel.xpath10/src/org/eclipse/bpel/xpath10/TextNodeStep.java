@@ -28,7 +28,7 @@ public class TextNodeStep extends Step {
 		super(axis);
 	}
 	
-	
+	@Override
 	@SuppressWarnings("nls")
 	protected String asText()
     {

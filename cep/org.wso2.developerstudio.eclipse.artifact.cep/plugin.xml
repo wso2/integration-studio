@@ -16,10 +16,7 @@
                name="Complex Event Processing"
                parentCategory="org.wso2.developerstudio.eclipse.capp.project">
          </category>
-   </extension>
-   <!--extension newwizard by awanthika-->
-   
-   <!--end-->
+   </extension>  
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.cep.project.nature" name="CEP_PROJECT_NATURE">
 		<runtime>

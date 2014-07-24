@@ -31,15 +31,15 @@ public class MapperMain {
 		
 		AvroSchemaBuilder avroSchemaBuilder = new AvroSchemaBuilder();
 		
-		InputStream inputSchema = avroSchemaBuilder.getAvroSchema("org.wso2.avroSchemaGen.Employee");
-	    InputStream outputSchema = avroSchemaBuilder.getAvroSchema("org.wso2.avroSchemaGen.Engineer");
+		InputStream inputSchemaStream = avroSchemaBuilder.getAvroSchema("org.wso2.avroSchemaGen.Employee");
+	    InputStream outputSchemaStream = avroSchemaBuilder.getAvroSchema("org.wso2.avroSchemaGen.Engineer");
 		
 		//Contexts are anti-pattern and no need getters/setters for access static class, just used for code readability 
 		MappingContext context = new MappingContext();
 		context.setInputStream(inStream);
 		context.setConfig(config);
-		context.setInputSchema(inputSchema);
-		context.setOutputSchema(outputSchema);
+		context.setInputSchema(inputSchemaStream);
+		context.setOutputSchema(outputSchemaStream);
 		
 		//CSV : text/csv
 		//XML : application/xml	

@@ -59,8 +59,7 @@
 				  </triggerPoints>
 		</navigatorContent>
 		</extension>-->
-		<!--Awanthika-->
-		<extension point="org.eclipse.ui.navigator.navigatorContent">    
+				<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
                 menuGroupId="2org.wso2.developerstudio.eclipse.artifact.newcepartifact"
                 wizardId="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
@@ -78,8 +77,7 @@
                 </enablement>
             </commonWizard>
     </extension>
-		<!--Awanthika-->
- <extension
+		 <extension
        point="org.wso2.developerstudio.eclipse.project.export.handler">
     <handler
           class="org.wso2.developerstudio.eclipse.artifact.cep.project.export.CEPArtfactExportHandler"

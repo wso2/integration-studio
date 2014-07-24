@@ -39,8 +39,7 @@
 				           </or>
 				  </triggerPoints>
 		</navigatorContent>
-	</extension>-->
-	<!--Awanthika-->
+	</extension>-->	
 		<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
                 menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
@@ -55,19 +54,25 @@
 							<test property="org.wso2.developerstudio.projectNature"
 								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
 						</adapt>
+						<adapt type="org.eclipse.core.resources.IFolder">  
+						   <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.core.resources.name"
+                       value="endpoints">
+                     </test>                        
+						</adapt>
                     </or>
                 </enablement>
             </commonWizard>
-    </extension>
-		<!--Awanthika-->
-	<!--extension point="org.eclipse.core.resources.natures"
+    </extension>	
+	<extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.endpoint.project.nature" name="Endpoint Project Nature">
 		<runtime>
 			<run
 				class="org.wso2.developerstudio.eclipse.artifact.endpoint.project.nature.EndpointProjectNature">
 			</run>
 		</runtime>
-	</extension-->
+	</extension>
 	<!--extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.developerstudio.eclipse.ep.project.natureImage"
 			natureId="org.wso2.developerstudio.eclipse.endpoint.project.nature" icon="icons/endpoint-normal.png">

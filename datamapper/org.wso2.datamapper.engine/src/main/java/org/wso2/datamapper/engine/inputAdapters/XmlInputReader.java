@@ -105,8 +105,7 @@ public class XmlInputReader implements InputDataReaderAdapter {
 									record.put(localName, child);
 								}else{
 									continue;
-								}
-								
+								}	
 							}
 						}
 					}else{

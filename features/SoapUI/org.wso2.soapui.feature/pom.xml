@@ -50,7 +50,7 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
-                                <bundleDef>com.eviware:com.eviware.soapui.eclipse:4.0.1.wso2v1</bundleDef>
+                                <bundleDef>com.eviware:com.eviware.soapui.eclipse:4.0.1.wso2v2-SNAPSHOT</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

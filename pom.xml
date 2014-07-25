@@ -17,7 +17,7 @@
             </activation>
             <modules>
 		<module>dependencies</module>
-		<module>orbit</module>
+		<!--<module>orbit</module>-->
 		<module>common</module>
 		<module>server</module>
 		<module>core</module>
@@ -39,14 +39,14 @@
 		<module>distribution</module>
 		<module>library</module>
 		<module>features</module>     
-		<module>docs</module>
+                <!--<module>docs</module>-->
             </modules>
         </profile>
         <profile>
             <id>release</id>
             <modules>
 		<module>dependencies</module>
-		<module>orbit</module>
+		<!--<module>orbit</module>-->
 		<module>common</module>
 		<module>server</module>
 		<module>core</module>

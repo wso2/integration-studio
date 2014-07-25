@@ -16,7 +16,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
-		<module>dependencies</module>
+	<!--	<module>dependencies</module>-->
 		<!--<module>orbit</module>-->
 		<module>common</module>
 		<module>server</module>

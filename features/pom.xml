@@ -53,8 +53,8 @@
 	<module>gadgets</module>
 	<module>cep</module>
 	<module>brs</module>
-	<module>SoapUI</module>
-	<module>tcpmon</module>
+<!--	<module>SoapUI</module>-->
+<!--	<module>tcpmon</module>-->
 	<!--module>smooks</module-->
         <!--module>gadgets</module-->   
         <module>jaggery</module>

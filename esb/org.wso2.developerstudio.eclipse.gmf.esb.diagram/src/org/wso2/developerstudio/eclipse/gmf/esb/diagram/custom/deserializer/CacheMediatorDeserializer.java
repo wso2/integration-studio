@@ -48,9 +48,9 @@ public class CacheMediatorDeserializer extends
 			executeSetValueCommand(CACHE_MEDIATOR__CACHE_ID, mediator.getId());
 		}
 		
-		if("per-mediator".equals(mediator.getId())){
+		if("per-mediator".equals(mediator.getScope())){
 			executeSetValueCommand(CACHE_MEDIATOR__CACHE_SCOPE, CacheScope.PER_MEDIATOR);
-		} else if ("per-host".equals(mediator.getId())){
+		} else if ("per-host".equals(mediator.getScope())){
 			executeSetValueCommand(CACHE_MEDIATOR__CACHE_SCOPE, CacheScope.PER_HOST);
 		}	
 		

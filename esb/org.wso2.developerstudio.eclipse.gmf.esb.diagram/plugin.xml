@@ -4525,7 +4525,315 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
    </extension>
-   
-</plugin>
+  <!--Key Bindings for new Wizards - messagestore-->
+   <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.msgStore">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.msgStore"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.msgStore"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+K"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Endpoints-->
+   <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.endPoint">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.endPoint"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.endPoint"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+E"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Local Entry-->
+   <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.lclEntry">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.lclEntry"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.lclEntry"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+J"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Mediator Project-->
+<extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.mediatorPro">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.mediatorPro"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.mediatorPro"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+D"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Message Processor-->
+   <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.msgProc">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.msgProc"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.msgProc"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+P"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--proxy service-->   
+    <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.proxService">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.proxService"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.proxService"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+X"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Sequence-->
+    <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.seQuence">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.seQuence"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.seQuence"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+Q"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Rest API-->
+    <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.rstAPI">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.rstAPI"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.rstAPI"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+R"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Template-->
+    <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.template">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.template"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.template"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+H"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Synapse-->
+    <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.synapse">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.synapse"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.synapse"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+Y"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <!--Scheduled Task-->
+    <extension
+         point="org.eclipse.ui.commands">
+         <category
+            name="Sample Category"
+            id="esbproject.commands.category">
+      </category>
+      <command
+            name="ESB Command"
+            categoryId="esbproject.commands.category"
+            id="esbproject.commands.new.schedTask">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="esbproject.commands.new.schedTask"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">     
+      <key
+            commandId="esbproject.commands.new.schedTask"
+            contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
+            sequence="M1+ALT+U"            
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+ <!--key board shortcuts-->
+  </plugin>
 
 

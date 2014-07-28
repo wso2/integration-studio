@@ -29,29 +29,29 @@ public class ESBKeyHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		if 	   (event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.msgStore")) {
+		if 	   (event.getCommand().getId().equals("esbproject.commands.new.msgStore")) {
 			openWizard("org.wso2.developerstudio.eclipse.artifact.messagestore.wizard");
-	   }else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.lclEntry")){
+	   }else if(event.getCommand().getId().equals("esbproject.commands.new.lclEntry")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.newlocalentry");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.endPoint")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.endPoint")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.newendpointartifact");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.mediatorPro")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.mediatorPro")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.newmediatorartifact");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.msgProc")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.msgProc")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.messageprocessor.wizard");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.proxService")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.proxService")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.newproxyservice");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.seQuence")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.seQuence")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.newsequenceartifact");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.rstAPI")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.rstAPI")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.synapse.api.wizard");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.template")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.template")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.newtemplate");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.synapse")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.synapse")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.synapseartifact");
-		}else if(event.getCommand().getId().equalsIgnoreCase("esbproject.commands.new.schedTask")){
+		}else if(event.getCommand().getId().equals("esbproject.commands.new.schedTask")){
 			openWizard("org.wso2.developerstudio.eclipse.artifact.task.wizard");
-		}else {
+		}else if(event.getCommand().getId().equals("esbproject.commands.sampleCommand")) {
 		//EsbMultiPageEditor x;
 		IEditorPart editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditors();
 		for (int i = 0; i < editorReferences.length; i++) {

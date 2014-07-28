@@ -4514,6 +4514,49 @@
             commandId="esbproject.commands.sampleCommand"
             class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
       </handler>
+       <handler
+            commandId="esbproject.commands.new.msgStore"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.endPoint"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.lclEntry"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.mediatorPro"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.msgProc"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.proxService"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.seQuence"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.rstAPI"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.template"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>
+       <handler
+            commandId="esbproject.commands.new.synapse"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler> <handler
+            commandId="esbproject.commands.new.schedTask"
+            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
+      </handler>      
    </extension>
    <extension point="org.eclipse.ui.bindings">
       <!-- ctrl + alt + M  This will focus the mediators group on toolbar-->
@@ -4537,14 +4580,7 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.msgStore">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.msgStore"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
+   </extension>  
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.msgStore"
@@ -4566,14 +4602,7 @@
             id="esbproject.commands.new.endPoint">
       </command>
    </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.endPoint"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
-   <extension point="org.eclipse.ui.bindings">     
+     <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.endPoint"
             contextId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ui.diagramContext"
@@ -4593,14 +4622,7 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.lclEntry">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.lclEntry"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
+   </extension>  
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.lclEntry"
@@ -4621,13 +4643,6 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.mediatorPro">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.mediatorPro"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
    </extension>
    <extension point="org.eclipse.ui.bindings">     
       <key
@@ -4650,13 +4665,6 @@
             id="esbproject.commands.new.msgProc">
       </command>
    </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.msgProc"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.msgProc"
@@ -4677,14 +4685,7 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.proxService">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.proxService"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
+   </extension>  
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.proxService"
@@ -4705,14 +4706,7 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.seQuence">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.seQuence"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
+   </extension>  
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.seQuence"
@@ -4733,14 +4727,7 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.rstAPI">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.rstAPI"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
+   </extension>  
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.rstAPI"
@@ -4761,14 +4748,7 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.template">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.template"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
+   </extension>  
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.template"
@@ -4789,14 +4769,7 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.synapse">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.synapse"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
+   </extension>   
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.synapse"
@@ -4817,14 +4790,7 @@
             categoryId="esbproject.commands.category"
             id="esbproject.commands.new.schedTask">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="esbproject.commands.new.schedTask"
-            class="org.wso2.developerstudio.eclipse.gmf.keyhandlers.ESBKeyHandler">
-      </handler>
-   </extension>
+   </extension>  
    <extension point="org.eclipse.ui.bindings">     
       <key
             commandId="esbproject.commands.new.schedTask"

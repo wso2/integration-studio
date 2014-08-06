@@ -57,16 +57,15 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 		org.apache.synapse.mediators.builtin.CalloutMediator calloutMediator = new org.apache.synapse.mediators.builtin.CalloutMediator();
 		setCommonProperties(calloutMediator, visualCallout);
 		{
-			if(!(visualCallout.getEndpointType().getValue()==0) ){
-			
-			if (visualCallout.getEndpointType().getValue()== CalloutEndpointType.URL_VALUE) {
-				
-				
-				if (!visualCallout.getServiceURL().isEmpty()) {
-					calloutMediator.setServiceURL(visualCallout.getServiceURL());
+			if (!(visualCallout.getEndpointType().getValue() == 0)) {
+				if (visualCallout.getEndpointType().getValue() == CalloutEndpointType.URL_VALUE) {
+					// Fixing TOOLS-2598
+					if (StringUtils.isNotEmpty(visualCallout.getServiceURL())) {
+						calloutMediator.setServiceURL(visualCallout.getServiceURL());
+					}
 				}
-			}}			
-			
+			}
+
 			else if (visualCallout.getAddressEndpoint() != null
 					&& StringUtils.isNotBlank(visualCallout.getAddressEndpoint().getKeyValue())) {
 				calloutMediator.setEndpointKey(visualCallout.getAddressEndpoint().getKeyValue());
@@ -100,9 +99,12 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 
 			} else if(visualCallout.getPayloadType().getValue()==CalloutPayloadType.ENVELOPE_VALUE){
 				  calloutMediator.setUseEnvelopeAsSource(true);
-			}else {
+			} else {
 				if (visualCallout.getPayloadProperty() != null) {
-					calloutMediator.setRequestKey(visualCallout.getResultContextProperty());
+					// Fixing TOOLS-2598
+					if (StringUtils.isNotEmpty(visualCallout.getResultContextProperty())) {
+						calloutMediator.setRequestKey(visualCallout.getResultContextProperty());
+					}
 				}
 			}
 
@@ -127,21 +129,19 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 				}
 
 			} else {
-
-				if (!visualCallout.getResultContextProperty().equals("")) {
+				// Fixing TOOLS-2598
+				if (StringUtils.isNotEmpty(visualCallout.getResultContextProperty())) {
 					calloutMediator.setTargetKey(visualCallout.getResultContextProperty());
 				}
 			}
-			
-			if(visualCallout.getPathToAxis2Repository()!= null){
-			if (  !visualCallout.getPathToAxis2Repository().equals("")) {
-				calloutMediator.setClientRepository(visualCallout
-						.getPathToAxis2Repository());
-			}}			
-			if(visualCallout.getPathToAxis2xml()!=null){
-			if (!visualCallout.getPathToAxis2xml().equals("")) {
+			// Fixing TOOLS-2598
+			if (StringUtils.isNotEmpty(visualCallout.getPathToAxis2Repository())) {
+				calloutMediator.setClientRepository(visualCallout.getPathToAxis2Repository());
+			}
+			// Fixing TOOLS-2598
+			if (StringUtils.isNotEmpty(visualCallout.getPathToAxis2xml())) {
 				calloutMediator.setAxis2xml(visualCallout.getPathToAxis2xml());
-			}}
+			}
 			if(visualCallout.getSecurityType().getValue()==CalloutSecurityType.TRUE_VALUE){
 				calloutMediator.setSecurityOn(true);
 		        if(visualCallout.getPolicies().getValue()==CalloutSecurityPolicies.TRUE_VALUE){

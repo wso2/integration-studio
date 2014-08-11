@@ -17,13 +17,18 @@ package org.wso2.maven;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
 import javax.xml.stream.FactoryConfigurationError;
 
+import org.apache.maven.model.Model;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -39,6 +44,9 @@ import org.apache.maven.scm.manager.ScmManager;
 import org.apache.maven.scm.provider.svn.svnexe.SvnExeScmProvider;
 import org.apache.maven.scm.repository.ScmRepository;
 import org.apache.maven.scm.repository.ScmRepositoryException;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.wso2.maven.registry.RegistryArtifact;
+import org.wso2.maven.registry.GeneralProjectArtifact;
 import org.wso2.maven.esb.ESBArtifact;
 import org.wso2.maven.esb.ESBProjectArtifact;
 
@@ -51,6 +59,11 @@ import org.wso2.maven.esb.ESBProjectArtifact;
  */
 public class MavenReleasePostPrepareMojo extends AbstractMojo {
 
+	private static final String PROJECTNATURES = "projectnatures";
+	private static final String MAVEN_ECLIPSE_PLUGIN = "maven-eclipse-plugin";
+	private static final String POM_XML = "pom.xml";
+	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_GENERAL_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
+	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
 	private static final String DEPENDENCY = "dependency.";
 	private static final String ARTIFACT_XML_REGEX = "**/artifact.xml";
 	private static final String DEVELOPMENT = "development";
@@ -62,18 +75,18 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 	private static final String POM = "pom";
 	private static final String RELEASE_PROPERTIES = "release.properties";
 	private static final String ARTIFACT_XML = "artifact.xml";
+	
 	private final Log log = getLog();
 
 	/**
 	 * @parameter default-value="${project}"
 	 */
 	private MavenProject project;
-	
+
 	/**
 	 * @parameter expression="${dryRun}" default-value="false"
 	 */
 	private boolean dryRun;
-	
 
 	private File artifactLocation;
 
@@ -86,8 +99,8 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 	}
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		
-		if(dryRun){
+
+		if (dryRun) {
 			log.warn(" **** wso2-relase-pre-prepare-plugin does not support for dryRun mode **** ");
 			return;
 		}
@@ -107,7 +120,7 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 				String scmUrl = prop.getProperty(SCM_URL);
 				if (scmUrl == null) {
 					scmUrl = project.getScm().getConnection();
-				}	
+				}
 				ScmManager scmManager = new BasicScmManager();
 				String scmProvider = scmUrl.split(":")[1];
 				scmManager.setScmProvider(scmProvider, new SvnExeScmProvider());
@@ -116,11 +129,11 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 				checkoutAndCommit(scmManager, prop, scmProvider, checkoutUrl, RELEASE);
 				scmTagBase = project.getScm().getConnection();
 				checkoutAndCommit(scmManager, prop, scmProvider, scmTagBase, DEVELOPMENT);
-				
-				ScmFileSet scmFileSet = new ScmFileSet(new File(baseDirPath), ARTIFACT_XML_REGEX, null);	
+
+				ScmFileSet scmFileSet = new ScmFileSet(new File(baseDirPath), ARTIFACT_XML_REGEX, null);
 				ScmRepository scmRepository = scmManager.makeScmRepository(scmUrl);
 				scmManager.update(scmRepository, scmFileSet);
-				
+
 			} catch (Exception e) {
 				log.error(e.getMessage(), e);
 				throw new MojoExecutionException(e.getMessage(), e);
@@ -136,8 +149,8 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 		}
 	}
 
-	private void checkoutAndCommit(ScmManager scmManager, Properties prop, String scmProvider, String checkoutUrl, String repoType)
-			throws ScmRepositoryException, NoSuchScmProviderException, IOException, ScmException,
+	private void checkoutAndCommit(ScmManager scmManager, Properties prop, String scmProvider, String checkoutUrl,
+			String repoType) throws ScmRepositoryException, NoSuchScmProviderException, IOException, ScmException,
 			FactoryConfigurationError, Exception {
 
 		ScmRepository scmRepository = scmManager.makeScmRepository(checkoutUrl);
@@ -150,23 +163,87 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 
 		for (ScmFile scmFile : checkedOutFiles) {
 			String scmFilePath = scmFile.getPath();
-			if (scmFilePath.contains(ARTIFACT_XML)) {
+			if (scmFilePath.endsWith(ARTIFACT_XML)) {
 				File modifiedArtifactXml = new File(scmBaseDir, scmFilePath);
-				ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
-				esbProjectArtifact.fromFile(modifiedArtifactXml);
-				for (ESBArtifact esbArtifact : esbProjectArtifact.getAllESBArtifacts()) {
-					if (esbArtifact.getVersion() != null && esbArtifact.getType() != null) {
-						String releaseVersion = prop.getProperty(DEPENDENCY + esbArtifact.getGroupId() + ":"
-								+ esbArtifact.getName() + "." + repoType);
-						if (releaseVersion != null) {
-							esbArtifact.setVersion(releaseVersion);
+
+				File pomFile = new File(scmBaseDir, scmFilePath.replaceAll(ARTIFACT_XML + "$", POM_XML));
+				
+				if(!pomFile.exists()){
+					log.warn(" skiping an artifact.xml does not belongs to a maven project ");
+					continue;
+				}
+
+				if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE)) {
+					ESBProjectArtifact projectArtifact = new ESBProjectArtifact();
+					projectArtifact.fromFile(modifiedArtifactXml);
+					for (ESBArtifact artifact : projectArtifact.getAllESBArtifacts()) {
+						if (artifact.getVersion() != null && artifact.getType() != null) {
+							String releaseVersion = prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":"
+									+ artifact.getName() + "." + repoType);
+							if (releaseVersion != null) {
+								artifact.setVersion(releaseVersion);
+							}
 						}
 					}
+					projectArtifact.toFile();
+				} else if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_GENERAL_PROJECT_NATURE)) {
+					GeneralProjectArtifact projectArtifact = new GeneralProjectArtifact();
+					projectArtifact.fromFile(modifiedArtifactXml);
+					for (RegistryArtifact artifact : projectArtifact.getAllESBArtifacts()) {
+						if (artifact.getVersion() != null && artifact.getType() != null) {
+							String releaseVersion = prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":"
+									+ artifact.getName() + "." + repoType);
+							if (releaseVersion != null) {
+								artifact.setVersion(releaseVersion);
+							}
+						}
+					}
+					projectArtifact.toFile();
 				}
-				esbProjectArtifact.toFile();
 			}
 		}
 		ScmFileSet scmCheckInFileSet = new ScmFileSet(new File(scmBaseDir), ARTIFACT_XML_REGEX, null);
 		scmManager.checkIn(scmRepository, scmCheckInFileSet, "  commited modified artifact.xml file ... ");
 	}
+
+	private boolean hasNature(final File pomFile, final String nature) {
+		Model model = null;
+		FileReader reader = null;
+		MavenXpp3Reader mavenreader = new MavenXpp3Reader();
+		try {
+			reader = new FileReader(pomFile);
+			model = mavenreader.read(reader);
+			MavenProject project = new MavenProject(model);
+			@SuppressWarnings("unchecked")
+			List<Plugin> plugins = project.getBuild().getPlugins();
+			Iterator<Plugin> iterator = plugins.iterator();
+			while (iterator.hasNext()) {
+				Plugin plugin = iterator.next();
+				if (plugin.getArtifactId().equals(MAVEN_ECLIPSE_PLUGIN)) {
+					Xpp3Dom configurationNode = (Xpp3Dom) plugin.getConfiguration();
+					Xpp3Dom projectnatures = configurationNode.getChild(PROJECTNATURES);
+					Xpp3Dom[] natures = projectnatures.getChildren();
+					for (int i = 0; i < natures.length; i++) {
+						if (nature.equals(natures[i].getValue())) {
+							return true;
+						}
+					}
+					break;
+				}
+			}
+		} catch (Exception e) {
+			log.warn(e.getMessage(), e);
+		}finally{
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					//Safe to ignore
+				}
+			}
+		}
+
+		return false;
+	}
+
 }

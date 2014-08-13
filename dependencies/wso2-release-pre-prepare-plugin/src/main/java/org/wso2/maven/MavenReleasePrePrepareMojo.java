@@ -133,6 +133,7 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 
 				ScmFileSet scmFileSet = new ScmFileSet(new File(baseDirPath), ARTIFACT_XML_REGEX, null);
 				ScmRepository scmRepository = scmManager.makeScmRepository(scmUrl);
+				//update the local repo with modified artifact.xml file
 				scmManager.update(scmRepository, scmFileSet);
 
 			} catch (Exception e) {
@@ -171,6 +172,7 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 
 		ScmRepository scmRepository = scmManager.makeScmRepository(checkoutUrl);
 		String scmBaseDir = project.getBuild().getDirectory();
+		//create temp directory for checkout 
 		File targetFile = new File(scmBaseDir, repoType);
 		targetFile.mkdirs();
 		ScmFileSet scmFileSet = new ScmFileSet(targetFile, ARTIFACT_XML_REGEX, null);
@@ -181,14 +183,11 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 			String scmFilePath = scmFile.getPath();
 			if (scmFilePath.endsWith(ARTIFACT_XML)) {
 				File artifactXml = new File(scmBaseDir, scmFilePath);
-
 				File pomFile = new File(scmBaseDir, scmFilePath.replaceAll(ARTIFACT_XML + "$", POM_XML));
-
 				if (!pomFile.exists()) {
 					log.warn(" skiping an artifact.xml does not belongs to a maven project ");
 					continue;
 				}
-
 				if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE)) {
 					setEsbArtifactVersion(prop, repoType, artifactXml);
 				} else if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_GENERAL_PROJECT_NATURE)) {
@@ -197,6 +196,7 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 			}
 		}
 		ScmFileSet scmCheckInFileSet = new ScmFileSet(new File(scmBaseDir), ARTIFACT_XML_REGEX, null);
+		// commit modified artifact.xml files
 		scmManager.checkIn(scmRepository, scmCheckInFileSet, "  commited modified artifact.xml file ... ");
 	}
 

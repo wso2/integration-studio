@@ -75,7 +75,7 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 	private static final String POM = "pom";
 	private static final String RELEASE_PROPERTIES = "release.properties";
 	private static final String ARTIFACT_XML = "artifact.xml";
-	
+
 	private final Log log = getLog();
 
 	/**
@@ -87,7 +87,6 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 	 * @parameter expression="${dryRun}" default-value="false"
 	 */
 	private boolean dryRun;
-
 	private File artifactLocation;
 
 	public File getArtifactLocation() {
@@ -126,9 +125,11 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 				scmManager.setScmProvider(scmProvider, new SvnExeScmProvider());
 				String checkoutUrl = SCM + scmProvider + ":"
 						+ scmTagBase.replaceAll("/$", "").concat("/").concat(scmTag);
-				checkoutAndCommit(scmManager, prop, scmProvider, checkoutUrl, RELEASE);
+				// checkout and commit tag
+				checkoutAndCommit(scmManager, prop, checkoutUrl, RELEASE);
 				scmTagBase = project.getScm().getConnection();
-				checkoutAndCommit(scmManager, prop, scmProvider, scmTagBase, DEVELOPMENT);
+				// checkout and commit trunk
+				checkoutAndCommit(scmManager, prop, scmTagBase, DEVELOPMENT);
 
 				ScmFileSet scmFileSet = new ScmFileSet(new File(baseDirPath), ARTIFACT_XML_REGEX, null);
 				ScmRepository scmRepository = scmManager.makeScmRepository(scmUrl);
@@ -149,7 +150,22 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 		}
 	}
 
-	private void checkoutAndCommit(ScmManager scmManager, Properties prop, String scmProvider, String checkoutUrl,
+	/**
+	 * Check out the artifact.xml file and change the artifact version and
+	 * commit the modified file
+	 * 
+	 * @param scmManager ScmManager
+	 * @param prop		properties in release.properties file	
+	 * @param checkoutUrl	url of the repository
+	 * @param repoType		type of the repository
+	 * @throws ScmRepositoryException
+	 * @throws NoSuchScmProviderException
+	 * @throws IOException
+	 * @throws ScmException
+	 * @throws FactoryConfigurationError
+	 * @throws Exception
+	 */
+	private void checkoutAndCommit(ScmManager scmManager, Properties prop, String checkoutUrl,
 			String repoType) throws ScmRepositoryException, NoSuchScmProviderException, IOException, ScmException,
 			FactoryConfigurationError, Exception {
 
@@ -164,47 +180,85 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 		for (ScmFile scmFile : checkedOutFiles) {
 			String scmFilePath = scmFile.getPath();
 			if (scmFilePath.endsWith(ARTIFACT_XML)) {
-				File modifiedArtifactXml = new File(scmBaseDir, scmFilePath);
+				File artifactXml = new File(scmBaseDir, scmFilePath);
 
 				File pomFile = new File(scmBaseDir, scmFilePath.replaceAll(ARTIFACT_XML + "$", POM_XML));
-				
-				if(!pomFile.exists()){
+
+				if (!pomFile.exists()) {
 					log.warn(" skiping an artifact.xml does not belongs to a maven project ");
 					continue;
 				}
 
 				if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE)) {
-					ESBProjectArtifact projectArtifact = new ESBProjectArtifact();
-					projectArtifact.fromFile(modifiedArtifactXml);
-					for (ESBArtifact artifact : projectArtifact.getAllESBArtifacts()) {
-						if (artifact.getVersion() != null && artifact.getType() != null) {
-							String releaseVersion = prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":"
-									+ artifact.getName() + "." + repoType);
-							if (releaseVersion != null) {
-								artifact.setVersion(releaseVersion);
-							}
-						}
-					}
-					projectArtifact.toFile();
+					setEsbArtifactVersion(prop, repoType, artifactXml);
 				} else if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_GENERAL_PROJECT_NATURE)) {
-					GeneralProjectArtifact projectArtifact = new GeneralProjectArtifact();
-					projectArtifact.fromFile(modifiedArtifactXml);
-					for (RegistryArtifact artifact : projectArtifact.getAllESBArtifacts()) {
-						if (artifact.getVersion() != null && artifact.getType() != null) {
-							String releaseVersion = prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":"
-									+ artifact.getName() + "." + repoType);
-							if (releaseVersion != null) {
-								artifact.setVersion(releaseVersion);
-							}
-						}
-					}
-					projectArtifact.toFile();
+					setRegArtifactVersion(prop, repoType, artifactXml);
 				}
 			}
 		}
 		ScmFileSet scmCheckInFileSet = new ScmFileSet(new File(scmBaseDir), ARTIFACT_XML_REGEX, null);
 		scmManager.checkIn(scmRepository, scmCheckInFileSet, "  commited modified artifact.xml file ... ");
 	}
+
+	/**
+	 * set Registry artifact version in articact.xml file
+	 * 
+	 * @param prop		properties in release.properties file
+	 * @param repoType		type of the repository
+	 * @param artifactXml
+	 * @throws FactoryConfigurationError
+	 * @throws Exception
+	 */
+
+	private void setRegArtifactVersion(Properties prop, String repoType, File artifactXml)
+			throws FactoryConfigurationError, Exception {
+		GeneralProjectArtifact projectArtifact = new GeneralProjectArtifact();
+		projectArtifact.fromFile(artifactXml);
+		for (RegistryArtifact artifact : projectArtifact.getAllESBArtifacts()) {
+			if (artifact.getVersion() != null && artifact.getType() != null) {
+				String releaseVersion = prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":" + artifact.getName()
+						+ "." + repoType);
+				if (releaseVersion != null) {
+					artifact.setVersion(releaseVersion);
+				}
+			}
+		}
+		projectArtifact.toFile();
+	}
+
+	/**
+	 * set Esb artifact version in articact.xml file
+	 * 
+	 * @param prop		properties in release.properties file
+	 * @param repoType	type of the repository
+	 * @param artifactXml  
+	 * @throws FactoryConfigurationError
+	 * @throws Exception
+	 */
+
+	private void setEsbArtifactVersion(Properties prop, String repoType, File artifactXml)
+			throws FactoryConfigurationError, Exception {
+		ESBProjectArtifact projectArtifact = new ESBProjectArtifact();
+		projectArtifact.fromFile(artifactXml);
+		for (ESBArtifact artifact : projectArtifact.getAllESBArtifacts()) {
+			if (artifact.getVersion() != null && artifact.getType() != null) {
+				String releaseVersion = prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":" + artifact.getName()
+						+ "." + repoType);
+				if (releaseVersion != null) {
+					artifact.setVersion(releaseVersion);
+				}
+			}
+		}
+		projectArtifact.toFile();
+	}
+
+	/**
+	 * check the project nature
+	 * 
+	 * @param pomFile	pom file of the project
+	 * @param nature	project nature 
+	 * @return
+	 */
 
 	private boolean hasNature(final File pomFile, final String nature) {
 		Model model = null;
@@ -233,12 +287,12 @@ public class MavenReleasePostPrepareMojo extends AbstractMojo {
 			}
 		} catch (Exception e) {
 			log.warn(e.getMessage(), e);
-		}finally{
+		} finally {
 			if (reader != null) {
 				try {
 					reader.close();
 				} catch (IOException e) {
-					//Safe to ignore
+					// Safe to ignore
 				}
 			}
 		}

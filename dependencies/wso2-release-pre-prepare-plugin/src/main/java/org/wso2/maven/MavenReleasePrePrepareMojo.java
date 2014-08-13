@@ -57,7 +57,7 @@ import org.wso2.maven.esb.ESBProjectArtifact;
  * @goal post-prepare
  * 
  */
-public class MavenReleasePostPrepareMojo extends AbstractMojo {
+public class MavenReleasePrePrepareMojo extends AbstractMojo {
 
 	private static final String PROJECTNATURES = "projectnatures";
 	private static final String MAVEN_ECLIPSE_PLUGIN = "maven-eclipse-plugin";

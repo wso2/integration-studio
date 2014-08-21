@@ -13,6 +13,8 @@ import java.util.Enumeration;
 import javax.activation.DataHandler;
 
 import org.apache.axis2.AxisFault;
+import org.apache.axis2.Constants;
+import org.apache.axis2.client.Options;
 import org.apache.axis2.transport.http.HTTPConstants;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -44,6 +46,8 @@ public class CAppDeployer {
 	 */
 	public void deployCApp(String username, String pwd, String url, File carFile) throws Exception{
 		CarbonAppUploaderStub carbonAppUploaderStub = getCarbonAppUploaderStub(username, pwd, url);
+		Options options = carbonAppUploaderStub._getServiceClient().getOptions();
+		options.setProperty(Constants.Configuration.ENABLE_MTOM, Constants.VALUE_TRUE);
 		UploadedFileItem uploadedFileItem = new UploadedFileItem();
 		DataHandler param=new DataHandler(carFile.toURI().toURL());
 		uploadedFileItem.setDataHandler(param);

@@ -2519,7 +2519,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEAttribute(getDataService_ServiceStatus(), this.getServiceStatus(), "serviceStatus", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_DisableStreaming(), theXMLTypePackage.getBoolean(), "disableStreaming", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_EnableSec(), theXMLTypePackage.getBoolean(), "enableSec", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataService_Policy(), this.getPolicy(), null, "policy", null, 0, 1, DataService.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDataService_Policy(), this.getPolicy(), null, "policy", null, 1, 1, DataService.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_Transports(), theXMLTypePackage.getString(), "transports", null, 1, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataSourceConfigurationEClass, DataSourceConfiguration.class, "DataSourceConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3014,7 +3014,8 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		   source, 
 		   new String[] {
 			 "kind", "element",
-			 "name", "policy"
+			 "name", "policy",
+			 "namespace", "##targetNamespace"
 		   });		
 		addAnnotation
 		  (getDataService_Transports(), 
@@ -4198,7 +4199,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		   source, 
 		   new String[] {
 			 "name", "policy_._type",
-			 "kind", "simple"
+			 "kind", "mixed"
 		   });		
 		addAnnotation
 		  (getPolicy_Key(), 

@@ -260,11 +260,13 @@
         <details key="name" value="enableSec"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="policy" eType="#//Policy"
-        volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="policy" lowerBound="1"
+        eType="#//Policy" volatile="true" transient="true" derived="true" containment="true"
+        resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="policy"/>
+        <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transports" lowerBound="1"
@@ -1401,7 +1403,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Policy">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="policy_._type"/>
-      <details key="kind" value="simple"/>
+      <details key="kind" value="mixed"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

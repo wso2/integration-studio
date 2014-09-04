@@ -23,6 +23,8 @@ public interface DSActionConstants {
 	// Actions
 
 	public String ADD_DESCRIPTION_ACTION = "Add Description";
+	
+	public String ADD_POLICY_ACTION = "Add Policy";
 
 	public String ADD_DATASOURCE_ACTION = "Add DataSource";
 

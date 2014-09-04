@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getPolicy()
- * @model extendedMetaData="name='policy_._type' kind='simple'"
+ * @model extendedMetaData="name='policy_._type' kind='mixed'"
  * @generated
  */
 public interface Policy extends EObject {

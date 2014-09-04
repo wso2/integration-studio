@@ -485,8 +485,8 @@ public interface DataService extends EObject {
 	 * @return the value of the '<em>Policy</em>' containment reference.
 	 * @see #setPolicy(Policy)
 	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataService_Policy()
-	 * @model containment="true" transient="true" volatile="true" derived="true"
-	 *        extendedMetaData="kind='element' name='policy'"
+	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="kind='element' name='policy' namespace='##targetNamespace'"
 	 * @generated
 	 */
 	Policy getPolicy();

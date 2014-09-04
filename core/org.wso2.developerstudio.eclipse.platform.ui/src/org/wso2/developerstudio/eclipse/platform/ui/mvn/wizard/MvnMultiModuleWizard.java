@@ -16,7 +16,12 @@
 
 package org.wso2.developerstudio.eclipse.platform.ui.mvn.wizard;
 
+import java.io.File;
+import java.util.List;
+import java.util.regex.Pattern;
+
 import org.apache.maven.model.Parent;
+import org.apache.maven.model.Plugin;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -28,19 +33,15 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
-import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.platform.ui.mvn.util.MavenMultiModuleProjectImageUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
 public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
+	private static final String MAVEN_ECLIPSE_PLUGIN = "org.apache.maven.plugins:maven-eclipse-plugin:2.9";
+
 	private static final String MAVEN_MULTI_MODULE_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -232,16 +233,31 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 		}
 		
 		try {
-			MavenUtils
-			.updateWithMavenEclipsePlugin(
-					pomFile.getLocation().toFile(),
-					new String[] {  },
-					new String[] { MAVEN_MULTI_MODULE_PROJECT_NATURE });
+			MavenProject mproject = MavenUtils.getMavenProject(pomFile
+					.getLocation().toFile());
+			List<Plugin> buildPlugins = mproject.getBuildPlugins();
+			if (buildPlugins.isEmpty()) {
+				MavenUtils.updateWithMavenEclipsePlugin(pomFile.getLocation()
+						.toFile(), new String[] {},
+						new String[] { MAVEN_MULTI_MODULE_PROJECT_NATURE });
+			} else {
+				for (Plugin plugin : buildPlugins) {
+					if (MAVEN_ECLIPSE_PLUGIN.equals(plugin.getId())) {
+						break;// Since plugin is already in the pom no need to
+								// add it again
+					} else {
+						MavenUtils
+								.updateWithMavenEclipsePlugin(
+										pomFile.getLocation().toFile(),
+										new String[] {},
+										new String[] { MAVEN_MULTI_MODULE_PROJECT_NATURE });
+					}
+				}
+			}
 			selectedProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		} catch (Exception e) {
 			log.error("Error occured while trying to update the maven project with Eclipse Maven plugin.", e);
 		}
-		
 	}
 
 	@Override

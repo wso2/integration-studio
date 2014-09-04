@@ -33,7 +33,7 @@ public interface Policy extends EObject {
 	 * @see #setKey(String)
 	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getPolicy_Key()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 *        extendedMetaData="kind='attribute' name='key'"
+	 *        extendedMetaData="kind='attribute' name='key' namespace='##targetNamespace'"
 	 * @generated
 	 */
 	String getKey();

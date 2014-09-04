@@ -4206,7 +4206,8 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		   source, 
 		   new String[] {
 			 "kind", "attribute",
-			 "name", "key"
+			 "name", "key",
+			 "namespace", "##targetNamespace"
 		   });
 	}
 

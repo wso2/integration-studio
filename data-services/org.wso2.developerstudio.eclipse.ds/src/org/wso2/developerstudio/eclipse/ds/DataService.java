@@ -35,6 +35,9 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getServiceNamespace <em>Service Namespace</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getServiceStatus <em>Service Status</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#isDisableStreaming <em>Disable Streaming</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#isEnableSec <em>Enable Sec</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getTransports <em>Transports</em>}</li>
  * </ul>
  * </p>
  *
@@ -443,5 +446,86 @@ public interface DataService extends EObject {
 	 * @generated
 	 */
 	void setDisableStreaming(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Enable Sec</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Enable Sec</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enable Sec</em>' attribute.
+	 * @see #setEnableSec(boolean)
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataService_EnableSec()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+	 *        extendedMetaData="kind='element' name='enableSec'"
+	 * @generated
+	 */
+	boolean isEnableSec();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.DataService#isEnableSec <em>Enable Sec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Enable Sec</em>' attribute.
+	 * @see #isEnableSec()
+	 * @generated
+	 */
+	void setEnableSec(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Policy</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Policy</em>' containment reference.
+	 * @see #setPolicy(Policy)
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataService_Policy()
+	 * @model containment="true" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="kind='element' name='policy'"
+	 * @generated
+	 */
+	Policy getPolicy();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.DataService#getPolicy <em>Policy</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Policy</em>' containment reference.
+	 * @see #getPolicy()
+	 * @generated
+	 */
+	void setPolicy(Policy value);
+
+	/**
+	 * Returns the value of the '<em><b>Transports</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transports</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transports</em>' attribute.
+	 * @see #setTransports(String)
+	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataService_Transports()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 *        extendedMetaData="kind='attribute' name='transports'"
+	 * @generated
+	 */
+	String getTransports();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.DataService#getTransports <em>Transports</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transports</em>' attribute.
+	 * @see #getTransports()
+	 * @generated
+	 */
+	void setTransports(String value);
 
 } // DataService

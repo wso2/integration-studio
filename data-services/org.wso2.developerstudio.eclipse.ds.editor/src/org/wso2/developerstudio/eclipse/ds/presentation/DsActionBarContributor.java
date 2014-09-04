@@ -180,7 +180,7 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 
 	/** The query action. */
 	private IAction queryAction;
-
+	
 	/** The query property group action. */
 	private IAction queryPropertyGroupAction;
 

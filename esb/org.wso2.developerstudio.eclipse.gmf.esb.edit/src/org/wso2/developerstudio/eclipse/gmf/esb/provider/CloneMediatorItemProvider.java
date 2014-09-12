@@ -71,6 +71,7 @@ public class CloneMediatorItemProvider
 			addSequentialMediationPropertyDescriptor(object);
 			addContinueParentPropertyDescriptor(object);
 			addTargetsPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		
 		return itemPropertyDescriptors;
 	}

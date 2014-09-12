@@ -1446,7 +1446,7 @@ public interface DsPackage extends EPackage {
 	int QUERY__PROPERTIES = 4;
 
 	/**
-	 * The feature id for the '<em><b>Result</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3593,10 +3593,10 @@ public interface DsPackage extends EPackage {
 	EReference getQuery_Properties();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.ds.Query#getResult <em>Result</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.ds.Query#getResult <em>Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Result</em>'.
+	 * @return the meta object for the containment reference '<em>Result</em>'.
 	 * @see org.wso2.developerstudio.eclipse.ds.Query#getResult()
 	 * @see #getQuery()
 	 * @generated
@@ -5426,7 +5426,7 @@ public interface DsPackage extends EPackage {
 		EReference QUERY__PROPERTIES = eINSTANCE.getQuery_Properties();
 
 		/**
-		 * The meta object literal for the '<em><b>Result</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

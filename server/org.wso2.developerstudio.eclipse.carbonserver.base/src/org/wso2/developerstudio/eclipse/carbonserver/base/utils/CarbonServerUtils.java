@@ -21,7 +21,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
 
+import javax.xml.namespace.NamespaceContext;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
@@ -39,6 +41,7 @@ import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.model.ServerDelegate;
 import org.wso2.developerstudio.eclipse.carbonserver.base.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub;
+import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.SSLUtils;
@@ -47,6 +50,14 @@ import org.xml.sax.InputSource;
 
 @SuppressWarnings("restriction")
 public class CarbonServerUtils {
+	private static final String AXIS2_XML = "axis2.xml";
+	private static final String TRANSPORTS_XML = "transports.xml";
+	private static final String SERVER_WEB_CONTEXT_ROOT = "/:Server/:WebContextRoot";
+	private static final String RAWTYPES = "rawtypes";
+	private static final String WEB_CONTEXT_ROOT = "http://wso2.org/projects/carbon/carbon.xml";
+	private static final String CARBON_XML = "carbon.xml";
+	private static final String CONF = "conf";
+	private static final String REPOSITORY = "repository";
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
 	public static String createSessionCookie(String serverURL, String username, String pwd) throws Exception{
@@ -81,7 +92,7 @@ public class CarbonServerUtils {
 		
 	}
 	public static ServerPort[] getServerPorts(String serverHome){
-		String transportsXml = FileUtils.addNodesToPath(serverHome, new String[]{"conf","transports.xml"});
+		String transportsXml = FileUtils.addNodesToPath(serverHome, new String[]{CONF,TRANSPORTS_XML});
 		XPathFactory factory = XPathFactory.newInstance();
 		File xmlDocument = new File(transportsXml);
 		ServerPort[] serverPorts=new ServerPort[2];
@@ -103,6 +114,60 @@ public class CarbonServerUtils {
 		return serverPorts;
 	}
 	
+	
+	public static String getWebContextRoot(IServer server){
+		String transportsXml = FileUtils.addNodesToPath(CarbonServerManager
+				.getServerHome(server).toOSString(), new String[] { REPOSITORY,CONF, CARBON_XML });
+		String webContextRoot = null;
+		if (transportsXml != null) {
+			File xmlDocument = new File(transportsXml);
+			if (xmlDocument != null) {
+				webContextRoot = null;
+				NamespaceContext ctx = new NamespaceContext() {
+					public String getNamespaceURI(String prefix) {
+						return WEB_CONTEXT_ROOT;
+					}
+
+					public String getPrefix(String arg0) {
+						return null;
+					}
+
+					@SuppressWarnings(RAWTYPES)
+					public Iterator getPrefixes(String arg0) {
+						return null;
+					}
+				};
+				try {
+					InputSource inputSource = null;
+					try {
+						inputSource = new InputSource(new FileInputStream(
+								xmlDocument));
+					} catch (FileNotFoundException e) {
+						log.error(
+								"Could not found the file 'carbon.xml' ",
+								e);
+					}
+
+					if (inputSource != null) {
+						XPathFactory factory = XPathFactory.newInstance();
+						XPath xPath = factory.newXPath();
+						xPath.setNamespaceContext(ctx);
+						XPathExpression xPathExpression = xPath
+								.compile(SERVER_WEB_CONTEXT_ROOT);
+						webContextRoot = xPathExpression.evaluate(inputSource);
+						webContextRoot = webContextRoot.equals("/") ? ""
+								: webContextRoot;
+					}
+				} catch (XPathExpressionException e) {
+					log.error(
+							"Exception in XPath expression evaluation",
+							e);
+				}
+			}
+		}
+		return webContextRoot;
+	}
+
 //	public static void setTrustoreProperties(IServer server){
 //		String transportsXml = FileUtils.addNodesToPath(WSASServerManager.getServerHome(server).toOSString(), new String[]{"conf","server.xml"});
 //		XPathFactory factory = XPathFactory.newInstance();
@@ -297,7 +362,8 @@ public class CarbonServerUtils {
 	
 	public static String getAxis2FilePath(IServer server){
 		IPath serverHome = getCarbonHome(server);
-		String axis2Xml=FileUtils.addNodesToPath(serverHome.toOSString(),new String[]{"conf","axis2.xml"});
+		String axis2Xml = FileUtils.addNodesToPath(serverHome.toOSString(),
+				new String[] { CONF, AXIS2_XML });
 		return axis2Xml;
 	}
 //	

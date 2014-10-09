@@ -119,6 +119,7 @@ public final class CarbonServerManager implements IServerManager {
 				log.error(e);
 			}
 			serverInformation.setServerPorts(wsasPorts);
+			CarbonServerUtils.setServicePath(server);
 			//The localrepo path is for now is the bin distribution path. this needs to be fixed in order to be set inside the workspace path
 //			String workspaceRootPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
 //			String serverPath=FileUtils.addNodesToPath(workspaceRootPath, new String[]{".metadata",".carbon",server.getId()});

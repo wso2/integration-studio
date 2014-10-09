@@ -76,7 +76,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 @SuppressWarnings("restriction")
 public class RemoteCarbonServerUtils {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-
+	
 	public static ServerPort[] getServerPorts(String serverHome){
 		String transportsXml = FileUtils.addNodesToPath(serverHome, new String[]{"conf","transports.xml"});
 		XPathFactory factory = XPathFactory.newInstance();

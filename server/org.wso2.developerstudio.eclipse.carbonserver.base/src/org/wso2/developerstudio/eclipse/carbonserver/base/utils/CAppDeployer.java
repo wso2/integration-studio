@@ -61,7 +61,7 @@ public class CAppDeployer {
 			String pwd, String url) throws Exception, AxisFault,
 			MalformedURLException {
 		String sessionCookie = CarbonServerUtils.createSessionCookie(url, username, pwd);
-		CarbonAppUploaderStub carbonAppUploaderStub = new CarbonAppUploaderStub(CarbonServerUtils.getURL(url) + "/services/CarbonAppUploader");
+		CarbonAppUploaderStub carbonAppUploaderStub = new CarbonAppUploaderStub(CarbonServerUtils.getURL(url) + "/"+CarbonServerUtils.getServicePath()+"/CarbonAppUploader");
 		SSLUtils.setSSLProtocolHandler(carbonAppUploaderStub);
 		carbonAppUploaderStub._getServiceClient().getOptions().setManageSession(true);
 		carbonAppUploaderStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING, sessionCookie);
@@ -193,7 +193,7 @@ public class CAppDeployer {
 			String serverURL, String username, String pwd) throws Exception,
 			AxisFault, MalformedURLException {
 		String sessionCookie = CarbonServerUtils.createSessionCookie(serverURL, username, pwd);
-		ApplicationAdminStub appAdminStub = new ApplicationAdminStub(CarbonServerUtils.getURL(serverURL) + "/services/ApplicationAdmin");
+		ApplicationAdminStub appAdminStub = new ApplicationAdminStub(CarbonServerUtils.getURL(serverURL) + "/"+CarbonServerUtils.getServicePath()+"/ApplicationAdmin");
 		SSLUtils.setSSLProtocolHandler(appAdminStub);
 		appAdminStub._getServiceClient().getOptions().setManageSession(true);
 		appAdminStub._getServiceClient().getOptions().setProperty(HTTPConstants.COOKIE_STRING, sessionCookie);

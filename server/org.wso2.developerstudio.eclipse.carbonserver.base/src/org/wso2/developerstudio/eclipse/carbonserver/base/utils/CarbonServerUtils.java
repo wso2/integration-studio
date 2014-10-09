@@ -19,12 +19,17 @@ package org.wso2.developerstudio.eclipse.carbonserver.base.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 
 import javax.xml.namespace.NamespaceContext;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
@@ -39,6 +44,8 @@ import org.eclipse.jst.server.generic.servertype.definition.ServerRuntime;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.core.ServerPort;
 import org.eclipse.wst.server.core.model.ServerDelegate;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.wso2.developerstudio.eclipse.carbonserver.base.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver.base.authentication.AuthenticationAdminStub;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
@@ -47,10 +54,12 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.SSLUtils;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 @SuppressWarnings("restriction")
 public class CarbonServerUtils {
 	private static final String AXIS2_XML = "axis2.xml";
+	private static final String AXIS2 = "axis2";
 	private static final String TRANSPORTS_XML = "transports.xml";
 	private static final String SERVER_WEB_CONTEXT_ROOT = "/:Server/:WebContextRoot";
 	private static final String RAWTYPES = "rawtypes";
@@ -59,11 +68,12 @@ public class CarbonServerUtils {
 	private static final String CONF = "conf";
 	private static final String REPOSITORY = "repository";
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static String servicePath;
 
 	public static String createSessionCookie(String serverURL, String username, String pwd) throws Exception{
 		AuthenticationAdminStub authenticationStub;
 		URL url = new URL(serverURL);
-		authenticationStub = new AuthenticationAdminStub(getURL(serverURL) + "/services/AuthenticationAdmin");
+		authenticationStub = new AuthenticationAdminStub(getURL(serverURL) + "/"+getServicePath()+"/AuthenticationAdmin");
 		SSLUtils.setSSLProtocolHandler(authenticationStub);
 		authenticationStub._getServiceClient().getOptions().setManageSession(true);
 		if (authenticationStub.login(username, pwd, url.getHost())){
@@ -79,7 +89,7 @@ public class CarbonServerUtils {
 		URL url = new URL(serverURL);
 		String endPart = url.getFile();
 		String validURL = "";
-		if(endPart.endsWith("/carbon") || endPart.endsWith("/services") || endPart.endsWith("/registry")){
+		if(endPart.endsWith("/carbon") || endPart.endsWith("/"+getServicePath()) || endPart.endsWith("/registry")){
 			String[] stringParts = serverURL.split("/");
 			int length = stringParts[stringParts.length - 1].length();
 //			for (int i = 0; i < stringParts.length - 1; i++) {
@@ -166,6 +176,38 @@ public class CarbonServerUtils {
 			}
 		}
 		return webContextRoot;
+	}
+	
+	public static void setServicePath(IServer server) {
+		String axis2Xml= FileUtils.addNodesToPath(CarbonServerManager
+				.getServerHome(server).toOSString(), new String[] { REPOSITORY,CONF,AXIS2,AXIS2_XML });
+		XPathFactory factory = XPathFactory.newInstance();
+		
+		File xmlDocument = new File(axis2Xml);
+		try {
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document document = builder.parse(xmlDocument);
+			XPath xPath=factory.newXPath();
+			Node servicePathNode = (Node)xPath.evaluate("/axisconfig/parameter[@name='servicePath']", document, XPathConstants.NODE);
+			servicePath = servicePathNode.getTextContent();
+		} catch (ParserConfigurationException e) {
+			log.error(e);
+		} catch (SAXException e) {
+			log.error(e);
+		} catch (IOException e) {
+			log.error(e);
+		} catch (XPathExpressionException e) {
+			log.error(e);
+		}
+
+	}
+	
+	public static void setRemoteServicePath(String remoteServicepath) {
+		servicePath = remoteServicepath;
+	}
+	
+	public static String getServicePath() {
+		return servicePath;
 	}
 
 //	public static void setTrustoreProperties(IServer server){
@@ -361,7 +403,7 @@ public class CarbonServerUtils {
 	}
 	
 	public static String getAxis2FilePath(IServer server){
-		IPath serverHome = getCarbonHome(server);
+		IPath serverHome = getCarbonHome(server);	
 		String axis2Xml = FileUtils.addNodesToPath(serverHome.toOSString(),
 				new String[] { CONF, AXIS2_XML });
 		return axis2Xml;

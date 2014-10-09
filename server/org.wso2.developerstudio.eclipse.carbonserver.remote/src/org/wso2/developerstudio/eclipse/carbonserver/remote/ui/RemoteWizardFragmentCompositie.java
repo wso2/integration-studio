@@ -106,9 +106,10 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		
 		txtServicePath = new Text(grpServerDetails, SWT.BORDER);
 		txtServicePath.setText("services");
+		CarbonServerUtils.setRemoteServicePath("services");
 		txtServicePath.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent arg0) {
-				setServicePath(txtServicePath.getText());
+				 CarbonServerUtils.setRemoteServicePath(txtServicePath.getText());
 			}
 		});
 		txtServicePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));

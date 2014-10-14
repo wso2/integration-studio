@@ -17,10 +17,10 @@ package org.wso2.maven;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -45,16 +45,17 @@ import org.apache.maven.scm.provider.svn.svnexe.SvnExeScmProvider;
 import org.apache.maven.scm.repository.ScmRepository;
 import org.apache.maven.scm.repository.ScmRepositoryException;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.wso2.maven.registry.RegistryArtifact;
-import org.wso2.maven.registry.GeneralProjectArtifact;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.wso2.maven.esb.ESBArtifact;
 import org.wso2.maven.esb.ESBProjectArtifact;
+import org.wso2.maven.registry.GeneralProjectArtifact;
+import org.wso2.maven.registry.RegistryArtifact;
 
 /**
- * This is the Maven Mojo used for do post prepare tasks such as update version
+ * This is the Maven Mojo used for do pre prepare tasks such as update version
  * of artifacts in Artifact.xml etc.
  * 
- * @goal post-prepare
+ * @goal pre-prepare
  * 
  */
 public class MavenReleasePrePrepareMojo extends AbstractMojo {
@@ -62,8 +63,10 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	private static final String PROJECTNATURES = "projectnatures";
 	private static final String MAVEN_ECLIPSE_PLUGIN = "maven-eclipse-plugin";
 	private static final String POM_XML = "pom.xml";
-	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_GENERAL_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.general.project.nature";
-	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.esb.project.nature";
+	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_GENERAL_PROJECT_NATURE =
+	                                                                                      "org.wso2.developerstudio.eclipse.general.project.nature";
+	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE =
+	                                                                                  "org.wso2.developerstudio.eclipse.esb.project.nature";
 	private static final String DEPENDENCY = "dependency.";
 	private static final String ARTIFACT_XML_REGEX = "**/artifact.xml";
 	private static final String DEVELOPMENT = "development";
@@ -84,18 +87,11 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	private MavenProject project;
 
 	/**
+	 * O
+	 * 
 	 * @parameter expression="${dryRun}" default-value="false"
 	 */
 	private boolean dryRun;
-	private File artifactLocation;
-
-	public File getArtifactLocation() {
-		return artifactLocation;
-	}
-
-	public void setArtifactLocation(File artifactLocation) {
-		this.artifactLocation = artifactLocation;
-	}
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
@@ -123,28 +119,43 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 				ScmManager scmManager = new BasicScmManager();
 				String scmProvider = scmUrl.split(":")[1];
 				scmManager.setScmProvider(scmProvider, new SvnExeScmProvider());
-				String checkoutUrl = SCM + scmProvider + ":"
-						+ scmTagBase.replaceAll("/$", "").concat("/").concat(scmTag);
+				String checkoutUrl =
+				                     SCM +
+				                             scmProvider +
+				                             ":" +
+				                             scmTagBase.replaceAll("/$", "").concat("/")
+				                                       .concat(scmTag);
 				// checkout and commit tag
 				checkoutAndCommit(scmManager, prop, checkoutUrl, RELEASE);
 				scmTagBase = project.getScm().getConnection();
 				// checkout and commit trunk
 				checkoutAndCommit(scmManager, prop, scmTagBase, DEVELOPMENT);
 
-				ScmFileSet scmFileSet = new ScmFileSet(new File(baseDirPath), ARTIFACT_XML_REGEX, null);
+				ScmFileSet scmFileSet =
+				                        new ScmFileSet(new File(baseDirPath), ARTIFACT_XML_REGEX,
+				                                       null);
 				ScmRepository scmRepository = scmManager.makeScmRepository(scmUrl);
-				//update the local repo with modified artifact.xml file
+				// update the local repo with modified artifact.xml file
 				scmManager.update(scmRepository, scmFileSet);
 
-			} catch (Exception e) {
-				log.error(e.getMessage(), e);
-				throw new MojoExecutionException(e.getMessage(), e);
+			} catch (FileNotFoundException e) {
+				log.error("Cannot find the release.properties file", e);
+			} catch (IOException e) {
+				log.error("error occure while loading properties from release.properties file", e);
+			} catch (ScmRepositoryException e) {
+				log.error("error occure while loading ScmRepository", e);
+			} catch (NoSuchScmProviderException e) {
+				log.error("Cannot find Scm Provider", e);
+			} catch (FactoryConfigurationError e) {
+				log.error("error occure while reading factory configurations", e);
+			} catch (ScmException e) {
+				log.error("error occure while loading ScmRepository", e);
 			} finally {
 				if (input != null) {
 					try {
 						input.close();
 					} catch (IOException e) {
-						log.error(e.getMessage(), e);
+						log.error("error occure while closing input stream", e);
 					}
 				}
 			}
@@ -155,24 +166,26 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	 * Check out the artifact.xml file and change the artifact version and
 	 * commit the modified file
 	 * 
-	 * @param scmManager ScmManager
-	 * @param prop		properties in release.properties file	
-	 * @param checkoutUrl	url of the repository
-	 * @param repoType		type of the repository
-	 * @throws ScmRepositoryException
-	 * @throws NoSuchScmProviderException
+	 * @param scmManager
+	 *            ScmManager
+	 * @param prop
+	 *            properties in release.properties file
+	 * @param checkoutUrl
+	 *            url of the repository
+	 * @param repoType
+	 *            type of the repository
+	 * @throws FactoryConfigurationError
 	 * @throws IOException
 	 * @throws ScmException
-	 * @throws FactoryConfigurationError
 	 * @throws Exception
 	 */
 	private void checkoutAndCommit(ScmManager scmManager, Properties prop, String checkoutUrl,
-			String repoType) throws ScmRepositoryException, NoSuchScmProviderException, IOException, ScmException,
-			FactoryConfigurationError, Exception {
+	                               String repoType) throws FactoryConfigurationError, IOException,
+	                                               ScmException {
 
 		ScmRepository scmRepository = scmManager.makeScmRepository(checkoutUrl);
 		String scmBaseDir = project.getBuild().getDirectory();
-		//create temp directory for checkout 
+		// create temp directory for checkout
 		File targetFile = new File(scmBaseDir, repoType);
 		targetFile.mkdirs();
 		ScmFileSet scmFileSet = new ScmFileSet(targetFile, ARTIFACT_XML_REGEX, null);
@@ -183,41 +196,57 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 			String scmFilePath = scmFile.getPath();
 			if (scmFilePath.endsWith(ARTIFACT_XML)) {
 				File artifactXml = new File(scmBaseDir, scmFilePath);
-				File pomFile = new File(scmBaseDir, scmFilePath.replaceAll(ARTIFACT_XML + "$", POM_XML));
+				File pomFile =
+				               new File(scmBaseDir, scmFilePath.replaceAll(ARTIFACT_XML + "$",
+				                                                           POM_XML));
 				if (!pomFile.exists()) {
 					log.warn(" skiping an artifact.xml does not belongs to a maven project ");
 					continue;
 				}
-				if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE)) {
-					setEsbArtifactVersion(prop, repoType, artifactXml);
-				} else if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_GENERAL_PROJECT_NATURE)) {
-					setRegArtifactVersion(prop, repoType, artifactXml);
+				try {
+
+					if (hasNature(pomFile, ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE)) {
+						setESBArtifactVersion(prop, repoType, artifactXml);
+					} else if (hasNature(pomFile,
+					                     ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_GENERAL_PROJECT_NATURE)) {
+						setRegArtifactVersion(prop, repoType, artifactXml);
+					}
+				} catch (Exception e) {
+					log.error("error occure while set artifact version", e);
 				}
+
 			}
 		}
-		ScmFileSet scmCheckInFileSet = new ScmFileSet(new File(scmBaseDir), ARTIFACT_XML_REGEX, null);
+		ScmFileSet scmCheckInFileSet =
+		                               new ScmFileSet(new File(scmBaseDir), ARTIFACT_XML_REGEX,
+		                                              null);
 		// commit modified artifact.xml files
-		scmManager.checkIn(scmRepository, scmCheckInFileSet, "  commited modified artifact.xml file ... ");
+		scmManager.checkIn(scmRepository, scmCheckInFileSet,
+		                   "  commited modified artifact.xml file ... ");
 	}
 
 	/**
 	 * set Registry artifact version in articact.xml file
 	 * 
-	 * @param prop		properties in release.properties file
-	 * @param repoType		type of the repository
+	 * @param prop
+	 *            properties in release.properties file
+	 * @param repoType
+	 *            type of the repository
 	 * @param artifactXml
 	 * @throws FactoryConfigurationError
 	 * @throws Exception
 	 */
 
 	private void setRegArtifactVersion(Properties prop, String repoType, File artifactXml)
-			throws FactoryConfigurationError, Exception {
+	                                                                                      throws FactoryConfigurationError,
+	                                                                                      Exception {
 		GeneralProjectArtifact projectArtifact = new GeneralProjectArtifact();
 		projectArtifact.fromFile(artifactXml);
 		for (RegistryArtifact artifact : projectArtifact.getAllESBArtifacts()) {
 			if (artifact.getVersion() != null && artifact.getType() != null) {
-				String releaseVersion = prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":" + artifact.getName()
-						+ "." + repoType);
+				String releaseVersion =
+				                        prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":" +
+				                                         artifact.getName() + "." + repoType);
 				if (releaseVersion != null) {
 					artifact.setVersion(releaseVersion);
 				}
@@ -227,23 +256,27 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	}
 
 	/**
-	 * set Esb artifact version in articact.xml file
+	 * set ESB artifact version in articact.xml file
 	 * 
-	 * @param prop		properties in release.properties file
-	 * @param repoType	type of the repository
-	 * @param artifactXml  
+	 * @param prop
+	 *            properties in release.properties file
+	 * @param repoType
+	 *            type of the repository
+	 * @param artifactXml
 	 * @throws FactoryConfigurationError
 	 * @throws Exception
 	 */
 
-	private void setEsbArtifactVersion(Properties prop, String repoType, File artifactXml)
-			throws FactoryConfigurationError, Exception {
+	private void setESBArtifactVersion(Properties prop, String repoType, File artifactXml)
+	                                                                                      throws FactoryConfigurationError,
+	                                                                                      Exception {
 		ESBProjectArtifact projectArtifact = new ESBProjectArtifact();
 		projectArtifact.fromFile(artifactXml);
 		for (ESBArtifact artifact : projectArtifact.getAllESBArtifacts()) {
 			if (artifact.getVersion() != null && artifact.getType() != null) {
-				String releaseVersion = prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":" + artifact.getName()
-						+ "." + repoType);
+				String releaseVersion =
+				                        prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":" +
+				                                         artifact.getName() + "." + repoType);
 				if (releaseVersion != null) {
 					artifact.setVersion(releaseVersion);
 				}
@@ -255,8 +288,10 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	/**
 	 * check the project nature
 	 * 
-	 * @param pomFile	pom file of the project
-	 * @param nature	project nature 
+	 * @param pomFile
+	 *            pom file of the project
+	 * @param nature
+	 *            project nature
 	 * @return
 	 */
 
@@ -270,29 +305,31 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 			MavenProject project = new MavenProject(model);
 			@SuppressWarnings("unchecked")
 			List<Plugin> plugins = project.getBuild().getPlugins();
-			Iterator<Plugin> iterator = plugins.iterator();
-			while (iterator.hasNext()) {
-				Plugin plugin = iterator.next();
+			for (Plugin plugin : plugins) {
 				if (plugin.getArtifactId().equals(MAVEN_ECLIPSE_PLUGIN)) {
 					Xpp3Dom configurationNode = (Xpp3Dom) plugin.getConfiguration();
 					Xpp3Dom projectnatures = configurationNode.getChild(PROJECTNATURES);
 					Xpp3Dom[] natures = projectnatures.getChildren();
-					for (int i = 0; i < natures.length; i++) {
-						if (nature.equals(natures[i].getValue())) {
+					for (Xpp3Dom xpp3Dom : natures) {
+						if (nature.equals(xpp3Dom.getValue())) {
 							return true;
 						}
 					}
 					break;
 				}
 			}
-		} catch (Exception e) {
-			log.warn(e.getMessage(), e);
+		} catch (FileNotFoundException e) {
+			log.error("Cannot find the pom file", e);
+		} catch (IOException e) {
+			log.error("error occure while reading the pom file", e);
+		} catch (XmlPullParserException e) {
+			log.error("error occure while parse the pom file", e);
 		} finally {
 			if (reader != null) {
 				try {
 					reader.close();
 				} catch (IOException e) {
-					// Safe to ignore
+					log.error("error occure while closing input stream", e);
 				}
 			}
 		}

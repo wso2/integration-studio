@@ -48,6 +48,7 @@ import org.wso2.developerstudio.eclipse.ds.MaxRowCount;
 import org.wso2.developerstudio.eclipse.ds.Operation;
 import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
 import org.wso2.developerstudio.eclipse.ds.PatternValidator;
+import org.wso2.developerstudio.eclipse.ds.Policy;
 import org.wso2.developerstudio.eclipse.ds.Query;
 import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 import org.wso2.developerstudio.eclipse.ds.QueryParameter;
@@ -522,6 +523,19 @@ public class DetailSection {
 					voidMaker();
 					voidMaker();
 				}
+				
+				if (displayName.equals(DetailSectionCustomUiConstants.DATA_SERVICE_TRANSPORTS)) {
+
+					labelMaker(displayName);
+					sectionUtil.getAttributeField(detailsclient,
+					                              toolkit,
+					                              selectedObject,
+					                              dataService.getTransports(),
+					                              DsPackage.eINSTANCE.getDataService_Transports(),
+					                              DetailSectionCustomUiConstants.STRING);
+					voidMaker();
+					voidMaker();
+				}
 
 				if (displayName.equals(DetailSectionCustomUiConstants.BASE_URI)) {
 
@@ -577,6 +591,28 @@ public class DetailSection {
 					                                 DsPackage.eINSTANCE.getDataService_DisableStreaming());
 					voidMaker();
 					voidMaker();
+				}
+				
+				if (displayName.equals(DetailSectionCustomUiConstants.ENABLE_SECURITY)) {
+					labelMaker(displayName);
+					sectionUtil.getBooleanComboField(detailsclient,
+					                                 toolkit,
+					                                 selectedObject,
+					                                 dataService.isEnableSec(),
+					                                 DsPackage.eINSTANCE.getDataService_EnableSec());
+					voidMaker();
+					voidMaker();
+					
+					Policy policy = dataService.getPolicy();
+					if (policy != null) {
+						labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_POLICY);
+						sectionUtil.getAttributeField(detailsclient, toolkit, policy,
+													  policy.getKey(),
+						                              DsPackage.eINSTANCE.getPolicy_Key(),
+						                              DetailSectionCustomUiConstants.STRING);
+						voidMaker();
+						voidMaker();
+					}
 				}
 			}
 		}
@@ -2006,7 +2042,7 @@ public class DetailSection {
 					                                 DsPackage.eINSTANCE.getResource_ReturnRequestStatus());
 
 				}
-
+				
 			}
 
 		}

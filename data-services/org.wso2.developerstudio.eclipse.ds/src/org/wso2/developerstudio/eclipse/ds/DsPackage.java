@@ -429,13 +429,40 @@ public interface DsPackage extends EPackage {
 	int DATA_SERVICE__DISABLE_STREAMING = 15;
 
 	/**
+	 * The feature id for the '<em><b>Enable Sec</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SERVICE__ENABLE_SEC = 16;
+
+	/**
+	 * The feature id for the '<em><b>Policy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SERVICE__POLICY = 17;
+
+	/**
+	 * The feature id for the '<em><b>Transports</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SERVICE__TRANSPORTS = 18;
+
+	/**
 	 * The number of structural features of the '<em>Data Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SERVICE_FEATURE_COUNT = 16;
+	int DATA_SERVICE_FEATURE_COUNT = 19;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
@@ -1419,7 +1446,7 @@ public interface DsPackage extends EPackage {
 	int QUERY__PROPERTIES = 4;
 
 	/**
-	 * The feature id for the '<em><b>Result</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2134,6 +2161,34 @@ public interface DsPackage extends EPackage {
 	int WORK_SHEET_NUMBER_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.PolicyImpl <em>Policy</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.PolicyImpl
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getPolicy()
+	 * @generated
+	 */
+	int POLICY = 37;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POLICY__KEY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Policy</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POLICY_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2141,7 +2196,7 @@ public interface DsPackage extends EPackage {
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatus()
 	 * @generated
 	 */
-	int SERVICE_STATUS = 37;
+	int SERVICE_STATUS = 38;
 
 	/**
 	 * The meta object id for the '<em>Service Status Object</em>' data type.
@@ -2151,7 +2206,7 @@ public interface DsPackage extends EPackage {
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatusObject()
 	 * @generated
 	 */
-	int SERVICE_STATUS_OBJECT = 38;
+	int SERVICE_STATUS_OBJECT = 39;
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.AttributeMapping <em>Attribute Mapping</em>}'.
@@ -2531,6 +2586,39 @@ public interface DsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataService_DisableStreaming();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.DataService#isEnableSec <em>Enable Sec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enable Sec</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataService#isEnableSec()
+	 * @see #getDataService()
+	 * @generated
+	 */
+	EAttribute getDataService_EnableSec();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.ds.DataService#getPolicy <em>Policy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Policy</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataService#getPolicy()
+	 * @see #getDataService()
+	 * @generated
+	 */
+	EReference getDataService_Policy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.DataService#getTransports <em>Transports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transports</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataService#getTransports()
+	 * @see #getDataService()
+	 * @generated
+	 */
+	EAttribute getDataService_Transports();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration <em>Data Source Configuration</em>}'.
@@ -3505,10 +3593,10 @@ public interface DsPackage extends EPackage {
 	EReference getQuery_Properties();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.ds.Query#getResult <em>Result</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.ds.Query#getResult <em>Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Result</em>'.
+	 * @return the meta object for the containment reference '<em>Result</em>'.
 	 * @see org.wso2.developerstudio.eclipse.ds.Query#getResult()
 	 * @see #getQuery()
 	 * @generated
@@ -4196,6 +4284,27 @@ public interface DsPackage extends EPackage {
 	EAttribute getWorkSheetNumber_Value();
 
 	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.Policy <em>Policy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Policy</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.Policy
+	 * @generated
+	 */
+	EClass getPolicy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.Policy#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.Policy#getKey()
+	 * @see #getPolicy()
+	 * @generated
+	 */
+	EAttribute getPolicy_Key();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4532,6 +4641,30 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_SERVICE__DISABLE_STREAMING = eINSTANCE.getDataService_DisableStreaming();
+
+		/**
+		 * The meta object literal for the '<em><b>Enable Sec</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SERVICE__ENABLE_SEC = eINSTANCE.getDataService_EnableSec();
+
+		/**
+		 * The meta object literal for the '<em><b>Policy</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_SERVICE__POLICY = eINSTANCE.getDataService_Policy();
+
+		/**
+		 * The meta object literal for the '<em><b>Transports</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SERVICE__TRANSPORTS = eINSTANCE.getDataService_Transports();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
@@ -5293,7 +5426,7 @@ public interface DsPackage extends EPackage {
 		EReference QUERY__PROPERTIES = eINSTANCE.getQuery_Properties();
 
 		/**
-		 * The meta object literal for the '<em><b>Result</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5835,6 +5968,24 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute WORK_SHEET_NUMBER__VALUE = eINSTANCE.getWorkSheetNumber_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.PolicyImpl <em>Policy</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.PolicyImpl
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getPolicy()
+		 * @generated
+		 */
+		EClass POLICY = eINSTANCE.getPolicy();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute POLICY__KEY = eINSTANCE.getPolicy_Key();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}' enum.

@@ -3,4 +3,5 @@
    <config id="{config.id}">
    		{config.properties}
    </config>
+   <policy key="{service.policykey}" />
 </data>

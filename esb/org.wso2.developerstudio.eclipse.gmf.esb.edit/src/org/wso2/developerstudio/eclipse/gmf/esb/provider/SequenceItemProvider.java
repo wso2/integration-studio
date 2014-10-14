@@ -74,6 +74,7 @@ public class SequenceItemProvider
 		}else {
 			addStaticReferenceKeyPropertyDescriptor(object);
 		}
+		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
 

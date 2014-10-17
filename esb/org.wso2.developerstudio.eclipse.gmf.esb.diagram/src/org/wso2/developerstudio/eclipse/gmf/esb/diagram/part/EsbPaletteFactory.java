@@ -199,7 +199,8 @@ public class EsbPaletteFactory {
 		paletteContainer.add(createURLRewriteMediator36CreationTool());
 		paletteContainer.add(createXQueryMediator14CreationTool());
 		paletteContainer.add(createXSLTMediator6CreationTool());
-		paletteContainer.add(createDataMapperMediator46CreationTool()); // enabled
+		//paletteContainer.add(createDataMapperMediator46CreationTool()); // enabled
+		paletteContainer.add(createFastXSLTMediator47CreationTool());
 
 		// Transform Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Transform"));

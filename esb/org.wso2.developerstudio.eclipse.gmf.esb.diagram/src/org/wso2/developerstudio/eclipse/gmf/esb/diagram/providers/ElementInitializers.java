@@ -15,7 +15,8 @@ public class ElementInitializers {
 	 * @generated
 	 */
 	public static ElementInitializers getInstance() {
-		ElementInitializers cached = EsbDiagramEditorPlugin.getInstance().getElementInitializers();
+		ElementInitializers cached = EsbDiagramEditorPlugin.getInstance()
+				.getElementInitializers();
 		if (cached == null) {
 			EsbDiagramEditorPlugin.getInstance().setElementInitializers(
 					cached = new ElementInitializers());

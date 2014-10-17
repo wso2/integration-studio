@@ -43,6 +43,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.EventMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
@@ -324,6 +325,10 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 					return children.get(i);
 			} else if (children.get(i) instanceof XSLTMediator) {
 				if (((XSLTMediator) children.get(i)).getInputConnector()
+						.getIncomingLinks().size() == 0)
+					return children.get(i);
+			} else if (children.get(i) instanceof FastXSLTMediator) {
+				if (((FastXSLTMediator) children.get(i)).getInputConnector()
 						.getIncomingLinks().size() == 0)
 					return children.get(i);
 			} else if (children.get(i) instanceof Sequence) {

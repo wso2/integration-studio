@@ -35,7 +35,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class WSDLEndPointOutputConnectorEditPart extends AbstractEndpointOutputConnectorEditPart {
+public class WSDLEndPointOutputConnectorEditPart extends
+		AbstractEndpointOutputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -72,7 +73,8 @@ public class WSDLEndPointOutputConnectorEditPart extends AbstractEndpointOutputC
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+				getPrimaryDragEditPolicy());
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new WSDLEndPointOutputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
@@ -87,7 +89,8 @@ public class WSDLEndPointOutputConnectorEditPart extends AbstractEndpointOutputC
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -217,7 +220,8 @@ public class WSDLEndPointOutputConnectorEditPart extends AbstractEndpointOutputC
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(IGraphicalEditPart targetEditPart) {
+	public List<IElementType> getMARelTypesOnSourceAndTarget(
+			IGraphicalEditPart targetEditPart) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof ProxyInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
@@ -407,7 +411,8 @@ public class WSDLEndPointOutputConnectorEditPart extends AbstractEndpointOutputC
 		public WestPointerFigure() {
 
 			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(10)));
 			this.addMouseMotionListener(new MouseMotionListener() {
 
 				public void mouseMoved(MouseEvent me) {
@@ -428,9 +433,13 @@ public class WSDLEndPointOutputConnectorEditPart extends AbstractEndpointOutputC
 
 				public void mouseEntered(MouseEvent me) {
 					// TODO Auto-generated method stub
-					getEditDomain().getPaletteViewer().setActiveTool(
-							(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer()
-									.getPaletteRoot().getChildren().get(4)).getChildren().get(0)));
+					getEditDomain()
+							.getPaletteViewer()
+							.setActiveTool(
+									(ToolEntry) (((PaletteContainer) getEditDomain()
+											.getPaletteViewer()
+											.getPaletteRoot().getChildren()
+											.get(4)).getChildren().get(0)));
 
 				}
 

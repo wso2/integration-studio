@@ -60,13 +60,16 @@ public class FilterMediatorCanonicalEditPolicy extends CanonicalEditPolicy {
 	protected Set getFeaturesToSynchronize() {
 		if (myFeaturesToSynchronize == null) {
 			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getFilterMediator_InputConnector());
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getFilterMediator_OutputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
+					.getFilterMediator_InputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
+					.getFilterMediator_OutputConnector());
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
 					.getFilterMediator_PassOutputConnector());
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
 					.getFilterMediator_FailOutputConnector());
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getFilterMediator_FilterContainer());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
+					.getFilterMediator_FilterContainer());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -89,8 +92,10 @@ public class FilterMediatorCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
-		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
+	protected boolean isOrphaned(Collection<EObject> semanticChildren,
+			final View view) {
+		return isMyDiagramElement(view)
+				&& !semanticChildren.contains(view.getElement());
 	}
 
 	/**
@@ -118,7 +123,8 @@ public class FilterMediatorCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<EsbNodeDescriptor> childDescriptors = EsbDiagramUpdater
-				.getFilterMediator_3494SemanticChildren((View) getHost().getModel());
+				.getFilterMediator_3494SemanticChildren((View) getHost()
+						.getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
@@ -132,8 +138,8 @@ public class FilterMediatorCanonicalEditPolicy extends CanonicalEditPolicy {
 		// iteration happens over list of desired semantic elements, trying to find best matching View, while original CEP
 		// iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference same EObject, only last one 
 		// to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
-		for (Iterator<EsbNodeDescriptor> descriptorsIterator = childDescriptors.iterator(); descriptorsIterator
-				.hasNext();) {
+		for (Iterator<EsbNodeDescriptor> descriptorsIterator = childDescriptors
+				.iterator(); descriptorsIterator.hasNext();) {
 			EsbNodeDescriptor next = descriptorsIterator.next();
 			String hint = EsbVisualIDRegistry.getType(next.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
@@ -162,10 +168,11 @@ public class FilterMediatorCanonicalEditPolicy extends CanonicalEditPolicy {
 				childDescriptors.size());
 		for (EsbNodeDescriptor next : childDescriptors) {
 			String hint = EsbVisualIDRegistry.getType(next.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
+			IAdaptable elementAdapter = new CanonicalElementAdapter(
+					next.getModelElement(), hint);
 			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false, host()
-							.getDiagramPreferencesHint());
+					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
+					host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -174,8 +181,8 @@ public class FilterMediatorCanonicalEditPolicy extends CanonicalEditPolicy {
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView()))
-					.execute();
+			SetViewMutabilityCommand.makeMutable(
+					new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
@@ -186,8 +193,8 @@ public class FilterMediatorCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(),
-					createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
+					.getEditingDomain(), createdViews, host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 

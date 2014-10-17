@@ -18,7 +18,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 /**
  * @generated
  */
-public class SwitchCaseBranchOutputConnectorCreateCommand extends EditElementCommand {
+public class SwitchCaseBranchOutputConnectorCreateCommand extends
+		EditElementCommand {
 
 	/**
 	 * @generated
@@ -32,7 +33,8 @@ public class SwitchCaseBranchOutputConnectorCreateCommand extends EditElementCom
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -50,8 +52,8 @@ public class SwitchCaseBranchOutputConnectorCreateCommand extends EditElementCom
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		SwitchCaseBranchOutputConnector newElement = EsbFactory.eINSTANCE
 				.createSwitchCaseBranchOutputConnector();
 
@@ -68,13 +70,17 @@ public class SwitchCaseBranchOutputConnectorCreateCommand extends EditElementCom
 	 * @generated
 	 */
 	protected void doConfigure(SwitchCaseBranchOutputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+			IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

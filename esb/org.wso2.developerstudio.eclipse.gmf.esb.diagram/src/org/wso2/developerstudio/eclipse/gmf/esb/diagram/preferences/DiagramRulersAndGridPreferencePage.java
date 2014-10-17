@@ -12,6 +12,7 @@ public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage 
 	 * @generated
 	 */
 	public DiagramRulersAndGridPreferencePage() {
-		setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
+		setPreferenceStore(EsbDiagramEditorPlugin.getInstance()
+				.getPreferenceStore());
 	}
 }

@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.editpolicies.SelectionEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
 import org.eclipse.swt.graphics.Color;
@@ -48,6 +49,7 @@ public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 		
 		if(getHost() instanceof FixedSizedAbstractMediator) {
 			FixedSizedAbstractMediator mediator = (FixedSizedAbstractMediator)getHost();
+			IFigure primary = mediator.getFixedSizedPrimaryShape();
 			mediator.getFixedSizedPrimaryShape().setBackgroundColor(figureColor);
 			RoundedRectangleBorder border = (RoundedRectangleBorder)mediator.getFixedSizedPrimaryShape().getBorder();
 			border.setColor(boderColor);

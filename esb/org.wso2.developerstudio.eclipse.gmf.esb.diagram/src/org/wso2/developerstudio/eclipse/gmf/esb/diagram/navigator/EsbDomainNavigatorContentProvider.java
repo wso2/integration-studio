@@ -23,7 +23,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
 /**
  * @generated
  */
-public class EsbDomainNavigatorContentProvider implements ICommonContentProvider {
+public class EsbDomainNavigatorContentProvider implements
+		ICommonContentProvider {
 
 	/**
 	 * @generated
@@ -59,8 +60,9 @@ public class EsbDomainNavigatorContentProvider implements ICommonContentProvider
 	 * @generated
 	 */
 	public EsbDomainNavigatorContentProvider() {
-		myAdapterFctoryContentProvier = new AdapterFactoryContentProvider(EsbDiagramEditorPlugin
-				.getInstance().getItemProvidersAdapterFactory());
+		myAdapterFctoryContentProvier = new AdapterFactoryContentProvider(
+				EsbDiagramEditorPlugin.getInstance()
+						.getItemProvidersAdapterFactory());
 		TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
 				.createEditingDomain();
 		myEditingDomain = (AdapterFactoryEditingDomain) editingDomain;
@@ -96,7 +98,8 @@ public class EsbDomainNavigatorContentProvider implements ICommonContentProvider
 						return true;
 					}
 
-					public boolean handleResourceMoved(Resource resource, final URI newURI) {
+					public boolean handleResourceMoved(Resource resource,
+							final URI newURI) {
 						unloadAllResources();
 						asyncRefresh();
 						return true;
@@ -128,7 +131,8 @@ public class EsbDomainNavigatorContentProvider implements ICommonContentProvider
 	 * @generated
 	 */
 	void unloadAllResources() {
-		for (Resource nextResource : myEditingDomain.getResourceSet().getResources()) {
+		for (Resource nextResource : myEditingDomain.getResourceSet()
+				.getResources()) {
 			nextResource.unload();
 		}
 	}
@@ -138,7 +142,8 @@ public class EsbDomainNavigatorContentProvider implements ICommonContentProvider
 	 */
 	void asyncRefresh() {
 		if (myViewer != null && !myViewer.getControl().isDisposed()) {
-			myViewer.getControl().getDisplay().asyncExec(myViewerRefreshRunnable);
+			myViewer.getControl().getDisplay()
+					.asyncExec(myViewerRefreshRunnable);
 		}
 	}
 
@@ -173,9 +178,13 @@ public class EsbDomainNavigatorContentProvider implements ICommonContentProvider
 	public Object[] getChildren(Object parentElement) {
 		if (parentElement instanceof IFile) {
 			IFile file = (IFile) parentElement;
-			URI fileURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-			Resource resource = myEditingDomain.getResourceSet().getResource(fileURI, true);
-			return wrapEObjects(myAdapterFctoryContentProvier.getChildren(resource), parentElement);
+			URI fileURI = URI.createPlatformResourceURI(file.getFullPath()
+					.toString(), true);
+			Resource resource = myEditingDomain.getResourceSet().getResource(
+					fileURI, true);
+			return wrapEObjects(
+					myAdapterFctoryContentProvier.getChildren(resource),
+					parentElement);
 		}
 
 		if (parentElement instanceof EsbDomainNavigatorItem) {
@@ -193,8 +202,8 @@ public class EsbDomainNavigatorContentProvider implements ICommonContentProvider
 		Collection result = new ArrayList();
 		for (int i = 0; i < objects.length; i++) {
 			if (objects[i] instanceof EObject) {
-				result.add(new EsbDomainNavigatorItem((EObject) objects[i], parentElement,
-						myAdapterFctoryContentProvier));
+				result.add(new EsbDomainNavigatorItem((EObject) objects[i],
+						parentElement, myAdapterFctoryContentProvier));
 			}
 		}
 		return result.toArray();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.fastXSLT_4.2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xmlbeans_2.3.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper-4.2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.governance.registry.extensions_4.2.0.jar"/>

@@ -5,27 +5,19 @@ import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.common.ui.services.icon.GetIconOperation;
 import org.eclipse.gmf.runtime.common.ui.services.icon.IIconProvider;
+import org.eclipse.gmf.tooling.runtime.providers.DefaultElementTypeIconProvider;
 import org.eclipse.swt.graphics.Image;
 
 /**
  * @generated
  */
-public class EsbIconProvider extends AbstractProvider implements IIconProvider {
+public class EsbIconProvider extends DefaultElementTypeIconProvider implements
+		IIconProvider {
 
 	/**
 	 * @generated
 	 */
-	public Image getIcon(IAdaptable hint, int flags) {
-		return EsbElementTypes.getImage(hint);
-	}
-
-	/**
-	 * @generated
-	 */
-	public boolean provides(IOperation operation) {
-		if (operation instanceof GetIconOperation) {
-			return ((GetIconOperation) operation).execute(this) != null;
-		}
-		return false;
+	public EsbIconProvider() {
+		super(EsbElementTypes.TYPED_INSTANCE);
 	}
 }

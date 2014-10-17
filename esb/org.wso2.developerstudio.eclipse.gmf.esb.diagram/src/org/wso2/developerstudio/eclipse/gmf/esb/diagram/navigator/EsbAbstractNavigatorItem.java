@@ -23,7 +23,8 @@ public abstract class EsbAbstractNavigatorItem extends PlatformObject {
 		Platform.getAdapterManager().registerAdapters(
 				new IAdapterFactory() {
 
-					public Object getAdapter(Object adaptableObject, Class adapterType) {
+					public Object getAdapter(Object adaptableObject,
+							Class adapterType) {
 						if (adaptableObject instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbAbstractNavigatorItem
 								&& adapterType == ITabbedPropertySheetPageContributor.class) {
 							return propertySheetPageContributor;

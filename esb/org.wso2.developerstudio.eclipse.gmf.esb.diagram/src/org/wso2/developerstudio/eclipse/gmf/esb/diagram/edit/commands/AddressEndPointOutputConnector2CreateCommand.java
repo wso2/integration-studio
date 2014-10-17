@@ -18,7 +18,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 /**
  * @generated
  */
-public class AddressEndPointOutputConnector2CreateCommand extends EditElementCommand {
+public class AddressEndPointOutputConnector2CreateCommand extends
+		EditElementCommand {
 
 	/**
 	 * @generated
@@ -54,10 +55,9 @@ public class AddressEndPointOutputConnector2CreateCommand extends EditElementCom
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
-		AddressEndPointOutputConnector newElement = EsbFactory.eINSTANCE
-				.createAddressEndPointOutputConnector();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
+		AddressEndPointOutputConnector newElement = EsbFactory.eINSTANCE.createAddressEndPointOutputConnector();
 
 		AddressEndPoint owner = (AddressEndPoint) getElementToEdit();
 		owner.setOutputConnector(newElement);
@@ -71,11 +71,12 @@ public class AddressEndPointOutputConnector2CreateCommand extends EditElementCom
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(AddressEndPointOutputConnector newElement, IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected void doConfigure(AddressEndPointOutputConnector newElement,
+			IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
 		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
 		ICommand configureCommand = elementType.getEditCommand(configureRequest);

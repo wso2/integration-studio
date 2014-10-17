@@ -29,7 +29,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated
  */
-public class ProxyServiceFaultContainerCanonicalEditPolicy extends CanonicalEditPolicy {
+public class ProxyServiceFaultContainerCanonicalEditPolicy extends
+		CanonicalEditPolicy {
 
 	/**
 	 * @generated
@@ -47,7 +48,8 @@ public class ProxyServiceFaultContainerCanonicalEditPolicy extends CanonicalEdit
 	 * @generated
 	 */
 	protected EStructuralFeature getFeatureToSynchronize() {
-		return EsbPackage.eINSTANCE.getProxyServiceFaultContainer_MediatorFlow();
+		return EsbPackage.eINSTANCE
+				.getProxyServiceFaultContainer_MediatorFlow();
 	}
 
 	/**
@@ -68,15 +70,18 @@ public class ProxyServiceFaultContainerCanonicalEditPolicy extends CanonicalEdit
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
-		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
+	protected boolean isOrphaned(Collection<EObject> semanticChildren,
+			final View view) {
+		return isMyDiagramElement(view)
+				&& !semanticChildren.contains(view.getElement());
 	}
 
 	/**
 	 * @generated
 	 */
 	private boolean isMyDiagramElement(View view) {
-		return MediatorFlow6EditPart.VISUAL_ID == EsbVisualIDRegistry.getVisualID(view);
+		return MediatorFlow6EditPart.VISUAL_ID == EsbVisualIDRegistry
+				.getVisualID(view);
 	}
 
 	/**
@@ -88,7 +93,8 @@ public class ProxyServiceFaultContainerCanonicalEditPolicy extends CanonicalEdit
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<EsbNodeDescriptor> childDescriptors = EsbDiagramUpdater
-				.getProxyServiceFaultContainer_3488SemanticChildren((View) getHost().getModel());
+				.getProxyServiceFaultContainer_3488SemanticChildren((View) getHost()
+						.getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
@@ -102,8 +108,8 @@ public class ProxyServiceFaultContainerCanonicalEditPolicy extends CanonicalEdit
 		// iteration happens over list of desired semantic elements, trying to find best matching View, while original CEP
 		// iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference same EObject, only last one 
 		// to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
-		for (Iterator<EsbNodeDescriptor> descriptorsIterator = childDescriptors.iterator(); descriptorsIterator
-				.hasNext();) {
+		for (Iterator<EsbNodeDescriptor> descriptorsIterator = childDescriptors
+				.iterator(); descriptorsIterator.hasNext();) {
 			EsbNodeDescriptor next = descriptorsIterator.next();
 			String hint = EsbVisualIDRegistry.getType(next.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
@@ -132,10 +138,11 @@ public class ProxyServiceFaultContainerCanonicalEditPolicy extends CanonicalEdit
 				childDescriptors.size());
 		for (EsbNodeDescriptor next : childDescriptors) {
 			String hint = EsbVisualIDRegistry.getType(next.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
+			IAdaptable elementAdapter = new CanonicalElementAdapter(
+					next.getModelElement(), hint);
 			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false, host()
-							.getDiagramPreferencesHint());
+					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
+					host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -144,8 +151,8 @@ public class ProxyServiceFaultContainerCanonicalEditPolicy extends CanonicalEdit
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView()))
-					.execute();
+			SetViewMutabilityCommand.makeMutable(
+					new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
@@ -156,8 +163,8 @@ public class ProxyServiceFaultContainerCanonicalEditPolicy extends CanonicalEdit
 		}
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(),
-					createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
+					.getEditingDomain(), createdViews, host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 

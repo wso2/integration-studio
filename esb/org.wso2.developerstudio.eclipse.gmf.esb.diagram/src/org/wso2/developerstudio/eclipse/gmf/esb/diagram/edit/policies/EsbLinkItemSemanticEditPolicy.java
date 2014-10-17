@@ -8,7 +8,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class EsbLinkItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
+public class EsbLinkItemSemanticEditPolicy extends
+		EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated

@@ -56,20 +56,17 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 		 */
 		org.apache.synapse.mediators.builtin.CalloutMediator calloutMediator = new org.apache.synapse.mediators.builtin.CalloutMediator();
 		setCommonProperties(calloutMediator, visualCallout);
-		{
-			if (!(visualCallout.getEndpointType().getValue() == 0)) {
-				if (visualCallout.getEndpointType().getValue() == CalloutEndpointType.URL_VALUE) {
-					// Fixing TOOLS-2598
+		
+		       // Fixing TOOLS-2636
+				if (visualCallout.getEndpointType().getValue() == CalloutEndpointType.URL_VALUE) {		
 					if (StringUtils.isNotEmpty(visualCallout.getServiceURL())) {
 						calloutMediator.setServiceURL(visualCallout.getServiceURL());
 					}
-				}
-			}
-
-			else if (visualCallout.getAddressEndpoint() != null
-					&& StringUtils.isNotBlank(visualCallout.getAddressEndpoint().getKeyValue())) {
-				calloutMediator.setEndpointKey(visualCallout.getAddressEndpoint().getKeyValue());
-			}
+				} else if (visualCallout.getEndpointType().getValue() == CalloutEndpointType.ADDRESS_ENDPOINT_VALUE) {
+						if (visualCallout.getAddressEndpoint() != null && StringUtils.isNotBlank(visualCallout.getAddressEndpoint().getKeyValue())) {
+							calloutMediator.setEndpointKey(visualCallout.getAddressEndpoint().getKeyValue());
+			             }
+		            }
 			
 			if (visualCallout.getSoapAction()!=null && !visualCallout.getSoapAction().isEmpty()) {
 				calloutMediator.setAction(visualCallout.getSoapAction());
@@ -101,9 +98,9 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 				  calloutMediator.setUseEnvelopeAsSource(true);
 			} else {
 				if (visualCallout.getPayloadProperty() != null) {
-					// Fixing TOOLS-2598
-					if (StringUtils.isNotEmpty(visualCallout.getResultContextProperty())) {
-						calloutMediator.setRequestKey(visualCallout.getResultContextProperty());
+					// Fixing TOOLS-2637
+					if (StringUtils.isNotEmpty(visualCallout.getPayloadProperty())) {
+						calloutMediator.setRequestKey(visualCallout.getPayloadProperty());
 					}
 				}
 			}
@@ -158,8 +155,6 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 		        }
 		        
 			}
-			
-		}
 		return calloutMediator;
 	}
 }

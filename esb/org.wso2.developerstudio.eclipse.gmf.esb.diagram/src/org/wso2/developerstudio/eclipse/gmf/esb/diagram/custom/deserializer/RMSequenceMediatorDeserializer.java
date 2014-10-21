@@ -22,13 +22,18 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSpecVersion;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class RMSequenceMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, RMSequenceMediator>{
 	
 	  private static final String WSRM_SpecVersion_1_0 = "1.0";
 	  private static final String WSRM_SpecVersion_1_1 = "1.1";
+	  private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	public RMSequenceMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
 		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.RMSequenceMediator, "Unsupported mediator passed in for deserialization at "+ this.getClass());
@@ -44,15 +49,24 @@ public class RMSequenceMediatorDeserializer extends AbstractEsbNodeDeserializer<
 		}else if(WSRM_SpecVersion_1_1.equals(RMSequenceMediator.getVersion())){
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__RM_SPEC_VERSION, RMSpecVersion.VERSION_11);
 		}
-		if(RMSequenceMediator.getSingle()!=null ){ 
-		if(RMSequenceMediator.isSingle()){
-			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.SINGLE_MESSAGE);
-		}
-		}else {
-			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.CORRELATED_SEQUENCE);
-			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__CORRELATION_XPATH, createNamespacedProperty(RMSequenceMediator.getCorrelation()));
-			if (RMSequenceMediator.getLastMessage()!=null){
-			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__LAST_MESSAGE_XPATH, createNamespacedProperty(RMSequenceMediator.getLastMessage()));
+		if (RMSequenceMediator.getSingle() != null) {
+			if (RMSequenceMediator.isSingle()) {
+				if(!executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.SINGLE_MESSAGE)){
+					log.error("error occurred in executing set value command in RMS sequence mediator deserializer sequence type");
+				}
+			}
+		} else {
+			if(!executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.CORRELATED_SEQUENCE)){
+				log.error("error occurred in executing set value command in RMS sequence mediator deserializer sequence type");
+			}
+			if(!executeSetValueCommand(RM_SEQUENCE_MEDIATOR__CORRELATION_XPATH, createNamespacedProperty(RMSequenceMediator.getCorrelation()))){
+				log.error("error occurred in executing set value command in RMS sequence mediator deserializer correlation Xpath");
+			}
+			if (RMSequenceMediator.getLastMessage() != null) {
+				if(!executeSetValueCommand( RM_SEQUENCE_MEDIATOR__LAST_MESSAGE_XPATH, 
+						createNamespacedProperty(RMSequenceMediator.getLastMessage()))){
+						log.error("error occurred in executing set value command in RMS sequence mediator deserializer last message Xpath");
+				}
 			}
 		}
 		

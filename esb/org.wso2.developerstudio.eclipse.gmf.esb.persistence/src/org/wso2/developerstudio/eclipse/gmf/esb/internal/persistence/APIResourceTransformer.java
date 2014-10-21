@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
+import org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator;
@@ -329,6 +330,10 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 					return children.get(i);
 			} else if (children.get(i) instanceof FastXSLTMediator) {
 				if (((FastXSLTMediator) children.get(i)).getInputConnector()
+						.getIncomingLinks().size() == 0)
+					return children.get(i);
+			} else if (children.get(i) instanceof BAMMediator) {
+				if (((BAMMediator) children.get(i)).getInputConnector()
 						.getIncomingLinks().size() == 0)
 					return children.get(i);
 			} else if (children.get(i) instanceof Sequence) {

@@ -32,6 +32,8 @@ public class EsbDiagramActionBarContributor extends DiagramActionBarContributor 
 	 */
 	public void init(IActionBars bars, IWorkbenchPage page) {
 		super.init(bars, page);
+		// registering  global save action
+		bars.setGlobalActionHandler(GlobalActionId.SAVE, null);
 		// print preview
 		IMenuManager fileMenu = bars.getMenuManager().findMenuUsingPath(
 				IWorkbenchActionConstants.M_FILE);

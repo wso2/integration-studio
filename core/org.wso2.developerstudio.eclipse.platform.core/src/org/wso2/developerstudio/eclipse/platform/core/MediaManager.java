@@ -11,8 +11,14 @@ import org.wso2.developerstudio.eclipse.platform.core.interfaces.IMediaTypeResol
 import org.wso2.developerstudio.eclipse.platform.core.utils.CSMediaUtils;
 import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.eclipse.utils.mediatypes.CustomMediaTypeReader;
 
 public class MediaManager {
+	
+	private static final String ECLIPSE_LAUNCHER_SYSTEM_PROPERTY = "eclipse.launcher";
+	private static final String MIMETYPES_CONF_FILE_NAME = "mimetypes.conf";
+	private static final String CONFIGURATION_FOLDER_NAME = "configuration";
+	
 	public static IMediaTypeResolverProvider[] getMediaTypeResolver(){
 		return CSMediaUtils.getMediaTypeResolver();
 	}
@@ -51,11 +57,27 @@ public class MediaManager {
 	}
 
 	public static String getMediaType(File file) {
-		IMediaTypeResolverProvider selectedProvider = getMediaTypeResolver(file);
-		if (selectedProvider!=null){
-			return selectedProvider.getMediaType();
+		String mediaType = null;
+		String launcherLocation = System.getProperty(ECLIPSE_LAUNCHER_SYSTEM_PROPERTY);
+		File launcherLocationFile;
+		String mimeTypesFileLoc = null;
+		File mimeTypesFile = null;
+		if(launcherLocation != null){
+			launcherLocationFile = new File(launcherLocation);
+			mimeTypesFileLoc = launcherLocationFile.getParent() + File.separator + CONFIGURATION_FOLDER_NAME + File.separator + MIMETYPES_CONF_FILE_NAME;			
+			mimeTypesFile = new File(mimeTypesFileLoc);
+		}			
+		if (mimeTypesFile.exists()) {// check for media types in the custom file by user			
+			CustomMediaTypeReader customMediaTypeReader = new CustomMediaTypeReader();
+			mediaType = customMediaTypeReader.customMimeTypes(file, mimeTypesFileLoc);
 		}
-		return null;
+		if(!mimeTypesFile.exists() || mediaType != null){ //since checking for null
+			IMediaTypeResolverProvider selectedProvider = getMediaTypeResolver(file);
+			if (selectedProvider != null) {
+				mediaType = selectedProvider.getMediaType();
+			}
+		}
+		return mediaType;
 	}
 
 	public static IMediaTypeResolverProvider getMediaTypeResolver(File file) {

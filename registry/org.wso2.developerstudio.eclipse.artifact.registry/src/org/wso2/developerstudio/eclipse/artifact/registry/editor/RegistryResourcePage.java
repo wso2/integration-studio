@@ -68,6 +68,7 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryEl
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.MediaManager;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 public class RegistryResourcePage extends FormPage {
@@ -358,7 +359,7 @@ public class RegistryResourcePage extends FormPage {
 	    	  String mediaType=null;
 	    	  if(registryElement instanceof RegistryItem){
 	    		  name = ((RegistryItem)registryElement).getFile();
-	    		  mediaType = ((RegistryItem)registryElement).getMediaType();
+	    		  mediaType = MediaManager.getMediaType(name);// to dynamically set the media type on every call for UI creation
 	    	  }else if(registryElement instanceof RegistryDump){
 	    		  name = ((RegistryDump)registryElement).getFile();
 	    	  }else{

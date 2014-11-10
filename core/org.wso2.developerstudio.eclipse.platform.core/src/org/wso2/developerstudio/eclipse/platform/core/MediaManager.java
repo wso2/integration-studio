@@ -173,12 +173,7 @@ public class MediaManager {
 	 */
 	private static String getFileExtension(File file) {
 	    String fileName = file.getName();
-	    int lastIndexOf = fileName.lastIndexOf(".");
-	    if (lastIndexOf == -1) {// if there is no "." in the file name
-	    	//no file extension
-	        return null; // empty extension	       
-	    }
-	    return fileName.substring(lastIndexOf);
+	    return getFileExtension(fileName);
 	}
 	
 	private static String getFileExtension(String file) {

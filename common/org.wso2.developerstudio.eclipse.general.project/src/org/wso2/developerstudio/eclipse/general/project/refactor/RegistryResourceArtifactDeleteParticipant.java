@@ -65,13 +65,17 @@ public class RegistryResourceArtifactDeleteParticipant extends DeleteParticipant
 			String originalEsbDiagramFileName = getEsbDiagramFile(originalNameWithoutExtension);
 
 			// Delete .esb file
-			IFile esbIFile = originalResource.getProject().getFile(originalResource.getParent().getProjectRelativePath() + "/" + originalEsbFileName);
+			IFile esbIFile = originalResource.getProject().getFile(originalResource.getParent()
+			                                                                       .getProjectRelativePath() +"/" +
+			                                                               originalEsbFileName);
 			if (esbIFile.exists()) {
 				deleteChange.add(new RegistryResourceGraphicalFileDeleteChange(esbIFile));
 			}
-			
+
 			// Delete .esb_diagram file
-			IFile esbDiagramIFile = originalResource.getProject().getFile(originalResource.getParent().getProjectRelativePath() + "/" + originalEsbDiagramFileName);
+			IFile esbDiagramIFile = originalResource.getProject().getFile(originalResource.getParent()
+			                                                                              .getProjectRelativePath() +
+			                                                                      "/" + originalEsbDiagramFileName);
 			if (esbDiagramIFile.exists()) {
 				deleteChange.add(new RegistryResourceGraphicalFileDeleteChange(esbDiagramIFile));
 			}

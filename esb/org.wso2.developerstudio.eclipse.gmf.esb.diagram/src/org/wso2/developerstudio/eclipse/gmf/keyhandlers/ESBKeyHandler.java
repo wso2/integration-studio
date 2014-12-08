@@ -11,6 +11,9 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -18,6 +21,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
  * @see org.eclipse.core.commands.AbstractHandler
  */
 public class ESBKeyHandler extends AbstractHandler {
+	protected final IDeveloperStudioLog log= Logger.getLog(Activator.PLUGIN_ID);
 	/**
 	 * The constructor.
 	 */
@@ -65,20 +69,18 @@ public class ESBKeyHandler extends AbstractHandler {
 	}
 
 	private void openWizard(String id) {
-		IWizardDescriptor descriptor = PlatformUI.getWorkbench()
-		.getNewWizardRegistry().findWizard(id);
+		IWizardDescriptor descriptor = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard(id);
 		try {
-		if (null != descriptor) {
-		IWorkbenchWizard wizard = descriptor.createWizard();
-		//PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection()
-		wizard.init(PlatformUI.getWorkbench(), new StructuredSelection());
-		WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench()
-		.getActiveWorkbenchWindow().getShell(), wizard);
-		wd.setTitle(wizard.getWindowTitle());
-		wd.open();
-		}
+			if (null != descriptor) {
+				IWorkbenchWizard wizard = descriptor.createWizard();
+				// PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection()
+				wizard.init(PlatformUI.getWorkbench(), new StructuredSelection());
+				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+				wd.setTitle(wizard.getWindowTitle());
+				wd.open();
+			}
 		} catch (CoreException e) {
-		//log.error("Cannot open wizard",e);			
+			log.error("Cannot open wizard, core exception",e);
 		}
-		}
+	}
 }

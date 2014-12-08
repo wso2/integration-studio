@@ -1081,7 +1081,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 	private Action importAction(final AppVersionInfo info) {
 		Action reposettings = new Action() {
 			public void run() {	
-				getcheckoutJob(info);
 			    ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
 				progressMonitorDialog.create();
 				progressMonitorDialog.open();

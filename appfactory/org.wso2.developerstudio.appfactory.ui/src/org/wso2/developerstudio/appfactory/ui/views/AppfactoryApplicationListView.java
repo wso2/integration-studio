@@ -52,8 +52,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
-import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -1364,7 +1362,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 					executeMavenCommands(pomFile, monitor);
 				}
 
-			} catch(OperationCanceledException e){
+			} catch(OperationCanceledException e) {
 				
 				 printErrorLog(e.getMessage());
 				 log.error("importing failed", e); //$NON-NLS-1$

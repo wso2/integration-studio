@@ -58,6 +58,8 @@ import org.xml.sax.SAXException;
 
 @SuppressWarnings("restriction")
 public class CarbonServerUtils {
+	private static final String CARBON_HOME = "carbon.home";
+	private static final String WSAS_HOME = "wsas.home";
 	private static final String AXIS2_XML = "axis2.xml";
 	private static final String AXIS2 = "axis2";
 	private static final String TRANSPORTS_XML = "transports.xml";
@@ -150,28 +152,21 @@ public class CarbonServerUtils {
 				try {
 					InputSource inputSource = null;
 					try {
-						inputSource = new InputSource(new FileInputStream(
-								xmlDocument));
+						inputSource = new InputSource(new FileInputStream(xmlDocument));
 					} catch (FileNotFoundException e) {
-						log.error(
-								"Could not found the file 'carbon.xml' ",
-								e);
+						log.error("File not found " + CARBON_XML, e);
 					}
 
 					if (inputSource != null) {
 						XPathFactory factory = XPathFactory.newInstance();
 						XPath xPath = factory.newXPath();
 						xPath.setNamespaceContext(ctx);
-						XPathExpression xPathExpression = xPath
-								.compile(SERVER_WEB_CONTEXT_ROOT);
+						XPathExpression xPathExpression = xPath.compile(SERVER_WEB_CONTEXT_ROOT);
 						webContextRoot = xPathExpression.evaluate(inputSource);
-						webContextRoot = webContextRoot.equals("/") ? ""
-								: webContextRoot;
+						webContextRoot = webContextRoot.equals("/") ? "" : webContextRoot;
 					}
 				} catch (XPathExpressionException e) {
-					log.error(
-							"Exception in XPath expression evaluation",
-							e);
+					log.error("XpathExpressionException in getting webContextRoot ", e);
 				}
 			}
 		}
@@ -210,106 +205,12 @@ public class CarbonServerUtils {
 		return servicePath;
 	}
 
-//	public static void setTrustoreProperties(IServer server){
-//		String transportsXml = FileUtils.addNodesToPath(WSASServerManager.getServerHome(server).toOSString(), new String[]{"conf","server.xml"});
-//		XPathFactory factory = XPathFactory.newInstance();
-//		File xmlDocument = new File(transportsXml);
-//    	try {
-//			InputSource inputSource =  new InputSource(new FileInputStream(xmlDocument));
-//	    	XPath xPath=factory.newXPath();
-//	    	XPathExpression  xPathExpression=xPath.compile("/Server/Security/KeyStore/Location");
-//	    	String evaluate = xPathExpression.evaluate(inputSource);
-//	    	String trustoreLocation = resolveProperties(server,evaluate);
-//			inputSource =  new InputSource(new FileInputStream(xmlDocument));
-//	    	xPathExpression=xPath.compile("/Server/Security/KeyStore/Password");
-//	    	evaluate = xPathExpression.evaluate(inputSource);
-//	    	String trustStorePassword=resolveProperties(server,evaluate);
-//	    	System.setProperty("javax.net.ssl.trustStore", trustoreLocation);
-//		    System.setProperty("javax.net.ssl.trustStorePassword", trustStorePassword);
-//	    } catch (FileNotFoundException e) {
-//			log.error(e);
-//		} catch (XPathExpressionException e) {
-//			log.error(e);
-//		}
-//	}
-	
 	public static ServerPort[] getServerPorts(IServer server){
-    	//return getServerPorts(CommonOperations.getWSASHome(server).toOSString());
 		return server.getServerPorts(new NullProgressMonitor());
 	}
-	
-//	public static String getRepositoryPath(String serverXmlPath){
-//		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-//        DocumentBuilder docBuilder;
-//        String nodeValue="";
-//		try {
-//			docBuilder = docFactory.newDocumentBuilder();
-//
-//	        Document doc = docBuilder.parse(serverXmlPath);
-//	
-//	        NodeList nodeList = doc.getElementsByTagName("RepositoryLocation");
-//	        Node node = nodeList.item(0);
-//	        nodeValue = node.getFirstChild().getNodeValue();
-//	        
-//		} catch (ParserConfigurationException e) {
-//			log.error(e);
-//		} catch (SAXException e) {
-//			log.error(e);
-//		} catch (IOException e) {
-//			log.error(e);
-//		} catch (TransformerFactoryConfigurationError e) {
-//			log.error(e);
-//		} 
-//		return nodeValue;
-//	}
-//	
-//	public static boolean updateAndSaveCarbonXml(String serverXmlPath, String repoPath, String newServerXmlPath,IServer server){
-//		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-//        DocumentBuilder docBuilder;
-//		try {
-//			docBuilder = docFactory.newDocumentBuilder();
-//
-//	        Document doc = docBuilder.parse(serverXmlPath);
-//	        
-//	        NodeList nodeList = doc.getElementsByTagName("RepositoryLocation");
-//	        Node node = nodeList.item(0);
-//	        node.getFirstChild().setNodeValue(repoPath);
-//	        Transformer t = TransformerFactory.newInstance().newTransformer();
-//	        File confPath = new File((new File(newServerXmlPath)).getParent());
-//	        if (!confPath.exists()) confPath.mkdirs();
-//	        Result result = new StreamResult(new File(newServerXmlPath));
-//	        Source source = new DOMSource(doc);
-//	        t.transform(source, result);
-//	        return true;
-//		} catch (ParserConfigurationException e) {
-//			log.error(e);
-//		} catch (SAXException e) {
-//			log.error(e);
-//		} catch (IOException e) {
-//			log.error(e);
-//		} catch (TransformerConfigurationException e) {
-//			log.error(e);
-//		} catch (TransformerFactoryConfigurationError e) {
-//			log.error(e);
-//		} catch (TransformerException e) {
-//			log.error(e);
-//		}
-//		return false;
-//	}
-//	
-//	public static String getServerXmlPathFromLocalWorkspaceRepo(String workspaceRepo){
-//		return FileUtils.addNodesToPath(workspaceRepo,new String[]{"conf","carbon.xml"});
-//	}
-//	
-//	public static String getTransportsXmlPathFromLocalWorkspaceRepo(String workspaceRepo){
-//		return FileUtils.addNodesToPath(workspaceRepo,new String[]{"conf","transports.xml"});
-//	}
-//	
+
 	public static String resolveProperties(IServer server, String property){
 		String propertyValue;
-//		if (CarbonServerUtils.getServerConfigMapValue(server,property)!=null){
-//			return CarbonServerUtils.getServerConfigMapValue(server,property).toString();
-//		}
 		GenericServer gserver = (GenericServer)server.loadAdapter(ServerDelegate.class, null);
 		if (gserver==null || gserver.getServerDefinition()==null || gserver.getServerDefinition().getResolver()==null) return null;
 		if (!property.startsWith("${"))
@@ -318,88 +219,13 @@ public class CarbonServerUtils {
     	propertyValue = serverDefinition.getResolver().resolveProperties(property);
     	return propertyValue;
 	}
-//	
-//	public static boolean updateAndSaveTransportsXml(String transportsXml, String newTransportsXmlPath, IServer server){
-//		XPathFactory factory = XPathFactory.newInstance();
-//		ServerPort[] serverPorts=WSASServerManager.getServerPorts(server);
-//    	try {
-//    		File xmlDocument = new File(transportsXml);
-//    		DocumentBuilder builder =
-//                DocumentBuilderFactory.newInstance().newDocumentBuilder();
-//            Document document = builder.parse(xmlDocument);
-//	    	XPath xPath=factory.newXPath();
-//	    	Node httpNode = (Node)xPath.evaluate("/transports/transport[@name='http']/parameter[@name='port']", document, XPathConstants.NODE);
-//	    	Node httpsNode = (Node)xPath.evaluate("/transports/transport[@name='https']/parameter[@name='port']", document, XPathConstants.NODE);
-//	    	for(ServerPort serverPort:serverPorts){
-//	    		if (serverPort.getProtocol().equalsIgnoreCase("http")) httpNode.setTextContent(Integer.toString(serverPort.getPort()));
-//	    		if (serverPort.getProtocol().equalsIgnoreCase("https")) httpsNode.setTextContent(Integer.toString(serverPort.getPort()));
-//	    	}
-//	        Transformer t = TransformerFactory.newInstance().newTransformer();
-//	        File confPath = new File((new File(newTransportsXmlPath)).getParent());
-//	        if (!confPath.exists()) confPath.mkdirs();
-//	    	Result result = new StreamResult(new File(newTransportsXmlPath));
-//	        Source source = new DOMSource(document);
-//	        t.transform(source, result);
-//			return true;
-//	    } catch (FileNotFoundException e) {
-//			log.error(e);
-//	    } catch (XPathExpressionException e) {
-//			log.error(e);
-//	    } catch (ParserConfigurationException e) {
-//			log.error(e);
-//		} catch (SAXException e) {
-//			log.error(e);
-//		} catch (IOException e) {
-//			log.error(e);
-//		} catch (TransformerConfigurationException e) {
-//			log.error(e);
-//		} catch (TransformerFactoryConfigurationError e) {
-//			log.error(e);
-//		} catch (TransformerException e) {
-//			log.error(e);
-//		}
-//    	return false;
-//	}
-//	
-//	public static boolean updateTransportXML(IServer server){
-//		IPath serverHome = WSASServerManager.getServerHome(server);
-//		String serverLocalWorkspacePath = WSASServerManager.getServerLocalWorkspacePath(server);
-//		return CarbonServerUtils.updateAndSaveTransportsXml(FileUtils.addNodesToPath(serverHome.toOSString(),new String[]{"conf","transports.xml"}), CarbonServerUtils.getTransportsXmlPathFromLocalWorkspaceRepo(serverLocalWorkspacePath),server); 
-//	}
-//	
-//	public static boolean isHotUpdateEnabled(IServer server){
-//		String axis2Xml=getAxis2FilePath(server);
-//		XPathFactory factory = XPathFactory.newInstance();
-//    	try {
-//    		File xmlDocument = new File(axis2Xml);
-//    		DocumentBuilder builder =
-//                DocumentBuilderFactory.newInstance().newDocumentBuilder();
-//            Document document = builder.parse(xmlDocument);
-//	    	XPath xPath=factory.newXPath();
-//	    	Node httpNode = (Node)xPath.evaluate("/axisconfig/parameter[@name='hotupdate']", document, XPathConstants.NODE);
-//	    	return httpNode.getTextContent().toString().equalsIgnoreCase("true");
-//	    } catch (FileNotFoundException e) {
-//			log.error(e);
-//	    } catch (XPathExpressionException e) {
-//			log.error(e);
-//	    } catch (ParserConfigurationException e) {
-//			log.error(e);
-//		} catch (SAXException e) {
-//			log.error(e);
-//		} catch (IOException e) {
-//			log.error(e);
-//		} catch (TransformerFactoryConfigurationError e) {
-//			log.error(e);
-//		}
-//    	return false;
-//	}
 	
 	public static IPath getCarbonHome(IServer server){
-    	return new Path(resolveProperties(server, "wsas.home"));
+    	return new Path(resolveProperties(server, WSAS_HOME));
 	}
 	
 	public static IPath getCarbonServerHome(IServer server){
-    	return new Path(resolveProperties(server, "carbon.home"));
+    	return new Path(resolveProperties(server, CARBON_HOME));
 	}
 	
 	public static String getAxis2FilePath(IServer server){
@@ -408,99 +234,4 @@ public class CarbonServerUtils {
 				new String[] { CONF, AXIS2_XML });
 		return axis2Xml;
 	}
-//	
-//	public static boolean setHotUpdateEnabled(IServer server,boolean enabled){
-//		if (isHotUpdateEnabled(server)==enabled) return true;
-//		String axis2Xml=getAxis2FilePath(server);
-//		XPathFactory factory = XPathFactory.newInstance();
-//    	try {
-//    		File xmlDocument = new File(axis2Xml);
-//    		DocumentBuilder builder =
-//                DocumentBuilderFactory.newInstance().newDocumentBuilder();
-//            Document document = builder.parse(xmlDocument);
-//	    	XPath xPath=factory.newXPath();
-//	    	Node httpNode = (Node)xPath.evaluate("/axisconfig/parameter[@name='hotupdate']", document, XPathConstants.NODE);
-//	    	httpNode.setTextContent(enabled ? "true":"false");
-//	        Transformer t = TransformerFactory.newInstance().newTransformer();
-//	        File confPath = new File((new File(axis2Xml)).getParent());
-//	        if (!confPath.exists()) confPath.mkdirs();
-//	    	Result result = new StreamResult(new File(axis2Xml));
-//	        Source source = new DOMSource(document);
-//	        t.transform(source, result);
-//			return true;
-//	    } catch (FileNotFoundException e) {
-//			log.error(e);
-//	    } catch (XPathExpressionException e) {
-//			log.error(e);
-//	    } catch (ParserConfigurationException e) {
-//			log.error(e);
-//		} catch (SAXException e) {
-//			log.error(e);
-//		} catch (IOException e) {
-//			log.error(e);
-//		} catch (TransformerConfigurationException e) {
-//			log.error(e);
-//		} catch (TransformerFactoryConfigurationError e) {
-//			log.error(e);
-//		} catch (TransformerException e) {
-//			log.error(e);
-//		}
-//    	return false;
-//	}
-//	
-//	public static String getServerConfigMapValue(IServer server, String key){
-//		String loaded="loaded";
-//		GenericServer gserver = (GenericServer) server.getAdapter(GenericServer.class);
-//		if (gserver==null ||gserver.getServerInstanceProperties()==null) return null;
-//		if (gserver.getServerInstanceProperties().get(loaded)==null){
-//			loadServerInstanceProperties(server);
-//		}
-//		Object object = gserver.getServerInstanceProperties().get(key);
-//		if (object!=null)
-//			return object.toString();
-//		return null;
-//	}
-//	
-//	public static void setServerConfigMapValue(IServer server, String key, String value){
-//		GenericServer gserver = (GenericServer) server.getAdapter(GenericServer.class);
-//		if (gserver!=null){
-//			gserver.getServerInstanceProperties().put(key,value);
-//			saveServerInstanceProperties(server);
-//		}
-//	}
-//	
-//	private static void loadServerInstanceProperties(IServer server){
-//		GenericServer gserver = (GenericServer) server.getAdapter(GenericServer.class);
-//		if (gserver==null) return;
-//		try {
-//			String serverLocalWorkspacePath = WSASServerManager.getServerLocalWorkspacePath(server);
-//			String objConfigPath = FileUtils.addNodesToPath(serverLocalWorkspacePath, new String[]{"conf","config"});
-//			if (new File(objConfigPath).exists()){
-//				FileInputStream f_in = new FileInputStream(objConfigPath);
-//				ObjectInputStream obj_in = new ObjectInputStream (f_in);
-//				Map obj = (Map)obj_in.readObject();
-//				gserver.getServerInstanceProperties().putAll(obj);
-//			}
-//		} catch (IOException e) {
-//			log.error(e);
-//		} catch (ClassNotFoundException e) {
-//			log.error(e);
-//		}
-//		gserver.getServerInstanceProperties().put("loaded", "true");
-//	}
-//	
-//	private static void saveServerInstanceProperties(IServer server){
-//		GenericServer gserver = (GenericServer) server.getAdapter(GenericServer.class);
-//		if (gserver==null) return;
-//		try {
-//			String serverLocalWorkspacePath = WSASServerManager.getServerLocalWorkspacePath(server);
-//			String objConfigPath = FileUtils.addNodesToPath(serverLocalWorkspacePath, new String[]{"conf","config"});
-//			FileOutputStream f_out = new FileOutputStream(objConfigPath);
-//			ObjectOutputStream obj_out = new ObjectOutputStream (f_out);
-//			obj_out.writeObject ( gserver.getServerInstanceProperties());
-//		} catch (IOException e) {
-//			log.error(e);
-//		}
-//	}
-
 }

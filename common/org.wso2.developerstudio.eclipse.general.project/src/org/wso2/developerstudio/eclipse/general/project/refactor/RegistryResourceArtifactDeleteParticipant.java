@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.general.project.refactor;
 
 import org.apache.axiom.om.OMElement;
+import org.apache.axiom.om.OMException;
 import org.apache.axiom.om.OMXMLBuilderFactory;
 import org.apache.axiom.om.OMXMLParserWrapper;
 import org.apache.commons.io.FilenameUtils;
@@ -55,37 +56,33 @@ public class RegistryResourceArtifactDeleteParticipant extends DeleteParticipant
 	}
 
 	@Override
-	public Change createPreChange(IProgressMonitor arg0) throws CoreException,
-	                                                    OperationCanceledException {
+	public Change createPreChange(IProgressMonitor arg0) throws CoreException,OperationCanceledException {
 
 		CompositeChange deleteChange = new CompositeChange("Delete Registry Resource Artifact");
+		String originalNameWithoutExtension = FilenameUtils.removeExtension(originalResource.getName());
+		try {
+			String originalEsbFileName = getEsbFile(originalNameWithoutExtension);
+			String originalEsbDiagramFileName = getEsbDiagramFile(originalNameWithoutExtension);
 
-		String originalNameWithoutExtension =
-		                                      FilenameUtils.removeExtension(originalResource.getName());
-		String originalEsbFileName = getEsbFile(originalNameWithoutExtension);
-		String originalEsbDiagramFileName = getEsbDiagramFile(originalNameWithoutExtension);
+			// Delete .esb file
+			IFile esbIFile = originalResource.getProject().getFile(originalResource.getParent()
+			                                                                       .getProjectRelativePath() +"/" +
+			                                                               originalEsbFileName);
+			if (esbIFile.exists()) {
+				deleteChange.add(new RegistryResourceGraphicalFileDeleteChange(esbIFile));
+			}
 
-		// Delete .esb file
-		IFile esbIFile =
-		                 originalResource.getProject()
-		                                 .getFile(originalResource.getParent()
-		                                                          .getProjectRelativePath() +
-		                                                  "/" +
-		                                                  originalEsbFileName);
-		if (esbIFile.exists()) {
-			deleteChange.add(new RegistryResourceGraphicalFileDeleteChange(esbIFile));
+			// Delete .esb_diagram file
+			IFile esbDiagramIFile = originalResource.getProject().getFile(originalResource.getParent()
+			                                                                              .getProjectRelativePath() +
+			                                                                      "/" + originalEsbDiagramFileName);
+			if (esbDiagramIFile.exists()) {
+				deleteChange.add(new RegistryResourceGraphicalFileDeleteChange(esbDiagramIFile));
+			}
+		} catch (OMException e) { 
+			// since the operation flow should not be interrupted even if the file is not an ESB related file
+			log.info("The file is not an ESB artifact");
 		}
-
-		// Delete .esb_diagram file
-		IFile esbDiagramIFile =
-		                        originalResource.getProject()
-		                                        .getFile(originalResource.getParent()
-		                                                                 .getProjectRelativePath() +
-		                                                         "/" + originalEsbDiagramFileName);
-		if (esbDiagramIFile.exists()) {
-			deleteChange.add(new RegistryResourceGraphicalFileDeleteChange(esbDiagramIFile));
-		}
-
 		deleteFromPOM(deleteChange);
 		return deleteChange;
 	}

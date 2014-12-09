@@ -115,7 +115,6 @@ public class ESBKeyHandler extends AbstractHandler {
 		try {
 			if (descriptor != null) {
 				IWorkbenchWizard wizard = descriptor.createWizard();
-				// PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService().getSelection()
 				wizard.init(PlatformUI.getWorkbench(), new StructuredSelection());
 				WizardDialog wd = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
 				wd.setTitle(wizard.getWindowTitle());

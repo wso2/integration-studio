@@ -154,7 +154,7 @@ public class CarbonServerUtils {
 					try {
 						inputSource = new InputSource(new FileInputStream(xmlDocument));
 					} catch (FileNotFoundException e) {
-						log.error("File not found exception in getWebContextRoot ", e);
+						log.error("File not found " + CARBON_XML, e);
 					}
 
 					if (inputSource != null) {

@@ -1183,12 +1183,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 		monitor.worked(5);	 
 		String localRepo = "";
 		if (info.getLocalRepo() == null || info.getLocalRepo().equals("")) { //$NON-NLS-1$
-
 			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
 			localRepo = workspace + File.separator + info.getAppName();
-
-			// Add relevant suffix to repo location
-			localRepo += (info.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
 			info.setLocalRepo(localRepo);
 		}
 		
@@ -1212,55 +1208,7 @@ public class AppfactoryApplicationListView extends ViewPart {
          info.setCheckedout(true);
          broker.send("Projectupdate", null); //$NON-NLS-1$
 	}
-	
-	/*private void openRepoSettingsWizard() {
 
-		IWizardDescriptor descriptor = PlatformUI.getWorkbench()
-				.getNewWizardRegistry().findWizard(REPO_WIZARD_ID);
-		if (descriptor == null) {
-			descriptor = PlatformUI.getWorkbench().getImportWizardRegistry()
-					.findWizard(REPO_WIZARD_ID);
-		}
-		if (descriptor == null) {
-			descriptor = PlatformUI.getWorkbench().getExportWizardRegistry()
-					.findWizard(REPO_WIZARD_ID);
-		}
-		try {
-			if (descriptor != null) {
-				IWizard wizard = descriptor.createWizard();
-				WizardDialog wd = new WizardDialog(parent.getShell(), wizard);
-				wd.setTitle(wizard.getWindowTitle());
-				wd.open();
-			}
-		} catch (Exception e) {
-			 log.error("Wizard invoke error", e);
-		}
-	}
-*/
-
-	/*private void openDSSettingsWizard() {
-
-		IWizardDescriptor descriptor = PlatformUI.getWorkbench()
-				.getNewWizardRegistry().findWizard(REPO_WIZARD_ID);
-		if (descriptor == null) {
-			descriptor = PlatformUI.getWorkbench().getImportWizardRegistry()
-					.findWizard(REPO_WIZARD_ID);
-		}
-		if (descriptor == null) {
-			descriptor = PlatformUI.getWorkbench().getExportWizardRegistry()
-					.findWizard(REPO_WIZARD_ID);
-		}
-		try {
-			if (descriptor != null) {
-				IWizard wizard = descriptor.createWizard();
-				WizardDialog wd = new WizardDialog(parent.getShell(), wizard);
-				wd.setTitle(wizard.getWindowTitle());
-				wd.open();
-			}
-		} catch (Exception e) {
-			 log.error("Wizard invoke error", e); //$NON-NLS-1$
-		}
-	}*/
 	private class AppImportJobJob implements IRunnableWithProgress {
 		
 	AppVersionInfo appInfo;

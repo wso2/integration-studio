@@ -57,7 +57,6 @@ public class CustomMediaTypeReader {
 	            }
             } catch (IOException e) {
 	            log.error("An exception occurred while closing the reader for custom media type file reading");
-            	return customMediaTypes;
             }
 		}			
 					

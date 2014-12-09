@@ -1187,8 +1187,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
 			localRepo = workspace + File.separator + info.getAppName();
 
-			// Add relevant suffix to repo location
-			localRepo += (info.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
 			info.setLocalRepo(localRepo);
 		}
 		

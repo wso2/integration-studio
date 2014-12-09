@@ -58,6 +58,8 @@ import org.xml.sax.SAXException;
 
 @SuppressWarnings("restriction")
 public class CarbonServerUtils {
+	private static final String CARBON_HOME = "carbon.home";
+	private static final String WSAS_HOME = "wsas.home";
 	private static final String AXIS2_XML = "axis2.xml";
 	private static final String AXIS2 = "axis2";
 	private static final String TRANSPORTS_XML = "transports.xml";
@@ -153,9 +155,7 @@ public class CarbonServerUtils {
 						inputSource = new InputSource(new FileInputStream(
 								xmlDocument));
 					} catch (FileNotFoundException e) {
-						log.error(
-								"Could not found the file 'carbon.xml' ",
-								e);
+						log.error("File not found exception in getWebContextRoot ", e);
 					}
 
 					if (inputSource != null) {
@@ -169,9 +169,7 @@ public class CarbonServerUtils {
 								: webContextRoot;
 					}
 				} catch (XPathExpressionException e) {
-					log.error(
-							"Exception in XPath expression evaluation",
-							e);
+					log.error("XpathExpressionException in getting webContextRoot ", e);
 				}
 			}
 		}
@@ -395,11 +393,11 @@ public class CarbonServerUtils {
 //	}
 	
 	public static IPath getCarbonHome(IServer server){
-    	return new Path(resolveProperties(server, "wsas.home"));
+    	return new Path(resolveProperties(server, WSAS_HOME));
 	}
 	
 	public static IPath getCarbonServerHome(IServer server){
-    	return new Path(resolveProperties(server, "carbon.home"));
+    	return new Path(resolveProperties(server, CARBON_HOME));
 	}
 	
 	public static String getAxis2FilePath(IServer server){

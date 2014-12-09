@@ -118,113 +118,148 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 		EList<EsbElement> children= visualService.getContainer().getFaultContainer().getMediatorFlow().getChildren();
 		for(int i=0; i<children.size();++i){
 			if(children.get(i) instanceof AggregateMediator){
-				if(((AggregateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((AggregateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}					
 			}else if(children.get(i) instanceof CacheMediator){
-				if(((CacheMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((CacheMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof CalloutMediator){
-				if(((CalloutMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((CalloutMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof CallTemplateMediator){
-				if(((CallTemplateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((CallTemplateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof ClassMediator){
-				if(((ClassMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((ClassMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof CloneMediator){
-				if(((CloneMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((CloneMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof CommandMediator){
-				if(((CommandMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((CommandMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof DBLookupMediator){
-				if(((DBLookupMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((DBLookupMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof DBReportMediator){
-				if(((DBReportMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((DBReportMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof DropMediator){
 				if(((DropMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
 					return children.get(i);
 			}else if(children.get(i) instanceof EnqueueMediator){
-				if(((EnqueueMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((EnqueueMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof EnrichMediator){
-				if(((EnrichMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((EnrichMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof EntitlementMediator){
-				if(((EntitlementMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((EntitlementMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof EventMediator){
-				if(((EventMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((EventMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof FaultMediator){
-				if(((FaultMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((FaultMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof FilterMediator){
-				if(((FilterMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((FilterMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof HeaderMediator){
-				if(((HeaderMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((HeaderMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof IterateMediator){
-				if(((IterateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((IterateMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof LogMediator){
-				if(((LogMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((LogMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof OAuthMediator){
-				if(((OAuthMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((OAuthMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof PayloadFactoryMediator){
-				if(((PayloadFactoryMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((PayloadFactoryMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof PropertyMediator){
-				if(((PropertyMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((PropertyMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof RMSequenceMediator){
-				if(((RMSequenceMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((RMSequenceMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof RuleMediator){
-				if(((RuleMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((RuleMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof ScriptMediator){
-				if(((ScriptMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((ScriptMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof SendMediator){
-				if(((SendMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((SendMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof SmooksMediator){
-				if(((SmooksMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((SmooksMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof SpringMediator){
-				if(((SpringMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((SpringMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof StoreMediator){
-				if(((StoreMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((StoreMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof SwitchMediator){
-				if(((SwitchMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((SwitchMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof ThrottleMediator){
-				if(((ThrottleMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((ThrottleMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof XQueryMediator){
-				if(((XQueryMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((XQueryMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof XSLTMediator){
-				if(((XSLTMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((XSLTMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof FastXSLTMediator){
-				if(((FastXSLTMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((FastXSLTMediator)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof BAMMediator){
-				if(((BAMMediator)children.get(i)).getInputConnector().getIncomingLinks().size() == 0)
+				if(((BAMMediator)children.get(i)).getInputConnector().getIncomingLinks().size() == 0){
 					return children.get(i);
+				}
 			}else if(children.get(i) instanceof Sequence){
-				if(((Sequence)children.get(i)).getInputConnector().getIncomingLinks().size()==0)
+				if(((Sequence)children.get(i)).getInputConnector().getIncomingLinks().size()==0){
 					return children.get(i);
+				}
 			}
 			
 		}

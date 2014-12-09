@@ -117,18 +117,13 @@ import com.google.gson.reflect.TypeToken;
 public class AppfactoryApplicationListView extends ViewPart {
 	
 	public static final String ID = "org.wso2.developerstudio.appfactory.ui.views.AppfactoryView"; //$NON-NLS-1$
-	
 	public static final String REPO_WIZARD_ID = "org.eclipse.egit.ui.internal.clone.GitCloneWizard"; //$NON-NLS-1$
-	
 	public static final String FORKED_REPO_SUFFIX = "_forked";
-	
 	public static final String MAIN_REPO_SUFFIX = "_main";
-	
 	private static final String MAVEN_CMD_INSTALL = "install";
-	
 	private static final String MAVEN_CMD_CLEAN = "clean";
-	
 	private static final String MAVEN_CMD_ECLIPSE = "eclipse:eclipse";
+	private static final String PROJECT_DESCRIPTOR = ".project";
 	
 
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -1291,7 +1286,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
 				                                                                                  appInfo.getLocalRepo() +
 				                                                                                          File.separator +
-				                                                                                          ".project"));
+				                                                                                          PROJECT_DESCRIPTOR));
 
 				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_3;
 				monitor.subTask(operationText);
@@ -1338,7 +1333,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
 				                                                                                  appInfo.getLocalRepo() +
 				                                                                                          File.separator +
-				                                                                                          ".project")); //$NON-NLS-1$
+				                                                                                          PROJECT_DESCRIPTOR)); //$NON-NLS-1$
 
 				operationText = Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
 				monitor.subTask(operationText);

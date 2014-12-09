@@ -36,17 +36,19 @@ public class RMSequenceMediatorDeserializer extends AbstractEsbNodeDeserializer<
 	  private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
 	public RMSequenceMediator createNode(IGraphicalEditPart part,AbstractMediator mediator) {
-		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.RMSequenceMediator, "Unsupported mediator passed in for deserialization at "+ this.getClass());
+		Assert.isTrue(mediator instanceof org.apache.synapse.mediators.builtin.RMSequenceMediator, 
+		              "Unsupported mediator passed in for deserialization at "+ this.getClass());
 		
-		org.apache.synapse.mediators.builtin.RMSequenceMediator RMSequenceMediator = (org.apache.synapse.mediators.builtin.RMSequenceMediator)mediator;
-		
-		RMSequenceMediator visualRMSequenceMediator = (RMSequenceMediator) DeserializerUtils.createNode(part, EsbElementTypes.RMSequenceMediator_3522);
+		org.apache.synapse.mediators.builtin.RMSequenceMediator RMSequenceMediator = 
+											(org.apache.synapse.mediators.builtin.RMSequenceMediator)mediator;
+		RMSequenceMediator visualRMSequenceMediator = (RMSequenceMediator) DeserializerUtils.createNode(part, 
+		                                                                   EsbElementTypes.RMSequenceMediator_3522);
 		setElementToEdit(visualRMSequenceMediator);
 		setCommonProperties(RMSequenceMediator, visualRMSequenceMediator);
 		
-		if(WSRM_SpecVersion_1_0.equals(RMSequenceMediator.getVersion())){
+		if (WSRM_SpecVersion_1_0.equals(RMSequenceMediator.getVersion())) {
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__RM_SPEC_VERSION, RMSpecVersion.VERSION_10);
-		}else if(WSRM_SpecVersion_1_1.equals(RMSequenceMediator.getVersion())){
+		} else if (WSRM_SpecVersion_1_1.equals(RMSequenceMediator.getVersion())) {
 			executeSetValueCommand(RM_SEQUENCE_MEDIATOR__RM_SPEC_VERSION, RMSpecVersion.VERSION_11);
 		}
 		if (RMSequenceMediator.getSingle() != null) {
@@ -56,10 +58,11 @@ public class RMSequenceMediatorDeserializer extends AbstractEsbNodeDeserializer<
 				}
 			}
 		} else {
-			if(!executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.CORRELATED_SEQUENCE)){
+			if (!executeSetValueCommand(RM_SEQUENCE_MEDIATOR__SEQUENCE_TYPE, RMSequenceType.CORRELATED_SEQUENCE)) {
 				log.error("error occurred in executing set value command in RMS sequence mediator deserializer sequence type");
 			}
-			if(!executeSetValueCommand(RM_SEQUENCE_MEDIATOR__CORRELATION_XPATH, createNamespacedProperty(RMSequenceMediator.getCorrelation()))){
+			if (!executeSetValueCommand(RM_SEQUENCE_MEDIATOR__CORRELATION_XPATH, 
+			                            createNamespacedProperty(RMSequenceMediator.getCorrelation()))) {
 				log.error("error occurred in executing set value command in RMS sequence mediator deserializer correlation Xpath");
 			}
 			if (RMSequenceMediator.getLastMessage() != null) {
@@ -69,8 +72,6 @@ public class RMSequenceMediatorDeserializer extends AbstractEsbNodeDeserializer<
 				}
 			}
 		}
-		
 		return visualRMSequenceMediator;
 	}
-
 }

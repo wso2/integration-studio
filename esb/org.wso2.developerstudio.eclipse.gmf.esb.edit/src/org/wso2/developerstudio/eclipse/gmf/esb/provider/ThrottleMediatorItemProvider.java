@@ -93,7 +93,7 @@ public class ThrottleMediatorItemProvider
 			
 			addOnRejectBranchsequenceKeyPropertyDescriptor(object);
 		}
-
+		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
 

@@ -80,6 +80,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 	static{
 		prefixMap.put("application/vnd.wso2.sequence","sequence_");
 		prefixMap.put("application/vnd.wso2.esb.endpoint","endpoint_");
+		prefixMap.put("application/vnd.wso2.esb.localentry", "localentry_");
 		
 	}
 	@Override

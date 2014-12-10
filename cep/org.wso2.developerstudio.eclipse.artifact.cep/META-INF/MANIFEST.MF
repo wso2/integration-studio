@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CEP
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.cep;singleton:=true
-Bundle-Version: 2.1.0.qualifier
+Bundle-Version: 2.0.1
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.cep.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

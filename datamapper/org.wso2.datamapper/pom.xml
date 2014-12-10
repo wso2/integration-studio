@@ -4,7 +4,7 @@
 	<groupId>org.wso2</groupId>
 	<artifactId>org.wso2.datamapper</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>org.wso2.datamapper</name>
 	<url>http://maven.apache.org</url>
 	<repositories>

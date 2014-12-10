@@ -215,7 +215,7 @@
         <greg.tools.version>3.7.1</greg.tools.version>
         <common.libraries.version>3.7.1</common.libraries.version>        
         <bps.tools.version>0.5.0.wso2v1</bps.tools.version>
-	<eclipse.bps.tools.version>1.0.3-SNAPSHOT</eclipse.bps.tools.version>
+	<eclipse.bps.tools.version>1.0.4</eclipse.bps.tools.version>
 	<bpel.artifact.version>3.7.1</bpel.artifact.version>
         <logging.tools.version>3.7.1</logging.tools.version>
         <common.utils.version>3.7.1</common.utils.version>

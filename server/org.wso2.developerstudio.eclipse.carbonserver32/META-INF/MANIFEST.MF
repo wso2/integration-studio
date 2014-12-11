@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Carbonserver32
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.carbonserver32;singleton:=true
-Bundle-Version: 3.8.0.qualifier
+Bundle-Version: 3.7.1
 Bundle-Activator: org.wso2.developerstudio.eclipse.carbonserver32.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -52,6 +52,7 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.wso2.developerstudio.eclipse.carbonserver.base.manager,
  org.wso2.developerstudio.eclipse.carbonserver.base.service.util,
  org.wso2.developerstudio.eclipse.carbonserver.base.util,
+ org.wso2.developerstudio.eclipse.carbonserver.base.utils,
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.developerstudio.eclipse.server.base.core,
  org.wso2.developerstudio.eclipse.server.base.interfaces,

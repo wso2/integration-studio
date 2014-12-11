@@ -57,8 +57,7 @@ public class XSLTMediatorItemProvider
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
-	 */
-	
+	 */	
 	
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		XSLTMediator xsltMediator = (XSLTMediator) object;
@@ -84,8 +83,7 @@ public class XSLTMediatorItemProvider
 			addDescriptionPropertyDescriptor(object);
 		
 		return itemPropertyDescriptors;
-	}
-	
+	}	
 	
 	/**
 	 * This adds a property descriptor for the Xslt Schema Key Type feature.

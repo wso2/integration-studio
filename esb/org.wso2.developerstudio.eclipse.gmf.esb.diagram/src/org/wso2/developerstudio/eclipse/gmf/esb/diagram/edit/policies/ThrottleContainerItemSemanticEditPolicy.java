@@ -22,7 +22,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class ThrottleContainerItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
+public class ThrottleContainerItemSemanticEditPolicy extends
+		EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -35,10 +36,12 @@ public class ThrottleContainerItemSemanticEditPolicy extends EsbBaseItemSemantic
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.ThrottleOnAcceptContainer_3584 == req.getElementType()) {
+		if (EsbElementTypes.ThrottleOnAcceptContainer_3584 == req
+				.getElementType()) {
 			return getGEFWrapper(new ThrottleOnAcceptContainerCreateCommand(req));
 		}
-		if (EsbElementTypes.ThrottleOnRejectContainer_3586 == req.getElementType()) {
+		if (EsbElementTypes.ThrottleOnRejectContainer_3586 == req
+				.getElementType()) {
 			return getGEFWrapper(new ThrottleOnRejectContainerCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
@@ -49,8 +52,8 @@ public class ThrottleContainerItemSemanticEditPolicy extends EsbBaseItemSemantic
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
-				null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
+				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -74,14 +77,14 @@ public class ThrottleContainerItemSemanticEditPolicy extends EsbBaseItemSemantic
 			Node node = (Node) nit.next();
 			switch (EsbVisualIDRegistry.getVisualID(node)) {
 			case ThrottleOnAcceptContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
+						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case ThrottleOnRejectContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
+						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;

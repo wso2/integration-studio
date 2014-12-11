@@ -1,4 +1,4 @@
 {
-"displayName":"",    
+"displayName":"Test",    
 "welcomeFiles":["index.jag"]
 }

@@ -11,7 +11,7 @@
 			<description>Synapse API</description>
 		</wizard>
 	</extension>
-	  <extension point="org.eclipse.ui.navigator.navigatorContent">	
+	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"
 			priority="high"
 			id="org.eclipse.ui.navigator.resourceContent"
@@ -38,9 +38,33 @@
 				           </or>
 				  </triggerPoints>
 		</navigatorContent>
-	</extension>
-	
-	<extension
+	</extension>-->
+		<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.synapse.api.wizard">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+						</adapt>
+						<adapt type="org.eclipse.core.resources.IFolder">  
+						   <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.core.resources.name"
+                       value="api">
+                     </test>                        
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+   <extension
 		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">	
 	<wizardLink category="dashboard.category.esb" id="8dashboard.wizardLink.esb.synapse.api"
 			wizard="org.wso2.developerstudio.eclipse.artifact.synapse.api.wizard" priority="8">

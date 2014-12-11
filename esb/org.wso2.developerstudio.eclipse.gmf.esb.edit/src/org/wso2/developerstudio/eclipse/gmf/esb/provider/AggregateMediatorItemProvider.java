@@ -96,6 +96,7 @@ public class AggregateMediatorItemProvider
 		}
 		
 		addEnclosingElementPropertyPropertyDescriptor(object);
+		addDescriptionPropertyDescriptor(object);
 
 		return itemPropertyDescriptors;
 	}

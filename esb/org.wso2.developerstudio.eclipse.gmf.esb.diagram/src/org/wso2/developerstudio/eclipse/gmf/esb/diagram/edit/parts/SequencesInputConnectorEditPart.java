@@ -42,7 +42,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class SequencesInputConnectorEditPart extends AbstractInputConnectorEditPart {
+public class SequencesInputConnectorEditPart extends
+		AbstractInputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -76,7 +77,8 @@ public class SequencesInputConnectorEditPart extends AbstractInputConnectorEditP
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+				getPrimaryDragEditPolicy());
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new SequencesInputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
@@ -91,7 +93,8 @@ public class SequencesInputConnectorEditPart extends AbstractInputConnectorEditP
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -125,15 +128,16 @@ public class SequencesInputConnectorEditPart extends AbstractInputConnectorEditP
 		for (Object child : this.getParent().getChildren()) {
 			if (child instanceof MediatorFlow5EditPart) {
 				if (((MediatorFlowMediatorFlowCompartment5EditPart) ((MediatorFlow5EditPart) child)
-						.getChildren().get(0)).borderedNodeFigure.getBorderItemContainer()
-						.getChildren().size() == 0) {
+						.getChildren().get(0)).borderedNodeFigure
+						.getBorderItemContainer().getChildren().size() == 0) {
 					isEndpointcountZero = true;
 				} else {
 					isEndpointcountZero = false;
 				}
 			}
 		}
-		if ((inputConnector.getIncomingLinks().size() != 0) || (!isEndpointcountZero)) {
+		if ((inputConnector.getIncomingLinks().size() != 0)
+				|| (!isEndpointcountZero)) {
 			/*
 			 * This will remove the arrow head of output connector if it is
 			 * connected to any other input connector.

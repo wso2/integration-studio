@@ -4,7 +4,7 @@
 
 	<groupId>org.wso2</groupId>
 	<artifactId>datamapper</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>bundle</packaging>
 
 	<name>datamapper</name>

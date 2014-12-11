@@ -65,7 +65,8 @@ public class MediatorFlow19EditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new MediatorFlow19ItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+				new MediatorFlow19ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -78,7 +79,8 @@ public class MediatorFlow19EditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -121,8 +123,10 @@ public class MediatorFlow19EditPart extends ShapeNodeEditPart {
 	public void refreshOutputConnector(EditPart childEditPart) {
 		if (childEditPart instanceof SendMediatorEditPart) {
 			SendMediatorEditPart sendMediatorEditPart = (SendMediatorEditPart) childEditPart;
-			BorderItemLocator locator = new FixedBorderItemLocator(this.getFigure(),
-					sendMediatorEditPart.endpointOutputConnector, PositionConstants.WEST, 0.5);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					this.getFigure(),
+					sendMediatorEditPart.endpointOutputConnector,
+					PositionConstants.WEST, 0.5);
 			sendMediatorEditPart.getBorderedFigure().getBorderItemContainer()
 					.add(sendMediatorEditPart.endpointOutputConnector, locator);
 		} else {
@@ -132,7 +136,8 @@ public class MediatorFlow19EditPart extends ShapeNodeEditPart {
 	}
 
 	protected void addChildVisual(EditPart childEditPart, int index) {
-		refreshOutputConnector(((SendMediatorEditPart) childEditPart.getParent().getParent()));
+		refreshOutputConnector(((SendMediatorEditPart) childEditPart
+				.getParent().getParent()));
 		super.addChildVisual(childEditPart, -1);
 	}
 
@@ -234,8 +239,8 @@ public class MediatorFlow19EditPart extends ShapeNodeEditPart {
 		public MediatorFlowFigure() {
 
 			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(5000), getMapMode()
-					.DPtoLP(4000)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(5000),
+					getMapMode().DPtoLP(4000)));
 		}
 
 	}

@@ -3,5 +3,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers;
 /**
  * @generated
  */
-public class RecipientListEndPointOutputConnectorEditHelper extends EsbBaseEditHelper {
+public class RecipientListEndPointOutputConnectorEditHelper extends
+		EsbBaseEditHelper {
 }

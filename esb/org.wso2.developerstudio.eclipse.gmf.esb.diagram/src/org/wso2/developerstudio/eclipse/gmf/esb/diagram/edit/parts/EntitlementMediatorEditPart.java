@@ -45,7 +45,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated NOT
  */
-public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFiguredAbstractMediator {
+public class EntitlementMediatorEditPart extends
+		MultipleCompartmentComplexFiguredAbstractMediator {
 
 	public IFigure onRejectOutputConnector;
 	public IFigure onAcceptOutputConnector;
@@ -73,17 +74,21 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new EntitlementMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new FeedbackIndicateDragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new EntitlementMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -101,7 +106,8 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 				case EntitlementMediatorOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -127,7 +133,8 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected)
-						&& (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
+						&& (this.getBounds().getLocation().x != 0 && this
+								.getBounds().getLocation().y != 0)) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 					connected = true;
@@ -148,8 +155,9 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof EntitlementMediatorServerURLEditPart) {
-			((EntitlementMediatorServerURLEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureEntitlementMediatorPropertyValue());
+			((EntitlementMediatorServerURLEditPart) childEditPart)
+					.setLabel(getPrimaryShape()
+							.getFigureEntitlementMediatorPropertyValue());
 			return true;
 		}
 		/*		if (childEditPart instanceof EntitlementMediatorDescriptionEditPart) {
@@ -160,17 +168,21 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 		if (childEditPart instanceof EntitlementMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((EntitlementMediatorInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof EntitlementMediatorOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((EntitlementMediatorOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.EAST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.EAST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof EntitlementMediatorOnRejectOutputConnectorEditPart) {
@@ -208,12 +220,15 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 		}
 		if (childEditPart instanceof EntitlementMediatorInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((EntitlementMediatorInputConnectorEditPart) childEditPart).getFigure());
+					((EntitlementMediatorInputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		if (childEditPart instanceof EntitlementMediatorOutputConnectorEditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((EntitlementMediatorOutputConnectorEditPart) childEditPart).getFigure());
+			getBorderedFigure()
+					.getBorderItemContainer()
+					.remove(((EntitlementMediatorOutputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		return false;
@@ -344,7 +359,8 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 	/**
 	 * @generated NOT
 	 */
-	public class EntitlementMediatorFigure extends EntitlementMediatorGraphicalShape {
+	public class EntitlementMediatorFigure extends
+			EntitlementMediatorGraphicalShape {
 
 		/**
 		 * @generated
@@ -364,7 +380,8 @@ public class EntitlementMediatorEditPart extends MultipleCompartmentComplexFigur
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(false);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(220)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170),
+					getMapMode().DPtoLP(220)));
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();

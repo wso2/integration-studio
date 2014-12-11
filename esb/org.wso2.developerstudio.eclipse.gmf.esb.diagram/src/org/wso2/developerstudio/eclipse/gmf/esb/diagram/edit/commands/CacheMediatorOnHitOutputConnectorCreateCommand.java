@@ -18,12 +18,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 /**
  * @generated
  */
-public class CacheMediatorOnHitOutputConnectorCreateCommand extends EditElementCommand {
+public class CacheMediatorOnHitOutputConnectorCreateCommand extends
+		EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public CacheMediatorOnHitOutputConnectorCreateCommand(CreateElementRequest req) {
+	public CacheMediatorOnHitOutputConnectorCreateCommand(
+			CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -32,7 +34,8 @@ public class CacheMediatorOnHitOutputConnectorCreateCommand extends EditElementC
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -54,8 +57,8 @@ public class CacheMediatorOnHitOutputConnectorCreateCommand extends EditElementC
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		CacheMediatorOnHitOutputConnector newElement = EsbFactory.eINSTANCE
 				.createCacheMediatorOnHitOutputConnector();
 
@@ -72,13 +75,17 @@ public class CacheMediatorOnHitOutputConnectorCreateCommand extends EditElementC
 	 * @generated
 	 */
 	protected void doConfigure(CacheMediatorOnHitOutputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+			IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

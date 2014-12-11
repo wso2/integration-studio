@@ -31,7 +31,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class SmooksMediatorInputConnectorEditPart extends AbstractMediatorInputConnectorEditPart {
+public class SmooksMediatorInputConnectorEditPart extends
+		AbstractMediatorInputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -60,7 +61,8 @@ public class SmooksMediatorInputConnectorEditPart extends AbstractMediatorInputC
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+				getPrimaryDragEditPolicy());
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new SmooksMediatorInputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
@@ -75,7 +77,8 @@ public class SmooksMediatorInputConnectorEditPart extends AbstractMediatorInputC
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -270,7 +273,8 @@ public class SmooksMediatorInputConnectorEditPart extends AbstractMediatorInputC
 		public EastPointerFigure() {
 
 			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(10)));
 		}
 
 	}

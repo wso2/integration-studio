@@ -18,12 +18,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 /**
  * @generated
  */
-public class CloudConnectorOperationInputConnectorCreateCommand extends EditElementCommand {
+public class CloudConnectorOperationInputConnectorCreateCommand extends
+		EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public CloudConnectorOperationInputConnectorCreateCommand(CreateElementRequest req) {
+	public CloudConnectorOperationInputConnectorCreateCommand(
+			CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -32,7 +34,8 @@ public class CloudConnectorOperationInputConnectorCreateCommand extends EditElem
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -54,8 +57,8 @@ public class CloudConnectorOperationInputConnectorCreateCommand extends EditElem
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		CloudConnectorOperationInputConnector newElement = EsbFactory.eINSTANCE
 				.createCloudConnectorOperationInputConnector();
 
@@ -71,14 +74,19 @@ public class CloudConnectorOperationInputConnectorCreateCommand extends EditElem
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(CloudConnectorOperationInputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+	protected void doConfigure(
+			CloudConnectorOperationInputConnector newElement,
+			IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

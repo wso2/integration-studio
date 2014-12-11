@@ -11,11 +11,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
@@ -30,10 +27,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.wso2.developerstudio.eclipse.ds.DataService;
 import org.wso2.developerstudio.eclipse.ds.DsFactory;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
+
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.ds.DataService} object.
@@ -72,12 +69,15 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 			addNamePropertyDescriptor(object);
 			addServiceGroupPropertyDescriptor(object);
 			addServiceNamespacePropertyDescriptor(object);
+			addTransportsPropertyDescriptor(object);
 			addBaseURIPropertyDescriptor(object);
 			addEnableBatchRequestsPropertyDescriptor(object);
 			addEnableBoxcarringPropertyDescriptor(object);
 			addEnableDTPPropertyDescriptor(object);
 			addDisableStreamingPropertyDescriptor(object);
 			addServiceStatusPropertyDescriptor(object);
+			addEnableSecPropertyDescriptor(object);
+		    
 		}
 		return itemPropertyDescriptors;
 	}
@@ -103,6 +103,7 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 				 null,
 				 null));
 	}
+
 
 	/**
 	 * This adds a property descriptor for the Enable Batch Requests feature.
@@ -281,6 +282,51 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
+	 * This adds a property descriptor for the Enable Sec feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnableSecPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataService_enableSec_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataService_enableSec_feature", "_UI_DataService_type"),
+				 DsPackage.Literals.DATA_SERVICE__ENABLE_SEC,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transports feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTransportsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataService_transports_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataService_transports_feature", "_UI_DataService_type"),
+				 DsPackage.Literals.DATA_SERVICE__TRANSPORTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+	
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to
 	 * deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand},
@@ -298,12 +344,13 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			// Fixing TOOLS-1008.
-			// childrenFeatures.add(DsPackage.Literals.DATA_SERVICE__DESCRIPTION);
+			//childrenFeatures.add(DsPackage.Literals.DATA_SERVICE__DESCRIPTION);
 			childrenFeatures.add(DsPackage.Literals.DATA_SERVICE__CONFIG);
 			childrenFeatures.add(DsPackage.Literals.DATA_SERVICE__QUERY);
 			childrenFeatures.add(DsPackage.Literals.DATA_SERVICE__EVENT_TRIGGER);
 			childrenFeatures.add(DsPackage.Literals.DATA_SERVICE__OPERATION);
 			childrenFeatures.add(DsPackage.Literals.DATA_SERVICE__RESOURCE);
+			//childrenFeatures.add(DsPackage.Literals.DATA_SERVICE__POLICY);
 		}
 		return childrenFeatures;
 	}
@@ -371,6 +418,8 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 			case DsPackage.DATA_SERVICE__SERVICE_NAMESPACE:
 			case DsPackage.DATA_SERVICE__SERVICE_STATUS:
 			case DsPackage.DATA_SERVICE__DISABLE_STREAMING:
+			case DsPackage.DATA_SERVICE__ENABLE_SEC:
+			case DsPackage.DATA_SERVICE__TRANSPORTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DsPackage.DATA_SERVICE__MIXED:
@@ -467,6 +516,13 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 				 FeatureMapUtil.createEntry
 					(DsPackage.Literals.DATA_SERVICE__RESOURCE,
 					 DsFactory.eINSTANCE.createResource())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.DATA_SERVICE__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.DATA_SERVICE__POLICY,
+					 DsFactory.eINSTANCE.createPolicy())));
 
 		newChildDescriptors.add
 			(createChildParameter

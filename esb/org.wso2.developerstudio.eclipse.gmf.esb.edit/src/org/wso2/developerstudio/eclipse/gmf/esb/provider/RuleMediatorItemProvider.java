@@ -93,7 +93,8 @@ public class RuleMediatorItemProvider
 		addOutputWrapperNamePropertyDescriptor(object);
 		addOutputNameSpacePropertyDescriptor(object);
 		addRuleSetTypePropertyDescriptor(object);
-
+		addDescriptionPropertyDescriptor(object);
+		
 		return itemPropertyDescriptors;
 	}	 
 

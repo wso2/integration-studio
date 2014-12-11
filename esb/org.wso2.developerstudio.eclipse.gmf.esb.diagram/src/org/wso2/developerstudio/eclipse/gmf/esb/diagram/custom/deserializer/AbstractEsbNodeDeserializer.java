@@ -68,6 +68,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequences;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
@@ -87,6 +88,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 /**
@@ -750,6 +752,13 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 			Object editPart = iterator.next();
 			if (editPart instanceof EsbLinkEditPart ) {
 				EsbLinkEditPart linkEditPart = (EsbLinkEditPart) editPart;
+				/*
+				 * We shouldn't remove EsbLinkEditParts if the target of the link is a AbstractEndpointInputConnectorEditPart.
+				 * Because these kind of links will not be get regenerated again according to the current implementation.     
+				 */
+				if(linkEditPart.getTarget() instanceof AbstractEndpointInputConnectorEditPart){
+					continue;
+				}
 				Collection linkCollection = new ArrayList();
 				linkCollection.add(((ConnectorImpl) linkEditPart.getModel()).getElement());
 				org.eclipse.emf.edit.command.DeleteCommand modelDeleteCommand = new org.eclipse.emf.edit.command.DeleteCommand(

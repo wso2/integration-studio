@@ -51,7 +51,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class ProxyInSequenceInputConnectorEditPart extends AbstractBaseFigureInputConnectorEditPart {
+public class ProxyInSequenceInputConnectorEditPart extends
+		AbstractBaseFigureInputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -85,8 +86,10 @@ public class ProxyInSequenceInputConnectorEditPart extends AbstractBaseFigureInp
 			 */
 			if ((((ENotificationImpl) notification).getOldValue() instanceof org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbLinkImpl)
 					&& (((ENotificationImpl) notification).getNewValue() == null)) {
-				RemoveCommand removeCmd = new RemoveCommand(getEditingDomain(), ((Node) EditorUtils
-						.getAbstractBaseFigureEditPart(this).getModel()).getElement(),
+				RemoveCommand removeCmd = new RemoveCommand(
+						getEditingDomain(),
+						((Node) EditorUtils.getAbstractBaseFigureEditPart(this)
+								.getModel()).getElement(),
 						EsbPackage.Literals.PROXY_SERVICE__IN_SEQUENCE_INPUT_CONNECTORS,
 						((Node) this.getModel()).getElement());
 				if (removeCmd.canExecute()) {
@@ -107,7 +110,8 @@ public class ProxyInSequenceInputConnectorEditPart extends AbstractBaseFigureInp
 	private void connectToSendMediator(SendMediatorEditPart sendMediatorEditPart) {
 		if (sendMediatorEditPart != null) {
 			ConnectionUtils.createConnection((AbstractConnectorEditPart) this,
-					EditorUtils.getMediatorOutputConnector(sendMediatorEditPart));
+					EditorUtils
+							.getMediatorOutputConnector(sendMediatorEditPart));
 		}
 	}
 
@@ -145,7 +149,8 @@ public class ProxyInSequenceInputConnectorEditPart extends AbstractBaseFigureInp
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+				getPrimaryDragEditPolicy());
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new ProxyInSequenceInputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
@@ -160,7 +165,8 @@ public class ProxyInSequenceInputConnectorEditPart extends AbstractBaseFigureInp
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -185,7 +191,8 @@ public class ProxyInSequenceInputConnectorEditPart extends AbstractBaseFigureInp
 		return primaryShape = new EastPointerFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0
+						&& this.getBounds().getLocation().y != 0) {
 					if (EditorUtils.getAbstractBaseFigureEditPart(instance) != null) {
 						Map<InputConnector, SendMediatorEditPart> map = EditorUtils
 								.getAbstractBaseFigureEditPart(instance)
@@ -413,7 +420,8 @@ public class ProxyInSequenceInputConnectorEditPart extends AbstractBaseFigureInp
 		 */
 		public EastPointerFigure() {
 			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(10)));
 		}
 
 	}

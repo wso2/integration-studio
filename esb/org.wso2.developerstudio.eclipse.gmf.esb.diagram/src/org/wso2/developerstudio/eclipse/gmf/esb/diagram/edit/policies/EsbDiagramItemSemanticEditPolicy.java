@@ -12,7 +12,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class EsbDiagramItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
+public class EsbDiagramItemSemanticEditPolicy extends
+		EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -43,14 +44,17 @@ public class EsbDiagramItemSemanticEditPolicy extends EsbBaseItemSemanticEditPol
 	/**
 	 * @generated
 	 */
-	private static class DuplicateAnythingCommand extends DuplicateEObjectsCommand {
+	private static class DuplicateAnythingCommand extends
+			DuplicateEObjectsCommand {
 
 		/**
 		 * @generated
 		 */
-		public DuplicateAnythingCommand(TransactionalEditingDomain editingDomain,
+		public DuplicateAnythingCommand(
+				TransactionalEditingDomain editingDomain,
 				DuplicateElementsRequest req) {
-			super(editingDomain, req.getLabel(), req.getElementsToBeDuplicated(), req
+			super(editingDomain, req.getLabel(), req
+					.getElementsToBeDuplicated(), req
 					.getAllDuplicatedElementsMap());
 		}
 

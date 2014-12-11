@@ -12,7 +12,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class MessageStoreItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
+public class MessageStoreItemSemanticEditPolicy extends
+		EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -26,8 +27,8 @@ public class MessageStoreItemSemanticEditPolicy extends EsbBaseItemSemanticEditP
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
-				null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
+				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {

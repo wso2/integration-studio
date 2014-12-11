@@ -1,0 +1,25 @@
+--- esb/org.wso2.developerstudio.eclipse.gmf.esb.diagram/src/org/wso2/developerstudio/eclipse/gmf/esb/diagram/edit/parts/DataMapperMediatorEditPart.java	(revision 28036)
++++ esb/org.wso2.developerstudio.eclipse.gmf.esb.diagram/src/org/wso2/developerstudio/eclipse/gmf/esb/diagram/edit/parts/DataMapperMediatorEditPart.java	(revision 28037)
+@@ -487,16 +497,18 @@
+ 		} else {
+ 			openDataMapperEditor(datamapper);
+ 		}
+-		*/
+- 
++		 */
++
+ 	}
+ 
+ 	private String formatRegistryPath(String selectedPath) {
+ 		String formattedPath = selectedPath;
+ 		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
+-			formattedPath = String.format(G_REG_PREFIX, selectedPath.substring(G_REG_PATH_PREFIX.length()));
++			formattedPath = String.format(G_REG_PREFIX,
++					selectedPath.substring(G_REG_PATH_PREFIX.length()));
+ 		} else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
+-			formattedPath = String.format(C_REG_PREFIX, selectedPath.substring(C_REG_PATH_PREFIX.length()));
++			formattedPath = String.format(C_REG_PREFIX,
++					selectedPath.substring(C_REG_PATH_PREFIX.length()));
+ 		}
+ 		return formattedPath;
+ 	}

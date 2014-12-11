@@ -31,7 +31,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class LogMediatorOutputConnectorEditPart extends AbstractMediatorOutputConnectorEditPart {
+public class LogMediatorOutputConnectorEditPart extends
+		AbstractMediatorOutputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -60,7 +61,8 @@ public class LogMediatorOutputConnectorEditPart extends AbstractMediatorOutputCo
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+				getPrimaryDragEditPolicy());
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new LogMediatorOutputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
@@ -75,7 +77,8 @@ public class LogMediatorOutputConnectorEditPart extends AbstractMediatorOutputCo
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -207,7 +210,8 @@ public class LogMediatorOutputConnectorEditPart extends AbstractMediatorOutputCo
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(IGraphicalEditPart targetEditPart) {
+	public List<IElementType> getMARelTypesOnSourceAndTarget(
+			IGraphicalEditPart targetEditPart) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof ProxyInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
@@ -234,6 +238,9 @@ public class LogMediatorOutputConnectorEditPart extends AbstractMediatorOutputCo
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
 		if (targetEditPart instanceof XSLTMediatorInputConnectorEditPart) {
+			types.add(EsbElementTypes.EsbLink_4001);
+		}
+		if (targetEditPart instanceof FastXSLTMediatorInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
 		if (targetEditPart instanceof SwitchMediatorInputConnectorEditPart) {
@@ -350,6 +357,7 @@ public class LogMediatorOutputConnectorEditPart extends AbstractMediatorOutputCo
 			types.add(EsbElementTypes.LogMediatorInputConnector_3018);
 			types.add(EsbElementTypes.EnrichMediatorInputConnector_3036);
 			types.add(EsbElementTypes.XSLTMediatorInputConnector_3039);
+			types.add(EsbElementTypes.FastXSLTMediatorInputConnector_3765);
 			types.add(EsbElementTypes.SwitchMediatorInputConnector_3042);
 			types.add(EsbElementTypes.SequenceInputConnector_3049);
 			types.add(EsbElementTypes.EventMediatorInputConnector_3052);
@@ -397,7 +405,8 @@ public class LogMediatorOutputConnectorEditPart extends AbstractMediatorOutputCo
 		public EastPointerFigure() {
 
 			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12), getMapMode().DPtoLP(10)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
+					getMapMode().DPtoLP(10)));
 		}
 
 	}

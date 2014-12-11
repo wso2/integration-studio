@@ -19,7 +19,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class SynapseAPIItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
+public class SynapseAPIItemSemanticEditPolicy extends
+		EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -33,8 +34,8 @@ public class SynapseAPIItemSemanticEditPolicy extends EsbBaseItemSemanticEditPol
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
-				null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
+				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -58,12 +59,14 @@ public class SynapseAPIItemSemanticEditPolicy extends EsbBaseItemSemanticEditPol
 			Node node = (Node) nit.next();
 			switch (EsbVisualIDRegistry.getVisualID(node)) {
 			case SynapseAPIAPICompartmentEditPart.VISUAL_ID:
-				for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
+				for (Iterator<?> cit = node.getChildren().iterator(); cit
+						.hasNext();) {
 					Node cnode = (Node) cit.next();
 					switch (EsbVisualIDRegistry.getVisualID(cnode)) {
 					case APIResourceEditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;

@@ -72,6 +72,7 @@ public class FilterMediatorItemProvider
 		} else {
 			addXpathPropertyDescriptor(object);
 		}
+		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
 

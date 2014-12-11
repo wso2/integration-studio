@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.wso2.eclipse</groupId>
         <artifactId>wso2-developer-studio-eclipse-distributions-parent</artifactId>
-        <version>3.8.0-SNAPSHOT</version>
+        <version>3.7.1</version>
     </parent>
     <groupId>org.wso2.developerstudio</groupId>
     <artifactId>developer-studio-eclipse-jee-kepler-win32</artifactId>
@@ -437,7 +437,7 @@
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
                                                         <include name="**/bundles.info"/>
                                                 </replace>
-						<replace token="org.eclipse.osgi,3.6.0.v20100517,plugins/org.eclipse.osgi_3.8.0-SNAPSHOT.v20110613.jar,-1,false" value="org.eclipse.osgi,3.6.0.v20100517,plugins/org.eclipse.osgi_3.8.0-SNAPSHOT.v20110613.jar,-1,true"
+						<replace token="org.eclipse.osgi,3.6.0.v20100517,plugins/org.eclipse.osgi_3.7.1.v20110613.jar,-1,false" value="org.eclipse.osgi,3.6.0.v20100517,plugins/org.eclipse.osgi_3.7.1.v20110613.jar,-1,true"
                          dir="target/eclipse/configuration/org.eclipse.equinox.simpleconfigurator">
                                                         <include name="**/bundles.info"/>
                                                 </replace-->

@@ -99,6 +99,7 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 			case DsPackage.TARGET_TOPIC: return createTargetTopic();
 			case DsPackage.WORK_BOOK_NAME: return createWorkBookName();
 			case DsPackage.WORK_SHEET_NUMBER: return createWorkSheetNumber();
+			case DsPackage.POLICY: return createPolicy();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -508,6 +509,16 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	public WorkSheetNumber createWorkSheetNumber() {
 		WorkSheetNumberImpl workSheetNumber = new WorkSheetNumberImpl();
 		return workSheetNumber;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Policy createPolicy() {
+		PolicyImpl policy = new PolicyImpl();
+		return policy;
 	}
 
 	/**

@@ -42,6 +42,17 @@ public class MediaManager {
 	}
 	
 	public static String getMediaType(String fileName) {
+		String mediaType = getCustomMediaTypeIfSet(fileName);
+		if(mediaType == null){ //since checking for null
+			IMediaTypeResolverProvider selectedProvider = getMediaTypeResolver(fileName);
+			if (selectedProvider != null) {
+				mediaType = selectedProvider.getMediaType();
+			}
+		}
+		return mediaType;
+	}
+	
+	public static String getCustomMediaTypeIfSet(String fileName){
 		String mediaType = null;
 		String mimeTypesFileLoc = null;
 		File mimeTypesFile = null;		
@@ -61,13 +72,7 @@ public class MediaManager {
 			}	
 		}
 		if (userMediaTypes.containsKey(resourceFileExt)){			
-			return (String) userMediaTypes.get(resourceFileExt);
-		}
-		if(mediaType == null){ //since checking for null
-			IMediaTypeResolverProvider selectedProvider = getMediaTypeResolver(fileName);
-			if (selectedProvider != null) {
-				mediaType = selectedProvider.getMediaType();
-			}
+			mediaType = (String) userMediaTypes.get(resourceFileExt);
 		}
 		return mediaType;
 	}

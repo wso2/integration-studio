@@ -199,9 +199,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointDefaultBranchOut
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointWestOutputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorInputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap11;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeSoap12;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeType;
@@ -1802,27 +1799,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EClass dataMapperMediatorOutputConnectorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fastXSLTMediatorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fastXSLTMediatorInputConnectorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fastXSLTMediatorOutputConnectorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9467,78 +9443,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getFastXSLTMediator() {
-		return fastXSLTMediatorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getFastXSLTMediator_FastXsltSchemaKeyType() {
-		return (EAttribute)fastXSLTMediatorEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFastXSLTMediator_FastXsltStaticSchemaKey() {
-		return (EReference)fastXSLTMediatorEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFastXSLTMediator_FastXsltDynamicSchemaKey() {
-		return (EReference)fastXSLTMediatorEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFastXSLTMediator_InputConnector() {
-		return (EReference)fastXSLTMediatorEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getFastXSLTMediator_OutputConnector() {
-		return (EReference)fastXSLTMediatorEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFastXSLTMediatorInputConnector() {
-		return fastXSLTMediatorInputConnectorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFastXSLTMediatorOutputConnector() {
-		return fastXSLTMediatorOutputConnectorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getArtifactType() {
 		return artifactTypeEEnum;
 	}
@@ -17170,17 +17074,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		dataMapperMediatorOutputConnectorEClass = createEClass(DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR);
 
-		fastXSLTMediatorEClass = createEClass(FAST_XSLT_MEDIATOR);
-		createEAttribute(fastXSLTMediatorEClass, FAST_XSLT_MEDIATOR__FAST_XSLT_SCHEMA_KEY_TYPE);
-		createEReference(fastXSLTMediatorEClass, FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY);
-		createEReference(fastXSLTMediatorEClass, FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY);
-		createEReference(fastXSLTMediatorEClass, FAST_XSLT_MEDIATOR__INPUT_CONNECTOR);
-		createEReference(fastXSLTMediatorEClass, FAST_XSLT_MEDIATOR__OUTPUT_CONNECTOR);
-
-		fastXSLTMediatorInputConnectorEClass = createEClass(FAST_XSLT_MEDIATOR_INPUT_CONNECTOR);
-
-		fastXSLTMediatorOutputConnectorEClass = createEClass(FAST_XSLT_MEDIATOR_OUTPUT_CONNECTOR);
-
 		// Create enums
 		artifactTypeEEnum = createEEnum(ARTIFACT_TYPE);
 		callMediatorEndpointTypeEEnum = createEEnum(CALL_MEDIATOR_ENDPOINT_TYPE);
@@ -17632,9 +17525,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		dataMapperMediatorEClass.getESuperTypes().add(this.getMediator());
 		dataMapperMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 		dataMapperMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
-		fastXSLTMediatorEClass.getESuperTypes().add(this.getMediator());
-		fastXSLTMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
-		fastXSLTMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(esbDiagramEClass, EsbDiagram.class, "EsbDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -19206,17 +19096,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(dataMapperMediatorInputConnectorEClass, DataMapperMediatorInputConnector.class, "DataMapperMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataMapperMediatorOutputConnectorEClass, DataMapperMediatorOutputConnector.class, "DataMapperMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(fastXSLTMediatorEClass, FastXSLTMediator.class, "FastXSLTMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFastXSLTMediator_FastXsltSchemaKeyType(), this.getKeyType(), "fastXsltSchemaKeyType", null, 0, 1, FastXSLTMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFastXSLTMediator_FastXsltStaticSchemaKey(), this.getRegistryKeyProperty(), null, "fastXsltStaticSchemaKey", null, 0, 1, FastXSLTMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFastXSLTMediator_FastXsltDynamicSchemaKey(), this.getNamespacedProperty(), null, "fastXsltDynamicSchemaKey", null, 0, 1, FastXSLTMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFastXSLTMediator_InputConnector(), this.getFastXSLTMediatorInputConnector(), null, "inputConnector", null, 0, 1, FastXSLTMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFastXSLTMediator_OutputConnector(), this.getFastXSLTMediatorOutputConnector(), null, "outputConnector", null, 0, 1, FastXSLTMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(fastXSLTMediatorInputConnectorEClass, FastXSLTMediatorInputConnector.class, "FastXSLTMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(fastXSLTMediatorOutputConnectorEClass, FastXSLTMediatorOutputConnector.class, "FastXSLTMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(artifactTypeEEnum, ArtifactType.class, "ArtifactType");

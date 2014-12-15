@@ -196,7 +196,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		File mavenProjectPomLocation = project.getFile("pom.xml").getLocation().toFile();
 		MavenProject mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		 version  = mavenProject.getVersion();
-		 //version  = version.replaceAll("-SNAPSHOT$", "");
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-esb-template-plugin",
 				MavenConstants.WSO2_ESB_TEMPLATE_VERSION);

@@ -12,7 +12,7 @@
 			<description>Sequence</description>
 		</wizard>
    </extension>
-    <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
+    <extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"
 			priority="high"
 			id="org.eclipse.ui.navigator.resourceContent"
@@ -39,32 +39,7 @@
 				           </or>
 				  </triggerPoints>
 		</navigatorContent>
-	  </extension>-->
-	 <extension point="org.eclipse.ui.navigator.navigatorContent">    
-            <commonWizard type="new"
-                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact">
-                <enablement>
-                    <or>
-                        <adapt type="org.eclipse.core.resources.IProject">
-                            <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
-                                </adapt>
-                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
-							<test property="org.wso2.developerstudio.projectNature"
-								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
-						</adapt>
-						<adapt type="org.eclipse.core.resources.IFolder">  
-						   <test
-                       forcePluginActivation="true"
-                       property="org.eclipse.core.resources.name"
-                       value="sequences">
-                     </test>                        
-						</adapt>
-                    </or>
-                </enablement>
-            </commonWizard>
-    </extension>
+	  </extension>
    <!--extension point="org.eclipse.ui.popupMenus">
 		<objectContribution objectClass="org.eclipse.core.resources.IFile"
 			id="org.wso2.developerstudio.eclipse.artifact.sequence"
@@ -125,7 +100,7 @@
   		</handler>
 	</extension>
 	<!-- Menu-->
-	<!--<extension point="org.eclipse.ui.menus">
+	<extension point="org.eclipse.ui.menus">
     <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
      <command
            commandId="org.wso2.developerstudio.eclipse.artifact.seqence.create.proxy"
@@ -147,26 +122,8 @@
         </visibleWhen>
      </command>
   </menuContribution>
-</extension>-->
-<extension point="org.eclipse.ui.navigator.navigatorContent">    
-            <commonWizard type="new"
-                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
-                wizardId="org.wso2.developerstudio.eclipse.artifact.synapse.api.wizard">
-                <enablement>
-                    <or>
-                        <adapt type="org.eclipse.core.resources.IProject">
-                            <test property="org.eclipse.core.resources.projectNature"
-                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
-                                </adapt>
-                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
-							<test property="org.wso2.developerstudio.projectNature"
-								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
-						</adapt>
-                    </or>
-                </enablement>
-            </commonWizard>
-    </extension>
-  <!--extension point="org.eclipse.core.resources.natures"
+</extension>
+	<!--extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.sequence.project.nature" name="Sequence Project Nature">
 		<runtime>
 			<run

@@ -52,6 +52,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -117,13 +119,18 @@ import com.google.gson.reflect.TypeToken;
 public class AppfactoryApplicationListView extends ViewPart {
 	
 	public static final String ID = "org.wso2.developerstudio.appfactory.ui.views.AppfactoryView"; //$NON-NLS-1$
+	
 	public static final String REPO_WIZARD_ID = "org.eclipse.egit.ui.internal.clone.GitCloneWizard"; //$NON-NLS-1$
+	
 	public static final String FORKED_REPO_SUFFIX = "_forked";
+	
 	public static final String MAIN_REPO_SUFFIX = "_main";
+	
 	private static final String MAVEN_CMD_INSTALL = "install";
+	
 	private static final String MAVEN_CMD_CLEAN = "clean";
+	
 	private static final String MAVEN_CMD_ECLIPSE = "eclipse:eclipse";
-	private static final String PROJECT_DESCRIPTOR = ".project";
 	
 
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -1074,6 +1081,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 	private Action importAction(final AppVersionInfo info) {
 		Action reposettings = new Action() {
 			public void run() {	
+				getcheckoutJob(info);
 			    ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
 				progressMonitorDialog.create();
 				progressMonitorDialog.open();
@@ -1182,10 +1190,14 @@ public class AppfactoryApplicationListView extends ViewPart {
 		printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_1);
 		monitor.worked(5);	 
 		String localRepo = "";
-		if (info.getLocalRepo() == null || info.getLocalRepo().equals("")) { //$NON-NLS-1$
-			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
-			localRepo = workspace + File.separator + info.getAppName();
-			info.setLocalRepo(localRepo);
+		if(info.getLocalRepo()==null||info.getLocalRepo().equals("")){ //$NON-NLS-1$
+			
+			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();			
+			localRepo = workspace + info.getLocalRepo() + File.separator + info.getAppName();
+			
+			// Add relevant suffix to repo location
+			localRepo += (info.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;		
+		    info.setLocalRepo(localRepo);
 		}
 		
 		monitor.worked(10);	
@@ -1208,7 +1220,55 @@ public class AppfactoryApplicationListView extends ViewPart {
          info.setCheckedout(true);
          broker.send("Projectupdate", null); //$NON-NLS-1$
 	}
+	
+	/*private void openRepoSettingsWizard() {
 
+		IWizardDescriptor descriptor = PlatformUI.getWorkbench()
+				.getNewWizardRegistry().findWizard(REPO_WIZARD_ID);
+		if (descriptor == null) {
+			descriptor = PlatformUI.getWorkbench().getImportWizardRegistry()
+					.findWizard(REPO_WIZARD_ID);
+		}
+		if (descriptor == null) {
+			descriptor = PlatformUI.getWorkbench().getExportWizardRegistry()
+					.findWizard(REPO_WIZARD_ID);
+		}
+		try {
+			if (descriptor != null) {
+				IWizard wizard = descriptor.createWizard();
+				WizardDialog wd = new WizardDialog(parent.getShell(), wizard);
+				wd.setTitle(wizard.getWindowTitle());
+				wd.open();
+			}
+		} catch (Exception e) {
+			 log.error("Wizard invoke error", e);
+		}
+	}
+*/
+
+	/*private void openDSSettingsWizard() {
+
+		IWizardDescriptor descriptor = PlatformUI.getWorkbench()
+				.getNewWizardRegistry().findWizard(REPO_WIZARD_ID);
+		if (descriptor == null) {
+			descriptor = PlatformUI.getWorkbench().getImportWizardRegistry()
+					.findWizard(REPO_WIZARD_ID);
+		}
+		if (descriptor == null) {
+			descriptor = PlatformUI.getWorkbench().getExportWizardRegistry()
+					.findWizard(REPO_WIZARD_ID);
+		}
+		try {
+			if (descriptor != null) {
+				IWizard wizard = descriptor.createWizard();
+				WizardDialog wd = new WizardDialog(parent.getShell(), wizard);
+				wd.setTitle(wizard.getWindowTitle());
+				wd.open();
+			}
+		} catch (Exception e) {
+			 log.error("Wizard invoke error", e); //$NON-NLS-1$
+		}
+	}*/
 	private class AppImportJobJob implements IRunnableWithProgress {
 		
 	AppVersionInfo appInfo;
@@ -1218,43 +1278,54 @@ public class AppfactoryApplicationListView extends ViewPart {
 	  
 		@Override
 		public void run(IProgressMonitor monitor) {
-			String operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_1;
+			String operationText=Messages.AppfactoryApplicationListView_AppImportJob_opMSG_1;
 			monitor.beginTask(operationText, 100);
-			try {
-				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_2;
+			try{
+				operationText=Messages.AppfactoryApplicationListView_AppImportJob_opMSG_2;
 				monitor.subTask(operationText);
 				monitor.worked(10);
-
+				
 				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-
-				if (pomFile.exists()) {
+				
+				if(pomFile.exists())
+				{
 					executeMavenCommands(pomFile, monitor);
 				}
-
-				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
-				                                                                                  appInfo.getLocalRepo() +
-				                                                                                          File.separator +
-				                                                                                          PROJECT_DESCRIPTOR));
-
-				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_3;
+				
+				
+				IProjectDescription description = ResourcesPlugin
+													.getWorkspace()
+													.loadProjectDescription(new Path(appInfo.getLocalRepo() + File.separator + ".project"));
+				
+				operationText=Messages.AppfactoryApplicationListView_AppImportJob_opMSG_3;
 				monitor.subTask(operationText);
-				monitor.worked(10);
+				monitor.worked(10); 
+				
+				String name = description.getName();
+				name += (appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
+				description.setName(name);
 
-				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-				if (!project.exists()) {
-					project.create(monitor);
-					project.open(monitor);
-				}
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
+
+				final IProject project = ResourcesPlugin.getWorkspace()
+						.getRoot().getProject(description.getName());
+				        if(!project.exists()){
+						   project.create(description,monitor);
+						   project.open(monitor);
+				        }	
+				ResourcesPlugin
+				.getWorkspace()
+				.getRoot()
+				.refreshLocal(IResource.DEPTH_INFINITE,
+						monitor);
 				monitor.worked(80);
-
-			} catch (Throwable e) {
-				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_4;
-				monitor.subTask(operationText);
-				monitor.worked(10);
-				log.error("importing failed", e); //$NON-NLS-1$
+				
+			}catch(Throwable e){
+				operationText=Messages.AppfactoryApplicationListView_AppImportJob_opMSG_4;
+				 monitor.subTask(operationText);
+				 monitor.worked(10); 
+				 log.error("importing failed", e); //$NON-NLS-1$
 			}
-
+			
 			monitor.worked(100);
 			monitor.done();
 		}
@@ -1271,41 +1342,48 @@ public class AppfactoryApplicationListView extends ViewPart {
 		public void run(IProgressMonitor monitor) {
 			String operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_1;
 			monitor.beginTask(operationText, 100);
-			try {
+			try{
 				checkout(appInfo, monitor);
-				operationText =
-				                Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_2;
+				operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_2;
 				monitor.subTask(operationText);
 				monitor.worked(5);
-
-				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
-				                                                                                  appInfo.getLocalRepo() +
-				                                                                                          File.separator +
-				                                                                                          PROJECT_DESCRIPTOR)); //$NON-NLS-1$
-
-				operationText = Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
+				
+				IProjectDescription description = ResourcesPlugin
+													.getWorkspace()
+													.loadProjectDescription(new Path(appInfo.getLocalRepo() + File.separator + ".project")); //$NON-NLS-1$
+				
+				operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
 				monitor.subTask(operationText);
-				monitor.worked(5);
-
-				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-				if (!project.exists()) {
-					project.create(new SubProgressMonitor(monitor, 10));
-					project.open(new SubProgressMonitor(monitor, 10));
-				}
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE,
-				                                                      new SubProgressMonitor(monitor, 10));
-
+				monitor.worked(5); 
+				
+				String name = description.getName();
+				name += (appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
+				description.setName(name);
+				
+				final IProject project = ResourcesPlugin.getWorkspace()
+						.getRoot().getProject(description.getName());
+				        if(!project.exists()){
+						   project.create(description,new SubProgressMonitor(monitor, 10));
+						   project.open(new SubProgressMonitor(monitor, 10));
+				        }	
+				ResourcesPlugin
+				.getWorkspace()
+				.getRoot()
+				.refreshLocal(IResource.DEPTH_INFINITE,
+						new SubProgressMonitor(monitor, 10));
+				
 				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-
-				if (monitor.isCanceled()) {
-					throw new InterruptedException(Messages.ImportingCancelled_Error);
-				}
-
-				if (pomFile.exists()) {
+				
+				 if (monitor.isCanceled()){
+				        throw new InterruptedException(Messages.ImportingCancelled_Error);
+				 }
+				
+				if(pomFile.exists())
+				{
 					executeMavenCommands(pomFile, monitor);
 				}
-
-			} catch(OperationCanceledException e) {
+				
+			}catch(OperationCanceledException e){
 				
 				 printErrorLog(e.getMessage());
 				 log.error("importing failed", e); //$NON-NLS-1$

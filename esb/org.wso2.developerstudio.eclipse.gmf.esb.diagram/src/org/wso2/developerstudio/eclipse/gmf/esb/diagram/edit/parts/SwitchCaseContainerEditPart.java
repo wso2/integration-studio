@@ -65,14 +65,12 @@ public class SwitchCaseContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new SwitchCaseContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new SwitchCaseContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
@@ -87,8 +85,7 @@ public class SwitchCaseContainerEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -132,17 +129,12 @@ public class SwitchCaseContainerEditPart extends ShapeNodeEditPart {
 		if (childEditPart instanceof SwitchMediatorEditPart) {
 			SwitchMediatorEditPart switchMediatorEditPart = (SwitchMediatorEditPart) childEditPart;
 			if (switchMediatorEditPart.caseOutputConnectors.size() != 0) {
-				BorderItemLocator locator = new FixedBorderItemLocator(
-						this.getFigure(),
-						switchMediatorEditPart.caseOutputConnectors.get(0),
-						PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(this.getFigure(),
+						switchMediatorEditPart.caseOutputConnectors.get(0), PositionConstants.WEST,
+						0.5);
 				if (switchMediatorEditPart.caseOutputConnectors.get(0) != null) {
-					switchMediatorEditPart
-							.getBorderedFigure()
-							.getBorderItemContainer()
-							.add(switchMediatorEditPart.caseOutputConnectors
-									.get(0),
-									locator);
+					switchMediatorEditPart.getBorderedFigure().getBorderItemContainer()
+							.add(switchMediatorEditPart.caseOutputConnectors.get(0), locator);
 				}
 			}
 		} else {
@@ -152,8 +144,8 @@ public class SwitchCaseContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	protected void addChildVisual(EditPart childEditPart, int index) {
-		refreshOutputConnector(((SwitchMediatorEditPart) childEditPart
-				.getParent().getParent().getParent().getParent()));
+		refreshOutputConnector(((SwitchMediatorEditPart) childEditPart.getParent().getParent()
+				.getParent().getParent()));
 		super.addChildVisual(childEditPart, -1);
 	}
 
@@ -254,11 +246,9 @@ public class SwitchCaseContainerEditPart extends ShapeNodeEditPart {
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setAlpha(0); //to make this transparent
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0),
-					getMapMode().DPtoLP(0)));
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0), getMapMode().DPtoLP(0)));
 			//Fixing TOOLS-1972.
-			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(80),
-					getMapMode().DPtoLP(50)));
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(80), getMapMode().DPtoLP(50)));
 			this.setLineStyle(Graphics.LINE_DASH);
 			this.setBackgroundColor(THIS_BACK);
 		}

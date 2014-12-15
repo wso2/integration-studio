@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Carbon UI Bundle Project Plugin
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.carbon.uibundle;singleton:=true
-Bundle-Version: 3.7.1
+Bundle-Version: 3.8.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.carbon.uibundle.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

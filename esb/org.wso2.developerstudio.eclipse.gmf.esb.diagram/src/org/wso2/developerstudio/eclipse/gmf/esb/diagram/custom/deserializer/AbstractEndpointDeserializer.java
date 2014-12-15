@@ -110,12 +110,7 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 			executeSetValueCommand(ABSTRACT_END_POINT__RELIABLE_MESSAGING_ENABLED, true);
 			
 			RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			String wsRMPolicyKey= endpoint.getDefinition().getWsRMPolicyKey();
-			if(wsRMPolicyKey !=null){
-				regkey.setKeyValue(wsRMPolicyKey);
-			}else{
-				regkey.setKeyValue("");
-			}			
+			regkey.setKeyValue(endpoint.getDefinition().getWsRMPolicyKey());
 			executeSetValueCommand(ABSTRACT_END_POINT__RELIABLE_MESSAGING_POLICY, regkey);
 		}
 		
@@ -123,12 +118,7 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 			executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_ENABLED, true);
 			
 			RegistryKeyProperty regkey = EsbFactory.eINSTANCE.createRegistryKeyProperty();
-			String wsSecPolicyKey = endpoint.getDefinition().getWsSecPolicyKey();
-			if(wsSecPolicyKey != null){
-				regkey.setKeyValue(wsSecPolicyKey);
-			}else{
-				regkey.setKeyValue("");
-			}			
+			regkey.setKeyValue(endpoint.getDefinition().getWsSecPolicyKey());
 			executeSetValueCommand(ABSTRACT_END_POINT__SECURITY_POLICY, regkey);
 		}
 		

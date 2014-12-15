@@ -43,7 +43,6 @@ import org.wso2.developerstudio.eclipse.carbonserver30.util.CarbonServer30Utils;
 import org.wso2.developerstudio.eclipse.carbonserver30.util.CarbonServerConstants;
 import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
-import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
 
 public class CarbonOperationsManager30 implements ICarbonOperationManager {
 
@@ -456,7 +455,7 @@ public class CarbonOperationsManager30 implements ICarbonOperationManager {
 			if (serverPort.getProtocol().equalsIgnoreCase("http"))
 				httpPort=serverPort.getPort();
 		}
-		String serviceWSDLUrl="http://localhost:"+httpPort+"/"+CarbonServerUtils.getServicePath()+"/"+serviceName+"?wsdl";
+		String serviceWSDLUrl="http://localhost:"+httpPort+"/services/"+serviceName+"?wsdl";
 		URL url=null;
 		try {
 			url = new URL(serviceWSDLUrl);
@@ -473,7 +472,7 @@ public class CarbonOperationsManager30 implements ICarbonOperationManager {
 			if (serverPort.getProtocol().equalsIgnoreCase("http"))
 				httpPort=serverPort.getPort();
 		}
-		String serviceWSDLUrl="http://localhost:"+httpPort+"/"+CarbonServerUtils.getServicePath()+"/"+serviceName+"?tryit";
+		String serviceWSDLUrl="http://localhost:"+httpPort+"/services/"+serviceName+"?tryit";
 		URL url=null;
 		try {
 			url = new URL(serviceWSDLUrl);

@@ -70,8 +70,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorIt
 /**
  * @generated
  */
-public class EsbDiagramEditor extends DiagramDocumentEditor implements
-		IGotoMarker {
+public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMarker {
 
 	private EsbMultiPageEditor esbEditor;
 	/**
@@ -148,8 +147,7 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 	 * @generated
 	 */
 	protected IDocumentProvider getDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
+		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
 			return EsbDiagramEditorPlugin.getInstance().getDocumentProvider();
 		}
 		return super.getDocumentProvider(input);
@@ -161,11 +159,11 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 	public TransactionalEditingDomain getEditingDomain() {
 		IDocument document = null;
 		if (getDocumentProvider() != null) {
-			document = getEditorInput() != null ? getDocumentProvider()
-					.getDocument(getEditorInput()) : null;
+			document = getEditorInput() != null ? getDocumentProvider().getDocument(
+					getEditorInput()) : null;
 		} else {
-			document = getEditorInput() != null ? getDocumentProvider(
-					getEditorInput()).getDocument(getEditorInput()) : null;
+			document = getEditorInput() != null ? getDocumentProvider(getEditorInput())
+					.getDocument(getEditorInput()) : null;
 		}
 		if (document instanceof IDiagramDocument) {
 			return ((IDiagramDocument) document).getEditingDomain();
@@ -177,10 +175,8 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 	 * @generated
 	 */
 	protected void setDocumentProvider(IEditorInput input) {
-		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
-			setDocumentProvider(EsbDiagramEditorPlugin.getInstance()
-					.getDocumentProvider());
+		if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
+			setDocumentProvider(EsbDiagramEditorPlugin.getInstance().getDocumentProvider());
 		} else {
 			super.setDocumentProvider(input);
 		}
@@ -214,8 +210,8 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 		Shell shell = getSite().getShell();
 		IEditorInput input = getEditorInput();
 		SaveAsDialog dialog = new SaveAsDialog(shell);
-		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input)
-				.getFile() : null;
+		IFile original = input instanceof IFileEditorInput ? ((IFileEditorInput) input).getFile()
+				: null;
 		if (original != null) {
 			dialog.setOriginalFile(original);
 		}
@@ -226,8 +222,7 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 			return;
 		}
 		if (provider.isDeleted(input) && original != null) {
-			String message = NLS.bind(
-					Messages.EsbDiagramEditor_SavingDeletedFile,
+			String message = NLS.bind(Messages.EsbDiagramEditor_SavingDeletedFile,
 					original.getName());
 			dialog.setErrorMessage(null);
 			dialog.setMessage(message, IMessageProvider.WARNING);
@@ -251,13 +246,11 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 		// Check if the editor is already open
 		IEditorMatchingStrategy matchingStrategy = getEditorDescriptor()
 				.getEditorMatchingStrategy();
-		IEditorReference[] editorRefs = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences();
+		IEditorReference[] editorRefs = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().getEditorReferences();
 		for (int i = 0; i < editorRefs.length; i++) {
 			if (matchingStrategy.matches(editorRefs[i], newInput)) {
-				MessageDialog.openWarning(shell,
-						Messages.EsbDiagramEditor_SaveAsErrorTitle,
+				MessageDialog.openWarning(shell, Messages.EsbDiagramEditor_SaveAsErrorTitle,
 						Messages.EsbDiagramEditor_SaveAsErrorMessage);
 				return;
 			}
@@ -265,17 +258,14 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 		boolean success = false;
 		try {
 			provider.aboutToChange(newInput);
-			getDocumentProvider(newInput).saveDocument(progressMonitor,
-					newInput,
+			getDocumentProvider(newInput).saveDocument(progressMonitor, newInput,
 					getDocumentProvider().getDocument(getEditorInput()), true);
 			success = true;
 		} catch (CoreException x) {
 			IStatus status = x.getStatus();
 			if (status == null || status.getSeverity() != IStatus.CANCEL) {
-				ErrorDialog.openError(shell,
-						Messages.EsbDiagramEditor_SaveErrorTitle,
-						Messages.EsbDiagramEditor_SaveErrorMessage,
-						x.getStatus());
+				ErrorDialog.openError(shell, Messages.EsbDiagramEditor_SaveErrorTitle,
+						Messages.EsbDiagramEditor_SaveErrorMessage, x.getStatus());
 			}
 		} finally {
 			provider.changed(newInput);
@@ -322,8 +312,7 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 		super.configureGraphicalViewer();
 
 		IDiagramGraphicalViewer viewer = getDiagramGraphicalViewer();
-		KeyHandler viewerKeyHandler = new CustomDiagramGraphicalViewerKeyHandler(
-				this, viewer);
+		KeyHandler viewerKeyHandler = new CustomDiagramGraphicalViewerKeyHandler(this, viewer);
 
 		KeyHandler parentHandler = getKeyHandler();
 
@@ -333,28 +322,24 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 		parentHandler.remove(KeyStroke.getPressed('-', 0x2d, SWT.CTRL));
 
 		viewerKeyHandler.setParent(getKeyHandler());
-		viewer.setKeyHandler(new DirectEditKeyHandler(viewer)
-				.setParent(viewerKeyHandler));
+		viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
 
 		// Define key handler for palette viewer.
-		PaletteViewer paletteViewer = getPaletteViewerProvider()
-				.getEditDomain().getPaletteViewer();
-		KeyHandler paletteViewerKeyHandler = new CustomPaletteViewerKeyHandler(
-				paletteViewer);
+		PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
+		KeyHandler paletteViewerKeyHandler = new CustomPaletteViewerKeyHandler(paletteViewer);
 		paletteViewer.setKeyHandler(paletteViewerKeyHandler);
 
 		//This enables the property view to be informed of selection changes in our graphical view, 
 		//when our view is the active workbench part.
 		esbEditor.getSite().setSelectionProvider(viewer);
 
-		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(
-				this, getDiagramGraphicalViewer());
+		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this,
+				getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().setContextMenu(provider);
-		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU,
-				provider, getDiagramGraphicalViewer());
+		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider,
+				getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().addDropTargetListener(
-				new CustomPaletteToolTransferDropTargetListener(
-						getGraphicalViewer()));
+				new CustomPaletteToolTransferDropTargetListener(getGraphicalViewer()));
 
 	}
 
@@ -368,23 +353,20 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 
 	public void focusToolBar() {
 
-		PaletteViewer paletteViewer = getPaletteViewerProvider()
-				.getEditDomain().getPaletteViewer();
+		PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
 		DrawerEditPart mediatorsGroupEditpart = null;
 		//ToolEntryEditPart callMediatorToolEntryEditpart = null;
 		Boolean mediatorsGroupFound = false;
 		//Boolean callMediatorFound = false;
 
-		for (Iterator ite = paletteViewer.getEditPartRegistry().values()
-				.iterator(); ite.hasNext();) {
+		for (Iterator ite = paletteViewer.getEditPartRegistry().values().iterator(); ite.hasNext();) {
 
 			Object ep = ite.next();
 			if (ep instanceof DrawerEditPart && !mediatorsGroupFound) {
 
 				mediatorsGroupEditpart = (DrawerEditPart) ep;
 				if (mediatorsGroupEditpart.getModel() instanceof PaletteDrawer) {
-					PaletteDrawer paletteDrawer = (PaletteDrawer) mediatorsGroupEditpart
-							.getModel();
+					PaletteDrawer paletteDrawer = (PaletteDrawer) mediatorsGroupEditpart.getModel();
 					if (paletteDrawer.getId().equals("createMediators2Group")) {
 						mediatorsGroupFound = true;
 					}

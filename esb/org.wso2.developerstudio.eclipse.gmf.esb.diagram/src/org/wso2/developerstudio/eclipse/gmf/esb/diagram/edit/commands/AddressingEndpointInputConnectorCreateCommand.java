@@ -18,14 +18,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 /**
  * @generated
  */
-public class AddressingEndpointInputConnectorCreateCommand extends
-		EditElementCommand {
+public class AddressingEndpointInputConnectorCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public AddressingEndpointInputConnectorCreateCommand(
-			CreateElementRequest req) {
+	public AddressingEndpointInputConnectorCreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -56,9 +54,10 @@ public class AddressingEndpointInputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		AddressingEndpointInputConnector newElement = EsbFactory.eINSTANCE.createAddressingEndpointInputConnector();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		AddressingEndpointInputConnector newElement = EsbFactory.eINSTANCE
+				.createAddressingEndpointInputConnector();
 
 		AddressingEndpoint owner = (AddressingEndpoint) getElementToEdit();
 		owner.setInputConnector(newElement);
@@ -73,10 +72,10 @@ public class AddressingEndpointInputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected void doConfigure(AddressingEndpointInputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
+				elementType);
 		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
 		ICommand configureCommand = elementType.getEditCommand(configureRequest);

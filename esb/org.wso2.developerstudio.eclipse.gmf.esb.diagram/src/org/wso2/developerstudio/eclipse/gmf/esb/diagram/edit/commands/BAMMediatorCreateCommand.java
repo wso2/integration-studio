@@ -50,8 +50,8 @@ public class BAMMediatorCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		BAMMediator newElement = EsbFactory.eINSTANCE.createBAMMediator();
 
 		MediatorFlow owner = (MediatorFlow) getElementToEdit();
@@ -66,8 +66,8 @@ public class BAMMediatorCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(BAMMediator newElement,
-			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+	protected void doConfigure(BAMMediator newElement, IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
 		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
 				elementType);

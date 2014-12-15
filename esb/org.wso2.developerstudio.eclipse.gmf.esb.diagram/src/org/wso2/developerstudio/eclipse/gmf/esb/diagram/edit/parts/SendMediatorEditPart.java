@@ -66,8 +66,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.END_P
 /**
  * @generated NOT
  */
-public class SendMediatorEditPart extends
-		SingleCompartmentComplexFiguredAbstractMediator {
+public class SendMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
 
 	public IFigure endpointOutputConnector;
 	/**
@@ -91,21 +90,15 @@ public class SendMediatorEditPart extends
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new SendMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new SendMediatorCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SendMediatorItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new SendMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -123,8 +116,7 @@ public class SendMediatorEditPart extends
 				case SendMediatorOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -162,8 +154,8 @@ public class SendMediatorEditPart extends
 		}	
 		}*/
 		if (notification.getFeature() instanceof EAttribute) {
-			if (EsbPackage.eINSTANCE.getSendMediator_SkipSerialization()
-					.equals(notification.getFeature())) {
+			if (EsbPackage.eINSTANCE.getSendMediator_SkipSerialization().equals(
+					notification.getFeature())) {
 				updateEndpointInlineProperty(notification);
 			}
 		}
@@ -175,8 +167,7 @@ public class SendMediatorEditPart extends
 	 * @param notification
 	 */
 	private void updateEndpointInlineProperty(Notification notification) {
-		if (notification.getNewBooleanValue() != notification
-				.getOldBooleanValue()) {
+		if (notification.getNewBooleanValue() != notification.getOldBooleanValue()) {
 			IGraphicalEditPart mediatorFlow = getChildBySemanticHint(EsbVisualIDRegistry
 					.getType(MediatorFlow19EditPart.VISUAL_ID));
 			if (mediatorFlow != null) {
@@ -184,22 +175,17 @@ public class SendMediatorEditPart extends
 						.getChildBySemanticHint(EsbVisualIDRegistry
 								.getType(MediatorFlowMediatorFlowCompartment19EditPart.VISUAL_ID));
 				if (mediatorFlowCompartment != null) {
-					Iterator<?> iterator = mediatorFlowCompartment
-							.getChildren().iterator();
+					Iterator<?> iterator = mediatorFlowCompartment.getChildren().iterator();
 					while (iterator.hasNext()) {
 						Object next = iterator.next();
 						if (next instanceof AbstractEndpoint) {
-							SetRequest reqSet = new SetRequest(
-									getEditingDomain(),
-									((View) ((AbstractEndpoint) next)
-											.getModel()).getElement(),
-									END_POINT__IN_LINE,
-									notification.getNewBooleanValue());
-							SetValueCommand operation = new SetValueCommand(
-									reqSet);
+							SetRequest reqSet = new SetRequest(getEditingDomain(),
+									((View) ((AbstractEndpoint) next).getModel()).getElement(),
+									END_POINT__IN_LINE, notification.getNewBooleanValue());
+							SetValueCommand operation = new SetValueCommand(reqSet);
 							if (operation.canExecute()) {
-								getDiagramEditDomain().getDiagramCommandStack()
-										.execute(new ICommandProxy(operation));
+								getDiagramEditDomain().getDiagramCommandStack().execute(
+										new ICommandProxy(operation));
 							}
 							break;
 						}
@@ -217,8 +203,7 @@ public class SendMediatorEditPart extends
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected)
-						&& (this.getBounds().getLocation().x != 0 && this
-								.getBounds().getLocation().y != 0)) {
+						&& (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 					connected = true;
@@ -237,31 +222,26 @@ public class SendMediatorEditPart extends
 	protected boolean addFixedChild(EditPart childEditPart) {
 
 		if (childEditPart instanceof SendMediatorDescriptionEditPart) {
-			((SendMediatorDescriptionEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureSendMediatorPropertyValue());
+			((SendMediatorDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getFigureSendMediatorPropertyValue());
 			return true;
 		}
 		if (childEditPart instanceof SendMediatorInputConnectorEditPart) {
 
 			IFigure borderItemFigure = ((SendMediatorInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 
 		} else if (childEditPart instanceof SendMediatorOutputConnectorEditPart) {
 
 			IFigure borderItemFigure = ((SendMediatorOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.EAST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			borderItemFigure.setEnabled(false);
 
 			return true;
@@ -425,8 +405,7 @@ public class SendMediatorEditPart extends
 			layoutThis.setVertical(false);
 
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170),
-					getMapMode().DPtoLP(100)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(100)));
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();

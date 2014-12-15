@@ -359,15 +359,6 @@ public interface DsFactory extends EFactory {
 	WorkSheetNumber createWorkSheetNumber();
 
 	/**
-	 * Returns a new object of class '<em>Policy</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Policy</em>'.
-	 * @generated
-	 */
-	Policy createPolicy();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -19,19 +19,14 @@ public interface DetailSectionCustomUiConstants {
 	public String DATA_SERVICE_NAME = "Data Service Name";
 	public String DATA_SERVICE_GROUP = "Data Service Group";
 	public String DATA_SERVICE_NAMESPACE = "Data Service Namespace";
-	
 	public String BASE_URI = "Base URI";
 	public String ENABLE_BATCH_REQUESTS = "Enable Batch Requests";
 	public String ENABLE_BOX_CARRING = "Enable Boxcarring";
 	public String ENABLE_DTP = "Enable Distributed Transactions";
-	
 	public String DISABLE_STREAMING = "Disable Streaming";
 	public String SERVICE_STATUS = "Service Status";
 
 	public String DATA_SERVICE_DESCRIPTION = "Description";
-	public String DATA_SERVICE_TRANSPORTS = "Transports";
-	public String ENABLE_SECURITY = "Enable Security";
-	public String DATA_SERVICE_POLICY = "Policy";
 
 	public String DATA_SOURCE_CONFIGURATION_ID = "DataSource Id";
 

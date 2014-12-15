@@ -1,6 +1,5 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.part;
 
-import org.eclipse.gmf.runtime.common.ui.action.global.GlobalActionId;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramActionBarContributor;
 import org.eclipse.jface.action.IMenuManager;
@@ -33,16 +32,13 @@ public class EsbDiagramActionBarContributor extends DiagramActionBarContributor 
 	 */
 	public void init(IActionBars bars, IWorkbenchPage page) {
 		super.init(bars, page);
-		// registering  global save action
-		bars.setGlobalActionHandler(GlobalActionId.SAVE, null);
 		// print preview
 		IMenuManager fileMenu = bars.getMenuManager().findMenuUsingPath(
 				IWorkbenchActionConstants.M_FILE);
 		assert fileMenu != null;
 		fileMenu.remove("pageSetupAction"); //$NON-NLS-1$
 		// Removing Diagram menu from ESB editor.
-		IMenuManager diagramMenu = bars.getMenuManager().findMenuUsingPath(
-				ActionIds.MENU_DIAGRAM);
+		IMenuManager diagramMenu = bars.getMenuManager().findMenuUsingPath(ActionIds.MENU_DIAGRAM);
 		assert diagramMenu != null;
 		bars.getMenuManager().remove("diagramMenu");
 

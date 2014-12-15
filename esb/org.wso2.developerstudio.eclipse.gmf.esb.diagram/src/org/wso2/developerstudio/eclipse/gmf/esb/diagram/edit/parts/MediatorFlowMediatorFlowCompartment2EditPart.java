@@ -51,20 +51,17 @@ public class MediatorFlowMediatorFlowCompartment2EditPart extends
 	 * @generated NOT
 	 */
 	public IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super
-				.createFigure();
+		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
 		result.setTitle("Case");
 		result.setTitleVisibility(true);
 		/*
 		 * Override default border.
 		 * Fixing TOOLS-1864.
 		 */
-		LineBorder border = new LineBorder(new Color(null, 0, 0, 204), 1,
-				SWT.BORDER_DASH);
+		LineBorder border = new LineBorder(new Color(null, 0, 0, 204), 1, SWT.BORDER_DASH);
 		result.setBorder(border);
 		result.setToolTip("Case");
-		ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(
-				false);
+		ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(false);
 		layoutManager.setSpacing(-15);
 		result.setLayoutManager(layoutManager);
 		return result;
@@ -75,15 +72,11 @@ public class MediatorFlowMediatorFlowCompartment2EditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new MediatorFlowMediatorFlowCompartment2ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new MediatorFlowMediatorFlowCompartment2CanonicalEditPolicy());
 	}
@@ -94,8 +87,7 @@ public class MediatorFlowMediatorFlowCompartment2EditPart extends
 
 		if (child instanceof SwitchMediatorEditPart) {
 			SwitchMediatorEditPart switchMediatorEditPart = (SwitchMediatorEditPart) child;
-			SwitchMediatorUtils.addCaseBranchInitially(switchMediatorEditPart,
-					getEditingDomain());
+			SwitchMediatorUtils.addCaseBranchInitially(switchMediatorEditPart, getEditingDomain());
 		}
 
 	}

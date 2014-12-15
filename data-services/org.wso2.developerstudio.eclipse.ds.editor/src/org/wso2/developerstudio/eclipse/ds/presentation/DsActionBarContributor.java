@@ -180,7 +180,7 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 
 	/** The query action. */
 	private IAction queryAction;
-	
+
 	/** The query property group action. */
 	private IAction queryPropertyGroupAction;
 
@@ -231,8 +231,6 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 	private final Shell shell = new Shell();
 
 	private DSAction descriptionAction;
-	
-	private DSAction policyAction;
 
 	/** The data source configuration instance. */
 	private DataSourceConfiguration config;
@@ -545,10 +543,6 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 				descriptionAction =
 				                    new DSAction(selection, domain, newChildDescriptors,
 				                                 DSActionConstants.ADD_DESCRIPTION_ACTION);
-				
-				policyAction =
-	                    new DSAction(selection, domain, newChildDescriptors,
-	                                 DSActionConstants.ADD_POLICY_ACTION);
 
 				queryAction =
 				              new DSAction(selection, domain, newChildDescriptors,
@@ -860,7 +854,6 @@ public class DsActionBarContributor extends EditingDomainActionBarContributor im
 			menuManager.insertBefore("edit", eventTriggerAction);
 			menuManager.insertBefore("edit", operationAction);
 			menuManager.insertBefore("edit", resourceAction);
-			menuManager.insertBefore("edit", policyAction);
 			generateDataSourceMenu = false;
 		}
 

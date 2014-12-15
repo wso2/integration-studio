@@ -294,12 +294,6 @@ public class DsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DsPackage.POLICY: {
-				Policy policy = (Policy)theEObject;
-				T result = casePolicy(policy);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -856,21 +850,6 @@ public class DsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWorkSheetNumber(WorkSheetNumber object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Policy</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Policy</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePolicy(Policy object) {
 		return null;
 	}
 

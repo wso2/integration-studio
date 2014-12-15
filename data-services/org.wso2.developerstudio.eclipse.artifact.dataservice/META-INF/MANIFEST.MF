@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DataService
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.artifact.dataservice;singleton:=true
-Bundle-Version: 3.7.1
+Bundle-Version: 3.8.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.dataservice.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -15,20 +15,14 @@ Import-Package: org.apache.axiom.om,
  org.codehaus.plexus.util.xml,
  org.eclipse.jdt.core,
  org.eclipse.ui.ide,
- org.wso2.developerstudio.eclipse.capp.core.artifacts.manager,
- org.wso2.developerstudio.eclipse.capp.core.model,
  org.wso2.developerstudio.eclipse.capp.maven.sample,
  org.wso2.developerstudio.eclipse.capp.maven.utils,
- org.wso2.developerstudio.eclipse.ds.presentation.ui,
- org.wso2.developerstudio.eclipse.general.project.dialogs,
  org.wso2.developerstudio.eclipse.greg.base.model,
  org.wso2.developerstudio.eclipse.greg.base.persistent,
  org.wso2.developerstudio.eclipse.greg.base.ui.dialog,
- org.wso2.developerstudio.eclipse.greg.core.interfaces,
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.developerstudio.eclipse.maven.util,
  org.wso2.developerstudio.eclipse.platform.core.exception,
- org.wso2.developerstudio.eclipse.platform.core.mediatype,
  org.wso2.developerstudio.eclipse.platform.core.model,
  org.wso2.developerstudio.eclipse.platform.core.nature,
  org.wso2.developerstudio.eclipse.platform.core.project.export,

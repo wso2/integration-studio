@@ -57,6 +57,7 @@ public class XSLTMediatorTransformer extends AbstractEsbNodeTransformer {
 		// TODO Auto-generated method stub
 		sequence.addChild(createXSLTMediator(subject));
 		doTransformWithinSequence(information,((XSLTMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
+		
 	}
 	
 	private org.apache.synapse.mediators.transform.XSLTMediator createXSLTMediator(EsbNode subject) throws Exception{

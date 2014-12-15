@@ -3,6 +3,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers;
 /**
  * @generated
  */
-public class AddressingEndpointInputConnectorEditHelper extends
-		EsbBaseEditHelper {
+public class AddressingEndpointInputConnectorEditHelper extends EsbBaseEditHelper {
 }

@@ -82,7 +82,6 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject project;
-	private String version;
 
 	public EndpointProjectCreationWizard() {
 		this.epModel = new EndpointModel();
@@ -103,7 +102,6 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		try {
 			epModel = (EndpointModel) getModel();
 			project = epModel.getEndpointSaveLocation().getProject();
-			version = MavenUtils.getMavenProject(project.getFile("pom.xml").getLocation().toFile()).getVersion();
 	
 			if(epModel.getSelectedOption_DynamicEP()){
 				createDynamicEndpointArtifact(epModel.getEndpointSaveLocation(),epModel);
@@ -215,7 +213,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 					 
 			ESBArtifact artifact = new ESBArtifact();
 			artifact.setName(epModel.getEpName());
-			artifact.setVersion(version);
+			artifact.setVersion("1.0.0");
 			artifact.setType("synapse/endpoint");
 			artifact.setServerRole("EnterpriseServiceBus");
 			artifact.setGroupId(groupId);
@@ -237,7 +235,9 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 		addGeneralProjectPlugin(project);
 		File pomLocation = project.getFile("pom.xml").getLocation().toFile();
 		String groupId = getMavenGroupId(pomLocation) + ".resource";
-		//version  = version.replaceAll("-SNAPSHOT$", "");
+		 MavenProject mavenProject = MavenUtils.getMavenProject(pomLocation);
+		 String version = mavenProject.getVersion();
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		 
 		String registryPath = model.getDynamicEpRegistryPath()
 				.replaceAll("^conf:", "/_system/config")
@@ -302,7 +302,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 
 		RegistryArtifact artifact = new RegistryArtifact();
 		artifact.setName(epModel.getEpName());
-		artifact.setVersion(version);
+		artifact.setVersion("1.0.0");
 		artifact.setType("registry/resource");
 		artifact.setServerRole("EnterpriseServiceBus");
 		artifact.setGroupId(groupId);
@@ -457,7 +457,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	private ESBArtifact createArtifactxml(String location, String artifactName,String groupId) {
 		ESBArtifact artifact=new ESBArtifact();
 		artifact.setName(artifactName);
-		artifact.setVersion(version);
+		artifact.setVersion("1.0.0");
 		artifact.setType("synapse/endpoint");
 		artifact.setServerRole("EnterpriseServiceBus");
 		artifact.setGroupId(groupId);

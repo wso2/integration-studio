@@ -63,8 +63,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated NOT
  */
-public class CloneMediatorEditPart extends
-		MultipleCompartmentComplexFiguredAbstractMediator {
+public class CloneMediatorEditPart extends MultipleCompartmentComplexFiguredAbstractMediator {
 
 	private int activeCount = 0;
 
@@ -107,12 +106,11 @@ public class CloneMediatorEditPart extends
 	public void notifyChanged(Notification notification) {
 		super.notifyChanged(notification);
 		// Fixing TOOLS-1839.
-		if (notification.getEventType() == Notification.SET && activeCount == 1
-				&& !reorderdOnUndo && !reversed) {
+		if (notification.getEventType() == Notification.SET && activeCount == 1 && !reorderdOnUndo
+				&& !reversed) {
 			EObject parentContainer = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (this)
 					.getModel()).getElement();
-			if (((CloneMediator) parentContainer).getTargetsOutputConnector()
-					.size() > 1) {
+			if (((CloneMediator) parentContainer).getTargetsOutputConnector().size() > 1) {
 				CloneMediatorUtils.reorderWhenForward(this);
 				reorderdOnUndo = true;
 			}
@@ -123,21 +121,15 @@ public class CloneMediatorEditPart extends
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new CloneMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new CloneMediatorCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new CloneMediatorItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new CloneMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -156,8 +148,7 @@ public class CloneMediatorEditPart extends
 				case CloneMediatorTargetOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -183,8 +174,7 @@ public class CloneMediatorEditPart extends
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected)
-						&& (this.getBounds().getLocation().x != 0 && this
-								.getBounds().getLocation().y != 0)) {
+						&& (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 					connected = true;
@@ -207,29 +197,24 @@ public class CloneMediatorEditPart extends
 		float outputCount = 0;
 		float outputPosition = 0;
 		if (childEditPart instanceof CloneMediatorCloneIDEditPart) {
-			((CloneMediatorCloneIDEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureCloneMediatorPropertyValue());
+			((CloneMediatorCloneIDEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getFigureCloneMediatorPropertyValue());
 			return true;
 		}
 		if (childEditPart instanceof CloneMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((CloneMediatorInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof CloneMediatorOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((CloneMediatorOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.EAST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 
@@ -314,21 +299,17 @@ public class CloneMediatorEditPart extends
 		}
 		if (childEditPart instanceof CloneMediatorInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((CloneMediatorInputConnectorEditPart) childEditPart)
-							.getFigure());
+					((CloneMediatorInputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof CloneMediatorOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((CloneMediatorOutputConnectorEditPart) childEditPart)
-							.getFigure());
+					((CloneMediatorOutputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof CloneMediatorTargetOutputConnectorEditPart) {
-			getBorderedFigure()
-					.getBorderItemContainer()
-					.remove(((CloneMediatorTargetOutputConnectorEditPart) childEditPart)
-							.getFigure());
+			getBorderedFigure().getBorderItemContainer().remove(
+					((CloneMediatorTargetOutputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -480,8 +461,7 @@ public class CloneMediatorEditPart extends
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(false);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170),
-					getMapMode().DPtoLP(100)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(100)));
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();

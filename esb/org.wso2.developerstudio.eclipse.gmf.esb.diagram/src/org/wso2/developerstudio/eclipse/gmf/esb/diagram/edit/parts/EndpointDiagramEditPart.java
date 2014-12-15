@@ -64,11 +64,11 @@ public class EndpointDiagramEditPart extends ShapeNodeEditPart {
 
 	private void disableUnnecessaryToolPaletteItems() {
 		/* disabling Tool item from palette*/
-		PaletteContainer nodes = ((PaletteContainer) getEditDomain()
-				.getPaletteViewer().getPaletteRoot().getChildren().get(1));
+		PaletteContainer nodes = ((PaletteContainer) getEditDomain().getPaletteViewer()
+				.getPaletteRoot().getChildren().get(1));
 		nodes.setVisible(false);
-		PaletteContainer mediators = ((PaletteContainer) getEditDomain()
-				.getPaletteViewer().getPaletteRoot().getChildren().get(2));
+		PaletteContainer mediators = ((PaletteContainer) getEditDomain().getPaletteViewer()
+				.getPaletteRoot().getChildren().get(2));
 		mediators.setVisible(false);
 	}
 
@@ -79,8 +79,7 @@ public class EndpointDiagramEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}

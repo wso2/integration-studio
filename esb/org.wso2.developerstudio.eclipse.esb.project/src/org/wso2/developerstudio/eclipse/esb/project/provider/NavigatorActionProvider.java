@@ -80,7 +80,6 @@ public class NavigatorActionProvider extends CommonActionProvider {
 	static{
 		prefixMap.put("application/vnd.wso2.sequence","sequence_");
 		prefixMap.put("application/vnd.wso2.esb.endpoint","endpoint_");
-		prefixMap.put("application/vnd.wso2.esb.localentry", "localentry_");
 		
 	}
 	@Override
@@ -162,7 +161,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 						}else{
 							String location=selection.getLocation().toOSString();				
 							String source = FileUtils.getContentAsString(new File(location));
-							String name =selection.getName();		
+							String name =selection.getName().split("\\.")[0];													
 							String fullPath=selection.getFullPath().removeLastSegments(1).toOSString()+"/";
 							Openable openable = ESBGraphicalEditor.getOpenable();
 							openable.editorOpen(name,type[0],fullPath+type[1]+"_", source);

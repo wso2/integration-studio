@@ -28,7 +28,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
-import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
@@ -110,7 +109,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.EnrichMedia
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.EntitlementMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.EventMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.FailoverEndPointTransformer;
-import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.FastXSLTMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.FaultMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.FilterMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.HTTPEndPointTransformer;
@@ -178,7 +176,6 @@ public class EsbTransformerRegistry {
 		addTransformer(PropertyMediator.class, new PropertyMediatorTransformer());
 		addTransformer(EnrichMediator.class, new EnrichMediatorTransformer());
 		addTransformer(XSLTMediator.class, new XSLTMediatorTransformer());
-		addTransformer(FastXSLTMediator.class, new FastXSLTMediatorTransformer());
 		addTransformer(SwitchMediator.class, new SwitchMediatorTransformer());
 		addTransformer(MessageMediator.class, new MessageMediatorTransformer());
 		addTransformer(ClassMediator.class, new ClassMediatorTransformer());

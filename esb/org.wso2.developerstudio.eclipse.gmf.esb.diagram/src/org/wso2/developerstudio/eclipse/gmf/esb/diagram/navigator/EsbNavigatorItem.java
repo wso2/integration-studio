@@ -16,24 +16,21 @@ public class EsbNavigatorItem extends EsbAbstractNavigatorItem {
 	 */
 	static {
 		final Class[] supportedTypes = new Class[] { View.class, EObject.class };
-		Platform.getAdapterManager().registerAdapters(
-				new IAdapterFactory() {
+		Platform.getAdapterManager().registerAdapters(new IAdapterFactory() {
 
-					public Object getAdapter(Object adaptableObject,
-							Class adapterType) {
-						if (adaptableObject instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem
-								&& (adapterType == View.class || adapterType == EObject.class)) {
-							return ((org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) adaptableObject)
-									.getView();
-						}
-						return null;
-					}
+			public Object getAdapter(Object adaptableObject, Class adapterType) {
+				if (adaptableObject instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem
+						&& (adapterType == View.class || adapterType == EObject.class)) {
+					return ((org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem) adaptableObject)
+							.getView();
+				}
+				return null;
+			}
 
-					public Class[] getAdapterList() {
-						return supportedTypes;
-					}
-				},
-				org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem.class);
+			public Class[] getAdapterList() {
+				return supportedTypes;
+			}
+		}, org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem.class);
 	}
 
 	/**

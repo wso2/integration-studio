@@ -61,16 +61,12 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new MediatorFlowMediatorFlowCompartment19ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new MediatorFlowMediatorFlowCompartment19CanonicalEditPolicy());
 	}
@@ -83,17 +79,14 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 		AbstractBorderItemEditPart outputConnector = null;
 		ShapeNodeEditPart sourceEditPart = null;
 
-		if ((child instanceof AbstractMediator)
-				|| (child instanceof AbstractEndpoint)) {
+		if ((child instanceof AbstractMediator) || (child instanceof AbstractEndpoint)) {
 
-			inputConnector = EditorUtils
-					.getEndpointInputConnector((ShapeNodeEditPart) child);
-			List<EditPart> children = ((SendMediatorEditPart) this.getParent()
-					.getParent()).getChildren();
+			inputConnector = EditorUtils.getEndpointInputConnector((ShapeNodeEditPart) child);
+			List<EditPart> children = ((SendMediatorEditPart) this.getParent().getParent())
+					.getChildren();
 			for (int i = 0; i < children.size(); ++i) {
 				if (children.get(i) instanceof SendMediatorEndpointOutputConnectorEditPart) {
-					outputConnector = (AbstractBorderItemEditPart) children
-							.get(i);
+					outputConnector = (AbstractBorderItemEditPart) children.get(i);
 				}
 			}
 
@@ -103,14 +96,11 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 
 			if (inputConnector != null) {
 				ICommand createSubTopicsCmd = new DeferredCreateConnectionViewAndElementCommand(
-						new CreateConnectionViewAndElementRequest(
-								EsbElementTypes.EsbLink_4001,
-								((IHintedType) EsbElementTypes.EsbLink_4001)
-										.getSemanticHint(), sourceEditPart
-										.getDiagramPreferencesHint()),
-						new EObjectAdapter((EObject) outputConnector.getModel()),
-						new EObjectAdapter((EObject) (inputConnector)
-								.getModel()), sourceEditPart.getViewer());
+						new CreateConnectionViewAndElementRequest(EsbElementTypes.EsbLink_4001,
+								((IHintedType) EsbElementTypes.EsbLink_4001).getSemanticHint(),
+								sourceEditPart.getDiagramPreferencesHint()), new EObjectAdapter(
+								(EObject) outputConnector.getModel()), new EObjectAdapter(
+								(EObject) (inputConnector).getModel()), sourceEditPart.getViewer());
 
 				cc.add(new ICommandProxy(createSubTopicsCmd));
 
@@ -122,17 +112,14 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 
 	private void deleteExistingEndpointAndLink() {
 
-		AbstractEditPart existingEndpoint = (AbstractEditPart) this
-				.getChildren().get(0);
-		EditingDomain editingDomain = ((GraphicalEditPart) existingEndpoint)
-				.getEditingDomain();
+		AbstractEditPart existingEndpoint = (AbstractEditPart) this.getChildren().get(0);
+		EditingDomain editingDomain = ((GraphicalEditPart) existingEndpoint).getEditingDomain();
 
 		AbstractEndpointInputConnectorEditPart inputConector = EditorUtils
 				.getEndpointInputConnector((ShapeNodeEditPart) existingEndpoint);
 		EsbLinkEditPart linkEditPart = null;
 		if (inputConector.getTargetConnections().size() > 0) {
-			linkEditPart = (EsbLinkEditPart) inputConector
-					.getTargetConnections().get(0);
+			linkEditPart = (EsbLinkEditPart) inputConector.getTargetConnections().get(0);
 		}
 
 		//Here we are deleteing the linkpart as well
@@ -147,10 +134,8 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 			AbstractEndpointInputConnectorEditPart inputConector) {
 		EsbLinkEditPart linkEditPart;
 		Collection linkCollection = new ArrayList();
-		linkEditPart = (EsbLinkEditPart) inputConector.getTargetConnections()
-				.get(0);
-		linkCollection.add(((ConnectorImpl) linkEditPart.getModel())
-				.getElement());
+		linkEditPart = (EsbLinkEditPart) inputConector.getTargetConnections().get(0);
+		linkCollection.add(((ConnectorImpl) linkEditPart.getModel()).getElement());
 
 		org.eclipse.emf.edit.command.DeleteCommand modelDeleteCommand = new org.eclipse.emf.edit.command.DeleteCommand(
 				editingDomain, linkCollection);
@@ -159,14 +144,12 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 		}
 
 		org.eclipse.gef.commands.CompoundCommand ccView = new org.eclipse.gef.commands.CompoundCommand();
-		DeleteCommand viewDeleteCommand = new DeleteCommand(
-				linkEditPart.getNotationView());
+		DeleteCommand viewDeleteCommand = new DeleteCommand(linkEditPart.getNotationView());
 		if (viewDeleteCommand.canExecute()) {
 			ccView.add(new ICommandProxy(viewDeleteCommand));
 		}
 		if (ccView.canExecute()) {
-			this.getDiagramEditDomain().getDiagramCommandStack()
-					.execute(ccView);
+			this.getDiagramEditDomain().getDiagramCommandStack().execute(ccView);
 		}
 	}
 
@@ -178,8 +161,8 @@ public class MediatorFlowMediatorFlowCompartment19EditPart extends
 				((Node) existingEndpoint.getModel()).getElement());
 
 		if (removeCmd.canExecute()) {
-			((GraphicalEditPart) existingEndpoint).getEditingDomain()
-					.getCommandStack().execute(removeCmd);
+			((GraphicalEditPart) existingEndpoint).getEditingDomain().getCommandStack()
+					.execute(removeCmd);
 		}
 	}
 

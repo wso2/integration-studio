@@ -28,8 +28,8 @@ public class EsbCreationWizardPage extends WizardNewFileCreationPage {
 	/**
 	 * @generated
 	 */
-	public EsbCreationWizardPage(String pageName,
-			IStructuredSelection selection, String fileExtension) {
+	public EsbCreationWizardPage(String pageName, IStructuredSelection selection,
+			String fileExtension) {
 		super(pageName, selection);
 		this.fileExtension = fileExtension;
 	}
@@ -74,8 +74,8 @@ public class EsbCreationWizardPage extends WizardNewFileCreationPage {
 		if (fileName == null || fileName.trim().length() == 0) {
 			fileName = getDefaultFilename();
 		}
-		setFileName(EsbDiagramEditorUtil.getUniqueFileName(
-				getContainerFullPath(), fileName, getExtension()));
+		setFileName(EsbDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), fileName,
+				getExtension()));
 		setPageComplete(validatePage());
 	}
 

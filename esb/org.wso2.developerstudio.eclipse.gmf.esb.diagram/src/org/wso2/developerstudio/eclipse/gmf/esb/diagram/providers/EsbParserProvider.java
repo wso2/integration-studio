@@ -54,7 +54,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EventMediator
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPointDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPointEndPointName2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPointEndPointNameEditPart;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FastXSLTMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FaultMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FaultMediatorFaultStringTypeEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorConditionTypeEditPart;
@@ -102,8 +101,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated
  */
-public class EsbParserProvider extends AbstractProvider implements
-		IParserProvider {
+public class EsbParserProvider extends AbstractProvider implements IParserProvider {
 
 	/**
 	 * @generated
@@ -115,8 +113,7 @@ public class EsbParserProvider extends AbstractProvider implements
 	 */
 	private IParser getProxyServiceName_5003Parser() {
 		if (proxyServiceName_5003Parser == null) {
-			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE
-					.getProxyService_Name() };
+			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getProxyService_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
 			proxyServiceName_5003Parser = parser;
 		}
@@ -187,8 +184,7 @@ public class EsbParserProvider extends AbstractProvider implements
 	 */
 	private IParser getFilterMediatorConditionType_5129Parser() {
 		if (filterMediatorConditionType_5129Parser == null) {
-			EAttribute editableFeature = EsbPackage.eINSTANCE
-					.getFilterMediator_ConditionType();
+			EAttribute editableFeature = EsbPackage.eINSTANCE.getFilterMediator_ConditionType();
 			EnumParser parser = new EnumParser(editableFeature);
 			filterMediatorConditionType_5129Parser = parser;
 		}
@@ -259,8 +255,7 @@ public class EsbParserProvider extends AbstractProvider implements
 	 */
 	private IParser getSequenceName_5132Parser() {
 		if (sequenceName_5132Parser == null) {
-			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE
-					.getSequence_Name() };
+			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getSequence_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
 			sequenceName_5132Parser = parser;
 		}
@@ -907,12 +902,10 @@ public class EsbParserProvider extends AbstractProvider implements
 	 */
 	private IParser getNamedEndpointName_5165Parser() {
 		if (namedEndpointName_5165Parser == null) {
-			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE
-					.getNamedEndpoint_Name() };
+			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getNamedEndpoint_Name() };
 			EAttribute[] editableFeatures = new EAttribute[] { EsbPackage.eINSTANCE
 					.getNamedEndpoint_Name() };
-			MessageFormatParser parser = new MessageFormatParser(features,
-					editableFeatures);
+			MessageFormatParser parser = new MessageFormatParser(features, editableFeatures);
 			namedEndpointName_5165Parser = parser;
 		}
 		return namedEndpointName_5165Parser;
@@ -1078,24 +1071,6 @@ public class EsbParserProvider extends AbstractProvider implements
 			dataMapperMediatorDescription_5211Parser = parser;
 		}
 		return dataMapperMediatorDescription_5211Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	private IParser fastXSLTMediatorDescription_5212Parser;
-
-	/**
-	 * @generated
-	 */
-	private IParser getFastXSLTMediatorDescription_5212Parser() {
-		if (fastXSLTMediatorDescription_5212Parser == null) {
-			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE
-					.getEsbElement_Description() };
-			MessageFormatParser parser = new MessageFormatParser(features);
-			fastXSLTMediatorDescription_5212Parser = parser;
-		}
-		return fastXSLTMediatorDescription_5212Parser;
 	}
 
 	/**
@@ -1302,8 +1277,6 @@ public class EsbParserProvider extends AbstractProvider implements
 			return getRespondMediatorDescription_5209Parser();
 		case DataMapperMediatorDescriptionEditPart.VISUAL_ID:
 			return getDataMapperMediatorDescription_5211Parser();
-		case FastXSLTMediatorDescriptionEditPart.VISUAL_ID:
-			return getFastXSLTMediatorDescription_5212Parser();
 		case DefaultEndPointEndPointName2EditPart.VISUAL_ID:
 			return getDefaultEndPointEndPointName_5160Parser();
 		case AddressEndPointEndPointName2EditPart.VISUAL_ID:
@@ -1322,10 +1295,8 @@ public class EsbParserProvider extends AbstractProvider implements
 	 * Utility method that consults ParserService
 	 * @generated
 	 */
-	public static IParser getParser(IElementType type, EObject object,
-			String parserHint) {
-		return ParserService.getInstance().getParser(
-				new HintAdapter(type, object, parserHint));
+	public static IParser getParser(IElementType type, EObject object, String parserHint) {
+		return ParserService.getInstance().getParser(new HintAdapter(type, object, parserHint));
 	}
 
 	/**

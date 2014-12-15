@@ -46,7 +46,6 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.exception.NoSuchCarbon
 import org.wso2.developerstudio.eclipse.carbonserver.base.impl.Credentials;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICredentials;
 import org.wso2.developerstudio.eclipse.carbonserver.base.monitor.CarbonServerLifeCycleListener;
-import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.server.base.core.IServerManager;
@@ -54,10 +53,7 @@ import org.wso2.developerstudio.eclipse.server.base.core.ServerController;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 
-@SuppressWarnings("restriction")
 public final class CarbonServerManager implements IServerManager {
-	private static final String CARBON_SERVER_TYPE_REMOTE = "org.wso2.developerstudio.eclipse.carbon.server.remote";
-
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
 	private static List<IServer> servers;
@@ -119,7 +115,6 @@ public final class CarbonServerManager implements IServerManager {
 				log.error(e);
 			}
 			serverInformation.setServerPorts(wsasPorts);
-			CarbonServerUtils.setServicePath(server);
 			//The localrepo path is for now is the bin distribution path. this needs to be fixed in order to be set inside the workspace path
 //			String workspaceRootPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
 //			String serverPath=FileUtils.addNodesToPath(workspaceRootPath, new String[]{".metadata",".carbon",server.getId()});
@@ -588,7 +583,6 @@ public final class CarbonServerManager implements IServerManager {
 		return getPublishedPaths(getServer(serverId));
 	}
 
-	
 	public static Map<IFolder,IProject> getPublishedPaths(IServer server) {
 		if (server==null) return null;
 		IServerManager wsasServerManager = ServerController.getInstance().getServerManager();
@@ -713,7 +707,7 @@ public final class CarbonServerManager implements IServerManager {
 										//									if (javaProjectSourceDirectories.contains(pathChanged.toOSString())){
 										IServer[] serversForProject = getServersForProject(project);
 										for (IServer server : serversForProject) {
-											if (!CARBON_SERVER_TYPE_REMOTE.equalsIgnoreCase(server.getServerType().getId())) {
+											if (!server.getServerType().getId().equalsIgnoreCase("org.wso2.developerstudio.eclipse.carbon.server.remote")) {
 												CarbonServerInformation serverInformation = getAppServerInformation()
 														.get(server);
 												if (!serverInformation
@@ -778,25 +772,17 @@ public final class CarbonServerManager implements IServerManager {
 	}
 	
 	public static URL getServerURL(IServer server) throws Exception{
-		if (server != null) {
-			IServerManager esbServerManager = ServerController.getInstance()
-					.getServerManager();
-			HashMap<String, Object> operationParameters = new HashMap<String, Object>();
-			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE,
-					ICarbonOperationManager.OPERATION_SERVER_URL);
-			Object serverURL = esbServerManager.executeOperationOnServer(
-					server, operationParameters);
-			if (serverURL instanceof URL) {
-				String serverId = server.getServerType().getId();
-				URL urlWithContextRoot = (URL) serverURL;
-				if (!CARBON_SERVER_TYPE_REMOTE.equals(serverId)) {
-					urlWithContextRoot = new URL(urlWithContextRoot,
-							CarbonServerUtils.getWebContextRoot(server));
-				}
-				return urlWithContextRoot;
+		URL result=null;
+		if (server!=null){
+			IServerManager esbServerManager = ServerController.getInstance().getServerManager();
+			HashMap<String,Object> operationParameters=new HashMap<String,Object>();
+			operationParameters.put(ICarbonOperationManager.PARAMETER_TYPE, ICarbonOperationManager.OPERATION_SERVER_URL);
+			Object r = esbServerManager.executeOperationOnServer(server, operationParameters);//getWSDLConversionResultUrl(resourceFile);
+			if (r instanceof URL){
+				result=(URL)r;
 			}
 		}
-		return null;
+		return result;
 	}
 	
 	public static String getServerAuthenticatedCookie(IServer server, String httpsPort) throws Exception{

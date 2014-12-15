@@ -71,12 +71,10 @@ public class EsbNavigatorActionProvider extends CommonActionProvider {
 		if (!myContribute) {
 			return;
 		}
-		IStructuredSelection selection = (IStructuredSelection) getContext()
-				.getSelection();
+		IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
 		myOpenDiagramAction.selectionChanged(selection);
 		if (myOpenDiagramAction.isEnabled()) {
-			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN,
-					myOpenDiagramAction);
+			actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, myOpenDiagramAction);
 		}
 	}
 
@@ -117,16 +115,13 @@ public class EsbNavigatorActionProvider extends CommonActionProvider {
 			if (selection.size() == 1) {
 				Object selectedElement = selection.getFirstElement();
 				if (selectedElement instanceof EsbNavigatorItem) {
-					selectedElement = ((EsbNavigatorItem) selectedElement)
-							.getView();
+					selectedElement = ((EsbNavigatorItem) selectedElement).getView();
 				} else if (selectedElement instanceof IAdaptable) {
-					selectedElement = ((IAdaptable) selectedElement)
-							.getAdapter(View.class);
+					selectedElement = ((IAdaptable) selectedElement).getAdapter(View.class);
 				}
 				if (selectedElement instanceof Diagram) {
 					Diagram diagram = (Diagram) selectedElement;
-					if (EsbDiagramEditPart.MODEL_ID.equals(EsbVisualIDRegistry
-							.getModelID(diagram))) {
+					if (EsbDiagramEditPart.MODEL_ID.equals(EsbVisualIDRegistry.getModelID(diagram))) {
 						myDiagram = diagram;
 					}
 				}
@@ -147,8 +142,8 @@ public class EsbNavigatorActionProvider extends CommonActionProvider {
 			try {
 				page.openEditor(editorInput, EsbDiagramEditor.ID);
 			} catch (PartInitException e) {
-				EsbDiagramEditorPlugin.getInstance().logError(
-						"Exception while openning diagram", e); //$NON-NLS-1$
+				EsbDiagramEditorPlugin.getInstance()
+						.logError("Exception while openning diagram", e); //$NON-NLS-1$
 			}
 		}
 
@@ -159,8 +154,7 @@ public class EsbNavigatorActionProvider extends CommonActionProvider {
 			Resource diagramResource = diagram.eResource();
 			for (EObject nextEObject : diagramResource.getContents()) {
 				if (nextEObject == diagram) {
-					return new FileEditorInput(
-							WorkspaceSynchronizer.getFile(diagramResource));
+					return new FileEditorInput(WorkspaceSynchronizer.getFile(diagramResource));
 				}
 				if (nextEObject instanceof Diagram) {
 					break;

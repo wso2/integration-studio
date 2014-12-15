@@ -42,7 +42,6 @@ import org.wso2.developerstudio.eclipse.ds.MaxRowCount;
 import org.wso2.developerstudio.eclipse.ds.Operation;
 import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
 import org.wso2.developerstudio.eclipse.ds.PatternValidator;
-import org.wso2.developerstudio.eclipse.ds.Policy;
 import org.wso2.developerstudio.eclipse.ds.Query;
 import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 import org.wso2.developerstudio.eclipse.ds.QueryParameter;
@@ -324,13 +323,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * @generated
 	 */
 	private EClass workSheetNumberEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass policyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -727,33 +719,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 */
 	public EAttribute getDataService_DisableStreaming() {
 		return (EAttribute)dataServiceEClass.getEStructuralFeatures().get(15);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDataService_EnableSec() {
-		return (EAttribute)dataServiceEClass.getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDataService_Policy() {
-		return (EReference)dataServiceEClass.getEStructuralFeatures().get(17);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDataService_Transports() {
-		return (EAttribute)dataServiceEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -2147,24 +2112,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPolicy() {
-		return policyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPolicy_Key() {
-		return (EAttribute)policyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getServiceStatus() {
 		return serviceStatusEEnum;
 	}
@@ -2246,9 +2193,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		createEAttribute(dataServiceEClass, DATA_SERVICE__SERVICE_NAMESPACE);
 		createEAttribute(dataServiceEClass, DATA_SERVICE__SERVICE_STATUS);
 		createEAttribute(dataServiceEClass, DATA_SERVICE__DISABLE_STREAMING);
-		createEAttribute(dataServiceEClass, DATA_SERVICE__ENABLE_SEC);
-		createEReference(dataServiceEClass, DATA_SERVICE__POLICY);
-		createEAttribute(dataServiceEClass, DATA_SERVICE__TRANSPORTS);
 
 		dataSourceConfigurationEClass = createEClass(DATA_SOURCE_CONFIGURATION);
 		createEAttribute(dataSourceConfigurationEClass, DATA_SOURCE_CONFIGURATION__MIXED);
@@ -2435,9 +2379,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		workSheetNumberEClass = createEClass(WORK_SHEET_NUMBER);
 		createEAttribute(workSheetNumberEClass, WORK_SHEET_NUMBER__VALUE);
 
-		policyEClass = createEClass(POLICY);
-		createEAttribute(policyEClass, POLICY__KEY);
-
 		// Create enums
 		serviceStatusEEnum = createEEnum(SERVICE_STATUS);
 
@@ -2518,9 +2459,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEAttribute(getDataService_ServiceNamespace(), theXMLTypePackage.getString(), "serviceNamespace", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_ServiceStatus(), this.getServiceStatus(), "serviceStatus", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_DisableStreaming(), theXMLTypePackage.getBoolean(), "disableStreaming", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataService_EnableSec(), theXMLTypePackage.getBoolean(), "enableSec", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataService_Policy(), this.getPolicy(), null, "policy", null, 1, 1, DataService.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataService_Transports(), theXMLTypePackage.getString(), "transports", null, 1, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataSourceConfigurationEClass, DataSourceConfiguration.class, "DataSourceConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataSourceConfiguration_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, DataSourceConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2629,7 +2567,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEReference(getQuery_Sql(), this.getSql(), null, "sql", null, 0, -1, Query.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getQuery_Sparql(), this.getSparql(), null, "sparql", null, 0, -1, Query.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getQuery_Properties(), this.getQueryPropertyList(), null, "properties", null, 0, -1, Query.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getQuery_Result(), this.getResultMapping(), null, "result", null, 0, 1, Query.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getQuery_Result(), this.getResultMapping(), null, "result", null, 0, -1, Query.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getQuery_Excel(), this.getExcelQuery(), null, "excel", null, 0, -1, Query.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getQuery_Gspread(), this.getGSpreadQuery(), null, "gspread", null, 0, -1, Query.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getQuery_Param(), this.getQueryParameter(), null, "param", null, 0, -1, Query.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -2706,9 +2644,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 
 		initEClass(workSheetNumberEClass, WorkSheetNumber.class, "WorkSheetNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getWorkSheetNumber_Value(), theXMLTypePackage.getString(), "value", null, 0, 1, WorkSheetNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(policyEClass, Policy.class, "Policy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPolicy_Key(), theXMLTypePackage.getString(), "key", null, 1, 1, Policy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(serviceStatusEEnum, ServiceStatus.class, "ServiceStatus");
@@ -3001,28 +2936,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "serviceStatus",
 			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getDataService_EnableSec(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "name", "enableSec"
-		   });		
-		addAnnotation
-		  (getDataService_Policy(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "name", "policy",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getDataService_Transports(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute",
-			 "name", "transports"
 		   });		
 		addAnnotation
 		  (dataSourceConfigurationEClass, 
@@ -4193,21 +4106,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
-		addAnnotation
-		  (policyEClass, 
-		   source, 
-		   new String[] {
-			 "name", "policy_._type",
-			 "kind", "mixed"
-		   });		
-		addAnnotation
-		  (getPolicy_Key(), 
-		   source, 
-		   new String[] {
-			 "kind", "attribute",
-			 "name", "key",
-			 "namespace", "##targetNamespace"
 		   });
 	}
 

@@ -18,7 +18,6 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Shape;
-import org.eclipse.gmf.tooling.runtime.actions.DefaultDeleteElementAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPage;
@@ -41,13 +40,42 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPa
 /**
  * @generated
  */
-public class DeleteElementAction extends DefaultDeleteElementAction {
+public class DeleteElementAction extends AbstractDeleteFromAction {
 
 	/**
 	 * @generated
 	 */
 	public DeleteElementAction(IWorkbenchPart part) {
 		super(part);
+	}
+
+	/**
+	 * @generated
+	 */
+	public DeleteElementAction(IWorkbenchPage workbenchPage) {
+		super(workbenchPage);
+	}
+
+	/**
+	 * @generated
+	 */
+	public void init() {
+		super.init();
+		setId(ActionIds.ACTION_DELETE_FROM_MODEL);
+		setText(DiagramUIMessages.DiagramEditor_Delete_from_Model);
+		setToolTipText(DiagramUIMessages.DiagramEditor_Delete_from_ModelToolTip);
+		ISharedImages workbenchImages = PlatformUI.getWorkbench().getSharedImages();
+		setHoverImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
+		setImageDescriptor(workbenchImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
+		setDisabledImageDescriptor(workbenchImages
+				.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
+	}
+
+	/**
+	 * @generated
+	 */
+	protected String getCommandLabel() {
+		return DiagramUIMessages.DiagramEditor_Delete_from_Model;
 	}
 
 	/**

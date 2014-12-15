@@ -3,6 +3,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers;
 /**
  * @generated
  */
-public class ProxyServiceSequenceAndEndpointContainerEditHelper extends
-		EsbBaseEditHelper {
+public class ProxyServiceSequenceAndEndpointContainerEditHelper extends EsbBaseEditHelper {
 }

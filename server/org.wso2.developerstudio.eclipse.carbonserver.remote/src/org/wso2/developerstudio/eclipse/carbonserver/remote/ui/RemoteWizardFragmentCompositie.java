@@ -30,7 +30,6 @@ public class RemoteWizardFragmentCompositie extends Composite {
 	private Text txtUrl;
 	private Text txtUsername;
 	private Text txtPassword;
-	private Text txtServicePath;
 
 	private boolean contentValid=false;
 	private IWizardHandle wizard;
@@ -97,28 +96,6 @@ public class RemoteWizardFragmentCompositie extends Composite {
 		gd_btnTestConnection.widthHint = -1;
 		btnTestConnection.setLayoutData(gd_btnTestConnection);
 		btnTestConnection.setText("Test connection");
-
-		Label lblServicePath = new Label(grpServerDetails, SWT.NONE);
-		GridData gd_lblServicePath = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_lblServicePath .widthHint = 85;
-		lblServicePath.setLayoutData(gd_lblServicePath );
-		lblServicePath.setText("ServicePath");
-		
-		txtServicePath = new Text(grpServerDetails, SWT.BORDER);
-		txtServicePath.setText("services");
-		CarbonServerUtils.setRemoteServicePath("services");
-		txtServicePath.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent arg0) {
-				 CarbonServerUtils.setRemoteServicePath(txtServicePath.getText());
-			}
-		});
-		txtServicePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
-		new Label(grpServerDetails, SWT.NONE);
-		
-		Label servicePathDesc = new Label(grpServerDetails, SWT.CENTER);
-		servicePathDesc.setText("(Value of the servicePath parameter defined in the axis2.xml file)");
-		
-		new Label(grpServerDetails, SWT.NONE);	
 		
 		Group grpCredentials = new Group(this, SWT.NONE);
 		grpCredentials.setText("Credentials");
@@ -242,10 +219,6 @@ public class RemoteWizardFragmentCompositie extends Composite {
 
 	public String getPassword() {
 		return remoteCarbonServer.getPassword();
-	}
-	
-	public void setServicePath(String servicePath) {
-		remoteCarbonServer.setServicePath(servicePath);
 	}
 
 	public void setContentValid(boolean contentValid) {

@@ -73,22 +73,16 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new HTTPEndpointItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new HTTPEndpointCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new HTTPEndpointItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new HTTPEndpointCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -106,8 +100,7 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 				case HTTPEndPointOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -132,8 +125,7 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 		return primaryShape = new HTTPEndpointFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0
-						&& this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
 					getMostSuitableElementToConnect();
 					reAllocate(rect);
 				}
@@ -153,11 +145,9 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 			double position;
 			EObject parentEndpoint = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (childEditPart
 					.getParent()).getModel()).getElement();
-			if (((HTTPEndpoint) parentEndpoint).getInputConnector()
-					.getIncomingLinks().size() != 0) {
-				EObject source = ((HTTPEndpoint) parentEndpoint)
-						.getInputConnector().getIncomingLinks().get(0)
-						.getSource().eContainer();
+			if (((HTTPEndpoint) parentEndpoint).getInputConnector().getIncomingLinks().size() != 0) {
+				EObject source = ((HTTPEndpoint) parentEndpoint).getInputConnector()
+						.getIncomingLinks().get(0).getSource().eContainer();
 				/*				position = ((source instanceof LoadBalanceEndPoint)
 				 || (source instanceof FailoverEndPoint) || (source instanceof SendMediator)) ? 0.5
 				 : 0.25;*/
@@ -176,26 +166,22 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 			}
 			IFigure borderItemFigure = ((HTTPEndPointInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					position);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, position);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof HTTPEndPointOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((HTTPEndPointOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, 0.75);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof HTTPEndpointDescriptionEditPart) {
-			((HTTPEndpointDescriptionEditPart) childEditPart)
-					.setLabel(getPrimaryShape().getEndpointDescriptionLabel());
+			((HTTPEndpointDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getEndpointDescriptionLabel());
 			return true;
 		}
 		return false;
@@ -204,14 +190,12 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof HTTPEndPointInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((HTTPEndPointInputConnectorEditPart) childEditPart)
-							.getFigure());
+					((HTTPEndPointInputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof HTTPEndPointOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((HTTPEndPointOutputConnectorEditPart) childEditPart)
-							.getFigure());
+					((HTTPEndPointOutputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof HTTPEndpointDescriptionEditPart) {
@@ -357,8 +341,7 @@ public class HTTPEndpointEditPart extends AbstractEndpoint {
 
 		if (HTTPEp != null) {
 			if (HTTPEp.getURITemplate() != null) {
-				getPrimaryShape()
-						.setToolTip(new Label(HTTPEp.getURITemplate()));
+				getPrimaryShape().setToolTip(new Label(HTTPEp.getURITemplate()));
 			}
 		}
 	}

@@ -12,7 +12,6 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
 	 * @generated
 	 */
 	public DiagramGeneralPreferencePage() {
-		setPreferenceStore(EsbDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

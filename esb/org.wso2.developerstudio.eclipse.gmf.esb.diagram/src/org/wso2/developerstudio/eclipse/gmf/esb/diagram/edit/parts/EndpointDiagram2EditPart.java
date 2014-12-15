@@ -68,8 +68,7 @@ public class EndpointDiagram2EditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -92,8 +91,8 @@ public class EndpointDiagram2EditPart extends ShapeNodeEditPart {
 	 */
 	protected IFigure createNodeShape() {
 		primaryShape = new RectangleFigure();
-		primaryShape.setPreferredSize(new Dimension(getMapMode().DPtoLP(4000),
-				getMapMode().DPtoLP(3000)));
+		primaryShape.setPreferredSize(new Dimension(getMapMode().DPtoLP(4000), getMapMode().DPtoLP(
+				3000)));
 		return primaryShape;
 	}
 

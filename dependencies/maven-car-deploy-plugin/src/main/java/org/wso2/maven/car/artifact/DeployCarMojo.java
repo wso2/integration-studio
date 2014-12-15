@@ -234,16 +234,12 @@ public class DeployCarMojo extends AbstractMojo {
 		}
 		
 	    File carFile = null;
-	    if(archiveLocation !=null){
-	    	carFile = archiveLocation;
-	    }else{
-	    	if (finalName == null) {
-	    		carFile = new File(target + "/" + project.getArtifactId() + "_"
-	    				+ project.getVersion() + ".car");
-	    	}else{
-	    		carFile = new File(target + "/" + finalName + ".car");
-	    	}
-	    }
+		if (finalName == null) {
+			carFile = new File(target + "/" + project.getArtifactId() + "_"
+					+ project.getVersion() + ".car");
+		}else{
+			carFile = new File(target + "/" + finalName + ".car");
+		}
 		
 	    if(operation.equalsIgnoreCase("deploy")){
 		    try {

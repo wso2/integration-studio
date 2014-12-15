@@ -2006,14 +2006,5 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//DataMapperMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//DataMapperMediatorOutputConnector"/>
-    <genClasses ecoreClass="esb.ecore#//FastXSLTMediator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//FastXSLTMediator/fastXsltSchemaKeyType"/>
-      <genFeatures children="true" createChild="true" propertyDescription="" ecoreFeature="ecore:EReference esb.ecore#//FastXSLTMediator/fastXsltStaticSchemaKey"/>
-      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FastXSLTMediator/fastXsltDynamicSchemaKey"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FastXSLTMediator/inputConnector"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FastXSLTMediator/outputConnector"/>
-    </genClasses>
-    <genClasses ecoreClass="esb.ecore#//FastXSLTMediatorInputConnector"/>
-    <genClasses ecoreClass="esb.ecore#//FastXSLTMediatorOutputConnector"/>
   </genPackages>
 </genmodel:GenModel>

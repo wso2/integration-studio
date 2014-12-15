@@ -55,16 +55,13 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new LocalEntryItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new LocalEntryItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); //remove 8 corners
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());  //remove 8 corners
 
 	}
 
@@ -75,8 +72,7 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -194,6 +190,7 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 	 */
 	public class LocalEntryFigure extends EsbGraphicalShape {
 
+		
 		/**
 		 * @generated
 		 */
@@ -205,6 +202,7 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 		public LocalEntryFigure() {
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
+			
 		}
 
 		/**
@@ -216,8 +214,7 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 			fFigureLocalEntryNamePropertyLabel.setText("<...>");
 			fFigureLocalEntryNamePropertyLabel.setAlignment(SWT.CENTER);
 
-			this.getPropertyValueRectangle1().add(
-					fFigureLocalEntryNamePropertyLabel);
+			this.getPropertyValueRectangle1().add(fFigureLocalEntryNamePropertyLabel);
 
 		}
 
@@ -241,6 +238,6 @@ public class LocalEntryEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	static final Color THIS_BACK = new Color(null, 40, 151, 248);
+	static final Color THIS_BACK = new Color(null,245, 243, 215);
 
 }

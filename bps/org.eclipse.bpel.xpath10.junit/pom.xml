@@ -9,6 +9,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	</parent>
 	<groupId>org.eclipse.bpel.plugins</groupId>
 	<artifactId>org.eclipse.bpel.xpath10.junit</artifactId> 
-	<version>1.0.4</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 </project>

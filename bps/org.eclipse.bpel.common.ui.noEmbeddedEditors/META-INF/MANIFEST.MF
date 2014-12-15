@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.bpel.common.ui; singleton:=true 
-Bundle-Version: 1.0.4
+Bundle-Version: 1.0.3.qualifier
 Bundle-Activator: org.eclipse.bpel.common.ui.CommonUIPlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui;bundle-version="[3.4.0,4.0.0)",

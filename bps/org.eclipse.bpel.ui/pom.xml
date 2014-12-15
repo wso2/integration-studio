@@ -4,11 +4,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<parent>
 	  <groupId>org.eclipse.bpel</groupId>
 	  <artifactId>org.eclipse.bpel.parent.pom</artifactId>
-	  <version>0.0.2</version>
+	  <version>0.0.1-SNAPSHOT</version>
 	  <relativePath>../../parent/pom.xml</relativePath>
 	</parent>
 	<groupId>org.eclipse.bpel.plugins</groupId>
 	<artifactId>org.eclipse.bpel.ui</artifactId> 
-	<version>1.0.4</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 </project>

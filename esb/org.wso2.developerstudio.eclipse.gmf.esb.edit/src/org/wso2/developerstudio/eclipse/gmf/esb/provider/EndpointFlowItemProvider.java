@@ -522,11 +522,6 @@ public class EndpointFlowItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.ENDPOINT_FLOW__CHILDREN,
 				 EsbFactory.eINSTANCE.createDataMapperMediator()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(EsbPackage.Literals.ENDPOINT_FLOW__CHILDREN,
-				 EsbFactory.eINSTANCE.createFastXSLTMediator()));
 	}
 
 }

@@ -231,7 +231,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 			mavenProject = MavenUtils.getMavenProject(mavenProjectPomLocation);
 		}
 		 version = mavenProject.getVersion();
-		 //version  = version.replaceAll("-SNAPSHOT$", "");
+		 version  = version.replaceAll("-SNAPSHOT$", "");
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject,
 				"org.wso2.maven", "wso2-general-project-plugin",
 				MavenConstants.WSO2_GENERAL_PROJECT_VERSION);
@@ -332,9 +332,9 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 		} else if(type.equals(RegistryArtifactConstants.TEMPLATE_SEQUENCE_TEMPL_ID)){
 			newContent = newContent.replaceAll("<0>", regModel.getResourceName());
 			newContent = newContent.replaceAll("<1>", "");
-		} else if(type.equals(RegistryArtifactConstants.LOCAL_ENTRY_TEMPL_ID)){
-			newContent = newContent.replaceAll("<localentry-name>", regModel.getResourceName());
-		} else if(type.equals(RegistryArtifactConstants.SMOOKS_TEMPL_ID)){
+		} 
+		
+		else if(type.equals(RegistryArtifactConstants.SMOOKS_TEMPL_ID)){
 			newContent=templateContent;		
 		} else if(type.equals(RegistryArtifactConstants.TRANSFORMER_PROXY_TEMPL_ID)){
 			newContent= newContent.replaceAll("<proxy.name>", regModel.getResourceName());

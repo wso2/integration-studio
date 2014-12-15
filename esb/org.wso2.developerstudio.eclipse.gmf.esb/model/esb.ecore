@@ -2583,18 +2583,4 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataMapperMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FastXSLTMediator" eSuperTypes="#//Mediator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fastXsltSchemaKeyType"
-        eType="#//KeyType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fastXsltStaticSchemaKey"
-        eType="#//RegistryKeyProperty" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fastXsltDynamicSchemaKey"
-        eType="#//NamespacedProperty" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//FastXSLTMediatorInputConnector"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outputConnector" eType="#//FastXSLTMediatorOutputConnector"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FastXSLTMediatorInputConnector" eSuperTypes="#//InputConnector"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FastXSLTMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
 </ecore:EPackage>

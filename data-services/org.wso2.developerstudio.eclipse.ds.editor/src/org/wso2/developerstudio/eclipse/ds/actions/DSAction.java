@@ -50,7 +50,6 @@ import org.wso2.developerstudio.eclipse.ds.MaxRowCount;
 import org.wso2.developerstudio.eclipse.ds.Operation;
 import org.wso2.developerstudio.eclipse.ds.ParameterMapping;
 import org.wso2.developerstudio.eclipse.ds.PatternValidator;
-import org.wso2.developerstudio.eclipse.ds.Policy;
 import org.wso2.developerstudio.eclipse.ds.Query;
 import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 import org.wso2.developerstudio.eclipse.ds.QueryParameter;
@@ -196,9 +195,7 @@ public class DSAction extends StaticSelectionCommandAction {
 			imageURL = "wso2/property";
 		}
 		if (commandName.equals(DSActionConstants.ADD_DESCRIPTION_ACTION)) {
-			imageURL = "wso2/call-query";
-		}
-		if (commandName.equals(DSActionConstants.ADD_POLICY_ACTION)) {
+
 			imageURL = "wso2/call-query";
 		}
 		if (commandName.equals(DSActionConstants.ADD_SQL_ACTION)) {
@@ -261,12 +258,6 @@ public class DSAction extends StaticSelectionCommandAction {
 				    commandName.equals(DSActionConstants.ADD_DESCRIPTION_ACTION)) {
 
 					return getChildCommand(param, collection, owner);
-				}
-				
-				if (childObj instanceof Policy &&
-					    commandName.equals(DSActionConstants.ADD_POLICY_ACTION)) {
-
-						return getChildCommand(param, collection, owner);
 				}
 
 				if (childObj instanceof Query &&

@@ -70,7 +70,6 @@ public class ValidateMediatorItemProvider
 			addSourceXpathPropertyDescriptor(object);
 			addFeaturesPropertyDescriptor(object);
 			addResourcesPropertyDescriptor(object);
-			addDescriptionPropertyDescriptor(object);
 			
 		return itemPropertyDescriptors;
 	}

@@ -12,7 +12,6 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
 	 * @generated
 	 */
 	public DiagramConnectionsPreferencePage() {
-		setPreferenceStore(EsbDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

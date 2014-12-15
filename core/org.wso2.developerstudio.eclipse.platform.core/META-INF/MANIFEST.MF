@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Platform Core
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.platform.core;singleton:=true
-Bundle-Version: 3.7.1
+Bundle-Version: 3.8.0.qualifier
 Bundle-Activator: org.wso2.developerstudio.eclipse.platform.core.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -56,6 +56,5 @@ Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  org.wso2.developerstudio.eclipse.utils.data,
  org.wso2.developerstudio.eclipse.utils.file,
  org.wso2.developerstudio.eclipse.utils.jdt,
- org.wso2.developerstudio.eclipse.utils.mediatypes,
  org.wso2.developerstudio.eclipse.utils.project
 Bundle-Vendor: WSO2

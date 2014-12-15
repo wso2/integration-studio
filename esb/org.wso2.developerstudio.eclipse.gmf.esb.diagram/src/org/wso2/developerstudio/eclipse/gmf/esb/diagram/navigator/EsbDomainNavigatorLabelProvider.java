@@ -17,8 +17,7 @@ public class EsbDomainNavigatorLabelProvider implements ICommonLabelProvider {
 	 * @generated
 	 */
 	private AdapterFactoryLabelProvider myAdapterFactoryLabelProvider = new AdapterFactoryLabelProvider(
-			EsbDiagramEditorPlugin.getInstance()
-					.getItemProvidersAdapterFactory());
+			EsbDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 
 	/**
 	 * @generated
@@ -31,8 +30,8 @@ public class EsbDomainNavigatorLabelProvider implements ICommonLabelProvider {
 	 */
 	public Image getImage(Object element) {
 		if (element instanceof EsbDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider
-					.getImage(((EsbDomainNavigatorItem) element).getEObject());
+			return myAdapterFactoryLabelProvider.getImage(((EsbDomainNavigatorItem) element)
+					.getEObject());
 		}
 		return null;
 	}
@@ -42,8 +41,8 @@ public class EsbDomainNavigatorLabelProvider implements ICommonLabelProvider {
 	 */
 	public String getText(Object element) {
 		if (element instanceof EsbDomainNavigatorItem) {
-			return myAdapterFactoryLabelProvider
-					.getText(((EsbDomainNavigatorItem) element).getEObject());
+			return myAdapterFactoryLabelProvider.getText(((EsbDomainNavigatorItem) element)
+					.getEObject());
 		}
 		return null;
 	}

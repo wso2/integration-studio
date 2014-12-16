@@ -116,6 +116,10 @@ public class RemoteCarbonOperationsManager implements ICarbonOperationManager {
 				case ICarbonOperationManager.OPERATION_SERVER_URL:
 					result=RemoteCarbonServerUtils.getServerURL(server);
 					break;
+				case ICarbonOperationManager.OPERATION_CLEANUP_SERVER_CONFIGURATIONS:
+                                        if (server!=null)
+                                               cleanupTheServer(server);
+                                        break;
 				default:
 					throw new NoSuchCarbonOperationDefinedException();
 			}

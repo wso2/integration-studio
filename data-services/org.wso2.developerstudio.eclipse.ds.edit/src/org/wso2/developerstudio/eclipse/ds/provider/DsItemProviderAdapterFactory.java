@@ -965,6 +965,29 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.ds.Policy} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PolicyItemProvider policyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.ds.Policy}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPolicyAdapter() {
+		if (policyItemProvider == null) {
+			policyItemProvider = new PolicyItemProvider(this);
+		}
+
+		return policyItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1103,6 +1126,7 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 		if (targetTopicItemProvider != null) targetTopicItemProvider.dispose();
 		if (workBookNameItemProvider != null) workBookNameItemProvider.dispose();
 		if (workSheetNumberItemProvider != null) workSheetNumberItemProvider.dispose();
+		if (policyItemProvider != null) policyItemProvider.dispose();
 	}
 
 }

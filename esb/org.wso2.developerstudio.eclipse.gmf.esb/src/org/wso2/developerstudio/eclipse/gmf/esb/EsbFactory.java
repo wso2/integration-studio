@@ -1617,6 +1617,33 @@ public interface EsbFactory extends EFactory {
 	DataMapperMediatorOutputConnector createDataMapperMediatorOutputConnector();
 
 	/**
+	 * Returns a new object of class '<em>Fast XSLT Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fast XSLT Mediator</em>'.
+	 * @generated
+	 */
+	FastXSLTMediator createFastXSLTMediator();
+
+	/**
+	 * Returns a new object of class '<em>Fast XSLT Mediator Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fast XSLT Mediator Input Connector</em>'.
+	 * @generated
+	 */
+	FastXSLTMediatorInputConnector createFastXSLTMediatorInputConnector();
+
+	/**
+	 * Returns a new object of class '<em>Fast XSLT Mediator Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fast XSLT Mediator Output Connector</em>'.
+	 * @generated
+	 */
+	FastXSLTMediatorOutputConnector createFastXSLTMediatorOutputConnector();
+
+	/**
 	 * Returns a new object of class '<em>Script Mediator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

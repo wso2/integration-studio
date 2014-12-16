@@ -1422,6 +1422,13 @@
              extension="xml">
        </template>
        <template
+             file="resources/templates/localentries/local-entry.xml"
+             id="org.wso2.developerstudio.eclipse.esb.localentry"
+             name="Local Entry"
+             mediaType="application/vnd.wso2.esb.localentry"
+             extension="xml">
+       </template>
+       <template
              file="resources/templates/empty_css.css"
              id="org.wso2.developerstudio.eclipse.esb.template.css"
              name="CSS File"
@@ -1506,6 +1513,5 @@
              mediaType="application/vnd.wso2.template.endpoint"
              extension="xml">
        </template>       
-
     </extension>
 </plugin>

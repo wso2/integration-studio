@@ -74,6 +74,7 @@ public class SequenceItemProvider
 		}else {
 			addStaticReferenceKeyPropertyDescriptor(object);
 		}
+		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
 
@@ -601,6 +602,11 @@ public class SequenceItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.SEQUENCE__INCLUDED_MEDIATORS,
 				 EsbFactory.eINSTANCE.createDataMapperMediator()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.SEQUENCE__INCLUDED_MEDIATORS,
+				 EsbFactory.eINSTANCE.createFastXSLTMediator()));
 
 		newChildDescriptors.add
 			(createChildParameter

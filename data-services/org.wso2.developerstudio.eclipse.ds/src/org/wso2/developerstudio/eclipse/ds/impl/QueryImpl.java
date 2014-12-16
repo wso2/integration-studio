@@ -281,8 +281,26 @@ public class QueryImpl extends EObjectImpl implements Query {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ResultMapping> getResult() {
-		return getMixed().list(DsPackage.Literals.QUERY__RESULT);
+	public ResultMapping getResult() {
+		return (ResultMapping)getMixed().get(DsPackage.Literals.QUERY__RESULT, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetResult(ResultMapping newResult, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.QUERY__RESULT, newResult, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResult(ResultMapping newResult) {
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.QUERY__RESULT, newResult);
 	}
 
 	/**
@@ -459,7 +477,7 @@ public class QueryImpl extends EObjectImpl implements Query {
 			case DsPackage.QUERY__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 			case DsPackage.QUERY__RESULT:
-				return ((InternalEList<?>)getResult()).basicRemove(otherEnd, msgs);
+				return basicSetResult(null, msgs);
 			case DsPackage.QUERY__EXCEL:
 				return ((InternalEList<?>)getExcel()).basicRemove(otherEnd, msgs);
 			case DsPackage.QUERY__GSPREAD:
@@ -543,8 +561,7 @@ public class QueryImpl extends EObjectImpl implements Query {
 				getProperties().addAll((Collection<? extends QueryPropertyList>)newValue);
 				return;
 			case DsPackage.QUERY__RESULT:
-				getResult().clear();
-				getResult().addAll((Collection<? extends ResultMapping>)newValue);
+				setResult((ResultMapping)newValue);
 				return;
 			case DsPackage.QUERY__EXCEL:
 				getExcel().clear();
@@ -605,7 +622,7 @@ public class QueryImpl extends EObjectImpl implements Query {
 				getProperties().clear();
 				return;
 			case DsPackage.QUERY__RESULT:
-				getResult().clear();
+				setResult((ResultMapping)null);
 				return;
 			case DsPackage.QUERY__EXCEL:
 				getExcel().clear();
@@ -658,7 +675,7 @@ public class QueryImpl extends EObjectImpl implements Query {
 			case DsPackage.QUERY__PROPERTIES:
 				return !getProperties().isEmpty();
 			case DsPackage.QUERY__RESULT:
-				return !getResult().isEmpty();
+				return getResult() != null;
 			case DsPackage.QUERY__EXCEL:
 				return !getExcel().isEmpty();
 			case DsPackage.QUERY__GSPREAD:

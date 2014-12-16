@@ -1,8 +1,6 @@
 package org.wso2.developerstudio.eclipse.artifact.dataservice.model;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-
 import org.wso2.developerstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
@@ -15,6 +13,7 @@ public class DataServiceModel extends ProjectDataModel {
 	private String serviceNS;
 	private String serviceDescription;
 	private String dataSourceId;
+	private String secPolicy="";
 	
 	//configuration 
 	private RdbmsConfig rdbmsConfig;
@@ -51,6 +50,8 @@ public class DataServiceModel extends ProjectDataModel {
 			modelPropertyValue = getServiceNS();
 		} else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_DESCRIPTION)) {
 			modelPropertyValue = getServiceDescription();
+		} else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_SECPOLICY)) {
+			modelPropertyValue = getSecPolicy();
 		}
 		return modelPropertyValue;
 	}
@@ -71,7 +72,9 @@ public class DataServiceModel extends ProjectDataModel {
 			setServiceNS(data.toString())	;	
 		} else if(key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_DESCRIPTION)){
 			setServiceDescription(data.toString());
-		} 
+		} else if(key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_SECPOLICY)){
+			setSecPolicy(data.toString());
+		}
 		return returnValue;
 	}
 	
@@ -185,6 +188,14 @@ public class DataServiceModel extends ProjectDataModel {
 			setDataSourceConfig(getWebDataSourceConfig());
 			break;
 		}
+	}
+	
+	public void setSecPolicy(String secPolicy){
+		this.secPolicy=secPolicy;
+	}
+
+	public String getSecPolicy(){
+		return secPolicy;
 	}
 
 	public DataSourceConfig getDataSourceConfig() {

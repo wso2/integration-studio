@@ -522,6 +522,11 @@ public class MediatorFlowItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
 				 EsbFactory.eINSTANCE.createDataMapperMediator()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
+				 EsbFactory.eINSTANCE.createFastXSLTMediator()));
 	}
 
 }

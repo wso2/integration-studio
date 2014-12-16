@@ -87,6 +87,7 @@ public class CacheMediatorItemProvider
 				addSequenceKeyPropertyDescriptor(object);
 			}
 		} 
+		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
 

@@ -4149,6 +4149,75 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FastXSLTMediatorItemProvider fastXSLTMediatorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFastXSLTMediatorAdapter() {
+		if (fastXSLTMediatorItemProvider == null) {
+			fastXSLTMediatorItemProvider = new FastXSLTMediatorItemProvider(this);
+		}
+
+		return fastXSLTMediatorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorInputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FastXSLTMediatorInputConnectorItemProvider fastXSLTMediatorInputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorInputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFastXSLTMediatorInputConnectorAdapter() {
+		if (fastXSLTMediatorInputConnectorItemProvider == null) {
+			fastXSLTMediatorInputConnectorItemProvider = new FastXSLTMediatorInputConnectorItemProvider(this);
+		}
+
+		return fastXSLTMediatorInputConnectorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FastXSLTMediatorOutputConnectorItemProvider fastXSLTMediatorOutputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFastXSLTMediatorOutputConnectorAdapter() {
+		if (fastXSLTMediatorOutputConnectorItemProvider == null) {
+			fastXSLTMediatorOutputConnectorItemProvider = new FastXSLTMediatorOutputConnectorItemProvider(this);
+		}
+
+		return fastXSLTMediatorOutputConnectorItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8132,6 +8201,9 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 		if (dataMapperMediatorItemProvider != null) dataMapperMediatorItemProvider.dispose();
 		if (dataMapperMediatorInputConnectorItemProvider != null) dataMapperMediatorInputConnectorItemProvider.dispose();
 		if (dataMapperMediatorOutputConnectorItemProvider != null) dataMapperMediatorOutputConnectorItemProvider.dispose();
+		if (fastXSLTMediatorItemProvider != null) fastXSLTMediatorItemProvider.dispose();
+		if (fastXSLTMediatorInputConnectorItemProvider != null) fastXSLTMediatorInputConnectorItemProvider.dispose();
+		if (fastXSLTMediatorOutputConnectorItemProvider != null) fastXSLTMediatorOutputConnectorItemProvider.dispose();
 	}
 
 }

@@ -3,5 +3,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers;
 /**
  * @generated
  */
-public class ThrottleMediatorOnRejectOutputConnectorEditHelper extends EsbBaseEditHelper {
+public class ThrottleMediatorOnRejectOutputConnectorEditHelper extends
+		EsbBaseEditHelper {
 }

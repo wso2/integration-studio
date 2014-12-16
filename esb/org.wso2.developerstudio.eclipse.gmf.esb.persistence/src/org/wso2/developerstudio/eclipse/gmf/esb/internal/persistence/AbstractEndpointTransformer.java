@@ -97,12 +97,18 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		if (visualEndPoint.isReliableMessagingEnabled()) {
 			synapseEPDef.setReliableMessagingOn(visualEndPoint
 					.isReliableMessagingEnabled());
-			synapseEPDef.setWsRMPolicyKey(visualEndPoint.getReliableMessagingPolicy().getKeyValue());
+			String keyValue = visualEndPoint.getReliableMessagingPolicy().getKeyValue();
+			if(keyValue != null && !keyValue.isEmpty()){
+				synapseEPDef.setWsRMPolicyKey(visualEndPoint.getReliableMessagingPolicy().getKeyValue());
+			}
 		}
 
 		if (visualEndPoint.isSecurityEnabled()) {
 			synapseEPDef.setSecurityOn(true);
-			synapseEPDef.setWsSecPolicyKey(visualEndPoint.getSecurityPolicy().getKeyValue());
+			String keyValue = visualEndPoint.getSecurityPolicy().getKeyValue();
+			if(keyValue !=null && !keyValue.isEmpty()){
+				synapseEPDef.setWsSecPolicyKey(visualEndPoint.getSecurityPolicy().getKeyValue());
+			}
 		}
 		
 		saveProperties(visualEndPoint, endpoint);

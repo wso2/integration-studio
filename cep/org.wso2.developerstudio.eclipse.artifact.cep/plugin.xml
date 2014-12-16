@@ -16,7 +16,7 @@
                name="Complex Event Processing"
                parentCategory="org.wso2.developerstudio.eclipse.capp.project">
          </category>
-   </extension>
+   </extension>  
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.cep.project.nature" name="CEP_PROJECT_NATURE">
 		<runtime>
@@ -25,13 +25,14 @@
 			</run>
 		</runtime>
 	</extension>
+
 	<extension point="org.eclipse.ui.ide.projectNatureImages">
 		<image id="org.wso2.developerstudio.eclipse.cep.project.natureImage"
 			natureId="org.wso2.developerstudio.eclipse.cep.project.nature" icon="icons/buket-12x12.png">
 		</image>
 	</extension>
-	<extension point="org.eclipse.ui.navigator.navigatorContent">	
-	   <navigatorContent activeByDefault="true"
+	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
+	 <navigatorContent activeByDefault="true"
 			priority="high"
 			id="org.eclipse.ui.navigator.resourceContent"
 			name="test">
@@ -57,8 +58,26 @@
 				           </or>
 				  </triggerPoints>
 		</navigatorContent>
-	</extension>
- <extension
+		</extension>-->
+				<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.newcepartifact"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+		 <extension
        point="org.wso2.developerstudio.eclipse.project.export.handler">
     <handler
           class="org.wso2.developerstudio.eclipse.artifact.cep.project.export.CEPArtfactExportHandler"

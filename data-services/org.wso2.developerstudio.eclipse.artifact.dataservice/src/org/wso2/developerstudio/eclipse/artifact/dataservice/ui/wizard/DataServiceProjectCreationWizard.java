@@ -140,6 +140,7 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
 		templateContent = templateContent.replaceAll("<service.NS>",dsModel.getServiceNS());
 		templateContent = templateContent.replaceAll("<service.description>",dsModel.getServiceDescription());
 		templateContent = templateContent.replaceAll("<config.id>",dsModel.getDataSourceId());
+		templateContent = templateContent.replaceAll("<service.policykey>",dsModel.getSecPolicy());
 		
 		LinkedHashMap<String,String> config = dsModel.getDataSourceConfig().getConfig();
 		Iterator<String> iterator = config.keySet().iterator();

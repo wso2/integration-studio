@@ -793,6 +793,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String FastXSLTMediator47CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String FastXSLTMediator47CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
 	public static String DefaultEndPoint1CreationTool_title;
 
 	/**
@@ -1329,6 +1339,16 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_DataMapperMediatorOutputConnector_3763_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_FastXSLTMediatorInputConnector_3765_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_FastXSLTMediatorOutputConnector_3766_outgoinglinks;
 
 	/**
 	 * @generated
@@ -1984,21 +2004,6 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorActionProvider_OpenDiagramActionName;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_UnexpectedValueType;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_WrongStringConversion;
-
-	/**
-	 * @generated
-	 */
-	public static String AbstractParser_UnknownLiteral;
 
 	/**
 	 * @generated

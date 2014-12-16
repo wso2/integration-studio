@@ -26,7 +26,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class EndpointDiagram2ItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
+public class EndpointDiagram2ItemSemanticEditPolicy extends
+		EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -40,8 +41,8 @@ public class EndpointDiagram2ItemSemanticEditPolicy extends EsbBaseItemSemanticE
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
-				null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
+				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -65,54 +66,63 @@ public class EndpointDiagram2ItemSemanticEditPolicy extends EsbBaseItemSemanticE
 			Node node = (Node) nit.next();
 			switch (EsbVisualIDRegistry.getVisualID(node)) {
 			case EndpointDiagramEndpointCompartment2EditPart.VISUAL_ID:
-				for (Iterator<?> cit = node.getChildren().iterator(); cit.hasNext();) {
+				for (Iterator<?> cit = node.getChildren().iterator(); cit
+						.hasNext();) {
 					Node cnode = (Node) cit.next();
 					switch (EsbVisualIDRegistry.getVisualID(cnode)) {
 					case DefaultEndPoint2EditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case AddressEndPoint2EditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case FailoverEndPoint2EditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case RecipientListEndPoint2EditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case WSDLEndPoint2EditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case LoadBalanceEndPoint2EditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case HTTPEndpoint2EditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case TemplateEndpoint2EditPart.VISUAL_ID:
-						cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-								getEditingDomain(), cnode.getElement(), false))); // directlyOwned: true
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
 						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;

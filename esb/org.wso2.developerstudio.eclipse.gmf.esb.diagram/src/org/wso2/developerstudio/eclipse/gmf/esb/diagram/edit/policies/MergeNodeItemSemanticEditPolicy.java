@@ -26,7 +26,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class MergeNodeItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
+public class MergeNodeItemSemanticEditPolicy extends
+		EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -39,13 +40,18 @@ public class MergeNodeItemSemanticEditPolicy extends EsbBaseItemSemanticEditPoli
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.MergeNodeFirstInputConnector_3014 == req.getElementType()) {
-			return getGEFWrapper(new MergeNodeFirstInputConnectorCreateCommand(req));
+		if (EsbElementTypes.MergeNodeFirstInputConnector_3014 == req
+				.getElementType()) {
+			return getGEFWrapper(new MergeNodeFirstInputConnectorCreateCommand(
+					req));
 		}
-		if (EsbElementTypes.MergeNodeSecondInputConnector_3015 == req.getElementType()) {
-			return getGEFWrapper(new MergeNodeSecondInputConnectorCreateCommand(req));
+		if (EsbElementTypes.MergeNodeSecondInputConnector_3015 == req
+				.getElementType()) {
+			return getGEFWrapper(new MergeNodeSecondInputConnectorCreateCommand(
+					req));
 		}
-		if (EsbElementTypes.MergeNodeOutputConnector_3016 == req.getElementType()) {
+		if (EsbElementTypes.MergeNodeOutputConnector_3016 == req
+				.getElementType()) {
 			return getGEFWrapper(new MergeNodeOutputConnectorCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
@@ -56,8 +62,8 @@ public class MergeNodeItemSemanticEditPolicy extends EsbBaseItemSemanticEditPoli
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
-				null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
+				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -81,50 +87,56 @@ public class MergeNodeItemSemanticEditPolicy extends EsbBaseItemSemanticEditPoli
 			Node node = (Node) nit.next();
 			switch (EsbVisualIDRegistry.getVisualID(node)) {
 			case MergeNodeFirstInputConnectorEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getTargetEdges().iterator(); it.hasNext();) {
+				for (Iterator<?> it = node.getTargetEdges().iterator(); it
+						.hasNext();) {
 					Edge incomingLink = (Edge) it.next();
 					if (EsbVisualIDRegistry.getVisualID(incomingLink) == EsbLinkEditPart.VISUAL_ID) {
 						DestroyElementRequest r = new DestroyElementRequest(
 								incomingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
+						cmd.add(new DeleteCommand(getEditingDomain(),
+								incomingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
+						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case MergeNodeSecondInputConnectorEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getTargetEdges().iterator(); it.hasNext();) {
+				for (Iterator<?> it = node.getTargetEdges().iterator(); it
+						.hasNext();) {
 					Edge incomingLink = (Edge) it.next();
 					if (EsbVisualIDRegistry.getVisualID(incomingLink) == EsbLinkEditPart.VISUAL_ID) {
 						DestroyElementRequest r = new DestroyElementRequest(
 								incomingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
+						cmd.add(new DeleteCommand(getEditingDomain(),
+								incomingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
+						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case MergeNodeOutputConnectorEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getSourceEdges().iterator(); it.hasNext();) {
+				for (Iterator<?> it = node.getSourceEdges().iterator(); it
+						.hasNext();) {
 					Edge outgoingLink = (Edge) it.next();
 					if (EsbVisualIDRegistry.getVisualID(outgoingLink) == EsbLinkEditPart.VISUAL_ID) {
 						DestroyElementRequest r = new DestroyElementRequest(
 								outgoingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
+						cmd.add(new DeleteCommand(getEditingDomain(),
+								outgoingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
+						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;

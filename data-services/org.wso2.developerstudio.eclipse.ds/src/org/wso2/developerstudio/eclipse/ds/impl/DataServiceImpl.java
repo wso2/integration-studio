@@ -32,6 +32,7 @@ import org.wso2.developerstudio.eclipse.ds.Description;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.EventTrigger;
 import org.wso2.developerstudio.eclipse.ds.Operation;
+import org.wso2.developerstudio.eclipse.ds.Policy;
 import org.wso2.developerstudio.eclipse.ds.Query;
 import org.wso2.developerstudio.eclipse.ds.Resource;
 import org.wso2.developerstudio.eclipse.ds.ServiceStatus;
@@ -59,6 +60,9 @@ import org.wso2.developerstudio.eclipse.ds.ServiceStatus;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getServiceNamespace <em>Service Namespace</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getServiceStatus <em>Service Status</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#isDisableStreaming <em>Disable Streaming</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#isEnableSec <em>Enable Sec</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getPolicy <em>Policy</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getTransports <em>Transports</em>}</li>
  * </ul>
  * </p>
  *
@@ -263,6 +267,46 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	 * @ordered
 	 */
 	protected boolean disableStreaming = DISABLE_STREAMING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isEnableSec() <em>Enable Sec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableSec()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLE_SEC_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isEnableSec() <em>Enable Sec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableSec()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enableSec = ENABLE_SEC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransports() <em>Transports</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransports()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORTS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransports() <em>Transports</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransports()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transports = TRANSPORTS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -587,6 +631,75 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isEnableSec() {
+		return enableSec;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnableSec(boolean newEnableSec) {
+		boolean oldEnableSec = enableSec;
+		enableSec = newEnableSec;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.DATA_SERVICE__ENABLE_SEC, oldEnableSec, enableSec));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Policy getPolicy() {
+		return (Policy)getMixed().get(DsPackage.Literals.DATA_SERVICE__POLICY, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPolicy(Policy newPolicy, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DATA_SERVICE__POLICY, newPolicy, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPolicy(Policy newPolicy) {
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DATA_SERVICE__POLICY, newPolicy);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransports() {
+		return transports;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransports(String newTransports) {
+		String oldTransports = transports;
+		transports = newTransports;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DsPackage.DATA_SERVICE__TRANSPORTS, oldTransports, transports));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
@@ -606,6 +719,8 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				return ((InternalEList<?>)getOperation()).basicRemove(otherEnd, msgs);
 			case DsPackage.DATA_SERVICE__RESOURCE:
 				return ((InternalEList<?>)getResource()).basicRemove(otherEnd, msgs);
+			case DsPackage.DATA_SERVICE__POLICY:
+				return basicSetPolicy(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -652,6 +767,12 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				return getServiceStatus();
 			case DsPackage.DATA_SERVICE__DISABLE_STREAMING:
 				return isDisableStreaming();
+			case DsPackage.DATA_SERVICE__ENABLE_SEC:
+				return isEnableSec();
+			case DsPackage.DATA_SERVICE__POLICY:
+				return getPolicy();
+			case DsPackage.DATA_SERVICE__TRANSPORTS:
+				return getTransports();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -718,6 +839,15 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 			case DsPackage.DATA_SERVICE__DISABLE_STREAMING:
 				setDisableStreaming((Boolean)newValue);
 				return;
+			case DsPackage.DATA_SERVICE__ENABLE_SEC:
+				setEnableSec((Boolean)newValue);
+				return;
+			case DsPackage.DATA_SERVICE__POLICY:
+				setPolicy((Policy)newValue);
+				return;
+			case DsPackage.DATA_SERVICE__TRANSPORTS:
+				setTransports((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -779,6 +909,15 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 			case DsPackage.DATA_SERVICE__DISABLE_STREAMING:
 				setDisableStreaming(DISABLE_STREAMING_EDEFAULT);
 				return;
+			case DsPackage.DATA_SERVICE__ENABLE_SEC:
+				setEnableSec(ENABLE_SEC_EDEFAULT);
+				return;
+			case DsPackage.DATA_SERVICE__POLICY:
+				setPolicy((Policy)null);
+				return;
+			case DsPackage.DATA_SERVICE__TRANSPORTS:
+				setTransports(TRANSPORTS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -824,6 +963,12 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				return isSetServiceStatus();
 			case DsPackage.DATA_SERVICE__DISABLE_STREAMING:
 				return disableStreaming != DISABLE_STREAMING_EDEFAULT;
+			case DsPackage.DATA_SERVICE__ENABLE_SEC:
+				return enableSec != ENABLE_SEC_EDEFAULT;
+			case DsPackage.DATA_SERVICE__POLICY:
+				return getPolicy() != null;
+			case DsPackage.DATA_SERVICE__TRANSPORTS:
+				return TRANSPORTS_EDEFAULT == null ? transports != null : !TRANSPORTS_EDEFAULT.equals(transports);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -859,6 +1004,10 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 		if (serviceStatusESet) result.append(serviceStatus); else result.append("<unset>");
 		result.append(", disableStreaming: ");
 		result.append(disableStreaming);
+		result.append(", enableSec: ");
+		result.append(enableSec);
+		result.append(", transports: ");
+		result.append(transports);
 		result.append(')');
 		return result.toString();
 	}

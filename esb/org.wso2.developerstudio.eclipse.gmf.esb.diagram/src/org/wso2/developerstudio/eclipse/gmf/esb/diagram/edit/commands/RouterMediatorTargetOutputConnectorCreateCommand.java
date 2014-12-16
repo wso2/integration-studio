@@ -18,12 +18,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorTargetOutputConnec
 /**
  * @generated
  */
-public class RouterMediatorTargetOutputConnectorCreateCommand extends EditElementCommand {
+public class RouterMediatorTargetOutputConnectorCreateCommand extends
+		EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public RouterMediatorTargetOutputConnectorCreateCommand(CreateElementRequest req) {
+	public RouterMediatorTargetOutputConnectorCreateCommand(
+			CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -32,7 +34,8 @@ public class RouterMediatorTargetOutputConnectorCreateCommand extends EditElemen
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -50,8 +53,8 @@ public class RouterMediatorTargetOutputConnectorCreateCommand extends EditElemen
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		RouterMediatorTargetOutputConnector newElement = EsbFactory.eINSTANCE
 				.createRouterMediatorTargetOutputConnector();
 
@@ -68,13 +71,17 @@ public class RouterMediatorTargetOutputConnectorCreateCommand extends EditElemen
 	 * @generated
 	 */
 	protected void doConfigure(RouterMediatorTargetOutputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+			IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

@@ -18,12 +18,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointInputConnec
 /**
  * @generated
  */
-public class RecipientListEndPointInputConnector2CreateCommand extends EditElementCommand {
+public class RecipientListEndPointInputConnector2CreateCommand extends
+		EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public RecipientListEndPointInputConnector2CreateCommand(CreateElementRequest req) {
+	public RecipientListEndPointInputConnector2CreateCommand(
+			CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -32,7 +34,8 @@ public class RecipientListEndPointInputConnector2CreateCommand extends EditEleme
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -54,8 +57,8 @@ public class RecipientListEndPointInputConnector2CreateCommand extends EditEleme
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		RecipientListEndPointInputConnector newElement = EsbFactory.eINSTANCE
 				.createRecipientListEndPointInputConnector();
 
@@ -72,13 +75,17 @@ public class RecipientListEndPointInputConnector2CreateCommand extends EditEleme
 	 * @generated
 	 */
 	protected void doConfigure(RecipientListEndPointInputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+			IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

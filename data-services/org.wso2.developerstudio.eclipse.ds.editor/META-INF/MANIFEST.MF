@@ -51,4 +51,5 @@ Import-Package: org.apache.commons.lang,
  org.wso2.developerstudio.eclipse.utils.data,
  org.wso2.developerstudio.eclipse.utils.file
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.wso2.developerstudio.eclipse.ds.presentation
+Export-Package: org.wso2.developerstudio.eclipse.ds.presentation,
+ org.wso2.developerstudio.eclipse.ds.presentation.ui

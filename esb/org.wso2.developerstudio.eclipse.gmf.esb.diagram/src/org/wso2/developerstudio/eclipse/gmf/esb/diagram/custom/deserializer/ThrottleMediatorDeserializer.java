@@ -59,7 +59,12 @@ public class ThrottleMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 			executeSetValueCommand(THROTTLE_MEDIATOR__GROUP_ID, throttleMediator.getId());
 		}
 		
-		if(throttleMediator.getInLinePolicy() != null){
+		if (throttleMediator.getPolicyKey() != null) {
+			executeSetValueCommand(THROTTLE_MEDIATOR__POLICY_TYPE, ThrottlePolicyType.REGISTRY_REFERENCE);
+			RegistryKeyProperty keyProperty = EsbFactory.eINSTANCE.createRegistryKeyProperty();
+			keyProperty.setKeyValue(throttleMediator.getPolicyKey());
+			executeSetValueCommand(THROTTLE_MEDIATOR__POLICY_KEY, keyProperty);
+		} else {
 			
 			executeSetValueCommand(THROTTLE_MEDIATOR__POLICY_TYPE, ThrottlePolicyType.INLINE);
 			

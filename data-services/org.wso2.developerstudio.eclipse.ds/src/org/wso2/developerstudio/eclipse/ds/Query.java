@@ -127,21 +127,31 @@ public interface Query extends EObject {
 	EList<QueryPropertyList> getProperties();
 
 	/**
-	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.ds.ResultMapping}.
+	 * Returns the value of the '<em><b>Result</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Result</em>' containment reference list isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Result</em>' containment reference list.
+	 * @return the value of the '<em>Result</em>' containment reference.
+	 * @see #setResult(ResultMapping)
 	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getQuery_Result()
 	 * @model containment="true" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='result' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<ResultMapping> getResult();
+	ResultMapping getResult();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.Query#getResult <em>Result</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Result</em>' containment reference.
+	 * @see #getResult()
+	 * @generated
+	 */
+	void setResult(ResultMapping value);
 
 	/**
 	 * Returns the value of the '<em><b>Excel</b></em>' containment reference list.

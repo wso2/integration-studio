@@ -106,17 +106,21 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new CallTemplateMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new FeedbackIndicateDragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new CallTemplateMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenSeparatelyEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new OpenSeparatelyEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -134,7 +138,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 				case CallTemplateMediatorOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -159,7 +164,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		return primaryShape = new CallTemplateMediatorFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0
+						&& this.getBounds().getLocation().y != 0) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 				}
@@ -177,24 +183,29 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 	protected boolean addFixedChild(EditPart childEditPart) {
 
 		if (childEditPart instanceof CallTemplateMediatorDescriptionEditPart) {
-			((CallTemplateMediatorDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getCallTemplateMediatorDescriptionLabel());
+			((CallTemplateMediatorDescriptionEditPart) childEditPart)
+					.setLabel(getPrimaryShape()
+							.getCallTemplateMediatorDescriptionLabel());
 			return true;
 		}
 		if (childEditPart instanceof CallTemplateMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((CallTemplateMediatorInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof CallTemplateMediatorOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((CallTemplateMediatorOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.EAST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.EAST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		return false;
@@ -206,13 +217,17 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 			return true;
 		}
 		if (childEditPart instanceof CallTemplateMediatorInputConnectorEditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((CallTemplateMediatorInputConnectorEditPart) childEditPart).getFigure());
+			getBorderedFigure()
+					.getBorderItemContainer()
+					.remove(((CallTemplateMediatorInputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		if (childEditPart instanceof CallTemplateMediatorOutputConnectorEditPart) {
-			getBorderedFigure().getBorderItemContainer().remove(
-					((CallTemplateMediatorOutputConnectorEditPart) childEditPart).getFigure());
+			getBorderedFigure()
+					.getBorderItemContainer()
+					.remove(((CallTemplateMediatorOutputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		return false;
@@ -317,8 +332,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 	}
 
-	private ESBArtifact createArtifact(String name, String groupId, String version, String path,
-			String type) {
+	private ESBArtifact createArtifact(String name, String groupId,
+			String version, String path, String type) {
 		ESBArtifact artifact = new ESBArtifact();
 		artifact.setName(name);
 		artifact.setVersion(version);
@@ -332,8 +347,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 	private String getMavenGroupID(IProject project) {
 		String groupID = "com.example";
 		try {
-			MavenProject mavenProject = MavenUtils.getMavenProject(project.getFile("pom.xml")
-					.getLocation().toFile());
+			MavenProject mavenProject = MavenUtils.getMavenProject(project
+					.getFile("pom.xml").getLocation().toFile());
 			groupID = mavenProject.getGroupId() + ".template";
 		} catch (Exception e) {
 			//ignore. Then group id would be default. 
@@ -346,11 +361,12 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		IProject activeProject = getActiveProject();
 		ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 		try {
-			esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation()
-					.toFile());
+			esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml")
+					.getLocation().toFile());
 			esbProjectArtifact.addESBArtifact(createArtifact(templateName,
-					getMavenGroupID(activeProject), "1.0.0", "src/main/synapse-config/templates/"
-							+ templateName + ".xml", "synapse/sequenceTemplate"));
+					getMavenGroupID(activeProject), "1.0.0",
+					"src/main/synapse-config/templates/" + templateName
+							+ ".xml", "synapse/sequenceTemplate"));
 			esbProjectArtifact.toFile();
 		} catch (Exception e) {
 			log.error("Error while updating Artifact.xml");
@@ -361,20 +377,24 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 			IProject currentProject) {
 		Resource diagram;
 
-		String basePath = "platform:/resource/" + currentProject.getName() + "/"
-				+ TEMPLATE_RESOURCE_DIR + "/";
-		IFile file = currentProject.getFile(TEMPLATE_RESOURCE_DIR + "/" + fileURI1);
+		String basePath = "platform:/resource/" + currentProject.getName()
+				+ "/" + TEMPLATE_RESOURCE_DIR + "/";
+		IFile file = currentProject.getFile(TEMPLATE_RESOURCE_DIR + "/"
+				+ fileURI1);
 
 		if (!file.exists()) {
-			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/templates/" + name
-					+ ".xml");
+			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR
+					+ "/templates/" + name + ".xml");
 			try {
-				diagram = EsbDiagramEditorUtil.createDiagram(URI.createURI(basePath + fileURI1),
-						URI.createURI(basePath + fileURI2), new NullProgressMonitor(),
-						"template.sequence", name, null);
+				diagram = EsbDiagramEditorUtil.createDiagram(
+						URI.createURI(basePath + fileURI1),
+						URI.createURI(basePath + fileURI2),
+						new NullProgressMonitor(), "template.sequence", name,
+						null);
 
 				if (fileTobeOpened.exists()) {
-					String diagramPath = diagram.getURI().toPlatformString(true);
+					String diagramPath = diagram.getURI()
+							.toPlatformString(true);
 					OpenEditorUtils oeUtils = new OpenEditorUtils();
 					oeUtils.openSeparateEditor(fileTobeOpened, diagramPath);
 				} else {
@@ -389,10 +409,10 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 
 		else {
-			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-					.getActivePage();
-			IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry()
-					.getDefaultEditor(file.getName());
+			IWorkbenchPage page = PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage();
+			IEditorDescriptor desc = PlatformUI.getWorkbench()
+					.getEditorRegistry().getDefaultEditor(file.getName());
 			try {
 				page.openEditor(new FileEditorInput(file), desc.getId());
 			} catch (PartInitException e) {
@@ -411,8 +431,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		/*
 		 * File creations.
 		 */
-		createFiles(name, "template_" + name + ".esb_diagram", "template_" + name + ".esb",
-				activeProject);
+		createFiles(name, "template_" + name + ".esb_diagram", "template_"
+				+ name + ".esb", activeProject);
 		//EditorUtils.updateToolpalette();
 
 	}
@@ -429,7 +449,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 				finalName = finalName.concat(i + "");
 			}
 		} catch (Exception e) {
-			finalName = finalName.concat("_").concat(RandomStringUtils.randomAlphabetic(5))
+			finalName = finalName.concat("_")
+					.concat(RandomStringUtils.randomAlphabetic(5))
 					.concat("_" + i);
 		}
 		return finalName;
@@ -441,7 +462,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 				.getElement();
 
 		// For validation: user should not enter "" value for name.
-		if (((CallTemplateMediator) callTemplate).getTargetTemplate().trim().equals("")) {
+		if (((CallTemplateMediator) callTemplate).getTargetTemplate().trim()
+				.equals("")) {
 			IInputValidator validator = new IInputValidator() {
 
 				public String isValid(String str) {
@@ -456,9 +478,11 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 			};
 			String defaultName = calculateDefaultName();
 			final InputDialog templateNameInput = new InputDialog(new Shell(),
-					"Enter Target Template", "Target Template", defaultName, validator) {
+					"Enter Target Template", "Target Template", defaultName,
+					validator) {
 				protected Control createDialogArea(Composite parent) {
-					Composite composite = (Composite) super.createDialogArea(parent);
+					Composite composite = (Composite) super
+							.createDialogArea(parent);
 					return composite;
 				}
 			};
@@ -470,10 +494,14 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 						String targetTemplate = templateNameInput.getValue();
 						TransactionalEditingDomain editingDomain = getEditingDomain();
 
-						SetRequest setRequest = new SetRequest(editingDomain, callTemplate,
-								EsbPackage.eINSTANCE.getCallTemplateMediator_TargetTemplate(),
+						SetRequest setRequest = new SetRequest(
+								editingDomain,
+								callTemplate,
+								EsbPackage.eINSTANCE
+										.getCallTemplateMediator_TargetTemplate(),
 								targetTemplate);
-						SetValueCommand operation = new SetValueCommand(setRequest) {
+						SetValueCommand operation = new SetValueCommand(
+								setRequest) {
 
 							public boolean canUndo() {
 								return true;
@@ -484,7 +512,8 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 							}
 						};
 
-						getEditDomain().getCommandStack().execute(new ICommandProxy(operation));
+						getEditDomain().getCommandStack().execute(
+								new ICommandProxy(operation));
 
 						openWithSeparateEditor();
 					}

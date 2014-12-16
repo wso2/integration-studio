@@ -47,17 +47,20 @@ public class MediatorFlowMediatorFlowCompartment22EditPart extends
 	}
 
 	public IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
+		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super
+				.createFigure();
 		result.setTitle("OnAccept");
 		result.setTitleVisibility(true);
 		/*
 		 * Override default border.
 		 * Fixing TOOLS-1864.
 		 */
-		LineBorder border = new LineBorder(new Color(null, 0, 0, 204), 1, SWT.BORDER_DASH);
+		LineBorder border = new LineBorder(new Color(null, 0, 0, 204), 1,
+				SWT.BORDER_DASH);
 		result.setBorder(border);
 		result.setToolTip("OnAccept");
-		ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(false);
+		ConstrainedToolbarLayout layoutManager = new ConstrainedToolbarLayout(
+				false);
 		layoutManager.setSpacing(-15);
 		result.setLayoutManager(layoutManager);
 		return result;
@@ -68,12 +71,16 @@ public class MediatorFlowMediatorFlowCompartment22EditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(
+				EditPolicyRoles.SEMANTIC_ROLE,
 				new MediatorFlowMediatorFlowCompartment22ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				EsbVisualIDRegistry.TYPED_INSTANCE));
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(
+						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new FeedbackIndicateDragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new MediatorFlowMediatorFlowCompartment22CanonicalEditPolicy());
 	}

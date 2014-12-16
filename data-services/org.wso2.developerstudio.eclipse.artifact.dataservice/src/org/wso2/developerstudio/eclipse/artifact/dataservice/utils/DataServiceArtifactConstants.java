@@ -16,6 +16,7 @@ public class DataServiceArtifactConstants extends NLS {
 	public static String WIZARD_OPTION_IMPORT_FILE;
 	public static String WIZARD_OPTION_NEW_DSPROJECT;
 	public static String WIZARD_OPTION_IMPORT_DSPROJECT;
+	public static String WIZARD_OPTION_SERVICE_SECPOLICY;
 	
 	static {
 		// initialize resource bundle

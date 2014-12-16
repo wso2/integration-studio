@@ -44,8 +44,8 @@ public class RegistryArtifactConstants extends NLS {
 	public static String DATA_CHECKOUT_PATH;
 	public static String JAVA_PROJECT_NATURE;
 	public static String GENERAL_PROJECT_NATURE;
-	
 	public static  String SEQUENCE_TEMPL_ID;
+	public static String LOCAL_ENTRY_TEMPL_ID;
 	public static  String DEFAULT_EP_TEMPL_ID;
 	public static  String ADDRESS_EP_TEMPL_ID;
 	public static  String ADDRESS_EP_TEMPLATE_ID ;

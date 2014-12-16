@@ -388,6 +388,9 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.DATA_MAPPER_MEDIATOR: return createDataMapperMediator();
 			case EsbPackage.DATA_MAPPER_MEDIATOR_INPUT_CONNECTOR: return createDataMapperMediatorInputConnector();
 			case EsbPackage.DATA_MAPPER_MEDIATOR_OUTPUT_CONNECTOR: return createDataMapperMediatorOutputConnector();
+			case EsbPackage.FAST_XSLT_MEDIATOR: return createFastXSLTMediator();
+			case EsbPackage.FAST_XSLT_MEDIATOR_INPUT_CONNECTOR: return createFastXSLTMediatorInputConnector();
+			case EsbPackage.FAST_XSLT_MEDIATOR_OUTPUT_CONNECTOR: return createFastXSLTMediatorOutputConnector();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -2717,6 +2720,38 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	public DataMapperMediatorOutputConnector createDataMapperMediatorOutputConnector() {
 		DataMapperMediatorOutputConnectorImpl dataMapperMediatorOutputConnector = new DataMapperMediatorOutputConnectorImpl();
 		return dataMapperMediatorOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public FastXSLTMediator createFastXSLTMediator() {
+		FastXSLTMediatorImpl fastXSLTMediator = new FastXSLTMediatorImpl();
+		fastXSLTMediator.setInputConnector(createFastXSLTMediatorInputConnector());
+		fastXSLTMediator.setOutputConnector(createFastXSLTMediatorOutputConnector());
+		return fastXSLTMediator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FastXSLTMediatorInputConnector createFastXSLTMediatorInputConnector() {
+		FastXSLTMediatorInputConnectorImpl fastXSLTMediatorInputConnector = new FastXSLTMediatorInputConnectorImpl();
+		return fastXSLTMediatorInputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FastXSLTMediatorOutputConnector createFastXSLTMediatorOutputConnector() {
+		FastXSLTMediatorOutputConnectorImpl fastXSLTMediatorOutputConnector = new FastXSLTMediatorOutputConnectorImpl();
+		return fastXSLTMediatorOutputConnector;
 	}
 
 	/**

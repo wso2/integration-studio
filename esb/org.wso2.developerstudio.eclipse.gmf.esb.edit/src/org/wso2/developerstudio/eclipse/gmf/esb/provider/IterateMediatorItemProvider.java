@@ -92,6 +92,7 @@ public class IterateMediatorItemProvider
 			break;
 		}
 		}
+		addDescriptionPropertyDescriptor(object);
 
 		// addSoapActionPropertyDescriptor(object);
 		// addToAddressPropertyDescriptor(object);

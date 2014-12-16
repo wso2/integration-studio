@@ -22,7 +22,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class ProxyServiceContainer2ItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
+public class ProxyServiceContainer2ItemSemanticEditPolicy extends
+		EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -35,11 +36,15 @@ public class ProxyServiceContainer2ItemSemanticEditPolicy extends EsbBaseItemSem
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.ProxyServiceSequenceAndEndpointContainer_3487 == req.getElementType()) {
-			return getGEFWrapper(new ProxyServiceSequenceAndEndpointContainerCreateCommand(req));
+		if (EsbElementTypes.ProxyServiceSequenceAndEndpointContainer_3487 == req
+				.getElementType()) {
+			return getGEFWrapper(new ProxyServiceSequenceAndEndpointContainerCreateCommand(
+					req));
 		}
-		if (EsbElementTypes.ProxyServiceFaultContainer_3488 == req.getElementType()) {
-			return getGEFWrapper(new ProxyServiceFaultContainerCreateCommand(req));
+		if (EsbElementTypes.ProxyServiceFaultContainer_3488 == req
+				.getElementType()) {
+			return getGEFWrapper(new ProxyServiceFaultContainerCreateCommand(
+					req));
 		}
 		return super.getCreateCommand(req);
 	}
@@ -49,8 +54,8 @@ public class ProxyServiceContainer2ItemSemanticEditPolicy extends EsbBaseItemSem
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
-				null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
+				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -74,14 +79,14 @@ public class ProxyServiceContainer2ItemSemanticEditPolicy extends EsbBaseItemSem
 			Node node = (Node) nit.next();
 			switch (EsbVisualIDRegistry.getVisualID(node)) {
 			case ProxyServiceSequenceAndEndpointContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
+						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case ProxyServiceFaultContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
-						node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
+						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;

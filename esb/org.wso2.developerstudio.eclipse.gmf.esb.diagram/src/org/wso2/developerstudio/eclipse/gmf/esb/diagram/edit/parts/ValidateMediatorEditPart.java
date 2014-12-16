@@ -43,7 +43,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated NOT
  */
-public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
+public class ValidateMediatorEditPart extends
+		SingleCompartmentComplexFiguredAbstractMediator {
 
 	public IFigure onFailOutputConnector;
 
@@ -68,16 +69,21 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new ValidateMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new ValidateMediatorCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+				new ValidateMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -116,7 +122,8 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected)
-						&& (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
+						&& (this.getBounds().getLocation().x != 0 && this
+								.getBounds().getLocation().y != 0)) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 					connected = true;
@@ -136,17 +143,21 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
 		if (childEditPart instanceof ValidateMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((ValidateMediatorInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof ValidateMediatorOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((ValidateMediatorOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.EAST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.EAST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof ValidateMediatorOnFailOutputConnectorEditPart) {
@@ -283,7 +294,8 @@ public class ValidateMediatorEditPart extends SingleCompartmentComplexFiguredAbs
 			this.setLayoutManager(layoutThis);
 
 			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(100)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170),
+					getMapMode().DPtoLP(100)));
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();

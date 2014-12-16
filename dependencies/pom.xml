@@ -56,6 +56,7 @@
 	    <module>maven-brs-plugin</module>
 	    <module>maven-car-deploy-plugin</module>
 	    <module>maven-qos-plugin</module>
+            <module>wso2-release-pre-prepare-plugin</module>
     </modules>
 	<build>
 	<extensions>

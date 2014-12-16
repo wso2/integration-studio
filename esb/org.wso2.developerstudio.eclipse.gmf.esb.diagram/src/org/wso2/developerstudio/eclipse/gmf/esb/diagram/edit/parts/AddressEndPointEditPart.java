@@ -87,16 +87,21 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new AddressEndPointItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new AddressEndPointCanonicalEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+				new AddressEndPointCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new FeedbackIndicateDragDropEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -114,7 +119,8 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 				case AddressEndPointOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -139,7 +145,8 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 		return primaryShape = new AddressEndPointFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0
+						&& this.getBounds().getLocation().y != 0) {
 					getMostSuitableElementToConnect();
 					reAllocate(rect);
 				}
@@ -159,17 +166,19 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof AddressEndPointDescriptionEditPart) {
-			((AddressEndPointDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getEndpointDescriptionLabel());
+			((AddressEndPointDescriptionEditPart) childEditPart)
+					.setLabel(getPrimaryShape().getEndpointDescriptionLabel());
 			return true;
 		}
 		if (childEditPart instanceof AddressEndPointInputConnectorEditPart) {
 			double position;
 			EObject parentEndpoint = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (childEditPart
 					.getParent()).getModel()).getElement();
-			if (((AddressEndPoint) parentEndpoint).getInputConnector().getIncomingLinks().size() != 0) {
-				EObject source = ((AddressEndPoint) parentEndpoint).getInputConnector()
-						.getIncomingLinks().get(0).getSource().eContainer();
+			if (((AddressEndPoint) parentEndpoint).getInputConnector()
+					.getIncomingLinks().size() != 0) {
+				EObject source = ((AddressEndPoint) parentEndpoint)
+						.getInputConnector().getIncomingLinks().get(0)
+						.getSource().eContainer();
 				/*				position = ((source instanceof LoadBalanceEndPoint)
 				 || (source instanceof FailoverEndPoint) || (source instanceof SendMediator)) ? 0.5
 				 : 0.25;*/
@@ -188,22 +197,27 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 			}
 			IFigure borderItemFigure = ((AddressEndPointInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, position);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					position);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof AddressEndPointOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((AddressEndPointOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, 0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					0.75);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof AddressEndPointEndPointNameEditPart) {
-			((AddressEndPointEndPointNameEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureAddressEndPointNamePropertyLabel());
+			((AddressEndPointEndPointNameEditPart) childEditPart)
+					.setLabel(getPrimaryShape()
+							.getFigureAddressEndPointNamePropertyLabel());
 			return true;
 		}
 		return false;
@@ -221,12 +235,14 @@ public class AddressEndPointEditPart extends AbstractEndpoint {
 		}
 		if (childEditPart instanceof AddressEndPointInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((AddressEndPointInputConnectorEditPart) childEditPart).getFigure());
+					((AddressEndPointInputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		if (childEditPart instanceof AddressEndPointOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((AddressEndPointOutputConnectorEditPart) childEditPart).getFigure());
+					((AddressEndPointOutputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		return false;

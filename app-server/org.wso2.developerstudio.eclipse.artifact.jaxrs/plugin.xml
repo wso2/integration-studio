@@ -31,7 +31,7 @@
 			natureId="org.wso2.developerstudio.eclipse.jaxrs.project.nature" icon="icons/JAX-RS-12x12.png">
 		</image>
 	</extension>
-	  <extension point="org.eclipse.ui.navigator.navigatorContent">	
+	  <!--<extension point="org.eclipse.ui.navigator.navigatorContent">	
 	   <navigatorContent activeByDefault="true"
 			priority="high"
 			id="org.eclipse.ui.navigator.resourceContent"
@@ -58,8 +58,26 @@
 				           </or>
 				  </triggerPoints>
 		</navigatorContent>
-	  </extension>
-	 <extension point="org.eclipse.ui.navigator.navigatorContent">	
+	  </extension>-->
+		<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="1org.wso2.developerstudio.eclipse.artifact.webservice"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newjaxrsartifact">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature" />
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+   	 <extension point="org.eclipse.ui.navigator.navigatorContent">	
 			<commonWizard type="new"
 			    menuGroupId="2org.wso2.developerstudio.eclipse.artifact.webservice2"
 				wizardId="org.wso2.developerstudio.eclipse.artifact.newjaxrsartifactClass">

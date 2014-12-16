@@ -1433,18 +1433,6 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 				return createDataMapperMediatorOutputConnectorAdapter();
 			}
 			@Override
-			public Adapter caseFastXSLTMediator(FastXSLTMediator object) {
-				return createFastXSLTMediatorAdapter();
-			}
-			@Override
-			public Adapter caseFastXSLTMediatorInputConnector(FastXSLTMediatorInputConnector object) {
-				return createFastXSLTMediatorInputConnectorAdapter();
-			}
-			@Override
-			public Adapter caseFastXSLTMediatorOutputConnector(FastXSLTMediatorOutputConnector object) {
-				return createFastXSLTMediatorOutputConnectorAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -4080,48 +4068,6 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataMapperMediatorOutputConnectorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator <em>Fast XSLT Mediator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator
-	 * @generated
-	 */
-	public Adapter createFastXSLTMediatorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorInputConnector <em>Fast XSLT Mediator Input Connector</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorInputConnector
-	 * @generated
-	 */
-	public Adapter createFastXSLTMediatorInputConnectorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector <em>Fast XSLT Mediator Output Connector</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediatorOutputConnector
-	 * @generated
-	 */
-	public Adapter createFastXSLTMediatorOutputConnectorAdapter() {
 		return null;
 	}
 

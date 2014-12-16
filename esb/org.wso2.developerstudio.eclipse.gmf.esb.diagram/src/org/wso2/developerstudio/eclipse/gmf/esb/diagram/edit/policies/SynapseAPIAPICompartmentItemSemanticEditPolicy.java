@@ -8,8 +8,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class SynapseAPIAPICompartmentItemSemanticEditPolicy extends
-		EsbBaseItemSemanticEditPolicy {
+public class SynapseAPIAPICompartmentItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated

@@ -68,7 +68,6 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryEl
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.platform.core.MediaManager;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 
 public class RegistryResourcePage extends FormPage {
@@ -352,36 +351,33 @@ public class RegistryResourcePage extends FormPage {
 	      java.util.List<RegistryElement> elements = artifact.getAllRegistryItems();
 	      itemMap = new HashMap<Integer, RegistryElement>();
 	      int i=0;
-		for (RegistryElement registryElement : elements) {
-			i++;
-			String path = registryElement.getPath();
-			String name = "";
-			String mediaType = null;
-			if (registryElement instanceof RegistryItem) {
-				name = ((RegistryItem) registryElement).getFile();
-				mediaType = MediaManager.getCustomMediaTypeIfSet(name);// to dynamically set the media type on every call for UI creation
-				if (mediaType == null) {//if the user has not specified a custom media type use the original
-					mediaType = ((RegistryItem) registryElement).getMediaType();
-				}
-			} else if (registryElement instanceof RegistryDump) {
-				name = ((RegistryDump) registryElement).getFile();
-			} else {
-				name = ((RegistryCollection) registryElement).getDirectory();
-			}
-			TableItem item = new TableItem(table, SWT.NONE);
-			String index = "" + i;
-			item.setText(new String[] { index, name, path, mediaType });
+	      for (RegistryElement registryElement : elements) {
+	    	  i++;
+	    	  String path = registryElement.getPath();
+	    	  String name ="";
+	    	  String mediaType=null;
+	    	  if(registryElement instanceof RegistryItem){
+	    		  name = ((RegistryItem)registryElement).getFile();
+	    		  mediaType = ((RegistryItem)registryElement).getMediaType();
+	    	  }else if(registryElement instanceof RegistryDump){
+	    		  name = ((RegistryDump)registryElement).getFile();
+	    	  }else{
+	    		  name = ((RegistryCollection)registryElement).getDirectory();
+	    	  }
+	    	  TableItem item = new TableItem(table, SWT.NONE);
+	    	  String index =""+i;
+	          item.setText(new String[] {index, name, path, mediaType });
+	      	
+	  		final Color red = form.getDisplay().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT);
+	     	final  Color blue = form.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT);
+	          if(i%2 == 0){
+	        	  item.setBackground(red);
+	          }else {
+	        	  item.setBackground(blue);
+	          } 
 
-			final Color red = form.getDisplay().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT);
-			final Color blue = form.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT);
-			if (i % 2 == 0) {
-				item.setBackground(red);
-			} else {
-				item.setBackground(blue);
-			}
-
-			table.layout();
-			itemMap.put(i, registryElement);
+            table.layout();
+	          itemMap.put(i, registryElement);
 		}
 
 	}

@@ -30,8 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class FilterMediatorItemSemanticEditPolicy extends
-		EsbBaseItemSemanticEditPolicy {
+public class FilterMediatorItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -44,25 +43,17 @@ public class FilterMediatorItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.FilterMediatorInputConnector_3010 == req
-				.getElementType()) {
-			return getGEFWrapper(new FilterMediatorInputConnectorCreateCommand(
-					req));
+		if (EsbElementTypes.FilterMediatorInputConnector_3010 == req.getElementType()) {
+			return getGEFWrapper(new FilterMediatorInputConnectorCreateCommand(req));
 		}
-		if (EsbElementTypes.FilterMediatorOutputConnector_3534 == req
-				.getElementType()) {
-			return getGEFWrapper(new FilterMediatorOutputConnectorCreateCommand(
-					req));
+		if (EsbElementTypes.FilterMediatorOutputConnector_3534 == req.getElementType()) {
+			return getGEFWrapper(new FilterMediatorOutputConnectorCreateCommand(req));
 		}
-		if (EsbElementTypes.FilterMediatorPassOutputConnector_3011 == req
-				.getElementType()) {
-			return getGEFWrapper(new FilterMediatorPassOutputConnectorCreateCommand(
-					req));
+		if (EsbElementTypes.FilterMediatorPassOutputConnector_3011 == req.getElementType()) {
+			return getGEFWrapper(new FilterMediatorPassOutputConnectorCreateCommand(req));
 		}
-		if (EsbElementTypes.FilterMediatorFailOutputConnector_3012 == req
-				.getElementType()) {
-			return getGEFWrapper(new FilterMediatorFailOutputConnectorCreateCommand(
-					req));
+		if (EsbElementTypes.FilterMediatorFailOutputConnector_3012 == req.getElementType()) {
+			return getGEFWrapper(new FilterMediatorFailOutputConnectorCreateCommand(req));
 		}
 		if (EsbElementTypes.FilterContainer_3531 == req.getElementType()) {
 			return getGEFWrapper(new FilterContainerCreateCommand(req));
@@ -75,8 +66,8 @@ public class FilterMediatorItemSemanticEditPolicy extends
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(),
+				null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -100,80 +91,72 @@ public class FilterMediatorItemSemanticEditPolicy extends
 			Node node = (Node) nit.next();
 			switch (EsbVisualIDRegistry.getVisualID(node)) {
 			case FilterMediatorInputConnectorEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getTargetEdges().iterator(); it
-						.hasNext();) {
+				for (Iterator<?> it = node.getTargetEdges().iterator(); it.hasNext();) {
 					Edge incomingLink = (Edge) it.next();
 					if (EsbVisualIDRegistry.getVisualID(incomingLink) == EsbLinkEditPart.VISUAL_ID) {
 						DestroyElementRequest r = new DestroyElementRequest(
 								incomingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(),
-								incomingLink));
+						cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
+						node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case FilterMediatorOutputConnectorEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getSourceEdges().iterator(); it
-						.hasNext();) {
+				for (Iterator<?> it = node.getSourceEdges().iterator(); it.hasNext();) {
 					Edge outgoingLink = (Edge) it.next();
 					if (EsbVisualIDRegistry.getVisualID(outgoingLink) == EsbLinkEditPart.VISUAL_ID) {
 						DestroyElementRequest r = new DestroyElementRequest(
 								outgoingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(),
-								outgoingLink));
+						cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
+						node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case FilterMediatorPassOutputConnectorEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getSourceEdges().iterator(); it
-						.hasNext();) {
+				for (Iterator<?> it = node.getSourceEdges().iterator(); it.hasNext();) {
 					Edge outgoingLink = (Edge) it.next();
 					if (EsbVisualIDRegistry.getVisualID(outgoingLink) == EsbLinkEditPart.VISUAL_ID) {
 						DestroyElementRequest r = new DestroyElementRequest(
 								outgoingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(),
-								outgoingLink));
+						cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
+						node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case FilterMediatorFailOutputConnectorEditPart.VISUAL_ID:
-				for (Iterator<?> it = node.getSourceEdges().iterator(); it
-						.hasNext();) {
+				for (Iterator<?> it = node.getSourceEdges().iterator(); it.hasNext();) {
 					Edge outgoingLink = (Edge) it.next();
 					if (EsbVisualIDRegistry.getVisualID(outgoingLink) == EsbLinkEditPart.VISUAL_ID) {
 						DestroyElementRequest r = new DestroyElementRequest(
 								outgoingLink.getElement(), false);
 						cmd.add(new DestroyElementCommand(r));
-						cmd.add(new DeleteCommand(getEditingDomain(),
-								outgoingLink));
+						cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
 						continue;
 					}
 				}
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
+						node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case FilterContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(),
+						node.getElement(), false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;

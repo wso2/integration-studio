@@ -27,7 +27,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.model.ServerDelegate;
-import org.wso2.developerstudio.eclipse.carbonserver.base.utils.CarbonServerUtils;
 
 public class RemoteCarbonServer extends ServerDelegate{
 	public IStatus canModifyModules(IModule[] arg0, IModule[] arg1) {
@@ -103,10 +102,6 @@ public class RemoteCarbonServer extends ServerDelegate{
 		setServerURL(new URL(url));
 	}
 	
-	public void setServicePath(String servicePath) {
-		CarbonServerUtils.setRemoteServicePath(servicePath);
-	}
-	
 	public void setServerURL(URL url) throws MalformedURLException{
 		if (url==null){
 			setAttribute(ATTR_URL, "");
@@ -137,5 +132,6 @@ public class RemoteCarbonServer extends ServerDelegate{
 			
 		}
 	}
+
 
 }

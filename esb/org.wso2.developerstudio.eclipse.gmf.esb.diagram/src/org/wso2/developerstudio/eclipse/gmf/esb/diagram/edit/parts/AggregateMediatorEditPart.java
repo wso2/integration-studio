@@ -44,8 +44,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated NOT
  */
-public class AggregateMediatorEditPart extends
-		SingleCompartmentComplexFiguredAbstractMediator {
+public class AggregateMediatorEditPart extends SingleCompartmentComplexFiguredAbstractMediator {
 
 	public IFigure onCompleteOutputConnector;
 
@@ -70,21 +69,17 @@ public class AggregateMediatorEditPart extends
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new AggregateMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new AggregateMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -123,8 +118,7 @@ public class AggregateMediatorEditPart extends
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected)
-						&& (this.getBounds().getLocation().x != 0 && this
-								.getBounds().getLocation().y != 0)) {
+						&& (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 					connected = true;
@@ -145,29 +139,24 @@ public class AggregateMediatorEditPart extends
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof AggregateMediatorAggregateIDEditPart) {
-			((AggregateMediatorAggregateIDEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureAggregateMediatorPropertyValue());
+			((AggregateMediatorAggregateIDEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getFigureAggregateMediatorPropertyValue());
 			return true;
 		}
 		if (childEditPart instanceof AggregateMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((AggregateMediatorInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof AggregateMediatorOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((AggregateMediatorOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.EAST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof AggregateMediatorOnCompleteOutputConnectorEditPart) {
@@ -187,20 +176,17 @@ public class AggregateMediatorEditPart extends
 		}
 		if (childEditPart instanceof AggregateMediatorInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((AggregateMediatorInputConnectorEditPart) childEditPart)
-							.getFigure());
+					((AggregateMediatorInputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof AggregateMediatorOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((AggregateMediatorOutputConnectorEditPart) childEditPart)
-							.getFigure());
+					((AggregateMediatorOutputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof AggregateMediatorOnCompleteOutputConnectorEditPart) {
-			getBorderedFigure()
-					.getBorderItemContainer()
-					.remove(((AggregateMediatorOnCompleteOutputConnectorEditPart) childEditPart)
+			getBorderedFigure().getBorderItemContainer().remove(
+					((AggregateMediatorOnCompleteOutputConnectorEditPart) childEditPart)
 							.getFigure());
 			return true;
 		}
@@ -355,8 +341,7 @@ public class AggregateMediatorEditPart extends
 			layoutThis.setVertical(false);
 
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170),
-					getMapMode().DPtoLP(100)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(100)));
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();

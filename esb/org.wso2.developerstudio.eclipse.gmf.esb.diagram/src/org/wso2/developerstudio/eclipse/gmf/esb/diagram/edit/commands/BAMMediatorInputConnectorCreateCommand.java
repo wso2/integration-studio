@@ -54,9 +54,10 @@ public class BAMMediatorInputConnectorCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		BAMMediatorInputConnector newElement = EsbFactory.eINSTANCE.createBAMMediatorInputConnector();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		BAMMediatorInputConnector newElement = EsbFactory.eINSTANCE
+				.createBAMMediatorInputConnector();
 
 		BAMMediator owner = (BAMMediator) getElementToEdit();
 		owner.setInputConnector(newElement);
@@ -70,7 +71,7 @@ public class BAMMediatorInputConnectorCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(BAMMediatorInputConnector newElement,IProgressMonitor monitor,
+	protected void doConfigure(BAMMediatorInputConnector newElement, IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
 		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,

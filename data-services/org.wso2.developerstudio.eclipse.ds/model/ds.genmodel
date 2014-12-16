@@ -51,9 +51,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/serviceNamespace"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/serviceStatus"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/disableStreaming"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/enableSec"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/policy"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/transports"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//DataSourceConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//DataSourceConfiguration/mixed"/>
@@ -239,9 +236,6 @@
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//WorkSheetNumber">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//WorkSheetNumber/value"/>
-    </genClasses>
-    <genClasses ecoreClass="ds.ecore#//Policy">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Policy/key"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

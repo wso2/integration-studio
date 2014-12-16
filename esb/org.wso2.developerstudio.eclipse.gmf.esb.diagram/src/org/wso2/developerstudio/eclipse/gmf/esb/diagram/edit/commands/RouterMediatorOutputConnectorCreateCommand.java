@@ -18,8 +18,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorOutputConnector;
 /**
  * @generated
  */
-public class RouterMediatorOutputConnectorCreateCommand extends
-		EditElementCommand {
+public class RouterMediatorOutputConnectorCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
@@ -33,8 +32,7 @@ public class RouterMediatorOutputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -56,8 +54,8 @@ public class RouterMediatorOutputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		RouterMediatorOutputConnector newElement = EsbFactory.eINSTANCE
 				.createRouterMediatorOutputConnector();
 
@@ -73,18 +71,14 @@ public class RouterMediatorOutputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(RouterMediatorOutputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+	protected void doConfigure(RouterMediatorOutputConnector newElement, IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
+				elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

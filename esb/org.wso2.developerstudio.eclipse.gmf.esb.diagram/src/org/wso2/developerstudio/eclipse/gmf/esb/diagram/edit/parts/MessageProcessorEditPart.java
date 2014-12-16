@@ -63,16 +63,12 @@ public class MessageProcessorEditPart extends ShapeNodeEditPart {
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new MessageProcessorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new NonResizableEditPolicyEx());
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); //remove 8 corners
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new NonResizableEditPolicyEx());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());  //remove 8 corners
 	}
 
 	@Override
@@ -81,8 +77,8 @@ public class MessageProcessorEditPart extends ShapeNodeEditPart {
 		if (notification.getFeature() instanceof EAttributeImpl) {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				Rectangle constraints = new Rectangle(10, 10, -1, -1);
-				((GraphicalEditPart) getParent()).setLayoutConstraint(this,
-						getFigure(), constraints);
+				((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(),
+						constraints);
 			}
 		}
 	}
@@ -94,8 +90,7 @@ public class MessageProcessorEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}

@@ -56,6 +56,5 @@ Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  org.wso2.developerstudio.eclipse.utils.data,
  org.wso2.developerstudio.eclipse.utils.file,
  org.wso2.developerstudio.eclipse.utils.jdt,
- org.wso2.developerstudio.eclipse.utils.mediatypes,
  org.wso2.developerstudio.eclipse.utils.project
 Bundle-Vendor: WSO2

@@ -50,8 +50,8 @@ public class AggregateMediatorCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		AggregateMediator newElement = EsbFactory.eINSTANCE.createAggregateMediator();
 
 		MediatorFlow owner = (MediatorFlow) getElementToEdit();
@@ -66,11 +66,11 @@ public class AggregateMediatorCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(AggregateMediator newElement,
-			IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected void doConfigure(AggregateMediator newElement, IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
+				elementType);
 		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
 		ICommand configureCommand = elementType.getEditCommand(configureRequest);

@@ -70,9 +70,8 @@ public class EsbLinkReorientCommand extends EditElementCommand {
 			return false;
 		}
 		OutputConnector container = (OutputConnector) getLink().eContainer();
-		return EsbBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistEsbLink_4001(container, getLink(), getNewSource(),
-						target);
+		return EsbBaseItemSemanticEditPolicy.getLinkConstraints().canExistEsbLink_4001(container,
+				getLink(), getNewSource(), target);
 	}
 
 	/**
@@ -87,19 +86,17 @@ public class EsbLinkReorientCommand extends EditElementCommand {
 			return false;
 		}
 		OutputConnector container = (OutputConnector) getLink().eContainer();
-		return EsbBaseItemSemanticEditPolicy.getLinkConstraints()
-				.canExistEsbLink_4001(container, getLink(), source,
-						getNewTarget());
+		return EsbBaseItemSemanticEditPolicy.getLinkConstraints().canExistEsbLink_4001(container,
+				getLink(), source, getNewTarget());
 	}
 
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		if (!canExecute()) {
-			throw new ExecutionException(
-					"Invalid arguments in reorient link command"); //$NON-NLS-1$
+			throw new ExecutionException("Invalid arguments in reorient link command"); //$NON-NLS-1$
 		}
 		if (reorientDirection == ReorientRelationshipRequest.REORIENT_SOURCE) {
 			return reorientSource();

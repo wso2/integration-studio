@@ -18,8 +18,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 /**
  * @generated
  */
-public class AggregateMediatorInputConnectorCreateCommand extends
-		EditElementCommand {
+public class AggregateMediatorInputConnectorCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
@@ -55,9 +54,10 @@ public class AggregateMediatorInputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		AggregateMediatorInputConnector newElement = EsbFactory.eINSTANCE.createAggregateMediatorInputConnector();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		AggregateMediatorInputConnector newElement = EsbFactory.eINSTANCE
+				.createAggregateMediatorInputConnector();
 
 		AggregateMediator owner = (AggregateMediator) getElementToEdit();
 		owner.setInputConnector(newElement);
@@ -72,10 +72,10 @@ public class AggregateMediatorInputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected void doConfigure(AggregateMediatorInputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
+				elementType);
 		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
 		ICommand configureCommand = elementType.getEditCommand(configureRequest);

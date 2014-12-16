@@ -3,6 +3,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers;
 /**
  * @generated
  */
-public class AggregateMediatorInputConnectorEditHelper extends
-		EsbBaseEditHelper {
+public class AggregateMediatorInputConnectorEditHelper extends EsbBaseEditHelper {
 }

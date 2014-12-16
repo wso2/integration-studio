@@ -69,19 +69,16 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new FailoverEndPoint2ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new FailoverEndPoint2CanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new OpenSeparatelyEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenSeparatelyEditPolicy());
 	}
 
 	/**
@@ -98,8 +95,7 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 				case FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -136,26 +132,22 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof FailoverEndPointEndPointName2EditPart) {
-			((FailoverEndPointEndPointName2EditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureFailoverEndPointNamePropertyLabel());
+			((FailoverEndPointEndPointName2EditPart) childEditPart).setLabel(getPrimaryShape()
+					.getFigureFailoverEndPointNamePropertyLabel());
 			return true;
 		}
 		if (childEditPart instanceof FailoverEndPointInputConnector2EditPart) {
 			double position;
 			EObject parentEndpoint = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (childEditPart
 					.getParent()).getModel()).getElement();
-			if (((FailoverEndPoint) parentEndpoint).getInputConnector()
-					.getIncomingLinks().size() != 0) {
-				EObject source = ((FailoverEndPoint) parentEndpoint)
-						.getInputConnector().getIncomingLinks().get(0)
-						.getSource().eContainer();
+			if (((FailoverEndPoint) parentEndpoint).getInputConnector().getIncomingLinks().size() != 0) {
+				EObject source = ((FailoverEndPoint) parentEndpoint).getInputConnector()
+						.getIncomingLinks().get(0).getSource().eContainer();
 				/*
 				 * Position of input connector of the endpoint should be 0.5 inside ComplexEndpoints and Sequences. 
 				 */
-				position = ((source instanceof ComplexEndpoints) || (source
-						.eContainer().eContainer() instanceof Sequences)) ? 0.5
-						: 0.25;
+				position = ((source instanceof ComplexEndpoints) || (source.eContainer()
+						.eContainer() instanceof Sequences)) ? 0.5 : 0.25;
 			} else {
 				position = ((this.getParent().getParent().getParent() instanceof ComplexEndpointsEditPart) || (this
 						.getParent().getParent().getParent() instanceof AbstractSequencesEditPart)) ? 0.5
@@ -163,21 +155,17 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 			}
 			IFigure borderItemFigure = ((FailoverEndPointInputConnector2EditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					position);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, position);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof FailoverEndPointWestOutputConnector2EditPart) {
 			IFigure borderItemFigure = ((FailoverEndPointWestOutputConnector2EditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, 0.75);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		return false;
@@ -192,21 +180,17 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 		}
 		if (childEditPart instanceof FailoverEndPointInputConnector2EditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((FailoverEndPointInputConnector2EditPart) childEditPart)
-							.getFigure());
+					((FailoverEndPointInputConnector2EditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof FailoverEndPointOutputConnector2EditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((FailoverEndPointOutputConnector2EditPart) childEditPart)
-							.getFigure());
+					((FailoverEndPointOutputConnector2EditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof FailoverEndPointWestOutputConnector2EditPart) {
-			getBorderedFigure()
-					.getBorderItemContainer()
-					.remove(((FailoverEndPointWestOutputConnector2EditPart) childEditPart)
-							.getFigure());
+			getBorderedFigure().getBorderItemContainer().remove(
+					((FailoverEndPointWestOutputConnector2EditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -363,8 +347,7 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 			fFigureFailoverEndPointNamePropertyLabel = new WrappingLabel();
 			fFigureFailoverEndPointNamePropertyLabel.setText("<...>");
 			fFigureFailoverEndPointNamePropertyLabel.setAlignment(SWT.CENTER);
-			this.getPropertyValueRectangle1().add(
-					fFigureFailoverEndPointNamePropertyLabel);
+			this.getPropertyValueRectangle1().add(fFigureFailoverEndPointNamePropertyLabel);
 		}
 
 		/**

@@ -75,7 +75,6 @@ import org.wso2.carbon.identity.entitlement.mediator.EntitlementMediator;
 import org.wso2.carbon.identity.oauth.mediator.OAuthMediator;
 import org.wso2.carbon.mediator.bam.BamMediator;
 import org.wso2.carbon.mediator.event.EventMediator;
-import org.wso2.carbon.mediator.fastXSLT.FastXSLTMediator;
 import org.wso2.carbon.mediator.transform.SmooksMediator;
 import org.wso2.carbon.mediators.router.impl.RouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
@@ -139,7 +138,6 @@ public class EsbDeserializerRegistry {
 		addDeserializer(SequenceMediator.class, new SequenceDeserializer());
 		addDeserializer(API.class, new APIDeserializer());
 		addDeserializer(XSLTMediator.class, new XSLTMediatorDeserializer());
-		addDeserializer(FastXSLTMediator.class, new FastXSLTMediatorDeserializer());
 		addDeserializer(XQueryMediator.class, new XQueryMediatorDeserializer());
 		addDeserializer(HeaderMediator.class, new HeaderMediatorDeserializer());
 		addDeserializer(FaultMediator.class, new FaultMediatorDeserializer());

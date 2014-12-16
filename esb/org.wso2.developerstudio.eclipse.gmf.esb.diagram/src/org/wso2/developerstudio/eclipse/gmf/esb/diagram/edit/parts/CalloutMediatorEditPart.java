@@ -62,21 +62,16 @@ public class CalloutMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new CalloutMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new CalloutMediatorCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new CalloutMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -94,8 +89,7 @@ public class CalloutMediatorEditPart extends FixedSizedAbstractMediator {
 				case CalloutMediatorOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -120,8 +114,7 @@ public class CalloutMediatorEditPart extends FixedSizedAbstractMediator {
 		return primaryShape = new CalloutMediatorFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0
-						&& this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 				}
@@ -141,35 +134,29 @@ public class CalloutMediatorEditPart extends FixedSizedAbstractMediator {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof CalloutMediatorSoapActionEditPart) {
-			((CalloutMediatorSoapActionEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureCalloutMediatorPropertyValue());
+			((CalloutMediatorSoapActionEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getFigureCalloutMediatorPropertyValue());
 			return true;
 		}
 		if (childEditPart instanceof CalloutMediatorDescriptionEditPart) {
-			((CalloutMediatorDescriptionEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getCalloutMediatorDescriptionLabel());
+			((CalloutMediatorDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getCalloutMediatorDescriptionLabel());
 			return true;
 		}
 		if (childEditPart instanceof CalloutMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((CalloutMediatorInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.WEST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof CalloutMediatorOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((CalloutMediatorOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
+					borderItemFigure, PositionConstants.EAST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		return false;
@@ -187,14 +174,12 @@ public class CalloutMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 		if (childEditPart instanceof CalloutMediatorInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((CalloutMediatorInputConnectorEditPart) childEditPart)
-							.getFigure());
+					((CalloutMediatorInputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof CalloutMediatorOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((CalloutMediatorOutputConnectorEditPart) childEditPart)
-							.getFigure());
+					((CalloutMediatorOutputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;

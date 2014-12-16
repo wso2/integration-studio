@@ -3,6 +3,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers;
 /**
  * @generated
  */
-public class RMSequenceMediatorInputConnectorEditHelper extends
-		EsbBaseEditHelper {
+public class RMSequenceMediatorInputConnectorEditHelper extends EsbBaseEditHelper {
 }

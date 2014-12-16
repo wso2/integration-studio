@@ -18,8 +18,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
 /**
  * @generated
  */
-public class FailoverEndPointOutputConnectorCreateCommand extends
-		EditElementCommand {
+public class FailoverEndPointOutputConnectorCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
@@ -33,8 +32,7 @@ public class FailoverEndPointOutputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -52,8 +50,8 @@ public class FailoverEndPointOutputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
 		FailoverEndPointOutputConnector newElement = EsbFactory.eINSTANCE
 				.createFailoverEndPointOutputConnector();
 
@@ -70,17 +68,13 @@ public class FailoverEndPointOutputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected void doConfigure(FailoverEndPointOutputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
+				elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

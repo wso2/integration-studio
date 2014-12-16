@@ -38,8 +38,7 @@ public class EsbOCLFactory {
 	 */
 	protected EsbOCLFactory() {
 		this.expressions = new EsbAbstractExpression[2];
-		this.expressionBodies = new String[] {
-				"self.shouldConnect(oppositeEnd)", //$NON-NLS-1$
+		this.expressionBodies = new String[] { "self.shouldConnect(oppositeEnd)", //$NON-NLS-1$
 				"self.shouldConnect(oppositeEnd)", //$NON-NLS-1$
 		};
 	}
@@ -48,11 +47,9 @@ public class EsbOCLFactory {
 	 * @generated
 	 */
 	private static EsbOCLFactory getInstance() {
-		EsbOCLFactory instance = EsbDiagramEditorPlugin.getInstance()
-				.getEsbOCLFactory();
+		EsbOCLFactory instance = EsbDiagramEditorPlugin.getInstance().getEsbOCLFactory();
 		if (instance == null) {
-			EsbDiagramEditorPlugin.getInstance().setEsbOCLFactory(
-					instance = new EsbOCLFactory());
+			EsbDiagramEditorPlugin.getInstance().setEsbOCLFactory(instance = new EsbOCLFactory());
 		}
 		return instance;
 	}
@@ -67,18 +64,16 @@ public class EsbOCLFactory {
 	/**
 	 * @generated
 	 */
-	public static EsbAbstractExpression getExpression(int index,
-			EClassifier context, Map<String, EClassifier> environment) {
+	public static EsbAbstractExpression getExpression(int index, EClassifier context,
+			Map<String, EClassifier> environment) {
 		EsbOCLFactory cached = getInstance();
 		if (index < 0 || index >= cached.expressions.length) {
 			throw new IllegalArgumentException();
 		}
 		if (cached.expressions[index] == null) {
-			cached.expressions[index] = getExpression(
-					cached.expressionBodies[index],
-					context,
-					environment == null ? Collections
-							.<String, EClassifier> emptyMap() : environment);
+			cached.expressions[index] = getExpression(cached.expressionBodies[index], context,
+					environment == null ? Collections.<String, EClassifier> emptyMap()
+							: environment);
 		}
 		return cached.expressions[index];
 	}
@@ -86,18 +81,16 @@ public class EsbOCLFactory {
 	/**
 	 * @generated
 	 */
-	public static EsbAbstractExpression getExpression(String body,
-			EClassifier context, Map<String, EClassifier> environment) {
+	public static EsbAbstractExpression getExpression(String body, EClassifier context,
+			Map<String, EClassifier> environment) {
 		return new Expression(body, context, environment);
 	}
 
 	/**
 	 * @generated
 	 */
-	public static EsbAbstractExpression getExpression(String body,
-			EClassifier context) {
-		return getExpression(body, context,
-				Collections.<String, EClassifier> emptyMap());
+	public static EsbAbstractExpression getExpression(String body, EClassifier context) {
+		return getExpression(body, context, Collections.<String, EClassifier> emptyMap());
 	}
 
 	/**
@@ -118,8 +111,7 @@ public class EsbOCLFactory {
 		/**
 		 * @generated
 		 */
-		public Expression(String body, EClassifier context,
-				Map<String, EClassifier> environment) {
+		public Expression(String body, EClassifier context, Map<String, EClassifier> environment) {
 			super(body, context);
 			oclInstance = org.eclipse.ocl.ecore.OCL.newInstance();
 			initCustomEnv(oclInstance.getEnvironment(), environment);
@@ -142,8 +134,7 @@ public class EsbOCLFactory {
 				return null;
 			}
 			// on the first call, both evalEnvironment and extentMap are clear, for later we have finally, below.
-			EvaluationEnvironment<?, ?, ?, ?, ?> evalEnv = oclInstance
-					.getEvaluationEnvironment();
+			EvaluationEnvironment<?, ?, ?, ?, ?> evalEnv = oclInstance.getEvaluationEnvironment();
 			// initialize environment
 			for (Object nextKey : env.keySet()) {
 				evalEnv.replace((String) nextKey, env.get(nextKey));
@@ -164,13 +155,11 @@ public class EsbOCLFactory {
 				Environment<?, EClassifier, ?, ?, ?, EParameter, ?, ?, ?, ?, ?, ?> ecoreEnv,
 				Map<String, EClassifier> environment) {
 			// Use EObject as implicit root class for any object, to allow eContainer() and other EObject operations from OCL expressions
-			ParsingOptions.setOption(ecoreEnv,
-					ParsingOptions.implicitRootClass(ecoreEnv),
+			ParsingOptions.setOption(ecoreEnv, ParsingOptions.implicitRootClass(ecoreEnv),
 					EcorePackage.eINSTANCE.getEObject());
 			for (String varName : environment.keySet()) {
 				EClassifier varType = environment.get(varName);
-				ecoreEnv.addElement(varName,
-						createVar(ecoreEnv, varName, varType), false);
+				ecoreEnv.addElement(varName, createVar(ecoreEnv, varName, varType), false);
 			}
 		}
 
@@ -178,8 +167,8 @@ public class EsbOCLFactory {
 		 * @generated
 		 */
 		private static Variable createVar(
-				Environment<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?> ecoreEnv,
-				String name, EClassifier type) {
+				Environment<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?> ecoreEnv, String name,
+				EClassifier type) {
 			Variable var = EcoreFactory.eINSTANCE.createVariable();
 			var.setName(name);
 			var.setType(ecoreEnv.getUMLReflection().getOCLType(type));

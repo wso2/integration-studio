@@ -70,7 +70,6 @@ public class SwitchMediatorItemProvider
 
 		addSourceXPathPropertyDescriptor(object);
 		addConfigureCaseBranchesPropertyDescriptor(object);
-		addDescriptionPropertyDescriptor(object);
 
 		return itemPropertyDescriptors;
 	}

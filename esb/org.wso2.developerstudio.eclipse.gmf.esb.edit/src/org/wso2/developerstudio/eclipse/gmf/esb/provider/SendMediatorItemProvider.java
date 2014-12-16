@@ -82,7 +82,6 @@ public class SendMediatorItemProvider
 				break;
 			}
 		}
-		addDescriptionPropertyDescriptor(object);
 		
 		return itemPropertyDescriptors;
 	}

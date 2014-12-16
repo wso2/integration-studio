@@ -3,6 +3,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers;
 /**
  * @generated
  */
-public class PayloadFactoryMediatorInputConnectorEditHelper extends
-		EsbBaseEditHelper {
+public class PayloadFactoryMediatorInputConnectorEditHelper extends EsbBaseEditHelper {
 }

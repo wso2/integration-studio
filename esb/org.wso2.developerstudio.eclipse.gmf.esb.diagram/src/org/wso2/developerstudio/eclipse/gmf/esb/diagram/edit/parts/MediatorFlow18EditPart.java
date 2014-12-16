@@ -67,8 +67,7 @@ public class MediatorFlow18EditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new MediatorFlow18ItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new MediatorFlow18ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -81,8 +80,7 @@ public class MediatorFlow18EditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -127,15 +125,10 @@ public class MediatorFlow18EditPart extends ShapeNodeEditPart {
 			ComplexEndpointsEditPart complexEndpointsEditPart = (ComplexEndpointsEditPart) childEditPart;
 			if (null == complexEndpointsEditPart.outputConnectorFigure)
 				return;
-			BorderItemLocator outputLocator = new FixedBorderItemLocator(
-					this.getFigure(),
-					complexEndpointsEditPart.outputConnectorFigure,
-					PositionConstants.WEST, 0.5);
-			complexEndpointsEditPart
-					.getBorderedFigure()
-					.getBorderItemContainer()
-					.add(complexEndpointsEditPart.outputConnectorFigure,
-							outputLocator);
+			BorderItemLocator outputLocator = new FixedBorderItemLocator(this.getFigure(),
+					complexEndpointsEditPart.outputConnectorFigure, PositionConstants.WEST, 0.5);
+			complexEndpointsEditPart.getBorderedFigure().getBorderItemContainer()
+					.add(complexEndpointsEditPart.outputConnectorFigure, outputLocator);
 		} else {
 			//Should handle properly.
 			throw new ClassCastException();
@@ -250,11 +243,9 @@ public class MediatorFlow18EditPart extends ShapeNodeEditPart {
 			layoutThis.makeColumnsEqualWidth = true;
 			this.setLayoutManager(layoutThis);
 
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0),
-					getMapMode().DPtoLP(0)));
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0), getMapMode().DPtoLP(0)));
 			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(500),
-					getMapMode().DPtoLP(300)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(500), getMapMode().DPtoLP(300)));
 			this.setLineStyle(Graphics.LINE_SOLID);
 			this.setForegroundColor(new Color(null, 0, 0, 0));
 			this.setLineWidth(1);

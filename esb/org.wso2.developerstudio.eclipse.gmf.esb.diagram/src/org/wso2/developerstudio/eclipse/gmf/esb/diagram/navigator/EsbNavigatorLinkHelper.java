@@ -37,8 +37,7 @@ public class EsbNavigatorLinkHelper implements ILinkHelper {
 		Resource diagramResource = diagram.eResource();
 		for (EObject nextEObject : diagramResource.getContents()) {
 			if (nextEObject == diagram) {
-				return new FileEditorInput(
-						WorkspaceSynchronizer.getFile(diagramResource));
+				return new FileEditorInput(WorkspaceSynchronizer.getFile(diagramResource));
 			}
 			if (nextEObject instanceof Diagram) {
 				break;
@@ -55,8 +54,8 @@ public class EsbNavigatorLinkHelper implements ILinkHelper {
 	 * @generated
 	 */
 	public IStructuredSelection findSelection(IEditorInput anInput) {
-		IDiagramDocument document = EsbDiagramEditorPlugin.getInstance()
-				.getDocumentProvider().getDiagramDocument(anInput);
+		IDiagramDocument document = EsbDiagramEditorPlugin.getInstance().getDocumentProvider()
+				.getDiagramDocument(anInput);
 		if (document == null) {
 			return StructuredSelection.EMPTY;
 		}
@@ -75,8 +74,7 @@ public class EsbNavigatorLinkHelper implements ILinkHelper {
 	/**
 	 * @generated
 	 */
-	public void activateEditor(IWorkbenchPage aPage,
-			IStructuredSelection aSelection) {
+	public void activateEditor(IWorkbenchPage aPage, IStructuredSelection aSelection) {
 		if (aSelection == null || aSelection.isEmpty()) {
 			return;
 		}
@@ -88,13 +86,11 @@ public class EsbNavigatorLinkHelper implements ILinkHelper {
 				.getFirstElement();
 		View navigatorView = null;
 		if (abstractNavigatorItem instanceof EsbNavigatorItem) {
-			navigatorView = ((EsbNavigatorItem) abstractNavigatorItem)
-					.getView();
+			navigatorView = ((EsbNavigatorItem) abstractNavigatorItem).getView();
 		} else if (abstractNavigatorItem instanceof EsbNavigatorGroup) {
 			EsbNavigatorGroup navigatorGroup = (EsbNavigatorGroup) abstractNavigatorItem;
 			if (navigatorGroup.getParent() instanceof EsbNavigatorItem) {
-				navigatorView = ((EsbNavigatorItem) navigatorGroup.getParent())
-						.getView();
+				navigatorView = ((EsbNavigatorItem) navigatorGroup.getParent()).getView();
 			}
 		}
 		if (navigatorView == null) {
@@ -108,8 +104,8 @@ public class EsbNavigatorLinkHelper implements ILinkHelper {
 		aPage.bringToTop(editor);
 		if (editor instanceof DiagramEditor) {
 			DiagramEditor diagramEditor = (DiagramEditor) editor;
-			ResourceSet diagramEditorResourceSet = diagramEditor
-					.getEditingDomain().getResourceSet();
+			ResourceSet diagramEditorResourceSet = diagramEditor.getEditingDomain()
+					.getResourceSet();
 			EObject selectedView = diagramEditorResourceSet.getEObject(
 					EcoreUtil.getURI(navigatorView), true);
 			if (selectedView == null) {
@@ -117,8 +113,8 @@ public class EsbNavigatorLinkHelper implements ILinkHelper {
 			}
 			GraphicalViewer graphicalViewer = (GraphicalViewer) diagramEditor
 					.getAdapter(GraphicalViewer.class);
-			EditPart selectedEditPart = (EditPart) graphicalViewer
-					.getEditPartRegistry().get(selectedView);
+			EditPart selectedEditPart = (EditPart) graphicalViewer.getEditPartRegistry().get(
+					selectedView);
 			if (selectedEditPart != null) {
 				graphicalViewer.select(selectedEditPart);
 			}

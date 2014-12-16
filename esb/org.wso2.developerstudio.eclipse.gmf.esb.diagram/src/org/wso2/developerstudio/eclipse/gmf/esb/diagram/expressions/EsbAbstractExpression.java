@@ -32,10 +32,8 @@ public abstract class EsbAbstractExpression {
 		this.status = new Status(severity, pluginID, -1,
 				(message != null) ? message : "", throwable); //$NON-NLS-1$
 		if (!this.status.isOK()) {
-			EsbDiagramEditorPlugin
-					.getInstance()
-					.logError(
-							"Expression problem:" + message + "body:" + body(), throwable); //$NON-NLS-1$ //$NON-NLS-2$
+			EsbDiagramEditorPlugin.getInstance().logError(
+					"Expression problem:" + message + "body:" + body(), throwable); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
@@ -115,8 +113,7 @@ public abstract class EsbAbstractExpression {
 		if (targetType instanceof EEnum) {
 			if (value instanceof EEnumLiteral) {
 				EEnumLiteral literal = (EEnumLiteral) value;
-				return (literal.getInstance() != null) ? literal.getInstance()
-						: literal;
+				return (literal.getInstance() != null) ? literal.getInstance() : literal;
 			}
 		}
 		if (false == value instanceof Number || targetType == null

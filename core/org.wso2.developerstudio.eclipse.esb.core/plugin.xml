@@ -39,14 +39,6 @@
           priority="10">
     </resolver>
     <resolver
-          class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.LocalEntryMediaTypeResolver"
-          extensions="xml"
-          id="org.wso2.developerstudio.eclipse.esb.core.resolver.localEntry"
-          mediaType="application/vnd.wso2.esb.localentry"
-          name="Sequence Media type"
-          priority="10">
-    </resolver>
-    <resolver
           class="org.wso2.developerstudio.eclipse.esb.core.internal.impl.SmooksMediaTypeResolver"
           extensions="xml"
           id="org.wso2.developerstudio.eclipse.esb.core.resolver.smooks"

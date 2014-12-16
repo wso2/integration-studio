@@ -14,16 +14,16 @@ public class EsbLinkDescriptor extends UpdaterLinkDescriptor {
 	/**
 	 * @generated
 	 */
-	public EsbLinkDescriptor(EObject source, EObject destination,
-			IElementType elementType, int linkVID) {
+	public EsbLinkDescriptor(EObject source, EObject destination, IElementType elementType,
+			int linkVID) {
 		super(source, destination, elementType, linkVID);
 	}
 
 	/**
 	 * @generated
 	 */
-	public EsbLinkDescriptor(EObject source, EObject destination,
-			EObject linkElement, IElementType elementType, int linkVID) {
+	public EsbLinkDescriptor(EObject source, EObject destination, EObject linkElement,
+			IElementType elementType, int linkVID) {
 		super(source, destination, linkElement, elementType, linkVID);
 	}
 

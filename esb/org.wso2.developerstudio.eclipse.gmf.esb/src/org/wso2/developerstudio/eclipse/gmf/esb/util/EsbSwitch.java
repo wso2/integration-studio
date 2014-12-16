@@ -2755,31 +2755,6 @@ public class EsbSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case EsbPackage.FAST_XSLT_MEDIATOR: {
-				FastXSLTMediator fastXSLTMediator = (FastXSLTMediator)theEObject;
-				T result = caseFastXSLTMediator(fastXSLTMediator);
-				if (result == null) result = caseMediator(fastXSLTMediator);
-				if (result == null) result = caseEsbElement(fastXSLTMediator);
-				if (result == null) result = caseEsbNode(fastXSLTMediator);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsbPackage.FAST_XSLT_MEDIATOR_INPUT_CONNECTOR: {
-				FastXSLTMediatorInputConnector fastXSLTMediatorInputConnector = (FastXSLTMediatorInputConnector)theEObject;
-				T result = caseFastXSLTMediatorInputConnector(fastXSLTMediatorInputConnector);
-				if (result == null) result = caseInputConnector(fastXSLTMediatorInputConnector);
-				if (result == null) result = caseEsbConnector(fastXSLTMediatorInputConnector);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case EsbPackage.FAST_XSLT_MEDIATOR_OUTPUT_CONNECTOR: {
-				FastXSLTMediatorOutputConnector fastXSLTMediatorOutputConnector = (FastXSLTMediatorOutputConnector)theEObject;
-				T result = caseFastXSLTMediatorOutputConnector(fastXSLTMediatorOutputConnector);
-				if (result == null) result = caseOutputConnector(fastXSLTMediatorOutputConnector);
-				if (result == null) result = caseEsbConnector(fastXSLTMediatorOutputConnector);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -5586,51 +5561,6 @@ public class EsbSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDataMapperMediatorOutputConnector(DataMapperMediatorOutputConnector object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fast XSLT Mediator</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fast XSLT Mediator</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFastXSLTMediator(FastXSLTMediator object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fast XSLT Mediator Input Connector</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fast XSLT Mediator Input Connector</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFastXSLTMediatorInputConnector(FastXSLTMediatorInputConnector object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Fast XSLT Mediator Output Connector</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Fast XSLT Mediator Output Connector</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseFastXSLTMediatorOutputConnector(FastXSLTMediatorOutputConnector object) {
 		return null;
 	}
 

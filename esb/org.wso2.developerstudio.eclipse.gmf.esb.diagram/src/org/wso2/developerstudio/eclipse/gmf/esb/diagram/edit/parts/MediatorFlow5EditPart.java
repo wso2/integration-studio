@@ -70,7 +70,8 @@ public class MediatorFlow5EditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new MediatorFlow5ItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+				new MediatorFlow5ItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that
 		// would let children add reasonable editpolicies
@@ -84,7 +85,8 @@ public class MediatorFlow5EditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -129,13 +131,17 @@ public class MediatorFlow5EditPart extends ShapeNodeEditPart {
 			AbstractSequencesEditPart sequencesEditPart = (AbstractSequencesEditPart) childEditPart;
 			if (null == sequencesEditPart.outputConnectorFigure)
 				return;
-			BorderItemLocator outputLocator = new FixedBorderItemLocator(this.getFigure(),
-					sequencesEditPart.outputConnectorFigure, PositionConstants.WEST, 0.5);
-			sequencesEditPart.getBorderedFigure().getBorderItemContainer()
+			BorderItemLocator outputLocator = new FixedBorderItemLocator(
+					this.getFigure(), sequencesEditPart.outputConnectorFigure,
+					PositionConstants.WEST, 0.5);
+			sequencesEditPart
+					.getBorderedFigure()
+					.getBorderItemContainer()
 					.add(sequencesEditPart.outputConnectorFigure, outputLocator);
 
-			BorderItemLocator inputLocator = new FixedBorderItemLocator(this.getFigure(),
-					sequencesEditPart.inputConnectorFigure, PositionConstants.EAST, 0.5);
+			BorderItemLocator inputLocator = new FixedBorderItemLocator(
+					this.getFigure(), sequencesEditPart.inputConnectorFigure,
+					PositionConstants.EAST, 0.5);
 			sequencesEditPart.getBorderedFigure().getBorderItemContainer()
 					.add(sequencesEditPart.inputConnectorFigure, inputLocator);
 		} else {
@@ -145,7 +151,8 @@ public class MediatorFlow5EditPart extends ShapeNodeEditPart {
 	}
 
 	protected void addChildVisual(EditPart childEditPart, int index) {
-		refreshConnector(((AbstractSequencesEditPart) childEditPart.getParent().getParent()));
+		refreshConnector(((AbstractSequencesEditPart) childEditPart.getParent()
+				.getParent()));
 		super.addChildVisual(childEditPart, -1);
 	}
 
@@ -307,11 +314,13 @@ public class MediatorFlow5EditPart extends ShapeNodeEditPart {
 			sequenceNameLabel.setAlignment(SWT.CENTER);
 			sequenceNameLabel.setPreferredSize(new Dimension(64, 20));
 
-			topRectangle.add(sequenceNameLabel, constraintEsbNodeTypeNameRectangle);
+			topRectangle.add(sequenceNameLabel,
+					constraintEsbNodeTypeNameRectangle);
 
 			this.setCornerDimensions(new Dimension(1, 1));
 			this.setBackgroundColor(THIS_BACK);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(195), getMapMode().DPtoLP(125)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(195),
+					getMapMode().DPtoLP(125)));
 			this.setLineStyle(Graphics.LINE_DASH);
 			this.setLineWidth(2);
 			this.setLineDashOffset(2.0f);

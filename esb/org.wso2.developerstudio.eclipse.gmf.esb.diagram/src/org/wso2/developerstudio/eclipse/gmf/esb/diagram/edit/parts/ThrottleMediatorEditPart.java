@@ -47,7 +47,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated NOT
  */
-public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredAbstractMediator {
+public class ThrottleMediatorEditPart extends
+		MultipleCompartmentComplexFiguredAbstractMediator {
 
 	public IFigure onAcceptOutputConnector;
 	public IFigure onRejectOutputConnector;
@@ -73,16 +74,21 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicy());
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new ThrottleMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new ThrottleMediatorCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+				new ThrottleMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -100,7 +106,8 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 				case ThrottleMediatorOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -126,7 +133,8 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if ((!connected)
-						&& (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0)) {
+						&& (this.getBounds().getLocation().x != 0 && this
+								.getBounds().getLocation().y != 0)) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 					connected = true;
@@ -147,24 +155,29 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof ThrottleMediatorGroupIdEditPart) {
-			((ThrottleMediatorGroupIdEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureThrottleMediatorPropertyValue());
+			((ThrottleMediatorGroupIdEditPart) childEditPart)
+					.setLabel(getPrimaryShape()
+							.getFigureThrottleMediatorPropertyValue());
 			return true;
 		}
 		if (childEditPart instanceof ThrottleMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((ThrottleMediatorInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof ThrottleMediatorOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((ThrottleMediatorOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.EAST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.EAST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof ThrottleMediatorOnAcceptOutputConnectorEditPart) {
@@ -189,12 +202,14 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 		}
 		if (childEditPart instanceof ThrottleMediatorInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((ThrottleMediatorInputConnectorEditPart) childEditPart).getFigure());
+					((ThrottleMediatorInputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		if (childEditPart instanceof ThrottleMediatorOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((ThrottleMediatorOutputConnectorEditPart) childEditPart).getFigure());
+					((ThrottleMediatorOutputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		return false;
@@ -346,7 +361,8 @@ public class ThrottleMediatorEditPart extends MultipleCompartmentComplexFiguredA
 			layoutThis.setSpacing(0);
 			layoutThis.setVertical(false);
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170), getMapMode().DPtoLP(100)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(170),
+					getMapMode().DPtoLP(100)));
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();

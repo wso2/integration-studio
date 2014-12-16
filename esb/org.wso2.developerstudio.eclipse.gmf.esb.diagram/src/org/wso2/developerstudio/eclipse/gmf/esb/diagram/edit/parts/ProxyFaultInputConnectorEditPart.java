@@ -54,7 +54,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class ProxyFaultInputConnectorEditPart extends AbstractBaseFigureFaultInputConnectorEditPart {
+public class ProxyFaultInputConnectorEditPart extends
+		AbstractBaseFigureFaultInputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -97,7 +98,8 @@ public class ProxyFaultInputConnectorEditPart extends AbstractBaseFigureFaultInp
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}

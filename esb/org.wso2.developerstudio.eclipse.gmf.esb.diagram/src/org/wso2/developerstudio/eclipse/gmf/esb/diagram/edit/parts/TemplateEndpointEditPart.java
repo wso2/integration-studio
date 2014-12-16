@@ -69,16 +69,20 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(
+						EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new TemplateEndpointItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new TemplateEndpointCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+				new TemplateEndpointCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -96,7 +100,8 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 				case TemplateEndpointOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -121,7 +126,8 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 		return primaryShape = new TemplateEndpointFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0
+						&& this.getBounds().getLocation().y != 0) {
 					getMostSuitableElementToConnect();
 					reAllocate(rect);
 				}
@@ -141,9 +147,11 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 			double position;
 			EObject parentEndpoint = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (childEditPart
 					.getParent()).getModel()).getElement();
-			if (((TemplateEndpoint) parentEndpoint).getInputConnector().getIncomingLinks().size() != 0) {
-				EObject source = ((TemplateEndpoint) parentEndpoint).getInputConnector()
-						.getIncomingLinks().get(0).getSource().eContainer();
+			if (((TemplateEndpoint) parentEndpoint).getInputConnector()
+					.getIncomingLinks().size() != 0) {
+				EObject source = ((TemplateEndpoint) parentEndpoint)
+						.getInputConnector().getIncomingLinks().get(0)
+						.getSource().eContainer();
 				/*				position = ((source instanceof ComplexEndpoints) || (source
 				 .eContainer().eContainer() instanceof Sequences)) ? 0.5
 				 : 0.25;*/
@@ -156,22 +164,26 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 			}
 			IFigure borderItemFigure = ((TemplateEndpointInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, position);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					position);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof TemplateEndpointOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((TemplateEndpointOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, 0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					0.75);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof TemplateEndpointDescriptionEditPart) {
-			((TemplateEndpointDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getEndpointDescriptionLabel());
+			((TemplateEndpointDescriptionEditPart) childEditPart)
+					.setLabel(getPrimaryShape().getEndpointDescriptionLabel());
 			return true;
 		}
 		return false;
@@ -180,12 +192,14 @@ public class TemplateEndpointEditPart extends AbstractEndpoint {
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof TemplateEndpointInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((TemplateEndpointInputConnectorEditPart) childEditPart).getFigure());
+					((TemplateEndpointInputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		if (childEditPart instanceof TemplateEndpointOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((TemplateEndpointOutputConnectorEditPart) childEditPart).getFigure());
+					((TemplateEndpointOutputConnectorEditPart) childEditPart)
+							.getFigure());
 			return true;
 		}
 		if (childEditPart instanceof TemplateEndpointDescriptionEditPart) {

@@ -18,7 +18,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 /**
  * @generated
  */
-public class ProxyInSequenceInputConnectorCreateCommand extends EditElementCommand {
+public class ProxyInSequenceInputConnectorCreateCommand extends
+		EditElementCommand {
 
 	/**
 	 * @generated
@@ -32,7 +33,8 @@ public class ProxyInSequenceInputConnectorCreateCommand extends EditElementComma
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -50,8 +52,8 @@ public class ProxyInSequenceInputConnectorCreateCommand extends EditElementComma
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		ProxyInSequenceInputConnector newElement = EsbFactory.eINSTANCE
 				.createProxyInSequenceInputConnector();
 
@@ -67,14 +69,18 @@ public class ProxyInSequenceInputConnectorCreateCommand extends EditElementComma
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(ProxyInSequenceInputConnector newElement, IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+	protected void doConfigure(ProxyInSequenceInputConnector newElement,
+			IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

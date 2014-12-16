@@ -64,12 +64,14 @@ public class CloneTargetContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
-				EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicyWithCustomReparent(
+						EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new CloneTargetContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new CloneTargetContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
@@ -84,7 +86,8 @@ public class CloneTargetContainerEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -128,12 +131,17 @@ public class CloneTargetContainerEditPart extends ShapeNodeEditPart {
 		if (childEditPart instanceof CloneMediatorEditPart) {
 			CloneMediatorEditPart cloneMediatorEditPart = (CloneMediatorEditPart) childEditPart;
 			if (cloneMediatorEditPart.targetOutputConnectors.size() != 0) {
-				BorderItemLocator locator = new FixedBorderItemLocator(this.getFigure(),
+				BorderItemLocator locator = new FixedBorderItemLocator(
+						this.getFigure(),
 						cloneMediatorEditPart.targetOutputConnectors.get(0),
 						PositionConstants.WEST, 0.5);
 				if (cloneMediatorEditPart.targetOutputConnectors.get(0) != null) {
-					cloneMediatorEditPart.getBorderedFigure().getBorderItemContainer()
-							.add(cloneMediatorEditPart.targetOutputConnectors.get(0), locator);
+					cloneMediatorEditPart
+							.getBorderedFigure()
+							.getBorderItemContainer()
+							.add(cloneMediatorEditPart.targetOutputConnectors
+									.get(0),
+									locator);
 				}
 			}
 		} else {
@@ -143,8 +151,8 @@ public class CloneTargetContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	protected void addChildVisual(EditPart childEditPart, int index) {
-		refreshOutputConnector(((CloneMediatorEditPart) childEditPart.getParent().getParent()
-				.getParent()));
+		refreshOutputConnector(((CloneMediatorEditPart) childEditPart
+				.getParent().getParent().getParent()));
 		super.addChildVisual(childEditPart, -1);
 	}
 
@@ -248,9 +256,11 @@ public class CloneTargetContainerEditPart extends ShapeNodeEditPart {
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setAlpha(0); //to make this transparent
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0), getMapMode().DPtoLP(0)));
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0),
+					getMapMode().DPtoLP(0)));
 			//Fixing TOOLS-1972.
-			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(60), getMapMode().DPtoLP(100)));
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(60),
+					getMapMode().DPtoLP(100)));
 			this.setLineStyle(Graphics.LINE_DASH);
 			this.setBackgroundColor(THIS_BACK);
 		}

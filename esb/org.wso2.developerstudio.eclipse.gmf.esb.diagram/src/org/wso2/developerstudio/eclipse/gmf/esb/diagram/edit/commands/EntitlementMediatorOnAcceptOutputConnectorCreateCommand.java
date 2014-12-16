@@ -18,12 +18,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 /**
  * @generated
  */
-public class EntitlementMediatorOnAcceptOutputConnectorCreateCommand extends EditElementCommand {
+public class EntitlementMediatorOnAcceptOutputConnectorCreateCommand extends
+		EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public EntitlementMediatorOnAcceptOutputConnectorCreateCommand(CreateElementRequest req) {
+	public EntitlementMediatorOnAcceptOutputConnectorCreateCommand(
+			CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -32,7 +34,8 @@ public class EntitlementMediatorOnAcceptOutputConnectorCreateCommand extends Edi
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -54,8 +57,8 @@ public class EntitlementMediatorOnAcceptOutputConnectorCreateCommand extends Edi
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
 		EntitlementMediatorOnAcceptOutputConnector newElement = EsbFactory.eINSTANCE
 				.createEntitlementMediatorOnAcceptOutputConnector();
 
@@ -71,14 +74,19 @@ public class EntitlementMediatorOnAcceptOutputConnectorCreateCommand extends Edi
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(EntitlementMediatorOnAcceptOutputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement,
-				elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+	protected void doConfigure(
+			EntitlementMediatorOnAcceptOutputConnector newElement,
+			IProgressMonitor monitor, IAdaptable info)
+			throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

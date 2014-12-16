@@ -157,14 +157,19 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
+				new CreationEditPolicy());
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new NamedEndpointItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new NamedEndpointCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+				new NamedEndpointItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+				new NamedEndpointCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenSeparatelyEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new OpenSeparatelyEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -182,7 +187,8 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 				case NamedEndpointOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -205,32 +211,42 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		Object notifier = ((ENotificationImpl) notification).getNotifier();
 		if (notifier instanceof NamedEndpoint) {
 			if (notification.getFeature() instanceof EReference) {
-				if ("staticReferenceKey".equals(((EReference) notification.getFeature()).getName())) {
-					String keyValue = ((RegistryKeyProperty) notification.getNewValue())
-							.getKeyValue();
-					setValue((NamedEndpoint) notifier, NAMED_ENDPOINT__NAME, keyValue);
+				if ("staticReferenceKey".equals(((EReference) notification
+						.getFeature()).getName())) {
+					String keyValue = ((RegistryKeyProperty) notification
+							.getNewValue()).getKeyValue();
+					setValue((NamedEndpoint) notifier, NAMED_ENDPOINT__NAME,
+							keyValue);
 				}
 			} else if (notification.getFeature() instanceof EAttribute) {
-				if ("name".equals(((EAttribute) notification.getFeature()).getName())) {
+				if ("name".equals(((EAttribute) notification.getFeature())
+						.getName())) {
 					String name = (String) notification.getNewValue();
 					if ("{XPath}".equals(name)) {
-						setValue((NamedEndpoint) notifier, NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,
+						setValue((NamedEndpoint) notifier,
+								NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,
 								KeyType.DYNAMIC);
 					} else {
-						setValue((NamedEndpoint) notifier, NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,
+						setValue((NamedEndpoint) notifier,
+								NAMED_ENDPOINT__REFERRING_ENDPOINT_TYPE,
 								KeyType.STATIC);
 						RegistryKeyProperty registryKeyProperty = ((NamedEndpoint) notifier)
 								.getStaticReferenceKey();
-						setValue(registryKeyProperty, REGISTRY_KEY_PROPERTY__KEY_VALUE, name);
+						setValue(registryKeyProperty,
+								REGISTRY_KEY_PROPERTY__KEY_VALUE, name);
 					}
-				} else if ("referringEndpointType".equals(((EAttribute) notification.getFeature())
-						.getName())) {
+				} else if ("referringEndpointType"
+						.equals(((EAttribute) notification.getFeature())
+								.getName())) {
 					KeyType type = (KeyType) notification.getNewValue();
 					if (KeyType.DYNAMIC == type) {
-						setValue((NamedEndpoint) notifier, NAMED_ENDPOINT__NAME, "{XPath}");
+						setValue((NamedEndpoint) notifier,
+								NAMED_ENDPOINT__NAME, "{XPath}");
 					} else {
-						if ("{XPath}".equals(((NamedEndpoint) notifier).getName())) {
-							setValue((NamedEndpoint) notifier, NAMED_ENDPOINT__NAME, "");
+						if ("{XPath}".equals(((NamedEndpoint) notifier)
+								.getName())) {
+							setValue((NamedEndpoint) notifier,
+									NAMED_ENDPOINT__NAME, "");
 						}
 					}
 				}
@@ -239,8 +255,10 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		}
 	}
 
-	private void setValue(EObject owner, EStructuralFeature feature, Object value) {
-		SetCommand setCommand = new SetCommand(getEditingDomain(), owner, feature, value);
+	private void setValue(EObject owner, EStructuralFeature feature,
+			Object value) {
+		SetCommand setCommand = new SetCommand(getEditingDomain(), owner,
+				feature, value);
 		if (setCommand.canExecute()) {
 			getEditingDomain().getCommandStack().execute(setCommand);
 		}
@@ -253,7 +271,8 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		return primaryShape = new NamedEndpointFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0
+						&& this.getBounds().getLocation().y != 0) {
 					getMostSuitableElementToConnect();
 					reAllocate(rect);
 				}
@@ -270,17 +289,20 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof NamedEndpointNameEditPart) {
-			((NamedEndpointNameEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureNamedEndPointNamePropertyLabel());
+			((NamedEndpointNameEditPart) childEditPart)
+					.setLabel(getPrimaryShape()
+							.getFigureNamedEndPointNamePropertyLabel());
 			return true;
 		}
 		if (childEditPart instanceof NamedEndpointInputConnectorEditPart) {
 			double position;
 			EObject parentEndpoint = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (childEditPart
 					.getParent()).getModel()).getElement();
-			if (((NamedEndpoint) parentEndpoint).getInputConnector().getIncomingLinks().size() != 0) {
-				EObject source = ((NamedEndpoint) parentEndpoint).getInputConnector()
-						.getIncomingLinks().get(0).getSource().eContainer();
+			if (((NamedEndpoint) parentEndpoint).getInputConnector()
+					.getIncomingLinks().size() != 0) {
+				EObject source = ((NamedEndpoint) parentEndpoint)
+						.getInputConnector().getIncomingLinks().get(0)
+						.getSource().eContainer();
 				/*
 				 * Position of input connector of the endpoint should be 0.5 inside ComplexEndpoints and Sequences. 
 				 */
@@ -296,17 +318,21 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 			}
 			IFigure borderItemFigure = ((NamedEndpointInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, position);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					position);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		if (childEditPart instanceof NamedEndpointOutputConnectorEditPart) {
 			IFigure borderItemFigure = ((NamedEndpointOutputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(),
-					borderItemFigure, PositionConstants.WEST, 0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					0.75);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		return false;
@@ -439,29 +465,38 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 			 + (((EsbDiagram) diagram).getTest() + 1);*/
 			String defaultName = "Default";
 			final InputDialog endpointNameInput = new InputDialog(new Shell(),
-					"Enter Endpoint Name", "Endpoint Name", defaultName, validator) {
+					"Enter Endpoint Name", "Endpoint Name", defaultName,
+					validator) {
 				protected Control createDialogArea(Composite parent) {
-					Composite composite = (Composite) super.createDialogArea(parent);
+					Composite composite = (Composite) super
+							.createDialogArea(parent);
 					Label label = new Label(composite, SWT.WRAP);
 					label.setText("Select endpoint type");
-					GridData data = new GridData(GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL
-							| GridData.HORIZONTAL_ALIGN_FILL | GridData.VERTICAL_ALIGN_CENTER);
+					GridData data = new GridData(GridData.GRAB_HORIZONTAL
+							| GridData.GRAB_VERTICAL
+							| GridData.HORIZONTAL_ALIGN_FILL
+							| GridData.VERTICAL_ALIGN_CENTER);
 					label.setLayoutData(data);
 					label.setFont(parent.getFont());
 
-					endpointTypeCombo = new Combo(composite, SWT.SINGLE | SWT.BORDER);
-					endpointTypeCombo.setItems(new String[] { "Default Endpoint",
-							"Address Endpoint", "WSDL Endpoint", "Loadbalance Endpoint",
+					endpointTypeCombo = new Combo(composite, SWT.SINGLE
+							| SWT.BORDER);
+					endpointTypeCombo.setItems(new String[] {
+							"Default Endpoint", "Address Endpoint",
+							"WSDL Endpoint", "Loadbalance Endpoint",
 							"Failover Endpoint" });
-					endpointTypeCombo.addSelectionListener(new SelectionListener() {
-						public void widgetSelected(SelectionEvent arg0) {
-							selection = endpointTypeCombo.getSelectionIndex();
-						}
+					endpointTypeCombo
+							.addSelectionListener(new SelectionListener() {
+								public void widgetSelected(SelectionEvent arg0) {
+									selection = endpointTypeCombo
+											.getSelectionIndex();
+								}
 
-						public void widgetDefaultSelected(SelectionEvent arg0) {
+								public void widgetDefaultSelected(
+										SelectionEvent arg0) {
 
-						}
-					});
+								}
+							});
 					endpointTypeCombo.select(0);
 					return composite;
 				}
@@ -496,9 +531,11 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 						 commandSequenceCount);
 						 }*/
 
-						SetRequest setRequest = new SetRequest(editingDomain, endpoint,
-								EsbPackage.eINSTANCE.getNamedEndpoint_Name(), endpointName);
-						SetValueCommand operation = new SetValueCommand(setRequest) {
+						SetRequest setRequest = new SetRequest(editingDomain,
+								endpoint, EsbPackage.eINSTANCE
+										.getNamedEndpoint_Name(), endpointName);
+						SetValueCommand operation = new SetValueCommand(
+								setRequest) {
 
 							public boolean canUndo() {
 								return true;
@@ -509,16 +546,20 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 							}
 						};
 
-						getEditDomain().getCommandStack().execute(new ICommandProxy(operation));
+						getEditDomain().getCommandStack().execute(
+								new ICommandProxy(operation));
 
 						IProject activeProject = getActiveProject();
 						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 						try {
-							esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml")
-									.getLocation().toFile());
-							esbProjectArtifact.addESBArtifact(createArtifact(endpointName,
+							esbProjectArtifact.fromFile(activeProject
+									.getFile("artifact.xml").getLocation()
+									.toFile());
+							esbProjectArtifact.addESBArtifact(createArtifact(
+									endpointName,
 									getMavenGroupID(activeProject), "1.0.0",
-									"src/main/synapse-config/endpoints/" + endpointName + ".xml",
+									"src/main/synapse-config/endpoints/"
+											+ endpointName + ".xml",
 									"synapse/endpoint"));
 							esbProjectArtifact.toFile();
 						} catch (Exception e) {
@@ -537,18 +578,20 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 	private IProject getActiveProject() {
 		IEditorPart editorPart = null;
 		IProject activeProject = null;
-		IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getActivePage().getEditorReferences();
+		IEditorReference editorReferences[] = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage()
+				.getEditorReferences();
 		for (int i = 0; i < editorReferences.length; i++) {
 			IEditorPart editor = editorReferences[i].getEditor(false);
 
 			if (editor != null) {
-				editorPart = editor.getSite().getWorkbenchWindow().getActivePage()
-						.getActiveEditor();
+				editorPart = editor.getSite().getWorkbenchWindow()
+						.getActivePage().getActiveEditor();
 			}
 
 			if (editorPart != null) {
-				IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
+				IFileEditorInput input = (IFileEditorInput) editorPart
+						.getEditorInput();
 				IFile file = input.getFile();
 				activeProject = file.getProject();
 			}
@@ -559,8 +602,8 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 	private String getMavenGroupID(IProject project) {
 		String groupID = "com.example";
 		try {
-			MavenProject mavenProject = MavenUtils.getMavenProject(project.getFile("pom.xml")
-					.getLocation().toFile());
+			MavenProject mavenProject = MavenUtils.getMavenProject(project
+					.getFile("pom.xml").getLocation().toFile());
 			groupID = mavenProject.getGroupId();
 		} catch (Exception e) {
 			//ignore. Then group id would be default. 
@@ -569,8 +612,8 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		return groupID;
 	}
 
-	private ESBArtifact createArtifact(String name, String groupId, String version, String path,
-			String type) {
+	private ESBArtifact createArtifact(String name, String groupId,
+			String version, String path, String type) {
 		ESBArtifact artifact = new ESBArtifact();
 		artifact.setName(name);
 		artifact.setVersion(version);
@@ -609,8 +652,8 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		/*
 		 * File creations.
 		 */
-		createFiles(name, "endpoint_" + name + ".esb_diagram", "endpoint_" + name + ".esb",
-				activeProject);
+		createFiles(name, "endpoint_" + name + ".esb_diagram", "endpoint_"
+				+ name + ".esb", activeProject);
 		EditorUtils.updateToolpalette();
 
 	}
@@ -619,20 +662,23 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 			IProject currentProject) {
 		Resource diagram;
 
-		String basePath = "platform:/resource/" + currentProject.getName() + "/"
-				+ ENDPOINT_RESOURCE_DIR + "/";
-		IFile file = currentProject.getFile(ENDPOINT_RESOURCE_DIR + "/" + fileURI1);
+		String basePath = "platform:/resource/" + currentProject.getName()
+				+ "/" + ENDPOINT_RESOURCE_DIR + "/";
+		IFile file = currentProject.getFile(ENDPOINT_RESOURCE_DIR + "/"
+				+ fileURI1);
 
 		if (!file.exists()) {
-			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/endpoints/" + name
-					+ ".xml");
+			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR
+					+ "/endpoints/" + name + ".xml");
 			try {
-				diagram = EsbDiagramEditorUtil.createDiagram(URI.createURI(basePath + fileURI1),
-						URI.createURI(basePath + fileURI2), new NullProgressMonitor(), "endpoint",
-						name, selection);
+				diagram = EsbDiagramEditorUtil.createDiagram(
+						URI.createURI(basePath + fileURI1),
+						URI.createURI(basePath + fileURI2),
+						new NullProgressMonitor(), "endpoint", name, selection);
 
 				if (fileTobeOpened.exists()) {
-					String diagramPath = diagram.getURI().toPlatformString(true);
+					String diagramPath = diagram.getURI()
+							.toPlatformString(true);
 					OpenEditorUtils oeUtils = new OpenEditorUtils();
 					oeUtils.openSeparateEditor(fileTobeOpened, diagramPath);
 				} else {
@@ -649,10 +695,10 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		}
 
 		else {
-			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-					.getActivePage();
-			IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry()
-					.getDefaultEditor(file.getName());
+			IWorkbenchPage page = PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage();
+			IEditorDescriptor desc = PlatformUI.getWorkbench()
+					.getEditorRegistry().getDefaultEditor(file.getName());
 			try {
 				page.openEditor(new FileEditorInput(file), desc.getId());
 			} catch (PartInitException e) {
@@ -670,10 +716,12 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 	}
 
 	private ToolEntry createNamedEndpoint6CreationTool(String name) {
-		NodeToolEntry entry = new NodeToolEntry(name, Messages.NamedEndpoint6CreationTool_desc,
+		NodeToolEntry entry = new NodeToolEntry(name,
+				Messages.NamedEndpoint6CreationTool_desc,
 				Collections.singletonList(EsbElementTypes.NamedEndpoint_3660));
 		entry.setId("createNamedEndpoint6CreationTool"); //$NON-NLS-1$
-		entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.NamedEndpoint_3660));
+		entry.setSmallIcon(EsbElementTypes
+				.getImageDescriptor(EsbElementTypes.NamedEndpoint_3660));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -682,11 +730,12 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		IProject activeProject = getActiveProject();
 		ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 		try {
-			esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml").getLocation()
-					.toFile());
+			esbProjectArtifact.fromFile(activeProject.getFile("artifact.xml")
+					.getLocation().toFile());
 			esbProjectArtifact.addESBArtifact(createArtifact(endpointName,
-					getMavenGroupID(activeProject), "1.0.0", "src/main/synapse-config/endpoints/"
-							+ endpointName + ".xml", "synapse/endpoint"));
+					getMavenGroupID(activeProject), "1.0.0",
+					"src/main/synapse-config/endpoints/" + endpointName
+							+ ".xml", "synapse/endpoint"));
 			esbProjectArtifact.toFile();
 		} catch (Exception e) {
 			log.error("Error while updating Artifact.xml");
@@ -744,7 +793,8 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 
 		private final List<IElementType> elementTypes;
 
-		private NodeToolEntry(String title, String description, List<IElementType> elementTypes) {
+		private NodeToolEntry(String title, String description,
+				List<IElementType> elementTypes) {
 			// super(title, description, null, null);
 			super(null, title, null);
 			this.setDescription(description);

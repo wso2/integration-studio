@@ -59,13 +59,17 @@ public class MessageStoreEditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new MessageStoreItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
+				new MessageStoreItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
+				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
+				new FeedbackIndicateDragDropEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());  //remove 8 corners
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+				new CustomNonResizableEditPolicyEx()); //remove 8 corners
 	}
 
 	/**
@@ -75,7 +79,8 @@ public class MessageStoreEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -99,8 +104,8 @@ public class MessageStoreEditPart extends ShapeNodeEditPart {
 		if (notification.getFeature() instanceof EAttributeImpl) {
 			if (notification.getNotifier() instanceof BoundsImpl) {
 				Rectangle constraints = new Rectangle(10, 10, -1, -1);
-				((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(),
-						constraints);
+				((GraphicalEditPart) getParent()).setLayoutConstraint(this,
+						getFigure(), constraints);
 			}
 		}
 	}
@@ -210,7 +215,6 @@ public class MessageStoreEditPart extends ShapeNodeEditPart {
 		 */
 		public MessageStoreFigure() {
 			this.setBackgroundColor(THIS_BACK);
-
 		}
 
 		@Override
@@ -223,6 +227,6 @@ public class MessageStoreEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated NOT
 	 */
-	static final Color THIS_BACK = new Color(null,245, 243, 215);
+	static final Color THIS_BACK = new Color(null, 245, 243, 215);
 
 }

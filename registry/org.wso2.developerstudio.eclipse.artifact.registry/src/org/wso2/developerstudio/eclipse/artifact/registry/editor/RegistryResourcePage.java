@@ -328,30 +328,31 @@ public class RegistryResourcePage extends FormPage {
 	}
 	
 	
-	private void addResourcesPath(){
-		 table.removeAll();
-	      if(registryPathEditor.getEditor() instanceof Text){
-	         Text t =(Text)registryPathEditor.getEditor();
-	         t.dispose();
-	      } 
-	      
-	      if(mediaTypeEditor.getEditor() instanceof Text){
-		         Text t =(Text)mediaTypeEditor.getEditor();
-		         t.dispose();
-		      } 
+	private void addResourcesPath() {
+		table.removeAll();
+		if (registryPathEditor.getEditor() instanceof Text) {
+			Text t = (Text) registryPathEditor.getEditor();
+			t.dispose();
+		}
 
-//	      String key = artifactList.getItem(artifactList.getSelectionIndex());
-	      if(artifactListTable.getSelectionIndex()==-1){
-	    	  return;
-	      }
-	      
-	      TableItem selectionItem = artifactListTable.getItem(artifactListTable.getSelectionIndex());
-	      String key = selectionItem.getText(ARTIFACT_NAME_COLUMN);
-	      
-	      RegistryArtifact artifact =(RegistryArtifact)artifactListTable.getData(key);
-	      java.util.List<RegistryElement> elements = artifact.getAllRegistryItems();
-	      itemMap = new HashMap<Integer, RegistryElement>();
-	      int i=0;
+		if (mediaTypeEditor.getEditor() instanceof Text) {
+			Text t = (Text) mediaTypeEditor.getEditor();
+			t.dispose();
+		}
+
+		// String key = artifactList.getItem(artifactList.getSelectionIndex());
+		if (artifactListTable.getSelectionIndex() == -1) {
+			return;
+		}
+
+		TableItem selectionItem = artifactListTable.getItem(artifactListTable.getSelectionIndex());
+		String key = selectionItem.getText(ARTIFACT_NAME_COLUMN);
+
+		RegistryArtifact artifact = (RegistryArtifact) artifactListTable.getData(key);
+		java.util.List<RegistryElement> elements = artifact.getAllRegistryItems();
+		itemMap = new HashMap<Integer, RegistryElement>();
+		int i = 0;
+
 		for (RegistryElement registryElement : elements) {
 			i++;
 			String path = registryElement.getPath();

@@ -69,13 +69,15 @@ public class RESTAPIMojo extends AbstractMojo{
 			newPath = destFolder.getAbsolutePath() + File.separator + fileName;
 		} else {
 			if (extension != null) { // if the user provided the extension
-				String fileNameWithoutExtension = (artifact.getName()
-						.split("\\."))[0];
-				newPath = destFolder.getAbsolutePath() + File.separator
-						+ fileNameWithoutExtension + "." + extension;
+				String fileNameWithoutExtension = (artifact.getName().split("\\."))[0];
+				newPath = destFolder.getAbsolutePath() + File.separator + fileNameWithoutExtension + "-"
+						+ project.getVersion() + "." + extension;
 			} else {
-				newPath = destFolder.getAbsolutePath() + File.separator
-						+ artifact.getName();
+				String[] fileNameSplit = (artifact.getName().split("\\."));
+				String fileNameWithoutExtension = fileNameSplit[0];
+				String extension = fileNameSplit[1];
+				newPath = destFolder.getAbsolutePath() + File.separator + fileNameWithoutExtension + "-"
+						+ project.getVersion() + "." + extension;
 			}
 		}
 

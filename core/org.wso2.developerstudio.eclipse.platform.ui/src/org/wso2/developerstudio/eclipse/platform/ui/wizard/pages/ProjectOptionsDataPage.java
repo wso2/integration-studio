@@ -100,6 +100,7 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 	private boolean requireLocationSection;
 	private boolean requiredWorkingSets;
 	private boolean worksapceRootRequired;
+	private LocationInfoComposite locationInfoComposite;
 
 	/**
 	 * Create the wizard.
@@ -193,7 +194,7 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 			gridData_1.grabExcessHorizontalSpace = true;
 			projectLocationSection.setLayoutData(gridData_1);
 			
-			LocationInfoComposite locationInfoComposite = new LocationInfoComposite(projectLocationSection, SWT.NONE, model, getSaveLocation(),getProjectOptionsInfo(),this);
+			locationInfoComposite = new LocationInfoComposite(projectLocationSection, SWT.NONE, model, getSaveLocation(),getProjectOptionsInfo(),this);
 			
 		}
 		if(isRequiredWorkingSets()){
@@ -430,11 +431,11 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 	        };
 	        txtReg.setOnAction(new IOnAction() {
 
-		
+
 		public void onSelectionAction() {
 		}
 
-		
+
 		public void onModifyAction() {
 			try {
 				String modelProperty = optionData.getModelProperty();
@@ -902,7 +903,7 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 		};
 		fieldControllers.put(optionData.getModelProperty(), fieldExecutor);
 		chkButton.addSelectionListener(new SelectionAdapter() {
-			
+
 			public void widgetSelected(SelectionEvent event) {
 				try {
 					SelectionListener linkClickedListener = optionData.getLinkClickedListener();
@@ -1070,11 +1071,11 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 		        };
 		txt.setOnAction(new IOnAction() {
 
-			
+
 			public void onSelectionAction() {
 			}
 
-			
+
 			public void onModifyAction() {
 				try {
 					String modelProperty = optionData.getModelProperty();
@@ -1467,13 +1468,21 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 			doFieldValidation(modelProperty);
 			doControlStatusUpdate(optionData);
 			doPageValidation(optionData);
-			setPageComplete(true);
-			setErrorMessage(null);
+
+			if (isRequireLocationSection()) {
+				if (locationInfoComposite.isComplete()) {
+					setPageComplete(true);
+					setErrorMessage(null);
+				} else {
+					setPageComplete(false);
+					setErrorMessage(locationInfoComposite.getErrorMessage());
+				}
+			}
 		} catch (FieldValidationException e) {
 			try {
 				doControlStatusUpdate(optionData);
 			} catch (Exception e1) {
-				log.error("An unexpected error has occurred", e);
+				log.error("An unexpected error has occurred", e1);
 			}
 			setPageComplete(false);
 			setErrorMessage(e.getMessage());

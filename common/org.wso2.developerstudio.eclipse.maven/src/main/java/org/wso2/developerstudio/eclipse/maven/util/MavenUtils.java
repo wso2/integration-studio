@@ -34,6 +34,8 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 public class MavenUtils {
+	private static final String GROUP_ID_ORG_WSO2_MAVEN = "org.wso2.maven";
+	private static final String ARTIFACT_ID_MAVEN_BPEL_PLUGIN = "maven-bpel-plugin";
 	public static final String CAPP_SCOPE_PREFIX = "capp";
 	public static final String PROPERTY_CAPP_TYPE = "CApp.type";
 	
@@ -510,7 +512,8 @@ public class MavenUtils {
 		Plugin plugin;
 		
 		PluginExecution pluginExecution;
-		plugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-bpel-plugin", "2.0.8", true);
+		plugin = MavenUtils.createPluginEntry(mavenProject, GROUP_ID_ORG_WSO2_MAVEN, ARTIFACT_ID_MAVEN_BPEL_PLUGIN,
+				WSO2MavenPluginVersions.getPluginVersion(ARTIFACT_ID_MAVEN_BPEL_PLUGIN), true);
 		// FIXME : remove hard-coded version value (cannot use
 		// org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants
 		// due to cyclic reference)

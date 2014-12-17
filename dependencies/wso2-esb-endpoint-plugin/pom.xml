@@ -18,7 +18,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.wso2.maven</groupId>
 	<artifactId>wso2-esb-endpoint-plugin</artifactId>
-	<version>2.0.9</version>
+	<version>2.0.10</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Maven ESB Endpoint Plugin</name>
@@ -146,12 +146,12 @@
 		<dependency>
 			<groupId>org.wso2.maven</groupId>
 			<artifactId>org.wso2.maven.capp</artifactId>
-			<version>2.0.9</version>
+			<version>2.0.10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.wso2.maven</groupId>
 			<artifactId>org.wso2.maven.esb</artifactId>
-			<version>2.0.0</version>
+			<version>2.0.1</version>
 		</dependency>
 	</dependencies>
 

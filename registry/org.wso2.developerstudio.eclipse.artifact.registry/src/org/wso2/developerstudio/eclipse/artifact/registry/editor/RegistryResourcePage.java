@@ -328,57 +328,60 @@ public class RegistryResourcePage extends FormPage {
 	}
 	
 	
-	private void addResourcesPath(){
-		 table.removeAll();
-	      if(registryPathEditor.getEditor() instanceof Text){
-	         Text t =(Text)registryPathEditor.getEditor();
-	         t.dispose();
-	      } 
-	      
-	      if(mediaTypeEditor.getEditor() instanceof Text){
-		         Text t =(Text)mediaTypeEditor.getEditor();
-		         t.dispose();
-		      } 
+	private void addResourcesPath() {
+		table.removeAll();
+		if (registryPathEditor.getEditor() instanceof Text) {
+			Text t = (Text) registryPathEditor.getEditor();
+			t.dispose();
+		}
 
-//	      String key = artifactList.getItem(artifactList.getSelectionIndex());
-	      if(artifactListTable.getSelectionIndex()==-1){
-	    	  return;
-	      }
-	      
-	      TableItem selectionItem = artifactListTable.getItem(artifactListTable.getSelectionIndex());
-	      String key = selectionItem.getText(ARTIFACT_NAME_COLUMN);
-	      
-	      RegistryArtifact artifact =(RegistryArtifact)artifactListTable.getData(key);
-	      java.util.List<RegistryElement> elements = artifact.getAllRegistryItems();
-	      itemMap = new HashMap<Integer, RegistryElement>();
-	      int i=0;
-	      for (RegistryElement registryElement : elements) {
-	    	  i++;
-	    	  String path = registryElement.getPath();
-	    	  String name ="";
-	    	  String mediaType=null;
-	    	  if(registryElement instanceof RegistryItem){
-	    		  name = ((RegistryItem)registryElement).getFile();
-	    		  mediaType = MediaManager.getMediaType(name);// to dynamically set the media type on every call for UI creation
-	    	  }else if(registryElement instanceof RegistryDump){
-	    		  name = ((RegistryDump)registryElement).getFile();
-	    	  }else{
-	    		  name = ((RegistryCollection)registryElement).getDirectory();
-	    	  }
-	    	  TableItem item = new TableItem(table, SWT.NONE);
-	    	  String index =""+i;
-	          item.setText(new String[] {index, name, path, mediaType });
-	      	
-	  		final Color red = form.getDisplay().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT);
-	     	final  Color blue = form.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT);
-	          if(i%2 == 0){
-	        	  item.setBackground(red);
-	          }else {
-	        	  item.setBackground(blue);
-	          } 
+		if (mediaTypeEditor.getEditor() instanceof Text) {
+			Text t = (Text) mediaTypeEditor.getEditor();
+			t.dispose();
+		}
 
-            table.layout();
-	          itemMap.put(i, registryElement);
+		// String key = artifactList.getItem(artifactList.getSelectionIndex());
+		if (artifactListTable.getSelectionIndex() == -1) {
+			return;
+		}
+
+		TableItem selectionItem = artifactListTable.getItem(artifactListTable.getSelectionIndex());
+		String key = selectionItem.getText(ARTIFACT_NAME_COLUMN);
+
+		RegistryArtifact artifact = (RegistryArtifact) artifactListTable.getData(key);
+		java.util.List<RegistryElement> elements = artifact.getAllRegistryItems();
+		itemMap = new HashMap<Integer, RegistryElement>();
+		int i = 0;
+		for (RegistryElement registryElement : elements) {
+			i++;
+			String path = registryElement.getPath();
+			String name = "";
+			String mediaType = null;
+			if (registryElement instanceof RegistryItem) {
+				name = ((RegistryItem) registryElement).getFile();
+				mediaType = MediaManager.getCustomMediaTypeIfSet(name);// to dynamically set the media type on every call for UI creation
+				if (mediaType == null) {//if the user has not specified a custom media type use the original
+					mediaType = ((RegistryItem) registryElement).getMediaType();
+				}
+			} else if (registryElement instanceof RegistryDump) {
+				name = ((RegistryDump) registryElement).getFile();
+			} else {
+				name = ((RegistryCollection) registryElement).getDirectory();
+			}
+			TableItem item = new TableItem(table, SWT.NONE);
+			String index = "" + i;
+			item.setText(new String[] { index, name, path, mediaType });
+
+			final Color red = form.getDisplay().getSystemColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT);
+			final Color blue = form.getDisplay().getSystemColor(SWT.COLOR_TITLE_BACKGROUND_GRADIENT);
+			if (i % 2 == 0) {
+				item.setBackground(red);
+			} else {
+				item.setBackground(blue);
+			}
+
+			table.layout();
+			itemMap.put(i, registryElement);
 		}
 
 	}

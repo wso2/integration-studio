@@ -42,32 +42,39 @@ public class MediaManager {
 	}
 	
 	public static String getMediaType(String fileName) {
-		String mediaType = null;
-		String mimeTypesFileLoc = null;
-		File mimeTypesFile = null;		
-		String resourceFileExt = getFileExtension(fileName);	
-		String launcherLocation = System.getProperty(ECLIPSE_LAUNCHER_SYSTEM_PROPERTY);//get the eclipse configuration directory path
-		File launcherLocationFile;	
-		if(resourceFileExt == null){
-			log.error("resource file does not have an extension");
-		}		
-		if(launcherLocation != null && userMediaTypes.isEmpty()){
-			launcherLocationFile = new File(launcherLocation);
-			mimeTypesFileLoc = launcherLocationFile.getParent() + File.separator + CONFIGURATION_FOLDER_NAME + File.separator + MIMETYPES_CONF_FILE_NAME;			
-			mimeTypesFile = new File(mimeTypesFileLoc);
-			if (mimeTypesFile.exists()) {// check for media types in the custom file by user			
-				CustomMediaTypeReader customMediaTypeReader = new CustomMediaTypeReader();
-				userMediaTypes = customMediaTypeReader.customMimeTypes(mimeTypesFileLoc);				
-			}	
-		}
-		if (userMediaTypes.containsKey(resourceFileExt)){			
-			return (String) userMediaTypes.get(resourceFileExt);
-		}
-		if(mediaType == null){ //since checking for null
+		String mediaType = getCustomMediaTypeIfSet(fileName);
+		if (mediaType == null) { 
 			IMediaTypeResolverProvider selectedProvider = getMediaTypeResolver(fileName);
 			if (selectedProvider != null) {
 				mediaType = selectedProvider.getMediaType();
 			}
+		}
+		return mediaType;
+	}
+	
+	public static String getCustomMediaTypeIfSet(String fileName) {
+		String mediaType = null;
+		String mimeTypesFileLoc = null;
+		File mimeTypesFile = null;
+		String resourceFileExt = getFileExtension(fileName);
+		String launcherLocation = System.getProperty(ECLIPSE_LAUNCHER_SYSTEM_PROPERTY);//eclipse conf directory path
+		File launcherLocationFile;
+		if (resourceFileExt == null) {
+			log.error("resource file does not have an extension");
+		}
+		if (launcherLocation != null && userMediaTypes.isEmpty()) {
+			launcherLocationFile = new File(launcherLocation);
+			mimeTypesFileLoc = launcherLocationFile.getParent() + File.separator +
+			                           CONFIGURATION_FOLDER_NAME + File.separator +
+			                           MIMETYPES_CONF_FILE_NAME;
+			mimeTypesFile = new File(mimeTypesFileLoc);
+			if (mimeTypesFile.exists()) {// check for media types in the custom file by user
+				CustomMediaTypeReader customMediaTypeReader = new CustomMediaTypeReader();
+				userMediaTypes = customMediaTypeReader.customMimeTypes(mimeTypesFileLoc);
+			}
+		}
+		if (userMediaTypes.containsKey(resourceFileExt)) {
+			mediaType = (String) userMediaTypes.get(resourceFileExt);
 		}
 		return mediaType;
 	}
@@ -87,28 +94,9 @@ public class MediaManager {
 	}
 
 	public static String getMediaType(File file) {
-		String mediaType = null;
-		String mimeTypesFileLoc = null;
-		File mimeTypesFile = null;		
-		String resourceFileExt = getFileExtension(file);	
-		String launcherLocation = System.getProperty(ECLIPSE_LAUNCHER_SYSTEM_PROPERTY);//get the eclipse configuration directory path
-		File launcherLocationFile;	
-		if(resourceFileExt == null){
-			log.error("resource file does not have an extension");
-		}		
-		if(launcherLocation != null && userMediaTypes.isEmpty()){
-			launcherLocationFile = new File(launcherLocation);
-			mimeTypesFileLoc = launcherLocationFile.getParent() + File.separator + CONFIGURATION_FOLDER_NAME + File.separator + MIMETYPES_CONF_FILE_NAME;			
-			mimeTypesFile = new File(mimeTypesFileLoc);
-			if (mimeTypesFile.exists()) {// check for media types in the custom file by user			
-				CustomMediaTypeReader customMediaTypeReader = new CustomMediaTypeReader();
-				userMediaTypes = customMediaTypeReader.customMimeTypes(mimeTypesFileLoc);				
-			}	
-		}
-		if (userMediaTypes.containsKey(resourceFileExt)){			
-			return (String) userMediaTypes.get(resourceFileExt);
-		}
-		if(mediaType == null){ //since checking for null
+		String fileName = file.getName();
+		String mediaType = getCustomMediaTypeIfSet(fileName);
+		if (mediaType == null) { 
 			IMediaTypeResolverProvider selectedProvider = getMediaTypeResolver(file);
 			if (selectedProvider != null) {
 				mediaType = selectedProvider.getMediaType();
@@ -171,17 +159,11 @@ public class MediaManager {
 	 * @param file 
 	 * @return extension of the file
 	 */
-	private static String getFileExtension(File file) {
-	    String fileName = file.getName();
-	    return getFileExtension(fileName);
-	}
-	
 	private static String getFileExtension(String file) {
-	   
 	    int lastIndexOf = file.lastIndexOf(".");
 	    if (lastIndexOf == -1) {// if there is no "." in the file name
 	    	//no file extension
-	        return null; // empty extension	       
+	        return null; // return empty extension	       
 	    }
 	    return file.substring(lastIndexOf);
 	}

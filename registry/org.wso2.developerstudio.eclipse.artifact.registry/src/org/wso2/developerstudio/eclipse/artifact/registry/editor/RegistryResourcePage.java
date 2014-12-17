@@ -352,6 +352,7 @@ public class RegistryResourcePage extends FormPage {
 		java.util.List<RegistryElement> elements = artifact.getAllRegistryItems();
 		itemMap = new HashMap<Integer, RegistryElement>();
 		int i = 0;
+
 		for (RegistryElement registryElement : elements) {
 			i++;
 			String path = registryElement.getPath();

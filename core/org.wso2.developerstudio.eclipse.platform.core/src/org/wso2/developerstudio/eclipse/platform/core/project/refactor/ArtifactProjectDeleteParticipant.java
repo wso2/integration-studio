@@ -83,11 +83,12 @@ public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 					log.error("Error occured while trying to generate the Refactoring", e);
 				}
 			}
-		} if (originalProject.isOpen() &&
-				originalProject.hasNature("org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
+		}
+		if (originalProject.isOpen() &&
+		    originalProject.hasNature("org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
 			MavenProject mavenProject = ProjectRefactorUtils.getMavenProject(originalProject);
 			List<String> modulesofOrignal = mavenProject.getModules();
-			if(!modulesofOrignal.isEmpty()){
+			if (!modulesofOrignal.isEmpty()) {
 				deleteMavenSubModules(originalProject, modulesofOrignal, deleteChange);
 			}
 		}
@@ -95,23 +96,23 @@ public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 	}
 
 	private void deleteDependencies(CompositeChange deleteChange, IProject project, IProject projectToDelete) {
-	    IFile pomFile = project.getFile(POM_XML);
-	    MavenProject mavenProject = ProjectRefactorUtils.getMavenProject(project);
-	    Dependency projectDependency = ProjectRefactorUtils.getDependencyForTheProject(originalProject);
-	    if (mavenProject != null) {
-	    	List<?> dependencies = mavenProject.getDependencies();
-	    	if (projectDependency != null) {
-	    		for (Iterator<?> iterator = dependencies.iterator(); iterator.hasNext();) {
-	    			Dependency dependency = (Dependency) iterator.next();
-	    			if (ProjectRefactorUtils.isDependenciesEqual(projectDependency, dependency)) {
-	    				deleteChange.add(new MavenConfigurationFileDeleteChange(project.getName(),
-	    				                                                        pomFile,
-                                        	    								projectToDelete));
-	    			}
-	    		}
-	    	}
-	    }
-    }
+		IFile pomFile = project.getFile(POM_XML);
+		MavenProject mavenProject = ProjectRefactorUtils.getMavenProject(project);
+		Dependency projectDependency = ProjectRefactorUtils.getDependencyForTheProject(originalProject);
+		if (mavenProject != null) {
+			List<?> dependencies = mavenProject.getDependencies();
+			if (projectDependency != null) {
+				for (Iterator<?> iterator = dependencies.iterator(); iterator.hasNext();) {
+					Dependency dependency = (Dependency) iterator.next();
+					if (ProjectRefactorUtils.isDependenciesEqual(projectDependency, dependency)) {
+						deleteChange.add(new MavenConfigurationFileDeleteChange(project.getName(),
+						                                                        pomFile,
+						                                                        projectToDelete));
+					}
+				}
+			}
+		}
+	}
 
 	private void deleteMavenSubModules(IProject original, List<String> modulesofOrignal, CompositeChange deleteChange) {
 		for (int i = 0; i < modulesofOrignal.size(); i++) {
@@ -126,7 +127,7 @@ public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 					deleteDependencies(deleteChange, original, subProject);
 				} catch (CoreException e) {
 					log.error("Could not delete Module " + subProject.getName() + " of " + original.getName() 
-					          															 + " : " + e, e);
+					          															 , e);
 				}
 			}
 		}

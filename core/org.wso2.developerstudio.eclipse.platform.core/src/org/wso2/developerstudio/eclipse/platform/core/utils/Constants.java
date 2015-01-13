@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.platform.core.utils;
 
 import org.eclipse.osgi.util.NLS;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,14 @@ public class Constants extends NLS{
    public static final String POM_FILE_NAME = "pom";
    public static final String POM_FILE_EXTENSION = "xml";
    public static final String ARTIFACT_XML = "artifact.xml";
+   public static final String SYNAPSE_CONFIG_TYPE = "synapse/configuration";
+   public static final String ESB_PROJECT_TARGET_CAPP = "target" + File.separator + "capp" + File.separator
+           + "artifacts";
+   public static final String MAVEN_BASE_DIR_PREFIX = "${basedir}";
+   public static final String CAPP_PREFIX = "capp/";
+   public static final String SEQUENCE_TEMPLATE_TYPE = "synapse/sequenceTemplate";
+   public static final String ENDPOINT_TEMPLATE_TYPE = "synapse/endpointTemplate";
+   public static final String COMMON_TEMPLATE_TYPE = "synapse/template";
    public static final String JAVA_PROJECT_NATURE ="org.eclipse.jdt.core.javanature";
 
    //String constant value declaration, these values loaded from constants.properties file at run time

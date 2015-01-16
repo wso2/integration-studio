@@ -449,7 +449,7 @@ public class RegistryCheckInClientUtils {
 		ClientOptions clientOptions = new ClientOptions();
 		clientOptions.setUsername(username);
 		clientOptions.setPassword(password);
-		clientOptions.setWorkingDir(path);
+		clientOptions.setWorkingLocation(path);
 		clientOptions.setUserUrl(registryUrl + checkoutPath);
 		clientOptions.setTesting(true);
 		clientOptions.setUserInteractor(new UserInteractor() {
@@ -493,8 +493,8 @@ public class RegistryCheckInClientUtils {
 		ClientOptions clientOptions = new ClientOptions();
 		clientOptions.setUsername(username);
 		clientOptions.setPassword(password);
-		clientOptions.setType(RegistryType.WS);
-		clientOptions.setWorkingDir(path);
+		clientOptions.setType(RegistryType.ATOM);
+		clientOptions.setWorkingLocation(path);
 		
 		clientOptions.setUserUrl(registryUrl + checkoutPath);
 		clientOptions.setTesting(true);
@@ -547,7 +547,7 @@ public class RegistryCheckInClientUtils {
 		ClientOptions clientOptions = new ClientOptions();
 		clientOptions.setUsername(username);
 		clientOptions.setPassword(password);
-		clientOptions.setWorkingDir(workingDirectory);
+		clientOptions.setWorkingLocation(workingDirectory);
 		clientOptions.setUserUrl(userUrl);
 //		clientOptions.setType(RegistryType.WS);
 		clientOptions.setUserInteractor(new UserInteractor() {

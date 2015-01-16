@@ -69,7 +69,6 @@ Bundle-ClassPath: .,
  lib/org.wso2.carbon.core.common_4.0.0.jar,
  lib/wsdl4j_1.6.2.wso2v4.jar,
  lib/org.wso2.carbon.securevault_4.0.0.jar,
- lib/org.wso2.carbon.base_4.0.0.jar,
  lib/org.wso2.carbon.core_4.0.1.jar,
  lib/org.wso2.carbon.registry.ws.client_4.0.1.jar
 Bundle-ActivationPolicy: lazy

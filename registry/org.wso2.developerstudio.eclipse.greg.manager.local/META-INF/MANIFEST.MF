@@ -18,6 +18,7 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.apache.axiom.om.impl.builder,
  org.apache.axiom.om.util,
  org.apache.axis2,
+ org.apache.axis2.context;version="1.6.1.wso2v10",
  org.apache.commons.io;version="[2.0.0.wso2v1,2.0.1)",
  org.apache.commons.io.input;version="[2.0.0.wso2v1,2.0.1)",
  org.apache.commons.logging;version="[1.1.1,1.2.0)",
@@ -27,6 +28,7 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.eclipse.ui.internal.ide.misc,
  org.eclipse.ui.part,
  org.eclipse.ui.wizards.newresource,
+ org.wso2.carbon.base,
  org.wso2.carbon.registry.api,
  org.wso2.carbon.registry.app,
  org.wso2.carbon.registry.core,
@@ -53,6 +55,6 @@ Import-Package: javax.xml.stream;version="1.0.1.wso2v1",
  org.wso2.developerstudio.eclipse.platform.core,
  org.wso2.developerstudio.eclipse.platform.core.registry.util
 Bundle-ClassPath: .,
- lib/checkin-client-4.5.0.jar
+ lib/checkin-client-4.6.0.jar
 Export-Package: org.wso2.developerstudio.eclipse.greg.manager.local.utils,
  org.wso2.registry.checkin

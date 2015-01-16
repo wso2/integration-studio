@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.api_4.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.core_4.2.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.fastXSLT_4.2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xmlbeans_2.3.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.datamapper-4.2.1.jar"/>
@@ -71,7 +73,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/saxon9he.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.throttle_4.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/quartz_2.1.1.wso2v1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.core_4.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/geronimo-stax-api_1.0_spec_1.0.1.wso2v2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/wsdl4j_1.6.2.wso2v4.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-io_2.0.0.wso2v2.jar"/>
@@ -79,7 +80,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-httpclient_3.1.0.wso2v2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-codec_1.4.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/abdera_1.0.0.wso2v3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.registry.api_4.0.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/XmlSchema_1.4.7.wso2v2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/xml-apis-1.4.01.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jakarta-oro-2.0.8.jar"/>

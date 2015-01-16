@@ -84,6 +84,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.util.ExportUtil;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -556,6 +557,26 @@ public class DistProjectEditorPage extends FormPage {
 			dependency.setGroupId(project.getGroupId());
 			dependency.setVersion(project.getVersion());
 			dependency.setType(project.getType());
+
+			if (null != project.getScope()) {
+				dependency.setScope(project.getScope());
+			}
+
+			if (null != project.getSystemPath()) {
+				// Get absolute path of the opened CAPP project
+				IProject openedCappProject = ((IFileEditorInput) getEditorInput()).getFile().getProject();
+				String openedCappProjectPath = openedCappProject.getLocation().toString();
+
+				// Obtain dependency system path and derive the path relative to
+				// capp project
+				StringBuilder systemPathBuilder = new StringBuilder();
+				systemPathBuilder.append(Constants.MAVEN_BASE_DIR_PREFIX);
+				systemPathBuilder.append(File.separator);
+				systemPathBuilder.append(FileUtils.getRelativePath(new File(openedCappProjectPath),
+						new File(project.getSystemPath())));
+				dependency.setSystemPath(systemPathBuilder.toString());
+			}
+
 			serverRoleList.put(artifactInfo, "capp/" + serverRole);
 
 			getDependencyList().put(artifactInfo, dependency);

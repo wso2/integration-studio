@@ -9,6 +9,8 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om,
  org.apache.commons.io;version="[2.0.0.wso2v1,2.0.1)",
+ org.apache.commons.lang;version="2.6.0.wso2v1",
+ org.apache.maven.artifact,
  org.apache.maven.model,
  org.apache.maven.project,
  org.codehaus.plexus.util.xml,

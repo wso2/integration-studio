@@ -46,7 +46,9 @@ import org.wso2.developerstudio.eclipse.distribution.project.util.DistributionPr
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class DistributionProjectWizard extends
@@ -132,6 +134,18 @@ public class DistributionProjectWizard extends
 			Properties properties = mavenProject.getModel().getProperties();
 			for (DependencyData dependencyData : projectModel.getSelectedProjects()) {
 				Dependency dependency = dependencyData.getDependency();
+
+				// Obtain dependency system path and derive the path relative to
+				// capp project
+				if (null != dependency.getSystemPath()) {
+					StringBuilder systemPathBuilder = new StringBuilder();
+					systemPathBuilder.append(Constants.MAVEN_BASE_DIR_PREFIX);
+					systemPathBuilder.append(File.separator);
+					systemPathBuilder.append(FileUtils.getRelativePath(new File(project.getLocation().toString()),
+							new File(dependency.getSystemPath())));
+					dependency.setSystemPath(systemPathBuilder.toString());
+				}
+
 				dependencyList.add(dependency);
 				properties.put(DistProjectUtils.getArtifactInfoAsString(dependency), dependencyData.getServerRole());
 			}	

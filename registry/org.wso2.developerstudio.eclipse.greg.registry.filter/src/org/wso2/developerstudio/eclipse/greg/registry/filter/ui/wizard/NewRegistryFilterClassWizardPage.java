@@ -51,7 +51,8 @@ public class NewRegistryFilterClassWizardPage extends NewClassWizardPage{
 										"wsdl4j_1.6.2.wso2v4.jar",
 										"XmlSchema_1.4.7.wso2v2.jar",
 										"org.wso2.carbon.registry.api_4.0.0.jar",
-										"org.wso2.carbon.registry.core_4.0.1.jar"};
+										"org.wso2.carbon.registry.api_4.2.0.jar",
+										"org.wso2.carbon.registry.core_4.2.0.jar"};
 	
 	public String getSelectedProject() {
 		return selectedProject;

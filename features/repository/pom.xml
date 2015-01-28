@@ -128,7 +128,7 @@
 					        <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.maven:${common.maven.version}</bundleArtifactDef>
 					        <bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.general.project:${common.tools.version}</bundleArtifactDef>
     						<bundleArtifactDef>org.wso2.eclipse:org.wso2.developerstudio.eclipse.libraries:${common.libraries.version}</bundleArtifactDef>
-						<bundleArtifactDef>org.milyn:org.milyn.smooks.osgi:1.5.0.SNAPSHOT</bundleArtifactDef>
+						<bundleArtifactDef>org.milyn:milyn-smooks-all:1.5.1</bundleArtifactDef>
 
 						<!--EMF -updated to Kepler SR2 -->
 					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation:1.7.0.201306111341</bundleArtifactDef>

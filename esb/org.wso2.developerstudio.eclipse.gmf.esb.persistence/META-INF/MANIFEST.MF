@@ -5,9 +5,9 @@ Bundle-SymbolicName: org.wso2.developerstudio.eclipse.gmf.esb.persistence
 Bundle-Version: 2.1.0.qualifier
 Bundle-ClassPath: .,
  lib/tribes-6.0.16.jar,
- lib/woden-api-1.0-SNAPSHOT.jar,
- lib/woden-impl-commons-1.0-SNAPSHOT.jar,
- lib/woden-impl-dom-1.0-SNAPSHOT.jar,
+ lib/woden-api-1.0M9.jar,
+ lib/woden-impl-commons-1.0M9.jar,
+ lib/woden-impl-dom-1.0M9.jar,
  lib/wsdl4j-1.6.2.jar,
  lib/wstx-asl-3.2.4.jar,
  lib/xalan-2.7.1.jar,

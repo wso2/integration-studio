@@ -9,12 +9,6 @@
     <packaging>pom</packaging>
     <name>WSO2 Eclipse Tools Parent</name>
 
-<parent>
-    	<groupId>org.wso2</groupId>
-    	<artifactId>wso2</artifactId>
-    	<version>1</version>
-</parent>
-
 <profiles>
         <profile>
             <id>default</id>

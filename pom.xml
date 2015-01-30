@@ -9,6 +9,12 @@
     <packaging>pom</packaging>
     <name>WSO2 Eclipse Tools Parent</name>
 
+<parent>
+    	<groupId>org.wso2</groupId>
+    	<artifactId>wso2</artifactId>
+    	<version>1</version>
+</parent>
+
 <profiles>
         <profile>
             <id>default</id>
@@ -71,6 +77,13 @@
         </profile>
 </profiles>
 
+<scm>
+    <url>https://github.com/wso2/developer-studio.git</url>
+    <developerConnection>scm:git:https://github.com/wso2/developer-studio.git</developerConnection>
+    <connection>scm:git:https://github.com/wso2/developer-studio.git</connection>
+    <tag>HEAD</tag>
+</scm>
+
     <pluginRepositories> 
         <pluginRepository> 
            <id>repository.dev.java.net-maven2</id>
@@ -86,10 +99,10 @@
         </pluginRepository>
     </pluginRepositories>       
     <distributionManagement>
-        <repository>
-            <id>wso2-maven2-repository</id>
-            <name>WSO2 Maven2 Repository</name>
-            <url>scp://dist.wso2.org/home/httpd/dist.wso2.org/maven2/</url>
+	<repository>
+       	    <id>nexus-releases</id>
+            <name>WSO2 Release Distribution Repository</name>
+            <url>http://maven.wso2.org/nexus/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
   <repositories>
@@ -205,6 +218,20 @@
 			</environments>
 		</configuration>
 	</plugin>
+
+  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+            <preparationGoals>clean install</preparationGoals>
+            <autoVersionSubmodules>false</autoVersionSubmodules>
+        </configuration>
+    </plugin>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+    </plugin>
+
         </plugins>
     </build>    
     <properties>
@@ -301,5 +328,7 @@
 	<soapui.feature.version>4.0.1</soapui.feature.version>
 	<tcpmon.feature.version>1.0.0</tcpmon.feature.version>
 	<qos.feature.version>2.1.0-SNAPSHOT</qos.feature.version>
+
+	<project.scm.id>my-scm-server</project.scm.id>
     </properties>
 </project>

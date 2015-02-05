@@ -20,6 +20,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -28,6 +29,7 @@ import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentListener;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
@@ -56,7 +58,7 @@ public class SecurityFormEditor extends FormEditor {
 	private StructuredTextEditor sourceEditor;
 	private int formEditorIndex;
 	private int sourceEditorIndex;
-	private int count = 0;
+	private Display display;
 
 	/**
 	 * Initializes the security form editor
@@ -70,11 +72,12 @@ public class SecurityFormEditor extends FormEditor {
 		file = getFile().getLocation().toFile();
 		project = getFile().getProject();
 		setPartName(getFile().getName());
+		display = Display.getCurrent();
 	}
 
 	@Override
 	protected void addPages() {
-		formPage = new SecurityFormPage(this, Activator.PLUGIN_ID, SECURITY_DESIGN_VIEW, project, file);
+		formPage = new SecurityFormPage(this, Activator.PLUGIN_ID, SECURITY_DESIGN_VIEW, project, file, display);
 		sourceEditor = new StructuredTextEditor();
 		sourceEditor.setEditorPart(this);
 
@@ -129,6 +132,7 @@ public class SecurityFormEditor extends FormEditor {
 				msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
 				msg.open();
 			}
+			formPage.updateUI(getDocument().get());
 			updateDirtyState();
 
 		}
@@ -147,29 +151,21 @@ public class SecurityFormEditor extends FormEditor {
 
 	@Override
 	protected void pageChange(int newPageIndex) {
-		count++;
+
 		if (newPageIndex == sourceEditorIndex && isDesignDirty) {
+			String content = formPage.doSourceUpdate();
+			getDocument().set(content);
 			isSourceDirty = false;
-			isDesignDirty = false;
-			formPage.doPageSave();
 			updateDirtyState();
 		} else if (newPageIndex == formEditorIndex && isSourceDirty) {
-			isSourceDirty = false;
-			isDesignDirty = false;
-			formPage.doSaveAs();
+			String xmlSource = getDocument().get();
+			formPage.updateUI(xmlSource);
 			updateDirtyState();
-		} else if (newPageIndex == formEditorIndex) {
-			isSourceDirty = false;
-			isDesignDirty = false;
-			formPage.updateUI();
-			updateDirtyState();
-		}
-		if (count == 2) {
+		} else if (newPageIndex == sourceEditorIndex) {
 			formPage.doPageSave();
-			isSourceDirty = false;
 			updateDirtyState();
-
 		}
+
 		super.pageChange(newPageIndex);
 		final IFormPage page = getActivePageInstance();
 		if (page != null) {
@@ -179,7 +175,7 @@ public class SecurityFormEditor extends FormEditor {
 
 	@Override
 	public void doSaveAs() {
-		formPage.doPageSave();
+		 formPage.doPageSave();
 	}
 
 	@Override

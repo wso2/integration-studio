@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,16 @@ package org.wso2.developerstudio.eclipse.artifact.registry.utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import org.wso2.developerstudio.eclipse.artifact.registry.Activator;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 import org.osgi.framework.Bundle;
 
 public class RegistryTemplate {
+	
+	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	
 	private String name;
 	private String id;
 	private String templateFileName;
@@ -53,9 +59,17 @@ public class RegistryTemplate {
 		return templateFileName;
 	}
 	
-	public InputStream getTemplateDataStream() throws IOException{
+	public InputStream getTemplateDataStream() throws IOException {
+		InputStream inputStream = null;
 		URL resource = getTemplateUrl();
-		return resource.openStream();
+		// Exception handling when the template is null
+		try {
+			inputStream = resource.openStream();
+		} catch (NullPointerException e) {
+			log.error("There is no template available", e);
+			throw new IOException("Error in getting the template"+ e.toString());
+		}
+		return inputStream;
 	}
 	public URL getTemplateUrl() {
 		return getTemplateBundle().getResource(getTemplateFileName());

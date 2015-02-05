@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,6 +83,8 @@ public class RegistryArtifactModel extends ProjectDataModel {
 		registryPrefix.put("org.wso2.developerstudio.eclipse.esb.template.endpoint_templates.http", "templates/");
 		registryPrefix.put("org.wso2.developerstudio.eclipse.esb.template.datamapper", "datamapper/");
 		registryPrefix.put("org.wso2.developerstudio.eclipse.esb.localentry", "localEntry/");
+		//Adding template for ws-policy
+		registryPrefix.put("org.wso2.developerstudio.eclipse.security.ws_policy", "ws-policy/");
 	}
 	
 	public RegistryArtifactModel() {

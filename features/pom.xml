@@ -58,7 +58,8 @@
 	<!--module>smooks</module-->
         <!--module>gadgets</module-->   
         <module>jaggery</module>
-	<!--module>qos</module-->                     
+	<!--module>qos</module-->   
+        <module>security</module>                   
         <module>carbon-studio</module>
         <module>repository</module>
 	<!--module>installed-distributions</module-->

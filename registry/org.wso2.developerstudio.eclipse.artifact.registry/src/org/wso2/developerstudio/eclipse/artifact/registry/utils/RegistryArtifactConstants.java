@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,6 +74,8 @@ public class RegistryArtifactConstants extends NLS {
 	public static  String XSLT_TEMPL_ID;
 	public static  String WSDL_TEMPL_ID;
 	public static String STATIC_PATHS;
+	//Constant for WS-Policy
+	public static String WS_POLICY;
 	
 	static {
 		// initialize resource bundle

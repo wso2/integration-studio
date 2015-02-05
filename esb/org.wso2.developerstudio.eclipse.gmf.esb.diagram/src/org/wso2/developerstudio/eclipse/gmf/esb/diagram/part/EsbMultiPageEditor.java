@@ -545,6 +545,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     private void updateSourceEditor() throws Exception {
     	EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();	
+	
 		sourceEditor.update(server);		
 		sourceDirty=false;
 		firePropertyChange(PROP_DIRTY);

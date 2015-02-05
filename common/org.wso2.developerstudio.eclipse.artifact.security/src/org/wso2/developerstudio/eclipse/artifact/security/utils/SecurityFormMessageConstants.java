@@ -13,6 +13,8 @@ public class SecurityFormMessageConstants extends NLS {
 	public static String MESSAGE_RAMPART_CONFIG_ERROR;
 	public static String MESSAGE_SAVE_ERROR;
 	public static String MESSAGE_LOAD_UI_ERROR;
+	public static String MESSAGE_SERIALIZATION_SAVE_ERROR;
+	public static String MESSAGE_UPDATE_SOURCE_ERROR;
 	
 	static{
 		NLS.initializeMessages(BUNDLE_NAME, SecurityFormMessageConstants.class);

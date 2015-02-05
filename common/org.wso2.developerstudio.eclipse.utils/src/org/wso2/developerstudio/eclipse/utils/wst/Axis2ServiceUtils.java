@@ -16,7 +16,11 @@
 
 package org.wso2.developerstudio.eclipse.utils.wst;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +48,7 @@ import org.wso2.developerstudio.eclipse.utils.Activator;
 import org.wso2.developerstudio.eclipse.utils.exception.Axis2ServiceUtilsException;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.xml.sax.SAXException;
+import static org.wso2.developerstudio.eclipse.utils.wst.Axis2Constants.*;
 
 /**
  * This class provides static utility methods for Axis2 service project management tasks.
@@ -51,14 +56,6 @@ import org.xml.sax.SAXException;
  */
 public class Axis2ServiceUtils {
 	private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
-	private static final String SERVICES_XML_FILE_NAME = "services.xml";
-	private static final String META_INF_FOLDER_NAME = "META-INF";
-	private static final String SERVICE_ELEMENT_NAME = "service";
-	private static final String PARAMETER_ELEMENT_NAME = "parameter";
-	private static final String NAME_ATTRIBUTE = "name";
-	private static final String SERVICE_CLASS_ATTRIBUTE_VALUE = "ServiceClass";
-	private static final String DOT_SEPARATOR = ".";
 
 	/**
 	 * This method provides logic for getting all Axis2 service folders with related project in workspace.
@@ -71,12 +68,7 @@ public class Axis2ServiceUtils {
 		for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
 			if (WebUtils.isDynamicWebProject(project)) {
 				final IFolder servicesFolder;
-				try {
-					servicesFolder = WebUtils.getAxis2WebContainerWEB_INFServicesFolderPath(project);
-				} catch (Exception e) {
-					//some error occurred meaning that this isn't a project type we are looking for, so continue
-					continue;
-				}
+				servicesFolder = WebUtils.getAxis2WebContainerWEB_INFServicesFolderPath(project);
 				final List<IFolder> folders = new ArrayList<IFolder>();
 				try {
 					if (servicesFolder.exists()) {

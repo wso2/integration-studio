@@ -974,39 +974,39 @@ public class SecurityFormPage extends FormPage {
 	 * @param controlMap ui map
 	 */
 	private void updateCryptoUIWithChanges(Map<String, String> dataMap, Map<String, Text> controlMap) {
-		
-		if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE) != null) {
-			txtPrivateStore.setText(encryptDataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
-			controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(
-					dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
-		} else {
-			controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText("");
+		if (controlMap.size() > 0) {
+			if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE) != null) {
+				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(
+						dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
+			} else {
+				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText("");
 
-		}
-		if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES) != null) {
-			controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(
-					dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
-		} else {
-			controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText("");
+			}
+			if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES) != null) {
+				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(
+						dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
+			} else {
+				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText("");
 
-		}
-		if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS) != null) {
-			controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText(
-					dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
-		} else {
-			controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText("");
+			}
+			if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS) != null) {
+				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText(
+						dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
+			} else {
+				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText("");
 
-		}
-		if (dataMap.get(ORG_WSO2_STRATOS_TENANT_ID) != null) {
-			controlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText(dataMap.get(ORG_WSO2_STRATOS_TENANT_ID));
-		} else {
-			controlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText("");
+			}
+			if (dataMap.get(ORG_WSO2_STRATOS_TENANT_ID) != null) {
+				controlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText(dataMap.get(ORG_WSO2_STRATOS_TENANT_ID));
+			} else {
+				controlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText("");
 
-		}
-		if (dataMap.get(RAMPART_CONFIG_USER) != null) {
-			controlMap.get(RAMPART_CONFIG_USER).setText(dataMap.get(RAMPART_CONFIG_USER));
-		} else {
-			controlMap.get(RAMPART_CONFIG_USER).setText("");
+			}
+			if (dataMap.get(RAMPART_CONFIG_USER) != null) {
+				controlMap.get(RAMPART_CONFIG_USER).setText(dataMap.get(RAMPART_CONFIG_USER));
+			} else {
+				controlMap.get(RAMPART_CONFIG_USER).setText("");
+			}
 		}
 	}
 

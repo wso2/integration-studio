@@ -152,20 +152,16 @@ public class SecurityFormEditor extends FormEditor {
 	@Override
 	protected void pageChange(int newPageIndex) {
 
-		if (newPageIndex == sourceEditorIndex && isDesignDirty) {
+		if (newPageIndex == sourceEditorIndex) {
 			String content = formPage.doSourceUpdate();
 			getDocument().set(content);
 			isSourceDirty = false;
 			updateDirtyState();
-		} else if (newPageIndex == formEditorIndex && isSourceDirty) {
+		} else if (newPageIndex == formEditorIndex) {
 			String xmlSource = getDocument().get();
 			formPage.updateUI(xmlSource);
 			updateDirtyState();
-		} else if (newPageIndex == sourceEditorIndex) {
-			formPage.doPageSave();
-			updateDirtyState();
 		}
-
 		super.pageChange(newPageIndex);
 		final IFormPage page = getActivePageInstance();
 		if (page != null) {

@@ -1289,12 +1289,11 @@ public class SecurityFormPage extends FormPage {
 				Element eElement = (Element) node;
 				String attribute = eElement.getAttribute(RAMPART_PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
-					node.setTextContent(rampartDataMap.get(attribute));
+					node.setTextContent(eElement.getTextContent());
 				}
 			}
 		}
 	}
-
 	/**
 	 * Creates the security items
 	 * 

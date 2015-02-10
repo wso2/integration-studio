@@ -34,7 +34,9 @@ public class SynapseFileUtils {
 		case MESSAGE_STORE:
 			return "messageStore";
 		case MESSAGE_PROCESSOR:
-			return "messageProcessor";	
+			return "messageProcessor";
+		case INBOUND_ENDPOINT:
+			return "inboundEndpoint";
 		case ALL:
 			return "";
 		default:
@@ -107,6 +109,10 @@ public class SynapseFileUtils {
 							editorList.add(childnode);
 						}
 					} else if(childnode.getLocalName().equals("messageProcessor")){
+						if (!editorList.contains(childnode)) {
+							editorList.add(childnode);
+						}
+					} else if(childnode.getLocalName().equals("inboundEndpoint")){
 						if (!editorList.contains(childnode)) {
 							editorList.add(childnode);
 						}

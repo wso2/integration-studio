@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+	<projectOptions title="Inbound Endpoint Artifact Creation Options"
+					description="Select how you would like to create your new Inbound Endpoint"
+					error="Please select a method to create the Inbound Endpoint">
+		<option id="new.inboundendpoint" default="true">Create A New Inbound Endpoint</option>
+		<option id="import.inboundendpoint">Import Inbound Endpoint</option>
+	</projectOptions>
+	<projectOptionSettings>
+		<settings optionId="new.inboundendpoint"
+				  title="Create A New Inbound Endpoint"
+				  description="Give a name for the Inbound Endpoint"
+				  error="Please give a name for the Inbound Endpoint">
+			<data modelProperty="inboundendpoint.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Inbound Endpoint Name</data>
+			<data modelProperty="inboundendpoint.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointCreationTypes">Inbound Endpoint Creation Type</data>
+
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.ESBProjectFilter">Save Inbound Endpoint in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
+ 
+			<!-- Import source URL -->
+			<!-- data group="group1" modelProperty="import.url" type="file" filter="*" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Source URL</data>-->
+			
+			<!-- Sequence -->
+			<data group="group1" modelProperty="sequence" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Sequence</data>
+			
+			<!-- Error Sequence -->
+			<data group="group1" modelProperty="error.sequence" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Error Sequence</data>
+			
+			<!-- Inbound HTTP port -->
+			<data group="group1" modelProperty="inbound.http.port" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Inbound HTTP port</data>
+					
+			<!-- Interval -->
+			<data group="group1" modelProperty="interval" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Interval</data>
+			
+			<!-- Sequential -->
+			<data group="group1" modelProperty="sequential" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Sequential</data>
+			
+			<!-- transport.vfs.FileURI -->
+			<data group="group1" modelProperty="transport.vfs.FileURI" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">transport.vfs.FileURI</data>
+			
+			<!-- class -->
+			<data group="group1" modelProperty="class" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Class</data>
+					
+			<group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group>
+
+		</settings>
+		<settings optionId="import.inboundendpoint"
+				  title="Inbound Endpoint"
+				  description="Browse the location of a configuration file with Inbound Endpoint defined"
+				  error="Browse and select a Inbound Endpoint configuration file">
+			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Inbound Endpoint Configuration File</data>
+
+			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.ESBProjectFilter">Save Inbound Endpoint in:</data>
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
+			<data modelProperty="available.inboundendpoints" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController"  controlData="select=multiple;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointsList">Available Inbound Endpoints</data>
+			
+		</settings>
+	</projectOptionSettings>
+</wizard>

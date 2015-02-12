@@ -8,6 +8,7 @@ Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.libraries,
+ org.eclipse.ltk.core.refactoring,
  org.wso2.developerstudio.eclipse.platform.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
@@ -21,6 +22,8 @@ Import-Package: javax.wsdl;version="[1.6.2.wso2v1,1.7.0)",
  org.eclipse.jdt.core,
  org.eclipse.jdt.ui.wizards,
  org.eclipse.ui.ide,
+ org.eclipse.jface.text,
+ org.eclipse.text.edits,
  org.eclipse.wst.command.internal.env.core.common,
  org.wso2.developerstudio.eclipse.capp.core.artifacts.manager,
  org.wso2.developerstudio.eclipse.capp.maven.sample,

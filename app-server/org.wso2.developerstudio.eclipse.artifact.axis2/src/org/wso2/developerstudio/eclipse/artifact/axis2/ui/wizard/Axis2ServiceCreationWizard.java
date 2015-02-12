@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011 - 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 
 import org.apache.axis2.wsdl.WSDL2Java;
 import org.eclipse.core.resources.IFile;
@@ -59,32 +58,27 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 import org.wso2.developerstudio.eclipse.utils.jdt.JavaUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
-public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWizard{
-	
-	private static final String AXIS2_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.axis2.project.nature";
+public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWizard {
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	
+	private static final String AXIS2_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.axis2.project.nature";
 	private Axis2Model axis2Model;
 	private Axis2ConfigurationPage wsdlConfigurationPage;
 	private DataModel dataModel;
 	private IWizardPage[] pages;
-	
+
 	public Axis2ServiceCreationWizard(){
 		dataModel = new DataModel();
 		setAxis2Model(new Axis2Model());
 		setModel(getAxis2Model());
 		setWindowTitle("Create New Axis2 Service");
 		setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
-		
 	}
-	
-	
+
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		super.init(workbench, selection);
 	}
-	
-	
+
 	public boolean performFinish() {
 		IFile axis2GenServiceXML =null;
 		try {
@@ -105,25 +99,25 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 							new String[] {
 									AXIS2_PROJECT_NATURE,
 									JDT_PROJECT_NATURE});
-			
+
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-			
+
 			if (getModel().getSelectedOption().equals("import.Axis2")) {
 				//TODO: import AAR
-				
+
 			} else if (getModel().getSelectedOption().equals("new.Axis2")) {
 				String className =  axis2Model.getServiceClass();
 				String packageName = axis2Model.getPackageName();
-				
+
 				IJavaProject javaProject = JavaCore.create(project);
 			    IFolder resourceFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources");
 			    if(!resourceFolder.exists()){
 			    	resourceFolder.create(false, true, null);
 			    }
-			    
+
 				IFolder metaFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources","META-INF");
 				 if(!metaFolder.exists()){
-					 metaFolder.create(false, true, null); 
+					 metaFolder.create(false, true, null);
 				 }
 				IFile serviceXML = metaFolder.getFile("services.xml");
 				createServiceXML(serviceXML,className,packageName.concat(".").concat(className));
@@ -145,8 +139,6 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 				} catch (Exception e) {
 					log.error("Cannot open file in editor", e);
 				}
-				
-				
 			}
 			else if (getModel().getSelectedOption().equals("import.Axis2wsdl")) {
 				ProgressMonitorDialog progressMonitorDialog = new ProgressMonitorDialog(getShell());
@@ -157,7 +149,7 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 				progressMonitorDialog.create();
 				progressMonitorDialog.open();
 				progressMonitorDialog.run(false, false, new CodegenJob());
-				
+
 				IFolder resourceFolder = ProjectUtils.getWorkspaceFolder(project, "src", "main", "resources");
 				project.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
 				IFolder metaFolder = resourceFolder.getFolder("META-INF");
@@ -175,7 +167,7 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 				project.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
 				refreshDistProjects();
 			}
-			
+
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
 		} catch (CoreException e) {
@@ -190,27 +182,28 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 
 		return true;
 	}
-	
-	private void createServiceXML(IFile serviceXML,String serviceName, String serviceClass) {
-		String serviceXMLContent = "<service name=\"" + serviceName + "\" >\n" +
-        "\t<description>\n" +
-        "\t\tPlease Type your service description here\n" +
-        "\t</description>\n" +
-        "\t<messageReceivers>\n" +
-        "\t\t<messageReceiver mep=\"http://www.w3.org/2004/08/wsdl/in-only\" " +
-        "class=\"org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver\" />\n" +
-        "\t\t<messageReceiver  mep=\"http://www.w3.org/2004/08/wsdl/in-out\"  " +
-        "class=\"org.apache.axis2.rpc.receivers.RPCMessageReceiver\"/>\n" +
-        "\t</messageReceivers>\n" + 
-        "\t<parameter name=\"ServiceClass\" locked=\"false\">" + serviceClass + "</parameter>\n"+ 
-        "</service>\n";
-		try {
-			serviceXML.create(new ByteArrayInputStream(serviceXMLContent.getBytes()), true, null);
-		} catch (Exception e) {
-			log.error("An unexpected error has occurred", e);
-		}
-	}
-	
+
+    private void createServiceXML(IFile serviceXML, String serviceName, String serviceClass) {
+        String serviceXMLContent = "<service name=\"" + serviceName + "\">\n" +
+                "\t<description>\n" +
+                "\t\tPlease Type your service description here\n" +
+                "\t</description>\n" +
+                "\t<messageReceivers>\n" +
+                "\t\t<messageReceiver class=\"org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver\" " +
+                "mep=\"http://www.w3.org/2004/08/wsdl/in-only\"/>\n" +
+                "\t\t<messageReceiver class=\"org.apache.axis2.rpc.receivers.RPCMessageReceiver\" " +
+                "mep=\"http://www.w3.org/2004/08/wsdl/in-out\"/>\n" +
+                "\t</messageReceivers>\n" +
+                "\t<parameter locked=\"false\" name=\"ServiceClass\">" + serviceClass + "</parameter>\n" +
+                "</service>\n";
+        try {
+            serviceXML.create(new ByteArrayInputStream(serviceXMLContent.getBytes()), true, new NullProgressMonitor());
+        } catch (CoreException e) {
+            log.error("Error occurred while creating services.xml file for Axis2 service, service name : "
+                    + serviceName + ", service class : " + serviceClass, e);
+        }
+    }
+
 	private class CodegenJob implements IRunnableWithProgress {
 
 		public void run(IProgressMonitor monitor)
@@ -225,7 +218,7 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 			try {
 				monitor.subTask("Generating code...");
 				WSDL2Java.main(parameterArray);
-				monitor.worked(75);	
+				monitor.worked(75);
 				monitor.subTask("Adding dependent libraries to the project...");
 				JavaUtils.addJarLibraryToProject(dataModel.getSelectedProject(), LibraryUtils.getDependencyPath(LibraryUtils.axis2_1_6_1_wso2vXX_jar));
 				JavaUtils.addJarLibraryToProject(dataModel.getSelectedProject(), LibraryUtils.getDependencyPath(LibraryUtils.axiom_1_2_11_wso2vXX_jar));
@@ -238,9 +231,9 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 				throw new InvocationTargetException(e);
 			}
 		}
-		
+
 	}
-	
+
 	public void setAxis2Model(Axis2Model axis2Model) {
 		this.axis2Model = axis2Model;
 	}
@@ -248,15 +241,14 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 	public Axis2Model getAxis2Model() {
 		return axis2Model;
 	}
-	
+
 	public void addPages() {
 		wsdlConfigurationPage = new Axis2ConfigurationPage("Axis2 Service Configuration", dataModel);
 		super.addPages();
 		addPage(wsdlConfigurationPage);
 		pages = getPages();
 	}
-	
-	
+
 	public IWizardPage getNextPage(IWizardPage page) {
 		IWizardPage nextPage = super.getNextPage(page);
 		if(page instanceof ProjectOptionsDataPage ){
@@ -271,13 +263,11 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 			nextPage = pages[2];
 		}
 		if(page instanceof MavenDetailsPage ){
-				nextPage=null;
-
+				nextPage = null;
 		}
 		return nextPage;
 	}
 
-	
 	public IWizardPage getPreviousPage(IWizardPage page) {
 		IWizardPage previousPage = super.getPreviousPage(page);
 		if(page instanceof MavenDetailsPage ){
@@ -291,7 +281,6 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 		return previousPage;
 	}
 
-	
 	public IResource getCreatedResource() {
 		// TODO Auto-generated method stub
 		return null;

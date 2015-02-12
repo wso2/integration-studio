@@ -1,5 +1,5 @@
 /*
- * Copyright 2005,2006 WSO2, Inc. http://www.wso2.org
+ * Copyright 2005 - 2015 WSO2, Inc. http://www.wso2.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,18 +41,18 @@ public class ServiceXMLCreator {
     }
 
     public String toString() {
-        String serviceXML = "<service name=\"" + serviceName + "\" >\n" +
-        "\t<description>\n" +
-        "\t\tPlease Type your service description here\n" +
-        "\t</description>\n" +
-        "\t<messageReceivers>\n" +
-        "\t\t<messageReceiver mep=\"http://www.w3.org/2004/08/wsdl/in-only\" " +
-        "class=\"org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver\" />\n" +
-        "\t\t<messageReceiver  mep=\"http://www.w3.org/2004/08/wsdl/in-out\"  " +
-        "class=\"org.apache.axis2.rpc.receivers.RPCMessageReceiver\"/>\n" +
-        "\t</messageReceivers>\n" + 
-        "\t<parameter name=\"ServiceClass\" locked=\"false\">" + serviceClass + "</parameter>\n" ; 
-        serviceXML = serviceXML + "</service>\n";
+        String serviceXML = "<service name=\"" + serviceName + "\">\n" +
+                "\t<description>\n" +
+                "\t\tPlease Type your service description here\n" +
+                "\t</description>\n" +
+                "\t<messageReceivers>\n" +
+                "\t\t<messageReceiver class=\"org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver\" " +
+                "mep=\"http://www.w3.org/2004/08/wsdl/in-only\"/>\n" +
+                "\t\t<messageReceiver class=\"org.apache.axis2.rpc.receivers.RPCMessageReceiver\" " +
+                "mep=\"http://www.w3.org/2004/08/wsdl/in-out\"/>\n" +
+                "\t</messageReceivers>\n" +
+                "\t<parameter locked=\"false\" name=\"ServiceClass\">" + serviceClass + "</parameter>\n" +
+                "</service>\n";
         return serviceXML;
     }
 

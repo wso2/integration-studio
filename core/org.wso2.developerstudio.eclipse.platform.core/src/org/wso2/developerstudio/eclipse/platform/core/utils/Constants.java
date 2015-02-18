@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 - 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011 - 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,8 @@ public class Constants extends NLS{
    public static final String COMMON_TEMPLATE_TYPE = "synapse/template";
    public static final String JAVA_PROJECT_NATURE ="org.eclipse.jdt.core.javanature";
 
+   public static final double MINIMUM_REQUIRED_JAVA_VERSION = 1.7;
+
    //String constant value declaration, these values loaded from constants.properties file at run time
    public static String AXIS2_PROJECT_NATURE;
    public static String BPEL_PROJECT_NATURE;
@@ -63,6 +65,9 @@ public class Constants extends NLS{
    public static String BRS_PROJECT_NATURE ;
    public static String JAGGERY_NATURE;
    public static String SERVICE_META_PROJECT_NATURE;
+   public static String DETECTED_JAVA_VERSION_MESSAGE;
+   public static String RECOMMENDED_JAVA_VERSION_MESSAGE;
+   public static String JAVA_VERSION_ALERT_MESSAGE;
 
    static {
       // initialize resource bundle, this will load all constants from PROPERTIES_FILE_BASE_NAME file to this class

@@ -1,594 +1,587 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
 <?eclipse version="3.4"?>
 <plugin>
-	<extension-point id="artifacttemplates" name="Template artifacts"
-		schema="schema/artifacttemplates.exsd" />
-	<extension-point
-		id="org.wso2.developerstudio.eclipse.platform.core.mediatype" name="Media Type"
-		schema="schema/org.wso2.developerstudio.eclipse.platform.core.mediatype.exsd" />
- 	<extension-point 
- 		id="org.wso2.developerstudio.eclipse.project.export.handler" name="Export Handler" 
- 		schema="schema/org.wso2.developerstudio.eclipse.project.export.exsd"/>
-  <extension-point id="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard" name="Dashboard" schema="schema/org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard.exsd"/>
-	<extension point="org.eclipse.ui.intro.configExtension">
-		<configExtension content="intro/welcome.xml"
-			configId="org.eclipse.ui.intro.universalConfig">
-		</configExtension>
-	</extension>
-	<extension point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.WSDLMediaTypeResolver"
-			extensions="wsdl"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.wsdl"
-			mediaType="application/wsdl+xml" name="WSDL Media type" priority="5" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JARMediaTypeResolver"
-			extensions="jar"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.jar"
-			mediaType="application/javaarchive" name="JAR Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.CLASSMediaTypeResolver"
-			extensions="class"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.class"
-			mediaType="application/javavm" name="CLASS Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PDFMediaTypeResolver"
-			extensions="pdf"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.pdf"
-			mediaType="application/pdf" name="PDF Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.KEYMediaTypeResolver"
-			extensions="key"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.key"
-			mediaType="application/pgpkeys" name="KEY Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.RARMediaTypeResolver"
-			extensions="rar"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.rar"
-			mediaType="application/rar" name="RAR Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ZIPMediaTypeResolver"
-			extensions="zip"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.zip"
-			mediaType="application/zip" name="ZIP Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.GIFMediaTypeResolver"
-			extensions="gif"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.gif"
-			mediaType="image/gif" name="GIF Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JPEGMediaTypeResolver"
-			extensions="jpeg"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.jpeg"
-			mediaType="image/jpeg" name="JPEG Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.BMPMediaTypeResolver"
-			extensions="bmp"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.bmp"
-			mediaType="image/xmsbmp" name="BMP Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XMLMediaTypeResolver"
-			extensions="xml"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xml"
-			mediaType="application/xml" name="XML Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.TXTMediaTypeResolver"
-			extensions="txt"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.txt"
-			mediaType="plain/text" name="TXT Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.BINMediaTypeResolver"
-			extensions="bin"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.bin"
-			mediaType="application/octetstream" name="BIN Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XSDMediaTypeResolver"
-			extensions="xsd"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xsd"
-			mediaType="application/x-xsd+xml" name="XSD Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.HTMLMediaTypeResolver"
-			extensions="html"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.html"
-			mediaType="text/html" name="HTML Media type" priority="5" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.DOCMediaTypeResolver"
-			extensions="doc"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.doc"
-			mediaType="application/msword" name="DOC Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MDBMediaTypeResolver"
-			extensions="mdb"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mdb"
-			mediaType="application/msaccess" name="MDB Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XLSMediaTypeResolver"
-			extensions="xls"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xls"
-			mediaType="application/vnd.ms-excel" name="XLS Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PPTMediaTypeResolver"
-			extensions="ppt"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.ppt"
-			mediaType="application/vnd.ms-powerpoint" name="PPT Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODCMediaTypeResolver"
-			extensions="odc"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odc"
-			mediaType="application/vnd.oasis.opendocument.chart" name="ODC Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODBMediaTypeResolver"
-			extensions="odb"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odb"
-			mediaType="application/vnd.oasis.opendocument.database" name="ODB Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODFMediaTypeResolver"
-			extensions="odf"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odf"
-			mediaType="application/vnd.oasis.opendocument.formula" name="ODF Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODGMediaTypeResolver"
-			extensions="odg"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odg"
-			mediaType="application/vnd.oasis.opendocument.graphics" name="ODG Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.OTGMediaTypeResolver"
-			extensions="otg"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.otg"
-			mediaType="application/vnd.oasis.opendocument.graphics-template"
-			name="OTG Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODIMediaTypeResolver"
-			extensions="odi"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odi"
-			mediaType="application/vnd.oasis.opendocument.image" name="ODI Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODPMediaTypeResolver"
-			extensions="odp"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odp"
-			mediaType="application/vnd.oasis.opendocument.presentation" name="ODP Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.OTPMediaTypeResolver"
-			extensions="otp"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.otp"
-			mediaType="application/vnd.oasis.opendocument.presentation-template"
-			name="OTP Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODSMediaTypeResolver"
-			extensions="ods"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.ods"
-			mediaType="application/vnd.oasis.opendocument.spreadsheet" name="ODS Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODTMediaTypeResolver"
-			extensions="odt"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odt"
-			mediaType="application/vnd.oasis.opendocument.text" name="ODT Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODMMediaTypeResolver"
-			extensions="odm"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odm"
-			mediaType="application/vnd.oasis.opendocument.text-master" name="ODM Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.OTTMediaTypeResolver"
-			extensions="ott"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.ott"
-			mediaType="application/vnd.oasis.opendocument.text-template" name="OTT Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.OTHMediaTypeResolver"
-			extensions="oth"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.oth"
-			mediaType="application/vnd.oasis.opendocument.text-web" name="OTH Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JSMediaTypeResolver"
-			extensions="js" id="org.wso2.developerstudio.eclipse.platform.core.mediatype.js"
-			mediaType="application/x-javascript" name="JS Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.DMCMediaTypeResolver"
-			extensions="dmc" id="org.wso2.developerstudio.eclipse.platform.core.mediatype.dmc"
-			mediaType="application/datamapper" name="DMC Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JAVAMediaTypeResolver"
-			extensions="java"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.java"
-			mediaType="text/x-java" name="JAVA Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PNGMediaTypeResolver"
-			extensions="png"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.png"
-			mediaType="image/png" name="PNG Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XHTMLMediaTypeResolver"
-			extensions="xhtml"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xhtml"
-			mediaType="application/xhtml+xml" name="XHTML Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.VSDMediaTypeResolver"
-			extensions="vsd"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.vsd"
-			mediaType="application/vnd.visio" name="VSD Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.TORRENTMediaTypeResolver"
-			extensions="torrent"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.torrent"
-			mediaType="application/x-bittorrent" name="TORRENT Media type"
-			priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PHPMediaTypeResolver"
-			extensions="php"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.php"
-			mediaType="application/x-httpd-php" name="PHP Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PHPSMediaTypeResolver"
-			extensions="phps"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.phps"
-			mediaType="application/x-httpd-php-source" name="PHPS Media type"
-			priority="2" />
-			 <resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.DRLMediaTypeResolver"
-			extensions="drl"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.drl"
-			mediaType="application/drl" name="Rule Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MIDMediaTypeResolver"
-			extensions="mid"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mid"
-			mediaType="audio/midi" name="MID Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MP3MediaTypeResolver"
-			extensions="mp3"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mp3"
-			mediaType="audio/mpeg" name="MP3 Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.SVGMediaTypeResolver"
-			extensions="svg"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.svg"
-			mediaType="image/svg+xml" name="SVG Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MPEGMediaTypeResolver"
-			extensions="mpeg"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mpeg"
-			mediaType="video/mpeg" name="MPEG Media type" priority="2" />
-		<resolver
-			class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MP4MediaTypeResolver"
-			extensions="mp4"
-			id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mp4"
-			mediaType="video/mp4" name="MP4 Media type" priority="2" />
-		  <resolver
-		        class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XSLTMediaTypeResolver"
-		        extensions="xslt"
-		        id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xslt"
-		        mediaType="application/xslt+xml"
-		        name="XSLT Media type"
-		        priority="10">
-		  </resolver>
-		  <resolver
-		        class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XSLMediaTypeResolver"
-		        extensions="xsl"
-		        id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xsl"
-		        mediaType="application/xsl+xml"
-		        name="XSL Media type"
-		        priority="10">
-		  </resolver>
-		  <resolver
-		        class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.WSPolicyMediaTypeResolver"
-		        extensions="wspolicy"
-		        id="org.wso2.developerstudio.eclipse.platform.core.mediatype.wspolicy"
-		        mediaType="application/wspolicy+xml"
-		        name="Web Service Policy Media type"
-		        priority="10">
-		  </resolver>
-    <resolver
-          class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.BulkMediaTypeFileNameResolver"
-          id="org.wso2.developerstudio.eclipse.platform.core.bulkFileNameExtensionResolver"
-          mediaType="org.wso2.developerstudio.eclipse.platform.core.bulkFileNameExtensionResolver"
-          name="Bulk Media Type resolver">
-    </resolver>
-	</extension>
-   <extension
-         point="org.eclipse.ui.editors">
-      <editor
-            class="org.wso2.developerstudio.eclipse.platform.core.intro.ui.Dashboard"
-            id="org.wso2.developerstudio.eclipse.dashboard"
-            name="Developer Studio Dashboard">
-      </editor>
 
-   </extension>
-   <extension
-         point="org.eclipse.ltk.core.refactoring.renameParticipants">
-       <renameParticipant
-			class="org.wso2.developerstudio.eclipse.platform.core.project.refactor.ArtifactProjectRenameRefactorParticipant"
-			id="ArtifactProjectRenameRefactorParticipant"
-			name="ArtifactProjectRenameRefactor">
-				<enablement>
-					<and>
-							<instanceof
-								value="org.eclipse.core.resources.IProject">
-							</instanceof>
-						<adapt type="org.eclipse.core.resources.IResource">
-             				<test
-                   				property="org.wso2.developerstudio.eclipse.artifactproject"
-                   				value="org.eclipse.core.resources.IProject">
-             				</test>
-         				</adapt>
-					</and>
-				</enablement>
-		</renameParticipant>
-   </extension>
-   <extension
-         point="org.eclipse.core.expressions.propertyTesters">
-      <propertyTester
-            class="org.wso2.developerstudio.eclipse.platform.core.project.refactor.ArtifactProjectRenameParticipantPropertyTester"
-            id="org.wso2.developerstudio.eclipse.artifact.project.propertytester"
-            namespace="org.wso2.developerstudio.eclipse"
-            properties="artifactproject"
-            type="org.eclipse.core.resources.IProject">
-      </propertyTester>
-   </extension>
-   <extension
-         point="org.eclipse.ltk.core.refactoring.deleteParticipants">
-       <deleteParticipant
-			class="org.wso2.developerstudio.eclipse.platform.core.project.refactor.ArtifactProjectDeleteParticipant"
-			id="ArtifactProjectDeleteParticipant"
-			name="ArtifactProjectDeleteParticipantRefactor">
-				<enablement>
-					<and>
-							<instanceof
-								value="org.eclipse.core.resources.IProject">
-							</instanceof>
-						<adapt type="org.eclipse.core.resources.IResource">
-             				<test
-                   				property="org.wso2.developerstudio.eclipse.artifactproject"
-                   				value="org.eclipse.core.resources.IProject">
-             				</test>
-         				</adapt>
-					</and>
-				</enablement>
-		</deleteParticipant>
-   </extension>
+    <extension-point id="artifacttemplates" name="Template artifacts" schema="schema/artifacttemplates.exsd"/>
 
-	<extension
-		point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
-		<wizardCategory category="org.wso2.developerstudio.eclipse.web.apps" />
-		<wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation" />
-		<wizardCategory category="org.wso2.developerstudio.eclipse.repository" />
-		<wizardCategory category="org.wso2.developerstudio.eclipse.business.processes" />
-		<wizardCategory category="org.wso2.developerstudio.eclipse.portal.services" />
-		<wizardCategory category="org.wso2.developerstudio.eclipse.carbon.ui" />
-		<wizardCategory category="org.wso2.developerstudio.eclipse.extensions" />
-		<wizardCategory
-			category="org.wso2.developerstudio.eclipse.service.hosting.project.types" />
-		<wizardCategory
-			category="org.wso2.developerstudio.eclipse.service.hosting.features" />
-		<wizardCategory
-			category="org.wso2.developerstudio.eclipse.extensions.project.types" />
-		<wizardCategory category="org.wso2.developerstudio.eclipse.extensions.features" />
-		<wizardCategory
-			category="org.wso2.developerstudio.eclipse.message.mediation.project.types" />
-		<wizardCategory
-			category="org.wso2.developerstudio.eclipse.message.mediation.features" />
-		<wizardCategory
-			category="org.wso2.developerstudio.eclipse.artifact.cep.category" />
-			
-		<category id="dashboard.category.appserv" showTitle="true"
-			title="Application Server"
-			priority="1">
-		</category>
-		<category id="dashboard.category.esb" showTitle="true"
-			title="Enterprise Service Bus"
-			priority="2">
-		</category>
-		<category id="dashboard.category.greg" showTitle="true"
-			title="Governance Registry"
-			priority="3">
-		</category>
-		<category id="odashboard.category.ds" showTitle="true"
-			title="Data Services Server"
-			priority="4">
-		</category>
-		<category id="dashboard.category.carbon" showTitle="true"
-			title="Carbon"
-			priority="5">
-		</category>
-		<category id="dashboard.category.bps" showTitle="true"
-			title="Business Process Server"
-			priority="6">
-		</category>
-		<category id="dashboard.category.gadget" showTitle="true"
-			title="Gadget Server"
-			priority="7">
-		</category>
-		<category id="dashboard.category.cep" showTitle="true"
-			title="Complex Event Processing Server"
-			priority="8">
-		</category>
+    <extension-point id="org.wso2.developerstudio.eclipse.platform.core.mediatype" name="Media Type"
+                     schema="schema/org.wso2.developerstudio.eclipse.platform.core.mediatype.exsd"/>
 
-		<!-- appserv -->
-		<wizardLink category="dashboard.category.appserv" id="1dashboard.wizardLink.axis2"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newaxis2artifact"
-			priority="1">
-		</wizardLink>
+    <extension-point id="org.wso2.developerstudio.eclipse.project.export.handler" name="Export Handler"
+                     schema="schema/org.wso2.developerstudio.eclipse.project.export.exsd"/>
 
-		<wizardLink category="dashboard.category.appserv" id="2dashboard.wizardLink.jaxws"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newjaxwsartifact"
-			priority="2">
-		</wizardLink>
+    <extension-point id="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard" name="Dashboard"
+                     schema="schema/org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard.exsd"/>
 
-		<wizardLink category="dashboard.category.appserv" id="3dashboard.wizardLink.war"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newwarartifact"
-			priority="3">
-		</wizardLink>
+    <extension point="org.eclipse.ui.intro.configExtension">
+        <configExtension content="intro/welcome.xml"
+                         configId="org.eclipse.ui.intro.universalConfig">
+        </configExtension>
+    </extension>
 
-		<wizardLink category="dashboard.category.appserv"
-			id="4dashboard.wizardLink.axis2.gen.stub.client"
-			wizard="org.wso2.developerstudio.eclipse.artifact.generation.axis2serviceclient"
-			priority="4">
-		</wizardLink>
+    <extension point="org.wso2.developerstudio.eclipse.platform.core.mediatype">
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.WSDLMediaTypeResolver"
+                extensions="wsdl"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.wsdl"
+                mediaType="application/wsdl+xml" name="WSDL Media type" priority="5"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JARMediaTypeResolver"
+                extensions="jar"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.jar"
+                mediaType="application/javaarchive" name="JAR Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.CLASSMediaTypeResolver"
+                extensions="class"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.class"
+                mediaType="application/javavm" name="CLASS Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PDFMediaTypeResolver"
+                extensions="pdf"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.pdf"
+                mediaType="application/pdf" name="PDF Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.KEYMediaTypeResolver"
+                extensions="key"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.key"
+                mediaType="application/pgpkeys" name="KEY Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.RARMediaTypeResolver"
+                extensions="rar"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.rar"
+                mediaType="application/rar" name="RAR Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ZIPMediaTypeResolver"
+                extensions="zip"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.zip"
+                mediaType="application/zip" name="ZIP Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.GIFMediaTypeResolver"
+                extensions="gif"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.gif"
+                mediaType="image/gif" name="GIF Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JPEGMediaTypeResolver"
+                extensions="jpeg"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.jpeg"
+                mediaType="image/jpeg" name="JPEG Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.BMPMediaTypeResolver"
+                extensions="bmp"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.bmp"
+                mediaType="image/xmsbmp" name="BMP Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XMLMediaTypeResolver"
+                extensions="xml"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xml"
+                mediaType="application/xml" name="XML Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.TXTMediaTypeResolver"
+                extensions="txt"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.txt"
+                mediaType="plain/text" name="TXT Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.BINMediaTypeResolver"
+                extensions="bin"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.bin"
+                mediaType="application/octetstream" name="BIN Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XSDMediaTypeResolver"
+                extensions="xsd"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xsd"
+                mediaType="application/x-xsd+xml" name="XSD Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.HTMLMediaTypeResolver"
+                extensions="html"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.html"
+                mediaType="text/html" name="HTML Media type" priority="5"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.DOCMediaTypeResolver"
+                extensions="doc"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.doc"
+                mediaType="application/msword" name="DOC Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MDBMediaTypeResolver"
+                extensions="mdb"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mdb"
+                mediaType="application/msaccess" name="MDB Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XLSMediaTypeResolver"
+                extensions="xls"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xls"
+                mediaType="application/vnd.ms-excel" name="XLS Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PPTMediaTypeResolver"
+                extensions="ppt"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.ppt"
+                mediaType="application/vnd.ms-powerpoint" name="PPT Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODCMediaTypeResolver"
+                extensions="odc"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odc"
+                mediaType="application/vnd.oasis.opendocument.chart" name="ODC Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODBMediaTypeResolver"
+                extensions="odb"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odb"
+                mediaType="application/vnd.oasis.opendocument.database" name="ODB Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODFMediaTypeResolver"
+                extensions="odf"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odf"
+                mediaType="application/vnd.oasis.opendocument.formula" name="ODF Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODGMediaTypeResolver"
+                extensions="odg"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odg"
+                mediaType="application/vnd.oasis.opendocument.graphics" name="ODG Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.OTGMediaTypeResolver"
+                extensions="otg"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.otg"
+                mediaType="application/vnd.oasis.opendocument.graphics-template"
+                name="OTG Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODIMediaTypeResolver"
+                extensions="odi"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odi"
+                mediaType="application/vnd.oasis.opendocument.image" name="ODI Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODPMediaTypeResolver"
+                extensions="odp"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odp"
+                mediaType="application/vnd.oasis.opendocument.presentation" name="ODP Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.OTPMediaTypeResolver"
+                extensions="otp"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.otp"
+                mediaType="application/vnd.oasis.opendocument.presentation-template"
+                name="OTP Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODSMediaTypeResolver"
+                extensions="ods"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.ods"
+                mediaType="application/vnd.oasis.opendocument.spreadsheet" name="ODS Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODTMediaTypeResolver"
+                extensions="odt"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odt"
+                mediaType="application/vnd.oasis.opendocument.text" name="ODT Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.ODMMediaTypeResolver"
+                extensions="odm"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.odm"
+                mediaType="application/vnd.oasis.opendocument.text-master" name="ODM Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.OTTMediaTypeResolver"
+                extensions="ott"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.ott"
+                mediaType="application/vnd.oasis.opendocument.text-template" name="OTT Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.OTHMediaTypeResolver"
+                extensions="oth"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.oth"
+                mediaType="application/vnd.oasis.opendocument.text-web" name="OTH Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JSMediaTypeResolver"
+                extensions="js" id="org.wso2.developerstudio.eclipse.platform.core.mediatype.js"
+                mediaType="application/x-javascript" name="JS Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.DMCMediaTypeResolver"
+                extensions="dmc" id="org.wso2.developerstudio.eclipse.platform.core.mediatype.dmc"
+                mediaType="application/datamapper" name="DMC Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.JAVAMediaTypeResolver"
+                extensions="java"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.java"
+                mediaType="text/x-java" name="JAVA Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PNGMediaTypeResolver"
+                extensions="png"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.png"
+                mediaType="image/png" name="PNG Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XHTMLMediaTypeResolver"
+                extensions="xhtml"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xhtml"
+                mediaType="application/xhtml+xml" name="XHTML Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.VSDMediaTypeResolver"
+                extensions="vsd"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.vsd"
+                mediaType="application/vnd.visio" name="VSD Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.TORRENTMediaTypeResolver"
+                extensions="torrent"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.torrent"
+                mediaType="application/x-bittorrent" name="TORRENT Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PHPMediaTypeResolver"
+                extensions="php"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.php"
+                mediaType="application/x-httpd-php" name="PHP Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.PHPSMediaTypeResolver"
+                extensions="phps"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.phps"
+                mediaType="application/x-httpd-php-source" name="PHPS Media type"
+                priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.DRLMediaTypeResolver"
+                extensions="drl"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.drl"
+                mediaType="application/drl" name="Rule Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MIDMediaTypeResolver"
+                extensions="mid"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mid"
+                mediaType="audio/midi" name="MID Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MP3MediaTypeResolver"
+                extensions="mp3"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mp3"
+                mediaType="audio/mpeg" name="MP3 Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.SVGMediaTypeResolver"
+                extensions="svg"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.svg"
+                mediaType="image/svg+xml" name="SVG Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MPEGMediaTypeResolver"
+                extensions="mpeg"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mpeg"
+                mediaType="video/mpeg" name="MPEG Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.MP4MediaTypeResolver"
+                extensions="mp4"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.mp4"
+                mediaType="video/mp4" name="MP4 Media type" priority="2"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XSLTMediaTypeResolver"
+                extensions="xslt"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xslt"
+                mediaType="application/xslt+xml"
+                name="XSLT Media type"
+                priority="10"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.XSLMediaTypeResolver"
+                extensions="xsl"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.xsl"
+                mediaType="application/xsl+xml"
+                name="XSL Media type"
+                priority="10"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.WSPolicyMediaTypeResolver"
+                extensions="wspolicy"
+                id="org.wso2.developerstudio.eclipse.platform.core.mediatype.wspolicy"
+                mediaType="application/wspolicy+xml"
+                name="Web Service Policy Media type"
+                priority="10"/>
+        <resolver
+                class="org.wso2.developerstudio.eclipse.platform.core.internal.impl.mediatypes.BulkMediaTypeFileNameResolver"
+                id="org.wso2.developerstudio.eclipse.platform.core.bulkFileNameExtensionResolver"
+                mediaType="org.wso2.developerstudio.eclipse.platform.core.bulkFileNameExtensionResolver"
+                name="Bulk Media Type resolver"/>
+    </extension>
 
-		<wizardLink category="dashboard.category.appserv" id="5dashboard.wizardLink.axis2.get.stub"
-			wizard="org.wso2.developerstudio.eclipse.artifact.generation.axis2service"
-			priority="5">
-		</wizardLink>
+    <extension point="org.eclipse.ui.editors">
+        <editor
+                class="org.wso2.developerstudio.eclipse.platform.core.intro.ui.Dashboard"
+                id="org.wso2.developerstudio.eclipse.dashboard"
+                name="Developer Studio Dashboard">
+        </editor>
+    </extension>
 
-		<wizardLink category="dashboard.category.appserv" id="6dashboard.wizardLink.jaxrs"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newjaxrsartifact"
-			priority="6">
-		</wizardLink>
+    <extension point="org.eclipse.ltk.core.refactoring.renameParticipants">
+        <renameParticipant
+                class="org.wso2.developerstudio.eclipse.platform.core.project.refactor.ArtifactProjectRenameRefactorParticipant"
+                id="ArtifactProjectRenameRefactorParticipant"
+                name="ArtifactProjectRenameRefactor">
+            <enablement>
+                <and>
+                    <instanceof
+                            value="org.eclipse.core.resources.IProject">
+                    </instanceof>
+                    <adapt type="org.eclipse.core.resources.IResource">
+                        <test
+                                property="org.wso2.developerstudio.eclipse.artifactproject"
+                                value="org.eclipse.core.resources.IProject">
+                        </test>
+                    </adapt>
+                </and>
+            </enablement>
+        </renameParticipant>
+    </extension>
 
-		<!-- ESB -->
-		<wizardLink category="dashboard.category.esb" id="1dashboard.wizardLink.esb.project"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newesbproject"
-			priority="1">
-		</wizardLink>
+    <extension point="org.eclipse.ltk.core.refactoring.deleteParticipants">
+        <deleteParticipant
+                class="org.wso2.developerstudio.eclipse.platform.core.project.refactor.ArtifactProjectDeleteParticipant"
+                id="ArtifactProjectDeleteParticipant"
+                name="ArtifactProjectDeleteParticipantRefactor">
+            <enablement>
+                <and>
+                    <instanceof
+                            value="org.eclipse.core.resources.IProject">
+                    </instanceof>
+                    <adapt type="org.eclipse.core.resources.IResource">
+                        <test
+                                property="org.wso2.developerstudio.eclipse.artifactproject"
+                                value="org.eclipse.core.resources.IProject">
+                        </test>
+                    </adapt>
+                </and>
+            </enablement>
+        </deleteParticipant>
+    </extension>
 
-		<wizardLink category="dashboard.category.esb" id="2dashboard.wizardLink.esb.proxy"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newproxyservice"
-			priority="2">
-		</wizardLink>
+    <extension point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.developerstudio.eclipse.platform.core.project.refactor.ArtifactProjectRenameParticipantPropertyTester"
+                id="org.wso2.developerstudio.eclipse.artifact.project.propertytester"
+                namespace="org.wso2.developerstudio.eclipse"
+                properties="artifactproject"
+                type="org.eclipse.core.resources.IProject">
+        </propertyTester>
+    </extension>
 
-		<wizardLink category="dashboard.category.esb" id="3dashboard.wizardLink.esb.endpoint"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newendpointartifact"
-			priority="3">
-		</wizardLink>
+    <extension point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+                class="org.wso2.developerstudio.eclipse.platform.core.propertytester.ProjectNaturePropertyTester"
+                id="org.wso2.developerstudio.projectNature"
+                namespace="org.wso2.developerstudio"
+                properties="projectNature"
+                type="org.eclipse.jdt.core.IPackageFragment">
+        </propertyTester>
+    </extension>
 
-		<wizardLink category="dashboard.category.esb" id="4dashboard.wizardLink.esb.localentry"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newlocalentry"
-			priority="4">
-		</wizardLink>
+    <extension point="org.wso2.developerstudio.eclipse.platform.core.intro.ui.dashboard">
+        <wizardCategory category="org.wso2.developerstudio.eclipse.web.apps"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.repository"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.business.processes"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.portal.services"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.carbon.ui"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.extensions"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.service.hosting.project.types"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.service.hosting.features"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.extensions.project.types"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.extensions.features"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.project.types"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.message.mediation.features"/>
+        <wizardCategory category="org.wso2.developerstudio.eclipse.artifact.cep.category"/>
+        <category id="dashboard.category.appserv" showTitle="true"
+                  title="Application Server"
+                  priority="1">
+        </category>
+        <category id="dashboard.category.esb" showTitle="true"
+                  title="Enterprise Service Bus"
+                  priority="2">
+        </category>
+        <category id="dashboard.category.greg" showTitle="true"
+                  title="Governance Registry"
+                  priority="3">
+        </category>
+        <category id="odashboard.category.ds" showTitle="true"
+                  title="Data Services Server"
+                  priority="4">
+        </category>
+        <category id="dashboard.category.carbon" showTitle="true"
+                  title="Carbon"
+                  priority="5">
+        </category>
+        <category id="dashboard.category.bps" showTitle="true"
+                  title="Business Process Server"
+                  priority="6">
+        </category>
+        <category id="dashboard.category.gadget" showTitle="true"
+                  title="Gadget Server"
+                  priority="7">
+        </category>
+        <category id="dashboard.category.cep" showTitle="true"
+                  title="Complex Event Processing Server"
+                  priority="8">
+        </category>
 
-		<wizardLink category="dashboard.category.esb" id="5dashboard.wizardLink.esb.mediator"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newmediatorartifact"
-			priority="5">
-		</wizardLink>
+        <!-- appserv -->
+        <wizardLink category="dashboard.category.appserv" id="1dashboard.wizardLink.axis2"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newaxis2artifact"
+                    priority="1">
+        </wizardLink>
+        <wizardLink category="dashboard.category.appserv" id="2dashboard.wizardLink.jaxws"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newjaxwsartifact"
+                    priority="2">
+        </wizardLink>
+        <wizardLink category="dashboard.category.appserv" id="3dashboard.wizardLink.war"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newwarartifact"
+                    priority="3">
+        </wizardLink>
+        <wizardLink category="dashboard.category.appserv"
+                    id="4dashboard.wizardLink.axis2.gen.stub.client"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.generation.axis2serviceclient"
+                    priority="4">
+        </wizardLink>
+        <wizardLink category="dashboard.category.appserv" id="5dashboard.wizardLink.axis2.get.stub"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.generation.axis2service"
+                    priority="5">
+        </wizardLink>
+        <wizardLink category="dashboard.category.appserv" id="6dashboard.wizardLink.jaxrs"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newjaxrsartifact"
+                    priority="6">
+        </wizardLink>
 
-		<wizardLink category="dashboard.category.esb" id="6dashboard.wizardLink.esb.sequence"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact"
-			priority="6">
-		</wizardLink>
+        <!-- ESB -->
+        <wizardLink category="dashboard.category.esb" id="1dashboard.wizardLink.esb.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newesbproject"
+                    priority="1">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb" id="2dashboard.wizardLink.esb.proxy"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newproxyservice"
+                    priority="2">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb" id="3dashboard.wizardLink.esb.endpoint"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newendpointartifact"
+                    priority="3">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb" id="4dashboard.wizardLink.esb.localentry"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newlocalentry"
+                    priority="4">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb" id="5dashboard.wizardLink.esb.mediator"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newmediatorartifact"
+                    priority="5">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb" id="6dashboard.wizardLink.esb.sequence"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newsequenceartifact"
+                    priority="6">
+        </wizardLink>
+        <wizardLink category="dashboard.category.esb" id="7dashboard.wizardLink.esb.synapse"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.synapseartifact"
+                    priority="7">
+        </wizardLink>
 
-		<wizardLink category="dashboard.category.esb" id="7dashboard.wizardLink.esb.synapse"
-			wizard="org.wso2.developerstudio.eclipse.artifact.synapseartifact"
-			priority="7">
-		</wizardLink>
+        <!-- greg -->
+        <wizardLink category="dashboard.category.greg"
+                    id="dashboard.wizardLink.registry.pespective"
+                    wizard="org.wso2.developerstudio.registry.remote.registry.perspective.action"
+                    priority="1">
+        </wizardLink>
+        <wizardLink category="dashboard.category.greg" id="dashboard.wizardLink.general.project"
+                    wizard="org.wso2.developerstudio.eclipse.general.project"
+                    priority="2">
+        </wizardLink>
+        <wizardLink category="dashboard.category.greg"
+                    id="dashboard.wizardLink.registry.resource"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newregistryresource"
+                    priority="3">
+        </wizardLink>
+        <wizardLink category="dashboard.category.greg" id="dashboard.wizardLink.registry.filter"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newregistryfilter"
+                    priority="4">
+        </wizardLink>
+        <wizardLink category="dashboard.category.greg"
+                    id="dashboard.wizardLink.registry.handler"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newregistryhandler"
+                    priority="5">
+        </wizardLink>
+        <customAction
+                class="org.wso2.developerstudio.eclipse.platform.core.intro.action.ShowRegistryPerspective"
+                id="org.wso2.developerstudio.registry.remote.registry.perspective.action">
+        </customAction>
 
-		<!-- greg -->
+        <!-- data service -->
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsartifact">
+        </wizardLink>
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.validiator"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newvalidiatorartifact">
+        </wizardLink>
 
-		<wizardLink category="dashboard.category.greg"
-			id="dashboard.wizardLink.registry.pespective"
-			wizard="org.wso2.developerstudio.registry.remote.registry.perspective.action"
-			priority="1">
-		</wizardLink>
+        <!-- carbon -->
+        <wizardLink category="dashboard.category.carbon" id="dashboard.wizardLink.carbon.ui"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.carbonUIartifact">
+        </wizardLink>
+        <wizardLink category="dashboard.category.carbon" id="dashboard.wizardLink.carbon.javalib"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newlibraryartifact">
+        </wizardLink>
 
-		<wizardLink category="dashboard.category.greg" id="dashboard.wizardLink.general.project"
-			wizard="org.wso2.developerstudio.eclipse.general.project"
-			priority="2">
-		</wizardLink>
+        <!-- BPS -->
+        <wizardLink category="dashboard.category.bps" id="dashboard.wizardLink.bpel"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newbpelartifact">
+        </wizardLink>
 
-		<wizardLink category="dashboard.category.greg"
-			id="dashboard.wizardLink.registry.resource" wizard="org.wso2.developerstudio.eclipse.artifact.newregistryresource"
-			priority="3">
-		</wizardLink>
+        <!-- Gadget -->
+        <wizardLink category="dashboard.category.gadget" id="dashboard.wizardLink.gadget"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newgadgetartifact">
+        </wizardLink>
 
-		<wizardLink category="dashboard.category.greg" id="dashboard.wizardLink.registry.filter"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newregistryfilter"
-			priority="4">
-		</wizardLink>
+        <!-- CEP -->
+        <wizardLink category="dashboard.category.cep" id="dashboard.wizardLink.cep"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
+        </wizardLink>
 
-		<wizardLink category="dashboard.category.greg"
-			id="dashboard.wizardLink.registry.handler" wizard="org.wso2.developerstudio.eclipse.artifact.newregistryhandler"
-			priority="5">
-		</wizardLink>
+        <!-- BRS -->
+        <wizardCategory
+                category="org.wso2.developerstudio.eclipse.artifact.businessruleservice.category">
+        </wizardCategory>
+        <category
+                id="dashboard.category.brs"
+                showTitle="true"
+                priority="9"
+                title="Business Rules Server">
+        </category>
+        <wizardLink
+                category="dashboard.category.brs"
+                id="dashboard.wizardLink.brs"
+                wizard="org.wso2.developerstudio.eclipse.artifact.businessruleservice.wizard">
+        </wizardLink>
 
-		<customAction
-			class="org.wso2.developerstudio.eclipse.platform.core.intro.action.ShowRegistryPerspective"
-			id="org.wso2.developerstudio.registry.remote.registry.perspective.action">
-		</customAction>
+        <!-- Jaggery-->
+        <wizardCategory
+                category="org.eclipse.php.project.ui">
+        </wizardCategory>
+        <category
+                id="dashboard.category.jaggery"
+                showTitle="true"
+                priority="10"
+                title="Jaggery">
+        </category>
+        <wizardLink
+                category="dashboard.category.jaggery"
+                id="dashboard.wizardLink.jaggery"
+                wizard="org.eclipse.php.ui.wizards.PHPProjectCreationWizard">
+        </wizardLink>
+    </extension>
 
-		<!-- data service -->
-		<wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newdsartifact">
-		</wizardLink>
+    <extension point="org.eclipse.ui.startup">
+        <startup class="org.wso2.developerstudio.eclipse.platform.core.startup.alert.JavaVersionAlertHandler"/>
+    </extension>
 
-		<wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.validiator"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newvalidiatorartifact">
-		</wizardLink>
-
-		<!-- carbon -->
-		<wizardLink category="dashboard.category.carbon" id="dashboard.wizardLink.carbon.ui"
-			wizard="org.wso2.developerstudio.eclipse.artifact.carbonUIartifact">
-		</wizardLink>
-
-		<wizardLink category="dashboard.category.carbon" id="dashboard.wizardLink.carbon.javalib"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newlibraryartifact">
-		</wizardLink>
-
-		<!-- BPS -->
-		<wizardLink category="dashboard.category.bps" id="dashboard.wizardLink.bpel"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newbpelartifact">
-		</wizardLink>
-
-		<!-- Gadget -->
-		<wizardLink category="dashboard.category.gadget" id="dashboard.wizardLink.gadget"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newgadgetartifact">
-		</wizardLink>
-
-		<!-- CEP -->
-		<wizardLink category="dashboard.category.cep" id="dashboard.wizardLink.cep"
-			wizard="org.wso2.developerstudio.eclipse.artifact.newcepartifact">
-		</wizardLink>
-		
-		<!-- BRS -->
-		 <wizardCategory
-          category="org.wso2.developerstudio.eclipse.artifact.businessruleservice.category">
-    	</wizardCategory>
-    	<category
-          id="dashboard.category.brs"
-          showTitle="true"
-          priority="9"
-          title="Business Rules Server">
-    	</category>
-    	<wizardLink
-          category="dashboard.category.brs"
-          id="dashboard.wizardLink.brs"
-          wizard="org.wso2.developerstudio.eclipse.artifact.businessruleservice.wizard">
-    	</wizardLink>
-    	
-    	<!-- Jaggery-->
-    	 <wizardCategory
-          category="org.eclipse.php.project.ui">
-    	</wizardCategory>
-    	<category
-          id="dashboard.category.jaggery"
-          showTitle="true"
-          priority="10"
-          title="Jaggery">
-    	</category>
-    	<wizardLink
-          category="dashboard.category.jaggery"
-          id="dashboard.wizardLink.jaggery"
-          wizard="org.eclipse.php.ui.wizards.PHPProjectCreationWizard">
-    	</wizardLink>
-
-	</extension>
-	
-	<extension point="org.eclipse.core.expressions.propertyTesters">
-    	<propertyTester
-          	class="org.wso2.developerstudio.eclipse.platform.core.propertytester.ProjectNaturePropertyTester"
-          	id="org.wso2.developerstudio.projectNature"
-          	namespace="org.wso2.developerstudio"
-          	properties="projectNature"
-          	type="org.eclipse.jdt.core.IPackageFragment">
-    	</propertyTester>
- 	</extension>
 </plugin>

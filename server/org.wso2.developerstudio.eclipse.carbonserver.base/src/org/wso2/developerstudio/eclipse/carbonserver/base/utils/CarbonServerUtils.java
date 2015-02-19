@@ -63,7 +63,7 @@ public class CarbonServerUtils {
 	private static final String AXIS2_XML = "axis2.xml";
 	private static final String AXIS2 = "axis2";
 	private static final String TRANSPORTS_XML = "transports.xml";
-	private static final String SERVER_WEB_CONTEXT_ROOT = "/:Server/:WebContextRoot";
+	private static final String SERVER_WEB_CONTEXT_ROOT = "/Server/WebContextRoot";
 	private static final String RAWTYPES = "rawtypes";
 	private static final String WEB_CONTEXT_ROOT = "http://wso2.org/projects/carbon/carbon.xml";
 	private static final String CARBON_XML = "carbon.xml";

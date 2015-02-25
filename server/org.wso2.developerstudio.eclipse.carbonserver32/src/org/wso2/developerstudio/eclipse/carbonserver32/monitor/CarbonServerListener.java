@@ -95,7 +95,7 @@ public class CarbonServerListener implements IServerListener {
     private void triggerStopped(IServer server){
     	//Displaying message that carbon server is about to shutdown
     	CarbonServerConsole console=new CarbonServerConsole();
-    	console.printMessageInConsole(server.getName(), "Carbon Server "+server.getName()+ " has shutted down...\n");
+    	console.printMessageInConsole(server.getName(), "Carbon Server "+server.getName()+ " has shut down...\n");
     	File cappMonitorBundle = CarbonServer32Utils.getCappMonitorBundle();
 		IPath dropins = CarbonServerManager.getServerHome(server).append("repository").append("components").append("dropins").append(cappMonitorBundle.getName());
 		File cappMonitorFile = new File(dropins.toOSString());

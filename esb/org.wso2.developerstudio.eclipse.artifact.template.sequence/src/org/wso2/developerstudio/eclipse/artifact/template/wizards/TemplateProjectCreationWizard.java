@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2011-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import java.util.regex.Pattern;
 import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMNode;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
@@ -41,12 +40,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.artifact.template.Activator;
-import org.wso2.developerstudio.eclipse.artifact.template.Utils.TemplateImageUtils;
+import org.wso2.developerstudio.eclipse.artifact.template.utils.TemplateImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.template.model.TemplateModel;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
@@ -55,7 +53,6 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
-import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;

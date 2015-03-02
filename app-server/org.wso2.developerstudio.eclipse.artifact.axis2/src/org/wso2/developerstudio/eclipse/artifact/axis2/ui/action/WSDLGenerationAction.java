@@ -70,8 +70,7 @@ public class WSDLGenerationAction implements IActionDelegate {
     private static final String WSDL_EXTENSION = ".wsdl";
     private static final String SELECT_NAME_AND_LOCATION_MESSAGE = "Select name and location for the WSDL file";
     private static final String DEFAULT_RESOURCES_DIRECTORY = "src" + File.separator + "main" + File.separator + "resources";
-    private static final String WSO2_SPECIFIC_AXIS2_LOCATION = "http:" + File.separator + File.separator + "localhost:9763" + File.separator
-            + "services";
+    private static final String WSO2_SPECIFIC_AXIS2_LOCATION = "http://localhost:9763/services";
 
     /**
      * This method will be called when user clicks 'Generate WSDL' option from popup menu.

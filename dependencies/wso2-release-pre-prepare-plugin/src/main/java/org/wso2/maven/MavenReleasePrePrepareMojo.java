@@ -46,6 +46,8 @@ import org.apache.maven.scm.repository.ScmRepository;
 import org.apache.maven.scm.repository.ScmRepositoryException;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.sonatype.plexus.components.sec.dispatcher.SecDispatcher;
+import org.sonatype.plexus.components.sec.dispatcher.SecDispatcherException;
 import org.wso2.maven.esb.ESBArtifact;
 import org.wso2.maven.esb.ESBProjectArtifact;
 import org.wso2.maven.registry.GeneralProjectArtifact;
@@ -67,14 +69,16 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	                                                                                      "org.wso2.developerstudio.eclipse.general.project.nature";
 	private static final String ORG_WSO2_DEVELOPERSTUDIO_ECLIPSE_ESB_PROJECT_NATURE =
 	                                                                                  "org.wso2.developerstudio.eclipse.esb.project.nature";
-	private static final String DEPENDENCY = "dependency.";
+	private static final String PROJECT = "project.";
 	private static final String ARTIFACT_XML_REGEX = "**/artifact.xml";
-	private static final String DEVELOPMENT = "development";
-	private static final String RELEASE = "release";
+	private static final String DEVELOPMENT = "dev";
+	private static final String RELEASE = "rel";
 	private static final String SCM = "scm:";
 	private static final String SCM_URL = "scm.url";
 	private static final String SCM_TAG_BASE = "scm.tagBase";
 	private static final String SCM_TAG = "scm.tag";
+	private static final String SCM_USERNAME = "scm.username";
+	private static final String SCM_PASSWORD = "scm.password";
 	private static final String POM = "pom";
 	private static final String RELEASE_PROPERTIES = "release.properties";
 	private static final String ARTIFACT_XML = "artifact.xml";
@@ -85,10 +89,13 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	 * @parameter default-value="${project}"
 	 */
 	private MavenProject project;
+	
+	/** 
+	 * @component role-hint="mojo" 
+	 */
+    private SecDispatcher secDispatcher;
 
 	/**
-	 * O
-	 * 
 	 * @parameter expression="${dryRun}" default-value="false"
 	 */
 	private boolean dryRun;
@@ -113,6 +120,8 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 				String scmTag = prop.getProperty(SCM_TAG);
 				String scmTagBase = prop.getProperty(SCM_TAG_BASE);
 				String scmUrl = prop.getProperty(SCM_URL);
+				String scmUserName = prop.getProperty(SCM_USERNAME);
+				String scmPassword = decrypt(prop.getProperty(SCM_PASSWORD));
 				if (scmUrl == null) {
 					scmUrl = project.getScm().getConnection();
 				}
@@ -126,10 +135,10 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 				                             scmTagBase.replaceAll("/$", "").concat("/")
 				                                       .concat(scmTag);
 				// checkout and commit tag
-				checkoutAndCommit(scmManager, prop, checkoutUrl, RELEASE);
+				checkoutAndCommit(scmManager, prop, checkoutUrl,scmUserName, scmPassword, RELEASE);
 				scmTagBase = project.getScm().getConnection();
 				// checkout and commit trunk
-				checkoutAndCommit(scmManager, prop, scmTagBase, DEVELOPMENT);
+				checkoutAndCommit(scmManager, prop, scmTagBase, scmUserName, scmPassword, DEVELOPMENT);
 
 				ScmFileSet scmFileSet =
 				                        new ScmFileSet(new File(baseDirPath), ARTIFACT_XML_REGEX,
@@ -179,11 +188,19 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	 * @throws ScmException
 	 * @throws Exception
 	 */
-	private void checkoutAndCommit(ScmManager scmManager, Properties prop, String checkoutUrl,
+	private void checkoutAndCommit(ScmManager scmManager, Properties prop, String checkoutUrl, String scmUserName, String scmPassword,
 	                               String repoType) throws FactoryConfigurationError, IOException,
 	                                               ScmException {
 
-		ScmRepository scmRepository = scmManager.makeScmRepository(checkoutUrl);
+		String modifiedCheckoutUrl = checkoutUrl;		
+		if(scmUserName != null && scmPassword != null){
+			// Building the checkout url to have username and password Eg: scm:svn:https://username:password@svn.apache.org/svn/root/module			
+			modifiedCheckoutUrl = checkoutUrl.replace("://", "://" + scmUserName + ":" + scmPassword + "@");
+		}else if(scmUserName != null && scmPassword == null){
+			// Building the checkout url to have username Eg: scm:svn:https://username@svn.apache.org/svn/root/module
+			modifiedCheckoutUrl = checkoutUrl.replace("://", "://" + scmUserName + "@");
+		}		
+		ScmRepository scmRepository = scmManager.makeScmRepository(modifiedCheckoutUrl);
 		String scmBaseDir = project.getBuild().getDirectory();
 		// create temp directory for checkout
 		File targetFile = new File(scmBaseDir, repoType);
@@ -236,17 +253,17 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	 * @throws FactoryConfigurationError
 	 * @throws Exception
 	 */
-
+	
 	private void setRegArtifactVersion(Properties prop, String repoType, File artifactXml)
 	                                                                                      throws FactoryConfigurationError,
 	                                                                                      Exception {
+		File pomFile = new File(artifactXml.getParent() + File.separator + POM_XML);
+		MavenProject mavenProject=getMavenProject(pomFile);	
+		String releaseVersion = prop.getProperty(PROJECT + repoType + "."+ mavenProject.getGroupId() + ":" + mavenProject.getArtifactId());
 		GeneralProjectArtifact projectArtifact = new GeneralProjectArtifact();
 		projectArtifact.fromFile(artifactXml);
 		for (RegistryArtifact artifact : projectArtifact.getAllESBArtifacts()) {
-			if (artifact.getVersion() != null && artifact.getType() != null) {
-				String releaseVersion =
-				                        prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":" +
-				                                         artifact.getName() + "." + repoType);
+			if (artifact.getVersion() != null && artifact.getType() != null) {				
 				if (releaseVersion != null) {
 					artifact.setVersion(releaseVersion);
 				}
@@ -270,19 +287,34 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 	private void setESBArtifactVersion(Properties prop, String repoType, File artifactXml)
 	                                                                                      throws FactoryConfigurationError,
 	                                                                                      Exception {
+		File pomFile = new File(artifactXml.getParent() + File.separator + POM_XML);
+		MavenProject mavenProject=getMavenProject(pomFile);	
+		String releaseVersion = prop.getProperty(PROJECT + repoType + "."+mavenProject.getGroupId() + ":" + mavenProject.getArtifactId());
 		ESBProjectArtifact projectArtifact = new ESBProjectArtifact();
 		projectArtifact.fromFile(artifactXml);
 		for (ESBArtifact artifact : projectArtifact.getAllESBArtifacts()) {
-			if (artifact.getVersion() != null && artifact.getType() != null) {
-				String releaseVersion =
-				                        prop.getProperty(DEPENDENCY + artifact.getGroupId() + ":" +
-				                                         artifact.getName() + "." + repoType);
+			if (artifact.getVersion() != null && artifact.getType() != null) {				
 				if (releaseVersion != null) {
 					artifact.setVersion(releaseVersion);
 				}
 			}
 		}
 		projectArtifact.toFile();
+	}
+	
+	/**
+	 * 
+	 * @param pomFile
+	 * @return
+	 * @throws IOException
+	 * @throws XmlPullParserException
+	 */
+	private MavenProject getMavenProject(final File pomFile) throws IOException, XmlPullParserException {
+		MavenXpp3Reader mavenreader = new MavenXpp3Reader();
+		FileReader reader = new FileReader(pomFile);
+		Model model = mavenreader.read(reader);
+		MavenProject project = new MavenProject(model);
+		return project;
 	}
 
 	/**
@@ -336,5 +368,18 @@ public class MavenReleasePrePrepareMojo extends AbstractMojo {
 
 		return false;
 	}
-
+	
+	/**
+	 * Decrypt a given encrypted password.
+	 * @param password
+	 * @return
+	 */
+	private String decrypt(String password) {
+		try {
+			return secDispatcher.decrypt(password);
+		} catch (SecDispatcherException sde) {
+			log.warn("error occure while decrypting password", sde);
+			return password;
+		}
+	}
 }

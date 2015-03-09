@@ -227,8 +227,9 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 				FileUtils.createFile(destFile,  proxy.toString());
 				fileLst.add(destFile);
 				if(isNewArtifact){
-					relativePath = FileUtils.getRelativePath(location.getProject().getLocation()
-							.toFile(), new File(location.getLocation().toFile(), name + ".xml"));
+					relativePath = FileUtils.getRelativePath(location.getProject().getLocation().toFile(),
+							new File(location.getLocation().toFile(), name + ".xml")).replaceAll(
+							Pattern.quote(File.separator), "/");
 					esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,version,relativePath) );
 				}
 			}			
@@ -241,9 +242,10 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 			FileUtils.copy(importFile, destFile);
 			fileLst.add(destFile);
 			if(isNewArtifact){
-				relativePath = FileUtils.getRelativePath(location.getProject().getLocation()
-						.toFile(), new File(location.getLocation().toFile(), name + ".xml"));
-			esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,version,relativePath) );
+				relativePath = FileUtils.getRelativePath(location.getProject().getLocation().toFile(),
+						new File(location.getLocation().toFile(), name + ".xml")).replaceAll(
+						Pattern.quote(File.separator), "/");
+				esbProjectArtifact.addESBArtifact(createArtifact(name,groupId,version,relativePath) );
 			}
 		}
 	}

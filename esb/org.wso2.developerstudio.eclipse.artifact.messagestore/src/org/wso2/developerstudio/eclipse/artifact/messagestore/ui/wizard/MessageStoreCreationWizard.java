@@ -310,9 +310,9 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 				FileUtils.createFile(destFile, element.toString());
 				fileLst.add(destFile);
 				if(isNewAritfact){
-					String relativePath = FileUtils.getRelativePath(importLocation.getProject()
-							.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
-							name + ".xml"));
+					String relativePath = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
+							new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
+							Pattern.quote(File.separator), "/");
 					esbProjectArtifact.addESBArtifact(createArtifact(name, groupId,
 							version, relativePath));
 				}
@@ -324,9 +324,9 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			fileLst.add(destFile);
 			String name = importFile.getName().replaceAll(".xml$","");
 			if(isNewAritfact){
-				String relativePath = FileUtils.getRelativePath(importLocation.getProject()
-						.getLocation().toFile(), new File(importLocation.getLocation().toFile(),
-						name + ".xml"));
+				String relativePath = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
+						new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
+						Pattern.quote(File.separator), "/");
 				esbProjectArtifact.addESBArtifact(createArtifact(name, groupId,
 						version, relativePath));
 			}

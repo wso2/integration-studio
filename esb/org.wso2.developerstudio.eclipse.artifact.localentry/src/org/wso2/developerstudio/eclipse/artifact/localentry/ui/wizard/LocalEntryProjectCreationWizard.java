@@ -260,14 +260,16 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 				FileUtils.createFile(destFile, element.toString());
 				fileLst.add(destFile);
 				if(isNewArtifact){
-				ESBArtifact artifact=new ESBArtifact();
-				artifact.setName(key);
-				artifact.setVersion(version);
-				artifact.setType("synapse/local-entry");
-				artifact.setServerRole("EnterpriseServiceBus");
-				artifact.setGroupId(groupId);
-				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(), new File(importLocation.getLocation().toFile(),key+".xml")));
-				esbProjectArtifact.addESBArtifact(artifact);
+					ESBArtifact artifact=new ESBArtifact();
+					artifact.setName(key);
+					artifact.setVersion(version);
+					artifact.setType("synapse/local-entry");
+					artifact.setServerRole("EnterpriseServiceBus");
+					artifact.setGroupId(groupId);
+					artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
+							new File(importLocation.getLocation().toFile(), key + ".xml")).replaceAll(
+							Pattern.quote(File.separator), "/"));
+					esbProjectArtifact.addESBArtifact(artifact);
 				}
 			}
 			
@@ -277,14 +279,16 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 			fileLst.add(destFile);
 			String key = importFile.getName().replaceAll(".xml$", "");
 			if(isNewArtifact){
-			ESBArtifact artifact=new ESBArtifact();
-			artifact.setName(key);
-			artifact.setVersion(version);
-			artifact.setType("synapse/local-entry");
-			artifact.setServerRole("EnterpriseServiceBus");
-			artifact.setFile(groupId);
-			artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(), new File(importLocation.getLocation().toFile(),key+".xml")));
-			esbProjectArtifact.addESBArtifact(artifact);
+				ESBArtifact artifact=new ESBArtifact();
+				artifact.setName(key);
+				artifact.setVersion(version);
+				artifact.setType("synapse/local-entry");
+				artifact.setServerRole("EnterpriseServiceBus");
+				artifact.setFile(groupId);
+				artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
+						new File(importLocation.getLocation().toFile(), key + ".xml")).replaceAll(
+						Pattern.quote(File.separator), "/"));
+				esbProjectArtifact.addESBArtifact(artifact);
 			}
 		}
 	}

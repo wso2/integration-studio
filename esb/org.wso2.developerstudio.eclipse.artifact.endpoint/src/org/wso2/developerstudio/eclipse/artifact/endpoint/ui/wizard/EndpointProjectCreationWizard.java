@@ -437,8 +437,10 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 				FileUtils.createFile(destFile, element.toString());
 				fileLst.add(destFile);
 				if(isNewArtifact){
-				String fileLocation = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(), new File(importLocation.getLocation().toFile(),name+".xml"));
-				esbProjectArtifact.addESBArtifact(createArtifactxml(fileLocation, name,groupId));
+					String fileLocation = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
+							new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
+							Pattern.quote(File.separator), "/");
+					esbProjectArtifact.addESBArtifact(createArtifactxml(fileLocation, name, groupId));
 				}
 			}
 			
@@ -448,8 +450,10 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			fileLst.add(destFile);
 			String name = importFile.getName().replaceAll(".xml$", "");
 			if(isNewArtifact){
-			String fileLocation = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(), new File(importLocation.getLocation().toFile(),name+".xml"));
-			esbProjectArtifact.addESBArtifact(createArtifactxml(fileLocation, name,groupId));
+				String fileLocation = FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(),
+						new File(importLocation.getLocation().toFile(), name + ".xml")).replaceAll(
+						Pattern.quote(File.separator), "/");
+				esbProjectArtifact.addESBArtifact(createArtifactxml(fileLocation, name, groupId));
 			}
 		}
 	}

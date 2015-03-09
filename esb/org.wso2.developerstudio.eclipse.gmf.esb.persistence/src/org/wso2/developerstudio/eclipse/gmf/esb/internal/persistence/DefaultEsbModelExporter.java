@@ -19,10 +19,17 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Source;
 import javax.xml.transform.Templates;
 import javax.xml.transform.Transformer;
@@ -47,9 +54,12 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
 import org.apache.synapse.rest.API;
 import org.apache.synapse.task.TaskDescriptionSerializer;
+import org.apache.xml.serialize.OutputFormat;
+import org.apache.xml.serialize.XMLSerializer;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.w3c.dom.Document;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
@@ -74,6 +84,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomAPISerializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbModelTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /**
  * Default implementation of {@link EsbModelTransformer}.
@@ -399,7 +411,8 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 			DefaultEsbModelExporter.prettify(configOM, baos);
 		}
 
-		sourceXML = baos.toString("UTF-8");
+		//sourceXML = baos.toString("UTF-8");
+		sourceXML = format(configOM.toString());
 		sourceXML = sourceXML.replaceAll("\\?><", "?>\n<");
 		return sourceXML;
 	}
@@ -438,6 +451,37 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		// TODO : remove this method
 		return null;
 	}
-
 	
+    public String format(String unformattedXml) {
+        try {
+            final Document document = parseXmlFile(unformattedXml);
+
+            OutputFormat format = new OutputFormat(document);
+            format.setLineWidth(65);
+            format.setIndenting(true);
+            format.setIndent(2);
+            Writer out = new StringWriter();
+            XMLSerializer serializer = new XMLSerializer(out, format);
+            serializer.serialize(document);
+
+            return out.toString();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private Document parseXmlFile(String in) {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            InputSource is = new InputSource(new StringReader(in));
+            return db.parse(is);
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        } catch (SAXException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }	
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artifacts>
+	<artifact name="testEndpoint1" version="1.0.0" type="synapse/endpoint"
+		serverRole="EnterpriseServiceBus">
+		<item>
+			<file>new_order_item.xslt</file>
+			<path>/_system/config/</path>
+		</item>
+		<item>
+			<file>customer_details_by_email.xslt</file>
+			<path>/_system/config/</path>
+		</item>
+		<item>
+			<file>total_order_amount.xslt</file>
+			<path>/_system/config/</path>
+		</item>
+		<item>
+			<file>new_customer.xslt</file>
+			<path>/_system/config/</path>
+		</item>
+
+		<item>
+			<file>new_order.xslt</file>
+			<path>/_system/config/</path>
+		</item>
+
+		<item>
+			<file>decrement_product-stock.xslt</file>
+			<path>/_system/config/</path>
+		</item>
+
+		<item>
+			<file>finance_connector.xslt</file>
+			<path>/_system/config/</path>
+		</item>
+	</artifact>
+	<artifact name="testEndpoint1" version="1.0.0" type="synapse/endpoint"
+		serverRole="EnterpriseServiceBus">
+		<item>
+			<file>helloWorld.txt</file>
+			<path>/system/config/helloWorldApp</path>
+		</item>
+		<item>
+			<file>pom.xml</file>
+			<path>/_system/config</path>
+		</item>
+		<collection>
+			<directory>builder</directory>
+			<path>/_system/config/builder</path>
+		</collection>
+	</artifact>
+</artifacts>

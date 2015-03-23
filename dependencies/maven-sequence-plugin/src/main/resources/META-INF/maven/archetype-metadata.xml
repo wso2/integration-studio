@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor name="maven-sequence-plugin">
+	<requiredProperties>
+		<requiredProperty key="testParam">
+			<defaultValue>testValue</defaultValue>
+		</requiredProperty>
+	</requiredProperties>
+	<fileSets>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/resources/sample</directory>
+		</fileSet>
+	</fileSets>
+</archetype-descriptor>

@@ -1,0 +1,6 @@
+<archetype>
+  <id>maven-registry-plugin</id>
+ <resources>
+    <resource>src/main/resources/regresource</resource>
+  </resources>
+</archetype>

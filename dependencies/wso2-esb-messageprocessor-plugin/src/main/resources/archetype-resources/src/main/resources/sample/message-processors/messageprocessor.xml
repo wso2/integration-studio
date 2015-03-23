@@ -1,4 +1,0 @@
-<messageProcessor xmlns="http://ws.apache.org/ns/synapse"
-	class="org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor"
-	name="messageprocessor" messageStore="messagestore">
-</messageProcessor>

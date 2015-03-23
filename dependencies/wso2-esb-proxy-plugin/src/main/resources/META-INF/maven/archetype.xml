@@ -1,6 +1,0 @@
-<archetype>
-  <id>maven-proxy-plugin</id>
- <resources>
-    <resource>src/main/resources/sample/sample-proxy.xml</resource>
-  </resources>
-</archetype>

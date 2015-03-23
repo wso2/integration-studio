@@ -1,8 +1,0 @@
-<serviceGroup>
-	<service>
-	   <description>
-	      This is my greeting service, which says hello
-	   </description>
-	   <parameter name="ServiceClass">org.wso2.sample.GreetingService</parameter>
-	</service>
-</serviceGroup>

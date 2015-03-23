@@ -1,6 +1,0 @@
-<archetype>
-  <id>war-module</id>
-  <!--resources>
-    <resource>modules/distribution/pom.xml</resource>
-  </resources-->
-</archetype>

@@ -1,6 +1,0 @@
-<archetype>
-  <id>maven-localentry-plugin</id>
- <resources>
-    <resource>src/main/resources/localentry/localentry.xml</resource>
-  </resources>
-</archetype>

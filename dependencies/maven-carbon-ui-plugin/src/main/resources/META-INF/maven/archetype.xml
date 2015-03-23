@@ -1,6 +1,0 @@
-<archetype>
-  <id>maven-endpoint-plugin</id>
- <resources>
-    <resource>src/main/resources/sample/sample-endpoint.xml</resource>
-  </resources>
-</archetype>

@@ -64,7 +64,7 @@ public class Axis2ServiceUtils {
 	 * @throws org.wso2.developerstudio.eclipse.utils.exception.Axis2ServiceUtilsException
 	 */
 	public static Map<IFolder, IProject> getServiceFolders() throws Axis2ServiceUtilsException {
-		HashMap<IFolder, IProject> map = new HashMap<IFolder, IProject>();
+		Map<IFolder, IProject> map = new HashMap<IFolder, IProject>();
 		for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
 			if (WebUtils.isDynamicWebProject(project)) {
 				final IFolder servicesFolder;

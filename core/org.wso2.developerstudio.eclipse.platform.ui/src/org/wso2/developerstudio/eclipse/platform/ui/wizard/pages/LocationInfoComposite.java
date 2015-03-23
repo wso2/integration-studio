@@ -110,9 +110,9 @@ public class LocationInfoComposite extends Composite implements Observer {
         locationLabel.setText(LOCATION);
 
         locationHolder = new Text(locationSelectorGroup, SWT.BORDER);
-        GridData gd_text = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
-        gd_text.widthHint = 314;
-        locationHolder.setLayoutData(gd_text);
+        GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1);
+        gridData.widthHint = 314;
+        locationHolder.setLayoutData(gridData);
         locationHolder.setText(this.defaultLocation.toString());
         locationHolder.setEnabled(false);
 
@@ -177,14 +177,13 @@ public class LocationInfoComposite extends Composite implements Observer {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void update(Observable observable, Object arg) {
-        if (observable == getProjectModel()) {
-            if (getCurrentProjectName() == null ||
-                    !getCurrentProjectName().equals(getProjectModel().getProjectName())) {
-                setCurrentProjectName(getProjectModel().getProjectName());
-                if (defaultCheckButtonSelected) {
-                    updateDefaultProjectLocation();
-                }
+        if (observable == getProjectModel() && (getCurrentProjectName() == null ||
+                !getCurrentProjectName().equals(getProjectModel().getProjectName()))) {
+            setCurrentProjectName(getProjectModel().getProjectName());
+            if (defaultCheckButtonSelected) {
+                updateDefaultProjectLocation();
             }
         }
     }
@@ -221,6 +220,7 @@ public class LocationInfoComposite extends Composite implements Observer {
                 validateDataFieldsOfWizard(wizardPage, DATA_FIELD_VALIDATOR_METHOD, new Object[]{data});
             }
         } catch (FieldValidationException e) {
+            //If an exception is thrown, when validating the input fields from user, just print error message in wizards
             wizardPage.setPageComplete(false);
             wizardPage.setErrorMessage(e.getMessage());
         }

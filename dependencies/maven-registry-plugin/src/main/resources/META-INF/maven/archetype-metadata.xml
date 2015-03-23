@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<archetype-descriptor name="maven-gadget-plugin">
-	<fileSets>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src/main/resources</directory>
-		</fileSet>
-	</fileSets>
-</archetype-descriptor>

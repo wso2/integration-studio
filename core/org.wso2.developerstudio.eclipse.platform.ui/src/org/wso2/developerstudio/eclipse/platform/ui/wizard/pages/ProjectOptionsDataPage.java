@@ -88,7 +88,7 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
     private Composite projectOptionsSection;
     private int columns;
     private Composite mainSection;
-    private GridData gridData_1;
+    private GridData gridDataInfo;
     private final List<String> visited = new ArrayList<String>();
     private Map<Control, List<ListData>> listControlData;
 
@@ -134,6 +134,7 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
             doPageValidation(null);
             setPageComplete(true);
         } catch (FieldValidationException e) {
+            //Field validation failed, show proper error message on wizard
             setPageComplete(false);
             if (visited.contains(getCurrentOptionSelected())) {
                 setErrorMessage(e.getMessage());
@@ -153,6 +154,7 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
      *
      * @param parent
      */
+    @Override
     public void createControl(Composite parent) {
 
         final ScrolledComposite scrolledComposite = new ScrolledComposite(parent, SWT.H_SCROLL | SWT.V_SCROLL);
@@ -170,10 +172,10 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
 
         projectOptionsSection = new Composite(mainSection, SWT.NONE);
         columns = 10;
-        GridLayout gl_projectOptionsSection = new GridLayout(columns, false);
-        gl_projectOptionsSection.marginHeight = 10;
-        gl_projectOptionsSection.marginWidth = 10;
-        projectOptionsSection.setLayout(gl_projectOptionsSection);
+        GridLayout gridProjectOptionsSection = new GridLayout(columns, false);
+        gridProjectOptionsSection.marginHeight = 10;
+        gridProjectOptionsSection.marginWidth = 10;
+        projectOptionsSection.setLayout(gridProjectOptionsSection);
         GridData gridData = new GridData();
         gridData.horizontalAlignment = SWT.FILL;
         gridData.grabExcessHorizontalSpace = true;
@@ -189,10 +191,10 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
         if (isRequireLocationSection()) {
             Composite projectLocationSection = new Composite(mainSection, SWT.NONE);
             projectLocationSection.setLayout(new FillLayout(SWT.HORIZONTAL));
-            gridData_1 = new GridData();
-            gridData_1.horizontalAlignment = SWT.FILL;
-            gridData_1.grabExcessHorizontalSpace = true;
-            projectLocationSection.setLayoutData(gridData_1);
+            gridDataInfo = new GridData();
+            gridDataInfo.horizontalAlignment = SWT.FILL;
+            gridDataInfo.grabExcessHorizontalSpace = true;
+            projectLocationSection.setLayoutData(gridDataInfo);
 
             locationInfoComposite = new LocationInfoComposite(projectLocationSection, SWT.NONE, model, getSaveLocation(), getProjectOptionsInfo(), this);
 
@@ -200,10 +202,10 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
         if (isRequiredWorkingSets()) {
             Composite workigSetSection = new Composite(mainSection, SWT.NONE);
             workigSetSection.setLayout(new FillLayout(SWT.HORIZONTAL));
-            gridData_1 = new GridData();
-            gridData_1.horizontalAlignment = SWT.FILL;
-            gridData_1.grabExcessHorizontalSpace = true;
-            workigSetSection.setLayoutData(gridData_1);
+            gridDataInfo = new GridData();
+            gridDataInfo.horizontalAlignment = SWT.FILL;
+            gridDataInfo.grabExcessHorizontalSpace = true;
+            workigSetSection.setLayoutData(gridDataInfo);
             new WorkingSetComposite(workigSetSection, SWT.NONE, model);
         }
         TrayDialog.setDialogHelpAvailable(false);
@@ -352,9 +354,8 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
         };
 
         composite.setOnAction(new IOnAction() {
-
             public void onSelectionAction() {
-
+                //Nothing to do with the selection of this component
             }
 
             public void onModifyAction() {
@@ -419,10 +420,9 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
                 };
         txtReg.setOnAction(new IOnAction() {
 
-
             public void onSelectionAction() {
+                //Nothing to do with the selection of this component
             }
-
 
             public void onModifyAction() {
                 try {

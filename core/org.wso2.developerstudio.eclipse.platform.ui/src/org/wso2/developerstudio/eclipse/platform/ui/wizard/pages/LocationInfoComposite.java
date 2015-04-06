@@ -49,7 +49,7 @@ import java.util.Observer;
  * This is a SWT ui (Composite) class for creating project location selector part in project creation wizard
  */
 public class LocationInfoComposite extends Composite implements Observer {
-    private static IDeveloperStudioLog LOG = Logger.getLog(Activator.PLUGIN_ID);
+    private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     //SWT components used to build location selector ui
     private final Text locationHolder;
@@ -239,10 +239,10 @@ public class LocationInfoComposite extends Composite implements Observer {
                     method.setAccessible(true);
                     method.invoke(page, params);
                 } catch (IllegalAccessException e) {
-                    LOG.error("Error when invoking private method of ProjectOptionsDataPage class, Method name : " + DATA_FIELD_VALIDATOR_METHOD, e);
+                    log.error("Error when invoking private method of ProjectOptionsDataPage class, Method name : " + DATA_FIELD_VALIDATOR_METHOD, e);
                     /* This an JVM thrown exception at run time, not possible to handle */
                 } catch (InvocationTargetException e) {
-                    LOG.error("Error when invoking private method of ProjectOptionsDataPage class, Method name : " + DATA_FIELD_VALIDATOR_METHOD, e);
+                    log.error("Error when invoking private method of ProjectOptionsDataPage class, Method name : " + DATA_FIELD_VALIDATOR_METHOD, e);
                     /* This an JVM thrown exception at run time, not possible to handle */
                 }
             }

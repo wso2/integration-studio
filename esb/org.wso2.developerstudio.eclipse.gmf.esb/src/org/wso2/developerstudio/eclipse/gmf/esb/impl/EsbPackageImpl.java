@@ -301,6 +301,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyScope;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.Protocol;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyFaultInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyInputConnector;
@@ -3615,6 +3616,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum dataMapperMediatorDataTypesEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum protocolEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -8470,6 +8478,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getAPIResource_FaultSequenceName() {
 		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAPIResource_Protocol() {
+		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -15587,6 +15604,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getProtocol() {
+		return protocolEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getMap() {
 		return mapEDataType;
 	}
@@ -17027,6 +17053,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(apiResourceEClass, API_RESOURCE__FAULT_SEQUENCE_TYPE);
 		createEReference(apiResourceEClass, API_RESOURCE__FAULT_SEQUENCE_KEY);
 		createEAttribute(apiResourceEClass, API_RESOURCE__FAULT_SEQUENCE_NAME);
+		createEAttribute(apiResourceEClass, API_RESOURCE__PROTOCOL);
 
 		apiResourceInputConnectorEClass = createEClass(API_RESOURCE_INPUT_CONNECTOR);
 
@@ -17285,6 +17312,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		processorStateEEnum = createEEnum(PROCESSOR_STATE);
 		cloudConnectorOperationParamEditorTypeEEnum = createEEnum(CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE);
 		dataMapperMediatorDataTypesEEnum = createEEnum(DATA_MAPPER_MEDIATOR_DATA_TYPES);
+		protocolEEnum = createEEnum(PROTOCOL);
 
 		// Create data types
 		mapEDataType = createEDataType(MAP);
@@ -19064,6 +19092,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getAPIResource_FaultSequenceType(), this.getSequenceType(), "faultSequenceType", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAPIResource_FaultSequenceKey(), this.getRegistryKeyProperty(), null, "faultSequenceKey", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIResource_FaultSequenceName(), ecorePackage.getEString(), "faultSequenceName", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAPIResource_Protocol(), this.getProtocol(), "protocol", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(apiResourceInputConnectorEClass, APIResourceInputConnector.class, "APIResourceInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -19766,6 +19795,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(dataMapperMediatorDataTypesEEnum, DataMapperMediatorDataTypes.XML);
 		addEEnumLiteral(dataMapperMediatorDataTypesEEnum, DataMapperMediatorDataTypes.CSV);
 		addEEnumLiteral(dataMapperMediatorDataTypesEEnum, DataMapperMediatorDataTypes.JSON);
+
+		initEEnum(protocolEEnum, Protocol.class, "Protocol");
+		addEEnumLiteral(protocolEEnum, Protocol.HTTP);
+		addEEnumLiteral(protocolEEnum, Protocol.HTTPS);
 
 		// Initialize data types
 		initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

@@ -555,6 +555,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DataMapperMediatorDataTypes/CSV"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//DataMapperMediatorDataTypes/JSON"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//Protocol">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/http"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/https"/>
+    </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/V"/>
@@ -1857,6 +1861,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIResource/faultSequenceType"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//APIResource/faultSequenceKey"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIResource/faultSequenceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIResource/protocol"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//APIResourceInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//APIResourceOutputConnector"/>

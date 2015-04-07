@@ -2375,6 +2375,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="faultSequenceKey" eType="#//RegistryKeyProperty"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultSequenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="protocol" eType="#//Protocol"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ApiResourceUrlStyle">
     <eLiterals name="NONE"/>
@@ -2597,4 +2598,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FastXSLTMediatorInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="FastXSLTMediatorOutputConnector" eSuperTypes="#//OutputConnector"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Protocol">
+    <eLiterals name="http" literal="http"/>
+    <eLiterals name="https" value="1" literal="https"/>
+  </eClassifiers>
 </ecore:EPackage>

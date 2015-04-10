@@ -41,50 +41,50 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
  * @generated
  */
 public class InboundEndpointSequenceContainerImpl extends EsbNodeImpl implements InboundEndpointSequenceContainer {
-    /**
+	/**
 	 * The cached value of the '{@link #getMediatorFlow() <em>Mediator Flow</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getMediatorFlow()
 	 * @generated
 	 * @ordered
 	 */
-    protected MediatorFlow mediatorFlow;
+	protected MediatorFlow mediatorFlow;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected InboundEndpointSequenceContainerImpl() {
+	protected InboundEndpointSequenceContainerImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return EsbPackage.Literals.INBOUND_ENDPOINT_SEQUENCE_CONTAINER;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public MediatorFlow getMediatorFlow() {
+	public MediatorFlow getMediatorFlow() {
 		return mediatorFlow;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NotificationChain basicSetMediatorFlow(MediatorFlow newMediatorFlow, NotificationChain msgs) {
+	public NotificationChain basicSetMediatorFlow(MediatorFlow newMediatorFlow, NotificationChain msgs) {
 		MediatorFlow oldMediatorFlow = mediatorFlow;
 		mediatorFlow = newMediatorFlow;
 		if (eNotificationRequired()) {
@@ -94,12 +94,12 @@ public class InboundEndpointSequenceContainerImpl extends EsbNodeImpl implements
 		return msgs;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setMediatorFlow(MediatorFlow newMediatorFlow) {
+	public void setMediatorFlow(MediatorFlow newMediatorFlow) {
 		if (newMediatorFlow != mediatorFlow) {
 			NotificationChain msgs = null;
 			if (mediatorFlow != null)
@@ -113,13 +113,13 @@ public class InboundEndpointSequenceContainerImpl extends EsbNodeImpl implements
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER__MEDIATOR_FLOW, newMediatorFlow, newMediatorFlow));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
 				return basicSetMediatorFlow(null, msgs);
@@ -127,13 +127,13 @@ public class InboundEndpointSequenceContainerImpl extends EsbNodeImpl implements
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
 				return getMediatorFlow();
@@ -141,13 +141,13 @@ public class InboundEndpointSequenceContainerImpl extends EsbNodeImpl implements
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
 				setMediatorFlow((MediatorFlow)newValue);
@@ -156,13 +156,13 @@ public class InboundEndpointSequenceContainerImpl extends EsbNodeImpl implements
 		super.eSet(featureID, newValue);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
 				setMediatorFlow((MediatorFlow)null);
@@ -171,13 +171,13 @@ public class InboundEndpointSequenceContainerImpl extends EsbNodeImpl implements
 		super.eUnset(featureID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER__MEDIATOR_FLOW:
 				return mediatorFlow != null;

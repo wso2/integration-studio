@@ -15,10 +15,10 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -32,8 +32,10 @@ import org.wso2.developerstudio.eclipse.platform.ui.dialogs.UserRolesDialog;
 public class AddUserRoleDialog extends UserRolesDialog {
 
 	private List<String> selectedRoles;
+	private String roleSet;
 	private TransactionalEditingDomain editingDomain;
 	private CompoundCommand resultCommand;
+	private static final String ALLOW_ROLES = "allowRoles";
 
 	public AddUserRoleDialog(Shell parentShell, ProxyService selectedObj) {
 		super(parentShell, selectedObj);
@@ -43,19 +45,25 @@ public class AddUserRoleDialog extends UserRolesDialog {
 	@Override
 	public void updateModel() {
 		selectedRoles = UserRolesDialog.getSelectedUserRoles();
-		for (Iterator<String> iter = selectedRoles.iterator(); iter.hasNext();) {
-			String role = iter.next();
 
-			ProxyServiceParameter parameter = EsbFactory.eINSTANCE
-					.createProxyServiceParameter();
-			parameter.setName("allowRoles");
-			parameter.setValue(role);
-			
-			AddCommand addCmd = new AddCommand(editingDomain, proxyService,
-					EsbPackage.Literals.PROXY_SERVICE__SERVICE_PARAMETERS,
-					parameter);
-			getResultCommand().append(addCmd);
+		StringBuilder commaSepValueBuilder = new StringBuilder();
+		for (int i = 0; i < selectedRoles.size(); i++) {
+			commaSepValueBuilder.append(selectedRoles.get(i));
+			if (i != selectedRoles.size() - 1) {
+				commaSepValueBuilder.append(",");
+			}
+			roleSet = commaSepValueBuilder.toString();
 		}
+		
+		ProxyServiceParameter parameter = EsbFactory.eINSTANCE
+				.createProxyServiceParameter();
+		parameter.setName(ALLOW_ROLES);
+		parameter.setValue(roleSet);
+
+		AddCommand addCmd = new AddCommand(editingDomain, proxyService,
+				EsbPackage.Literals.PROXY_SERVICE__SERVICE_PARAMETERS,
+				parameter);
+		getResultCommand().append(addCmd);
 
 		// Apply changes.
 		if (getResultCommand().canExecute()) {

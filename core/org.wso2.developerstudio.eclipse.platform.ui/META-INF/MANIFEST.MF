@@ -7,7 +7,10 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.platform.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.wso2.developerstudio.eclipse.platform.core,
- org.eclipse.core.resources
+ org.eclipse.core.resources,
+ org.wso2.developerstudio.eclipse.libraries,
+ org.wso2.developerstudio.eclipse.usermgt.remote,
+ org.wso2.developerstudio.eclipse.gmf.esb
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axis2.client,
  org.apache.axis2.transport.http,
@@ -37,6 +40,7 @@ Import-Package: org.apache.axis2.client,
  org.wso2.developerstudio.eclipse.utils.project,
  org.wso2.developerstudio.eclipse.utils.ui
 Export-Package: org.wso2.developerstudio.eclipse.platform.ui,
+ org.wso2.developerstudio.eclipse.platform.ui.dialogs,
  org.wso2.developerstudio.eclipse.platform.ui.editor,
  org.wso2.developerstudio.eclipse.platform.ui.interfaces,
  org.wso2.developerstudio.eclipse.platform.ui.manager,

@@ -41,238 +41,238 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * @generated
  */
 public interface InboundEndpoint extends EsbElement {
-    /**
+	/**
 	 * Returns the value of the '<em><b>Sequence Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Sequence Input Connector</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sequence Input Connector</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sequence Input Connector</em>' containment reference.
 	 * @see #setSequenceInputConnector(InboundEndpointSequenceInputConnector)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SequenceInputConnector()
 	 * @model containment="true"
 	 * @generated
 	 */
-    InboundEndpointSequenceInputConnector getSequenceInputConnector();
+	InboundEndpointSequenceInputConnector getSequenceInputConnector();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequenceInputConnector <em>Sequence Input Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Sequence Input Connector</em>' containment reference.
 	 * @see #getSequenceInputConnector()
 	 * @generated
 	 */
-    void setSequenceInputConnector(InboundEndpointSequenceInputConnector value);
+	void setSequenceInputConnector(InboundEndpointSequenceInputConnector value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Sequence Output Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Sequence Output Connector</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sequence Output Connector</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sequence Output Connector</em>' containment reference.
 	 * @see #setSequenceOutputConnector(InboundEndpointSequenceOutputConnector)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SequenceOutputConnector()
 	 * @model containment="true"
 	 * @generated
 	 */
-    InboundEndpointSequenceOutputConnector getSequenceOutputConnector();
+	InboundEndpointSequenceOutputConnector getSequenceOutputConnector();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequenceOutputConnector <em>Sequence Output Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Sequence Output Connector</em>' containment reference.
 	 * @see #getSequenceOutputConnector()
 	 * @generated
 	 */
-    void setSequenceOutputConnector(InboundEndpointSequenceOutputConnector value);
+	void setSequenceOutputConnector(InboundEndpointSequenceOutputConnector value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>On Error Sequence Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>On Error Sequence Input Connector</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>On Error Sequence Input Connector</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Error Sequence Input Connector</em>' containment reference.
 	 * @see #setOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OnErrorSequenceInputConnector()
 	 * @model containment="true"
 	 * @generated
 	 */
-    InboundEndpointOnErrorSequenceInputConnector getOnErrorSequenceInputConnector();
+	InboundEndpointOnErrorSequenceInputConnector getOnErrorSequenceInputConnector();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequenceInputConnector <em>On Error Sequence Input Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>On Error Sequence Input Connector</em>' containment reference.
 	 * @see #getOnErrorSequenceInputConnector()
 	 * @generated
 	 */
-    void setOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector value);
+	void setOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>On Error Sequence Output Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>On Error Sequence Output Connector</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>On Error Sequence Output Connector</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Error Sequence Output Connector</em>' containment reference.
 	 * @see #setOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OnErrorSequenceOutputConnector()
 	 * @model containment="true"
 	 * @generated
 	 */
-    InboundEndpointOnErrorSequenceOutputConnector getOnErrorSequenceOutputConnector();
+	InboundEndpointOnErrorSequenceOutputConnector getOnErrorSequenceOutputConnector();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>On Error Sequence Output Connector</em>' containment reference.
 	 * @see #getOnErrorSequenceOutputConnector()
 	 * @generated
 	 */
-    void setOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector value);
+	void setOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Container</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Container</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Container</em>' containment reference.
 	 * @see #setContainer(InboundEndpointContainer)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Container()
 	 * @model containment="true"
 	 * @generated
 	 */
-    InboundEndpointContainer getContainer();
+	InboundEndpointContainer getContainer();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getContainer <em>Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Container</em>' containment reference.
 	 * @see #getContainer()
 	 * @generated
 	 */
-    void setContainer(InboundEndpointContainer value);
+	void setContainer(InboundEndpointContainer value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Name()
 	 * @model
 	 * @generated
 	 */
-    String getName();
+	String getName();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
-    void setName(String value);
+	void setName(String value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Sequence</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Sequence</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sequence</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sequence</em>' attribute.
 	 * @see #setSequence(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Sequence()
 	 * @model
 	 * @generated
 	 */
-    String getSequence();
+	String getSequence();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequence <em>Sequence</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Sequence</em>' attribute.
 	 * @see #getSequence()
 	 * @generated
 	 */
-    void setSequence(String value);
+	void setSequence(String value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>On Error Sequence</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>On Error Sequence</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>On Error Sequence</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Error Sequence</em>' attribute.
 	 * @see #setOnErrorSequence(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OnErrorSequence()
 	 * @model
 	 * @generated
 	 */
-    String getOnErrorSequence();
+	String getOnErrorSequence();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence <em>On Error Sequence</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>On Error Sequence</em>' attribute.
 	 * @see #getOnErrorSequence()
 	 * @generated
 	 */
-    void setOnErrorSequence(String value);
+	void setOnErrorSequence(String value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Protocol</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Protocol</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Protocol</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Protocol</em>' attribute.
 	 * @see #setProtocol(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Protocol()
 	 * @model
 	 * @generated
 	 */
-    String getProtocol();
+	String getProtocol();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getProtocol <em>Protocol</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Protocol</em>' attribute.
 	 * @see #getProtocol()
 	 * @generated
 	 */
-    void setProtocol(String value);
+	void setProtocol(String value);
 
 } // InboundEndpoint

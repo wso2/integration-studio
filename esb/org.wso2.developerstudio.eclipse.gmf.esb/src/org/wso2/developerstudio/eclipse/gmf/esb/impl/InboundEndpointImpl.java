@@ -53,170 +53,170 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputCon
  * @generated
  */
 public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoint {
-    /**
+	/**
 	 * The cached value of the '{@link #getSequenceInputConnector() <em>Sequence Input Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getSequenceInputConnector()
 	 * @generated
 	 * @ordered
 	 */
-    protected InboundEndpointSequenceInputConnector sequenceInputConnector;
+	protected InboundEndpointSequenceInputConnector sequenceInputConnector;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getSequenceOutputConnector() <em>Sequence Output Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getSequenceOutputConnector()
 	 * @generated
 	 * @ordered
 	 */
-    protected InboundEndpointSequenceOutputConnector sequenceOutputConnector;
+	protected InboundEndpointSequenceOutputConnector sequenceOutputConnector;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getOnErrorSequenceInputConnector() <em>On Error Sequence Input Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getOnErrorSequenceInputConnector()
 	 * @generated
 	 * @ordered
 	 */
-    protected InboundEndpointOnErrorSequenceInputConnector onErrorSequenceInputConnector;
+	protected InboundEndpointOnErrorSequenceInputConnector onErrorSequenceInputConnector;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getOnErrorSequenceOutputConnector() <em>On Error Sequence Output Connector</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getOnErrorSequenceOutputConnector()
 	 * @generated
 	 * @ordered
 	 */
-    protected InboundEndpointOnErrorSequenceOutputConnector onErrorSequenceOutputConnector;
+	protected InboundEndpointOnErrorSequenceOutputConnector onErrorSequenceOutputConnector;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getContainer()
 	 * @generated
 	 * @ordered
 	 */
-    protected InboundEndpointContainer container;
+	protected InboundEndpointContainer container;
 
-    /**
+	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String NAME_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-    protected String name = NAME_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
-    /**
+	/**
 	 * The default value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getSequence()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String SEQUENCE_EDEFAULT = null;
+	protected static final String SEQUENCE_EDEFAULT = null;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getSequence()
 	 * @generated
 	 * @ordered
 	 */
-    protected String sequence = SEQUENCE_EDEFAULT;
+	protected String sequence = SEQUENCE_EDEFAULT;
 
-    /**
+	/**
 	 * The default value of the '{@link #getOnErrorSequence() <em>On Error Sequence</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getOnErrorSequence()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String ON_ERROR_SEQUENCE_EDEFAULT = null;
+	protected static final String ON_ERROR_SEQUENCE_EDEFAULT = null;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getOnErrorSequence() <em>On Error Sequence</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getOnErrorSequence()
 	 * @generated
 	 * @ordered
 	 */
-    protected String onErrorSequence = ON_ERROR_SEQUENCE_EDEFAULT;
+	protected String onErrorSequence = ON_ERROR_SEQUENCE_EDEFAULT;
 
-    /**
+	/**
 	 * The default value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getProtocol()
 	 * @generated
 	 * @ordered
 	 */
-    protected static final String PROTOCOL_EDEFAULT = null;
+	protected static final String PROTOCOL_EDEFAULT = null;
 
-    /**
+	/**
 	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getProtocol()
 	 * @generated
 	 * @ordered
 	 */
-    protected String protocol = PROTOCOL_EDEFAULT;
+	protected String protocol = PROTOCOL_EDEFAULT;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected InboundEndpointImpl() {
+	protected InboundEndpointImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return EsbPackage.Literals.INBOUND_ENDPOINT;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public InboundEndpointSequenceInputConnector getSequenceInputConnector() {
+	public InboundEndpointSequenceInputConnector getSequenceInputConnector() {
 		return sequenceInputConnector;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NotificationChain basicSetSequenceInputConnector(InboundEndpointSequenceInputConnector newSequenceInputConnector, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceInputConnector(InboundEndpointSequenceInputConnector newSequenceInputConnector, NotificationChain msgs) {
 		InboundEndpointSequenceInputConnector oldSequenceInputConnector = sequenceInputConnector;
 		sequenceInputConnector = newSequenceInputConnector;
 		if (eNotificationRequired()) {
@@ -226,12 +226,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		return msgs;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setSequenceInputConnector(InboundEndpointSequenceInputConnector newSequenceInputConnector) {
+	public void setSequenceInputConnector(InboundEndpointSequenceInputConnector newSequenceInputConnector) {
 		if (newSequenceInputConnector != sequenceInputConnector) {
 			NotificationChain msgs = null;
 			if (sequenceInputConnector != null)
@@ -245,21 +245,21 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR, newSequenceInputConnector, newSequenceInputConnector));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public InboundEndpointSequenceOutputConnector getSequenceOutputConnector() {
+	public InboundEndpointSequenceOutputConnector getSequenceOutputConnector() {
 		return sequenceOutputConnector;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NotificationChain basicSetSequenceOutputConnector(InboundEndpointSequenceOutputConnector newSequenceOutputConnector, NotificationChain msgs) {
+	public NotificationChain basicSetSequenceOutputConnector(InboundEndpointSequenceOutputConnector newSequenceOutputConnector, NotificationChain msgs) {
 		InboundEndpointSequenceOutputConnector oldSequenceOutputConnector = sequenceOutputConnector;
 		sequenceOutputConnector = newSequenceOutputConnector;
 		if (eNotificationRequired()) {
@@ -269,12 +269,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		return msgs;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setSequenceOutputConnector(InboundEndpointSequenceOutputConnector newSequenceOutputConnector) {
+	public void setSequenceOutputConnector(InboundEndpointSequenceOutputConnector newSequenceOutputConnector) {
 		if (newSequenceOutputConnector != sequenceOutputConnector) {
 			NotificationChain msgs = null;
 			if (sequenceOutputConnector != null)
@@ -288,21 +288,21 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR, newSequenceOutputConnector, newSequenceOutputConnector));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public InboundEndpointOnErrorSequenceInputConnector getOnErrorSequenceInputConnector() {
+	public InboundEndpointOnErrorSequenceInputConnector getOnErrorSequenceInputConnector() {
 		return onErrorSequenceInputConnector;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NotificationChain basicSetOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector newOnErrorSequenceInputConnector, NotificationChain msgs) {
+	public NotificationChain basicSetOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector newOnErrorSequenceInputConnector, NotificationChain msgs) {
 		InboundEndpointOnErrorSequenceInputConnector oldOnErrorSequenceInputConnector = onErrorSequenceInputConnector;
 		onErrorSequenceInputConnector = newOnErrorSequenceInputConnector;
 		if (eNotificationRequired()) {
@@ -312,12 +312,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		return msgs;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector newOnErrorSequenceInputConnector) {
+	public void setOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector newOnErrorSequenceInputConnector) {
 		if (newOnErrorSequenceInputConnector != onErrorSequenceInputConnector) {
 			NotificationChain msgs = null;
 			if (onErrorSequenceInputConnector != null)
@@ -331,21 +331,21 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR, newOnErrorSequenceInputConnector, newOnErrorSequenceInputConnector));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public InboundEndpointOnErrorSequenceOutputConnector getOnErrorSequenceOutputConnector() {
+	public InboundEndpointOnErrorSequenceOutputConnector getOnErrorSequenceOutputConnector() {
 		return onErrorSequenceOutputConnector;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NotificationChain basicSetOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector newOnErrorSequenceOutputConnector, NotificationChain msgs) {
+	public NotificationChain basicSetOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector newOnErrorSequenceOutputConnector, NotificationChain msgs) {
 		InboundEndpointOnErrorSequenceOutputConnector oldOnErrorSequenceOutputConnector = onErrorSequenceOutputConnector;
 		onErrorSequenceOutputConnector = newOnErrorSequenceOutputConnector;
 		if (eNotificationRequired()) {
@@ -355,12 +355,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		return msgs;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector newOnErrorSequenceOutputConnector) {
+	public void setOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector newOnErrorSequenceOutputConnector) {
 		if (newOnErrorSequenceOutputConnector != onErrorSequenceOutputConnector) {
 			NotificationChain msgs = null;
 			if (onErrorSequenceOutputConnector != null)
@@ -374,21 +374,21 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR, newOnErrorSequenceOutputConnector, newOnErrorSequenceOutputConnector));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public InboundEndpointContainer getContainer() {
+	public InboundEndpointContainer getContainer() {
 		return container;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NotificationChain basicSetContainer(InboundEndpointContainer newContainer, NotificationChain msgs) {
+	public NotificationChain basicSetContainer(InboundEndpointContainer newContainer, NotificationChain msgs) {
 		InboundEndpointContainer oldContainer = container;
 		container = newContainer;
 		if (eNotificationRequired()) {
@@ -398,12 +398,12 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		return msgs;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setContainer(InboundEndpointContainer newContainer) {
+	public void setContainer(InboundEndpointContainer newContainer) {
 		if (newContainer != container) {
 			NotificationChain msgs = null;
 			if (container != null)
@@ -417,97 +417,97 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTAINER, newContainer, newContainer));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__NAME, oldName, name));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getSequence() {
+	public String getSequence() {
 		return sequence;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setSequence(String newSequence) {
+	public void setSequence(String newSequence) {
 		String oldSequence = sequence;
 		sequence = newSequence;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE, oldSequence, sequence));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getOnErrorSequence() {
+	public String getOnErrorSequence() {
 		return onErrorSequence;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setOnErrorSequence(String newOnErrorSequence) {
+	public void setOnErrorSequence(String newOnErrorSequence) {
 		String oldOnErrorSequence = onErrorSequence;
 		onErrorSequence = newOnErrorSequence;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE, oldOnErrorSequence, onErrorSequence));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getProtocol() {
+	public String getProtocol() {
 		return protocol;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setProtocol(String newProtocol) {
+	public void setProtocol(String newProtocol) {
 		String oldProtocol = protocol;
 		protocol = newProtocol;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__PROTOCOL, oldProtocol, protocol));
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
 				return basicSetSequenceInputConnector(null, msgs);
@@ -523,13 +523,13 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
 				return getSequenceInputConnector();
@@ -553,13 +553,13 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		return super.eGet(featureID, resolve, coreType);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void eSet(int featureID, Object newValue) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
 				setSequenceInputConnector((InboundEndpointSequenceInputConnector)newValue);
@@ -592,13 +592,13 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		super.eSet(featureID, newValue);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void eUnset(int featureID) {
+	@Override
+	public void eUnset(int featureID) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
 				setSequenceInputConnector((InboundEndpointSequenceInputConnector)null);
@@ -631,13 +631,13 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		super.eUnset(featureID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public boolean eIsSet(int featureID) {
+	@Override
+	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:
 				return sequenceInputConnector != null;
@@ -661,13 +661,13 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		return super.eIsSet(featureID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public String toString() {
+	@Override
+	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());

@@ -30,22 +30,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputCon
  * @generated
  */
 public class InboundEndpointSequenceOutputConnectorImpl extends OutputConnectorImpl implements InboundEndpointSequenceOutputConnector {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected InboundEndpointSequenceOutputConnectorImpl() {
+	protected InboundEndpointSequenceOutputConnectorImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return EsbPackage.Literals.INBOUND_ENDPOINT_SEQUENCE_OUTPUT_CONNECTOR;
 	}
 

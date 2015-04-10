@@ -30,22 +30,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOu
  * @generated
  */
 public class InboundEndpointOnErrorSequenceOutputConnectorImpl extends OutputConnectorImpl implements InboundEndpointOnErrorSequenceOutputConnector {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected InboundEndpointOnErrorSequenceOutputConnectorImpl() {
+	protected InboundEndpointOnErrorSequenceOutputConnectorImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return EsbPackage.Literals.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR;
 	}
 

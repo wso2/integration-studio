@@ -1445,6 +1445,38 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 				return createFastXSLTMediatorOutputConnectorAdapter();
 			}
 			@Override
+			public Adapter caseInboundEndpoint(InboundEndpoint object) {
+				return createInboundEndpointAdapter();
+			}
+			@Override
+			public Adapter caseInboundEndpointContainer(InboundEndpointContainer object) {
+				return createInboundEndpointContainerAdapter();
+			}
+			@Override
+			public Adapter caseInboundEndpointSequenceContainer(InboundEndpointSequenceContainer object) {
+				return createInboundEndpointSequenceContainerAdapter();
+			}
+			@Override
+			public Adapter caseInboundEndpointOnErrorSequenceContainer(InboundEndpointOnErrorSequenceContainer object) {
+				return createInboundEndpointOnErrorSequenceContainerAdapter();
+			}
+			@Override
+			public Adapter caseInboundEndpointSequenceInputConnector(InboundEndpointSequenceInputConnector object) {
+				return createInboundEndpointSequenceInputConnectorAdapter();
+			}
+			@Override
+			public Adapter caseInboundEndpointSequenceOutputConnector(InboundEndpointSequenceOutputConnector object) {
+				return createInboundEndpointSequenceOutputConnectorAdapter();
+			}
+			@Override
+			public Adapter caseInboundEndpointOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector object) {
+				return createInboundEndpointOnErrorSequenceOutputConnectorAdapter();
+			}
+			@Override
+			public Adapter caseInboundEndpointOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector object) {
+				return createInboundEndpointOnErrorSequenceInputConnectorAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -4126,6 +4158,118 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint <em>Inbound Endpoint</em>}'.
+	 * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint
+	 * @generated
+	 */
+    public Adapter createInboundEndpointAdapter() {
+		return null;
+	}
+
+    /**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer <em>Inbound Endpoint Container</em>}'.
+	 * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer
+	 * @generated
+	 */
+    public Adapter createInboundEndpointContainerAdapter() {
+		return null;
+	}
+
+    /**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer <em>Inbound Endpoint Sequence Container</em>}'.
+	 * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer
+	 * @generated
+	 */
+    public Adapter createInboundEndpointSequenceContainerAdapter() {
+		return null;
+	}
+
+    /**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer <em>Inbound Endpoint On Error Sequence Container</em>}'.
+	 * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer
+	 * @generated
+	 */
+    public Adapter createInboundEndpointOnErrorSequenceContainerAdapter() {
+		return null;
+	}
+
+    /**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector <em>Inbound Endpoint Sequence Input Connector</em>}'.
+	 * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector
+	 * @generated
+	 */
+    public Adapter createInboundEndpointSequenceInputConnectorAdapter() {
+		return null;
+	}
+
+    /**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector <em>Inbound Endpoint Sequence Output Connector</em>}'.
+	 * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector
+	 * @generated
+	 */
+    public Adapter createInboundEndpointSequenceOutputConnectorAdapter() {
+		return null;
+	}
+
+    /**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector <em>Inbound Endpoint On Error Sequence Output Connector</em>}'.
+	 * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector
+	 * @generated
+	 */
+    public Adapter createInboundEndpointOnErrorSequenceOutputConnectorAdapter() {
+		return null;
+	}
+
+    /**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector <em>Inbound Endpoint On Error Sequence Input Connector</em>}'.
+	 * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector
+	 * @generated
+	 */
+    public Adapter createInboundEndpointOnErrorSequenceInputConnectorAdapter() {
+		return null;
+	}
+
+    /**
 	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator <em>Script Mediator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;

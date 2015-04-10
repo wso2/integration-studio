@@ -34,7 +34,8 @@ public class AggregateMediatorOnCompleteOutputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -58,7 +59,8 @@ public class AggregateMediatorOnCompleteOutputConnectorCreateCommand extends
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
-		AggregateMediatorOnCompleteOutputConnector newElement = EsbFactory.eINSTANCE.createAggregateMediatorOnCompleteOutputConnector();
+		AggregateMediatorOnCompleteOutputConnector newElement = EsbFactory.eINSTANCE
+				.createAggregateMediatorOnCompleteOutputConnector();
 
 		AggregateMediator owner = (AggregateMediator) getElementToEdit();
 		owner.setOnCompleteOutputConnector(newElement);
@@ -76,12 +78,15 @@ public class AggregateMediatorOnCompleteOutputConnectorCreateCommand extends
 			AggregateMediatorOnCompleteOutputConnector newElement,
 			IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
 		ConfigureRequest configureRequest = new ConfigureRequest(
 				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

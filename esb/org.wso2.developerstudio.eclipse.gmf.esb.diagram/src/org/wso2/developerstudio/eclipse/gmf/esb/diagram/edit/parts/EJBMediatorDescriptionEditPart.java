@@ -258,18 +258,25 @@ public class EJBMediatorDescriptionEditPart extends CompartmentEditPart
 					final EObject element = getParserElement();
 					final IParser parser = getParser();
 					try {
-						IParserEditStatus valid = (IParserEditStatus) getEditingDomain().runExclusive(
-							new RunnableWithResult.Impl<IParserEditStatus>() {
-								public void run() {
-									setResult(parser.isValidEditString(new EObjectAdapter(element),(String) value));
-								}
-							});
+						IParserEditStatus valid = (IParserEditStatus) getEditingDomain()
+								.runExclusive(
+										new RunnableWithResult.Impl<IParserEditStatus>() {
+
+											public void run() {
+												setResult(parser
+														.isValidEditString(
+																new EObjectAdapter(
+																		element),
+																(String) value));
+											}
+										});
 						return valid.getCode() == ParserEditStatus.EDITABLE ? null
 								: valid.getMessage();
 					} catch (InterruptedException ie) {
 						ie.printStackTrace();
 					}
 				}
+
 				// shouldn't get here
 				return null;
 			}

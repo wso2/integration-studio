@@ -18,7 +18,7 @@ package org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils;
 
 import org.eclipse.osgi.util.NLS;
 
-public final class InboundEndpointArtifactConstants extends NLS{
+public final class InboundEndpointArtifactProperties extends NLS{
 	public static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.inboundendpointartifactconstants";
 	public static String ieWizardWindowTitle;
 	public static String esbProjectNature;
@@ -49,10 +49,10 @@ public final class InboundEndpointArtifactConstants extends NLS{
 	
 	static {
 		// initialize resource bundle
-		NLS.initializeMessages(BUNDLE_NAME, InboundEndpointArtifactConstants.class);
+		NLS.initializeMessages(BUNDLE_NAME, InboundEndpointArtifactProperties.class);
 	}
 	
-	private InboundEndpointArtifactConstants(){
+	private InboundEndpointArtifactProperties(){
 		
 	}
 }

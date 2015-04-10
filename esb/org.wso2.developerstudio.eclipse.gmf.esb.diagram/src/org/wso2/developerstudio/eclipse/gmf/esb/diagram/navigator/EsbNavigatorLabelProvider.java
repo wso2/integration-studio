@@ -34,6 +34,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.MergeNode;
@@ -1073,6 +1075,36 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		case FastXSLTMediatorOutputConnectorEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?FastXSLTMediatorOutputConnector", EsbElementTypes.FastXSLTMediatorOutputConnector_3766); //$NON-NLS-1$
+		case InboundEndpointEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?InboundEndpoint", EsbElementTypes.InboundEndpoint_3767); //$NON-NLS-1$
+		case InboundEndpointSequenceInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?InboundEndpointSequenceInputConnector", EsbElementTypes.InboundEndpointSequenceInputConnector_3768); //$NON-NLS-1$
+		case InboundEndpointSequenceOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?InboundEndpointSequenceOutputConnector", EsbElementTypes.InboundEndpointSequenceOutputConnector_3769); //$NON-NLS-1$
+		case InboundEndpointOnErrorSequenceInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?InboundEndpointOnErrorSequenceInputConnector", EsbElementTypes.InboundEndpointOnErrorSequenceInputConnector_3770); //$NON-NLS-1$
+		case InboundEndpointOnErrorSequenceOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?InboundEndpointOnErrorSequenceOutputConnector", EsbElementTypes.InboundEndpointOnErrorSequenceOutputConnector_3771); //$NON-NLS-1$
+		case InboundEndpointContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?InboundEndpointContainer", EsbElementTypes.InboundEndpointContainer_3772); //$NON-NLS-1$
+		case InboundEndpointSequenceContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?InboundEndpointSequenceContainer", EsbElementTypes.InboundEndpointSequenceContainer_3773); //$NON-NLS-1$
+		case MediatorFlow25EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3774); //$NON-NLS-1$
+		case InboundEndpointOnErrorSequenceContainerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?InboundEndpointOnErrorSequenceContainer", EsbElementTypes.InboundEndpointOnErrorSequenceContainer_3775); //$NON-NLS-1$
+		case MediatorFlow26EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3776); //$NON-NLS-1$
 		case EsbLinkEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbLink", EsbElementTypes.EsbLink_4001); //$NON-NLS-1$
@@ -1758,6 +1790,26 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 			return getFastXSLTMediatorInputConnector_3765Text(view);
 		case FastXSLTMediatorOutputConnectorEditPart.VISUAL_ID:
 			return getFastXSLTMediatorOutputConnector_3766Text(view);
+		case InboundEndpointEditPart.VISUAL_ID:
+			return getInboundEndpoint_3767Text(view);
+		case InboundEndpointSequenceInputConnectorEditPart.VISUAL_ID:
+			return getInboundEndpointSequenceInputConnector_3768Text(view);
+		case InboundEndpointSequenceOutputConnectorEditPart.VISUAL_ID:
+			return getInboundEndpointSequenceOutputConnector_3769Text(view);
+		case InboundEndpointOnErrorSequenceInputConnectorEditPart.VISUAL_ID:
+			return getInboundEndpointOnErrorSequenceInputConnector_3770Text(view);
+		case InboundEndpointOnErrorSequenceOutputConnectorEditPart.VISUAL_ID:
+			return getInboundEndpointOnErrorSequenceOutputConnector_3771Text(view);
+		case InboundEndpointContainerEditPart.VISUAL_ID:
+			return getInboundEndpointContainer_3772Text(view);
+		case InboundEndpointSequenceContainerEditPart.VISUAL_ID:
+			return getInboundEndpointSequenceContainer_3773Text(view);
+		case MediatorFlow25EditPart.VISUAL_ID:
+			return getMediatorFlow_3774Text(view);
+		case InboundEndpointOnErrorSequenceContainerEditPart.VISUAL_ID:
+			return getInboundEndpointOnErrorSequenceContainer_3775Text(view);
+		case MediatorFlow26EditPart.VISUAL_ID:
+			return getMediatorFlow_3776Text(view);
 		case EsbLinkEditPart.VISUAL_ID:
 			return getEsbLink_4001Text(view);
 		}
@@ -3125,6 +3177,94 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getFastXSLTMediatorOutputConnector_3766Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInboundEndpoint_3767Text(View view) {
+		InboundEndpoint domainModelElement = (InboundEndpoint) view
+				.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getName();
+		} else {
+			EsbDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 3767); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInboundEndpointSequenceInputConnector_3768Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInboundEndpointSequenceOutputConnector_3769Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInboundEndpointOnErrorSequenceInputConnector_3770Text(
+			View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInboundEndpointOnErrorSequenceOutputConnector_3771Text(
+			View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInboundEndpointContainer_3772Text(View view) {
+		InboundEndpointContainer domainModelElement = (InboundEndpointContainer) view
+				.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getDescription();
+		} else {
+			EsbDiagramEditorPlugin.getInstance().logError(
+					"No domain element for view with visualID = " + 3772); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInboundEndpointSequenceContainer_3773Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getMediatorFlow_3774Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getInboundEndpointOnErrorSequenceContainer_3775Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getMediatorFlow_3776Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

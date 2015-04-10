@@ -18,7 +18,7 @@ package org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactConstants;
+import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 
@@ -27,14 +27,14 @@ public class InboundEndpointCreationTypes extends AbstractListDataProvider {
 	@Override
     public List<ListData> getListData(String modelProperty, ProjectDataModel model) {
 		List<ListData> epTypeList = new ArrayList<ListData>();
-		epTypeList.add(createListData(InboundEndpointArtifactConstants.typeHTTP,
-		                              InboundEndpointArtifactConstants.typeHTTP));
-		epTypeList.add(createListData(InboundEndpointArtifactConstants.typeFile,
-		                              InboundEndpointArtifactConstants.typeFile));
-		epTypeList.add(createListData(InboundEndpointArtifactConstants.typeJMS,
-		                              InboundEndpointArtifactConstants.typeJMS));
-		epTypeList.add(createListData(InboundEndpointArtifactConstants.typeCustom,
-		                              InboundEndpointArtifactConstants.typeCustom));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeHTTP,
+		                              InboundEndpointArtifactProperties.typeHTTP));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeFile,
+		                              InboundEndpointArtifactProperties.typeFile));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeJMS,
+		                              InboundEndpointArtifactProperties.typeJMS));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeCustom,
+		                              InboundEndpointArtifactProperties.typeCustom));
 		return epTypeList;
 	}
 

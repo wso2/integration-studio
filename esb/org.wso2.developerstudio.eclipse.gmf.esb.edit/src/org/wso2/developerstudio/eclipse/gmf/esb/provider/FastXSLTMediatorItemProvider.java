@@ -138,6 +138,50 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider implement
 	}	
 
 	/**
+	 * This adds a property descriptor for the Fast Xslt Static Schema Key feature.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected void addFastXsltStaticSchemaKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FastXSLTMediator_fastXsltStaticSchemaKey_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FastXSLTMediator_fastXsltStaticSchemaKey_feature", "_UI_FastXSLTMediator_type"),
+				 EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_STATIC_SCHEMA_KEY,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+    /**
+	 * This adds a property descriptor for the Fast Xslt Dynamic Schema Key feature.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected void addFastXsltDynamicSchemaKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FastXSLTMediator_fastXsltDynamicSchemaKey_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FastXSLTMediator_fastXsltDynamicSchemaKey_feature", "_UI_FastXSLTMediator_type"),
+				 EsbPackage.Literals.FAST_XSLT_MEDIATOR__FAST_XSLT_DYNAMIC_SCHEMA_KEY,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+    /**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -178,7 +222,7 @@ public class FastXSLTMediatorItemProvider extends MediatorItemProvider implement
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/fastxslt-small.png"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FastXSLTMediator"));
 	}
 
 	/**

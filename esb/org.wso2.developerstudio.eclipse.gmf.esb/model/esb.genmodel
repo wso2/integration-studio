@@ -20,6 +20,7 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/COMPLEX_ENDPOINT"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/MESSAGE_STORE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/MESSAGE_PROCESSOR"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/INBOUND_ENDPOINT"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CallMediatorEndpointType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallMediatorEndpointType/INLINE"/>
@@ -2020,5 +2021,30 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//FastXSLTMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//FastXSLTMediatorOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpoint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/sequenceInputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/sequenceOutputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/onErrorSequenceInputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/onErrorSequenceOutputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/container"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/onErrorSequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/protocol"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpointContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpointContainer/sequenceContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpointContainer/onErrorSequenceContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpointSequenceContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpointSequenceContainer/mediatorFlow"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpointOnErrorSequenceContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpointOnErrorSequenceContainer/mediatorFlow"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpointSequenceInputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpointSequenceOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpointOnErrorSequenceOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpointOnErrorSequenceInputConnector"/>
   </genPackages>
 </genmodel:GenModel>

@@ -28,6 +28,10 @@ public class FieldValidationException extends Exception {
 	public FieldValidationException(String message) {
 		super(message);
 	}
+	
+	public FieldValidationException(String message, Exception e) {
+		super(message,e);
+	}
 
 	public void setModelProperty(String modelProperty) {
 		this.modelProperty = modelProperty;

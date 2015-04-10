@@ -133,7 +133,8 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 		return primaryShape = new FastXSLTMediatorFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0
+						&& this.getBounds().getLocation().y != 0) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 				}
@@ -153,21 +154,29 @@ public class FastXSLTMediatorEditPart extends FixedSizedAbstractMediator {
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof FastXSLTMediatorDescriptionEditPart) {
-			((FastXSLTMediatorDescriptionEditPart) childEditPart).setLabel(getPrimaryShape().getFastXSLTMediatorDescriptionLabel());
+			((FastXSLTMediatorDescriptionEditPart) childEditPart)
+					.setLabel(getPrimaryShape()
+							.getFastXSLTMediatorDescriptionLabel());
 			return true;
 		}
 		if (childEditPart instanceof FastXSLTMediatorInputConnectorEditPart) {
 
-			IFigure borderItemFigure = ((FastXSLTMediatorInputConnectorEditPart) childEditPart).getFigure();
+			IFigure borderItemFigure = ((FastXSLTMediatorInputConnectorEditPart) childEditPart)
+					.getFigure();
 			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+					getMainFigure(), borderItemFigure, PositionConstants.WEST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		} else if (childEditPart instanceof FastXSLTMediatorOutputConnectorEditPart) {
-			IFigure borderItemFigure = ((FastXSLTMediatorOutputConnectorEditPart) childEditPart).getFigure();
+			IFigure borderItemFigure = ((FastXSLTMediatorOutputConnectorEditPart) childEditPart)
+					.getFigure();
 			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST, 0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+					getMainFigure(), borderItemFigure, PositionConstants.EAST,
+					0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
+					locator);
 			return true;
 		}
 		return false;

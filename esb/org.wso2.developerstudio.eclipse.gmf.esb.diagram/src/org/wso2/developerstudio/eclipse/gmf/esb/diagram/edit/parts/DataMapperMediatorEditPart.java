@@ -54,8 +54,10 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-//import org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
-//import org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
+// import
+// org.wso2.developerstudio.datamapper.diagram.custom.util.DataMapperConfigurationDialog;
+// import
+// org.wso2.developerstudio.datamapper.diagram.custom.util.DialogDisplayUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
@@ -489,15 +491,17 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			openDataMapperEditor(datamapper);
 		}
 		
-     */
+		 */
 	}
 
 	private String formatRegistryPath(String selectedPath) {
 		String formattedPath = selectedPath;
 		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
-			formattedPath = String.format(G_REG_PREFIX, selectedPath.substring(G_REG_PATH_PREFIX.length()));
+			formattedPath = String.format(G_REG_PREFIX,
+					selectedPath.substring(G_REG_PATH_PREFIX.length()));
 		} else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
-			formattedPath = String.format(C_REG_PREFIX, selectedPath.substring(C_REG_PATH_PREFIX.length()));
+			formattedPath = String.format(C_REG_PREFIX,
+					selectedPath.substring(C_REG_PATH_PREFIX.length()));
 		}
 		return formattedPath;
 	}

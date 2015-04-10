@@ -33,7 +33,8 @@ public class AggregateMediatorInputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest()).getContainer();
+		EObject container = ((CreateElementRequest) getRequest())
+				.getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -57,7 +58,8 @@ public class AggregateMediatorInputConnectorCreateCommand extends
 	 */
 	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 			IAdaptable info) throws ExecutionException {
-		AggregateMediatorInputConnector newElement = EsbFactory.eINSTANCE.createAggregateMediatorInputConnector();
+		AggregateMediatorInputConnector newElement = EsbFactory.eINSTANCE
+				.createAggregateMediatorInputConnector();
 
 		AggregateMediator owner = (AggregateMediator) getElementToEdit();
 		owner.setInputConnector(newElement);
@@ -74,11 +76,15 @@ public class AggregateMediatorInputConnectorCreateCommand extends
 	protected void doConfigure(AggregateMediatorInputConnector newElement,
 			IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
+		IElementType elementType = ((CreateElementRequest) getRequest())
+				.getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(
+				getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest())
+				.getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType
+				.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

@@ -1644,6 +1644,78 @@ public interface EsbFactory extends EFactory {
 	FastXSLTMediatorOutputConnector createFastXSLTMediatorOutputConnector();
 
 	/**
+	 * Returns a new object of class '<em>Inbound Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inbound Endpoint</em>'.
+	 * @generated
+	 */
+    InboundEndpoint createInboundEndpoint();
+
+    /**
+	 * Returns a new object of class '<em>Inbound Endpoint Container</em>'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inbound Endpoint Container</em>'.
+	 * @generated
+	 */
+    InboundEndpointContainer createInboundEndpointContainer();
+
+    /**
+	 * Returns a new object of class '<em>Inbound Endpoint Sequence Container</em>'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inbound Endpoint Sequence Container</em>'.
+	 * @generated
+	 */
+    InboundEndpointSequenceContainer createInboundEndpointSequenceContainer();
+
+    /**
+	 * Returns a new object of class '<em>Inbound Endpoint On Error Sequence Container</em>'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inbound Endpoint On Error Sequence Container</em>'.
+	 * @generated
+	 */
+    InboundEndpointOnErrorSequenceContainer createInboundEndpointOnErrorSequenceContainer();
+
+    /**
+	 * Returns a new object of class '<em>Inbound Endpoint Sequence Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inbound Endpoint Sequence Input Connector</em>'.
+	 * @generated
+	 */
+    InboundEndpointSequenceInputConnector createInboundEndpointSequenceInputConnector();
+
+    /**
+	 * Returns a new object of class '<em>Inbound Endpoint Sequence Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inbound Endpoint Sequence Output Connector</em>'.
+	 * @generated
+	 */
+    InboundEndpointSequenceOutputConnector createInboundEndpointSequenceOutputConnector();
+
+    /**
+	 * Returns a new object of class '<em>Inbound Endpoint On Error Sequence Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inbound Endpoint On Error Sequence Output Connector</em>'.
+	 * @generated
+	 */
+    InboundEndpointOnErrorSequenceOutputConnector createInboundEndpointOnErrorSequenceOutputConnector();
+
+    /**
+	 * Returns a new object of class '<em>Inbound Endpoint On Error Sequence Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inbound Endpoint On Error Sequence Input Connector</em>'.
+	 * @generated
+	 */
+    InboundEndpointOnErrorSequenceInputConnector createInboundEndpointOnErrorSequenceInputConnector();
+
+    /**
 	 * Returns a new object of class '<em>Script Mediator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

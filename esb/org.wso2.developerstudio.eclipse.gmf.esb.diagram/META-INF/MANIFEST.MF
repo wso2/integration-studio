@@ -50,7 +50,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.wst.xml.xpath.core,
  org.eclipse.gmf.tooling.runtime;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-LazyStart: true
 Import-Package: com.damnhandy.uri.template,
  javax.xml.stream;version="1.0.1.wso2v1",
@@ -71,10 +71,12 @@ Import-Package: com.damnhandy.uri.template,
  org.apache.synapse.config,
  org.apache.synapse.config.xml,
  org.apache.synapse.config.xml.endpoints,
+ org.apache.synapse.config.xml.inbound,
  org.apache.synapse.config.xml.rest,
  org.apache.synapse.core.axis2,
  org.apache.synapse.endpoints,
  org.apache.synapse.endpoints.dispatch,
+ org.apache.synapse.inbound,
  org.apache.synapse.mediators,
  org.apache.synapse.mediators.base,
  org.apache.synapse.mediators.bean,

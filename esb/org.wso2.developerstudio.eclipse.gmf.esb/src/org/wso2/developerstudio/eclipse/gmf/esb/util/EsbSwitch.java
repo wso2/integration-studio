@@ -2780,6 +2780,68 @@ public class EsbSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsbPackage.INBOUND_ENDPOINT: {
+				InboundEndpoint inboundEndpoint = (InboundEndpoint)theEObject;
+				T result = caseInboundEndpoint(inboundEndpoint);
+				if (result == null) result = caseEsbElement(inboundEndpoint);
+				if (result == null) result = caseEsbNode(inboundEndpoint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.INBOUND_ENDPOINT_CONTAINER: {
+				InboundEndpointContainer inboundEndpointContainer = (InboundEndpointContainer)theEObject;
+				T result = caseInboundEndpointContainer(inboundEndpointContainer);
+				if (result == null) result = caseEsbElement(inboundEndpointContainer);
+				if (result == null) result = caseEsbNode(inboundEndpointContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER: {
+				InboundEndpointSequenceContainer inboundEndpointSequenceContainer = (InboundEndpointSequenceContainer)theEObject;
+				T result = caseInboundEndpointSequenceContainer(inboundEndpointSequenceContainer);
+				if (result == null) result = caseEsbNode(inboundEndpointSequenceContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER: {
+				InboundEndpointOnErrorSequenceContainer inboundEndpointOnErrorSequenceContainer = (InboundEndpointOnErrorSequenceContainer)theEObject;
+				T result = caseInboundEndpointOnErrorSequenceContainer(inboundEndpointOnErrorSequenceContainer);
+				if (result == null) result = caseEsbNode(inboundEndpointOnErrorSequenceContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_INPUT_CONNECTOR: {
+				InboundEndpointSequenceInputConnector inboundEndpointSequenceInputConnector = (InboundEndpointSequenceInputConnector)theEObject;
+				T result = caseInboundEndpointSequenceInputConnector(inboundEndpointSequenceInputConnector);
+				if (result == null) result = caseInputConnector(inboundEndpointSequenceInputConnector);
+				if (result == null) result = caseEsbConnector(inboundEndpointSequenceInputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_OUTPUT_CONNECTOR: {
+				InboundEndpointSequenceOutputConnector inboundEndpointSequenceOutputConnector = (InboundEndpointSequenceOutputConnector)theEObject;
+				T result = caseInboundEndpointSequenceOutputConnector(inboundEndpointSequenceOutputConnector);
+				if (result == null) result = caseOutputConnector(inboundEndpointSequenceOutputConnector);
+				if (result == null) result = caseEsbConnector(inboundEndpointSequenceOutputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR: {
+				InboundEndpointOnErrorSequenceOutputConnector inboundEndpointOnErrorSequenceOutputConnector = (InboundEndpointOnErrorSequenceOutputConnector)theEObject;
+				T result = caseInboundEndpointOnErrorSequenceOutputConnector(inboundEndpointOnErrorSequenceOutputConnector);
+				if (result == null) result = caseOutputConnector(inboundEndpointOnErrorSequenceOutputConnector);
+				if (result == null) result = caseEsbConnector(inboundEndpointOnErrorSequenceOutputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_INPUT_CONNECTOR: {
+				InboundEndpointOnErrorSequenceInputConnector inboundEndpointOnErrorSequenceInputConnector = (InboundEndpointOnErrorSequenceInputConnector)theEObject;
+				T result = caseInboundEndpointOnErrorSequenceInputConnector(inboundEndpointOnErrorSequenceInputConnector);
+				if (result == null) result = caseInputConnector(inboundEndpointOnErrorSequenceInputConnector);
+				if (result == null) result = caseEsbConnector(inboundEndpointOnErrorSequenceInputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -5635,6 +5697,126 @@ public class EsbSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+    public T caseInboundEndpoint(InboundEndpoint object) {
+		return null;
+	}
+
+    /**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint Container</em>'.
+	 * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+    public T caseInboundEndpointContainer(InboundEndpointContainer object) {
+		return null;
+	}
+
+    /**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint Sequence Container</em>'.
+	 * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint Sequence Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+    public T caseInboundEndpointSequenceContainer(InboundEndpointSequenceContainer object) {
+		return null;
+	}
+
+    /**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint On Error Sequence Container</em>'.
+	 * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint On Error Sequence Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+    public T caseInboundEndpointOnErrorSequenceContainer(InboundEndpointOnErrorSequenceContainer object) {
+		return null;
+	}
+
+    /**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint Sequence Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint Sequence Input Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+    public T caseInboundEndpointSequenceInputConnector(InboundEndpointSequenceInputConnector object) {
+		return null;
+	}
+
+    /**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint Sequence Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint Sequence Output Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+    public T caseInboundEndpointSequenceOutputConnector(InboundEndpointSequenceOutputConnector object) {
+		return null;
+	}
+
+    /**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint On Error Sequence Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint On Error Sequence Output Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+    public T caseInboundEndpointOnErrorSequenceOutputConnector(InboundEndpointOnErrorSequenceOutputConnector object) {
+		return null;
+	}
+
+    /**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint On Error Sequence Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint On Error Sequence Input Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+    public T caseInboundEndpointOnErrorSequenceInputConnector(InboundEndpointOnErrorSequenceInputConnector object) {
+		return null;
+	}
+
+    /**
 	 * Returns the result of interpreting the object as an instance of '<em>Script Mediator</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;

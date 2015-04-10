@@ -130,7 +130,15 @@ public enum ArtifactType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MESSAGE_PROCESSOR(11, "MESSAGE_PROCESSOR", "MESSAGE_PROCESSOR");
+	MESSAGE_PROCESSOR(11, "MESSAGE_PROCESSOR", "MESSAGE_PROCESSOR"), /**
+	 * The '<em><b>INBOUND ENDPOINT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @see #INBOUND_ENDPOINT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+    INBOUND_ENDPOINT(12, "INBOUND_ENDPOINT", "INBOUND_ENDPOINT");
 
 	/**
 	 * The '<em><b>SYNAPSE CONFIG</b></em>' literal value.
@@ -313,6 +321,21 @@ public enum ArtifactType implements Enumerator {
 	public static final int MESSAGE_PROCESSOR_VALUE = 11;
 
 	/**
+	 * The '<em><b>INBOUND ENDPOINT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>INBOUND ENDPOINT</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+	 * @see #INBOUND_ENDPOINT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+    public static final int INBOUND_ENDPOINT_VALUE = 12;
+
+    /**
 	 * An array of all the '<em><b>Artifact Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,6 +355,7 @@ public enum ArtifactType implements Enumerator {
 			COMPLEX_ENDPOINT,
 			MESSAGE_STORE,
 			MESSAGE_PROCESSOR,
+			INBOUND_ENDPOINT,
 		};
 
 	/**
@@ -394,6 +418,7 @@ public enum ArtifactType implements Enumerator {
 			case COMPLEX_ENDPOINT_VALUE: return COMPLEX_ENDPOINT;
 			case MESSAGE_STORE_VALUE: return MESSAGE_STORE;
 			case MESSAGE_PROCESSOR_VALUE: return MESSAGE_PROCESSOR;
+			case INBOUND_ENDPOINT_VALUE: return INBOUND_ENDPOINT;
 		}
 		return null;
 	}

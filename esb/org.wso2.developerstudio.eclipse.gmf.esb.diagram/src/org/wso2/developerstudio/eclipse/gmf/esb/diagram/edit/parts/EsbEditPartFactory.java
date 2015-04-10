@@ -1165,6 +1165,38 @@ public class EsbEditPartFactory implements EditPartFactory {
 			case MessageProcessorEditPart.VISUAL_ID:
 				return new MessageProcessorEditPart(view);
 
+			case InboundEndpointEditPart.VISUAL_ID:
+				return new InboundEndpointEditPart(view);
+
+			case InboundEndpointSequenceInputConnectorEditPart.VISUAL_ID:
+				return new InboundEndpointSequenceInputConnectorEditPart(view);
+
+			case InboundEndpointSequenceOutputConnectorEditPart.VISUAL_ID:
+				return new InboundEndpointSequenceOutputConnectorEditPart(view);
+
+			case InboundEndpointOnErrorSequenceInputConnectorEditPart.VISUAL_ID:
+				return new InboundEndpointOnErrorSequenceInputConnectorEditPart(
+						view);
+
+			case InboundEndpointOnErrorSequenceOutputConnectorEditPart.VISUAL_ID:
+				return new InboundEndpointOnErrorSequenceOutputConnectorEditPart(
+						view);
+
+			case InboundEndpointContainerEditPart.VISUAL_ID:
+				return new InboundEndpointContainerEditPart(view);
+
+			case InboundEndpointSequenceContainerEditPart.VISUAL_ID:
+				return new InboundEndpointSequenceContainerEditPart(view);
+
+			case MediatorFlow25EditPart.VISUAL_ID:
+				return new MediatorFlow25EditPart(view);
+
+			case InboundEndpointOnErrorSequenceContainerEditPart.VISUAL_ID:
+				return new InboundEndpointOnErrorSequenceContainerEditPart(view);
+
+			case MediatorFlow26EditPart.VISUAL_ID:
+				return new MediatorFlow26EditPart(view);
+
 			case EsbServerContentsCompartmentEditPart.VISUAL_ID:
 				return new EsbServerContentsCompartmentEditPart(view);
 
@@ -1251,6 +1283,12 @@ public class EsbEditPartFactory implements EditPartFactory {
 
 			case MediatorFlowMediatorFlowCompartment18EditPart.VISUAL_ID:
 				return new MediatorFlowMediatorFlowCompartment18EditPart(view);
+
+			case MediatorFlowMediatorFlowCompartment25EditPart.VISUAL_ID:
+				return new MediatorFlowMediatorFlowCompartment25EditPart(view);
+
+			case MediatorFlowMediatorFlowCompartment26EditPart.VISUAL_ID:
+				return new MediatorFlowMediatorFlowCompartment26EditPart(view);
 
 			case EsbLinkEditPart.VISUAL_ID:
 				return new EsbLinkEditPart(view);

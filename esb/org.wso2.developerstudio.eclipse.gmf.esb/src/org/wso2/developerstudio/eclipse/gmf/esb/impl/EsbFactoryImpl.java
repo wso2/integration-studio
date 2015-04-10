@@ -391,6 +391,14 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.FAST_XSLT_MEDIATOR: return createFastXSLTMediator();
 			case EsbPackage.FAST_XSLT_MEDIATOR_INPUT_CONNECTOR: return createFastXSLTMediatorInputConnector();
 			case EsbPackage.FAST_XSLT_MEDIATOR_OUTPUT_CONNECTOR: return createFastXSLTMediatorOutputConnector();
+			case EsbPackage.INBOUND_ENDPOINT: return createInboundEndpoint();
+			case EsbPackage.INBOUND_ENDPOINT_CONTAINER: return createInboundEndpointContainer();
+			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER: return createInboundEndpointSequenceContainer();
+			case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER: return createInboundEndpointOnErrorSequenceContainer();
+			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_INPUT_CONNECTOR: return createInboundEndpointSequenceInputConnector();
+			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_OUTPUT_CONNECTOR: return createInboundEndpointSequenceOutputConnector();
+			case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR: return createInboundEndpointOnErrorSequenceOutputConnector();
+			case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_INPUT_CONNECTOR: return createInboundEndpointOnErrorSequenceInputConnector();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -2756,6 +2764,95 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	public FastXSLTMediatorOutputConnector createFastXSLTMediatorOutputConnector() {
 		FastXSLTMediatorOutputConnectorImpl fastXSLTMediatorOutputConnector = new FastXSLTMediatorOutputConnectorImpl();
 		return fastXSLTMediatorOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public InboundEndpoint createInboundEndpoint() {
+		InboundEndpointImpl inboundEndpoint = new InboundEndpointImpl();
+        inboundEndpoint.setSequenceInputConnector(createInboundEndpointSequenceInputConnector());
+        inboundEndpoint.setSequenceOutputConnector(createInboundEndpointSequenceOutputConnector());
+        inboundEndpoint.setOnErrorSequenceInputConnector(createInboundEndpointOnErrorSequenceInputConnector());
+        inboundEndpoint.setOnErrorSequenceOutputConnector(createInboundEndpointOnErrorSequenceOutputConnector());
+        inboundEndpoint.setContainer(createInboundEndpointContainer());
+		return inboundEndpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public InboundEndpointContainer createInboundEndpointContainer() {
+		InboundEndpointContainerImpl inboundEndpointContainer = new InboundEndpointContainerImpl();
+        inboundEndpointContainer.setSequenceContainer(createInboundEndpointSequenceContainer());
+        inboundEndpointContainer.setOnErrorSequenceContainer(createInboundEndpointOnErrorSequenceContainer());
+		return inboundEndpointContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public InboundEndpointSequenceContainer createInboundEndpointSequenceContainer() {
+		InboundEndpointSequenceContainerImpl inboundEndpointSequenceContainer = new InboundEndpointSequenceContainerImpl();
+		inboundEndpointSequenceContainer.setMediatorFlow(createMediatorFlow());
+		return inboundEndpointSequenceContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public InboundEndpointOnErrorSequenceContainer createInboundEndpointOnErrorSequenceContainer() {
+		InboundEndpointOnErrorSequenceContainerImpl inboundEndpointOnErrorSequenceContainer = new InboundEndpointOnErrorSequenceContainerImpl();
+		inboundEndpointOnErrorSequenceContainer.setMediatorFlow(createMediatorFlow());
+		return inboundEndpointOnErrorSequenceContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InboundEndpointSequenceInputConnector createInboundEndpointSequenceInputConnector() {
+		InboundEndpointSequenceInputConnectorImpl inboundEndpointSequenceInputConnector = new InboundEndpointSequenceInputConnectorImpl();
+		return inboundEndpointSequenceInputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InboundEndpointSequenceOutputConnector createInboundEndpointSequenceOutputConnector() {
+		InboundEndpointSequenceOutputConnectorImpl inboundEndpointSequenceOutputConnector = new InboundEndpointSequenceOutputConnectorImpl();
+		return inboundEndpointSequenceOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InboundEndpointOnErrorSequenceOutputConnector createInboundEndpointOnErrorSequenceOutputConnector() {
+		InboundEndpointOnErrorSequenceOutputConnectorImpl inboundEndpointOnErrorSequenceOutputConnector = new InboundEndpointOnErrorSequenceOutputConnectorImpl();
+		return inboundEndpointOnErrorSequenceOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InboundEndpointOnErrorSequenceInputConnector createInboundEndpointOnErrorSequenceInputConnector() {
+		InboundEndpointOnErrorSequenceInputConnectorImpl inboundEndpointOnErrorSequenceInputConnector = new InboundEndpointOnErrorSequenceInputConnectorImpl();
+		return inboundEndpointOnErrorSequenceInputConnector;
 	}
 
 	/**

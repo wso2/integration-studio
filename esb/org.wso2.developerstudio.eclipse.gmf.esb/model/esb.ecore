@@ -31,6 +31,7 @@
     <eLiterals name="COMPLEX_ENDPOINT" value="9"/>
     <eLiterals name="MESSAGE_STORE" value="10" literal="MESSAGE_STORE"/>
     <eLiterals name="MESSAGE_PROCESSOR" value="11" literal="MESSAGE_PROCESSOR"/>
+    <eLiterals name="INBOUND_ENDPOINT" value="12" literal="INBOUND_ENDPOINT"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mediator" abstract="true" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Reverse" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -2602,4 +2603,43 @@
     <eLiterals name="http" literal="http"/>
     <eLiterals name="https" value="1" literal="https"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundEndpoint" eSuperTypes="#//EsbElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceInputConnector"
+        eType="#//InboundEndpointSequenceInputConnector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceOutputConnector"
+        eType="#//InboundEndpointSequenceOutputConnector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onErrorSequenceInputConnector"
+        eType="#//InboundEndpointOnErrorSequenceInputConnector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onErrorSequenceOutputConnector"
+        eType="#//InboundEndpointOnErrorSequenceOutputConnector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//InboundEndpointContainer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="onErrorSequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="protocol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointContainer" eSuperTypes="#//EsbElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceContainer" eType="#//InboundEndpointSequenceContainer"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onErrorSequenceContainer"
+        eType="#//InboundEndpointOnErrorSequenceContainer" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointSequenceContainer" eSuperTypes="#//EsbNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointOnErrorSequenceContainer"
+      eSuperTypes="#//EsbNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointSequenceInputConnector"
+      eSuperTypes="#//InputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointSequenceOutputConnector"
+      eSuperTypes="#//OutputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointOnErrorSequenceOutputConnector"
+      eSuperTypes="#//OutputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointOnErrorSequenceInputConnector"
+      eSuperTypes="#//InputConnector"/>
 </ecore:EPackage>

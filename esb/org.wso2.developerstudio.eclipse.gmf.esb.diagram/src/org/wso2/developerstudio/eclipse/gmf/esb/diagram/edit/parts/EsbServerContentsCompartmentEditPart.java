@@ -134,6 +134,9 @@ public class EsbServerContentsCompartmentEditPart extends
 			if (type == EsbElementTypes.MessageProcessor_3701) {
 				return this;
 			}
+			if (type == EsbElementTypes.InboundEndpoint_3767) {
+				return this;
+			}
 			return getParent().getTargetEditPart(request);
 		}
 		if (request instanceof CreateUnspecifiedTypeConnectionRequest) {

@@ -4218,6 +4218,190 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint} instances.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected InboundEndpointItemProvider inboundEndpointItemProvider;
+
+    /**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint}.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Adapter createInboundEndpointAdapter() {
+		if (inboundEndpointItemProvider == null) {
+			inboundEndpointItemProvider = new InboundEndpointItemProvider(this);
+		}
+
+		return inboundEndpointItemProvider;
+	}
+
+    /**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer} instances.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected InboundEndpointContainerItemProvider inboundEndpointContainerItemProvider;
+
+    /**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer}.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Adapter createInboundEndpointContainerAdapter() {
+		if (inboundEndpointContainerItemProvider == null) {
+			inboundEndpointContainerItemProvider = new InboundEndpointContainerItemProvider(this);
+		}
+
+		return inboundEndpointContainerItemProvider;
+	}
+
+    /**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer} instances.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected InboundEndpointSequenceContainerItemProvider inboundEndpointSequenceContainerItemProvider;
+
+    /**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer}.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Adapter createInboundEndpointSequenceContainerAdapter() {
+		if (inboundEndpointSequenceContainerItemProvider == null) {
+			inboundEndpointSequenceContainerItemProvider = new InboundEndpointSequenceContainerItemProvider(this);
+		}
+
+		return inboundEndpointSequenceContainerItemProvider;
+	}
+
+    /**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer} instances.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected InboundEndpointOnErrorSequenceContainerItemProvider inboundEndpointOnErrorSequenceContainerItemProvider;
+
+    /**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer}.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Adapter createInboundEndpointOnErrorSequenceContainerAdapter() {
+		if (inboundEndpointOnErrorSequenceContainerItemProvider == null) {
+			inboundEndpointOnErrorSequenceContainerItemProvider = new InboundEndpointOnErrorSequenceContainerItemProvider(this);
+		}
+
+		return inboundEndpointOnErrorSequenceContainerItemProvider;
+	}
+
+    /**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector} instances.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected InboundEndpointSequenceInputConnectorItemProvider inboundEndpointSequenceInputConnectorItemProvider;
+
+    /**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector}.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Adapter createInboundEndpointSequenceInputConnectorAdapter() {
+		if (inboundEndpointSequenceInputConnectorItemProvider == null) {
+			inboundEndpointSequenceInputConnectorItemProvider = new InboundEndpointSequenceInputConnectorItemProvider(this);
+		}
+
+		return inboundEndpointSequenceInputConnectorItemProvider;
+	}
+
+    /**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector} instances.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected InboundEndpointSequenceOutputConnectorItemProvider inboundEndpointSequenceOutputConnectorItemProvider;
+
+    /**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector}.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Adapter createInboundEndpointSequenceOutputConnectorAdapter() {
+		if (inboundEndpointSequenceOutputConnectorItemProvider == null) {
+			inboundEndpointSequenceOutputConnectorItemProvider = new InboundEndpointSequenceOutputConnectorItemProvider(this);
+		}
+
+		return inboundEndpointSequenceOutputConnectorItemProvider;
+	}
+
+    /**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector} instances.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected InboundEndpointOnErrorSequenceOutputConnectorItemProvider inboundEndpointOnErrorSequenceOutputConnectorItemProvider;
+
+    /**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector}.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Adapter createInboundEndpointOnErrorSequenceOutputConnectorAdapter() {
+		if (inboundEndpointOnErrorSequenceOutputConnectorItemProvider == null) {
+			inboundEndpointOnErrorSequenceOutputConnectorItemProvider = new InboundEndpointOnErrorSequenceOutputConnectorItemProvider(this);
+		}
+
+		return inboundEndpointOnErrorSequenceOutputConnectorItemProvider;
+	}
+
+    /**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector} instances.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    protected InboundEndpointOnErrorSequenceInputConnectorItemProvider inboundEndpointOnErrorSequenceInputConnectorItemProvider;
+
+    /**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector}.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Adapter createInboundEndpointOnErrorSequenceInputConnectorAdapter() {
+		if (inboundEndpointOnErrorSequenceInputConnectorItemProvider == null) {
+			inboundEndpointOnErrorSequenceInputConnectorItemProvider = new InboundEndpointOnErrorSequenceInputConnectorItemProvider(this);
+		}
+
+		return inboundEndpointOnErrorSequenceInputConnectorItemProvider;
+	}
+
+    /**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8204,6 +8388,14 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 		if (fastXSLTMediatorItemProvider != null) fastXSLTMediatorItemProvider.dispose();
 		if (fastXSLTMediatorInputConnectorItemProvider != null) fastXSLTMediatorInputConnectorItemProvider.dispose();
 		if (fastXSLTMediatorOutputConnectorItemProvider != null) fastXSLTMediatorOutputConnectorItemProvider.dispose();
+		if (inboundEndpointItemProvider != null) inboundEndpointItemProvider.dispose();
+		if (inboundEndpointContainerItemProvider != null) inboundEndpointContainerItemProvider.dispose();
+		if (inboundEndpointSequenceContainerItemProvider != null) inboundEndpointSequenceContainerItemProvider.dispose();
+		if (inboundEndpointOnErrorSequenceContainerItemProvider != null) inboundEndpointOnErrorSequenceContainerItemProvider.dispose();
+		if (inboundEndpointSequenceInputConnectorItemProvider != null) inboundEndpointSequenceInputConnectorItemProvider.dispose();
+		if (inboundEndpointSequenceOutputConnectorItemProvider != null) inboundEndpointSequenceOutputConnectorItemProvider.dispose();
+		if (inboundEndpointOnErrorSequenceOutputConnectorItemProvider != null) inboundEndpointOnErrorSequenceOutputConnectorItemProvider.dispose();
+		if (inboundEndpointOnErrorSequenceInputConnectorItemProvider != null) inboundEndpointOnErrorSequenceInputConnectorItemProvider.dispose();
 	}
 
 }

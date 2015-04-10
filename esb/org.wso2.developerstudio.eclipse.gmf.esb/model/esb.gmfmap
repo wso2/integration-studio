@@ -3765,8 +3765,99 @@
               href="esb.gmfgraph#MessageProcessor"/>
         </ownedChild>
       </children>
+      <children
+          compartment="//@nodes.0/@ownedChild/@compartments.0">
+        <containmentFeature
+            href="esb.ecore#//EsbServer/children"/>
+        <ownedChild>
+          <domainMetaElement
+              href="esb.ecore#//InboundEndpoint"/>
+          <diagramNode
+              href="esb.gmfgraph#InboundEndpoint"/>
+          <children>
+            <containmentFeature
+                href="esb.ecore#//InboundEndpoint/sequenceInputConnector"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="esb.ecore#//InboundEndpointSequenceInputConnector"/>
+              <diagramNode
+                  href="esb.gmfgraph#InboundEndpointSequenceInputConnector"/>
+            </ownedChild>
+          </children>
+          <children>
+            <containmentFeature
+                href="esb.ecore#//InboundEndpoint/sequenceOutputConnector"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="esb.ecore#//InboundEndpointSequenceOutputConnector"/>
+              <diagramNode
+                  href="esb.gmfgraph#InboundEndpointSequenceOutputConnector"/>
+            </ownedChild>
+          </children>
+          <children>
+            <containmentFeature
+                href="esb.ecore#//InboundEndpoint/onErrorSequenceInputConnector"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="esb.ecore#//InboundEndpointOnErrorSequenceInputConnector"/>
+              <diagramNode
+                  href="esb.gmfgraph#InboundEndpointOnErrorSequenceInputConnector"/>
+            </ownedChild>
+          </children>
+          <children>
+            <containmentFeature
+                href="esb.ecore#//InboundEndpoint/onErrorSequenceOutputConnector"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="esb.ecore#//InboundEndpointOnErrorSequenceOutputConnector"/>
+              <diagramNode
+                  href="esb.gmfgraph#InboundEndpointOnErrorSequenceOutputConnector"/>
+            </ownedChild>
+          </children>
+          <children>
+            <containmentFeature
+                href="esb.ecore#//InboundEndpoint/container"/>
+            <ownedChild>
+              <domainMetaElement
+                  href="esb.ecore#//InboundEndpointContainer"/>
+              <diagramNode
+                  href="esb.gmfgraph#InboundEndpointContainer"/>
+              <children>
+                <containmentFeature
+                    href="esb.ecore#//InboundEndpointContainer/sequenceContainer"/>
+                <ownedChild>
+                  <domainMetaElement
+                      href="esb.ecore#//InboundEndpointSequenceContainer"/>
+                  <diagramNode
+                      href="esb.gmfgraph#InboundEndpointOnErrorSequenceContainer"/>
+                  <children
+                      referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild">
+                    <containmentFeature
+                        href="esb.ecore#//InboundEndpointSequenceContainer/mediatorFlow"/>
+                  </children>
+                </ownedChild>
+              </children>
+              <children>
+                <containmentFeature
+                    href="esb.ecore#//InboundEndpointContainer/onErrorSequenceContainer"/>
+                <ownedChild>
+                  <domainMetaElement
+                      href="esb.ecore#//InboundEndpointOnErrorSequenceContainer"/>
+                  <diagramNode
+                      href="esb.gmfgraph#InboundEndpointSequenceContainer"/>
+                  <children
+                      referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild">
+                    <containmentFeature
+                        href="esb.ecore#//InboundEndpointOnErrorSequenceContainer/mediatorFlow"/>
+                  </children>
+                </ownedChild>
+              </children>
+            </ownedChild>
+          </children>
+        </ownedChild>
+      </children>
       <compartments
-          children="//@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.6 //@nodes.0/@ownedChild/@children.7 //@nodes.0/@ownedChild/@children.8 //@nodes.0/@ownedChild/@children.9 //@nodes.0/@ownedChild/@children.10 //@nodes.0/@ownedChild/@children.11">
+          children="//@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.6 //@nodes.0/@ownedChild/@children.7 //@nodes.0/@ownedChild/@children.8 //@nodes.0/@ownedChild/@children.9 //@nodes.0/@ownedChild/@children.10 //@nodes.0/@ownedChild/@children.11 //@nodes.0/@ownedChild/@children.12">
         <compartment
             href="esb.gmfgraph#ContentsCompartment"/>
       </compartments>

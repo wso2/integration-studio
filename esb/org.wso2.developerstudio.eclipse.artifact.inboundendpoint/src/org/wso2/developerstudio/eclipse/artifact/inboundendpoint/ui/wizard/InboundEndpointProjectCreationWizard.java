@@ -44,7 +44,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.Activator;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.model.InboundEndpointModel;
-import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactConstants;
+import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointImageUtils;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
@@ -73,7 +73,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 	public InboundEndpointProjectCreationWizard() {
 		this.inboundEndpointModel = new InboundEndpointModel();
 		setModel(this.inboundEndpointModel);
-		setWindowTitle(InboundEndpointArtifactConstants.ieWizardWindowTitle);
+		setWindowTitle(InboundEndpointArtifactProperties.ieWizardWindowTitle);
 		setDefaultPageImageDescriptor(InboundEndpointImageUtils.getInstance().getImageDescriptor("local-entries-wizard-artifact.png"));
 	}
 	
@@ -103,7 +103,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		esbProjectArtifact.fromFile(esbProject.getFile("artifact.xml").getLocation().toFile());
 
 		if (getModel().getSelectedOption().equals(
-				InboundEndpointArtifactConstants.wizardOptionImportOption)) {
+				InboundEndpointArtifactProperties.wizardOptionImportOption)) {
 			inboundEndpointFile = location.getFile(new Path(getModel().getImportFile().getName()));
 			if (inboundEndpointFile.exists()) {
 				if (!MessageDialog.openQuestion(getShell(), "WARNING",
@@ -277,7 +277,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		String path = dbsFile.getParent().getFullPath()+"/";
 		String source = FileUtils.getContentAsString(file);
 		Openable openable = ESBGraphicalEditor.getOpenable();
-		openable.editorOpen(file.getName(),"localentry",path+"localentry_", source);
+		openable.editorOpen(file.getName(),"inboundEndpoint",path+"inboundEndpoint_", source);
 		}catch(Exception e){
 			log.error("Cannot open the editor", e);
 		}

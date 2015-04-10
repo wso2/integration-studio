@@ -2334,6 +2334,39 @@
           accessor="getFigureFastXSLTMediatorDescriptionFigure"
           figure="//@figures.0/@descriptors.112/@actualFigure/@children.1"/>
     </descriptors>
+    <descriptors
+        name="InboundEndpointFigure">
+      <actualFigure
+          xsi:type="gmfgraph:RoundedRectangle"
+          name="InboundEndpointFigure"
+          lineKind="LINE_DASH">
+        <layout
+            xsi:type="gmfgraph:GridLayout"/>
+        <backgroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="255"
+            green="255"
+            blue="255"/>
+      </actualFigure>
+    </descriptors>
+    <descriptors
+        name="InboundEndpointContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="InboundEndpointContainerFigure"/>
+    </descriptors>
+    <descriptors
+        name="InboundEndpointSequenceContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="InboundEndpointSequenceContainerFigure"/>
+    </descriptors>
+    <descriptors
+        name="InboundEndpointOnErrorSequenceContainerFigure">
+      <actualFigure
+          xsi:type="gmfgraph:Rectangle"
+          name="InboundEndpointOnErrorSequenceContainerFigure"/>
+    </descriptors>
   </figures>
   <nodes
       name="EsbServer"
@@ -3322,6 +3355,34 @@
       affixedParentSide="WEST"/>
   <nodes
       name="FastXSLTMediatorOutputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="EAST"/>
+  <nodes
+      name="InboundEndpoint"
+      figure="InboundEndpointFigure"/>
+  <nodes
+      name="InboundEndpointContainer"
+      figure="InboundEndpointContainerFigure"/>
+  <nodes
+      name="InboundEndpointSequenceContainer"
+      figure="InboundEndpointSequenceContainerFigure"/>
+  <nodes
+      name="InboundEndpointOnErrorSequenceContainer"
+      figure="InboundEndpointOnErrorSequenceContainerFigure"/>
+  <nodes
+      name="InboundEndpointSequenceInputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="EAST"/>
+  <nodes
+      name="InboundEndpointSequenceOutputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="WEST"/>
+  <nodes
+      name="InboundEndpointOnErrorSequenceOutputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="WEST"/>
+  <nodes
+      name="InboundEndpointOnErrorSequenceInputConnector"
       figure="EastPointerFigure"
       affixedParentSide="EAST"/>
   <connections

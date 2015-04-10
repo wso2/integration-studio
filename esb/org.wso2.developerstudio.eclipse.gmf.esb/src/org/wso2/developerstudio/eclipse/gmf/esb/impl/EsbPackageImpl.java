@@ -231,6 +231,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.HttpMethodType;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorInputConnector;
@@ -1824,6 +1832,62 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EClass fastXSLTMediatorOutputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointSequenceContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointOnErrorSequenceContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointSequenceInputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointSequenceOutputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointOnErrorSequenceOutputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointOnErrorSequenceInputConnectorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9556,6 +9620,195 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInboundEndpoint() {
+		return inboundEndpointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpoint_SequenceInputConnector() {
+		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpoint_SequenceOutputConnector() {
+		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpoint_OnErrorSequenceInputConnector() {
+		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpoint_OnErrorSequenceOutputConnector() {
+		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpoint_Container() {
+		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Name() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Sequence() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_OnErrorSequence() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Protocol() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInboundEndpointContainer() {
+		return inboundEndpointContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpointContainer_SequenceContainer() {
+		return (EReference)inboundEndpointContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpointContainer_OnErrorSequenceContainer() {
+		return (EReference)inboundEndpointContainerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInboundEndpointSequenceContainer() {
+		return inboundEndpointSequenceContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpointSequenceContainer_MediatorFlow() {
+		return (EReference)inboundEndpointSequenceContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInboundEndpointOnErrorSequenceContainer() {
+		return inboundEndpointOnErrorSequenceContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpointOnErrorSequenceContainer_MediatorFlow() {
+		return (EReference)inboundEndpointOnErrorSequenceContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInboundEndpointSequenceInputConnector() {
+		return inboundEndpointSequenceInputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInboundEndpointSequenceOutputConnector() {
+		return inboundEndpointSequenceOutputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInboundEndpointOnErrorSequenceOutputConnector() {
+		return inboundEndpointOnErrorSequenceOutputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInboundEndpointOnErrorSequenceInputConnector() {
+		return inboundEndpointOnErrorSequenceInputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getArtifactType() {
 		return artifactTypeEEnum;
 	}
@@ -17208,6 +17461,35 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		fastXSLTMediatorOutputConnectorEClass = createEClass(FAST_XSLT_MEDIATOR_OUTPUT_CONNECTOR);
 
+		inboundEndpointEClass = createEClass(INBOUND_ENDPOINT);
+		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR);
+		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__SEQUENCE_OUTPUT_CONNECTOR);
+		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR);
+		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR);
+		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__CONTAINER);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__NAME);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SEQUENCE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ON_ERROR_SEQUENCE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__PROTOCOL);
+
+		inboundEndpointContainerEClass = createEClass(INBOUND_ENDPOINT_CONTAINER);
+		createEReference(inboundEndpointContainerEClass, INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER);
+		createEReference(inboundEndpointContainerEClass, INBOUND_ENDPOINT_CONTAINER__ON_ERROR_SEQUENCE_CONTAINER);
+
+		inboundEndpointSequenceContainerEClass = createEClass(INBOUND_ENDPOINT_SEQUENCE_CONTAINER);
+		createEReference(inboundEndpointSequenceContainerEClass, INBOUND_ENDPOINT_SEQUENCE_CONTAINER__MEDIATOR_FLOW);
+
+		inboundEndpointOnErrorSequenceContainerEClass = createEClass(INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER);
+		createEReference(inboundEndpointOnErrorSequenceContainerEClass, INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER__MEDIATOR_FLOW);
+
+		inboundEndpointSequenceInputConnectorEClass = createEClass(INBOUND_ENDPOINT_SEQUENCE_INPUT_CONNECTOR);
+
+		inboundEndpointSequenceOutputConnectorEClass = createEClass(INBOUND_ENDPOINT_SEQUENCE_OUTPUT_CONNECTOR);
+
+		inboundEndpointOnErrorSequenceOutputConnectorEClass = createEClass(INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR);
+
+		inboundEndpointOnErrorSequenceInputConnectorEClass = createEClass(INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_INPUT_CONNECTOR);
+
 		// Create enums
 		artifactTypeEEnum = createEEnum(ARTIFACT_TYPE);
 		callMediatorEndpointTypeEEnum = createEEnum(CALL_MEDIATOR_ENDPOINT_TYPE);
@@ -17663,6 +17945,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		fastXSLTMediatorEClass.getESuperTypes().add(this.getMediator());
 		fastXSLTMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 		fastXSLTMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+		inboundEndpointEClass.getESuperTypes().add(this.getEsbElement());
+		inboundEndpointContainerEClass.getESuperTypes().add(this.getEsbElement());
+		inboundEndpointSequenceContainerEClass.getESuperTypes().add(this.getEsbNode());
+		inboundEndpointOnErrorSequenceContainerEClass.getESuperTypes().add(this.getEsbNode());
+		inboundEndpointSequenceInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
+		inboundEndpointSequenceOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+		inboundEndpointOnErrorSequenceOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+		inboundEndpointOnErrorSequenceInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(esbDiagramEClass, EsbDiagram.class, "EsbDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -19247,6 +19537,35 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(fastXSLTMediatorOutputConnectorEClass, FastXSLTMediatorOutputConnector.class, "FastXSLTMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(inboundEndpointEClass, InboundEndpoint.class, "InboundEndpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInboundEndpoint_SequenceInputConnector(), this.getInboundEndpointSequenceInputConnector(), null, "sequenceInputConnector", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInboundEndpoint_SequenceOutputConnector(), this.getInboundEndpointSequenceOutputConnector(), null, "sequenceOutputConnector", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInboundEndpoint_OnErrorSequenceInputConnector(), this.getInboundEndpointOnErrorSequenceInputConnector(), null, "onErrorSequenceInputConnector", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInboundEndpoint_OnErrorSequenceOutputConnector(), this.getInboundEndpointOnErrorSequenceOutputConnector(), null, "onErrorSequenceOutputConnector", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInboundEndpoint_Container(), this.getInboundEndpointContainer(), null, "container", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Name(), ecorePackage.getEString(), "name", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Sequence(), ecorePackage.getEString(), "sequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_OnErrorSequence(), ecorePackage.getEString(), "onErrorSequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Protocol(), ecorePackage.getEString(), "protocol", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(inboundEndpointContainerEClass, InboundEndpointContainer.class, "InboundEndpointContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInboundEndpointContainer_SequenceContainer(), this.getInboundEndpointSequenceContainer(), null, "sequenceContainer", null, 0, 1, InboundEndpointContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInboundEndpointContainer_OnErrorSequenceContainer(), this.getInboundEndpointOnErrorSequenceContainer(), null, "onErrorSequenceContainer", null, 0, 1, InboundEndpointContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(inboundEndpointSequenceContainerEClass, InboundEndpointSequenceContainer.class, "InboundEndpointSequenceContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInboundEndpointSequenceContainer_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, InboundEndpointSequenceContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(inboundEndpointOnErrorSequenceContainerEClass, InboundEndpointOnErrorSequenceContainer.class, "InboundEndpointOnErrorSequenceContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInboundEndpointOnErrorSequenceContainer_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, InboundEndpointOnErrorSequenceContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(inboundEndpointSequenceInputConnectorEClass, InboundEndpointSequenceInputConnector.class, "InboundEndpointSequenceInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(inboundEndpointSequenceOutputConnectorEClass, InboundEndpointSequenceOutputConnector.class, "InboundEndpointSequenceOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(inboundEndpointOnErrorSequenceOutputConnectorEClass, InboundEndpointOnErrorSequenceOutputConnector.class, "InboundEndpointOnErrorSequenceOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(inboundEndpointOnErrorSequenceInputConnectorEClass, InboundEndpointOnErrorSequenceInputConnector.class, "InboundEndpointOnErrorSequenceInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize enums and add enum literals
 		initEEnum(artifactTypeEEnum, ArtifactType.class, "ArtifactType");
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.SYNAPSE_CONFIG);
@@ -19261,6 +19580,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.COMPLEX_ENDPOINT);
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.MESSAGE_STORE);
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.MESSAGE_PROCESSOR);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.INBOUND_ENDPOINT);
 
 		initEEnum(callMediatorEndpointTypeEEnum, CallMediatorEndpointType.class, "CallMediatorEndpointType");
 		addEEnumLiteral(callMediatorEndpointTypeEEnum, CallMediatorEndpointType.INLINE);

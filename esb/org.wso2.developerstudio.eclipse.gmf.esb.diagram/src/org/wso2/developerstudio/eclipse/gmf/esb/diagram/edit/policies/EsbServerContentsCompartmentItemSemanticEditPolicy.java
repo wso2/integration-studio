@@ -3,6 +3,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.ComplexEndpointsCreateCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.InboundEndpointCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.LocalEntryCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.MergeNodeCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.MessageProcessorCreateCommand;
@@ -60,6 +61,9 @@ public class EsbServerContentsCompartmentItemSemanticEditPolicy extends
 		}
 		if (EsbElementTypes.MessageProcessor_3701 == req.getElementType()) {
 			return getGEFWrapper(new MessageProcessorCreateCommand(req));
+		}
+		if (EsbElementTypes.InboundEndpoint_3767 == req.getElementType()) {
+			return getGEFWrapper(new InboundEndpointCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

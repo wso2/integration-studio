@@ -47,6 +47,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediato
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HTTPEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HTTPEndPointInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HeaderMediatorInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.IterateMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointInputConnectorEditPart;
@@ -375,6 +377,12 @@ public class EsbModelingAssistantProviderOfScriptMediatorOutputConnectorEditPart
 		if (targetEditPart instanceof APIResourceInSequenceInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
+		if (targetEditPart instanceof InboundEndpointSequenceInputConnectorEditPart) {
+			types.add(EsbElementTypes.EsbLink_4001);
+		}
+		if (targetEditPart instanceof InboundEndpointOnErrorSequenceInputConnectorEditPart) {
+			types.add(EsbElementTypes.EsbLink_4001);
+		}
 		return types;
 	}
 
@@ -478,6 +486,8 @@ public class EsbModelingAssistantProviderOfScriptMediatorOutputConnectorEditPart
 			types.add(EsbElementTypes.APIResourceInputConnector_3670);
 			types.add(EsbElementTypes.APIResourceFaultInputConnector_3672);
 			types.add(EsbElementTypes.APIResourceInSequenceInputConnector_3747);
+			types.add(EsbElementTypes.InboundEndpointSequenceInputConnector_3768);
+			types.add(EsbElementTypes.InboundEndpointOnErrorSequenceInputConnector_3770);
 		}
 		return types;
 	}

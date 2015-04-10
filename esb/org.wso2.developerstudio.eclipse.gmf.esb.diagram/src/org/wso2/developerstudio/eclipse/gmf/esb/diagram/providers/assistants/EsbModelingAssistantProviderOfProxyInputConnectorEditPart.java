@@ -157,6 +157,8 @@ public class EsbModelingAssistantProviderOfProxyInputConnectorEditPart extends
 			types.add(EsbElementTypes.APIResourceOutputConnector_3671);
 			types.add(EsbElementTypes.APIResourceOutSequenceOutputConnector_3730);
 			types.add(EsbElementTypes.ComplexEndpointsOutputConnector_3679);
+			types.add(EsbElementTypes.InboundEndpointSequenceOutputConnector_3769);
+			types.add(EsbElementTypes.InboundEndpointOnErrorSequenceOutputConnector_3771);
 		}
 		return types;
 	}

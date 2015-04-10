@@ -199,7 +199,7 @@ public class FastXSLTMediatorOutputConnectorEditPart extends
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	public List<IElementType> getMARelTypesOnSource() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
 		types.add(EsbElementTypes.EsbLink_4001);
@@ -340,6 +340,7 @@ public class FastXSLTMediatorOutputConnectorEditPart extends
 		}
 		return types;
 	}
+
 	//TODO
 	/**
 	 * @generated
@@ -392,7 +393,6 @@ public class FastXSLTMediatorOutputConnectorEditPart extends
 		}
 		return types;
 	}
-
 
 	/**
 	 * @generated

@@ -32,6 +32,7 @@ import org.apache.synapse.config.SynapseConfigurationBuilder;
 import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.Template;
+import org.apache.synapse.inbound.InboundEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
 import org.apache.synapse.rest.API;
@@ -71,6 +72,7 @@ import org.apache.synapse.config.xml.TemplateMediatorFactory;
 import org.apache.synapse.config.xml.endpoints.EndpointFactory;
 import org.apache.synapse.config.xml.endpoints.TemplateFactory;
 import org.apache.synapse.config.xml.endpoints.WSDLEndpointFactory;
+import org.apache.synapse.config.xml.inbound.InboundEndpointFactory;
 import org.apache.synapse.task.TaskDescription;
 import org.apache.synapse.task.TaskDescriptionFactory;
 import org.apache.synapse.config.xml.MessageStoreFactory;
@@ -214,6 +216,8 @@ public class Deserializer {
 			artifactType=ArtifactType.MESSAGE_STORE;
 		} else if("messageProcessor".equals(localName)){
 			artifactType=ArtifactType.MESSAGE_PROCESSOR;
+		} else if("inboundEndpoint".equals(localName)){
+			artifactType=ArtifactType.INBOUND_ENDPOINT;
 		} else{
 			throw new Exception("Unrecognized source configuration section " + localName);
 		}
@@ -310,6 +314,10 @@ public class Deserializer {
 		case MESSAGE_PROCESSOR:
 			MessageProcessor messageProcessor = DummyMessageProcessorFactory.createMessageProcessor(element, properties);
 			artifacts.put(messageProcessor.getName(), messageProcessor);
+			break;
+		case INBOUND_ENDPOINT:
+			InboundEndpoint inboundEndpoint= InboundEndpointFactory.createInboundEndpoint(element);
+			artifacts.put(inboundEndpoint.getName(), inboundEndpoint);
 			break;
 		default:
 			break;

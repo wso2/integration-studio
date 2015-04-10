@@ -49,6 +49,7 @@ import org.apache.synapse.config.xml.SequenceMediatorSerializer;
 import org.apache.synapse.config.xml.SynapseXMLConfigurationSerializer;
 import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
 import org.apache.synapse.config.xml.endpoints.TemplateSerializer;
+import org.apache.synapse.config.xml.inbound.InboundEndpointSerializer;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.template.TemplateMediator;
@@ -68,6 +69,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.LocalEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator;
@@ -321,6 +323,17 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 		transformer.transform(info, visualService );
 		return info.getMainSequence();
 	}
+	
+    private org.apache.synapse.inbound.InboundEndpoint transformInbundEndpoint(InboundEndpoint visualInboundEndpoint) throws Exception{
+        TransformationInfo info = new TransformationInfo();
+        info.getTransformedMediators().clear();
+        SynapseConfiguration configuration = new SynapseConfiguration();
+        info.setSynapseConfiguration(configuration);
+        InboundEndpointTransformer transformer = new InboundEndpointTransformer();
+        transformer.transform(info, visualInboundEndpoint);
+        org.apache.synapse.inbound.InboundEndpoint inboundEndpoint = configuration.getInboundEndpoint(visualInboundEndpoint.getName());
+        return inboundEndpoint;
+    }
 
 	public String designToSource(EsbServer serverModel) throws Exception {
 		SynapseXMLConfigurationSerializer serializer = new SynapseXMLConfigurationSerializer();
@@ -397,6 +410,12 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 					configOM = MessageProcessorTransformer.createMessageProcessor((MessageProcessor) child);
 				}
 				break;
+            case INBOUND_ENDPOINT:
+                if (child instanceof InboundEndpoint) {
+                        configOM = InboundEndpointSerializer.serializeInboundEndpoint(transformInbundEndpoint((InboundEndpoint)child));
+                        System.out.println(configOM.toString());
+                }
+                break;
 			case SYNAPSE_CONFIG:
 			default:
 				configOM = serializer.serializeConfiguration(transform(serverModel));

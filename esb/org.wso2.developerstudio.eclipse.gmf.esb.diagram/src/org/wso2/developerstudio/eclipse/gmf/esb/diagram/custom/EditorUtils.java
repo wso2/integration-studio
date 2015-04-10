@@ -62,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbDiagramEdi
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment10EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment11EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
@@ -401,6 +402,19 @@ public class EditorUtils {
 		}
 		if(temp instanceof APIResourceEditPart){
 			return (APIResourceEditPart) temp;
+		}
+		else{
+			return null;
+		}
+	}
+	
+	public static InboundEndpointEditPart getInboundEndpoint(AbstractConnectorEditPart connector){
+		EditPart temp=connector;
+		while((temp !=null)&&(!(temp instanceof InboundEndpointEditPart))){
+			temp=temp.getParent();			
+		}
+		if(temp instanceof InboundEndpointEditPart){
+			return (InboundEndpointEditPart) temp;
 		}
 		else{
 			return null;

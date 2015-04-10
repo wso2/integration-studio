@@ -1078,6 +1078,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String MediatorFlowMediatorFlowCompartment25EditPart_title;
+
+	/**
+	 * @generated
+	 */
+	public static String MediatorFlowMediatorFlowCompartment26EditPart_title;
+
+	/**
+	 * @generated
+	 */
 	public static String CommandName_OpenDiagram;
 
 	/**
@@ -1349,6 +1359,26 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_FastXSLTMediatorOutputConnector_3766_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_InboundEndpointSequenceInputConnector_3768_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_InboundEndpointSequenceOutputConnector_3769_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_InboundEndpointOnErrorSequenceInputConnector_3770_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_InboundEndpointOnErrorSequenceOutputConnector_3771_outgoinglinks;
 
 	/**
 	 * @generated

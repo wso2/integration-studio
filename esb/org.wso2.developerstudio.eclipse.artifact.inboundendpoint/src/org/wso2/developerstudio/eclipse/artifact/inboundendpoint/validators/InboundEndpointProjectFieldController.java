@@ -27,7 +27,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.Activator;
 import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.model.InboundEndpointModel;
-import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactConstants;
+import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEndpointArtifactProperties;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -45,7 +45,7 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 			ProjectDataModel model) throws FieldValidationException {
 		InboundEndpointModel inboundEndpointModel =(InboundEndpointModel)model;
 		String selectedInboundEndpointType = inboundEndpointModel.getSelectedInboundEndpointType();
-		if (modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionIEName)) {
+		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionIEName)) {
 			CommonFieldValidator.validateArtifactName(value);
 			if (value != null) {
 				String resource = value.toString();
@@ -60,41 +60,41 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 							List<ESBArtifact> allArtifacts = esbProjectArtifact.getAllESBArtifacts();
 							for (ESBArtifact artifact : allArtifacts) {
 								if (resource.equals(artifact.getName())) {
-									throw new FieldValidationException("");
+									throw new FieldValidationException("Artifact name already exists");
 								}
 							}
 
 						} catch (Exception e) {
-							log.error(e);
-							throw new FieldValidationException("Validation failure - Error while reading artifact.xml");
+							log.error("Validation failure - Error while reading artifact.xml",e);
+							throw new FieldValidationException("Validation failure - Error while reading artifact.xml",e);
 						}
 					}
 				}		 	 
 			}
 
-		} else if (modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionImportOption)) {
+		} else if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionImportOption)) {
 			CommonFieldValidator.validateImportFile(value);
 		
-		} else if (InboundEndpointArtifactConstants.wizardOptionSaveLocation.equals(modelProperty)) {
+		} else if (InboundEndpointArtifactProperties.wizardOptionSaveLocation.equals(modelProperty)) {
 			IResource resource = (IResource)value;
 			if(resource==null || !resource.exists()){	
 				throw new FieldValidationException("Specified project or path doesn't exist");
 			}
 		}
-		else if(InboundEndpointArtifactConstants.wizardOptionSequence.equals(modelProperty)){
+		else if(InboundEndpointArtifactProperties.wizardOptionSequence.equals(modelProperty)){
 				String resource = value.toString();
 				if(resource==null||"".equals(resource)){
 					throw new FieldValidationException("Sequence value cannot be empty");
 				}				
 		}	
-		else if(InboundEndpointArtifactConstants.wizardOptionErrorSequence.equals(modelProperty)){
+		else if(InboundEndpointArtifactProperties.wizardOptionErrorSequence.equals(modelProperty)){
 				String resource = value.toString();
 				if(resource==null||"".equals(resource)){
 					throw new FieldValidationException("Error sequence value cannot be empty");
 				}
 		}
-		else if(InboundEndpointArtifactConstants.wizardOptionInboundHTTPPort.equals(modelProperty)){
-			 if(InboundEndpointArtifactConstants.typeHTTP.equals(selectedInboundEndpointType)){
+		else if(InboundEndpointArtifactProperties.wizardOptionInboundHTTPPort.equals(modelProperty)){
+			 if(InboundEndpointArtifactProperties.typeHTTP.equals(selectedInboundEndpointType)){
 				 String resource = value.toString();
 					if(resource==null||"".equals(resource)){
 						throw new FieldValidationException("Inbound http port value cannot be empty");
@@ -105,13 +105,13 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 	
 	public boolean isVisibleField(String modelProperty, ProjectDataModel model) {
 		boolean visibleField = super.isVisibleField(modelProperty, model);
-		if(modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionSequence) || 
-		   modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionErrorSequence)  || 
-		   modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionInboundHTTPPort) ||
-		   modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionInterval) ||
-		   modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionSequential) ||
-		   modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionVFSFileURI) ||
-		   modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionClass)){
+		if(modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionSequence) || 
+		   modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionErrorSequence)  || 
+		   modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionInboundHTTPPort) ||
+		   modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionInterval) ||
+		   modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionSequential) ||
+		   modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionVFSFileURI) ||
+		   modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionClass)){
 			Map<String, List<String>> leTypeFieldProperties = getLETypeFieldProperties();
 			List<String> list = leTypeFieldProperties.get(((InboundEndpointModel) model).getSelectedInboundEndpointType());
 			
@@ -129,7 +129,7 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 
 		
 		
-		if (modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionAvailableIEs)) {
+		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionAvailableIEs)) {
 			List<OMElement> availableLEList = ((InboundEndpointModel) model).getAvailableLEList();
 			visibleField = (availableLEList != null && availableLEList.size() > 0);
 		}
@@ -139,34 +139,34 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 	
 	private Map<String, List<String>> getLETypeFieldProperties() {
 		Map<String, List<String>> map = new HashMap<String, List<String>>();
-		map.put(InboundEndpointArtifactConstants.typeHTTP, Arrays.asList(new String[] {InboundEndpointArtifactConstants.wizardOptionSequence,InboundEndpointArtifactConstants.wizardOptionErrorSequence,InboundEndpointArtifactConstants.wizardOptionInboundHTTPPort}));
-		map.put(InboundEndpointArtifactConstants.typeFile, Arrays.asList(new String[] {InboundEndpointArtifactConstants.wizardOptionSequence,InboundEndpointArtifactConstants.wizardOptionErrorSequence,InboundEndpointArtifactConstants.wizardOptionInterval,InboundEndpointArtifactConstants.wizardOptionSequential,InboundEndpointArtifactConstants.wizardOptionVFSFileURI}));
-		map.put(InboundEndpointArtifactConstants.typeJMS, Arrays.asList(new String[] {InboundEndpointArtifactConstants.wizardOptionInboundHTTPPort}));
-		map.put(InboundEndpointArtifactConstants.typeCustom, Arrays.asList(new String[] {InboundEndpointArtifactConstants.wizardOptionSequence,InboundEndpointArtifactConstants.wizardOptionErrorSequence,InboundEndpointArtifactConstants.wizardOptionClass, InboundEndpointArtifactConstants.wizardOptionInterval, InboundEndpointArtifactConstants.wizardOptionSequential}));
+		map.put(InboundEndpointArtifactProperties.typeHTTP, Arrays.asList(new String[] {InboundEndpointArtifactProperties.wizardOptionSequence,InboundEndpointArtifactProperties.wizardOptionErrorSequence,InboundEndpointArtifactProperties.wizardOptionInboundHTTPPort}));
+		map.put(InboundEndpointArtifactProperties.typeFile, Arrays.asList(new String[] {InboundEndpointArtifactProperties.wizardOptionSequence,InboundEndpointArtifactProperties.wizardOptionErrorSequence,InboundEndpointArtifactProperties.wizardOptionInterval,InboundEndpointArtifactProperties.wizardOptionSequential,InboundEndpointArtifactProperties.wizardOptionVFSFileURI}));
+		map.put(InboundEndpointArtifactProperties.typeJMS, Arrays.asList(new String[] {InboundEndpointArtifactProperties.wizardOptionInboundHTTPPort}));
+		map.put(InboundEndpointArtifactProperties.typeCustom, Arrays.asList(new String[] {InboundEndpointArtifactProperties.wizardOptionSequence,InboundEndpointArtifactProperties.wizardOptionErrorSequence,InboundEndpointArtifactProperties.wizardOptionClass, InboundEndpointArtifactProperties.wizardOptionInterval, InboundEndpointArtifactProperties.wizardOptionSequential}));
 		
 		return map;
 	}
 	
 	public List<String> getUpdateFields(String modelProperty, ProjectDataModel model) {
 		List<String> updateFields = super.getUpdateFields(modelProperty, model);
-		if (modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionIEType)) {
+		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionIEType)) {
 			Map<String, List<String>> templateFieldProperties = getLETypeFieldProperties();
 			for (List<String> fields : templateFieldProperties.values()) {
 				updateFields.addAll(fields);
 			}
-		}else if(modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionImportSourceUrlIEUrl)){
-			updateFields.add(InboundEndpointArtifactConstants.wizardOptionImportSourceUrlIEUrl);
-		}else if(modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionImportFilePath)){
-			updateFields.add(InboundEndpointArtifactConstants.wizardOptionAvailableIEs);
-		}else if (modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionCreateESBProject)) {
-			updateFields.add(InboundEndpointArtifactConstants.wizardOptionSaveLocation);
+		}else if(modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionImportSourceUrlIEUrl)){
+			updateFields.add(InboundEndpointArtifactProperties.wizardOptionImportSourceUrlIEUrl);
+		}else if(modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionImportFilePath)){
+			updateFields.add(InboundEndpointArtifactProperties.wizardOptionAvailableIEs);
+		}else if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionCreateESBProject)) {
+			updateFields.add(InboundEndpointArtifactProperties.wizardOptionSaveLocation);
 		}
 		return updateFields;
 	}
 	
 	public boolean isEnableField(String modelProperty, ProjectDataModel model) {
 		boolean enableField = super.isEnableField(modelProperty, model);
-		if(modelProperty.equals(InboundEndpointArtifactConstants.wizardOptionImportFilePath)){
+		if(modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionImportFilePath)){
 			enableField = true;
 		}
 		return enableField;

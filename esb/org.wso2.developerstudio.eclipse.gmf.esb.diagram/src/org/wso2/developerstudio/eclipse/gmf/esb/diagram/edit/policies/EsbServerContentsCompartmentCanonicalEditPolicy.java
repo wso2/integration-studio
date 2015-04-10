@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ComplexEndpointsEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LocalEntryEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MergeNodeEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MessageProcessorEditPart;
@@ -100,6 +101,7 @@ public class EsbServerContentsCompartmentCanonicalEditPolicy extends
 		case ComplexEndpointsEditPart.VISUAL_ID:
 		case MessageStoreEditPart.VISUAL_ID:
 		case MessageProcessorEditPart.VISUAL_ID:
+		case InboundEndpointEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

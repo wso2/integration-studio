@@ -340,6 +340,7 @@ public class XSLTMediatorOutputConnectorEditPart extends
 		}
 		return types;
 	}
+
 	//TODO
 	/**
 	 * @generated

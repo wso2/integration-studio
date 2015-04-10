@@ -33,6 +33,7 @@ import org.apache.synapse.endpoints.SALoadbalanceEndpoint;
 import org.apache.synapse.endpoints.Template;
 import org.apache.synapse.endpoints.TemplateEndpoint;
 import org.apache.synapse.endpoints.WSDLEndpoint;
+import org.apache.synapse.inbound.InboundEndpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.bsf.ScriptMediator;
 import org.apache.synapse.mediators.builtin.CallMediator;
@@ -193,6 +194,7 @@ public class EsbDeserializerRegistry {
 		addDeserializer(CallMediator.class, new CallMediatorDeserializer());
 		addDeserializer(CloudConnectorOperationExt.class, new CloudConnectorOperationDeserializer());
 		addDeserializer(DataMapperMediator.class, new DataMapperMediatorDeserializer());
+		addDeserializer(InboundEndpoint.class, new InboundEndpointDeserializer());
 	}
 	
 	/**

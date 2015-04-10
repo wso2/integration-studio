@@ -101,7 +101,7 @@ public class FastXSLTMediatorInputConnectorEditPart extends
 	protected IFigure createNodeShape() {
 		return primaryShape = new EastPointerFigure();
 	}
-	
+
 	/**
 	 * @generated NOT
 	 */
@@ -166,7 +166,6 @@ public class FastXSLTMediatorInputConnectorEditPart extends
 		}
 		return types;
 	}
-
 
 	/**
 	 * @generated

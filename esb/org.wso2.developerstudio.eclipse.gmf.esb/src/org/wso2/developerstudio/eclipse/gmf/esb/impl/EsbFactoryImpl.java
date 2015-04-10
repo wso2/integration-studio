@@ -611,6 +611,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createCloudConnectorOperationParamEditorTypeFromString(eDataType, initialValue);
 			case EsbPackage.DATA_MAPPER_MEDIATOR_DATA_TYPES:
 				return createDataMapperMediatorDataTypesFromString(eDataType, initialValue);
+			case EsbPackage.PROTOCOL:
+				return createProtocolFromString(eDataType, initialValue);
 			case EsbPackage.MAP:
 				return createMapFromString(eDataType, initialValue);
 			default:
@@ -833,6 +835,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertCloudConnectorOperationParamEditorTypeToString(eDataType, instanceValue);
 			case EsbPackage.DATA_MAPPER_MEDIATOR_DATA_TYPES:
 				return convertDataMapperMediatorDataTypesToString(eDataType, instanceValue);
+			case EsbPackage.PROTOCOL:
+				return convertProtocolToString(eDataType, instanceValue);
 			case EsbPackage.MAP:
 				return convertMapToString(eDataType, instanceValue);
 			default:
@@ -6445,6 +6449,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertDataMapperMediatorDataTypesToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Protocol createProtocolFromString(EDataType eDataType, String initialValue) {
+		Protocol result = Protocol.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertProtocolToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

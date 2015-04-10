@@ -17830,13 +17830,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int API_RESOURCE__FAULT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 22;
 
 	/**
+	 * The feature id for the '<em><b>Protocol</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_RESOURCE__PROTOCOL = ESB_NODE_FEATURE_COUNT + 23;
+
+	/**
 	 * The number of structural features of the '<em>API Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 23;
+	int API_RESOURCE_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 24;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceInputConnectorImpl <em>API Resource Input Connector</em>}' class.
@@ -21110,6 +21119,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int DATA_MAPPER_MEDIATOR_DATA_TYPES = 445;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Protocol <em>Protocol</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.Protocol
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getProtocol()
+	 * @generated
+	 */
+	int PROTOCOL = 446;
+
+	/**
 	 * The meta object id for the '<em>Map</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21117,7 +21136,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 446;
+	int MAP = 447;
 
 
 	/**
@@ -26816,6 +26835,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getAPIResource_FaultSequenceName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getProtocol <em>Protocol</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Protocol</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getProtocol()
+	 * @see #getAPIResource()
+	 * @generated
+	 */
+	EAttribute getAPIResource_Protocol();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResourceInputConnector <em>API Resource Input Connector</em>}'.
@@ -35217,6 +35247,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EEnum getDataMapperMediatorDataTypes();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.Protocol <em>Protocol</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Protocol</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.Protocol
+	 * @generated
+	 */
+	EEnum getProtocol();
+
+	/**
 	 * Returns the meta object for data type '{@link java.util.Map <em>Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -39814,6 +39854,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute API_RESOURCE__FAULT_SEQUENCE_NAME = eINSTANCE.getAPIResource_FaultSequenceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Protocol</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute API_RESOURCE__PROTOCOL = eINSTANCE.getAPIResource_Protocol();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceInputConnectorImpl <em>API Resource Input Connector</em>}' class.
@@ -46716,6 +46764,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum DATA_MAPPER_MEDIATOR_DATA_TYPES = eINSTANCE.getDataMapperMediatorDataTypes();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Protocol <em>Protocol</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.Protocol
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getProtocol()
+		 * @generated
+		 */
+		EEnum PROTOCOL = eINSTANCE.getProtocol();
 
 		/**
 		 * The meta object literal for the '<em>Map</em>' data type.

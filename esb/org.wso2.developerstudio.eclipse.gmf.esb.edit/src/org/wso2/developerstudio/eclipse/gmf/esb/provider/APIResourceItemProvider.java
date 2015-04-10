@@ -81,6 +81,7 @@ public class APIResourceItemProvider
 			addAllowPutPropertyDescriptor(object);
 			addAllowDeletePropertyDescriptor(object);
 			addAllowOptionsPropertyDescriptor(object);
+			addProtocolPropertyDescriptor(object);
 			
 			addInSequenceTypePropertyDescriptor(object);
 			switch (apiResource.getInSequenceType()){
@@ -494,6 +495,28 @@ public class APIResourceItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Protocol feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addProtocolPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_APIResource_protocol_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_APIResource_protocol_feature", "_UI_APIResource_type"),
+				 EsbPackage.Literals.API_RESOURCE__PROTOCOL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_BasicPropertyCategory"), 
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -582,6 +605,7 @@ public class APIResourceItemProvider
 			case EsbPackage.API_RESOURCE__OUT_SEQUENCE_NAME:
 			case EsbPackage.API_RESOURCE__FAULT_SEQUENCE_TYPE:
 			case EsbPackage.API_RESOURCE__FAULT_SEQUENCE_NAME:
+			case EsbPackage.API_RESOURCE__PROTOCOL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.API_RESOURCE__INPUT_CONNECTOR:

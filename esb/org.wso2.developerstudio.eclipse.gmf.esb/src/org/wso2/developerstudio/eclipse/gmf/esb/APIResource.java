@@ -40,6 +40,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getProtocol <em>Protocol</em>}</li>
  * </ul>
  * </p>
  *
@@ -647,5 +648,34 @@ public interface APIResource extends EsbNode {
 	 * @generated
 	 */
 	void setFaultSequenceName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Protocol</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.Protocol}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Protocol</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Protocol</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.Protocol
+	 * @see #setProtocol(Protocol)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_Protocol()
+	 * @model
+	 * @generated
+	 */
+	Protocol getProtocol();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getProtocol <em>Protocol</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Protocol</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.Protocol
+	 * @see #getProtocol()
+	 * @generated
+	 */
+	void setProtocol(Protocol value);
 
 } // APIResource

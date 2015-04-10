@@ -44,6 +44,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
+import org.wso2.developerstudio.eclipse.gmf.esb.Protocol;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SynapseAPI;
@@ -90,6 +91,8 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 			executeSetValueCommand(API_RESOURCE__ALLOW_DELETE, methodList.contains("DELETE"));
 			executeSetValueCommand(API_RESOURCE__ALLOW_PUT, methodList.contains("PUT"));
 			
+			
+			
 			DispatcherHelper dispatcherHelper = resources[i].getDispatcherHelper();
 			if(dispatcherHelper instanceof URITemplateHelper){
 				URITemplateHelper helper = (URITemplateHelper) dispatcherHelper;
@@ -106,6 +109,13 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 			addRootInputConnector(resource.getInputConnector());
 			MediatorFlow mediatorFlow = resource.getContainer().getSequenceAndEndpointContainer().getMediatorFlow();
 			GraphicalEditPart compartment = (GraphicalEditPart)((getEditpart(mediatorFlow)).getChildren().get(0));
+
+			int protocol = resources[i].getProtocol();
+			if (protocol == 2) {
+				executeSetValueCommand(API_RESOURCE__PROTOCOL, Protocol.HTTPS);
+			} else {
+				executeSetValueCommand(API_RESOURCE__PROTOCOL, Protocol.HTTP);
+			}
 			
 			SequenceMediator inSequence = resources[i].getInSequence();
 			if(inSequence!=null){	

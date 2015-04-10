@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceOutSequenceOutputConn
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.Protocol;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
@@ -60,6 +61,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getFaultSequenceType <em>Fault Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getFaultSequenceKey <em>Fault Sequence Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getFaultSequenceName <em>Fault Sequence Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getProtocol <em>Protocol</em>}</li>
  * </ul>
  * </p>
  *
@@ -435,6 +437,26 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 	 * @ordered
 	 */
 	protected String faultSequenceName = FAULT_SEQUENCE_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProtocol()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Protocol PROTOCOL_EDEFAULT = Protocol.HTTP;
+
+	/**
+	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProtocol()
+	 * @generated
+	 * @ordered
+	 */
+	protected Protocol protocol = PROTOCOL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1128,6 +1150,27 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Protocol getProtocol() {
+		return protocol;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProtocol(Protocol newProtocol) {
+		Protocol oldProtocol = protocol;
+		protocol = newProtocol == null ? PROTOCOL_EDEFAULT : newProtocol;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.API_RESOURCE__PROTOCOL, oldProtocol, protocol));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1207,6 +1250,8 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 				return getFaultSequenceKey();
 			case EsbPackage.API_RESOURCE__FAULT_SEQUENCE_NAME:
 				return getFaultSequenceName();
+			case EsbPackage.API_RESOURCE__PROTOCOL:
+				return getProtocol();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1290,6 +1335,9 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 			case EsbPackage.API_RESOURCE__FAULT_SEQUENCE_NAME:
 				setFaultSequenceName((String)newValue);
 				return;
+			case EsbPackage.API_RESOURCE__PROTOCOL:
+				setProtocol((Protocol)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1371,6 +1419,9 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 			case EsbPackage.API_RESOURCE__FAULT_SEQUENCE_NAME:
 				setFaultSequenceName(FAULT_SEQUENCE_NAME_EDEFAULT);
 				return;
+			case EsbPackage.API_RESOURCE__PROTOCOL:
+				setProtocol(PROTOCOL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1429,6 +1480,8 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 				return faultSequenceKey != null;
 			case EsbPackage.API_RESOURCE__FAULT_SEQUENCE_NAME:
 				return FAULT_SEQUENCE_NAME_EDEFAULT == null ? faultSequenceName != null : !FAULT_SEQUENCE_NAME_EDEFAULT.equals(faultSequenceName);
+			case EsbPackage.API_RESOURCE__PROTOCOL:
+				return protocol != PROTOCOL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1471,6 +1524,8 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 		result.append(faultSequenceType);
 		result.append(", faultSequenceName: ");
 		result.append(faultSequenceName);
+		result.append(", protocol: ");
+		result.append(protocol);
 		result.append(')');
 		return result.toString();
 	}

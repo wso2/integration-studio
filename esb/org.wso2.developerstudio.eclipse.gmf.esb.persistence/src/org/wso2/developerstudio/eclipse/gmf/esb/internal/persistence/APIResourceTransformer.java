@@ -53,6 +53,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.Protocol;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator;
@@ -106,6 +107,7 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 			if(visualResource.isAllowOptions()){
 				resource.addMethod("OPTIONS");
 			}
+			resource.setProtocol(visualResource.getProtocol().getValue() + 1);//mapping of protocol in synapse and gmf model 
 			
 			information.getCurrentAPI().addResource(resource);
 

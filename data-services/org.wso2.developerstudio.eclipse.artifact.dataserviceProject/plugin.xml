@@ -79,12 +79,12 @@
           type="service/dataservice">
     </handler>
  </extension>
-    <extension point="org.wso2.developerstudio.eclipse.samples">
+    <!--extension point="org.wso2.developerstudio.eclipse.samples">
       <sample
             class="org.wso2.developerstudio.eclipse.artifact.dataserviceProject.sample.DataserviceSampleContributor"
             id="org.wso2.developerstudio.eclipse.capp.artifact.dataserviceProject.sample"
             isCustomCreateSample="false"
             sampleProjectName="EmployeeDataService">
       </sample>
-   </extension>
+   </extension-->
 </plugin>

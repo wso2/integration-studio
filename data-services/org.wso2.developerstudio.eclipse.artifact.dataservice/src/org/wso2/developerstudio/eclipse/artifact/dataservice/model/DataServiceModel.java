@@ -1,19 +1,54 @@
+/*
+ * Copyright (c) 2012-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.artifact.dataservice.model;
 
 import java.util.LinkedHashMap;
+
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.wizards.IWizardDescriptor;
 import org.wso2.developerstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
+import org.wso2.developerstudio.eclipse.artifact.dataservice.Activator;
+import org.wso2.developerstudio.eclipse.artifact.dataserviceProject.ui.wizard.DataServiceProjectCreationWizard;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class DataServiceModel extends ProjectDataModel {	
 	
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	private String serviceName;
 	private String serviceGroup;
 	private String serviceNS;
 	private String serviceDescription;
 	private String dataSourceId;
 	private String secPolicy="";
+	private IContainer dataServiceSaveLocation;
 	
 	//configuration 
 	private RdbmsConfig rdbmsConfig;
@@ -52,6 +87,15 @@ public class DataServiceModel extends ProjectDataModel {
 			modelPropertyValue = getServiceDescription();
 		} else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_SECPOLICY)) {
 			modelPropertyValue = getSecPolicy();
+		}else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SAVE_FILE)) {
+			IContainer container = getDataServiceSaveLocation();
+			if (container != null && container instanceof IFolder) {
+				IFolder dataServiceFolder = container.getProject().getFolder(
+						DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
+				modelPropertyValue = dataServiceFolder;
+			} else {
+				modelPropertyValue = container;
+			}
 		}
 		return modelPropertyValue;
 	}
@@ -59,7 +103,7 @@ public class DataServiceModel extends ProjectDataModel {
 	
 	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
 		boolean returnValue = super.setModelPropertyValue(key, data);
-		if (key.equals("import.file")) {
+		if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_IMPORT_FILE)) {
 			if (getImportFile() != null && !getImportFile().toString().equals("")) {
 				setProjectName(ProjectUtils.fileNameWithoutExtension(getImportFile().getName()));
 			}
@@ -74,6 +118,21 @@ public class DataServiceModel extends ProjectDataModel {
 			setServiceDescription(data.toString());
 		} else if(key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SERVICE_SECPOLICY)){
 			setSecPolicy(data.toString());
+		}else if (key.equals(DataServiceArtifactConstants.WIZARD_OPTION_SAVE_FILE)) {
+			IContainer container = (IContainer) data;
+			if (container != null && container instanceof IFolder) {
+				IFolder dataServiceFolder = container.getProject().getFolder(
+						DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
+				setDataServiceSaveLocation(dataServiceFolder);
+			} else {
+				setDataServiceSaveLocation(container);
+			}
+		} else if (key.equals(DataServiceArtifactConstants.CREATE_DS_PROJECT)) {
+			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+			IProject dsProject = createDSSProject(shell);
+			if(dsProject!=null){
+				setDataServiceSaveLocation(dsProject);
+			}
 		}
 		return returnValue;
 	}
@@ -158,6 +217,19 @@ public class DataServiceModel extends ProjectDataModel {
 		this.dataSourceConfig = dataSourceConfig;
 	}
 	
+	public void setDataServiceSaveLocation(IContainer dataServiceSaveLocation) {
+		this.dataServiceSaveLocation = dataServiceSaveLocation;
+	}
+
+	public void setDataServiceSaveLocation(String dataServiceSaveLocation) {
+		this.dataServiceSaveLocation = ResourcesPlugin.getWorkspace().getRoot()
+				.getContainerForLocation(new Path(dataServiceSaveLocation));
+	}
+
+	public IContainer getDataServiceSaveLocation() {
+		return dataServiceSaveLocation;
+	}
+
 	public void setDataSourceConfig(int dataSource) {
 		switch(dataSource){
 		case 0:
@@ -588,4 +660,28 @@ public class DataServiceModel extends ProjectDataModel {
 		public LinkedHashMap<String,String>  getConfig();
 	}
 	
+	public static IProject createDSSProject(Shell shell){
+		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard("org.wso2.developerstudio.eclipse.artifact.newdsproject");
+		if (wizardDesc!=null) {
+			try {
+				IProject dsProject = null;
+				DataServiceProjectCreationWizard dsProjectWizard = (DataServiceProjectCreationWizard) wizardDesc.createWizard();
+				IStructuredSelection selection = (IStructuredSelection) PlatformUI
+												.getWorkbench().getActiveWorkbenchWindow()
+												.getSelectionService().getSelection();
+				dsProjectWizard.init(PlatformUI.getWorkbench(), selection);
+				WizardDialog dialog = new WizardDialog(shell, dsProjectWizard);
+				dialog.create();
+				if(dialog.open() ==Dialog.OK){
+					String projectName = dsProjectWizard.getModel().getProjectName();
+					dsProject = ResourcesPlugin.getWorkspace().getRoot()
+							.getProject(projectName);
+				}
+				return dsProject;
+			} catch (CoreException e) {
+				log.error(DataServiceArtifactConstants.ERROR_MESSAGE_CORE_EXCEPTION,e);
+			}
+		}
+		return null;
+	}
 }

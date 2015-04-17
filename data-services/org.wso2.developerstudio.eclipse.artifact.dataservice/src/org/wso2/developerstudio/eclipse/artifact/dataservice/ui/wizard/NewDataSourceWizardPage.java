@@ -148,7 +148,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 
 		setControl(container);
 		
-		model = (DataServiceModel) ((DataServiceProjectCreationWizard)getWizard()).getModel();
+		model = (DataServiceModel) ((DataServiceCreationWizard)getWizard()).getModel();
 		
 		GridData gd_leftcol = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_leftcol.widthHint = 130;

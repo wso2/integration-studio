@@ -48,6 +48,7 @@
 	<module>org.wso2.developerstudio.eclipse.ds.edit</module>
 	<module>org.wso2.developerstudio.eclipse.ds.editor</module>
 	<module>org.wso2.developerstudio.eclipse.ds.source.editor</module>
+        <module>org.wso2.developerstudio.eclipse.artifact.dataserviceProject</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.dataservice</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.dataservice.validator</module>
     </modules>

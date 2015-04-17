@@ -3,20 +3,20 @@
 <plugin>
    <extension
          point="org.eclipse.ui.newWizards">
-         <wizard name="Data Service Project" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
-			class="org.wso2.developerstudio.eclipse.artifact.dataservice.ui.wizard.DataServiceProjectCreationWizard"
+         <wizard name="Data Service" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.service.hosting/org.wso2.developerstudio.eclipse.service.hosting.project.types"
+			class="org.wso2.developerstudio.eclipse.artifact.dataservice.ui.wizard.DataServiceCreationWizard"
 			wizardManifest="project_wizard.xml"
 			id="org.wso2.developerstudio.eclipse.artifact.newdsartifact"
 			project="true"
 			icon="icons/ds-16x16.png">
-			<description>Data Service Project</description>
+			<description>Data Service</description>
 		</wizard>
    </extension>
    <extension point="org.eclipse.core.resources.natures"
 		id="org.wso2.developerstudio.eclipse.ds.project.nature" name="Data Service Project Nature">
 		<runtime>
 			<run
-				class="org.wso2.developerstudio.eclipse.artifact.dataservice.project.nature.DataServiceProjectNature">
+				class="org.wso2.developerstudio.eclipse.artifact.dataservice.project.nature.DataServiceNature">
 			</run>
 		</runtime>
 	</extension>

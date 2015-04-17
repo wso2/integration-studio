@@ -518,6 +518,9 @@ limitations under the License.
 
         <!-- data service -->
         <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
+                    wizard="org.wso2.developerstudio.eclipse.artifact.newdsproject">
+        </wizardLink>
+        <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.project"
                     wizard="org.wso2.developerstudio.eclipse.artifact.newdsartifact">
         </wizardLink>
         <wizardLink category="odashboard.category.ds" id="dashboard.wizardLink.ds.validiator"

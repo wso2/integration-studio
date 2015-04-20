@@ -276,7 +276,7 @@ public class CredentialsDialog extends Dialog {
         }
 //		URL url = getUrl();
         StringBuffer sb=new StringBuffer();
-        sb.append(url.toString().replaceAll("/$","").concat("/").replaceAll("/carbon/","/"));
+        sb.append(url.toString().replaceAll("/$","").concat("/").replaceAll("/carbon/|/registry/","/"));
     /*    sb.append(url.getProtocol()).append("://").append(url.getHost()).append(":").append(url.getPort()).append("/");
 		String[] pathSegments = url.getPath().split("/");
 		for (int i = 0; i < pathSegments.length - 1; i++) {

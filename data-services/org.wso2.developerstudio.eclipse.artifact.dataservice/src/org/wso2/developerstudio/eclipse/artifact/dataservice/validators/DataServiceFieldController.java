@@ -42,6 +42,10 @@ public class DataServiceFieldController extends AbstractFieldController {
 			if (value == null || value.equals("")) {
 				throw new FieldValidationException(DataServiceArtifactConstants.ERROR_DS_NAME);
 			}
+		}else if (modelProperty.equals(DataServiceArtifactConstants.WIZARD_OPTION_SAVE_FILE)) {
+			if (value == null || value.equals("")) {
+				throw new FieldValidationException(DataServiceArtifactConstants.ERROR_DS_PROJECT);
+			}
 		}
 	}
 	

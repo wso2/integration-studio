@@ -29,7 +29,7 @@ import java.util.List;
  * This is a PropertyTester class for checking a particular IProject has any WSO2 Developer Studio project nature.
  */
 public class WSO2ProjectNaturePropertyTester extends PropertyTester {
-    private static final IDeveloperStudioLog LOG = Logger.getLog(Activator.PLUGIN_ID);
+    private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
     /**
      * This method is for testing selected IProject has any of WSO2 DevStudio project nature.
@@ -54,11 +54,11 @@ public class WSO2ProjectNaturePropertyTester extends PropertyTester {
                         return true;
                     }
                 } catch (CoreException e) {
-                    LOG.error("Error in checking IProject : " + project + ", for having Nature : " + nature, e);
+                    log.error("Error in checking IProject : " + project + ", for having Nature : " + nature, e);
                 }
             }
         } else {
-            LOG.error("Invalid IResource type sent to WSO2ProjectNaturePropertyTester, Type : " + receiver.getClass() + " , Expected : " + IProject.class);
+            log.error("Invalid IResource type sent to WSO2ProjectNaturePropertyTester, Type : " + receiver.getClass() + " , Expected : " + IProject.class);
             return false;
         }
         return false;

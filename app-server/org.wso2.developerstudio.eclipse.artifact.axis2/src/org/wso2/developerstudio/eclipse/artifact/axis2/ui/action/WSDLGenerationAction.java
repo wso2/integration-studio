@@ -63,7 +63,7 @@ import static org.eclipse.core.resources.IncrementalProjectBuilder.*;
  * This is an Action class for generating WSDL file for an Axis2 service project created by DevStudio.
  */
 public class WSDLGenerationAction implements IActionDelegate {
-    private static final IDeveloperStudioLog LOG = Logger.getLog(Activator.PLUGIN_ID);
+    private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
     private IStructuredSelection selection;
 
     //String constants
@@ -84,12 +84,12 @@ public class WSDLGenerationAction implements IActionDelegate {
             try {
                 generateWSDL(project);
             } catch (WSDLGenerationException e) {
-                LOG.error("Error in generating WSDL file for project : " + project.getName() + " Message : " + e.getMessage(), e);
+                log.error("Error in generating WSDL file for project : " + project.getName() + " Message : " + e.getMessage(), e);
             } catch (CoreException e) {
-                LOG.error("Error in generating WSDL file for project : " + project.getName(), e);
+                log.error("Error in generating WSDL file for project : " + project.getName(), e);
             }
         } else {
-            LOG.error("Invalid selection for generating WSDL file, Selection : " + selection.getFirstElement().getClass()
+            log.error("Invalid selection for generating WSDL file, Selection : " + selection.getFirstElement().getClass()
                     + ", Expected : " + IProject.class);
         }
     }
@@ -102,7 +102,7 @@ public class WSDLGenerationAction implements IActionDelegate {
         if (selection instanceof IStructuredSelection) {
             this.selection = (IStructuredSelection) selection;
         } else {
-            LOG.error("Invalid user selection for generation WSDL file, Selection : " + selection.getClass() + ", Expected : "
+            log.error("Invalid user selection for generation WSDL file, Selection : " + selection.getClass() + ", Expected : "
                     + IStructuredSelection.class);
         }
     }
@@ -179,7 +179,7 @@ public class WSDLGenerationAction implements IActionDelegate {
         try {
             IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), userSelectedFile);
         } catch (PartInitException e) {
-            LOG.error("Error in opening created WSDL file for Axis2 service : " + serviceName, e);
+            log.error("Error in opening created WSDL file for Axis2 service : " + serviceName, e);
         } finally {
             wsdlTempTag.clearAndEnd();
         }

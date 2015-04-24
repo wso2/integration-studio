@@ -164,7 +164,6 @@ public class ProxyServiceProjectFieldController extends AbstractFieldController 
 	public boolean isVisibleField(String modelProperty, ProjectDataModel model) {
 		boolean visibleField = super.isVisibleField(modelProperty, model);
 
-
 		if (modelProperty.equals("available.ps")) {
 			List<OMElement> availableEPList = ((ProxyServiceModel) model).getAvailablePSList();
 			visibleField = (availableEPList != null && availableEPList.size() > 0);

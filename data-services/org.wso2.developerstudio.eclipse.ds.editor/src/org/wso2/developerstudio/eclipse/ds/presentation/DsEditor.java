@@ -27,6 +27,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -1191,6 +1192,7 @@ public class DsEditor extends FormEditor implements IEditingDomainProvider, ISel
 			case DESIGN_VIEW_INDEX: {
 
 				designViewActivated = true;
+				
 
 				break;
 			}
@@ -1605,6 +1607,8 @@ public class DsEditor extends FormEditor implements IEditingDomainProvider, ISel
 			if (designViewActivated && !isSourceModified) {
 
 				try {
+					
+					deleteObjectsFromTheModel();
 					sourceEditor.getEditor().getDocumentProvider().resetDocument(getEditorInput());
 				} catch (CoreException e) {
 					// TODO Auto-generated catch block
@@ -1613,6 +1617,31 @@ public class DsEditor extends FormEditor implements IEditingDomainProvider, ISel
 			}
 		}
 
+	}
+
+	private void deleteObjectsFromTheModel() {
+		if(dataService.getFeatureAllowRoles() != null)
+		{
+		if(StringUtils.isEmpty(dataService.getFeatureAllowRoles().getValue())){
+			SetCommand setCmd = new SetCommand(editingDomain, dataService,
+					DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES,
+					null);
+			if (setCmd.canExecute()) {
+				editingDomain.getCommandStack().execute(setCmd);
+			}
+		}
+		}
+		if(dataService.getPolicy() != null){
+			if(StringUtils.isEmpty(dataService.getPolicy().getKey())){
+				SetCommand setCmd = new SetCommand(editingDomain, dataService,
+						DsPackage.Literals.DATA_SERVICE__POLICY,
+						null);
+				if (setCmd.canExecute()) {
+					editingDomain.getCommandStack().execute(setCmd);
+				}
+			}
+		}
+		
 	}
 
 	/**

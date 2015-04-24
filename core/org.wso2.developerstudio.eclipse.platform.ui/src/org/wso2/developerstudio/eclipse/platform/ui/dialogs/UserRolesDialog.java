@@ -36,12 +36,14 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
+import org.wso2.developerstudio.eclipse.ds.DataService;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
+import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.UserManagerUtils;
 
 public abstract class UserRolesDialog extends Dialog {
-
-	protected ProxyService proxyService;
+	
+	protected Object object;
 
 	private Label serverUrlLabel;
 	private Label userNameLabel;
@@ -62,6 +64,9 @@ public abstract class UserRolesDialog extends Dialog {
 	private Button getRolesButton;
 
 	private Table userRolesTable;
+	private String userRoles;
+	
+	private static final String ALLOW_ROLES = "allowRoles";
 
 	private static List<String> selectedRoles;
 
@@ -71,10 +76,16 @@ public abstract class UserRolesDialog extends Dialog {
 		this.selectedRoles = roles;
 	}
 
-	public UserRolesDialog(Shell parentShell, ProxyService proxyService) {
+	public UserRolesDialog(Shell parentShell, Object object) {
 		super(parentShell);
-		this.proxyService = proxyService;
+		this.object = object;
 	}
+	
+	/*
+	public UserRolesDialog(Shell parentShell,DataService dataService, String a) {
+		super(parentShell);
+		this.dataService = dataService;
+	}*/
 
 	/**
 	 * {@inheritDoc}
@@ -307,6 +318,8 @@ public abstract class UserRolesDialog extends Dialog {
 			userRolesTableLayoutData.bottom = new FormAttachment(100);
 			userRolesTable.setLayoutData(userRolesTableLayoutData);
 		}
+		
+		loadConfiguration();
 
 		{
 			// Set default values.
@@ -319,6 +332,22 @@ public abstract class UserRolesDialog extends Dialog {
 		}
 
 		return container;
+	}
+
+	private void loadConfiguration() {
+		if(object instanceof DataService){
+			if(((DataService) object).getFeatureAllowRoles() != null && !StringUtils.isEmpty(((DataService) object).getFeatureAllowRoles().getValue())) {
+				userRoles = ((DataService) object).getFeatureAllowRoles().getValue();
+				inlineUserRolesText.setText(userRoles);
+			}
+		}else if(object instanceof ProxyService){
+			for (ProxyServiceParameter parameter : ((ProxyService) object).getServiceParameters()) {
+				if(parameter.getName().equals(ALLOW_ROLES)){
+					userRoles = parameter.getValue();
+					inlineUserRolesText.setText(userRoles);
+				}
+			}
+		}
 	}
 
 	private void listRoles() {

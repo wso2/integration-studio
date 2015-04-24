@@ -180,12 +180,12 @@ public class AdvancedConfigComposite extends AbstractComposite {
 	
 	private void selectRegistryResource(Text textBox, String mediaType) {
 		
-		RegistryResourceBrowserDialog dialog = new RegistryResourceBrowserDialog(getShell(), SWT.NULL, new ArrayList<NamedEntityDescriptor>());
+		/*RegistryResourceBrowserDialog dialog = new RegistryResourceBrowserDialog(getShell(), SWT.NULL, new ArrayList<NamedEntityDescriptor>());
 		int dialogOpen = dialog.open();
 		if (dialogOpen == Window.OK) {
 			String keyValue = dialog.getSelectedPath();
 			textBox.setText(keyValue);
-		}
+		}*/
 	}
 	
 

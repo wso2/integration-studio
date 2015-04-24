@@ -11,6 +11,10 @@
       <genEnumLiterals ecoreEnumLiteral="ds.ecore#//ServiceStatus/inactive"/>
     </genEnums>
     <genDataTypes ecoreDataType="ds.ecore#//ServiceStatusObject"/>
+    <genDataTypes ecoreDataType="ds.ecore#//Map">
+      <genTypeParameters ecoreTypeParameter="ds.ecore#//Map/K"/>
+      <genTypeParameters ecoreTypeParameter="ds.ecore#//Map/V"/>
+    </genDataTypes>
     <genClasses ecoreClass="ds.ecore#//AttributeMapping">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//AttributeMapping/column"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//AttributeMapping/name"/>
@@ -52,8 +56,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/serviceStatus"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/disableStreaming"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/enableSec"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/policy"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/policy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/transports"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/featureAllowRoles"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//DataSourceConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//DataSourceConfiguration/mixed"/>
@@ -242,6 +247,13 @@
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//Policy">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//Policy/key"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//DataServiceParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataServiceParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataServiceParameter/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ds.ecore#//RegistryKeyProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//RegistryKeyProperty/key"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

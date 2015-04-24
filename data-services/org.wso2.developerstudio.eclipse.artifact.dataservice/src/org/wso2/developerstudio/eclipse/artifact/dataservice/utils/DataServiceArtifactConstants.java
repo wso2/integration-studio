@@ -50,6 +50,7 @@ public class DataServiceArtifactConstants extends NLS {
 	public static String ERROR_CONNECTION;
 	public static String ERROR_DRIVERCLASS;
 	public static String ERROR_DS_PROJECT;
+	public static String ERROR_DS_PROJECT_PATH;
 	
 	static {
 		// initialize resource bundle

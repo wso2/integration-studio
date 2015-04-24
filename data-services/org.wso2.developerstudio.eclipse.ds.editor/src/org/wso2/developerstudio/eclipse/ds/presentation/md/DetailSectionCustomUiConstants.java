@@ -32,6 +32,7 @@ public interface DetailSectionCustomUiConstants {
 	public String DATA_SERVICE_TRANSPORTS = "Transports";
 	public String ENABLE_SECURITY = "Enable Security";
 	public String DATA_SERVICE_POLICY = "Policy";
+	public String DATA_SERVICE_PARAMETER_ALLOW_ROLES = "User Roles";
 
 	public String DATA_SOURCE_CONFIGURATION_ID = "DataSource Id";
 

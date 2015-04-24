@@ -3,5 +3,4 @@
    <config id="{config.id}">
    		{config.properties}
    </config>
-   {config.policy}
 </data>

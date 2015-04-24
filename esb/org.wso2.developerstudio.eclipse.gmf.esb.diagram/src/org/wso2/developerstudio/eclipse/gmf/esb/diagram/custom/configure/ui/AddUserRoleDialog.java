@@ -18,7 +18,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
 import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -36,9 +35,11 @@ public class AddUserRoleDialog extends UserRolesDialog {
 	private TransactionalEditingDomain editingDomain;
 	private CompoundCommand resultCommand;
 	private static final String ALLOW_ROLES = "allowRoles";
+	private ProxyService proxyService;
 
 	public AddUserRoleDialog(Shell parentShell, ProxyService selectedObj) {
 		super(parentShell, selectedObj);
+		this.proxyService= selectedObj;
 		this.editingDomain = TransactionUtil.getEditingDomain(proxyService);
 	}
 

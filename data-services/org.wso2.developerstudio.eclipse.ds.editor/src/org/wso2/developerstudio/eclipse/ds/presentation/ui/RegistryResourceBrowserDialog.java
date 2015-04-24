@@ -1,25 +1,27 @@
 /*
- * Copyright 2009-2010 WSO2, Inc. (http://wso2.com)
- *
+ * Copyright 2009-2015 WSO2, Inc. (http://wso2.com)
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.wso2.developerstudio.eclipse.artifact.dataservice.ui.wizard;
+package org.wso2.developerstudio.eclipse.ds.presentation.ui;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+
+
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
@@ -35,15 +37,14 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.wso2.developerstudio.eclipse.ds.presentation.ui.NamedEntityDescriptor;
-import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
-import org.wso2.developerstudio.eclipse.general.project.dialogs.DeveloperStudioElementProviderDialog;
-import org.wso2.developerstudio.eclipse.general.project.dialogs.NewResourceTemplateDialog;
 import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
 import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
+import org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty;
+import org.wso2.developerstudio.eclipse.general.project.dialogs.DeveloperStudioElementProviderDialog;
+import org.wso2.developerstudio.eclipse.general.project.dialogs.NewResourceTemplateDialog;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
-
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
 
 /**
  * A SWT based editor dialog to be used for editing registry key properties.
@@ -53,7 +54,7 @@ public class RegistryResourceBrowserDialog extends Dialog {
 	/**
 	 * Default registry url.
 	 */
-	private static final String DEFAULT_REGISTRY_URL = "https://localhost:9443/";
+	private static final String DEFAULT_REGISTRY_URL = "https://localhost:9443/registry";
 	
 	
 	/**
@@ -66,25 +67,14 @@ public class RegistryResourceBrowserDialog extends Dialog {
 	 */
 	private static final String C_REG_PATH_PREFIX = "/_system/config/";
 	
-	/**
-	 * Registry key text field.
-	 */
+	
 	private Text rkTextField;
-	private String selectedPath;
+	private RegistryKeyProperty rkProperty;
 	
-
-	
-	/**
-	 * Local named entities.
-	 */
+	String title;
 	private java.util.List<NamedEntityDescriptor> localNamedEntities;
 	private FormData rkTextFieldLayoutData;
 	
-//	/**
-//	 * Status indicating whether this dialog was saved or cancelled.
-//	 */
-//	private boolean saved;		
-
 	/**
 	 * Creates a new {@link RegistryKeyPropertyEditorDialog} instance.
 	 * 
@@ -97,14 +87,41 @@ public class RegistryResourceBrowserDialog extends Dialog {
 	 * @param localNamedEntities
 	 *            named entities currently defined on the local configuration.
 	 */
-	public RegistryResourceBrowserDialog(Shell parent, int style, 
+	public RegistryResourceBrowserDialog(Shell parent, int style, RegistryKeyProperty property,
 			java.util.List<NamedEntityDescriptor> localNamedEntities) {
 		super(parent);
+		this.rkProperty = property;
 		this.localNamedEntities = localNamedEntities;
 	}	
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
+	@Override
+	protected void configureShell(Shell newShell) {
+		// TODO Auto-generated method stub
+		super.configureShell(newShell);
+		if (title != null) {
+			newShell.setText(title);
+		}
+	}
 	
+	private void hide(){
+		changeVisibility(false);
+	}
 	
+	private void show(){
+		changeVisibility(true);
+	}
+
+	private void changeVisibility(boolean visible) {
+		try {
+			this.getShell().setVisible(visible);
+		} catch (Exception e) {
+			//ignore this
+		}
+	}
 	
 	protected Control createDialogArea(Composite parent) {
 		Composite container = (Composite) super.createDialogArea(parent);
@@ -125,9 +142,9 @@ public class RegistryResourceBrowserDialog extends Dialog {
 		// Registry key text field.
 		rkTextField = new Text(grpPropertyKey, SWT.BORDER);
 		rkTextField.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
-				//saveConfiguration();
+				saveConfiguration();
 			}
 		});
 		{
@@ -138,7 +155,7 @@ public class RegistryResourceBrowserDialog extends Dialog {
 		
 		Link link = new Link(grpPropertyKey, SWT.NONE);
 		link.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				String selectedCommand = e.text;
 				if (selectedCommand.equals("registry")){
@@ -156,11 +173,14 @@ public class RegistryResourceBrowserDialog extends Dialog {
 		fd_link.top = new FormAttachment(0, -2);
 		fd_link.bottom = new FormAttachment(0, 15);
 		link.setLayoutData(fd_link);
-		link.setText("Type the key or specify from <a>registry</a> or <a>workspace</a> ");
+
+		// Fixing TOOLS-2553
+		// link.setText("Type the key or specify from <a>registry</a>, <a>workspace</a> or <a>local entries</a>");
+		link.setText("Type the key or specify from <a>registry</a> or <a>workspace</a>");
 		
 		Link link_1 = new Link(grpPropertyKey, SWT.NONE);
 		link_1.addSelectionListener(new SelectionAdapter() {
-			
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				openNewResourceTemplateDialog();
 			}
@@ -170,15 +190,25 @@ public class RegistryResourceBrowserDialog extends Dialog {
 		fd_link_1.right = new FormAttachment(rkTextField, 0, SWT.RIGHT);
 		link_1.setLayoutData(fd_link_1);
 		link_1.setText("<a>Create && point to a new resource...</a>");
-		
+		loadConfiguration();
 		return container;
 	}
 
-	protected void okPressed() {
-			super.okPressed();
+	private void loadConfiguration() {
+		if (!StringUtils.isBlank(rkProperty.getKey())) {
+			rkTextField.setText(rkProperty.getKey());
+		}
 	}
-
 	
+	@Override
+	protected void okPressed() {
+		saveConfiguration();
+		super.okPressed();
+	}
+	
+	private void saveConfiguration() {
+		rkProperty.setKey(rkTextField.getText());
+	}
 	
 
 	protected void openNewResourceTemplateDialog() {
@@ -199,7 +229,7 @@ public class RegistryResourceBrowserDialog extends Dialog {
 	
 	private void openRegistryBrowser() {
 		// Open registry browser.
-		//hide();
+		hide();
 		try{
 			IRegistryConnection[] registryConnections = CAppEnvironment.getRegistryHandler().getRegistryConnections();
 			if (registryConnections.length==0){
@@ -219,7 +249,7 @@ public class RegistryResourceBrowserDialog extends Dialog {
 				setSelectedPath(selectedPathData.getPath());
 			}
 		}finally{
-			//show();
+			show();
 		}
 	}
 
@@ -231,10 +261,9 @@ public class RegistryResourceBrowserDialog extends Dialog {
 		}
 		
 		rkTextField.setText(selectedPath);
-		this.selectedPath = selectedPath;
-//		if (selectedPath!=null && !selectedPath.trim().equals("")){
-//			okPressed();
-//		}
+		if (selectedPath!=null && !selectedPath.trim().equals("")){
+			okPressed();
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -249,11 +278,14 @@ public class RegistryResourceBrowserDialog extends Dialog {
 				setSelectedPath(registryResourceProviderSelector.getSelectedPath());
 			}
 		}finally{
-			//show();
 		}
 	}
 	
-	public String getSelectedPath() {
-		return this.selectedPath;
+	/**
+	 * Gets the policy key
+	 * @return policy key
+	 */
+	public RegistryKeyProperty getPolicyKey(){
+		return rkProperty;
 	}
 }

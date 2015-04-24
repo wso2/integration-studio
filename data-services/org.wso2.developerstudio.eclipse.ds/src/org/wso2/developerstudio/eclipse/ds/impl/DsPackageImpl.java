@@ -6,10 +6,12 @@
  */
 package org.wso2.developerstudio.eclipse.ds.impl;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -23,6 +25,7 @@ import org.wso2.developerstudio.eclipse.ds.CallQueryList;
 import org.wso2.developerstudio.eclipse.ds.ConfigurationProperty;
 import org.wso2.developerstudio.eclipse.ds.CustomValidator;
 import org.wso2.developerstudio.eclipse.ds.DataService;
+import org.wso2.developerstudio.eclipse.ds.DataServiceParameter;
 import org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration;
 import org.wso2.developerstudio.eclipse.ds.Description;
 import org.wso2.developerstudio.eclipse.ds.DocumentRoot;
@@ -48,6 +51,7 @@ import org.wso2.developerstudio.eclipse.ds.QueryExpression;
 import org.wso2.developerstudio.eclipse.ds.QueryParameter;
 import org.wso2.developerstudio.eclipse.ds.QueryProperty;
 import org.wso2.developerstudio.eclipse.ds.QueryPropertyList;
+import org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.ds.Resource;
 import org.wso2.developerstudio.eclipse.ds.ResultMapping;
 import org.wso2.developerstudio.eclipse.ds.ServiceStatus;
@@ -337,6 +341,20 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass dataServiceParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass registryKeyPropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum serviceStatusEEnum = null;
 
 	/**
@@ -345,6 +363,13 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * @generated
 	 */
 	private EDataType serviceStatusObjectEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType mapEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -754,6 +779,15 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 */
 	public EAttribute getDataService_Transports() {
 		return (EAttribute)dataServiceEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataService_FeatureAllowRoles() {
+		return (EReference)dataServiceEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -2165,6 +2199,51 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDataServiceParameter() {
+		return dataServiceParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataServiceParameter_Name() {
+		return (EAttribute)dataServiceParameterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataServiceParameter_Value() {
+		return (EAttribute)dataServiceParameterEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRegistryKeyProperty() {
+		return registryKeyPropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRegistryKeyProperty_Key() {
+		return (EAttribute)registryKeyPropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getServiceStatus() {
 		return serviceStatusEEnum;
 	}
@@ -2176,6 +2255,15 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 */
 	public EDataType getServiceStatusObject() {
 		return serviceStatusObjectEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getMap() {
+		return mapEDataType;
 	}
 
 	/**
@@ -2249,6 +2337,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		createEAttribute(dataServiceEClass, DATA_SERVICE__ENABLE_SEC);
 		createEReference(dataServiceEClass, DATA_SERVICE__POLICY);
 		createEAttribute(dataServiceEClass, DATA_SERVICE__TRANSPORTS);
+		createEReference(dataServiceEClass, DATA_SERVICE__FEATURE_ALLOW_ROLES);
 
 		dataSourceConfigurationEClass = createEClass(DATA_SOURCE_CONFIGURATION);
 		createEAttribute(dataSourceConfigurationEClass, DATA_SOURCE_CONFIGURATION__MIXED);
@@ -2438,11 +2527,19 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		policyEClass = createEClass(POLICY);
 		createEAttribute(policyEClass, POLICY__KEY);
 
+		dataServiceParameterEClass = createEClass(DATA_SERVICE_PARAMETER);
+		createEAttribute(dataServiceParameterEClass, DATA_SERVICE_PARAMETER__NAME);
+		createEAttribute(dataServiceParameterEClass, DATA_SERVICE_PARAMETER__VALUE);
+
+		registryKeyPropertyEClass = createEClass(REGISTRY_KEY_PROPERTY);
+		createEAttribute(registryKeyPropertyEClass, REGISTRY_KEY_PROPERTY__KEY);
+
 		// Create enums
 		serviceStatusEEnum = createEEnum(SERVICE_STATUS);
 
 		// Create data types
 		serviceStatusObjectEDataType = createEDataType(SERVICE_STATUS_OBJECT);
+		mapEDataType = createEDataType(MAP);
 	}
 
 	/**
@@ -2472,6 +2569,8 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
 
 		// Create type parameters
+		addETypeParameter(mapEDataType, "K");
+		addETypeParameter(mapEDataType, "V");
 
 		// Set bounds for type parameters
 
@@ -2519,8 +2618,9 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEAttribute(getDataService_ServiceStatus(), this.getServiceStatus(), "serviceStatus", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_DisableStreaming(), theXMLTypePackage.getBoolean(), "disableStreaming", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_EnableSec(), theXMLTypePackage.getBoolean(), "enableSec", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataService_Policy(), this.getPolicy(), null, "policy", null, 1, 1, DataService.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDataService_Policy(), this.getRegistryKeyProperty(), null, "policy", null, 1, 1, DataService.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_Transports(), theXMLTypePackage.getString(), "transports", null, 1, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataService_FeatureAllowRoles(), this.getDataServiceParameter(), null, "featureAllowRoles", null, 1, 1, DataService.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataSourceConfigurationEClass, DataSourceConfiguration.class, "DataSourceConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataSourceConfiguration_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, DataSourceConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2710,6 +2810,13 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEClass(policyEClass, Policy.class, "Policy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPolicy_Key(), theXMLTypePackage.getString(), "key", null, 1, 1, Policy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(dataServiceParameterEClass, DataServiceParameter.class, "DataServiceParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataServiceParameter_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, DataServiceParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataServiceParameter_Value(), theXMLTypePackage.getString(), "value", null, 1, 1, DataServiceParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(registryKeyPropertyEClass, RegistryKeyProperty.class, "RegistryKeyProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRegistryKeyProperty_Key(), ecorePackage.getEString(), "key", null, 0, 1, RegistryKeyProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(serviceStatusEEnum, ServiceStatus.class, "ServiceStatus");
 		addEEnumLiteral(serviceStatusEEnum, ServiceStatus.ACTIVE);
@@ -2717,6 +2824,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 
 		// Initialize data types
 		initEDataType(serviceStatusObjectEDataType, ServiceStatus.class, "ServiceStatusObject", IS_SERIALIZABLE, IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -3023,6 +3131,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "transports"
+		   });		
+		addAnnotation
+		  (getDataService_FeatureAllowRoles(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "parameter",
+			 "namespace", "##targetNamespace"
 		   });		
 		addAnnotation
 		  (dataSourceConfigurationEClass, 
@@ -4208,6 +4324,28 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "key",
 			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
+		  (dataServiceParameterEClass, 
+		   source, 
+		   new String[] {
+			 "name", "parameter_._type",
+			 "kind", "simple"
+		   });		
+		addAnnotation
+		  (getDataServiceParameter_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "name",
+			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
+		  (getDataServiceParameter_Value(), 
+		   source, 
+		   new String[] {
+			 "kind", "simple",
+			 "name", ":0"
 		   });
 	}
 

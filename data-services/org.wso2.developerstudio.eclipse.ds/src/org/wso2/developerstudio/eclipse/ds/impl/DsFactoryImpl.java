@@ -6,6 +6,7 @@
  */
 package org.wso2.developerstudio.eclipse.ds.impl;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -100,6 +101,8 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 			case DsPackage.WORK_BOOK_NAME: return createWorkBookName();
 			case DsPackage.WORK_SHEET_NUMBER: return createWorkSheetNumber();
 			case DsPackage.POLICY: return createPolicy();
+			case DsPackage.DATA_SERVICE_PARAMETER: return createDataServiceParameter();
+			case DsPackage.REGISTRY_KEY_PROPERTY: return createRegistryKeyProperty();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,6 +121,8 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 				return createServiceStatusFromString(eDataType, initialValue);
 			case DsPackage.SERVICE_STATUS_OBJECT:
 				return createServiceStatusObjectFromString(eDataType, initialValue);
+			case DsPackage.MAP:
+				return createMapFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -136,6 +141,8 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 				return convertServiceStatusToString(eDataType, instanceValue);
 			case DsPackage.SERVICE_STATUS_OBJECT:
 				return convertServiceStatusObjectToString(eDataType, instanceValue);
+			case DsPackage.MAP:
+				return convertMapToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -526,6 +533,26 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataServiceParameter createDataServiceParameter() {
+		DataServiceParameterImpl dataServiceParameter = new DataServiceParameterImpl();
+		return dataServiceParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RegistryKeyProperty createRegistryKeyProperty() {
+		RegistryKeyPropertyImpl registryKeyProperty = new RegistryKeyPropertyImpl();
+		return registryKeyProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ServiceStatus createServiceStatusFromString(EDataType eDataType, String initialValue) {
 		ServiceStatus result = ServiceStatus.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -558,6 +585,24 @@ public class DsFactoryImpl extends EFactoryImpl implements DsFactory {
 	 */
 	public String convertServiceStatusObjectToString(EDataType eDataType, Object instanceValue) {
 		return convertServiceStatusToString(DsPackage.Literals.SERVICE_STATUS, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map<?, ?> createMapFromString(EDataType eDataType, String initialValue) {
+		return (Map<?, ?>)super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMapToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
 	}
 
 	/**

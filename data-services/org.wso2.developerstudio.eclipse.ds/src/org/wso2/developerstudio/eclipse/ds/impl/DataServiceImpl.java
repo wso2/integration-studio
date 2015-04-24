@@ -10,32 +10,31 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.wso2.developerstudio.eclipse.ds.DataService;
+import org.wso2.developerstudio.eclipse.ds.DataServiceParameter;
 import org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration;
 import org.wso2.developerstudio.eclipse.ds.Description;
+import org.wso2.developerstudio.eclipse.ds.DsFactory;
 import org.wso2.developerstudio.eclipse.ds.DsPackage;
 import org.wso2.developerstudio.eclipse.ds.EventTrigger;
 import org.wso2.developerstudio.eclipse.ds.Operation;
 import org.wso2.developerstudio.eclipse.ds.Policy;
 import org.wso2.developerstudio.eclipse.ds.Query;
+import org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.ds.Resource;
 import org.wso2.developerstudio.eclipse.ds.ServiceStatus;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -63,6 +62,7 @@ import org.wso2.developerstudio.eclipse.ds.ServiceStatus;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#isEnableSec <em>Enable Sec</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getTransports <em>Transports</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceImpl#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
  * </ul>
  * </p>
  *
@@ -311,7 +311,7 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected DataServiceImpl() {
 		super();
@@ -652,8 +652,8 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Policy getPolicy() {
-		return (Policy)getMixed().get(DsPackage.Literals.DATA_SERVICE__POLICY, true);
+	public RegistryKeyProperty getPolicy() {
+		return (RegistryKeyProperty)getMixed().get(DsPackage.Literals.DATA_SERVICE__POLICY, true);
 	}
 
 	/**
@@ -661,7 +661,7 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPolicy(Policy newPolicy, NotificationChain msgs) {
+	public NotificationChain basicSetPolicy(RegistryKeyProperty newPolicy, NotificationChain msgs) {
 		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DATA_SERVICE__POLICY, newPolicy, msgs);
 	}
 
@@ -670,7 +670,7 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPolicy(Policy newPolicy) {
+	public void setPolicy(RegistryKeyProperty newPolicy) {
 		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DATA_SERVICE__POLICY, newPolicy);
 	}
 
@@ -700,6 +700,33 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataServiceParameter getFeatureAllowRoles() {
+		return (DataServiceParameter)getMixed().get(DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFeatureAllowRoles(DataServiceParameter newFeatureAllowRoles, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES, newFeatureAllowRoles, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFeatureAllowRoles(DataServiceParameter newFeatureAllowRoles) {
+		((FeatureMap.Internal)getMixed()).set(DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES, newFeatureAllowRoles);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
@@ -721,6 +748,8 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				return ((InternalEList<?>)getResource()).basicRemove(otherEnd, msgs);
 			case DsPackage.DATA_SERVICE__POLICY:
 				return basicSetPolicy(null, msgs);
+			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
+				return basicSetFeatureAllowRoles(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -773,6 +802,8 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				return getPolicy();
 			case DsPackage.DATA_SERVICE__TRANSPORTS:
 				return getTransports();
+			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
+				return getFeatureAllowRoles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -843,10 +874,13 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				setEnableSec((Boolean)newValue);
 				return;
 			case DsPackage.DATA_SERVICE__POLICY:
-				setPolicy((Policy)newValue);
+				setPolicy((RegistryKeyProperty)newValue);
 				return;
 			case DsPackage.DATA_SERVICE__TRANSPORTS:
 				setTransports((String)newValue);
+				return;
+			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
+				setFeatureAllowRoles((DataServiceParameter)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -913,10 +947,13 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				setEnableSec(ENABLE_SEC_EDEFAULT);
 				return;
 			case DsPackage.DATA_SERVICE__POLICY:
-				setPolicy((Policy)null);
+				setPolicy((RegistryKeyProperty)null);
 				return;
 			case DsPackage.DATA_SERVICE__TRANSPORTS:
 				setTransports(TRANSPORTS_EDEFAULT);
+				return;
+			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
+				setFeatureAllowRoles((DataServiceParameter)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -969,6 +1006,8 @@ public class DataServiceImpl extends EObjectImpl implements DataService {
 				return getPolicy() != null;
 			case DsPackage.DATA_SERVICE__TRANSPORTS:
 				return TRANSPORTS_EDEFAULT == null ? transports != null : !TRANSPORTS_EDEFAULT.equals(transports);
+			case DsPackage.DATA_SERVICE__FEATURE_ALLOW_ROLES:
+				return getFeatureAllowRoles() != null;
 		}
 		return super.eIsSet(featureID);
 	}

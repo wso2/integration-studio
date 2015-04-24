@@ -28,11 +28,6 @@
 			<projectNatures>
 				<nature>org.eclipse.jdt.core.javanature</nature>
 			</projectNatures>
-			<data group="group1" modelProperty="dataservice.AdvancedConfig"
-				type="composite"
-				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController"
-				controlData="class=org.wso2.developerstudio.eclipse.artifact.dataservice.helper.AdvancedConfigProvider">Configuration</data>
-			<group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=collapsed"></group>
 
 		</settings>
 		<settings optionId="import.ds" title="Import Data Service"

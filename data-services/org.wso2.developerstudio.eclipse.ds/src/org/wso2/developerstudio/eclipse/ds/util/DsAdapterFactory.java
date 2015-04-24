@@ -226,6 +226,14 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 				return createPolicyAdapter();
 			}
 			@Override
+			public Adapter caseDataServiceParameter(DataServiceParameter object) {
+				return createDataServiceParameterAdapter();
+			}
+			@Override
+			public Adapter caseRegistryKeyProperty(RegistryKeyProperty object) {
+				return createRegistryKeyPropertyAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -846,6 +854,34 @@ public class DsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPolicyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.ds.DataServiceParameter <em>Data Service Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataServiceParameter
+	 * @generated
+	 */
+	public Adapter createDataServiceParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty <em>Registry Key Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty
+	 * @generated
+	 */
+	public Adapter createRegistryKeyPropertyAdapter() {
 		return null;
 	}
 

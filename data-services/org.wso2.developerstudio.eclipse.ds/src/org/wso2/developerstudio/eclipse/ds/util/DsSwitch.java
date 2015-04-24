@@ -300,6 +300,18 @@ public class DsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DsPackage.DATA_SERVICE_PARAMETER: {
+				DataServiceParameter dataServiceParameter = (DataServiceParameter)theEObject;
+				T result = caseDataServiceParameter(dataServiceParameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DsPackage.REGISTRY_KEY_PROPERTY: {
+				RegistryKeyProperty registryKeyProperty = (RegistryKeyProperty)theEObject;
+				T result = caseRegistryKeyProperty(registryKeyProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -871,6 +883,36 @@ public class DsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePolicy(Policy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Service Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Service Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataServiceParameter(DataServiceParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Registry Key Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Registry Key Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRegistryKeyProperty(RegistryKeyProperty object) {
 		return null;
 	}
 

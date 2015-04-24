@@ -470,15 +470,6 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		templateContent = templateContent.replaceAll("<service.description>",
 				dsModel.getServiceDescription());
 		templateContent = templateContent.replaceAll("<config.id>", dsModel.getDataSourceId());
-		if (!dsModel.getSecPolicy().isEmpty()) {
-			StringBuffer policysb = new StringBuffer();
-			policysb.append("<policy key=\"").append(dsModel.getSecPolicy()).append("\"/>");
-			templateContent = templateContent.replaceAll("<config.policy>", policysb.toString());
-		} else {
-			templateContent = templateContent.replaceAll("<config.policy>", "");
-
-		}
-
 		LinkedHashMap<String, String> config = dsModel.getDataSourceConfig().getConfig();
 		Iterator<String> iterator = config.keySet().iterator();
 		while (iterator.hasNext()) {

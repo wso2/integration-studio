@@ -15,6 +15,7 @@
  */
 package org.wso2.developerstudio.eclipse.artifact.dataservice.validators;
 
+import org.eclipse.core.resources.IResource;
 import org.wso2.developerstudio.eclipse.artifact.dataservice.utils.DataServiceArtifactConstants;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractFieldController;
@@ -46,6 +47,9 @@ public class DataServiceFieldController extends AbstractFieldController {
 			if (value == null || value.equals("")) {
 				throw new FieldValidationException(DataServiceArtifactConstants.ERROR_DS_PROJECT);
 			}
+			IResource resource = (IResource)value;
+			if(resource==null || !resource.exists())	
+				throw new FieldValidationException(DataServiceArtifactConstants.ERROR_DS_PROJECT_PATH);
 		}
 	}
 	

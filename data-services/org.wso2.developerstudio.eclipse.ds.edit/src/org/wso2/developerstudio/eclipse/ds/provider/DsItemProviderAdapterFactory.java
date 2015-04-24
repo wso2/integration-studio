@@ -988,6 +988,52 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.ds.DataServiceParameter} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DataServiceParameterItemProvider dataServiceParameterItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.ds.DataServiceParameter}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDataServiceParameterAdapter() {
+		if (dataServiceParameterItemProvider == null) {
+			dataServiceParameterItemProvider = new DataServiceParameterItemProvider(this);
+		}
+
+		return dataServiceParameterItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RegistryKeyPropertyItemProvider registryKeyPropertyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRegistryKeyPropertyAdapter() {
+		if (registryKeyPropertyItemProvider == null) {
+			registryKeyPropertyItemProvider = new RegistryKeyPropertyItemProvider(this);
+		}
+
+		return registryKeyPropertyItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1127,6 +1173,8 @@ public class DsItemProviderAdapterFactory extends DsAdapterFactory implements
 		if (workBookNameItemProvider != null) workBookNameItemProvider.dispose();
 		if (workSheetNumberItemProvider != null) workSheetNumberItemProvider.dispose();
 		if (policyItemProvider != null) policyItemProvider.dispose();
+		if (dataServiceParameterItemProvider != null) dataServiceParameterItemProvider.dispose();
+		if (registryKeyPropertyItemProvider != null) registryKeyPropertyItemProvider.dispose();
 	}
 
 }

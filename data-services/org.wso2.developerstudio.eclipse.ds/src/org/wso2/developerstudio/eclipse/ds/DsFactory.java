@@ -8,6 +8,7 @@ package org.wso2.developerstudio.eclipse.ds;
 
 import org.eclipse.emf.ecore.EFactory;
 
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.
@@ -366,6 +367,24 @@ public interface DsFactory extends EFactory {
 	 * @generated
 	 */
 	Policy createPolicy();
+
+	/**
+	 * Returns a new object of class '<em>Data Service Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Service Parameter</em>'.
+	 * @generated
+	 */
+	DataServiceParameter createDataServiceParameter();
+
+	/**
+	 * Returns a new object of class '<em>Registry Key Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Registry Key Property</em>'.
+	 * @generated
+	 */
+	RegistryKeyProperty createRegistryKeyProperty();
 
 	/**
 	 * Returns the package supported by this factory.

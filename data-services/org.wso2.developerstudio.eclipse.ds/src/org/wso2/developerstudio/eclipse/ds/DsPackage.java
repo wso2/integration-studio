@@ -456,13 +456,22 @@ public interface DsPackage extends EPackage {
 	int DATA_SERVICE__TRANSPORTS = 18;
 
 	/**
+	 * The feature id for the '<em><b>Feature Allow Roles</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SERVICE__FEATURE_ALLOW_ROLES = 19;
+
+	/**
 	 * The number of structural features of the '<em>Data Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SERVICE_FEATURE_COUNT = 19;
+	int DATA_SERVICE_FEATURE_COUNT = 20;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
@@ -2189,6 +2198,71 @@ public interface DsPackage extends EPackage {
 	int POLICY_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceParameterImpl <em>Data Service Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.DataServiceParameterImpl
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getDataServiceParameter()
+	 * @generated
+	 */
+	int DATA_SERVICE_PARAMETER = 38;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SERVICE_PARAMETER__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SERVICE_PARAMETER__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Data Service Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SERVICE_PARAMETER_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.RegistryKeyPropertyImpl <em>Registry Key Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.RegistryKeyPropertyImpl
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getRegistryKeyProperty()
+	 * @generated
+	 */
+	int REGISTRY_KEY_PROPERTY = 39;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGISTRY_KEY_PROPERTY__KEY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Registry Key Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGISTRY_KEY_PROPERTY_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2196,7 +2270,7 @@ public interface DsPackage extends EPackage {
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatus()
 	 * @generated
 	 */
-	int SERVICE_STATUS = 38;
+	int SERVICE_STATUS = 40;
 
 	/**
 	 * The meta object id for the '<em>Service Status Object</em>' data type.
@@ -2206,7 +2280,17 @@ public interface DsPackage extends EPackage {
 	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getServiceStatusObject()
 	 * @generated
 	 */
-	int SERVICE_STATUS_OBJECT = 39;
+	int SERVICE_STATUS_OBJECT = 41;
+
+	/**
+	 * The meta object id for the '<em>Map</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.Map
+	 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getMap()
+	 * @generated
+	 */
+	int MAP = 42;
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.AttributeMapping <em>Attribute Mapping</em>}'.
@@ -2619,6 +2703,17 @@ public interface DsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataService_Transports();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Feature Allow Roles</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataService#getFeatureAllowRoles()
+	 * @see #getDataService()
+	 * @generated
+	 */
+	EReference getDataService_FeatureAllowRoles();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration <em>Data Source Configuration</em>}'.
@@ -4305,6 +4400,59 @@ public interface DsPackage extends EPackage {
 	EAttribute getPolicy_Key();
 
 	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.DataServiceParameter <em>Data Service Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Service Parameter</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataServiceParameter
+	 * @generated
+	 */
+	EClass getDataServiceParameter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.DataServiceParameter#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataServiceParameter#getName()
+	 * @see #getDataServiceParameter()
+	 * @generated
+	 */
+	EAttribute getDataServiceParameter_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.DataServiceParameter#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataServiceParameter#getValue()
+	 * @see #getDataServiceParameter()
+	 * @generated
+	 */
+	EAttribute getDataServiceParameter_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty <em>Registry Key Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Registry Key Property</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty
+	 * @generated
+	 */
+	EClass getRegistryKeyProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty#getKey()
+	 * @see #getRegistryKeyProperty()
+	 * @generated
+	 */
+	EAttribute getRegistryKeyProperty_Key();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4325,6 +4473,17 @@ public interface DsPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getServiceStatusObject();
+
+	/**
+	 * Returns the meta object for data type '{@link java.util.Map <em>Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Map</em>'.
+	 * @see java.util.Map
+	 * @model instanceClass="java.util.Map" typeParameters="K V"
+	 * @generated
+	 */
+	EDataType getMap();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -4665,6 +4824,14 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_SERVICE__TRANSPORTS = eINSTANCE.getDataService_Transports();
+
+		/**
+		 * The meta object literal for the '<em><b>Feature Allow Roles</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_SERVICE__FEATURE_ALLOW_ROLES = eINSTANCE.getDataService_FeatureAllowRoles();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
@@ -5988,6 +6155,50 @@ public interface DsPackage extends EPackage {
 		EAttribute POLICY__KEY = eINSTANCE.getPolicy_Key();
 
 		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataServiceParameterImpl <em>Data Service Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.DataServiceParameterImpl
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getDataServiceParameter()
+		 * @generated
+		 */
+		EClass DATA_SERVICE_PARAMETER = eINSTANCE.getDataServiceParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SERVICE_PARAMETER__NAME = eINSTANCE.getDataServiceParameter_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SERVICE_PARAMETER__VALUE = eINSTANCE.getDataServiceParameter_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.RegistryKeyPropertyImpl <em>Registry Key Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.RegistryKeyPropertyImpl
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getRegistryKeyProperty()
+		 * @generated
+		 */
+		EClass REGISTRY_KEY_PROPERTY = eINSTANCE.getRegistryKeyProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REGISTRY_KEY_PROPERTY__KEY = eINSTANCE.getRegistryKeyProperty_Key();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.ServiceStatus <em>Service Status</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6006,6 +6217,16 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType SERVICE_STATUS_OBJECT = eINSTANCE.getServiceStatusObject();
+
+		/**
+		 * The meta object literal for the '<em>Map</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.Map
+		 * @see org.wso2.developerstudio.eclipse.ds.impl.DsPackageImpl#getMap()
+		 * @generated
+		 */
+		EDataType MAP = eINSTANCE.getMap();
 
 	}
 

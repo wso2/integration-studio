@@ -77,6 +77,8 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 			addDisableStreamingPropertyDescriptor(object);
 			addServiceStatusPropertyDescriptor(object);
 			addEnableSecPropertyDescriptor(object);
+			addParameterAllowRolesPropertyDescriptor(object);
+			addPolicyPropertyDescriptor(object);
 		    
 		}
 		return itemPropertyDescriptors;
@@ -304,6 +306,28 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
+	 * This adds a property descriptor for the Policy feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addPolicyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataService_policy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataService_policy_feature", "_UI_DataService_type"),
+				 DsPackage.Literals.DATA_SERVICE__POLICY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Transports feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -325,6 +349,28 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 				 null));
 	}
 	
+
+	/**
+	 * This adds a property descriptor for the Parameter Allow Roles feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addParameterAllowRolesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataService_parameterAllowRoles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataService_parameterAllowRoles_feature", "_UI_DataService_type"),
+				 DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
 	/**
 	 * This specifies how to implement {@link #getChildren} and is used to
@@ -522,7 +568,14 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 				(DsPackage.Literals.DATA_SERVICE__MIXED,
 				 FeatureMapUtil.createEntry
 					(DsPackage.Literals.DATA_SERVICE__POLICY,
-					 DsFactory.eINSTANCE.createPolicy())));
+					 DsFactory.eINSTANCE.createRegistryKeyProperty())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DsPackage.Literals.DATA_SERVICE__MIXED,
+				 FeatureMapUtil.createEntry
+					(DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES,
+					 DsFactory.eINSTANCE.createDataServiceParameter())));
 
 		newChildDescriptors.add
 			(createChildParameter

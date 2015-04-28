@@ -179,28 +179,6 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 				}
 			}
 			
-			for(Handler handler : api.getHandlers()) {
-				APIHandler apiHandler = EsbFactory.eINSTANCE.createAPIHandler();			
-
-				if(handler instanceof DummyHandler) {
-					DummyHandler dummyHandler = (DummyHandler) handler;
-					apiHandler.setClassName(dummyHandler.getClassName());
-				} else {
-					apiHandler.setClassName(handler.getClass().getName());
-				}
-					
-				Iterator itr = handler.getProperties().keySet().iterator();
-				while (itr.hasNext()) {
-					APIHandlerProperty handlerProperty = EsbFactory.eINSTANCE.createAPIHandlerProperty();
-					String propertyName = (String) itr.next();
-					handlerProperty.setName(propertyName);
-					handlerProperty.setValue((String)handler.getProperties().get(propertyName));
-					apiHandler.getProperties().add(handlerProperty);
-					
-				}
-				executeAddValueCommand(synapseAPI.getHandlers(),apiHandler);
-			}
-			
 			addPairMediatorFlow(resource.getOutputConnector(),resource.getInputConnector());
 			
 			IGraphicalEditPart graphicalNode = (IGraphicalEditPart) AbstractEsbNodeDeserializer.getEditpart(resource);
@@ -215,6 +193,28 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 				locationY += rect.height; 
 				locationY += 25;
 			}
+		}
+		
+		for(Handler handler : api.getHandlers()) {
+			APIHandler apiHandler = EsbFactory.eINSTANCE.createAPIHandler();			
+
+			if(handler instanceof DummyHandler) {
+				DummyHandler dummyHandler = (DummyHandler) handler;
+				apiHandler.setClassName(dummyHandler.getClassName());
+			} else {
+				apiHandler.setClassName(handler.getClass().getName());
+			}
+				
+			Iterator itr = handler.getProperties().keySet().iterator();
+			while (itr.hasNext()) {
+				APIHandlerProperty handlerProperty = EsbFactory.eINSTANCE.createAPIHandlerProperty();
+				String propertyName = (String) itr.next();
+				handlerProperty.setName(propertyName);
+				handlerProperty.setValue((String)handler.getProperties().get(propertyName));
+				apiHandler.getProperties().add(handlerProperty);
+				
+			}
+			executeAddValueCommand(synapseAPI.getHandlers(),apiHandler);
 		}
 		
 		return synapseAPI;

@@ -18,7 +18,7 @@ package org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils;
 
 import org.eclipse.osgi.util.NLS;
 
-public final class InboundEndpointArtifactProperties extends NLS{
+public final class InboundEndpointArtifactProperties extends NLS {
 	public static final String BUNDLE_NAME = "org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.inboundendpointartifactconstants";
 	public static String ieWizardWindowTitle;
 	public static String esbProjectNature;
@@ -26,33 +26,52 @@ public final class InboundEndpointArtifactProperties extends NLS{
 	public static String typeFile;
 	public static String typeJMS;
 	public static String typeCustom;
-	
-	//project wizard page properties
+
+	// project wizard page properties
 	public static String wizardOptionNewIE;
 	public static String wizardOptionIEType;
 	public static String wizardOptionSaveLocation;
-	public static String wizardOptionImportOption; 
+	public static String wizardOptionImportOption;
 	public static String wizardOptionImportFilePath;
 	public static String wizardOptionCreateESBProject;
 	public static String wizardOptionIEName;
 	public static String wizardOptionAvailableIEs;
-	public static String wizardOptionImportSourceUrlIEUrl;	
+	public static String wizardOptionImportSourceUrlIEUrl;
 	public static String wizardOptionSequence;
 	public static String wizardOptionErrorSequence;
-	public static String wizardOptionInboundHTTPPort;	
+	public static String wizardOptionInboundHTTPPort;
 	public static String wizardOptionInterval;
 	public static String wizardOptionSequential;
-	public static String wizardOptionVFSFileURI;		
+	public static String wizardOptionCoordination;
+	public static String wizardOptionVFSFileURI;
+	public static String wizardOptionVFSContentType;
+	public static String wizardOptionVFSFileNamePattern;
+	public static String wizardOptionVFSFileProcessInterval;
+	public static String wizardOptionVFSFileProcessCount;
+	public static String wizardOptionVFSLocking;
+	public static String wizardOptionVFSMaxRetryCount;
+	public static String wizardOptionVFSReconnectTimeout;
+	public static String wizardOptionVFSActionAfterProcess;
+	public static String wizardOptionVFSMoveAfterProcess;
+	public static String wizardOptionVFSActionAfterErrors;
+	public static String wizardOptionVFSMoveAfterErrors;
+	public static String wizardOptionVFSActionAfterFailure;
+	public static String wizardOptionVFSMoveAfterFailure;
+	public static String wizardOptionVFSAutoLockRelease;
+	public static String wizardOptionVFSAutoLockReleaseInterval;
+	public static String wizardOptionVFSLockReleaseSameNode;
+	public static String wizardOptionVFSDistributedLock;
+	public static String wizardOptionVFSDistributedTimeout;
 	public static String wizardOptionClass;
 	public static String wizardOptionProtocol;
 	public static String wizardOptionSuspend;
-	
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, InboundEndpointArtifactProperties.class);
 	}
-	
-	private InboundEndpointArtifactProperties(){
-		
+
+	private InboundEndpointArtifactProperties() {
+
 	}
 }

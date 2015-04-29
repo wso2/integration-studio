@@ -50,14 +50,33 @@ public class InboundEndpointModel extends ProjectDataModel {
 	private String protocol;
 	private String suspend;
 	private String interval;
+	private String sequential;
+	private String coordination;
 	private String sourceURL;
+	private String vfsContentType;
+	private String vfsFileNamePattern;
+	private String vfsFileProcessInterval;
+	private String vfsFileProcessCount;
+	private String vfsLocking;
+	private String vfsMaxRetryCount;
+	private String vfsReconnectTimeout;
+	private String vfsActionAfterProcess;
+	private String vfsMoveAfterProcess;
+	private String vfsActionAfterErrors;
+	private String vfsMoveAfterErrors;
+	private String vfsActionAfterFailure;
+	private String vfsMoveAfterFailure;
+	private String vfsAutoLockRelease;
+	private String vfsAutoLockReleaseInterval;
+	private String vfsLockReleaseSameNode;
+	private String vfsDistributedLock;
+	private String vfsDistributedTimeout;
+
 	private List<OMElement> availableLEList;
 	private IContainer inboundEndpointSaveLocation;
 	private List<OMElement> selectedLEList = new ArrayList<OMElement>();
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-
-	
 
 	public Object getModelPropertyValue(String key) {
 		Object modelPropertyValue = super.getModelPropertyValue(key);
@@ -67,11 +86,8 @@ public class InboundEndpointModel extends ProjectDataModel {
 			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionSaveLocation)) {
 				IContainer container = getInboundEndpointSaveLocation();
 				if (container instanceof IFolder) {
-					IFolder inboundEndpointFolder =
-					                                container.getProject().getFolder("src")
-					                                         .getFolder("main")
-					                                         .getFolder("synapse-config")
-					                                         .getFolder("inbound-endpoints");
+					IFolder inboundEndpointFolder = container.getProject().getFolder("src").getFolder("main")
+							.getFolder("synapse-config").getFolder("inbound-endpoints");
 					modelPropertyValue = inboundEndpointFolder;
 				} else {
 					modelPropertyValue = container;
@@ -88,6 +104,46 @@ public class InboundEndpointModel extends ProjectDataModel {
 				modelPropertyValue = getOnErrorSequence();
 			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionProtocol)) {
 				modelPropertyValue = getProtocol();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionSequential)) {
+				modelPropertyValue = getSequential();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionCoordination)) {
+				modelPropertyValue = getCoordination();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSContentType)) {
+				modelPropertyValue = getVfsContentType();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSFileNamePattern)) {
+				modelPropertyValue = getVfsFileNamePattern();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSFileProcessInterval)) {
+				modelPropertyValue = getVfsFileProcessInterval();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSFileProcessCount)) {
+				modelPropertyValue = getVfsFileProcessCount();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSLocking)) {
+				modelPropertyValue = getVfsLocking();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSMaxRetryCount)) {
+				modelPropertyValue = getVfsMaxRetryCount();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSReconnectTimeout)) {
+				modelPropertyValue = getVfsReconnectTimeout();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSActionAfterProcess)) {
+				modelPropertyValue = getVfsActionAfterProcess();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSMoveAfterProcess)) {
+				modelPropertyValue = getVfsMoveAfterProcess();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSActionAfterErrors)) {
+				modelPropertyValue = getVfsActionAfterErrors();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSMoveAfterErrors)) {
+				modelPropertyValue = getVfsMoveAfterErrors();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSActionAfterFailure)) {
+				modelPropertyValue = getVfsActionAfterFailure();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSMoveAfterFailure)) {
+				modelPropertyValue = getVfsMoveAfterFailure();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSAutoLockRelease)) {
+				modelPropertyValue = getVfsAutoLockRelease();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSAutoLockReleaseInterval)) {
+				modelPropertyValue = getVfsAutoLockReleaseInterval();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSLockReleaseSameNode)) {
+				modelPropertyValue = getVfsLockReleaseSameNode();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSDistributedLock)) {
+				modelPropertyValue = getVfsDistributedLock();
+			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSDistributedTimeout)) {
+				modelPropertyValue = getVfsDistributedTimeout();
 			} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionAvailableIEs)) {
 				modelPropertyValue = selectedLEList.toArray();
 			}
@@ -101,11 +157,9 @@ public class InboundEndpointModel extends ProjectDataModel {
 			if (getImportFile() != null && !getImportFile().toString().equals("")) {
 				try {
 					List<OMElement> availableLEs = new ArrayList<OMElement>();
-					if (SynapseFileUtils.isSynapseConfGiven(getImportFile(),
-					                                        SynapseEntryType.INBOUND_ENDPOINT)) {
-						availableLEs =
-						               SynapseFileUtils.synapseFileProcessing(getImportFile().getPath(),
-						                                                      SynapseEntryType.INBOUND_ENDPOINT);
+					if (SynapseFileUtils.isSynapseConfGiven(getImportFile(), SynapseEntryType.INBOUND_ENDPOINT)) {
+						availableLEs = SynapseFileUtils.synapseFileProcessing(getImportFile().getPath(),
+								SynapseEntryType.INBOUND_ENDPOINT);
 						setAvailableLEList(availableLEs);
 						getSelectedLEList().clear();
 						getSelectedLEList().addAll(availableLEs);
@@ -124,10 +178,8 @@ public class InboundEndpointModel extends ProjectDataModel {
 		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionSaveLocation)) {
 			IContainer container = (IContainer) data;
 			if (container instanceof IFolder) {
-				IFolder localEntryFolder =
-				                           container.getProject().getFolder("src")
-				                                    .getFolder("main").getFolder("synapse-config")
-				                                    .getFolder("inbound-endpoints");
+				IFolder localEntryFolder = container.getProject().getFolder("src").getFolder("main")
+						.getFolder("synapse-config").getFolder("inbound-endpoints");
 				setInboundEndpointSaveLocation(localEntryFolder);
 			} else {
 				setInboundEndpointSaveLocation(container);
@@ -153,8 +205,48 @@ public class InboundEndpointModel extends ProjectDataModel {
 			setOnErrorSequence(data.toString());
 		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionInterval)) {
 			setInterval(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionSequential)) {
+			setSequential(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionCoordination)) {
+			setCoordination(data.toString());
 		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSFileURI)) {
 			setFileName(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSContentType)) {
+			setVfsContentType(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSFileNamePattern)) {
+			setVfsFileNamePattern(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSFileProcessInterval)) {
+			setVfsFileProcessInterval(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSFileProcessCount)) {
+			setVfsFileProcessCount(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSLocking)) {
+			setVfsLocking(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSMaxRetryCount)) {
+			setVfsMaxRetryCount(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSReconnectTimeout)) {
+			setVfsReconnectTimeout(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSActionAfterProcess)) {
+			setVfsActionAfterProcess(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSMoveAfterProcess)) {
+			setVfsMoveAfterProcess(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSActionAfterErrors)) {
+			setVfsActionAfterErrors(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSMoveAfterErrors)) {
+			setVfsMoveAfterErrors(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSActionAfterFailure)) {
+			setVfsActionAfterFailure(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSMoveAfterFailure)) {
+			setVfsMoveAfterFailure(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSAutoLockRelease)) {
+			setVfsAutoLockRelease(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSAutoLockReleaseInterval)) {
+			setVfsAutoLockReleaseInterval(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSLockReleaseSameNode)) {
+			setVfsLockReleaseSameNode(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSDistributedLock)) {
+			setVfsDistributedLock(data.toString());
+		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionVFSDistributedTimeout)) {
+			setVfsDistributedTimeout(data.toString());
 		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionSuspend)) {
 			setSuspend(data.toString());
 		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionCreateESBProject)) {
@@ -202,11 +294,8 @@ public class InboundEndpointModel extends ProjectDataModel {
 	}
 
 	public void setInboundEndpointSaveLocation(String localEntrySaveLocation) {
-		this.inboundEndpointSaveLocation =
-		                                   ResourcesPlugin.getWorkspace()
-		                                                  .getRoot()
-		                                                  .getContainerForLocation(new Path(
-		                                                                                    localEntrySaveLocation));
+		this.inboundEndpointSaveLocation = ResourcesPlugin.getWorkspace().getRoot()
+				.getContainerForLocation(new Path(localEntrySaveLocation));
 	}
 
 	public IContainer getInboundEndpointSaveLocation() {
@@ -217,9 +306,8 @@ public class InboundEndpointModel extends ProjectDataModel {
 		super.setLocation(location);
 		File absolutionPath = getLocation();
 		if (getInboundEndpointSaveLocation() == null && absolutionPath != null) {
-			IContainer newEndpointSaveLocation =
-			                                     getContainer(absolutionPath,
-			                                                  InboundEndpointArtifactProperties.esbProjectNature);
+			IContainer newEndpointSaveLocation = getContainer(absolutionPath,
+					InboundEndpointArtifactProperties.esbProjectNature);
 			setInboundEndpointSaveLocation(newEndpointSaveLocation);
 		}
 	}
@@ -233,8 +321,7 @@ public class InboundEndpointModel extends ProjectDataModel {
 				if (project.isOpen() && project.hasNature(projectNature)) {
 					File projectLocation = project.getLocation().toFile();
 					int projectLocationLength = projectLocation.toString().length();
-					if (projectLocationLength > length &&
-					    projectLocationLength <= absolutionPath.toString().length()) {
+					if (projectLocationLength > length && projectLocationLength <= absolutionPath.toString().length()) {
 						if (absolutionPath.toString().startsWith(projectLocation.toString())) {
 							length = projectLocationLength;
 							currentSelection = project;
@@ -247,10 +334,8 @@ public class InboundEndpointModel extends ProjectDataModel {
 		}
 		IContainer newInboundEndpointSaveLocation = null;
 		if (currentSelection != null) {
-			String path =
-			              absolutionPath.toString().substring(currentSelection.getLocation()
-			                                                                  .toFile().toString()
-			                                                                  .length());
+			String path = absolutionPath.toString().substring(
+					currentSelection.getLocation().toFile().toString().length());
 
 			if ("".equals(path)) {
 				newInboundEndpointSaveLocation = currentSelection;
@@ -260,6 +345,7 @@ public class InboundEndpointModel extends ProjectDataModel {
 		}
 		return newInboundEndpointSaveLocation;
 	}
+
 	public String getSourceURL() {
 		return sourceURL;
 	}
@@ -339,4 +425,165 @@ public class InboundEndpointModel extends ProjectDataModel {
 	public void setInterval(String interval) {
 		this.interval = interval;
 	}
+
+	public String getVfsContentType() {
+		return vfsContentType;
+	}
+
+	public void setVfsContentType(String vfsContentType) {
+		this.vfsContentType = vfsContentType;
+	}
+
+	public String getVfsFileNamePattern() {
+		return vfsFileNamePattern;
+	}
+
+	public void setVfsFileNamePattern(String vfsFileNamePattern) {
+		this.vfsFileNamePattern = vfsFileNamePattern;
+	}
+
+	public String getVfsFileProcessInterval() {
+		return vfsFileProcessInterval;
+	}
+
+	public void setVfsFileProcessInterval(String vfsFileProcessInterval) {
+		this.vfsFileProcessInterval = vfsFileProcessInterval;
+	}
+
+	public String getVfsFileProcessCount() {
+		return vfsFileProcessCount;
+	}
+
+	public void setVfsFileProcessCount(String vfsFileProcessCount) {
+		this.vfsFileProcessCount = vfsFileProcessCount;
+	}
+
+	public String getVfsLocking() {
+		return vfsLocking;
+	}
+
+	public void setVfsLocking(String vfsLocking) {
+		this.vfsLocking = vfsLocking;
+	}
+
+	public String getVfsMaxRetryCount() {
+		return vfsMaxRetryCount;
+	}
+
+	public void setVfsMaxRetryCount(String vfsMaxRetryCount) {
+		this.vfsMaxRetryCount = vfsMaxRetryCount;
+	}
+
+	public String getVfsReconnectTimeout() {
+		return vfsReconnectTimeout;
+	}
+
+	public void setVfsReconnectTimeout(String vfsReconnectTimeout) {
+		this.vfsReconnectTimeout = vfsReconnectTimeout;
+	}
+
+	public String getVfsActionAfterProcess() {
+		return vfsActionAfterProcess;
+	}
+
+	public void setVfsActionAfterProcess(String vfsActionAfterProcess) {
+		this.vfsActionAfterProcess = vfsActionAfterProcess;
+	}
+
+	public String getVfsMoveAfterProcess() {
+		return vfsMoveAfterProcess;
+	}
+
+	public void setVfsMoveAfterProcess(String vfsMoveAfterProcess) {
+		this.vfsMoveAfterProcess = vfsMoveAfterProcess;
+	}
+
+	public String getVfsActionAfterErrors() {
+		return vfsActionAfterErrors;
+	}
+
+	public void setVfsActionAfterErrors(String vfsActionAfterErrors) {
+		this.vfsActionAfterErrors = vfsActionAfterErrors;
+	}
+
+	public String getVfsMoveAfterErrors() {
+		return vfsMoveAfterErrors;
+	}
+
+	public void setVfsMoveAfterErrors(String vfsMoveAfterErrors) {
+		this.vfsMoveAfterErrors = vfsMoveAfterErrors;
+	}
+
+	public String getVfsActionAfterFailure() {
+		return vfsActionAfterFailure;
+	}
+
+	public void setVfsActionAfterFailure(String vfsActionAfterFailure) {
+		this.vfsActionAfterFailure = vfsActionAfterFailure;
+	}
+
+	public String getVfsMoveAfterFailure() {
+		return vfsMoveAfterFailure;
+	}
+
+	public void setVfsMoveAfterFailure(String vfsMoveAfterFailure) {
+		this.vfsMoveAfterFailure = vfsMoveAfterFailure;
+	}
+
+	public String getVfsAutoLockRelease() {
+		return vfsAutoLockRelease;
+	}
+
+	public void setVfsAutoLockRelease(String vfsAutoLockRelease) {
+		this.vfsAutoLockRelease = vfsAutoLockRelease;
+	}
+
+	public String getVfsAutoLockReleaseInterval() {
+		return vfsAutoLockReleaseInterval;
+	}
+
+	public void setVfsAutoLockReleaseInterval(String vfsAutoLockReleaseInterval) {
+		this.vfsAutoLockReleaseInterval = vfsAutoLockReleaseInterval;
+	}
+
+	public String getVfsLockReleaseSameNode() {
+		return vfsLockReleaseSameNode;
+	}
+
+	public void setVfsLockReleaseSameNode(String vfsLockReleaseSameNode) {
+		this.vfsLockReleaseSameNode = vfsLockReleaseSameNode;
+	}
+
+	public String getVfsDistributedLock() {
+		return vfsDistributedLock;
+	}
+
+	public void setVfsDistributedLock(String vfsDistributedLock) {
+		this.vfsDistributedLock = vfsDistributedLock;
+	}
+
+	public String getVfsDistributedTimeout() {
+		return vfsDistributedTimeout;
+	}
+
+	public void setVfsDistributedTimeout(String vfsDistributedTimeout) {
+		this.vfsDistributedTimeout = vfsDistributedTimeout;
+	}
+
+	public String getSequential() {
+		return sequential;
+	}
+
+	public void setSequential(String sequential) {
+		this.sequential = sequential;
+	}
+
+	public String getCoordination() {
+		return coordination;
+	}
+
+	public void setCoordination(String coordination) {
+		this.coordination = coordination;
+	}
+
 }

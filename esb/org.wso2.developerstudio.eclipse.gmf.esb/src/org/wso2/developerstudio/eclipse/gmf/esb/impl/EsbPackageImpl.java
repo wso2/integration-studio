@@ -140,6 +140,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.DropMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAddressingVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPointAttachmentOptimization;
@@ -239,12 +240,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOu
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorTargetOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateTarget;
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceAlgorithm;
@@ -467,6 +472,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediatorInputConnector
 import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule;
 import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateFeature;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediatorInputConnector;
@@ -3687,6 +3693,48 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum protocolEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum inboundEndpointTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum enableEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum vfsActionEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum jmsConnectionFactoryTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum jmsSessionAcknowledgementEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum jmsCacheLevelEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9692,7 +9740,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_Sequence() {
+	public EAttribute getInboundEndpoint_Type() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -9701,7 +9749,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_OnErrorSequence() {
+	public EAttribute getInboundEndpoint_Sequence() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -9710,8 +9758,359 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_Protocol() {
+	public EAttribute getInboundEndpoint_OnErrorSequence() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Class() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Protocol() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHttpPort() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Interval() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Sequential() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Coordination() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSFileURI() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSContentType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSFileNamePattern() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSFileProcessInterval() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSFileProcessCount() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSLocking() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSMaxRetryCount() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSReconnectTimeout() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSActionAfterProcess() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSMoveAfterProcess() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(24);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSActionAfterErrors() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSMoveAfterErrors() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSActionAfterFailure() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSMoveAfterFailure() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSAutoLockRelease() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(29);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSAutoLockReleaseInterval() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(30);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSLockReleaseSameNode() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(31);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSDistributedLock() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(32);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportVFSDistributedTimeout() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(33);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_JavaNamingFactoryInitial() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(34);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_JavaNamingProviderUrl() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(35);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSConnectionFactoryJNDIName() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(36);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSConnectionFactoryType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(37);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSDestination() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(38);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSSessionTransacted() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(39);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSSessionAcknowledgement() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(40);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSCacheLevel() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(41);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSUserName() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(42);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSPassword() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(43);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSJMSSpecVersion() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(44);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSSubscriptionDurable() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(45);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSDurableSubscriberClientID() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(46);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_TransportJMSMessageSelector() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(47);
 	}
 
 	/**
@@ -15875,6 +16274,60 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getInboundEndpointType() {
+		return inboundEndpointTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getEnable() {
+		return enableEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getVFSAction() {
+		return vfsActionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getJMSConnectionFactoryType() {
+		return jmsConnectionFactoryTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getJMSSessionAcknowledgement() {
+		return jmsSessionAcknowledgementEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getJMSCacheLevel() {
+		return jmsCacheLevelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getMap() {
 		return mapEDataType;
 	}
@@ -17478,9 +17931,48 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR);
 		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__CONTAINER);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__NAME);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TYPE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SEQUENCE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ON_ERROR_SEQUENCE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__CLASS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__PROTOCOL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HTTP_PORT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INTERVAL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SEQUENTIAL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__COORDINATION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR);
 
 		inboundEndpointContainerEClass = createEClass(INBOUND_ENDPOINT_CONTAINER);
 		createEReference(inboundEndpointContainerEClass, INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER);
@@ -17605,6 +18097,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		cloudConnectorOperationParamEditorTypeEEnum = createEEnum(CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE);
 		dataMapperMediatorDataTypesEEnum = createEEnum(DATA_MAPPER_MEDIATOR_DATA_TYPES);
 		protocolEEnum = createEEnum(PROTOCOL);
+		inboundEndpointTypeEEnum = createEEnum(INBOUND_ENDPOINT_TYPE);
+		enableEEnum = createEEnum(ENABLE);
+		vfsActionEEnum = createEEnum(VFS_ACTION);
+		jmsConnectionFactoryTypeEEnum = createEEnum(JMS_CONNECTION_FACTORY_TYPE);
+		jmsSessionAcknowledgementEEnum = createEEnum(JMS_SESSION_ACKNOWLEDGEMENT);
+		jmsCacheLevelEEnum = createEEnum(JMS_CACHE_LEVEL);
 
 		// Create data types
 		mapEDataType = createEDataType(MAP);
@@ -19555,9 +20053,48 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getInboundEndpoint_OnErrorSequenceOutputConnector(), this.getInboundEndpointOnErrorSequenceOutputConnector(), null, "onErrorSequenceOutputConnector", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInboundEndpoint_Container(), this.getInboundEndpointContainer(), null, "container", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_Name(), ecorePackage.getEString(), "name", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Type(), this.getInboundEndpointType(), "type", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_Sequence(), ecorePackage.getEString(), "sequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_OnErrorSequence(), ecorePackage.getEString(), "onErrorSequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Class(), ecorePackage.getEString(), "class", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_Protocol(), ecorePackage.getEString(), "protocol", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHttpPort(), ecorePackage.getEString(), "inboundHttpPort", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Interval(), ecorePackage.getEString(), "interval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Sequential(), ecorePackage.getEBoolean(), "sequential", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Coordination(), ecorePackage.getEBoolean(), "coordination", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSFileURI(), ecorePackage.getEString(), "transportVFSFileURI", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSContentType(), ecorePackage.getEString(), "transportVFSContentType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSFileNamePattern(), ecorePackage.getEString(), "transportVFSFileNamePattern", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSFileProcessInterval(), ecorePackage.getEString(), "transportVFSFileProcessInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSFileProcessCount(), ecorePackage.getEString(), "transportVFSFileProcessCount", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSLocking(), this.getEnable(), "transportVFSLocking", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSMaxRetryCount(), ecorePackage.getEString(), "transportVFSMaxRetryCount", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSReconnectTimeout(), ecorePackage.getEString(), "transportVFSReconnectTimeout", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSActionAfterProcess(), this.getVFSAction(), "transportVFSActionAfterProcess", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSMoveAfterProcess(), ecorePackage.getEString(), "transportVFSMoveAfterProcess", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSActionAfterErrors(), this.getVFSAction(), "transportVFSActionAfterErrors", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSMoveAfterErrors(), ecorePackage.getEString(), "transportVFSMoveAfterErrors", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSActionAfterFailure(), this.getVFSAction(), "transportVFSActionAfterFailure", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSMoveAfterFailure(), ecorePackage.getEString(), "transportVFSMoveAfterFailure", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSAutoLockRelease(), ecorePackage.getEBoolean(), "transportVFSAutoLockRelease", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSAutoLockReleaseInterval(), ecorePackage.getEString(), "transportVFSAutoLockReleaseInterval", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSLockReleaseSameNode(), ecorePackage.getEBoolean(), "transportVFSLockReleaseSameNode", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSDistributedLock(), ecorePackage.getEBoolean(), "transportVFSDistributedLock", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportVFSDistributedTimeout(), ecorePackage.getEString(), "transportVFSDistributedTimeout", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_JavaNamingFactoryInitial(), ecorePackage.getEString(), "javaNamingFactoryInitial", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_JavaNamingProviderUrl(), ecorePackage.getEString(), "javaNamingProviderUrl", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSConnectionFactoryJNDIName(), ecorePackage.getEString(), "transportJMSConnectionFactoryJNDIName", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSConnectionFactoryType(), this.getJMSConnectionFactoryType(), "transportJMSConnectionFactoryType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSDestination(), ecorePackage.getEString(), "transportJMSDestination", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSSessionTransacted(), ecorePackage.getEBoolean(), "transportJMSSessionTransacted", "true", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSSessionAcknowledgement(), this.getJMSSessionAcknowledgement(), "transportJMSSessionAcknowledgement", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSCacheLevel(), this.getJMSCacheLevel(), "transportJMSCacheLevel", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSUserName(), ecorePackage.getEString(), "transportJMSUserName", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSPassword(), ecorePackage.getEString(), "transportJMSPassword", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSJMSSpecVersion(), ecorePackage.getEString(), "transportJMSJMSSpecVersion", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSSubscriptionDurable(), ecorePackage.getEString(), "transportJMSSubscriptionDurable", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSDurableSubscriberClientID(), ecorePackage.getEString(), "transportJMSDurableSubscriberClientID", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_TransportJMSMessageSelector(), ecorePackage.getEString(), "transportJMSMessageSelector", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointContainerEClass, InboundEndpointContainer.class, "InboundEndpointContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInboundEndpointContainer_SequenceContainer(), this.getInboundEndpointSequenceContainer(), null, "sequenceContainer", null, 0, 1, InboundEndpointContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -20130,6 +20667,37 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEEnum(protocolEEnum, Protocol.class, "Protocol");
 		addEEnumLiteral(protocolEEnum, Protocol.HTTP);
 		addEEnumLiteral(protocolEEnum, Protocol.HTTPS);
+
+		initEEnum(inboundEndpointTypeEEnum, InboundEndpointType.class, "InboundEndpointType");
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.HTTP);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.FILE);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.JMS);
+		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.CUSTOM);
+
+		initEEnum(enableEEnum, Enable.class, "Enable");
+		addEEnumLiteral(enableEEnum, Enable.ENABLE);
+		addEEnumLiteral(enableEEnum, Enable.DISABLE);
+
+		initEEnum(vfsActionEEnum, VFSAction.class, "VFSAction");
+		addEEnumLiteral(vfsActionEEnum, VFSAction.NONE);
+		addEEnumLiteral(vfsActionEEnum, VFSAction.MOVE);
+
+		initEEnum(jmsConnectionFactoryTypeEEnum, JMSConnectionFactoryType.class, "JMSConnectionFactoryType");
+		addEEnumLiteral(jmsConnectionFactoryTypeEEnum, JMSConnectionFactoryType.TOPIC);
+		addEEnumLiteral(jmsConnectionFactoryTypeEEnum, JMSConnectionFactoryType.QUEUE);
+
+		initEEnum(jmsSessionAcknowledgementEEnum, JMSSessionAcknowledgement.class, "JMSSessionAcknowledgement");
+		addEEnumLiteral(jmsSessionAcknowledgementEEnum, JMSSessionAcknowledgement.AUTO_ACKNOWLEDGE);
+		addEEnumLiteral(jmsSessionAcknowledgementEEnum, JMSSessionAcknowledgement.CLIENT_ACKNOWLEDGE);
+		addEEnumLiteral(jmsSessionAcknowledgementEEnum, JMSSessionAcknowledgement.DUPS_OK_ACKNOWLEDGE);
+		addEEnumLiteral(jmsSessionAcknowledgementEEnum, JMSSessionAcknowledgement.SESSION_TRANSACTED);
+
+		initEEnum(jmsCacheLevelEEnum, JMSCacheLevel.class, "JMSCacheLevel");
+		addEEnumLiteral(jmsCacheLevelEEnum, JMSCacheLevel.ONE);
+		addEEnumLiteral(jmsCacheLevelEEnum, JMSCacheLevel.TWO);
+		addEEnumLiteral(jmsCacheLevelEEnum, JMSCacheLevel.THREE);
+		addEEnumLiteral(jmsCacheLevelEEnum, JMSCacheLevel.FOUR);
+		addEEnumLiteral(jmsCacheLevelEEnum, JMSCacheLevel.FIVE);
 
 		// Initialize data types
 		initEDataType(mapEDataType, Map.class, "Map", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

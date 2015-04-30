@@ -560,6 +560,37 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/http"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/https"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//InboundEndpointType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/HTTP"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/File"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/JMS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/Custom"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//Enable">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Enable/enable"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Enable/disable"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSAction">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/none"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/move"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSConnectionFactoryType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSConnectionFactoryType/topic"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSConnectionFactoryType/queue"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSSessionAcknowledgement">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSessionAcknowledgement/AUTO_ACKNOWLEDGE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSessionAcknowledgement/CLIENT_ACKNOWLEDGE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSessionAcknowledgement/DUPS_OK_ACKNOWLEDGE"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSessionAcknowledgement/SESSION_TRANSACTED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSCacheLevel">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/one"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/two"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/three"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/four"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSCacheLevel/five"/>
+    </genEnums>
     <genDataTypes ecoreDataType="esb.ecore#//Map">
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/K"/>
       <genTypeParameters ecoreTypeParameter="esb.ecore#//Map/V"/>
@@ -2029,9 +2060,48 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/onErrorSequenceOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/container"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sequence"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/onErrorSequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/class"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/protocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundHttpPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/interval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sequential"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/coordination"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSContentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileNamePattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileProcessInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileProcessCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSLocking"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMaxRetryCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSReconnectTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSActionAfterProcess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveAfterProcess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSActionAfterErrors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveAfterErrors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSActionAfterFailure"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveAfterFailure"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSAutoLockRelease"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSAutoLockReleaseInterval"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSLockReleaseSameNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSDistributedLock"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSDistributedTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/javaNamingFactoryInitial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/javaNamingProviderUrl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSConnectionFactoryJNDIName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSConnectionFactoryType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDestination"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSessionTransacted"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSessionAcknowledgement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSCacheLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSUserName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSPassword"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSJMSSpecVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSubscriptionDurable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDurableSubscriberClientID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSMessageSelector"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpointContainer/sequenceContainer"/>

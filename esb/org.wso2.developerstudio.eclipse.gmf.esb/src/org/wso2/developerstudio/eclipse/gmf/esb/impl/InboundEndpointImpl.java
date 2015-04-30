@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer;
@@ -30,6 +31,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceIn
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
+import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
+import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,9 +50,48 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputCon
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequenceOutputConnector <em>On Error Sequence Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequence <em>On Error Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHttpPort <em>Inbound Http Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInterval <em>Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSequential <em>Sequential</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isCoordination <em>Coordination</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileURI <em>Transport VFS File URI</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSContentType <em>Transport VFS Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileNamePattern <em>Transport VFS File Name Pattern</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessInterval <em>Transport VFS File Process Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileProcessCount <em>Transport VFS File Process Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSLocking <em>Transport VFS Locking</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMaxRetryCount <em>Transport VFS Max Retry Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSReconnectTimeout <em>Transport VFS Reconnect Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterProcess <em>Transport VFS Action After Process</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterProcess <em>Transport VFS Move After Process</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterErrors <em>Transport VFS Action After Errors</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterErrors <em>Transport VFS Move After Errors</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSActionAfterFailure <em>Transport VFS Action After Failure</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveAfterFailure <em>Transport VFS Move After Failure</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSAutoLockRelease <em>Transport VFS Auto Lock Release</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSAutoLockReleaseInterval <em>Transport VFS Auto Lock Release Interval</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSLockReleaseSameNode <em>Transport VFS Lock Release Same Node</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSDistributedLock <em>Transport VFS Distributed Lock</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSDistributedTimeout <em>Transport VFS Distributed Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingFactoryInitial <em>Java Naming Factory Initial</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getJavaNamingProviderUrl <em>Java Naming Provider Url</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryJNDIName <em>Transport JMS Connection Factory JNDI Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSConnectionFactoryType <em>Transport JMS Connection Factory Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDestination <em>Transport JMS Destination</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportJMSSessionTransacted <em>Transport JMS Session Transacted</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSessionAcknowledgement <em>Transport JMS Session Acknowledgement</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSCacheLevel <em>Transport JMS Cache Level</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSUserName <em>Transport JMS User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSPassword <em>Transport JMS Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSJMSSpecVersion <em>Transport JMSJMS Spec Version</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
  * </ul>
  * </p>
  *
@@ -124,6 +169,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final InboundEndpointType TYPE_EDEFAULT = InboundEndpointType.HTTP;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected InboundEndpointType type = TYPE_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -164,6 +229,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String onErrorSequence = ON_ERROR_SEQUENCE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getClass_() <em>Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClass_()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CLASS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getClass_() <em>Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClass_()
+	 * @generated
+	 * @ordered
+	 */
+	protected String class_ = CLASS_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getProtocol() <em>Protocol</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -182,6 +267,746 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String protocol = PROTOCOL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundHttpPort() <em>Inbound Http Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHttpPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_HTTP_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundHttpPort() <em>Inbound Http Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHttpPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundHttpPort = INBOUND_HTTP_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInterval() <em>Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INTERVAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInterval() <em>Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected String interval = INTERVAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isSequential() <em>Sequential</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSequential()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SEQUENTIAL_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isSequential() <em>Sequential</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSequential()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean sequential = SEQUENTIAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isCoordination() <em>Coordination</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCoordination()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean COORDINATION_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isCoordination() <em>Coordination</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCoordination()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean coordination = COORDINATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSFileURI() <em>Transport VFS File URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_FILE_URI_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSFileURI() <em>Transport VFS File URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSFileURI = TRANSPORT_VFS_FILE_URI_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSContentType() <em>Transport VFS Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSContentType() <em>Transport VFS Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSContentType = TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileNamePattern()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSFileNamePattern() <em>Transport VFS File Name Pattern</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileNamePattern()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSFileNamePattern = TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSFileProcessInterval() <em>Transport VFS File Process Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileProcessInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSFileProcessInterval() <em>Transport VFS File Process Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileProcessInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSFileProcessInterval = TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSFileProcessCount() <em>Transport VFS File Process Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileProcessCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSFileProcessCount() <em>Transport VFS File Process Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileProcessCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSFileProcessCount = TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSLocking() <em>Transport VFS Locking</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSLocking()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Enable TRANSPORT_VFS_LOCKING_EDEFAULT = Enable.ENABLE;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSLocking() <em>Transport VFS Locking</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSLocking()
+	 * @generated
+	 * @ordered
+	 */
+	protected Enable transportVFSLocking = TRANSPORT_VFS_LOCKING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSMaxRetryCount() <em>Transport VFS Max Retry Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMaxRetryCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSMaxRetryCount() <em>Transport VFS Max Retry Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMaxRetryCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSMaxRetryCount = TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSReconnectTimeout() <em>Transport VFS Reconnect Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSReconnectTimeout()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSReconnectTimeout() <em>Transport VFS Reconnect Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSReconnectTimeout()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSReconnectTimeout = TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSActionAfterProcess() <em>Transport VFS Action After Process</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSActionAfterProcess()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final VFSAction TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT = VFSAction.NONE;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSActionAfterProcess() <em>Transport VFS Action After Process</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSActionAfterProcess()
+	 * @generated
+	 * @ordered
+	 */
+	protected VFSAction transportVFSActionAfterProcess = TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSMoveAfterProcess() <em>Transport VFS Move After Process</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMoveAfterProcess()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSMoveAfterProcess() <em>Transport VFS Move After Process</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMoveAfterProcess()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSMoveAfterProcess = TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSActionAfterErrors() <em>Transport VFS Action After Errors</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSActionAfterErrors()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final VFSAction TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT = VFSAction.NONE;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSActionAfterErrors() <em>Transport VFS Action After Errors</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSActionAfterErrors()
+	 * @generated
+	 * @ordered
+	 */
+	protected VFSAction transportVFSActionAfterErrors = TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSMoveAfterErrors() <em>Transport VFS Move After Errors</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMoveAfterErrors()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSMoveAfterErrors() <em>Transport VFS Move After Errors</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMoveAfterErrors()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSMoveAfterErrors = TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSActionAfterFailure() <em>Transport VFS Action After Failure</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSActionAfterFailure()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final VFSAction TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT = VFSAction.NONE;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSActionAfterFailure() <em>Transport VFS Action After Failure</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSActionAfterFailure()
+	 * @generated
+	 * @ordered
+	 */
+	protected VFSAction transportVFSActionAfterFailure = TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSMoveAfterFailure() <em>Transport VFS Move After Failure</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMoveAfterFailure()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSMoveAfterFailure() <em>Transport VFS Move After Failure</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMoveAfterFailure()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSMoveAfterFailure = TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportVFSAutoLockRelease() <em>Transport VFS Auto Lock Release</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSAutoLockRelease()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isTransportVFSAutoLockRelease() <em>Transport VFS Auto Lock Release</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSAutoLockRelease()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportVFSAutoLockRelease = TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSAutoLockReleaseInterval() <em>Transport VFS Auto Lock Release Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSAutoLockReleaseInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSAutoLockReleaseInterval() <em>Transport VFS Auto Lock Release Interval</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSAutoLockReleaseInterval()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSAutoLockReleaseInterval = TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportVFSLockReleaseSameNode() <em>Transport VFS Lock Release Same Node</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSLockReleaseSameNode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isTransportVFSLockReleaseSameNode() <em>Transport VFS Lock Release Same Node</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSLockReleaseSameNode()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportVFSLockReleaseSameNode = TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportVFSDistributedLock() <em>Transport VFS Distributed Lock</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSDistributedLock()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isTransportVFSDistributedLock() <em>Transport VFS Distributed Lock</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSDistributedLock()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportVFSDistributedLock = TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSDistributedTimeout() <em>Transport VFS Distributed Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSDistributedTimeout()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSDistributedTimeout() <em>Transport VFS Distributed Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSDistributedTimeout()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSDistributedTimeout = TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJavaNamingFactoryInitial() <em>Java Naming Factory Initial</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJavaNamingFactoryInitial()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JAVA_NAMING_FACTORY_INITIAL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJavaNamingFactoryInitial() <em>Java Naming Factory Initial</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJavaNamingFactoryInitial()
+	 * @generated
+	 * @ordered
+	 */
+	protected String javaNamingFactoryInitial = JAVA_NAMING_FACTORY_INITIAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJavaNamingProviderUrl() <em>Java Naming Provider Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJavaNamingProviderUrl()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JAVA_NAMING_PROVIDER_URL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJavaNamingProviderUrl() <em>Java Naming Provider Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJavaNamingProviderUrl()
+	 * @generated
+	 * @ordered
+	 */
+	protected String javaNamingProviderUrl = JAVA_NAMING_PROVIDER_URL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSConnectionFactoryJNDIName() <em>Transport JMS Connection Factory JNDI Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSConnectionFactoryJNDIName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSConnectionFactoryJNDIName() <em>Transport JMS Connection Factory JNDI Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSConnectionFactoryJNDIName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSConnectionFactoryJNDIName = TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSConnectionFactoryType() <em>Transport JMS Connection Factory Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSConnectionFactoryType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final JMSConnectionFactoryType TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT = JMSConnectionFactoryType.TOPIC;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSConnectionFactoryType() <em>Transport JMS Connection Factory Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSConnectionFactoryType()
+	 * @generated
+	 * @ordered
+	 */
+	protected JMSConnectionFactoryType transportJMSConnectionFactoryType = TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSDestination() <em>Transport JMS Destination</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSDestination()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_DESTINATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSDestination() <em>Transport JMS Destination</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSDestination()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSDestination = TRANSPORT_JMS_DESTINATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportJMSSessionTransacted() <em>Transport JMS Session Transacted</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportJMSSessionTransacted()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_JMS_SESSION_TRANSACTED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isTransportJMSSessionTransacted() <em>Transport JMS Session Transacted</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportJMSSessionTransacted()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportJMSSessionTransacted = TRANSPORT_JMS_SESSION_TRANSACTED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSSessionAcknowledgement() <em>Transport JMS Session Acknowledgement</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSSessionAcknowledgement()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final JMSSessionAcknowledgement TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT = JMSSessionAcknowledgement.AUTO_ACKNOWLEDGE;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSSessionAcknowledgement() <em>Transport JMS Session Acknowledgement</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSSessionAcknowledgement()
+	 * @generated
+	 * @ordered
+	 */
+	protected JMSSessionAcknowledgement transportJMSSessionAcknowledgement = TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSCacheLevel() <em>Transport JMS Cache Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSCacheLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final JMSCacheLevel TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT = JMSCacheLevel.ONE;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSCacheLevel() <em>Transport JMS Cache Level</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSCacheLevel()
+	 * @generated
+	 * @ordered
+	 */
+	protected JMSCacheLevel transportJMSCacheLevel = TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSUserName() <em>Transport JMS User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSUserName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_USER_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSUserName() <em>Transport JMS User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSUserName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSUserName = TRANSPORT_JMS_USER_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSPassword() <em>Transport JMS Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSPassword() <em>Transport JMS Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSPassword = TRANSPORT_JMS_PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSJMSSpecVersion() <em>Transport JMSJMS Spec Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSJMSSpecVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSJMSSpecVersion() <em>Transport JMSJMS Spec Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSJMSSpecVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSJMSSpecVersion = TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSSubscriptionDurable() <em>Transport JMS Subscription Durable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSSubscriptionDurable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSSubscriptionDurable() <em>Transport JMS Subscription Durable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSSubscriptionDurable()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSSubscriptionDurable = TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSDurableSubscriberClientID() <em>Transport JMS Durable Subscriber Client ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSDurableSubscriberClientID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSDurableSubscriberClientID() <em>Transport JMS Durable Subscriber Client ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSDurableSubscriberClientID()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSDurableSubscriberClientID = TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSMessageSelector() <em>Transport JMS Message Selector</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSMessageSelector()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSMessageSelector() <em>Transport JMS Message Selector</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSMessageSelector()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSMessageSelector = TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -443,6 +1268,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public InboundEndpointType getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(InboundEndpointType newType) {
+		InboundEndpointType oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getSequence() {
 		return sequence;
 	}
@@ -485,6 +1331,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getClass_() {
+		return class_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setClass(String newClass) {
+		String oldClass = class_;
+		class_ = newClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CLASS, oldClass, class_));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getProtocol() {
 		return protocol;
 	}
@@ -499,6 +1366,783 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		protocol = newProtocol;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__PROTOCOL, oldProtocol, protocol));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundHttpPort() {
+		return inboundHttpPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHttpPort(String newInboundHttpPort) {
+		String oldInboundHttpPort = inboundHttpPort;
+		inboundHttpPort = newInboundHttpPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT, oldInboundHttpPort, inboundHttpPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInterval() {
+		return interval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInterval(String newInterval) {
+		String oldInterval = interval;
+		interval = newInterval;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INTERVAL, oldInterval, interval));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSequential() {
+		return sequential;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSequential(boolean newSequential) {
+		boolean oldSequential = sequential;
+		sequential = newSequential;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL, oldSequential, sequential));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isCoordination() {
+		return coordination;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCoordination(boolean newCoordination) {
+		boolean oldCoordination = coordination;
+		coordination = newCoordination;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__COORDINATION, oldCoordination, coordination));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSFileURI() {
+		return transportVFSFileURI;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSFileURI(String newTransportVFSFileURI) {
+		String oldTransportVFSFileURI = transportVFSFileURI;
+		transportVFSFileURI = newTransportVFSFileURI;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI, oldTransportVFSFileURI, transportVFSFileURI));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSContentType() {
+		return transportVFSContentType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSContentType(String newTransportVFSContentType) {
+		String oldTransportVFSContentType = transportVFSContentType;
+		transportVFSContentType = newTransportVFSContentType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE, oldTransportVFSContentType, transportVFSContentType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSFileNamePattern() {
+		return transportVFSFileNamePattern;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSFileNamePattern(String newTransportVFSFileNamePattern) {
+		String oldTransportVFSFileNamePattern = transportVFSFileNamePattern;
+		transportVFSFileNamePattern = newTransportVFSFileNamePattern;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN, oldTransportVFSFileNamePattern, transportVFSFileNamePattern));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSFileProcessInterval() {
+		return transportVFSFileProcessInterval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSFileProcessInterval(String newTransportVFSFileProcessInterval) {
+		String oldTransportVFSFileProcessInterval = transportVFSFileProcessInterval;
+		transportVFSFileProcessInterval = newTransportVFSFileProcessInterval;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL, oldTransportVFSFileProcessInterval, transportVFSFileProcessInterval));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSFileProcessCount() {
+		return transportVFSFileProcessCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSFileProcessCount(String newTransportVFSFileProcessCount) {
+		String oldTransportVFSFileProcessCount = transportVFSFileProcessCount;
+		transportVFSFileProcessCount = newTransportVFSFileProcessCount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT, oldTransportVFSFileProcessCount, transportVFSFileProcessCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Enable getTransportVFSLocking() {
+		return transportVFSLocking;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSLocking(Enable newTransportVFSLocking) {
+		Enable oldTransportVFSLocking = transportVFSLocking;
+		transportVFSLocking = newTransportVFSLocking == null ? TRANSPORT_VFS_LOCKING_EDEFAULT : newTransportVFSLocking;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING, oldTransportVFSLocking, transportVFSLocking));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSMaxRetryCount() {
+		return transportVFSMaxRetryCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSMaxRetryCount(String newTransportVFSMaxRetryCount) {
+		String oldTransportVFSMaxRetryCount = transportVFSMaxRetryCount;
+		transportVFSMaxRetryCount = newTransportVFSMaxRetryCount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT, oldTransportVFSMaxRetryCount, transportVFSMaxRetryCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSReconnectTimeout() {
+		return transportVFSReconnectTimeout;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSReconnectTimeout(String newTransportVFSReconnectTimeout) {
+		String oldTransportVFSReconnectTimeout = transportVFSReconnectTimeout;
+		transportVFSReconnectTimeout = newTransportVFSReconnectTimeout;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT, oldTransportVFSReconnectTimeout, transportVFSReconnectTimeout));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VFSAction getTransportVFSActionAfterProcess() {
+		return transportVFSActionAfterProcess;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSActionAfterProcess(VFSAction newTransportVFSActionAfterProcess) {
+		VFSAction oldTransportVFSActionAfterProcess = transportVFSActionAfterProcess;
+		transportVFSActionAfterProcess = newTransportVFSActionAfterProcess == null ? TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT : newTransportVFSActionAfterProcess;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS, oldTransportVFSActionAfterProcess, transportVFSActionAfterProcess));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSMoveAfterProcess() {
+		return transportVFSMoveAfterProcess;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSMoveAfterProcess(String newTransportVFSMoveAfterProcess) {
+		String oldTransportVFSMoveAfterProcess = transportVFSMoveAfterProcess;
+		transportVFSMoveAfterProcess = newTransportVFSMoveAfterProcess;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS, oldTransportVFSMoveAfterProcess, transportVFSMoveAfterProcess));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VFSAction getTransportVFSActionAfterErrors() {
+		return transportVFSActionAfterErrors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSActionAfterErrors(VFSAction newTransportVFSActionAfterErrors) {
+		VFSAction oldTransportVFSActionAfterErrors = transportVFSActionAfterErrors;
+		transportVFSActionAfterErrors = newTransportVFSActionAfterErrors == null ? TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT : newTransportVFSActionAfterErrors;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS, oldTransportVFSActionAfterErrors, transportVFSActionAfterErrors));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSMoveAfterErrors() {
+		return transportVFSMoveAfterErrors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSMoveAfterErrors(String newTransportVFSMoveAfterErrors) {
+		String oldTransportVFSMoveAfterErrors = transportVFSMoveAfterErrors;
+		transportVFSMoveAfterErrors = newTransportVFSMoveAfterErrors;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS, oldTransportVFSMoveAfterErrors, transportVFSMoveAfterErrors));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VFSAction getTransportVFSActionAfterFailure() {
+		return transportVFSActionAfterFailure;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSActionAfterFailure(VFSAction newTransportVFSActionAfterFailure) {
+		VFSAction oldTransportVFSActionAfterFailure = transportVFSActionAfterFailure;
+		transportVFSActionAfterFailure = newTransportVFSActionAfterFailure == null ? TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT : newTransportVFSActionAfterFailure;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE, oldTransportVFSActionAfterFailure, transportVFSActionAfterFailure));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSMoveAfterFailure() {
+		return transportVFSMoveAfterFailure;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSMoveAfterFailure(String newTransportVFSMoveAfterFailure) {
+		String oldTransportVFSMoveAfterFailure = transportVFSMoveAfterFailure;
+		transportVFSMoveAfterFailure = newTransportVFSMoveAfterFailure;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE, oldTransportVFSMoveAfterFailure, transportVFSMoveAfterFailure));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportVFSAutoLockRelease() {
+		return transportVFSAutoLockRelease;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSAutoLockRelease(boolean newTransportVFSAutoLockRelease) {
+		boolean oldTransportVFSAutoLockRelease = transportVFSAutoLockRelease;
+		transportVFSAutoLockRelease = newTransportVFSAutoLockRelease;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE, oldTransportVFSAutoLockRelease, transportVFSAutoLockRelease));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSAutoLockReleaseInterval() {
+		return transportVFSAutoLockReleaseInterval;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSAutoLockReleaseInterval(String newTransportVFSAutoLockReleaseInterval) {
+		String oldTransportVFSAutoLockReleaseInterval = transportVFSAutoLockReleaseInterval;
+		transportVFSAutoLockReleaseInterval = newTransportVFSAutoLockReleaseInterval;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL, oldTransportVFSAutoLockReleaseInterval, transportVFSAutoLockReleaseInterval));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportVFSLockReleaseSameNode() {
+		return transportVFSLockReleaseSameNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSLockReleaseSameNode(boolean newTransportVFSLockReleaseSameNode) {
+		boolean oldTransportVFSLockReleaseSameNode = transportVFSLockReleaseSameNode;
+		transportVFSLockReleaseSameNode = newTransportVFSLockReleaseSameNode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE, oldTransportVFSLockReleaseSameNode, transportVFSLockReleaseSameNode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportVFSDistributedLock() {
+		return transportVFSDistributedLock;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSDistributedLock(boolean newTransportVFSDistributedLock) {
+		boolean oldTransportVFSDistributedLock = transportVFSDistributedLock;
+		transportVFSDistributedLock = newTransportVFSDistributedLock;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK, oldTransportVFSDistributedLock, transportVFSDistributedLock));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSDistributedTimeout() {
+		return transportVFSDistributedTimeout;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSDistributedTimeout(String newTransportVFSDistributedTimeout) {
+		String oldTransportVFSDistributedTimeout = transportVFSDistributedTimeout;
+		transportVFSDistributedTimeout = newTransportVFSDistributedTimeout;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT, oldTransportVFSDistributedTimeout, transportVFSDistributedTimeout));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getJavaNamingFactoryInitial() {
+		return javaNamingFactoryInitial;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJavaNamingFactoryInitial(String newJavaNamingFactoryInitial) {
+		String oldJavaNamingFactoryInitial = javaNamingFactoryInitial;
+		javaNamingFactoryInitial = newJavaNamingFactoryInitial;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL, oldJavaNamingFactoryInitial, javaNamingFactoryInitial));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getJavaNamingProviderUrl() {
+		return javaNamingProviderUrl;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJavaNamingProviderUrl(String newJavaNamingProviderUrl) {
+		String oldJavaNamingProviderUrl = javaNamingProviderUrl;
+		javaNamingProviderUrl = newJavaNamingProviderUrl;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL, oldJavaNamingProviderUrl, javaNamingProviderUrl));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSConnectionFactoryJNDIName() {
+		return transportJMSConnectionFactoryJNDIName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSConnectionFactoryJNDIName(String newTransportJMSConnectionFactoryJNDIName) {
+		String oldTransportJMSConnectionFactoryJNDIName = transportJMSConnectionFactoryJNDIName;
+		transportJMSConnectionFactoryJNDIName = newTransportJMSConnectionFactoryJNDIName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME, oldTransportJMSConnectionFactoryJNDIName, transportJMSConnectionFactoryJNDIName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JMSConnectionFactoryType getTransportJMSConnectionFactoryType() {
+		return transportJMSConnectionFactoryType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSConnectionFactoryType(JMSConnectionFactoryType newTransportJMSConnectionFactoryType) {
+		JMSConnectionFactoryType oldTransportJMSConnectionFactoryType = transportJMSConnectionFactoryType;
+		transportJMSConnectionFactoryType = newTransportJMSConnectionFactoryType == null ? TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT : newTransportJMSConnectionFactoryType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE, oldTransportJMSConnectionFactoryType, transportJMSConnectionFactoryType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSDestination() {
+		return transportJMSDestination;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSDestination(String newTransportJMSDestination) {
+		String oldTransportJMSDestination = transportJMSDestination;
+		transportJMSDestination = newTransportJMSDestination;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION, oldTransportJMSDestination, transportJMSDestination));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportJMSSessionTransacted() {
+		return transportJMSSessionTransacted;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSSessionTransacted(boolean newTransportJMSSessionTransacted) {
+		boolean oldTransportJMSSessionTransacted = transportJMSSessionTransacted;
+		transportJMSSessionTransacted = newTransportJMSSessionTransacted;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED, oldTransportJMSSessionTransacted, transportJMSSessionTransacted));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JMSSessionAcknowledgement getTransportJMSSessionAcknowledgement() {
+		return transportJMSSessionAcknowledgement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSSessionAcknowledgement(JMSSessionAcknowledgement newTransportJMSSessionAcknowledgement) {
+		JMSSessionAcknowledgement oldTransportJMSSessionAcknowledgement = transportJMSSessionAcknowledgement;
+		transportJMSSessionAcknowledgement = newTransportJMSSessionAcknowledgement == null ? TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT : newTransportJMSSessionAcknowledgement;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT, oldTransportJMSSessionAcknowledgement, transportJMSSessionAcknowledgement));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JMSCacheLevel getTransportJMSCacheLevel() {
+		return transportJMSCacheLevel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSCacheLevel(JMSCacheLevel newTransportJMSCacheLevel) {
+		JMSCacheLevel oldTransportJMSCacheLevel = transportJMSCacheLevel;
+		transportJMSCacheLevel = newTransportJMSCacheLevel == null ? TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT : newTransportJMSCacheLevel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL, oldTransportJMSCacheLevel, transportJMSCacheLevel));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSUserName() {
+		return transportJMSUserName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSUserName(String newTransportJMSUserName) {
+		String oldTransportJMSUserName = transportJMSUserName;
+		transportJMSUserName = newTransportJMSUserName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME, oldTransportJMSUserName, transportJMSUserName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSPassword() {
+		return transportJMSPassword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSPassword(String newTransportJMSPassword) {
+		String oldTransportJMSPassword = transportJMSPassword;
+		transportJMSPassword = newTransportJMSPassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD, oldTransportJMSPassword, transportJMSPassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSJMSSpecVersion() {
+		return transportJMSJMSSpecVersion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSJMSSpecVersion(String newTransportJMSJMSSpecVersion) {
+		String oldTransportJMSJMSSpecVersion = transportJMSJMSSpecVersion;
+		transportJMSJMSSpecVersion = newTransportJMSJMSSpecVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION, oldTransportJMSJMSSpecVersion, transportJMSJMSSpecVersion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSSubscriptionDurable() {
+		return transportJMSSubscriptionDurable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSSubscriptionDurable(String newTransportJMSSubscriptionDurable) {
+		String oldTransportJMSSubscriptionDurable = transportJMSSubscriptionDurable;
+		transportJMSSubscriptionDurable = newTransportJMSSubscriptionDurable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE, oldTransportJMSSubscriptionDurable, transportJMSSubscriptionDurable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSDurableSubscriberClientID() {
+		return transportJMSDurableSubscriberClientID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSDurableSubscriberClientID(String newTransportJMSDurableSubscriberClientID) {
+		String oldTransportJMSDurableSubscriberClientID = transportJMSDurableSubscriberClientID;
+		transportJMSDurableSubscriberClientID = newTransportJMSDurableSubscriberClientID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID, oldTransportJMSDurableSubscriberClientID, transportJMSDurableSubscriberClientID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSMessageSelector() {
+		return transportJMSMessageSelector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSMessageSelector(String newTransportJMSMessageSelector) {
+		String oldTransportJMSMessageSelector = transportJMSMessageSelector;
+		transportJMSMessageSelector = newTransportJMSMessageSelector;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR, oldTransportJMSMessageSelector, transportJMSMessageSelector));
 	}
 
 	/**
@@ -543,12 +2187,90 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getContainer();
 			case EsbPackage.INBOUND_ENDPOINT__NAME:
 				return getName();
+			case EsbPackage.INBOUND_ENDPOINT__TYPE:
+				return getType();
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 				return getSequence();
 			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
 				return getOnErrorSequence();
+			case EsbPackage.INBOUND_ENDPOINT__CLASS:
+				return getClass_();
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 				return getProtocol();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+				return getInboundHttpPort();
+			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
+				return getInterval();
+			case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
+				return isSequential();
+			case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
+				return isCoordination();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+				return getTransportVFSFileURI();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
+				return getTransportVFSContentType();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
+				return getTransportVFSFileNamePattern();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
+				return getTransportVFSFileProcessInterval();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
+				return getTransportVFSFileProcessCount();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
+				return getTransportVFSLocking();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
+				return getTransportVFSMaxRetryCount();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+				return getTransportVFSReconnectTimeout();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
+				return getTransportVFSActionAfterProcess();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
+				return getTransportVFSMoveAfterProcess();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
+				return getTransportVFSActionAfterErrors();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
+				return getTransportVFSMoveAfterErrors();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
+				return getTransportVFSActionAfterFailure();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
+				return getTransportVFSMoveAfterFailure();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
+				return isTransportVFSAutoLockRelease();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
+				return getTransportVFSAutoLockReleaseInterval();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
+				return isTransportVFSLockReleaseSameNode();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+				return isTransportVFSDistributedLock();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+				return getTransportVFSDistributedTimeout();
+			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+				return getJavaNamingFactoryInitial();
+			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
+				return getJavaNamingProviderUrl();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
+				return getTransportJMSConnectionFactoryJNDIName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+				return getTransportJMSConnectionFactoryType();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
+				return getTransportJMSDestination();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
+				return isTransportJMSSessionTransacted();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
+				return getTransportJMSSessionAcknowledgement();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
+				return getTransportJMSCacheLevel();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
+				return getTransportJMSUserName();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
+				return getTransportJMSPassword();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
+				return getTransportJMSJMSSpecVersion();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
+				return getTransportJMSSubscriptionDurable();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
+				return getTransportJMSDurableSubscriberClientID();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+				return getTransportJMSMessageSelector();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -579,14 +2301,131 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__NAME:
 				setName((String)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TYPE:
+				setType((InboundEndpointType)newValue);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 				setSequence((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
 				setOnErrorSequence((String)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__CLASS:
+				setClass((String)newValue);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 				setProtocol((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+				setInboundHttpPort((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
+				setInterval((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
+				setSequential((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
+				setCoordination((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+				setTransportVFSFileURI((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
+				setTransportVFSContentType((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
+				setTransportVFSFileNamePattern((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
+				setTransportVFSFileProcessInterval((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
+				setTransportVFSFileProcessCount((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
+				setTransportVFSLocking((Enable)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
+				setTransportVFSMaxRetryCount((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+				setTransportVFSReconnectTimeout((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
+				setTransportVFSActionAfterProcess((VFSAction)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
+				setTransportVFSMoveAfterProcess((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
+				setTransportVFSActionAfterErrors((VFSAction)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
+				setTransportVFSMoveAfterErrors((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
+				setTransportVFSActionAfterFailure((VFSAction)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
+				setTransportVFSMoveAfterFailure((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
+				setTransportVFSAutoLockRelease((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
+				setTransportVFSAutoLockReleaseInterval((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
+				setTransportVFSLockReleaseSameNode((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+				setTransportVFSDistributedLock((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+				setTransportVFSDistributedTimeout((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+				setJavaNamingFactoryInitial((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
+				setJavaNamingProviderUrl((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
+				setTransportJMSConnectionFactoryJNDIName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+				setTransportJMSConnectionFactoryType((JMSConnectionFactoryType)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
+				setTransportJMSDestination((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
+				setTransportJMSSessionTransacted((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
+				setTransportJMSSessionAcknowledgement((JMSSessionAcknowledgement)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
+				setTransportJMSCacheLevel((JMSCacheLevel)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
+				setTransportJMSUserName((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
+				setTransportJMSPassword((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
+				setTransportJMSJMSSpecVersion((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
+				setTransportJMSSubscriptionDurable((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
+				setTransportJMSDurableSubscriberClientID((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+				setTransportJMSMessageSelector((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -618,14 +2457,131 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 				setSequence(SEQUENCE_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
 				setOnErrorSequence(ON_ERROR_SEQUENCE_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__CLASS:
+				setClass(CLASS_EDEFAULT);
+				return;
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 				setProtocol(PROTOCOL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+				setInboundHttpPort(INBOUND_HTTP_PORT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
+				setInterval(INTERVAL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
+				setSequential(SEQUENTIAL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
+				setCoordination(COORDINATION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+				setTransportVFSFileURI(TRANSPORT_VFS_FILE_URI_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
+				setTransportVFSContentType(TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
+				setTransportVFSFileNamePattern(TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
+				setTransportVFSFileProcessInterval(TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
+				setTransportVFSFileProcessCount(TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
+				setTransportVFSLocking(TRANSPORT_VFS_LOCKING_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
+				setTransportVFSMaxRetryCount(TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+				setTransportVFSReconnectTimeout(TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
+				setTransportVFSActionAfterProcess(TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
+				setTransportVFSMoveAfterProcess(TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
+				setTransportVFSActionAfterErrors(TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
+				setTransportVFSMoveAfterErrors(TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
+				setTransportVFSActionAfterFailure(TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
+				setTransportVFSMoveAfterFailure(TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
+				setTransportVFSAutoLockRelease(TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
+				setTransportVFSAutoLockReleaseInterval(TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
+				setTransportVFSLockReleaseSameNode(TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+				setTransportVFSDistributedLock(TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+				setTransportVFSDistributedTimeout(TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+				setJavaNamingFactoryInitial(JAVA_NAMING_FACTORY_INITIAL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
+				setJavaNamingProviderUrl(JAVA_NAMING_PROVIDER_URL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
+				setTransportJMSConnectionFactoryJNDIName(TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+				setTransportJMSConnectionFactoryType(TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
+				setTransportJMSDestination(TRANSPORT_JMS_DESTINATION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
+				setTransportJMSSessionTransacted(TRANSPORT_JMS_SESSION_TRANSACTED_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
+				setTransportJMSSessionAcknowledgement(TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
+				setTransportJMSCacheLevel(TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
+				setTransportJMSUserName(TRANSPORT_JMS_USER_NAME_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
+				setTransportJMSPassword(TRANSPORT_JMS_PASSWORD_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
+				setTransportJMSJMSSpecVersion(TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
+				setTransportJMSSubscriptionDurable(TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
+				setTransportJMSDurableSubscriberClientID(TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+				setTransportJMSMessageSelector(TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -651,12 +2607,90 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return container != null;
 			case EsbPackage.INBOUND_ENDPOINT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case EsbPackage.INBOUND_ENDPOINT__TYPE:
+				return type != TYPE_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 				return SEQUENCE_EDEFAULT == null ? sequence != null : !SEQUENCE_EDEFAULT.equals(sequence);
 			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
 				return ON_ERROR_SEQUENCE_EDEFAULT == null ? onErrorSequence != null : !ON_ERROR_SEQUENCE_EDEFAULT.equals(onErrorSequence);
+			case EsbPackage.INBOUND_ENDPOINT__CLASS:
+				return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
 				return PROTOCOL_EDEFAULT == null ? protocol != null : !PROTOCOL_EDEFAULT.equals(protocol);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HTTP_PORT:
+				return INBOUND_HTTP_PORT_EDEFAULT == null ? inboundHttpPort != null : !INBOUND_HTTP_PORT_EDEFAULT.equals(inboundHttpPort);
+			case EsbPackage.INBOUND_ENDPOINT__INTERVAL:
+				return INTERVAL_EDEFAULT == null ? interval != null : !INTERVAL_EDEFAULT.equals(interval);
+			case EsbPackage.INBOUND_ENDPOINT__SEQUENTIAL:
+				return sequential != SEQUENTIAL_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__COORDINATION:
+				return coordination != COORDINATION_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI:
+				return TRANSPORT_VFS_FILE_URI_EDEFAULT == null ? transportVFSFileURI != null : !TRANSPORT_VFS_FILE_URI_EDEFAULT.equals(transportVFSFileURI);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE:
+				return TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT == null ? transportVFSContentType != null : !TRANSPORT_VFS_CONTENT_TYPE_EDEFAULT.equals(transportVFSContentType);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN:
+				return TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT == null ? transportVFSFileNamePattern != null : !TRANSPORT_VFS_FILE_NAME_PATTERN_EDEFAULT.equals(transportVFSFileNamePattern);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL:
+				return TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT == null ? transportVFSFileProcessInterval != null : !TRANSPORT_VFS_FILE_PROCESS_INTERVAL_EDEFAULT.equals(transportVFSFileProcessInterval);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT:
+				return TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT == null ? transportVFSFileProcessCount != null : !TRANSPORT_VFS_FILE_PROCESS_COUNT_EDEFAULT.equals(transportVFSFileProcessCount);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING:
+				return transportVFSLocking != TRANSPORT_VFS_LOCKING_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT:
+				return TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT == null ? transportVFSMaxRetryCount != null : !TRANSPORT_VFS_MAX_RETRY_COUNT_EDEFAULT.equals(transportVFSMaxRetryCount);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT:
+				return TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT == null ? transportVFSReconnectTimeout != null : !TRANSPORT_VFS_RECONNECT_TIMEOUT_EDEFAULT.equals(transportVFSReconnectTimeout);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS:
+				return transportVFSActionAfterProcess != TRANSPORT_VFS_ACTION_AFTER_PROCESS_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS:
+				return TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT == null ? transportVFSMoveAfterProcess != null : !TRANSPORT_VFS_MOVE_AFTER_PROCESS_EDEFAULT.equals(transportVFSMoveAfterProcess);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS:
+				return transportVFSActionAfterErrors != TRANSPORT_VFS_ACTION_AFTER_ERRORS_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS:
+				return TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT == null ? transportVFSMoveAfterErrors != null : !TRANSPORT_VFS_MOVE_AFTER_ERRORS_EDEFAULT.equals(transportVFSMoveAfterErrors);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE:
+				return transportVFSActionAfterFailure != TRANSPORT_VFS_ACTION_AFTER_FAILURE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE:
+				return TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT == null ? transportVFSMoveAfterFailure != null : !TRANSPORT_VFS_MOVE_AFTER_FAILURE_EDEFAULT.equals(transportVFSMoveAfterFailure);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE:
+				return transportVFSAutoLockRelease != TRANSPORT_VFS_AUTO_LOCK_RELEASE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL:
+				return TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT == null ? transportVFSAutoLockReleaseInterval != null : !TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL_EDEFAULT.equals(transportVFSAutoLockReleaseInterval);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE:
+				return transportVFSLockReleaseSameNode != TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK:
+				return transportVFSDistributedLock != TRANSPORT_VFS_DISTRIBUTED_LOCK_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT:
+				return TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT == null ? transportVFSDistributedTimeout != null : !TRANSPORT_VFS_DISTRIBUTED_TIMEOUT_EDEFAULT.equals(transportVFSDistributedTimeout);
+			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL:
+				return JAVA_NAMING_FACTORY_INITIAL_EDEFAULT == null ? javaNamingFactoryInitial != null : !JAVA_NAMING_FACTORY_INITIAL_EDEFAULT.equals(javaNamingFactoryInitial);
+			case EsbPackage.INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL:
+				return JAVA_NAMING_PROVIDER_URL_EDEFAULT == null ? javaNamingProviderUrl != null : !JAVA_NAMING_PROVIDER_URL_EDEFAULT.equals(javaNamingProviderUrl);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME:
+				return TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT == null ? transportJMSConnectionFactoryJNDIName != null : !TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME_EDEFAULT.equals(transportJMSConnectionFactoryJNDIName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE:
+				return transportJMSConnectionFactoryType != TRANSPORT_JMS_CONNECTION_FACTORY_TYPE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION:
+				return TRANSPORT_JMS_DESTINATION_EDEFAULT == null ? transportJMSDestination != null : !TRANSPORT_JMS_DESTINATION_EDEFAULT.equals(transportJMSDestination);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED:
+				return transportJMSSessionTransacted != TRANSPORT_JMS_SESSION_TRANSACTED_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT:
+				return transportJMSSessionAcknowledgement != TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL:
+				return transportJMSCacheLevel != TRANSPORT_JMS_CACHE_LEVEL_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME:
+				return TRANSPORT_JMS_USER_NAME_EDEFAULT == null ? transportJMSUserName != null : !TRANSPORT_JMS_USER_NAME_EDEFAULT.equals(transportJMSUserName);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD:
+				return TRANSPORT_JMS_PASSWORD_EDEFAULT == null ? transportJMSPassword != null : !TRANSPORT_JMS_PASSWORD_EDEFAULT.equals(transportJMSPassword);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION:
+				return TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT == null ? transportJMSJMSSpecVersion != null : !TRANSPORT_JMSJMS_SPEC_VERSION_EDEFAULT.equals(transportJMSJMSSpecVersion);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE:
+				return TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT == null ? transportJMSSubscriptionDurable != null : !TRANSPORT_JMS_SUBSCRIPTION_DURABLE_EDEFAULT.equals(transportJMSSubscriptionDurable);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID:
+				return TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT == null ? transportJMSDurableSubscriberClientID != null : !TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT.equals(transportJMSDurableSubscriberClientID);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
+				return TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT == null ? transportJMSMessageSelector != null : !TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT.equals(transportJMSMessageSelector);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -673,12 +2707,90 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", type: ");
+		result.append(type);
 		result.append(", sequence: ");
 		result.append(sequence);
 		result.append(", onErrorSequence: ");
 		result.append(onErrorSequence);
+		result.append(", class: ");
+		result.append(class_);
 		result.append(", protocol: ");
 		result.append(protocol);
+		result.append(", inboundHttpPort: ");
+		result.append(inboundHttpPort);
+		result.append(", interval: ");
+		result.append(interval);
+		result.append(", sequential: ");
+		result.append(sequential);
+		result.append(", coordination: ");
+		result.append(coordination);
+		result.append(", transportVFSFileURI: ");
+		result.append(transportVFSFileURI);
+		result.append(", transportVFSContentType: ");
+		result.append(transportVFSContentType);
+		result.append(", transportVFSFileNamePattern: ");
+		result.append(transportVFSFileNamePattern);
+		result.append(", transportVFSFileProcessInterval: ");
+		result.append(transportVFSFileProcessInterval);
+		result.append(", transportVFSFileProcessCount: ");
+		result.append(transportVFSFileProcessCount);
+		result.append(", transportVFSLocking: ");
+		result.append(transportVFSLocking);
+		result.append(", transportVFSMaxRetryCount: ");
+		result.append(transportVFSMaxRetryCount);
+		result.append(", transportVFSReconnectTimeout: ");
+		result.append(transportVFSReconnectTimeout);
+		result.append(", transportVFSActionAfterProcess: ");
+		result.append(transportVFSActionAfterProcess);
+		result.append(", transportVFSMoveAfterProcess: ");
+		result.append(transportVFSMoveAfterProcess);
+		result.append(", transportVFSActionAfterErrors: ");
+		result.append(transportVFSActionAfterErrors);
+		result.append(", transportVFSMoveAfterErrors: ");
+		result.append(transportVFSMoveAfterErrors);
+		result.append(", transportVFSActionAfterFailure: ");
+		result.append(transportVFSActionAfterFailure);
+		result.append(", transportVFSMoveAfterFailure: ");
+		result.append(transportVFSMoveAfterFailure);
+		result.append(", transportVFSAutoLockRelease: ");
+		result.append(transportVFSAutoLockRelease);
+		result.append(", transportVFSAutoLockReleaseInterval: ");
+		result.append(transportVFSAutoLockReleaseInterval);
+		result.append(", transportVFSLockReleaseSameNode: ");
+		result.append(transportVFSLockReleaseSameNode);
+		result.append(", transportVFSDistributedLock: ");
+		result.append(transportVFSDistributedLock);
+		result.append(", transportVFSDistributedTimeout: ");
+		result.append(transportVFSDistributedTimeout);
+		result.append(", javaNamingFactoryInitial: ");
+		result.append(javaNamingFactoryInitial);
+		result.append(", javaNamingProviderUrl: ");
+		result.append(javaNamingProviderUrl);
+		result.append(", transportJMSConnectionFactoryJNDIName: ");
+		result.append(transportJMSConnectionFactoryJNDIName);
+		result.append(", transportJMSConnectionFactoryType: ");
+		result.append(transportJMSConnectionFactoryType);
+		result.append(", transportJMSDestination: ");
+		result.append(transportJMSDestination);
+		result.append(", transportJMSSessionTransacted: ");
+		result.append(transportJMSSessionTransacted);
+		result.append(", transportJMSSessionAcknowledgement: ");
+		result.append(transportJMSSessionAcknowledgement);
+		result.append(", transportJMSCacheLevel: ");
+		result.append(transportJMSCacheLevel);
+		result.append(", transportJMSUserName: ");
+		result.append(transportJMSUserName);
+		result.append(", transportJMSPassword: ");
+		result.append(transportJMSPassword);
+		result.append(", transportJMSJMSSpecVersion: ");
+		result.append(transportJMSJMSSpecVersion);
+		result.append(", transportJMSSubscriptionDurable: ");
+		result.append(transportJMSSubscriptionDurable);
+		result.append(", transportJMSDurableSubscriberClientID: ");
+		result.append(transportJMSDurableSubscriberClientID);
+		result.append(", transportJMSMessageSelector: ");
+		result.append(transportJMSMessageSelector);
 		result.append(')');
 		return result.toString();
 	}

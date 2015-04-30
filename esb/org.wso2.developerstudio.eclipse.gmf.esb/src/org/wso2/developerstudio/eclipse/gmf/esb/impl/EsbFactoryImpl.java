@@ -621,6 +621,18 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createDataMapperMediatorDataTypesFromString(eDataType, initialValue);
 			case EsbPackage.PROTOCOL:
 				return createProtocolFromString(eDataType, initialValue);
+			case EsbPackage.INBOUND_ENDPOINT_TYPE:
+				return createInboundEndpointTypeFromString(eDataType, initialValue);
+			case EsbPackage.ENABLE:
+				return createEnableFromString(eDataType, initialValue);
+			case EsbPackage.VFS_ACTION:
+				return createVFSActionFromString(eDataType, initialValue);
+			case EsbPackage.JMS_CONNECTION_FACTORY_TYPE:
+				return createJMSConnectionFactoryTypeFromString(eDataType, initialValue);
+			case EsbPackage.JMS_SESSION_ACKNOWLEDGEMENT:
+				return createJMSSessionAcknowledgementFromString(eDataType, initialValue);
+			case EsbPackage.JMS_CACHE_LEVEL:
+				return createJMSCacheLevelFromString(eDataType, initialValue);
 			case EsbPackage.MAP:
 				return createMapFromString(eDataType, initialValue);
 			default:
@@ -845,6 +857,18 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertDataMapperMediatorDataTypesToString(eDataType, instanceValue);
 			case EsbPackage.PROTOCOL:
 				return convertProtocolToString(eDataType, instanceValue);
+			case EsbPackage.INBOUND_ENDPOINT_TYPE:
+				return convertInboundEndpointTypeToString(eDataType, instanceValue);
+			case EsbPackage.ENABLE:
+				return convertEnableToString(eDataType, instanceValue);
+			case EsbPackage.VFS_ACTION:
+				return convertVFSActionToString(eDataType, instanceValue);
+			case EsbPackage.JMS_CONNECTION_FACTORY_TYPE:
+				return convertJMSConnectionFactoryTypeToString(eDataType, instanceValue);
+			case EsbPackage.JMS_SESSION_ACKNOWLEDGEMENT:
+				return convertJMSSessionAcknowledgementToString(eDataType, instanceValue);
+			case EsbPackage.JMS_CACHE_LEVEL:
+				return convertJMSCacheLevelToString(eDataType, instanceValue);
 			case EsbPackage.MAP:
 				return convertMapToString(eDataType, instanceValue);
 			default:
@@ -6566,6 +6590,126 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertProtocolToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InboundEndpointType createInboundEndpointTypeFromString(EDataType eDataType, String initialValue) {
+		InboundEndpointType result = InboundEndpointType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInboundEndpointTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Enable createEnableFromString(EDataType eDataType, String initialValue) {
+		Enable result = Enable.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEnableToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VFSAction createVFSActionFromString(EDataType eDataType, String initialValue) {
+		VFSAction result = VFSAction.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVFSActionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JMSConnectionFactoryType createJMSConnectionFactoryTypeFromString(EDataType eDataType, String initialValue) {
+		JMSConnectionFactoryType result = JMSConnectionFactoryType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJMSConnectionFactoryTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JMSSessionAcknowledgement createJMSSessionAcknowledgementFromString(EDataType eDataType, String initialValue) {
+		JMSSessionAcknowledgement result = JMSSessionAcknowledgement.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJMSSessionAcknowledgementToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JMSCacheLevel createJMSCacheLevelFromString(EDataType eDataType, String initialValue) {
+		JMSCacheLevel result = JMSCacheLevel.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJMSCacheLevelToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

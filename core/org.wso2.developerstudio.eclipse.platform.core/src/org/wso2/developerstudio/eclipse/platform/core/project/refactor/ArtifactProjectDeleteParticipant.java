@@ -45,92 +45,78 @@ import java.util.List;
  */
 public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 	private static final String POM_XML = "pom.xml";
+
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
 	private IProject originalProject;
 
 	/**
-	 * This method is used to check the pre-conditions for the refactoring.
-	 * This method can be used to communicate with user about refactoring about
-	 * to happen such as
-	 * if there is an fatal issue related to refactoring, you can create a
-	 * Status with Fatal error, or
-	 * you can create a warning status where user can be informed.
+	 * This method is used to check the pre-conditions for the refactoring. This
+	 * method can be used to communicate with user about refactoring about to
+	 * happen such as if there is an fatal issue related to refactoring, you can
+	 * create a Status with Fatal error, or you can create a warning status
+	 * where user can be informed.
 	 */
 	@Override
-	public RefactoringStatus checkConditions(IProgressMonitor arg0, CheckConditionsContext arg1)
-	                                                                                            throws OperationCanceledException {
-		return RefactoringStatus.createWarningStatus("You are about to delete your Artifact project");
+	public RefactoringStatus checkConditions(IProgressMonitor arg0,
+			CheckConditionsContext arg1) throws OperationCanceledException {
+		return RefactoringStatus
+				.createWarningStatus("You are about to delete your Artifact project");
 	}
 
 	/**
-	 * This method gets executed before the refactoring gets executed on original file which means
-	 * this method is executed before the actual project is deleted from the workspace.
-	 * If you have any task need to run before the project is deleted, you need to generate Changes 
-	 * for those tasks in this method. 
+	 * This method gets executed before the refactoring gets executed on
+	 * original file which means this method is executed before the actual
+	 * project is deleted from the workspace. If you have any task need to run
+	 * before the project is deleted, you need to generate Changes for those
+	 * tasks in this method.
 	 */
 	@Override
 	public Change createPreChange(IProgressMonitor arg0) throws CoreException,
-	                                                    OperationCanceledException {
-		CompositeChange deleteChange = new CompositeChange("Delete Artifact Project");
-		
-		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+			OperationCanceledException {
+
+		CompositeChange deleteChange = new CompositeChange(
+				"Delete Artifact Project");
+
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot()
+				.getProjects();
+
 		for (IProject project : projects) {
-			if (project.isOpen() &&
-			    project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
+			if (project.isOpen()
+					&& project
+							.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")) {
 				try {
-					deleteDependencies(deleteChange, project, originalProject);
-				} catch (Exception e) {
-					log.error("Error occured while trying to generate the Refactoring", e);
-				}
-			}
-		}
-		if (originalProject.isOpen() &&
-		    originalProject.hasNature("org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature")) {
-			MavenProject mavenProject = ProjectRefactorUtils.getMavenProject(originalProject);
-			List<String> modulesofOrignal = mavenProject.getModules();
-			if (!modulesofOrignal.isEmpty()) {
-				deleteMavenSubModules(originalProject, modulesofOrignal, deleteChange);
-			}
-		}
-		return deleteChange;
-	}
-
-	private void deleteDependencies(CompositeChange deleteChange, IProject project, IProject projectToDelete) {
-		IFile pomFile = project.getFile(POM_XML);
-		MavenProject mavenProject = ProjectRefactorUtils.getMavenProject(project);
-		Dependency projectDependency = ProjectRefactorUtils.getDependencyForTheProject(originalProject);
-		if (mavenProject != null) {
-			List<?> dependencies = mavenProject.getDependencies();
-			if (projectDependency != null) {
-				for (Iterator<?> iterator = dependencies.iterator(); iterator.hasNext();) {
-					Dependency dependency = (Dependency) iterator.next();
-					if (ProjectRefactorUtils.isDependenciesEqual(projectDependency, dependency)) {
-						deleteChange.add(new MavenConfigurationFileDeleteChange(project.getName(),
-						                                                        pomFile,
-						                                                        projectToDelete));
+					IFile pomFile = project.getFile(POM_XML);
+					MavenProject mavenProject = ProjectRefactorUtils
+							.getMavenProject(project);
+					Dependency projectDependency = ProjectRefactorUtils
+							.getDependencyForTheProject(originalProject);
+					if (mavenProject != null) {
+						List<?> dependencies = mavenProject.getDependencies();
+						if (projectDependency != null) {
+							for (Iterator<?> iterator = dependencies.iterator(); iterator
+									.hasNext();) {
+								Dependency dependency = (Dependency) iterator
+										.next();
+								if (ProjectRefactorUtils.isDependenciesEqual(
+										projectDependency, dependency)) {
+									deleteChange
+											.add(new MavenConfigurationFileDeleteChange(
+													project.getName(), pomFile,
+													originalProject));
+								}
+							}
+						}
 					}
+				} catch (Exception e) {
+					log.error(
+							"Error occured while trying to generate the Refactoring",
+							e);
 				}
 			}
 		}
-	}
 
-	private void deleteMavenSubModules(IProject original, List<String> modulesofOrignal, CompositeChange deleteChange) {
-		for (int i = 0; i < modulesofOrignal.size(); i++) {
-			IProject subProject = ResourcesPlugin.getWorkspace().getRoot().getProject(modulesofOrignal.get(i));
-			if (subProject.exists()) {
-				List<String> mavenSubProjectSubList = ProjectRefactorUtils.getMavenProject(subProject).getModules();
-				if (!mavenSubProjectSubList.isEmpty()) {
-					deleteMavenSubModules(subProject, mavenSubProjectSubList, deleteChange);
-				}
-				try {
-					subProject.delete(false, null);
-					deleteDependencies(deleteChange, original, subProject);
-				} catch (CoreException e) {
-					log.error("Could not delete Module " + subProject.getName() + " of " + original.getName() 
-					          															 , e);
-				}
-			}
-		}
+		return deleteChange;
 	}
 
 	@Override
@@ -149,12 +135,12 @@ public class ArtifactProjectDeleteParticipant extends DeleteParticipant {
 	}
 
 	/**
-	 * This method gets executed after performing the actual refactoring task. Normally this method is used 
-	 * for clean up tasks.
+	 * This method gets executed after performing the actual refactoring task.
+	 * Normally this method is used for clean up tasks.
 	 */
 	@Override
 	public Change createChange(IProgressMonitor arg0) throws CoreException,
-	                                                 OperationCanceledException {
+			OperationCanceledException {
 		// TODO Auto-generated method stub
 		return null;
 	}

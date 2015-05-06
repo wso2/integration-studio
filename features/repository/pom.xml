@@ -132,13 +132,50 @@
 						<bundleArtifactDef>org.milyn:milyn-smooks-all:1.5.1</bundleArtifactDef>
 
 						<!--EMF -updated to Kepler SR2 -->
-					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation:1.7.0.201306111341</bundleArtifactDef>
-					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ui:1.7.0.201306111341</bundleArtifactDef>
-					        <bundleArtifactDef>org.eclipse.emf:org.eclipse.emf.query:1.7.0.201306111332</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction:1.4.0.201306111400</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace:1.5.1.201306111400</bundleArtifactDef>
+					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation:1.8.0.201405281429</bundleArtifactDef>
+					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ui:1.7.0.201405281429</bundleArtifactDef>
+					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.query:1.7.0.201405281426</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction:1.8.0.201405281451</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace:1.5.1.201405281451</bundleArtifactDef>
 					   
-					        
+					        <!-- EMF -updated to Luna -->
+                                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.activities:2.6.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.cheatsheets:2.5.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.doc:2.7.0.v20150123-0452</bundleArtifactDef>
+                                                <bundleArtifactDef>org.eclipse:org.eclipse.emf.example.installer:1.3.1.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples:2.6.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.databinding.project.core:1.0.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.databinding.project.core.model:1.0.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.databinding.project.ui.rcp:1.1.1.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.generator.validator:1.2.1.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.jet.article2:2.4.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.library:2.5.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.library.edit:2.5.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.examples.library.editor:2.5.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.exporter.html:2.6.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.java:2.5.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.java.editor:2.5.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.java.edit:2.5.0.v20150123-0452</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.query.doc:1.2.0.201405281426</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.query.examples:1.2.0.201405281426</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.query.examples.ocl:2.0.0.201405281426</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.query.examples.statements:1.7.0.201405281426</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.query.ocl:2.0.0.201405281426</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction.doc:1.4.0.201405281451</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction.examples:1.2.100.201405281451</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.transaction.ui:1.4.0.201405281451</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.doc:1.3.0.201405281429</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.examples:1.3.0.201405281429</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ocl:1.4.0.201405281429</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.validation.ui.ide:1.3.0.201405281429</bundleArtifactDef>
+					        <bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace.doc:1.3.0.201405281451</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.emf.workspace.ui:1.3.0.201405281451</bundleArtifactDef>
+
+						<!-- GEF -updated to Luna -->
+						<bundleArtifactDef>org.eclipse:org.eclipse.gef.doc.isv:3.9.100.201408150207</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.gef.examples.ui.pde:3.8.1.201408150207</bundleArtifactDef>
+
+
 					   	<!--GMF -updated to Kepler SR2 -->
 						<bundleArtifactDef>lpg.runtime:lpg.runtime.java:2.0.17.v201004271640</bundleArtifactDef>
 						
@@ -155,59 +192,136 @@
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.util:1.6.0.v201011041432</bundleArtifactDef>
 						<bundleArtifactDef>org.apache.xmlgraphics:org.apache.batik.xml:1.6.0.v201011041432</bundleArtifactDef>
 
-						<bundleArtifactDef>org.eclipse.gmf.tooling.runtime:org.eclipse.gmf.tooling.runtime:3.1.0.201402192033</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.tooling.runtime:org.eclipse.gmf.tooling.runtime:3.2.0.201502182128</bundleArtifactDef>
 
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common.core:org.eclipse.gmf.runtime.common.core:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common:org.eclipse.gmf.runtime.common.ui:1.7.0.201306111432</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.core:org.eclipse.gmf.runtime.common.core:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common:org.eclipse.gmf.runtime.common.ui:1.8.1.201408201453</bundleArtifactDef>
 					
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.action.ide:org.eclipse.gmf.runtime.common.ui.action.ide:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.action:org.eclipse.gmf.runtime.common.ui.action:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.printing:org.eclipse.gmf.runtime.common.ui.printing:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.action:org.eclipse.gmf.runtime.common.ui.services.action:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.properties:org.eclipse.gmf.runtime.common.ui.services.properties:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services:org.eclipse.gmf.runtime.common.ui.services:1.7.0.201306111432</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.action.ide:org.eclipse.gmf.runtime.common.ui.action.ide:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.action:org.eclipse.gmf.runtime.common.ui.action:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.printing:org.eclipse.gmf.runtime.common.ui.printing:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.action:org.eclipse.gmf.runtime.common.ui.services.action:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.properties:org.eclipse.gmf.runtime.common.ui.services.properties:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services:org.eclipse.gmf.runtime.common.ui.services:1.7.0.201408201453</bundleArtifactDef>
 
 
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.core:org.eclipse.gmf.runtime.diagram.core:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.actions:org.eclipse.gmf.runtime.diagram.ui.actions:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.printing.render:org.eclipse.gmf.runtime.diagram.ui.printing.render:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.printing:org.eclipse.gmf.runtime.diagram.ui.printing:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.properties:org.eclipse.gmf.runtime.diagram.ui.properties:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.providers.ide:org.eclipse.gmf.runtime.diagram.ui.providers.ide:1.7.0.201306111432</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.core:org.eclipse.gmf.runtime.diagram.core:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.actions:org.eclipse.gmf.runtime.diagram.ui.actions:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.printing.render:org.eclipse.gmf.runtime.diagram.ui.printing.render:1.8.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.printing:org.eclipse.gmf.runtime.diagram.ui.printing:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.properties:org.eclipse.gmf.runtime.diagram.ui.properties:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.providers.ide:org.eclipse.gmf.runtime.diagram.ui.providers.ide:1.7.0.201408201453</bundleArtifactDef>
 							
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.providers:org.eclipse.gmf.runtime.diagram.ui.providers:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.render:org.eclipse.gmf.runtime.diagram.ui.render:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide:org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.resources.editor:org.eclipse.gmf.runtime.diagram.ui.resources.editor:1.7.0.201306111432</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.providers:org.eclipse.gmf.runtime.diagram.ui.providers:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.render:org.eclipse.gmf.runtime.diagram.ui.render:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide:org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.resources.editor:org.eclipse.gmf.runtime.diagram.ui.resources.editor:1.7.0.201408201453</bundleArtifactDef>
 						
-						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui:org.eclipse.gmf.runtime.diagram.ui:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui.render.awt:org.eclipse.gmf.runtime.draw2d.ui.render.awt:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui.render:org.eclipse.gmf.runtime.draw2d.ui.render:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui:org.eclipse.gmf.runtime.draw2d.ui:1.7.0.201306111432</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui:org.eclipse.gmf.runtime.diagram.ui:1.8.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui.render.awt:org.eclipse.gmf.runtime.draw2d.ui.render.awt:1.8.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui.render:org.eclipse.gmf.runtime.draw2d.ui.render:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.draw2d.ui:org.eclipse.gmf.runtime.draw2d.ui:1.8.0.201408201453</bundleArtifactDef>
 
-						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.clipboard.core:org.eclipse.gmf.runtime.emf.clipboard.core:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.commands.core:org.eclipse.gmf.runtime.emf.commands.core:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.core:org.eclipse.gmf.runtime.emf.core:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.type.core:org.eclipse.gmf.runtime.emf.type.core:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.ui.properties:org.eclipse.gmf.runtime.emf.ui.properties:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.ui:org.eclipse.gmf.runtime.emf.ui:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.gef.ui:org.eclipse.gmf.runtime.gef.ui:1.7.0.201306111432</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse.gmf.runtime.notation:org.eclipse.gmf.runtime.notation:1.7.0.201306101425</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.commands.core:org.eclipse.gmf.runtime.emf.commands.core:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.core:org.eclipse.gmf.runtime.emf.core:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.type.core:org.eclipse.gmf.runtime.emf.type.core:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.ui.properties:org.eclipse.gmf.runtime.emf.ui.properties:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.ui:org.eclipse.gmf.runtime.emf.ui:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.gef.ui:org.eclipse.gmf.runtime.gef.ui:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.notation:org.eclipse.gmf.runtime.notation:1.8.0.201405281433</bundleArtifactDef>
 								
-						<bundleArtifactDef>org.eclipse.ocl:org.eclipse.ocl.ecore:3.3.0.v20130520-1222</bundleArtifactDef>
-						<bundleArtifactDef>org.eclipse:org.eclipse.ocl:3.3.0.v20140120-1508</bundleArtifactDef>
- 						<bundleArtifactDef>org.eclipse:org.eclipse.ocl.common:1.1.0.v20130531-0544</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.ocl:org.eclipse.ocl.ecore:3.3.100.v20140610-0641</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.ocl:3.4.2.v20140725-2242</bundleArtifactDef>
+ 						<bundleArtifactDef>org.eclipse:org.eclipse.ocl.common:1.2.0.v20140610-0641</bundleArtifactDef>
 						<bundleArtifactDef>org.w3c.css:org.w3c.css.sac:1.3.1.v200903091627</bundleArtifactDef>
 						<bundleArtifactDef>org.w3c.dom:org.w3c.dom.events:3.0.0.draft20060413_v201105210656</bundleArtifactDef>
 						<bundleArtifactDef>org.w3c.dom:org.w3c.dom.smil:1.0.1.v200903091627</bundleArtifactDef>
 						<bundleArtifactDef>org.w3c.dom:org.w3c.dom.svg:1.1.0.v201011041433</bundleArtifactDef>		                  
 			        
+						<!--GMF -updated to Luna -->
+
+                                                <bundleArtifactDef>org.eclipse.gmf.bridge:org.eclipse.gmf.bridge:1.3.1.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.bridge.trace:org.eclipse.gmf.bridge.trace:1.3.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.bridge.ui:org.eclipse.gmf.bridge.ui:1.5.1.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.bridge.ui.dashboard:org.eclipse.gmf.bridge.ui.dashboard:2.3.0.201502182128</bundleArtifactDef>
+
+						<bundleArtifactDef>org.eclipse.gmf.codegen:org.eclipse.gmf.codegen:2.11.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.codegen.edit:org.eclipse.gmf.codegen.edit:2.9.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.codegen.ui:org.eclipse.gmf.codegen.ui:1.3.0.201502182128</bundleArtifactDef>
+
+						<bundleArtifactDef>org.eclipse.gmf.common:org.eclipse.gmf.common:1.3.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.doc:org.eclipse.gmf.doc:1.3.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.doc.ui:org.eclipse.gmf.doc.ui:1.3.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.ecore.editor:org.eclipse.gmf.ecore.editor:2.2.0.201502182128</bundleArtifactDef>
+								
+						<bundleArtifactDef>org.eclipse.gmf.examples.runtime:org.eclipse.gmf.examples.runtime:1.8.1.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.examples.runtime.common.service:org.eclipse.gmf.examples.runtime.common.service:1.2.0.201408201453</bundleArtifactDef>
+ 						<bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.decorator:org.eclipse.gmf.examples.runtime.diagram.decorator:1.8.1.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.geoshapes:org.eclipse.gmf.examples.runtime.diagram.geoshapes:1.8.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.layout:org.eclipse.gmf.examples.runtime.diagram.layout:1.8.1.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.logic:org.eclipse.gmf.examples.runtime.diagram.logic:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.logic.model:org.eclipse.gmf.examples.runtime.diagram.logic.model:1.2.0.201408201453</bundleArtifactDef>	
+                                                <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.logic.model.edit:org.eclipse.gmf.examples.runtime.diagram.logic.model.edit:1.2.0.201408201453</bundleArtifactDef>
+												     <bundleArtifactDef>org.eclipse.gmf.examples.runtime.diagram.logic.model.editor:org.eclipse.gmf.examples.runtime.diagram.logic.model.editor:1.2.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.examples.runtime.emf.clipboard:org.eclipse.gmf.examples.runtime.emf.clipboard:1.2.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.examples.runtime.ui.pde:org.eclipse.gmf.examples.runtime.ui.pde:1.7.0.201408201453</bundleArtifactDef>
+
+ 						<bundleArtifactDef>org.eclipse.gmf.graphdef:org.eclipse.gmf.graphdef:2.9.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.graphdef.codegen:org.eclipse.gmf.graphdef.codegen:2.10.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.graphdef.codegen.ui:org.eclipse.gmf.graphdef.codegen.ui:1.3.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.graphdef.edit:org.eclipse.gmf.graphdef.edit:2.9.0.201502182128</bundleArtifactDef>
+
+                                                <bundleArtifactDef>org.eclipse.gmf.map:org.eclipse.gmf.map:2.9.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.map.edit:org.eclipse.gmf.map.edit:2.9.0.201502182128</bundleArtifactDef>
+
+                                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.printing.win32:org.eclipse.gmf.runtime.common.ui.printing.win32:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.dnd:org.eclipse.gmf.runtime.common.ui.services.dnd:1.7.0.201408201453</bundleArtifactDef> 
+                                                <bundleArtifactDef>org.eclipse.gmf.runtime.common.ui.services.dnd.ide:org.eclipse.gmf.runtime.common.ui.services.dnd.ide:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.dnd:org.eclipse.gmf.runtime.diagram.ui.dnd:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.diagram.ui.geoshapes:org.eclipse.gmf.runtime.diagram.ui.geoshapes:1.7.0.201408201453</bundleArtifactDef>
+
+						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.clipboard.core:org.eclipse.gmf.runtime.emf.clipboard.core:1.7.0.201408201453</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.emf.type.ui:org.eclipse.gmf.runtime.emf.type.ui:1.7.0.201408201453</bundleArtifactDef> 
+                                                <bundleArtifactDef>org.eclipse.gmf.runtime.lite.svg:org.eclipse.gmf.runtime.lite.svg:1.0.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.notation.edit:org.eclipse.gmf.runtime.notation.edit:1.7.0.201405281433</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.runtime.notation.providers:org.eclipse.gmf.runtime.notation.providers:1.7.0.201408201453</bundleArtifactDef>
+                                                <bundleArtifactDef>org.eclipse.gmf.runtime.notation.sdk:org.eclipse.gmf.runtime.notation.sdk:1.7.0.201405281433</bundleArtifactDef>
+
+        					<bundleArtifactDef>org.eclipse.gmf.sdk:org.eclipse.gmf.sdk:1.0.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.tooldef:org.eclipse.gmf.tooldef:2.3.0.201502182128</bundleArtifactDef> 
+                                                <bundleArtifactDef>org.eclipse.gmf.tooldef.edit:org.eclipse.gmf.tooldef.edit:2.3.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.tooling:org.eclipse.gmf.tooling:2.1.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.validate:org.eclipse.gmf.validate:1.2.0.201502182128</bundleArtifactDef>
+
+     						<bundleArtifactDef>org.eclipse.gmf.xpand:org.eclipse.gmf.xpand:2.2.0.201502182128</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse.gmf.xpand.editor:org.eclipse.gmf.xpand.editor:2.2.0.201502182128</bundleArtifactDef> 
+                                                <bundleArtifactDef>org.eclipse.gmf.xpand.qvtlibrary:org.eclipse.gmf.xpand.qvtlibrary:1.2.0.201502182128</bundleArtifactDef>
+
+
 					        <!-- END OF GMF JARS -->
+
+						<!-- M2M updated to Luna -->
+                                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml:3.4.1.v20150201-1444</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.common:3.4.0.v20140306-0649</bundleArtifactDef> 
+                                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.cst.parser:3.4.0.v20140429-1120</bundleArtifactDef>
+                                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.ecore.imperativeocl:3.3.0.v20140317-1132</bundleArtifactDef>
+						<bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.emf.util:3.4.0.v20140306-0718</bundleArtifactDef> 
+                                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.project:3.4.0.v20140506-1859</bundleArtifactDef>
+                                                <bundleArtifactDef>org.eclipse:org.eclipse.m2m.qvt.oml.runtime:3.4.0.v20150201-1444</bundleArtifactDef>
+                                               
+						<!-- draw2d updated to Luna -->
+                                                <bundleArtifactDef>org.eclipse:org.eclipse.draw2d.doc.isv:3.9.101.201408150207</bundleArtifactDef>
+
+
+
 		
 	                			<!--bundleArtifactDef>com.google:com.google.collect:0.8.0.v201008251220</bundleArtifactDef>
 					        <bundleArtifactDef>com.google:com.google.inject:2.0.0.v201003051000</bundleArtifactDef-->
-				    		<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.core:1.5.0.201308190730</bundleArtifactDef>
-				    		<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.layouts:1.1.0.201308190730</bundleArtifactDef>
+				    		<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.core:1.5.100.201408150207</bundleArtifactDef>
+				    		<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.layouts:1.1.100.201408150207</bundleArtifactDef>
+                                                
+                                                 <!-- Zest updated to Luna -->
+ 						<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.doc.isv:1.5.100.201408150207</bundleArtifactDef>
 
                   <!-- Smooks dependency for Kepler.-->
                   <bundleArtifactDef>org:org.junit4:4.8.1.v20120523-1257-wso2v1</bundleArtifactDef>

@@ -50,26 +50,61 @@
                             <id>${project.artifactId}</id>
                             <propertiesFile>../../feature.properties</propertiesFile>
                             <bundles>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.ui:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.ui:5.0.0.201306060709</bundleDef>
-            <bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.annotations:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.core:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.externalchecker:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.rse.ui:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.rse:org.eclipse.dltk.ssh.core:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.console:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.console.ui:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.testing:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.launching:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.validators.core:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.debug.ui:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.core.manipulation:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.logconsole.ui:5.0.0.201306060709</bundleDef>
-				<bundleDef>org.eclipse.dltk.core:org.eclipse.dltk.formatter:5.0.0.201306060709</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.debug:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.validators.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ui:5.1.1.201502050504</bundleDef>
+            			<bundleDef>org.eclipse:org.eclipse.dltk.annotations:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.rse.core:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.logconsole:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.validators.externalchecker:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.rse.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.core:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ssh.core:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.console:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.console.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.testing:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.launching:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.validators.core:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.debug.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.core.manipulation:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.logconsole.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.formatter:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.itcl:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.itcl.core:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.itcl.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.abstractdebugger:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.activestatedebugger:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.basicdebugger:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.core:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.debug:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.debug.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.fastdebugger:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.formatter:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.launching:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.testing:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.ruby.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.activestatedebugger:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.core:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.debug:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.debug.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.doc.user:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.formatter:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.launching:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.parser:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.tclchecker:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.tcllib:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.testing:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.testing.tcltest:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.ui:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.tcl.validators:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.xotcl:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.xotcl.core:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.xotcl.testing.xounit:5.1.1.201502050504</bundleDef>
+				<bundleDef>org.eclipse:org.eclipse.dltk.xotcl.ui:5.1.1.201502050504</bundleDef>
+				
 				<bundleDef>dummy.groupid:org.h2_1.1.117:201105142352</bundleDef>
  				
 				    <!--bundleDef>org.eclipse.php:org.eclipse.php.ui.tests:2.0.0</bundleDef-->

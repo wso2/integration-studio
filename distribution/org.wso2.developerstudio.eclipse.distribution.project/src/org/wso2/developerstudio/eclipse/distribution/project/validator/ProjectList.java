@@ -16,13 +16,11 @@
 
 package org.wso2.developerstudio.eclipse.distribution.project.validator;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.stream.FactoryConfigurationError;
 
-import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
@@ -96,7 +94,6 @@ public class ProjectList extends AbstractListDataProvider {
 											dependency.setVersion(artifact.getVersion());
 										    // dependency.setVersion(mavenProject.getModel().getVersion()); //referring parent version
 											dependency.setType(ArtifactTypeMapping.getType(artifact.getType()));
-											dependency.setScope(Artifact.SCOPE_SYSTEM);
 
 											// Following artifact types should
 											// be changed to common template
@@ -109,30 +106,6 @@ public class ProjectList extends AbstractListDataProvider {
 												artifactType = artifact.getType();
 											}
 
-											// Target path for capp artifacts
-											StringBuilder systemPathBuilder = new StringBuilder();
-											systemPathBuilder.append(project.getLocation().toString());
-											systemPathBuilder.append(File.separator);
-											systemPathBuilder.append(Constants.ESB_PROJECT_TARGET_CAPP);
-											String outputDirPath = systemPathBuilder.toString();
-
-											// Post fix defines the target path
-											String artifactPostFix = getArtifactPostFix(artifactType);
-
-											// Generate system path for the
-											// dependency
-											systemPathBuilder = new StringBuilder();
-											systemPathBuilder.append(outputDirPath);
-											systemPathBuilder.append(File.separator);
-											systemPathBuilder.append(artifactPostFix);
-											systemPathBuilder.append(File.separator);
-											systemPathBuilder.append(artifact.getName());
-											systemPathBuilder.append(File.separator);
-											systemPathBuilder.append(Constants.POM_FILE_NAME);
-											systemPathBuilder.append(".");
-											systemPathBuilder.append(Constants.POM_FILE_EXTENSION);
-											dependency.setSystemPath(systemPathBuilder.toString());
-
 											DependencyData dependencyData = new DependencyData();
 											dependencyData.setDependency(dependency);
 											dependencyData.setParent(project);
@@ -141,7 +114,6 @@ public class ProjectList extends AbstractListDataProvider {
 											dependencyData.setServerRole(Constants.CAPP_PREFIX
 													+ artifact.getServerRole());
 											
-											dependencyData.setServerRole("capp/"+ artifact.getServerRole());
 											list.add(createListData(
 													DistProjectUtils
 															.getArtifactInfoAsString(dependency,project.getName()),
@@ -194,13 +166,5 @@ public class ProjectList extends AbstractListDataProvider {
 			}
 		}
 		return list;
-	}
-	
-	private String getArtifactPostFix(String artifactType) {
-		if (Constants.SYNAPSE_CONFIG_TYPE.equalsIgnoreCase(artifactType)) {
-			return artifactType.substring(0, artifactType.indexOf("/"));
-		} else {
-			return artifactType.substring(artifactType.indexOf("/") + 1);
-		}
 	}
 }

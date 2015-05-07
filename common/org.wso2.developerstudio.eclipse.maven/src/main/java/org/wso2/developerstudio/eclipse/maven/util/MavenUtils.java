@@ -629,10 +629,12 @@ public class MavenUtils {
 		List<Plugin> plugins = mavenProject.getBuildPlugins();
 		
 		for(Plugin plugin : plugins) {
-			String newVersion = WSO2MavenPluginVersions.getPluginVersion(plugin.getArtifactId());
-			if (newVersion != null && !plugin.getVersion().equals(newVersion)) {
-				//Update the plugin version.
-				plugin.setVersion(newVersion);
+			if (GROUP_ID_ORG_WSO2_MAVEN.equals(plugin.getGroupId())) {
+				String newVersion = WSO2MavenPluginVersions.getPluginVersion(plugin.getArtifactId());
+				if (newVersion != null && !plugin.getVersion().equals(newVersion)) {
+					// Update the plugin version.
+					plugin.setVersion(newVersion);
+				}
 			}
 		}
 	}

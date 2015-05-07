@@ -3,23 +3,39 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.core.edithelpers.CreateElementRequestAdapter;
+import org.eclipse.gmf.runtime.diagram.ui.commands.DeferredCreateConnectionViewAndElementCommand;
+import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
+import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewAndElementRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.runtime.emf.type.core.IHintedType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment25CanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlowMediatorFlowCompartment25ItemSemanticEditPolicy;
@@ -114,6 +130,76 @@ public class MediatorFlowMediatorFlowCompartment25EditPart extends
 	public boolean isSelectable() {
 		// TODO This or using ResizableEditpolicy?
 		return false;
+	}
+	
+	public void connectNormally(EditPart child) {
+		AbstractBorderItemEditPart inputConnector = null;
+		AbstractBorderItemEditPart outputConnector = null;
+
+		if ((child instanceof AbstractMediator)
+				|| (child instanceof AbstractEndpoint)) {
+
+			for (int i = 0; i < child.getChildren().size(); ++i) {
+				if (child.getChildren().get(i) instanceof AbstractMediatorInputConnectorEditPart) {
+					inputConnector = (AbstractMediatorInputConnectorEditPart) child
+							.getChildren().get(i);
+				}
+				if (child.getChildren().get(i) instanceof AbstractMediatorOutputConnectorEditPart) {
+					outputConnector = (AbstractMediatorOutputConnectorEditPart) child
+							.getChildren().get(i);
+				}
+			}
+
+			CompoundCommand cc = new CompoundCommand("Create Link");
+
+			if (inputConnector != null) {
+
+				ShapeNodeEditPart sourceEditPart1 = (AbstractBorderedShapeEditPart) this
+						.getParent().getParent().getParent().getParent();
+				AbstractBorderItemEditPart outputConnectorEditPart_ = EditorUtils
+						.getOutputConnector((ShapeNodeEditPart) this
+								.getParent().getParent().getParent().getParent(),InboundEndpointSequenceOutputConnectorEditPart.class);
+					
+				AbstractBorderItemEditPart inputConnectorEditPart_ = EditorUtils
+						.getInputConnector((ShapeNodeEditPart) this.getParent()
+								.getParent().getParent().getParent(), InboundEndpointSequenceInputConnectorEditPart.class);
+
+				ICommand createSubTopicsCmd = new DeferredCreateConnectionViewAndElementCommand(
+						new CreateConnectionViewAndElementRequest(
+								EsbElementTypes.EsbLink_4001,
+								((IHintedType) EsbElementTypes.EsbLink_4001)
+										.getSemanticHint(),
+								sourceEditPart1.getDiagramPreferencesHint()),
+						new EObjectAdapter((EObject) outputConnectorEditPart_
+								.getModel()), new EObjectAdapter(
+								(EObject) (inputConnector).getModel()),
+						sourceEditPart1.getViewer());
+
+				cc.add(new ICommandProxy(createSubTopicsCmd));
+
+				if (outputConnector != null) {
+					ICommand createSubTopicsCmd2 = new DeferredCreateConnectionViewAndElementCommand(
+							new CreateConnectionViewAndElementRequest(
+									EsbElementTypes.EsbLink_4001,
+									((IHintedType) EsbElementTypes.EsbLink_4001)
+											.getSemanticHint(),
+									((ShapeNodeEditPart) outputConnector
+											.getParent())
+											.getDiagramPreferencesHint()),
+							new EObjectAdapter((EObject) outputConnector
+									.getModel()), new EObjectAdapter(
+									(EObject) (inputConnectorEditPart_)
+											.getModel()),
+							((ShapeNodeEditPart) outputConnector.getParent())
+									.getViewer());
+
+					//cc.add(new ICommandProxy(createSubTopicsCmd));
+					cc.add(new ICommandProxy(createSubTopicsCmd2));
+				}
+
+				getDiagramEditDomain().getDiagramCommandStack().execute(cc);
+			}
+		}
 	}
 
 	/**

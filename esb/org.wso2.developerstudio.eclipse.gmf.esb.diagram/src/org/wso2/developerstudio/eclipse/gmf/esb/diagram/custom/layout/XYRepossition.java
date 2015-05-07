@@ -68,6 +68,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEdit
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterFailContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterPassContainerEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointOnErrorSequenceOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.InboundEndpointSequenceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlow6EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment10EditPart;
@@ -77,6 +79,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment22EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment23EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment24EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment25EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment26EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment4EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment5EditPart;
@@ -651,6 +655,8 @@ public class XYRepossition {
 				if (editPart instanceof MediatorFlowMediatorFlowCompartment5EditPart) {
 					// Title bar width of the sequences editor.
 					verticalSpacing = 20;
+				} else if ((editPart instanceof MediatorFlowMediatorFlowCompartment25EditPart) || (editPart instanceof MediatorFlowMediatorFlowCompartment26EditPart)) {
+					verticalSpacing = 0;
 				} else {
 					verticalSpacing = 10;
 				}
@@ -832,7 +838,9 @@ public class XYRepossition {
 	private static ShapeNodeEditPart getLeftMostNodeFromEditPart(IGraphicalEditPart parent) {
 		ShapeNodeEditPart first = null;
 		if (parent instanceof MediatorFlowMediatorFlowCompartmentEditPart
-				|| parent instanceof MediatorFlowMediatorFlowCompartment6EditPart) {
+				|| parent instanceof MediatorFlowMediatorFlowCompartment6EditPart 
+				|| parent instanceof MediatorFlowMediatorFlowCompartment25EditPart
+				|| parent instanceof MediatorFlowMediatorFlowCompartment26EditPart) {
 			first = (ShapeNodeEditPart) parent.getParent().getParent().getParent().getParent();
 		} else {
 			first = (ShapeNodeEditPart) parent.getParent().getParent();
@@ -876,6 +884,12 @@ public class XYRepossition {
 		} else {
 			if (parent instanceof MediatorFlowMediatorFlowCompartment6EditPart) {
 				faultInputConnector = EditorUtils.getProxyFaultInputConnector(first);
+			} else if(parent instanceof MediatorFlowMediatorFlowCompartment25EditPart){
+				//Get the InboundEndpointSequenceOutputConnectorEditPart from InboundEndpointEditPart
+				firstOutputConnector = EditorUtils.getOutputConnector(first,InboundEndpointSequenceOutputConnectorEditPart.class);
+			} else if(parent instanceof MediatorFlowMediatorFlowCompartment26EditPart){
+				//Get the InboundEndpointOnErrorSequenceOutputConnectorEditPart from InboundEndpointEditPart
+				firstOutputConnector = EditorUtils.getOutputConnector(first,InboundEndpointOnErrorSequenceOutputConnectorEditPart.class);
 			} else {
 				if (EditorUtils.getMediatorAdditionalOutputConnectors(first).size() == 0) {
 					firstOutputConnector = EditorUtils.getOutputConnector(first);

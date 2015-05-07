@@ -100,6 +100,8 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 				new CreationEditPolicyWithCustomReparent(
 						EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new InboundEndpointItemSemanticEditPolicy());
 		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
@@ -426,11 +428,11 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 		}
 
 		public String getIconPath() {
-			return "icons/ico20/proxy.gif";
+			return "icons/ico20/inbound-endpoint.gif";
 		}
 
 		public String getNodeName() {
-			return "Proxy";
+			return "Inbound EP";
 		}
 
 		public Color getBackgroundColor() {

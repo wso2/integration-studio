@@ -233,5 +233,10 @@ public class InboundEndpointSequenceContainerEditPart extends ShapeNodeEditPart 
 		}
 
 	}
+	
+	@Override
+	public boolean isSelectable() {
+		return false;
+	}
 
 }

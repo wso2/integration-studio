@@ -218,6 +218,11 @@ public class InboundEndpointContainerEditPart extends ShapeNodeEditPart {
 		}
 
 	}
+	
+	@Override
+	public boolean isSelectable() {
+		return false;
+	}
 
 	static final Color THIS_BACK = new Color(null, 255, 255, 255);
 }

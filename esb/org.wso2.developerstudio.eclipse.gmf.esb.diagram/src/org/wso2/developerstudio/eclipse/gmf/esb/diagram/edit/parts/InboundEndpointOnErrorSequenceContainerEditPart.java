@@ -236,5 +236,10 @@ public class InboundEndpointOnErrorSequenceContainerEditPart extends
 		}
 
 	}
+	
+	@Override
+	public boolean isSelectable() {
+		return false;
+	}
 
 }

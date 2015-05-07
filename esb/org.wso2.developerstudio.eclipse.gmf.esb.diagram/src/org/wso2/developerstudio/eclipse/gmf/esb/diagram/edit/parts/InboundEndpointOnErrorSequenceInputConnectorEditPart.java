@@ -66,7 +66,7 @@ public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
@@ -78,6 +78,7 @@ public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
 
 	/**
@@ -284,6 +285,11 @@ public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends
 
 			this.add(imageRectangle11, constraintImageRectangle11);
 		}
+	}
+	
+	@Override
+	public boolean isSelectable() {
+		return false;
 	}
 
 	/**

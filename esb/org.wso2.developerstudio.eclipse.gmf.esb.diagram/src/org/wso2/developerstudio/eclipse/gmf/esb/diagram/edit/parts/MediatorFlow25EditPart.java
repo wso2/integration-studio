@@ -288,6 +288,10 @@ public class MediatorFlow25EditPart extends ShapeNodeEditPart {
 		 }*/
 
 	}
+	
+	public boolean isSelectable() {
+		return false;
+	}
 
 	/**
 	 * @generated

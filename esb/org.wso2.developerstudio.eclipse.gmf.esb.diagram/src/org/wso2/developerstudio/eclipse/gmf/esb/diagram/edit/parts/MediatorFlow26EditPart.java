@@ -218,6 +218,10 @@ public class MediatorFlow26EditPart extends ShapeNodeEditPart {
 					getMapMode().DPtoLP(30000)));
 		}
 	}
+	
+	public boolean isSelectable() {
+		return false;
+	}
 
 	/**
 	 * @generated

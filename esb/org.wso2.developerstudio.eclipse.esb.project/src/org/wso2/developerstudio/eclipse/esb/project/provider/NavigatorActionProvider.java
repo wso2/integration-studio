@@ -73,6 +73,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 	private static final String API="api";
 	private static final String MESSAGE_STORE="messageStore";
 	private static final String MESSAGE_PROCESSOR="messageProcessor";
+	private static final String INBOUND_ENDPOINT="inboundEndpoint";
 	
 	private OpenEditorAction openEditorAction;
 	private static Map<String,String> prefixMap = new HashMap<String,String>();
@@ -138,6 +139,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 					.replaceFirst("/api/","/api/api_")
 					.replaceFirst("/message-stores/","/message-stores/messageStore_")
 					.replaceFirst("/message-processors/","/message-processors/messageProcessor_")
+					.replaceFirst("/inbound-endpoints/","/inbound-endpoints/inboundEndpoints_")
 					.replaceAll(".xml$", ".esb_diagram");
 
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
@@ -322,6 +324,8 @@ public class NavigatorActionProvider extends CommonActionProvider {
 					return new String[] { MESSAGE_STORE, MESSAGE_STORE };
 				} else if (currentLine.contains("<messageProcessor")) {
 					return new String[] { MESSAGE_PROCESSOR, MESSAGE_PROCESSOR };
+				} else if (currentLine.contains("<inboundEndpoint")) {
+					return new String[] { INBOUND_ENDPOINT, INBOUND_ENDPOINT };
 				} else if (currentLine.contains("<definitions")) {
 					return new String[] { "full-synapse", "full-synapse" };
 				}

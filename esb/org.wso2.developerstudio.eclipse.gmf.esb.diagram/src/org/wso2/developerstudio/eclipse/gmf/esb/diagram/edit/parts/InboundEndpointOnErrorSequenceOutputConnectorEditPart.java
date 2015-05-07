@@ -267,6 +267,11 @@ public class InboundEndpointOnErrorSequenceOutputConnectorEditPart extends
 		}
 
 	}
+	
+	@Override
+	public boolean isSelectable() {
+		return false;
+	}
 
 	/**
 	 * @generated

@@ -122,6 +122,23 @@ public class EditorUtils {
 	}
 	
 	/**
+	 * Look up InputConnector by EditPart and type
+	 * @param <T>
+	 * @param parent
+	 * @param type
+	 * @return
+	 */
+	public static <T extends AbstractInputConnectorEditPart> T getInputConnector(
+			ShapeNodeEditPart parent, Class<T> type) {
+		for (int i = 0; i < parent.getChildren().size(); ++i) {
+			if (type.isInstance(parent.getChildren().get(i))) {
+				return type.cast(parent.getChildren().get(i));
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * Look up OutputConnector by EditPart and type
 	 * @param <T>
 	 * @param parent

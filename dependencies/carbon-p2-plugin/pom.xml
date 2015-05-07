@@ -4,7 +4,7 @@
     <groupId>org.wso2.maven</groupId>
     <artifactId>carbon-p2-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.5.4-SNAPSHOT</version>
+    <version>1.5.4</version>
     <name>Maven P2 Profile Generation Plugin</name>
 
     <dependencies>

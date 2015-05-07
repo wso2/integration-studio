@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Developer Studio Utilty Plugin
 Bundle-SymbolicName: org.wso2.developerstudio.eclipse.utils
-Bundle-Version: 3.8.0.qualifier
+Bundle-Version: 3.8.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.utils.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.core.runtime,

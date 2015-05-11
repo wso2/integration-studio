@@ -52,6 +52,7 @@
                             <bundles>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.dataservice:${ds.tools.artifact.version}</bundleDef>
                                 <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.dataservice.validator:${ds.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.dataserviceProject:${ds.tools.version}</bundleDef>
                             </bundles>
 			                <!--importBundles>
     				            <importBundleDef>com.google:com.google.collect:0.8.0.v201008251220</importBundleDef>

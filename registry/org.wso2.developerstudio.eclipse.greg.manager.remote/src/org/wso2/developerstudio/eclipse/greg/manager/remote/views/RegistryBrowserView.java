@@ -2217,7 +2217,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 				new TextContributionItem());
 
 		treeViewer = new RegistryTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.BORDER, exeptionHandler,true,true);
+				| SWT.V_SCROLL | SWT.BORDER, exeptionHandler,false,true);
 		tree = treeViewer.getTree();
 		GridData data = new GridData(GridData.FILL_BOTH);
 		data.widthHint = 450;

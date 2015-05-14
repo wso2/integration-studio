@@ -335,17 +335,20 @@ public abstract class UserRolesDialog extends Dialog {
 	}
 
 	private void loadConfiguration() {
-		if(object instanceof DataService){
-			if(((DataService) object).getFeatureAllowRoles() != null && !StringUtils.isEmpty(((DataService) object).getFeatureAllowRoles().getValue())) {
-				userRoles = ((DataService) object).getFeatureAllowRoles().getValue();
-				inlineUserRolesText.setText(userRoles);
-			}
-		}else if(object instanceof ProxyService){
-			for (ProxyServiceParameter parameter : ((ProxyService) object).getServiceParameters()) {
-				if(parameter.getName().equals(ALLOW_ROLES)){
-					userRoles = parameter.getValue();
+		if (object instanceof DataService) {
+			if (((DataService) object).getFeatureAllowRoles() != null
+					&& !StringUtils.isEmpty(((DataService) object)
+							.getFeatureAllowRoles().getValue())) {
+				userRoles = ((DataService) object).getFeatureAllowRoles()
+						.getValue();
+				if (!StringUtils.isEmpty(userRoles)) {
 					inlineUserRolesText.setText(userRoles);
 				}
+			}
+		} else if (object instanceof ProxyService) {
+			userRoles = ((ProxyService) object).getFeatureAllowRoles();
+			if (!StringUtils.isEmpty(userRoles)) {
+				inlineUserRolesText.setText(userRoles);
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.configure.ui;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
@@ -18,7 +19,6 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
@@ -31,13 +31,9 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogLevel;
-import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceParameter;
-import org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbFactoryImpl;
+
 
 public class ConfigureProxyServiceDialog extends Dialog {
 
@@ -174,8 +170,19 @@ public class ConfigureProxyServiceDialog extends Dialog {
 					.addListener(SWT.Selection, tblPropertiesListener);
 
 			// Populate properties.
-			for (ProxyServiceParameter parameter : proxyService.getServiceParameters()) {
-				bindProxyParameter(parameter);
+			for (ProxyServiceParameter parameter : proxyService
+					.getServiceParameters()) {
+				if (!StringUtils.isEmpty(parameter.getValue())) {
+					bindProxyParameter(parameter);
+				} else {
+					RemoveCommand removeCmd = new RemoveCommand(
+							editingDomain,
+							proxyService,
+							EsbPackage.Literals.PROXY_SERVICE__SERVICE_PARAMETERS,
+							parameter);
+					getResultCommand().append(removeCmd);
+
+				}
 			}
 
 			// In-line editing of properties.
@@ -336,7 +343,8 @@ public class ConfigureProxyServiceDialog extends Dialog {
 				}
 
 			
-					if (!property.getValue().equals(item.getText(1))) {
+				if(property.getValue() != null){	
+				if (!property.getValue().equals(item.getText(1))) {
 						SetCommand setCmd = new SetCommand(
 								editingDomain,
 								property,
@@ -344,6 +352,7 @@ public class ConfigureProxyServiceDialog extends Dialog {
 								item.getText(1));
 						getResultCommand().append(setCmd);
 					}
+				}
 			}
 		}
 

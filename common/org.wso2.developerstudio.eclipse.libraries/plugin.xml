@@ -145,7 +145,7 @@
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.is" />
 		<library jar="lib/opensaml2_2.4.1.wso2v1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.is" />
-		<library jar="lib/org.wso2.carbon.registry.core_4.2.0.jar"
+		<library jar="lib/org.wso2.carbon.registry.core_4.0.1.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.greg" />
 		<library jar="lib/org.wso2.carbon.user.core_4.2.0.jar"
 			categoryId="org.wso2.developerstudio.eclipse.libraries.category.greg" />

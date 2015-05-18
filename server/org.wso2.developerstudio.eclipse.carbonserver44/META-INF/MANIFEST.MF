@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Carbonserver44
+Bundle-SymbolicName: org.wso2.developerstudio.eclipse.carbonserver44
+Bundle-Version: 3.8.0
+Bundle-Activator: org.wso2.developerstudio.eclipse.carbonserver44.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

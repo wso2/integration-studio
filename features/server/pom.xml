@@ -18,7 +18,8 @@
     	<module>org.wso2.developerstudio.eclipse.carbonserver.31.feature</module> 
         <module>org.wso2.developerstudio.eclipse.carbonserver.32.feature</module>
 	<module>org.wso2.developerstudio.eclipse.carbonserver.40.feature</module>   
-	<module>org.wso2.developerstudio.eclipse.carbonserver.42.feature</module>	
+	<module>org.wso2.developerstudio.eclipse.carbonserver.42.feature</module>
+        <module>org.wso2.developerstudio.eclipse.carbonserver.44.feature</module>	
 	<module>org.wso2.developerstudio.eclipse.carbonserver.remote.feature</module>  
     </modules>
 </project>

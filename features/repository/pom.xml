@@ -106,6 +106,7 @@
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.32.feature:${carbonserver.32.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.40.feature:${carbonserver.40.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.42.feature:${carbonserver.42.feature.version}</featureArtifactDef>
+						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.44.feature:${carbonserver.44.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.remote.feature:${carbonserver.remote.feature.version}</featureArtifactDef>
 						                                
 						<featureArtifactDef>org.jboss.tools:org.jboss.tools.smooks.feature:${smooks.feature.version}</featureArtifactDef> 
@@ -324,7 +325,7 @@
                                                  <!-- Zest updated to Luna -->
  						<bundleArtifactDef>org.eclipse.zest:org.eclipse.zest.doc.isv:1.5.100.201408150207</bundleArtifactDef>
 
-                  <!-- Smooks dependency for Kepler.-->
+                  <!-- Smooks dependency for Luna.-->
                   <bundleArtifactDef>org:org.junit4:4.8.1.v20120523-1257-wso2v1</bundleArtifactDef>
 
 				        </bundleArtifacts>
@@ -358,6 +359,7 @@
 						    	<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.32.feature:${carbonserver.32.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.40.feature:${carbonserver.40.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.42.feature:${carbonserver.42.feature.version}</featureArtifactDef>
+							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.44.feature:${carbonserver.44.feature.version}</featureArtifactDef>
 						    	<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.carbonserver.remote.feature:${carbonserver.remote.feature.version}</featureArtifactDef>
 									    					
 							<featureArtifactDef>org.jboss.tools:org.jboss.tools.smooks.feature:${smooks.feature.version}</featureArtifactDef>

@@ -268,6 +268,7 @@
 	<carbonserver.32.version>3.8.0</carbonserver.32.version>
 	<carbonserver.40.version>3.8.0</carbonserver.40.version>
 	<carbonserver.42.version>3.8.0</carbonserver.42.version>
+        <carbonserver.44.version>3.8.0</carbonserver.44.version>
 	<carbonserver.remote.version>3.8.0</carbonserver.remote.version>
         <core.tools.version>3.8.0</core.tools.version>
         <greg.connector.version>3.8.0</greg.connector.version>
@@ -310,6 +311,7 @@
 	<carbonserver.32.feature.version>3.8.0</carbonserver.32.feature.version>
 	<carbonserver.40.feature.version>3.8.0</carbonserver.40.feature.version>
 	<carbonserver.42.feature.version>3.8.0</carbonserver.42.feature.version>
+        <carbonserver.44.feature.version>3.8.0</carbonserver.44.feature.version>
 	<carbonserver.remote.feature.version>3.8.0</carbonserver.remote.feature.version>
 	    
         <osde.feature.version>3.8.0</osde.feature.version>

@@ -23,6 +23,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.Activator;
@@ -152,15 +153,15 @@ public class EndpointModel extends ProjectDataModel {
 			setEndpointSaveLocation((IContainer) data);
 			
 		} else if (key.equals(EpArtifactConstants.WIZARD_OPTION_CREATE_ESB_PROJECT)) {
-			if(getSelectedOption_DynamicEP()){
-				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell);
+			if(getSelectedOption_DynamicEP()){				
+				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();		
+				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
 				if(generalProject!=null){
 					setEndpointSaveLocation(generalProject);
 				}
 			} else{
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject esbProject = ESBProjectUtils.createESBProject(shell);
+				IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
 				if(esbProject!=null){
 					setEndpointSaveLocation(esbProject);
 				}

@@ -87,8 +87,14 @@ public class LocationInfoComposite extends Composite implements Observer {
     public LocationInfoComposite(Composite parent, int style, ProjectDataModel model, final File location, ProjectOptionInfo optionDataInfo, WizardPage wizardPage) {
         super(parent, style);
         setProjectModel(model);
-        setCurrentProjectName(model.getProjectName());
-        this.defaultLocation = location;
+        setCurrentProjectName(model.getProjectName());        
+    	File modelLocation = getProjectModel().getLocation();
+    	if(modelLocation!=null){
+    		 this.defaultLocation = modelLocation; /* Developer has changed the default selection location */
+    	}else{
+    		 this.defaultLocation = location; /*Default location using the selection*/
+    	}
+        
         this.wizardPage = wizardPage;
         this.projectOptionsData = optionDataInfo.getProjectOptionsData();
         this.workSpaceRoot = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
@@ -131,14 +137,18 @@ public class LocationInfoComposite extends Composite implements Observer {
                 locationHolder.setEnabled(!defaultCheckButtonSelected);
                 browseButton.setEnabled(!defaultCheckButtonSelected);
                 if (defaultCheckButtonSelected) {
-                    updateDefaultProjectLocation();
+            
+                	updateDefaultProjectLocation();
+                    getProjectModel().setIsUserDefine(false);
                 } else {
+                	 getProjectModel().setIsUserDefine(true);
                     if (lastUserSelectedLocation == null) {
                         locationHolder.setText("");
-                        getProjectModel().setLocation(null);
+                        getProjectModel().setLocation(null);                      
                     } else {
                         locationHolder.setText(lastUserSelectedLocation);
                         getProjectModel().setLocation(new File(lastUserSelectedLocation));
+                       
                     }
                 }
             }
@@ -198,15 +208,15 @@ public class LocationInfoComposite extends Composite implements Observer {
                 complete = false;
                 errorMessage = ERR_MESSAGE_VALID_LOCATION;
                 throw new FieldValidationException(errorMessage);
-            } else if (!defaultCheckButtonSelected && workSpaceRoot.equals(new File(locationHolder.getText()))) {
+            } /*else if (!defaultCheckButtonSelected && workSpaceRoot.equals(new File(locationHolder.getText()))) {
                 complete = false;
                 errorMessage = locationHolder.getText() + ERR_MESSAGE_OVERLAPPING_WORKSPACE + workSpaceRoot;
                 throw new FieldValidationException(errorMessage);
-            } else if (!defaultCheckButtonSelected && new File(locationHolder.getText()).exists()) {
+            }*//* else if (!defaultCheckButtonSelected && new File(locationHolder.getText()).exists()) {
                 complete = false;
                 errorMessage = locationHolder.getText() + ERR_MESSAGE_OVERLAPPING_PROJECT + new File(locationHolder.getText()).getName();
                 throw new FieldValidationException(errorMessage);
-            } else {
+            }*/ else {
                 if (defaultCheckButtonSelected && getCurrentProjectName() != null) {
                     getProjectModel().setLocation(new File(locationHolder.getText(), getCurrentProjectName()));
                 } else {

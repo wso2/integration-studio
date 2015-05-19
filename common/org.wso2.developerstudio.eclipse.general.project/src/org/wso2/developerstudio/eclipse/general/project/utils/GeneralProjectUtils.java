@@ -1,11 +1,16 @@
 package org.wso2.developerstudio.eclipse.general.project.utils;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.io.FilenameUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -14,12 +19,13 @@ import org.wso2.developerstudio.eclipse.general.project.Activator;
 import org.wso2.developerstudio.eclipse.general.project.ui.wizard.GeneralProjectWizard;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 
 public class GeneralProjectUtils {
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
-	public static IProject createGeneralProject(Shell shell){
+	public static IProject createGeneralProject(Shell shell,File location){
 		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard("org.wso2.developerstudio.eclipse.general.project");
 		if (wizardDesc!=null) {
 			try {
@@ -27,12 +33,14 @@ public class GeneralProjectUtils {
 				GeneralProjectWizard basicProjectWizard = (GeneralProjectWizard) wizardDesc.createWizard();
 				IStructuredSelection selection = (IStructuredSelection) PlatformUI
 						.getWorkbench().getActiveWorkbenchWindow()
-						.getSelectionService().getSelection();
+						.getSelectionService().getSelection();				
 				basicProjectWizard.init(PlatformUI.getWorkbench(), selection);
 				WizardDialog dialog = new WizardDialog(shell, basicProjectWizard);
+				ProjectDataModel regModel = basicProjectWizard.getModel();
+				regModel.setLocation(location);
 				dialog.create();
 				if(dialog.open() ==Dialog.OK){
-					String projectName = basicProjectWizard.getModel().getProjectName();
+					String projectName = basicProjectWizard.getModel().getProjectName();					
 					newProject = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 				}
 				return newProject;

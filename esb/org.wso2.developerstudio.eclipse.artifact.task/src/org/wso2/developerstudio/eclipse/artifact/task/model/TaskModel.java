@@ -230,7 +230,7 @@ public class TaskModel  extends ProjectDataModel {
 			}
 		} else if (key.contains(Task_Create_Project)){
 			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-			IProject esbProject = ESBProjectUtils.createESBProject(shell);
+			IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
 			if(esbProject!=null){
 				setSaveLocation(esbProject);
 			}

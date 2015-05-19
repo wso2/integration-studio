@@ -251,7 +251,7 @@ public class InboundEndpointModel extends ProjectDataModel {
 			setSuspend(data.toString());
 		} else if (key.equals(InboundEndpointArtifactProperties.wizardOptionCreateESBProject)) {
 			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-			IProject esbProject = ESBProjectUtils.createESBProject(shell);
+			IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
 			if (esbProject != null) {
 				setInboundEndpointSaveLocation(esbProject);
 			}

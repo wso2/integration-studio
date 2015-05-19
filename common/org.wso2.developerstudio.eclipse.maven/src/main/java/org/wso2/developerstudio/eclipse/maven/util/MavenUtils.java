@@ -11,6 +11,7 @@ import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.model.io.xpp3.MavenXpp3Writer;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
@@ -39,7 +40,7 @@ public class MavenUtils {
 	public static final String CAPP_SCOPE_PREFIX = "capp";
 	public static final String PROPERTY_CAPP_TYPE = "CApp.type";
 	
-	public static MavenProject getMavenProject(File file) throws Exception {
+	public static MavenProject getMavenProject(File file) throws IOException, XmlPullParserException  {
 		MavenXpp3Reader mavenXpp3Reader = new MavenXpp3Reader();
 		Model model;
 		final FileInputStream stream = new FileInputStream(file);
@@ -61,7 +62,7 @@ public class MavenUtils {
 		return new MavenProject(model);
 	}
 	
-	public static void saveMavenProject(MavenProject project, File file) throws Exception{
+	public static void saveMavenProject(MavenProject project, File file) throws IOException {
 		if (file.getParentFile()!=null){
 			file.getParentFile().mkdirs();
 		}

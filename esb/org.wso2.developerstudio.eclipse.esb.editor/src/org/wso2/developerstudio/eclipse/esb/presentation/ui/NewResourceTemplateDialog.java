@@ -20,7 +20,6 @@ import static org.wso2.developerstudio.eclipse.platform.core.registry.util.Const
 
 import java.io.File;
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.Map;
 
 import org.apache.maven.model.Plugin;
@@ -57,6 +56,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
+import org.wso2.developerstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
 import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
@@ -71,7 +71,6 @@ import org.wso2.developerstudio.eclipse.platform.core.registry.util.RegistryReso
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
-import org.wso2.developerstudio.eclipse.esb.core.utils.EsbTemplateFormatter;
 
 public class NewResourceTemplateDialog extends Dialog {
 	private static IDeveloperStudioLog log = Logger
@@ -138,7 +137,7 @@ public class NewResourceTemplateDialog extends Dialog {
 		linkButton.addListener (SWT.Selection, new Listener () {
 		      public void handleEvent(Event event) {
 		    	  Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-					IProject generalProject = GeneralProjectUtils.createGeneralProject(shell);
+					IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,null);
 					if(generalProject!=null){
 						cmbProject.add(generalProject.getName());
 						if(cmbProject.getItems().length>0){

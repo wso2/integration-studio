@@ -182,7 +182,7 @@ public class APIArtifactModel extends ProjectDataModel {
 			}
 		} else if (key.contains(ArtifactConstants.ID_CREATE_PRJ)){
 			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-			IProject esbProject = ESBProjectUtils.createESBProject(shell);
+			IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
 			if(esbProject!=null){
 				setSaveLocation(esbProject);
 			}

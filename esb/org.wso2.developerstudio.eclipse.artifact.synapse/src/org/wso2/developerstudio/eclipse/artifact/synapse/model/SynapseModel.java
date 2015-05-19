@@ -73,7 +73,7 @@ public class SynapseModel extends ProjectDataModel {
 			setEsbProject((IContainer)data);
 		}else if("create.esb.prj".equals(key)){
 			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-			IProject esbProject = ESBProjectUtils.createESBProject(shell);
+			IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
 			if(esbProject!=null){
 				setEsbProject(esbProject);
 			}

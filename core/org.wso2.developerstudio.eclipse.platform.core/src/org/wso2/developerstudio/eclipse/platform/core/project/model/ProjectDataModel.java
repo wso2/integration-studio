@@ -34,28 +34,29 @@ import java.io.File;
 import java.util.Observable;
 
 public abstract class ProjectDataModel extends Observable {
-	private static IDeveloperStudioLog logger=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog logger = Logger.getLog(Activator.PLUGIN_ID);
 	private String projectName;
 	private File location;
 	private MavenInfo mavenInfo;
 	protected File importFile;
 	private IWorkingSet[] selectedWorkingSets;
 	private String selectedOption;
-    private String groupId="com.example";
+	private String groupId = "com.example";
+	private boolean isUserSet;
 
 	public String getProjectName() {
 		return projectName;
 	}
 
 	public void setProjectName(String projectName) throws ObserverFailedException {
-		if ((projectName!=null)&&(!projectName.equals(this.projectName))) {
+		if ((projectName != null) && (!projectName.equals(this.projectName))) {
 			this.projectName = projectName;
 			trigger();
 		}
 	}
 
-	public void setGroupId(String groupId)throws ObserverFailedException{
-		if (!this.groupId.equals(groupId)&&(groupId!=null)&&(!"".equals(groupId))) {
+	public void setGroupId(String groupId) throws ObserverFailedException {
+		if (!this.groupId.equals(groupId) && (groupId != null) && (!"".equals(groupId))) {
 			this.groupId = groupId;
 			trigger();
 		}
@@ -71,6 +72,14 @@ public abstract class ProjectDataModel extends Observable {
 
 	public void setLocation(File location) {
 		this.location = location;
+	}
+
+	public boolean isUserSet() {
+		return isUserSet;
+	}
+
+	public void setIsUserDefine(boolean isUserSet) {
+		this.isUserSet = isUserSet;
 	}
 
 	public MavenInfo getMavenInfo() {
@@ -129,9 +138,9 @@ public abstract class ProjectDataModel extends Observable {
 	 *            - model property key
 	 * @param data
 	 *            - model data value
-	 *            
-	 * @return - if true - update the UI control with the value of the model
-	 *           if false - only the model will be updated
+	 * 
+	 * @return - if true - update the UI control with the value of the model if
+	 *         false - only the model will be updated
 	 * @throws ObserverFailedException
 	 */
 	public boolean setModelPropertyValue(String key, Object data) throws ObserverFailedException {
@@ -165,14 +174,14 @@ public abstract class ProjectDataModel extends Observable {
 	public IWorkingSet[] getSelectedWorkingSets() {
 		return selectedWorkingSets;
 	}
-	
-	public void addToWorkingSet(IProject project){
-		if((getSelectedWorkingSets()!=null)&&(project !=null)){
+
+	public void addToWorkingSet(IProject project) {
+		if ((getSelectedWorkingSets() != null) && (project != null)) {
 			IWorkingSetManager workingSetManager = PlatformUI.getWorkbench().getWorkingSetManager();
 			workingSetManager.addToWorkingSets(project, getSelectedWorkingSets());
 		}
 	}
-	
+
 	public static IContainer getContainer(File absolutionPath, String projectNature) {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		int length = 0;
@@ -182,8 +191,7 @@ public abstract class ProjectDataModel extends Observable {
 				if (project.isOpen() && project.hasNature(projectNature)) {
 					File projectLocation = project.getLocation().toFile();
 					int projectLocationLength = projectLocation.toString().length();
-					if (projectLocationLength > length &&
-					    projectLocationLength <= absolutionPath.toString().length()) {
+					if (projectLocationLength > length && projectLocationLength <= absolutionPath.toString().length()) {
 						if (absolutionPath.toString().startsWith(projectLocation.toString())) {
 							length = projectLocationLength;
 							currentSelection = project;
@@ -196,10 +204,8 @@ public abstract class ProjectDataModel extends Observable {
 		}
 		IContainer saveLocation = null;
 		if (currentSelection != null) {
-			String path =
-			        absolutionPath.toString().substring(
-			                                            currentSelection.getLocation().toFile()
-			                                                    .toString().length());
+			String path = absolutionPath.toString().substring(
+					currentSelection.getLocation().toFile().toString().length());
 
 			if (path.equals("")) {
 				saveLocation = currentSelection;

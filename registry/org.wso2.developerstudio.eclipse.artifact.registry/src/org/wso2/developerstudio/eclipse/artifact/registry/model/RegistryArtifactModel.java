@@ -125,7 +125,7 @@ public class RegistryArtifactModel extends ProjectDataModel {
 		boolean returnResult =  super.setModelPropertyValue(key, data);
 		if(key.equals(RegistryArtifactConstants.DATA_CREATE_PRJ)){
 			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-			IProject generalProject = GeneralProjectUtils.createGeneralProject(shell);
+			IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
 			if(generalProject!=null){
 				setResourceSaveLocation(generalProject);
 			}

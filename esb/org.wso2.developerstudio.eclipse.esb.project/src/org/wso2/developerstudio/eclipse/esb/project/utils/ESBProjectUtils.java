@@ -54,7 +54,7 @@ public class ESBProjectUtils {
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
-	public static IProject createESBProject(Shell shell){
+	public static IProject createESBProject(Shell shell,File location){
 		IWizardDescriptor wizardDesc = PlatformUI.getWorkbench().getNewWizardRegistry().findWizard("org.wso2.developerstudio.eclipse.artifact.newesbproject");
 		if (wizardDesc!=null) {
 			try {
@@ -65,6 +65,7 @@ public class ESBProjectUtils {
 												.getSelectionService().getSelection();
 				esbProjectWizard.init(PlatformUI.getWorkbench(), selection);
 				WizardDialog dialog = new WizardDialog(shell, esbProjectWizard);
+				esbProjectWizard.getModel().setLocation(location);
 				dialog.create();
 				if(dialog.open() ==Dialog.OK){
 					String projectName = esbProjectWizard.getModel().getProjectName();

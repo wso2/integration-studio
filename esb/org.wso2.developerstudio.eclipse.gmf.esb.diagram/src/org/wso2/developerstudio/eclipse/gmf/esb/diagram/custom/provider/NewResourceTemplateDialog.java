@@ -142,7 +142,8 @@ public class NewResourceTemplateDialog extends Dialog {
 		linkButton.addListener (SWT.Selection, new Listener () {
 		      public void handleEvent(Event event) {
 		    	  Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-					IProject generalProject = GeneralProjectUtils.createGeneralProject(shell);
+		    	  
+					IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,null);
 					if(generalProject!=null){
 						cmbProject.add(generalProject.getName());
 						if(cmbProject.getItems().length>0){

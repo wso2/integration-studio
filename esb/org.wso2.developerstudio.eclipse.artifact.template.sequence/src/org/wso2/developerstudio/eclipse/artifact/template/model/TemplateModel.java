@@ -119,7 +119,7 @@ public class TemplateModel extends ProjectDataModel {
 			}
 		} else if (key.equals("create.esb.prj")) {
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject esbProject = ESBProjectUtils.createESBProject(shell);
+				IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
 				if(esbProject!=null){
 					setTemplateSaveLocation(esbProject);
 				}

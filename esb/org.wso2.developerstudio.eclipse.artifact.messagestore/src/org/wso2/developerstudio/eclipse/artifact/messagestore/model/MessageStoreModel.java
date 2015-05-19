@@ -259,7 +259,7 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setCustomProviderClass(data.toString());
 		} else if (key.equals(Constants.FIELD_CREATE_ESB_PRJ)) {
 			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-			IProject esbProject = ESBProjectUtils.createESBProject(shell);
+			IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
 			if(esbProject!=null){
 				setSaveLocation(esbProject);
 			}

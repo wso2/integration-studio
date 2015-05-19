@@ -133,14 +133,14 @@ public class SequenceModel extends ProjectDataModel {
 		} else if (key.equals("create.esb.prj")) {
 			if(isSaveAsDynamic()){
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell);
+				IProject generalProject = GeneralProjectUtils.createGeneralProject(shell,getLocation());
 				if(generalProject!=null){
 					setSequenceSaveLocation(generalProject);
 				}
 				
 			} else{
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				IProject esbProject = ESBProjectUtils.createESBProject(shell);
+				IProject esbProject = ESBProjectUtils.createESBProject(shell,getLocation());
 				if(esbProject!=null){
 					setSequenceSaveLocation(esbProject);
 				}

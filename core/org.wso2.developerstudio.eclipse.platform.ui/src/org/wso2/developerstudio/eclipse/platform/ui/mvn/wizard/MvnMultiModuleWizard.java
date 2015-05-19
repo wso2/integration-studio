@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedException;
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 import org.wso2.developerstudio.eclipse.platform.ui.Activator;
 import org.wso2.developerstudio.eclipse.platform.ui.mvn.util.MavenMultiModuleProjectImageUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
@@ -42,7 +43,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 	private static final String MAVEN_ECLIPSE_PLUGIN = "org.apache.maven.plugins:maven-eclipse-plugin:2.9";
 
-	private static final String MAVEN_MULTI_MODULE_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature";
+	//private static final String MAVEN_MULTI_MODULE_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -200,7 +201,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 
 	private void addMavenMultiModuleProjectNature(IProject projectToAdddNature){
 		try {
-			ProjectUtils.addNatureToProject(projectToAdddNature, false,MAVEN_MULTI_MODULE_PROJECT_NATURE);
+			ProjectUtils.addNatureToProject(projectToAdddNature, false,Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE);
 			projectToAdddNature.refreshLocal(IResource.DEPTH_INFINITE,new NullProgressMonitor());
 		} catch (CoreException e) {
 			log.error("Error occured while adding the Maven Multi Module Nature to Project", e);
@@ -239,7 +240,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 			if (buildPlugins.isEmpty()) {
 				MavenUtils.updateWithMavenEclipsePlugin(pomFile.getLocation()
 						.toFile(), new String[] {},
-						new String[] { MAVEN_MULTI_MODULE_PROJECT_NATURE });
+						new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE });
 			} else {
 				for (Plugin plugin : buildPlugins) {
 					if (MAVEN_ECLIPSE_PLUGIN.equals(plugin.getId())) {
@@ -250,7 +251,7 @@ public class MvnMultiModuleWizard extends AbstractWSO2ProjectCreationWizard {
 								.updateWithMavenEclipsePlugin(
 										pomFile.getLocation().toFile(),
 										new String[] {},
-										new String[] { MAVEN_MULTI_MODULE_PROJECT_NATURE });
+										new String[] { Constants.MAVEN_MULTI_MODULE_PROJECT_NATURE });
 					}
 				}
 			}

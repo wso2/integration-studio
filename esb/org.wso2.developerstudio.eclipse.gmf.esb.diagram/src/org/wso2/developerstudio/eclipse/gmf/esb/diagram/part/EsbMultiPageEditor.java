@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
-
+import java.util.Scanner;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -33,6 +33,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -44,12 +45,15 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
+import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
+import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.impl.NodeImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -78,6 +82,7 @@ import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject.GMFPluginDetails;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
@@ -176,9 +181,40 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         try {
         	GMFPluginDetails.setiUpdateGMFPlugin(new UpdateGMFPlugin());
         	currentEditor=this;
-            graphicalEditor = new EsbDiagramEditor(this);
-            addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, getEditorInput());
+            graphicalEditor = new EsbDiagramEditor(this);            
+            IEditorInput editorInput = getEditorInput();
+            if (editorInput instanceof FileEditorInput) {
+            	IFile file = ((FileEditorInput) editorInput).getFile();
+            	final Deserializer deserializer = Deserializer.getInstance(); 
+            	InputStream inputStream = null;
+				try {
+					inputStream = file.getContents();
+					final String source = new Scanner(inputStream).useDelimiter("\\A").next();					
+					ArtifactType artifactType = deserializer.getArtifactType(source);
+	            	editorInput = new EsbEditorInput(null,file,artifactType.getLiteral());
+	            	Display.getDefault().asyncExec(new Runnable() {	            						
+	            						@Override
+	            						public void run() {
+	            							try {	            								
+	            								deserializer.updateDesign(source, graphicalEditor);
+	            							} catch (Exception e) {
+	            								log.error("Error while generating diagram from source", e);
+	            							}
+	            						}
+	            					});
+	            	inputStream.close();
+				} catch (CoreException e1) {
+					log.error("Error while generating diagram from source", e1);
+				} catch (Exception e) {
+					log.error("Error while generating diagram from source", e);
+				}
+            	setTitle(file.getName());            	
+            }            
+            addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, editorInput);
             setPageText(DESIGN_VIEW_PAGE_INDEX, "Design"); //$NON-NLS-1$
+            
+            
+
             
             // Disable Zoom on CTRL+MOUSE WHEEL. 
 			if (getDiagramGraphicalViewer() != null) {
@@ -203,8 +239,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         //esbPaletteFactory.addCloudConnectors(getEditor(0));
         
         
-		IFileEditorInput input = (IFileEditorInput) getEditor(0).getEditorInput();
-		IFile file = input.getFile();
+        EsbEditorInput input = (EsbEditorInput) getEditor(0).getEditorInput();
+		IFile file = input.getXmlResource();
 		IProject activeProject = file.getProject();
 		
 		//String connectorDirectory=activeProject.getLocation().toOSString()+File.separator+"cloudConnectors";
@@ -273,11 +309,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			@Override
 			public void propertyChanged(Object source, int propId) {
 				setInput(getEditor(0).getEditorInput());
-				IFileEditorInput editorInp = (IFileEditorInput) getEditor(0).getEditorInput();
-				String fileName = editorInp.getFile().getName();
-				setTitle(fileName.substring(fileName.indexOf('_') + 1, fileName.length() -
-				                                                       "esb_diagram".length()) +
-				         "xml");
+				EsbEditorInput editorInp = (EsbEditorInput) getEditor(0).getEditorInput();
+				String fileName = editorInp.getXmlResource().getName();
+				setTitle(fileName);
 			}
 		});
     }
@@ -391,7 +425,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 */
 	private IFolder getTemporaryDirectory() throws Exception {
 		IEditorInput editorInput = getEditorInput();
-		if (editorInput instanceof IFileEditorInput || editorInput instanceof FileStoreEditorInput) {
+		if (editorInput instanceof IFileEditorInput || editorInput instanceof FileStoreEditorInput || editorInput instanceof EsbEditorInput) {
 			
 			IProject tempProject = ResourcesPlugin.getWorkspace().getRoot().getProject(".tmp");
 			
@@ -435,7 +469,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			break;
 		}
         EditorUtils.setLockmode(graphicalEditor, true);
-		IFile file = ((IFileEditorInput)getEditorInput()).getFile();
+		//IFile file = ((IFileEditorInput)getEditorInput()).getFile();
 /*        ElementDuplicator endPointDuplicator = new ElementDuplicator(file.getProject(),getGraphicalEditor());        
         endPointDuplicator.updateAssociatedDiagrams(this);*/
         EditorUtils.setLockmode(graphicalEditor, false);
@@ -468,7 +502,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				public void run() {
 					EditorUtils.setLockmode(graphicalEditor, true);
 					final boolean dirty = isDirty(); //save previous status
-					IFile file = ((IFileEditorInput)getEditorInput()).getFile();
+					//IFile file = ((IFileEditorInput)getEditorInput()).getFile();
 /*			        ElementDuplicator endPointDuplicator = new ElementDuplicator(file.getProject(),getGraphicalEditor());        
 			        endPointDuplicator.updateAssociatedDiagrams(currentEditor);*/
 
@@ -555,32 +589,17 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	private void updateAssociatedXMLFile(IProgressMonitor monitor) throws Exception {
 		EsbDiagram diagram = (EsbDiagram) graphicalEditor.getDiagram().getElement();
 		EsbServer server = diagram.getServer();
-		IEditorInput editorInput = getEditor(0).getEditorInput();
-		
-		if (editorInput instanceof IFileEditorInput) {
-			IFile diagramFile = ((FileEditorInput) editorInput).getFile();
-			String xmlFilePath = diagramFile.getFullPath().toString();
-			xmlFilePath = xmlFilePath
-					.replaceFirst("/graphical-synapse-config/", "/synapse-config/")
-					.replaceFirst("/(endpoint_|localentry_|proxy_|sequence_|task_|template_|api_|messageStore_|messageProcessor_)", "/") /* Fixing TOOLS-1578 */
-					.replaceAll(".esb_diagram$", ".xml");
-			IFile xmlFile = diagramFile.getWorkspace().getRoot().getFile(new Path(xmlFilePath));
-//			try {
-				String source = EsbModelTransformer.instance.designToSource(server);
-				if (source == null) {
-					log.warn("Could get source");
-					return;
-				}
-				InputStream is = new ByteArrayInputStream(source.getBytes());
-				if (xmlFile.exists()) {
-					xmlFile.setContents(is, true, true, monitor);
-				} else {
-					xmlFile.create(is, true, monitor);
-				}
-
-//			} catch (Exception e) {
-//				log.warn("Could not save file " + xmlFile);
-//			}
+		IFile xmlFile = ((EsbEditorInput) getEditor(0).getEditorInput()).getXmlResource();
+		String source = EsbModelTransformer.instance.designToSource(server);
+		if (source == null) {
+			log.warn("Could not get the source");
+			return;
+		}
+		InputStream is = new ByteArrayInputStream(source.getBytes());
+		if (xmlFile.exists()) {
+			xmlFile.setContents(is, true, true, monitor);
+		} else {
+			xmlFile.create(is, true, monitor);
 		}
 	}
 	
@@ -592,8 +611,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		case SEQUENCE:
 			Object child = server.getChildren().get(0);
 			if (child instanceof Sequences) {
-				IFileEditorInput input = (IFileEditorInput) this.getEditorInput();
-				IFile file = input.getFile();
+				EsbEditorInput input = (EsbEditorInput) this.getEditorInput();
+				IFile file = input.getXmlResource();
 
 				IEditorReference editorReferences[] = PlatformUI.getWorkbench()
 						.getActiveWorkbenchWindow().getActivePage().getEditorReferences();
@@ -603,7 +622,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 						
 						
 						
-						IFile openedFile = ((IFileEditorInput)editor.getEditorInput()).getFile();
+						//IFile openedFile = ((IFileEditorInput)editor.getEditorInput()).getFile();
 /*				        ElementDuplicator endPointDuplicator = new ElementDuplicator(openedFile.getProject(),((EsbMultiPageEditor)editor).getGraphicalEditor());        
 				        endPointDuplicator.updateAssociatedDiagrams((EsbMultiPageEditor)editor);*/
 						
@@ -668,7 +687,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         
 		EditorUtils.setLockmode(graphicalEditor, true);
         
-		IFile file = ((IFileEditorInput)getEditorInput()).getFile();
+		//IFile file = ((IFileEditorInput)getEditorInput()).getFile();
 /*        ElementDuplicator endPointDuplicator = new ElementDuplicator(file.getProject(),getGraphicalEditor());        
         endPointDuplicator.updateAssociatedDiagrams(this);*/
         updateAssociatedDiagrams();
@@ -712,13 +731,13 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());*/
     	
-        if (!(editorInput instanceof IFileEditorInput))
+        if (!(editorInput instanceof IFileEditorInput || editorInput instanceof IEsbEditorInput))
             throw new PartInitException("InvalidInput"); //$NON-NLS-1$     
         
        // createModel(editorInput);
        super.init(site, editorInput);
        String name = editorInput.getName();
-       setTitle(name.substring(name.indexOf('_')+1,name.length()-"esb_diagram".length())+"xml");
+       setTitle(name);
     }    
     
 
@@ -755,9 +774,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			}
 
 			if (editorPart != null) {
-				IFileEditorInput input = (IFileEditorInput) editorPart
+				EsbEditorInput input = (EsbEditorInput) editorPart
 						.getEditorInput();
-				IFile file = input.getFile();
+				IFile file = input.getXmlResource();
 				activeProject = file.getProject();
 
 			}

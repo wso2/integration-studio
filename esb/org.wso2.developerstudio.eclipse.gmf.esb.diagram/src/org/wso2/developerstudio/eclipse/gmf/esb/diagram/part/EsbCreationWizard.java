@@ -382,8 +382,8 @@ public class EsbCreationWizard extends Wizard implements INewWizard,
 				IFile file = esbProject.getFile(dir + "/"
 						+ fileLocation.lastSegment());
 
-				if (!file.exists()) {
-					diagram = EsbDiagramEditorUtil.createDiagram(URI
+/*				if (!file.exists()) {
+					diagram = EsbDiagramEditorUtil.createResource(URI
 							.createPlatformResourceURI(location.getFullPath()
 									.toString()
 									+ "/"
@@ -408,7 +408,7 @@ public class EsbCreationWizard extends Wizard implements INewWizard,
 								Messages.EsbCreationWizardOpenEditorError,
 								null, e.getStatus());
 					}
-				}
+				}*/
 			}
 		};
 		return op;

@@ -1477,8 +1477,8 @@ public class EsbPaletteFactory {
 		try {
 			/*			IEditorPart editorpart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 			 .getActivePage().getActiveEditor();*/
-			IFileEditorInput input = (IFileEditorInput) editor.getEditorInput();
-			IFile file = input.getFile();
+			EsbEditorInput input = (EsbEditorInput) editor.getEditorInput();
+			IFile file = input.getXmlResource();
 			IProject activeProject = file.getProject();
 			//connectorPath = activeProject.getLocation().toOSString() + File.separator
 			//		+ "cloudConnectors" + File.separator + connectorDirectoryName;
@@ -1659,8 +1659,8 @@ public class EsbPaletteFactory {
 			String dir, String type) {
 		ArrayList<String> definedArtifacts = new ArrayList<String>();
 		if (editor != null) {
-			IFileEditorInput input = (IFileEditorInput) editor.getEditorInput();
-			IFile file = input.getFile();
+			EsbEditorInput input = (EsbEditorInput) editor.getEditorInput();
+			IFile file = input.getXmlResource();
 			IProject activeProject = file.getProject();
 			//FIXME: scan whole workspace
 			try {

@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.artifact.messagestore.util.MessageStoreI
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -293,7 +294,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			String path = resource.getParent().getFullPath() + "/";
 			String source = FileUtils.getContentAsString(file);
 			Openable openable = ESBGraphicalEditor.getOpenable();
-			openable.editorOpen(file.getName(), "messageStore", path + "messageStore_", source);
+			openable.editorOpen(file.getName(), ArtifactType.MESSAGE_STORE.getLiteral(), path, source);
 		}catch(Exception e){
 			log.error("Cannot open the editor", e);
 		}

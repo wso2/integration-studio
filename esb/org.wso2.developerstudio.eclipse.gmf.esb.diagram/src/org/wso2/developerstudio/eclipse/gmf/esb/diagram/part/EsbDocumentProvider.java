@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
@@ -62,12 +63,13 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements
 		IDiagramDocumentProvider {
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ElementInfo createElementInfo(Object element)
 			throws CoreException {
 		if (false == element instanceof FileEditorInput
-				&& false == element instanceof URIEditorInput) {
+				&& false == element instanceof URIEditorInput
+					&& false == element instanceof EsbEditorInput) {
 			throw new CoreException(
 					new Status(
 							IStatus.ERROR,
@@ -90,11 +92,12 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IDocument createDocument(Object element) throws CoreException {
 		if (false == element instanceof FileEditorInput
-				&& false == element instanceof URIEditorInput) {
+				&& false == element instanceof URIEditorInput
+					&& false == element instanceof EsbEditorInput) {
 			throw new CoreException(
 					new Status(
 							IStatus.ERROR,
@@ -199,13 +202,27 @@ public class EsbDocumentProvider extends AbstractDocumentProvider implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void setDocumentContent(IDocument document, IEditorInput element)
 			throws CoreException {
 		IDiagramDocument diagramDocument = (IDiagramDocument) document;
 		TransactionalEditingDomain domain = diagramDocument.getEditingDomain();
-		if (element instanceof FileEditorInput) {
+		
+		if (element instanceof EsbEditorInput) {
+			EsbEditorInput esbEditorInput = (EsbEditorInput)element;
+			String fileName = esbEditorInput.getXmlResource().getName();
+			Resource resource = EsbDiagramEditorUtil.createResource(domain, new NullProgressMonitor(), esbEditorInput.getArtifatcType(), fileName, null);
+			esbEditorInput.setDiagramResource(resource);			
+			
+			for (Iterator it = resource.getContents().iterator(); it.hasNext();) {
+				Object rootElement = it.next();
+				if (rootElement instanceof Diagram) {
+					document.setContent((Diagram) rootElement);
+					return;
+				}
+			}
+		} else if (element instanceof FileEditorInput) {
 			IStorage storage = ((FileEditorInput) element).getStorage();
 			Diagram diagram = DiagramIOUtil.load(domain, storage, true,
 					getProgressMonitor());

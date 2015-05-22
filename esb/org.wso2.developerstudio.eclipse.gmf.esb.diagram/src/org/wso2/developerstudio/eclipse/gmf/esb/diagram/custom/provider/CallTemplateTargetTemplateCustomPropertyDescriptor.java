@@ -62,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -94,8 +95,8 @@ public class CallTemplateTargetTemplateCustomPropertyDescriptor extends Property
 		final Shell shell=(Shell)parent.getShell();
 		final IEditorPart editor=(IEditorPart) ((WorkbenchWindow)shell.getDisplay().getActiveShell().getData()).getActivePage().getActiveEditor();
 		if (editor != null) {
-			IFileEditorInput input = (IFileEditorInput) editor.getEditorInput();
-			IFile file = input.getFile();
+			EsbEditorInput input = (EsbEditorInput) editor.getEditorInput();
+			IFile file = input.getXmlResource();
 			IProject activeProject = file.getProject();
 			//FIXME: scan whole workspace
 			try {

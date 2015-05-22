@@ -1,9 +1,14 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -80,8 +85,11 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointTemplateList;
+import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
@@ -108,6 +116,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditP
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.NamedEndpointCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.NamedEndpointItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
@@ -116,6 +125,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.REGISTRY_KEY_PROPERTY__KEY_VALUE;
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SEQUENCE__NAME;
@@ -590,9 +603,9 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 			}
 
 			if (editorPart != null) {
-				IFileEditorInput input = (IFileEditorInput) editorPart
+				EsbEditorInput input = (EsbEditorInput) editorPart
 						.getEditorInput();
-				IFile file = input.getFile();
+				IFile file = input.getXmlResource();
 				activeProject = file.getProject();
 			}
 		}
@@ -652,18 +665,14 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 		/*
 		 * File creations.
 		 */
-		createFiles(name, "endpoint_" + name + ".esb_diagram", "endpoint_"
+		createAndOpenFile(name, "endpoint_" + name + ".esb_diagram", "endpoint_"
 				+ name + ".esb", activeProject);
 		EditorUtils.updateToolpalette();
 
 	}
 
-	public boolean createFiles(String name, String fileURI1, String fileURI2,
+	public boolean createAndOpenFile(String name, String fileURI1, String fileURI2,
 			IProject currentProject) {
-		Resource diagram;
-
-		String basePath = "platform:/resource/" + currentProject.getName()
-				+ "/" + ENDPOINT_RESOURCE_DIR + "/";
 		IFile file = currentProject.getFile(ENDPOINT_RESOURCE_DIR + "/"
 				+ fileURI1);
 
@@ -671,27 +680,28 @@ public class NamedEndpointEditPart extends ComplexFiguredAbstractEndpoint {
 			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR
 					+ "/endpoints/" + name + ".xml");
 			try {
-				diagram = EsbDiagramEditorUtil.createDiagram(
-						URI.createURI(basePath + fileURI1),
-						URI.createURI(basePath + fileURI2),
-						new NullProgressMonitor(), "endpoint", name, selection);
-
 				if (fileTobeOpened.exists()) {
-					String diagramPath = diagram.getURI()
-							.toPlatformString(true);
 					OpenEditorUtils oeUtils = new OpenEditorUtils();
-					oeUtils.openSeparateEditor(fileTobeOpened, diagramPath);
-				} else {
+					oeUtils.openSeparateEditor(fileTobeOpened);
+				} else {					
 					addEndpointToArtifactXML(name);
-					EsbDiagramEditorUtil.openDiagram(diagram);
+					String path = fileTobeOpened.getParent().getFullPath() + "/";
+					ArtifactTemplate endpointArtifactTemplate =EndPointTemplateList.getArtifactTemplates()[0];						
+					
+					String source = FileUtils.getContentAsString(endpointArtifactTemplate.getTemplateDataStream());
+					source = source.replaceAll("\\{", "<").replaceAll("\\}", ">");
+					source = StringUtils.replace(source,"<ep.name>", name);
+					source = StringUtils.replace(source,"<address.uri>", "http://www.example.org/service");					
+					InputStream stream = new ByteArrayInputStream(source.getBytes(StandardCharsets.UTF_8));
+					fileTobeOpened.create(stream, true, new NullProgressMonitor());
+					Openable openable = ESBGraphicalEditor.getOpenable();
+					openable.editorOpen(fileTobeOpened.getName(), ArtifactType.ENDPOINT.getLiteral(), path, source);
 				}
-				EsbDiagramEditorUtil.openDiagram(diagram);
-
 			} catch (Exception e) {
 				log.error("Cannot open file " + fileTobeOpened, e);
 				return false;
 			}
-			return diagram != null;
+			return true;
 		}
 
 		else {

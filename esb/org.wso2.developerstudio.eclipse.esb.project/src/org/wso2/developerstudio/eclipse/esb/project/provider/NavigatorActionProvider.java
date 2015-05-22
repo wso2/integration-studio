@@ -52,6 +52,7 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectA
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
@@ -167,7 +168,7 @@ public class NavigatorActionProvider extends CommonActionProvider {
 							String name =selection.getName();		
 							String fullPath=selection.getFullPath().removeLastSegments(1).toOSString()+"/";
 							Openable openable = ESBGraphicalEditor.getOpenable();
-							openable.editorOpen(name,type[0],fullPath+type[1]+"_", source);
+							openable.editorOpen(name,type[0],fullPath, source);
 						}
 					}
 				}
@@ -304,13 +305,13 @@ public class NavigatorActionProvider extends CommonActionProvider {
 								NodeList endpointChildNodes = templateChildNodes.item(j).getChildNodes();
 								for (int k = 0; k < endpointChildNodes.getLength(); ++k) {
 									if ("default".equals(endpointChildNodes.item(k).getNodeName())) {
-										return new String[] {"template.endpoint-0",TEMPLATE };
+										return new String[] {ArtifactType.TEMPLATE_ENDPOINT_DEFAULT.getLiteral(),TEMPLATE };
 									} else if ("address".equals(endpointChildNodes.item(k).getNodeName())) {
-										return new String[] {"template.endpoint-1",TEMPLATE };
+										return new String[] {ArtifactType.TEMPLATE_ENDPOINT_ADDRESS.getLiteral(),TEMPLATE };
 									} else if ("wsdl".equals(endpointChildNodes.item(k).getNodeName())) {
-										return new String[] {"template.endpoint-2",TEMPLATE };
+										return new String[] {ArtifactType.TEMPLATE_ENDPOINT_WSDL.getLiteral(),TEMPLATE };
 									} else if ("http".equals(endpointChildNodes.item(k).getNodeName())) {
-										return new String[] {"template.endpoint-3",TEMPLATE };
+										return new String[] {ArtifactType.TEMPLATE_ENDPOINT_HTTP.getLiteral(),TEMPLATE };
 									}
 								}
 							}

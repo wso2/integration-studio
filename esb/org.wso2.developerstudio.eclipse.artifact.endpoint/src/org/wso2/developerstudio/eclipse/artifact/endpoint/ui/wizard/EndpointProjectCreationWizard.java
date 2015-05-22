@@ -60,6 +60,7 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectA
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -531,7 +532,7 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			String location = endpointFile.getParent().getFullPath()+"/";
 			String source = FileUtils.getContentAsString(file);
 			Openable openable = ESBGraphicalEditor.getOpenable();
-			openable.editorOpen(file.getName(),type,location+"endpoint_", source);
+			openable.editorOpen(file.getName(),ArtifactType.ENDPOINT.getLiteral(),location, source);
 		} catch (Exception e) {
 			log.error("Cannot open the editor", e);
 			}

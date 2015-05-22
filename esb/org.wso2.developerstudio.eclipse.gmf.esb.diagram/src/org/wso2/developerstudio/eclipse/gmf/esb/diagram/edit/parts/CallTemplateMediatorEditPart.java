@@ -1,6 +1,10 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.*;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.TEMPLATE_RESOURCE_DIR;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.getActiveProject;
+
+import java.text.MessageFormat;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.maven.project.MavenProject;
@@ -11,9 +15,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
-import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -37,7 +39,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
-import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IInputValidator;
@@ -53,29 +54,30 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+import org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateList;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.utils.ESBProjectUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
-import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
-import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedSizedAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.OpenSeparatelyEditPolicy;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ShowPropertyViewEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.OpenEditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CallTemplateMediatorCanonicalEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.CallTemplateMediatorItemSemanticEditPolicy;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 /**
  * @generated NOT
@@ -373,33 +375,26 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 	}
 
-	public boolean createFiles(String name, String fileURI1, String fileURI2,
+	public boolean createAndOpenFile(String name, String fileURI1, String fileURI2,
 			IProject currentProject) {
-		Resource diagram;
-
-		String basePath = "platform:/resource/" + currentProject.getName()
-				+ "/" + TEMPLATE_RESOURCE_DIR + "/";
 		IFile file = currentProject.getFile(TEMPLATE_RESOURCE_DIR + "/"
 				+ fileURI1);
-
 		if (!file.exists()) {
 			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR
 					+ "/templates/" + name + ".xml");
 			try {
-				diagram = EsbDiagramEditorUtil.createDiagram(
-						URI.createURI(basePath + fileURI1),
-						URI.createURI(basePath + fileURI2),
-						new NullProgressMonitor(), "template.sequence", name,
-						null);
-
 				if (fileTobeOpened.exists()) {
-					String diagramPath = diagram.getURI()
-							.toPlatformString(true);
 					OpenEditorUtils oeUtils = new OpenEditorUtils();
-					oeUtils.openSeparateEditor(fileTobeOpened, diagramPath);
+					oeUtils.openSeparateEditor(fileTobeOpened);
 				} else {
-					addSequenceToArtifactXML(name);
-					EsbDiagramEditorUtil.openDiagram(diagram);
+					addSequenceToArtifactXML(name);				
+					String path = fileTobeOpened.getParent().getFullPath() + "/";
+					ArtifactTemplate sequenceArtifactTemplate =TemplateList.getArtifactTemplates()[0];						
+					fileTobeOpened.create(sequenceArtifactTemplate.getTemplateDataStream(), true, new NullProgressMonitor());
+					String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
+					source=MessageFormat.format(source,name);
+					Openable openable = ESBGraphicalEditor.getOpenable();
+					openable.editorOpen(fileTobeOpened.getName(), ArtifactType.TEMPLATE_SEQUENCE.getLiteral(), path, source);
 				}
 			} catch (Exception e) {
 				log.error("Cannot open file " + fileTobeOpened, e);
@@ -431,7 +426,7 @@ public class CallTemplateMediatorEditPart extends FixedSizedAbstractMediator {
 		/*
 		 * File creations.
 		 */
-		createFiles(name, "template_" + name + ".esb_diagram", "template_"
+		createAndOpenFile(name, "template_" + name + ".esb_diagram", "template_"
 				+ name + ".esb", activeProject);
 		//EditorUtils.updateToolpalette();
 

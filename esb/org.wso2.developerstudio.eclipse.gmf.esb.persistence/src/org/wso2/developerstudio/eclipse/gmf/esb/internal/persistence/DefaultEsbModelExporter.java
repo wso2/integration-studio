@@ -369,19 +369,39 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
 					configOM = EntrySerializer.serializeEntry(
 							transformLocalEntry((LocalEntry) child), null);
 				}
-				break;				
-			case TEMPLATE:
+				break;						
+			case TEMPLATE_SEQUENCE:
 				if (child instanceof Template) {
-					if(((Template)child).getChild() instanceof Sequences){
-						TemplateMediator templateMediator=transformSequenceTemplate((Template)child);
-						configOM = MediatorSerializerFinder.getInstance().getSerializer(templateMediator).serializeMediator(null, templateMediator);
-						
-					}else if(((Template)child).getChild() instanceof EndpointDiagram){		
-						TemplateSerializer templateSerializer = new TemplateSerializer();
-					    configOM =templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template)child), null);
-					}
+					TemplateMediator templateMediator = transformSequenceTemplate((Template) child);
+					configOM = MediatorSerializerFinder.getInstance().getSerializer(templateMediator).serializeMediator(null, templateMediator);
+				}
+				break;				
+			case TEMPLATE_ENDPOINT_ADDRESS:
+				if (child instanceof Template) {
+					TemplateSerializer templateSerializer = new TemplateSerializer();
+					configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child), null);
+
+				}
+				break;				
+			case TEMPLATE_ENDPOINT_WSDL:
+				if (child instanceof Template) {
+					TemplateSerializer templateSerializer = new TemplateSerializer();
+					configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child), null);
 				}
 				break;
+				
+			case TEMPLATE_ENDPOINT_DEFAULT:
+				if (child instanceof Template) {
+					TemplateSerializer templateSerializer = new TemplateSerializer();
+					configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child), null);
+				}
+				break;				
+			case TEMPLATE_ENDPOINT_HTTP:
+				if (child instanceof Template) {
+					TemplateSerializer templateSerializer = new TemplateSerializer();
+					configOM = templateSerializer.serializeEndpointTemplate(transformEndpointTemplate((Template) child), null);
+				}
+				break;				
 			case TASK:
 				if (child instanceof Task) {
 					String TASK_EXTENSION_NS = "http://ws.apache.org/ns/synapse";

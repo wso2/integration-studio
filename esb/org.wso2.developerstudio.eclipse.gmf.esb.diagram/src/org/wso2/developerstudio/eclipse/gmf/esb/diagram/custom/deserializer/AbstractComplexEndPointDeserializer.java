@@ -1,5 +1,5 @@
 /*
- * Copyright WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,15 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.COMPLEX_ENDPOINT_RESOURCE_DIR;
+import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.core.resources.IFile;
@@ -49,6 +52,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
@@ -57,9 +61,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEdit
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment18EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorUtil;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 
 public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNodeDeserializer<AbstractEndpoint, ParentEndPoint> {
 
@@ -237,7 +244,37 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 		IFile file = currentProject.getFile(COMPLEX_ENDPOINT_RESOURCE_DIR + "/"+ fileURI1);
 
 		if (!file.exists()) {
-			diagram = EsbDiagramEditorUtil.createDiagram(
+			
+			
+			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR
+					+ "/endpoints/" + name + ".xml");
+			
+			String path = fileTobeOpened.getParent().getFullPath() + "/";
+			
+/*			diagram = EsbDiagramEditorUtil.createResource(
+					URI.createURI(basePath + fileURI1),
+					URI.createURI(basePath + fileURI2),
+					new NullProgressMonitor(), "complex_endpoint", name, null);*/
+			String source;
+			try {
+				source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
+				Openable openable = ESBGraphicalEditor.getOpenable();
+				editorPart = openable.editorOpen(fileTobeOpened.getName(), ArtifactType.COMPLEX_ENDPOINT.getLiteral(), path, source);
+			} catch (IOException e1) {
+				log.error("Error while reading the file : "+fileTobeOpened, e1);
+			} catch (Exception e) {
+				log.error("Error while opening the file : "+fileTobeOpened, e);
+			}			
+/*			try {
+				EsbDiagramEditorUtil.openDiagram(diagram);
+
+			} catch (PartInitException e) {
+				log.error("Cannot init editor", e);
+			}*/
+			
+		}
+/*			
+			diagram = EsbDiagramEditorUtil.createResource(
 					URI.createURI(basePath + fileURI1),
 					URI.createURI(basePath + fileURI2),
 					new NullProgressMonitor(), "complex_endpoint", name, null);
@@ -257,6 +294,7 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 			}
 			
 		}
+		return editorPart;*/
 		return editorPart;
 		
 	}
@@ -276,9 +314,9 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 			}
 
 			if (editorPart != null) {
-				IFileEditorInput input = (IFileEditorInput) editorPart
+				EsbEditorInput input = (EsbEditorInput) editorPart
 						.getEditorInput();
-				IFile file = input.getFile();
+				IFile file = input.getXmlResource();
 				activeProject = file.getProject();
 			}
 		}

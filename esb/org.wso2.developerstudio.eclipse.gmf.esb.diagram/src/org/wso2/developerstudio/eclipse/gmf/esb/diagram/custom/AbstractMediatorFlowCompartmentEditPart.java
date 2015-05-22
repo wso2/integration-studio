@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SendMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory.NodeToolEntry;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -239,8 +240,8 @@ public class AbstractMediatorFlowCompartmentEditPart extends ShapeCompartmentEdi
 	private CloudConnectorDirectoryTraverser getCloudConnectorDirectoryTraverser(String droppedCloudConnector){
 		IEditorPart editorpart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getActivePage().getActiveEditor();
-		IFileEditorInput input = (IFileEditorInput) editorpart.getEditorInput();
-		IFile file = input.getFile();
+		EsbEditorInput input = (EsbEditorInput) editorpart.getEditorInput();
+		IFile file = input.getXmlResource();
 		IProject activeProject = file.getProject();
 		//String connectorPath = activeProject.getLocation().toOSString() + File.separator
 		//		+ "cloudConnectors" + File.separator + droppedCloudConnector+"-connector";

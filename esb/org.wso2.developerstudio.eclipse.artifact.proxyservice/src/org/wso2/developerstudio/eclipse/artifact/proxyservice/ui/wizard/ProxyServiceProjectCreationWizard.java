@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.artifact.proxyservice.utils.PsArtifactCo
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -317,7 +318,7 @@ public class ProxyServiceProjectCreationWizard extends AbstractWSO2ProjectCreati
 			String location = proxyServiceFile.getParent().getFullPath()+"/";
 			String source = FileUtils.getContentAsString(file);
 			Openable openable = ESBGraphicalEditor.getOpenable();
-			openable.editorOpen(file.getName(),"proxy",location+"proxy_", source);
+			openable.editorOpen(file.getName(),ArtifactType.PROXY.getLiteral(),location, source);
 		} catch (Exception e) {
                 log.error("cannot open the Editor", e);
 		}

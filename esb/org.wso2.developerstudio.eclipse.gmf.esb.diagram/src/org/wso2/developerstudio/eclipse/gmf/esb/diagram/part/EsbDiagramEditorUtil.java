@@ -79,6 +79,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Task;
 import org.wso2.developerstudio.eclipse.gmf.esb.Template;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequenceEditPart.SequencesInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType.*;
 
 /**
  * @generated
@@ -249,18 +250,16 @@ public class EsbDiagramEditorUtil {
 	 * This method should be called within a workspace modify operation since it creates resources.
 	 * @generated NOT
 	 */
-	public static Resource createDiagram(URI diagramURI, URI modelURI,
-			IProgressMonitor progressMonitor, final String type,
-			final String name, final Object specificType) {
-		final TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE
-				.createEditingDomain();
+	public static Resource createResource(TransactionalEditingDomain editingDomain, IProgressMonitor progressMonitor, final String type,
+			final String fileName, final Object specificType) {
 		progressMonitor.beginTask(
 				Messages.EsbDiagramEditorUtil_CreateDiagramProgressTask, 3);
-		final Resource diagramResource = editingDomain.getResourceSet()
-				.createResource(diagramURI);
-		final Resource modelResource = editingDomain.getResourceSet()
-				.createResource(modelURI);
-		final String diagramName = diagramURI.lastSegment();
+		final String name = fileName.replaceAll(".xml$", "");
+		String prefix = "resources/" + name;		
+		final Resource diagramResource = editingDomain.getResourceSet().createResource(URI.createURI(prefix.concat(".esb_diagram")));
+		final Resource modelResource = editingDomain.getResourceSet().createResource(URI.createURI(prefix.concat(".esb")));
+		editingDomain.getResourceSet().getResources().add(diagramResource);
+		editingDomain.getResourceSet().getResources().add(modelResource);
 		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
 				editingDomain,
 				Messages.EsbDiagramEditorUtil_CreateDiagramCommandLabel,
@@ -270,10 +269,10 @@ public class EsbDiagramEditorUtil {
 					throws ExecutionException {
 				EsbDiagram model = createInitialModel();
 				EsbServer esbServer = model.getServer();
-				if ("sequence".equals(type)) {
+				if (ArtifactType.SEQUENCE.getLiteral().equals(type)) {
 					Sequences sequences = EsbFactory.eINSTANCE
 							.createSequences();
-					sequences.setName(name);
+					sequences.setName(fileName);
 					if (specificType instanceof SequencesInfo) {
 						sequences
 								.setRecieveSequence(((SequencesInfo) specificType)
@@ -286,17 +285,16 @@ public class EsbDiagramEditorUtil {
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(sequences));
 					esbServer.setType(ArtifactType.SEQUENCE);
-				} else if ("proxy".equals(type)) {
+				} else if (ArtifactType.PROXY.getLiteral().equals(type)) {
 					ProxyService proxyServices = EsbFactory.eINSTANCE
 							.createProxyService();
-					String proxyName = diagramName.replaceAll("^proxy_", "")
-							.replaceAll(".esb_diagram$", "");
+					String proxyName = name;
 					proxyServices.setName(proxyName);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(proxyServices));
 					esbServer.setType(ArtifactType.PROXY);
-				} else if ("endpoint".equals(type)) {
+				} else if (ArtifactType.ENDPOINT.getLiteral().equals(type)) {
 					EndpointDiagram endpoints = EsbFactory.eINSTANCE
 							.createEndpointDiagram();
 					if (specificType != null) {
@@ -340,66 +338,92 @@ public class EsbDiagramEditorUtil {
 						endpoints.setChild(EsbFactory.eINSTANCE
 								.createDefaultEndPoint());
 					}
-					endpoints.setName(name);
+					endpoints.setName(fileName);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(endpoints));
 					esbServer.setType(ArtifactType.ENDPOINT);
-				} else if ("localentry".equals(type)) {
+				} else if (ArtifactType.LOCAL_ENTRY.getLiteral().equals(type)) {
 					LocalEntry localentry = EsbFactory.eINSTANCE
 							.createLocalEntry();
-					localentry.setEntryName(name);
+					localentry.setEntryName(fileName);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(localentry));
 					esbServer.setType(ArtifactType.LOCAL_ENTRY);
-				} else if ("template.sequence".equals(type)) {
+				} else if (ArtifactType.TEMPLATE_SEQUENCE.getLiteral().equals(type)) {
 					Template template = EsbFactory.eINSTANCE.createTemplate();
-					template.setName(name);
+					template.setName(fileName);
 					Sequences sequences = EsbFactory.eINSTANCE
 							.createSequences();
 					template.setChild(sequences);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(template));
-					esbServer.setType(ArtifactType.TEMPLATE);
-				} else if ("template.endpoint".equals(type)) {
+					esbServer.setType(ArtifactType.TEMPLATE_SEQUENCE);
+				}				
+				else if (ArtifactType.TEMPLATE_ENDPOINT_ADDRESS.getLiteral().equals(type)) {
 					Template template = EsbFactory.eINSTANCE.createTemplate();
-					template.setName(name);
+					template.setName(fileName);
 					EndpointDiagram endpoint = EsbFactory.eINSTANCE
-							.createEndpointDiagram();
-					switch ((Integer) specificType) {
-					case 0:
-						endpoint.setChild(EsbFactory.eINSTANCE
-								.createDefaultEndPoint());
-						break;
-					case 1:
-						endpoint.setChild(EsbFactory.eINSTANCE
-								.createAddressEndPoint());
-						break;
-					case 2:
-						endpoint.setChild(EsbFactory.eINSTANCE
-								.createWSDLEndPoint());
-						break;
-
-					default:
-						break;
-					}
+							.createEndpointDiagram();					
+					endpoint.setChild(EsbFactory.eINSTANCE
+							.createAddressEndPoint());
 					template.setChild(endpoint);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(template));
-					esbServer.setType(ArtifactType.TEMPLATE);
-				} else if ("task".equals(type)) {
+					esbServer.setType(ArtifactType.TEMPLATE_ENDPOINT_ADDRESS);
+				}				
+				else if (ArtifactType.TEMPLATE_ENDPOINT_WSDL.getLiteral().equals(type)) {
+					Template template = EsbFactory.eINSTANCE.createTemplate();
+					template.setName(fileName);
+					EndpointDiagram endpoint = EsbFactory.eINSTANCE
+							.createEndpointDiagram();					
+					endpoint.setChild(EsbFactory.eINSTANCE
+							.createWSDLEndPoint());
+					template.setChild(endpoint);
+					EStructuralFeature target = esbServer.eClass()
+							.getEStructuralFeature("children");
+					esbServer.eSet(target, Arrays.asList(template));
+					esbServer.setType(ArtifactType.TEMPLATE_ENDPOINT_WSDL);
+				}				
+				else if (ArtifactType.TEMPLATE_ENDPOINT_DEFAULT.getLiteral().equals(type)) {
+					Template template = EsbFactory.eINSTANCE.createTemplate();
+					template.setName(fileName);
+					EndpointDiagram endpoint = EsbFactory.eINSTANCE
+							.createEndpointDiagram();					
+					endpoint.setChild(EsbFactory.eINSTANCE
+							.createDefaultEndPoint());
+					template.setChild(endpoint);
+					EStructuralFeature target = esbServer.eClass()
+							.getEStructuralFeature("children");
+					esbServer.eSet(target, Arrays.asList(template));
+					esbServer.setType(ArtifactType.TEMPLATE_ENDPOINT_DEFAULT);
+				}				
+				else if (ArtifactType.TEMPLATE_ENDPOINT_HTTP.getLiteral().equals(type)) {
+					Template template = EsbFactory.eINSTANCE.createTemplate();
+					template.setName(fileName);
+					EndpointDiagram endpoint = EsbFactory.eINSTANCE
+							.createEndpointDiagram();					
+					endpoint.setChild(EsbFactory.eINSTANCE
+							.createHTTPEndpoint());
+					template.setChild(endpoint);
+					EStructuralFeature target = esbServer.eClass()
+							.getEStructuralFeature("children");
+					esbServer.eSet(target, Arrays.asList(template));
+					esbServer.setType(ArtifactType.TEMPLATE_ENDPOINT_HTTP);
+				}				
+				else if (ArtifactType.TASK.getLiteral().equals(type)) {
 					Task task = EsbFactory.eINSTANCE.createTask();
-					task.setTaskName(name);
+					task.setTaskName(fileName);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(task));
 					esbServer.setType(ArtifactType.TASK);
-				} else if ("api".equals(type)) {
+				} else if (ArtifactType.API.getLiteral().equals(type)) {
 					SynapseAPI api = EsbFactory.eINSTANCE.createSynapseAPI();
-					api.setApiName(name);
+					api.setApiName(fileName);
 					APIResource apiResource = EsbFactory.eINSTANCE
 							.createAPIResource();
 					api.getResources().add(apiResource);
@@ -407,7 +431,7 @@ public class EsbDiagramEditorUtil {
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(api));
 					esbServer.setType(ArtifactType.API);
-				} else if ("main_sequence".equals(type)) {
+				} else if (ArtifactType.MAIN_SEQUENCE.getLiteral().equals(type)) {
 					ProxyService proxyServices = EsbFactory.eINSTANCE
 							.createProxyService();
 					proxyServices.setMainSequence(true);
@@ -416,34 +440,34 @@ public class EsbDiagramEditorUtil {
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(proxyServices));
 					esbServer.setType(ArtifactType.MAIN_SEQUENCE);
-				} else if ("complex_endpoint".equals(type)) {
+				} else if (ArtifactType.COMPLEX_ENDPOINT.getLiteral().equals(type)) {
 					ComplexEndpoints complexEndpoints = EsbFactory.eINSTANCE
 							.createComplexEndpoints();
-					complexEndpoints.setName(name);
+					complexEndpoints.setName(fileName);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(complexEndpoints));
 					esbServer.setType(ArtifactType.COMPLEX_ENDPOINT);
-				} else if ("messageStore".equals(type)) {
+				} else if (ArtifactType.MESSAGE_STORE.getLiteral().equals(type)) {
 					MessageStore messageStore = EsbFactory.eINSTANCE
 							.createMessageStore();
-					messageStore.setStoreName(name);
+					messageStore.setStoreName(fileName);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(messageStore));
 					esbServer.setType(ArtifactType.MESSAGE_STORE);
-				} else if ("messageProcessor".equals(type)) {
+				} else if (ArtifactType.MESSAGE_PROCESSOR.getLiteral().equals(type)) {
 					MessageProcessor messageProcessor = EsbFactory.eINSTANCE
 							.createMessageProcessor();
-					messageProcessor.setProcessorName(name);
+					messageProcessor.setProcessorName(fileName);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(messageProcessor));
 					esbServer.setType(ArtifactType.MESSAGE_PROCESSOR);
-				} else if ("inboundEndpoint".equals(type)) {
+				} else if (ArtifactType.INBOUND_ENDPOINT.getLiteral().equals(type)) {
 					InboundEndpoint inboundEndpoint = EsbFactory.eINSTANCE
 							.createInboundEndpoint();
-					inboundEndpoint.setName(name);
+					inboundEndpoint.setName(fileName);
 					EStructuralFeature target = esbServer.eClass()
 							.getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(inboundEndpoint));
@@ -458,7 +482,7 @@ public class EsbDiagramEditorUtil {
 
 				if (diagram != null) {
 					diagramResource.getContents().add(diagram);
-					diagram.setName(diagramName);
+					diagram.setName(name);
 					diagram.setElement(model);
 				}
 

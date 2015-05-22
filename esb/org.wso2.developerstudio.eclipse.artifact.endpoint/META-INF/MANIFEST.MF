@@ -34,6 +34,7 @@ Import-Package: org.apache.commons.lang,
  org.wso2.developerstudio.eclipse.general.project.artifact,
  org.wso2.developerstudio.eclipse.general.project.artifact.bean,
  org.wso2.developerstudio.eclipse.general.project.utils,
+ org.wso2.developerstudio.eclipse.gmf.esb,
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.developerstudio.eclipse.maven.util,
  org.wso2.developerstudio.eclipse.platform.core.exception,
@@ -59,3 +60,4 @@ Import-Package: org.apache.commons.lang,
  org.wso2.developerstudio.eclipse.utils.template,
  org.wso2.developerstudio.eclipse.utils.ui,
  org.wso2.developerstudio.eclipse.utils.wst
+Export-Package: org.wso2.developerstudio.eclipse.artifact.endpoint.validators

@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.artifact.inboundendpoint.utils.InboundEn
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -277,7 +278,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		String path = dbsFile.getParent().getFullPath()+"/";
 		String source = FileUtils.getContentAsString(file);
 		Openable openable = ESBGraphicalEditor.getOpenable();
-		openable.editorOpen(file.getName(),"inboundEndpoint",path+"inboundEndpoint_", source);
+		openable.editorOpen(file.getName(),ArtifactType.INBOUND_ENDPOINT.getLiteral(),path, source);
 		}catch(Exception e){
 			log.error("Cannot open the editor", e);
 		}

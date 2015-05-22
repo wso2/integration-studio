@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.artifact.template.model.TemplateModel;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -292,23 +293,26 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			if (documentElement.getChildrenWithName(new QName("endpoint")) != null
 					&& documentElement.getChildrenWithName(new QName("endpoint")).hasNext()) {
 				// Endpoint template.
-				templateType = "template.endpoint";
+				templateType = ArtifactType.TEMPLATE_ENDPOINT.getLiteral();
 				OMElement endpoint = (OMElement) documentElement.getChildrenWithName(
 						new QName("endpoint")).next();
 				String localName = endpoint.getFirstElement().getLocalName();
 				if ("address".equals(localName)) {
 					// Address endpoint template.
-					templateType = templateType + "-1";
+					templateType = ArtifactType.TEMPLATE_ENDPOINT_ADDRESS.getLiteral();
 				} else if ("wsdl".equals(localName)) {
 					// WSDL endpoint template.
-					templateType = templateType + "-2";
+					templateType = ArtifactType.TEMPLATE_ENDPOINT_WSDL.getLiteral();
+				} else if ("http".equals(localName)) {
+					// HTTP endpoint template.
+					templateType = ArtifactType.TEMPLATE_ENDPOINT_HTTP.getLiteral();
 				} else {
 					// Default endpoint template. 
-					templateType = templateType + "-0";
+					templateType = ArtifactType.TEMPLATE_ENDPOINT_DEFAULT.getLiteral();
 				}
 			} else {
 				// Sequence template.
-				templateType = "template.sequence";
+				templateType = ArtifactType.TEMPLATE_SEQUENCE.getLiteral();
 			}
 
 			IFile dbsFile = ResourcesPlugin.getWorkspace().getRoot()
@@ -316,7 +320,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			String path = dbsFile.getParent().getFullPath() + "/";
 			String source = FileUtils.getContentAsString(file);
 			Openable openable = ESBGraphicalEditor.getOpenable();
-			openable.editorOpen(file.getName(), templateType, path + "template_", source);
+			openable.editorOpen(file.getName(), templateType, path, source);
 		} catch (Exception e) {
 			log.error("Cannot open the editor", e);
 		}

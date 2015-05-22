@@ -56,6 +56,7 @@ import org.wso2.developerstudio.eclipse.artifact.messageprocessor.util.MessagePr
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -423,7 +424,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 			String path = resource.getParent().getFullPath() + "/";
 			String source = FileUtils.getContentAsString(file);
 			Openable openable = ESBGraphicalEditor.getOpenable();
-			openable.editorOpen(file.getName(), "messageProcessor", path + "messageProcessor_",
+			openable.editorOpen(file.getName(), ArtifactType.MESSAGE_PROCESSOR.getLiteral(), path,
 					source);
 		} catch (Exception e) {
 			log.error("Cannot open the editor", e);

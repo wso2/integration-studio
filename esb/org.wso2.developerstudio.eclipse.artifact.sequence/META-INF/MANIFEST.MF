@@ -54,4 +54,5 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.utils.ui,
  org.wso2.developerstudio.eclipse.utils.wst
 Export-Package: org.wso2.developerstudio.eclipse.artifact.sequence.model,
- org.wso2.developerstudio.eclipse.artifact.sequence.ui.wizard
+ org.wso2.developerstudio.eclipse.artifact.sequence.ui.wizard,
+ org.wso2.developerstudio.eclipse.artifact.sequence.validators

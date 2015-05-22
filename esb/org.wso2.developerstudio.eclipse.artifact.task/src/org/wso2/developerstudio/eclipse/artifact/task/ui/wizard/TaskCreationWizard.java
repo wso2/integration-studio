@@ -31,6 +31,7 @@ import org.wso2.developerstudio.eclipse.artifact.task.validator.TriggerTypeList.
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -285,7 +286,7 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 		String path = resource.getParent().getFullPath()+"/";
 		String source = FileUtils.getContentAsString(file);
 		Openable openable = ESBGraphicalEditor.getOpenable();
-		openable.editorOpen(file.getName(),"task",path+"task_", source);
+		openable.editorOpen(file.getName(),ArtifactType.TASK.getLiteral(),path, source);
 		}catch(Exception e){
 			log.error("Cannot open the editor", e);
 		}

@@ -56,6 +56,7 @@ import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectA
 import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
 import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -453,11 +454,11 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			String path = dbsFile.getParent().getFullPath()+"/";
 			String source = FileUtils.getContentAsString(file);
 			Openable openable = ESBGraphicalEditor.getOpenable();
-			String type="sequence";
+			String type=ArtifactType.SEQUENCE.getLiteral();
 			if("main.xml".equals(file.getName())){
-				type="main_sequence";
+				type=ArtifactType.MAIN_SEQUENCE.getLiteral();
 			} 
-			openable.editorOpen(file.getName(),type,path+"sequence_", source);
+			openable.editorOpen(file.getName(),type,path, source);
 		} catch (Exception e) {
 			log.error("Cannot open the editor", e);
          }

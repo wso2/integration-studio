@@ -30,6 +30,7 @@ import org.wso2.developerstudio.eclipse.artifact.synapse.api.util.APIImageUtils;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -285,7 +286,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	String path = dbsFile.getParent().getFullPath()+"/";
 	String source = FileUtils.getContentAsString(file);
 	Openable openable = ESBGraphicalEditor.getOpenable();
-	openable.editorOpen(file.getName(),"api",path+"api_", source);
+	openable.editorOpen(file.getName(),ArtifactType.API.getLiteral(),path, source);
 	}catch(Exception e){
 		log.error("Cannot open the editor", e);
 	}

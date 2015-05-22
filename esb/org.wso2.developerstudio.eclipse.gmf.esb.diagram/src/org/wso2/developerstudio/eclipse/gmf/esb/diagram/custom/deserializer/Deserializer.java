@@ -191,8 +191,12 @@ public class Deserializer {
 
 	}
 	
-	
-	private ArtifactType getArtifactType(String source) throws Exception{
+	/**
+	 * Return the relevant ArtifactType(Proxy service, Sequence, API etc.) for a given ESB configuration
+	 * @param source
+	 * @throws Exception
+	 */
+	public ArtifactType getArtifactType(String source) throws Exception{
 		ArtifactType artifactType = null;
 		OMElement element = AXIOMUtil.stringToOM(source);
 		String localName = element.getLocalName();
@@ -200,16 +204,36 @@ public class Deserializer {
 			artifactType=ArtifactType.SYNAPSE_CONFIG;
 		} else if("proxy".equals(localName)){
 			artifactType=ArtifactType.PROXY;
-		} else if("sequence".equals(localName)){
-			artifactType=ArtifactType.SEQUENCE;
+		} else if("sequence".equals(localName)){			
+			if("main".equals(element.getAttributeValue(new javax.xml.namespace.QName("name")))){
+				artifactType=ArtifactType.MAIN_SEQUENCE;
+			}else{
+				artifactType=ArtifactType.SEQUENCE;
+			}			
 		} else if("localEntry".equals(localName)){
 			artifactType=ArtifactType.LOCAL_ENTRY;
 		} else if("task".equals(localName)){
 			artifactType=ArtifactType.TASK;
 		} else if("api".equals(localName)){
 			artifactType=ArtifactType.API;
-		} else if("template".equals(localName)){
-			artifactType=ArtifactType.TEMPLATE;
+		} else if("template".equals(localName)){			
+			OMElement child1 = (OMElement) element.getChildElements().next();
+			String child1LocalName = child1.getLocalName();
+			if("sequence".equals(child1LocalName)){
+				artifactType=ArtifactType.TEMPLATE_SEQUENCE;
+			}else if("endpoint".equals(child1LocalName)){
+				OMElement child2 = (OMElement) child1.getChildElements().next();
+				String child2LocalName = child2.getLocalName();
+				if("address".equals(child2LocalName)){
+					artifactType=ArtifactType.TEMPLATE_ENDPOINT_ADDRESS;
+				}else if("wsdl".equals(child2LocalName)){
+					artifactType=ArtifactType.TEMPLATE_ENDPOINT_WSDL;
+				}else if("default".equals(child2LocalName)){
+					artifactType=ArtifactType.TEMPLATE_ENDPOINT_DEFAULT;
+				}else if("http".equals(child2LocalName)){
+					artifactType=ArtifactType.TEMPLATE_ENDPOINT_HTTP;
+				}				
+			}			
 		} else if("endpoint".equals(localName)){
 			artifactType=ArtifactType.ENDPOINT;
 		} else if("messageStore".equals(localName)){
@@ -274,6 +298,11 @@ public class Deserializer {
 			SequenceMediator sequence = (SequenceMediator) sequenceMediatorFactory.createSpecificMediator(element, properties);
 			artifacts.put(sequence.getName(), sequence);
 			break;
+		case MAIN_SEQUENCE:
+			SequenceMediatorFactory mainSequenceMediatorFactory = new SequenceMediatorFactory();
+			SequenceMediator mainSequence = (SequenceMediator) mainSequenceMediatorFactory.createSpecificMediator(element, properties);
+			artifacts.put(mainSequence.getName(), mainSequence);
+			break;
 		case API:
 			//API api = APIFactory.createAPI(element);
 			API api = DummyAPIFactory.createAPI(element);
@@ -294,19 +323,25 @@ public class Deserializer {
 			TaskDescription task = DummyTaskDescriptionFactory.createTaskDescription(element, OMAbstractFactory.getOMFactory()
 					.createOMNamespace(synapseNS, ""));
 			artifacts.put(task.getName(), task);
-			break;
-		case TEMPLATE:
-			if (element.getFirstChildWithName(new QName(synapseNS, "sequence", null)) != null) {
-				TemplateMediatorFactory templateMediatorFactory = new TemplateMediatorFactory();
-				TemplateMediator templateMediator = (TemplateMediator) templateMediatorFactory
-						.createMediator(element, properties);
-				artifacts.put(templateMediator.getName(), templateMediator);
-			} else if (element.getFirstChildWithName(new QName(synapseNS, "endpoint", null)) != null) {
-				TemplateFactory templateFactory = new TemplateFactory();
-				Template template = templateFactory.createEndpointTemplate(element, properties);
-				artifacts.put(template.getName(), template);
-			}
-			break;
+			break;				
+		case TEMPLATE_SEQUENCE:			
+			TemplateMediatorFactory templateMediatorFactory = new TemplateMediatorFactory();
+			TemplateMediator templateMediator = (TemplateMediator) templateMediatorFactory
+					.createMediator(element, properties);
+			artifacts.put(templateMediator.getName(), templateMediator);
+			break;				
+		case TEMPLATE_ENDPOINT_ADDRESS:
+			createEndpointTemplate(element, properties, artifacts);
+			break;			
+		case TEMPLATE_ENDPOINT_WSDL:
+			createEndpointTemplate(element, properties, artifacts);
+			break;			
+		case TEMPLATE_ENDPOINT_DEFAULT:
+			createEndpointTemplate(element, properties, artifacts);
+			break;			
+		case TEMPLATE_ENDPOINT_HTTP:
+			createEndpointTemplate(element, properties, artifacts);
+			break;					
 		case MESSAGE_STORE:
 			MessageStore store = DummyMessageStoreFactory.createMessageStore(element, properties);
 			artifacts.put(store.getName(), store);
@@ -324,6 +359,12 @@ public class Deserializer {
 		}
 	
 		return artifacts;
+	}
+	
+	private void createEndpointTemplate(OMElement element, Properties properties, Map<String,Object> artifacts){
+		TemplateFactory templateFactory = new TemplateFactory();
+		Template template = templateFactory.createEndpointTemplate(element, properties);
+		artifacts.put(template.getName(), template);
 	}
 
 

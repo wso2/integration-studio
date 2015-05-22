@@ -85,6 +85,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleConta
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.CustomPaletteViewerKeyHandler;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbPaletteFactory;
 
@@ -557,8 +558,8 @@ public class EditorUtils {
 	
 	
 	private static void addCloudConnectorOperations(EsbDiagramEditor editorPart,EsbPaletteFactory esbPaletteFactory){
-		IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
-		IFile file = input.getFile();
+		EsbEditorInput input = (EsbEditorInput) editorPart.getEditorInput();
+		IFile file = input.getXmlResource();
 		IProject activeProject = file.getProject();
 		
 		//String connectorDirectory=activeProject.getWorkspace().getRoot().getLocation().toOSString()+File.separator+"cloudConnectors";
@@ -703,8 +704,8 @@ public class EditorUtils {
 			}
 
 			if (editorPart != null) {
-				IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
-				IFile file = input.getFile();
+				EsbEditorInput input = (EsbEditorInput) editorPart.getEditorInput();
+				IFile file = input.getXmlResource();
 				activeProject = file.getProject();
 
 			}

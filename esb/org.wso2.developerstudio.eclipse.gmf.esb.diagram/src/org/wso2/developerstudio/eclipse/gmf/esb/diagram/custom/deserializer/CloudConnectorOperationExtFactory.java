@@ -22,7 +22,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+
 import javax.xml.namespace.QName;
+
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
 import org.apache.synapse.Mediator;
@@ -31,11 +33,14 @@ import org.apache.synapse.config.xml.ValueFactory;
 import org.apache.synapse.config.xml.XMLConfigConstants;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.util.xpath.SynapseXPath;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.cloudconnector.CloudConnectorDirectoryTraverser;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CloudConnectorOperationExt;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
@@ -119,9 +124,21 @@ public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory{
 				}
 			}
 		}*/
+		
+		IEditorInput iEditorInput = EsbMultiPageEditor.currentEditor.getEditorInput();
+		IFile file = null;
+		if(iEditorInput instanceof IFileEditorInput){
+			file = ((IFileEditorInput) EsbMultiPageEditor.currentEditor
+					.getEditorInput()).getFile();
+		}else if(iEditorInput instanceof EsbEditorInput){
+			file = ((EsbEditorInput) EsbMultiPageEditor.currentEditor
+					.getEditorInput()).getXmlResource();
+		}else {
+			throw new Exception("Unsupported IEditorInput type. Unable to retrieve file information for editor input");
+		}
+		
 
-		String connectorRootPath = ((IFileEditorInput) EsbMultiPageEditor.currentEditor
-				.getEditorInput()).getFile().getProject().getWorkspace().getRoot().getLocation()
+		String connectorRootPath = file.getProject().getWorkspace().getRoot().getLocation()
 				.toString()
 				+ File.separator + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
 		File directory = new File(connectorRootPath);

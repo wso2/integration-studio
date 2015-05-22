@@ -145,11 +145,12 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IDocumentProvider getDocumentProvider(IEditorInput input) {
 		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
+				|| input instanceof URIEditorInput
+					|| input instanceof EsbEditorInput) {
 			return EsbDiagramEditorPlugin.getInstance().getDocumentProvider();
 		}
 		return super.getDocumentProvider(input);
@@ -174,11 +175,12 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void setDocumentProvider(IEditorInput input) {
 		if (input instanceof IFileEditorInput
-				|| input instanceof URIEditorInput) {
+				|| input instanceof URIEditorInput
+					|| input instanceof EsbEditorInput) {
 			setDocumentProvider(EsbDiagramEditorPlugin.getInstance()
 					.getDocumentProvider());
 		} else {
@@ -193,11 +195,21 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements
 		MarkerNavigationService.getInstance().gotoMarker(this, marker);
 	}
 
+	public void doSave(IProgressMonitor progressMonitor) {
+		IDocumentProvider p = getDocumentProvider();
+		if (p == null) {
+			return;
+		}
+		updateState(getEditorInput());
+		validateState(getEditorInput());
+		performSave(false, progressMonitor);
+	}
+	
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSaveAsAllowed() {
-		return true;
+		return false;
 	}
 
 	/**

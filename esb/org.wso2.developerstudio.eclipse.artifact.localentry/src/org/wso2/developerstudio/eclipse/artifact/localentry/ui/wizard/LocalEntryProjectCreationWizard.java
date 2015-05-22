@@ -49,6 +49,7 @@ import org.wso2.developerstudio.eclipse.artifact.localentry.utils.LocalEntryTemp
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBProjectArtifact;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
@@ -305,7 +306,7 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 		String path = dbsFile.getParent().getFullPath()+"/";
 		String source = FileUtils.getContentAsString(file);
 		Openable openable = ESBGraphicalEditor.getOpenable();
-		openable.editorOpen(file.getName(),"localentry",path+"localentry_", source);
+		openable.editorOpen(file.getName(),ArtifactType.LOCAL_ENTRY.getLiteral(),path, source);
 		}catch(Exception e){
 			log.error("Cannot open the editor", e);
 		}

@@ -10,8 +10,8 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.wso2.developerstudio.eclipse.gmf.esb.provider
 Require-Bundle: org.eclipse.core.runtime,
- org.wso2.developerstudio.eclipse.gmf.esb;visibility:=reexport,
- org.eclipse.emf.edit;visibility:=reexport,
+ org.wso2.developerstudio.eclipse.gmf.esb,
+ org.eclipse.emf.edit,
  org.eclipse.emf.common.ui;bundle-version="2.6.0",
  org.eclipse.emf.edit.ui;bundle-version="2.6.0"
 Bundle-ActivationPolicy: lazy

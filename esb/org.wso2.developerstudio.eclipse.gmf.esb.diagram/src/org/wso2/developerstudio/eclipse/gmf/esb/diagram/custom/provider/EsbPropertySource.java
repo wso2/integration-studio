@@ -288,6 +288,8 @@ public class EsbPropertySource extends PropertySource {
 			return new TemplateParametersPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getProxyService_ServiceParameters().equals(feature)){
 			return new ProxyParametersPropertyDescriptor(object, itemPropertyDescriptor);
+		}else if(pkg.getProxyService_FeatureAllowRoles().equals(feature)){
+			return new AllowRolesParameterPropertyDescriptor(object, itemPropertyDescriptor);
 		}else if(pkg.getMessageStore_Parameters().equals(feature)){
             return new MessageStoreParamCustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getMessageProcessor_Sequence().equals(feature)) {

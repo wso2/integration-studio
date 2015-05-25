@@ -46,7 +46,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
  * @generated
  */
 public class CallMediatorItemProvider
-	extends MediatorItemProvider {
+	extends MediatorItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

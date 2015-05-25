@@ -37,7 +37,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
  * @generated
  */
 public class IterateTargetItemProvider
-	extends AbstractCommonTargetItemProvider {
+	extends AbstractCommonTargetItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

@@ -33,7 +33,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
  * @generated
  */
 public class NamespacedPropertyItemProvider
-	extends EsbNodeItemProvider {
+	extends EsbNodeItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

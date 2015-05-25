@@ -456,13 +456,22 @@ public interface DsPackage extends EPackage {
 	int DATA_SERVICE__TRANSPORTS = 18;
 
 	/**
+	 * The feature id for the '<em><b>Feature Allow Roles</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SERVICE__FEATURE_ALLOW_ROLES = 19;
+
+	/**
 	 * The number of structural features of the '<em>Data Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SERVICE_FEATURE_COUNT = 19;
+	int DATA_SERVICE_FEATURE_COUNT = 20;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.
@@ -2696,6 +2705,17 @@ public interface DsPackage extends EPackage {
 	EAttribute getDataService_Transports();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Feature Allow Roles</em>'.
+	 * @see org.wso2.developerstudio.eclipse.ds.DataService#getFeatureAllowRoles()
+	 * @see #getDataService()
+	 * @generated
+	 */
+	EReference getDataService_FeatureAllowRoles();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration <em>Data Source Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4804,6 +4824,14 @@ public interface DsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_SERVICE__TRANSPORTS = eINSTANCE.getDataService_Transports();
+
+		/**
+		 * The meta object literal for the '<em><b>Feature Allow Roles</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_SERVICE__FEATURE_ALLOW_ROLES = eINSTANCE.getDataService_FeatureAllowRoles();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.ds.impl.DataSourceConfigurationImpl <em>Data Source Configuration</em>}' class.

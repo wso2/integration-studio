@@ -34,7 +34,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyWsdlType;
  * @generated
  */
 public class ProxyServiceItemProvider
-	extends EsbElementItemProvider {
+	extends EsbElementItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -74,6 +80,7 @@ public class ProxyServiceItemProvider
 			addReliableMessagingEnabledPropertyDescriptor(object);
 			addSecurityEnabledPropertyDescriptor(object);
 			addServiceParametersPropertyDescriptor(object);
+			addFeatureAllowRolesPropertyDescriptor(object);
 			// addWsdlTypePropertyDescriptor(object);
 			// WSDL Type.
 			addWsdlTypePropertyDescriptor(object);
@@ -509,6 +516,28 @@ public class ProxyServiceItemProvider
 				 false,
 				 null,
 				 getString("_UI_BasicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Feature Allow Roles feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addFeatureAllowRolesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProxyService_featureAllowRoles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProxyService_featureAllowRoles_feature", "_UI_ProxyService_type"),
+				 EsbPackage.Literals.PROXY_SERVICE__FEATURE_ALLOW_ROLES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 "Security",
 				 null));
 	}
 
@@ -989,6 +1018,7 @@ public class ProxyServiceItemProvider
 			case EsbPackage.PROXY_SERVICE__WSDL_TYPE:
 			case EsbPackage.PROXY_SERVICE__WSDL_XML:
 			case EsbPackage.PROXY_SERVICE__WSDL_URL:
+			case EsbPackage.PROXY_SERVICE__FEATURE_ALLOW_ROLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.PROXY_SERVICE__OUTPUT_CONNECTOR:

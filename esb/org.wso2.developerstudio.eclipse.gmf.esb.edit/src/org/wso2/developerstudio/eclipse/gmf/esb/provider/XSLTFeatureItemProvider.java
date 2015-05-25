@@ -29,7 +29,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTFeature;
  * @generated
  */
 public class XSLTFeatureItemProvider
-	extends AbstractBooleanFeatureItemProvider {
+	extends AbstractBooleanFeatureItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

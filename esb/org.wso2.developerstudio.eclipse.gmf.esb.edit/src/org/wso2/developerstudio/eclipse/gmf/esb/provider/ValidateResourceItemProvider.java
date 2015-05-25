@@ -38,7 +38,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ValidateResource;
  * @generated
  */
 public class ValidateResourceItemProvider
-	extends AbstractLocationKeyResourceItemProvider {
+	extends AbstractLocationKeyResourceItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

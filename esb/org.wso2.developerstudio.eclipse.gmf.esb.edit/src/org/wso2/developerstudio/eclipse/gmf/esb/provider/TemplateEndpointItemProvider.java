@@ -45,7 +45,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint;
  * @generated
  */
 public class TemplateEndpointItemProvider
-	extends AbstractEndPointItemProvider {
+	extends AbstractEndPointItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

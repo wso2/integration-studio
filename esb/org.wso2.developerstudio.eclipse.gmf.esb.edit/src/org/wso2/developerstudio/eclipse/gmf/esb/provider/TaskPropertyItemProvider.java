@@ -29,7 +29,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TaskProperty;
  * @generated
  */
 public class TaskPropertyItemProvider
-	extends NameValueTypePropertyItemProvider {
+	extends NameValueTypePropertyItemProvider
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

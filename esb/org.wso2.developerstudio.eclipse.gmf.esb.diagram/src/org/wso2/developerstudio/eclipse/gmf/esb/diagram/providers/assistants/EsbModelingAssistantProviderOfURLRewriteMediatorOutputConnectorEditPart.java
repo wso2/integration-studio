@@ -95,24 +95,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
 /**
  * @generated
  */
-public class EsbModelingAssistantProviderOfURLRewriteMediatorOutputConnectorEditPart
-		extends EsbModelingAssistantProvider {
+public class EsbModelingAssistantProviderOfURLRewriteMediatorOutputConnectorEditPart extends
+		EsbModelingAssistantProvider {
 
 	/**
 	 * @generated
 	 */
 	@Override
 	public List<IElementType> getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
 		return doGetRelTypesOnSource((URLRewriteMediatorOutputConnectorEditPart) sourceEditPart);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetRelTypesOnSource(
-			URLRewriteMediatorOutputConnectorEditPart source) {
+	public List<IElementType> doGetRelTypesOnSource(URLRewriteMediatorOutputConnectorEditPart source) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
 		types.add(EsbElementTypes.EsbLink_4001);
 		return types;
@@ -122,22 +120,17 @@ public class EsbModelingAssistantProviderOfURLRewriteMediatorOutputConnectorEdit
 	 * @generated
 	 */
 	@Override
-	public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source,
-			IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnSourceAndTarget(
-				(URLRewriteMediatorOutputConnectorEditPart) sourceEditPart,
+	public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
+		return doGetRelTypesOnSourceAndTarget((URLRewriteMediatorOutputConnectorEditPart) sourceEditPart,
 				targetEditPart);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetRelTypesOnSourceAndTarget(
-			URLRewriteMediatorOutputConnectorEditPart source,
+	public List<IElementType> doGetRelTypesOnSourceAndTarget(URLRewriteMediatorOutputConnectorEditPart source,
 			IGraphicalEditPart targetEditPart) {
 		List<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof ProxyInputConnectorEditPart) {
@@ -390,20 +383,15 @@ public class EsbModelingAssistantProviderOfURLRewriteMediatorOutputConnectorEdit
 	 * @generated
 	 */
 	@Override
-	public List<IElementType> getTypesForTarget(IAdaptable source,
-			IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		return doGetTypesForTarget(
-				(URLRewriteMediatorOutputConnectorEditPart) sourceEditPart,
-				relationshipType);
+	public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
+		return doGetTypesForTarget((URLRewriteMediatorOutputConnectorEditPart) sourceEditPart, relationshipType);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetTypesForTarget(
-			URLRewriteMediatorOutputConnectorEditPart source,
+	public List<IElementType> doGetTypesForTarget(URLRewriteMediatorOutputConnectorEditPart source,
 			IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == EsbElementTypes.EsbLink_4001) {

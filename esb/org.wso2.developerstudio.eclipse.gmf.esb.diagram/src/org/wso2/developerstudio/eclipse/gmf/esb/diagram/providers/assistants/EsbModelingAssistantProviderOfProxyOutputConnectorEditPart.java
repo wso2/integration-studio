@@ -95,24 +95,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
 /**
  * @generated
  */
-public class EsbModelingAssistantProviderOfProxyOutputConnectorEditPart extends
-		EsbModelingAssistantProvider {
+public class EsbModelingAssistantProviderOfProxyOutputConnectorEditPart extends EsbModelingAssistantProvider {
 
 	/**
 	 * @generated
 	 */
 	@Override
 	public List<IElementType> getRelTypesOnSource(IAdaptable source) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
 		return doGetRelTypesOnSource((ProxyOutputConnectorEditPart) sourceEditPart);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetRelTypesOnSource(
-			ProxyOutputConnectorEditPart source) {
+	public List<IElementType> doGetRelTypesOnSource(ProxyOutputConnectorEditPart source) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
 		types.add(EsbElementTypes.EsbLink_4001);
 		return types;
@@ -122,21 +119,16 @@ public class EsbModelingAssistantProviderOfProxyOutputConnectorEditPart extends
 	 * @generated
 	 */
 	@Override
-	public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source,
-			IAdaptable target) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		return doGetRelTypesOnSourceAndTarget(
-				(ProxyOutputConnectorEditPart) sourceEditPart, targetEditPart);
+	public List<IElementType> getRelTypesOnSourceAndTarget(IAdaptable source, IAdaptable target) {
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
+		return doGetRelTypesOnSourceAndTarget((ProxyOutputConnectorEditPart) sourceEditPart, targetEditPart);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetRelTypesOnSourceAndTarget(
-			ProxyOutputConnectorEditPart source,
+	public List<IElementType> doGetRelTypesOnSourceAndTarget(ProxyOutputConnectorEditPart source,
 			IGraphicalEditPart targetEditPart) {
 		List<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof ProxyInputConnectorEditPart) {
@@ -389,19 +381,15 @@ public class EsbModelingAssistantProviderOfProxyOutputConnectorEditPart extends
 	 * @generated
 	 */
 	@Override
-	public List<IElementType> getTypesForTarget(IAdaptable source,
-			IElementType relationshipType) {
-		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
-				.getAdapter(IGraphicalEditPart.class);
-		return doGetTypesForTarget(
-				(ProxyOutputConnectorEditPart) sourceEditPart, relationshipType);
+	public List<IElementType> getTypesForTarget(IAdaptable source, IElementType relationshipType) {
+		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source.getAdapter(IGraphicalEditPart.class);
+		return doGetTypesForTarget((ProxyOutputConnectorEditPart) sourceEditPart, relationshipType);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetTypesForTarget(
-			ProxyOutputConnectorEditPart source, IElementType relationshipType) {
+	public List<IElementType> doGetTypesForTarget(ProxyOutputConnectorEditPart source, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == EsbElementTypes.EsbLink_4001) {
 			types.add(EsbElementTypes.ProxyInputConnector_3003);

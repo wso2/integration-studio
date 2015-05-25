@@ -13,24 +13,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
 /**
  * @generated
  */
-public class EsbModelingAssistantProviderOfLoadBalanceEndPointInputConnector2EditPart
-		extends EsbModelingAssistantProvider {
+public class EsbModelingAssistantProviderOfLoadBalanceEndPointInputConnector2EditPart extends
+		EsbModelingAssistantProvider {
 
 	/**
 	 * @generated
 	 */
 	@Override
 	public List<IElementType> getRelTypesOnTarget(IAdaptable target) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
+		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
 		return doGetRelTypesOnTarget((LoadBalanceEndPointInputConnector2EditPart) targetEditPart);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetRelTypesOnTarget(
-			LoadBalanceEndPointInputConnector2EditPart target) {
+	public List<IElementType> doGetRelTypesOnTarget(LoadBalanceEndPointInputConnector2EditPart target) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
 		types.add(EsbElementTypes.EsbLink_4001);
 		return types;
@@ -40,20 +38,15 @@ public class EsbModelingAssistantProviderOfLoadBalanceEndPointInputConnector2Edi
 	 * @generated
 	 */
 	@Override
-	public List<IElementType> getTypesForSource(IAdaptable target,
-			IElementType relationshipType) {
-		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
-				.getAdapter(IGraphicalEditPart.class);
-		return doGetTypesForSource(
-				(LoadBalanceEndPointInputConnector2EditPart) targetEditPart,
-				relationshipType);
+	public List<IElementType> getTypesForSource(IAdaptable target, IElementType relationshipType) {
+		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target.getAdapter(IGraphicalEditPart.class);
+		return doGetTypesForSource((LoadBalanceEndPointInputConnector2EditPart) targetEditPart, relationshipType);
 	}
 
 	/**
 	 * @generated
 	 */
-	public List<IElementType> doGetTypesForSource(
-			LoadBalanceEndPointInputConnector2EditPart target,
+	public List<IElementType> doGetTypesForSource(LoadBalanceEndPointInputConnector2EditPart target,
 			IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == EsbElementTypes.EsbLink_4001) {

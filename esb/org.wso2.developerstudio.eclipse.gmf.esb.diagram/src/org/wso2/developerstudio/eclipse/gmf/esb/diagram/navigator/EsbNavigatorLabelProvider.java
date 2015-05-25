@@ -74,20 +74,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbParserProvi
 /**
  * @generated
  */
-public class EsbNavigatorLabelProvider extends LabelProvider implements
-		ICommonLabelProvider, ITreePathLabelProvider {
+public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonLabelProvider, ITreePathLabelProvider {
 
 	/**
 	 * @generated
 	 */
 	static {
-		EsbDiagramEditorPlugin
-				.getInstance()
-				.getImageRegistry()
+		EsbDiagramEditorPlugin.getInstance().getImageRegistry()
 				.put("Navigator?UnknownElement", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
-		EsbDiagramEditorPlugin
-				.getInstance()
-				.getImageRegistry()
+		EsbDiagramEditorPlugin.getInstance().getImageRegistry()
 				.put("Navigator?ImageNotFound", ImageDescriptor.getMissingImageDescriptor()); //$NON-NLS-1$
 	}
 
@@ -96,8 +91,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 */
 	public void updateLabel(ViewerLabel label, TreePath elementPath) {
 		Object element = elementPath.getLastSegment();
-		if (element instanceof EsbNavigatorItem
-				&& !isOwnView(((EsbNavigatorItem) element).getView())) {
+		if (element instanceof EsbNavigatorItem && !isOwnView(((EsbNavigatorItem) element).getView())) {
 			return;
 		}
 		label.setText(getText(element));
@@ -110,8 +104,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	public Image getImage(Object element) {
 		if (element instanceof EsbNavigatorGroup) {
 			EsbNavigatorGroup group = (EsbNavigatorGroup) element;
-			return EsbDiagramEditorPlugin.getInstance().getBundledImage(
-					group.getIcon());
+			return EsbDiagramEditorPlugin.getInstance().getBundledImage(group.getIcon());
 		}
 
 		if (element instanceof EsbNavigatorItem) {
@@ -1116,11 +1109,9 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private Image getImage(String key, IElementType elementType) {
-		ImageRegistry imageRegistry = EsbDiagramEditorPlugin.getInstance()
-				.getImageRegistry();
+		ImageRegistry imageRegistry = EsbDiagramEditorPlugin.getInstance().getImageRegistry();
 		Image image = imageRegistry.get(key);
-		if (image == null && elementType != null
-				&& EsbElementTypes.isKnownElementType(elementType)) {
+		if (image == null && elementType != null && EsbElementTypes.isKnownElementType(elementType)) {
 			image = EsbElementTypes.getImage(elementType);
 			imageRegistry.put(key, image);
 		}
@@ -1824,8 +1815,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return String.valueOf(domainModelElement.getTest());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 1000); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 1000); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -1869,18 +1859,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEnrichMediator_3496Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.EnrichMediator_3496,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.EnrichMediator_3496,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(EnrichMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(EnrichMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5169); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5169); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -1893,8 +1879,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return String.valueOf(domainModelElement.getType());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 2001); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2001); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -1903,13 +1888,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getMessageMediator_3045Text(View view) {
-		MessageMediator domainModelElement = (MessageMediator) view
-				.getElement();
+		MessageMediator domainModelElement = (MessageMediator) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getDescription();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3045); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3045); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -1918,19 +1901,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getDefaultEndPoint_3643Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.DefaultEndPoint_3643,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(DefaultEndPointEndPointName2EditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.DefaultEndPoint_3643,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(DefaultEndPointEndPointName2EditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5160); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5160); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -1946,18 +1924,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getProxyService_3001Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(EsbElementTypes.ProxyService_3001,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(ProxyServiceNameEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.ProxyService_3001,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(ProxyServiceNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5003); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5003); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -1973,18 +1947,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getClassMediator_3506Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.ClassMediator_3506,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.ClassMediator_3506,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(ClassMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(ClassMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5173); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5173); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2000,18 +1970,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getOAuthMediator_3524Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.OAuthMediator_3524,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.OAuthMediator_3524,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(OAuthMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(OAuthMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5187); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5187); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2026,8 +1992,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getProxyServiceSequenceAndEndpointContainer_3487Text(
-			View view) {
+	private String getProxyServiceSequenceAndEndpointContainer_3487Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -2077,18 +2042,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getLogMediator_3495Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.LogMediator_3495,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.LogMediator_3495,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(LogMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(LogMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5168); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5168); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2111,18 +2072,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getSpringMediator_3507Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.SpringMediator_3507,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.SpringMediator_3507,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(SpringMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(SpringMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5174); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5174); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2145,18 +2102,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getXQueryMediator_3510Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.XQueryMediator_3510,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.XQueryMediator_3510,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(XQueryMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(XQueryMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5177); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5177); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2199,8 +2152,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getRuleMediatorChildMediatorsOutputConnector_3640Text(
-			View view) {
+	private String getRuleMediatorChildMediatorsOutputConnector_3640Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -2222,18 +2174,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getHTTPEndpoint_3709Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.HTTPEndpoint_3709,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.HTTPEndpoint_3709,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(HTTPEndpointDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(HTTPEndpointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5206); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5206); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2256,18 +2204,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getDefaultEndPoint_3609Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.DefaultEndPoint_3609,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.DefaultEndPoint_3609,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(DefaultEndPointDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(DefaultEndPointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5201); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5201); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2275,8 +2219,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getRecipientListEndPointWestOutputConnector_3695Text(
-			View view) {
+	private String getRecipientListEndPointWestOutputConnector_3695Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -2305,18 +2248,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getXSLTMediator_3497Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.XSLTMediator_3497,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.XSLTMediator_3497,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(XSLTMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(XSLTMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5170); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5170); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2339,18 +2278,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getDropMediator_3491Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.DropMediator_3491,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.DropMediator_3491,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(DropMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(DropMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5166); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5166); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2359,13 +2294,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getSwitchCaseBranchOutputConnector_3043Text(View view) {
-		SwitchCaseBranchOutputConnector domainModelElement = (SwitchCaseBranchOutputConnector) view
-				.getElement();
+		SwitchCaseBranchOutputConnector domainModelElement = (SwitchCaseBranchOutputConnector) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getCaseRegex();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3043); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3043); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2374,19 +2307,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getRMSequenceMediator_3522Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.RMSequenceMediator_3522,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(RMSequenceMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.RMSequenceMediator_3522,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(RMSequenceMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5186); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5186); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2401,8 +2329,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getRecipientListEndPointWestOutputConnector_3699Text(
-			View view) {
+	private String getRecipientListEndPointWestOutputConnector_3699Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -2423,8 +2350,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getConditionalRouterMediatorOutputConnector_3637Text(
-			View view) {
+	private String getConditionalRouterMediatorOutputConnector_3637Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -2460,19 +2386,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getDBLookupMediator_3512Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.DBLookupMediator_3512,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(DBLookupMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.DBLookupMediator_3512,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(DBLookupMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5179); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5179); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2492,8 +2413,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getEntryName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3663); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3663); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2527,8 +2447,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getNamespace();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3498); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3498); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2544,19 +2463,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getCloudConnectorOperation_3722Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.CloudConnectorOperation_3722,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(CloudConnectorOperationDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.CloudConnectorOperation_3722,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(CloudConnectorOperationDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5198); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5198); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2593,19 +2507,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getFailoverEndPoint_3649Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.FailoverEndPoint_3649,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(FailoverEndPointEndPointName2EditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.FailoverEndPoint_3649,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(FailoverEndPointEndPointName2EditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5162); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5162); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2632,8 +2541,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getDescription();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3742); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3742); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2647,8 +2555,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getSoapAction();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3631); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3631); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2678,19 +2585,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getLoadBalanceEndPoint_3613Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.LoadBalanceEndPoint_3613,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(LoadBalanceEndPointDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.LoadBalanceEndPoint_3613,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(LoadBalanceEndPointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5205); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5205); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2713,19 +2615,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getRecipientListEndPoint_3692Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.RecipientListEndPoint_3692,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(RecipientListEndPointDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.RecipientListEndPoint_3692,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(RecipientListEndPointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5203); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5203); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2773,8 +2670,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getDescription();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3628); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3628); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2790,13 +2686,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getRecipientListEndPoint_3696Text(View view) {
-		RecipientListEndPoint domainModelElement = (RecipientListEndPoint) view
-				.getElement();
+		RecipientListEndPoint domainModelElement = (RecipientListEndPoint) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3696); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3696); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2833,13 +2727,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEndpointDiagram_3666Text(View view) {
-		EndpointDiagram domainModelElement = (EndpointDiagram) view
-				.getElement();
+		EndpointDiagram domainModelElement = (EndpointDiagram) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3666); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3666); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2852,8 +2744,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getApiName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3668); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3668); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2866,8 +2757,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getInputWrapperName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3523); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3523); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2880,8 +2770,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getStoreName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3715); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3715); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -2897,19 +2786,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getPropertyMediator_3492Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.PropertyMediator_3492,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(PropertyMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.PropertyMediator_3492,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(PropertyMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5167); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5167); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3023,17 +2907,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getSequence_3503Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.Sequence_3503,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.Sequence_3503,
 				view.getElement() != null ? view.getElement() : view,
 				EsbVisualIDRegistry.getType(SequenceNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5132); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5132); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3048,8 +2929,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getEntitlementMediatorOnAcceptOutputConnector_3749Text(
-			View view) {
+	private String getEntitlementMediatorOnAcceptOutputConnector_3749Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -3106,13 +2986,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getCloneMediatorTargetOutputConnector_3133Text(View view) {
-		CloneMediatorTargetOutputConnector domainModelElement = (CloneMediatorTargetOutputConnector) view
-				.getElement();
+		CloneMediatorTargetOutputConnector domainModelElement = (CloneMediatorTargetOutputConnector) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getSoapAction();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3133); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3133); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3121,19 +2999,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getConditionalRouterMediator_3635Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.ConditionalRouterMediator_3635,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(ConditionalRouterMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.ConditionalRouterMediator_3635,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(ConditionalRouterMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5210); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5210); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3149,19 +3022,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getFastXSLTMediator_3764Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.FastXSLTMediator_3764,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(FastXSLTMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.FastXSLTMediator_3764,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(FastXSLTMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5212); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5212); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3184,13 +3052,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getInboundEndpoint_3767Text(View view) {
-		InboundEndpoint domainModelElement = (InboundEndpoint) view
-				.getElement();
+		InboundEndpoint domainModelElement = (InboundEndpoint) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3767); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3767); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3212,16 +3078,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getInboundEndpointOnErrorSequenceInputConnector_3770Text(
-			View view) {
+	private String getInboundEndpointOnErrorSequenceInputConnector_3770Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
 	/**
 	 * @generated
 	 */
-	private String getInboundEndpointOnErrorSequenceOutputConnector_3771Text(
-			View view) {
+	private String getInboundEndpointOnErrorSequenceOutputConnector_3771Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -3229,13 +3093,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getInboundEndpointContainer_3772Text(View view) {
-		InboundEndpointContainer domainModelElement = (InboundEndpointContainer) view
-				.getElement();
+		InboundEndpointContainer domainModelElement = (InboundEndpointContainer) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getDescription();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3772); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3772); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3300,18 +3162,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getBeanMediator_3683Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.BeanMediator_3683,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.BeanMediator_3683,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(BeanMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(BeanMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5195); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5195); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3355,19 +3213,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getAddressEndPoint_3646Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.AddressEndPoint_3646,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(AddressEndPointEndPointName2EditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.AddressEndPoint_3646,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(AddressEndPointEndPointName2EditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5161); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5161); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3411,18 +3264,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getWSDLEndPoint_3653Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.WSDLEndPoint_3653,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.WSDLEndPoint_3653,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(WSDLEndPointEndPointName2EditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(WSDLEndPointEndPointName2EditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5163); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5163); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3438,18 +3287,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getWSDLEndPoint_3612Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.WSDLEndPoint_3612,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.WSDLEndPoint_3612,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(WSDLEndPointDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(WSDLEndPointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5204); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5204); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3514,18 +3359,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getScriptMediator_3508Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.ScriptMediator_3508,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.ScriptMediator_3508,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(ScriptMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(ScriptMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5175); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5175); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3548,19 +3389,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getFilterMediator_3494Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.FilterMediator_3494,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(FilterMediatorConditionTypeEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.FilterMediator_3494,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(FilterMediatorConditionTypeEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5129); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5129); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3569,18 +3405,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEventMediator_3504Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.EventMediator_3504,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.EventMediator_3504,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(EventMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(EventMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5171); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5171); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3593,8 +3425,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getDescription();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3013); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3013); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3603,18 +3434,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getRespondMediator_3739Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.RespondMediator_3739,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.RespondMediator_3739,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(RespondMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(RespondMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5209); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5209); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3630,18 +3457,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getStoreMediator_3588Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.StoreMediator_3588,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.StoreMediator_3588,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(StoreMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(StoreMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5188); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5188); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3678,13 +3501,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getTemplateEndpoint_3725Text(View view) {
-		TemplateEndpoint domainModelElement = (TemplateEndpoint) view
-				.getElement();
+		TemplateEndpoint domainModelElement = (TemplateEndpoint) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getEndPointName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3725); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3725); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3700,19 +3521,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getCallTemplateMediator_3594Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.CallTemplateMediator_3594,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(CallTemplateMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.CallTemplateMediator_3594,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(CallTemplateMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5190); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5190); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3721,19 +3537,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEntitlementMediator_3505Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.EntitlementMediator_3505,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(EntitlementMediatorServerURLEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.EntitlementMediator_3505,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(EntitlementMediatorServerURLEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5134); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5134); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3762,8 +3573,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getEntitlementMediatorObligationsOutputConnector_3751Text(
-			View view) {
+	private String getEntitlementMediatorObligationsOutputConnector_3751Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -3799,19 +3609,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getDataMapperMediator_3761Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.DataMapperMediator_3761,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(DataMapperMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.DataMapperMediator_3761,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(DataMapperMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5211); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5211); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3841,19 +3646,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getLoopBackMediator_3736Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.LoopBackMediator_3736,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(LoopBackMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.LoopBackMediator_3736,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(LoopBackMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5208); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5208); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3869,18 +3669,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getSmooksMediator_3514Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.SmooksMediator_3514,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.SmooksMediator_3514,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(SmooksMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(SmooksMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5181); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5181); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3900,8 +3696,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3665); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3665); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3910,19 +3705,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getAddressingEndpoint_3689Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.AddressingEndpoint_3689,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(AddressingEndpointDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.AddressingEndpoint_3689,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(AddressingEndpointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5200); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5200); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3942,8 +3732,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3664); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3664); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -3965,8 +3754,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getAggregateMediatorOnCompleteOutputConnector_3132Text(
-			View view) {
+	private String getAggregateMediatorOnCompleteOutputConnector_3132Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -3988,13 +3776,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getRouterTargetContainer_3633Text(View view) {
-		RouterTargetContainer domainModelElement = (RouterTargetContainer) view
-				.getElement();
+		RouterTargetContainer domainModelElement = (RouterTargetContainer) view.getElement();
 		if (domainModelElement != null) {
 			return String.valueOf(domainModelElement.isBreakAfterRoute());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3633); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3633); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4031,18 +3817,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getNamedEndpoint_3660Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.NamedEndpoint_3660,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.NamedEndpoint_3660,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(NamedEndpointNameEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(NamedEndpointNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5165); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5165); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4051,18 +3833,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getAddressEndPoint_3610Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.AddressEndPoint_3610,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.AddressEndPoint_3610,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(AddressEndPointDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(AddressEndPointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5199); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5199); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4078,18 +3856,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getCloneMediator_3517Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.CloneMediator_3517,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.CloneMediator_3517,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(CloneMediatorCloneIDEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(CloneMediatorCloneIDEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5144); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5144); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4112,19 +3886,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getTemplateEndpoint_3716Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.TemplateEndpoint_3716,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(TemplateEndpointDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.TemplateEndpoint_3716,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(TemplateEndpointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5207); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5207); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4133,18 +3902,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getBuilderMediator_3591Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.BuilderMediator_3591,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.BuilderMediator_3591,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(BuilderMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(BuilderMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5189); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5189); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4160,19 +3925,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getTransactionMediator_3521Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.TransactionMediator_3521,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(TransactionMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.TransactionMediator_3521,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(TransactionMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5185); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5185); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4195,19 +3955,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getAggregateMediator_3525Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.AggregateMediator_3525,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(AggregateMediatorAggregateIDEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.AggregateMediator_3525,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(AggregateMediatorAggregateIDEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5149); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5149); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4223,13 +3978,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getValidateMediator_3623Text(View view) {
-		ValidateMediator domainModelElement = (ValidateMediator) view
-				.getElement();
+		ValidateMediator domainModelElement = (ValidateMediator) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getDescription();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3623); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3623); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4266,18 +4019,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getHeaderMediator_3516Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.HeaderMediator_3516,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.HeaderMediator_3516,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(HeaderMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(HeaderMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5183); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5183); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4335,19 +4084,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getLoadBalanceEndPoint_3656Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.LoadBalanceEndPoint_3656,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(LoadBalanceEndPointEndPointName2EditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.LoadBalanceEndPoint_3656,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(LoadBalanceEndPointEndPointName2EditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5164); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5164); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4391,18 +4135,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getThrottleMediator_3493Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.ThrottleMediator_3493,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.ThrottleMediator_3493,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(ThrottleMediatorGroupIdEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(ThrottleMediatorGroupIdEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5128); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5128); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4411,18 +4151,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getBAMMediator_3680Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.BAMMediator_3680,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.BAMMediator_3680,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(BAMMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(BAMMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5194); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5194); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4431,19 +4167,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getPayloadFactoryMediator_3597Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.PayloadFactoryMediator_3597,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(PayloadFactoryMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.PayloadFactoryMediator_3597,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(PayloadFactoryMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5191); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5191); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4480,18 +4211,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getCacheMediator_3518Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.CacheMediator_3518,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.CacheMediator_3518,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(CacheMediatorCacheIdEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(CacheMediatorCacheIdEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5145); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5145); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4507,18 +4234,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getCommandMediator_3511Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.CommandMediator_3511,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.CommandMediator_3511,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(CommandMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(CommandMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5178); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5178); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4555,13 +4278,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getComplexEndpoints_3677Text(View view) {
-		ComplexEndpoints domainModelElement = (ComplexEndpoints) view
-				.getElement();
+		ComplexEndpoints domainModelElement = (ComplexEndpoints) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3677); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3677); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4577,19 +4298,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getDBReportMediator_3513Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.DBReportMediator_3513,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(DBReportMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.DBReportMediator_3513,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(DBReportMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5180); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5180); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4611,8 +4327,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getEntitlementMediatorOnRejectOutputConnector_3748Text(
-			View view) {
+	private String getEntitlementMediatorOnRejectOutputConnector_3748Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -4627,13 +4342,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getMessageProcessor_3701Text(View view) {
-		MessageProcessor domainModelElement = (MessageProcessor) view
-				.getElement();
+		MessageProcessor domainModelElement = (MessageProcessor) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getProcessorName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3701); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3701); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4642,18 +4355,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getFaultMediator_3509Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.FaultMediator_3509,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.FaultMediator_3509,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(FaultMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(FaultMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5176); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5176); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4680,8 +4389,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getTaskName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3667); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3667); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4710,8 +4418,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getConditionalRouterMediatorAdditionalOutputConnector_3638Text(
-			View view) {
+	private String getConditionalRouterMediatorAdditionalOutputConnector_3638Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -4725,8 +4432,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getEntitlementMediatorAdviceOutputConnector_3750Text(
-			View view) {
+	private String getEntitlementMediatorAdviceOutputConnector_3750Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 
@@ -4752,8 +4458,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getEndPointName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3712); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3712); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4769,19 +4474,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getURLRewriteMediator_3620Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.URLRewriteMediator_3620,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(URLRewriteMediatorDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.URLRewriteMediator_3620,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(URLRewriteMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5193); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5193); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4797,18 +4497,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getIterateMediator_3519Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.IterateMediator_3519,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.IterateMediator_3519,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(IterateMediatorIterateIDEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(IterateMediatorIterateIDEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5146); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5146); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4824,19 +4520,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getFailoverEndPoint_3611Text(View view) {
-		IParser parser = EsbParserProvider
-				.getParser(
-						EsbElementTypes.FailoverEndPoint_3611,
-						view.getElement() != null ? view.getElement() : view,
-						EsbVisualIDRegistry
-								.getType(FailoverEndPointDescriptionEditPart.VISUAL_ID));
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.FailoverEndPoint_3611,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(FailoverEndPointDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5202); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5202); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4863,8 +4554,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getInSequenceName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3669); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3669); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4877,8 +4567,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3614); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3614); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4901,13 +4590,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getAPIResourceEndpoint_3674Text(View view) {
-		APIResourceEndpoint domainModelElement = (APIResourceEndpoint) view
-				.getElement();
+		APIResourceEndpoint domainModelElement = (APIResourceEndpoint) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getEndPointName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3674); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3674); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4930,13 +4617,11 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEndpointDiagram_3642Text(View view) {
-		EndpointDiagram domainModelElement = (EndpointDiagram) view
-				.getElement();
+		EndpointDiagram domainModelElement = (EndpointDiagram) view.getElement();
 		if (domainModelElement != null) {
 			return domainModelElement.getName();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3642); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3642); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -4959,18 +4644,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEJBMediator_3686Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.EJBMediator_3686,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.EJBMediator_3686,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(EJBMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(EJBMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5196); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5196); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -5014,18 +4695,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getCalloutMediator_3520Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.CalloutMediator_3520,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.CalloutMediator_3520,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(CalloutMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(CalloutMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5184); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5184); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -5038,8 +4715,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 		if (domainModelElement != null) {
 			return domainModelElement.getDescription();
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"No domain element for view with visualID = " + 3515); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 3515); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -5076,18 +4752,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getEnqueueMediator_3600Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.EnqueueMediator_3600,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.EnqueueMediator_3600,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(EnqueueMediatorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(EnqueueMediatorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5192); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5192); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -5103,18 +4775,14 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getCloudConnector_3719Text(View view) {
-		IParser parser = EsbParserProvider.getParser(
-				EsbElementTypes.CloudConnector_3719,
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.CloudConnector_3719,
 				view.getElement() != null ? view.getElement() : view,
-				EsbVisualIDRegistry
-						.getType(CloudConnectorDescriptionEditPart.VISUAL_ID));
+				EsbVisualIDRegistry.getType(CloudConnectorDescriptionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
 					ParserOptions.NONE.intValue());
 		} else {
-			EsbDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5197); //$NON-NLS-1$
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5197); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -5197,8 +4865,7 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private boolean isOwnView(View view) {
-		return EsbDiagramEditPart.MODEL_ID.equals(EsbVisualIDRegistry
-				.getModelID(view));
+		return EsbDiagramEditPart.MODEL_ID.equals(EsbVisualIDRegistry.getModelID(view));
 	}
 
 }

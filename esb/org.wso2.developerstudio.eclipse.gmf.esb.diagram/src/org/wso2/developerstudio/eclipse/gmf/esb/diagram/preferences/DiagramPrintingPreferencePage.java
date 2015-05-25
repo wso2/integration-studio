@@ -12,7 +12,6 @@ public class DiagramPrintingPreferencePage extends PrintingPreferencePage {
 	 * @generated
 	 */
 	public DiagramPrintingPreferencePage() {
-		setPreferenceStore(EsbDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

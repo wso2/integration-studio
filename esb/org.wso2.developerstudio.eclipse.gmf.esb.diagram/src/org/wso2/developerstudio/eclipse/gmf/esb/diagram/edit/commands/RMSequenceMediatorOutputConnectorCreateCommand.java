@@ -18,14 +18,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediatorOutputConnecto
 /**
  * @generated
  */
-public class RMSequenceMediatorOutputConnectorCreateCommand extends
-		EditElementCommand {
+public class RMSequenceMediatorOutputConnectorCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public RMSequenceMediatorOutputConnectorCreateCommand(
-			CreateElementRequest req) {
+	public RMSequenceMediatorOutputConnectorCreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -34,8 +32,7 @@ public class RMSequenceMediatorOutputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -57,10 +54,8 @@ public class RMSequenceMediatorOutputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		RMSequenceMediatorOutputConnector newElement = EsbFactory.eINSTANCE
-				.createRMSequenceMediatorOutputConnector();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+		RMSequenceMediatorOutputConnector newElement = EsbFactory.eINSTANCE.createRMSequenceMediatorOutputConnector();
 
 		RMSequenceMediator owner = (RMSequenceMediator) getElementToEdit();
 		owner.setOutputConnector(newElement);
@@ -74,18 +69,13 @@ public class RMSequenceMediatorOutputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(RMSequenceMediatorOutputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info)
+	protected void doConfigure(RMSequenceMediatorOutputConnector newElement, IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

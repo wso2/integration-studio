@@ -57,8 +57,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class MediatorFlowMediatorFlowCompartment18EditPart extends
-		ShapeCompartmentEditPart {
+public class MediatorFlowMediatorFlowCompartment18EditPart extends ShapeCompartmentEditPart {
 
 	BorderedNodeFigure borderedNodeFigure;
 	AbstractBorderItemEditPart sourceOutputConnector = null;
@@ -89,8 +88,7 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends
 	}
 
 	protected IFigure createFigure() {
-		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super
-				.createFigure();
+		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
 		result.setTitleVisibility(true);
 		// Override default border.
 		result.setBorder(new MarginBorder(0, 0, 0, 0));
@@ -114,13 +112,11 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends
 		}
 	}
 
-	private <T extends AbstractEndpoint> void addEndpointChildVisual(
-			T childEditPart) {
+	private <T extends AbstractEndpoint> void addEndpointChildVisual(T childEditPart) {
 		borderedNodeFigure.getBorderItemContainer().add(
 				((T) childEditPart).getFigure(),
-				new SlidingBorderItemLocator(
-						borderedNodeFigure.getMainFigure(), ((T) childEditPart)
-								.getFigure(), PositionConstants.EAST, 10, 5));
+				new SlidingBorderItemLocator(borderedNodeFigure.getMainFigure(), ((T) childEditPart).getFigure(),
+						PositionConstants.EAST, 10, 5));
 	}
 
 	protected void removeChildVisual(EditPart child) {
@@ -137,14 +133,11 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new MediatorFlowMediatorFlowCompartment18ItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
 		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new MediatorFlowMediatorFlowCompartment18CanonicalEditPolicy());
 	}
@@ -163,11 +156,9 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends
 	 */
 	public EditPart getTargetEditPart(Request request) {
 		if (request instanceof CreateViewAndElementRequest) {
-			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request)
-					.getViewAndElementDescriptor()
+			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
 					.getCreateElementRequestAdapter();
-			IElementType type = (IElementType) adapter
-					.getAdapter(IElementType.class);
+			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
 			if (type == EsbElementTypes.DropMediator_3491) {
 				return this;
 			}
@@ -361,12 +352,9 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends
 
 	protected void removeChild(EditPart child) {
 		super.removeChild(child);
-		EditingDomain editingDomain = TransactionUtil
-				.getEditingDomain(complexEndpoints);
-		RemoveCommand removeCmd = new RemoveCommand(editingDomain,
-				complexEndpoints,
-				EsbPackage.Literals.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR,
-				connectorAndEndpointMap.get(child));
+		EditingDomain editingDomain = TransactionUtil.getEditingDomain(complexEndpoints);
+		RemoveCommand removeCmd = new RemoveCommand(editingDomain, complexEndpoints,
+				EsbPackage.Literals.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR, connectorAndEndpointMap.get(child));
 		if (removeCmd.canExecute()) {
 			editingDomain.getCommandStack().execute(removeCmd);
 		}
@@ -389,12 +377,9 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends
 		 }*/
 
 		if (child instanceof AbstractEndpoint) {
-			ComplexEndpointsEditPart complexEndpointsEditPart = (ComplexEndpointsEditPart) this
-					.getParent().getParent();
-			complexEndpoints = (ComplexEndpoints) ((Node) complexEndpointsEditPart
-					.getModel()).getElement();
-			if (EditorUtils.getEndpointInputConnector((AbstractEndpoint) child)
-					.getTargetConnections().size() == 0) {
+			ComplexEndpointsEditPart complexEndpointsEditPart = (ComplexEndpointsEditPart) this.getParent().getParent();
+			complexEndpoints = (ComplexEndpoints) ((Node) complexEndpointsEditPart.getModel()).getElement();
+			if (EditorUtils.getEndpointInputConnector((AbstractEndpoint) child).getTargetConnections().size() == 0) {
 				addConnectorAndLink(child);
 			}
 		}
@@ -581,13 +566,10 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends
 	 }*/
 
 	private void addConnectorAndLink(EditPart child) {
-		ComplexEndpointsOutputConnector connector = EsbFactory.eINSTANCE
-				.createComplexEndpointsOutputConnector();
-		EditingDomain editingDomain = ((IGraphicalEditPart) child)
-				.getEditingDomain();
+		ComplexEndpointsOutputConnector connector = EsbFactory.eINSTANCE.createComplexEndpointsOutputConnector();
+		EditingDomain editingDomain = ((IGraphicalEditPart) child).getEditingDomain();
 		AddCommand addCmd = new AddCommand(editingDomain, complexEndpoints,
-				EsbPackage.Literals.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR,
-				connector);
+				EsbPackage.Literals.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR, connector);
 		if (addCmd.canExecute()) {
 			editingDomain.getCommandStack().execute(addCmd);
 			connectorAndEndpointMap.put(connector, (AbstractEndpoint) child);

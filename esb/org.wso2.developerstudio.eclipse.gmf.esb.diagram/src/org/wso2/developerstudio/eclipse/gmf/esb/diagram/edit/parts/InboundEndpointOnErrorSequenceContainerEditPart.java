@@ -32,8 +32,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated
  */
-public class InboundEndpointOnErrorSequenceContainerEditPart extends
-		ShapeNodeEditPart {
+public class InboundEndpointOnErrorSequenceContainerEditPart extends ShapeNodeEditPart {
 
 	/**
 	 * @generated
@@ -61,17 +60,13 @@ public class InboundEndpointOnErrorSequenceContainerEditPart extends
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new InboundEndpointOnErrorSequenceContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.CANONICAL_ROLE,
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
 				new InboundEndpointOnErrorSequenceContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -85,8 +80,7 @@ public class InboundEndpointOnErrorSequenceContainerEditPart extends
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -204,8 +198,7 @@ public class InboundEndpointOnErrorSequenceContainerEditPart extends
 		}
 	}
 
-	public class InboundEndpointOnErrorSequenceContainerFigure extends
-			RoundedRectangle {
+	public class InboundEndpointOnErrorSequenceContainerFigure extends RoundedRectangle {
 
 		public InboundEndpointOnErrorSequenceContainerFigure() {
 			ToolbarLayout layoutThis = new ToolbarLayout();
@@ -217,8 +210,7 @@ public class InboundEndpointOnErrorSequenceContainerEditPart extends
 			this.setLayoutManager(layoutThis);
 			this.setOutline(false);
 			// TODO: review this:
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(5000),
-					getMapMode().DPtoLP(700)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(5000), getMapMode().DPtoLP(700)));
 			this.setForegroundColor(new Color(null, 255, 255, 255));
 		}
 
@@ -236,7 +228,7 @@ public class InboundEndpointOnErrorSequenceContainerEditPart extends
 		}
 
 	}
-	
+
 	@Override
 	public boolean isSelectable() {
 		return false;

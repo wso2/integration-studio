@@ -61,18 +61,12 @@ public class APIResourceCanonicalEditPolicy extends CanonicalEditPolicy {
 	protected Set getFeaturesToSynchronize() {
 		if (myFeaturesToSynchronize == null) {
 			myFeaturesToSynchronize = new HashSet<EStructuralFeature>();
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
-					.getAPIResource_InputConnector());
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
-					.getAPIResource_OutputConnector());
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
-					.getAPIResource_OutSequenceOutputConnector());
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
-					.getAPIResource_FaultInputConnector());
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
-					.getAPIResource_Container());
-			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE
-					.getAPIResource_InSequenceInputConnectors());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getAPIResource_InputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getAPIResource_OutputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getAPIResource_OutSequenceOutputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getAPIResource_FaultInputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getAPIResource_Container());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getAPIResource_InSequenceInputConnectors());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -84,8 +78,7 @@ public class APIResourceCanonicalEditPolicy extends CanonicalEditPolicy {
 	protected List getSemanticChildrenList() {
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
-		List<EsbNodeDescriptor> childDescriptors = EsbDiagramUpdater
-				.getAPIResource_3669SemanticChildren(viewObject);
+		List<EsbNodeDescriptor> childDescriptors = EsbDiagramUpdater.getAPIResource_3669SemanticChildren(viewObject);
 		for (EsbNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -95,10 +88,8 @@ public class APIResourceCanonicalEditPolicy extends CanonicalEditPolicy {
 	/**
 	 * @generated
 	 */
-	protected boolean isOrphaned(Collection<EObject> semanticChildren,
-			final View view) {
-		return isMyDiagramElement(view)
-				&& !semanticChildren.contains(view.getElement());
+	protected boolean isOrphaned(Collection<EObject> semanticChildren, final View view) {
+		return isMyDiagramElement(view) && !semanticChildren.contains(view.getElement());
 	}
 
 	/**
@@ -127,8 +118,7 @@ public class APIResourceCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<EsbNodeDescriptor> childDescriptors = EsbDiagramUpdater
-				.getAPIResource_3669SemanticChildren((View) getHost()
-						.getModel());
+				.getAPIResource_3669SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();
@@ -142,8 +132,8 @@ public class APIResourceCanonicalEditPolicy extends CanonicalEditPolicy {
 		// iteration happens over list of desired semantic elements, trying to find best matching View, while original CEP
 		// iterates views, potentially losing view (size/bounds) information - i.e. if there are few views to reference same EObject, only last one 
 		// to answer isOrphaned == true will be used for the domain element representation, see #cleanCanonicalSemanticChildren()
-		for (Iterator<EsbNodeDescriptor> descriptorsIterator = childDescriptors
-				.iterator(); descriptorsIterator.hasNext();) {
+		for (Iterator<EsbNodeDescriptor> descriptorsIterator = childDescriptors.iterator(); descriptorsIterator
+				.hasNext();) {
 			EsbNodeDescriptor next = descriptorsIterator.next();
 			String hint = EsbVisualIDRegistry.getType(next.getVisualID());
 			LinkedList<View> perfectMatch = new LinkedList<View>(); // both semanticElement and hint match that of NodeDescriptor
@@ -172,11 +162,9 @@ public class APIResourceCanonicalEditPolicy extends CanonicalEditPolicy {
 				childDescriptors.size());
 		for (EsbNodeDescriptor next : childDescriptors) {
 			String hint = EsbVisualIDRegistry.getType(next.getVisualID());
-			IAdaptable elementAdapter = new CanonicalElementAdapter(
-					next.getModelElement(), hint);
-			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(
-					elementAdapter, Node.class, hint, ViewUtil.APPEND, false,
-					host().getDiagramPreferencesHint());
+			IAdaptable elementAdapter = new CanonicalElementAdapter(next.getModelElement(), hint);
+			CreateViewRequest.ViewDescriptor descriptor = new CreateViewRequest.ViewDescriptor(elementAdapter,
+					Node.class, hint, ViewUtil.APPEND, false, host().getDiagramPreferencesHint());
 			viewDescriptors.add(descriptor);
 		}
 
@@ -185,8 +173,7 @@ public class APIResourceCanonicalEditPolicy extends CanonicalEditPolicy {
 		CreateViewRequest request = getCreateViewRequest(viewDescriptors);
 		Command cmd = getCreateViewCommand(request);
 		if (cmd != null && cmd.canExecute()) {
-			SetViewMutabilityCommand.makeMutable(
-					new EObjectAdapter(host().getNotationView())).execute();
+			SetViewMutabilityCommand.makeMutable(new EObjectAdapter(host().getNotationView())).execute();
 			executeCommand(cmd);
 			@SuppressWarnings("unchecked")
 			List<IAdaptable> nl = (List<IAdaptable>) request.getNewObject();
@@ -197,8 +184,7 @@ public class APIResourceCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		if (createdViews.size() > 1) {
 			// perform a layout of the container
-			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host()
-					.getEditingDomain(), createdViews, host());
+			DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host().getEditingDomain(), createdViews, host());
 			executeCommand(new ICommandProxy(layoutCmd));
 		}
 

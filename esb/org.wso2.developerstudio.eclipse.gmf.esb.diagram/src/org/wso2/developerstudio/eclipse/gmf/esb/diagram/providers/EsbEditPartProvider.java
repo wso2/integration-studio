@@ -24,7 +24,6 @@ public class EsbEditPartProvider extends DefaultEditPartProvider {
 	 * @generated
 	 */
 	public EsbEditPartProvider() {
-		super(new EsbEditPartFactory(), EsbVisualIDRegistry.TYPED_INSTANCE,
-				EsbDiagramEditPart.MODEL_ID);
+		super(new EsbEditPartFactory(), EsbVisualIDRegistry.TYPED_INSTANCE, EsbDiagramEditPart.MODEL_ID);
 	}
 }

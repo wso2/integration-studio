@@ -31,13 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
  * @generated
  */
 public class OutputConnectorItemProvider
-	extends EsbConnectorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends EsbConnectorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

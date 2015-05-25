@@ -63,16 +63,12 @@ public class SwitchDefaultContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new SwitchDefaultContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new SwitchDefaultContainerCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SwitchDefaultContainerItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new SwitchDefaultContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -85,8 +81,7 @@ public class SwitchDefaultContainerEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -129,13 +124,9 @@ public class SwitchDefaultContainerEditPart extends ShapeNodeEditPart {
 	public void refreshOutputConnector(EditPart childEditPart) {
 		if (childEditPart instanceof SwitchMediatorEditPart) {
 			SwitchMediatorEditPart switchMediatorEditPart = (SwitchMediatorEditPart) childEditPart;
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					this.getFigure(),
-					switchMediatorEditPart.defaultOutputConnector,
-					PositionConstants.WEST, 0.5);
-			switchMediatorEditPart
-					.getBorderedFigure()
-					.getBorderItemContainer()
+			BorderItemLocator locator = new FixedBorderItemLocator(this.getFigure(),
+					switchMediatorEditPart.defaultOutputConnector, PositionConstants.WEST, 0.5);
+			switchMediatorEditPart.getBorderedFigure().getBorderItemContainer()
 					.add(switchMediatorEditPart.defaultOutputConnector, locator);
 		} else {
 			//Should handle properly.
@@ -144,8 +135,7 @@ public class SwitchDefaultContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	protected void addChildVisual(EditPart childEditPart, int index) {
-		refreshOutputConnector(((SwitchMediatorEditPart) childEditPart
-				.getParent().getParent().getParent().getParent()));
+		refreshOutputConnector(((SwitchMediatorEditPart) childEditPart.getParent().getParent().getParent().getParent()));
 		super.addChildVisual(childEditPart, -1);
 	}
 
@@ -246,11 +236,9 @@ public class SwitchDefaultContainerEditPart extends ShapeNodeEditPart {
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 			this.setAlpha(0); //to make this transparent
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
-					getMapMode().DPtoLP(8)));
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8), getMapMode().DPtoLP(8)));
 			//Fixing TOOLS-1972.
-			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(80),
-					getMapMode().DPtoLP(50)));
+			this.setMinimumSize(new Dimension(getMapMode().DPtoLP(80), getMapMode().DPtoLP(50)));
 			this.setLineStyle(Graphics.LINE_DASH);
 			this.setBackgroundColor(THIS_BACK);
 		}

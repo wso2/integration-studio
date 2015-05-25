@@ -46,13 +46,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType;
  * @generated
  */
 public class RecipientListEndPointItemProvider
-	extends ParentEndPointItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends ParentEndPointItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

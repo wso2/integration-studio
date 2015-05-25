@@ -47,8 +47,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class ProxyOutputConnectorEditPart extends
-		AbstractOutputConnectorEditPart {
+public class ProxyOutputConnectorEditPart extends AbstractOutputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -91,10 +90,8 @@ public class ProxyOutputConnectorEditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				getPrimaryDragEditPolicy());
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new ProxyOutputConnectorItemSemanticEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ProxyOutputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -107,8 +104,7 @@ public class ProxyOutputConnectorEditPart extends
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -238,8 +234,7 @@ public class ProxyOutputConnectorEditPart extends
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(
-			IGraphicalEditPart targetEditPart) {
+	public List<IElementType> getMARelTypesOnSourceAndTarget(IGraphicalEditPart targetEditPart) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof ProxyInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
@@ -394,23 +389,17 @@ public class ProxyOutputConnectorEditPart extends
 				}
 
 				public void mouseExited(MouseEvent arg0) {
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("createEsbLink1CreationTool")) {
+					if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("createEsbLink1CreationTool")) {
 						getEditDomain().getPaletteViewer().setActiveTool(null);
 					}
 				}
 
 				public void mouseEntered(MouseEvent arg0) {
 					// TODO Auto-generated method stub
-					if (getEditDomain().getPaletteViewer().getActiveTool()
-							.getId().equals("selectionTool")) {
-						getEditDomain()
-								.getPaletteViewer()
-								.setActiveTool(
-										(ToolEntry) (((PaletteContainer) getEditDomain()
-												.getPaletteViewer()
-												.getPaletteRoot().getChildren()
-												.get(4)).getChildren().get(0)));
+					if (getEditDomain().getPaletteViewer().getActiveTool().getId().equals("selectionTool")) {
+						getEditDomain().getPaletteViewer().setActiveTool(
+								(ToolEntry) (((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+										.getChildren().get(4)).getChildren().get(0)));
 
 					}
 				}
@@ -433,8 +422,7 @@ public class ProxyOutputConnectorEditPart extends
 			constraintImageRectangle11.grabExcessHorizontalSpace = true;
 			constraintImageRectangle11.grabExcessVerticalSpace = true;
 
-			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin
-					.getBundledImageDescriptor("icons/ico20/arrowEast.png");
+			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin.getBundledImageDescriptor("icons/ico20/arrowEast.png");
 			ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
 			img1.setSize(new Dimension(22, 18));
 

@@ -34,13 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SwitchDefaultContainer;
  * @generated
  */
 public class SwitchDefaultContainerItemProvider
-	extends EsbNodeItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends EsbNodeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

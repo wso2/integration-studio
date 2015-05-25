@@ -11,8 +11,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
 /**
  * @generated
  */
-public class EsbModelingAssistantProviderOfBAMMediatorEditPart extends
-		EsbModelingAssistantProvider {
+public class EsbModelingAssistantProviderOfBAMMediatorEditPart extends EsbModelingAssistantProvider {
 
 	/**
 	 * @generated

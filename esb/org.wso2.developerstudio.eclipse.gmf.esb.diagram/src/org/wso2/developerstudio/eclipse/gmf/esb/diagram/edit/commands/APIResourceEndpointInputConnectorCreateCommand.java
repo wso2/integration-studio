@@ -18,14 +18,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 /**
  * @generated
  */
-public class APIResourceEndpointInputConnectorCreateCommand extends
-		EditElementCommand {
+public class APIResourceEndpointInputConnectorCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public APIResourceEndpointInputConnectorCreateCommand(
-			CreateElementRequest req) {
+	public APIResourceEndpointInputConnectorCreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -34,8 +32,7 @@ public class APIResourceEndpointInputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -57,10 +54,8 @@ public class APIResourceEndpointInputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		APIResourceEndpointInputConnector newElement = EsbFactory.eINSTANCE
-				.createAPIResourceEndpointInputConnector();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+		APIResourceEndpointInputConnector newElement = EsbFactory.eINSTANCE.createAPIResourceEndpointInputConnector();
 
 		APIResourceEndpoint owner = (APIResourceEndpoint) getElementToEdit();
 		owner.setInputConnector(newElement);
@@ -74,18 +69,13 @@ public class APIResourceEndpointInputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(APIResourceEndpointInputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info)
+	protected void doConfigure(APIResourceEndpointInputConnector newElement, IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

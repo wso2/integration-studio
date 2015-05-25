@@ -5,7 +5,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
 /**
  * @generated
  */
-public class EsbModelingAssistantProviderOfSynapseAPIEditPart extends
-		EsbModelingAssistantProvider {
+public class EsbModelingAssistantProviderOfSynapseAPIEditPart extends EsbModelingAssistantProvider {
 
 }

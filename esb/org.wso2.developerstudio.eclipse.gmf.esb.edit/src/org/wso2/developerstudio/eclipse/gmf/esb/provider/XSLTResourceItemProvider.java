@@ -29,13 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTResource;
  * @generated
  */
 public class XSLTResourceItemProvider
-	extends AbstractLocationKeyResourceItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends AbstractLocationKeyResourceItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

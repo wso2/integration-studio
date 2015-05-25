@@ -39,9 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FaultStringType;
  * 
  * @generated
  */
-public class FaultMediatorItemProvider extends MediatorItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class FaultMediatorItemProvider extends MediatorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->

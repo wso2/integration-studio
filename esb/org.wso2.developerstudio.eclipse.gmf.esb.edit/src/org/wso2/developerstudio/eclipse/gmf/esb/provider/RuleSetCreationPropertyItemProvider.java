@@ -29,13 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleSetCreationProperty;
  * @generated
  */
 public class RuleSetCreationPropertyItemProvider
-	extends AbstractNameValuePropertyItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends AbstractNameValuePropertyItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

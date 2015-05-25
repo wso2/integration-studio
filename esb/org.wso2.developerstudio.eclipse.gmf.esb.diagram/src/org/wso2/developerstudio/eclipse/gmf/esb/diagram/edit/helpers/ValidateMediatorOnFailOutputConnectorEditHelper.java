@@ -3,6 +3,5 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers;
 /**
  * @generated
  */
-public class ValidateMediatorOnFailOutputConnectorEditHelper extends
-		EsbBaseEditHelper {
+public class ValidateMediatorOnFailOutputConnectorEditHelper extends EsbBaseEditHelper {
 }

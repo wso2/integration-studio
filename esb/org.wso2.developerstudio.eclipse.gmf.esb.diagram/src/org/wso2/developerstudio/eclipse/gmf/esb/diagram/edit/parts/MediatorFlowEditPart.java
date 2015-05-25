@@ -68,8 +68,7 @@ public class MediatorFlowEditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new MediatorFlowItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new MediatorFlowItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -82,8 +81,7 @@ public class MediatorFlowEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -126,30 +124,20 @@ public class MediatorFlowEditPart extends ShapeNodeEditPart {
 	public void refreshConnector(EditPart childEditPart) {
 		if (childEditPart instanceof AbstractBaseFigureEditPart) {
 			AbstractBaseFigureEditPart baseFigureEditPart = (AbstractBaseFigureEditPart) childEditPart;
-			BorderItemLocator outputLocator = new FixedBorderItemLocator(
-					this.getFigure(), baseFigureEditPart.outputConnectorFigure,
-					PositionConstants.WEST, 0.25);
-			baseFigureEditPart
-					.getBorderedFigure()
-					.getBorderItemContainer()
-					.add(baseFigureEditPart.outputConnectorFigure,
-							outputLocator);
+			BorderItemLocator outputLocator = new FixedBorderItemLocator(this.getFigure(),
+					baseFigureEditPart.outputConnectorFigure, PositionConstants.WEST, 0.25);
+			baseFigureEditPart.getBorderedFigure().getBorderItemContainer()
+					.add(baseFigureEditPart.outputConnectorFigure, outputLocator);
 
-			BorderItemLocator inputLocator = new FixedBorderItemLocator(
-					this.getFigure(), baseFigureEditPart.inputConnectorFigure,
-					PositionConstants.WEST, 0.75);
+			BorderItemLocator inputLocator = new FixedBorderItemLocator(this.getFigure(),
+					baseFigureEditPart.inputConnectorFigure, PositionConstants.WEST, 0.75);
 			baseFigureEditPart.getBorderedFigure().getBorderItemContainer()
 					.add(baseFigureEditPart.inputConnectorFigure, inputLocator);
 
-			BorderItemLocator outSequenceOutputLocator = new FixedBorderItemLocator(
-					this.getFigure(),
-					baseFigureEditPart.outSequenceOutputConnectorFigure,
-					PositionConstants.EAST, 0.75);
-			baseFigureEditPart
-					.getBorderedFigure()
-					.getBorderItemContainer()
-					.add(baseFigureEditPart.outSequenceOutputConnectorFigure,
-							outSequenceOutputLocator);
+			BorderItemLocator outSequenceOutputLocator = new FixedBorderItemLocator(this.getFigure(),
+					baseFigureEditPart.outSequenceOutputConnectorFigure, PositionConstants.EAST, 0.75);
+			baseFigureEditPart.getBorderedFigure().getBorderItemContainer()
+					.add(baseFigureEditPart.outSequenceOutputConnectorFigure, outSequenceOutputLocator);
 			/*			if(baseFigureEditPart.inSequenceInputConnectorFigure !=null){
 			 BorderItemLocator inSequenceInputLocator = new FixedBorderItemLocator(
 			 this.getFigure(), baseFigureEditPart.inSequenceInputConnectorFigure,
@@ -169,8 +157,8 @@ public class MediatorFlowEditPart extends ShapeNodeEditPart {
 
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (childEditPart.getParent().getParent().getParent().getParent() instanceof AbstractBaseFigureEditPart) {
-			refreshConnector(((AbstractBaseFigureEditPart) childEditPart
-					.getParent().getParent().getParent().getParent()));
+			refreshConnector(((AbstractBaseFigureEditPart) childEditPart.getParent().getParent().getParent()
+					.getParent()));
 		}
 		super.addChildVisual(childEditPart, -1);
 	}
@@ -284,8 +272,7 @@ public class MediatorFlowEditPart extends ShapeNodeEditPart {
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			this.setForegroundColor(new Color(null, 0, 0, 0));
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(30000),
-					getMapMode().DPtoLP(30000)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(30000), getMapMode().DPtoLP(30000)));
 		}
 
 		public void add(IFigure figure, Object constraint, int index) {

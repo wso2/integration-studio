@@ -57,8 +57,7 @@ public class EsbEditPartFactory implements EditPartFactory {
 				return new ProxyServiceContainerEditPart(view);
 
 			case ProxyServiceSequenceAndEndpointContainerEditPart.VISUAL_ID:
-				return new ProxyServiceSequenceAndEndpointContainerEditPart(
-						view);
+				return new ProxyServiceSequenceAndEndpointContainerEditPart(view);
 
 			case MediatorFlowEditPart.VISUAL_ID:
 				return new MediatorFlowEditPart(view);
@@ -238,20 +237,16 @@ public class EsbEditPartFactory implements EditPartFactory {
 				return new EntitlementMediatorOutputConnectorEditPart(view);
 
 			case EntitlementMediatorOnRejectOutputConnectorEditPart.VISUAL_ID:
-				return new EntitlementMediatorOnRejectOutputConnectorEditPart(
-						view);
+				return new EntitlementMediatorOnRejectOutputConnectorEditPart(view);
 
 			case EntitlementMediatorOnAcceptOutputConnectorEditPart.VISUAL_ID:
-				return new EntitlementMediatorOnAcceptOutputConnectorEditPart(
-						view);
+				return new EntitlementMediatorOnAcceptOutputConnectorEditPart(view);
 
 			case EntitlementMediatorAdviceOutputConnectorEditPart.VISUAL_ID:
-				return new EntitlementMediatorAdviceOutputConnectorEditPart(
-						view);
+				return new EntitlementMediatorAdviceOutputConnectorEditPart(view);
 
 			case EntitlementMediatorObligationsOutputConnectorEditPart.VISUAL_ID:
-				return new EntitlementMediatorObligationsOutputConnectorEditPart(
-						view);
+				return new EntitlementMediatorObligationsOutputConnectorEditPart(view);
 
 			case EntitlementContainerEditPart.VISUAL_ID:
 				return new EntitlementContainerEditPart(view);
@@ -503,8 +498,7 @@ public class EsbEditPartFactory implements EditPartFactory {
 				return new RuleMediatorOutputConnectorEditPart(view);
 
 			case RuleMediatorChildMediatorsOutputConnectorEditPart.VISUAL_ID:
-				return new RuleMediatorChildMediatorsOutputConnectorEditPart(
-						view);
+				return new RuleMediatorChildMediatorsOutputConnectorEditPart(view);
 
 			case MediatorFlow17EditPart.VISUAL_ID:
 				return new MediatorFlow17EditPart(view);
@@ -534,8 +528,7 @@ public class EsbEditPartFactory implements EditPartFactory {
 				return new AggregateMediatorOutputConnectorEditPart(view);
 
 			case AggregateMediatorOnCompleteOutputConnectorEditPart.VISUAL_ID:
-				return new AggregateMediatorOnCompleteOutputConnectorEditPart(
-						view);
+				return new AggregateMediatorOnCompleteOutputConnectorEditPart(view);
 
 			case MediatorFlow3EditPart.VISUAL_ID:
 				return new MediatorFlow3EditPart(view);
@@ -658,12 +651,10 @@ public class EsbEditPartFactory implements EditPartFactory {
 				return new ConditionalRouterMediatorInputConnectorEditPart(view);
 
 			case ConditionalRouterMediatorOutputConnectorEditPart.VISUAL_ID:
-				return new ConditionalRouterMediatorOutputConnectorEditPart(
-						view);
+				return new ConditionalRouterMediatorOutputConnectorEditPart(view);
 
 			case ConditionalRouterMediatorAdditionalOutputConnectorEditPart.VISUAL_ID:
-				return new ConditionalRouterMediatorAdditionalOutputConnectorEditPart(
-						view);
+				return new ConditionalRouterMediatorAdditionalOutputConnectorEditPart(view);
 
 			case MediatorFlow16EditPart.VISUAL_ID:
 				return new MediatorFlow16EditPart(view);
@@ -756,8 +747,7 @@ public class EsbEditPartFactory implements EditPartFactory {
 				return new RecipientListEndPointOutputConnectorEditPart(view);
 
 			case RecipientListEndPointWestOutputConnectorEditPart.VISUAL_ID:
-				return new RecipientListEndPointWestOutputConnectorEditPart(
-						view);
+				return new RecipientListEndPointWestOutputConnectorEditPart(view);
 
 			case WSDLEndPointEditPart.VISUAL_ID:
 				return new WSDLEndPointEditPart(view);
@@ -1063,8 +1053,7 @@ public class EsbEditPartFactory implements EditPartFactory {
 				return new RecipientListEndPointOutputConnector2EditPart(view);
 
 			case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID:
-				return new RecipientListEndPointWestOutputConnector2EditPart(
-						view);
+				return new RecipientListEndPointWestOutputConnector2EditPart(view);
 
 			case WSDLEndPoint2EditPart.VISUAL_ID:
 				return new WSDLEndPoint2EditPart(view);
@@ -1175,12 +1164,10 @@ public class EsbEditPartFactory implements EditPartFactory {
 				return new InboundEndpointSequenceOutputConnectorEditPart(view);
 
 			case InboundEndpointOnErrorSequenceInputConnectorEditPart.VISUAL_ID:
-				return new InboundEndpointOnErrorSequenceInputConnectorEditPart(
-						view);
+				return new InboundEndpointOnErrorSequenceInputConnectorEditPart(view);
 
 			case InboundEndpointOnErrorSequenceOutputConnectorEditPart.VISUAL_ID:
-				return new InboundEndpointOnErrorSequenceOutputConnectorEditPart(
-						view);
+				return new InboundEndpointOnErrorSequenceOutputConnectorEditPart(view);
 
 			case InboundEndpointContainerEditPart.VISUAL_ID:
 				return new InboundEndpointContainerEditPart(view);
@@ -1309,9 +1296,7 @@ public class EsbEditPartFactory implements EditPartFactory {
 	/**
 	 * @generated
 	 */
-	public static CellEditorLocator getTextCellEditorLocator(
-			ITextAwareEditPart source) {
-		return CellEditorLocatorAccess.INSTANCE
-				.getTextCellEditorLocator(source);
+	public static CellEditorLocator getTextCellEditorLocator(ITextAwareEditPart source) {
+		return CellEditorLocatorAccess.INSTANCE.getTextCellEditorLocator(source);
 	}
 }

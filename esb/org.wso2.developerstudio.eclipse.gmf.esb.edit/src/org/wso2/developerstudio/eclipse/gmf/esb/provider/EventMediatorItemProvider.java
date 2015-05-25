@@ -36,13 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EventTopicType;
  * @generated
  */
 public class EventMediatorItemProvider
-	extends MediatorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends MediatorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

@@ -22,8 +22,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class InboundEndpointContainerItemSemanticEditPolicy extends
-		EsbBaseItemSemanticEditPolicy {
+public class InboundEndpointContainerItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -36,15 +35,11 @@ public class InboundEndpointContainerItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.InboundEndpointSequenceContainer_3773 == req
-				.getElementType()) {
-			return getGEFWrapper(new InboundEndpointSequenceContainerCreateCommand(
-					req));
+		if (EsbElementTypes.InboundEndpointSequenceContainer_3773 == req.getElementType()) {
+			return getGEFWrapper(new InboundEndpointSequenceContainerCreateCommand(req));
 		}
-		if (EsbElementTypes.InboundEndpointOnErrorSequenceContainer_3775 == req
-				.getElementType()) {
-			return getGEFWrapper(new InboundEndpointOnErrorSequenceContainerCreateCommand(
-					req));
+		if (EsbElementTypes.InboundEndpointOnErrorSequenceContainer_3775 == req.getElementType()) {
+			return getGEFWrapper(new InboundEndpointOnErrorSequenceContainerCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}
@@ -54,8 +49,7 @@ public class InboundEndpointContainerItemSemanticEditPolicy extends
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -79,14 +73,14 @@ public class InboundEndpointContainerItemSemanticEditPolicy extends
 			Node node = (Node) nit.next();
 			switch (EsbVisualIDRegistry.getVisualID(node)) {
 			case InboundEndpointSequenceContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(),
+						false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case InboundEndpointOnErrorSequenceContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(),
+						false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;

@@ -11,8 +11,7 @@ import org.eclipse.swt.graphics.Image;
 /**
  * @generated
  */
-public class EsbIconProvider extends DefaultElementTypeIconProvider implements
-		IIconProvider {
+public class EsbIconProvider extends DefaultElementTypeIconProvider implements IIconProvider {
 
 	/**
 	 * @generated

@@ -63,16 +63,12 @@ public class RouterTargetContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new RouterTargetContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new RouterTargetContainerCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new RouterTargetContainerItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new RouterTargetContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -85,8 +81,7 @@ public class RouterTargetContainerEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -130,17 +125,11 @@ public class RouterTargetContainerEditPart extends ShapeNodeEditPart {
 		if (childEditPart instanceof RouterMediatorEditPart) {
 			RouterMediatorEditPart routerMediatorEditPart = (RouterMediatorEditPart) childEditPart;
 			if (routerMediatorEditPart.targetOutputConnectors.size() != 0) {
-				BorderItemLocator locator = new FixedBorderItemLocator(
-						this.getFigure(),
-						routerMediatorEditPart.targetOutputConnectors.get(0),
-						PositionConstants.WEST, 0.5);
+				BorderItemLocator locator = new FixedBorderItemLocator(this.getFigure(),
+						routerMediatorEditPart.targetOutputConnectors.get(0), PositionConstants.WEST, 0.5);
 				if (routerMediatorEditPart.targetOutputConnectors.get(0) != null) {
-					routerMediatorEditPart
-							.getBorderedFigure()
-							.getBorderItemContainer()
-							.add(routerMediatorEditPart.targetOutputConnectors
-									.get(0),
-									locator);
+					routerMediatorEditPart.getBorderedFigure().getBorderItemContainer()
+							.add(routerMediatorEditPart.targetOutputConnectors.get(0), locator);
 				}
 			}
 		} else {
@@ -150,8 +139,7 @@ public class RouterTargetContainerEditPart extends ShapeNodeEditPart {
 	}
 
 	protected void addChildVisual(EditPart childEditPart, int index) {
-		refreshOutputConnector(((RouterMediatorEditPart) childEditPart
-				.getParent().getParent().getParent()));
+		refreshOutputConnector(((RouterMediatorEditPart) childEditPart.getParent().getParent().getParent()));
 		super.addChildVisual(childEditPart, -1);
 	}
 
@@ -250,8 +238,7 @@ public class RouterTargetContainerEditPart extends ShapeNodeEditPart {
 			layoutThis.setVertical(true);
 			this.setLayoutManager(layoutThis);
 
-			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8),
-					getMapMode().DPtoLP(8)));
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(8), getMapMode().DPtoLP(8)));
 			/*			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(700),
 			 getMapMode().DPtoLP(300)));*/
 			this.setLineStyle(Graphics.LINE_DASH);

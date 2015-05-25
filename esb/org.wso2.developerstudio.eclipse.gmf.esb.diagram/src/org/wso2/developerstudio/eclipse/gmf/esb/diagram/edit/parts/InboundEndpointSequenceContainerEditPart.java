@@ -60,16 +60,12 @@ public class InboundEndpointSequenceContainerEditPart extends ShapeNodeEditPart 
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new InboundEndpointSequenceContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new InboundEndpointSequenceContainerCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new InboundEndpointSequenceContainerItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new InboundEndpointSequenceContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -82,8 +78,7 @@ public class InboundEndpointSequenceContainerEditPart extends ShapeNodeEditPart 
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -201,8 +196,7 @@ public class InboundEndpointSequenceContainerEditPart extends ShapeNodeEditPart 
 		}
 	}
 
-	public class InboundEndpointSequenceContainerFigure extends
-			RoundedRectangle {
+	public class InboundEndpointSequenceContainerFigure extends RoundedRectangle {
 
 		public InboundEndpointSequenceContainerFigure() {
 			ToolbarLayout layoutThis = new ToolbarLayout();
@@ -214,8 +208,7 @@ public class InboundEndpointSequenceContainerEditPart extends ShapeNodeEditPart 
 			this.setLayoutManager(layoutThis);
 			this.setOutline(false);
 			// TODO: review this:
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(5000),
-					getMapMode().DPtoLP(700)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(5000), getMapMode().DPtoLP(700)));
 			this.setForegroundColor(new Color(null, 255, 255, 255));
 		}
 
@@ -233,7 +226,7 @@ public class InboundEndpointSequenceContainerEditPart extends ShapeNodeEditPart 
 		}
 
 	}
-	
+
 	@Override
 	public boolean isSelectable() {
 		return false;

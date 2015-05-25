@@ -108,21 +108,16 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new DataMapperMediatorItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new DataMapperMediatorCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DataMapperMediatorItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new DataMapperMediatorCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new OpenSeparatelyEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenSeparatelyEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -140,8 +135,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 				case DataMapperMediatorOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -166,8 +160,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		return primaryShape = new DataMapperMediatorFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0
-						&& this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 				}
@@ -184,28 +177,22 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof DataMapperMediatorDescriptionEditPart) {
-			((DataMapperMediatorDescriptionEditPart) childEditPart)
-					.setLabel(getPrimaryShape().getDataMapperDescriptionLabel());
+			((DataMapperMediatorDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getDataMapperDescriptionLabel());
 			return true;
 		}
 		if (childEditPart instanceof DataMapperMediatorInputConnectorEditPart) {
-			IFigure borderItemFigure = ((DataMapperMediatorInputConnectorEditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			IFigure borderItemFigure = ((DataMapperMediatorInputConnectorEditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.WEST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof DataMapperMediatorOutputConnectorEditPart) {
-			IFigure borderItemFigure = ((DataMapperMediatorOutputConnectorEditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			IFigure borderItemFigure = ((DataMapperMediatorOutputConnectorEditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.EAST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		return false;
@@ -217,14 +204,12 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 		}
 		if (childEditPart instanceof DataMapperMediatorInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((DataMapperMediatorInputConnectorEditPart) childEditPart)
-							.getFigure());
+					((DataMapperMediatorInputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof DataMapperMediatorOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((DataMapperMediatorOutputConnectorEditPart) childEditPart)
-							.getFigure());
+					((DataMapperMediatorOutputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -497,11 +482,9 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 	private String formatRegistryPath(String selectedPath) {
 		String formattedPath = selectedPath;
 		if (selectedPath.startsWith(G_REG_PATH_PREFIX)) {
-			formattedPath = String.format(G_REG_PREFIX,
-					selectedPath.substring(G_REG_PATH_PREFIX.length()));
+			formattedPath = String.format(G_REG_PREFIX, selectedPath.substring(G_REG_PATH_PREFIX.length()));
 		} else if (selectedPath.startsWith(C_REG_PATH_PREFIX)) {
-			formattedPath = String.format(C_REG_PREFIX,
-					selectedPath.substring(C_REG_PATH_PREFIX.length()));
+			formattedPath = String.format(C_REG_PREFIX, selectedPath.substring(C_REG_PATH_PREFIX.length()));
 		}
 		return formattedPath;
 	}
@@ -512,8 +495,7 @@ public class DataMapperMediatorEditPart extends FixedSizedAbstractMediator {
 			String localPath = datamapper.getConfigurationLocalPath();
 			if (localPath != null && !localPath.isEmpty()) {
 				Path path = new Path(localPath);
-				IFile file = ResourcesPlugin.getWorkspace().getRoot()
-						.getFile(path);
+				IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 				DataMapperEditor.open(file);
 			}
 		}

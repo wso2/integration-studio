@@ -59,8 +59,7 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 			return UnexecutableCommand.INSTANCE;
 		}
 		Iterator editParts = operationSet.iterator();
-		CompositeTransactionalCommand command = new CompositeTransactionalCommand(
-				getEditingDomain(), getCommandLabel());
+		CompositeTransactionalCommand command = new CompositeTransactionalCommand(getEditingDomain(), getCommandLabel());
 		while (editParts.hasNext()) {
 			EditPart editPart = (EditPart) editParts.next();
 			Command curCommand = editPart.getCommand(request);
@@ -85,8 +84,7 @@ public class DeleteElementAction extends DefaultDeleteElementAction {
 					.getInputConnector((ShapeNodeEditPart) editPart);
 			AbstractOutputConnectorEditPart currentOutputConnector = EditorUtils
 					.getOutputConnector((ShapeNodeEditPart) editPart);
-			if ((currentOutputConnector != null)
-					&& (currentOutputConnector.getSourceConnections().size() != 0)) {
+			if ((currentOutputConnector != null) && (currentOutputConnector.getSourceConnections().size() != 0)) {
 				((AbstractMediator) editPart)
 						.setConnectedInputConnector((AbstractInputConnectorEditPart) ((EsbLinkEditPart) currentOutputConnector
 								.getSourceConnections().get(0)).getTarget());

@@ -11,8 +11,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbModelingAss
 /**
  * @generated
  */
-public class EsbModelingAssistantProviderOfThrottleContainerEditPart extends
-		EsbModelingAssistantProvider {
+public class EsbModelingAssistantProviderOfThrottleContainerEditPart extends EsbModelingAssistantProvider {
 
 	/**
 	 * @generated

@@ -26,8 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class SwitchMediatorContainerItemSemanticEditPolicy extends
-		EsbBaseItemSemanticEditPolicy {
+public class SwitchMediatorContainerItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -40,14 +39,11 @@ public class SwitchMediatorContainerItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (EsbElementTypes.SwitchCaseParentContainer_3732 == req
-				.getElementType()) {
+		if (EsbElementTypes.SwitchCaseParentContainer_3732 == req.getElementType()) {
 			return getGEFWrapper(new SwitchCaseParentContainerCreateCommand(req));
 		}
-		if (EsbElementTypes.SwitchDefaultParentContainer_3734 == req
-				.getElementType()) {
-			return getGEFWrapper(new SwitchDefaultParentContainerCreateCommand(
-					req));
+		if (EsbElementTypes.SwitchDefaultParentContainer_3734 == req.getElementType()) {
+			return getGEFWrapper(new SwitchDefaultParentContainerCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}
@@ -57,8 +53,7 @@ public class SwitchMediatorContainerItemSemanticEditPolicy extends
 	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		View view = (View) getHost().getModel();
-		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
-				getEditingDomain(), null);
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
 		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
 		if (annotation == null) {
@@ -82,14 +77,14 @@ public class SwitchMediatorContainerItemSemanticEditPolicy extends
 			Node node = (Node) nit.next();
 			switch (EsbVisualIDRegistry.getVisualID(node)) {
 			case SwitchCaseParentContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(),
+						false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;
 			case SwitchDefaultParentContainerEditPart.VISUAL_ID:
-				cmd.add(new DestroyElementCommand(new DestroyElementRequest(
-						getEditingDomain(), node.getElement(), false))); // directlyOwned: true
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(),
+						false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
 				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
 				break;

@@ -12,7 +12,6 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
 	 * @generated
 	 */
 	public DiagramAppearancePreferencePage() {
-		setPreferenceStore(EsbDiagramEditorPlugin.getInstance()
-				.getPreferenceStore());
+		setPreferenceStore(EsbDiagramEditorPlugin.getInstance().getPreferenceStore());
 	}
 }

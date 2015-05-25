@@ -42,13 +42,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
  * @generated
  */
 public class HTTPEndpointItemProvider
-	extends AbstractEndPointItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends AbstractEndPointItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

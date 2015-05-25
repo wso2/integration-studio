@@ -122,26 +122,22 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		 */
 		IProject project = EditorUtils.getActiveProject();
 		if (project == null) {
-			IWorkbenchWindow window = PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow();
+			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			try {
-				project = getProject(((SelectionService) window
-						.getSelectionService()).getSelection());
+				project = getProject(((SelectionService) window.getSelectionService()).getSelection());
 			} catch (Exception e) {
 				log.error("Error while getting the project", e);
 			}
 		}
 
-		String connectorName = ((CloudConnectorOperation) ((Node) getModel())
-				.getElement()).getCloudConnectorName();
+		String connectorName = ((CloudConnectorOperation) ((Node) getModel()).getElement()).getCloudConnectorName();
 		if (connectorName == null) {
 			connectorName = CloudConnectorOperationDeserializer.cloudConnectorName;
 		}
 
 		if (project == null) {
 			try {
-				project = ((IFileEditorInput) EsbMultiPageEditor.currentEditor
-						.getEditorInput()).getFile().getProject();
+				project = ((IFileEditorInput) EsbMultiPageEditor.currentEditor.getEditorInput()).getFile().getProject();
 				//project = getProject(EsbMultiPageEditor.currentEditor.getSite().getPage().getSelection());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -151,13 +147,11 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		}
 		String connectorPath = CloudConnectorDirectoryTraverser.getInstance()
 				.getConnectorDirectoryPathFromConnectorName(
-						project.getWorkspace().getRoot().getLocation()
-								.toOSString(), connectorName);
+						project.getWorkspace().getRoot().getLocation().toOSString(), connectorName);
 		/*iconPath = project.getLocation().toOSString() + File.separator + "cloudConnectors"
 				+ File.separator + connectorName + "-connector" + File.separator + "icon"
 				+ File.separator + "icon-large.gif";*/
-		iconPath = connectorPath + File.separator + "icon" + File.separator
-				+ "icon-large.gif";
+		iconPath = connectorPath + File.separator + "icon" + File.separator + "icon-large.gif";
 
 	}
 
@@ -192,10 +186,8 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 	 }*/
 
 	public void fillConnectorOperationParameters() {
-		String addedConnector = ((CloudConnectorOperation) ((Node) getModel())
-				.getElement()).getCloudConnectorName();
-		String addedOperation = ((CloudConnectorOperation) ((Node) getModel())
-				.getElement()).getOperationName();
+		String addedConnector = ((CloudConnectorOperation) ((Node) getModel()).getElement()).getCloudConnectorName();
+		String addedOperation = ((CloudConnectorOperation) ((Node) getModel()).getElement()).getOperationName();
 		TransactionalEditingDomain editingDomain = null;
 		/*		IEditorPart editorpart = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 		 .getActivePage().getActiveEditor();
@@ -211,77 +203,57 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 
 				//String connectorPath = activeProject.getLocation().toOSString() + File.separator
 				//		+ "cloudConnectors" + File.separator + addedConnector + "-connector";
-				String connectorPath = CloudConnectorDirectoryTraverser
-						.getInstance()
+				String connectorPath = CloudConnectorDirectoryTraverser.getInstance()
 						.getConnectorDirectoryPathFromConnectorName(
-								activeProject.getWorkspace().getRoot()
-										.getLocation().toOSString(),
-								addedConnector);
+								activeProject.getWorkspace().getRoot().getLocation().toOSString(), addedConnector);
 
 				CloudConnectorDirectoryTraverser cloudConnectorDirectoryTraverser = CloudConnectorDirectoryTraverser
 						.getInstance(connectorPath);
 				String directory = null;
 				String operationFileName = null;
 				try {
-					operationFileName = cloudConnectorDirectoryTraverser
-							.getOperationsMap().get(addedOperation);
-					directory = cloudConnectorDirectoryTraverser
-							.getOperationFileNamesMap().get(operationFileName);
+					operationFileName = cloudConnectorDirectoryTraverser.getOperationsMap().get(addedOperation);
+					directory = cloudConnectorDirectoryTraverser.getOperationFileNamesMap().get(operationFileName);
 				} catch (Exception e1) {
 					log.error("Error while retrieving data for connector", e1);
 				}
-				String path = connectorPath + File.separator + directory
-						+ File.separator + operationFileName + ".xml";
+				String path = connectorPath + File.separator + directory + File.separator + operationFileName + ".xml";
 				addedOperation = null;
 
 				try {
-					String source = FileUtils
-							.getContentAsString(new File(path));
+					String source = FileUtils.getContentAsString(new File(path));
 					OMElement element = AXIOMUtil.stringToOM(source);
 
-					if (element.getFirstChildWithName(new QName(synapseNS,
-							"sequence", null)) != null) {
+					if (element.getFirstChildWithName(new QName(synapseNS, "sequence", null)) != null) {
 						TemplateMediatorFactory templateMediatorFactory = new TemplateMediatorFactory();
-						TemplateMediator templateMediator = (TemplateMediator) templateMediatorFactory
-								.createMediator(element, properties);
+						TemplateMediator templateMediator = (TemplateMediator) templateMediatorFactory.createMediator(
+								element, properties);
 						editingDomain = getEditingDomain();
-						DeleteCommand modelDeleteCommand = new DeleteCommand(
-								editingDomain,
-								((CloudConnectorOperation) ((Node) getModel())
-										.getElement()).getConnectorParameters());
+						DeleteCommand modelDeleteCommand = new DeleteCommand(editingDomain,
+								((CloudConnectorOperation) ((Node) getModel()).getElement()).getConnectorParameters());
 						if (modelDeleteCommand.canExecute()) {
-							editingDomain.getCommandStack().execute(
-									modelDeleteCommand);
+							editingDomain.getCommandStack().execute(modelDeleteCommand);
 						}
-						for (String parameter : templateMediator
-								.getParameters()) {
+						for (String parameter : templateMediator.getParameters()) {
 							final CallTemplateParameter callTemplateParameter = EsbFactory.eINSTANCE
 									.createCallTemplateParameter();
 							callTemplateParameter.setParameterName(parameter);
-							RecordingCommand command = new RecordingCommand(
-									editingDomain) {
+							RecordingCommand command = new RecordingCommand(editingDomain) {
 								protected void doExecute() {
-									((CloudConnectorOperation) ((Node) getModel())
-											.getElement())
-											.getConnectorParameters().add(
-													callTemplateParameter);
+									((CloudConnectorOperation) ((Node) getModel()).getElement())
+											.getConnectorParameters().add(callTemplateParameter);
 								}
 							};
 							if (command.canExecute()) {
-								editingDomain.getCommandStack()
-										.execute(command);
+								editingDomain.getCommandStack().execute(command);
 							}
 						}
 					}
 				} catch (XMLStreamException e) {
-					log.error(
-							"Error occured while parsing selected template file",
-							e);
+					log.error("Error occured while parsing selected template file", e);
 					//ErrorDialog.openError(shell,"Error occured while parsing selected template file", e.getMessage(), null);
 				} catch (IOException e) {
-					log.error(
-							"Error occured while reading selected template file",
-							e);
+					log.error("Error occured while reading selected template file", e);
 					//ErrorDialog.openError(shell,"Error occured while reading selected template file", e.getMessage(), null);
 				}
 			}
@@ -292,22 +264,16 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new CloudConnectorOperationItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new CloudConnectorOperationCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new CloudConnectorOperationItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new CloudConnectorOperationCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 	}
@@ -325,8 +291,7 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 				case CloudConnectorOperationOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -351,8 +316,7 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 		primaryShape = new CloudConnectorOperationFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0
-						&& this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
 					connectToMostSuitableElement();
 					reAllocate(rect);
 				}
@@ -374,29 +338,22 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 	 */
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof CloudConnectorOperationDescriptionEditPart) {
-			((CloudConnectorOperationDescriptionEditPart) childEditPart)
-					.setLabel(getPrimaryShape()
-							.getFigureCloudConnectorOperationDescriptionFigure());
+			((CloudConnectorOperationDescriptionEditPart) childEditPart).setLabel(getPrimaryShape()
+					.getFigureCloudConnectorOperationDescriptionFigure());
 			return true;
 		}
 		if (childEditPart instanceof CloudConnectorOperationInputConnectorEditPart) {
-			IFigure borderItemFigure = ((CloudConnectorOperationInputConnectorEditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.WEST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			IFigure borderItemFigure = ((CloudConnectorOperationInputConnectorEditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.WEST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		if (childEditPart instanceof CloudConnectorOperationOutputConnectorEditPart) {
-			IFigure borderItemFigure = ((CloudConnectorOperationOutputConnectorEditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.5);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			IFigure borderItemFigure = ((CloudConnectorOperationOutputConnectorEditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.EAST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}
 		return false;
@@ -410,17 +367,13 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 			return true;
 		}
 		if (childEditPart instanceof CloudConnectorOperationInputConnectorEditPart) {
-			getBorderedFigure()
-					.getBorderItemContainer()
-					.remove(((CloudConnectorOperationInputConnectorEditPart) childEditPart)
-							.getFigure());
+			getBorderedFigure().getBorderItemContainer().remove(
+					((CloudConnectorOperationInputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof CloudConnectorOperationOutputConnectorEditPart) {
-			getBorderedFigure()
-					.getBorderItemContainer()
-					.remove(((CloudConnectorOperationOutputConnectorEditPart) childEditPart)
-							.getFigure());
+			getBorderedFigure().getBorderItemContainer().remove(
+					((CloudConnectorOperationOutputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -546,15 +499,13 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 	 * @generated
 	 */
 	public EditPart getPrimaryChildEditPart() {
-		return getChildBySemanticHint(EsbVisualIDRegistry
-				.getType(CloudConnectorOperationDescriptionEditPart.VISUAL_ID));
+		return getChildBySemanticHint(EsbVisualIDRegistry.getType(CloudConnectorOperationDescriptionEditPart.VISUAL_ID));
 	}
 
 	/**
 	 * @generated NOT
 	 */
-	public class CloudConnectorOperationFigure extends
-			EsbGraphicalShapeWithLabel {
+	public class CloudConnectorOperationFigure extends EsbGraphicalShapeWithLabel {
 
 		int Figure_PreferredWidth = FixedSizedAbstractMediator.FigureWidth;
 		int Figure_PreferredHeight = FixedSizedAbstractMediator.FigureHeight + 20; //Additional 20 to show the editable label
@@ -604,20 +555,17 @@ public class CloudConnectorOperationEditPart extends FixedSizedAbstractMediator 
 			constraintMainImageRectangle.horizontalAlignment = GridData.CENTER;
 			constraintMainImageRectangle.verticalSpan = 1;
 
-			ImageFigure iconImageFigure = EditPartDrawingHelper
-					.getIconImageFigure(iconPath, Image_PreferredWidth,
-							Image_PreferredHeight);
+			ImageFigure iconImageFigure = EditPartDrawingHelper.getIconImageFigure(iconPath, Image_PreferredWidth,
+					Image_PreferredHeight);
 
 			RoundedRectangle mainImageRectangle = new RoundedRectangle();
 			mainImageRectangle.setCornerDimensions(new Dimension(8, 8));
 			mainImageRectangle.setOutline(false);
-			mainImageRectangle.setPreferredSize(new Dimension(
-					Image_PreferredWidth, Image_PreferredHeight));
+			mainImageRectangle.setPreferredSize(new Dimension(Image_PreferredWidth, Image_PreferredHeight));
 			mainImageRectangle.add(iconImageFigure);
 			this.removeAll();
 			this.add(mainImageRectangle, constraintMainImageRectangle);
-			this.add(tempPropertyValueRectangle1,
-					tempConstraintPropertyValueRectangle);
+			this.add(tempPropertyValueRectangle1, tempConstraintPropertyValueRectangle);
 		}
 
 		/**

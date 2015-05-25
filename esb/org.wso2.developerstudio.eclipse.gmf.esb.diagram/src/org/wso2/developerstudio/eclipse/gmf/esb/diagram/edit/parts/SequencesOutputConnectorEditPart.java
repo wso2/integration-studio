@@ -40,8 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class SequencesOutputConnectorEditPart extends
-		AbstractOutputConnectorEditPart {
+public class SequencesOutputConnectorEditPart extends AbstractOutputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -86,10 +85,8 @@ public class SequencesOutputConnectorEditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				getPrimaryDragEditPolicy());
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new SequencesOutputConnectorItemSemanticEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new SequencesOutputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -102,8 +99,7 @@ public class SequencesOutputConnectorEditPart extends
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -232,8 +228,7 @@ public class SequencesOutputConnectorEditPart extends
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMARelTypesOnSourceAndTarget(
-			IGraphicalEditPart targetEditPart) {
+	public List<IElementType> getMARelTypesOnSourceAndTarget(IGraphicalEditPart targetEditPart) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof ProxyInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
@@ -449,8 +444,7 @@ public class SequencesOutputConnectorEditPart extends
 			/*			this.setBackgroundColor(THIS_BACK);
 			 this.setPreferredSize(new Dimension(getMapMode().DPtoLP(12),
 			 getMapMode().DPtoLP(10)));*/
-			this.addMouseMotionListener(new LinkActivateListener(
-					getEditDomain()));
+			this.addMouseMotionListener(new LinkActivateListener(getEditDomain()));
 
 			GridLayout layoutThis = new GridLayout();
 			layoutThis.numColumns = 1;
@@ -477,8 +471,7 @@ public class SequencesOutputConnectorEditPart extends
 			constraintImageRectangle11.grabExcessHorizontalSpace = true;
 			constraintImageRectangle11.grabExcessVerticalSpace = true;
 
-			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin
-					.getBundledImageDescriptor("icons/ico20/arrowEast.png");
+			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin.getBundledImageDescriptor("icons/ico20/arrowEast.png");
 			ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
 			img1.setSize(new Dimension(22, 18));
 

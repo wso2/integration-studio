@@ -33,8 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
 /**
  * @generated NOT
  */
-public class InboundEndpointOnErrorSequenceOutputConnectorEditPart extends
-		AbstractOutputConnectorEditPart {
+public class InboundEndpointOnErrorSequenceOutputConnectorEditPart extends AbstractOutputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -79,10 +78,8 @@ public class InboundEndpointOnErrorSequenceOutputConnectorEditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				getPrimaryDragEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new InboundEndpointOnErrorSequenceOutputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -96,8 +93,7 @@ public class InboundEndpointOnErrorSequenceOutputConnectorEditPart extends
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -224,8 +220,7 @@ public class InboundEndpointOnErrorSequenceOutputConnectorEditPart extends
 		 */
 		public EastPointerFigure() {
 
-			this.addMouseMotionListener(new LinkActivateListener(
-					getEditDomain()));
+			this.addMouseMotionListener(new LinkActivateListener(getEditDomain()));
 
 			GridLayout layoutThis = new GridLayout();
 			layoutThis.numColumns = 1;
@@ -252,8 +247,7 @@ public class InboundEndpointOnErrorSequenceOutputConnectorEditPart extends
 			constraintImageRectangle11.grabExcessHorizontalSpace = true;
 			constraintImageRectangle11.grabExcessVerticalSpace = true;
 
-			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin
-					.getBundledImageDescriptor("icons/ico20/arrowEast.png");
+			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin.getBundledImageDescriptor("icons/ico20/arrowEast.png");
 			ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
 			img1.setSize(new Dimension(22, 18));
 
@@ -267,7 +261,7 @@ public class InboundEndpointOnErrorSequenceOutputConnectorEditPart extends
 		}
 
 	}
-	
+
 	@Override
 	public boolean isSelectable() {
 		return false;

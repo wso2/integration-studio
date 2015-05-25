@@ -33,9 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
  * 
  * @generated
  */
-public class LogMediatorItemProvider extends MediatorItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class LogMediatorItemProvider extends MediatorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->

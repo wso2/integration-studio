@@ -66,16 +66,12 @@ public class ProxyServiceFaultContainerEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new ProxyServiceFaultContainerItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new ProxyServiceFaultContainerCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new ProxyServiceFaultContainerItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new ProxyServiceFaultContainerCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -88,8 +84,7 @@ public class ProxyServiceFaultContainerEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -132,15 +127,10 @@ public class ProxyServiceFaultContainerEditPart extends ShapeNodeEditPart {
 	protected void refreshInputConnector(EditPart childEditPart) {
 		if (childEditPart instanceof AbstractBaseFigureEditPart) {
 			AbstractBaseFigureEditPart baseFigureEditPart = (AbstractBaseFigureEditPart) childEditPart;
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					this.getFigure(),
-					baseFigureEditPart.faultInputnputConnectorFigure,
-					PositionConstants.WEST, 0.5);
-			baseFigureEditPart
-					.getBorderedFigure()
-					.getBorderItemContainer()
-					.add(baseFigureEditPart.faultInputnputConnectorFigure,
-							locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(this.getFigure(),
+					baseFigureEditPart.faultInputnputConnectorFigure, PositionConstants.WEST, 0.5);
+			baseFigureEditPart.getBorderedFigure().getBorderItemContainer()
+					.add(baseFigureEditPart.faultInputnputConnectorFigure, locator);
 		} else {
 			//Should handle properly.
 			throw new ClassCastException();
@@ -149,8 +139,7 @@ public class ProxyServiceFaultContainerEditPart extends ShapeNodeEditPart {
 
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		if (childEditPart.getParent().getParent().getParent() instanceof AbstractBaseFigureEditPart) {
-			refreshInputConnector(((AbstractBaseFigureEditPart) childEditPart
-					.getParent().getParent().getParent()));
+			refreshInputConnector(((AbstractBaseFigureEditPart) childEditPart.getParent().getParent().getParent()));
 		}
 		super.addChildVisual(childEditPart, -1);
 	}
@@ -262,8 +251,7 @@ public class ProxyServiceFaultContainerEditPart extends ShapeNodeEditPart {
 			this.setLayoutManager(layoutThis);
 			this.setOutline(false);
 			// TODO: review this:
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(5000),
-					getMapMode().DPtoLP(700)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(5000), getMapMode().DPtoLP(700)));
 			this.setForegroundColor(new Color(null, 255, 255, 255));
 		}
 

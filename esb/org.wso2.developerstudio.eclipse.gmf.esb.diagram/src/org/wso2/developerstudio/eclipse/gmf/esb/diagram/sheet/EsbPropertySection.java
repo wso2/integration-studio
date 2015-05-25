@@ -38,8 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.sheet.CustomAdvan
 /**
  * @generated NOT
  */
-public class EsbPropertySection extends CustomAdvancedPropertySection implements
-		IPropertySourceProvider {
+public class EsbPropertySection extends CustomAdvancedPropertySection implements IPropertySourceProvider {
 
 	/**
 	 * @generated NOT
@@ -50,15 +49,13 @@ public class EsbPropertySection extends CustomAdvancedPropertySection implements
 		}
 		AdapterFactory af = getAdapterFactory(object);
 		if (af != null) {
-			IItemPropertySource ips = (IItemPropertySource) af.adapt(object,
-					IItemPropertySource.class);
+			IItemPropertySource ips = (IItemPropertySource) af.adapt(object, IItemPropertySource.class);
 			if (ips != null) {
 				return new EsbPropertySource(object, ips);
 			}
 		}
 		if (object instanceof IAdaptable) {
-			return (IPropertySource) ((IAdaptable) object)
-					.getAdapter(IPropertySource.class);
+			return (IPropertySource) ((IAdaptable) object).getAdapter(IPropertySource.class);
 		}
 		return null;
 	}
@@ -96,14 +93,12 @@ public class EsbPropertySection extends CustomAdvancedPropertySection implements
 	 * @generated
 	 */
 	public void setInput(IWorkbenchPart part, ISelection selection) {
-		if (selection.isEmpty()
-				|| false == selection instanceof StructuredSelection) {
+		if (selection.isEmpty() || false == selection instanceof StructuredSelection) {
 			super.setInput(part, selection);
 			return;
 		}
 		final StructuredSelection structuredSelection = ((StructuredSelection) selection);
-		ArrayList transformedSelection = new ArrayList(
-				structuredSelection.size());
+		ArrayList transformedSelection = new ArrayList(structuredSelection.size());
 		for (Iterator it = structuredSelection.iterator(); it.hasNext();) {
 			Object r = transformSelection(it.next());
 			if (r != null) {
@@ -118,14 +113,11 @@ public class EsbPropertySection extends CustomAdvancedPropertySection implements
 	 */
 	protected AdapterFactory getAdapterFactory(Object object) {
 		if (getEditingDomain() instanceof AdapterFactoryEditingDomain) {
-			return ((AdapterFactoryEditingDomain) getEditingDomain())
-					.getAdapterFactory();
+			return ((AdapterFactoryEditingDomain) getEditingDomain()).getAdapterFactory();
 		}
-		TransactionalEditingDomain editingDomain = TransactionUtil
-				.getEditingDomain(object);
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(object);
 		if (editingDomain != null) {
-			return ((AdapterFactoryEditingDomain) editingDomain)
-					.getAdapterFactory();
+			return ((AdapterFactoryEditingDomain) editingDomain).getAdapterFactory();
 		}
 		return null;
 	}

@@ -96,28 +96,22 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicyWithCustomReparent(
-						EsbVisualIDRegistry.TYPED_INSTANCE));
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicyWithCustomReparent(
+				EsbVisualIDRegistry.TYPED_INSTANCE));
 		super.createDefaultEditPolicies();
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new InboundEndpointItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new InboundEndpointCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new InboundEndpointItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new InboundEndpointCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that
 		// would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 		//remove 8 corners
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx());
 	}
 
 	/**
@@ -135,8 +129,7 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 				case InboundEndpointOnErrorSequenceOutputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -162,8 +155,7 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 				if (y == -1) {
 					y = +2;
 				}
-				alignLeft(y,
-						((BoundsImpl) notification.getNotifier()).getWidth(),
+				alignLeft(y, ((BoundsImpl) notification.getNotifier()).getWidth(),
 						((BoundsImpl) notification.getNotifier()).getHeight());
 				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
 				canvas.getViewport().repaint();
@@ -175,13 +167,11 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 	private void alignLeft(int y, int width, int height) {
 		y = 100;
 		Rectangle constraints = new Rectangle(0, y, width, height);
-		((GraphicalEditPart) getParent()).setLayoutConstraint(this,
-				getFigure(), constraints);
+		((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
 	}
 
 	private void alignLeft() {
-		alignLeft(getFigure().getBounds().y, getFigure().getBounds().width,
-				getFigure().getBounds().height);
+		alignLeft(getFigure().getBounds().y, getFigure().getBounds().width, getFigure().getBounds().height);
 	}
 
 	/**
@@ -191,8 +181,7 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 		return primaryShape = new InboundEndpointFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0
-						&& this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
 					alignLeft();
 				}
 				/*				if (!figureUpdated) {
@@ -212,26 +201,19 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof InboundEndpointSequenceInputConnectorEditPart) {
-			IFigure borderItemFigure = ((InboundEndpointSequenceInputConnectorEditPart) childEditPart)
-					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.25);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			IFigure borderItemFigure = ((InboundEndpointSequenceInputConnectorEditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.EAST, 0.25);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			sequenceInputConnectorFigure = borderItemFigure;
 			return true;
 		}
 		if (childEditPart instanceof InboundEndpointSequenceOutputConnectorEditPart) {
-			IFigure borderItemFigure = ((InboundEndpointSequenceOutputConnectorEditPart) childEditPart)
-					.getFigure();
+			IFigure borderItemFigure = ((InboundEndpointSequenceOutputConnectorEditPart) childEditPart).getFigure();
 			BorderItemLocator locator = new FixedBorderItemLocator(
-					(IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
-							.getChildren().get(0)).getChildren().get(0))
-							.getChildren().get(0), borderItemFigure,
-					PositionConstants.EAST, 0.25);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+					(IFigure) ((IFigure) ((IFigure) (IFigure) getFigure().getChildren().get(0)).getChildren().get(0))
+							.getChildren().get(0), borderItemFigure, PositionConstants.EAST, 0.25);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			sequenceOutputConnectorFigure = borderItemFigure;
 			return true;
 		}
@@ -239,11 +221,9 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 
 			IFigure borderItemFigure = ((InboundEndpointOnErrorSequenceInputConnectorEditPart) childEditPart)
 					.getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(
-					getMainFigure(), borderItemFigure, PositionConstants.EAST,
-					0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.EAST, 0.75);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			onErrorSequenceInputConnectorFigure = borderItemFigure;
 			return true;
 		}
@@ -251,12 +231,9 @@ public class InboundEndpointEditPart extends AbstractBorderedShapeEditPart {
 			IFigure borderItemFigure = ((InboundEndpointOnErrorSequenceOutputConnectorEditPart) childEditPart)
 					.getFigure();
 			BorderItemLocator locator = new FixedBorderItemLocator(
-					(IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
-							.getChildren().get(0)).getChildren().get(0))
-							.getChildren().get(0), borderItemFigure,
-					PositionConstants.EAST, 0.75);
-			getBorderedFigure().getBorderItemContainer().add(borderItemFigure,
-					locator);
+					(IFigure) ((IFigure) ((IFigure) (IFigure) getFigure().getChildren().get(0)).getChildren().get(0))
+							.getChildren().get(0), borderItemFigure, PositionConstants.EAST, 0.75);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			onErrorSequenceOutputConnectorFigure = borderItemFigure;
 			return true;
 		}

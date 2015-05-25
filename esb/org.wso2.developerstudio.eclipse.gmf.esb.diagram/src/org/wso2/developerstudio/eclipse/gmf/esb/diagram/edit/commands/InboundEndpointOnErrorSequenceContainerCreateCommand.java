@@ -18,14 +18,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceCo
 /**
  * @generated
  */
-public class InboundEndpointOnErrorSequenceContainerCreateCommand extends
-		EditElementCommand {
+public class InboundEndpointOnErrorSequenceContainerCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public InboundEndpointOnErrorSequenceContainerCreateCommand(
-			CreateElementRequest req) {
+	public InboundEndpointOnErrorSequenceContainerCreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -34,8 +32,7 @@ public class InboundEndpointOnErrorSequenceContainerCreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -57,8 +54,7 @@ public class InboundEndpointOnErrorSequenceContainerCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
 		InboundEndpointOnErrorSequenceContainer newElement = EsbFactory.eINSTANCE
 				.createInboundEndpointOnErrorSequenceContainer();
 
@@ -74,19 +70,13 @@ public class InboundEndpointOnErrorSequenceContainerCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(
-			InboundEndpointOnErrorSequenceContainer newElement,
-			IProgressMonitor monitor, IAdaptable info)
-			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+	protected void doConfigure(InboundEndpointOnErrorSequenceContainer newElement, IProgressMonitor monitor,
+			IAdaptable info) throws ExecutionException {
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

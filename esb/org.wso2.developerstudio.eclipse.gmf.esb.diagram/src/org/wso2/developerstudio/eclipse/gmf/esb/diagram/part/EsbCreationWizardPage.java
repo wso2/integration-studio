@@ -28,8 +28,7 @@ public class EsbCreationWizardPage extends WizardNewFileCreationPage {
 	/**
 	 * @generated
 	 */
-	public EsbCreationWizardPage(String pageName,
-			IStructuredSelection selection, String fileExtension) {
+	public EsbCreationWizardPage(String pageName, IStructuredSelection selection, String fileExtension) {
 		super(pageName, selection);
 		this.fileExtension = fileExtension;
 	}
@@ -74,8 +73,7 @@ public class EsbCreationWizardPage extends WizardNewFileCreationPage {
 		if (fileName == null || fileName.trim().length() == 0) {
 			fileName = getDefaultFilename();
 		}
-		setFileName(EsbDiagramEditorUtil.getUniqueFileName(
-				getContainerFullPath(), fileName, getExtension()));
+		setFileName(EsbDiagramEditorUtil.getUniqueFileName(getContainerFullPath(), fileName, getExtension()));
 		setPageComplete(validatePage());
 	}
 
@@ -101,8 +99,7 @@ public class EsbCreationWizardPage extends WizardNewFileCreationPage {
 
 	protected boolean validateProjectNature() {
 		try {
-			IProject project = ResourcesPlugin.getWorkspace().getRoot()
-					.getProject(getContainerFullPath().segment(0));
+			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getContainerFullPath().segment(0));
 			return project.hasNature(Constants.ESB_PROJECT_NATURE);
 		} catch (Exception e) {
 			// ignore
@@ -112,8 +109,7 @@ public class EsbCreationWizardPage extends WizardNewFileCreationPage {
 
 	protected boolean validateArtifactName() {
 		try {
-			IProject project = ResourcesPlugin.getWorkspace().getRoot()
-					.getProject(getContainerFullPath().segment(0));
+			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(getContainerFullPath().segment(0));
 			if (!CommonFieldValidator.isValidArtifactName(getFileName())) {
 				setErrorMessage("Artifact name cannot contain invalid characters");
 				return false;

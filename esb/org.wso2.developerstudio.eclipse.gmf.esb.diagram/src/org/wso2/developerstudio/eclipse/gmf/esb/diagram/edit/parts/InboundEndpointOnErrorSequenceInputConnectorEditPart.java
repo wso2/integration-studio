@@ -35,8 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorPlu
 /**
  * @generated NOT
  */
-public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends
-		AbstractInputConnectorEditPart {
+public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends AbstractInputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -70,10 +69,8 @@ public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				getPrimaryDragEditPolicy());
-		installEditPolicy(
-				EditPolicyRoles.SEMANTIC_ROLE,
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, getPrimaryDragEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
 				new InboundEndpointOnErrorSequenceInputConnectorItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
@@ -88,8 +85,7 @@ public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -272,8 +268,7 @@ public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends
 			constraintImageRectangle11.grabExcessHorizontalSpace = true;
 			constraintImageRectangle11.grabExcessVerticalSpace = true;
 
-			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin
-					.getBundledImageDescriptor("icons/ico20/arrowEast.png");
+			ImageDescriptor imgDesc1 = EsbDiagramEditorPlugin.getBundledImageDescriptor("icons/ico20/arrowEast.png");
 			ImageFigure img1 = new ImageFigure(imgDesc1.createImage());
 			img1.setSize(new Dimension(22, 18));
 
@@ -286,7 +281,7 @@ public class InboundEndpointOnErrorSequenceInputConnectorEditPart extends
 			this.add(imageRectangle11, constraintImageRectangle11);
 		}
 	}
-	
+
 	@Override
 	public boolean isSelectable() {
 		return false;

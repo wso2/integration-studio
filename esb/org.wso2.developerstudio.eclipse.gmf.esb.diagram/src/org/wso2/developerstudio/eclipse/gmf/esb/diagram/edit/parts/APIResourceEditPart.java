@@ -77,25 +77,18 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 	 * @generated NOT
 	 */
 	protected void createDefaultEditPolicies() {
-		installEditPolicy(EditPolicyRoles.CREATION_ROLE,
-				new CreationEditPolicy());
+		installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new APIResourceItemSemanticEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new DragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-				new FeedbackIndicateDragDropEditPolicy());
-		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
-				new APIResourceCanonicalEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new APIResourceItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new DragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new FeedbackIndicateDragDropEditPolicy());
+		installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new APIResourceCanonicalEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// For handle Double click Event.
-		installEditPolicy(EditPolicyRoles.OPEN_ROLE,
-				new ShowPropertyViewEditPolicy());
+		installEditPolicy(EditPolicyRoles.OPEN_ROLE, new ShowPropertyViewEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new CustomNonResizableEditPolicyEx()); //remove 8 corners
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new CustomNonResizableEditPolicyEx()); //remove 8 corners
 	}
 
 	/**
@@ -112,8 +105,7 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 				case APIResourceFaultInputConnectorEditPart.VISUAL_ID:
 					return new BorderItemSelectionEditPolicy();
 				}
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -152,8 +144,7 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 		return primaryShape = new APIResourceFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
-				if (this.getBounds().getLocation().x != 0
-						&& this.getBounds().getLocation().y != 0) {
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
 					alignLeft();
 					x = this.getBounds().getLocation().x;
 					y = this.getBounds().getLocation().y;
@@ -166,14 +157,12 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 	}
 
 	private void alignLeft() {
-		alignLeft(getFigure().getBounds().y, getFigure().getBounds().width,
-				getFigure().getBounds().height);
+		alignLeft(getFigure().getBounds().y, getFigure().getBounds().width, getFigure().getBounds().height);
 	}
 
 	private void alignLeft(int y, int width, int height) {
 		Rectangle constraints = new Rectangle(0, y, width, height);
-		((GraphicalEditPart) getParent()).setLayoutConstraint(this,
-				getFigure(), constraints);
+		((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
 	}
 
 	/**
@@ -184,22 +173,16 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 		int noOfResources = getParent().getChildren().size();
 		if (noOfResources > 1) {
 			for (int i = 0; i < (noOfResources - 1); i++) {
-				IFigure currentFigure = ((GraphicalEditPart) getParent()
-						.getChildren().get(i)).getFigure();
+				IFigure currentFigure = ((GraphicalEditPart) getParent().getChildren().get(i)).getFigure();
 				Rectangle currentFigureBounds = currentFigure.getBounds();
-				IFigure nextFigure = ((GraphicalEditPart) getParent()
-						.getChildren().get(i + 1)).getFigure();
+				IFigure nextFigure = ((GraphicalEditPart) getParent().getChildren().get(i + 1)).getFigure();
 				Rectangle nextFigureBounds = nextFigure.getBounds();
-				int currentResourceBottomMargin = currentFigureBounds.y
-						+ currentFigureBounds.height;
+				int currentResourceBottomMargin = currentFigureBounds.y + currentFigureBounds.height;
 
-				APIResourceEditPart editPart = (APIResourceEditPart) getParent()
-						.getChildren().get(i + 1);
-				Rectangle constraints = new Rectangle(0,
-						(currentResourceBottomMargin + 20),
-						nextFigureBounds.width, nextFigureBounds.height);
-				((GraphicalEditPart) getParent()).setLayoutConstraint(editPart,
-						nextFigure, constraints);
+				APIResourceEditPart editPart = (APIResourceEditPart) getParent().getChildren().get(i + 1);
+				Rectangle constraints = new Rectangle(0, (currentResourceBottomMargin + 20), nextFigureBounds.width,
+						nextFigureBounds.height);
+				((GraphicalEditPart) getParent()).setLayoutConstraint(editPart, nextFigure, constraints);
 				nextFigure.setBounds(constraints);
 			}
 
@@ -215,14 +198,12 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof APIResourceOutputConnectorEditPart) {
-			outputConnectorFigure = ((APIResourceOutputConnectorEditPart) childEditPart)
-					.getFigure();
+			outputConnectorFigure = ((APIResourceOutputConnectorEditPart) childEditPart).getFigure();
 
 			return false;
 		}
 		if (childEditPart instanceof APIResourceInputConnectorEditPart) {
-			inputConnectorFigure = ((APIResourceInputConnectorEditPart) childEditPart)
-					.getFigure();
+			inputConnectorFigure = ((APIResourceInputConnectorEditPart) childEditPart).getFigure();
 
 			return false;
 		}
@@ -234,25 +215,20 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 		}
 
 		if (childEditPart instanceof APIResourceFaultInputConnectorEditPart) {
-			faultInputnputConnectorFigure = ((APIResourceFaultInputConnectorEditPart) childEditPart)
-					.getFigure();
+			faultInputnputConnectorFigure = ((APIResourceFaultInputConnectorEditPart) childEditPart).getFigure();
 
 			return false;
 		}
 
 		if (childEditPart instanceof APIResourceInSequenceInputConnectorEditPart) {
-			inSequenceInputConnectorFigure = ((APIResourceInSequenceInputConnectorEditPart) childEditPart)
-					.getFigure();
-			IFigure figure = ((GraphicalEditPart) ((GraphicalEditPart) ((GraphicalEditPart) getChildren()
-					.get(4)).getChildren().get(0)).getChildren().get(0))
-					.getFigure();
+			inSequenceInputConnectorFigure = ((APIResourceInSequenceInputConnectorEditPart) childEditPart).getFigure();
+			IFigure figure = ((GraphicalEditPart) ((GraphicalEditPart) ((GraphicalEditPart) getChildren().get(4))
+					.getChildren().get(0)).getChildren().get(0)).getFigure();
 			BorderItemLocator locator = new FixedBorderItemLocator(
 			/*(IFigure) ((IFigure) ((IFigure) (IFigure) getFigure()
 			.getChildren().get(0)).getChildren().get(0))
-			.getChildren().get(1)*/figure, inSequenceInputConnectorFigure,
-					PositionConstants.EAST, 0.25);
-			getBorderedFigure().getBorderItemContainer().add(
-					inSequenceInputConnectorFigure, locator);
+			.getChildren().get(1)*/figure, inSequenceInputConnectorFigure, PositionConstants.EAST, 0.25);
+			getBorderedFigure().getBorderItemContainer().add(inSequenceInputConnectorFigure, locator);
 			return true;
 		}
 
@@ -262,21 +238,17 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 	protected boolean removeFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof APIResourceOutputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((APIResourceOutputConnectorEditPart) childEditPart)
-							.getFigure());
+					((APIResourceOutputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof APIResourceInputConnectorEditPart) {
 			getBorderedFigure().getBorderItemContainer().remove(
-					((APIResourceInputConnectorEditPart) childEditPart)
-							.getFigure());
+					((APIResourceInputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		if (childEditPart instanceof APIResourceInSequenceInputConnectorEditPart) {
-			getBorderedFigure()
-					.getBorderItemContainer()
-					.remove(((APIResourceInSequenceInputConnectorEditPart) childEditPart)
-							.getFigure());
+			getBorderedFigure().getBorderItemContainer().remove(
+					((APIResourceInSequenceInputConnectorEditPart) childEditPart).getFigure());
 			return true;
 		}
 		return false;
@@ -404,8 +376,7 @@ public class APIResourceEditPart extends AbstractBaseFigureEditPart {
 			layoutThis.setVertical(false);
 
 			this.setLayoutManager(layoutThis);
-			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(300),
-					getMapMode().DPtoLP(400)));
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(300), getMapMode().DPtoLP(400)));
 			this.setOutline(false);
 			this.setBackgroundColor(THIS_BACK);
 			this.setForegroundColor(new Color(null, 0, 0, 0));

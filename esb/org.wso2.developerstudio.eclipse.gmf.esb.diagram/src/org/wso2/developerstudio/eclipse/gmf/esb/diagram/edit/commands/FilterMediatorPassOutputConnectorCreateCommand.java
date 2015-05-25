@@ -18,14 +18,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorPassOutputConnecto
 /**
  * @generated
  */
-public class FilterMediatorPassOutputConnectorCreateCommand extends
-		EditElementCommand {
+public class FilterMediatorPassOutputConnectorCreateCommand extends EditElementCommand {
 
 	/**
 	 * @generated
 	 */
-	public FilterMediatorPassOutputConnectorCreateCommand(
-			CreateElementRequest req) {
+	public FilterMediatorPassOutputConnectorCreateCommand(CreateElementRequest req) {
 		super(req.getLabel(), null, req);
 	}
 
@@ -34,8 +32,7 @@ public class FilterMediatorPassOutputConnectorCreateCommand extends
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {
-		EObject container = ((CreateElementRequest) getRequest())
-				.getContainer();
+		EObject container = ((CreateElementRequest) getRequest()).getContainer();
 		if (container instanceof View) {
 			container = ((View) container).getElement();
 		}
@@ -57,10 +54,8 @@ public class FilterMediatorPassOutputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-			IAdaptable info) throws ExecutionException {
-		FilterMediatorPassOutputConnector newElement = EsbFactory.eINSTANCE
-				.createFilterMediatorPassOutputConnector();
+	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+		FilterMediatorPassOutputConnector newElement = EsbFactory.eINSTANCE.createFilterMediatorPassOutputConnector();
 
 		FilterMediator owner = (FilterMediator) getElementToEdit();
 		owner.setPassOutputConnector(newElement);
@@ -74,18 +69,13 @@ public class FilterMediatorPassOutputConnectorCreateCommand extends
 	/**
 	 * @generated
 	 */
-	protected void doConfigure(FilterMediatorPassOutputConnector newElement,
-			IProgressMonitor monitor, IAdaptable info)
+	protected void doConfigure(FilterMediatorPassOutputConnector newElement, IProgressMonitor monitor, IAdaptable info)
 			throws ExecutionException {
-		IElementType elementType = ((CreateElementRequest) getRequest())
-				.getElementType();
-		ConfigureRequest configureRequest = new ConfigureRequest(
-				getEditingDomain(), newElement, elementType);
-		configureRequest.setClientContext(((CreateElementRequest) getRequest())
-				.getClientContext());
+		IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
+		ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), newElement, elementType);
+		configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
 		configureRequest.addParameters(getRequest().getParameters());
-		ICommand configureCommand = elementType
-				.getEditCommand(configureRequest);
+		ICommand configureCommand = elementType.getEditCommand(configureRequest);
 		if (configureCommand != null && configureCommand.canExecute()) {
 			configureCommand.execute(monitor, info);
 		}

@@ -55,8 +55,7 @@ public class EndpointDiagramEditPart extends ShapeNodeEditPart {
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
-		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE,
-				new EndpointDiagramItemSemanticEditPolicy());
+		installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new EndpointDiagramItemSemanticEditPolicy());
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
 		// XXX need an SCR to runtime to have another abstract superclass that would let children add reasonable editpolicies
 		// removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
@@ -64,11 +63,11 @@ public class EndpointDiagramEditPart extends ShapeNodeEditPart {
 
 	private void disableUnnecessaryToolPaletteItems() {
 		/* disabling Tool item from palette*/
-		PaletteContainer nodes = ((PaletteContainer) getEditDomain()
-				.getPaletteViewer().getPaletteRoot().getChildren().get(1));
+		PaletteContainer nodes = ((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot().getChildren()
+				.get(1));
 		nodes.setVisible(false);
-		PaletteContainer mediators = ((PaletteContainer) getEditDomain()
-				.getPaletteViewer().getPaletteRoot().getChildren().get(2));
+		PaletteContainer mediators = ((PaletteContainer) getEditDomain().getPaletteViewer().getPaletteRoot()
+				.getChildren().get(2));
 		mediators.setVisible(false);
 	}
 
@@ -79,8 +78,7 @@ public class EndpointDiagramEditPart extends ShapeNodeEditPart {
 		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child
-						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}

@@ -36,13 +36,11 @@ public class EsbDiagramActionBarContributor extends DiagramActionBarContributor 
 		// registering  global save action
 		bars.setGlobalActionHandler(GlobalActionId.SAVE, null);
 		// print preview
-		IMenuManager fileMenu = bars.getMenuManager().findMenuUsingPath(
-				IWorkbenchActionConstants.M_FILE);
+		IMenuManager fileMenu = bars.getMenuManager().findMenuUsingPath(IWorkbenchActionConstants.M_FILE);
 		assert fileMenu != null;
 		fileMenu.remove("pageSetupAction"); //$NON-NLS-1$
 		// Removing Diagram menu from ESB editor.
-		IMenuManager diagramMenu = bars.getMenuManager().findMenuUsingPath(
-				ActionIds.MENU_DIAGRAM);
+		IMenuManager diagramMenu = bars.getMenuManager().findMenuUsingPath(ActionIds.MENU_DIAGRAM);
 		assert diagramMenu != null;
 		bars.getMenuManager().remove("diagramMenu");
 

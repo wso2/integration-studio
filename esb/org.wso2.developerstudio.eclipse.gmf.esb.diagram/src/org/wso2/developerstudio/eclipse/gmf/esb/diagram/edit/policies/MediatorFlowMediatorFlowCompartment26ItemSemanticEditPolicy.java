@@ -68,8 +68,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class MediatorFlowMediatorFlowCompartment26ItemSemanticEditPolicy extends
-		EsbBaseItemSemanticEditPolicy {
+public class MediatorFlowMediatorFlowCompartment26ItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated
@@ -199,8 +198,7 @@ public class MediatorFlowMediatorFlowCompartment26ItemSemanticEditPolicy extends
 		if (EsbElementTypes.RouterMediator_3628 == req.getElementType()) {
 			return getGEFWrapper(new RouterMediatorCreateCommand(req));
 		}
-		if (EsbElementTypes.ConditionalRouterMediator_3635 == req
-				.getElementType()) {
+		if (EsbElementTypes.ConditionalRouterMediator_3635 == req.getElementType()) {
 			return getGEFWrapper(new ConditionalRouterMediatorCreateCommand(req));
 		}
 		if (EsbElementTypes.BAMMediator_3680 == req.getElementType()) {
@@ -248,8 +246,7 @@ public class MediatorFlowMediatorFlowCompartment26ItemSemanticEditPolicy extends
 		if (EsbElementTypes.CloudConnector_3719 == req.getElementType()) {
 			return getGEFWrapper(new CloudConnectorCreateCommand(req));
 		}
-		if (EsbElementTypes.CloudConnectorOperation_3722 == req
-				.getElementType()) {
+		if (EsbElementTypes.CloudConnectorOperation_3722 == req.getElementType()) {
 			return getGEFWrapper(new CloudConnectorOperationCreateCommand(req));
 		}
 		if (EsbElementTypes.LoopBackMediator_3736 == req.getElementType()) {

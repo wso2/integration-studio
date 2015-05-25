@@ -15,8 +15,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated
  */
-public class EndpointDiagramEndpointCompartment2ItemSemanticEditPolicy extends
-		EsbBaseItemSemanticEditPolicy {
+public class EndpointDiagramEndpointCompartment2ItemSemanticEditPolicy extends EsbBaseItemSemanticEditPolicy {
 
 	/**
 	 * @generated

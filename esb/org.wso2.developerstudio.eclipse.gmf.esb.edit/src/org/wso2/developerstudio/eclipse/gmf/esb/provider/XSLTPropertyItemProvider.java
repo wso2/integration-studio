@@ -29,13 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty;
  * @generated
  */
 public class XSLTPropertyItemProvider
-	extends AbstractNameValueExpressionPropertyItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends AbstractNameValueExpressionPropertyItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

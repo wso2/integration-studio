@@ -38,13 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MethodArgument;
  * @generated
  */
 public class MethodArgumentItemProvider
-	extends AbstractNameValueExpressionPropertyItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends AbstractNameValueExpressionPropertyItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

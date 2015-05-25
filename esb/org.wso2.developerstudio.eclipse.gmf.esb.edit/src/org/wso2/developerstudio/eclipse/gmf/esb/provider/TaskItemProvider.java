@@ -27,13 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Task;
  * @generated
  */
 public class TaskItemProvider
-	extends EsbElementItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends EsbElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

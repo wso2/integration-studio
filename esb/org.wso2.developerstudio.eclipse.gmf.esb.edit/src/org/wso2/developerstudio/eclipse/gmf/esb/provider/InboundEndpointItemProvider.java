@@ -45,13 +45,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
  * @generated
  */
 public class InboundEndpointItemProvider
-	extends EsbElementItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends EsbElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -153,7 +147,7 @@ public class InboundEndpointItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Basic",
+				 null,
 				 null));
 	}
 
@@ -175,7 +169,7 @@ public class InboundEndpointItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Basic",
+				 null,
 				 null));
 	}
 
@@ -197,7 +191,7 @@ public class InboundEndpointItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Basic",
+				 null,
 				 null));
 	}
 
@@ -219,7 +213,7 @@ public class InboundEndpointItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Basic",
+				 null,
 				 null));
 	}
 

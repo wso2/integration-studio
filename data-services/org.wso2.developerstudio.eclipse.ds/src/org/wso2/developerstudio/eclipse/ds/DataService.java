@@ -38,7 +38,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#isEnableSec <em>Enable Sec</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getPolicy <em>Policy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getTransports <em>Transports</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
  * </ul>
  * </p>
  *
@@ -528,32 +527,5 @@ public interface DataService extends EObject {
 	 * @generated
 	 */
 	void setTransports(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Feature Allow Roles</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Feature Allow Roles</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature Allow Roles</em>' containment reference.
-	 * @see #setFeatureAllowRoles(DataServiceParameter)
-	 * @see org.wso2.developerstudio.eclipse.ds.DsPackage#getDataService_FeatureAllowRoles()
-	 * @model containment="true" required="true" transient="true" volatile="true" derived="true"
-	 *        extendedMetaData="kind='element' name='parameter' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	DataServiceParameter getFeatureAllowRoles();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.ds.DataService#getFeatureAllowRoles <em>Feature Allow Roles</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Feature Allow Roles</em>' containment reference.
-	 * @see #getFeatureAllowRoles()
-	 * @generated
-	 */
-	void setFeatureAllowRoles(DataServiceParameter value);
 
 } // DataService

@@ -276,15 +276,6 @@
         <details key="name" value="transports"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="featureAllowRoles" lowerBound="1"
-        eType="#//DataServiceParameter" volatile="true" transient="true" derived="true"
-        containment="true" resolveProxies="false">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="kind" value="element"/>
-        <details key="name" value="parameter"/>
-        <details key="namespace" value="##targetNamespace"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSourceConfiguration">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

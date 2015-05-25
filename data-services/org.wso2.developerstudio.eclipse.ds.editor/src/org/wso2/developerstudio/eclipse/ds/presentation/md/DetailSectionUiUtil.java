@@ -17,11 +17,9 @@ package org.wso2.developerstudio.eclipse.ds.presentation.md;
 
 import java.math.BigInteger;
 
-import org.apache.axis2.description.InOutAxisOperation;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -50,18 +48,13 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.wso2.developerstudio.eclipse.ds.DataService;
-import org.wso2.developerstudio.eclipse.ds.DataServiceParameter;
-import org.wso2.developerstudio.eclipse.ds.DsPackage;
-import org.wso2.developerstudio.eclipse.ds.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.ds.presentation.ui.AddPolicyPathDialog;
-import org.wso2.developerstudio.eclipse.ds.presentation.ui.AddUserRolesDialog;
 
 public class DetailSectionUiUtil {
 
 	public static boolean isFocusedOnDetailSection;
 	DataService dataService;
 	EditingDomain editingDomain;
-	private String existingRoleVal;
 	private String existingPolicyKey;
 
 	public DetailSectionUiUtil(DataService dataService,
@@ -219,84 +212,11 @@ public class DetailSectionUiUtil {
 	 *            : Data Type of the focused value
 	 * @return Configured Styled Text field
 	 */
-	public void getUserRoleField(Composite detailsclient, FormToolkit toolkit) {
-		Composite roleComposite = createUserRoleComposite(detailsclient,
-				toolkit);
-		addSelectionListnersForUserRoleButton(roleComposite);
-	}
-
-	/**
-	 * @param detailsclient
-	 *            : Client that hold the creating text
-	 * @param toolkit
-	 *            : Form toolkit
-	 * @param input
-	 *            : Input Object currently selected
-	 * @param text
-	 *            : Initial value
-	 * @param metaObject
-	 *            : Meta Object describes the EMF context
-	 * @param dataType
-	 *            : Data Type of the focused value
-	 * @return Configured Styled Text field
-	 */
 	public void getPolicyField(Composite detailsclient, FormToolkit toolkit) {
 		Composite roleComposite = createPolicyComposite(detailsclient, toolkit);
 		addSelectionListnersForPolicyButton(roleComposite);
 	}
 
-	/**
-	 * Creates the composite for security fields
-	 * 
-	 * @param detailsclient
-	 *            Client that hold the creating text
-	 * @param toolkit
-	 *            Form toolkit
-	 * @param input
-	 *            Input Object currently selected
-	 * @return composite
-	 */
-	private Composite createUserRoleComposite(Composite detailsclient,
-			FormToolkit toolkit) {
-
-		existingRoleVal = null;
-		Composite composite = toolkit.createComposite(detailsclient);
-		GridLayout layout = new GridLayout(2, false);
-		composite.setLayout(layout);
-
-		Text txt = toolkit.createText(composite, "", SWT.BORDER);
-		addCommonActions(txt);
-		txt.setEditable(false);
-		txt.setEnabled(true);
-		// adding control decoration for validation
-		final ControlDecoration controlDecoration = crateControlDecoration(txt);
-		controlDecoration.hide();
-		toolkit.adapt(txt, true, true);
-		if (dataService.getFeatureAllowRoles() != null) {
-			existingRoleVal = dataService.getFeatureAllowRoles().getValue();
-			if (!StringUtils.isEmpty(existingRoleVal)) {
-				txt.setText(existingRoleVal);
-			}
-		}
-
-		GridData gd = new GridData();
-		gd.widthHint = 200;
-		gd.heightHint = 15;
-		txt.setLayoutData(gd);
-		addFocusListner(txt);
-		addTraverseListner(txt);
-
-		Button button = new Button(composite, SWT.NONE);
-		gd = new GridData();
-		gd.widthHint = 30;
-		gd.heightHint = 20;
-		gd.grabExcessHorizontalSpace = true;
-		button.setText("..");
-		button.setLayoutData(gd);
-		addFocusListner(button);
-		addTraverseListner(button);
-		return composite;
-	}
 
 	/**
 	 * Creates the composite for security fields
@@ -399,38 +319,6 @@ public class DetailSectionUiUtil {
 		addTraverseListner(dtxt);
 		return dtxt;
 
-	}
-
-	/**
-	 * Selection Listner for buttons
-	 * 
-	 * @param toolkit
-	 *            Form toolkit
-	 * @param detailsclient
-	 *            Client that hold the creating text
-	 * 
-	 * @param addButton
-	 *            button
-	 * @param input
-	 *            Object
-	 * @param composite
-	 */
-	private void addSelectionListnersForUserRoleButton(final Composite composite) {
-		Control[] children = composite.getChildren();
-		for (Control child : children) {
-			if (child instanceof Button) {
-				((Button) child).addSelectionListener(new SelectionAdapter() {
-					public void widgetSelected(SelectionEvent e) {
-						Display display = Display.getDefault();
-						Shell shell = new Shell(display);
-						AddUserRolesDialog dialog = new AddUserRolesDialog(
-								shell, dataService, editingDomain, composite);
-						dialog.setBlockOnOpen(true);
-						dialog.open();
-					}
-				});
-			}
-		}
 	}
 
 	/**
@@ -798,14 +686,6 @@ public class DetailSectionUiUtil {
 		 */
 		if ("".equals(text)) {
 			text = null;
-			// FIXME remove parameter from the model when the value is null
-			RemoveCommand rootRemCmd = new RemoveCommand(editingDomain,
-					dataService,
-					DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES,
-					input);
-			if (rootRemCmd.canExecute()) {
-				editingDomain.getCommandStack().execute(rootRemCmd);
-			}
 		}
 		Command setAttribCommand = SetCommand.create(editingDomain, input,
 				attributeRef, text);

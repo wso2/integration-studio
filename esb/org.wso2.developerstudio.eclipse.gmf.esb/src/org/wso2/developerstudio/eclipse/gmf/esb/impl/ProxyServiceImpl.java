@@ -94,7 +94,6 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlKey <em>Wsdl Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getWsdlResources <em>Wsdl Resources</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getOnError <em>On Error</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyServiceImpl#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
  * </ul>
  * </p>
  *
@@ -700,26 +699,6 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 	 * @ordered
 	 */
 	protected RegistryKeyProperty onError;
-
-	/**
-	 * The default value of the '{@link #getFeatureAllowRoles() <em>Feature Allow Roles</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeatureAllowRoles()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String FEATURE_ALLOW_ROLES_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getFeatureAllowRoles() <em>Feature Allow Roles</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeatureAllowRoles()
-	 * @generated
-	 * @ordered
-	 */
-	protected String featureAllowRoles = FEATURE_ALLOW_ROLES_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1898,27 +1877,6 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getFeatureAllowRoles() {
-		return featureAllowRoles;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFeatureAllowRoles(String newFeatureAllowRoles) {
-		String oldFeatureAllowRoles = featureAllowRoles;
-		featureAllowRoles = newFeatureAllowRoles;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.PROXY_SERVICE__FEATURE_ALLOW_ROLES, oldFeatureAllowRoles, featureAllowRoles));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -2050,8 +2008,6 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 				return getWsdlResources();
 			case EsbPackage.PROXY_SERVICE__ON_ERROR:
 				return getOnError();
-			case EsbPackage.PROXY_SERVICE__FEATURE_ALLOW_ROLES:
-				return getFeatureAllowRoles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2187,9 +2143,6 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 			case EsbPackage.PROXY_SERVICE__ON_ERROR:
 				setOnError((RegistryKeyProperty)newValue);
 				return;
-			case EsbPackage.PROXY_SERVICE__FEATURE_ALLOW_ROLES:
-				setFeatureAllowRoles((String)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -2320,9 +2273,6 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 			case EsbPackage.PROXY_SERVICE__ON_ERROR:
 				setOnError((RegistryKeyProperty)null);
 				return;
-			case EsbPackage.PROXY_SERVICE__FEATURE_ALLOW_ROLES:
-				setFeatureAllowRoles(FEATURE_ALLOW_ROLES_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2414,8 +2364,6 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 				return wsdlResources != null && !wsdlResources.isEmpty();
 			case EsbPackage.PROXY_SERVICE__ON_ERROR:
 				return onError != null;
-			case EsbPackage.PROXY_SERVICE__FEATURE_ALLOW_ROLES:
-				return FEATURE_ALLOW_ROLES_EDEFAULT == null ? featureAllowRoles != null : !FEATURE_ALLOW_ROLES_EDEFAULT.equals(featureAllowRoles);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2473,8 +2421,6 @@ public class ProxyServiceImpl extends EsbElementImpl implements ProxyService {
 		result.append(wsdlXML);
 		result.append(", wsdlURL: ");
 		result.append(wsdlURL);
-		result.append(", featureAllowRoles: ");
-		result.append(featureAllowRoles);
 		result.append(')');
 		return result.toString();
 	}

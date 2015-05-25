@@ -44,13 +44,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
  * @generated
  */
 public class BeanMediatorItemProvider
-	extends MediatorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends MediatorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

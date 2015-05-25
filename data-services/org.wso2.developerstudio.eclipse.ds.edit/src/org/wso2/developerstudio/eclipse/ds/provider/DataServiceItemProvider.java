@@ -77,7 +77,6 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 			addDisableStreamingPropertyDescriptor(object);
 			addServiceStatusPropertyDescriptor(object);
 			addEnableSecPropertyDescriptor(object);
-			addParameterAllowRolesPropertyDescriptor(object);
 			addPolicyPropertyDescriptor(object);
 		    
 		}
@@ -351,28 +350,6 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 	
 
 	/**
-	 * This adds a property descriptor for the Parameter Allow Roles feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addParameterAllowRolesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DataService_parameterAllowRoles_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DataService_parameterAllowRoles_feature", "_UI_DataService_type"),
-				 DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to
 	 * deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand},
@@ -569,13 +546,6 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 				 FeatureMapUtil.createEntry
 					(DsPackage.Literals.DATA_SERVICE__POLICY,
 					 DsFactory.eINSTANCE.createRegistryKeyProperty())));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DsPackage.Literals.DATA_SERVICE__MIXED,
-				 FeatureMapUtil.createEntry
-					(DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES,
-					 DsFactory.eINSTANCE.createDataServiceParameter())));
 
 		newChildDescriptors.add
 			(createChildParameter

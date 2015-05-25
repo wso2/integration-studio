@@ -33,13 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogProperty;
  * @generated
  */
 public class LogPropertyItemProvider
-	extends AbstractNameValueExpressionPropertyItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends AbstractNameValueExpressionPropertyItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

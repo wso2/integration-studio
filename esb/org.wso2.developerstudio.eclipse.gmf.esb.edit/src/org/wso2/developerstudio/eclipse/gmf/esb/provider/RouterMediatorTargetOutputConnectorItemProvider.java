@@ -33,13 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediatorTargetOutputConnec
  * @generated
  */
 public class RouterMediatorTargetOutputConnectorItemProvider
-	extends OutputConnectorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends OutputConnectorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

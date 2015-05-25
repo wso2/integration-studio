@@ -1620,17 +1620,6 @@ public class DsEditor extends FormEditor implements IEditingDomainProvider, ISel
 	}
 
 	private void deleteObjectsFromTheModel() {
-		if(dataService.getFeatureAllowRoles() != null)
-		{
-		if(StringUtils.isEmpty(dataService.getFeatureAllowRoles().getValue())){
-			SetCommand setCmd = new SetCommand(editingDomain, dataService,
-					DsPackage.Literals.DATA_SERVICE__FEATURE_ALLOW_ROLES,
-					null);
-			if (setCmd.canExecute()) {
-				editingDomain.getCommandStack().execute(setCmd);
-			}
-		}
-		}
 		if(dataService.getPolicy() != null){
 			if(StringUtils.isEmpty(dataService.getPolicy().getKey())){
 				SetCommand setCmd = new SetCommand(editingDomain, dataService,

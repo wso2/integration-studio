@@ -36,13 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
  * @generated
  */
 public class FailoverEndPointItemProvider
-	extends ParentEndPointItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends ParentEndPointItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

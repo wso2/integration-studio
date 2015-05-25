@@ -38,13 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SqlExecutorDatasourceType;
  * @generated
  */
 public class AbstractSqlExecutorMediatorItemProvider
-	extends MediatorItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends MediatorItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

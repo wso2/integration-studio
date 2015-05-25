@@ -56,7 +56,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlKey <em>Wsdl Key</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getWsdlResources <em>Wsdl Resources</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getOnError <em>On Error</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getFeatureAllowRoles <em>Feature Allow Roles</em>}</li>
  * </ul>
  * </p>
  *
@@ -1060,31 +1059,5 @@ public interface ProxyService extends EsbElement {
 	 * @generated
 	 */
 	void setOnError(RegistryKeyProperty value);
-
-	/**
-	 * Returns the value of the '<em><b>Feature Allow Roles</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Feature Allow Roles</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature Allow Roles</em>' attribute.
-	 * @see #setFeatureAllowRoles(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getProxyService_FeatureAllowRoles()
-	 * @model
-	 * @generated
-	 */
-	String getFeatureAllowRoles();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getFeatureAllowRoles <em>Feature Allow Roles</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Feature Allow Roles</em>' attribute.
-	 * @see #getFeatureAllowRoles()
-	 * @generated
-	 */
-	void setFeatureAllowRoles(String value);
 
 } // ProxyService

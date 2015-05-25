@@ -45,7 +45,6 @@ import org.wso2.developerstudio.eclipse.ds.CallQuery;
 import org.wso2.developerstudio.eclipse.ds.ConfigurationProperty;
 import org.wso2.developerstudio.eclipse.ds.CustomValidator;
 import org.wso2.developerstudio.eclipse.ds.DataService;
-import org.wso2.developerstudio.eclipse.ds.DataServiceParameter;
 import org.wso2.developerstudio.eclipse.ds.DataSourceConfiguration;
 import org.wso2.developerstudio.eclipse.ds.Description;
 import org.wso2.developerstudio.eclipse.ds.DoubleRangeValidator;
@@ -159,18 +158,6 @@ public class DetailSection {
 			sectionUtil.getAttributeField(detailsclient, toolkit, input,
 					description.getValue(),
 					DsPackage.eINSTANCE.getDescription_Value(),
-					DetailSectionCustomUiConstants.STRING);
-
-			// On Data Source selection
-		} else if (input instanceof DataServiceParameter) {
-
-			DataServiceParameter dataServiceParameter = (DataServiceParameter) input;
-			voidMaker();
-			voidMaker();
-			labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_PARAMETER_ALLOW_ROLES);
-			sectionUtil.getAttributeField(detailsclient, toolkit, input,
-					dataServiceParameter.getValue(),
-					DsPackage.eINSTANCE.getDataServiceParameter_Value(),
 					DetailSectionCustomUiConstants.STRING);
 
 			// On Data Source selection
@@ -641,11 +628,6 @@ public class DetailSection {
 					sectionUtil.getBooleanComboField(detailsclient, toolkit,
 							selectedObject, dataService.isEnableSec(),
 							DsPackage.eINSTANCE.getDataService_EnableSec());
-					voidMaker();
-					voidMaker();
-
-					labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_PARAMETER_ALLOW_ROLES);
-					sectionUtil.getUserRoleField(detailsclient, toolkit);
 					voidMaker();
 					voidMaker();
 					

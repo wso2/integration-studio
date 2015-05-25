@@ -34,13 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
  * @generated
  */
 public class CloneTargetItemProvider
-	extends AbstractCommonTargetItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends AbstractCommonTargetItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

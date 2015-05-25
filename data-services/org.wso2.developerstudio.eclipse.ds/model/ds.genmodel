@@ -58,7 +58,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/enableSec"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/policy"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ds.ecore#//DataService/transports"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ds.ecore#//DataService/featureAllowRoles"/>
     </genClasses>
     <genClasses ecoreClass="ds.ecore#//DataSourceConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ds.ecore#//DataSourceConfiguration/mixed"/>

@@ -786,15 +786,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataService_FeatureAllowRoles() {
-		return (EReference)dataServiceEClass.getEStructuralFeatures().get(19);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDataSourceConfiguration() {
 		return dataSourceConfigurationEClass;
 	}
@@ -2337,7 +2328,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		createEAttribute(dataServiceEClass, DATA_SERVICE__ENABLE_SEC);
 		createEReference(dataServiceEClass, DATA_SERVICE__POLICY);
 		createEAttribute(dataServiceEClass, DATA_SERVICE__TRANSPORTS);
-		createEReference(dataServiceEClass, DATA_SERVICE__FEATURE_ALLOW_ROLES);
 
 		dataSourceConfigurationEClass = createEClass(DATA_SOURCE_CONFIGURATION);
 		createEAttribute(dataSourceConfigurationEClass, DATA_SOURCE_CONFIGURATION__MIXED);
@@ -2620,7 +2610,6 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 		initEAttribute(getDataService_EnableSec(), theXMLTypePackage.getBoolean(), "enableSec", null, 0, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataService_Policy(), this.getRegistryKeyProperty(), null, "policy", null, 1, 1, DataService.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataService_Transports(), theXMLTypePackage.getString(), "transports", null, 1, 1, DataService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataService_FeatureAllowRoles(), this.getDataServiceParameter(), null, "featureAllowRoles", null, 1, 1, DataService.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataSourceConfigurationEClass, DataSourceConfiguration.class, "DataSourceConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataSourceConfiguration_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, DataSourceConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2841,20 +2830,20 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
 		addAnnotation
 		  (this, 
 		   source, 
 		   new String[] {
 			 "qualified", "false"
-		   });		
+		   });	
 		addAnnotation
 		  (attributeMappingEClass, 
 		   source, 
 		   new String[] {
 			 "name", "attribute_._type",
 			 "kind", "empty"
-		   });		
+		   });	
 		addAnnotation
 		  (getAttributeMapping_Column(), 
 		   source, 
@@ -2862,7 +2851,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "column",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getAttributeMapping_Name(), 
 		   source, 
@@ -2870,7 +2859,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getAttributeMapping_RequiredRoles(), 
 		   source, 
@@ -2878,7 +2867,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "requiredRoles",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getAttributeMapping_XsdType(), 
 		   source, 
@@ -2886,7 +2875,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "xsdType",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getAttributeMapping_Optional(), 
 		   source, 
@@ -2894,21 +2883,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "optional",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (callQueryEClass, 
 		   source, 
 		   new String[] {
 			 "name", "call-query_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getCallQuery_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getCallQuery_WithParam(), 
 		   source, 
@@ -2916,7 +2905,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "with-param",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getCallQuery_Href(), 
 		   source, 
@@ -2924,21 +2913,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "href",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (callQueryListEClass, 
 		   source, 
 		   new String[] {
 			 "name", "call-query-group_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getCallQueryList_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getCallQueryList_CallQuery(), 
 		   source, 
@@ -2946,21 +2935,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "call-query",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (configurationPropertyEClass, 
 		   source, 
 		   new String[] {
 			 "name", "property_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getConfigurationProperty_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getConfigurationProperty_Name(), 
 		   source, 
@@ -2968,14 +2957,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (customValidatorEClass, 
 		   source, 
 		   new String[] {
 			 "name", "validateCustom_._type",
 			 "kind", "empty"
-		   });		
+		   });	
 		addAnnotation
 		  (getCustomValidator_Class(), 
 		   source, 
@@ -2983,21 +2972,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "class",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (dataServiceEClass, 
 		   source, 
 		   new String[] {
 			 "name", "data_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Description(), 
 		   source, 
@@ -3005,7 +2994,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "description",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Config(), 
 		   source, 
@@ -3013,7 +3002,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "config",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Query(), 
 		   source, 
@@ -3021,7 +3010,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "query",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_EventTrigger(), 
 		   source, 
@@ -3029,7 +3018,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "event-trigger",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Operation(), 
 		   source, 
@@ -3037,7 +3026,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "operation",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Resource(), 
 		   source, 
@@ -3045,7 +3034,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "resource",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_BaseURI(), 
 		   source, 
@@ -3053,7 +3042,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "baseURI",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_EnableBatchRequests(), 
 		   source, 
@@ -3061,7 +3050,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "enableBatchRequests",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_EnableBoxcarring(), 
 		   source, 
@@ -3069,7 +3058,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "enableBoxcarring",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_EnableDTP(), 
 		   source, 
@@ -3077,7 +3066,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "enableDTP",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Name(), 
 		   source, 
@@ -3085,7 +3074,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_ServiceGroup(), 
 		   source, 
@@ -3093,7 +3082,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "serviceGroup",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_ServiceNamespace(), 
 		   source, 
@@ -3101,7 +3090,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "serviceNamespace",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_ServiceStatus(), 
 		   source, 
@@ -3109,14 +3098,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "serviceStatus",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_EnableSec(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
 			 "name", "enableSec"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Policy(), 
 		   source, 
@@ -3124,36 +3113,28 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "policy",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataService_Transports(), 
 		   source, 
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "transports"
-		   });		
-		addAnnotation
-		  (getDataService_FeatureAllowRoles(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "name", "parameter",
-			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (dataSourceConfigurationEClass, 
 		   source, 
 		   new String[] {
 			 "name", "config_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataSourceConfiguration_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataSourceConfiguration_Property(), 
 		   source, 
@@ -3161,7 +3142,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "property",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataSourceConfiguration_Id(), 
 		   source, 
@@ -3169,49 +3150,49 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "id",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (descriptionEClass, 
 		   source, 
 		   new String[] {
 			 "name", "description_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getDescription_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (documentRootEClass, 
 		   source, 
 		   new String[] {
 			 "name", "",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_XMLNSPrefixMap(), 
 		   source, 
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "xmlns:prefix"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_XSISchemaLocation(), 
 		   source, 
 		   new String[] {
 			 "kind", "attribute",
 			 "name", "xsi:schemaLocation"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_CallQuery(), 
 		   source, 
@@ -3219,7 +3200,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "call-query",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_Data(), 
 		   source, 
@@ -3227,7 +3208,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "data",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_Hasheader(), 
 		   source, 
@@ -3235,7 +3216,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "hasheader",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_Maxrowcount(), 
 		   source, 
@@ -3243,7 +3224,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "maxrowcount",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_Property(), 
 		   source, 
@@ -3251,7 +3232,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "property",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_Sql(), 
 		   source, 
@@ -3259,7 +3240,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "sql",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDocumentRoot_Startingrow(), 
 		   source, 
@@ -3267,14 +3248,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "startingrow",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (doubleRangeValidatorEClass, 
 		   source, 
 		   new String[] {
 			 "name", "validateDoubleRange_._type",
 			 "kind", "empty"
-		   });		
+		   });	
 		addAnnotation
 		  (getDoubleRangeValidator_Maximum(), 
 		   source, 
@@ -3282,7 +3263,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "maximum",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDoubleRangeValidator_Minimum(), 
 		   source, 
@@ -3290,21 +3271,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "minimum",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (elementMappingEClass, 
 		   source, 
 		   new String[] {
 			 "name", "element_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Column(), 
 		   source, 
@@ -3312,7 +3293,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "column",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Export(), 
 		   source, 
@@ -3320,7 +3301,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "export",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Name(), 
 		   source, 
@@ -3328,7 +3309,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_RequiredRoles(), 
 		   source, 
@@ -3336,7 +3317,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "requiredRoles",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_ExportType(), 
 		   source, 
@@ -3344,7 +3325,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "exportType",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Namespace(), 
 		   source, 
@@ -3352,7 +3333,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "namespace",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_XsdType(), 
 		   source, 
@@ -3360,7 +3341,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "xsdType",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Element(), 
 		   source, 
@@ -3368,7 +3349,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "element",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Attribute(), 
 		   source, 
@@ -3376,7 +3357,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "attribute",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_CallQuery(), 
 		   source, 
@@ -3384,7 +3365,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "call-query",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_IsComplexType(), 
 		   source, 
@@ -3392,7 +3373,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "isComplexType",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_QueryParam(), 
 		   source, 
@@ -3400,7 +3381,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "query-param",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Value(), 
 		   source, 
@@ -3408,7 +3389,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "value",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_Optional(), 
 		   source, 
@@ -3416,7 +3397,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "optional",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getElementMapping_ArrayName(), 
 		   source, 
@@ -3424,21 +3405,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "arrayName",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (eventSubscriptionListEClass, 
 		   source, 
 		   new String[] {
 			 "name", "subscriptions_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getEventSubscriptionList_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getEventSubscriptionList_Subscription(), 
 		   source, 
@@ -3446,21 +3427,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "subscription",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (eventTriggerEClass, 
 		   source, 
 		   new String[] {
 			 "name", "event-trigger_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getEventTrigger_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getEventTrigger_Expression(), 
 		   source, 
@@ -3468,7 +3449,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "expression",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getEventTrigger_TargetTopic(), 
 		   source, 
@@ -3476,7 +3457,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "target-topic",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getEventTrigger_Subscriptions(), 
 		   source, 
@@ -3484,7 +3465,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "subscriptions",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getEventTrigger_Id(), 
 		   source, 
@@ -3492,7 +3473,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "id",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getEventTrigger_Language(), 
 		   source, 
@@ -3500,21 +3481,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "language",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (excelQueryEClass, 
 		   source, 
 		   new String[] {
 			 "name", "excel_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getExcelQuery_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getExcelQuery_Workbookname(), 
 		   source, 
@@ -3522,7 +3503,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "workbookname",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getExcelQuery_Hasheader(), 
 		   source, 
@@ -3530,7 +3511,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "hasheader",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getExcelQuery_Startingrow(), 
 		   source, 
@@ -3538,7 +3519,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "startingrow",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getExcelQuery_Maxrowcount(), 
 		   source, 
@@ -3546,35 +3527,35 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "maxrowcount",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (expressionEClass, 
 		   source, 
 		   new String[] {
 			 "name", "expression_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getExpression_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (gSpreadQueryEClass, 
 		   source, 
 		   new String[] {
 			 "name", "gspread_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getGSpreadQuery_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getGSpreadQuery_Worksheetnumber(), 
 		   source, 
@@ -3582,7 +3563,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "worksheetnumber",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getGSpreadQuery_Startingrow(), 
 		   source, 
@@ -3590,7 +3571,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "startingrow",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getGSpreadQuery_Maxrowcount(), 
 		   source, 
@@ -3598,7 +3579,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "maxrowcount",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getGSpreadQuery_Hasheader(), 
 		   source, 
@@ -3606,28 +3587,28 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "hasheader",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (hasHeaderEClass, 
 		   source, 
 		   new String[] {
 			 "name", "hasheader_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getHasHeader_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (lengthValidatorEClass, 
 		   source, 
 		   new String[] {
 			 "name", "validateLength_._type",
 			 "kind", "empty"
-		   });		
+		   });	
 		addAnnotation
 		  (getLengthValidator_Maximum(), 
 		   source, 
@@ -3635,7 +3616,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "maximum",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getLengthValidator_Minimum(), 
 		   source, 
@@ -3643,14 +3624,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "minimum",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (longRangeValidatorEClass, 
 		   source, 
 		   new String[] {
 			 "name", "validateLongRange_._type",
 			 "kind", "empty"
-		   });		
+		   });	
 		addAnnotation
 		  (getLongRangeValidator_Maximum(), 
 		   source, 
@@ -3658,7 +3639,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "maximum",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getLongRangeValidator_Minimum(), 
 		   source, 
@@ -3666,35 +3647,35 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "minimum",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (maxRowCountEClass, 
 		   source, 
 		   new String[] {
 			 "name", "maxrowcount_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getMaxRowCount_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (operationEClass, 
 		   source, 
 		   new String[] {
 			 "name", "operation_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getOperation_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getOperation_CallQuery(), 
 		   source, 
@@ -3702,7 +3683,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "call-query",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getOperation_CallQueryGroup(), 
 		   source, 
@@ -3710,7 +3691,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "call-query-group",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getOperation_DisableStreaming(), 
 		   source, 
@@ -3718,7 +3699,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "disableStreaming",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getOperation_ReturnRequestStatus(), 
 		   source, 
@@ -3726,7 +3707,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "returnRequestStatus",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getOperation_Name(), 
 		   source, 
@@ -3734,14 +3715,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (parameterMappingEClass, 
 		   source, 
 		   new String[] {
 			 "name", "with-param_._type",
 			 "kind", "empty"
-		   });		
+		   });	
 		addAnnotation
 		  (getParameterMapping_Column(), 
 		   source, 
@@ -3749,7 +3730,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "column",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getParameterMapping_Name(), 
 		   source, 
@@ -3757,7 +3738,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getParameterMapping_QueryParam(), 
 		   source, 
@@ -3765,14 +3746,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "query-param",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (patternValidatorEClass, 
 		   source, 
 		   new String[] {
 			 "name", "validatePattern_._type",
 			 "kind", "empty"
-		   });		
+		   });	
 		addAnnotation
 		  (getPatternValidator_Pattern(), 
 		   source, 
@@ -3780,21 +3761,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "pattern",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (queryEClass, 
 		   source, 
 		   new String[] {
 			 "name", "query_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Sql(), 
 		   source, 
@@ -3802,7 +3783,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "sql",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Sparql(), 
 		   source, 
@@ -3810,7 +3791,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "sparql",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Properties(), 
 		   source, 
@@ -3818,7 +3799,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "properties",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Result(), 
 		   source, 
@@ -3826,7 +3807,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "result",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Excel(), 
 		   source, 
@@ -3834,7 +3815,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "excel",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Gspread(), 
 		   source, 
@@ -3842,7 +3823,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "gspread",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Param(), 
 		   source, 
@@ -3850,7 +3831,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "param",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_Id(), 
 		   source, 
@@ -3858,7 +3839,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "id",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_InputEventTrigger(), 
 		   source, 
@@ -3866,7 +3847,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "input-event-trigger",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_OutputEventTrigger(), 
 		   source, 
@@ -3874,7 +3855,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "output-event-trigger",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_ReturnGeneratedKeys(), 
 		   source, 
@@ -3882,7 +3863,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "returnGeneratedKeys",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_UseConfig(), 
 		   source, 
@@ -3890,7 +3871,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "useConfig",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQuery_KeyColumns(), 
 		   source, 
@@ -3898,21 +3879,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "keyColumns",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (queryParameterEClass, 
 		   source, 
 		   new String[] {
 			 "name", "param_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_ValidateLongRange(), 
 		   source, 
@@ -3920,7 +3901,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "validateLongRange",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_ValidateDoubleRange(), 
 		   source, 
@@ -3928,7 +3909,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "validateDoubleRange",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_ValidateLength(), 
 		   source, 
@@ -3936,7 +3917,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "validateLength",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_ValidatePattern(), 
 		   source, 
@@ -3944,7 +3925,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "validatePattern",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_ValidateCustom(), 
 		   source, 
@@ -3952,7 +3933,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "validateCustom",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_DefaultValue(), 
 		   source, 
@@ -3960,7 +3941,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "defaultValue",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_Name(), 
 		   source, 
@@ -3968,7 +3949,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_Ordinal(), 
 		   source, 
@@ -3976,7 +3957,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "ordinal",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_ParamType(), 
 		   source, 
@@ -3984,7 +3965,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "paramType",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_SqlType(), 
 		   source, 
@@ -3992,7 +3973,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "sqlType",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_StructType(), 
 		   source, 
@@ -4000,7 +3981,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "structType",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryParameter_Type(), 
 		   source, 
@@ -4008,21 +3989,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "type",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (queryPropertyEClass, 
 		   source, 
 		   new String[] {
 			 "name", "property_._1_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryProperty_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryProperty_Name(), 
 		   source, 
@@ -4030,21 +4011,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (queryPropertyListEClass, 
 		   source, 
 		   new String[] {
 			 "name", "properties_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryPropertyList_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryPropertyList_Property(), 
 		   source, 
@@ -4052,21 +4033,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "property",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (resourceEClass, 
 		   source, 
 		   new String[] {
 			 "name", "resource_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getResource_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getResource_CallQuery(), 
 		   source, 
@@ -4074,7 +4055,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "call-query",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResource_Method(), 
 		   source, 
@@ -4082,7 +4063,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "method",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResource_Path(), 
 		   source, 
@@ -4090,7 +4071,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "path",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResource_ReturnRequestStatus(), 
 		   source, 
@@ -4098,21 +4079,21 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "returnRequestStatus",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (resultMappingEClass, 
 		   source, 
 		   new String[] {
 			 "name", "result_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "name", ":mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_Element(), 
 		   source, 
@@ -4120,7 +4101,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "element",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_Attribute(), 
 		   source, 
@@ -4128,7 +4109,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "attribute",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_CallQuery(), 
 		   source, 
@@ -4136,7 +4117,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "element",
 			 "name", "call-query",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_DefaultNamespace(), 
 		   source, 
@@ -4144,7 +4125,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "defaultNamespace",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_ElementName(), 
 		   source, 
@@ -4152,7 +4133,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "element",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_RowName(), 
 		   source, 
@@ -4160,7 +4141,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "rowName",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_UseColumnNumbers(), 
 		   source, 
@@ -4168,7 +4149,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "useColumnNumbers",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getResultMapping_XsltPath(), 
 		   source, 
@@ -4176,48 +4157,48 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "xsltPath",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (serviceStatusEEnum, 
 		   source, 
 		   new String[] {
 			 "name", "serviceStatus_._type"
-		   });		
+		   });	
 		addAnnotation
 		  (serviceStatusObjectEDataType, 
 		   source, 
 		   new String[] {
 			 "name", "serviceStatus_._type:Object",
 			 "baseType", "serviceStatus_._type"
-		   });		
+		   });	
 		addAnnotation
 		  (sparqlEClass, 
 		   source, 
 		   new String[] {
 			 "name", "sparql_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getSparql_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (sqlEClass, 
 		   source, 
 		   new String[] {
 			 "name", "sql_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getSql_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getSql_Dialect(), 
 		   source, 
@@ -4225,98 +4206,98 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "dialect",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (queryExpressionEClass, 
 		   source, 
 		   new String[] {
 			 "name", "queryExpression_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getQueryExpression_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (startingRowEClass, 
 		   source, 
 		   new String[] {
 			 "name", "startingrow_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getStartingRow_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (subscriptionEClass, 
 		   source, 
 		   new String[] {
 			 "name", "subscription_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getSubscription_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (targetTopicEClass, 
 		   source, 
 		   new String[] {
 			 "name", "target-topic_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getTargetTopic_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (workBookNameEClass, 
 		   source, 
 		   new String[] {
 			 "name", "workbookname_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getWorkBookName_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (workSheetNumberEClass, 
 		   source, 
 		   new String[] {
 			 "name", "worksheetnumber_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getWorkSheetNumber_Value(), 
 		   source, 
 		   new String[] {
 			 "name", ":0",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (policyEClass, 
 		   source, 
 		   new String[] {
 			 "name", "policy_._type",
 			 "kind", "mixed"
-		   });		
+		   });	
 		addAnnotation
 		  (getPolicy_Key(), 
 		   source, 
@@ -4324,14 +4305,14 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "key",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (dataServiceParameterEClass, 
 		   source, 
 		   new String[] {
 			 "name", "parameter_._type",
 			 "kind", "simple"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataServiceParameter_Name(), 
 		   source, 
@@ -4339,7 +4320,7 @@ public class DsPackageImpl extends EPackageImpl implements DsPackage {
 			 "kind", "attribute",
 			 "name", "name",
 			 "namespace", "##targetNamespace"
-		   });		
+		   });	
 		addAnnotation
 		  (getDataServiceParameter_Value(), 
 		   source, 

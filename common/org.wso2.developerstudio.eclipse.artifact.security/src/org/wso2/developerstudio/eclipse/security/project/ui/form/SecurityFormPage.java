@@ -22,7 +22,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -63,6 +65,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolTip;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.editor.FormPage;
@@ -82,6 +85,7 @@ import org.wso2.developerstudio.eclipse.artifact.security.utils.SecurityFormMess
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
+import org.wso2.developerstudio.eclipse.security.project.ui.dialog.UserRolesDialog;
 import org.wso2.developerstudio.eclipse.security.Activator;
 import org.wso2.developerstudio.eclipse.security.project.model.Policy2;
 import org.wso2.developerstudio.eclipse.security.project.utils.SecurityPolicies;
@@ -116,7 +120,7 @@ public class SecurityFormPage extends FormPage {
 	private static final String RAMPART_KERBEROS_CONFIG = "rampart:kerberosConfig";
 	private static final String RAMPART_CRYPTO = "rampart:crypto";
 	private static final String RAMPART_PROPERTY = "rampart:property";
-	private static final String RAMPART_PROPERTY_NAME = "name";
+	private static final String PROPERTY_NAME = "name";
 	private static final String USER_ROLE = "User Roles";
 
 	// Rampart default values
@@ -124,6 +128,20 @@ public class SecurityFormPage extends FormPage {
 	private static final String RAMPART_TOKEN_STORE_CLASS_VALUE = "org.wso2.carbon.security.util.SecurityTokenStore";
 	private static final String RAMPART_TIME_VALUE = "300";
 	private static final String RAMPART_TENANT_VALUE = "-1234";
+
+	// Constants for Carbon Sec Config
+
+	private static final String CARBONSEC_CONFIG = "sec:CarbonSecConfig";
+	private static final String CARBONSEC_AUTHORIZATION = "sec:Authorization";
+	private static final String CARBONSEC_TRUST = "sec:Trust";
+	private static final String CARBON_KEBEROS = "sec:Kerberos";
+	private static final String CARBONSEC_PROPERTY = "sec:property";
+
+	private static final String ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES = "org.wso2.carbon.security.allowedroles";
+	private static final String SERVICE_PRINCIPAL_PASSWORD = "service.principal.password";
+	private static final String SERVICE_PRINCIPAL_NAME = "service.principal.name";
+	private static final String PASSWORD = "kuv2MubUUveMyv6GeHrXr9il59ajJIqUI4eoYHcgGKf/BBFOWn96NTjJQI+wYbWjKW6r79S7L7ZzgYeWx7DlGbff5X3pBN2Gh9yV0BHP1E93QtFqR7uTWi141Tr7V7ZwScwNqJbiNoV+vyLbsqKJE7T3nP8Ih9Y6omygbcLcHzg";
+	private static final String PRINCIPAL_NAME = "esb/localhost";
 
 	// Private Store Constants
 	private static final String WSO2_PRIVATESTORE = "wso2carbon.jks";
@@ -144,6 +162,8 @@ public class SecurityFormPage extends FormPage {
 	private static final String LABEL_TOKEN_STORE_CLASS = "tokenStoreClass :";
 	private static final String LABEL_NONCELIFETIME = "nonceLifeTime :";
 	private static final String LABEL_PRIVATE_STORE = "Privatestore :";
+	private static final String LABEL_SERVICE_PRINCIPAL_NAME = "Service Principal Name";
+	private static final String LABEL_SERVICE_PRINCIPAL_PASSWORD = "Service Principal Password";
 	private static final String EDITOR_TITLE = "WS-Policy for Service";
 	private static final String VALUE_TRUE = "true";
 	private static final String VALUE_FALSE = "false";
@@ -157,6 +177,7 @@ public class SecurityFormPage extends FormPage {
 	private static final String SECTION_RAMPART_CONFIGURATION = "Rampart Configuration";
 	private static final String SECTION_ENCRYPTION_PROPERTIES = "Encryption Properties";
 	private static final String SECTION_SIGNATURE_PROPOERTIES = "Signature Properties";
+	private static final String SECTION_KERBEROS = "Kerberos Properties";
 
 	// Rampart Configs
 	private static final String ALIAS = ":Alias";
@@ -180,11 +201,13 @@ public class SecurityFormPage extends FormPage {
 	File policyTemplateFile;
 	private File inputFile;
 	private String policyFileName;
-	private String selectedPolicy;
+	private static String selectedPolicy;
 	private Document doc;
 	private Element rampart;
+	private Element secElement;
 	private String policyID;
 	private Display display;
+	private static String allowRoles;
 
 	private FormToolkit toolkit;
 	private ScrolledForm form;
@@ -192,16 +215,27 @@ public class SecurityFormPage extends FormPage {
 	private Object[] resultService;
 	private Object[] enresult;
 	private Object[] signresult;
+	private Object[] keberosResult;
 
 	private static Map<String, String> rampartDataMap;
 	private static Map<String, String> encryptDataMap;
 	private static Map<String, String> signDataMap;
 
+	private static Map<String, String> carbonSecAuthDataMap;
+	private static Map<String, String> carbonSecTrustDataMap;
+	private static Map<String, String> carbonSecKerberosDataMap;
+
 	private Map<String, Text> encryptControlMap;
 	private Map<String, Text> signControlMap;
 	private Map<String, Object> rampartControlMap;
+	private static Map<String, String> carbonSecAuthControlMap;
+
+	private Map<String, Text> carbonSecTrustControlMap;
+	private Map<String, Text> carbonSecKerberosControlMap;
 
 	private Map<String, Button> policyeMap;
+
+	private static List<String> utRoles;
 
 	SecurityFormEditor formEditor;
 
@@ -212,6 +246,8 @@ public class SecurityFormPage extends FormPage {
 	private Button policyFourteenUserRolesButton;
 	private Button policyFifteenUserRolesButton;
 	private Text txtPrivateStore;
+	private Text txtPrincipalName;
+	private Text txtPrincipalPassword;
 	private Text txtRampartTimestampMaxSkew;
 	private Text txtRampartUser;
 	private Text txtRampartEncryptionUser;
@@ -224,9 +260,14 @@ public class SecurityFormPage extends FormPage {
 	public SecurityFormPage(FormEditor editor, String id, String title, IProject iproject, File file, Display display) {
 		super(editor, id, title);
 
+		allowRoles = null;
+		utRoles = new ArrayList<String>();
 		rampartDataMap = new HashMap<>();
 		encryptDataMap = new HashMap<>();
 		signDataMap = new HashMap<>();
+		carbonSecAuthDataMap = new HashMap<>();
+		carbonSecTrustDataMap = new HashMap<>();
+		carbonSecKerberosDataMap = new HashMap<>();
 
 		// Fill Data Maps with default values
 		rampartDataMap.put(RAMPART_USER, WSO2_PRIVATESTORE_ALIAS);
@@ -250,9 +291,19 @@ public class SecurityFormPage extends FormPage {
 		signDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES, WSO2_PRIVATESTORE);
 		signDataMap.put(RAMPART_CONFIG_USER, WSO2_PRIVATESTORE_ALIAS);
 
+		carbonSecTrustDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS, WSO2_PRIVATESTORE_ALIAS);
+		carbonSecTrustDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE, WSO2_PRIVATESTORE);
+		carbonSecTrustDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES, WSO2_PRIVATESTORE);
+
+		carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_PASSWORD, PASSWORD);
+		carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_NAME, PRINCIPAL_NAME);
+
 		encryptControlMap = new HashMap<>();
 		signControlMap = new HashMap<>();
 		rampartControlMap = new HashMap<>();
+		carbonSecAuthControlMap = new HashMap<>();
+		carbonSecTrustControlMap = new HashMap<>();
+		carbonSecKerberosControlMap = new HashMap<>();
 
 		policyeMap = new HashMap<>();
 		inputFile = file;
@@ -301,7 +352,7 @@ public class SecurityFormPage extends FormPage {
 
 		toolkit.createLabel(compositeBasicInfo, LABEL_PRIVATE_STORE);
 
-		txtPrivateStore = new Text(compositeBasicInfo, SWT.FLAT);
+		txtPrivateStore = new Text(compositeBasicInfo, SWT.BORDER);
 		txtPrivateStore.setBounds(new org.eclipse.swt.graphics.Rectangle(92, 40, 84, 28));
 		txtPrivateStore.setText(WSO2_PRIVATESTORE);
 		GridData keyslayoutData = new GridData();
@@ -345,16 +396,16 @@ public class SecurityFormPage extends FormPage {
 
 		createRampartConfigUIs(managedForm, rampartBasic);
 
-		enresult = CreateRampartSection(toolkit, rmaportInfComposite, SECTION_ENCRYPTION_PROPERTIES, 10, 20, 600,
-				30, true);
+		enresult = CreateRampartSection(toolkit, rmaportInfComposite, SECTION_ENCRYPTION_PROPERTIES, 10, 20, 600, 30,
+				true);
 		Composite encryptionComposite = (Composite) enresult[1];
 		GridLayout enlayout = new GridLayout(2, false);
 		encryptionComposite.setLayout(enlayout);
 		Section enSec = (Section) enresult[0];
 		enSec.setExpanded(false);
 
-		signresult = CreateRampartSection(toolkit, rmaportInfComposite, SECTION_SIGNATURE_PROPOERTIES, 10, 30,
-				600, 30, true);
+		signresult = CreateRampartSection(toolkit, rmaportInfComposite, SECTION_SIGNATURE_PROPOERTIES, 10, 30, 600, 30,
+				true);
 		Composite signComposite = (Composite) signresult[1];
 		GridLayout signlayout = new GridLayout(2, false);
 		signComposite.setLayout(signlayout);
@@ -369,10 +420,60 @@ public class SecurityFormPage extends FormPage {
 			createRampartProperties(managedForm, signComposite, name, SIGN);
 		}
 
+		// UI for Kerberos
+		keberosResult = CreateSecuritySection(toolkit, body, SECTION_KERBEROS, 10, 70, 600, 30, true);
+		Composite kerberosMainComposite = (Composite) keberosResult[1];
+		GridLayout gridLayout = new GridLayout();
+		kerberosMainComposite.setLayout(gridLayout);
+
+		Composite compositeKerberos = new Composite(kerberosMainComposite, SWT.NULL);
+		GridLayout basicLayout = new GridLayout(2, false);
+		compositeKerberos.setLayout(basicLayout);
+
+		toolkit.createLabel(compositeKerberos, LABEL_SERVICE_PRINCIPAL_NAME);
+
+		txtPrincipalName = new Text(compositeKerberos, SWT.BORDER);
+		txtPrincipalName.setBounds(new org.eclipse.swt.graphics.Rectangle(92, 40, 84, 28));
+		txtPrincipalName.setText(PRINCIPAL_NAME);
+		GridData keylayoutData = new GridData();
+		keylayoutData.minimumWidth = 200;
+		keylayoutData.horizontalAlignment = SWT.FILL;
+		keylayoutData.grabExcessHorizontalSpace = true;
+		txtPrincipalName.setLayoutData(keylayoutData);
+		carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME, txtPrincipalName);
+		txtPrincipalName.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_NAME, txtPrincipalName.getText());
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
+		toolkit.createLabel(compositeKerberos, LABEL_SERVICE_PRINCIPAL_PASSWORD);
+
+		txtPrincipalPassword = new Text(compositeKerberos, SWT.BORDER);
+		txtPrincipalPassword.setBounds(new org.eclipse.swt.graphics.Rectangle(92, 40, 84, 28));
+		txtPrincipalPassword.setText(PASSWORD);
+		GridData keyplayoutData = new GridData();
+		keyplayoutData.minimumWidth = 200;
+		keyplayoutData.horizontalAlignment = SWT.FILL;
+		keyplayoutData.grabExcessHorizontalSpace = true;
+		txtPrincipalPassword.setLayoutData(keyplayoutData);
+		carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword);
+		txtPrincipalPassword.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword.getText());
+				setSave(true);
+				updateDirtyState();
+			}
+		});
+
 		try {
 			String initalContent = convertXMLFileToString(inputFile);
-			updateSecurityOptionButtons(initalContent, resultService, enresult,signresult);
-			updateRampartUIWithChanges(initalContent);
+			updateSecurityOptionButtons(initalContent, resultService, enresult, signresult, keberosResult);
+			updateRampartUIAndUserRolesWithChanges(initalContent);
 		} catch (JAXBException | ParserConfigurationException | SAXException | IOException e) {
 			log.error(SecurityFormMessageConstants.MESSAGE_LOAD_PAGE, e);
 			MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
@@ -391,12 +492,7 @@ public class SecurityFormPage extends FormPage {
 		sctnCreate.setText(sectionName);
 		sctnCreate.setExpanded(expand);
 		sctnCreate.setVisible(false);
-		/*
-		 * GridData layoutData = new GridData(); layoutData.minimumWidth = 600;
-		 * layoutData.horizontalAlignment = SWT.FILL;
-		 * layoutData.grabExcessHorizontalSpace = true;
-		 * sctnCreate.setLayoutData(layoutData);
-		 */
+
 		sctnCreate.addExpansionListener(new IExpansionListener() {
 
 			@Override
@@ -428,12 +524,7 @@ public class SecurityFormPage extends FormPage {
 		sctnCreate.setText(sectionName);
 		sctnCreate.setExpanded(expand);
 		sctnCreate.setVisible(false);
-		/*
-		 * GridData layoutData = new GridData(); layoutData.minimumWidth = 600;
-		 * layoutData.horizontalAlignment = SWT.FILL;
-		 * layoutData.grabExcessHorizontalSpace = true;
-		 * sctnCreate.setLayoutData(layoutData);
-		 */
+
 		sctnCreate.addExpansionListener(new IExpansionListener() {
 
 			@Override
@@ -696,7 +787,80 @@ public class SecurityFormPage extends FormPage {
 			Unmarshaller pUnmarshaller = getUnmarsheller();
 			policyObject = (Policy2) pUnmarshaller.unmarshal(policyTemplateStream);
 
+			// Define roles in UsernameToken based security policies.
+			if (utRoles != null && utRoles.size() > 0) {
+				if (StringUtils.isNotBlank(selectedPolicy)
+						&& (SecurityPolicies.POLICY_TYPE_1.equals(selectedPolicy)
+								|| SecurityPolicies.POLICY_TYPE_7.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_8
+									.equals(selectedPolicy))) {
+
+					allowRoles = getAllowRoles();
+					if (StringUtils.isNotBlank(allowRoles)) {
+						carbonSecAuthControlMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, allowRoles);
+					}
+
+				}
+				if (StringUtils.isNotBlank(selectedPolicy)
+						&& (SecurityPolicies.POLICY_TYPE_14.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_15
+								.equals(selectedPolicy))) {
+
+					allowRoles = getAllowRoles();
+					if (StringUtils.isNotBlank(allowRoles)) {
+						carbonSecAuthControlMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, allowRoles);
+					}
+
+					carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS,
+							encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
+					carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE,
+							encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
+					carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES,
+							encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
+
+				}
+
+			} else {
+				carbonSecAuthControlMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, null);
+				carbonSecAuthDataMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, null);
+			}
+
+			if (StringUtils.isNotBlank(selectedPolicy)
+					&& (SecurityPolicies.POLICY_TYPE_9.equals(selectedPolicy)
+							|| SecurityPolicies.POLICY_TYPE_10.equals(selectedPolicy)
+							|| SecurityPolicies.POLICY_TYPE_11.equals(selectedPolicy)
+							|| SecurityPolicies.POLICY_TYPE_12.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_13
+								.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_17
+								.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_18
+								.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_19
+								.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_20
+								.equals(selectedPolicy))) {
+
+				carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS,
+						encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
+				carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE,
+						encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
+				carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES,
+						encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
+
+			}
 		}
+	}
+
+	/**
+	 * Get allow roles in role1,role2, format.
+	 * 
+	 * @return roles
+	 */
+	private static String getAllowRoles() {
+		String allowRoles = "";
+
+		for (int i = 0; i < utRoles.size(); i++) {
+			if (i == utRoles.size() - 1) {
+				allowRoles += utRoles.get(i);
+			} else {
+				allowRoles += utRoles.get(i) + ",";
+			}
+		}
+		return allowRoles;
 	}
 
 	/**
@@ -712,12 +876,39 @@ public class SecurityFormPage extends FormPage {
 				encryptDataMap.put(key, controlText.getText());
 			}
 		}
+
 		keySet = signControlMap.keySet();
 		for (String key : keySet) {
 			Object control = signControlMap.get(key);
 			if (control instanceof Text) {
 				Text controlText = (Text) control;
 				signDataMap.put(key, controlText.getText());
+			}
+		}
+
+		keySet = carbonSecAuthControlMap.keySet();
+		for (String key : keySet) {
+			String control = carbonSecAuthControlMap.get(key);
+			if (!StringUtils.isEmpty(control)) {
+				carbonSecAuthDataMap.put(key, control);
+			}
+		}
+
+		keySet = carbonSecTrustControlMap.keySet();
+		for (String key : keySet) {
+			Object control = carbonSecTrustControlMap.get(key);
+			if (control instanceof Text) {
+				Text controlText = (Text) control;
+				carbonSecTrustDataMap.put(key, controlText.getText());
+			}
+		}
+
+		keySet = carbonSecKerberosControlMap.keySet();
+		for (String key : keySet) {
+			Object control = carbonSecKerberosControlMap.get(key);
+			if (control instanceof Text) {
+				Text controlText = (Text) control;
+				carbonSecKerberosDataMap.put(key, controlText.getText());
 			}
 		}
 	}
@@ -740,6 +931,9 @@ public class SecurityFormPage extends FormPage {
 
 		Node nrampart = doc.getElementsByTagName(RAMPART_CONFIG).item(0);
 		rampart = (Element) nrampart;
+
+		Node nsec = doc.getElementsByTagName(CARBONSEC_CONFIG).item(0);
+		secElement = (Element) nsec;
 
 		if (!isKerberossignandencrypt) {
 			Node user = rampart.getElementsByTagName(RAMPART_USER).item(0);
@@ -796,10 +990,28 @@ public class SecurityFormPage extends FormPage {
 			if (signatureCrypto != null) {
 				setenCryto(signatureCrypto, signDataMap);
 			}
+			if (secElement != null) {
+				Node carbonAuth = secElement.getElementsByTagName(CARBONSEC_AUTHORIZATION).item(0);
+				if (carbonAuth != null) {
+					setSecAuthorization(carbonAuth, carbonSecAuthDataMap);
+				}
+				Node carbonTrust = secElement.getElementsByTagName(CARBONSEC_TRUST).item(0);
+				if (carbonTrust != null) {
+					setSecTrust(carbonTrust, carbonSecTrustDataMap);
+				}
+			}
+
 		} else {
 			Node kerberosConfig = rampart.getElementsByTagName(RAMPART_KERBEROS_CONFIG).item(0);
 			if (kerberosConfig != null) {
-				setKerberosConfig(kerberosConfig);
+				setKerberosRampartConfig(kerberosConfig, carbonSecKerberosDataMap);
+			}
+
+			if (secElement != null) {
+				Node kerberosSec = secElement.getElementsByTagName(CARBON_KEBEROS).item(0);
+				if (kerberosSec != null) {
+					setKerberosSecConfig(kerberosSec, carbonSecKerberosDataMap);
+				}
 			}
 		}
 	}
@@ -914,8 +1126,8 @@ public class SecurityFormPage extends FormPage {
 	 * @throws SAXException
 	 * @throws ParserConfigurationException
 	 */
-	private void updateRampartUIWithChanges(String source) throws ParserConfigurationException, SAXException,
-			IOException {
+	private void updateRampartUIAndUserRolesWithChanges(String source) throws ParserConfigurationException,
+			SAXException, IOException {
 
 		// Gets rampart config values from the source view
 
@@ -925,8 +1137,13 @@ public class SecurityFormPage extends FormPage {
 
 		// Gets rampart encryption and sign values from source view
 		InputStream cryptotStream = new ByteArrayInputStream(source.getBytes());
-		getRampartEncryptionAndSignValuesFromSource(cryptotStream);
+		getRampartEncryptionSignUserRoleValuesFromSource(cryptotStream);
 		closeInputStream(cryptotStream);
+
+		// Gets Kerberos values from the source view
+		InputStream kerberosStream = new ByteArrayInputStream(source.getBytes());
+		getKerberosValuesFromSource(kerberosStream);
+		closeInputStream(kerberosStream);
 
 		// updates rampart ui
 		Text txtRampartProperties = (Text) rampartControlMap.get(RAMPART_USER);
@@ -996,6 +1213,9 @@ public class SecurityFormPage extends FormPage {
 		// sign values
 		updateCryptoUIWithChanges(signDataMap, signControlMap);
 
+		// kerberos values
+		updateKerberosUIWithChanges(carbonSecKerberosDataMap, carbonSecKerberosControlMap);
+
 	}
 
 	/**
@@ -1044,41 +1264,80 @@ public class SecurityFormPage extends FormPage {
 	}
 
 	/**
+	 * Updates Kerberos UI
+	 * 
+	 * @param dataMap
+	 *            data map
+	 * @param controlMap
+	 *            ui map
+	 */
+	private void updateKerberosUIWithChanges(Map<String, String> dataMap, Map<String, Text> controlMap) {
+
+		if (controlMap.size() > 0) {
+			if (dataMap.get(SERVICE_PRINCIPAL_NAME) != null) {
+				controlMap.get(SERVICE_PRINCIPAL_NAME).setText(dataMap.get(SERVICE_PRINCIPAL_NAME));
+			} else {
+				controlMap.get(SERVICE_PRINCIPAL_NAME).setText("");
+
+			}
+			if (dataMap.get(SERVICE_PRINCIPAL_PASSWORD) != null) {
+				controlMap.get(SERVICE_PRINCIPAL_PASSWORD).setText(dataMap.get(SERVICE_PRINCIPAL_PASSWORD));
+			} else {
+				controlMap.get(SERVICE_PRINCIPAL_PASSWORD).setText("");
+
+			}
+		}
+
+	}
+
+	/**
 	 * Updates security options on page change
 	 * 
 	 * @param source
 	 *            content
-	 * @param signresult2 
-	 * @param enresult2 
+	 * @param keberosResult2
+	 * @param signresult2
+	 * @param enresult2
 	 * @param body
 	 *            body
 	 * @param toolkit
 	 *            managed form
 	 * @throws JAXBException
 	 */
-	private void updateSecurityOptionButtons(String source, Object[] resultService, Object[] enresult, Object[] signresult) throws JAXBException {
+	private void updateSecurityOptionButtons(String source, Object[] resultService, Object[] enresult,
+			Object[] signresult, Object[] keberosResult) throws JAXBException {
 
 		Unmarshaller uUnmarshaller = getUnmarsheller();
 		InputStream inputStream = new ByteArrayInputStream(source.getBytes());
 		policyObject = (Policy2) uUnmarshaller.unmarshal(inputStream);
 		closeInputStream(inputStream);
-		if (resultService != null || enresult != null || signresult != null ) {
+		if (resultService != null || enresult != null || signresult != null || keberosResult != null) {
 			Section result = (Section) resultService[0];
-			Section encrypt = (Section)enresult[0];
+			Section encrypt = (Section) enresult[0];
 			Section signResult = (Section) signresult[0];
-			if (policyObject.getId().equals(POLICY_OBJECT_UT) || policyObject.getId().equals(KERBEROSSIGNANDENCRYPT)) {
+			Section kebSection = (Section) keberosResult[0];
+			// TOOLS-2772
+			if (policyObject.getId().equals(POLICY_OBJECT_UT)) {
 				result.setVisible(false);
 				encrypt.setVisible(false);
 				signResult.setVisible(false);
+				kebSection.setVisible(false);
+			} else if (policyObject.getId().equals(KERBEROSSIGNANDENCRYPT)) {
+				result.setVisible(false);
+				encrypt.setVisible(false);
+				signResult.setVisible(false);
+				kebSection.setVisible(true);
 			} else {
 				result.setVisible(true);
 				encrypt.setVisible(true);
 				signResult.setVisible(true);
+				kebSection.setVisible(false);
 			}
 		}
 		Button button = policyeMap.get(policyObject.getId());
 		if (button != null) {
 			button.setSelection(true);
+			enableUserRoleButton(button);
 			policyFileName = (String) button.getData();
 			selectedPolicy = SecurityPolicyUtils.getInstance().getPolicyTypeFromPolicyUUID(policyObject.getId());
 		}
@@ -1243,7 +1502,7 @@ public class SecurityFormPage extends FormPage {
 	 * @throws SAXException
 	 * @throws IOException
 	 */
-	private void getRampartEncryptionAndSignValuesFromSource(InputStream uiContentStream)
+	private void getRampartEncryptionSignUserRoleValuesFromSource(InputStream uiContentStream)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		DocumentBuilder dBuilder = getDocumentBuilder();
@@ -1254,6 +1513,9 @@ public class SecurityFormPage extends FormPage {
 
 		Node nrampart = doc.getElementsByTagName(RAMPART_CONFIG).item(0);
 		rampart = (Element) nrampart;
+
+		Node nsec = doc.getElementsByTagName(CARBONSEC_CONFIG).item(0);
+		secElement = (Element) nsec;
 
 		if (!isKerberossignandencrypt) {
 			Node encryptionCrypto = rampart.getElementsByTagName(RAMPART_ENCRYPTION_CRYPTO).item(0);
@@ -1266,6 +1528,55 @@ public class SecurityFormPage extends FormPage {
 			if (signatureCrypto != null) {
 				signDataMap = addRampartCryptoProperties(signatureCrypto);
 			}
+
+			if (secElement != null) {
+				Node secAuth = secElement.getElementsByTagName(CARBONSEC_AUTHORIZATION).item(0);
+				if (secAuth != null) {
+					carbonSecAuthDataMap = addCarbonAuthProperties(secAuth);
+				}
+			}
+
+		}
+
+	}
+
+	/**
+	 * Updates the kerberos data map
+	 * 
+	 * @param uiContentStream
+	 *            input stream
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
+	private void getKerberosValuesFromSource(InputStream uiContentStream) throws ParserConfigurationException,
+			SAXException, IOException {
+
+		DocumentBuilder dBuilder = getDocumentBuilder();
+		doc = dBuilder.parse(uiContentStream);
+		policyID = policyObject.getId();
+
+		boolean isKerberossignandencrypt = policyID.equals(KERBEROSSIGNANDENCRYPT);
+
+		Node nrampart = doc.getElementsByTagName(RAMPART_CONFIG).item(0);
+		rampart = (Element) nrampart;
+
+		Node nsec = doc.getElementsByTagName(CARBONSEC_CONFIG).item(0);
+		secElement = (Element) nsec;
+
+		if (isKerberossignandencrypt) {
+			Node rampartKerberos = rampart.getElementsByTagName(RAMPART_KERBEROS_CONFIG).item(0);
+			if (rampartKerberos != null) {
+				carbonSecKerberosDataMap = addKerberosProperties(rampartKerberos);
+			}
+
+			if (secElement != null) {
+				Node secKerberos = secElement.getElementsByTagName(CARBON_KEBEROS).item(0);
+				if (secKerberos != null) {
+					carbonSecKerberosDataMap = addKerberosProperties(secKerberos);
+				}
+			}
+
 		}
 
 	}
@@ -1287,11 +1598,73 @@ public class SecurityFormPage extends FormPage {
 			Node node = list.item(i);
 			if (RAMPART_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(RAMPART_PROPERTY_NAME);
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
 				cryptoMap.put(attribute, eElement.getTextContent());
 			}
 		}
 		return cryptoMap;
+	}
+
+	/**
+	 * Add rampart:kerberosConfig or rampart:signatureCrypto properties.
+	 * 
+	 * @param crypto
+	 *            crypto node
+	 */
+	private static Map<String, String> addKerberosProperties(Node kerberos) {
+
+		Map<String, String> kerberosMap = new HashMap<>();
+		NodeList list = kerberos.getChildNodes();
+
+		for (int i = 0; i < list.getLength(); i++) {
+			Node node = list.item(i);
+			if (CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+				Element eElement = (Element) node;
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				kerberosMap.put(attribute, eElement.getTextContent());
+			}
+		}
+		return kerberosMap;
+	}
+
+	/**
+	 * Add sec:Authorization properties.
+	 * 
+	 * @param secAuth
+	 *            secAuth node
+	 */
+	private static Map<String, String> addCarbonAuthProperties(Node secAuth) {
+
+		Map<String, String> secAuthMap = new HashMap<>();
+
+		NodeList list = secAuth.getChildNodes();
+		for (int i = 0; i < list.getLength(); i++) {
+			Node node = list.item(i);
+			if (CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+				Element eElement = (Element) node;
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				/* Update the relevent maps and role vale when changing the
+				 userRole value from the source view*/
+				secAuthMap.put(attribute, eElement.getTextContent());
+				carbonSecAuthControlMap.put(attribute, eElement.getTextContent());
+				if (utRoles == null) {
+					utRoles = new ArrayList<String>();
+				} else {
+					utRoles.clear();
+					utRoles.add(eElement.getTextContent());
+					allowRoles = getAllowRoles();
+				}
+
+				 /*Update the relevent maps and role vale when removing the
+				 userRole value from the source view*/
+				if (StringUtils.isEmpty(eElement.getTextContent())) {
+					utRoles.clear();
+					carbonSecAuthControlMap.put(attribute, null);
+					carbonSecAuthDataMap.put(attribute, null);
+				}
+			}
+		}
+		return secAuthMap;
 	}
 
 	/**
@@ -1308,7 +1681,7 @@ public class SecurityFormPage extends FormPage {
 			Node node = list.item(i);
 			if (RAMPART_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(RAMPART_PROPERTY_NAME);
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
 				rampartDataMap.put(attribute, eElement.getTextContent());
 			}
 		}
@@ -1331,9 +1704,97 @@ public class SecurityFormPage extends FormPage {
 			Node node = list.item(i);
 			if (node != null && RAMPART_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(RAMPART_PROPERTY_NAME);
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
 					node.setTextContent(cryptoMap.get(attribute));
+				}
+			}
+		}
+	}
+
+	/**
+	 * Sets the security authorization
+	 * 
+	 * @param carbonSecurity
+	 *            node carbonSecurity
+	 * @param carbonAuthMap
+	 *            map
+	 */
+	private static void setSecAuthorization(Node carbonSecurity, Map<String, String> carbonAuthMap) {
+
+		NodeList list = carbonSecurity.getChildNodes();
+
+		for (int i = 0; i < list.getLength(); i++) {
+			Node node = list.item(i);
+			if (node != null && CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+				Element eElement = (Element) node;
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				if (StringUtils.isNotBlank(attribute)) {
+					if (!StringUtils.isEmpty(carbonAuthMap.get(attribute))) {
+						node.setTextContent(carbonAuthMap.get(attribute));
+						if (utRoles == null) {
+							utRoles.add(carbonAuthMap.get(attribute));
+						}
+					} else {
+						// Remove the sec: tag when User Role value is empty
+						if (SecurityPolicies.POLICY_TYPE_14.equals(selectedPolicy)
+								|| SecurityPolicies.POLICY_TYPE_15.equals(selectedPolicy)) {
+							node.getParentNode().getParentNode().removeChild(carbonSecurity);
+							allowRoles = null;
+						} else {
+							node.getParentNode().getParentNode().getParentNode()
+									.removeChild(carbonSecurity.getParentNode());
+							allowRoles = null;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Sets the security trust
+	 * 
+	 * @param carbonTrust
+	 *            node carbonTrust
+	 * @param carbonTrustMap
+	 *            map
+	 */
+	private static void setSecTrust(Node carbonTrust, Map<String, String> carbonTrustMap) {
+
+		NodeList list = carbonTrust.getChildNodes();
+
+		for (int i = 0; i < list.getLength(); i++) {
+			Node node = list.item(i);
+			if (node != null && CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+				Element eElement = (Element) node;
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				if (StringUtils.isNotBlank(attribute)) {
+					node.setTextContent(carbonTrustMap.get(attribute));
+				}
+			}
+		}
+	}
+
+	/**
+	 * Sets the security trust
+	 * 
+	 * @param carbonTrust
+	 *            node carbonTrust
+	 * @param carbonTrustMap
+	 *            map
+	 */
+	private static void setKerberosSecConfig(Node carbonKerberos, Map<String, String> carbonKerberosMap) {
+
+		NodeList list = carbonKerberos.getChildNodes();
+
+		for (int i = 0; i < list.getLength(); i++) {
+			Node node = list.item(i);
+			if (node != null && CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+				Element eElement = (Element) node;
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				if (StringUtils.isNotBlank(attribute)) {
+					node.setTextContent(carbonKerberosMap.get(attribute));
 				}
 			}
 		}
@@ -1344,8 +1805,9 @@ public class SecurityFormPage extends FormPage {
 	 * 
 	 * @param kerberosConfig
 	 *            kerbeos config
+	 * @param carbonSecKerberosDataMap2
 	 */
-	private static void setKerberosConfig(Node kerberosConfig) {
+	private static void setKerberosRampartConfig(Node kerberosConfig, Map<String, String> carbonSecKerberosDataMap) {
 
 		NodeList list = ((Element) kerberosConfig).getChildNodes();
 
@@ -1353,9 +1815,9 @@ public class SecurityFormPage extends FormPage {
 			Node node = list.item(i);
 			if (node != null && RAMPART_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(RAMPART_PROPERTY_NAME);
+				String attribute = eElement.getAttribute(PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
-					node.setTextContent(eElement.getTextContent());
+					node.setTextContent(carbonSecKerberosDataMap.get(attribute));
 				}
 			}
 		}
@@ -1394,24 +1856,29 @@ public class SecurityFormPage extends FormPage {
 					if (resultService != null || enresult != null || signresult != null) {
 						Section result = (Section) resultService[0];
 						Section encrypt = (Section) enresult[0];
-						Section  signResult = (Section) signresult[0];
-						if (selectedPolicy.equals(POLICY_UT) || selectedPolicy.equals(POLICY_KERBEROS)) {
+						Section signResult = (Section) signresult[0];
+						Section kebSection = (Section) keberosResult[0];
+
+						// TOOLS-2772
+						if (selectedPolicy.equals(POLICY_UT)) {
 							result.setVisible(false);
 							encrypt.setVisible(false);
 							signResult.setVisible(false);
+							kebSection.setVisible(false);
+						} else if (selectedPolicy.equals(POLICY_KERBEROS)) {
+							result.setVisible(false);
+							encrypt.setVisible(false);
+							signResult.setVisible(false);
+							kebSection.setVisible(true);
 						} else {
 							result.setVisible(true);
 							encrypt.setVisible(true);
 							signResult.setVisible(true);
-							
+							kebSection.setVisible(false);
 						}
 					}
 
-					policyOneUserRolesButton.setVisible(false);
-					policySevenUserRolesButton.setVisible(false);
-					policyEightUserRolesButton.setVisible(false);
-					policyFourteenUserRolesButton.setVisible(false);
-					policyFifteenUserRolesButton.setVisible(false);
+					enableUserRoleButton(secBtn);
 				}
 			});
 
@@ -1449,7 +1916,9 @@ public class SecurityFormPage extends FormPage {
 				policyOneUserRolesButton.setVisible(false);
 				policyOneUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
-
+						openUserRolesDialog();
+						setSave(true);
+						updateDirtyState();
 					}
 				});
 
@@ -1469,7 +1938,9 @@ public class SecurityFormPage extends FormPage {
 				policySevenUserRolesButton.setVisible(false);
 				policySevenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
-
+						openUserRolesDialog();
+						setSave(true);
+						updateDirtyState();
 					}
 				});
 
@@ -1489,7 +1960,9 @@ public class SecurityFormPage extends FormPage {
 				policyEightUserRolesButton.setVisible(false);
 				policyEightUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
-
+						openUserRolesDialog();
+						setSave(true);
+						updateDirtyState();
 					}
 				});
 
@@ -1509,7 +1982,9 @@ public class SecurityFormPage extends FormPage {
 				policyFourteenUserRolesButton.setVisible(false);
 				policyFourteenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
-
+						openUserRolesDialog();
+						setSave(true);
+						updateDirtyState();
 					}
 				});
 
@@ -1529,7 +2004,9 @@ public class SecurityFormPage extends FormPage {
 				policyFifteenUserRolesButton.setVisible(false);
 				policyFifteenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
-
+						openUserRolesDialog();
+						setSave(true);
+						updateDirtyState();
 					}
 				});
 
@@ -1545,6 +2022,73 @@ public class SecurityFormPage extends FormPage {
 			}
 
 		}
+	}
+
+	/**
+	 * Enbles the user role button
+	 * 
+	 * @param secBtn
+	 */
+	private void enableUserRoleButton(Button secBtn) {
+		if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_1)) {
+			policyOneUserRolesButton.setVisible(true);
+			policySevenUserRolesButton.setVisible(false);
+			policyEightUserRolesButton.setVisible(false);
+			policyFourteenUserRolesButton.setVisible(false);
+			policyFifteenUserRolesButton.setVisible(false);
+
+		} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_7)) {
+			policyOneUserRolesButton.setVisible(false);
+			policySevenUserRolesButton.setVisible(true);
+			policyEightUserRolesButton.setVisible(false);
+			policyFourteenUserRolesButton.setVisible(false);
+			policyFifteenUserRolesButton.setVisible(false);
+
+		} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_8)) {
+			policyOneUserRolesButton.setVisible(false);
+			policySevenUserRolesButton.setVisible(false);
+			policyEightUserRolesButton.setVisible(true);
+			policyFourteenUserRolesButton.setVisible(false);
+			policyFifteenUserRolesButton.setVisible(false);
+
+		} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_14)) {
+			policyOneUserRolesButton.setVisible(false);
+			policySevenUserRolesButton.setVisible(false);
+			policyEightUserRolesButton.setVisible(false);
+			policyFourteenUserRolesButton.setVisible(true);
+			policyFifteenUserRolesButton.setVisible(false);
+
+		} else if (secBtn.getToolTipText().equals(SecurityPolicies.POLICY_TYPE_15)) {
+			policyOneUserRolesButton.setVisible(false);
+			policySevenUserRolesButton.setVisible(false);
+			policyEightUserRolesButton.setVisible(false);
+			policyFourteenUserRolesButton.setVisible(false);
+			policyFifteenUserRolesButton.setVisible(true);
+
+		} else {
+			policyOneUserRolesButton.setVisible(false);
+			policySevenUserRolesButton.setVisible(false);
+			policyEightUserRolesButton.setVisible(false);
+			policyFourteenUserRolesButton.setVisible(false);
+			policyFifteenUserRolesButton.setVisible(false);
+
+		}
+	}
+
+	/**
+	 * Open User Roles dialog for UT policy.
+	 */
+	private void openUserRolesDialog() {
+		if (utRoles == null) {
+			utRoles = new ArrayList<String>();
+		} else {
+			if (!StringUtils.isEmpty(allowRoles))
+				utRoles.clear();
+		}
+
+		UserRolesDialog dialog = new UserRolesDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				utRoles, allowRoles);
+		dialog.open();
 	}
 
 	/**
@@ -1687,8 +2231,8 @@ public class SecurityFormPage extends FormPage {
 	public void updateUI(String source) {
 
 		try {
-			updateSecurityOptionButtons(source, resultService, enresult, signresult);
-			updateRampartUIWithChanges(source);
+			updateSecurityOptionButtons(source, resultService, enresult, signresult, keberosResult);
+			updateRampartUIAndUserRolesWithChanges(source);
 		} catch (JAXBException | ParserConfigurationException | SAXException | IOException e) {
 			log.error("Error in loading page", e);
 			MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);

@@ -35,11 +35,18 @@
 	</wsp:ExactlyOne>
 	<rampart:RampartConfig xmlns:rampart="http://ws.apache.org/rampart/policy">
 		<rampart:encryptionUser>useReqSigCert</rampart:encryptionUser>
-		<rampart:timestampPrecisionInMilliseconds>true</rampart:timestampPrecisionInMilliseconds>
+		<rampart:timestampPrecisionInMilliseconds>true
+		</rampart:timestampPrecisionInMilliseconds>
 		<rampart:timestampTTL>300</rampart:timestampTTL>
 		<rampart:timestampMaxSkew>300</rampart:timestampMaxSkew>
 		<rampart:timestampStrict>false</rampart:timestampStrict>
-		<rampart:tokenStoreClass>org.wso2.carbon.security.util.SecurityTokenStore</rampart:tokenStoreClass>
+		<rampart:tokenStoreClass>org.wso2.carbon.security.util.SecurityTokenStore
+		</rampart:tokenStoreClass>
 		<rampart:nonceLifeTime>300</rampart:nonceLifeTime>
 	</rampart:RampartConfig>
+	<sec:CarbonSecConfig xmlns:sec="http://www.wso2.org/products/carbon/security">
+		<sec:Authorization>
+			<sec:property name="org.wso2.carbon.security.allowedroles"></sec:property>
+		</sec:Authorization>
+	</sec:CarbonSecConfig>
 </wsp:Policy>

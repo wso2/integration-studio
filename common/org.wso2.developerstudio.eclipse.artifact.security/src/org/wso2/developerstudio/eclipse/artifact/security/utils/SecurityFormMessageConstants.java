@@ -21,7 +21,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class SecurityFormMessageConstants extends NLS {
 	
-	public static final String BUNDLE_NAME="org.wso2.developerstudio.eclipse.artifact.security.utils.securityformmessageconstants.properties";
+	public static final String BUNDLE_NAME="org.wso2.developerstudio.eclipse.artifact.security.utils.securityformmessageconstants";
 	
 	public static String MESSAGE_FORM_LOAD_ERROR;
 	public static String MESSAGE_POLICYFILE_READ_ERROR;
@@ -35,6 +35,8 @@ public class SecurityFormMessageConstants extends NLS {
 	public static String MESSAGE_LOAD_PAGE;
 	public static String MESSAGE_SAVE;
 	public static String MESSAGE_XML_ERROR;
+	public static String MESSAGE_KERBEROS_NAME;
+	public static String MESSAGE_KERBEROS_PASSWORD;
 	
 	static{
 		NLS.initializeMessages(BUNDLE_NAME, SecurityFormMessageConstants.class);

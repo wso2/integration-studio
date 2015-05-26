@@ -85,9 +85,9 @@ import org.wso2.developerstudio.eclipse.artifact.security.utils.SecurityFormMess
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
-import org.wso2.developerstudio.eclipse.security.project.ui.dialog.UserRolesDialog;
 import org.wso2.developerstudio.eclipse.security.Activator;
 import org.wso2.developerstudio.eclipse.security.project.model.Policy2;
+import org.wso2.developerstudio.eclipse.security.project.ui.dialog.UserRolesDialog;
 import org.wso2.developerstudio.eclipse.security.project.utils.SecurityPolicies;
 import org.wso2.developerstudio.eclipse.security.project.utils.SecurityPolicyUtils;
 import org.wso2.developerstudio.eclipse.security.project.utils.SecurityTemplateUtil;
@@ -162,8 +162,8 @@ public class SecurityFormPage extends FormPage {
 	private static final String LABEL_TOKEN_STORE_CLASS = "tokenStoreClass :";
 	private static final String LABEL_NONCELIFETIME = "nonceLifeTime :";
 	private static final String LABEL_PRIVATE_STORE = "Privatestore :";
-	private static final String LABEL_SERVICE_PRINCIPAL_NAME = "Service Principal Name";
-	private static final String LABEL_SERVICE_PRINCIPAL_PASSWORD = "Service Principal Password";
+	private static final String LABEL_SERVICE_PRINCIPAL_NAME = "Service Principal Name *";
+	private static final String LABEL_SERVICE_PRINCIPAL_PASSWORD = "Service Principal Password *";
 	private static final String EDITOR_TITLE = "WS-Policy for Service";
 	private static final String VALUE_TRUE = "true";
 	private static final String VALUE_FALSE = "false";
@@ -1784,7 +1784,7 @@ public class SecurityFormPage extends FormPage {
 	 * @param carbonTrustMap
 	 *            map
 	 */
-	private static void setKerberosSecConfig(Node carbonKerberos, Map<String, String> carbonKerberosMap) {
+	private void setKerberosSecConfig(Node carbonKerberos, Map<String, String> carbonKerberosMap) {
 
 		NodeList list = carbonKerberos.getChildNodes();
 
@@ -1794,7 +1794,20 @@ public class SecurityFormPage extends FormPage {
 				Element eElement = (Element) node;
 				String attribute = eElement.getAttribute(PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
-					node.setTextContent(carbonKerberosMap.get(attribute));
+					if (!StringUtils.isEmpty(carbonKerberosMap.get(attribute))) {
+						node.setTextContent(carbonKerberosMap.get(attribute));
+					} else {
+						if(attribute.equals(SERVICE_PRINCIPAL_NAME)){
+							MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
+							msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_NAME);
+							msgBox.open();
+						}else{
+							MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
+							msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_PASSWORD);
+							msgBox.open();
+						}
+						
+					}
 				}
 			}
 		}

@@ -21,7 +21,6 @@
          id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorID"
          name="%editorName"
          icon="icons/obj16/EsbDiagramFile.gif"
-         extensions="xml"
          default="true"
          class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor"
          matchingStrategy="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMatchingStrategy"

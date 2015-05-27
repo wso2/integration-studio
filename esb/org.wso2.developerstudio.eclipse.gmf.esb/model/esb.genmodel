@@ -21,6 +21,12 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/MESSAGE_STORE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/MESSAGE_PROCESSOR"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/INBOUND_ENDPOINT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_ENDPOINT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_ENDPOINT_ADDRESS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_ENDPOINT_WSDL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_ENDPOINT_DEFAULT"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_ENDPOINT_HTTP"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ArtifactType/TEMPLATE_SEQUENCE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//CallMediatorEndpointType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//CallMediatorEndpointType/INLINE"/>
@@ -1713,6 +1719,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FailoverEndPoint/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FailoverEndPoint/OutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FailoverEndPoint/westOutputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//FailoverEndPoint/mediatorFlow"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//FailoverEndPointInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//FailoverEndPointOutputConnector"/>
@@ -1741,6 +1748,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/sessionType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/algorithm"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//LoadBalanceEndPoint/sessionTimeout"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//LoadBalanceEndPoint/mediatorFlow"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//Member">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Member/hostName"/>
@@ -1927,6 +1935,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//RecipientListEndPoint/endpointsValue"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//RecipientListEndPoint/endpointsExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//RecipientListEndPoint/maxCache"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//RecipientListEndPoint/mediatorFlow"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//RecipientListEndPointInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//RecipientListEndPointOutputConnector"/>

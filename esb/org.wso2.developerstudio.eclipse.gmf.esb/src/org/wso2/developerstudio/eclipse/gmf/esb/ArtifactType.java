@@ -343,6 +343,96 @@ public enum ArtifactType implements Enumerator {
     public static final int INBOUND_ENDPOINT_VALUE = 12;
 
     /**
+	 * The '<em><b>TEMPLATE ENDPOINT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TEMPLATE ENDPOINT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TEMPLATE_ENDPOINT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPLATE_ENDPOINT_VALUE = 13;
+
+	/**
+	 * The '<em><b>TEMPLATE ENDPOINT ADDRESS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TEMPLATE ENDPOINT ADDRESS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TEMPLATE_ENDPOINT_ADDRESS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPLATE_ENDPOINT_ADDRESS_VALUE = 14;
+
+	/**
+	 * The '<em><b>TEMPLATE ENDPOINT WSDL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TEMPLATE ENDPOINT WSDL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TEMPLATE_ENDPOINT_WSDL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPLATE_ENDPOINT_WSDL_VALUE = 15;
+
+	/**
+	 * The '<em><b>TEMPLATE ENDPOINT DEFAULT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TEMPLATE ENDPOINT DEFAULT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TEMPLATE_ENDPOINT_DEFAULT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPLATE_ENDPOINT_DEFAULT_VALUE = 16;
+
+	/**
+	 * The '<em><b>TEMPLATE ENDPOINT HTTP</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TEMPLATE ENDPOINT HTTP</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TEMPLATE_ENDPOINT_HTTP
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPLATE_ENDPOINT_HTTP_VALUE = 17;
+
+	/**
+	 * The '<em><b>TEMPLATE SEQUENCE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TEMPLATE SEQUENCE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TEMPLATE_SEQUENCE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPLATE_SEQUENCE_VALUE = 18;
+
+				/**
 	 * An array of all the '<em><b>Artifact Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -363,6 +453,12 @@ public enum ArtifactType implements Enumerator {
 			MESSAGE_STORE,
 			MESSAGE_PROCESSOR,
 			INBOUND_ENDPOINT,
+			TEMPLATE_ENDPOINT,
+			TEMPLATE_ENDPOINT_ADDRESS,
+			TEMPLATE_ENDPOINT_WSDL,
+			TEMPLATE_ENDPOINT_DEFAULT,
+			TEMPLATE_ENDPOINT_HTTP,
+			TEMPLATE_SEQUENCE,
 		};
 
 	/**
@@ -426,6 +522,12 @@ public enum ArtifactType implements Enumerator {
 			case MESSAGE_STORE_VALUE: return MESSAGE_STORE;
 			case MESSAGE_PROCESSOR_VALUE: return MESSAGE_PROCESSOR;
 			case INBOUND_ENDPOINT_VALUE: return INBOUND_ENDPOINT;
+			case TEMPLATE_ENDPOINT_VALUE: return TEMPLATE_ENDPOINT;
+			case TEMPLATE_ENDPOINT_ADDRESS_VALUE: return TEMPLATE_ENDPOINT_ADDRESS;
+			case TEMPLATE_ENDPOINT_WSDL_VALUE: return TEMPLATE_ENDPOINT_WSDL;
+			case TEMPLATE_ENDPOINT_DEFAULT_VALUE: return TEMPLATE_ENDPOINT_DEFAULT;
+			case TEMPLATE_ENDPOINT_HTTP_VALUE: return TEMPLATE_ENDPOINT_HTTP;
+			case TEMPLATE_SEQUENCE_VALUE: return TEMPLATE_SEQUENCE;
 		}
 		return null;
 	}

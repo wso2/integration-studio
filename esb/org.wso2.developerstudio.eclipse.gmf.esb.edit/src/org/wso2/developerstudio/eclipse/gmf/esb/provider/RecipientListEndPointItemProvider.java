@@ -191,6 +191,7 @@ public class RecipientListEndPointItemProvider
 			childrenFeatures.add(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__OUTPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__WEST_OUTPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION);
+			childrenFeatures.add(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW);
 		}
 		return childrenFeatures;
 	}
@@ -254,6 +255,7 @@ public class RecipientListEndPointItemProvider
 			case EsbPackage.RECIPIENT_LIST_END_POINT__OUTPUT_CONNECTOR:
 			case EsbPackage.RECIPIENT_LIST_END_POINT__WEST_OUTPUT_CONNECTOR:
 			case EsbPackage.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION:
+			case EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -290,6 +292,11 @@ public class RecipientListEndPointItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION,
 				 EsbFactory.eINSTANCE.createNamespacedProperty()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW,
+				 EsbFactory.eINSTANCE.createMediatorFlow()));
 	}
 
 }

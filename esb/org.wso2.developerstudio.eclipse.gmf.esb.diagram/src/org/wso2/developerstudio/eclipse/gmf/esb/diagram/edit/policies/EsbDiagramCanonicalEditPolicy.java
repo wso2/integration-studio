@@ -2184,6 +2184,13 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
+		case MediatorFlow27EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(EsbDiagramUpdater.getMediatorFlow_3777ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
 		case RecipientListEndPoint2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(EsbDiagramUpdater.getRecipientListEndPoint_3696ContainedLinks(view));
@@ -2208,6 +2215,13 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
 		case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(EsbDiagramUpdater.getRecipientListEndPointWestOutputConnector_3699ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case MediatorFlow28EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(EsbDiagramUpdater.getMediatorFlow_3778ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
@@ -2257,6 +2271,13 @@ public class EsbDiagramCanonicalEditPolicy extends CanonicalEditPolicy {
 		case LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(EsbDiagramUpdater.getLoadBalanceEndPointWestOutputConnector_3659ContainedLinks(view));
+			}
+			domain2NotationMap.putView(view.getElement(), view);
+			break;
+		}
+		case MediatorFlow29EditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(EsbDiagramUpdater.getMediatorFlow_3779ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

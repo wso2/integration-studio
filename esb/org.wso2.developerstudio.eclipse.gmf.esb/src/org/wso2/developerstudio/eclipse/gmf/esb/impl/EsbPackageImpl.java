@@ -8867,6 +8867,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getRecipientListEndPoint_MediatorFlow() {
+		return (EReference)recipientListEndPointEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRecipientListEndPointInputConnector() {
 		return recipientListEndPointInputConnectorEClass;
 	}
@@ -14726,6 +14735,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFailoverEndPoint_MediatorFlow() {
+		return (EReference)failoverEndPointEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFailoverEndPointInputConnector() {
 		return failoverEndPointInputConnectorEClass;
 	}
@@ -14935,6 +14953,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getLoadBalanceEndPoint_SessionTimeout() {
 		return (EAttribute)loadBalanceEndPointEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLoadBalanceEndPoint_MediatorFlow() {
+		return (EReference)loadBalanceEndPointEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -17572,6 +17599,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEReference(failoverEndPointEClass, FAILOVER_END_POINT__INPUT_CONNECTOR);
 		createEReference(failoverEndPointEClass, FAILOVER_END_POINT__OUTPUT_CONNECTOR);
 		createEReference(failoverEndPointEClass, FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR);
+		createEReference(failoverEndPointEClass, FAILOVER_END_POINT__MEDIATOR_FLOW);
 
 		failoverEndPointInputConnectorEClass = createEClass(FAILOVER_END_POINT_INPUT_CONNECTOR);
 
@@ -17604,6 +17632,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(loadBalanceEndPointEClass, LOAD_BALANCE_END_POINT__SESSION_TYPE);
 		createEAttribute(loadBalanceEndPointEClass, LOAD_BALANCE_END_POINT__ALGORITHM);
 		createEAttribute(loadBalanceEndPointEClass, LOAD_BALANCE_END_POINT__SESSION_TIMEOUT);
+		createEReference(loadBalanceEndPointEClass, LOAD_BALANCE_END_POINT__MEDIATOR_FLOW);
 
 		memberEClass = createEClass(MEMBER);
 		createEAttribute(memberEClass, MEMBER__HOST_NAME);
@@ -17812,6 +17841,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(recipientListEndPointEClass, RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE);
 		createEReference(recipientListEndPointEClass, RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION);
 		createEAttribute(recipientListEndPointEClass, RECIPIENT_LIST_END_POINT__MAX_CACHE);
+		createEReference(recipientListEndPointEClass, RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW);
 
 		recipientListEndPointInputConnectorEClass = createEClass(RECIPIENT_LIST_END_POINT_INPUT_CONNECTOR);
 
@@ -19694,6 +19724,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEReference(getFailoverEndPoint_InputConnector(), this.getFailoverEndPointInputConnector(), null, "inputConnector", null, 0, 1, FailoverEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFailoverEndPoint_OutputConnector(), this.getFailoverEndPointOutputConnector(), null, "OutputConnector", null, 0, -1, FailoverEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFailoverEndPoint_WestOutputConnector(), this.getFailoverEndPointWestOutputConnector(), null, "westOutputConnector", null, 0, 1, FailoverEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFailoverEndPoint_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, FailoverEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(failoverEndPointInputConnectorEClass, FailoverEndPointInputConnector.class, "FailoverEndPointInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -19726,6 +19757,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getLoadBalanceEndPoint_SessionType(), this.getLoadBalanceSessionType(), "sessionType", "NONE", 0, 1, LoadBalanceEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLoadBalanceEndPoint_Algorithm(), ecorePackage.getEString(), "algorithm", "org.apache.synapse.endpoints.algorithms.RoundRobin", 0, 1, LoadBalanceEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLoadBalanceEndPoint_SessionTimeout(), ecorePackage.getELong(), "sessionTimeout", "0", 0, 1, LoadBalanceEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoadBalanceEndPoint_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, LoadBalanceEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(memberEClass, Member.class, "Member", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMember_HostName(), ecorePackage.getEString(), "hostName", null, 0, 1, Member.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -19934,6 +19966,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getRecipientListEndPoint_EndpointsValue(), ecorePackage.getEString(), "endpointsValue", null, 0, 1, RecipientListEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRecipientListEndPoint_EndpointsExpression(), this.getNamespacedProperty(), null, "endpointsExpression", null, 0, 1, RecipientListEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRecipientListEndPoint_MaxCache(), ecorePackage.getEInt(), "maxCache", "20", 0, 1, RecipientListEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecipientListEndPoint_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, RecipientListEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(recipientListEndPointInputConnectorEClass, RecipientListEndPointInputConnector.class, "RecipientListEndPointInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -20129,6 +20162,12 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.MESSAGE_STORE);
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.MESSAGE_PROCESSOR);
 		addEEnumLiteral(artifactTypeEEnum, ArtifactType.INBOUND_ENDPOINT);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_ENDPOINT);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_ENDPOINT_ADDRESS);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_ENDPOINT_WSDL);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_ENDPOINT_DEFAULT);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_ENDPOINT_HTTP);
+		addEEnumLiteral(artifactTypeEEnum, ArtifactType.TEMPLATE_SEQUENCE);
 
 		initEEnum(callMediatorEndpointTypeEEnum, CallMediatorEndpointType.class, "CallMediatorEndpointType");
 		addEEnumLiteral(callMediatorEndpointTypeEEnum, CallMediatorEndpointType.INLINE);

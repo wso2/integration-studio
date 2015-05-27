@@ -1043,6 +1043,9 @@ public class EsbEditPartFactory implements EditPartFactory {
 			case FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID:
 				return new FailoverEndPointWestOutputConnector2EditPart(view);
 
+			case MediatorFlow27EditPart.VISUAL_ID:
+				return new MediatorFlow27EditPart(view);
+
 			case RecipientListEndPoint2EditPart.VISUAL_ID:
 				return new RecipientListEndPoint2EditPart(view);
 
@@ -1054,6 +1057,9 @@ public class EsbEditPartFactory implements EditPartFactory {
 
 			case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID:
 				return new RecipientListEndPointWestOutputConnector2EditPart(view);
+
+			case MediatorFlow28EditPart.VISUAL_ID:
+				return new MediatorFlow28EditPart(view);
 
 			case WSDLEndPoint2EditPart.VISUAL_ID:
 				return new WSDLEndPoint2EditPart(view);
@@ -1081,6 +1087,9 @@ public class EsbEditPartFactory implements EditPartFactory {
 
 			case LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID:
 				return new LoadBalanceEndPointWestOutputConnector2EditPart(view);
+
+			case MediatorFlow29EditPart.VISUAL_ID:
+				return new MediatorFlow29EditPart(view);
 
 			case HTTPEndpoint2EditPart.VISUAL_ID:
 				return new HTTPEndpoint2EditPart(view);
@@ -1258,6 +1267,15 @@ public class EsbEditPartFactory implements EditPartFactory {
 
 			case EndpointDiagramEndpointCompartmentEditPart.VISUAL_ID:
 				return new EndpointDiagramEndpointCompartmentEditPart(view);
+
+			case MediatorFlowMediatorFlowCompartment27EditPart.VISUAL_ID:
+				return new MediatorFlowMediatorFlowCompartment27EditPart(view);
+
+			case MediatorFlowMediatorFlowCompartment28EditPart.VISUAL_ID:
+				return new MediatorFlowMediatorFlowCompartment28EditPart(view);
+
+			case MediatorFlowMediatorFlowCompartment29EditPart.VISUAL_ID:
+				return new MediatorFlowMediatorFlowCompartment29EditPart(view);
 
 			case TemplateTemplateCompartmentEditPart.VISUAL_ID:
 				return new TemplateTemplateCompartmentEditPart(view);

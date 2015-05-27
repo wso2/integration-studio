@@ -29,6 +29,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
@@ -37,6 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceSessionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Member;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
@@ -261,9 +263,10 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer{
 		//synapseLBEP.setFailover(visualEndPoint.isFailover());
 		
 		try {
-			ArrayList<ComplexEndpointsOutputConnector> connectors = createAllEndpoints(visualEndPoint);
+			ArrayList<LoadBalanceEndPointOutputConnector> connectors = new ArrayList<LoadBalanceEndPointOutputConnector>();
+			connectors.addAll(visualEndPoint.getOutputConnector());// createAllEndpoints(visualEndPoint);
 
-			for (ComplexEndpointsOutputConnector outputConnector : connectors) {
+			for (LoadBalanceEndPointOutputConnector outputConnector : connectors) {
 				if (outputConnector.getOutgoingLink() != null) {
 					if (outputConnector.getOutgoingLink().getTarget() != null) {
 						EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget()
@@ -322,9 +325,9 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer{
 			}
 
 			if (editorPart != null) {
-				IFileEditorInput input = (IFileEditorInput) editorPart
+				IEsbEditorInput input = (IEsbEditorInput) editorPart
 						.getEditorInput();
-				IFile file = input.getFile();
+				IFile file = input.getXmlResource();
 				activeProject = file.getProject();
 			}
 		}	

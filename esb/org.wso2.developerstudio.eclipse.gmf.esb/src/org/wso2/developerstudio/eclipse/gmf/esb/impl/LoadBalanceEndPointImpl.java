@@ -28,6 +28,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointInputConnecto
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointWestOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceSessionType;
+import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
 import org.wso2.developerstudio.eclipse.gmf.esb.Member;
 import org.wso2.developerstudio.eclipse.gmf.esb.Session;
 
@@ -47,6 +48,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Session;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getSessionType <em>Session Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getAlgorithm <em>Algorithm</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getSessionTimeout <em>Session Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.LoadBalanceEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
  * </p>
  *
@@ -192,6 +194,16 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 	 * @ordered
 	 */
 	protected long sessionTimeout = SESSION_TIMEOUT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMediatorFlow() <em>Mediator Flow</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMediatorFlow()
+	 * @generated
+	 * @ordered
+	 */
+	protected MediatorFlow mediatorFlow;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -432,6 +444,49 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MediatorFlow getMediatorFlow() {
+		return mediatorFlow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMediatorFlow(MediatorFlow newMediatorFlow, NotificationChain msgs) {
+		MediatorFlow oldMediatorFlow = mediatorFlow;
+		mediatorFlow = newMediatorFlow;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW, oldMediatorFlow, newMediatorFlow);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMediatorFlow(MediatorFlow newMediatorFlow) {
+		if (newMediatorFlow != mediatorFlow) {
+			NotificationChain msgs = null;
+			if (mediatorFlow != null)
+				msgs = ((InternalEObject)mediatorFlow).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW, null, msgs);
+			if (newMediatorFlow != null)
+				msgs = ((InternalEObject)newMediatorFlow).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW, null, msgs);
+			msgs = basicSetMediatorFlow(newMediatorFlow, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW, newMediatorFlow, newMediatorFlow));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -443,6 +498,8 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 				return basicSetWestOutputConnector(null, msgs);
 			case EsbPackage.LOAD_BALANCE_END_POINT__MEMBER:
 				return ((InternalEList<?>)getMember()).basicRemove(otherEnd, msgs);
+			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
+				return basicSetMediatorFlow(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -473,6 +530,8 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 				return getAlgorithm();
 			case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT:
 				return getSessionTimeout();
+			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
+				return getMediatorFlow();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -515,6 +574,9 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 			case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT:
 				setSessionTimeout((Long)newValue);
 				return;
+			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
+				setMediatorFlow((MediatorFlow)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -554,6 +616,9 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 			case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT:
 				setSessionTimeout(SESSION_TIMEOUT_EDEFAULT);
 				return;
+			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
+				setMediatorFlow((MediatorFlow)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -584,6 +649,8 @@ public class LoadBalanceEndPointImpl extends ParentEndPointImpl implements LoadB
 				return ALGORITHM_EDEFAULT == null ? algorithm != null : !ALGORITHM_EDEFAULT.equals(algorithm);
 			case EsbPackage.LOAD_BALANCE_END_POINT__SESSION_TIMEOUT:
 				return sessionTimeout != SESSION_TIMEOUT_EDEFAULT;
+			case EsbPackage.LOAD_BALANCE_END_POINT__MEDIATOR_FLOW:
+				return mediatorFlow != null;
 		}
 		return super.eIsSet(featureID);
 	}

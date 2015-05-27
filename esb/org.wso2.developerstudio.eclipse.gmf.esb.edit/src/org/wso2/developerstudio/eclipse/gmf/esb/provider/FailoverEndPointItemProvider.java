@@ -80,6 +80,7 @@ public class FailoverEndPointItemProvider
 			childrenFeatures.add(EsbPackage.Literals.FAILOVER_END_POINT__INPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.FAILOVER_END_POINT__OUTPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR);
+			childrenFeatures.add(EsbPackage.Literals.FAILOVER_END_POINT__MEDIATOR_FLOW);
 		}
 		return childrenFeatures;
 	}
@@ -137,6 +138,7 @@ public class FailoverEndPointItemProvider
 			case EsbPackage.FAILOVER_END_POINT__INPUT_CONNECTOR:
 			case EsbPackage.FAILOVER_END_POINT__OUTPUT_CONNECTOR:
 			case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:
+			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -168,6 +170,11 @@ public class FailoverEndPointItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR,
 				 EsbFactory.eINSTANCE.createFailoverEndPointWestOutputConnector()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.FAILOVER_END_POINT__MEDIATOR_FLOW,
+				 EsbFactory.eINSTANCE.createMediatorFlow()));
 	}
 
 }

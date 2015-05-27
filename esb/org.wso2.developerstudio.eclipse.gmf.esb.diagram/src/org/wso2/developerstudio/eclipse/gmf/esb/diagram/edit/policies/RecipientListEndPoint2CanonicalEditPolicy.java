@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlow28EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RecipientListEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RecipientListEndPointOutputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RecipientListEndPointWestOutputConnector2EditPart;
@@ -61,6 +62,7 @@ public class RecipientListEndPoint2CanonicalEditPolicy extends CanonicalEditPoli
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getRecipientListEndPoint_InputConnector());
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getRecipientListEndPoint_OutputConnector());
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getRecipientListEndPoint_WestOutputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getRecipientListEndPoint_MediatorFlow());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -92,9 +94,14 @@ public class RecipientListEndPoint2CanonicalEditPolicy extends CanonicalEditPoli
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = EsbVisualIDRegistry.getVisualID(view);
-		return visualID == RecipientListEndPointInputConnector2EditPart.VISUAL_ID
-				|| visualID == RecipientListEndPointOutputConnector2EditPart.VISUAL_ID
-				|| visualID == RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID;
+		switch (visualID) {
+		case RecipientListEndPointInputConnector2EditPart.VISUAL_ID:
+		case RecipientListEndPointOutputConnector2EditPart.VISUAL_ID:
+		case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID:
+		case MediatorFlow28EditPart.VISUAL_ID:
+			return true;
+		}
+		return false;
 	}
 
 	/**

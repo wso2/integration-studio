@@ -2571,6 +2571,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	public RecipientListEndPoint createRecipientListEndPoint() {
 		RecipientListEndPointImpl recipientListEndPoint = new RecipientListEndPointImpl();
 		recipientListEndPoint.setInputConnector(createRecipientListEndPointInputConnector());
+		recipientListEndPoint.setMediatorFlow(createMediatorFlow());
 		return recipientListEndPoint;
 	}
 
@@ -4353,6 +4354,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	public FailoverEndPoint createFailoverEndPoint() {
 		FailoverEndPointImpl failoverEndPoint = new FailoverEndPointImpl();
 		failoverEndPoint.setInputConnector(createFailoverEndPointInputConnector());
+		failoverEndPoint.setMediatorFlow(createMediatorFlow());
 		return failoverEndPoint;
 	}
 
@@ -4435,6 +4437,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	public LoadBalanceEndPoint createLoadBalanceEndPoint() {
 		LoadBalanceEndPointImpl loadBalanceEndPoint = new LoadBalanceEndPointImpl();		
 		loadBalanceEndPoint.setInputConnector(createLoadBalanceEndPointInputConnector());	
+		loadBalanceEndPoint.setMediatorFlow(createMediatorFlow());
 		return loadBalanceEndPoint;
 	}
 

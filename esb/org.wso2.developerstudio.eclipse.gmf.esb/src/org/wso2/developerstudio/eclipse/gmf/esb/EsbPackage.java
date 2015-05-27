@@ -15267,13 +15267,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR = PARENT_END_POINT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Mediator Flow</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILOVER_END_POINT__MEDIATOR_FLOW = PARENT_END_POINT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Failover End Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FAILOVER_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 3;
+	int FAILOVER_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointInputConnectorImpl <em>Failover End Point Input Connector</em>}' class.
@@ -15886,13 +15895,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int LOAD_BALANCE_END_POINT__SESSION_TIMEOUT = PARENT_END_POINT_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Mediator Flow</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOAD_BALANCE_END_POINT__MEDIATOR_FLOW = PARENT_END_POINT_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Load Balance End Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOAD_BALANCE_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 9;
+	int LOAD_BALANCE_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl <em>Member</em>}' class.
@@ -18888,13 +18906,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int RECIPIENT_LIST_END_POINT__MAX_CACHE = PARENT_END_POINT_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Mediator Flow</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW = PARENT_END_POINT_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Recipient List End Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECIPIENT_LIST_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 7;
+	int RECIPIENT_LIST_END_POINT_FEATURE_COUNT = PARENT_END_POINT_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointInputConnectorImpl <em>Recipient List End Point Input Connector</em>}' class.
@@ -27896,6 +27923,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getRecipientListEndPoint_MaxCache();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMediatorFlow <em>Mediator Flow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Mediator Flow</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint#getMediatorFlow()
+	 * @see #getRecipientListEndPoint()
+	 * @generated
+	 */
+	EReference getRecipientListEndPoint_MediatorFlow();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointInputConnector <em>Recipient List End Point Input Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34894,6 +34932,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getFailoverEndPoint_WestOutputConnector();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getMediatorFlow <em>Mediator Flow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Mediator Flow</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint#getMediatorFlow()
+	 * @see #getFailoverEndPoint()
+	 * @generated
+	 */
+	EReference getFailoverEndPoint_MediatorFlow();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointInputConnector <em>Failover End Point Input Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35148,6 +35197,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getLoadBalanceEndPoint_SessionTimeout();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getMediatorFlow <em>Mediator Flow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Mediator Flow</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint#getMediatorFlow()
+	 * @see #getLoadBalanceEndPoint()
+	 * @generated
+	 */
+	EReference getLoadBalanceEndPoint_MediatorFlow();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.Member <em>Member</em>}'.
@@ -41590,6 +41650,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute RECIPIENT_LIST_END_POINT__MAX_CACHE = eINSTANCE.getRecipientListEndPoint_MaxCache();
 
 		/**
+		 * The meta object literal for the '<em><b>Mediator Flow</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW = eINSTANCE.getRecipientListEndPoint_MediatorFlow();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointInputConnectorImpl <em>Recipient List End Point Input Connector</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -47124,6 +47192,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EReference FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR = eINSTANCE.getFailoverEndPoint_WestOutputConnector();
 
 		/**
+		 * The meta object literal for the '<em><b>Mediator Flow</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FAILOVER_END_POINT__MEDIATOR_FLOW = eINSTANCE.getFailoverEndPoint_MediatorFlow();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointInputConnectorImpl <em>Failover End Point Input Connector</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -47330,6 +47406,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute LOAD_BALANCE_END_POINT__SESSION_TIMEOUT = eINSTANCE.getLoadBalanceEndPoint_SessionTimeout();
+
+		/**
+		 * The meta object literal for the '<em><b>Mediator Flow</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOAD_BALANCE_END_POINT__MEDIATOR_FLOW = eINSTANCE.getLoadBalanceEndPoint_MediatorFlow();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MemberImpl <em>Member</em>}' class.

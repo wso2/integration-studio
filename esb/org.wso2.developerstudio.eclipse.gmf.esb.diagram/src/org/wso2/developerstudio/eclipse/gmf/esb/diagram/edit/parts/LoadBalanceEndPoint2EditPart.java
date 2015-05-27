@@ -1,9 +1,15 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import java.util.Map;
+
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -15,6 +21,7 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.BorderItemSelectionEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
@@ -24,6 +31,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -32,9 +40,12 @@ import org.eclipse.swt.graphics.FontData;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequences;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint2;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ComplexFiguredAbstractEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShapeWithLabel;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
@@ -57,6 +68,8 @@ public class LoadBalanceEndPoint2EditPart extends ComplexFiguredAbstractEndpoint
 	 * @generated
 	 */
 	protected IFigure contentPane;
+	
+	public IFigure outputConnectorFigure;
 
 	/**
 	 * @generated
@@ -110,6 +123,12 @@ public class LoadBalanceEndPoint2EditPart extends ComplexFiguredAbstractEndpoint
 		};
 		return lep;
 	}
+	
+	public IFigure getFigure() {
+		if (figure == null)
+			setFigure(createFigure());
+		return figure;
+	}
 
 	/**
 	 * @generated
@@ -125,6 +144,15 @@ public class LoadBalanceEndPoint2EditPart extends ComplexFiguredAbstractEndpoint
 		return (LoadBalanceEndPointFigure) primaryShape;
 	}
 
+	private void connectToEndpoint(AbstractConnectorEditPart editPart) {
+		Map map = ((MediatorFlowMediatorFlowCompartment29EditPart) ((EditPart) (this).getChildren().get(2))
+				.getChildren().get(0)).connectorAndEndpointMap;
+		ShapeNodeEditPart endpoint = (ShapeNodeEditPart) (map.get(((Node) editPart.getModel()).getElement()));
+		if (endpoint != null) {
+			ConnectionUtils.createConnection(EditorUtils.getEndpointInputConnector(endpoint),editPart);
+		}
+	}
+	
 	/**
 	 * @generated NOT
 	 */
@@ -133,7 +161,16 @@ public class LoadBalanceEndPoint2EditPart extends ComplexFiguredAbstractEndpoint
 			((LoadBalanceEndPointEndPointName2EditPart) childEditPart).setLabel(getPrimaryShape()
 					.getFigureLoadBalanceEndPointNamePropertyLabel());
 			return true;
-		}
+		}		
+		if (childEditPart instanceof LoadBalanceEndPointOutputConnector2EditPart) {
+			IFigure borderItemFigure = ((LoadBalanceEndPointOutputConnector2EditPart) childEditPart).getFigure();
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.WEST, 0.5);
+			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
+			outputConnectorFigure = borderItemFigure;
+			connectToEndpoint((LoadBalanceEndPointOutputConnector2EditPart)childEditPart);
+			return true;
+		}		
 		if (childEditPart instanceof LoadBalanceEndPointInputConnector2EditPart) {
 			double position;
 			EObject parentEndpoint = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) (childEditPart.getParent())
@@ -317,7 +354,7 @@ public class LoadBalanceEndPoint2EditPart extends ComplexFiguredAbstractEndpoint
 	/**
 	 * @generated NOT
 	 */
-	public class LoadBalanceEndPointFigure extends EsbGraphicalShape {
+	public class LoadBalanceEndPointFigure extends RoundedRectangle {
 
 		/**
 		 * @generated
@@ -325,10 +362,27 @@ public class LoadBalanceEndPoint2EditPart extends ComplexFiguredAbstractEndpoint
 		private WrappingLabel fFigureLoadBalanceEndPointNamePropertyLabel;
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public LoadBalanceEndPointFigure() {
 
+			ToolbarLayout layoutThis = new ToolbarLayout();
+			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+			layoutThis.setSpacing(0);
+			layoutThis.setVertical(true);
+
+			this.setLayoutManager(layoutThis);
+
+			/*			GridLayout layoutThis = new GridLayout();
+			 layoutThis.numColumns = 1;
+			 layoutThis.makeColumnsEqualWidth = true;
+			 this.setLayoutManager(layoutThis);
+			 */
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(500), getMapMode().DPtoLP(300)));
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0), getMapMode().DPtoLP(0)));
+			LineBorder border0 = new LineBorder(new Color(null, 0, 0, 0), 1, SWT.BORDER_SOLID);
+			this.setBorder(border0);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}
@@ -341,7 +395,7 @@ public class LoadBalanceEndPoint2EditPart extends ComplexFiguredAbstractEndpoint
 			fFigureLoadBalanceEndPointNamePropertyLabel = new WrappingLabel();
 			fFigureLoadBalanceEndPointNamePropertyLabel.setText("<...>");
 			fFigureLoadBalanceEndPointNamePropertyLabel.setAlignment(SWT.CENTER);
-			this.getPropertyValueRectangle1().add(fFigureLoadBalanceEndPointNamePropertyLabel);
+			//this.getPropertyValueRectangle1().add(fFigureLoadBalanceEndPointNamePropertyLabel);
 		}
 
 		/**

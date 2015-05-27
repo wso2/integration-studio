@@ -1058,6 +1058,21 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String MediatorFlowMediatorFlowCompartment27EditPart_title;
+
+	/**
+	 * @generated
+	 */
+	public static String MediatorFlowMediatorFlowCompartment28EditPart_title;
+
+	/**
+	 * @generated
+	 */
+	public static String MediatorFlowMediatorFlowCompartment29EditPart_title;
+
+	/**
+	 * @generated
+	 */
 	public static String TemplateTemplateCompartmentEditPart_title;
 
 	/**

@@ -32,6 +32,12 @@
     <eLiterals name="MESSAGE_STORE" value="10" literal="MESSAGE_STORE"/>
     <eLiterals name="MESSAGE_PROCESSOR" value="11" literal="MESSAGE_PROCESSOR"/>
     <eLiterals name="INBOUND_ENDPOINT" value="12" literal="INBOUND_ENDPOINT"/>
+    <eLiterals name="TEMPLATE_ENDPOINT" value="13" literal="TEMPLATE_ENDPOINT"/>
+    <eLiterals name="TEMPLATE_ENDPOINT_ADDRESS" value="14" literal="TEMPLATE_ENDPOINT_ADDRESS"/>
+    <eLiterals name="TEMPLATE_ENDPOINT_WSDL" value="15" literal="TEMPLATE_ENDPOINT_WSDL"/>
+    <eLiterals name="TEMPLATE_ENDPOINT_DEFAULT" value="16" literal="TEMPLATE_ENDPOINT_DEFAULT"/>
+    <eLiterals name="TEMPLATE_ENDPOINT_HTTP" value="17" literal="TEMPLATE_ENDPOINT_HTTP"/>
+    <eLiterals name="TEMPLATE_SEQUENCE" value="18" literal="TEMPLATE_SEQUENCE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Mediator" abstract="true" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Reverse" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -2089,6 +2095,8 @@
         eType="#//FailoverEndPointOutputConnector" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="westOutputConnector" eType="#//FailoverEndPointWestOutputConnector"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FailoverEndPointInputConnector" eSuperTypes="#//InputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="FailoverEndPointOutputConnector" eSuperTypes="#//OutputConnector"/>
@@ -2131,6 +2139,8 @@
         defaultValueLiteral="org.apache.synapse.endpoints.algorithms.RoundRobin"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sessionTimeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
         defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LoadBalanceSessionType">
     <eLiterals name="NONE"/>
@@ -2429,6 +2439,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxCache" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="20"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mediatorFlow" eType="#//MediatorFlow"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RecipientListEndPointInputConnector"
       eSuperTypes="#//InputConnector"/>

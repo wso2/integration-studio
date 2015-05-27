@@ -25,6 +25,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointDefaultBranchOut
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointWestOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointWestOutputConnec
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getInputConnector <em>Input Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getOutputConnector <em>Output Connector</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getWestOutputConnector <em>West Output Connector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.FailoverEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,6 +73,16 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 	 * @ordered
 	 */
 	protected FailoverEndPointWestOutputConnector westOutputConnector;
+
+	/**
+	 * The cached value of the '{@link #getMediatorFlow() <em>Mediator Flow</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMediatorFlow()
+	 * @generated
+	 * @ordered
+	 */
+	protected MediatorFlow mediatorFlow;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -194,6 +206,49 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MediatorFlow getMediatorFlow() {
+		return mediatorFlow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMediatorFlow(MediatorFlow newMediatorFlow, NotificationChain msgs) {
+		MediatorFlow oldMediatorFlow = mediatorFlow;
+		mediatorFlow = newMediatorFlow;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW, oldMediatorFlow, newMediatorFlow);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMediatorFlow(MediatorFlow newMediatorFlow) {
+		if (newMediatorFlow != mediatorFlow) {
+			NotificationChain msgs = null;
+			if (mediatorFlow != null)
+				msgs = ((InternalEObject)mediatorFlow).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW, null, msgs);
+			if (newMediatorFlow != null)
+				msgs = ((InternalEObject)newMediatorFlow).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW, null, msgs);
+			msgs = basicSetMediatorFlow(newMediatorFlow, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW, newMediatorFlow, newMediatorFlow));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -203,6 +258,8 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 				return ((InternalEList<?>)getOutputConnector()).basicRemove(otherEnd, msgs);
 			case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:
 				return basicSetWestOutputConnector(null, msgs);
+			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
+				return basicSetMediatorFlow(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -221,6 +278,8 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 				return getOutputConnector();
 			case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:
 				return getWestOutputConnector();
+			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
+				return getMediatorFlow();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -244,6 +303,9 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 			case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:
 				setWestOutputConnector((FailoverEndPointWestOutputConnector)newValue);
 				return;
+			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
+				setMediatorFlow((MediatorFlow)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -265,6 +327,9 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 			case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:
 				setWestOutputConnector((FailoverEndPointWestOutputConnector)null);
 				return;
+			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
+				setMediatorFlow((MediatorFlow)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -283,6 +348,8 @@ public class FailoverEndPointImpl extends ParentEndPointImpl implements Failover
 				return outputConnector != null && !outputConnector.isEmpty();
 			case EsbPackage.FAILOVER_END_POINT__WEST_OUTPUT_CONNECTOR:
 				return westOutputConnector != null;
+			case EsbPackage.FAILOVER_END_POINT__MEDIATOR_FLOW:
+				return mediatorFlow != null;
 		}
 		return super.eIsSet(featureID);
 	}

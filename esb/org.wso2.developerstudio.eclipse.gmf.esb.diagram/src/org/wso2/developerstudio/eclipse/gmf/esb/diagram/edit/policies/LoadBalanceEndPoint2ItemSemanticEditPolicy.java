@@ -16,10 +16,12 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.LoadBalanceEndPointInputConnector2CreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.LoadBalanceEndPointOutputConnector2CreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.LoadBalanceEndPointWestOutputConnector2CreateCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.MediatorFlow29CreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointOutputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointWestOutputConnector2EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlow29EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
@@ -47,6 +49,9 @@ public class LoadBalanceEndPoint2ItemSemanticEditPolicy extends EsbBaseItemSeman
 		}
 		if (EsbElementTypes.LoadBalanceEndPointWestOutputConnector_3659 == req.getElementType()) {
 			return getGEFWrapper(new LoadBalanceEndPointWestOutputConnector2CreateCommand(req));
+		}
+		if (EsbElementTypes.MediatorFlow_3779 == req.getElementType()) {
+			return getGEFWrapper(new MediatorFlow29CreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}
@@ -119,6 +124,12 @@ public class LoadBalanceEndPoint2ItemSemanticEditPolicy extends EsbBaseItemSeman
 						continue;
 					}
 				}
+				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(),
+						false))); // directlyOwned: true
+				// don't need explicit deletion of node as parent's view deletion would clean child views as well 
+				// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), node));
+				break;
+			case MediatorFlow29EditPart.VISUAL_ID:
 				cmd.add(new DestroyElementCommand(new DestroyElementRequest(getEditingDomain(), node.getElement(),
 						false))); // directlyOwned: true
 				// don't need explicit deletion of node as parent's view deletion would clean child views as well 

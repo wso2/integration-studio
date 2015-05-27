@@ -8,6 +8,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
 import java.util.Collection;
 import java.util.Iterator;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -21,9 +22,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediatorEndpointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediatorOutputConnector;
 
@@ -96,10 +100,10 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
 			return false;
 		}
 		/*
-		 * Avoid connecting an endpoint to an element other than Send mediator.  
+		 * Avoid connecting an endpoint to an element other than Send, Call, Clone mediator and LB, Failover, RecipientList endpoint's output connector.  
 		 */
 		if (!(sourceEnd instanceof SendMediatorEndpointOutputConnector) && !(sourceEnd instanceof CallMediatorEndpointOutputConnector) && !(sourceEnd instanceof CloneMediatorTargetOutputConnector)
-				&& !(sourceEnd instanceof ComplexEndpointsOutputConnector)
+				&& !(sourceEnd instanceof LoadBalanceEndPointOutputConnector) && !(sourceEnd instanceof FailoverEndPointOutputConnector) && !(sourceEnd instanceof RecipientListEndPointOutputConnector)
 				&& this.eContainer instanceof EndPoint) {
 			return false;
 		}
@@ -111,9 +115,9 @@ public abstract class InputConnectorImpl extends EsbConnectorImpl implements Inp
 		if (this.eContainer.equals(container)) {
 			return false;
 		} else if(sourceEnd.eContainer() instanceof EndPoint){
-			if(this.eContainer instanceof EndPoint){
+/*			if(this.eContainer instanceof EndPoint){
 				return false;
-			}
+			}*/
 			if((getIncomingLinks().size() !=0) && (getIncomingLinks().get(0).getSource().eContainer() instanceof EndPoint)){
 				if(sourceEnd.equals(getIncomingLinks().get(0).getSource())){
 					/* Avoid connecting same nodes multiple times */

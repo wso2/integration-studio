@@ -1098,6 +1098,15 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 		case MediatorFlow26EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3776); //$NON-NLS-1$
+		case MediatorFlow27EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3777); //$NON-NLS-1$
+		case MediatorFlow28EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3778); //$NON-NLS-1$
+		case MediatorFlow29EditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3779); //$NON-NLS-1$
 		case EsbLinkEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbLink", EsbElementTypes.EsbLink_4001); //$NON-NLS-1$
@@ -1801,6 +1810,12 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 			return getInboundEndpointOnErrorSequenceContainer_3775Text(view);
 		case MediatorFlow26EditPart.VISUAL_ID:
 			return getMediatorFlow_3776Text(view);
+		case MediatorFlow27EditPart.VISUAL_ID:
+			return getMediatorFlow_3777Text(view);
+		case MediatorFlow28EditPart.VISUAL_ID:
+			return getMediatorFlow_3778Text(view);
+		case MediatorFlow29EditPart.VISUAL_ID:
+			return getMediatorFlow_3779Text(view);
 		case EsbLinkEditPart.VISUAL_ID:
 			return getEsbLink_4001Text(view);
 		}
@@ -3127,6 +3142,27 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 	 * @generated
 	 */
 	private String getMediatorFlow_3776Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getMediatorFlow_3777Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getMediatorFlow_3778Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getMediatorFlow_3779Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

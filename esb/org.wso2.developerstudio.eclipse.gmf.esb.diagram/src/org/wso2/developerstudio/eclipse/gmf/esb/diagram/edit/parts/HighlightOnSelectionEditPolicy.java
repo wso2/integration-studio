@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 
+import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.editpolicies.SelectionEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.RoundedRectangleBorder;
@@ -62,11 +63,14 @@ public class HighlightOnSelectionEditPolicy extends SelectionEditPolicy {
 			//border.setColor(boderColor);
 		}
 		
-		if(getHost() instanceof AbstractEndpoint) {
-			AbstractEndpoint mediator = (AbstractEndpoint)getHost();
+		if (getHost() instanceof AbstractEndpoint) {
+			AbstractEndpoint mediator = (AbstractEndpoint) getHost();
 			mediator.getEndPointPrimaryShape().setBackgroundColor(figureColor);
-			RoundedRectangleBorder border = (RoundedRectangleBorder)mediator.getEndPointPrimaryShape().getBorder();
-			border.setColor(boderColor);
+			Border border = mediator.getEndPointPrimaryShape().getBorder();
+			if (border instanceof RoundedRectangleBorder) {
+				RoundedRectangleBorder roundedRectangleBorder = (RoundedRectangleBorder) border;
+				roundedRectangleBorder.setColor(boderColor);
+			}
 		}
 		
 		if(getHost() instanceof AbstractEndpoint2) {

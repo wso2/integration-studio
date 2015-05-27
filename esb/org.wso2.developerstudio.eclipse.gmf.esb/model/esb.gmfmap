@@ -3367,6 +3367,11 @@
                       href="esb.gmfgraph#FailoverEndPointWestOutputConnector"/>
                 </ownedChild>
               </children>
+              <children
+                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild">
+                <containmentFeature
+                    href="esb.ecore#//FailoverEndPoint/mediatorFlow"/>
+              </children>
             </ownedChild>
           </children>
           <children
@@ -3410,6 +3415,11 @@
                   <diagramNode
                       href="esb.gmfgraph#RecipientListEndPointWestOutputConnector"/>
                 </ownedChild>
+              </children>
+              <children
+                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild">
+                <containmentFeature
+                    href="esb.ecore#//RecipientListEndPoint/mediatorFlow"/>
               </children>
             </ownedChild>
           </children>
@@ -3504,6 +3514,11 @@
                   <diagramNode
                       href="esb.gmfgraph#LoadBalanceEndPointWestOutputConnector"/>
                 </ownedChild>
+              </children>
+              <children
+                  referencedChild="//@nodes.0/@ownedChild/@children.0/@ownedChild/@children.4/@ownedChild/@children.0/@ownedChild/@children.0/@ownedChild">
+                <containmentFeature
+                    href="esb.ecore#//LoadBalanceEndPoint/mediatorFlow"/>
               </children>
             </ownedChild>
           </children>

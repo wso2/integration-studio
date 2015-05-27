@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointOutputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.LoadBalanceEndPointWestOutputConnector2EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlow29EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramUpdater;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbNodeDescriptor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
@@ -61,6 +62,7 @@ public class LoadBalanceEndPoint2CanonicalEditPolicy extends CanonicalEditPolicy
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getLoadBalanceEndPoint_InputConnector());
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getLoadBalanceEndPoint_OutputConnector());
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getLoadBalanceEndPoint_WestOutputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getLoadBalanceEndPoint_MediatorFlow());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -92,9 +94,14 @@ public class LoadBalanceEndPoint2CanonicalEditPolicy extends CanonicalEditPolicy
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = EsbVisualIDRegistry.getVisualID(view);
-		return visualID == LoadBalanceEndPointInputConnector2EditPart.VISUAL_ID
-				|| visualID == LoadBalanceEndPointOutputConnector2EditPart.VISUAL_ID
-				|| visualID == LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID;
+		switch (visualID) {
+		case LoadBalanceEndPointInputConnector2EditPart.VISUAL_ID:
+		case LoadBalanceEndPointOutputConnector2EditPart.VISUAL_ID:
+		case LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID:
+		case MediatorFlow29EditPart.VISUAL_ID:
+			return true;
+		}
+		return false;
 	}
 
 	/**

@@ -18,10 +18,11 @@ public class EsbModelingAssistantProviderOfFailoverEndPoint2EditPart extends Esb
 	 */
 	@Override
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(3);
+		List<IElementType> types = new ArrayList<IElementType>(4);
 		types.add(EsbElementTypes.FailoverEndPointInputConnector_3650);
 		types.add(EsbElementTypes.FailoverEndPointOutputConnector_3651);
 		types.add(EsbElementTypes.FailoverEndPointWestOutputConnector_3652);
+		types.add(EsbElementTypes.MediatorFlow_3777);
 		return types;
 	}
 

@@ -126,6 +126,7 @@ Import-Package: com.damnhandy.uri.template,
  org.wso2.carbon.rule.mediator,
  org.wso2.carbon.rule.mediator.config,
  org.wso2.developerstudio.eclipse.esb.core,
+ org.wso2.developerstudio.eclipse.esb.core.interfaces,
  org.wso2.developerstudio.eclipse.logging.core,
  org.wso2.uri.template,
  org.wso2.uri.template.parser

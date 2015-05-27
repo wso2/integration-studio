@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPointOutputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPointWestOutputConnector2EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlow27EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramUpdater;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbNodeDescriptor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
@@ -61,6 +62,7 @@ public class FailoverEndPoint2CanonicalEditPolicy extends CanonicalEditPolicy {
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getFailoverEndPoint_InputConnector());
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getFailoverEndPoint_OutputConnector());
 			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getFailoverEndPoint_WestOutputConnector());
+			myFeaturesToSynchronize.add(EsbPackage.eINSTANCE.getFailoverEndPoint_MediatorFlow());
 		}
 		return myFeaturesToSynchronize;
 	}
@@ -92,9 +94,14 @@ public class FailoverEndPoint2CanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = EsbVisualIDRegistry.getVisualID(view);
-		return visualID == FailoverEndPointInputConnector2EditPart.VISUAL_ID
-				|| visualID == FailoverEndPointOutputConnector2EditPart.VISUAL_ID
-				|| visualID == FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID;
+		switch (visualID) {
+		case FailoverEndPointInputConnector2EditPart.VISUAL_ID:
+		case FailoverEndPointOutputConnector2EditPart.VISUAL_ID:
+		case FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID:
+		case MediatorFlow27EditPart.VISUAL_ID:
+			return true;
+		}
+		return false;
 	}
 
 	/**

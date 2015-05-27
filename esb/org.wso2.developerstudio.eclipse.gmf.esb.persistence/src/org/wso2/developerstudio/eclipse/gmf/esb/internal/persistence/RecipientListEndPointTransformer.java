@@ -44,6 +44,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
@@ -212,8 +213,8 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 			}
 
 			if (editorPart != null) {
-				IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
-				IFile file = input.getFile();
+				IEsbEditorInput input = (IEsbEditorInput) editorPart.getEditorInput();
+				IFile file = input.getXmlResource();
 				activeProject = file.getProject();
 			}
 		}

@@ -1,9 +1,13 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.draw2d.ToolbarLayout;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -109,6 +113,12 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 			}
 		};
 		return lep;
+	}
+	
+	public IFigure getFigure() {
+		if (figure == null)
+			setFigure(createFigure());
+		return figure;
 	}
 
 	/**
@@ -317,7 +327,7 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 	/**
 	 * @generated NOT
 	 */
-	public class FailoverEndPointFigure extends EsbGraphicalShape {
+	public class FailoverEndPointFigure extends RoundedRectangle {
 
 		/**
 		 * @generated
@@ -325,10 +335,27 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 		private WrappingLabel fFigureFailoverEndPointNamePropertyLabel;
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public FailoverEndPointFigure() {
 
+			ToolbarLayout layoutThis = new ToolbarLayout();
+			layoutThis.setStretchMinorAxis(true);
+			layoutThis.setMinorAlignment(ToolbarLayout.ALIGN_CENTER);
+			layoutThis.setSpacing(0);
+			layoutThis.setVertical(true);
+
+			this.setLayoutManager(layoutThis);
+
+			/*			GridLayout layoutThis = new GridLayout();
+			 layoutThis.numColumns = 1;
+			 layoutThis.makeColumnsEqualWidth = true;
+			 this.setLayoutManager(layoutThis);
+			 */
+			this.setPreferredSize(new Dimension(getMapMode().DPtoLP(500), getMapMode().DPtoLP(300)));
+			this.setCornerDimensions(new Dimension(getMapMode().DPtoLP(0), getMapMode().DPtoLP(0)));
+			LineBorder border0 = new LineBorder(new Color(null, 0, 0, 0), 1, SWT.BORDER_SOLID);
+			this.setBorder(border0);
 			this.setBackgroundColor(THIS_BACK);
 			createContents();
 		}
@@ -341,7 +368,7 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 			fFigureFailoverEndPointNamePropertyLabel = new WrappingLabel();
 			fFigureFailoverEndPointNamePropertyLabel.setText("<...>");
 			fFigureFailoverEndPointNamePropertyLabel.setAlignment(SWT.CENTER);
-			this.getPropertyValueRectangle1().add(fFigureFailoverEndPointNamePropertyLabel);
+			//this.getPropertyValueRectangle1().add(fFigureFailoverEndPointNamePropertyLabel);
 		}
 
 		/**

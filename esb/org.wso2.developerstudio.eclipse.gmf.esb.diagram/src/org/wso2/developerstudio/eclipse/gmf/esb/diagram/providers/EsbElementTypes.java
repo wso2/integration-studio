@@ -264,6 +264,11 @@ public class EsbElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType MediatorFlow_3777 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.MediatorFlow_3777"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType RecipientListEndPoint_3696 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.RecipientListEndPoint_3696"); //$NON-NLS-1$
 
 	/**
@@ -280,6 +285,11 @@ public class EsbElementTypes {
 	 * @generated
 	 */
 	public static final IElementType RecipientListEndPointWestOutputConnector_3699 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.RecipientListEndPointWestOutputConnector_3699"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType MediatorFlow_3778 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.MediatorFlow_3778"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -315,6 +325,11 @@ public class EsbElementTypes {
 	 * @generated
 	 */
 	public static final IElementType LoadBalanceEndPointWestOutputConnector_3659 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.LoadBalanceEndPointWestOutputConnector_3659"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType MediatorFlow_3779 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.MediatorFlow_3779"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -2339,6 +2354,8 @@ public class EsbElementTypes {
 			elements.put(FailoverEndPointWestOutputConnector_3652,
 					EsbPackage.eINSTANCE.getFailoverEndPointWestOutputConnector());
 
+			elements.put(MediatorFlow_3777, EsbPackage.eINSTANCE.getMediatorFlow());
+
 			elements.put(RecipientListEndPoint_3696, EsbPackage.eINSTANCE.getRecipientListEndPoint());
 
 			elements.put(RecipientListEndPointInputConnector_3697,
@@ -2349,6 +2366,8 @@ public class EsbElementTypes {
 
 			elements.put(RecipientListEndPointWestOutputConnector_3699,
 					EsbPackage.eINSTANCE.getRecipientListEndPointWestOutputConnector());
+
+			elements.put(MediatorFlow_3778, EsbPackage.eINSTANCE.getMediatorFlow());
 
 			elements.put(WSDLEndPoint_3653, EsbPackage.eINSTANCE.getWSDLEndPoint());
 
@@ -2366,6 +2385,8 @@ public class EsbElementTypes {
 
 			elements.put(LoadBalanceEndPointWestOutputConnector_3659,
 					EsbPackage.eINSTANCE.getLoadBalanceEndPointWestOutputConnector());
+
+			elements.put(MediatorFlow_3779, EsbPackage.eINSTANCE.getMediatorFlow());
 
 			elements.put(HTTPEndpoint_3712, EsbPackage.eINSTANCE.getHTTPEndpoint());
 
@@ -2743,10 +2764,12 @@ public class EsbElementTypes {
 			KNOWN_ELEMENT_TYPES.add(FailoverEndPointInputConnector_3650);
 			KNOWN_ELEMENT_TYPES.add(FailoverEndPointOutputConnector_3651);
 			KNOWN_ELEMENT_TYPES.add(FailoverEndPointWestOutputConnector_3652);
+			KNOWN_ELEMENT_TYPES.add(MediatorFlow_3777);
 			KNOWN_ELEMENT_TYPES.add(RecipientListEndPoint_3696);
 			KNOWN_ELEMENT_TYPES.add(RecipientListEndPointInputConnector_3697);
 			KNOWN_ELEMENT_TYPES.add(RecipientListEndPointOutputConnector_3698);
 			KNOWN_ELEMENT_TYPES.add(RecipientListEndPointWestOutputConnector_3699);
+			KNOWN_ELEMENT_TYPES.add(MediatorFlow_3778);
 			KNOWN_ELEMENT_TYPES.add(WSDLEndPoint_3653);
 			KNOWN_ELEMENT_TYPES.add(WSDLEndPointInputConnector_3654);
 			KNOWN_ELEMENT_TYPES.add(WSDLEndPointOutputConnector_3655);
@@ -2754,6 +2777,7 @@ public class EsbElementTypes {
 			KNOWN_ELEMENT_TYPES.add(LoadBalanceEndPointInputConnector_3657);
 			KNOWN_ELEMENT_TYPES.add(LoadBalanceEndPointOutputConnector_3658);
 			KNOWN_ELEMENT_TYPES.add(LoadBalanceEndPointWestOutputConnector_3659);
+			KNOWN_ELEMENT_TYPES.add(MediatorFlow_3779);
 			KNOWN_ELEMENT_TYPES.add(HTTPEndpoint_3712);
 			KNOWN_ELEMENT_TYPES.add(HTTPEndPointInputConnector_3713);
 			KNOWN_ELEMENT_TYPES.add(HTTPEndPointOutputConnector_3714);
@@ -3358,6 +3382,8 @@ public class EsbElementTypes {
 			return FailoverEndPointOutputConnector_3651;
 		case FailoverEndPointWestOutputConnector2EditPart.VISUAL_ID:
 			return FailoverEndPointWestOutputConnector_3652;
+		case MediatorFlow27EditPart.VISUAL_ID:
+			return MediatorFlow_3777;
 		case RecipientListEndPoint2EditPart.VISUAL_ID:
 			return RecipientListEndPoint_3696;
 		case RecipientListEndPointInputConnector2EditPart.VISUAL_ID:
@@ -3366,6 +3392,8 @@ public class EsbElementTypes {
 			return RecipientListEndPointOutputConnector_3698;
 		case RecipientListEndPointWestOutputConnector2EditPart.VISUAL_ID:
 			return RecipientListEndPointWestOutputConnector_3699;
+		case MediatorFlow28EditPart.VISUAL_ID:
+			return MediatorFlow_3778;
 		case WSDLEndPoint2EditPart.VISUAL_ID:
 			return WSDLEndPoint_3653;
 		case WSDLEndPointInputConnector2EditPart.VISUAL_ID:
@@ -3380,6 +3408,8 @@ public class EsbElementTypes {
 			return LoadBalanceEndPointOutputConnector_3658;
 		case LoadBalanceEndPointWestOutputConnector2EditPart.VISUAL_ID:
 			return LoadBalanceEndPointWestOutputConnector_3659;
+		case MediatorFlow29EditPart.VISUAL_ID:
+			return MediatorFlow_3779;
 		case HTTPEndpoint2EditPart.VISUAL_ID:
 			return HTTPEndpoint_3712;
 		case HTTPEndPointInputConnector2EditPart.VISUAL_ID:

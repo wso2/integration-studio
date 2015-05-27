@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.MediatorFlow;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointInputConnector;
@@ -52,6 +53,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getEndpointsValue <em>Endpoints Value</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getEndpointsExpression <em>Endpoints Expression</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getMaxCache <em>Max Cache</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl#getMediatorFlow <em>Mediator Flow</em>}</li>
  * </ul>
  * </p>
  *
@@ -157,6 +159,16 @@ public class RecipientListEndPointImpl extends ParentEndPointImpl implements Rec
 	 * @ordered
 	 */
 	protected int maxCache = MAX_CACHE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMediatorFlow() <em>Mediator Flow</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMediatorFlow()
+	 * @generated
+	 * @ordered
+	 */
+	protected MediatorFlow mediatorFlow;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -391,6 +403,49 @@ public class RecipientListEndPointImpl extends ParentEndPointImpl implements Rec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MediatorFlow getMediatorFlow() {
+		return mediatorFlow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMediatorFlow(MediatorFlow newMediatorFlow, NotificationChain msgs) {
+		MediatorFlow oldMediatorFlow = mediatorFlow;
+		mediatorFlow = newMediatorFlow;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW, oldMediatorFlow, newMediatorFlow);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMediatorFlow(MediatorFlow newMediatorFlow) {
+		if (newMediatorFlow != mediatorFlow) {
+			NotificationChain msgs = null;
+			if (mediatorFlow != null)
+				msgs = ((InternalEObject)mediatorFlow).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW, null, msgs);
+			if (newMediatorFlow != null)
+				msgs = ((InternalEObject)newMediatorFlow).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW, null, msgs);
+			msgs = basicSetMediatorFlow(newMediatorFlow, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW, newMediatorFlow, newMediatorFlow));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -402,6 +457,8 @@ public class RecipientListEndPointImpl extends ParentEndPointImpl implements Rec
 				return basicSetWestOutputConnector(null, msgs);
 			case EsbPackage.RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION:
 				return basicSetEndpointsExpression(null, msgs);
+			case EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW:
+				return basicSetMediatorFlow(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -428,6 +485,8 @@ public class RecipientListEndPointImpl extends ParentEndPointImpl implements Rec
 				return getEndpointsExpression();
 			case EsbPackage.RECIPIENT_LIST_END_POINT__MAX_CACHE:
 				return getMaxCache();
+			case EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW:
+				return getMediatorFlow();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -463,6 +522,9 @@ public class RecipientListEndPointImpl extends ParentEndPointImpl implements Rec
 			case EsbPackage.RECIPIENT_LIST_END_POINT__MAX_CACHE:
 				setMaxCache((Integer)newValue);
 				return;
+			case EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW:
+				setMediatorFlow((MediatorFlow)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -496,6 +558,9 @@ public class RecipientListEndPointImpl extends ParentEndPointImpl implements Rec
 			case EsbPackage.RECIPIENT_LIST_END_POINT__MAX_CACHE:
 				setMaxCache(MAX_CACHE_EDEFAULT);
 				return;
+			case EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW:
+				setMediatorFlow((MediatorFlow)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -522,6 +587,8 @@ public class RecipientListEndPointImpl extends ParentEndPointImpl implements Rec
 				return endpointsExpression != null;
 			case EsbPackage.RECIPIENT_LIST_END_POINT__MAX_CACHE:
 				return maxCache != MAX_CACHE_EDEFAULT;
+			case EsbPackage.RECIPIENT_LIST_END_POINT__MEDIATOR_FLOW:
+				return mediatorFlow != null;
 		}
 		return super.eIsSet(featureID);
 	}

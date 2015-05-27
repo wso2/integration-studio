@@ -345,11 +345,6 @@ public abstract class UserRolesDialog extends Dialog {
 					inlineUserRolesText.setText(userRoles);
 				}
 			}
-		} else if (object instanceof ProxyService) {
-			userRoles = ((ProxyService) object).getFeatureAllowRoles();
-			if (!StringUtils.isEmpty(userRoles)) {
-				inlineUserRolesText.setText(userRoles);
-			}
 		}
 	}
 

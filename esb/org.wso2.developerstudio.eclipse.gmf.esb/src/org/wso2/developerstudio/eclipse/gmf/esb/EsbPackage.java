@@ -1078,22 +1078,13 @@ public interface EsbPackage extends EPackage {
 	int PROXY_SERVICE__ON_ERROR = ESB_ELEMENT_FEATURE_COUNT + 38;
 
 	/**
-	 * The feature id for the '<em><b>Feature Allow Roles</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROXY_SERVICE__FEATURE_ALLOW_ROLES = ESB_ELEMENT_FEATURE_COUNT + 39;
-
-	/**
 	 * The number of structural features of the '<em>Proxy Service</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROXY_SERVICE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 40;
+	int PROXY_SERVICE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 39;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyOutputConnectorImpl <em>Proxy Output Connector</em>}' class.
@@ -22850,17 +22841,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getProxyService_OnError();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getFeatureAllowRoles <em>Feature Allow Roles</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Feature Allow Roles</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ProxyService#getFeatureAllowRoles()
-	 * @see #getProxyService()
-	 * @generated
-	 */
-	EAttribute getProxyService_FeatureAllowRoles();
-
-	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProxyOutputConnector <em>Proxy Output Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37544,14 +37524,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference PROXY_SERVICE__ON_ERROR = eINSTANCE.getProxyService_OnError();
-
-		/**
-		 * The meta object literal for the '<em><b>Feature Allow Roles</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROXY_SERVICE__FEATURE_ALLOW_ROLES = eINSTANCE.getProxyService_FeatureAllowRoles();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.ProxyOutputConnectorImpl <em>Proxy Output Connector</em>}' class.

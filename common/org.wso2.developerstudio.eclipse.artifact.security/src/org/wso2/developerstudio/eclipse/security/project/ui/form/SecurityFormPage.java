@@ -53,6 +53,8 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -160,8 +162,8 @@ public class SecurityFormPage extends FormPage {
 	private static final String LABEL_TOKEN_STORE_CLASS = "tokenStoreClass :";
 	private static final String LABEL_NONCELIFETIME = "nonceLifeTime :";
 	private static final String LABEL_PRIVATE_STORE = "Privatestore :";
-	private static final String LABEL_SERVICE_PRINCIPAL_NAME = "Service Principal Name *";
-	private static final String LABEL_SERVICE_PRINCIPAL_PASSWORD = "Service Principal Password *";
+	private static final String LABEL_SERVICE_PRINCIPAL_NAME = "Service Principal Name";
+	private static final String LABEL_SERVICE_PRINCIPAL_PASSWORD = "Service Principal Password";
 	private static final String EDITOR_TITLE = "WS-Policy for Service";
 	private static final String VALUE_TRUE = "true";
 	private static final String VALUE_FALSE = "false";
@@ -422,10 +424,15 @@ public class SecurityFormPage extends FormPage {
 		kerberosMainComposite.setLayout(gridLayout);
 
 		Composite compositeKerberos = new Composite(kerberosMainComposite, SWT.NULL);
-		GridLayout basicLayout = new GridLayout(2, false);
+		GridLayout basicLayout = new GridLayout(3, false);
 		compositeKerberos.setLayout(basicLayout);
 
 		toolkit.createLabel(compositeKerberos, LABEL_SERVICE_PRINCIPAL_NAME);
+
+		Label nameMark = toolkit.createLabel(compositeKerberos, "*");
+		Device device = Display.getCurrent();
+		Color red = new Color(device, 255, 0, 0);
+		nameMark.setForeground(red);
 
 		txtPrincipalName = new Text(compositeKerberos, SWT.BORDER);
 		txtPrincipalName.setBounds(new org.eclipse.swt.graphics.Rectangle(92, 40, 84, 28));
@@ -444,6 +451,9 @@ public class SecurityFormPage extends FormPage {
 		});
 
 		toolkit.createLabel(compositeKerberos, LABEL_SERVICE_PRINCIPAL_PASSWORD);
+
+		Label passMark = toolkit.createLabel(compositeKerberos, "*");
+		passMark.setForeground(red);
 
 		txtPrincipalPassword = new Text(compositeKerberos, SWT.BORDER);
 		txtPrincipalPassword.setBounds(new org.eclipse.swt.graphics.Rectangle(92, 40, 84, 28));
@@ -696,7 +706,6 @@ public class SecurityFormPage extends FormPage {
 	 * @throws InterruptedException
 	 */
 	private void save() throws InterruptedException {
-
 		try {
 			// Adds the policy
 			addPolicy();
@@ -792,20 +801,6 @@ public class SecurityFormPage extends FormPage {
 					}
 
 				}
-				
-				if (!StringUtils.isEmpty(txtPrincipalName.getText())
-						&& !StringUtils.isEmpty(txtPrincipalPassword.getText())) {
-					if (StringUtils.isNotBlank(selectedPolicy)
-							&& (SecurityPolicies.POLICY_TYPE_16.equals(selectedPolicy))) {
-						carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword);
-						carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME, txtPrincipalName);
-					}
-				} else {
-					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, null);
-					carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_PASSWORD, null);
-					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME, null);
-					carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_NAME, null);
-				}
 
 				if (StringUtils.isNotBlank(selectedPolicy)
 						&& (SecurityPolicies.POLICY_TYPE_14.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_15
@@ -830,15 +825,32 @@ public class SecurityFormPage extends FormPage {
 				carbonSecAuthDataMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, null);
 			}
 
+			if (StringUtils.isNotBlank(selectedPolicy) && (SecurityPolicies.POLICY_TYPE_16.equals(selectedPolicy))) {
+
+				if (!StringUtils.isEmpty(txtPrincipalName.getText())) {
+					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME, txtPrincipalName);
+				} else {
+					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, null);
+					carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_PASSWORD, null);
+				}
+
+				if (!StringUtils.isEmpty(txtPrincipalPassword.getText())) {
+					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword);
+				} else {
+					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME, null);
+					carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_NAME, null);
+				}
+			}
+
 			if (StringUtils.isNotBlank(selectedPolicy)
 					&& (SecurityPolicies.POLICY_TYPE_9.equals(selectedPolicy)
 							|| SecurityPolicies.POLICY_TYPE_10.equals(selectedPolicy)
 							|| SecurityPolicies.POLICY_TYPE_11.equals(selectedPolicy)
-							|| SecurityPolicies.POLICY_TYPE_12.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_13
-								.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_17
-								.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_18
-								.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_19
-								.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_20
+							|| SecurityPolicies.POLICY_TYPE_12.equals(selectedPolicy)
+							|| SecurityPolicies.POLICY_TYPE_13.equals(selectedPolicy)
+							|| SecurityPolicies.POLICY_TYPE_17.equals(selectedPolicy)
+							|| SecurityPolicies.POLICY_TYPE_18.equals(selectedPolicy)
+							|| SecurityPolicies.POLICY_TYPE_19.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_20
 								.equals(selectedPolicy))) {
 
 				carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS,
@@ -1281,14 +1293,16 @@ public class SecurityFormPage extends FormPage {
 	private void updateKerberosUIWithChanges(Map<String, String> dataMap, Map<String, Text> controlMap) {
 
 		if (controlMap.size() > 0 && dataMap.size() > 0) {
-			if (!StringUtils.isEmpty(dataMap.get(SERVICE_PRINCIPAL_NAME)) && controlMap.get(SERVICE_PRINCIPAL_NAME) != null) {
+			if (!StringUtils.isEmpty(dataMap.get(SERVICE_PRINCIPAL_NAME))
+					&& controlMap.get(SERVICE_PRINCIPAL_NAME) != null) {
 				controlMap.get(SERVICE_PRINCIPAL_NAME).setText(dataMap.get(SERVICE_PRINCIPAL_NAME));
-			} else if(controlMap.get(SERVICE_PRINCIPAL_NAME) != null) {
-			    controlMap.get(SERVICE_PRINCIPAL_NAME).setText("");
+			} else {
+				controlMap.get(SERVICE_PRINCIPAL_NAME).setText("");
 			}
-			if (!StringUtils.isEmpty(dataMap.get(SERVICE_PRINCIPAL_PASSWORD)) && controlMap.get(SERVICE_PRINCIPAL_PASSWORD) != null) {
+			if (!StringUtils.isEmpty(dataMap.get(SERVICE_PRINCIPAL_PASSWORD))
+					&& controlMap.get(SERVICE_PRINCIPAL_PASSWORD) != null) {
 				controlMap.get(SERVICE_PRINCIPAL_PASSWORD).setText(dataMap.get(SERVICE_PRINCIPAL_PASSWORD));
-			} else if(controlMap.get(SERVICE_PRINCIPAL_PASSWORD) != null){
+			} else {
 				controlMap.get(SERVICE_PRINCIPAL_PASSWORD).setText("");
 
 			}
@@ -1628,16 +1642,17 @@ public class SecurityFormPage extends FormPage {
 				Element eElement = (Element) node;
 				String attribute = eElement.getAttribute(PROPERTY_NAME);
 				kerberosMap.put(attribute, eElement.getTextContent());
-				/*if (StringUtils.isEmpty(eElement.getTextContent())) {
+				if (carbonSecKerberosControlMap.get(attribute) != null) {
+					carbonSecKerberosControlMap.get(attribute).setText(eElement.getTextContent());
+				}
+				if (StringUtils.isEmpty(eElement.getTextContent())) {
 					if (attribute.equals(SERVICE_PRINCIPAL_NAME)) {
-						carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME, null);
 						setSave(true);
 						updateDirtyState();
 						MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
 						msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_NAME);
 						msgBox.open();
 					} else {
-						carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, null);
 						setSave(true);
 						updateDirtyState();
 						MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
@@ -1645,7 +1660,7 @@ public class SecurityFormPage extends FormPage {
 						msgBox.open();
 
 					}
-				}*/
+				}
 			}
 		}
 		return kerberosMap;
@@ -1667,8 +1682,10 @@ public class SecurityFormPage extends FormPage {
 			if (CARBONSEC_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
 				String attribute = eElement.getAttribute(PROPERTY_NAME);
-				/* Update the relevent maps and role vale when changing the
-				 userRole value from the source view*/
+				/*
+				 * Update the relevent maps and role vale when changing the
+				 * userRole value from the source view
+				 */
 				secAuthMap.put(attribute, eElement.getTextContent());
 				carbonSecAuthControlMap.put(attribute, eElement.getTextContent());
 				if (utRoles == null) {
@@ -1679,8 +1696,10 @@ public class SecurityFormPage extends FormPage {
 					allowRoles = getAllowRoles();
 				}
 
-				 /*Update the relevent maps and role vale when removing the
-				 userRole value from the source view*/
+				/*
+				 * Update the relevent maps and role vale when removing the
+				 * userRole value from the source view
+				 */
 				if (StringUtils.isEmpty(eElement.getTextContent())) {
 					utRoles.clear();
 					carbonSecAuthControlMap.put(attribute, null);
@@ -1820,23 +1839,22 @@ public class SecurityFormPage extends FormPage {
 				if (StringUtils.isNotBlank(attribute)) {
 					if (!StringUtils.isEmpty(carbonKerberosMap.get(attribute))) {
 						node.setTextContent(carbonKerberosMap.get(attribute));
-					} 
-					/*else {
-						if(attribute.equals(SERVICE_PRINCIPAL_NAME)){
+					} else {
+						if (attribute.equals(SERVICE_PRINCIPAL_NAME)) {
 							setSave(true);
 							updateDirtyState();
 							MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
 							msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_NAME);
 							msgBox.open();
-						}else{
+						} else {
 							setSave(true);
 							updateDirtyState();
 							MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
 							msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_PASSWORD);
 							msgBox.open();
 						}
-						
-					}*/
+
+					}
 				}
 			}
 		}

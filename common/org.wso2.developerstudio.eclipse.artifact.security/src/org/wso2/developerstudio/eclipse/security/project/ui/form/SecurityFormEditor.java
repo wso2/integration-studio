@@ -152,12 +152,15 @@ public class SecurityFormEditor extends FormEditor {
 	@Override
 	protected void pageChange(int newPageIndex) {
 
-		if (newPageIndex == sourceEditorIndex) {
+		if ((newPageIndex == sourceEditorIndex) && (isDesignDirty)) {
+			isSourceDirty = false;
+			isDesignDirty = false;
 			String content = formPage.doSourceUpdate();
 			getDocument().set(content);
-			isSourceDirty = false;
 			updateDirtyState();
-		} else if (newPageIndex == formEditorIndex) {
+		} else if ((newPageIndex == formEditorIndex) && (isSourceDirty)) {
+			isSourceDirty = false;
+			isDesignDirty = false;
 			String xmlSource = getDocument().get();
 			formPage.updateUI(xmlSource);
 			updateDirtyState();
@@ -171,7 +174,7 @@ public class SecurityFormEditor extends FormEditor {
 
 	@Override
 	public void doSaveAs() {
-		 formPage.doPageSave();
+		formPage.doPageSave();
 	}
 
 	@Override
@@ -187,10 +190,6 @@ public class SecurityFormEditor extends FormEditor {
 
 	public boolean isDirty() {
 		return isDesignDirty || isSourceDirty;
-	}
-
-	public void setDirty(boolean isDirty) {
-		this.isDesignDirty = isDirty;
 	}
 
 }

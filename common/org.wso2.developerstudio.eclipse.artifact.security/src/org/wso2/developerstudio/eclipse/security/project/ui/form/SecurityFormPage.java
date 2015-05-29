@@ -98,7 +98,7 @@ import org.xml.sax.SAXException;
 public class SecurityFormPage extends FormPage {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	boolean isSave = false;
+	boolean pageDirty;
 
 	private static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS = "org.wso2.carbon.security.crypto.alias";
 	private static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES = "org.wso2.carbon.security.crypto.truststores";
@@ -362,7 +362,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				updatePrivateStore();
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -445,7 +445,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_NAME, txtPrincipalName.getText());
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -467,7 +467,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword.getText());
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -563,7 +563,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
 				rampartDataMap.put(RAMPART_USER, txtRampartUser.getText());
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -581,7 +581,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
 				rampartDataMap.put(RAMPART_ENCRYPTION_USER, txtRampartEncryptionUser.getText());
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -602,7 +602,7 @@ public class SecurityFormPage extends FormPage {
 			public void modifyText(ModifyEvent arg0) {
 				rampartDataMap.put(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS,
 						cmbRampartTimestampPrecision.getItem(cmbRampartTimestampPrecision.getSelectionIndex()));
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -620,7 +620,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
 				rampartDataMap.put(RAMPART_TIMESTAMP_TTL, txtRampartMinTTL.getText());
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -638,7 +638,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
 				rampartDataMap.put(RAMPART_TIMESTAMP_MAX_SKEW, txtRampartTimestampMaxSkew.getText());
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -658,7 +658,7 @@ public class SecurityFormPage extends FormPage {
 			public void modifyText(ModifyEvent arg0) {
 				rampartDataMap.put(RAMPART_TIMESTAMP_STRICT,
 						cmbRampartTimestampStrict.getItem(cmbRampartTimestampStrict.getSelectionIndex()));
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -676,7 +676,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
 				rampartDataMap.put(RAMPART_TOKEN_STORE_CLASS, txtRampartTokenStoreClass.getText());
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -694,7 +694,7 @@ public class SecurityFormPage extends FormPage {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
 				rampartDataMap.put(RAMPART_NONCE_LIFE_TIME, txtRampartNonceLifeTime.getText());
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -1296,13 +1296,13 @@ public class SecurityFormPage extends FormPage {
 			if (!StringUtils.isEmpty(dataMap.get(SERVICE_PRINCIPAL_NAME))
 					&& controlMap.get(SERVICE_PRINCIPAL_NAME) != null) {
 				controlMap.get(SERVICE_PRINCIPAL_NAME).setText(dataMap.get(SERVICE_PRINCIPAL_NAME));
-			} else {
+			} else if (controlMap.get(SERVICE_PRINCIPAL_NAME) != null) {
 				controlMap.get(SERVICE_PRINCIPAL_NAME).setText("");
 			}
 			if (!StringUtils.isEmpty(dataMap.get(SERVICE_PRINCIPAL_PASSWORD))
 					&& controlMap.get(SERVICE_PRINCIPAL_PASSWORD) != null) {
 				controlMap.get(SERVICE_PRINCIPAL_PASSWORD).setText(dataMap.get(SERVICE_PRINCIPAL_PASSWORD));
-			} else {
+			} else if (controlMap.get(SERVICE_PRINCIPAL_PASSWORD) != null) {
 				controlMap.get(SERVICE_PRINCIPAL_PASSWORD).setText("");
 
 			}
@@ -1397,7 +1397,7 @@ public class SecurityFormPage extends FormPage {
 
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				setSave(true);
+				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
@@ -1647,13 +1647,13 @@ public class SecurityFormPage extends FormPage {
 				}
 				if (StringUtils.isEmpty(eElement.getTextContent())) {
 					if (attribute.equals(SERVICE_PRINCIPAL_NAME)) {
-						setSave(true);
+						setPageDirty(true);
 						updateDirtyState();
 						MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
 						msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_NAME);
 						msgBox.open();
 					} else {
-						setSave(true);
+						setPageDirty(true);
 						updateDirtyState();
 						MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
 						msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_PASSWORD);
@@ -1841,17 +1841,23 @@ public class SecurityFormPage extends FormPage {
 						node.setTextContent(carbonKerberosMap.get(attribute));
 					} else {
 						if (attribute.equals(SERVICE_PRINCIPAL_NAME)) {
-							setSave(true);
+							setPageDirty(true);
 							updateDirtyState();
 							MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
 							msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_NAME);
 							msgBox.open();
+
 						} else {
-							setSave(true);
+							setPageDirty(true);
 							updateDirtyState();
 							MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
 							msgBox.setMessage(SecurityFormMessageConstants.MESSAGE_KERBEROS_PASSWORD);
 							msgBox.open();
+						}
+						if (node.getParentNode().getParentNode().getParentNode() != null) {
+							node.getParentNode().getParentNode().getParentNode()
+									.removeChild(carbonKerberos.getParentNode());
+
 						}
 
 					}
@@ -1911,7 +1917,7 @@ public class SecurityFormPage extends FormPage {
 				public void widgetSelected(SelectionEvent e) {
 					policyFileName = (String) secBtn.getData();
 					selectedPolicy = secBtn.getToolTipText();
-					setSave(true);
+					setPageDirty(true);
 					updateDirtyState();
 					if (resultService != null || enresult != null || signresult != null) {
 						Section result = (Section) resultService[0];
@@ -1977,7 +1983,7 @@ public class SecurityFormPage extends FormPage {
 				policyOneUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
-						setSave(true);
+						setPageDirty(true);
 						updateDirtyState();
 					}
 				});
@@ -1999,7 +2005,7 @@ public class SecurityFormPage extends FormPage {
 				policySevenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
-						setSave(true);
+						setPageDirty(true);
 						updateDirtyState();
 					}
 				});
@@ -2021,7 +2027,7 @@ public class SecurityFormPage extends FormPage {
 				policyEightUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
-						setSave(true);
+						setPageDirty(true);
 						updateDirtyState();
 					}
 				});
@@ -2043,7 +2049,7 @@ public class SecurityFormPage extends FormPage {
 				policyFourteenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
-						setSave(true);
+						setPageDirty(true);
 						updateDirtyState();
 					}
 				});
@@ -2065,7 +2071,7 @@ public class SecurityFormPage extends FormPage {
 				policyFifteenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
-						setSave(true);
+						setPageDirty(true);
 						updateDirtyState();
 					}
 				});
@@ -2234,9 +2240,7 @@ public class SecurityFormPage extends FormPage {
 	public void doPageSave() {
 
 		try {
-			setSave(false);
-			((SecurityFormEditor) getEditor()).setDirty(false);
-			updateDirtyState();
+			setPageDirty(false);
 			save();
 		} catch (Exception e) {
 			log.error("Cannot save the content", e);
@@ -2268,20 +2272,22 @@ public class SecurityFormPage extends FormPage {
 	}
 
 	public void updateDirtyState() {
-
-		formEditor.setDirty(isSave());
-		firePropertyChange(PROP_DIRTY);
-		formEditor.editorDirtyStateChanged();
+		((SecurityFormEditor) getEditor()).updateDirtyState();
 	}
 
-	public void setSave(boolean isSave) {
-		this.isSave = isSave;
+	public void setPageDirty(boolean isPageDirty) {
+		this.pageDirty = isPageDirty;
 	}
 
-	public boolean isSave() {
-		return isSave;
+	@Override
+	public boolean isDirty() {
+		return isPageDirty();
 	}
 
+	public boolean isPageDirty() {
+		return pageDirty;
+	}
+	
 	/**
 	 * Update the UI at page change
 	 * 

@@ -1904,9 +1904,14 @@ public class SecurityFormPage extends FormPage {
 	private void createSecurityScenarioOptionButtons(Composite seccomposite, String[] names, IManagedForm managedForm,
 			int i, Composite body) throws IOException, JAXBException {
 
+		
+		Composite sec = new Composite(seccomposite, SWT.NULL);
+		GridLayout layout = new GridLayout(5, false);
+		sec.setLayout(layout);
+		
 		for (String name : names) {
 			i++;
-			final Button secBtn = new Button(seccomposite, SWT.RADIO);
+			final Button secBtn = new Button(sec, SWT.RADIO);
 			secBtn.setText("");
 			secBtn.setToolTipText(name);
 
@@ -1960,7 +1965,7 @@ public class SecurityFormPage extends FormPage {
 			final ToolTip tip = new ToolTip(seccomposite.getShell(), SWT.BALLOON | SWT.ICON_INFORMATION);
 			tip.setMessage(TIP_MESSAGE);
 
-			Hyperlink createHyperlink = managedForm.getToolkit().createHyperlink(seccomposite, name, SWT.RADIO);
+			Hyperlink createHyperlink = managedForm.getToolkit().createHyperlink(sec, name, SWT.RADIO);
 			createHyperlink.addHyperlinkListener(new HyperlinkAdapter() {
 				@Override
 				public void linkActivated(HyperlinkEvent e) {
@@ -1977,7 +1982,7 @@ public class SecurityFormPage extends FormPage {
 				policyLinkGrdiData.horizontalSpan = 3;
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
-				policyOneUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyOneUserRolesButton = new Button(sec, SWT.NONE);
 				policyOneUserRolesButton.setText(USER_ROLE);
 				policyOneUserRolesButton.setVisible(false);
 				policyOneUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -1999,7 +2004,7 @@ public class SecurityFormPage extends FormPage {
 				policyLinkGrdiData.horizontalSpan = 3;
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
-				policySevenUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policySevenUserRolesButton = new Button(sec, SWT.NONE);
 				policySevenUserRolesButton.setText(USER_ROLE);
 				policySevenUserRolesButton.setVisible(false);
 				policySevenUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -2021,7 +2026,7 @@ public class SecurityFormPage extends FormPage {
 				policyLinkGrdiData.horizontalSpan = 3;
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
-				policyEightUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyEightUserRolesButton = new Button(sec, SWT.NONE);
 				policyEightUserRolesButton.setText(USER_ROLE);
 				policyEightUserRolesButton.setVisible(false);
 				policyEightUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -2043,7 +2048,7 @@ public class SecurityFormPage extends FormPage {
 				policyLinkGrdiData.horizontalSpan = 3;
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
-				policyFourteenUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyFourteenUserRolesButton = new Button(sec, SWT.NONE);
 				policyFourteenUserRolesButton.setText(USER_ROLE);
 				policyFourteenUserRolesButton.setVisible(false);
 				policyFourteenUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -2065,7 +2070,7 @@ public class SecurityFormPage extends FormPage {
 				policyLinkGrdiData.horizontalSpan = 3;
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
-				policyFifteenUserRolesButton = new Button(seccomposite, SWT.NONE);
+				policyFifteenUserRolesButton = new Button(sec, SWT.NONE);
 				policyFifteenUserRolesButton.setText(USER_ROLE);
 				policyFifteenUserRolesButton.setVisible(false);
 				policyFifteenUserRolesButton.addListener(SWT.Selection, new Listener() {

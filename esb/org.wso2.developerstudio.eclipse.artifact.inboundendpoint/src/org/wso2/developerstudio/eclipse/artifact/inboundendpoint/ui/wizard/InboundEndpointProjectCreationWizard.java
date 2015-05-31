@@ -75,7 +75,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		this.inboundEndpointModel = new InboundEndpointModel();
 		setModel(this.inboundEndpointModel);
 		setWindowTitle(InboundEndpointArtifactProperties.ieWizardWindowTitle);
-		setDefaultPageImageDescriptor(InboundEndpointImageUtils.getInstance().getImageDescriptor("local-entries-wizard-artifact.png"));
+		setDefaultPageImageDescriptor(InboundEndpointImageUtils.getInstance().getImageDescriptor("inbound-endpoint.png"));
 	}
 	
 	

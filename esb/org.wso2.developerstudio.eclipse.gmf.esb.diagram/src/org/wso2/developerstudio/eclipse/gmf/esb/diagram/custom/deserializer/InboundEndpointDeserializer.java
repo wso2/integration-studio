@@ -16,14 +16,14 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__CLASS;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.INBOUND_ENDPOINT__NAME;
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 import org.apache.synapse.inbound.InboundEndpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class InboundEndpointDeserializer extends
@@ -42,11 +42,29 @@ public class InboundEndpointDeserializer extends
 		refreshEditPartMap();
 
 		executeSetValueCommand(INBOUND_ENDPOINT__NAME, object.getName());
-		executeSetValueCommand(INBOUND_ENDPOINT__CLASS, object.getClassImpl());
+		
+		if("http".equals(object.getProtocol())){
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.HTTP);
+		}else if("file".equals(object.getProtocol())){
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.FILE);
+		}else if("jms".equals(object.getProtocol())){
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.JMS);
+		}else if("custom".equals(object.getProtocol())){
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CUSTOM);
+		}		
+		
+		//FIXME
+		//executeSetValueCommand(INBOUND_ENDPOINT__CLASS, object.getClassImpl());
+		if (object.getClassImpl() == null) {
+			executeSetValueCommand(INBOUND_ENDPOINT__CLASS, "org.wso2.MyClass");
+		} else {
+			executeSetValueCommand(INBOUND_ENDPOINT__CLASS, object.getClassImpl());
+		}
 
 		/*
 		 * Creating Sequence mediator graphically 
 		 */
+		if(object.getInjectingSeq() != null && !"".equals(object.getInjectingSeq())){
 		addRootInputConnector(inboundEndpoint.getSequenceInputConnector());
 		IGraphicalEditPart sequenceCompartment = (IGraphicalEditPart) getEditpart(
 				inboundEndpoint.getContainer().getSequenceContainer().getMediatorFlow()).getChildren().get(0);
@@ -57,10 +75,12 @@ public class InboundEndpointDeserializer extends
 		sequenceMediator.setKey(sequenceKey);
 		sequenceContainer.addChild(sequenceMediator);
 		deserializeSequence(sequenceCompartment, sequenceContainer, inboundEndpoint.getSequenceOutputConnector());
+		}
 		
 		/*
 		 * Creating OnErrorSequence mediator graphically
 		 */
+		if(object.getOnErrorSeq() != null && !"".equals(object.getOnErrorSeq())){
 		addRootInputConnector(inboundEndpoint.getOnErrorSequenceInputConnector());
 		IGraphicalEditPart onErrorSequenceCompartment = (IGraphicalEditPart) getEditpart(
 				inboundEndpoint.getContainer().getOnErrorSequenceContainer().getMediatorFlow()).getChildren().get(0);
@@ -72,6 +92,7 @@ public class InboundEndpointDeserializer extends
 		onErrorSequenceContainer.addChild(onErrorSequenceMediator);
 		deserializeSequence(onErrorSequenceCompartment, onErrorSequenceContainer,
 				inboundEndpoint.getOnErrorSequenceOutputConnector());
+		}
 
 		return inboundEndpoint;
 	}

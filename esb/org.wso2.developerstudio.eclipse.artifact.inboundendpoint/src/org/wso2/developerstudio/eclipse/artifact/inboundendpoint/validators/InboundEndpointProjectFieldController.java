@@ -80,7 +80,8 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 			if (resource == null || !resource.exists()) {
 				throw new FieldValidationException("Specified project or path doesn't exist");
 			}
-		} else if (InboundEndpointArtifactProperties.wizardOptionSequence.equals(modelProperty)) {
+		} //FIXME
+		/*else if (InboundEndpointArtifactProperties.wizardOptionSequence.equals(modelProperty)) {
 			String resource = value.toString();
 			if (resource == null || "".equals(resource)) {
 				throw new FieldValidationException("Sequence value cannot be empty");
@@ -97,7 +98,7 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 					throw new FieldValidationException("Inbound http port value cannot be empty");
 				}
 			}
-		}
+		}*/
 	}
 
 	public boolean isVisibleField(String modelProperty, ProjectDataModel model) {

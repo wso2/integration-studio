@@ -8,7 +8,7 @@
 			class="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.ui.wizard.InboundEndpointProjectCreationWizard"
 			wizardManifest="project_wizard.xml"
 			id="org.wso2.developerstudio.eclipse.artifact.newinboundendpointartifact"
-			icon="icons/sequence-normal.png">
+			icon="icons/inbound-endpoint.gif">
 			<description>Inbound Endpoint</description>
 		</wizard>
    </extension>

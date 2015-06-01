@@ -16,10 +16,19 @@
 
 package org.wso2.developerstudio.eclipse.greg.base.managers;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
 
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -27,6 +36,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.greg.base.Activator;
 import org.wso2.developerstudio.eclipse.greg.base.editor.input.ResourceEditorInput;
 import org.wso2.developerstudio.eclipse.greg.base.logger.ExceptionHandler;
@@ -35,8 +45,15 @@ import org.wso2.developerstudio.eclipse.greg.base.ui.editor.RegistryResourceEdit
 import org.wso2.developerstudio.eclipse.greg.base.util.EditorConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
+import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+
+
 
 public class RemoteContentManager {
+	private static final String ESB_REMOTE_TEMP_PROJECT_NATURE = "org.wso2.developerstudio.esb.remoteTempNature";
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
 
@@ -92,27 +109,73 @@ public class RemoteContentManager {
 	}
 
 	/**
-	 * open file in the relavent editor according to the content of the file
+	 * open file in the relevant editor according to the content of the file
 	 * @param fileToOpen
 	 * @return
 	 */
 	public static IEditorPart openFile(File fileToOpen) {
+		
 		ExceptionHandler exeptionHandler = new ExceptionHandler();
 		if (fileToOpen.exists() && fileToOpen.isFile()) {
+
 			IFileStore fileStore = EFS.getLocalFileSystem().getStore(fileToOpen.toURI());
 			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 			try {
-				return IDE.openEditorOnFileStore(page, fileStore);
-			} catch (PartInitException e) {
-				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-											"Could not open the file type in the editor");
+				
+				String parentFileName = fileToOpen.getParentFile().getName();
+				IPath projLocation = new org.eclipse.core.runtime.Path(fileToOpen.getPath());
+				String projPath = projLocation.removeLastSegments(2).toOSString() + File.separator + parentFileName;
+				
+				/*Adding dot character to start the project name to hide it in the project explorer since this is a temp project  */
+				String tempProjectName = "." + parentFileName;
+				IWorkspace ws = ResourcesPlugin.getWorkspace();
+				IProject project = ws.getRoot().getProject(tempProjectName);
+				IProjectDescription description = ws.newProjectDescription(tempProjectName);				
+				String[] naturesIds = new String[] { ESB_REMOTE_TEMP_PROJECT_NATURE };
+				description.setNatureIds(naturesIds);
+				description.setLocation(new org.eclipse.core.runtime.Path(projPath));
+				if (!project.exists()) {
+					project.create(description, IProject.FORCE, new NullProgressMonitor());
+				}
+				if (!project.isOpen()) {
+					project.open(new NullProgressMonitor());
+				}
+				
+				IFile workspaceFile = project.getFile(fileToOpen.getName());
+				String source = FileUtils.getContentAsString(fileToOpen);
+				InputStream is = new ByteArrayInputStream(source.getBytes());
+                if(workspaceFile.exists()){
+                	workspaceFile.setContents(is, IFile.FORCE, new NullProgressMonitor());
+                }else{
+                	workspaceFile.create(is, true, new NullProgressMonitor());
+                }
+			    is.close();
+				Openable openable = ESBGraphicalEditor.getOpenable();
+				ArtifactType artifactType = (ArtifactType) openable.artifactTypeResolver(source);
+				IEditorPart editorOpen = openable.editorOpen(artifactType.getLiteral(),source,workspaceFile);
+
+				return editorOpen;
+
+			} catch (UnrecogizedArtifactTypeException e) {
+				try {
+					log.warn("Not an ESB artifact");
+					return IDE.openEditorOnFileStore(page, fileStore);
+				} catch (PartInitException e1) {
+					log.error("Non ESB artifact coudn't open"+e.getMessage(),e);
+					exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+							"Could not open the file type in the editor");
+				}
+
 			} catch (Exception e) {
+				log.error("ESB artifact coudn't open"+e.getMessage(),e);
 				exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
-											"Could not open the file type in the editor");
+						"Could not open the file type in the editor");
 			}
 		} else {
-			// Do something if the file does not exist
+			exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+					"File cannot be open");
 		}
 		return null;
 	}
+
 }

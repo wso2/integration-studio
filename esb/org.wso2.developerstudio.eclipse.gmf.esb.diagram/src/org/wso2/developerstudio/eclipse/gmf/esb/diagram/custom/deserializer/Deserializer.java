@@ -60,6 +60,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEdit
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
@@ -243,7 +244,7 @@ public class Deserializer {
 		} else if("inboundEndpoint".equals(localName)){
 			artifactType=ArtifactType.INBOUND_ENDPOINT;
 		} else{
-			throw new Exception("Unrecognized source configuration section " + localName);
+			throw new UnrecogizedArtifactTypeException("Unrecognized source configuration section " + localName);
 		}
 		return artifactType;
 	}

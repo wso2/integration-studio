@@ -16,9 +16,14 @@
 
 package org.wso2.developerstudio.eclipse.platform.ui.editor;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.ui.IEditorPart;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
 
 public interface Openable {
 
 	IEditorPart editorOpen(String name,String type,String locatioin,String source)throws Exception;
+	IEditorPart editorOpen(String type,String source,IFile file)throws Exception;
+	Enumerator artifactTypeResolver(String source)throws UnrecogizedArtifactTypeException,Exception;
 }

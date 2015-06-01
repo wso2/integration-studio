@@ -20,6 +20,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -34,15 +35,28 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
+import org.wso2.developerstudio.eclipse.platform.ui.utils.UnrecogizedArtifactTypeException;
 
 public class GraphicalEditorStartupUtils implements Openable {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+
+	@Override
+	public IEditorPart editorOpen(String name, String type, String locatioin, String source)
+			throws Exception {
+		 return editorOpen(name, type, locatioin, source,null);
+	}
 	
 	@Override
-	public IEditorPart editorOpen(String name, String type, String locatioin,
-			final String source) throws Exception {
-         Integer val =null;
+	public IEditorPart editorOpen(String type,String source,IFile xmlFile)
+			throws Exception {
+				  
+		 return editorOpen("", type, "", source,xmlFile);
+	}
+	
+	private IEditorPart editorOpen(String name, String type, String locatioin,
+			final String source,IFile xmlFile) throws Exception {
+         Integer val;
          String locatioin_=locatioin;
          String name_=name;
 		if(type.contains("endpoint")){
@@ -52,18 +66,18 @@ public class GraphicalEditorStartupUtils implements Openable {
 			val = new Integer(types[1]);
 			}
 		}		
-		IFile xmlFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(locatioin_ + "/" + name_));
-
-		IWorkbenchPage activePage = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		IEditorPart openEditor = activePage.openEditor(new EsbEditorInput(
-				null,xmlFile,type), EsbDiagramEditor.ID);
+		
+		if(xmlFile==null){		
+		 xmlFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(locatioin_ + "/" + name_));
+		}
+	 
+		IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		IEditorPart openEditor = activePage.openEditor(new EsbEditorInput(null, xmlFile, type), EsbDiagramEditor.ID);
 		EsbMultiPageEditor multipageEitor = ((EsbMultiPageEditor) openEditor);
-		final EsbDiagramEditor graphicalEditor = multipageEitor
-				.getGraphicalEditor();
+		final EsbDiagramEditor graphicalEditor = multipageEitor.getGraphicalEditor();
 
 		Display.getDefault().asyncExec(new Runnable() {
-			
+
 			public void run() {
 				EditorUtils.setLockmode(graphicalEditor, true);
 				Deserializer deserializer = Deserializer.getInstance();
@@ -85,4 +99,11 @@ public class GraphicalEditorStartupUtils implements Openable {
 		}
 		return openEditor;
 	}
+
+	@Override
+	public Enumerator artifactTypeResolver(String source) throws UnrecogizedArtifactTypeException,Exception {
+		 Deserializer deserializer = Deserializer.getInstance();
+		 return deserializer.getArtifactType(source);
+	}
+
 }

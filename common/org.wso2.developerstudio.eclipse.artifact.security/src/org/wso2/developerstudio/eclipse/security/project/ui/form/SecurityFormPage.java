@@ -94,6 +94,7 @@ import org.wso2.developerstudio.eclipse.security.project.utils.SecurityPolicies;
 import org.wso2.developerstudio.eclipse.security.project.utils.SecurityPolicyUtils;
 import org.wso2.developerstudio.eclipse.security.project.utils.SecurityTemplateUtil;
 import org.xml.sax.SAXException;
+import org.eclipse.swt.widgets.Control;
 
 public class SecurityFormPage extends FormPage {
 
@@ -1901,7 +1902,7 @@ public class SecurityFormPage extends FormPage {
 	 * @param i
 	 *            int value
 	 */
-	private void createSecurityScenarioOptionButtons(Composite seccomposite, String[] names, IManagedForm managedForm,
+	private void createSecurityScenarioOptionButtons(final Composite seccomposite, String[] names, IManagedForm managedForm,
 			int i, Composite body) throws IOException, JAXBException {
 
 		for (String name : names) {
@@ -1915,36 +1916,7 @@ public class SecurityFormPage extends FormPage {
 			secBtn.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					policyFileName = (String) secBtn.getData();
-					selectedPolicy = secBtn.getToolTipText();
-					setPageDirty(true);
-					updateDirtyState();
-					if (resultService != null || enresult != null || signresult != null) {
-						Section result = (Section) resultService[0];
-						Section encrypt = (Section) enresult[0];
-						Section signResult = (Section) signresult[0];
-						Section kebSection = (Section) keberosResult[0];
-
-						// TOOLS-2772
-						if (selectedPolicy.equals(POLICY_UT)) {
-							result.setVisible(false);
-							encrypt.setVisible(false);
-							signResult.setVisible(false);
-							kebSection.setVisible(false);
-						} else if (selectedPolicy.equals(POLICY_KERBEROS)) {
-							result.setVisible(false);
-							encrypt.setVisible(false);
-							signResult.setVisible(false);
-							kebSection.setVisible(true);
-						} else {
-							result.setVisible(true);
-							encrypt.setVisible(true);
-							signResult.setVisible(true);
-							kebSection.setVisible(false);
-						}
-					}
-
-					enableUserRoleButton(secBtn);
+					selectPolicy(secBtn);
 				}
 			});
 
@@ -1966,6 +1938,17 @@ public class SecurityFormPage extends FormPage {
 				public void linkActivated(HyperlinkEvent e) {
 					// Fixing TOOLS-2293.
 					// tip.setVisible(true);
+
+					Control[] children = seccomposite.getChildren();
+					for (Control child : children) {
+						if (child instanceof Button) {
+							((Button) child).setSelection(false);
+						}
+					}
+
+					secBtn.setSelection(true);
+					selectPolicy(secBtn);
+
 				}
 
 			});
@@ -2088,6 +2071,43 @@ public class SecurityFormPage extends FormPage {
 			}
 
 		}
+	}
+
+	/**
+	 * Gets the policy when radio button selects
+	 * @param secBtn
+	 */
+	protected void selectPolicy(final Button secBtn) {
+		policyFileName = (String) secBtn.getData();
+		selectedPolicy = secBtn.getToolTipText();
+		setPageDirty(true);
+		updateDirtyState();
+		if (resultService != null || enresult != null || signresult != null) {
+			Section result = (Section) resultService[0];
+			Section encrypt = (Section) enresult[0];
+			Section signResult = (Section) signresult[0];
+			Section kebSection = (Section) keberosResult[0];
+
+			// TOOLS-2772
+			if (selectedPolicy.equals(POLICY_UT)) {
+				result.setVisible(false);
+				encrypt.setVisible(false);
+				signResult.setVisible(false);
+				kebSection.setVisible(false);
+			} else if (selectedPolicy.equals(POLICY_KERBEROS)) {
+				result.setVisible(false);
+				encrypt.setVisible(false);
+				signResult.setVisible(false);
+				kebSection.setVisible(true);
+			} else {
+				result.setVisible(true);
+				encrypt.setVisible(true);
+				signResult.setVisible(true);
+				kebSection.setVisible(false);
+			}
+		}
+
+		enableUserRoleButton(secBtn);
 	}
 
 	/**

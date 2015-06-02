@@ -43,7 +43,6 @@ import org.apache.synapse.mediators.builtin.EnqueueMediator;
 import org.apache.synapse.mediators.builtin.LogMediator;
 import org.apache.synapse.mediators.builtin.LoopBackMediator;
 import org.apache.synapse.mediators.builtin.PropertyMediator;
-import org.apache.synapse.mediators.builtin.RMSequenceMediator;
 import org.apache.synapse.mediators.builtin.RespondMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
 import org.apache.synapse.mediators.builtin.ValidateMediator;
@@ -150,7 +149,6 @@ public class EsbDeserializerRegistry {
 		addDeserializer(DBReportMediator.class, new DBReportMediatorDeserializer());
 		addDeserializer(EntitlementMediatorExt.class, new EntitlementMediatorDeserializer());
 		addDeserializer(TransactionMediator.class, new TransactionMediatorDeserializer());
-		addDeserializer(RMSequenceMediator.class, new RMSequenceMediatorDeserializer());
 		addDeserializer(OAuthMediator.class, new OAuthMediatorDeserializer());
 		addDeserializer(MessageStoreMediator.class, new StoreMediatorDeserializer());
 		addDeserializer(BuilderMediatorExt.class, new BuilderMediatorDeserializer());

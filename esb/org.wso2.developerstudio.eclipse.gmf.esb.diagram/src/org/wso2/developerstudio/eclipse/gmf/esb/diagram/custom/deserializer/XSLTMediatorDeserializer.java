@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.Value;
@@ -25,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class XSLTMediatorDeserializer extends
@@ -67,7 +69,7 @@ public class XSLTMediatorDeserializer extends
 				//vishualXslt.setXsltSchemaKeyType(KeyType.DYNAMIC);
 				executeSetValueCommand(XSLT_MEDIATOR__XSLT_SCHEMA_KEY_TYPE,KeyType.DYNAMIC);
 
-				SynapseXPath xpath = keyValue.getExpression();
+				SynapsePath xpath = keyValue.getExpression();
 
 				NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 

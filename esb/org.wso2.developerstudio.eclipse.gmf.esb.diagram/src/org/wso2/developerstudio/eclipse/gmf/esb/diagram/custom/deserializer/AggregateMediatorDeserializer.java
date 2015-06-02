@@ -18,8 +18,8 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Map;
 
-
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, AggregateMediator> {
@@ -103,7 +104,7 @@ public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<A
 				//vishualAggrigate.setCompletionMaxMessagesType(CompletionMessagesType.EXPRESSION);
 				executeSetValueCommand(AGGREGATE_MEDIATOR__COMPLETION_MAX_MESSAGES_TYPE, CompletionMessagesType.EXPRESSION);
 				
-				SynapseXPath xpath = maxMsg.getExpression();
+				SynapsePath xpath = maxMsg.getExpression();
 				
 				NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 				
@@ -140,7 +141,7 @@ public class AggregateMediatorDeserializer extends AbstractEsbNodeDeserializer<A
 				//vishualAggrigate.setCompletionMinMessagesType(CompletionMessagesType.EXPRESSION);
 				executeSetValueCommand(AGGREGATE_MEDIATOR__COMPLETION_MIN_MESSAGES_TYPE, CompletionMessagesType.EXPRESSION);
 				
-				SynapseXPath xpath = minMsg.getExpression();
+				SynapsePath xpath = minMsg.getExpression();
 				
 				NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 				

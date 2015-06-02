@@ -23,6 +23,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.VALID
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.Value;
@@ -104,7 +105,7 @@ public class ValidateMediatorDeserializer extends AbstractEsbNodeDeserializer<Ab
 					
 					validateSchema.setValidateSchemaKeyType(KeyType.DYNAMIC);
 					
-					SynapseXPath xpath = schema.getExpression();
+					SynapsePath xpath = schema.getExpression();
 					
 					nsp.setPropertyValue(xpath.toString());
 					

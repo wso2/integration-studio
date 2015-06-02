@@ -40,10 +40,10 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 		setElementToEdit(taskModel);
 
 		executeSetValueCommand(TASK__TASK_NAME, task.getName());
-		executeSetValueCommand(TASK__TASK_IMPLEMENTATION, task.getTaskClass());
+		executeSetValueCommand(TASK__TASK_IMPLEMENTATION, task.getTaskImplClassName());
 
-		if (task.getGroup() != null) {
-			executeSetValueCommand(TASK__TASK_GROUP, task.getGroup());
+		if (task.getTaskGroup() != null) {
+			executeSetValueCommand(TASK__TASK_GROUP, task.getTaskGroup());
 		}
 
 		if (task.getPinnedServers().size() > 0) {
@@ -52,7 +52,7 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 		}
 
 		EList<TaskProperty> properties = new BasicEList<TaskProperty>();
-		for (OMElement element : task.getProperties()) {
+		for (OMElement element : task.getXmlProperties()) {
 			if (element != null) {
 				OMAttribute name = element.getAttribute(new QName("name"));
 				if (element.getLocalName().equals("property") && name != null) {
@@ -74,8 +74,8 @@ public class TaskDeserializer extends AbstractEsbNodeDeserializer<TaskDescriptio
 			executeSetValueCommand(TASK__TASK_PROPERTIES, properties);
 		}
 
-		if (task.getCron() != null) {
-			executeSetValueCommand(TASK__CRON, task.getCron());
+		if (task.getCronExpression() != null) {
+			executeSetValueCommand(TASK__CRON, task.getCronExpression());
 			executeSetValueCommand(TASK__TRIGGER_TYPE, TaskTriggerType.CRON);
 		} else {
 			executeSetValueCommand(TASK__TRIGGER_TYPE, TaskTriggerType.SIMPLE);

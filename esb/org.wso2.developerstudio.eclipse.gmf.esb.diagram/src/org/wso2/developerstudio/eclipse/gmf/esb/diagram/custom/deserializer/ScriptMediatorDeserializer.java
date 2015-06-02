@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
 import java.util.Set;
 
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -65,7 +66,7 @@ public class ScriptMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 			  executeAddValueCommand(visualScriptMediator.getScriptKeys(),keyProperty);
 		  }
 		  Value key = scriptMediator.getKey();
-		  SynapseXPath expression = key.getExpression();
+		  SynapsePath expression = key.getExpression();
 		  String keyValue = key.getKeyValue();
 		  if(expression!=null){
 			  NamespacedProperty namespacedProperty = createNamespacedProperty(expression);

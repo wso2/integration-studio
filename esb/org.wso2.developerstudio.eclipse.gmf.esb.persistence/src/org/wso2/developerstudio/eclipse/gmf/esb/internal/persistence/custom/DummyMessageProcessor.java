@@ -86,4 +86,9 @@ public class DummyMessageProcessor extends AbstractMessageProcessor {
 		
 	}
 
+	public void cleanupLocalResources() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

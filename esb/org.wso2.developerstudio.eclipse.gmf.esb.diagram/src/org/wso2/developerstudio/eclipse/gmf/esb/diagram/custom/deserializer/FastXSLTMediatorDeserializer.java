@@ -22,6 +22,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.FAST_
 
 import java.util.Map;
 
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -87,7 +88,7 @@ public class FastXSLTMediatorDeserializer extends
 					log.warn("executeSetValueCommand returned false in Fast XSLT mediator Deserializer for Schema key type");
                 }
 				
-				SynapseXPath xpath = keyValue.getExpression();
+				SynapsePath xpath = keyValue.getExpression();
 				NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 				nsp.setPropertyValue(xpath.toString());
 				

@@ -30,8 +30,8 @@ public class TaskTransformer {
 			taskDescription.setName("Default");
 		}
 		
-		taskDescription.setGroup(visualTask.getTaskGroup());
-		taskDescription.setTaskClass(visualTask.getTaskImplementation());
+		taskDescription.setTaskGroup(visualTask.getTaskGroup());
+		taskDescription.setTaskImplClassName(visualTask.getTaskImplementation());
 		switch (visualTask.getTriggerType()) {
 		case SIMPLE:
 			taskDescription.setCount((int) visualTask.getCount());
@@ -39,7 +39,7 @@ public class TaskTransformer {
 			break;
 
 		case CRON:
-			taskDescription.setCron(visualTask.getCron());
+			taskDescription.setCronExpression(visualTask.getCron());
 			break;
 		}
 		
@@ -74,7 +74,7 @@ public class TaskTransformer {
 					} catch (XMLStreamException e) {
 						e.printStackTrace();
 					}
-					taskDescription.addProperty(source);
+					taskDescription.setXmlProperty(source);
 				}
 			}
 		}	

@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.util.xpath.SynapseXPath;
@@ -29,6 +30,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EventMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EventTopicType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class EventMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, EventMediator> {
@@ -64,7 +66,7 @@ public class EventMediatorDeserializer extends AbstractEsbNodeDeserializer<Abstr
 				//vishualEvent.setTopicType(EventTopicType.DYNAMIC);
 				executeSetValueCommand(EVENT_MEDIATOR__TOPIC_TYPE, EventTopicType.DYNAMIC);
 				
-				SynapseXPath xpath  = topic.getExpression();
+				SynapsePath xpath  = topic.getExpression();
 				
 				NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 				

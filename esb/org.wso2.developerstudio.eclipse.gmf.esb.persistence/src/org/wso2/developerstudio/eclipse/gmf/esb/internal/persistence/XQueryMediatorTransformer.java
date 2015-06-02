@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 import javax.xml.namespace.QName;
 import javax.xml.xquery.XQItemType;
 
+import net.sf.saxon.s9api.ItemType;
+import net.sf.saxon.s9api.XdmNodeKind;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
@@ -96,51 +98,51 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 			   
 			           if(varType.equals(XQueryVariableType.INT)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_INT);
+			        	   varBase.setType(ItemType.INT);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.INTEGER)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_INTEGER);
+			        	   varBase.setType(ItemType.INTEGER);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.BOOLEAN)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_BOOLEAN);
+			        	   varBase.setType(ItemType.BOOLEAN);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.BYTE)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_BYTE);
+			        	   varBase.setType(ItemType.BYTE);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.DOUBLE)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_DOUBLE);
+			        	   varBase.setType(ItemType.DOUBLE);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.SHORT)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_SHORT);
+			        	   varBase.setType(ItemType.SHORT);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.LONG)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_LONG);
+			        	   varBase.setType(ItemType.LONG);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.FLOAT)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_FLOAT);
+			        	   varBase.setType(ItemType.FLOAT);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.STRING)){
 			        	   
-			        	   varBase.setType(XQItemType.XQBASETYPE_STRING);
+			        	   varBase.setType(ItemType.STRING);
 			        	   
 			           }else if(varType.equals(XQueryVariableType.DOCUMENT)){
 			        	   
-			        	   varBase.setType(XQItemType.XQITEMKIND_DOCUMENT);
+			        	   varBase.setNodeKind(XdmNodeKind.DOCUMENT);
 			        	   
-			           }else if(varType.equals(XQueryVariableType.DOCUMENT_ELEMENT)){
+			           }/*else if(varType.equals(XQueryVariableType.DOCUMENT_ELEMENT)){
 			        	   
 			        	   varBase.setType(XQItemType.XQITEMKIND_DOCUMENT_ELEMENT);
 			        	   
-			           }else if(varType.equals(XQueryVariableType.ELEMENT)){
+			           }*/else if(varType.equals(XQueryVariableType.ELEMENT)){
 			        	   
-			        	   varBase.setType(XQItemType.XQITEMKIND_ELEMENT);
+			        	   varBase.setNodeKind(XdmNodeKind.ELEMENT);
 			        	   
 			           }
 			                      
@@ -174,51 +176,51 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 						
 						 if(varType.equals(XQueryVariableType.INT)){
 				        	   
-							 varCustom.setType(XQItemType.XQBASETYPE_INT);
+							 varCustom.setType(ItemType.INT);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.INTEGER)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQBASETYPE_INTEGER);
+				        	   varCustom.setType(ItemType.INTEGER);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.BOOLEAN)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQBASETYPE_BOOLEAN);
+				        	   varCustom.setType(ItemType.BOOLEAN);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.BYTE)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQBASETYPE_BYTE);
+				        	   varCustom.setType(ItemType.BYTE);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.DOUBLE)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQBASETYPE_DOUBLE);
+				        	   varCustom.setType(ItemType.DOUBLE);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.SHORT)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQBASETYPE_SHORT);
+				        	   varCustom.setType(ItemType.SHORT);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.LONG)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQBASETYPE_LONG);
+				        	   varCustom.setType(ItemType.LONG);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.FLOAT)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQBASETYPE_FLOAT);
+				        	   varCustom.setType(ItemType.FLOAT);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.STRING)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQBASETYPE_STRING);
+				        	   varCustom.setType(ItemType.STRING);
 				        	   
 				           }else if(varType.equals(XQueryVariableType.DOCUMENT)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQITEMKIND_DOCUMENT);
+				        	   varCustom.setNodeKind(XdmNodeKind.DOCUMENT);
 				        	   
-				           }else if(varType.equals(XQueryVariableType.DOCUMENT_ELEMENT)){
+				           }/*else if(varType.equals(XQueryVariableType.DOCUMENT_ELEMENT)){
 				        	   
 				        	   varCustom.setType(XQItemType.XQITEMKIND_DOCUMENT_ELEMENT);
 				        	   
-				           }else if(varType.equals(XQueryVariableType.ELEMENT)){
+				           }*/else if(varType.equals(XQueryVariableType.ELEMENT)){
 				        	   
-				        	   varCustom.setType(XQItemType.XQITEMKIND_ELEMENT);
+				        	   varCustom.setNodeKind(XdmNodeKind.ELEMENT);
 				        	   
 				           }
 						 

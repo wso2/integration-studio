@@ -67,14 +67,14 @@ public class DummyTaskDescriptionFactory {
             String group = el.getAttributeValue(
                     new QName(NULL_NAMESPACE, "group"));
             if (group != null) {
-                taskDescription.setGroup(group);
+                taskDescription.setTaskGroup(group);
             }
 
             // set the task class
             OMAttribute classAttr = el.getAttribute(new QName("class"));
             if (classAttr != null && classAttr.getAttributeValue() != null) {
                 String classname = classAttr.getAttributeValue();
-                taskDescription.setTaskClass(classname);
+                taskDescription.setTaskImplClassName(classname);
             } else {
                 log.warn("TaskClass cannot be found." +
                         "Task implementation may need a task class if there is no default one");
@@ -82,7 +82,7 @@ public class DummyTaskDescriptionFactory {
             
             OMElement descElem = el.getFirstChildWithName(createQName(DESCRIPTION, tagetNamespace));
             if (descElem != null) {
-                taskDescription.setDescription(descElem.getText());
+                taskDescription.setTaskDescription(descElem.getText());
             }
 
             // set pinned server list
@@ -109,7 +109,7 @@ public class DummyTaskDescriptionFactory {
             while (it.hasNext()) {
                 OMElement prop = (OMElement) it.next();
                 if (PropertyHelper.isStaticProperty(prop)) {
-                    taskDescription.addProperty(prop);
+                    taskDescription.setXmlProperty(prop);
                 } else {
                     handleException("Tasks does not support dynamic properties");
                 }
@@ -157,7 +157,7 @@ public class DummyTaskDescriptionFactory {
                     handleException("Trigger syntax error : " +
                             "both cron and simple trigger attributes are present");
                 } else if (expr != null && expr.getAttributeValue() != null) {
-                    taskDescription.setCron(expr.getAttributeValue());
+                    taskDescription.setCronExpression(expr.getAttributeValue());
                 }
 
             } else {

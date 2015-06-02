@@ -25,6 +25,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.RECIP
 import java.util.Iterator;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.RecipientListEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
@@ -75,7 +76,7 @@ public class RecipientListEndpointDeserializer extends AbstractComplexEndPointDe
 				executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINTS_VALUE, endpoint.getDynamicEnpointSet().getKeyValue());
 				executeSetValueCommand(RECIPIENT_LIST_END_POINT__MAX_CACHE, endpoint.getCurrentPoolSize());
 			} else if (endpoint.getDynamicEnpointSet().getExpression() != null) {
-				SynapseXPath xpath = endpoint.getDynamicEnpointSet().getExpression();
+				SynapsePath xpath = endpoint.getDynamicEnpointSet().getExpression();
 				NamespacedProperty namespaceProp = createNamespacedProperty(xpath);
 				executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.XPATH);
 				executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINTS_EXPRESSION, namespaceProp);

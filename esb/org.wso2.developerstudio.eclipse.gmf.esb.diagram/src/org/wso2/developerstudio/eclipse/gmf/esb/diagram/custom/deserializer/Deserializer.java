@@ -352,7 +352,7 @@ public class Deserializer {
 			artifacts.put(messageProcessor.getName(), messageProcessor);
 			break;
 		case INBOUND_ENDPOINT:
-			InboundEndpoint inboundEndpoint= InboundEndpointFactory.createInboundEndpoint(element);
+			InboundEndpoint inboundEndpoint= InboundEndpointFactory.createInboundEndpoint(element,null);
 			artifacts.put(inboundEndpoint.getName(), inboundEndpoint);
 			break;
 		default:

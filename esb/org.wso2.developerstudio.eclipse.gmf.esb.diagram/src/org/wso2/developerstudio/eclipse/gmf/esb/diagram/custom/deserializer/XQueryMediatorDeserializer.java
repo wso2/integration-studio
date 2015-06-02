@@ -6,6 +6,10 @@ import java.util.Map;
 
 import javax.xml.xquery.XQItemType;
 
+import net.sf.saxon.s9api.ItemType;
+import net.sf.saxon.s9api.XdmNodeKind;
+
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.xquery.MediatorBaseVariable;
@@ -23,6 +27,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableType;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<AbstractMediator, XQueryMediator>{
@@ -80,7 +85,7 @@ public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 				//vishualXquery.setScriptKeyType(KeyType.DYNAMIC);
 				executeSetValueCommand(XQUERY_MEDIATOR__SCRIPT_KEY_TYPE, KeyType.DYNAMIC);
 				
-				SynapseXPath xpath  = queryKeyValue.getExpression();
+				SynapsePath xpath  = queryKeyValue.getExpression();
 				
 				NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();
 
@@ -124,45 +129,30 @@ public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 						vishualVariable.setValueLiteral(varBase.getValue().toString());
 					}
 					
-					int typeNum = varBase.getType();
+					ItemType typeNum = varBase.getType();
 					
-					switch (typeNum) {
-						case XQItemType.XQBASETYPE_INT:
-							vishualVariable.setVariableType(XQueryVariableType.INT);
-							break;
-						case XQItemType.XQBASETYPE_INTEGER:
-							vishualVariable.setVariableType(XQueryVariableType.INTEGER);
-							break;
-						case XQItemType.XQBASETYPE_BOOLEAN:
-							vishualVariable.setVariableType(XQueryVariableType.BOOLEAN);
-							break;
-						case XQItemType.XQBASETYPE_BYTE:
-							vishualVariable.setVariableType(XQueryVariableType.BYTE);
-							break;
-						case XQItemType.XQBASETYPE_DOUBLE:
-							vishualVariable.setVariableType(XQueryVariableType.DOUBLE);
-							break;
-						case XQItemType.XQBASETYPE_SHORT:
-							vishualVariable.setVariableType(XQueryVariableType.SHORT);
-							break;
-						case XQItemType.XQBASETYPE_LONG:
-							vishualVariable.setVariableType(XQueryVariableType.LONG);
-							break;
-						case XQItemType.XQBASETYPE_FLOAT:
-							vishualVariable.setVariableType(XQueryVariableType.FLOAT);
-							break;
-						case XQItemType.XQBASETYPE_STRING:
-							vishualVariable.setVariableType(XQueryVariableType.STRING);
-							break;
-						case XQItemType.XQITEMKIND_DOCUMENT:
-							vishualVariable.setVariableType(XQueryVariableType.DOCUMENT);
-							break;
-						case XQItemType.XQITEMKIND_DOCUMENT_ELEMENT:
-							vishualVariable.setVariableType(XQueryVariableType.DOCUMENT_ELEMENT);
-							break;
-						case XQItemType.XQITEMKIND_ELEMENT:
-							vishualVariable.setVariableType(XQueryVariableType.ELEMENT);
-							break;
+					if(typeNum.equals(ItemType.INT)){
+						vishualVariable.setVariableType(XQueryVariableType.INT);
+					}else if(typeNum.equals(ItemType.INTEGER)){
+						vishualVariable.setVariableType(XQueryVariableType.INTEGER);
+					}else if(typeNum.equals(ItemType.BOOLEAN)){
+						vishualVariable.setVariableType(XQueryVariableType.BOOLEAN);
+					}else if(typeNum.equals(ItemType.BYTE)){
+						vishualVariable.setVariableType(XQueryVariableType.BYTE);
+					}else if(typeNum.equals(ItemType.DOUBLE)){
+						vishualVariable.setVariableType(XQueryVariableType.DOUBLE);
+					}else if(typeNum.equals(ItemType.SHORT)){
+						vishualVariable.setVariableType(XQueryVariableType.SHORT);
+					}else if(typeNum.equals(ItemType.LONG)){
+						vishualVariable.setVariableType(XQueryVariableType.LONG);
+					}else if(typeNum.equals(ItemType.FLOAT)){
+						vishualVariable.setVariableType(XQueryVariableType.FLOAT);
+					}else if(typeNum.equals(ItemType.STRING)){
+						vishualVariable.setVariableType(XQueryVariableType.STRING);
+					}else if(typeNum.equals(XdmNodeKind.DOCUMENT)){
+						vishualVariable.setVariableType(XQueryVariableType.DOCUMENT);
+					}else if(typeNum.equals(XdmNodeKind.ELEMENT)){
+						vishualVariable.setVariableType(XQueryVariableType.ELEMENT);
 					}
 					
 				} else if(mediatorVariable instanceof MediatorCustomVariable){
@@ -204,45 +194,30 @@ public class XQueryMediatorDeserializer extends AbstractEsbNodeDeserializer<Abst
 						vishualVariable.setValueKey(regKey);
 					}
 					
-					int typeNum = customVar.getType();
+					ItemType typeNum = customVar.getType();
 					
-					switch (typeNum) {
-						case XQItemType.XQBASETYPE_INT:
-							vishualVariable.setVariableType(XQueryVariableType.INT);
-							break;
-						case XQItemType.XQBASETYPE_INTEGER:
-							vishualVariable.setVariableType(XQueryVariableType.INTEGER);
-							break;
-						case XQItemType.XQBASETYPE_BOOLEAN:
-							vishualVariable.setVariableType(XQueryVariableType.BOOLEAN);
-							break;
-						case XQItemType.XQBASETYPE_BYTE:
-							vishualVariable.setVariableType(XQueryVariableType.BYTE);
-							break;
-						case XQItemType.XQBASETYPE_DOUBLE:
-							vishualVariable.setVariableType(XQueryVariableType.DOUBLE);
-							break;
-						case XQItemType.XQBASETYPE_SHORT:
-							vishualVariable.setVariableType(XQueryVariableType.SHORT);
-							break;
-						case XQItemType.XQBASETYPE_LONG:
-							vishualVariable.setVariableType(XQueryVariableType.LONG);
-							break;
-						case XQItemType.XQBASETYPE_FLOAT:
-							vishualVariable.setVariableType(XQueryVariableType.FLOAT);
-							break;
-						case XQItemType.XQBASETYPE_STRING:
-							vishualVariable.setVariableType(XQueryVariableType.STRING);
-							break;
-						case XQItemType.XQITEMKIND_DOCUMENT:
-							vishualVariable.setVariableType(XQueryVariableType.DOCUMENT);
-							break;
-						case XQItemType.XQITEMKIND_DOCUMENT_ELEMENT:
-							vishualVariable.setVariableType(XQueryVariableType.DOCUMENT_ELEMENT);
-							break;
-						case XQItemType.XQITEMKIND_ELEMENT:
-							vishualVariable.setVariableType(XQueryVariableType.ELEMENT);
-							break;
+					if(typeNum.equals(ItemType.INT)){
+						vishualVariable.setVariableType(XQueryVariableType.INT);
+					}else if(typeNum.equals(ItemType.INTEGER)){
+						vishualVariable.setVariableType(XQueryVariableType.INTEGER);
+					}else if(typeNum.equals(ItemType.BOOLEAN)){
+						vishualVariable.setVariableType(XQueryVariableType.BOOLEAN);
+					}else if(typeNum.equals(ItemType.BYTE)){
+						vishualVariable.setVariableType(XQueryVariableType.BYTE);
+					}else if(typeNum.equals(ItemType.DOUBLE)){
+						vishualVariable.setVariableType(XQueryVariableType.DOUBLE);
+					}else if(typeNum.equals(ItemType.SHORT)){
+						vishualVariable.setVariableType(XQueryVariableType.SHORT);
+					}else if(typeNum.equals(ItemType.LONG)){
+						vishualVariable.setVariableType(XQueryVariableType.LONG);
+					}else if(typeNum.equals(ItemType.FLOAT)){
+						vishualVariable.setVariableType(XQueryVariableType.FLOAT);
+					}else if(typeNum.equals(ItemType.STRING)){
+						vishualVariable.setVariableType(XQueryVariableType.STRING);
+					}else if(typeNum.equals(XdmNodeKind.DOCUMENT)){
+						vishualVariable.setVariableType(XQueryVariableType.DOCUMENT);
+					}else if(typeNum.equals(XdmNodeKind.ELEMENT)){
+						vishualVariable.setVariableType(XQueryVariableType.ELEMENT);
 					}					
 				}
 				

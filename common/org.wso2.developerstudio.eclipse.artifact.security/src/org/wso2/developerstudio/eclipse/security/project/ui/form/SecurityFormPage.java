@@ -477,6 +477,8 @@ public class SecurityFormPage extends FormPage {
 			String initalContent = convertXMLFileToString(inputFile);
 			updateSecurityOptionButtons(initalContent, resultService, enresult, signresult, keberosResult);
 			updateRampartUIAndUserRolesWithChanges(initalContent);
+			setPageDirty(false);
+			updateDirtyState();
 		} catch (JAXBException | ParserConfigurationException | SAXException | IOException e) {
 			log.error(SecurityFormMessageConstants.MESSAGE_LOAD_PAGE, e);
 			MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
@@ -716,10 +718,9 @@ public class SecurityFormPage extends FormPage {
 
 			// Updates the source view
 			updateSourceConfiguration();
-
 			// Saves the final output to the inputFile
 			saveFinalConfigToFile();
-
+			
 			RefreshProject();
 
 			/*
@@ -1235,7 +1236,6 @@ public class SecurityFormPage extends FormPage {
 
 		// kerberos values
 		updateKerberosUIWithChanges(carbonSecKerberosDataMap, carbonSecKerberosControlMap);
-
 	}
 
 	/**
@@ -2318,7 +2318,7 @@ public class SecurityFormPage extends FormPage {
 
 		try {
 			updateSecurityOptionButtons(source, resultService, enresult, signresult, keberosResult);
-			updateRampartUIAndUserRolesWithChanges(source);
+			updateRampartUIAndUserRolesWithChanges(source);			
 		} catch (JAXBException | ParserConfigurationException | SAXException | IOException e) {
 			log.error("Error in loading page", e);
 			MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);

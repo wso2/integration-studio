@@ -259,7 +259,7 @@ public class EsbDiagramEditorUtil {
 					esbServer.setType(ArtifactType.PROXY);
 				} else if (ArtifactType.ENDPOINT.getLiteral().equals(type)) {
 					EndpointDiagram endpoints = EsbFactory.eINSTANCE.createEndpointDiagram();
-					if (specificType != null) {
+/*					if (specificType != null) {
 						switch ((Integer) specificType) {
 						case 0:
 							endpoints.setChild(EsbFactory.eINSTANCE.createDefaultEndPoint());
@@ -290,7 +290,7 @@ public class EsbDiagramEditorUtil {
 						}
 					} else {
 						endpoints.setChild(EsbFactory.eINSTANCE.createDefaultEndPoint());
-					}
+					}*/
 					endpoints.setName(fileName);
 					EStructuralFeature target = esbServer.eClass().getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(endpoints));

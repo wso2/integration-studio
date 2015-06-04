@@ -52,8 +52,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
@@ -172,9 +174,10 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 				info.firstEndPoint = model;
 			}
 			try {
-				ArrayList<ComplexEndpointsOutputConnector> connectors = createAllEndpoints(model);
-
-				for (ComplexEndpointsOutputConnector outputConnector : connectors) {
+				ArrayList<RecipientListEndPointOutputConnector> connectors = new ArrayList<RecipientListEndPointOutputConnector>();
+				connectors.addAll(model.getOutputConnector());
+				
+				for (RecipientListEndPointOutputConnector outputConnector : connectors) {
 					if (outputConnector.getOutgoingLink() != null) {
 						if (outputConnector.getOutgoingLink().getTarget() != null) {
 							EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink()

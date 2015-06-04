@@ -56,9 +56,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractComplexEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbDiagramEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbServerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment18EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment29EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditorUtil;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
@@ -74,7 +76,7 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 	
 	private EsbDiagramEditor mainDiagramEditorRef;
 	
-	protected <T extends AbstractEndpoint> void deserializeComplexEndpoint(T endpoint){	
+	protected <T extends AbstractEndpoint> void deserializeComplexEndpoint(T endpoint, IGraphicalEditPart graphicalEditPart){	
 		
 		IGraphicalEditPart gpart = null;
 
@@ -88,38 +90,39 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 			executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
 			
 			//We can not get the editorPart without opening the editor.
-			IEditorPart editorPart = createFiles(endpointName,
+/*			IEditorPart editorPart = createFiles(endpointName,
 					"complex_endpoint_" + endpointName + ".esb_diagram",
-					"complex_endpoint_" + endpointName + ".esb");
+					"complex_endpoint_" + endpointName + ".esb");*/
 			
-			
+/*			
 			if (editorPart != null && editorPart instanceof EsbMultiPageEditor) {
 
-				EsbMultiPageEditor editor = (EsbMultiPageEditor) editorPart;
+				EsbMultiPageEditor editor = (EsbMultiPageEditor) editorPart;*/
 				
 				/*
 				 * Setting the sub editor editing domain to deserializerRegistry.
 				 */
-				EsbDiagramEditor subDiagramEditor = editor.getGraphicalEditor();
+/*				EsbDiagramEditor subDiagramEditor = editor.getGraphicalEditor();
 				if (subDiagramEditor != null) {
 					EsbDeserializerRegistry.getInstance().init(subDiagramEditor);
-				}
+				}*/
 				
 				final List<EditPart> editPartList = new ArrayList<EditPart>();
 				
-				if (editor.getDiagramEditPart() != null) {
+/*				if (editor.getDiagramEditPart() != null) {
 
-					EsbDiagramEditPart esbDiagramEditPart = (EsbDiagramEditPart) editor.getDiagramEditPart();
+					EsbDiagramEditPart esbDiagramEditPart = (EsbDiagramEditPart) editor.getDiagramEditPart();*/
 				
 					
-					if (esbDiagramEditPart.getChildren() != null && !esbDiagramEditPart.getChildren().isEmpty()) {
+/*					if (esbDiagramEditPart.getChildren() != null && !esbDiagramEditPart.getChildren().isEmpty()) {
 
 						EsbServerEditPart esbServerEditPart = (EsbServerEditPart) esbDiagramEditPart.getChildren().get(0);
 						
-							EditPart childEditPart = (EditPart) esbServerEditPart.getChildren().get(0);
+							EditPart childEditPart = (EditPart) esbServerEditPart.getChildren().get(0);*/
 							
 							//get the edit part for adding endpoints
-							gpart = findRelevntEditPart(childEditPart);
+							//gpart = findRelevntEditPart(childEditPart);
+							gpart = findRelevntEditPart(graphicalEditPart);
 							
 							if (gpart != null) {
 
@@ -136,10 +139,10 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 									
 								}
 							}
-					}
-				}
+					//}
+				//}
 				
-				final IEditorPart tempEp = editorPart;
+				//final IEditorPart tempEp = editorPart;
 
 				Display.getCurrent().asyncExec(new Runnable() {
 					
@@ -147,10 +150,10 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 					public void run() {
 						relocateEndPoints(editPartList);	
 						//Save the sub editor when the work done
-						tempEp.doSave(new NullProgressMonitor());
+						//tempEp.doSave(new NullProgressMonitor());
 												
-						IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-						activePage.closeEditor(tempEp, false);
+						//IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+						//activePage.closeEditor(tempEp, false);
 					}
 				});
 				
@@ -163,7 +166,7 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 					refreshEditPartMap();
 				}
 							
-			}
+			//}
 		}
 	}
 	
@@ -199,23 +202,23 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 		
 		IGraphicalEditPart gpartTemp = null;
 		
-		//Check child edit part it self MediatorFlowMediatorFlowCompartment18EditPart
-		if (childEditPart instanceof MediatorFlowMediatorFlowCompartment18EditPart) {
+		//Check child edit part it self AbstractComplexEndpointCompartmentEditPart
+		if (childEditPart instanceof AbstractComplexEndpointCompartmentEditPart) {
 
-			return (MediatorFlowMediatorFlowCompartment18EditPart) childEditPart;
+			return (AbstractComplexEndpointCompartmentEditPart) childEditPart;
 			
 		} 
 		else{
-			// Check children of this MediatorFlowMediatorFlowCompartment18EditPart
+			// Check children of this AbstractComplexEndpointCompartmentEditPart
 			if (childEditPart.getChildren() != null ) {
 				
 				for (Object child : childEditPart.getChildren()) {
 					
 					EditPart l2childEditPart = (EditPart) child;
 					
-					if (l2childEditPart instanceof MediatorFlowMediatorFlowCompartment18EditPart) {
+					if (l2childEditPart instanceof AbstractComplexEndpointCompartmentEditPart) {
 
-						return (MediatorFlowMediatorFlowCompartment18EditPart) l2childEditPart;
+						return (AbstractComplexEndpointCompartmentEditPart) l2childEditPart;
 						
 					}else {
 						

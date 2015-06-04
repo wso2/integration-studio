@@ -40,6 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnec
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractComplexEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
@@ -81,6 +82,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowM
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment24EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment25EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment26EditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment29EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment4EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlowMediatorFlowCompartment5EditPart;
@@ -104,6 +106,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SwitchMediato
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleOnAcceptContainerEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ThrottleOnRejectContainerEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
 
 public class XYRepossition {
 
@@ -146,6 +149,8 @@ public class XYRepossition {
 			}
 		} else if (parent instanceof MediatorFlowMediatorFlowCompartment18EditPart) {
 			resizeComplexEndpointEditPart(parent);
+		} else if (parent instanceof AbstractComplexEndpointCompartmentEditPart) {
+            resizeComplexEndpointEditPart(parent);
 		} else if (parent instanceof FixedSizedAbstractMediator) {
 			resizeSimpleMediator(parent);
  		}
@@ -184,7 +189,7 @@ public class XYRepossition {
 	 * @param parent
 	 */
 	private static void resizeComplexEndpointEditPart(IGraphicalEditPart parent) {
-		List<IGraphicalEditPart> endpointEditparts = ((MediatorFlowMediatorFlowCompartment18EditPart) parent).getChildren();
+		List<IGraphicalEditPart> endpointEditparts = ((ShapeCompartmentEditPart) parent).getChildren();
 		Rectangle bounds = new Rectangle(0, 0, 500, 300);
 		int endpointGap = 50;
 		int newCompartmentHeight = 0;

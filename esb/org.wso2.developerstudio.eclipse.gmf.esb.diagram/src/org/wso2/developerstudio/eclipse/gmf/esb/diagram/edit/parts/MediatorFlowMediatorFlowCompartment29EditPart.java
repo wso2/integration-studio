@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractComplexEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
@@ -50,9 +51,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class MediatorFlowMediatorFlowCompartment29EditPart extends ShapeCompartmentEditPart {
+public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractComplexEndpointCompartmentEditPart {
 
 	//LoadBalanceEndPoint2EditPart
 	
@@ -345,7 +346,7 @@ public class MediatorFlowMediatorFlowCompartment29EditPart extends ShapeCompartm
 	
 	protected void removeChild(EditPart child) {
 		super.removeChild(child);
-		OutputConnector outputConnector = ((EsbLink)EditorUtils.getInputConnector((AbstractEndpoint)child).getSourceConnections().get(0)).getSource();
+		OutputConnector outputConnector = ((EsbLink)((Node)((EsbLinkEditPart)EditorUtils.getInputConnector((AbstractEndpoint)child).getTargetConnections().get(0)).getModel()).getElement()).getSource();
 		EditingDomain editingDomain = TransactionUtil.getEditingDomain(complexEndpoint);
 		RemoveCommand removeCmd = new RemoveCommand(editingDomain, complexEndpoint,
 				EsbPackage.Literals.LOAD_BALANCE_END_POINT__OUTPUT_CONNECTOR, outputConnector);

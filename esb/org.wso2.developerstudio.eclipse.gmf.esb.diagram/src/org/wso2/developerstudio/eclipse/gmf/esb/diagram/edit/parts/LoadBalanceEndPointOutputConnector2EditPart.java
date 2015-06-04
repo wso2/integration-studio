@@ -38,6 +38,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EastPointerShape;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
@@ -49,7 +50,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 /**
  * @generated NOT
  */
-public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractEndpointOutputConnectorEditPart {
+public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractOutputConnectorEditPart {
 
 	/**
 	 * @generated
@@ -65,6 +66,10 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractEndpoin
 	 * @generated
 	 */
 	protected IFigure primaryShape;
+	
+	protected IFigure primaryShapeForward;
+	public IFigure primaryShapeReverse;
+	public NodeFigure figure_;
 
 	/**
 	 * @generated
@@ -82,14 +87,14 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractEndpoin
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
 				super.setBounds(rect);
 				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-					//connectToEndpoint();
+					connectToEndpoint();
 				}
 			};
 		};
 	}
 	
 	private void connectToEndpoint() {
-		Map map = ((MediatorFlowMediatorFlowCompartment29EditPart) ((EditPart) (this.getParent()).getChildren().get(0))
+		Map map = ((MediatorFlowMediatorFlowCompartment29EditPart) ((EditPart) (this.getParent()).getChildren().get(2))
 				.getChildren().get(0)).connectorAndEndpointMap;
 		ShapeNodeEditPart endpoint = (ShapeNodeEditPart) (map.get(((Node) this.getModel()).getElement()));
 		if (endpoint != null) {
@@ -97,6 +102,18 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractEndpoin
 					(AbstractConnectorEditPart) this);
 		}
 	}
+	
+    public IFigure createNodeShapeReverse() {               
+    return primaryShapeReverse = new EastPointerFigure() {
+            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+                    super.setBounds(rect);
+                    if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+                            connectToEndpoint();
+                    }
+            };
+    };
+    }
+
 
 	/**
 	 * @generated
@@ -176,7 +193,7 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractEndpoin
 		figure.add(shape);
 		contentPane = setupContentPane(shape);
 		figure_ = figure;
-		createNodeShapeReverse();
+		//createNodeShapeReverse();
 		return figure;
 	}
 
@@ -504,7 +521,7 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractEndpoin
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	public class EastPointerFigure extends RoundedRectangle {
 

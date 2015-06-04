@@ -1,5 +1,6 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
+import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
@@ -8,9 +9,13 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.EAttributeImpl;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
@@ -28,6 +33,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.impl.BoundsImpl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints;
@@ -57,6 +63,8 @@ public class RecipientListEndPoint2EditPart extends ComplexFiguredAbstractEndpoi
 	 * @generated
 	 */
 	protected IFigure contentPane;
+	
+	public IFigure outputConnectorFigure;
 
 	/**
 	 * @generated
@@ -187,11 +195,40 @@ public class RecipientListEndPoint2EditPart extends ComplexFiguredAbstractEndpoi
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new RecipientListEndPointFigure();
+		return primaryShape = new RecipientListEndPointFigure() {
+            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+                super.setBounds(rect);
+                if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+                        alignLeft();
+                }
+        };
+};
 	}
+	
+    public void notifyChanged(Notification notification) {
+    super.notifyChanged(notification);
+    if (notification.getFeature() instanceof EAttributeImpl) {
+            if (notification.getNotifier() instanceof BoundsImpl) {
+                    alignLeft(((BoundsImpl) notification.getNotifier()).getY(),
+                                    ((BoundsImpl) notification.getNotifier()).getWidth(),
+                                    ((BoundsImpl) notification.getNotifier()).getHeight());
+                    FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+                    canvas.getViewport().repaint();
+            }
+    }
+    }
+
+    private void alignLeft(int y, int width, int height) {
+    Rectangle constraints = new Rectangle(0, y, width, height);
+    ((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
+    }
+
+    private void alignLeft() {
+    alignLeft(getFigure().getBounds().y, getFigure().getBounds().width, getFigure().getBounds().height);
+    }
 
 	/**
 	 * @generated NOT

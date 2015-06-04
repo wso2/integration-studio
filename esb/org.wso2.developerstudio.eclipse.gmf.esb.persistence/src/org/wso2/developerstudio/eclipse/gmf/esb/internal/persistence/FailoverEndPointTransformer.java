@@ -33,7 +33,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbElement;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
@@ -175,9 +177,9 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer{
 			info.firstEndPoint = visualEndPoint;
 		}
 		try {
-			ArrayList<ComplexEndpointsOutputConnector> connectors = createAllEndpoints(visualEndPoint);
-
-			for (ComplexEndpointsOutputConnector outputConnector : connectors) {
+			ArrayList<FailoverEndPointOutputConnector> connectors = new ArrayList<FailoverEndPointOutputConnector>();
+			connectors.addAll(visualEndPoint.getOutputConnector());
+			for (FailoverEndPointOutputConnector outputConnector : connectors) {
 				if (outputConnector.getOutgoingLink() != null) {
 					if (outputConnector.getOutgoingLink().getTarget() != null) {
 						EsbNode esbNode = (EsbNode) outputConnector.getOutgoingLink().getTarget()

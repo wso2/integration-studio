@@ -84,7 +84,7 @@ public class RecipientListEndpointDeserializer extends AbstractComplexEndPointDe
 			}
 		} else {
 			executeSetValueCommand(RECIPIENT_LIST_END_POINT__ENDPOINT_TYPE, RecipientListEndpointType.INLINE);
-			deserializeComplexEndpoint(endpoint);
+			deserializeComplexEndpoint(endpoint,part);
 		}
 		
 		if(StringUtils.isNotBlank(endpoint.getName())){

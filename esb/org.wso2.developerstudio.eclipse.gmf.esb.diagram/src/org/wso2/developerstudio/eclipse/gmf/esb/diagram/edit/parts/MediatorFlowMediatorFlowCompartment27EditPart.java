@@ -31,7 +31,11 @@ import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPointOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractComplexEndpointCompartmentEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.SlidingBorderItemLocator;
@@ -43,10 +47,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.Messages;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class MediatorFlowMediatorFlowCompartment27EditPart extends ShapeCompartmentEditPart {
+public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractComplexEndpointCompartmentEditPart {
 
+	//FailoverEndPoint2EditPart
+	
 	/**
 	 * @generated
 	 */
@@ -55,7 +61,7 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends ShapeCompartm
 	BorderedNodeFigure borderedNodeFigure;
 	private EndPoint complexEndpoints;
 	private MediatorFlowMediatorFlowCompartment29EditPart instance;
-	Map<ComplexEndpointsOutputConnector, AbstractEndpoint> connectorAndEndpointMap = new HashMap<ComplexEndpointsOutputConnector, AbstractEndpoint>();
+	Map<FailoverEndPointOutputConnector, AbstractEndpoint> connectorAndEndpointMap = new HashMap<FailoverEndPointOutputConnector, AbstractEndpoint>();
 
 	
 	/**
@@ -337,9 +343,10 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends ShapeCompartm
 	
 	protected void removeChild(EditPart child) {
 		super.removeChild(child);
+		OutputConnector outputConnector = ((EsbLink)((Node)((EsbLinkEditPart)EditorUtils.getInputConnector((AbstractEndpoint)child).getTargetConnections().get(0)).getModel()).getElement()).getSource();
 		EditingDomain editingDomain = TransactionUtil.getEditingDomain(complexEndpoints);
 		RemoveCommand removeCmd = new RemoveCommand(editingDomain, complexEndpoints,
-				EsbPackage.Literals.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR, connectorAndEndpointMap.get(child));
+				EsbPackage.Literals.FAILOVER_END_POINT__OUTPUT_CONNECTOR, outputConnector);
 		if (removeCmd.canExecute()) {
 			editingDomain.getCommandStack().execute(removeCmd);
 		}
@@ -356,8 +363,8 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends ShapeCompartm
 		super.addChild(child, index);
 
 		if (child instanceof AbstractEndpoint) {
-			LoadBalanceEndPoint2EditPart loadBalanceEndPoint2EditPart = (LoadBalanceEndPoint2EditPart) this.getParent().getParent();
-			complexEndpoints = (EndPoint) ((Node) loadBalanceEndPoint2EditPart.getModel()).getElement();
+			FailoverEndPoint2EditPart failoverEndPoint2EditPart = (FailoverEndPoint2EditPart) this.getParent().getParent();
+			complexEndpoints = (EndPoint) ((Node) failoverEndPoint2EditPart.getModel()).getElement();
 			if (EditorUtils.getEndpointInputConnector((AbstractEndpoint) child).getTargetConnections().size() == 0) {
 				addConnectorAndLink(child);
 			}
@@ -365,10 +372,10 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends ShapeCompartm
 	}
 	
 	private void addConnectorAndLink(EditPart child) {
-		ComplexEndpointsOutputConnector connector = EsbFactory.eINSTANCE.createComplexEndpointsOutputConnector();
+		FailoverEndPointOutputConnector connector = EsbFactory.eINSTANCE.createFailoverEndPointOutputConnector();
 		EditingDomain editingDomain = ((IGraphicalEditPart) child).getEditingDomain();
 		AddCommand addCmd = new AddCommand(editingDomain, complexEndpoints,
-				EsbPackage.Literals.COMPLEX_ENDPOINTS__OUTPUT_CONNECTOR, connector);
+				EsbPackage.Literals.FAILOVER_END_POINT__OUTPUT_CONNECTOR, connector);
 		if (addCmd.canExecute()) {
 			editingDomain.getCommandStack().execute(addCmd);
 			connectorAndEndpointMap.put(connector, (AbstractEndpoint) child);

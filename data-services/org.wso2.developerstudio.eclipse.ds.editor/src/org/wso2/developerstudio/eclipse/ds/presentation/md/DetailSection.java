@@ -644,10 +644,10 @@ public class DetailSection {
 					voidMaker();
 					voidMaker();
 
-					labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_PARAMETER_ALLOW_ROLES);
+					/*labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_PARAMETER_ALLOW_ROLES);
 					sectionUtil.getUserRoleField(detailsclient, toolkit);
 					voidMaker();
-					voidMaker();
+					voidMaker();*/
 					
 				    labelMaker(DetailSectionCustomUiConstants.DATA_SERVICE_POLICY);
 					sectionUtil.getPolicyField(detailsclient, toolkit);

@@ -77,7 +77,7 @@ public class DataServiceItemProvider extends ItemProviderAdapter implements
 			addDisableStreamingPropertyDescriptor(object);
 			addServiceStatusPropertyDescriptor(object);
 			addEnableSecPropertyDescriptor(object);
-			addParameterAllowRolesPropertyDescriptor(object);
+			//addParameterAllowRolesPropertyDescriptor(object);
 			addPolicyPropertyDescriptor(object);
 		    
 		}

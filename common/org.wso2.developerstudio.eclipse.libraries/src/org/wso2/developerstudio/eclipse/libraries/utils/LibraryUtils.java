@@ -19,11 +19,13 @@ import org.wso2.developerstudio.eclipse.utils.ide.EclipseUtils;
 public class LibraryUtils {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
-	public static String axiom_1_2_11_wso2vXX_jar = "axiom_1.2.11.wso2v4.jar"; 
-	public static String axis2_1_6_1_wso2vXX_jar = "axis2_1.6.1.wso2v10.jar";
+	public static String axiom_1_2_11_wso2vXX_jar = "axiom_1.2.11.wso2v6.jar"; 
+	public static String axis2_1_6_1_wso2vXX_jar = "axis2_1.6.1.wso2v12.jar";
 	public static String httpcore_4_3_0_wso2vXX_jar = "httpcore_4.3.0.wso2v1.jar";
 	public static String woden_1_0_0_M8_wso2vXX_jar = "woden_1.0.0.M8-wso2v1.jar";
-	public static String synapse_core_2_1_2_wso2vXX_jar = "synapse-core_2.1.2.wso2v2.jar";
+	public static String synapse_core_2_1_2_wso2vXX_jar = "synapse-core_2.1.3.wso2v5.jar";
+	public static String carbon_registry_api_xxx_jar = "org.wso2.carbon.registry.api_4.4.0.jar";
+	public static String carbon_registry_core_xxx_jar = "org.wso2.carbon.registry.core_4.4.0.jar";
 	
 	public static File getDependencyPath(String dependencyName, boolean isRelativePath){
 		String dependencyPath = getLibLocation() + dependencyName;  

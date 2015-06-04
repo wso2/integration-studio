@@ -2323,7 +2323,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		tree.addSelectionListener(new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent event) {
-
+				  
 				Object obj = event.item.getData();
 				if(event.stateMask == SWT.CTRL){
 					setCntrlKeyPressed(true);

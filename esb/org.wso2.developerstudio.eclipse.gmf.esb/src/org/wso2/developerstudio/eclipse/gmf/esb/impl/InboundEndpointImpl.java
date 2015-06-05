@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
+import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
@@ -108,6 +110,29 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequence <em>On Error Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getGroupId <em>Group Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getConsumerType <em>Consumer Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTopics <em>Topics</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleTopic <em>Simple Topic</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleBrokers <em>Simple Brokers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimplePort <em>Simple Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimplePartition <em>Simple Partition</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSimpleMaxMessagesToRead <em>Simple Max Messages To Read</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getThreadCount <em>Thread Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
  * </ul>
  * </p>
  *
@@ -1305,6 +1330,466 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String sequence = SEQUENCE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getInboundHL7Port() <em>Inbound HL7 Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7Port()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_HL7_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundHL7Port() <em>Inbound HL7 Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7Port()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundHL7Port = INBOUND_HL7_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isInboundHL7AutoAck() <em>Inbound HL7 Auto Ack</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInboundHL7AutoAck()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INBOUND_HL7_AUTO_ACK_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isInboundHL7AutoAck() <em>Inbound HL7 Auto Ack</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInboundHL7AutoAck()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean inboundHL7AutoAck = INBOUND_HL7_AUTO_ACK_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundHL7MessagePreProcessor() <em>Inbound HL7 Message Pre Processor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7MessagePreProcessor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundHL7MessagePreProcessor() <em>Inbound HL7 Message Pre Processor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7MessagePreProcessor()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundHL7MessagePreProcessor = INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundHL7CharSet() <em>Inbound HL7 Char Set</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7CharSet()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_HL7_CHAR_SET_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundHL7CharSet() <em>Inbound HL7 Char Set</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7CharSet()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundHL7CharSet = INBOUND_HL7_CHAR_SET_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundHL7TimeOut() <em>Inbound HL7 Time Out</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7TimeOut()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_HL7_TIME_OUT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundHL7TimeOut() <em>Inbound HL7 Time Out</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7TimeOut()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundHL7TimeOut = INBOUND_HL7_TIME_OUT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isInboundHL7ValidateMessage() <em>Inbound HL7 Validate Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInboundHL7ValidateMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isInboundHL7ValidateMessage() <em>Inbound HL7 Validate Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInboundHL7ValidateMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean inboundHL7ValidateMessage = INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundHL7BuildInvalidMessages() <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7BuildInvalidMessages()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundHL7BuildInvalidMessages() <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7BuildInvalidMessages()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundHL7BuildInvalidMessages = INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundHL7PassThroughInvalidMessages() <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7PassThroughInvalidMessages()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundHL7PassThroughInvalidMessages() <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundHL7PassThroughInvalidMessages()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundHL7PassThroughInvalidMessages = INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getZookeeperConnect() <em>Zookeeper Connect</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperConnect()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ZOOKEEPER_CONNECT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getZookeeperConnect() <em>Zookeeper Connect</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperConnect()
+	 * @generated
+	 * @ordered
+	 */
+	protected String zookeeperConnect = ZOOKEEPER_CONNECT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroupId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String GROUP_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getGroupId() <em>Group Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroupId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String groupId = GROUP_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConsumerType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ConsumerType CONSUMER_TYPE_EDEFAULT = ConsumerType.HIGHLEVEL;
+
+	/**
+	 * The cached value of the '{@link #getConsumerType() <em>Consumer Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConsumerType()
+	 * @generated
+	 * @ordered
+	 */
+	protected ConsumerType consumerType = CONSUMER_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ContentType CONTENT_TYPE_EDEFAULT = ContentType.XML;
+
+	/**
+	 * The cached value of the '{@link #getContentType() <em>Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected ContentType contentType = CONTENT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTopics() <em>Topics</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTopics()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TOPICS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTopics() <em>Topics</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTopics()
+	 * @generated
+	 * @ordered
+	 */
+	protected String topics = TOPICS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimpleTopic() <em>Simple Topic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleTopic()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_TOPIC_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimpleTopic() <em>Simple Topic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleTopic()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simpleTopic = SIMPLE_TOPIC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimpleBrokers() <em>Simple Brokers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleBrokers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_BROKERS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimpleBrokers() <em>Simple Brokers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleBrokers()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simpleBrokers = SIMPLE_BROKERS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimplePort() <em>Simple Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimplePort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimplePort() <em>Simple Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimplePort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simplePort = SIMPLE_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimplePartition() <em>Simple Partition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimplePartition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_PARTITION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimplePartition() <em>Simple Partition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimplePartition()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simplePartition = SIMPLE_PARTITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSimpleMaxMessagesToRead() <em>Simple Max Messages To Read</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleMaxMessagesToRead()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSimpleMaxMessagesToRead() <em>Simple Max Messages To Read</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimpleMaxMessagesToRead()
+	 * @generated
+	 * @ordered
+	 */
+	protected String simpleMaxMessagesToRead = SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getThreadCount() <em>Thread Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getThreadCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String THREAD_COUNT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getThreadCount() <em>Thread Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getThreadCount()
+	 * @generated
+	 * @ordered
+	 */
+	protected String threadCount = THREAD_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperSessionTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getZookeeperSessionTimeoutMs() <em>Zookeeper Session Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperSessionTimeoutMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String zookeeperSessionTimeoutMs = ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperSyncTimeMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ZOOKEEPER_SYNC_TIME_MS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getZookeeperSyncTimeMs() <em>Zookeeper Sync Time Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getZookeeperSyncTimeMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String zookeeperSyncTimeMs = ZOOKEEPER_SYNC_TIME_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAutoCommitIntervalMs() <em>Auto Commit Interval Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAutoCommitIntervalMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String AUTO_COMMIT_INTERVAL_MS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAutoCommitIntervalMs() <em>Auto Commit Interval Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAutoCommitIntervalMs()
+	 * @generated
+	 * @ordered
+	 */
+	protected String autoCommitIntervalMs = AUTO_COMMIT_INTERVAL_MS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAutoOffsetReset() <em>Auto Offset Reset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAutoOffsetReset()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String AUTO_OFFSET_RESET_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAutoOffsetReset() <em>Auto Offset Reset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAutoOffsetReset()
+	 * @generated
+	 * @ordered
+	 */
+	protected String autoOffsetReset = AUTO_OFFSET_RESET_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1599,6 +2084,489 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		sequence = newSequence;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE, oldSequence, sequence));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundHL7Port() {
+		return inboundHL7Port;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHL7Port(String newInboundHL7Port) {
+		String oldInboundHL7Port = inboundHL7Port;
+		inboundHL7Port = newInboundHL7Port;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT, oldInboundHL7Port, inboundHL7Port));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isInboundHL7AutoAck() {
+		return inboundHL7AutoAck;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHL7AutoAck(boolean newInboundHL7AutoAck) {
+		boolean oldInboundHL7AutoAck = inboundHL7AutoAck;
+		inboundHL7AutoAck = newInboundHL7AutoAck;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK, oldInboundHL7AutoAck, inboundHL7AutoAck));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundHL7MessagePreProcessor() {
+		return inboundHL7MessagePreProcessor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHL7MessagePreProcessor(String newInboundHL7MessagePreProcessor) {
+		String oldInboundHL7MessagePreProcessor = inboundHL7MessagePreProcessor;
+		inboundHL7MessagePreProcessor = newInboundHL7MessagePreProcessor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR, oldInboundHL7MessagePreProcessor, inboundHL7MessagePreProcessor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundHL7CharSet() {
+		return inboundHL7CharSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHL7CharSet(String newInboundHL7CharSet) {
+		String oldInboundHL7CharSet = inboundHL7CharSet;
+		inboundHL7CharSet = newInboundHL7CharSet;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET, oldInboundHL7CharSet, inboundHL7CharSet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundHL7TimeOut() {
+		return inboundHL7TimeOut;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHL7TimeOut(String newInboundHL7TimeOut) {
+		String oldInboundHL7TimeOut = inboundHL7TimeOut;
+		inboundHL7TimeOut = newInboundHL7TimeOut;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT, oldInboundHL7TimeOut, inboundHL7TimeOut));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isInboundHL7ValidateMessage() {
+		return inboundHL7ValidateMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHL7ValidateMessage(boolean newInboundHL7ValidateMessage) {
+		boolean oldInboundHL7ValidateMessage = inboundHL7ValidateMessage;
+		inboundHL7ValidateMessage = newInboundHL7ValidateMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, oldInboundHL7ValidateMessage, inboundHL7ValidateMessage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundHL7BuildInvalidMessages() {
+		return inboundHL7BuildInvalidMessages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHL7BuildInvalidMessages(String newInboundHL7BuildInvalidMessages) {
+		String oldInboundHL7BuildInvalidMessages = inboundHL7BuildInvalidMessages;
+		inboundHL7BuildInvalidMessages = newInboundHL7BuildInvalidMessages;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES, oldInboundHL7BuildInvalidMessages, inboundHL7BuildInvalidMessages));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundHL7PassThroughInvalidMessages() {
+		return inboundHL7PassThroughInvalidMessages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundHL7PassThroughInvalidMessages(String newInboundHL7PassThroughInvalidMessages) {
+		String oldInboundHL7PassThroughInvalidMessages = inboundHL7PassThroughInvalidMessages;
+		inboundHL7PassThroughInvalidMessages = newInboundHL7PassThroughInvalidMessages;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES, oldInboundHL7PassThroughInvalidMessages, inboundHL7PassThroughInvalidMessages));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getZookeeperConnect() {
+		return zookeeperConnect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setZookeeperConnect(String newZookeeperConnect) {
+		String oldZookeeperConnect = zookeeperConnect;
+		zookeeperConnect = newZookeeperConnect;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT, oldZookeeperConnect, zookeeperConnect));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getGroupId() {
+		return groupId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGroupId(String newGroupId) {
+		String oldGroupId = groupId;
+		groupId = newGroupId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__GROUP_ID, oldGroupId, groupId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConsumerType getConsumerType() {
+		return consumerType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConsumerType(ConsumerType newConsumerType) {
+		ConsumerType oldConsumerType = consumerType;
+		consumerType = newConsumerType == null ? CONSUMER_TYPE_EDEFAULT : newConsumerType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE, oldConsumerType, consumerType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContentType getContentType() {
+		return contentType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContentType(ContentType newContentType) {
+		ContentType oldContentType = contentType;
+		contentType = newContentType == null ? CONTENT_TYPE_EDEFAULT : newContentType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE, oldContentType, contentType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTopics() {
+		return topics;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTopics(String newTopics) {
+		String oldTopics = topics;
+		topics = newTopics;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TOPICS, oldTopics, topics));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleTopic() {
+		return simpleTopic;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleTopic(String newSimpleTopic) {
+		String oldSimpleTopic = simpleTopic;
+		simpleTopic = newSimpleTopic;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC, oldSimpleTopic, simpleTopic));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleBrokers() {
+		return simpleBrokers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleBrokers(String newSimpleBrokers) {
+		String oldSimpleBrokers = simpleBrokers;
+		simpleBrokers = newSimpleBrokers;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS, oldSimpleBrokers, simpleBrokers));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimplePort() {
+		return simplePort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimplePort(String newSimplePort) {
+		String oldSimplePort = simplePort;
+		simplePort = newSimplePort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT, oldSimplePort, simplePort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimplePartition() {
+		return simplePartition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimplePartition(String newSimplePartition) {
+		String oldSimplePartition = simplePartition;
+		simplePartition = newSimplePartition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION, oldSimplePartition, simplePartition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSimpleMaxMessagesToRead() {
+		return simpleMaxMessagesToRead;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimpleMaxMessagesToRead(String newSimpleMaxMessagesToRead) {
+		String oldSimpleMaxMessagesToRead = simpleMaxMessagesToRead;
+		simpleMaxMessagesToRead = newSimpleMaxMessagesToRead;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ, oldSimpleMaxMessagesToRead, simpleMaxMessagesToRead));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getThreadCount() {
+		return threadCount;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setThreadCount(String newThreadCount) {
+		String oldThreadCount = threadCount;
+		threadCount = newThreadCount;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT, oldThreadCount, threadCount));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getZookeeperSessionTimeoutMs() {
+		return zookeeperSessionTimeoutMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setZookeeperSessionTimeoutMs(String newZookeeperSessionTimeoutMs) {
+		String oldZookeeperSessionTimeoutMs = zookeeperSessionTimeoutMs;
+		zookeeperSessionTimeoutMs = newZookeeperSessionTimeoutMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS, oldZookeeperSessionTimeoutMs, zookeeperSessionTimeoutMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getZookeeperSyncTimeMs() {
+		return zookeeperSyncTimeMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setZookeeperSyncTimeMs(String newZookeeperSyncTimeMs) {
+		String oldZookeeperSyncTimeMs = zookeeperSyncTimeMs;
+		zookeeperSyncTimeMs = newZookeeperSyncTimeMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS, oldZookeeperSyncTimeMs, zookeeperSyncTimeMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getAutoCommitIntervalMs() {
+		return autoCommitIntervalMs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAutoCommitIntervalMs(String newAutoCommitIntervalMs) {
+		String oldAutoCommitIntervalMs = autoCommitIntervalMs;
+		autoCommitIntervalMs = newAutoCommitIntervalMs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS, oldAutoCommitIntervalMs, autoCommitIntervalMs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getAutoOffsetReset() {
+		return autoOffsetReset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAutoOffsetReset(String newAutoOffsetReset) {
+		String oldAutoOffsetReset = autoOffsetReset;
+		autoOffsetReset = newAutoOffsetReset;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET, oldAutoOffsetReset, autoOffsetReset));
 	}
 
 	/**
@@ -2889,6 +3857,52 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getOnErrorSequence();
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 				return getSequence();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
+				return getInboundHL7Port();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
+				return isInboundHL7AutoAck();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
+				return getInboundHL7MessagePreProcessor();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
+				return getInboundHL7CharSet();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
+				return getInboundHL7TimeOut();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
+				return isInboundHL7ValidateMessage();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
+				return getInboundHL7BuildInvalidMessages();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
+				return getInboundHL7PassThroughInvalidMessages();
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
+				return getZookeeperConnect();
+			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
+				return getGroupId();
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+				return getConsumerType();
+			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
+				return getContentType();
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
+				return getTopics();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
+				return getSimpleTopic();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
+				return getSimpleBrokers();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
+				return getSimplePort();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
+				return getSimplePartition();
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
+				return getSimpleMaxMessagesToRead();
+			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
+				return getThreadCount();
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+				return getZookeeperSessionTimeoutMs();
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+				return getZookeeperSyncTimeMs();
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+				return getAutoCommitIntervalMs();
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+				return getAutoOffsetReset();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -3086,6 +4100,75 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 				setSequence((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
+				setInboundHL7Port((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
+				setInboundHL7AutoAck((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
+				setInboundHL7MessagePreProcessor((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
+				setInboundHL7CharSet((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
+				setInboundHL7TimeOut((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
+				setInboundHL7ValidateMessage((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
+				setInboundHL7BuildInvalidMessages((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
+				setInboundHL7PassThroughInvalidMessages((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
+				setZookeeperConnect((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
+				setGroupId((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+				setConsumerType((ConsumerType)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
+				setContentType((ContentType)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
+				setTopics((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
+				setSimpleTopic((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
+				setSimpleBrokers((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
+				setSimplePort((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
+				setSimplePartition((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
+				setSimpleMaxMessagesToRead((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
+				setThreadCount((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+				setZookeeperSessionTimeoutMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+				setZookeeperSyncTimeMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+				setAutoCommitIntervalMs((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+				setAutoOffsetReset((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -3285,6 +4368,75 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 				setSequence(SEQUENCE_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
+				setInboundHL7Port(INBOUND_HL7_PORT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
+				setInboundHL7AutoAck(INBOUND_HL7_AUTO_ACK_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
+				setInboundHL7MessagePreProcessor(INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
+				setInboundHL7CharSet(INBOUND_HL7_CHAR_SET_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
+				setInboundHL7TimeOut(INBOUND_HL7_TIME_OUT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
+				setInboundHL7ValidateMessage(INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
+				setInboundHL7BuildInvalidMessages(INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
+				setInboundHL7PassThroughInvalidMessages(INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
+				setZookeeperConnect(ZOOKEEPER_CONNECT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
+				setGroupId(GROUP_ID_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+				setConsumerType(CONSUMER_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
+				setContentType(CONTENT_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
+				setTopics(TOPICS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
+				setSimpleTopic(SIMPLE_TOPIC_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
+				setSimpleBrokers(SIMPLE_BROKERS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
+				setSimplePort(SIMPLE_PORT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
+				setSimplePartition(SIMPLE_PARTITION_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
+				setSimpleMaxMessagesToRead(SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
+				setThreadCount(THREAD_COUNT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+				setZookeeperSessionTimeoutMs(ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+				setZookeeperSyncTimeMs(ZOOKEEPER_SYNC_TIME_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+				setAutoCommitIntervalMs(AUTO_COMMIT_INTERVAL_MS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+				setAutoOffsetReset(AUTO_OFFSET_RESET_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -3421,6 +4573,52 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return ON_ERROR_SEQUENCE_EDEFAULT == null ? onErrorSequence != null : !ON_ERROR_SEQUENCE_EDEFAULT.equals(onErrorSequence);
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 				return SEQUENCE_EDEFAULT == null ? sequence != null : !SEQUENCE_EDEFAULT.equals(sequence);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
+				return INBOUND_HL7_PORT_EDEFAULT == null ? inboundHL7Port != null : !INBOUND_HL7_PORT_EDEFAULT.equals(inboundHL7Port);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
+				return inboundHL7AutoAck != INBOUND_HL7_AUTO_ACK_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:
+				return INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT == null ? inboundHL7MessagePreProcessor != null : !INBOUND_HL7_MESSAGE_PRE_PROCESSOR_EDEFAULT.equals(inboundHL7MessagePreProcessor);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET:
+				return INBOUND_HL7_CHAR_SET_EDEFAULT == null ? inboundHL7CharSet != null : !INBOUND_HL7_CHAR_SET_EDEFAULT.equals(inboundHL7CharSet);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT:
+				return INBOUND_HL7_TIME_OUT_EDEFAULT == null ? inboundHL7TimeOut != null : !INBOUND_HL7_TIME_OUT_EDEFAULT.equals(inboundHL7TimeOut);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE:
+				return inboundHL7ValidateMessage != INBOUND_HL7_VALIDATE_MESSAGE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES:
+				return INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT == null ? inboundHL7BuildInvalidMessages != null : !INBOUND_HL7_BUILD_INVALID_MESSAGES_EDEFAULT.equals(inboundHL7BuildInvalidMessages);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES:
+				return INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT == null ? inboundHL7PassThroughInvalidMessages != null : !INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES_EDEFAULT.equals(inboundHL7PassThroughInvalidMessages);
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_CONNECT:
+				return ZOOKEEPER_CONNECT_EDEFAULT == null ? zookeeperConnect != null : !ZOOKEEPER_CONNECT_EDEFAULT.equals(zookeeperConnect);
+			case EsbPackage.INBOUND_ENDPOINT__GROUP_ID:
+				return GROUP_ID_EDEFAULT == null ? groupId != null : !GROUP_ID_EDEFAULT.equals(groupId);
+			case EsbPackage.INBOUND_ENDPOINT__CONSUMER_TYPE:
+				return consumerType != CONSUMER_TYPE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__CONTENT_TYPE:
+				return contentType != CONTENT_TYPE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TOPICS:
+				return TOPICS_EDEFAULT == null ? topics != null : !TOPICS_EDEFAULT.equals(topics);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_TOPIC:
+				return SIMPLE_TOPIC_EDEFAULT == null ? simpleTopic != null : !SIMPLE_TOPIC_EDEFAULT.equals(simpleTopic);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_BROKERS:
+				return SIMPLE_BROKERS_EDEFAULT == null ? simpleBrokers != null : !SIMPLE_BROKERS_EDEFAULT.equals(simpleBrokers);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PORT:
+				return SIMPLE_PORT_EDEFAULT == null ? simplePort != null : !SIMPLE_PORT_EDEFAULT.equals(simplePort);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_PARTITION:
+				return SIMPLE_PARTITION_EDEFAULT == null ? simplePartition != null : !SIMPLE_PARTITION_EDEFAULT.equals(simplePartition);
+			case EsbPackage.INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ:
+				return SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT == null ? simpleMaxMessagesToRead != null : !SIMPLE_MAX_MESSAGES_TO_READ_EDEFAULT.equals(simpleMaxMessagesToRead);
+			case EsbPackage.INBOUND_ENDPOINT__THREAD_COUNT:
+				return THREAD_COUNT_EDEFAULT == null ? threadCount != null : !THREAD_COUNT_EDEFAULT.equals(threadCount);
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS:
+				return ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT == null ? zookeeperSessionTimeoutMs != null : !ZOOKEEPER_SESSION_TIMEOUT_MS_EDEFAULT.equals(zookeeperSessionTimeoutMs);
+			case EsbPackage.INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS:
+				return ZOOKEEPER_SYNC_TIME_MS_EDEFAULT == null ? zookeeperSyncTimeMs != null : !ZOOKEEPER_SYNC_TIME_MS_EDEFAULT.equals(zookeeperSyncTimeMs);
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS:
+				return AUTO_COMMIT_INTERVAL_MS_EDEFAULT == null ? autoCommitIntervalMs != null : !AUTO_COMMIT_INTERVAL_MS_EDEFAULT.equals(autoCommitIntervalMs);
+			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
+				return AUTO_OFFSET_RESET_EDEFAULT == null ? autoOffsetReset != null : !AUTO_OFFSET_RESET_EDEFAULT.equals(autoOffsetReset);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -3549,6 +4747,52 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(onErrorSequence);
 		result.append(", sequence: ");
 		result.append(sequence);
+		result.append(", inboundHL7Port: ");
+		result.append(inboundHL7Port);
+		result.append(", inboundHL7AutoAck: ");
+		result.append(inboundHL7AutoAck);
+		result.append(", inboundHL7MessagePreProcessor: ");
+		result.append(inboundHL7MessagePreProcessor);
+		result.append(", inboundHL7CharSet: ");
+		result.append(inboundHL7CharSet);
+		result.append(", inboundHL7TimeOut: ");
+		result.append(inboundHL7TimeOut);
+		result.append(", inboundHL7ValidateMessage: ");
+		result.append(inboundHL7ValidateMessage);
+		result.append(", inboundHL7BuildInvalidMessages: ");
+		result.append(inboundHL7BuildInvalidMessages);
+		result.append(", inboundHL7PassThroughInvalidMessages: ");
+		result.append(inboundHL7PassThroughInvalidMessages);
+		result.append(", zookeeperConnect: ");
+		result.append(zookeeperConnect);
+		result.append(", groupId: ");
+		result.append(groupId);
+		result.append(", consumerType: ");
+		result.append(consumerType);
+		result.append(", contentType: ");
+		result.append(contentType);
+		result.append(", topics: ");
+		result.append(topics);
+		result.append(", simpleTopic: ");
+		result.append(simpleTopic);
+		result.append(", simpleBrokers: ");
+		result.append(simpleBrokers);
+		result.append(", simplePort: ");
+		result.append(simplePort);
+		result.append(", simplePartition: ");
+		result.append(simplePartition);
+		result.append(", simpleMaxMessagesToRead: ");
+		result.append(simpleMaxMessagesToRead);
+		result.append(", threadCount: ");
+		result.append(threadCount);
+		result.append(", zookeeperSessionTimeoutMs: ");
+		result.append(zookeeperSessionTimeoutMs);
+		result.append(", zookeeperSyncTimeMs: ");
+		result.append(zookeeperSyncTimeMs);
+		result.append(", autoCommitIntervalMs: ");
+		result.append(autoCommitIntervalMs);
+		result.append(", autoOffsetReset: ");
+		result.append(autoOffsetReset);
 		result.append(')');
 		return result.toString();
 	}

@@ -86,6 +86,29 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence <em>On Error Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnect <em>Zookeeper Connect</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getGroupId <em>Group Id</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerType <em>Consumer Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopics <em>Topics</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleTopic <em>Simple Topic</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleBrokers <em>Simple Brokers</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimplePort <em>Simple Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimplePartition <em>Simple Partition</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleMaxMessagesToRead <em>Simple Max Messages To Read</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getThreadCount <em>Thread Count</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
  * </ul>
  * </p>
  *
@@ -304,6 +327,610 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setSequence(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound HL7 Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound HL7 Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound HL7 Port</em>' attribute.
+	 * @see #setInboundHL7Port(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7Port()
+	 * @model
+	 * @generated
+	 */
+	String getInboundHL7Port();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7Port <em>Inbound HL7 Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound HL7 Port</em>' attribute.
+	 * @see #getInboundHL7Port()
+	 * @generated
+	 */
+	void setInboundHL7Port(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound HL7 Auto Ack</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound HL7 Auto Ack</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound HL7 Auto Ack</em>' attribute.
+	 * @see #setInboundHL7AutoAck(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7AutoAck()
+	 * @model
+	 * @generated
+	 */
+	boolean isInboundHL7AutoAck();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound HL7 Auto Ack</em>' attribute.
+	 * @see #isInboundHL7AutoAck()
+	 * @generated
+	 */
+	void setInboundHL7AutoAck(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound HL7 Message Pre Processor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound HL7 Message Pre Processor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound HL7 Message Pre Processor</em>' attribute.
+	 * @see #setInboundHL7MessagePreProcessor(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7MessagePreProcessor()
+	 * @model
+	 * @generated
+	 */
+	String getInboundHL7MessagePreProcessor();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound HL7 Message Pre Processor</em>' attribute.
+	 * @see #getInboundHL7MessagePreProcessor()
+	 * @generated
+	 */
+	void setInboundHL7MessagePreProcessor(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound HL7 Char Set</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound HL7 Char Set</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound HL7 Char Set</em>' attribute.
+	 * @see #setInboundHL7CharSet(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7CharSet()
+	 * @model
+	 * @generated
+	 */
+	String getInboundHL7CharSet();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7CharSet <em>Inbound HL7 Char Set</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound HL7 Char Set</em>' attribute.
+	 * @see #getInboundHL7CharSet()
+	 * @generated
+	 */
+	void setInboundHL7CharSet(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound HL7 Time Out</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound HL7 Time Out</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound HL7 Time Out</em>' attribute.
+	 * @see #setInboundHL7TimeOut(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7TimeOut()
+	 * @model
+	 * @generated
+	 */
+	String getInboundHL7TimeOut();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7TimeOut <em>Inbound HL7 Time Out</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound HL7 Time Out</em>' attribute.
+	 * @see #getInboundHL7TimeOut()
+	 * @generated
+	 */
+	void setInboundHL7TimeOut(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound HL7 Validate Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound HL7 Validate Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound HL7 Validate Message</em>' attribute.
+	 * @see #setInboundHL7ValidateMessage(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7ValidateMessage()
+	 * @model
+	 * @generated
+	 */
+	boolean isInboundHL7ValidateMessage();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7ValidateMessage <em>Inbound HL7 Validate Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound HL7 Validate Message</em>' attribute.
+	 * @see #isInboundHL7ValidateMessage()
+	 * @generated
+	 */
+	void setInboundHL7ValidateMessage(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound HL7 Build Invalid Messages</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute.
+	 * @see #setInboundHL7BuildInvalidMessages(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7BuildInvalidMessages()
+	 * @model
+	 * @generated
+	 */
+	String getInboundHL7BuildInvalidMessages();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7BuildInvalidMessages <em>Inbound HL7 Build Invalid Messages</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound HL7 Build Invalid Messages</em>' attribute.
+	 * @see #getInboundHL7BuildInvalidMessages()
+	 * @generated
+	 */
+	void setInboundHL7BuildInvalidMessages(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inbound HL7 Pass Through Invalid Messages</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute.
+	 * @see #setInboundHL7PassThroughInvalidMessages(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundHL7PassThroughInvalidMessages()
+	 * @model
+	 * @generated
+	 */
+	String getInboundHL7PassThroughInvalidMessages();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7PassThroughInvalidMessages <em>Inbound HL7 Pass Through Invalid Messages</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Inbound HL7 Pass Through Invalid Messages</em>' attribute.
+	 * @see #getInboundHL7PassThroughInvalidMessages()
+	 * @generated
+	 */
+	void setInboundHL7PassThroughInvalidMessages(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Zookeeper Connect</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Zookeeper Connect</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Zookeeper Connect</em>' attribute.
+	 * @see #setZookeeperConnect(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperConnect()
+	 * @model
+	 * @generated
+	 */
+	String getZookeeperConnect();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperConnect <em>Zookeeper Connect</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Zookeeper Connect</em>' attribute.
+	 * @see #getZookeeperConnect()
+	 * @generated
+	 */
+	void setZookeeperConnect(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Group Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Group Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Group Id</em>' attribute.
+	 * @see #setGroupId(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_GroupId()
+	 * @model
+	 * @generated
+	 */
+	String getGroupId();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getGroupId <em>Group Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Group Id</em>' attribute.
+	 * @see #getGroupId()
+	 * @generated
+	 */
+	void setGroupId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Consumer Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Consumer Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Consumer Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType
+	 * @see #setConsumerType(ConsumerType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ConsumerType()
+	 * @model
+	 * @generated
+	 */
+	ConsumerType getConsumerType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getConsumerType <em>Consumer Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Consumer Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType
+	 * @see #getConsumerType()
+	 * @generated
+	 */
+	void setConsumerType(ConsumerType value);
+
+	/**
+	 * Returns the value of the '<em><b>Content Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.ContentType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Content Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Content Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ContentType
+	 * @see #setContentType(ContentType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ContentType()
+	 * @model
+	 * @generated
+	 */
+	ContentType getContentType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getContentType <em>Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Content Type</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ContentType
+	 * @see #getContentType()
+	 * @generated
+	 */
+	void setContentType(ContentType value);
+
+	/**
+	 * Returns the value of the '<em><b>Topics</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Topics</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Topics</em>' attribute.
+	 * @see #setTopics(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Topics()
+	 * @model
+	 * @generated
+	 */
+	String getTopics();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTopics <em>Topics</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Topics</em>' attribute.
+	 * @see #getTopics()
+	 * @generated
+	 */
+	void setTopics(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Topic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Topic</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Topic</em>' attribute.
+	 * @see #setSimpleTopic(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleTopic()
+	 * @model
+	 * @generated
+	 */
+	String getSimpleTopic();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleTopic <em>Simple Topic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Topic</em>' attribute.
+	 * @see #getSimpleTopic()
+	 * @generated
+	 */
+	void setSimpleTopic(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Brokers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Brokers</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Brokers</em>' attribute.
+	 * @see #setSimpleBrokers(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleBrokers()
+	 * @model
+	 * @generated
+	 */
+	String getSimpleBrokers();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleBrokers <em>Simple Brokers</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Brokers</em>' attribute.
+	 * @see #getSimpleBrokers()
+	 * @generated
+	 */
+	void setSimpleBrokers(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Port</em>' attribute.
+	 * @see #setSimplePort(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimplePort()
+	 * @model
+	 * @generated
+	 */
+	String getSimplePort();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimplePort <em>Simple Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Port</em>' attribute.
+	 * @see #getSimplePort()
+	 * @generated
+	 */
+	void setSimplePort(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Partition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Partition</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Partition</em>' attribute.
+	 * @see #setSimplePartition(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimplePartition()
+	 * @model
+	 * @generated
+	 */
+	String getSimplePartition();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimplePartition <em>Simple Partition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Partition</em>' attribute.
+	 * @see #getSimplePartition()
+	 * @generated
+	 */
+	void setSimplePartition(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Simple Max Messages To Read</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simple Max Messages To Read</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simple Max Messages To Read</em>' attribute.
+	 * @see #setSimpleMaxMessagesToRead(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SimpleMaxMessagesToRead()
+	 * @model
+	 * @generated
+	 */
+	String getSimpleMaxMessagesToRead();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSimpleMaxMessagesToRead <em>Simple Max Messages To Read</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simple Max Messages To Read</em>' attribute.
+	 * @see #getSimpleMaxMessagesToRead()
+	 * @generated
+	 */
+	void setSimpleMaxMessagesToRead(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Thread Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Thread Count</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Thread Count</em>' attribute.
+	 * @see #setThreadCount(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ThreadCount()
+	 * @model
+	 * @generated
+	 */
+	String getThreadCount();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getThreadCount <em>Thread Count</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Thread Count</em>' attribute.
+	 * @see #getThreadCount()
+	 * @generated
+	 */
+	void setThreadCount(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Zookeeper Session Timeout Ms</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Zookeeper Session Timeout Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Zookeeper Session Timeout Ms</em>' attribute.
+	 * @see #setZookeeperSessionTimeoutMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSessionTimeoutMs()
+	 * @model
+	 * @generated
+	 */
+	String getZookeeperSessionTimeoutMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSessionTimeoutMs <em>Zookeeper Session Timeout Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Zookeeper Session Timeout Ms</em>' attribute.
+	 * @see #getZookeeperSessionTimeoutMs()
+	 * @generated
+	 */
+	void setZookeeperSessionTimeoutMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Zookeeper Sync Time Ms</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Zookeeper Sync Time Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Zookeeper Sync Time Ms</em>' attribute.
+	 * @see #setZookeeperSyncTimeMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ZookeeperSyncTimeMs()
+	 * @model
+	 * @generated
+	 */
+	String getZookeeperSyncTimeMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Zookeeper Sync Time Ms</em>' attribute.
+	 * @see #getZookeeperSyncTimeMs()
+	 * @generated
+	 */
+	void setZookeeperSyncTimeMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Auto Commit Interval Ms</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Auto Commit Interval Ms</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Auto Commit Interval Ms</em>' attribute.
+	 * @see #setAutoCommitIntervalMs(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoCommitIntervalMs()
+	 * @model
+	 * @generated
+	 */
+	String getAutoCommitIntervalMs();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Auto Commit Interval Ms</em>' attribute.
+	 * @see #getAutoCommitIntervalMs()
+	 * @generated
+	 */
+	void setAutoCommitIntervalMs(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Auto Offset Reset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Auto Offset Reset</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Auto Offset Reset</em>' attribute.
+	 * @see #setAutoOffsetReset(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_AutoOffsetReset()
+	 * @model
+	 * @generated
+	 */
+	String getAutoOffsetReset();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Auto Offset Reset</em>' attribute.
+	 * @see #getAutoOffsetReset()
+	 * @generated
+	 */
+	void setAutoOffsetReset(String value);
 
 	/**
 	 * Returns the value of the '<em><b>On Error Sequence</b></em>' attribute.

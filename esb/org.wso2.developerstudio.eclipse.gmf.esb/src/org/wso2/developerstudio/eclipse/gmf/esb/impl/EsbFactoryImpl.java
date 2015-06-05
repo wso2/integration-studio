@@ -623,6 +623,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createProtocolFromString(eDataType, initialValue);
 			case EsbPackage.INBOUND_ENDPOINT_TYPE:
 				return createInboundEndpointTypeFromString(eDataType, initialValue);
+			case EsbPackage.CONTENT_TYPE:
+				return createContentTypeFromString(eDataType, initialValue);
+			case EsbPackage.CONSUMER_TYPE:
+				return createConsumerTypeFromString(eDataType, initialValue);
 			case EsbPackage.ENABLE:
 				return createEnableFromString(eDataType, initialValue);
 			case EsbPackage.VFS_ACTION:
@@ -861,6 +865,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertProtocolToString(eDataType, instanceValue);
 			case EsbPackage.INBOUND_ENDPOINT_TYPE:
 				return convertInboundEndpointTypeToString(eDataType, instanceValue);
+			case EsbPackage.CONTENT_TYPE:
+				return convertContentTypeToString(eDataType, instanceValue);
+			case EsbPackage.CONSUMER_TYPE:
+				return convertConsumerTypeToString(eDataType, instanceValue);
 			case EsbPackage.ENABLE:
 				return convertEnableToString(eDataType, instanceValue);
 			case EsbPackage.VFS_ACTION:
@@ -6617,6 +6625,46 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertInboundEndpointTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContentType createContentTypeFromString(EDataType eDataType, String initialValue) {
+		ContentType result = ContentType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertContentTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConsumerType createConsumerTypeFromString(EDataType eDataType, String initialValue) {
+		ConsumerType result = ConsumerType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertConsumerTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

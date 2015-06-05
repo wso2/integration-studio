@@ -122,6 +122,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediatorAdditionalOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
+import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediatorOutputConnector;
@@ -3701,6 +3703,20 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum inboundEndpointTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum contentTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum consumerTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9759,6 +9775,213 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getInboundEndpoint_Sequence() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(61);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHL7Port() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(62);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHL7AutoAck() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(63);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHL7MessagePreProcessor() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(64);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHL7CharSet() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(65);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHL7TimeOut() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(66);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHL7ValidateMessage() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(67);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHL7BuildInvalidMessages() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(68);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundHL7PassThroughInvalidMessages() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(69);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_ZookeeperConnect() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(70);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_GroupId() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(71);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_ConsumerType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(72);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_ContentType() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(73);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Topics() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(74);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_SimpleTopic() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(75);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_SimpleBrokers() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(76);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_SimplePort() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(77);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_SimplePartition() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(78);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_SimpleMaxMessagesToRead() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(79);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_ThreadCount() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(80);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_ZookeeperSessionTimeoutMs() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(81);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_ZookeeperSyncTimeMs() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(82);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_AutoCommitIntervalMs() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(83);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_AutoOffsetReset() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(84);
 	}
 
 	/**
@@ -16435,6 +16658,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getContentType() {
+		return contentTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getConsumerType() {
+		return consumerTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEnable() {
 		return enableEEnum;
 	}
@@ -18150,6 +18391,29 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ON_ERROR_SEQUENCE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SEQUENCE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_PORT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ZOOKEEPER_CONNECT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__GROUP_ID);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__CONSUMER_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__CONTENT_TYPE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__TOPICS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SIMPLE_TOPIC);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SIMPLE_BROKERS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SIMPLE_PORT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SIMPLE_PARTITION);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__THREAD_COUNT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__AUTO_OFFSET_RESET);
 
 		inboundEndpointContainerEClass = createEClass(INBOUND_ENDPOINT_CONTAINER);
 		createEReference(inboundEndpointContainerEClass, INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER);
@@ -18275,6 +18539,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		dataMapperMediatorDataTypesEEnum = createEEnum(DATA_MAPPER_MEDIATOR_DATA_TYPES);
 		protocolEEnum = createEEnum(PROTOCOL);
 		inboundEndpointTypeEEnum = createEEnum(INBOUND_ENDPOINT_TYPE);
+		contentTypeEEnum = createEEnum(CONTENT_TYPE);
+		consumerTypeEEnum = createEEnum(CONSUMER_TYPE);
 		enableEEnum = createEEnum(ENABLE);
 		vfsActionEEnum = createEEnum(VFS_ACTION);
 		vfsFileSortEEnum = createEEnum(VFS_FILE_SORT);
@@ -20289,6 +20555,29 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_CertificateRevocationVerifier(), ecorePackage.getEString(), "certificateRevocationVerifier", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_OnErrorSequence(), ecorePackage.getEString(), "onErrorSequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_Sequence(), ecorePackage.getEString(), "sequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHL7Port(), ecorePackage.getEString(), "inboundHL7Port", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHL7AutoAck(), ecorePackage.getEBoolean(), "inboundHL7AutoAck", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHL7MessagePreProcessor(), ecorePackage.getEString(), "inboundHL7MessagePreProcessor", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHL7CharSet(), ecorePackage.getEString(), "inboundHL7CharSet", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHL7TimeOut(), ecorePackage.getEString(), "inboundHL7TimeOut", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHL7ValidateMessage(), ecorePackage.getEBoolean(), "inboundHL7ValidateMessage", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHL7BuildInvalidMessages(), ecorePackage.getEString(), "inboundHL7BuildInvalidMessages", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundHL7PassThroughInvalidMessages(), ecorePackage.getEString(), "inboundHL7PassThroughInvalidMessages", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_ZookeeperConnect(), ecorePackage.getEString(), "zookeeperConnect", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_GroupId(), ecorePackage.getEString(), "groupId", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_ConsumerType(), this.getConsumerType(), "consumerType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_ContentType(), this.getContentType(), "contentType", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Topics(), ecorePackage.getEString(), "topics", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_SimpleTopic(), ecorePackage.getEString(), "simpleTopic", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_SimpleBrokers(), ecorePackage.getEString(), "simpleBrokers", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_SimplePort(), ecorePackage.getEString(), "simplePort", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_SimplePartition(), ecorePackage.getEString(), "simplePartition", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_SimpleMaxMessagesToRead(), ecorePackage.getEString(), "simpleMaxMessagesToRead", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_ThreadCount(), ecorePackage.getEString(), "threadCount", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_ZookeeperSessionTimeoutMs(), ecorePackage.getEString(), "zookeeperSessionTimeoutMs", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_ZookeeperSyncTimeMs(), ecorePackage.getEString(), "zookeeperSyncTimeMs", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_AutoCommitIntervalMs(), ecorePackage.getEString(), "autoCommitIntervalMs", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_AutoOffsetReset(), ecorePackage.getEString(), "autoOffsetReset", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointContainerEClass, InboundEndpointContainer.class, "InboundEndpointContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInboundEndpointContainer_SequenceContainer(), this.getInboundEndpointSequenceContainer(), null, "sequenceContainer", null, 0, 1, InboundEndpointContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -20877,6 +21166,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.HL7);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.KAFKA);
 		addEEnumLiteral(inboundEndpointTypeEEnum, InboundEndpointType.CXF_WS_RM);
+
+		initEEnum(contentTypeEEnum, ContentType.class, "ContentType");
+		addEEnumLiteral(contentTypeEEnum, ContentType.XML);
+		addEEnumLiteral(contentTypeEEnum, ContentType.JSON);
+
+		initEEnum(consumerTypeEEnum, ConsumerType.class, "ConsumerType");
+		addEEnumLiteral(consumerTypeEEnum, ConsumerType.HIGHLEVEL);
+		addEEnumLiteral(consumerTypeEEnum, ConsumerType.SIMPLE);
 
 		initEEnum(enableEEnum, Enable.class, "Enable");
 		addEEnumLiteral(enableEEnum, Enable.ENABLE);

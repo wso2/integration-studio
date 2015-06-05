@@ -24,6 +24,9 @@ public class TemplateImageUtils extends ImageUtils {
 
 	private static ImageUtils instance;
 
+	/**
+	 * Returns an instance of TemplateImageUtils class
+	 */
 	public static ImageUtils getInstance() {
 		if (instance == null) {
 			instance = new TemplateImageUtils();
@@ -31,6 +34,9 @@ public class TemplateImageUtils extends ImageUtils {
 		return instance;
 	}
 
+	/**
+	 * Returns an instance of Bundle class for this module
+	 */
 	public Bundle getBundle() {
 		return Platform.getBundle(Activator.PLUGIN_ID);
 	}

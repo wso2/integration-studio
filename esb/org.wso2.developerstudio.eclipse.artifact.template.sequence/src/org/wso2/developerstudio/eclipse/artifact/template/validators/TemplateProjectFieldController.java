@@ -41,8 +41,8 @@ import static org.wso2.developerstudio.eclipse.artifact.template.utils.TemplateC
  * It overwrites the methods from AbstractFieldController class
  */
 public class TemplateProjectFieldController extends AbstractFieldController {
-    Pattern urlPattern;
-    Matcher matcher;
+    private Pattern urlPattern;
+    private Matcher matcher;
 
     public TemplateProjectFieldController() {
         urlPattern = Pattern.compile("\\$.*");
@@ -80,7 +80,7 @@ public class TemplateProjectFieldController extends AbstractFieldController {
                             }
                         }
                     } catch (Exception e) {
-                        throw new FieldValidationException("Unexpected error occurred while validating artifact name");
+                        throw new FieldValidationException("Unexpected error occurred while validating artifact name", e);
                     }
                 }
             }

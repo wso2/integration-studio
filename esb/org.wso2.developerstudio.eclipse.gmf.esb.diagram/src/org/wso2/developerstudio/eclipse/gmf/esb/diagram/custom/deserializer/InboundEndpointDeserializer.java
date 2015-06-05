@@ -25,6 +25,8 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
+import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
@@ -43,6 +45,9 @@ public class InboundEndpointDeserializer extends
 	private static final String JMS = "JMS";
 	private static final String CUSTOM = "Custom";
 	private static final String HTTPS = "HTTPS";
+	private static final String HL7 = "HL7";
+	private static final String KAFKA = "KAFKA";
+	private static final String CXF_WS_RM = "CXF_WS_RM";
 	private static final String TRUE = "true";
 	private static final String NONE = "none";
 	private static final String ENABLE = "enable";
@@ -52,6 +57,8 @@ public class InboundEndpointDeserializer extends
 	private static final String AUTO_ACKNOWLEDGE = "AUTO_ACKNOWLEDGE";
 	private static final String CLIENT_ACKNOWLEDGE = "CLIENT_ACKNOWLEDGE";
 	private static final String DUPS_OK_ACKNOWLEDGE = "DUPS_OK_ACKNOWLEDGE";
+	private static final String HIGHLEVEL = "highlevel";
+	private static final String APPLICATION_XML = "application/xml";
 
 	@Override
 	public org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint createNode(IGraphicalEditPart part,
@@ -81,6 +88,18 @@ public class InboundEndpointDeserializer extends
 			updateParameters(object);
 		} else if (HTTPS.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.HTTPS);
+			updateParameters(object);
+		} else if (HL7.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.HL7);
+			updateParameters(object);
+		} else if (KAFKA.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.KAFKA);
+			updateParameters(object);
+		} else if (KAFKA.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.KAFKA);
+			updateParameters(object);
+		} else if (CXF_WS_RM.equals(object.getProtocol())) {
+			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CXF_WS_RM);
 			updateParameters(object);
 		}
 
@@ -330,6 +349,81 @@ public class InboundEndpointDeserializer extends
 				executeSetValueCommand(INBOUND_ENDPOINT__HTTPS_PROTOCOLS, paramEntry.getValue());
 			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CERTIFICATE_REVOCATION_VERIFIER)) {
 				executeSetValueCommand(INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_PORT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_PORT, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_AUTOACK)) {
+				if (paramEntry.getValue().equals(TRUE)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK, true);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK, false);
+				}
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_TIMEOUT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_MESSAGE_PRE_PROCESSOR)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_CHARSET)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_VALIDATE_MESSAGE)) {
+				if (paramEntry.getValue().equals(TRUE)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, true);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE, false);
+				}
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_BUILD_INVALID_MESSAGES)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES,
+						paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_CONNECT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_CONNECT, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.GROUP_ID)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__GROUP_ID, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONSUMER_TYPE)) {
+				if (paramEntry.getValue().equals(HIGHLEVEL)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.HIGHLEVEL);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__CONSUMER_TYPE, ConsumerType.SIMPLE);
+				}
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.CONTENT_TYPE)) {
+				if (paramEntry.getValue().equals(APPLICATION_XML)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.XML);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__CONTENT_TYPE, ContentType.JSON);
+				}
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.TOPICS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__TOPICS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_TOPIC)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_TOPIC, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_BROKERS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_BROKERS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_PORT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_PORT, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_PARTITION)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_PARTITION, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.SIMPLE_MAX_MESSAGE_TOREAD)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.THREAD_COUNT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__THREAD_COUNT, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_SEESION_TIMEOUT_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ZOOKEEPER_SYNC_TIME_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.AUTO_COMMIY_INTERVAL_MS)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.AUTO_OFFSET_REST)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__AUTO_OFFSET_RESET, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_HOST)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_PORT)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.INBOUND_CXF_RM_CONFIG_FILE)) {
+				executeSetValueCommand(INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE, paramEntry.getValue());
+			} else if (paramEntry.getKey().equals(InboundEndpointConstants.ENABLE_SSL)) {
+				if (paramEntry.getValue().equals(TRUE)) {
+					executeSetValueCommand(INBOUND_ENDPOINT__ENABLE_SSL, true);
+				} else {
+					executeSetValueCommand(INBOUND_ENDPOINT__ENABLE_SSL, false);
+				}
 			}
 		}
 

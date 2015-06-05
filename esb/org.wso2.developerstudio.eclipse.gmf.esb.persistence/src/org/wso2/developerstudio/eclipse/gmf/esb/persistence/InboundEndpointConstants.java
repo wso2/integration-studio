@@ -61,4 +61,34 @@ public class InboundEndpointConstants {
 	public static final String HTTPS_PROTOCOLS = "HttpsProtocols";
 	public static final String CERTIFICATE_REVOCATION_VERIFIER = "CertificateRevocationVerifier";
 
+	public static final String INBOUND_HL7_PORT = "inbound.hl7.Port";
+	public static final String INBOUND_HL7_AUTOACK = "inbound.hl7.AutoAck";
+	public static final String INBOUND_HL7_TIMEOUT = "inbound.hl7.TimeOut";
+	public static final String INBOUND_HL7_MESSAGE_PRE_PROCESSOR = "inbound.hl7.MessagePreProcessor";
+	public static final String INBOUND_HL7_CHARSET = "inbound.hl7.CharSet";
+	public static final String INBOUND_HL7_VALIDATE_MESSAGE = "inbound.hl7.ValidateMessage";
+	public static final String INBOUND_HL7_BUILD_INVALID_MESSAGES = "inbound.hl7.BuildInvalidMessages";
+	public static final String INBOUND_HL7_PASSTHROUHG_INVALID_MESSAGES = "inbound.hl7.PassThroughInvalidMessages";
+
+	public static final String ZOOKEEPER_CONNECT = "zookeeper.connect";
+	public static final String GROUP_ID = "group.id";
+	public static final String CONSUMER_TYPE = "consumer.type";
+	public static final String CONTENT_TYPE = "content.type";
+	public static final String TOPICS = "topics";
+	public static final String SIMPLE_TOPIC = "simple.topic";
+	public static final String SIMPLE_BROKERS = "simple.brokers";
+	public static final String SIMPLE_PORT = "simple.port";
+	public static final String SIMPLE_PARTITION = "simple.partition";
+	public static final String SIMPLE_MAX_MESSAGE_TOREAD = "simple.max.messages.to.read";
+	public static final String THREAD_COUNT = "thread.count";
+	public static final String ZOOKEEPER_SEESION_TIMEOUT_MS = "zookeeper.session.timeout.ms";
+	public static final String ZOOKEEPER_SYNC_TIME_MS = "zookeeper.sync.time.ms";
+	public static final String AUTO_COMMIY_INTERVAL_MS = "auto.commit.interval.ms";
+	public static final String AUTO_OFFSET_REST = "auto.offset.reset";
+
+	public static final String INBOUND_CXF_RM_HOST = "inbound.cxf.rm.host";
+	public static final String INBOUND_CXF_RM_PORT = "inbound.cxf.rm.port";
+	public static final String INBOUND_CXF_RM_CONFIG_FILE = "inbound.cxf.rm.config-file";
+	public static final String ENABLE_SSL = "enableSSL";
+
 }

@@ -141,6 +141,42 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			addHttpsProtocolsPropertyDescriptor(object);
 			addCertificateRevocationVerifierPropertyDescriptor(object);
 			break;
+		case HL7:
+			addInboundHL7PortPropertyDescriptor(object);
+			addInboundHL7AutoAckPropertyDescriptor(object);
+			addInboundHL7TimeOutPropertyDescriptor(object);
+			addInboundHL7MessagePreProcessorPropertyDescriptor(object);
+			addInboundHL7CharSetPropertyDescriptor(object);
+			addInboundHL7ValidateMessagePropertyDescriptor(object);
+			addInboundHL7BuildInvalidMessagesPropertyDescriptor(object);
+			addInboundHL7PassThroughInvalidMessagesPropertyDescriptor(object);
+			break;
+		case KAFKA:
+			addIntervalPropertyDescriptor(object);
+			addSequentialPropertyDescriptor(object);
+			addCoordinationPropertyDescriptor(object);
+			addZookeeperConnectPropertyDescriptor(object);
+			addGroupIdPropertyDescriptor(object);
+			addConsumerTypePropertyDescriptor(object);
+			addContentTypePropertyDescriptor(object);
+			addTopicsPropertyDescriptor(object);
+			addSimpleTopicPropertyDescriptor(object);
+			addSimpleBrokersPropertyDescriptor(object);
+			addSimplePortPropertyDescriptor(object);
+			addSimplePartitionPropertyDescriptor(object);
+			addSimpleMaxMessagesToReadPropertyDescriptor(object);
+			addThreadCountPropertyDescriptor(object);
+			addZookeeperSessionTimeoutMsPropertyDescriptor(object);
+			addZookeeperSyncTimeMsPropertyDescriptor(object);
+			addAutoCommitIntervalMsPropertyDescriptor(object);
+			addAutoOffsetResetPropertyDescriptor(object);
+			break;
+		case CXF_WS_RM:
+			addInboundCxfRmHostPropertyDescriptor(object);
+			addInboundCxfRmPortPropertyDescriptor(object);
+			addInboundCxfRmConfigFilePropertyDescriptor(object);
+			addEnableSSLPropertyDescriptor(object);
+			break;
 		default:
 			break;
 		}
@@ -231,7 +267,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -239,7 +275,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound HL7 Auto Ack feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundHL7AutoAckPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -253,7 +289,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -261,7 +297,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound HL7 Message Pre Processor feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundHL7MessagePreProcessorPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -275,7 +311,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -283,7 +319,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound HL7 Char Set feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundHL7CharSetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -297,7 +333,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -305,7 +341,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound HL7 Time Out feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundHL7TimeOutPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -319,7 +355,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -327,7 +363,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound HL7 Validate Message feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundHL7ValidateMessagePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -341,7 +377,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -349,7 +385,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound HL7 Build Invalid Messages feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundHL7BuildInvalidMessagesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -363,7 +399,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -371,7 +407,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound HL7 Pass Through Invalid Messages feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundHL7PassThroughInvalidMessagesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -385,7 +421,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -393,7 +429,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Zookeeper Connect feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addZookeeperConnectPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -407,7 +443,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -415,7 +451,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Group Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addGroupIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -429,7 +465,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -437,7 +473,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Consumer Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addConsumerTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -451,7 +487,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -459,7 +495,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Content Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addContentTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -473,7 +509,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -481,7 +517,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Topics feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addTopicsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -495,7 +531,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -503,7 +539,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Simple Topic feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addSimpleTopicPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -517,7 +553,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -525,7 +561,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Simple Brokers feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addSimpleBrokersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -539,7 +575,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -547,7 +583,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Simple Port feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addSimplePortPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -561,7 +597,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -569,7 +605,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Simple Partition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addSimplePartitionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -583,7 +619,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -591,7 +627,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Simple Max Messages To Read feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addSimpleMaxMessagesToReadPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -605,7 +641,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -613,7 +649,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Thread Count feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addThreadCountPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -627,7 +663,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -635,7 +671,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Zookeeper Session Timeout Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addZookeeperSessionTimeoutMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -649,7 +685,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -657,7 +693,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Zookeeper Sync Time Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addZookeeperSyncTimeMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -671,7 +707,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -679,7 +715,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Auto Commit Interval Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addAutoCommitIntervalMsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -693,7 +729,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -701,7 +737,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Auto Offset Reset feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addAutoOffsetResetPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -715,7 +751,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -723,7 +759,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound Cxf Rm Host feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundCxfRmHostPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -737,7 +773,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -745,7 +781,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound Cxf Rm Port feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundCxfRmPortPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -759,7 +795,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -767,7 +803,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound Cxf Rm Config File feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addInboundCxfRmConfigFilePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -781,7 +817,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -789,7 +825,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Enable SSL feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addEnableSSLPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -803,7 +839,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
+				 "Parameters",
 				 null));
 	}
 
@@ -811,7 +847,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the On Error Sequence feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated 
 	 */
 	protected void addOnErrorSequencePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add

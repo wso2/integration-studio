@@ -1285,7 +1285,10 @@
     <genClasses ecoreClass="esb.ecore#//ForEachMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//ForEachMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//ForEachMediatorTargetOutputConnector"/>
-    <genClasses ecoreClass="esb.ecore#//ForEachTarget"/>
+    <genClasses ecoreClass="esb.ecore#//ForEachTarget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachTarget/soapAction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachTarget/toAddress"/>
+    </genClasses>
     <genClasses ecoreClass="esb.ecore#//IterateMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//IterateMediator/iterateID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//IterateMediator/sequentialMediation"/>

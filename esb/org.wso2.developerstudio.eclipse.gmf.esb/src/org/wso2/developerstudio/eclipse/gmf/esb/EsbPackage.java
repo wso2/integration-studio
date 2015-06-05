@@ -9510,13 +9510,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int FOR_EACH_TARGET__ENDPOINT_KEY = ABSTRACT_COMMON_TARGET__ENDPOINT_KEY;
 
 	/**
+	 * The feature id for the '<em><b>Soap Action</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOR_EACH_TARGET__SOAP_ACTION = ABSTRACT_COMMON_TARGET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>To Address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOR_EACH_TARGET__TO_ADDRESS = ABSTRACT_COMMON_TARGET_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>For Each Target</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FOR_EACH_TARGET_FEATURE_COUNT = ABSTRACT_COMMON_TARGET_FEATURE_COUNT + 0;
+	int FOR_EACH_TARGET_FEATURE_COUNT = ABSTRACT_COMMON_TARGET_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -31997,6 +32015,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EClass getForEachTarget();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget#getSoapAction <em>Soap Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Soap Action</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget#getSoapAction()
+	 * @see #getForEachTarget()
+	 * @generated
+	 */
+	EAttribute getForEachTarget_SoapAction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget#getToAddress <em>To Address</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>To Address</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget#getToAddress()
+	 * @see #getForEachTarget()
+	 * @generated
+	 */
+	EAttribute getForEachTarget_ToAddress();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator <em>Iterate Mediator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -45610,6 +45650,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EClass FOR_EACH_TARGET = eINSTANCE.getForEachTarget();
+
+		/**
+		 * The meta object literal for the '<em><b>Soap Action</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOR_EACH_TARGET__SOAP_ACTION = eINSTANCE.getForEachTarget_SoapAction();
+
+		/**
+		 * The meta object literal for the '<em><b>To Address</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FOR_EACH_TARGET__TO_ADDRESS = eINSTANCE.getForEachTarget_ToAddress();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.IterateMediatorImpl <em>Iterate Mediator</em>}' class.

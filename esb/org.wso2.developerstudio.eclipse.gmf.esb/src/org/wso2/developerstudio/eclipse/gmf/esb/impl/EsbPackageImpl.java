@@ -11757,6 +11757,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getForEachTarget_SoapAction() {
+		return (EAttribute)forEachTargetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getForEachTarget_ToAddress() {
+		return (EAttribute)forEachTargetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIterateMediator() {
 		return iterateMediatorEClass;
 	}
@@ -17715,6 +17733,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		forEachMediatorTargetOutputConnectorEClass = createEClass(FOR_EACH_MEDIATOR_TARGET_OUTPUT_CONNECTOR);
 
 		forEachTargetEClass = createEClass(FOR_EACH_TARGET);
+		createEAttribute(forEachTargetEClass, FOR_EACH_TARGET__SOAP_ACTION);
+		createEAttribute(forEachTargetEClass, FOR_EACH_TARGET__TO_ADDRESS);
 
 		iterateMediatorEClass = createEClass(ITERATE_MEDIATOR);
 		createEAttribute(iterateMediatorEClass, ITERATE_MEDIATOR__ITERATE_ID);
@@ -19909,6 +19929,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(forEachMediatorTargetOutputConnectorEClass, ForEachMediatorTargetOutputConnector.class, "ForEachMediatorTargetOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(forEachTargetEClass, ForEachTarget.class, "ForEachTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getForEachTarget_SoapAction(), ecorePackage.getEString(), "soapAction", null, 0, 1, ForEachTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getForEachTarget_ToAddress(), ecorePackage.getEString(), "toAddress", null, 0, 1, ForEachTarget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iterateMediatorEClass, IterateMediator.class, "IterateMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIterateMediator_IterateID(), ecorePackage.getEString(), "iterateID", null, 0, 1, IterateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

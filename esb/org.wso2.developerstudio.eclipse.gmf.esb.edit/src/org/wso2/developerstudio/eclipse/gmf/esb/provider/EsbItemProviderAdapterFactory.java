@@ -4987,6 +4987,121 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ForEachMediatorItemProvider forEachMediatorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createForEachMediatorAdapter() {
+		if (forEachMediatorItemProvider == null) {
+			forEachMediatorItemProvider = new ForEachMediatorItemProvider(this);
+		}
+
+		return forEachMediatorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorInputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ForEachMediatorInputConnectorItemProvider forEachMediatorInputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorInputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createForEachMediatorInputConnectorAdapter() {
+		if (forEachMediatorInputConnectorItemProvider == null) {
+			forEachMediatorInputConnectorItemProvider = new ForEachMediatorInputConnectorItemProvider(this);
+		}
+
+		return forEachMediatorInputConnectorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ForEachMediatorOutputConnectorItemProvider forEachMediatorOutputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createForEachMediatorOutputConnectorAdapter() {
+		if (forEachMediatorOutputConnectorItemProvider == null) {
+			forEachMediatorOutputConnectorItemProvider = new ForEachMediatorOutputConnectorItemProvider(this);
+		}
+
+		return forEachMediatorOutputConnectorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorTargetOutputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ForEachMediatorTargetOutputConnectorItemProvider forEachMediatorTargetOutputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorTargetOutputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createForEachMediatorTargetOutputConnectorAdapter() {
+		if (forEachMediatorTargetOutputConnectorItemProvider == null) {
+			forEachMediatorTargetOutputConnectorItemProvider = new ForEachMediatorTargetOutputConnectorItemProvider(this);
+		}
+
+		return forEachMediatorTargetOutputConnectorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ForEachTargetItemProvider forEachTargetItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createForEachTargetAdapter() {
+		if (forEachTargetItemProvider == null) {
+			forEachTargetItemProvider = new ForEachTargetItemProvider(this);
+		}
+
+		return forEachTargetItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8208,6 +8323,11 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 		if (cloneMediatorTargetOutputConnectorItemProvider != null) cloneMediatorTargetOutputConnectorItemProvider.dispose();
 		if (cloneMediatorContainerItemProvider != null) cloneMediatorContainerItemProvider.dispose();
 		if (cloneTargetContainerItemProvider != null) cloneTargetContainerItemProvider.dispose();
+		if (forEachMediatorItemProvider != null) forEachMediatorItemProvider.dispose();
+		if (forEachMediatorInputConnectorItemProvider != null) forEachMediatorInputConnectorItemProvider.dispose();
+		if (forEachMediatorOutputConnectorItemProvider != null) forEachMediatorOutputConnectorItemProvider.dispose();
+		if (forEachMediatorTargetOutputConnectorItemProvider != null) forEachMediatorTargetOutputConnectorItemProvider.dispose();
+		if (forEachTargetItemProvider != null) forEachTargetItemProvider.dispose();
 		if (iterateMediatorItemProvider != null) iterateMediatorItemProvider.dispose();
 		if (iterateMediatorInputConnectorItemProvider != null) iterateMediatorInputConnectorItemProvider.dispose();
 		if (iterateMediatorOutputConnectorItemProvider != null) iterateMediatorOutputConnectorItemProvider.dispose();

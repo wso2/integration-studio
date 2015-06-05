@@ -1269,6 +1269,23 @@
     <genClasses ecoreClass="esb.ecore#//CloneTargetContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//CloneTargetContainer/mediatorFlow"/>
     </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ForEachMediator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachMediator/forEachID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/forEachExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/attachPath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/inputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/outputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/targetOutputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/mediatorFlow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachMediator/sequenceType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/sequenceKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachMediator/sequenceName"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//ForEachMediatorInputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//ForEachMediatorOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//ForEachMediatorTargetOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//ForEachTarget"/>
     <genClasses ecoreClass="esb.ecore#//IterateMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//IterateMediator/iterateID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//IterateMediator/sequentialMediation"/>

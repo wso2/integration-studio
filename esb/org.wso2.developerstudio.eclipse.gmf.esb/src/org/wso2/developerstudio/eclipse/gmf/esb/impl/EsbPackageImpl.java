@@ -225,6 +225,11 @@ import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorPassOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterPassContainer;
+import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorTargetOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndPointInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndPointOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
@@ -2100,6 +2105,41 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EClass cloneTargetContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forEachMediatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forEachMediatorInputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forEachMediatorOutputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forEachMediatorTargetOutputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forEachTargetEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -11573,6 +11613,150 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getForEachMediator() {
+		return forEachMediatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getForEachMediator_ForEachID() {
+		return (EAttribute)forEachMediatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForEachMediator_ForEachExpression() {
+		return (EReference)forEachMediatorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForEachMediator_AttachPath() {
+		return (EReference)forEachMediatorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForEachMediator_Target() {
+		return (EReference)forEachMediatorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForEachMediator_InputConnector() {
+		return (EReference)forEachMediatorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForEachMediator_OutputConnector() {
+		return (EReference)forEachMediatorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForEachMediator_TargetOutputConnector() {
+		return (EReference)forEachMediatorEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForEachMediator_MediatorFlow() {
+		return (EReference)forEachMediatorEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getForEachMediator_SequenceType() {
+		return (EAttribute)forEachMediatorEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForEachMediator_SequenceKey() {
+		return (EReference)forEachMediatorEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getForEachMediator_SequenceName() {
+		return (EAttribute)forEachMediatorEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getForEachMediatorInputConnector() {
+		return forEachMediatorInputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getForEachMediatorOutputConnector() {
+		return forEachMediatorOutputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getForEachMediatorTargetOutputConnector() {
+		return forEachMediatorTargetOutputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getForEachTarget() {
+		return forEachTargetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIterateMediator() {
 		return iterateMediatorEClass;
 	}
@@ -17511,6 +17695,27 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		cloneTargetContainerEClass = createEClass(CLONE_TARGET_CONTAINER);
 		createEReference(cloneTargetContainerEClass, CLONE_TARGET_CONTAINER__MEDIATOR_FLOW);
 
+		forEachMediatorEClass = createEClass(FOR_EACH_MEDIATOR);
+		createEAttribute(forEachMediatorEClass, FOR_EACH_MEDIATOR__FOR_EACH_ID);
+		createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION);
+		createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__ATTACH_PATH);
+		createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__TARGET);
+		createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__INPUT_CONNECTOR);
+		createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__OUTPUT_CONNECTOR);
+		createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__TARGET_OUTPUT_CONNECTOR);
+		createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__MEDIATOR_FLOW);
+		createEAttribute(forEachMediatorEClass, FOR_EACH_MEDIATOR__SEQUENCE_TYPE);
+		createEReference(forEachMediatorEClass, FOR_EACH_MEDIATOR__SEQUENCE_KEY);
+		createEAttribute(forEachMediatorEClass, FOR_EACH_MEDIATOR__SEQUENCE_NAME);
+
+		forEachMediatorInputConnectorEClass = createEClass(FOR_EACH_MEDIATOR_INPUT_CONNECTOR);
+
+		forEachMediatorOutputConnectorEClass = createEClass(FOR_EACH_MEDIATOR_OUTPUT_CONNECTOR);
+
+		forEachMediatorTargetOutputConnectorEClass = createEClass(FOR_EACH_MEDIATOR_TARGET_OUTPUT_CONNECTOR);
+
+		forEachTargetEClass = createEClass(FOR_EACH_TARGET);
+
 		iterateMediatorEClass = createEClass(ITERATE_MEDIATOR);
 		createEAttribute(iterateMediatorEClass, ITERATE_MEDIATOR__ITERATE_ID);
 		createEAttribute(iterateMediatorEClass, ITERATE_MEDIATOR__SEQUENTIAL_MEDIATION);
@@ -18774,6 +18979,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		cloneMediatorTargetOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
 		cloneMediatorContainerEClass.getESuperTypes().add(this.getEsbNode());
 		cloneTargetContainerEClass.getESuperTypes().add(this.getEsbNode());
+		forEachMediatorEClass.getESuperTypes().add(this.getMediator());
+		forEachMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
+		forEachMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+		forEachMediatorTargetOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+		forEachTargetEClass.getESuperTypes().add(this.getAbstractCommonTarget());
 		iterateMediatorEClass.getESuperTypes().add(this.getMediator());
 		iterateMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 		iterateMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
@@ -19678,6 +19888,27 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(cloneTargetContainerEClass, CloneTargetContainer.class, "CloneTargetContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCloneTargetContainer_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, CloneTargetContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(forEachMediatorEClass, ForEachMediator.class, "ForEachMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getForEachMediator_ForEachID(), ecorePackage.getEString(), "forEachID", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForEachMediator_ForEachExpression(), this.getNamespacedProperty(), null, "forEachExpression", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForEachMediator_AttachPath(), this.getNamespacedProperty(), null, "attachPath", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForEachMediator_Target(), this.getForEachTarget(), null, "target", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForEachMediator_InputConnector(), this.getForEachMediatorInputConnector(), null, "inputConnector", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForEachMediator_OutputConnector(), this.getForEachMediatorOutputConnector(), null, "outputConnector", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForEachMediator_TargetOutputConnector(), this.getForEachMediatorTargetOutputConnector(), null, "targetOutputConnector", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForEachMediator_MediatorFlow(), this.getMediatorFlow(), null, "mediatorFlow", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getForEachMediator_SequenceType(), this.getSequenceType(), "sequenceType", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForEachMediator_SequenceKey(), this.getRegistryKeyProperty(), null, "sequenceKey", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getForEachMediator_SequenceName(), ecorePackage.getEString(), "sequenceName", null, 0, 1, ForEachMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(forEachMediatorInputConnectorEClass, ForEachMediatorInputConnector.class, "ForEachMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(forEachMediatorOutputConnectorEClass, ForEachMediatorOutputConnector.class, "ForEachMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(forEachMediatorTargetOutputConnectorEClass, ForEachMediatorTargetOutputConnector.class, "ForEachMediatorTargetOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(forEachTargetEClass, ForEachTarget.class, "ForEachTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iterateMediatorEClass, IterateMediator.class, "IterateMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIterateMediator_IterateID(), ecorePackage.getEString(), "iterateID", null, 0, 1, IterateMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

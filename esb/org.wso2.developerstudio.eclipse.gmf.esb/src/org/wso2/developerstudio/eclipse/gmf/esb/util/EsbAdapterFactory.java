@@ -721,6 +721,26 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 				return createCloneTargetContainerAdapter();
 			}
 			@Override
+			public Adapter caseForEachMediator(ForEachMediator object) {
+				return createForEachMediatorAdapter();
+			}
+			@Override
+			public Adapter caseForEachMediatorInputConnector(ForEachMediatorInputConnector object) {
+				return createForEachMediatorInputConnectorAdapter();
+			}
+			@Override
+			public Adapter caseForEachMediatorOutputConnector(ForEachMediatorOutputConnector object) {
+				return createForEachMediatorOutputConnectorAdapter();
+			}
+			@Override
+			public Adapter caseForEachMediatorTargetOutputConnector(ForEachMediatorTargetOutputConnector object) {
+				return createForEachMediatorTargetOutputConnectorAdapter();
+			}
+			@Override
+			public Adapter caseForEachTarget(ForEachTarget object) {
+				return createForEachTargetAdapter();
+			}
+			@Override
 			public Adapter caseIterateMediator(IterateMediator object) {
 				return createIterateMediatorAdapter();
 			}
@@ -4616,6 +4636,76 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCloneTargetContainerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator <em>For Each Mediator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator
+	 * @generated
+	 */
+	public Adapter createForEachMediatorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorInputConnector <em>For Each Mediator Input Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorInputConnector
+	 * @generated
+	 */
+	public Adapter createForEachMediatorInputConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector <em>For Each Mediator Output Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorOutputConnector
+	 * @generated
+	 */
+	public Adapter createForEachMediatorOutputConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorTargetOutputConnector <em>For Each Mediator Target Output Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorTargetOutputConnector
+	 * @generated
+	 */
+	public Adapter createForEachMediatorTargetOutputConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget <em>For Each Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.ForEachTarget
+	 * @generated
+	 */
+	public Adapter createForEachTargetAdapter() {
 		return null;
 	}
 

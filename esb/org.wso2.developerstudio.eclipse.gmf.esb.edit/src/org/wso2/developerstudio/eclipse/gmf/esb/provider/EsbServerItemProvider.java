@@ -329,6 +329,11 @@ public class EsbServerItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EsbPackage.Literals.ESB_SERVER__CHILDREN,
+				 EsbFactory.eINSTANCE.createForEachMediator()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.ESB_SERVER__CHILDREN,
 				 EsbFactory.eINSTANCE.createIterateMediator()));
 
 		newChildDescriptors.add

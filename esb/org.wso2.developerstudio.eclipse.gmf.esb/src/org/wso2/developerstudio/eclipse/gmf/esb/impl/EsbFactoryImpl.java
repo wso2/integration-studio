@@ -211,6 +211,11 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.CLONE_MEDIATOR_TARGET_OUTPUT_CONNECTOR: return createCloneMediatorTargetOutputConnector();
 			case EsbPackage.CLONE_MEDIATOR_CONTAINER: return createCloneMediatorContainer();
 			case EsbPackage.CLONE_TARGET_CONTAINER: return createCloneTargetContainer();
+			case EsbPackage.FOR_EACH_MEDIATOR: return createForEachMediator();
+			case EsbPackage.FOR_EACH_MEDIATOR_INPUT_CONNECTOR: return createForEachMediatorInputConnector();
+			case EsbPackage.FOR_EACH_MEDIATOR_OUTPUT_CONNECTOR: return createForEachMediatorOutputConnector();
+			case EsbPackage.FOR_EACH_MEDIATOR_TARGET_OUTPUT_CONNECTOR: return createForEachMediatorTargetOutputConnector();
+			case EsbPackage.FOR_EACH_TARGET: return createForEachTarget();
 			case EsbPackage.ITERATE_MEDIATOR: return createIterateMediator();
 			case EsbPackage.ITERATE_MEDIATOR_INPUT_CONNECTOR: return createIterateMediatorInputConnector();
 			case EsbPackage.ITERATE_MEDIATOR_OUTPUT_CONNECTOR: return createIterateMediatorOutputConnector();
@@ -3246,6 +3251,56 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 		CloneTargetContainerImpl cloneTargetContainer = new CloneTargetContainerImpl();
 		cloneTargetContainer.setMediatorFlow(createMediatorFlow());
 		return cloneTargetContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForEachMediator createForEachMediator() {
+		ForEachMediatorImpl forEachMediator = new ForEachMediatorImpl();
+		return forEachMediator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForEachMediatorInputConnector createForEachMediatorInputConnector() {
+		ForEachMediatorInputConnectorImpl forEachMediatorInputConnector = new ForEachMediatorInputConnectorImpl();
+		return forEachMediatorInputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForEachMediatorOutputConnector createForEachMediatorOutputConnector() {
+		ForEachMediatorOutputConnectorImpl forEachMediatorOutputConnector = new ForEachMediatorOutputConnectorImpl();
+		return forEachMediatorOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForEachMediatorTargetOutputConnector createForEachMediatorTargetOutputConnector() {
+		ForEachMediatorTargetOutputConnectorImpl forEachMediatorTargetOutputConnector = new ForEachMediatorTargetOutputConnectorImpl();
+		return forEachMediatorTargetOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForEachTarget createForEachTarget() {
+		ForEachTargetImpl forEachTarget = new ForEachTargetImpl();
+		return forEachTarget;
 	}
 
 	/**

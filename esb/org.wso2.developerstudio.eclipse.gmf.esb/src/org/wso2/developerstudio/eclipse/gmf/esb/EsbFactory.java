@@ -1941,6 +1941,51 @@ public interface EsbFactory extends EFactory {
 	CloneTargetContainer createCloneTargetContainer();
 
 	/**
+	 * Returns a new object of class '<em>For Each Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>For Each Mediator</em>'.
+	 * @generated
+	 */
+	ForEachMediator createForEachMediator();
+
+	/**
+	 * Returns a new object of class '<em>For Each Mediator Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>For Each Mediator Input Connector</em>'.
+	 * @generated
+	 */
+	ForEachMediatorInputConnector createForEachMediatorInputConnector();
+
+	/**
+	 * Returns a new object of class '<em>For Each Mediator Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>For Each Mediator Output Connector</em>'.
+	 * @generated
+	 */
+	ForEachMediatorOutputConnector createForEachMediatorOutputConnector();
+
+	/**
+	 * Returns a new object of class '<em>For Each Mediator Target Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>For Each Mediator Target Output Connector</em>'.
+	 * @generated
+	 */
+	ForEachMediatorTargetOutputConnector createForEachMediatorTargetOutputConnector();
+
+	/**
+	 * Returns a new object of class '<em>For Each Target</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>For Each Target</em>'.
+	 * @generated
+	 */
+	ForEachTarget createForEachTarget();
+
+	/**
 	 * Returns a new object of class '<em>Iterate Mediator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

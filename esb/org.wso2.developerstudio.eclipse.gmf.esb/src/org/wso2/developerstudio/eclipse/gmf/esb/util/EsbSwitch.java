@@ -1343,6 +1343,47 @@ public class EsbSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsbPackage.FOR_EACH_MEDIATOR: {
+				ForEachMediator forEachMediator = (ForEachMediator)theEObject;
+				T result = caseForEachMediator(forEachMediator);
+				if (result == null) result = caseMediator(forEachMediator);
+				if (result == null) result = caseEsbElement(forEachMediator);
+				if (result == null) result = caseEsbNode(forEachMediator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.FOR_EACH_MEDIATOR_INPUT_CONNECTOR: {
+				ForEachMediatorInputConnector forEachMediatorInputConnector = (ForEachMediatorInputConnector)theEObject;
+				T result = caseForEachMediatorInputConnector(forEachMediatorInputConnector);
+				if (result == null) result = caseInputConnector(forEachMediatorInputConnector);
+				if (result == null) result = caseEsbConnector(forEachMediatorInputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.FOR_EACH_MEDIATOR_OUTPUT_CONNECTOR: {
+				ForEachMediatorOutputConnector forEachMediatorOutputConnector = (ForEachMediatorOutputConnector)theEObject;
+				T result = caseForEachMediatorOutputConnector(forEachMediatorOutputConnector);
+				if (result == null) result = caseOutputConnector(forEachMediatorOutputConnector);
+				if (result == null) result = caseEsbConnector(forEachMediatorOutputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.FOR_EACH_MEDIATOR_TARGET_OUTPUT_CONNECTOR: {
+				ForEachMediatorTargetOutputConnector forEachMediatorTargetOutputConnector = (ForEachMediatorTargetOutputConnector)theEObject;
+				T result = caseForEachMediatorTargetOutputConnector(forEachMediatorTargetOutputConnector);
+				if (result == null) result = caseOutputConnector(forEachMediatorTargetOutputConnector);
+				if (result == null) result = caseEsbConnector(forEachMediatorTargetOutputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.FOR_EACH_TARGET: {
+				ForEachTarget forEachTarget = (ForEachTarget)theEObject;
+				T result = caseForEachTarget(forEachTarget);
+				if (result == null) result = caseAbstractCommonTarget(forEachTarget);
+				if (result == null) result = caseEsbNode(forEachTarget);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsbPackage.ITERATE_MEDIATOR: {
 				IterateMediator iterateMediator = (IterateMediator)theEObject;
 				T result = caseIterateMediator(iterateMediator);
@@ -6188,6 +6229,81 @@ public class EsbSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCloneTargetContainer(CloneTargetContainer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>For Each Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>For Each Mediator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForEachMediator(ForEachMediator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>For Each Mediator Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>For Each Mediator Input Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForEachMediatorInputConnector(ForEachMediatorInputConnector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>For Each Mediator Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>For Each Mediator Output Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForEachMediatorOutputConnector(ForEachMediatorOutputConnector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>For Each Mediator Target Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>For Each Mediator Target Output Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForEachMediatorTargetOutputConnector(ForEachMediatorTargetOutputConnector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>For Each Target</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>For Each Target</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForEachTarget(ForEachTarget object) {
 		return null;
 	}
 

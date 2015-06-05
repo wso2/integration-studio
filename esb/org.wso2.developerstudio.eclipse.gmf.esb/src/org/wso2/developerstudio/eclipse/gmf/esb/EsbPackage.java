@@ -21192,49 +21192,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__AUTO_OFFSET_RESET = ESB_ELEMENT_FEATURE_COUNT + 84;
 
 	/**
-	 * The feature id for the '<em><b>Inbound Cxf Rm Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST = ESB_ELEMENT_FEATURE_COUNT + 85;
-
-	/**
-	 * The feature id for the '<em><b>Inbound Cxf Rm Port</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT = ESB_ELEMENT_FEATURE_COUNT + 86;
-
-	/**
-	 * The feature id for the '<em><b>Inbound Cxf Rm Config File</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE = ESB_ELEMENT_FEATURE_COUNT + 87;
-
-	/**
-	 * The feature id for the '<em><b>Enable SSL</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__ENABLE_SSL = ESB_ELEMENT_FEATURE_COUNT + 88;
-
-	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 89;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 85;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl <em>Inbound Endpoint Container</em>}' class.
@@ -29924,50 +29888,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpoint_AutoOffsetReset();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Inbound Cxf Rm Host</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmHost()
-	 * @see #getInboundEndpoint()
-	 * @generated
-	 */
-	EAttribute getInboundEndpoint_InboundCxfRmHost();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Inbound Cxf Rm Port</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmPort()
-	 * @see #getInboundEndpoint()
-	 * @generated
-	 */
-	EAttribute getInboundEndpoint_InboundCxfRmPort();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Inbound Cxf Rm Config File</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile()
-	 * @see #getInboundEndpoint()
-	 * @generated
-	 */
-	EAttribute getInboundEndpoint_InboundCxfRmConfigFile();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Enable SSL</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL()
-	 * @see #getInboundEndpoint()
-	 * @generated
-	 */
-	EAttribute getInboundEndpoint_EnableSSL();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence <em>On Error Sequence</em>}'.
@@ -43992,38 +43912,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT__AUTO_OFFSET_RESET = eINSTANCE.getInboundEndpoint_AutoOffsetReset();
-
-		/**
-		 * The meta object literal for the '<em><b>Inbound Cxf Rm Host</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST = eINSTANCE.getInboundEndpoint_InboundCxfRmHost();
-
-		/**
-		 * The meta object literal for the '<em><b>Inbound Cxf Rm Port</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT = eINSTANCE.getInboundEndpoint_InboundCxfRmPort();
-
-		/**
-		 * The meta object literal for the '<em><b>Inbound Cxf Rm Config File</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE = eINSTANCE.getInboundEndpoint_InboundCxfRmConfigFile();
-
-		/**
-		 * The meta object literal for the '<em><b>Enable SSL</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INBOUND_ENDPOINT__ENABLE_SSL = eINSTANCE.getInboundEndpoint_EnableSSL();
 
 		/**
 		 * The meta object literal for the '<em><b>On Error Sequence</b></em>' attribute feature.

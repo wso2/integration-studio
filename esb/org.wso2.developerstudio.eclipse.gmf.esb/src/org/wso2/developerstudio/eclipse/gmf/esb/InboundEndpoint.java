@@ -109,10 +109,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}</li>
  * </ul>
  * </p>
  *
@@ -935,110 +931,6 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setAutoOffsetReset(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Inbound Cxf Rm Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Inbound Cxf Rm Host</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inbound Cxf Rm Host</em>' attribute.
-	 * @see #setInboundCxfRmHost(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmHost()
-	 * @model
-	 * @generated
-	 */
-	String getInboundCxfRmHost();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inbound Cxf Rm Host</em>' attribute.
-	 * @see #getInboundCxfRmHost()
-	 * @generated
-	 */
-	void setInboundCxfRmHost(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Inbound Cxf Rm Port</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Inbound Cxf Rm Port</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inbound Cxf Rm Port</em>' attribute.
-	 * @see #setInboundCxfRmPort(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmPort()
-	 * @model
-	 * @generated
-	 */
-	String getInboundCxfRmPort();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inbound Cxf Rm Port</em>' attribute.
-	 * @see #getInboundCxfRmPort()
-	 * @generated
-	 */
-	void setInboundCxfRmPort(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Inbound Cxf Rm Config File</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Inbound Cxf Rm Config File</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inbound Cxf Rm Config File</em>' attribute.
-	 * @see #setInboundCxfRmConfigFile(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_InboundCxfRmConfigFile()
-	 * @model
-	 * @generated
-	 */
-	String getInboundCxfRmConfigFile();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inbound Cxf Rm Config File</em>' attribute.
-	 * @see #getInboundCxfRmConfigFile()
-	 * @generated
-	 */
-	void setInboundCxfRmConfigFile(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Enable SSL</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Enable SSL</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Enable SSL</em>' attribute.
-	 * @see #setEnableSSL(boolean)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_EnableSSL()
-	 * @model
-	 * @generated
-	 */
-	boolean isEnableSSL();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Enable SSL</em>' attribute.
-	 * @see #isEnableSSL()
-	 * @generated
-	 */
-	void setEnableSSL(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>On Error Sequence</b></em>' attribute.

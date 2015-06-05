@@ -239,8 +239,10 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 	private MenuManager metadatMenu;
 	private MenuManager multipleResourceUploadMenu;
 	private MenuManager versionSubMenu;
-
+    
 	private DragDropUtils dragDropUtils;
+	
+	private boolean isApiManagerview;
 
 	// private String[] children= null;
 	// private IViewSite viewSite;
@@ -323,14 +325,20 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		createActions(parent);
 		updateToolbar();
 		createContextMenu();
+		if(!isApiManagerview){
 		loadPreviousRegistryUrls();
+		}else{
+			addRegistryAction.run();
+		}
 	}
 
 	private void loadPreviousRegistryUrls() {
 		List<RegistryURLInfo> allRegistryUrls = RegistryUrlStore.getInstance()
 				.getAllRegistryUrls();
 		for (RegistryURLInfo registryURLInfo : allRegistryUrls) {
+			if(!registryURLInfo.isSpecificControl()){
 			regUrlNode.addRegistry(registryURLInfo, null);
+			}
 		}
 	}
 
@@ -1621,18 +1629,18 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		return null;
 	}
 	
-	private RegistryResourceNode searchRegistryNodeForResourceNode(RegistryNode node,String caption) throws InvalidRegistryURLException, UnknownRegistryException{
-		ConcurrentLinkedQueue<RegistryResourceNode> queue=new ConcurrentLinkedQueue<RegistryResourceNode>();
+	private RegistryResourceNode searchRegistryNodeForResourceNode(RegistryNode node, String caption)
+			throws InvalidRegistryURLException, UnknownRegistryException {
+		ConcurrentLinkedQueue<RegistryResourceNode> queue = new ConcurrentLinkedQueue<RegistryResourceNode>();
 		queue.addAll(node.getRegistryContainer().getRegistryContent());
 		while (queue.peek() != null) {
-			RegistryResourceNode registryResourceNode=queue.poll();
-			if(caption.equalsIgnoreCase(registryResourceNode.getCaption())){
-	        	return registryResourceNode;
-	        }else{
-	        	queue.addAll(registryResourceNode.getResourceNodeList());
-	        }   
-        }
-		
+			RegistryResourceNode registryResourceNode = queue.poll();
+			if (caption.equalsIgnoreCase(registryResourceNode.getCaption())) {
+				return registryResourceNode;
+			} else {
+				queue.addAll(registryResourceNode.getResourceNodeList());
+			}
+		}
 		
 		
 //		for (RegistryResourceNode registryResourceNode : queue) {
@@ -1649,10 +1657,15 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		IStructuredSelection sel = (IStructuredSelection) treeViewer.getSelection();
 	}
 
-	private void addItem(Composite parent) {
+    protected void addItem(Composite parent) {
 		exeptionHandler = new ExceptionHandler();
-		RegistryInfoDialog dialog = new RegistryInfoDialog(parent.getShell(),
-														   regUrlNode);
+		RegistryInfoDialog dialog =null;
+		if(isApiManagerview){
+			 dialog = new RegistryInfoDialog(parent.getShell(),regUrlNode,"/_system/governance/apimgt/customsequences",true);
+		}else{
+			 dialog = new RegistryInfoDialog(parent.getShell(),regUrlNode,"/",false);
+		}
+		
 		dialog.setBlockOnOpen(true);
 		dialog.create();
 		dialog.getShell().setSize(600, 250);
@@ -1682,17 +1695,18 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			pwd = dialog.getPasswd();
 			String path = dialog.getPath();
 			if (dialog.isSavePassword()) {
-				RegistryCredentialData.getInstance().setCredentials(serverURL.toString(), 
-																	uname, 
-																	pwd);
-			}
-			regUrlNode.addRegistry(RegistryUrlStore.getInstance().addRegistryUrl(serverURL, 
-																				 uname, 
-																				 path), 
-																				 pwd);
+				RegistryCredentialData.getInstance().setCredentials(serverURL.toString(), uname, pwd);
+			}			
+			regUrlNode.addRegistry(
+					RegistryUrlStore.getInstance().addRegistryUrl(serverURL, uname, path, isApiManagerview()), pwd);
 			setUname(uname);
 			setPwd(pwd);
 			setServerURL(serverURL);
+			if (isApiManagerview()) {
+				if (treeViewer != null) {
+					treeViewer.expandAll();
+				}
+			}
 		}
 
 	}
@@ -2654,6 +2668,14 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+
+	public boolean isApiManagerview() {
+		return isApiManagerview;
+	}
+
+	public void setApiManagerview(boolean isApiManagerview) {
+		this.isApiManagerview = isApiManagerview;
 	}
 
 	public URL getServerURL() {

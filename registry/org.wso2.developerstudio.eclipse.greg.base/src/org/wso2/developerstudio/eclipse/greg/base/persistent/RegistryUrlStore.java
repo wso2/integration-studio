@@ -174,11 +174,12 @@ public final class RegistryUrlStore {
 	 * @param registryUrl
 	 * @param username
 	 * @param path
+	 * @param isSpecificControl - Call from outside the Registry perspective
 	 * @return
 	 */
 	public RegistryURLInfo addRegistryUrl(URL registryUrl, 
 										  String username,
-										  String path) {
+										  String path,boolean isSpecificControl) {
 		createRegistryPropertyFile(registryUrl.getHost()+"."+registryUrl.getPort());
 		RegistryURLInfo info = new RegistryURLInfo();
 		info.setUrl(registryUrl);
@@ -186,7 +187,12 @@ public final class RegistryUrlStore {
 		info.setUsername(username);
 	    if(!urlList.contains(info)){
 	    	urlList.add(info);
-		    saveUrlsToFile();
+	    	if(!isSpecificControl){
+	    		saveUrlsToFile();
+	    	}else{
+	    		info.setSpecificControl(isSpecificControl);
+	    	}
+		    
 	       }
 		return info;
 	}

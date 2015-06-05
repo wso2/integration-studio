@@ -370,7 +370,8 @@ public class RegistryTreeViewer extends TreeViewer implements Observer {
 		if (username == null) {
 			username = "null";
 		}
-		RegistryUrlStore.getInstance().addRegistryUrl(registryUrl, username, path);
+	 
+		RegistryUrlStore.getInstance().addRegistryUrl(registryUrl, username, path,false);
 		return getRegistryUrlNode().addRegistry(registryURLInfo, password);
 	}
 

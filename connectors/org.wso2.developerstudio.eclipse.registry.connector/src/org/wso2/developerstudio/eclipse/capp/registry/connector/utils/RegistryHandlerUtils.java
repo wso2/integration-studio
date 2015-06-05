@@ -114,7 +114,7 @@ public class RegistryHandlerUtils {
 			}
 		}
 		if(!urlAvailable){
-			regURLStore.addRegistryUrl(connection.getURL(), connection.getUsername(), connection.getPath());
+			regURLStore.addRegistryUrl(connection.getURL(), connection.getUsername(), connection.getPath(),false);
 		}
     }
 

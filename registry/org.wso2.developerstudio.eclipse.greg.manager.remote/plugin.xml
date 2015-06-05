@@ -2,6 +2,12 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="org.wso2.developerstudio.eclipse.greg.viewer.action" name="WSO2 Registry Viewer Action Contributor" schema="schema/org.wso2.developerstudio.eclipse.greg.viewer.action.exsd"/>
+	
+	<extension point="org.eclipse.ui.views">
+		<view id="org.wso2.developerstudio.registry.remote.registry.api.view" name="WSO2 APIM Registry" icon="icons/api-default.png"
+			class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.ApiMangerRegistryBrowserView" />
+	</extension>
+	
 	<extension point="org.eclipse.ui.views">
 		<view id="org.wso2.developerstudio.registry.remote.registry.view" name="WSO2 Registry Browser" icon="icons/registry.png"
 			class="org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView" />

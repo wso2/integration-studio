@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Text;
 import org.wso2.developerstudio.eclipse.greg.base.logger.ExceptionHandler;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryNode;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryURLNode;
+import org.wso2.developerstudio.eclipse.greg.manager.remote.views.ApiMangerRegistryBrowserView;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView;
 
 public class RegistryInfoDialog extends Dialog {
@@ -55,13 +56,22 @@ public class RegistryInfoDialog extends Dialog {
 	private ExceptionHandler exceptionHandler;
 	private ArrayList<RegistryNode> URLInfoList;
 	private boolean dialogStatus = true;
+	private boolean isAPIMbrowser = false;
+	private String startpath;
 
 	public RegistryInfoDialog(Shell parentShell, RegistryURLNode regUrlData) {
 		super(parentShell);
 		mainShell = parentShell;
 		this.regURLData = regUrlData;
 	}
-
+	
+	public RegistryInfoDialog(Shell parentShell, RegistryURLNode regUrlData,String path,boolean mode) {
+		super(parentShell);
+		mainShell = parentShell;
+		this.regURLData = regUrlData;
+		startpath = path;
+		isAPIMbrowser = mode;
+	}
 	public void create() {
 		super.create();
 	}
@@ -93,6 +103,7 @@ public class RegistryInfoDialog extends Dialog {
 			}
 		});
 
+		if (!isAPIMbrowser){
 		Label pathLabel = new Label(container, SWT.NONE);
 		pathLabel.setText("Path: ");
 		gd = new GridData();
@@ -109,6 +120,11 @@ public class RegistryInfoDialog extends Dialog {
 				setPath(path);
 			}
 		});
+		pathText.setText(startpath);
+		}else {
+			
+			setPath(startpath);
+		}
 		Label userNameLabel = new Label(container, SWT.NONE);
 		userNameLabel.setText("User Name: ");
 
@@ -161,7 +177,7 @@ public class RegistryInfoDialog extends Dialog {
 		urlText.setText("https://localhost:9443/");
 		userNameText.setText("admin");
 		pwdText.setText("admin");
-		pathText.setText("/");
+		
 		return super.createDialogArea(parent);
 	}
 

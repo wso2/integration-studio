@@ -13,6 +13,7 @@ public class RegistryURLInfo {
 	private String username;
 	private boolean enabled = true;
 	private boolean persist = true;
+	private boolean isSpecificControl; // True when it Registry Url create from out side the Registry perspective
 
 	public void setUrl(URL url) {
 		this.url = url;
@@ -53,6 +54,14 @@ public class RegistryURLInfo {
 
 	public boolean isPersist() {
 		return persist;
+	}
+
+	public boolean isSpecificControl() {
+		return isSpecificControl;
+	}
+
+	public void setSpecificControl(boolean isAPImanager) {
+		this.isSpecificControl = isAPImanager;
 	}
 
 	public void setEnabled(boolean enabled) {

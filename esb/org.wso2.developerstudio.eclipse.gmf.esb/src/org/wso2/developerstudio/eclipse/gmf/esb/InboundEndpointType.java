@@ -69,7 +69,39 @@ public enum InboundEndpointType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CUSTOM(3, "Custom", "Custom");
+	CUSTOM(3, "Custom", "Custom"), /**
+	 * The '<em><b>HTTPS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HTTPS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	HTTPS(4, "HTTPS", "HTTPS"), /**
+	 * The '<em><b>HL7</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HL7_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	HL7(5, "HL7", "HL7"), /**
+	 * The '<em><b>KAFKA</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #KAFKA_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	KAFKA(6, "KAFKA", "KAFKA"), /**
+	 * The '<em><b>CXF WS RM</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CXF_WS_RM_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CXF_WS_RM(7, "CXF_WS_RM", "CXF_WS_RM");
 
 	/**
 	 * The '<em><b>HTTP</b></em>' literal value.
@@ -132,6 +164,66 @@ public enum InboundEndpointType implements Enumerator {
 	public static final int CUSTOM_VALUE = 3;
 
 	/**
+	 * The '<em><b>HTTPS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>HTTPS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #HTTPS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HTTPS_VALUE = 4;
+
+	/**
+	 * The '<em><b>HL7</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>HL7</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #HL7
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HL7_VALUE = 5;
+
+	/**
+	 * The '<em><b>KAFKA</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>KAFKA</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #KAFKA
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int KAFKA_VALUE = 6;
+
+	/**
+	 * The '<em><b>CXF WS RM</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>CXF WS RM</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CXF_WS_RM
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CXF_WS_RM_VALUE = 7;
+
+	/**
 	 * An array of all the '<em><b>Inbound Endpoint Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,6 +235,10 @@ public enum InboundEndpointType implements Enumerator {
 			FILE,
 			JMS,
 			CUSTOM,
+			HTTPS,
+			HL7,
+			KAFKA,
+			CXF_WS_RM,
 		};
 
 	/**
@@ -197,6 +293,10 @@ public enum InboundEndpointType implements Enumerator {
 			case FILE_VALUE: return FILE;
 			case JMS_VALUE: return JMS;
 			case CUSTOM_VALUE: return CUSTOM;
+			case HTTPS_VALUE: return HTTPS;
+			case HL7_VALUE: return HL7;
+			case KAFKA_VALUE: return KAFKA;
+			case CXF_WS_RM_VALUE: return CXF_WS_RM;
 		}
 		return null;
 	}

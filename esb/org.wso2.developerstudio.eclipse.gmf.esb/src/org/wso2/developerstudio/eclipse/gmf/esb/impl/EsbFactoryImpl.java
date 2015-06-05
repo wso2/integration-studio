@@ -627,6 +627,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createEnableFromString(eDataType, initialValue);
 			case EsbPackage.VFS_ACTION:
 				return createVFSActionFromString(eDataType, initialValue);
+			case EsbPackage.VFS_FILE_SORT:
+				return createVFSFileSortFromString(eDataType, initialValue);
 			case EsbPackage.JMS_CONNECTION_FACTORY_TYPE:
 				return createJMSConnectionFactoryTypeFromString(eDataType, initialValue);
 			case EsbPackage.JMS_SESSION_ACKNOWLEDGEMENT:
@@ -863,6 +865,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertEnableToString(eDataType, instanceValue);
 			case EsbPackage.VFS_ACTION:
 				return convertVFSActionToString(eDataType, instanceValue);
+			case EsbPackage.VFS_FILE_SORT:
+				return convertVFSFileSortToString(eDataType, instanceValue);
 			case EsbPackage.JMS_CONNECTION_FACTORY_TYPE:
 				return convertJMSConnectionFactoryTypeToString(eDataType, instanceValue);
 			case EsbPackage.JMS_SESSION_ACKNOWLEDGEMENT:
@@ -6653,6 +6657,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertVFSActionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VFSFileSort createVFSFileSortFromString(EDataType eDataType, String initialValue) {
+		VFSFileSort result = VFSFileSort.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVFSFileSortToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

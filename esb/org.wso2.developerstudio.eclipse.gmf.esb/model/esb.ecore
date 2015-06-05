@@ -2628,8 +2628,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//InboundEndpointType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="onErrorSequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="protocol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundHttpPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -2700,12 +2698,41 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSMessageSelector"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="apiDispatchingEnabled"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSMoveTimestampFormat"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFileSortAttribute"
+        eType="#//VFSFileSort"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSFileSortAscending"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSSubFolderTimestampFormat"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportVFSCreateFolder"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSReceiveTimeout"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transportJMSContentType"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="truststore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keystore" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sslVerifyClient" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sslProtocol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="httpsProtocols" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="certificateRevocationVerifier"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="onErrorSequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointType">
-    <eLiterals name="HTTP"/>
-    <eLiterals name="File" value="1"/>
-    <eLiterals name="JMS" value="2"/>
-    <eLiterals name="Custom" value="3"/>
+    <eLiterals name="HTTP" literal="HTTP"/>
+    <eLiterals name="File" value="1" literal="File"/>
+    <eLiterals name="JMS" value="2" literal="JMS"/>
+    <eLiterals name="Custom" value="3" literal="Custom"/>
+    <eLiterals name="HTTPS" value="4"/>
+    <eLiterals name="HL7" value="5"/>
+    <eLiterals name="KAFKA" value="6"/>
+    <eLiterals name="CXF_WS_RM" value="7"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Enable">
     <eLiterals name="enable"/>
@@ -2714,6 +2741,12 @@
   <eClassifiers xsi:type="ecore:EEnum" name="VFSAction">
     <eLiterals name="none"/>
     <eLiterals name="move" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VFSFileSort">
+    <eLiterals name="none" literal="none"/>
+    <eLiterals name="name" value="1" literal="name"/>
+    <eLiterals name="size" value="2" literal="size"/>
+    <eLiterals name="lastmodifiedtimestamp" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="JMSConnectionFactoryType">
     <eLiterals name="topic" literal="topic"/>

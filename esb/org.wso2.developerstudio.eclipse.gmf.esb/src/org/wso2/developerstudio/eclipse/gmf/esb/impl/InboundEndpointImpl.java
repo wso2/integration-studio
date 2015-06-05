@@ -35,7 +35,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
+import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
+import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,8 +53,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequence <em>Sequence</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequence <em>On Error Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getProtocol <em>Protocol</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHttpPort <em>Inbound Http Port</em>}</li>
@@ -92,6 +92,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSAction;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isApiDispatchingEnabled <em>Api Dispatching Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getTruststore <em>Truststore</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getKeystore <em>Keystore</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslProtocol <em>Ssl Protocol</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getHttpsProtocols <em>Https Protocols</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequence <em>On Error Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequence <em>Sequence</em>}</li>
  * </ul>
  * </p>
  *
@@ -187,46 +203,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected InboundEndpointType type = TYPE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SEQUENCE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected String sequence = SEQUENCE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getOnErrorSequence() <em>On Error Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOnErrorSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ON_ERROR_SEQUENCE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getOnErrorSequence() <em>On Error Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOnErrorSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected String onErrorSequence = ON_ERROR_SEQUENCE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getClass_() <em>Class</em>}' attribute.
@@ -1007,6 +983,326 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * @ordered
 	 */
 	protected String transportJMSMessageSelector = TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isApiDispatchingEnabled() <em>Api Dispatching Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isApiDispatchingEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean API_DISPATCHING_ENABLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isApiDispatchingEnabled() <em>Api Dispatching Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isApiDispatchingEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean apiDispatchingEnabled = API_DISPATCHING_ENABLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSMoveTimestampFormat() <em>Transport VFS Move Timestamp Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMoveTimestampFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSMoveTimestampFormat() <em>Transport VFS Move Timestamp Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSMoveTimestampFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSMoveTimestampFormat = TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSFileSortAttribute() <em>Transport VFS File Sort Attribute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileSortAttribute()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final VFSFileSort TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT = VFSFileSort.NONE;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSFileSortAttribute() <em>Transport VFS File Sort Attribute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSFileSortAttribute()
+	 * @generated
+	 * @ordered
+	 */
+	protected VFSFileSort transportVFSFileSortAttribute = TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportVFSFileSortAscending() <em>Transport VFS File Sort Ascending</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSFileSortAscending()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_VFS_FILE_SORT_ASCENDING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTransportVFSFileSortAscending() <em>Transport VFS File Sort Ascending</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSFileSortAscending()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportVFSFileSortAscending = TRANSPORT_VFS_FILE_SORT_ASCENDING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportVFSSubFolderTimestampFormat() <em>Transport VFS Sub Folder Timestamp Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSSubFolderTimestampFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportVFSSubFolderTimestampFormat() <em>Transport VFS Sub Folder Timestamp Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportVFSSubFolderTimestampFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportVFSSubFolderTimestampFormat = TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTransportVFSCreateFolder() <em>Transport VFS Create Folder</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSCreateFolder()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTransportVFSCreateFolder() <em>Transport VFS Create Folder</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTransportVFSCreateFolder()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean transportVFSCreateFolder = TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSReceiveTimeout() <em>Transport JMS Receive Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSReceiveTimeout()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSReceiveTimeout() <em>Transport JMS Receive Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSReceiveTimeout()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSReceiveTimeout = TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTransportJMSContentType() <em>Transport JMS Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTransportJMSContentType() <em>Transport JMS Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransportJMSContentType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String transportJMSContentType = TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTruststore() <em>Truststore</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTruststore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRUSTSTORE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTruststore() <em>Truststore</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTruststore()
+	 * @generated
+	 * @ordered
+	 */
+	protected String truststore = TRUSTSTORE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getKeystore() <em>Keystore</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKeystore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String KEYSTORE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getKeystore() <em>Keystore</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKeystore()
+	 * @generated
+	 * @ordered
+	 */
+	protected String keystore = KEYSTORE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSslVerifyClient() <em>Ssl Verify Client</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSslVerifyClient()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SSL_VERIFY_CLIENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSslVerifyClient() <em>Ssl Verify Client</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSslVerifyClient()
+	 * @generated
+	 * @ordered
+	 */
+	protected String sslVerifyClient = SSL_VERIFY_CLIENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSslProtocol() <em>Ssl Protocol</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSslProtocol()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SSL_PROTOCOL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSslProtocol() <em>Ssl Protocol</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSslProtocol()
+	 * @generated
+	 * @ordered
+	 */
+	protected String sslProtocol = SSL_PROTOCOL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getHttpsProtocols() <em>Https Protocols</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHttpsProtocols()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String HTTPS_PROTOCOLS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getHttpsProtocols() <em>Https Protocols</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHttpsProtocols()
+	 * @generated
+	 * @ordered
+	 */
+	protected String httpsProtocols = HTTPS_PROTOCOLS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCertificateRevocationVerifier() <em>Certificate Revocation Verifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCertificateRevocationVerifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCertificateRevocationVerifier() <em>Certificate Revocation Verifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCertificateRevocationVerifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected String certificateRevocationVerifier = CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOnErrorSequence() <em>On Error Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOnErrorSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ON_ERROR_SEQUENCE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOnErrorSequence() <em>On Error Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOnErrorSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected String onErrorSequence = ON_ERROR_SEQUENCE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SEQUENCE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected String sequence = SEQUENCE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2150,6 +2446,300 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isApiDispatchingEnabled() {
+		return apiDispatchingEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiDispatchingEnabled(boolean newApiDispatchingEnabled) {
+		boolean oldApiDispatchingEnabled = apiDispatchingEnabled;
+		apiDispatchingEnabled = newApiDispatchingEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__API_DISPATCHING_ENABLED, oldApiDispatchingEnabled, apiDispatchingEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSMoveTimestampFormat() {
+		return transportVFSMoveTimestampFormat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSMoveTimestampFormat(String newTransportVFSMoveTimestampFormat) {
+		String oldTransportVFSMoveTimestampFormat = transportVFSMoveTimestampFormat;
+		transportVFSMoveTimestampFormat = newTransportVFSMoveTimestampFormat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT, oldTransportVFSMoveTimestampFormat, transportVFSMoveTimestampFormat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VFSFileSort getTransportVFSFileSortAttribute() {
+		return transportVFSFileSortAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSFileSortAttribute(VFSFileSort newTransportVFSFileSortAttribute) {
+		VFSFileSort oldTransportVFSFileSortAttribute = transportVFSFileSortAttribute;
+		transportVFSFileSortAttribute = newTransportVFSFileSortAttribute == null ? TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT : newTransportVFSFileSortAttribute;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE, oldTransportVFSFileSortAttribute, transportVFSFileSortAttribute));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportVFSFileSortAscending() {
+		return transportVFSFileSortAscending;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSFileSortAscending(boolean newTransportVFSFileSortAscending) {
+		boolean oldTransportVFSFileSortAscending = transportVFSFileSortAscending;
+		transportVFSFileSortAscending = newTransportVFSFileSortAscending;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING, oldTransportVFSFileSortAscending, transportVFSFileSortAscending));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportVFSSubFolderTimestampFormat() {
+		return transportVFSSubFolderTimestampFormat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSSubFolderTimestampFormat(String newTransportVFSSubFolderTimestampFormat) {
+		String oldTransportVFSSubFolderTimestampFormat = transportVFSSubFolderTimestampFormat;
+		transportVFSSubFolderTimestampFormat = newTransportVFSSubFolderTimestampFormat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT, oldTransportVFSSubFolderTimestampFormat, transportVFSSubFolderTimestampFormat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTransportVFSCreateFolder() {
+		return transportVFSCreateFolder;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportVFSCreateFolder(boolean newTransportVFSCreateFolder) {
+		boolean oldTransportVFSCreateFolder = transportVFSCreateFolder;
+		transportVFSCreateFolder = newTransportVFSCreateFolder;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER, oldTransportVFSCreateFolder, transportVFSCreateFolder));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSReceiveTimeout() {
+		return transportJMSReceiveTimeout;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSReceiveTimeout(String newTransportJMSReceiveTimeout) {
+		String oldTransportJMSReceiveTimeout = transportJMSReceiveTimeout;
+		transportJMSReceiveTimeout = newTransportJMSReceiveTimeout;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT, oldTransportJMSReceiveTimeout, transportJMSReceiveTimeout));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTransportJMSContentType() {
+		return transportJMSContentType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransportJMSContentType(String newTransportJMSContentType) {
+		String oldTransportJMSContentType = transportJMSContentType;
+		transportJMSContentType = newTransportJMSContentType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE, oldTransportJMSContentType, transportJMSContentType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTruststore() {
+		return truststore;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTruststore(String newTruststore) {
+		String oldTruststore = truststore;
+		truststore = newTruststore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE, oldTruststore, truststore));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getKeystore() {
+		return keystore;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKeystore(String newKeystore) {
+		String oldKeystore = keystore;
+		keystore = newKeystore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__KEYSTORE, oldKeystore, keystore));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSslVerifyClient() {
+		return sslVerifyClient;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSslVerifyClient(String newSslVerifyClient) {
+		String oldSslVerifyClient = sslVerifyClient;
+		sslVerifyClient = newSslVerifyClient;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT, oldSslVerifyClient, sslVerifyClient));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSslProtocol() {
+		return sslProtocol;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSslProtocol(String newSslProtocol) {
+		String oldSslProtocol = sslProtocol;
+		sslProtocol = newSslProtocol;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL, oldSslProtocol, sslProtocol));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getHttpsProtocols() {
+		return httpsProtocols;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHttpsProtocols(String newHttpsProtocols) {
+		String oldHttpsProtocols = httpsProtocols;
+		httpsProtocols = newHttpsProtocols;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS, oldHttpsProtocols, httpsProtocols));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCertificateRevocationVerifier() {
+		return certificateRevocationVerifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCertificateRevocationVerifier(String newCertificateRevocationVerifier) {
+		String oldCertificateRevocationVerifier = certificateRevocationVerifier;
+		certificateRevocationVerifier = newCertificateRevocationVerifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER, oldCertificateRevocationVerifier, certificateRevocationVerifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -2189,10 +2779,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getName();
 			case EsbPackage.INBOUND_ENDPOINT__TYPE:
 				return getType();
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
-				return getSequence();
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-				return getOnErrorSequence();
 			case EsbPackage.INBOUND_ENDPOINT__CLASS:
 				return getClass_();
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
@@ -2271,6 +2857,38 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getTransportJMSDurableSubscriberClientID();
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
 				return getTransportJMSMessageSelector();
+			case EsbPackage.INBOUND_ENDPOINT__API_DISPATCHING_ENABLED:
+				return isApiDispatchingEnabled();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
+				return getTransportVFSMoveTimestampFormat();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
+				return getTransportVFSFileSortAttribute();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
+				return isTransportVFSFileSortAscending();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
+				return getTransportVFSSubFolderTimestampFormat();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
+				return isTransportVFSCreateFolder();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
+				return getTransportJMSReceiveTimeout();
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+				return getTransportJMSContentType();
+			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
+				return getTruststore();
+			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
+				return getKeystore();
+			case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
+				return getSslVerifyClient();
+			case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
+				return getSslProtocol();
+			case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
+				return getHttpsProtocols();
+			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
+				return getCertificateRevocationVerifier();
+			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
+				return getOnErrorSequence();
+			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
+				return getSequence();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2303,12 +2921,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TYPE:
 				setType((InboundEndpointType)newValue);
-				return;
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
-				setSequence((String)newValue);
-				return;
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-				setOnErrorSequence((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__CLASS:
 				setClass((String)newValue);
@@ -2427,6 +3039,54 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
 				setTransportJMSMessageSelector((String)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__API_DISPATCHING_ENABLED:
+				setApiDispatchingEnabled((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
+				setTransportVFSMoveTimestampFormat((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
+				setTransportVFSFileSortAttribute((VFSFileSort)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
+				setTransportVFSFileSortAscending((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
+				setTransportVFSSubFolderTimestampFormat((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
+				setTransportVFSCreateFolder((Boolean)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
+				setTransportJMSReceiveTimeout((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+				setTransportJMSContentType((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
+				setTruststore((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
+				setKeystore((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
+				setSslVerifyClient((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
+				setSslProtocol((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
+				setHttpsProtocols((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
+				setCertificateRevocationVerifier((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
+				setOnErrorSequence((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
+				setSequence((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -2459,12 +3119,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__TYPE:
 				setType(TYPE_EDEFAULT);
-				return;
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
-				setSequence(SEQUENCE_EDEFAULT);
-				return;
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-				setOnErrorSequence(ON_ERROR_SEQUENCE_EDEFAULT);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__CLASS:
 				setClass(CLASS_EDEFAULT);
@@ -2583,6 +3237,54 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
 				setTransportJMSMessageSelector(TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__API_DISPATCHING_ENABLED:
+				setApiDispatchingEnabled(API_DISPATCHING_ENABLED_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
+				setTransportVFSMoveTimestampFormat(TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
+				setTransportVFSFileSortAttribute(TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
+				setTransportVFSFileSortAscending(TRANSPORT_VFS_FILE_SORT_ASCENDING_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
+				setTransportVFSSubFolderTimestampFormat(TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
+				setTransportVFSCreateFolder(TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
+				setTransportJMSReceiveTimeout(TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+				setTransportJMSContentType(TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
+				setTruststore(TRUSTSTORE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
+				setKeystore(KEYSTORE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
+				setSslVerifyClient(SSL_VERIFY_CLIENT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
+				setSslProtocol(SSL_PROTOCOL_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
+				setHttpsProtocols(HTTPS_PROTOCOLS_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
+				setCertificateRevocationVerifier(CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
+				setOnErrorSequence(ON_ERROR_SEQUENCE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
+				setSequence(SEQUENCE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2609,10 +3311,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case EsbPackage.INBOUND_ENDPOINT__TYPE:
 				return type != TYPE_EDEFAULT;
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
-				return SEQUENCE_EDEFAULT == null ? sequence != null : !SEQUENCE_EDEFAULT.equals(sequence);
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-				return ON_ERROR_SEQUENCE_EDEFAULT == null ? onErrorSequence != null : !ON_ERROR_SEQUENCE_EDEFAULT.equals(onErrorSequence);
 			case EsbPackage.INBOUND_ENDPOINT__CLASS:
 				return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
 			case EsbPackage.INBOUND_ENDPOINT__PROTOCOL:
@@ -2691,6 +3389,38 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT == null ? transportJMSDurableSubscriberClientID != null : !TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID_EDEFAULT.equals(transportJMSDurableSubscriberClientID);
 			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR:
 				return TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT == null ? transportJMSMessageSelector != null : !TRANSPORT_JMS_MESSAGE_SELECTOR_EDEFAULT.equals(transportJMSMessageSelector);
+			case EsbPackage.INBOUND_ENDPOINT__API_DISPATCHING_ENABLED:
+				return apiDispatchingEnabled != API_DISPATCHING_ENABLED_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT:
+				return TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT == null ? transportVFSMoveTimestampFormat != null : !TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT_EDEFAULT.equals(transportVFSMoveTimestampFormat);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE:
+				return transportVFSFileSortAttribute != TRANSPORT_VFS_FILE_SORT_ATTRIBUTE_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING:
+				return transportVFSFileSortAscending != TRANSPORT_VFS_FILE_SORT_ASCENDING_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT:
+				return TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT == null ? transportVFSSubFolderTimestampFormat != null : !TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT_EDEFAULT.equals(transportVFSSubFolderTimestampFormat);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER:
+				return transportVFSCreateFolder != TRANSPORT_VFS_CREATE_FOLDER_EDEFAULT;
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT:
+				return TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT == null ? transportJMSReceiveTimeout != null : !TRANSPORT_JMS_RECEIVE_TIMEOUT_EDEFAULT.equals(transportJMSReceiveTimeout);
+			case EsbPackage.INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE:
+				return TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT == null ? transportJMSContentType != null : !TRANSPORT_JMS_CONTENT_TYPE_EDEFAULT.equals(transportJMSContentType);
+			case EsbPackage.INBOUND_ENDPOINT__TRUSTSTORE:
+				return TRUSTSTORE_EDEFAULT == null ? truststore != null : !TRUSTSTORE_EDEFAULT.equals(truststore);
+			case EsbPackage.INBOUND_ENDPOINT__KEYSTORE:
+				return KEYSTORE_EDEFAULT == null ? keystore != null : !KEYSTORE_EDEFAULT.equals(keystore);
+			case EsbPackage.INBOUND_ENDPOINT__SSL_VERIFY_CLIENT:
+				return SSL_VERIFY_CLIENT_EDEFAULT == null ? sslVerifyClient != null : !SSL_VERIFY_CLIENT_EDEFAULT.equals(sslVerifyClient);
+			case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
+				return SSL_PROTOCOL_EDEFAULT == null ? sslProtocol != null : !SSL_PROTOCOL_EDEFAULT.equals(sslProtocol);
+			case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
+				return HTTPS_PROTOCOLS_EDEFAULT == null ? httpsProtocols != null : !HTTPS_PROTOCOLS_EDEFAULT.equals(httpsProtocols);
+			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
+				return CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT == null ? certificateRevocationVerifier != null : !CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT.equals(certificateRevocationVerifier);
+			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
+				return ON_ERROR_SEQUENCE_EDEFAULT == null ? onErrorSequence != null : !ON_ERROR_SEQUENCE_EDEFAULT.equals(onErrorSequence);
+			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
+				return SEQUENCE_EDEFAULT == null ? sequence != null : !SEQUENCE_EDEFAULT.equals(sequence);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2709,10 +3439,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(name);
 		result.append(", type: ");
 		result.append(type);
-		result.append(", sequence: ");
-		result.append(sequence);
-		result.append(", onErrorSequence: ");
-		result.append(onErrorSequence);
 		result.append(", class: ");
 		result.append(class_);
 		result.append(", protocol: ");
@@ -2791,6 +3517,38 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(transportJMSDurableSubscriberClientID);
 		result.append(", transportJMSMessageSelector: ");
 		result.append(transportJMSMessageSelector);
+		result.append(", apiDispatchingEnabled: ");
+		result.append(apiDispatchingEnabled);
+		result.append(", transportVFSMoveTimestampFormat: ");
+		result.append(transportVFSMoveTimestampFormat);
+		result.append(", transportVFSFileSortAttribute: ");
+		result.append(transportVFSFileSortAttribute);
+		result.append(", transportVFSFileSortAscending: ");
+		result.append(transportVFSFileSortAscending);
+		result.append(", transportVFSSubFolderTimestampFormat: ");
+		result.append(transportVFSSubFolderTimestampFormat);
+		result.append(", transportVFSCreateFolder: ");
+		result.append(transportVFSCreateFolder);
+		result.append(", transportJMSReceiveTimeout: ");
+		result.append(transportJMSReceiveTimeout);
+		result.append(", transportJMSContentType: ");
+		result.append(transportJMSContentType);
+		result.append(", truststore: ");
+		result.append(truststore);
+		result.append(", keystore: ");
+		result.append(keystore);
+		result.append(", sslVerifyClient: ");
+		result.append(sslVerifyClient);
+		result.append(", sslProtocol: ");
+		result.append(sslProtocol);
+		result.append(", httpsProtocols: ");
+		result.append(httpsProtocols);
+		result.append(", certificateRevocationVerifier: ");
+		result.append(certificateRevocationVerifier);
+		result.append(", onErrorSequence: ");
+		result.append(onErrorSequence);
+		result.append(", sequence: ");
+		result.append(sequence);
 		result.append(')');
 		return result.toString();
 	}

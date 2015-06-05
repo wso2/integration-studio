@@ -20197,31 +20197,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__TYPE = ESB_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>On Error Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__ON_ERROR_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 8;
-
-	/**
 	 * The feature id for the '<em><b>Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__CLASS = ESB_ELEMENT_FEATURE_COUNT + 9;
+	int INBOUND_ENDPOINT__CLASS = ESB_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Protocol</b></em>' attribute.
@@ -20230,7 +20212,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__PROTOCOL = ESB_ELEMENT_FEATURE_COUNT + 10;
+	int INBOUND_ENDPOINT__PROTOCOL = ESB_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Http Port</b></em>' attribute.
@@ -20239,7 +20221,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HTTP_PORT = ESB_ELEMENT_FEATURE_COUNT + 11;
+	int INBOUND_ENDPOINT__INBOUND_HTTP_PORT = ESB_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Interval</b></em>' attribute.
@@ -20248,7 +20230,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 12;
+	int INBOUND_ENDPOINT__INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Sequential</b></em>' attribute.
@@ -20257,7 +20239,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__SEQUENTIAL = ESB_ELEMENT_FEATURE_COUNT + 13;
+	int INBOUND_ENDPOINT__SEQUENTIAL = ESB_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Coordination</b></em>' attribute.
@@ -20266,7 +20248,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__COORDINATION = ESB_ELEMENT_FEATURE_COUNT + 14;
+	int INBOUND_ENDPOINT__COORDINATION = ESB_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS File URI</b></em>' attribute.
@@ -20275,7 +20257,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI = ESB_ELEMENT_FEATURE_COUNT + 15;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_URI = ESB_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Content Type</b></em>' attribute.
@@ -20284,7 +20266,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 16;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS File Name Pattern</b></em>' attribute.
@@ -20293,7 +20275,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN = ESB_ELEMENT_FEATURE_COUNT + 17;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_NAME_PATTERN = ESB_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS File Process Interval</b></em>' attribute.
@@ -20302,7 +20284,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 18;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS File Process Count</b></em>' attribute.
@@ -20311,7 +20293,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT = ESB_ELEMENT_FEATURE_COUNT + 19;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_PROCESS_COUNT = ESB_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Locking</b></em>' attribute.
@@ -20320,7 +20302,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING = ESB_ELEMENT_FEATURE_COUNT + 20;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_LOCKING = ESB_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Max Retry Count</b></em>' attribute.
@@ -20329,7 +20311,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT = ESB_ELEMENT_FEATURE_COUNT + 21;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_MAX_RETRY_COUNT = ESB_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Reconnect Timeout</b></em>' attribute.
@@ -20338,7 +20320,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 22;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_RECONNECT_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Action After Process</b></em>' attribute.
@@ -20347,7 +20329,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS = ESB_ELEMENT_FEATURE_COUNT + 23;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_PROCESS = ESB_ELEMENT_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Move After Process</b></em>' attribute.
@@ -20356,7 +20338,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS = ESB_ELEMENT_FEATURE_COUNT + 24;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_PROCESS = ESB_ELEMENT_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Action After Errors</b></em>' attribute.
@@ -20365,7 +20347,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS = ESB_ELEMENT_FEATURE_COUNT + 25;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_ERRORS = ESB_ELEMENT_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Move After Errors</b></em>' attribute.
@@ -20374,7 +20356,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS = ESB_ELEMENT_FEATURE_COUNT + 26;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_ERRORS = ESB_ELEMENT_FEATURE_COUNT + 24;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Action After Failure</b></em>' attribute.
@@ -20383,7 +20365,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE = ESB_ELEMENT_FEATURE_COUNT + 27;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_ACTION_AFTER_FAILURE = ESB_ELEMENT_FEATURE_COUNT + 25;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Move After Failure</b></em>' attribute.
@@ -20392,7 +20374,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE = ESB_ELEMENT_FEATURE_COUNT + 28;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_AFTER_FAILURE = ESB_ELEMENT_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Auto Lock Release</b></em>' attribute.
@@ -20401,7 +20383,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE = ESB_ELEMENT_FEATURE_COUNT + 29;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE = ESB_ELEMENT_FEATURE_COUNT + 27;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Auto Lock Release Interval</b></em>' attribute.
@@ -20410,7 +20392,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 30;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_AUTO_LOCK_RELEASE_INTERVAL = ESB_ELEMENT_FEATURE_COUNT + 28;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Lock Release Same Node</b></em>' attribute.
@@ -20419,7 +20401,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE = ESB_ELEMENT_FEATURE_COUNT + 31;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_LOCK_RELEASE_SAME_NODE = ESB_ELEMENT_FEATURE_COUNT + 29;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Distributed Lock</b></em>' attribute.
@@ -20428,7 +20410,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK = ESB_ELEMENT_FEATURE_COUNT + 32;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_LOCK = ESB_ELEMENT_FEATURE_COUNT + 30;
 
 	/**
 	 * The feature id for the '<em><b>Transport VFS Distributed Timeout</b></em>' attribute.
@@ -20437,7 +20419,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 33;
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_DISTRIBUTED_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 31;
 
 	/**
 	 * The feature id for the '<em><b>Java Naming Factory Initial</b></em>' attribute.
@@ -20446,7 +20428,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL = ESB_ELEMENT_FEATURE_COUNT + 34;
+	int INBOUND_ENDPOINT__JAVA_NAMING_FACTORY_INITIAL = ESB_ELEMENT_FEATURE_COUNT + 32;
 
 	/**
 	 * The feature id for the '<em><b>Java Naming Provider Url</b></em>' attribute.
@@ -20455,7 +20437,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL = ESB_ELEMENT_FEATURE_COUNT + 35;
+	int INBOUND_ENDPOINT__JAVA_NAMING_PROVIDER_URL = ESB_ELEMENT_FEATURE_COUNT + 33;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Connection Factory JNDI Name</b></em>' attribute.
@@ -20464,7 +20446,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME = ESB_ELEMENT_FEATURE_COUNT + 36;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_JNDI_NAME = ESB_ELEMENT_FEATURE_COUNT + 34;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Connection Factory Type</b></em>' attribute.
@@ -20473,7 +20455,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE = ESB_ELEMENT_FEATURE_COUNT + 37;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_CONNECTION_FACTORY_TYPE = ESB_ELEMENT_FEATURE_COUNT + 35;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Destination</b></em>' attribute.
@@ -20482,7 +20464,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION = ESB_ELEMENT_FEATURE_COUNT + 38;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_DESTINATION = ESB_ELEMENT_FEATURE_COUNT + 36;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Session Transacted</b></em>' attribute.
@@ -20491,7 +20473,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED = ESB_ELEMENT_FEATURE_COUNT + 39;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_TRANSACTED = ESB_ELEMENT_FEATURE_COUNT + 37;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Session Acknowledgement</b></em>' attribute.
@@ -20500,7 +20482,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT = ESB_ELEMENT_FEATURE_COUNT + 40;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_SESSION_ACKNOWLEDGEMENT = ESB_ELEMENT_FEATURE_COUNT + 38;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Cache Level</b></em>' attribute.
@@ -20509,7 +20491,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL = ESB_ELEMENT_FEATURE_COUNT + 41;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_CACHE_LEVEL = ESB_ELEMENT_FEATURE_COUNT + 39;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS User Name</b></em>' attribute.
@@ -20518,7 +20500,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME = ESB_ELEMENT_FEATURE_COUNT + 42;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_USER_NAME = ESB_ELEMENT_FEATURE_COUNT + 40;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Password</b></em>' attribute.
@@ -20527,7 +20509,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 43;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 41;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMSJMS Spec Version</b></em>' attribute.
@@ -20536,7 +20518,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION = ESB_ELEMENT_FEATURE_COUNT + 44;
+	int INBOUND_ENDPOINT__TRANSPORT_JMSJMS_SPEC_VERSION = ESB_ELEMENT_FEATURE_COUNT + 42;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Subscription Durable</b></em>' attribute.
@@ -20545,7 +20527,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE = ESB_ELEMENT_FEATURE_COUNT + 45;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_SUBSCRIPTION_DURABLE = ESB_ELEMENT_FEATURE_COUNT + 43;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Durable Subscriber Client ID</b></em>' attribute.
@@ -20554,7 +20536,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID = ESB_ELEMENT_FEATURE_COUNT + 46;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_DURABLE_SUBSCRIBER_CLIENT_ID = ESB_ELEMENT_FEATURE_COUNT + 44;
 
 	/**
 	 * The feature id for the '<em><b>Transport JMS Message Selector</b></em>' attribute.
@@ -20563,7 +20545,151 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR = ESB_ELEMENT_FEATURE_COUNT + 47;
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR = ESB_ELEMENT_FEATURE_COUNT + 45;
+
+	/**
+	 * The feature id for the '<em><b>Api Dispatching Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__API_DISPATCHING_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 46;
+
+	/**
+	 * The feature id for the '<em><b>Transport VFS Move Timestamp Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT = ESB_ELEMENT_FEATURE_COUNT + 47;
+
+	/**
+	 * The feature id for the '<em><b>Transport VFS File Sort Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE = ESB_ELEMENT_FEATURE_COUNT + 48;
+
+	/**
+	 * The feature id for the '<em><b>Transport VFS File Sort Ascending</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING = ESB_ELEMENT_FEATURE_COUNT + 49;
+
+	/**
+	 * The feature id for the '<em><b>Transport VFS Sub Folder Timestamp Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT = ESB_ELEMENT_FEATURE_COUNT + 50;
+
+	/**
+	 * The feature id for the '<em><b>Transport VFS Create Folder</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER = ESB_ELEMENT_FEATURE_COUNT + 51;
+
+	/**
+	 * The feature id for the '<em><b>Transport JMS Receive Timeout</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT = ESB_ELEMENT_FEATURE_COUNT + 52;
+
+	/**
+	 * The feature id for the '<em><b>Transport JMS Content Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 53;
+
+	/**
+	 * The feature id for the '<em><b>Truststore</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__TRUSTSTORE = ESB_ELEMENT_FEATURE_COUNT + 54;
+
+	/**
+	 * The feature id for the '<em><b>Keystore</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__KEYSTORE = ESB_ELEMENT_FEATURE_COUNT + 55;
+
+	/**
+	 * The feature id for the '<em><b>Ssl Verify Client</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__SSL_VERIFY_CLIENT = ESB_ELEMENT_FEATURE_COUNT + 56;
+
+	/**
+	 * The feature id for the '<em><b>Ssl Protocol</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__SSL_PROTOCOL = ESB_ELEMENT_FEATURE_COUNT + 57;
+
+	/**
+	 * The feature id for the '<em><b>Https Protocols</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__HTTPS_PROTOCOLS = ESB_ELEMENT_FEATURE_COUNT + 58;
+
+	/**
+	 * The feature id for the '<em><b>Certificate Revocation Verifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER = ESB_ELEMENT_FEATURE_COUNT + 59;
+
+	/**
+	 * The feature id for the '<em><b>On Error Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__ON_ERROR_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 60;
+
+	/**
+	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 61;
 
 	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
@@ -20572,7 +20698,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 48;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 62;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl <em>Inbound Endpoint Container</em>}' class.
@@ -21860,6 +21986,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int VFS_ACTION = 457;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort <em>VFS File Sort</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getVFSFileSort()
+	 * @generated
+	 */
+	int VFS_FILE_SORT = 458;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType <em>JMS Connection Factory Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21867,7 +22003,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSConnectionFactoryType()
 	 * @generated
 	 */
-	int JMS_CONNECTION_FACTORY_TYPE = 458;
+	int JMS_CONNECTION_FACTORY_TYPE = 459;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement <em>JMS Session Acknowledgement</em>}' enum.
@@ -21877,7 +22013,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSSessionAcknowledgement()
 	 * @generated
 	 */
-	int JMS_SESSION_ACKNOWLEDGEMENT = 459;
+	int JMS_SESSION_ACKNOWLEDGEMENT = 460;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel <em>JMS Cache Level</em>}' enum.
@@ -21887,7 +22023,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSCacheLevel()
 	 * @generated
 	 */
-	int JMS_CACHE_LEVEL = 460;
+	int JMS_CACHE_LEVEL = 461;
 
 	/**
 	 * The meta object id for the '<em>Map</em>' data type.
@@ -21897,7 +22033,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 461;
+	int MAP = 462;
 
 
 	/**
@@ -29421,6 +29557,160 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getInboundEndpoint_TransportJMSMessageSelector();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isApiDispatchingEnabled <em>Api Dispatching Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Api Dispatching Enabled</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isApiDispatchingEnabled()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_ApiDispatchingEnabled();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport VFS Move Timestamp Format</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportVFSMoveTimestampFormat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport VFS File Sort Attribute</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportVFSFileSortAttribute();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport VFS File Sort Ascending</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportVFSFileSortAscending();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport VFS Sub Folder Timestamp Format</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSubFolderTimestampFormat()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportVFSSubFolderTimestampFormat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport VFS Create Folder</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportVFSCreateFolder();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport JMS Receive Timeout</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportJMSReceiveTimeout();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentType <em>Transport JMS Content Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transport JMS Content Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentType()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_TransportJMSContentType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Truststore</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_Truststore();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Keystore</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getKeystore()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_Keystore();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssl Verify Client</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslVerifyClient()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_SslVerifyClient();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslProtocol <em>Ssl Protocol</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ssl Protocol</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslProtocol()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_SslProtocol();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getHttpsProtocols <em>Https Protocols</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Https Protocols</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getHttpsProtocols()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_HttpsProtocols();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Certificate Revocation Verifier</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_CertificateRevocationVerifier();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer <em>Inbound Endpoint Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36733,6 +37023,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EEnum getVFSAction();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort <em>VFS File Sort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>VFS File Sort</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort
+	 * @generated
+	 */
+	EEnum getVFSFileSort();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType <em>JMS Connection Factory Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42786,6 +43086,118 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute INBOUND_ENDPOINT__TRANSPORT_JMS_MESSAGE_SELECTOR = eINSTANCE.getInboundEndpoint_TransportJMSMessageSelector();
 
 		/**
+		 * The meta object literal for the '<em><b>Api Dispatching Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__API_DISPATCHING_ENABLED = eINSTANCE.getInboundEndpoint_ApiDispatchingEnabled();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport VFS Move Timestamp Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_VFS_MOVE_TIMESTAMP_FORMAT = eINSTANCE.getInboundEndpoint_TransportVFSMoveTimestampFormat();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport VFS File Sort Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ATTRIBUTE = eINSTANCE.getInboundEndpoint_TransportVFSFileSortAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport VFS File Sort Ascending</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_VFS_FILE_SORT_ASCENDING = eINSTANCE.getInboundEndpoint_TransportVFSFileSortAscending();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport VFS Sub Folder Timestamp Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_VFS_SUB_FOLDER_TIMESTAMP_FORMAT = eINSTANCE.getInboundEndpoint_TransportVFSSubFolderTimestampFormat();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport VFS Create Folder</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_VFS_CREATE_FOLDER = eINSTANCE.getInboundEndpoint_TransportVFSCreateFolder();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport JMS Receive Timeout</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_JMS_RECEIVE_TIMEOUT = eINSTANCE.getInboundEndpoint_TransportJMSReceiveTimeout();
+
+		/**
+		 * The meta object literal for the '<em><b>Transport JMS Content Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRANSPORT_JMS_CONTENT_TYPE = eINSTANCE.getInboundEndpoint_TransportJMSContentType();
+
+		/**
+		 * The meta object literal for the '<em><b>Truststore</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__TRUSTSTORE = eINSTANCE.getInboundEndpoint_Truststore();
+
+		/**
+		 * The meta object literal for the '<em><b>Keystore</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__KEYSTORE = eINSTANCE.getInboundEndpoint_Keystore();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssl Verify Client</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__SSL_VERIFY_CLIENT = eINSTANCE.getInboundEndpoint_SslVerifyClient();
+
+		/**
+		 * The meta object literal for the '<em><b>Ssl Protocol</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__SSL_PROTOCOL = eINSTANCE.getInboundEndpoint_SslProtocol();
+
+		/**
+		 * The meta object literal for the '<em><b>Https Protocols</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__HTTPS_PROTOCOLS = eINSTANCE.getInboundEndpoint_HttpsProtocols();
+
+		/**
+		 * The meta object literal for the '<em><b>Certificate Revocation Verifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER = eINSTANCE.getInboundEndpoint_CertificateRevocationVerifier();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointContainerImpl <em>Inbound Endpoint Container</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -48830,6 +49242,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum VFS_ACTION = eINSTANCE.getVFSAction();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort <em>VFS File Sort</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getVFSFileSort()
+		 * @generated
+		 */
+		EEnum VFS_FILE_SORT = eINSTANCE.getVFSFileSort();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType <em>JMS Connection Factory Type</em>}' enum.

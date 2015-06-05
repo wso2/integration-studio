@@ -31,8 +31,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getContainer <em>Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getName <em>Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getType <em>Type</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequence <em>Sequence</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence <em>On Error Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getProtocol <em>Protocol</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHttpPort <em>Inbound Http Port</em>}</li>
@@ -72,6 +70,22 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSSubscriptionDurable <em>Transport JMS Subscription Durable</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSDurableSubscriberClientID <em>Transport JMS Durable Subscriber Client ID</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSMessageSelector <em>Transport JMS Message Selector</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isApiDispatchingEnabled <em>Api Dispatching Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentType <em>Transport JMS Content Type</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslProtocol <em>Ssl Protocol</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getHttpsProtocols <em>Https Protocols</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence <em>On Error Sequence</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequence <em>Sequence</em>}</li>
  * </ul>
  * </p>
  *
@@ -1357,5 +1371,372 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setTransportJMSMessageSelector(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Api Dispatching Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Api Dispatching Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Api Dispatching Enabled</em>' attribute.
+	 * @see #setApiDispatchingEnabled(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ApiDispatchingEnabled()
+	 * @model
+	 * @generated
+	 */
+	boolean isApiDispatchingEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isApiDispatchingEnabled <em>Api Dispatching Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Api Dispatching Enabled</em>' attribute.
+	 * @see #isApiDispatchingEnabled()
+	 * @generated
+	 */
+	void setApiDispatchingEnabled(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport VFS Move Timestamp Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport VFS Move Timestamp Format</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport VFS Move Timestamp Format</em>' attribute.
+	 * @see #setTransportVFSMoveTimestampFormat(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSMoveTimestampFormat()
+	 * @model
+	 * @generated
+	 */
+	String getTransportVFSMoveTimestampFormat();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSMoveTimestampFormat <em>Transport VFS Move Timestamp Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport VFS Move Timestamp Format</em>' attribute.
+	 * @see #getTransportVFSMoveTimestampFormat()
+	 * @generated
+	 */
+	void setTransportVFSMoveTimestampFormat(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport VFS File Sort Attribute</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport VFS File Sort Attribute</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport VFS File Sort Attribute</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort
+	 * @see #setTransportVFSFileSortAttribute(VFSFileSort)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileSortAttribute()
+	 * @model
+	 * @generated
+	 */
+	VFSFileSort getTransportVFSFileSortAttribute();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSFileSortAttribute <em>Transport VFS File Sort Attribute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport VFS File Sort Attribute</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort
+	 * @see #getTransportVFSFileSortAttribute()
+	 * @generated
+	 */
+	void setTransportVFSFileSortAttribute(VFSFileSort value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport VFS File Sort Ascending</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport VFS File Sort Ascending</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport VFS File Sort Ascending</em>' attribute.
+	 * @see #setTransportVFSFileSortAscending(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSFileSortAscending()
+	 * @model
+	 * @generated
+	 */
+	boolean isTransportVFSFileSortAscending();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSFileSortAscending <em>Transport VFS File Sort Ascending</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport VFS File Sort Ascending</em>' attribute.
+	 * @see #isTransportVFSFileSortAscending()
+	 * @generated
+	 */
+	void setTransportVFSFileSortAscending(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport VFS Sub Folder Timestamp Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport VFS Sub Folder Timestamp Format</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport VFS Sub Folder Timestamp Format</em>' attribute.
+	 * @see #setTransportVFSSubFolderTimestampFormat(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSSubFolderTimestampFormat()
+	 * @model
+	 * @generated
+	 */
+	String getTransportVFSSubFolderTimestampFormat();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportVFSSubFolderTimestampFormat <em>Transport VFS Sub Folder Timestamp Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport VFS Sub Folder Timestamp Format</em>' attribute.
+	 * @see #getTransportVFSSubFolderTimestampFormat()
+	 * @generated
+	 */
+	void setTransportVFSSubFolderTimestampFormat(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport VFS Create Folder</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport VFS Create Folder</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport VFS Create Folder</em>' attribute.
+	 * @see #setTransportVFSCreateFolder(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportVFSCreateFolder()
+	 * @model
+	 * @generated
+	 */
+	boolean isTransportVFSCreateFolder();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isTransportVFSCreateFolder <em>Transport VFS Create Folder</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport VFS Create Folder</em>' attribute.
+	 * @see #isTransportVFSCreateFolder()
+	 * @generated
+	 */
+	void setTransportVFSCreateFolder(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Receive Timeout</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Receive Timeout</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Receive Timeout</em>' attribute.
+	 * @see #setTransportJMSReceiveTimeout(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSReceiveTimeout()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSReceiveTimeout();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSReceiveTimeout <em>Transport JMS Receive Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Receive Timeout</em>' attribute.
+	 * @see #getTransportJMSReceiveTimeout()
+	 * @generated
+	 */
+	void setTransportJMSReceiveTimeout(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transport JMS Content Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transport JMS Content Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transport JMS Content Type</em>' attribute.
+	 * @see #setTransportJMSContentType(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_TransportJMSContentType()
+	 * @model
+	 * @generated
+	 */
+	String getTransportJMSContentType();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTransportJMSContentType <em>Transport JMS Content Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transport JMS Content Type</em>' attribute.
+	 * @see #getTransportJMSContentType()
+	 * @generated
+	 */
+	void setTransportJMSContentType(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Truststore</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Truststore</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Truststore</em>' attribute.
+	 * @see #setTruststore(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Truststore()
+	 * @model
+	 * @generated
+	 */
+	String getTruststore();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getTruststore <em>Truststore</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Truststore</em>' attribute.
+	 * @see #getTruststore()
+	 * @generated
+	 */
+	void setTruststore(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Keystore</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Keystore</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Keystore</em>' attribute.
+	 * @see #setKeystore(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Keystore()
+	 * @model
+	 * @generated
+	 */
+	String getKeystore();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getKeystore <em>Keystore</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Keystore</em>' attribute.
+	 * @see #getKeystore()
+	 * @generated
+	 */
+	void setKeystore(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ssl Verify Client</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ssl Verify Client</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ssl Verify Client</em>' attribute.
+	 * @see #setSslVerifyClient(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SslVerifyClient()
+	 * @model
+	 * @generated
+	 */
+	String getSslVerifyClient();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslVerifyClient <em>Ssl Verify Client</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ssl Verify Client</em>' attribute.
+	 * @see #getSslVerifyClient()
+	 * @generated
+	 */
+	void setSslVerifyClient(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Ssl Protocol</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ssl Protocol</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ssl Protocol</em>' attribute.
+	 * @see #setSslProtocol(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_SslProtocol()
+	 * @model
+	 * @generated
+	 */
+	String getSslProtocol();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslProtocol <em>Ssl Protocol</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ssl Protocol</em>' attribute.
+	 * @see #getSslProtocol()
+	 * @generated
+	 */
+	void setSslProtocol(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Https Protocols</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Https Protocols</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Https Protocols</em>' attribute.
+	 * @see #setHttpsProtocols(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_HttpsProtocols()
+	 * @model
+	 * @generated
+	 */
+	String getHttpsProtocols();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getHttpsProtocols <em>Https Protocols</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Https Protocols</em>' attribute.
+	 * @see #getHttpsProtocols()
+	 * @generated
+	 */
+	void setHttpsProtocols(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Certificate Revocation Verifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Certificate Revocation Verifier</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Certificate Revocation Verifier</em>' attribute.
+	 * @see #setCertificateRevocationVerifier(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_CertificateRevocationVerifier()
+	 * @model
+	 * @generated
+	 */
+	String getCertificateRevocationVerifier();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Certificate Revocation Verifier</em>' attribute.
+	 * @see #getCertificateRevocationVerifier()
+	 * @generated
+	 */
+	void setCertificateRevocationVerifier(String value);
 
 } // InboundEndpoint

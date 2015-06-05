@@ -358,7 +358,7 @@ public class EsbPropertySource extends PropertySource {
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		}  else if(pkg.getDataMapperMediator_OutputSchema().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
-		}
+		} 
  		
 			
 		// Else, default EMF behavior

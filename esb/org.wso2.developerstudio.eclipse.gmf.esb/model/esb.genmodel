@@ -571,6 +571,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/File"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/JMS"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/Custom"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/HTTPS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/HL7"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/KAFKA"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/CXF_WS_RM"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//Enable">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Enable/enable"/>
@@ -579,6 +583,12 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSAction">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/none"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSAction/move"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//VFSFileSort">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSFileSort/none"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSFileSort/name"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSFileSort/size"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//VFSFileSort/lastmodifiedtimestamp"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSConnectionFactoryType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSConnectionFactoryType/topic"/>
@@ -2069,8 +2079,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/container"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sequence"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/onErrorSequence"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/class"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/protocol"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundHttpPort"/>
@@ -2110,6 +2118,22 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSSubscriptionDurable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSDurableSubscriberClientID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSMessageSelector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/apiDispatchingEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSMoveTimestampFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileSortAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSFileSortAscending"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSSubFolderTimestampFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportVFSCreateFolder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSReceiveTimeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/transportJMSContentType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/truststore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/keystore"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sslVerifyClient"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sslProtocol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/httpsProtocols"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/certificateRevocationVerifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/onErrorSequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sequence"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpointContainer/sequenceContainer"/>

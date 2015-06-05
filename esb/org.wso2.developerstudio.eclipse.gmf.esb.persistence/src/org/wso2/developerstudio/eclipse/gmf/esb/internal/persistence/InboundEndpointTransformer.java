@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.inbound.InboundEndpoint;
@@ -26,49 +27,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 
 public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
-
-	final static String SEQUENCE = "sequence";
-	final static String ON_ERROR = "onError";
-	final static String INBOUND_HTTP_PORT = "inbound.http.port";
-	final static String INTERVAL = "interval";
-	final static String SEQUENTIAL = "sequential";
-	final static String COORDINATION = "coordination";
-	final static String VFS_FILE_URI = "transport.vfs.FileURI";
-	final static String VFS_CONTENT_TYPE = "transport.vfs.ContentType";
-	final static String VFS_FILE_NAME_PATTERN = "transport.vfs.FileNamePattern";
-	final static String VFS_FILE_PROCESS_INTERVAL = "transport.vfs.FileProcessInterval";
-	final static String VFS_FILE_PROCESS_COUNT = "transport.vfs.FileProcessCount";
-	final static String VFS_LOCKING = "transport.vfs.Locking";
-	final static String VFS_MAX_RETRY_COUNT = "transport.vfs.MaxRetryCount";
-	final static String VFS_RECONNECT_TIMEOUT = "transport.vfs.ReconnectTimeout";
-	final static String VFS_ACTION_AFTER_PROCESS = "transport.vfs.ActionAfterProcess";
-	final static String VFS_MOVE_AFTER_PROCESS = "transport.vfs.MoveAfterProcess";
-	final static String VFS_ACTION_AFTER_ERRORS = "transport.vfs.ActionAfterErrors";
-	final static String VFS_MOVE_AFTER_ERRORS = "transport.vfs.MoveAfterErrors";
-	final static String VFS_ACTION_AFTER_FAILURE = "transport.vfs.ActionAfterFailure";
-	final static String VFS_MOVE_AFTER_FAILURE = "transport.vfs.MoveAfterFailure";
-	final static String VFS_AUTO_LOCK_RELEASE = "transport.vfs.AutoLockRelease";
-	final static String VFS_AUTO_LOCK_RELEASE_INTERVAL = "transport.vfs.AutoLockReleaseInterval";
-	final static String VFS_LOCK_RELEASE_SAME_NODE = "transport.vfs.LockReleaseSameNode";
-	final static String VFS_DISTRIBUTED_LOCK = "transport.vfs.DistributedLock";
-	final static String VFS_DISTRIBUTED_TIMEOUT = "transport.vfs.DistributedTimeout";
-	final static String JMS_JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
-	final static String JMS_JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";
-	final static String JMS_CONNECTION_FACTORY_JNDI_NAME = "transport.jms.ConnectionFactoryJNDIName";
-	final static String JMS_CONNECTION_FACTORY_TYPE = "transport.jms.ConnectionFactoryType";
-	final static String JMS_DESTINATION = "transport.jms.Destination";
-	final static String JMS_SESSION_TRANSACTED = "transport.jms.SessionTransacted";
-	final static String JMS_SESSION_ACKNOWLEDGEMENT = "transport.jms.SessionAcknowledgement";
-	final static String JMS_CACHE_LEVEL = "transport.jms.CacheLevel";
-	final static String JMS_USERNAME = "transport.jms.UserName";
-	final static String JMS_PASSWORD = "transport.jms.Password";
-	final static String JMS_JMS_SPEC_VERSION = "transport.jms.JMSSpecVersion";
-	final static String JMS_SUBSCRIPTION_DURABLE = "transport.jms.SubscriptionDurable";
-	final static String JMS_DURABLE_SUBSCRIBER_CLIENT_ID = "transport.jms.DurableSubscriberClientID";
-	final static String JMS_MESSAGE_SELECTOR = "transport.jms.MessageSelector";
 
 	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
 		Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint, "Invalid subject.");
@@ -124,13 +86,17 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 		InboundEndpoint inboundEndpoint = new InboundEndpoint();
 		inboundEndpoint.setName(visualInboundEndpoint.getName());
 		Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector());
+
+		// FIXME include RegistryKey
 		if (sequence != null) {
+			// FIXME with sequence.getKey()
 			inboundEndpoint.setInjectingSeq(sequence.getName());
 		} else {
 			throw new Exception();
 		}
 		Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
 		if (onErrorSequence != null) {
+			// FIXME with onErrorSequence.getKey()
 			inboundEndpoint.setOnErrorSeq(onErrorSequence.getName());
 		} else {
 			throw new Exception();
@@ -138,148 +104,217 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 
 		inboundEndpoint.setSuspend(false);
 		inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());
-		if (StringUtils.isNotBlank(visualInboundEndpoint.getProtocol())) {
-			inboundEndpoint.setProtocol(visualInboundEndpoint.getProtocol());
+
+		if (StringUtils.isNotBlank(visualInboundEndpoint.getType().toString())) {
+			inboundEndpoint.setProtocol(visualInboundEndpoint.getType().toString());
 		}
 
 		switch (visualInboundEndpoint.getType()) {
 		case HTTP:
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInboundHttpPort())) {
-				inboundEndpoint.addParameter(INBOUND_HTTP_PORT, visualInboundEndpoint.getInboundHttpPort());
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_HTTP_PORT,
+						visualInboundEndpoint.getInboundHttpPort());
 			}
+			inboundEndpoint.addParameter(InboundEndpointConstants.API_DISPATCHING_ENABLED,
+					String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()));
 			break;
 		case FILE:
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
-				inboundEndpoint.addParameter(INTERVAL, visualInboundEndpoint.getInterval());
+				inboundEndpoint.addParameter(InboundEndpointConstants.INTERVAL, visualInboundEndpoint.getInterval());
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
-				inboundEndpoint.addParameter(SEQUENTIAL, String.valueOf(visualInboundEndpoint.isSequential()));
+				inboundEndpoint.addParameter(InboundEndpointConstants.SEQUENTIAL,
+						String.valueOf(visualInboundEndpoint.isSequential()));
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
-				inboundEndpoint.addParameter(COORDINATION, String.valueOf(visualInboundEndpoint.isCoordination()));
+				inboundEndpoint.addParameter(InboundEndpointConstants.COORDINATION,
+						String.valueOf(visualInboundEndpoint.isCoordination()));
 			}
-			inboundEndpoint.addParameter(VFS_ACTION_AFTER_ERRORS, visualInboundEndpoint
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_ACTION_AFTER_ERRORS, visualInboundEndpoint
 					.getTransportVFSActionAfterErrors().getLiteral());
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSContentType())) {
-				inboundEndpoint.addParameter(VFS_CONTENT_TYPE, visualInboundEndpoint.getTransportVFSContentType());
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_CONTENT_TYPE,
+						visualInboundEndpoint.getTransportVFSContentType());
 			}
-			inboundEndpoint.addParameter(VFS_LOCK_RELEASE_SAME_NODE,
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_LOCK_RELEASE_SAME_NODE,
 					String.valueOf(visualInboundEndpoint.isTransportVFSLockReleaseSameNode()));
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSAutoLockReleaseInterval())) {
-				inboundEndpoint.addParameter(VFS_AUTO_LOCK_RELEASE_INTERVAL,
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_AUTO_LOCK_RELEASE_INTERVAL,
 						visualInboundEndpoint.getTransportVFSAutoLockReleaseInterval());
 			}
-			inboundEndpoint.addParameter(VFS_AUTO_LOCK_RELEASE,
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_AUTO_LOCK_RELEASE,
 					String.valueOf(visualInboundEndpoint.isTransportVFSAutoLockRelease()));
-			inboundEndpoint.addParameter(VFS_ACTION_AFTER_FAILURE, visualInboundEndpoint
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_ACTION_AFTER_FAILURE, visualInboundEndpoint
 					.getTransportVFSActionAfterFailure().getLiteral());
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMaxRetryCount())) {
-				inboundEndpoint.addParameter(VFS_MAX_RETRY_COUNT, visualInboundEndpoint.getTransportVFSMaxRetryCount());
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_MAX_RETRY_COUNT,
+						visualInboundEndpoint.getTransportVFSMaxRetryCount());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSReconnectTimeout())) {
-				inboundEndpoint.addParameter(VFS_RECONNECT_TIMEOUT,
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_RECONNECT_TIMEOUT,
 						visualInboundEndpoint.getTransportVFSReconnectTimeout());
 			}
-			inboundEndpoint.addParameter(VFS_ACTION_AFTER_PROCESS, visualInboundEndpoint
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_ACTION_AFTER_PROCESS, visualInboundEndpoint
 					.getTransportVFSActionAfterProcess().getLiteral());
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFileURI())) {
-				inboundEndpoint.addParameter(VFS_FILE_URI, visualInboundEndpoint.getTransportVFSFileURI());
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_FILE_URI,
+						visualInboundEndpoint.getTransportVFSFileURI());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveAfterFailure())) {
-				inboundEndpoint.addParameter(VFS_MOVE_AFTER_FAILURE,
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_MOVE_AFTER_FAILURE,
 						visualInboundEndpoint.getTransportVFSMoveAfterFailure());
 			}
-			inboundEndpoint.addParameter(VFS_DISTRIBUTED_LOCK,
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveTimestampFormat())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_MOVE_TIMESTAMP_FORMAT,
+						visualInboundEndpoint.getTransportVFSMoveTimestampFormat());
+			}
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_DISTRIBUTED_LOCK,
 					String.valueOf(visualInboundEndpoint.isTransportVFSDistributedLock()));
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFileNamePattern())) {
-				inboundEndpoint.addParameter(VFS_FILE_NAME_PATTERN,
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_FILE_NAME_PATTERN,
 						visualInboundEndpoint.getTransportVFSFileNamePattern());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFileProcessInterval())) {
-				inboundEndpoint.addParameter(VFS_FILE_PROCESS_INTERVAL,
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_FILE_PROCESS_INTERVAL,
 						visualInboundEndpoint.getTransportVFSFileProcessInterval());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSMoveAfterErrors())) {
-				inboundEndpoint.addParameter(VFS_MOVE_AFTER_ERRORS,
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_MOVE_AFTER_ERRORS,
 						visualInboundEndpoint.getTransportVFSMoveAfterErrors());
 			}
-			inboundEndpoint.addParameter(VFS_MOVE_AFTER_PROCESS,
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_MOVE_AFTER_PROCESS,
 					String.valueOf(visualInboundEndpoint.getTransportVFSMoveAfterProcess()));
-			inboundEndpoint.addParameter(VFS_LOCKING, visualInboundEndpoint.getTransportVFSLocking().getLiteral());
-			inboundEndpoint.addParameter(VFS_DISTRIBUTED_TIMEOUT,
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_LOCKING, visualInboundEndpoint
+					.getTransportVFSLocking().getLiteral());
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_DISTRIBUTED_TIMEOUT,
 					String.valueOf(visualInboundEndpoint.getTransportVFSDistributedTimeout()));
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_FILESORT_ATTRIBUTE, visualInboundEndpoint
+					.getTransportVFSFileSortAttribute().getLiteral());
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_FILESORT_ASCENDING,
+					String.valueOf(visualInboundEndpoint.isTransportVFSFileSortAscending()));
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSSubFolderTimestampFormat())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_SUBFOLDER_TIMESTAMP_FORMAT,
+						visualInboundEndpoint.getTransportVFSSubFolderTimestampFormat());
+			}
+			inboundEndpoint.addParameter(InboundEndpointConstants.VFS_CREATE_FOLDER,
+					String.valueOf(visualInboundEndpoint.isTransportVFSCreateFolder()));
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportVFSFileProcessCount())) {
-				inboundEndpoint.addParameter(VFS_FILE_PROCESS_COUNT,
+				inboundEndpoint.addParameter(InboundEndpointConstants.VFS_FILE_PROCESS_COUNT,
 						visualInboundEndpoint.getTransportVFSFileProcessCount());
 			}
 			break;
 		case JMS:
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
-				inboundEndpoint.addParameter(INTERVAL, visualInboundEndpoint.getInterval());
+				inboundEndpoint.addParameter(InboundEndpointConstants.INTERVAL, visualInboundEndpoint.getInterval());
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
-				inboundEndpoint.addParameter(SEQUENTIAL, String.valueOf(visualInboundEndpoint.isSequential()));
+				inboundEndpoint.addParameter(InboundEndpointConstants.SEQUENTIAL,
+						String.valueOf(visualInboundEndpoint.isSequential()));
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
-				inboundEndpoint.addParameter(COORDINATION, String.valueOf(visualInboundEndpoint.isCoordination()));
+				inboundEndpoint.addParameter(InboundEndpointConstants.COORDINATION,
+						String.valueOf(visualInboundEndpoint.isCoordination()));
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSMessageSelector())) {
-				inboundEndpoint.addParameter(JMS_MESSAGE_SELECTOR,
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_MESSAGE_SELECTOR,
 						visualInboundEndpoint.getTransportJMSMessageSelector());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSDestination())) {
-				inboundEndpoint.addParameter(JMS_DESTINATION, visualInboundEndpoint.getTransportJMSDestination());
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_DESTINATION,
+						visualInboundEndpoint.getTransportJMSDestination());
 			}
-			inboundEndpoint.addParameter(JMS_CACHE_LEVEL, visualInboundEndpoint.getTransportJMSCacheLevel()
-					.getLiteral());
+			inboundEndpoint.addParameter(InboundEndpointConstants.JMS_CACHE_LEVEL, visualInboundEndpoint
+					.getTransportJMSCacheLevel().getLiteral());
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSConnectionFactoryJNDIName())) {
-				inboundEndpoint.addParameter(JMS_CONNECTION_FACTORY_JNDI_NAME,
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_CONNECTION_FACTORY_JNDI_NAME,
 						visualInboundEndpoint.getTransportJMSConnectionFactoryJNDIName());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getJavaNamingFactoryInitial())) {
-				inboundEndpoint.addParameter(JMS_JAVA_NAMING_FACTORY_INITIAL,
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_JAVA_NAMING_FACTORY_INITIAL,
 						visualInboundEndpoint.getJavaNamingFactoryInitial());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getJavaNamingProviderUrl())) {
-				inboundEndpoint.addParameter(JMS_JAVA_NAMING_PROVIDER_URL,
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_JAVA_NAMING_PROVIDER_URL,
 						visualInboundEndpoint.getJavaNamingProviderUrl());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSUserName())) {
-				inboundEndpoint.addParameter(JMS_USERNAME, visualInboundEndpoint.getTransportJMSUserName());
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_USERNAME,
+						visualInboundEndpoint.getTransportJMSUserName());
 			}
-			inboundEndpoint.addParameter(JMS_SESSION_ACKNOWLEDGEMENT, visualInboundEndpoint
+			inboundEndpoint.addParameter(InboundEndpointConstants.JMS_SESSION_ACKNOWLEDGEMENT, visualInboundEndpoint
 					.getTransportJMSSessionAcknowledgement().getLiteral());
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSPassword())) {
-				inboundEndpoint.addParameter(JMS_PASSWORD, visualInboundEndpoint.getTransportJMSPassword());
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_PASSWORD,
+						visualInboundEndpoint.getTransportJMSPassword());
 			}
-			inboundEndpoint.addParameter(JMS_SESSION_TRANSACTED,
+			inboundEndpoint.addParameter(InboundEndpointConstants.JMS_SESSION_TRANSACTED,
 					String.valueOf(visualInboundEndpoint.isTransportJMSSessionTransacted()));
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSSubscriptionDurable())) {
-				inboundEndpoint.addParameter(JMS_SUBSCRIPTION_DURABLE,
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_SUBSCRIPTION_DURABLE,
 						visualInboundEndpoint.getTransportJMSSubscriptionDurable());
 			}
-			inboundEndpoint.addParameter(JMS_CONNECTION_FACTORY_TYPE, visualInboundEndpoint
+			inboundEndpoint.addParameter(InboundEndpointConstants.JMS_CONNECTION_FACTORY_TYPE, visualInboundEndpoint
 					.getTransportJMSConnectionFactoryType().getLiteral());
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSJMSSpecVersion())) {
-				inboundEndpoint.addParameter(JMS_JMS_SPEC_VERSION,
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_JMS_SPEC_VERSION,
 						visualInboundEndpoint.getTransportJMSJMSSpecVersion());
 			}
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSDurableSubscriberClientID())) {
-				inboundEndpoint.addParameter(JMS_MESSAGE_SELECTOR,
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_DURABLE_SUBSCRIBER_CLIENT_ID,
 						visualInboundEndpoint.getTransportJMSDurableSubscriberClientID());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSReceiveTimeout())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_RECIEVE_TIMEOUT,
+						visualInboundEndpoint.getTransportJMSReceiveTimeout());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTransportJMSContentType())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.JMS_CONTENT_TYPE,
+						visualInboundEndpoint.getTransportJMSContentType());
 			}
 			break;
 		case CUSTOM:
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
-				inboundEndpoint.addParameter(INTERVAL, visualInboundEndpoint.getInterval());
+				inboundEndpoint.addParameter(InboundEndpointConstants.INTERVAL, visualInboundEndpoint.getInterval());
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
-				inboundEndpoint.addParameter(SEQUENTIAL, String.valueOf(visualInboundEndpoint.isSequential()));
+				inboundEndpoint.addParameter(InboundEndpointConstants.SEQUENTIAL,
+						String.valueOf(visualInboundEndpoint.isSequential()));
 			}
 			if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSequential()))) {
-				inboundEndpoint.addParameter(COORDINATION, String.valueOf(visualInboundEndpoint.isCoordination()));
+				inboundEndpoint.addParameter(InboundEndpointConstants.COORDINATION,
+						String.valueOf(visualInboundEndpoint.isCoordination()));
 			}
 			break;
+		case HTTPS:
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getInboundHttpPort())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.INBOUND_HTTP_PORT,
+						visualInboundEndpoint.getInboundHttpPort());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getKeystore())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.KEYSTORE, visualInboundEndpoint.getKeystore());
+			}
+			inboundEndpoint.addParameter(InboundEndpointConstants.API_DISPATCHING_ENABLED,
+					String.valueOf(visualInboundEndpoint.isApiDispatchingEnabled()));
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getTruststore())) {
+				inboundEndpoint
+						.addParameter(InboundEndpointConstants.TRUSTSTORE, visualInboundEndpoint.getTruststore());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getSslVerifyClient())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.SSL_VERIFY_CLIENT,
+						visualInboundEndpoint.getSslVerifyClient());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getSslProtocol())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.SSL_PROTOCOL,
+						visualInboundEndpoint.getSslProtocol());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getHttpsProtocols())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.HTTPS_PROTOCOLS,
+						visualInboundEndpoint.getHttpsProtocols());
+			}
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getCertificateRevocationVerifier())) {
+				inboundEndpoint.addParameter(InboundEndpointConstants.CERTIFICATE_REVOCATION_VERIFIER,
+						visualInboundEndpoint.getCertificateRevocationVerifier());
+			}
 		default:
 			break;
 		}

@@ -133,6 +133,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getZookeeperSyncTimeMs <em>Zookeeper Sync Time Ms</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoCommitIntervalMs <em>Auto Commit Interval Ms</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getAutoOffsetReset <em>Auto Offset Reset</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmHost <em>Inbound Cxf Rm Host</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isEnableSSL <em>Enable SSL</em>}</li>
  * </ul>
  * </p>
  *
@@ -1790,6 +1794,86 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String autoOffsetReset = AUTO_OFFSET_RESET_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getInboundCxfRmHost() <em>Inbound Cxf Rm Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundCxfRmHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_CXF_RM_HOST_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundCxfRmHost() <em>Inbound Cxf Rm Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundCxfRmHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundCxfRmHost = INBOUND_CXF_RM_HOST_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundCxfRmPort() <em>Inbound Cxf Rm Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundCxfRmPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_CXF_RM_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundCxfRmPort() <em>Inbound Cxf Rm Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundCxfRmPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundCxfRmPort = INBOUND_CXF_RM_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInboundCxfRmConfigFile() <em>Inbound Cxf Rm Config File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundCxfRmConfigFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInboundCxfRmConfigFile() <em>Inbound Cxf Rm Config File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInboundCxfRmConfigFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inboundCxfRmConfigFile = INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isEnableSSL() <em>Enable SSL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableSSL()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLE_SSL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isEnableSSL() <em>Enable SSL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnableSSL()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enableSSL = ENABLE_SSL_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2567,6 +2651,90 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		autoOffsetReset = newAutoOffsetReset;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET, oldAutoOffsetReset, autoOffsetReset));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundCxfRmHost() {
+		return inboundCxfRmHost;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundCxfRmHost(String newInboundCxfRmHost) {
+		String oldInboundCxfRmHost = inboundCxfRmHost;
+		inboundCxfRmHost = newInboundCxfRmHost;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST, oldInboundCxfRmHost, inboundCxfRmHost));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundCxfRmPort() {
+		return inboundCxfRmPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundCxfRmPort(String newInboundCxfRmPort) {
+		String oldInboundCxfRmPort = inboundCxfRmPort;
+		inboundCxfRmPort = newInboundCxfRmPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT, oldInboundCxfRmPort, inboundCxfRmPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInboundCxfRmConfigFile() {
+		return inboundCxfRmConfigFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInboundCxfRmConfigFile(String newInboundCxfRmConfigFile) {
+		String oldInboundCxfRmConfigFile = inboundCxfRmConfigFile;
+		inboundCxfRmConfigFile = newInboundCxfRmConfigFile;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE, oldInboundCxfRmConfigFile, inboundCxfRmConfigFile));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isEnableSSL() {
+		return enableSSL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnableSSL(boolean newEnableSSL) {
+		boolean oldEnableSSL = enableSSL;
+		enableSSL = newEnableSSL;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL, oldEnableSSL, enableSSL));
 	}
 
 	/**
@@ -3903,6 +4071,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getAutoCommitIntervalMs();
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
 				return getAutoOffsetReset();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
+				return getInboundCxfRmHost();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
+				return getInboundCxfRmPort();
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
+				return getInboundCxfRmConfigFile();
+			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+				return isEnableSSL();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -4169,6 +4345,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
 				setAutoOffsetReset((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
+				setInboundCxfRmHost((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
+				setInboundCxfRmPort((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
+				setInboundCxfRmConfigFile((String)newValue);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+				setEnableSSL((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -4437,6 +4625,18 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
 				setAutoOffsetReset(AUTO_OFFSET_RESET_EDEFAULT);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
+				setInboundCxfRmHost(INBOUND_CXF_RM_HOST_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
+				setInboundCxfRmPort(INBOUND_CXF_RM_PORT_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
+				setInboundCxfRmConfigFile(INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT);
+				return;
+			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+				setEnableSSL(ENABLE_SSL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -4619,6 +4819,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return AUTO_COMMIT_INTERVAL_MS_EDEFAULT == null ? autoCommitIntervalMs != null : !AUTO_COMMIT_INTERVAL_MS_EDEFAULT.equals(autoCommitIntervalMs);
 			case EsbPackage.INBOUND_ENDPOINT__AUTO_OFFSET_RESET:
 				return AUTO_OFFSET_RESET_EDEFAULT == null ? autoOffsetReset != null : !AUTO_OFFSET_RESET_EDEFAULT.equals(autoOffsetReset);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST:
+				return INBOUND_CXF_RM_HOST_EDEFAULT == null ? inboundCxfRmHost != null : !INBOUND_CXF_RM_HOST_EDEFAULT.equals(inboundCxfRmHost);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
+				return INBOUND_CXF_RM_PORT_EDEFAULT == null ? inboundCxfRmPort != null : !INBOUND_CXF_RM_PORT_EDEFAULT.equals(inboundCxfRmPort);
+			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
+				return INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT == null ? inboundCxfRmConfigFile != null : !INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT.equals(inboundCxfRmConfigFile);
+			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+				return enableSSL != ENABLE_SSL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -4793,6 +5001,14 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(autoCommitIntervalMs);
 		result.append(", autoOffsetReset: ");
 		result.append(autoOffsetReset);
+		result.append(", inboundCxfRmHost: ");
+		result.append(inboundCxfRmHost);
+		result.append(", inboundCxfRmPort: ");
+		result.append(inboundCxfRmPort);
+		result.append(", inboundCxfRmConfigFile: ");
+		result.append(inboundCxfRmConfigFile);
+		result.append(", enableSSL: ");
+		result.append(enableSSL);
 		result.append(')');
 		return result.toString();
 	}

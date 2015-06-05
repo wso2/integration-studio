@@ -9989,6 +9989,42 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInboundEndpoint_InboundCxfRmHost() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(85);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundCxfRmPort() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(86);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_InboundCxfRmConfigFile() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(87);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_EnableSSL() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(88);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getInboundEndpoint_OnErrorSequence() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(60);
 	}
@@ -18414,6 +18450,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__AUTO_OFFSET_RESET);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ENABLE_SSL);
 
 		inboundEndpointContainerEClass = createEClass(INBOUND_ENDPOINT_CONTAINER);
 		createEReference(inboundEndpointContainerEClass, INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER);
@@ -20578,6 +20618,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_ZookeeperSyncTimeMs(), ecorePackage.getEString(), "zookeeperSyncTimeMs", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_AutoCommitIntervalMs(), ecorePackage.getEString(), "autoCommitIntervalMs", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_AutoOffsetReset(), ecorePackage.getEString(), "autoOffsetReset", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundCxfRmHost(), ecorePackage.getEString(), "inboundCxfRmHost", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundCxfRmPort(), ecorePackage.getEString(), "inboundCxfRmPort", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_InboundCxfRmConfigFile(), ecorePackage.getEString(), "inboundCxfRmConfigFile", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_EnableSSL(), ecorePackage.getEBoolean(), "enableSSL", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointContainerEClass, InboundEndpointContainer.class, "InboundEndpointContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInboundEndpointContainer_SequenceContainer(), this.getInboundEndpointSequenceContainer(), null, "sequenceContainer", null, 0, 1, InboundEndpointContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

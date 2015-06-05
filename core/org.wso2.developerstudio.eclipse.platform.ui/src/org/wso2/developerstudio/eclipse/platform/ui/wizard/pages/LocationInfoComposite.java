@@ -61,7 +61,6 @@ public class LocationInfoComposite extends Composite implements Observer {
     private ProjectDataModel projectModel;
     private final File defaultLocation;
     private String currentProjectName;
-    private File workSpaceRoot;
     private boolean defaultCheckButtonSelected;
 
     //variable used to indicate whether location selector composite is complete
@@ -76,8 +75,6 @@ public class LocationInfoComposite extends Composite implements Observer {
     private static final String USE_DEFAULT_LOCATION = "Use Default Location";
     private static final String BROWSE = "Browse";
     private static final String ERR_MESSAGE_VALID_LOCATION = "Enter a valid location for the project";
-    private static final String ERR_MESSAGE_OVERLAPPING_WORKSPACE = " overlaps the workspace location: ";
-    private static final String ERR_MESSAGE_OVERLAPPING_PROJECT = " overlaps the location of another project: ";
     private static final String DATA_FIELD_VALIDATOR_METHOD = "doPostFieldModificationAction";
 
 
@@ -97,7 +94,6 @@ public class LocationInfoComposite extends Composite implements Observer {
         
         this.wizardPage = wizardPage;
         this.projectOptionsData = optionDataInfo.getProjectOptionsData();
-        this.workSpaceRoot = ResourcesPlugin.getWorkspace().getRoot().getLocation().toFile();
 
         setLayout(new GridLayout(1, false));
 
@@ -208,15 +204,7 @@ public class LocationInfoComposite extends Composite implements Observer {
                 complete = false;
                 errorMessage = ERR_MESSAGE_VALID_LOCATION;
                 throw new FieldValidationException(errorMessage);
-            } /*else if (!defaultCheckButtonSelected && workSpaceRoot.equals(new File(locationHolder.getText()))) {
-                complete = false;
-                errorMessage = locationHolder.getText() + ERR_MESSAGE_OVERLAPPING_WORKSPACE + workSpaceRoot;
-                throw new FieldValidationException(errorMessage);
-            }*//* else if (!defaultCheckButtonSelected && new File(locationHolder.getText()).exists()) {
-                complete = false;
-                errorMessage = locationHolder.getText() + ERR_MESSAGE_OVERLAPPING_PROJECT + new File(locationHolder.getText()).getName();
-                throw new FieldValidationException(errorMessage);
-            }*/ else {
+            } else {
                 if (defaultCheckButtonSelected && getCurrentProjectName() != null) {
                     getProjectModel().setLocation(new File(locationHolder.getText(), getCurrentProjectName()));
                 } else {

@@ -217,7 +217,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 	 * This adds a property descriptor for the Inbound HL7 Port feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT 
 	 */
 	protected void addInboundHL7PortPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add

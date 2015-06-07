@@ -20,11 +20,16 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtil
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -40,12 +45,19 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.EndPointTemplateList;
+import org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceTemplate;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.FailoverEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.LoadBalanceEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.ParentEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.OpenEditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
 
@@ -98,35 +110,65 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint{
 			});
 
 			name=endpointName;
-			createFiles(name, "complex_endpoint_" + name + ".esb_diagram", "complex_endpoint_"
+			createFiles(endpoint, name, "complex_endpoint_" + name + ".esb_diagram", "complex_endpoint_"
 					+ name + ".esb");
 		} else {
 			name=((ParentEndPoint) endpoint).getName();
-			createFiles(name, "complex_endpoint_" + name + ".esb_diagram", "complex_endpoint_"
+			createFiles(endpoint, name, "complex_endpoint_" + name + ".esb_diagram", "complex_endpoint_"
 					+ name + ".esb");
 		}
 	}
 	
-	public boolean createFiles(String name, String fileURI1, String fileURI2) {
+	public boolean createFiles(EObject endpoint, String name, String fileURI1, String fileURI2) {
 /*		Resource diagram;
 		String basePath = "platform:/resource/" + currentProject.getName()
 				+ "/" + COMPLEX_ENDPOINT_RESOURCE_DIR  + "/";*/
 		IProject currentProject=getActiveProject();
-		IFile file = currentProject.getFile(COMPLEX_ENDPOINT_RESOURCE_DIR + "/"
-				+ fileURI1);
+/*		IFile file = currentProject.getFile(COMPLEX_ENDPOINT_RESOURCE_DIR + "/"
+				+ fileURI1);*/
 
-		if (!file.exists()) {
-			
-			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR
-					+ "/endpoints/" + name + ".xml");
-			
+		IFile fileTobeOpened = null;
+		//if (!file.exists()) {
+			try{
+			IFolder iFolder = currentProject.getFolder(SYNAPSE_CONFIG_DIR + "/complex-endpoints/");
+			if (!iFolder.exists()){
+				iFolder.create(IResource.NONE, true, null);
+			} 
+			fileTobeOpened = iFolder.getFile(name + ".xml");// currentProject.getFile(SYNAPSE_CONFIG_DIR + "/complex-endpoints/" + name + ".xml");
+						
+			if (fileTobeOpened.exists()) {
+				OpenEditorUtils oeUtils = new OpenEditorUtils();
+				oeUtils.openSeparateEditor(fileTobeOpened);
+			} else {
+				String path = fileTobeOpened.getParent().getFullPath() + "/";
+				ArtifactTemplate complexEndpointArtifactTemplate = null; 
+				if(endpoint instanceof FailoverEndPoint){
+					complexEndpointArtifactTemplate = EndPointTemplateList.getArtifactTemplates()[4];
+				}else if(endpoint instanceof LoadBalanceEndPoint){
+					complexEndpointArtifactTemplate = EndPointTemplateList.getArtifactTemplates()[5];
+				}else if(endpoint instanceof  RecipientListEndPoint){
+					complexEndpointArtifactTemplate = EndPointTemplateList.getArtifactTemplates()[6];
+				}				
+				fileTobeOpened.create(complexEndpointArtifactTemplate.getTemplateDataStream(), true,
+						new NullProgressMonitor());
+				String source = org.wso2.developerstudio.eclipse.utils.file.FileUtils.getContentAsString(complexEndpointArtifactTemplate.getTemplateDataStream());
+				source = source.replaceAll("\\{", "<").replaceAll("\\}", ">");
+				source = StringUtils.replace(source, "<ep.name>", name);
+				source = MessageFormat.format(source, name);
+				Openable openable = ESBGraphicalEditor.getOpenable();
+				openable.editorOpen(fileTobeOpened.getName(), ArtifactType.ENDPOINT.getLiteral(), path, source);
+			}
+			}catch (Exception e) {
+				log.error("Cannot open file " + fileTobeOpened, e);
+				return false;
+			}
 			String path = fileTobeOpened.getParent().getFullPath() + "/";
 			
 /*			diagram = EsbDiagramEditorUtil.createResource(
 					URI.createURI(basePath + fileURI1),
 					URI.createURI(basePath + fileURI2),
 					new NullProgressMonitor(), "complex_endpoint", name, null);*/
-			String source;
+/*			String source;
 			try {
 				source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
 				Openable openable = ESBGraphicalEditor.getOpenable();
@@ -137,7 +179,7 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint{
 			} catch (Exception e) {
 				log.error("Error while opening the file : "+fileTobeOpened, e);
 				return false;
-			}			
+			}	*/		
 /*			try {
 				EsbDiagramEditorUtil.openDiagram(diagram);
 
@@ -145,9 +187,9 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint{
 				log.error("Cannot init editor", e);
 			}*/
 			return true;
-		}
+		//}
 
-		else {
+/*		else {
 			IWorkbenchPage page = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage();
 			IEditorDescriptor desc = PlatformUI.getWorkbench()
@@ -158,7 +200,7 @@ public class ComplexFiguredAbstractEndpoint extends AbstractEndpoint{
 				log.error("Cannot init editor", e);
 			}
 			return true;
-		}
+		}*/
 	}
 	
 	private IProject getActiveProject() {

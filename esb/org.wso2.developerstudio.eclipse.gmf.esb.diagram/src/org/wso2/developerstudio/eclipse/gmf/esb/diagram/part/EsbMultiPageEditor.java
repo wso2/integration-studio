@@ -670,7 +670,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
         EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
         
         //Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.
-        if(!esbServer.getType().equals(ArtifactType.COMPLEX_ENDPOINT)){
+        //if(!esbServer.getType().equals(ArtifactType.COMPLEX_ENDPOINT)){
 
         try {
         	updateAssociatedXMLFile(monitor);
@@ -683,7 +683,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, simpleMessage);
 			ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", errorMsgHeader, editorStatus);
 		}
-        }
+        //}
         
 		EditorUtils.setLockmode(graphicalEditor, true);
         

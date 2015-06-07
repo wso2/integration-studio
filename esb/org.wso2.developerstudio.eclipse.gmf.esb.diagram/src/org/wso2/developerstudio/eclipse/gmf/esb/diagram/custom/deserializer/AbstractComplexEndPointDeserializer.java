@@ -19,16 +19,22 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.COMPLEX_ENDPOINT_RESOURCE_DIR;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.axiom.om.OMElement;
 import org.apache.commons.io.FileUtils;
+import org.apache.synapse.config.xml.endpoints.EndpointSerializer;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -79,15 +85,42 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 	protected <T extends AbstractEndpoint> void deserializeComplexEndpoint(T endpoint, IGraphicalEditPart graphicalEditPart){	
 		
 		IGraphicalEditPart gpart = null;
+		String endpointName;
 
+
+		
 		if(endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()){
 			
+			if(endpoint.getName() != null){
+				endpointName = endpoint.getName();
+				executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
+			}else{
 			long lDateTime = new Date().getTime();
-			final String endpointName = String.valueOf(lDateTime);
+			endpointName = String.valueOf(lDateTime);
+			executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
+			}
 			
 			mainDiagramEditorRef = getDiagramEditor();
+						
+			IProject currentProject=getActiveProject();
+					IFile fileTobeOpened = null;
+					OMElement configOM = EndpointSerializer.getElementFromEndpoint(endpoint);
+		
+						try{
+						IFolder iFolder = currentProject.getFolder(SYNAPSE_CONFIG_DIR + "/complex-endpoints/");
+						if (!iFolder.exists()){
+							iFolder.create(IResource.NONE, true, null);
+						} 
+						fileTobeOpened = iFolder.getFile(endpointName + ".xml");
+						InputStream stream = new ByteArrayInputStream(configOM.toString().getBytes(StandardCharsets.UTF_8));
+						fileTobeOpened.setContents(stream, false, false, null);		
+						}catch(Exception e){
+							log.error(e);
+						}
 			
-			executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
+						if(endpoint.getParentEndpoint() != null){// && ((AbstractEndpoint)endpoint.getParentEndpoint()).getParentEndpoint() != null){
+							return;
+						}
 			
 			//We can not get the editorPart without opening the editor.
 /*			IEditorPart editorPart = createFiles(endpointName,

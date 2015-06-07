@@ -2829,6 +2829,12 @@ public class EsbSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsbPackage.INBOUND_ENDPOINT_PARAMETER: {
+				InboundEndpointParameter inboundEndpointParameter = (InboundEndpointParameter)theEObject;
+				T result = caseInboundEndpointParameter(inboundEndpointParameter);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsbPackage.INBOUND_ENDPOINT_CONTAINER: {
 				InboundEndpointContainer inboundEndpointContainer = (InboundEndpointContainer)theEObject;
 				T result = caseInboundEndpointContainer(inboundEndpointContainer);
@@ -5753,6 +5759,21 @@ public class EsbSwitch<T> extends Switch<T> {
 	}
 
     /**
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Endpoint Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInboundEndpointParameter(InboundEndpointParameter object) {
+		return null;
+	}
+
+				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Inbound Endpoint Container</em>'.
 	 * <!-- begin-user-doc -->
      * This implementation returns null;

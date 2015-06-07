@@ -397,6 +397,7 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.FAST_XSLT_MEDIATOR_INPUT_CONNECTOR: return createFastXSLTMediatorInputConnector();
 			case EsbPackage.FAST_XSLT_MEDIATOR_OUTPUT_CONNECTOR: return createFastXSLTMediatorOutputConnector();
 			case EsbPackage.INBOUND_ENDPOINT: return createInboundEndpoint();
+			case EsbPackage.INBOUND_ENDPOINT_PARAMETER: return createInboundEndpointParameter();
 			case EsbPackage.INBOUND_ENDPOINT_CONTAINER: return createInboundEndpointContainer();
 			case EsbPackage.INBOUND_ENDPOINT_SEQUENCE_CONTAINER: return createInboundEndpointSequenceContainer();
 			case EsbPackage.INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_CONTAINER: return createInboundEndpointOnErrorSequenceContainer();
@@ -2821,6 +2822,16 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
         inboundEndpoint.setOnErrorSequenceOutputConnector(createInboundEndpointOnErrorSequenceOutputConnector());
         inboundEndpoint.setContainer(createInboundEndpointContainer());
 		return inboundEndpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InboundEndpointParameter createInboundEndpointParameter() {
+		InboundEndpointParameterImpl inboundEndpointParameter = new InboundEndpointParameterImpl();
+		return inboundEndpointParameter;
 	}
 
 	/**

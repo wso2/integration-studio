@@ -244,6 +244,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector;
@@ -1853,6 +1854,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EClass inboundEndpointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inboundEndpointParameterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -10058,6 +10066,42 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getInboundEndpoint_EnableSSL() {
 		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(88);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInboundEndpoint_ServiceParameters() {
+		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(89);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInboundEndpointParameter() {
+		return inboundEndpointParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpointParameter_Name() {
+		return (EAttribute)inboundEndpointParameterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpointParameter_Value() {
+		return (EAttribute)inboundEndpointParameterEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -18679,6 +18723,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ENABLE_SSL);
+		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__SERVICE_PARAMETERS);
+
+		inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
+		createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
+		createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__VALUE);
 
 		inboundEndpointContainerEClass = createEClass(INBOUND_ENDPOINT_CONTAINER);
 		createEReference(inboundEndpointContainerEClass, INBOUND_ENDPOINT_CONTAINER__SEQUENCE_CONTAINER);
@@ -20875,6 +20924,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_InboundCxfRmPort(), ecorePackage.getEString(), "inboundCxfRmPort", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_InboundCxfRmConfigFile(), ecorePackage.getEString(), "inboundCxfRmConfigFile", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_EnableSSL(), ecorePackage.getEBoolean(), "enableSSL", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInboundEndpoint_ServiceParameters(), this.getInboundEndpointParameter(), null, "serviceParameters", null, 0, -1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpointParameter_Value(), ecorePackage.getEString(), "value", "parameter_value", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointContainerEClass, InboundEndpointContainer.class, "InboundEndpointContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInboundEndpointContainer_SequenceContainer(), this.getInboundEndpointSequenceContainer(), null, "sequenceContainer", null, 0, 1, InboundEndpointContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

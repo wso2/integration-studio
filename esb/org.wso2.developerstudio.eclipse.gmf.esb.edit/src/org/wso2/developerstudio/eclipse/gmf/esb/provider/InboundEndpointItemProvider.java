@@ -129,10 +129,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			break;
 		case CUSTOM:
 			addClassPropertyDescriptor(object);
-			addIntervalPropertyDescriptor(object);
-			addSequentialPropertyDescriptor(object);
-			addCoordinationPropertyDescriptor(object);
-			addServiceParametersPropertyDescriptor(object);
+			// addProtocolPropertyDescriptor(object);
 			break;
 		case HTTPS:
 			addInboundHttpPortPropertyDescriptor(object);
@@ -842,28 +839,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 "Parameters",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Service Parameters feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addServiceParametersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_serviceParameters_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_serviceParameters_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__SERVICE_PARAMETERS,
-				 true,
-				 false,
-				 true,
-				 null,
 				 "Parameters",
 				 null));
 	}
@@ -1794,7 +1769,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			childrenFeatures.add(EsbPackage.Literals.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR);
 			childrenFeatures.add(EsbPackage.Literals.INBOUND_ENDPOINT__CONTAINER);
-			childrenFeatures.add(EsbPackage.Literals.INBOUND_ENDPOINT__SERVICE_PARAMETERS);
 		}
 		return childrenFeatures;
 	}
@@ -1939,7 +1913,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_INPUT_CONNECTOR:
 			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE_OUTPUT_CONNECTOR:
 			case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
-			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -1981,11 +1954,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			(createChildParameter
 				(EsbPackage.Literals.INBOUND_ENDPOINT__CONTAINER,
 				 EsbFactory.eINSTANCE.createInboundEndpointContainer()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(EsbPackage.Literals.INBOUND_ENDPOINT__SERVICE_PARAMETERS,
-				 EsbFactory.eINSTANCE.createInboundEndpointParameter()));
 	}
 
 }

@@ -15,19 +15,14 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
-import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ContentType;
 import org.wso2.developerstudio.eclipse.gmf.esb.Enable;
@@ -36,7 +31,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointOnErrorSequenceOutputConnector;
-import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointSequenceOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType;
@@ -143,7 +137,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isEnableSSL <em>Enable SSL</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getServiceParameters <em>Service Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -1881,16 +1874,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected boolean enableSSL = ENABLE_SSL_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getServiceParameters() <em>Service Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getServiceParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<InboundEndpointParameter> serviceParameters;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2752,18 +2735,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		enableSSL = newEnableSSL;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL, oldEnableSSL, enableSSL));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<InboundEndpointParameter> getServiceParameters() {
-		if (serviceParameters == null) {
-			serviceParameters = new EObjectContainmentEList<InboundEndpointParameter>(InboundEndpointParameter.class, this, EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS);
-		}
-		return serviceParameters;
 	}
 
 	/**
@@ -3918,8 +3889,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return basicSetOnErrorSequenceOutputConnector(null, msgs);
 			case EsbPackage.INBOUND_ENDPOINT__CONTAINER:
 				return basicSetContainer(null, msgs);
-			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-				return ((InternalEList<?>)getServiceParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -4110,8 +4079,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getInboundCxfRmConfigFile();
 			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
 				return isEnableSSL();
-			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-				return getServiceParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -4121,7 +4088,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -4391,10 +4357,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
 				setEnableSSL((Boolean)newValue);
-				return;
-			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-				getServiceParameters().clear();
-				getServiceParameters().addAll((Collection<? extends InboundEndpointParameter>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -4675,9 +4637,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
 				setEnableSSL(ENABLE_SSL_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-				getServiceParameters().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -4868,8 +4827,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT == null ? inboundCxfRmConfigFile != null : !INBOUND_CXF_RM_CONFIG_FILE_EDEFAULT.equals(inboundCxfRmConfigFile);
 			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
 				return enableSSL != ENABLE_SSL_EDEFAULT;
-			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
-				return serviceParameters != null && !serviceParameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

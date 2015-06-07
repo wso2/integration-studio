@@ -4241,29 +4241,6 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 	}
 
     /**
-	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected InboundEndpointParameterItemProvider inboundEndpointParameterItemProvider;
-
-				/**
-	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createInboundEndpointParameterAdapter() {
-		if (inboundEndpointParameterItemProvider == null) {
-			inboundEndpointParameterItemProvider = new InboundEndpointParameterItemProvider(this);
-		}
-
-		return inboundEndpointParameterItemProvider;
-	}
-
-				/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer} instances.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8532,7 +8509,6 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 		if (fastXSLTMediatorInputConnectorItemProvider != null) fastXSLTMediatorInputConnectorItemProvider.dispose();
 		if (fastXSLTMediatorOutputConnectorItemProvider != null) fastXSLTMediatorOutputConnectorItemProvider.dispose();
 		if (inboundEndpointItemProvider != null) inboundEndpointItemProvider.dispose();
-		if (inboundEndpointParameterItemProvider != null) inboundEndpointParameterItemProvider.dispose();
 		if (inboundEndpointContainerItemProvider != null) inboundEndpointContainerItemProvider.dispose();
 		if (inboundEndpointSequenceContainerItemProvider != null) inboundEndpointSequenceContainerItemProvider.dispose();
 		if (inboundEndpointOnErrorSequenceContainerItemProvider != null) inboundEndpointOnErrorSequenceContainerItemProvider.dispose();

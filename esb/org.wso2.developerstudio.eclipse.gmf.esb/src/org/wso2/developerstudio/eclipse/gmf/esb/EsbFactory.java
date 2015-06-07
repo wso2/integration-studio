@@ -1653,15 +1653,6 @@ public interface EsbFactory extends EFactory {
     InboundEndpoint createInboundEndpoint();
 
     /**
-	 * Returns a new object of class '<em>Inbound Endpoint Parameter</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Inbound Endpoint Parameter</em>'.
-	 * @generated
-	 */
-	InboundEndpointParameter createInboundEndpointParameter();
-
-				/**
 	 * Returns a new object of class '<em>Inbound Endpoint Container</em>'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

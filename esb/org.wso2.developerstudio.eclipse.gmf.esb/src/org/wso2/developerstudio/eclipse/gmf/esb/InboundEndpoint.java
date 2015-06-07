@@ -15,8 +15,6 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb;
 
-import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -115,7 +113,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmPort <em>Inbound Cxf Rm Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getServiceParameters <em>Service Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -1042,22 +1039,6 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setEnableSSL(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Service Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Service Parameters</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Service Parameters</em>' containment reference list.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_ServiceParameters()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<InboundEndpointParameter> getServiceParameters();
 
 	/**
 	 * Returns the value of the '<em><b>On Error Sequence</b></em>' attribute.

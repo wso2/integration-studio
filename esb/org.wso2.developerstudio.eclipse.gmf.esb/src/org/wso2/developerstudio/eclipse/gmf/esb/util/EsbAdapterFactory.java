@@ -1469,6 +1469,10 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 				return createInboundEndpointAdapter();
 			}
 			@Override
+			public Adapter caseInboundEndpointParameter(InboundEndpointParameter object) {
+				return createInboundEndpointParameterAdapter();
+			}
+			@Override
 			public Adapter caseInboundEndpointContainer(InboundEndpointContainer object) {
 				return createInboundEndpointContainerAdapter();
 			}
@@ -4192,6 +4196,20 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 	}
 
     /**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter
+	 * @generated
+	 */
+	public Adapter createInboundEndpointParameterAdapter() {
+		return null;
+	}
+
+				/**
 	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointContainer <em>Inbound Endpoint Container</em>}'.
 	 * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;

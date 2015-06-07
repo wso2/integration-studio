@@ -2189,6 +2189,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundCxfRmPort"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundCxfRmConfigFile"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/enableSSL"/>
+      <genFeatures children="true" createChild="true" propertyCategory="Parameters"
+          propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/serviceParameters"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/value"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpointContainer/sequenceContainer"/>

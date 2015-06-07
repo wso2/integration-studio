@@ -103,9 +103,20 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 		}
 
 		inboundEndpoint.setSuspend(false);
-		inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());
 
-		if (StringUtils.isNotBlank(visualInboundEndpoint.getType().toString())) {
+		if (visualInboundEndpoint.getType().toString().equals("Custom")) {
+			if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
+				inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());
+			}
+
+			// Service Parameters.
+			for (int i = 0; i < visualInboundEndpoint.getServiceParameters().size(); ++i) {
+				String value = visualInboundEndpoint.getServiceParameters().get(i).getValue();
+				if (StringUtils.isNotBlank(value)) {
+					inboundEndpoint.addParameter(visualInboundEndpoint.getServiceParameters().get(i).getName(), value);
+				}
+			}
+		} else if (StringUtils.isNotBlank(visualInboundEndpoint.getType().toString())) {
 			inboundEndpoint.setProtocol(visualInboundEndpoint.getType().toString());
 		}
 
@@ -313,6 +324,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			}
 			break;
 		case CUSTOM:
+
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getInterval())) {
 				inboundEndpoint.addParameter(InboundEndpointConstants.INTERVAL, visualInboundEndpoint.getInterval());
 			}

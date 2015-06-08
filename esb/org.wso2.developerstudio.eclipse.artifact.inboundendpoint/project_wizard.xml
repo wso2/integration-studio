@@ -33,9 +33,7 @@
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Inbound Endpoint Configuration File</data>
 
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.ESBProjectFilter">Save Inbound Endpoint in:</data>
-			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
-			<data modelProperty="available.inboundendpoints" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController"  controlData="select=multiple;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointsList">Available Inbound Endpoints</data>
-			
+			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>			
 		</settings>
 	</projectOptionSettings>
 </wizard>

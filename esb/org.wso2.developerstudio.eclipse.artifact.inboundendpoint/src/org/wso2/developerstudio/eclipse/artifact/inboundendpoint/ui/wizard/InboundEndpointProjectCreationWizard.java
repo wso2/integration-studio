@@ -289,7 +289,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 			artifact.setVersion(version);
 			artifact.setType(TYPE);
 			artifact.setServerRole(SERVER_ROLE);
-			artifact.setFile(groupId);
+			artifact.setGroupId(groupId);
 			artifact.setFile(FileUtils.getRelativePath(importLocation.getProject().getLocation().toFile(), new File(importLocation.getLocation().toFile(),key+XML_EXTENSION)));
 			esbProjectArtifact.addESBArtifact(artifact);
 			}

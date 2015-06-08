@@ -486,6 +486,10 @@ limitations under the License.
                     wizard="org.wso2.developerstudio.eclipse.artifact.synapseartifact"
                     priority="7">
         </wizardLink>
+         <wizardLink category="dashboard.category.esb" id="9dashboard.wizardLink.esb.inboundEndpoint"
+                    wizard=" org.wso2.developerstudio.eclipse.artifact.newinboundendpointartifact"
+                    priority="8">
+        </wizardLink>
 
         <!-- greg -->
         <wizardLink category="dashboard.category.greg"

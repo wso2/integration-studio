@@ -567,14 +567,14 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//Protocol/https"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//InboundEndpointType">
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/HTTP"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/File"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/JMS"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/Custom"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/HTTPS"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/HL7"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/KAFKA"/>
-      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/CXF_WS_RM"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/http"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/file"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/jms"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/custom"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/https"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/hl7"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/kafka"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//InboundEndpointType/cxf_ws_rm"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//ContentType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//ContentType/xml"/>
@@ -2160,8 +2160,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sslProtocol"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/httpsProtocols"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/certificateRevocationVerifier"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/onErrorSequence"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/sequence"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundHL7Port"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundHL7AutoAck"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/inboundHL7MessagePreProcessor"/>

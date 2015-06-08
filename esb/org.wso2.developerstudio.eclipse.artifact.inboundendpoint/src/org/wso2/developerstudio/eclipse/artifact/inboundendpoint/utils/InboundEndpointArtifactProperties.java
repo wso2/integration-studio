@@ -26,6 +26,11 @@ public final class InboundEndpointArtifactProperties extends NLS {
 	public static String typeFile;
 	public static String typeJMS;
 	public static String typeCustom;
+	public static String typeHTTPS;
+	public static String typeHL7;
+	public static String typeKAFKA;
+	public static String typeCXF_WS_RM;
+	
 
 	// project wizard page properties
 	public static String wizardOptionNewIE;
@@ -65,6 +70,17 @@ public final class InboundEndpointArtifactProperties extends NLS {
 	public static String wizardOptionClass;
 	public static String wizardOptionProtocol;
 	public static String wizardOptionSuspend;
+	public static String wizardOptionAvailableInboundEndpoints;
+	
+	public static String errorNameExists;
+	public static String validationReadingFile;
+	public static String errorProjectPath;
+	public static String errorClass;
+	public static String msgOverrideProject;
+	public static String errorCoreException;
+	public static String errorUnexpectedError;
+	public static String errorIOException;
+	public static String errorOpenEditor;
 
 	static {
 		// initialize resource bundle

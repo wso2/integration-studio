@@ -114,8 +114,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSslProtocol <em>Ssl Protocol</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getHttpsProtocols <em>Https Protocols</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getOnErrorSequence <em>On Error Sequence</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
@@ -1301,46 +1299,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected String certificateRevocationVerifier = CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getOnErrorSequence() <em>On Error Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOnErrorSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ON_ERROR_SEQUENCE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getOnErrorSequence() <em>On Error Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOnErrorSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected String onErrorSequence = ON_ERROR_SEQUENCE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SEQUENCE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getSequence() <em>Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSequence()
-	 * @generated
-	 * @ordered
-	 */
-	protected String sequence = SEQUENCE_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getInboundHL7Port() <em>Inbound HL7 Port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2171,27 +2129,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getSequence() {
-		return sequence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSequence(String newSequence) {
-		String oldSequence = sequence;
-		sequence = newSequence;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SEQUENCE, oldSequence, sequence));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getInboundHL7Port() {
 		return inboundHL7Port;
 	}
@@ -2764,27 +2701,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			serviceParameters = new EObjectContainmentEList<InboundEndpointParameter>(InboundEndpointParameter.class, this, EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS);
 		}
 		return serviceParameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getOnErrorSequence() {
-		return onErrorSequence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOnErrorSequence(String newOnErrorSequence) {
-		String oldOnErrorSequence = onErrorSequence;
-		onErrorSequence = newOnErrorSequence;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE, oldOnErrorSequence, onErrorSequence));
 	}
 
 	/**
@@ -4052,10 +3968,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return getHttpsProtocols();
 			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
 				return getCertificateRevocationVerifier();
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-				return getOnErrorSequence();
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
-				return getSequence();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
 				return getInboundHL7Port();
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
@@ -4304,12 +4216,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
 				setCertificateRevocationVerifier((String)newValue);
-				return;
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-				setOnErrorSequence((String)newValue);
-				return;
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
-				setSequence((String)newValue);
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
 				setInboundHL7Port((String)newValue);
@@ -4588,12 +4494,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
 				setCertificateRevocationVerifier(CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT);
 				return;
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-				setOnErrorSequence(ON_ERROR_SEQUENCE_EDEFAULT);
-				return;
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
-				setSequence(SEQUENCE_EDEFAULT);
-				return;
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
 				setInboundHL7Port(INBOUND_HL7_PORT_EDEFAULT);
 				return;
@@ -4810,10 +4710,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return HTTPS_PROTOCOLS_EDEFAULT == null ? httpsProtocols != null : !HTTPS_PROTOCOLS_EDEFAULT.equals(httpsProtocols);
 			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
 				return CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT == null ? certificateRevocationVerifier != null : !CERTIFICATE_REVOCATION_VERIFIER_EDEFAULT.equals(certificateRevocationVerifier);
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-				return ON_ERROR_SEQUENCE_EDEFAULT == null ? onErrorSequence != null : !ON_ERROR_SEQUENCE_EDEFAULT.equals(onErrorSequence);
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
-				return SEQUENCE_EDEFAULT == null ? sequence != null : !SEQUENCE_EDEFAULT.equals(sequence);
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
 				return INBOUND_HL7_PORT_EDEFAULT == null ? inboundHL7Port != null : !INBOUND_HL7_PORT_EDEFAULT.equals(inboundHL7Port);
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
@@ -4994,10 +4890,6 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(httpsProtocols);
 		result.append(", certificateRevocationVerifier: ");
 		result.append(certificateRevocationVerifier);
-		result.append(", onErrorSequence: ");
-		result.append(onErrorSequence);
-		result.append(", sequence: ");
-		result.append(sequence);
 		result.append(", inboundHL7Port: ");
 		result.append(inboundHL7Port);
 		result.append(", inboundHL7AutoAck: ");

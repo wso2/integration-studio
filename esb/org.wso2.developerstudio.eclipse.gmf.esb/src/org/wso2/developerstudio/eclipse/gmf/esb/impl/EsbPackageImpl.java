@@ -9821,17 +9821,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInboundEndpoint_Sequence() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(61);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getInboundEndpoint_InboundHL7Port() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(62);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(60);
 	}
 
 	/**
@@ -9840,7 +9831,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundHL7AutoAck() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(63);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(61);
 	}
 
 	/**
@@ -9849,7 +9840,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundHL7MessagePreProcessor() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(64);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(62);
 	}
 
 	/**
@@ -9858,7 +9849,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundHL7CharSet() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(65);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(63);
 	}
 
 	/**
@@ -9867,7 +9858,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundHL7TimeOut() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(66);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(64);
 	}
 
 	/**
@@ -9876,7 +9867,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundHL7ValidateMessage() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(67);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(65);
 	}
 
 	/**
@@ -9885,7 +9876,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundHL7BuildInvalidMessages() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(68);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(66);
 	}
 
 	/**
@@ -9894,7 +9885,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundHL7PassThroughInvalidMessages() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(69);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(67);
 	}
 
 	/**
@@ -9903,7 +9894,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_ZookeeperConnect() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(70);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(68);
 	}
 
 	/**
@@ -9912,7 +9903,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_GroupId() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(71);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(69);
 	}
 
 	/**
@@ -9921,7 +9912,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_ConsumerType() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(72);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(70);
 	}
 
 	/**
@@ -9930,7 +9921,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_ContentType() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(73);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(71);
 	}
 
 	/**
@@ -9939,7 +9930,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_Topics() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(74);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(72);
 	}
 
 	/**
@@ -9948,7 +9939,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_SimpleTopic() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(75);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(73);
 	}
 
 	/**
@@ -9957,7 +9948,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_SimpleBrokers() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(76);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(74);
 	}
 
 	/**
@@ -9966,7 +9957,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_SimplePort() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(77);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(75);
 	}
 
 	/**
@@ -9975,7 +9966,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_SimplePartition() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(78);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(76);
 	}
 
 	/**
@@ -9984,7 +9975,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_SimpleMaxMessagesToRead() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(79);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(77);
 	}
 
 	/**
@@ -9993,7 +9984,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_ThreadCount() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(80);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(78);
 	}
 
 	/**
@@ -10002,7 +9993,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_ZookeeperSessionTimeoutMs() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(81);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(79);
 	}
 
 	/**
@@ -10011,7 +10002,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_ZookeeperSyncTimeMs() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(82);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(80);
 	}
 
 	/**
@@ -10020,7 +10011,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_AutoCommitIntervalMs() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(83);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(81);
 	}
 
 	/**
@@ -10029,7 +10020,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_AutoOffsetReset() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(84);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(82);
 	}
 
 	/**
@@ -10038,7 +10029,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundCxfRmHost() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(85);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(83);
 	}
 
 	/**
@@ -10047,7 +10038,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundCxfRmPort() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(86);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(84);
 	}
 
 	/**
@@ -10056,7 +10047,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_InboundCxfRmConfigFile() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(87);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(85);
 	}
 
 	/**
@@ -10065,7 +10056,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getInboundEndpoint_EnableSSL() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(88);
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(86);
 	}
 
 	/**
@@ -10074,7 +10065,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getInboundEndpoint_ServiceParameters() {
-		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(89);
+		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(87);
 	}
 
 	/**
@@ -10102,15 +10093,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EAttribute getInboundEndpointParameter_Value() {
 		return (EAttribute)inboundEndpointParameterEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInboundEndpoint_OnErrorSequence() {
-		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(60);
 	}
 
 	/**
@@ -18694,8 +18676,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SSL_PROTOCOL);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__HTTPS_PROTOCOLS);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER);
-		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ON_ERROR_SEQUENCE);
-		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SEQUENCE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_PORT);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR);
@@ -20895,8 +20875,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_SslProtocol(), ecorePackage.getEString(), "sslProtocol", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_HttpsProtocols(), ecorePackage.getEString(), "httpsProtocols", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_CertificateRevocationVerifier(), ecorePackage.getEString(), "certificateRevocationVerifier", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInboundEndpoint_OnErrorSequence(), ecorePackage.getEString(), "onErrorSequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInboundEndpoint_Sequence(), ecorePackage.getEString(), "sequence", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_InboundHL7Port(), ecorePackage.getEString(), "inboundHL7Port", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_InboundHL7AutoAck(), ecorePackage.getEBoolean(), "inboundHL7AutoAck", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_InboundHL7MessagePreProcessor(), ecorePackage.getEString(), "inboundHL7MessagePreProcessor", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -35,6 +35,14 @@ public class InboundEndpointCreationTypes extends AbstractListDataProvider {
 		                              InboundEndpointArtifactProperties.typeJMS));
 		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeCustom,
 		                              InboundEndpointArtifactProperties.typeCustom));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeHTTPS,
+                InboundEndpointArtifactProperties.typeHTTPS));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeHL7,
+                InboundEndpointArtifactProperties.typeHL7));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeKAFKA,
+                InboundEndpointArtifactProperties.typeKAFKA));
+		epTypeList.add(createListData(InboundEndpointArtifactProperties.typeCXF_WS_RM,
+                InboundEndpointArtifactProperties.typeCXF_WS_RM));
 		return epTypeList;
 	}
 

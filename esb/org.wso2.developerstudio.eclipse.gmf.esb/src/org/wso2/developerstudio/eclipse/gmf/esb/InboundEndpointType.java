@@ -32,14 +32,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum InboundEndpointType implements Enumerator {
 	/**
-	 * The '<em><b>HTTP</b></em>' literal object.
+	 * The '<em><b>Http</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #HTTP_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	HTTP(0, "HTTP", "HTTP"),
+	HTTP(0, "http", "HTTP"),
 
 	/**
 	 * The '<em><b>File</b></em>' literal object.
@@ -49,17 +49,17 @@ public enum InboundEndpointType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FILE(1, "File", "File"),
+	FILE(1, "file", "File"),
 
 	/**
-	 * The '<em><b>JMS</b></em>' literal object.
+	 * The '<em><b>Jms</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #JMS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	JMS(2, "JMS", "JMS"),
+	JMS(2, "jms", "JMS"),
 
 	/**
 	 * The '<em><b>Custom</b></em>' literal object.
@@ -69,42 +69,42 @@ public enum InboundEndpointType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CUSTOM(3, "Custom", "Custom"), /**
-	 * The '<em><b>HTTPS</b></em>' literal object.
+	CUSTOM(3, "custom", "Custom"), /**
+	 * The '<em><b>Https</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #HTTPS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	HTTPS(4, "HTTPS", "HTTPS"), /**
-	 * The '<em><b>HL7</b></em>' literal object.
+	HTTPS(4, "https", "HTTPS"), /**
+	 * The '<em><b>Hl7</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #HL7_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	HL7(5, "HL7", "HL7"), /**
-	 * The '<em><b>KAFKA</b></em>' literal object.
+	HL7(5, "hl7", "HL7"), /**
+	 * The '<em><b>Kafka</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #KAFKA_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	KAFKA(6, "KAFKA", "KAFKA"), /**
-	 * The '<em><b>CXF WS RM</b></em>' literal object.
+	KAFKA(6, "kafka", "KAFKA"), /**
+	 * The '<em><b>Cxf ws rm</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #CXF_WS_RM_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CXF_WS_RM(7, "CXF_WS_RM", "CXF_WS_RM");
+	CXF_WS_RM(7, "cxf_ws_rm", "CXF_WS_RM");
 
 	/**
-	 * The '<em><b>HTTP</b></em>' literal value.
+	 * The '<em><b>Http</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>HTTP</b></em>' literal object isn't clear,
@@ -112,7 +112,7 @@ public enum InboundEndpointType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HTTP
-	 * @model
+	 * @model name="http" literal="HTTP"
 	 * @generated
 	 * @ordered
 	 */
@@ -127,14 +127,14 @@ public enum InboundEndpointType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FILE
-	 * @model name="File"
+	 * @model name="file" literal="File"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int FILE_VALUE = 1;
 
 	/**
-	 * The '<em><b>JMS</b></em>' literal value.
+	 * The '<em><b>Jms</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>JMS</b></em>' literal object isn't clear,
@@ -142,7 +142,7 @@ public enum InboundEndpointType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #JMS
-	 * @model
+	 * @model name="jms" literal="JMS"
 	 * @generated
 	 * @ordered
 	 */
@@ -157,14 +157,14 @@ public enum InboundEndpointType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CUSTOM
-	 * @model name="Custom"
+	 * @model name="custom" literal="Custom"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int CUSTOM_VALUE = 3;
 
 	/**
-	 * The '<em><b>HTTPS</b></em>' literal value.
+	 * The '<em><b>Https</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>HTTPS</b></em>' literal object isn't clear,
@@ -172,14 +172,14 @@ public enum InboundEndpointType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HTTPS
-	 * @model
+	 * @model name="https" literal="HTTPS"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int HTTPS_VALUE = 4;
 
 	/**
-	 * The '<em><b>HL7</b></em>' literal value.
+	 * The '<em><b>Hl7</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>HL7</b></em>' literal object isn't clear,
@@ -187,14 +187,14 @@ public enum InboundEndpointType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HL7
-	 * @model
+	 * @model name="hl7" literal="HL7"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int HL7_VALUE = 5;
 
 	/**
-	 * The '<em><b>KAFKA</b></em>' literal value.
+	 * The '<em><b>Kafka</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>KAFKA</b></em>' literal object isn't clear,
@@ -202,14 +202,14 @@ public enum InboundEndpointType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KAFKA
-	 * @model
+	 * @model name="kafka" literal="KAFKA"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int KAFKA_VALUE = 6;
 
 	/**
-	 * The '<em><b>CXF WS RM</b></em>' literal value.
+	 * The '<em><b>Cxf ws rm</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>CXF WS RM</b></em>' literal object isn't clear,
@@ -217,7 +217,7 @@ public enum InboundEndpointType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CXF_WS_RM
-	 * @model
+	 * @model name="cxf_ws_rm" literal="CXF_WS_RM"
 	 * @generated
 	 * @ordered
 	 */

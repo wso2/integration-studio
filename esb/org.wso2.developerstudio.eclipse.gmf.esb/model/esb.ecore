@@ -2750,8 +2750,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="httpsProtocols" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="certificateRevocationVerifier"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="onErrorSequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundHL7Port" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundHL7AutoAck" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inboundHL7MessagePreProcessor"
@@ -2796,14 +2794,14 @@
         defaultValueLiteral="parameter_value"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InboundEndpointType">
-    <eLiterals name="HTTP" literal="HTTP"/>
-    <eLiterals name="File" value="1" literal="File"/>
-    <eLiterals name="JMS" value="2" literal="JMS"/>
-    <eLiterals name="Custom" value="3" literal="Custom"/>
-    <eLiterals name="HTTPS" value="4"/>
-    <eLiterals name="HL7" value="5"/>
-    <eLiterals name="KAFKA" value="6"/>
-    <eLiterals name="CXF_WS_RM" value="7"/>
+    <eLiterals name="http" literal="HTTP"/>
+    <eLiterals name="file" value="1" literal="File"/>
+    <eLiterals name="jms" value="2" literal="JMS"/>
+    <eLiterals name="custom" value="3" literal="Custom"/>
+    <eLiterals name="https" value="4" literal="HTTPS"/>
+    <eLiterals name="hl7" value="5" literal="HL7"/>
+    <eLiterals name="kafka" value="6" literal="KAFKA"/>
+    <eLiterals name="cxf_ws_rm" value="7" literal="CXF_WS_RM"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ContentType">
     <eLiterals name="xml" literal="application/xml"/>

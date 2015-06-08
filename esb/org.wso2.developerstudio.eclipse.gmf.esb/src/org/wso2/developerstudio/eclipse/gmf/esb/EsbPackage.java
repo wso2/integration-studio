@@ -20985,31 +20985,13 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER = ESB_ELEMENT_FEATURE_COUNT + 59;
 
 	/**
-	 * The feature id for the '<em><b>On Error Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__ON_ERROR_SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 60;
-
-	/**
-	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_ENDPOINT__SEQUENCE = ESB_ELEMENT_FEATURE_COUNT + 61;
-
-	/**
 	 * The feature id for the '<em><b>Inbound HL7 Port</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HL7_PORT = ESB_ELEMENT_FEATURE_COUNT + 62;
+	int INBOUND_ENDPOINT__INBOUND_HL7_PORT = ESB_ELEMENT_FEATURE_COUNT + 60;
 
 	/**
 	 * The feature id for the '<em><b>Inbound HL7 Auto Ack</b></em>' attribute.
@@ -21018,7 +21000,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK = ESB_ELEMENT_FEATURE_COUNT + 63;
+	int INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK = ESB_ELEMENT_FEATURE_COUNT + 61;
 
 	/**
 	 * The feature id for the '<em><b>Inbound HL7 Message Pre Processor</b></em>' attribute.
@@ -21027,7 +21009,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR = ESB_ELEMENT_FEATURE_COUNT + 64;
+	int INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR = ESB_ELEMENT_FEATURE_COUNT + 62;
 
 	/**
 	 * The feature id for the '<em><b>Inbound HL7 Char Set</b></em>' attribute.
@@ -21036,7 +21018,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET = ESB_ELEMENT_FEATURE_COUNT + 65;
+	int INBOUND_ENDPOINT__INBOUND_HL7_CHAR_SET = ESB_ELEMENT_FEATURE_COUNT + 63;
 
 	/**
 	 * The feature id for the '<em><b>Inbound HL7 Time Out</b></em>' attribute.
@@ -21045,7 +21027,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT = ESB_ELEMENT_FEATURE_COUNT + 66;
+	int INBOUND_ENDPOINT__INBOUND_HL7_TIME_OUT = ESB_ELEMENT_FEATURE_COUNT + 64;
 
 	/**
 	 * The feature id for the '<em><b>Inbound HL7 Validate Message</b></em>' attribute.
@@ -21054,7 +21036,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE = ESB_ELEMENT_FEATURE_COUNT + 67;
+	int INBOUND_ENDPOINT__INBOUND_HL7_VALIDATE_MESSAGE = ESB_ELEMENT_FEATURE_COUNT + 65;
 
 	/**
 	 * The feature id for the '<em><b>Inbound HL7 Build Invalid Messages</b></em>' attribute.
@@ -21063,7 +21045,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES = ESB_ELEMENT_FEATURE_COUNT + 68;
+	int INBOUND_ENDPOINT__INBOUND_HL7_BUILD_INVALID_MESSAGES = ESB_ELEMENT_FEATURE_COUNT + 66;
 
 	/**
 	 * The feature id for the '<em><b>Inbound HL7 Pass Through Invalid Messages</b></em>' attribute.
@@ -21072,7 +21054,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES = ESB_ELEMENT_FEATURE_COUNT + 69;
+	int INBOUND_ENDPOINT__INBOUND_HL7_PASS_THROUGH_INVALID_MESSAGES = ESB_ELEMENT_FEATURE_COUNT + 67;
 
 	/**
 	 * The feature id for the '<em><b>Zookeeper Connect</b></em>' attribute.
@@ -21081,7 +21063,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__ZOOKEEPER_CONNECT = ESB_ELEMENT_FEATURE_COUNT + 70;
+	int INBOUND_ENDPOINT__ZOOKEEPER_CONNECT = ESB_ELEMENT_FEATURE_COUNT + 68;
 
 	/**
 	 * The feature id for the '<em><b>Group Id</b></em>' attribute.
@@ -21090,7 +21072,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__GROUP_ID = ESB_ELEMENT_FEATURE_COUNT + 71;
+	int INBOUND_ENDPOINT__GROUP_ID = ESB_ELEMENT_FEATURE_COUNT + 69;
 
 	/**
 	 * The feature id for the '<em><b>Consumer Type</b></em>' attribute.
@@ -21099,7 +21081,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__CONSUMER_TYPE = ESB_ELEMENT_FEATURE_COUNT + 72;
+	int INBOUND_ENDPOINT__CONSUMER_TYPE = ESB_ELEMENT_FEATURE_COUNT + 70;
 
 	/**
 	 * The feature id for the '<em><b>Content Type</b></em>' attribute.
@@ -21108,7 +21090,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 73;
+	int INBOUND_ENDPOINT__CONTENT_TYPE = ESB_ELEMENT_FEATURE_COUNT + 71;
 
 	/**
 	 * The feature id for the '<em><b>Topics</b></em>' attribute.
@@ -21117,7 +21099,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__TOPICS = ESB_ELEMENT_FEATURE_COUNT + 74;
+	int INBOUND_ENDPOINT__TOPICS = ESB_ELEMENT_FEATURE_COUNT + 72;
 
 	/**
 	 * The feature id for the '<em><b>Simple Topic</b></em>' attribute.
@@ -21126,7 +21108,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__SIMPLE_TOPIC = ESB_ELEMENT_FEATURE_COUNT + 75;
+	int INBOUND_ENDPOINT__SIMPLE_TOPIC = ESB_ELEMENT_FEATURE_COUNT + 73;
 
 	/**
 	 * The feature id for the '<em><b>Simple Brokers</b></em>' attribute.
@@ -21135,7 +21117,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__SIMPLE_BROKERS = ESB_ELEMENT_FEATURE_COUNT + 76;
+	int INBOUND_ENDPOINT__SIMPLE_BROKERS = ESB_ELEMENT_FEATURE_COUNT + 74;
 
 	/**
 	 * The feature id for the '<em><b>Simple Port</b></em>' attribute.
@@ -21144,7 +21126,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__SIMPLE_PORT = ESB_ELEMENT_FEATURE_COUNT + 77;
+	int INBOUND_ENDPOINT__SIMPLE_PORT = ESB_ELEMENT_FEATURE_COUNT + 75;
 
 	/**
 	 * The feature id for the '<em><b>Simple Partition</b></em>' attribute.
@@ -21153,7 +21135,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__SIMPLE_PARTITION = ESB_ELEMENT_FEATURE_COUNT + 78;
+	int INBOUND_ENDPOINT__SIMPLE_PARTITION = ESB_ELEMENT_FEATURE_COUNT + 76;
 
 	/**
 	 * The feature id for the '<em><b>Simple Max Messages To Read</b></em>' attribute.
@@ -21162,7 +21144,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ = ESB_ELEMENT_FEATURE_COUNT + 79;
+	int INBOUND_ENDPOINT__SIMPLE_MAX_MESSAGES_TO_READ = ESB_ELEMENT_FEATURE_COUNT + 77;
 
 	/**
 	 * The feature id for the '<em><b>Thread Count</b></em>' attribute.
@@ -21171,7 +21153,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__THREAD_COUNT = ESB_ELEMENT_FEATURE_COUNT + 80;
+	int INBOUND_ENDPOINT__THREAD_COUNT = ESB_ELEMENT_FEATURE_COUNT + 78;
 
 	/**
 	 * The feature id for the '<em><b>Zookeeper Session Timeout Ms</b></em>' attribute.
@@ -21180,7 +21162,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 81;
+	int INBOUND_ENDPOINT__ZOOKEEPER_SESSION_TIMEOUT_MS = ESB_ELEMENT_FEATURE_COUNT + 79;
 
 	/**
 	 * The feature id for the '<em><b>Zookeeper Sync Time Ms</b></em>' attribute.
@@ -21189,7 +21171,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS = ESB_ELEMENT_FEATURE_COUNT + 82;
+	int INBOUND_ENDPOINT__ZOOKEEPER_SYNC_TIME_MS = ESB_ELEMENT_FEATURE_COUNT + 80;
 
 	/**
 	 * The feature id for the '<em><b>Auto Commit Interval Ms</b></em>' attribute.
@@ -21198,7 +21180,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS = ESB_ELEMENT_FEATURE_COUNT + 83;
+	int INBOUND_ENDPOINT__AUTO_COMMIT_INTERVAL_MS = ESB_ELEMENT_FEATURE_COUNT + 81;
 
 	/**
 	 * The feature id for the '<em><b>Auto Offset Reset</b></em>' attribute.
@@ -21207,7 +21189,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__AUTO_OFFSET_RESET = ESB_ELEMENT_FEATURE_COUNT + 84;
+	int INBOUND_ENDPOINT__AUTO_OFFSET_RESET = ESB_ELEMENT_FEATURE_COUNT + 82;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Cxf Rm Host</b></em>' attribute.
@@ -21216,7 +21198,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST = ESB_ELEMENT_FEATURE_COUNT + 85;
+	int INBOUND_ENDPOINT__INBOUND_CXF_RM_HOST = ESB_ELEMENT_FEATURE_COUNT + 83;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Cxf Rm Port</b></em>' attribute.
@@ -21225,7 +21207,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT = ESB_ELEMENT_FEATURE_COUNT + 86;
+	int INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT = ESB_ELEMENT_FEATURE_COUNT + 84;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Cxf Rm Config File</b></em>' attribute.
@@ -21234,7 +21216,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE = ESB_ELEMENT_FEATURE_COUNT + 87;
+	int INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE = ESB_ELEMENT_FEATURE_COUNT + 85;
 
 	/**
 	 * The feature id for the '<em><b>Enable SSL</b></em>' attribute.
@@ -21243,7 +21225,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__ENABLE_SSL = ESB_ELEMENT_FEATURE_COUNT + 88;
+	int INBOUND_ENDPOINT__ENABLE_SSL = ESB_ELEMENT_FEATURE_COUNT + 86;
 
 	/**
 	 * The feature id for the '<em><b>Service Parameters</b></em>' containment reference list.
@@ -21252,7 +21234,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT__SERVICE_PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 89;
+	int INBOUND_ENDPOINT__SERVICE_PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 87;
 
 	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
@@ -21261,7 +21243,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 90;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 88;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -29726,17 +29708,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getInboundEndpoint_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequence <em>Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sequence</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequence()
-	 * @see #getInboundEndpoint()
-	 * @generated
-	 */
-	EAttribute getInboundEndpoint_Sequence();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7Port <em>Inbound HL7 Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30075,17 +30046,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getInboundEndpointParameter_Value();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence <em>On Error Sequence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Error Sequence</em>'.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence()
-	 * @see #getInboundEndpoint()
-	 * @generated
-	 */
-	EAttribute getInboundEndpoint_OnErrorSequence();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getClass_ <em>Class</em>}'.
@@ -43931,14 +43891,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute INBOUND_ENDPOINT__TYPE = eINSTANCE.getInboundEndpoint_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Sequence</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INBOUND_ENDPOINT__SEQUENCE = eINSTANCE.getInboundEndpoint_Sequence();
-
-		/**
 		 * The meta object literal for the '<em><b>Inbound HL7 Port</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -44187,14 +44139,6 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute INBOUND_ENDPOINT_PARAMETER__VALUE = eINSTANCE.getInboundEndpointParameter_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>On Error Sequence</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INBOUND_ENDPOINT__ON_ERROR_SEQUENCE = eINSTANCE.getInboundEndpoint_OnErrorSequence();
 
 		/**
 		 * The meta object literal for the '<em><b>Class</b></em>' attribute feature.

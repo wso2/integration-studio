@@ -20,19 +20,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint;
@@ -71,8 +63,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 
 		addNamePropertyDescriptor(object);
 		addTypePropertyDescriptor(object);
-		addSequencePropertyDescriptor(object);
-		addOnErrorSequencePropertyDescriptor(object);
 
 		switch (inboundEndpoint.getType()) {
 		case HTTP:
@@ -222,28 +212,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 getString("_UI_InboundEndpoint_type_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_type_feature", "_UI_InboundEndpoint_type"),
 				 EsbPackage.Literals.INBOUND_ENDPOINT__TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Sequence feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	protected void addSequencePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_sequence_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_sequence_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__SEQUENCE,
 				 true,
 				 false,
 				 false,
@@ -865,28 +833,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 true,
 				 null,
 				 "Parameters",
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the On Error Sequence feature. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated 
-	 */
-	protected void addOnErrorSequencePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_InboundEndpoint_onErrorSequence_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_onErrorSequence_feature", "_UI_InboundEndpoint_type"),
-				 EsbPackage.Literals.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
 				 null));
 	}
 
@@ -1903,8 +1849,6 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__SSL_PROTOCOL:
 			case EsbPackage.INBOUND_ENDPOINT__HTTPS_PROTOCOLS:
 			case EsbPackage.INBOUND_ENDPOINT__CERTIFICATE_REVOCATION_VERIFIER:
-			case EsbPackage.INBOUND_ENDPOINT__ON_ERROR_SEQUENCE:
-			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_PORT:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_AUTO_ACK:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_HL7_MESSAGE_PRE_PROCESSOR:

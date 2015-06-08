@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators;
 
 import java.util.List;
+
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -34,10 +35,8 @@ import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidat
 
 public class InboundEndpointProjectFieldController extends AbstractFieldController {
 
-	private final String TYPE_HTTP = "HTTP";
-	private final String TYPE_FILE = "File";
-	private final String TYPE_JMS = "JMS";
 	private final String TYPE_CUSTOM = "Custom";
+	private final String ARTIFACT_XML_FILE = "artifact.xml";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -55,17 +54,18 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 						IProject project = saveLocation.getProject();
 						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 						try {
-							esbProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
+							esbProjectArtifact.fromFile(project.getFile(ARTIFACT_XML_FILE).getLocation().toFile());
 							List<ESBArtifact> allArtifacts = esbProjectArtifact.getAllESBArtifacts();
 							for (ESBArtifact artifact : allArtifacts) {
 								if (resource.equals(artifact.getName())) {
-									throw new FieldValidationException("Artifact name already exists");
+									throw new FieldValidationException(
+											InboundEndpointArtifactProperties.errorNameExists);
 								}
 							}
 
 						} catch (Exception e) {
-							log.error("Validation failure - Error while reading artifact.xml", e);
-							throw new FieldValidationException("Validation failure - Error while reading artifact.xml",
+							log.error(InboundEndpointArtifactProperties.validationReadingFile, e);
+							throw new FieldValidationException(InboundEndpointArtifactProperties.validationReadingFile,
 									e);
 						}
 					}
@@ -78,45 +78,25 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 		} else if (InboundEndpointArtifactProperties.wizardOptionSaveLocation.equals(modelProperty)) {
 			IResource resource = (IResource) value;
 			if (resource == null || !resource.exists()) {
-				throw new FieldValidationException("Specified project or path doesn't exist");
+				throw new FieldValidationException(InboundEndpointArtifactProperties.errorProjectPath);
 			}
-		} //FIXME
-		/*else if (InboundEndpointArtifactProperties.wizardOptionSequence.equals(modelProperty)) {
-			String resource = value.toString();
-			if (resource == null || "".equals(resource)) {
-				throw new FieldValidationException("Sequence value cannot be empty");
-			}
-		} else if (InboundEndpointArtifactProperties.wizardOptionErrorSequence.equals(modelProperty)) {
-			String resource = value.toString();
-			if (resource == null || "".equals(resource)) {
-				throw new FieldValidationException("Error sequence value cannot be empty");
-			}
-		} else if (InboundEndpointArtifactProperties.wizardOptionInboundHTTPPort.equals(modelProperty)) {
-			if (InboundEndpointArtifactProperties.typeHTTP.equals(selectedInboundEndpointType)) {
-				String resource = value.toString();
-				if (resource == null || "".equals(resource)) {
-					throw new FieldValidationException("Inbound http port value cannot be empty");
+		} else if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionClass)) {
+			if (((InboundEndpointModel) model).getSelectedInboundEndpointType().equals(TYPE_CUSTOM)) {
+				if (value == null || value.equals("")) {
+					throw new FieldValidationException(InboundEndpointArtifactProperties.errorClass);
 				}
 			}
-		}*/
+		}
 	}
 
 	public boolean isVisibleField(String modelProperty, ProjectDataModel model) {
 		boolean visibleField = super.isVisibleField(modelProperty, model);
-		if (modelProperty.startsWith("type.file.")) {
-			visibleField = ((InboundEndpointModel) model).getSelectedInboundEndpointType().equals(TYPE_FILE);
-		} else if (modelProperty.startsWith("type.jms.")) {
-			visibleField = ((InboundEndpointModel) model).getSelectedInboundEndpointType().equals(TYPE_JMS);
-		} else if (modelProperty.equals("inbound.http.port")) {
-			visibleField = ((InboundEndpointModel) model).getSelectedInboundEndpointType().equals(TYPE_HTTP);
-		} else if (modelProperty.equals("class")) {
-			visibleField = ((InboundEndpointModel) model).getSelectedInboundEndpointType().equals(TYPE_CUSTOM);
-		} else if (modelProperty.equals("interval")) {
-			visibleField = ((InboundEndpointModel) model).getSelectedInboundEndpointType().matches(
-					TYPE_FILE + "|" + TYPE_JMS + "|" + TYPE_CUSTOM);
-		} else if (modelProperty.equals("sequential|coordination")) {
-			visibleField = ((InboundEndpointModel) model).getSelectedInboundEndpointType().matches(
-					TYPE_FILE + "|" + TYPE_CUSTOM);
+		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionClass)) {
+			if (((InboundEndpointModel) model).getSelectedInboundEndpointType().equals(TYPE_CUSTOM)) {
+				visibleField = true;
+			} else {
+				visibleField = false;
+			}
 		}
 		return visibleField;
 	}
@@ -124,50 +104,12 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 	public List<String> getUpdateFields(String modelProperty, ProjectDataModel model) {
 		List<String> updatedList = super.getUpdateFields(modelProperty, model);
 
-		if (modelProperty.equals("inboundendpoint.type")) {
-			updatedList.add("type.file.transport.vfs.FileURI");
-			updatedList.add("type.file.transport.vfs.ContentType");
-			updatedList.add("type.file.transport.vfs.FileNamePattern");
-			updatedList.add("type.file.transport.vfs.FileProcessInterval");
-			updatedList.add("type.file.transport.vfs.FileProcessCount");
-			updatedList.add("type.file.transport.vfs.Locking");
-			updatedList.add("type.file.transport.vfs.MaxRetryCount");
-			updatedList.add("type.file.transport.vfs.ReconnectTimeout");
-			updatedList.add("type.file.transport.vfs.ActionAfterProcess");
-			updatedList.add("type.file.transport.vfs.MoveAfterProcess");
-			updatedList.add("type.file.transport.vfs.ActionAfterErrors");
-			updatedList.add("type.file.transport.vfs.MoveAfterErrors");
-			updatedList.add("type.file.transport.vfs.ActionAfterFailure");
-			updatedList.add("type.file.transport.vfs.MoveAfterFailure");
-			updatedList.add("type.file.transport.vfs.AutoLockRelease");
-			updatedList.add("type.file.transport.vfs.AutoLockReleaseInterval");
-			updatedList.add("type.file.transport.vfs.LockReleaseSameNode");
-			updatedList.add("type.file.transport.vfs.DistributedLock");
-			updatedList.add("type.file.transport.vfs.DistributedTimeout");
-			updatedList.add("type.jms.java.naming.factory.initial");
-			updatedList.add("type.jms.java.naming.provider.url");
-			updatedList.add("type.jms.transport.jms.ConnectionFactoryJNDIName");
-			updatedList.add("type.jms.transport.jms.ConnectionFactoryType");
-			updatedList.add("type.jms.transport.jms.Destination");
-			updatedList.add("type.jms.transport.jms.SessionTransacted");
-			updatedList.add("type.jms.transport.jms.SessionAcknowledgement");
-			updatedList.add("type.jms.transport.jms.CacheLevel");
-			updatedList.add("type.jms.transport.jms.UserName");
-			updatedList.add("type.jms.transport.jms.Password");
-			updatedList.add("type.jms.transport.jms.JMSSpecVersion");
-			updatedList.add("type.jms.transport.jms.SubscriptionDurable");
-			updatedList.add("type.jms.transport.jms.DurableSubscriberClientID");
-			updatedList.add("type.jms.transport.jms.MessageSelector");
-			updatedList.add("interval");
-			updatedList.add("inbound.http.port");
-			updatedList.add("sequential");
-			updatedList.add("coordination");
-			updatedList.add("class");
-
-		} else if (modelProperty.equals("create.esb.prj")) {
-			updatedList.add("save.location");
-		} else if (modelProperty.equals("import.file")) {
-			updatedList.add("available.processors");
+		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionIEType)) {
+			updatedList.add(InboundEndpointArtifactProperties.wizardOptionClass);
+		} else if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionCreateESBProject)) {
+			updatedList.add(InboundEndpointArtifactProperties.wizardOptionSaveLocation);
+		} else if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionImportFilePath)) {
+			updatedList.add(InboundEndpointArtifactProperties.wizardOptionAvailableInboundEndpoints);
 		}
 
 		return updatedList;
@@ -183,7 +125,7 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 
 	public boolean isReadOnlyField(String modelProperty, ProjectDataModel model) {
 		boolean readOnlyField = super.isReadOnlyField(modelProperty, model);
-		if (modelProperty.equals("save.file")) {
+		if (modelProperty.equals(InboundEndpointArtifactProperties.wizardOptionSaveLocation)) {
 			readOnlyField = true;
 		}
 		return readOnlyField;

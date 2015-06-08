@@ -31,6 +31,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConst
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 
 public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
+	
+	private static final String CUSTOM = "custom";
 
 	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
 		Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint, "Invalid subject.");
@@ -87,26 +89,25 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 		inboundEndpoint.setName(visualInboundEndpoint.getName());
 		Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector());
 
-		// FIXME include RegistryKey
 		if (sequence != null) {
-			// FIXME with sequence.getKey()
 			inboundEndpoint.setInjectingSeq(sequence.getName());
 		} else {
-			throw new Exception();
+			throw new Exception("Sequece cannot be empty. Please include a Sequnce");
 		}
 		Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
 		if (onErrorSequence != null) {
-			// FIXME with onErrorSequence.getKey()
 			inboundEndpoint.setOnErrorSeq(onErrorSequence.getName());
 		} else {
-			throw new Exception();
+			throw new Exception("On Error Sequence cannot be empty. Please include an On Error Sequence");
 		}
 
 		inboundEndpoint.setSuspend(false);
 
-		if (visualInboundEndpoint.getType().toString().equals("Custom")) {
+		if (visualInboundEndpoint.getType().getName().equals(CUSTOM)) {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
 				inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());
+			}else{
+				throw new Exception("Class cannot be empty. Please specify a Class");
 			}
 
 			// Service Parameters.
@@ -116,8 +117,8 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 					inboundEndpoint.addParameter(visualInboundEndpoint.getServiceParameters().get(i).getName(), value);
 				}
 			}
-		} else if (StringUtils.isNotBlank(visualInboundEndpoint.getType().toString())) {
-			inboundEndpoint.setProtocol(visualInboundEndpoint.getType().toString());
+		} else if (StringUtils.isNotBlank(visualInboundEndpoint.getType().getName())) {
+			inboundEndpoint.setProtocol(visualInboundEndpoint.getType().getName());
 		}
 
 		switch (visualInboundEndpoint.getType()) {

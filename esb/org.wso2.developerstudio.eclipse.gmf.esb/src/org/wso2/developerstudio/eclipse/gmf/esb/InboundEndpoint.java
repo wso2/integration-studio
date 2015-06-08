@@ -86,8 +86,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSslProtocol <em>Ssl Protocol</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getHttpsProtocols <em>Https Protocols</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getCertificateRevocationVerifier <em>Certificate Revocation Verifier</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence <em>On Error Sequence</em>}</li>
- *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequence <em>Sequence</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7Port <em>Inbound HL7 Port</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isInboundHL7AutoAck <em>Inbound HL7 Auto Ack</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundHL7MessagePreProcessor <em>Inbound HL7 Message Pre Processor</em>}</li>
@@ -308,32 +306,6 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	void setType(InboundEndpointType value);
-
-	/**
-	 * Returns the value of the '<em><b>Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sequence</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sequence</em>' attribute.
-	 * @see #setSequence(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Sequence()
-	 * @model
-	 * @generated
-	 */
-	String getSequence();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getSequence <em>Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sequence</em>' attribute.
-	 * @see #getSequence()
-	 * @generated
-	 */
-	void setSequence(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Inbound HL7 Port</b></em>' attribute.
@@ -1058,32 +1030,6 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	EList<InboundEndpointParameter> getServiceParameters();
-
-	/**
-	 * Returns the value of the '<em><b>On Error Sequence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Error Sequence</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>On Error Sequence</em>' attribute.
-	 * @see #setOnErrorSequence(String)
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_OnErrorSequence()
-	 * @model
-	 * @generated
-	 */
-	String getOnErrorSequence();
-
-	/**
-	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getOnErrorSequence <em>On Error Sequence</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>On Error Sequence</em>' attribute.
-	 * @see #getOnErrorSequence()
-	 * @generated
-	 */
-	void setOnErrorSequence(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' attribute.

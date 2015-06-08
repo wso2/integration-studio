@@ -126,13 +126,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConst
 public class InboundEndpointDeserializer extends
 		AbstractEsbNodeDeserializer<InboundEndpoint, org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint> {
 
-	private static final String HTTP = "HTTP";
-	private static final String FILE = "File";
-	private static final String JMS = "JMS";
-	private static final String HTTPS = "HTTPS";
-	private static final String HL7 = "HL7";
-	private static final String KAFKA = "KAFKA";
-	private static final String CXF_WS_RM = "CXF_WS_RM";
+	private static final String HTTP = "http";
+	private static final String FILE = "file";
+	private static final String JMS = "jms";
+	private static final String HTTPS = "https";
+	private static final String HL7 = "hl7";
+	private static final String KAFKA = "kafka";
+	private static final String CXF_WS_RM = "cxf_ws_rm";
 	private static final String TRUE = "true";
 	private static final String NONE = "none";
 	private static final String ENABLE = "enable";
@@ -157,7 +157,7 @@ public class InboundEndpointDeserializer extends
 		refreshEditPartMap();
 
 		executeSetValueCommand(INBOUND_ENDPOINT__NAME, object.getName());
-		if (StringUtils.isNotBlank(object.getClassImpl())) {
+ 		if (StringUtils.isNotBlank(object.getClassImpl())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.CUSTOM);
 			executeSetValueCommand(INBOUND_ENDPOINT__CLASS, object.getClassImpl());
 			updateParameters(object);
@@ -178,9 +178,6 @@ public class InboundEndpointDeserializer extends
 			updateParameters(object);
 		} else if (HL7.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.HL7);
-			updateParameters(object);
-		} else if (KAFKA.equals(object.getProtocol())) {
-			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.KAFKA);
 			updateParameters(object);
 		} else if (KAFKA.equals(object.getProtocol())) {
 			executeSetValueCommand(INBOUND_ENDPOINT__TYPE, InboundEndpointType.KAFKA);

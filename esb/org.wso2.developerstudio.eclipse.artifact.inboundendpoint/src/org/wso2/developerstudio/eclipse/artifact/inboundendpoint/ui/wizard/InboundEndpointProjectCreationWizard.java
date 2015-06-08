@@ -262,7 +262,7 @@ public class InboundEndpointProjectCreationWizard extends AbstractWSO2ProjectCre
 		File destFile = null;
 		if(selectedLEList != null && selectedLEList.size() >0 ){
 			for (OMElement element : selectedLEList) {
-				String key = element.getAttributeValue(new QName("key"));
+				String key = element.getAttributeValue(new QName(KEY));
 				destFile  = new File(importLocation.getLocation().toFile(), key + XML_EXTENSION);
 				FileUtils.createFile(destFile, element.toString());
 				fileList.add(destFile);

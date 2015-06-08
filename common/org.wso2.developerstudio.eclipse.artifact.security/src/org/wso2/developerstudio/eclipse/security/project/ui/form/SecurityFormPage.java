@@ -83,6 +83,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.wso2.developerstudio.eclipse.artifact.security.utils.SecurityFormConstants;
 import org.wso2.developerstudio.eclipse.artifact.security.utils.SecurityFormMessageConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -100,99 +101,7 @@ public class SecurityFormPage extends FormPage {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	boolean pageDirty;
-
-	private static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS = "org.wso2.carbon.security.crypto.alias";
-	private static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES = "org.wso2.carbon.security.crypto.truststores";
-	private static final String ORG_WSO2_STRATOS_TENANT_ID = "org.wso2.stratos.tenant.id";
-	private static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE = "org.wso2.carbon.security.crypto.privatestore";
-
-	// Constants for Rampart Config
-	private static final String KERBEROSSIGNANDENCRYPT = "kerberossignandencrypt";
-	private static final String RAMPART_CONFIG_USER = "rampart.config.user";
-	private static final String RAMPART_CONFIG = "rampart:RampartConfig";
-	private static final String RAMPART_USER = "rampart:user";
-	private static final String RAMPART_ENCRYPTION_USER = "rampart:encryptionUser";
-	private static final String RAMPART_NONCE_LIFE_TIME = "rampart:nonceLifeTime";
-	private static final String RAMPART_TOKEN_STORE_CLASS = "rampart:tokenStoreClass";
-	private static final String RAMPART_TIMESTAMP_STRICT = "rampart:timestampStrict";
-	private static final String RAMPART_TIMESTAMP_MAX_SKEW = "rampart:timestampMaxSkew";
-	private static final String RAMPART_TIMESTAMP_TTL = "rampart:timestampTTL";
-	private static final String RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS = "rampart:timestampPrecisionInMilliseconds";
-	private static final String RAMPART_ENCRYPTION_CRYPTO = "rampart:encryptionCrypto";
-	private static final String RAMPART_SIGNATURE_CRYPTO = "rampart:signatureCrypto";
-	private static final String RAMPART_KERBEROS_CONFIG = "rampart:kerberosConfig";
-	private static final String RAMPART_CRYPTO = "rampart:crypto";
-	private static final String RAMPART_PROPERTY = "rampart:property";
-	private static final String PROPERTY_NAME = "name";
-	private static final String USER_ROLE = "User Roles";
-
-	// Rampart default values
-	private static final String RAMPART_ENCRYPTION_USER_VALUE = "useReqSigCert";
-	private static final String RAMPART_TOKEN_STORE_CLASS_VALUE = "org.wso2.carbon.security.util.SecurityTokenStore";
-	private static final String RAMPART_TIME_VALUE = "300";
-	private static final String RAMPART_TENANT_VALUE = "-1234";
-
-	// Constants for Carbon Sec Config
-
-	private static final String CARBONSEC_CONFIG = "sec:CarbonSecConfig";
-	private static final String CARBONSEC_AUTHORIZATION = "sec:Authorization";
-	private static final String CARBONSEC_TRUST = "sec:Trust";
-	private static final String CARBON_KEBEROS = "sec:Kerberos";
-	private static final String CARBONSEC_PROPERTY = "sec:property";
-
-	private static final String ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES = "org.wso2.carbon.security.allowedroles";
-	private static final String SERVICE_PRINCIPAL_PASSWORD = "service.principal.password";
-	private static final String SERVICE_PRINCIPAL_NAME = "service.principal.name";
-
-	// Private Store Constants
-	private static final String WSO2_PRIVATESTORE = "wso2carbon.jks";
-	private static final String WSO2_PRIVATESTORE_ALIAS = "wso2carbon";
-
-	// Category Names
-	private static final String BASIC_SCENARIOS = "Basic Scenarios";
-	private static final String ADVANCED_SCENARIOS = "Advanced Scenarios";
-	private static final String ADVANCE_CONFIGURATION = "Advance Configuration(Rampart)";
-
-	// Label Names
-	private static final String LABEL_USER = "User :";
-	private static final String LABEL_ENCRYPTION_USER = "encryptionUser :";
-	private static final String LABEL_PRECISION = "PrecisionInMilliseconds :";
-	private static final String LABEL_TIMESTAMP_TTL = "timestampTTL :";
-	private static final String LABEL_TIMESTAMP_MAX = "timestampMaxSkew :";
-	private static final String LABEL_TIMESTAMP_STRICT = "timestampStrict :";
-	private static final String LABEL_TOKEN_STORE_CLASS = "tokenStoreClass :";
-	private static final String LABEL_NONCELIFETIME = "nonceLifeTime :";
-	private static final String LABEL_PRIVATE_STORE = "Privatestore :";
-	private static final String LABEL_SERVICE_PRINCIPAL_NAME = "Service Principal Name";
-	private static final String LABEL_SERVICE_PRINCIPAL_PASSWORD = "Service Principal Password";
-	private static final String EDITOR_TITLE = "WS-Policy for Service";
-	private static final String VALUE_TRUE = "true";
-	private static final String VALUE_FALSE = "false";
-	private static final String FILE_PREFIX = "scenario";
-	private static final String FILE_POSTFIX = "-policy.xml";
-	private static final String SANS = "Sans";
-
-	// Section Names
-	private static final String SECTION_SERVICE_INFO = "Service Info";
-	private static final String SECTION_SECURITY_SERVICE = "Security for the service";
-	private static final String SECTION_RAMPART_CONFIGURATION = "Rampart Configuration";
-	private static final String SECTION_ENCRYPTION_PROPERTIES = "Encryption Properties";
-	private static final String SECTION_SIGNATURE_PROPOERTIES = "Signature Properties";
-	private static final String SECTION_KERBEROS = "Kerberos Properties";
-
-	// Rampart Configs
-	private static final String ALIAS = ":Alias";
-	private static final String PRIVATESTORE = ":Privatestore";
-	private static final String TRUSTSTORES = ":Truststores";
-	private static final String TENANT_ID = ":Tenant id";
-	private static final String USER = ":User";
-	private static final String EN = "en";
-	private static final String SIGN = "sign";
-	private static final String POLICIES = "policies/";
-
-	private static final String POLICY_OBJECT_UT = "UTOverTransport";
-	private static final String POLICY_UT = "UsernameToken";
-	private static final String POLICY_KERBEROS = "Kerberos Authentication - Sign - Sign based on a Kerberos Token";
+	
 	// Messages
 	private static final String TIP_MESSAGE = "Description not available";
 
@@ -271,30 +180,30 @@ public class SecurityFormPage extends FormPage {
 		carbonSecKerberosDataMap = new HashMap<>();
 
 		// Fill Data Maps with default values
-		rampartDataMap.put(RAMPART_USER, WSO2_PRIVATESTORE_ALIAS);
-		rampartDataMap.put(RAMPART_ENCRYPTION_USER, RAMPART_ENCRYPTION_USER_VALUE);
-		rampartDataMap.put(RAMPART_TIMESTAMP_TTL, RAMPART_TIME_VALUE);
-		rampartDataMap.put(RAMPART_TIMESTAMP_MAX_SKEW, RAMPART_TIME_VALUE);
-		rampartDataMap.put(RAMPART_TOKEN_STORE_CLASS, RAMPART_TOKEN_STORE_CLASS_VALUE);
-		rampartDataMap.put(RAMPART_NONCE_LIFE_TIME, RAMPART_TIME_VALUE);
-		rampartDataMap.put(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS, VALUE_FALSE);
-		rampartDataMap.put(RAMPART_TIMESTAMP_STRICT, VALUE_FALSE);
+		rampartDataMap.put(SecurityFormConstants.RAMPART_USER, SecurityFormConstants.WSO2_PRIVATESTORE_ALIAS);
+		rampartDataMap.put(SecurityFormConstants.RAMPART_ENCRYPTION_USER, SecurityFormConstants.RAMPART_ENCRYPTION_USER_VALUE);
+		rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_TTL, SecurityFormConstants.RAMPART_TIME_VALUE);
+		rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW, SecurityFormConstants.RAMPART_TIME_VALUE);
+		rampartDataMap.put(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS, SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS_VALUE);
+		rampartDataMap.put(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME, SecurityFormConstants.RAMPART_TIME_VALUE);
+		rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS,SecurityFormConstants.VALUE_FALSE);
+		rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT, SecurityFormConstants.VALUE_FALSE);
 
-		encryptDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS, WSO2_PRIVATESTORE_ALIAS);
-		encryptDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE, WSO2_PRIVATESTORE);
-		encryptDataMap.put(ORG_WSO2_STRATOS_TENANT_ID, RAMPART_TENANT_VALUE);
-		encryptDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES, WSO2_PRIVATESTORE);
-		encryptDataMap.put(RAMPART_CONFIG_USER, WSO2_PRIVATESTORE_ALIAS);
+		encryptDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS, SecurityFormConstants.WSO2_PRIVATESTORE_ALIAS);
+		encryptDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE, SecurityFormConstants.WSO2_PRIVATESTORE);
+		encryptDataMap.put(SecurityFormConstants.ORG_WSO2_STRATOS_TENANT_ID, SecurityFormConstants.RAMPART_TENANT_VALUE);
+		encryptDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES, SecurityFormConstants.WSO2_PRIVATESTORE);
+		encryptDataMap.put(SecurityFormConstants.RAMPART_CONFIG_USER, SecurityFormConstants.WSO2_PRIVATESTORE_ALIAS);
 
-		signDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS, WSO2_PRIVATESTORE_ALIAS);
-		signDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE, WSO2_PRIVATESTORE);
-		signDataMap.put(ORG_WSO2_STRATOS_TENANT_ID, RAMPART_TENANT_VALUE);
-		signDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES, WSO2_PRIVATESTORE);
-		signDataMap.put(RAMPART_CONFIG_USER, WSO2_PRIVATESTORE_ALIAS);
+		signDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS, SecurityFormConstants.WSO2_PRIVATESTORE_ALIAS);
+		signDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE, SecurityFormConstants.WSO2_PRIVATESTORE);
+		signDataMap.put(SecurityFormConstants.ORG_WSO2_STRATOS_TENANT_ID, SecurityFormConstants.RAMPART_TENANT_VALUE);
+		signDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES, SecurityFormConstants.WSO2_PRIVATESTORE);
+		signDataMap.put(SecurityFormConstants.RAMPART_CONFIG_USER, SecurityFormConstants.WSO2_PRIVATESTORE_ALIAS);
 
-		carbonSecTrustDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS, WSO2_PRIVATESTORE_ALIAS);
-		carbonSecTrustDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE, WSO2_PRIVATESTORE);
-		carbonSecTrustDataMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES, WSO2_PRIVATESTORE);
+		carbonSecTrustDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS, SecurityFormConstants.WSO2_PRIVATESTORE_ALIAS);
+		carbonSecTrustDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE, SecurityFormConstants.WSO2_PRIVATESTORE);
+		carbonSecTrustDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES, SecurityFormConstants.WSO2_PRIVATESTORE);
 
 		encryptControlMap = new HashMap<>();
 		signControlMap = new HashMap<>();
@@ -314,7 +223,7 @@ public class SecurityFormPage extends FormPage {
 
 		toolkit = managedForm.getToolkit();
 		form = managedForm.getForm();
-		form.setText(EDITOR_TITLE);
+		form.setText(SecurityFormConstants.EDITOR_TITLE);
 		body = form.getBody();
 		GridLayout gridParentLayout = new GridLayout(1, true);
 
@@ -322,12 +231,12 @@ public class SecurityFormPage extends FormPage {
 		toolkit.decorateFormHeading(form.getForm());
 		toolkit.paintBordersFor(body);
 
-		Object[] result = CreateMainSection(toolkit, body, SECTION_SECURITY_SERVICE, 10, 70, 600, 30, true);
+		Object[] result = CreateMainSection(toolkit, body, SecurityFormConstants.SECTION_SECURITY_SERVICE, 10, 70, 600, 30, true);
 		Composite seccomposite = (Composite) result[1];
 		GridLayout gridSecLayout = new GridLayout(5, false);
 		seccomposite.setLayout(gridSecLayout);
 
-		createCategory(toolkit, seccomposite, BASIC_SCENARIOS);
+		createCategory(toolkit, seccomposite, SecurityFormConstants.BASIC_SCENARIOS);
 
 		try {
 			createSecurityScenarioOptionButtons(seccomposite, SecurityPolicyUtils.getInstance()
@@ -339,7 +248,7 @@ public class SecurityFormPage extends FormPage {
 			msg.open();
 		}
 
-		resultService = CreateSecuritySection(toolkit, body, SECTION_SERVICE_INFO, 10, 70, 600, 30, true);
+		resultService = CreateSecuritySection(toolkit, body, SecurityFormConstants.SECTION_SERVICE_INFO, 10, 70, 600, 30, true);
 		Composite serviceInfoMainComposite = (Composite) resultService[1];
 		GridLayout gridserviceLayout = new GridLayout();
 		serviceInfoMainComposite.setLayout(gridserviceLayout);
@@ -348,11 +257,11 @@ public class SecurityFormPage extends FormPage {
 		GridLayout BasicInfoLayout = new GridLayout(3, false);
 		compositeBasicInfo.setLayout(BasicInfoLayout);
 
-		toolkit.createLabel(compositeBasicInfo, LABEL_PRIVATE_STORE);
+		toolkit.createLabel(compositeBasicInfo, SecurityFormConstants.LABEL_PRIVATE_STORE);
 
 		txtPrivateStore = new Text(compositeBasicInfo, SWT.BORDER);
 		txtPrivateStore.setBounds(new org.eclipse.swt.graphics.Rectangle(92, 40, 84, 28));
-		txtPrivateStore.setText(WSO2_PRIVATESTORE);
+		txtPrivateStore.setText(SecurityFormConstants.WSO2_PRIVATESTORE);
 		GridData keyslayoutData = new GridData();
 		keyslayoutData.minimumWidth = 200;
 		keyslayoutData.horizontalAlignment = SWT.FILL;
@@ -368,7 +277,7 @@ public class SecurityFormPage extends FormPage {
 			}
 		});
 
-		createCategory(toolkit, seccomposite, ADVANCED_SCENARIOS);
+		createCategory(toolkit, seccomposite, SecurityFormConstants.ADVANCED_SCENARIOS);
 		try {
 			createSecurityScenarioOptionButtons(seccomposite, SecurityPolicyUtils.getInstance()
 					.getAdvancedSecurityScenarios(), managedForm, 4, body);
@@ -379,12 +288,12 @@ public class SecurityFormPage extends FormPage {
 			msg.open();
 		}
 
-		Object[] aAdresult = CreateMainSection(toolkit, body, ADVANCE_CONFIGURATION, 10, 15, 600, 30, true);
+		Object[] aAdresult = CreateMainSection(toolkit, body, SecurityFormConstants.ADVANCE_CONFIGURATION, 10, 15, 600, 30, true);
 		Composite rmaportInfComposite = (Composite) aAdresult[1];
 		GridLayout ramportlayout = new GridLayout();
 		rmaportInfComposite.setLayout(ramportlayout);
 
-		Object[] ramBasicresult = CreateMainSection(toolkit, rmaportInfComposite, SECTION_RAMPART_CONFIGURATION, 10,
+		Object[] ramBasicresult = CreateMainSection(toolkit, rmaportInfComposite, SecurityFormConstants.SECTION_RAMPART_CONFIGURATION, 10,
 				20, 600, 30, true);
 		Composite rampartBasic = (Composite) ramBasicresult[1];
 		GridLayout ramparlayout = new GridLayout(2, false);
@@ -394,7 +303,7 @@ public class SecurityFormPage extends FormPage {
 
 		createRampartConfigUIs(managedForm, rampartBasic);
 
-		enresult = CreateRampartSection(toolkit, rmaportInfComposite, SECTION_ENCRYPTION_PROPERTIES, 10, 20, 600, 30,
+		enresult = CreateRampartSection(toolkit, rmaportInfComposite, SecurityFormConstants.SECTION_ENCRYPTION_PROPERTIES, 10, 20, 600, 30,
 				true);
 		Composite encryptionComposite = (Composite) enresult[1];
 		GridLayout enlayout = new GridLayout(2, false);
@@ -402,7 +311,7 @@ public class SecurityFormPage extends FormPage {
 		Section enSec = (Section) enresult[0];
 		enSec.setExpanded(false);
 
-		signresult = CreateRampartSection(toolkit, rmaportInfComposite, SECTION_SIGNATURE_PROPOERTIES, 10, 30, 600, 30,
+		signresult = CreateRampartSection(toolkit, rmaportInfComposite, SecurityFormConstants.SECTION_SIGNATURE_PROPOERTIES, 10, 30, 600, 30,
 				true);
 		Composite signComposite = (Composite) signresult[1];
 		GridLayout signlayout = new GridLayout(2, false);
@@ -410,16 +319,16 @@ public class SecurityFormPage extends FormPage {
 		Section signSec = (Section) signresult[0];
 		signSec.setExpanded(false);
 
-		String[] rmpartConfigs = new String[] { ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS + ALIAS,
-				ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE + PRIVATESTORE, ORG_WSO2_STRATOS_TENANT_ID + TENANT_ID,
-				ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES + TRUSTSTORES, RAMPART_CONFIG_USER + USER };
+		String[] rmpartConfigs = new String[] { SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS + SecurityFormConstants.ALIAS,
+				SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE + SecurityFormConstants.PRIVATESTORE, SecurityFormConstants.ORG_WSO2_STRATOS_TENANT_ID + SecurityFormConstants.TENANT_ID,
+				SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES + SecurityFormConstants.TRUSTSTORES, SecurityFormConstants.RAMPART_CONFIG_USER + SecurityFormConstants.USER };
 		for (String name : rmpartConfigs) {
-			createRampartProperties(managedForm, encryptionComposite, name, EN);
-			createRampartProperties(managedForm, signComposite, name, SIGN);
+			createRampartProperties(managedForm, encryptionComposite, name, SecurityFormConstants.EN);
+			createRampartProperties(managedForm, signComposite, name, SecurityFormConstants.SIGN);
 		}
 
 		// UI for Kerberos
-		keberosResult = CreateSecuritySection(toolkit, body, SECTION_KERBEROS, 10, 70, 600, 30, true);
+		keberosResult = CreateSecuritySection(toolkit, body, SecurityFormConstants.SECTION_KERBEROS, 10, 70, 600, 30, true);
 		Composite kerberosMainComposite = (Composite) keberosResult[1];
 		GridLayout gridLayout = new GridLayout();
 		kerberosMainComposite.setLayout(gridLayout);
@@ -428,7 +337,7 @@ public class SecurityFormPage extends FormPage {
 		GridLayout basicLayout = new GridLayout(3, false);
 		compositeKerberos.setLayout(basicLayout);
 
-		toolkit.createLabel(compositeKerberos, LABEL_SERVICE_PRINCIPAL_NAME);
+		toolkit.createLabel(compositeKerberos, SecurityFormConstants.LABEL_SERVICE_PRINCIPAL_NAME);
 
 		Label nameMark = toolkit.createLabel(compositeKerberos, "*");
 		Device device = Display.getCurrent();
@@ -445,13 +354,13 @@ public class SecurityFormPage extends FormPage {
 		txtPrincipalName.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
-				carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_NAME, txtPrincipalName.getText());
+				carbonSecKerberosDataMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_NAME, txtPrincipalName.getText());
 				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
 
-		toolkit.createLabel(compositeKerberos, LABEL_SERVICE_PRINCIPAL_PASSWORD);
+		toolkit.createLabel(compositeKerberos, SecurityFormConstants.LABEL_SERVICE_PRINCIPAL_PASSWORD);
 
 		Label passMark = toolkit.createLabel(compositeKerberos, "*");
 		passMark.setForeground(red);
@@ -463,11 +372,11 @@ public class SecurityFormPage extends FormPage {
 		keyplayoutData.horizontalAlignment = SWT.FILL;
 		keyplayoutData.grabExcessHorizontalSpace = true;
 		txtPrincipalPassword.setLayoutData(keyplayoutData);
-		carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword);
+		carbonSecKerberosControlMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword);
 		txtPrincipalPassword.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
-				carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword.getText());
+				carbonSecKerberosDataMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword.getText());
 				setPageDirty(true);
 				updateDirtyState();
 			}
@@ -553,44 +462,44 @@ public class SecurityFormPage extends FormPage {
 
 	private void createRampartConfigUIs(IManagedForm managedForm, Composite rampartBasic) {
 
-		managedForm.getToolkit().createLabel(rampartBasic, LABEL_USER);
+		managedForm.getToolkit().createLabel(rampartBasic, SecurityFormConstants.LABEL_USER);
 		txtRampartUser = managedForm.getToolkit().createText(rampartBasic, "");
 		GridData rmUserlayoutData = new GridData();
 		rmUserlayoutData.minimumWidth = 200;
 		rmUserlayoutData.horizontalAlignment = SWT.FILL;
 		rmUserlayoutData.grabExcessHorizontalSpace = true;
 		txtRampartUser.setLayoutData(rmUserlayoutData);
-		rampartControlMap.put(RAMPART_USER, txtRampartUser);
+		rampartControlMap.put(SecurityFormConstants.RAMPART_USER, txtRampartUser);
 
 		txtRampartUser.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				rampartDataMap.put(RAMPART_USER, txtRampartUser.getText());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_USER, txtRampartUser.getText());
 				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
 
-		managedForm.getToolkit().createLabel(rampartBasic, LABEL_ENCRYPTION_USER);
+		managedForm.getToolkit().createLabel(rampartBasic, SecurityFormConstants.LABEL_ENCRYPTION_USER);
 		txtRampartEncryptionUser = managedForm.getToolkit().createText(rampartBasic, "");
 		GridData encryptionUserlayoutData = new GridData();
 		encryptionUserlayoutData.minimumWidth = 200;
 		encryptionUserlayoutData.horizontalAlignment = SWT.FILL;
 		encryptionUserlayoutData.grabExcessHorizontalSpace = true;
 		txtRampartEncryptionUser.setLayoutData(encryptionUserlayoutData);
-		rampartControlMap.put(RAMPART_ENCRYPTION_USER, txtRampartEncryptionUser);
+		rampartControlMap.put(SecurityFormConstants.RAMPART_ENCRYPTION_USER, txtRampartEncryptionUser);
 
 		txtRampartEncryptionUser.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				rampartDataMap.put(RAMPART_ENCRYPTION_USER, txtRampartEncryptionUser.getText());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_ENCRYPTION_USER, txtRampartEncryptionUser.getText());
 				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
 
-		String[] values = new String[] { VALUE_FALSE, VALUE_TRUE };
-		managedForm.getToolkit().createLabel(rampartBasic, LABEL_PRECISION);
+		String[] values = new String[] { SecurityFormConstants.VALUE_FALSE, SecurityFormConstants.VALUE_TRUE };
+		managedForm.getToolkit().createLabel(rampartBasic, SecurityFormConstants.LABEL_PRECISION);
 		cmbRampartTimestampPrecision = new Combo(rampartBasic, SWT.READ_ONLY);
 		cmbRampartTimestampPrecision.setItems(values);
 		GridData timestampPrecisionInMillisecondslayoutData = new GridData();
@@ -598,55 +507,55 @@ public class SecurityFormPage extends FormPage {
 		timestampPrecisionInMillisecondslayoutData.horizontalAlignment = SWT.FILL;
 		timestampPrecisionInMillisecondslayoutData.grabExcessHorizontalSpace = true;
 		cmbRampartTimestampPrecision.setLayoutData(timestampPrecisionInMillisecondslayoutData);
-		rampartControlMap.put(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS, cmbRampartTimestampPrecision);
+		rampartControlMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS, cmbRampartTimestampPrecision);
 
 		cmbRampartTimestampPrecision.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				rampartDataMap.put(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS,
+				rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS,
 						cmbRampartTimestampPrecision.getItem(cmbRampartTimestampPrecision.getSelectionIndex()));
 				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
 
-		managedForm.getToolkit().createLabel(rampartBasic, LABEL_TIMESTAMP_TTL);
+		managedForm.getToolkit().createLabel(rampartBasic, SecurityFormConstants.LABEL_TIMESTAMP_TTL);
 		txtRampartMinTTL = managedForm.getToolkit().createText(rampartBasic, " ");
 		GridData timestampTTLlayoutData = new GridData();
 		timestampTTLlayoutData.minimumWidth = 200;
 		timestampTTLlayoutData.horizontalAlignment = SWT.FILL;
 		timestampTTLlayoutData.grabExcessHorizontalSpace = true;
 		txtRampartMinTTL.setLayoutData(timestampTTLlayoutData);
-		rampartControlMap.put(RAMPART_TIMESTAMP_TTL, txtRampartMinTTL);
+		rampartControlMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_TTL, txtRampartMinTTL);
 
 		txtRampartMinTTL.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				rampartDataMap.put(RAMPART_TIMESTAMP_TTL, txtRampartMinTTL.getText());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_TTL, txtRampartMinTTL.getText());
 				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
 
-		managedForm.getToolkit().createLabel(rampartBasic, LABEL_TIMESTAMP_MAX);
+		managedForm.getToolkit().createLabel(rampartBasic, SecurityFormConstants.LABEL_TIMESTAMP_MAX);
 		txtRampartTimestampMaxSkew = managedForm.getToolkit().createText(rampartBasic, "");
 		GridData timestampMaxSkewlayoutData = new GridData();
 		timestampMaxSkewlayoutData.minimumWidth = 200;
 		timestampMaxSkewlayoutData.horizontalAlignment = SWT.FILL;
 		timestampMaxSkewlayoutData.grabExcessHorizontalSpace = true;
 		txtRampartTimestampMaxSkew.setLayoutData(timestampMaxSkewlayoutData);
-		rampartControlMap.put(RAMPART_TIMESTAMP_MAX_SKEW, txtRampartTimestampMaxSkew);
+		rampartControlMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW, txtRampartTimestampMaxSkew);
 
 		txtRampartTimestampMaxSkew.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				rampartDataMap.put(RAMPART_TIMESTAMP_MAX_SKEW, txtRampartTimestampMaxSkew.getText());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW, txtRampartTimestampMaxSkew.getText());
 				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
 
-		managedForm.getToolkit().createLabel(rampartBasic, LABEL_TIMESTAMP_STRICT);
+		managedForm.getToolkit().createLabel(rampartBasic, SecurityFormConstants.LABEL_TIMESTAMP_STRICT);
 		cmbRampartTimestampStrict = new Combo(rampartBasic, SWT.READ_ONLY);
 		cmbRampartTimestampStrict.setItems(values);
 		GridData timestampStrictlayoutData = new GridData();
@@ -654,49 +563,49 @@ public class SecurityFormPage extends FormPage {
 		timestampStrictlayoutData.horizontalAlignment = SWT.FILL;
 		timestampStrictlayoutData.grabExcessHorizontalSpace = true;
 		cmbRampartTimestampStrict.setLayoutData(timestampStrictlayoutData);
-		rampartControlMap.put(RAMPART_TIMESTAMP_STRICT, cmbRampartTimestampStrict);
+		rampartControlMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT, cmbRampartTimestampStrict);
 
 		cmbRampartTimestampStrict.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				rampartDataMap.put(RAMPART_TIMESTAMP_STRICT,
+				rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT,
 						cmbRampartTimestampStrict.getItem(cmbRampartTimestampStrict.getSelectionIndex()));
 				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
 
-		managedForm.getToolkit().createLabel(rampartBasic, LABEL_TOKEN_STORE_CLASS);
+		managedForm.getToolkit().createLabel(rampartBasic, SecurityFormConstants.LABEL_TOKEN_STORE_CLASS);
 		txtRampartTokenStoreClass = managedForm.getToolkit().createText(rampartBasic, "");
 		GridData tokenStoreClasslayoutData = new GridData();
 		tokenStoreClasslayoutData.minimumWidth = 200;
 		tokenStoreClasslayoutData.horizontalAlignment = SWT.FILL;
 		tokenStoreClasslayoutData.grabExcessHorizontalSpace = true;
 		txtRampartTokenStoreClass.setLayoutData(tokenStoreClasslayoutData);
-		rampartControlMap.put(RAMPART_TOKEN_STORE_CLASS, txtRampartTokenStoreClass);
+		rampartControlMap.put(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS, txtRampartTokenStoreClass);
 
 		txtRampartTokenStoreClass.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				rampartDataMap.put(RAMPART_TOKEN_STORE_CLASS, txtRampartTokenStoreClass.getText());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS, txtRampartTokenStoreClass.getText());
 				setPageDirty(true);
 				updateDirtyState();
 			}
 		});
 
-		managedForm.getToolkit().createLabel(rampartBasic, LABEL_NONCELIFETIME);
+		managedForm.getToolkit().createLabel(rampartBasic, SecurityFormConstants.LABEL_NONCELIFETIME);
 		txtRampartNonceLifeTime = managedForm.getToolkit().createText(rampartBasic, "");
 		GridData nonceLifeTimelayoutData = new GridData();
 		nonceLifeTimelayoutData.minimumWidth = 200;
 		nonceLifeTimelayoutData.horizontalAlignment = SWT.FILL;
 		nonceLifeTimelayoutData.grabExcessHorizontalSpace = true;
 		txtRampartNonceLifeTime.setLayoutData(nonceLifeTimelayoutData);
-		rampartControlMap.put(RAMPART_NONCE_LIFE_TIME, txtRampartNonceLifeTime);
+		rampartControlMap.put(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME, txtRampartNonceLifeTime);
 
 		txtRampartNonceLifeTime.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent arg0) {
-				rampartDataMap.put(RAMPART_NONCE_LIFE_TIME, txtRampartNonceLifeTime.getText());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME, txtRampartNonceLifeTime.getText());
 				setPageDirty(true);
 				updateDirtyState();
 			}
@@ -779,7 +688,7 @@ public class SecurityFormPage extends FormPage {
 			ParserConfigurationException, SAXException, TransformerException {
 
 		SecurityTemplateUtil secTemplateUtil = new SecurityTemplateUtil();
-		String filename = POLICIES + policyFileName;
+		String filename = SecurityFormConstants.POLICIES + policyFileName;
 		policyTemplateFile = secTemplateUtil.getResourceFile(filename);
 		String content = convertXMLFileToString(policyTemplateFile);
 
@@ -799,7 +708,7 @@ public class SecurityFormPage extends FormPage {
 
 					allowRoles = getAllowRoles();
 					if (StringUtils.isNotBlank(allowRoles)) {
-						carbonSecAuthControlMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, allowRoles);
+						carbonSecAuthControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, allowRoles);
 					}
 
 				}
@@ -810,37 +719,37 @@ public class SecurityFormPage extends FormPage {
 
 					allowRoles = getAllowRoles();
 					if (StringUtils.isNotBlank(allowRoles)) {
-						carbonSecAuthControlMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, allowRoles);
+						carbonSecAuthControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, allowRoles);
 					}
 
-					carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS,
-							encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
-					carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE,
-							encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
-					carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES,
-							encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
+					carbonSecTrustControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS,
+							encryptControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
+					carbonSecTrustControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE,
+							encryptControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
+					carbonSecTrustControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES,
+							encryptControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
 
 				}
 
 			} else {
-				carbonSecAuthControlMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, null);
-				carbonSecAuthDataMap.put(ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, null);
+				carbonSecAuthControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, null);
+				carbonSecAuthDataMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_ALLOWEDROLES, null);
 			}
 
 			if (StringUtils.isNotBlank(selectedPolicy) && (SecurityPolicies.POLICY_TYPE_16.equals(selectedPolicy))) {
 
 				if (!StringUtils.isEmpty(txtPrincipalName.getText())) {
-					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME, txtPrincipalName);
+					carbonSecKerberosControlMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_NAME, txtPrincipalName);
 				} else {
-					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, null);
-					carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_PASSWORD, null);
+					carbonSecKerberosControlMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD, null);
+					carbonSecKerberosDataMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD, null);
 				}
 
 				if (!StringUtils.isEmpty(txtPrincipalPassword.getText())) {
-					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword);
+					carbonSecKerberosControlMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD, txtPrincipalPassword);
 				} else {
-					carbonSecKerberosControlMap.put(SERVICE_PRINCIPAL_NAME, null);
-					carbonSecKerberosDataMap.put(SERVICE_PRINCIPAL_NAME, null);
+					carbonSecKerberosControlMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_NAME, null);
+					carbonSecKerberosDataMap.put(SecurityFormConstants.SERVICE_PRINCIPAL_NAME, null);
 				}
 			}
 
@@ -855,12 +764,12 @@ public class SecurityFormPage extends FormPage {
 							|| SecurityPolicies.POLICY_TYPE_19.equals(selectedPolicy) || SecurityPolicies.POLICY_TYPE_20
 								.equals(selectedPolicy))) {
 
-				carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS,
-						encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
-				carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE,
-						encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
-				carbonSecTrustControlMap.put(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES,
-						encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
+				carbonSecTrustControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS,
+						encryptControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
+				carbonSecTrustControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE,
+						encryptControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
+				carbonSecTrustControlMap.put(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES,
+						encryptControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
 
 			}
 		}
@@ -948,88 +857,88 @@ public class SecurityFormPage extends FormPage {
 
 		policyID = policyObject.getId();
 
-		boolean isKerberossignandencrypt = policyID.equals(KERBEROSSIGNANDENCRYPT);
+		boolean isKerberossignandencrypt = policyID.equals(SecurityFormConstants.KERBEROSSIGNANDENCRYPT);
 
-		Node nrampart = doc.getElementsByTagName(RAMPART_CONFIG).item(0);
+		Node nrampart = doc.getElementsByTagName(SecurityFormConstants.RAMPART_CONFIG).item(0);
 		rampart = (Element) nrampart;
 
-		Node nsec = doc.getElementsByTagName(CARBONSEC_CONFIG).item(0);
+		Node nsec = doc.getElementsByTagName(SecurityFormConstants.CARBONSEC_CONFIG).item(0);
 		secElement = (Element) nsec;
 
 		if (!isKerberossignandencrypt) {
-			Node user = rampart.getElementsByTagName(RAMPART_USER).item(0);
+			Node user = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_USER).item(0);
 			if (user != null) {
-				user.setTextContent(rampartDataMap.get(RAMPART_USER));
+				user.setTextContent(rampartDataMap.get(SecurityFormConstants.RAMPART_USER));
 			}
 
-			Node encryptionUser = rampart.getElementsByTagName(RAMPART_ENCRYPTION_USER).item(0);
-			if (encryptionUser != null && StringUtils.isNotBlank(rampartDataMap.get(RAMPART_ENCRYPTION_USER))) {
-				encryptionUser.setTextContent(rampartDataMap.get(RAMPART_ENCRYPTION_USER));
+			Node encryptionUser = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_ENCRYPTION_USER).item(0);
+			if (encryptionUser != null && StringUtils.isNotBlank(rampartDataMap.get(SecurityFormConstants.RAMPART_ENCRYPTION_USER))) {
+				encryptionUser.setTextContent(rampartDataMap.get(SecurityFormConstants.RAMPART_ENCRYPTION_USER));
 			}
 		}
 
 		Node timestampPrecisionInMilliseconds = rampart.getElementsByTagName(
-				RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS).item(0);
+				SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS).item(0);
 		if (timestampPrecisionInMilliseconds != null
-				&& StringUtils.isNotBlank(rampartDataMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS))) {
+				&& StringUtils.isNotBlank(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS))) {
 			timestampPrecisionInMilliseconds.setTextContent(rampartDataMap
-					.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS));
+					.get(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS));
 		}
 
-		Node timestampTTL = rampart.getElementsByTagName(RAMPART_TIMESTAMP_TTL).item(0);
-		if (timestampTTL != null && StringUtils.isNotBlank(rampartDataMap.get(RAMPART_TIMESTAMP_TTL))) {
-			timestampTTL.setTextContent(rampartDataMap.get(RAMPART_TIMESTAMP_TTL));
+		Node timestampTTL = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_TIMESTAMP_TTL).item(0);
+		if (timestampTTL != null && StringUtils.isNotBlank(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_TTL))) {
+			timestampTTL.setTextContent(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_TTL));
 		}
 
-		Node timestampMaxSkew = rampart.getElementsByTagName(RAMPART_TIMESTAMP_MAX_SKEW).item(0);
-		if (timestampMaxSkew != null && StringUtils.isNotBlank(rampartDataMap.get(RAMPART_TIMESTAMP_MAX_SKEW))) {
-			timestampMaxSkew.setTextContent(rampartDataMap.get(RAMPART_TIMESTAMP_MAX_SKEW));
+		Node timestampMaxSkew = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW).item(0);
+		if (timestampMaxSkew != null && StringUtils.isNotBlank(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW))) {
+			timestampMaxSkew.setTextContent(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW));
 		}
 
-		Node timestampStrict = rampart.getElementsByTagName(RAMPART_TIMESTAMP_STRICT).item(0);
-		if (timestampStrict != null && StringUtils.isNotBlank(rampartDataMap.get(RAMPART_TIMESTAMP_STRICT))) {
-			timestampStrict.setTextContent(rampartDataMap.get(RAMPART_TIMESTAMP_STRICT));
-		}
-
-		if (!isKerberossignandencrypt) {
-			Node tokenStoreClass = rampart.getElementsByTagName(RAMPART_TOKEN_STORE_CLASS).item(0);
-			tokenStoreClass.setTextContent(rampartDataMap.get(RAMPART_TOKEN_STORE_CLASS));
-		}
-
-		Node nonceLifeTime = rampart.getElementsByTagName(RAMPART_NONCE_LIFE_TIME).item(0);
-		if (nonceLifeTime != null && StringUtils.isNotBlank(rampartDataMap.get(RAMPART_NONCE_LIFE_TIME))) {
-			nonceLifeTime.setTextContent(rampartDataMap.get(RAMPART_NONCE_LIFE_TIME));
+		Node timestampStrict = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT).item(0);
+		if (timestampStrict != null && StringUtils.isNotBlank(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT))) {
+			timestampStrict.setTextContent(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT));
 		}
 
 		if (!isKerberossignandencrypt) {
-			Node encryptionCrypto = rampart.getElementsByTagName(RAMPART_ENCRYPTION_CRYPTO).item(0);
+			Node tokenStoreClass = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS).item(0);
+			tokenStoreClass.setTextContent(rampartDataMap.get(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS));
+		}
+
+		Node nonceLifeTime = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME).item(0);
+		if (nonceLifeTime != null && StringUtils.isNotBlank(rampartDataMap.get(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME))) {
+			nonceLifeTime.setTextContent(rampartDataMap.get(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME));
+		}
+
+		if (!isKerberossignandencrypt) {
+			Node encryptionCrypto = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_ENCRYPTION_CRYPTO).item(0);
 			if (encryptionCrypto != null) {
 				setenCryto(encryptionCrypto, encryptDataMap);
 			}
 
-			Node signatureCrypto = rampart.getElementsByTagName(RAMPART_SIGNATURE_CRYPTO).item(0);
+			Node signatureCrypto = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_SIGNATURE_CRYPTO).item(0);
 			if (signatureCrypto != null) {
 				setenCryto(signatureCrypto, signDataMap);
 			}
 			if (secElement != null) {
-				Node carbonAuth = secElement.getElementsByTagName(CARBONSEC_AUTHORIZATION).item(0);
+				Node carbonAuth = secElement.getElementsByTagName(SecurityFormConstants.CARBONSEC_AUTHORIZATION).item(0);
 				if (carbonAuth != null) {
 					setSecAuthorization(carbonAuth, carbonSecAuthDataMap);
 				}
-				Node carbonTrust = secElement.getElementsByTagName(CARBONSEC_TRUST).item(0);
+				Node carbonTrust = secElement.getElementsByTagName(SecurityFormConstants.CARBONSEC_TRUST).item(0);
 				if (carbonTrust != null) {
 					setSecTrust(carbonTrust, carbonSecTrustDataMap);
 				}
 			}
 
 		} else {
-			Node kerberosConfig = rampart.getElementsByTagName(RAMPART_KERBEROS_CONFIG).item(0);
+			Node kerberosConfig = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_KERBEROS_CONFIG).item(0);
 			if (kerberosConfig != null) {
 				setKerberosRampartConfig(kerberosConfig, carbonSecKerberosDataMap);
 			}
 
 			if (secElement != null) {
-				Node kerberosSec = secElement.getElementsByTagName(CARBON_KEBEROS).item(0);
+				Node kerberosSec = secElement.getElementsByTagName(SecurityFormConstants.CARBON_KEBEROS).item(0);
 				if (kerberosSec != null) {
 					setKerberosSecConfig(kerberosSec, carbonSecKerberosDataMap);
 				}
@@ -1127,12 +1036,12 @@ public class SecurityFormPage extends FormPage {
 
 		if (encryptControlMap.size() > 0 && signControlMap.size() > 0) {
 			// encryption properties
-			encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(txtPrivateStore.getText());
-			encryptControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(txtPrivateStore.getText());
+			encryptControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(txtPrivateStore.getText());
+			encryptControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(txtPrivateStore.getText());
 
 			// signature properties
-			signControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(txtPrivateStore.getText());
-			signControlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(txtPrivateStore.getText());
+			signControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(txtPrivateStore.getText());
+			signControlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(txtPrivateStore.getText());
 		}
 	}
 
@@ -1167,61 +1076,61 @@ public class SecurityFormPage extends FormPage {
 		closeInputStream(kerberosStream);
 
 		// updates rampart ui
-		Text txtRampartProperties = (Text) rampartControlMap.get(RAMPART_USER);
-		if (rampartDataMap.get(RAMPART_USER) != null && txtRampartProperties != null) {
-			txtRampartProperties.setText(rampartDataMap.get(RAMPART_USER));
+		Text txtRampartProperties = (Text) rampartControlMap.get(SecurityFormConstants.RAMPART_USER);
+		if (rampartDataMap.get(SecurityFormConstants.RAMPART_USER) != null && txtRampartProperties != null) {
+			txtRampartProperties.setText(rampartDataMap.get(SecurityFormConstants.RAMPART_USER));
 		} else if (txtRampartProperties != null) {
 			txtRampartProperties.setText("");
 		}
 
-		txtRampartProperties = (Text) rampartControlMap.get(RAMPART_ENCRYPTION_USER);
-		if (rampartDataMap.get(RAMPART_ENCRYPTION_USER) != null && txtRampartProperties != null) {
-			txtRampartProperties.setText(rampartDataMap.get(RAMPART_ENCRYPTION_USER));
+		txtRampartProperties = (Text) rampartControlMap.get(SecurityFormConstants.RAMPART_ENCRYPTION_USER);
+		if (rampartDataMap.get(SecurityFormConstants.RAMPART_ENCRYPTION_USER) != null && txtRampartProperties != null) {
+			txtRampartProperties.setText(rampartDataMap.get(SecurityFormConstants.RAMPART_ENCRYPTION_USER));
 		} else if (txtRampartProperties != null) {
 			txtRampartProperties.setText("");
 		}
 
-		txtRampartProperties = (Text) rampartControlMap.get(RAMPART_TIMESTAMP_TTL);
-		if (rampartDataMap.get(RAMPART_TIMESTAMP_TTL) != null && txtRampartProperties != null) {
-			txtRampartProperties.setText(rampartDataMap.get(RAMPART_TIMESTAMP_TTL));
+		txtRampartProperties = (Text) rampartControlMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_TTL);
+		if (rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_TTL) != null && txtRampartProperties != null) {
+			txtRampartProperties.setText(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_TTL));
 		} else if (txtRampartProperties != null) {
 			txtRampartProperties.setText("");
 		}
 
-		txtRampartProperties = (Text) rampartControlMap.get(RAMPART_TIMESTAMP_MAX_SKEW);
-		if (rampartDataMap.get(RAMPART_TIMESTAMP_MAX_SKEW) != null && txtRampartProperties != null) {
-			txtRampartProperties.setText(rampartDataMap.get(RAMPART_TIMESTAMP_MAX_SKEW));
+		txtRampartProperties = (Text) rampartControlMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW);
+		if (rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW) != null && txtRampartProperties != null) {
+			txtRampartProperties.setText(rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW));
 		} else if (txtRampartProperties != null) {
 			txtRampartProperties.setText("");
 		}
 
-		txtRampartProperties = (Text) rampartControlMap.get(RAMPART_TOKEN_STORE_CLASS);
-		if (rampartDataMap.get(RAMPART_TOKEN_STORE_CLASS) != null && txtRampartProperties != null) {
-			txtRampartProperties.setText(rampartDataMap.get(RAMPART_TOKEN_STORE_CLASS));
+		txtRampartProperties = (Text) rampartControlMap.get(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS);
+		if (rampartDataMap.get(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS) != null && txtRampartProperties != null) {
+			txtRampartProperties.setText(rampartDataMap.get(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS));
 		} else if (txtRampartProperties != null) {
 			txtRampartProperties.setText("");
 		}
 
-		txtRampartProperties = (Text) rampartControlMap.get(RAMPART_NONCE_LIFE_TIME);
-		if (rampartDataMap.get(RAMPART_NONCE_LIFE_TIME) != null && txtRampartProperties != null) {
-			txtRampartProperties.setText(rampartDataMap.get(RAMPART_NONCE_LIFE_TIME));
+		txtRampartProperties = (Text) rampartControlMap.get(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME);
+		if (rampartDataMap.get(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME) != null && txtRampartProperties != null) {
+			txtRampartProperties.setText(rampartDataMap.get(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME));
 		} else if (txtRampartProperties != null) {
 			txtRampartProperties.setText("");
 		}
 
-		Combo cmbRampartTimeStampProperty = (Combo) rampartControlMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS);
-		if (rampartDataMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS) != null
+		Combo cmbRampartTimeStampProperty = (Combo) rampartControlMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS);
+		if (rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS) != null
 				&& cmbRampartTimeStampProperty != null) {
-			if (rampartDataMap.get(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS).equals(VALUE_FALSE)) {
+			if (rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS).equals(SecurityFormConstants.VALUE_FALSE)) {
 				cmbRampartTimeStampProperty.select(0); // Index 0
 			} else {
 				cmbRampartTimeStampProperty.select(1); // Index 1
 			}
 		}
 
-		cmbRampartTimeStampProperty = (Combo) rampartControlMap.get(RAMPART_TIMESTAMP_STRICT);
-		if (rampartDataMap.get(RAMPART_TIMESTAMP_STRICT) != null && cmbRampartTimeStampProperty != null) {
-			if (rampartDataMap.get(RAMPART_TIMESTAMP_STRICT).equals(VALUE_FALSE)) {
+		cmbRampartTimeStampProperty = (Combo) rampartControlMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT);
+		if (rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT) != null && cmbRampartTimeStampProperty != null) {
+			if (rampartDataMap.get(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT).equals(SecurityFormConstants.VALUE_FALSE)) {
 				cmbRampartTimeStampProperty.select(0); // Index 0
 			} else {
 				cmbRampartTimeStampProperty.select(1);// Index 1
@@ -1248,37 +1157,37 @@ public class SecurityFormPage extends FormPage {
 	 */
 	private void updateCryptoUIWithChanges(Map<String, String> dataMap, Map<String, Text> controlMap) {
 		if (controlMap.size() > 0) {
-			if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE) != null) {
-				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(
-						dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
+			if (dataMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE) != null) {
+				controlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText(
+						dataMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE));
 			} else {
-				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText("");
+				controlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE).setText("");
 
 			}
-			if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES) != null) {
-				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(
-						dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
+			if (dataMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES) != null) {
+				controlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText(
+						dataMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES));
 			} else {
-				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText("");
+				controlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES).setText("");
 
 			}
-			if (dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS) != null) {
-				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText(
-						dataMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
+			if (dataMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS) != null) {
+				controlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText(
+						dataMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS));
 			} else {
-				controlMap.get(ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText("");
+				controlMap.get(SecurityFormConstants.ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS).setText("");
 
 			}
-			if (dataMap.get(ORG_WSO2_STRATOS_TENANT_ID) != null) {
-				controlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText(dataMap.get(ORG_WSO2_STRATOS_TENANT_ID));
+			if (dataMap.get(SecurityFormConstants.ORG_WSO2_STRATOS_TENANT_ID) != null) {
+				controlMap.get(SecurityFormConstants.ORG_WSO2_STRATOS_TENANT_ID).setText(dataMap.get(SecurityFormConstants.ORG_WSO2_STRATOS_TENANT_ID));
 			} else {
-				controlMap.get(ORG_WSO2_STRATOS_TENANT_ID).setText("");
+				controlMap.get(SecurityFormConstants.ORG_WSO2_STRATOS_TENANT_ID).setText("");
 
 			}
-			if (dataMap.get(RAMPART_CONFIG_USER) != null) {
-				controlMap.get(RAMPART_CONFIG_USER).setText(dataMap.get(RAMPART_CONFIG_USER));
+			if (dataMap.get(SecurityFormConstants.RAMPART_CONFIG_USER) != null) {
+				controlMap.get(SecurityFormConstants.RAMPART_CONFIG_USER).setText(dataMap.get(SecurityFormConstants.RAMPART_CONFIG_USER));
 			} else {
-				controlMap.get(RAMPART_CONFIG_USER).setText("");
+				controlMap.get(SecurityFormConstants.RAMPART_CONFIG_USER).setText("");
 			}
 		}
 	}
@@ -1294,17 +1203,17 @@ public class SecurityFormPage extends FormPage {
 	private void updateKerberosUIWithChanges(Map<String, String> dataMap, Map<String, Text> controlMap) {
 
 		if (controlMap.size() > 0 && dataMap.size() > 0) {
-			if (!StringUtils.isEmpty(dataMap.get(SERVICE_PRINCIPAL_NAME))
-					&& controlMap.get(SERVICE_PRINCIPAL_NAME) != null) {
-				controlMap.get(SERVICE_PRINCIPAL_NAME).setText(dataMap.get(SERVICE_PRINCIPAL_NAME));
-			} else if (controlMap.get(SERVICE_PRINCIPAL_NAME) != null) {
-				controlMap.get(SERVICE_PRINCIPAL_NAME).setText("");
+			if (!StringUtils.isEmpty(dataMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_NAME))
+					&& controlMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_NAME) != null) {
+				controlMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_NAME).setText(dataMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_NAME));
+			} else if (controlMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_NAME) != null) {
+				controlMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_NAME).setText("");
 			}
-			if (!StringUtils.isEmpty(dataMap.get(SERVICE_PRINCIPAL_PASSWORD))
-					&& controlMap.get(SERVICE_PRINCIPAL_PASSWORD) != null) {
-				controlMap.get(SERVICE_PRINCIPAL_PASSWORD).setText(dataMap.get(SERVICE_PRINCIPAL_PASSWORD));
-			} else if (controlMap.get(SERVICE_PRINCIPAL_PASSWORD) != null) {
-				controlMap.get(SERVICE_PRINCIPAL_PASSWORD).setText("");
+			if (!StringUtils.isEmpty(dataMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD))
+					&& controlMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD) != null) {
+				controlMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD).setText(dataMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD));
+			} else if (controlMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD) != null) {
+				controlMap.get(SecurityFormConstants.SERVICE_PRINCIPAL_PASSWORD).setText("");
 
 			}
 		}
@@ -1338,12 +1247,12 @@ public class SecurityFormPage extends FormPage {
 			Section signResult = (Section) signresult[0];
 			Section kebSection = (Section) keberosResult[0];
 			// TOOLS-2772
-			if (policyObject.getId().equals(POLICY_OBJECT_UT)) {
+			if (policyObject.getId().equals(SecurityFormConstants.POLICY_OBJECT_UT)) {
 				result.setVisible(false);
 				encrypt.setVisible(false);
 				signResult.setVisible(false);
 				kebSection.setVisible(false);
-			} else if (policyObject.getId().equals(KERBEROSSIGNANDENCRYPT)) {
+			} else if (policyObject.getId().equals(SecurityFormConstants.KERBEROSSIGNANDENCRYPT)) {
 				result.setVisible(false);
 				encrypt.setVisible(false);
 				signResult.setVisible(false);
@@ -1389,7 +1298,7 @@ public class SecurityFormPage extends FormPage {
 		en.setLayoutData(enlayoutData);
 		en.setData(name, split[0]);
 		// en.setd
-		if (EN.equals(prefix)) {
+		if (SecurityFormConstants.EN.equals(prefix)) {
 			encryptControlMap.put(split[0], en);
 		} else {
 			signControlMap.put(split[0], en);
@@ -1455,62 +1364,62 @@ public class SecurityFormPage extends FormPage {
 		doc = dBuilder.parse(uiContentStream);
 		policyID = policyObject.getId();
 
-		boolean isKerberossignandencrypt = policyID.equals(KERBEROSSIGNANDENCRYPT);
+		boolean isKerberossignandencrypt = policyID.equals(SecurityFormConstants.KERBEROSSIGNANDENCRYPT);
 
-		Node nrampart = doc.getElementsByTagName(RAMPART_CONFIG).item(0);
+		Node nrampart = doc.getElementsByTagName(SecurityFormConstants.RAMPART_CONFIG).item(0);
 		rampart = (Element) nrampart;
 
 		if (!isKerberossignandencrypt) {
-			Node user = rampart.getElementsByTagName(RAMPART_USER).item(0);
+			Node user = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_USER).item(0);
 			if (user != null) {
-				rampartDataMap.put(RAMPART_USER, user.getTextContent());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_USER, user.getTextContent());
 			}
 
-			Node encryptionUser = rampart.getElementsByTagName(RAMPART_ENCRYPTION_USER).item(0);
+			Node encryptionUser = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_ENCRYPTION_USER).item(0);
 			if (encryptionUser != null) {
-				rampartDataMap.put(RAMPART_ENCRYPTION_USER, encryptionUser.getTextContent());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_ENCRYPTION_USER, encryptionUser.getTextContent());
 			}
 
 		} else {
 			// rampart:kerberosConfig
-			Node kerberosConfig = rampart.getElementsByTagName(RAMPART_KERBEROS_CONFIG).item(0);
+			Node kerberosConfig = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_KERBEROS_CONFIG).item(0);
 			if (kerberosConfig != null) {
 				addRampartKerberosConfigPropertis(kerberosConfig);
 			}
 		}
 
 		Node timestampPrecisionInMilliseconds = rampart.getElementsByTagName(
-				RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS).item(0);
+				SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS).item(0);
 		if (timestampPrecisionInMilliseconds != null) {
-			rampartDataMap.put(RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS,
+			rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_PRECISION_IN_MILLISECONDS,
 					timestampPrecisionInMilliseconds.getTextContent());
 		}
 
-		Node timestampTTL = rampart.getElementsByTagName(RAMPART_TIMESTAMP_TTL).item(0);
+		Node timestampTTL = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_TIMESTAMP_TTL).item(0);
 		if (timestampTTL != null) {
-			rampartDataMap.put(RAMPART_TIMESTAMP_TTL, timestampTTL.getTextContent());
+			rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_TTL, timestampTTL.getTextContent());
 		}
 
-		Node timestampMaxSkew = rampart.getElementsByTagName(RAMPART_TIMESTAMP_MAX_SKEW).item(0);
+		Node timestampMaxSkew = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW).item(0);
 		if (timestampMaxSkew != null) {
-			rampartDataMap.put(RAMPART_TIMESTAMP_MAX_SKEW, timestampMaxSkew.getTextContent());
+			rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_MAX_SKEW, timestampMaxSkew.getTextContent());
 		}
 
-		Node timestampStrict = rampart.getElementsByTagName(RAMPART_TIMESTAMP_STRICT).item(0);
+		Node timestampStrict = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT).item(0);
 		if (timestampStrict != null) {
-			rampartDataMap.put(RAMPART_TIMESTAMP_STRICT, timestampStrict.getTextContent());
+			rampartDataMap.put(SecurityFormConstants.RAMPART_TIMESTAMP_STRICT, timestampStrict.getTextContent());
 		}
 
 		if (!isKerberossignandencrypt) {
-			Node tokenStoreClass = rampart.getElementsByTagName(RAMPART_TOKEN_STORE_CLASS).item(0);
+			Node tokenStoreClass = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS).item(0);
 			if (tokenStoreClass != null) {
-				rampartDataMap.put(RAMPART_TOKEN_STORE_CLASS, tokenStoreClass.getTextContent());
+				rampartDataMap.put(SecurityFormConstants.RAMPART_TOKEN_STORE_CLASS, tokenStoreClass.getTextContent());
 			}
 		}
 
-		Node nonceLifeTime = rampart.getElementsByTagName(RAMPART_NONCE_LIFE_TIME).item(0);
+		Node nonceLifeTime = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME).item(0);
 		if (nonceLifeTime != null) {
-			rampartDataMap.put(RAMPART_NONCE_LIFE_TIME, nonceLifeTime.getTextContent());
+			rampartDataMap.put(SecurityFormConstants.RAMPART_NONCE_LIFE_TIME, nonceLifeTime.getTextContent());
 		}
 	}
 
@@ -1530,28 +1439,28 @@ public class SecurityFormPage extends FormPage {
 		doc = dBuilder.parse(uiContentStream);
 		policyID = policyObject.getId();
 
-		boolean isKerberossignandencrypt = policyID.equals(KERBEROSSIGNANDENCRYPT);
+		boolean isKerberossignandencrypt = policyID.equals(SecurityFormConstants.KERBEROSSIGNANDENCRYPT);
 
-		Node nrampart = doc.getElementsByTagName(RAMPART_CONFIG).item(0);
+		Node nrampart = doc.getElementsByTagName(SecurityFormConstants.RAMPART_CONFIG).item(0);
 		rampart = (Element) nrampart;
 
-		Node nsec = doc.getElementsByTagName(CARBONSEC_CONFIG).item(0);
+		Node nsec = doc.getElementsByTagName(SecurityFormConstants.CARBONSEC_CONFIG).item(0);
 		secElement = (Element) nsec;
 
 		if (!isKerberossignandencrypt) {
-			Node encryptionCrypto = rampart.getElementsByTagName(RAMPART_ENCRYPTION_CRYPTO).item(0);
+			Node encryptionCrypto = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_ENCRYPTION_CRYPTO).item(0);
 			if (encryptionCrypto != null) {
 				encryptDataMap = addRampartCryptoProperties(encryptionCrypto);
 			}
 
 			// rampart:signatureCrypto
-			Node signatureCrypto = rampart.getElementsByTagName(RAMPART_SIGNATURE_CRYPTO).item(0);
+			Node signatureCrypto = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_SIGNATURE_CRYPTO).item(0);
 			if (signatureCrypto != null) {
 				signDataMap = addRampartCryptoProperties(signatureCrypto);
 			}
 
 			if (secElement != null) {
-				Node secAuth = secElement.getElementsByTagName(CARBONSEC_AUTHORIZATION).item(0);
+				Node secAuth = secElement.getElementsByTagName(SecurityFormConstants.CARBONSEC_AUTHORIZATION).item(0);
 				if (secAuth != null) {
 					carbonSecAuthDataMap = addCarbonAuthProperties(secAuth);
 				}
@@ -1577,22 +1486,22 @@ public class SecurityFormPage extends FormPage {
 		doc = dBuilder.parse(uiContentStream);
 		policyID = policyObject.getId();
 
-		boolean isKerberossignandencrypt = policyID.equals(KERBEROSSIGNANDENCRYPT);
+		boolean isKerberossignandencrypt = policyID.equals(SecurityFormConstants.KERBEROSSIGNANDENCRYPT);
 
-		Node nrampart = doc.getElementsByTagName(RAMPART_CONFIG).item(0);
+		Node nrampart = doc.getElementsByTagName(SecurityFormConstants.RAMPART_CONFIG).item(0);
 		rampart = (Element) nrampart;
 
-		Node nsec = doc.getElementsByTagName(CARBONSEC_CONFIG).item(0);
+		Node nsec = doc.getElementsByTagName(SecurityFormConstants.CARBONSEC_CONFIG).item(0);
 		secElement = (Element) nsec;
 
 		if (isKerberossignandencrypt) {
-			Node rampartKerberos = rampart.getElementsByTagName(RAMPART_KERBEROS_CONFIG).item(0);
+			Node rampartKerberos = rampart.getElementsByTagName(SecurityFormConstants.RAMPART_KERBEROS_CONFIG).item(0);
 			if (rampartKerberos != null) {
 				carbonSecKerberosDataMap = addKerberosProperties(rampartKerberos);
 			}
 
 			if (secElement != null) {
-				Node secKerberos = secElement.getElementsByTagName(CARBON_KEBEROS).item(0);
+				Node secKerberos = secElement.getElementsByTagName(SecurityFormConstants.CARBON_KEBEROS).item(0);
 				if (secKerberos != null) {
 					carbonSecKerberosDataMap = addKerberosProperties(secKerberos);
 				}
@@ -1611,15 +1520,15 @@ public class SecurityFormPage extends FormPage {
 	private static Map<String, String> addRampartCryptoProperties(Node crypto) {
 
 		Map<String, String> cryptoMap = new HashMap<>();
-		Node encrypto = ((Element) crypto).getElementsByTagName(RAMPART_CRYPTO).item(0);
+		Node encrypto = ((Element) crypto).getElementsByTagName(SecurityFormConstants.RAMPART_CRYPTO).item(0);
 
 		NodeList list = ((Element) encrypto).getChildNodes();
 
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (RAMPART_PROPERTY.equals(node.getNodeName())) {
+			if (SecurityFormConstants.RAMPART_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				cryptoMap.put(attribute, eElement.getTextContent());
 			}
 		}
@@ -1639,15 +1548,15 @@ public class SecurityFormPage extends FormPage {
 
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+			if (SecurityFormConstants.CARBONSEC_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				kerberosMap.put(attribute, eElement.getTextContent());
 				if (carbonSecKerberosControlMap.get(attribute) != null) {
 					carbonSecKerberosControlMap.get(attribute).setText(eElement.getTextContent());
 				}
 				if (StringUtils.isEmpty(eElement.getTextContent())) {
-					if (attribute.equals(SERVICE_PRINCIPAL_NAME)) {
+					if (attribute.equals(SecurityFormConstants.SERVICE_PRINCIPAL_NAME)) {
 						setPageDirty(true);
 						updateDirtyState();
 						MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
@@ -1680,9 +1589,9 @@ public class SecurityFormPage extends FormPage {
 		NodeList list = secAuth.getChildNodes();
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+			if (SecurityFormConstants.CARBONSEC_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				/*
 				 * Update the relevent maps and role vale when changing the
 				 * userRole value from the source view
@@ -1723,9 +1632,9 @@ public class SecurityFormPage extends FormPage {
 
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (RAMPART_PROPERTY.equals(node.getNodeName())) {
+			if (SecurityFormConstants.RAMPART_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				rampartDataMap.put(attribute, eElement.getTextContent());
 			}
 		}
@@ -1741,14 +1650,14 @@ public class SecurityFormPage extends FormPage {
 	 */
 	private static void setenCryto(Node encryptionCrypto, Map<String, String> cryptoMap) {
 
-		Node encrypto = ((Element) encryptionCrypto).getElementsByTagName(RAMPART_CRYPTO).item(0);
+		Node encrypto = ((Element) encryptionCrypto).getElementsByTagName(SecurityFormConstants.RAMPART_CRYPTO).item(0);
 		NodeList list = ((Element) encrypto).getChildNodes();
 
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (node != null && RAMPART_PROPERTY.equals(node.getNodeName())) {
+			if (node != null && SecurityFormConstants.RAMPART_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
 					node.setTextContent(cryptoMap.get(attribute));
 				}
@@ -1770,9 +1679,9 @@ public class SecurityFormPage extends FormPage {
 
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (node != null && CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+			if (node != null && SecurityFormConstants.CARBONSEC_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
 					if (!StringUtils.isEmpty(carbonAuthMap.get(attribute))) {
 						node.setTextContent(carbonAuthMap.get(attribute));
@@ -1810,9 +1719,9 @@ public class SecurityFormPage extends FormPage {
 
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (node != null && CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+			if (node != null && SecurityFormConstants.CARBONSEC_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
 					node.setTextContent(carbonTrustMap.get(attribute));
 				}
@@ -1834,14 +1743,14 @@ public class SecurityFormPage extends FormPage {
 
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (node != null && CARBONSEC_PROPERTY.equals(node.getNodeName())) {
+			if (node != null && SecurityFormConstants.CARBONSEC_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
 					if (!StringUtils.isEmpty(carbonKerberosMap.get(attribute))) {
 						node.setTextContent(carbonKerberosMap.get(attribute));
 					} else {
-						if (attribute.equals(SERVICE_PRINCIPAL_NAME)) {
+						if (attribute.equals(SecurityFormConstants.SERVICE_PRINCIPAL_NAME)) {
 							setPageDirty(true);
 							updateDirtyState();
 							MessageBox msgBox = new MessageBox(getSite().getShell(), SWT.ICON_WARNING);
@@ -1880,9 +1789,9 @@ public class SecurityFormPage extends FormPage {
 
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			if (node != null && RAMPART_PROPERTY.equals(node.getNodeName())) {
+			if (node != null && SecurityFormConstants.RAMPART_PROPERTY.equals(node.getNodeName())) {
 				Element eElement = (Element) node;
-				String attribute = eElement.getAttribute(PROPERTY_NAME);
+				String attribute = eElement.getAttribute(SecurityFormConstants.PROPERTY_NAME);
 				if (StringUtils.isNotBlank(attribute)) {
 					node.setTextContent(carbonSecKerberosDataMap.get(attribute));
 				}
@@ -1911,7 +1820,7 @@ public class SecurityFormPage extends FormPage {
 			secBtn.setText("");
 			secBtn.setToolTipText(name);
 
-			String fileName = FILE_PREFIX + i + FILE_POSTFIX;
+			String fileName = SecurityFormConstants.FILE_PREFIX + i + SecurityFormConstants.FILE_POSTFIX;
 			secBtn.setData(fileName);
 			secBtn.addSelectionListener(new SelectionAdapter() {
 				@Override
@@ -1920,7 +1829,7 @@ public class SecurityFormPage extends FormPage {
 				}
 			});
 
-			String filename = POLICIES + fileName;
+			String filename = SecurityFormConstants.POLICIES + fileName;
 			SecurityTemplateUtil qoSTemplateUtil = new SecurityTemplateUtil();
 			File resourceFile = qoSTemplateUtil.getResourceFile(filename);
 			if (resourceFile != null) {
@@ -1961,7 +1870,7 @@ public class SecurityFormPage extends FormPage {
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
 				policyOneUserRolesButton = new Button(seccomposite, SWT.NONE);
-				policyOneUserRolesButton.setText(USER_ROLE);
+				policyOneUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policyOneUserRolesButton.setVisible(false);
 				policyOneUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
@@ -1983,7 +1892,7 @@ public class SecurityFormPage extends FormPage {
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
 				policySevenUserRolesButton = new Button(seccomposite, SWT.NONE);
-				policySevenUserRolesButton.setText(USER_ROLE);
+				policySevenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policySevenUserRolesButton.setVisible(false);
 				policySevenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
@@ -2005,7 +1914,7 @@ public class SecurityFormPage extends FormPage {
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
 				policyEightUserRolesButton = new Button(seccomposite, SWT.NONE);
-				policyEightUserRolesButton.setText(USER_ROLE);
+				policyEightUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policyEightUserRolesButton.setVisible(false);
 				policyEightUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
@@ -2027,7 +1936,7 @@ public class SecurityFormPage extends FormPage {
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
 				policyFourteenUserRolesButton = new Button(seccomposite, SWT.NONE);
-				policyFourteenUserRolesButton.setText(USER_ROLE);
+				policyFourteenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policyFourteenUserRolesButton.setVisible(false);
 				policyFourteenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
@@ -2049,7 +1958,7 @@ public class SecurityFormPage extends FormPage {
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 
 				policyFifteenUserRolesButton = new Button(seccomposite, SWT.NONE);
-				policyFifteenUserRolesButton.setText(USER_ROLE);
+				policyFifteenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policyFifteenUserRolesButton.setVisible(false);
 				policyFifteenUserRolesButton.addListener(SWT.Selection, new Listener() {
 					public void handleEvent(Event event) {
@@ -2089,12 +1998,12 @@ public class SecurityFormPage extends FormPage {
 			Section kebSection = (Section) keberosResult[0];
 
 			// TOOLS-2772
-			if (selectedPolicy.equals(POLICY_UT)) {
+			if (selectedPolicy.equals(SecurityFormConstants.POLICY_UT)) {
 				result.setVisible(false);
 				encrypt.setVisible(false);
 				signResult.setVisible(false);
 				kebSection.setVisible(false);
-			} else if (selectedPolicy.equals(POLICY_KERBEROS)) {
+			} else if (selectedPolicy.equals(SecurityFormConstants.POLICY_KERBEROS)) {
 				result.setVisible(false);
 				encrypt.setVisible(false);
 				signResult.setVisible(false);
@@ -2247,7 +2156,7 @@ public class SecurityFormPage extends FormPage {
 	private void createCategory(FormToolkit toolkit, Composite composite, String category) {
 
 		Label lblcategory = toolkit.createLabel(composite, category, SWT.NONE);
-		lblcategory.setFont(SWTResourceManager.getFont(SANS, 10, SWT.BOLD));
+		lblcategory.setFont(SWTResourceManager.getFont(SecurityFormConstants.SANS, 10, SWT.BOLD));
 		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1);
 		gd_category.verticalIndent = 10;
 		lblcategory.setLayoutData(gd_category);

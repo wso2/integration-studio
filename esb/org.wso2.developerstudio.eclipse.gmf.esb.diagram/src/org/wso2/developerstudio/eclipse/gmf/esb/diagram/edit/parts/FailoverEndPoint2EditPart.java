@@ -67,7 +67,7 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 	 * @generated
 	 */
 	protected IFigure contentPane;
-	
+
 	public IFigure outputConnectorFigure;
 
 	/**
@@ -122,7 +122,7 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 		};
 		return lep;
 	}
-	
+
 	public IFigure getFigure() {
 		if (figure == null)
 			setFigure(createFigure());
@@ -133,14 +133,14 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 	 * @generated NOT
 	 */
 	protected IFigure createNodeShape() {
-		return primaryShape = new FailoverEndPointFigure(){
-            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
-                super.setBounds(rect);
-                if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-                        alignLeft();
-                }
-        };
-};
+		return primaryShape = new FailoverEndPointFigure() {
+			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+				super.setBounds(rect);
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+					alignLeft();
+				}
+			};
+		};
 	}
 
 	/**
@@ -149,28 +149,28 @@ public class FailoverEndPoint2EditPart extends ComplexFiguredAbstractEndpoint {
 	public FailoverEndPointFigure getPrimaryShape() {
 		return (FailoverEndPointFigure) primaryShape;
 	}
-	
-    public void notifyChanged(Notification notification) {
-    super.notifyChanged(notification);
-    if (notification.getFeature() instanceof EAttributeImpl) {
-            if (notification.getNotifier() instanceof BoundsImpl) {
-                    alignLeft(((BoundsImpl) notification.getNotifier()).getY(),
-                                    ((BoundsImpl) notification.getNotifier()).getWidth(),
-                                    ((BoundsImpl) notification.getNotifier()).getHeight());
-                    FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
-                    canvas.getViewport().repaint();
-            }
-    }
-    }
 
-    private void alignLeft(int y, int width, int height) {
-    Rectangle constraints = new Rectangle(0, y, width, height);
-    ((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
-    }
+	public void notifyChanged(Notification notification) {
+		super.notifyChanged(notification);
+		if (notification.getFeature() instanceof EAttributeImpl) {
+			if (notification.getNotifier() instanceof BoundsImpl) {
+				alignLeft(((BoundsImpl) notification.getNotifier()).getY(),
+						((BoundsImpl) notification.getNotifier()).getWidth(),
+						((BoundsImpl) notification.getNotifier()).getHeight());
+				FigureCanvas canvas = (FigureCanvas) getViewer().getControl();
+				canvas.getViewport().repaint();
+			}
+		}
+	}
 
-    private void alignLeft() {
-    alignLeft(getFigure().getBounds().y, getFigure().getBounds().width, getFigure().getBounds().height);
-    }
+	private void alignLeft(int y, int width, int height) {
+		Rectangle constraints = new Rectangle(0, y, width, height);
+		((GraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), constraints);
+	}
+
+	private void alignLeft() {
+		alignLeft(getFigure().getBounds().y, getFigure().getBounds().width, getFigure().getBounds().height);
+	}
 
 	/**
 	 * @generated NOT

@@ -259,38 +259,38 @@ public class EsbDiagramEditorUtil {
 					esbServer.setType(ArtifactType.PROXY);
 				} else if (ArtifactType.ENDPOINT.getLiteral().equals(type)) {
 					EndpointDiagram endpoints = EsbFactory.eINSTANCE.createEndpointDiagram();
-/*					if (specificType != null) {
-						switch ((Integer) specificType) {
-						case 0:
-							endpoints.setChild(EsbFactory.eINSTANCE.createDefaultEndPoint());
-							break;
-						case 1:
-							endpoints.setChild(EsbFactory.eINSTANCE.createAddressEndPoint());
-							break;
-						case 2:
-							endpoints.setChild(EsbFactory.eINSTANCE.createWSDLEndPoint());
-							break;
-						case 3:
-							endpoints.setChild(EsbFactory.eINSTANCE.createLoadBalanceEndPoint());
-							break;
-						case 4:
-							endpoints.setChild(EsbFactory.eINSTANCE.createFailoverEndPoint());
-							break;
-						case 5:
-							endpoints.setChild(EsbFactory.eINSTANCE.createRecipientListEndPoint());
-							break;
-						case 6:
-							endpoints.setChild(EsbFactory.eINSTANCE.createTemplateEndpoint());
-							break;
-						case 7:
-							endpoints.setChild(EsbFactory.eINSTANCE.createHTTPEndpoint());
-							break;
-						default:
-							break;
-						}
-					} else {
-						endpoints.setChild(EsbFactory.eINSTANCE.createDefaultEndPoint());
-					}*/
+					/*					if (specificType != null) {
+					 switch ((Integer) specificType) {
+					 case 0:
+					 endpoints.setChild(EsbFactory.eINSTANCE.createDefaultEndPoint());
+					 break;
+					 case 1:
+					 endpoints.setChild(EsbFactory.eINSTANCE.createAddressEndPoint());
+					 break;
+					 case 2:
+					 endpoints.setChild(EsbFactory.eINSTANCE.createWSDLEndPoint());
+					 break;
+					 case 3:
+					 endpoints.setChild(EsbFactory.eINSTANCE.createLoadBalanceEndPoint());
+					 break;
+					 case 4:
+					 endpoints.setChild(EsbFactory.eINSTANCE.createFailoverEndPoint());
+					 break;
+					 case 5:
+					 endpoints.setChild(EsbFactory.eINSTANCE.createRecipientListEndPoint());
+					 break;
+					 case 6:
+					 endpoints.setChild(EsbFactory.eINSTANCE.createTemplateEndpoint());
+					 break;
+					 case 7:
+					 endpoints.setChild(EsbFactory.eINSTANCE.createHTTPEndpoint());
+					 break;
+					 default:
+					 break;
+					 }
+					 } else {
+					 endpoints.setChild(EsbFactory.eINSTANCE.createDefaultEndPoint());
+					 }*/
 					endpoints.setName(fileName);
 					EStructuralFeature target = esbServer.eClass().getEStructuralFeature("children");
 					esbServer.eSet(target, Arrays.asList(endpoints));

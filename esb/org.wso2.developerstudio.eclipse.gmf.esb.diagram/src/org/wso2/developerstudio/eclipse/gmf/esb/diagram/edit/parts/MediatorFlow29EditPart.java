@@ -36,7 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFl
 public class MediatorFlow29EditPart extends ShapeNodeEditPart {
 
 	//LoadBalanceEndPoint2EditPart
-	
+
 	/**
 	 * @generated
 	 */
@@ -219,7 +219,6 @@ public class MediatorFlow29EditPart extends ShapeNodeEditPart {
 		}
 	}
 
-
 	/**
 	 * @generated
 	 */
@@ -243,7 +242,7 @@ public class MediatorFlow29EditPart extends ShapeNodeEditPart {
 			this.setLineWidth(1);
 			this.setOutline(true);
 		}
-		
+
 		public void add(IFigure figure, Object constraint, int index) {
 			if (figure instanceof BorderedNodeFigure) {
 				GridData layoutData = new GridData();
@@ -262,7 +261,7 @@ public class MediatorFlow29EditPart extends ShapeNodeEditPart {
 	public boolean isSelectable() {
 		return false;
 	}
-	
+
 	/**
 	 * @generated
 	 */

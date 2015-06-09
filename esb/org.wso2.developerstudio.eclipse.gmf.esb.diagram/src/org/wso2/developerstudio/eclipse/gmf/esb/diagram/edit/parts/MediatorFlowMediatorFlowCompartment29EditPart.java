@@ -56,16 +56,16 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractComplexEndpointCompartmentEditPart {
 
 	//LoadBalanceEndPoint2EditPart
-	
+
 	/**
 	 * @generated
 	 */
 	public static final int VISUAL_ID = 7056;
-	
+
 	BorderedNodeFigure borderedNodeFigure;
 	private EndPoint complexEndpoint;
 	private MediatorFlowMediatorFlowCompartment29EditPart instance;
-	Map<LoadBalanceEndPointOutputConnector,AbstractEndpoint> connectorAndEndpointMap = new HashMap<LoadBalanceEndPointOutputConnector,AbstractEndpoint>();
+	Map<LoadBalanceEndPointOutputConnector, AbstractEndpoint> connectorAndEndpointMap = new HashMap<LoadBalanceEndPointOutputConnector, AbstractEndpoint>();
 
 	/**
 	 * @generated
@@ -80,7 +80,7 @@ public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractCompl
 	public String getCompartmentName() {
 		return Messages.MediatorFlowMediatorFlowCompartment29EditPart_title;
 	}
-	
+
 	protected IFigure createFigure() {
 		ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
 		result.setTitleVisibility(true);
@@ -91,11 +91,11 @@ public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractCompl
 		//return result;
 		return borderedNodeFigure;
 	}
-	
+
 	public ResizableCompartmentFigure getCompartmentFigure() {
 		return (ResizableCompartmentFigure) borderedNodeFigure.getMainFigure();
 	}
-	
+
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		IFigure child = ((GraphicalEditPart) childEditPart).getFigure();
 		if (childEditPart instanceof AbstractEndpoint) {
@@ -105,14 +105,14 @@ public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractCompl
 			getContentPane().add(child, index);
 		}
 	}
-	
+
 	private <T extends AbstractEndpoint> void addEndpointChildVisual(T childEditPart) {
 		borderedNodeFigure.getBorderItemContainer().add(
 				((T) childEditPart).getFigure(),
 				new SlidingBorderItemLocator(borderedNodeFigure.getMainFigure(), ((T) childEditPart).getFigure(),
 						PositionConstants.EAST, 10, 5));
 	}
-	
+
 	protected void removeChildVisual(EditPart child) {
 		IFigure childFigure = ((GraphicalEditPart) child).getFigure();
 		if ((child instanceof AbstractEndpoint)) {
@@ -343,10 +343,12 @@ public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractCompl
 		}
 		return super.getTargetEditPart(request);
 	}
-	
+
 	protected void removeChild(EditPart child) {
 		super.removeChild(child);
-		OutputConnector outputConnector = ((EsbLink)((Node)((EsbLinkEditPart)EditorUtils.getInputConnector((AbstractEndpoint)child).getTargetConnections().get(0)).getModel()).getElement()).getSource();
+		OutputConnector outputConnector = ((EsbLink) ((Node) ((EsbLinkEditPart) EditorUtils
+				.getInputConnector((AbstractEndpoint) child).getTargetConnections().get(0)).getModel()).getElement())
+				.getSource();
 		EditingDomain editingDomain = TransactionUtil.getEditingDomain(complexEndpoint);
 		RemoveCommand removeCmd = new RemoveCommand(editingDomain, complexEndpoint,
 				EsbPackage.Literals.LOAD_BALANCE_END_POINT__OUTPUT_CONNECTOR, outputConnector);
@@ -365,10 +367,11 @@ public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractCompl
 	protected void addChild(EditPart child, int index) {
 		super.addChild(child, index);
 		if (child instanceof AbstractEndpoint) {
-			LoadBalanceEndPoint2EditPart loadBalanceEndPoint2EditPart = (LoadBalanceEndPoint2EditPart) this.getParent().getParent();
+			LoadBalanceEndPoint2EditPart loadBalanceEndPoint2EditPart = (LoadBalanceEndPoint2EditPart) this.getParent()
+					.getParent();
 			complexEndpoint = (EndPoint) ((Node) loadBalanceEndPoint2EditPart.getModel()).getElement();
 			if (EditorUtils.getEndpointInputConnector((AbstractEndpoint) child).getTargetConnections().size() == 0) {
-				addConnectorAndLink(child);				
+				addConnectorAndLink(child);
 			}
 		}
 	}
@@ -380,7 +383,7 @@ public class MediatorFlowMediatorFlowCompartment29EditPart extends AbstractCompl
 				EsbPackage.Literals.LOAD_BALANCE_END_POINT__OUTPUT_CONNECTOR, connector);
 		if (addCmd.canExecute()) {
 			editingDomain.getCommandStack().execute(addCmd);
-			connectorAndEndpointMap.put(connector,(AbstractEndpoint) child);
+			connectorAndEndpointMap.put(connector, (AbstractEndpoint) child);
 		}
 	}
 

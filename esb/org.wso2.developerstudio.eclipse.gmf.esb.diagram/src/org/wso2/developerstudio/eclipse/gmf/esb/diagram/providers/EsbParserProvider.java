@@ -58,6 +58,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FastXSLTMedia
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FaultMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FaultMediatorFaultStringTypeEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorConditionTypeEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ForEachMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HTTPEndpointDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HeaderMediatorDescriptionEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HeaderMediatorValueLiteralEditPart;
@@ -1044,6 +1045,23 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
 	/**
 	 * @generated
 	 */
+	private IParser forEachMediatorDescription_5213Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getForEachMediatorDescription_5213Parser() {
+		if (forEachMediatorDescription_5213Parser == null) {
+			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getEsbElement_Description() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			forEachMediatorDescription_5213Parser = parser;
+		}
+		return forEachMediatorDescription_5213Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	private IParser defaultEndPointEndPointName_5160Parser;
 
 	/**
@@ -1242,6 +1260,8 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
 			return getDataMapperMediatorDescription_5211Parser();
 		case FastXSLTMediatorDescriptionEditPart.VISUAL_ID:
 			return getFastXSLTMediatorDescription_5212Parser();
+		case ForEachMediatorDescriptionEditPart.VISUAL_ID:
+			return getForEachMediatorDescription_5213Parser();
 		case DefaultEndPointEndPointName2EditPart.VISUAL_ID:
 			return getDefaultEndPointEndPointName_5160Parser();
 		case AddressEndPointEndPointName2EditPart.VISUAL_ID:

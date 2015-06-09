@@ -52,7 +52,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementType
 public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractComplexEndpointCompartmentEditPart {
 
 	//FailoverEndPoint2EditPart
-	
+
 	/**
 	 * @generated
 	 */
@@ -63,7 +63,6 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractCompl
 	private MediatorFlowMediatorFlowCompartment29EditPart instance;
 	Map<FailoverEndPointOutputConnector, AbstractEndpoint> connectorAndEndpointMap = new HashMap<FailoverEndPointOutputConnector, AbstractEndpoint>();
 
-	
 	/**
 	 * @generated
 	 */
@@ -81,11 +80,11 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractCompl
 		//return result;
 		return borderedNodeFigure;
 	}
-	
+
 	public ResizableCompartmentFigure getCompartmentFigure() {
 		return (ResizableCompartmentFigure) borderedNodeFigure.getMainFigure();
 	}
-	
+
 	protected void addChildVisual(EditPart childEditPart, int index) {
 		IFigure child = ((GraphicalEditPart) childEditPart).getFigure();
 		if (childEditPart instanceof AbstractEndpoint) {
@@ -95,14 +94,14 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractCompl
 			getContentPane().add(child, index);
 		}
 	}
-	
+
 	private <T extends AbstractEndpoint> void addEndpointChildVisual(T childEditPart) {
 		borderedNodeFigure.getBorderItemContainer().add(
 				((T) childEditPart).getFigure(),
 				new SlidingBorderItemLocator(borderedNodeFigure.getMainFigure(), ((T) childEditPart).getFigure(),
 						PositionConstants.EAST, 10, 5));
 	}
-	
+
 	protected void removeChildVisual(EditPart child) {
 		IFigure childFigure = ((GraphicalEditPart) child).getFigure();
 		if ((child instanceof AbstractEndpoint)) {
@@ -111,7 +110,7 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractCompl
 			getContentPane().remove(childFigure);
 		}
 	}
-	
+
 	/**
 	 * @generated
 	 */
@@ -340,10 +339,12 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractCompl
 		}
 		return super.getTargetEditPart(request);
 	}
-	
+
 	protected void removeChild(EditPart child) {
 		super.removeChild(child);
-		OutputConnector outputConnector = ((EsbLink)((Node)((EsbLinkEditPart)EditorUtils.getInputConnector((AbstractEndpoint)child).getTargetConnections().get(0)).getModel()).getElement()).getSource();
+		OutputConnector outputConnector = ((EsbLink) ((Node) ((EsbLinkEditPart) EditorUtils
+				.getInputConnector((AbstractEndpoint) child).getTargetConnections().get(0)).getModel()).getElement())
+				.getSource();
 		EditingDomain editingDomain = TransactionUtil.getEditingDomain(complexEndpoints);
 		RemoveCommand removeCmd = new RemoveCommand(editingDomain, complexEndpoints,
 				EsbPackage.Literals.FAILOVER_END_POINT__OUTPUT_CONNECTOR, outputConnector);
@@ -363,14 +364,15 @@ public class MediatorFlowMediatorFlowCompartment27EditPart extends AbstractCompl
 		super.addChild(child, index);
 
 		if (child instanceof AbstractEndpoint) {
-			FailoverEndPoint2EditPart failoverEndPoint2EditPart = (FailoverEndPoint2EditPart) this.getParent().getParent();
+			FailoverEndPoint2EditPart failoverEndPoint2EditPart = (FailoverEndPoint2EditPart) this.getParent()
+					.getParent();
 			complexEndpoints = (EndPoint) ((Node) failoverEndPoint2EditPart.getModel()).getElement();
 			if (EditorUtils.getEndpointInputConnector((AbstractEndpoint) child).getTargetConnections().size() == 0) {
 				addConnectorAndLink(child);
 			}
 		}
 	}
-	
+
 	private void addConnectorAndLink(EditPart child) {
 		FailoverEndPointOutputConnector connector = EsbFactory.eINSTANCE.createFailoverEndPointOutputConnector();
 		EditingDomain editingDomain = ((IGraphicalEditPart) child).getEditingDomain();

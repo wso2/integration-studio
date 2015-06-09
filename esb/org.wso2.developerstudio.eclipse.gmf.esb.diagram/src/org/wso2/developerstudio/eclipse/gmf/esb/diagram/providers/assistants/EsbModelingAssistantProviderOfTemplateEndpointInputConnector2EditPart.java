@@ -134,6 +134,8 @@ public class EsbModelingAssistantProviderOfTemplateEndpointInputConnector2EditPa
 			types.add(EsbElementTypes.CallMediatorEndpointOutputConnector_3745);
 			types.add(EsbElementTypes.DataMapperMediatorOutputConnector_3763);
 			types.add(EsbElementTypes.FastXSLTMediatorOutputConnector_3766);
+			types.add(EsbElementTypes.ForEachMediatorOutputConnector_3782);
+			types.add(EsbElementTypes.ForEachMediatorTargetOutputConnector_3783);
 			types.add(EsbElementTypes.MessageOutputConnector_3047);
 			types.add(EsbElementTypes.MergeNodeOutputConnector_3016);
 			types.add(EsbElementTypes.SequencesOutputConnector_3617);

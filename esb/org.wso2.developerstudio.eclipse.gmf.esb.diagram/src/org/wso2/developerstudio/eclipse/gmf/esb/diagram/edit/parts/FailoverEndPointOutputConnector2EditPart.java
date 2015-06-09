@@ -65,7 +65,7 @@ public class FailoverEndPointOutputConnector2EditPart extends AbstractOutputConn
 	 * @generated
 	 */
 	protected IFigure primaryShape;
-	
+
 	protected IFigure primaryShapeForward;
 	public IFigure primaryShapeReverse;
 	public NodeFigure figure_;
@@ -80,7 +80,7 @@ public class FailoverEndPointOutputConnector2EditPart extends AbstractOutputConn
 	public NodeFigure getNodeFigureOutput() {
 		return figure_;
 	}
-	
+
 	public IFigure createNodeShapeForward() {
 		return primaryShapeForward = new EastPointerFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
@@ -91,7 +91,7 @@ public class FailoverEndPointOutputConnector2EditPart extends AbstractOutputConn
 			};
 		};
 	}
-	
+
 	private void connectToEndpoint() {
 		Map map = ((MediatorFlowMediatorFlowCompartment27EditPart) ((EditPart) (this.getParent()).getChildren().get(2))
 				.getChildren().get(0)).connectorAndEndpointMap;
@@ -101,18 +101,18 @@ public class FailoverEndPointOutputConnector2EditPart extends AbstractOutputConn
 					(AbstractConnectorEditPart) this);
 		}
 	}
-	
-    public IFigure createNodeShapeReverse() {               
-    return primaryShapeReverse = new EastPointerFigure() {
-            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
-                    super.setBounds(rect);
-                    if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-                            connectToEndpoint();
-                    }
-            };
-    };
-    }
-	
+
+	public IFigure createNodeShapeReverse() {
+		return primaryShapeReverse = new EastPointerFigure() {
+			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+				super.setBounds(rect);
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+					connectToEndpoint();
+				}
+			};
+		};
+	}
+
 	/**
 	 * @generated
 	 */

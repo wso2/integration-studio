@@ -221,6 +221,7 @@ public class EsbPaletteFactory {
 		paletteContainer.add(createCalloutMediator25CreationTool());
 		paletteContainer.add(createCloneMediator21CreationTool());
 		paletteContainer.add(createIterateMediator22CreationTool());
+		paletteContainer.add(createForEachMediator7CreationTool());
 
 		// Advanced Mediator Category separator.
 		paletteContainer.add(new PaletteSeparator("Advanced1"));
@@ -391,6 +392,19 @@ public class EsbPaletteFactory {
 		entry.setId("createCloudConnectorOperation6CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(EsbElementTypes
 				.getImageDescriptor(EsbElementTypes.CloudConnectorOperation_3722));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createForEachMediator7CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(Messages.ForEachMediator7CreationTool_title,
+				Messages.ForEachMediator7CreationTool_desc,
+				Collections.singletonList(EsbElementTypes.ForEachMediator_3780));
+		entry.setId("createForEachMediator7CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.ForEachMediator_3780));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}
@@ -1932,7 +1946,7 @@ public class EsbPaletteFactory {
 	public static class NodeToolEntry extends PaletteToolEntry {
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		private final List<IElementType> elementTypes;
 
@@ -1948,7 +1962,7 @@ public class EsbPaletteFactory {
 		}
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		public Tool createTool() {
 			Tool tool = new UnspecifiedTypeCreationTool(elementTypes);
@@ -1958,17 +1972,17 @@ public class EsbPaletteFactory {
 	}
 
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	private static class LinkToolEntry extends ToolEntry {
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		private final List<IElementType> relationshipTypes;
 
 		/**
-		 * @generated
+		 * @generated NOT
 		 */
 		private LinkToolEntry(String title, String description,
 				List<IElementType> relationshipTypes) {

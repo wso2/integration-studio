@@ -40,6 +40,7 @@ import org.apache.synapse.mediators.builtin.CallMediator;
 import org.apache.synapse.mediators.builtin.CalloutMediator;
 import org.apache.synapse.mediators.builtin.DropMediator;
 import org.apache.synapse.mediators.builtin.EnqueueMediator;
+import org.apache.synapse.mediators.builtin.ForEachMediator;
 import org.apache.synapse.mediators.builtin.LogMediator;
 import org.apache.synapse.mediators.builtin.LoopBackMediator;
 import org.apache.synapse.mediators.builtin.PropertyMediator;
@@ -193,6 +194,7 @@ public class EsbDeserializerRegistry {
 		addDeserializer(CloudConnectorOperationExt.class, new CloudConnectorOperationDeserializer());
 		addDeserializer(DataMapperMediator.class, new DataMapperMediatorDeserializer());
 		addDeserializer(InboundEndpoint.class, new InboundEndpointDeserializer());
+		addDeserializer(ForEachMediator.class, new ForEachMediatorDeserializer());
 	}
 	
 	/**

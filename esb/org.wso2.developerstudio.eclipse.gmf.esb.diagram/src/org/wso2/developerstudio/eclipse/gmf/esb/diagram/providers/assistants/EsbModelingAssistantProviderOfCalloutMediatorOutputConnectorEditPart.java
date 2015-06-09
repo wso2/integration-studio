@@ -45,6 +45,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPo
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FastXSLTMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FaultMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ForEachMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HTTPEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HTTPEndPointInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HeaderMediatorInputConnectorEditPart;
@@ -320,6 +321,9 @@ public class EsbModelingAssistantProviderOfCalloutMediatorOutputConnectorEditPar
 		if (targetEditPart instanceof FastXSLTMediatorInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
+		if (targetEditPart instanceof ForEachMediatorInputConnectorEditPart) {
+			types.add(EsbElementTypes.EsbLink_4001);
+		}
 		if (targetEditPart instanceof ProxyInSequenceInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
@@ -456,6 +460,7 @@ public class EsbModelingAssistantProviderOfCalloutMediatorOutputConnectorEditPar
 			types.add(EsbElementTypes.CallMediatorInputConnector_3743);
 			types.add(EsbElementTypes.DataMapperMediatorInputConnector_3762);
 			types.add(EsbElementTypes.FastXSLTMediatorInputConnector_3765);
+			types.add(EsbElementTypes.ForEachMediatorInputConnector_3781);
 			types.add(EsbElementTypes.ProxyInSequenceInputConnector_3731);
 			types.add(EsbElementTypes.MessageInputConnector_3046);
 			types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);

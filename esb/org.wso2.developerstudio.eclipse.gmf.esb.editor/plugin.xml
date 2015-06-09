@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright 2009-2012 WSO2, Inc. (http://wso2.com)
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated esb -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.wso2.developerstudio.eclipse.gmf.esb.presentation.EsbModelWizardID"
+            name="%_UI_EsbModelWizard_label"
+            class="org.wso2.developerstudio.eclipse.gmf.esb.presentation.EsbModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/EsbModelFile.gif">
+         <description>%_UI_EsbModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated esb -->
+      <editor
+            id="org.wso2.developerstudio.eclipse.gmf.esb.presentation.EsbEditorID"
+            name="%_UI_EsbEditor_label"
+            icon="icons/full/obj16/EsbModelFile.gif"
+            extensions="esb"
+            class="org.wso2.developerstudio.eclipse.gmf.esb.presentation.EsbEditor"
+            contributorClass="org.wso2.developerstudio.eclipse.gmf.esb.presentation.EsbActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

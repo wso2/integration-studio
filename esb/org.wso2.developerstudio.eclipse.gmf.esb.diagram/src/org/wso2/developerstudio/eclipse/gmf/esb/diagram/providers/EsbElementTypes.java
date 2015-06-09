@@ -1109,6 +1109,31 @@ public class EsbElementTypes {
 	/**
 	 * @generated
 	 */
+	public static final IElementType ForEachMediator_3780 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediator_3780"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType ForEachMediatorInputConnector_3781 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorInputConnector_3781"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType ForEachMediatorOutputConnector_3782 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorOutputConnector_3782"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType ForEachMediatorTargetOutputConnector_3783 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorTargetOutputConnector_3783"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	public static final IElementType MediatorFlow_3784 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.MediatorFlow_3784"); //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
 	public static final IElementType EntitlementOnAcceptContainer_3755 = getElementType("org.wso2.developerstudio.eclipse.gmf.esb.diagram.EntitlementOnAcceptContainer_3755"); //$NON-NLS-1$
 
 	/**
@@ -2275,6 +2300,17 @@ public class EsbElementTypes {
 			elements.put(FastXSLTMediatorOutputConnector_3766,
 					EsbPackage.eINSTANCE.getFastXSLTMediatorOutputConnector());
 
+			elements.put(ForEachMediator_3780, EsbPackage.eINSTANCE.getForEachMediator());
+
+			elements.put(ForEachMediatorInputConnector_3781, EsbPackage.eINSTANCE.getForEachMediatorInputConnector());
+
+			elements.put(ForEachMediatorOutputConnector_3782, EsbPackage.eINSTANCE.getForEachMediatorOutputConnector());
+
+			elements.put(ForEachMediatorTargetOutputConnector_3783,
+					EsbPackage.eINSTANCE.getForEachMediatorTargetOutputConnector());
+
+			elements.put(MediatorFlow_3784, EsbPackage.eINSTANCE.getMediatorFlow());
+
 			elements.put(EntitlementOnAcceptContainer_3755, EsbPackage.eINSTANCE.getEntitlementOnAcceptContainer());
 
 			elements.put(MediatorFlow_3756, EsbPackage.eINSTANCE.getMediatorFlow());
@@ -2726,6 +2762,11 @@ public class EsbElementTypes {
 			KNOWN_ELEMENT_TYPES.add(FastXSLTMediator_3764);
 			KNOWN_ELEMENT_TYPES.add(FastXSLTMediatorInputConnector_3765);
 			KNOWN_ELEMENT_TYPES.add(FastXSLTMediatorOutputConnector_3766);
+			KNOWN_ELEMENT_TYPES.add(ForEachMediator_3780);
+			KNOWN_ELEMENT_TYPES.add(ForEachMediatorInputConnector_3781);
+			KNOWN_ELEMENT_TYPES.add(ForEachMediatorOutputConnector_3782);
+			KNOWN_ELEMENT_TYPES.add(ForEachMediatorTargetOutputConnector_3783);
+			KNOWN_ELEMENT_TYPES.add(MediatorFlow_3784);
 			KNOWN_ELEMENT_TYPES.add(EntitlementOnAcceptContainer_3755);
 			KNOWN_ELEMENT_TYPES.add(MediatorFlow_3756);
 			KNOWN_ELEMENT_TYPES.add(EntitlementAdviceContainer_3757);
@@ -3306,6 +3347,16 @@ public class EsbElementTypes {
 			return FastXSLTMediatorInputConnector_3765;
 		case FastXSLTMediatorOutputConnectorEditPart.VISUAL_ID:
 			return FastXSLTMediatorOutputConnector_3766;
+		case ForEachMediatorEditPart.VISUAL_ID:
+			return ForEachMediator_3780;
+		case ForEachMediatorInputConnectorEditPart.VISUAL_ID:
+			return ForEachMediatorInputConnector_3781;
+		case ForEachMediatorOutputConnectorEditPart.VISUAL_ID:
+			return ForEachMediatorOutputConnector_3782;
+		case ForEachMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+			return ForEachMediatorTargetOutputConnector_3783;
+		case MediatorFlow30EditPart.VISUAL_ID:
+			return MediatorFlow_3784;
 		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
 			return EntitlementOnAcceptContainer_3755;
 		case MediatorFlow22EditPart.VISUAL_ID:

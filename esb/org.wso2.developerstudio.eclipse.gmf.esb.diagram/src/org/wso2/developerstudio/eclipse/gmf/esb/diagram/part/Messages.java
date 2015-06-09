@@ -333,6 +333,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String ForEachMediator7CreationTool_title;
+
+	/**
+	 * @generated
+	 */
+	public static String ForEachMediator7CreationTool_desc;
+
+	/**
+	 * @generated
+	 */
 	public static String DropMediator1CreationTool_title;
 
 	/**
@@ -1013,6 +1023,11 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String MediatorFlowMediatorFlowCompartment30EditPart_title;
+
+	/**
+	 * @generated
+	 */
 	public static String MediatorFlowMediatorFlowCompartment22EditPart_title;
 
 	/**
@@ -1394,6 +1409,21 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_InboundEndpointOnErrorSequenceOutputConnector_3771_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_ForEachMediatorInputConnector_3781_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_ForEachMediatorOutputConnector_3782_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_ForEachMediatorTargetOutputConnector_3783_outgoinglinks;
 
 	/**
 	 * @generated

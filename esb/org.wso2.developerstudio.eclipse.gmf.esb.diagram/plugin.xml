@@ -238,7 +238,7 @@
       <viewProvider class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Esb"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3729,3489,3486,3487,3608,3491,3008,3492,3033,3034,3493,3121,3122,3581,3582,3583,3584,3585,3494,3010,3534,3011,3012,3531,3535,3536,3495,3018,3019,3496,3036,3037,3497,3039,3040,3498,3042,3499,3043,3044,3500,3732,3733,3502,3503,3049,3050,3504,3052,3053,3505,3055,3056,3748,3749,3750,3751,3752,3753,3754,3506,3058,3059,3507,3061,3062,3508,3064,3065,3509,3067,3068,3510,3070,3071,3511,3073,3074,3512,3076,3077,3513,3079,3080,3514,3082,3083,3515,3085,3086,3539,3728,3516,3100,3101,3517,3103,3104,3133,3603,3604,3605,3518,3106,3107,3618,3619,3519,3109,3110,3606,3607,3520,3115,3116,3521,3118,3119,3522,3124,3125,3523,3127,3128,3640,3641,3524,3130,3131,3525,3112,3113,3132,3526,3588,3589,3590,3591,3592,3593,3594,3595,3596,3597,3598,3599,3600,3601,3602,3620,3621,3622,3623,3624,3625,3626,3627,3628,3629,3630,3631,3632,3633,3634,3635,3636,3637,3638,3639,3680,3681,3682,3683,3684,3685,3686,3687,3688,3609,3021,3022,3610,3030,3031,3611,3088,3090,3097,3692,3693,3694,3695,3612,3092,3093,3660,3661,3662,3613,3095,3096,3098,3674,3675,3676,3689,3690,3691,3709,3710,3711,3716,3717,3718,3719,3720,3721,3722,3723,3724,3736,3737,3738,3739,3740,3741,3742,3743,3744,3745,3746,3761,3762,3763,3764,3765,3766,3755,3756,3757,3758,3759,3760,3734,3735,3528,3537,3538,3586,3587,3488,3530,3731,3045,3046,3047,3013,3014,3015,3016,3614,3615,3616,3617,3642,3643,3644,3645,3646,3647,3648,3649,3650,3651,3652,3777,3696,3697,3698,3699,3778,3653,3654,3655,3656,3657,3658,3659,3779,3712,3713,3714,3725,3726,3727,3663,3664,3665,3666,3667,3668,3669,3670,3671,3730,3672,3673,3747,3677,3678,3679,3715,3701,3767,3768,3769,3770,3771,3772,3773,3774,3775,3776"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3729,3489,3486,3487,3608,3491,3008,3492,3033,3034,3493,3121,3122,3581,3582,3583,3584,3585,3494,3010,3534,3011,3012,3531,3535,3536,3495,3018,3019,3496,3036,3037,3497,3039,3040,3498,3042,3499,3043,3044,3500,3732,3733,3502,3503,3049,3050,3504,3052,3053,3505,3055,3056,3748,3749,3750,3751,3752,3753,3754,3506,3058,3059,3507,3061,3062,3508,3064,3065,3509,3067,3068,3510,3070,3071,3511,3073,3074,3512,3076,3077,3513,3079,3080,3514,3082,3083,3515,3085,3086,3539,3728,3516,3100,3101,3517,3103,3104,3133,3603,3604,3605,3518,3106,3107,3618,3619,3519,3109,3110,3606,3607,3520,3115,3116,3521,3118,3119,3522,3124,3125,3523,3127,3128,3640,3641,3524,3130,3131,3525,3112,3113,3132,3526,3588,3589,3590,3591,3592,3593,3594,3595,3596,3597,3598,3599,3600,3601,3602,3620,3621,3622,3623,3624,3625,3626,3627,3628,3629,3630,3631,3632,3633,3634,3635,3636,3637,3638,3639,3680,3681,3682,3683,3684,3685,3686,3687,3688,3609,3021,3022,3610,3030,3031,3611,3088,3090,3097,3692,3693,3694,3695,3612,3092,3093,3660,3661,3662,3613,3095,3096,3098,3674,3675,3676,3689,3690,3691,3709,3710,3711,3716,3717,3718,3719,3720,3721,3722,3723,3724,3736,3737,3738,3739,3740,3741,3742,3743,3744,3745,3746,3761,3762,3763,3764,3765,3766,3780,3781,3782,3783,3784,3755,3756,3757,3758,3759,3760,3734,3735,3528,3537,3538,3586,3587,3488,3530,3731,3045,3046,3047,3013,3014,3015,3016,3614,3615,3616,3617,3642,3643,3644,3645,3646,3647,3648,3649,3650,3651,3652,3777,3696,3697,3698,3699,3778,3653,3654,3655,3656,3657,3658,3659,3779,3712,3713,3714,3725,3726,3727,3663,3664,3665,3666,3667,3668,3669,3670,3671,3730,3672,3673,3747,3677,3678,3679,3715,3701,3767,3768,3769,3770,3771,3772,3773,3774,3775,3776"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -251,16 +251,16 @@
             <method name="getType()" value="Esb"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,3001,3002,3003,3729,3489,3486,3487,3608,3491,3008,3492,3033,3034,3493,3121,3122,3581,3582,3583,3584,3585,3494,3010,3534,3011,3012,3531,3535,3536,3495,3018,3019,3496,3036,3037,3497,3039,3040,3498,3042,3499,3043,3044,3500,3732,3733,3502,3503,3049,3050,3504,3052,3053,3505,3055,3056,3748,3749,3750,3751,3752,3753,3754,3506,3058,3059,3507,3061,3062,3508,3064,3065,3509,3067,3068,3510,3070,3071,3511,3073,3074,3512,3076,3077,3513,3079,3080,3514,3082,3083,3515,3085,3086,3539,3728,3516,3100,3101,3517,3103,3104,3133,3603,3604,3605,3518,3106,3107,3618,3619,3519,3109,3110,3606,3607,3520,3115,3116,3521,3118,3119,3522,3124,3125,3523,3127,3128,3640,3641,3524,3130,3131,3525,3112,3113,3132,3526,3588,3589,3590,3591,3592,3593,3594,3595,3596,3597,3598,3599,3600,3601,3602,3620,3621,3622,3623,3624,3625,3626,3627,3628,3629,3630,3631,3632,3633,3634,3635,3636,3637,3638,3639,3680,3681,3682,3683,3684,3685,3686,3687,3688,3609,3021,3022,3610,3030,3031,3611,3088,3090,3097,3692,3693,3694,3695,3612,3092,3093,3660,3661,3662,3613,3095,3096,3098,3674,3675,3676,3689,3690,3691,3709,3710,3711,3716,3717,3718,3719,3720,3721,3722,3723,3724,3736,3737,3738,3739,3740,3741,3742,3743,3744,3745,3746,3761,3762,3763,3764,3765,3766,3755,3756,3757,3758,3759,3760,3734,3735,3528,3537,3538,3586,3587,3488,3530,3731,3045,3046,3047,3013,3014,3015,3016,3614,3615,3616,3617,3642,3643,3644,3645,3646,3647,3648,3649,3650,3651,3652,3777,3696,3697,3698,3699,3778,3653,3654,3655,3656,3657,3658,3659,3779,3712,3713,3714,3725,3726,3727,3663,3664,3665,3666,3667,3668,3669,3670,3671,3730,3672,3673,3747,3677,3678,3679,3715,3701,3767,3768,3769,3770,3771,3772,3773,3774,3775,3776"/>
+            <method name="getType()" value="2001,3001,3002,3003,3729,3489,3486,3487,3608,3491,3008,3492,3033,3034,3493,3121,3122,3581,3582,3583,3584,3585,3494,3010,3534,3011,3012,3531,3535,3536,3495,3018,3019,3496,3036,3037,3497,3039,3040,3498,3042,3499,3043,3044,3500,3732,3733,3502,3503,3049,3050,3504,3052,3053,3505,3055,3056,3748,3749,3750,3751,3752,3753,3754,3506,3058,3059,3507,3061,3062,3508,3064,3065,3509,3067,3068,3510,3070,3071,3511,3073,3074,3512,3076,3077,3513,3079,3080,3514,3082,3083,3515,3085,3086,3539,3728,3516,3100,3101,3517,3103,3104,3133,3603,3604,3605,3518,3106,3107,3618,3619,3519,3109,3110,3606,3607,3520,3115,3116,3521,3118,3119,3522,3124,3125,3523,3127,3128,3640,3641,3524,3130,3131,3525,3112,3113,3132,3526,3588,3589,3590,3591,3592,3593,3594,3595,3596,3597,3598,3599,3600,3601,3602,3620,3621,3622,3623,3624,3625,3626,3627,3628,3629,3630,3631,3632,3633,3634,3635,3636,3637,3638,3639,3680,3681,3682,3683,3684,3685,3686,3687,3688,3609,3021,3022,3610,3030,3031,3611,3088,3090,3097,3692,3693,3694,3695,3612,3092,3093,3660,3661,3662,3613,3095,3096,3098,3674,3675,3676,3689,3690,3691,3709,3710,3711,3716,3717,3718,3719,3720,3721,3722,3723,3724,3736,3737,3738,3739,3740,3741,3742,3743,3744,3745,3746,3761,3762,3763,3764,3765,3766,3780,3781,3782,3783,3784,3755,3756,3757,3758,3759,3760,3734,3735,3528,3537,3538,3586,3587,3488,3530,3731,3045,3046,3047,3013,3014,3015,3016,3614,3615,3616,3617,3642,3643,3644,3645,3646,3647,3648,3649,3650,3651,3652,3777,3696,3697,3698,3699,3778,3653,3654,3655,3656,3657,3658,3659,3779,3712,3713,3714,3725,3726,3727,3663,3664,3665,3666,3667,3668,3669,3670,3671,3730,3672,3673,3747,3677,3678,3679,3715,3701,3767,3768,3769,3770,3771,3772,3773,3774,3775,3776"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5003,5166,5167,5128,5129,5168,5169,5170,5132,5171,5134,5173,5174,5175,5176,5177,5178,5179,5180,5181,5183,5144,5145,5146,5184,5185,5186,5187,5149,5188,5189,5190,5191,5192,5193,5210,5194,5195,5196,5201,5199,5202,5203,5204,5165,5205,5200,5206,5207,5197,5198,5208,5209,5211,5212,5160,5161,5162,5163,5164"/>
+            <method name="getType()" value="5003,5166,5167,5128,5129,5168,5169,5170,5132,5171,5134,5173,5174,5175,5176,5177,5178,5179,5180,5181,5183,5144,5145,5146,5184,5185,5186,5187,5149,5188,5189,5190,5191,5192,5193,5210,5194,5195,5196,5201,5199,5202,5203,5204,5165,5205,5200,5206,5207,5197,5198,5208,5209,5211,5212,5213,5160,5161,5162,5163,5164"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
-            <method name="getType()" value="7001,7034,7030,7022,7015,7048,7046,7032,7036,7033,7040,7016,7037,7038,7039,7047,7049,7050,7051,7017,7023,7031,7019,7035,7041,7054,7055,7056,7043,7042,7044,7045,7052,7053"/>
+            <method name="getType()" value="7001,7034,7030,7022,7015,7048,7046,7032,7036,7033,7040,7016,7037,7038,7039,7047,7057,7049,7050,7051,7017,7023,7031,7019,7035,7041,7054,7055,7056,7043,7042,7044,7045,7052,7053"/>
          </object>
          <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
       </editpartProvider>
@@ -1493,6 +1493,31 @@
          <Priority name="Lowest"/>
          <object class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FastXSLTMediatorOutputConnectorEditPart" id="FastXSLTMediatorOutputConnector_3766"/>
          <context elements="FastXSLTMediatorOutputConnector_3766"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.assistants.EsbModelingAssistantProviderOfForEachMediatorEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ForEachMediatorEditPart" id="ForEachMediator_3780"/>
+         <context elements="ForEachMediator_3780"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.assistants.EsbModelingAssistantProviderOfForEachMediatorInputConnectorEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ForEachMediatorInputConnectorEditPart" id="ForEachMediatorInputConnector_3781"/>
+         <context elements="ForEachMediatorInputConnector_3781"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.assistants.EsbModelingAssistantProviderOfForEachMediatorOutputConnectorEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ForEachMediatorOutputConnectorEditPart" id="ForEachMediatorOutputConnector_3782"/>
+         <context elements="ForEachMediatorOutputConnector_3782"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.assistants.EsbModelingAssistantProviderOfForEachMediatorTargetOutputConnectorEditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ForEachMediatorTargetOutputConnectorEditPart" id="ForEachMediatorTargetOutputConnector_3783"/>
+         <context elements="ForEachMediatorTargetOutputConnector_3783"/>
+      </modelingAssistantProvider>
+            <modelingAssistantProvider class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.assistants.EsbModelingAssistantProviderOfMediatorFlow30EditPart">
+         <Priority name="Lowest"/>
+         <object class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.MediatorFlow30EditPart" id="MediatorFlow_3784"/>
+         <context elements="MediatorFlow_3784"/>
       </modelingAssistantProvider>
             <modelingAssistantProvider class="org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.assistants.EsbModelingAssistantProviderOfEntitlementOnAcceptContainerEditPart">
          <Priority name="Lowest"/>
@@ -4344,6 +4369,55 @@
       </metamodel>
       <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/esb">
          <metamodelType
+               id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediator_3780"
+               name="%metatype.name.ForEachMediator_3780"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ForEachMediator"
+               edithelper="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers.ForEachMediatorEditHelper">
+            <param name="semanticHint" value="3780"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/esb">
+         <metamodelType
+               id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorInputConnector_3781"
+               name="%metatype.name.ForEachMediatorInputConnector_3781"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ForEachMediatorInputConnector"
+               edithelper="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers.ForEachMediatorInputConnectorEditHelper">
+            <param name="semanticHint" value="3781"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/esb">
+         <metamodelType
+               id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorOutputConnector_3782"
+               name="%metatype.name.ForEachMediatorOutputConnector_3782"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ForEachMediatorOutputConnector"
+               edithelper="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers.ForEachMediatorOutputConnectorEditHelper">
+            <param name="semanticHint" value="3782"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/esb">
+         <metamodelType
+               id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorTargetOutputConnector_3783"
+               name="%metatype.name.ForEachMediatorTargetOutputConnector_3783"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ForEachMediatorTargetOutputConnector"
+               edithelper="org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.helpers.ForEachMediatorTargetOutputConnectorEditHelper">
+            <param name="semanticHint" value="3783"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/esb">
+         <specializationType
+               id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.MediatorFlow_3784"
+               name="%metatype.name.MediatorFlow_3784"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.MediatorFlow_3608"/>
+            <param name="semanticHint" value="3784"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http:///org/wso2/developerstudio/eclipse/gmf/esb">
+         <metamodelType
                id="org.wso2.developerstudio.eclipse.gmf.esb.diagram.EntitlementOnAcceptContainer_3755"
                name="%metatype.name.EntitlementOnAcceptContainer_3755"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -5422,6 +5496,11 @@
          <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.FastXSLTMediator_3764"/>
          <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.FastXSLTMediatorInputConnector_3765"/>
          <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.FastXSLTMediatorOutputConnector_3766"/>
+         <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediator_3780"/>
+         <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorInputConnector_3781"/>
+         <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorOutputConnector_3782"/>
+         <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.ForEachMediatorTargetOutputConnector_3783"/>
+         <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.MediatorFlow_3784"/>
          <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.EntitlementOnAcceptContainer_3755"/>
          <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.MediatorFlow_3756"/>
          <elementType ref="org.wso2.developerstudio.eclipse.gmf.esb.diagram.EntitlementAdviceContainer_3757"/>

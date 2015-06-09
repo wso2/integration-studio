@@ -65,7 +65,7 @@ public class RecipientListEndPointOutputConnector2EditPart extends AbstractOutpu
 	 * @generated
 	 */
 	protected IFigure primaryShape;
-	
+
 	protected IFigure primaryShapeForward;
 	public IFigure primaryShapeReverse;
 	public NodeFigure figure_;
@@ -76,11 +76,11 @@ public class RecipientListEndPointOutputConnector2EditPart extends AbstractOutpu
 	public RecipientListEndPointOutputConnector2EditPart(View view) {
 		super(view);
 	}
-	
+
 	public NodeFigure getNodeFigureOutput() {
 		return figure_;
 	}
-	
+
 	public IFigure createNodeShapeForward() {
 		return primaryShapeForward = new EastPointerFigure() {
 			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
@@ -91,7 +91,7 @@ public class RecipientListEndPointOutputConnector2EditPart extends AbstractOutpu
 			};
 		};
 	}
-	
+
 	private void connectToEndpoint() {
 		Map map = ((MediatorFlowMediatorFlowCompartment28EditPart) ((EditPart) (this.getParent()).getChildren().get(1))
 				.getChildren().get(0)).connectorAndEndpointMap;
@@ -101,17 +101,17 @@ public class RecipientListEndPointOutputConnector2EditPart extends AbstractOutpu
 					(AbstractConnectorEditPart) this);
 		}
 	}
-	
-    public IFigure createNodeShapeReverse() {               
-    return primaryShapeReverse = new EastPointerFigure() {
-            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
-                    super.setBounds(rect);
-                    if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-                            connectToEndpoint();
-                    }
-            };
-    };
-    }
+
+	public IFigure createNodeShapeReverse() {
+		return primaryShapeReverse = new EastPointerFigure() {
+			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+				super.setBounds(rect);
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+					connectToEndpoint();
+				}
+			};
+		};
+	}
 
 	/**
 	 * @generated
@@ -596,7 +596,7 @@ public class RecipientListEndPointOutputConnector2EditPart extends AbstractOutpu
 			});
 			createContents();
 		}
-		
+
 		public void createContents() {
 			GridData constraintImageRectangle11 = new GridData();
 			constraintImageRectangle11.verticalAlignment = GridData.FILL;

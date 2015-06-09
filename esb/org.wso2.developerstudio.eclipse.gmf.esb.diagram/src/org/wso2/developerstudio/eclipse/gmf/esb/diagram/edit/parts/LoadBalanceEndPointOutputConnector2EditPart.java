@@ -66,7 +66,7 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractOutputC
 	 * @generated
 	 */
 	protected IFigure primaryShape;
-	
+
 	protected IFigure primaryShapeForward;
 	public IFigure primaryShapeReverse;
 	public NodeFigure figure_;
@@ -77,7 +77,7 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractOutputC
 	public LoadBalanceEndPointOutputConnector2EditPart(View view) {
 		super(view);
 	}
-	
+
 	public NodeFigure getNodeFigureOutput() {
 		return figure_;
 	}
@@ -92,7 +92,7 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractOutputC
 			};
 		};
 	}
-	
+
 	private void connectToEndpoint() {
 		Map map = ((MediatorFlowMediatorFlowCompartment29EditPart) ((EditPart) (this.getParent()).getChildren().get(2))
 				.getChildren().get(0)).connectorAndEndpointMap;
@@ -102,18 +102,17 @@ public class LoadBalanceEndPointOutputConnector2EditPart extends AbstractOutputC
 					(AbstractConnectorEditPart) this);
 		}
 	}
-	
-    public IFigure createNodeShapeReverse() {               
-    return primaryShapeReverse = new EastPointerFigure() {
-            public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
-                    super.setBounds(rect);
-                    if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
-                            connectToEndpoint();
-                    }
-            };
-    };
-    }
 
+	public IFigure createNodeShapeReverse() {
+		return primaryShapeReverse = new EastPointerFigure() {
+			public void setBounds(org.eclipse.draw2d.geometry.Rectangle rect) {
+				super.setBounds(rect);
+				if (this.getBounds().getLocation().x != 0 && this.getBounds().getLocation().y != 0) {
+					connectToEndpoint();
+				}
+			};
+		};
+	}
 
 	/**
 	 * @generated

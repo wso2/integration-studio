@@ -52,6 +52,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FailoverEndPo
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FastXSLTMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FaultMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.FilterMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ForEachMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HTTPEndpointEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.HeaderMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.IterateMediatorEditPart;
@@ -199,6 +200,7 @@ public class MediatorFlowMediatorFlowCompartment29CanonicalEditPolicy extends Ca
 		case CallMediatorEditPart.VISUAL_ID:
 		case DataMapperMediatorEditPart.VISUAL_ID:
 		case FastXSLTMediatorEditPart.VISUAL_ID:
+		case ForEachMediatorEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

@@ -2367,6 +2367,26 @@
           xsi:type="gmfgraph:Rectangle"
           name="InboundEndpointOnErrorSequenceContainerFigure"/>
     </descriptors>
+    <descriptors
+        name="ForEachMediatorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:CustomFigure"
+          name="ForEachMediatorGraphicalFigure"
+          qualifiedClassName="org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape">
+        <foregroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="230"
+            green="230"
+            blue="230"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="ForEachMediatorPropertyValue"
+            text="&lt;...>"/>
+      </actualFigure>
+      <accessors
+          accessor="getFigureForEachMediatorPropertyValue"
+          figure="//@figures.0/@descriptors.117/@actualFigure/@children.0"/>
+    </descriptors>
   </figures>
   <nodes
       name="EsbServer"
@@ -2790,6 +2810,21 @@
       affixedParentSide="EAST"/>
   <nodes
       name="CloneMediatorTargetOutputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="EAST"/>
+  <nodes
+      name="ForEachMediator"
+      figure="ForEachMediatorFigure"/>
+  <nodes
+      name="ForEachMediatorInputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="WEST"/>
+  <nodes
+      name="ForEachMediatorOutputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="EAST"/>
+  <nodes
+      name="ForEachMediatorTargetOutputConnector"
       figure="EastPointerFigure"
       affixedParentSide="EAST"/>
   <nodes
@@ -3580,6 +3615,11 @@
       figure="CacheMediatorFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.39/@accessors.0"/>
+  <labels
+      name="ForEachMediatorId"
+      figure="ForEachMediatorFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.117/@accessors.0"/>
   <labels
       name="IterateMediatorId"
       figure="IterateMediatorFigure"

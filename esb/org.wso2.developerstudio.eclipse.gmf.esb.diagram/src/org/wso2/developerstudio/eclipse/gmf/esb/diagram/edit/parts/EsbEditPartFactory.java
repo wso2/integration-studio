@@ -920,6 +920,24 @@ public class EsbEditPartFactory implements EditPartFactory {
 			case FastXSLTMediatorOutputConnectorEditPart.VISUAL_ID:
 				return new FastXSLTMediatorOutputConnectorEditPart(view);
 
+			case ForEachMediatorEditPart.VISUAL_ID:
+				return new ForEachMediatorEditPart(view);
+
+			case ForEachMediatorDescriptionEditPart.VISUAL_ID:
+				return new ForEachMediatorDescriptionEditPart(view);
+
+			case ForEachMediatorInputConnectorEditPart.VISUAL_ID:
+				return new ForEachMediatorInputConnectorEditPart(view);
+
+			case ForEachMediatorOutputConnectorEditPart.VISUAL_ID:
+				return new ForEachMediatorOutputConnectorEditPart(view);
+
+			case ForEachMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+				return new ForEachMediatorTargetOutputConnectorEditPart(view);
+
+			case MediatorFlow30EditPart.VISUAL_ID:
+				return new MediatorFlow30EditPart(view);
+
 			case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
 				return new EntitlementOnAcceptContainerEditPart(view);
 
@@ -1240,6 +1258,9 @@ public class EsbEditPartFactory implements EditPartFactory {
 
 			case MediatorFlowMediatorFlowCompartment20EditPart.VISUAL_ID:
 				return new MediatorFlowMediatorFlowCompartment20EditPart(view);
+
+			case MediatorFlowMediatorFlowCompartment30EditPart.VISUAL_ID:
+				return new MediatorFlowMediatorFlowCompartment30EditPart(view);
 
 			case MediatorFlowMediatorFlowCompartment22EditPart.VISUAL_ID:
 				return new MediatorFlowMediatorFlowCompartment22EditPart(view);

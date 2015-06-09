@@ -33,7 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFl
 public class MediatorFlow28EditPart extends ShapeNodeEditPart {
 
 	//RecipientListEndPoint2EditPart
-	
+
 	/**
 	 * @generated
 	 */
@@ -191,7 +191,7 @@ public class MediatorFlow28EditPart extends ShapeNodeEditPart {
 			((Shape) primaryShape).setLineStyle(style);
 		}
 	}
-	
+
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
 		if (editPart instanceof ResizableCompartmentEditPart) {
 			// Compartment should be added to the primary shape.
@@ -224,7 +224,7 @@ public class MediatorFlow28EditPart extends ShapeNodeEditPart {
 			this.setLineWidth(1);
 			this.setOutline(true);
 		}
-		
+
 		public void add(IFigure figure, Object constraint, int index) {
 			if (figure instanceof BorderedNodeFigure) {
 				GridData layoutData = new GridData();
@@ -238,7 +238,7 @@ public class MediatorFlow28EditPart extends ShapeNodeEditPart {
 			}
 		}
 	}
-	
+
 	public boolean isSelectable() {
 		return false;
 	}

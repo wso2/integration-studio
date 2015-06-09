@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.FailoverEn
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.FastXSLTMediatorCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.FaultMediatorCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.FilterMediatorCreateCommand;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.ForEachMediatorCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.HTTPEndpointCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.HeaderMediatorCreateCommand;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.commands.IterateMediatorCreateCommand;
@@ -263,6 +264,9 @@ public class MediatorFlowMediatorFlowCompartment19ItemSemanticEditPolicy extends
 		}
 		if (EsbElementTypes.FastXSLTMediator_3764 == req.getElementType()) {
 			return getGEFWrapper(new FastXSLTMediatorCreateCommand(req));
+		}
+		if (EsbElementTypes.ForEachMediator_3780 == req.getElementType()) {
+			return getGEFWrapper(new ForEachMediatorCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

@@ -21,18 +21,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor;
@@ -90,6 +83,7 @@ public class MessageProcessorItemProvider
 			addQuartzConfigFilePathPropertyDescriptor(object);
 			addCronExpressionPropertyDescriptor(object);
 			addPinnedServersPropertyDescriptor(object);
+			addBindProcessorPropertyDescriptor(object);
 			break;
 		}
 		case MSG_SAMPLING: {
@@ -577,6 +571,28 @@ public class MessageProcessorItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Bind Processor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void addBindProcessorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageProcessor_bindProcessor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MessageProcessor_bindProcessor_feature", "_UI_MessageProcessor_type"),
+				 EsbPackage.Literals.MESSAGE_PROCESSOR__BIND_PROCESSOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -659,6 +675,7 @@ public class MessageProcessorItemProvider
 			case EsbPackage.MESSAGE_PROCESSOR__CRON_EXPRESSION:
 			case EsbPackage.MESSAGE_PROCESSOR__PINNED_SERVERS:
 			case EsbPackage.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES:
+			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.MESSAGE_PROCESSOR__ENDPOINT_NAME:

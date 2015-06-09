@@ -1,5 +1,5 @@
 /*
- * Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012-2015 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -278,6 +278,15 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 				} else {
 					Boolean isActive = false;
 					messageProcessorPrameeters.put("is.active", isActive.toString());
+				}
+			}
+			if (StringUtils.isNotBlank(messageProcessorModel.getBindProcessorToServer())) {
+				if (messageProcessorModel.getBindProcessorToServer().equals("true")) {
+					Boolean isBind = true;
+					messageProcessorPrameeters.put("bind.processor.server", isBind.toString());
+				} else {
+					Boolean isBind = false;
+					messageProcessorPrameeters.put("bind.processor.server", isBind.toString());
 				}
 			}
 			if (StringUtils.isNotBlank(messageProcessorModel.getNonRetryHttpStatusCodes())) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) WSO2, Inc. (http://wso2.com)
+ * Copyright (c) 2012-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,11 @@ public class MessageProcessorTransformer {
 					parameters.put("is.active", isActive.toString());
 				}
 			}
-
+			
+			if(StringUtils.isNotBlank(String.valueOf(model.isBindProcessor()))){
+				    parameters.put("bind.processor.server", String.valueOf(model.isBindProcessor()));
+			}
+			
 			parameters.put("interval", ((Long) model.getForwardingInterval()).toString());
 			parameters.put("client.retry.interval", ((Long) model.getRetryInterval()).toString());
 			parameters.put("max.delivery.attempts", ((Integer) model.getMaxDeliveryAttempts()).toString());

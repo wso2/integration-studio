@@ -70,6 +70,9 @@
 				type="resource+text"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
 				controlData="select=single;modify=readonly;registry.selection.type=resource">Fault sequence name</data>	
+			<data modelProperty="Forwarding_processor.Bind_processor_server" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messageprocessor.provider.BindProcessorList">Bind Processor to Server </data>			
 			<!-- Forwarding_Processor : end -->
 
 

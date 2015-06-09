@@ -63,6 +63,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 
 		addNamePropertyDescriptor(object);
 		addTypePropertyDescriptor(object);
+		addSuspendPropertyDescriptor(object);
 
 		switch (inboundEndpoint.getType()) {
 		case HTTP:
@@ -833,6 +834,28 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 true,
 				 null,
 				 "Parameters",
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Suspend feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSuspendPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_InboundEndpoint_suspend_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_InboundEndpoint_suspend_feature", "_UI_InboundEndpoint_type"),
+				 EsbPackage.Literals.INBOUND_ENDPOINT__SUSPEND,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
 				 null));
 	}
 
@@ -1876,6 +1899,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_PORT:
 			case EsbPackage.INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE:
 			case EsbPackage.INBOUND_ENDPOINT__ENABLE_SSL:
+			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.INBOUND_ENDPOINT__SEQUENCE_INPUT_CONNECTOR:

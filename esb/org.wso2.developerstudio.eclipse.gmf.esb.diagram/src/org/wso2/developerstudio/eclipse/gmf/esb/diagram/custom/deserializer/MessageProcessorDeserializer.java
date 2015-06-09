@@ -16,27 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer;
 
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_TYPE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_NAME;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_STORE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__RETRY_INTERVAL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MAX_DELIVERY_ATTEMPTS;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CLIENT_REPOSITORY;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__AXIS2_CONFIGURATION;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__REPLY_SEQUENCE_NAME;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FAULT_SEQUENCE_NAME;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__QUARTZ_CONFIG_FILE_PATH;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__CRON_EXPRESSION;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PINNED_SERVERS;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SEQUENCE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__MESSAGE_PROCESSOR_PROVIDER;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__FORWARDING_INTERVAL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__PROCESSOR_STATE;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__ENDPOINT_NAME;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_INTERVAL;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__SAMPLING_CONCURRENCY;
-import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES;
-
+import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -185,6 +165,14 @@ AbstractEsbNodeDeserializer<MessageProcessor, org.wso2.developerstudio.eclipse.g
 								executeSetValueCommand(MESSAGE_PROCESSOR__PROCESSOR_STATE,
 										ProcessorState.DEACTIVATE);
 							}
+						}
+					}
+					if(parameters.containsKey("bind.processor.server")){
+						Object value = parameters.get("bind.processor.server");
+						if("true".equals(value)){
+							executeSetValueCommand(MESSAGE_PROCESSOR__BIND_PROCESSOR, true);
+						}else{
+							executeSetValueCommand(MESSAGE_PROCESSOR__BIND_PROCESSOR, false);
 						}
 					}
 					if (parameters.containsKey("non.retry.status.codes")) {

@@ -101,8 +101,10 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			throw new Exception("On Error Sequence cannot be empty. Please include an On Error Sequence");
 		}
 
-		inboundEndpoint.setSuspend(false);
-
+		if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSuspend()))) {
+			inboundEndpoint.setSuspend(visualInboundEndpoint.isSuspend());
+		}
+		
 		if (visualInboundEndpoint.getType().getName().equals(CUSTOM)) {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
 				inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());

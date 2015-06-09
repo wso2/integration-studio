@@ -71,6 +71,7 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.DeveloperStudioProvi
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getPinnedServers <em>Pinned Servers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorImpl#isBindProcessor <em>Bind Processor</em>}</li>
  * </ul>
  * </p>
  *
@@ -446,6 +447,26 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * @ordered
 	 */
 	protected EList<MessageProcessorParameter> parameters;
+
+	/**
+	 * The default value of the '{@link #isBindProcessor() <em>Bind Processor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBindProcessor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean BIND_PROCESSOR_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isBindProcessor() <em>Bind Processor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isBindProcessor()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean bindProcessor = BIND_PROCESSOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1025,6 +1046,27 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isBindProcessor() {
+		return bindProcessor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBindProcessor(boolean newBindProcessor) {
+		boolean oldBindProcessor = bindProcessor;
+		bindProcessor = newBindProcessor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR, oldBindProcessor, bindProcessor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -1092,6 +1134,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return getNonRetryHttpStatusCodes();
 			case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
 				return getParameters();
+			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
+				return isBindProcessor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1169,6 +1213,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends MessageProcessorParameter>)newValue);
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
+				setBindProcessor((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1244,6 +1291,9 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 			case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
 				getParameters().clear();
 				return;
+			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
+				setBindProcessor(BIND_PROCESSOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1298,6 +1348,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 				return NON_RETRY_HTTP_STATUS_CODES_EDEFAULT == null ? nonRetryHttpStatusCodes != null : !NON_RETRY_HTTP_STATUS_CODES_EDEFAULT.equals(nonRetryHttpStatusCodes);
 			case EsbPackage.MESSAGE_PROCESSOR__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
+			case EsbPackage.MESSAGE_PROCESSOR__BIND_PROCESSOR:
+				return bindProcessor != BIND_PROCESSOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1344,6 +1396,8 @@ public class MessageProcessorImpl extends EsbElementImpl implements MessageProce
 		result.append(pinnedServers);
 		result.append(", nonRetryHttpStatusCodes: ");
 		result.append(nonRetryHttpStatusCodes);
+		result.append(", bindProcessor: ");
+		result.append(bindProcessor);
 		result.append(')');
 		return result.toString();
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012-2015 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,6 +63,7 @@ public class MessageProcessorModel extends ProjectDataModel {
 	private String classFQN;
 	private String endpointName;
 	private String processorState;
+	private String bindProcessorToServer;
 	private String nonRetryHttpStatusCodes;
 	private int forwardingInterval;
 	private int samplingInterval;
@@ -231,6 +232,15 @@ public class MessageProcessorModel extends ProjectDataModel {
 	public void setProcessorState(String processorState) {
 		this.processorState = processorState;
 	}
+	
+	public String getBindProcessorToServer(){
+		return bindProcessorToServer;
+	}
+	
+	public void setBindProcessorToServer(String bindProcessorToServer){
+		this.bindProcessorToServer = bindProcessorToServer;
+	}
+	
 
 	public int getForwardingInterval() {
 		return forwardingInterval;
@@ -333,6 +343,8 @@ public class MessageProcessorModel extends ProjectDataModel {
 				modelPropertyValue = getSamplingConcurrency();
 			} else if (key.equals("Forwarding_processor.non_retry_http_status_codes")) {
 				modelPropertyValue = getNonRetryHttpStatusCodes();
+			} else if(key.equals("Forwarding_processor.Bind_processor_server")){
+				modelPropertyValue = getBindProcessorToServer();
 			}
 		}
 
@@ -442,7 +454,9 @@ public class MessageProcessorModel extends ProjectDataModel {
 			}
 		} else if (key.equals("Forwarding_processor.non_retry_http_status_codes")) {
 			setNonRetryHttpStatusCode(data.toString());
-		}
+		} else if (key.equals("Forwarding_processor.Bind_processor_server")) {
+			setBindProcessorToServer(data.toString());
+		} 
 
 		return returnValue;
 	}

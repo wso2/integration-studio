@@ -2046,6 +2046,7 @@
       <genFeatures notify="false" createChild="false" propertyCategory="Additional Parameters"
           propertyDescription="Message Processor Parameters" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//MessageProcessor/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//MessageProcessor/bindProcessor"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//APIHandler">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIHandler/className"/>
@@ -2189,6 +2190,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/enableSSL"/>
       <genFeatures children="true" createChild="true" propertyCategory="Parameters"
           propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//InboundEndpoint/serviceParameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpoint/suspend"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//InboundEndpointParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//InboundEndpointParameter/name"/>

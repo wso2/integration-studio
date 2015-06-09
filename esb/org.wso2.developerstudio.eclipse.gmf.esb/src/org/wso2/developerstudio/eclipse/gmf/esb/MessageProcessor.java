@@ -46,6 +46,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getPinnedServers <em>Pinned Servers</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getNonRetryHttpStatusCodes <em>Non Retry Http Status Codes</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor <em>Bind Processor</em>}</li>
  * </ul>
  * </p>
  *
@@ -598,5 +599,31 @@ public interface MessageProcessor extends EsbElement {
 	 * @generated
 	 */
 	EList<MessageProcessorParameter> getParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Bind Processor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Bind Processor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Bind Processor</em>' attribute.
+	 * @see #setBindProcessor(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageProcessor_BindProcessor()
+	 * @model
+	 * @generated
+	 */
+	boolean isBindProcessor();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor <em>Bind Processor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Bind Processor</em>' attribute.
+	 * @see #isBindProcessor()
+	 * @generated
+	 */
+	void setBindProcessor(boolean value);
 
 } // MessageProcessor

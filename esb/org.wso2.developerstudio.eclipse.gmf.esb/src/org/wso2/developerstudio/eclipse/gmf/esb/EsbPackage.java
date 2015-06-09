@@ -19728,13 +19728,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_PROCESSOR__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
+	 * The feature id for the '<em><b>Bind Processor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_PROCESSOR__BIND_PROCESSOR = ESB_ELEMENT_FEATURE_COUNT + 21;
+
+	/**
 	 * The number of structural features of the '<em>Message Processor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_PROCESSOR_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 21;
+	int MESSAGE_PROCESSOR_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 22;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIHandlerImpl <em>API Handler</em>}' class.
@@ -21237,13 +21246,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT__SERVICE_PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 87;
 
 	/**
+	 * The feature id for the '<em><b>Suspend</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__SUSPEND = ESB_ELEMENT_FEATURE_COUNT + 88;
+
+	/**
 	 * The number of structural features of the '<em>Inbound Endpoint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 88;
+	int INBOUND_ENDPOINT_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 89;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.
@@ -29129,6 +29147,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getMessageProcessor_Parameters();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor <em>Bind Processor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bind Processor</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessor#isBindProcessor()
+	 * @see #getMessageProcessor()
+	 * @generated
+	 */
+	EAttribute getMessageProcessor_BindProcessor();
+
+	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIHandler <em>API Handler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30014,6 +30043,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getInboundEndpoint_ServiceParameters();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isSuspend <em>Suspend</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Suspend</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isSuspend()
+	 * @see #getInboundEndpoint()
+	 * @generated
+	 */
+	EAttribute getInboundEndpoint_Suspend();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointParameter <em>Inbound Endpoint Parameter</em>}'.
@@ -43429,6 +43469,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EReference MESSAGE_PROCESSOR__PARAMETERS = eINSTANCE.getMessageProcessor_Parameters();
 
 		/**
+		 * The meta object literal for the '<em><b>Bind Processor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_PROCESSOR__BIND_PROCESSOR = eINSTANCE.getMessageProcessor_BindProcessor();
+
+		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIHandlerImpl <em>API Handler</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -44113,6 +44161,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference INBOUND_ENDPOINT__SERVICE_PARAMETERS = eINSTANCE.getInboundEndpoint_ServiceParameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Suspend</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INBOUND_ENDPOINT__SUSPEND = eINSTANCE.getInboundEndpoint_Suspend();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointParameterImpl <em>Inbound Endpoint Parameter</em>}' class.

@@ -114,6 +114,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isEnableSSL <em>Enable SSL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#getServiceParameters <em>Service Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isSuspend <em>Suspend</em>}</li>
  * </ul>
  * </p>
  *
@@ -1030,6 +1031,33 @@ public interface InboundEndpoint extends EsbElement {
 	 * @generated
 	 */
 	EList<InboundEndpointParameter> getServiceParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Suspend</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Suspend</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Suspend</em>' attribute.
+	 * @see #setSuspend(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getInboundEndpoint_Suspend()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isSuspend();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint#isSuspend <em>Suspend</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Suspend</em>' attribute.
+	 * @see #isSuspend()
+	 * @generated
+	 */
+	void setSuspend(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' attribute.

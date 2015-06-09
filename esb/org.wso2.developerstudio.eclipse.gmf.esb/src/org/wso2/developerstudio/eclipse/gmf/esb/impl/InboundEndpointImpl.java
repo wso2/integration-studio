@@ -142,6 +142,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getInboundCxfRmConfigFile <em>Inbound Cxf Rm Config File</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isEnableSSL <em>Enable SSL</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#getServiceParameters <em>Service Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.InboundEndpointImpl#isSuspend <em>Suspend</em>}</li>
  * </ul>
  * </p>
  *
@@ -1849,6 +1850,26 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 	protected EList<InboundEndpointParameter> serviceParameters;
 
 	/**
+	 * The default value of the '{@link #isSuspend() <em>Suspend</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSuspend()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SUSPEND_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isSuspend() <em>Suspend</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSuspend()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean suspend = SUSPEND_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2701,6 +2722,27 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			serviceParameters = new EObjectContainmentEList<InboundEndpointParameter>(InboundEndpointParameter.class, this, EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS);
 		}
 		return serviceParameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSuspend() {
+		return suspend;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSuspend(boolean newSuspend) {
+		boolean oldSuspend = suspend;
+		suspend = newSuspend;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.INBOUND_ENDPOINT__SUSPEND, oldSuspend, suspend));
 	}
 
 	/**
@@ -4024,6 +4066,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return isEnableSSL();
 			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
 				return getServiceParameters();
+			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
+				return isSuspend();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -4302,6 +4346,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				getServiceParameters().clear();
 				getServiceParameters().addAll((Collection<? extends InboundEndpointParameter>)newValue);
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
+				setSuspend((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -4578,6 +4625,9 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
 				getServiceParameters().clear();
 				return;
+			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
+				setSuspend(SUSPEND_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -4766,6 +4816,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 				return enableSSL != ENABLE_SSL_EDEFAULT;
 			case EsbPackage.INBOUND_ENDPOINT__SERVICE_PARAMETERS:
 				return serviceParameters != null && !serviceParameters.isEmpty();
+			case EsbPackage.INBOUND_ENDPOINT__SUSPEND:
+				return suspend != SUSPEND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -4944,6 +4996,8 @@ public class InboundEndpointImpl extends EsbElementImpl implements InboundEndpoi
 		result.append(inboundCxfRmConfigFile);
 		result.append(", enableSSL: ");
 		result.append(enableSSL);
+		result.append(", suspend: ");
+		result.append(suspend);
 		result.append(')');
 		return result.toString();
 	}

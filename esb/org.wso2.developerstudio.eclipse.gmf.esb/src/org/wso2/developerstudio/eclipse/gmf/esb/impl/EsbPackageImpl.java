@@ -9335,6 +9335,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMessageProcessor_BindProcessor() {
+		return (EAttribute)messageProcessorEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAPIHandler() {
 		return apiHandlerEClass;
 	}
@@ -10066,6 +10075,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EReference getInboundEndpoint_ServiceParameters() {
 		return (EReference)inboundEndpointEClass.getEStructuralFeatures().get(87);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundEndpoint_Suspend() {
+		return (EAttribute)inboundEndpointEClass.getEStructuralFeatures().get(88);
 	}
 
 	/**
@@ -18554,6 +18572,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageProcessorEClass, MESSAGE_PROCESSOR__PINNED_SERVERS);
 		createEAttribute(messageProcessorEClass, MESSAGE_PROCESSOR__NON_RETRY_HTTP_STATUS_CODES);
 		createEReference(messageProcessorEClass, MESSAGE_PROCESSOR__PARAMETERS);
+		createEAttribute(messageProcessorEClass, MESSAGE_PROCESSOR__BIND_PROCESSOR);
 
 		apiHandlerEClass = createEClass(API_HANDLER);
 		createEAttribute(apiHandlerEClass, API_HANDLER__CLASS_NAME);
@@ -18704,6 +18723,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__INBOUND_CXF_RM_CONFIG_FILE);
 		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__ENABLE_SSL);
 		createEReference(inboundEndpointEClass, INBOUND_ENDPOINT__SERVICE_PARAMETERS);
+		createEAttribute(inboundEndpointEClass, INBOUND_ENDPOINT__SUSPEND);
 
 		inboundEndpointParameterEClass = createEClass(INBOUND_ENDPOINT_PARAMETER);
 		createEAttribute(inboundEndpointParameterEClass, INBOUND_ENDPOINT_PARAMETER__NAME);
@@ -20753,6 +20773,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageProcessor_PinnedServers(), ecorePackage.getEString(), "pinnedServers", null, 0, 1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageProcessor_NonRetryHttpStatusCodes(), ecorePackage.getEString(), "nonRetryHttpStatusCodes", null, 0, 1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMessageProcessor_Parameters(), this.getMessageProcessorParameter(), null, "parameters", null, 0, -1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageProcessor_BindProcessor(), ecorePackage.getEBoolean(), "bindProcessor", null, 0, 1, MessageProcessor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(apiHandlerEClass, APIHandler.class, "APIHandler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAPIHandler_ClassName(), ecorePackage.getEString(), "className", null, 0, 1, APIHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -20903,6 +20924,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getInboundEndpoint_InboundCxfRmConfigFile(), ecorePackage.getEString(), "inboundCxfRmConfigFile", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInboundEndpoint_EnableSSL(), ecorePackage.getEBoolean(), "enableSSL", null, 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInboundEndpoint_ServiceParameters(), this.getInboundEndpointParameter(), null, "serviceParameters", null, 0, -1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundEndpoint_Suspend(), ecorePackage.getEBoolean(), "suspend", "false", 0, 1, InboundEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inboundEndpointParameterEClass, InboundEndpointParameter.class, "InboundEndpointParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInboundEndpointParameter_Name(), ecorePackage.getEString(), "name", "parameter_name", 0, 1, InboundEndpointParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

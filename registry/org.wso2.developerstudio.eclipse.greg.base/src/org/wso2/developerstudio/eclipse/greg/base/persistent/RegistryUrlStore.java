@@ -116,7 +116,7 @@ public final class RegistryUrlStore {
 					input.close();
 				}
 			} catch (IOException ex) {
-				ex.printStackTrace();
+				log.error("couldn't read the url from workspace"+ex.getMessage(),ex);
 			}
 		}
 	}
@@ -136,6 +136,7 @@ public final class RegistryUrlStore {
 			output = new BufferedWriter(new FileWriter(urlListFile));
 			for (RegistryURLInfo registryURLInfo : urlList) {
 				try {
+					if(!registryURLInfo.isSpecificControl()){// Save Reg Url only connect from registry perspective
 					output.write(registryURLInfo.getUrl().toString() +
 								" " +
 								Boolean.toString(registryURLInfo.isEnabled())+
@@ -144,18 +145,19 @@ public final class RegistryUrlStore {
 								" " +
 								registryURLInfo.getPath() + 
 								"\n");
+					}
 				} catch (IOException e) {
-					log.error(e);
+					log.error("couldn't save the url in workspace"+e.getMessage(),e);
 				}
 			}
 		} catch (IOException e) {
-			log.error(e);
+			log.error("Couldn't read the url list "+e.getMessage(),e);
 		} finally {
 			if (output != null)
 				try {
 					output.close();
 				} catch (IOException e) {
-					log.error(e);
+					log.error("Couldn't close the stream when saving urls into workspace file "+e.getMessage(),e);
 				}
 		}
 
@@ -185,14 +187,12 @@ public final class RegistryUrlStore {
 		info.setUrl(registryUrl);
 		info.setPath(path);
 		info.setUsername(username);
+		info.setSpecificControl(isSpecificControl);
 	    if(!urlList.contains(info)){
 	    	urlList.add(info);
 	    	if(!isSpecificControl){
 	    		saveUrlsToFile();
-	    	}else{
-	    		info.setSpecificControl(isSpecificControl);
 	    	}
-		    
 	       }
 		return info;
 	}
@@ -245,8 +245,7 @@ public final class RegistryUrlStore {
 		try {
 	        regiistryNodeFile.createNewFile();
         } catch (IOException e) {
-	        // TODO Auto-generated catch block
-	        e.printStackTrace();
+	       log.error("Registry property file couldn't create "+e.getMessage(), e);
         }
 	}
 	

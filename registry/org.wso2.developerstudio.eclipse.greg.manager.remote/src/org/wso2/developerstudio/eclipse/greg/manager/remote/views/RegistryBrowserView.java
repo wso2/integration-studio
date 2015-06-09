@@ -16,8 +16,10 @@
 
 package org.wso2.developerstudio.eclipse.greg.manager.remote.views;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -26,6 +28,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,8 +42,12 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.GroupMarker;
@@ -51,6 +58,8 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.commands.ActionHandler;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -61,9 +70,7 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.TreeExpansionEvent;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -95,7 +102,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPartListener2;
@@ -103,16 +109,19 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.jface.commands.ActionHandler;
 import org.eclipse.ui.contexts.IContextActivation;
 import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.handlers.IHandlerActivation;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.ViewPart;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventHandler;
 import org.wso2.carbon.registry.core.Collection;
 import org.wso2.carbon.registry.core.Resource;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
+import org.wso2.carbon.registry.core.utils.MediaTypesUtils;
 import org.wso2.carbon.registry.ws.stub.xsd.WSResourceData;
+import org.wso2.developerstudio.eclipse.greg.base.core.MediaTypes;
 import org.wso2.developerstudio.eclipse.greg.base.core.Registry;
 import org.wso2.developerstudio.eclipse.greg.base.core.Registry.IResourceUploadListener;
 import org.wso2.developerstudio.eclipse.greg.base.editor.input.ResourceEditorInput;
@@ -154,12 +163,16 @@ import org.wso2.developerstudio.eclipse.greg.manager.remote.wizards.AddUserWizar
 import org.wso2.developerstudio.eclipse.greg.manager.remote.wizards.ChangePermissionWizard;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
+import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplateHandler;
 import org.wso2.developerstudio.eclipse.platform.ui.utils.MessageDialogUtils;
 import org.wso2.developerstudio.eclipse.usermgt.remote.UserManager;
 
 public class RegistryBrowserView extends ViewPart implements Observer {
 
-    private static final int CHAR_SHIFT = 32;
+    public static final String EVENT_TOPIC_EXPAND_TREE = "ExpandTree";
+	private static final String DEFAULT_PATH = "/";
+	private static final int CHAR_SHIFT = 32;
 	private static final int CHAR_R = 114;
 	private static final int CHAR_V = 118;
     private static final int CHAR_C = 99;
@@ -243,6 +256,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 	private DragDropUtils dragDropUtils;
 	
 	private boolean isApiManagerview;
+	private String apimRegPath;
 
 	// private String[] children= null;
 	// private IViewSite viewSite;
@@ -266,6 +280,8 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 	private RegistryHeartBeatTester registryHeartBeatTester;
 	
 	private RegistryResourceNode copyRegResourceNode;
+	
+	private IEventBroker broker;
 	
 	IContextActivation activation;
 	IHandlerActivation activateDeleteHandler;
@@ -325,10 +341,10 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		createActions(parent);
 		updateToolbar();
 		createContextMenu();
-		if(!isApiManagerview){
+		if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
 		loadPreviousRegistryUrls();
 		}else{
-			addRegistryAction.run();
+			//addRegistryAction.run();
 		}
 	}
 
@@ -342,6 +358,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		}
 	}
 
+	//FIXME - should be filtered when the selected perspective is APIM
 	public void updateToolbar() {
 		IToolBarManager mgr;
 		mgr = getViewSite().getActionBars().getToolBarManager();
@@ -356,7 +373,9 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			} else {
 				if(selectedObj instanceof RegistryContentContainer){
 					list.add(addRegistryAction);
+					if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
 					list.add(linkWithEditorAction);
+					}
 //					list.add(deleteAction);
 				}else if (selectedObj instanceof RegistryNode) {
 					list.add(new GroupMarker(
@@ -379,8 +398,10 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 							list.add(new GroupMarker(
 									IWorkbenchActionConstants.MB_ADDITIONS));
 							list.add(new Separator());
+							if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
 							list.add(addResourceAction);
 							list.add(addCollectionAction);
+							}
 						} else {
 						}
 						list.add(new GroupMarker(
@@ -482,6 +503,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 	}
 
 	private void createContextMenu() {
+		
 		final MenuManager menuMgr = new MenuManager();
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.setActionDefinitionId("org.eclipse.menu");
@@ -515,21 +537,45 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 
 			}
 		});
+		
+		if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+			multipleResourceUploadMenu = new MenuManager(
+					"Add new Sequence",
+					ImageUtils
+							.getImageDescriptor(ImageUtils.ACTION_ADD_RESOURCE_FROM_LOCAL),
+					"org.eclipse.tools.multipleresources");
+			multipleResourceUploadMenu.setRemoveAllWhenShown(true);
 
-		multipleResourceUploadMenu = new MenuManager(
-				"Add local resources",
-				ImageUtils
-						.getImageDescriptor(ImageUtils.ACTION_ADD_RESOURCE_FROM_LOCAL),
-				"org.eclipse.tools.multipleresources");
-		multipleResourceUploadMenu.setRemoveAllWhenShown(true);
+			multipleResourceUploadMenu.addMenuListener(new IMenuListener() {
 
-		multipleResourceUploadMenu.addMenuListener(new IMenuListener() {
+				public void menuAboutToShow(IMenuManager menu) {
+					menu.add(addResourceAction);
+					menu.add(multipleFileAction);
+				}
+			});
+			
+			
+		}else{
+			multipleResourceUploadMenu = new MenuManager(
+					"Add local resources",
+					ImageUtils
+							.getImageDescriptor(ImageUtils.ACTION_ADD_RESOURCE_FROM_LOCAL),
+					"org.eclipse.tools.multipleresources");
+			multipleResourceUploadMenu.setRemoveAllWhenShown(true);
 
-			public void menuAboutToShow(IMenuManager menu) {
-				menu.add(multipleFileAction);
-				menu.add(multipleFolderAction);
-			}
-		});
+			multipleResourceUploadMenu.addMenuListener(new IMenuListener() {
+
+				public void menuAboutToShow(IMenuManager menu) {
+					menu.add(multipleFileAction);
+					menu.add(multipleFolderAction);
+				}
+			});
+			
+		}
+
+		
+		
+		
 		menuMgr.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager mgr) {
 				menuMgr.removeAll();
@@ -543,6 +589,9 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 					}else if(selectedObj instanceof RegistryContentContainer){
 						mgr.add(linkWithEditorAction);
 					} else if (selectedObj instanceof RegistryNode) {
+						if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+							mgr.add(refreshAction);
+						}else{
 						//TODO: Fix TOOLS-733 here
 						mgr.add(addRegistryAction);
 						mgr.add(deleteAction);
@@ -561,20 +610,27 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 							menuMgr.add(new Separator());
 							mgr.add(refreshAction);
 							mgr.add(linkWithEditorAction);
-						} else
+						} else{
 							menuMgr.add(enableAction);
+						}
+					}
 					} else if (selectedObj instanceof RegistryResourceNode) {
 						RegistryResourceNode rrpd = (RegistryResourceNode) selectedObj;
 						if (!rrpd.isError()) {
 							if (rrpd.getResourceType()==RegistryResourceType.COLLECTION) {
+							 
+							if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
 								menuMgr.add(addResourceAction);
 								menuMgr.add(addCollectionAction);
+							   }							
 								menuMgr.add(multipleResourceUploadMenu);
-								menuMgr
-										.add(new GroupMarker(
-												IWorkbenchActionConstants.MB_ADDITIONS));
+								
+								menuMgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 								menuMgr.add(new Separator());
+								
+								if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
 								mgr.add(importFromAction);
+								}
 
 							} else {
 
@@ -583,19 +639,23 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 							mgr.add(new GroupMarker(
 									IWorkbenchActionConstants.MB_ADDITIONS));
 							mgr.add(new Separator());
+							if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
 							mgr.add(modifyResourcePermission);
+							}
 							mgr.add(new GroupMarker(
 									IWorkbenchActionConstants.MB_ADDITIONS));
 							mgr.add(new Separator());
 							mgr.add(copyAction);
 							mgr.add(pasteAction);
-							if (!rrpd.getRegistryResourcePath().equals("/")){
+							if (!rrpd.getRegistryResourcePath().equals(DEFAULT_PATH)){
 								mgr.add(renameAction);
 							}
 							mgr.add(new GroupMarker(
 									IWorkbenchActionConstants.MB_ADDITIONS));
 							mgr.add(new Separator());
+							if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
 							mgr.add(exportToAction);
+							}
 							menuMgr.add(new GroupMarker(
 									IWorkbenchActionConstants.MB_ADDITIONS));
 							menuMgr.add(new Separator());
@@ -886,15 +946,74 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		addCollectionAction.setImageDescriptor(ImageUtils
 				.getImageDescriptor(ImageUtils.ACTION_ADD_COLLECTION));
 		addCollectionAction.setAccelerator(SWT.INSERT);
+		
+		
+		if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+			addResourceAction = new Action("Create a new Sequence") {
+				public void run() {
+					RegistryResourceNode selectedNode = (RegistryResourceNode) selectedObj;
+					InputDialog dialog = new InputDialog(Display.getCurrent().getActiveShell(), "Create Sequence",
+							"Sequence Name : ", "newSequnce", null);
+					if (dialog.open() != Window.OK) {
+						return;
+					}
+					String sqNameWithoutExtetion = dialog.getValue();
+					String sqName ="";
+					if(sqNameWithoutExtetion.contains(".xml")){
+						sqName = sqNameWithoutExtetion;
+					}else{
+						sqName = sqNameWithoutExtetion +".xml";	
+					}
+					
+					selectedNode.getRegistryResourcePath();
+					selectedNode.getConnectionInfo().getRegistry();
+					String selectedPath = selectedNode.getRegistryResourcePath();
+					selectedPath = selectedPath.endsWith("/") ? selectedPath : selectedPath + "/";
 
-		addResourceAction = new Action("Add a new Resource..") {
-			public void run() {
-				RegistryResourceNode r = (RegistryResourceNode) selectedObj;
-				ResourceEditorInput ei = RemoteContentManager.getEditorInput(r, true);
-				ei.setCollection(false);
-				RemoteContentManager.openFormEditor(ei);
-			}
-		};
+					try {
+
+						Resource resource = registry.newResource();
+						resource.setDescription("");
+						ArtifactTemplate selectedTemplate = ArtifactTemplateHandler
+								.getArtifactTemplates("org.wso2.developerstudio.eclipse.esb.sequence");
+						String templateContent = org.wso2.developerstudio.eclipse.utils.file.FileUtils
+								.getContentAsString(selectedTemplate.getTemplateDataStream());
+						templateContent = templateContent.replaceFirst("name=", " name=");
+						String source = MessageFormat.format(templateContent, sqNameWithoutExtetion);
+
+						InputStream is = new ByteArrayInputStream(source.getBytes());
+						resource.setContentStream(is);
+						resource.setMediaType("application/xml");//FIXME : should not be hardcoded here 
+						String resourceName = selectedPath + sqName;
+						registry.put(resourceName, resource);
+						selectedNode.refreshChildren();
+						selectedNode.getConnectionInfo().getRegUrlData().refreshViewer(false);
+
+					} catch (InvalidRegistryURLException e) {
+						log.error("Create New Sequence from APIM perspective failed due to  "+e.getMessage(), e);
+					} catch (UnknownRegistryException e) {
+						log.error("Create New Sequence from APIM perspective failed due to  "+e.getMessage(), e);
+					} catch (RegistryException e) {
+						log.error("Create New Sequence from APIM perspective failed due to  "+e.getMessage(), e);
+					} catch (IOException e) {
+						log.error("Create New Sequence from APIM perspective failed due to  ", e);
+					}
+				}
+			};
+		}else{
+		
+			addResourceAction = new Action("Add a new Resource..") {
+				public void run() {
+					RegistryResourceNode selectedNode = (RegistryResourceNode) selectedObj;
+					ResourceEditorInput ei = RemoteContentManager.getEditorInput(selectedNode, true);
+					ei.setCollection(false);
+					RemoteContentManager.openFormEditor(ei);
+
+				}
+			};
+			
+		}
+
 		addResourceAction.setImageDescriptor(ImageUtils
 				.getImageDescriptor(ImageUtils.ACTION_ADD_RESOURCE));
 		addResourceAction.setAccelerator(Action.convertAccelerator("Ctrl+Insert"));
@@ -1076,11 +1195,19 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		disableAction.setImageDescriptor(ImageUtils
 				.getImageDescriptor(ImageUtils.ACTION_DISCONNECT_REGISTRY));
 
-		multipleFileAction = new Action("multiple files...") {
+		String ActionName = "";
+		if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+			ActionName = "Import Sequence";
+		}else{
+			ActionName = "multiple files...";
+		}
+	
+		multipleFileAction = new Action(ActionName) {
 			public void run() {
 				addMultipleFiles();
 			}
 		};
+		
 		multipleFileAction.setImageDescriptor(ImageUtils
 				.getImageDescriptor(ImageUtils.ACTION_ADD_MULTIPLE_FILES));
 
@@ -1340,6 +1467,8 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 
 	}
 	
+	
+	
 	private void copyResource(){
 		if (selectedObj instanceof RegistryResourceNode) {
 			RegistryResourceNode regResourceNode = (RegistryResourceNode) selectedObj;
@@ -1423,7 +1552,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 											}
 										}
 										String destinationPath = targetRegResource.getRegistryResourcePath() + 
-																"/" + 
+																DEFAULT_PATH + 
 																path.substring(copyRegResource.getRegistryResourceNodeParent()
 																		.getRegistryResourcePath()
 																		.length());
@@ -1548,8 +1677,8 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 					String newName = inputDialog.getValue();
 					String newPath =
 					                 regResourceNode.getParent() +
-					                         (regResourceNode.getParent().endsWith("/") ? newName
-					                                                                   : "/" +
+					                         (regResourceNode.getParent().endsWith(DEFAULT_PATH) ? newName
+					                                                                   : DEFAULT_PATH +
 					                                                                     newName);
 					registry = regResourceNode.getConnectionInfo().getRegistry();
 					try {
@@ -1656,14 +1785,32 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 	private void updateActionEnablement() {
 		IStructuredSelection sel = (IStructuredSelection) treeViewer.getSelection();
 	}
+	
+	private static MultiStatus createMultiStatus(String msg, Throwable t) {
+
+	    List<Status> childStatuses = new ArrayList<Status>();
+	    StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
+
+	     for (StackTraceElement stackTrace: stackTraces) {
+	      Status status = new Status(IStatus.ERROR,
+	          "com.example.e4.rcp.todo", stackTrace.toString());
+	      childStatuses.add(status);
+	    }
+
+	    MultiStatus ms = new MultiStatus("com.example.e4.rcp.todo",
+	        IStatus.ERROR, childStatuses.toArray(new Status[] {}),
+	        t.toString(), t);
+	    return ms;
+	  }
 
     protected void addItem(Composite parent) {
 		exeptionHandler = new ExceptionHandler();
 		RegistryInfoDialog dialog =null;
+				
 		if(isApiManagerview){
-			 dialog = new RegistryInfoDialog(parent.getShell(),regUrlNode,"/_system/governance/apimgt/customsequences",true);
+			 dialog = new RegistryInfoDialog(parent.getShell(),regUrlNode,getApimRegPath(),true);
 		}else{
-			 dialog = new RegistryInfoDialog(parent.getShell(),regUrlNode,"/",false);
+			 dialog = new RegistryInfoDialog(parent.getShell(),regUrlNode,DEFAULT_PATH,false);
 		}
 		
 		dialog.setBlockOnOpen(true);
@@ -1694,6 +1841,30 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			uname = dialog.getUserName();
 			pwd = dialog.getPasswd();
 			String path = dialog.getPath();
+			
+			if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+			
+			Registry reg = new Registry(uname, pwd, dialog.getServerUrl());
+			try {
+				reg.getResourcesPerCollection(getApimRegPath());
+			} catch (InvalidRegistryURLException e1) {
+                  //FIXME - please add proper error message 
+				  return;
+			} catch (UnknownRegistryException e1) {
+
+            	//FIXME - Please add meaningful message here
+            	if (ApiMangerRegistryBrowserView.isAPIMperspective()){
+            		MultiStatus createMultiStatusMsg = createMultiStatus("Error Registry path , "
+            				+ "This can be due to multipe reasons \n 1) This may not a APIM server \n  2 ) De"
+            				+ "fault sequence location has been changed \n\n "
+            				+ "You can overide the default setting from eclipse prefernace", e1);
+            		 ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Cannot Load APIM Reg browser",
+            				"Error Registry path , This can be due to multipe reasons \n Wrong server", createMultiStatusMsg); 
+     	            
+            	} 
+				return;
+			 }
+			}
 			if (dialog.isSavePassword()) {
 				RegistryCredentialData.getInstance().setCredentials(serverURL.toString(), uname, pwd);
 			}			
@@ -1702,14 +1873,51 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			setUname(uname);
 			setPwd(pwd);
 			setServerURL(serverURL);
-			if (isApiManagerview()) {
-				if (treeViewer != null) {
-					treeViewer.expandAll();
+			if (ApiMangerRegistryBrowserView.isAPIMperspective()) {
+				try {
+					new ProgressMonitorDialog(getSite().getShell()).run(true, true,new IRunnableWithProgress() {
+						
+					  public void run(IProgressMonitor monitor) throws InvocationTargetException,
+									 InterruptedException {
+					  
+						 if (treeViewer != null) {
+							monitor.beginTask("", 100);
+							monitor.worked(60);
+							broker.send(EVENT_TOPIC_EXPAND_TREE, null);
+							monitor.worked(100);
+							monitor.done();
+						}
+						 
+					  }
+					});
+				} catch (InvocationTargetException e) {
+					 log.error("Tree expanding fail"+e.getMessage(), e);
+				} catch (InterruptedException e) {
+					 log.error("Tree expanding fail"+e.getMessage(), e);
 				}
+
 			}
 		}
 
 	}
+    
+    
+ protected EventHandler getTreeExpandHandler() {
+		return new EventHandler() {
+			public void handleEvent(final Event event) {
+ 
+				Display.getDefault().asyncExec(new Runnable() {
+					@SuppressWarnings({ })
+					@Override
+					public void run() {
+            		treeViewer.expandAll();
+					}
+				});
+			}
+		};
+	}
+    
+
 	
 	private void refreshItem() {
 		for (int i = 0; i < selectedItemList.size(); i++) {
@@ -1879,7 +2087,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 											}
 										}
 										String destinationPath = targetRegPathData.getRegistryResourcePath() + 
-																"/" + 
+																DEFAULT_PATH + 
 																path.substring(selectedPathData
 																				.getRegistryResourceNodeParent()
 																				.getRegistryResourcePath()
@@ -1996,10 +2204,10 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 //									String destinationPath = targetPathData.getRegistryResourcePath() + "/" + selectedPathData.getLastSegmentInPath();
 									
 									String destinationPath="";
-									if(targetPathData.getRegistryResourcePath().equals("/")){
+									if(targetPathData.getRegistryResourcePath().equals(DEFAULT_PATH)){
 										destinationPath = targetPathData.getRegistryResourcePath() + selectedPathData.getLastSegmentInPath();
 									}else{
-										destinationPath= targetPathData.getRegistryResourcePath() + "/" + selectedPathData.getLastSegmentInPath();
+										destinationPath= targetPathData.getRegistryResourcePath() + DEFAULT_PATH + selectedPathData.getLastSegmentInPath();
 									}
 									
 							        StringWriter writer = new StringWriter();
@@ -2116,10 +2324,10 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 //									String path = targetPathData.getRegistryResourcePath()+ "/"
 //													+ regResourcePathData.getRegistryResourcePath();
 									String destinationPath="";
-									if(targetPathData.getRegistryResourcePath().equals("/")){
+									if(targetPathData.getRegistryResourcePath().equals(DEFAULT_PATH)){
 										destinationPath = targetPathData.getRegistryResourcePath()  + selectedPathData.getLastSegmentInPath();
 									}else{
-										destinationPath= targetPathData.getRegistryResourcePath() + "/" + selectedPathData.getLastSegmentInPath();
+										destinationPath= targetPathData.getRegistryResourcePath() + DEFAULT_PATH + selectedPathData.getLastSegmentInPath();
 									}
 //									destinationPath = path + "/" + selectedPathData.getLastSegmentInPath();
 									
@@ -2279,7 +2487,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 								.getRegistry();
 						String path = targetRegPathData
 								.getRegistryResourcePath()
-								+ "/"
+								+ DEFAULT_PATH
 								+ regResourceNode.getRegistryResourcePath();
 						try {
 							dropRegistry(regResourceNode, targetRegPathData);
@@ -2473,7 +2681,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 
 			}
 
-			
+	
 		});
 
 		
@@ -2615,7 +2823,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 				;
 				registryUrlInfo.setPersist(false);
 				registryUrlInfo.setUrl(new URL(url));
-				registryUrlInfo.setPath("/");
+				registryUrlInfo.setPath(DEFAULT_PATH);
 				correctRegistryData = regUrlNode.addRegistry(registryUrlInfo,
 						null);
 			} catch (MalformedURLException e) {
@@ -2674,6 +2882,14 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		return isApiManagerview;
 	}
 
+	public String getApimRegPath() {
+		return apimRegPath;
+	}
+
+	public void setApimRegPath(String apimRegPath) {
+		this.apimRegPath = apimRegPath;
+	}
+
 	public void setApiManagerview(boolean isApiManagerview) {
 		this.isApiManagerview = isApiManagerview;
 	}
@@ -2696,6 +2912,14 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 
 	public String getUname() {
 		return uname;
+	}
+
+	public IEventBroker getBroker() {
+		return broker;
+	}
+
+	public void setBroker(IEventBroker broker) {
+		this.broker = broker;
 	}
 
 	public RegistryURLNode getRegUrlData() {
@@ -2746,7 +2970,8 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			RegistryNode regData = (RegistryNode) selectedObj;
 			if (enabled){
 				if (!Utils.isValidServerURL(regData.getServerUrl())){
-					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Connect with the registry...", "This registry instance is unreachable: \n\n\t"+regData.getServerUrl());
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Connect with the registry...",
+							"This registry instance is unreachable: \n\n\t"+regData.getServerUrl());
 					regData.setPersistantEnabled(enabled);
 					regData.setEnabled(false);
 					return;
@@ -3178,5 +3403,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		handlerService.deactivateHandler(activateCopyHandler);
 		handlerService.deactivateHandler(activatePasteHandler);
 	}
+	
+	
 	
 }

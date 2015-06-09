@@ -16,6 +16,17 @@
 
 package org.wso2.developerstudio.eclipse.greg.manager.remote.views;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.e4.core.contexts.EclipseContextFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.services.events.IEventBroker;
+import org.eclipse.ui.IPerspectiveDescriptor;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.osgi.framework.Bundle;
+import org.wso2.developerstudio.eclipse.greg.apim.action.Login;
+import org.wso2.developerstudio.eclipse.greg.manager.remote.Activator;
+
 
 /**
  * 
@@ -24,10 +35,42 @@ package org.wso2.developerstudio.eclipse.greg.manager.remote.views;
  */
 public class ApiMangerRegistryBrowserView extends RegistryBrowserView {
 
+	private static final String APIM_CUSTOMSEQUENCES_PATH = "/_system/governance/apimgt/customsequences";
+
 public ApiMangerRegistryBrowserView() {
 	super();
 	setApiManagerview(true);	
+	try {
+		setApimRegPath(new Login().getRegpath());
+		Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+		IEclipseContext eclipseContext = EclipseContextFactory.getServiceContext(bundle.getBundleContext());
+		eclipseContext.set(org.eclipse.e4.core.services.log.Logger.class, null);
+		IEventBroker iEventBroker = eclipseContext.get(IEventBroker.class);
+		iEventBroker.subscribe(EVENT_TOPIC_EXPAND_TREE,getTreeExpandHandler() );
+		setBroker(iEventBroker);
+	} catch (Exception e) {
+		setApimRegPath(APIM_CUSTOMSEQUENCES_PATH);	 
+	}
+	
 }
 
 
+@Override
+public void dispose() {
+	IEventBroker broker = getBroker();
+	if(broker!=null){
+		broker.unsubscribe(getTreeExpandHandler());
+	}
+	super.dispose();
+}
+
+public static boolean isAPIMperspective(){
+	 IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+	 IPerspectiveDescriptor perspective = workbenchWindow.getActivePage().getPerspective();
+	
+	if ("org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId())){
+		return true;
+	}
+	return false;
+}
 }

@@ -36,18 +36,28 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.wso2.developerstudio.eclipse.greg.apim.action.Login;
 import org.wso2.developerstudio.eclipse.greg.base.logger.ExceptionHandler;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryNode;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryURLNode;
-import org.wso2.developerstudio.eclipse.greg.manager.remote.views.ApiMangerRegistryBrowserView;
+import org.wso2.developerstudio.eclipse.greg.manager.remote.Activator;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class RegistryInfoDialog extends Dialog {
 
+	 private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static final String DEFAULT_USERNAME = "admin";
+	private static final String DEFAULT_PASSWORD = "admin";
+	private static final String DEFAULT_CARBON_SERVER_URL = "https://localhost:9443/";
 	private String serverUrl;
 	private String path;
 	private String userName;
 	private String passwd;
+	private Text urlText;
+	private Text userNameText;
+	private Text pwdText;
 	private RegistryBrowserView view;
 	private Shell mainShell;
 	private RegistryURLNode regURLData;
@@ -71,6 +81,7 @@ public class RegistryInfoDialog extends Dialog {
 		this.regURLData = regUrlData;
 		startpath = path;
 		isAPIMbrowser = mode;
+
 	}
 	public void create() {
 		super.create();
@@ -91,7 +102,7 @@ public class RegistryInfoDialog extends Dialog {
 		gd = new GridData();
 		urlLabel.setLayoutData(gd);
 
-		Text urlText = new Text(container, SWT.BORDER);
+		urlText = new Text(container, SWT.BORDER);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		urlText.setLayoutData(gd);
 
@@ -131,7 +142,7 @@ public class RegistryInfoDialog extends Dialog {
 		gd = new GridData();
 		gd.heightHint = 18;
 		gd.widthHint = 100;
-		Text userNameText = new Text(container, SWT.BORDER);
+		userNameText = new Text(container, SWT.BORDER);
 		userNameText.setLayoutData(gd);
 		userNameText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent event) {
@@ -147,7 +158,7 @@ public class RegistryInfoDialog extends Dialog {
 		gd = new GridData();
 		gd.heightHint = 18;
 		gd.widthHint = 100;
-		Text pwdText = new Text(container, SWT.PASSWORD | SWT.BORDER);
+		pwdText = new Text(container, SWT.PASSWORD | SWT.BORDER);
 		pwdText.setLayoutData(gd);
 		pwdText.addModifyListener(new ModifyListener() {
 
@@ -174,11 +185,30 @@ public class RegistryInfoDialog extends Dialog {
 
 		});
 
-		urlText.setText("https://localhost:9443/");
-		userNameText.setText("admin");
-		pwdText.setText("admin");
+		
+		if(isAPIMbrowser){
+			try {
+				Login login = new Login();				
+				setDefaultValuesForLoginDialog(login.getUrl(), login.getUsername(), login.getPassword());
+				
+			} catch (Exception e) {
+				log.error("Cannot load data from preferancestore", e);
+				setDefaultValuesForLoginDialog(DEFAULT_CARBON_SERVER_URL, DEFAULT_USERNAME, DEFAULT_PASSWORD);
+			}
+			
+		}else{
+			//FIXME - This should be taken from Eclipse Preference store then a user can defien his/her default path...etc
+			setDefaultValuesForLoginDialog(DEFAULT_CARBON_SERVER_URL, DEFAULT_USERNAME, DEFAULT_PASSWORD);
+		}
+		
 		
 		return super.createDialogArea(parent);
+	}
+
+	private void setDefaultValuesForLoginDialog(String url, String userName, String pwd) {
+		urlText.setText(url);
+		userNameText.setText(userName);
+		pwdText.setText(pwd);
 	}
 
 	protected void okPressed() {

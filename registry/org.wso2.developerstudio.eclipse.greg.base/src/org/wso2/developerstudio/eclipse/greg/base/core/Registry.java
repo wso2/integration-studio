@@ -16,6 +16,22 @@
 
 package org.wso2.developerstudio.eclipse.greg.base.core;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.io.Writer;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
@@ -33,7 +49,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.wso2.carbon.authenticator.stub.AuthenticationAdminStub;
 import org.wso2.carbon.feature.mgt.stub.ProvisioningAdminServiceStub;
 import org.wso2.carbon.feature.mgt.stub.prov.data.Feature;
@@ -59,22 +74,6 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.MediaManager;
 import org.wso2.developerstudio.eclipse.platform.core.mediatype.PlatformMediaTypeConstants;
 import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
-
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.io.Writer;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
 
 public class Registry {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -118,16 +117,12 @@ public class Registry {
 			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(".tmp");
 	        project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	        URL url = new URL(serverUrl);
-	        
-	        propertyFile=
-	        	project.getFile(Activator.PLUGIN_ID + File.separator + url.getHost() +
-	        	                "." + url.getPort() + ".txt");
+			propertyFile = project.getFile(Activator.PLUGIN_ID + File.separator + url.getHost() + "." + url.getPort()
+					+ ".txt");
         } catch (CoreException e) {
-	        // TODO Auto-generated catch block
-	        e.printStackTrace();
+	       log.error("Registry init has failed "+e.getMessage(), e);	      
         } catch (MalformedURLException e) {
-	        // TODO Auto-generated catch block
-	        e.printStackTrace();
+        	 log.error("Registry init has failed "+e.getMessage(), e);	
         }
 		
 	}
@@ -144,14 +139,12 @@ public class Registry {
 	 * @throws MalformedURLException
 	 * @throws RegistryException
 	 */
-	private org.wso2.carbon.registry.core.Registry getWSRegistryServiceClient() throws InvalidRegistryURLException, UnknownRegistryException{
+	private org.wso2.carbon.registry.core.Registry getWSRegistryServiceClient() throws InvalidRegistryURLException,
+			UnknownRegistryException {
 		try {
 			URL url = new URL(serverUrl + WS_REGISTRY_URL);
 			if (propertyFile.exists()) {
-				Object sessionProperty =
-				                         propertyFile.getSessionProperty(new QualifiedName(
-				                                                                           "",
-				                                                                           url.toString()));
+				Object sessionProperty = propertyFile.getSessionProperty(new QualifiedName("", url.toString()));
 				if (sessionProperty != null) {
 					return (org.wso2.carbon.registry.core.Registry) sessionProperty;
 				}
@@ -159,29 +152,23 @@ public class Registry {
 
 			registryInit();
 
-			AuthenticationAdminStub authenticationStub =
-			                                             new AuthenticationAdminStub(serverUrl +
-			                                                                         AUTHENTICATION_ADMIN_SERVICE_URL);
+			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(serverUrl
+					+ AUTHENTICATION_ADMIN_SERVICE_URL);
 
 			authenticationStub._getServiceClient().getOptions().setManageSession(true);
-			boolean loginStatus =
-			                      authenticationStub.login(userName, passwd,
-			                                               (new URL(serverUrl)).getHost());
+			boolean loginStatus = authenticationStub.login(userName, passwd, (new URL(serverUrl)).getHost());
 
 			if (!loginStatus) {
 				throw new Exception("Invalid Authentication");
 			}
-			ServiceContext serviceContext =
-			                                authenticationStub._getServiceClient()
-			                                                  .getLastOperationContext()
-			                                                  .getServiceContext();
+			ServiceContext serviceContext = authenticationStub._getServiceClient().getLastOperationContext()
+					.getServiceContext();
 			String sessionCookie = (String) serviceContext.getProperty(HTTPConstants.COOKIE_STRING);
 			remregistry = new WSRegistryServiceClient(serverUrl + WS_REGISTRY_URL, sessionCookie);
-			
+
 			if (propertyFile.exists()) {
-                propertyFile.setSessionProperty(new QualifiedName("", url.toString()),
-                                                remregistry);
-            }
+				propertyFile.setSessionProperty(new QualifiedName("", url.toString()), remregistry);
+			}
 
 		} catch (RegistryException e) {
 			throw new UnknownRegistryException(e);
@@ -200,15 +187,13 @@ public class Registry {
 	 * @throws InvalidRegistryURLException
 	 * @throws UnknownRegistryException
 	 */
-	private org.wso2.carbon.registry.core.Registry getRemoteRegistry()
-			throws InvalidRegistryURLException, UnknownRegistryException {
+	private org.wso2.carbon.registry.core.Registry getRemoteRegistry() throws InvalidRegistryURLException,
+			UnknownRegistryException {
 		try {
 			URL url = new URL(serverUrl + REMOTE_REGISTRY_URL);
 
 			if (propertyFile.exists()) {
-				Object sessionProperty = propertyFile
-						.getSessionProperty(new QualifiedName("", url
-								.toString()));
+				Object sessionProperty = propertyFile.getSessionProperty(new QualifiedName("", url.toString()));
 				if (sessionProperty != null) {
 					return (org.wso2.carbon.registry.core.Registry) sessionProperty;
 				}
@@ -216,8 +201,7 @@ public class Registry {
 			registryInit();
 			remregistry = new RemoteRegistry(url, userName, passwd);
 			if (propertyFile.exists()) {
-				propertyFile.setSessionProperty(
-						new QualifiedName("", url.toString()), remregistry);
+				propertyFile.setSessionProperty(new QualifiedName("", url.toString()), remregistry);
 			}
 
 		} catch (MalformedURLException e) {
@@ -225,8 +209,7 @@ public class Registry {
 		} catch (RegistryException e) {
 			throw new UnknownRegistryException(e);
 		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("Remote registry init has failed " + e.getMessage(), e);
 		}
 		return remregistry;
 	}
@@ -235,63 +218,51 @@ public class Registry {
 		try {
 			URL url = new URL(serverUrl + PROVISIONING_ADMIN_SERVICE_URL);
 			if (propertyFile.exists()) {
-				Object sessionProperty =
-				                         propertyFile.getSessionProperty(new QualifiedName("",
-				                                                                    url.toString()));
+				Object sessionProperty = propertyFile.getSessionProperty(new QualifiedName("", url.toString()));
 				if (sessionProperty != null) {
 					return (Boolean) sessionProperty;
 				}
 			}
 			registryInit();
-			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(serverUrl + AUTHENTICATION_ADMIN_SERVICE_URL);
+			AuthenticationAdminStub authenticationStub = new AuthenticationAdminStub(serverUrl
+					+ AUTHENTICATION_ADMIN_SERVICE_URL);
 			authenticationStub._getServiceClient().getOptions().setManageSession(true);
-			boolean loginStatus = authenticationStub.login(userName, passwd,
-			                                               (new URL(serverUrl)).getHost());
+			boolean loginStatus = authenticationStub.login(userName, passwd, (new URL(serverUrl)).getHost());
 			if (!loginStatus) {
 				throw new Exception("Invalid Authentication");
 			}
-			ServiceContext serviceContext = authenticationStub._getServiceClient()
-			                                                  .getLastOperationContext()
-			                                                  .getServiceContext();
+			ServiceContext serviceContext = authenticationStub._getServiceClient().getLastOperationContext()
+					.getServiceContext();
 			String sessionCookie = (String) serviceContext.getProperty(HTTPConstants.COOKIE_STRING);
 
-			ProvisioningAdminServiceStub provisioningAdminService = new ProvisioningAdminServiceStub(serverUrl + PROVISIONING_ADMIN_SERVICE_URL);
+			ProvisioningAdminServiceStub provisioningAdminService = new ProvisioningAdminServiceStub(serverUrl
+					+ PROVISIONING_ADMIN_SERVICE_URL);
 			ServiceClient client = provisioningAdminService._getServiceClient();
 			Options option = client.getOptions();
 			option.setManageSession(true);
-			option.setProperty(org.apache.axis2.transport.http.HTTPConstants.COOKIE_STRING,sessionCookie);
+			option.setProperty(org.apache.axis2.transport.http.HTTPConstants.COOKIE_STRING, sessionCookie);
 
 			Feature[] allInstalledFeatures = provisioningAdminService.getAllInstalledFeatures();
 
 			for (Feature feature : allInstalledFeatures) {
 				if (REGISTRY_WS_FEATURE_ID.equals(feature.getFeatureID())) {
-					int featureVersion = Integer.parseInt(feature.getFeatureVersion().replace(".",""));
-					if(featureVersion>=MIN_WS_API_VERSION){
+					int featureVersion = Integer.parseInt(feature.getFeatureVersion().replace(".", ""));
+					if (featureVersion >= MIN_WS_API_VERSION) {
 						if (propertyFile.exists()) {
-            	            propertyFile.setSessionProperty(new QualifiedName(
-            	                                                              "",
-            	                                                              url.toString()),
-            	                                            true);
-                        }
+							propertyFile.setSessionProperty(new QualifiedName("", url.toString()), true);
+						}
 						return true;
 					}
 				}
 			}
 		} catch (Exception e) {
+			log.error("Getting WS Feature Available in Regisrty check failed "+e.getMessage(), e);
 			return false;
 		}
 		return false;
 	}
 	
 	public org.wso2.carbon.registry.core.Registry getRegistry() throws InvalidRegistryURLException, UnknownRegistryException{
-//		if (remregistry!=null){
-//			try {
-//				remregistry.get("/");
-//			} catch (RegistryException e) {
-//				//Assume session time out as the reason for the exception
-//				remregistry=null;
-//			}
-//		}
 		if (remregistry == null) {
 			if(isRegistryWSFeatureAvailable()){
 				remregistry = getWSRegistryServiceClient();
@@ -385,11 +356,13 @@ public class Registry {
 			try {
 	            resource = getRegistry().get(collectionPath);
 	            return resource;
-            } catch (RegistryException e1) {
+            } catch (RegistryException e1) { 
             	throw new UnknownRegistryException(e1);
             }
 		}
 	}
+	
+
 
 	public String[] getRootCollection() {
 		return rootCollection;
@@ -727,8 +700,7 @@ public class Registry {
 				path = GARUtils.createGAR(garImportDependency);
 				mediaType=PlatformMediaTypeConstants.MEDIA_TYPE_GAR;
 			} catch (Exception e) {
-				//in an error the wsdl will be uploaded
-				e.printStackTrace();
+				log.error("File adding process failed in Registry Class due to "+e.getMessage(), e);   
 			}
 		}
 		mediaType=mediaType==null?"":mediaType;
@@ -1187,23 +1159,21 @@ public class Registry {
 		}				
 	}
 	
-	public void clearSessionProperties(){
-        try {
-	        if (propertyFile.exists()) {
-	        	propertyFile.setSessionProperty(new QualifiedName("",new URL(serverUrl + REMOTE_REGISTRY_URL).toString()), null);
-	        	propertyFile.setSessionProperty(new QualifiedName(
-	                                                              "",
-	                                                              new URL(serverUrl +
-	                                                                      WS_REGISTRY_URL).toString()), null);
-	        	propertyFile.setSessionProperty(new QualifiedName("", new URL(serverUrl + PROVISIONING_ADMIN_SERVICE_URL).toString()), null);
-	        }
-        } catch (CoreException e) {
-	        // TODO Auto-generated catch block
-	        e.printStackTrace();
-        } catch (MalformedURLException e) {
-	        // TODO Auto-generated catch block
-	        e.printStackTrace();
-        }
+	public void clearSessionProperties() {
+		try {
+			if (propertyFile.exists()) {
+				propertyFile.setSessionProperty(
+						new QualifiedName("", new URL(serverUrl + REMOTE_REGISTRY_URL).toString()), null);
+				propertyFile.setSessionProperty(new QualifiedName("", new URL(serverUrl + WS_REGISTRY_URL).toString()),
+						null);
+				propertyFile.setSessionProperty(new QualifiedName("", new URL(serverUrl
+						+ PROVISIONING_ADMIN_SERVICE_URL).toString()), null);
+			}
+		} catch (CoreException e) {
+			log.error("Session property clearing process has failed due to  " + e.getMessage(), e);
+		} catch (MalformedURLException e) {
+			log.error("Session property clearing process has failed due to  " + e.getMessage(), e);
+		}
 	}
 	
 	public WSResourceData getAll(String registryResourcePath){
@@ -1211,17 +1181,13 @@ public class Registry {
 			try {
 	            return ((WSRegistryServiceClient)getRegistry()).getStub().getAll(registryResourcePath);
             } catch (RemoteException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	             log.error("WS resource getting failed due to "+e.getMessage(), e);          
             } catch (InvalidRegistryURLException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+            	log.error("WS resource getting failed due to "+e.getMessage(), e);	           
             } catch (UnknownRegistryException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+            	log.error("WS resource getting failed due to "+e.getMessage(), e);	          
             } catch (WSRegistryServiceRegistryExceptionException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+            	log.error("WS resource getting failed due to "+e.getMessage(), e);	          
             }
 		}
 		return null;

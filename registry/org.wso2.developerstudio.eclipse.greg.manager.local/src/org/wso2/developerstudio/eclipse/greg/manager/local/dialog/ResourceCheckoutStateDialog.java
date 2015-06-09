@@ -39,7 +39,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 public class ResourceCheckoutStateDialog extends Dialog {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
-	IFolder folder;
+	IResource folder;
 	List<IResource> allRootResources;
 
 	/**
@@ -47,7 +47,7 @@ public class ResourceCheckoutStateDialog extends Dialog {
 	 * @param parentShell
 	 * @param folder
 	 */
-	public ResourceCheckoutStateDialog(Shell parentShell, IFolder folder) {
+	public ResourceCheckoutStateDialog(Shell parentShell, IResource folder) {
 		super(parentShell);
 		this.folder = folder;
 		allRootResources = new ArrayList<IResource>();

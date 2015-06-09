@@ -9,4 +9,9 @@
         id="org.wso2.developerstudio.registry.remote.registry.apim.pespective"
         name="WSO2 APIM"/>
 	</extension>
+	 <extension point="org.eclipse.ui.preferencePages">
+		<page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.appfactory" name="WSO2 APIM" 
+		class="org.wso2.developerstudio.eclipse.greg.apim.preferance.ApimPreferencePage" 
+		category="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences"></page>
+	</extension>
 </plugin>

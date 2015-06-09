@@ -72,8 +72,9 @@ public class CommitAction extends BaseRegistryAction {
 	 * 
 	 */
 	protected void executeFile(IFile file, IAction action) {
+		
 		ResourceCheckoutStateDialog r = new ResourceCheckoutStateDialog(Display.getCurrent().getActiveShell(), 
-											(IFolder)file.getParent());
+											file);
 		if (r.open() == Window.OK) {
 			String path = file.getLocation().toOSString();
 			try {

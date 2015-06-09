@@ -70,6 +70,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IPropertyListener;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -161,13 +162,16 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     public EsbMultiPageEditor() {
         super();
         IWorkbench workbench = PlatformUI.getWorkbench();
-        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-         
+        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();        
         // open the perspective "wso2 esb graphical"
         // TODO review if this is the best place for switching
         try {
-			workbench.showPerspective("org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective", window);
+        	IPerspectiveDescriptor perspective = window.getActivePage().getPerspective();
+        	if (!"org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId())){        	
+        		workbench.showPerspective("org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.perspective", window);
+        	}
 		} catch (WorkbenchException e) {
+			log.error("Perspective change failed when loading ESB editor "+e.getMessage(), e);
 		}
 
     }

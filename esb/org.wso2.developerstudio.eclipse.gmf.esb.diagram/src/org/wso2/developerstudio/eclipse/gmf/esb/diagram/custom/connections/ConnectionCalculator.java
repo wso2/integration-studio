@@ -10,6 +10,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.ui.IEditorPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractBaseFigureEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractInputConnectorEditPart;
@@ -23,6 +24,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceEd
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.DropMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyServiceEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor;
 
 /*
  * This class is used to handle automatic connection creation stuffs. 
@@ -41,6 +43,8 @@ public class ConnectionCalculator {
 		double distanceToUpperLine = 0.0;
 		double distanceToBottomLine = 0.0;
 		EsbLinkEditPart nearestLink = null;
+		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+		double zoom = esbMultiPageEditor.getZoom();
 
 		if (childEditPart != null) {
 			updateCurrentStatesForLinks(childEditPart);
@@ -52,18 +56,18 @@ public class ConnectionCalculator {
 							.getBounds().getLeft().x;
 					int xRight = (((EsbLinkEditPart) links.get(i)).getFigure()
 							.getBounds().getRight().x);
-					int actualCurrentPosition = currentFigureLocation.x;
+					double actualCurrentPosition = currentFigureLocation.x;
 					if ((xLeft < actualCurrentPosition)
 							&& (actualCurrentPosition < xRight)) {
-						nearLinks.add((EsbLinkEditPart) links.get(i));
+						nearLinks.add((EsbLinkEditPart) links.get(i));						
 					}
 				}
 			}
 		}
 		for (int q = 0; q < nearLinks.size(); ++q) {
-			if ((((nearLinks.get(q).getFigure().getBounds().getLeft().y) < (currentFigureLocation.y + 70)) && ((currentFigureLocation.y) < (nearLinks
+			if ((((nearLinks.get(q).getFigure().getBounds().getLeft().y) < ((currentFigureLocation.y) + (70*zoom))) && ((currentFigureLocation.y) < (nearLinks
 					.get(q).getFigure().getBounds().getBottomLeft().y)))
-					|| (((nearLinks.get(q).getFigure().getBounds().getLeft().y) > (currentFigureLocation.y + 70)) && ((currentFigureLocation.y) > (nearLinks
+					|| (((nearLinks.get(q).getFigure().getBounds().getLeft().y) > (currentFigureLocation.y + (70*zoom))) && ((currentFigureLocation.y) > (nearLinks
 							.get(q).getFigure().getBounds().getBottomLeft().y)))) {
 				return (EsbLinkEditPart) nearLinks.get(q);
 			}
@@ -91,7 +95,7 @@ public class ConnectionCalculator {
 				nearestLink = (EsbLinkEditPart) nearLinks.get(q);
 			}
 		}
-		if (current > 35) {
+		if (current > (35*zoom)) {
 			return null;
 		}
 		return nearestLink;
@@ -105,7 +109,7 @@ public class ConnectionCalculator {
 		AbstractConnectorEditPart nearConnector = null;
 		AbstractConnectorEditPart currentConnector = null;
 		int yCurrent = 0, yDistance1 = 0, yDistance2 = 0;
-		int EastDistance = 0, EastCurrent = 0, WestCurrent = 0, WestDistance = 0;
+		double EastDistance = 0, EastCurrent = 0, WestCurrent = 0, WestDistance = 0;
 
 		if (childEditPart != null) {
 
@@ -139,8 +143,8 @@ public class ConnectionCalculator {
 					updateCurrentStatesForConnectors(currentConnector);
 					updateCurrentStatesForGivenFigure(connectors.get(i));
 				
-					int xLeft=connectorFigureLocation.x;
-					int actualCurrentPosition = currentFigureLocation.x;					
+					double xLeft=connectorFigureLocation.x;
+					double actualCurrentPosition = currentFigureLocation.x;					
 					if ((figure instanceof EastPointerFigure)
 							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart.EastPointerFigure)
 							|| (figure instanceof org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart.EastPointerFigure)
@@ -184,7 +188,6 @@ public class ConnectionCalculator {
 				}
 			}
 		}
-
 		if (nearForwardConnector != null) {
 			updateCurrentStatesForGivenFigure(nearForwardConnector);
 			if((nearForwardConnector.getParent() instanceof ProxyServiceEditPart)
@@ -225,7 +228,7 @@ public class ConnectionCalculator {
 		if (yCurrent > 35) {
 			nearConnector = null;
 		}
-		
+				
 		/*
 		 * If 'nearConnector' is null we have to check again whether dropped
 		 * mediator is the first element of a compartment of a complex mediator.
@@ -272,6 +275,9 @@ public class ConnectionCalculator {
 		FigureCanvas canvas = (FigureCanvas) ctrl;
 		int horizontal = canvas.getHorizontalBar().getSelection();
 		int vertical = canvas.getVerticalBar().getSelection();
+
+		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();
+		double zoom = esbMultiPageEditor.getZoom();
 		/*
 		 * Commented following two line of codes to get rid of the issue - When
 		 * element is dropped inside the compartment of a complex
@@ -280,10 +286,9 @@ public class ConnectionCalculator {
 		 */
 		//horizontal += 20;
 		//vertical += 30;
-		org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);
-
-		currentFigureLocation = new Point((x - p.x) + horizontal, (y - p.y)
-				+ vertical);
+		org.eclipse.swt.graphics.Point p = canvas.toDisplay(0, 0);	
+		currentFigureLocation = new Point((((x - p.x) + horizontal)/zoom), (((y - p.y)
+				+ vertical)/zoom));
 	}	
 	
 	private static void updateCurrentStatesForGivenFigure(

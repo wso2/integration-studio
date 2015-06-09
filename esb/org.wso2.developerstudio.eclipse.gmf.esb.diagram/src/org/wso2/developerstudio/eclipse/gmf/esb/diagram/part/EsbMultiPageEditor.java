@@ -156,7 +156,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	
 	public static EsbMultiPageEditor currentEditor;
 	
-    /**
+	private double zoom = 1.0;
+
+	/**
      * Creates a multi-page editor
      */
     public EsbMultiPageEditor() {
@@ -216,15 +218,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
             }            
             addPage(DESIGN_VIEW_PAGE_INDEX, graphicalEditor, editorInput);
             setPageText(DESIGN_VIEW_PAGE_INDEX, "Design"); //$NON-NLS-1$
-            
-            
 
-            
-            // Disable Zoom on CTRL+MOUSE WHEEL. 
-			if (getDiagramGraphicalViewer() != null) {
-				getDiagramGraphicalViewer().setProperty(
-						MouseWheelHandler.KeyGenerator.getKey(SWT.CTRL), null);
-			}
         } catch (PartInitException e) {
             ErrorDialog
                     .openError(
@@ -921,6 +915,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	
 	public void focusToolbar() {
 		graphicalEditor.focusToolBar();
+	}
+	
+    public double getZoom() {
+		return zoom;
+	}
+    
+	public void setZoom(double zoom) {
+		this.zoom = zoom;
 	}
 	
 }

@@ -2,7 +2,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb.diagram.part;
 
 import org.eclipse.gmf.runtime.common.ui.action.global.GlobalActionId;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
+import org.eclipse.gmf.runtime.diagram.ui.internal.actions.ZoomContributionItem;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramActionBarContributor;
+import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.ui.IActionBars;
@@ -47,6 +49,12 @@ public class EsbDiagramActionBarContributor extends DiagramActionBarContributor 
 		// Remove Diagram toolbar from ESB editor..
 		IToolBarManager toolBarManager = bars.getToolBarManager();
 		assert toolBarManager != null;
-		toolBarManager.removeAll();
+		IContributionItem[] contributionItem=  toolBarManager.getItems();
+		for(int i=0; i<contributionItem.length;++i){
+			// Not removing "zoom" toolbar item.
+			if(!(contributionItem[i] instanceof ZoomContributionItem)){
+				toolBarManager.remove(contributionItem[i]);
+			}
+		}
 	}
 }

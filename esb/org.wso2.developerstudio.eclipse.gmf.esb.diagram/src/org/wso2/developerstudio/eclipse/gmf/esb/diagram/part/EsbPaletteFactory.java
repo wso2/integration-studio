@@ -113,19 +113,6 @@ public class EsbPaletteFactory {
 	 * @generated NOT
 	 */
 	public void fillPalette(PaletteRoot paletteRoot) {
-		/*
-		 * Hide Zoom In and Zoom Out icons of the palette toolbar. 
-		 * Fixing TOOLS-1872
-		 */
-		PaletteToolbar paletteToolbar = (PaletteToolbar) paletteRoot
-				.getChildren().get(0);
-		if (paletteToolbar != null) {
-			((PaletteToolEntry) paletteToolbar.getChildren().get(2))
-					.setVisible(false);
-			((PaletteToolEntry) paletteToolbar.getChildren().get(3))
-					.setVisible(false);
-		}
-
 		paletteRoot.add(createNodes1Group());
 		paletteRoot.add(createMediators2Group());
 		paletteRoot.add(createEndPoints3Group());

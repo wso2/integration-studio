@@ -23,6 +23,8 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.KeyHandler;
 import org.eclipse.gef.KeyStroke;
+import org.eclipse.gef.editparts.ZoomListener;
+import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.internal.ui.palette.editparts.DrawerEditPart;
 import org.eclipse.gef.internal.ui.palette.editparts.ToolEntryEditPart;
 import org.eclipse.gef.palette.PaletteContainer;
@@ -65,6 +67,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IShowInTargetList;
 import org.eclipse.ui.part.ShowInContext;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.extensions.CustomPaletteToolTransferDropTargetListener;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.extensions.CustomZoomListener;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.navigator.EsbNavigatorItem;
 
 /**
@@ -322,10 +325,10 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMark
 
 		KeyHandler parentHandler = getKeyHandler();
 
-		// CTRL + '=' disable zoom in 
+/*		// CTRL + '=' disable zoom in 
 		parentHandler.remove(KeyStroke.getPressed('=', 0x3d, SWT.CTRL));
 		// CTRL + '-' * disable zoom out
-		parentHandler.remove(KeyStroke.getPressed('-', 0x2d, SWT.CTRL));
+		parentHandler.remove(KeyStroke.getPressed('-', 0x2d, SWT.CTRL));*/
 
 		viewerKeyHandler.setParent(getKeyHandler());
 		viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
@@ -345,7 +348,10 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMark
 		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().addDropTargetListener(
 				new CustomPaletteToolTransferDropTargetListener(getGraphicalViewer()));
-
+		
+		// Adding zoom listener 
+		ZoomManager zoomManager = (ZoomManager) getGraphicalViewer().getProperty(ZoomManager.class.toString());
+		zoomManager.addZoomListener(new CustomZoomListener(esbEditor)); 	
 	}
 
 	protected int getInitialDockLocation() {

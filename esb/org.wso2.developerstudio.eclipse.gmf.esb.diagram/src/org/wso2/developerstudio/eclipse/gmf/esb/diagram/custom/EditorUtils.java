@@ -688,7 +688,7 @@ public class EditorUtils {
 	}
 	
 	/**
-	 * Return the active editor
+	 * Return the active project
 	 */
 	public static IProject getActiveProject() {
 		IEditorPart editorPart = null;
@@ -711,6 +711,23 @@ public class EditorUtils {
 			}
 		}
 		return activeProject;
+	}
+	
+	/**
+	 * Return the active editor
+	 */
+	public static IEditorPart getActiveEditor() {
+		IEditorPart editorPart = null;
+		IEditorReference editorReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage().getEditorReferences();
+		for (int i = 0; i < editorReferences.length; i++) {
+			IEditorPart editor = editorReferences[i].getEditor(false);
+			if (editor != null) {
+				editorPart = editor.getSite().getWorkbenchWindow().getActivePage()
+						.getActiveEditor();
+			}
+		}
+		return editorPart;
 	}
 	
 	public static ShapeNodeEditPart getChildContainer(MultipleCompartmentComplexFiguredAbstractMediator mediator) {

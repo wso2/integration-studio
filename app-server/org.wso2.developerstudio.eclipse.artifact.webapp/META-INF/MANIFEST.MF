@@ -52,3 +52,4 @@ Import-Package: org.apache.axiom.om,
  org.wso2.developerstudio.eclipse.utils.ui,
  org.wso2.developerstudio.eclipse.utils.wst
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.wso2.developerstudio.eclipse.artifact.webapp.project.export

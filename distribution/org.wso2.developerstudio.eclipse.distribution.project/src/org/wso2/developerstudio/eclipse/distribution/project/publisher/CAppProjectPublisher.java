@@ -222,4 +222,12 @@ public class CAppProjectPublisher implements ICarbonServerModulePublisher {
         return list;
     }
 
+	@Override
+	public void setUpdatedResource(IResource updatedResource) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 }

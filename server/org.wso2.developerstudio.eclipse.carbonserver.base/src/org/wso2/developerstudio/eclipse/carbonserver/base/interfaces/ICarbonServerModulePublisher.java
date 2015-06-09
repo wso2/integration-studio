@@ -17,12 +17,15 @@
 package org.wso2.developerstudio.eclipse.carbonserver.base.interfaces;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.wst.server.core.IServer;
 
 public interface ICarbonServerModulePublisher {
 	public void publish(IProject project, IServer server, File serverHome, File deployLocation) throws Exception;
 	public void unpublish(IProject project, IServer server, File serverHome, File deployLocation) throws Exception;
 	public void hotUpdate(IProject project, IServer server, File serverHome, File deployLocation) throws Exception;
+	public void setUpdatedResource(IResource updatedResource);
 }

@@ -171,7 +171,7 @@ public abstract class ProjectArtifactHandler {
 						getProgressMonitor());
 		project.build(IncrementalProjectBuilder.FULL_BUILD,
 				getProgressMonitor());
-		IJavaProject javaProject = JavaCore.create(project);;
+		IJavaProject javaProject = JavaCore.create(project);
 		return getOutputPath(javaProject);
 	}
 	

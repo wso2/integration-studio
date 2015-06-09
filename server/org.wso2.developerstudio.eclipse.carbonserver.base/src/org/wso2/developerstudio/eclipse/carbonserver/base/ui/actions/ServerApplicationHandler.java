@@ -38,8 +38,6 @@ public class ServerApplicationHandler extends AbstractHandler{
     private static final String WEB_TEMP_PATH = "";
 
 	public Object execute(ExecutionEvent arg0) throws ExecutionException {
-
-		// System.out.println("command Executed");
 		// TODO: Execute the Redeploy logic here.
 		IStructuredSelection selection =
 		                                 (IStructuredSelection) HandlerUtil.getCurrentSelectionChecked(arg0);
@@ -48,7 +46,6 @@ public class ServerApplicationHandler extends AbstractHandler{
 		// There is always only one module in the IServerModule for our case.
 		String projectName = object.getModule()[0].getName();
 		IServer server = object.getServer();
-
 		CarbonServerManager.getInstance().redeployServiceModule(server.getId(), WEB_TEMP_PATH,
 				projectName);
 		return null;

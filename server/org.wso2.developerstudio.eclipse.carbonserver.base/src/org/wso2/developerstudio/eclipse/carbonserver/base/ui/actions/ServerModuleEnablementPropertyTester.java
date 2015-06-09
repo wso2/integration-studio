@@ -23,6 +23,7 @@ import org.eclipse.wst.server.ui.IServerModule;
 
 /**
  * This class is used to test the property to enable the Redeploy option for
+ * 
  * Carbon Server modules.
  * 
  */
@@ -35,8 +36,9 @@ public class ServerModuleEnablementPropertyTester extends PropertyTester {
 		if (arg0 instanceof IServerModule) {
 			IModule[] modules = (IModule[]) ((IServerModule) arg0).getModule();
 			for (IModule iModule : modules) {
-				if (WSO2_CARBON_MODULE.equals(iModule.getModuleType().getId()) &&
-				    ((IServerModule) arg0).getServer().getServerState() == IServer.STATE_STARTED) {
+				String moduleType = iModule.getModuleType().getId();
+				if (WSO2_CARBON_MODULE.equals(moduleType)
+						&& ((IServerModule) arg0).getServer().getServerState() == IServer.STATE_STARTED) {
 					return true;
 				}
 			}

@@ -17,6 +17,7 @@
 package org.wso2.developerstudio.eclipse.artifact.webapp.project.export;
 
 import java.io.File;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +32,9 @@ import org.wso2.developerstudio.eclipse.utils.file.TempFileUtils;
 
 public class WebAppArtfactExportHandler extends ProjectArtifactHandler {
 
-	public List<IResource> exportArtifact(IProject project) throws Exception{
+	public List<IResource> exportArtifact(IProject project) throws Exception {
 		List<IResource> exportResources = new ArrayList<IResource>();
-	        
+
 		ArchiveManipulator archiveManipulator = new ArchiveManipulator();
 
 		clearTarget(project);
@@ -43,14 +44,13 @@ public class WebAppArtfactExportHandler extends ProjectArtifactHandler {
 		IPath webapp = project.getFolder("WebContent").getLocation();
 
 		File tempProject = createTempProject();
-
 		File webappResources = createTempDir(tempProject, "webapp_resources");
 
 		if (webapp.toFile().exists()) {
-			FileUtils.copyDirectoryContents(webapp.toFile(), webappResources); // copy webapp files
+			FileUtils.copyDirectoryContents(webapp.toFile(), webappResources);
 			File classes = new File(webappResources, "WEB-INF" + File.separator + "classes");
 			classes.mkdirs();
-			FileUtils.copyDirectoryContents(outPutPath.toFile(), classes); // copy webapp files
+			FileUtils.copyDirectoryContents(outPutPath.toFile(), classes);
 		}
 		File tmpArchive = new File(tempProject, project.getName().concat(".war"));
 		archiveManipulator.archiveDir(tmpArchive.toString(), webappResources.toString());
@@ -60,6 +60,28 @@ public class WebAppArtfactExportHandler extends ProjectArtifactHandler {
 		TempFileUtils.cleanUp();
 
 		return exportResources;
+	}
+	
+	/**
+	 * 
+	 * @param project the project use to create the exploded webApp
+	 * @return
+	 * @throws Exception
+	 */
+
+	public File createExplodedWebapp(IProject project) throws Exception {
+
+		clearTarget(project);
+		IPath outPutPath = buildJavaProject(project);
+		IPath webContentPath = project.getFolder("WebContent").getLocation();
+		File explodedWebApp = new File(webContentPath.toFile().getAbsolutePath());
+
+		if (webContentPath.toFile().exists()) {
+			File classes = new File(explodedWebApp, "WEB-INF" + File.separator + "classes");
+			classes.mkdirs();
+			FileUtils.copyDirectoryContents(outPutPath.toFile(), classes);
+		}
+		return explodedWebApp;
 	}
 
 }

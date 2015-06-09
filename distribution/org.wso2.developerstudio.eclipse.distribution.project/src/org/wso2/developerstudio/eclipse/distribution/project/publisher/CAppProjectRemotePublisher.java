@@ -29,22 +29,27 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class CAppProjectRemotePublisher implements ICarbonServerModulePublisher{
 
 	public void publish(IProject project, IServer server, File serverHome,
-			File deployLocation) throws Exception {
-		URL serverURL = CarbonServerManager.getServerURL(server);
-		ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
-		File tempDir = FileUtils.createTempDirectory();
-		CAppDeployer cappDeployer = new CAppDeployer();
-//        File carFile = CAppUtils.generateCAR(tempDir.getPath(), project, false);
-		CarExportHandler handler=new CarExportHandler();
-		List<IResource> exportArtifact = handler.exportArtifact(project);
-		cappDeployer.deployCApp(serverCredentials.getUsername(), serverCredentials.getPassword(), serverURL.toString(), ((IFile)exportArtifact.get(0)).getLocation().toFile());
-		
+			File deployLocation) throws Exception {		
+		if (project.hasNature("org.wso2.developerstudio.eclipse.distribution.project.nature")){
+			
+			URL serverURL = CarbonServerManager.getServerURL(server);
+			ICredentials serverCredentials = CarbonServerManager.getServerCredentials(server);
+			File tempDir = FileUtils.createTempDirectory();
+			CAppDeployer cappDeployer = new CAppDeployer();
+//	        File carFile = CAppUtils.generateCAR(tempDir.getPath(), project, false);
+			CarExportHandler handler=new CarExportHandler();
+			List<IResource> exportArtifact = handler.exportArtifact(project);
+			cappDeployer.deployCApp(serverCredentials.getUsername(), serverCredentials.getPassword(), serverURL.toString(), ((IFile)exportArtifact.get(0)).getLocation().toFile());
+			
+		}
+				
 	}
 
 	public void unpublish(IProject project, IServer server, File serverHome,
@@ -87,5 +92,13 @@ public class CAppProjectRemotePublisher implements ICarbonServerModulePublisher{
 		// });
 
 	}
+
+	@Override
+	public void setUpdatedResource(IResource updatedResource) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }

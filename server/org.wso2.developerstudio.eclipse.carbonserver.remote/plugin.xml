@@ -22,6 +22,10 @@
                types="org.wso2.developerstudio.eclipse.carbon.module"
                versions="1.0">
          </moduleType>
+         <moduleType
+               types="jst.web"
+               versions="2.2, 2.3, 2.4">
+     	</moduleType>
       </runtimeType>
    </extension>
    <extension point="org.eclipse.wst.server.core.serverTypes">
@@ -60,6 +64,10 @@
             version="1.0">
       </runtime-component-version>
       <supported>
+         <facet
+               id="jst.web"
+               version="2.2, 2.3, 2.4">
+         </facet>
          <facet
                id="org.wso2.developerstudio.eclipse.carbon.facetId"
                version="1.0">

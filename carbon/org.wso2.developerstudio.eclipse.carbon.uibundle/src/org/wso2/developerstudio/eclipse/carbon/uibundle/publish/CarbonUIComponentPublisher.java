@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.carbon.uibundle.publish;
 import java.io.File;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerModulePublisher;
 import org.eclipse.wst.server.core.IServer;
 
@@ -35,5 +36,11 @@ public class CarbonUIComponentPublisher implements ICarbonServerModulePublisher 
     public void unpublish(IProject project, IServer server, File serverHome, File deployLocation) throws Exception {
 	    
     }
+
+	@Override
+	public void setUpdatedResource(IResource updatedResource) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

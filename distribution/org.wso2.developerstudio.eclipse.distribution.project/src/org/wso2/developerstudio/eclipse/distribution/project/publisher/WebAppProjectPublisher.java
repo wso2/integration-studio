@@ -149,14 +149,6 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 					destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);
 					FileUtils.copyFile(sourceFile, destinationFile, true);
 				}
-			} else if (resource.getType() == IResource.FOLDER && resourceChngeKind == IResourceDelta.ADDED) {
-				path = resource.getProjectRelativePath();
-				resPath = getResourcePath(path);
-				sourceFile = new File(resource.getLocation().toFile().getPath());
-				destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);
-				if (!destinationFile.exists()) {
-					FileUtils.copyDirectory(sourceFile, destinationFile, true);
-				}
 			}
 		}
 	}

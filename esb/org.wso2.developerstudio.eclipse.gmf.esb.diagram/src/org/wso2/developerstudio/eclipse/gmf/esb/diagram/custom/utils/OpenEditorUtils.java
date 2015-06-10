@@ -27,6 +27,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.deserializer.Deserializer;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbDiagramEditor;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbEditorInput;
@@ -42,7 +43,7 @@ public class OpenEditorUtils {
 	 * Open the ESB diagram editor for the given ESB configuration file  
 	 * @param fileTobeOpened
 	 */
-	public void openSeparateEditor(IFile fileTobeOpened) {
+	public IEditorPart openSeparateEditor(IFile fileTobeOpened) {
 		try {
 			final String source = FileUtils.readFileToString(fileTobeOpened.getLocation().toFile());
 			final Deserializer deserializer = Deserializer.getInstance();
@@ -63,6 +64,8 @@ public class OpenEditorUtils {
 					public void run() {
 						try {
 							deserializer.updateDesign(source, graphicalEditor);
+							EditorUtils.setLockmode(graphicalEditor, false);
+
 						} catch (Exception e) {
 							log.error("Error occured while deserializing ", e);
 						}
@@ -70,10 +73,13 @@ public class OpenEditorUtils {
 					}
 				});
 			}
+			return openEditor;
 		} catch (PartInitException e) {
 			log.error("Error occured while opening a separate editor", e);
 		} catch (IOException e) {
 			log.error("Error occured while opening a separate editor", e);
 		}
+		return null;
 	}
+	
 }

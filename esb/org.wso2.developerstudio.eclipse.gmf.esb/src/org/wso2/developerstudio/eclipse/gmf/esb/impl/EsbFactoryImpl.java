@@ -3267,10 +3267,14 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ForEachMediator createForEachMediator() {
 		ForEachMediatorImpl forEachMediator = new ForEachMediatorImpl();
+		forEachMediator.setInputConnector(createForEachMediatorInputConnector());
+		forEachMediator.setOutputConnector(createForEachMediatorOutputConnector());
+		forEachMediator.setTargetOutputConnector(createForEachMediatorTargetOutputConnector());
+		forEachMediator.setMediatorFlow(createMediatorFlow());
 		return forEachMediator;
 	}
 

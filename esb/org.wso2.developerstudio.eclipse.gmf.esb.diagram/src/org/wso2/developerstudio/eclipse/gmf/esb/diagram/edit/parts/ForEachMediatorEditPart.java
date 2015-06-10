@@ -145,7 +145,8 @@ public class ForEachMediatorEditPart extends SingleCompartmentComplexFiguredAbst
 		}
 		if (childEditPart instanceof ForEachMediatorInputConnectorEditPart) {
 			IFigure borderItemFigure = ((ForEachMediatorInputConnectorEditPart) childEditPart).getFigure();
-			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure, PositionConstants.WEST, 0.5);
+			BorderItemLocator locator = new FixedBorderItemLocator(getMainFigure(), borderItemFigure,
+					PositionConstants.WEST, 0.5);
 			getBorderedFigure().getBorderItemContainer().add(borderItemFigure, locator);
 			return true;
 		}

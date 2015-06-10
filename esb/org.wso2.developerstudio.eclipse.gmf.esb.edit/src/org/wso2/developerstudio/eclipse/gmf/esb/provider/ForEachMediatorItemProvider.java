@@ -54,17 +54,35 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
-
-			addForEachIDPropertyDescriptor(object);
-			addSequenceTypePropertyDescriptor(object);
-			addSequenceNamePropertyDescriptor(object);
+		if (itemPropertyDescriptors != null) {
+			itemPropertyDescriptors.clear();
 		}
+		super.getPropertyDescriptors(object);
+		
+		ForEachMediator mediator = (ForEachMediator) object;
+
+		addForEachIDPropertyDescriptor(object);
+		addForEachExpressionPropertyDescriptor(object);
+		
+		addSequenceTypePropertyDescriptor(object);
+		switch (mediator.getSequenceType()) {
+		case REGISTRY_REFERENCE: {
+			addSequenceKeyPropertyDescriptor(object);
+			break;
+		}
+		case NAMED_REFERENCE: {
+			addSequenceNamePropertyDescriptor(object);
+			break;
+		}
+		case ANONYMOUS: {
+			break;
+		}
+		}
+		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
 
@@ -91,6 +109,28 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the For Each Expression feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addForEachExpressionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ForEachMediator_forEachExpression_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_forEachExpression_feature", "_UI_ForEachMediator_type"),
+				 EsbPackage.Literals.FOR_EACH_MEDIATOR__FOR_EACH_EXPRESSION,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Sequence Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,6 +148,28 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Sequence Key feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSequenceKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ForEachMediator_sequenceKey_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ForEachMediator_sequenceKey_feature", "_UI_ForEachMediator_type"),
+				 EsbPackage.Literals.FOR_EACH_MEDIATOR__SEQUENCE_KEY,
+				 true,
+				 false,
+				 false,
+				 null,
 				 null,
 				 null));
 	}

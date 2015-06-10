@@ -9519,7 +9519,7 @@
               xsi:type="gmfgen:FeatureLabelModelFacet"
               parser="/0/@labelParsers/@implementations.0">
             <metaFeatures
-                href="esb.genmodel#//esb/EsbElement/description"/>
+                href="esb.genmodel#//esb/ForEachMediator/forEachID"/>
           </modelFacet>
         </labels>
       </childNodes>

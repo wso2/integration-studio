@@ -17,12 +17,9 @@ package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediatorInputConnector;
@@ -58,6 +55,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  * @generated
  */
 public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator {
+	
+	private static final String FOREACH_EXPRESSION_NAME = "ForEach Expression";
+	private static final String FOREACH_EXPRESSION_PROPERTY_NAME = "expression";
+	private static final String FOREACH_REGISTRY_KEY_NAME = "Sequence Reference";
+	private static final String FOREACH_REGISTRY_KEY_KEY_NAME = "key";
+
 	/**
 	 * The default value of the '{@link #getForEachID() <em>For Each ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -201,10 +204,25 @@ public class ForEachMediatorImpl extends MediatorImpl implements ForEachMediator
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ForEachMediatorImpl() {
 		super();
+
+		// ForEach expression.
+		NamespacedProperty forEachExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+		forEachExpression.setPrettyName(FOREACH_EXPRESSION_NAME);
+		forEachExpression.setPropertyName(FOREACH_EXPRESSION_PROPERTY_NAME);
+		forEachExpression.setPropertyValue(DEFAULT_EXPRESSION_PROPERTY_VALUE);
+		setForEachExpression(forEachExpression);
+		
+		RegistryKeyProperty targetSequenceKey = EsbFactoryImpl.eINSTANCE.createRegistryKeyProperty();
+		targetSequenceKey.setPrettyName(FOREACH_REGISTRY_KEY_NAME);
+		targetSequenceKey.setKeyName(FOREACH_REGISTRY_KEY_KEY_NAME);
+		targetSequenceKey.setKeyValue(DEFAULT_REGISTRY_KEY);
+		setSequenceKey(targetSequenceKey);
+
+		setTarget(EsbFactoryImpl.eINSTANCE.createForEachTarget());
 	}
 
 	/**

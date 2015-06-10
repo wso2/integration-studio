@@ -2373,7 +2373,7 @@
           xsi:type="gmfgraph:CustomFigure"
           name="ForEachMediatorGraphicalFigure"
           qualifiedClassName="org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape">
-        <foregroundColor
+        <backgroundColor
             xsi:type="gmfgraph:RGBColor"
             red="230"
             green="230"

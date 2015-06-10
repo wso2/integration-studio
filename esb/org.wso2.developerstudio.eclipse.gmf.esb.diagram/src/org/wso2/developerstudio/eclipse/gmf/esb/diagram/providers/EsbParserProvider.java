@@ -1045,18 +1045,18 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
 	/**
 	 * @generated
 	 */
-	private IParser forEachMediatorDescription_5213Parser;
+	private IParser forEachMediatorForEachID_5213Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getForEachMediatorDescription_5213Parser() {
-		if (forEachMediatorDescription_5213Parser == null) {
-			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getEsbElement_Description() };
+	private IParser getForEachMediatorForEachID_5213Parser() {
+		if (forEachMediatorForEachID_5213Parser == null) {
+			EAttribute[] features = new EAttribute[] { EsbPackage.eINSTANCE.getForEachMediator_ForEachID() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			forEachMediatorDescription_5213Parser = parser;
+			forEachMediatorForEachID_5213Parser = parser;
 		}
-		return forEachMediatorDescription_5213Parser;
+		return forEachMediatorForEachID_5213Parser;
 	}
 
 	/**
@@ -1261,7 +1261,7 @@ public class EsbParserProvider extends AbstractProvider implements IParserProvid
 		case FastXSLTMediatorDescriptionEditPart.VISUAL_ID:
 			return getFastXSLTMediatorDescription_5212Parser();
 		case ForEachMediatorDescriptionEditPart.VISUAL_ID:
-			return getForEachMediatorDescription_5213Parser();
+			return getForEachMediatorForEachID_5213Parser();
 		case DefaultEndPointEndPointName2EditPart.VISUAL_ID:
 			return getDefaultEndPointEndPointName_5160Parser();
 		case AddressEndPointEndPointName2EditPart.VISUAL_ID:

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.mediators.eip.Target;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
@@ -53,10 +52,6 @@ public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
 
 		forEachMediator.setId(visualForEach.getForEachID());
 
-		Target target = new Target();
-		target.setSoapAction(visualForEach.getTarget().getSoapAction());
-		target.setToAddress(visualForEach.getTarget().getToAddress());
-
 		switch (visualForEach.getSequenceType()) {
 		case ANONYMOUS:
 			// ListMediator targetList = new AnonymousListMediator();
@@ -72,15 +67,15 @@ public class ForEachMediatorTransformer extends AbstractEsbNodeTransformer {
 			doTransform(newInfo, visualForEach.getTargetOutputConnector());
 
 			// targetSequence.addAll(targetList.getList());
-			target.setSequence(targetSequence);
+			forEachMediator.setSequence(targetSequence);
 			break;
 
 		case REGISTRY_REFERENCE:
-			target.setSequenceRef(visualForEach.getSequenceKey().getKeyValue());
+			forEachMediator.setSequenceRef(visualForEach.getSequenceKey().getKeyValue());
 			break;
 
 		case NAMED_REFERENCE:
-			target.setSequenceRef(visualForEach.getSequenceName());
+			forEachMediator.setSequenceRef(visualForEach.getSequenceName());
 			break;
 		}
 		return forEachMediator;

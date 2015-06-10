@@ -54,17 +54,35 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
-
-			addForEachIDPropertyDescriptor(object);
-			addSequenceTypePropertyDescriptor(object);
-			addSequenceNamePropertyDescriptor(object);
+		if (itemPropertyDescriptors != null) {
+			itemPropertyDescriptors.clear();
 		}
+		super.getPropertyDescriptors(object);
+		
+		ForEachMediator mediator = (ForEachMediator) object;
+
+		addForEachIDPropertyDescriptor(object);
+		addForEachExpressionPropertyDescriptor(object);
+		
+		addSequenceTypePropertyDescriptor(object);
+		switch (mediator.getSequenceType()) {
+		case REGISTRY_REFERENCE: {
+			addSequenceKeyPropertyDescriptor(object);
+			break;
+		}
+		case NAMED_REFERENCE: {
+			addSequenceNamePropertyDescriptor(object);
+			break;
+		}
+		case ANONYMOUS: {
+			break;
+		}
+		}
+		addDescriptionPropertyDescriptor(object);
 		return itemPropertyDescriptors;
 	}
 

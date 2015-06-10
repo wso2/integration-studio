@@ -1271,7 +1271,7 @@
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//ForEachMediator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachMediator/forEachID"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/forEachExpression"/>
+      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/forEachExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/attachPath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/inputConnector"/>

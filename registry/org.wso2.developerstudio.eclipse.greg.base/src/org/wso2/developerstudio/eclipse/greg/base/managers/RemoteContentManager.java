@@ -152,6 +152,7 @@ public class RemoteContentManager {
 			    is.close();
 				Openable openable = ESBGraphicalEditor.getOpenable();
 				ArtifactType artifactType = (ArtifactType) openable.artifactTypeResolver(source);
+				
 				IEditorPart editorOpen = openable.editorOpen(artifactType.getLiteral(),source,workspaceFile);
 
 				return editorOpen;

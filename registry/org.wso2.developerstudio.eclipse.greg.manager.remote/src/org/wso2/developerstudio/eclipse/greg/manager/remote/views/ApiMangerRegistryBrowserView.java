@@ -47,6 +47,7 @@ public ApiMangerRegistryBrowserView() {
 		eclipseContext.set(org.eclipse.e4.core.services.log.Logger.class, null);
 		IEventBroker iEventBroker = eclipseContext.get(IEventBroker.class);
 		iEventBroker.subscribe(EVENT_TOPIC_EXPAND_TREE,getTreeExpandHandler() );
+		iEventBroker.subscribe(EVENT_TOPIC_POPULATE_NODE_DATA, getTreeNodeSelctionHandler());
 		setBroker(iEventBroker);
 	} catch (Exception e) {
 		setApimRegPath(APIM_CUSTOMSEQUENCES_PATH);	 
@@ -60,6 +61,7 @@ public void dispose() {
 	IEventBroker broker = getBroker();
 	if(broker!=null){
 		broker.unsubscribe(getTreeExpandHandler());
+		broker.unsubscribe(getTreeNodeSelctionHandler());
 	}
 	super.dispose();
 }

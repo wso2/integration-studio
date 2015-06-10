@@ -50,8 +50,11 @@ public class GraphicalEditorStartupUtils implements Openable {
 	@Override
 	public IEditorPart editorOpen(String type,String source,IFile xmlFile)
 			throws Exception {
-				  
-		 return editorOpen("", type, "", source,xmlFile);
+		  OpenEditorUtils oeUtils = new OpenEditorUtils();
+
+          IEditorPart openSeparateEditor = oeUtils.openSeparateEditor(xmlFile);
+		// return editorOpen("", type, "", source,xmlFile);
+          return openSeparateEditor;
 	}
 	
 	private IEditorPart editorOpen(String name, String type, String locatioin,

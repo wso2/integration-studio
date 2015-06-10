@@ -96,6 +96,8 @@ public class EsbPropertySource extends PropertySource {
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getRMSequenceMediator_LastMessageXpath().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
+		} else if(pkg.getForEachMediator_ForEachExpression().equals(feature)){
+			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getIterateMediator_IterateExpression().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getIterateMediator_AttachPath().equals(feature)){
@@ -348,6 +350,8 @@ public class EsbPropertySource extends PropertySource {
 			return new CloudConnectorNewConfigPropertyDescriptor(object, itemPropertyDescriptor);
 		}else if(pkg.getCloudConnectorOperation_AvailableConfigs().equals(feature)){
             return new CloudConnectorAvailableConfigPropertyDescriptor(object, itemPropertyDescriptor);     
+		}else if(pkg.getForEachMediator_SequenceKey().equals(feature)){
+			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		}else if(pkg.getIterateMediator_SequenceKey().equals(feature)){
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if (pkg.getCloneMediator_Targets().equals(feature)) {

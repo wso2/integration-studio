@@ -116,7 +116,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 				if (openFile.exists()) {
 					if (!MessageDialog
 							.openQuestion(getShell(), "WARNING", DataServiceArtifactConstants.WARNING_MESSAGE)) {
-						return false;
+						return true;
 					}
 				}
 				FileUtils.copy(importFile, openFile);

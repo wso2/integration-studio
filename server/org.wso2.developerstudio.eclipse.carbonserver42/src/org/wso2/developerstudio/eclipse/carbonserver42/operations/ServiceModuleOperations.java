@@ -60,6 +60,7 @@ public class ServiceModuleOperations {
 	IProject project;
 	IServer server;
 	private IResource resource;
+	private int resourceChngeKind;
 
 	public ServiceModuleOperations(IProject project, IServer server) {
 		this.project = project;
@@ -81,6 +82,10 @@ public class ServiceModuleOperations {
 		this.resource = resource;
 	}
 
+	public void setResourceChngeKind(int resourceChngeKind) {
+		this.resourceChngeKind = resourceChngeKind;
+	}
+
 	public void redeployModule(boolean force) {
 		CarbonServerInformation wsasServerInformation = CarbonServerManager.getAppServerInformation().get(server);
 		/*
@@ -100,6 +105,7 @@ public class ServiceModuleOperations {
 					if (publisher instanceof WebAppProjectPublisher) {
 						WebAppProjectPublisher webAppPublisher = (WebAppProjectPublisher) publisher;
 						webAppPublisher.setUpdatedResource(resource);
+						webAppPublisher.setResourceChngeKind(resourceChngeKind);
 					}
 					publisher.hotUpdate(project, server, null, null);
 				} catch (Exception e) {

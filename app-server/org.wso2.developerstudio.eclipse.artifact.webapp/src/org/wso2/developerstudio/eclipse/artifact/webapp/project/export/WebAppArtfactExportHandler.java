@@ -17,7 +17,6 @@
 package org.wso2.developerstudio.eclipse.artifact.webapp.project.export;
 
 import java.io.File;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +24,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.jdt.core.IJavaProject;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
 import org.wso2.developerstudio.eclipse.utils.archive.ArchiveManipulator;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -61,18 +61,22 @@ public class WebAppArtfactExportHandler extends ProjectArtifactHandler {
 
 		return exportResources;
 	}
-	
+
 	/**
 	 * 
-	 * @param project the project use to create the exploded webApp
+	 * @param project
+	 *            the project use to create the exploded webApp
 	 * @return
 	 * @throws Exception
 	 */
 
 	public File createExplodedWebapp(IProject project) throws Exception {
 
+		IPath fullPath = project.getFolder("WEB-INF").getFullPath();
+		IResource res = project.getFile("META-INF" + File.separator + "MANIFEST.MF");
 		clearTarget(project);
 		IPath outPutPath = buildJavaProject(project);
+		IPath webContentPath1 = fullPath;
 		IPath webContentPath = project.getFolder("WebContent").getLocation();
 		File explodedWebApp = new File(webContentPath.toFile().getAbsolutePath());
 

@@ -62,6 +62,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 public final class CarbonServerManager implements IServerManager {
 	private static final String CARBON_SERVER_TYPE_REMOTE = "org.wso2.developerstudio.eclipse.carbon.server.remote";
 	private static final String RESOURCE = "resource";
+	private static final String RESOURCE_CHANGE_KIND = "resourceChangeKind";
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
@@ -75,6 +76,7 @@ public final class CarbonServerManager implements IServerManager {
 
 	private static boolean isServerAdded;
 	private IProject rootProject;
+	private int resourceChngeKind;
 
 	private CarbonServerManager() {
 		init();
@@ -556,6 +558,7 @@ public final class CarbonServerManager implements IServerManager {
 		operationParameters.put(ICarbonOperationManager.PARAMETER_WebTempPath, "");
 		operationParameters.put(ICarbonOperationManager.PARAMETER_PROJECT, project);
 		operationParameters.put(RESOURCE, resource);
+		operationParameters.put(RESOURCE_CHANGE_KIND, new Integer(resourceChngeKind));
 		try {
 			wsasServerManager.executeOperationOnServer(server, operationParameters);
 			return true;
@@ -731,21 +734,19 @@ public final class CarbonServerManager implements IServerManager {
 				IResourceDelta projectDelta;
 				if (isServerAdded) {
 					IResourceDelta resourceDelta = event.getDelta();
-					int resourceChngeType = resourceDelta.getKind();
-
 					for (IResourceDelta modifideResourceDelta : resourceDelta.getAffectedChildren()) {
 						rootProject = (IProject) modifideResourceDelta.getResource();
 						projectDelta = modifideResourceDelta;
 						IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
 							public boolean visit(IResourceDelta delta) throws CoreException {
 								IResource resource = delta.getResource();
-								if (resource.getType() == IResource.FILE) {
+								resourceChngeKind = delta.getKind();
+								if (resource.getType() == IResource.FILE || resource.getType() == IResource.FOLDER) {
 									IServer[] serversForProject = getServersForProject(rootProject);
 									for (IServer server : serversForProject) {
 										if (!CARBON_SERVER_TYPE_REMOTE.equalsIgnoreCase(server.getServerType().getId())) {
 											CarbonServerInformation serverInformation = getAppServerInformation().get(
 													server);
-
 											if (!serverInformation.getChangedProjects().contains(rootProject)) {
 												serverInformation.getChangedProjects().add(rootProject);
 												hotUpdateWebApp(server.getId(), resource, rootProject.getName());
@@ -760,7 +761,7 @@ public final class CarbonServerManager implements IServerManager {
 						try {
 							projectDelta.accept(visitor);
 						} catch (CoreException e) {
-							log.error(" adding IResourceDeltaVisitor to projectDelta was failed "+e);
+							log.error(" adding IResourceDeltaVisitor to projectDelta was failed " + e);
 						}
 
 					}

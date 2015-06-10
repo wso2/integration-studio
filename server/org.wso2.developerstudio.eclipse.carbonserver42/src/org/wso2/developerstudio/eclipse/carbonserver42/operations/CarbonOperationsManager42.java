@@ -220,6 +220,10 @@ public class CarbonOperationsManager42 implements ICarbonOperationManager {
 									server);
 							IResource updatedResource = (IResource) operation.get("resource");
 							serviceModuleOperations.setUpdatedResource(updatedResource);
+							Integer resChangeKind = (Integer) operation.get("resourceChangeKind");
+							if (resChangeKind != null) {
+								serviceModuleOperations.setResourceChngeKind(resChangeKind);
+							}
 							serviceModuleOperations.hotUpdateModule();
 						}
 					break;

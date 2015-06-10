@@ -21,6 +21,8 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.wst.server.core.IServer;
@@ -33,6 +35,7 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 	private IResource resource;
 	private static final String DEPLOYMENT_DIR_PATH = "repository" + File.separator + "deployment" + File.separator
 			+ "server" + File.separator + "webapps";
+	private int resourceChngeKind;
 
 	private final class WarPublisher implements Runnable {
 		private final File deployLocation;
@@ -83,14 +86,14 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 	@Override
 	public void publish(IProject project, IServer server, File serverHome, File deployLocation) throws Exception {
 		if (project.hasNature("org.wso2.developerstudio.eclipse.webapp.project.nature")) {
-			final WarPublisher runnable = new WarPublisher(deployLocation, project, server);
-			runnable.run();
-			if (runnable.getException() != null) {
+			final WarPublisher warPublisher = new WarPublisher(deployLocation, project, server);
+			new Thread(warPublisher).start();
+			if (warPublisher.getException() != null) {
 				Display.getDefault().asyncExec(new Runnable() {
 					public void run() {
 						MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error while creating WAR",
 								"An error occured while creating or publishing the war for more details view the log. \n"
-										+ runnable.getException().getMessage());
+										+ warPublisher.getException().getMessage());
 					}
 
 				});
@@ -113,36 +116,67 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 
 		String deploymentDirPath = CarbonServerManager.getServerHome(server) + File.separator + DEPLOYMENT_DIR_PATH;
 		String resPath;
-		String tempPath;
 		File sourceFile;
 		File destinationFile;
+		IPath path;
 
 		if (resource != null) {
-			if (resource.getFileExtension().equals("class")) {
-				resPath = resource.getProjectRelativePath().toString();
-				tempPath = resPath.split("target")[1];
-				sourceFile = new File(resource.getLocation().toFile().getPath());
-				destinationFile = new File(deploymentDirPath + File.separator + project.getName() + File.separator
-						+ "WEB-INF" + File.separator + "classes" + tempPath);
-				FileUtils.copyFile(sourceFile, destinationFile, true);
-
-			} else if (!resource.getFileExtension().equals("java")) {
-				resPath = resource.getProjectRelativePath().toString();
-				tempPath = resPath.split("WebContent")[1];
-				sourceFile = new File(resource.getLocation().toFile().getPath());
-				destinationFile = new File(deploymentDirPath + File.separator + project.getName() + tempPath);
-				FileUtils.copyFile(sourceFile, destinationFile, true);
+			if (resourceChngeKind == IResourceDelta.REMOVED) {
+				path = resource.getProjectRelativePath();
+				resPath = getResourcePath(path);
+				destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);
+				if (resource.getType() == IResource.FILE && destinationFile.exists()) {
+					FileUtils.forceDelete(destinationFile);
+				} else if (resource.getType() == IResource.FOLDER && destinationFile.exists()) {
+					FileUtils.deleteDirectory(destinationFile);
+				}
+				return;
 			}
 
+			if (resource.getType() == IResource.FILE) {
+				if (resource.getFileExtension().equals("class")) {
+					path = resource.getProjectRelativePath();
+					resPath = getResourcePath(path);
+					sourceFile = new File(resource.getLocation().toFile().getPath());
+					destinationFile = new File(deploymentDirPath + File.separator + project.getName() + File.separator
+							+ "WEB-INF" + File.separator + "classes" + resPath);
+					FileUtils.copyFile(sourceFile, destinationFile, true);
+
+				} else if (!resource.getFileExtension().equals("java")) {
+					path = resource.getProjectRelativePath();
+					resPath = getResourcePath(path);
+					sourceFile = new File(resource.getLocation().toFile().getPath());
+					destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);
+					FileUtils.copyFile(sourceFile, destinationFile, true);
+				}
+			} else if (resource.getType() == IResource.FOLDER && resourceChngeKind == IResourceDelta.ADDED) {
+				path = resource.getProjectRelativePath();
+				resPath = getResourcePath(path);
+				sourceFile = new File(resource.getLocation().toFile().getPath());
+				destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);
+				if (!destinationFile.exists()) {
+					FileUtils.copyDirectory(sourceFile, destinationFile, true);
+				}
+			}
 		}
 	}
-		
+
+	private String getResourcePath(IPath path) {
+		String pathSegment = path.segment(0);
+		String resPath = path.toString().split(pathSegment)[1];
+		return resPath;
+	}
+
 	/**
 	 * set the updated resource
 	 */
 	@Override
 	public void setUpdatedResource(IResource updatedResource) {
 		resource = updatedResource;
+	}
+
+	public void setResourceChngeKind(int resourceChngeKind) {
+		this.resourceChngeKind = resourceChngeKind;
 	}
 
 }

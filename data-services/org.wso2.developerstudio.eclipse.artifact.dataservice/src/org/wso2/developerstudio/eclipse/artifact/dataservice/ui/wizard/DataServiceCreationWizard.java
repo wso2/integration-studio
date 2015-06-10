@@ -92,8 +92,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		this.dsModel = new DataServiceModel();
 		setModel(this.dsModel);
 		setWindowTitle(DataServiceArtifactConstants.DS_WIZARD_WINDOW_TITLE);
-		setDefaultPageImageDescriptor(DataServiceImageUtils.getInstance().getImageDescriptor(
-				"ds-wizard.png"));
+		setDefaultPageImageDescriptor(DataServiceImageUtils.getInstance().getImageDescriptor("ds-wizard.png"));
 	}
 
 	public boolean performFinish() {
@@ -115,8 +114,8 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 				 * project wizard is not getting closed
 				 */
 				if (openFile.exists()) {
-					if (!MessageDialog.openQuestion(getShell(), "WARNING",
-							DataServiceArtifactConstants.WARNING_MESSAGE)) {
+					if (!MessageDialog
+							.openQuestion(getShell(), "WARNING", DataServiceArtifactConstants.WARNING_MESSAGE)) {
 						return false;
 					}
 				}
@@ -129,8 +128,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 					if (dsModel.getDataServiceSaveLocation().getProject().getLocation() != null) {
 						project = dsModel.getDataServiceSaveLocation().getProject();
 					} else {
-						project = createNewDSSProject(dsModel.getDataServiceSaveLocation()
-								.getProject().getName());
+						project = createNewDSSProject(dsModel.getDataServiceSaveLocation().getProject().getName());
 						createDSSProjectStructure(project);
 					}
 				}
@@ -142,8 +140,8 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			File mavenProjectPom = project.getFile(POM_FILE).getLocation().toFile();
 			updateDSSPlugin(openFile, mavenProjectPom);
 			String groupId = getMavenGroupId(mavenProjectPom);
-			String relativePath = FileUtils.getRelativePath(project.getLocation().toFile(),
-					openFile).replaceAll(Pattern.quote(File.separator), "/");
+			String relativePath = FileUtils.getRelativePath(project.getLocation().toFile(), openFile).replaceAll(
+					Pattern.quote(File.separator), "/");
 
 			// adds meta data about the data service
 			addMetaData(openFile, groupId, relativePath);
@@ -151,9 +149,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 				refreshDistProjects();
 				IFile dbsFile = ResourcesPlugin.getWorkspace().getRoot()
 						.getFileForLocation(Path.fromOSString(openFile.getAbsolutePath()));
-				IDE.openEditor(
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(),
-						dbsFile);
+				IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), dbsFile);
 			} catch (Exception e) {
 				log.error(DataServiceArtifactConstants.ERROR_MESSAGE_FILE_OPEN, e);
 			}
@@ -179,14 +175,13 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	 * @throws Exception
 	 * @throws CoreException
 	 */
-	private void addMetaData(File openFile, String groupId, String relativePath)
-			throws FactoryConfigurationError, Exception, CoreException {
+	private void addMetaData(File openFile, String groupId, String relativePath) throws FactoryConfigurationError,
+			Exception, CoreException {
 		dssProjectArtifact = new DSSProjectArtifact();
 		dssProjectArtifact.fromFile(project.getFile(ARTIFACT_FILE).getLocation().toFile());
 
 		String servieName = FilenameUtils.removeExtension(openFile.getName());
-		dssProjectArtifact
-				.addDSSArtifact(createArtifact(servieName, groupId, version, relativePath));
+		dssProjectArtifact.addDSSArtifact(createArtifact(servieName, groupId, version, relativePath));
 		dssProjectArtifact.toFile();
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 	}
@@ -237,11 +232,10 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		}
 
 		if (getDBSFile() != null) {
-			String fileName = FileUtils.getRelativePath(project.getLocation().toFile(), openFile)
-					.replaceAll(Pattern.quote(File.separator), "/");
+			String fileName = FileUtils.getRelativePath(project.getLocation().toFile(), openFile).replaceAll(
+					Pattern.quote(File.separator), "/");
 
-			Xpp3Dom existingArtifactNode = ((Xpp3Dom) pluginEntry.getConfiguration())
-					.getChild(ARTIFACT_TAG);
+			Xpp3Dom existingArtifactNode = ((Xpp3Dom) pluginEntry.getConfiguration()).getChild(ARTIFACT_TAG);
 
 			if (existingArtifactNode != null) {
 				Xpp3Dom newArtifactTag = new Xpp3Dom(ARTIFACT_TAG);
@@ -276,13 +270,6 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		} catch (CoreException e) {
 			log.error(DataServiceArtifactConstants.ERROR_MESSAGE_CORE_EXCEPTION, e);
 		}
-		/*
-		 * else { IProjectDescription newProjectDescription =
-		 * project.getWorkspace().newProjectDescription(name);
-		 * newProjectDescription.setLocationURI(location.toURI());
-		 * project.create(newProjectDescription, null); project.open(null);
-		 * //updateMMMPModuleList(name, location, root); }
-		 */
 
 		return project;
 	}
@@ -295,8 +282,8 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	 */
 	private IFile getDBSFile() throws CoreException {
 		project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
-		FileExtensionResourcevisitor fileExtensionResourceVisitor = new FileExtensionResourcevisitor(
-				DBS_EXTENSION, IResource.FILE);
+		FileExtensionResourcevisitor fileExtensionResourceVisitor = new FileExtensionResourcevisitor(DBS_EXTENSION,
+				IResource.FILE);
 		project.accept(fileExtensionResourceVisitor);
 		List<IResource> resources = fileExtensionResourceVisitor.getResourceList();
 		return resources.size() == 0 ? null : (IFile) resources.get(0);
@@ -315,8 +302,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	 *            version
 	 * @return dss plugin
 	 */
-	private Plugin getExistingPlugin(MavenProject project, String groupId, String artifactId,
-			String version) {
+	private Plugin getExistingPlugin(MavenProject project, String groupId, String artifactId, String version) {
 		List<Plugin> plugins = project.getBuild().getPlugins();
 		Iterator<Plugin> iterator = plugins.iterator();
 		Plugin dssPlugin = null;
@@ -339,13 +325,11 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 	 * @return new .dbs file
 	 * @throws IOException
 	 */
-	public File saveImportFileToWorkspace(IProject importProject, File importFile)
-			throws IOException {
+	public File saveImportFileToWorkspace(IProject importProject, File importFile) throws IOException {
 
 		IFolder dsResourceFolder = ProjectUtils.getWorkspaceFolder(importProject,
 				DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
-		File dsResourceFile = new File(dsResourceFolder.getLocation().toFile(),
-				importFile.getName());
+		File dsResourceFile = new File(dsResourceFolder.getLocation().toFile(), importFile.getName());
 		return dsResourceFile;
 	}
 
@@ -371,8 +355,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			updatePOMWithDSSPlugin(pomfile);
 
 			ProjectUtils.addNatureToProject(project, false, DS_PROJECT_NATURE);
-			MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {},
-					new String[] { DS_PROJECT_NATURE });
+			MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {}, new String[] { DS_PROJECT_NATURE });
 			getModel().addToWorkingSet(project);
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 
@@ -434,7 +417,9 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 
 	/**
 	 * Copies the import file
-	 * @param importProject project
+	 * 
+	 * @param importProject
+	 *            project
 	 * @return .dbs file
 	 * @throws IOException
 	 */
@@ -442,8 +427,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		File importFile = getModel().getImportFile();
 		IFolder dsResourceFolder = ProjectUtils.getWorkspaceFolder(importProject,
 				DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
-		File dsResourceFile = new File(dsResourceFolder.getLocation().toFile(),
-				importFile.getName());
+		File dsResourceFile = new File(dsResourceFolder.getLocation().toFile(), importFile.getName());
 		FileUtils.copy(importFile, dsResourceFile);
 		return dsResourceFile;
 	}
@@ -467,22 +451,18 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 		templateContent = templateContent.replaceAll("<service.name>", dsModel.getServiceName());
 		templateContent = templateContent.replaceAll("<service.group>", dsModel.getServiceGroup());
 		templateContent = templateContent.replaceAll("<service.NS>", dsModel.getServiceNS());
-		templateContent = templateContent.replaceAll("<service.description>",
-				dsModel.getServiceDescription());
+		templateContent = templateContent.replaceAll("<service.description>", dsModel.getServiceDescription());
 		templateContent = templateContent.replaceAll("<config.id>", dsModel.getDataSourceId());
 		LinkedHashMap<String, String> config = dsModel.getDataSourceConfig().getConfig();
 		Iterator<String> iterator = config.keySet().iterator();
 		while (iterator.hasNext()) {
 			String key = (String) iterator.next();
-			sb.append("<property name=\"").append(key).append("\">").append(config.get(key))
-					.append("</property>\n");
+			sb.append("<property name=\"").append(key).append("\">").append(config.get(key)).append("</property>\n");
 		}
 		templateContent = templateContent.replaceAll("<config.properties>", sb.toString());
 
-		IFolder dsfolder = project
-				.getFolder(DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
-		File template = new File(dsfolder.getLocation().toFile(), dsModel.getServiceName()
-				+ DBS_EXTENSION);
+		IFolder dsfolder = project.getFolder(DataServiceArtifactConstants.DS_PROJECT_DATASERVICE_FOLDER);
+		File template = new File(dsfolder.getLocation().toFile(), dsModel.getServiceName() + DBS_EXTENSION);
 		templateContent = XMLUtil.prettify(templateContent);
 		templateContent = templateContent.replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "");
 		templateContent = templateContent.replaceAll("^" + eol, "");
@@ -493,6 +473,10 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 
 	public IResource getCreatedResource() {
 		return project;
+	}
+
+	protected boolean isRequireProjectLocationSection() {
+		return false;
 	}
 
 	public void addPages() {

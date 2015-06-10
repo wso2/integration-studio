@@ -32,12 +32,11 @@ import org.wso2.developerstudio.eclipse.platform.core.nature.AbstractWSO2Project
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class ESBProjectNature extends AbstractWSO2ProjectNature {
-	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml";
-
+	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";
 	
 	public void configure() throws CoreException {
 		String[] childrenList = { "endpoints", "proxy-services", "sequences", "local-entries",
-				"tasks", "templates", "api", "message-stores", "message-processors" };
+				"tasks", "templates", "api", "message-stores", "message-processors", "inbound-endpoint"};
 		IFolder parentFolder =
 		        ProjectUtils.getWorkspaceFolder(getProject(), "src", "main", "synapse-config");
 		IFolder graphicalResFolder =

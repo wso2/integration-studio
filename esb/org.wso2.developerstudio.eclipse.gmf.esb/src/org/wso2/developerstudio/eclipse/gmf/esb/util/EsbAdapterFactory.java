@@ -333,6 +333,42 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 				return createLogPropertyAdapter();
 			}
 			@Override
+			public Adapter casePublishEventMediator(PublishEventMediator object) {
+				return createPublishEventMediatorAdapter();
+			}
+			@Override
+			public Adapter casePublishEventMediatorInputConnector(PublishEventMediatorInputConnector object) {
+				return createPublishEventMediatorInputConnectorAdapter();
+			}
+			@Override
+			public Adapter casePublishEventMediatorOutputConnector(PublishEventMediatorOutputConnector object) {
+				return createPublishEventMediatorOutputConnectorAdapter();
+			}
+			@Override
+			public Adapter casePublishEventAttributes(PublishEventAttributes object) {
+				return createPublishEventAttributesAdapter();
+			}
+			@Override
+			public Adapter casePublishEventMetaAttributes(PublishEventMetaAttributes object) {
+				return createPublishEventMetaAttributesAdapter();
+			}
+			@Override
+			public Adapter casePublishEventCorrelationAttributes(PublishEventCorrelationAttributes object) {
+				return createPublishEventCorrelationAttributesAdapter();
+			}
+			@Override
+			public Adapter casePublishEventPayloadAttributes(PublishEventPayloadAttributes object) {
+				return createPublishEventPayloadAttributesAdapter();
+			}
+			@Override
+			public Adapter casePublishEventArbitraryAttributes(PublishEventArbitraryAttributes object) {
+				return createPublishEventArbitraryAttributesAdapter();
+			}
+			@Override
+			public Adapter caseAbstractNameValueExpressionAttribute(AbstractNameValueExpressionAttribute object) {
+				return createAbstractNameValueExpressionAttributeAdapter();
+			}
+			@Override
 			public Adapter caseBAMMediator(BAMMediator object) {
 				return createBAMMediatorAdapter();
 			}
@@ -2428,6 +2464,132 @@ public class EsbAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLogPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator <em>Publish Event Mediator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator
+	 * @generated
+	 */
+	public Adapter createPublishEventMediatorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector <em>Publish Event Mediator Input Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector
+	 * @generated
+	 */
+	public Adapter createPublishEventMediatorInputConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnector <em>Publish Event Mediator Output Connector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnector
+	 * @generated
+	 */
+	public Adapter createPublishEventMediatorOutputConnectorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventAttributes <em>Publish Event Attributes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventAttributes
+	 * @generated
+	 */
+	public Adapter createPublishEventAttributesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMetaAttributes <em>Publish Event Meta Attributes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMetaAttributes
+	 * @generated
+	 */
+	public Adapter createPublishEventMetaAttributesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventCorrelationAttributes <em>Publish Event Correlation Attributes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventCorrelationAttributes
+	 * @generated
+	 */
+	public Adapter createPublishEventCorrelationAttributesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventPayloadAttributes <em>Publish Event Payload Attributes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventPayloadAttributes
+	 * @generated
+	 */
+	public Adapter createPublishEventPayloadAttributesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventArbitraryAttributes <em>Publish Event Arbitrary Attributes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PublishEventArbitraryAttributes
+	 * @generated
+	 */
+	public Adapter createPublishEventArbitraryAttributesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute <em>Abstract Name Value Expression Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute
+	 * @generated
+	 */
+	public Adapter createAbstractNameValueExpressionAttributeAdapter() {
 		return null;
 	}
 

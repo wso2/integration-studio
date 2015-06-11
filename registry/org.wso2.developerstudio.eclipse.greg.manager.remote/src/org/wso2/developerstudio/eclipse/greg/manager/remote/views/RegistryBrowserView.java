@@ -65,6 +65,7 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -121,6 +122,7 @@ import org.wso2.carbon.registry.core.Resource;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
 import org.wso2.carbon.registry.core.utils.MediaTypesUtils;
 import org.wso2.carbon.registry.ws.stub.xsd.WSResourceData;
+import org.wso2.developerstudio.eclipse.greg.apim.preferance.ApimPreferencePage;
 import org.wso2.developerstudio.eclipse.greg.base.core.MediaTypes;
 import org.wso2.developerstudio.eclipse.greg.base.core.Registry;
 import org.wso2.developerstudio.eclipse.greg.base.core.Registry.IResourceUploadListener;
@@ -175,6 +177,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 	private static final String FAULT_SEQUENCE_LOCATION = "fault";
 	public static final String EVENT_TOPIC_EXPAND_TREE = "ExpandTree";
     public static final String EVENT_TOPIC_POPULATE_NODE_DATA = "NODEDATA_PUPULATE";
+    public static final String EVENT_TOPIC_POPULATE_CHANGE_NODE_DATA = "CHANGE_NODE_DATA_POPULATE";
 	private static final String DEFAULT_PATH = "/";
 	private static final int CHAR_SHIFT = 32;
 	private static final int CHAR_R = 114;
@@ -511,14 +514,10 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		final MenuManager menuMgr = new MenuManager();
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.setActionDefinitionId("org.eclipse.menu");
-		ImageDescriptor communityImgDes = ImageUtils
-				.getImageDescriptor(ImageUtils.ACTION_COMMUNITY_FEATURES);
-		communitySubMenu = new MenuManager("Community...", communityImgDes,
-				"org.eclipse.community.submenu");
+		ImageDescriptor communityImgDes = ImageUtils.getImageDescriptor(ImageUtils.ACTION_COMMUNITY_FEATURES);
+		communitySubMenu = new MenuManager("Community...", communityImgDes, "org.eclipse.community.submenu");
 		communitySubMenu.setRemoveAllWhenShown(true);
-
 		communitySubMenu.addMenuListener(new IMenuListener() {
-
 			public void menuAboutToShow(IMenuManager mgr) {
 				mgr.add(commentsAction);
 				mgr.add(tagsAction);
@@ -526,14 +525,10 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			}
 		});
 
-		ImageDescriptor metadataImgDes = ImageUtils
-				.getImageDescriptor(ImageUtils.ACTION_ADD_METADATA);
-		metadatMenu = new MenuManager("Metadata..", metadataImgDes,
-				"org.eclipse.tools.metadata.submenu");
+		ImageDescriptor metadataImgDes = ImageUtils.getImageDescriptor(ImageUtils.ACTION_ADD_METADATA);
+		metadatMenu = new MenuManager("Metadata..", metadataImgDes, "org.eclipse.tools.metadata.submenu");
 		metadatMenu.setRemoveAllWhenShown(true);
-
 		metadatMenu.addMenuListener(new IMenuListener() {
-
 			public void menuAboutToShow(IMenuManager menu) {
 				menu.add(propertyAction);
 				menu.add(dependenciesAction);
@@ -541,23 +536,18 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 
 			}
 		});
-		
-		if(ApiMangerRegistryBrowserView.isAPIMperspective()){
-			multipleResourceUploadMenu = new MenuManager(
-					"Add new Sequence",
-					ImageUtils
-							.getImageDescriptor(ImageUtils.ACTION_ADD_RESOURCE_FROM_LOCAL),
+
+		if (ApiMangerRegistryBrowserView.isAPIMperspective()) {
+			multipleResourceUploadMenu = new MenuManager("Add new Sequence",
+					ImageUtils.getImageDescriptor(ImageUtils.ACTION_ADD_RESOURCE_FROM_LOCAL),
 					"org.eclipse.tools.multipleresources");
 			multipleResourceUploadMenu.setRemoveAllWhenShown(true);
-
 			multipleResourceUploadMenu.addMenuListener(new IMenuListener() {
-
 				public void menuAboutToShow(IMenuManager menu) {
 					menu.add(addResourceAction);
 					menu.add(multipleFileAction);
 				}
-			});
-			
+			});			
 			
 		} else {
 			multipleResourceUploadMenu = new MenuManager("Add local resources",
@@ -590,6 +580,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 					} else if (selectedObj instanceof RegistryNode) {
 						if(ApiMangerRegistryBrowserView.isAPIMperspective()){
 							mgr.add(refreshAction);
+							//TODO - Add menu to select Auto Sync
 						}else{
 						//TODO: Fix TOOLS-733 here
 						mgr.add(addRegistryAction);
@@ -1828,6 +1819,12 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			}
 			if (dialog.isSavePassword()) {
 				RegistryCredentialData.getInstance().setCredentials(serverURL.toString(), uname, pwd);
+				if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+					IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
+					preferenceStore.setValue(ApimPreferencePage.APIM_LOGIN, serverURL.toString());
+					preferenceStore.setValue(ApimPreferencePage.APIM_USERNAME, uname);
+					preferenceStore.setValue(ApimPreferencePage.APIM_PASSWORD, pwd);
+				}
 			}			
 			regUrlNode.addRegistry(
 					RegistryUrlStore.getInstance().addRegistryUrl(serverURL, uname, path, isApiManagerview()), pwd);
@@ -1848,7 +1845,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 							monitor.worked(100);
 							monitor.done();
 						}
-						 
+						
 					  }
 					});
 				} catch (InvocationTargetException e) {
@@ -2601,6 +2598,11 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			public void selectionChanged(SelectionChangedEvent event) {
 				Object obj = event.getSelection();
 				if (obj instanceof TreeSelection) {
+								
+					if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+						broker.send(EVENT_TOPIC_POPULATE_CHANGE_NODE_DATA, obj);
+					}else {
+					
 					Object object = ((TreeSelection) obj).getFirstElement();
 					selectedObj = object;
 					if (!(selectedItemList.contains(selectedObj))) {
@@ -2683,7 +2685,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 						txtTraverse.setEnabled(false);
 					}
 				}
-
+				}
 			}
 		});
 
@@ -2691,6 +2693,105 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		return tree;
 
 	}
+	
+	
+	
+	protected EventHandler getTreeNodeSelctionChangedHandler() {
+		return new EventHandler() {
+			public void handleEvent(final Event event) {
+ 
+				Display.getDefault().asyncExec(new Runnable() {
+					@SuppressWarnings({ })
+					@Override
+					public void run() {		
+						TreeSelection obj = (TreeSelection) event.getProperty(IEventBroker.DATA);				
+						Object object = ((TreeSelection) obj).getFirstElement();
+						selectedObj = object;
+						if (!(selectedItemList.contains(selectedObj))) {
+							selectedItemList.add(selectedObj);
+						}
+						txtTraverse.setEnabled(true);
+						if (object instanceof RegistryNode) {
+							deleteAction.setImageDescriptor(ImageUtils.getImageDescriptor(ImageUtils.ACTION_DELETE_REGISTRY));
+							regNode = (RegistryNode) object;
+							if (regNode.isEnabled()) {
+								regResourceNode = regNode.getRegistryContainer().getRegistryContent().get(0);
+								resourcePath = regResourceNode.getRegistryResourcePath();
+								if (resourceNodes != null) {
+									if (resourceNodes.isEmpty()) {
+										resourceNodes.add(regResourceNode);
+									}
+								}
+								// resourcePathList.add(regResourcePathData);
+								// regResourcePathData.setResourcePathList(resourcePathList);
+								setResourcePath(resourcePath);
+								setRegData(regNode);
+								setRegResourcePathData(regResourceNode);
+							} else {
+								regResourceNode = null;
+								resourcePath = null;
+								setResourcePath(resourcePath);
+								setRegData(regNode);
+								setRegResourcePathData(regResourceNode);
+							}
+
+						} else if (object instanceof RegistryResourceNode) {
+							regResourceNode = (RegistryResourceNode) object;
+							resourcePath = regResourceNode.getRegistryResourcePath();
+							if (resourceNodes != null) {
+								if (resourceNodes.isEmpty()) {
+									try {
+										resourceNodes = regResourceNode.getResourceNodeList();
+									} catch (Exception e) {
+										regResourceNode.setError(true);
+										exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),"Cannot establish the connection");
+									}
+								}
+							}
+
+							if (regResourceNode.getResourceType() == RegistryResourceType.RESOURCE) {
+								deleteAction.setImageDescriptor(ImageUtils.getImageDescriptor(ImageUtils.ACTION_DELETE_RESOURCE));
+
+								try {
+									resourceNodes = regResourceNode.getResourceNodeList();
+								} catch (Exception e) {
+									regResourceNode.setError(true);
+									exeptionHandler.showMessage(Display.getCurrent().getActiveShell(),
+											"Cannot establish the connection with given URL");
+								}
+							} else {
+								deleteAction.setImageDescriptor(ImageUtils.getImageDescriptor(ImageUtils.ACTION_DELETE_COLLECTION));
+							}
+							if (resourceNodes == null)
+								resourceNodes = new ArrayList<RegistryResourceNode>();
+							if (resourceNodes.isEmpty()) {
+								resourceNodes.add(regResourceNode);
+							}
+							setResourcePath(resourcePath);
+							setRegResourcePathData(regResourceNode);
+						} else if (object instanceof RegistryUserRole) {
+							selectedObj = object;
+						} else if (object instanceof RegistryUser) {
+							selectedObj = object;
+						} else if (object instanceof RegistryUserManagerContainer) {
+							selectedObj = object;
+						} else if (object instanceof RegistryUserContainer) {
+							selectedObj = object;
+						} else if (object instanceof RegistryUserRoleContainer) {
+							selectedObj = object;
+						} else if (object instanceof RegistryContentContainer) {
+							selectedObj = object;
+						} else {
+							selectedObj = null;
+							selectedItemList = new ArrayList<Object>();
+							txtTraverse.setEnabled(false);
+						}									
+					}
+				});
+			}
+		};
+	}
+	
 
 	protected EventHandler getTreeNodeSelctionHandler() {
 		return new EventHandler() {

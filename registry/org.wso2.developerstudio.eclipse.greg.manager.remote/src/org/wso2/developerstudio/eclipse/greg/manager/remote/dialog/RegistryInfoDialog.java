@@ -41,6 +41,7 @@ import org.wso2.developerstudio.eclipse.greg.base.logger.ExceptionHandler;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryNode;
 import org.wso2.developerstudio.eclipse.greg.base.model.RegistryURLNode;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.Activator;
+import org.wso2.developerstudio.eclipse.greg.manager.remote.views.ApiMangerRegistryBrowserView;
 import org.wso2.developerstudio.eclipse.greg.manager.remote.views.RegistryBrowserView;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -88,7 +89,11 @@ public class RegistryInfoDialog extends Dialog {
 	}
 
 	protected Control createDialogArea(final Composite parent) {
-		parent.getShell().setText("Add Registry");
+		String title="Add Registry";
+		if(ApiMangerRegistryBrowserView.isAPIMperspective()){
+			title="Adding APIM Registry";
+		}
+		parent.getShell().setText(title);
 		GridData gd;
 		Composite container = (Composite) super.createDialogArea(parent);
 		GridLayout layout = new GridLayout();
@@ -139,7 +144,7 @@ public class RegistryInfoDialog extends Dialog {
 		Label userNameLabel = new Label(container, SWT.NONE);
 		userNameLabel.setText("User Name: ");
 
-		gd = new GridData();
+		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.heightHint = 18;
 		gd.widthHint = 100;
 		userNameText = new Text(container, SWT.BORDER);
@@ -155,7 +160,7 @@ public class RegistryInfoDialog extends Dialog {
 		Label pwdLabel = new Label(container, SWT.NONE);
 		pwdLabel.setText("Password: ");
 
-		gd = new GridData();
+		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.heightHint = 18;
 		gd.widthHint = 100;
 		pwdText = new Text(container, SWT.PASSWORD | SWT.BORDER);
@@ -170,6 +175,7 @@ public class RegistryInfoDialog extends Dialog {
 			}
 		});
 
+		if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
 		final Button button = new Button(container, SWT.CHECK);
 		button.setText("Save Credentials");
 		button.addSelectionListener(new SelectionListener() {
@@ -184,6 +190,7 @@ public class RegistryInfoDialog extends Dialog {
 			}
 
 		});
+		}
 
 		
 		if(isAPIMbrowser){

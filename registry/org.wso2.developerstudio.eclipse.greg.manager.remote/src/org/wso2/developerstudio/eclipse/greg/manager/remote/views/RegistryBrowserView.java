@@ -1492,18 +1492,16 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 		}
 	}
 	
-	private void pasteResource() throws Exception{
-		
+	private void pasteResource() throws Exception {
+
 		final RegistryResourceNode copyRegResource = getCopyRegResourceNode();
 		final RegistryResourceNode targetRegResource;
-		if(copyRegResource != null){
-		
+		if (copyRegResource != null) {
 			if (selectedObj instanceof RegistryResourceNode) {
-				targetRegResource = (RegistryResourceNode)selectedObj;
-				
+				targetRegResource = (RegistryResourceNode) selectedObj;
 				dragDropUtils = new DragDropUtils();
-				Queue queue = dragDropUtils.retrieveContentsFromRegistry(
-						targetRegResource.getRegistryResourcePath(), copyRegResource);
+				Queue queue = dragDropUtils.retrieveContentsFromRegistry(targetRegResource.getRegistryResourcePath(),
+						copyRegResource);
 				registry = targetRegResource.getConnectionInfo().getRegistry();
 				int initialCount = queue.count();
 				children = new ArrayList<String>();
@@ -1519,28 +1517,22 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 						children.add(((Resource) element).getId());
 					}
 				}
-				
+
 				final Registry fromRegistry = copyRegResource.getConnectionInfo().getRegistry();
-				final Registry toRegistry = targetRegResource.getConnectionInfo().getRegistry();	
-			
-				if (MessageDialog.openConfirm(Display.getCurrent().getActiveShell(),
-						  "Continue copy-paste...", 
-						  copyRegResource.getRegistryResourcePath() + 
-						  " will be copied to " + 
-						  targetRegResource.getCaption() + 
-						  ". Continue?")) {
+				final Registry toRegistry = targetRegResource.getConnectionInfo().getRegistry();
+
+				if (MessageDialog.openConfirm(
+						Display.getCurrent().getActiveShell(),"Continue copy-paste...",
+						copyRegResource.getRegistryResourcePath() + " will be copied to "
+								+ targetRegResource.getCaption() + ". Continue?")) {
 					try {
-						new ProgressMonitorDialog(getSite().getShell()).run(true, 
-														true,
-														new IRunnableWithProgress() {
-		
+						new ProgressMonitorDialog(getSite().getShell()).run(true, true, new IRunnableWithProgress() {
+
 							public void run(IProgressMonitor monitor) throws InvocationTargetException,
-																 InterruptedException {
+									InterruptedException {
 								List<String> list;
 								try {
-									monitor.beginTask("Copy-Paste resources...",
-										   children.size() +
-										   1);
+									monitor.beginTask("Copy-Paste resources...", children.size() + 1);
 									list = new ArrayList<String>();
 									list.add(copyRegResource.getRegistryResourcePath());
 									while (list.size() != 0) {
@@ -1552,107 +1544,59 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 												list.add(child);
 											}
 										}
-										String destinationPath = targetRegResource.getRegistryResourcePath() + 
-																DEFAULT_PATH + 
-																path.substring(copyRegResource.getRegistryResourceNodeParent()
-																		.getRegistryResourcePath()
-																		.length());
-							toRegistry.put(destinationPath,resource);
-							list.remove(0);
-							monitor.worked(1);
-						}
-						monitor.setTaskName("Refreshing tree...");
-						monitor.worked(1);
-		
-						try {
-//							setCopyRegResourceNode(null);
-							Display.getDefault().asyncExec(
-									new Runnable() {
-		
-										public void run() {
-											try {
-	                                            targetRegResource.refreshChildren();
-                                            } catch (InvalidRegistryURLException e) {
-	                                            // TODO Auto-generated catch block
-	                                            e.printStackTrace();
-                                            } catch (UnknownRegistryException e) {
-	                                            // TODO Auto-generated catch block
-	                                            e.printStackTrace();
-                                            }
-											targetRegResource
-													.getConnectionInfo()
-													.getRegUrlData()
-													.refreshViewer(
-															false);
-										}
-		
-									});
-							monitor.worked(1);
-						} catch (Exception e) {
-							log.error(e);
-						}
-					} catch (Exception e) {
-						log.error(e);
-					}
-					monitor.done();
-				}
-		
-			});
+
+										String destinationPath = targetRegResource.getRegistryResourcePath()
+												+ path.substring(copyRegResource.getRegistryResourceNodeParent()
+														.getRegistryResourcePath().length());
+
+										toRegistry.put(destinationPath, resource);
+										list.remove(0);
+										monitor.worked(1);
+									}
+									monitor.setTaskName("Refreshing tree...");
+									monitor.worked(1);
+
+									try {
+										// setCopyRegResourceNode(null);
+										Display.getDefault().asyncExec(new Runnable() {
+											public void run() {
+												try {
+													targetRegResource.refreshChildren();
+												} catch (InvalidRegistryURLException e) {
+													log.error("Resouece paste issue due to " + e.getMessage(), e);
+												} catch (UnknownRegistryException e) {
+													log.error("Resouece paste issue due to " + e.getMessage(), e);
+												}
+												targetRegResource.getConnectionInfo().getRegUrlData()
+														.refreshViewer(false);
+											}
+
+										});
+										monitor.worked(1);
+									} catch (Exception e) {
+										log.error("Resouece paste issue due to " + e.getMessage(), e);
+									}
+								} catch (Exception e) {
+									log.error("Resouece paste issue due to " + e.getMessage(), e);
+								}
+								monitor.done();
+							}
+
+						});
 					} catch (InvocationTargetException e) {
-						log.error(e);
+						log.error("Resouece paste issue due to " + e.getMessage(), e);
 					} catch (InterruptedException e) {
-						log.error(e);
+						log.error("Resouece paste issue due to " + e.getMessage(), e);
 					}
 
+				}
+			} else {
+				MessageDialog.openError(parentComposite.getShell(), "No items selected",
+						"No resource has been copied to moved to the selected location. ");
+			}
+
 		}
-	}else{
-		MessageDialog.openError(parentComposite.getShell(), "No items selected", 
-								"No resource has been copied to moved to the selected location. ");
-	}
-	
-	}
-//		List<String> list;
-//	
-//		RegistryResourceNode copyRegResource = getCopyRegResourceNode();
-//		RegistryResourceNode targetRegResource;
-//		for (int i = 0; i < selectedItemList.size(); i++) {
-//			selectedObj = selectedItemList.get(i);
-//			if (selectedObj instanceof RegistryResourceNode) {
-//					targetRegResource = (RegistryResourceNode)selectedObj;
-//					Registry fromRegistry = copyRegResource.getConnectionInfo().getRegistry();
-//					Registry toRegistry = targetRegResource.getConnectionInfo().getRegistry();
-//					list = new ArrayList<String>();
-//					list.add(copyRegResource.getRegistryResourcePath());
-//					while (list.size() != 0) {
-//						String path = list.get(0);
-//						Resource resource;
-//						try {
-//							resource = fromRegistry.get(path);
-//							if (resource instanceof Collection) {
-//								String[] children = ((Collection) resource).getChildren();
-//								for (String child : children) {
-//									list.add(child);
-//								}
-//							}
-//							String destinationPath = targetRegResource.getRegistryResourcePath() + 
-//														"/" + 
-//														path.substring(copyRegResource.getRegistryResourceNodeParent()
-//																.getRegistryResourcePath()
-//																.length());
-//							toRegistry.put(destinationPath,resource);
-//							list.remove(0);
-//							targetRegResource.refreshChildren();
-//						} catch (InvalidRegistryURLException e) {
-//							e.printStackTrace();
-//						} catch (UnknownRegistryException e) {
-//							e.printStackTrace();
-//						} catch (RegistryException e) {
-//							e.printStackTrace();
-//						}
-//						
-//				}
-//			}
-//		}
+
 	}
 	
 	protected void renameItem(Composite parent) {
@@ -1705,6 +1649,7 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 								}
 								
 							} catch (Exception e) {
+								log.error("Could not close associated editor for this resource"+e.getMessage(),e);
 								exeptionHandler.showMessage(parent.getShell(),
 								"Could not close associated editor for this resource");
 							}
@@ -1718,15 +1663,16 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 						try {
 							openResourceInEditor(regResourceNode);
 						} catch (Exception e) {
+							log.error("Could not open the file type in the editor"+e.getMessage(),e);				
 							exeptionHandler.showMessage(parent.getShell(),
 							                            "Could not open the file type in the editor");
 						}
 
 
 					} catch (InvalidRegistryURLException e) {
-						e.printStackTrace();
+						log.error("Resouece renanming issue due to "+e.getMessage(),e);				
 					} catch (UnknownRegistryException e) {
-						e.printStackTrace();
+						log.error("Resouece renaming issue due to "+e.getMessage(),e);				
 					}
 				}
 			}

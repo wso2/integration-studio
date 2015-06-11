@@ -80,10 +80,10 @@ public class EsbDiagramEditPart extends DiagramEditPart {
 
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
-	}
+	}	
 	
 	/**
-	 * @generated
+	 * @generated NOT
 	 */
 	/*package-local*/
 	static class NodeLabelDragPolicy extends NonResizableEditPolicy {
@@ -111,6 +111,5 @@ public class EsbDiagramEditPart extends DiagramEditPart {
 	        return false;
 	    }
 	}
-
 
 }

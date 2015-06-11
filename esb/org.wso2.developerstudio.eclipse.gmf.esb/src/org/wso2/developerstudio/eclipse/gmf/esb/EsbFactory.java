@@ -530,6 +530,87 @@ public interface EsbFactory extends EFactory {
 	LogProperty createLogProperty();
 
 	/**
+	 * Returns a new object of class '<em>Publish Event Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Mediator</em>'.
+	 * @generated
+	 */
+	PublishEventMediator createPublishEventMediator();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Mediator Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Mediator Input Connector</em>'.
+	 * @generated
+	 */
+	PublishEventMediatorInputConnector createPublishEventMediatorInputConnector();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Mediator Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Mediator Output Connector</em>'.
+	 * @generated
+	 */
+	PublishEventMediatorOutputConnector createPublishEventMediatorOutputConnector();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Attributes</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Attributes</em>'.
+	 * @generated
+	 */
+	PublishEventAttributes createPublishEventAttributes();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Meta Attributes</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Meta Attributes</em>'.
+	 * @generated
+	 */
+	PublishEventMetaAttributes createPublishEventMetaAttributes();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Correlation Attributes</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Correlation Attributes</em>'.
+	 * @generated
+	 */
+	PublishEventCorrelationAttributes createPublishEventCorrelationAttributes();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Payload Attributes</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Payload Attributes</em>'.
+	 * @generated
+	 */
+	PublishEventPayloadAttributes createPublishEventPayloadAttributes();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Arbitrary Attributes</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Arbitrary Attributes</em>'.
+	 * @generated
+	 */
+	PublishEventArbitraryAttributes createPublishEventArbitraryAttributes();
+
+	/**
+	 * Returns a new object of class '<em>Abstract Name Value Expression Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Abstract Name Value Expression Attribute</em>'.
+	 * @generated
+	 */
+	AbstractNameValueExpressionAttribute createAbstractNameValueExpressionAttribute();
+
+	/**
 	 * Returns a new object of class '<em>BAM Mediator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

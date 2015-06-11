@@ -48,6 +48,7 @@ public ApiMangerRegistryBrowserView() {
 		IEventBroker iEventBroker = eclipseContext.get(IEventBroker.class);
 		iEventBroker.subscribe(EVENT_TOPIC_EXPAND_TREE,getTreeExpandHandler() );
 		iEventBroker.subscribe(EVENT_TOPIC_POPULATE_NODE_DATA, getTreeNodeSelctionHandler());
+		iEventBroker.subscribe(EVENT_TOPIC_POPULATE_CHANGE_NODE_DATA, getTreeNodeSelctionChangedHandler());
 		setBroker(iEventBroker);
 	} catch (Exception e) {
 		setApimRegPath(APIM_CUSTOMSEQUENCES_PATH);	 

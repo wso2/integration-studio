@@ -66,6 +66,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyMedia
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyFaultInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInSequenceInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PublishEventMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RMSequenceMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RecipientListEndPointInputConnector2EditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RecipientListEndPointInputConnectorEditPart;
@@ -325,6 +326,9 @@ public class EsbModelingAssistantProviderOfAggregateMediatorOutputConnectorEditP
 		if (targetEditPart instanceof ForEachMediatorInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
+		if (targetEditPart instanceof PublishEventMediatorInputConnectorEditPart) {
+			types.add(EsbElementTypes.EsbLink_4001);
+		}
 		if (targetEditPart instanceof ProxyInSequenceInputConnectorEditPart) {
 			types.add(EsbElementTypes.EsbLink_4001);
 		}
@@ -462,6 +466,7 @@ public class EsbModelingAssistantProviderOfAggregateMediatorOutputConnectorEditP
 			types.add(EsbElementTypes.DataMapperMediatorInputConnector_3762);
 			types.add(EsbElementTypes.FastXSLTMediatorInputConnector_3765);
 			types.add(EsbElementTypes.ForEachMediatorInputConnector_3781);
+			types.add(EsbElementTypes.PublishEventMediatorInputConnector_3786);
 			types.add(EsbElementTypes.ProxyInSequenceInputConnector_3731);
 			types.add(EsbElementTypes.MessageInputConnector_3046);
 			types.add(EsbElementTypes.MergeNodeFirstInputConnector_3014);

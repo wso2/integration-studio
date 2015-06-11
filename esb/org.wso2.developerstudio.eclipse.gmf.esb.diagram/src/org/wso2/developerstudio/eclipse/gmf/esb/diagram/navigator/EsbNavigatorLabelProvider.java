@@ -1122,6 +1122,15 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 		case MediatorFlow30EditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?MediatorFlow", EsbElementTypes.MediatorFlow_3784); //$NON-NLS-1$
+		case PublishEventMediatorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PublishEventMediator", EsbElementTypes.PublishEventMediator_3785); //$NON-NLS-1$
+		case PublishEventMediatorInputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PublishEventMediatorInputConnector", EsbElementTypes.PublishEventMediatorInputConnector_3786); //$NON-NLS-1$
+		case PublishEventMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http:///org/wso2/developerstudio/eclipse/gmf/esb?PublishEventMediatorOutputConnector", EsbElementTypes.PublishEventMediatorOutputConnector_3787); //$NON-NLS-1$
 		case EsbLinkEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Link?http:///org/wso2/developerstudio/eclipse/gmf/esb?EsbLink", EsbElementTypes.EsbLink_4001); //$NON-NLS-1$
@@ -1841,6 +1850,12 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 			return getForEachMediatorTargetOutputConnector_3783Text(view);
 		case MediatorFlow30EditPart.VISUAL_ID:
 			return getMediatorFlow_3784Text(view);
+		case PublishEventMediatorEditPart.VISUAL_ID:
+			return getPublishEventMediator_3785Text(view);
+		case PublishEventMediatorInputConnectorEditPart.VISUAL_ID:
+			return getPublishEventMediatorInputConnector_3786Text(view);
+		case PublishEventMediatorOutputConnectorEditPart.VISUAL_ID:
+			return getPublishEventMediatorOutputConnector_3787Text(view);
 		case EsbLinkEditPart.VISUAL_ID:
 			return getEsbLink_4001Text(view);
 		}
@@ -3232,6 +3247,36 @@ public class EsbNavigatorLabelProvider extends LabelProvider implements ICommonL
 	 * @generated
 	 */
 	private String getMediatorFlow_3784Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getPublishEventMediator_3785Text(View view) {
+		IParser parser = EsbParserProvider.getParser(EsbElementTypes.PublishEventMediator_3785,
+				view.getElement() != null ? view.getElement() : view,
+				EsbVisualIDRegistry.getType(PublishEventMediatorStreamNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			EsbDiagramEditorPlugin.getInstance().logError("Parser was not found for label " + 5214); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getPublishEventMediatorInputConnector_3786Text(View view) {
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getPublishEventMediatorOutputConnector_3787Text(View view) {
 		return ""; //$NON-NLS-1$
 	}
 

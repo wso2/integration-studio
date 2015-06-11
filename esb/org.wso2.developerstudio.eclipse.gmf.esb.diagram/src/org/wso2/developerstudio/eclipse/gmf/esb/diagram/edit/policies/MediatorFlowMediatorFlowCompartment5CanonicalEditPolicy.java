@@ -62,6 +62,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.NamedEndpoint
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.OAuthMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PayloadFactoryMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PropertyMediatorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.PublishEventMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RMSequenceMediatorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RecipientListEndPointEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.RespondMediatorEditPart;
@@ -200,6 +201,7 @@ public class MediatorFlowMediatorFlowCompartment5CanonicalEditPolicy extends Can
 		case DataMapperMediatorEditPart.VISUAL_ID:
 		case FastXSLTMediatorEditPart.VISUAL_ID:
 		case ForEachMediatorEditPart.VISUAL_ID:
+		case PublishEventMediatorEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

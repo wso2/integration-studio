@@ -200,6 +200,11 @@ public class EndpointFlowItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EsbPackage.Literals.ENDPOINT_FLOW__CHILDREN,
+				 EsbFactory.eINSTANCE.createPublishEventMediator()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.ENDPOINT_FLOW__CHILDREN,
 				 EsbFactory.eINSTANCE.createBAMMediator()));
 
 		newChildDescriptors.add

@@ -118,6 +118,15 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.LOG_MEDIATOR_INPUT_CONNECTOR: return createLogMediatorInputConnector();
 			case EsbPackage.LOG_MEDIATOR_OUTPUT_CONNECTOR: return createLogMediatorOutputConnector();
 			case EsbPackage.LOG_PROPERTY: return createLogProperty();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR: return createPublishEventMediator();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_INPUT_CONNECTOR: return createPublishEventMediatorInputConnector();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_OUTPUT_CONNECTOR: return createPublishEventMediatorOutputConnector();
+			case EsbPackage.PUBLISH_EVENT_ATTRIBUTES: return createPublishEventAttributes();
+			case EsbPackage.PUBLISH_EVENT_META_ATTRIBUTES: return createPublishEventMetaAttributes();
+			case EsbPackage.PUBLISH_EVENT_CORRELATION_ATTRIBUTES: return createPublishEventCorrelationAttributes();
+			case EsbPackage.PUBLISH_EVENT_PAYLOAD_ATTRIBUTES: return createPublishEventPayloadAttributes();
+			case EsbPackage.PUBLISH_EVENT_ARBITRARY_ATTRIBUTES: return createPublishEventArbitraryAttributes();
+			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE: return createAbstractNameValueExpressionAttribute();
 			case EsbPackage.BAM_MEDIATOR: return createBAMMediator();
 			case EsbPackage.BAM_MEDIATOR_INPUT_CONNECTOR: return createBAMMediatorInputConnector();
 			case EsbPackage.BAM_MEDIATOR_OUTPUT_CONNECTOR: return createBAMMediatorOutputConnector();
@@ -1394,6 +1403,96 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 		logProperty.setPropertyName("property_name");
 		logProperty.setPropertyValue("property_value");
 		return logProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventMediator createPublishEventMediator() {
+		PublishEventMediatorImpl publishEventMediator = new PublishEventMediatorImpl();
+		return publishEventMediator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventMediatorInputConnector createPublishEventMediatorInputConnector() {
+		PublishEventMediatorInputConnectorImpl publishEventMediatorInputConnector = new PublishEventMediatorInputConnectorImpl();
+		return publishEventMediatorInputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventMediatorOutputConnector createPublishEventMediatorOutputConnector() {
+		PublishEventMediatorOutputConnectorImpl publishEventMediatorOutputConnector = new PublishEventMediatorOutputConnectorImpl();
+		return publishEventMediatorOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventAttributes createPublishEventAttributes() {
+		PublishEventAttributesImpl publishEventAttributes = new PublishEventAttributesImpl();
+		return publishEventAttributes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventMetaAttributes createPublishEventMetaAttributes() {
+		PublishEventMetaAttributesImpl publishEventMetaAttributes = new PublishEventMetaAttributesImpl();
+		return publishEventMetaAttributes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventCorrelationAttributes createPublishEventCorrelationAttributes() {
+		PublishEventCorrelationAttributesImpl publishEventCorrelationAttributes = new PublishEventCorrelationAttributesImpl();
+		return publishEventCorrelationAttributes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventPayloadAttributes createPublishEventPayloadAttributes() {
+		PublishEventPayloadAttributesImpl publishEventPayloadAttributes = new PublishEventPayloadAttributesImpl();
+		return publishEventPayloadAttributes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventArbitraryAttributes createPublishEventArbitraryAttributes() {
+		PublishEventArbitraryAttributesImpl publishEventArbitraryAttributes = new PublishEventArbitraryAttributesImpl();
+		return publishEventArbitraryAttributes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbstractNameValueExpressionAttribute createAbstractNameValueExpressionAttribute() {
+		AbstractNameValueExpressionAttributeImpl abstractNameValueExpressionAttribute = new AbstractNameValueExpressionAttributeImpl();
+		return abstractNameValueExpressionAttribute;
 	}
 
 	/**

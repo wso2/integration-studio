@@ -31,9 +31,11 @@ public class ApimPreferencePage extends FieldEditorPreferencePage implements IWo
 	private static final String LABEL_USERNAME = "Username :";
 	private static final String LABEL_PASSWORD = "Password :";
 	private static final String LABEL_DEFAULT_SEQUENCE_LOCATION = "Default sequence location :";
+	
 	public static final String APIM_DEFAULT_PASSWORD = "admin";
 	public static final String APIM_DEFAULT_URL = "https://localhost:9443/";
 	public static final String APIM_DEFAULT_USERNAME = APIM_DEFAULT_PASSWORD;
+	
 	public static final String APIM_PASSWORD = "APIM_PASSWORD";
 	public static final String APIM_USERNAME = "APIM_USERNAME";
 	public static final String APIM_URL = "APIM_URL";
@@ -78,6 +80,7 @@ public class ApimPreferencePage extends FieldEditorPreferencePage implements IWo
 		preferenceStore.setDefault(APIM_URL, APIM_DEFAULT_URL);
 		preferenceStore.setDefault(APIM_PASSWORD, APIM_DEFAULT_PASSWORD);
 		preferenceStore.setDefault(APIM_REG_DEFAULT_PATH, APIM_CUSTOMSEQUENCES_PATH);
+	 
 	}
 
 }

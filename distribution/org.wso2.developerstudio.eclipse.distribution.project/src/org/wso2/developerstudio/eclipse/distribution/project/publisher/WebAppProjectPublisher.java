@@ -132,7 +132,6 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 				}
 				return;
 			}
-
 			if (resource.getType() == IResource.FILE) {
 				if (resource.getFileExtension().equals("class")) {
 					path = resource.getProjectRelativePath();

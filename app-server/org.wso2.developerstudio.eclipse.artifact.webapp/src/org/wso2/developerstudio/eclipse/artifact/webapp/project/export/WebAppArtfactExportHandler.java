@@ -72,11 +72,8 @@ public class WebAppArtfactExportHandler extends ProjectArtifactHandler {
 
 	public File createExplodedWebapp(IProject project) throws Exception {
 
-		IPath fullPath = project.getFolder("WEB-INF").getFullPath();
-		IResource res = project.getFile("META-INF" + File.separator + "MANIFEST.MF");
 		clearTarget(project);
 		IPath outPutPath = buildJavaProject(project);
-		IPath webContentPath1 = fullPath;
 		IPath webContentPath = project.getFolder("WebContent").getLocation();
 		File explodedWebApp = new File(webContentPath.toFile().getAbsolutePath());
 

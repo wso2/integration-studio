@@ -170,7 +170,10 @@ import org.wso2.developerstudio.eclipse.usermgt.remote.UserManager;
 
 public class RegistryBrowserView extends ViewPart implements Observer {
 
-    public static final String EVENT_TOPIC_EXPAND_TREE = "ExpandTree";
+    private static final String OUT_SEQUENCE_LOCATION = "out";
+	private static final String IN_SEQUENCE_LOCATION = "in";
+	private static final String FAULT_SEQUENCE_LOCATION = "fault";
+	public static final String EVENT_TOPIC_EXPAND_TREE = "ExpandTree";
     public static final String EVENT_TOPIC_POPULATE_NODE_DATA = "NODEDATA_PUPULATE";
 	private static final String DEFAULT_PATH = "/";
 	private static final int CHAR_SHIFT = 32;
@@ -556,27 +559,20 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 			});
 			
 			
-		}else{
-			multipleResourceUploadMenu = new MenuManager(
-					"Add local resources",
-					ImageUtils
-							.getImageDescriptor(ImageUtils.ACTION_ADD_RESOURCE_FROM_LOCAL),
+		} else {
+			multipleResourceUploadMenu = new MenuManager("Add local resources",
+					ImageUtils.getImageDescriptor(ImageUtils.ACTION_ADD_RESOURCE_FROM_LOCAL),
 					"org.eclipse.tools.multipleresources");
 			multipleResourceUploadMenu.setRemoveAllWhenShown(true);
-
 			multipleResourceUploadMenu.addMenuListener(new IMenuListener() {
-
 				public void menuAboutToShow(IMenuManager menu) {
 					menu.add(multipleFileAction);
 					menu.add(multipleFolderAction);
 				}
 			});
-			
 		}
 
-		
-		
-		
+						
 		menuMgr.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager mgr) {
 				menuMgr.removeAll();
@@ -588,7 +584,9 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 					if (selectedObj == null) {
 						menuMgr.add(addRegistryAction);
 					}else if(selectedObj instanceof RegistryContentContainer){
-						mgr.add(linkWithEditorAction);
+						if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
+							mgr.add(linkWithEditorAction);
+						}
 					} else if (selectedObj instanceof RegistryNode) {
 						if(ApiMangerRegistryBrowserView.isAPIMperspective()){
 							mgr.add(refreshAction);
@@ -618,58 +616,82 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 					} else if (selectedObj instanceof RegistryResourceNode) {
 						RegistryResourceNode rrpd = (RegistryResourceNode) selectedObj;
 						if (!rrpd.isError()) {
-							if (rrpd.getResourceType()==RegistryResourceType.COLLECTION) {
-							 
-							if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
-								menuMgr.add(addResourceAction);
-								menuMgr.add(addCollectionAction);
-							   }							
-								menuMgr.add(multipleResourceUploadMenu);
-								
+							if (rrpd.getResourceType() == RegistryResourceType.COLLECTION) {
+
+								if (!ApiMangerRegistryBrowserView.isAPIMperspective()) {
+									menuMgr.add(addResourceAction);
+									menuMgr.add(addCollectionAction);
+								} else {
+									if (FAULT_SEQUENCE_LOCATION.equals(rrpd.getResourceName())
+											|| IN_SEQUENCE_LOCATION.equals(rrpd.getResourceName())
+											|| OUT_SEQUENCE_LOCATION.equals(rrpd.getResourceName())) {
+										menuMgr.add(multipleResourceUploadMenu);
+									}
+								}
+
 								menuMgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 								menuMgr.add(new Separator());
-								
-								if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
-								mgr.add(importFromAction);
+
+								if (!ApiMangerRegistryBrowserView.isAPIMperspective()) {
+									mgr.add(importFromAction);
 								}
 
 							} else {
 
 								addVersionsSubMenu(rrpd, mgr);
 							}
-							mgr.add(new GroupMarker(
-									IWorkbenchActionConstants.MB_ADDITIONS));
+							mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 							mgr.add(new Separator());
-							if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
-							mgr.add(modifyResourcePermission);
+							if (!ApiMangerRegistryBrowserView.isAPIMperspective()) {
+								mgr.add(modifyResourcePermission);
 							}
-							mgr.add(new GroupMarker(
-									IWorkbenchActionConstants.MB_ADDITIONS));
+							if (ApiMangerRegistryBrowserView.isAPIMperspective()) {
+
+								if (rrpd.getResourceType() == RegistryResourceType.RESOURCE) {
+									mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+									mgr.add(new Separator());
+									mgr.add(copyAction);
+									mgr.add(pasteAction);
+									if (!rrpd.getRegistryResourcePath().equals(DEFAULT_PATH)) {
+										mgr.add(renameAction);
+									}
+								}
+
+							} else {
+
+								mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+								mgr.add(new Separator());
+								mgr.add(copyAction);
+								mgr.add(pasteAction);
+								if (!rrpd.getRegistryResourcePath().equals(DEFAULT_PATH)) {
+									mgr.add(renameAction);
+								}
+
+							}
+							mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 							mgr.add(new Separator());
-							mgr.add(copyAction);
-							mgr.add(pasteAction);
-							if (!rrpd.getRegistryResourcePath().equals(DEFAULT_PATH)){
-								mgr.add(renameAction);
+							if (!ApiMangerRegistryBrowserView.isAPIMperspective()) {
+								mgr.add(exportToAction);
 							}
-							mgr.add(new GroupMarker(
-									IWorkbenchActionConstants.MB_ADDITIONS));
-							mgr.add(new Separator());
-							if(!ApiMangerRegistryBrowserView.isAPIMperspective()){
-							mgr.add(exportToAction);
+
+							if (ApiMangerRegistryBrowserView.isAPIMperspective()) {
+								if (rrpd.getResourceType() == RegistryResourceType.RESOURCE) {
+									menuMgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+									menuMgr.add(new Separator());
+									menuMgr.add(deleteAction);
+								}
+							} else {
+								menuMgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+								menuMgr.add(new Separator());
+								menuMgr.add(deleteAction);
+								menuMgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+								menuMgr.add(new Separator());
+								menuMgr.add(metadatMenu);
+								menuMgr.add(communitySubMenu);
+								menuMgr.add(resourceInformationAction);
+								menuMgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+								menuMgr.add(new Separator());
 							}
-							menuMgr.add(new GroupMarker(
-									IWorkbenchActionConstants.MB_ADDITIONS));
-							menuMgr.add(new Separator());
-							menuMgr.add(deleteAction);
-							menuMgr.add(new GroupMarker(
-									IWorkbenchActionConstants.MB_ADDITIONS));
-							menuMgr.add(new Separator());
-							menuMgr.add(metadatMenu);
-							menuMgr.add(communitySubMenu);
-							menuMgr.add(resourceInformationAction);
-							menuMgr.add(new GroupMarker(
-									IWorkbenchActionConstants.MB_ADDITIONS));
-							menuMgr.add(new Separator());
 
 						}
 						mgr.add(refreshAction);
@@ -678,45 +700,40 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 						regUserRole = (RegistryUserRole) selectedObj;
 						if (!regUserRole.getUserRoleName().equals("admin")) {
 							mgr.add(changeRolePermission);
-							mgr.add(new GroupMarker(
-									IWorkbenchActionConstants.MB_ADDITIONS));
+							mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 							mgr.add(new Separator());
 						}
 
 					} else if (selectedObj instanceof RegistryUserContainer) {
 						regUserContainer = (RegistryUserContainer) selectedObj;
-						 List<RegistryUserRole> rolesList=regUserContainer.getRegistryUserManagerContainer().getUserRoleContent().getUserRoles();
-						    if(rolesList!=null){
-						    	if(!rolesList.isEmpty()){
-						    		for (RegistryUserRole registryUserRole : rolesList) {
-						    			if("admin".equals(registryUserRole.getUserRoleName())){
-						    				 mgr.add(addUsers);
-						    				 break;
-						    			}
+						List<RegistryUserRole> rolesList = regUserContainer.getRegistryUserManagerContainer()
+								.getUserRoleContent().getUserRoles();
+						if (rolesList != null) {
+							if (!rolesList.isEmpty()) {
+								for (RegistryUserRole registryUserRole : rolesList) {
+									if ("admin".equals(registryUserRole.getUserRoleName())) {
+										mgr.add(addUsers);
+										break;
 									}
-						    	}
-						    }
+								}
+							}
+						}
 					} else if (selectedObj instanceof RegistryUserRoleContainer) {
 						regRoleContainer = (RegistryUserRoleContainer) selectedObj;
 						mgr.add(addRoles);
 					} else if (selectedObj instanceof RegistryUser) {
 						mgr.add(modifyUserInfo);
 						mgr.add(deleteAction);
-					}else{
-						
 					}
 				} else if (selectedItemList.size() > 1) {
 					mgr.add(exportToAction);
-					mgr.add(new GroupMarker(
-							IWorkbenchActionConstants.MB_ADDITIONS));
+					mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 					mgr.add(new Separator());
 					mgr.add(deleteAction);
-					mgr.add(new GroupMarker(
-							IWorkbenchActionConstants.MB_ADDITIONS));
+					mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 					mgr.add(new Separator());
 					mgr.add(refreshAction);
-					mgr.add(new GroupMarker(
-							IWorkbenchActionConstants.MB_ADDITIONS));
+					mgr.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 					mgr.add(new Separator());
 				}
 				Action[] actionsToAdd = getThirdpartyActions(selectedObj);
@@ -724,11 +741,8 @@ public class RegistryBrowserView extends ViewPart implements Observer {
 					mgr.add(action);
 
 				}
-//				mgr.add(linkWithEditorAction);
 				menuMgr.updateAll(true);
 			}
-
-			
 		});
 
 		menuMgr.updateAll(true);

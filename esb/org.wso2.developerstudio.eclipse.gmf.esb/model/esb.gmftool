@@ -75,24 +75,6 @@
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="PublishEventMediatorInputConnector"
-          description="Create new PublishEventMediatorInputConnector">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="PublishEventMediatorOutputConnector"
-          description="Create new PublishEventMediatorOutputConnector">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
     </tools>
     <tools
         xsi:type="gmftool:ToolGroup"
@@ -517,15 +499,6 @@
           xsi:type="gmftool:CreationTool"
           title="FastXSLTMediator"
           description="Create new FastXSLTMediator">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="PublishEventMediator"
-          description="Create new PublishEventMediator">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

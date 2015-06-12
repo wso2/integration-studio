@@ -873,35 +873,6 @@
     <genClasses ecoreClass="esb.ecore#//LogMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LogMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LogProperty"/>
-    <genClasses ecoreClass="esb.ecore#//PublishEventMediator">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/inputConnector"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/outputconnector"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/streamName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/streamVersion"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/eventSink"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/attributes"/>
-    </genClasses>
-    <genClasses ecoreClass="esb.ecore#//PublishEventMediatorInputConnector"/>
-    <genClasses ecoreClass="esb.ecore#//PublishEventMediatorOutputConnector"/>
-    <genClasses ecoreClass="esb.ecore#//PublishEventAttributes">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventAttributes/meta"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventAttributes/correlation"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventAttributes/payload"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventAttributes/arbitrary"/>
-    </genClasses>
-    <genClasses ecoreClass="esb.ecore#//PublishEventMetaAttributes">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMetaAttributes/attributes"/>
-    </genClasses>
-    <genClasses ecoreClass="esb.ecore#//PublishEventCorrelationAttributes">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventCorrelationAttributes/attributes"/>
-    </genClasses>
-    <genClasses ecoreClass="esb.ecore#//PublishEventPayloadAttributes">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventPayloadAttributes/attributes"/>
-    </genClasses>
-    <genClasses ecoreClass="esb.ecore#//PublishEventArbitraryAttributes">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventArbitraryAttributes/attributes"/>
-    </genClasses>
-    <genClasses ecoreClass="esb.ecore#//AbstractNameValueExpressionAttribute"/>
     <genClasses ecoreClass="esb.ecore#//BAMMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//BAMMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//BAMMediator/outputConnector"/>
@@ -1308,8 +1279,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/targetOutputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/mediatorFlow"/>
       <genFeatures createChild="false" propertyCategory="Sequence" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachMediator/sequenceType"/>
-      <genFeatures children="true" createChild="true" propertyCategory="Sequence"
-          ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/sequenceKey"/>
+      <genFeatures children="true" createChild="true" propertyCategory="Sequence" ecoreFeature="ecore:EReference esb.ecore#//ForEachMediator/sequenceKey"/>
       <genFeatures createChild="false" propertyCategory="Sequence" ecoreFeature="ecore:EAttribute esb.ecore#//ForEachMediator/sequenceName"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//ForEachMediatorInputConnector"/>

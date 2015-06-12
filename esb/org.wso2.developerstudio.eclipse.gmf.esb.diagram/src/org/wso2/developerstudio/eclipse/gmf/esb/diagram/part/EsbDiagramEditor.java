@@ -325,10 +325,10 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMark
 
 		KeyHandler parentHandler = getKeyHandler();
 
-		/*		// CTRL + '=' disable zoom in 
-		 parentHandler.remove(KeyStroke.getPressed('=', 0x3d, SWT.CTRL));
-		 // CTRL + '-' * disable zoom out
-		 parentHandler.remove(KeyStroke.getPressed('-', 0x2d, SWT.CTRL));*/
+/*		// CTRL + '=' disable zoom in 
+		parentHandler.remove(KeyStroke.getPressed('=', 0x3d, SWT.CTRL));
+		// CTRL + '-' * disable zoom out
+		parentHandler.remove(KeyStroke.getPressed('-', 0x2d, SWT.CTRL));*/
 
 		viewerKeyHandler.setParent(getKeyHandler());
 		viewer.setKeyHandler(new DirectEditKeyHandler(viewer).setParent(viewerKeyHandler));
@@ -348,10 +348,10 @@ public class EsbDiagramEditor extends DiagramDocumentEditor implements IGotoMark
 		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
 		getDiagramGraphicalViewer().addDropTargetListener(
 				new CustomPaletteToolTransferDropTargetListener(getGraphicalViewer()));
-
+		
 		// Adding zoom listener 
 		ZoomManager zoomManager = (ZoomManager) getGraphicalViewer().getProperty(ZoomManager.class.toString());
-		zoomManager.addZoomListener(new CustomZoomListener(esbEditor));
+		zoomManager.addZoomListener(new CustomZoomListener(esbEditor)); 	
 	}
 
 	protected int getInitialDockLocation() {

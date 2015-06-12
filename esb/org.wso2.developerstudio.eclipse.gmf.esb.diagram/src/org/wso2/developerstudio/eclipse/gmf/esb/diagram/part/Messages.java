@@ -343,26 +343,6 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String PublishEventMediatorInputConnector8CreationTool_title;
-
-	/**
-	 * @generated
-	 */
-	public static String PublishEventMediatorInputConnector8CreationTool_desc;
-
-	/**
-	 * @generated
-	 */
-	public static String PublishEventMediatorOutputConnector9CreationTool_title;
-
-	/**
-	 * @generated
-	 */
-	public static String PublishEventMediatorOutputConnector9CreationTool_desc;
-
-	/**
-	 * @generated
-	 */
 	public static String DropMediator1CreationTool_title;
 
 	/**
@@ -829,16 +809,6 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String FastXSLTMediator47CreationTool_desc;
-
-	/**
-	 * @generated
-	 */
-	public static String PublishEventMediator48CreationTool_title;
-
-	/**
-	 * @generated
-	 */
-	public static String PublishEventMediator48CreationTool_desc;
 
 	/**
 	 * @generated
@@ -1454,16 +1424,6 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_ForEachMediatorTargetOutputConnector_3783_outgoinglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_PublishEventMediatorInputConnector_3786_incominglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_PublishEventMediatorOutputConnector_3787_outgoinglinks;
 
 	/**
 	 * @generated

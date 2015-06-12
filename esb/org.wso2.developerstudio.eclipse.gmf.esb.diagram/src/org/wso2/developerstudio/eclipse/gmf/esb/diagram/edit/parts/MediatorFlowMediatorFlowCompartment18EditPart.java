@@ -345,9 +345,6 @@ public class MediatorFlowMediatorFlowCompartment18EditPart extends ShapeCompartm
 			if (type == EsbElementTypes.ForEachMediator_3780) {
 				return this;
 			}
-			if (type == EsbElementTypes.PublishEventMediator_3785) {
-				return this;
-			}
 			return getParent().getTargetEditPart(request);
 		}
 		if (request instanceof CreateUnspecifiedTypeConnectionRequest) {

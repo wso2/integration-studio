@@ -938,18 +938,6 @@ public class EsbEditPartFactory implements EditPartFactory {
 			case MediatorFlow30EditPart.VISUAL_ID:
 				return new MediatorFlow30EditPart(view);
 
-			case PublishEventMediatorEditPart.VISUAL_ID:
-				return new PublishEventMediatorEditPart(view);
-
-			case PublishEventMediatorStreamNameEditPart.VISUAL_ID:
-				return new PublishEventMediatorStreamNameEditPart(view);
-
-			case PublishEventMediatorInputConnectorEditPart.VISUAL_ID:
-				return new PublishEventMediatorInputConnectorEditPart(view);
-
-			case PublishEventMediatorOutputConnectorEditPart.VISUAL_ID:
-				return new PublishEventMediatorOutputConnectorEditPart(view);
-
 			case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
 				return new EntitlementOnAcceptContainerEditPart(view);
 

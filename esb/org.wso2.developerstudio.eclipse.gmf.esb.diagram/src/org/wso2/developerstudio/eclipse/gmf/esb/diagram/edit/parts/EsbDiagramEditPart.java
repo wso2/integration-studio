@@ -81,5 +81,36 @@ public class EsbDiagramEditPart extends DiagramEditPart {
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.CONNECTION_HANDLES_ROLE);
 		removeEditPolicy(org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles.POPUPBAR_ROLE);
 	}
+	
+	/**
+	 * @generated
+	 */
+	/*package-local*/
+	static class NodeLabelDragPolicy extends NonResizableEditPolicy {
+	    /**
+	     * @generated
+	     */
+	    @SuppressWarnings("rawtypes")
+	    protected List createSelectionHandles() {
+	        MoveHandle h = new MoveHandle((GraphicalEditPart) getHost());
+	        h.setBorder(null);
+	        return Collections.singletonList(h);
+	    }
+
+	    /**
+	     * @generated
+	     */
+	    public Command getCommand(Request request) {
+	        return null;
+	    }
+
+	    /**
+	     * @generated
+	     */
+	    public boolean understandsRequest(Request request) {
+	        return false;
+	    }
+	}
+
 
 }

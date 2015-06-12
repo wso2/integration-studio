@@ -423,44 +423,6 @@
     <eLiterals name="CUSTOM" value="3" literal="CUSTOM"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogProperty" eSuperTypes="#//AbstractNameValueExpressionProperty"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediator" eSuperTypes="#//Mediator">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//PublishEventMediatorInputConnector"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outputconnector" eType="#//PublishEventMediatorOutputConnector"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="streamName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="streamVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventSink" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" eType="#//PublishEventAttributes"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediatorInputConnector"
-      eSuperTypes="#//InputConnector"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventMediatorOutputConnector"
-      eSuperTypes="#//OutputConnector"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventAttributes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="meta" eType="#//PublishEventMetaAttributes"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="correlation" eType="#//PublishEventCorrelationAttributes"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="payload" eType="#//PublishEventPayloadAttributes"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="arbitrary" eType="#//PublishEventArbitraryAttributes"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventMetaAttributes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
-        eType="#//AbstractNameValueExpressionAttribute"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventCorrelationAttributes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
-        eType="#//AbstractNameValueExpressionAttribute"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventPayloadAttributes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
-        eType="#//AbstractNameValueExpressionAttribute"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PublishEventArbitraryAttributes">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
-        eType="#//AbstractNameValueExpressionAttribute"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractNameValueExpressionAttribute"
-      eSuperTypes="#//EsbNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="BAMMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//BAMMediatorInputConnector"
         containment="true"/>

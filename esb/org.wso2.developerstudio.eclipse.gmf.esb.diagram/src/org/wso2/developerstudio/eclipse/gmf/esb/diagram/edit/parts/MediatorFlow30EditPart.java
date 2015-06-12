@@ -1,10 +1,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts;
 
-import org.eclipse.draw2d.Graphics;
-import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -34,7 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFl
 public class MediatorFlow30EditPart extends ShapeNodeEditPart {
 
 	// ForEach mediator
-
+	
 	/**
 	 * @generated
 	 */

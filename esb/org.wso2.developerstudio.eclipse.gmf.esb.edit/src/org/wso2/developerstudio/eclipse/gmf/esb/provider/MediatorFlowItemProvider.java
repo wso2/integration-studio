@@ -200,11 +200,6 @@ public class MediatorFlowItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
-				 EsbFactory.eINSTANCE.createPublishEventMediator()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(EsbPackage.Literals.MEDIATOR_FLOW__CHILDREN,
 				 EsbFactory.eINSTANCE.createBAMMediator()));
 
 		newChildDescriptors.add

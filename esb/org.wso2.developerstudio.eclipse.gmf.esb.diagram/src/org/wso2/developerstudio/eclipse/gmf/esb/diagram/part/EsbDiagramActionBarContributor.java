@@ -49,10 +49,10 @@ public class EsbDiagramActionBarContributor extends DiagramActionBarContributor 
 		// Remove Diagram toolbar from ESB editor..
 		IToolBarManager toolBarManager = bars.getToolBarManager();
 		assert toolBarManager != null;
-		IContributionItem[] contributionItem = toolBarManager.getItems();
-		for (int i = 0; i < contributionItem.length; ++i) {
+		IContributionItem[] contributionItem=  toolBarManager.getItems();
+		for(int i=0; i<contributionItem.length;++i){
 			// Not removing "zoom" toolbar item.
-			if (!(contributionItem[i] instanceof ZoomContributionItem)) {
+			if(!(contributionItem[i] instanceof ZoomContributionItem)){
 				toolBarManager.remove(contributionItem[i]);
 			}
 		}

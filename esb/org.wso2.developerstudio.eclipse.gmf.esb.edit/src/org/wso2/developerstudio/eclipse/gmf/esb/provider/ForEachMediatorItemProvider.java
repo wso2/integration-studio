@@ -148,7 +148,7 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 getString("_UI_SequencePropertyCategory"),
+				 null,
 				 null));
 	}
 
@@ -170,7 +170,7 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
 				 false,
 				 false,
 				 null,
-				 getString("_UI_SequencePropertyCategory"),
+				 null,
 				 null));
 	}
 
@@ -192,7 +192,7 @@ public class ForEachMediatorItemProvider extends MediatorItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 getString("_UI_SequencePropertyCategory"),
+				 null,
 				 null));
 	}
 

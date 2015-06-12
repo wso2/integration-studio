@@ -222,11 +222,6 @@ public class EsbSequenceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(EsbPackage.Literals.ESB_SEQUENCE__CHILD_MEDIATORS,
-				 EsbFactory.eINSTANCE.createPublishEventMediator()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(EsbPackage.Literals.ESB_SEQUENCE__CHILD_MEDIATORS,
 				 EsbFactory.eINSTANCE.createBAMMediator()));
 
 		newChildDescriptors.add

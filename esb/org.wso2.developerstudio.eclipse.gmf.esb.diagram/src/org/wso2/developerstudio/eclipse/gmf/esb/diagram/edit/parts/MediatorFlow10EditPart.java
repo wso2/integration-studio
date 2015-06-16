@@ -34,7 +34,6 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorF
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.IMediatorFlowEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlow10ItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 

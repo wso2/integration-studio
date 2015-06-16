@@ -6,6 +6,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -16,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getCommentsList <em>Comments List</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,6 +52,22 @@ public interface EsbElement extends EsbNode {
 	 * @generated
 	 */
 	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Comments List</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Comments List</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Comments List</em>' attribute list.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getEsbElement_CommentsList()
+	 * @model unique="false"
+	 * @generated
+	 */
+	EList<String> getCommentsList();
 
 	/**
 	 * Default synapse namespace.

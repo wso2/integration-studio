@@ -56,6 +56,7 @@ public class EsbElementItemProvider
 			super.getPropertyDescriptors(object);
 
 			addDescriptionPropertyDescriptor(object);
+			addCommentsListPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -74,6 +75,28 @@ public class EsbElementItemProvider
 				 getString("_UI_EsbElement_description_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_EsbElement_description_feature", "_UI_EsbElement_type"),
 				 EsbPackage.Literals.ESB_ELEMENT__DESCRIPTION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Comments List feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCommentsListPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EsbElement_commentsList_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EsbElement_commentsList_feature", "_UI_EsbElement_type"),
+				 EsbPackage.Literals.ESB_ELEMENT__COMMENTS_LIST,
 				 true,
 				 false,
 				 false,
@@ -111,6 +134,7 @@ public class EsbElementItemProvider
 
 		switch (notification.getFeatureID(EsbElement.class)) {
 			case EsbPackage.ESB_ELEMENT__DESCRIPTION:
+			case EsbPackage.ESB_ELEMENT__COMMENTS_LIST:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

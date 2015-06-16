@@ -912,6 +912,20 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 		return false;
 	}
 	
+	protected <E extends Object> boolean executeAddAllCommand(final EList<E> list, final List<E> valueList) {
+		TransactionalEditingDomain editingDomain = getDiagramEditor().getEditingDomain();
+		RecordingCommand command = new RecordingCommand(editingDomain) {
+			protected void doExecute() {
+				list.addAll(valueList);
+			}
+		};
+		if (command.canExecute()) {
+			editingDomain.getCommandStack().execute(command);
+			return true;
+		}
+		return false;
+	}
+	
 	protected NamespacedProperty createNamespacedProperty(SynapseXPath xpath) {			
 		NamespacedProperty nsp = EsbFactory.eINSTANCE.createNamespacedProperty();				
 		nsp.setPropertyValue(xpath.toString());				
@@ -984,6 +998,7 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 	
 	protected void setCommonProperties(Mediator mediator,org.wso2.developerstudio.eclipse.gmf.esb.Mediator visualElement){
 		executeSetValueCommand(visualElement,ESB_ELEMENT__DESCRIPTION, mediator.getShortDescription());
+		executeAddAllCommand(visualElement.getCommentsList(), ((AbstractMediator)mediator).getCommentsList());
 	}
 	
 }

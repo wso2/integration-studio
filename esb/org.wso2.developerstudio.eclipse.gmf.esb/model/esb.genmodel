@@ -626,6 +626,7 @@
     <genClasses image="false" ecoreClass="esb.ecore#//EsbNode"/>
     <genClasses image="false" ecoreClass="esb.ecore#//EsbElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EsbElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//EsbElement/commentsList"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//EsbServer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//EsbServer/children"/>

@@ -137,13 +137,22 @@ public interface EsbPackage extends EPackage {
 	int ESB_ELEMENT__DESCRIPTION = ESB_NODE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESB_ELEMENT__COMMENTS_LIST = ESB_NODE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ESB_ELEMENT_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 1;
+	int ESB_ELEMENT_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbServerImpl <em>Server</em>}' class.
@@ -209,6 +218,15 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int MEDIATOR__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEDIATOR__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -397,6 +415,15 @@ public interface EsbPackage extends EPackage {
 	int END_POINT__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END_POINT__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -477,6 +504,15 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -752,6 +788,15 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROXY_SERVICE__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROXY_SERVICE__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Output Connector</b></em>' containment reference.
@@ -2039,6 +2084,15 @@ public interface EsbPackage extends EPackage {
 	int ABSTRACT_END_POINT__DESCRIPTION = END_POINT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_END_POINT__COMMENTS_LIST = END_POINT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2282,6 +2336,15 @@ public interface EsbPackage extends EPackage {
 	int MESSAGE_MEDIATOR__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_MEDIATOR__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2361,6 +2424,15 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int DEFAULT_END_POINT__DESCRIPTION = ABSTRACT_END_POINT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFAULT_END_POINT__COMMENTS_LIST = ABSTRACT_END_POINT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
@@ -2667,6 +2739,15 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int ADDRESS_END_POINT__DESCRIPTION = ABSTRACT_END_POINT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS_END_POINT__COMMENTS_LIST = ABSTRACT_END_POINT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
@@ -2992,6 +3073,15 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEMPLATE_ENDPOINT__DESCRIPTION = ABSTRACT_END_POINT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_ENDPOINT__COMMENTS_LIST = ABSTRACT_END_POINT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
@@ -3403,6 +3493,15 @@ public interface EsbPackage extends EPackage {
 	int HTTP_ENDPOINT__DESCRIPTION = ABSTRACT_END_POINT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HTTP_ENDPOINT__COMMENTS_LIST = ABSTRACT_END_POINT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3747,6 +3846,15 @@ public interface EsbPackage extends EPackage {
 	int DROP_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DROP_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3799,6 +3907,15 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int FILTER_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILTER_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -4071,6 +4188,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MERGE_NODE__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MERGE_NODE__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4186,6 +4312,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int LOG_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -4404,6 +4539,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int BAM_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BAM_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4519,6 +4663,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int BEAN_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEAN_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -4699,6 +4852,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int EJB_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EJB_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -4981,6 +5143,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PROPERTY_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5260,6 +5431,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int ENRICH_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENRICH_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5484,6 +5664,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int XSLT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XSLT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -5805,6 +5994,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int SWITCH_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -6426,6 +6624,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int SEQUENCE__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6616,6 +6823,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int EVENT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -6809,6 +7025,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int ENTITLEMENT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITLEMENT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -7435,6 +7660,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int ENQUEUE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENQUEUE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7580,6 +7814,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int CLASS_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -7755,6 +7998,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int SPRING_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPRING_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -7955,6 +8207,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int SCRIPT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8145,6 +8406,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int FAULT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAULT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -8438,6 +8708,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int AGGREGATE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8728,6 +9007,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int ROUTER_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTER_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -9306,6 +9594,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CLONE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLONE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9632,6 +9929,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int FOR_EACH_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOR_EACH_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9949,6 +10255,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int ITERATE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITERATE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -10341,6 +10656,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CACHE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10625,6 +10949,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int XQUERY_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XQUERY_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10870,6 +11203,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int CALLOUT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALLOUT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -11163,6 +11505,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int RM_SEQUENCE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RM_SEQUENCE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11319,6 +11670,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int TRANSACTION_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11446,6 +11806,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int OAUTH_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OAUTH_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -11595,6 +11964,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int AUTOSCALE_IN_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTOSCALE_IN_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11632,6 +12010,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int AUTOSCALE_OUT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTOSCALE_OUT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11667,6 +12054,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int HEADER_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADER_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -11850,6 +12246,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int THROTTLE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THROTTLE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -12476,6 +12881,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int COMMAND_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12694,6 +13108,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int ABSTRACT_SQL_EXECUTOR_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_SQL_EXECUTOR_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -13069,6 +13492,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int DB_LOOKUP_MEDIATOR__DESCRIPTION = ABSTRACT_SQL_EXECUTOR_MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DB_LOOKUP_MEDIATOR__COMMENTS_LIST = ABSTRACT_SQL_EXECUTOR_MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13376,6 +13808,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int DB_REPORT_MEDIATOR__DESCRIPTION = ABSTRACT_SQL_EXECUTOR_MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DB_REPORT_MEDIATOR__COMMENTS_LIST = ABSTRACT_SQL_EXECUTOR_MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -13694,6 +14135,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int RULE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -14419,6 +14869,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CALL_TEMPLATE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_TEMPLATE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14566,6 +15025,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int LOOP_BACK_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_BACK_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14686,6 +15154,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int RESPOND_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPOND_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14804,6 +15281,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int SMOOKS_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SMOOKS_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -14998,6 +15484,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int STORE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15143,6 +15638,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int BUILDER_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILDER_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -15318,6 +15822,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int PAYLOAD_FACTORY_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAYLOAD_FACTORY_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -15586,6 +16099,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CONDITIONAL_ROUTER_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_ROUTER_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15777,6 +16299,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int SEND_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEND_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -16036,6 +16567,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int PARENT_END_POINT__DESCRIPTION = END_POINT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARENT_END_POINT__COMMENTS_LIST = END_POINT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -16134,6 +16674,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int FAILOVER_END_POINT__DESCRIPTION = PARENT_END_POINT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAILOVER_END_POINT__COMMENTS_LIST = PARENT_END_POINT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
@@ -16372,6 +16921,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int WSDL_END_POINT__DESCRIPTION = ABSTRACT_END_POINT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WSDL_END_POINT__COMMENTS_LIST = ABSTRACT_END_POINT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
@@ -16737,6 +17295,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int LOAD_BALANCE_END_POINT__DESCRIPTION = PARENT_END_POINT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOAD_BALANCE_END_POINT__COMMENTS_LIST = PARENT_END_POINT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17075,6 +17642,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int LOCAL_ENTRY__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_ENTRY__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Entry Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17174,6 +17750,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int SEQUENCES__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCES__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Output Connector</b></em>' containment reference.
@@ -17451,6 +18036,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int URL_REWRITE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int URL_REWRITE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17632,6 +18226,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int VALIDATE_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALIDATE_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -17924,6 +18527,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int ENDPOINT_DIAGRAM__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENDPOINT_DIAGRAM__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Child</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -17968,6 +18580,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int NAMED_ENDPOINT__DESCRIPTION = ABSTRACT_END_POINT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ENDPOINT__COMMENTS_LIST = ABSTRACT_END_POINT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
@@ -18342,6 +18963,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int TEMPLATE__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18432,6 +19062,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int TASK__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Task Name</b></em>' attribute.
@@ -18633,6 +19272,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int SYNAPSE_API__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNAPSE_API__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Api Name</b></em>' attribute.
@@ -19110,6 +19758,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int API_RESOURCE_ENDPOINT__DESCRIPTION = ABSTRACT_END_POINT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_RESOURCE_ENDPOINT__COMMENTS_LIST = ABSTRACT_END_POINT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19446,6 +20103,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int COMPLEX_ENDPOINTS__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_ENDPOINTS__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Output Connector</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19536,6 +20202,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int ADDRESSING_ENDPOINT__DESCRIPTION = ABSTRACT_END_POINT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESSING_ENDPOINT__COMMENTS_LIST = ABSTRACT_END_POINT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
@@ -19874,6 +20549,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int RECIPIENT_LIST_END_POINT__DESCRIPTION = PARENT_END_POINT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECIPIENT_LIST_END_POINT__COMMENTS_LIST = PARENT_END_POINT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>End Point Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20185,6 +20869,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Store Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20356,6 +21049,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int MESSAGE_PROCESSOR__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_PROCESSOR__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Processor Name</b></em>' attribute.
@@ -20658,6 +21360,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int CLOUD_CONNECTOR__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOUD_CONNECTOR__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20776,6 +21487,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int CLOUD_CONNECTOR_OPERATION__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOUD_CONNECTOR_OPERATION__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -20970,6 +21690,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int DATA_MAPPER_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_MAPPER_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21162,6 +21891,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int FAST_XSLT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FAST_XSLT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -21307,6 +22045,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int INBOUND_ENDPOINT__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Sequence Input Connector</b></em>' containment reference.
@@ -22175,6 +22922,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int INBOUND_ENDPOINT_CONTAINER__DESCRIPTION = ESB_ELEMENT__DESCRIPTION;
 
 	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_ENDPOINT_CONTAINER__COMMENTS_LIST = ESB_ELEMENT__COMMENTS_LIST;
+
+	/**
 	 * The feature id for the '<em><b>Sequence Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -22405,6 +23161,15 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int COMMENT_MEDIATOR__DESCRIPTION = MEDIATOR__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Comments List</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENT_MEDIATOR__COMMENTS_LIST = MEDIATOR__COMMENTS_LIST;
 
 	/**
 	 * The feature id for the '<em><b>Reverse</b></em>' attribute.
@@ -23637,6 +24402,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getEsbElement_Description();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getCommentsList <em>Comments List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Comments List</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbElement#getCommentsList()
+	 * @see #getEsbElement()
+	 * @generated
+	 */
+	EAttribute getEsbElement_CommentsList();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.EsbServer <em>Server</em>}'.
@@ -39272,6 +40048,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute ESB_ELEMENT__DESCRIPTION = eINSTANCE.getEsbElement_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Comments List</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESB_ELEMENT__COMMENTS_LIST = eINSTANCE.getEsbElement_CommentsList();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbServerImpl <em>Server</em>}' class.

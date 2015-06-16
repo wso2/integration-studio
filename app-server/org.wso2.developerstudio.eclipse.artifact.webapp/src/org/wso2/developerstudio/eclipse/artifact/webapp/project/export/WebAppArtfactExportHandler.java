@@ -24,7 +24,14 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.IPackageFragmentRoot;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.wst.jsdt.core.IIncludePathEntry;
+import org.eclipse.wst.jsdt.core.IJavaScriptProject;
+import org.eclipse.wst.jsdt.core.JavaScriptCore;
+import org.eclipse.wst.jsdt.core.JavaScriptModelException;
 import org.wso2.developerstudio.eclipse.platform.core.project.export.ProjectArtifactHandler;
 import org.wso2.developerstudio.eclipse.utils.archive.ArchiveManipulator;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -71,18 +78,32 @@ public class WebAppArtfactExportHandler extends ProjectArtifactHandler {
 	 */
 
 	public File createExplodedWebapp(IProject project) throws Exception {
-
+		IProject tempProject = project;
+		String webContentDir = getWebContentDirName(tempProject);
 		clearTarget(project);
 		IPath outPutPath = buildJavaProject(project);
-		IPath webContentPath = project.getFolder("WebContent").getLocation();
+		IPath webContentPath = project.getFolder(webContentDir).getLocation();
 		File explodedWebApp = new File(webContentPath.toFile().getAbsolutePath());
-
 		if (webContentPath.toFile().exists()) {
 			File classes = new File(explodedWebApp, "WEB-INF" + File.separator + "classes");
 			classes.mkdirs();
 			FileUtils.copyDirectoryContents(outPutPath.toFile(), classes);
 		}
 		return explodedWebApp;
+	}
+	
+	public String getWebContentDirName(IProject project) throws JavaScriptModelException {
+		String webContentDirName = "";
+
+		IJavaScriptProject pro = JavaScriptCore.create(project);
+		IIncludePathEntry[] rawPaths = pro.getRawIncludepath();
+		for (IIncludePathEntry iIncludePathEntry : rawPaths) {
+			if (iIncludePathEntry.getEntryKind() == IIncludePathEntry.CPE_SOURCE) {
+				webContentDirName = iIncludePathEntry.getPath().lastSegment();
+			}
+		}
+
+		return webContentDirName;
 	}
 
 }

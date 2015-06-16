@@ -110,7 +110,10 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 				}
 				else{
 					// Adding XML comments into synapse config.
-					addXMLCommnets(info, outgoingLink.getSource().getCommentMediators());
+					CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
+					for(CommentMediator mediator:outgoingLink.getSource().getCommentMediators()){
+						commentMediatorTransformer.transformWithinSequence(info, mediator,sequence);
+					}
 
 					transformer.transformWithinSequence(info, esbNode,sequence);
 				}

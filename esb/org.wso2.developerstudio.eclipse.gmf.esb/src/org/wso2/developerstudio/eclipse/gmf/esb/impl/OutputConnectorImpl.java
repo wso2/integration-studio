@@ -6,11 +6,16 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
@@ -24,6 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.OutputConnectorImpl#getOutgoingLink <em>Outgoing Link</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.OutputConnectorImpl#getCommentMediators <em>Comment Mediators</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +45,16 @@ public abstract class OutputConnectorImpl extends EsbConnectorImpl implements Ou
 	 * @ordered
 	 */
 	protected EsbLink outgoingLink;
+
+	/**
+	 * The cached value of the '{@link #getCommentMediators() <em>Comment Mediators</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCommentMediators()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CommentMediator> commentMediators;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,6 +122,18 @@ public abstract class OutputConnectorImpl extends EsbConnectorImpl implements Ou
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CommentMediator> getCommentMediators() {
+		if (commentMediators == null) {
+			commentMediators = new EObjectContainmentEList<CommentMediator>(CommentMediator.class, this, EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS);
+		}
+		return commentMediators;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public boolean shouldConnect(InputConnector targetEnd) {
@@ -141,6 +169,8 @@ public abstract class OutputConnectorImpl extends EsbConnectorImpl implements Ou
 		switch (featureID) {
 			case EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK:
 				return basicSetOutgoingLink(null, msgs);
+			case EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS:
+				return ((InternalEList<?>)getCommentMediators()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -156,6 +186,8 @@ public abstract class OutputConnectorImpl extends EsbConnectorImpl implements Ou
 		switch (featureID) {
 			case EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK:
 				return getOutgoingLink();
+			case EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS:
+				return getCommentMediators();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -166,11 +198,16 @@ public abstract class OutputConnectorImpl extends EsbConnectorImpl implements Ou
 	 * @generated
 	 */
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK:
 				setOutgoingLink((EsbLink)newValue);
+				return;
+			case EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS:
+				getCommentMediators().clear();
+				getCommentMediators().addAll((Collection<? extends CommentMediator>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -188,6 +225,9 @@ public abstract class OutputConnectorImpl extends EsbConnectorImpl implements Ou
 			case EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK:
 				setOutgoingLink((EsbLink)null);
 				return;
+			case EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS:
+				getCommentMediators().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -203,6 +243,8 @@ public abstract class OutputConnectorImpl extends EsbConnectorImpl implements Ou
 		switch (featureID) {
 			case EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK:
 				return outgoingLink != null;
+			case EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS:
+				return commentMediators != null && !commentMediators.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -4425,6 +4425,29 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 	}
 
     /**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CommentMediatorItemProvider commentMediatorItemProvider;
+
+				/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCommentMediatorAdapter() {
+		if (commentMediatorItemProvider == null) {
+			commentMediatorItemProvider = new CommentMediatorItemProvider(this);
+		}
+
+		return commentMediatorItemProvider;
+	}
+
+				/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8540,6 +8563,7 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 		if (inboundEndpointSequenceOutputConnectorItemProvider != null) inboundEndpointSequenceOutputConnectorItemProvider.dispose();
 		if (inboundEndpointOnErrorSequenceOutputConnectorItemProvider != null) inboundEndpointOnErrorSequenceOutputConnectorItemProvider.dispose();
 		if (inboundEndpointOnErrorSequenceInputConnectorItemProvider != null) inboundEndpointOnErrorSequenceInputConnectorItemProvider.dispose();
+		if (commentMediatorItemProvider != null) commentMediatorItemProvider.dispose();
 	}
 
 }

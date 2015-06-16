@@ -114,6 +114,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CommandProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyContextAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyMessageAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandPropertyValueType;
+import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CompletionMessagesType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpoints;
 import org.wso2.developerstudio.eclipse.gmf.esb.ComplexEndpointsOutputConnector;
@@ -1910,6 +1911,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EClass inboundEndpointOnErrorSequenceInputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass commentMediatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4027,6 +4035,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EReference getOutputConnector_OutgoingLink() {
 		return (EReference)outputConnectorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOutputConnector_CommentMediators() {
+		return (EReference)outputConnectorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -10694,6 +10711,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCommentMediator() {
+		return commentMediatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCommentMediator_CommentText() {
+		return (EAttribute)commentMediatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getArtifactType() {
 		return artifactTypeEEnum;
 	}
@@ -17068,6 +17103,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		outputConnectorEClass = createEClass(OUTPUT_CONNECTOR);
 		createEReference(outputConnectorEClass, OUTPUT_CONNECTOR__OUTGOING_LINK);
+		createEReference(outputConnectorEClass, OUTPUT_CONNECTOR__COMMENT_MEDIATORS);
 
 		additionalOutputConnectorEClass = createEClass(ADDITIONAL_OUTPUT_CONNECTOR);
 		createEReference(additionalOutputConnectorEClass, ADDITIONAL_OUTPUT_CONNECTOR__ADDITIONAL_OUTGOING_LINK);
@@ -18747,6 +18783,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		inboundEndpointOnErrorSequenceInputConnectorEClass = createEClass(INBOUND_ENDPOINT_ON_ERROR_SEQUENCE_INPUT_CONNECTOR);
 
+		commentMediatorEClass = createEClass(COMMENT_MEDIATOR);
+		createEAttribute(commentMediatorEClass, COMMENT_MEDIATOR__COMMENT_TEXT);
+
 		// Create enums
 		artifactTypeEEnum = createEEnum(ARTIFACT_TYPE);
 		callMediatorEndpointTypeEEnum = createEEnum(CALL_MEDIATOR_ENDPOINT_TYPE);
@@ -19224,6 +19263,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		inboundEndpointSequenceOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
 		inboundEndpointOnErrorSequenceOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
 		inboundEndpointOnErrorSequenceInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
+		commentMediatorEClass.getESuperTypes().add(this.getMediator());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(esbDiagramEClass, EsbDiagram.class, "EsbDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -19253,6 +19293,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		initEClass(outputConnectorEClass, OutputConnector.class, "OutputConnector", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutputConnector_OutgoingLink(), this.getEsbLink(), this.getEsbLink_Source(), "outgoingLink", null, 0, 1, OutputConnector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOutputConnector_CommentMediators(), this.getCommentMediator(), null, "commentMediators", null, 0, -1, OutputConnector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(outputConnectorEClass, ecorePackage.getEBoolean(), "shouldConnect", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInputConnector(), "targetEnd", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -20947,6 +20988,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(inboundEndpointOnErrorSequenceOutputConnectorEClass, InboundEndpointOnErrorSequenceOutputConnector.class, "InboundEndpointOnErrorSequenceOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(inboundEndpointOnErrorSequenceInputConnectorEClass, InboundEndpointOnErrorSequenceInputConnector.class, "InboundEndpointOnErrorSequenceInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(commentMediatorEClass, CommentMediator.class, "CommentMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCommentMediator_CommentText(), ecorePackage.getEString(), "commentText", "class_name", 0, 1, CommentMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(artifactTypeEEnum, ArtifactType.class, "ArtifactType");

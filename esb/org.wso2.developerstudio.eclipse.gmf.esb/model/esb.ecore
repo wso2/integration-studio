@@ -57,6 +57,8 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLink" eType="#//EsbLink"
         containment="true" eOpposite="#//EsbLink/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commentMediators" upperBound="-1"
+        eType="#//CommentMediator" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AdditionalOutputConnector" abstract="true"
       eSuperTypes="#//EsbConnector">
@@ -2868,4 +2870,8 @@
       eSuperTypes="#//OutputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="InboundEndpointOnErrorSequenceInputConnector"
       eSuperTypes="#//InputConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CommentMediator" eSuperTypes="#//Mediator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="commentText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="class_name"/>
+  </eClassifiers>
 </ecore:EPackage>

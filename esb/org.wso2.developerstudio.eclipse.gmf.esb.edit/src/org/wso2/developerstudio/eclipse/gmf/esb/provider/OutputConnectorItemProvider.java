@@ -72,6 +72,7 @@ public class OutputConnectorItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(EsbPackage.Literals.OUTPUT_CONNECTOR__OUTGOING_LINK);
+			childrenFeatures.add(EsbPackage.Literals.OUTPUT_CONNECTOR__COMMENT_MEDIATORS);
 		}
 		return childrenFeatures;
 	}
@@ -116,6 +117,7 @@ public class OutputConnectorItemProvider
 
 		switch (notification.getFeatureID(OutputConnector.class)) {
 			case EsbPackage.OUTPUT_CONNECTOR__OUTGOING_LINK:
+			case EsbPackage.OUTPUT_CONNECTOR__COMMENT_MEDIATORS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -138,6 +140,11 @@ public class OutputConnectorItemProvider
 			(createChildParameter
 				(EsbPackage.Literals.OUTPUT_CONNECTOR__OUTGOING_LINK,
 				 EsbFactory.eINSTANCE.createEsbLink()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(EsbPackage.Literals.OUTPUT_CONNECTOR__COMMENT_MEDIATORS,
+				 EsbFactory.eINSTANCE.createCommentMediator()));
 	}
 
 }

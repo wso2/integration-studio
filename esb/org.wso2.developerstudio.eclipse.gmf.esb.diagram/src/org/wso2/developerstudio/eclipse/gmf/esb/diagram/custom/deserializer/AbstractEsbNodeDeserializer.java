@@ -51,6 +51,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.ConnectorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 //import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 //import org.wso2.developerstudio.eclipse.gmf.esb.AddressingEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
@@ -70,11 +71,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.Activator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractEndpointInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorCompartmentEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.IMediatorFlowEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesEditPart;
@@ -232,9 +235,25 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 			deserializer.setReversed(reversed);
 			@SuppressWarnings("unchecked")
 			EsbNode node = deserializer.createNode(part, mediator);
-			if (node!=null) {
-				nodeList.add(node);
-
+			if (node!=null) {	
+				// If there is any comment mediator(XML comment) in the source,
+				// we will add
+				// that into previous output connector's comment mediator list.
+				// So that comment mediators have been encapsulated inside
+				// output connectors which will prevent editor representing
+				// comment mediators graphically.
+				if (node instanceof CommentMediator) {
+					AbstractOutputConnectorEditPart abstractOutputConnectorEditPart = getPreviousOutputConnector(part,
+							nodeList);
+					if (abstractOutputConnectorEditPart != null) {
+						executeAddValueCommand(
+								((OutputConnector) ((Node) abstractOutputConnectorEditPart.getModel()).getElement())
+										.getCommentMediators(),
+								(CommentMediator) node);
+					}
+				} else {
+					nodeList.add(node);
+				}
 				if (node instanceof SendMediator/* && !reversed*/) {
 					if (getRootCompartment() != null) {
 						SendMediator sendMediator = (SendMediator) node;
@@ -252,6 +271,30 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 				}
 			}
 
+		}
+	}
+	
+	/**
+	 * This method will return the OutputConnector of previous mediator in the
+	 * mediator list. If the mediator list is empty, this will return the output
+	 * connector associated with that mediatorFlow
+	 * 
+	 * @param part
+	 * @param nodeList
+	 * @return
+	 */
+	private AbstractOutputConnectorEditPart getPreviousOutputConnector(IGraphicalEditPart part, LinkedList<EsbNode> nodeList){
+		if(nodeList.isEmpty()){
+			EditPart mediatorFlow = part.getParent();
+			if(mediatorFlow instanceof AbstractMediatorFlowEditPart){
+				return ((AbstractMediatorFlowEditPart)mediatorFlow).getAssociatedOutputConnector();
+			}else{
+				return null;
+			}
+		}else{
+			org.wso2.developerstudio.eclipse.gmf.esb.Mediator mediator = (org.wso2.developerstudio.eclipse.gmf.esb.Mediator) nodeList.getLast();
+			refreshEditPartMap();
+			return EditorUtils.getMediatorOutputConnector((ShapeNodeEditPart) getEditpart(mediator));
 		}
 	}
 	

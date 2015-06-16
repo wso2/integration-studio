@@ -27,13 +27,16 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlow15ItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class MediatorFlow15EditPart extends ShapeNodeEditPart {
+public class MediatorFlow15EditPart extends AbstractMediatorFlowEditPart {
 
 	//Router mediator
 
@@ -229,5 +232,10 @@ public class MediatorFlow15EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	static final Color THIS_BACK = new Color(null, 255, 255, 255);
+
+	@Override
+	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent(), RouterMediatorTargetOutputConnectorEditPart.class);
+	}
 
 }

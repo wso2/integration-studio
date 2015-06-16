@@ -29,15 +29,18 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.tooling.runtime.edit.policies.reparent.CreationEditPolicyWithCustomReparent;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowCompartmentEditPart.Complexity;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlow13ItemSemanticEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class MediatorFlow13EditPart extends ShapeNodeEditPart {
+public class MediatorFlow13EditPart extends AbstractMediatorFlowEditPart {
 
 	/*
 	 * Cache mediator OnHit branch
@@ -252,5 +255,10 @@ public class MediatorFlow13EditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	static final Color THIS_BACK = new Color(null, 255, 255, 255);
+
+	@Override
+	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent(), CacheMediatorOnHitOutputConnectorEditPart.class);
+	}
 
 }

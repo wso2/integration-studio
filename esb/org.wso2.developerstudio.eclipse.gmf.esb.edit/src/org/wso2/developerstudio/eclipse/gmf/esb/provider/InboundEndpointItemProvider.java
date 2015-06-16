@@ -239,7 +239,7 @@ public class InboundEndpointItemProvider extends EsbElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 "Parameters",
+				 null,
 				 null));
 	}
 

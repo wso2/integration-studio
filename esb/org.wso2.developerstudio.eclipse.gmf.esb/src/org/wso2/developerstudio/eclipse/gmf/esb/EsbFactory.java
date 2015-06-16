@@ -1725,6 +1725,15 @@ public interface EsbFactory extends EFactory {
     InboundEndpointOnErrorSequenceInputConnector createInboundEndpointOnErrorSequenceInputConnector();
 
     /**
+	 * Returns a new object of class '<em>Comment Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Comment Mediator</em>'.
+	 * @generated
+	 */
+	CommentMediator createCommentMediator();
+
+				/**
 	 * Returns a new object of class '<em>Script Mediator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -6,6 +6,8 @@
  */
 package org.wso2.developerstudio.eclipse.gmf.esb;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -16,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector#getOutgoingLink <em>Outgoing Link</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector#getCommentMediators <em>Comment Mediators</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +54,22 @@ public interface OutputConnector extends EsbConnector {
 	 * @generated
 	 */
 	void setOutgoingLink(EsbLink value);
+
+	/**
+	 * Returns the value of the '<em><b>Comment Mediators</b></em>' containment reference list.
+	 * The list contents are of type {@link org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Comment Mediators</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Comment Mediators</em>' containment reference list.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getOutputConnector_CommentMediators()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<CommentMediator> getCommentMediators();
 
 	/**
 	 * <!-- begin-user-doc -->

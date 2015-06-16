@@ -32,14 +32,17 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.layout.RowLayout;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractSequencesEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlow5ItemSemanticEditPolicy;
 
 /**
  * @generated NOT
  */
-public class MediatorFlow5EditPart extends ShapeNodeEditPart {
+public class MediatorFlow5EditPart extends AbstractMediatorFlowEditPart {
 
 	/* Sequences */
 
@@ -240,6 +243,11 @@ public class MediatorFlow5EditPart extends ShapeNodeEditPart {
 
 	public boolean isSelectable() {
 		return false;
+	}
+	
+	@Override
+	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent(), SequencesOutputConnectorEditPart.class);
 	}
 
 	/**

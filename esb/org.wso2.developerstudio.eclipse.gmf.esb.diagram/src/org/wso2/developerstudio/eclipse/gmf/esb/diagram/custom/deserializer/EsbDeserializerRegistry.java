@@ -38,6 +38,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.bsf.ScriptMediator;
 import org.apache.synapse.mediators.builtin.CallMediator;
 import org.apache.synapse.mediators.builtin.CalloutMediator;
+import org.apache.synapse.mediators.builtin.CommentMediator;
 import org.apache.synapse.mediators.builtin.DropMediator;
 import org.apache.synapse.mediators.builtin.EnqueueMediator;
 import org.apache.synapse.mediators.builtin.ForEachMediator;
@@ -195,6 +196,7 @@ public class EsbDeserializerRegistry {
 		addDeserializer(DataMapperMediator.class, new DataMapperMediatorDeserializer());
 		addDeserializer(InboundEndpoint.class, new InboundEndpointDeserializer());
 		addDeserializer(ForEachMediator.class, new ForEachMediatorDeserializer());
+		addDeserializer(CommentMediator.class, new CommentMediatorDeserializer());
 	}
 	
 	/**

@@ -5,9 +5,12 @@ import java.util.List;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.endpoints.Endpoint;
+import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbLink;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
@@ -39,6 +42,9 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 		if (null != outputConnector) {
 			EObject previousNode = outputConnector.eContainer();
 			info.setPreviousNode(previousNode);
+			
+			// Adding XML comments into synapse config.
+			addXMLCommnets(info, outputConnector.getCommentMediators());
 			
 			// Process only if there is a link.
 			EsbLink outgoingLink = outputConnector.getOutgoingLink();
@@ -96,10 +102,16 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 					}*/
 					
 					info.setParentSequence(sequence);
+					
+					// Adding XML comments into synapse config.
+					addXMLCommnets(info, outgoingLink.getSource().getCommentMediators());
 					transformer.transform(info, esbNode);
 					
 				}
 				else{
+					// Adding XML comments into synapse config.
+					addXMLCommnets(info, outgoingLink.getSource().getCommentMediators());
+
 					transformer.transformWithinSequence(info, esbNode,sequence);
 				}
 			} else {
@@ -123,6 +135,13 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 	
 	protected void setCommonProperties(Mediator mediator,org.wso2.developerstudio.eclipse.gmf.esb.Mediator visualElement){
 		mediator.setShortDescription(visualElement.getDescription());
+	}
+	
+	private void addXMLCommnets(TransformationInfo info, EList<CommentMediator> commentMediators) throws Exception{
+		CommentMediatorTransformer commentMediatorTransformer = new CommentMediatorTransformer();
+		for(CommentMediator mediator:commentMediators){
+			commentMediatorTransformer.transform(info, mediator);
+		}
 	}
 	
 }

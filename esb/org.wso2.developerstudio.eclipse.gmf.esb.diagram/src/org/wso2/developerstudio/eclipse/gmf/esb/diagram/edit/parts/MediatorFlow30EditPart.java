@@ -22,13 +22,16 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorFlowEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.FixedBorderItemLocator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFlow30ItemSemanticEditPolicy;
 
 /**
- * @generated
+ * @generated NOT
  */
-public class MediatorFlow30EditPart extends ShapeNodeEditPart {
+public class MediatorFlow30EditPart extends AbstractMediatorFlowEditPart {
 
 	// ForEach mediator
 	
@@ -235,6 +238,11 @@ public class MediatorFlow30EditPart extends ShapeNodeEditPart {
 	public boolean isSelectable() {
 		// TODO This or using ResizableEditpolicy?
 		return false;
+	}
+	
+	@Override
+	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent(), ForEachMediatorTargetOutputConnectorEditPart.class);
 	}
 
 	/**

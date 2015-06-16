@@ -230,10 +230,11 @@ public class MediatorFlow22EditPart extends AbstractMediatorFlowEditPart {
 	public boolean isSelectable() {
 		return false;
 	}
-	
+
 	@Override
 	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
-		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent().getParent().getParent(), ThrottleMediatorOnAcceptOutputConnectorEditPart.class);
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart) this.getParent().getParent().getParent(),
+				ThrottleMediatorOnAcceptOutputConnectorEditPart.class);
 	}
 
 	/**

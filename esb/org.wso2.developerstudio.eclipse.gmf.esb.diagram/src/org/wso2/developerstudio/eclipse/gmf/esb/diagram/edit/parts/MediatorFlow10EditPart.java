@@ -40,7 +40,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbVisualIDRegistry
 /**
  * @generated NOT
  */
-public class MediatorFlow10EditPart extends AbstractMediatorFlowEditPart{
+public class MediatorFlow10EditPart extends AbstractMediatorFlowEditPart {
 
 	//Throttle Mediator onReject. 
 
@@ -250,10 +250,11 @@ public class MediatorFlow10EditPart extends AbstractMediatorFlowEditPart{
 		// TODO This or using ResizableEditpolicy?
 		return false;
 	}
-	
+
 	@Override
 	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
-		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent().getParent().getParent(), ThrottleMediatorOnRejectOutputConnectorEditPart.class);
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart) this.getParent().getParent().getParent(),
+				ThrottleMediatorOnRejectOutputConnectorEditPart.class);
 	}
 
 	/**

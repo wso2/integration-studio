@@ -875,6 +875,26 @@
     <genClasses ecoreClass="esb.ecore#//LogMediatorInputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LogMediatorOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//LogProperty"/>
+    <genClasses ecoreClass="esb.ecore#//PublishEventMediator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/inputConnector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/outputconnector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/streamName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/streamVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//PublishEventMediator/eventSink"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/metaAttributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/correlationAttributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/payloadAttributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference esb.ecore#//PublishEventMediator/arbitraryAttributes"/>
+    </genClasses>
+    <genClasses ecoreClass="esb.ecore#//PublishEventMediatorInputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//PublishEventMediatorOutputConnector"/>
+    <genClasses ecoreClass="esb.ecore#//PublishEventMediatorAttribute"/>
+    <genClasses image="false" ecoreClass="esb.ecore#//AbstractNameValueExpressionAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeValueType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractNameValueExpressionAttribute/attributeValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractNameValueExpressionAttribute/attributeExpression"/>
+    </genClasses>
     <genClasses ecoreClass="esb.ecore#//BAMMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//BAMMediator/inputConnector"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//BAMMediator/outputConnector"/>

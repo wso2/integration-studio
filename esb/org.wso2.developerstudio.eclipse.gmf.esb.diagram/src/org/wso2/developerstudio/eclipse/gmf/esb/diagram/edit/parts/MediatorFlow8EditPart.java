@@ -237,10 +237,11 @@ public class MediatorFlow8EditPart extends AbstractMediatorFlowEditPart {
 		// TODO This or using ResizableEditpolicy?
 		return false;
 	}
-	
+
 	@Override
 	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
-		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent().getParent().getParent(), FilterMediatorFailOutputConnectorEditPart.class);
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart) this.getParent().getParent().getParent(),
+				FilterMediatorFailOutputConnectorEditPart.class);
 	}
 
 	/**

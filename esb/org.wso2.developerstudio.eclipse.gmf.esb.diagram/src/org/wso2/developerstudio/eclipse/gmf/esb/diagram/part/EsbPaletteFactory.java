@@ -227,6 +227,7 @@ public class EsbPaletteFactory {
 		paletteContainer.add(new PaletteSeparator("Agent"));
 
 		paletteContainer.add(createBAMMediator40CreationTool());
+		paletteContainer.add(createPublishEventMediator48CreationTool());
 
 		paletteContainer.setInitialState(INITIAL_STATE_CLOSED);
 		return paletteContainer;
@@ -1113,6 +1114,19 @@ public class EsbPaletteFactory {
 		entry.setId("createFastXSLTMediator47CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(EsbElementTypes
 				.getImageDescriptor(EsbElementTypes.FastXSLTMediator_3764));
+		entry.setLargeIcon(entry.getSmallIcon());
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createPublishEventMediator48CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(Messages.PublishEventMediator48CreationTool_title,
+				Messages.PublishEventMediator48CreationTool_desc,
+				Collections.singletonList(EsbElementTypes.PublishEventMediator_3785));
+		entry.setId("createPublishEventMediator48CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(EsbElementTypes.getImageDescriptor(EsbElementTypes.PublishEventMediator_3785));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

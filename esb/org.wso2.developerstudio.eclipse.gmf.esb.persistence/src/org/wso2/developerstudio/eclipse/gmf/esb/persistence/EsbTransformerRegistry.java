@@ -33,6 +33,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RecipientListEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediator;
@@ -127,6 +128,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.OAuthMediat
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PayloadFactoryMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PropertyMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.ProxyServiceTransformer;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.PublishEventMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.RecipientListEndPointTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.RespondMediatorTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.RouterMediatorTransformer;
@@ -234,6 +236,7 @@ public class EsbTransformerRegistry {
 		addTransformer(CallMediator.class, new CallMediatorTransformer());
 		addTransformer(DataMapperMediator.class, new DataMapperMediatorTransformer());
 		addTransformer(ForEachMediator.class, new ForEachMediatorTransformer());
+		addTransformer(PublishEventMediator.class, new PublishEventMediatorTransformer());
 	}
 	
 	/**

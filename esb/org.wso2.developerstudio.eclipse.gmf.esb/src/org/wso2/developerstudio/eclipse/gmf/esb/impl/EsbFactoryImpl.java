@@ -118,6 +118,10 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 			case EsbPackage.LOG_MEDIATOR_INPUT_CONNECTOR: return createLogMediatorInputConnector();
 			case EsbPackage.LOG_MEDIATOR_OUTPUT_CONNECTOR: return createLogMediatorOutputConnector();
 			case EsbPackage.LOG_PROPERTY: return createLogProperty();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR: return createPublishEventMediator();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_INPUT_CONNECTOR: return createPublishEventMediatorInputConnector();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_OUTPUT_CONNECTOR: return createPublishEventMediatorOutputConnector();
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE: return createPublishEventMediatorAttribute();
 			case EsbPackage.BAM_MEDIATOR: return createBAMMediator();
 			case EsbPackage.BAM_MEDIATOR_INPUT_CONNECTOR: return createBAMMediatorInputConnector();
 			case EsbPackage.BAM_MEDIATOR_OUTPUT_CONNECTOR: return createBAMMediatorOutputConnector();
@@ -1395,6 +1399,48 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 		logProperty.setPropertyName("property_name");
 		logProperty.setPropertyValue("property_value");
 		return logProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public PublishEventMediator createPublishEventMediator() {
+		PublishEventMediatorImpl publishEventMediator = new PublishEventMediatorImpl();
+		publishEventMediator.setInputConnector(createPublishEventMediatorInputConnector());
+		publishEventMediator.setOutputconnector(createPublishEventMediatorOutputConnector());
+		return publishEventMediator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventMediatorInputConnector createPublishEventMediatorInputConnector() {
+		PublishEventMediatorInputConnectorImpl publishEventMediatorInputConnector = new PublishEventMediatorInputConnectorImpl();
+		return publishEventMediatorInputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventMediatorOutputConnector createPublishEventMediatorOutputConnector() {
+		PublishEventMediatorOutputConnectorImpl publishEventMediatorOutputConnector = new PublishEventMediatorOutputConnectorImpl();
+		return publishEventMediatorOutputConnector;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PublishEventMediatorAttribute createPublishEventMediatorAttribute() {
+		PublishEventMediatorAttributeImpl publishEventMediatorAttribute = new PublishEventMediatorAttributeImpl();
+		return publishEventMediatorAttribute;
 	}
 
 	/**

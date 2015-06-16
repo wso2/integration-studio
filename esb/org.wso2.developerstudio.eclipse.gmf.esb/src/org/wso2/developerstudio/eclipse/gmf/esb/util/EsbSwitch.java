@@ -578,6 +578,46 @@ public class EsbSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR: {
+				PublishEventMediator publishEventMediator = (PublishEventMediator)theEObject;
+				T result = casePublishEventMediator(publishEventMediator);
+				if (result == null) result = caseMediator(publishEventMediator);
+				if (result == null) result = caseEsbElement(publishEventMediator);
+				if (result == null) result = caseEsbNode(publishEventMediator);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_INPUT_CONNECTOR: {
+				PublishEventMediatorInputConnector publishEventMediatorInputConnector = (PublishEventMediatorInputConnector)theEObject;
+				T result = casePublishEventMediatorInputConnector(publishEventMediatorInputConnector);
+				if (result == null) result = caseInputConnector(publishEventMediatorInputConnector);
+				if (result == null) result = caseEsbConnector(publishEventMediatorInputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_OUTPUT_CONNECTOR: {
+				PublishEventMediatorOutputConnector publishEventMediatorOutputConnector = (PublishEventMediatorOutputConnector)theEObject;
+				T result = casePublishEventMediatorOutputConnector(publishEventMediatorOutputConnector);
+				if (result == null) result = caseOutputConnector(publishEventMediatorOutputConnector);
+				if (result == null) result = caseEsbConnector(publishEventMediatorOutputConnector);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.PUBLISH_EVENT_MEDIATOR_ATTRIBUTE: {
+				PublishEventMediatorAttribute publishEventMediatorAttribute = (PublishEventMediatorAttribute)theEObject;
+				T result = casePublishEventMediatorAttribute(publishEventMediatorAttribute);
+				if (result == null) result = caseAbstractNameValueExpressionAttribute(publishEventMediatorAttribute);
+				if (result == null) result = caseEsbNode(publishEventMediatorAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE: {
+				AbstractNameValueExpressionAttribute abstractNameValueExpressionAttribute = (AbstractNameValueExpressionAttribute)theEObject;
+				T result = caseAbstractNameValueExpressionAttribute(abstractNameValueExpressionAttribute);
+				if (result == null) result = caseEsbNode(abstractNameValueExpressionAttribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case EsbPackage.BAM_MEDIATOR: {
 				BAMMediator bamMediator = (BAMMediator)theEObject;
 				T result = caseBAMMediator(bamMediator);
@@ -3874,6 +3914,81 @@ public class EsbSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLogProperty(LogProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Publish Event Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Publish Event Mediator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePublishEventMediator(PublishEventMediator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Publish Event Mediator Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Publish Event Mediator Input Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePublishEventMediatorInputConnector(PublishEventMediatorInputConnector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Publish Event Mediator Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Publish Event Mediator Output Connector</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePublishEventMediatorOutputConnector(PublishEventMediatorOutputConnector object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Publish Event Mediator Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Publish Event Mediator Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePublishEventMediatorAttribute(PublishEventMediatorAttribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Name Value Expression Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Name Value Expression Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractNameValueExpressionAttribute(AbstractNameValueExpressionAttribute object) {
 		return null;
 	}
 

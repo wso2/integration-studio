@@ -1884,6 +1884,36 @@
       </actualFigure>
     </descriptors>
     <descriptors
+        name="PublishEventMediatorFigure">
+      <actualFigure
+          xsi:type="gmfgraph:CustomFigure"
+          name="PublishEventMediatorGraphicalFigure"
+          qualifiedClassName="org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EsbGraphicalShape">
+        <layout
+            xsi:type="gmfgraph:FlowLayout"/>
+        <foregroundColor
+            xsi:type="gmfgraph:RGBColor"
+            red="230"
+            green="230"
+            blue="230"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="PublishEventPropertyLabel"
+            text="&lt;...>"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="PublishEventMediatorDescriptionFigure"
+            text="&lt;...>"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="PublishEventMediatorDescriptionFigure"
+            text="&lt;...>"/>
+      </actualFigure>
+      <accessors
+          accessor="getFigurePublishEventMediatorDescriptionFigure"
+          figure="//@figures.0/@descriptors.92/@actualFigure/@children.1"/>
+    </descriptors>
+    <descriptors
         name="BAMMediatorFigure">
       <actualFigure
           xsi:type="gmfgraph:CustomFigure"
@@ -1906,7 +1936,7 @@
             text="&lt;...>"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.92/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.93/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="BeanMediatorFigure">
@@ -1931,7 +1961,7 @@
             text="&lt;...>"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.93/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.94/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="EJBMediatorFigure">
@@ -1956,7 +1986,7 @@
             text="&lt;...>"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.94/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.95/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="AddressingEndpointFigure">
@@ -1982,9 +2012,9 @@
       </actualFigure>
       <accessors
           accessor="getFigureAddressingEndPointNamePropertyLabel"
-          figure="//@figures.0/@descriptors.95/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.96/@actualFigure/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.95/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.96/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="RecipientListEndPointFigure">
@@ -2005,7 +2035,7 @@
             text="&lt;...>"/>
       </actualFigure>
       <accessors
-          figure="//@figures.0/@descriptors.96/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.97/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="MessageStoreFigure">
@@ -2057,9 +2087,9 @@
       </actualFigure>
       <accessors
           accessor="getFigureHTTPEndPointNamePropertyLabel"
-          figure="//@figures.0/@descriptors.99/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.100/@actualFigure/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.99/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.100/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="TemplateEndpointFigure">
@@ -2085,9 +2115,9 @@
       </actualFigure>
       <accessors
           accessor="getFigureTemplateEndPointNamePropertyLabel"
-          figure="//@figures.0/@descriptors.100/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.101/@actualFigure/@children.0"/>
       <accessors
-          figure="//@figures.0/@descriptors.100/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.101/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="CloudConnectorFigure">
@@ -2109,7 +2139,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureCloudConnectorDescriptionFigure"
-          figure="//@figures.0/@descriptors.101/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.102/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="CloudConnectorOperationFigure">
@@ -2131,7 +2161,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureCloudConnectorOperationDescriptionFigure"
-          figure="//@figures.0/@descriptors.102/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.103/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="LoopBackMediatorFigure">
@@ -2157,7 +2187,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureLoopBackMediatorDescriptionFigure"
-          figure="//@figures.0/@descriptors.103/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.104/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="RespondMediatorFigure">
@@ -2183,7 +2213,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureRespondMediatorDescriptionFigure"
-          figure="//@figures.0/@descriptors.104/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.105/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="CallMediatorFigure">
@@ -2205,7 +2235,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureCallMediatorDescriptionFigure"
-          figure="//@figures.0/@descriptors.105/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.106/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="EntitlementContainerFigure">
@@ -2306,7 +2336,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureDataMapperMediatorDescriptionFigure"
-          figure="//@figures.0/@descriptors.111/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.112/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="FastXSLTMediatorFigure">
@@ -2332,7 +2362,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureFastXSLTMediatorDescriptionFigure"
-          figure="//@figures.0/@descriptors.112/@actualFigure/@children.1"/>
+          figure="//@figures.0/@descriptors.113/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="InboundEndpointFigure">
@@ -2385,7 +2415,7 @@
       </actualFigure>
       <accessors
           accessor="getFigureForEachMediatorPropertyValue"
-          figure="//@figures.0/@descriptors.117/@actualFigure/@children.0"/>
+          figure="//@figures.0/@descriptors.118/@actualFigure/@children.0"/>
     </descriptors>
   </figures>
   <nodes
@@ -3215,6 +3245,17 @@
       figure="EastPointerFigure"
       affixedParentSide="WEST"/>
   <nodes
+      name="PublishEventMediator"
+      figure="PublishEventMediatorFigure"/>
+  <nodes
+      name="PublishEventMediatorInputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="WEST"/>
+  <nodes
+      name="PublishEventMediatorOutputConnector"
+      figure="EastPointerFigure"
+      affixedParentSide="EAST"/>
+  <nodes
       name="BAMMediator"
       figure="BAMMediatorFigure"/>
   <nodes
@@ -3619,7 +3660,7 @@
       name="ForEachMediatorId"
       figure="ForEachMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.117/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.118/@accessors.0"/>
   <labels
       name="IterateMediatorId"
       figure="IterateMediatorFigure"
@@ -3661,20 +3702,25 @@
       elementIcon="false"
       accessor="//@figures.0/@descriptors.9/@accessors.1"/>
   <labels
+      name="PublishEventMediatorDescription"
+      figure="PublishEventMediatorFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.92/@accessors.0"/>
+  <labels
       name="BAMMediatorDescription"
       figure="BAMMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.92/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.93/@accessors.0"/>
   <labels
       name="BeanMediatorDescription"
       figure="BeanMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.93/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.94/@accessors.0"/>
   <labels
       name="EJBMediatorDescription"
       figure="EJBMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.94/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.95/@accessors.0"/>
   <labels
       name="PropertyMediatorDescription"
       figure="PropertyMediatorFigure"
@@ -3809,12 +3855,12 @@
       name="CloudConnectorDescription"
       figure="CloudConnectorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.101/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.102/@accessors.0"/>
   <labels
       name="CloudConnectorOperationDescription"
       figure="CloudConnectorOperationFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.102/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.103/@accessors.0"/>
   <labels
       name="AddressEndPointDescription"
       figure="AddressEndPointFigure"
@@ -3824,7 +3870,7 @@
       name="AddressingEndpointDescription"
       figure="AddressingEndpointFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.95/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.96/@accessors.1"/>
   <labels
       name="DefaultEndPointDescription"
       figure="DefaultEndPointFigure"
@@ -3834,12 +3880,12 @@
       name="TemplateEndpointDescription"
       figure="TemplateEndpointFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.100/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.101/@accessors.1"/>
   <labels
       name="HTTPEndpointDescription"
       figure="HTTPEndpointFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.99/@accessors.1"/>
+      accessor="//@figures.0/@descriptors.100/@accessors.1"/>
   <labels
       name="FailoverEndPointDescription"
       figure="FailoverEndPointFigure"
@@ -3859,22 +3905,22 @@
       name="RecipientListEndPointDescription"
       figure="RecipientListEndPointFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.96/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.97/@accessors.0"/>
   <labels
       name="LoopBackMediatorDescription"
       figure="LoopBackMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.103/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.104/@accessors.0"/>
   <labels
       name="RespondMediatorDescription"
       figure="RespondMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.104/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.105/@accessors.0"/>
   <labels
       name="CallMediatorDescription"
       figure="CallMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.105/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.106/@accessors.0"/>
   <labels
       name="ConditionalRouterMediatorDescription"
       figure="ConditionalRouterMediatorFigure"
@@ -3884,10 +3930,13 @@
       name="DataMapperMediatorDescription"
       figure="DataMapperMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.111/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.112/@accessors.0"/>
   <labels
       name="FastXSLTMediatorDescription"
       figure="FastXSLTMediatorFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.112/@accessors.0"/>
+      accessor="//@figures.0/@descriptors.113/@accessors.0"/>
+  <labels
+      name="PublishEventMediatorDescription2"
+      figure="PublishEventMediatorFigure"/>
 </gmfgraph:Canvas>

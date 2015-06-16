@@ -530,6 +530,42 @@ public interface EsbFactory extends EFactory {
 	LogProperty createLogProperty();
 
 	/**
+	 * Returns a new object of class '<em>Publish Event Mediator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Mediator</em>'.
+	 * @generated
+	 */
+	PublishEventMediator createPublishEventMediator();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Mediator Input Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Mediator Input Connector</em>'.
+	 * @generated
+	 */
+	PublishEventMediatorInputConnector createPublishEventMediatorInputConnector();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Mediator Output Connector</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Mediator Output Connector</em>'.
+	 * @generated
+	 */
+	PublishEventMediatorOutputConnector createPublishEventMediatorOutputConnector();
+
+	/**
+	 * Returns a new object of class '<em>Publish Event Mediator Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Publish Event Mediator Attribute</em>'.
+	 * @generated
+	 */
+	PublishEventMediatorAttribute createPublishEventMediatorAttribute();
+
+	/**
 	 * Returns a new object of class '<em>BAM Mediator</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

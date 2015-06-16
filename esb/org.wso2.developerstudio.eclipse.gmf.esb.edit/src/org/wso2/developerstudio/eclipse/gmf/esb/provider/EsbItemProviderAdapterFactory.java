@@ -1158,6 +1158,98 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PublishEventMediatorItemProvider publishEventMediatorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPublishEventMediatorAdapter() {
+		if (publishEventMediatorItemProvider == null) {
+			publishEventMediatorItemProvider = new PublishEventMediatorItemProvider(this);
+		}
+
+		return publishEventMediatorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PublishEventMediatorInputConnectorItemProvider publishEventMediatorInputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPublishEventMediatorInputConnectorAdapter() {
+		if (publishEventMediatorInputConnectorItemProvider == null) {
+			publishEventMediatorInputConnectorItemProvider = new PublishEventMediatorInputConnectorItemProvider(this);
+		}
+
+		return publishEventMediatorInputConnectorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnector} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PublishEventMediatorOutputConnectorItemProvider publishEventMediatorOutputConnectorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnector}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPublishEventMediatorOutputConnectorAdapter() {
+		if (publishEventMediatorOutputConnectorItemProvider == null) {
+			publishEventMediatorOutputConnectorItemProvider = new PublishEventMediatorOutputConnectorItemProvider(this);
+		}
+
+		return publishEventMediatorOutputConnectorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PublishEventMediatorAttributeItemProvider publishEventMediatorAttributeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPublishEventMediatorAttributeAdapter() {
+		if (publishEventMediatorAttributeItemProvider == null) {
+			publishEventMediatorAttributeItemProvider = new PublishEventMediatorAttributeItemProvider(this);
+		}
+
+		return publishEventMediatorAttributeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8276,6 +8368,10 @@ public class EsbItemProviderAdapterFactory extends EsbAdapterFactory implements 
 		if (logMediatorInputConnectorItemProvider != null) logMediatorInputConnectorItemProvider.dispose();
 		if (logMediatorOutputConnectorItemProvider != null) logMediatorOutputConnectorItemProvider.dispose();
 		if (logPropertyItemProvider != null) logPropertyItemProvider.dispose();
+		if (publishEventMediatorItemProvider != null) publishEventMediatorItemProvider.dispose();
+		if (publishEventMediatorInputConnectorItemProvider != null) publishEventMediatorInputConnectorItemProvider.dispose();
+		if (publishEventMediatorOutputConnectorItemProvider != null) publishEventMediatorOutputConnectorItemProvider.dispose();
+		if (publishEventMediatorAttributeItemProvider != null) publishEventMediatorAttributeItemProvider.dispose();
 		if (bamMediatorItemProvider != null) bamMediatorItemProvider.dispose();
 		if (bamMediatorInputConnectorItemProvider != null) bamMediatorInputConnectorItemProvider.dispose();
 		if (bamMediatorOutputConnectorItemProvider != null) bamMediatorOutputConnectorItemProvider.dispose();

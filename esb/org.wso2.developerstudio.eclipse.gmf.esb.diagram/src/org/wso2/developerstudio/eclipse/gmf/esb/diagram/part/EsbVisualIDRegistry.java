@@ -862,6 +862,14 @@ public class EsbVisualIDRegistry {
 				return MediatorFlow30EditPart.VISUAL_ID;
 			}
 			break;
+		case PublishEventMediatorEditPart.VISUAL_ID:
+			if (EsbPackage.eINSTANCE.getPublishEventMediatorInputConnector().isSuperTypeOf(domainElement.eClass())) {
+				return PublishEventMediatorInputConnectorEditPart.VISUAL_ID;
+			}
+			if (EsbPackage.eINSTANCE.getPublishEventMediatorOutputConnector().isSuperTypeOf(domainElement.eClass())) {
+				return PublishEventMediatorOutputConnectorEditPart.VISUAL_ID;
+			}
+			break;
 		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
 			if (EsbPackage.eINSTANCE.getMediatorFlow().isSuperTypeOf(domainElement.eClass())) {
 				return MediatorFlow22EditPart.VISUAL_ID;
@@ -1450,6 +1458,9 @@ public class EsbVisualIDRegistry {
 		}
 		if (EsbPackage.eINSTANCE.getForEachMediator().isSuperTypeOf(domainElement.eClass())) {
 			return ForEachMediatorEditPart.VISUAL_ID;
+		}
+		if (EsbPackage.eINSTANCE.getPublishEventMediator().isSuperTypeOf(domainElement.eClass())) {
+			return PublishEventMediatorEditPart.VISUAL_ID;
 		}
 		return -1;
 	}
@@ -2465,6 +2476,17 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			break;
+		case PublishEventMediatorEditPart.VISUAL_ID:
+			if (PublishEventMediatorStreamNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorInputConnectorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorOutputConnectorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
 		case EntitlementOnAcceptContainerEditPart.VISUAL_ID:
 			if (MediatorFlow22EditPart.VISUAL_ID == nodeVisualID) {
 				return true;
@@ -3026,6 +3048,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment9EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -3212,6 +3237,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -3402,6 +3430,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment2EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -3588,6 +3619,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -3778,6 +3812,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment19EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -3964,6 +4001,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -4154,6 +4194,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment13EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -4340,6 +4383,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -4530,6 +4576,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment17EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -4716,6 +4765,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -4906,6 +4958,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment14EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -5092,6 +5147,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -5282,6 +5340,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment16EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -5468,6 +5529,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -5658,6 +5722,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment30EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -5844,6 +5911,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -6034,6 +6104,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment23EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -6220,6 +6293,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -6410,6 +6486,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment4EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -6596,6 +6675,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -6786,6 +6868,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment10EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -6972,6 +7057,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -7162,6 +7250,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment5EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -7348,6 +7439,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -7564,6 +7658,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment28EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -7752,6 +7849,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment29EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -7938,6 +8038,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -8167,6 +8270,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment25EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -8355,6 +8461,9 @@ public class EsbVisualIDRegistry {
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			break;
 		case MediatorFlowMediatorFlowCompartment26EditPart.VISUAL_ID:
 			if (DropMediatorEditPart.VISUAL_ID == nodeVisualID) {
@@ -8541,6 +8650,9 @@ public class EsbVisualIDRegistry {
 				return true;
 			}
 			if (ForEachMediatorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PublishEventMediatorEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -8829,6 +8941,8 @@ public class EsbVisualIDRegistry {
 		case ForEachMediatorInputConnectorEditPart.VISUAL_ID:
 		case ForEachMediatorOutputConnectorEditPart.VISUAL_ID:
 		case ForEachMediatorTargetOutputConnectorEditPart.VISUAL_ID:
+		case PublishEventMediatorInputConnectorEditPart.VISUAL_ID:
+		case PublishEventMediatorOutputConnectorEditPart.VISUAL_ID:
 			return true;
 		default:
 			break;

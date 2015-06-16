@@ -235,7 +235,8 @@ public class MediatorFlow15EditPart extends AbstractMediatorFlowEditPart {
 
 	@Override
 	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
-		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent(), RouterMediatorTargetOutputConnectorEditPart.class);
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart) this.getParent(),
+				RouterMediatorTargetOutputConnectorEditPart.class);
 	}
 
 }

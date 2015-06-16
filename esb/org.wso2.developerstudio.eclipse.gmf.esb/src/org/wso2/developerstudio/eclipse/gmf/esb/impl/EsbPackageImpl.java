@@ -34,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.AbstractBooleanFeature;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractCommonTarget;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractLocationKeyResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractSqlExecutorMediator;
@@ -341,6 +342,10 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceSequenceAndEndpointC
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyWSDLResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyServiceSequenceContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyWsdlType;
+import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
+import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorInputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediatorOutputConnector;
@@ -973,6 +978,41 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EClass logPropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass publishEventMediatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass publishEventMediatorInputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass publishEventMediatorOutputConnectorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass publishEventMediatorAttributeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractNameValueExpressionAttributeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -5745,6 +5785,168 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 */
 	public EClass getLogProperty() {
 		return logPropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPublishEventMediator() {
+		return publishEventMediatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPublishEventMediator_InputConnector() {
+		return (EReference)publishEventMediatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPublishEventMediator_Outputconnector() {
+		return (EReference)publishEventMediatorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPublishEventMediator_StreamName() {
+		return (EAttribute)publishEventMediatorEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPublishEventMediator_StreamVersion() {
+		return (EAttribute)publishEventMediatorEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPublishEventMediator_EventSink() {
+		return (EAttribute)publishEventMediatorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPublishEventMediator_MetaAttributes() {
+		return (EReference)publishEventMediatorEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPublishEventMediator_CorrelationAttributes() {
+		return (EReference)publishEventMediatorEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPublishEventMediator_PayloadAttributes() {
+		return (EReference)publishEventMediatorEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPublishEventMediator_ArbitraryAttributes() {
+		return (EReference)publishEventMediatorEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPublishEventMediatorInputConnector() {
+		return publishEventMediatorInputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPublishEventMediatorOutputConnector() {
+		return publishEventMediatorOutputConnectorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPublishEventMediatorAttribute() {
+		return publishEventMediatorAttributeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAbstractNameValueExpressionAttribute() {
+		return abstractNameValueExpressionAttributeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractNameValueExpressionAttribute_AttributeName() {
+		return (EAttribute)abstractNameValueExpressionAttributeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractNameValueExpressionAttribute_AttributeValueType() {
+		return (EAttribute)abstractNameValueExpressionAttributeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractNameValueExpressionAttribute_AttributeValue() {
+		return (EAttribute)abstractNameValueExpressionAttributeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractNameValueExpressionAttribute_AttributeExpression() {
+		return (EReference)abstractNameValueExpressionAttributeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -17360,6 +17562,29 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 
 		logPropertyEClass = createEClass(LOG_PROPERTY);
 
+		publishEventMediatorEClass = createEClass(PUBLISH_EVENT_MEDIATOR);
+		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__INPUT_CONNECTOR);
+		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__OUTPUTCONNECTOR);
+		createEAttribute(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__STREAM_NAME);
+		createEAttribute(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__STREAM_VERSION);
+		createEAttribute(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__EVENT_SINK);
+		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES);
+		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES);
+		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES);
+		createEReference(publishEventMediatorEClass, PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES);
+
+		publishEventMediatorInputConnectorEClass = createEClass(PUBLISH_EVENT_MEDIATOR_INPUT_CONNECTOR);
+
+		publishEventMediatorOutputConnectorEClass = createEClass(PUBLISH_EVENT_MEDIATOR_OUTPUT_CONNECTOR);
+
+		publishEventMediatorAttributeEClass = createEClass(PUBLISH_EVENT_MEDIATOR_ATTRIBUTE);
+
+		abstractNameValueExpressionAttributeEClass = createEClass(ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE);
+		createEAttribute(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_NAME);
+		createEAttribute(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE);
+		createEAttribute(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE);
+		createEReference(abstractNameValueExpressionAttributeEClass, ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_EXPRESSION);
+
 		bamMediatorEClass = createEClass(BAM_MEDIATOR);
 		createEReference(bamMediatorEClass, BAM_MEDIATOR__INPUT_CONNECTOR);
 		createEReference(bamMediatorEClass, BAM_MEDIATOR__OUTPUT_CONNECTOR);
@@ -19003,6 +19228,11 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		logMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 		logMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
 		logPropertyEClass.getESuperTypes().add(this.getAbstractNameValueExpressionProperty());
+		publishEventMediatorEClass.getESuperTypes().add(this.getMediator());
+		publishEventMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
+		publishEventMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
+		publishEventMediatorAttributeEClass.getESuperTypes().add(this.getAbstractNameValueExpressionAttribute());
+		abstractNameValueExpressionAttributeEClass.getESuperTypes().add(this.getEsbNode());
 		bamMediatorEClass.getESuperTypes().add(this.getMediator());
 		bamMediatorInputConnectorEClass.getESuperTypes().add(this.getInputConnector());
 		bamMediatorOutputConnectorEClass.getESuperTypes().add(this.getOutputConnector());
@@ -19556,6 +19786,29 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(logMediatorOutputConnectorEClass, LogMediatorOutputConnector.class, "LogMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(logPropertyEClass, LogProperty.class, "LogProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(publishEventMediatorEClass, PublishEventMediator.class, "PublishEventMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPublishEventMediator_InputConnector(), this.getPublishEventMediatorInputConnector(), null, "inputConnector", null, 0, 1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublishEventMediator_Outputconnector(), this.getPublishEventMediatorOutputConnector(), null, "outputconnector", null, 0, 1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishEventMediator_StreamName(), ecorePackage.getEString(), "streamName", null, 0, 1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishEventMediator_StreamVersion(), ecorePackage.getEString(), "streamVersion", null, 0, 1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPublishEventMediator_EventSink(), ecorePackage.getEString(), "eventSink", null, 0, 1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublishEventMediator_MetaAttributes(), this.getPublishEventMediatorAttribute(), null, "metaAttributes", null, 0, -1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublishEventMediator_CorrelationAttributes(), this.getPublishEventMediatorAttribute(), null, "correlationAttributes", null, 0, -1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublishEventMediator_PayloadAttributes(), this.getPublishEventMediatorAttribute(), null, "payloadAttributes", null, 0, -1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublishEventMediator_ArbitraryAttributes(), this.getPublishEventMediatorAttribute(), null, "arbitraryAttributes", null, 0, -1, PublishEventMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(publishEventMediatorInputConnectorEClass, PublishEventMediatorInputConnector.class, "PublishEventMediatorInputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(publishEventMediatorOutputConnectorEClass, PublishEventMediatorOutputConnector.class, "PublishEventMediatorOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(publishEventMediatorAttributeEClass, PublishEventMediatorAttribute.class, "PublishEventMediatorAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(abstractNameValueExpressionAttributeEClass, AbstractNameValueExpressionAttribute.class, "AbstractNameValueExpressionAttribute", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeName(), ecorePackage.getEString(), "attributeName", "property_name", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeValueType(), this.getPropertyValueType(), "attributeValueType", null, 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeValue(), ecorePackage.getEString(), "attributeValue", "property_value", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractNameValueExpressionAttribute_AttributeExpression(), this.getNamespacedProperty(), null, "attributeExpression", null, 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bamMediatorEClass, BAMMediator.class, "BAMMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBAMMediator_InputConnector(), this.getBAMMediatorInputConnector(), null, "inputConnector", null, 0, 1, BAMMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -34,7 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.policies.MediatorFl
 public class MediatorFlow30EditPart extends AbstractMediatorFlowEditPart {
 
 	// ForEach mediator
-	
+
 	/**
 	 * @generated
 	 */
@@ -239,10 +239,11 @@ public class MediatorFlow30EditPart extends AbstractMediatorFlowEditPart {
 		// TODO This or using ResizableEditpolicy?
 		return false;
 	}
-	
+
 	@Override
 	public AbstractOutputConnectorEditPart getAssociatedOutputConnector() {
-		return EditorUtils.getOutputConnector((ShapeNodeEditPart)this.getParent(), ForEachMediatorTargetOutputConnectorEditPart.class);
+		return EditorUtils.getOutputConnector((ShapeNodeEditPart) this.getParent(),
+				ForEachMediatorTargetOutputConnectorEditPart.class);
 	}
 
 	/**

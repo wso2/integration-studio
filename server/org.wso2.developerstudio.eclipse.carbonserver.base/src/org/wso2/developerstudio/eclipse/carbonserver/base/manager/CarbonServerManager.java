@@ -741,7 +741,7 @@ public final class CarbonServerManager implements IServerManager {
 							public boolean visit(IResourceDelta delta) throws CoreException {
 								IResource resource = delta.getResource();
 								resourceChngeKind = delta.getKind();
-								if (resource.getType() == IResource.FILE) {
+								if (resource.getType() == IResource.FILE || resource.getType() == IResource.FOLDER) {
 									IServer[] serversForProject = getServersForProject(rootProject);
 									for (IServer server : serversForProject) {
 										if (!CARBON_SERVER_TYPE_REMOTE.equalsIgnoreCase(server.getServerType().getId())) {

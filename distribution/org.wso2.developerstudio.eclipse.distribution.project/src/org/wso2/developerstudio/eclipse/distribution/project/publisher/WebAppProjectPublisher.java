@@ -60,7 +60,6 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 				String deploymentDirPath = CarbonServerManager.getServerHome(server) + File.separator
 						+ DEPLOYMENT_DIR_PATH;
 				File deploymentFile = new File(deploymentDirPath + File.separator + project.getName());
-
 				WebAppArtfactExportHandler handler = new WebAppArtfactExportHandler();
 				File explodedWebapp = handler.createExplodedWebapp(project);
 				FileUtils.copyDirectory(explodedWebapp, deploymentFile, true);

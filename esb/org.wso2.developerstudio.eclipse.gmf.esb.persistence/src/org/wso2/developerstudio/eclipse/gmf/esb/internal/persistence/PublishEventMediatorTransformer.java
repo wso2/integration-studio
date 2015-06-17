@@ -16,26 +16,34 @@
 
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
+import org.apache.synapse.util.xpath.SynapseJsonPath;
+import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
+import org.wso2.carbon.mediator.publishevent.Property;
+import org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventAttributes;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
+import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
- * {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator} model objects into
- * corresponding synapse artifact(s).
+ * {@link org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator} model
+ * objects into corresponding synapse artifact(s).
  */
 public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer {
 	/**
@@ -45,9 +53,9 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 		// Check subject.
 		Assert.isTrue(subject instanceof PublishEventMediator, "Invalid subject.");
 		PublishEventMediator visualPublishEvent = (PublishEventMediator) subject;
-		
+
 		info.getParentSequence().addChild(createPublishEventMediator(visualPublishEvent));
-		
+
 		// Transform the publishEvent mediator output data flow path.
 		doTransform(info, visualPublishEvent.getOutputconnector());
 	}
@@ -57,8 +65,8 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 	 * @return org.wso2.carbon.mediator.publishevent.PublishEventMediator
 	 * @throws JaxenException
 	 */
-	private org.wso2.carbon.mediator.publishevent.PublishEventMediator createPublishEventMediator(PublishEventMediator visualPublishEvent)
-			throws JaxenException {
+	private org.wso2.carbon.mediator.publishevent.PublishEventMediator createPublishEventMediator(
+			PublishEventMediator visualPublishEvent) throws JaxenException {
 		org.wso2.carbon.mediator.publishevent.PublishEventMediator publishEventMediator = new org.wso2.carbon.mediator.publishevent.PublishEventMediator();
 		setCommonProperties(publishEventMediator, visualPublishEvent);
 		{
@@ -74,55 +82,62 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			if (StringUtils.isNotBlank(visualPublishEvent.getEventSink())) {
 				publishEventMediator.setEventSinkName(visualPublishEvent.getEventSink());
 			}
-
-			EList<PublishEventMediatorAttribute> attributes = visualPublishEvent.getMetaAttributes();
-			EList<PublishEventMediatorAttribute> attributes2 = visualPublishEvent.getCorrelationAttributes();
-			EList<PublishEventMediatorAttribute> attributes3 = visualPublishEvent.getPayloadAttributes();
-			EList<PublishEventMediatorAttribute> attributes4 = visualPublishEvent.getArbitraryAttributes();
-			
-			// PublishEvent attributes
-			/*for (PublishEventProperty visualProperty : visualPublishEvent.getAttributes()) {
-				MediatorProperty mediatorProperty = new MediatorProperty();
-				mediatorProperty.setName(visualProperty.getPropertyName());
-				
-				if(visualProperty.getPropertyValueType().getLiteral().equals("LITERAL")){
-					mediatorProperty.setValue(visualProperty.getPropertyValue());
-				}
-				if (visualProperty.getPropertyValueType().getLiteral().equals("EXPRESSION")) {
-					NamespacedProperty namespacedExpression = visualProperty
-							.getPropertyExpression();
-					if (namespacedExpression != null) {
-						SynapsePath propertyExpression = CustomSynapsePathFactory
-								.getSynapsePath(namespacedExpression.getPropertyValue());
-						if (namespacedExpression.getNamespaces() != null
-								&& !(propertyExpression instanceof SynapseJsonPath)) {
-							for (Entry<String, String> entry : namespacedExpression.getNamespaces()
-									.entrySet()) {
-								propertyExpression.addNamespace(entry.getKey(), entry.getValue());
-							}
-						}
-
-						mediatorProperty.setExpression(propertyExpression);
-					}
-				}
-				publishEventMediator.addProperty(mediatorProperty);
-			}*/
+			// PublishEvent event attributes
+			publishEventMediator.setMetaProperties(getVisualAttributes(visualPublishEvent.getMetaAttributes()));
+			publishEventMediator.setCorrelationProperties(getVisualAttributes(visualPublishEvent
+					.getCorrelationAttributes()));
+			publishEventMediator.setPayloadProperties(getVisualAttributes(visualPublishEvent.getPayloadAttributes()));
+			publishEventMediator
+					.setArbitraryProperties(getVisualAttributes(visualPublishEvent.getArbitraryAttributes()));
 		}
 		return publishEventMediator;
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
-		// TODO Auto-generated method stub
-		
+	private List<Property> getVisualAttributes(EList<PublishEventMediatorAttribute> visualAttributes)
+			throws JaxenException {
+		List<Property> attributesList = new ArrayList<Property>();
+		for (PublishEventMediatorAttribute visualAttribute : visualAttributes) {
+			Property attribute = new Property();
+
+			if (StringUtils.isNotEmpty(visualAttribute.getAttributeName())) {
+				attribute.setKey(visualAttribute.getAttributeName());
+			}
+			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.STRING.getLiteral())) {
+				attribute.setType(AttributeValueType.STRING.getLiteral());
+				attribute.setValue(visualAttribute.getAttributeValue());
+			}
+			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.EXPRESSION.getLiteral())) {
+				// ESB supports only STRING for attribute type, hence value is set to STRING at any given time
+				// attribute.setType(AttributeValueType.EXPRESSION.getLiteral());
+				NamespacedProperty namespacedExpression = visualAttribute.getAttributeExpression();
+				if (namespacedExpression != null) {
+					SynapsePath propertyExpression = CustomSynapsePathFactory.getSynapsePath(namespacedExpression
+							.getPropertyValue());
+					if (namespacedExpression.getNamespaces() != null
+							&& !(propertyExpression instanceof SynapseJsonPath)) {
+						for (Entry<String, String> entry : namespacedExpression.getNamespaces().entrySet()) {
+							propertyExpression.addNamespace(entry.getKey(), entry.getValue());
+						}
+					}
+					attribute.setExpression((SynapseXPath) propertyExpression);
+				}
+			}
+			attributesList.add(attribute);
+		}
+		return attributesList;
 	}
-	
-	public void transformWithinSequence(TransformationInfo info, EsbNode subject, SequenceMediator sequence) throws Exception{
-		// Check subject.
+
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
+		// TODO Auto-generated method stub
+	}
+
+	public void transformWithinSequence(TransformationInfo info, EsbNode subject, SequenceMediator sequence)
+			throws Exception {
+		// Check subject
 		Assert.isTrue(subject instanceof PublishEventMediator, "Invalid subject.");
 		PublishEventMediator visualPublishEvent = (PublishEventMediator) subject;
-		
+
 		sequence.addChild(createPublishEventMediator(visualPublishEvent));
-		doTransformWithinSequence(info, visualPublishEvent.getOutputconnector().getOutgoingLink(),sequence);
+		doTransformWithinSequence(info, visualPublishEvent.getOutputconnector().getOutgoingLink(), sequence);
 	}
 }

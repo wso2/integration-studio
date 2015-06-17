@@ -453,11 +453,15 @@
       abstract="true" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="property_name"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeValueType" eType="#//PropertyValueType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeValueType" eType="#//AttributeValueType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="property_value"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributeExpression" eType="#//NamespacedProperty"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AttributeValueType">
+    <eLiterals name="STRING" literal="STRING"/>
+    <eLiterals name="EXPRESSION" value="1" literal="EXPRESSION"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BAMMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//BAMMediatorInputConnector"

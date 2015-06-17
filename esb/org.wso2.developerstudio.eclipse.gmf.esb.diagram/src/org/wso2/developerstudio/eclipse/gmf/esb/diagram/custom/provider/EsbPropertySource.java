@@ -26,10 +26,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.MessageStoreParamCustomPropertyDescriptor;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.provider.MessageProcessorParamCustomPropertyDescriptor;
 
 public class EsbPropertySource extends PropertySource {
+	private static final String PUBLISH_EVENT_ARBITRARY_CATEGORY = "arbitrary";
+	private static final String PUBLISH_EVENT_PAYLOAD_CATEGORY = "payload";
+	private static final String PUBLISH_EVENT_CORRELATION_CATEGORY = "correlation";
+	private static final String PUBLISH_EVENT_META_CATEGORY = "meta";
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	public EsbPropertySource(Object object,
@@ -364,6 +366,14 @@ public class EsbPropertySource extends PropertySource {
 			return new CustomPropertyDescriptor(object, itemPropertyDescriptor);
 		} else if(pkg.getInboundEndpoint_ServiceParameters().equals(feature)){
 			return new InboundEndpointParametersPropertyDescriptor(object, itemPropertyDescriptor);
+		} else if(pkg.getPublishEventMediator_MetaAttributes().equals(feature)){
+			return new PublishEventAttributesPropertyDescriptor(object, itemPropertyDescriptor, PUBLISH_EVENT_META_CATEGORY);
+		} else if(pkg.getPublishEventMediator_CorrelationAttributes().equals(feature)){
+			return new PublishEventAttributesPropertyDescriptor(object, itemPropertyDescriptor, PUBLISH_EVENT_CORRELATION_CATEGORY);
+		} else if(pkg.getPublishEventMediator_PayloadAttributes().equals(feature)){
+			return new PublishEventAttributesPropertyDescriptor(object, itemPropertyDescriptor, PUBLISH_EVENT_PAYLOAD_CATEGORY);
+		} else if(pkg.getPublishEventMediator_ArbitraryAttributes().equals(feature)){
+			return new PublishEventAttributesPropertyDescriptor(object, itemPropertyDescriptor, PUBLISH_EVENT_ARBITRARY_CATEGORY);
 		}
  		
 			

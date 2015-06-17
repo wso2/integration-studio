@@ -32,9 +32,9 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.wso2.carbon.mediator.publishevent.Property;
+import org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
@@ -66,10 +66,10 @@ public class PublishEventMediatorDeserializer extends
 				metaAttribute.setAttributeName(metaProperty.getKey());
 			}
 			if (metaProperty.getValue() != null) {
-				metaAttribute.setAttributeValueType(PropertyValueType.LITERAL);
+				metaAttribute.setAttributeValueType(AttributeValueType.STRING);
 				metaAttribute.setAttributeValue(metaProperty.getValue());
 			} else if (metaProperty.getExpression() != null) {
-				metaAttribute.setAttributeValueType(PropertyValueType.EXPRESSION);
+				metaAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
 				SynapsePath xpath = metaProperty.getExpression();
 				NamespacedProperty namespacedProperty = createNamespacedProperty(xpath);
 
@@ -89,10 +89,10 @@ public class PublishEventMediatorDeserializer extends
 				correlationAttribute.setAttributeName(correlationProperty.getKey());
 			}
 			if (correlationProperty.getValue() != null) {
-				correlationAttribute.setAttributeValueType(PropertyValueType.LITERAL);
+				correlationAttribute.setAttributeValueType(AttributeValueType.STRING);
 				correlationAttribute.setAttributeValue(correlationProperty.getValue());
 			} else if (correlationProperty.getExpression() != null) {
-				correlationAttribute.setAttributeValueType(PropertyValueType.EXPRESSION);
+				correlationAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
 				SynapsePath xpath = correlationProperty.getExpression();
 				NamespacedProperty namespacedProperty = createNamespacedProperty(xpath);
 
@@ -112,10 +112,10 @@ public class PublishEventMediatorDeserializer extends
 				payloadAttribute.setAttributeName(payloadProperty.getKey());
 			}
 			if (payloadProperty.getValue() != null) {
-				payloadAttribute.setAttributeValueType(PropertyValueType.LITERAL);
+				payloadAttribute.setAttributeValueType(AttributeValueType.STRING);
 				payloadAttribute.setAttributeValue(payloadProperty.getValue());
 			} else if (payloadProperty.getExpression() != null) {
-				payloadAttribute.setAttributeValueType(PropertyValueType.EXPRESSION);
+				payloadAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
 				SynapsePath xpath = payloadProperty.getExpression();
 				NamespacedProperty namespacedProperty = createNamespacedProperty(xpath);
 
@@ -135,10 +135,10 @@ public class PublishEventMediatorDeserializer extends
 				arbitraryAttribute.setAttributeName(arbitraryProperty.getKey());
 			}
 			if (arbitraryProperty.getValue() != null) {
-				arbitraryAttribute.setAttributeValueType(PropertyValueType.LITERAL);
+				arbitraryAttribute.setAttributeValueType(AttributeValueType.STRING);
 				arbitraryAttribute.setAttributeValue(arbitraryProperty.getValue());
 			} else if (arbitraryProperty.getExpression() != null) {
-				arbitraryAttribute.setAttributeValueType(PropertyValueType.EXPRESSION);
+				arbitraryAttribute.setAttributeValueType(AttributeValueType.EXPRESSION);
 				SynapsePath xpath = arbitraryProperty.getExpression();
 				NamespacedProperty namespacedProperty = createNamespacedProperty(xpath);
 
@@ -148,40 +148,6 @@ public class PublishEventMediatorDeserializer extends
 			arbitraryAttributesList.add(arbitraryAttribute);
 		}
 		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES, arbitraryAttributesList);
-
-		// Register attribute categories
-		/*
-		 * PublishEventMetaAttributes publishEventMetaAttributes =
-		 * EsbFactory.eINSTANCE.createPublishEventMetaAttributes();
-		 * publishEventMetaAttributes
-		 * .getAttributes().addAll(metaAttributesList);
-		 * executeSetValueCommand(PUBLISH_EVENT_ARBITRARY_ATTRIBUTES__ATTRIBUTES
-		 * , publishEventMetaAttributes);
-		 * 
-		 * PublishEventCorrelationAttributes publishEventCorrelationAttributes =
-		 * EsbFactory.eINSTANCE.createPublishEventCorrelationAttributes();
-		 * publishEventCorrelationAttributes
-		 * .getAttributes().addAll(correlationAttributesList);
-		 * executeSetValueCommand
-		 * (PUBLISH_EVENT_ARBITRARY_ATTRIBUTES__ATTRIBUTES,
-		 * publishEventCorrelationAttributes);
-		 * 
-		 * PublishEventPayloadAttributes publishEventPayloadAttributes =
-		 * EsbFactory.eINSTANCE.createPublishEventPayloadAttributes();
-		 * publishEventPayloadAttributes
-		 * .getAttributes().addAll(payloadAttributesList);
-		 * executeSetValueCommand
-		 * (PUBLISH_EVENT_ARBITRARY_ATTRIBUTES__ATTRIBUTES,
-		 * publishEventPayloadAttributes);
-		 * 
-		 * PublishEventArbitraryAttributes publishEventArbitraryAttributes =
-		 * EsbFactory.eINSTANCE.createPublishEventArbitraryAttributes();
-		 * publishEventArbitraryAttributes
-		 * .getAttributes().addAll(arbitraryAttributesList);
-		 * executeSetValueCommand
-		 * (PUBLISH_EVENT_ARBITRARY_ATTRIBUTES__ATTRIBUTES,
-		 * publishEventArbitraryAttributes);
-		 */
 
 		return mediatorModel;
 	}

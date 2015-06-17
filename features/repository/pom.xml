@@ -83,7 +83,6 @@
 						
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.feature:${registry.tools.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.artifact.feature:${registry.tools.feature.version}</featureArtifactDef>
-						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.feature:${esb.tools.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.artifact.feature:${esb.tools.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.graphical.editor.feature:${esb.graphical.editor.feature.version}</featureArtifactDef>
 						<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appfactory.feature:${appfactory.tools.feature.version}</featureArtifactDef>                                 
@@ -343,7 +342,6 @@
 						
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.feature:${registry.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.registry.artifact.feature:${registry.tools.feature.version}</featureArtifactDef>
-							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.feature:${esb.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.artifact.feature:${esb.tools.feature.version}</featureArtifactDef>
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.esb.graphical.editor.feature:${esb.graphical.editor.feature.version}</featureArtifactDef> 
 							<featureArtifactDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.appfactory.feature:${appfactory.tools.feature.version}</featureArtifactDef>    

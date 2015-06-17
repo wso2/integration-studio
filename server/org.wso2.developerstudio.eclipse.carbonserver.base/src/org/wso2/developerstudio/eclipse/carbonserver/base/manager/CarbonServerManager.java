@@ -753,7 +753,6 @@ public final class CarbonServerManager implements IServerManager {
 											}
 										}
 									}
-
 								}
 								return true;
 							}

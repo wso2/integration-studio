@@ -149,6 +149,9 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 				}
 			} else if (resource.getType() == IResource.FOLDER && resourceChngeKind == IResourceDelta.ADDED) {
 				path = resource.getProjectRelativePath();
+				if (path.toString().contains("target") || path.toString().contains("main")) {
+					return;
+				}
 				resPath = getResourcePath(path);
 				sourceFile = new File(resource.getLocation().toFile().getPath());
 				destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);

@@ -6,7 +6,8 @@ Bundle-Version: 2.1.0
 Bundle-Activator: org.wso2.developerstudio.eclipse.security.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: WSO2 Inc.
-Export-Package: org.wso2.developerstudio.eclipse.security.project.ui.form
+Export-Package: org.wso2.developerstudio.eclipse.security.project.model,
+ org.wso2.developerstudio.eclipse.security.project.ui.form
 Import-Package: org.apache.axiom.om;version="1.2.11.wso2v4",
  org.apache.axiom.om.impl.builder;version="1.2.11.wso2v4",
  org.apache.commons.io;version="2.0.0.wso2v1",

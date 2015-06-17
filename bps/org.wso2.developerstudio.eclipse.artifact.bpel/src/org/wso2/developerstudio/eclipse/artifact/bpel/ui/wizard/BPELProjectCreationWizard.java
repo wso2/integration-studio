@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012 -2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,30 +32,33 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
-import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
-import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
-import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
-import org.wso2.developerstudio.eclipse.utils.archive.ArchiveManipulator;
-import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
-import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
-import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 import org.wso2.developerstudio.eclipse.artifact.bpel.Activator;
 import org.wso2.developerstudio.eclipse.artifact.bpel.model.BpelModel;
 import org.wso2.developerstudio.eclipse.artifact.bpel.utils.BPELArtifactConstants;
 import org.wso2.developerstudio.eclipse.artifact.bpel.utils.BPELImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.bpel.utils.BPELTemplateUtils;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
+import org.wso2.developerstudio.eclipse.platform.core.utils.XMLUtil;
+import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
+import org.wso2.developerstudio.eclipse.utils.archive.ArchiveManipulator;
+import org.wso2.developerstudio.eclipse.utils.data.ITemporaryFileTag;
+import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
+import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
-	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	private final BpelModel bpelModel;
+	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	
 	private static final String BPEL_WIZARD_WINDOW_TITLE = "Create New BPEL Project";
+	private static final String LINE_SEPERATOR = "line.separator";
+	private static final String BPEL_CONTENT = "bpelContent";
+	
+	private BpelModel bpelModel;
 	private IProject project;
 	private String processName;
 	private String namespace;
 	private IConfigurationElement configElement;
-//	private WSDLInfoWizardPage wsdlInfoPage;
-//	private MavenDetailsPage mavenDetailsPage;
 
 	public BPELProjectCreationWizard() {
 		this.bpelModel = new BpelModel();
@@ -64,7 +67,6 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 		setDefaultPageImageDescriptor(BPELImageUtils.getInstance().getImageDescriptor("bpel-wizard.png"));
 	}
 
-	
 	public boolean performFinish() {
 		try {
 			project = createNewProject();
@@ -72,31 +74,31 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 				extractImportFile(project);
 				extractBPELSettingsTemplate(project);
 				replaceAndUpdateSettingsFiles();
-			}else if(getModel().getSelectedOption().equals("new.bpelproject")){
-				if(!project.getFile("deploy.xml").exists()){
+			} else if (getModel().getSelectedOption().equals("new.bpelproject")) {
+				if (!project.getFile("deploy.xml").exists()) {
 					addBPELTemplate(project);
 				}
-				//replace bpel files with the given process name and the namespace
 				replaceAndUpdateNewBpelProject();
-			}else{
-				
+			} else {
+
 			}
 			addCommonConfigs();
 			getModel().addToWorkingSet(project);
 			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			List<File> bpelFiles = new ArrayList<File>();
-			
-			File[] allExactMatchingFiles = FileUtils.getAllExactMatchingFiles(project.getLocation().toOSString(),
-					null, "bpel",bpelFiles);
+
+			File[] allExactMatchingFiles = FileUtils.getAllExactMatchingFiles(project.getLocation().toOSString(), null,
+					"bpel", bpelFiles);
 			String relativePath = FileUtils.getRelativePath(project.getLocation().toFile(), allExactMatchingFiles[0]);
 			try {
 				refreshDistProjects();
 				IFile resourceFile = project.getFile(relativePath);
-				IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(),resourceFile);
+				IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), resourceFile);
 			} catch (Exception e) {
 				log.error("Cannot open file in editor", e);
 			}
-			BasicNewProjectResourceWizard.updatePerspective(configElement);	
+			BasicNewProjectResourceWizard.updatePerspective(configElement);
+
 		} catch (CoreException e) {
 			log.error("CoreException has occurred", e);
 		} catch (Exception e) {
@@ -104,32 +106,14 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 		}
 		return true;
 	}
-	
+
 	@Override
 	public void setInitializationData(IConfigurationElement configElement, String arg1, Object arg2)
-	        throws CoreException {
+			throws CoreException {
 		super.setInitializationData(configElement, arg1, arg2);
 		this.configElement = configElement;
 	}
 
-//	public void addPages() {
-//		wsdlInfoPage = new WSDLInfoWizardPage("Create a WSDL File");
-//		mavenDetailsPage = new MavenDetailsPage(getModel());
-//		super.addPages();
-//		addPage(wsdlInfoPage);
-//		addPage(mavenDetailsPage);
-//	}
-//	
-//	public IWizardPage getNextPage(IWizardPage page) {
-//		IWizardPage nextPage = super.getNextPage(page);
-//		nextPage.setImageDescriptor(BPELImageUtils.getInstance().getImageDescriptor("bpel-wizard.png"));
-//		if(page instanceof ProjectOptionsPage){
-//			page.setImageDescriptor(BPELImageUtils.getInstance().getImageDescriptor("bpel-wizard.png"));
-//		}
-//		return nextPage;
-//	}
-	
-	
 	private void addCommonConfigs() throws Exception, CoreException {
 		File pomfile = project.getFile("pom.xml").getLocation().toFile();
 		getModel().getMavenInfo().setPackageName("bpel/workflow");
@@ -137,102 +121,128 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 		MavenProject mavenProject = MavenUtils.getMavenProject(pomfile);
 		MavenUtils.addMavenBpelPlugin(mavenProject);
 		MavenUtils.saveMavenProject(mavenProject, pomfile);
-		ProjectUtils.addNatureToProject(project,
-										false,
-										"org.eclipse.jem.workbench.JavaEMFNature",
-										"org.eclipse.wst.common.modulecore.ModuleCoreNature",
-										"org.eclipse.wst.common.project.facet.core.nature",
-		                                "org.wso2.developerstudio.eclipse.bpel.project.nature");
-		                                
-		//add buildspacifications to .project file
-		ProjectUtils.addBuildSpecificationsToProject(project, 
-													"org.eclipse.wst.common.project.facet.core.builder", 
-													"org.eclipse.wst.validation.validationbuilder",
-													"org.eclipse.bpel.validator.builder");
-		MavenUtils
-		.updateWithMavenEclipsePlugin(
-				pomfile,
-				new String[] { "org.eclipse.wst.common.project.facet.core.builder", 
-						"org.eclipse.wst.validation.validationbuilder",
-						"org.eclipse.bpel.validator.builder" },
-				new String[] {
-						"org.eclipse.jem.workbench.JavaEMFNature",
-						"org.eclipse.wst.common.modulecore.ModuleCoreNature",
-						"org.eclipse.wst.common.project.facet.core.nature",
-                        "org.wso2.developerstudio.eclipse.bpel.project.nature" });
+		ProjectUtils.addNatureToProject(project, false, "org.eclipse.jem.workbench.JavaEMFNature",
+				"org.eclipse.wst.common.modulecore.ModuleCoreNature",
+				"org.eclipse.wst.common.project.facet.core.nature",
+				"org.wso2.developerstudio.eclipse.bpel.project.nature");
+
+		// add buildspacifications to .project file
+		ProjectUtils.addBuildSpecificationsToProject(project, "org.eclipse.wst.common.project.facet.core.builder",
+				"org.eclipse.wst.validation.validationbuilder", "org.eclipse.bpel.validator.builder");
+		MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {
+				"org.eclipse.wst.common.project.facet.core.builder", "org.eclipse.wst.validation.validationbuilder",
+				"org.eclipse.bpel.validator.builder" }, new String[] { "org.eclipse.jem.workbench.JavaEMFNature",
+				"org.eclipse.wst.common.modulecore.ModuleCoreNature",
+				"org.eclipse.wst.common.project.facet.core.nature",
+				"org.wso2.developerstudio.eclipse.bpel.project.nature" });
 	}
-	
-	
-	public void replaceAndUpdateSettingsFiles() throws IOException{
-		
+
+	public void replaceAndUpdateSettingsFiles() throws IOException {
+
 		File settingsFile = project.getFile("/.settings/org.eclipse.wst.common.component").getLocation().toFile();
 		File newSettingsFile = project.getFile("/.settings/org.eclipse.wst.common.component").getLocation().toFile();
 		String settingFileAsString = FileUtils.getContentAsString(settingsFile);
 		String replacedSettingContent = replaceFileContent(settingFileAsString, "sample", project.getName());
 		FileUtils.createFile(newSettingsFile, replacedSettingContent);
-		
+
 	}
-	
-	public void replaceAndUpdateNewBpelProject() throws IOException{
-		//HelloWorldProcess.bpel
-		//HelloWorldProcessArtifacts.wsdl
-		//deploy.xml
-		//read project
-		//"http://eclipse.org/bpel/sample"
-		processName = ((BpelModel)getModel()).getProcessName().trim();
-		namespace = ((BpelModel)getModel()).getProcessNS();
-		
-		File processFile = project.getFolder("bpelContent").getFile("HelloWorldBPELProcess.bpel").getLocation().toFile();
-		File wsdlfile = project.getFolder("bpelContent").getFile("HelloWorldBPELProcessArtifacts.wsdl").getLocation().toFile();
-		File deployfile = project.getFolder("bpelContent").getFile("deploy.xml").getLocation().toFile();
-		File settingsFile = project.getFolder("bpelContent").getFile("/.settings/org.eclipse.wst.common.component").getLocation().toFile();
-		
-		File newProcessFile = project.getFolder("bpelContent").getFile( processName + ".bpel").getLocation().toFile();
-		File newWSDLFile = project.getFolder("bpelContent").getFile(processName + "Artifacts.wsdl").getLocation().toFile();
+
+	public void replaceAndUpdateNewBpelProject() throws IOException {
+
+		processName = ((BpelModel) getModel()).getProcessName().trim();
+		namespace = ((BpelModel) getModel()).getProcessNS();
+
+		File processFile = project.getFolder(BPEL_CONTENT).getFile("HelloWorldBPELProcess.bpel").getLocation()
+				.toFile();
+		File wsdlfile = project.getFolder(BPEL_CONTENT).getFile("HelloWorldBPELProcessArtifacts.wsdl").getLocation()
+				.toFile();
+		File deployfile = project.getFolder(BPEL_CONTENT).getFile("deploy.xml").getLocation().toFile();
+		File settingsFile = project.getFolder(BPEL_CONTENT).getFile("/.settings/org.eclipse.wst.common.component")
+				.getLocation().toFile();
+		File seriveXML = project.getFolder(BPEL_CONTENT).getFile("service.xml").getLocation().toFile();
+
+		File newProcessFile = project.getFolder(BPEL_CONTENT).getFile(processName + ".bpel").getLocation().toFile();
+		File newWSDLFile = project.getFolder(BPEL_CONTENT).getFile(processName + "Artifacts.wsdl").getLocation()
+				.toFile();
 		File newSettingsFile = project.getFile("/.settings/org.eclipse.wst.common.component").getLocation().toFile();
-		
+
 		String processFileAsString = FileUtils.getContentAsString(processFile);
 		String wsdlFileAsString = FileUtils.getContentAsString(wsdlfile);
 		String deployFileAsString = FileUtils.getContentAsString(deployfile);
 		String settingFileAsString = FileUtils.getContentAsString(settingsFile);
-		
+		String serviceXMLAsString = FileUtils.getContentAsString(seriveXML);
+
 		String replacedProcessContent = replaceFileContent(processFileAsString, "HelloWorldBPELProcess", processName);
 		String replacedWSDLContent = replaceFileContent(wsdlFileAsString, "HelloWorldBPELProcess", processName);
 		String replacedDeployContent = replaceFileContent(deployFileAsString, "HelloWorldBPELProcess", processName);
-		String replacedSettingContent = replaceFileContent(settingFileAsString, "HelloWorldBPELProcess", project.getName());
-		
+		String replacedSettingContent = replaceFileContent(settingFileAsString, "HelloWorldBPELProcess",
+				project.getName());
+
 		replacedProcessContent = replaceFileContent(replacedProcessContent, "http://eclipse.org/bpel/sample", namespace);
 		replacedWSDLContent = replaceFileContent(replacedWSDLContent, "http://eclipse.org/bpel/sample", namespace);
-		replacedDeployContent = replaceFileContent(replacedDeployContent, "http://eclipse.org/bpel/sample", namespace);		
-				
-		FileUtils.createFile(newProcessFile, replacedProcessContent);	
+		replacedDeployContent = replaceFileContent(replacedDeployContent, "http://eclipse.org/bpel/sample", namespace);
+
+		String newServiceXMLContent = null;
+		try {
+			newServiceXMLContent = createServiceXMLContent(serviceXMLAsString);
+		} catch (Exception e) {
+			log.error("Error in creating service.xml file",e);
+		}
+
+		FileUtils.createFile(newProcessFile, replacedProcessContent);
 		FileUtils.createFile(deployfile, replacedDeployContent);
 		FileUtils.createFile(newSettingsFile, replacedSettingContent);
-		if(!BPELArtifactConstants.EMPTY_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())){
-			FileUtils.createFile(newWSDLFile, replacedWSDLContent);			
-		}else{
+		FileUtils.createFile(seriveXML, newServiceXMLContent);
+
+		if (!BPELArtifactConstants.EMPTY_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())) {
+			FileUtils.createFile(newWSDLFile, replacedWSDLContent);
+		} else {
 			boolean deleteQuietly = org.apache.commons.io.FileUtils.deleteQuietly(deployfile);
-			if(!deleteQuietly){
+			if (!deleteQuietly) {
 				deployfile.delete();
 			}
-		}		
-		
+		}
+
 		boolean deleteQuietly = org.apache.commons.io.FileUtils.deleteQuietly(processFile);
-		if(!deleteQuietly){
+		if (!deleteQuietly) {
 			processFile.delete();
 		}
 		boolean deleteQuietly1 = org.apache.commons.io.FileUtils.deleteQuietly(wsdlfile);
 		if (!deleteQuietly1) {
 			wsdlfile.delete();
 		}
-		
-//		org.apache.commons.io.FileUtils.deleteQuietly(processFile);
-//		org.apache.commons.io.FileUtils.deleteQuietly(wsdlfile);
-//		org.apache.commons.io.FileUtils.deleteQuietly(settingsFile);
-	
+
 	}
-	
-	public String replaceFileContent(String sourceString,String replacer, String toreplace){
+
+	/**
+	 * Creates service.xml content
+	 * 
+	 * @param serviceXMLAsString
+	 * 
+	 * @return new Service.xml content
+	 * @throws Exception
+	 */
+	private String createServiceXMLContent(String serviceXMLAsString) throws Exception {
+		String eol = System.getProperty(LINE_SEPERATOR);
+		ITemporaryFileTag serviceTempTag = FileUtils.createNewTempTag();
+
+		serviceXMLAsString = serviceXMLAsString.replaceAll("\\{", "<");
+		serviceXMLAsString = serviceXMLAsString.replaceAll("\\}", ">");
+
+		StringBuffer sbService = new StringBuffer();
+		sbService.append("<service name=\"").append(processName).append("\">").append("</service>\n");
+		serviceXMLAsString = serviceXMLAsString.replaceAll("<services>", sbService.toString());
+		StringBuffer sbCallback = new StringBuffer();
+		sbCallback.append("<service name=\"").append(processName + "Callback").append("\">").append("</service>\n");
+		serviceXMLAsString = serviceXMLAsString.replaceAll("<callbackService>", sbCallback.toString());
+		serviceXMLAsString = XMLUtil.prettify(serviceXMLAsString);
+		serviceXMLAsString = serviceXMLAsString.replaceAll("^" + eol, "");
+		serviceTempTag.clearAndEnd();
+
+		return serviceXMLAsString;
+	}
+
+	public String replaceFileContent(String sourceString, String replacer, String toreplace) {
 		String replacedContent = sourceString.replaceAll(replacer, toreplace);
 		return replacedContent;
 	}
@@ -241,44 +251,37 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 		File importFile = getModel().getImportFile();
 		IFolder bpelContent = importProject.getFolder("bpelContent");
 		bpelContent.getLocation().toFile().mkdirs();
-		// IFolder bpelContentFolder =
-		// ProjectUtils.getWorkspaceFolder(importProject, "bpelContent");
-		
 		ArchiveManipulator archiveManupulator = new ArchiveManipulator();
 		archiveManupulator.extract(importFile, bpelContent.getLocation().toFile());
 	}
 
-	
 	public IResource getCreatedResource() {
 		return project;
 	}
-	
-	private void extractBPELSettingsTemplate(IProject importProject) throws IOException{
+
+	private void extractBPELSettingsTemplate(IProject importProject) throws IOException {
 		ITemporaryFileTag bpelTempTag = FileUtils.createNewTempTag();
 		File bpelTemplateFile = new BPELTemplateUtils().getResourceFile("templates/bpel-settings.zip");
 		ArchiveManipulator archiveManipulator = new ArchiveManipulator();
 		archiveManipulator.extract(bpelTemplateFile, importProject.getLocation().toFile());
 		bpelTempTag.clearAndEnd();
 	}
-	
-	private void addBPELTemplate(IProject newProject) throws IOException{
+
+	private void addBPELTemplate(IProject newProject) throws IOException {
 		File bpelTemplateFile = null;
 		ITemporaryFileTag bpelTempTag = FileUtils.createNewTempTag();
-		if(BPELArtifactConstants.ASYNCHRONOUS_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())){
+		if (BPELArtifactConstants.ASYNCHRONOUS_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())) {
 			bpelTemplateFile = new BPELTemplateUtils().getResourceFile("templates/asynchronous-bpel-template.zip");
-		}else if(BPELArtifactConstants.SYNCHRONOUS_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())){
+		} else if (BPELArtifactConstants.SYNCHRONOUS_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())) {
 			bpelTemplateFile = new BPELTemplateUtils().getResourceFile("templates/synchronous-bpel-template.zip");
-		}else if(BPELArtifactConstants.EMPTY_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())){
+		} else if (BPELArtifactConstants.EMPTY_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())) {
 			bpelTemplateFile = new BPELTemplateUtils().getResourceFile("templates/empty-bpel-template.zip");
-		}else{
-//			bpelTemplateFile = new BPELTemplateUtils().getResourceFile("templates/bpel-template.zip");
 		}
-		
 		IFolder bpelContent = newProject.getFolder("bpelContent");
 		bpelContent.getLocation().toFile().mkdirs();
 		ArchiveManipulator archiveManipulator = new ArchiveManipulator();
 		archiveManipulator.extract(bpelTemplateFile, bpelContent.getLocation().toFile());
 		bpelTempTag.clearAndEnd();
-	} 
+	}
 
 }

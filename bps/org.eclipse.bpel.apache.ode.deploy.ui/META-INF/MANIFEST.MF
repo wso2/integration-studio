@@ -27,3 +27,4 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.4.0,4.0.0)",
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.bpel.apache.ode.deploy.ui.util

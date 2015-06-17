@@ -13,6 +13,17 @@
 			<description>BPEL Workflow</description>
 		</wizard>
    </extension>
+   <extension point="org.eclipse.ui.newWizards">
+ 		 <wizard name="Apply Security" category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.business.processes"
+ 			class="org.wso2.developerstudio.eclipse.artifact.bpel.ui.wizard.BPELSecurityWizard"
+ 			wizardManifest="project_wizard.xml"
+ 			id="org.wso2.developerstudio.eclipse.artifact.applySecurity"
+ 			icon="icons/bpel-16x16.png"
+ 			finalPerspective="org.eclipse.bpel.ui.perspective"
+ 			project="true">
+ 			<description>Apply Security for BPEL Workflow</description>
+ 		</wizard>
+ 	</extension>
    <!--extension point="org.eclipse.ui.newWizards"-->
       <!--Manually added to categories-->
 		<!--category name="WSO2" id="org.wso2.developerstudio.eclipse.capp.project">
@@ -88,6 +99,26 @@
            type="bpel/workflow">
      </handler>
   </extension>
+ 	
+ 	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution
+				objectClass="org.eclipse.core.resources.IProject"
+				id="org.wso2.developerstudio.eclipse.artifact.bpel.popup.generate">
+			<action
+					label="Apply Security"
+					icon="icons/bpel-16x16.png"
+					class="org.wso2.developerstudio.eclipse.artifact.bpel.ui.wizard.BPELSecurityAction"
+					id="org.wso2.developerstudio.eclipse.artifact.applySecurity">
+			</action>
+			<enablement>
+				<adapt type="org.eclipse.core.resources.IProject">
+					<test property="org.eclipse.core.resources.projectNature"
+						  value="org.wso2.developerstudio.eclipse.bpel.project.nature"/>
+				</adapt>
+			</enablement>
+		</objectContribution>
+	</extension>
+	
   <extension
        point="org.wso2.developerstudio.eclipse.samples">
     <sample

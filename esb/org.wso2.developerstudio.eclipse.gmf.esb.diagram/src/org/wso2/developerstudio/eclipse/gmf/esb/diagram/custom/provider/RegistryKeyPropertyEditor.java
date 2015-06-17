@@ -97,7 +97,7 @@ public class RegistryKeyPropertyEditor extends CustomDialogCellEditor {
 		//RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(cellEditorWindow.getShell(),
 		//		getStyle(), registryKeyProperty, findLocalNamedEntities(propertyContainer));
 		RegistryKeyPropertyEditorDialog dialog = new RegistryKeyPropertyEditorDialog(cellEditorWindow.getShell(),
-				getStyle(), registryKeyProperty, getLocalNamedEntities(propertyContainer));
+				getStyle(), registryKeyProperty, findLocalNamedEntities(propertyContainer));
 		dialog.create();
 		dialog.getShell().setSize(520,250);
 		dialog.getShell().setText("Resource Key Editor");

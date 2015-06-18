@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wizard>
- <projectOptions title="Registry Handler Artifact Createtion Wizard "
+ <projectOptions title="Registry Handler Artifact Creation Wizard "
  				 description="Select how you would like to create Registry Handler"
  				 error="Please select a method to create the Registry Handler Class">
  	<option id="new.handler" default="true">Create New Registry Handler</option>

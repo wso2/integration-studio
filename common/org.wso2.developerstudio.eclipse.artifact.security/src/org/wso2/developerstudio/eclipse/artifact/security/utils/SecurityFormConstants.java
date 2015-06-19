@@ -20,7 +20,7 @@ public class SecurityFormConstants {
 	public static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS = "org.wso2.carbon.security.crypto.alias";
 	public static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_TRUSTSTORES = "org.wso2.carbon.security.crypto.truststores";
 	public static final String ORG_WSO2_STRATOS_TENANT_ID = "org.wso2.stratos.tenant.id";
-	public static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE = "org.wso2.carbon.security.crypto.publicstore";
+	public static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE = "org.wso2.carbon.security.crypto.privatestore";
 
 	// Constants for Rampart Config
 	public static final String KERBEROSSIGNANDENCRYPT = "kerberossignandencrypt";
@@ -98,7 +98,7 @@ public class SecurityFormConstants {
 
 	// Rampart Configs
 	public static final String ALIAS = ":Alias";
-	public static final String PRIVATESTORE = ":publicstore";
+	public static final String PRIVATESTORE = ":privatestore";
 	public static final String TRUSTSTORES = ":Truststores";
 	public static final String TENANT_ID = ":Tenant id";
 	public static final String USER = ":User";

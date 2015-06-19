@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wizard>
- <projectOptions title="Synapse Configuration Artifact Createtion Wizard "
+ <projectOptions title="Synapse Configuration Artifact Creation Wizard "
  				 description="Select how you would like to create your new project"
  				 error="Please select a method to create the project">
  	   <option id="new.synapse" default="true">Create New Synapse Configuration</option>

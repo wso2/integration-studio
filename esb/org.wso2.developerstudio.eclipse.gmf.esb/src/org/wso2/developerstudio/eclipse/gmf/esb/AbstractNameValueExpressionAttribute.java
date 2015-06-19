@@ -66,7 +66,7 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 
 	/**
 	 * Returns the value of the '<em><b>Attribute Value Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType}.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Attribute Value Type</em>' attribute isn't clear,
@@ -74,24 +74,24 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attribute Value Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
-	 * @see #setAttributeValueType(PropertyValueType)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType
+	 * @see #setAttributeValueType(AttributeValueType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeValueType()
 	 * @model
 	 * @generated
 	 */
-	PropertyValueType getAttributeValueType();
+	AttributeValueType getAttributeValueType();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute#getAttributeValueType <em>Attribute Value Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Attribute Value Type</em>' attribute.
-	 * @see org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType
 	 * @see #getAttributeValueType()
 	 * @generated
 	 */
-	void setAttributeValueType(PropertyValueType value);
+	void setAttributeValueType(AttributeValueType value);
 
 	/**
 	 * Returns the value of the '<em><b>Attribute Value</b></em>' attribute.

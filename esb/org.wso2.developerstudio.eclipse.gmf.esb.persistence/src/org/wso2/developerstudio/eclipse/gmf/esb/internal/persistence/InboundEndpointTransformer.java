@@ -92,7 +92,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 		if (sequence != null) {
 			inboundEndpoint.setInjectingSeq(sequence.getName());
 		} else {
-			throw new Exception("Sequece cannot be empty. Please include a Sequnce");
+			throw new Exception("Sequece cannot be empty. Please include a Sequence");
 		}
 		Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
 		if (onErrorSequence != null) {

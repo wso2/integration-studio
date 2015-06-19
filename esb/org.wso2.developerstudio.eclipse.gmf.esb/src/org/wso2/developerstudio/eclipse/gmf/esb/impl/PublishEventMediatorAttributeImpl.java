@@ -16,8 +16,8 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
 
 /**
@@ -33,10 +33,16 @@ public class PublishEventMediatorAttributeImpl extends AbstractNameValueExpressi
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected PublishEventMediatorAttributeImpl() {
 		super();
+		// Value expression.
+		NamespacedProperty valueExpression = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
+		valueExpression.setPrettyName("Attribute Expression");
+		valueExpression.setPropertyName("exp");
+		valueExpression.setPropertyValue("/default/expression");
+		setAttributeExpression(valueExpression);
 	}
 
 	/**

@@ -76,6 +76,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LogLevel/FULL"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//LogLevel/CUSTOM"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//AttributeValueType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//AttributeValueType/EXPRESSION"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//BeanMediatorAction">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//BeanMediatorAction/CREATE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//BeanMediatorAction/REMOVE"/>

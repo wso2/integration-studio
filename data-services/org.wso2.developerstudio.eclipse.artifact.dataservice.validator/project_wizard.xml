@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wizard>
- <projectOptions title="Data Services Validator Artifact Createtion wizard "
+ <projectOptions title="Data Services Validator Artifact Creation wizard "
  				 description="Select how you would like to create your Data Services Validator Project"
  				 error="Please select a method to create the project">
  	<option id="new.validator" default="true">Create New Data Services Validator Project</option>

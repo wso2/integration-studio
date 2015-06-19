@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractNameValueExpressionAttribute;
+import org.wso2.developerstudio.eclipse.gmf.esb.AttributeValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
@@ -69,7 +70,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
 	 * @generated
 	 * @ordered
 	 */
-	protected static final PropertyValueType ATTRIBUTE_VALUE_TYPE_EDEFAULT = PropertyValueType.LITERAL;
+	protected static final AttributeValueType ATTRIBUTE_VALUE_TYPE_EDEFAULT = AttributeValueType.STRING;
 	/**
 	 * The cached value of the '{@link #getAttributeValueType() <em>Attribute Value Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -78,7 +79,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
 	 * @generated
 	 * @ordered
 	 */
-	protected PropertyValueType attributeValueType = ATTRIBUTE_VALUE_TYPE_EDEFAULT;
+	protected AttributeValueType attributeValueType = ATTRIBUTE_VALUE_TYPE_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getAttributeValue() <em>Attribute Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -152,7 +153,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PropertyValueType getAttributeValueType() {
+	public AttributeValueType getAttributeValueType() {
 		return attributeValueType;
 	}
 
@@ -161,8 +162,8 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAttributeValueType(PropertyValueType newAttributeValueType) {
-		PropertyValueType oldAttributeValueType = attributeValueType;
+	public void setAttributeValueType(AttributeValueType newAttributeValueType) {
+		AttributeValueType oldAttributeValueType = attributeValueType;
 		attributeValueType = newAttributeValueType == null ? ATTRIBUTE_VALUE_TYPE_EDEFAULT : newAttributeValueType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE, oldAttributeValueType, attributeValueType));
@@ -278,7 +279,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
 				setAttributeName((String)newValue);
 				return;
 			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE_TYPE:
-				setAttributeValueType((PropertyValueType)newValue);
+				setAttributeValueType((AttributeValueType)newValue);
 				return;
 			case EsbPackage.ABSTRACT_NAME_VALUE_EXPRESSION_ATTRIBUTE__ATTRIBUTE_VALUE:
 				setAttributeValue((String)newValue);

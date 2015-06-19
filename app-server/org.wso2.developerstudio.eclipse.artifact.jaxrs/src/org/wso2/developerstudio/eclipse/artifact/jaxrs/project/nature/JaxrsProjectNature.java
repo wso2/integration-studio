@@ -77,6 +77,7 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 			dependency.setArtifactId(bean.getArtifactId());
 			dependency.setGroupId(bean.getGroupId());
 			dependency.setVersion(bean.getVersion());
+			dependency.setScope("provided");
 			dependencyList.add(dependency);
 		}
 		MavenUtils.addMavenDependency(mavenProject, dependencyList);
@@ -113,7 +114,6 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 		createWebXmlNode.setValue("${basedir}/src/main/webapp/WEB-INF/web.xml");
 		Xpp3Dom createExcludesNode = MavenUtils.createXpp3Node(createMainConfigurationNode,
 				"packagingExcludes");
-		createExcludesNode.setValue("WEB-INF/lib/*.jar");
 		Xpp3Dom createWarNameNode = MavenUtils.createXpp3Node(createMainConfigurationNode,
 				"warName");
 		createWarNameNode.setValue("${project.artifactId}");

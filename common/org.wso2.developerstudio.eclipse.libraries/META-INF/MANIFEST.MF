@@ -700,6 +700,8 @@ Export-Package: com.damnhandy.uri.template,
    org.wso2.securevault.secret.mbean,
    org.apache.synapse.config,
    org.apache.synapse.mediators",
+ org.apache.synapse.aspects,
+ org.apache.synapse.aspects.statistics,
  org.apache.synapse.commons.datasource;
   uses:="javax.naming,
    javax.sql,

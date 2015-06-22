@@ -20,8 +20,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.aspects.statistics.StatisticsConfigurable;
 import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.IndirectEndpoint;
@@ -44,6 +44,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RegistryKeyProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
+
 import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.*;
 
 public class ProxyServiceDeserializer extends AbstractEsbNodeDeserializer<ProxyService,org.wso2.developerstudio.eclipse.gmf.esb.ProxyService> {
@@ -63,6 +64,14 @@ public class ProxyServiceDeserializer extends AbstractEsbNodeDeserializer<ProxyS
 			executeSetValueCommand(PROXY_SERVICE__TRACE_ENABLED, new Boolean(true));
 		} else {
 			executeSetValueCommand(PROXY_SERVICE__TRACE_ENABLED, new Boolean(false));
+		}
+		
+		//Fixing TOOLS-2735
+		StatisticsConfigurable statisticsConfigurable = object.getAspectConfiguration();
+		if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
+			executeSetValueCommand(PROXY_SERVICE__STATISTICS_ENABLED, new Boolean(true));
+		}else{
+			executeSetValueCommand(PROXY_SERVICE__STATISTICS_ENABLED, new Boolean(false));
 		}
 		
 		executeSetValueCommand(PROXY_SERVICE__START_ON_LOAD, object.isStartOnLoad());

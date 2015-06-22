@@ -37,6 +37,7 @@ public class WSO2MavenPluginVersions {
 		PLUGIN_VERSIONS.put("maven-ds-validator-plugin", "2.0.12");
 		PLUGIN_VERSIONS.put("maven-endpoint-plugin", "2.0.12");
 		PLUGIN_VERSIONS.put("maven-gadget-plugin", "2.0.12");
+		PLUGIN_VERSIONS.put("maven-inboundendpoint-plugin", "1.0.0-SNAPSHOT");
 		PLUGIN_VERSIONS.put("maven-jaxws-plugin", "2.0.12");
 		PLUGIN_VERSIONS.put("maven-library-plugin", "2.0.12");
 		PLUGIN_VERSIONS.put("maven-localentry-plugin", "2.0.12");
@@ -52,6 +53,7 @@ public class WSO2MavenPluginVersions {
 		
 		PLUGIN_VERSIONS.put("wso2-esb-api-plugin", "2.0.12");
 		PLUGIN_VERSIONS.put("wso2-esb-endpoint-plugin", "2.0.12");
+		PLUGIN_VERSIONS.put("wso2-esb-inboundendpoint-plugin", "1.0.0-SNAPSHOT");
 		PLUGIN_VERSIONS.put("wso2-esb-localentry-plugin", "2.0.12");
 		PLUGIN_VERSIONS.put("wso2-esb-proxy-plugin", "2.0.12");
 		PLUGIN_VERSIONS.put("wso2-esb-sequence-plugin", "2.0.12");

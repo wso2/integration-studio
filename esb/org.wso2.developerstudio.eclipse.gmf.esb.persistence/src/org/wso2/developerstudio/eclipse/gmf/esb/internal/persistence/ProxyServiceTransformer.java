@@ -23,6 +23,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNode;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.config.SynapseConfigUtils;
 import org.apache.synapse.core.axis2.ProxyService;
 import org.apache.synapse.endpoints.Endpoint;
@@ -346,7 +347,16 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 			}
 			if (pinnedServers.size() > 0)
 				proxyService.setPinnedServers(pinnedServers);
-			// proxyService.setStatisticsState(visualService.isStatisticsEnabled()?1:0);
+			
+		   //Fixing TOOLS-2735	
+		   AspectConfiguration aspectConfiguration = new AspectConfiguration(visualService.getName());
+		   proxyService.configure(aspectConfiguration);
+		   if(visualService.isStatisticsEnabled()){
+			   aspectConfiguration.enableStatistics();
+		   }else{
+			   aspectConfiguration.disableStatistics();
+		   }
+		   
 			info.getSynapseConfiguration().addProxyService(
 					visualService.getName(), proxyService);
 			

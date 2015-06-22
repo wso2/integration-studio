@@ -120,14 +120,23 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 		IPath path;
 
 		if (resource != null) {
+			WebAppArtfactExportHandler handler = new WebAppArtfactExportHandler();
+			String webContentDirName = handler.getWebContentDirName(project);
+			if (webContentDirName.equals(resource.getName())) {
+				return;
+			}
+			
 			if (resourceChngeKind == IResourceDelta.REMOVED) {
 				path = resource.getProjectRelativePath();
 				resPath = getResourcePath(path);
-				destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);
-				if (resource.getType() == IResource.FILE && destinationFile.exists()) {
-					FileUtils.forceDelete(destinationFile);
-				} else if (resource.getType() == IResource.FOLDER && destinationFile.exists()) {
-					FileUtils.deleteDirectory(destinationFile);
+				if (resPath != null) {
+					destinationFile = new File(deploymentDirPath + File.separator + project.getName() + File.separator
+							+ "WEB-INF" + File.separator + "classes" + resPath);
+					if (resource.getType() == IResource.FILE && destinationFile.exists()) {
+						FileUtils.forceDelete(destinationFile);
+					} else if (resource.getType() == IResource.FOLDER && destinationFile.exists()) {
+						FileUtils.deleteDirectory(destinationFile);
+					}
 				}
 				return;
 			}
@@ -135,17 +144,21 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 				if (resource.getFileExtension().equals("class")) {
 					path = resource.getProjectRelativePath();
 					resPath = getResourcePath(path);
-					sourceFile = new File(resource.getLocation().toFile().getPath());
-					destinationFile = new File(deploymentDirPath + File.separator + project.getName() + File.separator
-							+ "WEB-INF" + File.separator + "classes" + resPath);
-					FileUtils.copyFile(sourceFile, destinationFile, true);
-
-				} else if (!resource.getFileExtension().equals("java")) {
+					if (resPath != null) {
+						sourceFile = new File(resource.getLocation().toFile().getPath());
+						destinationFile = new File(deploymentDirPath + File.separator + project.getName()
+								+ File.separator + "WEB-INF" + File.separator + "classes" + resPath);
+						FileUtils.copyFile(sourceFile, destinationFile, true);
+					}
+				} else if (!resource.getFileExtension().equals("java")
+						&& !resource.getName().equals("org.eclipse.wst.common.component")) {
 					path = resource.getProjectRelativePath();
 					resPath = getResourcePath(path);
-					sourceFile = new File(resource.getLocation().toFile().getPath());
-					destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);
-					FileUtils.copyFile(sourceFile, destinationFile, true);
+					if (resPath != null) {
+						sourceFile = new File(resource.getLocation().toFile().getPath());
+						destinationFile = new File(deploymentDirPath + File.separator + project.getName() + resPath);
+						FileUtils.copyFile(sourceFile, destinationFile, true);
+					}
 				}
 			}
 		}
@@ -153,7 +166,11 @@ public class WebAppProjectPublisher implements ICarbonServerModulePublisher {
 
 	private String getResourcePath(IPath path) {
 		String pathSegment = path.segment(0);
-		String resPath = path.toString().split(pathSegment)[1];
+		String[] pathSegments = path.toString().split(pathSegment);
+		String resPath = null;
+		if (pathSegments.length > 0) {
+			resPath = path.toString().split(pathSegment)[1];
+		}
 		return resPath;
 	}
 

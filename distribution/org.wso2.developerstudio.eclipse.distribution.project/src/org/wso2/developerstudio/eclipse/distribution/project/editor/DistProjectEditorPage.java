@@ -483,7 +483,10 @@ public class DistProjectEditorPage extends FormPage {
         if (lastCtrl != null){
         	lastCtrl.dispose();  
         }
-        if(nodeData.hasChildren() || !item.getChecked()) return;
+
+		// Fixing TOOLS-2837
+		// if(nodeData.hasChildren() || !item.getChecked())return;
+
 		final String artifactInfo = DistProjectUtils
 		.getArtifactInfoAsString(nodeData.getDependency());
 		final Combo cmbServerRole = new Combo(trDependencies, SWT.SINGLE);

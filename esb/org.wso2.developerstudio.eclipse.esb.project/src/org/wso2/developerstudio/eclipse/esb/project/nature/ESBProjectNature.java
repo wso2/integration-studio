@@ -66,7 +66,31 @@ public class ESBProjectNature extends AbstractWSO2ProjectNature {
 			
 			//Adding maven exec plugin entry
 			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.2", true);
-			
+		
+			{
+				PluginExecution pluginExecution = new PluginExecution();
+				pluginExecution.setId(MavenConstants.PACKAGE_PHASE);
+				pluginExecution.addGoal(MavenConstants.EXEC_GOAL);
+				pluginExecution.setPhase(MavenConstants.PACKAGE_PHASE);
+
+				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+				Xpp3Dom executableNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.EXECUTABLE_TAG);
+				executableNode.setValue(MavenConstants.EXECUTABLE_VALUE);
+				Xpp3Dom workingDirectoryNode = MavenUtils.createXpp3Node(configurationNode,
+						MavenConstants.WORKING_DIRECTORY_TAG);
+				workingDirectoryNode.setValue(MavenConstants.WORKING_DIRECTORY_VALUE);
+				Xpp3Dom argumentsNode = MavenUtils.createXpp3Node(configurationNode, MavenConstants.ARGUMENTS_TAG);
+				Xpp3Dom cleanArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
+				cleanArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_CLEAN);
+				Xpp3Dom installArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
+				installArgumentNode.setValue(MavenConstants.PACKAGE_PHASE);
+				Xpp3Dom testSkipArgumentNode = MavenUtils.createXpp3Node(argumentsNode, MavenConstants.ARGUMENT_TAG);
+				testSkipArgumentNode.setValue(MavenConstants.ARGUMENT_VALUE_SKIP_TESTS);
+
+				pluginExecution.setConfiguration(configurationNode);
+
+				plugin.addExecution(pluginExecution);
+			}
 			{
 				PluginExecution pluginExecution = new PluginExecution();
 				pluginExecution.setId(MavenConstants.INSTALL_PHASE);

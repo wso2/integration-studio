@@ -144,17 +144,17 @@ public class CloudConnectorOperationExtFactory extends AbstractMediatorFactory{
 		File directory = new File(connectorRootPath);
 
 		if (directory != null && directory.isDirectory()) {
-			String[] directories = directory.list();
-			for (int i = 0; i < directories.length; ++i) {
-				CloudConnectorDirectoryTraverser directoryTraverser = CloudConnectorDirectoryTraverser
-						.getInstance(connectorRootPath + File.separator + directories[i]);
-				Map<String, String> map = directoryTraverser
-						.getOperationsConnectorComponentNameMap();
-				Iterator<String> iterator = map.keySet().iterator();
-				while (iterator.hasNext()) {
-					String key = iterator.next();
-					tagQNameList.add(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, map.get(key)
-							+ "." + key));
+			File[] files=directory.listFiles();
+			for (int i = 0; i < files.length; ++i) {
+				if (files[i].isDirectory()) {
+					CloudConnectorDirectoryTraverser directoryTraverser = CloudConnectorDirectoryTraverser
+							.getInstance(connectorRootPath + File.separator + files[i].getName());
+					Map<String, String> map = directoryTraverser.getOperationsConnectorComponentNameMap();
+					Iterator<String> iterator = map.keySet().iterator();
+					while (iterator.hasNext()) {
+						String key = iterator.next();
+						tagQNameList.add(new QName(XMLConfigConstants.SYNAPSE_NAMESPACE, map.get(key) + "." + key));
+					}
 				}
 			}
 		}

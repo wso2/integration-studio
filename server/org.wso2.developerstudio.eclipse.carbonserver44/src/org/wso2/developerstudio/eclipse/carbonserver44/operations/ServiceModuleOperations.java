@@ -58,10 +58,20 @@ public class ServiceModuleOperations {
 
 	IProject project;
 	IServer server;
+	private IResource resource;
+	private int resourceChngeKind;
 	
 	public ServiceModuleOperations(IProject project, IServer server){
 		this.project=project;
 		this.server=server;
+	}
+	
+	public void setUpdatedResource(IResource resource) {
+		this.resource = resource;
+	}
+
+	public void setResourceChngeKind(int resourceChngeKind) {
+		this.resourceChngeKind = resourceChngeKind;
 	}
 	
 	public void hotUpdateModule() throws CoreException{

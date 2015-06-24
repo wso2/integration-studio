@@ -33,7 +33,7 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.impl.CarbonServer;
 import org.wso2.developerstudio.eclipse.carbonserver.base.interfaces.ICarbonServerMonitor;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.ICarbonOperationManager;
-import org.wso2.developerstudio.eclipse.carbonserver42.operations.ServiceModuleOperations;
+import org.wso2.developerstudio.eclipse.carbonserver44.operations.ServiceModuleOperations;
 import org.wso2.developerstudio.eclipse.carbonserver44.monitor.CarbonServerListener;
 import org.wso2.developerstudio.eclipse.carbonserver44.util.CarbonServer44Utils;
 import org.wso2.developerstudio.eclipse.carbonserver44.util.CarbonServerConstants;

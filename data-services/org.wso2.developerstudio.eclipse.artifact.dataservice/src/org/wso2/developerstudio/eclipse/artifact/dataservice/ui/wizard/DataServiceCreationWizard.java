@@ -27,6 +27,9 @@ import javax.xml.stream.FactoryConfigurationError;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
+import org.apache.maven.model.Repository;
+import org.apache.maven.model.RepositoryPolicy;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.eclipse.core.resources.IFile;
@@ -222,32 +225,43 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 
 		boolean pluginExists = MavenUtils.checkOldPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID,
 				MavenConstants.MAVEN_DATASERVICE_PLUGIN_VERSION);
-		Plugin pluginEntry = null;
-		if (!pluginExists) {
-			pluginEntry = MavenUtils.createPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID,
-					MavenConstants.MAVEN_DATASERVICE_PLUGIN_VERSION, true);
-		} else {
-			pluginEntry = getExistingPlugin(mavenProject, GROUP_ID, ARTIFACT_ID,
-					MavenConstants.MAVEN_DATASERVICE_PLUGIN_VERSION);
+
+		if (pluginExists) {
+			return;
 		}
 
-		if (getDBSFile() != null) {
-			String fileName = FileUtils.getRelativePath(project.getLocation().toFile(), openFile).replaceAll(
-					Pattern.quote(File.separator), "/");
+		Plugin pluginEntry = MavenUtils.createPluginEntry(mavenProject, GROUP_ID, ARTIFACT_ID,
+				MavenConstants.MAVEN_DATASERVICE_PLUGIN_VERSION, true);
 
-			Xpp3Dom existingArtifactNode = ((Xpp3Dom) pluginEntry.getConfiguration()).getChild(ARTIFACT_TAG);
+		PluginExecution pluginExecution = new PluginExecution();
+		pluginExecution.addGoal("pom-gen");
+		pluginExecution.setPhase("process-resources");
+		pluginExecution.setId("dataservice");
 
-			if (existingArtifactNode != null) {
-				Xpp3Dom newArtifactTag = new Xpp3Dom(ARTIFACT_TAG);
-				((Xpp3Dom) pluginEntry.getConfiguration()).addChild(newArtifactTag);
-				newArtifactTag.setValue(fileName);
-			} else {
-				Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode(pluginEntry);
-				Xpp3Dom artifactNode = MavenUtils.createXpp3Node(configurationNode, ARTIFACT_TAG);
-				artifactNode.setValue(fileName);
-			}
+		Xpp3Dom configurationNode = MavenUtils.createMainConfigurationNode();
+		Xpp3Dom artifactLocationNode = MavenUtils.createXpp3Node(configurationNode, "artifactLocation");
+		artifactLocationNode.setValue(".");
+		Xpp3Dom typeListNode = MavenUtils.createXpp3Node(configurationNode, "typeList");
+		typeListNode.setValue("${artifact.types}");
+		pluginExecution.setConfiguration(configurationNode);
 
+		pluginEntry.addExecution(pluginExecution);
+		Repository repo = new Repository();
+		repo.setUrl("http://maven.wso2.org/nexus/content/groups/wso2-public/");
+		repo.setId("wso2-nexus");
+
+		RepositoryPolicy releasePolicy = new RepositoryPolicy();
+		releasePolicy.setEnabled(true);
+		releasePolicy.setUpdatePolicy("daily");
+		releasePolicy.setChecksumPolicy("ignore");
+
+		repo.setReleases(releasePolicy);
+
+		if (!mavenProject.getRepositories().contains(repo)) {
+			mavenProject.getModel().addRepository(repo);
+			mavenProject.getModel().addPluginRepository(repo);
 		}
+
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPom);
 	}
 
@@ -352,7 +366,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			// creates the pom file
 			createPOM(pomfile);
 			// updates pom file with data service plugin
-			updatePOMWithDSSPlugin(pomfile);
+			// updatePOMWithDSSPlugin(pomfile);
 
 			ProjectUtils.addNatureToProject(project, false, DS_PROJECT_NATURE);
 			MavenUtils.updateWithMavenEclipsePlugin(pomfile, new String[] {}, new String[] { DS_PROJECT_NATURE });

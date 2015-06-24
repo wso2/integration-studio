@@ -336,8 +336,8 @@
 						<arg value="org.wso2.developerstudio.eclipse.registry.feature.feature.group" />
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.registry.artifact.feature.feature.group" />
-						<arg value="-installIU" />
-						<arg value="org.wso2.developerstudio.eclipse.esb.feature.feature.group" />
+						<!-- <arg value="-installIU" /> -->
+						<!-- <arg value="org.wso2.developerstudio.eclipse.esb.feature.feature.group" /> -->
 						<arg value="-installIU" />
 						<arg value="org.wso2.developerstudio.eclipse.esb.artifact.feature.feature.group" />
 						<arg value="-installIU" />

@@ -48,6 +48,7 @@ import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerIn
 import org.wso2.developerstudio.eclipse.carbonserver.base.manager.CarbonServerManager;
 import org.wso2.developerstudio.eclipse.carbonserver44.Activator;
 import org.wso2.developerstudio.eclipse.carbonserver44.util.CarbonServer44Utils;
+import org.wso2.developerstudio.eclipse.distribution.project.publisher.WebAppProjectPublisher;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
@@ -96,12 +97,17 @@ public class ServiceModuleOperations {
 //			File carbonHome = new File(CarbonServerManager.getServerHome(server).toOSString());
 //			File deployPath = new File(CarbonServer40Utils.getRepositoryPathFromLocalWorkspaceRepo(CarbonServerManager.getServerLocalWorkspacePath(server)));
 			for (ICarbonServerModulePublisher publisher : projectPublishers) {
-	            try {
-	                publisher.hotUpdate(project, server, null, null);
-                } catch (Exception e) {
-	                log.error(e);
-                }
-            }
+				try {
+					if (publisher instanceof WebAppProjectPublisher) {
+						WebAppProjectPublisher webAppPublisher = (WebAppProjectPublisher) publisher;
+						webAppPublisher.setUpdatedResource(resource);
+						webAppPublisher.setResourceChngeKind(resourceChngeKind);
+					}
+					publisher.hotUpdate(project, server, null, null);
+				} catch (Exception e) {
+					log.error(e);
+				}
+			}
 		}else{
     		IPath webInfPath = J2EEUtils.getWebInfPath(project);
     		String servicesFolder = webInfPath.removeFirstSegments(1).toOSString()+"/services";

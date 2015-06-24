@@ -247,9 +247,11 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 				+ File.separator + CloudConnectorDirectoryTraverser.connectorPathFromWorkspace;
 		File directory=new File(connectorDirectory);
 		if(directory.isDirectory()){
-			String[] children=directory.list();
+			File[] children=directory.listFiles();
 	        for(int i=0;i<children.length;++i){
-	        	esbPaletteFactory.addCloudConnectorOperations(getEditor(0), children[i]);
+	        	if(children[i].isDirectory()){
+	        		esbPaletteFactory.addCloudConnectorOperations(getEditor(0), children[i].getName());
+	        	}
 	        }
 		}
 

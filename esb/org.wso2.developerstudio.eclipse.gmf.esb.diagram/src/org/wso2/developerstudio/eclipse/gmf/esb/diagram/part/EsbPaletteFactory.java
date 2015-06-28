@@ -48,6 +48,7 @@ import org.eclipse.gef.Tool;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
+import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.PaletteSeparator;
 import org.eclipse.gef.palette.PaletteToolbar;
@@ -1833,6 +1834,25 @@ public class EsbPaletteFactory {
 					apiResourceTool.setVisible(false);
 					updateConnectorVisibility(paletteContainer, false);
 					break;
+                case INBOUND_ENDPOINT:
+                    proxyServiceTool.setVisible(false);
+                    mediatorPalette.setVisible(true);               
+                    // Hiding all mediators except Sequence mediator.
+                    for(Object child : mediatorPalette.getChildren()){
+                            if("Sequence".equals(((PaletteEntry)child).getLabel())){
+                                    ((PaletteEntry)child).setVisible(true);
+                            }else{
+                                    ((PaletteEntry)child).setVisible(false);
+                            }
+                    }
+                    nodePalette.setVisible(false);
+                    endpoitPalette.setVisible(false);
+                    defineEpPalette.setVisible(false);
+                    linksPalette.setVisible(true);
+                    apiResourceTool.setVisible(false);
+                    seqPalette.setVisible(true);
+                    updateConnectorVisibility(paletteContainer, false);
+                    break;
 				case SYNAPSE_CONFIG:
 				default:
 					proxyServiceTool.setVisible(true);

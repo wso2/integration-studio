@@ -33,6 +33,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
+import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbDiagram;
+import org.wso2.developerstudio.eclipse.gmf.esb.EsbServer;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 
 public class CustomPaletteViewerKeyHandler extends PaletteViewerKeyHandler {
 
@@ -104,6 +108,9 @@ public class CustomPaletteViewerKeyHandler extends PaletteViewerKeyHandler {
 	private void filterMatchingEntries(KeyEvent event) {
 		List<PaletteToolEntry> paletteEntryList = null;
 		String modelLabel = "";
+		EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();                                                     
+		EsbServer server = ((EsbDiagram) ((EsbDiagramEditor) esbMultiPageEditor.getGraphicalEditor()).getDiagramEditPart().getDiagramView()
+		                 .getElement()).getServer();
 
 		if (getFocusEditPart() instanceof DrawerEditPart
 				&& ((DrawerEditPart) getFocusEditPart()).isExpanded()) {
@@ -155,10 +162,13 @@ public class CustomPaletteViewerKeyHandler extends PaletteViewerKeyHandler {
 				if (paletteEntryList.get(i) instanceof PaletteToolEntry) {
 					PaletteToolEntry toolEntry = paletteEntryList.get(i);
 					String label = toolEntry.getLabel().toUpperCase();
-					if (label.startsWith(searchString.toUpperCase())) {
-						toolEntry.setVisible(true);
-					} else if (toolEntry.isVisible()) {
-						toolEntry.setVisible(false);
+					if (!(ArtifactType.INBOUND_ENDPOINT.equals(server.getType()) && "Mediators".equals(toolEntry
+							.getParent().getLabel()))) {
+						if (label.startsWith(searchString.toUpperCase())) {
+							toolEntry.setVisible(true);
+						} else if (toolEntry.isVisible()) {
+							toolEntry.setVisible(false);
+						}
 					}
 				}
 			}
@@ -179,6 +189,9 @@ public class CustomPaletteViewerKeyHandler extends PaletteViewerKeyHandler {
 	private void populateToolEntries() {
 		String modelLabel = "";
 		if (getFocusEditPart() instanceof DrawerEditPart) {
+	         EsbMultiPageEditor esbMultiPageEditor = (EsbMultiPageEditor) EditorUtils.getActiveEditor();                                                     
+	         EsbServer server = ((EsbDiagram) ((EsbDiagramEditor) esbMultiPageEditor.getGraphicalEditor()).getDiagramEditPart().getDiagramView()
+	                         .getElement()).getServer();
 			modelLabel = ((PaletteDrawer) getFocusEditPart().getModel()).getLabel();
 			if (modelLabel.equals("Links") || modelLabel.equals("API")) {
 				return;
@@ -189,8 +202,11 @@ public class CustomPaletteViewerKeyHandler extends PaletteViewerKeyHandler {
 				for (int i = 0; i < paletteEntryList.size(); i++) {
 					if (paletteEntryList.get(i) instanceof PaletteToolEntry) {
 						PaletteToolEntry toolEntry = paletteEntryList.get(i);
-						if (!toolEntry.isVisible()) {
-							toolEntry.setVisible(true);
+						if (!(ArtifactType.INBOUND_ENDPOINT.equals(server.getType()) && "Mediators".equals(toolEntry
+								.getParent().getLabel()))) {
+							if (!toolEntry.isVisible()) {
+								toolEntry.setVisible(true);
+							}
 						}
 					}
 				}

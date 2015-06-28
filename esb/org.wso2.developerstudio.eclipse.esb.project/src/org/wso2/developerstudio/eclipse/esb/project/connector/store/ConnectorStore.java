@@ -73,7 +73,6 @@ public class ConnectorStore {
 		} catch (UnsupportedEncodingException e) {
 			log.error("Unable to encode username/password");
 		}
-		statusCode = 200;
 		if (statusCode == 200) {
 			log.info(username + ", successfully logged in!");
 			try {

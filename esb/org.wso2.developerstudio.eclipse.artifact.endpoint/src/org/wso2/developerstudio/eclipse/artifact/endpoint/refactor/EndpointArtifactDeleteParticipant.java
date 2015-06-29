@@ -153,32 +153,6 @@ public class EndpointArtifactDeleteParticipant extends DeleteParticipant{
 			}else if(type.equalsIgnoreCase("endpoint")){
 				path="endpoints";
 			}
-			
-			IFolder graphicalArtifactFolder = esbProject.getFolder("src").getFolder("main").getFolder("graphical-synapse-config");
-			if (graphicalArtifactFolder.exists()) {
-				IFile file = graphicalArtifactFolder.getFolder(path).getFile(
-						prefix
-								+ "_"
-								+ originalFile.getName().substring(0,
-										originalFile.getName().length() - 3)
-								+ "esb_diagram");
-				IFile file2 = graphicalArtifactFolder.getFolder(path).getFile(
-						prefix
-								+ "_"
-								+ originalFile.getName().substring(0,
-										originalFile.getName().length() - 3)
-								+ "esb");
-				if (file.exists()) {
-					DeleteResourceChange deleteResourceChange = new DeleteResourceChange(
-							file.getFullPath(), true, true);
-					deleteChange.add(deleteResourceChange);
-				}
-				if (file2.exists()) {
-					DeleteResourceChange deleteResourceChange1 = new DeleteResourceChange(
-							file2.getFullPath(), true, true);
-					deleteChange.add(deleteResourceChange1);
-				}
-			}
 		}
 		
 		return deleteChange;

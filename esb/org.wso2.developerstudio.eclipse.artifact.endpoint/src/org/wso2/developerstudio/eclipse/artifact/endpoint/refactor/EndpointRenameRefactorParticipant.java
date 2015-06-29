@@ -41,15 +41,11 @@ import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 
 public class EndpointRenameRefactorParticipant extends RenameParticipant {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String ESB_EXTENSION = ".esb";
-	private static final String ESB_DIAGRAM_EXTENSION = ".esb_diagram";
 
 	private IFile originalFile;
 	private String changedFileName;
 	private IProject esbProject;
 	private static List<String> skipList;
-	private static final String GRAPHICAL_SYNAPSE_CONFIG_DIR =
-	                                                           "/src/main/graphical-synapse-config/";
 	protected final static String EDITOR_ID =
 	                                          "org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbMultiPageEditor";
 
@@ -103,12 +99,6 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 
 		String changedNameWithoutExtention = FilenameUtils.removeExtension(changedFileName);
 		String originalNameWithoutExtension = FilenameUtils.removeExtension(originalFile.getName());
-		String prefix=getDirectoryPrefix();
-		String originalEsbFileName = getESBFilePath(originalNameWithoutExtension, false, prefix);
-		String originalEsbDiagramFileName = getESBFilePath(originalNameWithoutExtension, true, prefix);
-		String changedEsbFileName = getESBFilePath(changedNameWithoutExtention, false, prefix);
-		String changedEsbDiagramFileName = getESBFilePath(changedNameWithoutExtention, true, prefix);
-
 		CompositeChange compositeChange = new CompositeChange("ESB Artifact Rename");
 
 		// Change content of the original file
@@ -120,43 +110,6 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 		                                                                                       originalNameWithoutExtension,
 		                                                                                       changedNameWithoutExtention);
 		compositeChange.add(endpointArtifactFileChange);
-
-		String immediateDirectory = GRAPHICAL_SYNAPSE_CONFIG_DIR + originalFile.getParent().getName();
-		IFile esbIFile = esbProject.getFile(immediateDirectory + "/" + originalEsbFileName);
-		if (esbIFile.exists()) {
-			// Change content of the esb file
-			EndpointEsbFileChange esbFileChange =
-			                                      new EndpointEsbFileChange(
-			                                                                "Changing ESB file content",
-			                                                                esbIFile,
-			                                                                originalNameWithoutExtension,
-			                                                                changedNameWithoutExtention);
-			compositeChange.add(esbFileChange);
-			// Rename esb file
-			EndpointEsbFileRename esbFileRename =
-			                                      new EndpointEsbFileRename(esbIFile,
-			                                                                changedEsbFileName);
-			compositeChange.add(esbFileRename);
-		}
-
-		IFile esbDiagramIFile =
-		                        esbProject.getFile(immediateDirectory + "/" +
-		                                           originalEsbDiagramFileName);
-		if (esbDiagramIFile.exists()) {
-			// Change content of the esb diagram file
-			EndpointEsbFileChange esbDiagramFileChange =
-			                                             new EndpointEsbFileChange(
-			                                                                       "Changing ESB diagram file content",
-			                                                                       esbDiagramIFile,
-			                                                                       originalNameWithoutExtension,
-			                                                                       changedNameWithoutExtention);
-			compositeChange.add(esbDiagramFileChange);
-			// Rename esb diagram file
-			EndpointEsbFileRename esbDiagramFileRename =
-			                                             new EndpointEsbFileRename(esbDiagramIFile,
-			                                                                       changedEsbDiagramFileName);
-			compositeChange.add(esbDiagramFileRename);
-		}
 
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (int i = 0; i < projects.length; i++) {
@@ -186,38 +139,6 @@ public class EndpointRenameRefactorParticipant extends RenameParticipant {
 		}
 
 		return compositeChange;
-	}
-
-	private String getESBFilePath(String filename, boolean isDiagram, String prefix){
-		if(isDiagram){
-			return prefix + filename + ESB_DIAGRAM_EXTENSION;
-		}
-		return prefix + filename + ESB_EXTENSION;
-	}
-
-	private String getDirectoryPrefix() {
-		String imediateDirectory = originalFile.getParent().getName();
-		String directoryPrefix = "";
-		if (imediateDirectory.equalsIgnoreCase("api")) {
-			directoryPrefix = "api_";
-		} else if (imediateDirectory.equalsIgnoreCase("endpoints")) {
-			directoryPrefix = "endpoint_";
-		} else if (imediateDirectory.equalsIgnoreCase("local-entries")) {
-			directoryPrefix = "localentry_";
-		} else if (imediateDirectory.equalsIgnoreCase("message-processors")) {
-			directoryPrefix = "messageProcessor_";
-		} else if (imediateDirectory.equalsIgnoreCase("message-stores")) {
-			directoryPrefix = "messageStore_";
-		} else if (imediateDirectory.equalsIgnoreCase("proxy-services")) {
-			directoryPrefix = "proxy_";
-		} else if (imediateDirectory.equalsIgnoreCase("sequences")) {
-			directoryPrefix = "sequence_";
-		} else if (imediateDirectory.equalsIgnoreCase("tasks")) {
-			directoryPrefix = "task_";
-		} else if (imediateDirectory.equalsIgnoreCase("templates")) {
-			directoryPrefix = "template_";
-		}
-		return directoryPrefix;
 	}
 
 	public String getName() {

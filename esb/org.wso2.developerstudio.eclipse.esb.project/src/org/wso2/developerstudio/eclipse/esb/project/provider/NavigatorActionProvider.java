@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.content.IContentDescription;
@@ -38,7 +37,6 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionConstants;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
@@ -48,10 +46,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
-import org.wso2.developerstudio.eclipse.general.project.artifact.GeneralProjectArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.RegistryArtifact;
-import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryElement;
-import org.wso2.developerstudio.eclipse.general.project.artifact.bean.RegistryItem;
 import org.wso2.developerstudio.eclipse.gmf.esb.ArtifactType;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -129,48 +123,22 @@ public class NavigatorActionProvider extends CommonActionProvider {
 			IFile fileTobeOpen = null;
 			String synFilePath = selection.getFullPath().toOSString();
 			synFilePath=synFilePath.replaceAll(Pattern.quote("\\"), "/");
-			String diagramFilePath = synFilePath
-					.replaceFirst("/synapse-config/", "/graphical-synapse-config/")
-					.replaceFirst("/endpoints/", "/endpoints/endpoint_")
-					.replaceFirst("/local-entries/", "/local-entries/localentry_")
-					.replaceFirst("/proxy-services/", "/proxy-services/proxy_")
-					.replaceFirst("/sequences/", "/sequences/sequence_")
-					.replaceFirst("/tasks/", "/tasks/task_")
-					.replaceFirst("/templates/","/templates/template_")
-					.replaceFirst("/api/","/api/api_")
-					.replaceFirst("/message-stores/","/message-stores/messageStore_")
-					.replaceFirst("/message-processors/","/message-processors/messageProcessor_")
-					.replaceFirst("/inbound-endpoints/","/inbound-endpoints/inboundEndpoints_")
-					.replaceAll(".xml$", ".esb_diagram");
 
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = window.getActivePage();
 
 			try {
-				if (selection.getWorkspace().getRoot().getFile(new Path(diagramFilePath)).exists()) {
-					fileTobeOpen = selection.getWorkspace().getRoot()
-							.getFile(new Path(diagramFilePath));
-					IDE.openEditor(page, fileTobeOpen);
-				} else{
-					Path path = new Path(getGraphicalResource(selection));
-					if (selection.getWorkspace().getRoot().getFile(path).exists()) {
-						fileTobeOpen = selection.getWorkspace().getRoot()
-						.getFile(path);
-							IDE.openEditor(page, fileTobeOpen);
-					} else {							
-						String[] type=getType(selection.getLocation().toOSString());
-						if(type.length==0 || "full-synapse".equals(type[0])){							
-							fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(synFilePath));
-							page.openEditor(new FileEditorInput(fileTobeOpen),"org.wso2.developerstudio.eclipse.esb.presentation.EsbEditor");
-						}else{
-							String location=selection.getLocation().toOSString();				
-							String source = FileUtils.getContentAsString(new File(location));
-							String name =selection.getName();		
-							String fullPath=selection.getFullPath().removeLastSegments(1).toOSString()+"/";
-							Openable openable = ESBGraphicalEditor.getOpenable();
-							openable.editorOpen(name,type[0],fullPath, source);
-						}
-					}
+				String[] type=getType(selection.getLocation().toOSString());
+				if(type.length==0 || "full-synapse".equals(type[0])){							
+					fileTobeOpen = selection.getWorkspace().getRoot().getFile(new Path(synFilePath));
+					page.openEditor(new FileEditorInput(fileTobeOpen),"org.wso2.developerstudio.eclipse.esb.presentation.EsbEditor");
+				}else{
+					String location=selection.getLocation().toOSString();				
+					String source = FileUtils.getContentAsString(new File(location));
+					String name =selection.getName();		
+					String fullPath=selection.getFullPath().removeLastSegments(1).toOSString()+"/";
+					Openable openable = ESBGraphicalEditor.getOpenable();
+					openable.editorOpen(name,type[0],fullPath, source);
 				}
 			}catch (Exception e) {
 				log.error("Can't open " + fileTobeOpen, e);
@@ -179,42 +147,6 @@ public class NavigatorActionProvider extends CommonActionProvider {
 
 		public void setSelection(IFile selection) {
 			this.selection = selection;
-		}
-		
-		private String getGraphicalResource(IFile selection){
-			String synFilePath = selection.getFullPath().toOSString();
-			synFilePath=synFilePath.replaceAll(Pattern.quote("\\"), "/");
-			String graphicalResource = synFilePath.replaceAll(".xml$",".esb_diagram");
-			try {
-				GeneralProjectArtifact artifact=new GeneralProjectArtifact();
-				IProject project = selection.getProject();
-				IFile file = project.getFile("artifact.xml");
-				artifact.deserialize(file);
-				List<RegistryArtifact> allArtifacts = artifact.getAllArtifacts();
-				ALL:
-				for (RegistryArtifact registryArtifact : allArtifacts) {
-					if(registryArtifact.getName().equals(selection.getName().replaceAll(".xml$",""))){
-						List<RegistryElement> allRegistryItems = registryArtifact.getAllRegistryItems();
-						for (RegistryElement registryElement : allRegistryItems) {
-							if(registryElement instanceof RegistryItem){
-								RegistryItem item = (RegistryItem) registryElement;
-								if(synFilePath.endsWith(item.getFile())){
-									if(prefixMap.containsKey(item.getMediaType())){
-										String prefix = prefixMap.get(item.getMediaType());
-										String name = selection.getName().replaceAll(".xml$",".esb_diagram");;
-										graphicalResource = graphicalResource.replaceAll(name+"$",prefix +name);
-									} 
-									break ALL;
-								}
-							}
-						}
-					}
-				}
-			} catch (Exception e) {
-				
-			}
-			
-			return graphicalResource;
 		}
 		
 		/*

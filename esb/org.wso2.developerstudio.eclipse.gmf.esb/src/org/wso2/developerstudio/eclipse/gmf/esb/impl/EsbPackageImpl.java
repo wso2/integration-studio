@@ -8815,8 +8815,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAPIResource_AllowHead() {
+		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getAPIResource_Container() {
-		return (EReference)apiResourceEClass.getEStructuralFeatures().get(13);
+		return (EReference)apiResourceEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -8825,7 +8834,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getAPIResource_InSequenceType() {
-		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(14);
+		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -8834,7 +8843,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EReference getAPIResource_InSequenceKey() {
-		return (EReference)apiResourceEClass.getEStructuralFeatures().get(15);
+		return (EReference)apiResourceEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -8843,15 +8852,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getAPIResource_InSequenceName() {
-		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(16);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAPIResource_OutSequenceType() {
 		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(17);
 	}
 
@@ -8860,8 +8860,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAPIResource_OutSequenceType() {
+		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getAPIResource_OutSequenceKey() {
-		return (EReference)apiResourceEClass.getEStructuralFeatures().get(18);
+		return (EReference)apiResourceEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -8870,15 +8879,6 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getAPIResource_OutSequenceName() {
-		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(19);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAPIResource_FaultSequenceType() {
 		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(20);
 	}
 
@@ -8887,8 +8887,17 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAPIResource_FaultSequenceType() {
+		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getAPIResource_FaultSequenceKey() {
-		return (EReference)apiResourceEClass.getEStructuralFeatures().get(21);
+		return (EReference)apiResourceEClass.getEStructuralFeatures().get(22);
 	}
 
 	/**
@@ -8897,7 +8906,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getAPIResource_FaultSequenceName() {
-		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(22);
+		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(23);
 	}
 
 	/**
@@ -8906,7 +8915,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	public EAttribute getAPIResource_Protocol() {
-		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(23);
+		return (EAttribute)apiResourceEClass.getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -18755,6 +18764,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(apiResourceEClass, API_RESOURCE__ALLOW_PUT);
 		createEAttribute(apiResourceEClass, API_RESOURCE__ALLOW_DELETE);
 		createEAttribute(apiResourceEClass, API_RESOURCE__ALLOW_OPTIONS);
+		createEAttribute(apiResourceEClass, API_RESOURCE__ALLOW_HEAD);
 		createEReference(apiResourceEClass, API_RESOURCE__CONTAINER);
 		createEAttribute(apiResourceEClass, API_RESOURCE__IN_SEQUENCE_TYPE);
 		createEReference(apiResourceEClass, API_RESOURCE__IN_SEQUENCE_KEY);
@@ -20991,6 +21001,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getAPIResource_AllowPut(), ecorePackage.getEBoolean(), "allowPut", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIResource_AllowDelete(), ecorePackage.getEBoolean(), "allowDelete", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIResource_AllowOptions(), ecorePackage.getEBoolean(), "allowOptions", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAPIResource_AllowHead(), ecorePackage.getEBoolean(), "allowHead", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAPIResource_Container(), this.getProxyServiceContainer(), null, "container", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIResource_InSequenceType(), this.getSequenceType(), "inSequenceType", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAPIResource_InSequenceKey(), this.getRegistryKeyProperty(), null, "inSequenceKey", null, 0, 1, APIResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

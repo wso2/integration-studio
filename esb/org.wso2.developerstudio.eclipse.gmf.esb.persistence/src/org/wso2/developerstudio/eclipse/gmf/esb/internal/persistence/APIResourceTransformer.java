@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -106,6 +106,9 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 			}
 			if(visualResource.isAllowOptions()){
 				resource.addMethod("OPTIONS");
+			}
+			if(visualResource.isAllowHead()){
+				resource.addMethod("HEAD");
 			}
 			resource.setProtocol(visualResource.getProtocol().getValue() + 1);//mapping of protocol in synapse and gmf model 
 			

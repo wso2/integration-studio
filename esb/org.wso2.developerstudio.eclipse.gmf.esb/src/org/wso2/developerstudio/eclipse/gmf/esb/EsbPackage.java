@@ -19775,13 +19775,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int API_RESOURCE__ALLOW_OPTIONS = ESB_NODE_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Allow Head</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_RESOURCE__ALLOW_HEAD = ESB_NODE_FEATURE_COUNT + 13;
+
+	/**
 	 * The feature id for the '<em><b>Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__CONTAINER = ESB_NODE_FEATURE_COUNT + 13;
+	int API_RESOURCE__CONTAINER = ESB_NODE_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>In Sequence Type</b></em>' attribute.
@@ -19790,7 +19799,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__IN_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 14;
+	int API_RESOURCE__IN_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>In Sequence Key</b></em>' containment reference.
@@ -19799,7 +19808,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__IN_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 15;
+	int API_RESOURCE__IN_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>In Sequence Name</b></em>' attribute.
@@ -19808,7 +19817,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__IN_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 16;
+	int API_RESOURCE__IN_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>Out Sequence Type</b></em>' attribute.
@@ -19817,7 +19826,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__OUT_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 17;
+	int API_RESOURCE__OUT_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Out Sequence Key</b></em>' containment reference.
@@ -19826,7 +19835,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__OUT_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 18;
+	int API_RESOURCE__OUT_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Out Sequence Name</b></em>' attribute.
@@ -19835,7 +19844,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__OUT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 19;
+	int API_RESOURCE__OUT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Fault Sequence Type</b></em>' attribute.
@@ -19844,7 +19853,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__FAULT_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 20;
+	int API_RESOURCE__FAULT_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Fault Sequence Key</b></em>' containment reference.
@@ -19853,7 +19862,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__FAULT_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 21;
+	int API_RESOURCE__FAULT_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Fault Sequence Name</b></em>' attribute.
@@ -19862,7 +19871,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__FAULT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 22;
+	int API_RESOURCE__FAULT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Protocol</b></em>' attribute.
@@ -19871,7 +19880,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__PROTOCOL = ESB_NODE_FEATURE_COUNT + 23;
+	int API_RESOURCE__PROTOCOL = ESB_NODE_FEATURE_COUNT + 24;
 
 	/**
 	 * The number of structural features of the '<em>API Resource</em>' class.
@@ -19880,7 +19889,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 24;
+	int API_RESOURCE_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 25;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceInputConnectorImpl <em>API Resource Input Connector</em>}' class.
@@ -30453,6 +30462,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getAPIResource_AllowOptions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowHead <em>Allow Head</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Allow Head</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowHead()
+	 * @see #getAPIResource()
+	 * @generated
+	 */
+	EAttribute getAPIResource_AllowHead();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getContainer <em>Container</em>}'.
@@ -45165,6 +45185,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute API_RESOURCE__ALLOW_OPTIONS = eINSTANCE.getAPIResource_AllowOptions();
+
+		/**
+		 * The meta object literal for the '<em><b>Allow Head</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute API_RESOURCE__ALLOW_HEAD = eINSTANCE.getAPIResource_AllowHead();
 
 		/**
 		 * The meta object literal for the '<em><b>Container</b></em>' containment reference feature.

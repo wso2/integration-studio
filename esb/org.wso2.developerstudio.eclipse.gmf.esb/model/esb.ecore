@@ -2441,6 +2441,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowPut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowDelete" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowOptions" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowHead" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//ProxyServiceContainer"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inSequenceType" eType="#//SequenceType"/>

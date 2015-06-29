@@ -62,7 +62,7 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 	public void transform(TransformationInfo info, EsbNode subject) throws Exception {
 		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject.");
 		RecipientListEndPoint endPointModel = (RecipientListEndPoint) subject;
-		Endpoint synapseEP = create(info, endPointModel, endPointModel.getEndPointName(), null);
+		Endpoint synapseEP = create(info, endPointModel, endPointModel.getName(), null);
 		setEndpointToSendCallOrProxy(info, endPointModel, synapseEP);
 
 		if (!info.isEndPointFound) {

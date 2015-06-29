@@ -91,13 +91,18 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 		
 		if(endpoint.getChildren() != null && !endpoint.getChildren().isEmpty()){
 			
-			if(endpoint.getName() != null){
+			if (endpoint.getName() != null) {
 				endpointName = endpoint.getName();
 				executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
-			}else{
-			long lDateTime = new Date().getTime();
-			endpointName = String.valueOf(lDateTime);
-			executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
+			} else {
+				long lDateTime = new Date().getTime();
+				endpointName = String.valueOf(lDateTime);
+				executeSetValueCommand(EsbPackage.Literals.PARENT_END_POINT__NAME, endpointName);
+				// Setting a name for original endpoint if there was no name specified. Reason is, according to the
+				// current design, anonymous complex endpoints(LB,Failover etc..) will be converted to a named endpoint
+				// while deserialization.
+				endpoint.setName(endpointName);
+				endpoint.setAnonymous(false);
 			}
 			
 			mainDiagramEditorRef = getDiagramEditor();
@@ -113,7 +118,11 @@ public abstract class AbstractComplexEndPointDeserializer extends AbstractEsbNod
 						} 
 						fileTobeOpened = iFolder.getFile(endpointName + ".xml");
 						InputStream stream = new ByteArrayInputStream(configOM.toString().getBytes(StandardCharsets.UTF_8));
-						fileTobeOpened.setContents(stream, false, false, null);		
+						if(!fileTobeOpened.exists()){
+							fileTobeOpened.create(stream, true, new NullProgressMonitor());
+						}else{
+							fileTobeOpened.setContents(stream, false, false, null);		
+						}						
 						}catch(Exception e){
 							log.error(e);
 						}

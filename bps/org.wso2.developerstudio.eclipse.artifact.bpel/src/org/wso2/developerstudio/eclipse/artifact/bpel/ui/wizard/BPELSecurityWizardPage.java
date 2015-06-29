@@ -55,6 +55,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.wso2.developerstudio.eclipse.artifact.bpel.Activator;
 import org.wso2.developerstudio.eclipse.artifact.bpel.model.BpelModel;
+import org.wso2.developerstudio.eclipse.artifact.bpel.utils.BPELMessageConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.xml.sax.SAXException;
@@ -79,7 +80,6 @@ public class BPELSecurityWizardPage extends WizardPage {
 	private Button btnBrowsePolicyFile;
 	private String value;
 
-	private File policyFile;
 	private BpelModel model;
 	private boolean isDataCompleted = false;
 	private String keyValue;
@@ -165,18 +165,10 @@ public class BPELSecurityWizardPage extends WizardPage {
 
 		txtPolicyFile.addListener(SWT.Modify, new Listener() {
 			public void handleEvent(Event event) {
-				if (!StringUtils.isBlank(txtPolicyFile.getText())) {
-					String fileName = txtPolicyFile.getText();
-					policyFile = new File(fileName);
-					if (policyFile.exists()) {
-						setPageComplete(true);
-					} else {
-						policyFile = null;
-						setPageComplete(false);
-					}
-				} else {
-					policyFile = null;
-					setPageComplete(true);
+				if (StringUtils.isNotBlank(txtPolicyFile.getText())) {
+					keyValue = txtPolicyFile.getText();
+				}else{
+					keyValue = null;
 				}
 			}
 		});
@@ -199,11 +191,11 @@ public class BPELSecurityWizardPage extends WizardPage {
 			doc = docBuilder.parse(serviceXML);
 
 		} catch (ParserConfigurationException e) {
-			log.error("Error in parsing the service.xml");
+			log.error(BPELMessageConstants.ERROR_PARSING_SERVICE_XML);
 		} catch (SAXException e) {
-			log.error("Error in processing the service.xml");
+			log.error(BPELMessageConstants.ERROR_PROCESSING_SERVICE_XML);
 		} catch (IOException e) {
-			log.error("IO Exception in parsing the service.xml");
+			log.error(BPELMessageConstants.IO_EXCEPTION_PARSING_SERVICE_XML);
 		}
 
 		NodeList childNodes = doc.getElementsByTagName(SERVICE_NODE);
@@ -221,7 +213,6 @@ public class BPELSecurityWizardPage extends WizardPage {
 							NamedNodeMap atr = policyNode.getAttributes();
 							Node nodeAtr = atr.getNamedItem(KEY);
 							policy = nodeAtr.getNodeValue();
-
 						}
 					}
 				}

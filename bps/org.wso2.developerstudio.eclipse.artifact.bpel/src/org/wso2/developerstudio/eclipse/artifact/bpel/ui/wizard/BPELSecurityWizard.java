@@ -36,12 +36,9 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
@@ -54,6 +51,7 @@ import org.w3c.dom.NodeList;
 import org.wso2.developerstudio.eclipse.artifact.bpel.Activator;
 import org.wso2.developerstudio.eclipse.artifact.bpel.model.BpelModel;
 import org.wso2.developerstudio.eclipse.artifact.bpel.utils.BPELImageUtils;
+import org.wso2.developerstudio.eclipse.artifact.bpel.utils.BPELMessageConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
@@ -118,7 +116,7 @@ public class BPELSecurityWizard extends Wizard implements INewWizard {
 					.getFileForLocation(Path.fromOSString(openFile.getAbsolutePath()));
 			IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), serviceFile);
 		} catch (Exception e) {
-			log.error("Error in updating service.xml ", e);
+			log.error(BPELMessageConstants.ERROR_SERVICE_XML_UPDATE_ERROR, e);
 		}
 
 		return true;
@@ -148,8 +146,9 @@ public class BPELSecurityWizard extends Wizard implements INewWizard {
 					&& nodeAttr.getNodeValue().equals(securityPage.getServiceName())) {
 				NodeList serviceChildren = service.getChildNodes();
 				if (serviceChildren.getLength() == 0) {
-					// creates a node for policy if it is not already
-					// available
+					/* creates a node for policy if it is not already
+					*available
+					*/
 					Element module = doc.createElement(MODULE);
 					module.setAttribute(REF, RAMPART);
 					((Node) service).appendChild(module);

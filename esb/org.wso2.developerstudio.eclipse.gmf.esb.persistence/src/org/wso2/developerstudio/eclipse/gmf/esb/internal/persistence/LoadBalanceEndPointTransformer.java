@@ -69,7 +69,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 
 		Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject.");
 		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
-		Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getEndPointName(), null);
+		Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getName(), null);
 		setEndpointToSendCallOrProxy(information, visualEndPoint, synapseEP);
 
 		if (!information.isEndPointFound) {

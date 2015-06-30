@@ -75,6 +75,7 @@ public class APIResourceItemProvider
 			addAllowPutPropertyDescriptor(object);
 			addAllowDeletePropertyDescriptor(object);
 			addAllowOptionsPropertyDescriptor(object);
+			addAllowHeadPropertyDescriptor(object);
 			addProtocolPropertyDescriptor(object);
 			
 			addInSequenceTypePropertyDescriptor(object);
@@ -282,6 +283,28 @@ public class APIResourceItemProvider
 				 getString("_UI_APIResource_allowOptions_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_APIResource_allowOptions_feature", "_UI_APIResource_type"),
 				 EsbPackage.Literals.API_RESOURCE__ALLOW_OPTIONS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 getString("_UI_MethodsPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Allow Head feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAllowHeadPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_APIResource_allowHead_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_APIResource_allowHead_feature", "_UI_APIResource_type"),
+				 EsbPackage.Literals.API_RESOURCE__ALLOW_HEAD,
 				 true,
 				 false,
 				 false,
@@ -593,6 +616,7 @@ public class APIResourceItemProvider
 			case EsbPackage.API_RESOURCE__ALLOW_PUT:
 			case EsbPackage.API_RESOURCE__ALLOW_DELETE:
 			case EsbPackage.API_RESOURCE__ALLOW_OPTIONS:
+			case EsbPackage.API_RESOURCE__ALLOW_HEAD:
 			case EsbPackage.API_RESOURCE__IN_SEQUENCE_TYPE:
 			case EsbPackage.API_RESOURCE__IN_SEQUENCE_NAME:
 			case EsbPackage.API_RESOURCE__OUT_SEQUENCE_TYPE:

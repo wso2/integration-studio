@@ -58,7 +58,7 @@ public class FailoverEndPointTransformer extends AbstractEndpointTransformer {
 
 		Assert.isTrue(subject instanceof FailoverEndPoint, "Invalid subject.");
 		FailoverEndPoint visualEndPoint = (FailoverEndPoint) subject;
-		FailoverEndpoint synapseEP = create(info, visualEndPoint, visualEndPoint.getEndPointName(), null);
+		FailoverEndpoint synapseEP = create(info, visualEndPoint, visualEndPoint.getName(), null);
 		setEndpointToSendCallOrProxy(info, visualEndPoint, synapseEP);
 
 		if (!info.isEndPointFound) {

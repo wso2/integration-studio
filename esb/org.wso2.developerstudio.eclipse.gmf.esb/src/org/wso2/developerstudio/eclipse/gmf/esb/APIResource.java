@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowPut <em>Allow Put</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowDelete <em>Allow Delete</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowOptions <em>Allow Options</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowHead <em>Allow Head</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getContainer <em>Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getInSequenceType <em>In Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getInSequenceKey <em>In Sequence Key</em>}</li>
@@ -379,6 +380,32 @@ public interface APIResource extends EsbNode {
 	 * @generated
 	 */
 	void setAllowOptions(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Allow Head</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Allow Head</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Allow Head</em>' attribute.
+	 * @see #setAllowHead(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAPIResource_AllowHead()
+	 * @model
+	 * @generated
+	 */
+	boolean isAllowHead();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowHead <em>Allow Head</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Allow Head</em>' attribute.
+	 * @see #isAllowHead()
+	 * @generated
+	 */
+	void setAllowHead(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Container</b></em>' containment reference.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -90,6 +90,7 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 			executeSetValueCommand(API_RESOURCE__ALLOW_OPTIONS, methodList.contains("OPTIONS"));
 			executeSetValueCommand(API_RESOURCE__ALLOW_DELETE, methodList.contains("DELETE"));
 			executeSetValueCommand(API_RESOURCE__ALLOW_PUT, methodList.contains("PUT"));
+			executeSetValueCommand(API_RESOURCE__ALLOW_HEAD, methodList.contains("HEAD"));
 			
 			
 			

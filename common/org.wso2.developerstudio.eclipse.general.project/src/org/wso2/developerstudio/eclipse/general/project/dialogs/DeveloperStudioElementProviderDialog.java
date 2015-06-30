@@ -23,7 +23,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.dialogs.Dialog;
@@ -50,6 +49,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.wso2.developerstudio.eclipse.general.project.dialogs.NewResourceTemplateDialog;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.interfaces.IDeveloperStudioElement;
@@ -59,12 +59,11 @@ import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.ui.ide.IDE;
 
-
-
 public class DeveloperStudioElementProviderDialog extends Dialog {
 	private Class<?>[] type;
 	private TreeViewer treeViewer;
 	private String selectedPath = null;
+	private String ipathOfselection = null;
 	private Button chkOpenResource;
 	private static IDeveloperStudioLog log = Logger.getLog("org.wso2.developerstudio.eclipse.esb.editor");
 	private Map<String, List<String>> filters;
@@ -246,11 +245,24 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 		List<Object> list=new ArrayList<Object>();
 		
 		List<Class<?>> typesList = Arrays.asList(type);
-
 		
-//		if (typesList.contains(IRegistryFile.class)) {
-//			list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
-//		}
+		/*//IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class
+		if (typesList.contains(IRegistryFile.class)) {
+			list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
+		}
+		
+		if (typesList.contains(IEsbEndpoint.class)) {
+			list.addAll(Arrays.asList(EsbConfigurationManager.getEndpointProviders(true)));
+		}
+		
+		if (typesList.contains(IEsbSequence.class)) {
+			list.addAll(Arrays.asList(EsbConfigurationManager.getSequenceProviders(true)));
+		}
+		
+		if (typesList.contains(IEsbLocalEntry.class)) {
+			list.addAll(Arrays.asList(EsbConfigurationManager.getLocalEntryProviders(true)));
+		}*/
+		
 
 		treeViewer.setInput(list.toArray(new IDeveloperStudioProviderData[]{}));
 		
@@ -381,6 +393,10 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	public String getSelectedPath() {
 		return selectedPath;
 	}
+	
+	public String getIPathOfSelection() {
+		return ipathOfselection;
+	}
 
 	private void updateSelectedElement() {
 		Object selectedElement = getSelectedElement();
@@ -411,10 +427,12 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 			NewResourceTemplateDialog newResourceTemplateDialog = new NewResourceTemplateDialog(getParentShell(),(Map<String, List<String>>) getFilters());
 			//CreateNewConfigurationDialog newResourceTemplateDialog = new CreateNewConfigurationDialog(getParentShell(),(Map<String, List<String>>) getFilters());
 			newResourceTemplateDialog.create();
-			newResourceTemplateDialog.getShell().setText("New Resource Configuration");
+			newResourceTemplateDialog.getShell().setText("New DataMapper Configuration");
 			newResourceTemplateDialog.open();
 			if (newResourceTemplateDialog.getReturnCode()==Window.OK){
 				setSelectedPath(newResourceTemplateDialog.getSelectedPath());
+				ipathOfselection = newResourceTemplateDialog.getIPathOfSelection();
+			    this.close();
 			}
 		}finally{
 			

@@ -271,7 +271,7 @@ public class RegistryResourceBrowserDialog extends Dialog {
 
 	@SuppressWarnings("unchecked")
 	private void openRegistryResourceProviderDialog() {
-		// hide();
+		 hide();
 		try {
 			DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(
 					getParentShell(), new Class[] {}, new HashMap<String, List<String>>());
@@ -282,6 +282,7 @@ public class RegistryResourceBrowserDialog extends Dialog {
 				setSelectedPath(registryResourceProviderSelector.getSelectedPath());
 			}
 		} finally {
+			show();
 		}
 	}
 

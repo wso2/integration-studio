@@ -85,6 +85,7 @@ public class NewResourceTemplateDialog extends Dialog {
 	private int emptyXmlFileTemplate;
 	private int emptyTextFileTemplate;
 	private String selectedPath;
+	private String ipathOfSelection;
 	//private Map<String, java.util.List<String>> filters1;
 
 	private Combo cmbProject;
@@ -331,6 +332,7 @@ public class NewResourceTemplateDialog extends Dialog {
 			}
 			path=path.endsWith("/")?path+name:path+"/"+name;
 			setSelectedPath(path);
+			setIPathOfSelection(project.getFullPath().append(name).toString());
 			createNewTempTag.clearAndEnd();
 		} catch (IOException e) {
 			log.error(e);
@@ -506,6 +508,12 @@ public class NewResourceTemplateDialog extends Dialog {
         }
 		
 		MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
+	}
+	public void setIPathOfSelection(String ipath) {
+		ipathOfSelection = ipath;
+	}
+	public String getIPathOfSelection() {
+		return ipathOfSelection;
 	}
 	
 }

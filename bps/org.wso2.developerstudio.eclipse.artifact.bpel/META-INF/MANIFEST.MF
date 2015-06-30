@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.bpel.apache.ode.deploy.ui,
  org.wso2.developerstudio.eclipse.libraries
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.commons.io;version="[2.0.0.wso2v1,2.0.1)",
  org.apache.maven.project,
  org.eclipse.jdt.core,

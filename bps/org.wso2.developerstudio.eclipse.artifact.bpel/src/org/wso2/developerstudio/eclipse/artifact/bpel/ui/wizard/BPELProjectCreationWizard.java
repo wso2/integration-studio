@@ -159,7 +159,6 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 		File deployfile = project.getFolder(BPEL_CONTENT).getFile("deploy.xml").getLocation().toFile();
 		File settingsFile = project.getFolder(BPEL_CONTENT).getFile("/.settings/org.eclipse.wst.common.component")
 				.getLocation().toFile();
-		File seriveXML = project.getFolder(BPEL_CONTENT).getFile("service.xml").getLocation().toFile();
 
 		File newProcessFile = project.getFolder(BPEL_CONTENT).getFile(processName + ".bpel").getLocation().toFile();
 		File newWSDLFile = project.getFolder(BPEL_CONTENT).getFile(processName + "Artifacts.wsdl").getLocation()
@@ -170,7 +169,6 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 		String wsdlFileAsString = FileUtils.getContentAsString(wsdlfile);
 		String deployFileAsString = FileUtils.getContentAsString(deployfile);
 		String settingFileAsString = FileUtils.getContentAsString(settingsFile);
-		String serviceXMLAsString = FileUtils.getContentAsString(seriveXML);
 
 		String replacedProcessContent = replaceFileContent(processFileAsString, "HelloWorldBPELProcess", processName);
 		String replacedWSDLContent = replaceFileContent(wsdlFileAsString, "HelloWorldBPELProcess", processName);
@@ -182,17 +180,9 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 		replacedWSDLContent = replaceFileContent(replacedWSDLContent, "http://eclipse.org/bpel/sample", namespace);
 		replacedDeployContent = replaceFileContent(replacedDeployContent, "http://eclipse.org/bpel/sample", namespace);
 
-		String newServiceXMLContent = null;
-		try {
-			newServiceXMLContent = createServiceXMLContent(serviceXMLAsString);
-		} catch (Exception e) {
-			log.error("Error in creating service.xml file",e);
-		}
-
 		FileUtils.createFile(newProcessFile, replacedProcessContent);
 		FileUtils.createFile(deployfile, replacedDeployContent);
 		FileUtils.createFile(newSettingsFile, replacedSettingContent);
-		FileUtils.createFile(seriveXML, newServiceXMLContent);
 
 		if (!BPELArtifactConstants.EMPTY_BPEL_PROCESS.equals(bpelModel.getSelectedTemplate())) {
 			FileUtils.createFile(newWSDLFile, replacedWSDLContent);
@@ -212,34 +202,6 @@ public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard
 			wsdlfile.delete();
 		}
 
-	}
-
-	/**
-	 * Creates service.xml content
-	 * 
-	 * @param serviceXMLAsString
-	 * 
-	 * @return new Service.xml content
-	 * @throws Exception
-	 */
-	private String createServiceXMLContent(String serviceXMLAsString) throws Exception {
-		String eol = System.getProperty(LINE_SEPERATOR);
-		ITemporaryFileTag serviceTempTag = FileUtils.createNewTempTag();
-
-		serviceXMLAsString = serviceXMLAsString.replaceAll("\\{", "<");
-		serviceXMLAsString = serviceXMLAsString.replaceAll("\\}", ">");
-
-		StringBuffer sbService = new StringBuffer();
-		sbService.append("<service name=\"").append(processName).append("\">").append("</service>\n");
-		serviceXMLAsString = serviceXMLAsString.replaceAll("<services>", sbService.toString());
-		StringBuffer sbCallback = new StringBuffer();
-		sbCallback.append("<service name=\"").append(processName + "Callback").append("\">").append("</service>\n");
-		serviceXMLAsString = serviceXMLAsString.replaceAll("<callbackService>", sbCallback.toString());
-		serviceXMLAsString = XMLUtil.prettify(serviceXMLAsString);
-		serviceXMLAsString = serviceXMLAsString.replaceAll("^" + eol, "");
-		serviceTempTag.clearAndEnd();
-
-		return serviceXMLAsString;
 	}
 
 	public String replaceFileContent(String sourceString, String replacer, String toreplace) {

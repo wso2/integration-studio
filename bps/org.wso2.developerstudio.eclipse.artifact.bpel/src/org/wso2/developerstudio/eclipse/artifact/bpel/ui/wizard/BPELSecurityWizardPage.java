@@ -20,7 +20,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -75,7 +74,7 @@ public class BPELSecurityWizardPage extends WizardPage {
 	private static final String KEY = "key";
 	private static final String POLICY = "policy";
 
-	private Combo serviceList;
+	private Combo cmbServiceList;
 	private Text txtPolicyFile;
 	private Button btnBrowsePolicyFile;
 	private String value;
@@ -85,6 +84,7 @@ public class BPELSecurityWizardPage extends WizardPage {
 	private String keyValue;
 	private String serviceName;
 	private IProject activeProject;
+	List<String> localPartList;
 
 	public boolean isDataCompleted() {
 		return isDataCompleted;
@@ -98,6 +98,7 @@ public class BPELSecurityWizardPage extends WizardPage {
 	protected BPELSecurityWizardPage(String pageName, BpelModel model, IProject activeProject) {
 		super(pageName);
 		setTitle(pageName);
+		setDescription("Apply Security for BPEL Processes");
 		this.model = model;
 		this.activeProject = activeProject;
 	}
@@ -110,14 +111,14 @@ public class BPELSecurityWizardPage extends WizardPage {
 		lblServiceLabel.setBounds(10, 10, 108, 17);
 		lblServiceLabel.setText(SERVICE_LIST_LABEL);
 
-		serviceList = new Combo(container, SWT.READ_ONLY);
-		serviceList.setBounds(164, 9, 366, 27);
-		fillCombo();
+		cmbServiceList = new Combo(container, SWT.READ_ONLY);
+		cmbServiceList.setBounds(164, 9, 366, 27);
+		fillComboBoxWithServices();
 
-		serviceList.addSelectionListener(new SelectionListener() {
+		cmbServiceList.addSelectionListener(new SelectionListener() {
 
 			public void widgetSelected(SelectionEvent arg0) {
-				serviceName = serviceList.getText();
+				serviceName = cmbServiceList.getText();
 				value = getPolicyFromTheSource();
 				if (StringUtils.isNotEmpty(value)) {
 					txtPolicyFile.setText(value);
@@ -148,7 +149,7 @@ public class BPELSecurityWizardPage extends WizardPage {
 
 		btnBrowsePolicyFile = new Button(container, SWT.NONE);
 		btnBrowsePolicyFile.setText(BROWSE_LABEL);
-		btnBrowsePolicyFile.setBounds(536, 45, 101, 35);
+		btnBrowsePolicyFile.setBounds(536, 49, 100, 27);
 
 		btnBrowsePolicyFile.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -167,7 +168,7 @@ public class BPELSecurityWizardPage extends WizardPage {
 			public void handleEvent(Event event) {
 				if (StringUtils.isNotBlank(txtPolicyFile.getText())) {
 					keyValue = txtPolicyFile.getText();
-				}else{
+				} else {
 					keyValue = null;
 				}
 			}
@@ -188,76 +189,83 @@ public class BPELSecurityWizardPage extends WizardPage {
 		Document doc = null;
 		try {
 			docBuilder = docFactory.newDocumentBuilder();
-			doc = docBuilder.parse(serviceXML);
+			if (serviceXML.exists()) {
+				doc = docBuilder.parse(serviceXML);
+				NodeList childNodes = doc.getElementsByTagName(SERVICE_NODE);
+				for (int i = 0; i < childNodes.getLength(); i++) {
+					Node service = childNodes.item(i);
+					NamedNodeMap attr = ((Node) service).getAttributes();
+					Node nodeAttr = attr.getNamedItem(NAME_ATTRIBUTE);
+					if (nodeAttr.getNodeValue().equals(serviceName)) {
 
-		} catch (ParserConfigurationException e) {
-			log.error(BPELMessageConstants.ERROR_PARSING_SERVICE_XML);
-		} catch (SAXException e) {
-			log.error(BPELMessageConstants.ERROR_PROCESSING_SERVICE_XML);
-		} catch (IOException e) {
-			log.error(BPELMessageConstants.IO_EXCEPTION_PARSING_SERVICE_XML);
-		}
-
-		NodeList childNodes = doc.getElementsByTagName(SERVICE_NODE);
-		for (int i = 0; i < childNodes.getLength(); i++) {
-			Node service = childNodes.item(i);
-			NamedNodeMap attr = ((Node) service).getAttributes();
-			Node nodeAttr = attr.getNamedItem(NAME_ATTRIBUTE);
-			if (nodeAttr.getNodeValue().equals(serviceName)) {
-
-				NodeList serviceChildren = service.getChildNodes();
-				if (serviceChildren.getLength() > 0) {
-					for (int x = 0; x < serviceChildren.getLength(); x++) {
-						Node policyNode = serviceChildren.item(x);
-						if (policyNode.getNodeName().equals(POLICY)) {
-							NamedNodeMap atr = policyNode.getAttributes();
-							Node nodeAtr = atr.getNamedItem(KEY);
-							policy = nodeAtr.getNodeValue();
+						NodeList serviceChildren = service.getChildNodes();
+						if (serviceChildren.getLength() > 0) {
+							for (int x = 0; x < serviceChildren.getLength(); x++) {
+								Node policyNode = serviceChildren.item(x);
+								if (policyNode.getNodeName().equals(POLICY)) {
+									NamedNodeMap atr = policyNode.getAttributes();
+									Node nodeAtr = atr.getNamedItem(KEY);
+									policy = nodeAtr.getNodeValue();
+								}
+							}
 						}
 					}
 				}
 			}
+
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			log.error(BPELMessageConstants.ERROR_PROCESSING_SERVICE_XML);
 		}
+
 		return policy;
 	}
 
 	/**
-	 * Fills the Combo with service list
+	 * Fills the Combo with services
 	 * 
 	 */
-	private void fillCombo() {
+	private void fillComboBoxWithServices() {
 
-		List<String> localPartList = new ArrayList<String>();
+		List<String> serviceList = getServicesFromWSDLs();
+
+		for (String service : serviceList) {
+			cmbServiceList.add(service);
+		}
+
+		if (cmbServiceList.getSelectionIndex() == -1) {
+			cmbServiceList.select(0);
+			if (cmbServiceList.getItemCount() > 0) {
+				serviceName = cmbServiceList.getItem(0);
+			}else{
+				setPageComplete(false);
+				isDataCompleted = false;
+			}
+		}
+
+	}
+
+	/**
+	 * Reads wsdls and get the available services
+	 */
+	public List<String> getServicesFromWSDLs() {
+		localPartList = new ArrayList<String>();
 		ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 		List<Definition> wsdlDefs = DeployUtils.loadAllWSDLFromProject(activeProject, resourceSet);
-
-		for (Iterator<Definition> wsdlIterator = wsdlDefs.iterator(); wsdlIterator.hasNext();) {
-			Definition current = (Definition) wsdlIterator.next();
-			@SuppressWarnings("rawtypes")
+		for (Definition current : wsdlDefs) {
 			Map services = current.getServices();
 			if (!services.isEmpty()) {
 				@SuppressWarnings("rawtypes")
 				Collection values = services.values();
-				for (Iterator<Service> iteratorSevices = values.iterator(); iteratorSevices.hasNext();) {
-					Service name = iteratorSevices.next();
-					QName serviceName = name.getQName();
+				for (Object name : values) {
+					QName serviceName = ((Service) name).getQName();
 					if (serviceName != null) {
 						localPartList.add(serviceName.getLocalPart());
 					}
 				}
 			}
 		}
-
-		for (Iterator<String> service = localPartList.iterator(); service.hasNext();) {
-			serviceList.add(service.next());
-		}
-
-		if (serviceList.getSelectionIndex() == -1) {
-			serviceList.select(0);
-			serviceName = serviceList.getItem(0);
-		}
-
+		return localPartList;
 	}
 
 	protected void selectRegistryResource(Text txtPolicyFile) {

@@ -24,7 +24,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 
 
-public class EsbEditorInput implements IEsbEditorInput {
+public class EsbEditorInput extends FileEditorInput implements IEsbEditorInput {
 private Resource diagramResource;
 private IFile xmlResource;
 private String artifatcType;
@@ -38,6 +38,7 @@ private String artifatcType;
 	}
 
 	public EsbEditorInput(Resource diagramResource,IFile xmlResource, String artifatcType) {
+		super(xmlResource);
  		this.diagramResource = diagramResource;
  		this.xmlResource = xmlResource;
  		this.artifatcType = artifatcType;
@@ -56,7 +57,7 @@ private String artifatcType;
  	}
  
  	public IPersistableElement getPersistable() {
- 		return null;
+ 		return this;
  	}
  
  	public String getToolTipText() {

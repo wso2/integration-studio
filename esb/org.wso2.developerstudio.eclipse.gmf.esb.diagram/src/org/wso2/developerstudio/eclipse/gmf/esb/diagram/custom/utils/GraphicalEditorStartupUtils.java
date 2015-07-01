@@ -75,7 +75,7 @@ public class GraphicalEditorStartupUtils implements Openable {
 		}
 	 
 		IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		IEditorPart openEditor = activePage.openEditor(new EsbEditorInput(null, xmlFile, type), EsbDiagramEditor.ID);
+		IEditorPart openEditor = activePage.openEditor(new EsbEditorInput(null, xmlFile, type), EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
 		EsbMultiPageEditor multipageEitor = ((EsbMultiPageEditor) openEditor);
 		final EsbDiagramEditor graphicalEditor = multipageEitor.getGraphicalEditor();
 

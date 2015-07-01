@@ -140,7 +140,7 @@ public class EsbNavigatorActionProvider extends CommonActionProvider {
 			IEditorInput editorInput = getEditorInput(myDiagram);
 			IWorkbenchPage page = myViewerSite.getPage();
 			try {
-				page.openEditor(editorInput, EsbDiagramEditor.ID);
+				page.openEditor(editorInput, EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
 			} catch (PartInitException e) {
 				EsbDiagramEditorPlugin.getInstance().logError("Exception while openning diagram", e); //$NON-NLS-1$
 			}

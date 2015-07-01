@@ -55,7 +55,7 @@ public class OpenEditorUtils {
 			}
 			IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 			IEditorPart openEditor = activePage.openEditor(
-					new EsbEditorInput(null, fileTobeOpened, artifactType.getLiteral()), EsbDiagramEditor.ID);
+					new EsbEditorInput(null, fileTobeOpened, artifactType.getLiteral()), EsbDiagramEditor.ID, true, IWorkbenchPage.MATCH_INPUT);
 			EsbMultiPageEditor multipageEitor = ((EsbMultiPageEditor) openEditor);
 			final EsbDiagramEditor graphicalEditor = multipageEitor.getGraphicalEditor();
 

@@ -20,6 +20,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IPersistableElement;
+import org.eclipse.ui.part.FileEditorInput;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 
 
@@ -80,5 +81,11 @@ private String artifatcType;
 
 	public void setArtifatcType(String artifatcType) {
 		this.artifatcType = artifatcType;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		return this == o || o instanceof FileEditorInput && xmlResource.equals(((FileEditorInput) o).getFile())
+				|| o instanceof EsbEditorInput && xmlResource.equals(((EsbEditorInput) o).getXmlResource());
 	}
 }

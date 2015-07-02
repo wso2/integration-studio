@@ -48,7 +48,7 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
 	private static final String DS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.ds.project.nature";
 	private static final String POM_FILE = "pom.xml";
 	private static final String ARTIFACT_FILE = "artifact.xml";
-	private static final String PACKAGE_NAME = "service/dataservice";
+	private static final String PACKAGE_NAME = "pom";
 	private static final String GROUP_ID = "org.wso2.maven";
 	private static final String ARTIFACT_ID = "maven-dataservice-plugin";
 	private static final String CAPP_TYPE = "bpel/workflow=zip,lib/registry/filter=jar,webapp/jaxws=war,lib/library/bundle=jar,service/dataservice=dbs,synapse/local-entry=xml,synapse/proxy-service=xml,carbon/application=car,registry/resource=zip,lib/dataservice/validator=jar,synapse/endpoint=xml,web/application=war,lib/carbon/ui=jar,service/axis2=aar,synapse/sequence=xml,synapse/configuration=xml,wso2/gadget=dar,lib/registry/handlers=jar,lib/synapse/mediator=jar,synapse/task=xml,synapse/api=xml,synapse/template=xml,synapse/message-store=xml,synapse/message-processors=xml,synapse/inbound-endpoint=xml";

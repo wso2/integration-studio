@@ -142,7 +142,7 @@ public class DataServiceCreationWizard extends AbstractWSO2ProjectCreationWizard
 			getModel().addToWorkingSet(project);
 			File mavenProjectPom = project.getFile(POM_FILE).getLocation().toFile();
 			updateDSSPlugin(openFile, mavenProjectPom);
-			String groupId = getMavenGroupId(mavenProjectPom);
+			String groupId = getMavenGroupId(mavenProjectPom)+ ".dataservice";
 			String relativePath = FileUtils.getRelativePath(project.getLocation().toFile(), openFile).replaceAll(
 					Pattern.quote(File.separator), "/");
 

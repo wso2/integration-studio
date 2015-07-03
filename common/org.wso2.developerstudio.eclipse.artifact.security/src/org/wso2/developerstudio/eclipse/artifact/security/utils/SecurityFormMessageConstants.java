@@ -37,6 +37,13 @@ public class SecurityFormMessageConstants extends NLS {
 	public static String MESSAGE_XML_ERROR;
 	public static String MESSAGE_KERBEROS_NAME;
 	public static String MESSAGE_KERBEROS_PASSWORD;
+	public static String MESSAGE_KERBEROS_PROPERTIES;
+	public static String MESSAGE_PRIVATESTORE_EN;
+	public static String MESSAGE_TRUSTSTORE_EN;
+	public static String MESSAGE_EN_PROPERTIES;
+	public static String MESSAGE_PRIVATESTORE_SIGN;
+	public static String MESSAGE_TRUSTSTORE_SIGN;
+	public static String MESSAGE_SIGN_PROPERTIES;
 	
 	static{
 		NLS.initializeMessages(BUNDLE_NAME, SecurityFormMessageConstants.class);

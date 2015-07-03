@@ -78,7 +78,6 @@ public class SecurityFormConstants {
 	public static final String LABEL_TIMESTAMP_STRICT = "timestampStrict :";
 	public static final String LABEL_TOKEN_STORE_CLASS = "tokenStoreClass :";
 	public static final String LABEL_NONCELIFETIME = "nonceLifeTime :";
-	public static final String LABEL_PRIVATE_STORE = "publicstore :";
 	public static final String LABEL_SERVICE_PRINCIPAL_NAME = "Service Principal Name";
 	public static final String LABEL_SERVICE_PRINCIPAL_PASSWORD = "Service Principal Password";
 	public static final String EDITOR_TITLE = "WS-Policy for Service";
@@ -98,13 +97,15 @@ public class SecurityFormConstants {
 
 	// Rampart Configs
 	public static final String ALIAS = ":Alias";
-	public static final String PRIVATESTORE = ":privatestore";
+	public static final String PRIVATESTORE = ":Privatestore";
 	public static final String TRUSTSTORES = ":Truststores";
 	public static final String TENANT_ID = ":Tenant id";
 	public static final String USER = ":User";
 	public static final String EN = "en";
 	public static final String SIGN = "sign";
 	public static final String POLICIES = "policies/";
+	public static final String PRIVATESTORE_LABEL = "Privatestore";
+	public static final String TRUSTSTORE_LABEL = "Truststores";
 
 	public static final String POLICY_OBJECT_UT = "UTOverTransport";
 	public static final String POLICY_UT = "UsernameToken";

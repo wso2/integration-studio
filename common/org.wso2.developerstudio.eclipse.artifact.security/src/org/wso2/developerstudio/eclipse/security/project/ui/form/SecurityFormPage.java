@@ -625,13 +625,18 @@ public class SecurityFormPage extends FormPage {
 
 			RefreshProject();
 
-			/*
-			 * display.asyncExec(new Runnable() {
-			 * 
-			 * @Override public void run() { try { RefreshProject(); } catch
-			 * (CoreException e) { log.error("Error in refresing the project",
-			 * e); } } });
-			 */
+			
+			/*display.asyncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+						RefreshProject();
+					} catch (CoreException e) {
+						log.error("Error in refresing the project", e);
+					}
+				}
+			});*/
 
 		} catch (JAXBException | IOException | CoreException | ParserConfigurationException | SAXException
 				| TransformerException e) {
@@ -2368,10 +2373,11 @@ public class SecurityFormPage extends FormPage {
 	 * Saves the content to the file
 	 */
 	public void doPageSave() {
-
+		String updatedSavedcontent = null;
 		try {
 			setPageDirty(false);
 			save();
+			updatedSavedcontent = getUpdatedContent();
 		} catch (Exception e) {
 			log.error("Cannot save the content", e);
 			MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);

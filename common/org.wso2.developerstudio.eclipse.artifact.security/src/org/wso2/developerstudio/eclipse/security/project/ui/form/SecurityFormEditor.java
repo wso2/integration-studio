@@ -131,6 +131,8 @@ public class SecurityFormEditor extends FormEditor {
 			updateDirtyState();
 		} else if (isDesignDirty) {
 			formPage.doPageSave();
+			String content = formPage.doSourceUpdate();
+			getDocument().set(content);
 			isSourceDirty = false;
 			isDesignDirty = false;
 			updateDirtyState();

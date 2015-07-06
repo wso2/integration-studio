@@ -178,8 +178,8 @@
 								value="org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"
 								value="org.wso2.developerstudio.eclipse.webapp.project.nature" />
-							<test property="org.eclipse.core.resources.projectNature"
-								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+							<!--test property="org.eclipse.core.resources.projectNature"
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" /-->
 							<test property="org.eclipse.core.resources.projectNature"
 								value="org.wso2.developerstudio.eclipse.artifact.gadget.project.nature" />
 							<test property="org.eclipse.core.resources.projectNature"

@@ -87,14 +87,19 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			throws Exception {
 		InboundEndpoint inboundEndpoint = new InboundEndpoint();
 		inboundEndpoint.setName(visualInboundEndpoint.getName());
+		
 		Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector());
-
+		Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
+		if(sequence == null && onErrorSequence == null){
+			throw new Exception("Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence");
+		}
+	
 		if (sequence != null) {
 			inboundEndpoint.setInjectingSeq(sequence.getName());
 		} else {
-			throw new Exception("Sequece cannot be empty. Please include a Sequence");
+			throw new Exception("Sequence cannot be empty. Please include a Sequence");
 		}
-		Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
+		
 		if (onErrorSequence != null) {
 			inboundEndpoint.setOnErrorSeq(onErrorSequence.getName());
 		} else {

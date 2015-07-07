@@ -308,9 +308,9 @@ public class UserRolesDialog extends Dialog {
 				filter = "*";
 			}
 
-			String[] roles = UserManagerUtils.getInstance().getRoles(filter, 1000);
+			List<String> roles = UserManagerUtils.getInstance().getRoles(filter, 1000);
 
-			if (roles != null && roles.length > 0) {
+			if (roles.size() >0 ) {
 				for (String role : roles) {
 					if(!role.equals("false")) {
 						TableItem item = new TableItem(userRolesTable, SWT.NONE);

@@ -14,19 +14,26 @@
  * limitations under the License.
  */
 
-
 package org.wso2.developerstudio.eclipse.security.project.utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.wso2.developerstudio.eclipse.usermgt.remote.UserManager;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class UserManagerUtils {
 
 	private static UserManagerUtils instance;
 
 	private UserManager userManager;
-	
+
 	private UserManagerUtils() {
-		
+
 	}
 
 	public static UserManagerUtils getInstance() {
@@ -41,11 +48,26 @@ public class UserManagerUtils {
 		userManager = new UserManager(url, username, password);
 	}
 
-	public String[] getRoles(String filter, int limit) {
-		if (userManager != null) {
-			return userManager.getRoles();
-		}
+	public List<String> getRoles(String filter, int limit) {
+		String[] userRoleList;
+		List<String> filteredRoleList = null;
 
-		return new String[] {};
+		if (userManager != null) {
+			userRoleList = userManager.getRoles();
+			filteredRoleList = new ArrayList<String>();
+			if (filter.equals("*")) {
+				filteredRoleList = Arrays.asList(userRoleList);
+			} else{
+				Pattern pattern = Pattern.compile(filter);
+				for (String role : userRoleList) {
+					Matcher matcher = pattern.matcher(role);
+					if (matcher.find()) {
+						filteredRoleList.add(role);
+					}
+				}
+			}
+			
+		}
+		return filteredRoleList;
 	}
 }

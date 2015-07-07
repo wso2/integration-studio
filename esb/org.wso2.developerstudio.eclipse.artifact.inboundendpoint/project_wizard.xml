@@ -23,7 +23,7 @@
 			<!-- class -->
 			<data group="group1" modelProperty="class" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Class</data>
 					
-			<group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group>
+			<!-- group id="group1" title="Advanced Configuration" controlData="type=collapsible;state=expanded"></group-->
 
 		</settings>
 		<settings optionId="import.inboundendpoint"

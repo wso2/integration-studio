@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 
 import org.wso2.developerstudio.eclipse.usermgt.remote.UserManager;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class UserManagerUtils {
 

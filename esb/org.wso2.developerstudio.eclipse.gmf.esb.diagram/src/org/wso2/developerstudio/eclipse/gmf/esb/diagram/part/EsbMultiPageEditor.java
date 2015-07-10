@@ -27,6 +27,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.Scanner;
 
+import org.apache.synapse.mediators.builtin.LogMediator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
@@ -483,7 +484,9 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 */
 	
 	protected void pageChange(int pageIndex) {		
-		super.pageChange(pageIndex);		
+		super.pageChange(pageIndex);	
+    	//Fixing TOOLS-2958
+    	setContextClassLoader();
 
 		// I do not understand why this is necessary (emf generated code).
 		// if (contentOutlinePage != null) {
@@ -662,6 +665,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
      * Saves the multi-page editor's document.
      */
     public void doSave(IProgressMonitor monitor) {
+    	//Fixing TOOLS-2958
+    	setContextClassLoader();
     	if(getActivePage()==SOURCE_VIEW_PAGE_INDEX){
     		handleDesignViewActivatedEvent();
     	}
@@ -892,6 +897,18 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			AbstractEsbNodeDeserializer.cleanupData();
 			sourceDirty=false;
 			firePropertyChange(PROP_DIRTY);
+		}
+	}
+	
+	// There is a class loading issue in Mac OS with Java 7u55 and later updates.
+	// Root cause for this issue is returning null value for Thread.currentThread().getContextClassLoader().
+	// This method will set the ContextClassLoader for current thread if ContextClassLoader has not been set. See
+	// https://wso2.org/jira/browse/TOOLS-2958 for more details.
+	private void setContextClassLoader() {
+		Thread thread = Thread.currentThread();
+		ClassLoader ctxClassLoader = thread.getContextClassLoader();
+		if (ctxClassLoader == null) {
+			thread.setContextClassLoader(LogMediator.class.getClassLoader());
 		}
 	}
 	

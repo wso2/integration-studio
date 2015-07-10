@@ -63,6 +63,8 @@ public class SequencesItemProvider
 		//addRecieveSequencePropertyDescriptor(object);
 		//addAssociatedProxyPropertyDescriptor(object);
 		addOnErrorPropertyDescriptor(object);
+		addTraceEnabledPropertyDescriptor(object);
+		addStatisticsEnabledPropertyDescriptor(object);
 		if(object instanceof Sequences){
 			if(((Sequences)object).eContainer() instanceof Template){
 				addTemplateParametersPropertyDescriptor(object);		
@@ -182,6 +184,50 @@ public class SequencesItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Trace Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated 
+	 */
+	protected void addTraceEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sequences_traceEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_traceEnabled_feature", "_UI_Sequences_type"),
+				 EsbPackage.Literals.SEQUENCES__TRACE_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Statistics Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStatisticsEnabledPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Sequences_statisticsEnabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Sequences_statisticsEnabled_feature", "_UI_Sequences_type"),
+				 EsbPackage.Literals.SEQUENCES__STATISTICS_ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -255,6 +301,8 @@ public class SequencesItemProvider
 			case EsbPackage.SEQUENCES__NAME:
 			case EsbPackage.SEQUENCES__RECIEVE_SEQUENCE:
 			case EsbPackage.SEQUENCES__ASSOCIATED_PROXY:
+			case EsbPackage.SEQUENCES__TRACE_ENABLED:
+			case EsbPackage.SEQUENCES__STATISTICS_ENABLED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.SEQUENCES__OUTPUT_CONNECTOR:

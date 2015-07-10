@@ -2318,13 +2318,31 @@ public interface EsbPackage extends EPackage {
 	int ABSTRACT_END_POINT__TEMPLATE_PARAMETERS = END_POINT_FEATURE_COUNT + 18;
 
 	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_END_POINT__STATISTICS_ENABLED = END_POINT_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_END_POINT__TRACE_ENABLED = END_POINT_FEATURE_COUNT + 20;
+
+	/**
 	 * The number of structural features of the '<em>Abstract End Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_END_POINT_FEATURE_COUNT = END_POINT_FEATURE_COUNT + 19;
+	int ABSTRACT_END_POINT_FEATURE_COUNT = END_POINT_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -2660,6 +2678,24 @@ public interface EsbPackage extends EPackage {
 	int DEFAULT_END_POINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
 
 	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFAULT_END_POINT__STATISTICS_ENABLED = ABSTRACT_END_POINT__STATISTICS_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFAULT_END_POINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2973,6 +3009,24 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int ADDRESS_END_POINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS_END_POINT__STATISTICS_ENABLED = ABSTRACT_END_POINT__STATISTICS_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESS_END_POINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -3307,6 +3361,24 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEMPLATE_ENDPOINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_ENDPOINT__STATISTICS_ENABLED = ABSTRACT_END_POINT__STATISTICS_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -3725,6 +3797,24 @@ public interface EsbPackage extends EPackage {
 	 * @ordered
 	 */
 	int HTTP_ENDPOINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HTTP_ENDPOINT__STATISTICS_ENABLED = ABSTRACT_END_POINT__STATISTICS_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HTTP_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -17459,6 +17549,24 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int WSDL_END_POINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
 
 	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WSDL_END_POINT__STATISTICS_ENABLED = ABSTRACT_END_POINT__STATISTICS_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WSDL_END_POINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18135,13 +18243,31 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int SEQUENCES__TEMPLATE_PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCES__TRACE_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCES__STATISTICS_ENABLED = ESB_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Sequences</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCES_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 8;
+	int SEQUENCES_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesOutputConnectorImpl <em>Sequences Output Connector</em>}' class.
@@ -19116,6 +19242,24 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int NAMED_ENDPOINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ENDPOINT__STATISTICS_ENABLED = ABSTRACT_END_POINT__STATISTICS_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -20303,6 +20447,24 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int API_RESOURCE_ENDPOINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
 
 	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_RESOURCE_ENDPOINT__STATISTICS_ENABLED = ABSTRACT_END_POINT__STATISTICS_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_RESOURCE_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
+
+	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -20747,6 +20909,24 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @ordered
 	 */
 	int ADDRESSING_ENDPOINT__TEMPLATE_PARAMETERS = ABSTRACT_END_POINT__TEMPLATE_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESSING_ENDPOINT__STATISTICS_ENABLED = ABSTRACT_END_POINT__STATISTICS_ENABLED;
+
+	/**
+	 * The feature id for the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADDRESSING_ENDPOINT__TRACE_ENABLED = ABSTRACT_END_POINT__TRACE_ENABLED;
 
 	/**
 	 * The feature id for the '<em><b>Input Connector</b></em>' containment reference.
@@ -26070,6 +26250,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EReference getAbstractEndPoint_TemplateParameters();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled <em>Statistics Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Statistics Enabled</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled()
+	 * @see #getAbstractEndPoint()
+	 * @generated
+	 */
+	EAttribute getAbstractEndPoint_StatisticsEnabled();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trace Enabled</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled()
+	 * @see #getAbstractEndPoint()
+	 * @generated
+	 */
+	EAttribute getAbstractEndPoint_TraceEnabled();
 
 	/**
 	 * Returns the meta object for class '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator <em>Message Mediator</em>}'.
@@ -39120,6 +39322,28 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EReference getSequences_TemplateParameters();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isTraceEnabled <em>Trace Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trace Enabled</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isTraceEnabled()
+	 * @see #getSequences()
+	 * @generated
+	 */
+	EAttribute getSequences_TraceEnabled();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isStatisticsEnabled <em>Statistics Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Statistics Enabled</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isStatisticsEnabled()
+	 * @see #getSequences()
+	 * @generated
+	 */
+	EAttribute getSequences_StatisticsEnabled();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOutputConnector <em>Output Connector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -41639,6 +41863,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference ABSTRACT_END_POINT__TEMPLATE_PARAMETERS = eINSTANCE.getAbstractEndPoint_TemplateParameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Statistics Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_END_POINT__STATISTICS_ENABLED = eINSTANCE.getAbstractEndPoint_StatisticsEnabled();
+
+		/**
+		 * The meta object literal for the '<em><b>Trace Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_END_POINT__TRACE_ENABLED = eINSTANCE.getAbstractEndPoint_TraceEnabled();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageMediatorImpl <em>Message Mediator</em>}' class.
@@ -52023,6 +52263,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EReference SEQUENCES__TEMPLATE_PARAMETERS = eINSTANCE.getSequences_TemplateParameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Trace Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCES__TRACE_ENABLED = eINSTANCE.getSequences_TraceEnabled();
+
+		/**
+		 * The meta object literal for the '<em><b>Statistics Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEQUENCES__STATISTICS_ENABLED = eINSTANCE.getSequences_StatisticsEnabled();
 
 		/**
 		 * The meta object literal for the '<em><b>Output Connector</b></em>' containment reference feature.

@@ -53,6 +53,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getFormat <em>Format</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getOptimize <em>Optimize</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#getTemplateParameters <em>Template Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.AbstractEndPointImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
  * </ul>
  * </p>
  *
@@ -408,6 +410,46 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 	 * @ordered
 	 */
 	protected EList<TemplateParameter> templateParameters;
+
+	/**
+	 * The default value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean STATISTICS_ENABLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTraceEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRACE_ENABLED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTraceEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean traceEnabled = TRACE_ENABLED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -880,6 +922,48 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isStatisticsEnabled() {
+		return statisticsEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatisticsEnabled(boolean newStatisticsEnabled) {
+		boolean oldStatisticsEnabled = statisticsEnabled;
+		statisticsEnabled = newStatisticsEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__STATISTICS_ENABLED, oldStatisticsEnabled, statisticsEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTraceEnabled() {
+		return traceEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTraceEnabled(boolean newTraceEnabled) {
+		boolean oldTraceEnabled = traceEnabled;
+		traceEnabled = newTraceEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED, oldTraceEnabled, traceEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -940,6 +1024,10 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 				return getOptimize();
 			case EsbPackage.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS:
 				return getTemplateParameters();
+			case EsbPackage.ABSTRACT_END_POINT__STATISTICS_ENABLED:
+				return isStatisticsEnabled();
+			case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
+				return isTraceEnabled();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1012,6 +1100,12 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 				getTemplateParameters().clear();
 				getTemplateParameters().addAll((Collection<? extends TemplateParameter>)newValue);
 				return;
+			case EsbPackage.ABSTRACT_END_POINT__STATISTICS_ENABLED:
+				setStatisticsEnabled((Boolean)newValue);
+				return;
+			case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
+				setTraceEnabled((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1082,6 +1176,12 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 			case EsbPackage.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS:
 				getTemplateParameters().clear();
 				return;
+			case EsbPackage.ABSTRACT_END_POINT__STATISTICS_ENABLED:
+				setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
+				return;
+			case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
+				setTraceEnabled(TRACE_ENABLED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1133,6 +1233,10 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 				return optimize != OPTIMIZE_EDEFAULT;
 			case EsbPackage.ABSTRACT_END_POINT__TEMPLATE_PARAMETERS:
 				return templateParameters != null && !templateParameters.isEmpty();
+			case EsbPackage.ABSTRACT_END_POINT__STATISTICS_ENABLED:
+				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
+			case EsbPackage.ABSTRACT_END_POINT__TRACE_ENABLED:
+				return traceEnabled != TRACE_ENABLED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1180,6 +1284,10 @@ public abstract class AbstractEndPointImpl extends EndPointImpl implements Abstr
 		result.append(format);
 		result.append(", optimize: ");
 		result.append(optimize);
+		result.append(", statisticsEnabled: ");
+		result.append(statisticsEnabled);
+		result.append(", traceEnabled: ");
+		result.append(traceEnabled);
 		result.append(')');
 		return result.toString();
 	}

@@ -36,6 +36,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getFormat <em>Format</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getOptimize <em>Optimize</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#getTemplateParameters <em>Template Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace Enabled</em>}</li>
  * </ul>
  * </p>
  *
@@ -551,5 +553,57 @@ public interface AbstractEndPoint extends EndPoint {
 	 * @generated
 	 */
 	EList<TemplateParameter> getTemplateParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Statistics Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Statistics Enabled</em>' attribute.
+	 * @see #setStatisticsEnabled(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_StatisticsEnabled()
+	 * @model
+	 * @generated
+	 */
+	boolean isStatisticsEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Statistics Enabled</em>' attribute.
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 */
+	void setStatisticsEnabled(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Trace Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trace Enabled</em>' attribute.
+	 * @see #setTraceEnabled(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractEndPoint_TraceEnabled()
+	 * @model
+	 * @generated
+	 */
+	boolean isTraceEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint#isTraceEnabled <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trace Enabled</em>' attribute.
+	 * @see #isTraceEnabled()
+	 * @generated
+	 */
+	void setTraceEnabled(boolean value);
 
 } // AbstractEndPoint

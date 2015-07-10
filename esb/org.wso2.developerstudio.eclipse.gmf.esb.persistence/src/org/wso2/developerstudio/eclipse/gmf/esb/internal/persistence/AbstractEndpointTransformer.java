@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.synapse.Mediator;
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.endpoints.EndpointDefinition;
@@ -60,6 +61,17 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		}else if(visualEndPoint.getOptimize().getValue()==2){
 			synapseEPDef.setUseSwa(true);
 		}
+		
+		// Fixing TOOLS-2652
+		synapseEPDef.setTraceState(visualEndPoint.isTraceEnabled() ? 1 : 0);
+		
+		AspectConfiguration aspectConfiguration = new AspectConfiguration(visualEndPoint.getEndPointName());
+		synapseEPDef.configure(aspectConfiguration);
+		if (visualEndPoint.isStatisticsEnabled()) {
+			aspectConfiguration.enableStatistics();
+		} else {
+			aspectConfiguration.disableStatistics();
+		}		
 		
 		String suspendErrorCodes=visualEndPoint.getSuspendErrorCodes();
 		if(suspendErrorCodes!=null && !"".equals(suspendErrorCodes)){

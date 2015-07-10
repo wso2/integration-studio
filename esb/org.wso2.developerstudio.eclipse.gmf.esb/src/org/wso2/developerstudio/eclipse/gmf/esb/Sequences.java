@@ -25,6 +25,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getAssociatedProxy <em>Associated Proxy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getOnError <em>On Error</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#getTemplateParameters <em>Template Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  * </ul>
  * </p>
  *
@@ -169,6 +171,58 @@ public interface Sequences extends EsbElement {
 	 * @generated
 	 */
 	EList<TemplateParameter> getTemplateParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Trace Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Trace Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trace Enabled</em>' attribute.
+	 * @see #setTraceEnabled(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_TraceEnabled()
+	 * @model
+	 * @generated
+	 */
+	boolean isTraceEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isTraceEnabled <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trace Enabled</em>' attribute.
+	 * @see #isTraceEnabled()
+	 * @generated
+	 */
+	void setTraceEnabled(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Statistics Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Statistics Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Statistics Enabled</em>' attribute.
+	 * @see #setStatisticsEnabled(boolean)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getSequences_StatisticsEnabled()
+	 * @model
+	 * @generated
+	 */
+	boolean isStatisticsEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Sequences#isStatisticsEnabled <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Statistics Enabled</em>' attribute.
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 */
+	void setStatisticsEnabled(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Output Connector</b></em>' containment reference.

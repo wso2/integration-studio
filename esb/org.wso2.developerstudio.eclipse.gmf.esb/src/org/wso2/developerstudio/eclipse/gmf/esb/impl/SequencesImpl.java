@@ -40,6 +40,8 @@ import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesImpl#getAssociatedProxy <em>Associated Proxy</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesImpl#getOnError <em>On Error</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesImpl#getTemplateParameters <em>Template Parameters</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesImpl#isTraceEnabled <em>Trace Enabled</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.SequencesImpl#isStatisticsEnabled <em>Statistics Enabled</em>}</li>
  * </ul>
  * </p>
  *
@@ -141,6 +143,43 @@ public class SequencesImpl extends EsbElementImpl implements Sequences {
 	 * @ordered
 	 */
 	protected EList<TemplateParameter> templateParameters;
+
+	/**
+	 * The default value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTraceEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TRACE_ENABLED_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isTraceEnabled() <em>Trace Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTraceEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean traceEnabled = TRACE_ENABLED_EDEFAULT;
+	/**
+	 * The default value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean STATISTICS_ENABLED_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isStatisticsEnabled() <em>Statistics Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStatisticsEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean statisticsEnabled = STATISTICS_ENABLED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -323,6 +362,48 @@ public class SequencesImpl extends EsbElementImpl implements Sequences {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isTraceEnabled() {
+		return traceEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTraceEnabled(boolean newTraceEnabled) {
+		boolean oldTraceEnabled = traceEnabled;
+		traceEnabled = newTraceEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SEQUENCES__TRACE_ENABLED, oldTraceEnabled, traceEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isStatisticsEnabled() {
+		return statisticsEnabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatisticsEnabled(boolean newStatisticsEnabled) {
+		boolean oldStatisticsEnabled = statisticsEnabled;
+		statisticsEnabled = newStatisticsEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.SEQUENCES__STATISTICS_ENABLED, oldStatisticsEnabled, statisticsEnabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SequencesOutputConnector getOutputConnector() {
 		return outputConnector;
 	}
@@ -450,6 +531,10 @@ public class SequencesImpl extends EsbElementImpl implements Sequences {
 				return getOnError();
 			case EsbPackage.SEQUENCES__TEMPLATE_PARAMETERS:
 				return getTemplateParameters();
+			case EsbPackage.SEQUENCES__TRACE_ENABLED:
+				return isTraceEnabled();
+			case EsbPackage.SEQUENCES__STATISTICS_ENABLED:
+				return isStatisticsEnabled();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -489,6 +574,12 @@ public class SequencesImpl extends EsbElementImpl implements Sequences {
 				getTemplateParameters().clear();
 				getTemplateParameters().addAll((Collection<? extends TemplateParameter>)newValue);
 				return;
+			case EsbPackage.SEQUENCES__TRACE_ENABLED:
+				setTraceEnabled((Boolean)newValue);
+				return;
+			case EsbPackage.SEQUENCES__STATISTICS_ENABLED:
+				setStatisticsEnabled((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -525,6 +616,12 @@ public class SequencesImpl extends EsbElementImpl implements Sequences {
 			case EsbPackage.SEQUENCES__TEMPLATE_PARAMETERS:
 				getTemplateParameters().clear();
 				return;
+			case EsbPackage.SEQUENCES__TRACE_ENABLED:
+				setTraceEnabled(TRACE_ENABLED_EDEFAULT);
+				return;
+			case EsbPackage.SEQUENCES__STATISTICS_ENABLED:
+				setStatisticsEnabled(STATISTICS_ENABLED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -553,6 +650,10 @@ public class SequencesImpl extends EsbElementImpl implements Sequences {
 				return onError != null;
 			case EsbPackage.SEQUENCES__TEMPLATE_PARAMETERS:
 				return templateParameters != null && !templateParameters.isEmpty();
+			case EsbPackage.SEQUENCES__TRACE_ENABLED:
+				return traceEnabled != TRACE_ENABLED_EDEFAULT;
+			case EsbPackage.SEQUENCES__STATISTICS_ENABLED:
+				return statisticsEnabled != STATISTICS_ENABLED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -573,6 +674,10 @@ public class SequencesImpl extends EsbElementImpl implements Sequences {
 		result.append(recieveSequence);
 		result.append(", associatedProxy: ");
 		result.append(associatedProxy);
+		result.append(", traceEnabled: ");
+		result.append(traceEnabled);
+		result.append(", statisticsEnabled: ");
+		result.append(statisticsEnabled);
 		result.append(')');
 		return result.toString();
 	}

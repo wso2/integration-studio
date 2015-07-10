@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.synapse.aspects.statistics.StatisticsConfigurable;
 import org.apache.synapse.endpoints.AbstractEndpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
@@ -44,6 +45,20 @@ public abstract class AbstractEndpointDeserializer extends AbstractEsbNodeDeseri
 		
 		if(StringUtils.isNotBlank(endpoint.getName())){
              executeSetValueCommand(END_POINT__END_POINT_NAME, endpoint.getName());
+		}
+		
+		// Fixing TOOLS-2652
+		if (endpoint.getDefinition().getTraceState() == 1) {
+			executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(true));
+		} else {
+			executeSetValueCommand(ABSTRACT_END_POINT__TRACE_ENABLED, new Boolean(false));
+		}
+		
+        StatisticsConfigurable  statisticsConfigurable = endpoint.getDefinition().getAspectConfiguration();
+		if (statisticsConfigurable != null && statisticsConfigurable.isStatisticsEnable()) {
+			executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(true));
+		}else{
+			executeSetValueCommand(ABSTRACT_END_POINT__STATISTICS_ENABLED, new Boolean(false));
 		}
 		
 		if("soap11".equals(endpoint.getDefinition().getFormat())){

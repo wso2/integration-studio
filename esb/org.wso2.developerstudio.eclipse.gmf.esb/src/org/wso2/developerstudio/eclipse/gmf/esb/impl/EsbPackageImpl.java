@@ -5116,6 +5116,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAbstractEndPoint_StatisticsEnabled() {
+		return (EAttribute)abstractEndPointEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractEndPoint_TraceEnabled() {
+		return (EAttribute)abstractEndPointEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMessageMediator() {
 		return messageMediatorEClass;
 	}
@@ -16060,6 +16078,24 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSequences_TraceEnabled() {
+		return (EAttribute)sequencesEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSequences_StatisticsEnabled() {
+		return (EAttribute)sequencesEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getSequences_OutputConnector() {
 		return (EReference)sequencesEClass.getEStructuralFeatures().get(0);
 	}
@@ -17477,6 +17513,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__FORMAT);
 		createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__OPTIMIZE);
 		createEReference(abstractEndPointEClass, ABSTRACT_END_POINT__TEMPLATE_PARAMETERS);
+		createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__STATISTICS_ENABLED);
+		createEAttribute(abstractEndPointEClass, ABSTRACT_END_POINT__TRACE_ENABLED);
 
 		messageMediatorEClass = createEClass(MESSAGE_MEDIATOR);
 		createEReference(messageMediatorEClass, MESSAGE_MEDIATOR__INPUT_CONNECTOR);
@@ -18640,6 +18678,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(sequencesEClass, SEQUENCES__ASSOCIATED_PROXY);
 		createEReference(sequencesEClass, SEQUENCES__ON_ERROR);
 		createEReference(sequencesEClass, SEQUENCES__TEMPLATE_PARAMETERS);
+		createEAttribute(sequencesEClass, SEQUENCES__TRACE_ENABLED);
+		createEAttribute(sequencesEClass, SEQUENCES__STATISTICS_ENABLED);
 
 		sequencesOutputConnectorEClass = createEClass(SEQUENCES_OUTPUT_CONNECTOR);
 
@@ -19704,6 +19744,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getAbstractEndPoint_Format(), this.getEndPointMessageFormat(), "format", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractEndPoint_Optimize(), this.getEndPointAttachmentOptimization(), "optimize", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractEndPoint_TemplateParameters(), this.getTemplateParameter(), null, "templateParameters", null, 0, -1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractEndPoint_StatisticsEnabled(), ecorePackage.getEBoolean(), "statisticsEnabled", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractEndPoint_TraceEnabled(), ecorePackage.getEBoolean(), "traceEnabled", null, 0, 1, AbstractEndPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(messageMediatorEClass, MessageMediator.class, "MessageMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMessageMediator_InputConnector(), this.getMessageInputConnector(), null, "inputConnector", null, 0, 1, MessageMediator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -20877,6 +20919,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getSequences_AssociatedProxy(), ecorePackage.getEString(), "associatedProxy", null, 0, -1, Sequences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSequences_OnError(), this.getRegistryKeyProperty(), null, "onError", null, 0, 1, Sequences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSequences_TemplateParameters(), this.getTemplateParameter(), null, "templateParameters", null, 0, -1, Sequences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequences_TraceEnabled(), ecorePackage.getEBoolean(), "traceEnabled", null, 0, 1, Sequences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequences_StatisticsEnabled(), ecorePackage.getEBoolean(), "statisticsEnabled", null, 0, 1, Sequences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sequencesOutputConnectorEClass, SequencesOutputConnector.class, "SequencesOutputConnector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

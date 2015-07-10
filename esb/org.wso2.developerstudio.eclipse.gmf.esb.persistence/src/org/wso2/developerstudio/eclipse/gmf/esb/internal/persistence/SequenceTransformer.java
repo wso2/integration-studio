@@ -3,6 +3,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.io.File;
 import java.util.List;
 
+import org.apache.synapse.aspects.AspectConfiguration;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -71,6 +72,18 @@ public class SequenceTransformer extends AbstractEsbNodeTransformer{
 		if(!"".equals(visualSequence.getOnError().getKeyValue())){
 			sequence.setErrorHandler(visualSequence.getOnError().getKeyValue());
 		}
+		
+		// Fixing TOOLS-2652
+		sequence.setTraceState(visualSequence.isTraceEnabled() ? 1 : 0);
+
+		AspectConfiguration aspectConfiguration = new AspectConfiguration(visualSequence.getName());
+		sequence.configure(aspectConfiguration);
+		if (visualSequence.isStatisticsEnabled()) {
+			aspectConfiguration.enableStatistics();
+		} else {
+			aspectConfiguration.disableStatistics();
+		}
+		
 		EsbLink outgoingLink= visualSequence.getOutputConnector().getOutgoingLink();
 		doTransformWithinSequence(information, outgoingLink, sequence);	
 	}

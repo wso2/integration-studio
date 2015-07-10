@@ -280,6 +280,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimize" eType="#//EndPointAttachmentOptimization"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="templateParameters" upperBound="-1"
         eType="#//TemplateParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statisticsEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="traceEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageMediator" eSuperTypes="#//EsbElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//MessageInputConnector"
@@ -2261,6 +2263,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="templateParameters" upperBound="-1"
         eType="#//TemplateParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="traceEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statisticsEnabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SequencesOutputConnector" eSuperTypes="#//OutputConnector"/>
   <eClassifiers xsi:type="ecore:EClass" name="SequencesInputConnector" eSuperTypes="#//InputConnector"/>

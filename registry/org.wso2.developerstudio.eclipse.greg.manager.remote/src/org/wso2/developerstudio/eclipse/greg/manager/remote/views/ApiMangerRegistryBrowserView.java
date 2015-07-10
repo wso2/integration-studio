@@ -33,7 +33,7 @@ import org.wso2.developerstudio.eclipse.greg.manager.remote.Activator;
  * This class can be used to implement APIManager specific features , right now I haven't add any specific features 
  *
  */
-public class ApiMangerRegistryBrowserView extends RegistryBrowserView {
+public class ApiMangerRegistryBrowserView extends RegistryBrowserAPIMView {
 
 	private static final String APIM_CUSTOMSEQUENCES_PATH = "/_system/governance/apimgt/customsequences";
 
@@ -49,6 +49,8 @@ public ApiMangerRegistryBrowserView() {
 		iEventBroker.subscribe(EVENT_TOPIC_EXPAND_TREE,getTreeExpandHandler() );
 		iEventBroker.subscribe(EVENT_TOPIC_POPULATE_NODE_DATA, getTreeNodeSelctionHandler());
 		iEventBroker.subscribe(EVENT_TOPIC_POPULATE_CHANGE_NODE_DATA, getTreeNodeSelctionChangedHandler());
+		iEventBroker.subscribe(EVENT_TOPIC_POPULATE_TREE_DATA, getTreeSelectionChenageHandler());
+		iEventBroker.subscribe(EVENT_TOPIC_OPEN_EDITOR,getOPenEditorEvent());
 		setBroker(iEventBroker);
 	} catch (Exception e) {
 		setApimRegPath(APIM_CUSTOMSEQUENCES_PATH);	 

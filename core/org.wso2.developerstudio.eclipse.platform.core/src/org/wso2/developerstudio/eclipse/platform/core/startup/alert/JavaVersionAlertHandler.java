@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
+
 import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 /**
@@ -37,6 +38,7 @@ public class JavaVersionAlertHandler implements IStartup {
     @Override
     public void earlyStartup() {
         final String version = System.getProperty(JAVA_VERSION_PROPERTY);
+       
         //If Developer Studio starts with an unsupported version, then show a warning
         double detectedJavaVersion = getJavaVersionInDouble(version);
         if (detectedJavaVersion < Constants.MINIMUM_REQUIRED_JAVA_VERSION) {

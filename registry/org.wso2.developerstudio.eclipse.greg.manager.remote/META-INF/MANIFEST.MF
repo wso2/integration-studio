@@ -66,5 +66,6 @@ Import-Package: javax.xml.stream;version="1.0.1",
  org.wso2.developerstudio.eclipse.usermgt.remote,
  org.wso2.developerstudio.eclipse.utils,
  org.wso2.developerstudio.eclipse.utils.file
-Export-Package: org.wso2.developerstudio.eclipse.greg.manager.remote.utils,
+Export-Package: org.wso2.developerstudio.eclipse.greg.manager.remote,
+ org.wso2.developerstudio.eclipse.greg.manager.remote.utils,
  org.wso2.developerstudio.eclipse.greg.manager.remote.views

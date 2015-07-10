@@ -35,9 +35,11 @@ public class ClientTrustStorePreferencePage extends FieldEditorPreferencePage
 	protected void createFieldEditors() {
 		addField(new FileFieldEditor(TRUST_STORE_LOCATION,
 				"&Trust Store Location:", getFieldEditorParent()));
-		String[][] a = { { "JKS", "JKS" } };
-		addField(new ComboFieldEditor(TRUST_STORE_TYPE, "Trust &Store Type", a,
-				getFieldEditorParent()));
+		String[][] types = { { "JKS", "JKS" },{"JCEKS","JCEKS"},{"PKCS12","PKCS12"} };
+		ComboFieldEditor editor = new ComboFieldEditor(TRUST_STORE_TYPE, "Trust &Store Type", types,
+				getFieldEditorParent());
+		 
+		addField(editor);
 		stringField1 = new StringFieldEditor(TRUST_STORE_PASSWORD,
 				"Trust Store &Password", getFieldEditorParent());
 		addField(stringField1);

@@ -27,12 +27,15 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
+import org.apache.axiom.om.OMElement;
+import org.apache.axis2.AxisFault;
 import org.apache.axis2.context.ServiceContext;
 import org.apache.axis2.transport.http.HTTPConstants;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.wso2.carbon.core.services.authentication.AuthenticationAdminStub;
 import org.wso2.carbon.registry.resource.services.ExceptionException;
 import org.wso2.carbon.registry.resource.services.ResourceAdminServiceStub;
@@ -40,6 +43,7 @@ import org.wso2.carbon.registry.resource.services.ResourceAdminServiceStub.Permi
 import org.wso2.carbon.registry.resource.services.ResourceAdminServiceStub.PermissionEntry;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.ui.preferences.ClientTrustStorePreferencePage;
 
 public class ResourceAdmin {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -53,6 +57,7 @@ public class ResourceAdmin {
 	private String username;
 	private String password;
 	private ResourceAdminServiceStub stub;
+	private AuthenticationAdminStub authenticationAdminStub;
 
 	public ResourceAdmin(String url, String username, String password) {
 		init();
@@ -62,9 +67,45 @@ public class ResourceAdmin {
 	}
 
 	private static void init() {
+		
+		if (!loadJKSfromEclipsePrefernaces()){	
+			//Then loading the default JKS which is shipping with DevS
 		System.setProperty("javax.net.ssl.trustStore", getJKSPath());
 		System.setProperty("javax.net.ssl.trustStorePassword", "wso2carbon");
 		System.setProperty("javax.net.ssl.trustStoreType", "JKS");
+		}
+	}
+	
+	private static boolean loadJKSfromEclipsePrefernaces(){
+				
+		try{
+
+		IPreferenceStore preferenceStore = org.wso2.developerstudio.eclipse.platform.ui.Activator.getDefault()
+					.getPreferenceStore();
+
+		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_LOCATION).isEmpty()){
+			return false;
+		}
+		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD).isEmpty()){
+			return false;
+		}
+		if(preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_TYPE).isEmpty()){
+			return false;
+		}
+		
+			System.setProperty("javax.net.ssl.trustStore",
+					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_LOCATION));
+			System.setProperty("javax.net.ssl.trustStorePassword",
+					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_PASSWORD));
+			System.setProperty("javax.net.ssl.trustStoreType",
+					preferenceStore.getString(ClientTrustStorePreferencePage.TRUST_STORE_TYPE));		
+		return true;
+		
+		}catch(Exception e){
+			log.error("Cannot load values from Eclipse perfernces to read JKS"+e.getMessage(), e);
+		}
+		
+		return false;
 	}
 
 	private static String getJKSPath() {
@@ -146,18 +187,57 @@ public class ResourceAdmin {
 	public boolean isUserAuthenticate(String username, String password, URL hostUrl) throws Exception{
 		AuthenticationAdminStub authenticationStub;
 		boolean loginStatus=false;
-//        try {
-	    authenticationStub = new AuthenticationAdminStub(getUrl() +
-	                                                                    "services/AuthenticationAdmin");
-	    authenticationStub._getServiceClient().getOptions().setManageSession(true);
+		authenticationStub = new AuthenticationAdminStub(getUrl() + "services/AuthenticationAdmin");
+		authenticationStub._getServiceClient().getOptions().setManageSession(true);
 		loginStatus = authenticationStub.login(getUsername(), getPassword(), hostUrl.getHost());
-//        } catch (Exception e) {
-//	        log.error(e);
-//        }
+		setAuthenticationAdminStub(authenticationStub);
+
 		return loginStatus;
 	}
 	
 	
+	public String getgetAuthenticatedSessionId(){
+		AuthenticationAdminStub authenticationStub = getAuthenticationAdminStub();
+		if(authenticationStub!=null){
+		ServiceContext serviceContext = authenticationStub
+				._getServiceClient().getLastOperationContext()
+				.getServiceContext();
+		String sessionCookie = (String) serviceContext
+				.getProperty(HTTPConstants.COOKIE_STRING);
+		String endpont = "https://localhost:9443/services/SequenceAdminService";
+		/*SequenceAdminServiceStub stub;
+		try {
+			stub = new SequenceAdminServiceStub(endpont);
+			stub._getServiceClient().getOptions().setManageSession(true);
+			stub._getServiceClient().getOptions().setTimeOutInMilliSeconds(
+					60000000);
+			stub._getServiceClient().getOptions().setProperty(
+					HTTPConstants.COOKIE_STRING, sessionCookie);
+			
+			 int sequencesCount = stub.getSequencesCount();
+			 SequenceInfo[] sequences = stub.getSequences(0, 2);
+			 
+			 for (SequenceInfo sequenceInfo : sequences) {
+				OMElement sequence = stub.getSequence(sequenceInfo.getName());
+				stub.saveSequence(sequence.getFirstElement());
+			}
+		} catch (Exception e) {
+
+		}
+		*/
+		return sessionCookie;
+		}
+		return null;
+	}
+	
+	private AuthenticationAdminStub getAuthenticationAdminStub() {
+		return authenticationAdminStub;
+	}
+
+	private void setAuthenticationAdminStub(AuthenticationAdminStub authenticationAdminStub) {
+		this.authenticationAdminStub = authenticationAdminStub;
+	}
+
 	private ResourceAdminServiceStub getStub() throws RemoteException,
 			Exception {
 		if (stub!=null){
@@ -182,6 +262,9 @@ public class ResourceAdmin {
 					.setManageSession(true);
 			boolean loginStatus = authenticationStub.login(getUsername(),
 					getPassword(), url.getHost());
+			
+			
+			
 			if (!loginStatus) {
 			}
 			ServiceContext serviceContext = authenticationStub
@@ -380,8 +463,11 @@ public class ResourceAdmin {
 			resPer = getStub().getPermissions(resourcePath);
 			return resPer.getPutAllowed();
 		} catch (Exception e) {
-//			log.error("Error occured while trying the get the resource permissions",e);
+ 		log.error("Error occured while trying the get the resource permissions",e);
 		}
 		return false;
 	}
+	
+	
+	
 }

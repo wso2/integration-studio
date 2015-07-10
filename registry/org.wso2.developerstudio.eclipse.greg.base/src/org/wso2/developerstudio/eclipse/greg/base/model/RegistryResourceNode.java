@@ -30,7 +30,10 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IPropertyListener;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.wso2.carbon.registry.core.Collection;
 import org.wso2.carbon.registry.core.Resource;
 import org.wso2.carbon.registry.core.exceptions.RegistryException;
@@ -61,6 +64,7 @@ public class RegistryResourceNode {
 	private RegistryResourceType registryResource = RegistryResourceType.UNDEFINED;
 	private String resourceName;
 	private Boolean hasWritePermissions=null;
+	private boolean ismodifiyed ;
 	
 	public void setRegistryResource(RegistryResourceType registryResource) {
 		this.registryResource = registryResource;
@@ -103,6 +107,7 @@ public class RegistryResourceNode {
 		if (resourceNodeList == null) {
 			resourceNodeList = new ArrayList<RegistryResourceNode>();
 		}
+		
 		resourceNodeList.add(child);
 	}
 
@@ -725,6 +730,7 @@ public class RegistryResourceNode {
 			resource = getConnectionInfo().getRegistry()
 					.get(getRegistryResourcePath());
 			resource.setContentStream(new FileInputStream(file));
+		
 			getConnectionInfo().getRegistry().put(getRegistryResourcePath(), resource);
 			getVersionContent(getLatestVersion()).updateChecksum();
 			versions = null;
@@ -930,6 +936,8 @@ public class RegistryResourceNode {
 	 * @param editor
 	 */
 	public void setFileEditor(IEditorPart editor) {
+
+	  if(!isAPIMperspective()){
 		if (editor != null && this.editor != editor) {
 			this.editor = editor;
 			editor.addPropertyListener(new IPropertyListener() {
@@ -944,6 +952,28 @@ public class RegistryResourceNode {
 				}
 			});
 		}
+	  }else{
+		  getFile();
+	  }
+		  
+	}
+
+	private boolean isAPIMperspective(){
+		
+		 IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+		 IPerspectiveDescriptor perspective = workbenchWindow.getActivePage().getPerspective();		
+		if ("org.wso2.developerstudio.registry.remote.registry.apim.pespective".equals(perspective.getId())){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isIsmodifiyed() {
+		return ismodifiyed;
+	}
+
+	public void setIsmodifiyed(boolean ismodifiyed) {
+		this.ismodifiyed = ismodifiyed;
 	}
 
 	/**

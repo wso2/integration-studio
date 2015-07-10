@@ -48,7 +48,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 
 public class RegistryInfoDialog extends Dialog {
 
-	 private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	private static final String DEFAULT_USERNAME = "admin";
 	private static final String DEFAULT_PASSWORD = "admin";
 	private static final String DEFAULT_CARBON_SERVER_URL = "https://localhost:9443/";
@@ -91,7 +91,7 @@ public class RegistryInfoDialog extends Dialog {
 	protected Control createDialogArea(final Composite parent) {
 		String title="Add Registry";
 		if(ApiMangerRegistryBrowserView.isAPIMperspective()){
-			title="Adding APIM Registry";
+			title="Login to API Manager Registry";
 		}
 		parent.getShell().setText(title);
 		GridData gd;

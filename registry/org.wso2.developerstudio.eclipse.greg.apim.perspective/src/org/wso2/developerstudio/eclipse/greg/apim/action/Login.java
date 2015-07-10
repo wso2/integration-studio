@@ -35,7 +35,7 @@ public class Login {
 		
          IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		 PlatformUI.getWorkbench().getDisplay().getActiveShell();
-		 
+		
 		if (preferenceStore.getString(ApimPreferencePage.APIM_URL).isEmpty()) {
 			preferenceStore.setDefault(ApimPreferencePage.APIM_URL, ApimPreferencePage.APIM_DEFAULT_URL);
 		}

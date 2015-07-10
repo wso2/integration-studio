@@ -7,7 +7,7 @@
         fixed="true"
         icon="icons/api-default.png"
         id="org.wso2.developerstudio.registry.remote.registry.apim.pespective"
-        name="WSO2 APIM"/>
+        name="WSO2 API Manager"/>
 	</extension>
 	 <extension point="org.eclipse.ui.preferencePages">
 		<page id="org.wso2.developerstudio.eclipse.ui.developerstudio.preferences.appfactory" name="WSO2 APIM" 

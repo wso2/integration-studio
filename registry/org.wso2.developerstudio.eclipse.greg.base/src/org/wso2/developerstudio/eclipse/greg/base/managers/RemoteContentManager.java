@@ -114,7 +114,6 @@ public class RemoteContentManager {
 	 * @return
 	 */
 	public static IEditorPart openFile(File fileToOpen) {
-		
 		ExceptionHandler exeptionHandler = new ExceptionHandler();
 		if (fileToOpen.exists() && fileToOpen.isFile()) {
 

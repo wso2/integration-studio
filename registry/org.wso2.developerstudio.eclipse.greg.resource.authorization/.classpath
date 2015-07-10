@@ -3,5 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/Users/jasintha/product/wso2esb-4.8.1/repository/components/plugins/org.wso2.carbon.sequences.stub_4.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -490,6 +490,7 @@ public class RegistryCheckInClientUtils {
 	 */
 	public static void checkin(String registryUrl, String checkoutPath,	String path, String username,
 			String password) throws SynchronizationException{
+	
 		ClientOptions clientOptions = new ClientOptions();
 		clientOptions.setUsername(username);
 		clientOptions.setPassword(password);

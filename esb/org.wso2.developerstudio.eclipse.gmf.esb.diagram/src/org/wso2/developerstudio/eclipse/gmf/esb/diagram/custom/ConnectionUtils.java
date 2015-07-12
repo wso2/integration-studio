@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,40 +25,26 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewAndElementRequest;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IHintedType;
-import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart.EastPointerFigure;
-import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.providers.EsbElementTypes;
 
 public class ConnectionUtils {
 
-	public static boolean createConnection(AbstractConnectorEditPart target,
-			AbstractConnectorEditPart source) {
-		if (source != null && target != null
-				&& (source.getParent() instanceof ShapeNodeEditPart)) {
+	public static boolean createConnection(AbstractConnectorEditPart target, AbstractConnectorEditPart source) {
+		if (source != null && target != null && (source.getParent() instanceof ShapeNodeEditPart)) {
+			CompoundCommand cc = new CompoundCommand("Create Link");
+			if (((ShapeNodeEditPart) source.getParent()).getRoot() != null) {
+				ICommand createSubTopicsCmd = new DeferredCreateConnectionViewAndElementCommand(
+						new CreateConnectionViewAndElementRequest(EsbElementTypes.EsbLink_4001,
+								((IHintedType) EsbElementTypes.EsbLink_4001).getSemanticHint(),
+								((ShapeNodeEditPart) source.getParent()).getDiagramPreferencesHint()),
+						new EObjectAdapter((EObject) source.getModel()),
+						new EObjectAdapter((EObject) target.getModel()),
+						((ShapeNodeEditPart) source.getParent()).getViewer());
 
-			if (!((target instanceof ProxyInputConnectorEditPart) && (((DefaultSizeNodeFigure) source
-					.getFigure()).getChildren().get(0) instanceof EastPointerFigure))) {
-				CompoundCommand cc = new CompoundCommand("Create Link");
-
-				if(((ShapeNodeEditPart) source.getParent()).getRoot()!=null){
-					ICommand createSubTopicsCmd = new DeferredCreateConnectionViewAndElementCommand(
-							new CreateConnectionViewAndElementRequest(
-									EsbElementTypes.EsbLink_4001,
-									((IHintedType) EsbElementTypes.EsbLink_4001)
-											.getSemanticHint(),
-									((ShapeNodeEditPart) source.getParent())
-											.getDiagramPreferencesHint()),
-							new EObjectAdapter((EObject) source.getModel()),
-							new EObjectAdapter((EObject) target.getModel()),
-							((ShapeNodeEditPart) source.getParent()).getViewer());
-	
-					cc.add(new ICommandProxy(createSubTopicsCmd));
-					if(target.getDiagramEditDomain()!=null){
-						target.getDiagramEditDomain().getDiagramCommandStack()
-							.execute(cc);	
-						return true;
-					}
+				cc.add(new ICommandProxy(createSubTopicsCmd));
+				if (target.getDiagramEditDomain() != null) {
+					target.getDiagramEditDomain().getDiagramCommandStack().execute(cc);
+					return true;
 				}
 			}
 		}

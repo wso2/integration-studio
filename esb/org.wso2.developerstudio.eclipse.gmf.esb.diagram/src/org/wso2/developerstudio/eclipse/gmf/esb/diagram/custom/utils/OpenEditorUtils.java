@@ -20,6 +20,7 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -64,6 +65,7 @@ public class OpenEditorUtils {
 					public void run() {
 						try {
 							deserializer.updateDesign(source, graphicalEditor);
+							graphicalEditor.doSave(new NullProgressMonitor());
 							EditorUtils.setLockmode(graphicalEditor, false);
 
 						} catch (Exception e) {

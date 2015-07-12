@@ -204,6 +204,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	            						public void run() {
 	            							try {	            								
 	            								deserializer.updateDesign(source, graphicalEditor);
+	            								doSave(new NullProgressMonitor());
 	            							} catch (Exception e) {
 	            								log.error("Error while generating diagram from source", e);
 	            							}

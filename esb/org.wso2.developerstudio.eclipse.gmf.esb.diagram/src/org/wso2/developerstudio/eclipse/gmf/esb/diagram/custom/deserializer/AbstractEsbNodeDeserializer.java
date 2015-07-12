@@ -51,6 +51,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.impl.ConnectorImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.APIResource;
+import org.wso2.developerstudio.eclipse.gmf.esb.APIResourceInSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 //import org.wso2.developerstudio.eclipse.gmf.esb.AbstractEndPoint;
 //import org.wso2.developerstudio.eclipse.gmf.esb.AddressingEndpoint;
@@ -63,6 +64,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.LogCategory;
 //import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
+import org.wso2.developerstudio.eclipse.gmf.esb.ProxyInSequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.ProxyService;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
 //import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
@@ -78,7 +80,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractSequences
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.ConnectionUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.complexFiguredAbstractMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInSequenceInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.APIResourceOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.EsbLinkEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyInputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.ProxyOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.edit.parts.SequencesOutputConnectorEditPart;
@@ -323,21 +330,55 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 					sourceConnector =  lastOutputConnector;
 					targetConnector = (AbstractConnectorEditPart) secondPart;
 				}
-			} else {		
-				LinkedList<EsbNode> outSeq = connectionFlowMap.get(pair.getValue());
-				if (outSeq == null || outSeq.size()==0) {
-					continue;
-				}
-				
-				sourceConnector = EditorUtils.getProxyOutSequenceOutputConnector((ShapeNodeEditPart) EditorUtils.getAbstractBaseFigureEditPart((EditPart) getEditpart(outSeq.getLast())));
-				if(outSeq.size() > 0 && outSeq.getLast() != null){
-					targetConnector = EditorUtils
-					.getInputConnector((ShapeNodeEditPart) getEditpart(outSeq.getLast()));
-				} else{
-					if(pair.getValue() instanceof AbstractConnectorEditPart){
-						targetConnector = (AbstractConnectorEditPart) pair.getValue();
-					} else continue;
-					
+			} else {
+				if (firstPart instanceof ProxyOutputConnectorEditPart
+						&& secondPart instanceof ProxyInputConnectorEditPart) {
+					LinkedList<EsbNode> seq = connectionFlowMap.get(pair.getKey());
+					if (seq.getLast() instanceof SendMediator) {
+						sourceConnector = (AbstractConnectorEditPart) getEditpart(((SendMediator) seq.getLast())
+								.getOutputConnector());
+						EList<ProxyInSequenceInputConnector> inputConnectors = ((ProxyService) ((Node) EditorUtils
+								.getProxy(secondPart).getModel()).getElement()).getInSequenceInputConnectors();
+						for (ProxyInSequenceInputConnector con : inputConnectors) {
+							if (con.getIncomingLinks().size() == 0) {
+								targetConnector = (AbstractConnectorEditPart) getEditpart(con);
+								break;
+							}
+						}
+					}
+				} else if (firstPart instanceof APIResourceOutputConnectorEditPart
+						&& secondPart instanceof APIResourceInputConnectorEditPart) {
+					LinkedList<EsbNode> seq = connectionFlowMap.get(pair.getKey());
+					if (seq.getLast() instanceof SendMediator) {
+						sourceConnector = (AbstractConnectorEditPart) getEditpart(((SendMediator) seq.getLast())
+								.getOutputConnector());
+						EList<APIResourceInSequenceInputConnector> inputConnectors = ((APIResource) ((Node) EditorUtils
+								.getAPIResource((AbstractConnectorEditPart) secondPart).getModel()).getElement()).getInSequenceInputConnectors();
+						for (APIResourceInSequenceInputConnector con : inputConnectors) {
+							if (con.getIncomingLinks().size() == 0) {
+								targetConnector = (AbstractConnectorEditPart) getEditpart(con);
+								break;
+							}
+						}
+					}
+				}else {
+					LinkedList<EsbNode> outSeq = connectionFlowMap.get(pair.getValue());
+					if (outSeq == null || outSeq.size() == 0) {
+						continue;
+					}
+
+					sourceConnector = EditorUtils.getProxyOutSequenceOutputConnector((ShapeNodeEditPart) EditorUtils
+							.getAbstractBaseFigureEditPart((EditPart) getEditpart(outSeq.getLast())));
+					if (outSeq.size() > 0 && outSeq.getLast() != null) {
+						targetConnector = EditorUtils.getInputConnector((ShapeNodeEditPart) getEditpart(outSeq
+								.getLast()));
+					} else {
+						if (pair.getValue() instanceof AbstractConnectorEditPart) {
+							targetConnector = (AbstractConnectorEditPart) pair.getValue();
+						} else
+							continue;
+
+					}
 				}
 			}
 			

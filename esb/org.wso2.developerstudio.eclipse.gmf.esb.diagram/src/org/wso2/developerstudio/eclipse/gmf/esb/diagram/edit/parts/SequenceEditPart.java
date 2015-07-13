@@ -6,6 +6,7 @@ import static org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage.Literals.SEQUE
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SEQUENCE_RESOURCE_DIR;
 import static org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils.SYNAPSE_CONFIG_DIR;
 
+import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +16,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
@@ -62,6 +64,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -504,7 +507,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		return artifact;
 	}
 
-	public void openWithSeparateEditor() {
+	public void openWithSeparateEditor() throws Exception {
 		IProject activeProject = EditorUtils.getActiveProject();
 
 		String name = ((Sequence) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel()).getElement()).getName();
@@ -536,7 +539,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 
 	}
 
-	public boolean createAndOpenFile(String name, String fileURI1, String fileURI2, IProject currentProject) {
+	public boolean createAndOpenFile(String name, String fileURI1, String fileURI2, IProject currentProject) throws Exception {
 		IFile file = currentProject.getFile(SEQUENCE_RESOURCE_DIR + "/" + fileURI1);
 
 		if (((Sequence) ((Node) sequenceEditPart.getModel()).getElement()).isReceiveSequence()) {
@@ -546,24 +549,19 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		}
 		if (!file.exists()) {
 			IFile fileTobeOpened = currentProject.getFile(SYNAPSE_CONFIG_DIR + "/sequences/" + name + ".xml");
-			try {
-				if (fileTobeOpened.exists()) {
-					OpenEditorUtils oeUtils = new OpenEditorUtils();
-					oeUtils.openSeparateEditor(fileTobeOpened);
-				} else {
-					addSequenceToArtifactXML(name);
-					String path = fileTobeOpened.getParent().getFullPath() + "/";
-					ArtifactTemplate sequenceArtifactTemplate = SequenceTemplate.getArtifactTemplates()[0];
-					fileTobeOpened.create(sequenceArtifactTemplate.getTemplateDataStream(), true,
-							new NullProgressMonitor());
-					String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
-					source = MessageFormat.format(source, name);
-					Openable openable = ESBGraphicalEditor.getOpenable();
-					openable.editorOpen(fileTobeOpened.getName(), ArtifactType.SEQUENCE.getLiteral(), path, source);
-				}
-			} catch (Exception e) {
-				log.error("Cannot open file " + fileTobeOpened, e);
-				return false;
+			if (fileTobeOpened.exists()) {
+				OpenEditorUtils oeUtils = new OpenEditorUtils();
+				oeUtils.openSeparateEditor(fileTobeOpened);
+			} else {
+				addSequenceToArtifactXML(name);
+				String path = fileTobeOpened.getParent().getFullPath() + "/";
+				ArtifactTemplate sequenceArtifactTemplate = SequenceTemplate.getArtifactTemplates()[0];
+				fileTobeOpened
+						.create(sequenceArtifactTemplate.getTemplateDataStream(), true, new NullProgressMonitor());
+				String source = FileUtils.getContentAsString(sequenceArtifactTemplate.getTemplateDataStream());
+				source = MessageFormat.format(source, name);
+				Openable openable = ESBGraphicalEditor.getOpenable();
+				openable.editorOpen(fileTobeOpened.getName(), ArtifactType.SEQUENCE.getLiteral(), path, source);
 			}
 			return true;
 		}
@@ -601,7 +599,7 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 		return entry;
 	}
 
-	public void createDialogBox() {
+	public void createDialogBox() throws Exception {
 
 		final EObject diagram = ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) ((org.eclipse.gmf.runtime.notation.impl.NodeImpl) getModel())
 				.getDiagram().getChildren().get(0)).getElement().eContainer();
@@ -706,7 +704,13 @@ public class SequenceEditPart extends FixedSizedAbstractMediator {
 						 } catch (Exception e) {
 						 log.error("Error while updating Artifact.xml");
 						 }*/
-						openWithSeparateEditor();
+						try {
+							openWithSeparateEditor();
+						} catch (Exception e) {
+							log.error("Cannot open sequence file ", e);
+							MessageDialog.openError(Display.getCurrent().getActiveShell(), "Cannot open sequence file ",
+									e.getLocalizedMessage());
+						}
 					}
 				});
 			}

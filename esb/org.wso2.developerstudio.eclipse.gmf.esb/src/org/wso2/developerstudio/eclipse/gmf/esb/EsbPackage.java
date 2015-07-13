@@ -21468,13 +21468,85 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__PROVIDER_CLASS = ESB_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Rabbit MQ Server Host Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME = ESB_ELEMENT_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Rabbit MQ Server Host Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT = ESB_ELEMENT_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Rabbit MQ Queue Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME = ESB_ELEMENT_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Rabbit MQ Exchange Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME = ESB_ELEMENT_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Routing Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__ROUTING_KEY = ESB_ELEMENT_FEATURE_COUNT + 15;
+
+	/**
+	 * The feature id for the '<em><b>Rabbit MQ User Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RABBIT_MQ_USER_NAME = ESB_ELEMENT_FEATURE_COUNT + 16;
+
+	/**
+	 * The feature id for the '<em><b>Rabbit MQ Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__RABBIT_MQ_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 17;
+
+	/**
+	 * The feature id for the '<em><b>Virtual Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__VIRTUAL_HOST = ESB_ELEMENT_FEATURE_COUNT + 18;
+
+	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 11;
+	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 19;
 
 	/**
 	 * The number of structural features of the '<em>Message Store</em>' class.
@@ -21483,7 +21555,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 12;
+	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 20;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.
@@ -31294,6 +31366,94 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getMessageStore_ProviderClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rabbit MQ Server Host Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostName()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_RabbitMQServerHostName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rabbit MQ Server Host Port</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostPort()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_RabbitMQServerHostPort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rabbit MQ Queue Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQQueueName()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_RabbitMQQueueName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rabbit MQ Exchange Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQExchangeName()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_RabbitMQExchangeName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRoutingKey <em>Routing Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Routing Key</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRoutingKey()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_RoutingKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName <em>Rabbit MQ User Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rabbit MQ User Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_RabbitMQUserName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword <em>Rabbit MQ Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rabbit MQ Password</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_RabbitMQPassword();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost <em>Virtual Host</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Virtual Host</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_VirtualHost();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getParameters <em>Parameters</em>}'.
@@ -45935,6 +46095,70 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute MESSAGE_STORE__PROVIDER_CLASS = eINSTANCE.getMessageStore_ProviderClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Rabbit MQ Server Host Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME = eINSTANCE.getMessageStore_RabbitMQServerHostName();
+
+		/**
+		 * The meta object literal for the '<em><b>Rabbit MQ Server Host Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT = eINSTANCE.getMessageStore_RabbitMQServerHostPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Rabbit MQ Queue Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME = eINSTANCE.getMessageStore_RabbitMQQueueName();
+
+		/**
+		 * The meta object literal for the '<em><b>Rabbit MQ Exchange Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME = eINSTANCE.getMessageStore_RabbitMQExchangeName();
+
+		/**
+		 * The meta object literal for the '<em><b>Routing Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__ROUTING_KEY = eINSTANCE.getMessageStore_RoutingKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Rabbit MQ User Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RABBIT_MQ_USER_NAME = eINSTANCE.getMessageStore_RabbitMQUserName();
+
+		/**
+		 * The meta object literal for the '<em><b>Rabbit MQ Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__RABBIT_MQ_PASSWORD = eINSTANCE.getMessageStore_RabbitMQPassword();
+
+		/**
+		 * The meta object literal for the '<em><b>Virtual Host</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__VIRTUAL_HOST = eINSTANCE.getMessageStore_VirtualHost();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.

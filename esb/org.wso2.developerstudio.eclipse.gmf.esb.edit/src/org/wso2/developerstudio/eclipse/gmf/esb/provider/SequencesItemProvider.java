@@ -187,7 +187,7 @@ public class SequencesItemProvider
 	 * This adds a property descriptor for the Trace Enabled feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated 
+	 * @generated
 	 */
 	protected void addTraceEnabledPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add

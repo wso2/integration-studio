@@ -9364,8 +9364,80 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMessageStore_RabbitMQServerHostName() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_RabbitMQServerHostPort() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_RabbitMQQueueName() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_RabbitMQExchangeName() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_RoutingKey() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_RabbitMQUserName() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_RabbitMQPassword() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_VirtualHost() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getMessageStore_Parameters() {
-		return (EReference)messageStoreEClass.getEStructuralFeatures().get(11);
+		return (EReference)messageStoreEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -18882,6 +18954,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__JMS_SPEC_VERSION);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__ENABLE_CACHING);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__PROVIDER_CLASS);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__ROUTING_KEY);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RABBIT_MQ_USER_NAME);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__RABBIT_MQ_PASSWORD);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__VIRTUAL_HOST);
 		createEReference(messageStoreEClass, MESSAGE_STORE__PARAMETERS);
 
 		messageProcessorParameterEClass = createEClass(MESSAGE_PROCESSOR_PARAMETER);
@@ -21123,6 +21203,14 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageStore_JmsSpecVersion(), this.getJMSSpecVersion(), "jmsSpecVersion", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_EnableCaching(), ecorePackage.getEBoolean(), "enableCaching", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_ProviderClass(), ecorePackage.getEString(), "providerClass", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_RabbitMQServerHostName(), ecorePackage.getEString(), "rabbitMQServerHostName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_RabbitMQServerHostPort(), ecorePackage.getEString(), "rabbitMQServerHostPort", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_RabbitMQQueueName(), ecorePackage.getEString(), "rabbitMQQueueName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_RabbitMQExchangeName(), ecorePackage.getEString(), "rabbitMQExchangeName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_RoutingKey(), ecorePackage.getEString(), "routingKey", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_RabbitMQUserName(), ecorePackage.getEString(), "rabbitMQUserName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_RabbitMQPassword(), ecorePackage.getEString(), "rabbitMQPassword", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_VirtualHost(), ecorePackage.getEString(), "virtualHost", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMessageStore_Parameters(), this.getMessageStoreParameter(), null, "parameters", null, 0, -1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(messageProcessorParameterEClass, MessageProcessorParameter.class, "MessageProcessorParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -21866,6 +21954,8 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.IN_MEMORY);
 		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.JMS);
 		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.CUSTOM);
+		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.RABBITMQ);
+		addEEnumLiteral(messageStoreTypeEEnum, MessageStoreType.JDBC);
 
 		initEEnum(jmsSpecVersionEEnum, JMSSpecVersion.class, "JMSSpecVersion");
 		addEEnumLiteral(jmsSpecVersionEEnum, JMSSpecVersion.JMS_11);

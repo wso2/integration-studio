@@ -37,6 +37,14 @@ public class Constants extends NLS {
 	public static String FIELD_JMS_ENABLE_CACHING;
 	public static String FIELD_JMS_TIMEOUT;
 	public static String FIELD_JMS_USER_NAME;
+	public static String FIELD_RABBITMQ_SERVER_HOST_NAME;
+	public static String FIELD_RABBITMQ_SERVER_HOST_PORT;
+	public static String FIELD_RABBITMQ_QUEUE_NAME;
+	public static String FIELD_RABBITMQ_EXCHANGE_NAME;
+	public static String FIELD_RABBITMQ_ROUTING_KEY;
+	public static String FIELD_RABBITMQ_USER_NAME;
+	public static String FIELD_RABBITMQ_PASSWORD;
+	public static String FIELD_RABBITMQ_VIRTUAL_HOST;
 	public static String FIELD_SAVE_LOCATION;
 	public static String FIELD_STORE_NAME;
 	public static String FIELD_STORE_TYPE;
@@ -44,6 +52,12 @@ public class Constants extends NLS {
 	public static String TXT_CUSTOM;
 	public static String TXT_IN_MEMORY;
 	public static String TXT_JMS;
+	public static String TXT_RABBITMQ;
+	public static String TXT_JDBC;
+	public static String TXT_JMS_FIELD_PREFIX;
+	public static String TXT_CUSTOM_FIELD_PREFIX;
+	public static String TXT_RABBITMQ_FIELD_PREFIX;
+	public static String TXT_JDBC_FIELD_PREFIX;
 
 	static {
 		// initialize resource bundle

@@ -81,6 +81,16 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 	private List<File> fileLst = new ArrayList<File>();
 
 	private String version = "1.0.0";
+	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
+
+	private static final String STORE_RABBITMQ_VIRTUAL_HOST = "store.rabbitmq.virtual.host";
+	private static final String STORE_RABBITMQ_PASSWORD = "store.rabbitmq.password";
+	private static final String STORE_RABBITMQ_USERNAME = "store.rabbitmq.username";
+	private static final String STORE_RABBITMQ_ROUTE_KEY = "store.rabbitmq.route.key";
+	private static final String STORE_RABBITMQ_EXCHANGE_NAME = "store.rabbitmq.exchange.name";
+	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
+	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
+	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
 	
 	public MessageStoreCreationWizard() {
 		messageStoreModel = new MessageStoreModel();
@@ -112,7 +122,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
             if(getModel().getSelectedOption().equals(FIELD_IMPORT_STORE)){
             	IFile task = location.getFile(new Path(getModel().getImportFile().getName()));
 				if(task.exists()){
-					if(!MessageDialog.openQuestion(getShell(), "WARNING", "Do you like to override exsiting project in the workspace")){
+					if(!MessageDialog.openQuestion(getShell(), "WARNING", "Do you like to override the existing project in workspace")){
 						return false;	
 					}
 					isNewArtifact = false;
@@ -210,7 +220,34 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			parameters.put("store.jms.cache.connection", ((Boolean)messageStoreModel.getJmsEnableCaching()).toString());
 			parameters.put("store.jms.ConsumerReceiveTimeOut", ((Integer)messageStoreModel.getJmsTimeout()).toString());
 
-		} 
+		} else if (messageStoreModel.getMessageStoreType() == MessageStoreType.RABBITMQ) {
+			className = RABBITMQ_MS_FQN;
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQServerHostName())) {
+				parameters.put(STORE_RABBITMQ_HOST_NAME, messageStoreModel.getRabbitMQServerHostName());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQServerHostPort())) {
+				parameters.put(STORE_RABBITMQ_HOST_PORT, messageStoreModel.getRabbitMQServerHostPort());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQQueueName())) {
+				parameters.put(STORE_RABBITMQ_QUEUE_NAME, messageStoreModel.getRabbitMQQueueName());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQExchangeName())) {
+				parameters.put(STORE_RABBITMQ_EXCHANGE_NAME, messageStoreModel.getRabbitMQExchangeName());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQRoutingKey())) {
+				parameters.put(STORE_RABBITMQ_ROUTE_KEY, messageStoreModel.getRabbitMQRoutingKey());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQUserName())) {
+				parameters.put(STORE_RABBITMQ_USERNAME, messageStoreModel.getRabbitMQUserName());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQPassword())) {
+				parameters.put(STORE_RABBITMQ_PASSWORD, messageStoreModel.getRabbitMQPassword());
+			}
+			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQVirtualHost())) {
+				parameters.put(STORE_RABBITMQ_VIRTUAL_HOST, messageStoreModel.getRabbitMQVirtualHost());
+			}
+		}
+		
 		store.setParameters(parameters);
 		
 		OMElement messageStoreElement = MessageStoreSerializer.serializeMessageStore(null, store);

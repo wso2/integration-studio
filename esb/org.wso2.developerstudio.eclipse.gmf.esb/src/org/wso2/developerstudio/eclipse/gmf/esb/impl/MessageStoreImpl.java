@@ -54,6 +54,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#isEnableCaching <em>Enable Caching</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getProviderClass <em>Provider Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRoutingKey <em>Routing Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQUserName <em>Rabbit MQ User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQPassword <em>Rabbit MQ Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getVirtualHost <em>Virtual Host</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
@@ -280,6 +288,166 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * @ordered
 	 */
 	protected String providerClass = PROVIDER_CLASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRabbitMQServerHostName() <em>Rabbit MQ Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQServerHostName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRabbitMQServerHostName() <em>Rabbit MQ Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQServerHostName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rabbitMQServerHostName = RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRabbitMQServerHostPort() <em>Rabbit MQ Server Host Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQServerHostPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRabbitMQServerHostPort() <em>Rabbit MQ Server Host Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQServerHostPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rabbitMQServerHostPort = RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRabbitMQQueueName() <em>Rabbit MQ Queue Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQQueueName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RABBIT_MQ_QUEUE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRabbitMQQueueName() <em>Rabbit MQ Queue Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQQueueName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rabbitMQQueueName = RABBIT_MQ_QUEUE_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRabbitMQExchangeName() <em>Rabbit MQ Exchange Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQExchangeName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RABBIT_MQ_EXCHANGE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRabbitMQExchangeName() <em>Rabbit MQ Exchange Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQExchangeName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rabbitMQExchangeName = RABBIT_MQ_EXCHANGE_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRoutingKey() <em>Routing Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoutingKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ROUTING_KEY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRoutingKey() <em>Routing Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoutingKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected String routingKey = ROUTING_KEY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRabbitMQUserName() <em>Rabbit MQ User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQUserName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RABBIT_MQ_USER_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRabbitMQUserName() <em>Rabbit MQ User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQUserName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rabbitMQUserName = RABBIT_MQ_USER_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRabbitMQPassword() <em>Rabbit MQ Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RABBIT_MQ_PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRabbitMQPassword() <em>Rabbit MQ Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRabbitMQPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String rabbitMQPassword = RABBIT_MQ_PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVirtualHost() <em>Virtual Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVirtualHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VIRTUAL_HOST_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVirtualHost() <em>Virtual Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVirtualHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected String virtualHost = VIRTUAL_HOST_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -546,6 +714,174 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getRabbitMQServerHostName() {
+		return rabbitMQServerHostName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRabbitMQServerHostName(String newRabbitMQServerHostName) {
+		String oldRabbitMQServerHostName = rabbitMQServerHostName;
+		rabbitMQServerHostName = newRabbitMQServerHostName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME, oldRabbitMQServerHostName, rabbitMQServerHostName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRabbitMQServerHostPort() {
+		return rabbitMQServerHostPort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRabbitMQServerHostPort(String newRabbitMQServerHostPort) {
+		String oldRabbitMQServerHostPort = rabbitMQServerHostPort;
+		rabbitMQServerHostPort = newRabbitMQServerHostPort;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT, oldRabbitMQServerHostPort, rabbitMQServerHostPort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRabbitMQQueueName() {
+		return rabbitMQQueueName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRabbitMQQueueName(String newRabbitMQQueueName) {
+		String oldRabbitMQQueueName = rabbitMQQueueName;
+		rabbitMQQueueName = newRabbitMQQueueName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME, oldRabbitMQQueueName, rabbitMQQueueName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRabbitMQExchangeName() {
+		return rabbitMQExchangeName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRabbitMQExchangeName(String newRabbitMQExchangeName) {
+		String oldRabbitMQExchangeName = rabbitMQExchangeName;
+		rabbitMQExchangeName = newRabbitMQExchangeName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME, oldRabbitMQExchangeName, rabbitMQExchangeName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRoutingKey() {
+		return routingKey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoutingKey(String newRoutingKey) {
+		String oldRoutingKey = routingKey;
+		routingKey = newRoutingKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__ROUTING_KEY, oldRoutingKey, routingKey));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRabbitMQUserName() {
+		return rabbitMQUserName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRabbitMQUserName(String newRabbitMQUserName) {
+		String oldRabbitMQUserName = rabbitMQUserName;
+		rabbitMQUserName = newRabbitMQUserName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME, oldRabbitMQUserName, rabbitMQUserName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRabbitMQPassword() {
+		return rabbitMQPassword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRabbitMQPassword(String newRabbitMQPassword) {
+		String oldRabbitMQPassword = rabbitMQPassword;
+		rabbitMQPassword = newRabbitMQPassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD, oldRabbitMQPassword, rabbitMQPassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVirtualHost() {
+		return virtualHost;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVirtualHost(String newVirtualHost) {
+		String oldVirtualHost = virtualHost;
+		virtualHost = newVirtualHost;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__VIRTUAL_HOST, oldVirtualHost, virtualHost));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<MessageStoreParameter> getParameters() {
 		if (parameters == null) {
 			parameters = new EObjectContainmentEList<MessageStoreParameter>(MessageStoreParameter.class, this, EsbPackage.MESSAGE_STORE__PARAMETERS);
@@ -597,6 +933,22 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return isEnableCaching();
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				return getProviderClass();
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+				return getRabbitMQServerHostName();
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+				return getRabbitMQServerHostPort();
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+				return getRabbitMQQueueName();
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+				return getRabbitMQExchangeName();
+			case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+				return getRoutingKey();
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+				return getRabbitMQUserName();
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+				return getRabbitMQPassword();
+			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+				return getVirtualHost();
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				return getParameters();
 		}
@@ -644,6 +996,30 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return;
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				setProviderClass((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+				setRabbitMQServerHostName((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+				setRabbitMQServerHostPort((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+				setRabbitMQQueueName((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+				setRabbitMQExchangeName((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+				setRoutingKey((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+				setRabbitMQUserName((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+				setRabbitMQPassword((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+				setVirtualHost((String)newValue);
 				return;
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				getParameters().clear();
@@ -694,6 +1070,30 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				setProviderClass(PROVIDER_CLASS_EDEFAULT);
 				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+				setRabbitMQServerHostName(RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+				setRabbitMQServerHostPort(RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+				setRabbitMQQueueName(RABBIT_MQ_QUEUE_NAME_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+				setRabbitMQExchangeName(RABBIT_MQ_EXCHANGE_NAME_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+				setRoutingKey(ROUTING_KEY_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+				setRabbitMQUserName(RABBIT_MQ_USER_NAME_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+				setRabbitMQPassword(RABBIT_MQ_PASSWORD_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+				setVirtualHost(VIRTUAL_HOST_EDEFAULT);
+				return;
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				getParameters().clear();
 				return;
@@ -731,6 +1131,22 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return enableCaching != ENABLE_CACHING_EDEFAULT;
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
 				return PROVIDER_CLASS_EDEFAULT == null ? providerClass != null : !PROVIDER_CLASS_EDEFAULT.equals(providerClass);
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+				return RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT == null ? rabbitMQServerHostName != null : !RABBIT_MQ_SERVER_HOST_NAME_EDEFAULT.equals(rabbitMQServerHostName);
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+				return RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT == null ? rabbitMQServerHostPort != null : !RABBIT_MQ_SERVER_HOST_PORT_EDEFAULT.equals(rabbitMQServerHostPort);
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+				return RABBIT_MQ_QUEUE_NAME_EDEFAULT == null ? rabbitMQQueueName != null : !RABBIT_MQ_QUEUE_NAME_EDEFAULT.equals(rabbitMQQueueName);
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+				return RABBIT_MQ_EXCHANGE_NAME_EDEFAULT == null ? rabbitMQExchangeName != null : !RABBIT_MQ_EXCHANGE_NAME_EDEFAULT.equals(rabbitMQExchangeName);
+			case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+				return ROUTING_KEY_EDEFAULT == null ? routingKey != null : !ROUTING_KEY_EDEFAULT.equals(routingKey);
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+				return RABBIT_MQ_USER_NAME_EDEFAULT == null ? rabbitMQUserName != null : !RABBIT_MQ_USER_NAME_EDEFAULT.equals(rabbitMQUserName);
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+				return RABBIT_MQ_PASSWORD_EDEFAULT == null ? rabbitMQPassword != null : !RABBIT_MQ_PASSWORD_EDEFAULT.equals(rabbitMQPassword);
+			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+				return VIRTUAL_HOST_EDEFAULT == null ? virtualHost != null : !VIRTUAL_HOST_EDEFAULT.equals(virtualHost);
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 		}
@@ -769,6 +1185,22 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 		result.append(enableCaching);
 		result.append(", providerClass: ");
 		result.append(providerClass);
+		result.append(", rabbitMQServerHostName: ");
+		result.append(rabbitMQServerHostName);
+		result.append(", rabbitMQServerHostPort: ");
+		result.append(rabbitMQServerHostPort);
+		result.append(", rabbitMQQueueName: ");
+		result.append(rabbitMQQueueName);
+		result.append(", rabbitMQExchangeName: ");
+		result.append(rabbitMQExchangeName);
+		result.append(", routingKey: ");
+		result.append(routingKey);
+		result.append(", rabbitMQUserName: ");
+		result.append(rabbitMQUserName);
+		result.append(", rabbitMQPassword: ");
+		result.append(rabbitMQPassword);
+		result.append(", virtualHost: ");
+		result.append(virtualHost);
 		result.append(')');
 		return result.toString();
 	}

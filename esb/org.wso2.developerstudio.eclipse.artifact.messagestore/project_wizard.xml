@@ -54,11 +54,33 @@
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Consumer Receive Timeout</data>
 			<!-- JMS : end -->		
 			
+			<!-- Custom : begin -->
 			<data modelProperty="custom.provider-class" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Provider class*</data>
 			<data modelProperty="custom.parameters" type="composite"  
 			fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController" 
 			controlData="class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.ParametersCompositeProvider">Parameters</data>
+			<!-- Custom : end -->
+			
+			<!-- RabbitMQ : begin -->
+			<data modelProperty="rabbitmq.server-host-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Server Host Name*</data>
+			<data modelProperty="rabbitmq.server-host-port" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Server Host Port*</data>
+			<data modelProperty="rabbitmq.queue-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Queue Name</data>
+			<data modelProperty="rabbitmq.exchange-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">RabbitMQ Exchange Name</data>
+			<data modelProperty="rabbitmq.routing-key" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Routing Key</data>
+			<data modelProperty="rabbitmq.user-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">User Name</data>
+			<data modelProperty="rabbitmq.password" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
+			<data modelProperty="rabbitmq.virtual-host" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Virtual Host</data>
+			<!-- RabbitMQ : end -->
+			
 			<group id ="location"/>	
 			<data modelProperty="save.location" type="workspacefolder"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"

@@ -59,7 +59,23 @@ public enum MessageStoreType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CUSTOM(2, "CUSTOM", "CUSTOM");
+	CUSTOM(2, "CUSTOM", "CUSTOM"), /**
+	 * The '<em><b>RABBITMQ</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RABBITMQ_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RABBITMQ(3, "RABBITMQ", "RABBITMQ"), /**
+	 * The '<em><b>JDBC</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JDBC_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	JDBC(4, "JDBC", "JDBC");
 
 	/**
 	 * The '<em><b>IN MEMORY</b></em>' literal value.
@@ -107,6 +123,36 @@ public enum MessageStoreType implements Enumerator {
 	public static final int CUSTOM_VALUE = 2;
 
 	/**
+	 * The '<em><b>RABBITMQ</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>RABBITMQ</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #RABBITMQ
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RABBITMQ_VALUE = 3;
+
+	/**
+	 * The '<em><b>JDBC</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>JDBC</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #JDBC
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JDBC_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Message Store Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,6 +163,8 @@ public enum MessageStoreType implements Enumerator {
 			IN_MEMORY,
 			JMS,
 			CUSTOM,
+			RABBITMQ,
+			JDBC,
 		};
 
 	/**
@@ -170,6 +218,8 @@ public enum MessageStoreType implements Enumerator {
 			case IN_MEMORY_VALUE: return IN_MEMORY;
 			case JMS_VALUE: return JMS;
 			case CUSTOM_VALUE: return CUSTOM;
+			case RABBITMQ_VALUE: return RABBITMQ;
+			case JDBC_VALUE: return JDBC;
 		}
 		return null;
 	}

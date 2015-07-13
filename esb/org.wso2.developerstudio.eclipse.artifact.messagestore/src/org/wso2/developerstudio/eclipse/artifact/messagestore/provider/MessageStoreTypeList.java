@@ -34,6 +34,8 @@ public class MessageStoreTypeList extends AbstractListDataProvider {
 		list.add(createListData(Constants.TXT_JMS, MessageStoreType.JMS));
 		list.add(createListData(Constants.TXT_IN_MEMORY, MessageStoreType.IN_MEMORY));
 		list.add(createListData(Constants.TXT_CUSTOM, MessageStoreType.CUSTOM));
+		list.add(createListData(Constants.TXT_RABBITMQ, MessageStoreType.RABBITMQ));
+		list.add(createListData(Constants.TXT_JDBC, MessageStoreType.JDBC));
 		return list;
 	}
 	
@@ -44,7 +46,9 @@ public class MessageStoreTypeList extends AbstractListDataProvider {
 	public enum MessageStoreType{
 		IN_MEMORY,
 		JMS,
-		CUSTOM
+		CUSTOM,
+		RABBITMQ,
+		JDBC
 	}
 
 }

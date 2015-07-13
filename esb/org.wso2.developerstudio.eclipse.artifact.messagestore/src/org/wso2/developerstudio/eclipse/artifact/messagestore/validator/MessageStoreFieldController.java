@@ -40,6 +40,8 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			ProjectDataModel model) throws FieldValidationException {
 		boolean jms = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JMS;
 		boolean custom = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.CUSTOM;
+		boolean rabbitmq = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ;
+		boolean jdbc = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JDBC;
 
 		if (key.equals(FIELD_STORE_NAME)) {
 			CommonFieldValidator.validateArtifactName(value);
@@ -60,6 +62,14 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 				if(!StringUtils.isNumeric(value.toString())){
 					throw new FieldValidationException("Time-out value is invalid");
 				}
+			}
+		} else if (key.equals(FIELD_RABBITMQ_SERVER_HOST_NAME)) {
+			if (rabbitmq) {
+				CommonFieldValidator.validateRequiredField(value, "RabbitMQ Server Host Name cannot be empty");
+			}
+		} else if (key.equals(FIELD_RABBITMQ_SERVER_HOST_PORT)) {
+			if (rabbitmq) {
+				CommonFieldValidator.validateRequiredField(value, "RabbitMQ Server Host Port cannot be empty");
 			}
 		} else if (key.equals(FIELD_SAVE_LOCATION)) {
 			IResource resource = (IResource) value;
@@ -92,6 +102,16 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 			updateFields.add(FIELD_JMS_QUEUE_NAME);
 			updateFields.add(FIELD_JMS_ENABLE_CACHING);
 			updateFields.add(FIELD_JMS_TIMEOUT);
+			
+			updateFields.add(FIELD_RABBITMQ_SERVER_HOST_NAME);
+			updateFields.add(FIELD_RABBITMQ_SERVER_HOST_PORT);
+			updateFields.add(FIELD_RABBITMQ_QUEUE_NAME);
+			updateFields.add(FIELD_RABBITMQ_EXCHANGE_NAME);
+			updateFields.add(FIELD_RABBITMQ_ROUTING_KEY);
+			updateFields.add(FIELD_RABBITMQ_USER_NAME);
+			updateFields.add(FIELD_RABBITMQ_PASSWORD);
+			updateFields.add(FIELD_RABBITMQ_VIRTUAL_HOST);
+			
 			updateFields.add(FIELD_CUSTOM_PROVIDER_CLASS);
 			updateFields.add(FIELD_CUSTOM_PARAMETERS);
 		} else if (modelProperty.equals(FIELD_CREATE_ESB_PRJ)) {
@@ -105,11 +125,14 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 	@Override
 	public boolean isVisibleField(String modelProperty, ProjectDataModel model) {
 		boolean visibleField = super.isVisibleField(modelProperty, model);
-		if(modelProperty.startsWith("jms.")){
-			visibleField = ((MessageStoreModel)model).getMessageStoreType()==MessageStoreType.JMS;
-		} else if (modelProperty.equals(FIELD_CUSTOM_PROVIDER_CLASS)
-				|| modelProperty.equals(FIELD_CUSTOM_PARAMETERS)) {
+		if (modelProperty.startsWith(TXT_JMS_FIELD_PREFIX)) {
+			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JMS;
+		} else if (modelProperty.startsWith(TXT_CUSTOM_FIELD_PREFIX)) {
 			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.CUSTOM;
+		} else if (modelProperty.startsWith(TXT_RABBITMQ_FIELD_PREFIX)) {
+			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ;
+		} else if (modelProperty.startsWith(TXT_JDBC_FIELD_PREFIX)) {
+			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JDBC;
 		} else if (modelProperty.equals(FIELD_AVAILABLE_STORES)) {
 			List<OMElement> availableStores = ((MessageStoreModel) model).getAvailableStoreslist();
 			visibleField = (availableStores != null && availableStores.size() > 0);

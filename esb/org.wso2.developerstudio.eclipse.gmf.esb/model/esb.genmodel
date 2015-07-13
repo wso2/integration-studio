@@ -543,6 +543,8 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/IN_MEMORY"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/JMS"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/CUSTOM"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/RABBITMQ"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageStoreType/JDBC"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JMSSpecVersion">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSpecVersion/JMS_1_1"/>
@@ -789,6 +791,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/format"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/optimize"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//AbstractEndPoint/templateParameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/statisticsEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//AbstractEndPoint/traceEnabled"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//MessageMediator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//MessageMediator/inputConnector"/>
@@ -1841,6 +1845,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Sequences/associatedProxy"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Sequences/onError"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//Sequences/templateParameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Sequences/traceEnabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//Sequences/statisticsEnabled"/>
     </genClasses>
     <genClasses ecoreClass="esb.ecore#//SequencesOutputConnector"/>
     <genClasses ecoreClass="esb.ecore#//SequencesInputConnector"/>
@@ -2032,6 +2038,22 @@
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/enableCaching"/>
       <genFeatures createChild="false" propertyCategory="basic" propertyDescription="Provider Class"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/providerClass"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="RabbitMQ Server Host Name"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/rabbitMQServerHostName"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="RabbitMQ Server Host Port"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/rabbitMQServerHostPort"/>
+      <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="RabbitMQ Queue Name"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/rabbitMQQueueName"/>
+      <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="RabbitMQ Exchange Name"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/rabbitMQExchangeName"/>
+      <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Routing Key"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/routingKey"/>
+      <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="RabbitMQ User Name"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/rabbitMQUserName"/>
+      <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="RabbitMQ password"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/rabbitMQPassword"/>
+      <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Virtual Host"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/virtualHost"/>
       <genFeatures children="true" createChild="true" propertyCategory="Additional Parameters"
           propertyDescription="Message Store Parameters" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//MessageStore/parameters"/>

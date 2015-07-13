@@ -2530,6 +2530,8 @@
     <eLiterals name="IN_MEMORY"/>
     <eLiterals name="JMS" value="1"/>
     <eLiterals name="CUSTOM" value="2"/>
+    <eLiterals name="RABBITMQ" value="3"/>
+    <eLiterals name="JDBC" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="JMSSpecVersion">
     <eLiterals name="JMS_1_1" literal="1.1"/>
@@ -2552,6 +2554,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="jmsSpecVersion" eType="#//JMSSpecVersion"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enableCaching" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="providerClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rabbitMQServerHostName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rabbitMQServerHostPort"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rabbitMQQueueName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rabbitMQExchangeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="routingKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rabbitMQUserName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rabbitMQPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtualHost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//MessageStoreParameter" containment="true"/>
   </eClassifiers>

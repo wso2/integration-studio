@@ -72,10 +72,83 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private Map<String,String> customParameters = new HashMap<String,String>();
 	private List<OMElement> availableStoreslist;
 	private List<OMElement> selectedStoresList;
-	
+
+	private String rabbitMQServerHostName;
+	private String rabbitMQServerHostPort;
+	private String rabbitMQQueueName;
+	private String rabbitMQExchangeName;
+	private String rabbitMQRoutingKey;
+	private String rabbitMQUserName;
+	private String rabbitMQPassword;
+	private String rabbitMQVirtualHost;
+
 	public MessageStoreModel() {
 		availableStoreslist = new ArrayList<OMElement>();
 		selectedStoresList = new ArrayList<OMElement>();
+	}
+
+	public String getRabbitMQServerHostName() {
+		return rabbitMQServerHostName;
+	}
+
+	public void setRabbitMQServerHostName(String rabbitMQServerHostName) {
+		this.rabbitMQServerHostName = rabbitMQServerHostName;
+	}
+
+	public String getRabbitMQServerHostPort() {
+		return rabbitMQServerHostPort;
+	}
+
+	public void setRabbitMQServerHostPort(String rabbitMQServerHostPort) {
+		this.rabbitMQServerHostPort = rabbitMQServerHostPort;
+	}
+
+	public String getRabbitMQQueueName() {
+		return rabbitMQQueueName;
+	}
+
+	public void setRabbitMQQueueName(String rabbitMQQueueName) {
+		this.rabbitMQQueueName = rabbitMQQueueName;
+	}
+
+	public String getRabbitMQExchangeName() {
+		return rabbitMQExchangeName;
+	}
+
+	public void setRabbitMQExchangeName(String rabbitMQExchangeName) {
+		this.rabbitMQExchangeName = rabbitMQExchangeName;
+	}
+
+	public String getRabbitMQRoutingKey() {
+		return rabbitMQRoutingKey;
+	}
+
+	public void setRabbitMQRoutingKey(String rabbitMQRoutingKey) {
+		this.rabbitMQRoutingKey = rabbitMQRoutingKey;
+	}
+
+	public String getRabbitMQUserName() {
+		return rabbitMQUserName;
+	}
+
+	public void setRabbitMQUserName(String rabbitMQUserName) {
+		this.rabbitMQUserName = rabbitMQUserName;
+	}
+
+	public String getRabbitMQPassword() {
+		return rabbitMQPassword;
+	}
+
+	public void setRabbitMQPassword(String rabbitMQPassword) {
+		this.rabbitMQPassword = rabbitMQPassword;
+	}
+
+	public String getRabbitMQVirtualHost() {
+		return rabbitMQVirtualHost;
+	}
+
+	public void setRabbitMQVirtualHost(String rabbitMQVirtualHost) {
+		this.rabbitMQVirtualHost = rabbitMQVirtualHost;
 	}
 
 	public MessageStoreType getMessageStoreType() {
@@ -203,6 +276,22 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getJmsTimeout();
 		} else if (key.equals(Constants.FIELD_JMS_USER_NAME)) {
 			value = getJmsUsername();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_NAME)) {
+			value = getRabbitMQServerHostName();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_PORT)) {
+			value = getRabbitMQServerHostPort();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_QUEUE_NAME)) {
+			value = getRabbitMQQueueName();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_EXCHANGE_NAME)) {
+			value = getRabbitMQExchangeName();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_ROUTING_KEY)) {
+			value = getRabbitMQRoutingKey();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_USER_NAME)) {
+			value = getRabbitMQUserName();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_PASSWORD)) {
+			value = getRabbitMQPassword();
+		} else if (key.equals(Constants.FIELD_RABBITMQ_VIRTUAL_HOST)) {
+			value = getRabbitMQVirtualHost();
 		} else if (key.equals(Constants.FIELD_STORE_NAME)) {
 			value = getStoreName();
 		} else if(key.equals(Constants.FIELD_SAVE_LOCATION)){
@@ -253,6 +342,22 @@ public class MessageStoreModel extends ProjectDataModel  {
 			}
 		} else if (key.equals(Constants.FIELD_JMS_USER_NAME)) {
 			setJmsUsername(data.toString());
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_NAME)) {
+			setRabbitMQServerHostName(data.toString());
+		} else if (key.equals(Constants.FIELD_RABBITMQ_SERVER_HOST_PORT)) {
+			setRabbitMQServerHostPort(data.toString());
+		} else if (key.equals(Constants.FIELD_RABBITMQ_QUEUE_NAME)) {
+			setRabbitMQQueueName(data.toString());
+		} else if (key.equals(Constants.FIELD_RABBITMQ_EXCHANGE_NAME)) {
+			setRabbitMQExchangeName(data.toString());
+		} else if (key.equals(Constants.FIELD_RABBITMQ_ROUTING_KEY)) {
+			setRabbitMQRoutingKey(data.toString());
+		} else if (key.equals(Constants.FIELD_RABBITMQ_USER_NAME)) {
+			setRabbitMQUserName(data.toString());
+		} else if (key.equals(Constants.FIELD_RABBITMQ_PASSWORD)) {
+			setRabbitMQPassword(data.toString());
+		} else if (key.equals(Constants.FIELD_RABBITMQ_VIRTUAL_HOST)) {
+			setRabbitMQVirtualHost(data.toString());
 		} else if (key.equals(Constants.FIELD_STORE_NAME)) {
 			setStoreName(data.toString());
 		} else if (key.equals(Constants.FIELD_CUSTOM_PROVIDER_CLASS)) {

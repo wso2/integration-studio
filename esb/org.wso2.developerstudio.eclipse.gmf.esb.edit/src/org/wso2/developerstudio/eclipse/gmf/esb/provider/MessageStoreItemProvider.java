@@ -91,6 +91,20 @@ public class MessageStoreItemProvider
 			addProviderClassPropertyDescriptor(object);
 			addParametersPropertyDescriptor(object);
 			break;
+		case RABBITMQ:
+			addRabbitMQServerHostNamePropertyDescriptor(object);
+			addRabbitMQServerHostPortPropertyDescriptor(object);
+			addRabbitMQQueueNamePropertyDescriptor(object);
+			addRabbitMQExchangeNamePropertyDescriptor(object);
+			addRoutingKeyPropertyDescriptor(object);
+			addRabbitMQUserNamePropertyDescriptor(object);
+			addRabbitMQPasswordPropertyDescriptor(object);
+			addVirtualHostPropertyDescriptor(object);
+			break;
+		case JDBC:
+			//addProviderClassPropertyDescriptor(object);
+			//addParametersPropertyDescriptor(object);
+			break;
 		default:
 			break;
 		}
@@ -341,6 +355,182 @@ public class MessageStoreItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Rabbit MQ Server Host Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRabbitMQServerHostNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_rabbitMQServerHostName_feature"),
+				 getString("_UI_MessageStore_rabbitMQServerHostName_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Rabbit MQ Server Host Port feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRabbitMQServerHostPortPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_rabbitMQServerHostPort_feature"),
+				 getString("_UI_MessageStore_rabbitMQServerHostPort_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Rabbit MQ Queue Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRabbitMQQueueNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_rabbitMQQueueName_feature"),
+				 getString("_UI_MessageStore_rabbitMQQueueName_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Rabbit MQ Exchange Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRabbitMQExchangeNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_rabbitMQExchangeName_feature"),
+				 getString("_UI_MessageStore_rabbitMQExchangeName_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Routing Key feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRoutingKeyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_routingKey_feature"),
+				 getString("_UI_MessageStore_routingKey_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__ROUTING_KEY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Rabbit MQ User Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRabbitMQUserNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_rabbitMQUserName_feature"),
+				 getString("_UI_MessageStore_rabbitMQUserName_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_USER_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Rabbit MQ Password feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRabbitMQPasswordPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_rabbitMQPassword_feature"),
+				 getString("_UI_MessageStore_rabbitMQPassword_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__RABBIT_MQ_PASSWORD,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Virtual Host feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVirtualHostPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_virtualHost_feature"),
+				 getString("_UI_MessageStore_virtualHost_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__VIRTUAL_HOST,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_AdditionalParametersPropertyCategory"),
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Parameters feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -440,6 +630,14 @@ public class MessageStoreItemProvider
 			case EsbPackage.MESSAGE_STORE__JMS_SPEC_VERSION:
 			case EsbPackage.MESSAGE_STORE__ENABLE_CACHING:
 			case EsbPackage.MESSAGE_STORE__PROVIDER_CLASS:
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_NAME:
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT:
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_QUEUE_NAME:
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_EXCHANGE_NAME:
+			case EsbPackage.MESSAGE_STORE__ROUTING_KEY:
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
+			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
+			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:

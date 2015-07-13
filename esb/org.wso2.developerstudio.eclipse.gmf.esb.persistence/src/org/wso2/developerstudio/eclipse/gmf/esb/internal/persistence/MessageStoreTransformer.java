@@ -33,6 +33,17 @@ import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 
 public class MessageStoreTransformer {
 
+	private static final String STORE_RABBITMQ_VIRTUAL_HOST = "store.rabbitmq.virtual.host";
+	private static final String STORE_RABBITMQ_PASSWORD = "store.rabbitmq.password";
+	private static final String STORE_RABBITMQ_USERNAME = "store.rabbitmq.username";
+	private static final String STORE_RABBITMQ_ROUTE_KEY = "store.rabbitmq.route.key";
+	private static final String STORE_RABBITMQ_EXCHANGE_NAME = "store.rabbitmq.exchange.name";
+	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
+	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
+	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
+
+	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
+	
 	public static OMElement createMessageStore(MessageStore model) throws Exception {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		
@@ -94,6 +105,32 @@ public class MessageStoreTransformer {
 					parameters.put(additionalParameter.getParameterName(),
 							additionalParameter.getParameterValue());
 				}
+			}
+		} else if (model.getStoreType() == MessageStoreType.RABBITMQ) {
+			className = RABBITMQ_MS_FQN;
+			if (StringUtils.isNotBlank(model.getRabbitMQServerHostName())) {
+				parameters.put(STORE_RABBITMQ_HOST_NAME, model.getRabbitMQServerHostName());
+			}
+			if (StringUtils.isNotBlank(model.getRabbitMQServerHostPort())) {
+				parameters.put(STORE_RABBITMQ_HOST_PORT, model.getRabbitMQServerHostPort());
+			}
+			if (StringUtils.isNotBlank(model.getRabbitMQQueueName())) {
+				parameters.put(STORE_RABBITMQ_QUEUE_NAME, model.getRabbitMQQueueName());
+			}
+			if (StringUtils.isNotBlank(model.getRabbitMQExchangeName())) {
+				parameters.put(STORE_RABBITMQ_EXCHANGE_NAME, model.getRabbitMQExchangeName());
+			}
+			if (StringUtils.isNotBlank(model.getRoutingKey())) {
+				parameters.put(STORE_RABBITMQ_ROUTE_KEY, model.getRoutingKey());
+			}
+			if (StringUtils.isNotBlank(model.getRabbitMQUserName())) {
+				parameters.put(STORE_RABBITMQ_USERNAME, model.getRabbitMQUserName());
+			}
+			if (StringUtils.isNotBlank(model.getRabbitMQPassword())) {
+				parameters.put(STORE_RABBITMQ_PASSWORD, model.getRabbitMQPassword());
+			}
+			if (StringUtils.isNotBlank(model.getVirtualHost())) {
+				parameters.put(STORE_RABBITMQ_VIRTUAL_HOST, model.getVirtualHost());
 			}
 		}
 		

@@ -36,6 +36,14 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJmsSpecVersion <em>Jms Spec Version</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#isEnableCaching <em>Enable Caching</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getProviderClass <em>Provider Class</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRoutingKey <em>Routing Key</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName <em>Rabbit MQ User Name</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword <em>Rabbit MQ Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost <em>Virtual Host</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
@@ -336,6 +344,214 @@ public interface MessageStore extends EsbElement {
 	 * @generated
 	 */
 	void setProviderClass(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rabbit MQ Server Host Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rabbit MQ Server Host Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rabbit MQ Server Host Name</em>' attribute.
+	 * @see #setRabbitMQServerHostName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQServerHostName()
+	 * @model
+	 * @generated
+	 */
+	String getRabbitMQServerHostName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostName <em>Rabbit MQ Server Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rabbit MQ Server Host Name</em>' attribute.
+	 * @see #getRabbitMQServerHostName()
+	 * @generated
+	 */
+	void setRabbitMQServerHostName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rabbit MQ Server Host Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rabbit MQ Server Host Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rabbit MQ Server Host Port</em>' attribute.
+	 * @see #setRabbitMQServerHostPort(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQServerHostPort()
+	 * @model
+	 * @generated
+	 */
+	String getRabbitMQServerHostPort();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQServerHostPort <em>Rabbit MQ Server Host Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rabbit MQ Server Host Port</em>' attribute.
+	 * @see #getRabbitMQServerHostPort()
+	 * @generated
+	 */
+	void setRabbitMQServerHostPort(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rabbit MQ Queue Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rabbit MQ Queue Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rabbit MQ Queue Name</em>' attribute.
+	 * @see #setRabbitMQQueueName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQQueueName()
+	 * @model
+	 * @generated
+	 */
+	String getRabbitMQQueueName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQQueueName <em>Rabbit MQ Queue Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rabbit MQ Queue Name</em>' attribute.
+	 * @see #getRabbitMQQueueName()
+	 * @generated
+	 */
+	void setRabbitMQQueueName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rabbit MQ Exchange Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rabbit MQ Exchange Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rabbit MQ Exchange Name</em>' attribute.
+	 * @see #setRabbitMQExchangeName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQExchangeName()
+	 * @model
+	 * @generated
+	 */
+	String getRabbitMQExchangeName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQExchangeName <em>Rabbit MQ Exchange Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rabbit MQ Exchange Name</em>' attribute.
+	 * @see #getRabbitMQExchangeName()
+	 * @generated
+	 */
+	void setRabbitMQExchangeName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Routing Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Routing Key</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Routing Key</em>' attribute.
+	 * @see #setRoutingKey(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RoutingKey()
+	 * @model
+	 * @generated
+	 */
+	String getRoutingKey();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRoutingKey <em>Routing Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Routing Key</em>' attribute.
+	 * @see #getRoutingKey()
+	 * @generated
+	 */
+	void setRoutingKey(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rabbit MQ User Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rabbit MQ User Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rabbit MQ User Name</em>' attribute.
+	 * @see #setRabbitMQUserName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQUserName()
+	 * @model
+	 * @generated
+	 */
+	String getRabbitMQUserName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName <em>Rabbit MQ User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rabbit MQ User Name</em>' attribute.
+	 * @see #getRabbitMQUserName()
+	 * @generated
+	 */
+	void setRabbitMQUserName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rabbit MQ Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rabbit MQ Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rabbit MQ Password</em>' attribute.
+	 * @see #setRabbitMQPassword(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_RabbitMQPassword()
+	 * @model
+	 * @generated
+	 */
+	String getRabbitMQPassword();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword <em>Rabbit MQ Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rabbit MQ Password</em>' attribute.
+	 * @see #getRabbitMQPassword()
+	 * @generated
+	 */
+	void setRabbitMQPassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Virtual Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Virtual Host</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Virtual Host</em>' attribute.
+	 * @see #setVirtualHost(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_VirtualHost()
+	 * @model
+	 * @generated
+	 */
+	String getVirtualHost();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost <em>Virtual Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Virtual Host</em>' attribute.
+	 * @see #getVirtualHost()
+	 * @generated
+	 */
+	void setVirtualHost(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.

@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.artifact.synapse.api.validator;
 
+import java.io.File;
 import java.util.List;
 
 import org.apache.axiom.om.OMElement;
@@ -62,6 +63,11 @@ public class ProjectFieldController extends AbstractFieldController {
 			}
 		} else if (modelProperty.equals("import.file")) {
 			 CommonFieldValidator.validateImportFile(value);
+			 File apiFile = (File) value;
+				if (apiFile.isDirectory()) {
+					throw new FieldValidationException(
+							"Specified configuration file is a directory");
+				}
 		}  else if(modelProperty.equals("available.apis")){
 			APIArtifactModel apiModel = (APIArtifactModel) model; 
 			if(null!=apiModel.getAvailableAPIslist() && apiModel.getAvailableAPIslist().size()>0){

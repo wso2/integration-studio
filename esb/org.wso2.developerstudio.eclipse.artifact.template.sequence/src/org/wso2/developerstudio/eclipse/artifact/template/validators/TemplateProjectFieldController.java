@@ -15,6 +15,7 @@
  */
 package org.wso2.developerstudio.eclipse.artifact.template.validators;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -85,7 +86,12 @@ public class TemplateProjectFieldController extends AbstractFieldController {
                 }
             }
         } else if (modelProperty.equals(IMPORT_FILE_FIELD_ID)) {
-            CommonFieldValidator.validateImportFile(propertyValue);
+			CommonFieldValidator.validateImportFile(propertyValue);
+			File templateFile = (File) propertyValue;
+			if (templateFile.isDirectory()) {
+				throw new FieldValidationException(
+						"Specified configuration file is a directory");
+			}
         } else if (modelProperty.equals(SAVE_FILE_FIELD_ID)) {
             IResource resource = (IResource) propertyValue;
             if (null == resource || !resource.exists()) {

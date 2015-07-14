@@ -54,8 +54,9 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 				CommonFieldValidator.validateRequiredField(value,"JMS context factory cannot be empty");
 			}
 		} else if (key.equals(FIELD_JMS_PROVIDER_URL)) {
-			if(jms){
-				CommonFieldValidator.isValidUrl(value.toString(),"JMS Provide url cannot be empty");
+			if (jms) {
+				CommonFieldValidator.validateRequiredField(value,
+						"JMS Provide url cannot be empty");
 			}
 		} else if (key.equals(FIELD_JMS_TIMEOUT)) {
 			if(jms){

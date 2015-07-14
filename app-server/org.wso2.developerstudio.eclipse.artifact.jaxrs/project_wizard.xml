@@ -8,8 +8,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.jaxrs" 
-				  title="Create New JAX-RS Service" 
-				  description="Give a project name for the new JAX-RS Web Service" 
+				  title="JAX-RS Service Project" 
+				  description="Create a new JAX-RS Web Service" 
 				  error="Please give a name to the project">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController">Project Name</data>
 			<data modelProperty="service.class.package.name" 
@@ -24,8 +24,8 @@
 			</projectNatures>
 		</settings>
 		<settings optionId="import.jaxrswadl" 
-				  title="Create New JAXRS Service Using WADL File" 
-				  description="Give a project name for the new JAX-RS service" 
+				  title="JAX-RS Service Project" 
+				  description="Create a JAX-RS Service Project using a WADL file" 
 				  error="Please give a name to the project">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController">Project Name</data>
 			<data modelProperty="import.file" type="file" filter="*.wadl" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxrs.controller.JaxrsFieldController">WADL File</data>

@@ -8,8 +8,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.proxyservice"
-				  title="Create A New Proxy Service"
-				  description="Give a name for the proxy service"
+				  title="Proxy Service"
+				  description="Create a new Proxy Service"
 				  error="Please give a name for the proxy service">
 			<data modelProperty="ps.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController">Proxy Service Name</data>
 			<data modelProperty="ps.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceTemplateList">Proxy Service Type</data>
@@ -23,7 +23,7 @@
 		</settings>
 		<settings optionId="import.proxyservice"
 				  title="Proxy Service"
-				  description="Browse the location of a configuration file with Proxy Service defined"
+				  description="Create a Proxy Service using a configuration file with Proxy Service defined"
 				  error="Browse and select a Proxy Service configuration file">
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController">Proxy Service Configuration File</data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ProxyServiceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.proxyservice.validators.ESBProjectFilter">Save proxy service in:</data>

@@ -8,8 +8,8 @@
  </projectOptions>
  <projectOptionSettings>
  	<settings optionId="new.mediator"
- 			  		title="New Mediator Creation Wizard"
- 			  		description="Give a name for your mediator"
+ 			  		title="Mediator Artifact"
+ 			  		description="Create a new Mediator Artifact"
  			  		error="Please give a name to create the mediator">
  		<data modelProperty="project.name"
  					type="string" 
@@ -28,8 +28,8 @@
 		
  	</settings>
  	 	<settings optionId="import.mediator"
- 			 				title="Import Exsisting Projects"
- 			  			description="Select a Mediator Project"
+ 			 				title="Mediator Artifact"
+ 			  			description="Create a Mediator Artifact using a existing Mediator file"
  			  			error="Please select the project">	  
  	 		<data modelProperty="import.project.list" type="list" 
  					fieldController="org.wso2.developerstudio.eclipse.artifact.mediator.validators.MediatorFieldsController"

@@ -8,8 +8,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.sequence" 
-				  title="Create New Sequence" 
-				  description="Give a name for the sequence" 
+				  title="Sequence Artifact" 
+				  description="Create a new Sequence Artifact" 
 				  error="Please give a name for the sequence">
 			<data modelProperty="sequence.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController">Sequence Name    </data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.sequence.validators.ProjectFilter">Save Sequence in:</data>
@@ -29,8 +29,8 @@
 			<!--  group id="group2"></group-->
 		</settings>
 		<settings optionId="import.sequence" 
-				  title="Import Sequence" 
-				  description="Browse the location of a configuration file with Sequences defined" 
+				  title="Sequence Artifact" 
+				  description="Create a Sequence Artifact using a configuration file with Sequences defined" 
 				  error="Browse and select a Sequence configuration file">
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController">Sequence Configuration File</data>
 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.sequence.validators.SequenceProjectFieldController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.sequence.validators.ProjectFilter" >Save sequence in: </data>

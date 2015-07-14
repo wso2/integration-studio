@@ -8,8 +8,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.jaxws" 
-				  title="Create New JAX-WS Service" 
-				  description="Give a project name for the new JAX-WS service" 
+				  title="JAX-WS Service Project" 
+				  description="Create a new JAX-WS Service Project" 
 				  error="Please give a name to the project">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">Project Name    </data>	
 			
@@ -29,8 +29,8 @@
 		</settings>
 		
 		<settings optionId="import.jaxwswsdl" 
-				  title="Create New JAXWS Service Using WSDL File" 
-				  description="Give a project name for the new JAXWS service" 
+				  title="JAX-WS Service Project" 
+				  description="Create a JAX-WS Service Project using a WSDL file" 
 				  error="Please give a name to the project">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">Project Name</data>
 			<data modelProperty="import.file" type="file" filter="*.wsdl" fieldController="org.wso2.developerstudio.eclipse.artifact.jaxws.validators.JaxwsFieldController">WSDL File</data>

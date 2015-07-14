@@ -49,7 +49,7 @@ public class CEPProjectCreationWizard extends AbstractWSO2ProjectCreationWizard 
 	private static final String CEP_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.cep.project.nature";
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	private final CEPModel cepModel;
-	private static final String CEP_WIZARD_WINDOW_TITLE = "Create New CEP Project";
+	private static final String CEP_WIZARD_WINDOW_TITLE = "New CEP Project";
 	private IProject project;
 	private File openFile = null;
 

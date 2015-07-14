@@ -72,6 +72,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 	private static final String REGISTRY_EDITOR_ID = "org.wso2.developerstudio.eclipse.artifact.registry.editor";
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Registry Resource";
 	private final RegistryArtifactModel regModel;
 	private IFile resourceFile;
 	private String version = "1.0.0";
@@ -79,6 +80,7 @@ public class RegistryResourceCreationWizard extends AbstractWSO2ProjectCreationW
 	public RegistryResourceCreationWizard() {
 		regModel = new RegistryArtifactModel();
 		setModel(regModel);
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(RegistryResourceImageUtils.getInstance().getImageDescriptor("registry-artifact-wizard.png"));
 	}
 	

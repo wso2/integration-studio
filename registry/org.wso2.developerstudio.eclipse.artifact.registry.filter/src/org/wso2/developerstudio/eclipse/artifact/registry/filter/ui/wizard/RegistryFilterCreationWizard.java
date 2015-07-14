@@ -52,6 +52,8 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class RegistryFilterCreationWizard extends
 		AbstractWSO2ProjectCreationWizard {
+	
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Registry Filter Artifact";
 	private RegistryFilterModel filterModel;
 	private IProject project;
 	private IFolder sourceFolder;
@@ -63,7 +65,7 @@ public class RegistryFilterCreationWizard extends
 		filterModel = new RegistryFilterModel();
 		setFilterModel(filterModel);
 		setModel(getFilterModel());
-		setWindowTitle("Registry Filter Artifact Creation Wizard");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(RegistryFilterImageUtils.getInstance().getImageDescriptor("new-registry-filter-wizard.png"));
 	}
 

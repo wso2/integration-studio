@@ -63,6 +63,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Template Artifact";
 	private TemplateModel templateModel;
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
@@ -74,7 +75,7 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	public TemplateProjectCreationWizard() {
 		this.templateModel = new TemplateModel();
 		setModel(this.templateModel);
-		setWindowTitle("Template wizards");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(TemplateImageUtils.getInstance().getImageDescriptor("template.png"));
 	}
 

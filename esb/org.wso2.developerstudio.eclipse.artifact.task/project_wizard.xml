@@ -22,8 +22,8 @@
 		<option id="import.task">Import Scheduled Task Artifact</option>
 	</projectOptions>
 	<projectOptionSettings>
-		<settings optionId="create.task" title="Create A New Task Artifact"
-			description="Give a name for the task" error="Please give a name and a group for the task">
+		<settings optionId="create.task" title="Scheduled Task Artifact"
+			description="Create a new Scheduled Task Artifact" error="Please give a name and a group for the task">
 			<data modelProperty="task.name" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.task.validator.ProjectFieldController">Task Name*</data>
 			<data modelProperty="task.group" type="string"
@@ -58,8 +58,8 @@
 				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
 		</settings>
 		<settings optionId="import.task" 
-				  title="Import Scheduled Task" 
-				  description="Browse the location of a configuration file with Scheduled Task defined" 
+				  title="Scheduled Task Artifact" 
+				  description="Create a Scheduled Task Artifact using a configuration file with Scheduled Task defined" 
 				  error="Browse and select a Sheduled Task configuration file">
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.task.validator.ProjectFieldController">Scheduled Task Configuration File</data>
 			<data modelProperty="save.location" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.task.validator.ProjectFieldController" 

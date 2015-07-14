@@ -22,8 +22,8 @@
 		<option id="import.store">Import a message-store artifact</option>
 	</projectOptions>
 	<projectOptionSettings>
-		<settings optionId="create.store" title="Create a new message-store artifact"
-			description="Give a name for the message store" error="Please give a name for the message-store">
+		<settings optionId="create.store" title="Message Store Artifact"
+			description="Create a new Message Store Artifact" error="Please give a name for the message-store">
 			
 			<data modelProperty="store.name" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Message Store Name*</data>
@@ -93,8 +93,8 @@
 				
 		</settings>
 		<settings optionId="import.store" 
-				  title="Import message-store" 
-				  description="Browse the location of a configuration file with message-store defined" 
+				  title="Message Store Artifact" 
+				  description="Create a Message Store Artifact using a configuration file with message-store defined" 
 				  error="Browse and select a message-store configuration file">
 				 
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Message-store configuration file</data>

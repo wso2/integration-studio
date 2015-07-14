@@ -8,8 +8,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.bpelproject" 
-				  title="Create New BPEL Workflow" 
-				  description="Give a project name for the new BPEL Workflow" 
+				  title="BPEL Workflow" 
+				  description="Create a new BPEL Workflow" 
 				  error="Please give a name to the BPEL workflow">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELProjectFieldController">Project Name*</data>
 			<data modelProperty="process.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELProjectFieldController">Process Name*</data>
@@ -21,8 +21,8 @@
 			</projectNatures>
 		</settings>
 		<settings optionId="import.bpelproject" 
-				  title="Import BPEL Workflow" 
-				  description="Browse the location of a BPEL Archive file" 
+				  title="BPEL Workflow" 
+				  description="Create a new BPEL Workflow using a BPEL Archive file" 
 				  error="Browse and select a BPEL Archive file">
 			<data modelProperty="import.file" type="file" filter="*.zip" fieldController="org.wso2.developerstudio.eclipse.artifact.bpel.validators.BPELProjectFieldController">BPEL Archive File*</data>
 			<projectNatures>

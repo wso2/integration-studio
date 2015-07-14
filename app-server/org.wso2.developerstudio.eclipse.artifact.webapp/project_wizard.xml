@@ -8,8 +8,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.webapp" 
-				  title="Create New Web Application" 
-				  description="Give a project name for the new web app" 
+				  title="Web Application project" 
+				  description="Create a new Web Application project" 
 				  error="Please give a name to the project">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.webapp.validators.WebAppFieldController">Project Name</data>
 
@@ -32,8 +32,8 @@
 			</projectNatures>
 		</settings>
 		<settings optionId="import.webapp" 
-				  title="Import Web Application" 
-				  description="Browse the location of a WAR file" 
+				  title="Web Application project" 
+				  description="Create a Web Application project using a WAR file" 
 				  error="Browse and select a WAR file">
 			<data modelProperty="import.file" type="file" filter="*.war" fieldController="org.wso2.developerstudio.eclipse.artifact.webapp.validators.WebAppFieldController">WAR File</data>
 			<data modelProperty="web.context.root" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.webapp.validators.WebAppFieldController" group="testid">Web Context Root</data>

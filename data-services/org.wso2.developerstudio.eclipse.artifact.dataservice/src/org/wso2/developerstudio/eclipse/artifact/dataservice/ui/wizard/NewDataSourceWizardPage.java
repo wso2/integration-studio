@@ -127,7 +127,7 @@ public class NewDataSourceWizardPage extends WizardPage {
 
 	public NewDataSourceWizardPage() {
 		super("New Data Source Wizard");
-		setTitle("New Data Source Wizard");
+		setTitle("Data Source Wizard");
 		setDescription("Create New Data Source Configuration");
 		rdbmsConfig.put(rdbmsType[0], new String[]{"jdbc:mysql://[machine-name/ip]:[port]/[database-name]","com.mysql.jdbc.Driver","com.mysql.jdbc.jdbc2.optional.MysqlXADataSource"});
 		rdbmsConfig.put(rdbmsType[1], new String[]{"jdbc:derby:[path-to-data-file]","org.apache.derby.jdbc.EmbeddedDriver","org.apache.derby.jdbc.EmbeddedXADataSource"});

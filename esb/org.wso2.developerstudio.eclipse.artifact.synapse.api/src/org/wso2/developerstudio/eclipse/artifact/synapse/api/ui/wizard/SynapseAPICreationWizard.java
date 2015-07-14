@@ -63,6 +63,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Synapse API";
 	private final APIArtifactModel artifactModel;
 	private IFile artifactFile;
 	private ESBProjectArtifact esbProjectArtifact;
@@ -74,7 +75,7 @@ public class SynapseAPICreationWizard extends AbstractWSO2ProjectCreationWizard 
 	public SynapseAPICreationWizard() {
 		artifactModel = new APIArtifactModel();
 		setModel(artifactModel);
-		setWindowTitle("New Synapse API");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(APIImageUtils.getInstance().getImageDescriptor("synapseAPILarge.png"));
 	}
 

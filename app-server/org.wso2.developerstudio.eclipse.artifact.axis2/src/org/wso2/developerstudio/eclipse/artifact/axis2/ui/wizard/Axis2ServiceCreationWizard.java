@@ -62,6 +62,7 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	private static final String AXIS2_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.axis2.project.nature";
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Axis2 Service Project";
 	private Axis2Model axis2Model;
 	private Axis2ConfigurationPage wsdlConfigurationPage;
 	private DataModel dataModel;
@@ -71,7 +72,7 @@ public class Axis2ServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 		dataModel = new DataModel();
 		setAxis2Model(new Axis2Model());
 		setModel(getAxis2Model());
-		setWindowTitle("Create New Axis2 Service");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
 	}
 

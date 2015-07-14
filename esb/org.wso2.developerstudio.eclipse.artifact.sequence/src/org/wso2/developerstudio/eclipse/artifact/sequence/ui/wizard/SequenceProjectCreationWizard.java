@@ -76,7 +76,7 @@ public class SequenceProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
 	private SequenceModel seqModel;
-	private static final String SEQ_WIZARD_WINDOW_TITLE = "Create New Sequence";
+	private static final String SEQ_WIZARD_WINDOW_TITLE = "New Sequence Artifact";
 	private ESBProjectArtifact esbProjectArtifact;
 	private List<File> fileLst = new ArrayList<File>();
 	private IProject project;

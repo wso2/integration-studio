@@ -56,6 +56,8 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 		IExecutableExtension {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
+	private static final String CLIENT_PROJECT_WIZARD_WINDOW_TITLE = "New Apache Axis2 Web Service Client";
+	private static final String SKELETON_PROJECT_WIZARD_WINDOW_TITLE = "New Apache Axis2 Web Service Skeleton";
 	private IStructuredSelection selection;
 	private Axis2SelectWSDLPage wsdlPage;
 	Axis2CodeGenerationOptionPage codeGenOptionPage;
@@ -198,14 +200,14 @@ public class Axis2ClientGenerationWizard extends Wizard implements INewWizard,
 		// model.addDataEventListener(clientOptionPage);
 		String codeGenOptionPageTitle = "Web Service Client";
 		String clientConfigOptionPageTitle = "Client Configuration";
-		String windowTitle = "Apache Axis2 Web Service Client Wizard";
+		String windowTitle = CLIENT_PROJECT_WIZARD_WINDOW_TITLE;
 
 		if (getModelGeneratingType() == CREATE_CLIENT) {
 			model.setGenerateServerSideCode(false);
 		} else {
 			codeGenOptionPageTitle = "Web Service Skeleton";
 			clientConfigOptionPageTitle = "Axis2 Service Skeleton Generation";
-			windowTitle = "Apache Axis2 Web Service Skeleton Wizard";
+			windowTitle = SKELETON_PROJECT_WIZARD_WINDOW_TITLE;
 
 			model.setGenerateServerSideCode(true);
 		}

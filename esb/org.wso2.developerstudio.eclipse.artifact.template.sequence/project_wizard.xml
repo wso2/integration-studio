@@ -8,8 +8,8 @@
 </projectOptions>
 	<projectOptionSettings>
 		<settings optionId="tempate"
-				  title="Create a Template"
-				  description="Give a name for the new template"
+				  title="Template Artifact"
+				  description="Create a new Template Artifact"
 				  error="Create a template">
 			<data modelProperty="temp.name" type="string" 
 			fieldController="org.wso2.developerstudio.eclipse.artifact.template.validators.TemplateProjectFieldController">Template Name</data>	
@@ -37,8 +37,8 @@
 		   <group id="group1" title="Advance Configuration" controlData="type=collapsible;state=expanded"></group>
 		</settings>
 		<settings optionId="import.template"
-				  title="Import Template"
-				  description="Browse the location of a configuration file"
+				  title="Template Artifact"
+				  description="Create a Template Artifact using a configuration file"
 				  error="Browse a template">
 			
 			<data modelProperty="import.file" type="file" filter="*.xml" 

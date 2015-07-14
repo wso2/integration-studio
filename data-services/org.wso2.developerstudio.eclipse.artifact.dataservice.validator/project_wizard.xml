@@ -8,8 +8,8 @@
  </projectOptions>
  <projectOptionSettings>
  	<settings optionId="new.validator"
- 			  		title="New Data Services Validator Creation Wizard"
- 			  		description="Give a name for your Data Services Validator"
+ 			  		title="Data Services Validator"
+ 			  		description="Create a new Data Services Validator"
  			  		error="Please give a name to create the Data Services Validator">
  		<data modelProperty="project.name"
  					type="string" 
@@ -28,8 +28,8 @@
 		
  	</settings>
  	 	<settings optionId="import.validator"
- 			 				title="Import Exsisting Projects"
- 			  			description="Select a Project with Data Services Validator Class"
+ 			 				title="Data Services Validator"
+ 			  			description="Create Data Services Validator using a project with Data Services Validator Class"
  			  			error="Please select the project">	  
  	 		<data modelProperty="import.project.list" type="list" 
  					fieldController="org.wso2.developerstudio.eclipse.artifact.ds.validator.validators.ValidatorFieldsController"

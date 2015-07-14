@@ -9,8 +9,8 @@
 	
 	<projectOptionSettings>
 		<settings optionId="new.cepproject" 
-				  title="Create New CEP Bucket" 
-				  description="Give a Bucket name for the new CEP Bucket" 
+				  title="CEP Project" 
+				  description="Create a new CEP Project" 
 				  error="Please give a name to the Bucket">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">Bucket Name*</data>	  
 			
@@ -23,8 +23,8 @@
 			</projectNatures>
 		</settings>
 		<settings optionId="import.cepproject" 
-				  title="Import CEP Project" 
-				  description="Browse the location of a CEP descriptor file" 
+				  title="CEP Project" 
+				  description="Create a CEP Project using a CEP descriptor file" 
 				  error="Browse and select a CEP descriptor file">
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.cep.validators.CEPProjectFieldController">CEP Descriptor File*</data>
 			<projectNatures>

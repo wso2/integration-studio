@@ -9,8 +9,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.Axis2" 
-				  title="Create New Axis2 Service" 
-				  description="Give a project name for the new axis2 service" 
+				  title="Axis2 Service Project" 
+				  description="Create a new Axis2 Service Project" 
 				  error="Please give a name to the project">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.axis2.validators.Axis2FieldController">Project Name    </data>
 
@@ -31,8 +31,8 @@
 		</settings>
 		
 		<settings optionId="import.Axis2wsdl" 
-				  title="Create New Axis2 Service Using WSDL File" 
-				  description="Give a project name for the new axis2 service" 
+				  title="Axis2 Service Project" 
+				  description="Create a new Axis2 Service Project using a WSDL file" 
 				  error="Please give a name to the project">
 
 			<data modelProperty="import.file" type="file" filter="*.wsdl" fieldController="org.wso2.developerstudio.eclipse.artifact.axis2.validators.Axis2FieldController">WSDL File       </data>

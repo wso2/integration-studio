@@ -14,8 +14,8 @@
 		<option id="import.processor">Import a message-processor artifact</option>
 	</projectOptions>
 	<projectOptionSettings>
-		<settings optionId="create.processor" title="Create a new message-processor artifact"
-			description="Give a name for the message processor" error="Please give a name for the message-processor">
+		<settings optionId="create.processor" title="Message Processor Artifact"
+			description="Create a new Message Processor Artifact" error="Please give a name for the message-processor">
 
 			<data modelProperty="processor.type" type="list"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messageprocessor.validator.MessageProcessorFieldController"
@@ -105,8 +105,8 @@
 		</settings>
 
 
-		<settings optionId="import.processor" title="Import message-processor"
-			description="Browse the location of a configuration file with message-processor defined"
+		<settings optionId="import.processor" title="Message Processor Artifact"
+			description="Create a Message Processor Artifact using a configuration file with message-processor defined"
 			error="Browse and select a message-processor configuration file">
 
 			<data modelProperty="import.file" type="file" filter="*.xml"

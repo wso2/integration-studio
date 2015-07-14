@@ -7,8 +7,8 @@
  </projectOptions>
  <projectOptionSettings>
  	<settings optionId="library.artifact"
- 			  		title="New Library Artifact Create Wizard"
- 			  		description="Give a name for your library artifact"
+ 			  		title="Library Artifact"
+ 			  		description="Create a new Library Artifact"
  			  		error="Please give a name to create the library artifact">
  		<data modelProperty="project.name"
  					type="string" 

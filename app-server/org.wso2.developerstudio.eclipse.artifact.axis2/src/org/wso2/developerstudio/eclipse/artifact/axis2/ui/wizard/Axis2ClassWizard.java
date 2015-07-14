@@ -38,7 +38,7 @@ public class Axis2ClassWizard  extends Wizard implements INewWizard{
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 	      this.workbench = workbench;
 	      this.selection = selection;
-	      setWindowTitle("New axis2 class");
+	      setWindowTitle("New Axis2 Class");
 	      setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
 	}
 	

@@ -60,6 +60,7 @@ import org.wso2.developerstudio.eclipse.utils.jdt.JavaUtils;
 import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class CarbonUIbundleWizard extends AbstractWSO2ProjectCreationWizard {
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Carbon UI Bundle";
     private static final String CARBON_UI_BUNDLE_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.carbon.ui.bundle.project.nature";
 	private static CarbonUiModel uibundleModel;
 	private  IProject project;
@@ -70,7 +71,7 @@ public class CarbonUIbundleWizard extends AbstractWSO2ProjectCreationWizard {
     public CarbonUIbundleWizard(){
      setUibundleModel(new CarbonUiModel());
      setModel(uibundleModel);
-     setWindowTitle("Carbon UI bundle wizard");
+     setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
      setDefaultPageImageDescriptor(CarbonUIImageUtils.getInstance().getImageDescriptor("carbon-ui-bundle-wizard.png"));
     }
        

@@ -70,6 +70,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Message Processor Artifact";
 	private MessageProcessorModel messageProcessorModel;
 	private ESBProjectArtifact esbProjectArtifact;
 	private IProject esbProject;
@@ -81,7 +82,7 @@ public class MessageProcessorCreationWizard extends AbstractWSO2ProjectCreationW
 	public MessageProcessorCreationWizard() {
 		messageProcessorModel = new MessageProcessorModel();
 		setModel(messageProcessorModel);
-		setWindowTitle("New Message processor");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(MessageProcessorImageUtils.getInstance().getImageDescriptor("message-processor.png"));
 	}
 

@@ -9,8 +9,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.gadget"
-				  title="Create New Gadget" 
-				  description="Give a name for the new gadget project" 
+				  title="Gadget Project" 
+				  description="Create a new Gadget Project" 
 				  error="Please give a name to the project">
 			 <data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController">Project Name*</data>
 			 <group id="id1"></group>
@@ -22,8 +22,8 @@
 			</projectNatures>
 		</settings>
 		<settings optionId="import.gadget.fs" 
-				  title="Import Gadget Resources from File System" 
-				  description="Browse the location of a gadget resources" 
+				  title="Gadget Project" 
+				  description="Create a Gadget Project using gadget resources in file system" 
 				  error="Browse and select a gadget resources folder from file system">
 			<data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController">      Project Name*</data>	  
 			<group id="id1"></group>
@@ -34,8 +34,8 @@
 			</projectNatures>
 		</settings>
 		<settings optionId="import.dar" 
-				  title="Import Dashboard Archieve (DAR)" 
-				  description="Browse the location of a DAR file" 
+				  title="Gadget Project" 
+				  description="Create a Gadget Project using a DAR file" 
 				  error="Browse and select a DAR file">
 			<!-- data modelProperty="project.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.gadget.validators.GadgetFieldController">Project Name</data>	  
 			<group id="id1"></-->	  

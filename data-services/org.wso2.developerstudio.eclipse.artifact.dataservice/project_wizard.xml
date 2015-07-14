@@ -7,8 +7,8 @@
 		<option id="import.ds">Import a Data Service</option>
 	</projectOptions>
 	<projectOptionSettings>
-		<settings optionId="new.ds" title="Create New Data Service"
-			description="Give a project name for the new Data Service" error="Please give a name to the project">
+		<settings optionId="new.ds" title="Data Service"
+			description="Create a new Data Service" error="Please give a name to the project">
 			<data modelProperty="service.name" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController">Data Service Name*</data>
 			<data modelProperty="service.group" type="string"
@@ -30,8 +30,8 @@
 			</projectNatures>
 
 		</settings>
-		<settings optionId="import.ds" title="Import Data Service"
-			description="Browse the location of a Data Service descriptor file"
+		<settings optionId="import.ds" title="Data Service"
+			description="Create Data Service using a Data Service descriptor file"
 			error="Browse and select a Data Service descriptor file">
 			<data modelProperty="import.file" type="file" filter="*.dbs"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.dataservice.validators.DataServiceFieldController">Data Service Descriptor File*</data>

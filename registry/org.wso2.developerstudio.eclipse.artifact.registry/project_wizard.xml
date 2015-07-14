@@ -10,8 +10,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.resource"
-				  title="Create A New Registry Resource"
-				  description="Give a name for the registry resource"
+				  title="Registry Resource"
+				  description="Create a new Registry Resource"
 				  error="Please give a name for the registry resource">
 			<data modelProperty="resource.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController" controlData="toolTip=Resource Name withtout File Extension">Resource Name</data>
 			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
@@ -26,8 +26,8 @@
 			</projectNatures>
 		</settings>
 		<settings optionId="import.resource"
-				  title="Import Registry Resource"
-				  description="Browse the location of a resource file"
+				  title="Registry Resource"
+				  description="Create a Registry Resource using a resource file"
 				  error="Browse and select a resource file">
 	
 			<data modelProperty="import.file" type="file+dir" filter="*" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">From File</data>
@@ -44,8 +44,8 @@
 		</settings>
 		
 		<settings optionId="import.dump"
-				  title="Import Registry Dump File"
-				  description="Browse the location of a registry dump file"
+				  title="Registry Resource"
+				  description="Create a Registry Resource using a registry dump file"
 				  error="Browse and select a registry dump file">
 			<data modelProperty="import.file" type="file" filter="*.dump" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Registry Dump File</data>
 			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>
@@ -59,8 +59,8 @@
 			</projectNatures>
 		</settings>
 		<settings optionId="checkout"
-				  title="Check-out from Registry"
-				  description="Browse the location of a registry "
+				  title="Registry Resource"
+				  description="Create a Registry Resource using an existing registry "
 				  error="Browse and select a registry ">
 			<data modelProperty="registry.browser" type="registry" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController"  controlData="select=single;modify=readonly;registry.selection.type=resource+collection">Path</data>
 			<data modelProperty="artifact.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.registry.validators.RegistryArtifactFieldController">Artifact Name</data>

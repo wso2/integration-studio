@@ -8,8 +8,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.localentry"
-				  title="Create A New Local Entry"
-				  description="Give a name for the local entry"
+				  title="Local Entry"
+				  description="Create a new Local Entry"
 				  error="Please give a name for the local entry">
 			<data modelProperty="le.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController">Local Entry Name</data>
 			<data modelProperty="le.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryCreationTypes">Local Entry Creation Type</data>
@@ -31,7 +31,7 @@
 		</settings>
 		<settings optionId="import.localentry"
 				  title="Local Entry"
-				  description="Browse the location of a configuration file with Local Entry defined"
+				  description="Create a Local Entry using a configuration file with Local Entry defined"
 				  error="Browse and select a Local Entry configuration file">
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.localentry.validators.LocalEntryProjectFieldController">Local Entry Configuration File</data>
 

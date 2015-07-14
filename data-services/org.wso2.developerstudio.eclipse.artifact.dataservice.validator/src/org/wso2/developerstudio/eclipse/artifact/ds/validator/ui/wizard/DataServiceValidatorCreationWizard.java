@@ -53,6 +53,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 
 public class DataServiceValidatorCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Data Service Validator";
     private static final String DS_VALIDATOR_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.artifact.ds.validator.project.nature";
 	private static  DataServiceValidatorModel dsValidatorModel;
 	private  IProject project;
@@ -61,7 +62,7 @@ public class DataServiceValidatorCreationWizard extends AbstractWSO2ProjectCreat
     public DataServiceValidatorCreationWizard(){
      setDsValidatorModel(new DataServiceValidatorModel());
      setModel(dsValidatorModel);
-     setWindowTitle("Data Service Validator creation wizard");
+     setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
      setDefaultPageImageDescriptor(DSValidatorImageUtils.getInstance().getImageDescriptor("ds-validate-wizard.png"));
     }
      

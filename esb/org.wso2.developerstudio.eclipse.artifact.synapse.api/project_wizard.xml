@@ -22,8 +22,8 @@
 		<option id="import.api">Import API Artifact</option>
 	</projectOptions>
 	<projectOptionSettings>
-		<settings optionId="create.api" title="Create A New API Artifact"
-			description="Give a name and a context for the API" error="Please give a name and a context for the API">
+		<settings optionId="create.api" title="Synapse API Artifact"
+			description="Create a new Synapse API Artifact" error="Please give a name and a context for the API">
 			<data modelProperty="api.name" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">Name*</data>
 			<data modelProperty="api.context" type="string"
@@ -43,8 +43,8 @@
 				controlData="align=right">&lt;a&gt;Create a new ESB project...&lt;/a&gt;</data>
 		</settings>
 		<settings optionId="import.api" 
-				  title="Import API" 
-				  description="Browse the location of a configuration file with API defined" 
+				  title="Synapse API Artifact" 
+				  description="Create a Synapse API Artifact using a configuration file with API defined" 
 				  error="Browse and select a API configuration file">
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController">API Configuration File</data>
 			<data modelProperty="save.location" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.api.validator.ProjectFieldController" 

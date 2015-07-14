@@ -51,7 +51,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 public class ProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String PROJECT_WIZARD_WINDOW_TITLE = "Business Rules Service Project";
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Business Rules Service Project";
 	private static final String FORM_EDITOR_TITLE = "service";
 	private IProject project;
 	private final RuleServiceModel rsModel;

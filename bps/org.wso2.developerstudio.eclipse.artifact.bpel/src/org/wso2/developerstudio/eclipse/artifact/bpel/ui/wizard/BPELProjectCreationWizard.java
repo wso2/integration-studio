@@ -50,7 +50,7 @@ import org.wso2.developerstudio.eclipse.utils.project.ProjectUtils;
 public class BPELProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	
-	private static final String BPEL_WIZARD_WINDOW_TITLE = "Create New BPEL Project";
+	private static final String BPEL_WIZARD_WINDOW_TITLE = "New BPEL Project";
 	private static final String LINE_SEPERATOR = "line.separator";
 	private static final String BPEL_CONTENT = "bpelContent";
 	

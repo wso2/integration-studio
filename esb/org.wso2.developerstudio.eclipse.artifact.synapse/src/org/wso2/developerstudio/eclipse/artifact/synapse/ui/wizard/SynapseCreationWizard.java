@@ -62,6 +62,7 @@ public class SynapseCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Synapse Configuration";
 	private SynapseModel synapseModel;
 	private IProject esbProject;
 	private IFile synapseConfig;
@@ -73,7 +74,7 @@ public class SynapseCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	public SynapseCreationWizard() {
 		setSynapseModel(new SynapseModel());
 		setModel(synapseModel);
-		setWindowTitle("Create a Synapse Configuration");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(SynapseImageUtils.getInstance().getImageDescriptor("synapse-wizard.png"));
 	}
 

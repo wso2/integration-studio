@@ -73,6 +73,8 @@ import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.jdt.ui.JavaUI;
 
 public class JaxwsServiceCreationWizard  extends AbstractWSO2ProjectCreationWizard{
+	
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New JAX-WS Service Project";
 	private static final String JAXWS_PROJECT_NATURE = "org.wso2.developerstudio.eclipse.jaxws.project.nature";
 	private static final String CXF_CLASSLOADING_DESCRIPTOR = "webapp-classloading.xml";
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
@@ -88,7 +90,7 @@ public class JaxwsServiceCreationWizard  extends AbstractWSO2ProjectCreationWiza
 	public JaxwsServiceCreationWizard(){	
 		setjaxwsModel(new JaxwsModel());
 		setModel(getJaxwsModel());
-		setWindowTitle("Create New JAX-WS Service");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(JaxWSImageUtils.getInstance().getImageDescriptor("JAX-WS-wizard.png"));
 
 	}

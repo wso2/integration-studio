@@ -23,6 +23,7 @@ import static org.eclipse.wst.common.frameworks.internal.operations.IProjectCrea
 
 
 
+
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -61,6 +62,7 @@ import org.wso2.developerstudio.eclipse.utils.wst.WebUtils;
 @SuppressWarnings({"restriction","unchecked","rawtypes"})
 public class DynamicWebAppCreationWizard extends WebProjectWizard {
 
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Web Application project";
 	private IWizardPage[] endingPages;
 	private IWizardPage[] beginPages;
 	private IWizardPage[] importPages;
@@ -77,7 +79,7 @@ public class DynamicWebAppCreationWizard extends WebProjectWizard {
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	 
 	public DynamicWebAppCreationWizard() {
-		 setWindowTitle("Web Application project");
+		 setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		 webApp = new WebAppCreationWizard();
 		 endingPages = new IWizardPage[1];
 		 beginPages = new IWizardPage[1];

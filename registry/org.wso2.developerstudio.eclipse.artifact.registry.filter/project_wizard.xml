@@ -7,8 +7,8 @@
  </projectOptions>
  <projectOptionSettings>
  	<settings optionId="new.filter"
- 			  		title="New Registry Filter Creation Wizard"
- 			  		description="Give a name for your registry Filter"
+ 			  		title="Registry Filter"
+ 			  		description="Create a new Registry Filter"
  			  		error="Please give a name to create the registry Filter">
  		<data modelProperty="project.name"
  					type="string" 

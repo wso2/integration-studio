@@ -74,6 +74,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Message Store Artifact";
 	private final MessageStoreModel messageStoreModel;
 	private ESBProjectArtifact esbProjectArtifact;
 	private IProject esbProject;
@@ -95,7 +96,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 	public MessageStoreCreationWizard() {
 		messageStoreModel = new MessageStoreModel();
 		setModel(messageStoreModel);
-		setWindowTitle("New Message Store");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(MessageStoreImageUtils.getInstance().getImageDescriptor("message-store.png"));
 	}
 

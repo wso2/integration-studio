@@ -8,8 +8,8 @@
 	</projectOptions>
 	<projectOptionSettings>
 		<settings optionId="new.inboundendpoint"
-				  title="Create A New Inbound Endpoint"
-				  description="Give a name for the Inbound Endpoint"
+				  title="Inbound Endpoint Artifact"
+				  description="Create a new Inbound Endpoint Artifact"
 				  error="Please give a name for the Inbound Endpoint">
 			<data modelProperty="inboundendpoint.name" type="string" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Inbound Endpoint Name</data>
 			<data modelProperty="inboundendpoint.type" type="list" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController"  controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointCreationTypes">Inbound Endpoint Creation Type</data>
@@ -27,8 +27,8 @@
 
 		</settings>
 		<settings optionId="import.inboundendpoint"
-				  title="Inbound Endpoint"
-				  description="Browse the location of a configuration file with Inbound Endpoint defined"
+				  title="Inbound Endpoint Artifact"
+				  description="Create a Inbound Endpoint Artifact using a configuration file with Inbound Endpoint defined"
 				  error="Browse and select a Inbound Endpoint configuration file">
 			<data modelProperty="import.file" type="file" filter="*.xml" fieldController="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.validators.InboundEndpointProjectFieldController">Inbound Endpoint Configuration File</data>
 

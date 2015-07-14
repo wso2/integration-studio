@@ -61,8 +61,9 @@ import org.eclipse.jface.dialogs.MessageDialog;
  */
 public class TaskCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
-private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
+	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Scheduled Task";
 	private final TaskModel artifactModel;
 	private IFile artifactFile;
 	private ESBProjectArtifact esbProjectArtifact;
@@ -73,7 +74,7 @@ private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
 	public TaskCreationWizard() {
 		artifactModel = new TaskModel();
 		setModel(artifactModel);
-		setWindowTitle("New Scheduled Task");
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
 		setDefaultPageImageDescriptor(TaskImageUtils.getInstance().getImageDescriptor("taskLarge.png"));
 	}
 

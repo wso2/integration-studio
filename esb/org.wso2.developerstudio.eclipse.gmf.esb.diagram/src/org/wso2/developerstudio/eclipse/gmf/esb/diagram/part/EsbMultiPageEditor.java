@@ -516,7 +516,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					 * should be replaced with the better approach
 					 */
 			        AbstractEsbNodeDeserializer.relocateStartNodes();
-			        AbstractEsbNodeDeserializer.resizeParentCompartments();
 			        
 			        if(!dirty && isDirty()){
 			        	//remove any dirty status introduced by ElementDuplicator or relocateStartNodes();

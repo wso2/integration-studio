@@ -756,43 +756,6 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 		startNodes = new ArrayList<EditPart>();
 	}
 	
-	public static void resizeParentCompartments(){
-		try {
-			for (Iterator<IGraphicalEditPart> i = Deserializer.getInstance()
-					.getMediatorFlowContainerList().iterator(); i.hasNext();) {				
-				IGraphicalEditPart next = i.next();				
-				if(next instanceof SequencesEditPart){
-					Dimension preferredSize = DeserializerUtils.getPreferredSize(next);
-					SetBoundsCommand sbc = new SetBoundsCommand(next.getEditingDomain(), "change location",
-							new EObjectAdapter((View) next.getModel()), new Rectangle(-1, -1,
-									preferredSize.width + 150, preferredSize.height + 50));
-					next.getDiagramEditDomain().getDiagramCommandStack().execute(new ICommandProxy(sbc));
-	
-					//TODO: Fix parent resizing 
-					/*EditPart parent = next.getParent();
-					if (parent instanceof ShapeCompartmentEditPart) {
-						ShapeCompartmentEditPart compartment = (ShapeCompartmentEditPart) parent;
-						Dimension size = compartment.getContentPane().getBounds().getSize().getCopy();
-						EditPart owner = compartment.getParent();
-						if (owner instanceof IGraphicalEditPart) {
-							IGraphicalEditPart root = (IGraphicalEditPart) owner;
-							sbc = new SetBoundsCommand(root.getEditingDomain(), "change location",
-									new EObjectAdapter((View) next.getModel()), new Rectangle(-1, -1,
-											size.width + 100, size.height + 50));
-							root.getDiagramEditDomain().getDiagramCommandStack()
-									.execute(new ICommandProxy(sbc));
-						}
-	
-					}*/	
-				}
-			}
-		} catch (Exception e) {
-			//ignore
-		}
-
-		Deserializer.getInstance().getMediatorFlowContainerList().clear();
-	}
-	
 	private static int getInitialY(EsbConnector connector, LinkedList<EsbNode> nodeList) {
 		int y = 10;
 

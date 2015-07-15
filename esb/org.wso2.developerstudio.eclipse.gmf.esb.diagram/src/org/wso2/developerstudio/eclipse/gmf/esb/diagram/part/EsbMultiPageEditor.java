@@ -507,7 +507,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 					public void run() {
 						EditorUtils.setLockmode(graphicalEditor, true);
 						final boolean dirty = isDirty(); // save previous status
-						// IFile file = ((IFileEditorInput)getEditorInput()).getFile();
 						/*
 						 * ElementDuplicator endPointDuplicator = new
 						 * ElementDuplicator(file.getProject(),getGraphicalEditor());
@@ -713,7 +712,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 		getEditor(0).doSave(monitor);
 		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
 		// Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.
-		// if(!esbServer.getType().equals(ArtifactType.COMPLEX_ENDPOINT)){
         try {
         	updateAssociatedXMLFile(monitor);
 		} catch (Exception e) {

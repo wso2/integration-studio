@@ -24,9 +24,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.*;
  */
 public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	static int proxyservicecount;
-	public static final String BAM_MEDIATOR_DEFAULT_SERVER_PROFILE_NAME = "server_profile_name";
-	public static final String BAM_MEDIATOR_DEFAULT_STREAM_NAME = "stream_name";
-	public static final String BAM_MEDIATOR_DEFAULT_STREAM_VERSION = "1.0.0";
+	private static final String BAM_MEDIATOR_DEFAULT_SERVER_PROFILE_NAME = "server_profile_name";
+	private static final String BAM_MEDIATOR_DEFAULT_STREAM_NAME = "stream_name";
+	private static final String BAM_MEDIATOR_DEFAULT_STREAM_VERSION = "1.0.0";
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->

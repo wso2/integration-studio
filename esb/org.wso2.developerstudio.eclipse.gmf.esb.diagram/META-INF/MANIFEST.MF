@@ -54,7 +54,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-LazyStart: true
 Import-Package: com.damnhandy.uri.template,
  javax.xml.stream;version="1.0.1.wso2v1",
- javax.xml.xquery,
  net.sf.saxon.s9api,
  org.apache.axiom.om,
  org.apache.axiom.om.impl.builder,

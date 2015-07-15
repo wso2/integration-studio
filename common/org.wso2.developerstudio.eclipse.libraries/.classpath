@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/Saxon-HE-9.6.0-6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.mediator.publishevent_4.4.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/avro-1.7.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-collections_3.2.0.wso2v1.jar"/>
@@ -77,7 +78,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/spring.framework_3.1.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/smooks_1.4.0.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/bsf-all_3.0.0.wso2v2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/saxon9he.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.wso2.carbon.throttle_4.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/quartz_2.1.1.wso2v1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/geronimo-stax-api_1.0_spec_1.0.1.wso2v2.jar"/>

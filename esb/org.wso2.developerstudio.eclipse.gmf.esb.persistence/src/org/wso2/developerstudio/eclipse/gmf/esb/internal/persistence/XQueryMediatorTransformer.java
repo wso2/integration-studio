@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import javax.xml.namespace.QName;
-import javax.xml.xquery.XQItemType;
 
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.XdmNodeKind;

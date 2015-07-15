@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.xquery.XQItemType;
-
 import net.sf.saxon.s9api.ItemType;
 import net.sf.saxon.s9api.XdmNodeKind;
 

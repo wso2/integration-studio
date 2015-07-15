@@ -399,7 +399,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 	 *
 	 * @param extension
 	 *            extension of the temporary file.
-	 * @return {@link IFile} instance corresponding to the spefied temporary
+	 * @return {@link IFile} instance corresponding to the specified temporary
 	 *         file.
 	 * @throws Exception
 	 *             if a temporary file cannot be created.
@@ -555,12 +555,12 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 //		if (null != sourceEditor.getObject()) {
 //			rebuildModelObject(objectSourceEditor.getObject());
 //		}
-		if(sourceEditor!=null){
+		if (sourceEditor != null) {
 			String xmlSource = sourceEditor.getDocument().get();
-			if(xmlSource!=null && sourceDirty){
-				  if(!xmlSource.trim().isEmpty()){
-					  rebuildModelObject(xmlSource); 
-				  }
+			if (xmlSource != null) {
+				if (!xmlSource.trim().isEmpty()) {
+					rebuildModelObject(xmlSource);
+				}
 			}
 		}
 		
@@ -667,16 +667,14 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
     public void doSave(IProgressMonitor monitor) {
     	//Fixing TOOLS-2958
     	setContextClassLoader();
-    	if(getActivePage()==SOURCE_VIEW_PAGE_INDEX){
-    		handleDesignViewActivatedEvent();
-    	}
-    	sourceDirty=false;
-        getEditor(0).doSave(monitor);
-        EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
-        
-        //Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.
-        //if(!esbServer.getType().equals(ArtifactType.COMPLEX_ENDPOINT)){
-
+		sourceDirty = false;
+		if (getActivePage() == SOURCE_VIEW_PAGE_INDEX) {
+			handleDesignViewActivatedEvent();
+		}
+		getEditor(0).doSave(monitor);
+		EsbServer esbServer = EditorUtils.getEsbServer(graphicalEditor);
+		// Since Complex endpoint type editors dose not have assiociated xml file do not need to call this.
+		// if(!esbServer.getType().equals(ArtifactType.COMPLEX_ENDPOINT)){
         try {
         	updateAssociatedXMLFile(monitor);
 		} catch (Exception e) {
@@ -885,6 +883,8 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			});
 			
 		} catch (Exception e) {
+			sourceDirty = true;
+			// if rebuild fails editor should be marked as dirty
 			log.error("Error while generating diagram from source", e);
 			String errorMsgHeader = "Error occuerd during buidling the esb design view."
 							+ " Any changes you make in the source view to be discarded."
@@ -895,7 +895,6 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements
 			
 		} finally{
 			AbstractEsbNodeDeserializer.cleanupData();
-			sourceDirty=false;
 			firePropertyChange(PROP_DIRTY);
 		}
 	}

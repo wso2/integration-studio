@@ -19,8 +19,10 @@ package org.wso2.developerstudio.eclipse.distribution.project.ui.wizard;
 import java.io.File;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -29,10 +31,13 @@ import org.eclipse.ui.wizards.datatransfer.ExternalProjectImportWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 public class ProjectImportWizard extends ExternalProjectImportWizard {
 	private ProjectsImportPage importMainPage;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+	private static final String ESB_FILE_EXTENSION = "esb";
+	private static final String ESB_DIAGRAM_FILE_EXTENSION = "esb_diagram";
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection currentSelection) {
@@ -70,8 +75,10 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 	 */
 	private void searchAndRemoveGraphicalSynapseCongif(IProject project) {
 		try {
-			if (project.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
+			if (project.hasNature(Constants.ESB_PROJECT_NATURE)) {
 				deleteGraphicalSynapseConfigDir(project);
+			} else if (project.hasNature(Constants.GENERAL_PROJECT_NATURE)) {
+				deleteGraphicalSynapseConfigFiles(project);
 			}
 		} catch (CoreException e) {
 			log.error("Error while deleting graphical-synapse-config directory in " + project);
@@ -85,4 +92,21 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 		}
 	}
 	
+	/**
+	 * This method will delete .esb and .esb_diagram files in a root directory of a project
+	 * 
+	 * @param project
+	 * @throws CoreException
+	 */
+
+	private void deleteGraphicalSynapseConfigFiles(IProject project) throws CoreException {
+		IResource[] projectResources = project.members();
+		for (IResource projectResource : projectResources) {
+			if (projectResource instanceof IFile
+					&& (ESB_FILE_EXTENSION.equals(projectResource.getFileExtension()) || ESB_DIAGRAM_FILE_EXTENSION
+							.equals(projectResource.getFileExtension()))) {
+				projectResource.delete(true, new NullProgressMonitor());
+			}
+		}
+	}
 }

@@ -31,6 +31,7 @@ import org.eclipse.ui.wizards.datatransfer.ExternalProjectImportWizard;
 import org.wso2.developerstudio.eclipse.distribution.project.Activator;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 
 public class ProjectImportWizard extends ExternalProjectImportWizard {
 	private ProjectsImportPage importMainPage;
@@ -74,9 +75,9 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 	 */
 	private void searchAndRemoveGraphicalSynapseCongif(IProject project) {
 		try {
-			if (project.hasNature("org.wso2.developerstudio.eclipse.esb.project.nature")) {
+			if (project.hasNature(Constants.ESB_PROJECT_NATURE)) {
 				deleteGraphicalSynapseConfigDir(project);
-			} else if (project.hasNature("org.wso2.developerstudio.eclipse.general.project.nature")){
+			} else if (project.hasNature(Constants.GENERAL_PROJECT_NATURE)) {
 				deleteGraphicalSynapseConfigFiles(project);
 			}
 		} catch (CoreException e) {
@@ -91,16 +92,20 @@ public class ProjectImportWizard extends ExternalProjectImportWizard {
 		}
 	}
 	
+	/**
+	 * This method will delete .esb and .esb_diagram files in a root directory of a project
+	 * 
+	 * @param project
+	 * @throws CoreException
+	 */
+
 	private void deleteGraphicalSynapseConfigFiles(IProject project) throws CoreException {
 		IResource[] projectResources = project.members();
-		if (projectResources != null) {
-			for (IResource projectResource : projectResources) {
-				if (projectResource instanceof IFile) {
-					if (ESB_FILE_EXTENSION.equals(projectResource.getFileExtension())
-							|| ESB_DIAGRAM_FILE_EXTENSION.equals(projectResource.getFileExtension())) {
-						projectResource.delete(true, new NullProgressMonitor());
-					}
-				}
+		for (IResource projectResource : projectResources) {
+			if (projectResource instanceof IFile
+					&& (ESB_FILE_EXTENSION.equals(projectResource.getFileExtension()) || ESB_DIAGRAM_FILE_EXTENSION
+							.equals(projectResource.getFileExtension()))) {
+				projectResource.delete(true, new NullProgressMonitor());
 			}
 		}
 	}

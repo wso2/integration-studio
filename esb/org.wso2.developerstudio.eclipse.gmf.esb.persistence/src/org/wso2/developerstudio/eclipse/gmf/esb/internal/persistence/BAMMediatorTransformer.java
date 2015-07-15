@@ -19,6 +19,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
@@ -61,14 +62,24 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 
 		org.wso2.carbon.mediator.bam.BamMediator bamMediator = new org.wso2.carbon.mediator.bam.BamMediator();
 		setCommonProperties(bamMediator, visualBAMMediator);
-		
-		bamMediator.setServerProfile(visualBAMMediator.getServerProfile());
-		
-		StreamConfiguration streamConfiguration = new StreamConfiguration();
-		streamConfiguration.setName(visualBAMMediator.getStreamName());
-		streamConfiguration.setVersion(visualBAMMediator.getStreamVersion());
-		bamMediator.getStream().setStreamConfiguration(streamConfiguration);
-		
+		if (StringUtils.isNotEmpty(visualBAMMediator.getServerProfile())) {
+			bamMediator.setServerProfile(visualBAMMediator.getServerProfile());
+		} else {
+			throw new IllegalArgumentException("BAM Mediator Error : Server Profile Name is required");
+		}
+
+		if (StringUtils.isNotEmpty(visualBAMMediator.getStreamName())) {
+			if (StringUtils.isNotEmpty(visualBAMMediator.getStreamVersion())) {
+				StreamConfiguration streamConfiguration = new StreamConfiguration();
+				streamConfiguration.setName(visualBAMMediator.getStreamName());
+				streamConfiguration.setVersion(visualBAMMediator.getStreamVersion());
+				bamMediator.getStream().setStreamConfiguration(streamConfiguration);
+			} else {
+				throw new IllegalArgumentException("BAM Mediator Error : Stream Version is required");
+			}
+		} else {
+			throw new IllegalArgumentException("BAM Mediator Error : Stream Name is required");
+		}
 		return bamMediator;
 	}
 }

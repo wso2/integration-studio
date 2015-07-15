@@ -22,9 +22,11 @@ import javax.xml.namespace.QName;
 
 import org.apache.axiom.om.OMAttribute;
 import org.apache.axiom.om.OMElement;
+import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.SynapseConstants;
 import org.apache.synapse.config.xml.AbstractMediatorFactory;
+import org.eclipse.core.runtime.Assert;
 import org.wso2.carbon.mediator.bam.BamMediator;
 import org.wso2.carbon.mediator.bam.config.stream.StreamConfiguration;
 
@@ -32,22 +34,19 @@ public class BamMediatorExtFactory extends AbstractMediatorFactory {
 
 	public static final QName BAM_Q = new QName(SynapseConstants.SYNAPSE_NAMESPACE, "bam");
 
-	public static final String SERVER_PROFILE_LOCATION = "bamServerProfiles";
-
 	public Mediator createSpecificMediator(OMElement omElement, Properties properties) {
 		BamMediator bam = new BamMediator();
-
-		String serverProfilePath = SERVER_PROFILE_LOCATION + "/"
-				+ this.getServerProfileName(omElement);
-		String streamName = this.getStreamName(omElement);
-		String streamVersion = this.getStreamVersion(omElement);
-		if (isNotNullOrEmpty(serverProfilePath) && isNotNullOrEmpty(streamName)
-				&& isNotNullOrEmpty(streamVersion)) {
-			bam.setServerProfile(serverProfilePath);
-			bam.getStream().setStreamConfiguration(new StreamConfiguration());
-			bam.getStream().getStreamConfiguration().setName(streamName);
-			bam.getStream().getStreamConfiguration().setVersion(streamVersion);
+		if (StringUtils.isEmpty(this.getServerProfileName(omElement))) {
+			handleException("BAM Mediator : Server Profile Name can not be empty");
+		} else if (StringUtils.isEmpty(this.getStreamName(omElement))) {
+			handleException("BAM Mediator : Stream Name can not be empty");
+		} else if (StringUtils.isEmpty(this.getStreamVersion(omElement))) {
+			handleException("BAM Mediator : Stream Version can not be empty");
 		}
+		bam.setServerProfile(this.getServerProfileName(omElement));
+		bam.getStream().setStreamConfiguration(new StreamConfiguration());
+		bam.getStream().getStreamConfiguration().setName(this.getStreamName(omElement));
+		bam.getStream().getStreamConfiguration().setVersion(this.getStreamVersion(omElement));
 		return bam;
 	}
 
@@ -116,9 +115,4 @@ public class BamMediatorExtFactory extends AbstractMediatorFactory {
 
 		return null;
 	}
-
-	private boolean isNotNullOrEmpty(String string) {
-		return string != null && !string.equals("");
-	}
-
 }

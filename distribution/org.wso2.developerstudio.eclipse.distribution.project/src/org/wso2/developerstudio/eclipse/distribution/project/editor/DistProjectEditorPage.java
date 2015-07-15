@@ -484,8 +484,9 @@ public class DistProjectEditorPage extends FormPage {
         	lastCtrl.dispose();  
         }
 
-		// Fixing TOOLS-2837
-		// if(nodeData.hasChildren() || !item.getChecked())return;
+		if (nodeData.hasChildren()) {
+			return;
+		}
 
 		final String artifactInfo = DistProjectUtils
 		.getArtifactInfoAsString(nodeData.getDependency());

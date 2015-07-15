@@ -34,12 +34,13 @@ public class Axis2ClassWizard  extends Wizard implements INewWizard{
 	IStructuredSelection selection;
 	Axis2ClassWizardPage axisClassWizardPage;
 	IProject activeProject;
+	private static final String PROJECT_WIZARD_WINDOW_TITLE = "New Axis2 Class";
 	
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-	      this.workbench = workbench;
-	      this.selection = selection;
-	      setWindowTitle("New Axis2 Class");
-	      setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
+		this.workbench = workbench;
+		this.selection = selection;
+		setWindowTitle(PROJECT_WIZARD_WINDOW_TITLE);
+		setDefaultPageImageDescriptor(Axis2ImageUtils.getInstance().getImageDescriptor("axis2-wizard.png"));
 	}
 	
 	public void addPages() {

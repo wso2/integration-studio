@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -217,23 +218,28 @@ public class Deserializer {
 			artifactType=ArtifactType.TASK;
 		} else if("api".equals(localName)){
 			artifactType=ArtifactType.API;
-		} else if("template".equals(localName)){			
-			OMElement child1 = (OMElement) element.getChildElements().next();
-			String child1LocalName = child1.getLocalName();
-			if("sequence".equals(child1LocalName)){
-				artifactType=ArtifactType.TEMPLATE_SEQUENCE;
-			}else if("endpoint".equals(child1LocalName)){
-				OMElement child2 = (OMElement) child1.getChildElements().next();
-				String child2LocalName = child2.getLocalName();
-				if("address".equals(child2LocalName)){
-					artifactType=ArtifactType.TEMPLATE_ENDPOINT_ADDRESS;
-				}else if("wsdl".equals(child2LocalName)){
-					artifactType=ArtifactType.TEMPLATE_ENDPOINT_WSDL;
-				}else if("default".equals(child2LocalName)){
-					artifactType=ArtifactType.TEMPLATE_ENDPOINT_DEFAULT;
-				}else if("http".equals(child2LocalName)){
-					artifactType=ArtifactType.TEMPLATE_ENDPOINT_HTTP;
-				}				
+		} else if("template".equals(localName)){
+			Iterator children = element.getChildElements();
+			while(children.hasNext()){
+				OMElement child1 = (OMElement) children.next();
+				String child1LocalName = child1.getLocalName();
+				if(!"parameter".equals(child1LocalName)){
+					if("sequence".equals(child1LocalName)){
+						artifactType=ArtifactType.TEMPLATE_SEQUENCE;
+					}else if("endpoint".equals(child1LocalName)){
+						OMElement child2 = (OMElement) child1.getChildElements().next();
+						String child2LocalName = child2.getLocalName();
+						if("address".equals(child2LocalName)){
+							artifactType=ArtifactType.TEMPLATE_ENDPOINT_ADDRESS;
+						}else if("wsdl".equals(child2LocalName)){
+							artifactType=ArtifactType.TEMPLATE_ENDPOINT_WSDL;
+						}else if("default".equals(child2LocalName)){
+							artifactType=ArtifactType.TEMPLATE_ENDPOINT_DEFAULT;
+						}else if("http".equals(child2LocalName)){
+							artifactType=ArtifactType.TEMPLATE_ENDPOINT_HTTP;
+						}				
+					}
+				}
 			}			
 		} else if("endpoint".equals(localName)){
 			artifactType=ArtifactType.ENDPOINT;

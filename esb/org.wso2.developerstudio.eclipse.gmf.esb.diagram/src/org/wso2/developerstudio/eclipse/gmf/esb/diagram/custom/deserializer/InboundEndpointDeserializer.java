@@ -142,6 +142,8 @@ public class InboundEndpointDeserializer extends
 					inboundEndpoint.getOnErrorSequenceOutputConnector());
 		}
 
+		addPairMediatorFlow(inboundEndpoint.getSequenceOutputConnector(),inboundEndpoint.getSequenceInputConnector());
+		addPairMediatorFlow(inboundEndpoint.getOnErrorSequenceOutputConnector(),inboundEndpoint.getOnErrorSequenceInputConnector());
 		return inboundEndpoint;
 	}
 

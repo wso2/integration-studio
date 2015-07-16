@@ -433,7 +433,6 @@ public class DefaultEsbModelExporter implements EsbModelTransformer {
             case INBOUND_ENDPOINT:
                 if (child instanceof InboundEndpoint) {
                         configOM = InboundEndpointSerializer.serializeInboundEndpoint(transformInbundEndpoint((InboundEndpoint)child));
-                        System.out.println(configOM.toString());
                 }
                 break;
 			case SYNAPSE_CONFIG:

@@ -55,18 +55,16 @@ public class InboundEndpointProjectFieldController extends AbstractFieldControll
 						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 						try {
 							esbProjectArtifact.fromFile(project.getFile(ARTIFACT_XML_FILE).getLocation().toFile());
-							List<ESBArtifact> allArtifacts = esbProjectArtifact.getAllESBArtifacts();
-							for (ESBArtifact artifact : allArtifacts) {
-								if (resource.equals(artifact.getName())) {
-									throw new FieldValidationException(
-											InboundEndpointArtifactProperties.errorNameExists);
-								}
-							}
-
 						} catch (Exception e) {
 							log.error(InboundEndpointArtifactProperties.validationReadingFile, e);
 							throw new FieldValidationException(InboundEndpointArtifactProperties.validationReadingFile,
 									e);
+						}
+						List<ESBArtifact> allArtifacts = esbProjectArtifact.getAllESBArtifacts();
+						for (ESBArtifact artifact : allArtifacts) {
+							if (resource.equals(artifact.getName())) {
+								throw new FieldValidationException(InboundEndpointArtifactProperties.errorNameExists);
+							}
 						}
 					}
 				}

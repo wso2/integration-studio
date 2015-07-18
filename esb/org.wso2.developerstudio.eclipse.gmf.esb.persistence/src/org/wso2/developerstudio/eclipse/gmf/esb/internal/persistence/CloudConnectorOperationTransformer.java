@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,25 +25,28 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperation;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
-import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CloudConnectorOperationExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class CloudConnectorOperationTransformer extends AbstractEsbNodeTransformer{
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		Assert.isTrue(subject instanceof CloudConnectorOperation, "Invalid subject.");
 		CloudConnectorOperation visuaCloudConnectorOperation = (CloudConnectorOperation) subject;
-		information.getParentSequence().addChild(
-				createCloudConnectorOperation(information, visuaCloudConnectorOperation));
-		doTransform(information, visuaCloudConnectorOperation.getOutputConnector());
-		
+		try {
+			information.getParentSequence().addChild(
+					createCloudConnectorOperation(information, visuaCloudConnectorOperation));
+			doTransform(information, visuaCloudConnectorOperation.getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -53,17 +56,20 @@ public class CloudConnectorOperationTransformer extends AbstractEsbNodeTransform
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 		Assert.isTrue(subject instanceof CloudConnectorOperation, "Invalid subject.");
 		CloudConnectorOperation visuaCloudConnectorOperation = (CloudConnectorOperation) subject;
-		sequence.addChild(createCloudConnectorOperation(information, visuaCloudConnectorOperation));
-		doTransformWithinSequence(information, visuaCloudConnectorOperation.getOutputConnector()
-				.getOutgoingLink(), sequence);
-		
+		try {
+			sequence.addChild(createCloudConnectorOperation(information, visuaCloudConnectorOperation));
+			doTransformWithinSequence(information, visuaCloudConnectorOperation.getOutputConnector()
+					.getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
 	private CloudConnectorOperationExt createCloudConnectorOperation(
-			TransformationInfo information, CloudConnectorOperation visuaCloudConnectorOperation) throws Exception {
+			TransformationInfo information, CloudConnectorOperation visuaCloudConnectorOperation) throws JaxenException {
 		
 		CloudConnectorOperationExt cloudConnectorOperation=new CloudConnectorOperationExt();
 		

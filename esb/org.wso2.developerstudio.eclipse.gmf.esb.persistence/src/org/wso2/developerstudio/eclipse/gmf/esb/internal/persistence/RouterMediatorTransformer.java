@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,15 +20,14 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
-import org.apache.synapse.config.xml.AnonymousListMediator;
 import org.apache.synapse.endpoints.Endpoint;
-import org.apache.synapse.mediators.ListMediator;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.eip.Target;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.carbon.mediators.router.impl.Route;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -36,6 +35,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RouterTargetContainer;
 import org.wso2.developerstudio.eclipse.gmf.esb.TargetSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * Router mediator transformer 
@@ -43,11 +43,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
  */
 public class RouterMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
-		information.getParentSequence().addChild(createRouterMediator(information, subject));
-		doTransform(information,
-				((RouterMediator) subject).getOutputConnector());
-
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+		try {
+			information.getParentSequence().addChild(createRouterMediator(information, subject));
+			doTransform(information, ((RouterMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -57,15 +59,18 @@ public class RouterMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
-		sequence.addChild(createRouterMediator(information, subject));
-		doTransformWithinSequence(information, ((RouterMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
-		
+			SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createRouterMediator(information, subject));
+			doTransformWithinSequence(information, ((RouterMediator) subject)
+					.getOutputConnector().getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
 	private org.wso2.carbon.mediators.router.impl.RouterMediator createRouterMediator(
-			TransformationInfo information, EsbNode subject) throws Exception {
+			TransformationInfo information, EsbNode subject) throws JaxenException, TransformerException{
 		
 		Assert.isTrue(subject instanceof RouterMediator, "Unsupported mediator passed in for serialization");
 		RouterMediator routerModel = (RouterMediator) subject;

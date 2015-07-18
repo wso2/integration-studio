@@ -10,11 +10,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.BuilderMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.BuilderMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class BuilderMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		information.getParentSequence().addChild(
 				createBuilderMediator(subject, information));
 
@@ -29,7 +30,7 @@ public class BuilderMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createBuilderMediator(subject, information));
 		doTransformWithinSequence(information, ((BuilderMediator) subject)
 				.getOutputConnector().getOutgoingLink(), sequence);
@@ -37,7 +38,7 @@ public class BuilderMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	private org.wso2.carbon.relay.mediators.builder.BuilderMediator createBuilderMediator(
-			EsbNode subject, TransformationInfo information) throws Exception {
+			EsbNode subject, TransformationInfo information) throws TransformerException {
 
 		/*
 		 * Check subject.

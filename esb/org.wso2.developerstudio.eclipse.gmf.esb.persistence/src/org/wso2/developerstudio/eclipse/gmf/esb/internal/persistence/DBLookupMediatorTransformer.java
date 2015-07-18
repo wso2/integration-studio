@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.Assert;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * DBLookup mediator transformer
@@ -28,7 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
  */
 public class DBLookupMediatorTransformer extends AbstractDBMediatorTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 
 		information.getParentSequence().addChild(createDBLookupMediator(information, subject));
 		// Transform the property mediator output data flow path.
@@ -36,7 +37,7 @@ public class DBLookupMediatorTransformer extends AbstractDBMediatorTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createDBLookupMediator(information, subject));
 		doTransformWithinSequence(information, ((DBLookupMediator) subject).getOutputConnector()
 				.getOutgoingLink(), sequence);
@@ -44,7 +45,7 @@ public class DBLookupMediatorTransformer extends AbstractDBMediatorTransformer {
 	}
 
 	private org.apache.synapse.mediators.db.DBLookupMediator createDBLookupMediator(
-			TransformationInfo information, EsbNode subject) throws Exception {
+			TransformationInfo information, EsbNode subject){
 		Assert.isTrue(subject instanceof DBLookupMediator,
 				"Unsupported mediator passed in for serialization.");
 		DBLookupMediator visualDBLookup = (DBLookupMediator) subject;

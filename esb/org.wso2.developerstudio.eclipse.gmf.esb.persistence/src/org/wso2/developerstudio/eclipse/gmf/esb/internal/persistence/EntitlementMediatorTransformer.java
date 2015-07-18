@@ -13,6 +13,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EntitlementMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerUtils;
 
 public class EntitlementMediatorTransformer extends AbstractEsbNodeTransformer{
@@ -28,7 +29,7 @@ public class EntitlementMediatorTransformer extends AbstractEsbNodeTransformer{
 	final static String X509 ="org.wso2.carbon.identity.entitlement.mediator.callback.X509EntitlementCallbackHandler";
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		information.getParentSequence().addChild(createEntitlementMediator(information,subject));
 		/*
 		 *  Transform the Entitlement mediator output data flow path.
@@ -44,12 +45,12 @@ public class EntitlementMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createEntitlementMediator(information,subject));
 		doTransformWithinSequence(information,((EntitlementMediator) subject).getOutputConnector().getOutgoingLink(),sequence);			
 	}
 	
-	private EntitlementMediatorExt createEntitlementMediator(TransformationInfo information,EsbNode subject) throws Exception{
+	private EntitlementMediatorExt createEntitlementMediator(TransformationInfo information,EsbNode subject) throws TransformerException{
 		/*
 		 *  Check subject.
 		 */

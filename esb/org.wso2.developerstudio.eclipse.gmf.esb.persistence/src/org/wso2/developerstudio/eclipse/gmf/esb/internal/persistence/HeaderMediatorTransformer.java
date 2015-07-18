@@ -12,19 +12,25 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer{
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
-		information.getParentSequence().addChild(createHeaderMediator(subject));
-		/* 
-		 * Transform the Header mediator output data flow path.
-		 */
-		doTransform(information,((HeaderMediator) subject).getOutputConnector());		
+			throws TransformerException {
+		try {
+			information.getParentSequence().addChild(createHeaderMediator(subject));
+			/* 
+			 * Transform the Header mediator output data flow path.
+			 */
+			doTransform(information,((HeaderMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -33,12 +39,16 @@ public class HeaderMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createHeaderMediator(subject));
-		doTransformWithinSequence(information,((HeaderMediator) subject).getOutputConnector().getOutgoingLink(),sequence);	
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createHeaderMediator(subject));
+			doTransformWithinSequence(information,((HeaderMediator) subject).getOutputConnector().getOutgoingLink(),sequence);	
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}	
 	}
 	
-	private org.apache.synapse.mediators.transform.HeaderMediator createHeaderMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.transform.HeaderMediator createHeaderMediator(EsbNode subject) throws JaxenException{
 		/*
 		 *  Check subject.
 		 */

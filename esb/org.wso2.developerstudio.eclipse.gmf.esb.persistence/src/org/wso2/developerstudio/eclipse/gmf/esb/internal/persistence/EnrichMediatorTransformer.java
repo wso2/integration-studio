@@ -19,6 +19,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.stream.XMLStreamException;
+
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.endpoints.Endpoint;
@@ -26,11 +28,13 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -41,10 +45,14 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws Exception {	
-		info.getParentSequence().addChild(createEnrichMediator(subject));		
-		// Transform the log mediator output data flow path.
-		doTransform(info, ((EnrichMediator) subject).getOutputConnector());
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {	
+		try {
+			info.getParentSequence().addChild(createEnrichMediator(subject));
+			// Transform the log mediator output data flow path.
+			doTransform(info, ((EnrichMediator) subject).getOutputConnector());
+		} catch (JaxenException | XMLStreamException e) {
+			throw new TransformerException(e);
+		}	
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -54,13 +62,16 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
 
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createEnrichMediator(subject));
-		doTransformWithinSequence(information,((EnrichMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createEnrichMediator(subject));
+			doTransformWithinSequence(information,((EnrichMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException | XMLStreamException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
-	private org.apache.synapse.mediators.elementary.EnrichMediator createEnrichMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.elementary.EnrichMediator createEnrichMediator(EsbNode subject) throws XMLStreamException, JaxenException{
 		// Check subject.
 		Assert.isTrue(subject instanceof EnrichMediator, "Invalid subject.");
 		EnrichMediator visualEnrich = (EnrichMediator) subject;

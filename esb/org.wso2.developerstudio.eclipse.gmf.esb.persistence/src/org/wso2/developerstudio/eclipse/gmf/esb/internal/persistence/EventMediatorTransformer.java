@@ -11,20 +11,25 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.EventMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EventTopicType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class EventMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
-		information.getParentSequence().addChild(
-				createEventMediator(information, subject));
-		// Transform the Event mediator output data flow path.
-		doTransform(information, ((EventMediator) subject).getOutputConnector());
-
+			throws TransformerException {
+		try {
+			information.getParentSequence().addChild(
+					createEventMediator(information, subject));
+			// Transform the Event mediator output data flow path.
+			doTransform(information, ((EventMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -33,15 +38,18 @@ public class EventMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createEventMediator(information, subject));
-		doTransformWithinSequence(information, ((EventMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
-
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createEventMediator(information, subject));
+			doTransformWithinSequence(information, ((EventMediator) subject)
+					.getOutputConnector().getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	private org.wso2.carbon.mediator.event.EventMediator createEventMediator(
-			TransformationInfo information, EsbNode subject) throws Exception {
+			TransformationInfo information, EsbNode subject) throws JaxenException {
 		// Check subject.
 		Assert.isTrue(subject instanceof EventMediator, "Invalid subject.");
 		EventMediator visualEvent = (EventMediator) subject;

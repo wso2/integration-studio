@@ -25,6 +25,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -36,7 +37,7 @@ public class LoopBackMediatorTransformer extends AbstractEsbNodeTransformer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		LoopBackMediator visualMediator = (LoopBackMediator) subject;
 
 		information.getParentSequence().addChild(createLoopBackMediator(visualMediator));
@@ -52,7 +53,7 @@ public class LoopBackMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 		LoopBackMediator visualMediator = (LoopBackMediator) subject;
 
 		sequence.addChild(createLoopBackMediator(visualMediator));

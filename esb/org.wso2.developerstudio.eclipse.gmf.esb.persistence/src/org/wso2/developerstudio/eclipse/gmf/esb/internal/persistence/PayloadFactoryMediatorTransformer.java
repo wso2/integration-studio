@@ -28,6 +28,7 @@ import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.MediaType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -37,6 +38,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFormatType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * PayloadFactory mediator transformer 
@@ -45,12 +47,15 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransformer{
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
-		information.getParentSequence().addChild(createPayloadFactoryMediator(subject));
-		// Transform the property mediator output data flow path.
-		doTransform(information,
-				((PayloadFactoryMediator) subject).getOutputConnector());
-		
+			throws TransformerException {
+		try {
+			information.getParentSequence().addChild(createPayloadFactoryMediator(subject));
+			// Transform the property mediator output data flow path.
+			doTransform(information,
+					((PayloadFactoryMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -59,13 +64,16 @@ public class PayloadFactoryMediatorTransformer extends AbstractEsbNodeTransforme
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createPayloadFactoryMediator(subject));
-		doTransformWithinSequence(information,((PayloadFactoryMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
-		
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createPayloadFactoryMediator(subject));
+			doTransformWithinSequence(information,((PayloadFactoryMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
-	private org.apache.synapse.mediators.transform.PayloadFactoryMediator createPayloadFactoryMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.transform.PayloadFactoryMediator createPayloadFactoryMediator(EsbNode subject) throws JaxenException{
 	
 		// Check subject.
 		Assert.isTrue(subject instanceof PayloadFactoryMediator, "Unsupported mediator passed in for serialization.");

@@ -18,9 +18,12 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 
+import javax.xml.stream.XMLStreamException;
+
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.synapse.commons.evaluators.Evaluator;
+import org.apache.synapse.commons.evaluators.EvaluatorException;
 import org.apache.synapse.commons.evaluators.config.EvaluatorFactoryFinder;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -33,6 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouteBranch;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * Conditional router mediator transformer 
@@ -40,11 +44,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
  */
 public class ConditionalRouterMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
-		information.getParentSequence().addChild(createConditionalRouterMediator(information, subject));
-		doTransform(information,
-				((ConditionalRouterMediator) subject).getOutputConnector());
-
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+		try {
+			information.getParentSequence().addChild(createConditionalRouterMediator(information, subject));
+			doTransform(information,
+					((ConditionalRouterMediator) subject).getOutputConnector());
+		} catch (XMLStreamException | EvaluatorException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -54,15 +61,18 @@ public class ConditionalRouterMediatorTransformer extends AbstractEsbNodeTransfo
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
-		sequence.addChild(createConditionalRouterMediator(information, subject));
-		doTransformWithinSequence(information, ((ConditionalRouterMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
-		
+			SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createConditionalRouterMediator(information, subject));
+			doTransformWithinSequence(information, ((ConditionalRouterMediator) subject)
+					.getOutputConnector().getOutgoingLink(), sequence);
+		} catch (XMLStreamException|EvaluatorException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
 	private org.apache.synapse.mediators.filters.router.ConditionalRouterMediator createConditionalRouterMediator(
-			TransformationInfo information, EsbNode subject) throws Exception {
+			TransformationInfo information, EsbNode subject) throws XMLStreamException, EvaluatorException{
 		
 		Assert.isTrue(subject instanceof ConditionalRouterMediator, "Unsupported mediator passed in for serialization");
 		ConditionalRouterMediator routerModel = (ConditionalRouterMediator) subject;

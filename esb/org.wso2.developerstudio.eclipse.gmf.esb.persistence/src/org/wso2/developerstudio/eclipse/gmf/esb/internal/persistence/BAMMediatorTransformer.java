@@ -27,11 +27,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.carbon.mediator.bam.config.stream.StreamConfiguration;
 
 public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		information.getParentSequence().addChild(
 				createBAMMediator(subject, information));
 
@@ -44,7 +45,7 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createBAMMediator(subject, information));
 		doTransformWithinSequence(information, ((BAMMediator) subject)
 				.getOutputConnector().getOutgoingLink(), sequence);
@@ -52,7 +53,7 @@ public class BAMMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 	
 	private org.wso2.carbon.mediator.bam.BamMediator createBAMMediator(
-			EsbNode subject, TransformationInfo information) throws Exception {
+			EsbNode subject, TransformationInfo information) throws TransformerException {
 
 		/*
 		 * Check subject.

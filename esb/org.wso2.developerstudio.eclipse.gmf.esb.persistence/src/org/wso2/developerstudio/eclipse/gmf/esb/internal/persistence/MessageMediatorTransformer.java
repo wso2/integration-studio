@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2010 WSO2, Inc. (http://wso2.com)
+ * Copyright 2009-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 
-import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.builtin.SendMediator;
@@ -28,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -45,7 +45,7 @@ public class MessageMediatorTransformer extends AbstractEsbNodeTransformer {
 	 * {@inheritDoc}
 	 */
 	public void transform(TransformationInfo info, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		// Check subject.
 		Assert.isTrue(
 				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.MessageMediator,
@@ -98,7 +98,7 @@ public class MessageMediatorTransformer extends AbstractEsbNodeTransformer {
 
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		// TODO Auto-generated method stub
 		
 	}

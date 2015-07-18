@@ -67,6 +67,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * Synapse API resource transformer class
@@ -74,7 +75,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		// Check subject.
 		Assert.isTrue(
 				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.APIResource,
@@ -189,7 +190,7 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 
 	}
 

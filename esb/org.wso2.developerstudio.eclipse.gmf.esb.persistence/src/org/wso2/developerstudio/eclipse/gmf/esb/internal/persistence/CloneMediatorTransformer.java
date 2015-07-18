@@ -17,6 +17,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.mediators.eip.Target;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediatorTargetOutputConnector;
@@ -39,18 +40,22 @@ import org.wso2.developerstudio.eclipse.gmf.esb.impl.RecipientListEndPointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.TemplateEndpointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.impl.WSDLEndPointImpl;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
-		information.getParentSequence().addChild(
-				createCloneMediator(information, subject));
-		/*
-		 * Transform the mediator output data flow path.
-		 */
-		doTransform(information, ((CloneMediator) subject).getOutputConnector());
-
+			throws TransformerException {
+		try {
+			information.getParentSequence().addChild(
+					createCloneMediator(information, subject));
+			/*
+			 * Transform the mediator output data flow path.
+			 */
+			doTransform(information, ((CloneMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -58,14 +63,18 @@ public class CloneMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createCloneMediator(information, subject));
-		doTransformWithinSequence(information, ((CloneMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createCloneMediator(information, subject));
+			doTransformWithinSequence(information, ((CloneMediator) subject)
+					.getOutputConnector().getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	private org.apache.synapse.mediators.eip.splitter.CloneMediator createCloneMediator(
-			TransformationInfo information, EsbNode subject) throws Exception {
+			TransformationInfo information, EsbNode subject) throws TransformerException, JaxenException {
 		/*
 		 * Check subject.
 		 */

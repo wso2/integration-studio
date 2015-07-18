@@ -28,6 +28,7 @@ import org.apache.synapse.util.resolver.ResourceMap;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -37,13 +38,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTResource;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class XSLTMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo info,
-			EsbNode subject) throws Exception {		
-		info.getParentSequence().addChild(createXSLTMediator(subject));
-		doTransform(info, ((XSLTMediator)subject).getOutputConnector());
+			EsbNode subject) throws TransformerException {		
+		try {
+			info.getParentSequence().addChild(createXSLTMediator(subject));
+			doTransform(info, ((XSLTMediator)subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -53,13 +59,17 @@ public class XSLTMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		// TODO Auto-generated method stub
-		sequence.addChild(createXSLTMediator(subject));
-		doTransformWithinSequence(information,((XSLTMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
+		try {
+			sequence.addChild(createXSLTMediator(subject));
+			doTransformWithinSequence(information,((XSLTMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
-	private org.apache.synapse.mediators.transform.XSLTMediator createXSLTMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.transform.XSLTMediator createXSLTMediator(EsbNode subject) throws JaxenException{
 		Assert.isTrue(subject instanceof XSLTMediator, "Invalid subject.");
 		XSLTMediator visualXSLT = (XSLTMediator)subject;
 		

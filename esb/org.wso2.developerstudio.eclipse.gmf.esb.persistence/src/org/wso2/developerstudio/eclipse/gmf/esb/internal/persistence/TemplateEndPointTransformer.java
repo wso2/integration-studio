@@ -32,12 +32,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateEndpointParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 
 
 public class TemplateEndPointTransformer extends AbstractEndpointTransformer{
 
-	public void transform(TransformationInfo info, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
             // Check subject.
             Assert.isTrue(subject instanceof TemplateEndpoint, "Invalid subject");
             TemplateEndpoint visualEndPoint = (TemplateEndpoint) subject;
@@ -121,7 +122,7 @@ public class TemplateEndPointTransformer extends AbstractEndpointTransformer{
         }
  
         public void transformWithinSequence(TransformationInfo information,
-                        EsbNode subject, SequenceMediator sequence) throws Exception {
+                        EsbNode subject, SequenceMediator sequence) throws TransformerException {
  
                 Assert.isTrue(subject instanceof TemplateEndpoint, "Invalid subject");
                 TemplateEndpoint visualEndPoint = (TemplateEndpoint) subject;                

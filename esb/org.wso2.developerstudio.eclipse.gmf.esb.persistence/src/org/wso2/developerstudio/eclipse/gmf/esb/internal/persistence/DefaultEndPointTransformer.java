@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2010 WSO2, Inc. (http://wso2.com)
+ * Copyright 2009-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.endpoints.DefaultEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.mediators.builtin.SendMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.DefaultEndPoint;
@@ -32,6 +31,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -43,7 +43,7 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 	 * {@inheritDoc}
 	 */
 	public void transform(TransformationInfo info, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
 		DefaultEndPoint visualEP = (DefaultEndPoint) subject;
@@ -148,7 +148,7 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		Assert.isTrue(subject instanceof DefaultEndPoint, "Invalid subject");
 		DefaultEndPoint visualEndPoint = (DefaultEndPoint) subject;
 		Endpoint synapseEP = create(visualEndPoint, visualEndPoint.getEndPointName());

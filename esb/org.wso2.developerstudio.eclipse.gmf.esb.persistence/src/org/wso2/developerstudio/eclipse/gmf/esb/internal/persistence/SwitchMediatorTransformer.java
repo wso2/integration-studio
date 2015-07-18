@@ -3,7 +3,6 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.config.xml.AnonymousListMediator;
 import org.apache.synapse.config.xml.SwitchCase;
 import org.apache.synapse.config.xml.SynapsePath;
@@ -13,24 +12,24 @@ import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
-import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchCaseBranchOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo info,
-			EsbNode subject) throws Exception {
-
-		info.getParentSequence().addChild(createSwitchMediator(info,subject));		
-		doTransform(info,
-					((SwitchMediator) subject).getOutputConnector());
-		
+			EsbNode subject) throws TransformerException {
+		try {
+			info.getParentSequence().addChild(createSwitchMediator(info,subject));
+			doTransform(info, ((SwitchMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}				
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -38,19 +37,20 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createSwitchMediator(information, subject));
-		doTransformWithinSequence(information, ((SwitchMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
-		
-	}
 	
+	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+			throws TransformerException {
+		try {
+			sequence.addChild(createSwitchMediator(information, subject));
+			doTransformWithinSequence(information, ((SwitchMediator) subject).getOutputConnector().getOutgoingLink(),
+					sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
+	}	
 	
 	private org.apache.synapse.mediators.filters.SwitchMediator createSwitchMediator(
-			TransformationInfo info, EsbNode subject) throws Exception {
+			TransformationInfo info, EsbNode subject) throws JaxenException, TransformerException{
 		
 		Assert.isTrue(subject instanceof SwitchMediator, "Invalid subject.");
 		SwitchMediator visualSwitch = (SwitchMediator) subject;

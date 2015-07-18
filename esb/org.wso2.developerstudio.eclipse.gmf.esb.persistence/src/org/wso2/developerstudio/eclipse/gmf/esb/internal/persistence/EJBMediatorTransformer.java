@@ -26,6 +26,7 @@ import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.MethodArgument;
@@ -33,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.EJBMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.apache.synapse.util.xpath.SynapseXPath;
 
 /**
@@ -42,11 +44,14 @@ import org.apache.synapse.util.xpath.SynapseXPath;
  */
 public class EJBMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
-		information.getParentSequence().addChild(createEJBMediator(subject));
-		// Transform the EJB mediator output data flow path.
-		doTransform(information, ((EJBMediator) subject).getOutputConnector());
-
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+		try {
+			information.getParentSequence().addChild(createEJBMediator(subject));
+			// Transform the EJB mediator output data flow path.
+			doTransform(information, ((EJBMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -56,15 +61,18 @@ public class EJBMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
-		sequence.addChild(createEJBMediator(subject));
-		// Transform the EJB mediator output data flow path.
-		doTransformWithinSequence(information, ((EJBMediator) subject).getOutputConnector()
-				.getOutgoingLink(), sequence);
-
+			SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createEJBMediator(subject));
+			// Transform the EJB mediator output data flow path.
+			doTransformWithinSequence(information, ((EJBMediator) subject).getOutputConnector()
+					.getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
-	private Mediator createEJBMediator(EsbNode subject) throws Exception{
+	private Mediator createEJBMediator(EsbNode subject) throws JaxenException{
 		Assert.isTrue(subject instanceof EJBMediator,
 				"Unsupported mediator passed in for serialization");
 		EJBMediator mediatorModel = (EJBMediator) subject;

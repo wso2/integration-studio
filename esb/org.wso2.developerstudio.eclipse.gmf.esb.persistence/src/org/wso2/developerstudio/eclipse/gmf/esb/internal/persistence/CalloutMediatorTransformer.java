@@ -9,6 +9,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.CalloutEndpointType;
 import org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CalloutPayloadType;
@@ -17,19 +18,23 @@ import org.wso2.developerstudio.eclipse.gmf.esb.CalloutSecurityType;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
-		information.getParentSequence()
-				.addChild(createCalloutMediator(subject));
-		/*
-		 * Transform the property mediator output data flow path.
-		 */
-		doTransform(information,
-				((CalloutMediator) subject).getOutputConnector());
-
+			throws TransformerException {
+		try {
+			information.getParentSequence()
+					.addChild(createCalloutMediator(subject));
+			/*
+			 * Transform the property mediator output data flow path.
+			 */
+			doTransform(information,
+					((CalloutMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -38,14 +43,18 @@ public class CalloutMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createCalloutMediator(subject));
-		doTransformWithinSequence(information, ((CalloutMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createCalloutMediator(subject));
+			doTransformWithinSequence(information, ((CalloutMediator) subject)
+					.getOutputConnector().getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	private org.apache.synapse.mediators.builtin.CalloutMediator createCalloutMediator(
-			EsbNode subject) throws Exception {
+			EsbNode subject) throws TransformerException, JaxenException {
 		/*
 		 * Check subject.
 		 */

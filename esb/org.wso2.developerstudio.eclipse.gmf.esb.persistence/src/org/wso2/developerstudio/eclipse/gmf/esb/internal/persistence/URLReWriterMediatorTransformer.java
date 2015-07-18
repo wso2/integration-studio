@@ -33,20 +33,26 @@ import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.EvaluatorExpressionProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRule;
 import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteRuleAction;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class URLReWriterMediatorTransformer extends AbstractEsbNodeTransformer{
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
-		information.getParentSequence().addChild(createURLRewriteMediator(information,subject));
-		// Transform the property mediator output data flow path.
-		doTransform(information,((URLRewriteMediator) subject).getOutputConnector());		
+			throws TransformerException {
+		try {
+			information.getParentSequence().addChild(createURLRewriteMediator(information,subject));
+			// Transform the property mediator output data flow path.
+			doTransform(information,((URLRewriteMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -56,14 +62,16 @@ public class URLReWriterMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createURLRewriteMediator(information,subject));
-		doTransformWithinSequence(information,((URLRewriteMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-
-		
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createURLRewriteMediator(information,subject));
+			doTransformWithinSequence(information,((URLRewriteMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
-	private org.apache.synapse.mediators.transform.url.URLRewriteMediator createURLRewriteMediator(TransformationInfo information,EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.transform.url.URLRewriteMediator createURLRewriteMediator(TransformationInfo information,EsbNode subject) throws JaxenException{
 		Assert.isTrue(subject instanceof URLRewriteMediator, "Invalid subject.");
 		URLRewriteMediator visualUrlRewriter = (URLRewriteMediator) subject;
 		org.apache.synapse.mediators.transform.url.URLRewriteMediator urlReWriterMediator =new org.apache.synapse.mediators.transform.url.URLRewriteMediator();

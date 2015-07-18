@@ -1,6 +1,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
+
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.Value;
 import org.apache.synapse.mediators.base.SequenceMediator;
@@ -9,24 +10,25 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo info, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		info.getParentSequence().addChild(createDataMapperMediator(subject));
 		doTransform(info, ((DataMapperMediator) subject).getOutputConnector());
 
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) throws Exception {
+			List<Endpoint> endPoints) throws TransformerException {
 		// TODO Auto-generated method stub
 
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createDataMapperMediator(subject));
 		doTransformWithinSequence(information, ((DataMapperMediator) subject)
 				.getOutputConnector().getOutgoingLink(), sequence);
@@ -34,7 +36,7 @@ public class DataMapperMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	private org.wso2.carbon.mediator.datamapper.DataMapperMediator createDataMapperMediator(
-			EsbNode subject) throws Exception {
+			EsbNode subject){
 		Assert.isTrue(subject instanceof DataMapperMediator, "Invalid subject.");
 		DataMapperMediator visualDataMapperMediator = (DataMapperMediator) subject;
 

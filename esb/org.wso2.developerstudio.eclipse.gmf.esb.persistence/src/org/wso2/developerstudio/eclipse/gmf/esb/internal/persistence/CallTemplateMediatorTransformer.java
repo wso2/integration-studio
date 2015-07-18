@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
 import java.util.Map.Entry;
+
 import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMFactory;
@@ -36,16 +37,21 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleOptionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer{
 	
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		Assert.isTrue(subject instanceof CallTemplateMediator, "Invalid subject.");
 		CallTemplateMediator visuaCallTemplate = (CallTemplateMediator) subject;
-		information.getParentSequence().addChild(
-				createInvokeMediator(information, visuaCallTemplate));
-		// Transform the callTemplate mediator output data flow path.
-		doTransform(information, visuaCallTemplate.getOutputConnector());
+		try {
+			information.getParentSequence().addChild(
+					createInvokeMediator(information, visuaCallTemplate));
+			// Transform the callTemplate mediator output data flow path.
+			doTransform(information, visuaCallTemplate.getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -53,12 +59,16 @@ public class CallTemplateMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 		Assert.isTrue(subject instanceof CallTemplateMediator, "Invalid subject.");
 		CallTemplateMediator visuaCallTemplate = (CallTemplateMediator) subject;
-		sequence.addChild(createInvokeMediator(information, visuaCallTemplate));
-		doTransformWithinSequence(information, visuaCallTemplate.getOutputConnector()
-				.getOutgoingLink(), sequence);
+		try {
+			sequence.addChild(createInvokeMediator(information, visuaCallTemplate));
+			doTransformWithinSequence(information, visuaCallTemplate.getOutputConnector()
+					.getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 	
 	private InvokeMediator createInvokeMediator(TransformationInfo information,

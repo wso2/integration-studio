@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.xml.namespace.QName;
@@ -25,11 +26,13 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultCodeType;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -44,12 +47,15 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
 	 * {@inheritDoc}
 	 */
 	public void transform(TransformationInfo info, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 	
-		info.getParentSequence().addChild(createFaultMediator(subject));
-
-		// Transform the fault mediator output data flow path.
-		doTransform(info, ((FaultMediator) subject).getOutputConnector());
+		try {
+			info.getParentSequence().addChild(createFaultMediator(subject));
+			// Transform the fault mediator output data flow path.
+			doTransform(info, ((FaultMediator) subject).getOutputConnector());
+		} catch (JaxenException | URISyntaxException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -61,14 +67,16 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
 
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createFaultMediator(subject));
-		doTransformWithinSequence(information,((FaultMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		
-		
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createFaultMediator(subject));
+			doTransformWithinSequence(information,((FaultMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException | URISyntaxException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
-	private org.apache.synapse.mediators.transform.FaultMediator createFaultMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.transform.FaultMediator createFaultMediator(EsbNode subject) throws JaxenException, URISyntaxException{
 		// Check subject.
 		Assert.isTrue(subject instanceof FaultMediator, "Invalid subject.");
 		FaultMediator visualFault = (FaultMediator) subject;

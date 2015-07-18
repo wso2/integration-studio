@@ -18,6 +18,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyEntry;
 import org.wso2.developerstudio.eclipse.gmf.esb.ThrottlePolicyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleSequenceType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class ThrottleMediatorTransformer extends AbstractEsbNodeTransformer  {
 	private OMFactory factory;
@@ -26,7 +27,7 @@ public class ThrottleMediatorTransformer extends AbstractEsbNodeTransformer  {
 	private OMNamespace ns_wsu;
 	
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		information.getParentSequence().addChild(createThrottleMediator(subject,information));		
 		/*
 		 *  Transform the Throttle mediator output data flow path.
@@ -42,14 +43,14 @@ public class ThrottleMediatorTransformer extends AbstractEsbNodeTransformer  {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createThrottleMediator(subject,information));
 		doTransformWithinSequence(information,((ThrottleMediator) subject).getOutputConnector().getOutgoingLink(),sequence);	
 		
 	}
 	
 
-	private org.apache.synapse.mediators.throttle.ThrottleMediator createThrottleMediator(EsbNode subject,TransformationInfo information) throws Exception{
+	private org.apache.synapse.mediators.throttle.ThrottleMediator createThrottleMediator(EsbNode subject,TransformationInfo information) throws TransformerException{
 		/*
 		 *  Check subject.
 		 */

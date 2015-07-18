@@ -15,11 +15,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		
 		Assert.isTrue(subject instanceof WSDLEndPoint, "Invalid subject");
 		WSDLEndPoint visualEndPoint = (WSDLEndPoint) subject;
@@ -133,7 +134,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 	
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		
 		Assert.isTrue(subject instanceof WSDLEndPoint, "Invalid subject");
 		WSDLEndPoint visualEndPoint = (WSDLEndPoint) subject;

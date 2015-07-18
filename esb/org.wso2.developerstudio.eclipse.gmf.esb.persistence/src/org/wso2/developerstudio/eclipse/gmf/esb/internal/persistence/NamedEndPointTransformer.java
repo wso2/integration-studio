@@ -25,6 +25,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
@@ -33,15 +34,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamedEndpoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class NamedEndPointTransformer extends AbstractEndpointTransformer{
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof NamedEndpoint, "Invalid subject.");
 		NamedEndpoint visualEndPoint = (NamedEndpoint) subject;
-		Endpoint synapseEP = create(visualEndPoint,null);
+		Endpoint synapseEP;
+		try {
+			synapseEP = create(visualEndPoint,null);
+
 		setEndpointToSendCallOrProxy(information, visualEndPoint, synapseEP);
 
 		
@@ -74,34 +79,46 @@ public class NamedEndPointTransformer extends AbstractEndpointTransformer{
 
 			
 		doTransform(information, visualEndPoint.getOutputConnector());
-		
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) throws Exception{
+			List<Endpoint> endPoints) throws TransformerException{
 		Assert.isTrue(subject instanceof EndPoint, "Invalid subject");
 		NamedEndpoint visualEP = (NamedEndpoint) subject;
-		Endpoint endPoint=(Endpoint)create(visualEP, visualEP.getEndPointName());
-		endPoints.add(endPoint);
-		
-		//Next node may be a Failover endPoint. So that this should be edited to be compatible with that also.
-/*		info.setParentSequence(info.getOriginOutSequence());
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);	*/	
+		Endpoint endPoint;
+		try {
+			endPoint = (Endpoint)create(visualEP, visualEP.getEndPointName());
+			endPoints.add(endPoint);
+			
+			//Next node may be a Failover endPoint. So that this should be edited to be compatible with that also.
+	/*		info.setParentSequence(info.getOriginOutSequence());
+			info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);	*/	
 
-		// Transform endpoint output data flow.
-		transformEndpointOutflow(info);
+			// Transform endpoint output data flow.
+			transformEndpointOutflow(info);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		
 		Assert.isTrue(subject instanceof NamedEndpoint, "Invalid subject");
 		NamedEndpoint visualEndPoint = (NamedEndpoint) subject;
-		Endpoint synapseEP = create(visualEndPoint,null);
-		setEndpointToSendOrCallMediator(sequence, synapseEP);
+		Endpoint synapseEP;
+		try {
+			synapseEP = create(visualEndPoint,null);
+			setEndpointToSendOrCallMediator(sequence, synapseEP);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
-	public static Endpoint create(NamedEndpoint visualEndPoint,String name) throws Exception {
+	public static Endpoint create(NamedEndpoint visualEndPoint,String name) throws JaxenException {
 		if(visualEndPoint.getReferringEndpointType()==KeyType.DYNAMIC){			
 			SynapseXPath synapseXPath= new SynapseXPath(visualEndPoint.getDynamicReferenceKey().getPropertyValue());
 			for (int i = 0; i < visualEndPoint.getDynamicReferenceKey().getNamespaces().keySet().size(); ++i) {

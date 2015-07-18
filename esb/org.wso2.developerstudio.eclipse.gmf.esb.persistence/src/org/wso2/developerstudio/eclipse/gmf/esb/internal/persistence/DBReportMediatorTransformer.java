@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.Assert;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * DBReport mediator transformer 
@@ -28,7 +29,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
  */
 public class DBReportMediatorTransformer extends AbstractDBMediatorTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 
 		information.getParentSequence().addChild(createDBReportMediator(subject));
 		doTransform(information, ((DBReportMediator) subject).getOutputConnector());
@@ -36,13 +37,13 @@ public class DBReportMediatorTransformer extends AbstractDBMediatorTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createDBReportMediator(subject));
 		doTransformWithinSequence(information,((DBReportMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
 		
 	}
 	
-	private org.apache.synapse.mediators.db.DBReportMediator createDBReportMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.db.DBReportMediator createDBReportMediator(EsbNode subject){
 		
 		Assert.isTrue(subject instanceof DBReportMediator,"Unsupported mediator passed in for serialization.");
 		DBReportMediator visualDBReport =(DBReportMediator)subject;

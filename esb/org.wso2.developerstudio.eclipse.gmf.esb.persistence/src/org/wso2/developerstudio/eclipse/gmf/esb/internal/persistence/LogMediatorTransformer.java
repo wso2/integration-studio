@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2010 WSO2, Inc. (http://wso2.com)
+ * Copyright 2009-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,12 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 import java.util.Map.Entry;
 
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.SynapsePath;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.MediatorProperty;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
-import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.jaxen.JaxenException;
@@ -36,6 +34,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -46,15 +45,18 @@ public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof LogMediator, "Invalid subject.");
 		LogMediator visualLog = (LogMediator) subject;
 		
-		info.getParentSequence().addChild(createLogMediator(visualLog));
-		
-		// Transform the log mediator output data flow path.
-		doTransform(info, visualLog.getOutputConnector());
+		try {
+			info.getParentSequence().addChild(createLogMediator(visualLog));			
+			// Transform the log mediator output data flow path.
+			doTransform(info, visualLog.getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	/**
@@ -147,14 +149,17 @@ public class LogMediatorTransformer extends AbstractEsbNodeTransformer {
 		
 	}
 	
-	public void transformWithinSequence(TransformationInfo info, EsbNode subject,SequenceMediator sequence) throws Exception{
+	public void transformWithinSequence(TransformationInfo info, EsbNode subject,SequenceMediator sequence) throws TransformerException{
 		
 		// Check subject.
 		Assert.isTrue(subject instanceof LogMediator, "Invalid subject.");
 		LogMediator visualLog = (LogMediator) subject;
 		
-		sequence.addChild(createLogMediator(visualLog));
-		doTransformWithinSequence(info,visualLog.getOutputConnector().getOutgoingLink(),sequence);
-		
+		try {
+			sequence.addChild(createLogMediator(visualLog));
+			doTransformWithinSequence(info,visualLog.getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 }

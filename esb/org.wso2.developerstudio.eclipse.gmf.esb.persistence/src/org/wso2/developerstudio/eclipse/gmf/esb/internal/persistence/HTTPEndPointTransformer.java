@@ -1,5 +1,5 @@
 /*
- * Copyright WSO2, Inc. (http://wso2.com)
+ * Copyright 2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,13 +19,10 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.synapse.endpoints.AddressEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
-import org.apache.synapse.mediators.builtin.SendMediator;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
@@ -33,12 +30,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.InputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 import com.damnhandy.uri.template.UriTemplate;
 
 public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof HTTPEndpoint, "Invalid subject");
 		HTTPEndpoint visualEndPoint = (HTTPEndpoint) subject;
@@ -122,7 +120,7 @@ public class HTTPEndPointTransformer extends AbstractEndpointTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 
 		Assert.isTrue(subject instanceof HTTPEndpoint, "Invalid subject");
 		HTTPEndpoint visualEndPoint = (HTTPEndpoint) subject;

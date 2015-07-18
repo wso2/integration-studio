@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.Mediator;
 import org.apache.synapse.config.xml.AbstractMediatorSerializer;
@@ -19,7 +18,6 @@ import org.wso2.carbon.rule.common.RuleSet;
 import org.wso2.carbon.rule.mediator.config.RuleMediatorConfig;
 import org.wso2.carbon.rule.mediator.config.Source;
 import org.wso2.carbon.rule.mediator.config.Target;
-import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFact;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleFactsConfiguration;
@@ -28,9 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.RuleResult;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleResultType;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleResultsConfiguration;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleSessionProperty;
-import org.wso2.developerstudio.eclipse.gmf.esb.RuleSetCreationProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleSourceType;
-import org.wso2.developerstudio.eclipse.gmf.esb.RuleType;
 
 public class RuleMediatorExtSerialize extends AbstractMediatorSerializer{
 

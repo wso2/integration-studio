@@ -10,11 +10,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class EnqueueMediatorTransformer extends AbstractEsbNodeTransformer{
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		information.getParentSequence().addChild(createEnqueueMediator(subject));
 		// Transform the property mediator output data flow path.
 		doTransform(information,
@@ -28,13 +29,13 @@ public class EnqueueMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createEnqueueMediator(subject));
 		doTransformWithinSequence(information,((EnqueueMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
 		
 	}
 
-	private org.apache.synapse.mediators.builtin.EnqueueMediator createEnqueueMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.builtin.EnqueueMediator createEnqueueMediator(EsbNode subject){
 	
 		// Check subject.
 		Assert.isTrue(subject instanceof EnqueueMediator, "Invalid subject.");

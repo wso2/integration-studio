@@ -25,12 +25,14 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediatorConditionType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -42,7 +44,7 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof FilterMediator, "Invalid subject.");
 		FilterMediator visualFilter = (FilterMediator) subject;
@@ -51,15 +53,15 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 		org.apache.synapse.mediators.filters.FilterMediator filterMediator =
 		                                                                     new org.apache.synapse.mediators.filters.FilterMediator();
 		setCommonProperties(filterMediator, visualFilter);
+		try{
 		if (visualFilter.getConditionType() == FilterMediatorConditionType.XPATH) {
 			// TODO: validate xpaths before adding
 			if (visualFilter.getXpath() != null &&
 			    visualFilter.getXpath().getPropertyValue() != null &&
 			    !visualFilter.getXpath().getPropertyValue().equals("")) {
-				SynapsePath xPath =
-				                    CustomSynapsePathFactory.getSynapsePath(visualFilter.getXpath()
-				                                                                        .getPropertyValue());
-
+				SynapsePath xPath;
+				xPath = CustomSynapsePathFactory.getSynapsePath(visualFilter.getXpath()
+					                                                    .getPropertyValue());
 				if (visualFilter.getXpath().getNamespaces() != null &&
 				    !(xPath instanceof SynapseJsonPath)) {
 					for (int i = 0; i < visualFilter.getXpath().getNamespaces().keySet().size(); ++i) {
@@ -67,7 +69,11 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 						                (String) visualFilter.getXpath().getNamespaces().keySet()
 						                                     .toArray()[i];
 						String namespaceUri = visualFilter.getXpath().getNamespaces().get(prefix);
-						xPath.addNamespace(prefix, namespaceUri);
+						try {
+							xPath.addNamespace(prefix, namespaceUri);
+						} catch (JaxenException e) {
+							throw new TransformerException(e);
+						}
 					}
 				}
 				filterMediator.setXpath(xPath);
@@ -77,15 +83,19 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 			    visualFilter.getSource().getPropertyValue() != null &&
 			    !visualFilter.getSource().getPropertyValue().equals("")) {
 
-				SynapsePath source =
-				               CustomSynapsePathFactory.getSynapsePath(visualFilter.getSource().getPropertyValue());
+				SynapsePath source;
+				source = CustomSynapsePathFactory.getSynapsePath(visualFilter.getSource().getPropertyValue());
 
 				if (visualFilter.getXpath().getNamespaces() != null &&
 				    !(source instanceof SynapseJsonPath)) {
 					for (int i = 0; i < visualFilter.getSource().getNamespaces().keySet().size(); ++i) {
 						String prefix = (String) visualFilter.getSource().getNamespaces().keySet().toArray()[i];
 						String namespaceUri = visualFilter.getSource().getNamespaces().get(prefix);
-						source.addNamespace(prefix, namespaceUri);
+						try {
+							source.addNamespace(prefix, namespaceUri);
+						} catch (JaxenException e) {
+							throw new TransformerException(e);
+						}
 					}
 				}
 				filterMediator.setSource(source);
@@ -119,6 +129,9 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 		doTransform(newElseInfo, visualFilter.getFailOutputConnector());
 
 		doTransform(info, ((FilterMediator) subject).getOutputConnector());
+		}catch(JaxenException e){
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -127,7 +140,7 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo info, EsbNode subject,
-	                                    SequenceMediator sequence) throws Exception {
+	                                    SequenceMediator sequence) throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof FilterMediator, "Invalid subject.");
 		FilterMediator visualFilter = (FilterMediator) subject;
@@ -142,9 +155,13 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 			    visualFilter.getXpath().getPropertyValue() != null &&
 			    !visualFilter.getXpath().getPropertyValue().equals("")) {
 
-				SynapsePath xPath =
-				             CustomSynapsePathFactory.getSynapsePath(visualFilter.getXpath()
-				                                                                        .getPropertyValue());
+				SynapsePath xPath;
+				try {
+					xPath = CustomSynapsePathFactory.getSynapsePath(visualFilter.getXpath()
+					                                                            .getPropertyValue());
+				} catch (JaxenException e) {
+					throw new TransformerException(e);
+				}
 
 				if (visualFilter.getXpath().getNamespaces() != null &&
 				    !(xPath instanceof SynapseJsonPath)) {
@@ -153,7 +170,11 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 						                (String) visualFilter.getXpath().getNamespaces().keySet()
 						                                     .toArray()[i];
 						String namespaceUri = visualFilter.getXpath().getNamespaces().get(prefix);
-						xPath.addNamespace(prefix, namespaceUri);
+						try {
+							xPath.addNamespace(prefix, namespaceUri);
+						} catch (JaxenException e) {
+							throw new TransformerException(e);
+						}
 					}
 				}
 				filterMediator.setXpath(xPath);
@@ -163,9 +184,13 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 			    visualFilter.getSource().getPropertyValue() != null &&
 			    !visualFilter.getSource().getPropertyValue().equals("")) {
 
-				SynapsePath source =
-				                     CustomSynapsePathFactory.getSynapsePath(visualFilter.getSource()
-				                                                                         .getPropertyValue());
+				SynapsePath source;
+				try {
+					source = CustomSynapsePathFactory.getSynapsePath(visualFilter.getSource()
+					                                                     .getPropertyValue());
+				} catch (JaxenException e) {
+					throw new TransformerException(e);
+				}
 
 				if (visualFilter.getXpath().getNamespaces() != null &&
 				    !(source instanceof SynapseJsonPath)) {
@@ -174,7 +199,11 @@ public class FilterMediatorTransformer extends AbstractEsbNodeTransformer {
 						                (String) visualFilter.getSource().getNamespaces().keySet()
 						                                     .toArray()[i];
 						String namespaceUri = visualFilter.getSource().getNamespaces().get(prefix);
-						source.addNamespace(prefix, namespaceUri);
+						try {
+							source.addNamespace(prefix, namespaceUri);
+						} catch (JaxenException e) {
+							throw new TransformerException(e);
+						}
 					}
 				}
 				filterMediator.setSource(source);

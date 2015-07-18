@@ -44,7 +44,7 @@ public class MessageStoreTransformer {
 
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
 	
-	public static OMElement createMessageStore(MessageStore model) throws Exception {
+	public static OMElement createMessageStore(MessageStore model){
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		
 		// Fixing TOOLS-2026.

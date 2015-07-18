@@ -26,21 +26,26 @@ import org.apache.synapse.mediators.bean.BeanMediator.Action;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.BeanMediatorExt;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class BeanMediatorTransformer extends AbstractEsbNodeTransformer{
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
-		information.getParentSequence().addChild(
-				createBeanMediator(subject, information));
-
-		doTransform(information,
-				((BeanMediator) subject).getOutputConnector());	
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
+		try {
+			information.getParentSequence().addChild(
+					createBeanMediator(subject, information));
+			doTransform(information,
+					((BeanMediator) subject).getOutputConnector());	
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -49,14 +54,18 @@ public class BeanMediatorTransformer extends AbstractEsbNodeTransformer{
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
-		sequence.addChild(createBeanMediator(subject, information));
-		doTransformWithinSequence(information, ((BeanMediator) subject)
-				.getOutputConnector().getOutgoingLink(), sequence);
+			SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createBeanMediator(subject, information));
+			doTransformWithinSequence(information, ((BeanMediator) subject)
+					.getOutputConnector().getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 	
 	private BeanMediatorExt createBeanMediator(
-			EsbNode subject, TransformationInfo information) throws Exception {
+			EsbNode subject, TransformationInfo information) throws TransformerException, JaxenException {
 
 		/*
 		 * Check subject.

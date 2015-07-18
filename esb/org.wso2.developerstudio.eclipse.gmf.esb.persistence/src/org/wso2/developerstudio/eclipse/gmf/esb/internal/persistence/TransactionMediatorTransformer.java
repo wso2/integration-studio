@@ -9,11 +9,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class TransactionMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		information.getParentSequence().addChild(createTransactionMediator(subject));
 		/*
 		 *  Transform the property mediator output data flow path.
@@ -29,13 +30,13 @@ public class TransactionMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		sequence.addChild(createTransactionMediator(subject));
 		doTransformWithinSequence(information,((TransactionMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
 		
 	}
 	
-	private org.apache.synapse.mediators.transaction.TransactionMediator createTransactionMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.transaction.TransactionMediator createTransactionMediator(EsbNode subject){
 		/*
 		 *  Check subject.
 		 */

@@ -39,6 +39,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediatorAttribute;
 import org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence.custom.CustomSynapsePathFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -49,15 +50,18 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void transform(TransformationInfo info, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof PublishEventMediator, "Invalid subject.");
 		PublishEventMediator visualPublishEvent = (PublishEventMediator) subject;
 
-		info.getParentSequence().addChild(createPublishEventMediator(visualPublishEvent));
-
-		// Transform the publishEvent mediator output data flow path.
-		doTransform(info, visualPublishEvent.getOutputconnector());
+		try {
+			info.getParentSequence().addChild(createPublishEventMediator(visualPublishEvent));
+			// Transform the publishEvent mediator output data flow path.
+			doTransform(info, visualPublishEvent.getOutputconnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	/**
@@ -132,12 +136,16 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 	}
 
 	public void transformWithinSequence(TransformationInfo info, EsbNode subject, SequenceMediator sequence)
-			throws Exception {
+			throws TransformerException {
 		// Check subject
 		Assert.isTrue(subject instanceof PublishEventMediator, "Invalid subject.");
 		PublishEventMediator visualPublishEvent = (PublishEventMediator) subject;
 
-		sequence.addChild(createPublishEventMediator(visualPublishEvent));
-		doTransformWithinSequence(info, visualPublishEvent.getOutputconnector().getOutgoingLink(), sequence);
+		try {
+			sequence.addChild(createPublishEventMediator(visualPublishEvent));
+			doTransformWithinSequence(info, visualPublishEvent.getOutputconnector().getOutgoingLink(), sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 }

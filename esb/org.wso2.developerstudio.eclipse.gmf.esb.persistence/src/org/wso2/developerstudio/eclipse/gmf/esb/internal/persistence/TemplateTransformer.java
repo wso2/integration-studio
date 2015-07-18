@@ -37,6 +37,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Template;
 import org.wso2.developerstudio.eclipse.gmf.esb.TemplateParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.WSDLEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * Transformer class to be used for serialize sequence templates and end-point
@@ -44,7 +45,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
  */
 public class TemplateTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo info, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
 		Assert.isTrue(subject instanceof Template, "Unsupported object passed in for serialization");
 		Template template = (Template) subject;
 
@@ -106,7 +107,7 @@ public class TemplateTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 		// nothing to do
 
 	}

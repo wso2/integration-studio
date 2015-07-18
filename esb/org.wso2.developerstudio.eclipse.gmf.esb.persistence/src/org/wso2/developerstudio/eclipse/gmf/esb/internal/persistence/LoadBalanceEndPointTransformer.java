@@ -61,11 +61,12 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 
 		Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject.");
 		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
@@ -115,7 +116,7 @@ public class LoadBalanceEndPointTransformer extends AbstractEndpointTransformer 
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws Exception {
+			throws TransformerException {
 		Assert.isTrue(subject instanceof LoadBalanceEndPoint, "Invalid subject");
 		LoadBalanceEndPoint visualEndPoint = (LoadBalanceEndPoint) subject;
 		Endpoint synapseEP = create(information, visualEndPoint, visualEndPoint.getEndPointName(), null);

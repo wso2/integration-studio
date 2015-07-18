@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.esb.core.interfaces.IEsbEditorInput;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EndpointDiagram;
@@ -55,14 +56,18 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbTransformerRegistry;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class RecipientListEndPointTransformer extends AbstractEndpointTransformer {
 
-	public void transform(TransformationInfo info, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
 		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject.");
 		RecipientListEndPoint endPointModel = (RecipientListEndPoint) subject;
-		Endpoint synapseEP = create(info, endPointModel, endPointModel.getName(), null);
+		Endpoint synapseEP;
+		try {
+			synapseEP = create(info, endPointModel, endPointModel.getName(), null);
+
 		setEndpointToSendCallOrProxy(info, endPointModel, synapseEP);
 
 		if (!info.isEndPointFound) {
@@ -96,27 +101,38 @@ public class RecipientListEndPointTransformer extends AbstractEndpointTransforme
 			doTransform(info, endPointModel.getWestOutputConnector());
 			transformedMediators.add(nextElement);
 		}
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
-			throws Exception {
+			throws TransformerException {
 		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject.");
 		RecipientListEndPoint model = (RecipientListEndPoint) subject;
-		endPoints.add(create(info, model, model.getEndPointName(), endPoints));
-
+		try {
+			endPoints.add(create(info, model, model.getEndPointName(), endPoints));
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws Exception {
+			throws TransformerException {
 		Assert.isTrue(subject instanceof RecipientListEndPoint, "Invalid subject");
 		RecipientListEndPoint endPointModel = (RecipientListEndPoint) subject;
-		Endpoint synapseEP = create(information, endPointModel, endPointModel.getEndPointName(), null);
-		setEndpointToSendOrCallMediator(sequence, synapseEP);
+		Endpoint synapseEP;
+		try {
+			synapseEP = create(information, endPointModel, endPointModel.getEndPointName(), null);
+			setEndpointToSendOrCallMediator(sequence, synapseEP);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public RecipientListEndpoint create(TransformationInfo info, RecipientListEndPoint model, String name,
-			List<Endpoint> endPoints) throws Exception {
+			List<Endpoint> endPoints) throws JaxenException {
 		RecipientListEndpoint recipientList;
 		IEditorPart editorPart = null;
 		IProject activeProject = null;

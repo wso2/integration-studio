@@ -20,6 +20,7 @@ import org.apache.synapse.util.xpath.SynapseJsonPath;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.KeyType;
 import org.wso2.developerstudio.eclipse.gmf.esb.NamespacedProperty;
@@ -28,18 +29,20 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariable;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableType;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryVariableValueType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {		
-		information.getParentSequence().addChild(createXQueryMediator(subject));
-		// Transform the XQuery mediator output data flow path.
-		doTransform(information,
-				((XQueryMediator)subject).getOutputConnector());
-		
-		
-		
+			throws TransformerException {		
+		try {
+			information.getParentSequence().addChild(createXQueryMediator(subject));
+			// Transform the XQuery mediator output data flow path.
+			doTransform(information,
+					((XQueryMediator)subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -50,15 +53,17 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		// TODO Auto-generated method stub
-		sequence.addChild(createXQueryMediator(subject));
-		doTransformWithinSequence(information,((XQueryMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
-		
-		
+		try {
+			sequence.addChild(createXQueryMediator(subject));
+			doTransformWithinSequence(information,((XQueryMediator)subject).getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 	
-	private org.apache.synapse.mediators.xquery.XQueryMediator createXQueryMediator(EsbNode subject) throws Exception{
+	private org.apache.synapse.mediators.xquery.XQueryMediator createXQueryMediator(EsbNode subject) throws JaxenException{
 		Assert.isTrue(subject instanceof XQueryMediator, "Invalid subject.");
 		XQueryMediator visualXQuery = (XQueryMediator)subject;
 		org.apache.synapse.mediators.xquery.XQueryMediator xqueryMediator=new org.apache.synapse.mediators.xquery.XQueryMediator();		

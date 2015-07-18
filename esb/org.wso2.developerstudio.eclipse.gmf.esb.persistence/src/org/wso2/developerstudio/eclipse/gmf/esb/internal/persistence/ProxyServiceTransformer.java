@@ -16,8 +16,11 @@
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.stream.XMLStreamException;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.OMNode;
@@ -78,6 +81,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.XQueryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -89,11 +93,15 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 	 * {@inheritDoc}
 	 */
 	public void transform(TransformationInfo info, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		if(((org.wso2.developerstudio.eclipse.gmf.esb.ProxyService) subject).isMainSequence()){
 			transformAsMainSequence(info,subject);
 		}else{
-			transformAsProxy(info,subject);
+			try {
+				transformAsProxy(info,subject);
+			} catch (URISyntaxException | XMLStreamException e) {
+				throw new TransformerException(e);
+			}
 		}
 		
 	}
@@ -106,7 +114,7 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -278,7 +286,7 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 		return true;
 	}
 	
-	private void transformAsProxy(TransformationInfo info, EsbNode subject) throws Exception{
+	private void transformAsProxy(TransformationInfo info, EsbNode subject) throws TransformerException, URISyntaxException, XMLStreamException{
 
 		/*TaskTransformer t=new TaskTransformer();
 		t.transform(info, subject);*/	
@@ -490,7 +498,7 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 		}
 	}
 	
-	private void transformAsMainSequence(TransformationInfo info, EsbNode subject) throws Exception{
+	private void transformAsMainSequence(TransformationInfo info, EsbNode subject) throws TransformerException{
 		// Check subject.
 		Assert.isTrue(
 				subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.ProxyService,

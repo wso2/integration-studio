@@ -24,6 +24,7 @@ import org.apache.synapse.mediators.base.SequenceMediator;
 import org.apache.synapse.util.xpath.SynapseXPath;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
+import org.jaxen.JaxenException;
 import org.wso2.carbon.mediator.transform.Input;
 import org.wso2.carbon.mediator.transform.Output;
 import org.wso2.carbon.mediator.transform.SmooksMediator.TYPES;
@@ -34,17 +35,19 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SmooksIODataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.SmooksMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SmooksOutputDataType;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class SmooksMediatorTransformer extends AbstractEsbNodeTransformer {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
-		information.getParentSequence().addChild(createSmooksMediator(information,subject));
-		// Transform the property mediator output data flow path.
-		doTransform(information,
-				((SmooksMediator) subject).getOutputConnector());
-		
-		
+			throws TransformerException {
+		try {
+			information.getParentSequence().addChild(createSmooksMediator(information,subject));
+			// Transform the property mediator output data flow path.
+			doTransform(information, ((SmooksMediator) subject).getOutputConnector());
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject,
@@ -52,13 +55,15 @@ public class SmooksMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
-		sequence.addChild(createSmooksMediator(information,subject));
-		doTransformWithinSequence(information,((SmooksMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		
-		
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+		try {
+			sequence.addChild(createSmooksMediator(information,subject));
+			doTransformWithinSequence(information,((SmooksMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		}		
 	}
-	private org.wso2.carbon.mediator.transform.SmooksMediator createSmooksMediator(TransformationInfo information,EsbNode subject) throws Exception{
+	private org.wso2.carbon.mediator.transform.SmooksMediator createSmooksMediator(TransformationInfo information,EsbNode subject) throws JaxenException{
 		// Check subject.
 		Assert.isTrue(subject instanceof SmooksMediator, "Invalid subject.");
 		SmooksMediator visualSmooks = (SmooksMediator) subject;

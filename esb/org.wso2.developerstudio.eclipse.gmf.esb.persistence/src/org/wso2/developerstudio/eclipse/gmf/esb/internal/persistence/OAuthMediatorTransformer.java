@@ -10,11 +10,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class OAuthMediatorTransformer extends AbstractEsbNodeTransformer  {
 
 	public void transform(TransformationInfo information, EsbNode subject)
-			throws Exception {
+			throws TransformerException {
 		// TODO Auto-generated method stub
 		information.getParentSequence().addChild(createOAuthMediator(subject));
 		// Transform the OAuth mediator output data flow path.
@@ -30,7 +31,7 @@ public class OAuthMediatorTransformer extends AbstractEsbNodeTransformer  {
 	}
 
 	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws Exception {
+			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		// TODO Auto-generated method stub
 		sequence.addChild(createOAuthMediator(subject));
 		doTransformWithinSequence(information,((OAuthMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
@@ -38,7 +39,7 @@ public class OAuthMediatorTransformer extends AbstractEsbNodeTransformer  {
 		
 	}
 	
-	private org.wso2.carbon.identity.oauth.mediator.OAuthMediator createOAuthMediator(EsbNode subject) throws Exception{
+	private org.wso2.carbon.identity.oauth.mediator.OAuthMediator createOAuthMediator(EsbNode subject){
 		// Check subject.
 		Assert.isTrue(subject instanceof OAuthMediator, "Invalid subject.");
 		OAuthMediator visualOauth = (OAuthMediator) subject;

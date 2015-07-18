@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2010 WSO2, Inc. (http://wso2.com)
+ * Copyright 2009-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,11 @@ package org.wso2.developerstudio.eclipse.gmf.esb.persistence;
 
 import java.util.List;
 
-import org.apache.synapse.SynapseArtifact;
 import org.apache.synapse.config.SynapseConfiguration;
 import org.apache.synapse.core.axis2.ProxyService;
-import org.apache.synapse.endpoints.AddressEndpoint;
 import org.apache.synapse.endpoints.Endpoint;
 import org.apache.synapse.mediators.base.SequenceMediator;
 import org.eclipse.emf.ecore.EObject;
-import org.wso2.developerstudio.eclipse.gmf.esb.AddressEndPoint;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 
 /**
@@ -48,7 +45,7 @@ public interface EsbNodeTransformer {
 	 * @throws Exception
 	 *             if an error occurs during the transformation.
 	 */
-	void transform(TransformationInfo information, EsbNode subject) throws Exception;
-	void createSynapseObject(TransformationInfo info,EObject subject,List<Endpoint> endPoints) throws Exception;
-	void transformWithinSequence(TransformationInfo information, EsbNode subject,SequenceMediator sequence) throws Exception;
+	void transform(TransformationInfo information, EsbNode subject) throws TransformerException;
+	void createSynapseObject(TransformationInfo info,EObject subject,List<Endpoint> endPoints) throws TransformerException;
+	void transformWithinSequence(TransformationInfo information, EsbNode subject,SequenceMediator sequence) throws TransformerException;
 }

@@ -25,12 +25,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommentMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class CommentMediatorTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject){
 		information.getParentSequence().addChild(createCommentMediator(information, subject));
-
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
@@ -39,7 +39,7 @@ public class CommentMediatorTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws Exception {
+			throws TransformerException {
 		sequence.addChild(createCommentMediator(information, subject));
 
 	}

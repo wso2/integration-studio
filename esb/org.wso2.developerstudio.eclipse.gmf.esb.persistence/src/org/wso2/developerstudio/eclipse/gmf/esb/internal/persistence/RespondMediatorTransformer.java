@@ -26,6 +26,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EsbNode;
 import org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.EsbNodeTransformer;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 /**
  * {@link EsbNodeTransformer} responsible for transforming
@@ -37,7 +38,7 @@ public class RespondMediatorTransformer extends AbstractEsbNodeTransformer {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		RespondMediator visualMediator = (RespondMediator) subject;
 
 		information.getParentSequence().addChild(createRespondMediator(visualMediator));
@@ -53,7 +54,7 @@ public class RespondMediatorTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject,
-			SequenceMediator sequence) throws Exception {
+			SequenceMediator sequence) throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof RespondMediator, "Invalid subject.");
 		RespondMediator visualMediator = (RespondMediator) subject;
@@ -69,7 +70,7 @@ public class RespondMediatorTransformer extends AbstractEsbNodeTransformer {
 	 * @param visualMediator
 	 * @return
 	 */
-	private org.apache.synapse.mediators.builtin.RespondMediator createRespondMediator(RespondMediator visualMediator) throws Exception {
+	private org.apache.synapse.mediators.builtin.RespondMediator createRespondMediator(RespondMediator visualMediator){
 
 		org.apache.synapse.mediators.builtin.RespondMediator respondMediator = new org.apache.synapse.mediators.builtin.RespondMediator();
 		setCommonProperties(respondMediator, visualMediator);

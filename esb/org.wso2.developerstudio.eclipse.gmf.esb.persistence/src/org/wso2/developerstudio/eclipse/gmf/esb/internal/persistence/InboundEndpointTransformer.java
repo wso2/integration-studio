@@ -29,12 +29,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.OutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.InboundEndpointConstants;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
+import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
 public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 	
 	private static final String CUSTOM = "custom";
 
-	public void transform(TransformationInfo information, EsbNode subject) throws Exception {
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		Assert.isTrue(subject instanceof org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint, "Invalid subject.");
 		org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint = (org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint) subject;
 
@@ -43,13 +44,13 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 	}
 
 	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints)
-			throws Exception {
+			throws TransformerException {
 		// TODO Auto-generated method stub
 
 	}
 
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
-			throws Exception {
+			throws TransformerException {
 		// TODO Auto-generated method stub
 
 	}
@@ -81,29 +82,29 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 	 * 
 	 * @param visualInboundEndpoint
 	 * @return
+	 * @throws TransformerException 
 	 * @throws Exception
 	 */
-	private InboundEndpoint create(org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint)
-			throws Exception {
+	private InboundEndpoint create(org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpoint visualInboundEndpoint) throws TransformerException {
 		InboundEndpoint inboundEndpoint = new InboundEndpoint();
 		inboundEndpoint.setName(visualInboundEndpoint.getName());
 		
 		Sequence sequence = getSequence(visualInboundEndpoint.getSequenceOutputConnector());
 		Sequence onErrorSequence = getSequence(visualInboundEndpoint.getOnErrorSequenceOutputConnector());
 		if(sequence == null && onErrorSequence == null){
-			throw new Exception("Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence");
+			throw new TransformerException("Sequence and On Error Sequence cannot be empty. Please include a Sequence and an On Error Sequence");
 		}
 	
 		if (sequence != null) {
 			inboundEndpoint.setInjectingSeq(sequence.getName());
 		} else {
-			throw new Exception("Sequence cannot be empty. Please include a Sequence");
+			throw new TransformerException("Sequence cannot be empty. Please include a Sequence");
 		}
 		
 		if (onErrorSequence != null) {
 			inboundEndpoint.setOnErrorSeq(onErrorSequence.getName());
 		} else {
-			throw new Exception("On Error Sequence cannot be empty. Please include an On Error Sequence");
+			throw new TransformerException("On Error Sequence cannot be empty. Please include an On Error Sequence");
 		}
 
 		if (StringUtils.isNotBlank(String.valueOf(visualInboundEndpoint.isSuspend()))) {
@@ -114,7 +115,7 @@ public class InboundEndpointTransformer extends AbstractEsbNodeTransformer {
 			if (StringUtils.isNotBlank(visualInboundEndpoint.getClass_())) {
 				inboundEndpoint.setClassImpl(visualInboundEndpoint.getClass_());
 			}else{
-				throw new Exception("Class cannot be empty. Please specify a Class");
+				throw new TransformerException("Class cannot be empty. Please specify a Class");
 			}
 
 			// Service Parameters.

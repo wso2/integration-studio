@@ -99,7 +99,9 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 		}else{
 			try {
 				transformAsProxy(info,subject);
-			} catch (URISyntaxException | XMLStreamException e) {
+			} catch (URISyntaxException e) {
+				throw new TransformerException(e);
+			} catch (XMLStreamException e) {
 				throw new TransformerException(e);
 			}
 		}

@@ -49,7 +49,9 @@ public class ConditionalRouterMediatorTransformer extends AbstractEsbNodeTransfo
 			information.getParentSequence().addChild(createConditionalRouterMediator(information, subject));
 			doTransform(information,
 					((ConditionalRouterMediator) subject).getOutputConnector());
-		} catch (XMLStreamException | EvaluatorException e) {
+		} catch (XMLStreamException e) {
+			throw new TransformerException(e);
+		} catch (EvaluatorException e) {
 			throw new TransformerException(e);
 		}
 	}
@@ -66,7 +68,9 @@ public class ConditionalRouterMediatorTransformer extends AbstractEsbNodeTransfo
 			sequence.addChild(createConditionalRouterMediator(information, subject));
 			doTransformWithinSequence(information, ((ConditionalRouterMediator) subject)
 					.getOutputConnector().getOutgoingLink(), sequence);
-		} catch (XMLStreamException|EvaluatorException e) {
+		} catch (XMLStreamException e) {
+			throw new TransformerException(e);
+		} catch (EvaluatorException e) {
 			throw new TransformerException(e);
 		}		
 	}

@@ -50,7 +50,9 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
 			info.getParentSequence().addChild(createEnrichMediator(subject));
 			// Transform the log mediator output data flow path.
 			doTransform(info, ((EnrichMediator) subject).getOutputConnector());
-		} catch (JaxenException | XMLStreamException e) {
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		} catch (XMLStreamException e) {
 			throw new TransformerException(e);
 		}	
 	}
@@ -66,7 +68,9 @@ public class EnrichMediatorTransformer extends AbstractEsbNodeTransformer {
 		try {
 			sequence.addChild(createEnrichMediator(subject));
 			doTransformWithinSequence(information,((EnrichMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException | XMLStreamException e) {
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		} catch (XMLStreamException e) {
 			throw new TransformerException(e);
 		}		
 	}

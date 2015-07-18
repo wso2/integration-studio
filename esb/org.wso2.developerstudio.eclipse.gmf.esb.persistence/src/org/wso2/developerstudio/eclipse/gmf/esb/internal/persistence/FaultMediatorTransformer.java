@@ -53,7 +53,9 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
 			info.getParentSequence().addChild(createFaultMediator(subject));
 			// Transform the fault mediator output data flow path.
 			doTransform(info, ((FaultMediator) subject).getOutputConnector());
-		} catch (JaxenException | URISyntaxException e) {
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		} catch (URISyntaxException e) {
 			throw new TransformerException(e);
 		}
 	}
@@ -71,7 +73,9 @@ public class FaultMediatorTransformer extends AbstractEsbNodeTransformer {
 		try {
 			sequence.addChild(createFaultMediator(subject));
 			doTransformWithinSequence(information,((FaultMediator) subject).getOutputConnector().getOutgoingLink(),sequence);
-		} catch (JaxenException | URISyntaxException e) {
+		} catch (JaxenException e) {
+			throw new TransformerException(e);
+		} catch (URISyntaxException e) {
 			throw new TransformerException(e);
 		}		
 	}

@@ -118,7 +118,6 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer{
 			
 			switch (visualIterate.getSequenceType()) {
 			case ANONYMOUS:
-				//ListMediator targetList = new AnonymousListMediator();
 				SequenceMediator targetSequence=new SequenceMediator();
 				
 				TransformationInfo newInfo = new TransformationInfo();
@@ -129,8 +128,6 @@ public class IterateMediatorTransformer extends AbstractEsbNodeTransformer{
 				newInfo.setCurrentProxy(information.getCurrentProxy());
 				newInfo.setParentSequence(targetSequence);
 				doTransform(newInfo,visualIterate.getTargetOutputConnector());
-				
-				//targetSequence.addAll(targetList.getList());
 				target.setSequence(targetSequence);
 				break;
 				

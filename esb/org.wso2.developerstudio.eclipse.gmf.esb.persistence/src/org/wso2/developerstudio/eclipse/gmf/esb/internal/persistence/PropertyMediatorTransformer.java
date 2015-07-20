@@ -112,32 +112,12 @@ public class PropertyMediatorTransformer extends AbstractEsbNodeTransformer {
 				break;
 
 			}
-			// propMediator.setValue(visualProp.getValueLiteral());
 			if(visualProp.getPropertyAction().equals(PropertyAction.REMOVE)) {
 				
 				propMediator.setExpression(null);
 				propMediator.setValue(null);
 				
 			} else {
-				
-			/*if(visualProp.getValueType().getName().equals("EXPRESSION")){	
-				if(visualProp.getValueExpression()!=null && visualProp.getValueExpression().getNamespaces().size()!=0){
-				//SynapseXPath XPath = new SynapseXPath(visualProp.getValueExpression().getPropertyValue());
-				SynapsePath XPath = CustomSynapsePathFactory.getSynapsePath(visualProp.getValueExpression().getPropertyValue()); 
-				String prefix = visualProp.getValueExpression().getNamespaces().keySet().toArray()[0].toString();
-				String namespace = visualProp.getValueExpression().getNamespaces().values().toArray()[0].toString();
-				XPath.addNamespace(prefix,namespace);
-				propMediator.setExpression(XPath);
-				}
-				else if(visualProp.getValueExpression()!=null && !visualProp.getValueExpression().getPropertyValue().equals("") ){
-					SynapsePath XPath = CustomSynapsePathFactory.getSynapsePath(visualProp.getValueExpression().getPropertyValue());
-					propMediator.setExpression(XPath);
-				}
-				else{
-					propMediator.setExpression(new SynapseXPath("Default:"));
-				}				
-			}*/
-			
 				if (visualProp.getValueType().getName().equals("LITERAL")) {
 					switch (visualProp.getPropertyDataType()) {
 					case BOOLEAN:

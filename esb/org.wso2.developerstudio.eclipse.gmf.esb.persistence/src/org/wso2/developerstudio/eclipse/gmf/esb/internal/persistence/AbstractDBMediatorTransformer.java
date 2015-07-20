@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 WSO2, Inc. (http://wso2.com)
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,14 +73,6 @@ public abstract class  AbstractDBMediatorTransformer extends AbstractEsbNodeTran
 				dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
 				dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
 				dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
-				
-			/* not required for serialization */
-			/*	Properties props = new Properties();
-	            props.put(Context.INITIAL_CONTEXT_FACTORY, sqlExecutor.getConnectionDsInitialContext());
-	            props.put(Context.PROVIDER_URL, sqlExecutor.getConnectionURL());
-	            props.put(Context.SECURITY_PRINCIPAL, sqlExecutor.getConnectionUsername());
-	            props.put(Context.SECURITY_CREDENTIALS, sqlExecutor.getConnectionPassword());
-	            dbMediator.setJndiProperties(props);*/
 				addDataSourceProperties(dbMediator,sqlExecutor);
 			}
 			
@@ -89,20 +81,10 @@ public abstract class  AbstractDBMediatorTransformer extends AbstractEsbNodeTran
 			dbMediator.addDataSourceProperty(URL_Q, sqlExecutor.getConnectionURL());
 			dbMediator.addDataSourceProperty(USER_Q, sqlExecutor.getConnectionUsername());
 			dbMediator.addDataSourceProperty(PASS_Q, sqlExecutor.getConnectionPassword());
-			/* not required for serialization */
-			/*dataSourceInfo.setDriver(sqlExecutor.getConnectionDbDriver());
-			dataSourceInfo.setUrl(sqlExecutor.getConnectionURL());
-	        SecretInformation secretInformation = new SecretInformation();
-	        secretInformation.setUser(sqlExecutor.getConnectionUsername());
-	        secretInformation.setAliasSecret(sqlExecutor.getConnectionPassword());
-	        dataSourceInfo.setSecretInformation(secretInformation);*/
 			addDataSourceProperties(dbMediator,sqlExecutor);
-
 		}
 		
 		dbMediator.setDataSourceInformation(dataSourceInfo);
-			
-		//dbMediator.setDbPoolView(dbPoolView);
 		
 		for(SqlStatement sqlStatement : sqlExecutor.getSqlStatements()){
 			Statement statement = new Statement(sqlStatement.getQueryString());
@@ -181,8 +163,7 @@ public abstract class  AbstractDBMediatorTransformer extends AbstractEsbNodeTran
 			
 			if (sqlExecutor.getPropertyInitialsize() > -1) {
 				dbMediator.addDataSourceProperty( "initialsize", Integer.toString(sqlExecutor.getPropertyInitialsize()));
-			}
-		
+			}		
 	}
 	
 	public void createSynapseObject(TransformationInfo info, EObject subject,

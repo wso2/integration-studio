@@ -33,16 +33,14 @@ import org.wso2.developerstudio.eclipse.gmf.esb.Sequence;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException;
 
-
 public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo information, EsbNode subject)
-			throws TransformerException {		
+	public void transform(TransformationInfo information, EsbNode subject) throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof Sequence, "Invalid subject.");
 		Sequence visualSequence = (Sequence) subject;
-		org.apache.synapse.mediators.base.SequenceMediator sequence =new SequenceMediator();
-		org.apache.synapse.mediators.base.SequenceMediator refferingSequence =new SequenceMediator();
+		org.apache.synapse.mediators.base.SequenceMediator sequence = new SequenceMediator();
+		org.apache.synapse.mediators.base.SequenceMediator refferingSequence = new SequenceMediator();
 		setCommonProperties(refferingSequence, visualSequence);
 		sequence.setName(visualSequence.getName());
 		try {
@@ -62,40 +60,23 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
 		} catch (JaxenException e) {
 			throw new TransformerException(e);
 		}
-		
-		//System.out.println(EsbSequenceMultiPageEditor.sequenceGraphicalEditor.getDiagram().getElement().getClass());
-		//EsbDiagram sequenceDiagram=(EsbDiagram) EsbSequenceMultiPageEditor.sequenceGraphicalEditor.getDiagram().getElement();
-		//sequenceDiagram.
-		/*EsbSequence server= sequenceDiagram.getServer();
-		for(int i=0;i<server.getChildren().size();++i){
-		System.out.println("aaaaaaaaaaaa"+server.getChildren().get(i));
-		}
-		*/
-		
-		try{
-			if(information.getSynapseConfiguration()!=null){
+
+		try {
+			if (information.getSynapseConfiguration() != null) {
 				if (information.getSynapseConfiguration().getSequence(visualSequence.getName()) == null) {
-					information.getSynapseConfiguration().addSequence(
-							visualSequence.getName(), sequence);
+					information.getSynapseConfiguration().addSequence(visualSequence.getName(), sequence);
 				}
 			}
-		}catch(org.apache.synapse.SynapseException e){
+		} catch (org.apache.synapse.SynapseException e) {
 			e.printStackTrace();
-			//Should handle properly
-			//Duplicate sequence definition for key
+			// Should handle properly
+			// Duplicate sequence definition for key
 		}
 		try {
-			if ((information.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.EndPoint)&&
-					((visualSequence.getOutputConnector().get(0).getOutgoingLink()==null)||(visualSequence.getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof EndPoint))) {
-/*				if(information.getParentSequence()!=null){
-					Object lastMediator = information
-							.getParentSequence()
-							.getList()
-							.get(information.getParentSequence().getList().size() - 1);
-					((SendMediator) lastMediator)
-							.setReceivingSequence(refferingSequence.getKey());
-				}*/
-			}else {
+			if ((information.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.EndPoint)
+					&& ((visualSequence.getOutputConnector().get(0).getOutgoingLink() == null) || (visualSequence
+							.getOutputConnector().get(0).getOutgoingLink().getTarget().eContainer() instanceof EndPoint))) {
+			} else {
 				information.getParentSequence().addChild(refferingSequence);
 			}
 		} catch (ClassCastException e) {
@@ -105,29 +86,21 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
 							"Diagram Incomplete ! ",
 							"If there are two Sequences connected to an Endpoint's in and out terminals, the Sequence which is connected to the in terminal must have a Send mediator as the last mediator of the Sequence.");
 		}
-		/* Disabling sequence serialation
-		information.currentSequence=visualSequence;
-		information.setCurrentReferredSequence(sequence);
-	
-		doTransformWithinSequence(information, SequenceInfo.sequenceMap.get(visualSequence.getName()),sequence); */
-		doTransform(information,
-				((Sequence)subject).getOutputConnector().get(0));
-		
+		doTransform(information, ((Sequence) subject).getOutputConnector().get(0));
+
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-
-	public void transformWithinSequence(TransformationInfo information,
-			EsbNode subject, SequenceMediator sequence) throws TransformerException {
+	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
+			throws TransformerException {
 		// Check subject.
 		Assert.isTrue(subject instanceof Sequence, "Invalid subject.");
 		Sequence visualSequence = (Sequence) subject;
-		org.apache.synapse.mediators.base.SequenceMediator refferingSequence =new SequenceMediator();
+		org.apache.synapse.mediators.base.SequenceMediator refferingSequence = new SequenceMediator();
 		setCommonProperties(refferingSequence, visualSequence);
 		try {
 			Value value = null;
@@ -142,7 +115,6 @@ public class SequenceMediatorTransformer extends AbstractEsbNodeTransformer {
 			} else {
 				value = new Value(visualSequence.getStaticReferenceKey().getKeyValue());
 			}
-			// Value value=new Value(visualSequence.getName());
 			refferingSequence.setKey(value);
 
 			sequence.addChild(refferingSequence);

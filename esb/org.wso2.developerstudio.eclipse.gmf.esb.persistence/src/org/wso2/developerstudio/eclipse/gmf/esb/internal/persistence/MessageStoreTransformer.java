@@ -46,10 +46,6 @@ public class MessageStoreTransformer {
 	
 	public static OMElement createMessageStore(MessageStore model){
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		
-		// Fixing TOOLS-2026.
-		//String className = "org.apache.synapse.message.store.InMemoryMessageStore";
-		//String className = "org.apache.synapse.message.store.impl.memory.InMemoryStore";
 		String className = null;
 
 		org.apache.synapse.message.store.MessageStore messageStore = new InMemoryStore();
@@ -65,8 +61,6 @@ public class MessageStoreTransformer {
 				}
 			}
 		} else if (model.getStoreType() == MessageStoreType.JMS) {
-			// Fixing TOOLS-2026.
-			//className = "org.wso2.carbon.message.store.persistence.jms.JMSMessageStore";
 			className = "org.apache.synapse.message.store.impl.jms.JmsStore";
 			if (!StringUtils.isBlank(model.getInitialContextFactory())) {
 				parameters.put("java.naming.factory.initial",
@@ -91,8 +85,6 @@ public class MessageStoreTransformer {
 			parameters.put("store.jms.JMSSpecVersion", model.getJmsSpecVersion().getLiteral());
 			parameters.put("store.jms.cache.connection",
 					((Boolean) model.isEnableCaching()).toString());
-			/*parameters.put("store.jms.ConsumerReceiveTimeOut",
-					((Long) model.getTimeout()).toString());*/
 
 			/*
 			 * Any additional parameters not listed above will handle here
@@ -148,7 +140,6 @@ public class MessageStoreTransformer {
 			 *  Class attribute is optional for In-Memory Store. If class attribute is 
 			 *  not defined it will be considered as an In-Memory Store. 
 			 */
-			//messageStoreElement.addAttribute("class", className, null);
 		}
 
 		return messageStoreElement;

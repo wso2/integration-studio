@@ -1,3 +1,18 @@
+/*
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
@@ -22,22 +37,20 @@ import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformerException
 
 public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 
-	public void transform(TransformationInfo info,
-			EsbNode subject) throws TransformerException {
+	public void transform(TransformationInfo info, EsbNode subject) throws TransformerException {
 		try {
-			info.getParentSequence().addChild(createSwitchMediator(info,subject));
+			info.getParentSequence().addChild(createSwitchMediator(info, subject));
 			doTransform(info, ((SwitchMediator) subject).getOutputConnector());
 		} catch (JaxenException e) {
 			throw new TransformerException(e);
-		}				
+		}
 	}
 
-	public void createSynapseObject(TransformationInfo info, EObject subject,
-			List<Endpoint> endPoints) {
+	public void createSynapseObject(TransformationInfo info, EObject subject, List<Endpoint> endPoints) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	public void transformWithinSequence(TransformationInfo information, EsbNode subject, SequenceMediator sequence)
 			throws TransformerException {
 		try {
@@ -47,32 +60,23 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 		} catch (JaxenException e) {
 			throw new TransformerException(e);
 		}
-	}	
-	
-	private org.apache.synapse.mediators.filters.SwitchMediator createSwitchMediator(
-			TransformationInfo info, EsbNode subject) throws JaxenException, TransformerException{
-		
+	}
+
+	private org.apache.synapse.mediators.filters.SwitchMediator createSwitchMediator(TransformationInfo info,
+			EsbNode subject) throws JaxenException, TransformerException {
+
 		Assert.isTrue(subject instanceof SwitchMediator, "Invalid subject.");
 		SwitchMediator visualSwitch = (SwitchMediator) subject;
 
 		org.apache.synapse.mediators.filters.SwitchMediator switchMediator = new org.apache.synapse.mediators.filters.SwitchMediator();
 		setCommonProperties(switchMediator, visualSwitch);
-		
-		/* NamespacedProperty sourceXPath = visualSwitch.getSourceXpath();
-		 if(null!=sourceXPath.getPropertyValue()){
-		 switchMediator.setSource(new
-		 SynapseXPath(sourceXPath.getPropertyValue()));
-		 }*/
-		
-		if (visualSwitch.getSourceXpath() != null
-				&& !visualSwitch.getSourceXpath().getPropertyValue().equals("")) {
-			SynapsePath XPath = CustomSynapsePathFactory.getSynapsePath(visualSwitch
-					.getSourceXpath().getPropertyValue());
-			if (visualSwitch.getSourceXpath().getNamespaces() != null
-					&& !(XPath instanceof SynapseJsonPath)) {
+
+		if (visualSwitch.getSourceXpath() != null && !visualSwitch.getSourceXpath().getPropertyValue().equals("")) {
+			SynapsePath XPath = CustomSynapsePathFactory.getSynapsePath(visualSwitch.getSourceXpath()
+					.getPropertyValue());
+			if (visualSwitch.getSourceXpath().getNamespaces() != null && !(XPath instanceof SynapseJsonPath)) {
 				for (int i = 0; i < visualSwitch.getSourceXpath().getNamespaces().keySet().size(); ++i) {
-					String prefix = (String) visualSwitch.getSourceXpath().getNamespaces().keySet()
-							.toArray()[i];
+					String prefix = (String) visualSwitch.getSourceXpath().getNamespaces().keySet().toArray()[i];
 					String namespaceUri = visualSwitch.getSourceXpath().getNamespaces().get(prefix);
 					XPath.addNamespace(prefix, namespaceUri);
 				}
@@ -82,29 +86,14 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 		} else {
 			switchMediator.setSource(new SynapseXPath("Default:"));
 		}
-		
 
-		
-		
-
-//		SwitchCase defaultCase = new SwitchCase();
-//		AnonymousListMediator defaultMediator = new AnonymousListMediator();
-//		defaultCase.setCaseMediator(defaultMediator);
-//		// defaultCase.setRegex(Pattern.compile(""));
-//		switchMediator.setDefaultCase(defaultCase);
-//		doTransform(info,
-//				visualSwitch.getDefaultBranch());
-
-		for (SwitchCaseBranchOutputConnector outputConnector : visualSwitch
-				.getCaseBranches()) {
+		for (SwitchCaseBranchOutputConnector outputConnector : visualSwitch.getCaseBranches()) {
 			SwitchCase switchCase = new SwitchCase();
 			AnonymousListMediator caseMediator = new AnonymousListMediator();
-			switchCase
-					.setRegex(Pattern.compile(outputConnector.getCaseRegex()));
+			switchCase.setRegex(Pattern.compile(outputConnector.getCaseRegex()));
 			switchCase.setCaseMediator(caseMediator);
 			switchMediator.addCase(switchCase);
 			TransformationInfo newInfo = new TransformationInfo();
-			//newInfo.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
 			newInfo.setCurrentProxy(info.getCurrentProxy());
 			newInfo.setTraversalDirection(info.getTraversalDirection());
 			newInfo.setSynapseConfiguration(info.getSynapseConfiguration());
@@ -113,13 +102,12 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 			newInfo.setParentSequence(caseMediator);
 			doTransform(newInfo, outputConnector);
 		}
-		
+
 		SwitchCase switchCase = new SwitchCase();
 		AnonymousListMediator caseMediator = new AnonymousListMediator();
 		switchCase.setCaseMediator(caseMediator);
 		switchMediator.setDefaultCase(switchCase);
 		TransformationInfo newInfo = new TransformationInfo();
-		//newInfo.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_IN);
 		newInfo.setCurrentProxy(info.getCurrentProxy());
 		newInfo.setTraversalDirection(info.getTraversalDirection());
 		newInfo.setSynapseConfiguration(info.getSynapseConfiguration());
@@ -127,7 +115,7 @@ public class SwitchMediatorTransformer extends AbstractEsbNodeTransformer {
 		newInfo.setOriginOutSequence(info.getOriginOutSequence());
 		newInfo.setParentSequence(caseMediator);
 		doTransform(newInfo, visualSwitch.getDefaultBranch());
-		
+
 		return switchMediator;
 	}
 }

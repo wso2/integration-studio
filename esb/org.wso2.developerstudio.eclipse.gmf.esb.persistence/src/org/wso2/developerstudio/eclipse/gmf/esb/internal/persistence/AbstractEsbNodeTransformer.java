@@ -1,3 +1,18 @@
+/*
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import org.apache.synapse.Mediator;
@@ -60,7 +75,7 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 			} else {
 				// TODO: Might be better to automatically log the message before dropping. 
 				if (info.getParentSequence()!=null){ //TODO temp					
-				//info.getParentSequence().addChild(new DropMediator());
+				
 				}
 			}
 		} else {
@@ -85,25 +100,10 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 				Assert.isNotNull(transformer, "No registered transformer for given node.");
 				
 				if(inputConnector instanceof SequencesInputConnector){
-/*					if(info.currentSequence!=null){
-						if(info.currentSequence.getOutputConnector().getOutgoingLink()!=null){
-							EsbNode esbNode=(EsbNode)info.currentSequence.getOutputConnector().getOutgoingLink().getTarget().eContainer();
-							EsbNodeTransformer transformer = EsbTransformerRegistry.getInstance().getTransformer(esbNode);					
-							transformer.transform(info, esbNode);
-						}
-					}
-					else{
-						if (info.getParentSequence()!=null){ 
-							info.getParentSequence().addChild(new DropMediator());
-							}
-					}*/
-					
-					info.setParentSequence(sequence);
-					
+					info.setParentSequence(sequence);					
 					// Adding XML comments into synapse config.
 					addXMLCommnets(info, outgoingLink.getSource().getCommentMediators());
-					transformer.transform(info, esbNode);
-					
+					transformer.transform(info, esbNode);					
 				}
 				else{
 					// Adding XML comments into synapse config.
@@ -111,15 +111,10 @@ public abstract class AbstractEsbNodeTransformer implements EsbNodeTransformer {
 					for(CommentMediator mediator:outgoingLink.getSource().getCommentMediators()){
 						commentMediatorTransformer.transformWithinSequence(info, mediator,sequence);
 					}
-
 					transformer.transformWithinSequence(info, esbNode,sequence);
 				}
 			} else {
-				//sequence.addChild(new DropMediator());
-				/*// TODO: Might be better to automatically log the message before dropping. 
-				if (info.getParentSequence()!=null){ //TODO temp
-				info.getParentSequence().addChild(new DropMediator());
-				}*/
+                    // TODO: Might be better to automatically log the message before dropping. 
 			}
 		
 	}

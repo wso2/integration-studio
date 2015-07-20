@@ -56,24 +56,12 @@ public class MessageMediatorTransformer extends AbstractEsbNodeTransformer {
 		if (info.getTraversalDirection() == TransformationInfo.TRAVERSAL_DIRECTION_IN) {
 			// Let's use a dummy service name for now.
 			SequenceMediator mainMediator = new SequenceMediator();
-
 			mainMediator.setName(MAIN_SEQUENCE_KEY);
-
-			// In sequence.
-			//SequenceMediator inSequence = new SequenceMediator();
-
 			InMediator inMed = new InMediator();
-			//inMed.addChild(inSequence);
 			mainMediator.addChild(inMed);
-
-			// Out sequence.
-			//SequenceMediator outSequence = new SequenceMediator();
 			OutMediator outMed = new OutMediator();
-			//outMed.addChild(outSequence);
-			mainMediator.addChild(outMed);
-			
-			info.getSynapseConfiguration().addSequence(MAIN_SEQUENCE_KEY, mainMediator);
-			
+			mainMediator.addChild(outMed);			
+			info.getSynapseConfiguration().addSequence(MAIN_SEQUENCE_KEY, mainMediator);			
 			info.setOriginInSequence(inMed);
 			info.setOriginOutSequence(outMed);
 			info.setParentSequence(inMed);

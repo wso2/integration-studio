@@ -1,3 +1,19 @@
+/*
+ * Copyright 2012-2015 WSO2, Inc. (http://wso2.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.List;
@@ -67,10 +83,7 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		WSDLEndPoint visualEndPoint = (WSDLEndPoint) subject;
 		
 		Endpoint endPoint =(Endpoint)create(visualEndPoint, visualEndPoint.getEndPointName());
-		endPoints.add(endPoint);		
-		//Next node may be a Failover endPoint. So that this should be edited to be compatible with that also.
-/*		info.setParentSequence(info.getOriginOutSequence());
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);*/		
+		endPoints.add(endPoint);			
 
 		// Transform endpoint output data flow.
 		transformEndpointOutflow(info);
@@ -81,57 +94,13 @@ public class WSDLEndPointTransformer extends AbstractEndpointTransformer{
 		WSDLEndpoint synapseWSDLEP = new WSDLEndpoint();
 		synapseWSDLEP.setWsdlURI(visualEndPoint.getWsdlUri());
 		synapseWSDLEP.setServiceName(visualEndPoint.getService());
-		synapseWSDLEP.setPortName(visualEndPoint.getPort());
-		
+		synapseWSDLEP.setPortName(visualEndPoint.getPort());		
 		if(StringUtils.isNotBlank(name)){
 			synapseWSDLEP.setName(name);
-		}
-		
-		createAdvanceOptions(visualEndPoint,synapseWSDLEP);
-		
-/*		EndpointDefinition synapseEPDef = new EndpointDefinition();
-		synapseWSDLEP.setWsdlURI(visualEndPoint.getWsdlUri());
-		synapseWSDLEP.setServiceName(visualEndPoint.getService());
-		synapseWSDLEP.setPortName(visualEndPoint.getPort());
-		if(name!=null){
-			synapseWSDLEP.setName(name);
-		}
-		
-		if (visualEndPoint.isAddressingEnabled()) {
-			synapseEPDef.setAddressingOn(true);
-			synapseEPDef.setUseSeparateListener(visualEndPoint
-					.isAddressingSeparateListener());
-			synapseEPDef
-					.setAddressingVersion((visualEndPoint
-							.getAddressingVersion() == EndPointAddressingVersion.FINAL) ? "final"
-							: "submission");
-		}
-		
-		if (visualEndPoint.isReliableMessagingEnabled()) {
-			synapseEPDef.setReliableMessagingOn(visualEndPoint
-					.isReliableMessagingEnabled());
-			
-		}
-		if (visualEndPoint.isSecurityEnabled()) {
-			synapseEPDef.setSecurityOn(true);
-			
 		}		
-
-		synapseEPDef.setRetryDurationOnTimeout((int) (visualEndPoint
-				.getRetryDelay()));
-		if (ValidationUtil.isInt(visualEndPoint.getRetryErrorCodes()))
-			synapseEPDef.addRetryDisabledErrorCode(ValidationUtil
-					.getInt(visualEndPoint.getRetryErrorCodes()));
-		if (ValidationUtil.isInt(visualEndPoint.getSuspendErrorCodes()))
-			synapseEPDef.addSuspendErrorCode(ValidationUtil
-					.getInt(visualEndPoint.getSuspendErrorCodes()));
-		
-		synapseWSDLEP.setDefinition(synapseEPDef);*/
-		
+		createAdvanceOptions(visualEndPoint,synapseWSDLEP);		
 		return synapseWSDLEP;
-	}
-
-	
+	}	
 
 	public void transformWithinSequence(TransformationInfo information,
 			EsbNode subject, SequenceMediator sequence) throws TransformerException {

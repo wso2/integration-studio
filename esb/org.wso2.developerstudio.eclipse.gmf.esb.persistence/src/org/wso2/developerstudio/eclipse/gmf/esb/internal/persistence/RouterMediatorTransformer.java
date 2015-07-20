@@ -95,7 +95,6 @@ public class RouterMediatorTransformer extends AbstractEsbNodeTransformer {
 			if(routerTargets.get(i).getTarget().getSequenceType()==TargetSequenceType.REGISTRY_REFERENCE){
 				target.setSequenceRef(routerTargets.get(i).getTarget().getSequenceKey().getKeyValue());
 			} else{
-				//ListMediator targetMediatorList = new AnonymousListMediator();
 				SequenceMediator targetSequence = new SequenceMediator();
 
 				TransformationInfo newOnCompleteInfo = new TransformationInfo();
@@ -106,8 +105,6 @@ public class RouterMediatorTransformer extends AbstractEsbNodeTransformer {
 				newOnCompleteInfo.setCurrentProxy(information.getCurrentProxy());
 				newOnCompleteInfo.setParentSequence(targetSequence);
 				doTransform(newOnCompleteInfo, routerModel.getTargetOutputConnector().get(i));
-
-				//targetSequence.addAll(targetMediatorList.getList());
 				target.setSequence(targetSequence);
 			}
 			/*

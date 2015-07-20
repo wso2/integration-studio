@@ -112,7 +112,6 @@ public class PublishEventMediatorTransformer extends AbstractEsbNodeTransformer 
 			}
 			if (visualAttribute.getAttributeValueType().getLiteral().equals(AttributeValueType.EXPRESSION.getLiteral())) {
 				// ESB supports only STRING for attribute type, hence value is set to STRING at any given time
-				// attribute.setType(AttributeValueType.EXPRESSION.getLiteral());
 				NamespacedProperty namespacedExpression = visualAttribute.getAttributeExpression();
 				if (namespacedExpression != null) {
 					SynapsePath propertyExpression = CustomSynapsePathFactory.getSynapsePath(namespacedExpression

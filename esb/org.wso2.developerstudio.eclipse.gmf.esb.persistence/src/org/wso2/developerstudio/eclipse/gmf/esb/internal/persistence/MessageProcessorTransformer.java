@@ -49,8 +49,6 @@ public class MessageProcessorTransformer {
 		messageProcessor.setMessageStoreName(model.getMessageStore());
 
 		if (model.getProcessorType() == MessageProcessorType.SCHEDULED_MSG_FORWARDING) {
-			// Fixing TOOLS-2026.
-			//className = "org.apache.synapse.message.processors.forward.ScheduledMessageForwardingProcessor";
 			className = "org.apache.synapse.message.processor.impl.forwarder.ScheduledMessageForwardingProcessor";
 			if(model.getEndpointName() != null && StringUtils.isNotBlank(model.getEndpointName().getKeyValue())) {
 				messageProcessor.setTargetEndpoint(model.getEndpointName().getKeyValue());
@@ -104,8 +102,6 @@ public class MessageProcessorTransformer {
 			}
 
 		} else if (model.getProcessorType() == MessageProcessorType.MSG_SAMPLING) {			
-			// Fixing TOOLS-2026.
-			//className = "org.apache.synapse.message.processors.sampler.SamplingProcessor";
 			className = "org.apache.synapse.message.processor.impl.sampler.SamplingProcessor";
 
 			if (StringUtils.isNotBlank(model.getProcessorState().getLiteral())) {

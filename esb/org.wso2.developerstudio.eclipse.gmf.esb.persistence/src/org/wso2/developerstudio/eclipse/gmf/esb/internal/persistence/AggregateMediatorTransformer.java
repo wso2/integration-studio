@@ -40,11 +40,6 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
 	public void transform(TransformationInfo information, EsbNode subject)
 			throws TransformerException {
 		
-/*		List<EsbNode> transformedMediators = information.getTransformedMediators();
-		 check whether subject transformed by different input link
-		if(transformedMediators.contains(subject))
-			return;*/
-		
 		try {
 			information.getParentSequence().addChild(
 					createAggregateMediator(information, subject));			
@@ -194,7 +189,6 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
 				/*
 				 * onComplete
 				 */
-				//ListMediator onCompleteMediatorList = new AnonymousListMediator();
 				SequenceMediator onCompleteSequence = new SequenceMediator();
 
 				TransformationInfo newOnCompleteInfo = new TransformationInfo();
@@ -206,7 +200,6 @@ public class AggregateMediatorTransformer extends AbstractEsbNodeTransformer {
 				newOnCompleteInfo.setParentSequence(onCompleteSequence);
 				doTransform(newOnCompleteInfo, visualAggregate.getOnCompleteOutputConnector());
 
-				//onCompleteSequence.addAll(onCompleteMediatorList.getList());
 				aggregateMediator.setOnCompleteSequence(onCompleteSequence);
 			}
 			

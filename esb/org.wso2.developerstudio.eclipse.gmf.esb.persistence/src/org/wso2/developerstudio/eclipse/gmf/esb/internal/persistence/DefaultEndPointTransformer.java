@@ -91,62 +91,20 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 		DefaultEndPoint visualEP = (DefaultEndPoint) subject;
 		Endpoint endPoint=(Endpoint)create(visualEP, visualEP.getEndPointName());
 		endPoints.add(endPoint);
-		
-		//Next node may be a Failover endPoint. So that this should be edited to be compatible with that also.
-/*		info.setParentSequence(info.getOriginOutSequence());
-		info.setTraversalDirection(TransformationInfo.TRAVERSAL_DIRECTION_OUT);		*/
 
 		// Transform endpoint output data flow.
-		transformEndpointOutflow(info);
-		
+		transformEndpointOutflow(info);		
 	}
 	
-	public DefaultEndpoint create(DefaultEndPoint visualEndPoint, String name){ 
-		
+	public DefaultEndpoint create(DefaultEndPoint visualEndPoint, String name){ 		
 		DefaultEndpoint synapseEP = new DefaultEndpoint();
 		if (StringUtils.isNotBlank(name)) {
 			synapseEP.setName(name);
 		}
 		createAdvanceOptions(visualEndPoint,synapseEP);
-		
-		/*EndpointDefinition synapseEPDef = new EndpointDefinition();
-		// synapseEPDef.setCharSetEncoding(charSetEncoding);
-		if (visualEndPoint.isAddressingEnabled()) {
-			synapseEPDef.setAddressingOn(true);
-			synapseEPDef.setUseSeparateListener(visualEndPoint
-					.isAddressingSeparateListener());
-			synapseEPDef
-					.setAddressingVersion((visualEndPoint.getAddressingVersion() == EndPointAddressingVersion.FINAL) ? "final"
-							: "submission");
-		}
-		if (visualEndPoint.isReliableMessagingEnabled()) {
-			synapseEPDef.setReliableMessagingOn(visualEndPoint
-					.isReliableMessagingEnabled());
-			// synapseEPDef.setWsRMPolicyKey(visualEP.getReliableMessagingPolicy().getKeyValue());
-		}
-
-		if (visualEndPoint.isSecurityEnabled()) {
-			synapseEPDef.setSecurityOn(true);
-			// synapseEPDef.setWsSecPolicyKey(visualEP.getSecurityPolicy().getKeyValue());
-		}
-
-		synapseEPDef
-				.setRetryDurationOnTimeout((int) (visualEndPoint.getRetryDelay()));
-		if (ValidationUtil.isInt(visualEndPoint.getRetryErrorCodes()))
-			synapseEPDef.addRetryDisabledErrorCode(ValidationUtil
-					.getInt(visualEndPoint.getRetryErrorCodes()));
-		if (ValidationUtil.isInt(visualEndPoint.getSuspendErrorCodes()))
-			synapseEPDef.addSuspendErrorCode(ValidationUtil.getInt(visualEndPoint
-					.getSuspendErrorCodes()));
-
-		synapseEP.setDefinition(synapseEPDef);*/
-		
-		return synapseEP;
-		
+		return synapseEP;		
 	}
-
-
-
+	
 	public void transformWithinSequence(TransformationInfo information,
 			EsbNode subject, SequenceMediator sequence) throws TransformerException {
 		Assert.isTrue(subject instanceof DefaultEndPoint, "Invalid subject");
@@ -154,5 +112,4 @@ public class DefaultEndPointTransformer extends AbstractEndpointTransformer {
 		Endpoint synapseEP = create(visualEndPoint, visualEndPoint.getEndPointName());
 		setEndpointToSendOrCallMediator(sequence, synapseEP);
 	}
-
 }

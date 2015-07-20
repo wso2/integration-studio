@@ -95,9 +95,7 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 					 RegistryKeyProperty  regKeyProperty = visualCache.getSequenceKey();
 					 cacheMediator.setOnCacheHitRef(regKeyProperty.getKeyValue());
 				 }
-			} else {
-				
-				//ListMediator onCacheHitMediatorList = new AnonymousListMediator();
+			} else {				
 				SequenceMediator onCacheHitSequence = new SequenceMediator();
 
 				TransformationInfo newOnCacheHitInfo = new TransformationInfo();
@@ -108,8 +106,6 @@ public class CacheMediatorTransformer extends AbstractEsbNodeTransformer {
 				newOnCacheHitInfo.setCurrentProxy(info.getCurrentProxy());
 				newOnCacheHitInfo.setParentSequence(onCacheHitSequence);
 				doTransform(newOnCacheHitInfo, visualCache.getOnHitOutputConnector());
-
-				//onCacheHitSequence.addAll(onCacheHitMediatorList.getList());
 				cacheMediator.setOnCacheHitSequence(onCacheHitSequence);
 			}
 

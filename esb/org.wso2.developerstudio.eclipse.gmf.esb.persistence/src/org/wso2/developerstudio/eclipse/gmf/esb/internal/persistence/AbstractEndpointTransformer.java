@@ -264,8 +264,6 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		}else if(info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequence){			
 			sendMediator=null;
 		} else{
-		//sendMediator = new SendMediator();
-			//info.getParentSequence().addChild(sendMediator);
 		}
 		return sendMediator;
 	}
@@ -295,8 +293,6 @@ public abstract class AbstractEndpointTransformer extends AbstractEsbNodeTransfo
 		}else if(info.getPreviouNode() instanceof org.wso2.developerstudio.eclipse.gmf.esb.Sequence){			
 			callMediator=null;
 		} else{
-		//sendMediator = new SendMediator();
-			//info.getParentSequence().addChild(sendMediator);
 		}
 		return callMediator;
 	}

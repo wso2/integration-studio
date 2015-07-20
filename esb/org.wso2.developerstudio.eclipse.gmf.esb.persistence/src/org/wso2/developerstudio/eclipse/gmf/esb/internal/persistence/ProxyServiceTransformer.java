@@ -289,10 +289,6 @@ public class ProxyServiceTransformer extends AbstractEsbNodeTransformer {
 	}
 	
 	private void transformAsProxy(TransformationInfo info, EsbNode subject) throws TransformerException, URISyntaxException, XMLStreamException{
-
-		/*TaskTransformer t=new TaskTransformer();
-		t.transform(info, subject);*/	
-		
 		ArrayList<String> transports = new ArrayList<String>();
 		List<String> pinnedServers = new ArrayList<String>();
 		// Check subject.

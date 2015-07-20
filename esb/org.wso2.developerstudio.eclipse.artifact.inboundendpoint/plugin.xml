@@ -3,7 +3,7 @@
 <plugin>
    <extension
          point="org.eclipse.ui.newWizards">
-         <wizard name="InboundEndpoint" 
+         <wizard name="Inbound Endpoint"
          	category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.features"
 			class="org.wso2.developerstudio.eclipse.artifact.inboundendpoint.ui.wizard.InboundEndpointProjectCreationWizard"
 			wizardManifest="project_wizard.xml"
@@ -30,7 +30,7 @@
 						   <test
                        forcePluginActivation="true"
                        property="org.eclipse.core.resources.name"
-                       value="inboundendpoints">
+                       value="inbound-endpoints">
                      </test>                        
 						</adapt>
                     </or>

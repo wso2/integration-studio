@@ -57,6 +57,9 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/PUT"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/DELETE"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/HEAD"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/OPTIONS"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/PATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//HttpMethodType/Leave_as_is"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//FilterMediatorConditionType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//FilterMediatorConditionType/SOURCE_REGEX"/>

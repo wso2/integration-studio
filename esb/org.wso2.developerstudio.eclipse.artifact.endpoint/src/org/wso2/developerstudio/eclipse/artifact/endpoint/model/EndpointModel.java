@@ -43,7 +43,7 @@ import org.wso2.developerstudio.eclipse.platform.core.exception.ObserverFailedEx
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider.ListData;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
 import org.wso2.developerstudio.eclipse.platform.core.templates.ArtifactTemplate;
-import org.wso2.developerstudio.eclipse.platform.core.types.HttpMethodType;
+import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.HttpMethodList.HttpMethodType;
 
 import java.io.File;
 import java.io.IOException;

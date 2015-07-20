@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2013-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,11 @@
 
 package org.wso2.developerstudio.eclipse.artifact.endpoint.validators;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.wso2.developerstudio.eclipse.platform.core.model.AbstractListDataProvider;
 import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataModel;
-import org.wso2.developerstudio.eclipse.platform.core.types.HttpMethodType;
-
 
 public class HttpMethodList extends AbstractListDataProvider{
 
@@ -35,6 +32,16 @@ public class HttpMethodList extends AbstractListDataProvider{
 		}
 
 		return list;
-	}
+	}	
 
+	public enum HttpMethodType {
+		GET,
+		POST,
+		PUT,
+		DELETE,
+		HEAD,
+		OPTIONS,
+		PATCH,
+		Leave_as_is;		
+	}
 }

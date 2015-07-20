@@ -21468,6 +21468,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.PUT);
 		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.DELETE);
 		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.HEAD);
+		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.OPTIONS);
+		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.PATCH);
+		addEEnumLiteral(httpMethodTypeEEnum, HttpMethodType.LEAVE_AS_IS);
 
 		initEEnum(filterMediatorConditionTypeEEnum, FilterMediatorConditionType.class, "FilterMediatorConditionType");
 		addEEnumLiteral(filterMediatorConditionTypeEEnum, FilterMediatorConditionType.SOURCE_REGEX);

@@ -52,6 +52,7 @@ import org.wso2.developerstudio.eclipse.artifact.endpoint.Activator;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.model.EndpointModel;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.utils.EndPointImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.utils.EpArtifactConstants;
+import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.HttpMethodList.HttpMethodType;
 import org.wso2.developerstudio.eclipse.artifact.endpoint.validators.ProjectFilter;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
 import org.wso2.developerstudio.eclipse.esb.project.artifact.ESBArtifact;
@@ -77,7 +78,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWizard {
 	
 	private static IDeveloperStudioLog log=Logger.getLog(Activator.PLUGIN_ID);
-	
+	 
 	private EndpointModel epModel;
 	private IFile endpointFile;
 	private ESBProjectArtifact esbProjectArtifact;
@@ -489,7 +490,11 @@ public class EndpointProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 			newContent = StringUtils.replace(newContent,"<ep.template>", epModel.getTemplateEPTargetTemp());
 		}else if(type.equals(EpArtifactConstants.HTTP_EP)){
 			newContent = StringUtils.replace(newContent,"<http.uritemplate>", epModel.getHttpUriTemplate());
-			newContent = StringUtils.replace(newContent,"<http.method>", epModel.getHttpMethod().name().toLowerCase());
+			if(!HttpMethodType.Leave_as_is.name().equals(epModel.getHttpMethod().name())){
+			    newContent = StringUtils.replace(newContent,"<http.method>", epModel.getHttpMethod().name().toLowerCase());
+			} else{
+				newContent = StringUtils.replace(newContent,"<http.method>", "");
+			}
 		}
 		
         return newContent;

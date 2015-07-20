@@ -79,7 +79,31 @@ public enum HttpMethodType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HEAD(4, "HEAD", "HEAD");
+	HEAD(4, "HEAD", "HEAD"), /**
+	 * The '<em><b>OPTIONS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OPTIONS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	OPTIONS(5, "OPTIONS", "OPTIONS"), /**
+	 * The '<em><b>PATCH</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PATCH_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PATCH(6, "PATCH", "PATCH"), /**
+	 * The '<em><b>Leave as is</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LEAVE_AS_IS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LEAVE_AS_IS(7, "Leave_as_is", "Leave-as-is");
 
 	/**
 	 * The '<em><b>GET</b></em>' literal value.
@@ -157,6 +181,51 @@ public enum HttpMethodType implements Enumerator {
 	public static final int HEAD_VALUE = 4;
 
 	/**
+	 * The '<em><b>OPTIONS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>OPTIONS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #OPTIONS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int OPTIONS_VALUE = 5;
+
+	/**
+	 * The '<em><b>PATCH</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>PATCH</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PATCH
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PATCH_VALUE = 6;
+
+	/**
+	 * The '<em><b>Leave as is</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Leave as is</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #LEAVE_AS_IS
+	 * @model name="Leave_as_is" literal="Leave-as-is"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LEAVE_AS_IS_VALUE = 7;
+
+	/**
 	 * An array of all the '<em><b>Http Method Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,6 +238,9 @@ public enum HttpMethodType implements Enumerator {
 			PUT,
 			DELETE,
 			HEAD,
+			OPTIONS,
+			PATCH,
+			LEAVE_AS_IS,
 		};
 
 	/**
@@ -224,6 +296,9 @@ public enum HttpMethodType implements Enumerator {
 			case PUT_VALUE: return PUT;
 			case DELETE_VALUE: return DELETE;
 			case HEAD_VALUE: return HEAD;
+			case OPTIONS_VALUE: return OPTIONS;
+			case PATCH_VALUE: return PATCH;
+			case LEAVE_AS_IS_VALUE: return LEAVE_AS_IS;
 		}
 		return null;
 	}

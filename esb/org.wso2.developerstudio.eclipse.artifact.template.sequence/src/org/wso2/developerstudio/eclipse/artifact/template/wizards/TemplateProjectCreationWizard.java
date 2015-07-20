@@ -43,6 +43,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.wso2.developerstudio.eclipse.artifact.template.validators.HttpMethodList.HttpMethodType;
 import org.wso2.developerstudio.eclipse.artifact.template.Activator;
 import org.wso2.developerstudio.eclipse.artifact.template.utils.TemplateImageUtils;
 import org.wso2.developerstudio.eclipse.artifact.template.model.TemplateModel;
@@ -184,8 +185,13 @@ public class TemplateProjectCreationWizard extends AbstractWSO2ProjectCreationWi
 				newContent = StringUtils.replace(newContent,"<service.name>", templateModel.getWsdlEPService());
 				newContent = StringUtils.replace(newContent,"<service.port>", templateModel.getWsdlEPPort());
 			}else if (type.equals("HTTP Endpoint Template")) {
-				newContent = StringUtils.replace(newContent,"<http.uritemplate>", templateModel.getHttpUriTemplate());
-				newContent = StringUtils.replace(newContent,"<http.method>", templateModel.getHttpMethod().name().toLowerCase());
+				newContent = StringUtils.replace(newContent,"<http.uritemplate>", templateModel.getHttpUriTemplate());				
+				if(!HttpMethodType.Leave_as_is.name().equals(templateModel.getHttpMethod().name())){
+				    newContent = StringUtils.replace(newContent,"<http.method>", templateModel.getHttpMethod().name().toLowerCase());
+				} else{
+					newContent = StringUtils.replace(newContent,"<http.method>", "");
+				}
+				
 			}
 		}
         return newContent;

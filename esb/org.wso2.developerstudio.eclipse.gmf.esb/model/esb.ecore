@@ -342,6 +342,9 @@
     <eLiterals name="PUT" value="2" literal="PUT"/>
     <eLiterals name="DELETE" value="3" literal="DELETE"/>
     <eLiterals name="HEAD" value="4" literal="HEAD"/>
+    <eLiterals name="OPTIONS" value="5" literal="OPTIONS"/>
+    <eLiterals name="PATCH" value="6" literal="PATCH"/>
+    <eLiterals name="Leave_as_is" value="7" literal="Leave-as-is"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DropMediator" eSuperTypes="#//Mediator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputConnector" eType="#//DropMediatorInputConnector"

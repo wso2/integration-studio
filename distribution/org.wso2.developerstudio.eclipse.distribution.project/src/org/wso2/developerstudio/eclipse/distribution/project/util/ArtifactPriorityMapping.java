@@ -56,7 +56,6 @@ public class ArtifactPriorityMapping {
 		priority.put("webapp/jaxws", 5);		
 		priority.put("service/dataservice", 5);
 		priority.put("cep/bucket", 5);
-		priority.put("synapse/proxy-service", 5);
 		priority.put("carbon/application", 5);	
 		priority.put("synapse/endpoint", 5);
 		priority.put("web/application", 5);		
@@ -73,8 +72,12 @@ public class ArtifactPriorityMapping {
 		priority.put("wso2/gadget", 5);	
 		priority.put("service/rule", 5);
 
+
+		priority.put("synapse/proxy-service", 6);
+
 		// Tasks get least priority.
-		priority.put("synapse/task", 6);
+		priority.put("synapse/task", 7);
+		priority.put("synapse/inbound-endpoint", 7);
 	}
 
 	private ArtifactPriorityMapping() {

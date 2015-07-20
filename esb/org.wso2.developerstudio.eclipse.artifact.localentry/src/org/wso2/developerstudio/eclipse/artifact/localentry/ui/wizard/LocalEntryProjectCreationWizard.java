@@ -41,6 +41,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
 import org.wso2.developerstudio.eclipse.artifact.localentry.Activator;
 import org.wso2.developerstudio.eclipse.artifact.localentry.model.LocalEntryModel;
 import org.wso2.developerstudio.eclipse.artifact.localentry.utils.LocalEntryArtifactConstants;
@@ -55,6 +56,7 @@ import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.maven.util.MavenUtils;
 import org.wso2.developerstudio.eclipse.platform.ui.editor.Openable;
 import org.wso2.developerstudio.eclipse.platform.ui.startup.ESBGraphicalEditor;
+import org.wso2.developerstudio.eclipse.platform.ui.validator.CommonFieldValidator;
 import org.wso2.developerstudio.eclipse.platform.ui.wizard.AbstractWSO2ProjectCreationWizard;
 import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
@@ -144,6 +146,13 @@ public class LocalEntryProjectCreationWizard extends AbstractWSO2ProjectCreation
 	}
 
 	public boolean performFinish() {
+		if (LocalEntryArtifactConstants.TYPE_IN_LINE_XML_LE.equals(localEntryModel.getSelectedLocalEntryType()) &&
+				!CommonFieldValidator.isValidXML(localEntryModel.getInLineXMLValue())) {
+			MessageDialog.openError(Display.getCurrent().getActiveShell(), "Invalid In-Line XML",
+					"Invalid XML Contents Provided\n" +
+							"XML Parsing Error: not well-formed");
+			return false;
+		}
 		try {
 			boolean isNewArtifact = true;
 			leModel = (LocalEntryModel)getModel();

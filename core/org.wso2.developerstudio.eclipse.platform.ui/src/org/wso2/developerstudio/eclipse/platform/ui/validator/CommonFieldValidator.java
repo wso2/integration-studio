@@ -17,17 +17,30 @@
 package org.wso2.developerstudio.eclipse.platform.ui.validator;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
+import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.platform.core.exception.FieldValidationException;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.wso2.developerstudio.eclipse.platform.ui.Activator;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class CommonFieldValidator {
+	private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
-public static void validateJavaClassNameField(Object value) throws FieldValidationException{
+
+	public static void validateJavaClassNameField(Object value) throws FieldValidationException{
 	String className = value.toString();
 	if ("".equals(className)) {
 		throw new FieldValidationException("Class name cannot be empty");
@@ -161,8 +174,39 @@ private static boolean isParameter(String field,boolean partial){
 		Pattern pattern = Pattern.compile("^[^/\\ \\\\:@%\\^+;,=\\[\\{\\]\\}*#\\$?\"<>|\\(\\)]+$");
 		Matcher matcher = pattern.matcher(name);
 		return matcher.matches();
-	}	
-	
+	}
+
+	/**
+	 * Method checks for given string is a valid XML
+	 *
+	 * @param xmlString a non empty xml string
+	 * @return boolean, true if valid, else false
+	 */
+	public static boolean isValidXML(String xmlString) {
+
+		DocumentBuilder documentBuilder;
+		try {
+			documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		} catch (ParserConfigurationException e) {
+			log.error("Error occurred while creating a new Document builder for XML parsing", e);
+			return false;
+		}
+		InputSource inputSource = new InputSource();
+		inputSource.setCharacterStream(new StringReader(xmlString));
+
+		try {
+			documentBuilder.parse(inputSource);
+		} catch (SAXException e) {
+			log.error("Error while parsing given XML string", e);
+			return false;
+		} catch (IOException e) {
+			log.error("IO error occurred while parsing XML string", e);
+			return false;
+		}
+
+		return true;
+	}
+
 	public static void validateArtifactName(Object value) throws FieldValidationException{
 		if (value == null) {
 			throw new FieldValidationException("Artifact name cannot be empty");

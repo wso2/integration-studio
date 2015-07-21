@@ -1966,6 +1966,7 @@
       <genFeatures createChild="false" propertyCategory="Methods" ecoreFeature="ecore:EAttribute esb.ecore#//APIResource/allowDelete"/>
       <genFeatures createChild="false" propertyCategory="Methods" ecoreFeature="ecore:EAttribute esb.ecore#//APIResource/allowOptions"/>
       <genFeatures createChild="false" propertyCategory="Methods" ecoreFeature="ecore:EAttribute esb.ecore#//APIResource/allowHead"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIResource/allowPatch"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//APIResource/container"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute esb.ecore#//APIResource/inSequenceType"/>
       <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference esb.ecore#//APIResource/inSequenceKey"/>

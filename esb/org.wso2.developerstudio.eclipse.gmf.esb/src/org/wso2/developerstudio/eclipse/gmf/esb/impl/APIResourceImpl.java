@@ -52,6 +52,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SequenceType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowDelete <em>Allow Delete</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowOptions <em>Allow Options</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowHead <em>Allow Head</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#isAllowPatch <em>Allow Patch</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getInSequenceType <em>In Sequence Type</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceImpl#getInSequenceKey <em>In Sequence Key</em>}</li>
@@ -298,6 +299,26 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 	 * @ordered
 	 */
 	protected boolean allowHead = ALLOW_HEAD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isAllowPatch() <em>Allow Patch</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAllowPatch()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ALLOW_PATCH_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isAllowPatch() <em>Allow Patch</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAllowPatch()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean allowPatch = ALLOW_PATCH_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference.
@@ -894,6 +915,27 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isAllowPatch() {
+		return allowPatch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAllowPatch(boolean newAllowPatch) {
+		boolean oldAllowPatch = allowPatch;
+		allowPatch = newAllowPatch;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.API_RESOURCE__ALLOW_PATCH, oldAllowPatch, allowPatch));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ProxyServiceContainer getContainer() {
 		return container;
 	}
@@ -1274,6 +1316,8 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 				return isAllowOptions();
 			case EsbPackage.API_RESOURCE__ALLOW_HEAD:
 				return isAllowHead();
+			case EsbPackage.API_RESOURCE__ALLOW_PATCH:
+				return isAllowPatch();
 			case EsbPackage.API_RESOURCE__CONTAINER:
 				return getContainer();
 			case EsbPackage.API_RESOURCE__IN_SEQUENCE_TYPE:
@@ -1351,6 +1395,9 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 				return;
 			case EsbPackage.API_RESOURCE__ALLOW_HEAD:
 				setAllowHead((Boolean)newValue);
+				return;
+			case EsbPackage.API_RESOURCE__ALLOW_PATCH:
+				setAllowPatch((Boolean)newValue);
 				return;
 			case EsbPackage.API_RESOURCE__CONTAINER:
 				setContainer((ProxyServiceContainer)newValue);
@@ -1439,6 +1486,9 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 			case EsbPackage.API_RESOURCE__ALLOW_HEAD:
 				setAllowHead(ALLOW_HEAD_EDEFAULT);
 				return;
+			case EsbPackage.API_RESOURCE__ALLOW_PATCH:
+				setAllowPatch(ALLOW_PATCH_EDEFAULT);
+				return;
 			case EsbPackage.API_RESOURCE__CONTAINER:
 				setContainer((ProxyServiceContainer)null);
 				return;
@@ -1512,6 +1562,8 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 				return allowOptions != ALLOW_OPTIONS_EDEFAULT;
 			case EsbPackage.API_RESOURCE__ALLOW_HEAD:
 				return allowHead != ALLOW_HEAD_EDEFAULT;
+			case EsbPackage.API_RESOURCE__ALLOW_PATCH:
+				return allowPatch != ALLOW_PATCH_EDEFAULT;
 			case EsbPackage.API_RESOURCE__CONTAINER:
 				return container != null;
 			case EsbPackage.API_RESOURCE__IN_SEQUENCE_TYPE:
@@ -1566,6 +1618,8 @@ public class APIResourceImpl extends EsbNodeImpl implements APIResource {
 		result.append(allowOptions);
 		result.append(", allowHead: ");
 		result.append(allowHead);
+		result.append(", allowPatch: ");
+		result.append(allowPatch);
 		result.append(", inSequenceType: ");
 		result.append(inSequenceType);
 		result.append(", inSequenceName: ");

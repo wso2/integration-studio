@@ -36,12 +36,13 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.wso2.developerstudio.eclipse.artifact.bpel.dialogs.RegistryResourseFileProviderDialog;
 import org.wso2.developerstudio.eclipse.capp.core.artifacts.manager.CAppEnvironment;
 import org.wso2.developerstudio.eclipse.capp.core.model.RegistryConnection;
-import org.wso2.developerstudio.eclipse.general.project.dialogs.DeveloperStudioElementProviderDialog;
 import org.wso2.developerstudio.eclipse.general.project.dialogs.NewResourceTemplateDialog;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryConnection;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryData;
+import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryHandler;
 
 /**
@@ -273,8 +274,8 @@ public class RegistryResourceBrowserDialog extends Dialog {
 	private void openRegistryResourceProviderDialog() {
 		 hide();
 		try {
-			DeveloperStudioElementProviderDialog registryResourceProviderSelector = new DeveloperStudioElementProviderDialog(
-					getParentShell(), new Class[] {}, new HashMap<String, List<String>>());
+			RegistryResourseFileProviderDialog registryResourceProviderSelector = new RegistryResourseFileProviderDialog(
+					getParentShell(), new Class[] { IRegistryFile.class }, new HashMap<String, List<String>>());
 			registryResourceProviderSelector.create();
 			registryResourceProviderSelector.getShell().setText("Workspace Element Providers");
 			registryResourceProviderSelector.open();

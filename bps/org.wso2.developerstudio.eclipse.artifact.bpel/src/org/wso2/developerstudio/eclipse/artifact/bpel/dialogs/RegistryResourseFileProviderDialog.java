@@ -26,7 +26,7 @@ import org.wso2.developerstudio.eclipse.greg.core.RegistryManager;
 import org.wso2.developerstudio.eclipse.greg.core.interfaces.IRegistryFile;
 
 /**
- * Provide's a dialog box to select resource files from the workspace for BPEL artifacts
+ * Provides a dialog box to select resource files from the workspace for BPEL artifacts
  */
 public class RegistryResourseFileProviderDialog extends DeveloperStudioElementProviderDialog {
 
@@ -35,7 +35,7 @@ public class RegistryResourseFileProviderDialog extends DeveloperStudioElementPr
 	}
 
 	/**
-	 * Provide's registry file list in the workspace
+	 * Provides registry file list in the workspace
 	 * 
 	 * @return List<Object>
 	 */

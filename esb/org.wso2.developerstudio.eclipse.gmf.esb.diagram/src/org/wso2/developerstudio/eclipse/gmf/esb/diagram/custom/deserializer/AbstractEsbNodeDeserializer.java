@@ -338,7 +338,7 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 			} else if ((firstPart instanceof InboundEndpointSequenceOutputConnectorEditPart && secondPart instanceof InboundEndpointSequenceInputConnectorEditPart)
 					|| (firstPart instanceof InboundEndpointOnErrorSequenceOutputConnectorEditPart && secondPart instanceof InboundEndpointOnErrorSequenceInputConnectorEditPart)) {
 				LinkedList<EsbNode> seq = connectionFlowMap.get(pair.getKey());
-				if (seq.size() > 0 && seq.getLast() instanceof Sequence) {
+				if (seq != null && seq.size() > 0 && seq.getLast() instanceof Sequence) {
 					sourceConnector = (AbstractConnectorEditPart) getEditpart(((Sequence) seq.getLast())
 							.getOutputConnector().get(0));
 					targetConnector = (AbstractConnectorEditPart) secondPart;
@@ -347,7 +347,7 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 				if (firstPart instanceof ProxyOutputConnectorEditPart
 						&& secondPart instanceof ProxyInputConnectorEditPart) {
 					LinkedList<EsbNode> seq = connectionFlowMap.get(pair.getKey());
-					if (seq.size() > 0 && seq.getLast() instanceof SendMediator) {
+					if (seq != null && seq.size() > 0 && seq.getLast() instanceof SendMediator) {
 						sourceConnector = (AbstractConnectorEditPart) getEditpart(((SendMediator) seq.getLast())
 								.getOutputConnector());
 						EList<ProxyInSequenceInputConnector> inputConnectors = ((ProxyService) ((Node) EditorUtils
@@ -362,7 +362,7 @@ public abstract class AbstractEsbNodeDeserializer<T,R extends EsbNode> implement
 				} else if (firstPart instanceof APIResourceOutputConnectorEditPart
 						&& secondPart instanceof APIResourceInputConnectorEditPart) {
 					LinkedList<EsbNode> seq = connectionFlowMap.get(pair.getKey());
-					if (seq.size() > 0 && seq.getLast() instanceof SendMediator) {
+					if (seq != null && seq.size() > 0 && seq.getLast() instanceof SendMediator) {
 						sourceConnector = (AbstractConnectorEditPart) getEditpart(((SendMediator) seq.getLast())
 								.getOutputConnector());
 						EList<APIResourceInSequenceInputConnector> inputConnectors = ((APIResource) ((Node) EditorUtils

@@ -114,24 +114,15 @@
 				</enablement>
 		</deleteParticipant>
    </extension>
-   <extension point="org.eclipse.ui.navigator.navigatorContent">
-		<commonFilter
-			class="org.wso2.developerstudio.eclipse.esb.project.filter.ESBGraphicalResourceFilter"
-			description="Hide WSO2 ESB graphical resource files."
-			id="org.wso2.developerstudio.eclipse.esb.project.filter.graphical"
-			name="Hide WSO2 ESB graphical resource files" activeByDefault="true"/>
-	</extension>
 	<extension
 			point="org.eclipse.ui.navigator.viewer">
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.developerstudio.eclipse.esb.project.filter.graphical*" />
 				<contentExtension pattern="org.wso2.ui.navigator.linkHelper.EsbExplorer"/>	
 			</includes>
 		</viewerContentBinding>
 		<viewerContentBinding viewerId="org.eclipse.ui.navigator.PackageExplorer">
 			<includes>
-				<contentExtension pattern="org.wso2.developerstudio.eclipse.esb.project.filter.graphical*" />
 				<contentExtension pattern="org.wso2.ui.navigator.linkHelper.EsbExplorer"/>	
 			</includes>
 		</viewerContentBinding>

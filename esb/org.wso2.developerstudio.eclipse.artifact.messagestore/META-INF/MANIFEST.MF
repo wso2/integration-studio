@@ -7,7 +7,7 @@ Bundle-Activator: org.wso2.developerstudio.eclipse.artifact.messagestore.Activat
 Bundle-Vendor: WSO2 Inc
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.apache.axiom.om,
  org.apache.commons.lang;version="2.6.0.wso2v1",

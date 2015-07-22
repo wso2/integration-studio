@@ -102,8 +102,13 @@ public class MessageStoreItemProvider
 			addVirtualHostPropertyDescriptor(object);
 			break;
 		case JDBC:
-			//addProviderClassPropertyDescriptor(object);
-			//addParametersPropertyDescriptor(object);
+			addJdbcDatabaseTablePropertyDescriptor(object);
+			addJdbcConnectionInformationPropertyDescriptor(object);
+			addJdbcDriverPropertyDescriptor(object);
+			addJdbcURLPropertyDescriptor(object);
+			addJdbcUserPropertyDescriptor(object);
+			addJdbcPasswordPropertyDescriptor(object);
+			addJdbcDatasourceNamePropertyDescriptor(object);
 			break;
 		default:
 			break;
@@ -531,6 +536,160 @@ public class MessageStoreItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Jdbc Database Table feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addJdbcDatabaseTablePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_jdbcDatabaseTable_feature"),
+				 getString("_UI_MessageStore_jdbcDatabaseTable_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__JDBC_DATABASE_TABLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Jdbc Connection Information feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addJdbcConnectionInformationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_jdbcConnectionInformation_feature"),
+				 getString("_UI_MessageStore_jdbcConnectionInformation_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Jdbc Driver feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addJdbcDriverPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_jdbcDriver_feature"),
+				 getString("_UI_MessageStore_jdbcDriver_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__JDBC_DRIVER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Jdbc URL feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addJdbcURLPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_jdbcURL_feature"),
+				 getString("_UI_MessageStore_jdbcURL_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__JDBC_URL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Jdbc User feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addJdbcUserPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_jdbcUser_feature"),
+				 getString("_UI_MessageStore_jdbcUser_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__JDBC_USER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Jdbc Password feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addJdbcPasswordPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_jdbcPassword_feature"),
+				 getString("_UI_MessageStore_jdbcPassword_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__JDBC_PASSWORD,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Jdbc Datasource Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addJdbcDatasourceNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MessageStore_jdbcDatasourceName_feature"),
+				 getString("_UI_MessageStore_jdbcDatasourceName_description"),
+				 EsbPackage.Literals.MESSAGE_STORE__JDBC_DATASOURCE_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 getString("_UI_basicPropertyCategory"),
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Parameters feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -638,6 +797,13 @@ public class MessageStoreItemProvider
 			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_USER_NAME:
 			case EsbPackage.MESSAGE_STORE__RABBIT_MQ_PASSWORD:
 			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
+			case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+			case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+			case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+			case EsbPackage.MESSAGE_STORE__JDBC_URL:
+			case EsbPackage.MESSAGE_STORE__JDBC_USER:
+			case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+			case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:

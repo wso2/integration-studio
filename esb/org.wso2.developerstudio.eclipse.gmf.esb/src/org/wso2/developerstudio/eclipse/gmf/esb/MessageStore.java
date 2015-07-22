@@ -44,6 +44,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQUserName <em>Rabbit MQ User Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getRabbitMQPassword <em>Rabbit MQ Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getVirtualHost <em>Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatabaseTable <em>Jdbc Database Table</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDriver <em>Jdbc Driver</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcURL <em>Jdbc URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcUser <em>Jdbc User</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword <em>Jdbc Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
@@ -552,6 +559,188 @@ public interface MessageStore extends EsbElement {
 	 * @generated
 	 */
 	void setVirtualHost(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Jdbc Database Table</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Jdbc Database Table</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Jdbc Database Table</em>' attribute.
+	 * @see #setJdbcDatabaseTable(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcDatabaseTable()
+	 * @model
+	 * @generated
+	 */
+	String getJdbcDatabaseTable();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatabaseTable <em>Jdbc Database Table</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Jdbc Database Table</em>' attribute.
+	 * @see #getJdbcDatabaseTable()
+	 * @generated
+	 */
+	void setJdbcDatabaseTable(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Jdbc Connection Information</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Jdbc Connection Information</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Jdbc Connection Information</em>' attribute.
+	 * @see #setJdbcConnectionInformation(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcConnectionInformation()
+	 * @model
+	 * @generated
+	 */
+	String getJdbcConnectionInformation();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Jdbc Connection Information</em>' attribute.
+	 * @see #getJdbcConnectionInformation()
+	 * @generated
+	 */
+	void setJdbcConnectionInformation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Jdbc Driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Jdbc Driver</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Jdbc Driver</em>' attribute.
+	 * @see #setJdbcDriver(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcDriver()
+	 * @model
+	 * @generated
+	 */
+	String getJdbcDriver();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDriver <em>Jdbc Driver</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Jdbc Driver</em>' attribute.
+	 * @see #getJdbcDriver()
+	 * @generated
+	 */
+	void setJdbcDriver(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Jdbc URL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Jdbc URL</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Jdbc URL</em>' attribute.
+	 * @see #setJdbcURL(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcURL()
+	 * @model
+	 * @generated
+	 */
+	String getJdbcURL();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcURL <em>Jdbc URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Jdbc URL</em>' attribute.
+	 * @see #getJdbcURL()
+	 * @generated
+	 */
+	void setJdbcURL(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Jdbc User</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Jdbc User</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Jdbc User</em>' attribute.
+	 * @see #setJdbcUser(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcUser()
+	 * @model
+	 * @generated
+	 */
+	String getJdbcUser();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcUser <em>Jdbc User</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Jdbc User</em>' attribute.
+	 * @see #getJdbcUser()
+	 * @generated
+	 */
+	void setJdbcUser(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Jdbc Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Jdbc Password</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Jdbc Password</em>' attribute.
+	 * @see #setJdbcPassword(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcPassword()
+	 * @model
+	 * @generated
+	 */
+	String getJdbcPassword();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword <em>Jdbc Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Jdbc Password</em>' attribute.
+	 * @see #getJdbcPassword()
+	 * @generated
+	 */
+	void setJdbcPassword(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Jdbc Datasource Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Jdbc Datasource Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Jdbc Datasource Name</em>' attribute.
+	 * @see #setJdbcDatasourceName(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcDatasourceName()
+	 * @model
+	 * @generated
+	 */
+	String getJdbcDatasourceName();
+
+	/**
+	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Jdbc Datasource Name</em>' attribute.
+	 * @see #getJdbcDatasourceName()
+	 * @generated
+	 */
+	void setJdbcDatasourceName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.

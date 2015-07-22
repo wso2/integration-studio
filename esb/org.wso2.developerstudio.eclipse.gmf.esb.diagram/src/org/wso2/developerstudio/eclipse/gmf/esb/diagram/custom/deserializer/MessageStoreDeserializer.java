@@ -26,6 +26,7 @@ import org.apache.synapse.message.store.MessageStore;
 import org.apache.synapse.message.store.impl.memory.InMemoryStore;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
+import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
@@ -45,8 +46,10 @@ public class MessageStoreDeserializer
 	private static final String STORE_JMS_USERNAME = "store.jms.username";
 	private static final String STORE_JMS_CONNECTION_FACTORY = "store.jms.connection.factory";
 	private static final String STORE_JMS_DESTINATION = "store.jms.destination";
+	
 	private static final String JAVA_NAMING_PROVIDER_URL = "java.naming.provider.url";
 	private static final String JAVA_NAMING_FACTORY_INITIAL = "java.naming.factory.initial";
+	
 	private static final String STORE_RABBITMQ_VIRTUAL_HOST = "store.rabbitmq.virtual.host";
 	private static final String STORE_RABBITMQ_PASSWORD = "store.rabbitmq.password";
 	private static final String STORE_RABBITMQ_USERNAME = "store.rabbitmq.username";
@@ -55,6 +58,13 @@ public class MessageStoreDeserializer
 	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
 	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
 	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
+	
+	private static final String STORE_JDBC_DS_NAME = "store.jdbc.dsName";
+	private static final String STORE_JDBC_PASSWORD = "store.jdbc.password";
+	private static final String STORE_JDBC_USERNAME = "store.jdbc.username";
+	private static final String STORE_JDBC_CONNECTION_URL = "store.jdbc.connection.url";
+	private static final String STORE_JDBC_DRIVER = "store.jdbc.driver";
+	private static final String STORE_JDBC_TABLE = "store.jdbc.table";
 	// Fixing TOOLS-2026.
 	private static final String JMS_MS_FQN_Old = "org.wso2.carbon.message.store.persistence.jms.JMSMessageStore";	
 	private static final String IN_MEMORY_MS_FQN_Old = "org.apache.synapse.message.store.InMemoryMessageStore";
@@ -196,6 +206,50 @@ public class MessageStoreDeserializer
 						} else if (param.getKey().equals(STORE_RABBITMQ_VIRTUAL_HOST)) {
 							if (StringUtils.isNotBlank(value)) {
 								executeSetValueCommand(MESSAGE_STORE__VIRTUAL_HOST, value);
+							}
+						}
+					}
+				} else if (dummyStore.getClassName().equals(JDBC_MS_FQN)) {
+					executeSetValueCommand(MESSAGE_STORE__STORE_TYPE, MessageStoreType.JDBC);
+					Map<String, Object> params = dummyStore.getParameters();
+
+					for (Entry<String, Object> param : params.entrySet()) {
+						String value = param.getValue().toString();
+						if (param.getKey().equals(STORE_JDBC_TABLE)) {
+							if (StringUtils.isNotBlank(value)) {
+								executeSetValueCommand(MESSAGE_STORE__JDBC_DATABASE_TABLE, value);
+							}
+						} else if (param.getKey().equals(STORE_JDBC_DS_NAME)) {
+							if (StringUtils.isNotBlank(value)) {
+								// Set connection information to datasource
+								executeSetValueCommand(MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE);
+								executeSetValueCommand(MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT, value);
+							}
+						} else if (param.getKey().equals(STORE_JDBC_DRIVER)) {
+							// Set connection information to pool
+							if (StringUtils.isNotBlank(value)) {
+								executeSetValueCommand(MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_POOL);
+								executeSetValueCommand(MESSAGE_STORE__JDBC_DRIVER, value);
+							}
+						} else if (param.getKey().equals(STORE_JDBC_CONNECTION_URL)) {
+							if (StringUtils.isNotBlank(value)) {
+								executeSetValueCommand(MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_POOL);
+								executeSetValueCommand(MESSAGE_STORE__JDBC_URL, value);
+							}
+						} else if (param.getKey().equals(STORE_JDBC_USERNAME)) {
+							if (StringUtils.isNotBlank(value)) {
+								executeSetValueCommand(MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_POOL);
+								executeSetValueCommand(MESSAGE_STORE__JDBC_USER, value);
+							}
+						} else if (param.getKey().equals(STORE_JDBC_PASSWORD)) {
+							if (StringUtils.isNotBlank(value)) {
+								executeSetValueCommand(MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
+										JDBCConnectionInformationType.JDBC_POOL);
+								executeSetValueCommand(MESSAGE_STORE__JDBC_PASSWORD, value);
 							}
 						}
 					}

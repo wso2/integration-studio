@@ -62,6 +62,13 @@ import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQUserName <em>Rabbit MQ User Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getRabbitMQPassword <em>Rabbit MQ Password</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getVirtualHost <em>Virtual Host</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatabaseTable <em>Jdbc Database Table</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDriver <em>Jdbc Driver</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcURL <em>Jdbc URL</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcUser <em>Jdbc User</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcPassword <em>Jdbc Password</em>}</li>
+ *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}</li>
  *   <li>{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageStoreImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
@@ -448,6 +455,146 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * @ordered
 	 */
 	protected String virtualHost = VIRTUAL_HOST_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJdbcDatabaseTable() <em>Jdbc Database Table</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcDatabaseTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JDBC_DATABASE_TABLE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJdbcDatabaseTable() <em>Jdbc Database Table</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcDatabaseTable()
+	 * @generated
+	 * @ordered
+	 */
+	protected String jdbcDatabaseTable = JDBC_DATABASE_TABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJdbcConnectionInformation() <em>Jdbc Connection Information</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcConnectionInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JDBC_CONNECTION_INFORMATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJdbcConnectionInformation() <em>Jdbc Connection Information</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcConnectionInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String jdbcConnectionInformation = JDBC_CONNECTION_INFORMATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJdbcDriver() <em>Jdbc Driver</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcDriver()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JDBC_DRIVER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJdbcDriver() <em>Jdbc Driver</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcDriver()
+	 * @generated
+	 * @ordered
+	 */
+	protected String jdbcDriver = JDBC_DRIVER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJdbcURL() <em>Jdbc URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JDBC_URL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJdbcURL() <em>Jdbc URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected String jdbcURL = JDBC_URL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJdbcUser() <em>Jdbc User</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcUser()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JDBC_USER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJdbcUser() <em>Jdbc User</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcUser()
+	 * @generated
+	 * @ordered
+	 */
+	protected String jdbcUser = JDBC_USER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJdbcPassword() <em>Jdbc Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JDBC_PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJdbcPassword() <em>Jdbc Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String jdbcPassword = JDBC_PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getJdbcDatasourceName() <em>Jdbc Datasource Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcDatasourceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String JDBC_DATASOURCE_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getJdbcDatasourceName() <em>Jdbc Datasource Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJdbcDatasourceName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String jdbcDatasourceName = JDBC_DATASOURCE_NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -882,6 +1029,153 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getJdbcDatabaseTable() {
+		return jdbcDatabaseTable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJdbcDatabaseTable(String newJdbcDatabaseTable) {
+		String oldJdbcDatabaseTable = jdbcDatabaseTable;
+		jdbcDatabaseTable = newJdbcDatabaseTable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE, oldJdbcDatabaseTable, jdbcDatabaseTable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getJdbcConnectionInformation() {
+		return jdbcConnectionInformation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJdbcConnectionInformation(String newJdbcConnectionInformation) {
+		String oldJdbcConnectionInformation = jdbcConnectionInformation;
+		jdbcConnectionInformation = newJdbcConnectionInformation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION, oldJdbcConnectionInformation, jdbcConnectionInformation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getJdbcDriver() {
+		return jdbcDriver;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJdbcDriver(String newJdbcDriver) {
+		String oldJdbcDriver = jdbcDriver;
+		jdbcDriver = newJdbcDriver;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DRIVER, oldJdbcDriver, jdbcDriver));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getJdbcURL() {
+		return jdbcURL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJdbcURL(String newJdbcURL) {
+		String oldJdbcURL = jdbcURL;
+		jdbcURL = newJdbcURL;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_URL, oldJdbcURL, jdbcURL));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getJdbcUser() {
+		return jdbcUser;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJdbcUser(String newJdbcUser) {
+		String oldJdbcUser = jdbcUser;
+		jdbcUser = newJdbcUser;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_USER, oldJdbcUser, jdbcUser));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getJdbcPassword() {
+		return jdbcPassword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJdbcPassword(String newJdbcPassword) {
+		String oldJdbcPassword = jdbcPassword;
+		jdbcPassword = newJdbcPassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_PASSWORD, oldJdbcPassword, jdbcPassword));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getJdbcDatasourceName() {
+		return jdbcDatasourceName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJdbcDatasourceName(String newJdbcDatasourceName) {
+		String oldJdbcDatasourceName = jdbcDatasourceName;
+		jdbcDatasourceName = newJdbcDatasourceName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME, oldJdbcDatasourceName, jdbcDatasourceName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<MessageStoreParameter> getParameters() {
 		if (parameters == null) {
 			parameters = new EObjectContainmentEList<MessageStoreParameter>(MessageStoreParameter.class, this, EsbPackage.MESSAGE_STORE__PARAMETERS);
@@ -949,6 +1243,20 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return getRabbitMQPassword();
 			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
 				return getVirtualHost();
+			case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+				return getJdbcDatabaseTable();
+			case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+				return getJdbcConnectionInformation();
+			case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+				return getJdbcDriver();
+			case EsbPackage.MESSAGE_STORE__JDBC_URL:
+				return getJdbcURL();
+			case EsbPackage.MESSAGE_STORE__JDBC_USER:
+				return getJdbcUser();
+			case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+				return getJdbcPassword();
+			case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+				return getJdbcDatasourceName();
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				return getParameters();
 		}
@@ -1020,6 +1328,27 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return;
 			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
 				setVirtualHost((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+				setJdbcDatabaseTable((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+				setJdbcConnectionInformation((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+				setJdbcDriver((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_URL:
+				setJdbcURL((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_USER:
+				setJdbcUser((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+				setJdbcPassword((String)newValue);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+				setJdbcDatasourceName((String)newValue);
 				return;
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				getParameters().clear();
@@ -1094,6 +1423,27 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
 				setVirtualHost(VIRTUAL_HOST_EDEFAULT);
 				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+				setJdbcDatabaseTable(JDBC_DATABASE_TABLE_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+				setJdbcConnectionInformation(JDBC_CONNECTION_INFORMATION_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+				setJdbcDriver(JDBC_DRIVER_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_URL:
+				setJdbcURL(JDBC_URL_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_USER:
+				setJdbcUser(JDBC_USER_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+				setJdbcPassword(JDBC_PASSWORD_EDEFAULT);
+				return;
+			case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+				setJdbcDatasourceName(JDBC_DATASOURCE_NAME_EDEFAULT);
+				return;
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				getParameters().clear();
 				return;
@@ -1147,6 +1497,20 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				return RABBIT_MQ_PASSWORD_EDEFAULT == null ? rabbitMQPassword != null : !RABBIT_MQ_PASSWORD_EDEFAULT.equals(rabbitMQPassword);
 			case EsbPackage.MESSAGE_STORE__VIRTUAL_HOST:
 				return VIRTUAL_HOST_EDEFAULT == null ? virtualHost != null : !VIRTUAL_HOST_EDEFAULT.equals(virtualHost);
+			case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
+				return JDBC_DATABASE_TABLE_EDEFAULT == null ? jdbcDatabaseTable != null : !JDBC_DATABASE_TABLE_EDEFAULT.equals(jdbcDatabaseTable);
+			case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
+				return JDBC_CONNECTION_INFORMATION_EDEFAULT == null ? jdbcConnectionInformation != null : !JDBC_CONNECTION_INFORMATION_EDEFAULT.equals(jdbcConnectionInformation);
+			case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
+				return JDBC_DRIVER_EDEFAULT == null ? jdbcDriver != null : !JDBC_DRIVER_EDEFAULT.equals(jdbcDriver);
+			case EsbPackage.MESSAGE_STORE__JDBC_URL:
+				return JDBC_URL_EDEFAULT == null ? jdbcURL != null : !JDBC_URL_EDEFAULT.equals(jdbcURL);
+			case EsbPackage.MESSAGE_STORE__JDBC_USER:
+				return JDBC_USER_EDEFAULT == null ? jdbcUser != null : !JDBC_USER_EDEFAULT.equals(jdbcUser);
+			case EsbPackage.MESSAGE_STORE__JDBC_PASSWORD:
+				return JDBC_PASSWORD_EDEFAULT == null ? jdbcPassword != null : !JDBC_PASSWORD_EDEFAULT.equals(jdbcPassword);
+			case EsbPackage.MESSAGE_STORE__JDBC_DATASOURCE_NAME:
+				return JDBC_DATASOURCE_NAME_EDEFAULT == null ? jdbcDatasourceName != null : !JDBC_DATASOURCE_NAME_EDEFAULT.equals(jdbcDatasourceName);
 			case EsbPackage.MESSAGE_STORE__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 		}
@@ -1201,6 +1565,20 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 		result.append(rabbitMQPassword);
 		result.append(", virtualHost: ");
 		result.append(virtualHost);
+		result.append(", jdbcDatabaseTable: ");
+		result.append(jdbcDatabaseTable);
+		result.append(", jdbcConnectionInformation: ");
+		result.append(jdbcConnectionInformation);
+		result.append(", jdbcDriver: ");
+		result.append(jdbcDriver);
+		result.append(", jdbcURL: ");
+		result.append(jdbcURL);
+		result.append(", jdbcUser: ");
+		result.append(jdbcUser);
+		result.append(", jdbcPassword: ");
+		result.append(jdbcPassword);
+		result.append(", jdbcDatasourceName: ");
+		result.append(jdbcDatasourceName);
 		result.append(')');
 		return result.toString();
 	}

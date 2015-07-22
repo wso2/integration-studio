@@ -627,6 +627,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return createMessageStoreTypeFromString(eDataType, initialValue);
 			case EsbPackage.JMS_SPEC_VERSION:
 				return createJMSSpecVersionFromString(eDataType, initialValue);
+			case EsbPackage.JDBC_CONNECTION_INFORMATION_TYPE:
+				return createJDBCConnectionInformationTypeFromString(eDataType, initialValue);
 			case EsbPackage.MESSAGE_PROCESSOR_TYPE:
 				return createMessageProcessorTypeFromString(eDataType, initialValue);
 			case EsbPackage.PROCESSOR_STATE:
@@ -871,6 +873,8 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 				return convertMessageStoreTypeToString(eDataType, instanceValue);
 			case EsbPackage.JMS_SPEC_VERSION:
 				return convertJMSSpecVersionToString(eDataType, instanceValue);
+			case EsbPackage.JDBC_CONNECTION_INFORMATION_TYPE:
+				return convertJDBCConnectionInformationTypeToString(eDataType, instanceValue);
 			case EsbPackage.MESSAGE_PROCESSOR_TYPE:
 				return convertMessageProcessorTypeToString(eDataType, instanceValue);
 			case EsbPackage.PROCESSOR_STATE:
@@ -6662,6 +6666,26 @@ public class EsbFactoryImpl extends EFactoryImpl implements EsbFactory {
 	 * @generated
 	 */
 	public String convertJMSSpecVersionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JDBCConnectionInformationType createJDBCConnectionInformationTypeFromString(EDataType eDataType, String initialValue) {
+		JDBCConnectionInformationType result = JDBCConnectionInformationType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJDBCConnectionInformationTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

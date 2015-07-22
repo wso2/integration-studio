@@ -553,6 +553,10 @@
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSpecVersion/JMS_1_1"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JMSSpecVersion/JMS_1_0"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//JDBCConnectionInformationType">
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JDBCConnectionInformationType/JDBC_POOL"/>
+      <genEnumLiterals ecoreEnumLiteral="esb.ecore#//JDBCConnectionInformationType/JDBC_CARBON_DATASOURCE"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="esb.ecore#//MessageProcessorType">
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/SCHEDULED_MSG_FORWARDING"/>
       <genEnumLiterals ecoreEnumLiteral="esb.ecore#//MessageProcessorType/MSG_SAMPLING"/>
@@ -2058,6 +2062,20 @@
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/rabbitMQPassword"/>
       <genFeatures createChild="false" propertyCategory="Additional Parameters" propertyDescription="Virtual Host"
           ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/virtualHost"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="Database Table"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jdbcDatabaseTable"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="Connection Information"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jdbcConnectionInformation"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="Driver"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jdbcDriver"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="URL"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jdbcURL"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="User"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jdbcUser"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="Password"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jdbcPassword"/>
+      <genFeatures createChild="false" propertyCategory="basic" propertyDescription="Datasource Name"
+          ecoreFeature="ecore:EAttribute esb.ecore#//MessageStore/jdbcDatasourceName"/>
       <genFeatures children="true" createChild="true" propertyCategory="Additional Parameters"
           propertyDescription="Message Store Parameters" propertySortChoices="true"
           ecoreFeature="ecore:EReference esb.ecore#//MessageStore/parameters"/>

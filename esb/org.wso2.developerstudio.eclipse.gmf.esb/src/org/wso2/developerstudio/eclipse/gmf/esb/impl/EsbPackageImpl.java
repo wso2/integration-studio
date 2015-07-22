@@ -258,6 +258,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorInputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediatorTargetOutputConnector;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateTarget;
+import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement;
@@ -3765,6 +3766,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * @generated
 	 */
 	private EEnum jmsSpecVersionEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum jdbcConnectionInformationTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -9445,8 +9453,71 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMessageStore_JdbcDatabaseTable() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_JdbcConnectionInformation() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_JdbcDriver() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_JdbcURL() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_JdbcUser() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_JdbcPassword() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(24);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMessageStore_JdbcDatasourceName() {
+		return (EAttribute)messageStoreEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getMessageStore_Parameters() {
-		return (EReference)messageStoreEClass.getEStructuralFeatures().get(19);
+		return (EReference)messageStoreEClass.getEStructuralFeatures().get(26);
 	}
 
 	/**
@@ -17275,6 +17346,15 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getJDBCConnectionInformationType() {
+		return jdbcConnectionInformationTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getMessageProcessorType() {
 		return messageProcessorTypeEEnum;
 	}
@@ -18972,6 +19052,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__RABBIT_MQ_USER_NAME);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__RABBIT_MQ_PASSWORD);
 		createEAttribute(messageStoreEClass, MESSAGE_STORE__VIRTUAL_HOST);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_DATABASE_TABLE);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_CONNECTION_INFORMATION);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_DRIVER);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_URL);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_USER);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_PASSWORD);
+		createEAttribute(messageStoreEClass, MESSAGE_STORE__JDBC_DATASOURCE_NAME);
 		createEReference(messageStoreEClass, MESSAGE_STORE__PARAMETERS);
 
 		messageProcessorParameterEClass = createEClass(MESSAGE_PROCESSOR_PARAMETER);
@@ -19279,6 +19366,7 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		recipientListEndpointTypeEEnum = createEEnum(RECIPIENT_LIST_ENDPOINT_TYPE);
 		messageStoreTypeEEnum = createEEnum(MESSAGE_STORE_TYPE);
 		jmsSpecVersionEEnum = createEEnum(JMS_SPEC_VERSION);
+		jdbcConnectionInformationTypeEEnum = createEEnum(JDBC_CONNECTION_INFORMATION_TYPE);
 		messageProcessorTypeEEnum = createEEnum(MESSAGE_PROCESSOR_TYPE);
 		processorStateEEnum = createEEnum(PROCESSOR_STATE);
 		cloudConnectorOperationParamEditorTypeEEnum = createEEnum(CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE);
@@ -21222,6 +21310,13 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEAttribute(getMessageStore_RabbitMQUserName(), ecorePackage.getEString(), "rabbitMQUserName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_RabbitMQPassword(), ecorePackage.getEString(), "rabbitMQPassword", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessageStore_VirtualHost(), ecorePackage.getEString(), "virtualHost", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_JdbcDatabaseTable(), ecorePackage.getEString(), "jdbcDatabaseTable", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_JdbcConnectionInformation(), ecorePackage.getEString(), "jdbcConnectionInformation", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_JdbcDriver(), ecorePackage.getEString(), "jdbcDriver", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_JdbcURL(), ecorePackage.getEString(), "jdbcURL", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_JdbcUser(), ecorePackage.getEString(), "jdbcUser", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_JdbcPassword(), ecorePackage.getEString(), "jdbcPassword", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMessageStore_JdbcDatasourceName(), ecorePackage.getEString(), "jdbcDatasourceName", null, 0, 1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMessageStore_Parameters(), this.getMessageStoreParameter(), null, "parameters", null, 0, -1, MessageStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(messageProcessorParameterEClass, MessageProcessorParameter.class, "MessageProcessorParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -21974,6 +22069,10 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEEnum(jmsSpecVersionEEnum, JMSSpecVersion.class, "JMSSpecVersion");
 		addEEnumLiteral(jmsSpecVersionEEnum, JMSSpecVersion.JMS_11);
 		addEEnumLiteral(jmsSpecVersionEEnum, JMSSpecVersion.JMS_10);
+
+		initEEnum(jdbcConnectionInformationTypeEEnum, JDBCConnectionInformationType.class, "JDBCConnectionInformationType");
+		addEEnumLiteral(jdbcConnectionInformationTypeEEnum, JDBCConnectionInformationType.JDBC_POOL);
+		addEEnumLiteral(jdbcConnectionInformationTypeEEnum, JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE);
 
 		initEEnum(messageProcessorTypeEEnum, MessageProcessorType.class, "MessageProcessorType");
 		addEEnumLiteral(messageProcessorTypeEEnum, MessageProcessorType.SCHEDULED_MSG_FORWARDING);

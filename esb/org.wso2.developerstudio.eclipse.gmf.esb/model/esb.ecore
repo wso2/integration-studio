@@ -2541,6 +2541,10 @@
     <eLiterals name="JMS_1_1" literal="1.1"/>
     <eLiterals name="JMS_1_0" value="1" literal="1.0"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JDBCConnectionInformationType">
+    <eLiterals name="JDBC_POOL" literal="Pool"/>
+    <eLiterals name="JDBC_CARBON_DATASOURCE" value="1" literal="Carbon Datasource"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageStoreParameter" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -2568,6 +2572,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rabbitMQUserName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rabbitMQPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtualHost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdbcDatabaseTable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdbcConnectionInformation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdbcDriver" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdbcURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdbcUser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdbcPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jdbcDatasourceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//MessageStoreParameter" containment="true"/>
   </eClassifiers>

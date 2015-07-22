@@ -246,6 +246,8 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 		
 		List<Class<?>> typesList = Arrays.asList(type);
 		
+		list = addResourseFilesToList(typesList);
+
 		/*//IRegistryFile.class, IEsbEndpoint.class, IEsbSequence.class, IEsbLocalEntry.class
 		if (typesList.contains(IRegistryFile.class)) {
 			list.addAll(Arrays.asList(RegistryManager.getResourceProviders(true)));
@@ -284,6 +286,18 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 		
 		
 		return container;
+	}
+
+	/**
+	 * This method passes a empty list. Sub classes should override this method to return list of files as required
+	 *
+	 * @param typesList
+	 * @return
+	 */
+	protected List<Object> addResourseFilesToList(List<Class<?>> typesList) {
+		List<Object> list = new ArrayList<Object>();
+		// This method should be override by sub classes which extends This class
+		return list;
 	}
 
 	private void updateOKButtonStatus() {

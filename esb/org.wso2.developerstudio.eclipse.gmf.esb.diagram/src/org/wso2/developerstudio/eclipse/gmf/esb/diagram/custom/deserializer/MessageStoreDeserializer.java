@@ -224,7 +224,7 @@ public class MessageStoreDeserializer
 								// Set connection information to datasource
 								executeSetValueCommand(MESSAGE_STORE__JDBC_CONNECTION_INFORMATION,
 										JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE);
-								executeSetValueCommand(MESSAGE_STORE__RABBIT_MQ_SERVER_HOST_PORT, value);
+								executeSetValueCommand(MESSAGE_STORE__JDBC_DATASOURCE_NAME, value);
 							}
 						} else if (param.getKey().equals(STORE_JDBC_DRIVER)) {
 							// Set connection information to pool

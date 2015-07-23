@@ -588,6 +588,8 @@ public interface MessageStore extends EsbElement {
 
 	/**
 	 * Returns the value of the '<em><b>Jdbc Connection Information</b></em>' attribute.
+	 * The default value is <code>"JDBC_POOL"</code>.
+	 * The literals are from the enumeration {@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Jdbc Connection Information</em>' attribute isn't clear,
@@ -595,22 +597,24 @@ public interface MessageStore extends EsbElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jdbc Connection Information</em>' attribute.
-	 * @see #setJdbcConnectionInformation(String)
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
+	 * @see #setJdbcConnectionInformation(JDBCConnectionInformationType)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getMessageStore_JdbcConnectionInformation()
-	 * @model
+	 * @model default="JDBC_POOL"
 	 * @generated
 	 */
-	String getJdbcConnectionInformation();
+	JDBCConnectionInformationType getJdbcConnectionInformation();
 
 	/**
 	 * Sets the value of the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Jdbc Connection Information</em>' attribute.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
 	 * @see #getJdbcConnectionInformation()
 	 * @generated
 	 */
-	void setJdbcConnectionInformation(String value);
+	void setJdbcConnectionInformation(JDBCConnectionInformationType value);
 
 	/**
 	 * Returns the value of the '<em><b>Jdbc Driver</b></em>' attribute.

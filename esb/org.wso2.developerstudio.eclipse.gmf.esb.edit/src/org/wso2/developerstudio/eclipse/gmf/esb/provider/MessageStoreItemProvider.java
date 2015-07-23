@@ -104,11 +104,18 @@ public class MessageStoreItemProvider
 		case JDBC:
 			addJdbcDatabaseTablePropertyDescriptor(object);
 			addJdbcConnectionInformationPropertyDescriptor(object);
-			addJdbcDriverPropertyDescriptor(object);
-			addJdbcURLPropertyDescriptor(object);
-			addJdbcUserPropertyDescriptor(object);
-			addJdbcPasswordPropertyDescriptor(object);
-			addJdbcDatasourceNamePropertyDescriptor(object);
+
+			switch (store.getJdbcConnectionInformation()) {
+			case JDBC_POOL:
+				addJdbcDriverPropertyDescriptor(object);
+				addJdbcURLPropertyDescriptor(object);
+				addJdbcUserPropertyDescriptor(object);
+				addJdbcPasswordPropertyDescriptor(object);
+				break;
+			case JDBC_CARBON_DATASOURCE:
+				addJdbcDatasourceNamePropertyDescriptor(object);
+				break;
+			}
 			break;
 		default:
 			break;

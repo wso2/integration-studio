@@ -263,8 +263,8 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			}
 			// Switch between connection pool and datasource
 			String jdbcConnectionInformation = messageStoreModel.getJdbcConnectionInformation();
-			if (StringUtils.isNotBlank(jdbcConnectionInformation)){
-				if(JDBCConnectionInformationType.POOL.equals(jdbcConnectionInformation)) {
+			if (StringUtils.isNotBlank(jdbcConnectionInformation)) {
+				if (JDBCConnectionInformationType.POOL.toString().equals(jdbcConnectionInformation)) {
 					if (StringUtils.isNotBlank(messageStoreModel.getJdbcDriver())) {
 						parameters.put(STORE_JDBC_DRIVER, messageStoreModel.getJdbcDriver());
 					}
@@ -277,7 +277,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 					if (StringUtils.isNotBlank(messageStoreModel.getJdbcPassword())) {
 						parameters.put(STORE_JDBC_PASSWORD, messageStoreModel.getJdbcPassword());
 					}
-				} else if(JDBCConnectionInformationType.CARBON_DATASOURCE.equals(jdbcConnectionInformation)) {
+				} else if (JDBCConnectionInformationType.CARBON_DATASOURCE.toString().equals(jdbcConnectionInformation)) {
 					if (StringUtils.isNotBlank(messageStoreModel.getJdbcDatasourceName())) {
 						parameters.put(STORE_JDBC_DS_NAME, messageStoreModel.getJdbcDatasourceName());
 					}

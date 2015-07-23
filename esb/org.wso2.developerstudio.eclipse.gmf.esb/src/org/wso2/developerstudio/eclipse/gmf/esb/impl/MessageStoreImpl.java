@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
+import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.JMSSpecVersion;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStore;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
@@ -484,7 +485,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String JDBC_CONNECTION_INFORMATION_EDEFAULT = null;
+	protected static final JDBCConnectionInformationType JDBC_CONNECTION_INFORMATION_EDEFAULT = JDBCConnectionInformationType.JDBC_POOL;
 
 	/**
 	 * The cached value of the '{@link #getJdbcConnectionInformation() <em>Jdbc Connection Information</em>}' attribute.
@@ -494,7 +495,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * @generated
 	 * @ordered
 	 */
-	protected String jdbcConnectionInformation = JDBC_CONNECTION_INFORMATION_EDEFAULT;
+	protected JDBCConnectionInformationType jdbcConnectionInformation = JDBC_CONNECTION_INFORMATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getJdbcDriver() <em>Jdbc Driver</em>}' attribute.
@@ -1050,7 +1051,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getJdbcConnectionInformation() {
+	public JDBCConnectionInformationType getJdbcConnectionInformation() {
 		return jdbcConnectionInformation;
 	}
 
@@ -1059,9 +1060,9 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setJdbcConnectionInformation(String newJdbcConnectionInformation) {
-		String oldJdbcConnectionInformation = jdbcConnectionInformation;
-		jdbcConnectionInformation = newJdbcConnectionInformation;
+	public void setJdbcConnectionInformation(JDBCConnectionInformationType newJdbcConnectionInformation) {
+		JDBCConnectionInformationType oldJdbcConnectionInformation = jdbcConnectionInformation;
+		jdbcConnectionInformation = newJdbcConnectionInformation == null ? JDBC_CONNECTION_INFORMATION_EDEFAULT : newJdbcConnectionInformation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION, oldJdbcConnectionInformation, jdbcConnectionInformation));
 	}
@@ -1333,7 +1334,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 				setJdbcDatabaseTable((String)newValue);
 				return;
 			case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
-				setJdbcConnectionInformation((String)newValue);
+				setJdbcConnectionInformation((JDBCConnectionInformationType)newValue);
 				return;
 			case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
 				setJdbcDriver((String)newValue);
@@ -1500,7 +1501,7 @@ public class MessageStoreImpl extends EsbElementImpl implements MessageStore {
 			case EsbPackage.MESSAGE_STORE__JDBC_DATABASE_TABLE:
 				return JDBC_DATABASE_TABLE_EDEFAULT == null ? jdbcDatabaseTable != null : !JDBC_DATABASE_TABLE_EDEFAULT.equals(jdbcDatabaseTable);
 			case EsbPackage.MESSAGE_STORE__JDBC_CONNECTION_INFORMATION:
-				return JDBC_CONNECTION_INFORMATION_EDEFAULT == null ? jdbcConnectionInformation != null : !JDBC_CONNECTION_INFORMATION_EDEFAULT.equals(jdbcConnectionInformation);
+				return jdbcConnectionInformation != JDBC_CONNECTION_INFORMATION_EDEFAULT;
 			case EsbPackage.MESSAGE_STORE__JDBC_DRIVER:
 				return JDBC_DRIVER_EDEFAULT == null ? jdbcDriver != null : !JDBC_DRIVER_EDEFAULT.equals(jdbcDriver);
 			case EsbPackage.MESSAGE_STORE__JDBC_URL:

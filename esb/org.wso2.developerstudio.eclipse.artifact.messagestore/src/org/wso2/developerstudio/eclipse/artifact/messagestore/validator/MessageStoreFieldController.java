@@ -44,6 +44,12 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 		boolean rabbitmq = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ;
 		boolean jdbc = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JDBC;
 
+		boolean isCarbonDataSource = false;
+		// Decide connection information type only if JDBC
+		if (jdbc) {
+			isCarbonDataSource = ((MessageStoreModel) model).getJdbcConnectionInformation() == JDBCConnectionInformationType.CARBON_DATASOURCE
+					.name();
+		}
 		// Mandatory fields validation
 		if (key.equals(FIELD_STORE_NAME)) {
 			CommonFieldValidator.validateArtifactName(value);
@@ -75,19 +81,19 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 				CommonFieldValidator.validateRequiredField(value, "RabbitMQ Server Host Port cannot be empty");
 			}
 		} else if (key.equals(FIELD_JDBC_DRIVER)) {
-			if (jdbc) {
+			if (jdbc && !isCarbonDataSource) {
 				CommonFieldValidator.validateRequiredField(value, "JDBC Driver cannot be empty");
 			}
 		} else if (key.equals(FIELD_JDBC_URL)) {
-			if (jdbc) {
+			if (jdbc && !isCarbonDataSource) {
 				CommonFieldValidator.isValidUrl(value.toString(), "JDBC URL cannot be empty");
 			}
 		} else if (key.equals(FIELD_JDBC_USER)) {
-			if (jdbc) {
+			if (jdbc && !isCarbonDataSource) {
 				CommonFieldValidator.validateRequiredField(value, "JDBC User cannot be empty");
 			}
 		} else if (key.equals(FIELD_JDBC_DATASOURCE_NAME)) {
-			if (jdbc) {
+			if (jdbc && isCarbonDataSource) {
 				CommonFieldValidator.validateRequiredField(value, "JDBC Datasource Name cannot be empty");
 			}
 		} else if (key.equals(FIELD_SAVE_LOCATION)) {
@@ -157,14 +163,27 @@ public class MessageStoreFieldController  extends AbstractFieldController  {
 		} else if (modelProperty.startsWith(TXT_CUSTOM_FIELD_PREFIX)) {
 			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.CUSTOM;
 		} else if (modelProperty.startsWith(TXT_RABBITMQ_FIELD_PREFIX)) {
+			// Checks if message store type is RabbitMQ
 			visibleField = ((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.RABBITMQ;
 		} else if (modelProperty.startsWith(TXT_JDBC_FIELD_PREFIX)) {
-			boolean isCarbonDataSource = ((MessageStoreModel) model).getJdbcConnectionInformation() == JDBCConnectionInformationType.CARBON_DATASOURCE
-					.name();
-			if (modelProperty.equals(FIELD_JDBC_DATASOURCE_NAME)) {
-				visibleField = isCarbonDataSource;
-			} else {
-				visibleField = !isCarbonDataSource;
+			// Checks if message store type is JDBC
+			if (((MessageStoreModel) model).getMessageStoreType() == MessageStoreType.JDBC) {
+				// Database table and Connection information should always be visible
+				if (modelProperty.equals(FIELD_JDBC_DATABASE_TABLE)
+						|| modelProperty.equals(FIELD_JDBC_CONNECTION_INFORMATION)) {
+					visibleField = true;
+				} else {
+					boolean isCarbonDataSource = ((MessageStoreModel) model).getJdbcConnectionInformation() == JDBCConnectionInformationType.CARBON_DATASOURCE
+							.name();
+					// Carbon data source enables datasource name field only
+					if (modelProperty.equals(FIELD_JDBC_DATASOURCE_NAME)) {
+						visibleField = isCarbonDataSource;
+					} else { // Other fields
+						visibleField = !isCarbonDataSource;
+					}
+				}
+			} else { // Non-JDBC message store type
+				visibleField = false;
 			}
 		} else if (modelProperty.equals(FIELD_AVAILABLE_STORES)) {
 			List<OMElement> availableStores = ((MessageStoreModel) model).getAvailableStoreslist();

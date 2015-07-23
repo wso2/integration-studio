@@ -39,7 +39,7 @@ public enum JDBCConnectionInformationType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	JDBC_POOL(0, "JDBC_POOL", "Pool"),
+	JDBC_POOL(0, "JDBC_POOL", "JDBC_POOL"),
 
 	/**
 	 * The '<em><b>JDBC CARBON DATASOURCE</b></em>' literal object.
@@ -49,7 +49,7 @@ public enum JDBCConnectionInformationType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	JDBC_CARBON_DATASOURCE(1, "JDBC_CARBON_DATASOURCE", "Carbon Datasource");
+	JDBC_CARBON_DATASOURCE(1, "JDBC_CARBON_DATASOURCE", "JDBC_CARBON_DATASOURCE");
 
 	/**
 	 * The '<em><b>JDBC POOL</b></em>' literal value.
@@ -60,7 +60,7 @@ public enum JDBCConnectionInformationType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #JDBC_POOL
-	 * @model literal="Pool"
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -75,7 +75,7 @@ public enum JDBCConnectionInformationType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #JDBC_CARBON_DATASOURCE
-	 * @model literal="Carbon Datasource"
+	 * @model
 	 * @generated
 	 * @ordered
 	 */

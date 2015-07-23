@@ -139,9 +139,9 @@ public class MessageStoreTransformer {
 				parameters.put(STORE_JDBC_TABLE, model.getJdbcDatabaseTable());
 			}
 			// Switch between connection pool and datasource
-			String jdbcConnectionInformation = model.getJdbcConnectionInformation();
-			if (StringUtils.isNotBlank(jdbcConnectionInformation)){
-				if(JDBCConnectionInformationType.JDBC_POOL.equals(jdbcConnectionInformation)) {
+			String jdbcConnectionInformation = model.getJdbcConnectionInformation().toString();
+			if (StringUtils.isNotBlank(jdbcConnectionInformation)) {
+				if (JDBCConnectionInformationType.JDBC_POOL.toString().equals(jdbcConnectionInformation)) {
 					if (StringUtils.isNotBlank(model.getJdbcDriver())) {
 						parameters.put(STORE_JDBC_DRIVER, model.getJdbcDriver());
 					}
@@ -154,7 +154,8 @@ public class MessageStoreTransformer {
 					if (StringUtils.isNotBlank(model.getJdbcPassword())) {
 						parameters.put(STORE_JDBC_PASSWORD, model.getJdbcPassword());
 					}
-				} else if(JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE.equals(jdbcConnectionInformation)) {
+				} else if (JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE.toString().equals(
+						jdbcConnectionInformation)) {
 					if (StringUtils.isNotBlank(model.getJdbcDatasourceName())) {
 						parameters.put(STORE_JDBC_DS_NAME, model.getJdbcDatasourceName());
 					}

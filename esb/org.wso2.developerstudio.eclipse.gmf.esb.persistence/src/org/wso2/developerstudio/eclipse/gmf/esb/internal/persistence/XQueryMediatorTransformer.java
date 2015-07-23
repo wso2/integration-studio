@@ -18,6 +18,7 @@ package org.wso2.developerstudio.eclipse.gmf.esb.internal.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.xml.namespace.QName;
@@ -84,9 +85,14 @@ public class XQueryMediatorTransformer extends AbstractEsbNodeTransformer {
 		org.apache.synapse.mediators.xquery.XQueryMediator xqueryMediator=new org.apache.synapse.mediators.xquery.XQueryMediator();		
 		setCommonProperties(xqueryMediator, visualXQuery);
 		{
-			if(visualXQuery.getTargetXPath().getPropertyValue()!=null && !visualXQuery.getTargetXPath().getPropertyValue().equals("")){
-			SynapseXPath expression=new SynapseXPath(visualXQuery.getTargetXPath().getPropertyValue());	
-			xqueryMediator.setTarget(expression);
+			if (visualXQuery.getTargetXPath().getPropertyValue() != null && !visualXQuery.getTargetXPath()
+					.getPropertyValue().isEmpty()) {
+				SynapseXPath xPathExpression = new SynapseXPath(visualXQuery.getTargetXPath().getPropertyValue());
+				Map<String, String> namespaces = visualXQuery.getTargetXPath().getNamespaces();
+				for (Map.Entry<String, String> namespace : namespaces.entrySet()) {
+					xPathExpression.addNamespace(namespace.getKey(), namespace.getValue());
+				}
+				xqueryMediator.setTarget(xPathExpression);
 			}
 			Value key;			
 			if(visualXQuery.getScriptKeyType().compareTo(KeyType.STATIC)==0){

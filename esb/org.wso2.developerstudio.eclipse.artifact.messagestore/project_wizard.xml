@@ -80,6 +80,24 @@
 			<data modelProperty="rabbitmq.virtual-host" type="string"
 				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Virtual Host</data>
 			<!-- RabbitMQ : end -->
+
+			<!-- JDBC : begin -->
+			<data modelProperty="jdbc.database-table" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Database Table</data>
+			<data modelProperty="jdbc.connection-information" type="list"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController"
+				controlData="select=single;modify=non-editable;class=org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList">Connection Information*</data>
+			<data modelProperty="jdbc.driver" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Driver*</data>
+			<data modelProperty="jdbc.url" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">URL*</data>
+			<data modelProperty="jdbc.user" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">User*</data>
+			<data modelProperty="jdbc.password" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Password</data>
+			<data modelProperty="jdbc.datasource-name" type="string"
+				fieldController="org.wso2.developerstudio.eclipse.artifact.messagestore.validator.MessageStoreFieldController">Datasource Name</data>
+			<!-- JDBC : end -->
 			
 			<group id ="location"/>	
 			<data modelProperty="save.location" type="workspacefolder"

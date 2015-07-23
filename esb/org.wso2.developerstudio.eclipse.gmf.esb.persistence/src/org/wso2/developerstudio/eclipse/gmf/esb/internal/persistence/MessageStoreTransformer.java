@@ -26,6 +26,7 @@ import org.apache.axiom.om.OMElement;
 import org.apache.commons.lang.StringUtils;
 import org.apache.synapse.config.xml.MessageStoreSerializer;
 import org.eclipse.emf.common.util.EList;
+import org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStore;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreParameter;
 import org.wso2.developerstudio.eclipse.gmf.esb.MessageStoreType;
@@ -41,8 +42,16 @@ public class MessageStoreTransformer {
 	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
 	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
 	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
+	
+	private static final String STORE_JDBC_DS_NAME = "store.jdbc.dsName";
+	private static final String STORE_JDBC_PASSWORD = "store.jdbc.password";
+	private static final String STORE_JDBC_USERNAME = "store.jdbc.username";
+	private static final String STORE_JDBC_CONNECTION_URL = "store.jdbc.connection.url";
+	private static final String STORE_JDBC_DRIVER = "store.jdbc.driver";
+	private static final String STORE_JDBC_TABLE = "store.jdbc.table";
 
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
+	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
 	
 	public static OMElement createMessageStore(MessageStore model){
 		Map<String, Object> parameters = new HashMap<String, Object>();
@@ -123,6 +132,34 @@ public class MessageStoreTransformer {
 			}
 			if (StringUtils.isNotBlank(model.getVirtualHost())) {
 				parameters.put(STORE_RABBITMQ_VIRTUAL_HOST, model.getVirtualHost());
+			}
+		} else if (model.getStoreType() == MessageStoreType.JDBC) {
+			className = JDBC_MS_FQN;
+			if (StringUtils.isNotBlank(model.getJdbcDatabaseTable())) {
+				parameters.put(STORE_JDBC_TABLE, model.getJdbcDatabaseTable());
+			}
+			// Switch between connection pool and datasource
+			String jdbcConnectionInformation = model.getJdbcConnectionInformation().toString();
+			if (StringUtils.isNotBlank(jdbcConnectionInformation)) {
+				if (JDBCConnectionInformationType.JDBC_POOL.toString().equals(jdbcConnectionInformation)) {
+					if (StringUtils.isNotBlank(model.getJdbcDriver())) {
+						parameters.put(STORE_JDBC_DRIVER, model.getJdbcDriver());
+					}
+					if (StringUtils.isNotBlank(model.getJdbcURL())) {
+						parameters.put(STORE_JDBC_CONNECTION_URL, model.getJdbcURL());
+					}
+					if (StringUtils.isNotBlank(model.getJdbcUser())) {
+						parameters.put(STORE_JDBC_USERNAME, model.getJdbcUser());
+					}
+					if (StringUtils.isNotBlank(model.getJdbcPassword())) {
+						parameters.put(STORE_JDBC_PASSWORD, model.getJdbcPassword());
+					}
+				} else if (JDBCConnectionInformationType.JDBC_CARBON_DATASOURCE.toString().equals(
+						jdbcConnectionInformation)) {
+					if (StringUtils.isNotBlank(model.getJdbcDatasourceName())) {
+						parameters.put(STORE_JDBC_DS_NAME, model.getJdbcDatasourceName());
+					}
+				}
 			}
 		}
 		

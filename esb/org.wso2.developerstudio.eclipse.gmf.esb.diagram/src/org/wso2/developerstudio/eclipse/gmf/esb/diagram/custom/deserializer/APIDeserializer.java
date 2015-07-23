@@ -91,6 +91,7 @@ public class APIDeserializer extends AbstractEsbNodeDeserializer<API, SynapseAPI
 			executeSetValueCommand(API_RESOURCE__ALLOW_DELETE, methodList.contains("DELETE"));
 			executeSetValueCommand(API_RESOURCE__ALLOW_PUT, methodList.contains("PUT"));
 			executeSetValueCommand(API_RESOURCE__ALLOW_HEAD, methodList.contains("HEAD"));
+			executeSetValueCommand(API_RESOURCE__ALLOW_PATCH, methodList.contains("PATCH"));
 			
 			
 			

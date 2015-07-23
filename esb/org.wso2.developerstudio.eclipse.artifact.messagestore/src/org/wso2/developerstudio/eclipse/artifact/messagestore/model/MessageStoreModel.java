@@ -82,9 +82,73 @@ public class MessageStoreModel extends ProjectDataModel  {
 	private String rabbitMQPassword;
 	private String rabbitMQVirtualHost;
 
+	private String jdbcDatabaseTable;
+	private String jdbcConnectionInformation;
+	private String jdbcDriver;
+	private String jdbcURL;
+	private String jdbcUser;
+	private String jdbcPassword;
+	private String jdbcDatasourceName;
+
 	public MessageStoreModel() {
 		availableStoreslist = new ArrayList<OMElement>();
 		selectedStoresList = new ArrayList<OMElement>();
+	}
+
+	public String getJdbcDatabaseTable() {
+		return jdbcDatabaseTable;
+	}
+
+	public void setJdbcDatabaseTable(String jdbcDatabaseTable) {
+		this.jdbcDatabaseTable = jdbcDatabaseTable;
+	}
+
+	public String getJdbcConnectionInformation() {
+		return jdbcConnectionInformation;
+	}
+
+	public void setJdbcConnectionInformation(String jdbcConnectionInformation) {
+		this.jdbcConnectionInformation = jdbcConnectionInformation;
+	}
+
+	public String getJdbcDriver() {
+		return jdbcDriver;
+	}
+
+	public void setJdbcDriver(String jdbcDriver) {
+		this.jdbcDriver = jdbcDriver;
+	}
+
+	public String getJdbcURL() {
+		return jdbcURL;
+	}
+
+	public void setJdbcURL(String jdbcURL) {
+		this.jdbcURL = jdbcURL;
+	}
+
+	public String getJdbcUser() {
+		return jdbcUser;
+	}
+
+	public void setJdbcUser(String jdbcUser) {
+		this.jdbcUser = jdbcUser;
+	}
+
+	public String getJdbcPassword() {
+		return jdbcPassword;
+	}
+
+	public void setJdbcPassword(String jdbcPassword) {
+		this.jdbcPassword = jdbcPassword;
+	}
+
+	public String getJdbcDatasourceName() {
+		return jdbcDatasourceName;
+	}
+
+	public void setJdbcDatasourceName(String jdbcDatasourceName) {
+		this.jdbcDatasourceName = jdbcDatasourceName;
 	}
 
 	public String getRabbitMQServerHostName() {
@@ -292,6 +356,20 @@ public class MessageStoreModel extends ProjectDataModel  {
 			value = getRabbitMQPassword();
 		} else if (key.equals(Constants.FIELD_RABBITMQ_VIRTUAL_HOST)) {
 			value = getRabbitMQVirtualHost();
+		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
+			value = getJdbcDatabaseTable();
+		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
+			value = getJdbcConnectionInformation();
+		} else if (key.equals(Constants.FIELD_JDBC_DRIVER)) {
+			value = getJdbcDriver();
+		} else if (key.equals(Constants.FIELD_JDBC_URL)) {
+			value = getJdbcURL();
+		} else if (key.equals(Constants.FIELD_JDBC_USER)) {
+			value = getJdbcUser();
+		} else if (key.equals(Constants.FIELD_JDBC_PASSWORD)) {
+			value = getJdbcPassword();
+		} else if (key.equals(Constants.FIELD_JDBC_DATASOURCE_NAME)) {
+			value = getJdbcDatasourceName();
 		} else if (key.equals(Constants.FIELD_STORE_NAME)) {
 			value = getStoreName();
 		} else if(key.equals(Constants.FIELD_SAVE_LOCATION)){
@@ -358,6 +436,20 @@ public class MessageStoreModel extends ProjectDataModel  {
 			setRabbitMQPassword(data.toString());
 		} else if (key.equals(Constants.FIELD_RABBITMQ_VIRTUAL_HOST)) {
 			setRabbitMQVirtualHost(data.toString());
+		} else if (key.equals(Constants.FIELD_JDBC_DATABASE_TABLE)) {
+			setJdbcDatabaseTable(data.toString());
+		} else if (key.equals(Constants.FIELD_JDBC_CONNECTION_INFORMATION)) {
+			setJdbcConnectionInformation(data.toString());
+		} else if (key.equals(Constants.FIELD_JDBC_DRIVER)) {
+			setJdbcDriver(data.toString());
+		} else if (key.equals(Constants.FIELD_JDBC_URL)) {
+			setJdbcURL(data.toString());
+		} else if (key.equals(Constants.FIELD_JDBC_USER)) {
+			setJdbcUser(data.toString());
+		} else if (key.equals(Constants.FIELD_JDBC_PASSWORD)) {
+			setJdbcPassword(data.toString());
+		} else if (key.equals(Constants.FIELD_JDBC_DATASOURCE_NAME)) {
+			setJdbcDatasourceName(data.toString());
 		} else if (key.equals(Constants.FIELD_STORE_NAME)) {
 			setStoreName(data.toString());
 		} else if (key.equals(Constants.FIELD_CUSTOM_PROVIDER_CLASS)) {

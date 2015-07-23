@@ -19928,13 +19928,22 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int API_RESOURCE__ALLOW_HEAD = ESB_NODE_FEATURE_COUNT + 13;
 
 	/**
+	 * The feature id for the '<em><b>Allow Patch</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_RESOURCE__ALLOW_PATCH = ESB_NODE_FEATURE_COUNT + 14;
+
+	/**
 	 * The feature id for the '<em><b>Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__CONTAINER = ESB_NODE_FEATURE_COUNT + 14;
+	int API_RESOURCE__CONTAINER = ESB_NODE_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>In Sequence Type</b></em>' attribute.
@@ -19943,7 +19952,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__IN_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 15;
+	int API_RESOURCE__IN_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>In Sequence Key</b></em>' containment reference.
@@ -19952,7 +19961,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__IN_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 16;
+	int API_RESOURCE__IN_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 17;
 
 	/**
 	 * The feature id for the '<em><b>In Sequence Name</b></em>' attribute.
@@ -19961,7 +19970,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__IN_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 17;
+	int API_RESOURCE__IN_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 18;
 
 	/**
 	 * The feature id for the '<em><b>Out Sequence Type</b></em>' attribute.
@@ -19970,7 +19979,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__OUT_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 18;
+	int API_RESOURCE__OUT_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 19;
 
 	/**
 	 * The feature id for the '<em><b>Out Sequence Key</b></em>' containment reference.
@@ -19979,7 +19988,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__OUT_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 19;
+	int API_RESOURCE__OUT_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 20;
 
 	/**
 	 * The feature id for the '<em><b>Out Sequence Name</b></em>' attribute.
@@ -19988,7 +19997,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__OUT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 20;
+	int API_RESOURCE__OUT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 21;
 
 	/**
 	 * The feature id for the '<em><b>Fault Sequence Type</b></em>' attribute.
@@ -19997,7 +20006,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__FAULT_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 21;
+	int API_RESOURCE__FAULT_SEQUENCE_TYPE = ESB_NODE_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Fault Sequence Key</b></em>' containment reference.
@@ -20006,7 +20015,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__FAULT_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 22;
+	int API_RESOURCE__FAULT_SEQUENCE_KEY = ESB_NODE_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Fault Sequence Name</b></em>' attribute.
@@ -20015,7 +20024,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__FAULT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 23;
+	int API_RESOURCE__FAULT_SEQUENCE_NAME = ESB_NODE_FEATURE_COUNT + 24;
 
 	/**
 	 * The feature id for the '<em><b>Protocol</b></em>' attribute.
@@ -20024,7 +20033,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE__PROTOCOL = ESB_NODE_FEATURE_COUNT + 24;
+	int API_RESOURCE__PROTOCOL = ESB_NODE_FEATURE_COUNT + 25;
 
 	/**
 	 * The number of structural features of the '<em>API Resource</em>' class.
@@ -20033,7 +20042,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int API_RESOURCE_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 25;
+	int API_RESOURCE_FEATURE_COUNT = ESB_NODE_FEATURE_COUNT + 26;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.APIResourceInputConnectorImpl <em>API Resource Input Connector</em>}' class.
@@ -21540,13 +21549,76 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int MESSAGE_STORE__VIRTUAL_HOST = ESB_ELEMENT_FEATURE_COUNT + 18;
 
 	/**
+	 * The feature id for the '<em><b>Jdbc Database Table</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__JDBC_DATABASE_TABLE = ESB_ELEMENT_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Jdbc Connection Information</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__JDBC_CONNECTION_INFORMATION = ESB_ELEMENT_FEATURE_COUNT + 20;
+
+	/**
+	 * The feature id for the '<em><b>Jdbc Driver</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__JDBC_DRIVER = ESB_ELEMENT_FEATURE_COUNT + 21;
+
+	/**
+	 * The feature id for the '<em><b>Jdbc URL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__JDBC_URL = ESB_ELEMENT_FEATURE_COUNT + 22;
+
+	/**
+	 * The feature id for the '<em><b>Jdbc User</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__JDBC_USER = ESB_ELEMENT_FEATURE_COUNT + 23;
+
+	/**
+	 * The feature id for the '<em><b>Jdbc Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__JDBC_PASSWORD = ESB_ELEMENT_FEATURE_COUNT + 24;
+
+	/**
+	 * The feature id for the '<em><b>Jdbc Datasource Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_STORE__JDBC_DATASOURCE_NAME = ESB_ELEMENT_FEATURE_COUNT + 25;
+
+	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 19;
+	int MESSAGE_STORE__PARAMETERS = ESB_ELEMENT_FEATURE_COUNT + 26;
 
 	/**
 	 * The number of structural features of the '<em>Message Store</em>' class.
@@ -21555,7 +21627,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 20;
+	int MESSAGE_STORE_FEATURE_COUNT = ESB_ELEMENT_FEATURE_COUNT + 27;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.impl.MessageProcessorParameterImpl <em>Message Processor Parameter</em>}' class.
@@ -24763,6 +24835,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	int JMS_SPEC_VERSION = 462;
 
 	/**
+	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType <em>JDBC Connection Information Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJDBCConnectionInformationType()
+	 * @generated
+	 */
+	int JDBC_CONNECTION_INFORMATION_TYPE = 463;
+
+	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType <em>Message Processor Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24770,7 +24852,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMessageProcessorType()
 	 * @generated
 	 */
-	int MESSAGE_PROCESSOR_TYPE = 463;
+	int MESSAGE_PROCESSOR_TYPE = 464;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ProcessorState <em>Processor State</em>}' enum.
@@ -24780,7 +24862,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getProcessorState()
 	 * @generated
 	 */
-	int PROCESSOR_STATE = 464;
+	int PROCESSOR_STATE = 465;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.CloudConnectorOperationParamEditorType <em>Cloud Connector Operation Param Editor Type</em>}' enum.
@@ -24790,7 +24872,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getCloudConnectorOperationParamEditorType()
 	 * @generated
 	 */
-	int CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE = 465;
+	int CLOUD_CONNECTOR_OPERATION_PARAM_EDITOR_TYPE = 466;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.DataMapperMediatorDataTypes <em>Data Mapper Mediator Data Types</em>}' enum.
@@ -24800,7 +24882,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getDataMapperMediatorDataTypes()
 	 * @generated
 	 */
-	int DATA_MAPPER_MEDIATOR_DATA_TYPES = 466;
+	int DATA_MAPPER_MEDIATOR_DATA_TYPES = 467;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Protocol <em>Protocol</em>}' enum.
@@ -24810,7 +24892,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getProtocol()
 	 * @generated
 	 */
-	int PROTOCOL = 467;
+	int PROTOCOL = 468;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.InboundEndpointType <em>Inbound Endpoint Type</em>}' enum.
@@ -24820,7 +24902,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getInboundEndpointType()
 	 * @generated
 	 */
-	int INBOUND_ENDPOINT_TYPE = 468;
+	int INBOUND_ENDPOINT_TYPE = 469;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ContentType <em>Content Type</em>}' enum.
@@ -24830,7 +24912,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getContentType()
 	 * @generated
 	 */
-	int CONTENT_TYPE = 469;
+	int CONTENT_TYPE = 470;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.ConsumerType <em>Consumer Type</em>}' enum.
@@ -24840,7 +24922,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getConsumerType()
 	 * @generated
 	 */
-	int CONSUMER_TYPE = 470;
+	int CONSUMER_TYPE = 471;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.Enable <em>Enable</em>}' enum.
@@ -24850,7 +24932,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getEnable()
 	 * @generated
 	 */
-	int ENABLE = 471;
+	int ENABLE = 472;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSAction <em>VFS Action</em>}' enum.
@@ -24860,7 +24942,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getVFSAction()
 	 * @generated
 	 */
-	int VFS_ACTION = 472;
+	int VFS_ACTION = 473;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.VFSFileSort <em>VFS File Sort</em>}' enum.
@@ -24870,7 +24952,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getVFSFileSort()
 	 * @generated
 	 */
-	int VFS_FILE_SORT = 473;
+	int VFS_FILE_SORT = 474;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSConnectionFactoryType <em>JMS Connection Factory Type</em>}' enum.
@@ -24880,7 +24962,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSConnectionFactoryType()
 	 * @generated
 	 */
-	int JMS_CONNECTION_FACTORY_TYPE = 474;
+	int JMS_CONNECTION_FACTORY_TYPE = 475;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSSessionAcknowledgement <em>JMS Session Acknowledgement</em>}' enum.
@@ -24890,7 +24972,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSSessionAcknowledgement()
 	 * @generated
 	 */
-	int JMS_SESSION_ACKNOWLEDGEMENT = 475;
+	int JMS_SESSION_ACKNOWLEDGEMENT = 476;
 
 	/**
 	 * The meta object id for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JMSCacheLevel <em>JMS Cache Level</em>}' enum.
@@ -24900,7 +24982,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJMSCacheLevel()
 	 * @generated
 	 */
-	int JMS_CACHE_LEVEL = 476;
+	int JMS_CACHE_LEVEL = 477;
 
 	/**
 	 * The meta object id for the '<em>Map</em>' data type.
@@ -24910,7 +24992,7 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 477;
+	int MAP = 478;
 
 
 	/**
@@ -30749,6 +30831,17 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EAttribute getAPIResource_AllowHead();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowPatch <em>Allow Patch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Allow Patch</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.APIResource#isAllowPatch()
+	 * @see #getAPIResource()
+	 * @generated
+	 */
+	EAttribute getAPIResource_AllowPatch();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.wso2.developerstudio.eclipse.gmf.esb.APIResource#getContainer <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31454,6 +31547,83 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	 * @generated
 	 */
 	EAttribute getMessageStore_VirtualHost();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatabaseTable <em>Jdbc Database Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Jdbc Database Table</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatabaseTable()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_JdbcDatabaseTable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation <em>Jdbc Connection Information</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Jdbc Connection Information</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcConnectionInformation()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_JdbcConnectionInformation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDriver <em>Jdbc Driver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Jdbc Driver</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDriver()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_JdbcDriver();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcURL <em>Jdbc URL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Jdbc URL</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcURL()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_JdbcURL();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcUser <em>Jdbc User</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Jdbc User</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcUser()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_JdbcUser();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword <em>Jdbc Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Jdbc Password</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcPassword()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_JdbcPassword();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName <em>Jdbc Datasource Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Jdbc Datasource Name</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getJdbcDatasourceName()
+	 * @see #getMessageStore()
+	 * @generated
+	 */
+	EAttribute getMessageStore_JdbcDatasourceName();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageStore#getParameters <em>Parameters</em>}'.
@@ -40742,6 +40912,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 	EEnum getJMSSpecVersion();
 
 	/**
+	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType <em>JDBC Connection Information Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>JDBC Connection Information Type</em>'.
+	 * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
+	 * @generated
+	 */
+	EEnum getJDBCConnectionInformationType();
+
+	/**
 	 * Returns the meta object for enum '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType <em>Message Processor Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -45595,6 +45775,14 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		EAttribute API_RESOURCE__ALLOW_HEAD = eINSTANCE.getAPIResource_AllowHead();
 
 		/**
+		 * The meta object literal for the '<em><b>Allow Patch</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute API_RESOURCE__ALLOW_PATCH = eINSTANCE.getAPIResource_AllowPatch();
+
+		/**
 		 * The meta object literal for the '<em><b>Container</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -46159,6 +46347,62 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EAttribute MESSAGE_STORE__VIRTUAL_HOST = eINSTANCE.getMessageStore_VirtualHost();
+
+		/**
+		 * The meta object literal for the '<em><b>Jdbc Database Table</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__JDBC_DATABASE_TABLE = eINSTANCE.getMessageStore_JdbcDatabaseTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Jdbc Connection Information</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__JDBC_CONNECTION_INFORMATION = eINSTANCE.getMessageStore_JdbcConnectionInformation();
+
+		/**
+		 * The meta object literal for the '<em><b>Jdbc Driver</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__JDBC_DRIVER = eINSTANCE.getMessageStore_JdbcDriver();
+
+		/**
+		 * The meta object literal for the '<em><b>Jdbc URL</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__JDBC_URL = eINSTANCE.getMessageStore_JdbcURL();
+
+		/**
+		 * The meta object literal for the '<em><b>Jdbc User</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__JDBC_USER = eINSTANCE.getMessageStore_JdbcUser();
+
+		/**
+		 * The meta object literal for the '<em><b>Jdbc Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__JDBC_PASSWORD = eINSTANCE.getMessageStore_JdbcPassword();
+
+		/**
+		 * The meta object literal for the '<em><b>Jdbc Datasource Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_STORE__JDBC_DATASOURCE_NAME = eINSTANCE.getMessageStore_JdbcDatasourceName();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -53687,6 +53931,16 @@ int FILTER_MEDIATOR_FEATURE_COUNT = MEDIATOR_FEATURE_COUNT + 9;
 		 * @generated
 		 */
 		EEnum JMS_SPEC_VERSION = eINSTANCE.getJMSSpecVersion();
+
+		/**
+		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType <em>JDBC Connection Information Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.JDBCConnectionInformationType
+		 * @see org.wso2.developerstudio.eclipse.gmf.esb.impl.EsbPackageImpl#getJDBCConnectionInformationType()
+		 * @generated
+		 */
+		EEnum JDBC_CONNECTION_INFORMATION_TYPE = eINSTANCE.getJDBCConnectionInformationType();
 
 		/**
 		 * The meta object literal for the '{@link org.wso2.developerstudio.eclipse.gmf.esb.MessageProcessorType <em>Message Processor Type</em>}' enum.

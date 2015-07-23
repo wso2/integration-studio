@@ -29,6 +29,7 @@ import javax.xml.namespace.QName;
 
 import org.wso2.developerstudio.eclipse.artifact.messagestore.Activator;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.model.MessageStoreModel;
+import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.JDBCConnectionInformationList.JDBCConnectionInformationType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.provider.MessageStoreTypeList.MessageStoreType;
 import org.wso2.developerstudio.eclipse.artifact.messagestore.util.MessageStoreImageUtils;
 import org.wso2.developerstudio.eclipse.capp.maven.utils.MavenConstants;
@@ -83,6 +84,7 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 
 	private String version = "1.0.0";
 	private static final String RABBITMQ_MS_FQN = "org.apache.synapse.message.store.impl.rabbitmq.RabbitMQStore";
+	private static final String JDBC_MS_FQN = "org.apache.synapse.message.store.impl.jdbc.JDBCMessageStore";
 
 	private static final String STORE_RABBITMQ_VIRTUAL_HOST = "store.rabbitmq.virtual.host";
 	private static final String STORE_RABBITMQ_PASSWORD = "store.rabbitmq.password";
@@ -92,6 +94,13 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 	private static final String STORE_RABBITMQ_QUEUE_NAME = "store.rabbitmq.queue.name";
 	private static final String STORE_RABBITMQ_HOST_PORT = "store.rabbitmq.host.port";
 	private static final String STORE_RABBITMQ_HOST_NAME = "store.rabbitmq.host.name";
+	
+	private static final String STORE_JDBC_DS_NAME = "store.jdbc.dsName";
+	private static final String STORE_JDBC_PASSWORD = "store.jdbc.password";
+	private static final String STORE_JDBC_USERNAME = "store.jdbc.username";
+	private static final String STORE_JDBC_CONNECTION_URL = "store.jdbc.connection.url";
+	private static final String STORE_JDBC_DRIVER = "store.jdbc.driver";
+	private static final String STORE_JDBC_TABLE = "store.jdbc.table";
 	
 	public MessageStoreCreationWizard() {
 		messageStoreModel = new MessageStoreModel();
@@ -246,6 +255,33 @@ public class MessageStoreCreationWizard extends AbstractWSO2ProjectCreationWizar
 			}
 			if (StringUtils.isNotBlank(messageStoreModel.getRabbitMQVirtualHost())) {
 				parameters.put(STORE_RABBITMQ_VIRTUAL_HOST, messageStoreModel.getRabbitMQVirtualHost());
+			}
+		} else if (messageStoreModel.getMessageStoreType() == MessageStoreType.JDBC) {
+			className = JDBC_MS_FQN;
+			if (StringUtils.isNotBlank(messageStoreModel.getJdbcDatabaseTable())) {
+				parameters.put(STORE_JDBC_TABLE, messageStoreModel.getJdbcDatabaseTable());
+			}
+			// Switch between connection pool and datasource
+			String jdbcConnectionInformation = messageStoreModel.getJdbcConnectionInformation();
+			if (StringUtils.isNotBlank(jdbcConnectionInformation)) {
+				if (JDBCConnectionInformationType.POOL.toString().equals(jdbcConnectionInformation)) {
+					if (StringUtils.isNotBlank(messageStoreModel.getJdbcDriver())) {
+						parameters.put(STORE_JDBC_DRIVER, messageStoreModel.getJdbcDriver());
+					}
+					if (StringUtils.isNotBlank(messageStoreModel.getJdbcURL())) {
+						parameters.put(STORE_JDBC_CONNECTION_URL, messageStoreModel.getJdbcURL());
+					}
+					if (StringUtils.isNotBlank(messageStoreModel.getJdbcUser())) {
+						parameters.put(STORE_JDBC_USERNAME, messageStoreModel.getJdbcUser());
+					}
+					if (StringUtils.isNotBlank(messageStoreModel.getJdbcPassword())) {
+						parameters.put(STORE_JDBC_PASSWORD, messageStoreModel.getJdbcPassword());
+					}
+				} else if (JDBCConnectionInformationType.CARBON_DATASOURCE.toString().equals(jdbcConnectionInformation)) {
+					if (StringUtils.isNotBlank(messageStoreModel.getJdbcDatasourceName())) {
+						parameters.put(STORE_JDBC_DS_NAME, messageStoreModel.getJdbcDatasourceName());
+					}
+				}
 			}
 		}
 		

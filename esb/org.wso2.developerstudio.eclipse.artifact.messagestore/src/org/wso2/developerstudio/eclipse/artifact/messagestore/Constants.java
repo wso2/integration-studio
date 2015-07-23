@@ -45,6 +45,13 @@ public class Constants extends NLS {
 	public static String FIELD_RABBITMQ_USER_NAME;
 	public static String FIELD_RABBITMQ_PASSWORD;
 	public static String FIELD_RABBITMQ_VIRTUAL_HOST;
+	public static String FIELD_JDBC_DATABASE_TABLE;
+	public static String FIELD_JDBC_CONNECTION_INFORMATION;
+	public static String FIELD_JDBC_DRIVER;
+	public static String FIELD_JDBC_URL;
+	public static String FIELD_JDBC_USER;
+	public static String FIELD_JDBC_PASSWORD;
+	public static String FIELD_JDBC_DATASOURCE_NAME;
 	public static String FIELD_SAVE_LOCATION;
 	public static String FIELD_STORE_NAME;
 	public static String FIELD_STORE_TYPE;
@@ -58,6 +65,8 @@ public class Constants extends NLS {
 	public static String TXT_CUSTOM_FIELD_PREFIX;
 	public static String TXT_RABBITMQ_FIELD_PREFIX;
 	public static String TXT_JDBC_FIELD_PREFIX;
+	public static String TXT_JDBC_POOL_TYPE;
+	public static String TXT_JDBC_CARBON_DATASOURCE_TYPE;
 
 	static {
 		// initialize resource bundle

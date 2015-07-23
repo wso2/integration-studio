@@ -23,17 +23,13 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbFactory;
 import org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage;
 import org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint;
+import org.wso2.developerstudio.eclipse.gmf.esb.Template;
 
 /**
  * This is the item provider adapter for a {@link org.wso2.developerstudio.eclipse.gmf.esb.HTTPEndpoint} object.
@@ -86,8 +82,12 @@ public class HTTPEndpointItemProvider
         // Timeout.                
         addTimeOutDurationPropertyDescriptor(object);
         addTimeOutActionPropertyDescriptor(object);
-        
-	    
+
+		if (((HTTPEndpoint) object).eContainer() != null) {
+			if (((HTTPEndpoint) object).eContainer().eContainer() instanceof Template) {
+				addTemplateParametersPropertyDescriptor(object);
+			}
+		}
 		
 		/*if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);

@@ -457,10 +457,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="AbstractNameValueExpressionAttribute"
       abstract="true" eSuperTypes="#//EsbNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="property_name"/>
+        defaultValueLiteral="attribute_name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeValueType" eType="#//AttributeValueType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="property_value"/>
+        defaultValueLiteral="attribute_value"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributeExpression" eType="#//NamespacedProperty"
         containment="true"/>
   </eClassifiers>

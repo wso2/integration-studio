@@ -52,7 +52,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ATTRIBUTE_NAME_EDEFAULT = "property_name";
+	protected static final String ATTRIBUTE_NAME_EDEFAULT = "attribute_name";
 	/**
 	 * The cached value of the '{@link #getAttributeName() <em>Attribute Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -88,7 +88,7 @@ public abstract class AbstractNameValueExpressionAttributeImpl extends EsbNodeIm
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ATTRIBUTE_VALUE_EDEFAULT = "property_value";
+	protected static final String ATTRIBUTE_VALUE_EDEFAULT = "attribute_value";
 	/**
 	 * The cached value of the '{@link #getAttributeValue() <em>Attribute Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

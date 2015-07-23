@@ -59,7 +59,7 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 	private static final String PUBLISH_EVENT_PAYLOAD_CATEGORY = "payload";
 	private static final String PUBLISH_EVENT_CORRELATION_CATEGORY = "correlation";
 	private static final String PUBLISH_EVENT_META_CATEGORY = "meta";
-	
+
 	private Table publishEventAttributeTable;
 	private TableEditor valueTypeEditor;
 	private TableEditor attributeValueEditor;
@@ -172,16 +172,16 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 
 			// Populate properties.
 			EList<PublishEventMediatorAttribute> visualAttributesList = null;
-			if(attributeCategory.equals(PUBLISH_EVENT_META_CATEGORY)){
+			if (attributeCategory.equals(PUBLISH_EVENT_META_CATEGORY)) {
 				visualAttributesList = publishEventMediator.getMetaAttributes();
 			}
-			if(attributeCategory.equals(PUBLISH_EVENT_CORRELATION_CATEGORY)){
+			if (attributeCategory.equals(PUBLISH_EVENT_CORRELATION_CATEGORY)) {
 				visualAttributesList = publishEventMediator.getCorrelationAttributes();
 			}
-			if(attributeCategory.equals(PUBLISH_EVENT_PAYLOAD_CATEGORY)){
+			if (attributeCategory.equals(PUBLISH_EVENT_PAYLOAD_CATEGORY)) {
 				visualAttributesList = publishEventMediator.getPayloadAttributes();
 			}
-			if(attributeCategory.equals(PUBLISH_EVENT_ARBITRARY_CATEGORY)){
+			if (attributeCategory.equals(PUBLISH_EVENT_ARBITRARY_CATEGORY)) {
 				visualAttributesList = publishEventMediator.getArbitraryAttributes();
 			}
 			for (PublishEventMediatorAttribute attribute : visualAttributesList) {
@@ -204,15 +204,16 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 	}
 
 	private void editItem(final TableItem item) {
-		NamespacedProperty expression = ((PublishEventMediatorAttributeImpl)item.getData()).getAttributeExpression();
-		
-		//value type table editor
+		NamespacedProperty expression = ((PublishEventMediatorAttributeImpl) item.getData()).getAttributeExpression();
+
+		// value type table editor
 		valueTypeEditor = initTableEditor(valueTypeEditor, item.getParent());
 		cmbValueType = new Combo(item.getParent(), SWT.READ_ONLY);
-		cmbValueType.setItems(new String[] { AttributeValueType.STRING.getLiteral(), AttributeValueType.EXPRESSION.getLiteral() });
+		cmbValueType.setItems(new String[] { AttributeValueType.STRING.getLiteral(),
+				AttributeValueType.EXPRESSION.getLiteral() });
 		cmbValueType.setText(item.getText(2));
 		valueTypeEditor.setEditor(cmbValueType, item, 2);
-		
+
 		item.getParent().redraw();
 		item.getParent().layout();
 		cmbValueType.addListener(SWT.Selection, new Listener() {
@@ -220,8 +221,8 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 				item.setText(2, cmbValueType.getText());
 			}
 		});
-		
-		attributeValueEditor = initTableEditor(attributeValueEditor, item.getParent());		
+
+		attributeValueEditor = initTableEditor(attributeValueEditor, item.getParent());
 		attributeValue = new PropertyText(item.getParent(), SWT.NONE, cmbValueType);
 		attributeValue.addProperties(item.getText(1), expression);
 		attributeValueEditor.setEditor(attributeValue, item, 1);
@@ -229,11 +230,11 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 		item.getParent().layout();
 		attributeValue.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
-				item.setText(1,attributeValue.getText());
+				item.setText(1, attributeValue.getText());
 				Object property = attributeValue.getProperty();
-				if(property instanceof NamespacedProperty){
-					item.setData(EXPRESSION_DATA,(NamespacedProperty)property);
-				} 
+				if (property instanceof NamespacedProperty) {
+					item.setData(EXPRESSION_DATA, (NamespacedProperty) property);
+				}
 			}
 		});
 	}
@@ -254,11 +255,15 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 	private TableItem bindPublishEventAttribute(PublishEventMediatorAttribute attribute) {
 		TableItem item = new TableItem(publishEventAttributeTable, SWT.NONE);
 		if (attribute.getAttributeValueType().getLiteral().equals(AttributeValueType.STRING.getLiteral())) {
-			item.setText(new String[] { attribute.getAttributeName(), attribute.getAttributeValue(), attribute.getAttributeValueType().getLiteral() });
+			item.setText(new String[] { attribute.getAttributeName(), attribute.getAttributeValue(),
+					attribute.getAttributeValueType().getLiteral() });
 		}
 		if (attribute.getAttributeValueType().getLiteral().equals(AttributeValueType.EXPRESSION.getLiteral())) {
-			item.setText(new String[] { attribute.getAttributeName(), attribute.getAttributeExpression().getPropertyValue(), attribute.getAttributeValueType().getLiteral() });
-			item.setData(EXPRESSION_DATA, EsbFactory.eINSTANCE.copyNamespacedProperty(attribute.getAttributeExpression()));
+			item.setText(new String[] { attribute.getAttributeName(),
+					attribute.getAttributeExpression().getPropertyValue(),
+					attribute.getAttributeValueType().getLiteral() });
+			item.setData(EXPRESSION_DATA,
+					EsbFactory.eINSTANCE.copyNamespacedProperty(attribute.getAttributeExpression()));
 		}
 
 		item.setData(attribute);
@@ -314,8 +319,7 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 			}
 
 			/**
-			 * Dispose cell editor control at mouse down (otherwise the control
-			 * keep showing).
+			 * Dispose cell editor control at mouse down (otherwise the control keep showing).
 			 */
 			public void mouseDown(MouseEvent e) {
 				Control oldEditorControl = cellEditor.getEditor();
@@ -330,19 +334,19 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 		PublishEventMediatorAttribute attribute = (PublishEventMediatorAttribute) item.getData();
 		if (null != attribute.eContainer()) {
 			RemoveCommand removeCmd = null;
-			if(attributeCategory.equals(PUBLISH_EVENT_META_CATEGORY)){
+			if (attributeCategory.equals(PUBLISH_EVENT_META_CATEGORY)) {
 				removeCmd = new RemoveCommand(editingDomain, publishEventMediator,
 						EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES, attribute);
 			}
-			if(attributeCategory.equals(PUBLISH_EVENT_CORRELATION_CATEGORY)){
+			if (attributeCategory.equals(PUBLISH_EVENT_CORRELATION_CATEGORY)) {
 				removeCmd = new RemoveCommand(editingDomain, publishEventMediator,
 						EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES, attribute);
 			}
-			if(attributeCategory.equals(PUBLISH_EVENT_PAYLOAD_CATEGORY)){
+			if (attributeCategory.equals(PUBLISH_EVENT_PAYLOAD_CATEGORY)) {
 				removeCmd = new RemoveCommand(editingDomain, publishEventMediator,
 						EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES, attribute);
 			}
-			if(attributeCategory.equals(PUBLISH_EVENT_ARBITRARY_CATEGORY)){
+			if (attributeCategory.equals(PUBLISH_EVENT_ARBITRARY_CATEGORY)) {
 				removeCmd = new RemoveCommand(editingDomain, publishEventMediator,
 						EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES, attribute);
 			}
@@ -359,23 +363,26 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 	}
 
 	protected void okPressed() {
+		configureAttributes();
+		super.okPressed();
+	}
 
+	private void configureAttributes() {
 		for (TableItem item : publishEventAttributeTable.getItems()) {
 			PublishEventMediatorAttribute attribute = (PublishEventMediatorAttribute) item.getData();
-			NamespacedProperty expression = ((PublishEventMediatorAttributeImpl)item.getData()).getAttributeExpression();
+			NamespacedProperty expression = ((PublishEventMediatorAttributeImpl) item.getData())
+					.getAttributeExpression();
 
-			// If the attribute is a new one, add it to the model.
-			if (null == attribute.eContainer()) {
-				// Update the publishEvent attribute with the latest data from
-				// table row.
+			// If this attribute is a new one
+			// eContainer is null when attribute class is not bound to EMF model. Setters are used instead of commands
+			if (attribute.eContainer() == null) {
+				// Update the publishEvent attribute with the latest data from table row
 				attribute.setAttributeName(item.getText(0));
 
 				if (item.getText(2).equals(AttributeValueType.STRING.getLiteral())) {
 					attribute.setAttributeValueType(AttributeValueType.STRING);
 					attribute.setAttributeValue(item.getText(1));
-				}
-
-				if (item.getText(2).equals(AttributeValueType.EXPRESSION.getLiteral())) {
+				} else if (item.getText(2).equals(AttributeValueType.EXPRESSION.getLiteral())) {
 					attribute.setAttributeValueType(AttributeValueType.EXPRESSION);
 					NamespacedProperty namespaceProperty = EsbFactoryImpl.eINSTANCE.createNamespacedProperty();
 					namespaceProperty.setPropertyValue(item.getText(1));
@@ -385,32 +392,29 @@ public class ConfigurePublishEventAttributesDialog extends Dialog {
 
 				// Record the add operation.
 				AddCommand addCmd = null;
-				if(attributeCategory.equals(PUBLISH_EVENT_META_CATEGORY)){
+				if (attributeCategory.equals(PUBLISH_EVENT_META_CATEGORY)) {
 					addCmd = new AddCommand(editingDomain, publishEventMediator,
 							EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES, attribute);
 				}
-				if(attributeCategory.equals(PUBLISH_EVENT_CORRELATION_CATEGORY)){
+				if (attributeCategory.equals(PUBLISH_EVENT_CORRELATION_CATEGORY)) {
 					addCmd = new AddCommand(editingDomain, publishEventMediator,
 							EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES, attribute);
 				}
-				if(attributeCategory.equals(PUBLISH_EVENT_PAYLOAD_CATEGORY)){
+				if (attributeCategory.equals(PUBLISH_EVENT_PAYLOAD_CATEGORY)) {
 					addCmd = new AddCommand(editingDomain, publishEventMediator,
 							EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES, attribute);
 				}
-				if(attributeCategory.equals(PUBLISH_EVENT_ARBITRARY_CATEGORY)){
+				if (attributeCategory.equals(PUBLISH_EVENT_ARBITRARY_CATEGORY)) {
 					addCmd = new AddCommand(editingDomain, publishEventMediator,
 							EsbPackage.Literals.PUBLISH_EVENT_MEDIATOR__ARBITRARY_ATTRIBUTES, attribute);
 				}
 				getResultCommand().append(addCmd);
 			}
 		}
-
 		// Apply changes.
 		if (getResultCommand().canExecute()) {
 			editingDomain.getCommandStack().execute(getResultCommand());
 		}
-
-		super.okPressed();
 	}
 
 }

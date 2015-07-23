@@ -79,11 +79,12 @@ public class PublishEventMediatorDeserializer extends
 			metaAttributesList.add(metaAttribute);
 		}
 		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__META_ATTRIBUTES, metaAttributesList);
-		
+
 		// Correlation attributes
 		EList<PublishEventMediatorAttribute> correlationAttributesList = new BasicEList<PublishEventMediatorAttribute>();
 		for (Property correlationProperty : mediator.getCorrelationProperties()) {
-			PublishEventMediatorAttribute correlationAttribute = EsbFactory.eINSTANCE.createPublishEventMediatorAttribute();
+			PublishEventMediatorAttribute correlationAttribute = EsbFactory.eINSTANCE
+					.createPublishEventMediatorAttribute();
 
 			if (StringUtils.isNotEmpty(correlationProperty.getKey())) {
 				correlationAttribute.setAttributeName(correlationProperty.getKey());
@@ -102,7 +103,7 @@ public class PublishEventMediatorDeserializer extends
 			correlationAttributesList.add(correlationAttribute);
 		}
 		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__CORRELATION_ATTRIBUTES, correlationAttributesList);
-		
+
 		// Payload attributes
 		EList<PublishEventMediatorAttribute> payloadAttributesList = new BasicEList<PublishEventMediatorAttribute>();
 		for (Property payloadProperty : mediator.getPayloadProperties()) {
@@ -125,11 +126,12 @@ public class PublishEventMediatorDeserializer extends
 			payloadAttributesList.add(payloadAttribute);
 		}
 		executeSetValueCommand(PUBLISH_EVENT_MEDIATOR__PAYLOAD_ATTRIBUTES, payloadAttributesList);
-		
+
 		// Arbitrary attributes
 		EList<PublishEventMediatorAttribute> arbitraryAttributesList = new BasicEList<PublishEventMediatorAttribute>();
 		for (Property arbitraryProperty : mediator.getArbitraryProperties()) {
-			PublishEventMediatorAttribute arbitraryAttribute = EsbFactory.eINSTANCE.createPublishEventMediatorAttribute();
+			PublishEventMediatorAttribute arbitraryAttribute = EsbFactory.eINSTANCE
+					.createPublishEventMediatorAttribute();
 
 			if (StringUtils.isNotEmpty(arbitraryProperty.getKey())) {
 				arbitraryAttribute.setAttributeName(arbitraryProperty.getKey());

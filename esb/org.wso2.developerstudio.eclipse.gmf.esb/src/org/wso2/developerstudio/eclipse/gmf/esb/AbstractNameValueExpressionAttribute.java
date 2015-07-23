@@ -39,7 +39,7 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 
 	/**
 	 * Returns the value of the '<em><b>Attribute Name</b></em>' attribute.
-	 * The default value is <code>"property_name"</code>.
+	 * The default value is <code>"attribute_name"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Attribute Name</em>' attribute isn't clear,
@@ -49,7 +49,7 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 	 * @return the value of the '<em>Attribute Name</em>' attribute.
 	 * @see #setAttributeName(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeName()
-	 * @model default="property_name"
+	 * @model default="attribute_name"
 	 * @generated
 	 */
 	String getAttributeName();
@@ -95,7 +95,7 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 
 	/**
 	 * Returns the value of the '<em><b>Attribute Value</b></em>' attribute.
-	 * The default value is <code>"property_value"</code>.
+	 * The default value is <code>"attribute_value"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Attribute Value</em>' attribute isn't clear,
@@ -105,7 +105,7 @@ public interface AbstractNameValueExpressionAttribute extends EsbNode {
 	 * @return the value of the '<em>Attribute Value</em>' attribute.
 	 * @see #setAttributeValue(String)
 	 * @see org.wso2.developerstudio.eclipse.gmf.esb.EsbPackage#getAbstractNameValueExpressionAttribute_AttributeValue()
-	 * @model default="property_value"
+	 * @model default="attribute_value"
 	 * @generated
 	 */
 	String getAttributeValue();

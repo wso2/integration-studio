@@ -20053,9 +20053,9 @@ public class EsbPackageImpl extends EPackageImpl implements EsbPackage {
 		initEClass(publishEventMediatorAttributeEClass, PublishEventMediatorAttribute.class, "PublishEventMediatorAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(abstractNameValueExpressionAttributeEClass, AbstractNameValueExpressionAttribute.class, "AbstractNameValueExpressionAttribute", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeName(), ecorePackage.getEString(), "attributeName", "property_name", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeName(), ecorePackage.getEString(), "attributeName", "attribute_name", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeValueType(), this.getAttributeValueType(), "attributeValueType", null, 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeValue(), ecorePackage.getEString(), "attributeValue", "property_value", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractNameValueExpressionAttribute_AttributeValue(), ecorePackage.getEString(), "attributeValue", "attribute_value", 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractNameValueExpressionAttribute_AttributeExpression(), this.getNamespacedProperty(), null, "attributeExpression", null, 0, 1, AbstractNameValueExpressionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bamMediatorEClass, BAMMediator.class, "BAMMediator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -55,8 +55,11 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -65,6 +68,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolTip;
 import org.eclipse.ui.PlatformUI;
@@ -87,6 +91,7 @@ import org.wso2.developerstudio.eclipse.artifact.security.utils.SecurityFormCons
 import org.wso2.developerstudio.eclipse.artifact.security.utils.SecurityFormMessageConstants;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
+import org.wso2.developerstudio.eclipse.platform.core.utils.ResourceManager;
 import org.wso2.developerstudio.eclipse.platform.core.utils.SWTResourceManager;
 import org.wso2.developerstudio.eclipse.security.Activator;
 import org.wso2.developerstudio.eclipse.security.project.model.Policy2;
@@ -102,8 +107,10 @@ public class SecurityFormPage extends FormPage {
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 	boolean pageDirty;
 
+	private static final int NUMBER_OF_COLUMNS_IN_SHELL = 1;
 	// Messages
 	private static final String TIP_MESSAGE = "Description not available";
+	private static final String PLUGIN_NAME = "org.wso2.developerstudio.eclipse.artifact.security";
 
 	public IProject project;
 	private Policy2 policyObject;
@@ -149,6 +156,7 @@ public class SecurityFormPage extends FormPage {
 	SecurityFormEditor formEditor;
 
 	// UI components
+	private Button securitySenarioDisplayButton;
 	private Button policyOneUserRolesButton;
 	private Button policySevenUserRolesButton;
 	private Button policyEightUserRolesButton;
@@ -165,6 +173,8 @@ public class SecurityFormPage extends FormPage {
 	private Combo cmbRampartTimestampStrict;
 	private Combo cmbRampartTimestampPrecision;
 	private Composite rmaportInfComposite;
+
+	private static final int NUM_OF_COLUMNS_GRID_LAYOUT_MAIN_PAGE = 6;
 
 	public SecurityFormPage(FormEditor editor, String id, String title, IProject iproject, File file, Display display) {
 		super(editor, id, title);
@@ -246,7 +256,7 @@ public class SecurityFormPage extends FormPage {
 		Object[] result = CreateMainSection(toolkit, body, SecurityFormConstants.SECTION_SECURITY_SERVICE, 10, 70, 600,
 				30, true);
 		Composite seccomposite = (Composite) result[1];
-		GridLayout gridSecLayout = new GridLayout(5, false);
+		GridLayout gridSecLayout = new GridLayout(NUM_OF_COLUMNS_GRID_LAYOUT_MAIN_PAGE, false);
 		seccomposite.setLayout(gridSecLayout);
 
 		createCategory(toolkit, seccomposite, SecurityFormConstants.BASIC_SCENARIOS);
@@ -2014,6 +2024,34 @@ public class SecurityFormPage extends FormPage {
 	}
 
 	/**
+	 * Create button for balloon to show the description of a specific security scenario
+	 *
+	 * @param seccomposite
+	 * @param scenarioNumber
+	 */
+	private void setSecuritySenarioDisplayButton(Composite seccomposite, final int scenarioNumber) {
+
+		Image buttonImage = ResourceManager.getPluginImage(PLUGIN_NAME,
+				SecurityFormConstants.SECURITY_SCENARIO_BUTTON_IMAGE_PATH);
+		securitySenarioDisplayButton = new Button(seccomposite, SWT.NONE);
+		securitySenarioDisplayButton.setImage(buttonImage);
+		securitySenarioDisplayButton.setVisible(true);
+		securitySenarioDisplayButton.addListener(SWT.Selection, new Listener() {
+			@Override
+			public void handleEvent(Event event) {
+				showSecurityScenarioGraphicalContent(scenarioNumber);
+				setPageDirty(true);
+				updateDirtyState();
+			}
+		});
+		GridData securitySenarioDisplayButtonGridData = new GridData();
+		securitySenarioDisplayButtonGridData.horizontalAlignment = GridData.BEGINNING;
+		securitySenarioDisplayButtonGridData.grabExcessHorizontalSpace = false;
+		securitySenarioDisplayButtonGridData.horizontalSpan = 1;
+		securitySenarioDisplayButton.setLayoutData(securitySenarioDisplayButtonGridData);
+	}
+
+	/**
 	 * Creates the security items
 	 * 
 	 * @param seccomposite
@@ -2022,19 +2060,20 @@ public class SecurityFormPage extends FormPage {
 	 *            names
 	 * @param managedForm
 	 *            form
-	 * @param i
+	 * @param securityScenarioNumber
 	 *            int value
 	 */
 	private void createSecurityScenarioOptionButtons(final Composite seccomposite, String[] names,
-			IManagedForm managedForm, int i, Composite body) throws IOException, JAXBException {
+			IManagedForm managedForm, int securityScenarioNumber, Composite body) throws IOException, JAXBException {
 
 		for (String name : names) {
-			i++;
+			securityScenarioNumber++;
+			setSecuritySenarioDisplayButton(seccomposite,securityScenarioNumber);
 			final Button secBtn = new Button(seccomposite, SWT.RADIO);
 			secBtn.setText("");
 			secBtn.setToolTipText(name);
 
-			String fileName = SecurityFormConstants.FILE_PREFIX + i + SecurityFormConstants.FILE_POSTFIX;
+			String fileName = SecurityFormConstants.FILE_PREFIX + securityScenarioNumber + SecurityFormConstants.FILE_POSTFIX;
 			secBtn.setData(fileName);
 			secBtn.addSelectionListener(new SelectionAdapter() {
 				@Override
@@ -2059,8 +2098,6 @@ public class SecurityFormPage extends FormPage {
 			createHyperlink.addHyperlinkListener(new HyperlinkAdapter() {
 				@Override
 				public void linkActivated(HyperlinkEvent e) {
-					// Fixing TOOLS-2293.
-					// tip.setVisible(true);
 
 					Control[] children = seccomposite.getChildren();
 					for (Control child : children) {
@@ -2087,6 +2124,7 @@ public class SecurityFormPage extends FormPage {
 				policyOneUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policyOneUserRolesButton.setVisible(false);
 				policyOneUserRolesButton.addListener(SWT.Selection, new Listener() {
+					@Override
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
 						setPageDirty(true);
@@ -2109,6 +2147,7 @@ public class SecurityFormPage extends FormPage {
 				policySevenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policySevenUserRolesButton.setVisible(false);
 				policySevenUserRolesButton.addListener(SWT.Selection, new Listener() {
+					@Override
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
 						setPageDirty(true);
@@ -2131,6 +2170,7 @@ public class SecurityFormPage extends FormPage {
 				policyEightUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policyEightUserRolesButton.setVisible(false);
 				policyEightUserRolesButton.addListener(SWT.Selection, new Listener() {
+					@Override
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
 						setPageDirty(true);
@@ -2153,6 +2193,7 @@ public class SecurityFormPage extends FormPage {
 				policyFourteenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policyFourteenUserRolesButton.setVisible(false);
 				policyFourteenUserRolesButton.addListener(SWT.Selection, new Listener() {
+					@Override
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
 						setPageDirty(true);
@@ -2175,6 +2216,7 @@ public class SecurityFormPage extends FormPage {
 				policyFifteenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
 				policyFifteenUserRolesButton.setVisible(false);
 				policyFifteenUserRolesButton.addListener(SWT.Selection, new Listener() {
+					@Override
 					public void handleEvent(Event event) {
 						openUserRolesDialog();
 						setPageDirty(true);
@@ -2192,7 +2234,6 @@ public class SecurityFormPage extends FormPage {
 				policyLinkGrdiData.horizontalSpan = 4;
 				createHyperlink.setLayoutData(policyLinkGrdiData);
 			}
-
 		}
 	}
 
@@ -2231,7 +2272,7 @@ public class SecurityFormPage extends FormPage {
 	}
 
 	/**
-	 * Enbles the user role button
+	 * Enables the user role button
 	 * 
 	 * @param secBtn
 	 */
@@ -2363,7 +2404,7 @@ public class SecurityFormPage extends FormPage {
 
 		Label lblcategory = toolkit.createLabel(composite, category, SWT.NONE);
 		lblcategory.setFont(SWTResourceManager.getFont(SecurityFormConstants.SANS, 10, SWT.BOLD));
-		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1);
+		GridData gd_category = new GridData(SWT.FILL, SWT.CENTER, true, false, NUM_OF_COLUMNS_GRID_LAYOUT_MAIN_PAGE, 1);
 		gd_category.verticalIndent = 10;
 		lblcategory.setLayoutData(gd_category);
 
@@ -2440,6 +2481,158 @@ public class SecurityFormPage extends FormPage {
 			MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
 			msg.setMessage(SecurityFormMessageConstants.MESSAGE_PAGE_LOADING_ERROR);
 			msg.open();
+		}
+	}
+
+	/**
+	 * <p>
+	 * Security scenario number should provide for this method.
+	 *
+	 * <p>
+	 * This method opens a shell window which shows the description of mentioned security scenario given in the
+	 * parameter list.
+	 *
+	 * @param scenarioNumber
+	 */
+	public void showSecurityScenarioGraphicalContent(int scenarioNumber) {
+
+		String fileName = SecurityFormConstants.IMAGE_PREFIX + scenarioNumber + SecurityFormConstants.IMAGE_POSTFIX;
+		String relativeFilePath = SecurityFormConstants.RELATIVE_FOLDER_PATH + fileName;
+		String shellTitle = SecurityFormConstants.SHELL_WINDOW_TITLE_PREFIX + scenarioNumber;
+		String securityScenarioTitle = getSecurityScenarioTitle(scenarioNumber);
+
+		Shell shell = new Shell(Display.getCurrent(), SWT.TITLE | SWT.CLOSE | SWT.BORDER);
+		Composite parent = new Composite(shell, SWT.NONE);
+		shell.setBackgroundImage(getBackgroundImage());
+		shell.setLayout(new RowLayout());
+		shell.setText(shellTitle);
+
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = NUMBER_OF_COLUMNS_IN_SHELL;
+		parent.setLayout(gridLayout);
+
+		Label scenarioTitle = new Label(parent, SWT.NONE);
+		scenarioTitle.setText(shellTitle + SecurityFormConstants.SECURITY_SCENARIO_TITLE_SEPARATOR
+				+ securityScenarioTitle);
+		GridData textGridData = new GridData();
+		textGridData.horizontalAlignment = SWT.CENTER;
+		scenarioTitle.setLayoutData(textGridData);
+
+		Label labelImage = new Label(parent, SWT.NONE);
+		labelImage.setImage(getScenarioImage(relativeFilePath));
+		labelImage.setToolTipText(shellTitle);
+		GridData imageGridData = new GridData();
+		imageGridData.horizontalAlignment = SWT.CENTER;
+		labelImage.setLayoutData(imageGridData);
+
+		Rectangle monitorBound = Display.getCurrent().getPrimaryMonitor().getBounds();
+		Rectangle shellBound = shell.getBounds();
+
+		shell.setLocation(getXCoordinate(monitorBound, shellBound), getYCoordinate(monitorBound, shellBound));
+		shell.pack();
+		shell.open();
+
+	}
+
+	/**
+	 * <p>
+	 * This method takes two Rectangle objects of current monitor and generating shell. Then calculate and returns the X
+	 * coordinate value of the generated shell rectangle.
+	 *
+	 * @param monitorBound
+	 * @param shellBound
+	 * @return
+	 */
+	private int getXCoordinate(Rectangle monitorBound, Rectangle shellBound) {
+		return monitorBound.x + (monitorBound.width - shellBound.width / 2) / 2;
+	}
+
+	/**
+	 * <p>
+	 * This method takes two Rectangle objects of current monitor and generating shell. Then calculate and returns the Y
+	 * coordinate value of the generated shell rectangle.
+	 *
+	 * @param monitorBound
+	 * @param shellBound
+	 * @return
+	 */
+	private int getYCoordinate(Rectangle monitorBound, Rectangle shellBound) {
+		return monitorBound.x + (monitorBound.width - shellBound.width) / 2 / 2;
+	}
+
+	/**
+	 * This method returns the shell background image.
+	 *
+	 * @return Background image
+	 */
+	private Image getBackgroundImage() {
+		return ResourceManager.getPluginImage(SecurityFormConstants.PLUGIN_NAME,
+				SecurityFormConstants.BACKGROUD_IMAGE_RELAVIVE_PATH);
+	}
+
+	/**
+	 * This method returns an image in "org.wso2.developerstudio.eclipse.artifact.security" plug-in, specified by the
+	 * relative path parameter.
+	 *
+	 * @param relativeFilePath
+	 * @return Security scenario image
+	 */
+	private Image getScenarioImage(String relativeFilePath) {
+		return ResourceManager.getPluginImage(SecurityFormConstants.PLUGIN_NAME, relativeFilePath);
+	}
+
+	/**
+	 * This method simply take security scenario number as an input.
+	 * <p>
+	 * Returns title of the shell window which describes the security scenario.
+	 *
+	 * @param fileNumber
+	 * @return Security scenario title
+	 */
+	private String getSecurityScenarioTitle(int fileNumber) {
+		switch (fileNumber) {
+		case 1:
+			return SecurityPolicies.POLICY_TYPE_1;
+		case 2:
+			return SecurityPolicies.POLICY_TYPE_2;
+		case 3:
+			return SecurityPolicies.POLICY_TYPE_3;
+		case 4:
+			return SecurityPolicies.POLICY_TYPE_4;
+		case 5:
+			return SecurityPolicies.POLICY_TYPE_5;
+		case 6:
+			return SecurityPolicies.POLICY_TYPE_6;
+		case 7:
+			return SecurityPolicies.POLICY_TYPE_7;
+		case 8:
+			return SecurityPolicies.POLICY_TYPE_8;
+		case 9:
+			return SecurityPolicies.POLICY_TYPE_9;
+		case 10:
+			return SecurityPolicies.POLICY_TYPE_10;
+		case 11:
+			return SecurityPolicies.POLICY_TYPE_11;
+		case 12:
+			return SecurityPolicies.POLICY_TYPE_12;
+		case 13:
+			return SecurityPolicies.POLICY_TYPE_13;
+		case 14:
+			return SecurityPolicies.POLICY_TYPE_14;
+		case 15:
+			return SecurityPolicies.POLICY_TYPE_15;
+		case 16:
+			return SecurityPolicies.POLICY_TYPE_16;
+		case 17:
+			return SecurityPolicies.POLICY_TYPE_17;
+		case 18:
+			return SecurityPolicies.POLICY_TYPE_18;
+		case 19:
+			return SecurityPolicies.POLICY_TYPE_19;
+		case 20:
+			return SecurityPolicies.POLICY_TYPE_20;
+		default:
+			return "";
 		}
 	}
 }

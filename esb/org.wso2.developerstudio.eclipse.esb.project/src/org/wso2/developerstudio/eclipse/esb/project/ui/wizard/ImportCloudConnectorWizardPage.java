@@ -16,12 +16,26 @@
 
 package org.wso2.developerstudio.eclipse.esb.project.ui.wizard;
 
-import java.net.MalformedURLException;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -43,9 +57,10 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.IProgressService;
 import org.wso2.developerstudio.eclipse.esb.project.Activator;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.Connector;
-import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorData;
 import org.wso2.developerstudio.eclipse.esb.project.connector.store.ConnectorStore;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
@@ -55,11 +70,14 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 	private Text txtConnectorStoreURL;
 	private String cloudConnectorPath;
 	private IProject selectedProject;
-	private ConnectorData connectorData;
+	private List<Connector> connectorList;
 	private Table table;
 	private Button connectorStore;
 	private Button fileSystem;	
-
+	private static final String DIR_DOT_METADATA = ".metadata";
+	private static final String DIR_CACHE = ".cache";
+	private static final String CONNECTOR_STORE_URL = "https://storepreview.wso2.com:9448";
+	
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
 
 	protected ImportCloudConnectorWizardPage(IStructuredSelection selection) {
@@ -168,36 +186,9 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		table.setHeaderVisible(true);
 		table.setLayoutData(gridData);
 		btnBrowse.addSelectionListener(new SelectionAdapter() {
-
 			public void widgetSelected(SelectionEvent e) {
-				connectorData = new ConnectorStore().getConnectorInfo(txtConnectorStoreURL.getText());
-				for (Connector connector : connectorData.getConnector()) {
-					URL url = null;
-					String imageLocation = null;
-					TableItem item = new TableItem(table, SWT.NONE);
-					try {
-						// Adding thumbnail image for the table item. 
-						imageLocation = txtConnectorStoreURL.getText() + "/store/storage/esbconnector/"
-								+ connector.getId() + "/" + connector.getAttributes().getImages_thumbnail();
-						url = new URL(imageLocation);
-						Image checkedImage = ImageDescriptor.createFromURL(url).createImage();
-						Image scaled = new Image(Display.getDefault(), 55, 50);
-						GC gc = new GC(scaled);
-						gc.setAntialias(SWT.ON);
-						gc.setInterpolation(SWT.HIGH);
-						gc.drawImage(checkedImage, 0, 0, checkedImage.getBounds().width, checkedImage.getBounds().height,
-								0, 0, 55, 50);
-						gc.dispose();
-						checkedImage.dispose();
-						item.setImage(scaled);
-					} catch (MalformedURLException malformedURLException) {
-						log.error("Malformed connector URL provided : " + imageLocation, malformedURLException);
-					}
-					item.setText(new String[] { connector.getAttributes().getOverview_name(),
-							connector.getAttributes().getOverview_version() });
-					item.setData(connector);
-				}
-
+				listConnectors();
+				container.forceFocus();
 			}
 		});
 		btnBrowse.setText("Connect");
@@ -207,6 +198,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 				txtCloudConnectorPath.setEnabled(true);
 				btnBrowse1.setEnabled(true);
 
+				txtConnectorStoreURL.setText("");
 				txtConnectorStoreURL.setEnabled(false);
 				btnBrowse.setEnabled(false);
 				table.setEnabled(false);
@@ -215,6 +207,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 
 		connectorStore.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
+				txtConnectorStoreURL.setText(CONNECTOR_STORE_URL);
 				txtConnectorStoreURL.setEnabled(true);
 				btnBrowse.setEnabled(true);
 				table.setEnabled(true);
@@ -246,6 +239,85 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		setErrorMessage(null);
 		setPageComplete(true);
 	}
+		
+	/*
+	 * List available connectors
+	 */
+	private void listConnectors() {
+		IProgressService progressService = PlatformUI.getWorkbench().getProgressService();
+		try {
+			progressService.runInUI(PlatformUI.getWorkbench().getProgressService(), new IRunnableWithProgress() {
+				public void run(IProgressMonitor monitor) {					
+					try {
+						String iconCacheDirPath = getSelectedProject().getWorkspace().getRoot().getLocation().toString()
+								+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CACHE;
+						File iconCacheDir = new File(iconCacheDirPath);
+						if (!iconCacheDir.exists()) {
+							iconCacheDir.mkdir();
+						}
+						int page = 1;
+						connectorList = ConnectorStore.getConnectorInfo(txtConnectorStoreURL.getText(), page);
+						while (connectorList != null && !connectorList.isEmpty()) {
+							for (Connector connector : connectorList) {
+								String imageLocation = null;
+								TableItem item = new TableItem(table, SWT.NONE);
+								imageLocation = txtConnectorStoreURL.getText()
+										+ connector.getAttributes().getImages_thumbnail();
+								String[] segments = imageLocation.split("/");
+								String imageFileName = segments[segments.length - 1];
+								try {
+									String imageFilePath = iconCacheDir + File.separator + imageFileName;
+									File imageFile = new File(imageFilePath);
+									if (!imageFile.exists()) {
+										// Download the thumbnail image if it is not there in the filesystem.
+										downloadThumbnailImage(imageLocation, imageFilePath);
+									}
+									Image image = new Image(Display.getDefault(), imageFilePath);
+									Image scaled = new Image(Display.getDefault(), 55, 50);
+									GC gc = new GC(scaled);
+									gc.setAntialias(SWT.ON);
+									gc.setInterpolation(SWT.HIGH);
+									gc.drawImage(image, 0, 0, image.getBounds().width, image.getBounds().height, 0, 0,
+											55, 50);
+									gc.dispose();
+									image.dispose();
+									item.setImage(scaled);
+								} catch (IOException e) {
+									log.error("Error while downloading " + imageFileName, e);
+								}
+								item.setText(new String[] { connector.getAttributes().getOverview_name(),
+										connector.getAttributes().getOverview_version() });
+								item.setData(connector);
+							}
+							++page;
+							connectorList = ConnectorStore.getConnectorInfo(txtConnectorStoreURL.getText(), page);
+						}
+					} catch (KeyManagementException | NoSuchAlgorithmException | IOException e1) {
+						log.error("Error while listing connectors", e1);
+						IStatus editorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e1.getMessage());
+						ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error while listing connectors", e1.getMessage(), editorStatus);
+					}
+				}
+			}, getSelectedProject().getWorkspace().getRoot());
+		} catch (InvocationTargetException | InterruptedException e) {
+			log.error("Error while listing connectors", e);
+		}
+	}
+	
+	/*
+	 * Download the thumbnail image from the provided URL.
+	 */
+	private void downloadThumbnailImage(String location, String file) throws IOException {
+		URL url = new URL(location);
+		InputStream in = new BufferedInputStream(url.openStream());
+		OutputStream out = new BufferedOutputStream(new FileOutputStream(file));
+
+		for (int i; (i = in.read()) != -1;) {
+			out.write(i);
+		}
+		in.close();
+		out.close();
+	}
 
 	public String getCloudConnectorPath() {
 		return cloudConnectorPath;
@@ -261,14 +333,6 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 
 	public void setSelectedProject(IProject selectedProject) {
 		this.selectedProject = selectedProject;
-	}
-
-	public ConnectorData getConnectorData() {
-		return connectorData;
-	}
-
-	public void setConnectorData(ConnectorData connectorData) {
-		this.connectorData = connectorData;
 	}
 
 	public Table getTable() {
@@ -293,5 +357,13 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 
 	public void setFileSystem(Button fileSystem) {
 		this.fileSystem = fileSystem;
+	}
+	
+	public List<Connector> getConnectorList() {
+		return connectorList;
+	}
+
+	public void setConnectorList(List<Connector> connectorList) {
+		this.connectorList = connectorList;
 	}
 }

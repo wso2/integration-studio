@@ -113,10 +113,15 @@ public class CloudConnectorImportWizard extends Wizard {
 		ZipFile zipFile = new ZipFile(source);
 		String[] segments = source.split(Pattern.quote(File.separator));
 		String zipFileName = segments[segments.length - 1].split(".zip")[0];
-		String destination = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation().toString()
-				+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS + File.separator + zipFileName;
+		String parentDirectoryPath = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation().toString()
+				+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS ;		
+		File parentDirectory = new File(parentDirectoryPath);
+		if (!parentDirectory.exists()) {
+			parentDirectory.mkdir();
+		}		
+		String zipDestination = parentDirectoryPath + File.separator + zipFileName;		
 		zipFile.getFile();
-		zipFile.extractAll(destination);
+		zipFile.extractAll(zipDestination);
 		IUpdateGMFPlugin updateGMFPlugin = GMFPluginDetails.getiUpdateGMFPlugin();
 		if (updateGMFPlugin != null) {
 			updateGMFPlugin.updateOpenedEditors();
@@ -131,12 +136,16 @@ public class CloudConnectorImportWizard extends Wizard {
 		String zipDestination = null;
 		try {
 			URL url = new URL(downloadLink);
-			String[] segments = downloadLink.split(Pattern.quote(File.separator));
+			String[] segments = downloadLink.split("/");
 			String zipFileName = segments[segments.length - 1];
-			String parentDirectory = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation()
+			String parentDirectoryPath = storeWizardPage.getSelectedProject().getWorkspace().getRoot().getLocation()
 					.toString()
 					+ File.separator + DIR_DOT_METADATA + File.separator + DIR_CONNECTORS;
-			zipDestination = parentDirectory + File.separator + zipFileName;
+			File parentDirectory = new File(parentDirectoryPath);
+			if (!parentDirectory.exists()) {
+				parentDirectory.mkdir();
+			}
+			zipDestination = parentDirectoryPath + File.separator + zipFileName;
 			InputStream is = url.openStream();
 			File targetFile = new File(zipDestination);
 			targetFile.createNewFile();

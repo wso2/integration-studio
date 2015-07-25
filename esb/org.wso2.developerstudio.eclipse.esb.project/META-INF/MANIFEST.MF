@@ -57,3 +57,4 @@ Export-Package: org.wso2.developerstudio.eclipse.esb.project.artifact,
  org.wso2.developerstudio.eclipse.esb.project.control.graphicalproject,
  org.wso2.developerstudio.eclipse.esb.project.filter,
  org.wso2.developerstudio.eclipse.esb.project.utils
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

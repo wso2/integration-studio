@@ -1,4 +1,3 @@
-package org.wso2.developerstudio.eclipse.artifact.security.utils;
 
 /*
  * Copyright (c) 2015 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
@@ -15,6 +14,9 @@ package org.wso2.developerstudio.eclipse.artifact.security.utils;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package org.wso2.developerstudio.eclipse.artifact.security.utils;
+
 public class SecurityFormConstants {
 
 	public static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_ALIAS = "org.wso2.carbon.security.crypto.alias";
@@ -86,6 +88,8 @@ public class SecurityFormConstants {
 	public static final String FILE_PREFIX = "scenario";
 	public static final String FILE_POSTFIX = "-policy.xml";
 	public static final String SANS = "Sans";
+	public static final String IMAGE_PREFIX = "scenario";
+	public static final String IMAGE_POSTFIX = ".png";
 
 	// Section Names
 	public static final String SECTION_SERVICE_INFO = "Service Info";
@@ -110,5 +114,13 @@ public class SecurityFormConstants {
 	public static final String POLICY_OBJECT_UT = "UTOverTransport";
 	public static final String POLICY_UT = "UsernameToken";
 	public static final String POLICY_KERBEROS = "Kerberos Authentication - Sign - Sign based on a Kerberos Token";
+
+	//Security Scenario Description Constants
+	public static final String PLUGIN_NAME = "org.wso2.developerstudio.eclipse.artifact.security";
+	public static final String RELATIVE_FOLDER_PATH = "policies/images/";
+	public static final String BACKGROUD_IMAGE_RELAVIVE_PATH = "policies/images/background.png";
+	public static final String SHELL_WINDOW_TITLE_PREFIX = "Security Scenario ";
+	public static final String SECURITY_SCENARIO_TITLE_SEPARATOR = " : ";
+	public static final String SECURITY_SCENARIO_BUTTON_IMAGE_PATH = "icons/view.png";
 
 }

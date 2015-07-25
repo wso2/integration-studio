@@ -289,14 +289,13 @@ public class DeveloperStudioElementProviderDialog extends Dialog {
 	}
 
 	/**
-	 * This method passes a empty list. Sub classes should override this method to return list of files as required
+	 * This method passes an empty list. Sub classes should override this method to return list of files as required
 	 *
 	 * @param typesList
 	 * @return
 	 */
 	protected List<Object> addResourseFilesToList(List<Class<?>> typesList) {
 		List<Object> list = new ArrayList<Object>();
-		// This method should be override by sub classes which extends This class
 		return list;
 	}
 

@@ -272,19 +272,16 @@ public class RegistryResourceBrowserDialog extends Dialog {
 
 	@SuppressWarnings("unchecked")
 	private void openRegistryResourceProviderDialog() {
-		 hide();
-		try {
-			RegistryResourseFileProviderDialog registryResourceProviderSelector = new RegistryResourseFileProviderDialog(
-					getParentShell(), new Class[] { IRegistryFile.class }, new HashMap<String, List<String>>());
-			registryResourceProviderSelector.create();
-			registryResourceProviderSelector.getShell().setText("Workspace Element Providers");
-			registryResourceProviderSelector.open();
-			if (registryResourceProviderSelector.getReturnCode() == Window.OK) {
-				setSelectedPath(registryResourceProviderSelector.getSelectedPath());
-			}
-		} finally {
-			show();
+		hide();
+		RegistryResourseFileProviderDialog registryResourceProviderSelector = new RegistryResourseFileProviderDialog(
+				getParentShell(), new Class[] { IRegistryFile.class }, new HashMap<String, List<String>>());
+		registryResourceProviderSelector.create();
+		registryResourceProviderSelector.getShell().setText("Workspace Element Providers");
+		registryResourceProviderSelector.open();
+		if (registryResourceProviderSelector.getReturnCode() == Window.OK) {
+			setSelectedPath(registryResourceProviderSelector.getSelectedPath());
 		}
+		show();
 	}
 
 	/**

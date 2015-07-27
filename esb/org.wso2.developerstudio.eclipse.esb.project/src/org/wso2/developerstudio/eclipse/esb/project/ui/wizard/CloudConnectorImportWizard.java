@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -43,6 +44,8 @@ public class CloudConnectorImportWizard extends Wizard {
 
 	private static final int BUFFER_SIZE = 4096;
 	private ImportCloudConnectorWizardPage storeWizardPage;
+	private RemoveCloudConnectorWizardPage removeWizardPage;
+	private ImportRemoveSelectionWizardPage selectionPage;
 	private static final String DIR_DOT_METADATA = ".metadata";
 	private static final String DIR_CONNECTORS = ".Connectors";	
 
@@ -53,26 +56,35 @@ public class CloudConnectorImportWizard extends Wizard {
 	 * @param selection
 	 */
 	public void init(IStructuredSelection selection) {
+		selectionPage = new ImportRemoveSelectionWizardPage(selection);
 		storeWizardPage = new ImportCloudConnectorWizardPage(selection);
+		removeWizardPage = new RemoveCloudConnectorWizardPage(selection);
+		setWindowTitle("Add or Remove Connectors");
 	}
 
 	/**
 	 * Adding wizard pages
 	 */
 	public void addPages() {
+		addPage(selectionPage);
 		addPage(storeWizardPage);
+		addPage(removeWizardPage);
 		super.addPages();
 	}
-
+	
 	/**
 	 * Importing connector zip file to Developer Studio either from fileSystem or
 	 * connector store.
 	 */
 	public boolean performFinish() {
-		if (storeWizardPage.getConnectorStore().getSelection()) {
-			return performFinishStore();
-		} else if (storeWizardPage.getFileSystem().getSelection()) {
-			return performFinishFileSystem();
+		if(storeWizardPage.equals(getContainer().getCurrentPage())){
+			if (storeWizardPage.getConnectorStore().getSelection()) {
+				return performFinishStore();
+			} else if (storeWizardPage.getFileSystem().getSelection()) {
+				return performFinishFileSystem();
+			}
+		}else if(removeWizardPage.equals(getContainer().getCurrentPage())){
+			return performFinishRemove();
 		}
 		return false;
 	}
@@ -107,6 +119,34 @@ public class CloudConnectorImportWizard extends Wizard {
 			log.error("Cannot refresh the project", e);
 		}
 		return true;
+	}
+	
+	/**
+	 * This method will remove selected connectors from the file system.
+	 */
+	private boolean performFinishRemove() {
+		for (TableItem tableItem : removeWizardPage.getTable().getItems()) {
+			if (tableItem.getChecked()) {
+				String filePath = ((org.wso2.developerstudio.eclipse.esb.project.ui.wizard.Connector) tableItem.getData()).getConnectorFilePath();
+				try {
+					FileUtils.deleteDirectory(new File(filePath));
+				} catch (IOException e) {
+					log.error("Error while deleting the connector : " + filePath, e);
+				}
+			}
+		}
+		try {
+			IUpdateGMFPlugin updateGMFPlugin = GMFPluginDetails.getiUpdateGMFPlugin();
+			if (updateGMFPlugin != null) {
+				updateGMFPlugin.updateOpenedEditors();
+			}
+			// Refresh the project.
+			removeWizardPage.getSelectedProject().refreshLocal(IResource.DEPTH_INFINITE, null);
+			return true;
+		} catch (CoreException e) {
+			log.error("Error while refreshing projects after deleting connectors ", e);
+		}
+		return false;
 	}
 
 	private void updateProjects(String source) throws ZipException, CoreException {
@@ -169,5 +209,21 @@ public class CloudConnectorImportWizard extends Wizard {
 			log.error("Error while downloading connector : " + downloadLink, e);
 		}
 		return false;
-	}	
+	}
+	
+	public ImportCloudConnectorWizardPage getStoreWizardPage() {
+		return storeWizardPage;
+	}
+
+	public void setStoreWizardPage(ImportCloudConnectorWizardPage storeWizardPage) {
+		this.storeWizardPage = storeWizardPage;
+	}
+
+	public RemoveCloudConnectorWizardPage getRemoveWizardPage() {
+		return removeWizardPage;
+	}
+
+	public void setRemoveWizardPage(RemoveCloudConnectorWizardPage removeWizardPage) {
+		this.removeWizardPage = removeWizardPage;
+	}
 }

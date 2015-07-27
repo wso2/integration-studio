@@ -156,7 +156,11 @@ public class UserManager {
 	}
 
 	public void setUrl(String url) {
-		this.url = url;
+		if (url.endsWith("/")) {
+			this.url = url;
+		} else {
+			this.url = url + "/";
+		}
 	}
 
 	public String getUrl() {

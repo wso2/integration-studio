@@ -5838,7 +5838,7 @@
  	 	</catalogContribution> 
  	</extension>
  	
- 	<extension point="org.eclipse.ui.navigator.navigatorContent">	
+ <!--extension point="org.eclipse.ui.navigator.navigatorContent">
 			<commonWizard type="new"
 			    menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb.diagram"
 				wizardId="org.wso2.developerstudio.eclipse.gmf.esb.diagram.part.EsbCreationWizardID">
@@ -5855,7 +5855,7 @@
 					</or>
 				</enablement>
 			</commonWizard>
-	</extension>
+</extension-->
 
 	 <!--extension point="org.eclipse.ui.newWizards" id="creation-wizard">
   	  <wizard

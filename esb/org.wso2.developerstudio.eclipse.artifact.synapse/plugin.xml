@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
  <extension point="org.eclipse.ui.newWizards">
-		<wizard name="Synapse" 
+		<wizard name="Synapse Configuration"
 			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.message.mediation/org.wso2.developerstudio.eclipse.message.mediation.features"
 			class="org.wso2.developerstudio.eclipse.artifact.synapse.ui.wizard.SynapseCreationWizard"
 			wizardManifest="project_wizard.xml"
@@ -54,7 +54,7 @@
 	</extension>-->
 		<extension point="org.eclipse.ui.navigator.navigatorContent">    
             <commonWizard type="new"
-                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb.synapse"
                 wizardId="org.wso2.developerstudio.eclipse.artifact.synapseartifact">
                 <enablement>
                     <or>

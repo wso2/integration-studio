@@ -110,27 +110,14 @@ public static void validateProjectField(Object value) throws FieldValidationExce
 	}
 }
 
-public static void isValidUrl(String url,String field) throws FieldValidationException{
-	if(url.contains(":") && !url.startsWith(":") ){
-		if(url.startsWith("http:") || url.startsWith("https:") || url.startsWith("ftp:")){
-			UrlValidator urlValidator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
-			if(!urlValidator.isValid(url)){
-				if(!isParameter(url,true)){
-					throw new FieldValidationException( field + ": Invalid URL provided");
-				}
-				
-			}
-		}
-	} else{
-		if(url.startsWith(":")){
-			throw new FieldValidationException( field + ": Invalid URL provided");
-		} else{
-			if(!isParameter(url,false)){
-				throw new FieldValidationException( field + ": Invalid URL provided");
-			}
+	public static void isValidUrl(String url, String field) throws FieldValidationException {
+
+		Pattern pattern = Pattern.compile("^\\w\\w+:/.*|file:.*|mailto:.*|vfs:.*");
+		Matcher matcher = pattern.matcher(url);
+		if (url.contains("\'") || url.contains("\"") || !(matcher.matches())) {
+			throw new FieldValidationException(field + ": Invalid URL provided");
 		}
 	}
-}
 
 private static boolean isParameter(String field,boolean partial){
 	Pattern pattern = Pattern.compile("\\$\\{(.*?)\\}");

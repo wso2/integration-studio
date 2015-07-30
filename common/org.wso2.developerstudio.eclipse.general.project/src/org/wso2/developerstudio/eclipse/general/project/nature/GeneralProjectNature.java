@@ -36,7 +36,7 @@ public class GeneralProjectNature extends AbstractWSO2ProjectNature {
 			MavenUtils.updateMavenProjectWithSkipTests(mavenProject);
 			
 			//Adding maven exec plugin entry
-			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.2", true);
+			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.4.0", true);
 	
 			{
 				PluginExecution pluginExecution = new PluginExecution();

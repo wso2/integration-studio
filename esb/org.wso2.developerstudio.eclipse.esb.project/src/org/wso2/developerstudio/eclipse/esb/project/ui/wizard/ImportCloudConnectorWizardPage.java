@@ -37,6 +37,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -147,6 +148,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 				int charcount = txtConnectorStoreURL.getCharCount();
 				txtConnectorStoreURL.setSelection(charcount);
 				setErrorMessage(null);
+				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
 				setPageComplete(true);
 				// validate();
 			}
@@ -174,6 +176,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		table.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				setErrorMessage(null);
+				((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
 				setPageComplete(true);
 			}
 		});
@@ -181,8 +184,8 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		TableColumn tc2 = new TableColumn(table, SWT.CENTER);
 		tc1.setText("Name");
 		tc2.setText("Version");
-		tc1.setWidth(350);
-		tc2.setWidth(70);
+		tc1.setWidth(390);
+		tc2.setWidth(120);
 		table.setHeaderVisible(true);
 		table.setLayoutData(gridData);
 		btnBrowse.addSelectionListener(new SelectionAdapter() {
@@ -237,6 +240,7 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 			return;
 		}
 		setErrorMessage(null);
+		((CloudConnectorImportWizard) getWizard()).getRemoveWizardPage().setPageComplete(true);
 		setPageComplete(true);
 	}
 		
@@ -317,6 +321,11 @@ public class ImportCloudConnectorWizardPage extends WizardPage {
 		}
 		in.close();
 		out.close();
+	}
+	
+	@Override
+	public IWizardPage getNextPage() {
+		return null;
 	}
 
 	public String getCloudConnectorPath() {

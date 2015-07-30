@@ -3,38 +3,10 @@
  <projectOptions title="Synapse Configuration Artifact Creation Wizard "
  				 description="Select how you would like to create your new project"
  				 error="Please select a method to create the project">
- 	   <option id="new.synapse" default="true">Create New Synapse Configuration</option>
-		<option id="new.synapse.tp">Create New Synapse Configuration with Template</option> 
 	  	<option id="import.synapse.config">Import Synapse Configuration from File System</option>
  </projectOptions>
  <projectOptionSettings>
-  	 <settings optionId="new.synapse"
- 			  		title="Synapse Configuration"
- 			  		description="Create a new Synapse Configuration" 
- 			  		error="Please give a name to synapse configuration file">
- 		   <data modelProperty="config.name"
- 					type="string" 
- 					fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController" >Synapse Configuration Name   </data>	
- 			<group id ="test1"/>		
- 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.synapse.validators.ESBProjectFilter" group="test1">Save Synapse Configuration in:</data>
-			<data modelProperty="create.esb.prj" type="link" group="test1" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
- 						
- 	</settings>
- 	 		<settings optionId="new.synapse.tp"
- 			 		  title="Synapse Configuration"
- 			  		  description="Create a Synapse Configuration using an existing synapse configuration file"
- 			  		  error="Please give a name to synapse configuration file">	  
- 	 		<data modelProperty="config.name"
- 				  type="string" 
- 				  fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController">Synapse Configuration Name   </data>		
- 			<data modelProperty="save.file" type="workspacefolder" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController" controlData="filterClass=org.wso2.developerstudio.eclipse.artifact.synapse.validators.ESBProjectFilter">Save Synapse Configuration in:</data>
-			<data modelProperty="create.esb.prj" type="link" fieldController="org.wso2.developerstudio.eclipse.artifact.synapse.validators.SynapseFieldsController" controlData="align=right">&lt;a&gt;Create new ESB Project...&lt;/a&gt;</data>
- 				  
- 		<projectNatures>
-			<nature>org.eclipse.jdt.core.javanature</nature>
-		</projectNatures>		
- 	</settings>
- 			<settings optionId="import.synapse.config" 
+		<settings optionId="import.synapse.config"
 				      title="Synapse Configuration" 
 				      description="Create a Synapse Configuration importing a synapse configuration from file system" 
 				      error="Browse and select a Synapse Configuration from file system">

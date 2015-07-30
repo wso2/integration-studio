@@ -31,12 +31,12 @@ public class JagApiProperties {
 	private static final String APP_USER_ROLES_URL_SFX = "/appmgt/site/blocks/application/users/get/ajax/list.jag";
 	private static final String APP_DB_INFO_URL ="/appmgt/site/blocks/rssmanager/add/ajax/add.jag";
 	private static final String APP_DS_INFO_URL ="/appmgt/site/blocks/resources/datasource/get/ajax/list.jag";
-	private static final String FORKED_VERSION_INFO_URL = "/appmgt/site/blocks/buildandrepo/list/ajax/list.jag"; 
+	private static final String FORKED_VERSION_INFO_URL = "/appmgt/site/blocks/reposBuilds/list/ajax/list.jag"; 
 	                                             
 	/*Actions*/
 	public static  final String USER_APP_LIST__ACTION = "getApplicationsOfUser";
 	public static final String App_NIFO_ACTION = "getAppVersionsInStage";
-	public static final String App_BUILD_NUMBER_ACTION = "buildinfobyappid";
+	public static final String App_BUILD_NUMBER_ACTION = "getBuildAndRepoDataForVersion";
 	public static final String App_BUILD_URL_ACTIONL = "getBuildLogsUrl";
 	public static final String App_BUILD_INFO_ACTION ="getbuildandrepodata";
 	public static final String FORKED_REPO_INFO_ACTION = "getbuildandrepodataforkedrepo";

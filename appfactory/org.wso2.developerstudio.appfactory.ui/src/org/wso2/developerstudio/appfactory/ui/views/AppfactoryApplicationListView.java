@@ -24,6 +24,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -1185,6 +1186,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 		if (info.getLocalRepo() == null || info.getLocalRepo().equals("")) { //$NON-NLS-1$
 			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
 			localRepo = workspace + File.separator + info.getAppName();
+			// Add relevant suffix to repo location
+			localRepo += (info.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
 			info.setLocalRepo(localRepo);
 		}
 		
@@ -1235,6 +1238,9 @@ public class AppfactoryApplicationListView extends ViewPart {
 				                                                                                  appInfo.getLocalRepo() +
 				                                                                                          File.separator +
 				                                                                                          PROJECT_DESCRIPTOR));
+				
+				String projectName = description.getName() + ((appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
+				description.setName(projectName);
 
 				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_3;
 				monitor.subTask(operationText);
@@ -1283,6 +1289,9 @@ public class AppfactoryApplicationListView extends ViewPart {
 				                                                                                          File.separator +
 				                                                                                          PROJECT_DESCRIPTOR)); //$NON-NLS-1$
 
+				String projectName = description.getName() + ((appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
+				description.setName(projectName);
+				
 				operationText = Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
 				monitor.subTask(operationText);
 				monitor.worked(5);
@@ -1292,9 +1301,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 					project.create(new SubProgressMonitor(monitor, 10));
 					project.open(new SubProgressMonitor(monitor, 10));
 				}
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE,
-				                                                      new SubProgressMonitor(monitor, 10));
-
 				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
 
 				if (monitor.isCanceled()) {
@@ -1304,6 +1310,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 				if (pomFile.exists()) {
 					executeMavenCommands(pomFile, monitor);
 				}
+				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE,
+                        new SubProgressMonitor(monitor, 10));
 
 			} catch(OperationCanceledException e) {
 				
@@ -1324,60 +1332,43 @@ public class AppfactoryApplicationListView extends ViewPart {
 	public boolean executeMavenCommands(File pomFile, IProgressMonitor monitor) throws InterruptedException{
 		
 		monitor.worked(10);
-		
 		try {
 			String operationText = Messages.AppfactoryApplicationListView_executeMavenCommands_text;
 			monitor.subTask(operationText);
 			printInfoLog(operationText);
-
 			InvocationResult result = mavenInstall(pomFile, monitor);
-
 			if (result.getExitCode() != 0) {
-
 				printErrorLog(Messages.AppfactoryApplicationListView_executeMavenCommands_errorlog_text);
 			}
-
 			monitor.worked(30);
-
 		} catch (MavenInvocationException e) {
 
 		}
-
 		if (monitor.isCanceled()) {
 			throw new InterruptedException(Messages.ImportingCancelled_Error);
 		}
-
 		try {
-
 			String operationText = Messages.AppfactoryApplicationListView_executeMavenCommands_text2;
 			monitor.subTask(operationText);
 			printInfoLog(operationText);
-
 			InvocationResult result = mavenEclipse(pomFile, monitor);
-
 			if (result.getExitCode() != 0) {
-
 				printErrorLog(Messages.AppfactoryApplicationListView_executeMavenCommands_errorlog_text2);
 			}
 			monitor.worked(20);
-
 		} catch (MavenInvocationException e) {
 			monitor.worked(50);
 		}
-		
 		return true;
 	}
 	
 	private InvocationResult mavenInstall(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
-		request.setPomFile( pomFile );		
-		request.setGoals(Collections.singletonList( MAVEN_CMD_INSTALL) );
-		Invoker invoker = new DefaultInvoker();		
-		InvocationResult result =  invoker.execute( request );
-		
-		request.setGoals(Collections.singletonList( MAVEN_CMD_CLEAN ));		
-		invoker.execute(request);
+		request.setPomFile(pomFile);		
+		request.setGoals(Arrays.asList(MAVEN_CMD_CLEAN, MAVEN_CMD_INSTALL));
+		Invoker invoker = new DefaultInvoker();
+		InvocationResult result = invoker.execute(request);
 		
 		return result;
 	}
@@ -1385,11 +1376,11 @@ public class AppfactoryApplicationListView extends ViewPart {
 	private static InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
-		request.setPomFile( pomFile );
-		request.setGoals( Collections.singletonList( MAVEN_CMD_ECLIPSE ) );
+		request.setPomFile(pomFile);
+		request.setGoals(Collections.singletonList(MAVEN_CMD_ECLIPSE));
 		Invoker invoker = new DefaultInvoker();
 		
-		return invoker.execute( request );
+		return invoker.execute(request);
 	}
-
+	
 }

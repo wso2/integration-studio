@@ -117,7 +117,7 @@ public class DataServiceProjectCreationWizard extends AbstractWSO2ProjectCreatio
 			MavenUtils.updateMavenProjectWithSkipTests(mavenProject);
 
 			// Adding maven exec plugin entry
-			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.2",
+			Plugin plugin = MavenUtils.createPluginEntry(mavenProject, "org.codehaus.mojo", "exec-maven-plugin", "1.4.0",
 					true);
 
 			{

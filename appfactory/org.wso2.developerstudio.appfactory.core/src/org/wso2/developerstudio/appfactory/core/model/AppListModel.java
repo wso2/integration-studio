@@ -25,6 +25,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
@@ -244,19 +246,39 @@ public class AppListModel {
 			return false;
 		} else {
 			JsonElement jelement = new JsonParser().parse(respond);
-			JsonArray infoArray = jelement.getAsJsonArray();
+			Set<Entry<String, JsonElement>> entrySet = jelement.getAsJsonObject().entrySet();
+			
 			ArrayList<AppVersionInfo> appVersionList = new ArrayList<AppVersionInfo>();
 			
-			for (JsonElement jsonElement2 : infoArray) {
-				JsonObject asJsonObject = jsonElement2.getAsJsonObject().get("version")
-				                                      .getAsJsonObject();
+			for (Entry<String, JsonElement> entry : entrySet) {
+				JsonObject asJsonObject = entry.getValue().getAsJsonObject().get("version").getAsJsonObject();
 
 				AppVersionInfo version = new AppVersionInfo();
-				version.setVersion(asJsonObject.get("current").getAsString());
-				version.setIsAutoBuild(asJsonObject.get("isAutoBuild").getAsString());
-				version.setIsAutoDeploy(asJsonObject.get("isAutoDeploy").getAsString());
-				version.setLastBuildResult(asJsonObject.get("currentBuildStatus").getAsString());
-				version.setRepoURL(asJsonObject.get("repoURL").getAsString());
+				if (!asJsonObject.get("current").isJsonNull()) {
+					version.setVersion(asJsonObject.get("current").getAsString());
+				} else {
+					version.setVersion("null");
+				}
+				if (!asJsonObject.get("isAutoBuild").isJsonNull()) {
+					version.setIsAutoBuild(asJsonObject.get("isAutoBuild").getAsString());
+				} else {
+					version.setIsAutoBuild("null");
+				}
+				if (!asJsonObject.get("isAutoDeploy").isJsonNull()) {
+					version.setIsAutoDeploy(asJsonObject.get("isAutoDeploy").getAsString());
+				} else {
+					version.setIsAutoDeploy("null");
+				}
+				if (!asJsonObject.get("currentBuildStatus").isJsonNull()) {
+					version.setLastBuildResult(asJsonObject.get("currentBuildStatus").getAsString());
+				} else {
+					version.setLastBuildResult("null");
+				}
+				if (!asJsonObject.get("repoURL").isJsonNull()) {
+					version.setRepoURL(asJsonObject.get("repoURL").getAsString());
+				} else {
+					version.setRepoURL("null");
+				}	
 				version.setAppName(applicationInfo.getKey());
 				version.setLocalRepo(applicationInfo.getLocalForkRepoLocation());
 				version.setAForkedRepo(true);

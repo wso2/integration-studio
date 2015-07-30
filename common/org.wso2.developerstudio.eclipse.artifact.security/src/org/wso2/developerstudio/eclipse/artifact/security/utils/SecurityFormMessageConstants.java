@@ -30,6 +30,8 @@ public class SecurityFormMessageConstants extends NLS {
 	public static String MESSAGE_SAVE_ERROR;
 	public static String MESSAGE_LOAD_UI_ERROR;
 	public static String MESSAGE_SERIALIZATION_SAVE_ERROR;
+	public static String USER_ROLES_NOT_SET_ERROR;
+	public static String SERVER_CONNECTION_FAILURE_MESSAGE;
 	public static String MESSAGE_UPDATE_SOURCE_ERROR;
 	public static String MESSAGE_READ_POLICY;
 	public static String MESSAGE_LOAD_PAGE;

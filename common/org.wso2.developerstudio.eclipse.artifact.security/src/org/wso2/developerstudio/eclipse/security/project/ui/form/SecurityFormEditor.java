@@ -46,177 +46,168 @@ import org.wso2.developerstudio.eclipse.security.Activator;
 
 public class SecurityFormEditor extends FormEditor {
 
-	private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
-	private static final String SECURITY_DESIGN_VIEW = "Design";
-	private static final String SECURITY_SOURCE_VIEW = "Source";
+    private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
+    private static final String SECURITY_DESIGN_VIEW = "Design";
+    private static final String SECURITY_SOURCE_VIEW = "Source";
 
-	private SecurityFormPage formPage;
-	private File file;
-	private IProject project;
-	private boolean isDesignDirty;
-	private boolean isSourceDirty;
-	private StructuredTextEditor sourceEditor;
-	private int formEditorIndex;
-	private int sourceEditorIndex;
-	private Display display;
-	private int count = 0;
+    private SecurityFormPage formPage;
+    private File file;
+    private IProject project;
+    private boolean isDesignDirty;
+    private boolean isSourceDirty;
+    private StructuredTextEditor sourceEditor;
+    private int formEditorIndex;
+    private int sourceEditorIndex;
+    private Display display;
 
-	/**
-	 * Initializes the security form editor
-	 * 
-	 * @throws PartInitException
-	 */
-	@Override
-	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
-		super.init(site, input);
+    /**
+     * Initializes the security form editor
+     *
+     * @throws PartInitException
+     */
+    @Override
+    public void init(IEditorSite site, IEditorInput input) throws PartInitException {
+        super.init(site, input);
 
-		file = getFile().getLocation().toFile();
-		project = getFile().getProject();
-		setPartName(getFile().getName());
-		display = Display.getCurrent();
-	}
+        file = getFile().getLocation().toFile();
+        project = getFile().getProject();
+        setPartName(getFile().getName());
+        display = Display.getCurrent();
+    }
 
-	@Override
-	protected void addPages() {
-		formPage = new SecurityFormPage(this, Activator.PLUGIN_ID, SECURITY_DESIGN_VIEW, project, file, display);
-		sourceEditor = new StructuredTextEditor();
-		sourceEditor.setEditorPart(this);
+    @Override
+    protected void addPages() {
+        formPage = new SecurityFormPage(this, Activator.PLUGIN_ID, SECURITY_DESIGN_VIEW, project, file, display);
+        sourceEditor = new StructuredTextEditor();
+        sourceEditor.setEditorPart(this);
 
-		try {
-			formEditorIndex = addPage(formPage);
-			sourceEditorIndex = addPage(sourceEditor, getEditorInput());
+        try {
+            formEditorIndex = addPage(formPage);
+            sourceEditorIndex = addPage(sourceEditor, getEditorInput());
+        } catch (PartInitException e) {
+            log.error("Cannot initialize SecurityDashboard page", e);
+            MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
+            msg.setMessage(SecurityFormMessageConstants.MESSAGE_FORM_LOAD_ERROR);
+            msg.open();
+        }
 
-		} catch (PartInitException e) {
-			log.error("Cannot initialize SecurityDashboard page", e);
-			MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
-			msg.setMessage(SecurityFormMessageConstants.MESSAGE_FORM_LOAD_ERROR);
-			msg.open();
-		}
+        setPageText(sourceEditorIndex, SECURITY_SOURCE_VIEW);
+        getDocument().addDocumentListener(new IDocumentListener() {
+            public void documentAboutToBeChanged(final DocumentEvent event) {
+            }
 
-		setPageText(sourceEditorIndex, SECURITY_SOURCE_VIEW);
-		getDocument().addDocumentListener(new IDocumentListener() {
-			public void documentAboutToBeChanged(final DocumentEvent event) {
-			}
+            public void documentChanged(final DocumentEvent event) {
+                isSourceDirty = true;
+                updateDirtyState();
+            }
+        });
+    }
 
-			public void documentChanged(final DocumentEvent event) {
-				isSourceDirty = true;
-				updateDirtyState();
-			}
-		});
-	}
+    @Override
+    public void doSave(IProgressMonitor pm) {
+        if (isDesignDirty && isSourceDirty) {
+            isSourceDirty = false;
+            isDesignDirty = false;
 
-	private IDocument getDocument() {
-		final IDocumentProvider provider = sourceEditor.getDocumentProvider();
-		return provider.getDocument(getEditorInput());
-	}
+            InputStream content = new ByteArrayInputStream(getDocument().get().getBytes());
+            try {
+                getFile().setContents(content, true, true, null);
+                content.close();
+                formPage.refreshProject();
+            } catch (CoreException | IOException e) {
+                log.error("Error in loading the Editor when deserializing", e);
+                MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
+                msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
+                msg.open();
+            }
+            formPage.updateUI(getDocument().get());
+            updateDirtyState();
+        } else if (isDesignDirty) {
+            formPage.doPageSave();
+            String content = formPage.doSourceUpdate();
+            getDocument().set(content);
+            isSourceDirty = false;
+            isDesignDirty = false;
+            updateDirtyState();
 
-	@Override
-	public void doSave(IProgressMonitor pm) {
-		if (isDesignDirty && isSourceDirty) {
-			isSourceDirty = false;
-			isDesignDirty = false;
+        } else if (isSourceDirty) {
+            isSourceDirty = false;
+            isDesignDirty = false;
 
-			InputStream content = new ByteArrayInputStream(getDocument().get().getBytes());
-			try {
-				getFile().setContents(content, true, true, null);
-				content.close();
-				formPage.RefreshProject();
-			} catch (CoreException | IOException e) {
-				log.error("Error in loading the Editor when deserializing", e);
-				MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
-				msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
-				msg.open();
-			}
-			formPage.updateUI(getDocument().get());
-			updateDirtyState();
-		} else if (isDesignDirty) {
-			formPage.doPageSave();
-			String content = formPage.doSourceUpdate();
-			getDocument().set(content);
-			isSourceDirty = false;
-			isDesignDirty = false;
-			updateDirtyState();
+            InputStream content = new ByteArrayInputStream(getDocument().get().getBytes());
+            try {
+                getFile().setContents(content, true, true, null);
+                content.close();
+                formPage.refreshProject();
+            } catch (CoreException | IOException e) {
+                log.error("Error in loading the Editor when deserializing", e);
+                MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
+                msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
+                msg.open();
+            }
+            formPage.updateUI(getDocument().get());
+            updateDirtyState();
 
-		} else if (isSourceDirty) {
-			isSourceDirty = false;
-			isDesignDirty = false;
+        }
+    }
 
-			InputStream content = new ByteArrayInputStream(getDocument().get().getBytes());
-			try {
-				getFile().setContents(content, true, true, null);
-				content.close();
-				formPage.RefreshProject();
-			} catch (CoreException | IOException e) {
-				log.error("Error in loading the Editor when deserializing", e);
-				MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
-				msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
-				msg.open();
-			}
-			formPage.updateUI(getDocument().get());
-			updateDirtyState();
+    @Override
+    protected void pageChange(int newPageIndex) {
+        if ((newPageIndex == sourceEditorIndex) && (isDesignDirty)) {
+            isSourceDirty = false;
+            isDesignDirty = false;
+            String content = formPage.doSourceUpdate();
+            getDocument().set(content);
+            updateDirtyState();
+        } else if ((newPageIndex == formEditorIndex) && (isSourceDirty)) {
+            isSourceDirty = false;
+            isDesignDirty = false;
+            String xmlSource = getDocument().get();
+            formPage.updateUI(xmlSource);
+            updateDirtyState();
+        }
+        super.pageChange(newPageIndex);
+        final IFormPage page = getActivePageInstance();
+        if (page != null) {
+            page.setFocus();
+        }
+    }
 
-		}
-	}
+    @Override
+    public void doSaveAs() {
+        //No logic is here since Save-As operation is not supported
+    }
 
-	private IFile getFile() {
-		final IEditorInput input = getEditorInput();
-		if (input instanceof FileEditorInput)
-			return ((FileEditorInput) input).getFile();
-		return null;
-	}
+    @Override
+    public boolean isSaveAsAllowed() {
+        return false;
+    }
 
-	public StructuredTextEditor getSourceEditor() {
-		return sourceEditor;
-	}
+    public boolean isDirty() {
+        return isDesignDirty || isSourceDirty;
+    }
 
-	@Override
-	protected void pageChange(int newPageIndex) {
-		count++;
-		if ((newPageIndex == sourceEditorIndex) && (isDesignDirty)) {
-			isSourceDirty = false;
-			isDesignDirty = false;
-			String content = formPage.doSourceUpdate();
-			getDocument().set(content);
-			updateDirtyState();
-		} else if ((newPageIndex == formEditorIndex) && (isSourceDirty)) {
-			isSourceDirty = false;
-			isDesignDirty = false;
-			String xmlSource = getDocument().get();
-			formPage.updateUI(xmlSource);
-			updateDirtyState();
-		}
-		if (count == 2) {
-			String content = formPage.doSourceUpdate();
-			getDocument().set(content);
-			isSourceDirty = false;
-			updateDirtyState();
+    public void updateDirtyState() {
+        isDesignDirty = formPage.isDirty();
+        firePropertyChange(PROP_DIRTY);
+        editorDirtyStateChanged();
+    }
 
-		}
-		super.pageChange(newPageIndex);
-		final IFormPage page = getActivePageInstance();
-		if (page != null) {
-			page.setFocus();
-		}
-	}
+    private IDocument getDocument() {
+        final IDocumentProvider provider = sourceEditor.getDocumentProvider();
+        return provider.getDocument(getEditorInput());
+    }
 
-	@Override
-	public void doSaveAs() {
-		formPage.doPageSave();
-	}
-
-	@Override
-	public boolean isSaveAsAllowed() {
-		return false;
-	}
-
-	public void updateDirtyState() {
-		isDesignDirty = formPage.isDirty();
-		firePropertyChange(PROP_DIRTY);
-		editorDirtyStateChanged();
-	}
-
-	public boolean isDirty() {
-		return isDesignDirty || isSourceDirty;
-	}
-
+    private IFile getFile() throws PartInitException {
+        final IEditorInput input = getEditorInput();
+        if (input instanceof FileEditorInput) {
+            return ((FileEditorInput) input).getFile();
+        } else {
+            log.error("Security form editor initiated for an invalid resource type");
+            MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
+            msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
+            msg.open();
+            throw new PartInitException("Security form editor initiated for an invalid resource type");
+        }
+    }
 }

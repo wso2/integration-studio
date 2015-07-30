@@ -16,6 +16,7 @@
 
 package org.wso2.developerstudio.eclipse.security.project.ui.dialog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -24,343 +25,357 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.*;
+import org.wso2.developerstudio.eclipse.artifact.security.utils.SecurityFormMessageConstants;
 import org.wso2.developerstudio.eclipse.security.project.utils.UserManagerUtils;
 
 public class UserRolesDialog extends Dialog {
 
-	private Label serverUrlLabel;
-	private Label userNameLabel;
-	private Label passwordLabel;
-	private Label roleNamePatternLabel;
-	private Label rolesLabel;
-	private Label inlineUserRolesLabel;
-	private Label rolesFromServerLabel;
+    private Text inlineUserRolesText;
+    private Text serverUrlText;
+    private Text userNameText;
+    private Text passwordText;
+    private Text roleNamePatternText;
 
-	private Text inlineUserRolesText;
-	private Text serverUrlText;
-	private Text userNameText;
-	private Text passwordText;
-	private Text roleNamePatternText;
+    private Button getRolesFromServerEnableButton;
+    private Button getRolesButton;
 
-	private Button inlineRadioButton;
-	private Button fromServerRadioButton;
-	private Button getRolesButton;
+    private Table userRolesTable;
 
-	private Table userRolesTable;
+    private List<String> selectedRoles;
+    private String selectedRolesInLine;
+    private List<String> originalRoleSet;
 
-	private List<String> selectedRoles;
-	private String roleSet;
+    public UserRolesDialog(Shell parentShell, List<String> selectedRoles, String selectedRolesInLine) {
+        super(parentShell);
+        setShellStyle(getShellStyle() | SWT.RESIZE);
+        this.selectedRoles = selectedRoles;
+        this.selectedRolesInLine = selectedRolesInLine;
 
-	public UserRolesDialog(Shell parentShell, List<String> roles, String allowRoles) {
-		super(parentShell);
-		setShellStyle(getShellStyle() | SWT.RESIZE);
-		this.selectedRoles = roles;
-		this.roleSet = allowRoles;
-	}
+        this.originalRoleSet = new ArrayList<String>();
+        this.originalRoleSet.addAll(selectedRoles);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
+    /**
+     * {@inheritDoc}
+     */
+    protected void configureShell(Shell newShell) {
+        super.configureShell(newShell);
+        // Set title.
+        newShell.setText("User Roles");
+    }
 
-		// Set title.
-		newShell.setText("User Roles");
-	}
+    protected Control createDialogArea(Composite parent) {
+        Composite container = (Composite) super.createDialogArea(parent);
+        FormLayout mainLayout = new FormLayout();
+        mainLayout.marginHeight = 5;
+        mainLayout.marginWidth = 5;
+        container.setLayout(mainLayout);
 
-	protected Control createDialogArea(Composite parent) {
-		Composite container = (Composite) super.createDialogArea(parent);
-		FormLayout mainLayout = new FormLayout();
-		mainLayout.marginHeight = 5;
-		mainLayout.marginWidth = 5;
-		container.setLayout(mainLayout);
+        inlineUserRolesText = new Text(container, SWT.SINGLE | SWT.BORDER);
+        {
+            FormData inlineUserRolesTextLayoutData = new FormData(100, SWT.DEFAULT);
+            inlineUserRolesTextLayoutData.top = new FormAttachment(0, 20);
+            inlineUserRolesTextLayoutData.left = new FormAttachment(30);
+            inlineUserRolesTextLayoutData.right = new FormAttachment(100, -5);
+            inlineUserRolesText.setLayoutData(inlineUserRolesTextLayoutData);
+            if (!StringUtils.isEmpty(selectedRolesInLine)) {
+                inlineUserRolesText.setText(selectedRolesInLine);
+            }
+        }
 
-		inlineRadioButton = new Button(container, SWT.RADIO);
-		{
-			inlineRadioButton.setText("Define Inline");
-			FormData inlineRadioButtonLayoutData = new FormData();
-			inlineRadioButtonLayoutData.top = new FormAttachment(0, 5);
-			inlineRadioButtonLayoutData.left = new FormAttachment(0);
-			inlineRadioButton.setLayoutData(inlineRadioButtonLayoutData);
-			inlineRadioButton.setSelection(true);
+        Label inlineUserRolesLabel = new Label(container, SWT.NONE);
+        {
+            inlineUserRolesLabel.setText("User Roles: ");
+            FormData inlineUserRolesLabelLayoutData = new FormData(20, SWT.DEFAULT);
+            inlineUserRolesLabelLayoutData.top = new FormAttachment(inlineUserRolesText, 0, SWT.CENTER);
+            inlineUserRolesLabelLayoutData.right = new FormAttachment(inlineUserRolesText, -5);
+            inlineUserRolesLabelLayoutData.left = new FormAttachment(0);
+            inlineUserRolesLabel.setLayoutData(inlineUserRolesLabelLayoutData);
+        }
 
-			inlineRadioButton.addListener(SWT.Selection, new Listener() {
-				public void handleEvent(Event event) {
-					updateUI(event);
-				}
-			});
-		}
-		
-		fromServerRadioButton = new Button(container, SWT.RADIO);
-		{
-			fromServerRadioButton.setText("Get from Server");
-			FormData fromServerRadioButtonLayoutData = new FormData();
-			fromServerRadioButtonLayoutData.top = new FormAttachment(0, 5);
-			fromServerRadioButtonLayoutData.left = new FormAttachment(inlineRadioButton, 50);
-			fromServerRadioButtonLayoutData.right = new FormAttachment(100, -5);
-			fromServerRadioButton.setLayoutData(fromServerRadioButtonLayoutData);
+        getRolesFromServerEnableButton = new Button(container, SWT.CHECK);
+        {
+            getRolesFromServerEnableButton.setText("Get Roles from Server");
+            FormData inlineRadioButtonLayoutData = new FormData();
+            inlineRadioButtonLayoutData.top = new FormAttachment(inlineUserRolesLabel, 10);
+            inlineRadioButtonLayoutData.left = new FormAttachment(0);
+            getRolesFromServerEnableButton.setLayoutData(inlineRadioButtonLayoutData);
 
-			fromServerRadioButton.addListener(SWT.Selection, new Listener() {
-				public void handleEvent(Event event) {
-					updateUI(event);
-				}
-			});
-		}
-		
-		inlineUserRolesText = new Text(container, SWT.SINGLE | SWT.BORDER);
-		{
-			FormData inlineUserRolesTextLayoutData = new FormData(100, SWT.DEFAULT);
-			inlineUserRolesTextLayoutData.top = new FormAttachment(fromServerRadioButton, 20);
-			inlineUserRolesTextLayoutData.left = new FormAttachment(fromServerRadioButton, 40, SWT.LEFT);
-			inlineUserRolesTextLayoutData.right = new FormAttachment(100, -5);
-			inlineUserRolesText.setLayoutData(inlineUserRolesTextLayoutData);
-			if(!StringUtils.isEmpty(roleSet)){
-				inlineUserRolesText.setText(roleSet);
-			}
-		}
-		
-		inlineUserRolesLabel = new Label(container, SWT.NONE);
-		{
-			inlineUserRolesLabel.setText("Inline User Roles: ");
-			FormData inlineUserRolesLabelLayoutData = new FormData(20, SWT.DEFAULT);
-			inlineUserRolesLabelLayoutData.top = new FormAttachment(inlineUserRolesText, 0, SWT.CENTER);
-			inlineUserRolesLabelLayoutData.right = new FormAttachment(inlineUserRolesText, -5);
-			inlineUserRolesLabelLayoutData.left = new FormAttachment(0);
-			inlineUserRolesLabel.setLayoutData(inlineUserRolesLabelLayoutData);
-		}
-			
-		serverUrlText = new Text(container, SWT.SINGLE | SWT.BORDER);
-		{
-			FormData serverUrlTextLayoutData = new FormData(100, SWT.DEFAULT);
-			serverUrlTextLayoutData.top = new FormAttachment(inlineUserRolesText, 25);
-			serverUrlTextLayoutData.left = new FormAttachment(inlineUserRolesText, 0, SWT.LEFT);
-			serverUrlTextLayoutData.right = new FormAttachment(100, -5);
-			serverUrlText.setLayoutData(serverUrlTextLayoutData);
-		}
-		
-		serverUrlLabel = new Label(container, SWT.NONE);
-		{
-			serverUrlLabel.setText("URL: ");
-			FormData serverUrlLabelLayoutData = new FormData(20, SWT.DEFAULT);
-			serverUrlLabelLayoutData.top = new FormAttachment(serverUrlText, 0, SWT.CENTER);
-			serverUrlLabelLayoutData.right = new FormAttachment(serverUrlText, -5);
-			serverUrlLabelLayoutData.left = new FormAttachment(0);
-			serverUrlLabel.setLayoutData(serverUrlLabelLayoutData);
-		}
+            getRolesFromServerEnableButton.addListener(SWT.Selection, new Listener() {
+                public void handleEvent(Event event) {
+                    updateServerRolesUI(getRolesFromServerEnableButton.getSelection());
+                }
+            });
+        }
 
-		userNameText = new Text(container, SWT.SINGLE | SWT.BORDER);
-		{
-			FormData userNameTextLayoutData = new FormData(100, SWT.DEFAULT);
-			userNameTextLayoutData.top = new FormAttachment(serverUrlText, 5);
-			userNameTextLayoutData.left = new FormAttachment(serverUrlText, 0, SWT.LEFT);
-			userNameTextLayoutData.right = new FormAttachment(100, -5);
-			userNameText.setLayoutData(userNameTextLayoutData);
-		}
+        serverUrlText = new Text(container, SWT.SINGLE | SWT.BORDER);
+        {
+            FormData serverUrlTextLayoutData = new FormData(100, SWT.DEFAULT);
+            serverUrlTextLayoutData.top = new FormAttachment(inlineUserRolesText, 35);
+            serverUrlTextLayoutData.left = new FormAttachment(inlineUserRolesText, 0, SWT.LEFT);
+            serverUrlTextLayoutData.right = new FormAttachment(100, -5);
+            serverUrlText.setLayoutData(serverUrlTextLayoutData);
 
-		userNameLabel = new Label(container, SWT.NONE);
-		{
-			userNameLabel.setText("Username: ");
-			FormData userNameLabelLayoutData = new FormData(25, SWT.DEFAULT);
-			userNameLabelLayoutData.top = new FormAttachment(userNameText, 0, SWT.CENTER);
-			userNameLabelLayoutData.right = new FormAttachment(userNameText, -5);
-			userNameLabelLayoutData.left = new FormAttachment(0);
-			userNameLabel.setLayoutData(userNameLabelLayoutData);
-		}
+            serverUrlText.addListener(SWT.KeyUp, new Listener() {
+                public void handleEvent(Event event) {
+                    validateServerInfo();
+                }
+            });
+        }
 
-		passwordText = new Text(container, SWT.SINGLE | SWT.BORDER | SWT.PASSWORD);
-		{
-			FormData passwordTextLayoutData = new FormData(100, SWT.DEFAULT);
-			passwordTextLayoutData.top = new FormAttachment(userNameText, 5);
-			passwordTextLayoutData.left = new FormAttachment(userNameText, 0, SWT.LEFT);
-			passwordTextLayoutData.right = new FormAttachment(100, -5);
-			passwordText.setLayoutData(passwordTextLayoutData);
-		}
+        Label serverUrlLabel = new Label(container, SWT.NONE);
+        {
+            serverUrlLabel.setText("URL: ");
+            FormData serverUrlLabelLayoutData = new FormData(20, SWT.DEFAULT);
+            serverUrlLabelLayoutData.top = new FormAttachment(serverUrlText, 0, SWT.CENTER);
+            serverUrlLabelLayoutData.right = new FormAttachment(serverUrlText, -5);
+            serverUrlLabelLayoutData.left = new FormAttachment(0);
+            serverUrlLabel.setLayoutData(serverUrlLabelLayoutData);
+        }
 
-		passwordLabel = new Label(container, SWT.None);
-		{
-			passwordLabel.setText("Password: ");
-			FormData passwordLabelLayoutData = new FormData(25, SWT.DEFAULT);
-			passwordLabelLayoutData.top = new FormAttachment(passwordText, 0, SWT.CENTER);
-			passwordLabelLayoutData.right = new FormAttachment(passwordText, -5);
-			passwordLabelLayoutData.left = new FormAttachment(0);
-			passwordLabel.setLayoutData(passwordLabelLayoutData);
-		}
+        userNameText = new Text(container, SWT.SINGLE | SWT.BORDER);
+        {
+            FormData userNameTextLayoutData = new FormData(100, SWT.DEFAULT);
+            userNameTextLayoutData.top = new FormAttachment(serverUrlText, 5);
+            userNameTextLayoutData.left = new FormAttachment(serverUrlText, 0, SWT.LEFT);
+            userNameTextLayoutData.right = new FormAttachment(100, -5);
+            userNameText.setLayoutData(userNameTextLayoutData);
 
-		roleNamePatternText = new Text(container, SWT.SINGLE | SWT.BORDER);
-		{
-			FormData roleNamePatternTextLayoutData = new FormData(100, SWT.DEFAULT);
-			roleNamePatternTextLayoutData.top = new FormAttachment(passwordText, 5);
-			roleNamePatternTextLayoutData.left = new FormAttachment(passwordText, 0, SWT.LEFT);
-			roleNamePatternTextLayoutData.right = new FormAttachment(100, -5);
-			roleNamePatternText.setLayoutData(roleNamePatternTextLayoutData);
-		}
+            userNameText.addListener(SWT.KeyUp, new Listener() {
+                public void handleEvent(Event event) {
+                    validateServerInfo();
+                }
+            });
+        }
 
-		roleNamePatternLabel = new Label(container, SWT.NONE);
-		{
-			roleNamePatternLabel.setText("Role name pattern (* for all):");
-			FormData roleNamePatternLabelLayoutData = new FormData(25, SWT.DEFAULT);
-			roleNamePatternLabelLayoutData.top = new FormAttachment(roleNamePatternText, 0,
-					SWT.CENTER);
-			roleNamePatternLabelLayoutData.right = new FormAttachment(roleNamePatternText, -5);
-			roleNamePatternLabelLayoutData.left = new FormAttachment(0);
-			roleNamePatternLabel.setLayoutData(roleNamePatternLabelLayoutData);
-		}
+        Label userNameLabel = new Label(container, SWT.NONE);
+        {
+            userNameLabel.setText("Username: ");
+            FormData userNameLabelLayoutData = new FormData(25, SWT.DEFAULT);
+            userNameLabelLayoutData.top = new FormAttachment(userNameText, 0, SWT.CENTER);
+            userNameLabelLayoutData.right = new FormAttachment(userNameText, -5);
+            userNameLabelLayoutData.left = new FormAttachment(0);
+            userNameLabel.setLayoutData(userNameLabelLayoutData);
+        }
 
-		rolesLabel = new Label(container, SWT.NONE);
-		{
-			rolesLabel.setText("Roles:");
-			FormData rolesLabelLayoutData = new FormData(25, SWT.DEFAULT);
-			rolesLabelLayoutData.top = new FormAttachment(roleNamePatternText, 10);
-			rolesLabelLayoutData.left = new FormAttachment(0);
-			rolesLabelLayoutData.right = new FormAttachment(100, -5);
-			rolesLabel.setLayoutData(rolesLabelLayoutData);
-		}
+        passwordText = new Text(container, SWT.SINGLE | SWT.BORDER | SWT.PASSWORD);
+        {
+            FormData passwordTextLayoutData = new FormData(100, SWT.DEFAULT);
+            passwordTextLayoutData.top = new FormAttachment(userNameText, 5);
+            passwordTextLayoutData.left = new FormAttachment(userNameText, 0, SWT.LEFT);
+            passwordTextLayoutData.right = new FormAttachment(100, -5);
+            passwordText.setLayoutData(passwordTextLayoutData);
 
-		getRolesButton = new Button(container, SWT.NONE);
-		{
-			getRolesButton.setText("Get Roles");
-			FormData getRolesButtonLayoutData = new FormData(80, SWT.DEFAULT);
-			getRolesButtonLayoutData.top = new FormAttachment(rolesLabel, 10);
-			getRolesButtonLayoutData.right = new FormAttachment(100, -5);
-			getRolesButton.setLayoutData(getRolesButtonLayoutData);
+            passwordText.addListener(SWT.KeyUp, new Listener() {
+                public void handleEvent(Event event) {
+                    validateServerInfo();
+                }
+            });
+        }
 
-			getRolesButton.addListener(SWT.Selection, new Listener() {
-				public void handleEvent(Event event) {
-					listRoles();
-				}
-			});
+        Label passwordLabel = new Label(container, SWT.None);
+        {
+            passwordLabel.setText("Password: ");
+            FormData passwordLabelLayoutData = new FormData(25, SWT.DEFAULT);
+            passwordLabelLayoutData.top = new FormAttachment(passwordText, 0, SWT.CENTER);
+            passwordLabelLayoutData.right = new FormAttachment(passwordText, -5);
+            passwordLabelLayoutData.left = new FormAttachment(0);
+            passwordLabel.setLayoutData(passwordLabelLayoutData);
+        }
 
-		}
+        roleNamePatternText = new Text(container, SWT.SINGLE | SWT.BORDER);
+        {
+            FormData roleNamePatternTextLayoutData = new FormData(100, SWT.DEFAULT);
+            roleNamePatternTextLayoutData.top = new FormAttachment(passwordText, 5);
+            roleNamePatternTextLayoutData.left = new FormAttachment(passwordText, 0, SWT.LEFT);
+            roleNamePatternTextLayoutData.right = new FormAttachment(100, -5);
+            roleNamePatternText.setLayoutData(roleNamePatternTextLayoutData);
+        }
 
-		userRolesTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION
-				| SWT.CHECK);
-		{
-			TableColumn nameColumn = new TableColumn(userRolesTable, SWT.CENTER);
-			TableColumn typeColumn = new TableColumn(userRolesTable, SWT.LEFT);
+        Label roleNamePatternLabel = new Label(container, SWT.NONE);
+        {
+            roleNamePatternLabel.setText("Role name pattern (* for all):");
+            FormData roleNamePatternLabelLayoutData = new FormData(25, SWT.DEFAULT);
+            roleNamePatternLabelLayoutData.top = new FormAttachment(roleNamePatternText, 0,
+                    SWT.CENTER);
+            roleNamePatternLabelLayoutData.right = new FormAttachment(roleNamePatternText, -5);
+            roleNamePatternLabelLayoutData.left = new FormAttachment(0);
+            roleNamePatternLabel.setLayoutData(roleNamePatternLabelLayoutData);
+        }
 
-			nameColumn.setText("Select");
-			nameColumn.setWidth(80);
-			typeColumn.setText("Name");
-			typeColumn.setWidth(200);
+        Label rolesLabel = new Label(container, SWT.NONE);
+        {
+            rolesLabel.setText("Roles:");
+            FormData rolesLabelLayoutData = new FormData(25, SWT.DEFAULT);
+            rolesLabelLayoutData.top = new FormAttachment(roleNamePatternText, 10);
+            rolesLabelLayoutData.left = new FormAttachment(0);
+            rolesLabelLayoutData.right = new FormAttachment(100, -5);
+            rolesLabel.setLayoutData(rolesLabelLayoutData);
+        }
 
-			userRolesTable.setHeaderVisible(true);
-			userRolesTable.setLinesVisible(true);
+        getRolesButton = new Button(container, SWT.NONE);
+        {
+            getRolesButton.setText("Get Roles");
+            FormData getRolesButtonLayoutData = new FormData(80, SWT.DEFAULT);
+            getRolesButtonLayoutData.top = new FormAttachment(rolesLabel, 10);
+            getRolesButtonLayoutData.right = new FormAttachment(100, -5);
+            getRolesButton.setLayoutData(getRolesButtonLayoutData);
 
-			Listener tblPropertiesListener = new Listener() {
+            getRolesButton.addListener(SWT.Selection, new Listener() {
+                public void handleEvent(Event event) {
+                    listRoles();
+                }
+            });
+        }
 
-				public void handleEvent(Event evt) {
-					if (null != evt.item) {
-						if (evt.item instanceof TableItem) {
-							TableItem item = (TableItem) evt.item;
-							// editItem(item);
-						}
-					}
-				}
-			};
+        userRolesTable = new Table(container, SWT.BORDER | SWT.FULL_SELECTION | SWT.HIDE_SELECTION
+                | SWT.CHECK);
+        {
+            TableColumn nameColumn = new TableColumn(userRolesTable, SWT.LEFT);
 
-			userRolesTable.addListener(SWT.Selection, tblPropertiesListener);
+            nameColumn.setText("Name");
+            nameColumn.setWidth(495);
 
-			FormData userRolesTableLayoutData = new FormData(500, 150);
-			userRolesTableLayoutData.top = new FormAttachment(getRolesButton, 0, SWT.TOP);
-			userRolesTableLayoutData.left = new FormAttachment(0);
-			userRolesTableLayoutData.right = new FormAttachment(getRolesButton, -5);
-			userRolesTableLayoutData.bottom = new FormAttachment(100);
-			userRolesTable.setLayoutData(userRolesTableLayoutData);
-		}
+            userRolesTable.setHeaderVisible(true);
+            userRolesTable.setLinesVisible(true);
 
-		{
-			// Set default values. 
-			serverUrlText.setText("https://localhost:9443/");
-			userNameText.setText("admin");
-			passwordText.setText("admin");
-			roleNamePatternText.setText("*");
-			
-			updateServerRolesUI(false);
-		}
+            FormData userRolesTableLayoutData = new FormData(500, 150);
+            userRolesTableLayoutData.top = new FormAttachment(getRolesButton, 0, SWT.TOP);
+            userRolesTableLayoutData.left = new FormAttachment(0);
+            userRolesTableLayoutData.right = new FormAttachment(getRolesButton, -5);
+            userRolesTableLayoutData.bottom = new FormAttachment(100);
+            userRolesTable.setLayoutData(userRolesTableLayoutData);
+        }
 
-		return container;
-	}
+        {
+            // Set default values.
+            serverUrlText.setText("https://localhost:9443/");
+            userNameText.setText("admin");
+            passwordText.setText("admin");
+            roleNamePatternText.setText("*");
 
-	private void listRoles() {		
-		// clear table.
-		userRolesTable.removeAll();
-		
-		if (StringUtils.isNotBlank(serverUrlText.getText())
-				&& StringUtils.isNotBlank(userNameText.getText())
-				&& StringUtils.isNotBlank(passwordText.getText())) {
-			UserManagerUtils.getInstance().init(serverUrlText.getText().trim(),
-					userNameText.getText().trim(), passwordText.getText().trim());
-			String filter;
-			if (StringUtils.isNotBlank(roleNamePatternText.getText())) {
-				filter = roleNamePatternText.getText().trim();
-			} else {
-				filter = "*";
-			}
+            updateServerRolesUI(false);
+        }
 
-			List<String> roles = UserManagerUtils.getInstance().getRoles(filter, 1000);
+        return container;
+    }
 
-			if (roles.size() >0 ) {
-				for (String role : roles) {
-					if(!role.equals("false")) {
-						TableItem item = new TableItem(userRolesTable, SWT.NONE);
-						item.setText(new String[] { "", role });
-					}
-					
-				}
-			}
-		}
-	}
+    @Override
+    protected void okPressed() {
+        String inlineUserRoles = inlineUserRolesText.getText().trim();
+        selectedRoles.clear();
+        if (StringUtils.isNotBlank(inlineUserRoles)) {
+            String[] roles = inlineUserRoles.split(",");
+            for (String role : roles) {
+                if (StringUtils.isNotBlank(role)) {
+                    selectedRoles.add(role);
+                }
+            }
+        }
+        super.okPressed();
+    }
 
-	@Override
-	protected void okPressed() {
-		if (inlineRadioButton.getSelection()) {
-			String inlineUserRoles = inlineUserRolesText.getText();
-			if (StringUtils.isNotBlank(inlineUserRoles)) {
-				String[] roles = inlineUserRoles.split(",");
-				for (int i = 0; i < roles.length; i++) {
-					if (StringUtils.isNotBlank(roles[i])) {
-						selectedRoles.add(roles[i].trim());
-					}
-				}
-			}
-		} else {
-			for (TableItem item : userRolesTable.getItems()) {
-				if (item.getChecked()) {
-					selectedRoles.add(item.getText(1));
-				}
-			}
-		}	
-		super.okPressed();
-	}
-	
-	private void updateUI(Event event) {
-		if (((Button)event.widget).getText().equals("Define Inline")) {
-			inlineUserRolesText.setEnabled(true);
-			updateServerRolesUI(false);
-			
-		} else {
-			updateServerRolesUI(true);
-			inlineUserRolesText.setEnabled(false);
-		}
-	}
-	
-	private void updateServerRolesUI(boolean enable) {
-		serverUrlText.setEnabled(enable);
-		userNameText.setEnabled(enable);
-		passwordText.setEnabled(enable);
-		roleNamePatternText.setEnabled(enable);
-		userRolesTable.setEnabled(enable);
-		getRolesButton.setEnabled(enable);
-	}
+    @Override
+    protected void cancelPressed() {
+        selectedRoles.clear();
+        selectedRoles.addAll(originalRoleSet);
+        super.cancelPressed();
+    }
+
+    private void listRoles() {
+        // clear table.
+        userRolesTable.removeAll();
+
+        UserManagerUtils.getInstance().init(serverUrlText.getText().trim(),
+                userNameText.getText().trim(), passwordText.getText().trim());
+
+        String filter;
+        if (StringUtils.isNotBlank(roleNamePatternText.getText())) {
+            filter = roleNamePatternText.getText().trim();
+        } else {
+            filter = "*";
+        }
+
+        List<String> roles;
+        try {
+            roles = UserManagerUtils.getInstance().getRoles(filter, 1000);
+        } catch (Exception e) {
+            //If the server connection fails due to connectivity issues or invalid credentials, showing an error message
+            MessageBox msg = new MessageBox(getShell(), SWT.ICON_ERROR);
+            msg.setMessage(SecurityFormMessageConstants.SERVER_CONNECTION_FAILURE_MESSAGE);
+            msg.open();
+            return;
+        }
+
+        for (final String role : roles) {
+            if (!role.equals("false")) {
+                TableItem item = new TableItem(userRolesTable, SWT.RIGHT);
+                item.setText(new String[]{role, role});
+                if (selectedRoles.contains(role)) {
+                    item.setChecked(true);
+                }
+            }
+        }
+
+        userRolesTable.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event event) {
+                updateSelectedRolesFromServer(event);
+            }
+        });
+    }
+
+    private void updateSelectedRolesFromServer(Event event) {
+        syncInlineRolesWithSelectedRoles();
+        if (event.detail == SWT.CHECK) {
+            TableItem selectedRole = (TableItem) event.item;
+            if (selectedRole.getChecked() && !selectedRoles.contains(selectedRole.getText(0).trim())) {
+                selectedRoles.add(selectedRole.getText(0).trim());
+            } else if (!selectedRole.getChecked() && selectedRoles.contains(selectedRole.getText(0).trim())) {
+                selectedRoles.remove(selectedRole.getText(0).trim());
+            }
+            updateUserRolesInLine();
+        }
+    }
+
+    private void syncInlineRolesWithSelectedRoles() {
+        String inlineUserRoles = inlineUserRolesText.getText().trim();
+        selectedRoles.clear();
+        if (StringUtils.isNotBlank(inlineUserRoles)) {
+            String[] roles = inlineUserRoles.split(",");
+            for (String role : roles) {
+                selectedRoles.add(role.trim());
+            }
+        }
+    }
+
+    private void updateUserRolesInLine() {
+        String rolesInLine = "";
+        for (int i = 0; i < selectedRoles.size(); i++) {
+            if (i == selectedRoles.size() - 1) {
+                rolesInLine += selectedRoles.get(i);
+            } else {
+                rolesInLine += selectedRoles.get(i) + ",";
+            }
+        }
+        inlineUserRolesText.setText(rolesInLine);
+        inlineUserRolesText.setFocus();
+    }
+
+    private void validateServerInfo() {
+        if (serverUrlText.getText().isEmpty() || userNameText.getText().isEmpty() || passwordText.getText().isEmpty()) {
+            getRolesButton.setEnabled(false);
+        } else {
+            getRolesButton.setEnabled(true);
+        }
+    }
+
+    private void updateServerRolesUI(boolean enable) {
+        serverUrlText.setEnabled(enable);
+        userNameText.setEnabled(enable);
+        passwordText.setEnabled(enable);
+        roleNamePatternText.setEnabled(enable);
+        userRolesTable.setEnabled(enable);
+        getRolesButton.setEnabled(enable);
+    }
 }

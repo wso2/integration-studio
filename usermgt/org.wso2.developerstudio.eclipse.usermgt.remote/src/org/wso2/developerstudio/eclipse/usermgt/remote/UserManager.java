@@ -33,6 +33,8 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.MessageBox;
 import org.wso2.carbon.core.services.authentication.AuthenticationAdminStub;
 import org.wso2.carbon.core.services.authentication.AuthenticationExceptionException;
 //import org.wso2.carbon.user.mgt.stub.GetUsersOfRoleUserAdminExceptionException;
@@ -181,6 +183,16 @@ public class UserManager {
 			log.error(e);
 		}
 		return new String[] {};
+	}
+
+	public String[] getUserRoles() throws Exception {
+
+		FlaggedName[] roles = getStub().getAllRolesNames("*", -1);
+		List<String> list = new ArrayList<String>();
+		for (FlaggedName flaggedName : roles) {
+			list.add(flaggedName.getItemName());
+		}
+		return list.toArray(new String[]{});
 	}
 
 	public String[] getRoles() {

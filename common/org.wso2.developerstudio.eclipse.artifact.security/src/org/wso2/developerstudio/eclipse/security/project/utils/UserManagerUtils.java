@@ -39,7 +39,6 @@ public class UserManagerUtils {
 		if (instance == null) {
 			instance = new UserManagerUtils();
 		}
-
 		return instance;
 	}
 
@@ -47,12 +46,12 @@ public class UserManagerUtils {
 		userManager = new UserManager(url, username, password);
 	}
 
-	public List<String> getRoles(String filter, int limit) {
+	public List<String> getRoles(String filter, int limit) throws Exception {
 		String[] userRoleList;
 		List<String> filteredRoleList = null;
 
 		if (userManager != null) {
-			userRoleList = userManager.getRoles();
+			userRoleList = userManager.getUserRoles();
 			filteredRoleList = new ArrayList<String>();
 			if (filter.equals("*")) {
 				filteredRoleList = Arrays.asList(userRoleList);

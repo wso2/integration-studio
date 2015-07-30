@@ -16,6 +16,9 @@
 
 package org.wso2.developerstudio.eclipse.security.project.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SecurityPolicyUtils {
 
 	private static SecurityPolicyUtils instance = null;
@@ -51,6 +54,18 @@ public class SecurityPolicyUtils {
 				SecurityPolicies.POLICY_TYPE_20 };
 
 		return advancedSecurityScenarios;
+	}
+
+	public List<String> getUserRoleRequiredSecurityScenarios() {
+		List<String> policies = new ArrayList<String>();
+
+		policies.add(SecurityPolicies.POLICY_TYPE_1);
+		policies.add(SecurityPolicies.POLICY_TYPE_7);
+		policies.add(SecurityPolicies.POLICY_TYPE_8);
+		policies.add(SecurityPolicies.POLICY_TYPE_14);
+		policies.add(SecurityPolicies.POLICY_TYPE_15);
+
+		return policies;
 	}
 
 	public String[] getRegistrySecurityScenarios() {

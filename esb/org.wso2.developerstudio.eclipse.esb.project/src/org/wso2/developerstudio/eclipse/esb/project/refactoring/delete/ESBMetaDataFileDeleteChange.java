@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2012-2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,19 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 		addTextEdits();
 	}
 
+	public ESBMetaDataFileDeleteChange(String name, IFile file, List<IFile> fileList) {
+		super(name, file);
+		setEdit(new MultiTextEdit());
+		for (IFile iFile : fileList) {
+			metaDataFile = file;
+			this.originalFile = iFile;
+			addTextEdits();
+		}
+
+	}
+
 	private void addTextEdits() {
-		if (metaDataFile.getName().equalsIgnoreCase("artifact.xml")) {
-			setEdit(new MultiTextEdit());
+		if ("artifact.xml".equalsIgnoreCase(metaDataFile.getName())) {
 			try {
 				identifyReplaces();
 			} catch (IOException e) {
@@ -61,7 +71,6 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 		String artifactStart = "<artifact";
 		String artifactEnd = "</artifact>";
 		String nameProperty = "name=\"";
-		String versionProperty = "version=\"";
 
 		List<String> artifactEntry = new ArrayList<String>();
 		boolean isArtifact = false;
@@ -71,6 +80,7 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 
 		int fullIndex = 0;
 		int startIndex = 0;
+		int spaceCount = 0;
 		BufferedReader reader =
 		                        new BufferedReader(new FileReader(metaDataFile.getLocation()
 		                                                                      .toFile()));
@@ -91,9 +101,17 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 
 			if (isArtifacts) {
 				isArtifactLine=false;
-				if (!isArtifact && line.trim().startsWith(artifactStart)) {
+				if (!isArtifact && line.trim().contains(artifactStart)) {
 					int artifactTagIndex = line.indexOf(artifactStart);
-					startIndex = fullIndex + artifactTagIndex;
+					spaceCount =0;
+					for (int stringIndex = artifactTagIndex-1; stringIndex >= 0 ; stringIndex--) {
+						if(line.charAt(stringIndex)==' '){
+							spaceCount++;
+						}else{
+							break;
+						}
+					}
+					startIndex = fullIndex + artifactTagIndex-spaceCount;
 					if (line.contains(nameProperty + fileName + "\"")) {
 						isArtifact = true;
 						artifactEntry.add(line.substring(artifactTagIndex));
@@ -120,7 +138,7 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 					for (String string : artifactEntry) {
 						length += charsOnTheLine(string);
 					}
-					addEdit(new DeleteEdit(startIndex, length));
+					addEdit(new DeleteEdit(startIndex, length + spaceCount));
 					break;
 				}
 
@@ -134,8 +152,9 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 
 	private int charsOnTheLine(String line) {
 		// Here we need to add one to represent the newline character
-		line+=System.getProperty( "line.separator" );
-		return line.length();
+		String lineModified = line;
+		lineModified += System.getProperty("line.separator");
+		return lineModified.length();
 	}
 
 }

@@ -100,22 +100,22 @@ public class ESBMetaDataFileDeleteChange extends TextFileChange {
 			}
 
 			if (isArtifacts) {
-				isArtifactLine=false;
+				isArtifactLine = false;
 				if (!isArtifact && line.trim().contains(artifactStart)) {
 					int artifactTagIndex = line.indexOf(artifactStart);
-					spaceCount =0;
-					for (int stringIndex = artifactTagIndex-1; stringIndex >= 0 ; stringIndex--) {
-						if(line.charAt(stringIndex)==' '){
+					spaceCount = 0;
+					for (int stringIndex = artifactTagIndex - 1; stringIndex >= 0; stringIndex--) {
+						if (line.charAt(stringIndex) == ' ') {
 							spaceCount++;
-						}else{
+						} else {
 							break;
 						}
 					}
-					startIndex = fullIndex + artifactTagIndex-spaceCount;
+					startIndex = fullIndex + artifactTagIndex - spaceCount;
 					if (line.contains(nameProperty + fileName + "\"")) {
 						isArtifact = true;
 						artifactEntry.add(line.substring(artifactTagIndex));
-						isArtifactLine=true;
+						isArtifactLine = true;
 					} else {
 						isArtifact = false;
 						artifactEntry.clear();

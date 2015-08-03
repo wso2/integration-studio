@@ -32,10 +32,18 @@ import java.util.List;
 
 public class SequenceProjectFieldController extends AbstractFieldController {
 
-	
+	private static final String ARTIFACT_NAME_ALREADY_EXISTS_ERROR = "Artifact name already exists";
+	private static final String ARTIFACT_XML_FILE_CORRUPTED_ERROR = "Corrupted artifact.xml file";
+	private static final String PROJECT_OR_PATH_DOESNT_EXISTS_ERROR = "Specified project or path doesn't exist";
+	private static final String REGISTRY_PATH_EMPTY_ERROR = "Registry path cannot be empty";
+	private static final String SELECT_ATLEAST_ONE_ARTIFACT_ERROR = "Please select at least one artifact";
+	private static final String MODEL_PROPERTY_SEQUENCE_NAME = "sequence.name";
+	private static final String ARTIFACT_XML_FILE_NAME = "artifact.xml";
+
+	@Override
 	public void validate(String modelProperty, Object value, ProjectDataModel model)
 	        throws FieldValidationException {
-		if (modelProperty.equals("sequence.name")) {
+		if (MODEL_PROPERTY_SEQUENCE_NAME.equals(modelProperty)) {
 		     CommonFieldValidator.validateArtifactName(value);
 			if (value != null) {
 				String resource = value.toString();
@@ -46,31 +54,30 @@ public class SequenceProjectFieldController extends AbstractFieldController {
 						IProject project = resLocation.getProject();
 						ESBProjectArtifact esbProjectArtifact = new ESBProjectArtifact();
 						try {
-							esbProjectArtifact.fromFile(project.getFile("artifact.xml").getLocation().toFile());
-							List<ESBArtifact> allArtifacts = esbProjectArtifact.getAllESBArtifacts();
-							for (ESBArtifact artifact : allArtifacts) {
-								if (resource.equals(artifact.getName())) {
-									throw new FieldValidationException("");
-								}
-							}
-
+							esbProjectArtifact.fromFile(project.getFile(ARTIFACT_XML_FILE_NAME).getLocation().toFile());
 						} catch (Exception e) {
-							throw new FieldValidationException("Artifact name already exsits");
+							throw new FieldValidationException(ARTIFACT_XML_FILE_CORRUPTED_ERROR);
+						}
+						List<ESBArtifact> allArtifacts = esbProjectArtifact.getAllESBArtifacts();
+						for (ESBArtifact artifact : allArtifacts) {
+							if (resource.equals(artifact.getName())) {
+								throw new FieldValidationException(ARTIFACT_NAME_ALREADY_EXISTS_ERROR);
+							}
 						}
 					}
-				}		 	 
-			}     
+				}
+			}
 		} else if (modelProperty.equals("import.file")) {
 			 CommonFieldValidator.validateImportFile(value);
 		}  else if (modelProperty.equals("save.file")) {
 			IResource resource = (IResource)value;
 			if(null== resource || !resource.exists())	
-				throw new FieldValidationException("Specified project or path doesn't exist");
+				throw new FieldValidationException(PROJECT_OR_PATH_DOESNT_EXISTS_ERROR);
 		} else if(modelProperty.equals("reg.browse")){
 			SequenceModel seqModel = (SequenceModel) model; 
 			if(seqModel.isSaveAsDynamic()){
 				if(null==value || value.toString().trim().isEmpty()){
-					throw new FieldValidationException("Registry path cannot be empty");
+					throw new FieldValidationException(REGISTRY_PATH_EMPTY_ERROR);
 				}
 			}
 			
@@ -78,7 +85,7 @@ public class SequenceProjectFieldController extends AbstractFieldController {
 			SequenceModel seqModel = (SequenceModel) model; 
 			if(null!=seqModel.getAvailableSeqList() && seqModel.getAvailableSeqList().size()>0){
 				if(null==seqModel.getSelectedSeqList() || seqModel.getSelectedSeqList().size() <=0){
-					throw new FieldValidationException("Please select at least one artifact");
+					throw new FieldValidationException(SELECT_ATLEAST_ONE_ARTIFACT_ERROR);
 				}
 		}
 		}

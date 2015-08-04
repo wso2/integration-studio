@@ -57,7 +57,7 @@ public class AppListLabelProvider extends StyledCellLabelProvider {
 
 			if (version.isCheckedout()) {
 
-				if (version.isAForkedRepo()) {
+				if (version.isForkedVersion()) {
 					text.append("forked -Checked out", StyledString.COUNTER_STYLER);
 				} else {
 					text.append("main -Checked out", StyledString.COUNTER_STYLER);
@@ -65,7 +65,7 @@ public class AppListLabelProvider extends StyledCellLabelProvider {
 
 			} else {
 
-				if (version.isAForkedRepo()) {
+				if (version.isForkedVersion()) {
 					text.append("forked", StyledString.DECORATIONS_STYLER);
 				} else {
 					text.append("main", StyledString.DECORATIONS_STYLER);

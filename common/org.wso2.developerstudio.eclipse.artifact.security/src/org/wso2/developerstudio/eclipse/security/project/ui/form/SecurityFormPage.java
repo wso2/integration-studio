@@ -152,7 +152,6 @@ public class SecurityFormPage extends FormPage {
     SecurityFormEditor formEditor;
 
     // UI components
-    private Button securityScenarioDisplayButton;
     private Button policyOneUserRolesButton;
     private Button policySevenUserRolesButton;
     private Button policyEightUserRolesButton;
@@ -170,7 +169,6 @@ public class SecurityFormPage extends FormPage {
     private Combo cmbRampartTimestampPrecision;
     private static Image securityScenarioBalloonBackgroundImage;
     private static Shell parentShell;
-    private Shell existingShell;
 
     private static final int NUM_OF_COLUMNS_GRID_LAYOUT_MAIN_PAGE = 6;
 
@@ -491,14 +489,18 @@ public class SecurityFormPage extends FormPage {
      *
      * @param scenarioNumber
      */
-    private void showSecurityScenarioGraphicalContent(int scenarioNumber) {
+    private void showPolicyUseCase(int scenarioNumber) {
 
-        String fileName = SecurityFormConstants.IMAGE_PREFIX + scenarioNumber + SecurityFormConstants.IMAGE_POSTFIX;
-        String relativeFilePath = SecurityFormConstants.RELATIVE_FOLDER_PATH + fileName;
         String shellTitle = SecurityFormConstants.SHELL_WINDOW_TITLE_PREFIX + scenarioNumber;
-        String securityScenarioTitle = getSecurityScenarioTitle(scenarioNumber);
-        if (!isSecurityScenarioBalloonAlreadyExists(shellTitle)) {
-            Shell shell = new Shell(parentShell);
+		Shell existingShell = getExistingUseCaseShell(shellTitle);
+		
+		if (existingShell == null) {
+
+			String fileName = SecurityFormConstants.IMAGE_PREFIX + scenarioNumber + SecurityFormConstants.IMAGE_POSTFIX;
+			String relativeFilePath = SecurityFormConstants.RELATIVE_FOLDER_PATH + fileName;
+			String securityScenarioTitle = getSecurityScenarioTitle(scenarioNumber);
+
+			Shell shell = new Shell(parentShell);
             Composite parent = new Composite(shell, SWT.NONE);
             shell.setBackgroundImage(securityScenarioBalloonBackgroundImage);
             shell.setLayout(new RowLayout());
@@ -2118,21 +2120,20 @@ public class SecurityFormPage extends FormPage {
     /**
      * Create button for balloon to show the description of a specific security scenario
      *
-     * @param seccomposite
+     * @param secComposite
      * @param scenarioNumber
      */
-    private void setSecurityScenarioDisplayButton(Composite seccomposite, final int scenarioNumber) {
+    private void insertPolicyViewButton(Composite secComposite, final int scenarioNumber) {
 
         Image buttonImage = ResourceManager.getPluginImage(PLUGIN_NAME,
                 SecurityFormConstants.SECURITY_SCENARIO_BUTTON_IMAGE_PATH);
-        securityScenarioDisplayButton = new Button(seccomposite, SWT.NONE);
+		Button securityScenarioDisplayButton = new Button(secComposite, SWT.NONE);
         securityScenarioDisplayButton.setImage(buttonImage);
         securityScenarioDisplayButton.setVisible(true);
         securityScenarioDisplayButton.addListener(SWT.Selection, new Listener() {
             @Override
             public void handleEvent(Event event) {
-                showSecurityScenarioGraphicalContent(scenarioNumber);
-                setPageDirty(true);
+                showPolicyUseCase(scenarioNumber);
                 updateDirtyState();
             }
         });
@@ -2146,12 +2147,12 @@ public class SecurityFormPage extends FormPage {
     /**
      * Creates the security items
      *
-     * @param seccomposite                   composite
+     * @param secComposite                   composite
      * @param names                          names
      * @param managedForm                    form
      * @param securityScenarioStartingNumber int value
      */
-    private void createSecurityScenarioOptionButtons(final Composite seccomposite, String[] names,
+    private void createSecurityScenarioOptionButtons(final Composite secComposite, String[] names,
                                                      IManagedForm managedForm, int securityScenarioStartingNumber,
                                                      Composite body) throws IOException,
             JAXBException {
@@ -2160,8 +2161,8 @@ public class SecurityFormPage extends FormPage {
         parentShell = new Shell(Display.getCurrent(), SWT.TITLE | SWT.CLOSE | SWT.BORDER);
         for (String name : names) {
             securityScenarioNumber++;
-            setSecurityScenarioDisplayButton(seccomposite, securityScenarioNumber);
-            final Button secBtn = new Button(seccomposite, SWT.RADIO);
+            insertPolicyViewButton(secComposite, securityScenarioNumber);
+            final Button secBtn = new Button(secComposite, SWT.RADIO);
             secBtn.setText("");
             secBtn.setToolTipText(name);
 
@@ -2184,15 +2185,15 @@ public class SecurityFormPage extends FormPage {
                 policyMap.put(policy2.getId(), secBtn);
             }
 
-            final ToolTip tip = new ToolTip(seccomposite.getShell(), SWT.BALLOON | SWT.ICON_INFORMATION);
+            final ToolTip tip = new ToolTip(secComposite.getShell(), SWT.BALLOON | SWT.ICON_INFORMATION);
             tip.setMessage(TIP_MESSAGE);
 
-            Hyperlink createHyperlink = managedForm.getToolkit().createHyperlink(seccomposite, name, SWT.RADIO);
+            Hyperlink createHyperlink = managedForm.getToolkit().createHyperlink(secComposite, name, SWT.RADIO);
             createHyperlink.addHyperlinkListener(new HyperlinkAdapter() {
                 @Override
                 public void linkActivated(HyperlinkEvent e) {
 
-                    Control[] children = seccomposite.getChildren();
+                    Control[] children = secComposite.getChildren();
                     for (Control child : children) {
                         if (child instanceof Button) {
                             ((Button) child).setSelection(false);
@@ -2213,7 +2214,7 @@ public class SecurityFormPage extends FormPage {
                 policyLinkGrdiData.horizontalSpan = 3;
                 createHyperlink.setLayoutData(policyLinkGrdiData);
 
-                policyOneUserRolesButton = new Button(seccomposite, SWT.NONE);
+                policyOneUserRolesButton = new Button(secComposite, SWT.NONE);
                 policyOneUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
                 policyOneUserRolesButton.setVisible(false);
                 policyOneUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -2236,7 +2237,7 @@ public class SecurityFormPage extends FormPage {
                 policyLinkGrdiData.horizontalSpan = 3;
                 createHyperlink.setLayoutData(policyLinkGrdiData);
 
-                policySevenUserRolesButton = new Button(seccomposite, SWT.NONE);
+                policySevenUserRolesButton = new Button(secComposite, SWT.NONE);
                 policySevenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
                 policySevenUserRolesButton.setVisible(false);
                 policySevenUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -2259,7 +2260,7 @@ public class SecurityFormPage extends FormPage {
                 policyLinkGrdiData.horizontalSpan = 3;
                 createHyperlink.setLayoutData(policyLinkGrdiData);
 
-                policyEightUserRolesButton = new Button(seccomposite, SWT.NONE);
+                policyEightUserRolesButton = new Button(secComposite, SWT.NONE);
                 policyEightUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
                 policyEightUserRolesButton.setVisible(false);
                 policyEightUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -2282,7 +2283,7 @@ public class SecurityFormPage extends FormPage {
                 policyLinkGrdiData.horizontalSpan = 3;
                 createHyperlink.setLayoutData(policyLinkGrdiData);
 
-                policyFourteenUserRolesButton = new Button(seccomposite, SWT.NONE);
+                policyFourteenUserRolesButton = new Button(secComposite, SWT.NONE);
                 policyFourteenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
                 policyFourteenUserRolesButton.setVisible(false);
                 policyFourteenUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -2305,7 +2306,7 @@ public class SecurityFormPage extends FormPage {
                 policyLinkGrdiData.horizontalSpan = 3;
                 createHyperlink.setLayoutData(policyLinkGrdiData);
 
-                policyFifteenUserRolesButton = new Button(seccomposite, SWT.NONE);
+                policyFifteenUserRolesButton = new Button(secComposite, SWT.NONE);
                 policyFifteenUserRolesButton.setText(SecurityFormConstants.USER_ROLE);
                 policyFifteenUserRolesButton.setVisible(false);
                 policyFifteenUserRolesButton.addListener(SWT.Selection, new Listener() {
@@ -2526,25 +2527,19 @@ public class SecurityFormPage extends FormPage {
 
     /**
      * This method checks whether there is an already opened shell with title @param securityScenarioTitle and returns
-     * true if it exists or false if it doesn't exist.
-     * <p/>
-     * If a shell with same title exists, this method also set existingShell variable to that shell.
+     * shell if it exists or null if it doesn't exist.
      *
      * @param securityScenarioTitle
      * @return
      */
-    private boolean isSecurityScenarioBalloonAlreadyExists(String securityScenarioTitle) {
-        int length = parentShell.getShells().length;
-        if (length != 0) {
-            for (Shell shell : parentShell.getShells()) {
-                if (shell.getText().equalsIgnoreCase(securityScenarioTitle)) {
-                    existingShell = shell;
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+	private Shell getExistingUseCaseShell(String securityScenarioTitle) {
+		for (Shell shell : parentShell.getShells()) {
+			if (shell.getText().equalsIgnoreCase(securityScenarioTitle)) {
+				return shell;
+			}
+		}
+		return null;
+	}
 
     /**
      * <p/>

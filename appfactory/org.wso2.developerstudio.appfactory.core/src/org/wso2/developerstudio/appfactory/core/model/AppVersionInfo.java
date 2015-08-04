@@ -28,7 +28,7 @@ public class AppVersionInfo {
 	  private String localRepo;
 	  private boolean isCheckedout;
 	  private boolean isbuildRequestCansel;
-	  private boolean isAForkedRepo;
+	  private boolean isForkedVersion;
 	  private AppVersionGroup versionGroup;
 	  
 	public String getIsAutoDeploy() {
@@ -101,12 +101,12 @@ public class AppVersionInfo {
 		this.isCheckedout = isCheckedout;
 	}
 
-	public boolean isAForkedRepo() {
-		return isAForkedRepo;
+	public boolean isForkedVersion() {
+		return isForkedVersion;
 	}
 
-	public void setAForkedRepo(boolean isAForkedRepo) {
-		this.isAForkedRepo = isAForkedRepo;
+	public void setForkedVersion(boolean isForkedVersion) {
+		this.isForkedVersion = isForkedVersion;
 	}
 
 	public AppVersionGroup getVersionGroup() {

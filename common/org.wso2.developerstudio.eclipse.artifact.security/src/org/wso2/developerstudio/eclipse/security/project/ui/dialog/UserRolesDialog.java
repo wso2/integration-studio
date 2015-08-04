@@ -31,15 +31,15 @@ import org.wso2.developerstudio.eclipse.security.project.utils.UserManagerUtils;
 
 public class UserRolesDialog extends Dialog {
 
+    private static final String COMMA_SEPARATOR = ",";
+
     private Text inlineUserRolesText;
     private Text serverUrlText;
     private Text userNameText;
     private Text passwordText;
     private Text roleNamePatternText;
-
     private Button getRolesFromServerEnableButton;
     private Button getRolesButton;
-
     private Table userRolesTable;
 
     private List<String> selectedRoles;
@@ -266,7 +266,7 @@ public class UserRolesDialog extends Dialog {
         String inlineUserRoles = inlineUserRolesText.getText().trim();
         selectedRoles.clear();
         if (StringUtils.isNotBlank(inlineUserRoles)) {
-            String[] roles = inlineUserRoles.split(",");
+            String[] roles = inlineUserRoles.split(COMMA_SEPARATOR);
             for (String role : roles) {
                 if (StringUtils.isNotBlank(role)) {
                     selectedRoles.add(role);
@@ -342,7 +342,7 @@ public class UserRolesDialog extends Dialog {
         String inlineUserRoles = inlineUserRolesText.getText().trim();
         selectedRoles.clear();
         if (StringUtils.isNotBlank(inlineUserRoles)) {
-            String[] roles = inlineUserRoles.split(",");
+            String[] roles = inlineUserRoles.split(COMMA_SEPARATOR);
             for (String role : roles) {
                 selectedRoles.add(role.trim());
             }
@@ -355,7 +355,7 @@ public class UserRolesDialog extends Dialog {
             if (i == selectedRoles.size() - 1) {
                 rolesInLine += selectedRoles.get(i);
             } else {
-                rolesInLine += selectedRoles.get(i) + ",";
+                rolesInLine += selectedRoles.get(i) + COMMA_SEPARATOR;
             }
         }
         inlineUserRolesText.setText(rolesInLine);

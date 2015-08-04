@@ -1145,7 +1145,7 @@ public class SecurityFormPage extends FormPage {
      * @return content
      * @throws TransformerException
      */
-    private String getUpdatedContent() throws TransformerException {
+    public String getUpdatedContent() throws TransformerException {
 
         Transformer transformer = getTransformer();
         StringWriter stw = new StringWriter();
@@ -1368,12 +1368,30 @@ public class SecurityFormPage extends FormPage {
                 kebSection.setVisible(false);
             }
         }
+        deSelectAllSecurityOptionButtons();
         Button button = policyMap.get(policyObject.getId());
         if (button != null) {
             button.setSelection(true);
             enableUserRoleButton(button);
             policyFileName = (String) button.getData();
             selectedPolicy = SecurityPolicyUtils.getInstance().getPolicyTypeFromPolicyUUID(policyObject.getId());
+        }
+    }
+
+    /**
+     * Deselect all security option buttons
+     *
+     */
+    private void deSelectAllSecurityOptionButtons() {
+        for (Button securityOptionButton : policyMap.values()) {
+            //Deselect security option buttons
+            securityOptionButton.setSelection(false);
+            //Hide User Roles button
+            policyOneUserRolesButton.setVisible(false);
+            policySevenUserRolesButton.setVisible(false);
+            policyEightUserRolesButton.setVisible(false);
+            policyFourteenUserRolesButton.setVisible(false);
+            policyFifteenUserRolesButton.setVisible(false);
         }
     }
 

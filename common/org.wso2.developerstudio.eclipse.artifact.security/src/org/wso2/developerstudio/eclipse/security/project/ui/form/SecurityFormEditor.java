@@ -44,6 +44,8 @@ import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
 import org.wso2.developerstudio.eclipse.security.Activator;
 
+import javax.xml.transform.TransformerException;
+
 public class SecurityFormEditor extends FormEditor {
 
     private static final IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -124,7 +126,16 @@ public class SecurityFormEditor extends FormEditor {
             updateDirtyState();
         } else if (isDesignDirty) {
             formPage.doPageSave();
-            String content = formPage.doSourceUpdate();
+            String content;
+            try {
+                content = formPage.getUpdatedContent();
+            } catch (TransformerException e) {
+                log.error("Error while getting updated source content", e);
+                MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
+                msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
+                msg.open();
+                return;
+            }
             getDocument().set(content);
             isSourceDirty = false;
             isDesignDirty = false;

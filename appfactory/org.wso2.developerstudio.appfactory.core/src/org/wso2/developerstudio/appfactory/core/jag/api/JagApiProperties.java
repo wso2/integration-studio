@@ -26,7 +26,7 @@ public class JagApiProperties {
 	private static final String LOGIN_URL_SFX  = "/appmgt/site/blocks/user/login/ajax/login.jag";
 	private static final String BUILD_NUMBER_URL_SFX  = "/appmgt/site/blocks/build/list/ajax/list.jag";
 	private static final String BUILD_INFO_URL_SFX  = "/appmgt/site/blocks/build/get/ajax/get.jag";
-	private static final String LAST_BUILD_URL_SFX  = "/appmgt/site/blocks/buildandrepo/list/ajax/list.jag";
+	private static final String LAST_BUILD_URL_SFX  = "/appmgt/site/blocks/reposBuilds/list/ajax/list.jag";
 	private static final String Build_APPLICATION_URL_SFX = "/appmgt/site/blocks/lifecycle/add/ajax/add.jag";
 	private static final String APP_USER_ROLES_URL_SFX = "/appmgt/site/blocks/application/users/get/ajax/list.jag";
 	private static final String APP_DB_INFO_URL ="/appmgt/site/blocks/rssmanager/add/ajax/add.jag";

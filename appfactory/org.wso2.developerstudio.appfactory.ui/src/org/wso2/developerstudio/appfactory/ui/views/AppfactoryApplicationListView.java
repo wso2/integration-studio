@@ -267,7 +267,9 @@ public class AppfactoryApplicationListView extends ViewPart {
 						        manager.add(checkOutAndImportAction(appVersionInfo));
 						        manager.add(importAction(appVersionInfo));
 						    	manager.add(checkOutAction(appVersionInfo));
-						    	manager.add(repoDeployAction(appVersionInfo));
+						    	if(!appVersionInfo.isForkedVersion()){
+						    		manager.add(repoDeployAction(appVersionInfo));
+						    	}
 						    	manager.add(buildInfoAction(appVersionInfo)); 
 						    	
 						    	
@@ -1187,7 +1189,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
 			localRepo = workspace + File.separator + info.getAppName();
 			// Add relevant suffix to repo location
-			localRepo += (info.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
+			localRepo += (info.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
 			info.setLocalRepo(localRepo);
 		}
 		
@@ -1239,7 +1241,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 				                                                                                          File.separator +
 				                                                                                          PROJECT_DESCRIPTOR));
 				
-				String projectName = description.getName() + ((appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
+				String projectName = description.getName() + ((appInfo.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
 				description.setName(projectName);
 
 				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_3;
@@ -1289,7 +1291,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 				                                                                                          File.separator +
 				                                                                                          PROJECT_DESCRIPTOR)); //$NON-NLS-1$
 
-				String projectName = description.getName() + ((appInfo.isAForkedRepo()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
+				String projectName = description.getName() + ((appInfo.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
 				description.setName(projectName);
 				
 				operationText = Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;

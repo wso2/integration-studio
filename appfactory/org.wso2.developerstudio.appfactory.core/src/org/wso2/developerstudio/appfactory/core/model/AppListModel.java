@@ -281,7 +281,7 @@ public class AppListModel {
 				}	
 				version.setAppName(applicationInfo.getKey());
 				version.setLocalRepo(applicationInfo.getLocalForkRepoLocation());
-				version.setAForkedRepo(true);
+				version.setForkedVersion(true);
 				appVersionList.add(version);
 			}
 			applicationInfo.setForkedversions(appVersionList);

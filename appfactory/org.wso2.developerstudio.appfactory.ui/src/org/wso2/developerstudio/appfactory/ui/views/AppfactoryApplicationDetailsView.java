@@ -26,6 +26,9 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.TableEditor;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
@@ -42,6 +45,7 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.wizards.IWizardDescriptor;
@@ -415,26 +419,27 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		scroller.setContent(composite);
 		scroller.setMinSize(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 
-		dataSourcesTable = new Table(composite, SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
+		dataSourcesTable = new Table(composite, SWT.MULTI | SWT.BORDER	| SWT.FULL_SELECTION);
 		dataSourcesTable.setLinesVisible(true);
 		dataSourcesTable.setHeaderVisible(true);
 		GridData data = new GridData(SWT.FILL, SWT.FILL, true, false);
 		dataSourcesTable.setLayoutData(data);
+		
 		datasourceTableEditor = new TableEditor(dataSourcesTable);
 		datasourceTableEditor.grabHorizontal = true;
-		
-		   dsConfigWizard = new Button(dataSourcesTable, SWT.PUSH);
-		   dsConfigWizard.setText("config wizard");
-		   dsConfigWizard.addSelectionListener(new SelectionListener() {
 
-			      public void widgetSelected(SelectionEvent arg0) {
-			    	  openDSSettingsWizard();
-			      }
+		dsConfigWizard = new Button(dataSourcesTable, SWT.PUSH);
+		dsConfigWizard.setText("config wizard");
+		dsConfigWizard.addSelectionListener(new SelectionListener() {
 
-			      public void widgetDefaultSelected(SelectionEvent arg0) {
-			    	  widgetSelected(arg0);
-			      }
-			    });
+			public void widgetSelected(SelectionEvent arg0) {
+				openDSSettingsWizard();
+			}
+
+			public void widgetDefaultSelected(SelectionEvent arg0) {
+				widgetSelected(arg0);
+			}
+		});
 
 
 		String[] titles = { "Name","DB Url","user"};
@@ -443,6 +448,32 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 			column.setText(titles[i]);
 			column.pack();
 		}
+		
+		final TableEditor editor = new TableEditor(dataSourcesTable);
+		editor.horizontalAlignment = SWT.LEFT;
+		editor.grabHorizontal = true;
+
+		dataSourcesTable.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				// Clean up any previous editor control
+				Control oldEditor = editor.getEditor();
+				if (oldEditor != null)
+					oldEditor.dispose();
+
+				// Identify the selected row
+				TableItem item = (TableItem) e.item;
+				if (item == null)
+					return;
+
+				final int dbURLIndex = 1;
+				Text uRLEditor = new Text(dataSourcesTable, SWT.NONE);
+				uRLEditor.setText(item.getText(dbURLIndex));
+				uRLEditor.setEditable(false);
+				uRLEditor.selectAll();
+				uRLEditor.setFocus();
+				editor.setEditor(uRLEditor, item, dbURLIndex);
+			}
+		});
 
 		dataSourcesTabItem.setControl(scroller);
 	}

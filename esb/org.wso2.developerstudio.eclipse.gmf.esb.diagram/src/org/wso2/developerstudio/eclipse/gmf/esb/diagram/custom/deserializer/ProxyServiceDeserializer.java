@@ -88,7 +88,7 @@ public class ProxyServiceDeserializer extends AbstractEsbNodeDeserializer<ProxyS
 			executeSetValueCommand(PROXY_SERVICE__WSDL_KEY, keyProperty);
 		}else if(object.getInLineWSDL()!=null){
 			executeSetValueCommand(PROXY_SERVICE__WSDL_TYPE, ProxyWsdlType.INLINE);
-			executeSetValueCommand(PROXY_SERVICE__WSDL_XML, object.getInLineWSDL());
+			executeSetValueCommand(PROXY_SERVICE__WSDL_XML, object.getInLineWSDL().toString());
 		}else{
 			executeSetValueCommand(PROXY_SERVICE__WSDL_TYPE, ProxyWsdlType.NONE);
 			hasPublishWsdl=false;

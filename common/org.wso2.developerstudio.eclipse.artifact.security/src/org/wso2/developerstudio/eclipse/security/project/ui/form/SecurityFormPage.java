@@ -100,6 +100,7 @@ import org.wso2.developerstudio.eclipse.security.project.utils.SecurityPolicies;
 import org.wso2.developerstudio.eclipse.security.project.utils.SecurityPolicyUtils;
 import org.wso2.developerstudio.eclipse.security.project.utils.SecurityTemplateUtil;
 import org.xml.sax.SAXException;
+import org.eclipse.swt.widgets.Control;
 
 public class SecurityFormPage extends FormPage {
     private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);

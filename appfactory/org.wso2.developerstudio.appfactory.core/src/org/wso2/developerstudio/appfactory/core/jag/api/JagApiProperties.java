@@ -32,6 +32,7 @@ public class JagApiProperties {
 	private static final String APP_DB_INFO_URL ="/appmgt/site/blocks/rssmanager/add/ajax/add.jag";
 	private static final String APP_DS_INFO_URL ="/appmgt/site/blocks/resources/datasource/get/ajax/list.jag";
 	private static final String FORKED_VERSION_INFO_URL = "/appmgt/site/blocks/reposBuilds/list/ajax/list.jag"; 
+	private static final String BUILD_LOGS_URL_SFX = "/appmgt/site/blocks/reposBuilds/get/ajax/get.jag";
 	                                             
 	/*Actions*/
 	public static  final String USER_APP_LIST__ACTION = "getApplicationsOfUser";
@@ -44,6 +45,7 @@ public class JagApiProperties {
 	public static final String App_USERS_ROLES_ACTION ="getUsersOfApplication";
 	public static final String App_DB_INFO_ACTION = "getDbUserTemplateInfoForStages";
 	public static final String App_DS_INFO_ACTION = "getDatasources";
+	public static final String PRINT_BUILD_LOGS = "printBuildLogs";
 	
 	public static String getDomain() {
 		return domain;
@@ -54,7 +56,9 @@ public class JagApiProperties {
 	public static String getAppInfoUrl(){
 		return domain + APP_INFO_URL_SFX;
 	}
-	
+	public static String getBuildLogsUrl(){
+		return domain + BUILD_LOGS_URL_SFX;
+	}
 	public static String getForkedAppInfoUrl(){
 		return domain + FORKED_VERSION_INFO_URL;
 	}

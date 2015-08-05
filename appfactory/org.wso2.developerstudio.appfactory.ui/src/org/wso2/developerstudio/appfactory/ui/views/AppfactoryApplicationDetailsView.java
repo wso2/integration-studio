@@ -168,7 +168,7 @@ public class AppfactoryApplicationDetailsView extends ViewPart {
 		removeChildControls(descriptionComposite);
 		
 		currentStatusTable.removeAll();
-		dataSourcesTable.removeAll();	
+		dataSourcesTable.clearAll();	
 		teamDetailsTable.removeAll();
 		
 	}

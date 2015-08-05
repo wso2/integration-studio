@@ -4,6 +4,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.wso2.developerstudio.appfactory.ui.utils.messages"; //$NON-NLS-1$
+	public static String AppfactoryApplicationListView_getLastBuildId_NotAvailable;
 	public static String AppfactoryApplicationListView_AppCheckoutAndImportJob_Faild;
 	public static String AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_1;
 	public static String AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_2;

@@ -30,6 +30,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.inject.Inject;
 
@@ -804,16 +806,44 @@ public class AppfactoryApplicationListView extends ViewPart {
 						    	 }
 						     }
 						    }
-							/*Getting Jenkins BuilderUrl by providing the buildId*/
-							String builderBaseUrl = getBuilderUrl(appInfo,buildId);
-							/*Getting jenkins log using above url*/
-							printJenkinsBuildLogs(appInfo, buildId,builderBaseUrl,monitor);
+						    // get logs of the last build and print in console view
+							printJenkinsBuildLogs(appInfo, buildId, monitor);
 
 						} catch (Exception e) {
 							printErrorLog(Messages.AppfactoryApplicationListView_getbuildLogsJob_pError_1+e.getMessage());	 
 							log.error("BuildLogs Error :",e); //$NON-NLS-1$
 						}
 
+					}
+
+					private void printJenkinsBuildLogs(AppVersionInfo appInfo,
+							int buildId, IProgressMonitor monitor) {
+						Map<String, String> params = new HashMap<String, String>();
+						params.put("action", JagApiProperties.PRINT_BUILD_LOGS);
+						params.put("applicationKey", appInfo.getAppName());
+						params.put("applicationVersion", appInfo.getVersion());
+						params.put("forkedRepository",
+								String.valueOf(appInfo.isForkedVersion()));
+						params.put("lastBuildId", String.valueOf(buildId));
+						params.put("tenantDomain", Authenticator.getInstance().getSelectedTenant());
+						BufferedReader rd = HttpsJaggeryClient.doHttpPost(
+								JagApiProperties.getBuildLogsUrl(), params);
+
+						String line = "";
+						try {
+							while ((line = rd.readLine()) != null) {
+								broker.send("update", line.toString()); 
+								Thread.sleep(100);
+							}
+						} catch (IOException | InterruptedException e) {
+							printErrorLog(e.getMessage());
+						} finally {
+							try {
+								rd.close();
+							} catch (IOException e) {
+								printErrorLog(e.getMessage());
+							}
+						}
 					}
 
 					private int deploy(final AppVersionInfo appInfo, int buildId) {
@@ -839,60 +869,14 @@ public class AppfactoryApplicationListView extends ViewPart {
 						return buildId;
 					}
 
-					private String getBuilderUrl(final AppVersionInfo appInfo,
-							int buidNo) {
-						Map<String, String> params;
-						params = new HashMap<String, String>();
-						params.put("action",JagApiProperties.App_BUILD_URL_ACTIONL); //$NON-NLS-1$
-						params.put("lastBuildNo", "" + buidNo); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("applicationVersion",appInfo.getVersion()); //$NON-NLS-1$
-						params.put("applicationKey",appInfo.getAppName()); //$NON-NLS-1$
-						params.put("userName",Authenticator.getInstance().getCredentials().getUser()); //$NON-NLS-1$
-						String builderBaseUrl = ""; //$NON-NLS-1$
-						builderBaseUrl = HttpsJaggeryClient.httpPost(JagApiProperties.getBuildInfoUrl(),params);
-						return builderBaseUrl;
-					}
-
-					private void printJenkinsBuildLogs(final AppVersionInfo appInfo, int buidNo,
-							String builderBaseUrl,IProgressMonitor monitor) throws IOException,InterruptedException {
-						printInfoLog(Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_0+buidNo);	  
-						while(true){
-						HttpResponse response = HttpsJenkinsClient
-								.getBulildinfo(
-										appInfo.getAppName(),
-										appInfo.getVersion(),
-										builderBaseUrl, buidNo);
-						if(response.getStatusLine().getStatusCode()==200){
-						HttpEntity entity = response.getEntity();
-						BufferedReader rd = new BufferedReader(
-								new InputStreamReader(response
-										.getEntity().getContent()));
-						String line;
-						while ((line = rd.readLine()) != null) {
-							broker.send("update", line.toString()); //$NON-NLS-1$
-							Thread.sleep(100);
-						}
-						EntityUtils.consume(entity);
-						break;
-						}else if(response.getStatusLine().getStatusCode()==404){
-							printErrorLog(Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_1 +
-									Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_2);	 
-							Thread.sleep(2000); 
-							if(monitor.isCanceled()){
-								printInfoLog(Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_3);	  
-								break;
-							}
-						}else{
-							printErrorLog(Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printErrorLog_3+response.getStatusLine().getStatusCode());
-							 break;
-						}
-					}	
-				}
-
 					private int getLastBuildId(final AppVersionInfo appInfo) {
 						credentials = Authenticator.getInstance().getCredentials();
 						Map<String, String> params = new HashMap<String, String>();
-						params.put("action",JagApiProperties.App_BUILD_INFO_ACTION); //$NON-NLS-1$
+						if (appInfo.isForkedVersion()) {
+							params.put("action", JagApiProperties.FORKED_REPO_INFO_ACTION); //$NON-NLS-1$
+						} else {
+							params.put("action", JagApiProperties.App_BUILD_INFO_ACTION); //$NON-NLS-1$
+						}
 						params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
 						params.put("applicationKey",appInfo.getAppName()); //$NON-NLS-1$
 						params.put("version", appInfo.getVersion()); //$NON-NLS-1$
@@ -913,33 +897,60 @@ public class AppfactoryApplicationListView extends ViewPart {
 					    			Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_2);  
 					      }
 						}
-						if(!"false".equals(respond)){ //$NON-NLS-1$
+						if (!"false".equals(respond)) { //$NON-NLS-1$
 							JsonElement jelement = new JsonParser().parse(respond);
-							JsonArray buildInfoArray;
 							int buildId = 0;
-								buildInfoArray = jelement.getAsJsonArray();
-								for (JsonElement jsonElement : buildInfoArray) 
-								{
+							JsonObject build = null;
+							//JSON response structure is different for forked versions
+							if (appInfo.isForkedVersion()) {
+								Set<Entry<String, JsonElement>> entrySet = jelement
+										.getAsJsonObject().entrySet();
+
+								for (Entry<String, JsonElement> entry : entrySet) {
+									JsonObject root = entry.getValue()
+											.getAsJsonObject();
+									JsonObject version = root.get("version")
+											.getAsJsonObject();
+									if (appInfo.getVersion().equals(
+											version.get("current")
+													.getAsString())) {
+										build = root.get("build")
+												.getAsJsonObject();
+									}
+								}
+
+							} else {
+								JsonArray buildInfoArray = jelement
+										.getAsJsonArray();
+								for (JsonElement jsonElement : buildInfoArray) {
 									JsonObject asJsonObject = jsonElement
 											.getAsJsonObject();
 									JsonElement jsonElement2 = asJsonObject
 											.get("version"); //$NON-NLS-1$
 									JsonObject asJsonObject2 = jsonElement2
 											.getAsJsonObject();
-									String asString = asJsonObject2.get("current") //$NON-NLS-1$
+									String asString = asJsonObject2.get(
+											"current") //$NON-NLS-1$
 											.getAsString();
 									if (asString.equals(appInfo.getVersion())) {
-										JsonElement jsonElement3 = asJsonObject
-												.get("build"); //$NON-NLS-1$
-										JsonObject asJsonObject3 = jsonElement3
+										build = asJsonObject
+												.get("build")
 												.getAsJsonObject();
-										buildId = asJsonObject3.get("lastBuildId") //$NON-NLS-1$
-												.getAsInt();
 										break;
 									}
 								}
-								printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_plog_Lastbuild+buildId);
-								return buildId;	
+							}
+							// NOTE : when lastBuildId is not available, it comes as String "null"
+							// not as primitive null, hence isJsonNull() method cannot be used to null check
+							if (build != null && build.get("lastBuildId").getAsString().equals("null")) {
+								buildId = -1;
+								printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_NotAvailable);
+							} else {
+								buildId = build.get("lastBuildId").getAsInt();
+							}
+							printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_plog_Lastbuild
+									+ buildId);
+							return buildId;
 						}
 						return 0;
 					}

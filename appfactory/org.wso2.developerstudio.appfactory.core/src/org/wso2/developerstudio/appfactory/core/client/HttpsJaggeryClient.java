@@ -16,6 +16,7 @@
 package org.wso2.developerstudio.appfactory.core.client;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.security.cert.CertificateException;
@@ -174,6 +175,44 @@ public class HttpsJaggeryClient {
  
      return respond;	       
   }
+
+	public static BufferedReader doHttpPost(String urlStr, Map<String, String> params) {
+
+		if (client == null) {
+			httpPostLogin(urlStr, params);
+		}
+		HttpPost post = new HttpPost(urlStr);
+		HttpResponse response = null;
+		BufferedReader reader = null;
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+			Set<String> keySet = params.keySet();
+			for (String key : keySet) {
+				nameValuePairs
+						.add(new BasicNameValuePair(key, params.get(key)));
+			}
+
+			post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			if (cookie != null) {
+				post.setHeader("Cookie", cookie);
+			}
+			response = client.execute(post);
+			
+			if (200 == response.getStatusLine().getStatusCode()) {
+				HttpEntity entity = response.getEntity();
+				reader = new BufferedReader(new InputStreamReader(
+							entity.getContent()));
+			}
+		} catch (Exception e) {
+			Authenticator.getInstance().setErrorcode(ErrorType.ERROR);
+			log.error("Connection failure", e);
+			return null;
+		} finally {
+			client.getConnectionManager().closeExpiredConnections();
+		}
+
+		return reader;
+	}
 	@SuppressWarnings("deprecation")
 	public static HttpClient wrapClient(HttpClient base,String urlStr) {
         try {

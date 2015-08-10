@@ -4,6 +4,7 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.wso2.developerstudio.appfactory.ui.utils.messages"; //$NON-NLS-1$
+    public static String AppfactoryApplicationListView_checkout_Folder_exists_error;
 	public static String AppfactoryApplicationListView_getLastBuildId_NotAvailable;
 	public static String AppfactoryApplicationListView_AppCheckoutAndImportJob_Faild;
 	public static String AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_1;
@@ -67,7 +68,8 @@ public class Messages extends NLS {
 	public static String AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_2;
 	public static String AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_3;
 	public static String AppfactoryApplicationListView_repoDeployAction_menu_name;
-	public static String AppfactoryApplicationListView_repoSettingsAction_changeRepoLocation_menu_name;
+	public static String AppfactoryApplicationListView_mainRepoSettingsAction_changeRepoLocation_menu_name;
+	public static String AppfactoryApplicationListView_forkedRepoSettingsAction_changeRepoLocation_menu_name;
 	public static String AppfactoryApplicationListView_repoSettingsAction_DirectoryDialog_title;
 	public static String AppfactoryApplicationListView_ShowLoginDialog_plog_msg_1;
 	public static String AppfactoryApplicationListView_ShowLoginDialog_plog_msg_2;

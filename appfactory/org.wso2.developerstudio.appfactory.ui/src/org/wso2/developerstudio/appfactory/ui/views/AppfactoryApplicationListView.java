@@ -48,6 +48,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -288,7 +289,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 						        
 						      
 						    	manager.add(appOpenAction(appInfo,title));
-						        manager.add(repoSettingsAction(appInfo));
+						        manager.add(mainRepoSettingsAction(appInfo));
+						        manager.add(forkedRepoSettingsAction(appInfo));
 						    }else if (selection.getFirstElement() instanceof AppVersionGroup){
 						    	
 						    //	AppVersionGroup group = (AppVersionGroup) selection.getFirstElement();
@@ -1015,8 +1017,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 		return reposetetings;
 	}	
 	
-	private Action repoSettingsAction(final ApplicationInfo appInfo) {
-		Action reposettings = new Action() {
+	private Action mainRepoSettingsAction(final ApplicationInfo appInfo) {
+		Action mainRepoSettings = new Action() {
 			public void run() {
 				try {
 					    DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent()
@@ -1032,7 +1034,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			};
        
 			public String getText() {
-				return Messages.AppfactoryApplicationListView_repoSettingsAction_changeRepoLocation_menu_name;
+				return Messages.AppfactoryApplicationListView_mainRepoSettingsAction_changeRepoLocation_menu_name;
 			}
 			@Override
 			public ImageDescriptor getImageDescriptor() {
@@ -1041,8 +1043,37 @@ public class AppfactoryApplicationListView extends ViewPart {
 				return  imageDescriptorFromPlugin;
 			}
 		};
-		return reposettings;
-	} 
+		return mainRepoSettings;
+	}
+	
+	private Action forkedRepoSettingsAction(final ApplicationInfo appInfo) {
+        Action forkedRepoSettings = new Action() {
+            public void run() {
+                try {
+                        DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent()
+                                .getActiveShell());
+                       dialog.setText(Messages.AppfactoryApplicationListView_repoSettingsAction_DirectoryDialog_title);
+                        if(dialog.open()!=null){
+                            appInfo.setLocalForkRepoLocation(dialog.getFilterPath());
+                            appInfo.updateVersions();
+                        }
+                } catch (Exception e) {
+                    log.error("", e); //$NON-NLS-1$
+                }
+            };
+       
+            public String getText() {
+                return Messages.AppfactoryApplicationListView_forkedRepoSettingsAction_changeRepoLocation_menu_name;
+            }
+            @Override
+            public ImageDescriptor getImageDescriptor() {
+                ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+                         "/icons/repoLocation.gif"); //$NON-NLS-1$
+                return  imageDescriptorFromPlugin;
+            }
+        };
+        return forkedRepoSettings;
+    }
  
 	private Action repoDeployAction(final AppVersionInfo info) {
 		Action reposettings = new Action() {
@@ -1195,19 +1226,36 @@ public class AppfactoryApplicationListView extends ViewPart {
 		monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_1);
 		printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_1);
 		monitor.worked(5);	 
-		String localRepo = "";
+		 
 		if (info.getLocalRepo() == null || info.getLocalRepo().equals("")) { //$NON-NLS-1$
 			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
-			localRepo = workspace + File.separator + info.getAppName();
+			String localRepo = workspace + File.separator + info.getAppName();
 			// Add relevant suffix to repo location
 			localRepo += (info.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
 			info.setLocalRepo(localRepo);
 		}
-		
-		monitor.worked(10);	
-		JgitRepoManager manager = new JgitRepoManager(localRepo,info.getRepoURL());
+        monitor.worked(10);	
+		JgitRepoManager manager = new JgitRepoManager(info.getLocalRepo(), info.getRepoURL());
 		
 		if(!manager.isCloned()){
+		    File localRepoDir = new File(info.getLocalRepo());
+	        if (localRepoDir.exists() && localRepoDir.isDirectory()) {
+	            if (localRepoDir.list().length > 0) {
+	                printErrorLog(localRepoDir.getPath()
+	                        + Messages.AppfactoryApplicationListView_checkout_Folder_exists_error);
+	                monitor.worked(15);
+	                return;
+	            } else if (localRepoDir.isDirectory() && localRepoDir.list().length == 0) {
+	                try {
+	                    localRepoDir.delete();
+	                } catch (Exception e) {
+	                    printErrorLog(localRepoDir.getPath()
+	                            + Messages.AppfactoryApplicationListView_checkout_Folder_exists_error);
+	                    monitor.worked(15);
+	                    return;
+	                }
+	            }
+	        }
 			manager.gitClone();
 			if(!"trunk".equals(info.getVersion())){	    //$NON-NLS-1$
 					manager.checkout(info.getVersion());
@@ -1221,7 +1269,13 @@ public class AppfactoryApplicationListView extends ViewPart {
 			monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_3);
 			printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_3);
 		}
-         info.setCheckedout(true);
+        info.setCheckedout(true);
+        try {
+            ResourcesPlugin.getWorkspace().getRoot()
+                    .refreshLocal(IResource.DEPTH_INFINITE, new SubProgressMonitor(monitor, 10));
+        } catch (CoreException e) {
+            log.error("Error refreshing workspace", e);
+        }
          broker.send("Projectupdate", null); //$NON-NLS-1$
 	}
 
@@ -1240,13 +1294,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_2;
 				monitor.subTask(operationText);
 				monitor.worked(10);
-
-				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-
-				if (pomFile.exists()) {
-					executeMavenCommands(pomFile, monitor);
-				}
-
 				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
 				                                                                                  appInfo.getLocalRepo() +
 				                                                                                          File.separator +
@@ -1260,11 +1307,23 @@ public class AppfactoryApplicationListView extends ViewPart {
 				monitor.worked(10);
 
 				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-				if (!project.exists()) {
-					project.create(monitor);
-					project.open(monitor);
-				}
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
+                if (!project.exists()) {
+                    project.create(monitor);
+                    project.open(monitor);
+                } else {
+                    printInfoLog("Skipped creating a new project since a project named \"" + projectName 
+                            + "\" already exists in workspace.");
+                }
+                File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
+                if (pomFile.exists()) {
+                    if (isMavenHomeFound()) {
+                        executeMavenCommands(pomFile, monitor);
+                    } else {
+                        printInfoLog("Skipped resolving dependencies automatically "
+                                + "as maven.home enviornment variable was not found.");
+                    }
+                }
+                ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
 				monitor.worked(80);
 
 			} catch (Throwable e) {
@@ -1273,7 +1332,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 				monitor.worked(10);
 				log.error("importing failed", e); //$NON-NLS-1$
 			}
-
 			monitor.worked(100);
 			monitor.done();
 		}
@@ -1310,22 +1368,27 @@ public class AppfactoryApplicationListView extends ViewPart {
 				monitor.worked(5);
 
 				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-				if (!project.exists()) {
-					project.create(new SubProgressMonitor(monitor, 10));
-					project.open(new SubProgressMonitor(monitor, 10));
-				}
-				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-
-				if (monitor.isCanceled()) {
-					throw new InterruptedException(Messages.ImportingCancelled_Error);
-				}
-
-				if (pomFile.exists()) {
-					executeMavenCommands(pomFile, monitor);
-				}
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE,
-                        new SubProgressMonitor(monitor, 10));
-
+                if (!project.exists()) {
+                    project.create(new SubProgressMonitor(monitor, 10));
+                    project.open(new SubProgressMonitor(monitor, 10));
+                } else {
+                    printInfoLog("Skipped creating a new project since a project named \"" + projectName 
+                            + "\" already exists in workspace.");
+                }
+                File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
+                if (monitor.isCanceled()) {
+                    throw new InterruptedException(Messages.ImportingCancelled_Error);
+                }
+                if (pomFile.exists()) {
+                    if (isMavenHomeFound()) {
+                        executeMavenCommands(pomFile, monitor);
+                    } else {
+                        printInfoLog("Skipped resolving dependencies automatically "
+                                + "as maven.home enviornment variable was not found.");
+                    }
+                }
+                ResourcesPlugin.getWorkspace().getRoot()
+                        .refreshLocal(IResource.DEPTH_INFINITE, new SubProgressMonitor(monitor, 10));
 			} catch(OperationCanceledException e) {
 				
 				 printErrorLog(e.getMessage());
@@ -1341,7 +1404,29 @@ public class AppfactoryApplicationListView extends ViewPart {
 			monitor.done();
 		}
 	}  
-	
+
+    private boolean isMavenHomeFound() {
+        return getMavenHome() != null;
+    }
+
+    private String getMavenHome() {
+        String mavenHome = null;
+        try {
+            if (System.getenv("M2_HOME") != null) {
+                mavenHome = System.getenv("M2_HOME");
+            } else if (System.getenv("MAVEN_HOME") != null) {
+                mavenHome = System.getenv("MAVEN_HOME");
+            } else if (System.getenv("M3_HOME") != null) {
+                mavenHome = System.getenv("M3_HOME");
+            } else if (System.getProperty("maven.home") != null) {
+                mavenHome = System.getProperty("maven.home");
+            }
+        } catch (Exception e) {
+            log.error("Error while reading maven home.", e);
+        }
+        return mavenHome;
+    }
+
 	public boolean executeMavenCommands(File pomFile, IProgressMonitor monitor) throws InterruptedException{
 		
 		monitor.worked(10);
@@ -1381,18 +1466,19 @@ public class AppfactoryApplicationListView extends ViewPart {
 		request.setPomFile(pomFile);		
 		request.setGoals(Arrays.asList(MAVEN_CMD_CLEAN, MAVEN_CMD_INSTALL));
 		Invoker invoker = new DefaultInvoker();
+		invoker.setMavenHome(new File(getMavenHome()));
 		InvocationResult result = invoker.execute(request);
 		
 		return result;
 	}
 	
-	private static InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
+	private InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
 		request.setPomFile(pomFile);
 		request.setGoals(Collections.singletonList(MAVEN_CMD_ECLIPSE));
 		Invoker invoker = new DefaultInvoker();
-		
+		invoker.setMavenHome(new File(getMavenHome()));
 		return invoker.execute(request);
 	}
 	

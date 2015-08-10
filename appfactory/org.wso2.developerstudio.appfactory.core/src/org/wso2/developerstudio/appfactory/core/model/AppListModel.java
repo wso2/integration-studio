@@ -16,45 +16,19 @@
 
 package org.wso2.developerstudio.appfactory.core.model;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.xml.namespace.QName;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.SOAPBody;
-import javax.xml.soap.SOAPElement;
-import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPMessage;
-
-import org.apache.axiom.om.impl.builder.StAXOMBuilder;
-import org.apache.http.HttpResponse;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.wso2.developerstudio.appfactory.core.Activator;
 import org.wso2.developerstudio.appfactory.core.authentication.Authenticator;
 import org.wso2.developerstudio.appfactory.core.client.HttpsJaggeryClient;
-import org.wso2.developerstudio.appfactory.core.client.RssClient;
 import org.wso2.developerstudio.appfactory.core.jag.api.JagApiProperties;
-import org.wso2.developerstudio.appfactory.core.model.AppVersionInfo;
-import org.wso2.developerstudio.appfactory.core.model.ApplicationInfo;
 import org.wso2.developerstudio.eclipse.logging.core.IDeveloperStudioLog;
 import org.wso2.developerstudio.eclipse.logging.core.Logger;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

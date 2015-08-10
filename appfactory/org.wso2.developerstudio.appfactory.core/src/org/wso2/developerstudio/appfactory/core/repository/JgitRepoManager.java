@@ -45,11 +45,11 @@ public class JgitRepoManager {
     	 this.localPath =localPath;
          this.remotePath = uri;
          File gitDir = new File(localPath +File.separator+ ".git");
-         if(gitDir.exists()){
-        	 setCloned(true);
-         }
          localRepo = FileRepositoryBuilder.create(gitDir);
-         git = new Git(localRepo); 
+         git = new Git(localRepo);
+         if(remotePath.equals(git.getRepository().getConfig().getString("remote","origin", "url"))){
+             setCloned(true);
+         }
          UserPasswordCredentials credentials = Authenticator.getInstance().getCredentials();
          provider = new UsernamePasswordCredentialsProvider(credentials.getGitUser(), credentials.getPassword());
          

@@ -82,6 +82,14 @@ import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
 import org.eclipse.jgit.api.errors.RefNotFoundException;
 import org.eclipse.jgit.api.errors.TransportException;
+import org.eclipse.m2e.core.MavenPlugin;
+import org.eclipse.m2e.core.embedder.MavenModelManager;
+import org.eclipse.m2e.core.project.IMavenProjectImportResult;
+import org.eclipse.m2e.core.project.IProjectConfigurationManager;
+import org.eclipse.m2e.core.project.LocalProjectScanner;
+import org.eclipse.m2e.core.project.MavenProjectInfo;
+import org.eclipse.m2e.core.project.ProjectImportConfiguration;
+import org.eclipse.m2e.core.project.ResolverConfiguration;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
@@ -1223,7 +1231,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			RefAlreadyExistsException,
 			RefNotFoundException, InvalidRefNameException,
 			CheckoutConflictException {
-		monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_1);
+		monitor.beginTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_1, 100);
 		printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_1);
 		monitor.worked(5);	 
 		 
@@ -1234,7 +1242,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			localRepo += (info.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
 			info.setLocalRepo(localRepo);
 		}
-        monitor.worked(10);	
+        monitor.worked(5);	
 		JgitRepoManager manager = new JgitRepoManager(info.getLocalRepo(), info.getRepoURL());
 		
 		if(!manager.isCloned()){
@@ -1243,7 +1251,6 @@ public class AppfactoryApplicationListView extends ViewPart {
 	            if (localRepoDir.list().length > 0) {
 	                printErrorLog(localRepoDir.getPath()
 	                        + Messages.AppfactoryApplicationListView_checkout_Folder_exists_error);
-	                monitor.worked(15);
 	                return;
 	            } else if (localRepoDir.isDirectory() && localRepoDir.list().length == 0) {
 	                try {
@@ -1251,21 +1258,22 @@ public class AppfactoryApplicationListView extends ViewPart {
 	                } catch (Exception e) {
 	                    printErrorLog(localRepoDir.getPath()
 	                            + Messages.AppfactoryApplicationListView_checkout_Folder_exists_error);
-	                    monitor.worked(15);
 	                    return;
 	                }
 	            }
 	        }
+	        monitor.worked(5);    
 			manager.gitClone();
+			monitor.worked(65); 
 			if(!"trunk".equals(info.getVersion())){	    //$NON-NLS-1$
 					manager.checkout(info.getVersion());
-					monitor.worked(15);
+					monitor.worked(10);
 					monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_2);
 					printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_2);
 				}
 		}else {
 			manager.checkout(info.getVersion());
-			monitor.worked(15);
+			monitor.worked(10);
 			monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_3);
 			printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_3);
 		}
@@ -1276,7 +1284,8 @@ public class AppfactoryApplicationListView extends ViewPart {
         } catch (CoreException e) {
             log.error("Error refreshing workspace", e);
         }
-         broker.send("Projectupdate", null); //$NON-NLS-1$
+        monitor.done();
+        broker.send("Projectupdate", null); //$NON-NLS-1$
 	}
 
 	private class AppImportJobJob implements IRunnableWithProgress {
@@ -1291,48 +1300,12 @@ public class AppfactoryApplicationListView extends ViewPart {
 			String operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_1;
 			monitor.beginTask(operationText, 100);
 			try {
-				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_2;
-				monitor.subTask(operationText);
-				monitor.worked(10);
-				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
-				                                                                                  appInfo.getLocalRepo() +
-				                                                                                          File.separator +
-				                                                                                          PROJECT_DESCRIPTOR));
-				
-				String projectName = description.getName() + ((appInfo.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
-				description.setName(projectName);
-
-				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_3;
-				monitor.subTask(operationText);
-				monitor.worked(10);
-
-				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-                if (!project.exists()) {
-                    project.create(monitor);
-                    project.open(monitor);
-                } else {
-                    printInfoLog("Skipped creating a new project since a project named \"" + projectName 
-                            + "\" already exists in workspace.");
-                }
-                File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-                if (pomFile.exists()) {
-                    if (isMavenHomeFound()) {
-                        executeMavenCommands(pomFile, monitor);
-                    } else {
-                        printInfoLog("Skipped resolving dependencies automatically "
-                                + "as maven.home enviornment variable was not found.");
-                    }
-                }
-                ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
-				monitor.worked(80);
-
+				importProject(appInfo, new SubProgressMonitor(monitor, 100));
 			} catch (Throwable e) {
 				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_4;
 				monitor.subTask(operationText);
-				monitor.worked(10);
 				log.error("importing failed", e); //$NON-NLS-1$
 			}
-			monitor.worked(100);
 			monitor.done();
 		}
 	}  
@@ -1349,51 +1322,9 @@ public class AppfactoryApplicationListView extends ViewPart {
 			String operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_1;
 			monitor.beginTask(operationText, 100);
 			try {
-				checkout(appInfo, monitor);
-				operationText =
-				                Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_2;
-				monitor.subTask(operationText);
-				monitor.worked(5);
-
-				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
-				                                                                                  appInfo.getLocalRepo() +
-				                                                                                          File.separator +
-				                                                                                          PROJECT_DESCRIPTOR)); //$NON-NLS-1$
-
-				String projectName = description.getName() + ((appInfo.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
-				description.setName(projectName);
+				checkout(appInfo, new SubProgressMonitor(monitor, 50));
+				importProject(appInfo, new SubProgressMonitor(monitor, 50));
 				
-				operationText = Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
-				monitor.subTask(operationText);
-				monitor.worked(5);
-
-				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-                if (!project.exists()) {
-                    project.create(new SubProgressMonitor(monitor, 10));
-                    project.open(new SubProgressMonitor(monitor, 10));
-                } else {
-                    printInfoLog("Skipped creating a new project since a project named \"" + projectName 
-                            + "\" already exists in workspace.");
-                }
-                File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-                if (monitor.isCanceled()) {
-                    throw new InterruptedException(Messages.ImportingCancelled_Error);
-                }
-                if (pomFile.exists()) {
-                    if (isMavenHomeFound()) {
-                        executeMavenCommands(pomFile, monitor);
-                    } else {
-                        printInfoLog("Skipped resolving dependencies automatically "
-                                + "as maven.home enviornment variable was not found.");
-                    }
-                }
-                ResourcesPlugin.getWorkspace().getRoot()
-                        .refreshLocal(IResource.DEPTH_INFINITE, new SubProgressMonitor(monitor, 10));
-			} catch(OperationCanceledException e) {
-				
-				 printErrorLog(e.getMessage());
-				 log.error("importing failed", e); //$NON-NLS-1$
-			
 			}catch(Throwable e){
 				 operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_Faild;
 				 monitor.subTask(operationText);
@@ -1405,10 +1336,11 @@ public class AppfactoryApplicationListView extends ViewPart {
 		}
 	}  
 
+	@Deprecated
     private boolean isMavenHomeFound() {
         return getMavenHome() != null;
     }
-
+	@Deprecated
     private String getMavenHome() {
         String mavenHome = null;
         try {
@@ -1426,7 +1358,7 @@ public class AppfactoryApplicationListView extends ViewPart {
         }
         return mavenHome;
     }
-
+	@Deprecated
 	public boolean executeMavenCommands(File pomFile, IProgressMonitor monitor) throws InterruptedException{
 		
 		monitor.worked(10);
@@ -1459,7 +1391,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 		}
 		return true;
 	}
-	
+	@Deprecated
 	private InvocationResult mavenInstall(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
@@ -1471,7 +1403,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 		
 		return result;
 	}
-	
+	@Deprecated
 	private InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
@@ -1481,5 +1413,70 @@ public class AppfactoryApplicationListView extends ViewPart {
 		invoker.setMavenHome(new File(getMavenHome()));
 		return invoker.execute(request);
 	}
+
+    protected void importProject(AppVersionInfo appInfo, IProgressMonitor monitor) throws CoreException, InterruptedException {
+        String operationText = "Start importing project to workspace.";
+        monitor.beginTask(operationText, 100);
+        IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(
+                new Path(appInfo.getLocalRepo() + File.separator + PROJECT_DESCRIPTOR));
+
+        String projectName = description.getName()
+                + ((appInfo.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
+        description.setName(projectName);
+
+        operationText = "Preparing project " + projectName + " to import";
+        monitor.subTask(operationText);
+        monitor.worked(15);
+
+        final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
+        if (!project.exists()) {
+            File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
+            // If this is a maven project, import it using m2e API
+            if (pomFile.exists()) {
+                try {
+                    IProjectConfigurationManager configurationManager = MavenPlugin.getProjectConfigurationManager();
+                    MavenModelManager mavenModelManager = MavenPlugin.getMavenModelManager();
+                    LocalProjectScanner scanner = new LocalProjectScanner(ResourcesPlugin.getWorkspace().getRoot()
+                            .getLocation().toFile(), //
+                            appInfo.getLocalRepo(), false, mavenModelManager);
+                    operationText = "Scanning maven project.";
+                    monitor.subTask(operationText);
+                    scanner.run(new SubProgressMonitor(monitor, 15));
+
+                    Set<MavenProjectInfo> projectSet = configurationManager.collectProjects(scanner.getProjects());
+
+                    ProjectImportConfiguration configuration = new ProjectImportConfiguration();
+                    operationText = "importing maven project.";
+                    monitor.subTask(operationText);
+                    List<IMavenProjectImportResult> importResults = configurationManager.importProjects(projectSet,
+                            configuration, new SubProgressMonitor(monitor, 60));
+                } catch (Exception e) {
+                    log.error("Failed to import project using m2e. Now attempting a normal import.", e);
+                    operationText = "Creating a new project.";
+                    monitor.subTask(operationText);
+                    project.create(new SubProgressMonitor(monitor, 30));
+                    operationText = "openning new project.";
+                    monitor.subTask(operationText);
+                    project.open(new SubProgressMonitor(monitor, 30));
+                }
+            } else {
+                operationText = "Creating a new project.";
+                monitor.subTask(operationText);
+                project.create(new SubProgressMonitor(monitor, 30));
+                operationText = "openning new project.";
+                monitor.subTask(operationText);
+                project.open(new SubProgressMonitor(monitor, 30));
+            }
+
+        } else {
+            printInfoLog("Skipped creating a new project since a project named \"" + projectName
+                    + "\" already exists in workspace.");
+        }
+        operationText = "Refreshing workspace.";
+        monitor.subTask(operationText);
+        ResourcesPlugin.getWorkspace().getRoot()
+                .refreshLocal(IResource.DEPTH_INFINITE, new SubProgressMonitor(monitor, 10));
+        monitor.done();
+    }
 	
 }

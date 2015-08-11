@@ -92,23 +92,23 @@ public class JgitRepoManager {
 		   .call();
 	}
 	
-	public void checkout(String branch) throws RefAlreadyExistsException,
-	RefNotFoundException, InvalidRefNameException,
-	CheckoutConflictException, GitAPIException, IOException {
-		 if ("trunk".equals(branch)){
-			 branch ="master";
-		 }
-          Ref ref = git.getRepository().getRef(branch);
-          if(ref==null){
-        	  checkoutRemoteBranch(branch);
-          }else {
-        	  checkoutLocalBranch(branch);
-          }
+    public void checkout(String branch) throws RefAlreadyExistsException, RefNotFoundException,
+            InvalidRefNameException, CheckoutConflictException, GitAPIException, IOException {
+        if ("trunk".equals(branch)) {
+            branch = "master";
         }
+        Ref ref = git.getRepository().getRef(branch);
+        if (ref == null) {
+            checkoutRemoteBranch(branch);
+        } else {
+            checkoutLocalBranch(branch);
+        }
+    }
 
 	public void checkoutRemoteBranch(String branch) throws RefAlreadyExistsException,
 			RefNotFoundException, InvalidRefNameException,
 			CheckoutConflictException, GitAPIException {
+	         git.fetch().setRemote("origin").setCredentialsProvider(provider).call();
 		     git.checkout()
 				.setCreateBranch(true)
 				.setName(branch)

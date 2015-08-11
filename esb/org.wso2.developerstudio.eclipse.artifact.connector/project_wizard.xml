@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard>
+ <projectOptions title="Connector Artifact Creation Wizard "
+ 				 description="Select how you would like to create your new project"
+ 				 error="Please select a method to create the project">
+ 	<option id="library.artifact" default="true">Create New Connector Project</option>
+ </projectOptions>
+ <projectOptionSettings>
+ 	<settings optionId="library.artifact"
+ 			  		title="Connector Project"
+ 			  		description="Create a new connector project"
+ 			  		error="Please give a name to create the connector project">
+ 		<data modelProperty="project.name"
+ 					type="string" 
+ 					fieldController="org.wso2.developerstudio.eclipse.artifact.connector.validator.ConnectorFieldsController">Project Name</data>
+ 		
+ 		<projectNatures>
+			<nature>org.eclipse.jdt.core.javanature</nature>
+		</projectNatures>
+		
+ 	</settings>
+ </projectOptionSettings>
+</wizard>

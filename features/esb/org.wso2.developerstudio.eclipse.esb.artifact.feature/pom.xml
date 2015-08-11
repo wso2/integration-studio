@@ -62,6 +62,7 @@
 				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.messagestore:${esb.messagestore.artifact.version}</bundleDef>
 				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.messageprocessor:${esb.messageprocessor.artifact.version}</bundleDef>
 				<bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.inboundendpoint:${esb.tools.version}</bundleDef>
+                                <bundleDef>org.wso2.developerstudio:org.wso2.developerstudio.eclipse.artifact.connector:${esb.tools.version}</bundleDef>
                             </bundles>
                         </configuration>
                     </execution>

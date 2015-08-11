@@ -69,6 +69,7 @@ public class Constants extends NLS{
    public static String RECOMMENDED_JAVA_VERSION_MESSAGE;
    public static String JAVA_VERSION_ALERT_MESSAGE;
    public static String MAVEN_MULTI_MODULE_PROJECT_NATURE;
+   public static String CONNECTOR_PROJECT_NATURE;
 
    static {
       // initialize resource bundle, this will load all constants from PROPERTIES_FILE_BASE_NAME file to this class
@@ -99,6 +100,7 @@ public class Constants extends NLS{
       list.add(JAGGERY_NATURE);
       list.add(SERVICE_META_PROJECT_NATURE);
       list.add(MAVEN_MULTI_MODULE_PROJECT_NATURE);
+      list.add(CONNECTOR_PROJECT_NATURE);
 
       return list;
    }

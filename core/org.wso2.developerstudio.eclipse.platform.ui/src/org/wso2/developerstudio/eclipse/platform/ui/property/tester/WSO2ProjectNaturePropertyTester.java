@@ -50,7 +50,7 @@ public class WSO2ProjectNaturePropertyTester extends PropertyTester {
             List<String> wso2ProjectNatures = Constants.getAllNatures();
             for (String nature : wso2ProjectNatures) {
                 try {
-                    if (project.hasNature(nature)) {
+					if (project.isOpen() && project.hasNature(nature)) {
                         return true;
                     }
                 } catch (CoreException e) {

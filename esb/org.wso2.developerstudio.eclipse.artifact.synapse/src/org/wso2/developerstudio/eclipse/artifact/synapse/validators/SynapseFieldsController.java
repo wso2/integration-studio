@@ -18,7 +18,7 @@ package org.wso2.developerstudio.eclipse.artifact.synapse.validators;
 
 import java.io.File;
 import java.util.List;
-
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -50,7 +50,7 @@ public class SynapseFieldsController extends AbstractFieldController {
 				throw new FieldValidationException(SYNAPSE_CONFIG_NAME_EMPTY_ERROR);
 			}
 			String projectName = value.toString();
-			if ("".trim().equals(projectName)) {
+			if (StringUtils.isBlank(projectName)) {
 				throw new FieldValidationException(SYNAPSE_CONFIG_NAME_EMPTY_ERROR);
 			}
 			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
@@ -69,7 +69,7 @@ public class SynapseFieldsController extends AbstractFieldController {
 
 			if (java.io.File.class.equals(value.getClass())) {
 				String name = value.toString();
-				if ("".equals(name.trim())) {
+				if (StringUtils.isBlank(name)) {
 					throw new FieldValidationException(CONFIG_FILE_LOCATION_INVALID_ERROR);
 				} else {
 					File configFile = (File) value;
@@ -78,7 +78,7 @@ public class SynapseFieldsController extends AbstractFieldController {
 					}
 				}
 			}
-			if (synapseModel.getSelectedArtifacts().isEmpty() || synapseModel.getSelectedArtifacts().size() <= 0) {
+			if (synapseModel.getSelectedArtifacts().isEmpty()) {
 				throw new FieldValidationException(SELECT_ATLEAST_ONE_ARTIFACT_ERROR);
 			}
 		}

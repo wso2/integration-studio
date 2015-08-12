@@ -10,6 +10,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.axiom.om,
  org.apache.axiom.om.impl.builder,
+ org.apache.commons.lang,
  org.apache.maven.model,
  org.apache.maven.project,
  org.codehaus.plexus.util.xml,

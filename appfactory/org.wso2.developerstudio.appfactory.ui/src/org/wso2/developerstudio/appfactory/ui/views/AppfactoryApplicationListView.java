@@ -278,6 +278,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 						        manager.add(checkOutAndImportAction(appVersionInfo));
 						        manager.add(importAction(appVersionInfo));
 						    	manager.add(checkOutAction(appVersionInfo));
+						    	manager.add(buildAction(appVersionInfo));
 						    	if(!appVersionInfo.isForkedVersion()){
 						    		manager.add(repoDeployAction(appVersionInfo));
 						    	}
@@ -780,191 +781,27 @@ public class AppfactoryApplicationListView extends ViewPart {
 		job.schedule();
 	}
  
-	private void getbuildLogsJob(final AppVersionInfo appInfo,final boolean deploy) {
-		 
-		Job job = new Job(Messages.AppfactoryApplicationListView_getbuildLogsJob_title) {
-		 
+	private void getbuildLogsJob(final AppVersionInfo appInfo,final boolean deploy) { 
+		Job job = new Job(Messages.AppfactoryApplicationListView_getbuildLogsJob_title) { 
 			@Override
 			protected IStatus run(final IProgressMonitor monitor) {
 				UISynchronize uiSynchronize = new UISynchronize() {
-
 					@Override
 					public void syncExec(Runnable runnable) {
 
 					}
-
 					@Override
 					public void asyncExec(Runnable runnable) {
 						try {
 							/*Getting last build ID*/
 						    int buildId = getLastBuildId(appInfo);
-						    if(deploy){
-						     int newbuildId = deploy(appInfo, buildId);
-						     if(newbuildId>buildId){
-						    	 while(true){
-						    		 buildId = getLastBuildId(appInfo); 
-						    		 if(buildId>=newbuildId){
-						    			 break;
-						    		 }
-						    		 printErrorLog(Messages.AppfactoryApplicationListView_getbuildLogsJob_plog_1+newbuildId+Messages.AppfactoryApplicationListView_getbuildLogsJob_plog_2 +
-												Messages.AppfactoryApplicationListView_getbuildLogsJob_plog_3);	 
-										Thread.sleep(2000); 
-										if(monitor.isCanceled()){
-											printInfoLog(Messages.AppfactoryApplicationListView_getbuildLogsJob_pInfo_1);	  
-											break;
-										} 
-						    	 }
-						     }
-						    }
 						    // get logs of the last build and print in console view
 							printJenkinsBuildLogs(appInfo, buildId, monitor);
-
 						} catch (Exception e) {
 							printErrorLog(Messages.AppfactoryApplicationListView_getbuildLogsJob_pError_1+e.getMessage());	 
 							log.error("BuildLogs Error :",e); //$NON-NLS-1$
 						}
-
-					}
-
-					private void printJenkinsBuildLogs(AppVersionInfo appInfo,
-							int buildId, IProgressMonitor monitor) {
-						Map<String, String> params = new HashMap<String, String>();
-						params.put("action", JagApiProperties.PRINT_BUILD_LOGS);
-						params.put("applicationKey", appInfo.getAppName());
-						params.put("applicationVersion", appInfo.getVersion());
-						params.put("forkedRepository",
-								String.valueOf(appInfo.isForkedVersion()));
-						params.put("lastBuildId", String.valueOf(buildId));
-						params.put("tenantDomain", Authenticator.getInstance().getSelectedTenant());
-						BufferedReader rd = HttpsJaggeryClient.doHttpPost(
-								JagApiProperties.getBuildLogsUrl(), params);
-
-						String line = "";
-						try {
-							while ((line = rd.readLine()) != null) {
-								broker.send("update", line.toString()); 
-								Thread.sleep(100);
-							}
-						} catch (IOException | InterruptedException e) {
-							printErrorLog(e.getMessage());
-						} finally {
-							try {
-								rd.close();
-							} catch (IOException e) {
-								printErrorLog(e.getMessage());
-							}
-						}
-					}
-
-					private int deploy(final AppVersionInfo appInfo, int buildId) {
-						Map<String, String> params = new HashMap<String, String>();
-						params.put("action", //$NON-NLS-1$
-								JagApiProperties.App_BUILD_ACTION);
-						params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("applicationKey", appInfo.getAppName()); //$NON-NLS-1$
-						params.put("version", appInfo.getVersion()); //$NON-NLS-1$
-						params.put("doDeploy", "true"); //$NON-NLS-1$ //$NON-NLS-2$
-						printInfoLog("Deploying application");	 //$NON-NLS-1$
-						String httpPostrespond = HttpsJaggeryClient.httpPost(
-								JagApiProperties.getBuildApplication(),
-								params); 
-						if(!"false".equals(httpPostrespond)){ //$NON-NLS-1$
-							printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_2);
-							buildId++;
-						}else{
-							printErrorLog(Messages.AppfactoryApplicationListView_deploy_printErrorLog_3);
-							printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_3);
-						}
-
-						return buildId;
-					}
-
-					private int getLastBuildId(final AppVersionInfo appInfo) {
-						credentials = Authenticator.getInstance().getCredentials();
-						Map<String, String> params = new HashMap<String, String>();
-						if (appInfo.isForkedVersion()) {
-							params.put("action", JagApiProperties.FORKED_REPO_INFO_ACTION); //$NON-NLS-1$
-						} else {
-							params.put("action", JagApiProperties.App_BUILD_INFO_ACTION); //$NON-NLS-1$
-						}
-						params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("applicationKey",appInfo.getAppName()); //$NON-NLS-1$
-						params.put("version", appInfo.getVersion()); //$NON-NLS-1$
-						params.put("buildable", "true"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("isRoleBasedPermissionAllowed","false"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("metaDataNeed", "false"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("userName",credentials.getUser()); //$NON-NLS-1$
-						printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_printInfoLog_0);	 
-						String respond = HttpsJaggeryClient.httpPost(JagApiProperties.getBuildLastSucessfullBuildUrl(),params);
-						if("false".equals(respond)){ //$NON-NLS-1$
-						printErrorLog(Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_0);	 
-					    boolean val = Authenticator.getInstance().reLogin();
-					      if(val){
-					    	  printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_printInfoLog_1);	  
-					    	  respond =HttpsJaggeryClient.httpPost(JagApiProperties.getBuildLastSucessfullBuildUrl(),params);
-					      }else{
-					    	printErrorLog(Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_1 +
-					    			Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_2);  
-					      }
-						}
-						if (!"false".equals(respond)) { //$NON-NLS-1$
-							JsonElement jelement = new JsonParser().parse(respond);
-							int buildId = 0;
-							JsonObject build = null;
-							//JSON response structure is different for forked versions
-							if (appInfo.isForkedVersion()) {
-								Set<Entry<String, JsonElement>> entrySet = jelement
-										.getAsJsonObject().entrySet();
-
-								for (Entry<String, JsonElement> entry : entrySet) {
-									JsonObject root = entry.getValue()
-											.getAsJsonObject();
-									JsonObject version = root.get("version")
-											.getAsJsonObject();
-									if (appInfo.getVersion().equals(
-											version.get("current")
-													.getAsString())) {
-										build = root.get("build")
-												.getAsJsonObject();
-									}
-								}
-
-							} else {
-								JsonArray buildInfoArray = jelement
-										.getAsJsonArray();
-								for (JsonElement jsonElement : buildInfoArray) {
-									JsonObject asJsonObject = jsonElement
-											.getAsJsonObject();
-									JsonElement jsonElement2 = asJsonObject
-											.get("version"); //$NON-NLS-1$
-									JsonObject asJsonObject2 = jsonElement2
-											.getAsJsonObject();
-									String asString = asJsonObject2.get(
-											"current") //$NON-NLS-1$
-											.getAsString();
-									if (asString.equals(appInfo.getVersion())) {
-										build = asJsonObject
-												.get("build")
-												.getAsJsonObject();
-										break;
-									}
-								}
-							}
-							// NOTE : when lastBuildId is not available, it comes as String "null"
-							// not as primitive null, hence isJsonNull() method cannot be used to null check
-							if (build != null && build.get("lastBuildId").getAsString().equals("null")) {
-								buildId = -1;
-								printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_NotAvailable);
-							} else {
-								buildId = build.get("lastBuildId").getAsInt();
-							}
-							printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_plog_Lastbuild
-									+ buildId);
-							return buildId;
-						}
-						return 0;
-					}
-				
+					}		
 			   };
 				uiSynchronize.asyncExec(new Runnable() {
 					@Override
@@ -972,14 +809,77 @@ public class AppfactoryApplicationListView extends ViewPart {
 
 					}
 				});
-
 				return Status.OK_STATUS;
 			}
-
-		};
-			
+		};			
 		job.schedule();
 	}
+
+    private void getBuildJob(final AppVersionInfo appInfo) {
+        Job job = new Job("Inoking a build") {
+            @Override
+            protected IStatus run(final IProgressMonitor monitor) {
+                UISynchronize uiSynchronize = new UISynchronize() {
+                    @Override
+                    public void syncExec(Runnable runnable) {
+
+                    }
+
+                    @Override
+                    public void asyncExec(Runnable runnable) {
+                        try {
+                            // deploy
+                            build(appInfo);
+                        } catch (Exception e) {
+                            printErrorLog("Error while invoking build" + e.getMessage());
+                            log.error("Error while invoking build. :", e); //$NON-NLS-1$
+                        }
+                    }
+                };
+                uiSynchronize.asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+                return Status.OK_STATUS;
+            }
+        };
+        job.schedule();
+    }
+ 
+    private void getDeployJob(final AppVersionInfo appInfo) {
+        Job job = new Job("Deploying last build") {
+            @Override
+            protected IStatus run(final IProgressMonitor monitor) {
+                UISynchronize uiSynchronize = new UISynchronize() {
+                    @Override
+                    public void syncExec(Runnable runnable) {
+
+                    }
+
+                    @Override
+                    public void asyncExec(Runnable runnable) {
+                        try {
+                            // deploy
+                            deploy(appInfo);
+                        } catch (Exception e) {
+                            printErrorLog("Error while invoking deploy" + e.getMessage());
+                            log.error("Error while invoking deploy. :", e); //$NON-NLS-1$
+                        }
+                    }
+                };
+                uiSynchronize.asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+                return Status.OK_STATUS;
+            }
+        };
+        job.schedule();
+    }
 	
 	private Action appOpenAction(final ApplicationInfo appInfo,final String title) {
 		Action reposettings = new Action() {
@@ -1023,7 +923,27 @@ public class AppfactoryApplicationListView extends ViewPart {
 		};
 
 		return reposetetings;
-	}	
+	}
+
+    private Action buildAction(final AppVersionInfo appInfo) {
+        Action buildAction = new Action() {
+            @Override
+            public void run() {
+                getBuildJob(appInfo);
+            }
+
+            public String getText() {
+                return "build";
+            }
+
+            public ImageDescriptor getImageDescriptor() {
+                ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+                        "/icons/buildLog.gif"); //$NON-NLS-1$
+                return imageDescriptorFromPlugin;
+            }
+        };
+        return buildAction;
+    }
 	
 	private Action mainRepoSettingsAction(final ApplicationInfo appInfo) {
 		Action mainRepoSettings = new Action() {
@@ -1082,12 +1002,33 @@ public class AppfactoryApplicationListView extends ViewPart {
         };
         return forkedRepoSettings;
     }
+	private Action repoBuildAction(final AppVersionInfo info) {
+        Action buildAction = new Action() {
+            public void run() {
+                try {
+                    getbuildLogsJob(info,true);
+                } catch (Exception e) {
+                    log.error("Error occured while invoking build.", e); //$NON-NLS-1$
+                }
+            };
+            public String getText() {
+                return "build";
+            }
+            @Override
+            public ImageDescriptor getImageDescriptor() {
+                ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+                         "/icons/deploy.gif"); //$NON-NLS-1$
+                return  imageDescriptorFromPlugin;
+            }
+        };
+        return buildAction;
+    }
  
 	private Action repoDeployAction(final AppVersionInfo info) {
 		Action reposettings = new Action() {
 			public void run() {
 				try {
-					getbuildLogsJob(info,true);
+					getDeployJob(info);
 				} catch (Exception e) {
 					log.error("Deploying Error", e); //$NON-NLS-1$
 				}
@@ -1188,7 +1129,168 @@ public class AppfactoryApplicationListView extends ViewPart {
 		};
 		return reposettings;
 	}
+
+	private int getLastBuildId(final AppVersionInfo appInfo) {
+        credentials = Authenticator.getInstance().getCredentials();
+        Map<String, String> params = new HashMap<String, String>();
+        if (appInfo.isForkedVersion()) {
+            params.put("action", JagApiProperties.FORKED_REPO_INFO_ACTION); //$NON-NLS-1$
+        } else {
+            params.put("action", JagApiProperties.App_BUILD_INFO_ACTION); //$NON-NLS-1$
+        }
+        params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("applicationKey",appInfo.getAppName()); //$NON-NLS-1$
+        params.put("version", appInfo.getVersion()); //$NON-NLS-1$
+        params.put("buildable", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("isRoleBasedPermissionAllowed","false"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("metaDataNeed", "false"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("userName",credentials.getUser()); //$NON-NLS-1$
+        printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_printInfoLog_0);  
+        String respond = HttpsJaggeryClient.httpPost(JagApiProperties.getBuildLastSucessfullBuildUrl(),params);
+        if("false".equals(respond)){ //$NON-NLS-1$
+        printErrorLog(Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_0);    
+        boolean val = Authenticator.getInstance().reLogin();
+          if(val){
+              printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_printInfoLog_1);     
+              respond =HttpsJaggeryClient.httpPost(JagApiProperties.getBuildLastSucessfullBuildUrl(),params);
+          }else{
+            printErrorLog(Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_1 +
+                    Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_2);  
+          }
+        }
+        if (!"false".equals(respond)) { //$NON-NLS-1$
+            JsonElement jelement = new JsonParser().parse(respond);
+            int buildId = 0;
+            JsonObject build = null;
+            //JSON response structure is different for forked versions
+            if (appInfo.isForkedVersion()) {
+                Set<Entry<String, JsonElement>> entrySet = jelement
+                        .getAsJsonObject().entrySet();
+
+                for (Entry<String, JsonElement> entry : entrySet) {
+                    JsonObject root = entry.getValue()
+                            .getAsJsonObject();
+                    JsonObject version = root.get("version")
+                            .getAsJsonObject();
+                    if (appInfo.getVersion().equals(
+                            version.get("current")
+                                    .getAsString())) {
+                        build = root.get("build")
+                                .getAsJsonObject();
+                    }
+                }
+
+            } else {
+                JsonArray buildInfoArray = jelement
+                        .getAsJsonArray();
+                for (JsonElement jsonElement : buildInfoArray) {
+                    JsonObject asJsonObject = jsonElement
+                            .getAsJsonObject();
+                    JsonElement jsonElement2 = asJsonObject
+                            .get("version"); //$NON-NLS-1$
+                    JsonObject asJsonObject2 = jsonElement2
+                            .getAsJsonObject();
+                    String asString = asJsonObject2.get(
+                            "current") //$NON-NLS-1$
+                            .getAsString();
+                    if (asString.equals(appInfo.getVersion())) {
+                        build = asJsonObject
+                                .get("build")
+                                .getAsJsonObject();
+                        break;
+                    }
+                }
+            }
+            // NOTE : when lastBuildId is not available, it comes as String "null"
+            // not as primitive null, hence isJsonNull() method cannot be used to null check
+            if (build != null && build.get("lastBuildId").getAsString().equals("null")) {
+                buildId = -1;
+                printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_NotAvailable);
+            } else {
+                buildId = build.get("lastBuildId").getAsInt();
+            }
+            printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_plog_Lastbuild
+                    + buildId);
+            return buildId;
+        }
+        return 0;
+    }
 	
+
+    private void printJenkinsBuildLogs(AppVersionInfo appInfo,
+            int buildId, IProgressMonitor monitor) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("action", JagApiProperties.PRINT_BUILD_LOGS);
+        params.put("applicationKey", appInfo.getAppName());
+        params.put("applicationVersion", appInfo.getVersion());
+        params.put("forkedRepository",
+                String.valueOf(appInfo.isForkedVersion()));
+        params.put("lastBuildId", String.valueOf(buildId));
+        params.put("tenantDomain", Authenticator.getInstance().getSelectedTenant());
+        BufferedReader rd = HttpsJaggeryClient.doHttpPost(
+                JagApiProperties.getBuildLogsUrl(), params);
+
+        String line = "";
+        try {
+            while ((line = rd.readLine()) != null) {
+                broker.send("update", line.toString()); 
+                Thread.sleep(100);
+            }
+        } catch (IOException | InterruptedException e) {
+            printErrorLog(e.getMessage());
+        } finally {
+            try {
+                rd.close();
+            } catch (IOException e) {
+                printErrorLog(e.getMessage());
+            }
+        }
+    }
+
+    private void deploy(final AppVersionInfo appInfo) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("action", //$NON-NLS-1$
+                JagApiProperties.App_DEPLOY_ACTION);
+        params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("applicationKey", appInfo.getAppName()); //$NON-NLS-1$
+        params.put("version", appInfo.getVersion()); //$NON-NLS-1$
+        params.put("deployAction", "deploy"); //$NON-NLS-1$
+        printInfoLog("Deploying application");   //$NON-NLS-1$
+        String httpPostrespond = HttpsJaggeryClient.httpPost(
+                JagApiProperties.getDeployArtifactUrl(),
+                params); 
+        if(!"false".equals(httpPostrespond)){ //$NON-NLS-1$
+            printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_2);
+        }else{
+            printErrorLog(Messages.AppfactoryApplicationListView_deploy_printErrorLog_3);
+            printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_3);
+        }
+    }
+
+    private void build(final AppVersionInfo appInfo) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("action", //$NON-NLS-1$
+                JagApiProperties.App_BUILD_ACTION);
+        params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("applicationKey", appInfo.getAppName()); //$NON-NLS-1$
+        params.put("version", appInfo.getVersion()); //$NON-NLS-1$
+        params.put("doDeploy", "false"); //$NON-NLS-1$
+        if(appInfo.isForkedVersion()){
+            params.put("repoFrom", "fork"); //$NON-NLS-1$
+        } else {
+            params.put("repoFrom", "original"); //$NON-NLS-1$
+        }
+        printInfoLog("Building application");   //$NON-NLS-1$
+        String httpPostrespond = HttpsJaggeryClient.httpPost(
+                JagApiProperties.getCreateArtifactUrl(),
+                params); 
+        if(!"false".equals(httpPostrespond)){ //$NON-NLS-1$
+            printInfoLog("Build invoked successfully.");
+        }else{
+            printErrorLog("Failed invoking build.");
+        }
+    }
+
 	private void getcheckoutJob(final AppVersionInfo info){
 		Job job = new Job(Messages.AppfactoryApplicationListView_getcheckoutJob_title) {
 		   @Override

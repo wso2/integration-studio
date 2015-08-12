@@ -16,8 +16,9 @@
 
 package org.wso2.developerstudio.eclipse.artifact.synapse.validators;
 
+import java.io.File;
 import java.util.List;
-
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -28,50 +29,78 @@ import org.wso2.developerstudio.eclipse.platform.core.project.model.ProjectDataM
 
 public class SynapseFieldsController extends AbstractFieldController {
 
+	private static final String SYNAPSE_CONFIG_NAME_EMPTY_ERROR = "Synapse configuration name cannot be empty";
+	private static final String CONFIG_NAME_MODEL_PROPERTY = "config.name";
+	private static final String SYNAPSE_CONFIG_NAME_MATCHED_PROJECT_NAME_ERROR = "Synapse configuration name cannot be match with the project name ";
+	private static final String SAVE_FILE_MODEL_PROPERTY = "save.file";
+	private static final String PROJECT_OR_PATH_DOES_NOT_EXIST_ERROR = "Specified project or path doesn't exist";
+	private static final String IMPORT_FILE_MODEL_PROPERTY = "import.file";
+	private static final String AVAILABLE_MODEL_PROPERTY = "available.af";
+	private static final String CONFIG_FILE_LOCATION_INVALID_ERROR = "Specified configuration file location is invalid";
+	private static final String CONFIG_FILE_DOES_NOT_EXIST_ERROR = "Specified configuration file doesn't exist";
+	private static final String SELECT_ATLEAST_ONE_ARTIFACT_ERROR = "Please select at least one artifact";
+	private static final String CREATE_ESB_PROJECT_MODEL_PROPERTY = "create.esb.prj";
+	private static final String CREATE_ESB_AF_MODEL_PROPERTY = "create.esb.af";
 	
+	@Override
 	public void validate(String modelProperty, Object value,
 			ProjectDataModel model) throws FieldValidationException {
-		if (modelProperty.equals("config.name")) {
+		if (CONFIG_NAME_MODEL_PROPERTY.equals(modelProperty)) {
 			if (value == null) {
-				throw new FieldValidationException("Synapse configuration name cannot be empty");
+				throw new FieldValidationException(SYNAPSE_CONFIG_NAME_EMPTY_ERROR);
 			}
 			String projectName = value.toString();
-			if (projectName.trim().equals("")) {
-				throw new FieldValidationException("Synapse configuration name cannot be empty");
+			if (StringUtils.isBlank(projectName)) {
+				throw new FieldValidationException(SYNAPSE_CONFIG_NAME_EMPTY_ERROR);
 			}
 			IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 
 			if (project.exists()) {
-				throw new FieldValidationException("Synapse configuration name cannot be match with the project name ");
+				throw new FieldValidationException(SYNAPSE_CONFIG_NAME_MATCHED_PROJECT_NAME_ERROR);
 			}	
 		
-		}  else if (modelProperty.equals("save.file")) {
-			IResource resource = (IResource)value;
-			if(resource==null || !resource.exists())	
-				throw new FieldValidationException("Specified project or path doesn't exist");
-		} else if(modelProperty.equals("import.file") || modelProperty.equals("available.af")){
-			SynapseModel synapseModel = (SynapseModel)model;
-				if(null==synapseModel.getSelectedArtifacts() || synapseModel.getSelectedArtifacts().size() <=0){
-					throw new FieldValidationException("Please select at least one artifact");
+		} else if (SAVE_FILE_MODEL_PROPERTY.equals(modelProperty)) {
+			IResource resource = (IResource) value;
+			if (resource == null || !resource.exists()) {
+				throw new FieldValidationException(PROJECT_OR_PATH_DOES_NOT_EXIST_ERROR);
+			}
+		} else if (IMPORT_FILE_MODEL_PROPERTY.equals(modelProperty) || AVAILABLE_MODEL_PROPERTY.equals(modelProperty)) {
+			SynapseModel synapseModel = (SynapseModel) model;
+
+			if (java.io.File.class.equals(value.getClass())) {
+				String name = value.toString();
+				if (StringUtils.isBlank(name)) {
+					throw new FieldValidationException(CONFIG_FILE_LOCATION_INVALID_ERROR);
+				} else {
+					File configFile = (File) value;
+					if (!configFile.exists()) {
+						throw new FieldValidationException(CONFIG_FILE_DOES_NOT_EXIST_ERROR);
+					}
 				}
+			}
+			if (synapseModel.getSelectedArtifacts().isEmpty()) {
+				throw new FieldValidationException(SELECT_ATLEAST_ONE_ARTIFACT_ERROR);
+			}
 		}
 	}
 	
+	@Override
     public List<String> getUpdateFields(String modelProperty,ProjectDataModel model) {
     	List<String> updateFields = super.getUpdateFields(modelProperty, model);
-    	if(modelProperty.equals("create.esb.prj")){
-    		updateFields.add("save.file");
-    	} else if(modelProperty.equals("create.esb.af")){
-    		updateFields.add("available.af"); 
-    	} else if (modelProperty.equals("import.file")) {
-			updateFields.add("available.af");
-		} 
+		if (CREATE_ESB_PROJECT_MODEL_PROPERTY.equals(modelProperty)) {
+			updateFields.add(SAVE_FILE_MODEL_PROPERTY);
+		} else if (CREATE_ESB_AF_MODEL_PROPERTY.equals(modelProperty)) {
+			updateFields.add(AVAILABLE_MODEL_PROPERTY);
+		} else if (IMPORT_FILE_MODEL_PROPERTY.equals(modelProperty)) {
+			updateFields.add(AVAILABLE_MODEL_PROPERTY);
+		}
     	return updateFields;
     }
-       
+
+	@Override
 	public boolean isReadOnlyField(String modelProperty, ProjectDataModel model) {
 		boolean readOnlyField = super.isReadOnlyField(modelProperty, model);
-		if (modelProperty.equals("save.file")) {
+		if (modelProperty.equals(SAVE_FILE_MODEL_PROPERTY)) {
 			readOnlyField = true;
 		}
 	    return readOnlyField;

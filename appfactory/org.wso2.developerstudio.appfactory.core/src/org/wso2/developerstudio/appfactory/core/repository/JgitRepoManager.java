@@ -45,11 +45,11 @@ public class JgitRepoManager {
     	 this.localPath =localPath;
          this.remotePath = uri;
          File gitDir = new File(localPath +File.separator+ ".git");
-         if(gitDir.exists()){
-        	 setCloned(true);
-         }
          localRepo = FileRepositoryBuilder.create(gitDir);
-         git = new Git(localRepo); 
+         git = new Git(localRepo);
+         if(remotePath.equals(git.getRepository().getConfig().getString("remote","origin", "url"))){
+             setCloned(true);
+         }
          UserPasswordCredentials credentials = Authenticator.getInstance().getCredentials();
          provider = new UsernamePasswordCredentialsProvider(credentials.getGitUser(), credentials.getPassword());
          
@@ -92,23 +92,23 @@ public class JgitRepoManager {
 		   .call();
 	}
 	
-	public void checkout(String branch) throws RefAlreadyExistsException,
-	RefNotFoundException, InvalidRefNameException,
-	CheckoutConflictException, GitAPIException, IOException {
-		 if ("trunk".equals(branch)){
-			 branch ="master";
-		 }
-          Ref ref = git.getRepository().getRef(branch);
-          if(ref==null){
-        	  checkoutRemoteBranch(branch);
-          }else {
-        	  checkoutLocalBranch(branch);
-          }
+    public void checkout(String branch) throws RefAlreadyExistsException, RefNotFoundException,
+            InvalidRefNameException, CheckoutConflictException, GitAPIException, IOException {
+        if ("trunk".equals(branch)) {
+            branch = "master";
         }
+        Ref ref = git.getRepository().getRef(branch);
+        if (ref == null) {
+            checkoutRemoteBranch(branch);
+        } else {
+            checkoutLocalBranch(branch);
+        }
+    }
 
 	public void checkoutRemoteBranch(String branch) throws RefAlreadyExistsException,
 			RefNotFoundException, InvalidRefNameException,
 			CheckoutConflictException, GitAPIException {
+	         git.fetch().setRemote("origin").setCredentialsProvider(provider).call();
 		     git.checkout()
 				.setCreateBranch(true)
 				.setName(branch)
@@ -116,6 +116,7 @@ public class JgitRepoManager {
 				.setStartPoint("origin/" + branch)
 				.setForce(true)
 				.call();
+		     trackBranch(branch);
 
 	}
 	

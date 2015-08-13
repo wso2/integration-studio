@@ -25,6 +25,7 @@
 	<module>org.wso2.developerstudio.eclipse.artifact.messagestore</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.messageprocessor</module>
 	<module>org.wso2.developerstudio.eclipse.artifact.inboundendpoint</module>
+	<module>org.wso2.developerstudio.eclipse.artifact.connector</module>
         <!--module>org.wso2.developerstudio.eclipse.esb</module>
         <module>org.wso2.developerstudio.eclipse.esb.edit</module>
         <module>org.wso2.developerstudio.eclipse.esb.editor</module>

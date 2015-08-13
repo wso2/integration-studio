@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ <extension point="org.eclipse.ui.newWizards">
+		<wizard name="Connector Project" 
+			category="org.wso2.developerstudio.eclipse.capp.project/org.wso2.developerstudio.eclipse.extensions/org.wso2.developerstudio.eclipse.extensions.project.types"
+			class="org.wso2.developerstudio.eclipse.artifact.connector.ui.wizard.ConnectorCreationWizard"
+			wizardManifest="project_wizard.xml"
+			id="org.wso2.developerstudio.eclipse.artifact.newconnectorartifact"
+			project="true" icon="icons/new-mediator-16x16.png">
+			<description>Connector Project</description>
+		</wizard>
+	</extension>
+	 <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="jbs.eclipse.contribution.hello.action.ActionHello"
+            nameFilter="plugin.xml"
+            objectClass="org.eclipse.jdt.core.IPackageFragment">
+         <action
+               class="jbs.eclipse.contribution.hello.action.ActionHello"
+               enablesFor="1"
+               id="jbs.eclipse.contribution.hello.action.ActionHello"
+               label="Popup Action"
+               />
+      </objectContribution>
+   </extension>
+	<extension point="org.eclipse.core.resources.natures"
+		id="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" name="Connector Project Nature">
+		<runtime>
+			<run
+				class="org.wso2.developerstudio.eclipse.artifact.connector.project.nature.ConnectorProjectNature">
+			</run>
+		</runtime>
+	</extension>
+	<extension point="org.eclipse.ui.ide.projectNatureImages">
+		<image id="org.wso2.developerstudio.eclipse.connector.project.natureImage"
+			natureId="org.wso2.developerstudio.eclipse.artifact.connector.project.nature" icon="icons/new-mediator-12x12.png">
+		</image>
+	</extension>
+			<extension point="org.eclipse.ui.navigator.navigatorContent">    
+            <commonWizard type="new"
+                menuGroupId="2org.wso2.developerstudio.eclipse.artifact.esb"
+                wizardId="org.wso2.developerstudio.eclipse.artifact.newconnectorartifact">
+                <enablement>
+                    <or>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature"
+                                value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+                                </adapt>
+                       <adapt type="org.eclipse.jdt.core.IPackageFragment">
+							<test property="org.wso2.developerstudio.projectNature"
+								value="org.wso2.developerstudio.eclipse.esb.project.nature" />
+						</adapt>
+                    </or>
+                </enablement>
+            </commonWizard>
+    </extension>
+   	   <extension
+         point="org.wso2.developerstudio.eclipse.project.export.handler">
+      <handler
+            class="org.wso2.developerstudio.eclipse.artifact.mediator.project.export.MediatorExportHandler"
+            id="org.wso2.developerstudio.eclipse.artifact.mediator.project.export.handler"
+            type="lib/synapse/mediator">
+      </handler>
+   </extension>
+   
+   <extension point="org.eclipse.ui.menus">
+   <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+     <command commandId="AddRemoveConnectorMenuCommandID" style="push">
+        <visibleWhen>
+        	<iterate>
+                <adapt type="org.eclipse.core.resources.IProject">
+                	<!-- here nature ID need to give as value not the class -->
+                   <test property="org.eclipse.core.resources.projectNature" 
+                   value="org.wso2.developerstudio.eclipse.artifact.connector.project.nature"/>
+                </adapt>
+              </iterate>
+        </visibleWhen>
+     </command>
+   </menuContribution>
+  </extension>
+  
+  <extension point="org.eclipse.ui.commands">
+	    <command
+	        description="Add new Java libraries"
+	        id="AddRemoveConnectorMenuCommandID"
+	        name="Add/Remove Connectors">
+	  	</command>
+  </extension>
+ 
+  <extension point="org.eclipse.ui.handlers">
+	    <handler
+	        class="org.wso2.developerstudio.eclipse.artifact.connector.handler.AddRemoveConnectorMenuHandler"
+	        commandId="AddRemoveConnectorMenuCommandID">
+	  		</handler>
+  </extension>   
+</plugin>

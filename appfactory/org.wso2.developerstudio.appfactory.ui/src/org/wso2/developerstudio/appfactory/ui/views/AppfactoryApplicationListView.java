@@ -30,6 +30,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.inject.Inject;
 
@@ -46,6 +48,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -79,6 +82,14 @@ import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
 import org.eclipse.jgit.api.errors.RefNotFoundException;
 import org.eclipse.jgit.api.errors.TransportException;
+import org.eclipse.m2e.core.MavenPlugin;
+import org.eclipse.m2e.core.embedder.MavenModelManager;
+import org.eclipse.m2e.core.project.IMavenProjectImportResult;
+import org.eclipse.m2e.core.project.IProjectConfigurationManager;
+import org.eclipse.m2e.core.project.LocalProjectScanner;
+import org.eclipse.m2e.core.project.MavenProjectInfo;
+import org.eclipse.m2e.core.project.ProjectImportConfiguration;
+import org.eclipse.m2e.core.project.ResolverConfiguration;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
@@ -267,6 +278,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 						        manager.add(checkOutAndImportAction(appVersionInfo));
 						        manager.add(importAction(appVersionInfo));
 						    	manager.add(checkOutAction(appVersionInfo));
+						    	manager.add(buildAction(appVersionInfo));
 						    	if(!appVersionInfo.isForkedVersion()){
 						    		manager.add(repoDeployAction(appVersionInfo));
 						    	}
@@ -286,7 +298,8 @@ public class AppfactoryApplicationListView extends ViewPart {
 						        
 						      
 						    	manager.add(appOpenAction(appInfo,title));
-						        manager.add(repoSettingsAction(appInfo));
+						        manager.add(mainRepoSettingsAction(appInfo));
+						        manager.add(forkedRepoSettingsAction(appInfo));
 						    }else if (selection.getFirstElement() instanceof AppVersionGroup){
 						    	
 						    //	AppVersionGroup group = (AppVersionGroup) selection.getFirstElement();
@@ -768,182 +781,27 @@ public class AppfactoryApplicationListView extends ViewPart {
 		job.schedule();
 	}
  
-	private void getbuildLogsJob(final AppVersionInfo appInfo,final boolean deploy) {
-		 
-		Job job = new Job(Messages.AppfactoryApplicationListView_getbuildLogsJob_title) {
-		 
+	private void getbuildLogsJob(final AppVersionInfo appInfo,final boolean deploy) { 
+		Job job = new Job(Messages.AppfactoryApplicationListView_getbuildLogsJob_title) { 
 			@Override
 			protected IStatus run(final IProgressMonitor monitor) {
 				UISynchronize uiSynchronize = new UISynchronize() {
-
 					@Override
 					public void syncExec(Runnable runnable) {
 
 					}
-
 					@Override
 					public void asyncExec(Runnable runnable) {
 						try {
 							/*Getting last build ID*/
 						    int buildId = getLastBuildId(appInfo);
-						    if(deploy){
-						     int newbuildId = deploy(appInfo, buildId);
-						     if(newbuildId>buildId){
-						    	 while(true){
-						    		 buildId = getLastBuildId(appInfo); 
-						    		 if(buildId>=newbuildId){
-						    			 break;
-						    		 }
-						    		 printErrorLog(Messages.AppfactoryApplicationListView_getbuildLogsJob_plog_1+newbuildId+Messages.AppfactoryApplicationListView_getbuildLogsJob_plog_2 +
-												Messages.AppfactoryApplicationListView_getbuildLogsJob_plog_3);	 
-										Thread.sleep(2000); 
-										if(monitor.isCanceled()){
-											printInfoLog(Messages.AppfactoryApplicationListView_getbuildLogsJob_pInfo_1);	  
-											break;
-										} 
-						    	 }
-						     }
-						    }
-							/*Getting Jenkins BuilderUrl by providing the buildId*/
-							String builderBaseUrl = getBuilderUrl(appInfo,buildId);
-							/*Getting jenkins log using above url*/
-							printJenkinsBuildLogs(appInfo, buildId,builderBaseUrl,monitor);
-
+						    // get logs of the last build and print in console view
+							printJenkinsBuildLogs(appInfo, buildId, monitor);
 						} catch (Exception e) {
 							printErrorLog(Messages.AppfactoryApplicationListView_getbuildLogsJob_pError_1+e.getMessage());	 
 							log.error("BuildLogs Error :",e); //$NON-NLS-1$
 						}
-
-					}
-
-					private int deploy(final AppVersionInfo appInfo, int buildId) {
-						Map<String, String> params = new HashMap<String, String>();
-						params.put("action", //$NON-NLS-1$
-								JagApiProperties.App_BUILD_ACTION);
-						params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("applicationKey", appInfo.getAppName()); //$NON-NLS-1$
-						params.put("version", appInfo.getVersion()); //$NON-NLS-1$
-						params.put("doDeploy", "true"); //$NON-NLS-1$ //$NON-NLS-2$
-						printInfoLog("Deploying application");	 //$NON-NLS-1$
-						String httpPostrespond = HttpsJaggeryClient.httpPost(
-								JagApiProperties.getBuildApplication(),
-								params); 
-						if(!"false".equals(httpPostrespond)){ //$NON-NLS-1$
-							printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_2);
-							buildId++;
-						}else{
-							printErrorLog(Messages.AppfactoryApplicationListView_deploy_printErrorLog_3);
-							printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_3);
-						}
-
-						return buildId;
-					}
-
-					private String getBuilderUrl(final AppVersionInfo appInfo,
-							int buidNo) {
-						Map<String, String> params;
-						params = new HashMap<String, String>();
-						params.put("action",JagApiProperties.App_BUILD_URL_ACTIONL); //$NON-NLS-1$
-						params.put("lastBuildNo", "" + buidNo); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("applicationVersion",appInfo.getVersion()); //$NON-NLS-1$
-						params.put("applicationKey",appInfo.getAppName()); //$NON-NLS-1$
-						params.put("userName",Authenticator.getInstance().getCredentials().getUser()); //$NON-NLS-1$
-						String builderBaseUrl = ""; //$NON-NLS-1$
-						builderBaseUrl = HttpsJaggeryClient.httpPost(JagApiProperties.getBuildInfoUrl(),params);
-						return builderBaseUrl;
-					}
-
-					private void printJenkinsBuildLogs(final AppVersionInfo appInfo, int buidNo,
-							String builderBaseUrl,IProgressMonitor monitor) throws IOException,InterruptedException {
-						printInfoLog(Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_0+buidNo);	  
-						while(true){
-						HttpResponse response = HttpsJenkinsClient
-								.getBulildinfo(
-										appInfo.getAppName(),
-										appInfo.getVersion(),
-										builderBaseUrl, buidNo);
-						if(response.getStatusLine().getStatusCode()==200){
-						HttpEntity entity = response.getEntity();
-						BufferedReader rd = new BufferedReader(
-								new InputStreamReader(response
-										.getEntity().getContent()));
-						String line;
-						while ((line = rd.readLine()) != null) {
-							broker.send("update", line.toString()); //$NON-NLS-1$
-							Thread.sleep(100);
-						}
-						EntityUtils.consume(entity);
-						break;
-						}else if(response.getStatusLine().getStatusCode()==404){
-							printErrorLog(Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_1 +
-									Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_2);	 
-							Thread.sleep(2000); 
-							if(monitor.isCanceled()){
-								printInfoLog(Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printInfoLog_3);	  
-								break;
-							}
-						}else{
-							printErrorLog(Messages.AppfactoryApplicationListView_printJenkinsBuildLogs_printErrorLog_3+response.getStatusLine().getStatusCode());
-							 break;
-						}
-					}	
-				}
-
-					private int getLastBuildId(final AppVersionInfo appInfo) {
-						credentials = Authenticator.getInstance().getCredentials();
-						Map<String, String> params = new HashMap<String, String>();
-						params.put("action",JagApiProperties.App_BUILD_INFO_ACTION); //$NON-NLS-1$
-						params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("applicationKey",appInfo.getAppName()); //$NON-NLS-1$
-						params.put("version", appInfo.getVersion()); //$NON-NLS-1$
-						params.put("buildable", "true"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("isRoleBasedPermissionAllowed","false"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("metaDataNeed", "false"); //$NON-NLS-1$ //$NON-NLS-2$
-						params.put("userName",credentials.getUser()); //$NON-NLS-1$
-						printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_printInfoLog_0);	 
-						String respond = HttpsJaggeryClient.httpPost(JagApiProperties.getBuildLastSucessfullBuildUrl(),params);
-						if("false".equals(respond)){ //$NON-NLS-1$
-						printErrorLog(Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_0);	 
-					    boolean val = Authenticator.getInstance().reLogin();
-					      if(val){
-					    	  printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_printInfoLog_1);	  
-					    	  respond =HttpsJaggeryClient.httpPost(JagApiProperties.getBuildLastSucessfullBuildUrl(),params);
-					      }else{
-					    	printErrorLog(Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_1 +
-					    			Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_2);  
-					      }
-						}
-						if(!"false".equals(respond)){ //$NON-NLS-1$
-							JsonElement jelement = new JsonParser().parse(respond);
-							JsonArray buildInfoArray;
-							int buildId = 0;
-								buildInfoArray = jelement.getAsJsonArray();
-								for (JsonElement jsonElement : buildInfoArray) 
-								{
-									JsonObject asJsonObject = jsonElement
-											.getAsJsonObject();
-									JsonElement jsonElement2 = asJsonObject
-											.get("version"); //$NON-NLS-1$
-									JsonObject asJsonObject2 = jsonElement2
-											.getAsJsonObject();
-									String asString = asJsonObject2.get("current") //$NON-NLS-1$
-											.getAsString();
-									if (asString.equals(appInfo.getVersion())) {
-										JsonElement jsonElement3 = asJsonObject
-												.get("build"); //$NON-NLS-1$
-										JsonObject asJsonObject3 = jsonElement3
-												.getAsJsonObject();
-										buildId = asJsonObject3.get("lastBuildId") //$NON-NLS-1$
-												.getAsInt();
-										break;
-									}
-								}
-								printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_plog_Lastbuild+buildId);
-								return buildId;	
-						}
-						return 0;
-					}
-				
+					}		
 			   };
 				uiSynchronize.asyncExec(new Runnable() {
 					@Override
@@ -951,14 +809,77 @@ public class AppfactoryApplicationListView extends ViewPart {
 
 					}
 				});
-
 				return Status.OK_STATUS;
 			}
-
-		};
-			
+		};			
 		job.schedule();
 	}
+
+    private void getBuildJob(final AppVersionInfo appInfo) {
+        Job job = new Job("Inoking a build") {
+            @Override
+            protected IStatus run(final IProgressMonitor monitor) {
+                UISynchronize uiSynchronize = new UISynchronize() {
+                    @Override
+                    public void syncExec(Runnable runnable) {
+
+                    }
+
+                    @Override
+                    public void asyncExec(Runnable runnable) {
+                        try {
+                            // deploy
+                            build(appInfo);
+                        } catch (Exception e) {
+                            printErrorLog("Error while invoking build" + e.getMessage());
+                            log.error("Error while invoking build. :", e); //$NON-NLS-1$
+                        }
+                    }
+                };
+                uiSynchronize.asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+                return Status.OK_STATUS;
+            }
+        };
+        job.schedule();
+    }
+ 
+    private void getDeployJob(final AppVersionInfo appInfo) {
+        Job job = new Job("Deploying last build") {
+            @Override
+            protected IStatus run(final IProgressMonitor monitor) {
+                UISynchronize uiSynchronize = new UISynchronize() {
+                    @Override
+                    public void syncExec(Runnable runnable) {
+
+                    }
+
+                    @Override
+                    public void asyncExec(Runnable runnable) {
+                        try {
+                            // deploy
+                            deploy(appInfo);
+                        } catch (Exception e) {
+                            printErrorLog("Error while invoking deploy" + e.getMessage());
+                            log.error("Error while invoking deploy. :", e); //$NON-NLS-1$
+                        }
+                    }
+                };
+                uiSynchronize.asyncExec(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+                return Status.OK_STATUS;
+            }
+        };
+        job.schedule();
+    }
 	
 	private Action appOpenAction(final ApplicationInfo appInfo,final String title) {
 		Action reposettings = new Action() {
@@ -1002,10 +923,30 @@ public class AppfactoryApplicationListView extends ViewPart {
 		};
 
 		return reposetetings;
-	}	
+	}
+
+    private Action buildAction(final AppVersionInfo appInfo) {
+        Action buildAction = new Action() {
+            @Override
+            public void run() {
+                getBuildJob(appInfo);
+            }
+
+            public String getText() {
+                return "build";
+            }
+
+            public ImageDescriptor getImageDescriptor() {
+                ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+                        "/icons/buildLog.gif"); //$NON-NLS-1$
+                return imageDescriptorFromPlugin;
+            }
+        };
+        return buildAction;
+    }
 	
-	private Action repoSettingsAction(final ApplicationInfo appInfo) {
-		Action reposettings = new Action() {
+	private Action mainRepoSettingsAction(final ApplicationInfo appInfo) {
+		Action mainRepoSettings = new Action() {
 			public void run() {
 				try {
 					    DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent()
@@ -1021,7 +962,7 @@ public class AppfactoryApplicationListView extends ViewPart {
 			};
        
 			public String getText() {
-				return Messages.AppfactoryApplicationListView_repoSettingsAction_changeRepoLocation_menu_name;
+				return Messages.AppfactoryApplicationListView_mainRepoSettingsAction_changeRepoLocation_menu_name;
 			}
 			@Override
 			public ImageDescriptor getImageDescriptor() {
@@ -1030,14 +971,64 @@ public class AppfactoryApplicationListView extends ViewPart {
 				return  imageDescriptorFromPlugin;
 			}
 		};
-		return reposettings;
-	} 
+		return mainRepoSettings;
+	}
+	
+	private Action forkedRepoSettingsAction(final ApplicationInfo appInfo) {
+        Action forkedRepoSettings = new Action() {
+            public void run() {
+                try {
+                        DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent()
+                                .getActiveShell());
+                       dialog.setText(Messages.AppfactoryApplicationListView_repoSettingsAction_DirectoryDialog_title);
+                        if(dialog.open()!=null){
+                            appInfo.setLocalForkRepoLocation(dialog.getFilterPath());
+                            appInfo.updateVersions();
+                        }
+                } catch (Exception e) {
+                    log.error("", e); //$NON-NLS-1$
+                }
+            };
+       
+            public String getText() {
+                return Messages.AppfactoryApplicationListView_forkedRepoSettingsAction_changeRepoLocation_menu_name;
+            }
+            @Override
+            public ImageDescriptor getImageDescriptor() {
+                ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+                         "/icons/repoLocation.gif"); //$NON-NLS-1$
+                return  imageDescriptorFromPlugin;
+            }
+        };
+        return forkedRepoSettings;
+    }
+	private Action repoBuildAction(final AppVersionInfo info) {
+        Action buildAction = new Action() {
+            public void run() {
+                try {
+                    getbuildLogsJob(info,true);
+                } catch (Exception e) {
+                    log.error("Error occured while invoking build.", e); //$NON-NLS-1$
+                }
+            };
+            public String getText() {
+                return "build";
+            }
+            @Override
+            public ImageDescriptor getImageDescriptor() {
+                ImageDescriptor imageDescriptorFromPlugin = Activator.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
+                         "/icons/deploy.gif"); //$NON-NLS-1$
+                return  imageDescriptorFromPlugin;
+            }
+        };
+        return buildAction;
+    }
  
 	private Action repoDeployAction(final AppVersionInfo info) {
 		Action reposettings = new Action() {
 			public void run() {
 				try {
-					getbuildLogsJob(info,true);
+					getDeployJob(info);
 				} catch (Exception e) {
 					log.error("Deploying Error", e); //$NON-NLS-1$
 				}
@@ -1138,7 +1129,168 @@ public class AppfactoryApplicationListView extends ViewPart {
 		};
 		return reposettings;
 	}
+
+	private int getLastBuildId(final AppVersionInfo appInfo) {
+        credentials = Authenticator.getInstance().getCredentials();
+        Map<String, String> params = new HashMap<String, String>();
+        if (appInfo.isForkedVersion()) {
+            params.put("action", JagApiProperties.FORKED_REPO_INFO_ACTION); //$NON-NLS-1$
+        } else {
+            params.put("action", JagApiProperties.App_BUILD_INFO_ACTION); //$NON-NLS-1$
+        }
+        params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("applicationKey",appInfo.getAppName()); //$NON-NLS-1$
+        params.put("version", appInfo.getVersion()); //$NON-NLS-1$
+        params.put("buildable", "true"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("isRoleBasedPermissionAllowed","false"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("metaDataNeed", "false"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("userName",credentials.getUser()); //$NON-NLS-1$
+        printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_printInfoLog_0);  
+        String respond = HttpsJaggeryClient.httpPost(JagApiProperties.getBuildLastSucessfullBuildUrl(),params);
+        if("false".equals(respond)){ //$NON-NLS-1$
+        printErrorLog(Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_0);    
+        boolean val = Authenticator.getInstance().reLogin();
+          if(val){
+              printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_printInfoLog_1);     
+              respond =HttpsJaggeryClient.httpPost(JagApiProperties.getBuildLastSucessfullBuildUrl(),params);
+          }else{
+            printErrorLog(Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_1 +
+                    Messages.AppfactoryApplicationListView_getLastBuildId_printErrorLog_2);  
+          }
+        }
+        if (!"false".equals(respond)) { //$NON-NLS-1$
+            JsonElement jelement = new JsonParser().parse(respond);
+            int buildId = 0;
+            JsonObject build = null;
+            //JSON response structure is different for forked versions
+            if (appInfo.isForkedVersion()) {
+                Set<Entry<String, JsonElement>> entrySet = jelement
+                        .getAsJsonObject().entrySet();
+
+                for (Entry<String, JsonElement> entry : entrySet) {
+                    JsonObject root = entry.getValue()
+                            .getAsJsonObject();
+                    JsonObject version = root.get("version")
+                            .getAsJsonObject();
+                    if (appInfo.getVersion().equals(
+                            version.get("current")
+                                    .getAsString())) {
+                        build = root.get("build")
+                                .getAsJsonObject();
+                    }
+                }
+
+            } else {
+                JsonArray buildInfoArray = jelement
+                        .getAsJsonArray();
+                for (JsonElement jsonElement : buildInfoArray) {
+                    JsonObject asJsonObject = jsonElement
+                            .getAsJsonObject();
+                    JsonElement jsonElement2 = asJsonObject
+                            .get("version"); //$NON-NLS-1$
+                    JsonObject asJsonObject2 = jsonElement2
+                            .getAsJsonObject();
+                    String asString = asJsonObject2.get(
+                            "current") //$NON-NLS-1$
+                            .getAsString();
+                    if (asString.equals(appInfo.getVersion())) {
+                        build = asJsonObject
+                                .get("build")
+                                .getAsJsonObject();
+                        break;
+                    }
+                }
+            }
+            // NOTE : when lastBuildId is not available, it comes as String "null"
+            // not as primitive null, hence isJsonNull() method cannot be used to null check
+            if (build != null && build.get("lastBuildId").getAsString().equals("null")) {
+                buildId = -1;
+                printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_NotAvailable);
+            } else {
+                buildId = build.get("lastBuildId").getAsInt();
+            }
+            printInfoLog(Messages.AppfactoryApplicationListView_getLastBuildId_plog_Lastbuild
+                    + buildId);
+            return buildId;
+        }
+        return 0;
+    }
 	
+
+    private void printJenkinsBuildLogs(AppVersionInfo appInfo,
+            int buildId, IProgressMonitor monitor) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("action", JagApiProperties.PRINT_BUILD_LOGS);
+        params.put("applicationKey", appInfo.getAppName());
+        params.put("applicationVersion", appInfo.getVersion());
+        params.put("forkedRepository",
+                String.valueOf(appInfo.isForkedVersion()));
+        params.put("lastBuildId", String.valueOf(buildId));
+        params.put("tenantDomain", Authenticator.getInstance().getSelectedTenant());
+        BufferedReader rd = HttpsJaggeryClient.doHttpPost(
+                JagApiProperties.getBuildLogsUrl(), params);
+
+        String line = "";
+        try {
+            while ((line = rd.readLine()) != null) {
+                broker.send("update", line.toString()); 
+                Thread.sleep(100);
+            }
+        } catch (IOException | InterruptedException e) {
+            printErrorLog(e.getMessage());
+        } finally {
+            try {
+                rd.close();
+            } catch (IOException e) {
+                printErrorLog(e.getMessage());
+            }
+        }
+    }
+
+    private void deploy(final AppVersionInfo appInfo) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("action", //$NON-NLS-1$
+                JagApiProperties.App_DEPLOY_ACTION);
+        params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("applicationKey", appInfo.getAppName()); //$NON-NLS-1$
+        params.put("version", appInfo.getVersion()); //$NON-NLS-1$
+        params.put("deployAction", "deploy"); //$NON-NLS-1$
+        printInfoLog("Deploying application");   //$NON-NLS-1$
+        String httpPostrespond = HttpsJaggeryClient.httpPost(
+                JagApiProperties.getDeployArtifactUrl(),
+                params); 
+        if(!"false".equals(httpPostrespond)){ //$NON-NLS-1$
+            printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_2);
+        }else{
+            printErrorLog(Messages.AppfactoryApplicationListView_deploy_printErrorLog_3);
+            printInfoLog(Messages.AppfactoryApplicationListView_deploy_printInfoLog_3);
+        }
+    }
+
+    private void build(final AppVersionInfo appInfo) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("action", //$NON-NLS-1$
+                JagApiProperties.App_BUILD_ACTION);
+        params.put("stage", "Development"); //$NON-NLS-1$ //$NON-NLS-2$
+        params.put("applicationKey", appInfo.getAppName()); //$NON-NLS-1$
+        params.put("version", appInfo.getVersion()); //$NON-NLS-1$
+        params.put("doDeploy", "false"); //$NON-NLS-1$
+        if(appInfo.isForkedVersion()){
+            params.put("repoFrom", "fork"); //$NON-NLS-1$
+        } else {
+            params.put("repoFrom", "original"); //$NON-NLS-1$
+        }
+        printInfoLog("Building application");   //$NON-NLS-1$
+        String httpPostrespond = HttpsJaggeryClient.httpPost(
+                JagApiProperties.getCreateArtifactUrl(),
+                params); 
+        if(!"false".equals(httpPostrespond)){ //$NON-NLS-1$
+            printInfoLog("Build invoked successfully.");
+        }else{
+            printErrorLog("Failed invoking build.");
+        }
+    }
+
 	private void getcheckoutJob(final AppVersionInfo info){
 		Job job = new Job(Messages.AppfactoryApplicationListView_getcheckoutJob_title) {
 		   @Override
@@ -1181,37 +1333,61 @@ public class AppfactoryApplicationListView extends ViewPart {
 			RefAlreadyExistsException,
 			RefNotFoundException, InvalidRefNameException,
 			CheckoutConflictException {
-		monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_1);
+		monitor.beginTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_1, 100);
 		printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_1);
 		monitor.worked(5);	 
-		String localRepo = "";
+		 
 		if (info.getLocalRepo() == null || info.getLocalRepo().equals("")) { //$NON-NLS-1$
 			String workspace = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
-			localRepo = workspace + File.separator + info.getAppName();
+			String localRepo = workspace + File.separator + info.getAppName();
 			// Add relevant suffix to repo location
 			localRepo += (info.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX;
 			info.setLocalRepo(localRepo);
 		}
-		
-		monitor.worked(10);	
-		JgitRepoManager manager = new JgitRepoManager(localRepo,info.getRepoURL());
+        monitor.worked(5);	
+		JgitRepoManager manager = new JgitRepoManager(info.getLocalRepo(), info.getRepoURL());
 		
 		if(!manager.isCloned()){
+		    File localRepoDir = new File(info.getLocalRepo());
+	        if (localRepoDir.exists() && localRepoDir.isDirectory()) {
+	            if (localRepoDir.list().length > 0) {
+	                printErrorLog(localRepoDir.getPath()
+	                        + Messages.AppfactoryApplicationListView_checkout_Folder_exists_error);
+	                return;
+	            } else if (localRepoDir.isDirectory() && localRepoDir.list().length == 0) {
+	                try {
+	                    localRepoDir.delete();
+	                } catch (Exception e) {
+	                    printErrorLog(localRepoDir.getPath()
+	                            + Messages.AppfactoryApplicationListView_checkout_Folder_exists_error);
+	                    return;
+	                }
+	            }
+	        }
+	        monitor.worked(5);    
 			manager.gitClone();
+			monitor.worked(65); 
 			if(!"trunk".equals(info.getVersion())){	    //$NON-NLS-1$
 					manager.checkout(info.getVersion());
-					monitor.worked(15);
+					monitor.worked(10);
 					monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_2);
 					printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_2);
 				}
 		}else {
 			manager.checkout(info.getVersion());
-			monitor.worked(15);
+			monitor.worked(10);
 			monitor.subTask(Messages.AppfactoryApplicationListView_checkout_moniter_msg_3);
 			printInfoLog(Messages.AppfactoryApplicationListView_checkout_plog_msg_3);
 		}
-         info.setCheckedout(true);
-         broker.send("Projectupdate", null); //$NON-NLS-1$
+        info.setCheckedout(true);
+        try {
+            ResourcesPlugin.getWorkspace().getRoot()
+                    .refreshLocal(IResource.DEPTH_INFINITE, new SubProgressMonitor(monitor, 10));
+        } catch (CoreException e) {
+            log.error("Error refreshing workspace", e);
+        }
+        monitor.done();
+        broker.send("Projectupdate", null); //$NON-NLS-1$
 	}
 
 	private class AppImportJobJob implements IRunnableWithProgress {
@@ -1226,44 +1402,12 @@ public class AppfactoryApplicationListView extends ViewPart {
 			String operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_1;
 			monitor.beginTask(operationText, 100);
 			try {
-				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_2;
-				monitor.subTask(operationText);
-				monitor.worked(10);
-
-				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-
-				if (pomFile.exists()) {
-					executeMavenCommands(pomFile, monitor);
-				}
-
-				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
-				                                                                                  appInfo.getLocalRepo() +
-				                                                                                          File.separator +
-				                                                                                          PROJECT_DESCRIPTOR));
-				
-				String projectName = description.getName() + ((appInfo.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
-				description.setName(projectName);
-
-				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_3;
-				monitor.subTask(operationText);
-				monitor.worked(10);
-
-				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-				if (!project.exists()) {
-					project.create(monitor);
-					project.open(monitor);
-				}
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, monitor);
-				monitor.worked(80);
-
+				importProject(appInfo, new SubProgressMonitor(monitor, 100));
 			} catch (Throwable e) {
 				operationText = Messages.AppfactoryApplicationListView_AppImportJob_opMSG_4;
 				monitor.subTask(operationText);
-				monitor.worked(10);
 				log.error("importing failed", e); //$NON-NLS-1$
 			}
-
-			monitor.worked(100);
 			monitor.done();
 		}
 	}  
@@ -1280,46 +1424,9 @@ public class AppfactoryApplicationListView extends ViewPart {
 			String operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_1;
 			monitor.beginTask(operationText, 100);
 			try {
-				checkout(appInfo, monitor);
-				operationText =
-				                Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_2;
-				monitor.subTask(operationText);
-				monitor.worked(5);
-
-				IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(new Path(
-				                                                                                  appInfo.getLocalRepo() +
-				                                                                                          File.separator +
-				                                                                                          PROJECT_DESCRIPTOR)); //$NON-NLS-1$
-
-				String projectName = description.getName() + ((appInfo.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
-				description.setName(projectName);
+				checkout(appInfo, new SubProgressMonitor(monitor, 50));
+				importProject(appInfo, new SubProgressMonitor(monitor, 50));
 				
-				operationText = Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_opMSG_3;
-				monitor.subTask(operationText);
-				monitor.worked(5);
-
-				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
-				if (!project.exists()) {
-					project.create(new SubProgressMonitor(monitor, 10));
-					project.open(new SubProgressMonitor(monitor, 10));
-				}
-				File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
-
-				if (monitor.isCanceled()) {
-					throw new InterruptedException(Messages.ImportingCancelled_Error);
-				}
-
-				if (pomFile.exists()) {
-					executeMavenCommands(pomFile, monitor);
-				}
-				ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE,
-                        new SubProgressMonitor(monitor, 10));
-
-			} catch(OperationCanceledException e) {
-				
-				 printErrorLog(e.getMessage());
-				 log.error("importing failed", e); //$NON-NLS-1$
-			
 			}catch(Throwable e){
 				 operationText=Messages.AppfactoryApplicationListView_AppCheckoutAndImportJob_Faild;
 				 monitor.subTask(operationText);
@@ -1330,7 +1437,30 @@ public class AppfactoryApplicationListView extends ViewPart {
 			monitor.done();
 		}
 	}  
-	
+
+	@Deprecated
+    private boolean isMavenHomeFound() {
+        return getMavenHome() != null;
+    }
+	@Deprecated
+    private String getMavenHome() {
+        String mavenHome = null;
+        try {
+            if (System.getenv("M2_HOME") != null) {
+                mavenHome = System.getenv("M2_HOME");
+            } else if (System.getenv("MAVEN_HOME") != null) {
+                mavenHome = System.getenv("MAVEN_HOME");
+            } else if (System.getenv("M3_HOME") != null) {
+                mavenHome = System.getenv("M3_HOME");
+            } else if (System.getProperty("maven.home") != null) {
+                mavenHome = System.getProperty("maven.home");
+            }
+        } catch (Exception e) {
+            log.error("Error while reading maven home.", e);
+        }
+        return mavenHome;
+    }
+	@Deprecated
 	public boolean executeMavenCommands(File pomFile, IProgressMonitor monitor) throws InterruptedException{
 		
 		monitor.worked(10);
@@ -1363,26 +1493,92 @@ public class AppfactoryApplicationListView extends ViewPart {
 		}
 		return true;
 	}
-	
+	@Deprecated
 	private InvocationResult mavenInstall(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
 		request.setPomFile(pomFile);		
 		request.setGoals(Arrays.asList(MAVEN_CMD_CLEAN, MAVEN_CMD_INSTALL));
 		Invoker invoker = new DefaultInvoker();
+		invoker.setMavenHome(new File(getMavenHome()));
 		InvocationResult result = invoker.execute(request);
 		
 		return result;
 	}
-	
-	private static InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
+	@Deprecated
+	private InvocationResult mavenEclipse(File pomFile, IProgressMonitor monitor) throws MavenInvocationException{
 		
 		InvocationRequest request = new DefaultInvocationRequest();
 		request.setPomFile(pomFile);
 		request.setGoals(Collections.singletonList(MAVEN_CMD_ECLIPSE));
 		Invoker invoker = new DefaultInvoker();
-		
+		invoker.setMavenHome(new File(getMavenHome()));
 		return invoker.execute(request);
 	}
+
+    protected void importProject(AppVersionInfo appInfo, IProgressMonitor monitor) throws CoreException, InterruptedException {
+        String operationText = "Start importing project to workspace.";
+        monitor.beginTask(operationText, 100);
+        IProjectDescription description = ResourcesPlugin.getWorkspace().loadProjectDescription(
+                new Path(appInfo.getLocalRepo() + File.separator + PROJECT_DESCRIPTOR));
+
+        String projectName = description.getName()
+                + ((appInfo.isForkedVersion()) ? FORKED_REPO_SUFFIX : MAIN_REPO_SUFFIX);
+        description.setName(projectName);
+
+        operationText = "Preparing project " + projectName + " to import";
+        monitor.subTask(operationText);
+        monitor.worked(15);
+
+        final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(description.getName());
+        if (!project.exists()) {
+            File pomFile = new File(appInfo.getLocalRepo() + File.separator + "pom.xml");
+            // If this is a maven project, import it using m2e API
+            if (pomFile.exists()) {
+                try {
+                    IProjectConfigurationManager configurationManager = MavenPlugin.getProjectConfigurationManager();
+                    MavenModelManager mavenModelManager = MavenPlugin.getMavenModelManager();
+                    LocalProjectScanner scanner = new LocalProjectScanner(ResourcesPlugin.getWorkspace().getRoot()
+                            .getLocation().toFile(), //
+                            appInfo.getLocalRepo(), false, mavenModelManager);
+                    operationText = "Scanning maven project.";
+                    monitor.subTask(operationText);
+                    scanner.run(new SubProgressMonitor(monitor, 15));
+
+                    Set<MavenProjectInfo> projectSet = configurationManager.collectProjects(scanner.getProjects());
+
+                    ProjectImportConfiguration configuration = new ProjectImportConfiguration();
+                    operationText = "importing maven project.";
+                    monitor.subTask(operationText);
+                    List<IMavenProjectImportResult> importResults = configurationManager.importProjects(projectSet,
+                            configuration, new SubProgressMonitor(monitor, 60));
+                } catch (Exception e) {
+                    log.error("Failed to import project using m2e. Now attempting a normal import.", e);
+                    operationText = "Creating a new project.";
+                    monitor.subTask(operationText);
+                    project.create(new SubProgressMonitor(monitor, 30));
+                    operationText = "openning new project.";
+                    monitor.subTask(operationText);
+                    project.open(new SubProgressMonitor(monitor, 30));
+                }
+            } else {
+                operationText = "Creating a new project.";
+                monitor.subTask(operationText);
+                project.create(new SubProgressMonitor(monitor, 30));
+                operationText = "openning new project.";
+                monitor.subTask(operationText);
+                project.open(new SubProgressMonitor(monitor, 30));
+            }
+
+        } else {
+            printInfoLog("Skipped creating a new project since a project named \"" + projectName
+                    + "\" already exists in workspace.");
+        }
+        operationText = "Refreshing workspace.";
+        monitor.subTask(operationText);
+        ResourcesPlugin.getWorkspace().getRoot()
+                .refreshLocal(IResource.DEPTH_INFINITE, new SubProgressMonitor(monitor, 10));
+        monitor.done();
+    }
 	
 }

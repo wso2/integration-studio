@@ -25,6 +25,9 @@ public class SecurityFormConstants {
 	public static final String ORG_WSO2_CARBON_SECURITY_CRYPTO_PRIVATESTORE = "org.wso2.carbon.security.crypto.privatestore";
 
 	// Constants for Rampart Config
+	public static final String XML_NS_SEC = "xmlns:sec";
+	public static final String XML_NS_SEC_ATTRIBUTE = "http://www.wso2.org/products/carbon/security";
+	public static final String WS_POLICY = "wsp:Policy";
 	public static final String KERBEROSSIGNANDENCRYPT = "kerberossignandencrypt";
 	public static final String RAMPART_CONFIG_USER = "rampart.config.user";
 	public static final String RAMPART_CONFIG = "rampart:RampartConfig";

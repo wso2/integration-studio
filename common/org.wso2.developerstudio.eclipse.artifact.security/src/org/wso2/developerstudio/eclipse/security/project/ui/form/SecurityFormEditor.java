@@ -23,8 +23,10 @@ import java.io.InputStream;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IDocumentListener;
@@ -53,9 +55,8 @@ public class SecurityFormEditor extends FormEditor {
     private static final String SECURITY_SOURCE_VIEW = "Source";
 
     private SecurityFormPage formPage;
-    private File file;
+    private File policyFile;
     private IProject project;
-    private boolean isDesignDirty;
     private boolean isSourceDirty;
     private StructuredTextEditor sourceEditor;
     private int formEditorIndex;
@@ -71,15 +72,15 @@ public class SecurityFormEditor extends FormEditor {
     public void init(IEditorSite site, IEditorInput input) throws PartInitException {
         super.init(site, input);
 
-        file = getFile().getLocation().toFile();
-        project = getFile().getProject();
-        setPartName(getFile().getName());
+        policyFile = getPolicyFile().getLocation().toFile();
+        project = getPolicyFile().getProject();
+        setPartName(getPolicyFile().getName());
         display = Display.getCurrent();
     }
 
     @Override
     protected void addPages() {
-        formPage = new SecurityFormPage(this, Activator.PLUGIN_ID, SECURITY_DESIGN_VIEW, project, file, display);
+        formPage = new SecurityFormPage(this, Activator.PLUGIN_ID, SECURITY_DESIGN_VIEW, project, policyFile, display);
         sourceEditor = new StructuredTextEditor();
         sourceEditor.setEditorPart(this);
 
@@ -107,29 +108,31 @@ public class SecurityFormEditor extends FormEditor {
 
     @Override
     public void doSave(IProgressMonitor pm) {
-        if (isDesignDirty && isSourceDirty) {
-            isSourceDirty = false;
-            isDesignDirty = false;
-
+        //get the active page and save the contents of that.
+        if (getActivePage() == sourceEditorIndex) {
             InputStream content = new ByteArrayInputStream(getDocument().get().getBytes());
             try {
-                getFile().setContents(content, true, true, null);
+                getPolicyFile().setContents(content, true, true, null);
                 content.close();
-                formPage.refreshProject();
+                //getPolicyFile().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
             } catch (CoreException | IOException e) {
-                log.error("Error in loading the Editor when deserializing", e);
+                log.error("Error in loading the Editor when de-serializing", e);
                 MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
                 msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
                 msg.open();
             }
             formPage.updateUI(getDocument().get());
-            updateDirtyState();
-        } else if (isDesignDirty) {
-            formPage.doPageSave();
+        } else {
+            boolean saveStatus = formPage.doPageSave();
+            //If saving failed terminate the process
+            if (!saveStatus) {
+                return;
+            }
             String content;
             try {
                 content = formPage.getUpdatedContent();
-            } catch (TransformerException e) {
+            } catch (TransformerException | ClassNotFoundException | InstantiationException | IllegalAccessException
+                    e) {
                 log.error("Error while getting updated source content", e);
                 MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
                 msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
@@ -137,45 +140,24 @@ public class SecurityFormEditor extends FormEditor {
                 return;
             }
             getDocument().set(content);
-            isSourceDirty = false;
-            isDesignDirty = false;
-            updateDirtyState();
-
-        } else if (isSourceDirty) {
-            isSourceDirty = false;
-            isDesignDirty = false;
-
-            InputStream content = new ByteArrayInputStream(getDocument().get().getBytes());
-            try {
-                getFile().setContents(content, true, true, null);
-                content.close();
-                formPage.refreshProject();
-            } catch (CoreException | IOException e) {
-                log.error("Error in loading the Editor when deserializing", e);
-                MessageBox msg = new MessageBox(getSite().getShell(), SWT.ICON_ERROR);
-                msg.setMessage(SecurityFormMessageConstants.MESSAGE_LOAD_UI_ERROR);
-                msg.open();
-            }
-            formPage.updateUI(getDocument().get());
-            updateDirtyState();
-
         }
+        //Update the dirty states
+        isSourceDirty = false;
+        formPage.setDirty(false);
+        updateDirtyState();
     }
 
     @Override
     protected void pageChange(int newPageIndex) {
-        if ((newPageIndex == sourceEditorIndex) && (isDesignDirty)) {
-            isSourceDirty = false;
-            isDesignDirty = false;
-            String content = formPage.doSourceUpdate();
+        if ((newPageIndex == sourceEditorIndex) && formPage.isDirty()) {
+            String content = formPage.updateSource();
             getDocument().set(content);
-            updateDirtyState();
-        } else if ((newPageIndex == formEditorIndex) && (isSourceDirty)) {
-            isSourceDirty = false;
-            isDesignDirty = false;
+            formPage.setDirty(false);
+        } else if ((newPageIndex == formEditorIndex) && isSourceDirty) {
             String xmlSource = getDocument().get();
             formPage.updateUI(xmlSource);
-            updateDirtyState();
+            isSourceDirty = false;
+            formPage.setDirty(true);
         }
         super.pageChange(newPageIndex);
         final IFormPage page = getActivePageInstance();
@@ -195,11 +177,10 @@ public class SecurityFormEditor extends FormEditor {
     }
 
     public boolean isDirty() {
-        return isDesignDirty || isSourceDirty;
+        return formPage.isDirty() || isSourceDirty;
     }
 
     public void updateDirtyState() {
-        isDesignDirty = formPage.isDirty();
         firePropertyChange(PROP_DIRTY);
         editorDirtyStateChanged();
     }
@@ -209,7 +190,7 @@ public class SecurityFormEditor extends FormEditor {
         return provider.getDocument(getEditorInput());
     }
 
-    private IFile getFile() throws PartInitException {
+    private IFile getPolicyFile() throws PartInitException {
         final IEditorInput input = getEditorInput();
         if (input instanceof FileEditorInput) {
             return ((FileEditorInput) input).getFile();

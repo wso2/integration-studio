@@ -68,6 +68,24 @@ public class SecurityPolicyUtils {
 		return policies;
 	}
 
+	public List<String> getSecurityTrustRequiredSecurityScenarios() {
+		List<String> policies = new ArrayList<String>();
+
+		policies.add(SecurityPolicies.POLICY_TYPE_9);
+		policies.add(SecurityPolicies.POLICY_TYPE_10);
+		policies.add(SecurityPolicies.POLICY_TYPE_11);
+		policies.add(SecurityPolicies.POLICY_TYPE_12);
+		policies.add(SecurityPolicies.POLICY_TYPE_13);
+		policies.add(SecurityPolicies.POLICY_TYPE_14);
+		policies.add(SecurityPolicies.POLICY_TYPE_15);
+		policies.add(SecurityPolicies.POLICY_TYPE_17);
+		policies.add(SecurityPolicies.POLICY_TYPE_18);
+		policies.add(SecurityPolicies.POLICY_TYPE_19);
+		policies.add(SecurityPolicies.POLICY_TYPE_20);
+
+		return policies;
+	}
+
 	public String[] getRegistrySecurityScenarios() {
 		String[] registrySecurityScenarios = new String[] { SecurityPolicies.POLICY_TYPE_21 };
 

@@ -43,14 +43,12 @@ public class UserRolesDialog extends Dialog {
     private Table userRolesTable;
 
     private List<String> selectedRoles;
-    private String selectedRolesInLine;
     private List<String> originalRoleSet;
 
-    public UserRolesDialog(Shell parentShell, List<String> selectedRoles, String selectedRolesInLine) {
+    public UserRolesDialog(Shell parentShell, List<String> selectedRoles) {
         super(parentShell);
         setShellStyle(getShellStyle() | SWT.RESIZE);
         this.selectedRoles = selectedRoles;
-        this.selectedRolesInLine = selectedRolesInLine;
 
         this.originalRoleSet = new ArrayList<String>();
         this.originalRoleSet.addAll(selectedRoles);
@@ -79,9 +77,7 @@ public class UserRolesDialog extends Dialog {
             inlineUserRolesTextLayoutData.left = new FormAttachment(30);
             inlineUserRolesTextLayoutData.right = new FormAttachment(100, -5);
             inlineUserRolesText.setLayoutData(inlineUserRolesTextLayoutData);
-            if (!StringUtils.isEmpty(selectedRolesInLine)) {
-                inlineUserRolesText.setText(selectedRolesInLine);
-            }
+            inlineUserRolesText.setText(getUserRolesInLine(selectedRoles));
         }
 
         Label inlineUserRolesLabel = new Label(container, SWT.NONE);
@@ -377,5 +373,23 @@ public class UserRolesDialog extends Dialog {
         roleNamePatternText.setEnabled(enable);
         userRolesTable.setEnabled(enable);
         getRolesButton.setEnabled(enable);
+    }
+
+    /**
+     * Get allow roles in role1,role2, format.
+     *
+     * @return roles
+     */
+    private String getUserRolesInLine(List<String> userRoles) {
+        String allowRoles = "";
+
+        for (int i = 0; i < userRoles.size(); i++) {
+            if (i == userRoles.size() - 1) {
+                allowRoles += userRoles.get(i);
+            } else {
+                allowRoles += userRoles.get(i) + ",";
+            }
+        }
+        return allowRoles;
     }
 }

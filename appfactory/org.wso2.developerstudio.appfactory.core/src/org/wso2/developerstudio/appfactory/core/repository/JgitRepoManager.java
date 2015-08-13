@@ -116,6 +116,7 @@ public class JgitRepoManager {
 				.setStartPoint("origin/" + branch)
 				.setForce(true)
 				.call();
+		     trackBranch(branch);
 
 	}
 	

@@ -79,16 +79,17 @@ public class GraphicalEditorStartupUtils implements Openable {
 		EsbMultiPageEditor multipageEitor = ((EsbMultiPageEditor) openEditor);
 		final EsbDiagramEditor graphicalEditor = multipageEitor.getGraphicalEditor();
 
+		Deserializer deserializer = Deserializer.getInstance();
+		try {
+			deserializer.updateDesign(source, graphicalEditor);
+		} catch (Exception e) {
+			log.error("Error while generating diagram from source", e);
+		}
+		
 		Display.getDefault().asyncExec(new Runnable() {
 
 			public void run() {
 				EditorUtils.setLockmode(graphicalEditor, true);
-				Deserializer deserializer = Deserializer.getInstance();
-				try {
-					deserializer.updateDesign(source, graphicalEditor);
-				} catch (Exception e) {
-					log.error("Error while generating diagram from source", e);
-				}
 				AbstractEsbNodeDeserializer.relocateStartNodes();
 				graphicalEditor.doSave(new NullProgressMonitor());
 				EditorUtils.setLockmode(graphicalEditor, false);

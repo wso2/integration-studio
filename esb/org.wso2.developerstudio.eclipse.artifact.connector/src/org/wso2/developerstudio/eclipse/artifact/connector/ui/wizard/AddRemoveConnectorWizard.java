@@ -46,6 +46,7 @@ import org.wso2.developerstudio.eclipse.utils.file.FileUtils;
 
 public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard {
 
+	private static final String GROUP_ID =".lib";
 	private ConnectorModel libraryModel;
 	private ConnectorWizardPage wizardPage;
 	private static IDeveloperStudioLog log = Logger.getLog(Activator.PLUGIN_ID);
@@ -165,7 +166,7 @@ public class AddRemoveConnectorWizard extends AbstractWSO2ProjectCreationWizard 
 			connectorArtifact.setVersion(version);
 			connectorArtifact.setType("synapse/lib");
 			connectorArtifact.setServerRole("EnterpriseServiceBus");
-			connectorArtifact.setGroupId(mavenProject.getGroupId());
+			connectorArtifact.setGroupId(mavenProject.getGroupId() + GROUP_ID);
 			connectorArtifact.setFile(FileUtils.getRelativePath(project.getLocation().toFile(),
 					new File(project.getLocation().toFile(), libraryResource.getName())).replaceAll(
 					Pattern.quote(File.separator), "/"));

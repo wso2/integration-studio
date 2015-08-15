@@ -32,7 +32,8 @@ public final class Messages extends NLS {
 	public static String WSO2_ESB_API_VERSION;
 	public static String WSO2_ESB_TASK_VERSION;
 	public static String WSO2_ESB_TEMPLATE_VERSION;
-	public static String WSO2_ESB_INBOUND_ENDPOINT_VERSION;
+	public static String WSO2_ESB_INBOUND_ENDPOINT_VERSION;	
+	public static String WSO2_ESB_CONNECTOR_VERSION;	
 	public static String WSO2_GENERAL_PROJECT_VERSION;
 	public static String WSO2_QOS_PROJECT_VERSION;
 	public static String MAVEN_CAR_DEPLOY_VERSION;

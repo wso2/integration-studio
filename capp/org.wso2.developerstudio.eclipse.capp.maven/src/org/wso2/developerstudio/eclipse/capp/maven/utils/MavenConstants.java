@@ -32,6 +32,7 @@ public class MavenConstants {
 	public static final String WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION = Messages.WSO2_ESB_MESSAGE_PROCESSOR_PLUGIN_VERSION;
 	public static final String WSO2_ESB_TEMPLATE_VERSION = Messages.WSO2_ESB_TEMPLATE_VERSION;
 	public static final String WSO2_ESB_INBOUND_ENDPOINT_VERSION = Messages.WSO2_ESB_INBOUND_ENDPOINT_VERSION;
+	public static final String WSO2_ESB_CONNECTOR_VERSION = Messages.WSO2_ESB_CONNECTOR_VERSION;
 	public static final String WSO2_GENERAL_PROJECT_VERSION = Messages.WSO2_GENERAL_PROJECT_VERSION;
 	public static final String MAVEN_CAR_DEPLOY_VERSION = Messages.MAVEN_CAR_DEPLOY_VERSION;
 	public static final String MAVEN_BRS_PLUGIN_VERSION=Messages.MAVEN_BRS_VERSION;

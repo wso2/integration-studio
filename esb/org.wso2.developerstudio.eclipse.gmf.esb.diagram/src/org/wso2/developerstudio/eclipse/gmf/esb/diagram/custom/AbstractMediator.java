@@ -533,7 +533,7 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		
 		if (!mediatorRestricted) {
 			AbstractMediator previousMediator = getPreviousMediator(nearestEsbLinkOutputConnector, nearestOutputConnector);
-			if (previousMediator != null) {
+			if (previousMediator != this) {
 				AbstractMediator mediator = hasMediator(previousMediator);
 				mediatorRestricted = true;
 				if (mediator instanceof SendMediatorEditPart){			   

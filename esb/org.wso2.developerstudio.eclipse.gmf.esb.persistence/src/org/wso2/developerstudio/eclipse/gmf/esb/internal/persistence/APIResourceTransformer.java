@@ -29,15 +29,20 @@ import org.eclipse.emf.ecore.EObject;
 import org.wso2.developerstudio.eclipse.gmf.esb.AggregateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ApiResourceUrlStyle;
 import org.wso2.developerstudio.eclipse.gmf.esb.BAMMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.BeanMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.BuilderMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CacheMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.CallMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CallTemplateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CalloutMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ClassMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CloneMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.CommandMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ConditionalRouterMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBLookupMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DBReportMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.DropMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.EJBMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnqueueMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EnrichMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.EntitlementMediator;
@@ -47,13 +52,17 @@ import org.wso2.developerstudio.eclipse.gmf.esb.EventMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FastXSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FaultMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.FilterMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ForEachMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.HeaderMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.IterateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.LogMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.LoopBackMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.OAuthMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PayloadFactoryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.PropertyMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.PublishEventMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RMSequenceMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.RespondMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.RuleMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ScriptMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SendMediator;
@@ -63,6 +72,9 @@ import org.wso2.developerstudio.eclipse.gmf.esb.SpringMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.StoreMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.SwitchMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.ThrottleMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.TransactionMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.URLRewriteMediator;
+import org.wso2.developerstudio.eclipse.gmf.esb.ValidateMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XQueryMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.XSLTMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.persistence.TransformationInfo;
@@ -227,8 +239,9 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 					return children.get(i);
 				}
 			} else if (children.get(i) instanceof DBLookupMediator) {
-				if (((DBLookupMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0)
+				if (((DBLookupMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0){
 					return children.get(i);
+				}
 			} else if (children.get(i) instanceof DBReportMediator) {
 				if (((DBReportMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
 					return children.get(i);
@@ -339,9 +352,56 @@ public class APIResourceTransformer extends AbstractEsbNodeTransformer {
 			} else if (children.get(i) instanceof Sequence) {
 				if (((Sequence) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
 					return children.get(i);
+				}				
+			} else if (children.get(i) instanceof CallMediator) {
+				if (((CallMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof LoopBackMediator) {
+				if (((LoopBackMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof RespondMediator) {
+				if (((RespondMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof ConditionalRouterMediator) {
+				if (((ConditionalRouterMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof ValidateMediator) {
+				if (((ValidateMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof BeanMediator) {
+				if (((BeanMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof EJBMediator) {
+				if (((EJBMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof URLRewriteMediator) {
+				if (((URLRewriteMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof TransactionMediator) {
+				if (((TransactionMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof ForEachMediator) {
+				if (((ForEachMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof BuilderMediator) {
+				if (((BuilderMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
+				}
+			}else if (children.get(i) instanceof PublishEventMediator) {
+				if (((PublishEventMediator) children.get(i)).getInputConnector().getIncomingLinks().size() == 0) {
+					return children.get(i);
 				}
 			}
-
 		}
 		return null;
 	}

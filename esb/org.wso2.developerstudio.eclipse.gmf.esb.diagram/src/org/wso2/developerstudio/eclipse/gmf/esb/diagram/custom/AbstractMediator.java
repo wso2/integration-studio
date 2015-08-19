@@ -533,7 +533,7 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 		
 		if (!mediatorRestricted) {
 			AbstractMediator previousMediator = getPreviousMediator(nearestEsbLinkOutputConnector, nearestOutputConnector);
-			if (previousMediator != this) {
+			if (previousMediator != null && previousMediator != this) {
 				AbstractMediator mediator = hasMediator(previousMediator);
 				mediatorRestricted = true;
 				if (mediator instanceof SendMediatorEditPart){			   
@@ -898,9 +898,13 @@ public abstract class AbstractMediator extends AbstractBorderedShapeEditPart imp
 	}
 	
 	private boolean restrictAddingOfMediator(AbstractInputConnectorEditPart nearestInputConnector, AbstractConnectorEditPart nearestEsbLinkInputConnector) {
-		
 		boolean restricted = false;
-		AbstractMediator nextMmediator = EditorUtils.getMediator(nearestEsbLinkInputConnector);
+		AbstractMediator nextMmediator;
+		if(nearestEsbLinkInputConnector != null){
+			nextMmediator = EditorUtils.getMediator(nearestEsbLinkInputConnector);
+		}else{
+			nextMmediator = EditorUtils.getMediator(nearestInputConnector);
+		}
 		if (/*nearestInputConnector != null || */nextMmediator != null && nextMmediator!=this) {
 			if (!EditorUtils.isAChildOf(nextMmediator, this)) {
 				restricted = true;

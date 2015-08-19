@@ -36,6 +36,7 @@ import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorF
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorInputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediator;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractMediatorOutputConnectorEditPart;
+import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.AbstractOutputConnectorEditPart;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.EditorUtils;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.editpolicy.FeedbackIndicateDragDropEditPolicy;
 import org.wso2.developerstudio.eclipse.gmf.esb.diagram.custom.utils.SwitchMediatorUtils;
@@ -145,9 +146,30 @@ public class MediatorFlowMediatorFlowCompartment6EditPart extends AbstractMediat
 		// TODO Auto-generated method stub
 		MediatorFlow6EditPart mediatorFlow = (MediatorFlow6EditPart) child.getParent().getParent();
 		EditPart proxyService = child.getParent().getParent().getParent().getParent().getParent();
+		updateLastInputConnector(child);
 		super.removeChild(child);
 		mediatorFlow.refreshInputConnector(proxyService);
 
+	}
+	
+	/**
+	 * This method will update 'inputConnectorEditPart' variable with the last unconnected input connector while
+	 * removing the last mediator in the Fault sequence.
+	 * 
+	 * @param child
+	 */
+	private void updateLastInputConnector(EditPart child) {
+		if (child instanceof AbstractMediator) {
+			AbstractInputConnectorEditPart inputConnector = EditorUtils.getInputConnector((ShapeNodeEditPart) child);
+			if (inputConnector.getTargetConnections().isEmpty()) {
+				AbstractOutputConnectorEditPart outputConnector = EditorUtils
+						.getOutputConnector((ShapeNodeEditPart) child);
+				if (!outputConnector.getSourceConnections().isEmpty()) {
+					EsbLinkEditPart esbLinkEditPart = (EsbLinkEditPart) outputConnector.getSourceConnections().get(0);
+					inputConnectorEditPart = (AbstractBorderItemEditPart) esbLinkEditPart.getTarget();
+				}
+			}
+		}
 	}
 
 	public boolean isSelectable() {

@@ -32,7 +32,8 @@ import org.wso2.developerstudio.eclipse.platform.core.utils.Constants;
 public class JavaVersionAlertHandler implements IStartup {
     private static final String JAVA_VERSION_PROPERTY = "java.version";
     private static final String ALERT_TITLE = "Java Version Update Required";
-    private static final String OK_BUTTON = "OK";
+    private static final String CONTINUE_BUTTON = "Continue";
+    private static final String EXIT_BUTTON = "Exit";
     private static final String DOT_SEPARATOR = ".";
 
     @Override
@@ -59,9 +60,19 @@ public class JavaVersionAlertHandler implements IStartup {
                         shell.setLocation(xCenter, yCenter);
 
                         String warningMessage = Constants.DETECTED_JAVA_VERSION_MESSAGE + version + "\n" +
-                                Constants.RECOMMENDED_JAVA_VERSION_MESSAGE + Constants.MINIMUM_REQUIRED_JAVA_VERSION + "\n" +
-                                Constants.JAVA_VERSION_ALERT_MESSAGE;
-                        MessageDialog dialog = new MessageDialog(shell, ALERT_TITLE, null, warningMessage, MessageDialog.WARNING, new String[]{OK_BUTTON}, 0);
+                                Constants.RECOMMENDED_JAVA_VERSION_MESSAGE + Constants.MINIMUM_REQUIRED_JAVA_VERSION
+                                + ".x" + "\n" +
+                                Constants.JAVA_VERSION_ALERT_MESSAGE + "\n" + 
+                                Constants.JAVA_VERSION_CONTINUE_MESSAGE;
+                        MessageDialog dialog = new MessageDialog(shell, ALERT_TITLE, null, warningMessage,
+                                MessageDialog.ERROR, new String[]{CONTINUE_BUTTON, EXIT_BUTTON}, 0) {
+                            protected void buttonPressed(int buttonId) {
+                                if (buttonId  == 1) {
+                                    System.exit(0);
+                                }
+                                super.buttonPressed(buttonId);
+                            }
+                        };
                         dialog.open();
                     }
                 }

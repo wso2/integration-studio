@@ -68,6 +68,7 @@ public class Constants extends NLS{
    public static String DETECTED_JAVA_VERSION_MESSAGE;
    public static String RECOMMENDED_JAVA_VERSION_MESSAGE;
    public static String JAVA_VERSION_ALERT_MESSAGE;
+   public static String JAVA_VERSION_CONTINUE_MESSAGE;
    public static String MAVEN_MULTI_MODULE_PROJECT_NATURE;
    public static String CONNECTOR_PROJECT_NATURE;
 

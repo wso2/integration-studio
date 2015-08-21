@@ -1457,8 +1457,8 @@ public class ProjectOptionsDataPage extends WizardPage implements Observer {
             doControlStatusUpdate(optionData);
             doPageValidation(optionData);
 
-            if (isRequireLocationSection()) {
-                if (locationInfoComposite!=null && locationInfoComposite.isComplete()) {
+			if (isRequireLocationSection() && locationInfoComposite != null) {
+				if (locationInfoComposite.isComplete()) {
                     setPageComplete(true);
                     setErrorMessage(null);
                 } else {
